@@ -1,0 +1,18 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+          "type": "node",
+          "request": "launch",
+          "name": "Bot Dev",
+          "preLaunchTask": "tsc: watch - tsconfig.json",
+          "program": "${workspaceFolder}/src/app.ts",
+          "sourceMaps": true,
+          "smartStep": true,
+          "cwd": "${workspaceFolder}",
+          "outFiles": [
+            "${workspaceFolder}/dist/**/*.js"
+          ]
+        }
+    ]
+}

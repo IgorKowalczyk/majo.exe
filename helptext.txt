@@ -1,0 +1,20 @@
+Commands:
+
+`ping` - Testing bot connection
+`help` - Get the help text
+`join` - Join user voice channel
+`leave` - Leave voice channel
+`play` - Play the first song in the queue
+`pause` - Pause the current song
+`resume` - Resume the current song
+`time` - Time of the current song
+`add [type] [url/idfragment]` - Add a song to the end of the queue
+`remove [index]` - Remove song at index
+`skip` - Skip the current song
+`stop` - Stop the current song and reset to the beginning
+`list` - List all songs in the queue
+`move [targetIndex] [up/down/destIndex]` - Move the song in the queue
+`shuffle` - Shuffle songs in the queue
+`clear` - Clear songs in the queue
+`volume [0-100/nothing]` - Will set or get the current volume
+`repeat` - Toggle queue repeat mode

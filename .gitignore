@@ -1,0 +1,39 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+
+# Runtime data
+pids
+*.pid
+*.seed
+
+lib-cov
+
+coverage
+
+.nyc_output
+
+.grunt
+
+# node-waf configuration
+.lock-wscript
+
+
+build/Release
+
+# Dependency directories
+node_modules
+jspm_packages
+dist
+
+# Optional npm cache directory
+.npm
+
+# Optional REPL history
+.node_repl_history
+
+# Custom
+dev-run.bat
+app.js
+test.js
