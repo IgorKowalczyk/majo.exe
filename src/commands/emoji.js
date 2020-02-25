@@ -1,4 +1,4 @@
-﻿const pisz-emoji = async (message, prefix) => {
+﻿const emoji = async (message, prefix) => {
   const commandPiszemoji = 'piszemoji'
   let tresc = message.content.slice(prefix.length + commandPiszemoji.length + 1)
   if (tresc.length > 0) {
@@ -78,10 +78,10 @@
         }
       }
     }
-    await message.delete().then(console.log(`piszemoji: deleted message from ${message.author}`)).catch(console.error)
-    await message.channel.send(final).then(console.log(`piszemoji: sent message from ${message.author}'s text`)).catch(console.error)
+    await message.delete().then(console.log(`majonezie emoji: usunięto wiadomość od ${message.author}`)).catch(console.error)
+    await message.channel.send(final).then(console.log(`majonezie emoji: wysłano wiadomość przez ${message.author}`)).catch(console.error)
   } else {
-    await message.reply('Ale co mam napisać jak nie wiem co!?')
+    await message.reply('Ale co mam napisać jak nie wiem co!? Użyj `majonezie emoji (tekst do emoji)`')
   }
 }
 
