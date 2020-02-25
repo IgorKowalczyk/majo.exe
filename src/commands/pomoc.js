@@ -1,6 +1,6 @@
-const help = (message) => {
+﻿const pomoc = (message) => {
   message.reply(`
-    Dostępne komendy:
+    ```Dostępne komendy:
     - majonezie help
     - majonezie avatar
     - majonezie avatar @nick
@@ -23,7 +23,7 @@ const help = (message) => {
     - majonezie ucz <znaczennie> : <sentencja>
     - majonezie whatsmyname
     - majonezie say
-    - majonezie pracuj
+    - majonezie pracuj```
     `)
   if (message.member.hasPermission('ADMINISTRATOR')) {
     message.channel.send('ty mozesz wiecej, Kmicic')
@@ -38,4 +38,4 @@ const help = (message) => {
   }
 }
 
-module.exports = help
+module.exports = pomoc

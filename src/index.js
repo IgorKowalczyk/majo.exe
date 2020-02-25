@@ -4,7 +4,7 @@ const anime = require('./commands/anime')
 const avatar = require('./commands/avatar')
 const crypto = require('./commands/crypto')
 const haxi00r = require('./commands/haxi00r')
-const help = require('./commands/help')
+const pomoc = require('./commands/pomocy')
 const lista = require('./commands/lista')
 const pomocy = require('./commands/pomocy')
 const pozew = require('./commands/pozew')
@@ -106,8 +106,8 @@ client.on('message', async (message) => {
   if (args[0] === 'quote') {
     quote(message)
   }
-  if (args[0] === 'help') {
-    help(message)
+  if (args[0] === 'pomoc') {
+    pomoc(message)
   }
   if (args[0] === 'pomocy') {
     pomocy.pomocy(message)
