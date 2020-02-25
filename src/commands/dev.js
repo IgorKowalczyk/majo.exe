@@ -1,4 +1,4 @@
-const guild = async (message) => {
+const dev = async (message) => {
   message.channel.send(`Guild ID tego serwera: ${message.guild.id}`)
 }
-module.exports = guild
+module.exports = dev

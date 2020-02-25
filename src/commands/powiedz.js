@@ -5,4 +5,4 @@ const quote = async (message) => {
   await message.reply(randomQt)
 }
 
-module.exports = quote
+module.exports = powiedz
