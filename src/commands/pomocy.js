@@ -1,5 +1,5 @@
 const pomocy = async (message) => {
-  await message.channel.send('@here, ludzie pomoc! Znowu potrzebna jest dzisiaj!')
+  await message.channel.send('@here, Ktoœ w³aœnie potrzebuje pomocy!')
 }
 
 module.exports = { pomocy }

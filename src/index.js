@@ -1,6 +1,5 @@
 ﻿const fs = require('fs')
 const Discord = require('discord.js')
-// commands
 const anime = require('./commands/anime')
 const avatar = require('./commands/avatar')
 const crypto = require('./commands/crypto')
@@ -24,7 +23,6 @@ const delfinowe = require('./commands/delfiny')
 const sprawdz = require('./commands/sprawdz')
 const ucz = require('./commands/ucz')
 const praca = require('./commands/praca')
-
 const config = require('./config')
 
 if (cp.exec('git branch') === 'dev') {
@@ -36,18 +34,18 @@ const xd2 = require('./quotes/root.json')
 const natural = require('natural'),
   classifier = new natural.BayesClassifier()
 
-xd.forEach(el => classifier.addDocument(el.content, `smroot ${el.mean}`))
-xd2.forEach(el => classifier.addDocument(el.content, `smroot ${el.mean}`))
+xd.forEach(el => classifier.addDocument(el.content, `majonezie ${el.mean}`))
+xd2.forEach(el => classifier.addDocument(el.content, `majonezie ${el.mean}`))
 classifier.train()
-if (!fs.existsSync('smrootAI.json')) {
-  classifier.save('smrootAI.json', (err) => {
+if (!fs.existsSync('majonezie.json')) {
+  classifier.save('majonezie.json', (err) => {
     console.log(err)
   })
 }
 
 client.on('ready', () => {
   console.log(`${config.prefix} has started, with ${client.users.size} users, in ${client.channels.size} channels of ${client.guilds.size} guilds.`)
-  client.user.setPresence({ game: { name: 'stack overflow the movie', type: 3 } })
+  client.user.setPresence({ game: { name: 'Pomoc: majonezie help', type: 3 } })
 })
 
 client.on('message', async (message) => {

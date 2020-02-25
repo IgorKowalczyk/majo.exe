@@ -1,6 +1,5 @@
-const ytdl = require('ytdl-core')
+﻿const ytdl = require('ytdl-core')
 const ypi = require('youtube-playlist-info')
-// Put your Youtube API key here!
 const config = require('../config.json')
 
 const servers = {}
@@ -15,7 +14,7 @@ const play = (connection, message) => {
     server.dispatcher = connection.playStream(ytdl(server.queue[0]))
   } catch (e) {
     console.log('Idiota wysłał jakiegoś unicorna pewnie zamiast linku.')
-    return message.channel.send('Congratulacje! Twój linkacz wygrał konkurs na najmniej linkaczowy styl! :first_place: dla ciebie')
+    return message.channel.send('Congratulacje! Twój link wygrał konkurs na najmniej linkowy styl! Oto :first_place: dla ciebie')
   }
   server.dispatcher.on('end', () => {
     server.queue.shift()

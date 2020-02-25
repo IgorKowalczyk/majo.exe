@@ -1,10 +1,10 @@
-[
+﻿[
   {
     "content": "Gdzie jest majonez? Na serwerze!",
     "mean": "pytanie"
   },
   {
-    "content": "beep beep JavaScript",
+    "content": "beep beep JavaScript czeka!",
     "mean": "dev"
   },
   {
@@ -96,6 +96,10 @@
     "mean": "pytanie"
   },
   {
+    "content": "ej podeślij jakieś @takidelfin xd\n  podeślij srebrne\n  przerobię sobie xd",
+    "mean": "logika"
+  },
+  {
     "content": "missclick na fork gdy czyściłem gładzik",
     "mean": "logika"
   },
@@ -116,7 +120,7 @@
     "mean": "szkalunek"
   },
   {
-    "content": "wygrałem 3 tablety, dwa głośniczki bluetooth, jakieś smycze, pierdoły i majonez",
+    "content": "wygrałem 3 tablety, dwa głośniczki bluetooth, jakieś smycze i pierdoły",
     "mean": "duma"
   },
   {
@@ -136,11 +140,11 @@
     "mean": "logika"
   },
   {
-    "content": "każdy myślący robi prezentacje w mikrofalówce ze złomu.",
+    "content": "każdy myślący robi prezentacje w LaTEXie",
     "mean": "znawca"
   },
   {
-    "content": "kurde, za trzy dni mam bierzmowanie pod patronactwem papierza Majoneza",
+    "content": "kurde, za trzy dni mam bierzmowanie pod patronactwem Ritchiego XD",
     "mean": "wiara"
   },
   {
@@ -150,6 +154,10 @@
   {
     "content": "Ewentualnie sąd rodzinny",
     "mean": "prawo"
+  },
+  {
+    "content": "Dobra kij wam między poślady, idę dokończyć SV by spoilerować Neastowi",
+    "mean": "ucieczka"
   },
   {
     "content": "Nie wymiotuję Ani nie robi mi się słabo Nie licząc lekcji biologii",
@@ -172,7 +180,7 @@
     "mean": "szkalunek"
   },
   {
-    "content": "Jestem za szczepionkami, Nie powiedziałem nic takiego",
+    "content": "Jestem za szczepionkami Nie powiedziałem nic takiego",
     "mean": "hipokryzja"
   },
   {
@@ -190,9 +198,5 @@
   {
     "content": "przepraszam że przeszkadzam, mogę Cię prosić na chwilę?",
     "mean": "sprzedawczyk"
-  }
-  {
-    "content": "woda - fajna czysta krystaliczna",
-    "mean": "woda"
   }
 ]

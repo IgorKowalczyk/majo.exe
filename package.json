@@ -1,7 +1,7 @@
 {
   "name": "majo.exe",
-  "version": "0.0.1",
-  "description": "majo.exe - discord bot to memes",
+  "version": "0.5.0",
+  "description": "smrootbot - discord bot to memes",
   "main": "src/index.js",
   "scripts": {
     "start": "nodemon --config nodemon.json src/index.js",
@@ -15,6 +15,9 @@
     "url": "git+https://github.com/igorkowalczyk/majobot.git"
   },
   "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/igorkowalczyk/majobot/issues"
+  },
   "homepage": "https://github.com/igorkowalczyk/majobot",
   "dependencies": {
     "axios": "^0.17.1",
