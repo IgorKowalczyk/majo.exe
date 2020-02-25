@@ -1,4 +1,4 @@
-const moj-avatar = async (message) => {
+const avatar = async (message) => {
   const author = message.author.avatarURL
   await message.reply(author)
 }
@@ -7,4 +7,4 @@ const avatarMentioned = async (message) => {
   await message.reply(avatarOfMentioned)
 }
 
-module.exports = { moj-avatar, avatarMentioned }
+module.exports = { avatar, avatarMentioned }
