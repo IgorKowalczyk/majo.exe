@@ -1,4 +1,5 @@
-const piszemoji = async (message, prefix) => {
+﻿﻿const emoji = async (message, prefix) => {
+﻿const piszemoji = async (message, prefix) => {
   const commandPiszemoji = 'piszemoji'
   let tresc = message.content.slice(prefix.length + commandPiszemoji.length + 1)
   if (tresc.length > 0) {

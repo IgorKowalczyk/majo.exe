@@ -1,23 +1,30 @@
 ﻿const fs = require('fs')
 const Discord = require('discord.js')
+// commands
 const anime = require('./commands/anime')
-const mojavatar = require('./commands/avatar')
-const majonez = require('./commands/majonez')
-const pomoc = require('./commands/help')
+const avatar = require('./commands/avatar')
+const crypto = require('./commands/crypto')
+const haxi00r = require('./commands/haxi00r')
+const help = require('./commands/help')
+const lista = require('./commands/lista')
 const pomocy = require('./commands/pomocy')
 const pozew = require('./commands/pozew')
-const powiedz = require('./commands/powiedz')
+const quote = require('./commands/quote')
+const say = require('./commands/say')
 const test = require('./commands/test')
+const traffic = require('./commands/traffic')
 const voice = require('./commands/voice')
-const ja = require('./commands/ja')
-const autor = require('./commands/autor')
-const emoji = require('./commands/emoji')
+const whatsmyname = require('./commands/whatsmyname')
+const who = require('./commands/who')
+const piszemoji = require('./commands/piszemoji')
 const sniadanie = require('./commands/sniadanie')
+const devUtils = require('./commands/devUtils')
+const cp = require('child_process')
+const delfinowe = require('./commands/delfiny')
 const sprawdz = require('./commands/sprawdz')
 const ucz = require('./commands/ucz')
 const praca = require('./commands/praca')
-const majonezy = require('./commands/majonezowe')
-const dev = require('./commands/dev')
+
 const config = require('./config')
 
 if (cp.exec('git branch') === 'dev') {
@@ -28,24 +35,25 @@ const xd = require('./quotes/root.json')
 const xd2 = require('./quotes/root.json')
 const natural = require('natural'),
   classifier = new natural.BayesClassifier()
-xd.forEach(el => classifier.addDocument(el.content, `majonezie ${el.mean}`))
-xd2.forEach(el => classifier.addDocument(el.content, `majonezie ${el.mean}`))
+
+xd.forEach(el => classifier.addDocument(el.content, `smroot ${el.mean}`))
+xd2.forEach(el => classifier.addDocument(el.content, `smroot ${el.mean}`))
 classifier.train()
-if (!fs.existsSync('majonezie.json')) {
-  classifier.save('majonezie.json', (err) => {
+if (!fs.existsSync('smrootAI.json')) {
+  classifier.save('smrootAI.json', (err) => {
     console.log(err)
   })
 }
 
 client.on('ready', () => {
-  console.log(`${config.prefix} wystartował, z ${client.users.size} urzytkownikami, w ${client.channels.size} kanałach na ${client.guilds.size} serwerach.`)
-  client.user.setPresence({ game: { name: 'majonezie pomocy', type: 3 } })
+  console.log(`${config.prefix} has started, with ${client.users.size} users, in ${client.channels.size} channels of ${client.guilds.size} guilds.`)
+  client.user.setPresence({ game: { name: 'stack overflow the movie', type: 3 } })
 })
 
 client.on('message', async (message) => {
   const args = message.content.substring(config.prefix.length + 1).split(' ')
   if (message.author.bot) {
-    if (message.author.tag !== 'Majonez.exe#5271') return
+    if (message.author.tag !== 'nierobot#8238') return
   }
   if (args[0] === 'INKWIZYCJA') {
     console.log('lol')

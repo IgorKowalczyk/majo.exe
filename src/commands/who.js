@@ -1,4 +1,4 @@
-const autor = async (message) => {
+﻿const who = async (message) => {
   await message.reply('Bot stworzony przez: https://igorkowalczyk.github.io')
 }
-module.exports = autor
+module.exports = who
