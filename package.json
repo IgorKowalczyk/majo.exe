@@ -17,7 +17,7 @@
   "license": "MIT",
   "homepage": "https://github.com/igorkowalczyk/majobot",
   "dependencies": {
-    "axios": "^0.17.1",
+    "axios": "^0.18.1",
     "bufferutil": "^3.0.3",
     "discord.js": "^11.3.2",
     "ffmpeg": "0.0.4",
