@@ -1,27 +1,14 @@
 {
-  "name": "majo.exe",
+  "name": "majobot",
   "version": "0.0.1",
-  "description": "Test",
-  "bin": "./infinbot.js",
+  "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node server.js"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/igorkowalczyk/majobot.git"
-  },
-  "author": "Igor Kowalczyk",
-  "license": "MIT",
   "dependencies": {
-    "discord.js": ">=11.1.0",
-    "discord.js-commando": ">=0.9.0",
-    "ffmpeg-binaries": ">=3.2.2",
-    "node-opus": ">=0.2.6",
-    "simple-youtube-api": ">=2.1.0",
-    "sqlite": ">=2.6.0",
-    "urban": ">=0.3.1",
-    "ytdl-core": ">=0.13.2",
-    "randomstring": ">=1.1.5",
-    "request": ">=2.83.0"
+    "eris": "^0.7.2"
+  },
+  "engines": {
+    "node": "8.x"
   }
 }
