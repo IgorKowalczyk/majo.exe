@@ -1,0 +1,4 @@
+module.exports = {
+    token: 'ENCRYPTED',
+    GOOGLE_SEARCH: 'AIzaSyCL9SQWcYQ6uqZp_sgBPKN_F2lFYq30Pcw'
+};

@@ -1,43 +1,24 @@
 {
   "name": "majo.exe",
-  "version": "0.5.0",
-  "description": "smrootbot - discord bot to memes",
-  "main": "src/index.js",
+  "version": "0.0.1",
+  "description": "A discord music bot.",
+  "main": "src/majo.js",
   "scripts": {
-    "start": "nodemon --config nodemon.json src/index.js",
-    "lint": "eslint --ext .js --ignore-path .gitignore .",
-    "lint:fix": "eslint  --fix --ext .js --ignore-path .gitignore .",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "nierobot": "nodemon --config nodemon.json src/nierobot.js"
+    "test:lint": "eslint --fix src"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/igorkowalczyk/majobot.git"
-  },
+  "author": "Igor Kowalczyk",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/igorkowalczyk/majobot/issues"
-  },
-  "homepage": "https://github.com/igorkowalczyk/majobot",
   "dependencies": {
-    "axios": "^0.17.1",
-    "bufferutil": "^3.0.3",
-    "discord.js": "^11.3.2",
-    "ffmpeg": "0.0.4",
-    "ffmpeg-binaries": "^3.2.2-3",
-    "natural": "^0.5.6",
-    "nodemon": "^1.18.9",
-    "opusscript": "0.0.6",
-    "youtube-playlist-info": "^1.1.2",
-    "ytdl-core": "^0.18.7"
+    "discord.js": "github:discordjs/discord.js",
+    "fs-nextra": "^0.4.5",
+    "klasa": "github:dirigeants/klasa",
+    "node-opus": "^0.3.2",
+    "rethinkdbdash": "^2.3.31",
+    "ytdl-core": "^0.29.7",
+    "ytdl-core-discord": "^1.0.3"
   },
   "devDependencies": {
-    "eslint": "^4.9.0",
-    "eslint-config-airbnb": "^16.1.0",
-    "eslint-plugin-import": "^2.7.0",
-    "eslint-plugin-jsx-a11y": "^6.0.2",
-    "eslint-plugin-node": "^5.2.1",
-    "eslint-plugin-promise": "^3.6.0",
-    "eslint-plugin-react": "^7.4.0"
+    "eslint": "^6.4.0",
+    "eslint-config-klasa": "github:dirigeants/klasa-lint"
   }
 }
