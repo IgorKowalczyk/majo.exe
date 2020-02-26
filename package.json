@@ -1,24 +1,27 @@
 {
   "name": "majo.exe",
   "version": "0.0.1",
-  "description": "A discord music bot.",
-  "main": "src/majo.js",
+  "description": "Test",
+  "bin": "./infinbot.js",
   "scripts": {
-    "test:lint": "eslint --fix src"
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/igorkowalczyk/majobot.git"
   },
   "author": "Igor Kowalczyk",
   "license": "MIT",
   "dependencies": {
-    "discord.js": "github:discordjs/discord.js",
-    "fs-nextra": "^0.4.5",
-    "klasa": "github:dirigeants/klasa",
-    "node-opus": "^0.3.2",
-    "rethinkdbdash": "^2.3.31",
-    "ytdl-core": "^0.29.7",
-    "ytdl-core-discord": "^1.0.3"
-  },
-  "devDependencies": {
-    "eslint": "^6.4.0",
-    "eslint-config-klasa": "github:dirigeants/klasa-lint"
+    "discord.js": ">=11.1.0",
+    "discord.js-commando": ">=0.9.0",
+    "ffmpeg-binaries": ">=3.2.2",
+    "node-opus": ">=0.2.6",
+    "simple-youtube-api": ">=2.1.0",
+    "sqlite": ">=2.6.0",
+    "urban": ">=0.3.1",
+    "ytdl-core": ">=0.13.2",
+    "randomstring": ">=1.1.5",
+    "request": ">=2.83.0"
   }
 }
