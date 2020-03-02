@@ -1,14 +1,43 @@
 {
   "name": "majobot",
-  "version": "0.0.1",
-  "main": "server.js",
+  "version": "0.0.0",
+  "description": "A simple discord bot",
+  "main": "index.js",
   "scripts": {
-    "start": "node server.js"
+    "start": "nodemon --exec babel-node src/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "repository": {
+    "type": "git"
+  },
+  "author": "Julio Schilders",
+  "license": "ISC",
   "dependencies": {
-    "eris": "^0.7.2"
+    "@babel/plugin-proposal-class-properties": "^7.5.5",
+    "discord.js": "^11.5.1",
+    "ffmpeg-binaries": "^4.0.0",
+    "glob": "^7.1.4",
+    "node-fetch": "^2.6.0",
+    "node-html-parser": "^1.1.16",
+    "node-opus": "^0.3.2",
+    "ytdl-core": "^0.29.3"
   },
-  "engines": {
-    "node": "8.x"
+  "devDependencies": {
+    "@babel/cli": "^7.5.0",
+    "@babel/core": "^7.5.4",
+    "@babel/node": "^7.5.0",
+    "@babel/preset-env": "^7.5.4",
+    "babel-eslint": "^10.0.2",
+    "eslint": "^6.0.1",
+    "eslint-config-prettier": "^6.0.0",
+    "nodemon": "^1.19.1",
+    "prettier": "1.18.2"
+  },
+  "prettier": {
+    "trailingComma": "es5",
+    "tabWidth": 2,
+    "semi": true,
+    "singleQuote": true,
+    "bracketSpacing": false
   }
 }
