@@ -1,20 +1,25 @@
 {
   "name": "majo.exe",
   "version": "0.0.1",
-  "description": "",
-  "main": "index.js",
+  "description": "A simple discord bot",
+  "main": "node index.js",
   "scripts": {
-    "start": "node index.js",
-    "dev": "nodemon index.js"
+    "start": "node bot.js"
   },
-  "keywords": [],
-  "author": "",
-  "license": "MIT",
   "dependencies": {
     "discord.js": "^11.4.2",
-    "dotenv": "^7.0.0"
+    "express": "^4.16.4"
   },
-  "devDependencies": {
-    "nodemon": "^1.18.11"
-  }
+  "engines": {
+    "node": "8.x"
+  },
+  "repository": {
+    "url": "https://github.com/igorkowalczyk/majobot"
+  },
+  "license": "MIT",
+  "keywords": [
+    "node",
+    "discord",
+    "bot"
+  ]
 }
