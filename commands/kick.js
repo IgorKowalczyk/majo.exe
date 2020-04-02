@@ -14,5 +14,5 @@ module.exports = message => {
   return member
     .kick()
     .then(() => message.reply(`${member.user.tag} was kicked.`))
-    .catch(error => message.reply(`Sorry, an error occured.`));
+    .catch(error => message.reply(`Sorry, an error occured. Try again later. Probably the cause of the error: Insufficient authority.`));
 };
