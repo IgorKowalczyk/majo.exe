@@ -1,14 +1,27 @@
 {
   "name": "majo.exe",
   "version": "0.0.1",
-  "description": "A simple discord bot",
+  "description": "Discord Bot",
   "main": "node index.js",
   "scripts": {
-    "start": "node bot.js"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
   },
   "dependencies": {
-    "discord.js": "^11.4.2",
-    "express": "^4.16.4"
+    "dateformat": "^3.0.3",
+    "discord.js": "^11.3.2",
+    "express": "^4.16.3",
+    "jimp": "^0.2.28",
+    "moment-duration-format": "^2.2.2",
+    "moment-timezone": "^0.5.21",
+    "node-time": "^0.1.0",
+    "opusscript": "^0.0.6",
+    "request": "^2.87.0",
+    "roblox-js": "^4.0.2",
+    "snekfetch": "^4.0.4",
+    "urban": "^0.3.1",
+    "to-zalgo": "^1.0.1",
+    "flip-text": "^1.1.0"
   },
   "engines": {
     "node": "8.x"
@@ -19,7 +32,7 @@
   "license": "MIT",
   "keywords": [
     "node",
-    "discord",
+    "javascript",
     "bot"
   ]
 }
