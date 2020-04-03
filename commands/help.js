@@ -9,12 +9,12 @@ module.exports.run = async (client, message, args) => {
         try {
           var file = require(`./${command}`);
          } catch (err) {
-			 message.delete();
     message.channel.send({embed: {
                 color: 3447003,
                 title: "That command does not exist, Take a look at !majo help!"
-            }}).then(msg => msg.delete(2000));
+            }})
   }
+              
         let newembed = new Discord.RichEmbed()
           .setAuthor(`Help - ${file.help.type} Command`, message.guild.iconURL)
           .setColor("3498db")

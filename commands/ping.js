@@ -8,6 +8,8 @@ await message.channel.send({embed: {
     }});
 }
 
+
+
 module.exports.help = {
     name: "ping",
     description: "Gets a ping",
