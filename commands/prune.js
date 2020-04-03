@@ -6,7 +6,6 @@ module.exports.run = async (client, message, args) => {
         const deleteCount = await parseInt(args[0]);
 
         if(!deleteCount || deleteCount < 1 || deleteCount > 100) {
-			message.delete();
             return await message.channel.send({embed: {
                 color: 3447003,
                 title: "Provide a number between 1 and 100!"

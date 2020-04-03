@@ -13,7 +13,6 @@ module.exports.run = async (client, message, args) => {
             if (saymessage.length >= 1) {
                 await message.channel.send(saymessage);
             } else {
-				message.delete();
                 await message.channel.send({embed: {
                     color: 3447003,
                     title: "You need to enter a Message!"

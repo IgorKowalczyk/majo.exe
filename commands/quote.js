@@ -4,21 +4,10 @@ const Moment = require("moment-timezone");
 module.exports.run = async (client, message, args) => {
   let messageid = args[0];
   
-  if (!messageid || messageid.length < 0)
-	  message.delete();
-  	        return message.channel.send({embed: {
-            color: 3447003,
-            title: "Specify a message id!"
-        }}).then(msg => msg.delete(2300));
+  if (!messageid || messageid.length < 0) return message.channel.send("Specify a message id!").then(msg => msg.delete(2300));
   
-	 
   message.channel.fetchMessages().then((messages) => {
-    if (!messages.has(messageid)) 
-		message.delete();
-	        return message.channel.send({embed: {
-            color: 3447003,
-            title: "Specify a valid message id!"
-        }}).then(msg => msg.delete(2300));
+    if (!messages.has(messageid)) return message.channel.send("Specify a valid message id!").then(msg => msg.delete(2300));
     
     if (messages.has(messageid)) {
       let msg = messages.get(messageid);

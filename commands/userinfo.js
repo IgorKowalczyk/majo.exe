@@ -13,7 +13,6 @@ module.exports.run = async (client, message, args) => {
     let member = await message.mentions.members.first();
 
     if (!member) {
-		message.delete();
         return await message.channel.send({embed: {
             color: 3447003,
             title: "Mention a valid member!"

@@ -7,13 +7,11 @@ module.exports.run = async (client, message, args) => {
 
         message.delete();
         if (!mentioned)
-			message.delete();
             return await message.channel.send({embed: {
                 color: 3447003,
                 title: "Mention a valid member!"
             }}).then(msg => msg.delete(2000));
         if (!mentioned.bannable)
-			message.delete();;
             return await message.channel.send({embed: {
                 color: 3447003,
                 title: "You cannot ban this member!"

@@ -8,8 +8,18 @@ module.exports.run = async (client, message, args) => {
   args.forEach((arg) => {
       flipped.push(flip(arg));
   });
-  
-  await message.channel.send(flipped.join(" "));
+   if (!message) {
+        message.delete();
+        return message.channel.send({embed: {
+            color: 3447003,
+            title: "Mention a valid member of this server!"
+        }}).then(msg => msg.delete(2132));
+    }
+
+    await message.channel.send({embed: {
+        color: 3447003,
+        title: "Flipped text: " + flipped.join(" "),
+    }});
 }
 
 module.exports.help = {

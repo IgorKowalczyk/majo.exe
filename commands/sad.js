@@ -20,19 +20,12 @@ module.exports.run = async (client, message, args) => {
       });              
     }).catch(function (err) {
         // handle an exception
-		    message.delete();
-              await message.channel.send({embed: {
-                    color: 3447003,
-                    title: "Invaild image!"
-                }}).then(msg => msg.delete(2000));
-            }   
+        message.channel.send("Invalid Image!").then(msg => msg.delete(2300));
+        console.error("Error: " + err);
+    });    
   } else {
     message.delete();
-    await message.channel.send({embed: {
-                    color: 3447003,
-                    title: "Enter a image!"
-                }}).then(msg => msg.delete(2000));
-            }
+    await message.channel.send("Enter a image!").then(msg => msg.delete(2300));
   }
 }
 
