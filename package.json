@@ -1,7 +1,7 @@
 {
   "name": "majo.exe",
   "version": "0.0.1",
-  "description": "Discord Bot",
+  "description": "A simple Discord bot",
   "main": "node index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -17,7 +17,6 @@
     "node-time": "^0.1.0",
     "opusscript": "^0.0.6",
     "request": "^2.87.0",
-    "roblox-js": "^4.0.2",
     "snekfetch": "^4.0.4",
     "urban": "^0.3.1",
     "to-zalgo": "^1.0.1",
@@ -27,7 +26,7 @@
     "node": "8.x"
   },
   "repository": {
-    "url": "https://github.com/igorkowalczyk/majobot"
+    "url": "https://gihub.com/igorkowalczyk/majobot"
   },
   "license": "MIT",
   "keywords": [

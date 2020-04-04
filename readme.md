@@ -1,13 +1,10 @@
-﻿# Discord "Majo.exe" bot.
+Linkster
+=================
+<img src="linkster.png" width="200" align="left"> 
+<b>Linkster</b> is a bot written in Discord.js, it consists of fun, moderative and utility commands. Anyways, this bot was made when I was learning how to develop bots.
 
-## Getting started
+Made by [bluesn0w](https://twitter.com/bsn0w_)
+-------------------
 
-1. Clone this repository
-2. Run `npm install`
-3. Grab a token on [Discord's developer portal](https://discordapp.com/developers/applications)
-4. Create a `.env` file and add a `BOT_TOKEN` environmental variable whose value is the token above and add a `PREFIX` - this is your bot prefix (The `.env` file was private).
-5. Run `npm run dev`
+\ ゜o゜)ノ
 
-## Prefix
-
-- `!majo {command - eg. help}` is default prefix of the bot.

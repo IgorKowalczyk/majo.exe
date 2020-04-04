@@ -1,7 +1,7 @@
 const Discord = module.require("discord.js");
 
 module.exports.run = async (client, message, args) => {
-  message.author.send("https://discordapp.com/oauth2/authorize?client_id=462338332911730688&scope=bot&permissions=2146958591");
+  message.author.send("https://discordapp.com/oauth2/authorize?client_id=681536055572430918&scope=bot&permissions=2146958591");
 message.channel.send({embed: {
             color: 3447003,
             title: "Check a priv message!"

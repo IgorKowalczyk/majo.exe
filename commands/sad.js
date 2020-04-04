@@ -14,18 +14,23 @@ module.exports.run = async (client, message, args) => {
           message.channel.send({file: outputfile}).then(function () {
             // delete file
             fs.unlink(outputfile);
-            console.log("SUCCESS: " + message.author.username);
           });
         });          
       });              
     }).catch(function (err) {
         // handle an exception
-        message.channel.send("Invalid Image!").then(msg => msg.delete(2300));
-        console.error("Error: " + err);
+              message.delete();
+        return message.channel.send({embed: {
+            color: 3447003,
+            title: "Invaild image!"
+        }}).then(msg => msg.delete(2132));
     });    
   } else {
-    message.delete();
-    await message.channel.send("Enter a image!").then(msg => msg.delete(2300));
+          message.delete();
+        return message.channel.send({embed: {
+            color: 3447003,
+            title: "Enter a image!"
+        }}).then(msg => msg.delete(2132));
   }
 }
 
