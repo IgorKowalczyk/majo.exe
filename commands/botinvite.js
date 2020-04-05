@@ -11,7 +11,7 @@ module.exports.run = async (client, message, args) => {
   }
 };
 
-message.author.send("e", {embed2});
+message.author.send("", {embed2});
 
 message.channel.send({embed: {
             color: 3447003,
