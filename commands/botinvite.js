@@ -1,7 +1,7 @@
 const Discord = module.require("discord.js");
 
 module.exports.run = async (client, message, args) => {
-  let embed2 = {
+  const embed2 = {
   "title": "Majo.exe",
   "description": "Invite the bot here: [invite link](https://discordapp.com/oauth2/authorize?client_id=681536055572430918&scope=bot&permissions=2146958591) \n Check website: [majobot](https://igorkowalczyk.github.io)\n Join to official server [PL]: [Join](https://discord.gg/f4KtqNB)",
   "url": "https://igorkowalczyk.github.io/majobot",
