@@ -127,10 +127,11 @@ client.on("ready", () => {
   console.log(`Connected! Logged in as ${client.user.tag}!`);
 });
  
- 
+/*
 client.on('guildMemberAdd', member => {
 var role = member.guild.roles.find('<3');
 member.addRole(role)
 });
+*/
 
 client.login(discord_token);
