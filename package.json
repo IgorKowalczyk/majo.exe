@@ -21,6 +21,7 @@
     "urban": "^0.3.1",
     "to-zalgo": "^1.0.1",
     "flip-text": "^1.1.0"
+    "ytdl-core": "^2.0.1"
   },
   "engines": {
     "node": "8.x"
