@@ -126,35 +126,11 @@ client.on("guildDelete", guild => {
 client.on("ready", () => {
   console.log(`Connected! Logged in as ${client.user.tag}!`);
 });
-  
-  
-  
-  
-  
-  client.on('ready', () => {
-    let myGuild = client.guilds.get('666599184844980224');
-    let memberCount = myGuild.memberCount;
-    let memberCountChannel = myGuild.channels.get('696397982039408660');
-    memberCountChannel.setName('Members:' + memberCount)
-    .then(result => console.log(result))
-    .catch(error => console.log(error));
-});
-
+ 
+ 
 client.on('guildMemberAdd', member => {
-    let myGuild = client.guilds.get('666599184844980224');
-    let memberCount = myGuild.memberCount;
-    let memberCountChannel = myGuild.channels.get('696397982039408660');
-    memberCountChannel.setName('Members:' + memberCount)
-    .then(result => console.log(result))
-    .catch(error => console.log(error));
+var role = member.guild.roles.find('<3');
+member.addRole(role)
 });
 
-client.on('guildMemberRemove', member => {
-    let myGuild = client.guilds.get('666599184844980224');
-    let memberCount = myGuild.memberCount;
-    let memberCountChannel = myGuild.channels.get('696397982039408660');
-    memberCountChannel.setName('Members:' + memberCount)
-    .then(result => console.log(result))
-    .catch(error => console.log(error));
-});
 client.login(discord_token);
