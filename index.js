@@ -9,9 +9,6 @@ const discord_token = process.env.TOKEN;
 const prefix = process.env.PREFIX;
 
 const newUsers = new Discord.Collection();
-
-client.commands = new Discord.Collection();
-
 var botMembers = 0;
 
 app.get("/", (request, response) => {
@@ -129,5 +126,35 @@ client.on("guildDelete", guild => {
 client.on("ready", () => {
   console.log(`Connected! Logged in as ${client.user.tag}!`);
 });
+  
+  
+  
+  
+  
+  client.on('ready', () => {
+    let myGuild = client.guilds.get('666599184844980224');
+    let memberCount = myGuild.memberCount;
+    let memberCountChannel = myGuild.channels.get('696397982039408660');
+    memberCountChannel.setName('Members:' + memberCount)
+    .then(result => console.log(result))
+    .catch(error => console.log(error));
+});
 
+client.on('guildMemberAdd', member => {
+    let myGuild = client.guilds.get('666599184844980224');
+    let memberCount = myGuild.memberCount;
+    let memberCountChannel = myGuild.channels.get('696397982039408660');
+    memberCountChannel.setName('Members:' + memberCount)
+    .then(result => console.log(result))
+    .catch(error => console.log(error));
+});
+
+client.on('guildMemberRemove', member => {
+    let myGuild = client.guilds.get('666599184844980224');
+    let memberCount = myGuild.memberCount;
+    let memberCountChannel = myGuild.channels.get('696397982039408660');
+    memberCountChannel.setName('Members:' + memberCount)
+    .then(result => console.log(result))
+    .catch(error => console.log(error));
+});
 client.login(discord_token);
