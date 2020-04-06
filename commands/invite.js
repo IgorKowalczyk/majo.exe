@@ -20,8 +20,8 @@ message.channel.send({embed: {
 }
 
 module.exports.help = {
-    name: "botinvite",
+    name: "invite",
     description: "Sends you the bot invite for Majo.exe",
-    usage: "botinvite",
+    usage: "invite",
     type: "General"  
 }
