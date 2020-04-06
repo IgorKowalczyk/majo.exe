@@ -110,7 +110,6 @@ client.on("message", message => {
   }
 });
 
-
 client.on("guildCreate", guild => {
   // This event triggers when the bot joins a guild.
   console.log(`New guild joined: ${guild.name} (id: ${guild.id}). This guild has ${guild.memberCount} members!`);
@@ -126,12 +125,5 @@ client.on("guildDelete", guild => {
 client.on("ready", () => {
   console.log(`Connected! Logged in as ${client.user.tag}!`);
 });
- 
-/*
-client.on('guildMemberAdd', member => {
-var role = member.guild.roles.find('<3');
-member.addRole(role)
-});
-*/
 
 client.login(discord_token);
