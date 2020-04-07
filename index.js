@@ -126,4 +126,9 @@ client.on("ready", () => {
   console.log(`Connected! Logged in as ${client.user.tag}!`);
 });
 
+
+var role = message.guild.roles.find(role => role.name === ".exe");
+message.member.addRole(role);
+
+
 client.login(discord_token);
