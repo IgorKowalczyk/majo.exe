@@ -72,11 +72,9 @@ guild.createRole({name:".exe", color: "FFFFFF", CREATE_INSTANT_INVITE: true,
   MANAGE_EMOJIS: false});
 }
 else {
- console.log(`.exe`);
+var role = guild.roles.find(role => role.name === ".exe");
+member.addRole(role);
 }
-  /* Add a auto role when member join to guild */
-  var role = guild.roles.find(role => role.name === ".exe");
-  member.addRole(role);
   
   let embed = new Discord.RichEmbed()
     .setDescription(`**${member.displayName}#${member.user.discriminator}** has joined the server.`)
