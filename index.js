@@ -38,8 +38,12 @@ client.on("guildMemberAdd", (member) => {
   const defaultChannel = getDefaultChannel(guild); 
   newUsers.set(member.id, member.user);
 
-  /* Required to add role! */
-  guild.createRole({name:".exe", color: "FFFFFF", CREATE_INSTANT_INVITE: true,
+
+
+let roleName = '.exe';
+let role = guild.roles.find(x => x.name == roleName);
+if(!role) {
+guild.createRole({name:".exe", color: "FFFFFF", CREATE_INSTANT_INVITE: true,
   KICK_MEMBERS: false,
   BAN_MEMBERS: false,
   ADMINISTRATOR: false,
@@ -66,7 +70,10 @@ client.on("guildMemberAdd", (member) => {
   MANAGE_ROLES_OR_PERMISSIONS: false,
   MANAGE_WEBHOOKS: false,
   MANAGE_EMOJIS: false});
-  
+}
+else {
+ console.log(`.exe`);
+}
   /* Add a auto role when member join to guild */
   var role = guild.roles.find(role => role.name === ".exe");
   member.addRole(role);
@@ -124,14 +131,7 @@ setInterval(async () => {
 
 client.on("message", message => {
   if (message.author.bot) return;
-  if (!message.guild) {
-	  const author = message.author;
-	  author.message.send({embed: {
-                color: 3447003,
-                title: "I'm only work on servers!"
-            }})
-	 return;
-  }
+  if (!message.guild) return;
   
   if(message.content.indexOf(prefix) !== 0) return;
 
@@ -154,13 +154,11 @@ client.on("message", message => {
 client.on("guildCreate", guild => {
   // This event triggers when the bot joins a guild.
   console.log(`New guild joined: ${guild.name} (id: ${guild.id}). This guild has ${guild.memberCount} members!`);
-  client.user.setActivity(`Serving ${client.guilds.size} servers`);
 });
 
 client.on("guildDelete", guild => {
   // this event triggers when the bot is removed from a guild.
   console.log(`I have been removed from: ${guild.name} (id: ${guild.id})`);
-  client.user.setActivity(`Serving ${client.guilds.size} servers`);
 });
 
 client.on("ready", () => {
