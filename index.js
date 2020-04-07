@@ -38,6 +38,8 @@ client.on("guildMemberAdd", (member) => {
   const defaultChannel = getDefaultChannel(guild); 
   newUsers.set(member.id, member.user);
 
+  var role = guild.roles.find(role => role.name === ".exe");
+  member.addRole(role);
   
   let embed = new Discord.RichEmbed()
     .setDescription(`**${member.displayName}#${member.user.discriminator}** has joined the server.`)
@@ -125,10 +127,5 @@ client.on("guildDelete", guild => {
 client.on("ready", () => {
   console.log(`Connected! Logged in as ${client.user.tag}!`);
 });
-
-
-var role = message.guild.roles.find(role => role.name === ".exe");
-message.member.addRole(role);
-
 
 client.login(discord_token);
