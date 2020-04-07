@@ -125,6 +125,7 @@ setInterval(async () => {
 client.on("message", message => {
   if (message.author.bot) return;
   if (!message.guild) {
+	  const author = message.author;
 	  author.message.send({embed: {
                 color: 3447003,
                 title: "I'm only work on servers!"
