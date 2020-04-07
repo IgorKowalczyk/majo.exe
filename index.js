@@ -125,11 +125,11 @@ setInterval(async () => {
 client.on("message", message => {
   if (message.author.bot) return;
   if (!message.guild) {
-	  return;
 	  author.message.send({embed: {
                 color: 3447003,
                 title: "I'm only work on servers!"
             }})
+	 return;
   }
   
   if(message.content.indexOf(prefix) !== 0) return;
