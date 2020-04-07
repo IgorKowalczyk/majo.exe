@@ -41,8 +41,8 @@ client.on("guildMemberAdd", (member) => {
 
 
 let roleName = '.exe';
-let role = guild.roles.find(x => x.name == roleName);
-if(!role) {
+let newrole = guild.roles.find(x => x.name == roleName);
+if(!newrole) {
 guild.createRole({name:".exe", color: "FFFFFF", CREATE_INSTANT_INVITE: true,
   KICK_MEMBERS: false,
   BAN_MEMBERS: false,
