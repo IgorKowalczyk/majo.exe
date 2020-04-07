@@ -124,7 +124,14 @@ setInterval(async () => {
 
 client.on("message", message => {
   if (message.author.bot) return;
-  if (!message.guild) return;
+  if (!message.guild) {
+	  return;
+	  author.message.send({embed: {
+                color: 3447003,
+                title: "I'm only work on servers!"
+            }})
+  }
+  
   if(message.content.indexOf(prefix) !== 0) return;
 
   // This is the best way to define args. Trust me.
