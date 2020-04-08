@@ -2,10 +2,6 @@ const Discord = module.require("discord.js");
 
 module.exports.run = async (client, message, args) => {
 
-const member = message.member;
-const msg = message.content.toLowerCase();
-const args = message.content.split(' ').slice(1).join(' ');
-
 var codeblock = '```';
     for (let i = 0; i < guilds[message.guild.id].queueNames.length; i++) {
       let temp = (i + 1) + '. ' + guilds[message.guild.id].queueNames[i] +
