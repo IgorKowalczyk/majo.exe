@@ -19,7 +19,7 @@ module.exports.run = async (client, message, args) => {
           .setAuthor(`Help - ${file.help.type} Command`, message.guild.iconURL)
           .setColor("3498db")
           .setImage(client.AvatarURL)
-          .setFooter(`Bot created by Igor Kowalczyk • ${commandnum} Commands`, "https://cdn.discordapp.com/avatars/544164729354977282/c39c2d7b39e5d6d5d13a8c2bdb010373.png?size=2048")
+          .setFooter(`Bot created by Igor Kowalczyk`, "https://cdn.discordapp.com/avatars/544164729354977282/c39c2d7b39e5d6d5d13a8c2bdb010373.png?size=2048")
           .addField(file.help.usage, file.help.description)
         
         message.channel.send(newembed);  
