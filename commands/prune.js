@@ -27,7 +27,13 @@ module.exports.run = async (client, message, args) => {
                 }})
                 .then(msg => msg.delete(1500));
         })  
-    }
+    } else {
+	message.delete();
+	message.channel.send({embed: {
+                    color: 3447003,
+                    title: "You don't have premission to do that!"
+                }}).then(msg => msg.delete(1899));
+	}
 }
 
 module.exports.help = {
