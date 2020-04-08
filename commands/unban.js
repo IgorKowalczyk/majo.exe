@@ -22,9 +22,9 @@ exports.run = (client, message, args) => {
                     color: 3447003,
                     title: "You must supply a User Resolvable, such as a user id."
                 }}).then(msg => msg.delete(2000));
-	}
-
+	} else {
     message.guild.unban(user);
+	}
   }
 
 exports.help = {
