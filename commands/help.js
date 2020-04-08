@@ -47,6 +47,7 @@ module.exports.run = async (client, message, args) => {
       if (type == "Moderation") Moderation.push([namelist, desclist, usage]);
       if (type == "Fun") Fun.push([namelist, desclist, usage]);
       if (type == "Utility") Utility.push([namelist, desclist, usage]);
+	  if (type == "Music") Music.push([namelist, desclist, usage]);
 
       if (namelist == "userinfo") {
         done = true
@@ -64,6 +65,7 @@ module.exports.run = async (client, message, args) => {
           .addField("Moderation", Moderation.map((roles => roles[0])).join(", ") , true)
           .addField("Fun", Fun.map((roles => roles[0])).join(", ") , true)
           .addField("Utility", Utility.map((roles => roles[0])).join(", ") , true)
+		  .addField("Music", Music.map((roles => roles[0])).join(", ") , true)
           .addField("Command Information", "!majo help <command>")
         
         message.channel.send(embed)
