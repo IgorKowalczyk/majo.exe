@@ -9,7 +9,7 @@ module.exports.run = async (client, message, args) => {
             return await message.channel.send({embed: {
                 color: 3447003,
                 title: "Provide a number between 1 and 100!"
-            }}).then(msg => msg.delete(1899));
+            }}).then(msg => msg.delete(2000));
         }
        
         // So we get our messages, and delete them. Simple enough, right?
@@ -19,20 +19,20 @@ module.exports.run = async (client, message, args) => {
                 message.channel.send({embed: {
                     color: 3447003,
                     title: deleteCount + " messages pruned! :white_check_mark:"
-                }}).then(msg => msg.delete(1899));
+                }}).then(msg => msg.delete(2000));
             }, function(err){
                 message.channel.send({embed: {
                     color: 3447003,
                     title: "ERROR: " + err
                 }})
-                .then(msg => msg.delete(1500));
+                .then(msg => msg.delete(2000));
         })  
     } else {
 	message.delete();
 	message.channel.send({embed: {
                     color: 3447003,
-                    title: "You don't have premission to do that!"
-                }}).then(msg => msg.delete(1899));
+                    title: "You don't have premission to prune messages!"
+                }}).then(msg => msg.delete(2000));
 	}
 }
 
