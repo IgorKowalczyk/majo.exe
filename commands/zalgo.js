@@ -12,5 +12,6 @@ module.exports.run = async (client, message, args) => {
 module.exports.help = {
     name: "zalgo",
     description: "Generate zalgo text",
-    usage: "zalgo <text>"
+    usage: "zalgo <text>",
+	type: "Fun"
 }
