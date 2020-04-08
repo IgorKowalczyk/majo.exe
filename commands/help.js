@@ -33,6 +33,7 @@ module.exports.run = async (client, message, args) => {
   var Utility= [];
   
   fs.readdir("./commands/", (err, files) => {
+	if (err) return;
     commandnum = files.length;
     
     files.forEach(file => {
@@ -66,7 +67,7 @@ module.exports.run = async (client, message, args) => {
           .addField("Command Information", "!majo help <command>")
         
         message.channel.send(embed)
-      }
+      } else if (err) return;
     }
   });
 }
