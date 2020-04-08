@@ -22,8 +22,6 @@ const prefix = process.env.PREFIX;
 const newUsers = new Discord.Collection();
 var botMembers = 0;
 
-const guild = message.guild;
-
 app.get("/", (request, response) => {
   response.sendStatus(200);
 });
