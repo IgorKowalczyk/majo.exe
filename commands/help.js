@@ -33,7 +33,6 @@ module.exports.run = async (client, message, args) => {
   var Utility= [];
   
   fs.readdir("./commands/", (err, files) => {
-    if (err) return console.error(err);
     commandnum = files.length;
     
     files.forEach(file => {
