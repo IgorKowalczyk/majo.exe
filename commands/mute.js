@@ -1,22 +1,10 @@
 const Discord = module.require("discord.js");
 
 module.exports.run = async (client, message, args) => {
-    if (message.member.hasPermission("MANAGE_MESSAGES")) {
-        const member = await message.mentions.members.first() || message.guild.members.get(args[0]);
-
-        if(member) {
-          if (!message.guild.roles.find("name", "Muted")) {
-            let role;
-            try {
-              role = await message.guild.createRole({
-                name: "Muted",
-                color: "#ff0000",
-                permissions: []              
-              });
-
-              message.guild.channels.forEach(async (channel, id) => {
+	
+	              message.guild.channels.forEach(async (channel, id) => {
                 await channel.overwritePermissions(role, {
-                  CREATE_INSTANT_INVITE: false,
+                  CREATE_INSTANT_INVITE: true,
                   KICK_MEMBERS: false,
                   BAN_MEMBERS: false,
                   ADMINISTRATOR: false,
@@ -45,9 +33,21 @@ module.exports.run = async (client, message, args) => {
                   MANAGE_EMOJIS: false
                 });
               });
+			  
+    if (message.member.hasPermission("MANAGE_MESSAGES")) {
+        const member = await message.mentions.members.first() || message.guild.members.get(args[0]);
+
+        if(member) {
+          if (!message.guild.roles.find("name", "Muted")) {
+            let role;
+            try {
+              role = await message.guild.createRole({
+                name: "Muted",
+                color: "#9c9898",
+                permissions: []              
+              });
               
-            } catch (err) {
-              console.error(err);  
+            } catch (err) {;  
             }
           } else {
             var role = message.guild.roles.find("name", "Muted");
