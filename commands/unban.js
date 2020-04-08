@@ -14,8 +14,7 @@ exports.run = (client, message, args) => {
                     color: 3447003,
                     title: "You must supply a reason for the unban."
                 }}).then(msg => msg.delete(2000));
-	}
-    if (!user) {
+	} else if (!user) {
 		message.delete();
 		message.channel.send({embed: {
                     color: 3447003,
