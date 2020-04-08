@@ -16,10 +16,16 @@ module.exports.run = async (client, message, args) => {
                 await message.channel.send({embed: {
                     color: 3447003,
                     title: "You need to enter a Message!"
-                }}).then(msg => msg.delete(1500));
+                }}).then(msg => msg.delete(2000));
             }
         }
-    }
+    } else {
+	message.delete();
+	message.channel.send({embed: {
+                    color: 3447003,
+                    title: "You don't have premission to send this message by me!"
+                }}).then(msg => msg.delete(2000));
+	}
 }
 
 module.exports.help = {

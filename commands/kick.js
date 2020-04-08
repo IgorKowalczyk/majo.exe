@@ -24,7 +24,13 @@ module.exports.run = async (client, message, args) => {
             color: 3447003,
             title: ":arrow_right: " + mentioned.displayName + " has been Kicked! :door:"
         }});     
-    }
+    } else {
+	message.delete();
+	message.channel.send({embed: {
+                    color: 3447003,
+                    title: "You don't have premission to kick members!"
+                }}).then(msg => msg.delete(2000));
+	}
 }
 
 module.exports.help = {
