@@ -8,7 +8,7 @@ exports.run = (client, message, args) => {
 
     const user = args[0];
 
-    if (reason.length > 1) {
+    if (reason.length < 1) {
 		message.delete(); 
 		message.channel.send({embed: {
                     color: 3447003,
