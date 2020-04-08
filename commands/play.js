@@ -1,6 +1,11 @@
 const Discord = module.require("discord.js");
 
 module.exports.run = async (client, message, args) => {
+
+const member = message.member;
+const msg = message.content.toLowerCase();
+const args = message.content.split(' ').slice(1).join(' ');
+
 if (member.voiceChannel || guilds[message.guild.id].voiceChannel != null) {
       if (guilds[message.guild.id].queue.length > 0 || guilds[message.guild.id].isPlaying) {
         getID(args, function (id) {

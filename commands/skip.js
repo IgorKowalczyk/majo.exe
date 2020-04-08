@@ -1,6 +1,11 @@
 const Discord = module.require("discord.js");
 
 module.exports.run = async (client, message, args) => {
+	
+const member = message.member;
+const msg = message.content.toLowerCase();
+const args = message.content.split(' ').slice(1).join(' ');
+
 if (guilds[message.guild.id].skippers.indexOf(message.author.id) === -1) {
       guilds[message.guild.id].skippers.push(message.author.id);
       guilds[message.guild.id].skipReq++;

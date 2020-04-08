@@ -22,10 +22,6 @@ const prefix = process.env.PREFIX;
 const newUsers = new Discord.Collection();
 var botMembers = 0;
 
-const member = message.member;
-const msg = message.content.toLowerCase();
-const args = message.content.split(' ').slice(1).join(' ');
-
 app.get("/", (request, response) => {
   response.sendStatus(200);
 });

@@ -1,6 +1,11 @@
 const Discord = module.require("discord.js");
 
 module.exports.run = async (client, message, args) => {
+
+const member = message.member;
+const msg = message.content.toLowerCase();
+const args = message.content.split(' ').slice(1).join(' ');
+
 let defaultTrackCount = 30;
     argArr = args.split(' ');
     let includeUsers = argArr.some(val => val != null && val.toLowerCase().indexOf('user') >= 0);
