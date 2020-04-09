@@ -4,5 +4,6 @@
     "github": "igorkowalczyk",
     "ownertag": "Majonez.exe#5271",
     "owner": "Igor Kowalczyk",
-    "node": "8.x"
+    "node": "8.x",
+    "version": "v0.0.1"
 }

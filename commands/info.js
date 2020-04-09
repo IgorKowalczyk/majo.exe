@@ -1,4 +1,3 @@
-const config = require('packange.json');
 const cnf = require('config.json');
 const Discord = require('discord.js');
 
@@ -11,7 +10,7 @@ let embed = new Discord.RichEmbed()
 .setDescription(`My prefix is: \`${prefix}\`\n`)
 .setThumbnail(client.user.displayAvatarURL)
 .addField('Developer', `<@${cnf.owner}>`, true)
-.addField('Bot Version', `${config.version}`, true)
+.addField('Bot Version', `${cnf.version}`, true)
 .addField('❯ Node', `${cnf.node}`, true)
 .addField('❯ Guild Count', `${client.guilds.size}`, true)
 .addField('❯ User Count', `${client.users.size}`, true)
