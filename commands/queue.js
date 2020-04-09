@@ -1,6 +1,6 @@
 const Discord = module.require("discord.js");
 
-module.exports.run = async execute(message) {
+module.exports.run = async (message) {
     const serverQueue = message.client.queue.get(message.guild.id);
     if (!serverQueue) return message.reply("There is nothing playing.").catch(console.error);
     return message

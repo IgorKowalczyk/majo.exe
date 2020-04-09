@@ -4,7 +4,7 @@ const YouTubeAPI = require("simple-youtube-api");
 const youtube = new YouTubeAPI(YOUTUBE_API_KEY);
 const Discord = module.require("discord.js");
 
-module.exports.run = async execute(message, args) {
+module.exports.run = async (message, args) {
     const { channel } = message.member.voice;
 
     if (!args.length)

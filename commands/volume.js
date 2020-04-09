@@ -1,6 +1,6 @@
 const Discord = module.require("discord.js");
 
-module.exports.run = async execute(message, args) {
+module.exports.run = async (message, args) {
     const serverQueue = message.client.queue.get(message.guild.id);
 
     if (!message.member.voice.channel)

@@ -1,6 +1,6 @@
 const Discord = module.require("discord.js");
 
-module.exports.run = async execute(message, args) {
+module.exports.run = async (message, args) {
     if (!args.length) return message.reply("Usage: /remove <Queue Number>");
     const serverQueue = message.client.queue.get(message.guild.id);
     if (!serverQueue) return message.channel.send("There is no queue.").catch(console.error);
