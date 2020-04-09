@@ -1,5 +1,5 @@
-const config = require('/packange.json');
-const cnf = require('/config.json');
+const config = require('packange.json');
+const cnf = require('config.json');
 const Discord = require('discord.js');
 
 
