@@ -15,14 +15,12 @@
     "moment-duration-format": "^2.2.2",
     "moment-timezone": "^0.5.21",
     "node-time": "^0.1.0",
+    "opusscript": "^0.0.6",
     "request": "^2.87.0",
     "snekfetch": "^4.0.4",
+    "urban": "^0.3.1",
     "to-zalgo": "^1.0.1",
-    "flip-text": "^1.1.0",
-	"@discordjs/opus": "^0.1.0",
-    "simple-youtube-api": "^5.1.1",
-    "ytdl-core": "^2.0.0",
-    "ytdl-core-discord": "amishshah/ytdl-core-discord"
+    "flip-text": "^1.1.0"
   },
   "engines": {
     "node": "8.x"
