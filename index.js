@@ -1,12 +1,16 @@
 const Discord = require("discord.js");
 const client = new Discord.Client();
-const fs = require("fs");
+const { readdirSync, fs } = require("fs");
 const http = require('http');
 const express = require('express');
 const app = express();
+const { join } = require("path");
 
 const discord_token = process.env.TOKEN;
 const prefix = process.env.PREFIX;
+
+client.commands = new discord.Collection();
+client.queue = new Map();
 
 const newUsers = new Discord.Collection();
 var botMembers = 0;
