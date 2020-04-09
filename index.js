@@ -9,7 +9,7 @@ const { join } = require("path");
 const discord_token = process.env.TOKEN;
 const prefix = process.env.PREFIX;
 
-client.commands = new discord.Collection();
+client.commands = new Discord.Collection();
 client.queue = new Map();
 
 const newUsers = new Discord.Collection();
