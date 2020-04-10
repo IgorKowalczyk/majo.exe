@@ -1,4 +1,3 @@
-const cnf = require('../config.json');
 /*const { version, Discord } = require("discord.js");
 const moment = require("moment");
 require("moment-duration-format");
