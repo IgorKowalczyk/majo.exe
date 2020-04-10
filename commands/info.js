@@ -4,6 +4,7 @@ const Discord = require('discord.js');
 
 module.exports.run = async (client, message, args) => {
 // You can change this to whatever you want, i suggest editing it.
+const prefix = process.env.PREFIX;
 let embed = new Discord.RichEmbed()
 .setTitle(`${client.user.username} Information`)
 .setColor('#36393F')
