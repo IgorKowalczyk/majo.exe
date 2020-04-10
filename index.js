@@ -109,7 +109,7 @@ setInterval(async () => {
     const statuslist = [
       `${client.guilds.size} servers`,
       `${client.users.size} members`,
-      `!majo help`,
+      `${prefix} help`,
     ];
     const random = Math.floor(Math.random() * statuslist.length);
 
@@ -144,7 +144,7 @@ client.on("message", message => {
   } catch (err) {
     message.channel.send({embed: {
                 color: 3447003,
-                title: "That command does not exist, Take a look at !majo help!"
+                title: "That command does not exist, Take a look at ${prefix} help!"
             }})
   }
 });

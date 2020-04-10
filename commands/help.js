@@ -4,14 +4,15 @@ const fs = require("fs");
 module.exports.run = async (client, message, args) => {
   var command = args[0];
   var commandnum = 0;
-  
+  const prefix = process.env.PREFIX;
+
   if (command) {
         try {
           var file = require(`./${command}`);
          } catch (err) {
     message.channel.send({embed: {
                 color: 3447003,
-                title: "That command does not exist, Take a look at !majo help!"
+                title: "That command does not exist, Take a look at ${prefix} help!"
             }})
   }
               
