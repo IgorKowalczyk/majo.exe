@@ -14,6 +14,7 @@ module.exports.run = async (client, message, args) => {
                 color: 3447003,
                 title: "That command does not exist, Take a look at ${prefix} help!"
             }})
+			console.log(err);
   }
               
         let newembed = new Discord.RichEmbed()
