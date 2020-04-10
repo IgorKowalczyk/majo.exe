@@ -1,5 +1,6 @@
 const cnf = require('../config.json');
-const Discord = require('discord.js');
+const { version } = require("discord.js");
+const moment = require("moment");
 require("moment-duration-format");
 
 module.exports.run = async (client, message, args) => {
@@ -13,7 +14,8 @@ let embed = new Discord.RichEmbed()
 .setThumbnail(client.user.displayAvatarURL)
 .addField('• Developer', `${cnf.owner}`,)
 .addField('• Bot Version', `${cnf.version}`,)
-.addField('• Node', `${cnf.node}`,)
+.addField('• Node', `${process.version}`, {code: "asciidoc"}))
+.addField('• Discord', `v${version}`,)
 .addField('• Uptime', `${duration}`,)
 .addField('• Guild Count', `${client.guilds.size}`,)
 .addField('• User Count', `${client.users.size}`,)
@@ -30,32 +32,4 @@ module.exports.help = {
     usage: "info",
     type: "General"  
 }
-
-
-
-
-
-
-
-
-
-const { version } = require("discord.js");
-const moment = require("moment");
-require("moment-duration-format");
-
-exports.run = (client, message, args, level) => { // eslint-disable-line no-unused-vars
-  const duration = moment.duration(client.uptime).format(" D [days], H [hrs], m [mins], s [secs]");
-  message.channel.send(`= STATISTICS =
-• Mem Usage  :: ${(process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2)} MB
-• Uptime     :: ${duration}
-• Users      :: ${client.users.size.toLocaleString()}
-• Servers    :: ${client.guilds.size.toLocaleString()}
-• Channels   :: ${client.channels.size.toLocaleString()}
-• Discord.js :: v${version}
-• Node       :: ${process.version}`, {code: "asciidoc"});
-};
-
-
-
-
 
