@@ -4,9 +4,12 @@ const cnf = require('../config.json');
 module.exports.run = async (client, message, args) => {
 
 const embed = new Discord.RichEmbed()
-.setTitle("Invite the bot")
+.setTitle("Invite")
 .setColor(3447003)
-.setDescription("Invite the bot here: [invite link](https://discordapp.com/oauth2/authorize/?permissions=2146958847&scope=bot&client_id=${client.user.id})\n\n Check official [website](" + `${cnf.website}` + ")\n\n Check official [server](https://discord.gg/f4KtqNB)")
+.setDescription("Invite the bot")
+.addField("Invite ", "[Invite the bot here](https://discordapp.com/oauth2/authorize/?permissions=2146958847&scope=bot&client_id=" + `${client.user.id}`)
+.addField("Website ", "[Check the official webiste](https://igorkowalczyk.github.io/majobot)")
+.addField("Server ", "[Join official server](https://discord.gg/f4KtqNB)")
 .setFooter("Bot created by " + `${cnf.owner}`)
 .setTimestamp()
 message.author.send({embed})
