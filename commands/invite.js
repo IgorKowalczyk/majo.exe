@@ -3,7 +3,6 @@ const cnf = require('../config.json');
 
 module.exports.run = async (client, message, args) => {
 const Embed = new Discord.RichEmbed()
-	.setColor('3447003')
 	.setTitle('Invite the bot')
 	.setURL('https://discordapp.com/oauth2/authorize?client_id=681536055572430918&scope=bot&permissions=2146958591')
 	.addField('Invite the bot [here](https://discordapp.com/oauth2/authorize?client_id=681536055572430918&scope=bot&permissions=2146958591)',)
