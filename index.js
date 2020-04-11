@@ -144,7 +144,7 @@ client.on("message", message => {
   } catch (err) {
     message.channel.send({embed: {
                 color: 3447003,
-                title: "That command does not exist, Take a look at ${prefix} help!"
+                title: "That command does not exist, Take a look at" + ${prefix} + "help!"
             }})
   }
 });
