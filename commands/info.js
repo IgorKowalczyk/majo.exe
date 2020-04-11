@@ -24,7 +24,7 @@ let embed = new Discord.RichEmbed()
 
 
 const cnf = require('../config.json');
-const { version, Discord } = require("discord.js");
+const Discord } = require("discord.js");
 const moment = require("moment");
 require("moment-duration-format");
 
@@ -37,7 +37,7 @@ let embed = new Discord.RichEmbed()
 .setDescription(`My prefix is: \`${prefix}\`\n`)
 .setThumbnail(client.user.displayAvatarURL)
 .addField('❯ Developer', `${cnf.owner}`, true)
-.addField('❯ Discord Version', `v${version}`, true)
+/*.addField('❯ Discord Version', `v${version}`, true)*/
 .addField('❯ Node', `(Test)`, true)
 .addField('❯ Uptime', `${duration}`, true)
 .addField('❯ Guild Count', `${client.guilds.size}`, true)
