@@ -15,11 +15,6 @@ app.get("/", (request, response) => {
   response.sendStatus(200);
 });
 
-app.listen(process.env.PORT);
-setInterval(() => {
-  http.get(`http://${process.env.PROJECT_DOMAIN}.glitch.me/`);
-}, 280000);
-
 function getDefaultChannel(guild) { 
   if (guild.systemChannelID) 
     if (guild.channels.get(guild.systemChannelID).permissionsFor(guild.client.user).has("SEND_MESSAGES")) return guild.channels.get(guild.systemChannelID)  
