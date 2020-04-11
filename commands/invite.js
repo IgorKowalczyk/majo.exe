@@ -1,7 +1,7 @@
 const Discord = module.require("discord.js");
 
 module.exports.run = async (client, message, args) => {
-  const embed = {
+  const Embed = {
   "title": "Majo.exe",
   "description": "Invite the bot here: [invite link](https://discordapp.com/oauth2/authorize/?permissions=2146958847&scope=bot&client_id=${client.user.id})",
   "url": "https://igorkowalczyk.github.io/majobot",
@@ -11,7 +11,7 @@ module.exports.run = async (client, message, args) => {
   }
 };
 
-message.author.send(embed);
+message.author.send(Embed);
 
 message.author.send("https://discord.gg/f4KtqNB");
 
