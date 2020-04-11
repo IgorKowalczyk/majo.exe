@@ -19,7 +19,7 @@ let embed = new Discord.RichEmbed()
 .addField('• Channel Count', `${client.channels.size}`)
 .addField('• Memory Usage', `${Math.round(process.memoryUsage().heapUsed / 1024 / 1024)}MB`)
 .addField('• Useful Links', `[Official website](${cnf.website}) | [Invite me!](https://discordapp.com/oauth2/authorize/?permissions=2146958847&scope=bot&client_id=${client.user.id}) | [Official server](https://discord.gg/f4KtqNB)`)
-.setFooter(`${client.user.username} | By: ${cnf.owner}`)
+.setFooter(`Bot created by ${cnf.owner}`)
 message.channel.send(embed);
 }
 
