@@ -4,7 +4,7 @@ module.exports.run = async (client, message, args) => {
 
 const embed = new Discord.RichEmbed()
 .setTitle("Invite the bot")
-.setColor(#09a8ca)
+.setColor(3447003)
 .setDescription("Invite the bot here: [invite link](https://discordapp.com/oauth2/authorize/?permissions=2146958847&scope=bot&client_id=${client.user.id})\n\n Check official [website](https://igorkowalczyk.github.io/majobot)\n\n Check official [server](https://discord.gg/f4KtqNB)")
 .setFooter("Bot created by TEST")
 .setTimestamp()
