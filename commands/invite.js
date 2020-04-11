@@ -1,17 +1,19 @@
 const Discord = module.require("discord.js");
-const cnf = require('../config.json');
 
 module.exports.run = async (client, message, args) => {
-const Embed = new Discord.RichEmbed()
-	.setTitle('Invite the bot')
-	.setURL('https://discordapp.com/oauth2/authorize?client_id=681536055572430918&scope=bot&permissions=2146958591')
-	.addField('Invite the bot [here](https://discordapp.com/oauth2/authorize?client_id=681536055572430918&scope=bot&permissions=2146958591)',)
-	.setTimestamp()
-    .setFooter(`Bot created by ${cnf.owner}`)
+  const embed = {
+  "title": "Majo.exe",
+  "description": "Invite the bot here: [invite link](https://discordapp.com/oauth2/authorize/?permissions=2146958847&scope=bot&client_id=${client.user.id})",
+  "url": "https://igorkowalczyk.github.io/majobot",
+  "color": 3447003,
+  "thumbnail": {
+    "url": "https://cdn.discordapp.com/avatars/544164729354977282/c39c2d7b39e5d6d5d13a8c2bdb010373.png?size=2048"
+  }
+};
 
-message.author.send(Embed);
+message.author.send(embed);
+
 message.author.send("https://discord.gg/f4KtqNB");
-
 
 message.channel.send({embed: {
             color: 3447003,
@@ -21,12 +23,9 @@ message.channel.send({embed: {
 
 module.exports.help = {
     name: "invite",
-    description: "Sends the bot invite",
+    description: "Sends a bot invite",
     usage: "invite",
-    type: "General"
+    type: "General"  
 }
-
-
-
 
 
