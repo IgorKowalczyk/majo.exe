@@ -9,16 +9,11 @@ let youtube = args.slice(0).join('+');
   if (!youtube) return message.reply(`Please enter a word `)
   if (!link) return message.reply("Console error")
   let embed = new Discord.RichEmbed()
+    .setTitle("Searching in youtube")
     .setColor(3447003)
-         
     .setTimestamp()
-        
-    .addField('Action:', 'Searching on youtube')
-
     .addField("Searched word:", `${args.slice(0).join(' ')}`)
-
     .addField('Link:', `${link}`)
-
   message.channel.send(embed);
 }
 
