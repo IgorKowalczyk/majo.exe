@@ -24,7 +24,7 @@ let embed = new Discord.RichEmbed()
 
 
 const cnf = require('../config.json');
-const Discord } = require("discord.js");
+const Discord = require("discord.js");
 const moment = require("moment");
 require("moment-duration-format");
 
