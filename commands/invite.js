@@ -1,14 +1,15 @@
 const Discord = module.require("discord.js");
+const cnf = require('../config.json');
 
 module.exports.run = async (client, message, args) => {
 
 const embed = new Discord.RichEmbed()
 .setTitle("Invite the bot")
 .setColor(3447003)
-.setDescription("Invite the bot here: [invite link](https://discordapp.com/oauth2/authorize/?permissions=2146958847&scope=bot&client_id=${client.user.id})\n\n Check official [website](https://igorkowalczyk.github.io/majobot)\n\n Check official [server](https://discord.gg/f4KtqNB)")
-.setFooter("Bot created by TEST")
+.setDescription("Invite the bot here: [invite link](https://discordapp.com/oauth2/authorize/?permissions=2146958847&scope=bot&client_id=${client.user.id})\n\n Check official [website](" + `${cnf.website}` + ")\n\n Check official [server](https://discord.gg/f4KtqNB)")
+.setFooter("Bot created by " + `${cnf.owner}`)
 .setTimestamp()
-message.channel.send({embed})
+message.author.send({embed})
 
 message.channel.send({embed: {
             color: 3447003,

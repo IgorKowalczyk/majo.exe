@@ -66,7 +66,7 @@ module.exports.run = async (client, message, args) => {
           .addField("Moderation", Moderation.map((roles => roles[0])).join(", ") , true)
           .addField("Fun", Fun.map((roles => roles[0])).join(", ") , true)
           .addField("Utility", Utility.map((roles => roles[0])).join(", ") , true)
-          .addField("Command Information", "${prefix} help <command>")
+          .addField("Command Information", `${prefix}` + "help <command>")
         
         message.channel.send(embed)
       } else if (err) return;
