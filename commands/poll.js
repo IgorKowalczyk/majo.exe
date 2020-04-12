@@ -7,7 +7,7 @@ if (!args) return message.reply({embed: {
         }})
 message.channel.send({embed: {
             color: 3447003,
-            title: ":ballot_box: " +`${message.author.username}` + "A vote has begun! React with the emojis to vote! :ballot_box:"
+            title: ":ballot_box: " +`${message.author.username}` + " A vote has begun! React with the emojis to vote! :ballot_box:"
         }})
 
 const pollTopic = await message.channel.send({embed: {
