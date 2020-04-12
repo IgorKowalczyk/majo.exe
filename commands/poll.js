@@ -1,7 +1,13 @@
 const Discord = require("discord.js");
 
 module.exports.run = async (client, message, args, level) => { // eslint-disable-line no-unused-vars
-if (args.length >= 1) return message.reply({embed: {
+
+
+
+
+const pollmessage = await args.join("");
+
+if (pollmessage.length >= 1) return message.reply({embed: {
             color: 3447003,
             title: "You must provide a text to ask a question!"
         }})
@@ -12,7 +18,7 @@ message.channel.send({embed: {
 
 const pollTopic = await message.channel.send({embed: {
             color: 3447003,
-            title: "Poll: " + `message.content.slice(2)`
+            title: "Poll: " + `message.content.slice(2)` + ""
         }})
 await pollTopic.react(`✅`);
 await pollTopic.react(`⛔`);
@@ -21,7 +27,7 @@ const filter = (reaction) => reaction.emoji.name === '✅';
 const collector = pollTopic.createReactionCollector(filter, { time: 15000 });
 collector.on('end', collected => message.channel.send({embed: {
             color: 3447003,
-            title: "Collected " + `${collected.size}` + "positive votes! :tada:`"
+            title: "Collected " + `${collected.size}` + " positive votes! :tada:`"
         }}));
 }
 
