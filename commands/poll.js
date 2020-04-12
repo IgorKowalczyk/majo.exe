@@ -4,8 +4,8 @@ module.exports.run = async (client, message, args, level) => {
  let pollargs = message.content.split(" ").slice(1);
   if (!pollargs) return message.reply(`Please enter a word!`)
         let thingToEcho = pollargs.join(" ")
-        const yes = client.emojis.find(emoji => emoji.name === "white_check_mark");
-        const no = client.emojis.find(emoji => emoji.name === "x");
+        const yes = client.emojis.get("✅");
+        const no = client.emojis.get("❌");
         var poll = new Discord.RichEmbed()
         .setAuthor("📜 | Poll")
         .setColor('#36393f')
@@ -13,8 +13,8 @@ module.exports.run = async (client, message, args, level) => {
         .setTimestamp()
         message.channel.send(poll)
         .then(message => {
-            message.react(":white_check_mark:")
-            message.react(":x:")
+            message.react(yes)
+            message.react(no)
         })
 
 }
