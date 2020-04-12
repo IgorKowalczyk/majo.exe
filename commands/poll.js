@@ -19,10 +19,11 @@ await pollTopic.react(`⛔`);
 // Create a reaction collector
 const filter = (reaction) => reaction.emoji.name === '✅';
 const collector = pollTopic.createReactionCollector(filter, { time: 15000 });
-collector.on('end', collected => message.channel.send("${collected.size} positive votes! :ballot_box:"));
+collector.on('end', collected => message.channel.send({embed: {
+            color: 3447003,
+            title: `${collected.size}` + "positive votes! :ballot_box:`"
+        }}));
 }
-
-
 
 module.exports.help = {
     name: "poll",
