@@ -20,6 +20,7 @@ const collector = pollTopic.createReactionCollector(filter, { time: 15000 });
 const filter2 = (reaction) => reaction.emoji.name === '✅';
 const collector2 = pollTopic.createReactionCollector(filter2, { time: 15000 });
 collector.on('end', collected => message.channel.send(`${collected.size}/${collected2.size}`));
+collector2.on('end', collected => message.channel.send(`${collected.size}/${collected2.size}`));
 }
 
 
