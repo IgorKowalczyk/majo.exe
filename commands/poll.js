@@ -11,7 +11,7 @@ if (pollmessage.length > 0) return message.channel.send({embed: {
             title: "You must provide a text to ask a question!"
         }})
 
-const pollTopic =  essage.channel.send({embed: {
+const pollTopic =  message.channel.send({embed: {
             color: 3447003,
             title: ":ballot_box: " +`${message.author.username}` + " A vote has begun! React with the emojis to vote! :ballot_box:",
 			description: "Poll: " + `message.content.slice(2)`
