@@ -1,7 +1,7 @@
 const Discord = require("discord.js");
 
 module.exports.run = async (client, message, args, level) => { // eslint-disable-line no-unused-vars
-if (!args > 0) return message.reply({embed: {
+if (args.length >= 1) return message.reply({embed: {
             color: 3447003,
             title: "You must provide a text to ask a question!"
         }})
