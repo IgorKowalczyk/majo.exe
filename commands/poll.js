@@ -12,7 +12,7 @@ message.channel.send({embed: {
 
 const pollTopic = await message.channel.send({embed: {
             color: 3447003,
-            title: message.content.slice(2)
+            title: `message.content.slice(2)`
         }})
 await pollTopic.react(`✅`);
 await pollTopic.react(`⛔`);
@@ -22,7 +22,7 @@ const collector = pollTopic.createReactionCollector(filter, { time: 15000 });
 collector.on('end', collected => message.channel.send({embed: {
             color: 3447003,
             title: ":ballot_box: Collected " +`${collected.size}` + "positive votes! :ballot_box:"
-        }})
+}})
 }
 
 
