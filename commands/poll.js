@@ -6,7 +6,7 @@ module.exports.run = async (client, message, args, level) => { // eslint-disable
 
 
 const pollmessage = await args.join(" ");
-if (pollmessage.length >= 0) return message.channel.send({embed: {
+if (pollmessage.length > 0) return message.channel.send({embed: {
             color: 3447003,
             title: "You must provide a text to ask a question!"
         }})
