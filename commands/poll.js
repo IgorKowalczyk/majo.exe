@@ -13,8 +13,8 @@ module.exports.run = async (client, message, args, level) => {
         .setTimestamp()
         message.channel.send(poll)
         .then(message => {
-            message.react("white_check_mark")
-            message.react("x")
+            message.react(":white_check_mark:")
+            message.react(":x:")
         })
 
 }
