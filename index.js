@@ -102,11 +102,11 @@ client.on("guildMemberRemove", (member) => {
 
 client.on('message', message=> {
     if (message.isMentioned(client.user.id)) {
-	return;
     message.channel.send({embed: {
             color: 3447003,
             title: "I can only respond to message with my prefix (" + `${prefix}` + ")"
         }})
+	return;
 }
 });
 
