@@ -13,7 +13,7 @@ var botMembers = 0;
 
 
 const music = require('discord.js-music-v11');
-music(client, options);
+music(client);
 
 
 app.get("/", (request, response) => {
