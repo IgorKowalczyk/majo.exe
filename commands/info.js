@@ -7,7 +7,7 @@ module.exports.run = async (client, message, args) => {
 const prefix = process.env.PREFIX;
 const duration = moment.duration(client.uptime).format(" D [days], H [hrs], m [mins], s [secs]");
 let embed = new Discord.RichEmbed()
-.setTitle(`nformation for developers`)
+.setTitle(`formation for developers`)
 .setColor('#36393F')
 .setDescription(`My prefix is: \`${prefix}\`\n`)
 .setThumbnail(client.user.displayAvatarURL)
