@@ -22,10 +22,8 @@
     "urban": "^0.3.1",
     "to-zalgo": "^1.0.1",
     "flip-text": "^1.1.0",
-    "@discordjs/opus": "^0.1.0",
-    "ffmpeg": "0.0.4",
-    "fluent-ffmpeg": "^2.1.2",
-    "ytdl-core": "^2.0.1"
+    "discord.js-music-v11": "^1.3.4",
+    "ffmpeg-binaries": "4.0.0"
   },
   "engines": {
     "node": "8.x"
