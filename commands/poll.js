@@ -1,4 +1,5 @@
 const Discord = require("discord.js");
+const cnf = require('../config.json');
 
 module.exports.run = async (client, message, args, level) => { // eslint-disable-line no-unused-vars
 
@@ -12,6 +13,7 @@ const pollTopic = await message.channel.send({embed: {
             color: 3447003,
             title: ":ballot_box: " +`${message.author.username}` + " A vote has begun! React with the emojis to vote! :ballot_box:",
 			description: "Poll: " + pollmessage,
+			footer: "The vote will be ended in 15 seconds! • Bot created by" + `${cnf.owner}`,
         }})
 
 await pollTopic.react(`✅`);
