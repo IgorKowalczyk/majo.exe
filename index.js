@@ -6,7 +6,7 @@ const express = require('express');
 const app = express();
 
 const discord_token = process.env.TOKEN;
-const prefix = process.env.PREFIX.trim().split(/ +/g).shift().toLowerCase();
+const prefix = process.env.PREFIX;
 
 const newUsers = new Discord.Collection();
 var botMembers = 0;
