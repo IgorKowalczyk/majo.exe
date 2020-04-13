@@ -11,9 +11,10 @@ const prefix = process.env.PREFIX;
 const newUsers = new Discord.Collection();
 var botMembers = 0;
 
+const Client = require('./client/Client');
+const client2 = new Client();
 
-const music = require('discord.js-music-v11');
-music(client);
+client.commands = new Discord.Collection();
 
 
 app.get("/", (request, response) => {
