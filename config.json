@@ -5,5 +5,7 @@
     "ownertag": "Majonez.exe#5271",
     "owner": "Igor Kowalczyk",
     "node": "8.x",
-    "version": "v0.0.1"
+    "version": "v0.0.1",
+    "geniusLyricsAPI": "HDN7DvYWYCJ586DYevQQGza3GiLqWAVcIwfPDfKVySTxPSt8Osdoy8bRyc5b8JYKFEdSWo6ahws9wa7wgqFdbg",
+    "youtubeAPI": "AIzaSyC5S5zY4od9NagaN9fMReG5wJkY1IMz0rY"
 }
