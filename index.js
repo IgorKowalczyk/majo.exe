@@ -100,6 +100,12 @@ client.on("guildMemberRemove", (member) => {
   if(newUsers.has(member.id)) newUsers.delete(member.id);
 });
 
+client.on('message', message=> {
+    if (message.isMentioned(client.user.id)) {
+    message.reply('test');
+}
+});
+
 setInterval(async () => {
     const statuslist = [
       `${client.guilds.size} servers`,
