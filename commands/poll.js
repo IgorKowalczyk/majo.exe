@@ -11,7 +11,7 @@ if (pollmessage.length < 0) return message.channel.send({embed: {
 const pollTopic = await message.channel.send({embed: {
             color: 3447003,
             title: ":ballot_box: " +`${message.author.username}` + " A vote has begun! React with the emojis to vote! :ballot_box:",
-			description: "Poll: " + message.content.slice(2),
+			description: "Poll: " + message.content.slice(0),
         }})
 
 await pollTopic.react(`✅`);
