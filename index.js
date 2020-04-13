@@ -1,5 +1,4 @@
 const Discord = require("discord.js");
-const { CommandoClient } = require('discord.js-commando');
 const client = new Discord.Client();
 const fs = require("fs");
 const http = require('http');
@@ -11,47 +10,6 @@ const prefix = process.env.PREFIX;
 
 const newUsers = new Discord.Collection();
 var botMembers = 0;
-
-
-Structures.extend('Guild', function(Guild) {
-  class MusicGuild extends Guild {
-    constructor(client, data) {
-      super(client, data);
-      this.musicData = {
-        queue: [],
-        isPlaying: false,
-        nowPlaying: null,
-        songDispatcher: null,
-        volume: 1
-      };
-      this.triviaData = {
-        isTriviaRunning: false,
-        wasTriviaEndCalled: false,
-        triviaQueue: [],
-        triviaScore: new Map()
-      };
-    }
-  }
-  return MusicGuild;
-});
-
-const client = new CommandoClient({
-  commandPrefix: prefix,
-  owner: '544164729354977282'
-});
-
-client.registry
-  .registerDefaultTypes()
-  .registerGroups([
-    ['music', 'Music Command Group']
-  ])
-  .registerDefaultGroups()
-  .registerDefaultCommands({
-    eval: false,
-    prefix: false,
-    commandState: false
-  })
-  .registerCommandsIn(path.join(__dirname, 'commands'));
 
 app.get("/", (request, response) => {
   response.sendStatus(200);
