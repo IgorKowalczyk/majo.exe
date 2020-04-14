@@ -12,7 +12,7 @@ const newUsers = new Discord.Collection();
 var botMembers = 0;
 
 
-const cnf = require('../config.json');
+/*const cnf = require('../config.json');
 
 client.music = require("discord.js-musicbot-addon");
 client.music.start(client, {
@@ -33,7 +33,7 @@ client.music.start(client, {
       exclude: ["volume","queue","pause","resume","np"]
     }
   });
-
+*/
 
 app.get("/", (request, response) => {
   response.sendStatus(200);
