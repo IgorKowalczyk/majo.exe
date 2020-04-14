@@ -4,6 +4,9 @@ const cnf = require('../config.json');
 module.exports.run = async (client, message, args, level) => { // eslint-disable-line no-unused-vars
 
 const pollmessage = await args.join(" ");
+
+var pollrandom = ["✅", "⛔",];  
+
 if (pollmessage.length <= 0) return message.channel.send({embed: {
             color: 3447003,
             title: "You must provide a text to ask a question!"
@@ -15,7 +18,10 @@ const embed = new Discord.RichEmbed()
 .setFooter("Note: The voting will be ended in 30 seconds! • Bot created by " + `${cnf.owner}`,)
 .setTimestamp()
 const pollTopic = await message.channel.send({embed})
-
+message.channel.send({embed: {
+            color: 3447003,
+            title: "My answer is: " + pollrandom[Math.floor(Math.random()*pollrandom.length)] + ":ballot_box:",
+        }})
 await pollTopic.react(`✅`);
 await pollTopic.react(`⛔`);
 // Create a reaction collector
