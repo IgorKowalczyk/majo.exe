@@ -8,13 +8,13 @@ if (pollmessage.length <= 0) return message.channel.send({embed: {
             color: 3447003,
             title: "You must provide a text to ask a question!"
         }})
-
-const pollTopic = await message.channel.send({embed: {
-            color: 3447003,
-            title: ":ballot_box: " +`${message.author.username}` + " A vote has begun! React with the emojis to vote! :ballot_box:",
-			description: "Poll: " + pollmessage,
-			footer: "The vote will be ended in 15 seconds! • Bot created by" + `${cnf.owner}`,
-        }})
+const embed = new Discord.RichEmbed()
+.setTitle(":ballot_box: " +`${message.author.username}` + " A vote has begun! React with the emojis to vote! :ballot_box:")
+.setColor(3447003)
+.addField("Pool", `pollmessage`)
+.setFooter("The vote will be ended in 15 seconds! • Bot created by" + `${cnf.owner}`)
+.setTimestamp()
+const pollTopic = await message.channel.send({embed})
 
 await pollTopic.react(`✅`);
 await pollTopic.react(`⛔`);

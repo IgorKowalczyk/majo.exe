@@ -2,7 +2,6 @@ const Discord = module.require("discord.js");
 const cnf = require('../config.json');
 
 module.exports.run = async (client, message, args) => {
-
 const embed = new Discord.RichEmbed()
 .setTitle("Invite the bot")
 .setColor(3447003)
