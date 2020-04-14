@@ -12,8 +12,27 @@ const newUsers = new Discord.Collection();
 var botMembers = 0;
 
 
-const music = require('discord.js-music-v11');
-music(client);
+const cnf = require('../config.json');
+
+client.music = require("discord.js-musicbot-addon");
+client.music.start(client, {
+    youtubeKey: cnf.api,
+    anyoneCanSkip: true,
+    ownerOverMember: true,
+    inlineEmbeds: true,
+    musicPresence: false,
+    clearPresence: true,
+    defVolume: cnf.defaultvolume,
+    botPrefix: prefix,
+    djRole: cnf.musicrole,
+    embedColor: cnf.colour,
+    ownerID: cnf.ownerid,
+    cooldown: {
+      enabled: false,
+      timer: 1000,
+      exclude: ["volume","queue","pause","resume","np"]
+    }
+  });
 
 
 app.get("/", (request, response) => {

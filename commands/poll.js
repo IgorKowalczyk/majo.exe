@@ -11,8 +11,8 @@ if (pollmessage.length <= 0) return message.channel.send({embed: {
 const embed = new Discord.RichEmbed()
 .setTitle(":ballot_box: " +`${message.author.username}` + " A vote has begun! React with the emojis to vote! :ballot_box:",)
 .setColor(3447003)
-.addField("Pool", "Poll: " + `pollmessage`,)
-.setFooter("The vote will be ended in 30 seconds! • Bot created by" + `${cnf.owner}`,)
+.addField("Pool", pollmessage,)
+.setFooter("Note: The voting will be ended in 30 seconds! • Bot created by " + `${cnf.owner}`,)
 .setTimestamp()
 const pollTopic = await message.channel.send({embed})
 
