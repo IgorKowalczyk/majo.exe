@@ -3,6 +3,10 @@ const flip = require("flip-text");
 
 module.exports.run = async (client, message, args) => {
 
+if (flipped.length <= 0) return message.channel.send({embed: {
+            color: 3447003,
+            title: "You must provide a text!"
+        }})
 
       var flipped = [];
   
