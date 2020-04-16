@@ -11,30 +11,6 @@ const prefix = process.env.PREFIX;
 const newUsers = new Discord.Collection();
 var botMembers = 0;
 
-
-/*const cnf = require('../config.json');
-
-client.music = require("discord.js-musicbot-addon");
-client.music.start(client, {
-    youtubeKey: cnf.api,
-    anyoneCanSkip: true,
-    ownerOverMember: true,
-    inlineEmbeds: true,
-    musicPresence: false,
-    clearPresence: true,
-    defVolume: cnf.defaultvolume,
-    botPrefix: prefix,
-    djRole: cnf.musicrole,
-    embedColor: cnf.colour,
-    ownerID: cnf.ownerid,
-    cooldown: {
-      enabled: false,
-      timer: 1000,
-      exclude: ["volume","queue","pause","resume","np"]
-    }
-  });
-*/
-
 app.get("/", (request, response) => {
   response.sendStatus(200);
 });
@@ -56,8 +32,6 @@ client.on("guildMemberAdd", (member) => {
   const guild = member.guild;
   const defaultChannel = getDefaultChannel(guild); 
   newUsers.set(member.id, member.user);
-
-
 
 let roleName = '.exe';
 let newrole = guild.roles.find(x => x.name == roleName);
@@ -129,8 +103,8 @@ client.on('message', message=> {
      if (message.author.bot) return;
      if (!message.guild) return;
     message.channel.send({embed: {
-            color: 3447003,
-            title: "Hey! I can only respond to message with my prefix (" + `${prefix}` + ")"
+        color: 3447003,
+        title: "Hey! I can only respond to message with my prefix (" + `${prefix}` + ")"
         }})
 	return;
 }
