@@ -1,15 +1,8 @@
 {
-    "supporturl": "SUPPORT SERVER",
     "website": "https://igorkowalczyk.github.io/majobot",
     "github": "igorkowalczyk",
     "ownertag": "Majonez.exe#5271",
     "owner": "Igor Kowalczyk",
-    "node": "8.x",
-    "version": "v0.0.1",
     "api": "AIzaSyC5S5zY4od9NagaN9fMReG5wJkY1IMz0rY",
     "ownerid": "544164729354977282",
-    "colour": "000000",
-    "musicrole": ".exe",
-    "admins": ["544164729354977282"],
-    "defaultvolume": "100"
 }
