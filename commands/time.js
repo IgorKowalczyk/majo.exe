@@ -1,4 +1,4 @@
-const moment = require("moment");
+/*const moment = require("moment");
 
 module.exports = async ({ Constants: { Colors } }, documents, msg, commandData) => {
 	const now = new Date();
@@ -29,3 +29,4 @@ module.exports.help = {
     usage: "time",
     type: "Fun" 
 }
+*/
