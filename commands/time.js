@@ -1,6 +1,6 @@
-/*const moment = require("moment");
+const moment = require("moment");
 
-module.exports = async ({ Constants: { Colors } }, documents, msg, commandData) => {
+module.exports.run = async (client, message, args) => 
 	const now = new Date();
 	const next = new Date(now);
 	next.setFullYear(now.getFullYear() + 1);
@@ -13,7 +13,7 @@ module.exports = async ({ Constants: { Colors } }, documents, msg, commandData) 
 	const days = Math.floor(duration / (1000 * 60 * 60 * 24));
 	return msg.send({
 		embed: {
-			color: Colors.INFO,
+			color: 3447003,
 			title: "Woo! Prepare the party poppers!",
 			description: `There are **${days} days**, **${hours} hours**, **${minutes} minutes** and **${seconds} seconds** until **${next.getFullYear()}**! 🎆`,
 			footer: {
@@ -29,4 +29,3 @@ module.exports.help = {
     usage: "time",
     type: "Fun" 
 }
-*/
