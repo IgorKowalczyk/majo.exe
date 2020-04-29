@@ -22,3 +22,10 @@ module.exports = async ({ Constants: { Colors } }, documents, msg, commandData) 
 		},
 	});
 };
+
+module.exports.help = {
+    name: "time",
+    description: "Show a time",
+    usage: "time",
+    type: "Fun" 
+}
