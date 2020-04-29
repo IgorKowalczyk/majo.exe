@@ -102,6 +102,7 @@ client.on('message', message=> {
      if (message.isMentioned(client.user.id)) {
      if (message.author.bot) return;
      if (!message.guild) return;
+	 
     message.channel.send({embed: {
         color: 3447003,
         title: "Hey! I can only respond to message with my prefix (" + `${prefix}` + ")"
