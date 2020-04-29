@@ -83,7 +83,7 @@ module.exports.run = async (client, message, args) => {
  
 
         for (var i = 0; i < winners.length; i++) {
-            message.channel.send(" Test" + winners[i] + `!  Test **${item}**.`);
+            message.channel.send(winners[i] + `WON! You win this: **${item}**.`);
         }
  
     }, 1000 * time);
