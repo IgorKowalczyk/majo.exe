@@ -11,7 +11,7 @@ module.exports.run = async (client, message, args) => {
   var randomUser = members[Math.floor(Math.random() * members.length)];
   
   await message.channel.send({embed: {
-                    color: 3447003,
+                    color: RANDOM,
                     title: "Someone has been summoned (╯°□°）╯︵ ┻━┻:"
                 }})
 message.channel.send(`(${randomUser})`);

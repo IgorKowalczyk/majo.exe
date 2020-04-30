@@ -15,7 +15,7 @@ if (args.length <= 0) return message.channel.send({embed: {
   });
     
     await message.channel.send({embed: {
-        color: 3447003,
+        color: RANDOM,
         title: "Flipped text: " + flipped.join(" "),
     }});
 }

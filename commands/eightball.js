@@ -13,7 +13,7 @@ module.exports.run = async (client, message, args) => {
   "My sources say no.", "Outlook not so good...", "Very doubtful.",];  
   
   await message.channel.send({embed: {
-         color: 3447003,
+         color: RANDOM,
          title: fortunes[Math.floor(Math.random()*fortunes.length)]
          }})
 

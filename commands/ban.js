@@ -21,7 +21,7 @@ module.exports.run = async (client, message, args) => {
         
         mentioned.ban(reason);
         await message.channel.send({embed: {
-            color: 3447003,
+            color: RANDOM,
             title: ":scream: " + mentioned.displayName + " has been Banned! :scream:"
         }});     
     }
