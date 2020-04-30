@@ -1,4 +1,4 @@
-const {MessageEmbed} = require('discord.js')
+const {Discord, MessageEmbed} = require('discord.js')
 const ms = require('ms');
 module.exports={
     name: 'giveaway',
@@ -14,7 +14,7 @@ module.exports={
         let prize = args.slice(2).join(" ")
         if(!prize) return message.channel.send(`No prize specified!`)
         message.channel.send(`*Giveaway created in ${channel}*`);
-        let Embed = new MessageEmbed()
+        let Embed = new Discord.RichEmbed()
         .setTitle(`New giveaway!`)
         .setDescription(`The user ${message.author} is hosting a giveaway for the prize of **${prize}**`)
         .setTimestamp(Date.now()+ms(args[0]))
