@@ -1,7 +1,7 @@
 const {MessageEmbed} = require('discord.js')
 const ms = require('ms');
 
-module.exports.run = async(client,message,args)=>{
+/*module.exports.run = async(client,message,args)=>{
   var members = [];
   
   message.guild.members.forEach((member) => {
@@ -30,6 +30,41 @@ module.exports.run = async(client,message,args)=>{
             if(m.reactions.cache.size<=1) return message.channel.send(`Not enough people reacted for me to start draw a winner!`)
             channel.send(`The winner of the giveaway for **${prize}** is... ${winner}`)
         }, ms(args[0]));
+    }
+
+module.exports.help = {
+    name: "test",
+    description: "Start a giveawy",
+    usage: "test <user>",
+    type: "Fun" 
+}*/
+
+const {MessageEmbed} = require('discord.js')
+
+module.exports.run = async(client,message,args)=>{
+        let Emojis="";
+        let EmojisAnimated="";
+        let EmojiCount = 0;
+        let Animated = 0;
+        let OverallEmojis = 0;
+        function Emoji(id){
+            return bot.emojis.cache.get(id).toString()
+        } 
+        message.guild.emojis.cache.forEach(emoji=>{
+            OverallEmojis++;
+            if(emoji.animated){
+                Animated++;
+                EmojisAnimated+=Emoji(emoji.id)
+            }else{
+                EmojiCount++;
+                Emojis+=Emoji(emoji.id)
+            }
+        })
+        let Embed = new MessageEmbed()
+        .setTitle(`Emojis in ${message.guild.name}.`)
+        .setDescription(`**Animated [${Animated}]**:\n${EmojisAnimated}\n\n**Standard [${EmojiCount}]**:\n${Emojis}\n\n**Over all emojis [${OverallEmojis}]**`)
+        .setColor(`RANDOM`)
+        message.channel.send(Embed)
     }
 
 module.exports.help = {
