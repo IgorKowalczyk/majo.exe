@@ -32,7 +32,7 @@ module.exports.run = async (client, message, args) => {
   
   var embed = new Discord.RichEmbed()
     .setAuthor("Members", message.guild.iconURL)
-    .setColor("3498db")
+    .setColor("RANDOM")
     .addField("Overall Members", message.guild.memberCount || message.guild.members.size)
     .addField("Online Members", online)
     .addField("Offline/Invisible Members", offline)
