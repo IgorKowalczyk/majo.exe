@@ -9,7 +9,7 @@ module.exports.run = async(client,message,args)=>{
       members.push(member);  
   });
   
-  var winner = members[Math.floor(Math.random() * members.length)];
+  let winner = members[Math.floor(Math.random() * members.length)];
   
         if(!args[0]) return message.channel.send(`You did not specify your time!`)
         if(!args[0].endsWith("d")&&!args[0].endsWith("h")&&!args[0].endsWith("m")) return message.channel.send(`You did not use the correct formatting for the time!`)
@@ -28,7 +28,6 @@ module.exports.run = async(client,message,args)=>{
         m.react("🎉")
         setTimeout(() => {
             if(m.reactions.cache.size<=1) return message.channel.send(`Not enough people reacted for me to start draw a winner!`)
-            let winner = m.reactions.cache.get("🎉").users.cache.filter(u=>!u.client).random()
             channel.send(`The winner of the giveaway for **${prize}** is... ${winner}`)
         }, ms(args[0]));
     }
