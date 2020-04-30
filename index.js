@@ -5,7 +5,7 @@ const http = require('http');
 const express = require('express');
 const app = express();
 
-const adTimeout = new Set();
+//const adTimeout = new Set();
 
 const discord_token = process.env.TOKEN;
 const prefix = process.env.PREFIX;
@@ -113,17 +113,17 @@ client.on("message", message => {
 
   // The list of if/else is replaced with those simple 2 lines:
   try {
-	if (adTimeout.has(message.author.id)) {
+	/*if (adTimeout.has(message.author.id)) {
      msg.channel.send("Wait 10 seconds before getting typing this again. - " + msg.author);
-    } else {
+    } else {*/
     let commandFile = require(`./commands/${command}.js`);
     commandFile.run(client, message, args);
 	
-			adTimeout.add(message.author.id);
+			/*adTimeout.add(message.author.id);
 			setTimeout(() => {
 				adTimeout.delete(message.author.id);
 			}, 10800000);
-	}
+	}*/
   } catch (err) {
     message.channel.send({embed: {
                 color: 3447003,
