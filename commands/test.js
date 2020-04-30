@@ -39,7 +39,7 @@ module.exports.help = {
     type: "Fun" 
 }*/
 
-const {MessageEmbed} = require('discord.js')
+const Discord = module.require("discord.js");
 
 module.exports.run = async(client,message,args)=>{
         let Emojis="";
