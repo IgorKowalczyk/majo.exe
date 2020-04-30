@@ -34,42 +34,6 @@ client.on("guildMemberAdd", (member) => {
   const guild = member.guild;
   const defaultChannel = getDefaultChannel(guild); 
   newUsers.set(member.id, member.user);
-
-let roleName = '.exe';
-let newrole = guild.roles.find(x => x.name == roleName);
-if(!newrole) {
-guild.createRole({name:".exe", color: "FFFFFF", CREATE_INSTANT_INVITE: true,
-  KICK_MEMBERS: false,
-  BAN_MEMBERS: false,
-  ADMINISTRATOR: false,
-  MANAGE_CHANNELS: false,
-  MANAGE_GUILD: false,
-  ADD_REACTIONS: true,
-  READ_MESSAGES: true,
-  SEND_MESSAGES: true,
-  SEND_TTS_MESSAGES: false,
-  MANAGE_MESSAGES: false,
-  EMBED_LINKS: true,
-  ATTACH_FILES: true,
-  READ_MESSAGE_HISTORY: true,
-  MENTION_EVERYONE: true,
-  EXTERNAL_EMOJIS: false,
-  CONNECT: true,
-  SPEAK: true,
-  MUTE_MEMBERS: false,
-  DEAFEN_MEMBERS: false,
-  MOVE_MEMBERS: false,
-  USE_VAD: false,
-  CHANGE_NICKNAME: true,
-  MANAGE_NICKNAMES: false,
-  MANAGE_ROLES_OR_PERMISSIONS: false,
-  MANAGE_WEBHOOKS: false,
-  MANAGE_EMOJIS: false});
-}
-else {
-var role = guild.roles.find(role => role.name === ".exe");
-member.addRole(role);
-}
   
   let embed = new Discord.RichEmbed()
     .setDescription(`**${member.displayName}#${member.user.discriminator}** has joined the server.`)
