@@ -13,7 +13,7 @@ module.exports={
         if(!channel) return message.channel.send(`I could not find that channel in the guild!`)
         let prize = args.slice(2).join(" ")
         if(!prize) return message.channel.send(`No prize specified!`)
-        message.channel.send(`*Giveaway created in ${channel}*`)
+        message.channel.send(`*Giveaway created in ${channel}*`);
         let Embed = new MessageEmbed()
         .setTitle(`New giveaway!`)
         .setDescription(`The user ${message.author} is hosting a giveaway for the prize of **${prize}**`)
