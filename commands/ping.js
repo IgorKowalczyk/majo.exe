@@ -8,9 +8,10 @@ module.exports.run = async (client, message, args) => {
         }}).then(msg=>{
         const _ = new Discord.RichEmbed()
         .setTitle(':ping_pong: Pong!')
-		.addField("Bot ping", "${Math.floor(msg.createdTimestamp - message.createdTimestamp)}ms")
-		.addField("Api ping", "${Math.round(client.ws.ping)}ms")
+		.addField("Bot ping:", + ${Math.floor(msg.createdTimestamp - message.createdTimestamp)}ms)
+		.addField("Api ping:", ${Math.round(client.ws.ping)}ms)
         .setColor('RANDOM')
+		.setTimestamp()
         msg.edit(_);
         msg.edit("\u200B")
     })
