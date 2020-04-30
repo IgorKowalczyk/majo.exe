@@ -2,7 +2,7 @@ const {MessageEmbed} = require('discord.js')
 const ms = require('ms');
 
 module.exports.run = async(client,message,args)=>{
-	    let client = await message.mentions.members.first();
+	    let client = message.guild.members;
         if(!args[0]) return message.channel.send(`You did not specify your time!`)
         if(!args[0].endsWith("d")&&!args[0].endsWith("h")&&!args[0].endsWith("m")) return message.channel.send(`You did not use the correct formatting for the time!`)
         if(isNaN(args[0][0])) return message.channel.send(`That is not a number!`)
