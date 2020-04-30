@@ -119,11 +119,10 @@ client.on("message", message => {
     let commandFile = require(`./commands/${command}.js`);
     commandFile.run(client, message, args);
 	
-	talkedRecently.add(msg.author.id);
-adTimeout.add(message.author.id);
+			adTimeout.add(message.author.id);
 			setTimeout(() => {
 				adTimeout.delete(message.author.id);
-			}, 10000);
+			}, 10800000);
 	}
   } catch (err) {
     message.channel.send({embed: {
