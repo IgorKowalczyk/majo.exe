@@ -5,6 +5,8 @@ const http = require('http');
 const express = require('express');
 const app = express();
 
+const talkedRecently = new Set();
+
 const discord_token = process.env.TOKEN;
 const prefix = process.env.PREFIX;
 
@@ -111,8 +113,17 @@ client.on("message", message => {
 
   // The list of if/else is replaced with those simple 2 lines:
   try {
+	if (talkedRecently.has(msg.author.id)) {
+     msg.channel.send("Wait 1 seconds before getting typing this again. - " + msg.author);
+    } else {
     let commandFile = require(`./commands/${command}.js`);
     commandFile.run(client, message, args);
+	talkedRecently.add(msg.author.id);
+        setTimeout(() => {
+          // Removes the user from the set after a minute
+          talkedRecently.delete(msg.author.id);
+        }, 10000);
+	}
   } catch (err) {
     message.channel.send({embed: {
                 color: 3447003,
