@@ -3,7 +3,7 @@ const Discord = module.require("discord.js");
 module.exports.run = async (client, message, args) => {
     if (!message.mentions.users.size) {     
         let embed = new Discord.RichEmbed()
-          .setColor("RANDOM")
+          .setColor(Math.floor(Math.random() * 16777214) + 1)
           .setAuthor(message.author.username + "'s Avatar", message.author.displayAvatarURL)
           .setImage(message.author.displayAvatarURL)  
         
