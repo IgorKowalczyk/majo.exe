@@ -3,7 +3,7 @@ const client = new Discord.Client();
 module.exports.run = async (client, message, args) => {
 	
         await message.channel.send(`🏓 Pinging....`).then(msg=>{
-        const _ = new Discord.MessageEmbed()
+        const _ = new Discord.RichEmbed()
         .setTitle('Pong!')
         .setDescription(`🏓 Pong!\nLatency is ${Math.floor(msg.createdTimestamp - message.createdTimestamp)}ms\nAPI Latency is ${Math.round(bot.ws.ping)}ms`)
         .setColor('RANDOM')
