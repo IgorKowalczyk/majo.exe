@@ -1,5 +1,5 @@
 const Discord = module.require("discord.js");
-
+const client = new Discord.Client();
 module.exports.run = async (client, message, args) => {
 	
         await message.channel.send(`🏓 Pinging....`).then(msg=>{
