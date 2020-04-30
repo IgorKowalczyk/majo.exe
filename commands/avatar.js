@@ -32,5 +32,6 @@ module.exports.help = {
     name: "avatar",
     description: "Gets user's avatar from a mention",
     usage: "avatar <mention>",
-    type: "Utility"
+    type: "Utility",
+	timeout: "10000"
 }
