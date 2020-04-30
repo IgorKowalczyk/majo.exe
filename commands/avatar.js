@@ -1,9 +1,10 @@
 const Discord = module.require("discord.js");
 
 module.exports.run = async (client, message, args) => {
+let color = ((1 << 24) * Math.random() | 0).toString(16);
     if (!message.mentions.users.size) {     
         let embed = new Discord.RichEmbed()
-          .setColor("RANDOM")
+          .setColor(`#${color}`);
           .setAuthor(message.author.username + "'s Avatar", message.author.displayAvatarURL)
           .setImage(message.author.displayAvatarURL)  
         
@@ -19,7 +20,7 @@ module.exports.run = async (client, message, args) => {
         let AvatarURL = avatarList[i].split(",").pop();
 
         let embed = new Discord.RichEmbed()
-          .setColor("RANDOM")
+          .setColor(`#${color}`);
           .setAuthor(Username + "'s Avatar", AvatarURL)
           .setImage(AvatarURL)
         
