@@ -21,7 +21,7 @@ module.exports.run = async (client, message, args) => {
         
         mentioned.kick(reason);
         await message.channel.send({embed: {
-            color: RANDOM,
+            color: 3447003,
             title: ":arrow_right: " + mentioned.displayName + " has been Kicked! :door:"
         }});     
     } else {

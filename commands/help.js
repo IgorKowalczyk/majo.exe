@@ -19,7 +19,7 @@ module.exports.run = async (client, message, args) => {
               
         let newembed = new Discord.RichEmbed()
           .setAuthor(`Help - ${file.help.type} Command`, message.guild.iconURL)
-          .setColor("RANDOM")
+          .setColor("3498db")
           .setImage(client.AvatarURL)
           .setFooter(`Bot created by ${cnf.owner}`, "https://cdn.discordapp.com/avatars/544164729354977282/c39c2d7b39e5d6d5d13a8c2bdb010373.png?size=2048")
           .addField(file.help.usage, file.help.description)
@@ -59,7 +59,7 @@ module.exports.run = async (client, message, args) => {
       if (!command) {
         var embed = new Discord.RichEmbed()
           .setAuthor("Help", message.guild.iconURL)
-          .setColor("RANDOM")
+          .setColor("3498db")
           .setImage(client.AvatarURL)
           .setFooter(`Bot created by ${cnf.owner} • ${commandnum} Commands`, "https://cdn.discordapp.com/avatars/544164729354977282/c39c2d7b39e5d6d5d13a8c2bdb010373.png?size=2048")               
           .addField("General", General.map((roles => roles[0])).join(", ") ,)

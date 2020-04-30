@@ -8,7 +8,7 @@ const prefix = process.env.PREFIX;
 const duration = moment.duration(client.uptime).format(" D [days], H [hrs], m [mins], s [secs]");
 let embed = new Discord.RichEmbed()
 .setTitle(`Information for developers`)
-.setColor('RANDOM')
+.setColor('#36393F')
 .setDescription(`My prefix is: \`${prefix}\`\n`)
 .setThumbnail(client.user.displayAvatarURL)
 .addField('• Developer', `${cnf.owner}`)

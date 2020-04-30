@@ -4,7 +4,7 @@ const cnf = require('../config.json');
 module.exports.run = async (client, message, args) => {
 const embed = new Discord.RichEmbed()
 .setTitle("Invite the bot")
-.setColor(RANDOM)
+.setColor(3447003)
 .addField("Invite ", "[Invite the bot here](https://discordapp.com/oauth2/authorize/?permissions=2146958847&scope=bot&client_id=" + `${client.user.id})`)
 .addField("Website ", "[Check the official webiste](https://igorkowalczyk.github.io/majobot)")
 .addField("Server ", "[Join official server](https://discord.gg/f4KtqNB)")

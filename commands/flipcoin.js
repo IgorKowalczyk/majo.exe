@@ -9,7 +9,7 @@ function doanswer() {
 }
 
   await message.channel.send({embed: {
-        color: RANDOM,
+        color: 3447003,
         title: "I'm get: " + doanswer(),
     }});
 	

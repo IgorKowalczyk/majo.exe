@@ -26,7 +26,7 @@ module.exports.run = async (client, message, args) => {
     var change2 = change1.replace("[NAME2]", member.displayName);
   
     await message.channel.send({embed: {
-        color: RANDOM,
+        color: 3447003,
         author: {
           name: "Tombstone of " + member.displayName + "!",
           icon_url: member.user.displayAvatarURL
