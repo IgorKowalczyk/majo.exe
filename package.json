@@ -9,7 +9,7 @@
   },
   "dependencies": {
     "dateformat": "^3.0.3",
-    "discord.js": "^11.3.2",
+    "discord.js": "^12.2.0",
     "express": "^4.16.3",
     "jimp": "^0.2.28",
     "moment": "^2.20.1",
