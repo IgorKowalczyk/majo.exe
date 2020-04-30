@@ -11,6 +11,8 @@ const prefix = process.env.PREFIX;
 const newUsers = new Discord.Collection();
 var botMembers = 0;
 
+const Timeout = new Set();
+
 app.get("/", (request, response) => {
   response.sendStatus(200);
 });
