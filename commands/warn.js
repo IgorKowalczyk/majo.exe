@@ -38,7 +38,7 @@ module.exports.run = async (client, message, args) => {
   .addField("Warned User:", `<@${wUser.id}>`)
   .addField("Warned In:", message.channel)
   .addField("Number of Warnings:", warns[wUser.id].warns)
-  .addField("Reason:", reason);
+  .addField("Reason:", reason)
   .setTimestamp()
   message.channel.send(warnEmbed);
 }
