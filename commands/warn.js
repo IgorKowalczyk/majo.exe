@@ -6,7 +6,10 @@ let warns = JSON.parse(fs.readFileSync("./warnings.json", "utf8"));
 module.exports.run = async (client, message, args) => {
 
   //!warn @daeshan <reason>
-  //if(!message.member.hasPermission("MANAGE_MEMBERS")) return message.reply("No can do pal!");
+  if(!message.member.hasPermission("BAN_MEMBERS")) return message.channel.send({embed: {
+            color: 3447003,
+            title: "You don't have premissions!"
+        }})
   let wUser = message.guild.member(message.mentions.users.first()) || message.guild.members.get(args[0])
   if(!wUser) return message.channel.send({embed: {
             color: 3447003,

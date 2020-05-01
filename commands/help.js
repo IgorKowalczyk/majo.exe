@@ -18,8 +18,8 @@ module.exports.run = async (client, message, args) => {
   }
               
         let newembed = new Discord.RichEmbed()
-          .setAuthor(`Help - ${file.help.type} Command`, message.guild.iconURL)
-          .setColor("3498db")
+          .setAuthor(`:grey_question: Help - ${file.help.type} Command`, message.guild.iconURL)
+          .setColor("RANDOM")
           .setImage(client.AvatarURL)
           .setFooter(`Bot created by ${cnf.owner}`, "https://cdn.discordapp.com/avatars/544164729354977282/c39c2d7b39e5d6d5d13a8c2bdb010373.png?size=2048")
           .addField(file.help.usage, file.help.description)
@@ -62,11 +62,11 @@ module.exports.run = async (client, message, args) => {
           .setColor("RANDOM")
           .setImage(client.AvatarURL)
           .setFooter(`Bot created by ${cnf.owner} • ${commandnum} Commands`, "https://cdn.discordapp.com/avatars/544164729354977282/c39c2d7b39e5d6d5d13a8c2bdb010373.png?size=2048")               
-          .addField("General", General.map((roles => roles[0])).join(", ") ,)
-          .addField("Moderation", Moderation.map((roles => roles[0])).join(", ") ,)
-          .addField("Fun", Fun.map((roles => roles[0])).join(", ") ,)
-          .addField("Utility", Utility.map((roles => roles[0])).join(", ") ,)
-          .addField("Command Information", `${prefix}` + " help <command>")
+          .addField(":brick: General", General.map((roles => roles[0])).join(", ") ,)
+          .addField(":hammer: Moderation", Moderation.map((roles => roles[0])).join(", ") ,)
+          .addField(":rofl: Fun", Fun.map((roles => roles[0])).join(", ") ,)
+          .addField(":toolbox: Utility", Utility.map((roles => roles[0])).join(", ") ,)
+          .addField(":grey_question: Command Information", `${prefix}` + " help <command>")
         
         message.channel.send(embed)
       } else if (err) return;
