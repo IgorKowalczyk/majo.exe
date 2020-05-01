@@ -26,6 +26,6 @@ let youtube = args.slice(0).join('+');
 module.exports.help = {
     name: "youtube",
     description: "Search on youtube",
-    usage: "search (word)",
+    usage: "search <word>",
     type: "Fun"  
 }
