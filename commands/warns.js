@@ -12,7 +12,7 @@ module.exports.run = async (client, message, args) => {
   
   if(!message.member.hasPermission("MANAGE_MESSAGES")) return message.reply("You can't do that.");
   if(!wUser) return message.reply("Couldn't find them yo");
-  let warnlevel = warns[wUser.id].warns
+  let warnlevel = warns[wUser.id].warns+
 
   message.reply(`<@${wUser.id}> has ${warnlevel} warnings.`);
   
