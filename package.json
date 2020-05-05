@@ -9,7 +9,7 @@
   },
   "dependencies": {
     "dateformat": "^3.0.3",
-    "discord.js": "^11.3.2",
+    "discord.js": "^12.2.0"
     "@discordjs/opus": "^0.1.0",
     "discord-player": "^1.4.0",
     "express": "^4.16.3",
