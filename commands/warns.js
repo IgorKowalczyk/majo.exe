@@ -14,15 +14,15 @@ module.exports.run = async (client, message, args) => {
   if(!wUser) return message.reply("Couldn't find them yo");
   let warnlevel = warns[wUser.id].warns
 
-  message.reply(`<@${wUser.id}> has ${warnlevel} warnings.`);
+  //message.reply(`<@${wUser.id}> has ${warnlevel} warnings.`);
   
   
-  /*let warnEmbed = new Discord.RichEmbed()
+  let warnEmbed = new Discord.RichEmbed()
   .setTitle("Warns")
   .setColor("RANDOM")
   .addField("Number of" + `<@${wUser.id}>` + "warns:", `${warnlevel}`)
   .setTimestamp()
-  message.channel.send(warnEmbed);*/
+  message.channel.send(warnEmbed);
   
   
 
