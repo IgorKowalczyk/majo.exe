@@ -21,7 +21,7 @@ module.exports.run = async (client, message, args) => {
           .setAuthor(`:grey_question: Help - ${file.help.type} Command`, message.guild.iconURL)
           .setColor("RANDOM")
           .setImage(client.AvatarURL)
-          .setFooter(`Bot created by ${cnf.owner}`, "https://cdn.discordapp.com/avatars/544164729354977282/c39c2d7b39e5d6d5d13a8c2bdb010373.png?size=2048")
+          .setFooter(`Bot created by ${cnf.owner}`,)
           .addField(file.help.usage, file.help.description)
         
         message.channel.send(newembed);  
@@ -61,7 +61,7 @@ module.exports.run = async (client, message, args) => {
           .setAuthor("Help", message.guild.iconURL)
           .setColor("RANDOM")
           .setImage(client.AvatarURL)
-          .setFooter(`Bot created by ${cnf.owner} • ${commandnum} Commands`, "https://cdn.discordapp.com/avatars/544164729354977282/74953d588584d16ee246a87a54a859e9.png?size=2048")               
+          .setFooter(`Bot created by ${cnf.owner} • ${commandnum} Commands`,)               
           .addField(":bricks: General", General.map((roles => roles[0])).join(", ") ,)
           .addField(":hammer: Moderation", Moderation.map((roles => roles[0])).join(", ") ,)
           .addField(":rofl: Fun", Fun.map((roles => roles[0])).join(", ") ,)
