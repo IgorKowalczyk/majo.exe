@@ -11,5 +11,11 @@
     "colour": "000000",
     "musicrole": ".exe",
     "admins": ["544164729354977282"],
-    "defaultvolume": "100"
+    "defaultvolume": "100",
+    "port": 3000,
+
+    "clientId": "669517781456257054",
+    "clientSecret": "dhC5gMB2uD2fg276zZAgbZb2vTKV2CZT",
+    "scopes": ["identify", "guilds"],
+    "redirectUri": "https%3A%2F%2Fmajobot.herokuapp.com%2Fauthorize%2Fcallback"
 }
