@@ -3,6 +3,11 @@ const client = new Discord.Client();
 const fs = require("fs");
 const http = require('http');
 
+var path = require('path')
+var serveStatic = require('serve-static')
+
+app.use(serveStatic(path.join(__dirname, 'dist')))
+
 const express = require('express');
 const app = express();
 
