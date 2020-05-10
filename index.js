@@ -6,7 +6,7 @@ const http = require('http');
 const express = require('express');
 const app = express();
 
-let port = require('./config.json').port || 8000;
+let port = require('./config.json').port || 3000;
 app.set('port', port);
 
 const session = require('express-session');
