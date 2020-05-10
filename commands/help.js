@@ -66,6 +66,7 @@ module.exports.run = async (client, message, args) => {
           .addField(":hammer: Moderation", Moderation.map((roles => roles[0])).join(", ") ,)
           .addField(":rofl: Fun", Fun.map((roles => roles[0])).join(", ") ,)
 		  .addField(":notes: Music", "Soon!" ,)
+		  .addField(":moneybag: Leveling system", "Soon!" ,)
           .addField(":toolbox: Utility", Utility.map((roles => roles[0])).join(", ") ,)
           .addField(":grey_question: Command Information", `${prefix}` + " help <command>")
         
