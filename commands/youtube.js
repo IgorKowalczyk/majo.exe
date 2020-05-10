@@ -7,16 +7,16 @@ let youtube = args.slice(0).join('+');
 
   let link = `https://www.youtube.com/results?search_query=` + youtube;
   if (!youtube) return message.channel.send({embed: {
-            color: 3447003,
+            color: 16734039,
             title: "Please enter a word to search!"
         }})
   if (!link) return message.channel.send({embed: {
-            color: 3447003,
+            color: 16734039,
             title: "Error!"
         }})
   let embed = new Discord.RichEmbed()
     .setTitle("Searching in youtube")
-    .setColor(3447003)
+    .setColor("RANDOM")
     .setTimestamp()
     .addField("Searched word:", `${args.slice(0).join(' ')}`)
     .addField('Link:', `${link}`)
