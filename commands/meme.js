@@ -34,7 +34,7 @@ module.exports.run = async (client, message, args) => {
     }).catch(function (err)  {
       message.channel.send({embed: {
          color: 16734039,
-         title: "I can't send that meme! I have error :cry:"
+         title: "Something went wrong... :cry:"
          }})
       return;
     });
