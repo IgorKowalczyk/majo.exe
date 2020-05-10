@@ -10,14 +10,14 @@ const forceAuth = (req, res, next) => {
     else return next();
 }
 
-router.get('*', (req, res) => {
+router.get('/', (req, res) => {
     if (req.session.user) return res.redirect('/');
 
     const authorizeUrl = `https://discord.com/api/oauth2/authorize?client_id=669517781456257054&permissions=8&redirect_uri=https%3A%2F%2Fmajobot.herokuapp.com%2Fauthorize%2Fcallback&scope=bot&response_type=code`;
     res.redirect(authorizeUrl);
 });
 
-router.get('*', (req, res) => {
+router.get('/callback', (req, res) => {
     if (req.session.user) return res.redirect('/');
     
     const accessCode = req.query.code;
@@ -54,7 +54,7 @@ router.get('*', (req, res) => {
     });
 });
 
-router.get('*', forceAuth, (req, res) => {
+router.get('/logout', forceAuth, (req, res) => {
     req.session.destroy();
 });
 
