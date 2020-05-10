@@ -2,14 +2,13 @@ const Discord = module.require("discord.js");
 
 module.exports.run = async (client, message, args) => {
     if (message.member.hasPermission("MANAGE_MESSAGES")) {
-        message.delete();
         const deleteCount = await parseInt(args[0]);
 
         if(!deleteCount || deleteCount < 1 || deleteCount > 100) {
             return await message.channel.send({embed: {
-                color: 3447003,
+                color: 16734039,
                 title: "Provide a number between 1 and 100!"
-            }}).then(msg => msg.delete(2000));
+            }})
         }
        
         // So we get our messages, and delete them. Simple enough, right?
@@ -17,22 +16,20 @@ module.exports.run = async (client, message, args) => {
             .then(function(list){
                 message.channel.bulkDelete(list);
                 message.channel.send({embed: {
-                    color: 3447003,
+                    color: 16734039,
                     title: deleteCount + " messages pruned! :white_check_mark:"
                 }}).then(msg => msg.delete(2000));
             }, function(err){
                 message.channel.send({embed: {
-                    color: 3447003,
+                    color: 16734039,
                     title: "ERROR: " + err
                 }})
-                .then(msg => msg.delete(2000));
         })  
     } else {
-	message.delete();
 	message.channel.send({embed: {
-                    color: 3447003,
+                    color: 16734039,
                     title: "You don't have premission to prune messages!"
-                }}).then(msg => msg.delete(2000));
+                }})
 	}
 }
 

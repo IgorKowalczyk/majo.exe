@@ -9,19 +9,21 @@ exports.run = (client, message, args) => {
     const user = args[0];
 
     if (reason.length < 1) {
-		message.delete(); 
 		message.channel.send({embed: {
-                    color: 3447003,
+                    color: 16734039,
                     title: "You must supply a reason for the unban."
-                }}).then(msg => msg.delete(2000));
+                }})
 	} else if (!user) {
-		message.delete();
 		message.channel.send({embed: {
-                    color: 3447003,
+                    color: 16734039,
                     title: "You must supply a User Resolvable, such as a user id."
-                }}).then(msg => msg.delete(2000));
+                }})
 	}
     message.guild.unban(user);
+		message.channel.send({embed: {
+                    color: 16734039,
+                    title: "User has been unbaned!"
+                }})
   }
 };
 				

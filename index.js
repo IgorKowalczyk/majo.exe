@@ -6,7 +6,10 @@ const http = require('http');
 const express = require('express');
 const app = express();
 
-let port = require('./config.json').port || 3000;
+const dashboard = process.env.DASHBOARD;
+
+if (dashboard === 'true') {
+let port = require('./config.json').port || 8000;
 app.set('port', port);
 
 const session = require('express-session');
@@ -21,7 +24,10 @@ app.use(session({
 }));
 require('./router')(app);
 
-app.listen(port, () => console.info(`Listening on port ${port}`));
+app.listen(port, () => console.info('Dashboard online on port ${port}'));
+} else {
+console.info('Dashboard is now disabled. To enable it change the "DASHBOARD" value in .env file to "true" (Now is set to "false").')
+}
 
 //const adTimeout = new Set();
 

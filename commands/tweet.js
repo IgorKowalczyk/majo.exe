@@ -23,11 +23,10 @@ module.exports.run = async (client, message, args) => {
         // handle an exception
     });    
   } else {
-        message.delete();
   	        return message.channel.send({embed: {
-            color: 3447003,
-            title: "Enter a message!"
-        }}).then(msg => msg.delete(2300));
+            color: 16734039,
+            title: "Please enter a message!"
+        }})
   }
 }
 

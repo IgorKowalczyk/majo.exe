@@ -1,3 +1,5 @@
+const dashboard = process.env.DASHBOARD;
+if (dashboard === 'true') {
 const router = require('express').Router();
 
 router.get('/', (req, res) => {
@@ -8,3 +10,4 @@ router.get('/server', (req, res) => {
     res.redirect('https://discord.gg/f4KtqNB');
 });
 module.exports = router;
+}

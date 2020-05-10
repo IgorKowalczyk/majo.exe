@@ -11,7 +11,14 @@ module.exports.run = async (client, message, args) => {
         let outputfile = "./output/" + Math.random().toString(36).substr(2, 5) + "sad." + image.getExtension(); // create a random name for the output file
         image.write(outputfile, function () {
           // upload file
-          message.channel.send({file: outputfile}).then(function () {
+    var embed = new Discord.RichEmbed()
+    .setColor("RANDOM")
+    .setTitle(":cry: Very sad image:")
+    .setFooter("Requested by" + message.author)
+    .setTimestamp()
+
+  message.channel.send(embed=embed)
+  message.channel.send({file: outputfile}).then(function () {
             // delete file
             fs.unlink(outputfile);
           });
@@ -19,18 +26,16 @@ module.exports.run = async (client, message, args) => {
       });              
     }).catch(function (err) {
         // handle an exception
-              message.delete();
         return message.channel.send({embed: {
-            color: 3447003,
+            color: 16734039,
             title: "Invaild image!"
-        }}).then(msg => msg.delete(2132));
+        }})
     });    
   } else {
-          message.delete();
         return message.channel.send({embed: {
-            color: 3447003,
-            title: "Enter a image!"
-        }}).then(msg => msg.delete(2132));
+            color: 16734039,
+            title: "Please enter a image!"
+        }})
   }
 }
 

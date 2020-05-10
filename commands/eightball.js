@@ -2,7 +2,7 @@ const Discord = module.require("discord.js");
 
 module.exports.run = async (client, message, args) => {
   if (!args.length) return message.channel.send({embed: {
-         color: 3447003,
+         color: 16734039,
          title: "thee needeth to asketh f'r a f'rtune"
          }})
 

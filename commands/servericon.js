@@ -4,7 +4,7 @@ const fs = require("fs");
 module.exports.run = async (client, message, args) => {
   var embed = new Discord.RichEmbed()
     .setAuthor(message.guild.name, message.guild.iconURL)
-    .setColor("3498db")
+    .setColor("RANDOM")
     .setImage(message.guild.iconURL)
     .setTimestamp()
 

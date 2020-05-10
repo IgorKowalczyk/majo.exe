@@ -12,17 +12,17 @@ module.exports.run = async (client, message, args) => {
           var file = require(`./${command}`);
          } catch (err) {
     message.channel.send({embed: {
-                color: 3447003,
+                color: 16734039,
                 title: "That command does not exist, Take a look at " + `${prefix}` + " help!"
             }})
   }
               
         let newembed = new Discord.RichEmbed()
-          .setAuthor(`:grey_question: Help - ${file.help.type} Command`, message.guild.iconURL)
+          .setAuthor(":grey_question: Help - " + `${file.help.type}` + "Command", message.guild.iconURL)
           .setColor("RANDOM")
           .setImage(client.AvatarURL)
           .setFooter(`Bot created by ${cnf.owner}`,)
-          .addField(file.help.usage, file.help.description)
+          .addField(`${prefix} ` + file.help.usage, file.help.description)
         
         message.channel.send(newembed);  
   }
