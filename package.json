@@ -39,7 +39,8 @@
     "express-session": "^1.15.6",
     "form-data": "^2.3.2",
     "node-fetch": "^2.2.0",
-    "uid-safe": "^2.1.5"
+    "uid-safe": "^2.1.5",
+    "random-puppy": "^1.1.0"
   },
   "engines": {
     "node": "8.x"
