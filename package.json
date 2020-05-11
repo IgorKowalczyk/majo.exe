@@ -40,7 +40,8 @@
     "form-data": "^2.3.2",
     "node-fetch": "^2.2.0",
     "uid-safe": "^2.1.5",
-    "random-puppy": "^1.1.0"
+    "random-puppy": "^1.1.0",
+    "mal-scraper": "^2.6.8"
   },
   "engines": {
     "node": "8.x"
