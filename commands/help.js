@@ -32,7 +32,8 @@ module.exports.run = async (client, message, args) => {
   var General = [];
   var Moderation = [];
   var Fun = [];
-  var Utility= [];
+  var Utility = [];
+  var NSFW = [];
   
   fs.readdir("./commands/", (err, files) => {
 	if (err) return;
