@@ -44,7 +44,8 @@
     "mal-scraper": "^2.6.8",
     "nekos.life": "^2.0.7",
     "math-expression-evaluator": "^1.2.22",
-    "common-tags": "^1.8.0"
+    "common-tags": "^1.8.0",
+    "request-promise-native": "^1.0.8"
   },
   "engines": {
     "node": "8.x"
