@@ -4,10 +4,7 @@ const superagent = require("snekfetch");
         exports.run = async (client, message, args, level) => {
 
             const user = message.mentions.users.first();
-            if(!user) return message.channel.send({embed: {
-                color: 16734039,
-                title: "You must mention someone to slap!!!"
-            }});
+
 
             superagent.get('https://nekos.life/api/v2/img/slap')
                 .end((err, response) => {
