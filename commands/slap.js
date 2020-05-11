@@ -7,7 +7,7 @@ const superagent = require("snekfetch");
             if(!user) return message.channel.send({embed: {
                 color: 16734039,
                 title: "You must mention someone to slap!"
-            }}));
+            }});
 
             superagent.get('https://nekos.life/api/v2/img/slap')
                 .end((err, response) => {
@@ -22,7 +22,7 @@ const superagent = require("snekfetch");
             }).catch((err) => message.channel.send({embed: {
                 color: 16734039,
                 title: "Something went wrong... :cry:"
-            }});
+            }}));
 
         }
 
