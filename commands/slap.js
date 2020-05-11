@@ -22,7 +22,7 @@ const superagent = require("snekfetch");
             }).catch((err) => message.channel.send({embed: {
                 color: 16734039,
                 title: "Something went wrong... :cry:"
-            }}));
+            }});
 
         }
 
