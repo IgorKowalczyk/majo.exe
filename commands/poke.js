@@ -2,22 +2,21 @@ const Discord = require("discord.js");
 const superagent = require("snekfetch");
 
         module.exports.run = async (client, message, args, level) => {
-
             const user = message.mentions.users.first();
             if(!user)
                 return message.channel.send({embed: {
                 color: 16734039,
-                title: "You must mention someone to tickle!"
-            }});
+                title: "You must mention someone to poke!"
+            }})
 
-            superagent.get('https://nekos.life/api/v2/img/tickle')
+            superagent.get('https://nekos.life/api/v2/img/poke')
                 .end((err, response) => {
               const lewdembed = new Discord.RichEmbed()
-              .setTitle(user.username + " just got tickled by " + message.author.username)
+              .setTitle(user.username + " just got poked by " + message.author.username)
               .setImage(response.body.url)
-              .setColor(`RANDOM`)
-              .setDescription((user.toString() + " got tickled by " + message.author.toString()))
-              .setFooter(`._.`)
+              .setColor("RANDOM")
+              .setDescription((user.toString() + " got poked by " + message.author.toString()))
+              .setFooter(`rip`)
               .setURL(response.body.url);
           message.channel.send(lewdembed);
             }).catch((err) => message.channel.send({embed: {
@@ -28,9 +27,8 @@ const superagent = require("snekfetch");
         }
 
 module.exports.help = {
-    name: "tickle",
-    description: "Tickle a user",
-    usage: "tickle <user>",
-    type: "Fun"  
+    name: "poke",
+    description: "Poke a mention user",
+    usage: "poke <user>",
+    type: "Fun" 
 }
-
