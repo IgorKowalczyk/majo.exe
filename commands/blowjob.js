@@ -2,13 +2,17 @@ const superagent = require("snekfetch");
 const Discord = require('discord.js')
 
 module.exports.run = async (client, message, args, level) => {
-    superagent.get('https://nekos.life/api/v2/img/baka')
+    if (!message.channel.nsfw) return message.channel.send({embed: {
+                color: 16734039,
+                title: "You can use this command in an NSFW Channel!"
+            }})
+    superagent.get('https://nekos.life/api/v2/img/blowjob')
         .end((err, response) => {
       const lewdembed = new Discord.RichEmbed()
-      .setTitle("BAKA!!!")
+      .setTitle(":smirk: Hentai blowjob")
       .setImage(response.body.url)
       .setColor(`RANDOM`)
-      .setFooter(`idiot!`)
+      .setFooter(`Tags: blowjob`)
       .setURL(response.body.url);
   message.channel.send(lewdembed);
     }).catch((err) => message.channel.send({embed: {
@@ -19,8 +23,8 @@ module.exports.run = async (client, message, args, level) => {
 }
 
 module.exports.help = {
-    name: "baka",
-    description: "BAKA!!!",
-    usage: "baka",
-    type: "Fun" 
+    name: "blowjob",
+    description: "Display a random blowjob image/gif",
+    usage: "blowjob",
+    type: "NSFW" 
 }

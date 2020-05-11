@@ -49,6 +49,7 @@ module.exports.run = async (client, message, args) => {
       if (type == "Moderation") Moderation.push([namelist, desclist, usage]);
       if (type == "Fun") Fun.push([namelist, desclist, usage]);
       if (type == "Utility") Utility.push([namelist, desclist, usage]);
+      if (type == "NSFW") NSFW.push([namelist, desclist, usage]);
 
       if (namelist == "userinfo") {
         done = true
@@ -68,6 +69,7 @@ module.exports.run = async (client, message, args) => {
 		  .addField(":notes: Music", "Soon!" ,)
 		  .addField(":moneybag: Leveling system", "Soon!" ,)
           .addField(":toolbox: Utility", Utility.map((roles => roles[0])).join(", ") ,)
+          .addField(":smirk: NSFW", NSFW.map((roles => roles[0])).join(", ") ,)
           .addField(":grey_question: Command Information", `${prefix}` + " help <command>")
         
         message.channel.send(embed)
