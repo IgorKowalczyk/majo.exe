@@ -15,18 +15,20 @@ module.exports.run = (client, message, args) => {
             }})
 	}
 
-        if (message.content.toUpperCase().includes('LOLI') || message.content.toUpperCase().includes('GORE')) 
+        if (message.content.toUpperCase().includes('LOLI') || message.content.toUpperCase().includes('GORE')) {
+		message.react('💢');
 		return message.channel.send({embed: {
                 color: 16734039,
                 title: "That kind of stuff is not allowed! Not even in NSFW channels!"
             }})
+		}
         var query = message.content.split(/\s+/g).slice(1).join(" ");
         booru.search('danbooru', [query], {nsfw: true, limit: 1, random: true })
             .then(booru.commonfy)
             .then(images => {
                 for (let image of images) {
                     const embed = new Discord.RichEmbed()
-                    .setTitle("Danbooru:")
+                    .setTitle(":smirk: Danbooru")
                     .setImage(image.common.file_url)
                     .setColor('RANDOM')
                     .setFooter(`Tags: danbooru ${query}`)

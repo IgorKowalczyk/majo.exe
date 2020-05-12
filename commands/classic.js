@@ -12,7 +12,7 @@ module.exports.run = async (client, message, args, level) => {
     superagent.get('https://nekos.life/api/v2/img/classic')
         .end((err, response) => {
       const lewdembed = new Discord.RichEmbed()
-      .setTitle(":smirk: Hentai classic")
+      .setTitle(":smirk: Classic")
       .setImage(response.body.url)
       .setColor(`RANDOM`)
       .setFooter(`Tags: classic`)

@@ -1,18 +1,21 @@
 const superagent = require("snekfetch");
 const Discord = require('discord.js')
 
-exports.run = async (client, message, args, level) => {
-    if (!message.channel.nsfw) return message.channel.send({embed: {
+module.exports.run = async (client, message, args, level) => {
+     if (!message.channel.nsfw) {
+		message.react('💢');
+		return message.channel.send({embed: {
                 color: 16734039,
                 title: "You can use this command in an NSFW Channel!"
             }})
-    superagent.get('https://nekos.life/api/v2/img/cum')
+	}
+    superagent.get('https://nekos.life/api/v2/img/erokemo')
         .end((err, response) => {
       const lewdembed = new Discord.RichEmbed()
-      .setTitle(":smirk: Cum")
+      .setTitle(":smirk: Eroneko")
       .setImage(response.body.url)
       .setColor(`RANDOM`)
-      .setFooter(`Tags: cum`)
+      .setFooter(`Tags: eroneko`)
       .setURL(response.body.url);
   message.channel.send(lewdembed);
     }).catch((err) => message.channel.send({embed: {
@@ -23,8 +26,8 @@ exports.run = async (client, message, args, level) => {
 }
 
 module.exports.help = {
-    name: "cum",
-    description: "Display a random cum image/gif",
-    usage: "cum",
+    name: "eroneko",
+    description: "Display a random eroneko image/gif",
+    usage: "eroneko",
     type: "NSFW" 
 }
