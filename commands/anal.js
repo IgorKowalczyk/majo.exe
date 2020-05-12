@@ -2,10 +2,13 @@ const superagent = require("snekfetch");
 const Discord = require('discord.js')
 
 module.exports.run = async (client, message, args, level) => {
-    if (!message.channel.nsfw) return message.channel.send({embed: {
+    if (!message.channel.nsfw) {
+		message.react('💢');
+		return message.channel.send({embed: {
                 color: 16734039,
                 title: "You can use this command in an NSFW Channel!"
             }})
+	}
     superagent.get('https://nekos.life/api/v2/img/anal')
         .end((err, response) => {
       const lewdembed = new Discord.RichEmbed()
