@@ -1,7 +1,7 @@
 const superagent = require("snekfetch");
 const Discord = require('discord.js')
 
-exports.run = async (client, message, args, level) => {
+module.exports.run = async (client, message, args, level) => {
     if (!message.channel.nsfw) return message.channel.send({embed: {
                 color: 16734039,
                 title: "You can use this command in an NSFW Channel!"
@@ -9,7 +9,7 @@ exports.run = async (client, message, args, level) => {
     superagent.get('https://nekos.life/api/v2/img/classic')
         .end((err, response) => {
       const lewdembed = new Discord.RichEmbed()
-      .setTitle(":smirk: Hentai")
+      .setTitle(":smirk: Hentai classic")
       .setImage(response.body.url)
       .setColor(`RANDOM`)
       .setFooter(`Tags: classic`)
@@ -25,6 +25,6 @@ exports.run = async (client, message, args, level) => {
 module.exports.help = {
     name: "classic",
     description: "Display a random classic sex image/gif",
-    usage: "slassic",
+    usage: "classic",
     type: "NSFW" 
 }

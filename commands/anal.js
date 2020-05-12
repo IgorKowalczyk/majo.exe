@@ -9,7 +9,7 @@ module.exports.run = async (client, message, args, level) => {
     superagent.get('https://nekos.life/api/v2/img/anal')
         .end((err, response) => {
       const lewdembed = new Discord.RichEmbed()
-      .setTitle(":smirk Hentai")
+      .setTitle(":smirk: Hentai")
       .setImage(response.body.url)
       .setColor(`RANDOM`)
       .setFooter(`Tags: anal`)

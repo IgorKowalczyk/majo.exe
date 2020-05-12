@@ -19,7 +19,7 @@ module.exports.run = async (client, message, args, level) => {
 }).then(function(res)   {
 
 const lewdembed = new Discord.RichEmbed()
-      .setTitle(":smirk Ass")
+      .setTitle(":smirk: Ass")
       .setColor(`RANDOM`)
       .setImage("attachment://file.png").attachFiles([{ attachment: res, name: "file.png" }])
 	  .setFooter(`Tags: ass`)
