@@ -18,7 +18,7 @@ module.exports.run = async (client, message, args) => {
   }
               
         let newembed = new Discord.RichEmbed()
-          .setAuthor(":grey_question: Help - " + `${file.help.type}` + "Command", message.guild.iconURL)
+          .setAuthor(":grey_question: Help - " + `${file.help.type}` + " Command", message.guild.iconURL)
           .setColor("RANDOM")
           .setImage(client.AvatarURL)
           .setFooter(`Bot created by ${cnf.owner}`,)

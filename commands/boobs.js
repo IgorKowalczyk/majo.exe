@@ -32,7 +32,7 @@ const lewdembed = new Discord.RichEmbed()
 
 module.exports.help = {
     name: "boobs",
-    description: "Display a random boobs image/gif",
+    description: "Display a random boobs image/gif (PS. Small is the best <3)",
     usage: "boobs",
     type: "NSFW" 
 }
