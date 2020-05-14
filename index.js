@@ -131,6 +131,7 @@ return message.channel.send({embed: {
                 title: "I can't send message longer than 2000 characters :cry:"
             }})
 }
+
 client.on("message", message => {
   if (message.author.bot) return;
   if (!message.guild) return;
