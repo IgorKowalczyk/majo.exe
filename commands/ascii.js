@@ -21,9 +21,8 @@ return message.channel.send({embed: {
                 color: 16734039,
                 title: "Something went wrong... :cry:"
             }})
-      } else {
+      }
       message.channel.send(`${data}`, {code: 'AsciiArt'});
-	  }
   });
 
 
