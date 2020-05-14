@@ -22,11 +22,6 @@ return message.channel.send({embed: {
                 title: "Something went wrong... :cry:"
             }})
       }
-      const ok = new Discord.RichEmbed()
-      .setTitle("Text converted to Ascii format:")
-	  .addField(`${data}`, + `AsciiArt`)
-      .setColor(`RANDOM`)
-  message.channel.send(ok);
   message.channel.send(`${data}`, {code: 'AsciiArt'});
   });
 
