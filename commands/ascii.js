@@ -3,7 +3,7 @@ const Discord = require('discord.js')
 
 module.exports.run = (client, message, args, tools) => {
 
-  var maxLen = 100
+  var maxLen = 50
 
   if(args.join(' ').length > maxLen) return message.channel.send({embed: {
                 color: 16734039,
