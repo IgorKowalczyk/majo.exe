@@ -124,6 +124,13 @@ setInterval(async () => {
     }
 }, 10000);
 
+
+if (message.length >= 2000) {
+return message.channel.send({embed: {
+                color: 16734039,
+                title: "I can't send message longer than 2000 characters :cry:"
+            }})
+}
 client.on("message", message => {
   if (message.author.bot) return;
   if (!message.guild) return;

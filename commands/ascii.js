@@ -3,11 +3,11 @@ const Discord = require('discord.js')
 
 module.exports.run = (client, message, args, tools) => {
 
-  var maxLen = 100
+  var maxLen = 50
 
   if(args.join(' ').length > maxLen) return message.channel.send({embed: {
                 color: 16734039,
-                title: "The max length is ${maxLen}!"
+                title: "The max length is" + `${maxLen}` + "!"
             }})
 
   if(!args[0])return message.channel.send({embed: {
@@ -21,8 +21,9 @@ return message.channel.send({embed: {
                 color: 16734039,
                 title: "Something went wrong... :cry:"
             }})
-      }
+      } else {
       message.channel.send(`${data}`, {code: 'AsciiArt'});
+	  }
   });
 
 
