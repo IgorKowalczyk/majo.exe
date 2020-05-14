@@ -125,19 +125,18 @@ setInterval(async () => {
 }, 10000);
 
 
-if (message.length >= 2000) {
-return message.channel.send({embed: {
-                color: 16734039,
-                title: "I can't send message longer than 2000 characters :cry:"
-            }})
-}
-
 client.on("message", message => {
   if (message.author.bot) return;
   if (!message.guild) return;
   
   if(message.content.indexOf(prefix) !== 0) return;
 
+if (message.length >= 2000) {
+return message.channel.send({embed: {
+                color: 16734039,
+                title: "I can't send message longer than 2000 characters :cry:"
+            }})
+}
   // This is the best way to define args. Trust me.
   const args = message.content.slice(prefix.length).trim().split(/ +/g);
   const command = args.shift().toLowerCase();
