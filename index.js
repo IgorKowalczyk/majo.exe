@@ -64,7 +64,7 @@ client.on("guildMemberAdd", (member) => {
   let embed = new Discord.RichEmbed()
     .setDescription(`**${member.displayName}#${member.user.discriminator}** has joined the server.`)
     .setThumbnail(member.user.displayAvatarURL)
-    .setColor("55A202")
+    .setColor("RANDOM")
     .setTimestamp()
     .setFooter(`Total members: ${member.guild.memberCount}`)    
     
@@ -82,7 +82,7 @@ client.on("guildMemberRemove", (member) => {
   let embed = new Discord.RichEmbed()
     .setDescription(`**${member.displayName}#${member.user.discriminator}** left the server.`)
     .setThumbnail(member.user.displayAvatarURL)
-    .setColor("D0021B")
+    .setColor("RANDOM")
     .setTimestamp()
     .setFooter(`Total members: ${member.guild.memberCount}`)    
     
@@ -95,11 +95,10 @@ client.on('message', message=> {
      if (message.author.bot) return;
      if (!message.guild) return;
 	 
-    message.channel.send({embed: {
-        color: 3447003,
+    return message.channel.send({embed: {
+        color: 16734039,
         title: "Hey! I can only respond to message with my prefix (" + `${prefix}` + ")"
         }})
-	return;
 }
 });
 
@@ -150,7 +149,7 @@ client.on("message", message => {
 	}*/
   } catch (err) {
     message.channel.send({embed: {
-                color: 3447003,
+                color: 16734039,
                 title: "That command does not exist, Take a look at " + `${prefix}` + " help!"
             }})
   }
