@@ -131,7 +131,7 @@ client.on("message", message => {
   
   if(message.content.indexOf(prefix) !== 0) return;
 
-if (message.length >= 2000) {
+if (message.length >= 1999) {
 return message.channel.send({embed: {
                 color: 16734039,
                 title: "I can't send message longer than 2000 characters :cry:"
