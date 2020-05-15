@@ -1,8 +1,7 @@
 const Discord = require("discord.js");
 const db = require("quick.db");
 
-exports.run = async (bot, message, args) => {
-  if(!message.content.startsWith('m!'))return;  
+module.exports.run = async (client, message, args) => {
   let ownerID = '694585818383122472'
   if(message.author.id !== ownerID) return;
 
@@ -20,6 +19,8 @@ exports.run = async (bot, message, args) => {
 };
 
 module.exports.help = {
-  name:"add",
-  aliases: ["addmoney"]
+    name: "addmoney",
+    description: "Give money to mentioned user",
+    usage: "addmoney <user> <money>",
+    type: "General"  
 }

@@ -2,8 +2,7 @@ const Discord = require("discord.js");
 const db = require("quick.db");
 const ms = require("parse-ms");
 
-module.exports.run = async (bot, message, args) => {
-  if(!message.content.startsWith('m!'))return;  
+module.exports.run = async (client, message, args) => {
 
   let user = message.author;
 
@@ -33,6 +32,8 @@ module.exports.run = async (bot, message, args) => {
 
 
 module.exports.help = {
-  name:"beg",
-  aliases: [""]
+    name: "bag",
+    description: "Bag and give a money",
+    usage: "bag",
+    type: "General"  
 }

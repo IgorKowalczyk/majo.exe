@@ -2,9 +2,7 @@ const Discord = require("discord.js");
 const db = require("quick.db");
 const ms = require("parse-ms");
 
-module.exports.run = async (bot, message, args) => {
-  if(!message.content.startsWith('m!'))return;  
-
+module.exports.run = async (client, message, args) => {
   let user = message.author;
 
   let timeout = 86400000;
@@ -33,6 +31,8 @@ module.exports.run = async (bot, message, args) => {
 
 
 module.exports.help = {
-  name:"daily",
-  aliases: ["day"]
+    name: "daily",
+    description: "Get a daily money",
+    usage: "daily",
+    type: "General"  
 }

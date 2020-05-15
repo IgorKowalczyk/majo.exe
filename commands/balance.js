@@ -1,8 +1,7 @@
 const Discord = require("discord.js");
 const db = require("quick.db");
 
-module.exports.run = async (bot, message, args, utils) => {
-  if(!message.content.startsWith('m!'))return;  
+module.exports.run = async (client, message, args, utils) => {
 
   let user = message.mentions.members.first() || message.author;
 
@@ -20,6 +19,8 @@ module.exports.run = async (bot, message, args, utils) => {
 };
 
 module.exports.help = {
-  name:"balance",
-  aliases: ["bal"]
+    name: "balance",
+    description: "Display a your or a mentioned user balance",
+    usage: "balance <mention>",
+    type: "General"  
 }
