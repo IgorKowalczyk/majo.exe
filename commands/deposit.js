@@ -14,38 +14,38 @@ module.exports.run = async (client, message, args) => {
     let bank = await db.fetch(`bank_${message.guild.id}_${user.id}`)
 
     let embedbank = new Discord.RichEmbed()
-    .setColor('#FFFFFF')
-    .setDescription(":cross: You don't have any money to deposit")
+    .setColor('RANDOM')
+    .setDescription(":x: You don't have any money to deposit")
 
     if(money === 0) return message.channel.send(embedbank)
 
     db.add(`bank_${message.guild.id}_${user.id}`, money)
     db.subtract(`money_${message.guild.id}_${user.id}`, money)
     let embed5 = new Discord.RichEmbed()
-  .setColor("#FFFFFF")
+  .setColor("RANDOM")
   .setDescription(`:white_check_mark:  You have deposited all your coins into your bank`);
   message.channel.send(embed5)
   
   } else {
   
   let embed2 = new Discord.RichEmbed()
-  .setColor("#FFFFFF")
-  .setDescription(`:cross: Specify an amount to deposit`);
+  .setColor("RANDOM")
+  .setDescription(`:x: Specify an amount to deposit`);
   
   if (!args[0]) {
       return message.channel.send(embed2)
       .catch(err => console.log(err))
   }
   let embed3 = new Discord.RichEmbed()
-  .setColor("#FFFFFF")
-  .setDescription(`:cross: You can't deposit negative money`);
+  .setColor("RANDOM")
+  .setDescription(`:x: You can't deposit negative money`);
 
   if (message.content.includes('-')) { 
       return message.channel.send(embed3)
   }
   let embed4 = new Discord.RichEmbed()
   .setColor("RANDOM")
-  .setDescription(`:cross: You don't have that much money`);
+  .setDescription(`:x: You don't have that much money`);
 
   if (member < args[0]) {
       return message.channel.send(embed4)

@@ -15,7 +15,7 @@ module.exports.run = async (client, message, args) => {
   
     let timeEmbed = new Discord.RichEmbed()
     .setColor("RANDOM")
-    .setDescription(`:cross: You've already collected your daily reward\n\nCollect it again in ${time.hours}h ${time.minutes}m ${time.seconds}s `);
+    .setDescription(`:x: You've already collected your daily reward\n\nCollect it again in ${time.hours}h ${time.minutes}m ${time.seconds}s `);
     message.channel.send(timeEmbed)
   } else {
     let moneyEmbed = new Discord.RichEmbed()

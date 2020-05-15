@@ -27,7 +27,7 @@ module.exports.run = async (client, message, args) => {
     } else if(args[0] == 'nikes') {
         let Embed2 = new Discord.RichEmbed()
         .setColor("RANDOM")
-        .setDescription(`:cross: You need 600 coins to purchase some Nikes`);
+        .setDescription(`:x: You need 600 coins to purchase some Nikes`);
 
         if (author < 600) return message.channel.send(Embed2)
        
@@ -43,7 +43,7 @@ module.exports.run = async (client, message, args) => {
     } else if(args[0] == 'car') {
         let Embed2 = new Discord.RichEmbed()
         .setColor("RANDOM")
-        .setDescription(`:cross:You need 800 coins to purchase a new car`);
+        .setDescription(`:x:You need 800 coins to purchase a new car`);
 
         if (author < 800) return message.channel.send(Embed2)
        
@@ -59,7 +59,7 @@ module.exports.run = async (client, message, args) => {
     } else if(args[0] == 'mansion') {
         let Embed2 = new Discord.RichEmbed()
         .setColor("RANDOM")
-        .setDescription(`:cross: You need 1200 coins to purchase a Mansion`);
+        .setDescription(`:x: You need 1200 coins to purchase a Mansion`);
 
         if (author < 1200) return message.channel.send(Embed2)
        

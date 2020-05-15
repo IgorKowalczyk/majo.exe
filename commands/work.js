@@ -14,7 +14,7 @@ module.exports.run = async (client, message, args) => {
     
         let timeEmbed = new Discord.RichEmbed()
         .setColor("RANDOM")
-        .setDescription(`:cross:  You have already worked recently\n\nTry again in ${time.minutes}m ${time.seconds}s `);
+        .setDescription(`:x:  You have already worked recently\n\nTry again in ${time.minutes}m ${time.seconds}s `);
         message.channel.send(timeEmbed)
       } else {
 
