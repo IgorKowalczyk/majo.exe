@@ -31,9 +31,9 @@ module.exports.run = async (client, message, args) => {
 
 
 module.exports.help = {
-    name: "work",
-    description: "Work as a Programmer, Builder, Waiter, Busboy, Chied, Mechanic and get money",
-    usage: "work",
+    name: "rob",
+    description: "Rob someone and get a coins",
+    usage: "rob",
     type: "Economy"  
 }
 
