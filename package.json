@@ -48,7 +48,8 @@
     "request-promise-native": "^1.0.8",
     "ascii-table": "0.0.9",
     "booru": "^2.2.1",
-    "figlet": "^1.3.0"
+    "figlet": "^1.3.0",
+    "discord-giveaways": "^3.2.3"
   },
   "engines": {
     "node": "8.x"
