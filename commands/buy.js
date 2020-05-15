@@ -77,7 +77,7 @@ module.exports.run = async (client, message, args) => {
 	let list = new Discord.RichEmbed()
         .setColor("RANDOM")
         .setTitle("List of all items you have to buy:")
-	.addField("Bronze", "Cost: 3500 coins")
+     	.addField("Bronze", "Cost: 3500 coins")
 		.addField("Nikes", "Cost: 600 coins")
 		.addField("Car", "Cost: 800 coins")
 		.addField("Mansion", "Cost: 1200 coins")
