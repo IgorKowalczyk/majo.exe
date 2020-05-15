@@ -159,6 +159,7 @@ return message.channel.send({embed: {
                 color: 16734039,
                 title: "That command does not exist, Take a look at " + `${prefix}` + " help!"
             }})
+			console.log(err);
   }
 });
 
