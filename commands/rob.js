@@ -6,9 +6,9 @@ module.exports.run = async (client, message, args) => {
 let user = message.mentions.members.first()
 if (!user) return;
 
-let targetuser = await db.fetch(`money_${message.guild.id}_${user.id}`)
-let author = await db.fetch(`rob_${message.guild.id}_${user.id}`)
-let author2 = await db.fetch(`money_${message.guild.id}_${user.id}`)
+let targetuser = await db.fetch(`money_${message.guild.id}_${user.id}`);
+let author = await db.fetch(`rob_${message.guild.id}_${user.id}`);
+let author2 = await db.fetch(`money_${message.guild.id}_${user.id}`);
 let random = random = Math.floor(Math.random() * 100) + 1;
 
 if(author2 === 0) return;

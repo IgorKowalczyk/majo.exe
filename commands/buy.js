@@ -85,7 +85,7 @@ module.exports.run = async (client, message, args) => {
     } else {
         let embed3 = new Discord.RichEmbed()
         .setColor("RANDOM")
-        .setTitle(":cross: Enter an item to buy, type" + `${prefix}` + "list to show all things")
+        .setTitle(":cross: Enter an item to buy, type " + `${prefix}` + " list to show all things")
         message.channel.send(embed3)
     }
 
