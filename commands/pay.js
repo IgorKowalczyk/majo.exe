@@ -2,36 +2,34 @@ const Discord = require("discord.js");
 const db = require("quick.db");
 const ms = require("parse-ms");
 
-module.exports.run = async (bot, message, args) => {
-  if(!message.content.startsWith('m!'))return;  
-
+module.exports.run = async (client, message, args) => { 
   let user = message.mentions.members.first() 
 
   let member = db.fetch(`money_${message.guild.id}_${message.author.id}`)
 
   let embed1 = new Discord.RichEmbed()
-  .setColor("#FFFFFF")
+  .setColor("RANDOM")
   .setDescription(`:cross: Mention someone to pay`);
 
   if (!user) {
       return message.channel.send(embed1)
   }
   let embed2 = new Discord.RichEmbed()
-  .setColor("#FFFFFF")
+  .setColor("RANDOM")
   .setDescription(`:cross: Specify an amount to pay`);
   
   if (!args[1]) {
       return message.channel.send(embed2)
   }
   let embed3 = new Discord.RichEmbed()
-  .setColor("#FFFFFF")
+  .setColor("RANDOM")
   .setDescription(`:cross: You can't pay someone negative money`);
 
   if (message.content.includes('-')) { 
       return message.channel.send(embed3)
   }
   let embed4 = new Discord.RichEmbed()
-  .setColor("#FFFFFF")
+  .setColor("RANDOM")
   .setDescription(`:cross: You don't have that much money`);
 
   if (member < args[1]) {
@@ -39,7 +37,7 @@ module.exports.run = async (bot, message, args) => {
   }
 
   let embed5 = new Discord.RichEmbed()
-  .setColor("#FFFFFF")
+  .setColor("RANDOM")
   .setDescription(`:white_check_mark:  You have payed ${user.user.username} ${args[1]} coins`);
 
   message.channel.send(embed5)
@@ -49,6 +47,8 @@ module.exports.run = async (bot, message, args) => {
 }
 
 module.exports.help = {
-  name:"pay",
-  aliases: [""]
+    name: "pay",
+    description: "Pay money to mentioned user",
+    usage: "pay <mention> <money>",
+    type: "Economy"  
 }

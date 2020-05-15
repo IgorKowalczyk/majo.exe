@@ -44,7 +44,7 @@ module.exports.run = async (client, message, args) => {
       return message.channel.send(embed3)
   }
   let embed4 = new Discord.RichEmbed()
-  .setColor("#FFFFFF")
+  .setColor("RANDOM")
   .setDescription(`:cross: You don't have that much money`);
 
   if (member < args[0]) {
@@ -52,7 +52,7 @@ module.exports.run = async (client, message, args) => {
   }
 
   let embed5 = new Discord.RichEmbed()
-  .setColor("#FFFFFF")
+  .setColor("RANDOM")
   .setDescription(`:white_check_mark:  You have deposited ${args[0]} coins into your bank`);
 
   message.channel.send(embed5)
@@ -62,7 +62,7 @@ module.exports.run = async (client, message, args) => {
 }
 module.exports.help = {
     name: "deposit",
-    description: "Send money to a user",
-    usage: "deposit <mention>",
-    type: "General"  
+    description: "Deposit money to bank",
+    usage: "deposit <money>",
+    type: "Economy"  
 }

@@ -15,12 +15,12 @@ module.exports.run = async (client, message, args) => {
     let time = ms(timeout - (Date.now() - beg));
   
     let timeEmbed = new Discord.RichEmbed()
-    .setColor("#FFFFFF")
+    .setColor("RANDOM")
     .setDescription(`:cross: You've already begged recently\n\nBeg again in ${time.minutes}m ${time.seconds}s `);
     message.channel.send(timeEmbed)
   } else {
     let moneyEmbed = new Discord.RichEmbed()
-  .setColor("#FFFFFF")
+  .setColor("RANDOM")
   .setDescription(`:white_check_mark:  You've begged and received ${amount} coins`);
   message.channel.send(moneyEmbed)
   db.add(`money_${message.guild.id}_${user.id}`, amount)
@@ -32,8 +32,8 @@ module.exports.run = async (client, message, args) => {
 
 
 module.exports.help = {
-    name: "bag",
-    description: "Bag and give a money",
-    usage: "bag",
-    type: "General"  
+    name: "beg",
+    description: "Beg money",
+    usage: "beg",
+    type: "Economy"  
 }

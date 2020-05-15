@@ -33,6 +33,7 @@ module.exports.run = async (client, message, args) => {
   var Moderation = [];
   var Fun = [];
   var Utility = [];
+  var Economy = [];
   var NSFW = [];
   
   fs.readdir("./commands/", (err, files) => {
@@ -50,6 +51,7 @@ module.exports.run = async (client, message, args) => {
       if (type == "Moderation") Moderation.push([namelist, desclist, usage]);
       if (type == "Fun") Fun.push([namelist, desclist, usage]);
       if (type == "Utility") Utility.push([namelist, desclist, usage]);
+	  if (type == "Economy") Economy.push([namelist, desclist, usage]);
       if (type == "NSFW") NSFW.push([namelist, desclist, usage]);
 
       if (namelist == "userinfo") {
@@ -68,7 +70,7 @@ module.exports.run = async (client, message, args) => {
           .addField(":hammer: Moderation", Moderation.map((roles => roles[0])).join(", ") ,)
           .addField(":rofl: Fun", Fun.map((roles => roles[0])).join(", ") ,)
 		  .addField(":notes: Music", "Soon!" ,)
-		  .addField(":moneybag: Leveling system", "Soon!" ,)
+		  .addField(":moneybag: Economy system", Economy.map((roles => roles[0])).join(", ") ,)
           .addField(":toolbox: Utility", Utility.map((roles => roles[0])).join(", ") ,)
           .addField(":smirk: NSFW", NSFW.map((roles => roles[0])).join(", ") ,)
           .addField(":grey_question: Command Information", `${prefix}` + " help <command>")

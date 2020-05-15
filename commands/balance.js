@@ -13,7 +13,7 @@ module.exports.run = async (client, message, args, utils) => {
   if (bank === null) bank = 0;
 
   let moneyEmbed = new Discord.RichEmbed()
-  .setColor("#FFFFFF")
+  .setColor("RANDOM")
   .setDescription(`**${user}'s Balance**\n\nPocket: ${bal}\nBank: ${bank}`);
   message.channel.send(moneyEmbed)
 };
@@ -22,5 +22,5 @@ module.exports.help = {
     name: "balance",
     description: "Display a your or a mentioned user balance",
     usage: "balance <mention>",
-    type: "General"  
+    type: "Economy"  
 }

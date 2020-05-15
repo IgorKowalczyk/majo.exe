@@ -12,8 +12,8 @@ module.exports.run = async (client, message, args) => {
     let bal = await db.fetch(`money_${message.guild.id}_${user.id}`)
 
     let moneyEmbed = new Discord.RichEmbed()
-    .setColor("#FFFFFF")
-    .setDescription(`:white_check_mark: Added ${args[1]} coins\n\nNew Balance: ${bal}`);
+    .setColor("RANDOM")
+    .setTitle(`:white_check_mark: Added ${args[1]} coins\n\nNew Balance: ${bal}`);
     message.channel.send(moneyEmbed)
 
 };
@@ -22,5 +22,5 @@ module.exports.help = {
     name: "addmoney",
     description: "Give money to mentioned user",
     usage: "addmoney <user> <money>",
-    type: "General"  
+    type: "Economy"  
 }
