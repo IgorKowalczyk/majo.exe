@@ -22,7 +22,7 @@ giveEmbed.setDescription(item);
 var embedSent = await message.channel.send(giveEmbed);
 embedSent.react("🎉");
 setTimeout(function() {
-  var peopleReacted = embedSent.reactions.get("🎉").users;
+  var peopleReacted = embedSent.reactions.get("🎉");
   var winners = [];
 
   // Checks if fewer people reacted than the winnerCount allows users to win
