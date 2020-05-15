@@ -52,7 +52,7 @@ setTimeout(function() {
     haveHas = "have";
   }
   message.channel.send(`${winnerMsg} ${haveHas} won ${item}`);
-}
+})
 }
 
 module.exports.help = {
