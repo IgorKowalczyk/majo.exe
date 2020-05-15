@@ -1,5 +1,5 @@
  
- const Discord = require("discord.js"),
+ const Discord = require("discord.js");
  const { GiveawaysManager } = require("discord-giveaways");
 // Starts updating currents giveaways
 const manager = new GiveawaysManager(client, {
