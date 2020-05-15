@@ -1,6 +1,7 @@
  
  const Discord = require("discord.js");
  const { GiveawaysManager } = require("discord-giveaways");
+ const client = new Discord.Client();
 // Starts updating currents giveaways
 const manager = new GiveawaysManager(client, {
     storage: "./giveaways.json",
