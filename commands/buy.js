@@ -76,11 +76,11 @@ module.exports.run = async (client, message, args) => {
 	} else if(args[0] == 'list') {
 	let list = new Discord.RichEmbed()
         .setColor("RANDOM")
-        .setTitle("List of all items you have to buy:");
-		.addField("Bronze", "Cost: 3500 coins");
-		.addField("Nikes", "Cost: 600 coins");
-		.addField("Car", "Cost: 800 coins");
-		.addField("Mansion", "Cost: 1200 coins");
+        .setTitle("List of all items you have to buy:")
+	.addField("Bronze", "Cost: 3500 coins")
+		.addField("Nikes", "Cost: 600 coins")
+		.addField("Car", "Cost: 800 coins")
+		.addField("Mansion", "Cost: 1200 coins")
 		message.channel.send(list)
     } else {
         let embed3 = new Discord.RichEmbed()
