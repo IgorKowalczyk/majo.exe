@@ -166,8 +166,6 @@ return message.channel.send({embed: {
 client.on("guildCreate", guild => {
   // This event triggers when the bot joins a guild.
   const defaultChannel = getDefaultChannel(guild); 
-  newUsers.set(member.id, member.user);
-
   let embed = new Discord.RichEmbed()
     .setTitle(`Hi!`)
 	.setDescription(`Thank you for adding me to the server!`)
