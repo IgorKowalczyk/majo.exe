@@ -1,11 +1,15 @@
 const Discord = require("discord.js");
 const db = require("quick.db");
+const prefix = process.env.PREFIX;
 
 module.exports.run = async (client, message, args) => {
   if (message.member.hasPermission("MANAGE_MESSAGES")) {
   let user = message.mentions.members.first();
 
-    if (isNaN(args[1])) return;
+    if (isNaN(args[1])) message.channel.send({embed: {
+                    color: 16734039,
+                    title: "Incorrect use! You must provide all arguments. Use " + `${prefix}` + " addmoney <mention> <money>"
+                }})
     db.add(`money_${message.guild.id}_${user.id}`, args[1])
     let bal = await db.fetch(`money_${message.guild.id}_${user.id}`)
 
