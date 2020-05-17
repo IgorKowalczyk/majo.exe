@@ -6,9 +6,13 @@ module.exports.run = async (client, message, args) => {
   if (message.member.hasPermission("MANAGE_MESSAGES")) {
   let user = message.mentions.members.first();
 
+if (!user) return message.channel.send({embed: {
+                    color: 16734039,
+                    title: "You must mention someone to add money!"
+                }})
     if (isNaN(args[1])) return message.channel.send({embed: {
                     color: 16734039,
-                    title: "Incorrect use! You must provide all arguments. Use " + `${prefix}` + " addmoney <mention> <money>"
+                    title: "You must enter the amount of money to add!"
                 }})
     db.add(`money_${message.guild.id}_${user.id}`, args[1])
     let bal = await db.fetch(`money_${message.guild.id}_${user.id}`)
