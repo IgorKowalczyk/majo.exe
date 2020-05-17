@@ -1,6 +1,6 @@
 # Majo.exe
 
-An advanced discord bot, contains commands for moderation, fun, music, economics and NSFW. It has 100+ commands.
+An advanced Discord bot, contains commands for moderation, fun, music, economics and NSFW. It has 100+ commands.
 
 
 <img src="https://top.gg/api/widget/681536055572430918.svg?usernamecolor=99aab5&topcolor=23272a&certifiedcolor=99aab5&middlecolor=2c2f33&datacolor=fff&labelcolor=99aab5"><br>
@@ -13,15 +13,15 @@ Go to [this link](https://igorkowalczyk.github.io/majobot/invite) and authorize 
 
 # Hosting
 
-We host this bot. Majo will be online 24/7.
+We host this bot. Majo.exe will be online 24/7.
 
 # Self-Hosting
 
 1. Clone [this repository](https://github.com/igorkowalczyk/majobot)
 2. Run `npm install`
-3. Grab a token on [Discord's developer portal](https://discordapp.com/developers/applications)
+3. Grab a token on [Discord's developer portal](https://discord.com/developers/applications)
 4. Create a `.env` file and add a `BOT_TOKEN` environmental variable whose value is the token above, add a `PREFIX` - this is your bot prefix and add a `DASHBOARD=[true/false]` value - if `true` the bot will be hosted with web dasboard, if `false` the bot will be hosted without web dashboard (The `.env` file was private).
-5. Run `npm run dev`
+5. Run `node index.js`
 
 ## Example `.env` file
 
