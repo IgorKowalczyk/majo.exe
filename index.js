@@ -24,9 +24,9 @@ app.use(session({
 }));
 require('./router')(app);
 
-app.listen(port, () => console.info('Dashboard online on port ${port}'));
+app.listen(port, () => console.info('Dashboard online on port ' + `${port}`));
 } else {
-console.info('Dashboard is now disabled. To enable it change the "DASHBOARD" value in .env file to "true" (Now is set to "false").')
+console.info('Dashboard is now disabled. To enable it change the "DASHBOARD" value in .env file to "true" (Now is set to "' + `${dashboard}` +'").')
 }
 
 //const adTimeout = new Set();
