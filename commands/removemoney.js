@@ -12,7 +12,6 @@ module.exports.run = async (client, message, args) => {
                     color: 16734039,
                     title: "You must enter the amount of money to remove!"
                 }})
-    db.subtract(`money_${message.guild.id}_${user.id}`, args[1])
     let bal = await db.fetch(`money_${message.guild.id}_${user.id}`)
 	if (bal < 0) {
 		return message.channel.send({embed: {
@@ -21,6 +20,8 @@ module.exports.run = async (client, message, args) => {
                 }})
 	}
 
+    db.subtract(`money_${message.guild.id}_${user.id}`, args[1])
+	
     let moneyEmbed = new Discord.RichEmbed()
     .setColor("RANDOM")
     .setDescription(`:white_check_mark: Removed ${args[1]} coins\n\nNew Balance: ${bal}`);
