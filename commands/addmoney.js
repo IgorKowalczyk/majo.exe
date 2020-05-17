@@ -6,7 +6,7 @@ module.exports.run = async (client, message, args) => {
   if (message.member.hasPermission("MANAGE_MESSAGES")) {
   let user = message.mentions.members.first();
 
-    if (isNaN(args[1])) message.channel.send({embed: {
+    if (isNaN(args[1])) return message.channel.send({embed: {
                     color: 16734039,
                     title: "Incorrect use! You must provide all arguments. Use " + `${prefix}` + " addmoney <mention> <money>"
                 }})

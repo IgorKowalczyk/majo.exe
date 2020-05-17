@@ -5,14 +5,20 @@ const prefix = process.env.PREFIX;
 module.exports.run = async (client, message, args) => {
   if (message.member.hasPermission("MANAGE_MESSAGES")) {
   let user = message.mentions.members.first();
-
-    if (isNaN(args[1])) message.channel.send({embed: {
+  id (!user) return message.channel.send({embed: {
+                    color: 16734039,
+                    title: "You must mention someone to remove money!"
+                }})
+    if (isNaN(args[1])) return message.channel.send({embed: {
                     color: 16734039,
                     title: "Incorrect use! You must provide all arguments. Use " + `${prefix}` + " remove <mention> <money>"
                 }})
     db.subtract(`money_${message.guild.id}_${user.id}`, args[1])
     let bal = await db.fetch(`money_${message.guild.id}_${user.id}`)
-	if (bal === null) bal = 0;
+	if (bal < 0) return message.channel.send({embed: {
+                    color: 16734039,
+                    title: "Error!"
+                }})
 
     let moneyEmbed = new Discord.RichEmbed()
     .setColor("RANDOM")
