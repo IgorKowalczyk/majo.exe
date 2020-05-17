@@ -1,6 +1,5 @@
 const Discord = require("discord.js");
 const db = require("quick.db");
-const prefix = process.env.PREFIX;
 
 module.exports.run = async (client, message, args) => {
   if (message.member.hasPermission("MANAGE_MESSAGES")) {
@@ -11,14 +10,16 @@ module.exports.run = async (client, message, args) => {
                 }})
     if (isNaN(args[1])) return message.channel.send({embed: {
                     color: 16734039,
-                    title: "Incorrect use! You must provide all arguments. Use " + `${prefix}` + " remove <mention> <money>"
+                    title: "You must enter the amount of money to remove!"
                 }})
     db.subtract(`money_${message.guild.id}_${user.id}`, args[1])
     let bal = await db.fetch(`money_${message.guild.id}_${user.id}`)
-	if (bal < 0) return message.channel.send({embed: {
+	if (bal < 0) {
+		return message.channel.send({embed: {
                     color: 16734039,
-                    title: "Error!"
+                    title: "You can't remove more money than this person has!"
                 }})
+	}
 
     let moneyEmbed = new Discord.RichEmbed()
     .setColor("RANDOM")
