@@ -12,6 +12,7 @@ module.exports.run = async (client, message, args) => {
                 }})
     db.subtract(`money_${message.guild.id}_${user.id}`, args[1])
     let bal = await db.fetch(`money_${message.guild.id}_${user.id}`)
+	if (bal === null) bal = 0;
 
     let moneyEmbed = new Discord.RichEmbed()
     .setColor("RANDOM")
