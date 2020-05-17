@@ -1,11 +1,26 @@
-# Discord "Majo.exe" bot.
+# Majo.exe
 
-## Getting started
+An advanced discord bot, contains commands for moderation, fun, music, economics and NSFW. It has 100+ commands.
 
-1. Clone this repository
+
+<img src="https://top.gg/api/widget/681536055572430918.svg?usernamecolor=99aab5&topcolor=23272a&certifiedcolor=99aab5&middlecolor=2c2f33&datacolor=fff&labelcolor=99aab5"><br>
+<img src="https://top.gg/api/widget/owner/681536055572430918.svg?usernamecolor=99aab5&topcolor=23272a&certifiedcolor=99aab5&middlecolor=2c2f33&datacolor=fff&labelcolor=99aab5&noavatar=true"> <img src="https://top.gg/api/widget/status/681536055572430918.svg?usernamecolor=99aab5&topcolor=23272a&certifiedcolor=99aab5&middlecolor=2c2f33&datacolor=fff&labelcolor=99aab5&noavatar=true"> <img src="https://top.gg/api/widget/upvotes/681536055572430918.svg?usernamecolor=99aab5&topcolor=23272a&certifiedcolor=99aab5&middlecolor=2c2f33&datacolor=fff&labelcolor=99aab5&noavatar=true"> <img src="https://top.gg/api/widget/servers/681536055572430918.svg?usernamecolor=99aab5&topcolor=23272a&certifiedcolor=99aab5&middlecolor=2c2f33&datacolor=fff&labelcolor=99aab5&noavatar=true"> <img src="https://top.gg/api/widget/lib/681536055572430918.svg?usernamecolor=99aab5&topcolor=23272a&certifiedcolor=99aab5&middlecolor=2c2f33&datacolor=fff&labelcolor=99aab5&noavatar=true"> 
+---
+
+# Invite
+
+Go to [this link](https://igorkowalczyk.github.io/majobot/invite) and authorize the bot (requires server manage premission) to your server.
+
+# Hosting
+
+We host this bot. Majo will be online 24/7.
+
+# Self-Hosting
+
+1. Clone [this repository](https://github.com/igorkowalczyk/majobot)
 2. Run `npm install`
 3. Grab a token on [Discord's developer portal](https://discordapp.com/developers/applications)
-4. Create a `.env` file and add a `BOT_TOKEN` environmental variable whose value is the token above and add a `PREFIX` - this is your bot prefix (The `.env` file was private).
+4. Create a `.env` file and add a `BOT_TOKEN` environmental variable whose value is the token above, add a `PREFIX` - this is your bot prefix and add a `DASHBOARD=[true/false]` value - if `true` the bot will be hosted with web dasboard, if `false` the bot will be hosted without web dashboard (The `.env` file was private).
 5. Run `npm run dev`
 
 ## Example `.env` file
@@ -21,17 +36,10 @@
 
 TOKEN=YOUR-TOKEN-GOES-HERE
 PREFIX=!majo
+DASHBOARD=true
 
 # !majo is the default prefix, you can change it later.
 
 # note: .env is a shell file so there can't be spaces around =
 
 ```
-
-## Prefix
-
-- `!majo {command - eg. help}` is default prefix of the bot.
-
-## Invite this bot
-(Note: the bot may be offline!)
-[Invite] (https://discordapp.com/oauth2/authorize?client_id=681536055572430918&scope=bot&permissions=2146958591)
