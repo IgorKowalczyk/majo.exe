@@ -36,8 +36,8 @@ module.exports.run = async (client, message, args) => {
 
 
 module.exports.help = {
-    name: "remove",
+    name: "removemoney",
     description: "Remove a money from user",
-    usage: "remove <mention> <money>",
+    usage: "removemoney <mention> <money>",
     type: "Economy"  
 }

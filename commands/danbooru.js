@@ -29,10 +29,10 @@ module.exports.run = (client, message, args) => {
                 for (let image of images) {
                     const embed = new Discord.RichEmbed()
                     .setTitle(":smirk: Danbooru")
-                    .setImage(image.file_url)
+                    .setImage(image.common.file_url)
                     .setColor('RANDOM')
                     .setFooter(`Tags: danbooru ${query}`)
-                    .setURL(image.file_url);
+                    .setURL(image.common.file_url);
                     return message.channel.send({ embed });
                 }
             }).catch(err => {
