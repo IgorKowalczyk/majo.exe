@@ -5,7 +5,7 @@ let warns = JSON.parse(fs.readFileSync("./warnings.json", "utf8"));
 
 module.exports.run = async (client, message, args) => {
 
-  let wUser = await message.mentions.members.first();
+  let wUser = message.guild.member(message.mentions.users.first()) || message.guild.members.get(args[0])
   if(!warns[wUser.id]) warns[wUser.id] = {
     warns: 0
   };
@@ -20,7 +20,7 @@ module.exports.run = async (client, message, args) => {
   let warnEmbed = new Discord.RichEmbed()
   .setTitle("Warns")
   .setColor("RANDOM")
-  .addField("Number of " + `wUser.user.username` + "#" + `wUser.user.discriminator` + " warns:", `warns[wUser.id].warns`)
+  .addField("Number of" + `@${wUser.id}` + " warns:", `${warnlevel}`)
   .setTimestamp()
   message.channel.send(warnEmbed);
   

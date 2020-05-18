@@ -22,7 +22,7 @@ exports.run = (client, message, args) => {
     message.guild.unban(user);
 		message.channel.send({embed: {
                     color: 16734039,
-                    title: "User has been unbaned!"
+                    title: "User has been unbaned! :scream:"
                 }})
   }
 };
