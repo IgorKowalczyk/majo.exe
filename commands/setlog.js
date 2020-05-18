@@ -5,13 +5,15 @@ if(!message.member.hasPermission('ADMINISTRATOR')) return message.reply("Sorry, 
     let log = message.guild.channels.find("name", "log")  
     if(log) return message.reply("**The channel #log is already exist**")   
     if(!log) {   
-    message.guild.createChannel("log", "text").then(c=> {  
-        c.overwritePermissions(message.guild.id, {  
-            SEND_MESSAGES: false
-    })
+		var name = "log";
+ message.guild.createChannel(name, { type: "text" }).then(
+  (chan) => {
+  chan.overwritePermissions(message.guild.id, {
+     'SEND_MESSAGES': false
+  })
+  }
 })
 message.channel.send("**? The channel has been created and the channel logs is #logs**")
-}
 }
 
 module.exports.help = {

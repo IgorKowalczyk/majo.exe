@@ -444,7 +444,7 @@ client.on('channelUpdate', (oldChannel, newChannel) => {
             .setTitle('**[CHANNEL EDIT]**') 
             .setThumbnail(userAvatar)
             .setColor('RANDOM') 
-            .setDescription(`**\n**:wrench: Successfully Edited **${channelType}** Channel Topic\n\n**Old Topic:**\n\`\`\`${oldChannel.topic || 'NULL'}\`\`\`\n**New Topic:**\n\`\`\`${newChannel.topic || 'NULL'}\`\`\`\n**Channel:** ${oldChannel} (ID: ${oldChannel.id})\n**By:** <@${userID}> (ID: ${userID})`)
+            .setDescription(`**\n**:wrench: Successfully Edited **${channelType}** Channel Topic\n\n**Old Topic:**\n\`\`\`${oldChannel.topic || '(Not set)'}\`\`\`\n**New Topic:**\n\`\`\`${newChannel.topic || '(Not set)'}\`\`\`\n**Channel:** ${oldChannel} (ID: ${oldChannel.id})\n**By:** <@${userID}> (ID: ${userID})`)
             .setTimestamp()
             .setFooter(oldChannel.guild.name, oldChannel.guild.iconURL)
  
