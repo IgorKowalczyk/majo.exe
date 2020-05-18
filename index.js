@@ -236,7 +236,7 @@ client.on('messageUpdate', (oldMessage, newMessage) => {
  
 
 client.on('roleCreate', role => {
- 
+
     if(!role.guild.member(client.user).hasPermission('EMBED_LINKS')) return;
     if(!role.guild.member(client.user).hasPermission('VIEW_AUDIT_LOG')) return;
  
