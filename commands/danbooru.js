@@ -38,7 +38,7 @@ module.exports.run = (client, message, args) => {
                 if (err.name === 'booruError') {
           		return message.channel.send({embed: {
                 color: 16734039,
-                title: `No results found for **${query}**`
+                title: `No results found for **${query}**1`
             }})
                 } else {
                 return message.channel.send({embed: {
