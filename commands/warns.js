@@ -20,7 +20,7 @@ module.exports.run = async (client, message, args) => {
   let warnEmbed = new Discord.RichEmbed()
   .setTitle("Warns")
   .setColor("RANDOM")
-  .addField("Number of" + `@${wUser.id}` + " warns:", `${warnlevel}`)
+  .addField("Number of " + `@${wUser.id}` + " warns:", `${warnlevel}`)
   .setTimestamp()
   message.channel.send(warnEmbed);
   
