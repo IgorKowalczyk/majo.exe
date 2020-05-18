@@ -43,7 +43,7 @@ module.exports.run = (client, message, args) => {
                 } else {
                 return message.channel.send({embed: {
                 color: 16734039,
-                title: `No results found for **${query}**`
+                title: `No results found for **${query}**2`
             }})
                 }
 })
