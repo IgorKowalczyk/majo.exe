@@ -274,7 +274,7 @@ client.on('roleDelete', role => {
         .setTitle('**[ROLE DELETE]**')
         .setThumbnail(userAvatar)  
         .setDescription(`**\n**:white_check_mark: Successfully \`\`DELETE\`\` Role.\n\n**Role Name:** \`\`${role.name}\`\` (ID: ${role.id})\n**By:** <@${userID}> (ID: ${userID})`)
-        .setColor('RANDOM') )
+        .setColor('RANDOM')
         .setTimestamp()  
         .setFooter(role.guild.name, role.guild.iconURL)
  
