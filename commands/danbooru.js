@@ -29,17 +29,23 @@ module.exports.run = (client, message, args) => {
                 for (let image of images) {
                     const embed = new Discord.RichEmbed()
                     .setTitle(":smirk: Danbooru")
-                    .setImage(image.common.file_url)
+                    .setImage(image.file_url)
                     .setColor('RANDOM')
                     .setFooter(`Tags: danbooru ${query}`)
-                    .setURL(image.common.file_url);
+                    .setURL(image.file_url);
                     return message.channel.send({ embed });
                 }
             }).catch(err => {
                 if (err.name === 'booruError') {
-                    return message.channel.send(`No results found for **${query}**`);
+          		return message.channel.send({embed: {
+                color: 16734039,
+                title: `No results found for **${query}**`
+            }})
                 } else {
-                    return message.channel.send(`No results found for **${query}**`);
+                return message.channel.send({embed: {
+                color: 16734039,
+                title: `No results found for **${query}**`
+            }})
                 }
 })
       
