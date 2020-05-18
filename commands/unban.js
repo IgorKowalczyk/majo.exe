@@ -27,9 +27,9 @@ exports.run = (client, message, args) => {
   }
 };
 				
-exports.help = {
+module.exports.help = {
   name: "unban",
   description: "Unbans the user.",
   usage: "unban <mention> <reason>",
   type: "Moderation"
-};
+}
