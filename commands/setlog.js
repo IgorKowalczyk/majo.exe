@@ -12,7 +12,7 @@ if(!message.member.hasPermission('ADMINISTRATOR')) return message.reply("Sorry, 
      'SEND_MESSAGES': false
   })
   }
-})
+)}
 message.channel.send("**? The channel has been created and the channel logs is #logs**")
 }
 
