@@ -26,6 +26,7 @@ message.channel.send(embed);
 module.exports.help = {
     name: "info",
     description: "Display a bot info for developers",
+	cooldown: 5,
     usage: "info",
     type: "General"  
 }

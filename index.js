@@ -37,7 +37,7 @@ const prefix = process.env.PREFIX;
 const newUsers = new Discord.Collection();
 var botMembers = 0;
 
-const Timeout = new Set();
+const cooldowns = new Discord.Collection();
 
 app.get("/", (request, response) => {
   response.sendStatus(200);
@@ -143,9 +143,25 @@ return message.channel.send({embed: {
 
   // The list of if/else is replaced with those simple 2 lines:
   try {
-	/*if (adTimeout.has(message.author.id)) {
-     msg.channel.send("Wait 10 seconds before getting typing this again. - " + msg.author);
-    } else {*/
+
+if (!cooldowns.has(command.name)) {
+	cooldowns.set(command.name, new Discord.Collection());
+}
+
+const now = Date.now();
+const timestamps = cooldowns.get(command.name);
+const cooldownAmount = (command.cooldown || 3) * 1000;
+
+if (timestamps.has(message.author.id)) {
+
+if (timestamps.has(message.author.id)) {
+	const expirationTime = timestamps.get(message.author.id) + cooldownAmount;
+
+	if (now < expirationTime) {
+		const timeLeft = (expirationTime - now) / 1000;
+		return message.reply(`please wait ${timeLeft.toFixed(1)} more second(s) before reusing the \`${command.name}\` command.`);
+	}
+} else {
     let commandFile = require(`./commands/${command}.js`);
     commandFile.run(client, message, args);
 	
@@ -159,6 +175,7 @@ return message.channel.send({embed: {
                 color: 16734039,
                 title: "That command does not exist, Take a look at " + `${prefix}` + " help!"
             }})
+  }
   }
 });
 
@@ -200,7 +217,7 @@ client.on('messageDelete', message => {
     if(!logChannel) return;  
  
     let messageDelete = new Discord.RichEmbed()  
-    .setTitle('**[MESSAGE DELETE]**')  
+    .setTitle('**MESSAGE DELETE**')  
     .setColor('RANDOM')  
     .setThumbnail(message.author.avatarURL)  
     .setDescription(`**\n**:wastebasket: Successfully \`\`DELETE\`\` **MESSAGE** In ${message.channel}\n\n**Channel:** \`\`${message.channel.name}\`\` (ID: ${message.channel.id})\n**Message ID:** ${message.id}\n**Sent By:** <@${message.author.id}> (ID: ${message.author.id})\n**Message:**\n\`\`\`${message}\`\`\``)
@@ -222,7 +239,7 @@ client.on('messageUpdate', (oldMessage, newMessage) => {
     if(oldMessage.content.startsWith('https://')) return;  
  
     let messageUpdate = new Discord.RichEmbed()
-    .setTitle('**[MESSAGE EDIT]**')
+    .setTitle('**MESSAGE EDIT**')
     .setThumbnail(oldMessage.author.avatarURL)
     .setColor('RANDOM') 
     .setDescription(`**\n**:wrench: Successfully \`\`EDIT\`\` **MESSAGE** In ${oldMessage.channel}\n\n**Channel:** \`\`${oldMessage.channel.name}\`\` (ID: ${oldMessage.channel.id})\n**Message ID:** ${oldMessage.id}\n**Sent By:** <@${oldMessage.author.id}> (ID: ${oldMessage.author.id})\n\n**Old Message:**\`\`\`${oldMessage}\`\`\`\n**New Message:**\`\`\`${newMessage}\`\`\``)
@@ -247,7 +264,7 @@ client.on('roleCreate', role => {
         var userAvatar = logs.entries.first().executor.avatarURL;
  
         let roleCreate = new Discord.RichEmbed()
-        .setTitle('**[ROLE CREATE]**')
+        .setTitle('**ROLE CREATE**')
         .setThumbnail(userAvatar)  
         .setDescription(`**\n**:white_check_mark: Successfully \`\`CREATE\`\` Role.\n\n**Role Name:** \`\`${role.name}\`\` (ID: ${role.id})\n**By:** <@${userID}> (ID: ${userID})`)
         .setColor('RANDOM') 
@@ -469,7 +486,7 @@ client.on('guildBanAdd', (guild, user) => {
         if(userID === client.user.id) return;
  
         let banInfo = new Discord.RichEmbed()
-        .setTitle('**[BANNED]**')
+        .setTitle('**BANNED**')
         .setThumbnail(userAvatar)
         .setColor('RANDOM') 
         .setDescription(`**\n**:airplane: Successfully \`\`BANNED\`\` **${user.username}** From the server!\n\n**User:** <@${user.id}> (ID: ${user.id})\n**By:** <@${userID}> (ID: ${userID})`)
@@ -491,7 +508,7 @@ client.on('guildBanRemove', (guild, user) => {
         var userAvatar = logs.entries.first().executor.avatarURL;
  
         let unBanInfo = new Discord.RichEmbed()
-        .setTitle('**[UNBANNED]**')
+        .setTitle('**UNBANNED**')
         .setThumbnail(userAvatar)
         .setColor('RANDOM') 
         .setDescription(`**\n**:unlock: Successfully \`\`UNBANNED\`\` **${user.username}** From the server\n\n**User:** <@${user.id}> (ID: ${user.id})\n**By:** <@${userID}> (ID: ${userID})`)
@@ -524,7 +541,7 @@ client.on('guildMemberUpdate', (oldMember, newMember) => {
             }
  
             let updateNickname = new Discord.RichEmbed()
-            .setTitle('**[UPDATE MEMBER NICKNAME]**')
+            .setTitle('**UPDATE MEMBER NICKNAME**')
             .setThumbnail(userAvatar)
             .setColor('RANDOM') 
             .setDescription(`**\n**:spy: Successfully \`\`CHANGE\`\` Member Nickname.\n\n**User:** ${oldMember} (ID: ${oldMember.id})\n**Old Nickname:** ${oldNM}\n**New Nickname:** ${newNM}\n**By:** <@${userID}> (ID: ${userID})`)
