@@ -37,8 +37,6 @@ const prefix = process.env.PREFIX;
 const newUsers = new Discord.Collection();
 var botMembers = 0;
 
-const Timeout = new Set();
-
 app.get("/", (request, response) => {
   response.sendStatus(200);
 });
@@ -143,17 +141,8 @@ return message.channel.send({embed: {
 
   // The list of if/else is replaced with those simple 2 lines:
   try {
-	/*if (adTimeout.has(message.author.id)) {
-     msg.channel.send("Wait 10 seconds before getting typing this again. - " + msg.author);
-    } else {*/
     let commandFile = require(`./commands/${command}.js`);
     commandFile.run(client, message, args);
-	
-			/*adTimeout.add(message.author.id);
-			setTimeout(() => {
-				adTimeout.delete(message.author.id);
-			}, 10800000);
-	}*/
   } catch (err) {
     message.channel.send({embed: {
                 color: 16734039,
@@ -200,7 +189,7 @@ client.on('messageDelete', message => {
     if(!logChannel) return;  
  
     let messageDelete = new Discord.RichEmbed()  
-    .setTitle('**[MESSAGE DELETE]**')  
+    .setTitle('**MESSAGE DELETE**')  
     .setColor('RANDOM')  
     .setThumbnail(message.author.avatarURL)  
     .setDescription(`**\n**:wastebasket: Successfully \`\`DELETE\`\` **MESSAGE** In ${message.channel}\n\n**Channel:** \`\`${message.channel.name}\`\` (ID: ${message.channel.id})\n**Message ID:** ${message.id}\n**Sent By:** <@${message.author.id}> (ID: ${message.author.id})\n**Message:**\n\`\`\`${message}\`\`\``)
@@ -222,7 +211,7 @@ client.on('messageUpdate', (oldMessage, newMessage) => {
     if(oldMessage.content.startsWith('https://')) return;  
  
     let messageUpdate = new Discord.RichEmbed()
-    .setTitle('**[MESSAGE EDIT]**')
+    .setTitle('**MESSAGE EDIT**')
     .setThumbnail(oldMessage.author.avatarURL)
     .setColor('RANDOM') 
     .setDescription(`**\n**:wrench: Successfully \`\`EDIT\`\` **MESSAGE** In ${oldMessage.channel}\n\n**Channel:** \`\`${oldMessage.channel.name}\`\` (ID: ${oldMessage.channel.id})\n**Message ID:** ${oldMessage.id}\n**Sent By:** <@${oldMessage.author.id}> (ID: ${oldMessage.author.id})\n\n**Old Message:**\`\`\`${oldMessage}\`\`\`\n**New Message:**\`\`\`${newMessage}\`\`\``)
@@ -247,7 +236,7 @@ client.on('roleCreate', role => {
         var userAvatar = logs.entries.first().executor.avatarURL;
  
         let roleCreate = new Discord.RichEmbed()
-        .setTitle('**[ROLE CREATE]**')
+        .setTitle('**ROLE CREATE**')
         .setThumbnail(userAvatar)  
         .setDescription(`**\n**:white_check_mark: Successfully \`\`CREATE\`\` Role.\n\n**Role Name:** \`\`${role.name}\`\` (ID: ${role.id})\n**By:** <@${userID}> (ID: ${userID})`)
         .setColor('RANDOM') 
@@ -469,7 +458,7 @@ client.on('guildBanAdd', (guild, user) => {
         if(userID === client.user.id) return;
  
         let banInfo = new Discord.RichEmbed()
-        .setTitle('**[BANNED]**')
+        .setTitle('**BAN**')
         .setThumbnail(userAvatar)
         .setColor('RANDOM') 
         .setDescription(`**\n**:airplane: Successfully \`\`BANNED\`\` **${user.username}** From the server!\n\n**User:** <@${user.id}> (ID: ${user.id})\n**By:** <@${userID}> (ID: ${userID})`)
@@ -491,7 +480,7 @@ client.on('guildBanRemove', (guild, user) => {
         var userAvatar = logs.entries.first().executor.avatarURL;
  
         let unBanInfo = new Discord.RichEmbed()
-        .setTitle('**[UNBANNED]**')
+        .setTitle('**UNBAN**')
         .setThumbnail(userAvatar)
         .setColor('RANDOM') 
         .setDescription(`**\n**:unlock: Successfully \`\`UNBANNED\`\` **${user.username}** From the server\n\n**User:** <@${user.id}> (ID: ${user.id})\n**By:** <@${userID}> (ID: ${userID})`)
@@ -524,7 +513,7 @@ client.on('guildMemberUpdate', (oldMember, newMember) => {
             }
  
             let updateNickname = new Discord.RichEmbed()
-            .setTitle('**[UPDATE MEMBER NICKNAME]**')
+            .setTitle('**UPDATE MEMBER NICKNAME**')
             .setThumbnail(userAvatar)
             .setColor('RANDOM') 
             .setDescription(`**\n**:spy: Successfully \`\`CHANGE\`\` Member Nickname.\n\n**User:** ${oldMember} (ID: ${oldMember.id})\n**Old Nickname:** ${oldNM}\n**New Nickname:** ${newNM}\n**By:** <@${userID}> (ID: ${userID})`)
@@ -537,7 +526,7 @@ client.on('guildMemberUpdate', (oldMember, newMember) => {
             let role = newMember.roles.filter(r => !oldMember.roles.has(r.id)).first();
  
             let roleAdded = new Discord.RichEmbed()
-            .setTitle('**[ADDED ROLE TO MEMBER]**') 
+            .setTitle('**ADDED ROLE TO MEMBER**') 
             .setThumbnail(oldMember.guild.iconURL)
             .setColor('RANDOM') 
             .setDescription(`**\n**:white_check_mark: Successfully \`\`ADDED\`\` Role to **${oldMember.user.username}**\n\n**User:** <@${oldMember.id}> (ID: ${oldMember.user.id})\n**Role:** \`\`${role.name}\`\` (ID: ${role.id})\n**By:** <@${userID}> (ID: ${userID})`)
@@ -550,7 +539,7 @@ client.on('guildMemberUpdate', (oldMember, newMember) => {
             let role = oldMember.roles.filter(r => !newMember.roles.has(r.id)).first();
  
             let roleRemoved = new Discord.RichEmbed()
-            .setTitle('**[REMOVED ROLE FROM MEMBER]**')
+            .setTitle('**REMOVED ROLE FROM MEMBER**')
             .setThumbnail(oldMember.guild.iconURL)
             .setColor('RANDOM') 
             .setDescription(`**\n**:negative_squared_cross_mark: Successfully \`\`REMOVED\`\` Role from **${oldMember.user.username}**\n\n**User:** <@${oldMember.user.id}> (ID: ${oldMember.id})\n**Role:** \`\`${role.name}\`\` (ID: ${role.id})\n**By:** <@${userID}> (ID: ${userID})`)
@@ -562,7 +551,7 @@ client.on('guildMemberUpdate', (oldMember, newMember) => {
     })
     if(oldMember.guild.owner.user.id !== newMember.guild.owner.user.id) {
         let newOwner = new Discord.RichEmbed()
-        .setTitle('**[UPDATE GUILD OWNER]**')
+        .setTitle('**UPDATE GUILD OWNER**')
         .setThumbnail(oldMember.guild.iconURL)
         .setColor('RANDOM') 
         .setDescription(`**\n**:white_check_mark: Successfully \`\`TRANSFER\`\` The Owner Ship.\n\n**Old Owner:** <@${oldMember.user.id}> (ID: ${oldMember.user.id})\n**New Owner:** <@${newMember.user.id}> (ID: ${newMember.user.id})`)
@@ -577,7 +566,7 @@ client.on('guildMemberAdd', member => {
   if(!logChannel) return;
   
   let newMember = new Discord.RichEmbed()
-  .setTitle('**[NEW MEMBER JOINED]**') 
+  .setTitle('**NEW MEMBER JOINED**') 
   .setThumbnail(member.user.avatarURL)
   .setColor('RANDOM') 
   .setDescription(`**\n**:arrow_lower_right: **${member.user.username}** Has joined the server!\n\n**User:** <@${member.user.id}> (ID: ${member.user.id})\n**Days In Discord:** ${Days(member.user.createdAt)}`)
@@ -597,7 +586,7 @@ client.on('guildMemberRemove', member => {
   if(!logChannel) return; 
  
   let leaveMember = new Discord.RichEmbed()
-  .setTitle('**[USER LEFT]**')
+  .setTitle('**USER LEFT**')
   .setThumbnail(member.user.avatarURL)
   .setColor('RANDOM') 
   .setDescription(`**\n**:arrow_upper_left: **${member.user.username}** Left the server.\n\n**User:** <@${member.user.id}> (ID: ${member.user.id})`)  
@@ -625,7 +614,7 @@ client.on('voiceStateUpdate', (voiceOld, voiceNew) => {
 
         if(voiceOld.serverMute === false && voiceNew.serverMute === true) {
             let serverMutev = new Discord.RichEmbed()
-            .setTitle('**[VOICE MUTE]**')
+            .setTitle('**VOICE MUTE**')
             .setThumbnail('https://images-ext-1.discordapp.net/external/pWQaw076OHwVIFZyeFoLXvweo0T_fDz6U5C9RBlw_fQ/https/cdn.pg.sa/UosmjqDNgS.png')
             .setColor('RANDOM') 
             .setDescription(`**User:** <@${voiceOld.user.id}> (ID: ${voiceOld.user.id})\n**By:** <@${userID}> (ID: ${userID})\n**Channel:** \`\`${voiceOld.voiceChannel.name}\`\` (ID: ${voiceOld.voiceChannel.id})`)
@@ -637,7 +626,7 @@ client.on('voiceStateUpdate', (voiceOld, voiceNew) => {
 
         if(voiceOld.serverMute === true && voiceNew.serverMute === false) {
             let serverUnmutev = new Discord.RichEmbed()
-            .setTitle('**[VOICE UNMUTE]**')
+            .setTitle('**VOICE UNMUTE**')
             .setThumbnail('https://images-ext-1.discordapp.net/external/u2JNOTOc1IVJGEb1uCKRdQHXIj5-r8aHa3tSap6SjqM/https/cdn.pg.sa/Iy4t8H4T7n.png')
             .setColor('RANDOM') 
             .setDescription(`**User:** <@${voiceOld.user.id}> (ID: ${voiceOld.user.id})\n**By:** <@${userID}> (ID: ${userID})\n**Channel:** \`\`${voiceOld.voiceChannel.name}\`\` (ID: ${voiceOld.voiceChannel.id})`)
@@ -649,7 +638,7 @@ client.on('voiceStateUpdate', (voiceOld, voiceNew) => {
 
         if(voiceOld.serverDeaf === false && voiceNew.serverDeaf === true) {
             let serverDeafv = new Discord.RichEmbed()
-            .setTitle('**[VOICE DEAFEN]**')
+            .setTitle('**VOICE DEAFEN**')
             .setThumbnail('https://images-ext-1.discordapp.net/external/7ENt2ldbD-3L3wRoDBhKHb9FfImkjFxYR6DbLYRjhjA/https/cdn.pg.sa/auWd5b95AV.png')
             .setColor('RANDOM') 
             .setDescription(`**User:** <@${voiceOld.user.id}> (ID: ${voiceOld.user.id})\n**By:** <@${userID}> (ID: ${userID})\n**Channel:** \`\`${voiceOld.voiceChannel.name}\`\` (ID: ${voiceOld.voiceChannel.id})`)
@@ -661,7 +650,7 @@ client.on('voiceStateUpdate', (voiceOld, voiceNew) => {
 
         if(voiceOld.serverDeaf === true && voiceNew.serverDeaf === false) {
             let serverUndeafv = new Discord.RichEmbed() 
-            .setTitle('**[VOICE UNDEAFEN]**')
+            .setTitle('**VOICE UNDEAFEN**')
             .setThumbnail('https://images-ext-2.discordapp.net/external/s_abcfAlNdxl3uYVXnA2evSKBTpU6Ou3oimkejx3fiQ/https/cdn.pg.sa/i7fC8qnbRF.png')
             .setColor('RANDOM') 
             .setDescription(`**User:** <@${voiceOld.user.id}> (ID: ${voiceOld.user.id})\n**By:** <@${userID}> (ID: ${userID})\n**Channel:** \`\`${voiceOld.voiceChannel.name}\`\` (ID: ${voiceOld.voiceChannel.id})`)
@@ -674,7 +663,7 @@ client.on('voiceStateUpdate', (voiceOld, voiceNew) => {
 
     if(voiceOld.voiceChannelID !== voiceNew.voiceChannelID && !voiceOld.voiceChannel) {
         let voiceJoin = new Discord.RichEmbed()
-        .setTitle('**[JOIN VOICE ROOM]**')
+        .setTitle('**JOIN VOICE ROOM**')
         .setColor('RANDOM') 
         .setThumbnail(voiceOld.user.avatarURL)
         .setDescription(`**\n**:arrow_lower_right: Successfully \`\`JOIN\`\` To Voice Channel.\n\n**Channel:** \`\`${voiceNew.voiceChannel.name}\`\` (ID: ${voiceNew.voiceChannelID})\n**User:** ${voiceOld} (ID: ${voiceOld.id})`)
@@ -686,7 +675,7 @@ client.on('voiceStateUpdate', (voiceOld, voiceNew) => {
 
     if(voiceOld.voiceChannelID !== voiceNew.voiceChannelID && !voiceNew.voiceChannel) {
         let voiceLeave = new Discord.RichEmbed()
-        .setTitle('**[LEAVE VOICE ROOM]**')
+        .setTitle('**LEAVE VOICE ROOM**')
         .setColor('RANDOM') 
         .setThumbnail(voiceOld.user.avatarURL)
         .setDescription(`**\n**:arrow_upper_left: Successfully \`\`LEAVE\`\` From Voice Channel.\n\n**Channel:** \`\`${voiceOld.voiceChannel.name}\`\` (ID: ${voiceOld.voiceChannelID})\n**User:** ${voiceOld} (ID: ${voiceOld.id})`)
@@ -698,7 +687,7 @@ client.on('voiceStateUpdate', (voiceOld, voiceNew) => {
 
     if(voiceOld.voiceChannelID !== voiceNew.voiceChannelID && voiceNew.voiceChannel && voiceOld.voiceChannel != null) {
         let voiceLeave = new Discord.RichEmbed()
-        .setTitle('**[CHANGED VOICE ROOM]**')
+        .setTitle('**CHANGED VOICE ROOM**')
         .setColor('RANDOM') 
         .setThumbnail(voiceOld.user.avatarURL)
         .setDescription(`**\n**:repeat: Successfully \`\`CHANGED\`\` The Voice Channel.\n\n**From:** \`\`${voiceOld.voiceChannel.name}\`\` (ID: ${voiceOld.voiceChannelID})\n**To:** \`\`${voiceNew.voiceChannel.name}\`\` (ID: ${voiceNew.voiceChannelID})\n**User:** ${voiceOld} (ID: ${voiceOld.id})`)
