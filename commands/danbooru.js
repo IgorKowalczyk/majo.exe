@@ -23,6 +23,13 @@ module.exports.run = (client, message, args) => {
             }})
 		}
         var query = message.content.split(/\s+/g).slice(1).join(" ");
+		
+		    if (!query) {
+		return message.channel.send({embed: {
+                color: 16734039,
+                title: "You must enter a text to search booru!"
+            }})
+	}
         booru.search('danbooru', [query], {nsfw: true, limit: 1, random: true })
             .then(images => {
                 for (let image of images) {
@@ -41,7 +48,6 @@ module.exports.run = (client, message, args) => {
                 title: `No results found for: **${query}**`
             }})
                 } else {
-				console.log(err);
                 return message.channel.send({embed: {
                 color: 16734039,
                 title: `No results found for: **${query}**`
