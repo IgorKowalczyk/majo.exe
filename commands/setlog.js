@@ -1,9 +1,17 @@
 const Discord = require("discord.js");
 
 module.exports.run = (client, message, args) => {
-if(!message.member.hasPermission('ADMINISTRATOR')) return message.reply("Sorry, but you don't have acces to set the logs.");
+if(!message.member.hasPermission('ADMINISTRATOR')) return message.channel.send({embed: {
+                    color: 16734039,
+                    title: "Sorry, but you don't have access to set the logs."
+                }})
+				
     let log = message.guild.channels.find("name", "log")  
-    if(log) return message.reply("**The channel #log is already exist**")   
+    if(log) return message.channel.send({embed: {
+                    color: 16734039,
+                    title: "The channel #log is already exist!"
+                }})
+
     if(!log) {   
 		var name = "log";
  message.guild.createChannel(name, { type: "text" }).then(
@@ -14,7 +22,11 @@ if(!message.member.hasPermission('ADMINISTRATOR')) return message.reply("Sorry, 
   chan.setTopic('A log stream for @majo.exe')
   }
 )}
-message.channel.send("**? The channel has been created and the channel logs is #logs**")
+  let success = new Discord.RichEmbed()
+  .setTitle("The channel has been created and the channel logs is #logs")
+  .setColor("RANDOM")
+  .setTimestamp()
+  message.channel.send(success);
 }
 
 module.exports.help = {

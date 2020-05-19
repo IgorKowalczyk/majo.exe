@@ -19,9 +19,6 @@ let wUser = message.guild.member(message.mentions.users.first()) || message.guil
   };
   let warnlevel = warns[wUser.id].warns
   
-  //message.reply(`<@${wUser.id}> has ${warnlevel} warnings.`);
-  
-  
   let warnEmbed = new Discord.RichEmbed()
   .setTitle("Warns")
   .setColor("RANDOM")
