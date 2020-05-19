@@ -14,11 +14,10 @@ module.exports.run = async (client, message, args) => {
     let member = await message.mentions.members.first();
 
     if (!member) {
-        message.delete();
         return message.channel.send({embed: {
-            color: 3447003,
+            color: 16734039,
             title: "Mention a valid member of this server!"
-        }}).then(msg => msg.delete(2132));
+        }})
     }
 
     var pickeddeath = deaths[Math.floor(Math.random()*deaths.length)];
@@ -26,7 +25,7 @@ module.exports.run = async (client, message, args) => {
     var change2 = change1.replace("[NAME2]", member.displayName);
   
     await message.channel.send({embed: {
-        color: 3447003,
+        color: 16734039,
         author: {
           name: "Tombstone of " + member.displayName + "!",
           icon_url: member.user.displayAvatarURL
