@@ -170,7 +170,7 @@ if (timestamps.has(message.author.id)) {
 				adTimeout.delete(message.author.id);
 			}, 10800000);
 	}*/
-  } catch (err) {
+  }.catch (err) {
     message.channel.send({embed: {
                 color: 16734039,
                 title: "That command does not exist, Take a look at " + `${prefix}` + " help!"
