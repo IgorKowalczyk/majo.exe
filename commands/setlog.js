@@ -19,7 +19,6 @@ if(!message.member.hasPermission('ADMINISTRATOR')) return message.channel.send({
   chan.overwritePermissions(message.guild.id, {
      'SEND_MESSAGES': false
   })
-  chan.setTopic('A log stream for @majo.exe')
   }
 )}
   let success = new Discord.RichEmbed()

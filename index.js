@@ -159,7 +159,6 @@ return message.channel.send({embed: {
                 color: 16734039,
                 title: "That command does not exist, Take a look at " + `${prefix}` + " help!"
             }})
-			console.log(err);
   }
 });
 
@@ -271,7 +270,7 @@ client.on('roleDelete', role => {
         var userAvatar = logs.entries.first().executor.avatarURL;
  
         let roleDelete = new Discord.RichEmbed()
-        .setTitle('**[ROLE DELETE]**')
+        .setTitle('**ROLE DELETE**')
         .setThumbnail(userAvatar)  
         .setDescription(`**\n**:white_check_mark: Successfully \`\`DELETE\`\` Role.\n\n**Role Name:** \`\`${role.name}\`\` (ID: ${role.id})\n**By:** <@${userID}> (ID: ${userID})`)
         .setColor('RANDOM')
@@ -295,7 +294,7 @@ client.on('roleUpdate', (oldRole, newRole) => {
    
         if(oldRole.name !== newRole.name) {
             let roleUpdateName = new Discord.RichEmbed()
-            .setTitle('**[ROLE NAME UPDATE]**')  
+            .setTitle('**ROLE NAME UPDATE**')  
             .setThumbnail(userAvatar)  
             .setColor('RANDOM') 
             .setDescription(`**\n**:white_check_mark: Successfully \`\`EDITED\`\` Role Name.\n\n**Old Name:** \`\`${oldRole.name}\`\`\n**New Name:** \`\`${newRole.name}\`\`\n**Role ID:** ${oldRole.id}\n**By:** <@${userID}> (ID: ${userID})`)
@@ -316,7 +315,7 @@ client.on('roleUpdate', (oldRole, newRole) => {
                 var newColor = newRole.hexColor;  
             }  
             let roleUpdateColor = new Discord.RichEmbed()  
-            .setTitle('**[ROLE COLOR UPDATE]**')  
+            .setTitle('**ROLE COLOR UPDATE**')  
             .setThumbnail(userAvatar)  
             .setColor('RANDOM') 
             .setDescription(`**\n**:white_check_mark: Successfully \`\`EDITED\`\` **${oldRole.name}** Role Color.\n\n**Old Color:** ${oldColor}\n**New Color:** ${newColor}\n**Role ID:** ${oldRole.id}\n**By:** <@${userID}> (ID: ${userID})`)
@@ -327,7 +326,7 @@ client.on('roleUpdate', (oldRole, newRole) => {
         }
         if(oldRole.permissions !== newRole.permissions) {  
             let roleUpdate = new Discord.RichEmbed()  
-            .setTitle('**[UPDATE ROLE PERMISSIONS]**')  
+            .setTitle('**UPDATE ROLE PERMISSIONS**')  
             .setThumbnail(userAvatar)  
             .setColor('RANDOM') 
             .setDescription(`**\n**:first_place: Successfully \`\`CHANGED\`\` **${oldRole.name}** Permissions!\n\n**Old Permissions:** \`\`${oldRole.permissions}\`\`\n**New Permissions:** \`\`${newRole.permissions}\`\`\n**By:** <@${userID}> (ID: ${userID})`)
@@ -365,7 +364,7 @@ client.on('channelCreate', channel => {
         var userAvatar = logs.entries.first().executor.avatarURL;
    
         let channelCreate = new Discord.RichEmbed() 
-        .setTitle('**[CHANNEL CREATE]**') 
+        .setTitle('**CHANNEL CREATE**') 
         .setThumbnail(userAvatar)
         .setDescription(`**\n**:white_check_mark: Successfully \`\`CREATE\`\` **${roomType}** channel.\n\n**Channel Name:** \`\`${channel.name}\`\` (ID: ${channel.id})\n**By:** <@${userID}> (ID: ${userID})`)
         .setColor('RANDOM') 
@@ -398,7 +397,7 @@ client.on('channelDelete', channel => {
         var userAvatar = logs.entries.first().executor.avatarURL;
  
         let channelDelete = new Discord.RichEmbed()
-        .setTitle('**[CHANNEL DELETE]**')
+        .setTitle('**CHANNEL DELETE**')
         .setThumbnail(userAvatar) 
         .setDescription(`**\n**:white_check_mark: Successfully \`\`DELETE\`\` **${roomType}** channel.\n\n**Channel Name:** \`\`${channel.name}\`\` (ID: ${channel.id})\n**By:** <@${userID}> (ID: ${userID})`)
         .setColor('RANDOM') 
@@ -430,7 +429,7 @@ client.on('channelUpdate', (oldChannel, newChannel) => {
 
         if(oldChannel.name !== newChannel.name) {
             let newName = new Discord.RichEmbed()
-            .setTitle('**[CHANNEL EDIT]**')
+            .setTitle('**CHANNEL EDIT**')
             .setThumbnail(userAvatar)
             .setColor('RANDOM') 
             .setDescription(`**\n**:wrench: Successfully Edited **${channelType}** Channel Name\n\n**Old Name:** \`\`${oldChannel.name}\`\`\n**New Name:** \`\`${newChannel.name}\`\`\n**Channel ID:** ${oldChannel.id}\n**By:** <@${userID}> (ID: ${userID})`)
@@ -441,7 +440,7 @@ client.on('channelUpdate', (oldChannel, newChannel) => {
         }
         if(oldChannel.topic !== newChannel.topic) { 
             let newTopic = new Discord.RichEmbed() 
-            .setTitle('**[CHANNEL EDIT]**') 
+            .setTitle('**CHANNEL EDIT**') 
             .setThumbnail(userAvatar)
             .setColor('RANDOM') 
             .setDescription(`**\n**:wrench: Successfully Edited **${channelType}** Channel Topic\n\n**Old Topic:**\n\`\`\`${oldChannel.topic || '(Not set)'}\`\`\`\n**New Topic:**\n\`\`\`${newChannel.topic || '(Not set)'}\`\`\`\n**Channel:** ${oldChannel} (ID: ${oldChannel.id})\n**By:** <@${userID}> (ID: ${userID})`)
