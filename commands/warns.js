@@ -25,7 +25,7 @@ let wUser = message.guild.member(message.mentions.users.first()) || message.guil
   let warnEmbed = new Discord.RichEmbed()
   .setTitle("Warns")
   .setColor("RANDOM")
-  .addField("Number of " + `@${wUser.id}` + " warns:", `${warnlevel}`)
+  .addField("Number of " + `<@${wUser.id}>` + " warns:", `${warnlevel}`)
   .setTimestamp()
   message.channel.send(warnEmbed);
   
