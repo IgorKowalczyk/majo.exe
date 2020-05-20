@@ -13,7 +13,7 @@ module.exports.run = async (client, message, args) => {
       
       let embed = new Discord.RichEmbed()
       .setTitle("Global Cases")
-      .setColor("#ff2050")
+      .setColor("RANDOM")
       .setDescription("Sometimes cases number may differ from small amount.")
       .addField("Total Cases", corona.cases, true)
       .addField("Total Deaths", corona.deaths, true)
@@ -29,9 +29,10 @@ module.exports.run = async (client, message, args) => {
     } else {
       let corona = await track.countries(args.join(" ")) //change it to countries
       
+	  
       let embed = new Discord.RichEmbed()
       .setTitle(`${corona.country}`)
-      .setColor("#ff2050")
+      .setColor("RANDOM")
       .setDescription("Sometimes cases number may differ from small amount.")
       .addField("Total Cases", corona.cases, true)
       .addField("Total Deaths", corona.deaths, true)
