@@ -29,7 +29,7 @@ module.exports.run = async (client, message, args) => {
     } else {
       let corona = await track.countries(args.join(" ")) //change it to countries
       
-      let embed = new discord.RichEmbed()
+      let embed = new Discord.RichEmbed()
       .setTitle(`${corona.country}`)
       .setColor("#ff2050")
       .setDescription("Sometimes cases number may differ from small amount.")
