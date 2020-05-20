@@ -9,7 +9,7 @@ module.exports.run = async (client, message, args) => {
     let author = db.fetch(`money_${message.guild.id}_${user.id}`)
 
     let Embed = new Discord.RichEmbed()
-    .setColor("16734039")
+    .setColor("#16734039")
     .setDescription(`:cross: You need 2000 coins to purchase Bronze VIP`);
 
     if (args[0] == 'bronze') {
@@ -26,7 +26,7 @@ module.exports.run = async (client, message, args) => {
         message.channel.send(Embed2)
     } else if(args[0] == 'nikes') {
         let Embed2 = new Discord.RichEmbed()
-        .setColor("16734039")
+        .setColor("#16734039")
         .setDescription(`You need 600 coins to purchase some Nikes`);
 
         if (author < 600) return message.channel.send(Embed2)
@@ -42,7 +42,7 @@ module.exports.run = async (client, message, args) => {
         message.channel.send(Embed3)
     } else if(args[0] == 'car') {
         let Embed2 = new Discord.RichEmbed()
-        .setColor("16734039")
+        .setColor("#16734039")
         .setDescription(`You need 800 coins to purchase a new car`);
 
         if (author < 800) return message.channel.send(Embed2)
@@ -58,7 +58,7 @@ module.exports.run = async (client, message, args) => {
         message.channel.send(Embed3)
     } else if(args[0] == 'mansion') {
         let Embed2 = new Discord.RichEmbed()
-        .setColor("16734039")
+        .setColor("#16734039")
         .setDescription(` You need 1200 coins to purchase a Mansion`);
 
         if (author < 1200) return message.channel.send(Embed2)
@@ -84,7 +84,7 @@ module.exports.run = async (client, message, args) => {
 		message.channel.send(list)
     } else {
         let embed3 = new Discord.RichEmbed()
-        .setColor("16734039")
+        .setColor("#16734039")
         .setTitle("Enter an item to buy, type " + `${prefix}` + " list to show all things")
         message.channel.send(embed3)
     }
