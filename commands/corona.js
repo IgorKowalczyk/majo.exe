@@ -11,6 +11,11 @@ module.exports.run = async (client, message, args) => {
     if(args.join(" ") === "all") {
       let corona = await track.all() //it will give global cases
       
+	    if (!corona) return message.channel.send({embed: {
+            color: 16734039,
+            title: "Please enter a value!"
+        }})
+		
       let embed = new Discord.RichEmbed()
       .setTitle("Global Cases")
       .setColor("RANDOM")
@@ -29,7 +34,11 @@ module.exports.run = async (client, message, args) => {
     } else {
       let corona = await track.countries(args.join(" ")) //change it to countries
       
-	  
+	  	    if (!corona) return message.channel.send({embed: {
+            color: 16734039,
+            title: "Please enter a country!"
+        }})
+		
       let embed = new Discord.RichEmbed()
       .setTitle(`${corona.country}`)
       .setColor("RANDOM")
@@ -44,7 +53,10 @@ module.exports.run = async (client, message, args) => {
       return message.channel.send(embed)
       
       
-    }
+    }.catch((err) => message.channel.send({embed: {
+                color: 16734039,
+                title: "Something went wrong... :cry:"
+            }}));
     
     
   }
