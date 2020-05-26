@@ -20,7 +20,7 @@ if (args[0].shift().toLowerCase() == 'welcome') {
     .setColor("#FFFFFF")
     .setDescription(`Welcome Channel is seted as ${channel}`);
     message.channel.send(embed)
-  } else if(args[0].shift().toLowerCase()] == 'bye') {
+  } else if(args[0].shift().toLowerCase() == 'bye') {
 	  
 	let channel = message.mentions.channels.first()
     
