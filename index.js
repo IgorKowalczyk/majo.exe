@@ -155,33 +155,9 @@ setInterval(async () => {
       `${prefix} help`,
     ];
     const random = Math.floor(Math.random() * statuslist.length);
-	
-	const statuslist2 = [
-      `${client.guilds.size} servers | 🎉 Happy Birthday Discord! 🎉`,
-      `${client.users.size} members | 🎉 Happy Birthday Discord! 🎉`,
-      `${prefix} help | 🎉 Happy Birthday Discord! 🎉`,
-	  `🎉 Happy Birthday Discord! 🎉`,
-    ];
-    const random2 = Math.floor(Math.random() * statuslist2.length);
 
-try {
-
-var d = new Date();
-var date = d. getDate();
-var month = d. getMonth() + 1;
-var dateStr = date + "/" + month;
-
-if (dateStr == "26/5") {
-await client.user.setPresence({
-          game: {
-          name: `${statuslist2[random2]}`,
-          type: 'WATCHING'
-          
-        },
-        status: "online"
-      });
-    } else {
-await client.user.setPresence({
+    try {
+      await client.user.setPresence({
           game: {
           name: `${statuslist[random]}`,
           type: 'WATCHING'
