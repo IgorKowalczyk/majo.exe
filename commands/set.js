@@ -3,9 +3,9 @@ const db = require("quick.db")
 const prefix = process.env.PREFIX;
 
 module.exports.run = async (client, message, args) => {
-
-const commandargs = args.shift().toLowerCase();
-if (commendargs == 'welcome') {
+	
+const args = args.shift().toLowerCase();
+if (args == 'welcome') {
     let channel = message.mentions.channels.first()
     
     if(!channel) {
@@ -21,7 +21,7 @@ if (commendargs == 'welcome') {
     .setColor("#FFFFFF")
     .setDescription(`Welcome Channel is seted as ${channel}`);
     message.channel.send(embed)
-  } else if(commendargs == 'bye') {
+  } else if(args == 'bye') {
 	  
 	let channel = message.mentions.channels.first()
     
@@ -38,7 +38,7 @@ if (commendargs == 'welcome') {
     .setColor("#FFFFFF")
     .setDescription(`Bye Channel is seted as ${channel}`);
     message.channel.send(embed)
-  } else if(commendargs == 'list') {
+  } else if(args == 'list') {
 	let list = new Discord.RichEmbed()
         .setColor("RANDOM")
         .setTitle("List of all values to set")
