@@ -4,7 +4,7 @@ const prefix = process.env.PREFIX;
 
 module.exports.run = async (client, message, args) => {
 	
-if (args[0] == 'welcome') {
+if (args[0].shift().toLowerCase() == 'welcome') {
     let channel = message.mentions.channels.first()
     
     if(!channel) {
@@ -20,7 +20,7 @@ if (args[0] == 'welcome') {
     .setColor("#FFFFFF")
     .setDescription(`Welcome Channel is seted as ${channel}`);
     message.channel.send(embed)
-  } else if(args[0] == 'bye') {
+  } else if(args[0].shift().toLowerCase()] == 'bye') {
 	  
 	let channel = message.mentions.channels.first()
     
@@ -37,7 +37,7 @@ if (args[0] == 'welcome') {
     .setColor("#FFFFFF")
     .setDescription(`Bye Channel is seted as ${channel}`);
     message.channel.send(embed)
-  } else if(args[0] == 'list') {
+  } else if(args[0].shift().toLowerCase() == 'list') {
 	let list = new Discord.RichEmbed()
         .setColor("RANDOM")
         .setTitle("List of all values to set")
