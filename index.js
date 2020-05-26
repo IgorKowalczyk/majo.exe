@@ -2,6 +2,7 @@ const Discord = require("discord.js");
 const client = new Discord.Client();
 const fs = require("fs");
 const http = require('http');
+const db = require("quick.db")
 
 const express = require('express');
 const app = express();
