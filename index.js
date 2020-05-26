@@ -57,7 +57,7 @@ function getDefaultChannel(guild) {
 
 client.on("guildMemberAdd", (member) => {
 	const guild = member.guild;
-	let addset = member.guild.channels.find("name", "hello-end-bye")  
+	let addset = member.guild.channels.find("name", "hello-or-bye")  
     if(addset) {
      const guild = member.guild;
      newUsers.set(member.id, member.user);
@@ -97,7 +97,7 @@ client.on("guildMemberAdd", (member) => {
 
 client.on("guildMemberRemove", (member) => {
 	const guild = member.guild;
-	let addset = member.guild.channels.find("name", "hello-end-bye")  
+	let addset = member.guild.channels.find("name", "hello-or-bye")  
     if(addset) {
      const guild = member.guild;
      newUsers.set(member.id, member.user);
