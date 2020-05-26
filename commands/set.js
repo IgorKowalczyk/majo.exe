@@ -3,7 +3,7 @@ const db = require("quick.db")
 const prefix = process.env.PREFIX;
 
 module.exports.run = async (client, message, args) => {
-	
+if (message.member.hasPermission("ADMINISTRATOR")) {
 if (args[0] == 'welcome') {
     let channel = message.mentions.channels.first()
     
@@ -50,6 +50,13 @@ if (args[0] == 'welcome') {
         .setTitle("Enter a value to set, type " + `${prefix}` + "set list to show all values")
         message.channel.send(embed)
     }
+
+ } else {
+	message.channel.send({embed: {
+                    color: 16734039,
+                    title: "You don't have to set config!"
+                }})
+	}
 }
 
 module.exports.help = {
