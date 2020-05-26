@@ -56,28 +56,43 @@ function getDefaultChannel(guild) {
 }
 
 client.on("guildMemberAdd", (member) => {
-	
+	const guild = member.guild;
+	let addset = message.guild.channels.find("name", "hello-end-bye")  
+    if(addset) {
+     const guild = member.guild;
+     newUsers.set(member.id, member.user);
+     let embed = new Discord.RichEmbed()
+      .setDescription(`**${member.displayName}#${member.user.discriminator}** has joined the server.`)
+      .setThumbnail(member.user.displayAvatarURL)
+      .setColor("RANDOM")
+      .setTimestamp()
+      .setFooter(`Total members: ${member.guild.memberCount}`)    
+    
+     addset.send(embed=embed);    
+     if (newUsers.size > 5) {
+                }
+	} else {
 	 const guild = member.guild;
      newUsers.set(member.id, member.user);
 	 let chx = db.get(`welchannel_${member.guild.id}`);
   
-  if(chx === null) {
-    return;
-  }
+     if(chx === null) {
+      return;
+     }
 
-  let embed = new Discord.RichEmbed()
-    .setDescription(`**${member.displayName}#${member.user.discriminator}** has joined the server.`)
-    .setThumbnail(member.user.displayAvatarURL)
-    .setColor("RANDOM")
-    .setTimestamp()
-    .setFooter(`Total members: ${member.guild.memberCount}`)    
+     let embed = new Discord.RichEmbed()
+      .setDescription(`**${member.displayName}#${member.user.discriminator}** has joined the server.`)
+      .setThumbnail(member.user.displayAvatarURL)
+      .setColor("RANDOM")
+      .setTimestamp()
+      .setFooter(`Total members: ${member.guild.memberCount}`)    
   
-  client.channels.get(chx).send(embed=embed);
+     client.channels.get(chx).send(embed=embed);
   
-    if (newUsers.size > 5) {
-    newUsers.clear();
-  }
- 
+     if (newUsers.size > 5) {
+       newUsers.clear();
+     }
+	}
 });
 
 client.on("guildMemberRemove", (member) => {
@@ -86,20 +101,20 @@ client.on("guildMemberRemove", (member) => {
      newUsers.set(member.id, member.user);
 	 let chx2 = db.get(`byechannel_${member.guild.id}`);
   
-  if(chx2 === null) {
-    return;
-  }
+     if(chx2 === null) {
+     return;
+    }
 
-  let embed = new Discord.RichEmbed()
-    .setDescription(`**${member.displayName}#${member.user.discriminator}** left the server.`)
-    .setThumbnail(member.user.displayAvatarURL)
-    .setColor("RANDOM")
-    .setTimestamp()
-    .setFooter(`Total members: ${member.guild.memberCount}`)    
+     let embed = new Discord.RichEmbed()
+      .setDescription(`**${member.displayName}#${member.user.discriminator}** left the server.`)
+      .setThumbnail(member.user.displayAvatarURL)
+      .setColor("RANDOM")
+      .setTimestamp()
+      .setFooter(`Total members: ${member.guild.memberCount}`)    
   
-  client.channels.get(chx2).send(embed=embed);
+     client.channels.get(chx2).send(embed=embed);
  
-  if(newUsers.has(member.id)) newUsers.delete(member.id);
+     if(newUsers.has(member.id)) newUsers.delete(member.id);
 });
 
 client.on('message', message=> {
