@@ -20,7 +20,7 @@ module.exports.run = async (client, message, args) => {
         let amount = Math.floor(Math.random() * 80) + 1;
         let embed1 = new Discord.RichEmbed()
         .setColor("RANDOM")
-        .setDescription(`:check: You robbed a someone a and earned ${amount} coins`);
+        .setDescription(`:white_check_mark: You robbed a someone a and earned ${amount} coins`);
         message.channel.send(embed1)
         
         db.add(`money_${message.guild.id}_${user.id}`, amount)
