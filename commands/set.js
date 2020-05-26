@@ -18,7 +18,7 @@ if (args[0] == 'welcome') {
     
 	let embed = new Discord.RichEmbed()
     .setColor("#FFFFFF")
-    .setDescription(`Welcome Channel is seted as ${channel}`);
+    .setDescription(`Welcome Channel is seted as ${channel} (Note: If you have a channel named "hello-or-bye" the welcome messages will be send it in.)`);
     message.channel.send(embed)
   } else if(args[0] == 'bye') {
 	  
@@ -35,7 +35,7 @@ if (args[0] == 'welcome') {
     
 	let embed = new Discord.RichEmbed()
     .setColor("#FFFFFF")
-    .setDescription(`Bye Channel is seted as ${channel}`);
+  .setDescription(`Bye Channel is seted as ${channel} (Note: If you have a channel named "hello-or-bye" the bye messages will be send it in.)`);
     message.channel.send(embed)
   } else if(args[0] == 'list') {
 	let list = new Discord.RichEmbed()
@@ -47,7 +47,7 @@ if (args[0] == 'welcome') {
   } else {
         let embed = new Discord.RichEmbed()
         .setColor("FF5757")
-        .setTitle("Enter a value to set, type " + `${prefix}` + "set list to show all values")
+        .setTitle("Enter a value to set, type " + `${prefix}` + " set list to show all values")
         message.channel.send(embed)
     }
 
