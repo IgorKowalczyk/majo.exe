@@ -55,21 +55,28 @@ function getDefaultChannel(guild) {
 }
 
 client.on("guildMemberAdd", (member) => {
-  const guild = member.guild;
-  const defaultChannel = getDefaultChannel(guild); 
-  newUsers.set(member.id, member.user);
+	
+	 const guild = member.guild;
+     newUsers.set(member.id, member.user);
+	 let chx = db.get(`welchannel_${member.guild.id}`);
   
+  if(chx === null) {
+    return;
+  }
+
   let embed = new Discord.RichEmbed()
     .setDescription(`**${member.displayName}#${member.user.discriminator}** has joined the server.`)
     .setThumbnail(member.user.displayAvatarURL)
     .setColor("RANDOM")
     .setTimestamp()
     .setFooter(`Total members: ${member.guild.memberCount}`)    
-    
-  defaultChannel.send(embed=embed);    
-  if (newUsers.size > 5) {
+  
+  chx.send(embed=embed);    
+  
+    if (newUsers.size > 5) {
     newUsers.clear();
   }
+ 
 });
 
 client.on("guildMemberRemove", (member) => {
