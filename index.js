@@ -81,9 +81,14 @@ client.on("guildMemberAdd", (member) => {
 });
 
 client.on("guildMemberRemove", (member) => {
-  const guild = member.guild;
-  const defaultChannel = getDefaultChannel(guild); 
-  newUsers.set(member.id, member.user);
+	
+	 const guild = member.guild;
+     newUsers.set(member.id, member.user);
+	 let chx2 = db.get(`byechannel_${member.guild.id}`);
+  
+  if(chx2 === null) {
+    return;
+  }
 
   let embed = new Discord.RichEmbed()
     .setDescription(`**${member.displayName}#${member.user.discriminator}** left the server.`)
@@ -91,8 +96,9 @@ client.on("guildMemberRemove", (member) => {
     .setColor("RANDOM")
     .setTimestamp()
     .setFooter(`Total members: ${member.guild.memberCount}`)    
-    
-  defaultChannel.send(embed=embed);  
+  
+  client.channels.get(chx2).send(embed=embed);
+ 
   if(newUsers.has(member.id)) newUsers.delete(member.id);
 });
 
