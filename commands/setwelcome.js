@@ -19,4 +19,11 @@ module.exports.run = async (client, message, args) => {
     .setDescription(`Welcome Channel is seted as ${channel}`);
     message.channel.send(embed)
   }
+
+
+module.exports.help = {
+    name: "setwelcome",
+    description: "Set welcome channel",
+    usage: "setwelcome <channel>",
+    type: "General" 
 }
