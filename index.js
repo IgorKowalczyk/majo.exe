@@ -72,7 +72,7 @@ client.on("guildMemberAdd", (member) => {
     .setTimestamp()
     .setFooter(`Total members: ${member.guild.memberCount}`)    
   
-  chx.send(embed=embed);    
+  client.channels.get(chx).send(embed=embed);
   
     if (newUsers.size > 5) {
     newUsers.clear();
