@@ -96,14 +96,29 @@ client.on("guildMemberAdd", (member) => {
 });
 
 client.on("guildMemberRemove", (member) => {
-	
+	const guild = member.guild;
+	let addset = member.guild.channels.find("name", "hello-end-bye")  
+    if(addset) {
+     const guild = member.guild;
+     newUsers.set(member.id, member.user);
+     let embed = new Discord.RichEmbed()
+      .setDescription(`**${member.displayName}#${member.user.discriminator}** left the server.`)
+      .setThumbnail(member.user.displayAvatarURL)
+      .setColor("RANDOM")
+      .setTimestamp()
+      .setFooter(`Total members: ${member.guild.memberCount}`)    
+    
+     addset.send(embed=embed);    
+     if (newUsers.size > 5) {
+                }
+	} else {
 	 const guild = member.guild;
      newUsers.set(member.id, member.user);
 	 let chx2 = db.get(`byechannel_${member.guild.id}`);
   
      if(chx2 === null) {
-     return;
-    }
+      return;
+     }
 
      let embed = new Discord.RichEmbed()
       .setDescription(`**${member.displayName}#${member.user.discriminator}** left the server.`)
@@ -113,9 +128,13 @@ client.on("guildMemberRemove", (member) => {
       .setFooter(`Total members: ${member.guild.memberCount}`)    
   
      client.channels.get(chx2).send(embed=embed);
- 
+  
      if(newUsers.has(member.id)) newUsers.delete(member.id);
+	}
 });
+
+
+
 
 client.on('message', message=> {
      if (message.isMentioned(client.user.id)) {
