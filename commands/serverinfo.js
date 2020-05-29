@@ -7,12 +7,9 @@ module.exports.run = async (client, message, args) => {
   
   var e = message.guild.emojis.map(e => e.toString())
   if (e < 0) {
-	  e = "0"
+	  e = 0
   }
-  
-  if (e > 10) {
-	 e = "More than you know"
-  }
+
   
   var embed = new Discord.RichEmbed()
     .setAuthor(message.guild.name, message.guild.iconURL)
