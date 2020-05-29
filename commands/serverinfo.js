@@ -12,6 +12,8 @@ module.exports.run = async (client, message, args) => {
   
   if (e > 10) {
 	 e = "More than you know"
+  }
+  
   var embed = new Discord.RichEmbed()
     .setAuthor(message.guild.name, message.guild.iconURL)
     .setColor("RANDOM")
