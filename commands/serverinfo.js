@@ -31,7 +31,7 @@ module.exports.run = async (client, message, args) => {
         "russia": ":flag_ru: Russia",
         "southafrica": ":flag_za:  South Africa"
     };
-    const embed = new Discord.RichEmbed()
+    let embed = new Discord.RichEmbed()
     .setAuthor(message.guild.name, message.guild.iconURL)
     .setColor("RANDOM")
     .setThumbnail(message.guild.iconURL)
@@ -46,7 +46,7 @@ module.exports.run = async (client, message, args) => {
     .addField("Creation Date", `${message.channel.guild.createdAt.toUTCString().substr(0, 16)} (${checkDays(message.channel.guild.createdAt)})`, true)
 	.setTimestamp()
   
-  await message.channel.send(embed=embed);
+  message.channel.send(embed);
 }
 
 module.exports.help = {
