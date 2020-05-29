@@ -21,6 +21,7 @@ module.exports.run = async (client, message, args) => {
                 color: 16734039,
                 title: "You cant ban yourself!"
             }})
+		}
         if (!reason)
             reason = "No reason provided!";
         

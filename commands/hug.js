@@ -13,6 +13,7 @@ const superagent = require("snekfetch");
                 color: 16734039,
                 title: "You cant hug yourself!"
             }})
+		}
             superagent.get('https://nekos.life/api/v2/img/hug')
                 .end((err, response) => {
               const lewdembed = new Discord.RichEmbed()

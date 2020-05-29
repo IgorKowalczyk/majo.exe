@@ -14,6 +14,7 @@ const superagent = require("snekfetch");
                 color: 16734039,
                 title: "You cant slap yourself!"
             }})
+		}
             superagent.get('https://nekos.life/api/v2/img/slap')
                 .end((err, response) => {
               const lewdembed = new Discord.RichEmbed()
