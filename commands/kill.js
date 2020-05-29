@@ -20,6 +20,12 @@ module.exports.run = async (client, message, args) => {
         }})
     }
 
+		if (message.author === member) {
+           return await message.channel.send({embed: {
+                color: 16734039,
+                title: "You cant kick yourself!"
+            }})
+
     var pickeddeath = deaths[Math.floor(Math.random()*deaths.length)];
     var change1 = pickeddeath.replace("[NAME1]", message.author.username);
     var change2 = change1.replace("[NAME2]", member.displayName);

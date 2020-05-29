@@ -9,6 +9,11 @@ const superagent = require("snekfetch");
                 title: "You must mention someone to poke!"
             }})
 
+		if (message.author === user) {
+           return await message.channel.send({embed: {
+                color: 16734039,
+                title: "You cant poke yourself!"
+            }})
             superagent.get('https://nekos.life/api/v2/img/poke')
                 .end((err, response) => {
               const lewdembed = new Discord.RichEmbed()

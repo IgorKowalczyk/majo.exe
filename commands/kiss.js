@@ -9,6 +9,11 @@ const superagent = require("snekfetch");
                 title: "You must mention someone to kiss!"
             }})
 
+		if (message.author === user) {
+           return await message.channel.send({embed: {
+                color: 16734039,
+                title: "You cant kiss yourself!"
+            }})
             superagent.get('https://nekos.life/api/v2/img/kiss')
                 .end((err, response) => {
               const lewdembed = new Discord.RichEmbed()

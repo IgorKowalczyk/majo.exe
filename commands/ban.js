@@ -5,7 +5,6 @@ module.exports.run = async (client, message, args) => {
         let mentioned = await message.mentions.members.first();
         let reason = await args.slice(1).join(' ');
 
-        message.delete();
         if (!mentioned)
             return await message.channel.send({embed: {
                 color: 16734039,
@@ -16,6 +15,12 @@ module.exports.run = async (client, message, args) => {
                 color: 16734039,
                 title: "You cannot ban this member!"
             }})  
+			
+		if (message.author === mentioned) {
+           return await message.channel.send({embed: {
+                color: 16734039,
+                title: "You cant ban yourself!"
+            }})
         if (!reason)
             reason = "No reason provided!";
         

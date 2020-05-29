@@ -26,6 +26,8 @@ module.exports.run = async (client, message, args) => {
         "eu-west": ":flag_eu: Western Europe",
         "vip-us-east": ":flag_us: VIP U.S. East",
         "london": ":flag_gb: London",
+		"europe": ":flag_eu: Europe",
+		"india": ":flag_in: India",
         "amsterdam": ":flag_nl: Amsterdam",
         "hongkong": ":flag_hk: Hong Kong",
         "russia": ":flag_ru: Russia",
@@ -37,8 +39,8 @@ module.exports.run = async (client, message, args) => {
     .setThumbnail(message.guild.iconURL)
     .addField("Server Owner", serverowner.user.username + "#" + serverowner.user.discriminator, true)
 	.addField("ID", message.guild.id, true)
-    .addField("Region", region[message.guild.region], true)
-    .addField("Total | Humans | Bots", `${message.guild.members.size} | ${message.guild.members.filter(member => !member.user.client).size} | ${message.guild.members.filter(member => member.user.client).size}`, true)
+    .addField("Region", region[message.guild.region] || message.guild.region, true)
+    .addField("Members", message.guild.memberCount, true)
     .addField("Verification Level", verifLevels[message.guild.verificationLevel], true)
     .addField("Channels", message.guild.channels.size, true)
     .addField("Roles [" + `${message.guild.roles.size}` + "]", message.guild.roles.filter(r => r.id !== message.guild.id).map(roles => roles.name).join(", ") || "No Roles", true)
