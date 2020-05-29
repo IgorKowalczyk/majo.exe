@@ -13,7 +13,7 @@ module.exports.run = async (client, message, args) => {
         let days = Math.floor(diff / 86400000);
         return days + (days == 1 ? " day" : " days") + " ago";
     };
-    let verifLevels = ["None", "Low", "Medium", "(╯°□°）╯︵  ┻━┻", "┻━┻ミヽ(ಠ益ಠ)ノ彡┻━┻"];
+    let verifLevels = ["None", "Low", "Medium", "(╯°□°）╯︵  ┻━┻ (High)", "┻━┻ミヽ(ಠ益ಠ)ノ彡┻━┻ (VERY HIGH!!!)"];
     let region = {
         "brazil": ":flag_br: Brazil",
         "eu-central": ":flag_eu: Central Europe",
