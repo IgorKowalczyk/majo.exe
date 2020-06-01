@@ -80,6 +80,7 @@ module.exports.run = async (client, message, args) => {
           .addField(":grey_question: Command Information", `${prefix}` + " help <command>")
         msg.edit(embed);
         msg.edit("\u200B")
+		})
       } else if (err) return;
     }
   });
