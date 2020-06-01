@@ -61,6 +61,10 @@ module.exports.run = async (client, message, args) => {
     
     if (done) {
       if (!command) {
+		await message.channel.send({embed: {
+            color: 3447003,
+            title: "Generating the help..."
+        }}).then(msg=>{
         var embed = new Discord.RichEmbed()
           .setAuthor("Help", message.guild.iconURL)
           .setColor("RANDOM")
@@ -74,8 +78,8 @@ module.exports.run = async (client, message, args) => {
           .addField(":toolbox: Utility", Utility.map((roles => roles[0])).join(", ") ,)
           .addField(":smirk: NSFW", NSFW.map((roles => roles[0])).join(", ") ,)
           .addField(":grey_question: Command Information", `${prefix}` + " help <command>")
-        
-        message.channel.send(embed)
+        msg.edit(embed);
+        msg.edit("\u200B")
       } else if (err) return;
     }
   });
