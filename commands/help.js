@@ -61,7 +61,7 @@ module.exports.run = async (client, message, args) => {
     
     if (done) {
       if (!command) {
-		await message.channel.send({embed: {
+		message.channel.send({embed: {
             color: 3447003,
             title: "Generating the help..."
         }}).then(msg=>{
