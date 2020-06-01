@@ -54,7 +54,7 @@ if (args[0] == 'welcome') {
  } else {
 	message.channel.send({embed: {
                     color: 16734039,
-                    title: "You don't have to set config!"
+                    description: "You don't have premissions to set config!"
                 }})
 	}
 }
