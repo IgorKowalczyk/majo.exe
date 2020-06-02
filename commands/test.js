@@ -26,4 +26,10 @@ module.exports.run = async (client, message, args) => {
             .setTimestamp()
         message.channel.send(embed);
     }
-};
+	
+module.exports.help = {
+    name: "test"
+    description: "Display a server leaderboard",
+    usage: "test",
+    type: "Economy" 
+}
