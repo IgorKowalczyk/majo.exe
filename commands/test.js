@@ -28,7 +28,7 @@ module.exports.run = async (client, message, args) => {
     }
 	
 module.exports.help = {
-    name: "test"
+    name: "test",
     description: "Display a server leaderboard",
     usage: "test",
     type: "Economy" 
