@@ -22,7 +22,6 @@ module.exports.run = async (client, message, args) => {
             .setTitle(`Leaderboard Of ${message.guild.name}`)
             .setColor("RANDOM")
             .setDescription(finalLb)
-            .setFooter(client.user.tag, client.user.displayAvatarURL())
             .setTimestamp()
         message.channel.send(embed);
     }
