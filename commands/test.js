@@ -15,7 +15,7 @@ module.exports.run = async (client, message, args) => {
         var finalLb = "";
         for (var i in money) {
             if (money[i].data === null) money[i].data = 0
-            finalLb += `**${money.indexOf(money[i]) + 1}. ${client.users.get(money[i].ID.split('_')[1]) ? client.users.cache.get(money[i].ID.split('_')[1]).tag : "Unknown User#0000"}** - ${money[i].data} :dollar:\n`;
+            finalLb += `**${money.indexOf(money[i]) + 1}. ${client.users.get(money[i].ID.split('_')[1]) ? client.users.get(money[i].ID.split('_')[1]).tag : "Unknown User#0000"}** - ${money[i].data} :dollar:\n`;
         };
 
         const embed = new Discord.RichEmbed()
