@@ -6,13 +6,13 @@ module.exports.run = async (client, message, args, level) => {
 		message.react('💢');
 		return message.channel.send({embed: {
                 color: 16734039,
-                title: "You can use this command in an NSFW Channel!"
+                description: "You can use this command in an NSFW Channel!"
             }})
 	}
     superagent.get('https://nekos.life/api/v2/img/anal')
         .end((err, response) => {
       const lewdembed = new Discord.RichEmbed()
-      .setTitle(":smirk: Anal")
+      .setAuthor(":smirk: Anal")
       .setImage(response.body.url)
       .setColor(`RANDOM`)
       .setFooter(`Tags: anal`)
