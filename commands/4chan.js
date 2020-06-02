@@ -6,7 +6,7 @@ module.exports.run = async (client, message, args) => {
     if(!message.channel.nsfw){
       message.channel.send({embed: {
             color: 16734039,
-            title: "This command can only be used in NSFW channels!"
+            description: "This command can only be used in NSFW channels!"
         }})
       return;
     }
@@ -15,7 +15,7 @@ let chanargs = args.slice(0).join(' ');
 
   if (!chanargs) return message.channel.send({embed: {
             color: 16734039,
-            title: "Please enter a board!"
+            description: "Please enter a board!"
         }})
 		
   if(chanargs === "boards"){
@@ -35,7 +35,7 @@ let chanargs = args.slice(0).join(' ');
     if(boards.indexOf(board) == -1){
       let vb = new Discord.RichEmbed()
           .setColor(16734039)
-          .setTitle("Please enter a vaild board!")
+          .setDescription("Please enter a vaild board!")
           .setTimestamp()
         message.channel.send(vb);
       return;
