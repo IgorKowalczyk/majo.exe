@@ -3,7 +3,7 @@ const Discord = require('discord.js');
 
 module.exports.run = async (client, message, args) => {
 
-  const { body } = await superagent
+        await superagent
         .get('http://icanhazdadjoke.com/')
         .set('Accept', 'application/json')
 		   .end((err, response) => {
