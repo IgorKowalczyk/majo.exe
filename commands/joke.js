@@ -3,7 +3,7 @@ const Discord = require('discord.js');
 
 module.exports.run = async (client, message, args) => {
 
-            superagent.get('http://icanhazdadjoke.com/')
+            superagent.get('http://icanhazdadjoke.com/').set('Accept', 'application/json');
                 .end((err, response) => {
               const lewdembed = new Discord.RichEmbed()
               .setColor(`RANDOM`)
