@@ -15,6 +15,16 @@ module.exports.run = async (client, message, args) => {
   const data = await fetch(`https://api.github.com/users/${user}`).then((res) =>
     res.json()
   )
+  
+  if (data.message === "Not Found") {
+	let errorembed = new Discord.RichEmbed()
+    .setTitle("Error :cry:")
+    .setDescription("Could not fetch data. Please try again or make sure the name is correctly spelled!")
+    .setTimestamp();
+  return message.channel.send(errorembed);
+  }
+  
+  
   .catch(error => {
     let errorembed = new Discord.RichEmbed()
     .setTitle("Error :cry:")
