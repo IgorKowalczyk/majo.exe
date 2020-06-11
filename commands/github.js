@@ -1,5 +1,6 @@
 const Discord = require("discord.js");
 const fetch = require("node-fetch");
+const prefix = process.env.PREFIX;
 
 module.exports.run = async (client, message, args) => {
   const user = args.join(" ");
@@ -7,7 +8,7 @@ module.exports.run = async (client, message, args) => {
   if (!user || user.length < 0) {
 	return;
     let errorembeduser = new Discord.RichEmbed()
-      .setTitle("**ERROR**")
+      .setTitle("Error :cry:")
       .addField("Usage", `${prefix}` + " github <username>")
       .setTimestamp()
     message.channel.send(errorembeduser);
