@@ -5,7 +5,7 @@ module.exports.run = async (client, message, args) => {
 
   const { body } = await superagent
         .get('http://icanhazdadjoke.com/')
-        .set('Accept', 'application/json');
+        .set('Accept', 'application/json')
 		.end((err, response) => {
         let jEmbed = new Discord.RichEmbed()
         .setTitle("Joke")
