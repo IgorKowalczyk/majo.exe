@@ -3,19 +3,19 @@ const Discord = require('discord.js');
 
 module.exports.run = async (client, message, args) => {
 
-superagent.get('http://icanhazdadjoke.com/')
-		.end((err, response) => {
-        let jEmbed = new Discord.RichEmbed()
-        .setTitle("Joke")
-        .setDescription(response.joke)
-        .setColor("RANDOM");
-        message.channel.send(jEmbed);
+            superagent.get('http://icanhazdadjoke.com/')
+                .end((err, response) => {
+              const lewdembed = new Discord.RichEmbed()
+              .setColor(`RANDOM`)
+              .setDescription(response.joke)
+			  .setTitle("Joke")
+          message.channel.send(lewdembed);
             }).catch((err) => message.channel.send({embed: {
                 color: 16734039,
                 title: "Something went wrong... :cry:"
-            }}));
+            }}))
+		}
           
-        }
 
 module.exports.help = {
     name: "joke",
