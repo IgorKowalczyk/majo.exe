@@ -19,15 +19,17 @@ module.exports.run = async (client, message, args) => {
     let errorembed = new Discord.RichEmbed()
     .setTitle("Error :cry:")
     .setDescription("Could not fetch data. Please try again or make sure the name is correctly spelled!")
-    .setTimestamp();
+	.setColor("FF5757")
+    .setTimestamp()
   return message.channel.send(errorembed);
   })
   
     if (data.message === "Not Found") {
 	let errorembed = new Discord.RichEmbed()
     .setTitle("Error :cry:")
+	.setColor("FF5757")
     .setDescription("Could not fetch data. Please try again or make sure the name is correctly spelled!")
-    .setTimestamp();
+    .setTimestamp()
   return message.channel.send(errorembed);
   }
 
