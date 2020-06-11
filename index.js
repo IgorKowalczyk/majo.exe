@@ -191,7 +191,6 @@ return message.channel.send({embed: {
     let commandFile = require(`./commands/${command}.js`);
     commandFile.run(client, message, args);
   } catch (err) {
-	  console.log(err);
     message.channel.send({embed: {
                 color: 16734039,
                 title: "That command does not exist, Take a look at " + `${prefix}` + " help!"
