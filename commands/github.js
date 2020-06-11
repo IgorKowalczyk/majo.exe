@@ -53,7 +53,7 @@ module.exports.run = async (client, message, args) => {
 
 module.exports.help = {
     name: "github",
-    description: "Display Github Usr stats",
+    description: "Display Github User stats",
     usage: "github <user>",
     type: "Utility"  
 }
