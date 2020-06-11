@@ -101,7 +101,8 @@
     "weather": "^1.0.4",
     "weather-js": "^2.0.0",
     "webapp-v2": "^0.1.4",
-    "ytdl-core": "^2.1.2"
+    "ytdl-core": "^2.1.2",
+    "weather-js": "^2.0.0",
   },
   "engines": {
     "node": "8.x"
