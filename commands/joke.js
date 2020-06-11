@@ -6,16 +6,13 @@ module.exports.run = async (client, message, args) => {
   const { body } = await superagent
         .get('http://icanhazdadjoke.com/')
         .set('Accept', 'application/json')
-		.end((err, response) => {
+		   .end((err, response) => {
         let jEmbed = new Discord.RichEmbed()
         .setTitle("Joke")
         .setDescription(response.body.joke)
         .setColor("RANDOM");
         message.channel.send(jEmbed);
-		}).catch((err) => message.channel.send({embed: {
-                color: 16734039,
-                title: "Something went wrong... :cry:"
-            }}));
+		})
     }
 
 module.exports.help = {
