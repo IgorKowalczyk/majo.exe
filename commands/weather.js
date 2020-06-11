@@ -3,12 +3,21 @@ const weather = require('weather-js')
 
 module.exports.run = async (client, message, args) => {
 
+if(args.length === 0){
+    let errorembed = new Discord.RichEmbed()
+    .setTitle("Error :cry:")
+    .setDescription("Please enter a location!")
+	.setColor("FF5757")
+    .setTimestamp()
+  return message.channel.send(errorembed);
+}
+
 weather.find({search: args.join(" "), degreeType: 'C'}, function(err, result) {
   
 if(result.length === 0){
     let errorembed = new Discord.RichEmbed()
     .setTitle("Error :cry:")
-    .setDescription("Please enter a location!")
+    .setDescription("Please enter a vaild location!")
 	.setColor("FF5757")
     .setTimestamp()
   return message.channel.send(errorembed);
