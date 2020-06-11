@@ -12,12 +12,6 @@ module.exports.run = async (client, message, args) => {
         .setDescription(response.body.joke)
         .setColor("RANDOM");
         message.channel.send(jEmbed);
-		 } catch (error) {
-        return message.channel.send({embed: {
-                color: 16734039,
-                title: "Something went wrong... :cry:"
-            }});
-        }  
 		})
     }
 
