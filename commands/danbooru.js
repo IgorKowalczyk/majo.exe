@@ -1,7 +1,6 @@
 const randomPuppy = require('random-puppy');
 const request = require('snekfetch');
 const fs = require("fs")
-
 const Discord = require('discord.js');
 const booru = require('booru');
 
