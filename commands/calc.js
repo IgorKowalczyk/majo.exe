@@ -8,7 +8,7 @@ module.exports.run = (client, message, args) => {
 
 
     if(args.length < 1) {
-	    return await message.channel.send({embed: {
+	    return message.channel.send({embed: {
             color: 16734039,
             description: "You must provide a equation to be solved on the calculator! (eg. 9 + 10)"
         }}) 
