@@ -8,12 +8,12 @@ const pollmessage = await args.join(" ");
 var pollrandom = ["✅", "❌",];  
 
 if (pollmessage.length <= 0) return message.channel.send({embed: {
-            color: 3447003,
+            color: 16734039,
             description: "You must provide a text to ask a question!"
         }})
 const embed = new Discord.RichEmbed()
 .setTitle(":ballot_box: " +`${message.author.username}` + " A vote has begun! React with the emojis to vote! :ballot_box:",)
-.setColor(3447003)
+.setColor("RANDOM")
 .addField("Pool", pollmessage,)
 .setFooter("Note: The voting will be ended in 30 seconds! • Bot created by " + `${cnf.owner}`,)
 .setTimestamp()
