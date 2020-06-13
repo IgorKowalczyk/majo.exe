@@ -1,7 +1,7 @@
 const superagent = require("snekfetch");
 const Discord = require('discord.js')
 
-module.exports.run = async (client, message, level) => {
+module.exports.run = async (client, message, args) => {
 
 var today = new Date()
 let Day = today.toString().split(" ")[0].concat("day");

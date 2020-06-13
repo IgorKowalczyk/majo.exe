@@ -22,7 +22,7 @@ module.exports.run = (client, message, args) => {
  let m421 = args.join(" ");
   if (!m421) return  message.channel.send({embed: {
                 color: 16734039,
-                title: "Please enter a waifu name!"
+                description: "Please enter a waifu name!"
             }})
   if (m421.length > 30) return  message.channel.send({embed: {
                 color: 16734039,

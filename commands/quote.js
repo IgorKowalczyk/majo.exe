@@ -6,20 +6,18 @@ module.exports.run = async (client, message, args) => {
   
   if (!messageid || messageid.length < 0) 
     
-          message.delete();
         return message.channel.send({embed: {
             color: 3447003,
-            title: "Specify a message id!"
-        }}).then(msg => msg.delete(2132));
+            description: "Specify a message id!"
+        }})
 
   
   message.channel.fetchMessages().then((messages) => {
     if (!messages.has(messageid)) 
-        message.delete();
         return message.channel.send({embed: {
             color: 3447003,
-            title: "Specify a vaild message id!"
-        }}).then(msg => msg.delete(2000));
+            description: "Specify a vaild message id!"
+        }})
     
     if (messages.has(messageid)) {
       let msg = messages.get(messageid);

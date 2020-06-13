@@ -4,7 +4,7 @@ module.exports.run = async (client, message, args) => {
     var mention = message.guild.member(message.mentions.users.first());
     if(!mention) return message.channel.send({embed: {
             color: 16734039,
-            title: "Mention a user to get their ID!"
+            description: "Mention a user to get their ID!"
         }})
     const lolid = new Discord.RichEmbed()
     .setThumbnail(mention.user.avatarURL)

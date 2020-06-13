@@ -46,8 +46,11 @@ module.exports.run = async (client, message, args) => {
                     });
             }, 1000);
         })
-        .catch(console.error);
-};
+        .catch((err) => message.channel.send({embed: {
+                color: 16734039,
+                description: "Something went wrong... :cry:"
+            }}));
+}
 
 module.exports.help = {
     name: "roulette",

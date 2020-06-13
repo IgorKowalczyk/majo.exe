@@ -12,14 +12,14 @@ const superagent = require("snekfetch");
 
             superagent.get('https://nekos.life/api/v2/img/cuddle')
                 .end((err, response) => {
-              const lewdembed = new Discord.RichEmbed()
+              const embed = new Discord.RichEmbed()
               .setTitle(user.username + " Just got a cuddle from " + message.author.username)
               .setImage(response.body.url)
               .setColor(`RANDOM`)
               .setDescription((user.toString() + " got a cuddle from " + message.author.toString()))
               .setFooter(`this is so cute`)
               .setURL(response.body.url);
-          message.channel.send(lewdembed);
+          message.channel.send(embed);
             }).catch((err) => message.channel.send({embed: {
                 color: 16734039,
                 description: "Something went wrong... :cry:"

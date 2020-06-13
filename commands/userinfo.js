@@ -16,7 +16,7 @@ module.exports.run = async (client, message, args) => {
       message.delete();
         return await message.channel.send({embed: {
             color: 3447003,
-            title: "Mention a valid member!"
+            description: "Mention a valid member!"
         }}).then(msg => msg.delete(2000));
     }
 

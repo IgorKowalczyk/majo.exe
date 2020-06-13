@@ -6,17 +6,17 @@ module.exports.run = async (client, message, args) => {
   let user = message.mentions.members.first();
   if (!user) return message.channel.send({embed: {
                     color: 16734039,
-                    title: "You must mention someone to remove money!"
+                    description: "You must mention someone to remove money!"
                 }})
     if (isNaN(args[1])) return message.channel.send({embed: {
                     color: 16734039,
-                    title: "You must enter the amount of money to remove!"
+                    description: "You must enter the amount of money to remove!"
                 }})
     let bal = await db.fetch(`money_${message.guild.id}_${user.id}`)
 	if (bal < 0) {
 		return message.channel.send({embed: {
                     color: 16734039,
-                    title: "You can't remove more money than this person has!"
+                    description: "You can't remove more money than this person has!"
                 }})
 	}
 
@@ -29,7 +29,7 @@ module.exports.run = async (client, message, args) => {
     } else {
 	message.channel.send({embed: {
                     color: 16734039,
-                    title: "You don't have premission to remove money!"
+                    description: "You don't have premission to remove money!"
                 }})
 	}
 }

@@ -42,6 +42,6 @@ module.exports.run = (client, message, args) => {
 module.exports.help = {
     name: "calc",
     description: "Calculator",
-    usage: "calc <>",
+    usage: "calc <task>",
     type: "Fun" 
 }

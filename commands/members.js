@@ -1,6 +1,7 @@
 const Discord = module.require("discord.js");
 
 module.exports.run = async (client, message, args) => {  
+
   let onlineMembers = message.guild.members.filter(m => m.presence.status === 'online');
   let offlineMembers = message.guild.members.filter(m => m.presence.status === 'offline');
   let idleMembers = message.guild.members.filter(m => m.presence.status === 'idle');
@@ -30,7 +31,7 @@ module.exports.run = async (client, message, args) => {
     donotdisturb += 1;
   }); 
   
-  var embed = new Discord.RichEmbed()
+  const embed = new Discord.RichEmbed()
     .setAuthor("Members", message.guild.iconURL)
     .setColor("RANDOM")
     .addField("Overall Members:", message.guild.memberCount || message.guild.members.size)
@@ -39,7 +40,7 @@ module.exports.run = async (client, message, args) => {
     .addField("Idle Members:", idle)
     .addField("Do Not Disturb Members:", donotdisturb)
   
-  message.channel.send(embed=embed);
+  message.channel.send(embed);
 }
 
 module.exports.help = {

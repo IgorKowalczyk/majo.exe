@@ -1,11 +1,11 @@
-const Discord = module.require("discord.js");
+const Discord = require("discord.js");
 const flip = require("flip-text");
 
 module.exports.run = async (client, message, args) => {
 
 if (args.length <= 0) return message.channel.send({embed: {
             color: 16734039,
-            title: "You must provide a text!"
+            description: "You must provide a text!"
         }})
 
       var flipped = [];
@@ -13,11 +13,12 @@ if (args.length <= 0) return message.channel.send({embed: {
   args.forEach((arg) => {
       flipped.push(flip(arg));
   });
-    
-    await message.channel.send({embed: {
-        color: "RANDOM",
-        title: "Flipped text: " + flipped.join(" "),
-    }});
+  
+
+const embed = new Discord.RichEmbed()
+      .setColor("RANDOM")
+	  .setTitle("Flipped text: " + `flipped.join(" ")`)
+  await message.channel.send(embed);
 }
 
 module.exports.help = {

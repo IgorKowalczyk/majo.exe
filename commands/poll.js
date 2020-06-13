@@ -1,7 +1,7 @@
 const Discord = require("discord.js");
 const cnf = require('../config.json');
 
-module.exports.run = async (client, message, args, level) => { // eslint-disable-line no-unused-vars
+module.exports.run = async (client, message, args) => {
 
 const pollmessage = await args.join(" ");
 
@@ -9,7 +9,7 @@ var pollrandom = ["✅", "❌",];
 
 if (pollmessage.length <= 0) return message.channel.send({embed: {
             color: 3447003,
-            title: "You must provide a text to ask a question!"
+            description: "You must provide a text to ask a question!"
         }})
 const embed = new Discord.RichEmbed()
 .setTitle(":ballot_box: " +`${message.author.username}` + " A vote has begun! React with the emojis to vote! :ballot_box:",)

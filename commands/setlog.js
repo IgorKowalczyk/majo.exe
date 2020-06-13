@@ -3,13 +3,13 @@ const Discord = require("discord.js");
 module.exports.run = (client, message, args) => {
 if(!message.member.hasPermission('ADMINISTRATOR')) return message.channel.send({embed: {
                     color: 16734039,
-                    title: "Sorry, but you don't have access to set the logs."
+                    description: "Sorry, but you don't have access to set the logs."
                 }})
 				
     let log = message.guild.channels.find("name", "log")  
     if(log) return message.channel.send({embed: {
                     color: 16734039,
-                    title: "The channel #log is already exist!"
+                    description: "The channel #log is already exist!"
                 }})
 
     if(!log) {   
@@ -22,7 +22,7 @@ if(!message.member.hasPermission('ADMINISTRATOR')) return message.channel.send({
   }
 )}
   let success = new Discord.RichEmbed()
-  .setTitle("The channel has been created and the channel logs is #logs")
+  .setDescription("The channel has been created and the channel logs is #logs")
   .setColor("RANDOM")
   .setTimestamp()
   message.channel.send(success);

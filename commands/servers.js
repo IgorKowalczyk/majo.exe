@@ -1,12 +1,12 @@
 const Discord = require("discord.js");
 
 module.exports.run = async (client, message, args) => {
-    let botembed = new Discord.RichEmbed()
+    const embed = new Discord.RichEmbed()
         .setColor("RANDOM")
-        .setTitle("I'm in " + `${client.guilds.size}` + " servers")
+        .setDescription("I'm in " + `${client.guilds.size}` + " servers!")
         .setTimestamp()
         .setFooter(message.author.username, message.author.avatarURL);
-    message.channel.send(botembed);
+    message.channel.send(embed);
 }
 
 module.exports.help = {

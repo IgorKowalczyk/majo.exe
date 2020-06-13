@@ -1,32 +1,32 @@
 const Discord = require("discord.js");
 const superagent = require("snekfetch");
 
-        module.exports.run = async (client, message, args, level) => {
+        module.exports.run = async (client, message, args) => {
             const user = message.mentions.users.first();
             if(!user)
                 return message.channel.send({embed: {
                 color: 16734039,
-                title: "You must mention someone to give hug!"
+                description: "You must mention someone to give hug!"
             }})
 		if (message.author === user) {
            return await message.channel.send({embed: {
                 color: 16734039,
-                title: "You cant hug yourself!"
+                description: "You cant hug yourself!"
             }})
 		}
             superagent.get('https://nekos.life/api/v2/img/hug')
                 .end((err, response) => {
-              const lewdembed = new Discord.RichEmbed()
+              const embed = new Discord.RichEmbed()
               .setTitle(user.username + " Just got a hug from " + message.author.username)
               .setImage(response.body.url)
               .setColor("RANDOM")
               .setDescription((user.toString() + " got a hug from " + message.author.toString()))
               .setFooter(`this is so cute`)
               .setURL(response.body.url);
-          message.channel.send(lewdembed);
+          message.channel.send(embed);
             }).catch((err) => message.channel.send({embed: {
                 color: 16734039,
-                title: "Something went wrong... :cry:"
+                description: "Something went wrong... :cry:"
             }}));
 
         }

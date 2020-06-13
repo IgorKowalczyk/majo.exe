@@ -14,7 +14,7 @@ message.author.send({embed})
 
 message.channel.send({embed: {
             color: 3447003,
-            title: "Check a priv message!"
+            description: "Check a priv message!"
         }})
 }
 

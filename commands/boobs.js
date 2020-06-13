@@ -18,14 +18,14 @@ module.exports.run = async (client, message, args) => {
     });
 }).then(function(res)   {
 
-const lewdembed = new Discord.RichEmbed()
+const embed = new Discord.RichEmbed()
       .setTitle(":smirk: Boobs")
       .setColor(`RANDOM`)
       .setImage("attachment://file.png").attachFiles([{ attachment: res, name: "file.png" }])
 	  .setFooter(`Tags: boobs`)
 
 
-    message.channel.send(lewdembed);
+    message.channel.send(embed);
 }).catch((err) => message.channel.send({embed: {
                 color: 16734039,
                 description: "Something went wrong... :cry:"

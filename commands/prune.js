@@ -7,7 +7,7 @@ module.exports.run = async (client, message, args) => {
         if(!deleteCount || deleteCount < 1 || deleteCount > 100) {
             return await message.channel.send({embed: {
                 color: 16734039,
-                title: "Provide a number between 1 and 100!"
+                description: "Provide a number between 1 and 100!"
             }})
         }
        
@@ -17,18 +17,18 @@ module.exports.run = async (client, message, args) => {
                 message.channel.bulkDelete(list);
                 message.channel.send({embed: {
                     color: 16734039,
-                    title: deleteCount + " messages pruned! :white_check_mark:"
+                    description: deleteCount + " messages pruned! :white_check_mark:"
                 }}).then(msg => msg.delete(2000));
             }, function(err){
                 message.channel.send({embed: {
                     color: 16734039,
-                    title: "ERROR: " + err
+                    description: "ERROR: " + err
                 }})
         })  
     } else {
 	message.channel.send({embed: {
                     color: 16734039,
-                    title: "You don't have premission to prune messages!"
+                    description: "You don't have premission to prune messages!"
                 }})
 	}
 }

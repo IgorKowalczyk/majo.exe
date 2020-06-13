@@ -8,17 +8,17 @@ module.exports.run = async (client, message, args) => {
         if (!mentioned)
             return await message.channel.send({embed: {
                 color: 16734039,
-                title: "Mention a valid member!"
+                description: "Mention a valid member!"
             }})
         if (!mentioned.kickable)
             return await message.channel.send({embed: {
                 color: 16734039,
-                title: "You cannot kick this member!"
+                description: "You cannot kick this member!"
             }})   
 		if (message.author === mentioned) {
            return await message.channel.send({embed: {
                 color: 16734039,
-                title: "You cant kick yourself!"
+                description: "You cant kick yourself!"
             }})
 		}
         if (!reason)
@@ -27,12 +27,12 @@ module.exports.run = async (client, message, args) => {
         mentioned.kick(reason);
         await message.channel.send({embed: {
             color: 16734039,
-            title: ":arrow_right: " + mentioned.displayName + " has been Kicked! :door:"
+            description: ":arrow_right: " + mentioned.displayName + " has been Kicked! :door:"
         }});     
     } else {
 	message.channel.send({embed: {
                     color: 3447003,
-                    title: "You don't have premission to kick members!"
+                    description: "You don't have premission to kick members!"
                 }})
 	}
 }

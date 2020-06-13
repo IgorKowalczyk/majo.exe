@@ -10,7 +10,7 @@ if (args[0] == 'welcome') {
     if(!channel) {
       return message.channel.send({embed: {
                     color: 16734039,
-                    title: "You must mention a channel to set!"
+                    description: "You must mention a channel to set!"
                 }})
     }
     
@@ -27,7 +27,7 @@ if (args[0] == 'welcome') {
     if(!channel) {
       return message.channel.send({embed: {
                     color: 16734039,
-                    title: "You must mention a channel to set!"
+                    description: "You must mention a channel to set!"
                 }})
     }
     

@@ -5,13 +5,13 @@ module.exports.run = async (client, message, args) => {
 
     superagent.get('https://nekos.life/api/v2/img/meow')
         .end((err, response) => {
-      const lewdembed = new Discord.RichEmbed()
+      const embed = new Discord.RichEmbed()
       .setTitle("Random cat")
       .setImage(response.body.url)
       .setColor(`RANDOM`)
       .setFooter(`meow`)
       .setURL(response.body.url);
-  message.channel.send(lewdembed);
+  message.channel.send(embed);
     }).catch((err) => message.channel.send({embed: {
                 color: 16734039,
                 description: "Something went wrong... :cry:"

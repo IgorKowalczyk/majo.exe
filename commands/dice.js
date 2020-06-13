@@ -8,7 +8,7 @@ function dice() {
 }
   
    var embed = new Discord.RichEmbed()
-    .setTitle(":game_die: The dice rolled " + `${dice()}` + "! :game_die:")
+    .setDescription(":game_die: The dice rolled " + `${dice()}` + "! :game_die:")
     .setColor("RANDOM")
   
   message.channel.send(embed=embed);

@@ -8,11 +8,11 @@ let youtube = args.slice(0).join('+');
   let link = `https://www.youtube.com/results?search_query=` + youtube;
   if (!youtube) return message.channel.send({embed: {
             color: 16734039,
-            title: "Please enter a word to search!"
+            description: "Please enter a word to search!"
         }})
   if (!link) return message.channel.send({embed: {
             color: 16734039,
-            title: "Error!"
+            description: "Error!"
         }})
   let embed = new Discord.RichEmbed()
     .setTitle("Searching in youtube")

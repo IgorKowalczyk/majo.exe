@@ -11,13 +11,13 @@ module.exports.run = async (client, message, args) => {
 	}
     superagent.get('https://nekos.life/api/v2/img/classic')
         .end((err, response) => {
-      const lewdembed = new Discord.RichEmbed()
+      const embed = new Discord.RichEmbed()
       .setTitle(":smirk: Classic")
       .setImage(response.body.url)
       .setColor(`RANDOM`)
       .setFooter(`Tags: classic`)
       .setURL(response.body.url);
-  message.channel.send(lewdembed);
+  message.channel.send(embed);
     }).catch((err) => message.channel.send({embed: {
                 color: 16734039,
                 description: "Something went wrong... :cry:"

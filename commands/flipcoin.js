@@ -1,4 +1,4 @@
-const Discord = module.require("discord.js");
+const Discord = require("discord.js");
 
 module.exports.run = async (client, message, args) => {
   
@@ -10,7 +10,7 @@ function doanswer() {
 
   await message.channel.send({embed: {
         color: 3447003,
-        title: "I'm get: " + doanswer(),
+        description: "I'm get: " + doanswer(),
     }});
 	
 	

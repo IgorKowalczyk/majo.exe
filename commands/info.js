@@ -4,6 +4,7 @@ const moment = require("moment");
 require("moment-duration-format");
 
 module.exports.run = async (client, message, args) => {
+
 const prefix = process.env.PREFIX;
 const duration = moment.duration(client.uptime).format(" D [days], H [hrs], m [mins], s [secs]");
 let embed = new Discord.RichEmbed()

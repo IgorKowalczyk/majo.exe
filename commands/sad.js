@@ -28,13 +28,13 @@ module.exports.run = async (client, message, args) => {
         // handle an exception
         return message.channel.send({embed: {
             color: 16734039,
-            title: "Invaild image!"
+            description: "Invaild image!"
         }})
     });    
   } else {
         return message.channel.send({embed: {
             color: 16734039,
-            title: "Please enter a image!"
+            description: "Please enter a image!"
         }})
   }
 }

@@ -16,14 +16,14 @@ module.exports.run = async (client, message, args) => {
     if (!member) {
         return message.channel.send({embed: {
             color: 16734039,
-            title: "Mention a valid member of this server!"
+            description: "Mention a valid member of this server!"
         }})
     }
 
 		if (message.author === member) {
            return await message.channel.send({embed: {
                 color: 16734039,
-                title: "You cant kick yourself!"
+                description: "You cant kick yourself!"
             }})
 		}
     var pickeddeath = deaths[Math.floor(Math.random()*deaths.length)];

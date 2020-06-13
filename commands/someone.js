@@ -12,7 +12,7 @@ module.exports.run = async (client, message, args) => {
   
   await message.channel.send({embed: {
                     color: 3447003,
-                    title: "Someone has been summoned (╯°□°）╯︵ ┻━┻:"
+                    description: "Someone has been summoned (╯°□°）╯︵ ┻━┻:"
                 }})
 message.channel.send(`(${randomUser})`);
 }

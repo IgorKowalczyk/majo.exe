@@ -11,18 +11,18 @@ exports.run = (client, message, args) => {
     if (reason.length < 1) {
 		return message.channel.send({embed: {
                     color: 16734039,
-                    title: "You must supply a reason for the unban."
+                    description: "You must supply a reason for the unban."
                 }})
 	} else if (!user) {
 		return message.channel.send({embed: {
                     color: 16734039,
-                    title: "You must supply a User Resolvable, such as a user id."
+                    description: "You must supply a User Resolvable, such as a user id."
                 }})
 	}
     message.guild.unban(user);
 		message.channel.send({embed: {
                     color: 16734039,
-                    title: "User has been unbaned! :scream:"
+                    description: "User has been unbaned! :scream:"
                 }})
   }
 };
