@@ -1,12 +1,13 @@
 const Discord = require("discord.js");
 const superagent = require("snekfetch");
 
-        module.exports.run = async (client, message, args, level) => {
+        module.exports.run = async (client, message, args) => {
             const user = message.mentions.users.first();
+
             if(!user)
                 return message.channel.send({embed: {
                 color: 16734039,
-                title: "You must mention someone to cuddle!"
+                description: "You must mention someone to cuddle!"
             }})
 
             superagent.get('https://nekos.life/api/v2/img/cuddle')
@@ -21,7 +22,7 @@ const superagent = require("snekfetch");
           message.channel.send(lewdembed);
             }).catch((err) => message.channel.send({embed: {
                 color: 16734039,
-                title: "Something went wrong... :cry:"
+                description: "Something went wrong... :cry:"
             }}));
 
         }

@@ -25,7 +25,7 @@ module.exports.run = async (client, message, args) => {
 
     }).catch((err) => message.channel.send({embed: {
                 color: 16734039,
-                title: "Please enter a vaild name!"
+                description: "Please enter a vaild name!"
             }}));
 
 }

@@ -1,6 +1,7 @@
 const client = require('nekos.life');
 const Discord = require('discord.js')
 const neko = new client();
+
 module.exports.run = (client, message, args) => {
 
     if(message.guild === null)return;
@@ -11,7 +12,7 @@ module.exports.run = (client, message, args) => {
         message.channel.send(owo.cat).catch(error => {
             message.channel.send({embed: {
                 color: 16734039,
-                title: "Something went wrong... :cry:"
+                description: "Something went wrong... :cry:"
             }})
         });
 

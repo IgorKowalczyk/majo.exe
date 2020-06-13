@@ -1,7 +1,7 @@
 const superagent = require("snekfetch");
 const Discord = require('discord.js')
 
-module.exports.run = async (client, message, args, level) => {
+module.exports.run = async (client, message, args) => {
     if (!message.channel.nsfw) {
 		message.react('💢');
 		return message.channel.send({embed: {

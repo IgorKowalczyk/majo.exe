@@ -8,18 +8,18 @@ module.exports.run = async (client, message, args) => {
         if (!mentioned)
             return await message.channel.send({embed: {
                 color: 16734039,
-                title: "Mention a valid member!"
+                description: "Mention a valid member!"
             }})
         if (!mentioned.bannable)
             return await message.channel.send({embed: {
                 color: 16734039,
-                title: "You cannot ban this member!"
+                description: "You cannot ban this member!"
             }})  
 			
 		if (message.author === mentioned) {
            return await message.channel.send({embed: {
                 color: 16734039,
-                title: "You cant ban yourself!"
+                description: "You can't ban yourself!"
             }})
 		}
         if (!reason)

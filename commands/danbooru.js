@@ -10,7 +10,7 @@ module.exports.run = (client, message, args) => {
 		message.react('💢');
 		return message.channel.send({embed: {
                 color: 16734039,
-                title: "You can use this command in an NSFW Channel!"
+                description: "You can use this command in an NSFW Channel!"
             }})
 	}
 
@@ -18,7 +18,7 @@ module.exports.run = (client, message, args) => {
 		message.react('💢');
 		return message.channel.send({embed: {
                 color: 16734039,
-                title: "That kind of stuff is not allowed! Not even in NSFW channels!"
+                description: "That kind of stuff is not allowed! Not even in NSFW channels!"
             }})
 		}
         var query = message.content.split(/\s+/g).slice(1).join(" ");
@@ -26,7 +26,7 @@ module.exports.run = (client, message, args) => {
 		    if (!query) {
 		return message.channel.send({embed: {
                 color: 16734039,
-                title: "You must enter a text to search booru!"
+                description: "You must enter a text to search booru!"
             }})
 	}
         booru.search('danbooru', [query], {nsfw: true, limit: 1, random: true })
@@ -44,12 +44,12 @@ module.exports.run = (client, message, args) => {
                 if (err.name === 'booruError') {
           		return message.channel.send({embed: {
                 color: 16734039,
-                title: `No results found for: **${query}**`
+                description: `No results found for: **${query}**`
             }})
                 } else {
                 return message.channel.send({embed: {
                 color: 16734039,
-                title: `No results found for: **${query}**`
+                description: `No results found for: **${query}**`
             }})
                 }
 })

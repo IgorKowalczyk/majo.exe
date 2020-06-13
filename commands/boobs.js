@@ -2,12 +2,12 @@ const superagent = require("snekfetch");
 const Discord = require('discord.js')
 const rp = require('request-promise-native');
 
-module.exports.run = async (client, message, args, level) => {
+module.exports.run = async (client, message, args) => {
     if (!message.channel.nsfw) {
 		message.react('💢');
 		return message.channel.send({embed: {
                 color: 16734039,
-                title: "You can use this command in an NSFW Channel!"
+                description: "You can use this command in an NSFW Channel!"
             }})
 	}
 
@@ -28,7 +28,7 @@ const lewdembed = new Discord.RichEmbed()
     message.channel.send(lewdembed);
 }).catch((err) => message.channel.send({embed: {
                 color: 16734039,
-                title: "Something went wrong... :cry:"
+                description: "Something went wrong... :cry:"
             }}));
 
 }

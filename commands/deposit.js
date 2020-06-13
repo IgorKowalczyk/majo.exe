@@ -9,6 +9,13 @@ module.exports.run = async (client, message, args) => {
   let member = db.fetch(`money_${message.guild.id}_${user.id}`)
   let member2 = db.fetch(`bank_${message.guild.id}_${user.id}`)
 
+if(isNaN(args[0])) {
+    return message.channel.send({embed: {
+     color: 16734039,
+     description: `You must provide a number to deposit money!`
+     }})
+}
+	
   if (args[0] == 'all') {
     let money = await db.fetch(`money_${message.guild.id}_${user.id}`)
     let bank = await db.fetch(`bank_${message.guild.id}_${user.id}`)
