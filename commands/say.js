@@ -14,14 +14,14 @@ module.exports.run = async (client, message, args) => {
                 await message.channel.send(saymessage);
             } else {
                 await message.channel.send({embed: {
-                    color: 3447003,
+                    color: 16734039,
                     description: "You need to enter a Message!"
                 }});
             }
         }
     } else {
 	message.channel.send({embed: {
-                    color: 3447003,
+                    color: 16734039,
                     description: "You don't have premission to send this message by me!"
                 }})
 	}

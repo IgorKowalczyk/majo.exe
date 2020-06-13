@@ -8,7 +8,7 @@ module.exports.run = async (client, message, args) => {
   //!warn @daeshan <reason>
   if(!message.member.hasPermission("BAN_MEMBERS")) return message.channel.send({embed: {
             color: 16734039,
-            description: "You don't have premissions!"
+            description: "You don't have premission to warn members!"
         }})
   let wUser = message.guild.member(message.mentions.users.first()) || message.guild.members.get(args[0])
   if(!wUser) return message.channel.send({embed: {

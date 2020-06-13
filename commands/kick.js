@@ -31,7 +31,7 @@ module.exports.run = async (client, message, args) => {
         }});     
     } else {
 	message.channel.send({embed: {
-                    color: 3447003,
+                    color: 16734039,
                     description: "You don't have premission to kick members!"
                 }})
 	}

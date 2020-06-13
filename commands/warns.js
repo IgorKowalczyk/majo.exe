@@ -6,7 +6,7 @@ let warns = JSON.parse(fs.readFileSync("./warnings.json", "utf8"));
 module.exports.run = async (client, message, args) => {
 if(!message.member.hasPermission("BAN_MEMBERS")) return message.channel.send({embed: {
             color: 16734039,
-            description: "You don't have premissions!"
+            description: "You don't have premissions to check members warns!"
         }})
 
 let wUser = message.guild.member(message.mentions.users.first()) || message.guild.members.get(args[0])
