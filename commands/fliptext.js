@@ -17,7 +17,7 @@ if (args.length <= 0) return message.channel.send({embed: {
 
 const embed = new Discord.RichEmbed()
       .setColor("RANDOM")
-	  .setTitle("Flipped text: " + `flipped.join(" ")`)
+	  .setTitle("Flipped text: " + flipped.join(" "))
   await message.channel.send(embed);
 }
 
