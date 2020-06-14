@@ -3,8 +3,7 @@ const yts = require( 'yt-search')
 
 module.exports.run = async (client, message, args) => {
 
-const opts == args[0]
-yts(opts, function ( err, r ) {
+yts('args', function ( err, r ) {
 
      if (!args[0]) return message.channel.send({embed: {
             color: 16734039,
