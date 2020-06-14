@@ -25,7 +25,7 @@ module.exports.run = async (client, message, args) => {
         }
       let embed = new Discord.RichEmbed()
       .setTitle("🔎 Youtube Search results:")
-      .setDescription("`1.` " + info.first.url + " - " + info.first.title + "\n \`\`\`" + info.first.description + "\`\`\`")
+      .setDescription("`1.` " + info.first.url + " - " + info.first.title + "\n \`\`\`" + info.first.description + "\`\`\`" + info[2].url)
       .setColor('RANDOM');
       msg.edit(embed);
     });
