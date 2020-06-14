@@ -21,6 +21,7 @@ module.exports.run = async (client, message, args) => {
             color: 16734039,
             description: "I couldn't find anything on Youtube with your query!"
         }})
+	 console.log(searcher.validOptions);
       let embed = new Discord.RichEmbed()
       .setTitle("Youtube Search results:")
       .setDescription("`1. `" + info.first.url + " - " + info.first.title + "`2.`" + info.first.description + "\n" + info.first.duration)
