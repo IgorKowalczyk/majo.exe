@@ -21,7 +21,7 @@ module.exports.run = async (client, message, args) => {
 	  let embed2 = new Discord.RichEmbed()
       .setDescription("I couldn't find anything on Youtube with your query!")
       .setColor('FF5757');
-	   msg.edit(embed2);
+	   return msg.edit(embed2);
         }
       let embed = new Discord.RichEmbed()
       .setTitle("🔎 Youtube Search results:")
