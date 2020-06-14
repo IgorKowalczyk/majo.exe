@@ -13,7 +13,7 @@ yts(args.join(' '), function ( err, r ) {
             color: 16734039,
             description: "Please enter a word to search!"
         }})
-    let msg = await message.channel.send({embed: {
+    let msg = message.channel.send({embed: {
             color: 16734039,
             description: "🔎 Searching on Youtube..."
         }})
