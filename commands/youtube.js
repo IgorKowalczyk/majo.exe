@@ -1,26 +1,39 @@
-const Discord = require("discord.js");
+const Discord = require('discord.js');
+const { YTSearcher } = require('ytsearcher');
+const cnf = require('../config.json');
 
+const searcher = new YTSearcher(cnf.api);
 
 module.exports.run = async (client, message, args) => {
-
-let youtube = args.slice(0).join('+');
-
-  let link = `https://www.youtube.com/results?search_query=` + youtube;
-  if (!youtube) return message.channel.send({embed: {
+  try {
+    if (!args[0]) return message.channel.send({embed: {
             color: 16734039,
             description: "Please enter a word to search!"
         }})
-  if (!link) return message.channel.send({embed: {
+    
+    let msg = await message.channel.send({embed: {
             color: 16734039,
-            description: "Error!"
+            description: "Searching on Youtube"
         }})
-  let embed = new Discord.RichEmbed()
-    .setTitle("Searching in youtube")
-    .setColor("RANDOM")
-    .setTimestamp()
-    .addField("Searched word:", `${args.slice(0).join(' ')}`)
-    .addField('Link:', `${link}`)
-  message.channel.send(embed);
+    
+    searcher.search(args.join(' ')).then(info => {
+      if (!info.first) return message.channel.send({embed: {
+            color: 16734039,
+            description: "I couldn't find anything on Youtube with your query!"
+        }})
+      let embed = new Discord.RichEmbed()
+      .setTitle(info.first.title)
+      .setDescription(info.first.url)
+      .setColor('RANDOM');
+      msg.edit(embed);
+    });
+
+  } catch (err) {
+	return message.channel.send({embed: {
+            color: 16734039,
+            description: "Something went wrong... :cry:"
+        }})
+  }
 }
 
 module.exports.help = {
