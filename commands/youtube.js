@@ -18,11 +18,11 @@ module.exports.run = async (client, message, args) => {
     
     searcher.search(args.join(' ')).then(info => {
       if (!info.first) {
-	let embed2 = new Discord.RichEmbed()
+	  let embed2 = new Discord.RichEmbed()
       .setDescription("I couldn't find anything on Youtube with your query!")
       .setColor('FF5757');
-	msg.edit(embed2);
-        }})
+	   msg.edit(embed2);
+        }
       let embed = new Discord.RichEmbed()
       .setTitle("🔎 Youtube Search results:")
       .setDescription("`1.` " + info.first.url + " - " + info.first.title + "\n \`\`\`" + info.first.description + "\`\`\`")
