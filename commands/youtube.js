@@ -13,7 +13,7 @@ module.exports.run = async (client, message, args) => {
     
     let msg = await message.channel.send({embed: {
             color: 16734039,
-            description: "Searching on Youtube"
+            description: "🔎 Searching on Youtube..."
         }})
     
     searcher.search(args.join(' ')).then(info => {
@@ -21,9 +21,8 @@ module.exports.run = async (client, message, args) => {
             color: 16734039,
             description: "I couldn't find anything on Youtube with your query!"
         }})
-	 console.log(searcher.options);
       let embed = new Discord.RichEmbed()
-      .setTitle("Youtube Search results:")
+      .setTitle("🔎 Youtube Search results:")
       .setDescription("`1.` " + info.first.url + " - " + info.first.title + "\n \`\`\`" + info.first.description + "\`\`\`")
       .setColor('RANDOM');
       msg.edit(embed);
