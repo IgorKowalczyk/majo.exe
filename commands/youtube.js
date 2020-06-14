@@ -17,7 +17,7 @@ yts(args.join(' '), function ( err, r ) {
             color: 16734039,
             description: "🔎 Searching on Youtube..."
         }})
-  cosnt videos = r.videos
+  const videos = r.videos
   videos.forEach( function ( v ) {
     const views = String( v.views ).padStart( 10, ' ' )
 	let embed = new Discord.RichEmbed()
