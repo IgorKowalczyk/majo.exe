@@ -1,42 +1,36 @@
 const Discord = require('discord.js');
-const { YTSearcher } = require('ytsearcher');
-const cnf = require('../config.json');
-
-const searcher = new YTSearcher(cnf.api);
+const yts = require( 'yt-search' )
 
 module.exports.run = async (client, message, args) => {
-  try {
-    if (!args[0]) return message.channel.send({embed: {
-            color: 16734039,
-            description: "Please enter a word to search!"
-        }})
-    
-    let msg = await message.channel.send({embed: {
-            color: 16734039,
-            description: "🔎 Searching on Youtube..."
-        }})
-    
-    searcher.search(args.join(' ')).then(info => {
-      if (!info.first) {
-	  let embed2 = new Discord.RichEmbed()
-      .setDescription("I couldn't find anything on Youtube with your query!")
-      .setColor('FF5757');
-	   return msg.edit(embed2);
-        }
-      let embed = new Discord.RichEmbed()
-      .setTitle("🔎 Youtube Search results:")
-      .setDescription("`1.` " + info.first.url + " - " + info.first.title + "\n \`\`\`" + info.first.description + "\`\`\`" + info.[2].url)
-      .setColor('RANDOM');
-      msg.edit(embed);
-    });
-
-  } catch (err) {
+yts(args.join(' '), function ( err, r ) {
+  if ( err ) {
 	return message.channel.send({embed: {
             color: 16734039,
             description: "Something went wrong... :cry:"
         }})
   }
+     if (!args[0]) return message.channel.send({embed: {
+            color: 16734039,
+            description: "Please enter a word to search!"
+        }})
+    let msg = await message.channel.send({embed: {
+            color: 16734039,
+            description: "🔎 Searching on Youtube..."
+        }})
+  cosnt videos = r.videos
+  videos.forEach( function ( v ) {
+    const views = String( v.views ).padStart( 10, ' ' )
+	let embed = new Discord.RichEmbed()
+      .setTitle("🔎 Youtube Search results:")
+      .setDescription(`${ views } | ${ v.title } (${ v.timestamp }) | ${ v.author.name }`)
+      .setColor('RANDOM');
+      msg.edit(embed);
+  } )
+} )
 }
+
+
+
 
 module.exports.help = {
     name: "youtube",

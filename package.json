@@ -103,7 +103,7 @@
     "webapp-v2": "^0.1.4",
     "ytdl-core": "^2.1.2",
     "weather-js": "^2.0.0",
-    "ytsearcher": "^1.2.2"
+    "yt-search": "^1.1.2"
   },
   "engines": {
     "node": "8.x"
