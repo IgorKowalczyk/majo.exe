@@ -22,6 +22,12 @@ module.exports.run = async (client, message, args) => {
                 color: 16734039,
                 description: "You can't use this (This for safety reson)!"
             }});
+
+			if (args.join(" ").toLowerCase().includes("process.env")) {
+            return message.channel.send({embed: {
+                color: 16734039,
+                description: "You can't use this (This for safety reson)!"
+            }});
             }
 
             const toEval = args.join(" ")
@@ -36,12 +42,12 @@ module.exports.run = async (client, message, args) => {
                 .addField("Type of:", typeof(evaluated));
 
             message.channel.send(embed);
-        } catch (e) {
+        } catch (err) {
 
             let embed = Discord.RichEmbed()
                 .setColor("#FF0000")
                 .setTitle("\:x: Error!")
-                .setDescription(e)
+                .setDescription(err)
                 .setFooter(client.user.username, client.user.displayAvatarURL())
 
             message.channel.send(embed);
