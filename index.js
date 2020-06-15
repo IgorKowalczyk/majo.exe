@@ -143,7 +143,7 @@ client.on('message', message=> {
 	 
     return message.channel.send({embed: {
         color: 16734039,
-        title: "Hey! I can only respond to message with my prefix (" + `${prefix}` + ")"
+        description: "Hey! I can only respond to message with my prefix (" + `${prefix}` + ")"
         }})
 }
 });
@@ -179,7 +179,7 @@ client.on("message", message => {
 if (message.length >= 1999) {
 return message.channel.send({embed: {
                 color: 16734039,
-                title: "I can't send message longer than 2000 characters :cry:"
+                description: "I can't send message longer than 2000 characters :cry:"
             }})
 }
   // This is the best way to define args. Trust me.
@@ -191,10 +191,9 @@ return message.channel.send({embed: {
     let commandFile = require(`./commands/${command}.js`);
     commandFile.run(client, message, args);
   } catch (err) {
-	  console.log(err);
     message.channel.send({embed: {
                 color: 16734039,
-                title: "That command does not exist, Take a look at " + `${prefix}` + " help!"
+                description: "That command does not exist, Take a look at " + `${prefix}` + " help!"
             }})
   }
 });

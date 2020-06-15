@@ -35,6 +35,7 @@ module.exports.run = async (client, message, args) => {
   var Utility = [];
   var Economy = [];
   var NSFW = [];
+  var Owner = [];
   
   fs.readdir("./commands/", (err, files) => {
 	if (err) return;
@@ -53,7 +54,7 @@ module.exports.run = async (client, message, args) => {
       if (type == "Utility") Utility.push([namelist, desclist, usage]);
 	  if (type == "Economy") Economy.push([namelist, desclist, usage]);
       if (type == "NSFW") NSFW.push([namelist, desclist, usage]);
-
+      if (type == "Owner") Owner.push([namelist, desclist, usage]);
       if (namelist == "userinfo") {
         done = true
       }      
@@ -69,7 +70,7 @@ module.exports.run = async (client, message, args) => {
           .setAuthor("Help", message.guild.iconURL)
           .setColor("RANDOM")
           .setImage(client.AvatarURL)
-          .setFooter(`Bot created by ${cnf.owner} • ${commandnum} Commands`,)               
+          .setFooter(`Commands for Owner: Owner.map((roles => roles[0])).join(", ")\nBot created by ${cnf.owner} • ${commandnum} Commands`,)               
           .addField(":bricks: General", General.map((roles => roles[0])).join(", ") ,)
           .addField(":hammer: Moderation", Moderation.map((roles => roles[0])).join(", ") ,)
           .addField(":rofl: Fun", Fun.map((roles => roles[0])).join(", ") ,)
