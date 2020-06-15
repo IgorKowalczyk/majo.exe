@@ -2,6 +2,7 @@ const Discord = require("discord.js");
 const beautify = require("beautify")
 
 module.exports.run = async (client, message, args) => {
+
         if(message.author.id !== "440200028292907048") {
             return message.channel.send({embed: {
                 color: 16734039,
@@ -12,7 +13,7 @@ module.exports.run = async (client, message, args) => {
         if(!args[0]) {
 		    return message.channel.send({embed: {
                 color: 16734039,
-                description: "Please put code to evaluate!"
+                description: "Please put the code to evaluate!"
             }});
         }
 
@@ -20,13 +21,13 @@ module.exports.run = async (client, message, args) => {
             if (args.join(" ").toLowerCase().includes("token")) {
             return message.channel.send({embed: {
                 color: 16734039,
-                description: "You can't use this (This for safety reson)!"
+                description: "You can't use this (This for safetly resons)!"
             }});
 
 			if (args.join(" ").toLowerCase().includes("process.env")) {
             return message.channel.send({embed: {
                 color: 16734039,
-                description: "You can't use this (This for safety reson)!"
+                description: "You can't use this (This for safetly resons)!"
             }});
             }
 
