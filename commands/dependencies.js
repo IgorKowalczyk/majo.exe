@@ -16,9 +16,9 @@ module.exports.run = async (client, message, args) => {
   }
 }
 
-exports.help = {
-  name: 'dependencies',
-  category: 'System',
-  description: 'Returns the amount of dependencies Cytrus uses',
-  usage: 'dependencies'
-};
+module.exports.help = {
+    name: "dependencies",
+    description: "Returns the amount of dependencies Majo uses",
+    usage: "dependencies",
+    type: "General" 
+}
