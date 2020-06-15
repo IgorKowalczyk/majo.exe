@@ -5,11 +5,14 @@ module.exports.run = async (client, message, args) => {
     let output = '';
     Object.keys(require('../package').dependencies).forEach((pack) => output += pack + '\n');
     
+	// let finaloutput = output.split("...")
+
     let embed = new Discord.RichEmbed()
     .setColor('RANDOM')
     .setTitle("Majo modules list")
+	// .setDescription(finaloutput)
     .setDescription(output)
-    message.channel.send(embed});
+    message.channel.send(embed);
   } catch (err) {
     message.channel.send({embed: {
                 color: 16734039,
