@@ -51,8 +51,7 @@ module.exports.run = async (client, message, args) => {
                 .setTitle("\:x: Error!")
                 .setDescription(err)
                 .setFooter(client.user.username, client.user.displayAvatarURL())
-
-            message.channel.send(embed);
+            return message.channel.send(embed);
         }
 }
 
