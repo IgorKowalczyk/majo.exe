@@ -2,11 +2,6 @@ const Discord = require("discord.js");
 const beautify = require("beautify")
 
 module.exports.run = async (client, message, args) => {
-
-    name: "eval",
-    aliases: ["e", "evaluate", "evaluation", "run"],
-    description: "Evaluates and runs your JS code",
-
         if(message.author.id !== "440200028292907048") {
             return message.channel.send({embed: {
                 color: 16734039,
@@ -51,5 +46,12 @@ module.exports.run = async (client, message, args) => {
 
             message.channel.send(embed);
         }
-    }
+}
+
+
+module.exports.help = {
+    name: "eval",
+    description: "Evaluates and runs JavaScript code",
+    usage: "eval <code>",
+    type: "General"  
 }
