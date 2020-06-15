@@ -23,7 +23,8 @@ module.exports.run = async (client, message, args) => {
                 color: 16734039,
                 description: "You can't use this (This for safetly resons)!"
             }});
-
+            }
+			
 			if (args.join(" ").toLowerCase().includes("process.env")) {
             return message.channel.send({embed: {
                 color: 16734039,
