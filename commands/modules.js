@@ -9,7 +9,7 @@ module.exports.run = async (client, message, args) => {
     .setColor('RANDOM')
     .setTitle("Majo modules list")
     .setDescription(output)
-    message.channel.send(embed, { split: true });
+    message.channel.send(embed});
   } catch (err) {
     message.channel.send({embed: {
                 color: 16734039,
