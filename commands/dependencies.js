@@ -4,7 +4,7 @@ module.exports.run = async (client, message, args) => {
   try {
 	const embed = new Discord.RichEmbed()
 	  .setTitle("Majo dependencies")
-      .setDescription("Majo runs on" + Object.keys(require('../package').dependencies).length + "dependencies")
+      .setDescription("Majo runs on " + Object.keys(require('../package').dependencies).length + " dependencies")
 	  .setTimestamp()
 	  .setColor("RANDOM")
   message.channel.send(embed);
