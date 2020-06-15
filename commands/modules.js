@@ -3,7 +3,7 @@ const Discord = require('discord.js');
 module.exports.run = async (client, message, args) => {
   try {
     let output = '';
-    Object.keys(require('../package').dependencies).forEach((pack) => output += pack + '\n');
+    Object.keys(require('../package').dependencies).forEach((pack) => output += pack + ', ');
     
 	// let finaloutput = output.split("...")
 
