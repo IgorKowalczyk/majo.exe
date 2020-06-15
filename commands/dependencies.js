@@ -2,8 +2,6 @@ const Discord = require('discord.js')
 
 module.exports.run = async (client, message, args) => {
   try {
-    message.channel.send('Cytrus runs on ' + Object.keys(require('../package').dependencies).length + ' dependencies');
-	
 	const embed = new Discord.RichEmbed()
 	  .setTitle("Majo dependencies")
       .setDescription("Majo runs on" + Object.keys(require('../package').dependencies).length + "dependencies")
