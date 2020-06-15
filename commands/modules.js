@@ -11,7 +11,7 @@ module.exports.run = async (client, message, args) => {
     .setColor('RANDOM')
     .setTitle("Majo modules list")
 	.setDescription(finaloutput)
-    .setDescription(output)
+    //.setDescription(output)
     message.channel.send(embed);
   } catch (err) {
     message.channel.send({embed: {
