@@ -2,7 +2,8 @@ const dashboard = process.env.DASHBOARD;
 if (dashboard === 'true') {
 const router = require('express').Router();
 
-const { clientId, clientSecret, scopes, redirectUri } = require('../config.json');
+const { clientId, scopes, redirectUri } = require('../config.json');
+const clientSecret = process.env.SECRET;
 const fetch = require('node-fetch');
 const FormData = require('form-data');
 
