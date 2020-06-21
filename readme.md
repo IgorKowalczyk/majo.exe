@@ -9,7 +9,7 @@ An advanced Discord bot, contains commands for moderation, fun, music, economics
 
 # Invite
 
-Go to [this link](https://igorkowalczyk.github.io/majobot/invite) and authorize the bot (requires server manage premission) to your server.
+Go to [this link](https://igorkowalczyk.github.io/majobot/authorize) and authorize the bot (requires server manage premission) to your server.
 
 # Hosting
 
