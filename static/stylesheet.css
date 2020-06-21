@@ -5,35 +5,35 @@ box-sizing: border-box;
 }
 
 body {
-    background: #2C2F33;
-    margin: 0 0;
-    padding: 0 0;
+background: #2C2F33;
+margin: 0 0;
+padding: 0 0;
 }
 
 .page-content {
-    padding: 4px 42px;
-    text-align: center;
-   margin-top: 50px;
+padding: 4px 42px;
+text-align: center;
+margin-top: 50px;
 }
 
 img {
 border-radius: 50%;
-  display: inline-block;
-	width: 144px;
-	height: 144px;
-  margin-top: 10px;
-	margin-bottom: 10px;
-	background-color: #202225;
-	background-size: 144px;
-	background-position: 50%;
-	background-repeat: no-repeat;
-	position: relative;
-	-webkit-box-sizing: border-box;
-	box-sizing: border-box;
-	-webkit-transition: -webkit-box-shadow .1s;
-	transition: -webkit-box-shadow .1s;
-	transition: box-shadow .1s;
-	transition: box-shadow .1s,-webkit-box-shadow .1s;
+display: inline-block;
+width: 144px;
+height: 144px;
+margin-top: 10px;
+margin-bottom: 10px;
+background-color: #202225;
+background-size: 144px;
+background-position: 50%;
+background-repeat: no-repeat;
+position: relative;
+-webkit-box-sizing: border-box;
+box-sizing: border-box;
+-webkit-transition: -webkit-box-shadow 0.1s;
+transition: -webkit-box-shadow 0.1s;
+transition: box-shadow 0.1s;
+transition: box-shadow 0.1s, -webkit-box-shadow 0.1s;
 }
 
 
@@ -42,27 +42,25 @@ margin-bottom: -10px;
 }
 
 h1, h2, h3, h4, h5, h6 {
-    font-family: 'Roboto';
-    font-weight: 500;
-    color: #ffffff;
+font-family: 'Roboto';
+font-weight: 500;
+color: #ffffff;
 }
 
 p, a {
-    font-family: 'Roboto', sans-serif;
-    font-weight: 300;
-    color: #ffffff;
+font-family: 'Roboto', sans-serif;
+font-weight: 300;
+color: #ffffff;
 }
 
+
 .nav {
-background-color: #23272A;
 position: fixed;
+background-color: #2C2F33;
 width: 100%;
 top: 0;
 transition: 500ms all !important;
 z-index: 9999;
-}
-
-.nav:not(.nav-scroled):hover, .nav.nav-scrolled {
 box-shadow: 0 3px 15px 0 rgba(0, 0, 0, 0.1), 0 1px 3px 0 rgba(0, 0, 0, 0.08);
 }
 
@@ -74,36 +72,34 @@ overflow: hidden;
 }
 
 .nav li a {
-transition: .25s ease;
-	color: #fff;
-	text-decoration: none;
-	font-size: 15px;
-	border-radius: 3px;
-	padding: 7px 16px;
-	background: #7289da;
-  margin: 5px;
 display: block;
-  float: right;
+font-size: 20px;
+padding: 20px 20px;
+text-decoration: none;
+color: #fff !important;
 }
 
-.nav li a:hover, .nav li a:active {
-    background: #4e5d94;
-    box-shadow: 0 9px 30px 0 rgba(35,38,42,.1);
+.nav li a:hover, .nav .menu-btn:hover {
+background-color: #4a4a4a;
 }
 
 .nav .logo a {
 display: block;
 float: left;
-padding: 9px 20px;
+padding: 20px 20px !important;
 font-size: 20px;
+padding: 10px 20px;
 text-decoration: none;
-  
+}
+
+.nav .logo a:hover {
+background-size: 0%;
 }
 
 .nav .menu {
 clear: both;
 max-height: 0;
-transition: 500ms background-color, 500ms background, 400ms max-height, 1s color;
+transition: 500ms background-color, 500ms background, 400ms max-height, 1s color !important;
 }
 
 .nav .menu-icon {
@@ -120,7 +116,7 @@ background-color: #fff;
 display: block;
 height: 2px;
 position: relative;
-transition: background .2s ease-out;
+transition: background 0.2s ease-out;
 width: 18px;
 }
 
@@ -130,7 +126,7 @@ content: '';
 display: block;
 height: 100%;
 position: absolute;
-transition: all .2s ease-out;
+transition: all 0.2s ease-out;
 width: 100%;
 }
 
@@ -175,6 +171,10 @@ top: 0;
 float: left;
 }
 
+.nav li a {
+padding: 20px 30px;
+}
+
 .nav .menu {
 clear: none;
 float: right;
@@ -186,7 +186,7 @@ display: none;
 }
 }
 
-  [hidden] {
+[hidden] {
 display: none;
 }
 
@@ -202,38 +202,27 @@ list-style: none;
 stroke: #ccc;
 }
 
-.navbar a:not(.link) {
-    transition: .25s ease;
-    color: #fff;
-    text-decoration: none;
-  font-size: 15px;
-  border-radius: 3px;
-  padding: 7px 16px;
-  background: #7289da;
+main a {
+color: #fff !important;
+transition: 500ms;
 }
-
-.navbar a:hover:not(.link), .navbar a:active:not(.link) {
-    background: #4e5d94;
-    box-shadow: 0 9px 30px 0 rgba(35,38,42,.1);
-}
-
 
 .tag {
-  color: #72767d;
-  flex-grow: 0;
-	flex-shrink: 0;
+color: #72767d;
+flex-grow: 0;
+flex-shrink: 0;
 }
 
 .name {
 line-height: 20px;
 flex-grow: 0;
-	flex-shrink: 1;
+flex-shrink: 1;
 }
 
 .navbar a:not(:last-child) {
-    margin-right: 12px;
+margin-right: 12px;
 }
 
 .navbar .right {
-    float: right;
+float: right;
 }
