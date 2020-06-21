@@ -60,5 +60,5 @@ module.exports.help = {
     name: "eval",
     description: "Evaluates and runs JavaScript code",
     usage: "eval <code>",
-    type: "General"  
+    type: "Owner"  
 }
