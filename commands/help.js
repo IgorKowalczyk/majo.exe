@@ -70,7 +70,7 @@ module.exports.run = async (client, message, args) => {
           .setAuthor("Help", message.guild.iconURL)
           .setColor("RANDOM")
           .setImage(client.AvatarURL)
-          .setFooter(`Commands for Owner: Owner.map((roles => roles[0])).join(", ")\nBot created by ${cnf.owner} • ${commandnum} Commands`,)               
+          .setFooter(`Commands for Owner:` + Owner.map((roles => roles[0])).join(", ") + `\nBot created by ${cnf.owner} • ${commandnum} Commands`,)               
           .addField(":bricks: General", General.map((roles => roles[0])).join(", ") ,)
           .addField(":hammer: Moderation", Moderation.map((roles => roles[0])).join(", ") ,)
           .addField(":rofl: Fun", Fun.map((roles => roles[0])).join(", ") ,)

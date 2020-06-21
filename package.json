@@ -2,7 +2,7 @@
   "name": "majo.exe",
   "version": "0.0.1",
   "description": "An advanced Discord bot with a lot commands - for moderation, fun, NSFW and status.",
-  "author": "Igor Kowalczyk (Majonez.exe#5271)",
+  "author": "Igor Kowalczyk (Majonez.exe#3957)",
   "main": "node index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
