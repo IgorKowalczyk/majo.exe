@@ -1,6 +1,6 @@
 # Majo.exe
 
-An advanced Discord bot, contains commands for moderation, fun, music, economics and NSFW. It has 100+ commands.
+An advanced Discord bot, contains commands for moderation, fun, music, economics and NSFW.
 
 
 <img src="https://top.gg/api/widget/681536055572430918.svg?usernamecolor=99aab5&topcolor=23272a&certifiedcolor=99aab5&middlecolor=2c2f33&datacolor=fff&labelcolor=99aab5"><br>
