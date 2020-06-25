@@ -2,6 +2,8 @@ const Discord = module.require("discord.js");
 
 module.exports.run = async (client, message, args) => {
    
+   message.channel.send(`Soon! (Im working on windows XP because my orginal computer has been broken :/)~Majonez.exe`);
+   /*
    const voiceChannel = message.member.voiceChannel;
 
     if (!voiceChannel) return message.channel.send('You must be connected to voice channel!');
@@ -62,6 +64,7 @@ module.exports.run = async (client, message, args) => {
       return message.channel.send(`Song **${song.title}** been added to the queue ! Added by: __${message.author.tag}__`);
 
 }
+*/
 
 }
 
