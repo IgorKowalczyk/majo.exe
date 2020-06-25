@@ -4,8 +4,16 @@ const fs = require("fs");
 const http = require('http');
 const db = require("quick.db")
 
+/* WEB DASHBOARD */
 const express = require('express');
 const app = express();
+/* --- */
+
+/* YOUTUBE SEARCH */
+const ytdl = require('ytdl-core');
+const search = require('youtube-search');
+const queue = new Map();
+*/ --- */
 
 const dashboard = process.env.DASHBOARD;
 
@@ -29,8 +37,6 @@ app.listen(port, () => console.info('Dashboard online on port ' + `${port}`));
 } else {
 console.info('Dashboard is now disabled. To enable it change the "DASHBOARD" value in .env file to "true" (Now is set to "' + `${dashboard}` +'").')
 }
-
-//const adTimeout = new Set();
 
 const discord_token = process.env.TOKEN;
 const prefix = process.env.PREFIX;
