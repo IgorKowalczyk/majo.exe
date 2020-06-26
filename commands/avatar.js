@@ -1,4 +1,4 @@
-const Discord = require("discord.js");
+const Discord = module.require("discord.js");
 
 module.exports.run = async (client, message, args) => {
     if (!message.mentions.users.size) {     
