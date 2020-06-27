@@ -3,6 +3,7 @@ const ytdl = require('ytdl-core');
 const search = require('youtube-search');
 
 module.exports.run = async (client, message, args) => {
+	/*
     const queue = new Map();
 	const serverQueue = queue.get(message.guild.id);
 	const voiceChannel = message.member.voiceChannel;
@@ -58,6 +59,7 @@ module.exports.run = async (client, message, args) => {
 	  console.log(serverQueue.songs);
 	  return message.channel.send(`**${song.title}** has been added to queue. Requested by: __${message.author.tag}__`);
 	}
+	*/
 }
 
 module.exports.help = {

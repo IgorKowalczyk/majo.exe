@@ -1,6 +1,7 @@
 const Discord = require("discord.js");
 
 module.exports.run = async (client, message, args) => {
+	/*
   const channel = message.member.voiceChannel;
     if (!channel)
       return message.channel.send(
@@ -13,6 +14,7 @@ module.exports.run = async (client, message, args) => {
       );
     serverQueue.songs = [];
     serverQueue.connection.dispatcher.end("Stop command has been used!");
+	*/
 }
 
 module.exports.help = {

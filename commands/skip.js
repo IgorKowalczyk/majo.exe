@@ -1,6 +1,7 @@
 const Discord = require("discord.js");
 
 module.exports.run = async (client, message, args) => {
+	/*
   const channel = message.member.voiceChannel;
   if (!channel)
     return message.channel.send(
@@ -12,6 +13,7 @@ module.exports.run = async (client, message, args) => {
       "There is nothing playing that I could skip for you."
     );
   serverQueue.connection.dispatcher.end("Skip command has been used!");
+  */
 }
 
 module.exports.help = {
