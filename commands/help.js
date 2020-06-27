@@ -76,7 +76,7 @@ module.exports.run = async (client, message, args) => {
           .addField(":bricks: General", General.map((roles => roles[0])).join(", ") ,)
           .addField(":hammer: Moderation", Moderation.map((roles => roles[0])).join(", ") ,)
           .addField(":rofl: Fun", Fun.map((roles => roles[0])).join(", ") ,)
-		  .addField(":notes: Music", Music.map((roles => roles[0])).join(", ") ,)
+		  .addField(":notes: Music", Music.map((roles => roles[0])).join(", ") || `Soon!` ,)
 		  .addField(":moneybag: Economy system", Economy.map((roles => roles[0])).join(", ") ,)
           .addField(":toolbox: Utility", Utility.map((roles => roles[0])).join(", ") ,)
           .addField(":smirk: NSFW", NSFW.map((roles => roles[0])).join(", ") ,)
