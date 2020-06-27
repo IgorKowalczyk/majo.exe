@@ -4,6 +4,7 @@ const search = require('youtube-search');
 
 module.exports.run = async (client, message, args) => {
 	const serverQueue = queue.get(message.guild.id);
+    const queue = new Map();
 	const voiceChannel = message.member.voiceChannel;
 	if (!voiceChannel) return message.channel.send('You must be in voice channel!');
 	const permissions = voiceChannel.permissionsFor(message.client.user);
@@ -22,8 +23,8 @@ module.exports.run = async (client, message, args) => {
 	const songInfo = await ytdl.getInfo(songURL);
 
 	const song = {
-	  title: songInfo.title,
-	  url: songInfo.video_url,
+	  title: songInfo.videoDetails.title
+	  url: songInfo.videoDetails.video_url,
 	  author: message.author.tag
 	};
 
