@@ -54,7 +54,6 @@ client.on("message", message => {
   if (!message.guild) return;
   
   if(message.content.indexOf(prefix) !== 0) return;
-  const serverQueue = queue.get(message.guild.id);
 if (message.length >= 1999) {
 return message.channel.send({embed: {
                 color: 16734039,
@@ -67,6 +66,7 @@ return message.channel.send({embed: {
 
   // The list of if/else is replaced with those simple 2 lines:
   try {
+	const serverQueue = queue.get(message.guild.id);
     let commandFile = require(`./commands/${command}.js`);
     commandFile.run(client, message, args);
   } catch (err) {
