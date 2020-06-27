@@ -32,7 +32,6 @@ module.exports.run = async (client, message, args) => {
   const song = {
     id: firstVideo.id,
     url: `https://youtube.com/watch?v=${firstVideo.id}`,
-    title: firstVideo.title,
     author: firstVideo.channel.title,
     duration: firstVideo.duration,
     durationSeconds: firstVideo.durationSeconds,
