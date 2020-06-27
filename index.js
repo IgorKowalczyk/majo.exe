@@ -12,7 +12,8 @@ const app = express();
 /* YOUTUBE SEARCH */
 const ytdl = require('ytdl-core');
 const search = require('youtube-search');
-const queue = new Map();
+client.commands = new Discord.Collection();
+client.queue = new Map();;
 /* --- */
 
 const dashboard = process.env.DASHBOARD;
