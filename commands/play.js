@@ -15,7 +15,7 @@ module.exports.run = async (client, message, args) => {
     
     var opts = {
       maxResults: 1,
-      key: 'AIzaSyC9wP9rVzyoeAt0EFNZmYmz0jPlpaCfhtg'
+      key: 'AIzaSyC9wP9rVzyoeAt0EFNZmYmz0jPlpaCfhtg',
       type: "video"
     };
       
