@@ -18,6 +18,11 @@ padding: 0 0;
 padding: 4px 42px;
 text-align: center;
 margin-top: 50px;
+display: flex;
+align-items: center;
+justify-content: center;
+width: 100%;
+height: 90vh;
 }
 
 img {
@@ -25,6 +30,7 @@ border-radius: 50%;
 display: inline-block;
 width: 144px;
 height: 144px;
+display: grid;
 margin-top: 10px;
 margin-bottom: 10px;
 background-color: #202225;
