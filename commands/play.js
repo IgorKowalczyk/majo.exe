@@ -3,7 +3,7 @@ const ytdl = require("ytdl-core");
 const ytSearch = require("../utils/music");
 
 module.exports.run = async (client, message, args) => {
-  const channel = message.member.voice.channel;
+  const channel = message.author.voice.channel;
   if (!channel)
     return message.channel.send(
       "I'm sorry but you need to be in a voice channel to play music!"

@@ -1,7 +1,7 @@
 const Discord = require("discord.js");
 
 module.exports.run = (client, message, args) => {
-  const channel = message.member.voice.channel;
+  const channel = message.author.voice.channel;
   if (!channel)
     return message.channel.send(
       "I'm sorry but you need to be in a voice channel to play music!"
