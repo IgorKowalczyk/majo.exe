@@ -8,5 +8,6 @@
     "port": 8000,
     "clientId": "669517781456257054",
     "scopes": ["identify", "guilds"],
-    "redirectUri": "https%3A%2F%2Fmajobot.herokuapp.com%2Fauthorize%2Fcallback"
+    "redirectUri": "https%3A%2F%2Fmajobot.herokuapp.com%2Fauthorize%2Fcallback",
+	"ua": "UA-153609882-1"
 }
