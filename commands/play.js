@@ -26,7 +26,7 @@ module.exports.run = async (client, message, args) => {
 	  title: songInfo.videoDetails.title,
 	  url: songInfo.videoDetails.video_url,
 	  author: message.author.tag
-	};
+	}
 
 	if (!serverQueue) {
 	  const queueObject = {
