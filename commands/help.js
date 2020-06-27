@@ -32,6 +32,7 @@ module.exports.run = async (client, message, args) => {
   var General = [];
   var Moderation = [];
   var Fun = [];
+  var Music = [];
   var Utility = [];
   var Economy = [];
   var NSFW = [];
@@ -51,6 +52,7 @@ module.exports.run = async (client, message, args) => {
       if (type == "General") General.push([namelist, desclist, usage]);
       if (type == "Moderation") Moderation.push([namelist, desclist, usage]);
       if (type == "Fun") Fun.push([namelist, desclist, usage]);
+      if (type == "Music") Music.push([namelist, desclist, usage]);
       if (type == "Utility") Utility.push([namelist, desclist, usage]);
 	  if (type == "Economy") Economy.push([namelist, desclist, usage]);
       if (type == "NSFW") NSFW.push([namelist, desclist, usage]);
@@ -74,7 +76,7 @@ module.exports.run = async (client, message, args) => {
           .addField(":bricks: General", General.map((roles => roles[0])).join(", ") ,)
           .addField(":hammer: Moderation", Moderation.map((roles => roles[0])).join(", ") ,)
           .addField(":rofl: Fun", Fun.map((roles => roles[0])).join(", ") ,)
-		  .addField(":notes: Music", "Soon!" ,)
+		  .addField(":notes: Music", Music.map((roles => roles[0])).join(", ") ,)
 		  .addField(":moneybag: Economy system", Economy.map((roles => roles[0])).join(", ") ,)
           .addField(":toolbox: Utility", Utility.map((roles => roles[0])).join(", ") ,)
           .addField(":smirk: NSFW", NSFW.map((roles => roles[0])).join(", ") ,)
