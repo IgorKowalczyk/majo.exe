@@ -1,7 +1,11 @@
-@import url('https://fonts.googleapis.com/css?family=Roboto:300,500');
+@font-face {
+font-family: Roboto-Thin;
+src: url(https://igorkowalczyk.github.io/lib/fonts/roboto-thin.otf);
+}
 
 * {
 box-sizing: border-box;
+font-family: 'Roboto-Thin';
 }
 
 body {
@@ -36,19 +40,16 @@ transition: box-shadow 0.1s;
 transition: box-shadow 0.1s, -webkit-box-shadow 0.1s;
 }
 
-
 .page-content h1 {
 margin-bottom: -10px;
 }
 
 h1, h2, h3, h4, h5, h6 {
-font-family: 'Roboto';
 font-weight: 500;
 color: #ffffff;
 }
 
 p, a {
-font-family: 'Roboto', sans-serif;
 font-weight: 300;
 color: #ffffff;
 }
@@ -76,6 +77,7 @@ display: block;
 font-size: 20px;
 padding: 20px 20px;
 text-decoration: none;
+transition: 500ms all;
 color: #fff !important;
 }
 

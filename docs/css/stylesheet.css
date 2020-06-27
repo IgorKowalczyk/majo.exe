@@ -40,7 +40,6 @@ transition: box-shadow 0.1s;
 transition: box-shadow 0.1s, -webkit-box-shadow 0.1s;
 }
 
-
 .page-content h1 {
 margin-bottom: -10px;
 }
@@ -78,6 +77,7 @@ display: block;
 font-size: 20px;
 padding: 20px 20px;
 text-decoration: none;
+transition: 500ms all;
 color: #fff !important;
 }
 
