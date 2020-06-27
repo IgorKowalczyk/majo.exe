@@ -27,11 +27,12 @@ module.exports.run = async (client, message, args) => {
     return message.channel.send("No videos found with that keyword!");
   }
 
-  const firstVideo = videos[0].full ? videos[0] : videos[0].fetch();
+  const firstVideo = videos[0];
 
   const song = {
     id: firstVideo.id,
     url: `https://youtube.com/watch?v=${firstVideo.id}`,
+    title: Util.escapeMarkdown(firstVideo.title),
     author: firstVideo.channel.title,
     duration: firstVideo.duration,
     durationSeconds: firstVideo.durationSeconds,
