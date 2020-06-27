@@ -1,6 +1,6 @@
 const Discord = require("discord.js");
 
-module.exports.run = (client, message, args) => {
+module.exports.run = async (client, message, args) => {
   const channel = message.member.voiceChannel;
   if (!channel)
     return message.channel.send(

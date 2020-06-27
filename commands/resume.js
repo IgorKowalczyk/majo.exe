@@ -1,6 +1,6 @@
 const Discord = require("discord.js");
 
-module.exports.run = (client, message, args) => {
+module.exports.run = async (client, message, args) => {
   const serverQueue = message.client.queue.get(message.guild.id);
   if (serverQueue && !serverQueue.playing) {
     serverQueue.playing = true;
