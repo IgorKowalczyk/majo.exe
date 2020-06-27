@@ -66,7 +66,6 @@ return message.channel.send({embed: {
 
   // The list of if/else is replaced with those simple 2 lines:
   try {
-	const serverQueue = queue.get(message.guild.id);
     let commandFile = require(`./commands/${command}.js`);
     commandFile.run(client, message, args);
   } catch (err) {

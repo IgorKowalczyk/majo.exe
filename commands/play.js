@@ -3,6 +3,7 @@ const ytdl = require('ytdl-core');
 const search = require('youtube-search');
 
 module.exports.run = async (client, message, args) => {
+	const serverQueue = queue.get(message.guild.id);
 	const voiceChannel = message.member.voiceChannel;
 	if (!voiceChannel) return message.channel.send('You must be in voice channel!');
 	const permissions = voiceChannel.permissionsFor(message.client.user);
