@@ -3,18 +3,20 @@ const client = new Discord.Client();
 const fs = require("fs");
 const http = require('http');
 const db = require("quick.db")
-
-/* WEB DASHBOARD */
-const express = require('express');
-const app = express();
-/* --- */
+const discord_token = process.env.TOKEN;
+const prefix = process.env.PREFIX;
+const newUsers = new Discord.Collection();
+var botMembers = 0;
 
 /* YOUTUBE SEARCH */
 const ytdl = require('ytdl-core');
 const search = require('youtube-search');
-client.commands = new Discord.Collection();
-client.queue = new Map();
+const queue = new Map();
 /* --- */
+
+/* DASHBOARD */
+const express = require('express');
+const app = express();
 
 const dashboard = process.env.DASHBOARD;
 
@@ -39,29 +41,85 @@ app.listen(port, () => console.info('Dashboard online on port ' + `${port}`));
 console.info('Dashboard is now disabled. To enable it change the "DASHBOARD" value in .env file to "true" (Now is set to "' + `${dashboard}` +'").')
 }
 
-const discord_token = process.env.TOKEN;
-const prefix = process.env.PREFIX;
-
-const newUsers = new Discord.Collection();
-var botMembers = 0;
-
 app.get("/", (request, response) => {
   response.sendStatus(200);
 });
+/* --- */
 
-function getDefaultChannel(guild) { 
-  if (guild.systemChannelID) 
-    if (guild.channels.get(guild.systemChannelID).permissionsFor(guild.client.user).has("SEND_MESSAGES")) return guild.channels.get(guild.systemChannelID)  
+
+
+/* RUN COMMANDS */
+client.on("message", message => {
+  if (message.author.bot) return;
+  if (!message.guild) return;
   
-  if(guild.channels.exists("name", "general"))
-    if (guild.channels.find("name", "general").permissionsFor(guild.client.user).has("SEND_MESSAGES")) return guild.channels.find("name", "general")   
-
-  return guild.channels
-   .filter(c => c.type === "text" &&
-     c.permissionsFor(guild.client.user).has("SEND_MESSAGES"))
-   .first();  
+  if(message.content.indexOf(prefix) !== 0) return;
+  const serverQueue = queue.get(message.guild.id);
+if (message.length >= 1999) {
+return message.channel.send({embed: {
+                color: 16734039,
+                description: "I can't send message longer than 2000 characters :cry:"
+            }})
 }
+  // This is the best way to define args. Trust me.
+  const args = message.content.slice(prefix.length).trim().split(/ +/g);
+  const command = args.shift().toLowerCase();
 
+  // The list of if/else is replaced with those simple 2 lines:
+  try {
+    let commandFile = require(`./commands/${command}.js`);
+    commandFile.run(client, message, args);
+  } catch (err) {
+	console.log(err);
+    message.channel.send({embed: {
+                color: 16734039,
+                description: "That command does not exist, Take a look at " + `${prefix}` + " help!"
+            }})
+  }
+});
+
+client.on('message', message=> {
+     if (message.isMentioned(client.user.id)) {
+     if (message.author.bot) return;
+     if (!message.guild) return;
+	 
+    return message.channel.send({embed: {
+        color: 16734039,
+        description: "Hey! I can only respond to message with my prefix (" + `${prefix}` + ")"
+        }})
+}
+});
+/* --- */
+
+
+
+/* STATUS */
+setInterval(async () => {
+    const statuslist = [
+      `${client.guilds.size} servers`,
+      `${client.users.size} members`,
+      `${prefix} help`,
+    ];
+    const random = Math.floor(Math.random() * statuslist.length);
+
+    try {
+      await client.user.setPresence({
+          game: {
+          name: `${statuslist[random]}`,
+          type: 'WATCHING'
+          
+        },
+        status: "online"
+      });
+    } catch (error) {
+      console.error(error);
+    }
+}, 10000);
+/* --- */
+
+
+
+/* WELCOME AND BYE MESSAGES */
 client.on("guildMemberAdd", (member) => {
 	const guild = member.guild;
 	let addset = member.guild.channels.find("name", "hello-or-bye")  
@@ -139,75 +197,12 @@ client.on("guildMemberRemove", (member) => {
      if(newUsers.has(member.id)) newUsers.delete(member.id);
 	}
 });
+/* --- */
 
 
 
-
-client.on('message', message=> {
-     if (message.isMentioned(client.user.id)) {
-     if (message.author.bot) return;
-     if (!message.guild) return;
-	 
-    return message.channel.send({embed: {
-        color: 16734039,
-        description: "Hey! I can only respond to message with my prefix (" + `${prefix}` + ")"
-        }})
-}
-});
-
-setInterval(async () => {
-    const statuslist = [
-      `${client.guilds.size} servers`,
-      `${client.users.size} members`,
-      `${prefix} help`,
-    ];
-    const random = Math.floor(Math.random() * statuslist.length);
-
-    try {
-      await client.user.setPresence({
-          game: {
-          name: `${statuslist[random]}`,
-          type: 'WATCHING'
-          
-        },
-        status: "online"
-      });
-    } catch (error) {
-      console.error(error);
-    }
-}, 10000);
-
-client.on("message", message => {
-  if (message.author.bot) return;
-  if (!message.guild) return;
-  
-  if(message.content.indexOf(prefix) !== 0) return;
-
-if (message.length >= 1999) {
-return message.channel.send({embed: {
-                color: 16734039,
-                description: "I can't send message longer than 2000 characters :cry:"
-            }})
-}
-  // This is the best way to define args. Trust me.
-  const args = message.content.slice(prefix.length).trim().split(/ +/g);
-  const command = args.shift().toLowerCase();
-
-  // The list of if/else is replaced with those simple 2 lines:
-  try {
-    let commandFile = require(`./commands/${command}.js`);
-    commandFile.run(client, message, args);
-  } catch (err) {
-	console.log(err);
-    message.channel.send({embed: {
-                color: 16734039,
-                description: "That command does not exist, Take a look at " + `${prefix}` + " help!"
-            }})
-  }
-});
-
+/* MESSAGES ON CLIENT (BOT) JOIN OR LEAVE */
 client.on("guildCreate", guild => {
-  // This event triggers when the bot joins a guild.
   const defaultChannel = getDefaultChannel(guild); 
   let embed = new Discord.RichEmbed()
     .setTitle(`Hi!`)
@@ -216,8 +211,6 @@ client.on("guildCreate", guild => {
     .setTimestamp()
     
   defaultChannel.send(embed=embed);  
-  
-  
   console.log(`New guild joined: ${guild.name} (id: ${guild.id}). This guild has ${guild.memberCount} members!`);
 });
 
@@ -225,14 +218,23 @@ client.on("guildDelete", guild => {
   // this event triggers when the bot is removed from a guild.
   console.log(`I have been removed from: ${guild.name} (id: ${guild.id})`);
 });
+/* --- */
 
-client.on("ready", () => {
-  console.log(`Connected! Logged in as ${client.user.tag}!`);
-});
 
-// ********************* //
-//         LOGS          //
-// ********************* //
+
+/* LOGS (IN #LOGS CHANNEL) */
+function getDefaultChannel(guild) { 
+  if (guild.systemChannelID) 
+    if (guild.channels.get(guild.systemChannelID).permissionsFor(guild.client.user).has("SEND_MESSAGES")) return guild.channels.get(guild.systemChannelID)  
+  
+  if(guild.channels.exists("name", "general"))
+    if (guild.channels.find("name", "general").permissionsFor(guild.client.user).has("SEND_MESSAGES")) return guild.channels.find("name", "general")   
+
+  return guild.channels
+   .filter(c => c.type === "text" &&
+     c.permissionsFor(guild.client.user).has("SEND_MESSAGES"))
+   .first();  
+}
 
 client.on('messageDelete', message => {  
     if(message.author.bot) return;
@@ -253,6 +255,7 @@ client.on('messageDelete', message => {
  
     logChannel.send(messageDelete);
 });
+
 client.on('messageUpdate', (oldMessage, newMessage) => {  
  
     if(oldMessage.author.bot) return;
@@ -275,8 +278,6 @@ client.on('messageUpdate', (oldMessage, newMessage) => {
  
     logChannel.send(messageUpdate);
 });
- 
- 
 
 client.on('roleCreate', role => {
 
@@ -301,6 +302,7 @@ client.on('roleCreate', role => {
         logChannel.send(roleCreate);
     })
 });
+
 client.on('roleDelete', role => {  
  
     if(!role.guild.member(client.user).hasPermission('EMBED_LINKS')) return;
@@ -324,6 +326,7 @@ client.on('roleDelete', role => {
         logChannel.send(roleDelete);  
     })
 });
+
 client.on('roleUpdate', (oldRole, newRole) => {
  
     if(!oldRole.guild.member(client.user).hasPermission('EMBED_LINKS')) return;
@@ -381,11 +384,8 @@ client.on('roleUpdate', (oldRole, newRole) => {
         }
     })
 });
- 
- 
 
 client.on('channelCreate', channel => { 
-  
     if(!channel.guild) return;
     if(!channel.guild.member(client.user).hasPermission('EMBED_LINKS')) return;
     if(!channel.guild.member(client.user).hasPermission('VIEW_AUDIT_LOG')) return;
@@ -418,6 +418,7 @@ client.on('channelCreate', channel => {
         logChannel.send(channelCreate);
     })
 }); 
+
 client.on('channelDelete', channel => { 
     if(!channel.guild) return;
     if(!channel.guild.member(client.user).hasPermission('EMBED_LINKS')) return;
@@ -451,6 +452,7 @@ client.on('channelDelete', channel => {
         logChannel.send(channelDelete); 
     })
 });
+
 client.on('channelUpdate', (oldChannel, newChannel) => {
     if(!oldChannel.guild) return;
  
@@ -495,8 +497,6 @@ client.on('channelUpdate', (oldChannel, newChannel) => {
         }
     })
 });
- 
- 
 
 client.on('guildBanAdd', (guild, user) => {
  
@@ -523,6 +523,7 @@ client.on('guildBanAdd', (guild, user) => {
         logChannel.send(banInfo);
     })
 });
+
 client.on('guildBanRemove', (guild, user) => {
     if(!guild.member(client.user).hasPermission('EMBED_LINKS')) return; 
     if(!guild.member(client.user).hasPermission('VIEW_AUDIT_LOG')) return;
@@ -616,6 +617,7 @@ client.on('guildMemberUpdate', (oldMember, newMember) => {
         logChannel.send(newOwner);
     }
 });
+
 client.on('guildMemberAdd', member => {
   var logChannel = member.guild.channels.find(c => c.name === 'log'); 
   if(!logChannel) return;
@@ -630,6 +632,7 @@ client.on('guildMemberAdd', member => {
  
   logChannel.send(newMember);
 });
+
 function Days(date) {
     let now = new Date();
     let diff = now.getTime() - date.getTime();
@@ -650,8 +653,6 @@ client.on('guildMemberRemove', member => {
   
   logChannel.send(leaveMember);
 });
- 
- 
 
 client.on('voiceStateUpdate', (voiceOld, voiceNew) => {
  
@@ -752,5 +753,20 @@ client.on('voiceStateUpdate', (voiceOld, voiceNew) => {
         logChannel.send(voiceLeave);
     }  
 }); 
+/* --- */
 
+
+
+/* LOGIN */
 client.login(discord_token);
+
+client.on("ready", () => {
+  console.log(`Connected! Logged in as ${client.user.tag}!`);
+});
+
+/* --- */
+
+
+// ---------
+//    END (of index.js)
+// ---------
