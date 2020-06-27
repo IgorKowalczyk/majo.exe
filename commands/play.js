@@ -23,7 +23,7 @@ module.exports.run = async (client, message, args) => {
 	const songInfo = await ytdl.getInfo(songURL);
 
 	const song = {
-	  title: songInfo.videoDetails.title
+	  title: songInfo.videoDetails.title,
 	  url: songInfo.videoDetails.video_url,
 	  author: message.author.tag
 	};
