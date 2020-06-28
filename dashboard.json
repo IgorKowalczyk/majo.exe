@@ -1,0 +1,12 @@
+{
+    "port": 8000,
+    "website": "https://igorkowalczyk.github.io/majobot",
+    "authorwebsite": "https://igorkowalczyk.github.io",
+    "github": "https://github.com/igorkowalczyk",
+    "name": "Majo.exe",
+    "tag": "#4560",
+    "clientId": "709824221403938817",
+    "scopes": ["guilds", "bot"],
+    "redirectUri": "https%3A%2F%2Figorkowalczyk.github.io%2Fauthorized",
+    "[COMMENT] ^^^ This is your Redirect Uri ^^^": "For Web-Dahsboard set `https%3A%2F%2F[YOUR-DOMAIN]%2Fauthorize%2Fcallback`"
+}

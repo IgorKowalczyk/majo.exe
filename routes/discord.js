@@ -2,7 +2,7 @@ const dashboard = process.env.DASHBOARD;
 if (dashboard === 'true') {
 const router = require('express').Router();
 
-const { clientId, scopes, redirectUri } = require('../config.json');
+const { clientId, scopes, redirectUri } = require('../dashboard.json');
 const clientSecret = process.env.SECRET;
 const fetch = require('node-fetch');
 const FormData = require('form-data');
@@ -16,7 +16,7 @@ const forceAuth = (req, res, next) => {
 router.get('*', (req, res) => {
     if (req.session.user) return res.redirect('/');
 
-    const authorizeUrl = `https://discord.com/api/oauth2/authorize?client_id=681536055572430918&permissions=8&redirect_uri=https%3A%2F%2Fmajobot.herokuapp.com%2Fauthorize%2Fcallback&scope=bot&response_type=code`;
+    const authorizeUrl = `https://discord.com/api/oauth2/authorize?client_id=` + clientId + `&redirect_uri=` + redirectUri + `&scope=` + scopes.join("%20")+ `&permissions=8`;
     res.redirect(authorizeUrl);
 });
 

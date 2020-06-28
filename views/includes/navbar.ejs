@@ -6,13 +6,21 @@
 <% if (user) { %>
 <li><a href="/authorize/logout">Logout</a></li>
 <li><a href="/server" target="_blank" rel="noopener">Discord server</a></li>
-<li><a href="https://igorkowalczyk.github.io" target="_blank" rel="noopener">Author</a></li>
-<li><a href="https://github.com/igorkowalczyk/majobot" target="_blank" rel="noopener">Github</a></li>
+<% if (authorwebsite) { %>
+<li><a href="<%= authorwebsite %>" target="_blank" rel="noopener">Author</a></li>
+<% } %>
+<% if (github) { %>
+<li><a href="<%= github %>" target="_blank" rel="noopener">Github</a></li>
+<% } %>
 <% } else { %>
 <li><a href="/authorize">Authorize</a></li>
 <li><a href="/server" target="_blank" rel="noopener">Discord server</a></li>
-<li><a href="https://igorkowalczyk.github.io" target="_blank" rel="noopener">Author</a></li>
-<li><a href="https://github.com/igorkowalczyk/majobot" target="_blank" rel="noopener">Github</a></li>
+<% if (authorwebsite) { %>
+<li><a href="<%= authorwebsite %>" target="_blank" rel="noopener">Author</a></li>
+<% } %>
+<% if (github) { %>
+<li><a href="<%= github %>" target="_blank" rel="noopener">Github</a></li>
+<% } %>
 <% } %>
 </ul>
 </nav>
