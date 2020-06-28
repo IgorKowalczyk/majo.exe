@@ -13,7 +13,7 @@ module.exports.run = async (client, message, args) => {
          } catch (err) {
     message.channel.send({embed: {
                 color: 16734039,
-                title: "That command does not exist, Take a look at " + `${prefix}` + " help!"
+                description: "That command does not exist, Take a look at " + `${prefix}` + " help!"
             }})
   }
               
@@ -66,13 +66,12 @@ module.exports.run = async (client, message, args) => {
       if (!command) {
 		message.channel.send({embed: {
             color: 3447003,
-            title: "Generating the help..."
+            description: "Generating the help..."
         }}).then(msg=>{
         var embed = new Discord.RichEmbed()
           .setAuthor("Help", message.guild.iconURL)
           .setColor("RANDOM")
-          .setImage(client.AvatarURL)
-          .setFooter(`Commands for Owner: ` + Owner.map((roles => roles[0])).join(", ") + `\nBot created by ${cnf.owner} • ${commandnum} Commands`,)               
+          .setImage(client.AvatarURL)          
           .addField(":bricks: General", General.map((roles => roles[0])).join(", ") || `No commands` ,)
           .addField(":hammer: Moderation", Moderation.map((roles => roles[0])).join(", ") || `No commands` ,)
           .addField(":rofl: Fun", Fun.map((roles => roles[0])).join(", ") || `No commands` ,)
@@ -81,6 +80,7 @@ module.exports.run = async (client, message, args) => {
           .addField(":toolbox: Utility", Utility.map((roles => roles[0])).join(", ") || `No commands` ,)
           .addField(":smirk: NSFW", NSFW.map((roles => roles[0])).join(", ") || `No commands` ,)
           .addField(":grey_question: Command Information", `${prefix}` + " help <command>")
+	      .setFooter(`Commands for Owner: ` + Owner.map((roles => roles[0])).join(", ") || `No commands` + `\nBot created by ${cnf.owner} • ${commandnum} Commands`,)     
         msg.edit(embed);
         msg.edit("\u200B")
 		})
