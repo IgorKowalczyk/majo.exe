@@ -80,7 +80,7 @@ module.exports.run = async (client, message, args) => {
           .addField(":toolbox: Utility", Utility.map((roles => roles[0])).join(", ") || `No commands` ,)
           .addField(":smirk: NSFW", NSFW.map((roles => roles[0])).join(", ") || `No commands` ,)
           .addField(":grey_question: Command Information", `${prefix}` + " help <command>")
-	      .setFooter(`Commands for Owner: ` + Owner.map((roles => roles[0])).join(", ") || `No commands` + `\nBot created by ${cnf.owner} • ${commandnum} Commands`,)     
+	      .setFooter(`Commands for Owner: ` + Owner.map((roles => roles[0])).join(", ") `\nBot created by ${cnf.owner} • ${commandnum} Commands`,)     
         msg.edit(embed);
         msg.edit("\u200B")
 		})
