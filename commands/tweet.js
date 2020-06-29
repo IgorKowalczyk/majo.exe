@@ -4,6 +4,7 @@ const fs = require("fs");
 const Moment = require("moment-timezone");
 
 module.exports.run = async (client, message, args) => {
+try {
   if (args.length >= 1) {
     Jimp.read("https://igorkowalczyk.github.io/majobot/lib/img/trump.png").then(function (image) {
       Jimp.loadFont(Jimp.FONT_SANS_32_BLACK).then(function (font) { // load font from .fnt file
@@ -27,6 +28,13 @@ module.exports.run = async (client, message, args) => {
             color: 16734039,
             description: "Please enter a message!"
         }})
+  }
+ 
+  } catch (err) {
+    message.channel.send({embed: {
+                color: 16734039,
+                description: "Something went wrong... :cry:"
+            }})
   }
 }
 
