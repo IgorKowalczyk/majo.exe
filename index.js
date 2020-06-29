@@ -99,9 +99,10 @@ const endDate = (new Date().getFullYear()) + "/06/29";
 if ((new Date().getFullYear() + "/06/29") == endDate) {
 setInterval(async () => {
     const statuslist = [
-      `${endDate}`,
-      `${endDate}`,
-      `${endDate}`,
+      `🎉 ${client.guilds.size} servers 🎉`,
+      `🎉 ${client.users.size} members 🎉`,
+      `🎉 ${prefix} help 🎉`,
+	  `🎉 Happy Birthday Discord! 🎉`,
     ];
     const random = Math.floor(Math.random() * statuslist.length);
 
