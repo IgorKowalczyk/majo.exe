@@ -94,9 +94,9 @@ client.on('message', message=> {
 
 /* STATUS */
 
-const endDate = (new Date().getFullYear()) + "/06/29";
+const endDate = (new Date().getFullYear()) + "/05/13";
 
-if ((new Date().getFullYear() + "/06/29") == endDate) {
+if ((new Date().getFullYear() + "/05/13") == endDate) {
 setInterval(async () => {
     const statuslist = [
       `🎉 ${client.guilds.size} servers 🎉`,
