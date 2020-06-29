@@ -93,6 +93,32 @@ client.on('message', message=> {
 
 
 /* STATUS */
+
+const endDate = (new Date().getFullYear() + 1) + "/06/29";
+
+if (new Date().getFullYear() + 1) = endDate {
+setInterval(async () => {
+    const statuslist = [
+      `${endDate}`,
+      `${endDate}`,
+      `${endDate}`,
+    ];
+    const random = Math.floor(Math.random() * statuslist.length);
+
+    try {
+      await client.user.setPresence({
+          game: {
+          name: `${statuslist[random]}`,
+          type: 'WATCHING'
+          
+        },
+        status: "online"
+      });
+    } catch (error) {
+      console.error(error);
+    }
+}, 10000);
+} else {
 setInterval(async () => {
     const statuslist = [
       `${client.guilds.size} servers`,
@@ -114,6 +140,7 @@ setInterval(async () => {
       console.error(error);
     }
 }, 10000);
+}
 /* --- */
 
 
