@@ -94,9 +94,9 @@ client.on('message', message=> {
 
 /* STATUS */
 
-const endDate = (new Date().getFullYear() + 1) + "/06/29";
+const endDate = (new Date().getFullYear()) + "/06/29";
 
-if ((new Date().getFullYear() + 1) == endDate) {
+if ((new Date().getFullYear()) == endDate) {
 setInterval(async () => {
     const statuslist = [
       `${endDate}`,
