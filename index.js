@@ -121,9 +121,9 @@ setInterval(async () => {
 } else {
 setInterval(async () => {
     const statuslist = [
-      `${client.guilds.size} servers`,
-      `${client.users.size} members`,
-      `${prefix} help`,
+      `${endDate}`,
+      `${endDate}`,
+      `${endDate}`,
     ];
     const random = Math.floor(Math.random() * statuslist.length);
 
