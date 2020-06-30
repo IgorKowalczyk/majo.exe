@@ -96,13 +96,9 @@ client.on('message', message=> {
 
 var date = new Date().toJSON().slice(0,10).replace(/-/g,'/');
 const enddate = (new Date().getFullYear()) + "/05/13";
-const enddateEEP = (new Date().getFullYear()) + "/06/30";
+const enddateEEP = (new Date().getFullYear()) + "/04/18";
 
 /*
-const enddate = (new Date().getFullYear()) + "/05/13";
-const enddateEEP = (new Date().getFullYear()) + "/04/18";
-*/
-
 setInterval(async () => {
 try {
 	const statuslist = [
@@ -122,6 +118,7 @@ try {
       `${prefix} help`,
 	}
 	];
+
     const random = Math.floor(Math.random() * statuslist.length);
 
     await client.user.setPresence({
@@ -132,10 +129,12 @@ try {
         },
         status: "online"
       });
+
 } catch (err) {
 return console.log(err);
 }
 }, 10000);
+*/
 /* --- */
 
 
