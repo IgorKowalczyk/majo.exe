@@ -98,43 +98,53 @@ var date = new Date().toJSON().slice(0,10).replace(/-/g,'/');
 const enddate = (new Date().getFullYear()) + "/05/13";
 const enddateEEP = (new Date().getFullYear()) + "/04/18";
 
-/*
+var date = new Date().toJSON().slice(0, 10).replace(/-/g, '/');
+const enddate = (new Date().getFullYear()) + "/05/13";
+const enddateEEP = (new Date().getFullYear()) + "/04/18";
+
 setInterval(async () => {
-try {
-	const statuslist = [
-    if (date == enddate) {
-      `🎉 ${client.guilds.size} servers 🎉`,
-      `🎉 ${client.users.size} members 🎉`,
-      `🎉 ${prefix} help 🎉`,
-	  `🎉 Happy Birthday Discord! 🎉`,
-	} else if(date == enddateEEP) {
-      `🔥 ${client.guilds.size} servers 🔥`,
-      `🔥 ${client.users.size} members 🔥`,
-      `🔥 ${prefix} help 🔥`,
-	  `🔥 EEP 4 LIFE (05/18)! 🔥`,
-	} else {
-      `${client.guilds.size} servers`,
-      `${client.users.size} members`,
-      `${prefix} help`,
-	}
-	];
+    try {
+        const statuslist = [
 
-    const random = Math.floor(Math.random() * statuslist.length);
+        ];
 
-    await client.user.setPresence({
-          game: {
-          name: `${statuslist[random]}`,
-          type: 'WATCHING'
-          
-        },
-        status: "online"
-      });
+        if (date == enddate) {
+            statuslist.push(
+                `🎉 ${client.guilds.size} servers 🎉`,
+                `🎉 ${client.users.size} members 🎉`,
+                `🎉 ${prefix} help 🎉`,
+                `🎉 Happy Birthday Discord! 🎉`
+            )
+        } else if (date == enddateEEP) {
+            statuslist.push(
+                `🔥 ${client.guilds.size} servers 🔥`,
+                `🔥 ${client.users.size} members 🔥`,
+                `🔥 ${prefix} help 🔥`,
+                `🔥 EEP 4 LIFE (05/18)! 🔥`
+            )
+        } else {
+            statuslist.push(
+                `${client.guilds.size} servers`,
+                `${client.users.size} members`,
+                `${prefix} help`
+            )
+        }
 
-} catch (err) {
-return console.log(err);
-}
+        const random = Math.floor(Math.random() * statuslist.length);
+
+        await client.user.setPresence({
+            game: {
+                name: `${statuslist[random]}`,
+                type: 'WATCHING'
+
+            },
+            status: "online"
+        });
+
+    } catch (err) {
+        return console.log(err);
+    }
 }, 10000);
-*/
 /* --- */
 
 
