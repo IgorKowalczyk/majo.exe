@@ -47,8 +47,8 @@ try {
 
          let embed = new Discord.RichEmbed()
             .setColor("#FF0000")
-            .setTitle("\:x: Error!")
-            .setDescription(err)
+            .setTitle("Error!")
+            .setDescription("**Error Code:**" + `err`)
             return message.channel.send(embed);
         }
 }
