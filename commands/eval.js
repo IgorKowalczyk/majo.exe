@@ -1,5 +1,6 @@
 const Discord = require("discord.js");
 const beautify = require("beautify")
+const cnf = require('../config.json');
 
 module.exports.run = async (client, message, args) => {
 try {
@@ -49,6 +50,8 @@ try {
             .setColor("#FF0000")
             .setTitle("Error!")
             .setDescription("**Error Code:**" + `err`)
+			.setFooter("Bot created by " + `${cnf.owner}`)
+            .setTimestamp()
             return message.channel.send(embed);
         }
 }
