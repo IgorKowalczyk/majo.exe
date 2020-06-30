@@ -49,7 +49,6 @@ try {
             .setColor("#FF0000")
             .setTitle("\:x: Error!")
             .setDescription(err)
-            .setFooter(client.user.username, client.user.displayAvatarURL())
             return message.channel.send(embed);
         }
 }
