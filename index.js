@@ -111,6 +111,7 @@ setInterval(async () => {
       `🎉 ${prefix} help 🎉`,
 	  `🎉 Happy Birthday Discord! 🎉`,
 	  ];
+	    const random = Math.floor(Math.random() * statuslist.length);
 	} else if(date == enddateEEP) {
 	   const statuslist = [
       `🔥 ${client.guilds.size} servers 🔥`,
@@ -118,14 +119,15 @@ setInterval(async () => {
       `🔥 ${prefix} help 🔥`,
 	  `🔥 EEP 4 LIFE (05/18)! 🔥`,
 	  ];
+	    const random = Math.floor(Math.random() * statuslist.length);
 	} else {
 	  const statuslist = [
       `${client.guilds.size} servers`,
       `${client.users.size} members`,
       `${prefix} help`,
 	];
+	const random = Math.floor(Math.random() * statuslist.length);
 	}
-    const random = Math.floor(Math.random() * statuslist.length);
 
     try {
       await client.user.setPresence({
