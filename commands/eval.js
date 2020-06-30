@@ -2,7 +2,7 @@ const Discord = require("discord.js");
 const beautify = require("beautify")
 
 module.exports.run = async (client, message, args) => {
-
+try {
         if(message.author.id !== "440200028292907048") {
             return message.channel.send({embed: {
                 color: 16734039,
@@ -17,7 +17,6 @@ module.exports.run = async (client, message, args) => {
             }});
         }
 
-        try {
             if (args.join(" ").toLowerCase().includes("token")) {
             return message.channel.send({embed: {
                 color: 16734039,
@@ -44,13 +43,13 @@ module.exports.run = async (client, message, args) => {
                 .addField("Type of:", typeof(evaluated));
 
             message.channel.send(embed);
-        } catch (err) {
+    } catch (err) {
 
-            let embed = Discord.RichEmbed()
-                .setColor("#FF0000")
-                .setTitle("\:x: Error!")
-                .setDescription(err)
-                .setFooter(client.user.username, client.user.displayAvatarURL())
+         let embed = new Discord.RichEmbed()
+            .setColor("#FF0000")
+            .setTitle("\:x: Error!")
+            .setDescription(err)
+            .setFooter(client.user.username, client.user.displayAvatarURL())
             return message.channel.send(embed);
         }
 }
