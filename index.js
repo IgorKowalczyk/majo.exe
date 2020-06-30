@@ -97,7 +97,7 @@ client.on('message', message=> {
 var date = new Date().toJSON().slice(0,10).replace(/-/g,'/');
 const enddate = (new Date().getFullYear()) + "/05/13";
 const enddateEEP = (new Date().getFullYear()) + "/06/30";
-if (date !== enddate) {
+if (date == enddate) {
 setInterval(async () => {
     const statuslist = [
       `🎉 ${client.guilds.size} servers 🎉`,
@@ -120,7 +120,7 @@ setInterval(async () => {
       console.error(error);
     }
 }, 10000);
-} else if(date !== enddateEEP) {
+} else if(date == enddateEEP) {
 setInterval(async () => {
     const statuslist = [
       `🔥 ${client.guilds.size} servers 🔥`,
