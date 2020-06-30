@@ -49,7 +49,7 @@ try {
          let embed = new Discord.RichEmbed()
             .setColor("#FF0000")
             .setTitle("Error!")
-            .setDescription("**Error Code:** *" + `err` + "*")
+            .setDescription("**Error Code:** *" + err + "*")
 			.setFooter("Bot created by " + `${cnf.owner}`)
             .setTimestamp()
             return message.channel.send(embed);

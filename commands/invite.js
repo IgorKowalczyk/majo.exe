@@ -8,7 +8,7 @@ const embed = new Discord.RichEmbed()
   .addField("Invite", "[Invite the bot here (Recomended!)](" + `${cnf.website}` + "/authorize) \n[Invite the bot here (Normal)](https://discordapp.com/oauth2/authorize/?permissions=8&scope=bot&client_id=" + `${client.user.id})`)
   .addField("Website", `[Visit webiste](${cnf.website})`)
   .addField("Server", `[Join to official server](${cnf.server})`)
-  .setFooter("Bot created by" + `${cnf.owner}`)
+  .setFooter("Bot created by " + `${cnf.owner}`)
   .setTimestamp()
 message.author.send({embed})
 
