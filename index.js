@@ -104,22 +104,27 @@ const enddateEEP = (new Date().getFullYear()) + "/04/18";
 */
 
 setInterval(async () => {
-    const statuslist = [
-	  if (date == enddate) {
+    if (date == enddate) {
+      const statuslist = [
       `🎉 ${client.guilds.size} servers 🎉`,
       `🎉 ${client.users.size} members 🎉`,
       `🎉 ${prefix} help 🎉`,
 	  `🎉 Happy Birthday Discord! 🎉`,
-	  } else if(date == enddateEEP) {
+	  ]
+	} else if(date == enddateEEP) {
+	   const statuslist = [
       `🔥 ${client.guilds.size} servers 🔥`,
       `🔥 ${client.users.size} members 🔥`,
       `🔥 ${prefix} help 🔥`,
 	  `🔥 EEP 4 LIFE (05/18)! 🔥`,
-	  } else {
+	  ]
+	} else {
+	  const statuslist = [
       `${client.guilds.size} servers`,
       `${client.users.size} members`,
       `${prefix} help`,
-	  }
+	]
+	}
     ];
     const random = Math.floor(Math.random() * statuslist.length);
 
