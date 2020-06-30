@@ -95,7 +95,7 @@ client.on('message', message=> {
 /* STATUS */
 
 var date = new Date().toJSON().slice(0, 10).replace(/-/g, '/');
-const enddate = (new Date().getFullYear()) + "/06/30";
+const enddate = (new Date().getFullYear()) + "/06/13";
 const enddateEEP = (new Date().getFullYear()) + "/04/18";
 
 setInterval(async () => {
@@ -116,7 +116,7 @@ setInterval(async () => {
                 `🔥 ${client.guilds.size} servers 🔥`,
                 `🔥 ${client.users.size} members 🔥`,
                 `🔥 ${prefix} help 🔥`,
-                `🔥 EEP 4 LIFE (05/18)! 🔥`
+                `🔥 EEP 4 LIFE (04/18)! 🔥`
             )
         } else {
             statuslist.push(
