@@ -95,8 +95,8 @@ client.on('message', message=> {
 /* STATUS */
 
 var date = new Date().toJSON().slice(0, 10).replace(/-/g, '/');
-const enddate = (new Date().getFullYear()) + "/05/13";
-const enddateEEP = (new Date().getFullYear()) + "/06/30";
+const enddate = (new Date().getFullYear()) + "/06/30";
+const enddateEEP = (new Date().getFullYear()) + "/04/18";
 
 setInterval(async () => {
     try {
