@@ -110,22 +110,21 @@ setInterval(async () => {
       `🎉 ${client.users.size} members 🎉`,
       `🎉 ${prefix} help 🎉`,
 	  `🎉 Happy Birthday Discord! 🎉`,
-	  ]
+	  ];
 	} else if(date == enddateEEP) {
 	   const statuslist = [
       `🔥 ${client.guilds.size} servers 🔥`,
       `🔥 ${client.users.size} members 🔥`,
       `🔥 ${prefix} help 🔥`,
 	  `🔥 EEP 4 LIFE (05/18)! 🔥`,
-	  ]
+	  ];
 	} else {
 	  const statuslist = [
       `${client.guilds.size} servers`,
       `${client.users.size} members`,
       `${prefix} help`,
-	]
+	];
 	}
-    ];
     const random = Math.floor(Math.random() * statuslist.length);
 
     try {
