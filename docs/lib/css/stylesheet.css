@@ -84,6 +84,7 @@ transform: rotateY(0);
 to {
 transform: rotateY(360deg);
 }
+}
 
 * {
 box-sizing: border-box;
