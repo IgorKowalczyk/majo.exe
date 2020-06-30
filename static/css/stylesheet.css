@@ -2,11 +2,87 @@
 
 @font-face {
 font-family: Roboto-Thin;
-src: url(/fonts/roboto-thin.otf);
+src: url(/lib/fonts/roboto-thin.otf);
 }
 
 :root {
 --white: #222;
+--preloader: #222;
+--spinner: #888;
+--spinner-border: #333;
+}
+
+.no-js {
+background: #f44336;
+font-family: Roboto-Thin;
+color: #fff;
+text-align: center;
+display: -ms-flexbox;
+display: -webkit-flex;
+display: flex;
+-ms-flex-align: center;
+-webkit-box-align: center;
+align-items: center;
+justify-content: center;
+position: fixed;
+user-select: none;
+height: 100%;
+width: 100%;
+top: 0;
+left: 0;
+right: 0;
+bottom: 0;
+z-index: 999999;
+}
+
+.preloader {
+height: 100%;
+width: 100%;
+background: var(--preloader);
+position: fixed;
+left: 0;
+top: 0;
+z-index: 10000;
+perspective: 1600px;
+perspective-origin: 20% 50%;
+transition: 0.5s all;
+opacity: 1;
+}
+
+.spinner {
+width: 80px;
+height: 80px;
+border: 2px solid var(--spinner-border);
+border-top: 3px solid var(--spinner);
+border-radius: 100%;
+position: absolute;
+top: 0;
+bottom: 0;
+left: 0;
+right: 0;
+margin: auto;
+animation: spin 1s infinite linear;
+}
+
+.preloader.fade {
+opacity: 0
+}
+
+@keyframes spin {
+from {
+transform: rotate(0);
+}
+to {
+transform: rotate(360deg);
+}
+}
+
+@keyframes ico {
+from {
+transform: rotateY(0);
+}
+to {
+transform: rotateY(360deg);
 }
 
 * {
