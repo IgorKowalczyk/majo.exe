@@ -126,10 +126,11 @@ setInterval(async () => {
       `${client.users.size} members`,
       `${prefix} help`,
 	];
-	const random = Math.floor(Math.random() * statuslist.length);
+ const random = Math.floor(Math.random() * statuslist.length);
 	}
 
     try {
+		const random = Math.floor(Math.random() * statuslist.length);
       await client.user.setPresence({
           game: {
           name: `${statuslist[random]}`,
