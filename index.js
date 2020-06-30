@@ -100,28 +100,6 @@ const enddateEEP = (new Date().getFullYear()) + "/06/30";
 if (date !== enddate) {
 setInterval(async () => {
     const statuslist = [
-      `${client.guilds.size} servers`,
-      `${client.users.size} members`,
-      `${prefix} help`,
-    ];
-    const random = Math.floor(Math.random() * statuslist.length);
-
-    try {
-      await client.user.setPresence({
-          game: {
-          name: `${statuslist[random]}`,
-          type: 'WATCHING'
-          
-        },
-        status: "online"
-      });
-    } catch (error) {
-      console.error(error);
-    }
-}, 10000);
-} else {
-setInterval(async () => {
-    const statuslist = [
       `🎉 ${client.guilds.size} servers 🎉`,
       `🎉 ${client.users.size} members 🎉`,
       `🎉 ${prefix} help 🎉`,
@@ -145,9 +123,10 @@ setInterval(async () => {
 } else if(date !== enddateEEP) {
 setInterval(async () => {
     const statuslist = [
-      `${client.guilds.size} servers`,
-      `${client.users.size} members`,
-      `${prefix} help`,
+      `🔥 ${client.guilds.size} servers 🔥`,
+      `🔥 ${client.users.size} members 🔥`,
+      `🔥 ${prefix} help 🔥`,
+	  `🔥 EEP 4 LIFE (05/18)! 🔥`,
     ];
     const random = Math.floor(Math.random() * statuslist.length);
 
@@ -170,7 +149,6 @@ setInterval(async () => {
       `${client.guilds.size} servers`,
       `${client.users.size} members`,
       `${prefix} help`,
-	  `EEP 4 LIFE (05/18)!`,
     ];
     const random = Math.floor(Math.random() * statuslist.length);
 
