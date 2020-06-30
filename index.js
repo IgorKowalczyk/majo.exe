@@ -96,59 +96,30 @@ client.on('message', message=> {
 
 var date = new Date().toJSON().slice(0,10).replace(/-/g,'/');
 const enddate = (new Date().getFullYear()) + "/05/13";
-const enddateEEP = (new Date().getFullYear()) + "/05/18";
-if (date == enddate) {
+const enddateEEP = (new Date().getFullYear()) + "/06/30";
+
+/*
+const enddate = (new Date().getFullYear()) + "/05/13";
+const enddateEEP = (new Date().getFullYear()) + "/04/18";
+*/
+
 setInterval(async () => {
     const statuslist = [
+	  if (date == enddate) {
       `🎉 ${client.guilds.size} servers 🎉`,
       `🎉 ${client.users.size} members 🎉`,
       `🎉 ${prefix} help 🎉`,
 	  `🎉 Happy Birthday Discord! 🎉`,
-    ];
-    const random = Math.floor(Math.random() * statuslist.length);
-
-    try {
-      await client.user.setPresence({
-          game: {
-          name: `${statuslist[random]}`,
-          type: 'WATCHING'
-          
-        },
-        status: "online"
-      });
-    } catch (error) {
-      console.error(error);
-    }
-}, 10000);
-} else if(date == enddateEEP) {
-setInterval(async () => {
-    const statuslist = [
+	  } else if(date == enddateEEP) {
       `🔥 ${client.guilds.size} servers 🔥`,
       `🔥 ${client.users.size} members 🔥`,
       `🔥 ${prefix} help 🔥`,
 	  `🔥 EEP 4 LIFE (05/18)! 🔥`,
-    ];
-    const random = Math.floor(Math.random() * statuslist.length);
-
-    try {
-      await client.user.setPresence({
-          game: {
-          name: `${statuslist[random]}`,
-          type: 'WATCHING'
-          
-        },
-        status: "online"
-      });
-    } catch (error) {
-      console.error(error);
-    }
-}, 10000);
-} else {
-setInterval(async () => {
-    const statuslist = [
+	  } else {
       `${client.guilds.size} servers`,
       `${client.users.size} members`,
       `${prefix} help`,
+	  }
     ];
     const random = Math.floor(Math.random() * statuslist.length);
 
@@ -165,7 +136,6 @@ setInterval(async () => {
       console.error(error);
     }
 }, 10000);
-}
 /* --- */
 
 
