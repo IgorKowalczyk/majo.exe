@@ -128,9 +128,6 @@ setInterval(async () => {
 	];
  const random = Math.floor(Math.random() * statuslist.length);
 	}
-
-    try {
-		const random = Math.floor(Math.random() * statuslist.length);
       await client.user.setPresence({
           game: {
           name: `${statuslist[random]}`,
@@ -139,9 +136,6 @@ setInterval(async () => {
         },
         status: "online"
       });
-    } catch (error) {
-      console.error(error);
-    }
 }, 10000);
 /* --- */
 
