@@ -3,13 +3,13 @@ const cnf = require('../config.json');
 
 module.exports.run = async (client, message, args) => {
 const embed = new Discord.RichEmbed()
-.setTitle("Invite the bot")
-.setColor('RANDOM')
-.addField("Invite ", "[Invite the bot here](https://discordapp.com/oauth2/authorize/?permissions=8&scope=bot&client_id=" + `${client.user.id})`)
-.addField("Website ", `cnf.website`)
-.addField("Server ", `cnf.server`)
-.setFooter("Bot created by " + `${cnf.owner}`)
-.setTimestamp()
+  .setTitle("Invite the bot")
+  .setColor('RANDOM')
+  .addField("Invite ", "[Invite the bot here](https://discordapp.com/oauth2/authorize/?permissions=8&scope=bot&client_id=" + `${client.user.id})`)
+  .addField("Website ", `${cnf.website}`)
+  .addField("Server ", `${cnf.server}`)
+  .setFooter("Bot created by " + `${cnf.owner}`)
+  .setTimestamp()
 message.author.send({embed})
 
 message.channel.send({embed: {
