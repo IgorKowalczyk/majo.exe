@@ -30,14 +30,14 @@ module.exports.run = async (client, message, args) => {
             }})
 	}
 	
-        booru.search('gelbooru', [query], {nsfw: true, limit: 1, random: true })
+        booru.search([query], {nsfw: true, limit: 1, random: true })
             .then(images => {
                 for (let image of images) {
                     const embed = new Discord.RichEmbed()
                     .setTitle(":smirk: Gelbooru:")
                     .setImage(image.fileUrl)
                     .setColor('RANDOM')
-                    .setFooter(`Tags: gelbooru ${query}`)
+                    .setFooter(`Tags: ${query}`)
                     .setURL(image.fileUrl);
                     return message.channel.send({ embed });
                 }

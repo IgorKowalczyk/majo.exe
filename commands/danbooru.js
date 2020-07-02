@@ -32,14 +32,14 @@ module.exports.run = (client, message, args) => {
             }})
 	}
 
-        booru.search('danbooru', [query], {nsfw: true, limit: 1, random: true })
+        booru.search([query], {nsfw: true, limit: 1, random: true })
             .then(images => {
                 for (let image of images) {
                     const embed = new Discord.RichEmbed()
                     .setTitle(":smirk: Danbooru")
                     .setImage(image.fileUrl)
                     .setColor('RANDOM')
-                    .setFooter(`Tags: danbooru ${query}`)
+                    .setFooter(`Tags: ${query}`)
                     .setURL(image.fileUrl);
                     return message.channel.send({ embed });
                 }
