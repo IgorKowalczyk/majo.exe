@@ -28,10 +28,10 @@ module.exports.run = async (client, message, args) => {
                 for (let image of images) {
                     const embed = new Discord.RichEmbed()
                     .setTitle(":smirk: Gelbooru:")
-                    .setImage(image.fileUrl)
+                    .setImage(image.file_url)
                     .setColor('RANDOM')
                     .setFooter(`Tags: ${query}`)
-                    .setURL(image.fileUrl);
+                    .setURL(image.file_url);
                     return message.channel.send({ embed });
                 }
             }).catch(err => {
