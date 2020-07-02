@@ -23,7 +23,7 @@ module.exports.run = async (client, message, args) => {
             }})
 	}
 	
-        booru.search([query], {nsfw: true, limit: 1, random: true })
+        booru.search('danbooru', [query], {nsfw: true, limit: 1, random: true })
             .then(images => {
                 for (let image of images) {
                     const embed = new Discord.RichEmbed()
