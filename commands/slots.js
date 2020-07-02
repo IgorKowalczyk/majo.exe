@@ -21,7 +21,7 @@ module.exports.run = async (client, message, args) => {
     if (money > moneydb) return message.channel.send(moneymore);
     const slotItems = [":grapes:", ":watermelon:", ":tangerine:", ":apple:", ":strawberry:", ":strawberry:", ":cherries:"];
     let number = []
-    for (i = 0; i < 3; i++) { var number[i] = Math.floor(Math.random() * slotItems.length); }
+    for (i = 0; i < 3; i++) { let number[i] = Math.floor(Math.random() * slotItems.length); }
 
     if (number[0] == number[1] && number[1] == number[2]) { 
         money *= 9
