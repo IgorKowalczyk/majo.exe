@@ -23,15 +23,14 @@ module.exports.run = async (client, message, args) => {
 
         var query = message.content.split(/\s+/g).slice(1).join(" ");
         booru.search('gelbooru', [query], {nsfw: true, limit: 1, random: true })
-            .then(booru.commonfy)
             .then(images => {
                 for (let image of images) {
                     const embed = new Discord.RichEmbed()
                     .setTitle(":smirk: Gelbooru:")
-                    .setImage(image.common.file_url)
+                    .setImage(image.fileUrl)
                     .setColor('RANDOM')
                     .setFooter(`Tags: gelbooru ${query}`)
-                    .setURL(image.common.file_url);
+                    .setURL(image.fileUrl);
                     return message.channel.send({ embed });
                 }
             }).catch(err => {
