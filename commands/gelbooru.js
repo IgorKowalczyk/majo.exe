@@ -22,6 +22,14 @@ module.exports.run = async (client, message, args) => {
 		}
 
         var query = message.content.split(/\s+/g).slice(1).join(" ");
+		
+	 if (!query) {
+		return message.channel.send({embed: {
+                color: 16734039,
+                description: "You must enter a text to search booru!"
+            }})
+	}
+	
         booru.search('gelbooru', [query], {nsfw: true, limit: 1, random: true })
             .then(images => {
                 for (let image of images) {
