@@ -49,13 +49,13 @@ module.exports.run = (client, message, args) => {
                 color: 16734039,
                 description: `No results found for: **${query}**`
             }})
-                }/* else {
+                } else {
+				console.log(err);
                 return message.channel.send({embed: {
                 color: 16734039,
                 description: `No results found for: **${query}**`
             }})
                 }
-			*/
 })
       
 }
