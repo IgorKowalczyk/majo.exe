@@ -13,13 +13,6 @@ module.exports.run = async (client, message, args) => {
             }})
 	}
 
-        if (message.content.toUpperCase().includes('LOLI') || message.content.toUpperCase().includes('GORE')) {
-		message.react('💢');
-		return message.channel.send({embed: {
-                color: 16734039,
-                description: "That kind of stuff is not allowed! Not even in NSFW channels!"
-            }})
-		}
 
         var query = message.content.split(/\s+/g).slice(1).join(" ");
 		
