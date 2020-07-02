@@ -19,7 +19,7 @@ module.exports.run = async (client, message, args) => {
             .then(images => {
                 for (let image of images) {
                     const embed = new Discord.RichEmbed()
-                    .setTitle(":smirk: Gelbooru:")
+                    .setTitle(":smirk: Gelbooru: " + `file_url`)
                     .setImage(image.file_url)
                     .setColor('RANDOM')
                     .setFooter(`Tags: ${query}`)
