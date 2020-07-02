@@ -67,6 +67,9 @@ return message.channel.send({embed: {
   // The list of if/else is replaced with those simple 2 lines:
   try {
     let commandFile = require(`./commands/${command}.js`);
+	  if(commandFile.length <= 0){
+    return console.log("Couldn't find any commands in /commands/ directory!");
+	}
     commandFile.run(client, message, args);
   } catch (err) {
 	console.log(err);

@@ -14,7 +14,7 @@ module.exports.run = async (client, message, args) => {
     let time = ms(timeout - (Date.now() - weekly));
   
     let timeEmbed = new Discord.RichEmbed()
-    .setColor("#FFFFFF")
+    .setColor(16734039)
     .setDescription(`:x: You have already collected your weekly reward\n\nCollect it again in ${time.days}d ${time.hours}h ${time.minutes}m ${time.seconds}s `);
     message.channel.send(timeEmbed)
   } else {

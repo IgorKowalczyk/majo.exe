@@ -1,75 +1,55 @@
-const Discord = require("discord.js");
+const slotItems = [":grapes:", ":watermelon:", ":tangerine:", ":apple:", ":strawberry:", ":strawberry:", ":cherries:"];
+const db = require("quick.db");
+const Discord = require('discord.js');
+const i = require('i')
 
 module.exports.run = async (client, message, args) => {
 
- var replys1 = [
-	        ":gem: : :gem: : :gem: ",
-	        ":lemon: : :lemon: : :lemon: ",
-	        ":seven: : :seven: : :seven: ",
-	        ":bell: : :bell: : :bell:",
-	        ":cherries: : :cherries: : :cherries: ",
-	        ":star: : :star: : :star: ",
-	        ":gem: : :star: : :seven: ",
-	        ":star: : :bell: : :bell:",
-	        ":star: : :star: : :cherries: ",
-	        ":gem: : :gem: : :cherries:",
-	        ":gem: : :seven: : :seven: ",
-	        ":star: : :bell: : :lemon: ",
-	        ":star: : :star: : :cherries: ",
-	        ":seven: : :star: : :star: ",
-	        ":star: : :star: : :seven: ",
-	        ":gem: : :gem: : :seven: "
-	    ];
-	    let reponse = (replys1[Math.floor(Math.random() * replys1.length)])
+    let user = message.author;
+    let moneydb = await db.fetch(`money_${message.guild.id}_${user.id}`)
+    let money = parseInt(args[0]);
+    let win = false;
 
-	    var replys2 = [
-	        ":gem: : :gem: : :gem: ",
-	        ":lemon: : :lemon: : :lemon: ",
-	        ":seven: : :seven: : :seven: ",
-	        ":bell: : :bell: : :bell:",
-	        ":cherries: : :cherries: : :cherries: ",
-	        ":gem: : :star: : :seven: ",
-	        ":star: : :bell: : :bell:",
-	        ":star: : :star: : :cherries: ",
-	        ":gem: : :gem: : :cherries:",
-	        ":gem: : :seven: : :seven: ",
-	        ":star: : :bell: : :lemon: ",
-	        ":star: : :star: : :cherries: ",
-	        ":seven: : :star: : :star: ",
-	        ":star: : :star: : :seven: ",
-	        ":gem: : :gem: : :seven: ",
-	        ":gem: : :cherries: : :cherries:",
-	        ":gem: : :bell: : :star:"
-	    ];
-	    let reponse2 = (replys2[Math.floor(Math.random() * replys2.length)])
-	    var replys3 = [
-	        ":lemon: : :lemon: : :lemon: ",
-	        ":bell: : :bell: : :bell:",
-	        ":cherries: : :cherries: : :cherries: ",
-	        ":star: : :star: : :star: ",
-	        ":gem: : :star: : :seven: ",
-	        ":star: : :bell: : :bell:",
-	        ":star: : :star: : :cherries: ",
-	        ":gem: : :gem: : :cherries:",
-	        ":gem: : :seven: : :seven: ",
-	        ":star: : :bell: : :lemon: ",
-	        ":star: : :star: : :cherries: ",
-	        ":seven: : :star: : :star: ",
-	        ":star: : :star: : :seven: ",
-	        ":gem: : :gem: : :seven: "
-	    ];
-	    let reponse3 = (replys3[Math.floor(Math.random() * replys3.length)])
+    let moneymore = new Discord.RichEmbed()
+    .setColor(16734039)
+    .setDescription(`:x: You are betting more than you have!`);
 
-	    const embed = new Discord.RichEmbed()
-	        .setColor("RANDOM")
-	        .setDescription(`**[ :slot_machine: ${message.author} launched the slot machine! :slot_machine: ]**`)
-	        .addField(`${reponse} \n \n${reponse2}**<** \n \n${reponse3}`, `** **`)
-	    message.channel.send(embed)
-	}
+    let moneyhelp = new Discord.RichEmbed()
+    .setColor(16734039)
+    .setDescription(`:cross: Specify an amount`);
 
+    if (!money) return message.channel.send(moneyhelp);
+    if (money > moneydb) return message.channel.send(moneymore);
+
+    let number = []
+    for (i = 0; i < 3; i++) { number[i] = Math.floor(Math.random() * slotItems.length); }
+
+    if (number[0] == number[1] && number[1] == number[2]) { 
+        money *= 9
+        win = true;
+    } else if (number[0] == number[1] || number[0] == number[2] || number[1] == number[2]) { 
+        money *= 2
+        win = true;
+    }
+    if (win) {
+        let slotsEmbed1 = new Discord.RichEmbed()
+            .setDescription(`${slotItems[number[0]]} | ${slotItems[number[1]]} | ${slotItems[number[2]]}\n\nYou won ${money} coins`)
+            .setColor("RANDOM")
+        message.channel.send(slotsEmbed1)
+        db.add(`money_${message.guild.id}_${user.id}`, money)
+    } else {
+        let slotsEmbed = new Discord.RichEmbed()
+            .setDescription(`${slotItems[number[0]]} | ${slotItems[number[1]]} | ${slotItems[number[2]]}\n\nYou lost ${money} coins`)
+            .setColor("RANDOM")
+        message.channel.send(slotsEmbed)
+        db.subtract(`money_${message.guild.id}_${user.id}`, money)
+    }
+
+}
+  
 module.exports.help = {
     name: "slots",
     description: "Launch a slot machine",
-    usage: "slots",
-    type: "Fun"  
-}
+    usage: "slots <money>",
+    type: "Economy"
+} 
