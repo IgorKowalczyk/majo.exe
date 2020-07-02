@@ -1,4 +1,3 @@
-const slotItems = [":grapes:", ":watermelon:", ":tangerine:", ":apple:", ":strawberry:", ":strawberry:", ":cherries:"];
 const db = require("quick.db");
 const Discord = require('discord.js');
 const i = require('i')
@@ -16,11 +15,11 @@ module.exports.run = async (client, message, args) => {
 
     let moneyhelp = new Discord.RichEmbed()
     .setColor(16734039)
-    .setDescription(`:cross: Specify an amount`);
+    .setDescription(`:x: Specify an amount`);
 
     if (!money) return message.channel.send(moneyhelp);
     if (money > moneydb) return message.channel.send(moneymore);
-
+    const slotItems = [":grapes:", ":watermelon:", ":tangerine:", ":apple:", ":strawberry:", ":strawberry:", ":cherries:"];
     let number = []
     for (i = 0; i < 3; i++) { number[i] = Math.floor(Math.random() * slotItems.length); }
 
