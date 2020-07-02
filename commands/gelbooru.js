@@ -33,6 +33,7 @@ module.exports.run = async (client, message, args) => {
                 description: `No results found for: **${query}**`
             }})
                 } else {
+					console.log(err);
                 return message.channel.send({embed: {
                 color: 16734039,
                 description: `No results found for: **${query}**`
