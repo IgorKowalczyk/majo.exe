@@ -285,10 +285,12 @@ try {
  
     logChannel.send(messageDelete);
 } catch (err) {
-	return message.channel.send({embed: {
-                color: 16734039,
-                description: "Something went wrong... :cry:"
-            }});
+         let embed = new Discord.RichEmbed()
+            .setColor("#FF0000")
+            .setTitle("Error!")
+            .setDescription("**Error Code:** *" + err + "*")
+            .setTimestamp()
+            return logChannel.send(embed);
 }
 });
 
