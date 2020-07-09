@@ -3,10 +3,9 @@ const Discord = require('discord.js');
 module.exports.run = async (client, message, args) => {
   try {
     let output = '';
-    Object.keys(require('../package').dependencies).forEach((pack) => output);
-	
-	let output2 = output.split("...");
-	let finaloutput = output2.join(", ");
+    Object.keys(require('../package').dependencies).forEach((pack) => output += pack + ', ');
+    
+	let finaloutput = output.split("...")
 
     let embed = new Discord.RichEmbed()
     .setColor('RANDOM')
