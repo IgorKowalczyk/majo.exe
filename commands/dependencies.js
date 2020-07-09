@@ -20,5 +20,5 @@ module.exports.help = {
     name: "dependencies",
     description: "Returns the amount of dependencies that i uses",
     usage: "dependencies",
-    type: "General" 
+    type: "Utility" 
 }
