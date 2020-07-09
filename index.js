@@ -295,7 +295,7 @@ try {
 });
 
 client.on('messageUpdate', (oldMessage, newMessage) => {  
- 
+try {
     if(oldMessage.author.bot) return;
     if(!oldMessage.channel.type === 'dm') return;
     if(!oldMessage.guild.member(client.user).hasPermission('EMBED_LINKS')) return;
@@ -315,10 +315,18 @@ client.on('messageUpdate', (oldMessage, newMessage) => {
     .setFooter(oldMessage.guild.name, oldMessage.guild.iconURL)
  
     logChannel.send(messageUpdate);
+} catch (err) {
+         let embed = new Discord.RichEmbed()
+            .setColor("#FF0000")
+            .setTitle("Error!")
+            .setDescription("**Error Code:** *" + err + "*")
+            .setTimestamp()
+            return logChannel.send(embed);
+}
 });
 
 client.on('roleCreate', role => {
-
+try {
     if(!role.guild.member(client.user).hasPermission('EMBED_LINKS')) return;
     if(!role.guild.member(client.user).hasPermission('VIEW_AUDIT_LOG')) return;
  
@@ -339,10 +347,18 @@ client.on('roleCreate', role => {
    
         logChannel.send(roleCreate);
     })
+} catch (err) {
+         let embed = new Discord.RichEmbed()
+            .setColor("#FF0000")
+            .setTitle("Error!")
+            .setDescription("**Error Code:** *" + err + "*")
+            .setTimestamp()
+            return logChannel.send(embed);
+}
 });
 
 client.on('roleDelete', role => {  
- 
+try {
     if(!role.guild.member(client.user).hasPermission('EMBED_LINKS')) return;
     if(!role.guild.member(client.user).hasPermission('VIEW_AUDIT_LOG')) return;
  
@@ -363,10 +379,18 @@ client.on('roleDelete', role => {
  
         logChannel.send(roleDelete);  
     })
+} catch (err) {
+         let embed = new Discord.RichEmbed()
+            .setColor("#FF0000")
+            .setTitle("Error!")
+            .setDescription("**Error Code:** *" + err + "*")
+            .setTimestamp()
+            return logChannel.send(embed);
+}
 });
 
 client.on('roleUpdate', (oldRole, newRole) => {
- 
+try {
     if(!oldRole.guild.member(client.user).hasPermission('EMBED_LINKS')) return;
     if(!oldRole.guild.member(client.user).hasPermission('VIEW_AUDIT_LOG')) return;
  
@@ -421,9 +445,18 @@ client.on('roleUpdate', (oldRole, newRole) => {
             logChannel.send(roleUpdate) 
         }
     })
+} catch (err) {
+         let embed = new Discord.RichEmbed()
+            .setColor("#FF0000")
+            .setTitle("Error!")
+            .setDescription("**Error Code:** *" + err + "*")
+            .setTimestamp()
+            return logChannel.send(embed);
+}
 });
 
-client.on('channelCreate', channel => { 
+client.on('channelCreate', channel => {
+try {
     if(!channel.guild) return;
     if(!channel.guild.member(client.user).hasPermission('EMBED_LINKS')) return;
     if(!channel.guild.member(client.user).hasPermission('VIEW_AUDIT_LOG')) return;
@@ -455,9 +488,18 @@ client.on('channelCreate', channel => {
  
         logChannel.send(channelCreate);
     })
+} catch (err) {
+         let embed = new Discord.RichEmbed()
+            .setColor("#FF0000")
+            .setTitle("Error!")
+            .setDescription("**Error Code:** *" + err + "*")
+            .setTimestamp()
+            return logChannel.send(embed);
+}
 }); 
 
-client.on('channelDelete', channel => { 
+client.on('channelDelete', channel => {
+try {
     if(!channel.guild) return;
     if(!channel.guild.member(client.user).hasPermission('EMBED_LINKS')) return;
     if(!channel.guild.member(client.user).hasPermission('VIEW_AUDIT_LOG')) return;
@@ -489,9 +531,18 @@ client.on('channelDelete', channel => {
  
         logChannel.send(channelDelete); 
     })
+} catch (err) {
+         let embed = new Discord.RichEmbed()
+            .setColor("#FF0000")
+            .setTitle("Error!")
+            .setDescription("**Error Code:** *" + err + "*")
+            .setTimestamp()
+            return logChannel.send(embed);
+}
 });
 
 client.on('channelUpdate', (oldChannel, newChannel) => {
+try {
     if(!oldChannel.guild) return;
  
     var logChannel = oldChannel.guild.channels.find(c => c.name === 'log');
@@ -534,10 +585,18 @@ client.on('channelUpdate', (oldChannel, newChannel) => {
             logChannel.send(newTopic);
         }
     })
+} catch (err) {
+         let embed = new Discord.RichEmbed()
+            .setColor("#FF0000")
+            .setTitle("Error!")
+            .setDescription("**Error Code:** *" + err + "*")
+            .setTimestamp()
+            return logChannel.send(embed);
+}
 });
 
 client.on('guildBanAdd', (guild, user) => {
- 
+try {
     if(!guild.member(client.user).hasPermission('EMBED_LINKS')) return;
     if(!guild.member(client.user).hasPermission('VIEW_AUDIT_LOG')) return;
  
@@ -560,9 +619,18 @@ client.on('guildBanAdd', (guild, user) => {
  
         logChannel.send(banInfo);
     })
+} catch (err) {
+         let embed = new Discord.RichEmbed()
+            .setColor("#FF0000")
+            .setTitle("Error!")
+            .setDescription("**Error Code:** *" + err + "*")
+            .setTimestamp()
+            return logChannel.send(embed);
+}
 });
 
 client.on('guildBanRemove', (guild, user) => {
+try {
     if(!guild.member(client.user).hasPermission('EMBED_LINKS')) return; 
     if(!guild.member(client.user).hasPermission('VIEW_AUDIT_LOG')) return;
  
@@ -583,9 +651,18 @@ client.on('guildBanRemove', (guild, user) => {
  
         logChannel.send(unBanInfo);
     })
+} catch (err) {
+         let embed = new Discord.RichEmbed()
+            .setColor("#FF0000")
+            .setTitle("Error!")
+            .setDescription("**Error Code:** *" + err + "*")
+            .setTimestamp()
+            return logChannel.send(embed);
+}
 });
 
 client.on('guildMemberUpdate', (oldMember, newMember) => { 
+try {
     var logChannel = oldMember.guild.channels.find(c => c.name === 'log'); 
     if(!logChannel) return;
  
@@ -654,9 +731,18 @@ client.on('guildMemberUpdate', (oldMember, newMember) => {
  
         logChannel.send(newOwner);
     }
+} catch (err) {
+         let embed = new Discord.RichEmbed()
+            .setColor("#FF0000")
+            .setTitle("Error!")
+            .setDescription("**Error Code:** *" + err + "*")
+            .setTimestamp()
+            return logChannel.send(embed);
+}
 });
 
 client.on('guildMemberAdd', member => {
+try {
   var logChannel = member.guild.channels.find(c => c.name === 'log'); 
   if(!logChannel) return;
   
@@ -669,6 +755,14 @@ client.on('guildMemberAdd', member => {
   .setFooter(member.user.tag, member.user.avatarURL)
  
   logChannel.send(newMember);
+} catch (err) {
+         let embed = new Discord.RichEmbed()
+            .setColor("#FF0000")
+            .setTitle("Error!")
+            .setDescription("**Error Code:** *" + err + "*")
+            .setTimestamp()
+            return logChannel.send(embed);
+}
 });
 
 function Days(date) {
@@ -678,6 +772,7 @@ function Days(date) {
     return days + (days == 1 ? " day" : " days") + " ago";
 }
 client.on('guildMemberRemove', member => { 
+try {
   var logChannel = member.guild.channels.find(c => c.name === 'log'); 
   if(!logChannel) return; 
  
@@ -690,10 +785,18 @@ client.on('guildMemberRemove', member => {
   .setFooter(member.user.tag, member.user.avatarURL)
   
   logChannel.send(leaveMember);
+} catch (err) {
+         let embed = new Discord.RichEmbed()
+            .setColor("#FF0000")
+            .setTitle("Error!")
+            .setDescription("**Error Code:** *" + err + "*")
+            .setTimestamp()
+            return logChannel.send(embed);
+}
 });
 
 client.on('voiceStateUpdate', (voiceOld, voiceNew) => {
- 
+ try {
     if(!voiceOld.guild.member(client.user).hasPermission('EMBED_LINKS')) return;
     if(!voiceOld.guild.member(client.user).hasPermission('VIEW_AUDIT_LOG')) return;
  
@@ -789,7 +892,15 @@ client.on('voiceStateUpdate', (voiceOld, voiceNew) => {
         .setFooter(voiceOld.user.tag, voiceOld.user.avatarURL)
  
         logChannel.send(voiceLeave);
-    }  
+    }
+} catch (err) {
+         let embed = new Discord.RichEmbed()
+            .setColor("#FF0000")
+            .setTitle("Error!")
+            .setDescription("**Error Code:** *" + err + "*")
+            .setTimestamp()
+            return logChannel.send(embed);
+}
 }); 
 /* --- */
 
