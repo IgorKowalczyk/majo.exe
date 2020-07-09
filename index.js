@@ -284,10 +284,12 @@ try {
     .setFooter(message.guild.name, message.guild.iconURL)  
  
     logChannel.send(messageDelete);
-}.catch((err) => message.channel.send({embed: {
+} catch (err) {
+	return message.channel.send({embed: {
                 color: 16734039,
                 description: "Something went wrong... :cry:"
-            }}));
+            }});
+}
 });
 
 client.on('messageUpdate', (oldMessage, newMessage) => {  
