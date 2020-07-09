@@ -266,6 +266,7 @@ function getDefaultChannel(guild) {
 }
 
 client.on('messageDelete', message => {  
+try {
     if(message.author.bot) return;
     if(message.channel.type === 'dm') return;  
     if(!message.guild.member(client.user).hasPermission('EMBED_LINKS')) return;  
@@ -283,6 +284,10 @@ client.on('messageDelete', message => {
     .setFooter(message.guild.name, message.guild.iconURL)  
  
     logChannel.send(messageDelete);
+}.catch((err) => message.channel.send({embed: {
+                color: 16734039,
+                description: "Something went wrong... :cry:"
+            }}));
 });
 
 client.on('messageUpdate', (oldMessage, newMessage) => {  
