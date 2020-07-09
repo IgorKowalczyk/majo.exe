@@ -4,7 +4,7 @@ module.exports.run = async (client, message, args) => {
 try {
 	const embed = new Discord.RichEmbed()
 	  .setTitle(":bricks: Dependencies")
-      .setDescription("${client.user.tag} run on " + Object.keys(require('../package').dependencies).length + " dependencies")
+      .setDescription(client.user.tag + " run on " + Object.keys(require('../package').dependencies).length + " dependencies")
 	  .setTimestamp()
 	  .setColor("RANDOM")
   message.channel.send(embed);

@@ -4,7 +4,9 @@ module.exports.run = async (client, message, args) => {
   try {
     let output = '';
     Object.keys(require('../package').dependencies).forEach((pack) => output);
-	let finaloutput = output.split("...").join(", ");
+	
+	let output2 = output.split("...");
+	let finaloutput = output2.join(", ");
 
     let embed = new Discord.RichEmbed()
     .setColor('RANDOM')
