@@ -65,7 +65,7 @@ if (args[0] == 'welcome') {
         .setTitle("List of all values to set")
      	.addField("Welcome", "Set a welcome channel. Usage " + `${prefix}` + " set welcome <channel>")
         .addField("Bye", "Set a bye channel. Usage " + `${prefix}` + " set bye <channel>")
-		.addField("Logs", "Set a logs channel. Usage " + `${prefix}` + "set log <channel>")
+		.addField("Logs", "Set a logs channel. Usage " + `${prefix}` + " set log <channel>")
 		message.channel.send(list) 
   } else {
         let embed = new Discord.RichEmbed()
