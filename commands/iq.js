@@ -5,6 +5,7 @@ try {
 
 const iq = Math.floor(Math.random() * 226);
 const embed = new Discord.RichEmbed()
+  .setTitle(":brain: IQ Test:")
   .setDescription(":bulb: " + message.author.username + " IQ: `" + iq + "`")
   .setColor(`RANDOM`)
   .setTimestamp()
