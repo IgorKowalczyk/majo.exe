@@ -21,9 +21,10 @@ We host this bot. Majo.exe will be online 24/7.
 2. Run `npm install`,
 3. Grab a token and client secret on [Discord's developer portal](https://discord.com/developers/applications),
 4. Fill `config.json` and `dashboard.json` with your variables (`dashboard.json` is the config file for Web Dashboard),
-4. Create a `.env` file and add a `BOT_TOKEN` environmental variable whose value is the token above, a `PREFIX` - this is your bot prefix, a `SECRET` - this is your client secret variabble (Used for web-dashboard), a Google Trakcing ID (For Website analytics) - `UA=TRACKING-ID` if you don't have to use analytics go to `views/index.js` and delete script in `<head>` and  and add a `DASHBOARD=[true/false]` value - if `true` the bot will be hosted with web dasboard, if `false` the bot will be hosted without web dashboard (The `.env` file was private). NOTE: See the example `.env` file below!
-5. Run `node index.js`
-
+5. Create a `.env` file and add a `BOT_TOKEN` environmental variable whose value is the token above. 
+6. In `.env` Set `PREFIX` - this is your bot prefix, a `SECRET` - this is your client secret variabble (Used for web-dashboard), a Google Trakcing ID (For Website analytics) - `UA=TRACKING-ID` if you don't have to use analytics just delete the settings value and add a `DASHBOARD=[true/false]` value - if `true` the bot will be hosted with web dasboard, if `false` the bot will be hosted without web dashboard (The `.env` file was private).
+7. Run `node index.js`
+> NOTE: See the example `.env` file below!
 ## Example `.env` file
 
 ```
