@@ -1,0 +1,55 @@
+# Main page title
+title: "Majo.exe#4560 - An advanced Discord Bot"
+
+# Discord bot name without tag
+name-tag: "Majo.exe"
+# Discord bot tag
+tag: "#4560"
+
+# Description
+description: "Majo.exe#4560 - An advanced Discord Bot"
+
+# Your name
+name: "Igor Kowalczyk"
+
+# Your website (if you don't have - leave blank)
+author-link: "https://igorkowalczyk.github.io"
+
+# Contact E-Mail (Public!)
+email: "xxmajonezxx@gmail.com"
+
+# Base url (Not link! Only dir.
+baseurl: "/majobot"
+
+# Discord server invite
+server: "https://discord.gg/f4KtqNB"
+
+# Discord bot invite url
+authorize: "https://discord.com/api/oauth2/authorize?client_id=681536055572430918&permissions=8&scope=bot"
+
+# Github username (not link) - if you don't have - leave blank
+github_username:  "igorkowalczyk"
+
+# Project repo (from github, not link) - if you don't have - leave blank
+repo: "majobot"
+
+# First Launch of the site (displays in footer)
+first-launch: "2019"
+
+# Timezone
+timezone: "Europe/Warsaw"
+
+# Markdown and Default theme
+markdown: kramdown
+theme: minima
+
+# Exclude files
+exclude:
+ - Gemfile
+ - Gemfile.lock
+
+# Tracking id - if you don't have - leave blank
+tracking_id: "UA-153609882-1"
+
+# Verification ID - if you don't have - leave blank
+verification: "-wuCsk4qLolXEPSUTGX7YBxywcyNNf5HS2ClzgEWxNY"
