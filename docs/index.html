@@ -1,6 +1,6 @@
 ---
 layout: default
 ---
-<img src="./lib/svg/lines.svg" alt="Lines">
-<div class="div"><img class="img" src="./lib/img/avatar.png" alt="Majo.exe Avatar"/><h1>Hi!</h1><p>To get started, authorize the bot by clicking <em>"Authorize"</em> link on the navbar.</p></div>
+<img src="{ site.baseurl }}/lib/svg/lines.svg" alt="Lines">
+<div class="div"><img class="img" src="{ site.baseurl }}/lib/img/avatar.png" alt="Majo.exe Avatar"/><h1>Hi!</h1>{% if site.authorize %}<p>To get started, authorize the bot by clicking <em>"Authorize"</em> link on the navbar.</p>{% endif %}</div>
 </div>
