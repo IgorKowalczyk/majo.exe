@@ -21,12 +21,6 @@ email: "xxmajonezxx@gmail.com"
 # Base url (Not link! Only dir.
 baseurl: "/majobot"
 
-# Discord server invite
-server: "https://discord.gg/f4KtqNB"
-
-# Discord bot invite url
-authorize: "https://discord.com/api/oauth2/authorize?client_id=681536055572430918&permissions=8&scope=bot"
-
 # Github username (not link) - if you don't have - leave blank
 github_username:  "igorkowalczyk"
 

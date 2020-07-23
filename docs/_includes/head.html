@@ -1,8 +1,12 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="{{ site.description  }}">
-{% if site.title %}<title>{% if page.title %}{{page.title}} - {{site.title}}{% else %} {{site.title}}{% endif %}</title>{% endif %}
+{% if page.description %}
+<meta name="description" content="{{ page.description }}">
+{% else %}
+<meta name="description" content="{{ site.description }}">
+{% endif %}
+{% if site.title %}<title>{% if page.title %}{{ page.title }} - {{ site.title }}{% else %} {{ site.title }}{% endif %}</title>{% endif %}
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="theme-color" content="#fff">
 <link rel="shortcut icon" href="{{ site.baseurl }}/lib/favicon/favicon.jpg">
@@ -17,7 +21,17 @@
 <meta name="msapplication-TileImage" content="{{ site.baseurl }}/lib/favicon/mstile-144x144.png">
 <meta name="msapplication-config" content="{{ site.baseurl }}/lib/favicon/browserconfig.xml">
 <link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.baseurl }}">
+{% if page.layout == '404' %}
+<link rel="stylesheet" href="{{ site.baseurl }}/lib/css/404.min.css">
+{% else %}
 <link rel="stylesheet" href="{{ site.baseurl }}/lib/css/style.min.css">
-{% if site.verification %}<meta name="google-site-verification" content="{{ site.verification }}">{% endif %}
+{% endif %}
+{% if page.redirect %}<meta http-equiv="refresh" content="0; url='{{ page.redirect }}'">{% endif %}
+{% if page.block %}
+<meta name="robots" content="noindex, nofollow">
+<meta name="googlebot" content="noindex, nofollow">
+{% else %}
+{% if site.verification and jekyll.environment == 'production' %}<meta name="google-site-verification" content="{{ site.verification }}">{% endif %}
+{% endif %}
 {% if jekyll.environment == 'production' and site.tracking_id %}{% include analytics.html %}{% endif %}
 </head>
