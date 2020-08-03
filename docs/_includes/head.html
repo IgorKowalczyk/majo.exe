@@ -21,6 +21,13 @@
 <meta name="msapplication-TileImage" content="{{ site.baseurl }}/lib/favicon/mstile-144x144.png">
 <meta name="msapplication-config" content="{{ site.baseurl }}/lib/favicon/browserconfig.xml">
 <link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.baseurl }}">
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="website">
+<meta property="og:title" content="{% if page.title %}{{ page.title }} - {{ site.title }}{% else %} {{ site.title }}{% endif %}">
+<meta property="og:url" content="{{ site.url }}{{ page.url }}">
+{% comment %}<meta property="og:image" content="{{ site.url }}lib/pics/thumbs/{{ page.image }}" />{% endcomment %}
+<meta property="og:site_name" content="{{ site.name }}">
+<meta property="og:description" content="{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}">
 {% if page.layout == '404' %}
 <link rel="stylesheet" href="{{ site.baseurl }}/lib/css/404.min.css">
 {% else %}
