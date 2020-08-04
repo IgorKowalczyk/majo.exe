@@ -1,0 +1,13 @@
+---
+layout: "null"
+---
+{% if site.block %}
+User-agent: *
+Disallow: *
+Allow:
+{% else %}
+User-agent: *
+Disallow:
+Allow: *
+{% endif %}
+Sitemap: {{ site.url }}{{ site.baseurl }}/sitemap.xml
