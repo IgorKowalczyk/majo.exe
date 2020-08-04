@@ -7,8 +7,6 @@
 <meta name="description" content="{{ site.description }}">
 {% endif %}
 {% if site.title %}<title>{% if page.title %}{{ page.title }} - {{ site.title }}{% else %} {{ site.title }}{% endif %}</title>{% endif %}
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="theme-color" content="#fff">
 <link rel="shortcut icon" href="{{ site.baseurl }}/lib/favicon/favicon.jpg">
 <link rel="apple-touch-icon" sizes="180x180" href="{{ site.baseurl }}/lib/favicon/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="{{ site.baseurl }}/lib/favicon/favicon-32x32.png">
@@ -20,14 +18,7 @@
 <meta name="msapplication-config" content="{{ site.baseurl }}/lib/favicon/browserconfig.xml">
 <meta name="msapplication-TileImage" content="{{ site.baseurl }}/lib/favicon/mstile-144x144.png">
 <meta name="msapplication-config" content="{{ site.baseurl }}/lib/favicon/browserconfig.xml">
-<link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.baseurl }}">
-<meta property="og:locale" content="en_US">
-<meta property="og:type" content="website">
-<meta property="og:title" content="{% if page.title %}{{ page.title }} - {{ site.title }}{% else %} {{ site.title }}{% endif %}">
-<meta property="og:url" content="{{ site.url }}{{ page.url }}">
-{% comment %}<meta property="og:image" content="{{ site.url }}lib/pics/thumbs/{{ page.image }}" />{% endcomment %}
-<meta property="og:site_name" content="{{ site.name }}">
-<meta property="og:description" content="{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}">
+{% include seo.html %}
 {% if page.layout == '404' %}
 <link rel="stylesheet" href="{{ site.baseurl }}/lib/css/404.min.css">
 {% else %}
