@@ -40,6 +40,9 @@ timezone: "Europe/Warsaw"
 markdown: kramdown
 theme: minima
 
+# Encoding (default: utf-8)
+encoding: utf-8
+
 # Exclude files
 exclude:
  - Gemfile
