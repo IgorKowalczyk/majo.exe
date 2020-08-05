@@ -47,7 +47,7 @@ let colorbad = new Discord.RichEmbed()
         let moneyEmbed1 = new Discord.RichEmbed()
         .setColor("RANDOM")
         .setDescription(`:tada: You won ${money} coins :tada:`)
-		.setFooter(`Multiplier: 15x | Color: :green_circle:`)
+		.setFooter(`Multiplier: 15x | Color: Green`)
         message.channel.send(moneyEmbed1)
     } else if (isOdd(random) && colour == 1) { // Red
         money = parseInt(money * 1.5)
@@ -55,7 +55,7 @@ let colorbad = new Discord.RichEmbed()
         let moneyEmbed2 = new Discord.RichEmbed()
         .setColor("RANDOM")
         .setDescription(`:tada: You won ${money} coins :tada:`)
-	.setFooter(`Multiplier: 1.5x | Color: :red_circle:`);
+	.setFooter(`Multiplier: 1.5x | Color: Red`);
         message.channel.send(moneyEmbed2)
     } else if (!isOdd(random) && colour == 0) { // Black
         money = parseInt(money * 2)
@@ -63,7 +63,7 @@ let colorbad = new Discord.RichEmbed()
         let moneyEmbed3 = new Discord.RichEmbed()
         .setColor("RANDOM")
         .setDescription(`:tada: You won ${money} coins :tada:`)
-		.setFooter(`Multiplier: 2x | Color: :black_circle:`)
+		.setFooter(`Multiplier: 2x | Color: Black`)
         message.channel.send(moneyEmbed3)
     } else { // Wrong
         db.subtract(`money_${message.guild.id}_${user.id}`, money)
