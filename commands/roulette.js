@@ -62,7 +62,7 @@ let colorbad = new Discord.RichEmbed()
         db.add(`money_${message.guild.id}_${user.id}`, money)
         let moneyEmbed3 = new Discord.RichEmbed()
         .setColor("RANDOM")
-        .setTitle(`:tada: You won ${money} coins :tada:`)
+        .setDescription(`:tada: You won ${money} coins :tada:`)
 		.setFooter(`Multiplier: 2x | Color: :black_circle:`)
         message.channel.send(moneyEmbed3)
     } else { // Wrong
