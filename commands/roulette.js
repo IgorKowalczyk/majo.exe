@@ -17,15 +17,15 @@ let moneydb = await db.fetch(`money_${message.guild.id}_${user.id}`)
 let random = Math.floor(Math.random() * 37);
 
 let moneyhelp = new Discord.RichEmbed()
-.setColor("#FFFFFF")
+.setColor("FF5757")
 .setDescription(`:x: Specify an amount to gamble | !majo roulette <color> <amount>`);
 
 let moneymore = new Discord.RichEmbed()
-.setColor("#FFFFFF")
+.setColor("FF5757")
 .setDescription(`:x: You are betting more than you have`);
 
 let colorbad = new Discord.RichEmbed()
-.setColor("#FFFFFF")
+.setColor("FF5757")
 .setDescription(`:x: Specify a color | Red [1.5x] Black [2x] Green [15x]`);
 
 
@@ -45,28 +45,31 @@ let colorbad = new Discord.RichEmbed()
         money *= 15
         db.add(`money_${message.guild.id}_${user.id}`, money)
         let moneyEmbed1 = new Discord.RichEmbed()
-        .setColor("#FFFFFF")
-        .setDescription(`:green_circle: You won ${money} coins\n\nMultiplier: 15x`);
+        .setColor("RANDOM")
+        .setDescription(`:tada: :green_circle: :tada: You won ${money} coins :tada: :green_circle: :tada:`)
+		.setFooter(`Multiplier: 15x`)
         message.channel.send(moneyEmbed1)
     } else if (isOdd(random) && colour == 1) { // Red
         money = parseInt(money * 1.5)
         db.add(`money_${message.guild.id}_${user.id}`, money)
         let moneyEmbed2 = new Discord.RichEmbed()
-        .setColor("#FFFFFF")
-        .setDescription(`:red_circle: You won ${money} coins\n\nMultiplier: 1.5x`);
+        .setColor("RANDOM")
+        .setDescription(`:tada: :red_circle: :tada: You won ${money} coins :tada: :red_circle: :tada:`)
+		.setFooter(`Multiplier: 1.5x`);
         message.channel.send(moneyEmbed2)
     } else if (!isOdd(random) && colour == 0) { // Black
         money = parseInt(money * 2)
         db.add(`money_${message.guild.id}_${user.id}`, money)
         let moneyEmbed3 = new Discord.RichEmbed()
-        .setColor("#FFFFFF")
-        .setDescription(`:black_circle: You won ${money} coins\n\nMultiplier: 2x`);
+        .setColor("RANDOM")
+        .setTitle(`:tada: :black_circle: :tada: You won ${money} coins :tada: :black_circle: :tada:`)
+		.setFooter(`Multiplier: 2x`)
         message.channel.send(moneyEmbed3)
     } else { // Wrong
         db.subtract(`money_${message.guild.id}_${user.id}`, money)
         let moneyEmbed4 = new Discord.RichEmbed()
-        .setColor("#FFFFFF")
-        .setDescription(`:x: You lost ${money} coins\n\nMultiplier: 0x`);
+        .setColor("FF5757")
+        .setDescription(`:x: You lost ${money} coins\n\nMultiplier: 0x`)
         message.channel.send(moneyEmbed4)
     }
 }
@@ -74,7 +77,7 @@ let colorbad = new Discord.RichEmbed()
 
 module.exports.help = {
     name: "roulette",
-    description: "Simulate a russian roulette game so you don't die IRL by mistake.",
-    usage: "quote <id>",
-    type: "Fun"   
+    description: "Plays a roulette",
+    usage: "roulette <color> <amout>",
+    type: "Economy"   
 }

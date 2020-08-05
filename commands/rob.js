@@ -12,7 +12,7 @@ module.exports.run = async (client, message, args) => {
         let time = ms(timeout - (Date.now() - author));
     
         let timeEmbed = new Discord.RichEmbed()
-        .setColor("RANDOM")
+        .setColor("FF5757")
         .setDescription(`:x:  You have already robbed someone\n\nTry again in ${time.minutes}m ${time.seconds}s `);
         message.channel.send(timeEmbed)
       } else {
