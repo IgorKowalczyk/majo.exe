@@ -46,5 +46,6 @@ module.exports.run = async (client, message, args) => {
 module.exports.help = {
     name: "members",
     description: "How many members are in the current server",
-    usage: "members"  
+    usage: "members",
+    type: "Utility" 
 }
