@@ -1,7 +1,7 @@
 const Discord = require('discord.js')
 const db = require('quick.db')
 
-module.exports.run = async (bot, message, args) => {
+module.exports.run = async (client, message, args) => {
     const embed = new Discord.RichEmbed()
     .setDescription(`**Input a Leaderboard Option**\n\nCoin Leaderboard: !majo leaderboard coins\nFresh Nikes Leaderboard: !majo leaderboard nikes\nCar Leaderboard: !majo leaderboard car\nMansion Leaderboard: !majo leaderboard mansion`)
     .setColor("#FFFFFF")
@@ -10,11 +10,11 @@ module.exports.run = async (bot, message, args) => {
   if(!args[0]) return message.channel.send(embed)
 
     if (args[0] == 'coins') {
-    let money = db.startsWith(`money_${message.guild.id}`, { sort: '.data'})
+    let money = db.fetch(`money_${message.guild.id}`, { sort: '.data'})
     let content = "";
 
     for (let i = 0; i < money.length; i++) {
-        let user = bot.users.get(money[i].ID.split('_')[2]).username
+        let user = client.users.get(money[i].ID.split('_')[2]).username
 
       
 
@@ -28,11 +28,11 @@ module.exports.run = async (bot, message, args) => {
 
     message.channel.send(embed)
   } else if(args[0] == 'nikes') {
-    let nike = db.startsWith(`nikes_${message.guild.id}`, { sort: '.data'})
+    let nike = db.fetch(`nikes_${message.guild.id}`, { sort: '.data'})
     let content = "";
 
     for (let i = 0; i < nike.length; i++) {
-        let user = bot.users.get(nike[i].ID.split('_')[2]).username
+        let user = client.users.get(nike[i].ID.split('_')[2]).username
 
         content += `${i+1}. ${user} ~ ${nike[i].data}\n`
     }
@@ -43,11 +43,11 @@ module.exports.run = async (bot, message, args) => {
 
     message.channel.send(embed)
   } else if(args[0] == 'car') {
-    let cars = db.startsWith(`car_${message.guild.id}`, { sort: '.data'})
+    let cars = db.fetch(`car_${message.guild.id}`, { sort: '.data'})
     let content = "";
 
     for (let i = 0; i < cars.length; i++) {
-        let user = bot.users.get(cars[i].ID.split('_')[2]).username
+        let user = client.users.get(cars[i].ID.split('_')[2]).username
 
         content += `${i+1}. ${user} ~ ${cars[i].data}\n`
     }
@@ -58,11 +58,11 @@ module.exports.run = async (bot, message, args) => {
 
     message.channel.send(embed)
   } else if(args[0] == 'mansion') {
-    let mansions = db.startsWith(`house_${message.guild.id}`, { sort: '.data'})
+    let mansions = db.fetch(`house_${message.guild.id}`, { sort: '.data'})
     let content = "";
 
     for (let i = 0; i < mansions.length; i++) {
-        let user = bot.users.get(mansions[i].ID.split('_')[2]).username
+        let user = client.users.get(mansions[i].ID.split('_')[2]).username
 
         content += `${i+1}. ${user} ~ ${mansions[i].data}\n`
     }
