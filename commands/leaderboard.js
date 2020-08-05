@@ -10,7 +10,7 @@ module.exports.run = async (client, message, args) => {
   if(!args[0]) return message.channel.send(embed)
 
     if (args[0] == 'coins') {
-    let money = db.fetch(`money_${message.guild.id}`, { sort: '.data'})
+    let money = db.fetch(`money_${message.guild.id}`)
     let content = "";
 
     for (let i = 0; i < money.length; i++) {
