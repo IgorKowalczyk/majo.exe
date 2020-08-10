@@ -5,7 +5,9 @@
 <ul class="menu">
 <% if (user) { %>
 <li><a href="/authorize/logout">Logout</a></li>
+<% if (server) { %>
 <li><a href="/server" target="_blank" rel="noopener">Discord server</a></li>
+<% } %>
 <% if (authorwebsite) { %>
 <li><a href="<%= authorwebsite %>" target="_blank" rel="noopener">Author</a></li>
 <% } %>
@@ -14,7 +16,9 @@
 <% } %>
 <% } else { %>
 <li><a href="/authorize">Authorize</a></li>
+<% if (server) { %>
 <li><a href="/server" target="_blank" rel="noopener">Discord server</a></li>
+<% } %>
 <% if (authorwebsite) { %>
 <li><a href="<%= authorwebsite %>" target="_blank" rel="noopener">Author</a></li>
 <% } %>

@@ -1,14 +1,17 @@
 const dashboard = process.env.DASHBOARD;
 if (dashboard === 'true') {
 const router = require('express').Router();
-const { name, tag, authorwebsite, github } = require('../dashboard.json');
+const { name, tag, authorwebsite, github, mobile, twitter, launch, pagename, description, image, verification, server} = require('../dashboard.json');
   
 router.get('/', (req, res) => {
-    res.render('index', { pageTitle: name + tag + ' - An advanced Discord Bot', authorwebsite: authorwebsite, github: github, user: req.session.user || null, name: name, tag: tag });
+  var fullUrl = req.protocol + '://' + req.get('host') + req.originalUrl;
+    res.render('index', { pageTitle: name + tag + ' - An advanced Discord Bot', fullUrl: fullUrl, verification: verification, authorwebsite: authorwebsite, github: github, server: server, mobile: mobile, pageName: pagename, description: description, image: image, twitter: twitter, launch: launch, user: req.session.user || null, name: name, tag: tag });
 });
 
+if (server) {
 router.get('/server', (req, res) => {
-    res.redirect('https://discord.gg/f4KtqNB');
+    res.redirect(server);
 });
+}
 module.exports = router;
 }

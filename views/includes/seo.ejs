@@ -1,0 +1,26 @@
+
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<link rel="canonical" href="<%- fullUrl %>">
+<% if (mobile == "true") { %>
+<meta name="copyright" content="(c) Copyright Igor Kowalczyk <%- launch %> to Present">
+<meta name="HandheldFriendly" content="true">
+<meta name="MobileOptimized" content="375">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#fff">
+<meta http-equiv="cleartype" content="on">
+<% } %>
+<meta name="theme-color" content="#fff">
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="website">
+<meta property="og:title" content="<%- pageTitle %>">
+<meta property="og:site_name" content="<%- pageName %>">
+<meta property="og:description" content="<%- description %>">
+<meta name="description" content="<%- description %>">
+<% if (image) { %><meta property="og:image" content="/lib/pics/thumbs/<%- image %>" /><% } %>
+<% if (image) { %><meta name="twitter:image" content="/lib/pics/thumbs/<%- image %>"><% } else { %><meta name="twitter:image" content="/lib/favicon/favicon.jpg"><% } %>
+<meta name="twitter:card" content="summary">
+<% if (twitter) { %><meta name="twitter:site" content="<%- twitter %>"><% } %>
+<% if (twitter) { %><meta name="twitter:creator" content="<%- twitter %>"><% } %>
+<meta name="twitter:url" content="<%- fullUrl %>">
+<meta name="twitter:title" content="<%- pageTitle %>">
+<meta name="twitter:description" content="<%- description %>">
