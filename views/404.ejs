@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title><%- pageTitle %></title>
+<link rel="stylesheet" type="text/css" href="/css/404.min.css">
+<%- include('includes/favicons.ejs') %>
+<%- include('includes/seo.ejs') %>
+<% if (process.env.UA) { %>
+<%- include('includes/analytics.ejs') %>
+<% } %>
+<% if (verification != null) { %>
+<meta name="google-site-verification" content="<%- verification %>">
+<% } %>
+</head>
+</head>
+<body ondragstart="return false" ondrag="return false">
+<script type="text/javascript">var preload = document.createElement('div'); preload.className = "preloader"; preload.innerHTML = '</div><div class="spinner"></div>'; document.body.appendChild(preload); window.addEventListener('load', function() { preload.className +=  ' fade'; setTimeout(function(){ preload.style.display = 'none'; },500); })</script>
+<noscript><div class="no-js">To view the page please enable javascript in your browser.</div></noscript>
+<main>
+<div class="message">
+<h1>404</h1>
+<h2>There's nothing here.</h2>
+<h3>The site may have been deleted or moved. <a href="/">Return to the home page</a><% if (email) { %> or <a href="mailto:<%- email %>">report an error<% } %>.</a></h3>
+<p><a class="button" href="/?ref=404">Home page</a></p>
+<% if (email) { %><p><a class="button" href="mailto:<%- email %>">Report Bug</a></p><% } %>
+</div>
+</main>
+<footer>
+<ul>
+<li><div class="theme-switch-container">
+<label class="theme-switch" for="checkbox">
+<input type="checkbox" id="checkbox"/>
+<div class="slider round"></div>
+</label>
+</div><div class="option-description">Light/Dark Mode</div></li>
+</ul>
+<p>(c) <noscript><%- launch %></noscript><span class="date"></span> IGOR KOWALCZYK</p><p>This site uses cookies.</p>
+</footer>
+<script src="/js/404.min.js"></script>
+</body>
+</html>

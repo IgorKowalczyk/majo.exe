@@ -14,6 +14,7 @@
     "description": "A advanced discord bot with many futures",
     "image": "thumb.jpg",
     "server": "https://discord.gg/f4KtqNB",
+    "email": "xxmajonezxx@gmail.com",
     "verification": "-wuCsk4qLolXEPSUTGX7YBxywcyNNf5HS2ClzgEWxNY",
     "scopes": ["guilds", "bot"],
     "redirectUri": "https%3A%2F%2Figorkowalczyk.github.io%2Fauthorized",

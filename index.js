@@ -93,61 +93,6 @@ client.on('message', message=> {
 });
 /* --- */
 
-
-
-/* STATUS */
-
-var date = new Date().toJSON().slice(0, 10).replace(/-/g, '/');
-const enddate = (new Date().getFullYear()) + "/06/13";
-const enddateEEP = (new Date().getFullYear()) + "/04/18";
-
-setInterval(async () => {
-    try {
-        const statuslist = [
-
-        ];
-
-        if (date == enddate) {
-            statuslist.push(
-                `🎉 ${client.guilds.size} servers 🎉`,
-                `🎉 ${client.users.size} members 🎉`,
-                `🎉 ${prefix} help 🎉`,
-                `🎉 Happy Birthday Discord! 🎉`
-            )
-        } else if (date == enddateEEP) {
-            statuslist.push(
-                `🔥 ${client.guilds.size} servers 🔥`,
-                `🔥 ${client.users.size} members 🔥`,
-                `🔥 ${prefix} help 🔥`,
-                `🔥 EEP 4 LIFE (04/18)! 🔥`
-            )
-        } else {
-            statuslist.push(
-                `${client.guilds.size} servers`,
-                `${client.users.size} members`,
-                `${prefix} help`
-            )
-        }
-
-        const random = Math.floor(Math.random() * statuslist.length);
-
-        await client.user.setPresence({
-            game: {
-                name: `${statuslist[random]}`,
-                type: 'WATCHING'
-
-            },
-            status: "online"
-        });
-
-    } catch (err) {
-        return console.log(err);
-    }
-}, 10000);
-/* --- */
-
-
-
 /* WELCOME AND BYE MESSAGES */
 client.on("guildMemberAdd", (member) => {
 	const guild = member.guild;
@@ -906,15 +851,69 @@ client.on('voiceStateUpdate', (voiceOld, voiceNew) => {
 
 
 
-/* LOGIN */
+/* LOGIN AND STATUS */
+
+/* Login */
+if (discord_token) {
 client.login(discord_token);
 
 client.on("ready", () => {
   console.log(`Connected! Logged in as ${client.user.tag}!`);
 });
+/* / */
+/* Status */
+var date = new Date().toJSON().slice(0, 10).replace(/-/g, '/');
+const enddate = (new Date().getFullYear()) + "/06/13";
+const enddateEEP = (new Date().getFullYear()) + "/04/18";
 
+setInterval(async () => {
+    try {
+        const statuslist = [
+
+        ];
+
+        if (date == enddate) {
+            statuslist.push(
+                `🎉 ${client.guilds.size} servers 🎉`,
+                `🎉 ${client.users.size} members 🎉`,
+                `🎉 ${prefix} help 🎉`,
+                `🎉 Happy Birthday Discord! 🎉`
+            )
+        } else if (date == enddateEEP) {
+            statuslist.push(
+                `🔥 ${client.guilds.size} servers 🔥`,
+                `🔥 ${client.users.size} members 🔥`,
+                `🔥 ${prefix} help 🔥`,
+                `🔥 EEP 4 LIFE (04/18)! 🔥`
+            )
+        } else {
+            statuslist.push(
+                `${client.guilds.size} servers`,
+                `${client.users.size} members`,
+                `${prefix} help`
+            )
+        }
+
+        const random = Math.floor(Math.random() * statuslist.length);
+
+        await client.user.setPresence({
+            game: {
+                name: `${statuslist[random]}`,
+                type: 'WATCHING'
+
+            },
+            status: "online"
+        });
+
+    } catch (err) {
+        return console.log(err);
+    }
+}, 10000);
+/* - */
+} else {
+console.error("Majo.exe Error: Bot token is not provided!! To give your bot life, you need to enter token value in the `.env` file - `TOKEN=Your_Token`. [Token is super-secret - do not share it with anyone!]")
+}
 /* --- */
-
 
 // ---------
 //    END (of index.js)
