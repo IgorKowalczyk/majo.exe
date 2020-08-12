@@ -177,7 +177,7 @@ a:hover {
 background-size: 100% 2px;
 }
 
-@media screen and (max-width: 590px) {
+@media screen and (max-width: 734px) {
 a:hover {
 background-size: 0;
 }
@@ -296,7 +296,7 @@ transform: rotate(45deg);
 top: 0;
 }
 
-@media (min-width: 590px) {
+@media (min-width: 734px) {
 .nav li {
 float: left;
 }
