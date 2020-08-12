@@ -271,7 +271,7 @@ display: none;
 }
 
 .nav .menu-btn:checked ~ .menu {
-max-height: 240px;
+max-height: 500px;
 }
 
 .nav .menu-btn:checked {
