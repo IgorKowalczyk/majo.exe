@@ -177,6 +177,12 @@ a:hover {
 background-size: 100% 2px;
 }
 
+@media screen and (max-width: 590px) {
+a:hover {
+background-size: 0;
+}
+}
+
 .nav {
 position: fixed;
 background-color: var(--white);
