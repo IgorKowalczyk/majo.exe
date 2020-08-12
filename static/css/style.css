@@ -10,6 +10,8 @@ src: url('/fonts/roboto-thin.otf');
 --preloader: #222;
 --spinner: #888;
 --spinner-border: #333;
+--00a3a3: #fff;
+--link: #fff;
 }
 
 .no-js {
@@ -195,6 +197,21 @@ padding: 20px 20px !important;
 font-size: 20px;
 padding: 10px 20px;
 text-decoration: none;
+}
+
+a {
+position: relative;
+color: var(--link) !important;
+text-decoration: none;
+background-image: linear-gradient(var(--00a3a3), var(--00a3a3));
+background-position: 50% 100%;
+background-repeat: no-repeat;
+background-size: 0 2px;
+transition: 500ms, background-size 0.3s;
+}
+  
+a:hover {
+background-size: 100% 2px;
 }
 
 .nav .logo a:hover {

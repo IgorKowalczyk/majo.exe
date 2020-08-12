@@ -13,6 +13,8 @@ src: url('{{ site.baseurl }}/lib/fonts/roboto-thin.otf');
 --preloader: #222;
 --spinner: #888;
 --spinner-border: #333;
+--00a3a3: #fff;
+--link: #fff;
 }
 
 .no-js {
@@ -160,6 +162,20 @@ font-weight: 300;
 color: #ffffff;
 }
 
+a {
+position: relative;
+color: var(--link) !important;
+text-decoration: none;
+background-image: linear-gradient(var(--00a3a3), var(--00a3a3));
+background-position: 50% 100%;
+background-repeat: no-repeat;
+background-size: 0 2px;
+transition: 500ms, background-size 0.3s;
+}
+
+a:hover {
+background-size: 100% 2px;
+}
 
 .nav {
 position: fixed;
