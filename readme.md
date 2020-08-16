@@ -2,10 +2,12 @@
 
 An advanced Discord bot, contains commands for moderation, fun, music, economics and NSFW.
 
+[![Discord](https://discord.com/api/guilds/666599184844980224/widget.png?style=banner2)](https://igorkowalczyk.github.io/majobot/server)
 
-<img src="https://top.gg/api/widget/681536055572430918.svg?usernamecolor=99aab5&topcolor=23272a&certifiedcolor=99aab5&middlecolor=2c2f33&datacolor=fff&labelcolor=99aab5"><br>
-<img src="https://top.gg/api/widget/owner/681536055572430918.svg?usernamecolor=99aab5&topcolor=23272a&certifiedcolor=99aab5&middlecolor=2c2f33&datacolor=fff&labelcolor=99aab5&noavatar=true"> <img src="https://top.gg/api/widget/status/681536055572430918.svg?usernamecolor=99aab5&topcolor=23272a&certifiedcolor=99aab5&middlecolor=2c2f33&datacolor=fff&labelcolor=99aab5&noavatar=true"> <img src="https://top.gg/api/widget/upvotes/681536055572430918.svg?usernamecolor=99aab5&topcolor=23272a&certifiedcolor=99aab5&middlecolor=2c2f33&datacolor=fff&labelcolor=99aab5&noavatar=true"> <img src="https://top.gg/api/widget/servers/681536055572430918.svg?usernamecolor=99aab5&topcolor=23272a&certifiedcolor=99aab5&middlecolor=2c2f33&datacolor=fff&labelcolor=99aab5&noavatar=true"> <img src="https://top.gg/api/widget/lib/681536055572430918.svg?usernamecolor=99aab5&topcolor=23272a&certifiedcolor=99aab5&middlecolor=2c2f33&datacolor=fff&labelcolor=99aab5&noavatar=true"> 
----
+[![Jekyll](https://github.com/igorkowalczyk/majobot/workflows/Jekyll%20site%20CI/badge.svg)](https://igorkowalczyk.github.io/majobot)
+[![Node.js Workflow](https://github.com/igorkowalczyk/majobot/workflows/Node.js%20Workflow/badge.svg)](https://igorkowalczyk.github.io/majobot)
+[![GitHub License](https://img.shields.io/github/license/igorkowalczyk/majobot?color=%2334D058&logo=%23010101)](https://igorkowalczyk.github.io/majobot)
+[![Version](https://img.shields.io/github/package-json/v/igorkowalczyk/majobot?color=%2334D058&logo=%2301010)](https://igorkowalczyk.github.io/majobot)
 
 # Invite
 
