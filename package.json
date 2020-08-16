@@ -5,7 +5,7 @@
   "author": "Igor Kowalczyk (Majonez.exe#3957)",
   "main": "node index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "node index.js",
     "start": "node index.js"
   },
   "dependencies": {
