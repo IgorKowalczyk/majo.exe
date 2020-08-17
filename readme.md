@@ -6,8 +6,8 @@ An advanced Discord bot, contains commands for moderation, fun, music, economics
 
 [![Jekyll](https://github.com/igorkowalczyk/majobot/workflows/Jekyll%20site%20CI/badge.svg)](https://igorkowalczyk.github.io/majobot)
 [![Node.js Workflow](https://github.com/igorkowalczyk/majobot/workflows/Node.js%20Workflow/badge.svg)](https://igorkowalczyk.github.io/majobot)
-[![GitHub License](https://img.shields.io/github/license/igorkowalczyk/majobot?color=%2334D058&logo=github)](https://igorkowalczyk.github.io/majobot)
-[![Version](https://img.shields.io/github/package-json/v/igorkowalczyk/majobot?color=%2334D058&logo=github)](https://github.com/igorkowalczyk/majobot/releases)
+[![GitHub License](https://img.shields.io/github/license/igorkowalczyk/majobot?color=%2334D058&logo=github&logoColor=959DA5&labelColor=24292E)](https://igorkowalczyk.github.io/majobot)
+[![Version](https://img.shields.io/github/package-json/v/igorkowalczyk/majobot?color=%2334D058&logo=github&logoColor=959DA5&labelColor=24292E)](https://github.com/igorkowalczyk/majobot/releases)
 
 # Invite
 
