@@ -72,4 +72,4 @@ When submitting a pull request:
 - Open a [pull request](https://github.com/igorkowalczyk/majobot/pulls) on [GitHub](https://github.com) and describe the feature or fix.
 
 # License
-This project is licensed under the Mozilla Public License. See the [LICENSE](https://github.com/igorkowalczyk/majobot/blob/master/license.md) file for details
+This project is licensed under the MIT. See the [LICENSE](https://github.com/igorkowalczyk/majobot/blob/master/license.md) file for details
