@@ -49,3 +49,27 @@ UA=YOUR-GOOGLE-TRACKING-ID
 # note: .env is a shell file so there can't be spaces around =
 
 ```
+
+# Development
+
+### Jekyll Version
+To set up your environment to develop this page, run `bundle install`.
+
+To test site, run `bundle exec jekyll serve` and open your browser at http://localhost:4000. This starts a Jekyll server using your config and the contents. As you make modifications, your site will regenerate and you should see the changes in the browser after a refresh.
+
+### Node.js Version
+
+To test site in `.env` file set the `DASHBOARD=true/false` value. ([See example `.env` file](#example-env-file))
+
+# Issues
+If you have any issues with the page please create [new issue here](https://github.com/igorkowalczyk/majobot/issues)
+
+# Pull Requests
+When submitting a pull request:
+
+- Clone the repo.
+- Create a branch off of master and give it a meaningful name (e.g. my-awesome-new-feature).
+- Open a [pull request](https://github.com/igorkowalczyk/majobot/pulls) on [GitHub](https://github.com) and describe the feature or fix.
+
+# License
+This project is licensed under the Mozilla Public License. See the [LICENSE](https://github.com/igorkowalczyk/majobot/blob/master/license.md) file for details
