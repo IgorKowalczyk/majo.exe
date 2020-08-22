@@ -48,8 +48,6 @@
     "cheerio": "^1.0.0-rc.3",
     "event-handler": "^1.0.1",
     "beautify": "^0.0.8",
-    "ffmpeg-binaries": "^4.0.0",
-    "opusscript": "^0.0.7",
     "youtube-search": "^1.1.4",
     "ytdl-core": "^1.0.3",
     "i": "^0.3.6"
