@@ -17,6 +17,11 @@ Go to [this link](https://igorkowalczyk.github.io/majobot/authorize) and authori
 
 We host this bot. Majo.exe will be online 24/7.
 
+## Deploy
+Deploy the app to [Heroku](https://heroku.com)
+
+[![Deploy to heroku](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy?template=https://github.com/igorkowalczyk/majobot/tree/master)
+
 # Self-Hosting
 
 1. Clone [this repository](https://github.com/igorkowalczyk/majobot),
