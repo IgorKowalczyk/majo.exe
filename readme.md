@@ -28,7 +28,7 @@ Deploy the app to [Heroku](https://heroku.com)
 2. Run `npm install`,
 3. Grab a token and client secret on [Discord's developer portal](https://discord.com/developers/applications),
 4. Fill `config.json` and `dashboard.json` with your variables (`dashboard.json` is the config file for Web Dashboard, ignore this file if you not use Majo Dashboard),
-5. Create a `.env` file and add a `BOT_TOKEN` environmental variable whose value is the token above. 
+5. Create a `.env` file and add a `TOKEN` environmental variable whose value is the token above. (Do not remember! The `TOKEN` value is Super-Secret)
 6. In `.env` Set `PREFIX` - this is your bot prefix, a `SECRET` - this is your client secret variabble (Used for web-dashboard), a Google Trakcing ID (For Website analytics) - `UA=TRACKING-ID` if you don't have to use analytics just delete the settings value and add a `DASHBOARD=[true/false]` value - if `true` the bot will be hosted with web dasboard, if `false` the bot will be hosted without web dashboard (The `.env` file was private).
 7. Run `node index.js`
 > NOTE: See the example `.env` file below!
@@ -54,17 +54,24 @@ UA=YOUR-GOOGLE-TRACKING-ID
 # note: .env is a shell file so there can't be spaces around =
 
 ```
+| `.env` | Description | Required |
+|---|---|---|
+| TOKEN | The bot token, required to run (Do not remember! The `TOKEN` value is Super-Secret) | :heavy_check_mark: |
+| PREFIX | The default bot prefix (eg. `!majo`) | :heavy_check_mark: |
+| DASHBOARD | The Web-Dashboard config value. (eg. `true/false`) | :x: |
+| SECRET | The bot client secret (Do not remember! The `SECRET` value is Super-Secret), required to run Web Dashboard | :x: |
+| UA | Google analytics tracking ID, used in Web-Dashboard | :x: |
 
 # Development
+
+### Node.js Version
+
+To test site in `.env` file set the `DASHBOARD=true/false` value. ([See example `.env` file](#example-env-file))
 
 ### Jekyll Version
 To set up your environment to develop this page, run `bundle install`.
 
 To test site, run `bundle exec jekyll serve` and open your browser at http://localhost:4000. This starts a Jekyll server using your config and the contents. As you make modifications, your site will regenerate and you should see the changes in the browser after a refresh.
-
-### Node.js Version
-
-To test site in `.env` file set the `DASHBOARD=true/false` value. ([See example `.env` file](#example-env-file))
 
 # Issues
 If you have any issues with the page please create [new issue here](https://github.com/igorkowalczyk/majobot/issues)
