@@ -21,7 +21,7 @@ const app = express();
 const dashboard = process.env.DASHBOARD;
 
 if (dashboard === 'true') {
-let port = require('./config.json').port || 8000;
+let port = process.env.PORT || 8000;
 app.set('port', port);
 
 const session = require('express-session');
