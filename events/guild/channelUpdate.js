@@ -20,7 +20,7 @@ try {
     .setTitle("**CHANNEL EDIT**")
     .setThumbnail(userAvatar)
     .setColor("RANDOM")
-   .setDescription(`**\n**:wrench: Successfully Edited **${channelType}** Channel Name\n**Old Name:** ${oldChannel.name}\n**New Name:** ${newChannel.name}\n**Channel ID:** ${oldChannel.id}\n**By:** <@${userID}> (ID: ${userID})`)
+    .setDescription(`**\n**:wrench: Successfully Edited **${channelType}** Channel Name\n\n**Old Name:** \`\`${oldChannel.name}\`\`\n**New Name:** \`\`${newChannel.name}\`\ `\n**Channel ID:** ${oldChannel.id}\n**By:** <@${userID}> (ID: ${userID})`)
     .setTimestamp()
     .setFooter(oldChannel.guild.name, oldChannel.guild.iconURL());
    logChannel.send(newName);
