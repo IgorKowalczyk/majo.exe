@@ -20,6 +20,7 @@ module.exports = {
 }
 
 function getAll(client, message) {
+ const commands = readdirSync('./commands/');
  const embed = new Discord.MessageEmbed()
   .setAuthor("Help", message.guild.iconURL())
   .setColor("RANDOM")   
@@ -54,7 +55,7 @@ function getAll(client, message) {
    embed.addField(`${icon} ${id} (${category.size})`, category.map(cmd => `${cmd.name}`).join(' '));
   }
   embed.addField(":grey_question: Command Information", `${prefix} help <command>`);
-  embed.setFooter("Bot created by " + `${cnf.owner}`)
+  embed.setFooter(`${client.commands.size}` + " • Bot created by " + `${cnf.owner}`)
   return message.channel.send(embed);
 }
 
