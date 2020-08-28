@@ -4,7 +4,7 @@ module.exports = async (client, member) => {
 try {
  if (!role.guild.member(client.user).hasPermission("EMBED_LINKS")) return;
  if (!role.guild.member(client.user).hasPermission("VIEW_AUDIT_LOG")) return;
- var logChannel = role.guild.channels.cache.find(channel => channel.name.includes('log'));
+ var logChannel = member.guild.channels.cache.find(channel => channel.name.includes('log'));
  if (!logChannel) return;
  role.guild.fetchAuditLogs().then(logs => {
   var userID = logs.entries.first().executor.id;
