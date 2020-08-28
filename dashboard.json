@@ -1,0 +1,22 @@
+{
+    "port": 8000,
+    "website": "https://igorkowalczyk.github.io/majobot",
+    "authorwebsite": "https://igorkowalczyk.github.io",
+    "github": "https://github.com/igorkowalczyk",
+    "mobile": "true",
+    "name": "Majo.exe",
+    "tag": "#4560",
+    "clientId": "681536055572430918",
+    "twitter": "@majonezexe",
+    "mobile": "false",
+    "launch": "2020",
+    "pagename": "Majo Bot",
+    "description": "A advanced discord bot with many futures",
+    "image": "thumb.jpg",
+    "server": "https://discord.gg/f4KtqNB",
+    "email": "xxmajonezxx@gmail.com",
+    "verification": "-wuCsk4qLolXEPSUTGX7YBxywcyNNf5HS2ClzgEWxNY",
+    "scopes": ["guilds", "bot"],
+    "redirectUri": "https%3A%2F%2Figorkowalczyk.github.io%2Fauthorized",
+    "[COMMENT] ^^^ This is your Redirect Uri ^^^": "For Web-Dahsboard set `https%3A%2F%2F[YOUR-DOMAIN]%2Fauthorize%2Fcallback`"
+}
