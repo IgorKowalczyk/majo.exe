@@ -1,9 +1,7 @@
 const Discord = require('discord.js');
 
-module.exports = async (client, oldChannel, newChannel, guild) => {
+module.exports = async (client, oldChannel, newChannel) => {
 try {
- if (!guild.member(client.user).hasPermission("EMBED_LINKS")) return;
- if (!guild.member(client.user).hasPermission("VIEW_AUDIT_LOG")) return;
  if (!oldChannel.guild) return;
  var logChannel = oldChannel.guild.channels.cache.find(c => c.name === "log");
  if (!logChannel) return;
