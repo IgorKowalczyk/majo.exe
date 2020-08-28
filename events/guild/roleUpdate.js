@@ -44,7 +44,7 @@ try {
    .setTitle("**UPDATE ROLE PERMISSIONS**")
    .setThumbnail(userAvatar)
    .setColor("RANDOM")
-   .setDescription(`**\n**:first_place: Successfully \`\`CHANGED\`\` **${oldRole.name}** Permissions!\n\n**Old Permissions:** \`\`oldRole.permissions.toArray()\`\`\n**New Permissions:** \`\`newRole.permissions.toArray()\`\`\n**By:** <@${userID}> (ID: ${userID})`)
+   .setDescription(`**\n**:first_place: Successfully \`\`CHANGED\`\` **${oldRole.name}** Permissions!\n\n**Old Permissions:** \`\`${oldRole.permissions.toArray()}\`\`\n**New Permissions:** \`\`${newRole.permissions.toArray()}\`\`\n**By:** <@${userID}> (ID: ${userID})`)
    .setTimestamp()
    .setFooter(oldRole.guild.name, oldRole.guild.iconURL());
   logChannel.send(roleUpdate);
