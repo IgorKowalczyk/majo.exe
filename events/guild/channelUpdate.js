@@ -1,6 +1,6 @@
 const Discord = require('discord.js');
 
-module.exports = async (client, oldChannel, newChannel) => {
+module.exports = async (client, oldChannel, newChannel, guild) => {
 try {
  if (!guild.member(client.user).hasPermission("EMBED_LINKS")) return;
  if (!guild.member(client.user).hasPermission("VIEW_AUDIT_LOG")) return;
