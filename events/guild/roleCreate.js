@@ -24,6 +24,6 @@ try {
   .setTitle("Error!")
   .setDescription("**Error Code:** *" + err + "*")
   .setTimestamp();
- return logChannel.send(embed);
+ console.log(err);
 }
 }
