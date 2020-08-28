@@ -1,0 +1,42 @@
+{
+  "name": "Majo.exe",
+  "description": "An advanced Discord bot",
+  "logo": "https://igorkowalczyk.github.io/lib/favicon/favicon.jpg",
+  "repository":"https://github.com/igorkowalczyk/majobot.git",
+  "buildpacks": [
+    {
+      "url": "heroku/nodejs"
+    }
+  ],
+  "env": {
+    "TOKEN": {
+      "description": "The bot token, required to run (Do not remember! The TOKEN value is Super-Secret)",
+      "required": true
+    },
+    "PREFIX": {
+      "description": "The default bot prefix (eg. !majo)",
+      "required": true
+    },
+    "DASHBOARD": {
+      "description": "The Web-Dashboard config value. (eg. true/false)",
+      "required": false
+    },
+    "SECRET": {
+      "description": "The bot client secret (Do not remember! The SECRET value is Super-Secret), required to run Web Dashboard",
+      "required": false
+    },
+    "UA": {
+      "description": "Google analytics tracking ID, used in Web-Dashboard",
+      "required": false
+    }
+	},
+  "keywords": [
+    "discord",
+    "discord-bot",
+    "javascript",
+    "js",
+    "node-js",
+    "web-dashboard",
+    "bot"
+  ]
+}
