@@ -2,8 +2,6 @@ const Discord = require('discord.js');
 
 module.exports = async (voiceOld, voiceNew) => {
 try {
- if (!voiceOld.guild.member(client.user).hasPermission("EMBED_LINKS"))return;
- if (!voiceOld.guild.member(client.user).hasPermission("VIEW_AUDIT_LOG"))return;
  var logChannel = voiceOld.guild.channels.cache.find(c => c.name === "log");
  if (!logChannel) return;
  voiceOld.guild.fetchAuditLogs().then(logs => {
