@@ -50,7 +50,7 @@ try {
     .setFooter(userTag, userAvatar);
    logChannel.send(serverUndeafv);
   }
- )};
+ });
 
  if (voiceOld.voiceChannelID !== voiceNew.voiceChannelID && !voiceOld.voiceChannel) {
   let voiceJoin = new Discord.MessageEmbed()
