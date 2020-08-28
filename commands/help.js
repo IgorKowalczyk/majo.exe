@@ -1,5 +1,6 @@
 const Discord = require('discord.js');
 const cnf = require('../config.json');
+const { readdirSync } = require('fs');
 const prefix = process.env.PREFIX;
 
 module.exports = {
