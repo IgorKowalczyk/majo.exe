@@ -2,7 +2,7 @@ const Discord = require('discord.js');
 
 module.exports = async (voiceOld, voiceNew) => {
 try {
- var logChannel = voiceOld.guild.channels.cache.find(c => c.name === "log");
+ const channel = voiceOld.guild.channels.cache.find(channel => channel.name.includes('log'));
  if (!logChannel) return;
  voiceOld.guild.fetchAuditLogs().then(logs => {
   var userID = logs.entries.first().executor.id;
