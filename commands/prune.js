@@ -50,6 +50,7 @@ module.exports = {
     color: 16734039,
     description: "Something went wrong... :cry:"
   }})
+	  console.log(err)
   }
  }
 }
