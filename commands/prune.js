@@ -10,28 +10,28 @@ module.exports = {
  run: async (client, message, args) => {
   try {
    if (!message.member.hasPermission("MANAGE_MESSAGES") || !message.member.hasPermission("ADMINISTRATOR")) {
-    await message.delete()
+    await message.delete({timeout: 5000})
     return message.channel.send({embed: {
      color: 16734039,
      description: "You don't have premission to prune messages!"
     }}).then(m => m.delete({timeout: 5000}))
    }
    if (isNaN(args[0])) {
-    await message.delete()
+    await message.delete({timeout: 5000})
     return message.channel.send({embed: {
      color: 16734039,
      description: "Please input a vaild number!"
     }}).then(m => m.delete({timeout: 5000}))
    }
    if (args[0] > 100) {
-    await message.delete()
+    await message.delete({timeout: 5000})
     return message.channel.send({embed: {
      color: 16734039,
      description: "Insert the number less than 100!"
     }}).then(m => m.delete({timeout: 5000}))
    }
    if (args[0] < 2) {
-    await message.delete()
+    await message.delete({timeout: 5000})
     return message.channel.send({embed: {
      color: 16734039,
      description: "Insert the number more than 1!"
