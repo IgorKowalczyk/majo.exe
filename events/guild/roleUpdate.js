@@ -33,8 +33,6 @@ try {
 
         }
     }
-
-});
 } catch (err) {
  let embed = new Discord.MessageEmbed()
   .setColor("#FF0000")
