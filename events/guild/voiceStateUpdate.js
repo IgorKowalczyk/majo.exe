@@ -2,7 +2,7 @@ const Discord = require('discord.js');
 
 module.exports = async (oldState, newState) => {
 try {
- var logChannel = oldState.guild.channels.cache.find(c => c.name === 'log');  
+ var logChannel = oldState.channels.cache.find(c => c.name === 'log');  
  if (!logChannel) return;
  oldState.guild.fetchAuditLogs().then(logs => {
   var userID = logs.entries.first().executor.id;
