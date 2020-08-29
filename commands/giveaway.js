@@ -47,7 +47,7 @@ module.exports = {
   message.channel.send(success).then(m => m.delete({timeout: 10000}))
   let embed = new Discord.MessageEmbed()
    .setTitle(":tada: New giveaway! :tada:")
-   .setDescription("The user " + `${message.author}` + " is hosting a giveaway for the prize of **" + `${prize}` + "**")
+   .setDescription("The user " + `${message.author}` + " is hosting a giveaway for the prize of **" + `${prize}` + "**\n*React to this message with :tada: emoji to enter the giveaway!*")
    .setTimestamp(Date.now() + ms(args[0]))
    .setFooter("The giveaway will end in " + `${args[0]}` + "!")
    .setColor("RANDOM");
