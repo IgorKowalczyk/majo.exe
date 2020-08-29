@@ -10,28 +10,32 @@ module.exports = {
  run: async (client, message, args) => {
   try {
    if (!message.member.hasPermission("MANAGE_MESSAGES") || !message.member.hasPermission("ADMINISTRATOR")) {
-    return message.channel.send({embed: {
+    const message = message.channel.send({embed: {
      color: 16734039,
      description: "You don't have premission to prune messages!"
-    }}).then(msg => msg.delete(5000));
+    }})
+    return message.delete(5000)
    }
    if (isNaN(args[0])) {
-    return message.channel.send({embed: {
+    const message = message.channel.send({embed: {
      color: 16734039,
      description: "Please input a vaild number!"
-    }}).then(msg => msg.delete(5000));
+    }})
+    return message.delete(5000)
    }
    if (args[0] > 100) {
-    return message.channel.send({embed: {
+    const message = message.channel.send({embed: {
      color: 16734039,
      description: "Insert the number less than 100!"
-    }}).then(msg => msg.delete(5000));
+    }})
+    return message.delete(5000)
    }
    if (args[0] < 2) {
-    return message.channel.send({embed: {
+    const message = message.channel.send({embed: {
      color: 16734039,
      description: "Insert the number more than 1!"
-    }}).then(msg => msg.delete(5000));
+    }})
+    return message.delete(5000)
    }
    await message.delete()
    await message.channel.bulkDelete(args[0])
