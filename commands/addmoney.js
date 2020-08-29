@@ -24,7 +24,7 @@ module.exports = {
    let bal = await db.fetch(`money_${message.guild.id}_${user.id}`)
    let moneyEmbed = new Discord.MessageEmbed()
     .setColor("RANDOM")
-    .setDescription(`:white_check_mark: Added ${args[1]} coins\n\nNew Balance: ${bal}`);
+    .setDescription(`:white_check_mark: Added \`${args[1]}\` coins\n\nNew Balance: \`${bal}\``);
     message.channel.send(moneyEmbed)
   } else {
    message.channel.send({embed: {
