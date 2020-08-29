@@ -46,7 +46,7 @@ module.exports = {
    .then(messages => {
     let error = new Discord.MessageEmbed()
      .setColor("RANDOM")
-     .setDescription("Deleted ${messages.size}/${args[0]} messages.")
+     .setDescription("Deleted " + `${messages.size}/${args[0]}` + " messages.")
      .setFooter("This message will be deleted after 3 seconds")
     return message.channel.send(error).then(m => m.delete({timeout: 3000}))
    })
