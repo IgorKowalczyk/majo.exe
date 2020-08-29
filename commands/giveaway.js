@@ -47,9 +47,9 @@ module.exports = {
   message.channel.send(success).then(m => m.delete({timeout: 10000}))
   let embed = new Discord.MessageEmbed()
    .setTitle(":tada: New giveaway! :tada:")
-   .setDescription("The user " + `message.author` + " is hosting a giveaway for the prize of **" + `prize` + "**")
+   .setDescription("The user " + `${message.author}` + " is hosting a giveaway for the prize of **" + `${prize}` + "**")
    .setTimestamp(Date.now() + ms(args[0]))
-   .setFooter("The giveaway will end in **" + `args[0]` + "**!")
+   .setFooter("The giveaway will end in **" + `${args[0]}` + "**!")
    .setColor("RANDOM");
   let m = await channel.send(embed);
   m.react("🎉");
@@ -64,7 +64,7 @@ module.exports = {
    let winner = m.reactions.cache.get("🎉").users.cache.filter((u) => !u.bot).random();
     channel.send({embed: {
      color: 16734039,
-     description: ":tada: The winner of the giveaway for **" + `prize` + "** is " + `winner` + "! :tada:"
+     description: ":tada: The winner of the giveaway for **" + `${prize}` + "** is " + `${winner}` + "! :tada:"
    }})
   }, ms(args[0]));
  }
