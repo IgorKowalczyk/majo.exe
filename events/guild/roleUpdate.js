@@ -9,11 +9,9 @@ try {
    .setColor("RANDOM")
    .setFooter(`ID: ${newRole.id}`)
    .setTimestamp()
-  const oldPerms = oldRole.serialize();
-  const newPerms = newRole.serialize();
   const permUpdated = [];
-  for (const [key, element] of Object.entries(oldPerms)) {
-   if (newPerms[key] !== element) permUpdated.push(key);
+  for (const [key, element] of Object.entries(oldRole)) {
+   if (newRole[key] !== element) permUpdated.push(key);
   }
   if (oldRole.permissions > newRole.permissions) {
    embed.setDescription(`**${newRole.toString()} has lost the ${permUpdated.join(", ")} permission**`)
