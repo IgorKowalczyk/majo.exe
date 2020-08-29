@@ -42,7 +42,7 @@ module.exports = {
   }
   let success = new Discord.MessageEmbed()
    .setColor("RANDOM")
-   .setDescription: ("Giveaway created in " + `channel` + "!")
+   .setDescription("Giveaway created in " + `channel` + "!")
    .setFooter("This message will be deleted after 10 seconds")
   message.channel.send(success).then(m => m.delete({timeout: 10000}))
   let embed = new Discord.MessageEmbed()
