@@ -8,8 +8,9 @@ module.exports = {
  category: 'Utility',
  usage: "giveaway <time> <channel> <prize>",
  run: async (client, message, args) => {
- if (!args[0]) {
-  return message.channel.send(`You did not specify your time!`);
+  if (!args[0]) {
+   return message.channel.send(`You did not specify your time!`);
+  }
   if (!args[0].endsWith("d") && !args[0].endsWith("h") && !args[0].endsWith("m")) {
    return message.channel.send(`You did not use the correct formatting for the time!`);
   }
