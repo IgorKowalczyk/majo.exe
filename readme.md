@@ -1,3 +1,5 @@
+> #### *This repository is only used to update [@igorkowalczyk/majobot](https://github.com/igorkowalczyk/majobot) to `Discord.js v12.0.3`. The code here may contain errors and bugs, do not use it on production*
+
 # Majo.exe
 
 An advanced Discord bot, contains commands for moderation, fun, music, economics and NSFW.
