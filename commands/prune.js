@@ -40,7 +40,7 @@ module.exports = {
       color: 16734039,
       description: `Deleted ${messages.size}/${args[0]} messages.`
 	 }})
-	)}
+	})
   } catch(err) {
    message.channel.send({embed: {
     color: 16734039,
