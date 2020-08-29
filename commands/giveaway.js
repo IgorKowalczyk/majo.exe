@@ -9,21 +9,36 @@ module.exports = {
  usage: "giveaway <time> <channel> <prize>",
  run: async (client, message, args) => {
   if (!args[0]) {
-   return message.channel.send(`You did not specify your time!`);
+   return message.channel.send({embed: {
+    color: 16734039,
+    description: "You did not specify your time!\nCorrect formatting: \`number<d/h/m>\`. Legend: \`d\` - Day, \`h\` - Hour/s, \`m\` - Minute/s"
+   }})
   }
   if (!args[0].endsWith("d") && !args[0].endsWith("h") && !args[0].endsWith("m")) {
-   return message.channel.send(`You did not use the correct formatting for the time!`);
+   return message.channel.send({embed: {
+    color: 16734039,
+    description: "You did not use the correct formatting for the time!\nCorrect formatting: \`number<d/h/m>\`. Legend: \`d\` - Day, \`h\` - Hour/s, \`m\` - Minute/s"
+   }})
   }
   if (isNaN(args[0][0])) {
-   return message.channel.send(`That is not a number!`);
+   return message.channel.send({embed: {
+    color: 16734039,
+    description: "You did not specify your time!\nCorrect formatting: \`number<d/h/m>\`. Legend: \`d\` - Day, \`h\` - Hour/s, \`m\` - Minute/s"
+   }})
   }
   let channel = message.mentions.channels.first();
   if (!channel) {
-   return message.channel.send(`I could not find that channel in the guild!`);
+   return message.channel.send({embed: {
+    color: 16734039,
+    description: "I could not find that channel in the guild!"
+   }})
   }
   let prize = args.slice(2).join(" ");
   if (!prize) {
-   return message.channel.send(`No prize specified!`);
+   return message.channel.send({embed: {
+    color: 16734039,
+    description: "No prize specified!"
+   }})
   }
   message.channel.send(`*Giveaway created in ${channel}*`);
   let embed = new MessageEmbed()
