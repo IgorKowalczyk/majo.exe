@@ -29,7 +29,7 @@ try {
    logChannel.send(updateNickname);
   }
   if (oldMember.roles.cache.size < newMember.roles.cache.size) {
-   let role = newMember.roles.filter(r => !oldMember.roles.has(r.id)).first();
+   let role = newMember.roles.cache.filter(r => !oldMember.roles.cache.has(r.id)).first();
    let roleAdded = new Discord.MessageEmbed()
     .setTitle("**ADDED ROLE TO MEMBER**")
     .setThumbnail(oldMember.guild.iconURL())
@@ -40,7 +40,7 @@ try {
    logChannel.send(roleAdded);
    }
    if (oldMember.roles.cache.size > newMember.roles.cache.size) {
-    let role = oldMember.roles.filter(r => !newMember.roles.has(r.id)).first();
+    let role = oldMember.roles.cache.filter(r => !newMember.roles.cache.has(r.id)).first();
     let roleRemoved = new Discord.MessageEmbed()
      .setTitle("**REMOVED ROLE FROM MEMBER**")
      .setThumbnail(oldMember.guild.iconURL())
