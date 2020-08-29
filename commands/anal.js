@@ -1,10 +1,6 @@
 const superagent = require("snekfetch");
 const Discord = require('discord.js')
 
-const Discord = module.require("discord.js");
-const https = require('https');
-const prefix = process.env.PREFIX;
-
 module.exports = {
  name: "anal",
  aliases: [],
