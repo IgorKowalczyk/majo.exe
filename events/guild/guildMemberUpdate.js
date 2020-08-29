@@ -28,7 +28,7 @@ try {
     .setFooter(oldMember.guild.name, oldMember.guild.iconURL());
    logChannel.send(updateNickname);
   }
-  if (oldMember.roles.size < newMember.roles.size) {
+  if (oldMember.roles.cache.size < newMember.roles.cache.size) {
    let role = newMember.roles.filter(r => !oldMember.roles.has(r.id)).first();
    let roleAdded = new Discord.MessageEmbed()
     .setTitle("**ADDED ROLE TO MEMBER**")
@@ -39,7 +39,7 @@ try {
     .setFooter(userTag, userAvatar);
    logChannel.send(roleAdded);
    }
-   if (oldMember.roles.size > newMember.roles.size) {
+   if (oldMember.roles.cache.size > newMember.roles.cache.size) {
     let role = oldMember.roles.filter(r => !newMember.roles.has(r.id)).first();
     let roleRemoved = new Discord.MessageEmbed()
      .setTitle("**REMOVED ROLE FROM MEMBER**")
@@ -56,7 +56,7 @@ try {
    .setTitle("**UPDATE GUILD OWNER**")
    .setThumbnail(oldMember.guild.iconURL())
    .setColor("RANDOM")
-   .setDescription(`**\n**:white_check_mark: Successfully \`\`TRANSFER\`\` The Owner Ship.\n\n**Old Owner:** <@${oldMember.user.id}> (ID: ${oldMember.user.id})\n**New Owner:** <@${newMember.user.id}> (ID: ${newMember.user.id})`)
+   .setDescription(`**\n**:white_check_mark: Successfully \`\`TRANSFER\`\` The OwnerShip.\n\n**Old Owner:** <@${oldMember.user.id}> (ID: ${oldMember.user.id})\n**New Owner:** <@${newMember.user.id}> (ID: ${newMember.user.id})`)
    .setTimestamp()
    .setFooter(oldMember.guild.name, oldMember.guild.iconURL());
   logChannel.send(newOwner);
