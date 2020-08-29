@@ -49,7 +49,7 @@ module.exports = {
    .setTitle(":tada: New giveaway! :tada:")
    .setDescription("The user " + `${message.author}` + " is hosting a giveaway for the prize of **" + `${prize}` + "**")
    .setTimestamp(Date.now() + ms(args[0]))
-   .setFooter("The giveaway will end in **" + `${args[0]}` + "**!")
+   .setFooter("The giveaway will end in " + `${args[0]}` + "!")
    .setColor("RANDOM");
   let m = await channel.send(embed);
   m.react("🎉");
@@ -58,7 +58,7 @@ module.exports = {
    return message.channel.send({embed: {
     color: 16734039,
     title: "Not enough people reacted for me to start draw a winner!",
-    description: "Reactions: " + `m.reactions.cache.get("🎉").count` + "!"
+    description: "Reactions: " + `${reactions.cache.get("🎉").count}` + "!"
    }})
    }
    let winner = m.reactions.cache.get("🎉").users.cache.filter((u) => !u.bot).random();
