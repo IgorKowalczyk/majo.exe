@@ -11,7 +11,7 @@ module.exports = {
   try {
    if (!message.member.hasPermission("MANAGE_MESSAGES") || !message.member.hasPermission("ADMINISTRATOR")) {
     let error = new Discord.MessageEmbed()
-     .setColor("16734039")
+     .setColor("FF5757")
      .setDescription("You don't have premission to prune messages!")
      .setFooter("This message will be deleted after 3 seconds")
     message.channel.send(error).then(m => m.delete({timeout: 3000}))
@@ -19,7 +19,7 @@ module.exports = {
    }
    if (isNaN(args[0])) {
     let error = new Discord.MessageEmbed()
-     .setColor("16734039")
+     .setColor("FF5757")
      .setDescription("Please input a vaild number!")
      .setFooter("This message will be deleted after 3 seconds")
     message.channel.send(error).then(m => m.delete({timeout: 3000}))
@@ -27,7 +27,7 @@ module.exports = {
    }
    if (args[0] > 100) {
     let error = new Discord.MessageEmbed()
-     .setColor("16734039")
+     .setColor("FF5757")
      .setDescription("Insert the number less than 100!")
      .setFooter("This message will be deleted after 3 seconds")
     message.channel.send(error).then(m => m.delete({timeout: 3000}))
@@ -35,7 +35,7 @@ module.exports = {
    }
    if (args[0] < 2) {
     let error = new Discord.MessageEmbed()
-     .setColor("16734039")
+     .setColor("FF5757")
      .setDescription("Insert the number more than 1!")
      .setFooter("This message will be deleted after 3 seconds")
     message.channel.send(error).then(m => m.delete({timeout: 3000}))
