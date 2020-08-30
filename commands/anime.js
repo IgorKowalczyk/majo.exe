@@ -13,7 +13,7 @@ module.exports = {
    .then((data) => {
     const malEmbed = new Discord.MessageEmbed()
      .setAuthor(`My Anime List search result for ${args}`.split(',').join(' '))
-     .setThumbnail(data.picture)
+     .setImage(data.picture)
      .setColor("RANDOM")
      .addField('English Title', data.englishTitle)
      .addField('Japanese Title', data.japaneseTitle)
