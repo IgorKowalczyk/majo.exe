@@ -26,11 +26,5 @@ module.exports = {
     .setImage(AvatarURL)
    message.channel.send(embed)
   }
-}
-
-module.exports.help = {
-    name: "avatar",
-    description: "Gets user's avatar from a mention",
-    usage: "avatar <mention>",
-    type: "Utility",
+ }
 }
