@@ -13,10 +13,10 @@ fetch("https://nekos.life/api/v2/img/baka")
  .then((body) => {
   const embed = new Discord.MessageEmbed()
    .setTitle("BAKA!!!")
-   .setImage(res.body.url)
+   .setImage(body.url)
    .setColor("RANDOM")
    .setFooter("idiot!")
-   .setURL(res.body.url);
+   .setURL(body.url);
   message.channel.send(embed);
   }).catch((err) => {
    message.channel.send({embed: {
