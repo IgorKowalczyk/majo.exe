@@ -8,14 +8,15 @@ module.exports = {
  category: "Fun",
  usage: "baka",
  run: async (client, message, args) => {
-  fetch('https://nekos.life/api/v2/img/baka')
-   .then(err, response) => {
-   const embed = new Discord.MessageEmbed()
+fetch("https://nekos.life/api/v2/img/baka")
+ .then((res) => res.text())
+ .then((body) => {
+  const embed = new Discord.MessageEmbed()
    .setTitle("BAKA!!!")
-   .setImage(response.body.url)
+   .setImage(body.url)
    .setColor("RANDOM")
    .setFooter("idiot!")
-   .setURL(response.body.url);
+   .setURL(body.url);
   message.channel.send(embed);
   }).catch((err) => message.channel.send({embed: {
    color: 16734039,
