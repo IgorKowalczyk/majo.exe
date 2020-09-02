@@ -1,5 +1,5 @@
 const Discord = require("discord.js");
-const superagent = require("snekfetch");
+const fetch = require("node-fetch");
 
 module.exports = {
  name: "baka",
@@ -8,8 +8,8 @@ module.exports = {
  category: "Fun",
  usage: "baka",
  run: async (client, message, args) => {
-  superagent.get('https://nekos.life/api/v2/img/baka')
-  .end((err, response) => {
+  fetch('https://nekos.life/api/v2/img/baka')
+   .then(err, response) => {
    const embed = new Discord.MessageEmbed()
    .setTitle("BAKA!!!")
    .setImage(response.body.url)
