@@ -11,11 +11,11 @@ module.exports = {
    let embed = new Discord.MessageEmbed()
     .setColor("RANDOM")
     .setAuthor(message.author.username + "'s Avatar", message.author.displayAvatarURL())
-    .setImage(message.author.displayAvatarURL())  
+    .setImage(message.author.displayAvatarURL({ dynamic: true, format: 'png', size: 2048 }))  
    message.channel.send(embed)
   }
   const avatarList = message.mentions.users.map(user => {
-   return `${user.username},${user.displayAvatarURL()}`;
+   return `${user.username},${user.displayAvatarURL({ dynamic: true, format: 'png', size: 2048 })}`;
   });
   for (var i = 0; i < avatarList.length; i++) {
    let Username = avatarList[i].split(',')[0];
