@@ -22,7 +22,8 @@ fetch("https://nekos.life/api/v2/img/baka")
    message.channel.send({embed: {
     color: 16734039,
     description: "Something went wrong... :cry:"
+   }})
    console.log(err);
-  }}}));
+  });
  }
 }
