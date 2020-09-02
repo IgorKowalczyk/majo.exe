@@ -11,7 +11,7 @@ module.exports = {
  run: async (client, message, args) => {
   const duration = moment.duration(client.uptime).format(" D [days], H [hrs], m [mins], s [secs]");
   let embed = new Discord.MessageEmbed()
-   .setTitle("Uptime")
+   .setTitle(":hourglass_flowing_sand: Uptime")
    .setDescription(`${duration}`)
    .setColor("RANDOM")
   message.channel.send(embed);
