@@ -18,9 +18,11 @@ fetch("https://nekos.life/api/v2/img/baka")
    .setFooter("idiot!")
    .setURL(res.body.url);
   message.channel.send(embed);
-  }).catch((err) => message.channel.send({embed: {
-   color: 16734039,
-   description: "Something went wrong... :cry:"
-  }}));
+  }).catch((err) => {
+   message.channel.send({embed: {
+    color: 16734039,
+    description: "Something went wrong... :cry:"
+   console.log(err);
+  }}}));
  }
 }
