@@ -24,6 +24,10 @@ module.exports = {
      description: "Something went wrong... :cry:"
     }})
    }
+  let embed = new Discord.MessageEmbed()
+   .setColor("RANDOM")
+   .setDescription(":tada: Your ascii code is generated! You can see it below")
+  message.channel.send(embed)
   message.channel.send(`${data}`, {code: 'AsciiArt'});
   });
  }
