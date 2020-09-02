@@ -10,7 +10,7 @@ module.exports = {
  usage: "uptime",
  run: async (client, message, args) => {
   const duration = moment.duration(client.uptime).format(" D [days], H [hrs], m [mins], s [secs]");
-  let embed = new Discord.MessgeEmbed()
+  let embed = new Discord.MessageEmbed()
    .setTitle("Uptime")
    .setDescription(`${duration}`)
    .setColor("RANDOM")
