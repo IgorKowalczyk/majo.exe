@@ -8,23 +8,23 @@ module.exports = {
  category: "Fun",
  usage: "baka",
  run: async (client, message, args) => {
- fetch("https://nekos.life/api/v2/img/baka")
-  .then(res => res.text())
-  .then((res, body) => {
-  console.log(res.body.url);
+ try {
+ const response = fetch("https://nekos.life/api/v2/img/baka")
+ const body = response.text();
+  console.log(body.url);
    const embed = new Discord.MessageEmbed()
     .setTitle("BAKA!!!")
-    .setImage(res.body.url)
+    .setImage(body.url)
     .setColor("RANDOM")
-    .setFooter("idiot!" + res.body.url)
-    .setURL(res.body.url);
+    .setFooter("idiot!" + body.url)
+    .setURL(body.url);
    message.channel.send(embed);
-  }).catch((err) => {
+ } catch(err) => {
    message.channel.send({embed: {
     color: 16734039,
     description: "Something went wrong... :cry:"
    }})
    console.log(err);
-  })
+  }
  }
 }
