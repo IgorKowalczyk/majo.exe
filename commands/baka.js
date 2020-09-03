@@ -10,7 +10,7 @@ module.exports = {
  run: async (client, message, args) => {
  fetch("https://nekos.life/api/v2/img/baka")
   .then(res => res.text())
-  .then(body => {
+  .then(body, res => {
   console.log(res.body.url);
    const embed = new Discord.MessageEmbed()
     .setTitle("BAKA!!!")
