@@ -5,7 +5,7 @@ module.exports = {
  name: "anal",
  aliases: [],
  description: "Display a random anal image/gif",
- category: 'NSFW',
+ category: "NSFW",
  usage: "anal",
  run: async (client, message) => {
   if (!message.channel.nsfw) {
