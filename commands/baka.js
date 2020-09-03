@@ -8,6 +8,7 @@ module.exports = {
  category: "Fun",
  usage: "baka",
  run: async (client, message, args) => {
+ (async () => {
  try {
  const response = fetch("https://nekos.life/api/v2/img/baka")
  const body = response.text();
@@ -26,5 +27,6 @@ module.exports = {
    }})
    console.log(err);
   }
+ })();
  }
 }
