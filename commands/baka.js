@@ -9,15 +9,15 @@ module.exports = {
  usage: "baka",
  run: async (client, message, args) => {
  fetch("https://nekos.life/api/v2/img/baka")
-  .then(response => response.text())
-  .then(data => {
-  console.log(data);
+  .then(res => res.text())
+  .then(body => {
+  console.log(res.body.url);
    const embed = new Discord.MessageEmbed()
     .setTitle("BAKA!!!")
-    .setImage(data)
+    .setImage(res.body.url)
     .setColor("RANDOM")
-    .setFooter("idiot!" + data)
-    .setURL(data);
+    .setFooter("idiot!" + res.body.url)
+    .setURL(res.body.url);
    message.channel.send(embed);
   }).catch((err) => {
    message.channel.send({embed: {
