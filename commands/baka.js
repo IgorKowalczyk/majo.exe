@@ -14,10 +14,10 @@ module.exports = {
   console.log(data);
    const embed = new Discord.MessageEmbed()
     .setTitle("BAKA!!!")
-    .setImage(data.res.url)
+    .setImage(data)
     .setColor("RANDOM")
-    .setFooter("idiot!" + data.res.url)
-    .setURL(data.res.url);
+    .setFooter("idiot!" + data)
+    .setURL(data);
    message.channel.send(embed);
   }).catch((err) => {
    message.channel.send({embed: {
