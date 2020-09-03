@@ -10,13 +10,13 @@ module.exports = {
  run: async (client, message, args) => {
 fetch("https://nekos.life/api/v2/img/baka")
  .then((res) => res.text())
- .then((res, body) => {
+ .then((res) => {
   const embed = new Discord.MessageEmbed()
    .setTitle("BAKA!!!")
-   .setImage(res.body.url)
+   .setImage(res.url)
    .setColor("RANDOM")
-   .setFooter("idiot!")
-   .setURL(res.body.url);
+   .setFooter("idiot!" + `res.url`)
+   .setURL(res.url);
   message.channel.send(embed);
   }).catch((err) => {
    message.channel.send({embed: {
