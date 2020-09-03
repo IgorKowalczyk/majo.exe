@@ -6,7 +6,7 @@ module.exports = {
  name: "4chan",
  aliases: [],
  description: "Shows a random image (and text) from the specified board from 4chan",
- category: 'Fun',
+ category: "Fun",
  usage: "4chan <board/boards>",
  run: async (client, message, args) => {
  try {
