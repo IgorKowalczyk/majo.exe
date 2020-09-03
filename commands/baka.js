@@ -15,7 +15,7 @@ fetch("https://nekos.life/api/v2/img/baka")
    .setTitle("BAKA!!!")
    .setImage(res.url)
    .setColor("RANDOM")
-   .setFooter("idiot!" + `res.url`)
+   .setFooter("idiot!" + res.url)
    .setURL(res.url);
   message.channel.send(embed);
   }).catch((err) => {
