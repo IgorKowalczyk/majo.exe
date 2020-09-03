@@ -19,7 +19,7 @@ module.exports = {
     .setFooter("idiot!" + body.url)
     .setURL(body.url);
    message.channel.send(embed);
- } catch(err) => {
+ } catch(err) {
    message.channel.send({embed: {
     color: 16734039,
     description: "Something went wrong... :cry:"
