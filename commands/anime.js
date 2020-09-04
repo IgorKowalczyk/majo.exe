@@ -25,6 +25,7 @@ module.exports = {
      .addField(":bar_chart: Score Stats", data.scoreStats)
      .addField(":link: Link", data.url)
      .setFooter("Requested by " + `${message.author.username}`, message.author.displayAvatarURL({ dynamic: true, format: 'png', size: 2048 }))
+     .setTimestamp()
     message.channel.send(malEmbed);
    }).catch((err) => message.channel.send({embed: {
     color: 16734039,
