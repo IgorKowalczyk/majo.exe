@@ -13,7 +13,7 @@ module.exports = {
   if (!message.channel.nsfw) {
    return message.channel.send({embed: {
     color: 16734039,
-    description: "This command can only be used in NSFW channels!"
+    description: ":x: This command can only be used in NSFW channels!"
    }})
  }
 
@@ -22,7 +22,7 @@ module.exports = {
   if (!chanargs) {
    return message.channel.send({embed: {
     color: 16734039,
-    description: "Please enter a board! To see all boards check " + `${prefix}` + " 4chan boards"
+    description: ":x: Please enter a board! To see all boards check " + `${prefix}` + " 4chan boards"
    }}
   )
   }
@@ -44,7 +44,7 @@ module.exports = {
   if(boards.indexOf(board) == -1) {
    let vb = new Discord.MessageEmbed()
     .setColor(16734039)
-    .setDescription("Please enter a vaild board! To see all boards check " + `${prefix}` + " 4chan boards")
+    .setDescription(":x: Please enter a vaild board! To see all boards check " + `${prefix}` + " 4chan boards")
     .setTimestamp()
    return message.channel.send(vb);
   }
