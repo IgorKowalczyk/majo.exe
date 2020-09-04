@@ -84,7 +84,7 @@ module.exports = {
    imgUrl += imgId + "" + imgExt;
    let chan = new Discord.MessageEmbed()
     .setColor("RANDOM")
-    .setAuthor(":four_leaf_clover: 4CHAN Random Thread, message.guild.iconURL({ dynamic: true, format: 'png'}), thread)
+    .setAuthor(":four_leaf_clover: 4CHAN Random Thread", message.guild.iconURL({ dynamic: true, format: 'png'}), thread)
     .setDescription("Description: " + com)
     .addField("Thread:", thread)
     .addField("Img:", imgUrl)
