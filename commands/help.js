@@ -4,11 +4,11 @@ const { readdirSync } = require('fs');
 const prefix = process.env.PREFIX;
 
 module.exports = {
- name: 'help',
- aliases: ['h', 'commands'],
- category: 'General',
- description: 'Displays all the commands available',
- usage: 'help [command]',
+ name: "help",
+ aliases: ["h", "commands"],
+ category: "General",
+ description: "Displays all the commands available",
+ usage: "help [command]",
 
  run: async (client, message, args) => {
   if (args[0]) {
