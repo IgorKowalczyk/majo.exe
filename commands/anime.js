@@ -28,7 +28,7 @@ module.exports = {
     message.channel.send(malEmbed);
    }).catch((err) => message.channel.send({embed: {
     color: 16734039,
-    description: "Please enter a vaild name!"
+    description: ":x: Please enter a vaild name!"
   }}));
  }
 }
