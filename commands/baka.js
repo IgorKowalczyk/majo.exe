@@ -17,7 +17,7 @@ module.exports = {
     .setTitle("BAKA!!!")
     .setImage(body.url)
     .setColor("RANDOM")
-    .setFooter("idiot!" + body.url)
+    .setFooter("Idiot!")
     .setURL(body.url);
    message.channel.send(embed);
  } catch(err) {
