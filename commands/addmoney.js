@@ -25,7 +25,7 @@ module.exports = {
    let moneyEmbed = new Discord.MessageEmbed()
     .setColor("RANDOM")
     .setTitle(":white_check_mark: Success!", message.guild.iconURL({ dynamic: true, format: 'png'}))
-    .setDescription(`Added \`${args[1]}\` coins\n\nNew Balance: \`${bal}\``)
+    .setDescription(`Added \`${args[1]}\` coins\nNew Balance: \`${bal}\``)
     .setTimestamp()
     .setFooter("Requested by " + `${message.author.username}`, message.author.displayAvatarURL({ dynamic: true, format: 'png', size: 2048 }))
     message.channel.send(moneyEmbed)
