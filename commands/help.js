@@ -57,7 +57,7 @@ function getAll(client, message) {
    embed.addField(`${icon} ${id} (${category.size})`, category.map(cmd => `${cmd.name}`).join(', '));
   }
   embed.addField(":grey_question: Command Information", `${prefix} help <command>`);
-  embed.setFooter("Bot created by " + `${cnf.owner}` + " • " + `${client.commands.size}` + " Commands", message.author.displayAvatarURL({ dynamic: true, format: 'png', size: 2048 }))
+  embed.setFooter("Requested by " + `${message.author.username}` + " • " + `${client.commands.size}` + " Commands", message.author.displayAvatarURL({ dynamic: true, format: 'png', size: 2048 }))
   return message.channel.send(embed);
 }
 
@@ -91,7 +91,7 @@ function getCMD(client, message, input) {
     Usage: ${prefix} ${cmd.usage}
     Aliases: ${cmd.aliases.lenght ? cmd.aliases.map((a) => `${a}`).join(', ') : '`None`'}
    `)
-   .setFooter('Syntax: <> = required, [] = optional • Bot created by' + `${cnf.owner}`)
+   .setFooter('Syntax: <> = required, [] = optional • Requested by + ' + `${message.author}` + ' • Bot created by' + `${cnf.owner}`)
  message.channel.send(hembed);
  }
  }
