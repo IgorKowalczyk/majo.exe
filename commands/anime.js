@@ -12,18 +12,19 @@ module.exports = {
   malScraper.getInfoFromName(search)
    .then((data) => {
     const malEmbed = new Discord.MessageEmbed()
-     .setAuthor(`My Anime List search result for ${args}`.split(',').join(' '))
+     .setAuthor(`:mag_right: My Anime List search result for ${args}`.split(',').join(' '), message.guild.iconURL({ dynamic: true, format: 'png'}))
      .setImage(data.picture)
      .setColor("RANDOM")
-     .addField('English Title', data.englishTitle)
-     .addField('Japanese Title', data.japaneseTitle)
-     .addField('Type', data.type)
-     .addField('Episodes', data.episodes)
-     .addField('Rating', data.rating)
-     .addField('Aired', data.aired)
-     .addField('Score', data.score)
-     .addField('Score Stats', data.scoreStats)
-     .addField('Link', data.url);
+     .addField(':flag_gb: English Title', data.englishTitle)
+     .addField(':flag_jp: Japanese Title', data.japaneseTitle)
+     .addField(':book: Type', data.type)
+     .addField(':1234: Episodes', data.episodes)
+     .addField(':star2: Rating', data.rating)
+     .addField(':calendar_spiral: Aired', data.aired)
+     .addField(':star: Score', data.score)
+     .addField(':bar_chart: Score Stats', data.scoreStats)
+     .addField(':link: Link', data.url)
+     .setFooter('Requested by " + `${message.author.username}`, message.author.displayAvatarURL({ dynamic: true, format: 'png', size: 2048 }))
     message.channel.send(malEmbed);
    }).catch((err) => message.channel.send({embed: {
     color: 16734039,
