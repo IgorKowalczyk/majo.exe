@@ -66,7 +66,8 @@ module.exports = {
     var imgId = body.threads[postNr].posts[0].tim;
     var imgExt = body.threads[postNr].posts[0].ext;
     var com = body.threads[postNr].posts[0].com;
-   if(com == null){
+    var sub = body.threads[postNr].posts[0].sub;
+   if(com == null) {
     com = "**No description!**";
    } else {
     /* (/A/g, "B") = replace all A's with B's */
@@ -84,7 +85,7 @@ module.exports = {
    imgUrl += imgId + "" + imgExt;
    let chan = new Discord.MessageEmbed()
     .setColor("RANDOM")
-    .setAuthor(":four_leaf_clover: 4CHAN Random Thread", message.guild.iconURL({ dynamic: true, format: 'png'}), thread)
+    .setAuthor("🍀 Title: " + sub, message.guild.iconURL({ dynamic: true, format: 'png'}), thread)
     .setDescription("Description: " + com)
     .addField("Thread:", thread)
     .addField("Img:", imgUrl)
