@@ -54,7 +54,7 @@ function getAll(client, message) {
    if (id == "undefined") {
     var icon = ":grey_question:";
    }
-   embed.addField(`${icon} ${id} (${category.size})`, category.map(cmd => `${cmd.name}`).join(' '));
+   embed.addField(`${icon} ${id} (${category.size})`, category.map(cmd => `${cmd.name}`).join(', '));
   }
   embed.addField(":grey_question: Command Information", `${prefix} help <command>`);
   embed.setFooter("Bot created by " + `${cnf.owner}` + " • " + `${client.commands.size}` + " Commands", message.author.displayAvatarURL({ dynamic: true, format: 'png', size: 2048 }))
