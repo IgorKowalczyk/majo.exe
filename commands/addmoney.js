@@ -14,11 +14,11 @@ module.exports = {
    let user = message.mentions.members.first();
    if (!user) return message.channel.send({embed: {
     color: 16734039,
-    description: "You must mention someone to add money!"
+    description: ":x: You must mention someone to add money!"
    }})
    if (isNaN(args[1])) return message.channel.send({embed: {
     color: 16734039,
-    description: "You must enter the amount of money to add!"
+    description: ":x: You must enter the amount of money to add!"
    }})
    db.add(`money_${message.guild.id}_${user.id}`, args[1])
    let bal = await db.fetch(`money_${message.guild.id}_${user.id}`)
@@ -32,7 +32,7 @@ module.exports = {
   } else {
    message.channel.send({embed: {
     color: 16734039,
-    description: "You don't have premission add money!"
+    description: ":x: You don't have premission add money!"
    }})
   }
 } catch(err) {
