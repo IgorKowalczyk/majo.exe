@@ -22,14 +22,14 @@ module.exports = {
   if (!chanargs) {
    return message.channel.send({embed: {
     color: 16734039,
-    description: "Please enter a board! To see all boards check " + `${prefix}` + " boards"
+    description: "Please enter a board! To see all boards check " + `${prefix}` + " 4chan boards"
    }}
   )
   }
 
   if(chanargs === "boards") {
    let vboards = new Discord.MessageEmbed()
-    .setColor(16734039)
+    .setColor("RANDOM")
     .setTitle("All boards:")
     .setTimestamp()
     .setDescription('`a`, `b`, `c`, `d`, `e`, `f`, `g`, `gif`, `h`, `hr`, `k`, `m`, `o`, `p`, `r`, `s`, `t`, `u`, `v`, `vg`, `vr`, `w`, `wg`, `i`, `ic`, `r9k`, `s4s`, `vip`, `qa`, `cm`, `hm`, `lgbt`, `y`, `3`, `aco`, `adv`, `an`, `asp`, `bant`, `biz`, `cgl`, `ck`, `co`, `diy`, `fa`, `fit`, `gd`, `hc`, `his`, `int`, `jp`, `lit`, `mlp`, `mu`, `n`, `news`, `out`, `po`, `pol`, `qst`, `sci`, `soc`, `sp`, `tg`, `toy`, `trv`, `tv`, `vp`, `wsg`, `wsr`')
@@ -44,7 +44,7 @@ module.exports = {
   if(boards.indexOf(board) == -1) {
    let vb = new Discord.MessageEmbed()
     .setColor(16734039)
-    .setDescription("Please enter a vaild board! To see all boards check " + `${prefix}` + " boards")
+    .setDescription("Please enter a vaild board! To see all boards check " + `${prefix}` + " 4chan boards")
     .setTimestamp()
    return message.channel.send(vb);
   }
@@ -67,7 +67,7 @@ module.exports = {
     var imgExt = body.threads[postNr].posts[0].ext;
     var com = body.threads[postNr].posts[0].com;
    if(com == null){
-    com = "No description!";
+    com = "**No description!**";
    } else {
     /* (/A/g, "B") = replace all A's with B's */
     com = com.replace(/<br>/g, "\n");
@@ -84,13 +84,13 @@ module.exports = {
    imgUrl += imgId + "" + imgExt;
    let chan = new Discord.MessageEmbed()
     .setColor("RANDOM")
-    .setAuthor(thread, message.guild.iconURL(), thread)
+    .setAuthor(":four_leaf_clover: 4CHAN Random Thread, message.guild.iconURL({ dynamic: true, format: 'png'}), thread)
     .setDescription("Description: " + com)
     .addField("Thread:", thread)
     .addField("Img:", imgUrl)
     .setURL(thread)
     .setTimestamp()
-    .setFooter("Img from: " + thread)
+    .setFooter("Requested by " + `${message.author.username}` + " • Img from 4chan boards", message.author.displayAvatarURL({ dynamic: true, format: 'png', size: 2048 }))
    message.channel.send(chan);
    message.channel.send({
     files: [imgUrl]
