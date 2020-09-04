@@ -10,13 +10,13 @@ module.exports = {
  run: async (client, message, args) => {
  (async () => {
  try {
-  if (!message.channel.nsfw) {
-   message.react('💢');
-   return message.channel.send({embed: {
-    color: 16734039,
-    description: "You can use this command in an NSFW Channel!"
+ if (!message.channel.nsfw) {
+  message.react('💢');
+  return message.channel.send({embed: {
+   color: 16734039,
+   description: "You can use this command in an NSFW Channel!"
   }})
-  }
+ }
  const response = await fetch("https://nekos.life/api/v2/img/anal")
  const body = await response.json();
   console.log(body.url);
@@ -24,7 +24,7 @@ module.exports = {
     .setTitle(":smirk: Anal")
     .setImage(body.url)
     .setColor("RANDOM")
-    .setFooter("Tags: `anal`")
+    .setFooter("Tags: anal • Requested by ${message.author}")
     .setURL(body.url);
    message.channel.send(embed);
  } catch(err) {
