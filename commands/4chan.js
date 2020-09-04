@@ -22,7 +22,7 @@ module.exports = {
   if (!chanargs) {
    return message.channel.send({embed: {
     color: 16734039,
-    description: ":x: Please enter a board! To see all boards check " + `${prefix}` + " 4chan boards"
+    description: ":x: Please enter a board! To see all boards check \`" + `${prefix}` + " 4chan boards\`"
    }}
   )
   }
@@ -44,8 +44,7 @@ module.exports = {
   if(boards.indexOf(board) == -1) {
    let vb = new Discord.MessageEmbed()
     .setColor(16734039)
-    .setDescription(":x: Please enter a vaild board! To see all boards check " + `${prefix}` + " 4chan boards")
-    .setTimestamp()
+    .setDescription(":x: Please enter a vaild board! To see all boards check \`" + `${prefix}` + " 4chan boards\`")
    return message.channel.send(vb);
   }
 
