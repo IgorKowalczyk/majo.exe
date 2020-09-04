@@ -86,7 +86,7 @@ module.exports = {
    let chan = new Discord.MessageEmbed()
     .setColor("RANDOM")
     .setTitle("🍀 " + sub, message.guild.iconURL({ dynamic: true, format: 'png'}), thread)
-    .addFieldn("Description:", com)
+    .addField("Description:", com)
     .addField("Thread:", thread)
     .addField("Img:", imgUrl)
     .setURL(thread)
