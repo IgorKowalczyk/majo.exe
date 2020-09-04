@@ -24,7 +24,7 @@ module.exports = {
     .setTitle(":smirk: Anal")
     .setImage(body.url)
     .setColor("RANDOM")
-    .setFooter("Requested by" + `${message.author.username}` + " • Tags: anal")
+    .setFooter("Requested by " + `${message.author.username}` + " • Tags: anal", message.author.displayAvatarURL({ dynamic: true, format: 'png', size: 2048 }))
     .setTimestamp()
     .setURL(body.url);
    message.channel.send(embed);
