@@ -11,7 +11,7 @@ module.exports = {
  (async () => {
  try {
  const response = await fetch("https://nekos.life/api/v2/img/baka")
- const body = await response.text();
+ const body = await response.json();
   console.log(body.url);
    const embed = new Discord.MessageEmbed()
     .setTitle("BAKA!!!")
