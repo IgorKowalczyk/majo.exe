@@ -88,10 +88,10 @@ function getCMD(client, message, input) {
    .setDescription(`
     Category: ${cmd.category}
     Description: ${cmd.description}
-    Usage: ${prefix} ${cmd.usage}
+    Usage: \`${prefix} ${cmd.usage}\`
     Aliases: ${cmd.aliases.lenght ? cmd.aliases.map((a) => `${a}`).join(', ') : '`None`'}
    `)
-   .setFooter('Syntax: <> = required, [] = optional • Requested by + ' + `${message.author}` + ' • Bot created by' + `${cnf.owner}`)
+   .setFooter('Syntax: <> = required, [] = optional • Requested by + ' + `${message.author.username}`)
  message.channel.send(hembed);
  }
  }
