@@ -10,7 +10,7 @@ module.exports = {
  usage: "4chan <board/boards>",
  run: async (client, message, args) => {
  try {
-  if(!message.channel.nsfw){
+  if (!message.channel.nsfw) {
    return message.channel.send({embed: {
     color: 16734039,
     description: "This command can only be used in NSFW channels!"
@@ -27,7 +27,7 @@ module.exports = {
   )
   }
 
-  if(chanargs === "boards") {
+  if (chanargs === "boards") {
    let vboards = new Discord.MessageEmbed()
     .setColor("RANDOM")
     .setTitle("All boards:")
@@ -50,7 +50,6 @@ module.exports = {
   }
 
   var board = args;
-
   var page = Math.floor((Math.random() * 10) + 1);  // page 1 to 10
   var url = "https://a.4cdn.org/" + board + "/" + page + ".json"
 
@@ -67,35 +66,37 @@ module.exports = {
     var imgExt = body.threads[postNr].posts[0].ext;
     var com = body.threads[postNr].posts[0].com;
     var sub = body.threads[postNr].posts[0].sub;
-   if(com == null) {
-    com = "**No description!**";
-   } else {
-    /* (/A/g, "B") = replace all A's with B's */
-    com = com.replace(/<br>/g, "\n");
-    com = com.replace(/<span class=\"quote\">&gt;/g, ">");
-    com = com.replace(/<span class=\"deadlink\">&gt;/g, ">");
-    com = com.replace(/<\/span>/g, "");
-    com = com.replace(/&quot/g, '"');
-    com = com.replace(/&#039;/g, "'");
-   }
-
-   var thread = "https://boards.4chan.org/"+ board +"/thread/";
-   thread += body.threads[postNr].posts[0].no;
-   var imgUrl = "https://i.4cdn.org/" + board + "/";
-   imgUrl += imgId + "" + imgExt;
-   let chan = new Discord.MessageEmbed()
-    .setColor("RANDOM")
-    .setTitle("🍀 " + sub, message.guild.iconURL({ dynamic: true, format: 'png'}), thread)
-    .addField("Description:", com)
-    .addField("Thread:", thread)
-    .addField("Img:", imgUrl)
-    .setURL(thread)
-    .setTimestamp()
-    .setFooter("Requested by " + `${message.author.username}` + " • Img from 4chan boards", message.author.displayAvatarURL({ dynamic: true, format: 'png', size: 2048 }))
-   message.channel.send(chan);
-   message.channel.send({
-    files: [imgUrl]
-  });
+    if(!sub) {
+     sub = "Random 4chan thread";
+    }
+    if(com == null) {
+     com = "**No description!**";
+    } else {
+     /* (/A/g, "B") = replace all A's with B's */
+     com = com.replace(/<br>/g, "\n");
+     com = com.replace(/<span class=\"quote\">&gt;/g, ">");
+     com = com.replace(/<span class=\"deadlink\">&gt;/g, ">");
+     com = com.replace(/<\/span>/g, "");
+     com = com.replace(/&quot/g, '"');
+     com = com.replace(/&#039;/g, "'");
+    }
+    var thread = "https://boards.4chan.org/"+ board +"/thread/";
+    thread += body.threads[postNr].posts[0].no;
+    var imgUrl = "https://i.4cdn.org/" + board + "/";
+    imgUrl += imgId + "" + imgExt;
+    let chan = new Discord.MessageEmbed()
+     .setColor("RANDOM")
+     .setTitle("🍀 " + sub, message.guild.iconURL({ dynamic: true, format: 'png'}), thread)
+     .addField("Description:", com)
+     .addField("Thread:", thread)
+     .addField("Img:", imgUrl)
+     .setURL(thread)
+     .setTimestamp()
+     .setFooter("Requested by " + `${message.author.username}` + " • Img from 4chan boards", message.author.displayAvatarURL({ dynamic: true, format: 'png', size: 2048 }))
+    message.channel.send(chan);
+    message.channel.send({
+     files: [imgUrl]
+   });
   });
  });
  } catch (err) {
