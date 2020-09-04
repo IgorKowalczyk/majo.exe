@@ -9,18 +9,18 @@ module.exports = {
  usage: "baka",
  run: async (client, message, args) => {
  (async () => {
- try {
- const response = await fetch("https://nekos.life/api/v2/img/baka")
- const body = await response.json();
-  console.log(body.url);
+  try {
+   const response = await fetch("https://nekos.life/api/v2/img/baka")
+   const body = await response.json();
    const embed = new Discord.MessageEmbed()
-    .setTitle("BAKA!!!")
+    .setTitle(":rage: Baka!", message.guild.iconURL({ dynamic: true, format: 'png'}))
     .setImage(body.url)
     .setColor("RANDOM")
-    .setFooter("Idiot!")
+    .setFooter("Requested by " + `${message.author.username}` + " • (You are a IDIOT!)", message.author.displayAvatarURL({ dynamic: true, format: 'png', size: 2048 }))
+    .setTimestamp()
     .setURL(body.url);
    message.channel.send(embed);
- } catch(err) {
+  } catch(err) {
    message.channel.send({embed: {
     color: 16734039,
     description: "Something went wrong... :cry:"
@@ -30,3 +30,4 @@ module.exports = {
  })();
  }
 }
+
