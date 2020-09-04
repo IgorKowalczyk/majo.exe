@@ -21,7 +21,7 @@ module.exports = {
  const body = await response.json();
   console.log(body.url);
    const embed = new Discord.MessageEmbed()
-    .setTitle(":smirk: Anal")
+    .setTitle(":smirk: Anal", message.guild.iconURL())
     .setImage(body.url)
     .setColor("RANDOM")
     .setFooter("Requested by " + `${message.author.username}` + " • Tags: anal", message.author.displayAvatarURL({ dynamic: true, format: 'png', size: 2048 }))
