@@ -14,7 +14,7 @@ module.exports = {
     message.react('💢');
     return message.channel.send({embed: {
      color: 16734039,
-     description: "You can use this command in an NSFW Channel!"
+     description: ":x: You can use this command in an NSFW Channel!"
     }})
    }
    const response = await fetch("https://nekos.life/api/v2/img/anal")
@@ -32,7 +32,6 @@ module.exports = {
     color: 16734039,
     description: "Something went wrong... :cry:"
    }})
-   console.log(err);
   }
  })();
  }
