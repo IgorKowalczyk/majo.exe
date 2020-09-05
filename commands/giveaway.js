@@ -63,7 +63,7 @@ module.exports = {
   let m = await channel.send(embed)
   m.react("🎉")
   setTimeout(() => {
-   then(m => {setTimeout(function() {m.edit(endembed)}, ms(args[0]))});
+   setTimeout(function() {m.edit(endembed)}, ms(args[0]));
    if (m.reactions.cache.get("🎉").count <= 1) {
    return message.channel.send({embed: {
     color: 16734039,
