@@ -44,13 +44,15 @@ module.exports = {
    }})
   }
   let endembed = new Discord.MessageEmbed()
+   .setTitle(":tada: GIVEAWAY ENDED!")
    .setDescription(":tada: The giveaway for prize of **" + `${prize}` + "** ended!")
    .setTimestamp()
    .setColor("RANDOM")
    .setFooter("Requested by " + `${message.author.username}` + " The giveaway ended at", message.author.displayAvatarURL({ dynamic: true, format: 'png', size: 2048 }));
   let success = new Discord.MessageEmbed()
    .setColor("RANDOM")
-   .setDescription("Giveaway created in " + `channel` + "!")
+   .setTitle(":white_check_mark: Success!")
+   .setDescription(":tada: Giveaway created in " + `${channel}` + "!")
    .setFooter("This message will be deleted after 10 seconds")
   message.channel.send(success).then(m => m.delete({timeout: 10000}))
   let embed = new Discord.MessageEmbed()
