@@ -54,7 +54,13 @@ module.exports = {
    .setTimestamp(Date.now() + ms(args[0]))
    .setFooter("Requested by " + `${message.author.username}` + " The giveaway will end in " + `${args[0]}` + "!", message.author.displayAvatarURL({ dynamic: true, format: 'png', size: 2048 }))
    .setColor("RANDOM");
-  let m = await channel.send(embed);
+  let end = new.Discord.MesssageEmbed()
+   .setTitle(":tada: New giveaway! :tada:", message.guild.iconURL({ dynamic: true, format: 'png'}))
+   .setDescription(":tada: The giveaway for prize of **" + `${prize}` + "** ended!")
+   .setTimestamp()
+   .setColor("RANDOM")
+   .setFooter("Requested by " + `${message.author.username}` + " The giveaway ended at", message.author.displayAvatarURL({ dynamic: true, format: 'png', size: 2048 }))
+  let m = await channel.send(embed).then(msg => {setTimeout(function() {msg.edit(end)}, ms(args[0]));
   m.react("🎉");
   setTimeout(() => {
    if (m.reactions.cache.get("🎉").count <= 1) {
