@@ -60,7 +60,7 @@ module.exports = {
    .setTimestamp()
    .setColor("RANDOM")
    .setFooter("Requested by " + `${message.author.username}` + " The giveaway ended at", message.author.displayAvatarURL({ dynamic: true, format: 'png', size: 2048 }))
-  let m = await channel.send(embed).then(msg => {setTimeout(function() {msg.edit(end)}, ms(args[0]));
+  let m = await channel.send(embed).then(msg => {setTimeout(function() {msg.edit(end)}, ms(args[0]))});
   m.react("🎉");
   setTimeout(() => {
    if (m.reactions.cache.get("🎉").count <= 1) {
@@ -78,6 +78,3 @@ module.exports = {
   }, ms(args[0]));
  }
 }
-
-
-
