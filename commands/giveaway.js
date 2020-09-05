@@ -57,7 +57,7 @@ module.exports = {
   let m = await channel.send(embed);
   m.react("🎉");
   setTimeout(() => {
-   if (m.reactions.cache.get("🎉").count <= 2) {
+   if (m.reactions.cache.get("🎉").count <= 1) {
    return message.channel.send({embed: {
     color: 16734039,
     title: "Not enough people reacted for me to start draw a winner!",
