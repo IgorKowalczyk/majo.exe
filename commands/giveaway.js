@@ -67,7 +67,7 @@ module.exports = {
    return message.channel.send({embed: {
     color: 16734039,
     title: "Not enough people reacted for me to start draw a winner!",
-    description: "Reactions: " + `${reactions.cache.get("🎉").count}` + "!"
+    description: "Reactions: " + `${m.reactions.cache.get("🎉").count}` + "!"
    }})
    }
    let winner = m.reactions.cache.get("🎉").users.cache.filter((u) => !u.bot).random();
