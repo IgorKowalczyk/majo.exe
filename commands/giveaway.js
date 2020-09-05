@@ -44,7 +44,6 @@ module.exports = {
    }})
   }
   let endembed = new Discord.MessageEmbed()
-   .setTitle(":tada: New giveaway! :tada:", message.guild.iconURL({ dynamic: true, format: 'png'}))
    .setDescription(":tada: The giveaway for prize of **" + `${prize}` + "** ended!")
    .setTimestamp()
    .setColor("RANDOM")
@@ -63,7 +62,7 @@ module.exports = {
   let m = await channel.send(embed)
   m.react("🎉")
   setTimeout(() => {
-   setTimeout(function() {m.edit(endembed)}, ms(args[0]));
+   m.edit(endembed);
    if (m.reactions.cache.get("🎉").count <= 1) {
    return message.channel.send({embed: {
     color: 16734039,
