@@ -61,7 +61,7 @@ module.exports = {
    .setFooter("Requested by " + `${message.author.username}` + " • The giveaway will end in " + `${args[0]}` + "!", message.author.displayAvatarURL({ dynamic: true, format: 'png', size: 2048 }))
    .setColor("RANDOM");
   let m = await channel.send(embed)
-  m.react("🎉").then(msg => {setTimeout(function() {msg.edit(endembed)}, ms(args[0]))});
+  m.react("🎉").then(m => {setTimeout(function() {m.edit(endembed)}, ms(args[0]))});
   setTimeout(() => {
    if (m.reactions.cache.get("🎉").count <= 1) {
    return message.channel.send({embed: {
