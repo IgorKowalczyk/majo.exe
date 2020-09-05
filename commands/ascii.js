@@ -11,11 +11,11 @@ module.exports = {
   var maxLen = 50
   if(args.join(' ').length > maxLen) return message.channel.send({embed: {
    color: 16734039,
-   description: "The max length is " + `${maxLen}` + " !"
+   description: ":x: The max length is " + `${maxLen}` + " !"
   }})
-  if(!args[0])return message.channel.send({embed: {
+  if(!args[0]) return message.channel.send({embed: {
    color: 16734039,
-   description: "Please enter a text to convert!"
+   description: ":x: Please enter a text to convert!"
   }})
   figlet(`${args.join(' ')}`, function(err, data) {
    if (err) {
@@ -27,6 +27,8 @@ module.exports = {
   let embed = new Discord.MessageEmbed()
    .setColor("RANDOM")
    .setDescription(":tada: Your ascii code is generated! You can see it below")
+   .setFooter("Requested by " + `${message.author.username}`, message.author.displayAvatarURL({ dynamic: true, format: 'png', size: 2048 }))
+   .setTimestamp()
   message.channel.send(embed)
   message.channel.send(`${data}`, {code: 'AsciiArt'});
   });
