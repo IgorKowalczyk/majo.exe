@@ -58,10 +58,10 @@ module.exports = {
    .setTitle(":tada: New giveaway! :tada:", message.guild.iconURL({ dynamic: true, format: 'png'}))
    .setDescription("The user " + `${message.author}` + " is hosting a giveaway for the prize of **" + `${prize}` + "**\n*React to this message with :tada: emoji to enter the giveaway!*")
    .setTimestamp(Date.now() + ms(args[0]))
-   .setFooter("Requested by " + `${message.author.username}` + " The giveaway will end in " + `${args[0]}` + "!", message.author.displayAvatarURL({ dynamic: true, format: 'png', size: 2048 }))
+   .setFooter("Requested by " + `${message.author.username}` + " • The giveaway will end in " + `${args[0]}` + "!", message.author.displayAvatarURL({ dynamic: true, format: 'png', size: 2048 }))
    .setColor("RANDOM");
   let m = await channel.send(embed)
-  m.react("🎉").then(m => {setTimeout(function() {m.edit(endembed)}, ms(args[0]))});
+  m.react("🎉").then(msg => {setTimeout(function() {msg.edit(endembed)}, ms(args[0]))});
   setTimeout(() => {
    if (m.reactions.cache.get("🎉").count <= 1) {
    return message.channel.send({embed: {
