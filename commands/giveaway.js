@@ -66,7 +66,7 @@ module.exports = {
   setTimeout(() => {
    m.edit(endembed);
    if (m.reactions.cache.get("🎉").count <= 1) {
-   return message.channel.send({embed: {
+   return channel.send({embed: {
     color: 16734039,
     title: "Not enough people reacted for me to start draw a winner!",
     description: "Reactions: " + `${m.reactions.cache.get("🎉").count}` + "!"
@@ -76,7 +76,7 @@ module.exports = {
    let end = new Discord.MessageEmbed()
     .setColor("RANDOM")
     .setDescription(":tada: The winner of the giveaway for **" + `${prize}` + "** is " + `${winner}` + "! :tada:")
-   return message.channel.send(end);
+   return channel.send(end);
   }, ms(args[0]));
  }
 }
