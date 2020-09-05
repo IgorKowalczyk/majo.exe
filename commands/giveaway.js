@@ -54,7 +54,7 @@ module.exports = {
    .setTimestamp(Date.now() + ms(args[0]))
    .setFooter("Requested by " + `${message.author.username}` + " The giveaway will end in " + `${args[0]}` + "!", message.author.displayAvatarURL({ dynamic: true, format: 'png', size: 2048 }))
    .setColor("RANDOM");
-  let end = new.Discord.MesssageEmbed()
+  let end = new Discord.MesssageEmbed()
    .setTitle(":tada: New giveaway! :tada:", message.guild.iconURL({ dynamic: true, format: 'png'}))
    .setDescription(":tada: The giveaway for prize of **" + `${prize}` + "** ended!")
    .setTimestamp()
