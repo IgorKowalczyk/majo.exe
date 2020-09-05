@@ -11,7 +11,8 @@ module.exports = {
    let embed = new Discord.MessageEmbed()
     .setColor("RANDOM")
     .setAuthor(message.author.username + "'s Avatar", message.author.displayAvatarURL())
-    .setImage(message.author.displayAvatarURL({ dynamic: true, format: 'png', size: 2048 }))  
+    .setImage(message.author.displayAvatarURL({ dynamic: true, format: 'png', size: 2048 })) 
+    .setFooter("Requested by " + `${message.author.username}`, message.author.displayAvatarURL({ dynamic: true, format: 'png', size: 2048 }))
    message.channel.send(embed)
   }
   const avatarList = message.mentions.users.map(user => {
@@ -24,6 +25,7 @@ module.exports = {
     .setColor("RANDOM")
     .setAuthor(Username + "'s Avatar", AvatarURL)
     .setImage(AvatarURL)
+    .setFooter("Requested by " + `${message.author.username}`, message.author.displayAvatarURL({ dynamic: true, format: 'png', size: 2048 }))
    message.channel.send(embed)
   }
  }
