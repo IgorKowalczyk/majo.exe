@@ -44,8 +44,8 @@ module.exports = {
    }})
   }
   let endembed = new Discord.MessageEmbed()
-   .setTitle(":tada: GIVEAWAY ENDED!")
-   .setDescription(":tada: The giveaway for prize of **" + `${prize}` + "** ended!")
+   .setTitle(":tada: GIVEAWAY ENDED! :tada:")
+   .setDescription("The giveaway for prize of **" + `${prize}` + "** ended!")
    .setTimestamp()
    .setColor("RANDOM")
    .setFooter("Requested by " + `${message.author.username}` + " The giveaway ended at", message.author.displayAvatarURL({ dynamic: true, format: 'png', size: 2048 }));
