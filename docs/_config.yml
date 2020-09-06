@@ -18,6 +18,13 @@ author-link: "https://igorkowalczyk.github.io"
 # Discord server
 server: "https://discord.gg/f4KtqNB"
 
+# Pages content config
+text:
+ title: "Hi!"
+ description: "To get started, authorize the bot by clicking <em>'Authorize'</em> link on the navbar."
+ title_authorized: "Done!
+ description_authorized: "The bot is already authorized! Go to your server and have fun!"
+
 # Contact E-Mail (Public!)
 email: "xxmajonezxx@gmail.com"
 
