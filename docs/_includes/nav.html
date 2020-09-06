@@ -1,0 +1,11 @@
+<nav class="nav" role="navigation">
+<span class="logo"><a href="{{ site.baseurl }}" rel="noopener" aria-label="Open home page"><span class="name">{{ site.name-tag }}</span><span class="tag">{{ site.tag }}</span></a></span>
+<input class="menu-btn" type="checkbox" id="menu-btn" />
+<label class="menu-icon" for="menu-btn"><span class="navicon"></span></label>
+<ul class="menu">
+<li><a href="{{ site.baseurl }}/authorize">Authorize</a></li>
+<li><a href="{{ site.baseurl }}/server" target="_blank" rel="noopener">Discord server</a></li>
+{% if site.name and site.author-link %}<li><a href="{{ site.author-link }}" target="_blank" rel="noopener">Author</a></li>{% endif %}
+{% if site.github_username and site.repo %}<li><a href="https://github.com/{{ site.github_username }}/{{ site.repo }}" target="_blank" rel="noopener">Github</a></li>{% endif %}
+</ul>
+</nav>

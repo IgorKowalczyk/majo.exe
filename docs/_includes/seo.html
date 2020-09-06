@@ -1,0 +1,29 @@
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<link rel="canonical" href="{{ page.url | replace:'index.html','' }}">
+{% if site.mobile != "false" %}
+<meta name="copyright" content="(c) Copyright Igor Kowalczyk {{ site.first-lauch }} to Present">
+<meta name="HandheldFriendly" content="true">
+<meta name="MobileOptimized" content="375">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#fff">
+<meta http-equiv="cleartype" content="on">
+{% endif %}
+<meta name="theme-color" content="#fff">
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="website">
+<meta property="og:title" content="{% if page.title %}{{ page.title }} - {{ site.title }}{% else %} {{ site.title }}{% endif %}">
+<meta property="og:url" content="{{ site.url }}{{ page.url }}">
+<meta property="og:site_name" content="{{ site.name }}">
+<meta property="og:description" content="{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}">
+{% if page.image %}<meta property="og:image" content="{{ site.baseurl }}/lib/pics/thumbs/{{ page.image }}" />{% endif %}
+{% if page.image %<meta name="twitter:image" content="{{ site.cdn }}/lib/pics/thumbs/{{ page.image }}">{% else %}<meta name="twitter:image" content="{{ site.baseurl }}/lib/favicon/favicon.jpg">{% endif %}
+<meta name="twitter:card" content="summary">
+{% if site.twitter %}<meta name="twitter:site" content="{{ site.twitter }}">{% endif %}
+{% if site.twitter %}<meta name="twitter:creator" content="{{ site.twitter }}">{% endif %}
+<meta name="twitter:url" content="{{ site.url }}{{ page.url }}">
+<meta name="twitter:title" content="{% if page.title %}{{ page.title }} - {{ site.title }}{% else %} {{ site.title }}{% endif %}">
+{% if page.description %}
+<meta name="twitter:description" content="{{ page.description }}">
+{% else %}
+<meta name="twitter:description" content="{{ site.description }}">
+{% endif %}

@@ -1,0 +1,24 @@
+---
+layout: "null"
+---
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xhtml="http://www.w3.org/1999/xhtml" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+{% assign url = site.baseurl %}
+{% for page in site.pages %}
+{% if page.layout != "null" %}
+{% if page.layout != "404" %}
+{% comment %}
+<!-- Default style file ignore -->
+{% endcomment %}
+{% if page.url != "/assets/main.css" %}
+<url>
+<loc>{{ site.url }}{{ page.url | prepend: url }}</loc>
+<lastmod>{% if page.time %}{{ page.time | date: '%Y-%m-%d' }}{% else %}{{ site.time | date: '%Y-%m-%d' }}{% endif %}</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+{% endif %}
+{% endif %}
+{% endif %}
+{% endfor %}
+</urlset>
