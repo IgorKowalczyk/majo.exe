@@ -51,9 +51,9 @@ module.exports = {
    .setFooter("Requested by " + `${message.author.username}` + " The giveaway ended at", message.author.displayAvatarURL({ dynamic: true, format: 'png', size: 2048 }));
   let success = new Discord.MessageEmbed()
    .setColor("RANDOM")
-   .setTitle(":white_check_mark: Success!")
+   .setTitle(":white_check_mark: Success!", message.guild.iconURL({ dynamic: true, format: 'png'}))
    .setDescription(":tada: Giveaway created in " + `${channel}` + "!")
-   .setFooter("This message will be deleted after 10 seconds")
+   .setFooter("This message will be deleted after 10 seconds", message.author.displayAvatarURL({ dynamic: true, format: 'png', size: 2048 }))
   message.channel.send(success).then(m => m.delete({timeout: 10000}))
   let embed = new Discord.MessageEmbed()
    .setTitle(":tada: New giveaway! :tada:", message.guild.iconURL({ dynamic: true, format: 'png'}))
