@@ -22,7 +22,7 @@ server: "https://discord.gg/f4KtqNB"
 email: "xxmajonezxx@gmail.com"
 
 # Base url (Not link! Only dir.
-baseurl: "/majobot"
+baseurl: "/majo-rebuild"
 
 # Support to mobile browsers (It’s unknown what range of browsers support this meta tags) [Better to set the value to "false"!]
 mobile: "false"
