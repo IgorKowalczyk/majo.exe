@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title><%- pageTitle %></title>
+<link rel="stylesheet" type="text/css" href="/css/style.min.css">
+<%- include('includes/favicons.ejs') %>
+<%- include('includes/seo.ejs') %>
+<% if (process.env.UA) { %>
+<%- include('includes/analytics.ejs') %>
+<% } %>
+<% if (verification != null) { %>
+<meta name="google-site-verification" content="<%- verification %>">
+<% } %>
+</head>
+<body>
+<script type="text/javascript">var preload = document.createElement('div'); preload.className = "preloader"; preload.innerHTML = '</div><div class="spinner"></div>'; document.body.appendChild(preload); window.addEventListener('load', function() { preload.className +=  ' fade'; setTimeout(function(){ preload.style.display = 'none'; },500); })</script>
+<noscript><div class="no-js">To view the page please enable javascript in your browser.</div></noscript>
+<%- include('includes/nav.ejs') %>
+<div class="page-content">
+<% if (user) { %>
+<img src="svg/lines.svg" alt="Lines">
+<div class="div"><img class="img" src="img/avatar.png" alt="Avatar"/><h1>Done!</h1><p>The bot is already authorized! Go to your server and have fun!</p></div>
+<% } else { %>
+<img src="svg/lines.svg" alt="Dots">
+<div class="div"><img class="img" src="img/avatar.png" alt="Avatar"/><h1>Hi!</h1><p>To get started, authorize the bot by clicking <em>"Authorize"</em> link on the navbar.</p></div>
+<% } %>
+</div>
+</body>
+</html>
