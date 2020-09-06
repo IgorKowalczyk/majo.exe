@@ -13,7 +13,7 @@ module.exports = {
   let embed = new Discord.MessageEmbed()
    .setTitle(":hourglass_flowing_sand: Uptime", message.guild.iconURL({ dynamic: true, format: 'png'}))
    .setDescription(`${duration}`)
-   .setImage(client.displayAvatarURL({ dynamic: true, format: 'png', size: 2048 }))
+   .setImage(client.avatarURL({ dynamic: true, format: 'png', size: 2048 }))
    .setFooter("Requested by " + `${message.author.username}`, message.author.displayAvatarURL({ dynamic: true, format: 'png', size: 2048 }))
    .setColor("RANDOM")
   message.channel.send(embed);
