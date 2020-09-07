@@ -1,5 +1,5 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<link rel="canonical" href="{{ page.url | replace:'index.html','' }}">
+<link rel="canonical" href="{{ page.url | replace:'index.html','' | remove: ".html" }}">
 {% if site.mobile != "false" %}
 <meta name="copyright" content="(c) Copyright Igor Kowalczyk {{ site.first-lauch }} to Present">
 <meta name="HandheldFriendly" content="true">
