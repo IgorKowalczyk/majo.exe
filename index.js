@@ -12,6 +12,7 @@ var botMembers = 0;
 if (discord_token) {
  client.commands = new Discord.Collection();
  client.aliases = new Discord.Collection();
+ client.queue = new Map(); 
  ['command', 'event'].forEach(handler => {
    require(`./handlers/${handler}`)(client);
  });
