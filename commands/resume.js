@@ -3,7 +3,7 @@ module.exports = {
 	description: 'Resumes player.',
 	cooldown: 5,
 	category: "Music",
-	execute(message) {
+run: async (client, message, args) => {
 		const serverQueue = message.client.queue.get(message.guild.id);
 		if (serverQueue && !serverQueue.playing) {
 			serverQueue.playing = true;
