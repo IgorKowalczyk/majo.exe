@@ -26,7 +26,7 @@ module.exports = {
    const embed = new Discord.MessageEmbed()
     .setTitle(":smirk: Ass")
     .setColor("RANDOM")
-    .setImage("attachment://file.png").attachFiles([{ attachment: res, name: "file.png" }])
+    .setImage(res)
     .setFooter("Tags: ass")
     message.channel.send(embed);
   }).catch((err) => message.channel.send({embed: {
