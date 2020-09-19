@@ -12,7 +12,7 @@ var botMembers = 0;
 if (discord_token) {
  client.commands = new Discord.Collection();
  client.aliases = new Discord.Collection();
- const cooldowns = new Discord.Collection();
+ client.cooldowns = new Discord.Collection();
  ['command', 'event'].forEach(handler => {
    require(`./handlers/${handler}`)(client);
  });
