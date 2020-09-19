@@ -4,7 +4,7 @@ module.exports = {
     cooldown: 5,
     aliases: ['volume', 'vol'],
 	category: "Music",
-    execute(message, args) {
+run: async (client, message, args) => {
 
 
         if (args) {
