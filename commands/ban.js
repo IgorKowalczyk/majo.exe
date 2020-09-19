@@ -31,7 +31,7 @@ module.exports = {
    if (!reason) {
     reason = "No reason provided!";
    }
-   message.guild.members.ban(mentioned { reason: reason });
+   message.guild.members.ban(mentioned, { reason: reason });
    let ban = new Discord.MessageEmbed()
     .setColor("RANDOM")
     .setTitle(":white_check_mark: Success!", message.guild.iconURL({ dynamic: true, format: 'png'}))
