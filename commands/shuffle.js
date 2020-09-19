@@ -3,7 +3,7 @@
     description: 'Shuffles Queue.',
     cooldown: 3,
 	category: "Music",
-    execute(message) {
+run: async (client, message, args) => {
 
         //Works off the Fisher Yates Algorithm
         function shuffle(queue) {
