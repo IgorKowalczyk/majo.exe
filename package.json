@@ -51,6 +51,11 @@
     "beautify": "^0.0.8",
     "youtube-search": "^1.1.4",
     "ytdl-core": "^1.0.3",
+    "discord-player": "^1.4.1",
+    "discord-youtube-api": "^0.1.0",
+    "genius-api": "^0.4.1",
+    "get-youtube-playlist-id": "0.0.1",
+    "googleapis": "^52.0.0",
     "i": "^0.3.6"
   },
   "engines": {
