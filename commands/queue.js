@@ -29,8 +29,8 @@ run: async (client, message, args) => {
                 .setColor("RANDOM")
                 .setDescription(`These are the next  songs of the playlist`)
                 .setThumbnail(currentGuild.iconURL())
-                .addField(`**NOW PLAYING**`, `${queue.songs[0].title} by ${queue.songs[0].channel}\n---------------------------------------------------`)
-                .setFooter(`${songsLeft} songs left`, parent.client.user.displayAvatarURL())
+                .addField(`**NOW PLAYING**`, `${queue.songs[0].title} by ${queue.songs[0].channel}`)
+                .setFooter(`${songsLeft} songs left`, client.user.displayAvatarURL())
 
             for (i = 1; i < max_loop; i++) {
                 currentSong = queue.songs[i]
