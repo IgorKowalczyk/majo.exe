@@ -1,6 +1,5 @@
 const { Util } = require('discord.js');
 const ytdl = require('ytdl-core');
-const parent = require('../index.js')
 const youtubeAPI = process.env.YOUTUBE;
 const { google } = require('googleapis');
 const getYoutubePlaylistId = require('get-youtube-playlist-id');
@@ -120,7 +119,7 @@ run: async (client, message, args) => {
                     })
 
 
-                parent.client.on('voiceStateUpdate', async newState => {
+                client.on('voiceStateUpdate', async newState => {
 
                     try {
 
@@ -244,7 +243,4 @@ run: async (client, message, args) => {
         }
 
     }
-};
-
-
-
+}
