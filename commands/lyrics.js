@@ -1,4 +1,3 @@
-
 const cheerio = require('cheerio')
 const Genius = require('genius-api')
 const fetch = require('node-fetch')
