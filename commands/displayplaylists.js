@@ -2,11 +2,11 @@ playlistsJSON = require('./playlists.json')
 const { MessageEmbed } = require ('discord.js')
 
 module.exports = {
-    name: 'playlists',
-    description: 'Shows Saved Playlists.',
-    cooldown: 5,
-	category: "Music",
-    execute(message, args) {
+ name: 'playlists',
+ description: 'Shows Saved Playlists.',
+ cooldown: 5,
+ category: "Music",
+ run: async (client, message, args) => {
 
         if (!args) {
             page = 0
