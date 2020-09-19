@@ -17,7 +17,7 @@ module.exports = {
     oldVolume = serverQueue.volume
     if (!args[0]) return message.channel.send(`The current volume is: **${serverQueue.volume}**`);
     serverQueue.volume = volInt;
-    serverQueue.connection.dispatcher.setVolumeLogarithmic(volInt / 5);
+    serverQueue.connection.dispatcher.setVolume(volInt / 5);
     return message.channel.send(`Volume has been set from **${oldVolume}** to: **${volInt}**`);
    } else {
     return message.channel.send("Volume command only accepts positive/neutral Numerical input!")
