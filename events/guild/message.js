@@ -29,7 +29,7 @@ module.exports = async (client, message) => {
 	
   const now = Date.now();
   const timestamps = cooldowns.get(cmd.name);
-  const cooldownAmount = (md.cooldown || 30) * 1000;
+  const cooldownAmount = (cmd.cooldown || 30) * 1000;
   if (timestamps.has(message.author.id)) {
    const expirationTime = timestamps.get(message.author.id) + cooldownAmount;
    if (now < expirationTime) {
