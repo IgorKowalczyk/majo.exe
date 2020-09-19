@@ -3,8 +3,8 @@ module.exports = {
     description: 'Adjusts player volume.',
     cooldown: 5,
     aliases: ['volume', 'vol'],
-	category: "Music",
-    execute(message, args) {
+    category: "Music",
+    run: async (client, message, args) => {
 
 
         if (args) {
