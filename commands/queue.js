@@ -6,7 +6,7 @@ module.exports = {
     cooldown: 3,
     aliases: ['q'],
 	category: "Music",
-    execute(message) {
+run: async (client, message, args) => {
         currentGuild = message.guild
 
         function queue_to_text(queue) {
