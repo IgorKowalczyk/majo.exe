@@ -26,7 +26,7 @@ module.exports = async (client, message) => {
   if (!cooldowns.has(command.name)) {
    cooldowns.set(command.name, new Discord.Collection());
   }
-	
+  console.log(command.name);
   const now = Date.now();
   const timestamps = cooldowns.get(command.name);
   const cooldownAmount = (command.cooldown || 500) * 1000;
