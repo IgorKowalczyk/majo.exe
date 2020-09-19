@@ -24,10 +24,11 @@ module.exports = {
   });
   }).then(function(res) {
    const embed = new Discord.MessageEmbed()
-    .setTitle(":smirk: Ass")
+    .setTitle(":smirk: Ass", message.guild.iconURL({ dynamic: true, format: 'png'}))
     .setColor("RANDOM")
-    .setImage(res)
-    .setFooter("Tags: ass")
+    .setImage("attachment://ass.png").attachFiles([{ attachment: res, name: "ass.png" }])
+    .setFooter("Requested by " + `${message.author.username}` + " • Tags: ass", message.author.displayAvatarURL({ dynamic: true, format: 'png', size: 2048 }))
+    .setTimestamp()
     message.channel.send(embed);
   }).catch((err) => message.channel.send({embed: {
    color: 16734039,
