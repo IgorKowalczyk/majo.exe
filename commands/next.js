@@ -12,7 +12,7 @@ module.exports = {
     cooldown: 5,
     usage: 'Title/Video URL',
 	category: "Music",
-    async execute(message, args) {
+run: async (client, message, args) => {
 
         urlCheck = new RegExp('^https://www.youtube.com/watch')
         playlistCheck = new RegExp('^https://www.youtube.com/playlist')
