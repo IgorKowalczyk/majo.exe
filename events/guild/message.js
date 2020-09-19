@@ -3,6 +3,7 @@ const prefix = process.env.PREFIX;
 
 module.exports = async (client, message) => {
  try {
+  const queue = new Map();
   if (message.author.bot) return;
   if (!message.guild) return;
   if (message.content === `<@${client.user.id}>` || message.content === `<@!${client.user.id}>`) {
