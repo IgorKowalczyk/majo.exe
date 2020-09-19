@@ -11,7 +11,7 @@ module.exports = {
     aliases: ['lyr'],
     usage: 'Video Title & Artist Name' ,
 	category: "Music",
-    execute(message, args) {
+run: async (client, message, args) => {
 
         //Function to search the Genius API and grab the first song
         function genius_search_song(song_string) {
