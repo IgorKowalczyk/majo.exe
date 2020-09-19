@@ -16,7 +16,7 @@ module.exports = {
     cooldown: 3,
 	category: "Music",
     aliases: ['p'],
-    async execute(message, args) {
+run: async (client, message, args) => {
 
 
         //Permissions and checks
