@@ -4,7 +4,7 @@ module.exports = {
     cooldown: 5,
     aliases: ['clear', 'quit', 's'],
 	category: "Music",
-	execute(message) {
+run: async (client, message, args) => {
 		const { channel } = message.member.voice;
 		if (!channel) return message.channel.send('I\'m sorry but you need to be in a voice channel to play music!');
 		const serverQueue = message.client.queue.get(message.guild.id);
