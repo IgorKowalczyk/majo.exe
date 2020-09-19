@@ -28,13 +28,13 @@ module.exports = async (client, message) => {
   }
 	
   const now = Date.now();
-  const timestamps = cooldowns.get(command.name);
-  const cooldownAmount = (command.cooldown || 30) * 1000;
+  const timestamps = cooldowns.get(cmd.name);
+  const cooldownAmount = (md.cooldown || 30) * 1000;
   if (timestamps.has(message.author.id)) {
    const expirationTime = timestamps.get(message.author.id) + cooldownAmount;
    if (now < expirationTime) {
     const timeLeft = (expirationTime - now) / 1000;
-    message.reply(`please wait ${timeLeft.toFixed(1)} more second(s) before reusing the \`${command.name}\` command.`)
+    message.reply(`please wait ${timeLeft.toFixed(1)} more second(s) before reusing the \`${md.name}\` command.`)
     .then(msg => {
      msg.delete({ timeout: timeLeft.toFixed(1) })
     })
