@@ -1,7 +1,6 @@
 const { Util } = require('discord.js');
 const ytdl = require('ytdl-core');
-const parent = require('../index.js')
-const youtubeAPI = parent.client.config.youtubeKey
+const youtubeAPI = process.env.YOUTUBE;
 const { google } = require('googleapis');
 const getYoutubePlaylistId = require('get-youtube-playlist-id');
 const Youtube = require('simple-youtube-api');
