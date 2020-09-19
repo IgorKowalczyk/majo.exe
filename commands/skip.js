@@ -3,7 +3,7 @@ module.exports = {
     description: 'Skip next N Songs.',
     cooldown: 5,
 	category: "Music",
-    execute(message, args) {
+run: async (client, message, args) => {
 
         let toSkip = 1 // Default 1
         indexString = args[0]
