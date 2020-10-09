@@ -80,8 +80,8 @@ function getCMD(client, message, input) {
   }
  } else {
   function capitalizeFirstLetter(string) {
-   return string.charAt(0).toUpperCase() + string.slice(1);
-  }
+  return string.charAt(0).toUpperCase() + string.slice(1);
+ }
   const hembed = new Discord.MessageEmbed()
    .setTitle(`:grey_question: Help - ${cmd.name} command`, message.guild.iconURL())
    .setColor('RANDOM')
