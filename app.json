@@ -10,7 +10,7 @@
   ],
   "env": {
     "TOKEN": {
-      "description": "The bot token, required to run (Do not remember! The TOKEN value is Super-Secret)",
+      "description": "The bot token, required to run (Remember! The TOKEN value is Super-Secret)",
       "required": true
     },
     "PREFIX": {
@@ -22,7 +22,7 @@
       "required": false
     },
     "SECRET": {
-      "description": "The bot client secret (Do not remember! The SECRET value is Super-Secret), required to run Web Dashboard",
+      "description": "The bot client secret (Remember! The SECRET value is Super-Secret), required to run Web Dashboard",
       "required": false
     },
     "UA": {
