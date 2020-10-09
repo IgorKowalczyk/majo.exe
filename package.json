@@ -9,9 +9,9 @@
    "start": "node index.js"
  },
  "dependencies": {
- "discord.js": "^12.3.1",
- "express": "^4.17.1",
- "got": "^11.7.0",
+  "discord.js": "^12.3.1",
+  "express": "^4.17.1",
+  "got": "^11.7.0",
   "node-fetch": "^2.6.1",
   "form-data": "^3.0.0",
   "quick.db": "^7.1.2",
@@ -58,6 +58,7 @@
   "get-youtube-playlist-id": "0.0.1",
   "googleapis": "^60.0.1",
   "ffmpeg-static": "^4.2.7",
+  "simple-youtube-api": "^5.2.1",
   "nodemon": "^2.0.4",
   "i": "^0.3.6"
  },
