@@ -18,7 +18,7 @@ if (discord_token) {
  });
  client.login(discord_token);
 } else {
- console.error("Majo.exe Error: Bot token is not provided!! To give your bot life, you need to enter token value in the `.env` file - `TOKEN=Your_Token`. [Token is super-secret - do not share it with anyone!]");
+ console.error("Majo.exe Error: Bot token is not provided! To give your bot life, you need to enter token value in the `.env` file - `TOKEN=Your_Token`. [REMEMBER: Token is super-secret - do not share it with anyone!]");
 }
 /* /Login */
 
