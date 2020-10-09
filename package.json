@@ -57,6 +57,7 @@
   "genius-api": "^0.4.1",
   "get-youtube-playlist-id": "0.0.1",
   "googleapis": "^52.0.0",
+  "ffmpeg-static": "^4.2.5",
   "i": "^0.3.6"
  },
  "engines": {
