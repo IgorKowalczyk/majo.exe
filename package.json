@@ -58,6 +58,7 @@
   "get-youtube-playlist-id": "0.0.1",
   "googleapis": "^60.0.1",
   "ffmpeg-static": "^4.2.7",
+  "nodemon": "^2.0.4",
   "i": "^0.3.6"
  },
  "engines": {
