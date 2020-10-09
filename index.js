@@ -8,7 +8,7 @@ const prefix = process.env.PREFIX;
 const newUsers = new Discord.Collection();
 var botMembers = 0;
 
-/* Login */
+/* Login and Commands */
 if (discord_token) {
  client.commands = new Discord.Collection();
  client.aliases = new Discord.Collection();
@@ -20,7 +20,7 @@ if (discord_token) {
 } else {
  console.error("Majo.exe Error: Bot token is not provided! To give your bot life, you need to enter token value in the `.env` file - `TOKEN=Your_Token`. [REMEMBER: Token is super-secret - do not share it with anyone!]");
 }
-/* /Login */
+/* /Login and Commands*/
 
 // ---------
 //    END (of index.js)
