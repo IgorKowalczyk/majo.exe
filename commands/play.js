@@ -1,7 +1,7 @@
 const { Utils } = require("erela.js")
 const chalk = require('chalk');
 const { MessageEmbed } = require("discord.js");
-const formatDuration = require('../../handlers/formatduration')
+const { formatDuration } = require("../utils/formatduration.js");
 
 module.exports = { 
         name: "play",
