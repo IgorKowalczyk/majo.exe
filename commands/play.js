@@ -30,7 +30,7 @@ module.exports = {
      player.queue.add(res.tracks[0]);
      const embed = new Discord.MessageEmbed()
       .setDescription(`**Queued • [${res.tracks[0].title}](${res.tracks[0].uri})** \`${Utils.formatTime(res.tracks[0].duration, true)}\` • ${res.tracks[0].requester}`)
-      .setColor('#000001')
+      .setColor("RANDOM")
      msg.edit('', embed);;
      if (!player.playing) player.play()
     break;
@@ -43,7 +43,7 @@ module.exports = {
       .join("\n");
      const playing = new Discord.MessageEmbed()
       .setAuthor(`Song Selection...`, message.guild.iconURL({ dynamic: true }))
-      .setColor('#000001')
+      .setColor("RANDOM")
       .setDescription(results)
       .setFooter(`Please type 1-5 select the song in 30s type cancel to Cancel`);
      await msg.edit('', playing)
@@ -57,7 +57,7 @@ module.exports = {
       player.queue.add(track)
       const embed = new Discord.MessageEmbed()
        .setDescription(`**Queued • [${track.title}](${track.uri})** \`${formatDuration(track.duration)}\` • ${track.requester}`)
-       .setColor('#000001');
+       .setColor("RANDOM");
       msg.edit('', embed);
       if(!player.playing) player.play();
      });
@@ -70,7 +70,7 @@ module.exports = {
      const duration = Utils.formatTime(res.playlist.tracks.reduce((acc, cur) => ({duration: acc.duration + cur.duration})).duration, true);
      const playlist = new Discord.MessageEmbed()
       .setDescription(`**Queued** • [${res.playlist.info.name}](${res.playlist.info.uri}) \`${duration}\` (${res.playlist.tracks.length} tracks) • ${res.playlist.tracks[0].requester}`)
-      .setColor('#000001')
+      .setColor("RANDOM")
      msg.edit('', playlist);
      if(!player.playing) player.play()
     break;
