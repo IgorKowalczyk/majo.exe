@@ -1,5 +1,6 @@
 const Discord = require("discord.js");
 const prefix = process.env.PREFIX;
+const chalk = require("chalk");
 
 module.exports = (client) => {
 try {
@@ -35,5 +36,5 @@ try {
 } catch(err) {
  console.log(err);
 }
-console.log(`Connected! Logged in as ${client.user.tag}!`);
+console.log(chalk.blue("Connected! Logged in as ") + chalk.blue.underline(`${client.user.tag}`) + chalk.blue("!"));
 }
