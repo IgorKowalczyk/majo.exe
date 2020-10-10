@@ -7,10 +7,7 @@ const discord_token = process.env.TOKEN;
 const prefix = process.env.PREFIX;
 const newUsers = new Discord.Collection();
 var botMembers = 0;
-
-const { Player } = require("discord-player");
-const player = new Player(client);
-client.player = player;
+const chalk = require('chalk');
 
 /* Login and Commands */
 if (discord_token) {
@@ -22,7 +19,7 @@ if (discord_token) {
  });
  client.login(discord_token);
 } else {
- console.error("Majo.exe Error: Bot token is not provided! To give your bot life, you need to enter token value in the `.env` file - `TOKEN=Your_Token`. [REMEMBER: Token is super-secret - do not share it with anyone!]");
+ console.log(chalk.red.bold("Majo.exe Error:") + chalk.red(" Bot token is not provided! To give your bot life, you need to enter token value in the ") + chalk.grey.italic.bold(".env") +  chalk.red(" file - ") + chalk.grey.italic.bold("TOKEN=Your_Token ") + chalk.red.underline.bold("REMEMBER: Token is super-secret - do not share it with anyone!"));
 }
 /* /Login and Commands*/
 
