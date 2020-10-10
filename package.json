@@ -11,6 +11,7 @@
  "dependencies": {
   "discord.js": "^12.3.1",
   "erela.js": "^2.0.0",
+  "lavalink": "^2.10.2",
   "discord-player": "^2.3.1",
   "chalk": "^4.1.0",
   "common-tags": "^1.8.0",
