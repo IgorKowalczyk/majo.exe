@@ -10,7 +10,8 @@
  },
  "dependencies": {
   "discord.js": "^12.3.1",
-  "erela.js": "^1.1.8",
+  "erela.js": "^2.0.0",
+  "discord-player": "^2.3.1",
   "chalk": "^4.1.0",
   "common-tags": "^1.8.0",
   "delay": "^4.4.0",
