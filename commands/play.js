@@ -2,12 +2,13 @@ const { Utils } = require("erela.js")
 const chalk = require('chalk');
 const { MessageEmbed } = require("discord.js");
 const { formatDuration } = require("../utils/formatduration.js");
+const { player } = require('lavalink');
 
 module.exports = { 
         name: "play",
         description: "Play a song/playlist or search for a song from youtube",
         usage: "play <song/url/title>",
-        category: "music",
+        category: "Music",
         aliases: ["p", "pplay"],
     run: async (client, message, args) => {
         const msg = await message.channel.send('Loading please wait...')
