@@ -18,13 +18,13 @@ module.exports = {
   if (!permissions.has("CONNECT")) return msg.edit("I cannot connect to your voice channel, make sure I have permission to!");
   if (!permissions.has("SPEAK")) return msg.edit("I cannot connect to your voice channel, make sure I have permission to!");
   if (!args[0]) return msg.edit("Please provide a song name or link to search.");
-  const player = lavalink({
+  const player = client.music.players.spawn({
    guild: message.guild,
-   selfDeaf: true,
+			selfDeaf: true,
    textChannel: message.channel,
    voiceChannel: channel,
   });
-  player.search(args.join(" "), message.author).then(async res => {
+  client.music.search(args.join(" "), message.author).then(async res => {
    switch (res.loadType) {
     case "TRACK_LOADED":
      player.queue.add(res.tracks[0]);
