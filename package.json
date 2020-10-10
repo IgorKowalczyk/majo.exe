@@ -10,6 +10,7 @@
  },
  "dependencies": {
   "discord.js": "^12.3.1",
+  "erela.js": "^1.1.8",
   "express": "^4.17.1",
   "got": "^11.7.0",
   "node-fetch": "^2.6.1",
