@@ -6,5 +6,8 @@
  "owner": "Igor Kowalczyk",
  "version": "v0.0.1",
  "api": "AIzaSyC5S5zY4od9NagaN9fMReG5wJkY1IMz0rY",
- "port": 8000
+ "port": 8000,
+	"nodes": [
+		{ "host": "localhost", "port": 8000, "password": "" }
+	]
 }
