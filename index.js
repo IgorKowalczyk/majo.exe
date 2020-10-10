@@ -3,11 +3,11 @@ const client = new Discord.Client({disableEveryone: true,});
 const fs = require("fs");
 const http = require("http");
 const db = require("quick.db");
+const chalk = require("chalk");
 const discord_token = process.env.TOKEN;
 const prefix = process.env.PREFIX;
 const newUsers = new Discord.Collection();
 var botMembers = 0;
-const chalk = require('chalk');
 
 /* Login and Commands */
 if (discord_token) {
