@@ -1,5 +1,5 @@
 const prefix = process.env.PREFIX;
-const { ErelaClient, Utils } = require("erela.js");
+const { erela, Utils } = require("erela.js");
 const { Collection, MessageEmbed, Discord } = require("discord.js");
 const chalk = require('chalk');
 const { nodes } = require("../../config.json");
@@ -40,7 +40,7 @@ try {
 }
 
 client.queue = new Collection();
-client.music = new Utils(client, nodes)
+client.music = new erela(client, nodes)
  .on("nodeError", console.log)
  .on("nodeConnect", () => console.log(chalk.blue("[Lavalink] Successfully Connected..")))
  .on("queueEnd", player => {
