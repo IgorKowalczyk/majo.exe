@@ -8,6 +8,10 @@ const prefix = process.env.PREFIX;
 const newUsers = new Discord.Collection();
 var botMembers = 0;
 
+const { Player } = require("discord-player");
+const player = new Player(client);
+client.player = player;
+
 /* Login and Commands */
 if (discord_token) {
  client.commands = new Discord.Collection();
