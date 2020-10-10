@@ -6,9 +6,9 @@ const formatDuration = require('../../handlers/formatduration')
 module.exports = { 
         name: "play",
         description: "Play a song/playlist or search for a song from youtube",
-        usage: "<results>",
+        usage: "play <song/url/title>",
         category: "music",
-        aliases: ["p", "pplay"]
+        aliases: ["p", "pplay"],
     run: async (client, message, args) => {
         const msg = await message.channel.send('Loading please wait...')
         const { channel } = message.member.voice;
