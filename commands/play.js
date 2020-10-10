@@ -17,7 +17,7 @@ module.exports = {
   if (!permissions.has("CONNECT")) return msg.edit("I cannot connect to your voice channel, make sure I have permission to!");
   if (!permissions.has("SPEAK")) return msg.edit("I cannot connect to your voice channel, make sure I have permission to!");
   if (!args[0]) return msg.edit("Please provide a song name or link to search.");
-  const player = client.music.players.spawn({
+  const player = client.player.spawn({
    guild: message.guild,
    selfDeaf: true,
    textChannel: message.channel,
