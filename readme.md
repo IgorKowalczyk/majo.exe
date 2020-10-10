@@ -30,8 +30,8 @@ Deploy the app to [Heroku](https://heroku.com)
 2. Run `npm install`,
 3. Grab a token and client secret on [Discord's developer portal](https://discord.com/developers/applications),
 4. Fill `config.json` and `dashboard.json` with your variables (`dashboard.json` is the config file for Web Dashboard, ignore this file if you not use Majo Dashboard),
-5. Create a `.env` file and add a `TOKEN` environmental variable whose value is the token above. (Do not remember! The `TOKEN` value is Super-Secret)
-6. In `.env` Set `PREFIX` - this is your bot prefix, a `SECRET` - this is your client secret variabble (Used for web-dashboard), a Google Trakcing ID (For Website analytics) - `UA=TRACKING-ID` if you don't have to use analytics just delete the settings value and add a `DASHBOARD=[true/false]` value - if `true` the bot will be hosted with web dasboard, if `false` the bot will be hosted without web dashboard (The `.env` file was private).
+5. Create a `.env` file and add a `TOKEN` environmental variable whose value is the token above. (Remember! The `TOKEN` value is Super-Secret)
+6. In `.env` Set `PREFIX` - this is your bot prefix, a `YOUTUBE` - This is your Youtube API Key (Used for music), a `GENIUS_KEY` - Genius Lyrics API Key (Used for music and lyrics) a `SECRET` - this is your client secret variabble (Used for web-dashboard, Remember! The `SECRET` value is Super-Secret), a Google Trakcing ID (For Website analytics) - `UA=TRACKING-ID` if you don't have to use analytics just delete the settings value and add a `DASHBOARD=[true/false]` value - if `true` the bot will be hosted with web dasboard, if `false` the bot will be hosted without web dashboard (The `.env` file was private).
 7. Run `node index.js`
 > NOTE: See the example `.env` file below!
 ## Example `.env` file
@@ -50,6 +50,8 @@ PREFIX=!majo
 DASHBOARD=true
 SECRET=YOUR-BOT-CLIENT-SECRET
 UA=YOUR-GOOGLE-TRACKING-ID
+YOUTUBE=YOUT-YOUTUBE-API-KEY
+GENIUS_KEY=YOUR-GENIUS-KEY
 
 # !majo is the default prefix, you can change it later.
 
@@ -63,6 +65,8 @@ UA=YOUR-GOOGLE-TRACKING-ID
 | DASHBOARD | The Web-Dashboard config value. (eg. `true/false`) | :x: |
 | SECRET | The bot client secret (Do not remember! The `SECRET` value is Super-Secret), required to run Web Dashboard | :x: |
 | UA | Google analytics tracking ID, used in Web-Dashboard | :x: |
+| YOUTUBE | Youtube API Key (Used in music) | :heavy_check_mark: |
+| GENIUS_KEY | Genius API Key (Used in music and lyrics) | :heavy_check_mark: |
 
 # Development
 
