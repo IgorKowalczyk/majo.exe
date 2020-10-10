@@ -20,7 +20,7 @@ module.exports = {
   if (!args[0]) return msg.edit("Please provide a song name or link to search.");
   const player = new Player(client);
 
-  client.player.search(args.join(" "), message.author).then(async res => {
+  client.player.searchTracks(args.join(" "), message.author).then(async res => {
    switch (res.loadType) {
     case "TRACK_LOADED":
      player.queue.add(res.tracks[0]);
