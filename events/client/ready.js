@@ -40,7 +40,7 @@ try {
 }
 
 client.queue = new Collection();
-client.music = new ErelaClient(client, nodes)
+client.music = new Utils(client, nodes)
  .on("nodeError", console.log)
  .on("nodeConnect", () => console.log(chalk.blue("[Lavalink] Successfully Connected..")))
  .on("queueEnd", player => {
