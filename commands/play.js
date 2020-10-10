@@ -1,6 +1,6 @@
 const { Utils } = require("erela.js")
 const Discord = require("discord.js");
-const formatDuration = require('../../utils/formatduration')
+const formatDuration = require('../utils/formatduration')
 
 module.exports = {
  name: "play",
