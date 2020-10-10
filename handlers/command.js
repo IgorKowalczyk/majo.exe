@@ -1,4 +1,5 @@
-const { readdirSync } = require('fs');
+const readdirSync = require('fs');
+const chalk = require('chalk');
 
 module.exports = (client) => {
  const commands = readdirSync('./commands/').forEach(file => {
@@ -10,6 +11,6 @@ module.exports = (client) => {
    });
   }
  });
- console.log('Loading commands...');
- console.log(`Successfully loaded ${client.commands.size} commands!`);
+ console.log(chalk.blue('Loading commands...'));
+ console.log(chalk.blue("Successfully loaded ") + chalk.blue.underline(`${client.commands.size}`) + chalk.blue(" commands!"));
 }
