@@ -1,0 +1,5 @@
+<% if (!user.guilds) { %>
+<% } else { %>
+<h3><span class="bold">T^T</span> There are no servers.<br>
+<p class="note"><span class="bold">Info:</span> To add the bot you must have the <code>MENAGE_GUILD</code> permission.</p></h3>
+<% } %>
