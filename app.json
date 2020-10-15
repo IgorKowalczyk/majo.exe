@@ -31,11 +31,11 @@
   },
   "SECRET": {
    "description": "The bot client secret (Remember! The SECRET value is Super-Secret), required to run Web Dashboard",
-   "required": false
+   "required": true
   },
   "MONGODB": {
    "description": "The mongodb database url",
-   "required": false
+   "required": true
   },
   "ANALYTICS": {
    "description": "oogle analytics tracking ID, used in Web-Dashboard",
@@ -43,7 +43,7 @@
   },
   "DASHBOARD": {
    "description": "The Web-Dashboard config value. (eg. true/false)",
-   "required": false
+   "required": true
   }
  },
  "keywords": [
