@@ -20,24 +20,34 @@ Go to [this link](https://igorkowalczyk.github.io/majobot/authorize) and authori
 We host this bot. Majo.exe will be online 24/7.
 - If you want to self-host the bot [look here](#self-hosting)
 
-## Deploy
-Deploy the app to [Heroku](https://heroku.com)
-
-[![Deploy to heroku](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy?template=https://github.com/igorkowalczyk/majobot/tree/master)
-
-# Self-Hosting
+### Self-Hosting
 
 1. Clone [this repository](https://github.com/igorkowalczyk/majobot),
 2. Run `npm install`,
 3. Grab a token and client secret on [Discord's developer portal](https://discord.com/developers/applications),
 4. Grab a Genius and Youtube API keys here [...](...)
-4. Fill `config.json` and `dashboard.json` with your variables (`dashboard.json` is the config file for Web Dashboard, ignore this file if you not use Majo Dashboard),
-5. Create a `.env` file and add a `TOKEN` environmental variable whose value is the token above. (Remember! The `TOKEN` value is Super-Secret)
-6. In `.env` Set `PREFIX` - this is your bot prefix, a `YOUTUBE` - This is your Youtube API Key (Used for music), a `GENIUS_KEY` - Genius Lyrics API Key (Used for music and lyrics) a `SECRET` - this is your client secret variabble (Used for web-dashboard, Remember! The `SECRET` value is Super-Secret), a Google Trakcing ID (For Website analytics) - `UA=TRACKING-ID` if you don't have to use analytics just delete the settings value and add a `DASHBOARD=[true/false]` value - if `true` the bot will be hosted with web dasboard, if `false` the bot will be hosted without web dashboard (The `.env` file was private).
-7. Run `node index.js`
+5. Fill `config.json` and `dashboard.json` with your variables (`dashboard.json` is the config file for Web Dashboard, ignore this file if you not use Majo Dashboard),
+6. Create a `.env` file  (Remember! The `.env` file is Super-Secret - Don't share it!)
+7. In `.env` file set:
+    * `TOKEN` - Bot token used to login (Remember! The `TOKEN` value is Super-Secret)
+    * `PREFIX` - Bot prefix
+    * `YOUTUBE` - Youtube API Key (Used for music)
+    * `GENIUS_KEY` - Genius Lyrics API Key (Used for lyrics) 
+    * `SESSION_SECRET` - Session secret key, random sequence of words, letterss or numbers
+    * `SECRET` - Client secret variabble (Remember! The `SECRET` value is Super-Secret)
+    * `MONGODB` - MongoDB host url
+    * `ANALYTICS` - Google Trakcing ID (For Website analytics)
+    * `ID` - Your bot ID (Not your client ID!)
+    * `DASHBOARD=[true/false]` value - if `true` the bot will be hosted with web dasboard, if `false` the bot will be hosted without web dashboard
+9. Run `node index.js`
 > NOTE: See the example [`.env` file below](#example-env-file)!
 
-## Example `.env` file
+### Heroku Hosting
+Deploy the app to [Heroku](https://heroku.com)
+
+[![Deploy to heroku](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy?template=https://github.com/igorkowalczyk/majobot/tree/master)
+
+# Example `.env` file
 
 ```
 # Environment Config
@@ -50,27 +60,36 @@ Deploy the app to [Heroku](https://heroku.com)
 
 TOKEN=YOUR-TOKEN-GOES-HERE
 PREFIX=!majo
-DASHBOARD=true
-SECRET=YOUR-BOT-CLIENT-SECRET
-UA=YOUR-GOOGLE-TRACKING-ID
 YOUTUBE=YOUT-YOUTUBE-API-KEY
 GENIUS_KEY=YOUR-GENIUS-KEY
+SESSION_SECRET=YOUR-SESSION-SECRET-(RANDOM-WORDS)
+SECRET=YOUR-BOT-CLIENT-SECRET
+MONGODB=YOUR-MONGODB-URL
+ANALYTICS=YOUR-GOOGLE-TRACKING-ID
+ID=YOUR_BOT-ID
+DASHBOARD=true
 
 # !majo is the default prefix, you can change it later.
 
 # note: .env is a shell file so there can't be spaces around =
 
 ```
+
+## `.env` Table
 | `.env` | Description | Required |
 |---|---|---|
 | TOKEN | The bot token, required to run (Remember! The `TOKEN` value is Super-Secret) | :heavy_check_mark: |
-| PREFIX | The default bot prefix (eg. `!majo`) | :heavy_check_mark: |
-| DASHBOARD | The Web-Dashboard config value. (eg. `true/false`) | :x: |
-| SECRET | The bot client secret (Remember! The `SECRET` value is Super-Secret), required to run Web Dashboard | :x:/:heavy_check_mark: |
-| UA | Google analytics tracking ID, used in Web-Dashboard | :x:/:heavy_check_mark: |
 | YOUTUBE | Youtube API Key (Used in music) | :heavy_check_mark: |
+| PREFIX | The default bot prefix (eg. `!majo`) | :heavy_check_mark: |
 | GENIUS_KEY | Genius API Key (Used in music and lyrics) | :heavy_check_mark: |
+| SESSION_SECRET | Random sequence of words, letterss or numbers`*` | :x:/:heavy_check_mark: |
+| SECRET | The bot client secret (Remember! The `SECRET` value is Super-Secret)`*` | :x:/:heavy_check_mark: |
+| MONGODB | The mongodb database url`*` | :heavy_check_mark: |
+| ANALYTICS | Google analytics tracking ID, used in Web-Dashboard`^` | :x: |
+| DASHBOARD | The Web-Dashboard config value. (eg. `true/false`)`^` | :heavy_check_mark: |
 
+`*` = Required to run the web dashboard
+`^` = Not required to run but used in web dashboard
 # Development
 
 ### Node.js Version
