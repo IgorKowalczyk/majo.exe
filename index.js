@@ -9,6 +9,11 @@ const prefix = process.env.PREFIX;
 const newUsers = new Discord.Collection();
 var botMembers = 0;
 
+const mongoose = require("mongoose");
+const config = require("./config");
+const GuildSettings = require("./dashboard/models/settings");
+const Dashboard = require("./dashboard/dashboard");
+
 /* Login and Commands */
 if (discord_token) {
  client.commands = new Discord.Collection();
