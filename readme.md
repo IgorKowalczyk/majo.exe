@@ -38,7 +38,8 @@ We host this bot. Majo.exe will be online 24/7.
     * `MONGODB` - MongoDB host url
     * `ANALYTICS` - Google Trakcing ID (For Website analytics)
     * `ID` - Your bot ID (Not your client ID!)
-    * `DASHBOARD=[true/false]` value - if `true` the bot will be hosted with web dasboard, if `false` the bot will be hosted without web dashboard
+    * `DASHBOARD=[true/false]` - if `true` the bot will be hosted with web dasboard, if `false` the bot will be hosted without web dashboard
+    * `DOMAIN` - your site adress (include `https://` or subfolder)
 9. Run `node index.js`
 > NOTE: See the example [`.env` file below](#example-env-file)!
 
@@ -67,8 +68,8 @@ SECRET=YOUR-BOT-CLIENT-SECRET
 MONGODB=YOUR-MONGODB-URL
 ANALYTICS=YOUR-GOOGLE-TRACKING-ID
 ID=YOUR_BOT-ID
-DASHBOARD=true
-
+DASHBOARD=[true/false]
+DOMAIN=YOUR=SITE-ADRESS
 # !majo is the default prefix, you can change it later.
 
 # note: .env is a shell file so there can't be spaces around =
@@ -86,16 +87,18 @@ DASHBOARD=true
 | SECRET | The bot client secret (Remember! The `SECRET` value is Super-Secret)`*` | :x:/:heavy_check_mark: |
 | MONGODB | The mongodb database url`*` | :heavy_check_mark: |
 | ANALYTICS | Google analytics tracking ID, used in Web-Dashboard`^` | :x: |
-| DASHBOARD | The Web-Dashboard config value. (eg. `true/false`)`^` | :heavy_check_mark: |
-
+| DASHBOARD | The Web-Dashboard config value. (eg. `true/false`, default value: `false`)`^` | :x: |
+| DOMAIN | Your site adress (include `https://` or subfolder)`^` | :x:/:heavy_check_mark: |
 `*` = Required to run the web dashboard
 `^` = Not required to run but used in web dashboard
+
 # Development
 
 ### Node.js Version
 
-To test site in `.env` file set the `DASHBOARD=true/false` value. ([See example `.env` file](#example-env-file))
-
+1. To test site in `.env` file set the `DASHBOARD=true/false` value. ([See example `.env` file](#example-env-file))
+2. Fill dashboard config (`config.js` and `.env`)
+ 
 ### Jekyll Version
 To set up your environment to develop this page, run `bundle install`.
 
@@ -106,7 +109,6 @@ If you have any issues with the page please create [new issue here](https://gith
 
 # Pull Requests
 When submitting a pull request:
-
 - Clone the repo.
 - Create a branch off of master and give it a meaningful name (e.g. my-awesome-new-feature).
 - Open a [pull request](https://github.com/igorkowalczyk/majobot/pulls) on [GitHub](https://github.com) and describe the feature or fix.
