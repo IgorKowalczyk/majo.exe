@@ -98,7 +98,15 @@ DOMAIN=YOUR=SITE-ADRESS
 
 1. To test site in `.env` file set the `DASHBOARD=true/false` value. ([See example `.env` file](#example-env-file))
 2. Fill dashboard config (`config.js` and `.env`)
- 
+3. Add the redirect uri here: https://discord.com/developers/applications/YOUR-BOT-ID/oauth2
+ * ```
+   https://your-domain.com
+   https://your-domain.com/callback
+   https://your-domain.com/dashboard
+   https://your-domain.com/dashboard/:guildID
+   https://your-domain.com/login
+   ```
+
 ### Jekyll Version
 To set up your environment to develop this page, run `bundle install`.
 
