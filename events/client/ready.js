@@ -1,8 +1,6 @@
 const prefix = process.env.PREFIX;
-const { erela, Utils } = require("erela.js");
 const { Collection, MessageEmbed, Discord } = require("discord.js");
 const chalk = require('chalk');
-const { nodes } = require("../../config.json");
 
 module.exports = (client) => {
 try {
