@@ -1,7 +1,7 @@
 const Discord = require('discord.js');
-const cnf = require('../config.json');
 const { readdirSync } = require('fs');
 const prefix = process.env.PREFIX;
+const config = require("./config");
 
 module.exports = {
  name: "help",
@@ -10,7 +10,6 @@ module.exports = {
  cooldown: 5,
  description: "Displays all the commands available",
  usage: "help [command]",
-
  run: async (client, message, args) => {
   if (args[0]) {
    return getCMD(client, message, args[0]);
