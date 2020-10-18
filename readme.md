@@ -1,3 +1,5 @@
+> #### *This project is outdated! It will soon be upgraded to `Discord.js v12.3.1`. If you want to see the progress of the work see [@aurolia-css/majo-rebuild](https://github.com/aurolia-css/majo-rebuild) (official repo)*
+
 # Majo.exe
 
 An advanced Discord bot, contains commands for moderation, fun, music, economics and NSFW.
