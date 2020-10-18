@@ -1,8 +1,7 @@
-const prefix = process.env.PREFIX;
-const { Collection, MessageEmbed, Discord } = require("discord.js");
+const Discord = require("discord.js");
 const chalk = require('chalk');
+const client = new Discord.Client({disableEveryone: true,});
 const config = require("../../config");
-const GuildSettings = require("../../dashboard/models/settings");
 const Dashboard = require("../../dashboard/dashboard");
 client.config = config;
 
@@ -17,21 +16,21 @@ try {
   statuslist.push(	
    `🎉 ${client.guilds.cache.size} servers 🎉`,	
    `🎉 ${client.users.cache.size} members 🎉`,	
-   `🎉 ${prefix} help 🎉`,	
+   `🎉 ${config.prefix} help 🎉`,	
    `🎉 Happy Birthday Discord! 🎉`	
   );	
  } else if (date == enddateEEP) {	
   statuslist.push(	
    `🔥 ${client.guilds.cache.size} servers 🔥`,	
    `🔥 ${client.users.cache.size} members 🔥`,	
-   `🔥 ${prefix} help 🔥`,	
+   `🔥 ${config.prefix} help 🔥`,	
    `🔥 EEP 4 LIFE (04/18)! 🔥`	
   );	
  } else {	
   statuslist.push(	
    `${client.guilds.cache.size} servers`,	
    `${client.users.cache.size} members`,	
-   `${prefix} help`	
+   `${config.prefix} help`	
   );	
  }	
  const random = Math.floor(Math.random() * (statuslist.length - 1) + 1);
@@ -42,6 +41,5 @@ try {
 }
 
 Dashboard(client);
-
 console.log(chalk.blue("Connected! Logged in as ") + chalk.blue.underline(`${client.user.tag}`) + chalk.blue("!"));
 }
