@@ -1,5 +1,7 @@
 const Discord = require("discord.js");
 const ms = require("ms");
+const config = require("../config");
+const prefix = config.prefix;
 
 module.exports = {
  name: "giveaway",
