@@ -1,4 +1,6 @@
 const Discord = require("discord.js");
+const config = require("../config");
+const prefix = config.prefix;
 
 module.exports = {
  name: "members",
@@ -15,36 +17,29 @@ module.exports = {
   var offline = 0;
   var idle = 0;
   var donotdisturb = 0;
-  
   onlineMembers.forEach(member => {
-    online += 1;
+   online += 1;
   }); 
-  
   offlineMembers.forEach(member => {
-    offline += 1;
+   offline += 1;
   }); 
-  
   onlineMembers.forEach(member => {
-    online += 1;
+   online += 1;
   });   
-  
   idleMembers.forEach(member => {
-    idle += 1;
+   idle += 1;
   });  
-  
   dndMembers.forEach(member => {
-    donotdisturb += 1;
+   donotdisturb += 1;
   }); 
-  
   const embed = new Discord.MessageEmbed()
-    .setAuthor("Members", message.guild.iconURL)
-    .setColor("RANDOM")
-    .addField("Overall Members:", message.guild.memberCount || message.guild.members.size)
-    .addField("Online Members:", online)
-    .addField("Offline/Invisible Members:", offline)
-    .addField("Idle Members:", idle)
-    .addField("Do Not Disturb Members:", donotdisturb)
-  
+   .setAuthor("Members", message.guild.iconURL)
+   .setColor("RANDOM")
+   .addField("Overall Members:", message.guild.memberCount || message.guild.members.size)
+   .addField("Online Members:", online)
+   .addField("Offline/Invisible Members:", offline)
+   .addField("Idle Members:", idle)
+   .addField("Do Not Disturb Members:", donotdisturb)
   message.channel.send(embed);
-}
+ }
 }
