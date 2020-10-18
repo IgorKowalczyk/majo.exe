@@ -1,7 +1,7 @@
 const Discord = require('discord.js');
 const { readdirSync } = require('fs');
-const prefix = process.env.PREFIX;
-const config = require("./config");
+const config = require("../config");
+const prefix = config.prefix;
 
 module.exports = {
  name: "help",
