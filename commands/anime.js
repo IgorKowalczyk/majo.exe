@@ -1,5 +1,7 @@
 const Discord = module.require("discord.js");
 const malScraper = require('mal-scraper');
+const config = require("../config");
+const prefix = config.prefix;
 
 module.exports = {
  name: "anime",
