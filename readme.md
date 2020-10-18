@@ -96,8 +96,6 @@ DOMAIN=YOUR=SITE-ADRESS
 
 # Development
 
-### Node.js Version
-
 1. To test site in `.env` file set the `DASHBOARD=true/false` value. ([See example `.env` file](#example-env-file))
 2. Fill dashboard config (`config.js` and `.env`)
 3. Add the redirect uri here: https://discord.com/developers/applications/YOUR-BOT-ID/oauth2
@@ -108,11 +106,7 @@ DOMAIN=YOUR=SITE-ADRESS
        https://your-domain.com/dashboard/:guildID
        https://your-domain.com/login
       ```
-
-### Jekyll Version
-To set up your environment to develop this page, run `bundle install`.
-
-To test site, run `bundle exec jekyll serve` and open your browser at http://localhost:4000. This starts a Jekyll server using your config and the contents. As you make modifications, your site will regenerate and you should see the changes in the browser after a refresh.
+4. Go to your dashboard in browser (eg. to `localhost`)
 
 # Issues
 If you have any issues with the page please create [new issue here](https://github.com/igorkowalczyk/majobot/issues)
