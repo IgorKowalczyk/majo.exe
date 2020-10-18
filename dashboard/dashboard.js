@@ -1,3 +1,4 @@
+const Discord = require("discord.js");
 const url = require("url");
 const path = require("path");
 const express = require("express");
@@ -7,8 +8,6 @@ const Strategy = require("passport-discord").Strategy;
 const config = require("../config");
 const ejs = require("ejs");
 const bodyParser = require("body-parser");
-const Discord = require("discord.js");
-const GuildSettings = require("./models/settings");
 const { readdirSync } = require('fs');
 
 // We instantiate express app and the session store.
