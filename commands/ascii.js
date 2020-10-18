@@ -1,8 +1,10 @@
 var figlet = require('figlet');
 const Discord = require('discord.js')
+const config = require("../config");
+const prefix = config.prefix;
 
 module.exports = {
- name: 'ascii',
+ name: "ascii",
  aliases: [],
  category: "Fun",
  description: "Convert text to asci format",
