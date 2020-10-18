@@ -1,6 +1,8 @@
 const Discord = require("discord.js");
 const moment = require("moment")
 require("moment-duration-format")
+const config = require("../config");
+const prefix = config.prefix;
 
 module.exports = {
  name: "uptime",
