@@ -13,7 +13,7 @@ module.exports = {
   const search = `${args}`;
   malScraper.getInfoFromName(search)
    .then((data) => {
-    const malEmbed = new Discord.MessageEmbed()
+    const embed = new Discord.MessageEmbed()
      .setAuthor(`:mag_right: My Anime List search result for ${args}`.split(',').join(' '), message.guild.iconURL({ dynamic: true, format: 'png'}))
      .setImage(data.picture)
      .setColor("RANDOM")
@@ -28,7 +28,7 @@ module.exports = {
      .addField(":link: Link", data.url)
      .setFooter("Requested by " + `${message.author.username}`, message.author.displayAvatarURL({ dynamic: true, format: 'png', size: 2048 }))
      .setTimestamp()
-    message.channel.send(malEmbed);
+    message.channel.send(embed);
    }).catch((err) => message.channel.send({embed: {
     color: 16734039,
     description: ":x: Please enter a vaild name!"
