@@ -5,13 +5,13 @@ const prefix = config.prefix;
 module.exports = {
  name: "ban",
  aliases: [],
- description: "Bans a member",
+ description: "Ban a member",
  category: "Economy",
  usage: "ban <mention> <reason>",
  run: async (client, message, args) => {
   if (message.member.hasPermission("BAN_MEMBERS")) {
-   let mentioned = await message.mentions.members.first();
-   let reason = await args.slice(1).join(' ');
+   const mentioned = await message.mentions.members.first();
+   const reason = await args.slice(1).join(' ');
    if (!mentioned) {
     return await message.channel.send({embed: {
      color: 16734039,
@@ -34,7 +34,7 @@ module.exports = {
     reason = "No reason provided!";
    }
    message.guild.members.ban(mentioned, { reason: reason });
-   let ban = new Discord.MessageEmbed()
+   const ban = new Discord.MessageEmbed()
     .setColor("RANDOM")
     .setTitle(":white_check_mark: Success!", message.guild.iconURL({ dynamic: true, format: 'png'}))
     .setDescription(":no_entry: " + mentioned.displayName + " has been banned! :no_entry:")
