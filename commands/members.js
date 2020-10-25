@@ -9,14 +9,14 @@ module.exports = {
  category: "Utility",
  usage: "members",
  run: async (client, message, args) => {
-  let onlineMembers = message.guild.members.cache.filter(m => m.presence.status === 'online');
-  let offlineMembers = message.guild.members.cache.filter(m => m.presence.status === 'offline');
-  let idleMembers = message.guild.members.cache.filter(m => m.presence.status === 'idle');
-  let dndMembers = message.guild.members.cache.filter(m => m.presence.status === 'dnd');
-  var online = 0;
-  var offline = 0;
-  var idle = 0;
-  var donotdisturb = 0;
+  const onlineMembers = message.guild.members.cache.filter(m => m.presence.status === 'online');
+  const offlineMembers = message.guild.members.cache.filter(m => m.presence.status === 'offline');
+  const idleMembers = message.guild.members.cache.filter(m => m.presence.status === 'idle');
+  const dndMembers = message.guild.members.cache.filter(m => m.presence.status === 'dnd');
+  const online = 0;
+  const offline = 0;
+  const idle = 0;
+  const donotdisturb = 0;
   onlineMembers.forEach(member => {
    online += 1;
   }); 
