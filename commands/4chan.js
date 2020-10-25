@@ -29,7 +29,7 @@ module.exports = {
    }
 
    if (chanargs === "boards") {
-    const vboards = new Discord.MessageEmbed()
+    let vboards = new Discord.MessageEmbed()
      .setColor("RANDOM")
      .setTitle("All boards:")
      .setTimestamp()
@@ -43,7 +43,7 @@ module.exports = {
 
    var board = chanargs;
    if(boards.indexOf(board) == -1) {
-    const vb = new Discord.MessageEmbed()
+    let vb = new Discord.MessageEmbed()
      .setColor(16734039)
      .setDescription(":x: Please enter a vaild board! To see all boards check \`" + `${prefix}` + " 4chan boards\`")
     return message.channel.send(vb);
@@ -55,17 +55,17 @@ module.exports = {
 
    https.get(url, res => {
     res.setEncoding('utf8');
-    const body = "";
+    let body = "";
     res.on("data", data => {
      body += data;
      });
     res.on("end", end => {
      body = JSON.parse(body);
-     const postNr = Math.floor(Math.random() * body.threads.length);
-     const imgId = body.threads[postNr].posts[0].tim;
-     const imgExt = body.threads[postNr].posts[0].ext;
-     const com = body.threads[postNr].posts[0].com;
-     const sub = body.threads[postNr].posts[0].sub;
+     var postNr = Math.floor(Math.random() * body.threads.length);
+     var imgId = body.threads[postNr].posts[0].tim;
+     var imgExt = body.threads[postNr].posts[0].ext;
+     var com = body.threads[postNr].posts[0].com;
+     var sub = body.threads[postNr].posts[0].sub;
      if(!sub) {
       sub = "Random 4chan thread";
      }
@@ -82,9 +82,9 @@ module.exports = {
      }
      var thread = "https://boards.4chan.org/"+ board +"/thread/";
      thread += body.threads[postNr].posts[0].no;
-     const imgUrl = "https://i.4cdn.org/" + board + "/";
+     var imgUrl = "https://i.4cdn.org/" + board + "/";
      imgUrl += imgId + "" + imgExt;
-     const chan = new Discord.MessageEmbed()
+     let chan = new Discord.MessageEmbed()
       .setColor("RANDOM")
       .setTitle("🍀 " + sub, message.guild.iconURL({ dynamic: true, format: 'png'}), thread)
       .addField("Description:", com)
