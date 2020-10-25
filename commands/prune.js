@@ -11,7 +11,7 @@ module.exports = {
  run: async (client, message, args) => {
   try {
    if (!message.member.hasPermission("MANAGE_MESSAGES") || !message.member.hasPermission("ADMINISTRATOR")) {
-    let error = new Discord.MessageEmbed()
+    const error = new Discord.MessageEmbed()
      .setColor("FF5757")
      .setDescription(":x: You don't have premission to prune messages!")
      .setFooter("This message will be deleted after 3 seconds", message.author.displayAvatarURL({ dynamic: true, format: 'png', size: 2048 }))
@@ -19,7 +19,7 @@ module.exports = {
     return message.delete({timeout: 3000})
    }
    if (isNaN(args[0])) {
-    let error = new Discord.MessageEmbed()
+    const error = new Discord.MessageEmbed()
      .setColor("FF5757")
      .setDescription(":x: Please input a vaild number!")
      .setFooter("This message will be deleted after 3 seconds", message.author.displayAvatarURL({ dynamic: true, format: 'png', size: 2048 }))
@@ -27,7 +27,7 @@ module.exports = {
     return message.delete({timeout: 3000})
    }
    if (args[0] > 100) {
-    let error = new Discord.MessageEmbed()
+    const error = new Discord.MessageEmbed()
      .setColor("FF5757")
      .setDescription(":x: Insert the number less than 100!")
      .setFooter("This message will be deleted after 3 seconds", message.author.displayAvatarURL({ dynamic: true, format: 'png', size: 2048 }))
@@ -35,7 +35,7 @@ module.exports = {
     return message.delete({timeout: 3000})
    }
    if (args[0] < 2) {
-    let error = new Discord.MessageEmbed()
+    const error = new Discord.MessageEmbed()
      .setColor("FF5757")
      .setDescription(":x: Insert the number more than 1!")
      .setFooter("This message will be deleted after 3 seconds", message.author.displayAvatarURL({ dynamic: true, format: 'png', size: 2048 }))
@@ -45,7 +45,7 @@ module.exports = {
    await message.delete()
    await message.channel.bulkDelete(args[0])
    .then(messages => {
-    let error = new Discord.MessageEmbed()
+    const error = new Discord.MessageEmbed()
      .setColor("RANDOM")
      .setTitle(":white_check_mark: Success!", message.guild.iconURL({ dynamic: true, format: 'png'}))
      .setDescription(":wastebasket: Deleted " + `${messages.size}/${args[0]}` + " messages.")
