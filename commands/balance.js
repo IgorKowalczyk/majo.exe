@@ -10,12 +10,12 @@ module.exports = {
  category: "Economy",
  usage: "balance <mention>",
  run: async (client, message, args) => {
-  const user = message.mentions.members.first() || message.author;
-  const bal = db.fetch(`money_${message.guild.id}_${user.id}`)
+  let user = message.mentions.members.first() || message.author;
+  let bal = db.fetch(`money_${message.guild.id}_${user.id}`)
   if (bal === null) bal = 0;
-  const bank = await db.fetch(`bank_${message.guild.id}_${user.id}`)
+  let bank = await db.fetch(`bank_${message.guild.id}_${user.id}`)
   if (bank === null) bank = 0;
-  const moneyEmbed = new Discord.MessageEmbed()
+  let moneyEmbed = new Discord.MessageEmbed()
    .setColor("RANDOM")
    .setTitle(":white_check_mark: Success!", message.guild.iconURL({ dynamic: true, format: 'png'}))
    .setDescription(`${user}'s Balance:\n\n:money_with_wings: Pocket: \`${bal}\`\n:moneybag: Bank: \`${bank}\``)
