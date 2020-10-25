@@ -10,7 +10,7 @@ module.exports = {
  usage: "avatar <mention>",
  run: async (client, message, args) => {
   if (!message.mentions.users.size) {     
-   let embed = new Discord.MessageEmbed()
+   const embed = new Discord.MessageEmbed()
     .setColor("RANDOM")
     .setAuthor(message.author.username + "'s Avatar", message.author.displayAvatarURL())
     .setImage(message.author.displayAvatarURL({ dynamic: true, format: 'png', size: 2048 })) 
@@ -21,9 +21,9 @@ module.exports = {
    return `${user.username},${user.displayAvatarURL({ dynamic: true, format: 'png', size: 2048 })}`;
   });
   for (var i = 0; i < avatarList.length; i++) {
-   let Username = avatarList[i].split(',')[0];
-   let AvatarURL = avatarList[i].split(",").pop();
-   let embed = new Discord.MessageEmbed()
+   const Username = avatarList[i].split(',')[0];
+   const AvatarURL = avatarList[i].split(",").pop();
+   const embed = new Discord.MessageEmbed()
     .setColor("RANDOM")
     .setAuthor(Username + "'s Avatar", AvatarURL)
     .setImage(AvatarURL)
