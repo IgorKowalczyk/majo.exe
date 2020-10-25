@@ -12,7 +12,7 @@ module.exports = {
  run: async (client, message, args) => {
   try {
    if (message.member.hasPermission("MANAGE_MESSAGES")) {
-    const user = message.mentions.members.first();
+    let user = message.mentions.members.first();
     if (!user) return message.channel.send({embed: {
      color: 16734039,
      description: ":x: You must mention someone to add money!"
@@ -22,8 +22,8 @@ module.exports = {
      description: ":x: You must enter the amount of money to add!"
     }})
     db.add(`money_${message.guild.id}_${user.id}`, args[1])
-    const bal = await db.fetch(`money_${message.guild.id}_${user.id}`)
-    const moneyEmbed = new Discord.MessageEmbed()
+    let bal = await db.fetch(`money_${message.guild.id}_${user.id}`)
+    let moneyEmbed = new Discord.MessageEmbed()
      .setColor("RANDOM")
      .setTitle(":white_check_mark: Success!", message.guild.iconURL({ dynamic: true, format: 'png'}))
      .setDescription(`:money_with_wings: Added \`${args[1]}\` coins\n:moneybag: New Balance: \`${bal}\``)
