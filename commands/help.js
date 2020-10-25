@@ -31,28 +31,28 @@ function getAll(client, message) {
   for (const id of categories) {
    const category = client.commands.filter(cmd => cmd.category === id);
    if (id == "General") {
-    var icon = ":bricks:";
+    const icon = ":bricks:";
    }
    if (id == "Moderation") {
-    var icon = ":hammer:";
+    const icon = ":hammer:";
    }
    if (id == "Fun") {
-    var icon = ":rofl:";
+    const icon = ":rofl:";
    }
    if (id == "Music") {
-    var icon = ":notes:";
+    const icon = ":notes:";
    }
    if (id == "Economy") {
-    var icon = ":moneybag:";
+    const icon = ":moneybag:";
    }
    if (id == "Utility") {
-    var icon = ":toolbox:";
+    const icon = ":toolbox:";
    }
    if (id == "NSFW") {
-    var icon = ":smirk:";
+    const icon = ":smirk:";
    }
    if (id == "undefined") {
-    var icon = ":grey_question:";
+    const icon = ":grey_question:";
    }
    embed.addField(`${icon} ${id} (${category.size})`, category.map(cmd => `${cmd.name}`).join(', '));
   }
