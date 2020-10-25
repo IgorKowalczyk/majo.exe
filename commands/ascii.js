@@ -1,4 +1,4 @@
-const figlet = require('figlet');
+var figlet = require('figlet');
 const Discord = require('discord.js')
 const config = require("../config");
 const prefix = config.prefix;
@@ -10,12 +10,12 @@ module.exports = {
  description: "Convert text to asci format",
  usage: "ascii <text>",
  run: async (client, message, args) => {
-  const maxLen = 50
-  if (args.join(' ').length > maxLen) return message.channel.send({embed: {
+  var maxLen = 50
+  if(args.join(' ').length > maxLen) return message.channel.send({embed: {
    color: 16734039,
    description: ":x: The max length is " + `${maxLen}` + " !"
   }})
-  if (!args[0]) return message.channel.send({embed: {
+  if(!args[0]) return message.channel.send({embed: {
    color: 16734039,
    description: ":x: Please enter a text to convert!"
   }})
@@ -26,7 +26,7 @@ module.exports = {
      description: "Something went wrong... :cry:"
     }})
    }
-  const embed = new Discord.MessageEmbed()
+  let embed = new Discord.MessageEmbed()
    .setColor("RANDOM")
    .setTitle(":white_check_mark: Success!", message.guild.iconURL({ dynamic: true, format: 'png'}))
    .setDescription(":tada: Your ascii code is generated! You can see it below")
