@@ -9,8 +9,8 @@ module.exports = {
  usage: "beep",
  run: async (client, message, args) => {
   const embed = new Discord.MessageEmbed()
-   .setColor: 'RANDOM',
-   .setDescription: "Boop!"
+   .setColor('RANDOM')
+   .setDescription("Boop!")
   message.channel.send(embed);
  }
 }
