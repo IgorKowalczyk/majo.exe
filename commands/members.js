@@ -33,7 +33,7 @@ module.exports = {
    donotdisturb += 1;
   }); 
   const embed = new Discord.MessageEmbed()
-   .setAuthor("Members", message.guild.iconURL)
+   .setAuthor("Total members", message.guild.iconURL)
    .setColor("RANDOM")
    .addField("Overall Members:", message.guild.memberCount || message.guild.members.size)
    .addField("Online Members:", online)
