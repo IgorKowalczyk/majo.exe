@@ -5,7 +5,7 @@ const prefix = config.prefix;
 
 module.exports = {
  name: "giveaway",
- aliases: [],
+ //aliases: [],
  description: "Create a giveaway",
  category: 'Utility',
  usage: "giveaway <time> <channel> <prize>",
@@ -45,25 +45,25 @@ module.exports = {
     description: ":x: No prize specified!"
    }})
   }
-  const endembed = new Discord.MessageEmbed()
+  let endembed = new Discord.MessageEmbed()
    .setTitle(":tada: GIVEAWAY ENDED! :tada:")
    .setDescription("The giveaway for prize of **" + `${prize}` + "** ended!")
    .setTimestamp()
    .setColor("RANDOM")
    .setFooter("Requested by " + `${message.author.username}` + " The giveaway ended at", message.author.displayAvatarURL({ dynamic: true, format: 'png', size: 2048 }));
-  const success = new Discord.MessageEmbed()
+  let success = new Discord.MessageEmbed()
    .setColor("RANDOM")
    .setTitle(":white_check_mark: Success!", message.guild.iconURL({ dynamic: true, format: 'png'}))
    .setDescription(":tada: Giveaway created in " + `${channel}` + "!")
    .setFooter("This message will be deleted after 10 seconds", message.author.displayAvatarURL({ dynamic: true, format: 'png', size: 2048 }))
   message.channel.send(success).then(m => m.delete({timeout: 10000}))
-  const embed = new Discord.MessageEmbed()
+  let embed = new Discord.MessageEmbed()
    .setTitle(":tada: New giveaway! :tada:", message.guild.iconURL({ dynamic: true, format: 'png'}))
    .setDescription("The user " + `${message.author}` + " is hosting a giveaway for the prize of **" + `${prize}` + "**\n*React to this message with :tada: emoji to enter the giveaway!*")
    .setTimestamp(Date.now() + ms(args[0]))
    .setFooter("Requested by " + `${message.author.username}` + " • The giveaway will end in " + `${args[0]}` + "!", message.author.displayAvatarURL({ dynamic: true, format: 'png', size: 2048 }))
    .setColor("RANDOM");
-  const m = await channel.send(embed)
+  let m = await channel.send(embed)
   m.react("🎉")
   setTimeout(() => {
    m.edit(endembed);
@@ -73,8 +73,8 @@ module.exports = {
     description: ":x: Not enough people reacted for me to start draw a winner! (" + `${m.reactions.cache.get("🎉").count}` + " reactions)",
    }})
    }
-   const winner = m.reactions.cache.get("🎉").users.cache.filter((u) => !u.bot).random();
-   const end = new Discord.MessageEmbed()
+   let winner = m.reactions.cache.get("🎉").users.cache.filter((u) => !u.bot).random();
+   let end = new Discord.MessageEmbed()
     .setColor("RANDOM")
     .setDescription(":tada: The winner of the giveaway for **" + `${prize}` + "** is " + `${winner}` + "! :tada:")
    return channel.send(end);
