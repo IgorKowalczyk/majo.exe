@@ -5,7 +5,7 @@ const prefix = config.prefix;
 
 module.exports = {
  name: "4chan",
- aliases: [],
+ //aliases: [],
  description: "Shows a random image (and text) from the random board from 4chan",
  category: "Fun",
  usage: "4chan <board/boards>",
