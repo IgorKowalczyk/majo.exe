@@ -1,6 +1,8 @@
 const Discord = require("discord.js");
 const db = require("quick.db");
 const ms = require("parse-ms");
+const config = require("../config");
+const prefix = config.prefix;
 
 module.exports = {
  name: "beg",
