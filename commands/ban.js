@@ -10,8 +10,8 @@ module.exports = {
  usage: "ban <mention> <reason>",
  run: async (client, message, args) => {
   if (message.member.hasPermission("BAN_MEMBERS")) {
-   const mentioned = await message.mentions.members.first();
-   const reason = await args.slice(1).join(' ');
+   let mentioned = await message.mentions.members.first();
+   let reason = await args.slice(1).join(' ');
    if (!mentioned) {
     return await message.channel.send({embed: {
      color: 16734039,
