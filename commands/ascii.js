@@ -5,7 +5,7 @@ const prefix = config.prefix;
 
 module.exports = {
  name: "ascii",
- aliases: [],
+ aliases: ["asciiart", "ascii-art"],
  category: "Fun",
  description: "Convert text to asci format",
  usage: "ascii <text>",
