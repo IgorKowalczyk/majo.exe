@@ -19,7 +19,6 @@ module.exports = {
   }
   },
 }
-
 function getAll(client, message) {
  const commands = readdirSync('./commands/');
  const embed = new Discord.MessageEmbed()
