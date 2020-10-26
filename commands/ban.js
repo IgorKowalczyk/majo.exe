@@ -4,7 +4,7 @@ const prefix = config.prefix;
 
 module.exports = {
  name: "ban",
- aliases: [],
+ //aliases: [],
  description: "Ban a member",
  category: "Economy",
  usage: "ban <mention> <reason>",
@@ -34,7 +34,7 @@ module.exports = {
     reason = "No reason provided!";
    }
    message.guild.members.ban(mentioned, { reason: reason });
-   const ban = new Discord.MessageEmbed()
+   let ban = new Discord.MessageEmbed()
     .setColor("RANDOM")
     .setTitle(":white_check_mark: Success!", message.guild.iconURL({ dynamic: true, format: 'png'}))
     .setDescription(":no_entry: " + mentioned.displayName + " has been banned! :no_entry:")
