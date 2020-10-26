@@ -6,7 +6,7 @@ const prefix = config.prefix;
 module.exports = {
  name: "anime",
  aliases: ["animesearch"],
- description: "Search for anime",
+ description: "Search for anime list",
  category: "Fun",
  usage: "animesearch <name>",
  run: async (client, message, args) => {
