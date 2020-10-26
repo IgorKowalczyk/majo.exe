@@ -4,9 +4,9 @@ const prefix = config.prefix;
 
 module.exports = {
  name: "prune",
- aliases: [],
+ aliases: ["clear"],
  description: "Removes up to 100 messages",
- category: 'Moderation',
+ category: "Moderation",
  usage: "prune <amount>",
  run: async (client, message, args) => {
   try {
