@@ -14,4 +14,5 @@ module.exports = {
  "clientSecret": process.env.SECRET,
  "port": process.env.PORT,
  "prefix": process.env.PREFIX,
+ "dashboard": process.env.DASHBOARD,
 }
