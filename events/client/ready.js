@@ -55,6 +55,11 @@ try {
  console.log(err);
 }
 
-Dashboard(client);
+if (config.dashboard = "true") {
+ Dashboard(client);
+} else {
+ console.log(chalk.blue('Dashboard is now disabled. To enable it change the "DASHBOARD" value in .env file to "true" (Now is set to "') + chalk.blue.underline(`${config.dashboard}`) + chalk.blue('")'));
+}
+
 console.log(chalk.blue("Connected! Logged in as ") + chalk.blue.underline(`${client.user.tag}`) + chalk.blue("!"));
 }
