@@ -10,38 +10,27 @@ const ejs = require("ejs");
 const bodyParser = require("body-parser");
 const { readdirSync } = require('fs');
 
-// We instantiate express app and the session store.
 const app = express();
 app.use(express.static('dashboard/static'));
 const MemoryStore = require("memorystore")(session);
 
-// We export the dashboard as a function which we call in ready event.
 module.exports = async (client) => {
- // We declare absolute paths.
  const dataDir = path.resolve(`${process.cwd()}${path.sep}dashboard`); // The absolute path of current this directory.
  const templateDir = path.resolve(`${dataDir}${path.sep}templates`); // Absolute path of ./templates directory.
 
- // Deserializing and serializing users without any additional logic.
  passport.serializeUser((user, done) => done(null, user));
  passport.deserializeUser((obj, done) => done(null, obj));
-
- // We set the passport to use a new discord strategy, we pass in client id, secret, callback url and the scopes.
- /** Scopes:
-  * - Identify: Avatar's url, username and discriminator.
-  * - Guilds: A list of partial guilds.
-  */
  passport.use(new Strategy({
    clientID: client.user.id,
    clientSecret: process.env.SECRET,
    callbackURL: `${config.domain}/callback`,
    scope: ["identify", "guilds"],
   },
-  (accessToken, refreshToken, profile, done) => { // eslint-disable-line no-unused-vars
-   // On login we pass in profile with no logic.
+  (accessToken, refreshToken, profile, done) => {
+
    process.nextTick(() => done(null, profile));
   }));
 
- // We initialize the memorystore middleware with our express app.
  app.use(session({
   store: new MemoryStore({
    checkPeriod: 86400000
@@ -51,28 +40,22 @@ module.exports = async (client) => {
   saveUninitialized: false,
  }));
 
- // We initialize passport middleware.
  app.use(passport.initialize());
  app.use(passport.session());
 
- // We bind the domain.
  app.locals.domain = config.domain.split("//")[1];
 
- // We set out templating engine.
  app.engine("html", ejs.renderFile);
  app.set("view engine", "html");
 
- // We initialize body-parser middleware to be able to read forms.
  app.use(bodyParser.json());
  app.use(bodyParser.urlencoded({
   extended: true
  }));
 
- // We declare a renderTemplate function to make rendering of a template in a route as easy as possible.
  const renderTemplate = (res, req, template, data = {}) => {
-  // Default base data which passed to the ejs template by default. 
-  var hostname = req.headers.host; // hostname
-  var pathname = url.parse(req.url).pathname; // pathname
+  var hostname = req.headers.host;
+  var pathname = url.parse(req.url).pathname;
    
   const baseData = {
    bot: client,
@@ -95,25 +78,20 @@ module.exports = async (client) => {
    github: config.github,
    analitics: config.google_analitics,
   };
-  // We render template using the absolute path of the template and the merged default data with the additional data provided.
   res.render(path.resolve(`${templateDir}${path.sep}${template}`), Object.assign(baseData, data));
  };
 
- // We declare a checkAuth function middleware to check if an user is logged in or not, and if not redirect him.
  const checkAuth = (req, res, next) => {
-  // If authenticated we forward the request further in the route.
   if (req.isAuthenticated()) return next();
   // If not authenticated, we set the url the user is redirected to into the memory.
   req.session.backURL = req.url;
-  // We redirect user to login endpoint/route.
   res.redirect("/login");
  }
 
  // Login endpoint.
  app.get("/login", (req, res, next) => {
-   // We determine the returning url.
    if (req.session.backURL) {
-    req.session.backURL = req.session.backURL; // eslint-disable-line no-self-assign
+    req.session.backURL = req.session.backURL;
    } else if (req.headers.referer) {
     const parsed = url.parse(req.headers.referer);
     if (parsed.hostname === app.locals.domain) {
@@ -130,8 +108,7 @@ module.exports = async (client) => {
  // Callback endpoint.
  app.get("/callback", passport.authenticate("discord", {
   failureRedirect: "/"
- }), /* We authenticate the user, if user canceled we redirect him to index. */ (req, res) => {
-  // If user had set a returning url, we redirect him there, otherwise we redirect him to index.
+ }), (req, res) => {
   if (req.session.backURL) {
    const url = req.session.backURL;
    req.session.backURL = null;
@@ -143,7 +120,6 @@ module.exports = async (client) => {
 
  // Features list redirect endpoint.
  app.get("/features", (req, res) => {
-   
   renderTemplate(res,  req, "features.ejs", {
    readdirSync: readdirSync,
    perms: Discord.Permissions
@@ -166,11 +142,9 @@ module.exports = async (client) => {
   
  // Logout endpoint.
  app.get("/logout", function(req, res) {
-  // We destroy the session.
+  // We destroy the session || logout user.
   req.session.destroy(() => {
-   // We logout the user.
    req.logout();
-   // We redirect user to index.
    res.redirect("/");
   });
  });
@@ -189,7 +163,7 @@ module.exports = async (client) => {
 
  // Settings endpoint.
  app.get("/dashboard/:guildID", checkAuth, async (req, res) => {
-  // We validate the request, check if guild exists, member is in guild and if member has minimum permissions, if not, we redirect it back.
+  // Vlidate the request, check if guild exists, member is in guild and if member has minimum permissions
   const guild = client.guilds.cache.get(req.params.guildID);
   if (!guild) return res.redirect("/dashboard");
   const member = guild.members.cache.get(req.user.id);
