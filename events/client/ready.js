@@ -54,6 +54,8 @@ try {
  console.log(err);
 }
 
+console.log(config.dashboard);
+ 
 if (config.dashboard = "true") {
  const Dashboard = require("../../dashboard/dashboard");
  Dashboard(client);
