@@ -5,7 +5,7 @@ const http = require("http");
 const db = require("quick.db");
 const chalk = require("chalk");
 
-const config = require("/config");
+const config = require("./config");
 const token = config.token;
 const prefix = config.prefix;
 
