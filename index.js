@@ -4,9 +4,8 @@ const fs = require("fs");
 const http = require("http");
 const db = require("quick.db");
 const chalk = require("chalk");
-const newUsers = new Discord.Collection();
-var botMembers = 0;
 
+const config = require("../../config");
 const token = config.token;
 const prefix = config.prefix;
 
