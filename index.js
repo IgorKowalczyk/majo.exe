@@ -7,10 +7,6 @@ const chalk = require("chalk");
 const newUsers = new Discord.Collection();
 var botMembers = 0;
 
-const config = require("./config");
-const GuildSettings = require("./dashboard/models/settings");
-const Dashboard = require("./dashboard/dashboard");
-
 const token = config.token;
 const prefix = config.prefix;
 
