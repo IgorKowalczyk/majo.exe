@@ -2,7 +2,6 @@ const Discord = require("discord.js");
 const chalk = require('chalk');
 const client = new Discord.Client({disableEveryone: true,});
 const config = require("../../config");
-const Dashboard = require("../../dashboard/dashboard");
 client.config = config;
 
 module.exports = (client) => {
@@ -56,6 +55,7 @@ try {
 }
 
 if (config.dashboard = "true" || config.sessionSecret || config.secret || config.domain) {
+ const Dashboard = require("../../dashboard/dashboard");
  Dashboard(client);
 } else {
  console.log(chalk.blue('Dashboard is now disabled. To enable it change the "DASHBOARD" value in .env file to "true" (Now is set to "') + chalk.blue.underline(`${config.dashboard}`) + chalk.blue('")'));
