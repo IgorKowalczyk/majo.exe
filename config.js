@@ -12,6 +12,7 @@ module.exports = {
  "token": process.env.TOKEN,
  "mongodbUrl": process.env.MONGODB,
  "clientSecret": process.env.SECRET,
+ "sessionSecret": process.env.SESSION_SECRET,
  "port": process.env.PORT,
  "prefix": process.env.PREFIX,
  "dashboard": process.env.DASHBOARD,
