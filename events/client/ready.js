@@ -54,7 +54,7 @@ try {
  console.log(err);
 }
 
-if (config.dashboard = "true" || config.sessionSecret || config.secret || config.domain) {
+if (config.dashboard = "true") {
  const Dashboard = require("../../dashboard/dashboard");
  Dashboard(client);
 } else {
