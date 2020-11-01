@@ -55,7 +55,7 @@ try {
  console.log(err);
 }
 
-if (config.dashboard = "true") {
+if (config.dashboard = "true" || config.sessionSecret || config.secret || config.domain) {
  Dashboard(client);
 } else {
  console.log(chalk.blue('Dashboard is now disabled. To enable it change the "DASHBOARD" value in .env file to "true" (Now is set to "') + chalk.blue.underline(`${config.dashboard}`) + chalk.blue('")'));
