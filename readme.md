@@ -35,7 +35,6 @@ We host this bot. Majo.exe will be online 24/7.
     * `GENIUS_KEY` - Genius Lyrics API Key (Used for lyrics) 
     * `SESSION_SECRET` - Session secret key, random sequence of words, letterss or numbers
     * `SECRET` - Client secret variabble (Remember! The `SECRET` value is Super-Secret)
-    * `MONGODB` - MongoDB host url
     * `ANALYTICS` - Google Trakcing ID (For Website analytics)
     * `ID` - Your bot ID (Not your client ID!)
     * `DASHBOARD=[true/false]` - if `true` the bot will be hosted with web dasboard, if `false` the bot will be hosted without web dashboard
@@ -66,7 +65,6 @@ YOUTUBE=YOUT-YOUTUBE-API-KEY
 GENIUS_KEY=YOUR-GENIUS-KEY
 SESSION_SECRET=YOUR-SESSION-SECRET-(RANDOM-WORDS)
 SECRET=YOUR-BOT-CLIENT-SECRET
-MONGODB=YOUR-MONGODB-URL
 ANALYTICS=YOUR-GOOGLE-TRACKING-ID
 ID=YOUR_BOT-ID
 DASHBOARD=[true/false]
@@ -86,7 +84,6 @@ DOMAIN=YOUR=SITE-ADRESS
 | GENIUS_KEY | Genius API Key (Used in music and lyrics) | :heavy_check_mark: |
 | SESSION_SECRET | Random sequence of words, letterss or numbers`*` | :x:/:heavy_check_mark: |
 | SECRET | The bot client secret (Remember! The `SECRET` value is Super-Secret)`*` | :x:/:heavy_check_mark: |
-| MONGODB | The mongodb database url`*` | :heavy_check_mark: |
 | ANALYTICS | Google analytics tracking ID, used in Web-Dashboard`^` | :x: |
 | DASHBOARD | The Web-Dashboard config value. (eg. `true/false`, default value: `false`)`^` | :x: |
 | DOMAIN | Your site adress (include `https://` or subfolder)`^` | :x:/:heavy_check_mark: |
