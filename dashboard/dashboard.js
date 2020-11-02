@@ -175,6 +175,7 @@ module.exports = async (client) => {
   });
  });
 
- app.listen(config.port, null, null, () => console.log(`Dashboard is up and running on port ${config.port}.`));
+ // app.listen(config.port, null, null, () => console.log(`Dashboard is up and running on port ${config.port}.`));
+ app.listen(config.port, () => console.log(`Dashboard is up and running on port ${config.port}.`));
 }
 }
