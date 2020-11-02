@@ -86,7 +86,7 @@ DOMAIN=YOUR=SITE-ADRESS
 | SECRET | The bot client secret (Remember! The `SECRET` value is Super-Secret)`*` | :x:/:heavy_check_mark: |
 | ANALYTICS | Google analytics tracking ID, used in Web-Dashboard`^` | :x: |
 | DASHBOARD | The Web-Dashboard config value. (eg. `true/false`, default value: `false`)`^` | :x: |
-| DOMAIN | Your site adress (include `https://` or subfolder)`^` | :x:/:heavy_check_mark: |
+| DOMAIN | Your site adress (include `https://` or subfolder)`*` | :heavy_check_mark: |
 
 `*` = Required to run the web dashboard
 
