@@ -10,6 +10,7 @@ const ejs = require("ejs");
 const bodyParser = require("body-parser");
 const { readdirSync } = require('fs');
 
+if (config.dashboard = "true" || config.sessionSecret || config.secret || config.domain) {
 const app = express();
 app.use(express.static('dashboard/static'));
 const MemoryStore = require("memorystore")(session);
@@ -175,4 +176,5 @@ module.exports = async (client) => {
  });
 
  app.listen(config.port, null, null, () => console.log(`Dashboard is up and running on port ${config.port}.`));
+}
 }
