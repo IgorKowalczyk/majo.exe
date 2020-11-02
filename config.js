@@ -10,7 +10,6 @@ module.exports = {
  "domain": process.env.DOMAIN,
  "google_analitics": process.env.ANALYTICS,
  "token": process.env.TOKEN,
- "mongodbUrl": process.env.MONGODB,
  "clientSecret": process.env.SECRET,
  "sessionSecret": process.env.SESSION_SECRET,
  "port": process.env.PORT,
