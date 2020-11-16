@@ -40,11 +40,11 @@ try {
 
  setInterval(() => {
   const ping = client.ping;
-  if (ping < 150) {
+  if (ping < 350) {
    client.user.setStatus("online");
-  } else if (ping < 250) {
+  } else if (ping < 450) {
    client.user.setStatus("idle");
-  } else if (ping < 350) {
+  } else if (ping < 550) {
    client.user.setStatus("dnd");
   } else {
   client.user.setStatus("invisible");
