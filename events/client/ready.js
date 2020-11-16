@@ -48,4 +48,7 @@ if (process.env.DASHBOARD = "true" || config.sessionSecret || config.secret || c
 }
 
 console.log(chalk.blue("Connected! Logged in as ") + chalk.blue.underline(`${client.user.tag}`) + chalk.blue("!"));
+} catch(err) {
+ console.log(err);
+}
 }
