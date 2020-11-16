@@ -38,24 +38,8 @@ try {
  client.user.setActivity(statuslist[random], { type: 'WATCHING' });
  }, 10000);
 
- setInterval(() => {
-  const ping = client.ping;
-  if (ping < 350) {
-   client.user.setStatus("online");
-  } else if (ping < 450) {
-   client.user.setStatus("idle");
-  } else if (ping < 550) {
-   client.user.setStatus("dnd");
-  } else {
-  client.user.setStatus("invisible");
-  }
- }, 60000);
-} catch(err) {
- console.log(err);
-}
+client.user.setStatus("online");
 
-console.log(config.dashboard);
- 
 if (process.env.DASHBOARD = "true" || config.sessionSecret || config.secret || config.domain) {
  const Dashboard = require("../../dashboard/dashboard");
  Dashboard(client);
