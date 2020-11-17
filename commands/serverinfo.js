@@ -14,13 +14,12 @@ module.exports = {
   var roles = [];
   var e = message.guild.emojis.cache.map(e => e.toString())
   function checkdays(date) {
-    let now = new Date();
-    let diff = now.getTime() - date.getTime();
-    let days = Math.floor(diff / 86400000);
-    return days + (days == 1 ? " day" : " days") + " ago";
+   let now = new Date();
+   let diff = now.getTime() - date.getTime();
+   let days = Math.floor(diff / 86400000);
+   return days + (days == 1 ? " day" : " days") + " ago";
  }
 
- let verifLevels = ["None", "Low", "Medium", "(╯°□°）╯︵  ┻━┻ (High)", "┻━┻ミヽ(ಠ益ಠ)ノ彡┻━┻ (Highest)"];
  let region = {
   "brazil": ":flag_br: Brazil",
   "eu-central": ":flag_eu: Central Europe",
@@ -49,7 +48,7 @@ module.exports = {
   .addField("ID", message.guild.id, true)
   .addField("Region", region[message.guild.region] || message.guild.region, true)
   .addField("Members", `**Total:** ${message.guild.members.cache.size} | **Members:** ${message.guild.members.cache.filter(member => !member.user.bot).size} | **Bots:** ${message.guild.members.cache.filter(member => member.user.bot).size}`, true)
-  .addField("Verification Level", verifLevels[message.guild.verificationLevel], true)
+  .addField("Verification Level", message.guild.verificationLevel, true)
   .addField("Channels", message.guild.channels.cache.size, true)
   .addField("Roles [" + `${message.guild.roles.cache.size}` + "]", message.guild.roles.cache.filter(r => r.id !== message.guild.id).map(roles => roles.name).join(", ") || "No Roles", true)
   .addField("Emojis [" + `${message.guild.emojis.cache.size}` + "]", e.join(", ") || "No Emojis", true)
