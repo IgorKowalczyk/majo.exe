@@ -12,7 +12,7 @@ module.exports = {
  try {
   let serverowner = message.guild.member(message.guild.ownerID);
   var roles = [];
-  var e = message.guild.emojis.map(e => e.toString())
+  var e = message.guild.emojis.cache.map(e => e.toString())
   function checkdays(date) {
     let now = new Date();
     let diff = now.getTime() - date.getTime();
