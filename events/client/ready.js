@@ -30,7 +30,7 @@ try {
  } else {	
   statuslist.push(	
    `${client.guilds.cache.lenght} servers`,
-   `${client.members.cache.lenght} members`,
+   `${client.users.cache.lenght} members`,
    `${config.prefix} help`,
   );	
  }	
