@@ -47,7 +47,7 @@ if (process.env.DASHBOARD = "true" || config.sessionSecret, false || config.secr
  return console.log(chalk.blue('Dashboard is now disabled. To enable it change the "DASHBOARD" value in .env file to "true" (Now is set to "') + chalk.blue.underline(`${config.dashboard}`) + chalk.blue('")'));
 }
 
-console.log(chalk.blue("Connected! Logged in as ") + chalk.blue.underline(`${client.user.tag}`) + chalk.blue("!") + chalk.blue.underline("Bot Stats: " + `${client.guilds.cache.size}` + "Servers, " + `${client.users.cache.size}` + "Members");
+console.log(chalk.blue("Connected! Logged in as ") + chalk.blue.underline(`${client.user.tag}`) + chalk.blue("!") + chalk.blue.underline("Bot Stats: " + `${client.guilds.cache.size}` + "Servers, " + `${client.users.cache.size}` + "Members"));
 } catch(err) {
  console.log(err);
 }
