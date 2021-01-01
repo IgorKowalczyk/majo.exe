@@ -53,7 +53,7 @@ module.exports = {
   .addField("Verification Level", message.guild.verificationLevel, true)
   .addField("Channels", message.guild.channels.cache.size, true)
   .addField("Roles [" + `${message.guild.roles.cache.size}` + "]", rolesfinal.slice(0, 999), true)
-  .addField("Emojis [" + `${message.guild.emojis.cache.size}` + "]", emojis.slice(0, 999), true)
+  .addField("Emojis [" + `${message.guild.emojis.cache.size}` + "]", e.join(", ").slice(0, 999), true)
   .addField("Creation Date", `${message.channel.guild.createdAt.toUTCString().substr(0, 16)} (${checkdays(message.channel.guild.createdAt)})`, true)
   .setTimestamp()
  message.channel.send(embed);
