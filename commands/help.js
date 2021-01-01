@@ -90,7 +90,7 @@ function getCMD(client, message, input) {
    .setColor('RANDOM')
    .setTimestamp()
    .setDescription(
-    "Category: `" + cmd.category + "`\n Description: `" + cmd.description + "`\n Usage: `" + prefix + cmd.usage + "`\n Aliases: `" + alliaseslist + "`")
+    "Category: `" + cmd.category + "`\n Description: `" + cmd.description + "`\n Usage: `" + prefix + " " + cmd.usage + "`\n Aliases: `" + alliaseslist + "`")
    .setFooter('Syntax: <> = required, [] = optional • Requested by ' + `${message.author.username}`)
  message.channel.send(hembed);
  }
