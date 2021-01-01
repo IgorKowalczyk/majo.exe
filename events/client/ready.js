@@ -14,7 +14,7 @@ try {
  if (date == enddate) {
   statuslist.push(
    `🎉 ${client.guilds.cache.size} servers 🎉`,
-   `🎉 ${client.users.cache.size} members 🎉`,
+   `🎉 ${client.guilds.cache.reduce((a, g) => a + g.memberCount, 0)} members 🎉`,
    `🎉 ${config.prefix} help 🎉`,	
    `🎉 Happy Birthday Discord! 🎉`,
    `🎉 ${client.ping}ms Ping! 🎉`
@@ -22,7 +22,7 @@ try {
  } else if (date == enddateEEP) {	
   statuslist.push(	
    `🔥 ${client.guilds.cache.size} servers 🔥`,
-   `🔥 ${client.users.cache.size} members 🔥`,
+   `🔥 ${client.guilds.cache.reduce((a, g) => a + g.memberCount, 0)} members 🔥`,
    `🔥 ${config.prefix} help 🔥`,	
    `🔥 EEP 4 LIFE (04/18)! 🔥`,
    `🔥 ${client.ping}ms Ping! 🔥`
@@ -30,7 +30,7 @@ try {
  } else {	
   statuslist.push(	
    `${client.guilds.cache.size} servers`,
-   `${client.users.cache.size} members`,
+   `${client.guilds.cache.reduce((a, g) => a + g.memberCount, 0)} members`,
    `${config.prefix} help`,
   );	
  }	
