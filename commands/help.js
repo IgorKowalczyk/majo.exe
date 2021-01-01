@@ -83,7 +83,7 @@ function getCMD(client, message, input) {
  if(cmd.aliases.lenght) {
   alliaseslist = cmd.aliases.lenght ? cmd.aliases.map(a => a.join(', ')) : 'None';
  } else {
-  alliaseslist = "None";
+  alliaseslist = "None!";
  }
   const hembed = new Discord.MessageEmbed()
    .setTitle(`:grey_question: Help - ${cmd.name} command`, message.guild.iconURL())
