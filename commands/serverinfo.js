@@ -46,7 +46,7 @@ module.exports = {
   .addField("Server Owner", serverowner.user.username + "#" + serverowner.user.discriminator, true)
   .addField("ID", message.guild.id, true)
   .addField("Region", region[message.guild.region] || message.guild.region, true)
-  .addField("Members", `**Total:** ${client.guilds.cache.reduce((a, g) => a + g.memberCount, 0)} | **Members:** ${client.guilds.cache.reduce((a, g) => a + g.memberCount, 0).filter(member => !member.user.bot).size} | **Bots:** ${client.guilds.cache.reduce((a, g) => a + g.memberCount, 0).filter(member => member.user.bot).size}`, true)
+  .addField("Members", `${client.guilds.cache.reduce((a, g) => a + g.memberCount, 0)}`, true)
   .addField("Verification Level", message.guild.verificationLevel, true)
   .addField("Channels", message.guild.channels.cache.size, true)
   .addField("Roles", message.guild.roles.cache.size, true)
