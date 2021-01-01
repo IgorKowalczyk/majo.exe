@@ -80,12 +80,17 @@ function getCMD(client, message, input) {
   function capitalizeFirstLetter(string) {
   return string.charAt(0).toUpperCase() + string.slice(1);
  }
+ if(cmd.aliases.lenght) {
+  const alliaseslist = cmd.aliases.map((a) => a).join(', ');
+ } else {
+  const alliaseslist = "None";
+ }
   const hembed = new Discord.MessageEmbed()
    .setTitle(`:grey_question: Help - ${cmd.name} command`, message.guild.iconURL())
    .setColor('RANDOM')
    .setTimestamp()
    .setDescription(
-    "Category: " + cmd.category + "\n Description: " + cmd.description + "\n Usage: " + prefix + cmd.usage + "Aliases: " + if(cmd.aliases.lenght) {cmd.aliases.map((a) => a).join(', ')} else {"None"}})
+    "Category: " + cmd.category + "\n Description: " + cmd.description + "\n Usage: " + prefix + cmd.usage + "Aliases: " + alliaseslist)
    .setFooter('Syntax: <> = required, [] = optional • Requested by ' + `${message.author.username}`)
  message.channel.send(hembed);
  }
