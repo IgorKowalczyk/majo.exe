@@ -9,10 +9,10 @@ module.exports = {
  category: "Utility",
  usage: "members",
  run: async (client, message, args) => {
-  let onlineMembers = message.guild.members.cache.filter(m => m.presence.status === 'online');
-  let offlineMembers = message.guild.members.cache.filter(m => m.presence.status === 'offline');
-  let idleMembers = message.guild.members.cache.filter(m => m.presence.status === 'idle');
-  let dndMembers = message.guild.members.cache.filter(m => m.presence.status === 'dnd');
+  let onlineMembers = client.guilds.cache.reduce((a, g) => a + g.memberCount, 0).filter(m => m.presence.status === 'online');
+  let offlineMembers = client.guilds.cache.reduce((a, g) => a + g.memberCount, 0).filter(m => m.presence.status === 'offline');
+  let idleMembers = client.guilds.cache.reduce((a, g) => a + g.memberCount, 0).filter(m => m.presence.status === 'idle');
+  let dndMembers = client.guilds.cache.reduce((a, g) => a + g.memberCount, 0).filter(m => m.presence.status === 'dnd');
   var online = 0;
   var offline = 0;
   var idle = 0;
@@ -35,7 +35,7 @@ module.exports = {
   const embed = new Discord.MessageEmbed()
    .setAuthor("Total members", message.guild.iconURL)
    .setColor("RANDOM")
-   .addField("Overall Members:", message.guild.memberCount || message.guild.members.size)
+   .addField("Overall Members:", client.guilds.cache.reduce((a, g) => a + g.memberCount, 0))
    .addField("Online Members:", online)
    .addField("Offline/Invisible Members:", offline)
    .addField("Idle Members:", idle)

@@ -39,9 +39,6 @@ module.exports = {
   "russia": ":flag_ru: Russia",
   "southafrica": ":flag_za:  South Africa"
  }
- const rolesfinal = message.guild.roles.cache.filter(r => r.id !== message.guild.id).map(roles => roles.name).join(", ") || "No Roles";
- const emojis = e.join(", ") || "No Emojis";
-
  const embed = new Discord.MessageEmbed()
   .setAuthor(message.guild.name, message.guild.iconURL)
   .setColor("RANDOM")
@@ -49,11 +46,11 @@ module.exports = {
   .addField("Server Owner", serverowner.user.username + "#" + serverowner.user.discriminator, true)
   .addField("ID", message.guild.id, true)
   .addField("Region", region[message.guild.region] || message.guild.region, true)
-  .addField("Members", `**Total:** ${message.guild.members.cache.size} | **Members:** ${message.guild.members.cache.filter(member => !member.user.bot).size} | **Bots:** ${message.guild.members.cache.filter(member => member.user.bot).size}`, true)
+  .addField("Members", `**Total:** ${client.guilds.cache.reduce((a, g) => a + g.memberCount, 0)} | **Members:** ${client.guilds.cache.reduce((a, g) => a + g.memberCount, 0).filter(member => !member.user.bot).size} | **Bots:** ${client.guilds.cache.reduce((a, g) => a + g.memberCount, 0).filter(member => member.user.bot).size}`, true)
   .addField("Verification Level", message.guild.verificationLevel, true)
   .addField("Channels", message.guild.channels.cache.size, true)
-  .addField("Roles [" + `${message.guild.roles.cache.size}` + "]", rolesfinal.slice(0, 999), true)
-  .addField("Emojis [" + `${message.guild.emojis.cache.size}` + "]", e.join(", ").slice(0, 999), true)
+  .addField("Roles", message.guild.roles.cache.size, true)
+  .addField("Emojis", message.guild.emojis.cache.size, true)
   .addField("Creation Date", `${message.channel.guild.createdAt.toUTCString().substr(0, 16)} (${checkdays(message.channel.guild.createdAt)})`, true)
   .setTimestamp()
  message.channel.send(embed);
