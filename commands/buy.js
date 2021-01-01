@@ -107,6 +107,7 @@ module.exports = {
     message.channel.send(noitem)
    }
  } catch (err) {
+   console.log(err);
   message.channel.send({embed: {
    color: 16734039,
    description: "Something went wrong... :cry:"
