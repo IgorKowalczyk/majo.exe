@@ -4,7 +4,7 @@ const prefix = config.prefix;
 
 module.exports = {
  name: "avatar",
- //aliases: [],
+ aliases: [],
  description: "Gets user's avatar from a mention",
  category: "Utility",
  usage: "avatar <mention>",

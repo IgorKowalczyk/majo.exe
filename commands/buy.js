@@ -6,7 +6,7 @@ const prefix = config.prefix;
 
 module.exports = {
  name: "buy",
- //aliases: [],
+ aliases: [],
  description: "Buy item from shop, add a `list` arg to display all things",
  category: "Economy",
  usage: "buy <item>",

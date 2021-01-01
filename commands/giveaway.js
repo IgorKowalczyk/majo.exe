@@ -5,7 +5,7 @@ const prefix = config.prefix;
 
 module.exports = {
  name: "giveaway",
- //aliases: [],
+ aliases: [],
  description: "Create a giveaway",
  category: 'Utility',
  usage: "giveaway <time> <channel> <prize>",

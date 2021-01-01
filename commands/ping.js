@@ -4,7 +4,7 @@ const prefix = config.prefix;
 
 module.exports = {
  name: "ping",
- //aliases: [],
+ aliases: [],
  description: "Show client ping",
  category: "General",
  usage: "ping",

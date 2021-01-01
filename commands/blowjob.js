@@ -5,7 +5,7 @@ const prefix = config.prefix;
 
 module.exports = {
  name: "blowjob",
- //aliases: [],
+ aliases: [],
  description: "Display a random blowjob image/gif",
  category: "NSFW",
  usage: "blowjob",

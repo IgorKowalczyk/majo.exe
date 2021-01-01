@@ -5,7 +5,7 @@ const prefix = config.prefix;
 
 module.exports = {
  name: "addmoney",
- //aliases: [],
+ aliases: [],
  description: "Give money to mentioned user",
  category: "Economy",
  usage: "addmoney <user> <money>",

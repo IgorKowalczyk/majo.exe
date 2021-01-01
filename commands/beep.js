@@ -4,7 +4,7 @@ const prefix = config.prefix;
 
 module.exports = {
  name: "beep",
- //aliases: [],
+ aliases: [],
  description: "Beep-Boop!",
  category: "Fun",
  usage: "beep",

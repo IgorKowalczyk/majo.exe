@@ -4,7 +4,7 @@ const prefix = config.prefix;
 
 module.exports = {
  name: "ban",
- //aliases: [],
+ aliases: [],
  description: "Ban a member",
  category: "Economy",
  usage: "ban <mention> <reason>",
