@@ -52,8 +52,8 @@ module.exports = {
   .addField("Members", `**Total:** ${message.guild.members.cache.size} | **Members:** ${message.guild.members.cache.filter(member => !member.user.bot).size} | **Bots:** ${message.guild.members.cache.filter(member => member.user.bot).size}`, true)
   .addField("Verification Level", message.guild.verificationLevel, true)
   .addField("Channels", message.guild.channels.cache.size, true)
-  .addField("Roles [" + `${message.guild.roles.cache.size}` + "]", rolesfinal.slice(0, 8), true)
-  .addField("Emojis [" + `${message.guild.emojis.cache.size}` + "]", emojis.slice(0, 8), true)
+  .addField("Roles [" + `${message.guild.roles.cache.size}` + "]", rolesfinal.slice(0, 999), true)
+  .addField("Emojis [" + `${message.guild.emojis.cache.size}` + "]", emojis.slice(0, 999), true)
   .addField("Creation Date", `${message.channel.guild.createdAt.toUTCString().substr(0, 16)} (${checkdays(message.channel.guild.createdAt)})`, true)
   .setTimestamp()
  message.channel.send(embed);
