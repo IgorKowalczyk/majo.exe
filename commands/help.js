@@ -17,7 +17,7 @@ module.exports = {
   if(!args[0]) {
    return getAll(client, message);
   }
-  },
+  }
 }
 function getAll(client, message) {
  const commands = readdirSync('./commands/');
@@ -88,7 +88,7 @@ function getCMD(client, message, input) {
     Category: ${cmd.category}
     Description: ${cmd.description}
     Usage: \`${prefix} ${cmd.usage}\`
-    Aliases: ${cmd.aliases.lenght ? cmd.aliases.map((a) => `${a}`).join(', ') : '`None`'}
+    Aliases: `if(cmd.aliases.lenght) {cmd.aliases.map((a) => `${a}`).join(', ')} else {"`None`"}}`
    `)
    .setFooter('Syntax: <> = required, [] = optional • Requested by ' + `${message.author.username}`)
  message.channel.send(hembed);
