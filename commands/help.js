@@ -50,7 +50,7 @@ function getAll(client, message) {
    if (id == "NSFW") {
     var icon = ":smirk:";
    }
-   if (id == "undefined") {
+   if (!id) {
     var icon = ":grey_question:";
    }
    embed.addField(`${icon} ${id} (${category.size})`, category.map(cmd => `${cmd.name}`).join(', '));
@@ -63,7 +63,7 @@ function getAll(client, message) {
 function getCMD(client, message, input) {
  const embed = new Discord.MessageEmbed();
  const cmd = client.commands.get(input.toLowerCase()) || client.commands.get(client.aliases.get(input.toLowerCase()));
- const info = `No information found for command ` + input.toLowerCase();
+ const info = "No information found for command `" + input.toLowerCase() + "`!";
  if (!cmd) {
   try {
    return message.channel.send({embed: {
@@ -81,7 +81,7 @@ function getCMD(client, message, input) {
   return string.charAt(0).toUpperCase() + string.slice(1);
  }
  if(!cmd.aliases.lenght) {
-  alliaseslist = cmd.aliases.lenght ? cmd.aliases.map((a) => a).join(', ') : '`None`'
+  alliaseslist = cmd.aliases.lenght ? cmd.aliases.map((a) => a.join(', ')) : '`None`';
  } else {
   alliaseslist = "None";
  }
@@ -89,9 +89,8 @@ function getCMD(client, message, input) {
    .setTitle(`:grey_question: Help - ${cmd.name} command`, message.guild.iconURL())
    .setColor('RANDOM')
    .setTimestamp()
-   .setDescription(
-    "Category: `" + cmd.category + "`\n Description: `" + cmd.description + "`\n Usage: `" + prefix + " " + cmd.usage + "`\n Aliases: `" + alliaseslist + "`")
-   .setFooter('Syntax: <> = required, [] = optional • Requested by ' + `${message.author.username}`)
+   .setDescription("Category: `" + cmd.category + "`\n Description: `" + cmd.description + "`\n Usage: `" + prefix + " " + cmd.usage + "`\n Aliases: `" + alliaseslist + "`")
+   .setFooter('Syntax: <> = required, [] = optional • Requested by ' + `${message.author.username}`, message.author.displayAvatarURL({ dynamic: true, format: 'png', size: 2048 }))
  message.channel.send(hembed);
  }
  }
