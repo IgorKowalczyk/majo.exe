@@ -12,7 +12,7 @@ module.exports = {
   const embed = new Discord.MessageEmbed()
    .setAuthor("Total members", message.guild.iconURL)
    .setColor("RANDOM")
-   .addField("Overall Members: ", client.guilds.cache.reduce((a, g) => a + g.memberCount, 0))
+   .addField("Overall Members: ", guild.memberCount)
   message.channel.send(embed);
  }
 }
