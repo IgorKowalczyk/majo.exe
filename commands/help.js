@@ -81,7 +81,7 @@ function getCMD(client, message, input) {
   return string.charAt(0).toUpperCase() + string.slice(1);
  }
  if(!cmd.aliases.lenght) {
-  alliaseslist = cmd.aliases.map((a) => a).join(', ');
+  alliaseslist = cmd.aliases.lenght ? cmd.aliases.map((a) => a).join(', ') : '`None`'
  } else {
   alliaseslist = "None";
  }
