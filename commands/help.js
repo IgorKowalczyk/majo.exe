@@ -84,12 +84,8 @@ function getCMD(client, message, input) {
    .setTitle(`:grey_question: Help - ${cmd.name} command`, message.guild.iconURL())
    .setColor('RANDOM')
    .setTimestamp()
-   .setDescription(`
-    Category: ${cmd.category}
-    Description: ${cmd.description}
-    Usage: \`${prefix} ${cmd.usage}\`
-    Aliases: `if(cmd.aliases.lenght) {cmd.aliases.map((a) => `${a}`).join(', ')} else {"`None`"}}`
-   `)
+   .setDescription(
+    "Category: " + cmd.category + "\n Description: " + cmd.description + "\n Usage: " + prefix + cmd.usage + "Aliases: " + `if(cmd.aliases.lenght) {cmd.aliases.map((a) => `${a}`).join(', ')} else {"None"}}`)
    .setFooter('Syntax: <> = required, [] = optional • Requested by ' + `${message.author.username}`)
  message.channel.send(hembed);
  }
