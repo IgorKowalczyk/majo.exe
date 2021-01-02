@@ -6,6 +6,8 @@ client.config = config;
 
 module.exports = (client) => {
 try {
+ const emojis = ["😆", "😄", "😎", "😂", "🥳", "😘", "😜", "🤑", "😁", "😉", "🥰", "😍", "🤯", "🥶", "🤩", "😇", "😊", "☺️", "😌", "😋"];
+ const emoji = emojis[Math.floor(Math.random() * emojis.length)];
  setInterval(() => {
  var date = new Date()	.toJSON().slice(0, 10).replace(/-/g, "/");
  const enddate = new Date().getFullYear() + "/06/13";
@@ -29,9 +31,9 @@ try {
   );	
  } else {	
   statuslist.push(	
-   `${client.guilds.cache.size} servers`,
-   `${client.guilds.cache.reduce((a, g) => a + g.memberCount, 0)} members`,
-   `${config.prefix} help`,
+   `${emoji} | ${client.guilds.cache.size} servers`,
+   `${emoji} | ${client.guilds.cache.reduce((a, g) => a + g.memberCount, 0)} members`,
+   `${emoji} | ${config.prefix} help`,
   );	
  }	
  const random = Math.floor(Math.random() * (statuslist.length - 1) + 1);
