@@ -52,6 +52,7 @@ module.exports = {
   .addField("Roles", message.guild.roles.cache.size, true)
   .addField("Emojis", message.guild.emojis.cache.size, true)
   .addField("Creation Date", `${message.channel.guild.createdAt.toUTCString().substr(0, 16)} (${checkdays(message.channel.guild.createdAt)})`, true)
+  .setFooter("Requested by " + `${message.author.username}`, message.author.displayAvatarURL({ dynamic: true, format: 'png', size: 2048 }))
   .setTimestamp()
  message.channel.send(embed);
  } catch(err) {
