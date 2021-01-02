@@ -39,15 +39,14 @@ try {
  }, 10000);
 
 client.user.setStatus("online");
+console.log(chalk.blue("Connected! Logged in as ") + chalk.blue.underline(`${client.user.username} ${client.user.tag}`) + chalk.blue("!"));
 
 if (process.env.DASHBOARD = "true" || config.sessionSecret, false || config.secret, false || config.domain, false) {
  const Dashboard = require("../../dashboard/dashboard");
  Dashboard(client);
 } else {
- return console.log(chalk.blue('Dashboard is now disabled. To enable it change the "DASHBOARD" value in .env file to "true" (Now is set to "') + chalk.blue.underline(`${config.dashboard}`) + chalk.blue('")') + chalk.blue.underline("\nBot Stats: " + `${client.guilds.cache.size}` + " servers, " + `${client.guilds.cache.reduce((a, g) => a + g.memberCount, 0)}` + " members"));
+ return console.log(chalk.blue('Dashboard is now disabled. To enable it change the "DASHBOARD" value in .env file to "true" (Now is set to "') + chalk.blue.underline(`${config.dashboard}`) + chalk.blue('")') + chalk.blue.underline("\n" + client.user.username + client.user.tag + " stats: " + `${client.guilds.cache.size}` + " servers, " + `${client.guilds.cache.reduce((a, g) => a + g.memberCount, 0)}` + " members"));
 }
-
-console.log(chalk.blue("Connected! Logged in as ") + chalk.blue.underline(`${client.user.tag}`) + chalk.blue("!"));
 } catch(err) {
  console.log(err);
 }

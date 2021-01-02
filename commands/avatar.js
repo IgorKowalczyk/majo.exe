@@ -14,6 +14,7 @@ module.exports = {
     .setColor("RANDOM")
     .setAuthor(message.author.username + "'s Avatar", message.author.displayAvatarURL())
     .setImage(message.author.displayAvatarURL({ dynamic: true, format: 'png', size: 2048 })) 
+    .setTimestamp()
     .setFooter("Requested by " + `${message.author.username}`, message.author.displayAvatarURL({ dynamic: true, format: 'png', size: 2048 }))
    message.channel.send(embed)
   }
@@ -27,6 +28,7 @@ module.exports = {
     .setColor("RANDOM")
     .setAuthor(Username + "'s Avatar", AvatarURL)
     .setImage(AvatarURL)
+    .setTimestamp()
     .setFooter("Requested by " + `${message.author.username}`, message.author.displayAvatarURL({ dynamic: true, format: 'png', size: 2048 }))
    message.channel.send(embed)
   }
