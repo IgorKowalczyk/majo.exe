@@ -21,7 +21,7 @@ module.exports = {
     }
     if(user == message.author) {
      return message.channel.send({embed: {
-      color: 16734039,
+      color: 5294200,
       description: "You can't hug yourself but... Ok, get the hug from me ＼( ^o^ )／ !"
      }})
     }
