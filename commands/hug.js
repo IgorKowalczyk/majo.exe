@@ -25,6 +25,12 @@ module.exports = {
       description: "You can't hug yourself but... Ok, get the hug from me ＼( ^o^ )／ !"
      }})
     }
+    if(user == client) {
+     return message.channel.send({embed: {
+      color: 5294200,
+      description: "You can't hug yourself but... Ok, get the hug from me ＼( ^o^ )／ !"
+     }})
+    }
     const response = await fetch("https://nekos.life/api/v2/img/cuddle")
     const body = await response.json();
     const embed = new Discord.MessageEmbed()
