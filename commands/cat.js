@@ -12,13 +12,18 @@ module.exports = {
  usage: "cat",
  run: async (client, message, args) => {
   (async () => {
-   let text = (await neko.sfw.catText());
-   message.channel.send(text.cat).catch(error => {
+   try {
+    let text = (await neko.sfw.catText());
+    message.channel.send({embed: {
+     color: "RANDOM",
+     description: text.cat
+    }})
+   } catch (err) {
     message.channel.send({embed: {
      color: 16734039,
      description: "Something went wrong... :cry:"
-    }})
-   });
+    }});
+   }
   })();
  }
 }

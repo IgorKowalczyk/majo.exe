@@ -16,7 +16,6 @@ module.exports = {
   const ping = new Discord.MessageEmbed()
    .setTitle(':ping_pong: Pong!')
    .addField("Bot ping:", + `${Math.floor(msg.createdTimestamp - message.createdTimestamp)}` + "ms")
-   .addField("Api ping:", + `${Math.round(client.ping)}` + "ms")
    .setFooter("Requested by " + `${message.author.username}`, message.author.displayAvatarURL({ dynamic: true, format: 'png', size: 2048 }))
    .setColor('RANDOM')
    .setTimestamp()
