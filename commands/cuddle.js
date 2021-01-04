@@ -5,7 +5,7 @@ const prefix = config.prefix;
 
 module.exports = {
  name: "cuddle",
- aliases: [],
+ aliases: ["hug"],
  description: "Give a cuddle to mention user",
  category: "Fun",
  usage: "cuddle <user>",
@@ -27,7 +27,7 @@ module.exports = {
      .setURL(body.url)
      .setColor("RANDOM")
      .setDescription((user.toString() + " got a cuddle from " + message.author.toString()))
-     .setFooter("Requested by " + `${message.author.username}` + " • (this is so cute ◕ ‿ ◕)", message.author.displayAvatarURL({ dynamic: true, format: 'png', size: 2048 }))
+     .setFooter("Requested by " + `${message.author.username}` + " • (this is so cute ＼( ^o^ )／)", message.author.displayAvatarURL({ dynamic: true, format: 'png', size: 2048 }))
      .setTimestamp()
     .setURL(body.url);
     message.channel.send(embed);
