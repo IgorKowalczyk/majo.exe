@@ -19,7 +19,6 @@ module.exports = {
       description: "You must mention someone to hug!"
      }})
     }
-    const user = message.mentions.users.first();
     if(user == message.author) {
      return message.channel.send({embed: {
       color: 16734039,
