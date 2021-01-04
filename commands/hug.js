@@ -25,10 +25,10 @@ module.exports = {
       description: "You can't hug yourself but... Ok, get the hug from me ＼( ^o^ )／ !"
      }})
     }
-    if(user == client) {
+    if(user == client.user) {
      return message.channel.send({embed: {
       color: 5294200,
-      description: "You can't hug yourself but... Ok, get the hug from me ＼( ^o^ )／ !"
+      description: "Oh, you tried to hug me but u can't... But I can hug you ＼( ^o^ )／"
      }})
     }
     const response = await fetch("https://nekos.life/api/v2/img/cuddle")
