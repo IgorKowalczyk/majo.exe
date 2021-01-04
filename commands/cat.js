@@ -12,8 +12,8 @@ module.exports = {
  usage: "cat",
  run: async (client, message, args) => {
   (async () => {
-   let cat = (await neko.sfw.catText());
-   message.channel.send(owo.cat).catch(error => {
+   let text = (await neko.sfw.catText());
+   message.channel.send(text.cat).catch(error => {
     message.channel.send({embed: {
      color: 16734039,
      description: "Something went wrong... :cry:"
