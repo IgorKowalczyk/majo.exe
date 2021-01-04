@@ -4,9 +4,9 @@ const config = require("../config");
 const prefix = config.prefix;
 
 module.exports = {
- name: "cuddle",
- aliases: ["hug"],
- description: "Give a cuddle to mention user",
+ name: "hug",
+ aliases: ["cuddle"],
+ description: "Give a hug to mention user",
  category: "Fun",
  usage: "cuddle <user>",
  run: async (client, message, args) => {
@@ -16,7 +16,7 @@ module.exports = {
     if(!user) {
      return message.channel.send({embed: {
       color: 16734039,
-      description: "You must mention someone to cuddle!"
+      description: "You must mention someone to hug!"
      }})
     }
     const user = message.mentions.users.first();
@@ -29,11 +29,11 @@ module.exports = {
     const response = await fetch("https://nekos.life/api/v2/img/cuddle")
     const body = await response.json();
     const embed = new Discord.MessageEmbed()
-     .setTitle(user.username + " Just got a cuddle from " + message.author.username, message.guild.iconURL({ dynamic: true, format: 'png'}))
+     .setTitle(user.username + " Just got a hug from " + message.author.username, message.guild.iconURL({ dynamic: true, format: 'png'}))
      .setImage(body.url)
      .setURL(body.url)
      .setColor("RANDOM")
-     .setDescription((user.toString() + " got a cuddle from " + message.author.toString()))
+     .setDescription((user.toString() + " got a hug from " + message.author.toString()))
      .setFooter("Requested by " + `${message.author.username}` + " • (this is so cute ＼( ^o^ )／)", message.author.displayAvatarURL({ dynamic: true, format: 'png', size: 2048 }))
      .setTimestamp()
     .setURL(body.url);
