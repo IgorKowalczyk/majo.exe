@@ -21,7 +21,7 @@ module.exports = {
   const question = args.join(' ');
   let answer;
   if(question.indexOf('9 + 10') > -1) {
-   answer = '21 (🤣 XD, You found easter-egg)';
+   answer = '21 (XD!, You found easter-egg)';
    const calc = new Discord.MessageEmbed()
     .setTitle("Calculator")
     .setColor("RANDOM")
