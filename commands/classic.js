@@ -1,5 +1,7 @@
-const superagent = require("snekfetch");
-const Discord = require('discord.js')
+const Discord = require("discord.js");
+const fetch = require("node-fetch");
+const config = require("../config");
+const prefix = config.prefix;
 
 module.exports = {
  name: "classic",
