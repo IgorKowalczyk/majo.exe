@@ -40,7 +40,7 @@ module.exports = {
    } catch (err) {
     message.channel.send({embed: {
      color: 16734039,
-     description: "Invalid math equation: " + `${err}`
+     description: "Invalid math equation!"
    }});
    }
   }
