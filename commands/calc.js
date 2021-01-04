@@ -22,6 +22,12 @@ module.exports = {
   let answer;
   if(question.indexOf('9 + 10') > -1) {
    answer = '21 (🤣 XD, You found easter-egg)';
+   const calc = new Discord.MessageEmbed()
+    .setTitle("Calculator")
+    .setColor("RANDOM")
+    .addField("Question: ", `${question}`)
+    .addField("Answer: ", `${answer}`)
+   return message.channel.send(calc);
   } else {
    try {
     answer = math.eval(question);
