@@ -20,7 +20,7 @@ module.exports = {
      }})
     }
     const user = message.mentions.users.first();
-    if(user = message.author) {
+    if(user == message.author) {
      return message.channel.send({embed: {
       color: 16734039,
       description: "You can't hug yourself but... Ok, get the hug from me ＼( ^o^ )／ !"
