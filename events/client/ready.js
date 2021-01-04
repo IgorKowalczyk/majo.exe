@@ -7,7 +7,7 @@ client.config = config;
 module.exports = (client) => {
 try {
  const emojis = ["😆", "😄", "😎", "😂", "🥳", "😘", "😜", "🤑", "😁", "😉", "🥰", "😍", "🤯", "🥶", "🤩", "😇", "😊", "☺️", "😌", "😋"];
- const emoji = emojis[Math.floor(Math.random() * emojis.length)];
+ const emoji = Math.floor(Math.random() * (emojis.length - 1) + 1);
  setInterval(() => {
  var date = new Date()	.toJSON().slice(0, 10).replace(/-/g, "/");
  const enddate = new Date().getFullYear() + "/06/13";
