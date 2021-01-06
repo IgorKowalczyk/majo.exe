@@ -3,7 +3,6 @@ const chalk = require('chalk');
 const client = new Discord.Client({disableEveryone: true,});
 const config = require("../../config");
 client.config = config;
-const speedTest = require('speedtest-net');
 
 module.exports = (client) => {
 try {
@@ -41,19 +40,7 @@ try {
  client.user.setActivity(statuslist[random], { type: 'WATCHING' });
  }, 10000);
 
-
 client.user.setStatus("online");
- 
-(async () => {
-  try {
-    console.log(await speedTest());
-  } catch (err) {
-    console.log(err.message);
-  } finally {
-    process.exit(0);
-  }
-})();
- 
 
 if (process.env.DASHBOARD = "true" || config.sessionSecret, false || config.secret, false || config.domain, false) {
  const Dashboard = require("../../dashboard/dashboard");
