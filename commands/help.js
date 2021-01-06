@@ -30,25 +30,25 @@ function getAll(client, message) {
   for (const id of categories) {
    const category = client.commands.filter(cmd => cmd.category === id);
    if (id == "General") {
-    var icon = "<:monkaS:771074442382147595>";
+    var icon = ":bricks:";
    }
    if (id == "Moderation") {
-    var icon = "<:ban:771074443019288597>";
+    var icon = ":hammer:";
    }
    if (id == "Fun") {
-    var icon = "<:pepe_happy:771074443518017556>";
+    var icon = ":rofl:";
    }
    if (id == "Music") {
-    var icon = "<:pepe_music:796387410492522497>";
+    var icon = ":notes:";
    }
    if (id == "Economy") {
-    var icon = "<:pepe_money:796379615664406549>";
+    var icon = ":moneybag:";
    }
    if (id == "Utility") {
-    var icon = "<:pepe_ok:771074444105875516>";
+    var icon = ":toolbox:";
    }
    if (id == "NSFW") {
-    var icon = "<:pepe_hehe:796384332519702568>";
+    var icon = ":smirk:";
    }
    if (!id) {
     var icon = ":grey_question:";
