@@ -51,7 +51,7 @@ try {
    logChannel.send(roleRemoved);
   }
  });
- if (oldMember.guild.owner.user.id !== newMember.guild.owner.user.id) {
+ /* if (oldMember.guild.owner.user.id !== newMember.guild.owner.user.id) {
   let newOwner = new Discord.MessageEmbed()
    .setTitle("**UPDATE GUILD OWNER**")
    .setThumbnail(oldMember.guild.iconURL())
@@ -60,7 +60,7 @@ try {
    .setTimestamp()
    .setFooter(oldMember.guild.name, oldMember.guild.iconURL());
   logChannel.send(newOwner);
- }
+ } */
 } catch (err) {
  let embed = new Discord.MessageEmbed()
   .setColor("#FF0000")

@@ -16,7 +16,7 @@ module.exports = {
      color: 16734039,
      description: ":x: This command can only be used in NSFW channels!"
     }})
-  }
+   }
 
    let chanargs = args.slice(0).join(' ');
  

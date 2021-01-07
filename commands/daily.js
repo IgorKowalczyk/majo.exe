@@ -35,7 +35,6 @@ module.exports = {
     db.set(`daily_${message.guild.id}_${user.id}`, Date.now())
    }
   } catch (err) {
-   console.log(err);
    message.channel.send({embed: {
     color: 16734039,
     description: "Something went wrong... :cry:"
