@@ -8,10 +8,11 @@ module.exports = async (client, message) => {
   if (!message.guild) return;
   if (message.content === `<@${client.user.id}>` || message.content === `<@!${client.user.id}>`) {
    const embed = new Discord.MessageEmbed()
-    .setTitle(`Hi!`, message.guild.iconURL())
+    .setTitle(`<a:sucess:759354039242063903> Hi!`, message.guild.iconURL())
     .setColor('RANDOM')
-    .setDescription("I'm a " + client.user.username + "! My prefix is \`" + prefix + "\` To see all commands please type \`" + prefix + " help\`")
+    .setDescription("I was pinged by you, here I am - " + client.user.username + "! My prefix is \`" + prefix + "\` To see all  my commands please type \`" + prefix + " help\`")
     .setTimestamp()
+    .setFooter("Requested by " + `${message.author.username}`, message.author.displayAvatarURL({ dynamic: true, format: 'png', size: 2048 }))
    message.channel.send(embed);
   }
 
