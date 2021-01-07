@@ -43,14 +43,15 @@ module.exports = {
     .setTitle("Eval")
     .addField("To evaluate:", `\`\`\`js\n${beautify(args.join(" "), { format: "js"})}\n\`\`\``)
     .addField("Evaluated:", evaluated)
-    .addField("Type of:", typeof(evaluated));
+    .addField("Type of:", typeof(evaluated))
+    .setFooter("Requested by " + `${message.author.username}`, message.author.displayAvatarURL({ dynamic: true, format: 'png', size: 2048 }))
    message.channel.send(embed);
   } catch (err) {
    const embed = new Discord.MessageEmbed()
     .setColor("#FF0000")
     .setTitle("Error!")
     .setDescription("**Error Code:** *" + err + "*")
-    .setFooter("Bot created by " + `${cnf.owner}`)
+    .setFooter("Requested by " + `${message.author.username}`, message.author.displayAvatarURL({ dynamic: true, format: 'png', size: 2048 }))
     .setTimestamp()
    return message.channel.send(embed);
   }
