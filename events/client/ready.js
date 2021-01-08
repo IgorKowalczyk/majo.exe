@@ -40,7 +40,7 @@ try {
 
 client.user.setStatus("online");
 
-if (process.env.DASHBOARD = "true" || config.sessionSecret, false || config.secret, false || config.domain, false) {
+if (process.env.DASHBOARD = "true") {
  const Dashboard = require("../../dashboard/dashboard");
  Dashboard(client);
 } else {
