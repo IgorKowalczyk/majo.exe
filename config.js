@@ -15,4 +15,6 @@ module.exports = {
  "port": process.env.PORT,
  "prefix": process.env.PREFIX,
  "dashboard": process.env.DASHBOARD,
+ "newstitle": "<a:error:759354037803024395> Warning",
+ "news":  "Bot is currently under rebuilding, data in commands, configuration, money is NOT SAVED! Planned completion time is 31-01-2021, be patient... || [Info] 09 - 01 - 2021 Log system is broken and may not work, we are working to fix it. Thanks"
 }

@@ -55,7 +55,9 @@ module.exports = {
      embed.addField(`${icon} ${id} (${category.size})`, category.map(cmd => `${cmd.name}`).join(', '));
     }
     embed.addField(":grey_question: Command Information", `${prefix} help <command>`);
-    embed.addField("<a:error:759354037803024395> Warning", "Bot is currently under rebuilding, data in commands, configuration, money is NOT SAVED! Planned completion time is 31-01-2021, be patient... || [Info] 09 - 01 - 2021 Log system is broken and may not work, we are working to fix it. Thanks");
+    if(config.news && config.newstitle) {
+    embed.addField(`${config.newstitle}`, `${config.news}`);
+    }
     embed.setFooter("Requested by " + `${message.author.username}` + " • " + `${client.commands.size}` + " Commands", message.author.displayAvatarURL({ dynamic: true, format: 'png', size: 2048 }))
     return message.channel.send(embed);
    }
