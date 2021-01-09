@@ -1,7 +1,7 @@
 const Discord = require("discord.js");
 const chalk = require('chalk');
 const client = new Discord.Client({disableEveryone: true,});
-const config = require("../../config");
+const config = require("../config");
 client.config = config;
 
 module.exports = (client) => {
