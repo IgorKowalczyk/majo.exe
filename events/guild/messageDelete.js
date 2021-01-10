@@ -22,12 +22,6 @@ module.exports = async (client, message) => {
    .setFooter(message.guild.name, message.guild.iconURL())
   log.send(event)
  } catch (err) {
-  const log = message.guild.channels.cache.find(log => log.name === "log")
-  const embed = new Discord.MessageEmbed()
-   .setColor("#FF0000")
-   .setTitle("I meet error!")
-   .setDescription("Error Code: \`\`\`" + err + "\`\`\`")
-   .setTimestamp()
-  return log.send(embed);
+  console.log(err);
  }
 }
