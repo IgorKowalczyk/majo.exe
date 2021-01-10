@@ -14,7 +14,7 @@ module.exports = async (client, message) => {
    .setTitle(`Message Deleted`)
    .setColor('RANDOM')
    .setThumbnail(message.author.avatarURL())
-   .addField("Channel", `<#${message.channel.name}> (ID: ${message.channel.id})`)
+   .addField("Channel", `<#${message.channel.id}> (ID: ${message.channel.id})`)
    .addField("Message ID", `(${message.id})`)
    .addField("Send By", `<@${message.author.id}> (ID: ${message.author.id})`)
    .addField("Message", "\`\`\`" + `${final}` + "\`\`\`")
