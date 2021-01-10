@@ -7,34 +7,36 @@ module.exports = async (client, channel) => {
   if (!channel.guild.member(client.user).hasPermission("VIEW_AUDIT_LOG")) return;
   const log = channel.guild.channels.cache.find(log => log.name === "log")
   if(!log) return;
-  if (channel.type === "text") {
-   var type = "Text";
-  } else if (channel.type === "voice") {
-   var type = "Voice";
-  } else if (channel.type === "category") {
-   var type = "Category";
-  } else if (channel.type === "news") {
-   var type = "News Feed";
-  } else if (channel.type === "store") {
-   var type = "Store channel";
-  } else if (!channel.type) {
-   var type = "?";
+  if(log) {
+   if (channel.type === "text") {
+    var type = "Text";
+   } else if (channel.type === "voice") {
+    var type = "Voice";
+   } else if (channel.type === "category") {
+    var type = "Category";
+   } else if (channel.type === "news") {
+    var type = "News Feed";
+   } else if (channel.type === "store") {
+    var type = "Store channel";
+   } else if (!channel.type) {
+    var type = "?";
+   }
+   channel.guild.fetchAuditLogs().then(logs => {
+    var userid = logs.entries.first().executor.id;
+    var uavatar = logs.entries.first().executor.avatarURL();
+    const event = new Discord.MessageEmbed()
+     .setTitle("Channel Deleted")
+     .setThumbnail(uavatar)
+     .addField("Channel name", `${channel.name} (ID: ${channel.id})`)
+     .addField("Channel type", `${type}`)
+     .addField("Created at", `${channel.createdAt}`)
+     .addField("Created by", `<@${userid}> (ID: ${userid})`)
+     .setColor("RANDOM")
+     .setTimestamp()
+     .setFooter(channel.guild.name, channel.guild.iconURL());
+    log.send(event);
+   });
   }
-  channel.guild.fetchAuditLogs().then(logs => {
-   var userid = logs.entries.first().executor.id;
-   var uavatar = logs.entries.first().executor.avatarURL();
-   const event = new Discord.MessageEmbed()
-    .setTitle("Channel Deleted")
-    .setThumbnail(uavatar)
-    .addField("Channel name", `<#${channel.id}> (ID: ${channel.id})`)
-    .addField("Channel type", `${type}`)
-    .addField("Created at", `${channel.createdAt}`)
-    .addField("Created by", `<@${userid}> (ID: ${userid})`)
-    .setColor("RANDOM")
-    .setTimestamp()
-    .setFooter(channel.guild.name, channel.guild.iconURL());
-   log.send(event);
-  });
  } catch (err) {
   console.log(err)
  }
