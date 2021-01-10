@@ -4,14 +4,14 @@ const prefix = process.env.PREFIX;
 module.exports = async (client, message) => {
  try {
   if(message.author.bot) return;
-  if(message.channel.type === 'dm') return;  
-  if(!message.guild.member(client.user).hasPermission('EMBED_LINKS')) return;  
-  if(!message.guild.member(client.user).hasPermission('MANAGE_MESSAGES')) return;  
+  if(message.channel.type === 'dm') return;
+  if (!message.guild.member(client.user).hasPermissions("EMBED_LINKS", "VIEW_CHANNEL", "READ_MESSAGE_HISTORY", "VIEW_AUDIT_LOG", "SEND_MESSAGES")) return;
   const log = message.guild.channels.cache.find(log => log.name === "log")
+  if (!log.guild.member(client.user).hasPermissions("EMBED_LINKS", "VIEW_CHANNEL", "READ_MESSAGE_HISTORY", "VIEW_AUDIT_LOG", "SEND_MESSAGES")) return;
   if(!log) return;
   if(log) {
    const final = message.toString().substr(0, 500); // Limit characters
-   const event = new Discord.MessageEmbed()  
+   const event = new Discord.MessageEmbed()
     .setTitle(`Message Deleted`)
     .setColor('RANDOM')
     .setThumbnail(message.author.avatarURL())

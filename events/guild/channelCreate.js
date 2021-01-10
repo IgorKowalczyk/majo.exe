@@ -3,9 +3,9 @@ const Discord = require('discord.js');
 module.exports = async (client, channel) => {
  try {
   if (!channel.guild) return;
-  if (!channel.guild.member(client.user).hasPermission("EMBED_LINKS")) return;
-  if (!channel.guild.member(client.user).hasPermission("VIEW_AUDIT_LOG")) return;
+  if (!channel.guild.member(client.user).hasPermissions("EMBED_LINKS", "VIEW_CHANNEL", "READ_MESSAGE_HISTORY", "VIEW_AUDIT_LOG", "SEND_MESSAGES")) return;
   const log = channel.guild.channels.cache.find(log => log.name === "log")
+  if (!log.guild.member(client.user).hasPermissions("EMBED_LINKS", "VIEW_CHANNEL", "READ_MESSAGE_HISTORY", "VIEW_AUDIT_LOG", "SEND_MESSAGES")) return;
   if(!log) return;
   if(log) {
    if (channel.type === "text") {
