@@ -17,7 +17,7 @@ module.exports = async (client, channel) => {
   channel.guild.fetchAuditLogs().then(logs => {
    var userid = logs.entries.first().executor.id;
    var uavatar = logs.entries.first().executor.avatarURL();
-   let event = new Discord.MessageEmbed()
+   const event = new Discord.MessageEmbed()
     .setTitle("Channel Created")
     .setThumbnail(uavatar)
     .addField("Channel name", `<#${channel.id}> (ID: ${channel.id})`)
@@ -30,6 +30,7 @@ module.exports = async (client, channel) => {
    log.send(event);
   });
  } catch (err) {
+  const log = message.guild.channels.cache.find(log => log.name === "log")
   const embed = new Discord.MessageEmbed()
    .setColor("#FF0000")
    .setTitle("I meet error!")

@@ -15,7 +15,7 @@ module.exports = async (client, message) => {
    .setColor('RANDOM')
    .setThumbnail(message.author.avatarURL())
    .addField("Channel", `<#${message.channel.id}> (ID: ${message.channel.id})`)
-   .addField("Message ID", `(${message.id})`)
+   .addField("Message ID", `${message.id}`)
    .addField("Send By", `<@${message.author.id}> (ID: ${message.author.id})`)
    .addField("Message", "\`\`\`" + `${final}` + "\`\`\`")
    .setTimestamp()
