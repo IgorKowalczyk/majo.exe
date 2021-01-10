@@ -20,7 +20,7 @@ module.exports = async (client, message) => {
    .addField("Message", "\`\`\`" + `${final}` + "`\`\`\`")
    .setTimestamp()
    .setFooter(message.guild.name, message.guild.iconURL())
-   log.send(event);
+   message.log.send(event);
  } catch (err) {
   const embed = new Discord.MessageEmbed()
    .setColor("#FF0000")
