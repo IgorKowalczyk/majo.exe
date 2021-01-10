@@ -7,7 +7,7 @@ module.exports = async (client, message) => {
   if(message.channel.type === 'dm') return;  
   if(!message.guild.member(client.user).hasPermission('EMBED_LINKS')) return;  
   if(!message.guild.member(client.user).hasPermission('MANAGE_MESSAGES')) return;  
-  var log = message.guild.channels.cache.find(c => c.name === 'log');  
+  var log = message.guild.channels.cache.find(channel => channel.name === 'log')
   if(!log) return;
   const final = message.substr(0, 500); // Limit characters
   const event = new Discord.MessageEmbed()  
