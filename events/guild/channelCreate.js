@@ -5,7 +5,7 @@ module.exports = async (client, channel) => {
   if (!channel.guild) return;
   if (!channel.guild.member(client.user).hasPermission("EMBED_LINKS")) return;
   if (!channel.guild.member(client.user).hasPermission("VIEW_AUDIT_LOG")) return;
-  const log = message.guild.channels.cache.find(log => log.name === "log")
+  const log = channel.guild.channels.cache.find(log => log.name === "log")
   if(!log) return;
   if (channel.type === "text") {
    var type = "Text";
