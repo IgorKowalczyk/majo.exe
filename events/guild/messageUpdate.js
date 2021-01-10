@@ -1,7 +1,7 @@
-/*
 const Discord = require('discord.js');
 
 module.exports = async (client, oldMessage, newMessage) => {
+/*
 try {
  if (oldMessage.author.bot) return;
  if (!oldMessage.guild.member(client.user).hasPermission("EMBED_LINKS")) return;
@@ -26,5 +26,5 @@ try {
   .setTimestamp();
   return logChannel.send(embed);
 }
-}
 */
+}

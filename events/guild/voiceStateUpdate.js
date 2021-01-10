@@ -1,7 +1,7 @@
-/*
 const Discord = require('discord.js');
 
 module.exports = async (client, oldState, newState, guild) => {
+/*
 try {
  var logChannel = oldState.guild.channels.cache.find(c => c.name === 'log');  
  if (!logChannel) return;
@@ -90,5 +90,5 @@ try {
   .setTimestamp();
  console.log(err);
 }
-}
 */
+}
