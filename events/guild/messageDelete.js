@@ -11,17 +11,15 @@ module.exports = async (client, message) => {
   if(!log) return;
   const final = message.toString().substr(0, 500); // Limit characters
   const event = new Discord.MessageEmbed()  
-   .setTitle(`Message Deleted in ${message.channel}`)
+   .setTitle(`Message Deleted`)
    .setColor('RANDOM')
    .setThumbnail(message.author.avatarURL())
-   .addField("Channel", `${message.channel.name} (ID: ${message.channel.id})`)
+   .addField("Channel", `<#${message.channel.name}> (ID: ${message.channel.id})`)
    .addField("Message ID", `(${message.id})`)
    .addField("Send By", `<@${message.author.id}> (ID: ${message.author.id})`)
-   .addField("Message", "\`\`\`" + `${final}` + "`\`\`\`")
+   .addField("Message", "\`\`\`" + `${final}` + "\`\`\`")
    .setTimestamp()
    .setFooter(message.guild.name, message.guild.iconURL())
-   console.log(log.id);
-   console.log(final);
   log.send(event)
  } catch (err) {
   const embed = new Discord.MessageEmbed()
