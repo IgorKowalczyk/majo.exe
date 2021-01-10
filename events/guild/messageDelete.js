@@ -9,7 +9,7 @@ module.exports = async (client, message) => {
   if(!message.guild.member(client.user).hasPermission('MANAGE_MESSAGES')) return;  
   var log = message.guild.channels.cache.find(channel => channel.name === 'log')
   if(!log) return;
-  const final = message.substr(0, 500); // Limit characters
+  const final = message.toString().substr(0, 500); // Limit characters
   const event = new Discord.MessageEmbed()  
    .setTitle(`Message Deleted in ${message.channel}`)
    .setColor('RANDOM')
