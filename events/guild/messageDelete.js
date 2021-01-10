@@ -7,7 +7,7 @@ module.exports = async (client, message) => {
   if(message.channel.type === 'dm') return;  
   if(!message.guild.member(client.user).hasPermission('EMBED_LINKS')) return;  
   if(!message.guild.member(client.user).hasPermission('MANAGE_MESSAGES')) return;  
-  var log = message.guild.channels.cache.find(channel => channel.name === 'log')
+  const log = client.channels.cache.find(log => log.name === "log")
   if(!log) return;
   const final = message.toString().substr(0, 500); // Limit characters
   const event = new Discord.MessageEmbed()  
@@ -22,7 +22,7 @@ module.exports = async (client, message) => {
    .setFooter(message.guild.name, message.guild.iconURL())
    console.log(log.id);
    console.log(final);
-  //log.send(event);
+  log.send(event)
  } catch (err) {
   const embed = new Discord.MessageEmbed()
    .setColor("#FF0000")
