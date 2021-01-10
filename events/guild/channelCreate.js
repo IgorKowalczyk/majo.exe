@@ -13,6 +13,12 @@ module.exports = async (client, channel) => {
    var type = "Voice";
   } else if (channel.type === "category") {
    var type = "Category";
+  } else if (channel.type === "news") {
+    var type = "News Feed";
+  } else if (channel.type === "store") {
+    var type = "Store channel";
+  } else if (!channel.type) {
+    var type = "?";
   }
   channel.guild.fetchAuditLogs().then(logs => {
    var userid = logs.entries.first().executor.id;
@@ -22,7 +28,8 @@ module.exports = async (client, channel) => {
     .setThumbnail(uavatar)
     .addField("Channel name", `<#${channel.id}> (ID: ${channel.id})`)
     .addField("Channel type", `${type}`)
-    .addField("Channel type", `${type}`)
+    .addField("Channel position" `${channel.position}`)
+    .addField("Created at" `${channel.createdTimestamp}`)
     .addField("Created by", `<@${userid}> (ID: ${userid})`)
     .setColor("RANDOM")
     .setTimestamp()
