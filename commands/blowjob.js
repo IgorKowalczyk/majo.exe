@@ -25,7 +25,7 @@ module.exports = {
      .setTitle(":smirk: Blowjob !", message.guild.iconURL({ dynamic: true, format: 'png'}))
      .setImage(body.url)
      .setColor("RANDOM")
-     .setFooter("Requested by " + `${message.author.username}` + " • (:smirk:)", message.author.displayAvatarURL({ dynamic: true, format: 'png', size: 2048 }))
+     .setFooter("Requested by " + `${message.author.username}` + " • (😏)", message.author.displayAvatarURL({ dynamic: true, format: 'png', size: 2048 }))
      .setTimestamp()
      .setURL(body.url);
     message.channel.send(embed);
