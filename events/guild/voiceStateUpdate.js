@@ -1,3 +1,4 @@
+/*
 const Discord = require('discord.js');
 
 module.exports = async (client, oldState, newState, guild) => {
@@ -90,3 +91,4 @@ try {
  console.log(err);
 }
 }
+*/

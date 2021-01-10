@@ -1,3 +1,4 @@
+/*
 const Discord = require('discord.js');
 
 module.exports = async (client, role) => {
@@ -27,3 +28,4 @@ try {
  return logChannel.send(embed);
 }
 }
+*/
