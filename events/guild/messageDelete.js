@@ -17,7 +17,6 @@ module.exports = async (client, message) => {
    .addField("Channel", `<#${message.channel.id}> (ID: ${message.channel.id})`)
    .addField("Message ID", `${message.id}`)
    .addField("Created at", `${message.createdAt}`)
-   .addField("Deleted at", `${message.deleted}`)
    .addField("TTS", `${message.tts}`)
    .addField("Send By", `<@${message.author.id}> (ID: ${message.author.id})`)
    .addField("Message", "\`\`\`" + `${final}` + "\`\`\`")

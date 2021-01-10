@@ -28,7 +28,6 @@ module.exports = async (client, channel) => {
     .setThumbnail(uavatar)
     .addField("Channel name", `<#${channel.id}> (ID: ${channel.id})`)
     .addField("Channel type", `${type}`)
-    .addField("Channel position" `${channel.position}`)
     .addField("Created at" `${channel.createdTimestamp}`)
     .addField("Created by", `<@${userid}> (ID: ${userid})`)
     .setColor("RANDOM")
