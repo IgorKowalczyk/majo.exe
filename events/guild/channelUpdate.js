@@ -45,7 +45,7 @@ module.exports = async (client, oldChannel, newChannel) => {
       .addField("Old Channel category (parent)", `${oldcategory}`)
       .addField("New Channel category (parent)", `${newcategory}`)
       .addField("Changed by", `<@${userid}> (ID: ${userid})`)
-      .addField("Created at", `${channel.createdAt}`)
+      .addField("Created at", `${oldChannel.createdAt}`)
       .setColor("RANDOM")
       .setTimestamp()
       .setFooter(channel.guild.name, channel.guild.iconURL());
@@ -59,10 +59,10 @@ module.exports = async (client, oldChannel, newChannel) => {
       .addField("New Channel name", `${newChannel.name} (ID: the same XD)`)
       .addField("Channel type", `${type}`)
       .addField("Changed by", `<@${userid}> (ID: ${userid})`)
-      .addField("Created at", `${channel.createdAt}`)
+      .addField("Created at", `${oldChannel.createdAt}`)
       .setColor("RANDOM")
       .setTimestamp()
-      .setFooter(channel.guild.name, channel.guild.iconURL());
+      .setFooter(oldChannel.guild.name, oldChannel.guild.iconURL());
      log.send(channelname);
     }
     if(oldChannel.topic !== newChannel.topic) {
@@ -74,7 +74,7 @@ module.exports = async (client, oldChannel, newChannel) => {
       .addField("Channel id", `${newChannel.id}`)
       .addField("Channel type", `${type}`)
       .addField("Changed by", `<@${userid}> (ID: ${userid})`)
-      .addField("Created at", `${channel.createdAt}`)
+      .addField("Created at", `${oldChannel.createdAt}`)
       .setColor("RANDOM")
       .setTimestamp()
       .setFooter(oldChannel.guild.name, oldChannel.guild.iconURL())
