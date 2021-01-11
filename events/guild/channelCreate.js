@@ -4,8 +4,9 @@ module.exports = async (client, channel) => {
  try {
   if (!channel.guild) return;
   if (!channel.guild.member(client.user).hasPermission("EMBED_LINKS", "VIEW_CHANNEL", "READ_MESSAGE_HISTORY", "VIEW_AUDIT_LOG", "SEND_MESSAGES")) return;
-  const log = channel.guild.channels.cache.find(log => log.name === "log" && log.type == "text")
+  const log = channel.guild.channels.cache.find(log => log.name === "log")
   if(!log) return;
+  if(log.type !== "text") return;
   if (!log.guild.member(client.user).hasPermission("EMBED_LINKS", "VIEW_CHANNEL", "READ_MESSAGE_HISTORY", "VIEW_AUDIT_LOG", "SEND_MESSAGES")) return;
   if(log) {
    if (channel.type === "text") {
@@ -22,8 +23,8 @@ module.exports = async (client, channel) => {
      var type = "?";
    }
    channel.guild.fetchAuditLogs().then(logs => {
-    var userid = logs.entries.first().executor.id;
-    var uavatar = logs.entries.first().executor.avatarURL();
+    const userid = logs.entries.first().executor.id;
+    const uavatar = logs.entries.first().executor.avatarURL();
     const event = new Discord.MessageEmbed()
      .setTitle("Channel Created")
      .setThumbnail(uavatar)
