@@ -24,14 +24,14 @@ module.exports = async (client, oldChannel, newChannel) => {
    }
    const newcategory = newChannel.parent;
    if (!newcategory) {
-    newcategory = "None";
+    const newcategory = "None";
    }
    const oldcategory = oldChannel.parent;
    if (!oldcategory) {
-     oldcategory = "None";
+    const oldcategory = "None";
    }
    if (oldcategory === newcategory) {
-    newcategory = "Not changed"
+    const newcategory = "Not changed"
    }
    oldChannel.guild.fetchAuditLogs().then(logs => {
     const userid = logs.entries.first().executor.id;
