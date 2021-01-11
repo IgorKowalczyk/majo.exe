@@ -48,7 +48,7 @@ module.exports = async (client, oldChannel, newChannel) => {
       .addField("Created at", `${oldChannel.createdAt}`)
       .setColor("RANDOM")
       .setTimestamp()
-      .setFooter(channel.guild.name, channel.guild.iconURL());
+      .setFooter(oldChannel.guild.name, oldChannel.guild.iconURL());
      log.send(channelname);
     }
     if(oldChannel.name !== newChannel.name) {
