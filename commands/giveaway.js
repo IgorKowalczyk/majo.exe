@@ -14,21 +14,21 @@ module.exports = {
    if (!args[0]) {
     return message.channel.send({embed: {
      color: 16734039,
-     title: ":x: You did not specify your time!",
+     title: " You did not specify your time!",
      description: "Correct formatting: \`number<d/h/m>\`.\nLegend: \`d\` - Day, \`h\` - Hour/s, \`m\` - Minute/s"
     }})
    }
    if (!args[0].endsWith("d") && !args[0].endsWith("h") && !args[0].endsWith("m")) {
     return message.channel.send({embed: {
      color: 16734039,
-     title: ":x: You did not use the correct formatting for the time!",
+     title: "You did not use the correct formatting for the time!",
      description: "Correct formatting: \`number<d/h/m>\`.\nLegend: \`d\` - Day, \`h\` - Hour/s, \`m\` - Minute/s"
     }})
    }
    if (isNaN(args[0][0])) {
     return message.channel.send({embed: {
      color: 16734039,
-     title: ":x: You did not specify your time!",
+     title: "You did not specify your time!",
      description: "Correct formatting: \`number<d/h/m>\`.\nLegend: \`d\` - Day, \`h\` - Hour/s, \`m\` - Minute/s"
     }})
    }
@@ -36,14 +36,14 @@ module.exports = {
    if (!channel) {
     return message.channel.send({embed: {
      color: 16734039,
-     description: ":x: You must provide a channel in the guild to create giveaway!"
+     description: "You must provide a channel in the guild to create giveaway!"
     }})
    }
    let prize = args.slice(2).join(" ");
    if (!prize) {
     return message.channel.send({embed: {
      color: 16734039,
-     description: ":x: No prize specified!"
+     description: "No prize specified!"
     }})
    }
    const endembed = new Discord.MessageEmbed()
@@ -71,7 +71,7 @@ module.exports = {
     if (m.reactions.cache.get("🎉").count <= 1) {
     return channel.send({embed: {
      color: 16734039,
-     description: ":x: Not enough people reacted for me to start draw a winner! (" + `${m.reactions.cache.get("🎉").count}` + " reactions)",
+     description: "Not enough people reacted for me to start draw a winner! (" + `${m.reactions.cache.get("🎉").count}` + " reactions)",
     }})
     }
     let winner = m.reactions.cache.get("🎉").users.cache.filter((u) => !u.bot).random();

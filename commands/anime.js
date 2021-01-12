@@ -32,7 +32,7 @@ module.exports = {
      message.channel.send(embed);
     }).catch((err) => message.channel.send({embed: {
      color: 16734039,
-     description: ":x: Please enter a vaild name!"
+     description: "Please enter a vaild name!"
    }}));
   } catch (err) {
    message.channel.send({embed: {

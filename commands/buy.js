@@ -19,7 +19,7 @@ module.exports = {
      const bronzeerror = new Discord.MessageEmbed()
       .setTitle("Error!", message.guild.iconURL({ dynamic: true, format: 'png'}))
       .setColor(16734039)
-      .setDescription(`:cross: You need 3500 coins to purchase Bronze VIP`)
+      .setDescription(`You need 3500 coins to purchase Bronze VIP`)
       .setFooter("Requested by " + `${message.author.username}`, message.author.displayAvatarURL({ dynamic: true, format: 'png', size: 2048 }))
      return message.channel.send(bronzeerror);
     }

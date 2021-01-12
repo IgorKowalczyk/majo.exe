@@ -11,14 +11,14 @@ module.exports = {
  usage: "ascii <text>",
  run: async (client, message, args) => {
   try {
-   var maxLen = 50
-   if(args.join(' ').length > maxLen) return message.channel.send({embed: {
+   var max = 50;
+   if(args.join(' ').length > max) return message.channel.send({embed: {
     color: 16734039,
-    description: ":x: The max length is " + `${maxLen}` + " !"
+    description: "The max length is " + `${max}` + " !"
    }})
    if(!args[0]) return message.channel.send({embed: {
     color: 16734039,
-    description: ":x: Please enter a text to convert!"
+    description: "Please enter a text to convert!"
    }})
    figlet(`${args.join(' ')}`, function(err, data) {
     if (err) {

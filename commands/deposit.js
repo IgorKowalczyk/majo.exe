@@ -25,8 +25,8 @@ module.exports = {
     let money = await db.fetch(`money_${message.guild.id}_${user.id}`)
     let bank = await db.fetch(`bank_${message.guild.id}_${user.id}`)
     let embedbank = new Discord.MessageEmbed()
-     .setColor('RANDOM')
-     .setDescription(":x: You don't have any money to deposit")
+     .setColor("FF5757")
+     .setDescription("You don't have any money to deposit")
     if(money === 0) return message.channel.send(embedbank)
     db.add(`bank_${message.guild.id}_${user.id}`, money)
     db.subtract(`money_${message.guild.id}_${user.id}`, money)
@@ -36,20 +36,20 @@ module.exports = {
     message.channel.send(allmoney).catch(err => console.log(err))
    } else {
     const setmoney = new Discord.MessageEmbed()
-     .setColor("RANDOM")
-     .setDescription(`:x: Specify an amount to deposit`);
+     .setColor("FF5757")
+     .setDescription(`Specify an amount to deposit`);
     if (!args[0]) {
      return message.channel.send(setmoney).catch(err => console.log(err))
     }
     const negative = new Discord.MessageEmbed()
-     .setColor("RANDOM")
-     .setDescription(`:x: You can't deposit negative money`);
+     .setColor("FF5757")
+     .setDescription(`You can't deposit negative money`);
     if (message.content.includes('-')) { 
      return message.channel.send(negative).catch(err => console.log(err))
     }
     const nomoney = new Discord.MessageEmbed()
-     .setColor("RANDOM")
-     .setDescription(`:x: You don't have that much money`);
+     .setColor("FF5757")
+     .setDescription(`You don't have that much money`);
     if (member < args[0]) {
      return message.channel.send(nomoney).catch(err => console.log(err))
    }

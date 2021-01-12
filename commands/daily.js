@@ -21,7 +21,7 @@ module.exports = {
     const timeEmbed = new Discord.MessageEmbed()
      .setTitle("Error!", message.guild.iconURL({ dynamic: true, format: 'png'}))
      .setColor(16734039)
-     .setDescription(`:x: You've already collected your daily reward\nCollect it again in ${time.hours}h ${time.minutes}m ${time.seconds}s `)
+     .setDescription(`You've already collected your daily reward\nCollect it again in ${time.hours}h ${time.minutes}m ${time.seconds}s `)
      .setFooter("Requested by " + `${message.author.username}`, message.author.displayAvatarURL({ dynamic: true, format: 'png', size: 2048 }))
      message.channel.send(timeEmbed)
    } else {

@@ -13,7 +13,7 @@ module.exports = {
    if (!message.member.hasPermission("MANAGE_MESSAGES") || !message.member.hasPermission("ADMINISTRATOR")) {
     let error = new Discord.MessageEmbed()
      .setColor("FF5757")
-     .setDescription(":x: You don't have premission to prune messages!")
+     .setDescription("You don't have premission to prune messages!")
      .setFooter("This message will be deleted after 3 seconds", message.author.displayAvatarURL({ dynamic: true, format: 'png', size: 2048 }))
     message.channel.send(error).then(m => m.delete({timeout: 3000}))
     return message.delete({timeout: 3000})
@@ -21,7 +21,7 @@ module.exports = {
    if (isNaN(args[0])) {
     let error = new Discord.MessageEmbed()
      .setColor("FF5757")
-     .setDescription(":x: Please input a vaild number!")
+     .setDescription("Please input a vaild number!")
      .setFooter("This message will be deleted after 3 seconds", message.author.displayAvatarURL({ dynamic: true, format: 'png', size: 2048 }))
     message.channel.send(error).then(m => m.delete({timeout: 3000}))
     return message.delete({timeout: 3000})
@@ -29,7 +29,7 @@ module.exports = {
    if (args[0] > 100) {
     let error = new Discord.MessageEmbed()
      .setColor("FF5757")
-     .setDescription(":x: Insert the number less than 100!")
+     .setDescription("Insert the number less than 100!")
      .setFooter("This message will be deleted after 3 seconds", message.author.displayAvatarURL({ dynamic: true, format: 'png', size: 2048 }))
     message.channel.send(error).then(m => m.delete({timeout: 3000}))
     return message.delete({timeout: 3000})
@@ -37,7 +37,7 @@ module.exports = {
    if (args[0] < 2) {
     let error = new Discord.MessageEmbed()
      .setColor("FF5757")
-     .setDescription(":x: Insert the number more than 1!")
+     .setDescription("Insert the number more than 1!")
      .setFooter("This message will be deleted after 3 seconds", message.author.displayAvatarURL({ dynamic: true, format: 'png', size: 2048 }))
     message.channel.send(error).then(m => m.delete({timeout: 3000}))
     return message.delete({timeout: 3000})
