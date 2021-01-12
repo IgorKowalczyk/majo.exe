@@ -45,7 +45,7 @@ const memory = os.totalmem() -os.freemem(), totalmemory = os.totalmem();
 const percentage =  ((memory/totalmemory) * 100).toFixed(2) + '%'
 // const freememory = os.freemem();
 console.log("Memory used ", (memory/ Math.pow(1024, 3)).toFixed(2) + "GB")
-console.log("Total memory", (memory / 1024 / 1024 / 100).toFixed(1) + "GB")
+console.log("Total memory", (memory / 1024 / 1024).toFixed(0) / 100 + "GB")
 console.log("Used memory" , percentage);
 console.log("OS" + os.type() + os.release() + os.platform());
 
