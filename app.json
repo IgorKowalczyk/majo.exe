@@ -3,6 +3,7 @@
  "description": "An advanced Discord bot",
  "logo": "https://igorkowalczyk.github.io/lib/favicon/favicon.jpg",
  "repository":"https://github.com/igorkowalczyk/majobot.git",
+ "stack": "heroku-20",
  "buildpacks": [
   {
    "url": "heroku/nodejs"
@@ -16,10 +17,6 @@
   "PREFIX": {
    "description": "The default bot prefix (eg. !majo)",
    "required": true
-  },
-  "DASHBOARD": {
-   "description": "The Web-Dashboard config value. (eg. true/false)",
-   "required": false
   },
   "GENIUS_KEY": {
    "description": "Genius API Key (Used in music and lyrics)",
@@ -49,8 +46,6 @@
  "keywords": [
   "discord",
   "discord-bot",
-  "javascript",
-  "js",
   "node-js",
   "web-dashboard",
   "bot"
