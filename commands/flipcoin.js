@@ -3,17 +3,18 @@ const config = require("../config");
 const prefix = config.prefix;
 
 module.exports = {
- name: "flatearth",
+ name: "flipcoin",
  aliases: [],
- description: "Shows why the Earth is flat",
+ description: "Flip a virtual coin",
  category: "Fun",
- usage: "flatearth",
+ usage: "flipcoin",
  run: async (client, message, args) => {
   try {
+   const answers = ["Heads", "Tails"]
+   const answer = answers[Math.floor(Math.random()*answers.length)];
    const embed = new Discord.MessageEmbed()
     .setColor("RANDOM")
-    .setTitle("If the earth isn\'t flat, explain this:")
-    .setImage("../lib/img/earth.png")
+    .setTitle(`I'm get: ${answer}`)
     .setFooter("Requested by " + `${message.author.username}`, message.author.displayAvatarURL({ dynamic: true, format: 'png', size: 2048 }))
     .setTimestamp()
    message.channel.send(embed);

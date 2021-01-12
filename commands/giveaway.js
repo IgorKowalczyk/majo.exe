@@ -14,7 +14,7 @@ module.exports = {
    if (!args[0]) {
     return message.channel.send({embed: {
      color: 16734039,
-     title: " You did not specify your time!",
+     title: "You did not specify your time!",
      description: "Correct formatting: \`number<d/h/m>\`.\nLegend: \`d\` - Day, \`h\` - Hour/s, \`m\` - Minute/s"
     }})
    }
