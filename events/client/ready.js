@@ -40,6 +40,12 @@ try {
 
 client.user.setStatus("online");
 
+const os = require('os');
+const memory = os.totalmem() -os.freemem(), totalmemory = os.totalmem();
+const  getpercentage =  ((memory/totalmemory) * 100).toFixed(2) + '%'
+console.log("Memory used in GB", (memory/ Math.pow(1024, 3)).toFixed(2))
+console.log("Used memory" , getpercentage);
+
 console.log(chalk.blue("Connected! Logged in as ") + chalk.blue.underline(`${client.user.username} ${client.user.tag}`) + chalk.blue("!"));
 } catch(err) {
  console.log(err);
