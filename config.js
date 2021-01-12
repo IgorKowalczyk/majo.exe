@@ -6,6 +6,7 @@ module.exports = {
  "image": "https://igorkowalczyk.github.io/lib/favicon/favicon.jpg",
  "server": "https://discord.gg/bVNNHuQ",
  "authorwebsite": "https://igorkowalczyk.github.io",
+ "author": "Igor Kowalczyk (Majonez.exe#3957)",
  "github": "igorkowalczyk",
  "domain": process.env.DOMAIN,
  "google_analitics": process.env.ANALYTICS,
