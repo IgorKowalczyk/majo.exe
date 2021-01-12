@@ -10,10 +10,11 @@ module.exports = {
  usage: "flatearth",
  run: async (client, message, args) => {
   try {
+   const attachment = new Discord.Attachment('../lib/img/earth.png', 'idiots.png');
    const embed = new Discord.MessageEmbed()
     .setColor("RANDOM")
     .setTitle("If the earth isn\'t flat, explain this:")
-    .setImage("../lib/img/earth.png")
+    .setImage('attachment://idiots.png')
     .setFooter("Requested by " + `${message.author.username}`, message.author.displayAvatarURL({ dynamic: true, format: 'png', size: 2048 }))
     .setTimestamp()
    message.channel.send(embed);
