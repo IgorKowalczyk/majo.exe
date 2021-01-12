@@ -44,7 +44,7 @@ const os = require('os');
 const memory = os.totalmem() -os.freemem(), totalmemory = os.totalmem();
 const percentage =  ((memory/totalmemory) * 100).toFixed(2) + '%'
 console.log("Memory used in GB", (memory/ Math.pow(1024, 3)).toFixed(2))
-console.log("Total memory", memory + 'GB')
+console.log("Total memory", totalmemory + 'GB')
 console.log("Used memory" , percentage);
 
 console.log(chalk.blue("Connected! Logged in as ") + chalk.blue.underline(`${client.user.username} ${client.user.tag}`) + chalk.blue("!"));
