@@ -48,6 +48,9 @@ console.log("Memory used in GB", (memory/ Math.pow(1024, 3)).toFixed(2))
 console.log("Total memory", freememory + 'GB')
 console.log("Total memory", (memory / 1024 / 1024) + 'GB')
 console.log("Used memory" , percentage);
+console.log(os.type());
+console.log(os.release());
+console.log(os.platform());
 
 console.log(chalk.blue("Connected! Logged in as ") + chalk.blue.underline(`${client.user.username} ${client.user.tag}`) + chalk.blue("!"));
 } catch(err) {
