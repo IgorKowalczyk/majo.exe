@@ -2,6 +2,7 @@ const Discord = require("discord.js");
 const config = require("../config");
 const prefix = config.prefix;
 const moment = require("moment");
+const os = require('os');
 require("moment-duration-format");
 
 module.exports = {
@@ -12,6 +13,12 @@ module.exports = {
  usage: "info",
  run: async (client, message, args) => {
   try {
+   const memory = os.totalmem() -os.freemem(), totalmemory = os.totalmem();
+   const percentage =  ((memory/totalmemory) * 100).toFixed(2) + '%'
+   const freememory = os.freemem();
+   const totalmemoryembed = (totalmemory / Math.pow(1024, 3)).toFixed(2) + "GB";
+   const ostype = os.type() + " " + os.release();
+   const usedmemory = (memory/ Math.pow(1024, 3)).toFixed(2) + "GB (" + (freememory / Math.pow(1024, 3)).toFixed(2) + " free)";
    if(config.dashboard = "true") {
     webpanel = `[Web-Panel](${config.domain}) |`;
    } else {
@@ -25,13 +32,13 @@ module.exports = {
     .addField('Head developer', `${config.author} [[Portfolio](${config.authorwebsite})]`, true)
     .setThumbnail(client.user.displayAvatarURL({ dynamic: true, format: 'png', size: 2048 }))
     .addField('Node', `${process.version}`, true)
-    .addField('OS', `Ubuntu 20.04 (Linux)`, true)
+    .addField('OS', `${ostype}`, true)
     .addField('Stack', `20 (Support date: 01.04.2025)`, true)
     .addField('Uptime', `${duration}`, true)
     .addField('Guild Count', `${client.guilds.cache.size}`, true)
     .addField('User Count', `${client.guilds.cache.reduce((a, g) => a + g.memberCount, 0)}`, true)
     .addField('Channel Count', `${client.channels.cache.size}`, true)
-    .addField('Memory Usage', `${Math.round(process.memoryUsage().heapUsed / 1024 / 1024)}MB RAM`, true)
+    .addField('Memory', `Memory used: ${usedmemory}\nUsed percentage: ${percentage}\nTotal memory: ${totalmemoryembed}`)
     .addField('Useful Links', `[Official server](${config.server}) | ${webpanel} [Invite me](https://discord.com/oauth2/authorize/?permissions=8&scope=bot&client_id=${client.user.id})`)
     .setFooter("Requested by " + `${message.author.username}`, message.author.displayAvatarURL({ dynamic: true, format: 'png', size: 2048 }))
    message.channel.send(embed);
