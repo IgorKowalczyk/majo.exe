@@ -6,7 +6,7 @@ module.exports = {
  name: "ban",
  aliases: [],
  description: "Ban a member",
- category: "Economy",
+ category: "Moderation",
  usage: "ban <mention> <reason>",
  run: async (client, message, args) => {
   try {

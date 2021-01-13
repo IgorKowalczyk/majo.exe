@@ -21,6 +21,12 @@ module.exports = {
      color: 16734039,
      description: "You must enter the amount of money to add!"
     }})
+    const negative = new Discord.MessageEmbed()
+     .setColor("FF5757")
+     .setDescription(`You can't deposit negative money`);
+    if (message.content.includes('-')) { 
+     return message.channel.send(negative).catch(err => console.log(err))
+    }
     db.add(`money_${message.guild.id}_${user.id}`, args[1])
     let bal = await db.fetch(`money_${message.guild.id}_${user.id}`)
     let moneyEmbed = new Discord.MessageEmbed()
