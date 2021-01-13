@@ -18,7 +18,7 @@ module.exports = {
    const freememory = os.freemem();
    const totalmemoryembed = (totalmemory / Math.pow(1024, 3)).toFixed(2) + "GB";
    const ostype = os.type() + " " + os.release();
-   const usedmemory = (memory/ Math.pow(1024, 3)).toFixed(2) + "GB (" + (freememory / Math.pow(1024, 3)).toFixed(2) + " free)";
+   const usedmemory = (memory/ Math.pow(1024, 3)).toFixed(2) + "GB (" + (freememory / Math.pow(1024, 3)).toFixed(2) + "GB free)";
    if(config.dashboard = "true") {
     webpanel = `[Web-Panel](${config.domain}) |`;
    } else {
