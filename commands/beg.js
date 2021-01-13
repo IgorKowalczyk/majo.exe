@@ -14,13 +14,13 @@ module.exports = {
   try {
    const user = message.author;
    const timeout = 180000;
-   const amount = 5;
+   const amount = 100;
    let beg = await db.fetch(`beg_${message.guild.id}_${user.id}`);
    if (beg !== null && timeout - (Date.now() - beg) > 0) {
     const errtime = ms(timeout - (Date.now() - beg));
     const time = new Discord.MessageEmbed()
      .setTitle("Error!", message.guild.iconURL({ dynamic: true, format: 'png'}))
-     .setColor(16734039)
+     .setColor("FF5757")
      .setDescription(`You've already begged recently\n\nBeg again in ${time.minutes}m ${time.seconds}s`)
      .setFooter("Requested by " + `${message.author.username}`, message.author.displayAvatarURL({ dynamic: true, format: 'png', size: 2048 }))
     message.channel.send(errtime)
