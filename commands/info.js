@@ -4,7 +4,6 @@ const prefix = config.prefix;
 const moment = require("moment");
 const os = require('os');
 require("moment-duration-format");
-const system = require('systeminformation');
 
 module.exports = {
  name: "info",
@@ -25,7 +24,6 @@ module.exports = {
    } else {
     webpanel = " ";
    }
-   system.cpuTemperature().then(tmp=>{console.log(tmp)});
    const duration = moment.duration(client.uptime).format(" D [days], H [hrs], m [mins], s [secs]");
    const embed = new Discord.MessageEmbed()
     .setTitle(`Information for developers`, message.guild.iconURL({ dynamic: true, format: 'png'}))
@@ -40,7 +38,7 @@ module.exports = {
     .addField('Guild Count', `${client.guilds.cache.size}`, true)
     .addField('User Count', `${client.guilds.cache.reduce((a, g) => a + g.memberCount, 0)}`, true)
     .addField('Channel Count', `${client.channels.cache.size}`, true)
-    .addField('Memory', `Memory used: ${usedmemory}\nUsed percentage: ${percentage}\nTotal memory: ${totalmemoryembed}\nCPU Temperature: ${temperature}`)
+    .addField('Memory', `Memory used: ${usedmemory}\nUsed percentage: ${percentage}\nTotal memory: ${totalmemoryembed}`)
     .addField('Useful Links', `[Official server](${config.server}) | ${webpanel} [Invite me](https://discord.com/oauth2/authorize/?permissions=8&scope=bot&client_id=${client.user.id})`)
     .setFooter("Requested by " + `${message.author.username}`, message.author.displayAvatarURL({ dynamic: true, format: 'png', size: 2048 }))
    message.channel.send(embed);

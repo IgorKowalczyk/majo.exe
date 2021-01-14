@@ -67,7 +67,6 @@
   "nodemon": "^2.0.4",
   "i": "^0.3.6",
   "os": "^0.1.1",
-  "systeminformation": "^4.34.7",
   "memorystore": "^1.6.2",
   "mongoose": "^5.10.9",
   "passport": "^0.4.1",
