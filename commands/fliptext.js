@@ -11,7 +11,7 @@ module.exports = {
  usage: "fliptext <text>",
  run: async (client, message, args) => {
   try {
-   if (!args) return message.channel.send({embed: {
+   if (!args[0].lenght) return message.channel.send({embed: {
     color: 16734039,
     description: "You must provide a text!"
    }})
