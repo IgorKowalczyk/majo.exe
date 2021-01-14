@@ -25,8 +25,7 @@ module.exports = {
    } else {
     webpanel = " ";
    }
-   const temperature = system.cpuTemperature() || "Can't read cpu temperature";
-
+   system.cpuTemperature().then(tmp=>{const temperature = tmp;});
    const duration = moment.duration(client.uptime).format(" D [days], H [hrs], m [mins], s [secs]");
    const embed = new Discord.MessageEmbed()
     .setTitle(`Information for developers`, message.guild.iconURL({ dynamic: true, format: 'png'}))
