@@ -15,9 +15,10 @@ module.exports = {
     color: 16734039,
     description: "You must provide a text!"
    }})
-   if (args.lenght > 50) return message.channel.send({embed: {
+   const max = 50;
+   if (args.lenght > max) return message.channel.send({embed: {
     color: 16734039,
-    description: "The max lenght for text is 50 letters!"
+    description: `The max lenght for text is ${max} letters!`
    }})
    var flipped = [];
    args.forEach((arg) => {
