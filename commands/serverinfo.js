@@ -38,14 +38,14 @@ module.exports = {
    "southafrica": ":flag_za:  South Africa"
   }
   if(message.guild.rulesChannel) {
-   const rules = "<#" + message.guild.rulesChannel + "> (ID: " + message.guild.rulesChannelID + ")";
+   rules = "<#" + message.guild.rulesChannel + "> (ID: " + message.guild.rulesChannelID + ")";
   } else {
-   const rules = message.guild.rulesChannel;
+   rules = message.guild.rulesChannel;
   }
   if(message.guild.widgetEnabled == "true") {
-   const widget = "<#" + message.guild.widgetChannel + "> (ID: " + message.guid.widgetChannelID + ")";
+   widget = "<#" + message.guild.widgetChannel + "> (ID: " + message.guid.widgetChannelID + ")";
   } else {
-   const widget = "Server widget not enabled";
+   widget = "Server widget not enabled";
   }
   const embed = new Discord.MessageEmbed()
    .setAuthor(message.guild.name, message.guild.iconURL)
