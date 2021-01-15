@@ -10,7 +10,6 @@ module.exports = {
  usage: "serverinfo",
  run: async (client, message, args) => {
   try {
-   let serverowner = message.guild.member(message.guild.ownerID);
    var roles = [];
    var e = message.guild.emojis.cache.map(e => e.toString())
    function checkdays(date) {
@@ -44,7 +43,7 @@ module.exports = {
    const rules = message.guild.rulesChannel;
   }
   if(message.guild.widgetEnabled == "true") {
-   const widget = "<#" + message.guild.widgetChannel + "> (ID:" + message.guid.widgetChannelID + ")";
+   const widget = "<#" + message.guild.widgetChannel + "> (ID: " + message.guid.widgetChannelID + ")";
   } else {
    const widget = "Server widget not enabled";
   }
@@ -52,7 +51,7 @@ module.exports = {
    .setAuthor(message.guild.name, message.guild.iconURL)
    .setColor("RANDOM")
    .setThumbnail(message.guild.iconURL())
-   .addField("Server Owner", serverowner.user.username + "#" + serverowner.user.discriminator, true)
+   .addField("Server Owner", message.guild.owner + " (ID: " + message.guild.ownerID + ")", true)
    .addField("ID", message.guild.id, true)
    .addField("Region", region[message.guild.region] || message.guild.region, true)
    .addField("Members", `${message.guild.memberCount}`, true)
