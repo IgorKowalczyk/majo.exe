@@ -7,7 +7,6 @@ module.exports = {
  name: "help",
  aliases: ["h", "commands"],
  category: "General",
- cooldown: 5,
  description: "Displays all the commands available",
  usage: "help [command]",
  run: async (client, message, args) => {
