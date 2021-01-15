@@ -38,6 +38,16 @@ module.exports = {
    "russia": ":flag_ru: Russia",
    "southafrica": ":flag_za:  South Africa"
   }
+  if(message.guild.rulesChannel) {
+   const rules = "<#" + message.guild.rulesChannel + "> (ID: " + message.guild.rulesChannelID + ")";
+  } else {
+   const rules = message.guild.rulesChannel;
+  }
+  if(message.guild.widgetEnabled == "true") {
+   const widget = "<#" + message.guild.widgetChannel + "> (ID:" + message.guid.widgetChannelID + ")";
+  } else {
+   const widget = "Server widget not enabled";
+  }
   const embed = new Discord.MessageEmbed()
    .setAuthor(message.guild.name, message.guild.iconURL)
    .setColor("RANDOM")
@@ -49,6 +59,15 @@ module.exports = {
    .addField("Verification Level", message.guild.verificationLevel, true)
    .addField("Channels", message.guild.channels.cache.size, true)
    .addField("Roles", message.guild.roles.cache.size, true)
+   .addField("Banner", message.guild.banner || "None", true)
+   .addField("Guild verified", message.guild.verified, true)
+   .addField("Discord partner", message.guild.partnered, true)
+   .addField("Description", message.guild.description || "None")
+   .addField("Discovery Splash", message.guild.discoverySplash || "None", true)
+   .addField("Guild Features", message.guild.features || "None", true)
+   .addField("Rules channel", rules, true)
+   .addField("Widget channel", widget, true)
+   .addField("Boosts", message.guild.premiumSubscriptionCount + " [" + message.guild.premiumTier + " tier]", true)
    .addField("Emojis", message.guild.emojis.cache.size, true)
    .addField("Creation Date", `${message.channel.guild.createdAt.toUTCString().substr(0, 16)} (${checkdays(message.channel.guild.createdAt)})`, true)
    .setFooter("Requested by " + `${message.author.username}`, message.author.displayAvatarURL({ dynamic: true, format: 'png', size: 2048 }))
