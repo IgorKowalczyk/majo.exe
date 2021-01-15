@@ -20,6 +20,7 @@ module.exports = async (client, message) => {
     .addField("Message ID", `${message.id}`)
     .addField("Created at", `${message.createdAt}`)
     .addField("TTS", `${message.tts}`)
+    .addField("Pinned", `${message.pinned}`)
     .addField("Send By", `<@${message.author.id}> (ID: ${message.author.id})`)
     .addField("Message", "\`\`\`" + `${final}` + "\`\`\`")
     .setTimestamp()
