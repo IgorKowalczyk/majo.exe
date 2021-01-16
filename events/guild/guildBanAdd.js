@@ -17,8 +17,8 @@ module.exports = async (client, guild, user) => {
      .setTitle("User Banned")
      .setThumbnail(uavatar)
      .setColor("RANDOM")
-     .addField("Banned User", `${user.username} [Ping: <@${user.id}], (ID: ${user.id})`)
-     .addField("Banned by", `${userid} (ID: ${userid})`)
+     .addField("Banned User", `${user.username} [Ping: <@${user.id}>], (ID: ${user.id})`)
+     .addField("Banned by", `<@${userid}> (ID: ${userid})`)
      .setTimestamp()
      .setFooter(guild.name, guild.iconURL())
     log.send(embed);

@@ -17,8 +17,8 @@ module.exports = async (client, guild, user) => {
       .setTitle("User Unbanned")
       .setThumbnail(uavatar)
       .setColor("RANDOM")
-      .addField("Unbanned User", `${user.username} [Ping: <@${user.id}], (ID: ${user.id})`)
-      .addField("Unbanned by", `${userid} (ID: ${userid})`)
+      .addField("Unbanned User", `${user.username} [Ping: <@${user.id}>], (ID: ${user.id})`)
+      .addField("Unbanned by", `<@${userid}> (ID: ${userid})`)
       .setTimestamp()
       .setFooter(guild.name, guild.iconURL());
      log.send(embed);
