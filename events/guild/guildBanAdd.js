@@ -20,7 +20,7 @@ module.exports = async (client, guild, user) => {
      .addField("Banned User", `${user.username} [Ping: <@${user.id}], (ID: ${user.id})`)
      .addField("Banned by", `${userid} (ID: ${userid})`)
      .setTimestamp()
-     .setFooter(guild.name, message.guild.iconURL())
+     .setFooter(guild.name, guild.iconURL())
     log.send(embed);
    });
   }

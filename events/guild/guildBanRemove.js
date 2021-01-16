@@ -21,7 +21,7 @@ module.exports = async (client, guild, user) => {
       .addField("Unbanned by", `${userid} (ID: ${userid})`)
       .setTimestamp()
       .setFooter(guild.name, guild.iconURL());
-     logChannel.send(unBanInfo);
+     loh.send(unBanInfo);
    });
   }
  } catch (err) {
