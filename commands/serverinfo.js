@@ -47,6 +47,11 @@ module.exports = {
   } else {
    widget = "Server widget not enabled";
   }
+  if(message.guild.features) {
+   features = message.guild.features;
+  } else {
+   features = "None features enabled";
+  }
   const embed = new Discord.MessageEmbed()
    .setAuthor(message.guild.name, message.guild.iconURL)
    .setColor("RANDOM")
@@ -63,7 +68,7 @@ module.exports = {
    .addField("Discord partner", message.guild.partnered, true)
    .addField("Description", `${message.guild.description || "None"}`)
    .addField("Discovery Splash", `${message.guild.discoverySplash || "None"}`, true)
-   .addField("Guild Features", `${message.guild.features || "None"}`, true)
+   .addField("Guild Features", `${features}`, true)
    .addField("Rules channel", rules, true)
    .addField("Widget channel", widget, true)
    .addField("Boosts", message.guild.premiumSubscriptionCount + " [" + message.guild.premiumTier + " tier]", true)
