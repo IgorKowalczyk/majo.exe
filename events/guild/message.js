@@ -1,5 +1,6 @@
 const Discord = require('discord.js');
-const prefix = process.env.PREFIX;
+const config = require("../config");
+const prefix = config.prefix;
 
 module.exports = async (client, message) => {
  try {
