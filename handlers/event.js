@@ -1,4 +1,4 @@
-const { readdirSync } = require('fs');
+const {readdirSync} = require('fs');
 
 module.exports = (client) => {
  const load = dirs => {
