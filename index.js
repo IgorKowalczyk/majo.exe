@@ -19,12 +19,11 @@ if (token) {
  ['command', 'event'].forEach(handler => {
   require(`./handlers/${handler}`)(client);
  });
- client.spawn();
 } else {
  console.log(chalk.red.bold("Error:") + chalk.red(" Bot token is not provided! To give your bot life, you need to enter token value in the ") + chalk.grey.italic.bold(".env") +  chalk.red(" file - ") + chalk.grey.italic.bold("TOKEN=Your_Token ") + chalk.red.underline.bold("REMEMBER: Token is super-secret - do not share it with anyone!"));
 }
 /* /Login and Commands*/
-
+client.spawn();
 process.on("unhandledRejection", (err) => {
  console.error(err);
 });
