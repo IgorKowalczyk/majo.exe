@@ -3,8 +3,7 @@ const config = require("./config");
 const token = config.token;
 
 const client = new Discord.ShardingManager('./index.js', {
- totalShards: 'auto',
  token: token
 });
-
-client.spawn();
+const shards = 20;
+client.spawn(shards, 15000, false);

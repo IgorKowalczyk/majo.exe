@@ -1,2 +1,2 @@
-worker: node shard.js
+worker: node index.js
 web: node dashboard/run.js
