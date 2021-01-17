@@ -40,7 +40,7 @@ module.exports = {
   if(message.guild.rulesChannel) {
    rules = "<#" + message.guild.rulesChannel + "> (ID: " + message.guild.rulesChannelID + ")";
   } else {
-   rules = message.guild.rulesChannel;
+   rules = "Rules channel not exists";
   }
   if(message.guild.widgetEnabled == "true") {
    widget = "<#" + message.guild.widgetChannel + "> (ID: " + message.guid.widgetChannelID + ")";
