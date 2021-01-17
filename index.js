@@ -1,5 +1,5 @@
 const Discord = require("discord.js");
-const client = new Discord.client({disableEveryone: true});
+const client = new Discord.client({disableEveryone: true,});
 const fs = require("fs");
 const http = require("http");
 const db = require("quick.db");
