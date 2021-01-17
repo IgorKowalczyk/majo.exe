@@ -6,3 +6,5 @@ const client = new Discord.Client('./index.js', {
  totalShards: 'auto',
  token: token
 });
+
+client.spawn();
