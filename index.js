@@ -1,11 +1,11 @@
 const Discord = require("discord.js");
-//const client = new Discord.Client({disableEveryone: true});
+const client = new Discord.Client({disableEveryone: true});
 const fs = require("fs");
 const http = require("http");
 const db = require("quick.db");
 const chalk = require("chalk");
 const config = require("./config");
-//const token = config.token;
+const token = config.token;
 
 /* Login and Commands */
 //if (token) {
