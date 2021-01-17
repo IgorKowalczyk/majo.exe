@@ -1,3 +1,4 @@
+/* This is not used file, only for testing */
 const Discord = require("discord.js");
 const moment = require("moment");
 const timestamp = `[${moment().format("DD-MM-YY H:m:s")}]:`;

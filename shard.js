@@ -1,3 +1,4 @@
+/* This is not used file, only for testing */
 const { Discord } = require('discord.js');
 const config = require("./config");
 const token = config.token;
