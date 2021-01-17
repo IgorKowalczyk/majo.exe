@@ -47,10 +47,10 @@ module.exports = {
   } else {
    widget = "Server widget not enabled";
   }
-  if(message.guild.features) {
-   features = message.guild.features;
-  } else {
+  if(!message.guild.features) {
    features = "None features enabled";
+  } else {
+   features = message.guild.features;
   }
   const embed = new Discord.MessageEmbed()
    .setAuthor(message.guild.name, message.guild.iconURL)
