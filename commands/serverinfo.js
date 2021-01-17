@@ -56,7 +56,7 @@ module.exports = {
    .setAuthor(message.guild.name, message.guild.iconURL)
    .setColor("RANDOM")
    .setThumbnail(message.guild.iconURL())
-   .addField("Server Owner", message.guild.owner + " (ID: " + message.guild.ownerID + ")", true)
+   .addField("Server Owner", "<@" + message.guild.owner + "> (ID: " + message.guild.ownerID + ")", true)
    .addField("ID", message.guild.id, true)
    .addField("Region", region[message.guild.region] || message.guild.region, true)
    .addField("Members", `${message.guild.memberCount}`, true)
