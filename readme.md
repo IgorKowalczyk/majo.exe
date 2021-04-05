@@ -1,89 +1,125 @@
-> #### *This project is outdated! It will soon be upgraded to `Discord.js v12.3.1`. If you want to see the progress of the work see [@aurolia-css/majo-rebuild](https://github.com/aurolia-css/majo-rebuild) (official repo)*
+> #### *Este repositório foi criado pelo João Victor e desenvolvido pelo igor kowalczyk com a intenção de atualizar o majobot [@igorkowalczyk/majobot](https://github.com/igorkowalczyk/majobot) para `discord.js v12.3.1`. O código aqui pode conter erros e bugs, não usá-lo na produção*
 
-# Majo.exe
+# João Victor Player bot
 
-An advanced Discord bot, contains commands for moderation, fun, music, economics and NSFW.
+Um Bot avançado de discórdia, contém comandos para moderação, diversão, música, e economia.
 
-[![Discord](https://discord.com/api/guilds/666599184844980224/widget.png?style=banner2)](https://igorkowalczyk.github.io/majobot/server)
+[![Discord](https://discord.com/api/guilds/731629737343975494/widget.png?style=banner2)](https://invite.gg/joao_victor_player)
 
 [![Jekyll](https://github.com/IgorKowalczyk/majobot/workflows/Jekyll/badge.svg)](https://igorkowalczyk.github.io/majobot)
 [![Node.js Workflow](https://github.com/igorkowalczyk/majobot/workflows/Node.js%20Workflow/badge.svg)](https://igorkowalczyk.github.io/majobot)
-[![GitHub License](https://img.shields.io/github/license/igorkowalczyk/majobot?color=%2334D058&logo=github&logoColor=959DA5&labelColor=24292E)](https://igorkowalczyk.github.io/majobot)
-[![Version](https://img.shields.io/github/package-json/v/igorkowalczyk/majobot?color=%2334D058&logo=github&logoColor=959DA5&labelColor=24292E)](https://github.com/igorkowalczyk/majobot/releases)
+[![GitHub License](https://img.shields.io/github/license/joao-victor-liporini/joao-victor-player-bot?color=%2334D058&logo=github&logoColor=959DA5&labelColor=24292E)](https://github.com/Joao-Victor-Liporini/Joao-Victor-Player-BOT)
+[![Version](https://img.shields.io/github/package-json/v/joao-victor-liporini/joao-victor-player-bot?color=%2334D058&logo=github&logoColor=959DA5&labelColor=24292E)](https://github.com/Joao-Victor-Liporini/Joao-Victor-Player-BOT/releases)
 
 # Invite
 
-Go to [this link](https://igorkowalczyk.github.io/majobot/authorize) and authorize the bot (requires server manage premission) to your server.
+Vá para [esse link](https://igorkowalczyk.github.io/majobot/authorize) e autorize o bot (Requer permissão de gerenciamento de servidor) para o seu servidor.
 
 # Hosting
 
-We host this bot. Majo.exe will be online 24/7.
+Nós hospedamos este bot. João Victor Player BOT estará online 24h
+- Se você quiser se auto-hospedar o bot [olhe aqui](#self-hosting)
 
-## Deploy
-Deploy the app to [Heroku](https://heroku.com)
+### Self-Hosting
 
-[![Deploy to heroku](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy?template=https://github.com/igorkowalczyk/majobot/tree/master)
+1. clone [Este repositório](https://github.com/Joao-Victor-Liporini/Joao-Victor-Player-BOT),
+2. Rode `npm install`,
+3. Pegue o token e o segredo do cliente no [Portal do desenvolvedor do Discord](https://discord.com/developers/applications),
+4. Pegue as chaves de API Genius e Youtube aqui [...](...)
+5. Preencha `config.json` e `dashboard.json` com suas variáveis (`dashboard.json` é o arquivo de configuração para a Dashboard, ignore este arquivo se você não usar majo Dashboard),
+6. Crie um Arquivo  `.env` (Lembre-se o arquivo `.env` é Super Secreto - não compartilhe!)
+7. No Arquivo `.env` defina:
+    * `TOKEN` - Bot Token usado para fazer login (Lembre-se! O valor `TOKEN` é Super Secreto)
+    * `PREFIX` - Prefixo do bot.
+    * `YOUTUBE` - Key API do YouTube. (Usado para música)
+    * `GENIUS_KEY` - Genius Lyrics API Key (Usado para letras) 
+    * `SESSION_SECRET` - Chave secreta da sessão, seqüência aleatória de palavras, letras ou números
+    * `SECRET` - Variável secreta do cliente (Lembre-se! O valor `SECRET` é Super Secreto)
+    * `ANALYTICS` - ID do rastreamento do Google. (Para analítica do site)
+    * `ID` - Seu ID de bot (Não é seu ID de cliente!)
+    * `DASHBOARD=[true/false]` - Se for `true` O BOT será hospedado com a Dashboard, Se for `false` O bot será hospedado sem a Dashboard
+    * `DOMAIN` - Seu endereço do site (inclua `https://` ou subpasta)
+9. Rode `node index.js`
+> NOTA: Veja o exemplo do [Arquivo `.env`  abaixo](#example-env-file)!
 
-# Self-Hosting
+<!--### Heroku Hosting
+<!--Deploy the app to [Heroku](https://heroku.com)
 
-1. Clone [this repository](https://github.com/igorkowalczyk/majobot),
-2. Run `npm install`,
-3. Grab a token and client secret on [Discord's developer portal](https://discord.com/developers/applications),
-4. Fill `config.json` and `dashboard.json` with your variables (`dashboard.json` is the config file for Web Dashboard, ignore this file if you not use Majo Dashboard),
-5. Create a `.env` file and add a `TOKEN` environmental variable whose value is the token above. (Do not remember! The `TOKEN` value is Super-Secret)
-6. In `.env` Set `PREFIX` - this is your bot prefix, a `SECRET` - this is your client secret variabble (Used for web-dashboard), a Google Trakcing ID (For Website analytics) - `UA=TRACKING-ID` if you don't have to use analytics just delete the settings value and add a `DASHBOARD=[true/false]` value - if `true` the bot will be hosted with web dasboard, if `false` the bot will be hosted without web dashboard (The `.env` file was private).
-7. Run `node index.js`
-> NOTE: See the example `.env` file below!
-## Example `.env` file
+<!--[![Deploy to heroku](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy?template=https://github.com/igorkowalczyk/majobot/tree/master)-->
+<!--[![Deploy to heroku](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy?template=https://github.com/aurolia-css/majo-rebuild/tree/master)-->
 
-```
-# Environment Config
-
-# store your secrets and config variables in here
-# only invited collaborators will be able to see your .env values
-
-# reference these in your code with process.env.SECRET
-
-
-TOKEN=YOUR-TOKEN-GOES-HERE
-PREFIX=!majo
-DASHBOARD=true
-SECRET=YOUR-BOT-CLIENT-SECRET
-UA=YOUR-GOOGLE-TRACKING-ID
-
-# !majo is the default prefix, you can change it later.
-
-# note: .env is a shell file so there can't be spaces around =
+# Example `.env` file
 
 ```
+# Config. de Ambiente
+
+# armazenar seus segredos e configurar variáveis aqui
+# Somente colaboradores convidados poderá ver seus valores .env
+
+# Reference estes em seu código com process.env.SECRET
+
+# Parte do BOT e do Discord
+TOKEN= # SEU TOKEN DO BOT AQUI
+CHANNEL_WELCOME= # ID DO CANAL DE BOAS VINDAS
+CHANNEL_RULES= # ID DO CANAL DAS REGRAS
+ROLES_WELCOME= # ID DO CARGO DE ENTRADA EX: MEMBRO
+OWNERID= # SEU ID DO DISCORD
+PREFIX=. # PREFIXO DO BOT
+YOUTUBE= # API KEY DO YOUTUBE
+GENIUS_KEY= # API KEY DO GENIUS
+# Parte da Dashboard
+SESSION_SECRET= # SUA SESSION_SECRET (COMBINAÇÃO DE LETRAS E NUMEROS ALEATORIOS)
+SECRET= # SECRET DO BOT
+ANALYTICS= # API KEY DO GOOGLE ANALYTICS
+ID= # ID DO BOT
+DASHBOARD=[true/false] # DEFINA SE VAI USAR OU NÃO A DASHBOARD
+DOMAIN= # SEU DOMINIO PARA USAR A DASHBOARD
+
+# . é o prefixo padrão, você pode alterá-lo mais tarde.
+
+# Nota: .env é um arquivo shell, então não pode haver espaços em volta =
+
+```
+
+## `.env` Table
 | `.env` | Description | Required |
 |---|---|---|
-| TOKEN | The bot token, required to run (Do not remember! The `TOKEN` value is Super-Secret) | :heavy_check_mark: |
-| PREFIX | The default bot prefix (eg. `!majo`) | :heavy_check_mark: |
-| DASHBOARD | The Web-Dashboard config value. (eg. `true/false`) | :x: |
-| SECRET | The bot client secret (Do not remember! The `SECRET` value is Super-Secret), required to run Web Dashboard | :x: |
-| UA | Google analytics tracking ID, used in Web-Dashboard | :x: |
+| TOKEN | O token do bot, obrigado para rodar (Lembre-se! O valor `TOKEN` é Super Secreto) | :heavy_check_mark: |
+| YOUTUBE | Key API do YouTube. (Usado na música) | :heavy_check_mark: |
+| PREFIX | O prefixo do bot padrão (por exemplo. `.`) | :heavy_check_mark: |
+| GENIUS_KEY | Genius API Key (Usado em música e letras) | :heavy_check_mark: |
+| SESSION_SECRET | Seqüência aleatória de palavras, letras ou números`*` | :x:/:heavy_check_mark: |
+| SECRET | O segredo do cliente bot (Lembre-se! O valor `SECRET` é Super Secreto)`*` | :x:/:heavy_check_mark: |
+| ANALYTICS | ID do rastreamento do Google Analytics, usado nz Dashboard`^` | :x: |
+| DASHBOARD | O valor da configuração da Dashboard. (eg. `true/false`, default value: `false`)`^` | :x: |
+| DOMAIN | Seu endereço do site (inclua `https://` ou subpasta)`*` | :heavy_check_mark: |
+
+`*` = Necessário para executar a Dashboard
+
+`^` = Não é obrigado a ser executado, mas usado na Dashboard
 
 # Development
 
-### Node.js Version
-
-To test site in `.env` file set the `DASHBOARD=true/false` value. ([See example `.env` file](#example-env-file))
-
-### Jekyll Version
-To set up your environment to develop this page, run `bundle install`.
-
-To test site, run `bundle exec jekyll serve` and open your browser at http://localhost:4000. This starts a Jekyll server using your config and the contents. As you make modifications, your site will regenerate and you should see the changes in the browser after a refresh.
+1. Para testar o site no Arquivo `.env` coloque o valor `DASHBOARD=true/false`. ([Veja o arquivo de exemplo `.env`](#example-env-file))
+2. Preencha o Dashboard Config. (`config.js` e `.env`)
+3. Adicione o Uri de redirecionamento aqui: https://discord.com/developers/applications/YOUR-BOT-ID/oauth2
+    * ```
+       https://your-domain.com
+       https://your-domain.com/callback
+       https://your-domain.com/dashboard
+       https://your-domain.com/dashboard/:guildID
+       https://your-domain.com/login
+      ```
+4. Vá para o seu painel no navegador (eg. to `localhost`)
 
 # Issues
-If you have any issues with the page please create [new issue here](https://github.com/igorkowalczyk/majobot/issues)
+Se você tiver algum problema com a página, por favor crie [Novo problema aqui](https://github.com/igorkowalczyk/majobot/issues)
 
 # Pull Requests
-When submitting a pull request:
-
-- Clone the repo.
-- Create a branch off of master and give it a meaningful name (e.g. my-awesome-new-feature).
-- Open a [pull request](https://github.com/igorkowalczyk/majobot/pulls) on [GitHub](https://github.com) and describe the feature or fix.
+Ao enviar um pull request:
+- Clone o repo..
+- Crie um ramo fora do mestre e dê um nome significativo (por exemplo, meu novo recurso).
+- Abra um [pull request](https://github.com/igorkowalczyk/majobot/pulls) on [GitHub](https://github.com) e descreva o recurso ou correção.
 
 # License
-This project is licensed under the MIT. See the [LICENSE](https://github.com/igorkowalczyk/majobot/blob/master/license.md) file for details
+Este projeto é licenciado sob o MIT. Veja o Arquivo [LICENSE](https://github.com/Joao-Victor-Liporini/Joao-Victor-Player-BOT/blob/João-Victor-Player-BOT/license.md) para detalhes

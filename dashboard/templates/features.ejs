@@ -1,0 +1,19 @@
+<%- include("partials/head", { bot, user, path, title: "Dashboard" }) %>
+<div class="content">
+
+<% commands = readdirSync('./commands/'); %>
+
+<h1>Total commands: <%= commands.length %></h1>
+<% if (commands.length > 0) { %>
+
+<% commands.forEach(function(command) { %>
+<div class="command-container">
+<h3 class="command-name command"><span class="bold"><%= prefix %> <%= command.name %></span> <%= command.pureusage %></h3>
+<div class="command-description command"><%- command.description || `<span class="none">No Description :(</span>` %></div>
+<div class="command-aliases command"><span class="italic">Aliases: <%- command.aliases || `<span class="none">None</span>` %></span></div>
+</div>
+<% }) %>
+<% } else { %>
+<h3>;-; There are no commands.</h3>>
+<% } %>
+<%- include("partials/footer") %>

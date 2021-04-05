@@ -1,0 +1,28 @@
+<%- include("partials/head", { bot, user, path, description, title: "Majobot", twitter, url, image }) %>
+<div class="page-content">
+<div class="content">
+<% if (bot.user.avatar) {
+ botavatar = "https://cdn.discordapp.com/avatars/" + bot.user.id + "/" + bot.user.avatar + ".png?size=512";
+} else {
+ botavatar = "https://cdn.glitch.com/82fe990a-7942-42e3-9790-39807ccdb9f6%2Ficon-404.png?v=1602412158188";
+}
+%>
+<% if (user) { %>
+<div class="div">
+<img class="img" src="<%= botavatar %>" alt="Avatar"/>
+<h1>Yay!</h1>
+<p>You connected your Discord account! Go to your dashboard and add bot!</p></div>
+
+<a class="main-button button edit" href="https://<%= hostname %>/dashboard">Go to Dashboard</a><br>
+<a class="main-button button" href="https://<%= hostname %>/features">See Features</a><br>
+<% } else { %>
+<div class="div">
+<img class="img" src="<%= botavatar %>" alt="Avatar"/>
+<h1>Hi!</h1>
+<p>To get started login with your Discord account</p></div>
+  
+<a class="main-button button" href="https://<%= hostname %>/login">Login</a><br>
+<a class="main-button button edit" href="https://<%= hostname %>/features">See Features</a><br>
+<% } %>
+</div>
+<%- include("partials/footer") %>

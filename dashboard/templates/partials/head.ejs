@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title><%= title %></title>
+<link rel="stylesheet" type="text/css" href="https://<%= hostname %>/css/style.css">
+<%- include('./favicons.ejs') %>
+<% if (analitics) { %>
+<%- include('./analytics.ejs') %>
+<% } %>
+<%- include("./seo", { bot, user, path, description, title, twitter, url, image }) %>
+</head>
+<body>
+<script type="text/javascript">var preload = document.createElement('div'); preload.className = "preloader"; preload.innerHTML = '</div><div class="spinner"></div>'; document.body.appendChild(preload); window.addEventListener('load', function() { preload.className +=  ' fade'; setTimeout(function(){ preload.style.display = 'none'; },500); })</script>
+<noscript><div class="no-js">To view the page please enable javascript in your browser.</div></noscript>
+<%- include("./nav", { bot, user, path, url, image, name, tag }) %>
+<div class="blur" id="body-blur"></div>
+<%- title === "Dashboard" ? "" : "" %>
