@@ -5,8 +5,8 @@
  "author": "Igor Kowalczyk [Majonez.exe#3957]",
  "main": "node shard.js",
  "scripts": {
-  "test": "node shard.js",
-  "start": "node shard.js"
+  "test": "node index.js",
+  "start": "node index.js"
  },
  "dependencies": {
   "discord.js": "^12.3.1",
