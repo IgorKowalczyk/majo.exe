@@ -35,7 +35,8 @@ module.exports = {
      .setFooter("Requested by " + `${message.author.username}`, message.author.displayAvatarURL({ dynamic: true, format: 'png', size: 2048 }))
      .setTimestamp()
     message.channel.send(embed);
-    console.log(data.lenght);
+    console.log(data.toString().lenght);
+    console.log((data.toString()).lenght);
     if(data.length >= 2000) {
      hastebin(data, { extension: "txt" }).then(function(haste){
       return message.channel.send(haste)
