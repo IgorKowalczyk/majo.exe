@@ -30,6 +30,7 @@ module.exports = (client) => {
      `${emoji} | ${client.guilds.cache.size} servers`,
      `${emoji} | ${client.guilds.cache.reduce((a, g) => a + g.memberCount, 0)} members`,
      `${emoji} | ${config.prefix} help`,
+     `${emoji} | ${client.guilds.cache.size} #Verification`,
     );	
    }	
    const random = Math.floor(Math.random() * (statuslist.length - 1) + 1);
