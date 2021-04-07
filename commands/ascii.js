@@ -22,6 +22,7 @@ module.exports = {
     description: "Please enter a text to convert!"
    }})
    figlet(`${args.join(' ')}`, function(err, data) {
+    const data = data;
     if (err) {
      return message.channel.send({embed: {
       color: 16734039,
