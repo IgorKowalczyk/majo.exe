@@ -175,6 +175,6 @@ module.exports = async (client) => {
   });
  });
 
- app.listen(process.env.PORT, null, null, () => console.log(`Dashboard is up and running!`));
+ app.listen(process.env.PORT || 5000);
 }
 }
