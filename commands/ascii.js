@@ -28,19 +28,20 @@ module.exports = {
       description: "Something went wrong... :cry:"
      }})
     }
-    const embed = new Discord.MessageEmbed()
-     .setColor("RANDOM")
-     .setTitle(":white_check_mark: Success!", message.guild.iconURL({ dynamic: true, format: 'png'}))
-     .setDescription(":tada: Your ascii code is generated! You can see link to it below :arrow_down:")
-     .setFooter("Requested by " + `${message.author.username}`, message.author.displayAvatarURL({ dynamic: true, format: 'png', size: 2048 }))
-     .setTimestamp()
-    message.channel.send(embed);
     hastebin.createPaste(data, {
      raw: true,
      contentType: 'text/plain',
      server: 'https://haste.zneix.eu/'
     }, {})
-     .then(function (urlToPaste) {message.channel.send(":link: Link to ascii code paste: " + urlToPaste)})
+     .then(function (urlToPaste) {
+      const embed = new Discord.MessageEmbed()
+       .setColor("RANDOM")
+       .setTitle(":white_check_mark: Success!", message.guild.iconURL({ dynamic: true, format: 'png'}))
+       .setDescription(":tada: Your ascii code is generated! n:link: Link to ascii code paste: " + urlToPaste)
+       .setFooter("Requested by " + `${message.author.username}`, message.author.displayAvatarURL({ dynamic: true, format: 'png', size: 2048 }))
+       .setTimestamp()
+      message.channel.send(embed);
+     })
      .catch(function (requestError) {
       message.channel.send({embed: {
        color: 16734039,
