@@ -38,7 +38,14 @@ module.exports = (client) => {
   }, 10000);
   
   client.user.setStatus("online");
-
+  const datelog = new Date();
+   currentDate = datelog.getDate();
+   month = datelog.getMonth() + 1;
+   year = datelog.getFullYear();
+   hour = datelog.getHours();
+   min  = datelog.getMinutes();
+   sec  = datelog.getSeconds();
+  console.log("Generated at: " + currentDate + "/" + month + "/" + year + " | " + hour + ":" + min + "." + sec);
   console.log(chalk.blue("Connected! Logged in as ") + chalk.blue.underline(`${client.user.username}`) + chalk.blue("!")); // ${client.user.tag}
  } catch(err) {
   console.log(err);
