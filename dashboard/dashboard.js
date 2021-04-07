@@ -176,6 +176,6 @@ module.exports = async (client) => {
  });
 
  // app.listen(config.port, null, null, () => console.log(`Dashboard is up and running on port ${config.port}.`));
- app.listen(process.env.PORT || 5000, () => console.log(`Dashboard is up and running on port ${config.port}.`));
+ app.listen(process.env.PORT || 5000, () => console.log(`Dashboard is up and running.`));
 }
 }

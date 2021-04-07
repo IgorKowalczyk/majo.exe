@@ -13,7 +13,6 @@ module.exports = {
  "token": process.env.TOKEN,
  "clientSecret": process.env.SECRET,
  "sessionSecret": process.env.SESSION_SECRET,
- "port": process.env.PORT,
  "prefix": process.env.PREFIX,
  "dashboard": process.env.DASHBOARD,
  "newstitle": "<a:error:759354037803024395> Warning!",
