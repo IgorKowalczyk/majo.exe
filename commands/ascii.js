@@ -31,7 +31,7 @@ module.exports = {
     const embed = new Discord.MessageEmbed()
      .setColor("RANDOM")
      .setTitle(":white_check_mark: Success!", message.guild.iconURL({ dynamic: true, format: 'png'}))
-     .setDescription(":tada: Your ascii code is generated! You can see it below")
+     .setDescription(":tada: Your ascii code is generated! You can see link to it below :arrow_down:")
      .setFooter("Requested by " + `${message.author.username}`, message.author.displayAvatarURL({ dynamic: true, format: 'png', size: 2048 }))
      .setTimestamp()
     message.channel.send(embed);
