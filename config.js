@@ -17,5 +17,5 @@ module.exports = {
  "prefix": process.env.PREFIX,
  "dashboard": process.env.DASHBOARD,
  "newstitle": "<a:error:759354037803024395> Warning!",
- "news":  "*05-01-2021* - Bot is currently under rebuilding, data in commands, configuration, money is NOT SAVED!\n*09-01-2021* - Log system is broken and may not work, We are working to fix it. Thanks"
+ "news":  "Due to the fact that our bot will soon be on 100 Discord servers it needs to be verified. Soon Majo.exe will be sent for verification. We are sorry if you cannot add the bot to your server..."
 }
