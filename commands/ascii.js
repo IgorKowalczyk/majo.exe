@@ -34,8 +34,9 @@ module.exports = {
      .setDescription(":tada: Your ascii code is generated! You can see it below\nNote: Ascii code may look weird due to Discord chat restrictions, copy the code into some text file and see the effect!")
      .setFooter("Requested by " + `${message.author.username}`, message.author.displayAvatarURL({ dynamic: true, format: 'png', size: 2048 }))
      .setTimestamp()
-    message.channel.send(embed)
-    if(data.toString().length > 2000) {
+    message.channel.send(embed);
+    console.log(data.lenght);
+    if(data.length >= 2000) {
      hastebin(data, { extension: "txt" }).then(function(haste){
       return message.channel.send(haste)
      })
