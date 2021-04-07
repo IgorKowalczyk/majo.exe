@@ -1,5 +1,6 @@
 const { readdirSync } = require('fs');
 const ascii = require('ascii-table');
+const chalk = require("chalk");
 const table = new ascii("Commands");
 table.setHeading('Command', 'Load status');
 
@@ -22,7 +23,7 @@ module.exports = (client) => {
     table.addRow(file, `X -> ${error}`);
    }
  });
+ console.log(chalk.blue("Loading commands..."));
  console.log(table.toString());
+ console.log(chalk.blue("Successfully loaded ") + chalk.blue.underline(`${client.commands.size}`) + chalk.blue(" commands!"));
 }
-
-
