@@ -16,7 +16,7 @@ app.listen(process.env.PORT || 5000);
 app.use(express.static('dashboard/static'));
 const MemoryStore = require("memorystore")(session);
 
-module.exports = async (client) => {
+/* module.exports = async (client) => {
  const dataDir = path.resolve(`${process.cwd()}${path.sep}dashboard`); // The absolute path of current this directory.
  const templateDir = path.resolve(`${dataDir}${path.sep}templates`); // Absolute path of ./templates directory.
 
@@ -176,4 +176,5 @@ module.exports = async (client) => {
   });
  });
 }
+*/
 }
