@@ -31,17 +31,22 @@ module.exports = {
     const embed = new Discord.MessageEmbed()
      .setColor("RANDOM")
      .setTitle(":white_check_mark: Success!", message.guild.iconURL({ dynamic: true, format: 'png'}))
-     .setDescription(":tada: Your ascii code is generated! You can see it below\nNote: Ascii code may look weird due to Discord chat restrictions, copy the code into some text file and see the effect!")
+     .setDescription(":tada: Your ascii code is generated! You can see it below")
      .setFooter("Requested by " + `${message.author.username}`, message.author.displayAvatarURL({ dynamic: true, format: 'png', size: 2048 }))
      .setTimestamp()
     message.channel.send(embed);
-    hastebin.createPaste('EXAMPLE ASCII CODE (Testing majo on production XDD)', {
+    hastebin.createPaste(data, {
      raw: true,
      contentType: 'text/plain',
      server: 'https://haste.zneix.eu/'
     }, {})
-     .then(function (urlToPaste) {console.log(urlToPaste)})
-     .catch(function (requestError) {console.log(requestError)})
+     .then(function (urlToPaste) {message.channel.send(urlToPaste)})
+     .catch(function (requestError) {
+      message.channel.send({embed: {
+       color: 16734039,
+       description: "Something went wrong while uploading ascii code to server :cry:"
+      }})
+     })
    });
   } catch (err) {
    message.channel.send({embed: {
