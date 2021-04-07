@@ -11,16 +11,15 @@ const bodyParser = require("body-parser");
 const { readdirSync } = require('fs');
 
 
-/* if (config.dashboard = "true" || config.sessionSecret || config.secret || config.domain) { */
+if (config.dashboard = "true" || config.sessionSecret || config.secret || config.domain) {
 const app = express();
 app.listen(process.env.PORT || 5000, () => console.log(`Dashboard is up and running on port ${process.env.PORT}.`));
-/* app.use(express.static('dashboard/static'));
-const MemoryStore = require("memorystore")(session); */
+app.use(express.static('dashboard/static'));
+const MemoryStore = require("memorystore")(session);
 
-/* module.exports = async (client) => {
+module.exports = async (client) => {
  const dataDir = path.resolve(`${process.cwd()}${path.sep}dashboard`); // The absolute path of current this directory.
  const templateDir = path.resolve(`${dataDir}${path.sep}templates`); // Absolute path of ./templates directory.
-
  passport.serializeUser((user, done) => done(null, user));
  passport.deserializeUser((obj, done) => done(null, obj));
  passport.use(new Strategy({
@@ -30,7 +29,6 @@ const MemoryStore = require("memorystore")(session); */
    scope: ["identify", "guilds"],
   },
   (accessToken, refreshToken, profile, done) => {
-
    process.nextTick(() => done(null, profile));
   }));
 
@@ -45,12 +43,9 @@ const MemoryStore = require("memorystore")(session); */
 
  app.use(passport.initialize());
  app.use(passport.session());
-
  app.locals.domain = config.domain.split("//")[1];
-
  app.engine("html", ejs.renderFile);
  app.set("view engine", "html");
-
  app.use(bodyParser.json());
  app.use(bodyParser.urlencoded({
   extended: true
@@ -59,7 +54,6 @@ const MemoryStore = require("memorystore")(session); */
  const renderTemplate = (res, req, template, data = {}) => {
   var hostname = req.headers.host;
   var pathname = url.parse(req.url).pathname;
-   
   const baseData = {
    bot: client,
    hostname: hostname,
@@ -103,7 +97,6 @@ const MemoryStore = require("memorystore")(session); */
    } else {
     req.session.backURL = "/";
    }
-   // Forward the request to the passport middleware.
    next();
   },
   passport.authenticate("discord"));
@@ -178,4 +171,3 @@ const MemoryStore = require("memorystore")(session); */
  });
 }
 }
-*/
