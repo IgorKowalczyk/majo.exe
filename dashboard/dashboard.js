@@ -1,5 +1,5 @@
 const Discord = require("discord.js");
-/*const url = require("url");
+const url = require("url");
 const path = require("path");
 const express = require("express");
 const passport = require("passport");
@@ -9,7 +9,7 @@ const config = require("../config");
 const ejs = require("ejs");
 const bodyParser = require("body-parser");
 const { readdirSync } = require('fs');
-*/
+
 
 /* if (config.dashboard = "true" || config.sessionSecret || config.secret || config.domain) { */
 const app = express();
