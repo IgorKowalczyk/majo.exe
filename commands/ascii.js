@@ -38,7 +38,7 @@ module.exports = {
     hastebin.createPaste('EXAMPLE ASCII CODE (Testing majo on production XDD)', {
      raw: true,
      contentType: 'text/plain',
-     server: 'https://hastebin.com'
+     server: 'https://haste.zneix.eu/'
     }, {})
      .then(function (urlToPaste) {console.log(urlToPaste)})
      .catch(function (requestError) {console.log(requestError)})
