@@ -13,7 +13,6 @@ const { readdirSync } = require('fs');
 
 if (config.dashboard = "true" || config.sessionSecret || config.secret || config.domain) {
 const app = express();
-app.listen(process.env.PORT || 5000, () => console.log(`Dashboard is up and running on port ${process.env.PORT}.`));
 app.use(express.static('dashboard/static'));
 const MemoryStore = require("memorystore")(session);
 
@@ -169,6 +168,7 @@ module.exports = async (client) => {
    guild: guild,
   });
  });
+ app.listen(process.env.PORT || 5000, () => console.log(`Dashboard is up and running on port ${process.env.PORT}.`));
 }
 } else {
  console.log('Dashboard is now disabled. To enable it change the "DASHBOARD" value in .env file to "true"');
