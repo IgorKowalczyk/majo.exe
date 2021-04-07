@@ -6,7 +6,7 @@ const prefix = config.prefix;
 module.exports = {
  name: "classic",
  aliases: [],
- description: "Display a random classic sex image/gif",
+ description: "Display a random classic porn image/gif",
  category: "NSFW",
  usage: "classic",
  run: async (client, message, args) => {

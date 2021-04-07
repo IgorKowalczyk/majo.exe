@@ -28,7 +28,7 @@ module.exports = {
     if(user == client.user) {
      return message.channel.send({embed: {
       color: 5294200,
-      description: "Oh, you tried to hug me but u can't... But I can hug you ＼( ^o^ )／"
+      description: "Oh, you tried to hug me but u can't... Im not real... But I can hug you ＼( ^o^ )／"
      }})
     }
     const response = await fetch("https://nekos.life/api/v2/img/cuddle")

@@ -40,7 +40,7 @@ module.exports = {
      contentType: 'text/plain',
      server: 'https://haste.zneix.eu/'
     }, {})
-     .then(function (urlToPaste) {message.channel.send(urlToPaste)})
+     .then(function (urlToPaste) {":link: Link to ascii code paste: " + message.channel.send(urlToPaste)})
      .catch(function (requestError) {
       message.channel.send({embed: {
        color: 16734039,

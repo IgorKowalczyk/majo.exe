@@ -32,7 +32,7 @@ module.exports = {
      }})
     }
     if (!reason) {
-     reason = "No reason provided!";
+     reason = "No reason provided! Banned by " + message.author + ". ~Majo.exe - The best discord bot!";
     }
     message.guild.members.ban(mentioned, { reason: reason });
     const ban = new Discord.MessageEmbed()

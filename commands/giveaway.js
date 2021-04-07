@@ -21,14 +21,14 @@ module.exports = {
    if (!args[0].endsWith("d") && !args[0].endsWith("h") && !args[0].endsWith("m")) {
     return message.channel.send({embed: {
      color: 16734039,
-     title: "You did not use the correct formatting for the time!",
+     title: "You didn't use the correct formatting for the time!",
      description: "Correct formatting: \`number<d/h/m>\`.\nLegend: \`d\` - Day, \`h\` - Hour/s, \`m\` - Minute/s"
     }})
    }
    if (isNaN(args[0][0])) {
     return message.channel.send({embed: {
      color: 16734039,
-     title: "You did not specify your time!",
+     title: "You didn't specify your time!",
      description: "Correct formatting: \`number<d/h/m>\`.\nLegend: \`d\` - Day, \`h\` - Hour/s, \`m\` - Minute/s"
     }})
    }
@@ -36,6 +36,7 @@ module.exports = {
    if (!channel) {
     return message.channel.send({embed: {
      color: 16734039,
+     title: "You didn't enter a channel!",
      description: "You must provide a channel in the guild to create giveaway!"
     }})
    }
@@ -43,6 +44,7 @@ module.exports = {
    if (!prize) {
     return message.channel.send({embed: {
      color: 16734039,
+     title: "You must enter a prize to start giveaway!",
      description: "No prize specified!"
     }})
    }

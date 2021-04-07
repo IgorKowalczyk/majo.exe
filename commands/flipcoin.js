@@ -14,7 +14,7 @@ module.exports = {
    const answer = answers[Math.floor(Math.random()*answers.length)];
    const embed = new Discord.MessageEmbed()
     .setColor("RANDOM")
-    .setTitle(`I'm get: ${answer}`)
+    .setTitle(`🪙 I'm get: ${answer}`)
     .setFooter("Requested by " + `${message.author.username}`, message.author.displayAvatarURL({ dynamic: true, format: 'png', size: 2048 }))
     .setTimestamp()
    message.channel.send(embed);

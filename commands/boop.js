@@ -12,7 +12,7 @@ module.exports = {
   try {
    const embed = new Discord.MessageEmbed()
     .setColor('RANDOM')
-    .setDescription("Beep!")
+    .setTitle("Beep!")
    message.channel.send(embed);
   } catch(err) {
    message.channel.send({embed: {
