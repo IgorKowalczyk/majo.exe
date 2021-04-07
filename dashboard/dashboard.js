@@ -45,10 +45,6 @@ module.exports = async (client) => {
  app.locals.domain = config.domain.split("//")[1];
  app.engine("html", ejs.renderFile);
  app.set("view engine", "html");
- app.use(bodyParser.json());
- app.use(bodyParser.urlencoded({
-  extended: true
- }));
 
  const renderTemplate = (res, req, template, data = {}) => {
   var hostname = req.headers.host;
