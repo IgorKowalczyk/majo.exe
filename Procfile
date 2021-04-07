@@ -1,2 +1,2 @@
 worker: node index.js
-web: node dashboard/run.js
+web: node dashboard/dashboard.js
