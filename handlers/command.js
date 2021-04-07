@@ -6,8 +6,8 @@ table.setHeading('Command', 'Load status');
 /* Code by João Victor (https://github.com/Joao-Victor-Liporini). Thanks ❤️ */
 
 module.exports = (client) => {
- readdirSync('./commands/').forEach(dir => {
-  const commands = readdirSync(`./commands/${dir}`)
+ readdirSync('./commands/').forEach(file => {
+  const commands = readdirSync(`./commands/${dir}/`).filter(file => file.endsWith('.js'));
   for (let file of commands) {
    let pull = require(`../commands/${file}`);
    try {
