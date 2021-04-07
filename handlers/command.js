@@ -16,7 +16,7 @@ module.exports = (client) => {
     if (pull.usage && typeof pull.usage !== 'string') throw new Error('Usage is not a string');
     if (pull.name) {
      client.commands.set(pull.name, pull);
-     table.addRow(file, '√');
+     table.addRow(file, 'OK');
     }
     if (pull.aliases && Array.isArray(pull.aliases)) pull.aliases.forEach(alias => client.aliases.set(alias, pull.name));
    } catch (error) {
