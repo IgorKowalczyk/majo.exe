@@ -170,4 +170,6 @@ module.exports = async (client) => {
   });
  });
 }
+} else {
+ console.log('Dashboard is now disabled. To enable it change the "DASHBOARD" value in .env file to "true"');
 }
