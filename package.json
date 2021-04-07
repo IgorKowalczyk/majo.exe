@@ -88,8 +88,8 @@
  "homepage": "https://igorkowalczyk.github.io/majobot",
  "license": "MIT",
  "keywords": [
-   "node",
-   "discord",
-   "bot"
+  "node",
+  "discord",
+  "bot"
  ]
 }

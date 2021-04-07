@@ -18,6 +18,8 @@ if (token) {
  client.login(token)
 } else {
  console.log(chalk.red.bold("Error:") + chalk.red(" Bot token is not provided! To give your bot life, you need to enter token value in the ") + chalk.grey.italic.bold(".env") +  chalk.red(" file - ") + chalk.grey.italic.bold("TOKEN=Your_Token ") + chalk.red.underline.bold("REMEMBER: Token is super-secret - do not share it with anyone!"));
+ console.log(chalk.red("Stopping..."));
+ process.exit(1);
 }
 /* /Login and Commands*/
 process.on("unhandledRejection", (err) => {
