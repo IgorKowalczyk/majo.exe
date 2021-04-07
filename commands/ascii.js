@@ -22,7 +22,7 @@ module.exports = {
     description: "Please enter a text to convert!"
    }})
    figlet(`${args.join(' ')}`, function(err, data) {
-    const data = data;
+    const final = data;
     if (err) {
      return message.channel.send({embed: {
       color: 16734039,
@@ -36,14 +36,14 @@ module.exports = {
      .setFooter("Requested by " + `${message.author.username}`, message.author.displayAvatarURL({ dynamic: true, format: 'png', size: 2048 }))
      .setTimestamp()
     message.channel.send(embed);
-    console.log(data.toString().lenght);
-    console.log((data.toString()).lenght);
-    if(data.length >= 2000) {
-     hastebin(data, { extension: "txt" }).then(function(haste){
+    console.log(final.toString().lenght);
+    console.log((final.toString()).lenght);
+    if(final.length >= 2000) {
+     hastebin(final, { extension: "txt" }).then(function(haste){
       return message.channel.send(haste)
      })
     } else {
-     message.channel.send(`${data}`, {code: 'AsciiArt'});
+     message.channel.send(`${final}`, {code: 'AsciiArt'});
     }
    });
   } catch (err) {
