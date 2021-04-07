@@ -12,7 +12,7 @@ module.exports = {
  usage: "ascii <text>",
  run: async (client, message, args) => {
   try {
-   var max = 50;
+   var max = 1000;
    if(args.join(' ').length > max) return message.channel.send({embed: {
     color: 16734039,
     description: "The max length for ascii is " + `${max}` + " !"
