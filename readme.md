@@ -26,8 +26,8 @@ We host this bot. Majo.exe will be online 24/7.
 
 1. Clone [this repository](https://github.com/igorkowalczyk/majobot),
 2. Run `npm install`,
-3. Grab a token and client secret on [Discord's developer portal](https://discord.com/developers/applications),
-4. Grab a Genius and Youtube API keys here [...](...)
+3. Grab a token and client secret on [Discord's developer portal](https://discord.com/developers/applications) [Tutorial](#generating-token)
+4. Grab a Genius and Youtube API keys [Tutorial](#generating-keys)
 5. Fill `config.json` and `dashboard.json` with your variables (`dashboard.json` is the config file for Web Dashboard, ignore this file if you not use Majo Dashboard),
 6. Create a `.env` file  (Remember! The `.env` file is Super-Secret - Don't share it!)
 7. In `.env` file set:
@@ -52,6 +52,8 @@ Deploy the app to [Heroku](https://heroku.com)
 
 # Example `.env` file
 
+[`.env.example`](https://github.com/aurolia-css/majo-rebuild/blob/master/.env.example)
+
 ```
 # Environment Config
 
@@ -68,12 +70,12 @@ GENIUS_KEY=YOUR-GENIUS-KEY
 SESSION_SECRET=YOUR-SESSION-SECRET-(RANDOM-WORDS)
 SECRET=YOUR-BOT-CLIENT-SECRET
 ANALYTICS=YOUR-GOOGLE-TRACKING-ID
-ID=YOUR_BOT-ID
+ID=YOUR-BOT-ID
 DASHBOARD=[true/false]
-DOMAIN=YOUR=SITE-ADRESS
+DOMAIN=YOUR-DASHBOARD-WEB-ADRESS
 # !majo is the default prefix, you can change it later.
 
-# note: .env is a shell file so there can't be spaces around =
+# Note: .env is a shell file so there can't be spaces around =
 
 ```
 
