@@ -2,7 +2,7 @@ var figlet = require('figlet');
 const Discord = require('discord.js')
 const config = require("../config");
 const prefix = config.prefix;
-const hastebin = require("hastebin-paste");
+var hastebin = require('hastebin');
 
 module.exports = {
  name: "ascii",
@@ -35,12 +35,13 @@ module.exports = {
      .setFooter("Requested by " + `${message.author.username}`, message.author.displayAvatarURL({ dynamic: true, format: 'png', size: 2048 }))
      .setTimestamp()
     message.channel.send(embed);
-    const hastebin = require("hastebin-paste");
-    hastebin("EXAMPLE ASCII CODE (Testing majo on production XDD)", { extension: "txt" }).then(haste => {
-     console.log(haste);
-    }).catch(error => {
-     console.error(error);
-    });
+    hastebin.createPaste('EXAMPLE ASCII CODE (Testing majo on production XDD)', {
+     raw: true,
+     contentType: 'text/plain',
+     server: 'https://hastebin.com'
+    }, {})
+     .then(function (urlToPaste) {console.log(urlToPaste)})
+     .catch(function (requestError) {console.log(requestError)})
    });
   } catch (err) {
    message.channel.send({embed: {
