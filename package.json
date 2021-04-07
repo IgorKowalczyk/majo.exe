@@ -72,7 +72,8 @@
   "passport": "^0.4.1",
   "passport-discord": "^0.1.4",
   "body-parser": "^1.19.0",
-  "ascii-table": "0.0.9"
+  "ascii-table": "0.0.9",
+  "hastebin-gen": "2.0.5"
  },
  "engines": {
   "node": "12.x"

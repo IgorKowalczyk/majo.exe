@@ -11,6 +11,7 @@ module.exports = {
  usage: "4chan <board/boards>",
  run: async (client, message, args) => {
   try {
+   var maxlength = 500;
    if (!message.channel.nsfw) {
     return message.channel.send({embed: {
      color: 16734039,
@@ -77,7 +78,7 @@ module.exports = {
      let chan = new Discord.MessageEmbed()
       .setColor("RANDOM")
       .setTitle("🍀 " + sub, message.guild.iconURL({ dynamic: true, format: 'png'}), thread)
-      .addField("Description:", com)
+      .addField("Description:", com.substring(0, maxlength))
       .addField("Thread:", thread)
       .addField("Img:", imgUrl)
       .setURL(thread)

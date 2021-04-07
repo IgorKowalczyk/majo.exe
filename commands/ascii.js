@@ -2,6 +2,7 @@ var figlet = require('figlet');
 const Discord = require('discord.js')
 const config = require("../config");
 const prefix = config.prefix;
+const hastebin = require("hastebin-gen");
 
 module.exports = {
  name: "ascii",
@@ -14,7 +15,7 @@ module.exports = {
    var max = 50;
    if(args.join(' ').length > max) return message.channel.send({embed: {
     color: 16734039,
-    description: "The max length is " + `${max}` + " !"
+    description: "The max length for ascii is " + `${max}` + " !"
    }})
    if(!args[0]) return message.channel.send({embed: {
     color: 16734039,
@@ -28,13 +29,19 @@ module.exports = {
      }})
     }
     const embed = new Discord.MessageEmbed()
-    .setColor("RANDOM")
-    .setTitle(":white_check_mark: Success!", message.guild.iconURL({ dynamic: true, format: 'png'}))
-    .setDescription(":tada: Your ascii code is generated! You can see it below")
-    .setFooter("Requested by " + `${message.author.username}`, message.author.displayAvatarURL({ dynamic: true, format: 'png', size: 2048 }))
-    .setTimestamp()
-   message.channel.send(embed)
-   message.channel.send(`${data}`, {code: 'AsciiArt'});
+     .setColor("RANDOM")
+     .setTitle(":white_check_mark: Success!", message.guild.iconURL({ dynamic: true, format: 'png'}))
+     .setDescription(":tada: Your ascii code is generated! You can see it below\nNote: Ascii code may look weird due to Discord chat restrictions, copy the code into some text file and see the effect!")
+     .setFooter("Requested by " + `${message.author.username}`, message.author.displayAvatarURL({ dynamic: true, format: 'png', size: 2048 }))
+     .setTimestamp()
+    message.channel.send(embed)
+    if(data.length > 2000) {
+     hastebin(data, { extension: "txt" }).then(function(haste){
+      return message.channel.send(haste)
+     })
+    } else {
+     message.channel.send(`${data}`, {code: 'AsciiArt'});
+    }
    });
   } catch (err) {
    message.channel.send({embed: {

@@ -15,7 +15,7 @@ module.exports = {
    malScraper.getInfoFromName(search)
     .then((data) => {
      const embed = new Discord.MessageEmbed()
-      .setAuthor(`:mag_right: My Anime List search result for ${args}`.split(',').join(' '), message.guild.iconURL({ dynamic: true, format: 'png'}))
+      .setAuthor(`🔍 My Anime List search result for ${args}`.split(',').join(' '), message.guild.iconURL({ dynamic: true, format: 'png'}))
       .setImage(data.picture)
       .setColor("RANDOM")
       .addField(":flag_gb: English Title", data.englishTitle)
