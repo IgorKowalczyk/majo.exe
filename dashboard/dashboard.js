@@ -13,7 +13,7 @@ const { readdirSync } = require('fs');
 
 /* if (config.dashboard = "true" || config.sessionSecret || config.secret || config.domain) { */
 const app = express();
-app.listen(process.env.PORT || 5000);
+app.listen(process.env.PORT || 5000, () => console.log(`Dashboard is up and running on port ${process.env.PORT}.`));
 /* app.use(express.static('dashboard/static'));
 const MemoryStore = require("memorystore")(session); */
 
