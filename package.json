@@ -71,7 +71,8 @@
   "mongoose": "^5.10.9",
   "passport": "^0.4.1",
   "passport-discord": "^0.1.4",
-  "body-parser": "^1.19.0"
+  "body-parser": "^1.19.0",
+  "ascii-table": "0.0.9"
  },
  "engines": {
   "node": "12.x"
@@ -87,6 +88,7 @@
  "license": "MIT",
  "keywords": [
    "node",
-   "discord"
+   "discord",
+   "bot"
  ]
 }
