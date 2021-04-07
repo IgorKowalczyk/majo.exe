@@ -7,8 +7,6 @@ table.setHeading('Command', 'Load status');
 
 module.exports = (client) => {
  readdirSync('./commands/').forEach(file => {
-  const commands = readdirSync(`./commands/${file}/`).filter(file => file.endsWith('.js'));
-  for (let file of commands) {
    let pull = require(`../commands/${file}`);
    try {
     if (typeof pull.name != 'string' || typeof pull != 'object') throw new Error('Missing a name or name is not a string');
@@ -17,14 +15,13 @@ module.exports = (client) => {
     if (pull.usage && typeof pull.usage !== 'string') throw new Error('Usage is not a string');
     if (pull.name) {
      client.commands.set(pull.name, pull);
-     table.addRow(file, '√')
+     table.addRow(file, '√');
     }
     if (pull.aliases && Array.isArray(pull.aliases)) pull.aliases.forEach(alias => client.aliases.set(alias, pull.name));
    } catch (error) {
-    table.addRow(file, `X -> ${error}`)
+    table.addRow(file, `X -> ${error}`);
     continue;
    }
-  }
  });
  console.log(table.toString());
 }
