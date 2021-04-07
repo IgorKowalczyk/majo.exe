@@ -1,5 +1,5 @@
 const Discord = require("discord.js");
-const url = require("url");
+/*const url = require("url");
 const path = require("path");
 const express = require("express");
 const passport = require("passport");
@@ -9,12 +9,13 @@ const config = require("../config");
 const ejs = require("ejs");
 const bodyParser = require("body-parser");
 const { readdirSync } = require('fs');
+*/
 
-if (config.dashboard = "true" || config.sessionSecret || config.secret || config.domain) {
+/* if (config.dashboard = "true" || config.sessionSecret || config.secret || config.domain) { */
 const app = express();
 app.listen(process.env.PORT || 5000);
-app.use(express.static('dashboard/static'));
-const MemoryStore = require("memorystore")(session);
+/* app.use(express.static('dashboard/static'));
+const MemoryStore = require("memorystore")(session); */
 
 /* module.exports = async (client) => {
  const dataDir = path.resolve(`${process.cwd()}${path.sep}dashboard`); // The absolute path of current this directory.
@@ -176,5 +177,5 @@ const MemoryStore = require("memorystore")(session);
   });
  });
 }
-*/
 }
+*/
