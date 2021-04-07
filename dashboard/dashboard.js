@@ -12,6 +12,7 @@ const { readdirSync } = require('fs');
 
 if (config.dashboard = "true" || config.sessionSecret || config.secret || config.domain) {
 const app = express();
+app.listen(process.env.PORT || 5000);
 app.use(express.static('dashboard/static'));
 const MemoryStore = require("memorystore")(session);
 
@@ -53,8 +54,6 @@ module.exports = async (client) => {
  app.use(bodyParser.urlencoded({
   extended: true
  }));
- 
- app.listen(process.env.PORT || 5000);
 
  const renderTemplate = (res, req, template, data = {}) => {
   var hostname = req.headers.host;
