@@ -53,6 +53,8 @@ module.exports = async (client) => {
  app.use(bodyParser.urlencoded({
   extended: true
  }));
+ 
+ app.listen(process.env.PORT || 5000);
 
  const renderTemplate = (res, req, template, data = {}) => {
   var hostname = req.headers.host;
@@ -174,7 +176,5 @@ module.exports = async (client) => {
    guild: guild,
   });
  });
-
- app.listen(process.env.PORT || 5000);
 }
 }
