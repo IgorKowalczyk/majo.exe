@@ -23,7 +23,9 @@ module.exports = {
        .setFooter("Requested by" + message.author)
        .setTimestamp()
       message.channel.send(sad)
-      message.channel.send({file: outputfile}).then(function () {
+      message.channel.send({
+       files: [outputfile]
+      }).then(function () {
        // delete file
        fs.unlink(outputfile);
       });
