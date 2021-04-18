@@ -5,17 +5,17 @@ const http = require("http");
 const db = require("quick.db");
 const chalk = require("chalk");
 const config = require("./config");
-const token = config.token;
+require('dotenv').config()
 
 /* Login and Commands */
-if (token) {
+if (process.env.TOKEN) {
  client.commands = new Discord.Collection();
  client.aliases = new Discord.Collection();
  client.queue = new Map(); 
  ['command', 'event'].forEach(handler => {
   require(`./handlers/${handler}`)(client);
  });
- client.login(token)
+ client.login(process.env.TOKEN)
 } else {
  console.log(chalk.red.bold("Error:") + chalk.red(" Bot token is not provided! To give your bot life, you need to enter token value in the ") + chalk.grey.italic.bold(".env") +  chalk.red(" file - ") + chalk.grey.italic.bold("TOKEN=Your_Token ") + chalk.red.underline.bold("REMEMBER: Token is super-secret - do not share it with anyone!"));
  console.log(chalk.red("Stopping..."));

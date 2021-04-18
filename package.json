@@ -3,10 +3,11 @@
  "version": "0.0.0",
  "description": "An advanced Discord bot with a lot commands - for moderation, fun, NSFW and status.",
  "author": "Igor Kowalczyk [Majonez.exe#3957]",
- "main": "node shard.js",
+ "main": "node index.js",
  "scripts": {
   "test": "node index.js",
-  "start": "node index.js"
+  "start": "node index.js",
+  "develop": "node index.js & node dashboard/dashboard.js"
  },
  "dependencies": {
   "discord.js": "^12.3.1",

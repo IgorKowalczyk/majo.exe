@@ -29,7 +29,7 @@ module.exports = {
     .setTitle(`Information for developers`, message.guild.iconURL({ dynamic: true, format: 'png'}))
     .setColor("RANDOM")
     .setDescription(`My prefix is: \`${config.prefix}\`\n`)
-    .addField('Head developer', `${config.author} [[Portfolio](${config.authorwebsite})]`, true)
+    .addField('Head developer', `${config.author} [Portfolio](${config.authorwebsite})`, true)
     .setThumbnail(client.user.displayAvatarURL({ dynamic: true, format: 'png', size: 2048 }))
     .addField('Node', `${process.version}`, true)
     .addField('OS', `${ostype}`, true)
