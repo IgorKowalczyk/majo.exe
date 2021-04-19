@@ -64,6 +64,7 @@ module.exports = async (client) => {
    user: req.isAuthenticated() ? req.user : null,
    verification: config.verification,
    description: config.description,
+   domain: app.locals.domain,
    twitter: config.twitter,
    url: res,
    prefix: config.prefix,
