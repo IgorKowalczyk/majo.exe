@@ -50,4 +50,9 @@ module.exports = (client) => {
  } catch(err) {
   console.log(err);
  }
+ if (process.env.DASHBOARD = "true") {
+  console.log("Getting dashboard config file...")
+  const Dashboard = require("../../dashboard/dashboard");
+  Dashboard(client);
+ }
 }
