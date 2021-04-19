@@ -33,7 +33,7 @@ module.exports = async (client) => {
  }));
  app.use(session({
   store: new MemoryStore({ checkPeriod: 86400000 }),
-  secret: process.env.sessionSecret,
+  secret: config.sessionSecret,
   resave: false,
   saveUninitialized: false,
  }));
