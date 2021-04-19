@@ -78,5 +78,5 @@ client.on("guildCreate",async()=>{
   await message.systemChannel.send('Obrigado por me convidar aqui\n Use ``..setup`` Para iniciar a configuração!')
 })
 
-bot.login(token)
+client.login(token)
 module.exports =  {userhit,manageguild,checkguild,modifyguild};
