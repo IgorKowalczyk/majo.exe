@@ -13,12 +13,11 @@
 <% if (guild.icon) {
  iconurl = "https://cdn.discordapp.com/icons/" + guild.id + "/" + guild.icon + ".png??size=512";
 } else {
- iconurl = "https://cdn.glitch.com/82fe990a-7942-42e3-9790-39807ccdb9f6%2Ficon-404-dark.png?v=1602427904949";
+ iconurl = "https://" + hostname + "/pics/invaild-avatar.png";
 }
 %>
 <div class="server">
   <div class="icon-and-name">
-    <%= domain %>
 <img class="server-icon" src="<%= iconurl %>" alt="<% guild.name %>"/>
   <p class="guild-name"><%= guild.name %></p>
   </div>

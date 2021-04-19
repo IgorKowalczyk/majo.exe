@@ -1,5 +1,5 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<link rel="canonical" href="https://<%= hostname %><%= path %>">
+<link rel="canonical" href="https://<%= domain %><%= path %>">
 <% if (mobile == "true") { %>
 <meta name="copyright" content="(c) Copyright Igor Kowalczyk <%- launch %> to Present">
 <meta name="HandheldFriendly" content="true">
@@ -15,12 +15,12 @@
 <meta property="og:site_name" content="<%- title %>">
 <meta property="og:description" content="<%- description %>">
 <meta name="description" content="<%- description %>">
-<% if (image) { %><meta property="og:image" content="https://<%= hostname %>/lib/pics/thumbs/<%= image %>" /><% } %>
-<% if (image) { %><meta name="twitter:image" content="https://<%= hostname %>/lib/pics/thumbs/<%= image %>"><% } else { %><meta name="twitter:image" content="https://<%= hostname %>/lib/favicon/favicon.jpg"><% } %>
+<% if (image) { %><meta property="og:image" content="https://<%= domain %>/lib/pics/thumbs/<%= image %>" /><% } %>
+<% if (image) { %><meta name="twitter:image" content="https://<%= domain %>/lib/pics/thumbs/<%= image %>"><% } else { %><meta name="twitter:image" content="https://<%= hostname %>/lib/favicon/favicon.jpg"><% } %>
 <meta name="twitter:card" content="summary">
 <% if (twitter) { %><meta name="twitter:site" content="<%= twitter %>"><% } %>
 <% if (twitter) { %><meta name="twitter:creator" content="<%= twitter %>"><% } %>
-<meta name="twitter:url" content="https://<%= hostname %><%= path %>">
+<meta name="twitter:url" content="https://<%= domain %><%= path %>">
 <meta name="twitter:title" content="<%= title %>">
 <meta name="twitter:description" content="<%= description %>">
 <% if (verification != null) { %>
