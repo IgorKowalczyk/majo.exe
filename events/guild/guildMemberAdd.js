@@ -22,12 +22,12 @@ module.exports = async (client, member) => {
   } else {
    ctx.font = 'bold 150px Genta';
    ctx.fillStyle = '#f2f2f2';
-   ctx.fillText(textString3, 720, canvas.height / 2 + 20);
+   ctx.fillText(textString3, 720, canvas.height / 2 + 25);
   }
   var textString2 = `#${member.user.discriminator}`;
   ctx.font = 'bold 40px Genta';
   ctx.fillStyle = '#f2f2f2';
-  ctx.fillText(textString2, 730, canvas.height / 2 + 58);
+  ctx.fillText(textString2, 730, canvas.height / 2 + 62);
   var textString4 = `Member #${member.guild.memberCount}`;
   ctx.font = 'bold 60px Genta';
   ctx.fillStyle = '#f2f2f2';
@@ -46,8 +46,8 @@ module.exports = async (client, member) => {
   const embed = new Discord.MessageEmbed()
    .setColor("RANDOM")
    .setTimestamp()
-   .setFooter(`${member.guild.username}`, member.user.displayAvatarURL({ dynamic: true, format: 'png', size: 2048 }))
-   .setDescription(`**Welcome to the server ${member.guild.name}!**`)
+   .setFooter(`${member.guild.name}`, member.user.displayAvatarURL({ dynamic: true, format: 'png', size: 2048 }))
+   .setDescription(`**Welcome to the server ${member.user.name}!**`)
    .setImage("attachment://welcome-image.png")
    .attachFiles(attachment);
   channel.send(embed);
