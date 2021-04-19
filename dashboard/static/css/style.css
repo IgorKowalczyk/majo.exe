@@ -7,18 +7,18 @@ src: url("https://igorkowalczyk.github.io/majobot/lib/fonts/roboto-thin.otf");
 }
 
 :root {
---white: #222;
+--white: #17171a;
 --preloader: #222;
 --spinner: #888;
 --spinner-border: #333;
---00a3a3: #fff;
+--aqua: #fff;
 --link: #fff;
 --server-hover: #2b2b2b;
 --logout: 240, 71, 71;
 --logout-background: 240, 71, 71, 0.1;
 --edit: 68, 179, 127;
 --edit-hover: 47, 124, 88;
---button: #44474c;
+--button: #4c4e52;
 --button-hover: #3b3e42;
 --svg: #fff;
 --text: #fff;
@@ -231,7 +231,7 @@ a {
 position: relative;
 color: var(--link) !important;
 text-decoration: none;
-background-image: linear-gradient(var(--00a3a3), var(--00a3a3));
+background-image: linear-gradient(var(--aqua), var(--aqua));
 background-position: 50% 100%;
 background-repeat: no-repeat;
 background-size: 0 2px;
