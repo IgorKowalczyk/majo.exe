@@ -74,7 +74,8 @@
   "passport-discord": "^0.1.4",
   "body-parser": "^1.19.0",
   "ascii-table": "^0.0.9",
-  "hastebin": "^0.2.1"
+  "hastebin": "^0.2.1",
+  "canvas": "github:Automattic/node-canvas"
  },
  "engines": {
   "node": "12.x"
