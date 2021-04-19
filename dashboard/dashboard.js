@@ -12,6 +12,8 @@ const GuildSettings = require("./models/settings");
 const app = express();
 const MemoryStore = require("memorystore")(session);
 
+const port = process.env.PORT || 6565;
+
 console.log("Starting dashboard...");
 
 module.exports = async (client) => {
@@ -143,5 +145,5 @@ module.exports = async (client) => {
  });
  */
  console.log("All dashboard process done... Starting in web");
- app.listen(config.port, null, null, () => console.log(`Dashboard is up and running on port ${config.port}.`));
+ app.listen(port, null, null, () => console.log(`Dashboard is up and running on port ${port}.`));
 };
