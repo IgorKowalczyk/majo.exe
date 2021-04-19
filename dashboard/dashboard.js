@@ -18,7 +18,9 @@ app.use(express.static('dashboard/static'));
 const MemoryStore = require("memorystore")(session);
 
 try {
- module.exports = (client) => {
+ module.exports = {
+  name: "dashboard",
+  run: async (client) => {
   console.log("2. Starting client web process...");
   const dataDir = path.resolve(`${process.cwd()}${path.sep}dashboard`);
   const templateDir = path.resolve(`${dataDir}${path.sep}templates`);
@@ -169,6 +171,7 @@ try {
   console.log("All done, running dashboard...");
   app.listen(process.env.PORT || 5000, () => console.log(`Dashboard is up and running on port ${process.env.PORT}.`));
  }
+}
 } catch(err) {
 console.log(err);
 }
