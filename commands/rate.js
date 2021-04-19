@@ -3,7 +3,7 @@ const config = require("../config");
 const prefix = config.prefix;
 
 module.exports = {
- name: "rate",
+ name: "prune",
  aliases: [],
  description: "Rate your thing",
  category: "Fun",
@@ -19,25 +19,25 @@ module.exports = {
    title: "I can't rate that. Max text length is 30!"
    }})
   let result = Math.floor((Math.random() * 100) + 0);
-  const happyrate = new Discord.RichEmbed()
+  const happyrate = new Discord.MessageEmbed()
    .setDescription(`I would rate **${rate}** ${result}/100 ?`)
    .setColor(`GREEN`)
-  const sadembed = new Discord.RichEmbed()
+  const sadembed = new Discord.MessageEmbed()
    .setDescription(`I would rate **${rate}** ${result}/100 ??`)
    .setColor(`RED`)
-  const idkembed = new Discord.RichEmbed()
+  const idkembed = new Discord.MessageEmbed()
    .setDescription(`I would rate **${rate}** ${result}/100 ??`)
    .setColor(`RED`)
-  const shrugembed = new Discord.RichEmbed()
+  const shrugembed = new Discord.MessageEmbed()
    .setDescription(`I would rate **${rate}** ${result}/100 ??`)
    .setColor(`YELLOW`)
-  const okembed = new Discord.RichEmbed()
+  const okembed = new Discord.MessageEmbed()
    .setDescription(`I would rate **${rate}** ${result}/100 ??`)
    .setColor(`GREEN`)
-  const thumbupembed = new Discord.RichEmbed()
+  const thumbupembed = new Discord.MessageEmbed()
    .setDescription(`I would rate **${rate}** ${result}/100 ??`)
    .setColor(`GREEN`)
-  const eyesembed = new Discord.RichEmbed()
+  const eyesembed = new Discord.MessageEmbed()
   .setDescription(`I would rate **${rate}** ${result}/100 ??`)
   .setColor(`GREEN`)
   if (result > 90) return message.channel.send(happyrate)
