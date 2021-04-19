@@ -12,7 +12,10 @@ const GuildSettings = require("./models/settings");
 const app = express();
 const MemoryStore = require("memorystore")(session);
 
+console.log("Starting dashboard...");
+
 module.exports = async (client) => {
+ console.log("Setting up dashboard main config...");
  const dataDir = path.resolve(`${process.cwd()}${path.sep}dashboard`);
  const templateDir = path.resolve(`${dataDir}${path.sep}templates`);
  passport.serializeUser((user, done) => done(null, user));
@@ -28,7 +31,7 @@ module.exports = async (client) => {
  }));
  app.use(session({
   store: new MemoryStore({ checkPeriod: 86400000 }),
-  secret: "#@%#&^$^$%@$^$&%#$%@#$%$^%&$%^#$%@#$%#E%#%@$FEErfgr3g#%GT%536c53cc6%5%tv%4y4hrgrggrgrgf4n",
+  secret: process.env.sessionSecret,
   resave: false,
   saveUninitialized: false,
  }));
@@ -50,6 +53,7 @@ module.exports = async (client) => {
   };
   res.render(path.resolve(`${templateDir}${path.sep}${template}`), Object.assign(baseData, data));
  };
+ console.log("Setting up dashboard endpoints...");
  const checkAuth = (req, res, next) => {
   if (req.isAuthenticated()) return next();
    req.session.backURL = req.url;
@@ -138,5 +142,6 @@ module.exports = async (client) => {
   renderTemplate(res, req, "settings.ejs", { guild, settings: storedSettings, alert: "Your settings have been saved." });
  });
  */
+ console.log("All dashboard process done... Starting in web");
  app.listen(config.port, null, null, () => console.log(`Dashboard is up and running on port ${config.port}.`));
 };
