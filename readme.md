@@ -28,8 +28,8 @@ We host this bot. Majo.exe will be online 24/7.
 2. Run `npm install`,
 3. Grab a token and client secret on [Discord's developer portal](https://discord.com/developers/applications) [Tutorial](#generating-token)
 4. Grab a Genius and Youtube API keys [Tutorial](#generating-keys)
-5. Fill `config.json` and `dashboard.json` with your variables (`dashboard.json` is the config file for Web Dashboard, ignore this file if you not use Majo Dashboard),
-6. Create a `.env` file  (Remember! The `.env` file is Super-Secret - Don't share it!)
+5. Fill `config.json` and `dashboard.json` with your variables (`dashboard.json` is the config file for Web Dashboard, ignore this file if you not use the web panel),
+6. Create a `.env` file (Remember! The `.env` file is Super-Secret - Don't share it!)
 7. In `.env` file set:
     * `TOKEN` - Bot token used to login (Remember! The `TOKEN` value is Super-Secret)
     * `PREFIX` - Bot prefix
@@ -41,14 +41,16 @@ We host this bot. Majo.exe will be online 24/7.
     * `ID` - Your bot ID (Not your client ID!)
     * `DASHBOARD=[true/false]` - if `true` the bot will be hosted with web dasboard, if `false` the bot will be hosted without web dashboard
     * `DOMAIN` - your site adress (include `https://` or subfolder)
-9. Run `node index.js`
-> NOTE: See the example [`.env` file below](#example-env-file)!
+8. Run `npm run start`
+> Note: See the example [`.env` file below](#example-env-file)!
 
 ### Heroku Hosting
 Deploy the app to [Heroku](https://heroku.com)
 
 <!--[![Deploy to heroku](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy?template=https://github.com/igorkowalczyk/majobot/tree/master)-->
 [![Deploy to heroku](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy?template=https://github.com/aurolia-css/majo-rebuild/tree/master)
+
+[Heroku hosting tutorial](#tutorials)
 
 # Example `.env` file
 
@@ -96,10 +98,10 @@ DOMAIN=YOUR-DASHBOARD-WEB-ADRESS
 
 `^` = Not required to run but used in web dashboard
 
-# Development
+# Web Development
 
 1. To test site in `.env` file set the `DASHBOARD=true/false` value. ([See example `.env` file](#example-env-file))
-2. Fill dashboard config (`config.js` and `.env`)
+2. Fill dashboard config in (`config.js` and `.env`)
 3. Add the redirect uri here: https://discord.com/developers/applications/YOUR-BOT-ID/oauth2
     * ```
        https://your-domain.com
