@@ -58,6 +58,7 @@ module.exports = async (client) => {
   var pathname = url.parse(req.url).pathname;
   const baseData = {
    bot: client,
+   config: config,
    hostname: hostname,
    pathname: pathname,
    path: req.path,
