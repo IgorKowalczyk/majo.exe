@@ -3,13 +3,12 @@
 
 <h1>Commands</h1>
 <% readdirSync('./commands/').forEach(file => { %>
-<% let pull = require(`../commands/${file}`); %>
 <% try { %>
-<% if (pull.name) { %>
+<% if (file.name) { %>
 <div class="command-container">
-<h3 class="command-name command"><span class="bold"><%= prefix %> <%= pull.name %></span> <%= pull.pureusage %></h3>
-<div class="command-description command"><%- pull.description || `<span class="none">No Description :(</span>` %></div>
-<div class="command-aliases command"><span class="italic">Aliases: <%- pull.aliases || `<span class="none">None</span>` %></span></div>
+<h3 class="command-name command"><span class="bold"><%= prefix %> <%= file.name %></span> <%= file.pureusage %></h3>
+<div class="command-description command"><%- file.description || `<span class="none">No Description :(</span>` %></div>
+<div class="command-aliases command"><span class="italic">Aliases: <%- file.aliases || `<span class="none">None</span>` %></span></div>
 </div>
 <% } %>
 <% } catch (error) { %>
