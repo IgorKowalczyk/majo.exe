@@ -27,7 +27,7 @@ function checkguild(member_id,guilds){
 }
 
 function manageguild(g_id){
-  let guild = bot.guilds.cache.get(g_id)
+  let guild = client.guilds.cache.get(g_id)
   if(guild){
     let memberCount = guild.memberCount
     let guildname = guild.name
@@ -42,7 +42,7 @@ function manageguild(g_id){
 //parse the channels from POST request
 async function modifyguild(channels, g_id, webuser){
     let c = channels[0].split(',')
-    editguild = bot.guilds.cache.get(g_id)
+    editguild = client.guilds.cache.get(g_id)
     if(!editguild.channels.cache.find(c=>c.name == 'dashboard-logs')) return "Error"
     else{
       let logs = await editguild.channels.cache.find(c => c.name == 'dashboard-logs')
@@ -60,8 +60,8 @@ async function modifyguild(channels, g_id, webuser){
 
 
 //setup function for dashboard logging
-bot.on("message",async message=>{
-  if(message.author == message.author.bot) return;
+client.on("message",async message=>{
+  if(message.author == message.author.client) return;
   if(message.content.startsWith(prefix+"setup")){
     await message.channel.send("[OK] Iniciando a configuração")
     if(message.member.hasPermission('ADMINISTRATOR')){
@@ -74,7 +74,7 @@ bot.on("message",async message=>{
   }
 })
 
-bot.on("guildCreate",async()=>{
+client.on("guildCreate",async()=>{
   await message.systemChannel.send('Obrigado por me convidar aqui\n Use ``..setup`` Para iniciar a configuração!')
 })
 
