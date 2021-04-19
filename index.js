@@ -24,7 +24,7 @@ if (process.env.TOKEN) {
 
 if (process.env.DASHBOARD = "true") {
  console.log("Getting dashboard config file...")
- Dashboard = require("./dashboard/dashboard");
+ Dashboard = require("./dashboard-run");
  console.log("Done!")
  Dashboard(client);
 } else {
