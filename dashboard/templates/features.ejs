@@ -1,19 +1,20 @@
 <%- include("partials/head", { bot, user, path, title: "Dashboard" }) %>
 <div class="content">
 
-<% commands = readdirSync('./commands/'); %>
-
-<h1>Total commands: <%= commands.length %></h1>
-<% if (commands.length > 0) { %>
-<% commands.forEach(function(command) { %>
+<h1>Commands</h1>
+<% readdirSync('./commands/').forEach(file => { %>
+<% let pull = require(`../commands/${file}`); %>
+<% try { %>
+<% if (pull.name) { %>
 <div class="command-container">
-<h3 class="command-name command"><span class="bold"><%= prefix %> <%= command.name %></span> <%= command.pureusage %></h3>
-<div class="command-description command"><%- command.description || `<span class="none">No Description :(</span>` %></div>
-<div class="command-aliases command"><span class="italic">Aliases: <%- command.aliases || `<span class="none">None</span>` %></span></div>
+<h3 class="command-name command"><span class="bold"><%= prefix %> <%= pull.name %></span> <%= pull.pureusage %></h3>
+<div class="command-description command"><%- pull.description || `<span class="none">No Description :(</span>` %></div>
+<div class="command-aliases command"><span class="italic">Aliases: <%- pull.aliases || `<span class="none">None</span>` %></span></div>
 </div>
-<% }) %>
-<% } else { %>
+<% } %>
+<% } catch (error) { %>
 <h3><span class="bold">T^T</span> There are no commands.<br>
 <p class="note"><span class="bold">Info:</span> If you are a Bot Developer - check the <code>commands</code> directory.</p></h3>
 <% } %>
+<% }); %>
 <%- include("partials/footer") %>
