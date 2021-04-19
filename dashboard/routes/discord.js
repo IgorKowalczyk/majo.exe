@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { clientId, clientSecret, scopes, redirectUri } = require('../config.js');
+const { clientId, clientSecret, scopes, redirectUri } = require('../../config');
 const fetch = require('node-fetch');
 const FormData = require('form-data');
 const {userhit} = require("../bot/webapi_handler");
