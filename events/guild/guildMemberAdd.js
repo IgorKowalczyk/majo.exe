@@ -46,7 +46,7 @@ module.exports = async (client, member) => {
   const embed = new Discord.MessageEmbed()
    .setColor("RANDOM")
    .setTimestamp()
-   .setFooter(`${message.author.username}`, message.author.displayAvatarURL({ dynamic: true, format: 'png', size: 2048 }))
+   .setFooter(`${member.guild.username}`, member.user.displayAvatarURL({ dynamic: true, format: 'png', size: 2048 }))
    .setDescription(`**Welcome to the server ${member.guild.name}!**`)
    .setImage("attachment://welcome-image.png")
    .attachFiles(attachment);
