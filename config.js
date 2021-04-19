@@ -12,6 +12,7 @@ module.exports = {
  "google_analitics": process.env.ANALYTICS,
  "token": process.env.TOKEN,
  "clientSecret": process.env.SECRET,
+ "id": "681536055572430918",
  "port": process.env.PORT,
  "sessionSecret": process.env.SESSION_SECRET,
  "prefix": process.env.PREFIX,
