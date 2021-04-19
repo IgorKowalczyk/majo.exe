@@ -3,7 +3,7 @@ const config = require("../config");
 const prefix = config.prefix;
 
 module.exports = {
- name: "prune",
+ name: "rate",
  aliases: [],
  description: "Rate your thing",
  category: "Fun",
