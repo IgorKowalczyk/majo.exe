@@ -11,16 +11,16 @@ module.exports = {
  category: "Fun",
  usage: "sad <image>",
  run: async (client, message, args) => {
-  function attachIsImage(msgAttach) {
-   var url = msgAttach.url;
-   return url.indexOf("png", url.length - "png".length /*or 3*/) !== -1;
-  }
   if (message.attachments.size > 0) {
    if (message.attachments.every(attachIsImage)){
     return message.channel.send({embed: {
       color: 16734039,
       description: "Please enter a .png image!"
     }})
+   }
+   function attachIsImage(msgAttach) {
+    var url = msgAttach.url;
+    return url.indexOf("png", url.length - "png".length /*or 3*/) !== -1;
    }
   } else {
    Jimp.read(message.attachments).then(function (image) {
@@ -43,6 +43,7 @@ module.exports = {
      });          
     });              
    }).catch(function (err) {
+     console.log(err);
     return message.channel.send({embed: {
      color: 16734039,
      description: "Invaild image!"
