@@ -48,10 +48,28 @@ module.exports = async (client) => {
   extended: true
  }));
  const renderTemplate = (res, req, template, data = {}) => {
+  var hostname = req.headers.host;
+  var pathname = url.parse(req.url).pathname;
   const baseData = {
    bot: client,
+   hostname: hostname,
+   pathname: pathname,
    path: req.path,
-   user: req.isAuthenticated() ? req.user : null
+   user: req.isAuthenticated() ? req.user : null,
+   verification: config.verification,
+   description: config.description,
+   twitter: config.twitter,
+   url: res,
+   prefix: config.prefix,
+   req: req,
+   mobile: config.mobile_support,
+   image: config.image,
+   name: client.username,
+   tag: client.tag,
+   server: config.server,
+   authorwebsite: config.author_website,
+   github: config.github,
+   analitics: config.google_analitics,
   };
   res.render(path.resolve(`${templateDir}${path.sep}${template}`), Object.assign(baseData, data));
  };
