@@ -7,7 +7,7 @@ src: url("https://igorkowalczyk.github.io/majobot/lib/fonts/roboto-thin.otf");
 }
 
 :root {
---white: #17171a;
+--white: #1D1E23;
 --preloader: #222;
 --spinner: #888;
 --spinner-border: #333;
@@ -18,8 +18,8 @@ src: url("https://igorkowalczyk.github.io/majobot/lib/fonts/roboto-thin.otf");
 --logout-background: 240, 71, 71, 0.1;
 --edit: 68, 179, 127;
 --edit-hover: 47, 124, 88;
---button: #4c4e52;
---button-hover: #3b3e42;
+--button: #36393E;
+--button-hover: #575A5E;
 --svg: #fff;
 --text: #fff;
 --scrollbar: #222;
