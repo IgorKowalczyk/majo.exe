@@ -10,8 +10,15 @@ module.exports = {
  category: "Fun",
  usage: "trigerred [user mention]",
  run: async (client, message, args) => {
-  const tmember = message.mentions.members.first() || message.guild.members.cache.get(args[0]) || message.member;
-  const Data = await Random.Triggered({ Image: tmember.user.displayAvatarURL({ format: "png" }), Color: "RANDOM" });
-  return message.channel.send(Data);
+  try {
+   const tmember = message.mentions.members.first() || message.guild.members.cache.get(args[0]) || message.member;
+   const Data = await Random.Triggered({ Image: tmember.user.displayAvatarURL({ format: "png" }), Color: "RANDOM" });
+   return message.channel.send(Data);
+  } catch (err) {
+   message.channel.send({embed: {
+    color: 16734039,
+    description: "Something went wrong... :cry:"
+   }})
+  }
  }
 }
