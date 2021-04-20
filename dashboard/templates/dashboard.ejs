@@ -2,7 +2,7 @@
 <div class="content">
 
 <h2>PLEASE SELECT A SERVER</h2>
-
+<p class="note"><span class="bold">Info:</span> You need the <code>MANAGE_GUILD</code> permission to view your servers here.</p>
 <div class="servers">
 <% user.guilds.forEach(guild => {
  const permsOnGuild = new perms(guild.permissions);
@@ -16,18 +16,23 @@
  iconurl = "https://" + hostname + "/pics/invaild-avatar.png";
 }
 %>
-<div class="server">
-  <div class="icon-and-name">
-<img class="server-icon" src="<%= iconurl %>" alt="<% guild.name %>"/>
-  <p class="guild-name"><%= guild.name %></p>
-  </div>
-  <% if (bot.guilds.cache.get(guild.id)) { %>
-    <a class="edit button" href="/dashboard/<%= guild.id %>">Edit Settings</a>
-  <% } else { %>
-    <a class="add button" href="<%= `https://discord.com/oauth2/authorize?client_id=${bot.user.id}&permissions=1916267615&redirect_uri=${encodeURIComponent(config.domain)}%2Fdashboard&guild_id=${guild.id}&response_type=code&scope=guilds%20identify%20bot` %>">Add Bot</a>
-  <% } %>
-</div>
-  <% }); %>
+<% if (!user.guilds) { %>
+ <h3><span class="bold">T^T</span> There are no servers.<br>
+ <p class="note"><span class="bold">Info:</span> To add the bot you must have the <code>MENAGE_GUILD</code> permission.</p></h3>
+<% } else { %>
+ <div class="server">
+ <div class="icon-and-name">
+ <img class="server-icon" src="<%= iconurl %>" alt="<% guild.name %>"/>
+ <p class="guild-name"><%= guild.name %></p>
+ </div>
+ <% if (bot.guilds.cache.get(guild.id)) { %>
+  <a class="edit button" href="/dashboard/<%= guild.id %>">Edit Settings</a>
+ <% } else { %>
+  <a class="add button" href="<%= `https://discord.com/oauth2/authorize?client_id=${bot.user.id}&permissions=1916267615&redirect_uri=${encodeURIComponent(config.domain)}%2Fdashboard&guild_id=${guild.id}&response_type=code&scope=guilds%20identify%20bot` %>">Add Bot</a>
+ <% } %>
+ </div>
+ <% } %>
+<% }); %>
 </div>
 
 <%- include("partials/footer") %>

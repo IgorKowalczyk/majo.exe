@@ -3,7 +3,7 @@
 @font-face {
 font-family: Roboto-Thin;
 /*src: url('/fonts/roboto-thin.otf');*/
-src: url("https://igorkowalczyk.github.io/majobot/lib/fonts/roboto-thin.otf");
+src: url("./fonts/roboto-thin.otf");
 }
 
 :root {
