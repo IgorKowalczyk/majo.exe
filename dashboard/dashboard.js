@@ -87,7 +87,7 @@ module.exports = async (client) => {
   req.session.backURL = req.url;
   res.redirect("/login");
  }
- 
+
  // Login endpoint.
  app.get("/login", (req, res, next) => {
    if (req.session.backURL) {
@@ -179,6 +179,12 @@ module.exports = async (client) => {
    guild: guild,
   });
  });
+
+ // 404
+ app.use(function(req, res, next){
+  res.status(404).render('404');
+ });
+
  console.log("All dashboard process done... Starting in web");
  app.listen(port, null, null, () => console.log(`Dashboard is up and running on port ${port}.`));
 };
