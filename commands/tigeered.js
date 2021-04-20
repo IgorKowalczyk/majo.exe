@@ -11,8 +11,8 @@ module.exports = {
  usage: "trigerred [user mention]",
  run: async (client, message, args) => {
   try {
-   const tmember = message.mentions.members.first() || message.guild.members.cache.get(args[0]) || message.member;
-   const Data = await Random.Triggered({ Image: tmember.user.displayAvatarURL({ format: "png" }), Color: "RANDOM" });
+   const Member = message.mentions.members.first() || message.guild.members.cache.get(args[0]) || message.member;
+   const Data = await Random.Triggered({ Image: Member.user.displayAvatarURL({ format: "png" }), Color: "RANDOM" });
    return message.channel.send(Data);
   } catch (err) {
    message.channel.send({embed: {
