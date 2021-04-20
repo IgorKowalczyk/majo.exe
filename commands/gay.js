@@ -4,15 +4,15 @@ const config = require("../config");
 const prefix = config.prefix;
 
 module.exports = {
- name: "wasted",
- aliases: ["wtd"],
- description: "Returns a wasted image",
+ name: "gay",
+ aliases: [],
+ description: "Returns a gay image",
  category: "Fun",
- usage: "wasted [user mention]",
+ usage: "gay [user mention]",
  run: async (client, message, args) => {
   try {
-   const wmember = message.mentions.members.first() || message.guild.members.cache.get(args[0]) || message.member;
-   const embed = await Random.Wasted({ Image: wmember.user.displayAvatarURL({ format: "png" }), Color: "RANDOM" });
+   const gmember = message.mentions.members.first() || message.guild.members.cache.get(args[0]) || message.member;
+   const embed = await Random.Gay({ Image: gmember.user.displayAvatarURL({ format: "png" }), Color: "RANDOM" });
    return message.channel.send(embed);
   } catch (err) {
    message.channel.send({embed: {
