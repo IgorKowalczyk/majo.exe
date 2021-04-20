@@ -8,10 +8,10 @@ module.exports = {
  aliases: ["wtd"],
  description: "Returns a wasted image",
  category: "Fun",
- usage: "wasted (user mention)",
+ usage: "wasted [user mention]",
  run: async (client, message, args) => {
-  const Member = message.mentions.members.first() || message.guild.members.cache.get(args[0]) || message.member;
-  const Data = await Random.Wasted({ Image: Member.user.displayAvatarURL({ format: "png" }), Color: "RANDOM" });
+  const wmember = message.mentions.members.first() || message.guild.members.cache.get(args[0]) || message.member;
+  const Data = await Random.Wasted({ Image: wmember.user.displayAvatarURL({ format: "png" }), Color: "RANDOM" });
   return message.channel.send(Data);
  }
 }
