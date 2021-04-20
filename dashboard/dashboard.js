@@ -88,6 +88,12 @@ module.exports = async (client) => {
   res.redirect("/login");
  }
 
+ // 404
+ app.use(function(req, res) {
+  res.status(400);
+  res.render('404.ejs');
+ });
+
  // Login endpoint.
  app.get("/login", (req, res, next) => {
    if (req.session.backURL) {

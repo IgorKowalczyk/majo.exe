@@ -2,18 +2,5 @@
 <div class="content">
 
 <h1>Commands</h1>
-<% readdirSync('./commands/').forEach(file => { %>
-<% try { %>
-<% if (file.name) { %>
-<div class="command-container">
-<h3 class="command-name command"><span class="bold"><%= prefix %> <%= file.name %></span> <%= file.pureusage %></h3>
-<div class="command-description command"><%- file.description || `<span class="none">No Description :(</span>` %></div>
-<div class="command-aliases command"><span class="italic">Aliases: <%- file.aliases || `<span class="none">None</span>` %></span></div>
-</div>
-<% } %>
-<% } catch (error) { %>
-<h3><span class="bold">T^T</span> There are no commands.<br>
-<p class="note"><span class="bold">Info:</span> If you are a Bot Developer - check the <code>commands</code> directory.</p></h3>
-<% } %>
-<% }); %>
+
 <%- include("partials/footer") %>
