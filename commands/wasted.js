@@ -7,7 +7,7 @@ module.exports = {
  name: "wasted",
  aliases: ["wtd"],
  description: "Returns a wasted image",
- category: "Fun",
+ category: "Image",
  usage: "wasted [user mention]",
  run: async (client, message, args) => {
   try {

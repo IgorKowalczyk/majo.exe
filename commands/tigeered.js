@@ -7,7 +7,7 @@ module.exports = {
  name: "trigerred",
  aliases: ["tgd"],
  description: "Returns a triggered image",
- category: "Fun",
+ category: "Image",
  usage: "trigerred [user mention]",
  run: async (client, message, args) => {
   try {

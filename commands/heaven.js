@@ -6,7 +6,7 @@ module.exports = {
  name: "heaven",
  aliases: ["hvn"],
  description: "Returns a heaven image",
- category: "Fun",
+ category: "Image",
  usage: "heaven [user mention]",
  run: async (client, message, args) => {
   try {

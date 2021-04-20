@@ -7,7 +7,7 @@ module.exports = {
  name: "cat",
  aliases: [],
  description: "Sends a random cat photo",
- category: "Fun",
+ category: "Image",
  usage: "cat",
  run: async (client, message, args) => {
   (async () => {

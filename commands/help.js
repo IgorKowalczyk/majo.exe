@@ -45,6 +45,9 @@ module.exports = {
      if (id == "Utility") {
       var icon = ":toolbox:";
      }
+     if (id == "Image") {
+      var icon = ":frame_photo:";
+     }
      if (id == "NSFW") {
       var icon = ":smirk:";
      }

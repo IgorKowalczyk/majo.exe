@@ -8,7 +8,7 @@ module.exports = {
  name: "sad",
  aliases: [],
  description: "Makes your image sad",
- category: "Fun",
+ category: "Image",
  usage: "sad <image>",
  run: async (client, message, args) => {
   if (message.attachments.size > 0) {

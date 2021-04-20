@@ -7,7 +7,7 @@ module.exports = {
  name: "glass",
  aliases: [],
  description: "Returns a glass image",
- category: "Fun",
+ category: "Image",
  usage: "glass [user mention]",
  run: async (client, message, args) => {
   try {
