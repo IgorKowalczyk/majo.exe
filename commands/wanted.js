@@ -4,7 +4,7 @@ const config = require("../config");
 const prefix = config.prefix;
 
 module.exports = {
- name: "Wanted",
+ name: "wanted",
  aliases: [],
  description: "Creates wanted card",
  category: "Image",
