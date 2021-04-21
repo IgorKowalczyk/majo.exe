@@ -7,10 +7,10 @@ module.exports = {
  aliases: ["hvn"],
  description: "Returns a heaven image",
  category: "Image",
- usage: "heaven [user mention]",
+ usage: "heaven [user mention, user id, user name]",
  run: async (client, message, args) => {
   try {
-   const hmember = message.mentions.members.first() || message.guild.members.cache.get(args[0]) || message.member;
+   const hmember = await message.mentions.members.first() || message.guild.members.cache.get(args[0]) || message.guild.members.cache.find(r => r.user.username.toLowerCase().includes() === args.join(' ').toLocaleLowerCase()) || message.guild.members.cache.find(r => r.displayName.toLowerCase().includes() === args.join(' ').toLocaleLowerCase()) || message.member;
    const embed = new Discord.MessageEmbed()
     .setColor("RANDOM")
     .setImage(encodeURI(`https://vacefron.nl/api/heaven?user=${hmember.user.displayAvatarURL({ format: "png" })}`))
