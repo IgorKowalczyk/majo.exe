@@ -12,7 +12,7 @@ module.exports = {
  run: async (client, message, args) => {
   try {
    const text = args.join(" ");
-   if (!text.lenght) {
+   if (text.lenght = 0) {
     return message.channel.send({embed: {
      color: 16734039,
      description: "You must enter a text!"
