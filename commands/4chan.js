@@ -1,4 +1,4 @@
-const Discord = module.require("discord.js");
+const Discord = require("discord.js");
 const https = require('https');
 const config = require("../config");
 const prefix = config.prefix;

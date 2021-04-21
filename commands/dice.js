@@ -1,4 +1,4 @@
-const Discord = module.require("discord.js");
+const Discord = require("discord.js");
 const config = require("../config");
 const prefix = config.prefix;
 

@@ -1,5 +1,5 @@
-const superagent = require("snekfetch");
 const Discord = require('discord.js')
+const superagent = require("snekfetch");
 const rp = require('request-promise-native');
 const config = require("../config");
 const prefix = config.prefix;
