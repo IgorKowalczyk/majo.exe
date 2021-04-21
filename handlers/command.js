@@ -1,11 +1,11 @@
 const { readdirSync } = require('fs');
 const ascii = require('ascii-table');
 const chalk = require("chalk");
-const table = new ascii("Commands");
+const table = new ascii("Majo.exe commands");
 table.setHeading('Command', 'Category', 'Load status');
+table.setTitleAlign(AsciiTable.CENTER)
 
 /* Code by João Victor (https://github.com/Joao-Victor-Liporini). Thanks ❤️ */
-
 module.exports = (client) => {
  readdirSync('./commands/').forEach(file => {
    let pull = require(`../commands/${file}`);
@@ -16,12 +16,12 @@ module.exports = (client) => {
     if (pull.usage && typeof pull.usage !== 'string') throw new Error('Usage is not a string');
     if (pull.name && pull.category) {
      client.commands.set(pull.name, pull);
-     table.addRow(file, pull.category, 'OK');
+     table.addRow(pull.name, pull.category, 'OK');
     }
 
     if (pull.aliases && Array.isArray(pull.aliases)) pull.aliases.forEach(alias => client.aliases.set(alias, pull.name));
    } catch (error) {
-    table.addRow(file, '-', `X -> ${error}`);
+    table.addRow(file, '-', `ERROR -> ${error}`);
    }
  });
  console.log(chalk.blue("Loading commands..."));
