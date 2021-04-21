@@ -19,7 +19,7 @@ module.exports = {
    }})
    const wasted = await canvacord.Canvas.wasted(User.user.displayAvatarURL({ dynamic: false, format: 'png', size: 2048 }));
    const attachment = new Discord.MessageAttachment(wasted, "wasted.png");
-   await message.channel.send(attachment);
+   message.channel.send(attachment);
    wait.delete({
     timeout: 5000
    });
