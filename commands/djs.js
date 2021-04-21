@@ -12,9 +12,9 @@ module.exports = {
  run: async (client, message, args) => {
   try {
    const query = args[0]
-   const version = message.content.split('--src=')[1]
+   let version = message.content.split('--src=')[1]
    if (!version) version = 'stable'
-  if (!query) message.channel.send({embed: {
+  if (!query) return message.channel.send({embed: {
    color: 16734039,
    description: "Please enter a term to search!"
   }})
