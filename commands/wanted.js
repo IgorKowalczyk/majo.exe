@@ -24,8 +24,3 @@ module.exports = {
   }
  }
 }
-
-///////////////////////
-// Constructor
-// canvacord.Canvas.function
-///////////////////////

@@ -12,7 +12,7 @@ module.exports = {
  run: async (client, message, args) => {
   try {
    const User = await message.mentions.members.first() || message.guild.members.cache.get(args[0]) || message.guild.members.cache.find(r => r.user.username.toLowerCase().includes() === args.join(' ').toLocaleLowerCase()) || message.guild.members.cache.find(r => r.displayName.toLowerCase().includes() === args.join(' ').toLocaleLowerCase()) || message.member;
-   const facepalm = await canvacord.facepalm(User.user.displayAvatarURL({ dynamic: false, format: 'png', size: 2048 }));
+   const facepalm = await canvacord.Canvas.facepalm(User.user.displayAvatarURL({ dynamic: false, format: 'png', size: 2048 }));
    const attachment = new Discord.MessageAttachment(facepalm, "facepalm.png");
    return message.channel.send(attachment);
   } catch (err) {
