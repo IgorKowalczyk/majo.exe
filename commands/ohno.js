@@ -24,9 +24,17 @@ module.exports = {
      description: "Max lenght for the text is 20!"
     }})
    }
+   const wait = await message.channel.send({embed: {
+    color: 4779354,
+    description: "Please wait... I'm generating your image",
+    footer: "This message will be deleted in 5 secounds"
+   }})
    const ohno = await canvacord.Canvas.ohno(text);
    const attachment = new Discord.MessageAttachment(ohno, "ohno.png");
-   return message.channel.send(attachment);
+   message.channel.send(attachment);
+   wait.delete({
+    timeout: 5000
+   });
   } catch (err) {
    console.log(err);
    message.channel.send({embed: {
