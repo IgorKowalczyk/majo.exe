@@ -1,5 +1,5 @@
-const Discord = require("discord.js");
-const Random = require("srod-v2");
+const Discord = require('discord.js')
+const canvacord = require("canvacord");
 const config = require("../config");
 const prefix = config.prefix;
 
@@ -11,9 +11,10 @@ module.exports = {
  usage: "trigerred [user mention]",
  run: async (client, message, args) => {
   try {
-   const tmember = message.mentions.members.first() || message.guild.members.cache.get(args[0]) || message.member;
-   const embed = await Random.Triggered({ Image: tmember.user.displayAvatarURL({ format: "png" }), Color: "RANDOM" });
-   return message.channel.send(embed);
+   let User = await message.mentions.members.first() || message.guild.members.cache.get(args[0]) || message.guild.members.cache.find(r => r.user.username.toLowerCase().includes() === args.join(' ').toLocaleLowerCase()) || message.guild.members.cache.find(r => r.displayName.toLowerCase().includes() === args.join(' ').toLocaleLowerCase()) || message.member;
+   let triggered = await canvacord.trigger(user.displayAvatarURL({ format: "png", dynamic: false }));
+   let attachment = new MessageAttachment(triggered, "triggered.gif");
+   return message.channel.send(attachment);
   } catch (err) {
    message.channel.send({embed: {
     color: 16734039,
