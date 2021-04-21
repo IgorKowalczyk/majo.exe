@@ -3,7 +3,7 @@ const ascii = require('ascii-table');
 const chalk = require("chalk");
 const table = new ascii("Majo.exe commands");
 table.setHeading('Command', 'Category', 'Load status');
-table.setTitleAlign(AsciiTable.CENTER)
+table.setTitleAlign(table.CENTER)
 
 /* Code by João Victor (https://github.com/Joao-Victor-Liporini). Thanks ❤️ */
 module.exports = (client) => {
