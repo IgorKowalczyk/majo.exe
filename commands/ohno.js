@@ -11,19 +11,19 @@ module.exports = {
  usage: "ohno (text)",
  run: async (client, message, args) => {
   try {
-   if (!message.args) {
+   if (!args) {
     return message.channel.send({embed: {
      color: 16734039,
      description: "You must enter a text!"
     }})
    }
-   if (message.args > 20) {
+   if (args > 20) {
     return message.channel.send({embed: {
      color: 16734039,
      description: "Max lenght for the text is 20!"
     }})
    }
-   const ohno = await canvacord.ohno(message.args);
+   const ohno = await canvacord.ohno(args);
    const attachment = new Discord.MessageAttachment(ohno, "ohno.png");
    return message.channel.send(attachment);
   } catch (err) {

@@ -11,19 +11,19 @@ module.exports = {
  usage: "changemymind (text)",
  run: async (client, message, args) => {
   try {
-   if (!message.args) {
+   if (!args) {
     return message.channel.send({embed: {
      color: 16734039,
      description: "You must enter a text!"
     }})
    }
-   if (message.args > 20) {
+   if (args > 20) {
     return message.channel.send({embed: {
      color: 16734039,
      description: "Max lenght for the text is 20!"
     }})
    }
-   const changemymind = await canvacord.changemymind(message.args);
+   const changemymind = await canvacord.changemymind(args);
    const attachment = new Discord.MessageAttachment(changemymind, "changemymind.png");
    return message.channel.send(attachment);
   } catch (err) {
