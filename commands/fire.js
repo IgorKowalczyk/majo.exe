@@ -11,14 +11,14 @@ module.exports = {
  category: "Image",
  usage: "fire [user]",
  run: async (client, message, args) => {
-  let User = await message.mentions.members.first() || message.guild.members.cache.get(args[0]) || message.guild.members.cache.find(r => r.user.username.toLowerCase().includes() === args.join(' ').toLocaleLowerCase()) || message.guild.members.cache.find(r => r.displayName.toLowerCase().includes() === args.join(' ').toLocaleLowerCase()) || message.member;
-  let buffer = await AmeAPI.generate("fire", {
+  const User = await message.mentions.members.first() || message.guild.members.cache.get(args[0]) || message.guild.members.cache.find(r => r.user.username.toLowerCase().includes() === args.join(' ').toLocaleLowerCase()) || message.guild.members.cache.find(r => r.displayName.toLowerCase().includes() === args.join(' ').toLocaleLowerCase()) || message.member;
+  const buffer = await AmeAPI.generate("fire", {
    url: User.user.displayAvatarURL({
     format: "png",
     size: 2048
    })
   });
-  let attachment = new Discord.MessageAttachment(buffer, "burn.png");
+  const attachment = new Discord.MessageAttachment(buffer, "burn.png");
   message.channel.send(attachment);
  }
 }
