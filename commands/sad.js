@@ -12,16 +12,10 @@ module.exports = {
  usage: "sad <image>",
  run: async (client, message, args) => {
   if (message.attachments.size > 0) {
-   if (message.attachments.every(attachIsImage)){
     return message.channel.send({embed: {
       color: 16734039,
-      description: "Please enter a .png image!"
+      description: "Please enter a image!"
     }})
-   }
-   function attachIsImage(msgAttach) {
-    var url = msgAttach.url;
-    return url.indexOf("png", url.length - "png".length /*or 3*/) !== -1;
-   }
   } else {
    Jimp.read(message.attachments).then(function (image) {
     image.greyscale(function(err, image) {
