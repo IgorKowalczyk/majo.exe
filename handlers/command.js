@@ -2,7 +2,7 @@ const { readdirSync } = require('fs');
 const ascii = require('ascii-table');
 const chalk = require("chalk");
 const table = new ascii("Commands");
-table.setHeading('Command', 'Load status');
+table.setHeading('Command', 'Category', 'Load status');
 
 /* Code by João Victor (https://github.com/Joao-Victor-Liporini). Thanks ❤️ */
 
@@ -14,13 +14,14 @@ module.exports = (client) => {
     if (pull.category && typeof pull.category !== 'string') throw new Error('Category is not a string');
     if (pull.description && typeof pull.description !== 'string') throw new Error('Description is not a string');
     if (pull.usage && typeof pull.usage !== 'string') throw new Error('Usage is not a string');
-    if (pull.name) {
+    if (pull.name && pull.category) {
      client.commands.set(pull.name, pull);
-     table.addRow(file, 'OK');
+     table.addRow(file, pull.category, 'OK');
     }
+
     if (pull.aliases && Array.isArray(pull.aliases)) pull.aliases.forEach(alias => client.aliases.set(alias, pull.name));
    } catch (error) {
-    table.addRow(file, `X -> ${error}`);
+    table.addRow(file, '-', `X -> ${error}`);
    }
  });
  console.log(chalk.blue("Loading commands..."));
