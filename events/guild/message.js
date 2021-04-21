@@ -11,7 +11,7 @@ module.exports = async (client, message) => {
    const embed = new Discord.MessageEmbed()
     .setTitle(`:thinking: Hmm?`, message.author.displayAvatarURL({ dynamic: true, format: 'png', size: 2048 }))
     .setColor("RANDOM")
-    .setDescription(`Why are you DMing me? I can only respond to commands on servers.\n[Maybe you want to invite me?](https://discord.com/oauth2/authorize/?permissions=${config.premissions}&scope=${config.scopes}&client_id=${client.user.id}`)
+    .setDescription(`Why are you DMing me? I can only respond to commands on servers.\n [Maybe you want to invite me?](https://discord.com/oauth2/authorize/?permissions=${config.premissions}&scope=${config.scopes}&client_id=${client.user.id}`)
     .setTimestamp()
     .setFooter(`~${client.user.username} created by ${config.author}`, message.author.displayAvatarURL({ dynamic: true, format: 'png', size: 2048 }))
    return message.author.send(embed);
