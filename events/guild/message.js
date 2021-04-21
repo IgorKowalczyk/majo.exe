@@ -6,7 +6,19 @@ module.exports = async (client, message) => {
  try {
   const queue = new Map();
   if (message.author.bot) return;
-  if (!message.guild) return;
+  if (!message.guild) {
+   try {
+   const embed = new Discord.MessageEmbed()
+    .setTitle(`Hmm?`, message.author.displayAvatarURL({ dynamic: true, format: 'png', size: 2048 }))
+    .setColor("RANDOM")
+    .setDescription(`Why are you dm' me? I can only respond to commands on servers.\n[Maybe you want to invite me?](https://discord.com/oauth2/authorize/?permissions=${config.premissions}&scope=${config.scopes}&client_id=${client.user.id}`)
+    .setTimestamp()
+    .setFooter(`~${client.user.username} created by ${config.author}`, message.author.displayAvatarURL({ dynamic: true, format: 'png', size: 2048 }))
+   return message.author.send(embed);
+   } catch (err) {
+    return;
+   }
+  }
   if (message.content === `<@${client.user.id}>` || message.content === `<@!${client.user.id}>`) {
    const embed = new Discord.MessageEmbed()
     .setTitle(`<a:sucess:759354039242063903> Hi!`, message.guild.iconURL())

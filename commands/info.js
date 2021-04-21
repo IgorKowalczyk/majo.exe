@@ -29,7 +29,7 @@ module.exports = {
     .setTitle(`Information for developers`, message.guild.iconURL({ dynamic: true, format: 'png'}))
     .setColor("RANDOM")
     .setDescription(`My prefix is: \`${config.prefix}\`\n`)
-    .addField('Head developer', `${config.author} [Portfolio](${config.authorwebsite})`, true)
+    .addField('Head developer', `${config.author} \[[Website](${config.authorwebsite})\]`, true)
     .setThumbnail(client.user.displayAvatarURL({ dynamic: true, format: 'png', size: 2048 }))
     .addField('Node', `${process.version}`, true)
     .addField('OS', `${ostype}`, true)
@@ -39,7 +39,7 @@ module.exports = {
     .addField('User Count', `${client.guilds.cache.reduce((a, g) => a + g.memberCount, 0)}`, true)
     .addField('Channel Count', `${client.channels.cache.size}`, true)
     .addField('Memory', `Memory used: ${usedmemory}\nUsed percentage: ${percentage}\nTotal memory: ${totalmemoryembed}`)
-    .addField('Useful Links', `[Official server](${config.server}) | ${webpanel} [Invite me](https://discord.com/oauth2/authorize/?permissions=8&scope=bot&client_id=${client.user.id})`)
+    .addField('Useful Links', `[Official server](${config.server}) | ${webpanel} [Invite me](https://discord.com/oauth2/authorize/?permissions=${config.premissions}&scope=bot&client_id=${client.user.id})`)
     .setFooter("Requested by " + `${message.author.username}`, message.author.displayAvatarURL({ dynamic: true, format: 'png', size: 2048 }))
    message.channel.send(embed);
   } catch(err) {
