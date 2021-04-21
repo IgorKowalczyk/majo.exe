@@ -4,16 +4,16 @@ const config = require("../config");
 const prefix = config.prefix;
 
 module.exports = {
- name: "gay",
+ name: "invert",
  aliases: [],
- description: "Rainbow ( ͡° ͜ʖ ͡°)",
+ description: "Invert image colors",
  category: "Image",
- usage: "gay [user mention, user id, user name]",
+ usage: "invert [user mention, user id, user name]",
  run: async (client, message, args) => {
   try {
    const User = await message.mentions.members.first() || message.guild.members.cache.get(args[0]) || message.guild.members.cache.find(r => r.user.username.toLowerCase().includes() === args.join(' ').toLocaleLowerCase()) || message.guild.members.cache.find(r => r.displayName.toLowerCase().includes() === args.join(' ').toLocaleLowerCase()) || message.member;
-   const gay = await canvacord.rainbow(User.user.displayAvatarURL({ dynamic: false, format: 'png', size: 2048 }));
-   const attachment = new Discord.MessageAttachment(gay, "gay.png");
+   const invert = await canvacord.invert(User.user.displayAvatarURL({ dynamic: false, format: 'png', size: 2048 }));
+   const attachment = new Discord.MessageAttachment(invert, "invert.png");
    return message.channel.send(attachment);
   } catch (err) {
    console.log(err);
