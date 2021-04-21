@@ -78,7 +78,7 @@
   "hastebin": "^0.2.1",
   "canvas": "github:Automattic/node-canvas",
   "srod-v2": "^1.0.1",
-  "canvacord": "^5.1.0",
+  "canvacord": "5.1.0",
   "amethyste-api": "^1.1.4"
  },
  "engines": {
