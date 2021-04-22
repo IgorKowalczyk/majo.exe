@@ -47,7 +47,7 @@ module.exports = async (client, member) => {
    .setColor("RANDOM")
    .setTimestamp()
    .setFooter(`${member.guild.name}`, member.user.displayAvatarURL({ dynamic: true, format: 'png', size: 2048 }))
-   .setDescription(`**Welcome to the server ${member.user.name}!**`)
+   .setDescription(`**Welcome to the server ${member.user.username}!**`)
    .setImage("attachment://welcome-image.png")
    .attachFiles(attachment);
   channel.send(embed);
