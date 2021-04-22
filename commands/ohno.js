@@ -11,8 +11,8 @@ module.exports = {
  usage: "ohno (text)",
  run: async (client, message, args) => {
   try {
-   const text = args.join(" ");
-   if (text.lenght = 0) {
+   const text = await args.join(" ");
+   if (text.lenght == 0) {
     return message.channel.send({embed: {
      color: 16734039,
      description: "You must enter a text!"
@@ -27,7 +27,6 @@ module.exports = {
    const wait = await message.channel.send({embed: {
     color: 4779354,
     description: "Please wait... I'm generating your image",
-    footer: "This message will be deleted in 5 secounds"
    }})
    const ohno = await canvacord.Canvas.ohno(text);
    const attachment = new Discord.MessageAttachment(ohno, "ohno.png");

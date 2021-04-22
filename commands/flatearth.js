@@ -14,7 +14,7 @@ module.exports = {
    const embed = new Discord.MessageEmbed()
     .setColor("RANDOM")
     .setTitle("If the earth isn\'t flat, explain this:")
-    .setImage('attachment://idiots.png')
+    .setImage(attachment)
     .setFooter("Requested by " + `${message.author.username}`, message.author.displayAvatarURL({ dynamic: true, format: 'png', size: 2048 }))
     .setTimestamp()
    message.channel.send(embed);

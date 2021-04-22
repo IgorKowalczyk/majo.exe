@@ -30,7 +30,7 @@ module.exports = {
     if(money === 0) return message.channel.send(embedbank)
     db.add(`bank_${message.guild.id}_${user.id}`, money)
     db.subtract(`money_${message.guild.id}_${user.id}`, money)
-    const allmoney = new Discord.RichEmbed()
+    const allmoney = new Discord.MessageEmbed()
      .setColor("RANDOM")
      .setDescription(`:white_check_mark: You have deposited all your coins into your bank`);
     message.channel.send(allmoney).catch(err => console.log(err))

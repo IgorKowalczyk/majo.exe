@@ -11,7 +11,7 @@ module.exports = {
  run: async (client, message, args) => {
   try {
    const embed = new Discord.MessageEmbed()
-    .setAuthor("Total members", message.guild.iconURL)
+    .setAuthor("🧑‍🍼 Total members", message.guild.iconURL)
     .setColor("RANDOM")
     .addField("Overall Members: ", message.guild.memberCount)
     .setTimestamp()

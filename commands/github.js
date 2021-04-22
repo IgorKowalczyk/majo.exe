@@ -24,7 +24,7 @@ module.exports = {
      }})
      let {login, avatar_url, name, id, html_url, public_repos, followers, following, location, created_at, bio} = body;
      const embed = new Discord.MessageEmbed()
-      .setAuthor(`${login} Information!`, avatar_url)
+      .setAuthor(`🐙 ${login} Information!`, avatar_url)
       .setColor(`RANDOM`)
       .setThumbnail(`${avatar_url}`)
       .addField(`Username`, `${login}`)

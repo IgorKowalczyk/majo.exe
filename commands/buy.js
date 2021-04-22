@@ -103,7 +103,7 @@ module.exports = {
    } else {
     const noitem = new Discord.MessageEmbed()
      .setColor("FF5757")
-     .setTitle("Enter an item to buy, type `" + `${prefix}` + " buy list` to show all things")
+     .setDescription("Enter an item to buy, type `" + `${prefix}` + " buy list` to show all things")
     message.channel.send(noitem)
    }
  } catch (err) {

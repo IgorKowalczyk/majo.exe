@@ -11,8 +11,8 @@ module.exports = {
  usage: "changemymind (text)",
  run: async (client, message, args) => {
   try {
-   const text = args.join(" ");
-   if (text.lenght = 0) {
+   const text = await args.join(" ");
+   if (text.lenght == 0) {
     return message.channel.send({embed: {
      color: 16734039,
      description: "You must enter a text!"
@@ -24,6 +24,10 @@ module.exports = {
      description: "Max lenght for the text is 20!"
     }})
    }
+   const wait = await message.channel.send({embed: {
+    color: 4779354,
+    description: "Please wait... I'm generating your image",
+   }})
    const changemymind = await canvacord.Canvas.changemymind(text);
    const attachment = new Discord.MessageAttachment(changemymind, "changemymind.png");
    return message.channel.send(attachment);

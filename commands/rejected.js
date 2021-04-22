@@ -16,7 +16,6 @@ module.exports = {
    const wait = await message.channel.send({embed: {
      color: 4779354,
      description: "Please wait... I'm generating your image",
-     footer: "This message will be deleted in 5 secounds"
     }})
    const buffer = await AmeAPI.generate("rejected", {
     url: User.user.displayAvatarURL({
@@ -26,9 +25,6 @@ module.exports = {
    });
    const attachment = new Discord.MessageAttachment(buffer, "rejected.png");
    message.channel.send(attachment);
-   wait.delete({
-     timeout: 5000
-   });
   } catch (err) {
    console.log(err);
    message.channel.send({embed: {
