@@ -6,8 +6,8 @@ Majo.exe have almost everything - Fun, Memes, Images, Giveaway, Economy, Anime a
 
 [![Discord](https://discord.com/api/guilds/666599184844980224/widget.png?style=banner2)](https://majoexe.herokuapp.com/server)
 
+[![Node.js](https://github.com/aurolia-css/majo-rebuild/actions/workflows/node.yml/badge.svg)](https://majoexe.herokuapp.com/)
 [![Jekyll](https://github.com/aurolia-css/majo-rebuild/workflows/Jekyll/badge.svg)](https://majoexe.herokuapp.com/)
-[![Node.js Workflow](https://github.com/aurolia-css/majo-rebuild/workflows/Node.js%20Workflow/badge.svg)](https://majoexe.herokuapp.com/)
 [![GitHub License](https://img.shields.io/github/license/aurolia-css/majo-rebuild?color=%2334D058&logo=github&logoColor=959DA5&labelColor=24292E)](https://majoexe.herokuapp.com/)
 [![Version](https://img.shields.io/github/package-json/v/aurolia-css/majo-rebuild?color=%2334D058&logo=github&logoColor=959DA5&labelColor=24292E)](https://github.com/aurolia-css/majo-rebuild/releases)
 
