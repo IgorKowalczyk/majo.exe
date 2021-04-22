@@ -1,10 +1,8 @@
 > #### *This repository is only used to update [@igorkowalczyk/majobot](https://github.com/igorkowalczyk/majobot) to `Discord.js v12.3.1`. The code here may contain errors and bugs, do not use it on production*
 
-# Important: Due to a lot of other work, I will not continue working on majo until May 10 2021. Sorry...
-
 # Majo.exe
 
-An advanced Discord bot, contains commands for moderation, fun, music, economics and NSFW.
+Majo.exe have almost everything - Fun, Memes, Images, Giveaway, Economy, Anime and NSFW. This bot serve over 100 commands!
 
 [![Discord](https://discord.com/api/guilds/666599184844980224/widget.png?style=banner2)](https://igorkowalczyk.github.io/majobot/server)
 
@@ -15,42 +13,42 @@ An advanced Discord bot, contains commands for moderation, fun, music, economics
 
 # Invite
 
-Go to [this link](https://igorkowalczyk.github.io/majobot/authorize) and authorize the bot (requires server manage premission) to your server.
-
+Go to [this link](https://discord.com/oauth2/authorize/?permissions=4294967287&scope=bot&client_id=681536055572430918) and add the bot (requires `MANAGE_GUILD` premission) to your server.
+ - [Or to make it easier, visit our website](https://majoexe.herokuapp.com/)
 # Hosting
 
-We host this bot. Majo.exe will be online 24/7.
-- If you want to self-host the bot [look here](#self-hosting)
-
-### Self-Hosting
-
-1. Clone [this repository](https://github.com/igorkowalczyk/majobot),
-2. Run `npm install`,
-3. Grab a token and client secret on [Discord's developer portal](https://discord.com/developers/applications) [Tutorial](#generating-token)
-4. Grab a Genius and Youtube API keys [Tutorial](#generating-keys)
-5. Fill `config.json` and `dashboard.json` with your variables (`dashboard.json` is the config file for Web Dashboard, ignore this file if you not use the web panel),
-6. Create a `.env` file (Remember! The `.env` file is Super-Secret - Don't share it!)
-7. In `.env` file set:
-    * `TOKEN` - Bot token used to login (Remember! The `TOKEN` value is Super-Secret)
-    * `PREFIX` - Bot prefix
-    * `YOUTUBE` - Youtube API Key (Used for music)
-    * `GENIUS_KEY` - Genius Lyrics API Key (Used for lyrics) 
-    * `SESSION_SECRET` - Session secret key, random sequence of words, letterss or numbers
-    * `SECRET` - Client secret variabble (Remember! The `SECRET` value is Super-Secret)
-    * `ANALYTICS` - Google Trakcing ID (For Website analytics)
-    * `ID` - Your bot ID (Not your client ID!)
-    * `DASHBOARD=[true/false]` - if `true` the bot will be hosted with web dasboard, if `false` the bot will be hosted without web dashboard
-    * `DOMAIN` - your site adress (include `https://` or subfolder)
-8. Run `npm run start`
-> Note: See the example [`.env` file below](#example-env-file)!
+We host this bot. Majo.exe *will be* online 24/7. [Invite Majo here!](#invite)
+However, if you want to host Majo yourself - take a look here](#self-hosting)
 
 ### Heroku Hosting
 Deploy the app to [Heroku](https://heroku.com)
-
 <!--[![Deploy to heroku](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy?template=https://github.com/igorkowalczyk/majobot/tree/master)-->
 [![Deploy to heroku](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy?template=https://github.com/aurolia-css/majo-rebuild/tree/master)
 
-[Heroku hosting tutorial](#tutorials)
+[Heroku hosting tutorial](#heroku)
+
+### Self-Hosting
+
+1. Clone [this repository](https://github.com/aurolia-css/majo-rebuild)
+   `git clone aurolia-css/majo-rebuild` or `git clone igorkowalczyk/majobot` - This is old and unsupported version!
+2. Run `npm install` to get all dependencies,
+3. Grab a Discord Bot token and client secret on [Discord's developer portal](https://discord.com/developers/applications) [Tutorial](#discord-token)
+4. Fill `config.json` with your values (See that some values point to the `.env` file, see it below)
+5. Rename `.env.example` (Located in main dir) to `.env`. Remember - the file is super secret, better to not share it.
+6. In `.env` file set this values:
+    * **Required:**
+    * `TOKEN` - Bot token from Discord Developer portal [no. 3]
+    * `PREFIX` - Bot prefix, used to run commands eg. `your-prefix help`
+    * `AMEAPI` - your Ametyhyste API token [Tutorial how to get it](#ameapi-token)
+    * **Not required (You can leave them blank):**
+    * `DOMAIN` - your website domain, eg `https://example.com`
+    * `PORT` - your website port, eg `8080`. [Note: If you are using heroku, not create this value. Heroku binds port automatically]
+    * `DASHBOARD=[true/false]` - if `true` the bot will be hosted with web dasboard, if `false` the bot will be hosted without web dashboard.
+    * `SESSION_SECRET` - Session secret key, random sequence of words, letterss or numbers
+    * `SECRET` - Client secret from Discord Developers portal [no. 3]
+    * `ANALYTICS` - Google Trakcing ID, for Website analytics [Tutorial how to get it](#analytics-id)
+7. Run `npm run start`
+> Note: See the example [`.env` file below](#example-env-file)!
 
 # Example `.env` file
 
@@ -64,62 +62,75 @@ Deploy the app to [Heroku](https://heroku.com)
 
 # reference these in your code with process.env.SECRET
 
-
+# Required
 TOKEN=YOUR-TOKEN-GOES-HERE
 PREFIX=!majo
-YOUTUBE=YOUT-YOUTUBE-API-KEY
-GENIUS_KEY=YOUR-GENIUS-KEY
+AMEAPI=YOUR-AMETHYSTE-API-TOKEN
+
+# Not required
+DOMAIN-YOUR-WEBSITE-DOMAIN
+PORT=YOUR-WEBSITE-PORT
+DASHBOARD=[true/false]
 SESSION_SECRET=YOUR-SESSION-SECRET-(RANDOM-WORDS)
 SECRET=YOUR-BOT-CLIENT-SECRET
 ANALYTICS=YOUR-GOOGLE-TRACKING-ID
-ID=YOUR-BOT-ID
-DASHBOARD=[true/false]
-DOMAIN=YOUR-DASHBOARD-WEB-ADRESS
 # !majo is the default prefix, you can change it later.
 
 # Note: .env is a shell file so there can't be spaces around =
 
 ```
 
-## `.env` Table
+### `.env` config table
 | `.env` | Description | Required |
 |---|---|---|
-| TOKEN | The bot token, required to run (Remember! The `TOKEN` value is Super-Secret) | :heavy_check_mark: |
-| YOUTUBE | Youtube API Key (Used in music) | :heavy_check_mark: |
+| TOKEN | The bot token (Remember! The `TOKEN` is super secret) | :heavy_check_mark: |
 | PREFIX | The default bot prefix (eg. `!majo`) | :heavy_check_mark: |
-| GENIUS_KEY | Genius API Key (Used in music and lyrics) | :heavy_check_mark: |
+| AMEAPI | Your Amethyste api token | :heavy_check_mark: |
+| DOMAIN | Your website domain (eg `https://example.com`)`*` | :x:/:white_check_mark |
+| PORT| Your webiste port, eg. `8008 ` `*`| :x:/:heavy_check_mark |
+| DASHBOARD | The Web-Dashboard config value. (eg. `true/false`, default value: `false`)`*` | :x: |
 | SESSION_SECRET | Random sequence of words, letterss or numbers`*` | :x:/:heavy_check_mark: |
 | SECRET | The bot client secret (Remember! The `SECRET` value is Super-Secret)`*` | :x:/:heavy_check_mark: |
-| ANALYTICS | Google analytics tracking ID, used in Web-Dashboard`^` | :x: |
-| DASHBOARD | The Web-Dashboard config value. (eg. `true/false`, default value: `false`)`^` | :x: |
-| DOMAIN | Your site adress (include `https://` or subfolder)`*` | :heavy_check_mark: |
+| ANALYTICS | Google analytics tracking ID, used in Web-Dashboard`*` | :x: |
+> Note: All values are required except those marked with `*`!
+> - `*` = Required to run the web dashboard
 
-`*` = Required to run the web dashboard
 
-`^` = Not required to run but used in web dashboard
+# Tokens
 
-# Web Development
+### Discord Token
+> Soon!
 
-1. To test site in `.env` file set the `DASHBOARD=true/false` value. ([See example `.env` file](#example-env-file))
+### Amethyste Api
+> Soon!
+
+### Analytics ID
+> Soon!
+> 
+### Heroku
+> Soon!
+
+# Dashboard
+
+1. To test site, in `.env` file set the `DASHBOARD` config to `true` and assign the `PORT` eg 8080. ([See example `.env` file](#example-env-file))
 2. Fill dashboard config in (`config.js` and `.env`)
 3. Add the redirect uri here: https://discord.com/developers/applications/YOUR-BOT-ID/oauth2
     * ```
        https://your-domain.com
        https://your-domain.com/callback
        https://your-domain.com/dashboard
-       https://your-domain.com/dashboard/:guildID
        https://your-domain.com/login
       ```
-4. Go to your dashboard in browser (eg. to `localhost`)
+4. Go to your dashboard in browser (eg. to `localhost:8000`)
 
 # Issues
-If you have any issues with the page please create [new issue here](https://github.com/igorkowalczyk/majobot/issues)
+If you have any issues with the page please create [new issue here](https://github.com/aurolia-css/majo-rebuild/issues)
 
 # Pull Requests
 When submitting a pull request:
 - Clone the repo.
 - Create a branch off of master and give it a meaningful name (e.g. my-awesome-new-feature).
-- Open a [pull request](https://github.com/igorkowalczyk/majobot/pulls) on [GitHub](https://github.com) and describe the feature or fix.
+- Open a [pull request](https://github.com/aurolia-css/majo-rebuild/pulls) on [GitHub](https://github.com) and describe the feature or fix.
 
 # License
-This project is licensed under the MIT. See the [LICENSE](https://github.com/igorkowalczyk/majobot/blob/master/license.md) file for details
+This project is licensed under the MIT. See the [LICENSE](https://github.com/aurolia-css/majo-rebuild/blob/master/license.md) file for details

@@ -1,14 +1,15 @@
 {
  "name": "majo.exe",
- "version": "0.0.0",
- "description": "An advanced Discord bot with a lot commands - for moderation, fun, NSFW and status.",
+ "version": "0.0.1",
+ "description": "Majo.exe have almost everything - Fun, Memes, Images, Giveaway, Economy, Anime and NSFW. This bot serve over 100 commands!",
  "author": "Igor Kowalczyk [Majonez.exe#3957]",
  "main": "node index.js",
  "scripts": {
-  "test": "node index.js",
-  "start": "node index.js",
-  "develop": "node index.js",
-  "dashboard": "node dashboard-run.js"
+  "start": "node index.js && node dashboard-run.js",
+  "develop": "node index.js && node dashboard-run.js",
+  "bot": "node index.js",
+  "dashboard": "node dashboard-run.js",
+  "test": "node index.js"
  },
  "dependencies": {
   "discord.js": "^12.3.1",
@@ -86,12 +87,12 @@
  },
  "repository": {
   "type": "git",
-  "url": "https://gihub.com/igorkowalczyk/majobot"
+  "url": "https://gihub.com/aurolia-css/majo-rebuild"
  },
  "bugs": {
-  "url": "https://github.com/igorkowalczyk/majobot/issues"
+  "url": "https://github.com/aurolia-css/majo-rebuild/issues"
  },
- "homepage": "https://igorkowalczyk.github.io/majobot",
+ "homepage": "https://majoexe.herokuapp.com/",
  "license": "MIT",
  "keywords": [
   "node",
