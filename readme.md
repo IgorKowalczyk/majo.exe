@@ -4,12 +4,12 @@
 
 Majo.exe have almost everything - Fun, Memes, Images, Giveaway, Economy, Anime and NSFW. This bot serve over 100 commands!
 
-[![Discord](https://discord.com/api/guilds/666599184844980224/widget.png?style=banner2)](https://igorkowalczyk.github.io/majobot/server)
+[![Discord](https://discord.com/api/guilds/666599184844980224/widget.png?style=banner2)](https://majoexe.herokuapp.com/server)
 
-[![Jekyll](https://github.com/IgorKowalczyk/majobot/workflows/Jekyll/badge.svg)](https://igorkowalczyk.github.io/majobot)
-[![Node.js Workflow](https://github.com/igorkowalczyk/majobot/workflows/Node.js%20Workflow/badge.svg)](https://igorkowalczyk.github.io/majobot)
-[![GitHub License](https://img.shields.io/github/license/igorkowalczyk/majobot?color=%2334D058&logo=github&logoColor=959DA5&labelColor=24292E)](https://igorkowalczyk.github.io/majobot)
-[![Version](https://img.shields.io/github/package-json/v/igorkowalczyk/majobot?color=%2334D058&logo=github&logoColor=959DA5&labelColor=24292E)](https://github.com/igorkowalczyk/majobot/releases)
+[![Jekyll](https://github.com/aurolia-css/majo-rebuild/workflows/Jekyll/badge.svg)](https://majoexe.herokuapp.com/)
+[![Node.js Workflow](https://github.com/aurolia-css/majo-rebuild/workflows/Node.js%20Workflow/badge.svg)](https://majoexe.herokuapp.com/)
+[![GitHub License](https://img.shields.io/github/license/aurolia-css/majo-rebuild?color=%2334D058&logo=github&logoColor=959DA5&labelColor=24292E)](https://majoexe.herokuapp.com/)
+[![Version](https://img.shields.io/github/package-json/v/aurolia-css/majo-rebuild?color=%2334D058&logo=github&logoColor=959DA5&labelColor=24292E)](https://github.com/aurolia-css/majo-rebuild/releases)
 
 # Invite
 
@@ -22,7 +22,6 @@ However, if you want to host Majo yourself - take a look here](#self-hosting)
 
 ### Heroku Hosting
 Deploy the app to [Heroku](https://heroku.com)
-<!--[![Deploy to heroku](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy?template=https://github.com/igorkowalczyk/majobot/tree/master)-->
 [![Deploy to heroku](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy?template=https://github.com/aurolia-css/majo-rebuild/tree/master)
 
 [Heroku hosting tutorial](#heroku)
@@ -81,13 +80,13 @@ ANALYTICS=YOUR-GOOGLE-TRACKING-ID
 ```
 
 ### `.env` config table
-| `.env` | Description | Required |
+| `.env` varriable | Description | Required |
 |---|---|---|
 | TOKEN | The bot token (Remember! The `TOKEN` is super secret) | :heavy_check_mark: |
 | PREFIX | The default bot prefix (eg. `!majo`) | :heavy_check_mark: |
 | AMEAPI | Your Amethyste api token | :heavy_check_mark: |
-| DOMAIN | Your website domain (eg `https://example.com`)`*` | :x:/:white_check_mark |
-| PORT| Your webiste port, eg. `8008 ` `*`| :x:/:heavy_check_mark |
+| DOMAIN | Your website domain (eg `https://example.com`)`*` | :x:/:heavy_check_mark: |
+| PORT| Your webiste port, (eg. `8008 `)`*`| :x:/:heavy_check_mark: |
 | DASHBOARD | The Web-Dashboard config value. (eg. `true/false`, default value: `false`)`*` | :x: |
 | SESSION_SECRET | Random sequence of words, letterss or numbers`*` | :x:/:heavy_check_mark: |
 | SECRET | The bot client secret (Remember! The `SECRET` value is Super-Secret)`*` | :x:/:heavy_check_mark: |
