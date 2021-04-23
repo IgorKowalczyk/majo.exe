@@ -19,6 +19,8 @@ module.exports = {
  "scopes": "bot",
  "premissions": "4294967287",
  "dashboard": process.env.DASHBOARD,
+ "brainid": process.env.BRAINID,
+ "brainkey": process.env.BRAINKEY,
  "newstitle": "<a:error:759354037803024395> Warning!",
  "news":  "Due to the fact that our bot will soon be on 100 Discord servers it needs to be verified. Soon Majo.exe will be sent for verification. We are sorry if you cannot add the bot to your server..."
 }
