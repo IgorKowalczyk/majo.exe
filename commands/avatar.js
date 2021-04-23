@@ -5,34 +5,20 @@ const prefix = config.prefix;
 module.exports = {
  name: "avatar",
  aliases: [],
- description: "Gets user's avatar from a mention",
+ description: "Get a user avatar",
  category: "Utility",
- usage: "avatar <mention>",
+ usage: "avatar [user mention, user id, user name]",
  run: async (client, message, args) => {
   try {
-   if (!message.mentions.users.size) {     
-    let embed = new Discord.MessageEmbed()
-     .setColor("RANDOM")
-     .setAuthor(message.author.username + "'s Avatar", message.author.displayAvatarURL())
-     .setImage(message.author.displayAvatarURL({ dynamic: true, format: 'png', size: 2048 })) 
-     .setTimestamp()
-     .setFooter("Requested by " + `${message.author.username}`, message.author.displayAvatarURL({ dynamic: true, format: 'png', size: 2048 }))
-    message.channel.send(embed)
-   }
-   const avatarList = message.mentions.users.map(user => {
-    return `${user.username},${user.displayAvatarURL({ dynamic: true, format: 'png', size: 2048 })}`;
-   });
-   for (var i = 0; i < avatarList.length; i++) {
-    let Username = avatarList[i].split(',')[0];
-    let AvatarURL = avatarList[i].split(",").pop();
+    const User = await message.mentions.members.first() || message.guild.members.cache.get(args[0]) || message.guild.members.cache.find(r => r.user.username.toLowerCase().includes() === args.join(' ').toLocaleLowerCase()) || message.guild.members.cache.find(r => r.displayName.toLowerCase().includes() === args.join(' ').toLocaleLowerCase()) || message.member;
+    const avatar = User.user.displayAvatarURL({ dynamic: true, format: 'png', size: 2048 });
     const embed = new Discord.MessageEmbed()
      .setColor("RANDOM")
-     .setAuthor(Username + "'s Avatar", AvatarURL)
-     .setImage(AvatarURL)
+     .setAuthor(message.author.username + "'s Avatar", User.user.displayAvatarURL({ dynamic: true, format: 'png', size: 2048 }))
+     .setImage(avatar) 
      .setTimestamp()
      .setFooter("Requested by " + `${message.author.username}`, message.author.displayAvatarURL({ dynamic: true, format: 'png', size: 2048 }))
     message.channel.send(embed)
-   }
   } catch (err) {
    message.channel.send({embed: {
     color: 16734039,
