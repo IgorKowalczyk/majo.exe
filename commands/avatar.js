@@ -11,11 +11,11 @@ module.exports = {
  run: async (client, message, args) => {
   try {
     const User = await message.mentions.members.first() || message.guild.members.cache.get(args[0]) || message.guild.members.cache.find(r => r.user.username.toLowerCase().includes() === args.join(' ').toLocaleLowerCase()) || message.guild.members.cache.find(r => r.displayName.toLowerCase().includes() === args.join(' ').toLocaleLowerCase()) || message.member;
-    const avatar = User.user.displayAvatarURL({ dynamic: true, format: 'png', size: 2048 });
+    const uavatar = User.user.displayAvatarURL({ dynamic: true, format: 'png', size: 2048 });
     const embed = new Discord.MessageEmbed()
      .setColor("RANDOM")
-     .setAuthor(message.author.username + "'s Avatar", User.user.displayAvatarURL({ dynamic: true, format: 'png', size: 2048 }))
-     .setImage(avatar) 
+     .setAuthor(message.author.username + "'s Avatar", uavatar)
+     .setImage(uavatar) 
      .setTimestamp()
      .setFooter("Requested by " + `${message.author.username}`, message.author.displayAvatarURL({ dynamic: true, format: 'png', size: 2048 }))
     message.channel.send(embed)
