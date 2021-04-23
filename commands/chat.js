@@ -22,7 +22,7 @@ module.exports = {
     }});
    }
    try {
-    const response = await fetch(`https://api.brainshop.ai/get?bid=${brainid}&key=${brainkey}&uid=${uid}&msg=${aimessage}}`)
+    const response = await fetch(`http://api.brainshop.ai/get?bid=${brainid}&key=${brainkey}&uid=${uid}&msg=${aimessage}}`)
     const body = await response.json();
     if(body.cnt.lenght == 0) {
      return message.channel.send({embed: {
