@@ -18,13 +18,7 @@ module.exports = {
    }})
    const affect = await canvacord.Canvas.affect(User.user.displayAvatarURL({ dynamic: false, format: 'png', size: 2048 }));
    const attachment = new Discord.MessageAttachment(affect, "affect.png");
-   const embed = new Discord.MessageEmbed()
-   .setColor("RANDOM")
-   .setAuthor("🖼️ Your image", User.user.displayAvatarURL({ dynamic: false, format: 'png', size: 2048 }))
-   .setImage(canvacord.Canvas.affect(User.user.displayAvatarURL({ dynamic: false, format: 'png', size: 2048 })))
-   .setTimestamp()
-   .setFooter("Requested by " + `${message.author.username}`, message.author.displayAvatarURL({ dynamic: true, format: 'png', size: 2048 }))
-   return message.channel.send(embed);
+   return message.channel.send(attachment);
   } catch (err) {
    console.log(err);
    message.channel.send({embed: {
