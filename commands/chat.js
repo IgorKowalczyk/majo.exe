@@ -14,7 +14,7 @@ module.exports = {
    const aimessage = args.join(" ");
    const brainid = config.brainid;
    const brainkey = config.brainkey;
-   const uid = `majo-` + message.guild.id;
+   const uid = `majo-` + message.author.id;
    if(!args[0]) {
     return message.channel.send({embed: {
      color: 16734039,
