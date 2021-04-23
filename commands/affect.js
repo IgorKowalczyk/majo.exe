@@ -17,7 +17,7 @@ module.exports = {
     description: "Please wait... I'm generating your image",
    }})
    const affect = await canvacord.Canvas.affect(User.user.displayAvatarURL({ dynamic: false, format: 'png', size: 2048 }));
-   const attachment = new Discord.MessageAttachment(affect, "affect.png");
+   const attachment = new Discord.MessageAttachment(affect);
    const embed = new Discord.MessageEmbed()
    .setColor("RANDOM")
    .setAuthor("🖼️ Your image", User.user.displayAvatarURL({ dynamic: false, format: 'png', size: 2048 }))
