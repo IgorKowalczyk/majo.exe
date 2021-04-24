@@ -44,7 +44,7 @@ module.exports = async (client, message) => {
    }});
   }
   if (message.content.toLowerCase().includes("process.env")) {
-   console.log("[Security Log]: " + message.author.tag + ` (ID: ` + message.author.id + ") used process.env in the " + command + ".");
+   console.log("[Security Log]: " + message.author.tag + ` (ID: ` + message.author.id + ") used process.env in the " + command.name + ".");
    return message.channel.send({embed: {
     color: 16734039,
     description: "Majo: The command cannot contain the `process.env` string for safetly reasons. We are sorry..."
