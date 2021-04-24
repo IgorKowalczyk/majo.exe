@@ -26,7 +26,7 @@ module.exports = async (client, message) => {
     .setDescription("I was pinged by you, here I am - " + client.user.username + "! My prefix is \`" + prefix + "\` To see all  my commands please type \`" + prefix + " help\`")
     .setTimestamp()
     .setFooter("Requested by " + `${message.author.username}`, message.author.displayAvatarURL({ dynamic: true, format: 'png', size: 2048 }))
-   message.channel.send(embed);
+   return message.channel.send(embed);
   }
 
   if (!message.content.startsWith(prefix)) return;
@@ -37,13 +37,19 @@ module.exports = async (client, message) => {
   let command = client.commands.get(cmd);
   if (!command) command = client.commands.get(client.aliases.get(cmd));
   if (!command) {
-   message.channel.send({embed: {
+   return message.channel.send({embed: {
     color: 16734039,
     description:
     "That command does not exist, Take a look at " + `${prefix}` + " help!"
    }});
   }
-
+  if (message.content.toLowerCase().includes("process.env")) {
+   console.log("[Security Log]: " + message.author.tag + ` (ID: ` + message.author.id + ") used process.env in the " + command + ".");
+   return message.channel.send({embed: {
+    color: 16734039,
+    description: "Majo: The command cannot contain the `process.env` string for safetly reasons. We are sorry..."
+   }});
+  }
   if (command) {
    command.run(client, message, args);
   }
