@@ -11,15 +11,35 @@
  ],
  "env": {
   "TOKEN": {
-   "description": "The bot token, required to run (Remember! The TOKEN value is Super-Secret)",
+   "description": "The bot token (Remember! The TOKEN is super secret)",
    "required": true
   },
   "PREFIX": {
    "description": "The default bot prefix (eg. !majo)",
    "required": true
   },
-  "GENIUS_KEY": {
-   "description": "Genius API Key (Used in music and lyrics)",
+  "AMEAPI": {
+   "description": "Your Amethyste api token",
+   "required": true
+  },
+  "BRAINID": {
+   "description": "Your Brainshop AI Brain ID",
+   "required": true
+  },
+  "BRAINKEY": {
+   "description": "Your Brainshop AI Brain Key",
+   "required": true
+  },
+  "DOMAIN": {
+   "description": "Your website domain (eg https://example.com)",
+   "required": false
+  },
+  "PORT": {
+   "description": "Your webiste port, (eg. 8080)",
+   "required": false
+  },
+  "DASHBOARD": {
+   "description": "The Web-Dashboard config value. (eg. true/false)",
    "required": true
   },
   "SESSION_SECRET": {
@@ -27,20 +47,12 @@
    "required": true
   },
   "SECRET": {
-   "description": "The bot client secret (Remember! The SECRET value is Super-Secret), required to run Web Dashboard",
-   "required": true
-  },
-  "MONGODB": {
-   "description": "The mongodb database url",
+   "description": "The bot client secret (Remember! The SECRET value is Super-Secret)",
    "required": true
   },
   "ANALYTICS": {
    "description": "oogle analytics tracking ID, used in Web-Dashboard",
    "required": false
-  },
-  "DASHBOARD": {
-   "description": "The Web-Dashboard config value. (eg. true/false)",
-   "required": true
   }
  },
  "keywords": [

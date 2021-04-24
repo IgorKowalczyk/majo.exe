@@ -39,6 +39,8 @@ Deploy the app to [Heroku](https://heroku.com)
     * `TOKEN` - Bot token from Discord Developer portal [no. 3]
     * `PREFIX` - Bot prefix, used to run commands eg. `your-prefix help`
     * `AMEAPI` - your Ametyhyste API token [Tutorial how to get it](#ameapi-token)
+    * `BRAINID` - Your Brainshop AI Brain ID [Tutorial](#ai-keys)
+    * `BRAINKEY` - Your Brainshop AI Brain Key [Tutorial](#ai-keys)
     * **Not required (You can leave them blank):**
     * `DOMAIN` - your website domain, eg `https://example.com`
     * `PORT` - your website port, eg `8080`. [Note: If you are using heroku, not create this value. Heroku binds port automatically]
@@ -46,7 +48,7 @@ Deploy the app to [Heroku](https://heroku.com)
     * `SESSION_SECRET` - Session secret key, random sequence of words, letterss or numbers
     * `SECRET` - Client secret from Discord Developers portal [no. 3]
     * `ANALYTICS` - Google Trakcing ID, for Website analytics [Tutorial how to get it](#analytics-id)
-7. Run `npm run start`
+1. Run `npm run start`
 > Note: See the example [`.env` file below](#example-env-file)!
 
 # Example `.env` file
@@ -69,6 +71,8 @@ AMEAPI=YOUR-AMETHYSTE-API-TOKEN
 # Not required
 DOMAIN-YOUR-WEBSITE-DOMAIN
 PORT=YOUR-WEBSITE-PORT
+BRAINID=YOUR-BRAINSHOP-AI-BRAIN-ID
+BRAINKEY=YOUR-BRAINSHOP-AI-BRAIN-KEY
 DASHBOARD=[true/false]
 SESSION_SECRET=YOUR-SESSION-SECRET-(RANDOM-WORDS)
 SECRET=YOUR-BOT-CLIENT-SECRET
@@ -85,6 +89,8 @@ ANALYTICS=YOUR-GOOGLE-TRACKING-ID
 | TOKEN | The bot token (Remember! The `TOKEN` is super secret) | :heavy_check_mark: |
 | PREFIX | The default bot prefix (eg. `!majo`) | :heavy_check_mark: |
 | AMEAPI | Your Amethyste api token | :heavy_check_mark: |
+| BRAINID | Your Brainshop AI Brain ID | :heavy_check_mark: |
+| BRAINKEY | Your Brainshop AI Brain Key | :heavy_check_mark: |
 | DOMAIN | Your website domain (eg `https://example.com`)`*` | :x:/:heavy_check_mark: |
 | PORT| Your webiste port, (eg. `8008 `)`*`| :x:/:heavy_check_mark: |
 | DASHBOARD | The Web-Dashboard config value. (eg. `true/false`, default value: `false`)`*` | :x: |
@@ -101,6 +107,9 @@ ANALYTICS=YOUR-GOOGLE-TRACKING-ID
 > Soon!
 
 ### Amethyste Api
+> Soon!
+
+### AI Keys
 > Soon!
 
 ### Analytics ID
