@@ -24,7 +24,7 @@ module.exports = {
    try {
     const response = await fetch(`http://api.brainshop.ai/get?bid=${brainid}&key=yes-this-is-way-to-break-this&uid=${uid}&msg=${aimessage}`)
     const body = await response.json();
-    if(body.cnt.lenght == 0) {
+    if(body.cnt == 0) {
      return message.channel.send({embed: {
       color: 16734039,
       description: "Some error occured with my brain cells... Please try again later"
