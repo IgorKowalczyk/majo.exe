@@ -21,6 +21,12 @@ module.exports = {
      description: "Hey! Please provide some message to talk to me :("
     }});
    }
+   if(message.mentions.members.first()) {
+    return message.channel.send({embed: {
+     color: 16734039,
+     description: "Hey! Please don't ping people >:("
+    }});
+   }
    try {
     const response = await fetch(`http://api.brainshop.ai/get?bid=${brainid}&key=${brainkey}&uid=${uid}&msg=${aimessage}`)
     const body = await response.json();
