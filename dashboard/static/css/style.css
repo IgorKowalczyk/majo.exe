@@ -111,6 +111,11 @@ scrollbar-color: #353535 transparent;
 scrollbar-width: thin;
 }
 
+html, body {
+min-height: 100%;
+position: relative;
+}
+
 body {
 background: var(--white);
 margin: 0 0;
@@ -648,15 +653,18 @@ font-style: normal;
 
 .footer {
 position: absolute;
-right: 0;
 bottom: 0;
 left: 0;
+right: 0;
 padding: 10px 10px;
 text-align: right;
+clear: both;
+width: 100%;
+color: #ccc;
 }
 
 .left {
-text-align: left;
+float: left;
 }
 
 .blur {
