@@ -7,8 +7,8 @@ src: url("../fonts/roboto-thin.otf");
 }
 
 :root {
---white: #36393f;
---navbar: #2f3136;
+--white: #131a26;
+--navbar: #212937;
 --preloader: #222;
 --spinner: #888;
 --spinner-border: #333;
@@ -17,8 +17,8 @@ src: url("../fonts/roboto-thin.otf");
 --server-hover: #2b2b2b;
 --logout: 240, 71, 71;
 --logout-background: 240, 71, 71, 0.1;
---edit: 68, 179, 127;
---edit-hover: 47, 124, 88;
+--edit: 67, 181, 129;
+--edit-hover: 60, 163, 116;
 --button: #4f545c;
 --button-hover: #474c53;
 --svg: #fff;
