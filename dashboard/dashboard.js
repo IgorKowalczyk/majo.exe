@@ -133,12 +133,26 @@ module.exports = async (client) => {
  }
 
  // Github redirect endpoint.
- if (config.github) {
+ if (config.github && config.repo) {
  app.get("/github", (req, res) => {
-  res.redirect(`https://github.com/` + config.github);
+  res.redirect(`https://github.com/` + config.github + config.repo);
   });
  }
-  
+
+ // Author page redirect endpoint.
+ if (config.authorwebsite) {
+ app.get("/author", (req, res) => {
+  res.redirect(config.authorwebsite);
+  });
+ }
+
+ // Status page redirect endpoint.
+ if (config.status) {
+ app.get("/status", (req, res) => {
+  res.redirect(config.status);
+  });
+ }
+
  // Logout endpoint.
  app.get("/logout", function(req, res) {
   // We destroy the session || logout user.

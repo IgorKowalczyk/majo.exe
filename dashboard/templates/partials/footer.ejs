@@ -1,4 +1,16 @@
 </div>
+<footer class="footer">
+<span class="left">Created by: Igor Kowalczyk</span>
+<% if (config.status) { %>
+<a href="/status" target="_blank">Status</a>
+<% } %>
+<% if (config.authorwebsite) { %>
+<a href="/author" target="_blank">Author</a>
+<% } %>
+<% if (github) { %>
+<a href="/github" target="_blank">Github Repo</a>
+<% } %>
+</footer>
 <script src="https://<%= domain %>/js/index.js"></script>
 </body>
 </html>
