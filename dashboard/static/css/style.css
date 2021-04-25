@@ -7,14 +7,15 @@ src: url("../fonts/roboto-thin.otf");
 }
 
 :root {
---white: #131a26;
---navbar: #212937;
+--white: #1a1c20;
+--navbar: #24282d;
+--code: #212937;
 --preloader: #222;
 --spinner: #888;
 --spinner-border: #333;
 --aqua: #fff;
 --link: #fff;
---server-hover: #2b2b2b;
+--server-hover: 54, 60, 70, 0.58;
 --logout: 240, 71, 71;
 --logout-background: 240, 71, 71, 0.1;
 --edit: 67, 181, 129;
@@ -501,7 +502,7 @@ margin-bottom: 5px;
 }
 
 .server:hover {
-background-color: var(--server-hover);
+background-color: rgba(var(--server-hover));
 }
 
 .servers {
