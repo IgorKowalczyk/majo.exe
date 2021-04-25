@@ -9,7 +9,7 @@ src: url("../fonts/roboto-thin.otf");
 :root {
 --white: #1a1c20;
 --navbar: #24282d;
---code: #212937;
+--code: 54, 60, 70, 0.58;
 --preloader: #222;
 --spinner: #888;
 --spinner-border: #333;
@@ -306,7 +306,6 @@ display: flex;
 
 .nav .menu-icon {
 cursor: pointer;
-display: inline-block;
 float: right;
 padding: 28px 20px;
 position: relative;
@@ -501,7 +500,7 @@ justify-content: space-between;
 padding: 1em;
 border-radius: 5px;
 transition: border 180ms ease-out 0s, background 180ms ease-out 0s;
-margin-bottom: 5px;
+margin-bottom: 8px;
 }
 
 .server:hover {
@@ -632,6 +631,7 @@ font-style: italic;
 .note {
 color: #afafaf;
 font-style: italic;
+text-align: center;
 }
 
 .none {
@@ -640,7 +640,7 @@ font-style: italic;
 }
 
 code {
-background-color: var(--server-hover);
+background-color: rgba(var(--code));
 padding: 3px 5px;
 border-radius: 5px;
 font-style: normal;
@@ -681,7 +681,6 @@ flex-direction: column;
 justify-content: center;
 float: right;
 margin: 10px;
-padding: 10px 5px;
 }
 
 .cross::before, .cross::after {
