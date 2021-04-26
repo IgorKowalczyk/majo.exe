@@ -58,7 +58,7 @@ module.exports = {
    var timeString = date.toISOString().substr(11, 8);
    if (server) {
     server.songs.push(song);
-    let embed = new discord.MessageEmbed()
+    let embed = new Discord.MessageEmbed()
      .setTitle('Added to queue!')
      .setColor(RANDOM)
      .addField('Name', song.title, true)
