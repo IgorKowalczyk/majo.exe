@@ -27,7 +27,7 @@ module.exports = {
    else np = queue.songs[0].title
    if(queue) thumbnail = queue.songs[0].thumbnail
    else thumbnail = message.guild.iconURL()
-   let embed = new MessageEmbed()
+   let embed = new Discord.MessageEmbed()
     .setTitle('Queue')
     .setThumbnail(thumbnail)
     .setColor(RANDOM)
