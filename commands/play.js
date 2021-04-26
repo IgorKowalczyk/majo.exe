@@ -85,7 +85,7 @@ module.exports = {
      message.client.queue.delete(message.guild.id);
      return message.channel.send({embed: {
       color: 16734039,
-      description: "There are no songs in queue, I'm leaving the voice channel!",
+      description: "There are no songs in queue so I'm leaving the voice channel!",
      }})
     }
     const dispatcher = queue.connection.play(await ytdl(`https://youtube.com/watch?v=${song.id}`, {
@@ -98,7 +98,7 @@ module.exports = {
      play(queue.songs[0]);
     }).on('error', error => console.error(error));
      dispatcher.setVolumeLogarithmic(queue.volume / 5);
-     let noiceEmbed = new discord.MessageEmbed()
+     let noiceEmbed = new Discord.MessageEmbed()
       .setTitle('Started Playing')
       .setThumbnail(song.thumbnail)
       .addField('Name', song.title, true)

@@ -17,7 +17,7 @@ module.exports = {
    if (!queue) {
     return message.channel.send({embed: {
      color: 16734039,
-      description: "Nothing is playing!",
+      description: "Nothing is playing right now!",
     }})
    }
    let lyrics = null;

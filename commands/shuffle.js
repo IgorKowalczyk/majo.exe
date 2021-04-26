@@ -20,7 +20,12 @@ module.exports = {
     }})
    }
    const queue = message.client.queue.get(message.guild.id)
-   if(!queue) return message.channel.send('There are no songs in queue to shuffle')
+   if(!queue) {
+    return message.channel.send({embed: {
+     color: 16734039,
+     description: "There is nothing in the queue right now!",
+    }})
+   }
    let songs = queue.songs;
    for (let i = songs.length - 1; i > 1; i--) {
     let j = 1 + Math.floor(Math.random() * i);

@@ -29,7 +29,7 @@ module.exports = {
    if(args[0] > 10) {
     return message.channel.send({embed: {
      color: 4779354,
-     description: 'Well lets hope we meet in heaven :grin:'
+     description: 'You can\t set volume higher than 10 (Your ears.. 🪦)'
     }})
    }
    queue.connection.dispatcher.setVolumeLogarithmic(args[0] / 5);
