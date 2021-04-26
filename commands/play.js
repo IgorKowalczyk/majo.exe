@@ -53,6 +53,12 @@ module.exports = {
     channel: result.channel.name,
     channelurl: result.channel.url
    };
+   if(!result) {
+    return message.channel.send({embed: {
+      color: 16734039,
+      description: "Nothing interesing yound for yor query. Aborting",
+    }})
+   }
    var date = new Date(0);
    date.setSeconds(song.duration);
    var timeString = date.toISOString().substr(11, 8);
