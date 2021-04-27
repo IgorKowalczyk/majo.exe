@@ -160,7 +160,7 @@ module.exports = {
      reaction.users.remove(user).catch(console.error);
      if (!canModifyQueue(member)) return;
      queue.connection.dispatcher.end();
-     const skip = queue.textChannel.send({embed: {
+     const skip = await queue.textChannel.send({embed: {
       color: 4779354,
       description: `${user} ⏩ skipped the song`,
      }}).catch(console.error);
@@ -176,14 +176,14 @@ module.exports = {
      if (queue.playing) {
       queue.playing = !queue.playing;
       queue.connection.dispatcher.pause(true);
-      const pause = queue.textChannel.send({embed: {
+      const pause = await queue.textChannel.send({embed: {
        color: 4779354,
        description: `${user} ⏸ paused the music.`,
       }}).catch(console.error);
      } else {
       queue.playing = !queue.playing;
       queue.connection.dispatcher.resume();
-      const pause = queue.textChannel.send({embed: {
+      const pause = await queue.textChannel.send({embed: {
        color: 4779354,
        description: `${user} ▶ resumed the music!`,
       }}).catch(console.error);
@@ -199,21 +199,24 @@ module.exports = {
      if (queue.volume <= 0) {
       queue.volume = 100;
       queue.connection.dispatcher.setVolumeLogarithmic(100 / 100);
-      const voicestate = queue.textChannel.send({embed: {
+      const voicestateunmute = await queue.textChannel.send({embed: {
        color: 4779354,
        description: `${user} 🔊 unmuted the music!`,
       }}).catch(console.error);
+      voicestateunmute.delete({
+       timeout: 5000
+      })
      } else {
       queue.volume = 0;
       queue.connection.dispatcher.setVolumeLogarithmic(0);
-      const voicestate = queue.textChannel.send({embed: {
+      const voicestatemute = await queue.textChannel.send({embed: {
        color: 4779354,
        description: `${user} 🔇 muted the music!`,
       }}).catch(console.error);
+      voicestatemute.delete({
+       timeout: 5000
+      })
      }
-     voicestate.delete({
-      timeout: 5000
-     })
      break;
 
     case "🔉":
@@ -222,7 +225,7 @@ module.exports = {
      if (queue.volume - 10 <= 0) queue.volume = 0;
      else queue.volume = queue.volume - 10;
      queue.connection.dispatcher.setVolumeLogarithmic(queue.volume / 100);
-     const volumedown = queue.textChannel.send({embed: {
+     const volumedown = await queue.textChannel.send({embed: {
       color: 4779354,
       description: `${user} 🔉 decreased the volume, the volume is now ${queue.volume}%`,
      }}).catch(console.error);
@@ -237,7 +240,7 @@ module.exports = {
      if (queue.volume + 10 >= 100) queue.volume = 100;
      else queue.volume = queue.volume + 10;
      queue.connection.dispatcher.setVolumeLogarithmic(queue.volume / 100);
-     const volumeup = queue.textChannel.send({embed: {
+     const volumeup = await queue.textChannel.send({embed: {
       color: 4779354,
       description: `${user} 🔊 increased the volume, the volume is now ${queue.volume}%`,
      }}).catch(console.error);
@@ -250,7 +253,7 @@ module.exports = {
      reaction.users.remove(user).catch(console.error);
      if (!canModifyQueue(member)) return;
      queue.loop = !queue.loop;
-     const loop = queue.textChannel.send({embed: {
+     const loop = await queue.textChannel.send({embed: {
       color: 4779354,
       description: `Loop is now ${queue.loop ? "**on**" : "**off**"}`,
      }}).catch(console.error);
@@ -263,7 +266,7 @@ module.exports = {
      reaction.users.remove(user).catch(console.error);
      if (!canModifyQueue(member)) return;
      queue.songs = [];
-     const stop = queue.textChannel.send({embed: {
+     const stop = await queue.textChannel.send({embed: {
       color: 4779354,
       description: `${user} ⏹ stopped the music!`,
      }}).catch(console.error);
@@ -286,7 +289,7 @@ module.exports = {
     case "🔀":
      reaction.users.remove(user).catch(console.error);
      if (!queue) {
-      const errormsg = message.channel.send({embed: {
+      const errormsg = await message.channel.send({embed: {
        color: 16734039,
        description: "There is no queue",
       }}).catch(console.error);
@@ -302,7 +305,7 @@ module.exports = {
       [songs[i], songs[j]] = [songs[j], songs[i]];
      }
      message.client.queue.set(message.guild.id, queue);
-     const shuffle = queue.textChannel.send({embed: {
+     const shuffle = await queue.textChannel.send({embed: {
       color: 4779354,
       description: `${user} 🔀 Shuffled The Queue.`,
      }}).catch(console.error);
