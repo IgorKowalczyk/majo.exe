@@ -45,20 +45,38 @@ module.exports = {
    if(!result) {
     return message.channel.send({embed: {
       color: 16734039,
-      description: "Nothing interesing yound for yor query. Aborting",
+      description: "Nothing interesing found for yor query. Aborting",
     }})
    }
    const song = {
     id: result.id,
-    title: result.title || "Unknown",
-    duration: result.duration || "Unknown",
+    title: result.title,
+    duration: result.duration ,
     thumbnail: result.thumbnail,
-    upload: result.uploadDate || "Unknown",
-    views: result.viewCount || "0",
+    upload: result.uploadDate,
+    views: result.viewCount,
     requester: message.author,
-    channel: result.channel.name || "Unknown",
-    channelurl: result.channel.url || "Unknown"
+    channel: result.channel.name,
+    channelurl: result.channel.url
    };
+   if(!song.title) {
+    title = "Unknown";
+   }
+   if(!song.duration) {
+    title = "Unknown";
+   }
+   if(!song.upload) {
+    title = "Unknown";
+   }
+   if(!song.views) {
+    title = "0";
+   }
+   if(!song.channel) {
+    title = "Unknown";
+   }
+   if(!song.channelurl) {
+    title = "Unknown";
+   }
    var date = new Date(0);
    date.setSeconds(song.duration);
    var timeString = date.toISOString().substr(11, 8);

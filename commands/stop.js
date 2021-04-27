@@ -26,13 +26,20 @@ module.exports = {
      description: "There is nothing in the queue right now!",
     }})
    }
-   message.react('✅')
-   queue.songs = []
-   queue.connection.dispatcher.end()
-   message.channel.send({embed: {
-    color: 4779354,
-    description: "Stopped the music",
-   }})
+   if (queue.connection.dispatcher) {
+    queue.songs = []
+    queue.connection.dispatcher.end()
+    message.react('✅')
+    message.channel.send({embed: {
+     color: 4779354,
+     description: "Stopped the music",
+    }})
+   } else {
+    message.channel.send({embed: {
+     color: 4779354,
+     description: "Cannot stop the music",
+    }})
+   }
   } catch (err) {
    console.log(err);
    message.channel.send({embed: {
