@@ -107,6 +107,9 @@ module.exports = {
    try {
     ytsr.set("api", `${config.youtube}`);
     songInfo = await ytsr.searchOne(search);
+    if (!songInfo) {
+     console.log("0")
+    }
     song = {
      title: songInfo.title,
      url: songInfo.url,
