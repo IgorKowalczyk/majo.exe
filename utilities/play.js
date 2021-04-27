@@ -127,6 +127,7 @@ module.exports = {
     .setColor("RANDOM")
     .setAuthor(`Started playing: ${song.title}`, queue.textChannel.guild.iconURL({ dynamic: true, format: 'png'}))
     .setDescription(`[**${song.title}**](${song.url})`)
+    .setTimestamp()
     .setThumbnail(song.thumbnail.url)
    var playingMessage = await queue.textChannel.send(embed);
    var playingMessage = await queue.textChannel.send(`${song.url}`);
@@ -336,6 +337,7 @@ module.exports = {
       .setDescription(`[**${song.title}**](${song.url})`)
       .setThumbnail(song.thumbnail.url)
       .setColor("RANDOM")
+      .setTimestamp()
       .setFooter("Requested by " + `${message.author.username}`, message.member.user.displayAvatarURL({ dynamic: true }));
      if (ms >= 10000) {
       nowPlaying.addField("\u200b", "🔴 LIVE", false);
@@ -371,6 +373,7 @@ module.exports = {
       .setTitle("💿 Music Queue", message.member.user.displayAvatarURL({ dynamic: true }))
       .setDescription(description)
       .setColor("RANDOM")
+      .setTimestamp()
       .setFooter("Requested by " + `${message.author.username}`, message.member.user.displayAvatarURL({ dynamic: true }));
      const splitDescription = Discord.splitMessage(description, {
       maxLength: 2048,
@@ -394,6 +397,7 @@ module.exports = {
       .setTitle("Searching...", message.member.user.displayAvatarURL({ dynamic: true }))
       .setDescription("Lyrics")
       .setColor("RANDOM")
+      .setTimestamp()
       .setFooter("Requested by " + `${message.author.username}`, message.member.user.displayAvatarURL({ dynamic: true }));
      let result = await message.channel.send(temEmbed);
      try {
@@ -406,6 +410,7 @@ module.exports = {
       .setTitle("🗒️ Lyrics")
       .setDescription(lyrics)
       .setColor("RANDOM")
+      .setTimestamp()
       .setFooter("Requested by " + `${message.author.username}`, message.member.user.displayAvatarURL({ dynamic: true }))
      if (lyricsEmbed.description.length >= 2048) lyricsEmbed.description = `${lyricsEmbed.description.substr(0, 2045)}...`;
      message.react("✅");

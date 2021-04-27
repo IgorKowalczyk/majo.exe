@@ -24,7 +24,7 @@ module.exports = {
     queue.connection.dispatcher.pause(true);
     const pausemebed = new Discord.MessageEmbed()
      .setColor("RANDOM")
-     .setDescription(`${message.author.username} paused the music.`)
+     .setDescription(`<@${message.author.id}> paused the music.`)
     message.react("⏸");
     return queue.textChannel.send(pausemebed).catch(console.error);
    }

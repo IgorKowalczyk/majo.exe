@@ -1,8 +1,5 @@
 const Discord = require("discord.js");
 const config = require("../config");
-const prefix = config.prefix;
-
-/* Music module by Dhvit (@dhvitOP). Thanks ❤️ */
 
 module.exports = {
  name: "queue",
@@ -12,33 +9,39 @@ module.exports = {
  usage: "queue",
  run: async (client, message, args) => {
   try {
-   const channel = message.member.voice.channel;
-   /*if (!channel) {
+   if(!message.guild) return;
+   const queue = message.client.queue.get(message.guild.id);
+   if (!queue) {
     return message.channel.send({embed: {
      color: 16734039,
-     description: "You should join a voice channel before using this command!",
+     description: "This is nothing playing right now",
     }})
-   }*/
-   const queue = message.client.queue.get(message.guild.id)
-   let status;
-   if(!queue) status = 'There is nothing in queue!'
-   else status = queue.songs.map(x => '• ' + x.title + ' -Requested by ' + `<@${x.requester.id}>`).join('\n')
-   if(!queue) np = status
-   else np = queue.songs[0].title
-   if(queue) thumbnail = queue.songs[0].thumbnail
-   else thumbnail = message.guild.iconURL()
-   let embed = new Discord.MessageEmbed()
-    .setTitle("💿 Queue")
-    .setThumbnail(thumbnail)
+   }
+   let description = "";
+   for(let i = 1; i < queue.songs.length; i++){
+     description += `**${i}.** [${queue.songs[i].title.substring(1,40)}](${queue.songs[i].url}) | \`${queue.songs[i].duration}\`\n`
+   }
+   let queue = new Discord.MessageEmbed()
+    .setTitle("💿 Music Queue", message.author.displayAvatarURL({ dynamic: true, format: 'png', size: 2048 }))
+    .setDescription(description)
     .setColor("RANDOM")
-    .addField("⏯️ Now Playing", np, true)
-    .setDescription(status)
-   message.channel.send(embed);
+    .setFooter("Requested by " + `${message.author.username}`, message.author.displayAvatarURL({ dynamic: true, format: 'png', size: 2048 }))
+   const splitDescription = Discord.splitMessage(description, {
+    maxLength: 2048,
+    char: "\n",
+    prepend: "",
+    append: ""
+   });
+   splitDescription.forEach(async (m) => {
+     queue.setDescription(m);
+     message.react("✅")
+     message.channel.send(queue);
+   })
   } catch (err) {
    console.log(err);
-   message.channel.send({embed: {
+   return message.channel.send({embed: {
     color: 16734039,
-    description: "Something went wrong... :cry:"
+    description: "Something went wrong... :cry:",
    }})
   }
  }
