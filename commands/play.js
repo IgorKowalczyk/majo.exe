@@ -119,10 +119,12 @@ module.exports = {
     queueConstruct.connection = connection;
     play(queueConstruct.songs[0]);
    } catch (error) {
-    console.error(`I could not join the voice channel`);
     message.client.queue.delete(message.guild.id);
     await channel.leave();
-    return message.channel.send(`I could not join the voice channel: ${error}`);
+    return message.channel.send({embed: {
+     color: 16734039,
+     description: "I could not join the voice channel!"
+    }})
    }
   } catch (err) {
    console.log(err);

@@ -28,11 +28,18 @@ module.exports = {
    }
    if(queue.songs.length !== 0) {
     message.react('✅')
-    queue.connection.dispatcher.end()
-    message.channel.send({embed: {
-     color: 4779354,
-     description: "Skipped the music",
-    }})
+    if(queue.connection.dispatcher) {
+     queue.connection.dispatcher.end()
+     message.channel.send({embed: {
+      color: 4779354,
+      description: "Skipped the music",
+     }})
+    } else {
+     message.channel.send({embed: {
+      color: 16734039,
+      description: "Error, cannot skip music!",
+     }})
+    }
    }
   } catch (err) {
    console.log(err);
