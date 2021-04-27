@@ -74,11 +74,11 @@ module.exports = {
     }
    } else {
     queueConstruct.connection = await channel.join();
-    const successjoin = new Discord.MessageEmbed()
+    const successjoin = await new Discord.MessageEmbed()
      .setColor("RANDOM")
      .setDescription(`👍 Joined \`${channel.name}\` 📄 bound \`#${message.channel.name}\``)
      .setFooter("Requested by " + `${message.author.username}`, message.author.displayAvatarURL({ dynamic: true, format: 'png', size: 2048 }))
-    await message.channel.send(successjoin);
+    message.channel.send(successjoin);
     successjoin.delete({
      timeout: 5000
     })
