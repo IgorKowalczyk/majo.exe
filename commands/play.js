@@ -107,6 +107,7 @@ module.exports = {
      let noiceEmbed = new Discord.MessageEmbed()
       .setTitle('Started Playing')
       .setThumbnail(song.thumbnail)
+      .setColor("RANDOM")
       .addField('Name', song.title, true)
       .addField('Requested By', song.requester, true)
       .addField('Views', song.views, true)
@@ -132,4 +133,3 @@ module.exports = {
   }
  }
 }
-.setColor(RANDOM)
