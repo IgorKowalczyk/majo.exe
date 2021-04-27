@@ -30,7 +30,7 @@ module.exports = {
    let embed = new MessageEmbed()
     .setTitle(`Lyrics For ${queue.songs[0].title}`)
     .setDescription(lyrics)
-    .setColor(RANDOM)
+    .setColor("RANDOM")
     .setTimestamp()
     .setFooter("Requested by " + `${message.author.username}`, message.author.displayAvatarURL({ dynamic: true, format: 'png', size: 2048 }))
    if (embed.description.length >= 2048)

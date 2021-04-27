@@ -30,11 +30,12 @@ module.exports = {
    let embed = new Discord.MessageEmbed()
     .setTitle('Queue')
     .setThumbnail(thumbnail)
-    .setColor(RANDOM)
+    .setColor("RANDOM")
     .addField('Now Playing', np, true)
     .setDescription(status)
    message.channel.send(embed);
   } catch (err) {
+   console.log(err);
    message.channel.send({embed: {
     color: 16734039,
     description: "Something went wrong... :cry:"

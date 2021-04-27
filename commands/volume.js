@@ -39,6 +39,7 @@ module.exports = {
     description: 'Volume is now set to ' + args[0],
    }})
   } catch (err) {
+   console.log(err);
    message.channel.send({embed: {
     color: 16734039,
     description: "Something went wrong... :cry:"
