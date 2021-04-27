@@ -28,10 +28,10 @@ module.exports = {
    if(queue) thumbnail = queue.songs[0].thumbnail
    else thumbnail = message.guild.iconURL()
    let embed = new Discord.MessageEmbed()
-    .setTitle('Queue')
+    .setTitle("💿 Queue")
     .setThumbnail(thumbnail)
     .setColor("RANDOM")
-    .addField('Now Playing', np, true)
+    .addField("⏯️ Now Playing", np, true)
     .setDescription(status)
    message.channel.send(embed);
   } catch (err) {

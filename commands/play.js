@@ -41,7 +41,13 @@ module.exports = {
    }
    const server = message.client.queue.get(message.guild.id);
    let video = await scrapeYt.search(args.join(' '))
-   let result = video[0]
+   let result = video[0];
+   if(!result) {
+    return message.channel.send({embed: {
+      color: 16734039,
+      description: "Nothing interesing yound for yor query. Aborting",
+    }})
+   }
    const song = {
     id: result.id,
     title: result.title,
@@ -53,25 +59,19 @@ module.exports = {
     channel: result.channel.name,
     channelurl: result.channel.url
    };
-   if(!result) {
-    return message.channel.send({embed: {
-      color: 16734039,
-      description: "Nothing interesing yound for yor query. Aborting",
-    }})
-   }
    var date = new Date(0);
    date.setSeconds(song.duration);
    var timeString = date.toISOString().substr(11, 8);
    if (server) {
     server.songs.push(song);
     let embed = new Discord.MessageEmbed()
-     .setTitle('Added to queue!')
+     .setTitle('✅ Added to queue!')
      .setColor("RANDOM")
-     .addField('Name', song.title, true)
+     .addField("Name", song.title, true)
      .setThumbnail(song.thumbnail)
-     .addField('Views', song.views, true)
-     .addField('Requested By', song.requester, true)
-     .addField('Duration', timeString, true)
+     .addField("Views", song.views, true)
+     .addField("Requested By", song.requester, true)
+     .addField("Duration", timeString, true)
     return message.channel.send(embed)
    }
    const queueConstruct = {
@@ -105,13 +105,13 @@ module.exports = {
     }).on('error', error => console.error(error));
      dispatcher.setVolumeLogarithmic(queue.volume / 5);
      let noiceEmbed = new Discord.MessageEmbed()
-      .setTitle('Started Playing')
+      .setTitle("⏯️ Started Playing")
       .setThumbnail(song.thumbnail)
       .setColor("RANDOM")
-      .addField('Name', song.title, true)
-      .addField('Requested By', song.requester, true)
-      .addField('Views', song.views, true)
-      .addField('Duration', timeString, true)
+      .addField("Name", song.title, true)
+      .addField("Requested By", song.requester, true)
+      .addField("Views", song.views, true)
+      .addField("Duration", timeString, true)
      queue.textChannel.send(noiceEmbed);
    };
    try {
