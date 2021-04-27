@@ -125,7 +125,9 @@ module.exports = {
   try {
    let embed = new Discord.MessageEmbed()
     .setColor("RANDOM")
-    .setAuthor(`Started playing: ${song.title}`, queue.textChannel.guild.iconURL({ dynamic: true, format: 'png'}));
+    .setAuthor(`Started playing: ${song.title}`, queue.textChannel.guild.iconURL({ dynamic: true, format: 'png'}))
+    .setDescription(`[**${song.title}**](${song.url})`)
+    .setThumbnail(song.thumbnail.url)
    var playingMessage = await queue.textChannel.send(embed);
    var playingMessage = await queue.textChannel.send(`${song.url}`);
    await playingMessage.react("⏭");
@@ -158,7 +160,10 @@ module.exports = {
      reaction.users.remove(user).catch(console.error);
      if (!canModifyQueue(member)) return;
      queue.connection.dispatcher.end();
-     queue.textChannel.send(`${user} ⏩ skipped the song`).catch(console.error);
+     queue.textChannel.send({embed: {
+      color: 4779354,
+      description: `${user} ⏩ skipped the song`,
+     }}).catch(console.error);
      collector.stop();
      break;
 
@@ -168,11 +173,17 @@ module.exports = {
      if (queue.playing) {
       queue.playing = !queue.playing;
       queue.connection.dispatcher.pause(true);
-      queue.textChannel.send(`${user} ⏸ paused the music.`).catch(console.error);
+      queue.textChannel.send({embed: {
+       color: 4779354,
+       description: `${user} ⏸ paused the music.`,
+      }}).catch(console.error);
      } else {
       queue.playing = !queue.playing;
       queue.connection.dispatcher.resume();
-      queue.textChannel.send(`${user} ▶ resumed the music!`).catch(console.error);
+      queue.textChannel.send({embed: {
+       color: 4779354,
+       description: `${user} ▶ resumed the music!`,
+      }}).catch(console.error);
      }
      break;
 
@@ -182,11 +193,17 @@ module.exports = {
      if (queue.volume <= 0) {
       queue.volume = 100;
       queue.connection.dispatcher.setVolumeLogarithmic(100 / 100);
-      queue.textChannel.send(`${user} 🔊 unmuted the music!`).catch(console.error);
+      queue.textChannel.send({embed: {
+       color: 4779354,
+       description: `${user} 🔊 unmuted the music!`,
+      }}).catch(console.error);
      } else {
       queue.volume = 0;
       queue.connection.dispatcher.setVolumeLogarithmic(0);
-      queue.textChannel.send(`${user} 🔇 muted the music!`).catch(console.error);
+      queue.textChannel.send({embed: {
+       color: 4779354,
+       description: `${user} 🔇 muted the music!`,
+      }}).catch(console.error);
      }
      break;
 
@@ -196,7 +213,10 @@ module.exports = {
      if (queue.volume - 10 <= 0) queue.volume = 0;
      else queue.volume = queue.volume - 10;
      queue.connection.dispatcher.setVolumeLogarithmic(queue.volume / 100);
-     queue.textChannel.send(`${user} 🔉 decreased the volume, the volume is now ${queue.volume}%`).catch(console.error);
+     queue.textChannel.send({embed: {
+      color: 4779354,
+      description: `${user} 🔉 decreased the volume, the volume is now ${queue.volume}%`,
+     }}).catch(console.error);
      break;
 
     case "🔊":
@@ -205,21 +225,30 @@ module.exports = {
      if (queue.volume + 10 >= 100) queue.volume = 100;
      else queue.volume = queue.volume + 10;
      queue.connection.dispatcher.setVolumeLogarithmic(queue.volume / 100);
-     queue.textChannel.send(`${user} 🔊 increased the volume, the volume is now ${queue.volume}%`).catch(console.error);
+     queue.textChannel.send({embed: {
+      color: 4779354,
+      description: `${user} 🔊 increased the volume, the volume is now ${queue.volume}%`,
+     }}).catch(console.error);
      break;
 
     case "🔁":
      reaction.users.remove(user).catch(console.error);
      if (!canModifyQueue(member)) return;
      queue.loop = !queue.loop;
-     queue.textChannel.send(`Loop is now ${queue.loop ? "**on**" : "**off**"}`).catch(console.error);
+     queue.textChannel.send({embed: {
+      color: 4779354,
+      description: `Loop is now ${queue.loop ? "**on**" : "**off**"}`,
+     }}).catch(console.error);
      break;
 
     case "⏹":
      reaction.users.remove(user).catch(console.error);
      if (!canModifyQueue(member)) return;
      queue.songs = [];
-     queue.textChannel.send(`${user} ⏹ stopped the music!`).catch(console.error);
+     queue.textChannel.send({embed: {
+      color: 4779354,
+      description: `${user} ⏹ stopped the music!`,
+     }}).catch(console.error);
      try {
       queue.connection.dispatcher.end();
      } catch (error) {
@@ -235,7 +264,12 @@ module.exports = {
 
     case "🔀":
      reaction.users.remove(user).catch(console.error);
-     if (!queue) return message.channel.send("There is no queue.").catch(console.error);
+     if (!queue) {
+      message.channel.send({embed: {
+       color: 16734039,
+       description: "There is no queue",
+      }}).catch(console.error);
+     }
      if (!canModifyQueue(member)) return;
      let songs = queue.songs;
      queue.songs = songs;
@@ -244,38 +278,33 @@ module.exports = {
       [songs[i], songs[j]] = [songs[j], songs[i]];
      }
      message.client.queue.set(message.guild.id, queue);
-     queue.textChannel.send(`${user} 🔀 Shuffled The Queue.`).catch(console.error);
+     queue.textChannel.send({embed: {
+      color: 4779354,
+      description: `${user} 🔀 Shuffled The Queue.`,
+     }}).catch(console.error);
      break;
 
     case "🎵":
      reaction.users.remove(user).catch(console.error);
      const song = queue.songs[0];
-     //get current song duration in s
      let minutes = song.duration.split(":")[0];
      let seconds = song.duration.split(":")[1];
      let ms = Number(minutes) * 60 + Number(seconds);
-     //get thumbnail
      let thumb;
      if (song.thumbnail === undefined) thumb = queue.textChannel.guild.iconURL({ dynamic: true, format: 'png'});
      else thumb = song.thumbnail.url;
-     //define current time
      const seek = (queue.connection.dispatcher.streamTime - queue.connection.dispatcher.pausedTime) / 1000;
-     //define left duration
      const left = ms - seek;
-     //define embed
      let nowPlaying = new Discord.MessageEmbed()
       .setAuthor("♪ Now playing", queue.textChannel.guild.iconURL({ dynamic: true, format: 'png'}))
       .setDescription(`[**${song.title}**](${song.url})`)
       .setThumbnail(song.thumbnail.url)
       .setColor("RANDOM")
       .setFooter(`Requested by: ${message.author.username}#${message.author.discriminator}`, message.member.user.displayAvatarURL({ dynamic: true }));
-     //if its a stream
      if (ms >= 10000) {
       nowPlaying.addField("\u200b", "🔴 LIVE", false);
-      //send approve msg
       return message.channel.send(nowPlaying);
      }
-     //If its not a stream
      if (ms > 0 && ms < 10000) {
       nowPlaying.addField(
        "\u200b",
@@ -315,7 +344,7 @@ module.exports = {
 
      splitDescription.forEach(async (m) => {
       queueEmbed.setDescription(m);
-      message.react(approveemoji);
+      message.react("");
       message.channel.send(queueEmbed);
      });
      break;
@@ -335,14 +364,13 @@ module.exports = {
      } catch (error) {
       lyrics = `No lyrics found for ${queue.songs[0].title}.`;
      }
-
      let lyricsEmbed = new Discord.MessageEmbed()
       .setTitle("🗒️ Lyrics")
       .setDescription(lyrics)
       .setColor("RANDOM");
-
+     temEmbed.delete();
      if (lyricsEmbed.description.length >= 2048) lyricsEmbed.description = `${lyricsEmbed.description.substr(0, 2045)}...`;
-     message.react(approveemoji);
+     message.react("✅");
      return result.edit(lyricsEmbed).catch(console.error);
      break;
    }

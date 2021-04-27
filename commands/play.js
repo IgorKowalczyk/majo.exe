@@ -74,18 +74,30 @@ module.exports = {
     }
    } else {
     queueConstruct.connection = await channel.join();
-    message.channel.send(new Discord.MessageEmbed()
+    const successjoin = new Discord.MessageEmbed()
      .setColor("RANDOM")
      .setDescription(`👍 Joined \`${channel.name}\` 📄 bound \`#${message.channel.name}\``)
-     .setFooter("Requested by " + `${message.author.username}`, message.author.displayAvatarURL({ dynamic: true, format: 'png', size: 2048 })))
+     .setFooter("Requested by " + `${message.author.username}`, message.author.displayAvatarURL({ dynamic: true, format: 'png', size: 2048 }))
+    message.channel.send(successjoin);
+    successjoin.delete({
+     timeout: 5000
+    })
     if (urlValid) {
-     message.channel.send(new Discord.MessageEmbed()
+     const urlvailds = new Discord.MessageEmbed()
       .setColor("RANDOM")
-      .setDescription(`:notes: Searching 🔍 [\`LINK\`](${args.join(" ")})`));
+      .setDescription(`:notes: Searching 🔍 [\`LINK\`](${args.join(" ")})`)
+     message.channel.send(urlvailds);
+     urlvailds.delete({
+      timeout: 5000
+     })
     } else {
-     message.channel.send(new Discord.MessageEmbed()
+     const urlvaildnormal = new Discord.MessageEmbed()
       .setColor("RANDOM")
-      .setDescription(`:notes: Searching 🔍 \`${args.join(" ")}\``));
+      .setDescription(`:notes: Searching 🔍 \`${args.join(" ")}\``)
+     message.channel.send(urlvaildnormal)
+     urlvaildnormal.delete({
+      timeout: 5000
+     })
     }
     queueConstruct.connection.voice.setSelfDeaf(true);
     queueConstruct.connection.voice.setDeaf(true);
@@ -125,8 +137,8 @@ module.exports = {
     }})
    }
   }
-  let thumb = "https://cdn.discordapp.com/attachments/778600026280558617/781024479623118878/ezgif.com-gif-maker_1.gif";
-  if (song.thumbnail === undefined) thumb = "https://cdn.discordapp.com/attachments/778600026280558617/781024479623118878/ezgif.com-gif-maker_1.gif";
+  let thumb = message.author.displayAvatarURL({ dynamic: true, format: 'png', size: 2048 });
+  if (song.thumbnail === undefined) thumb = message.author.displayAvatarURL({ dynamic: true, format: 'png', size: 2048 });
   else thumb = song.thumbnail.url;
   if (serverQueue) {
    let estimatedtime = Number(0);

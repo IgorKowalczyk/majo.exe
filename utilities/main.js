@@ -8,6 +8,6 @@ module.exports = {
    if (member.voice.channel !== member.guild.me.voice.channel) {
      return member.send(resultsEmbed);
     }
-  return;
+  return 0;
  }
 }
