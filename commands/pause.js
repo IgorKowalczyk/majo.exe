@@ -26,13 +26,21 @@ module.exports = {
      description: "There is nothing playing right now to pause!",
     }})
    }
-   if(queue.playing !== false)
-   queue.connection.dispatcher.pause()
-   message.react('⏸')
-   message.channel.send({embed: {
-    color: 4779354,
-    description: "Paused!",
-   }})
+   if(queue.playing !== false) {
+    if(queue.connection.dispatcher) {
+     queue.connection.dispatcher.pause()
+     message.react('⏸')
+     message.channel.send({embed: {
+      color: 4779354,
+      description: "Paused!",
+     }})
+    } else {
+     message.channel.send({embed: {
+      color: 16734039,
+      description: "Cannot pause the music!"
+     }})
+    }
+   }
   } catch (err) {
    console.log(err);
    message.channel.send({embed: {

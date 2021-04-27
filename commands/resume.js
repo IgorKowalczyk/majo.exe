@@ -26,13 +26,21 @@ module.exports = {
      description: "There is nothing playing right now to resume!",
     }})
    }
-   if(queue.playing !== false)
-   queue.connection.dispatcher.resume()
-   message.react('▶')
-   message.channel.send({embed: {
-    color: 4779354,
-    description: "Resumed the music",
-   }})
+   if(queue.playing !== false) {
+    if(queue.connection.dispatcher) {
+     queue.connection.dispatcher.resume()
+     message.react('▶')
+     message.channel.send({embed: {
+      color: 4779354,
+      description: "Resumed the music",
+     }})
+    } else {
+     message.channel.send({embed: {
+      color: 16734039,
+      description: "Cannot resume the music!",
+     }})
+    }
+   }
   } catch (err) {
    console.log(err);
    message.channel.send({embed: {
