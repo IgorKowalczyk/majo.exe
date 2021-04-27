@@ -2,7 +2,6 @@ const { play } = require("../utilities/play");
 const Discord = require("discord.js");
 const config = require("../config");
 const ytsr = require("youtube-sr").default;;
-ytsr.set("api", config.youtube);
 
 module.exports = {
  name: "play",
@@ -106,6 +105,7 @@ module.exports = {
   } catch {}
   if (urlValid) {
    try {
+    ytsr.set("api", config.youtube);
     songInfo = await ytsr.searchOne(search);
     song = {
      title: songInfo.title,
@@ -117,7 +117,12 @@ module.exports = {
     if (error.statusCode === 403) {
      return message.channel.send({embed: {
       color: 16734039,
-      description: "Max uses of api key, please update!",
+      description: "Max uses of api key, please update! (403)",
+     }})
+    } else if (error.statusCode === 429) {
+     return message.channel.send({embed: {
+      color: 16734039,
+      description: "Max uses of host requests, please try again later (429)",
      }})
     }
    }
