@@ -160,12 +160,12 @@ module.exports = {
      reaction.users.remove(user).catch(console.error);
      if (!canModifyQueue(member)) return;
      queue.connection.dispatcher.end();
-     const mec = queue.textChannel.send({embed: {
+     const skip = queue.textChannel.send({embed: {
       color: 4779354,
       description: `${user} ⏩ skipped the song`,
      }}).catch(console.error);
      collector.stop();
-     mec.delete({
+     skip.delete({
       timeout: 5000
      })
      break;
@@ -176,19 +176,19 @@ module.exports = {
      if (queue.playing) {
       queue.playing = !queue.playing;
       queue.connection.dispatcher.pause(true);
-      const mec = queue.textChannel.send({embed: {
+      const pause = queue.textChannel.send({embed: {
        color: 4779354,
        description: `${user} ⏸ paused the music.`,
       }}).catch(console.error);
      } else {
       queue.playing = !queue.playing;
       queue.connection.dispatcher.resume();
-      const mec = queue.textChannel.send({embed: {
+      const pause = queue.textChannel.send({embed: {
        color: 4779354,
        description: `${user} ▶ resumed the music!`,
       }}).catch(console.error);
      }
-     mec.delete({
+     pause.delete({
       timeout: 5000
      })
      break;
@@ -199,19 +199,19 @@ module.exports = {
      if (queue.volume <= 0) {
       queue.volume = 100;
       queue.connection.dispatcher.setVolumeLogarithmic(100 / 100);
-      const mec = queue.textChannel.send({embed: {
+      const voicestate = queue.textChannel.send({embed: {
        color: 4779354,
        description: `${user} 🔊 unmuted the music!`,
       }}).catch(console.error);
      } else {
       queue.volume = 0;
       queue.connection.dispatcher.setVolumeLogarithmic(0);
-      const mec = queue.textChannel.send({embed: {
+      const voicestate = queue.textChannel.send({embed: {
        color: 4779354,
        description: `${user} 🔇 muted the music!`,
       }}).catch(console.error);
      }
-     mec.delete({
+     voicestate.delete({
       timeout: 5000
      })
      break;
@@ -222,11 +222,11 @@ module.exports = {
      if (queue.volume - 10 <= 0) queue.volume = 0;
      else queue.volume = queue.volume - 10;
      queue.connection.dispatcher.setVolumeLogarithmic(queue.volume / 100);
-     const mec = queue.textChannel.send({embed: {
+     const volumedown = queue.textChannel.send({embed: {
       color: 4779354,
       description: `${user} 🔉 decreased the volume, the volume is now ${queue.volume}%`,
      }}).catch(console.error);
-     mec.delete({
+     volumedown.delete({
       timeout: 5000
      })
      break;
@@ -237,11 +237,11 @@ module.exports = {
      if (queue.volume + 10 >= 100) queue.volume = 100;
      else queue.volume = queue.volume + 10;
      queue.connection.dispatcher.setVolumeLogarithmic(queue.volume / 100);
-     const mec = queue.textChannel.send({embed: {
+     const volumeup = queue.textChannel.send({embed: {
       color: 4779354,
       description: `${user} 🔊 increased the volume, the volume is now ${queue.volume}%`,
      }}).catch(console.error);
-     mec.delete({
+     volumeup.delete({
       timeout: 5000
      })
      break;
@@ -250,11 +250,11 @@ module.exports = {
      reaction.users.remove(user).catch(console.error);
      if (!canModifyQueue(member)) return;
      queue.loop = !queue.loop;
-     const mec = queue.textChannel.send({embed: {
+     const loop = queue.textChannel.send({embed: {
       color: 4779354,
       description: `Loop is now ${queue.loop ? "**on**" : "**off**"}`,
      }}).catch(console.error);
-     mec.delete({
+     loop.delete({
       timeout: 5000
      })
      break;
@@ -263,11 +263,11 @@ module.exports = {
      reaction.users.remove(user).catch(console.error);
      if (!canModifyQueue(member)) return;
      queue.songs = [];
-     const mec = queue.textChannel.send({embed: {
+     const stop = queue.textChannel.send({embed: {
       color: 4779354,
       description: `${user} ⏹ stopped the music!`,
      }}).catch(console.error);
-     mec.delete({
+     stop.delete({
       timeout: 5000
      })
      try {
@@ -286,11 +286,11 @@ module.exports = {
     case "🔀":
      reaction.users.remove(user).catch(console.error);
      if (!queue) {
-      const mec = message.channel.send({embed: {
+      const errormsg = message.channel.send({embed: {
        color: 16734039,
        description: "There is no queue",
       }}).catch(console.error);
-      mec.delete({
+      errormsg.delete({
        timeout: 5000
       })
      }
@@ -302,11 +302,11 @@ module.exports = {
       [songs[i], songs[j]] = [songs[j], songs[i]];
      }
      message.client.queue.set(message.guild.id, queue);
-     const mec = queue.textChannel.send({embed: {
+     const shuffle = queue.textChannel.send({embed: {
       color: 4779354,
       description: `${user} 🔀 Shuffled The Queue.`,
      }}).catch(console.error);
-     mec.delete({
+     shuffle.delete({
       timeout: 5000
      })
      break;
