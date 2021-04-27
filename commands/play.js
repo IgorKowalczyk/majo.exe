@@ -78,7 +78,7 @@ module.exports = {
      .setColor("RANDOM")
      .setDescription(`👍 Joined \`${channel.name}\` 📄 bound \`#${message.channel.name}\``)
      .setFooter("Requested by " + `${message.author.username}`, message.author.displayAvatarURL({ dynamic: true, format: 'png', size: 2048 }))
-    message.channel.send(successjoin);
+    await message.channel.send(successjoin);
     successjoin.delete({
      timeout: 5000
     })
@@ -86,7 +86,7 @@ module.exports = {
      const urlvailds = new Discord.MessageEmbed()
       .setColor("RANDOM")
       .setDescription(`:notes: Searching 🔍 [\`LINK\`](${args.join(" ")})`)
-     message.channel.send(urlvailds);
+     await message.channel.send(urlvailds);
      urlvailds.delete({
       timeout: 5000
      })
@@ -94,7 +94,7 @@ module.exports = {
      const urlvaildnormal = new Discord.MessageEmbed()
       .setColor("RANDOM")
       .setDescription(`:notes: Searching 🔍 \`${args.join(" ")}\``)
-     message.channel.send(urlvaildnormal)
+     await message.channel.send(urlvaildnormal)
      urlvaildnormal.delete({
       timeout: 5000
      })
