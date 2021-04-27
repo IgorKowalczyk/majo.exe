@@ -24,6 +24,7 @@ module.exports = {
  "brainid": process.env.BRAINID,
  "brainkey": process.env.BRAINKEY,
  "pruning": "5000",
+ "statuschannel": "712024850675531786",
  "newstitle": "<a:error:759354037803024395> Warning!",
  "news":  "Due to the fact that our bot will soon be on 100 Discord servers it needs to be verified. Soon Majo.exe will be sent for verification. We are sorry if you cannot add the bot to your server..."
 }

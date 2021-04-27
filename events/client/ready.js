@@ -47,7 +47,13 @@ module.exports = (client) => {
    sec  = datelog.getSeconds();
   console.log("Generated at: " + currentDate + "/" + month + "/" + year + " | " + hour + ":" + min + "." + sec);
   console.log(chalk.blue("Connected! Logged in as ") + chalk.blue.underline(`${client.user.username}`) + chalk.blue("!")); // ${client.user.tag}
- } catch(err) {
+  const statuschannel = client.channels.cache.get(config.statuschannel)
+  if (statuschannel) {
+   statuschannel.send("Bot Status - Online | :green_circle:");
+  } else {
+   return;
+  }
+} catch(err) {
   console.log(err);
  }
 }
