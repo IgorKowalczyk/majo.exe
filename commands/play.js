@@ -124,6 +124,7 @@ module.exports = {
     return message.channel.send(`I could not join the voice channel: ${error}`);
    }
   } catch (err) {
+   console.log(err);
    message.channel.send({embed: {
     color: 16734039,
     description: "Something went wrong... :cry:"
