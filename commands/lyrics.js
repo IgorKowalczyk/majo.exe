@@ -27,7 +27,7 @@ module.exports = {
    } catch (error) {
     lyrics = `No lyrics found for ${queue.songs[0].title}`;
    }
-   let embed = new MessageEmbed()
+   let embed = new Discord.MessageEmbed()
     .setTitle(`Lyrics For ${queue.songs[0].title}`)
     .setDescription(lyrics)
     .setColor("RANDOM")
