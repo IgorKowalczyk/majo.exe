@@ -13,7 +13,7 @@ module.exports = {
    message.client.queue.delete(message.guild.id);
    const endembed = new Discord.MessageEmbed()
     .setColor("RANDOM")
-    .setDescription(`Music Queue ended.`);
+    .setDescription(`💿 Music queue ended so I'm leaving the voice channel.`);
    return queue.textChannel.send(endembed);
   }
   let stream = null;
@@ -330,7 +330,7 @@ module.exports = {
       .setDescription(`[**${song.title}**](${song.url})`)
       .setThumbnail(song.thumbnail.url)
       .setColor("RANDOM")
-      .setFooter(`Requested by: ${message.author.username}#${message.author.discriminator}`, message.member.user.displayAvatarURL({ dynamic: true }));
+      .setFooter("Requested by " + `${message.author.username}`, message.member.user.displayAvatarURL({ dynamic: true }));
      if (ms >= 10000) {
       nowPlaying.addField("\u200b", "🔴 LIVE", false);
       return message.channel.send(nowPlaying);
@@ -362,9 +362,10 @@ module.exports = {
      const description = queue.songs.map((song, index) => `${index + 1}. ${Discord.escapeMarkdown(song.title)}`);
 
      let queueEmbed = new Discord.MessageEmbed()
-      .setTitle("Music Queue")
+      .setTitle("💿 Music Queue", message.member.user.displayAvatarURL({ dynamic: true }))
       .setDescription(description)
-      .setColor("RANDOM");
+      .setColor("RANDOM")
+      .setFooter("Requested by " + `${message.author.username}`, message.member.user.displayAvatarURL({ dynamic: true }));
      const splitDescription = Discord.splitMessage(description, {
       maxLength: 2048,
       char: "\n",
@@ -384,9 +385,10 @@ module.exports = {
      if (!canModifyQueue(member)) return;
      let lyrics = null;
      let temEmbed = new Discord.MessageEmbed()
-      .setAuthor("Searching...",)
-      .setFooter("Lyrics")
-      .setColor("RANDOM");
+      .setTitle("Searching...", message.member.user.displayAvatarURL({ dynamic: true }))
+      .setDescription("Lyrics")
+      .setColor("RANDOM")
+      .setFooter("Requested by " + `${message.author.username}`, message.member.user.displayAvatarURL({ dynamic: true }));
      let result = await message.channel.send(temEmbed);
      try {
       lyrics = await lyricsFinder(queue.songs[0].title, "");
@@ -398,9 +400,6 @@ module.exports = {
       .setTitle("🗒️ Lyrics")
       .setDescription(lyrics)
       .setColor("RANDOM");
-     temEmbed.delete({
-      timeout: 1000
-     });
      if (lyricsEmbed.description.length >= 2048) lyricsEmbed.description = `${lyricsEmbed.description.substr(0, 2045)}...`;
      message.react("✅");
      return result.edit(lyricsEmbed).catch(console.error);
