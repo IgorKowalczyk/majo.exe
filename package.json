@@ -73,7 +73,7 @@
   "simple-youtube-api": "^5.2.1",
   "soundcloud-downloader": "^0.1.8",
   "string-progressbar": "^1.0.1",
-  "youtube-sr": "^1.0.4",
+  "youtube-sr": "^4.0.5",
   "nodemon": "^2.0.4",
   "i": "^0.3.6",
   "os": "^0.1.1",
