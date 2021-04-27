@@ -50,14 +50,14 @@ module.exports = {
    }
    const song = {
     id: result.id,
-    title: result.title,
-    duration: result.duration,
+    title: result.title || "Unknown",
+    duration: result.duration || "Unknown",
     thumbnail: result.thumbnail,
-    upload: result.uploadDate,
-    views: result.viewCount,
+    upload: result.uploadDate || "Unknown",
+    views: result.viewCount || "0",
     requester: message.author,
-    channel: result.channel.name,
-    channelurl: result.channel.url
+    channel: result.channel.name || "Unknown",
+    channelurl: result.channel.url || "Unknown"
    };
    var date = new Date(0);
    date.setSeconds(song.duration);

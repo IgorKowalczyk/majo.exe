@@ -11,14 +11,13 @@ module.exports = {
  usage: "ohno (text)",
  run: async (client, message, args) => {
   try {
-   const text = await args.join(" ");
-   if (text.lenght == 0) {
+   if (!args[0]) {
     return message.channel.send({embed: {
      color: 16734039,
      description: "You must enter a text!"
     }})
    }
-   if (text > 20) {
+   if (args.join(" ") > 20) {
     return message.channel.send({embed: {
      color: 16734039,
      description: "Max lenght for the text is 20!"
@@ -28,7 +27,7 @@ module.exports = {
     color: 4779354,
     description: "Please wait... I'm generating your image",
    }})
-   const ohno = await canvacord.Canvas.ohno(text);
+   const ohno = await canvacord.Canvas.ohno(args.join(" "));
    const attachment = new Discord.MessageAttachment(ohno, "ohno.png");
    message.channel.send(attachment);
    wait.delete({

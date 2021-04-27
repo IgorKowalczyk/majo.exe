@@ -11,10 +11,12 @@ module.exports = {
  usage: "fliptext <text>",
  run: async (client, message, args) => {
   try {
-   if (args[0].lenght == 0) return message.channel.send({embed: {
-    color: 16734039,
-    description: "You must provide a text!"
-   }})
+   if (!args[0]) {
+    return message.channel.send({embed: {
+     color: 16734039,
+     description: "You must provide a text!"
+    }})
+   }
    const max = 50;
    if (args.lenght > max) return message.channel.send({embed: {
     color: 16734039,
