@@ -59,24 +59,6 @@ module.exports = {
     channel: result.channel.name,
     channelurl: result.channel.url
    };
-   if(!song.title) {
-    title = "Unknown";
-   }
-   if(!song.duration) {
-    title = "Unknown";
-   }
-   if(!song.upload) {
-    title = "Unknown";
-   }
-   if(!song.views) {
-    title = "0";
-   }
-   if(!song.channel) {
-    title = "Unknown";
-   }
-   if(!song.channelurl) {
-    title = "Unknown";
-   }
    var date = new Date(0);
    date.setSeconds(song.duration);
    var timeString = date.toISOString().substr(11, 8);
