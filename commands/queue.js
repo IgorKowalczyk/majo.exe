@@ -21,7 +21,7 @@ module.exports = {
    for(let i = 1; i < queue.songs.length; i++){
      description += `**${i}.** [${queue.songs[i].title.substring(1,40)}](${queue.songs[i].url}) | \`${queue.songs[i].duration}\`\n`
    }
-   let queue = new Discord.MessageEmbed()
+   let queueembed = new Discord.MessageEmbed()
     .setTitle("💿 Music Queue", message.author.displayAvatarURL({ dynamic: true, format: 'png', size: 2048 }))
     .setDescription(description)
     .setColor("RANDOM")
@@ -33,9 +33,9 @@ module.exports = {
     append: ""
    });
    splitDescription.forEach(async (m) => {
-     queue.setDescription(m);
+    queueembed.setDescription(m);
      message.react("✅")
-     message.channel.send(queue);
+     message.channel.send(queueembed);
    })
   } catch (err) {
    console.log(err);
