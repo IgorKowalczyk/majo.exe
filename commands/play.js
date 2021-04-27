@@ -2,7 +2,6 @@ const { play } = require("../utilities/play");
 const Discord = require("discord.js");
 const config = require("../config");
 const ytsr = require("youtube-sr").default;;
-await ytsr.set("api", "" + config.youtube + "");
 
 module.exports = {
  name: "play",
@@ -11,6 +10,7 @@ module.exports = {
  category: "Music",
  usage: "play <youtube link | youtube video name>",
  run: async (client, message, args) => {
+  await ytsr.set("api", "" + config.youtube + "");
   if (!message.guild) return;
   const { channel } = message.member.voice;
   const serverQueue = message.client.queue.get(message.guild.id);
