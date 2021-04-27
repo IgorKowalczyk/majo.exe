@@ -137,8 +137,8 @@ module.exports = {
     }})
    }
   }
-  let thumb = message.author.displayAvatarURL({ dynamic: true, format: 'png', size: 2048 });
-  if (song.thumbnail === undefined) thumb = message.author.displayAvatarURL({ dynamic: true, format: 'png', size: 2048 });
+  let thumb = "https://images-ext-2.discordapp.net/external/55DLQjqMFAc-wAiT7O1NJS158tv6OUhsSHmBXmJ0Pkg/%3Fsqp%3D-oaymwEXCNAFEJQDSFryq4qpAwkIARUAAIhCGAE%3D%26rs%3DAOn4CLBz4zlh_7gUzfPyMIc3OcanVj2xyw/https/i.ytimg.com/vi/jJLpszZ6o-c/hq720.jpg";
+  if (song.thumbnail === undefined) thumb = "https://images-ext-2.discordapp.net/external/55DLQjqMFAc-wAiT7O1NJS158tv6OUhsSHmBXmJ0Pkg/%3Fsqp%3D-oaymwEXCNAFEJQDSFryq4qpAwkIARUAAIhCGAE%3D%26rs%3DAOn4CLBz4zlh_7gUzfPyMIc3OcanVj2xyw/https/i.ytimg.com/vi/jJLpszZ6o-c/hq720.jpg";
   else thumb = song.thumbnail.url;
   if (serverQueue) {
    let estimatedtime = Number(0);
