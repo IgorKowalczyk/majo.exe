@@ -344,7 +344,7 @@ module.exports = {
 
      splitDescription.forEach(async (m) => {
       queueEmbed.setDescription(m);
-      message.react("");
+      message.react("✅");
       message.channel.send(queueEmbed);
      });
      break;
@@ -368,7 +368,9 @@ module.exports = {
       .setTitle("🗒️ Lyrics")
       .setDescription(lyrics)
       .setColor("RANDOM");
-     temEmbed.delete();
+     temEmbed.delete({
+      timeout: 1000
+     });
      if (lyricsEmbed.description.length >= 2048) lyricsEmbed.description = `${lyricsEmbed.description.substr(0, 2045)}...`;
      message.react("✅");
      return result.edit(lyricsEmbed).catch(console.error);
