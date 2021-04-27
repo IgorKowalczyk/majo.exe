@@ -66,7 +66,7 @@ module.exports = {
     server.songs.push(song);
     let embed = new Discord.MessageEmbed()
      .setTitle('Added to queue!')
-     .setColor(RANDOM)
+     .setColor("RANDOM")
      .addField('Name', song.title, true)
      .setThumbnail(song.thumbnail)
      .addField('Views', song.views, true)
@@ -132,3 +132,4 @@ module.exports = {
   }
  }
 }
+.setColor(RANDOM)
