@@ -19,6 +19,7 @@ module.exports = {
  "prefix": process.env.PREFIX,
  "scopes": "bot",
  "premissions": "4294967287",
+ "youtube": process.env.YOUTUBE,
  "dashboard": process.env.DASHBOARD,
  "brainid": process.env.BRAINID,
  "brainkey": process.env.BRAINKEY,

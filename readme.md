@@ -41,6 +41,7 @@ Deploy the app to [Heroku](https://heroku.com)
     * `AMEAPI` - your Ametyhyste API token [Tutorial how to get it](#ameapi-token)
     * `BRAINID` - Your Brainshop AI Brain ID [Tutorial](#ai-keys)
     * `BRAINKEY` - Your Brainshop AI Brain Key [Tutorial](#ai-keys)
+    * `YOUTUBE` - Your Youtube API key [Tutorial](#youtube)
     * **Not required (You can leave them blank):**
     * `DOMAIN` - your website domain, eg `https://example.com`
     * `PORT` - your website port, eg `8080`. [Note: If you are using heroku, not create this value. Heroku binds port automatically]
@@ -73,6 +74,7 @@ DOMAIN-YOUR-WEBSITE-DOMAIN
 PORT=YOUR-WEBSITE-PORT
 BRAINID=YOUR-BRAINSHOP-AI-BRAIN-ID
 BRAINKEY=YOUR-BRAINSHOP-AI-BRAIN-KEY
+YOUTUBE-YOUR-YOUTUBE-API-KEY
 DASHBOARD=[true/false]
 SESSION_SECRET=YOUR-SESSION-SECRET-(RANDOM-WORDS)
 SECRET=YOUR-BOT-CLIENT-SECRET
@@ -91,6 +93,7 @@ ANALYTICS=YOUR-GOOGLE-TRACKING-ID
 | AMEAPI | Your Amethyste api token | :heavy_check_mark: |
 | BRAINID | Your Brainshop AI Brain ID | :heavy_check_mark: |
 | BRAINKEY | Your Brainshop AI Brain Key | :heavy_check_mark: |
+| YOUTUBE | Your Youtube API key | :heavy_check_mark: |
 | DOMAIN | Your website domain (eg `https://example.com`)`*` | :x:/:heavy_check_mark: |
 | PORT| Your webiste port, (eg. `8008 `)`*`| :x:/:heavy_check_mark: |
 | DASHBOARD | The Web-Dashboard config value. (eg. `true/false`, default value: `false`)`*` | :x: |
@@ -112,9 +115,12 @@ ANALYTICS=YOUR-GOOGLE-TRACKING-ID
 ### AI Keys
 > Soon!
 
+### Youtube
+> Soon!
+
 ### Analytics ID
 > Soon!
-> 
+
 ### Heroku
 > Soon!
 

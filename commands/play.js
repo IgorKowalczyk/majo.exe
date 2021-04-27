@@ -2,6 +2,7 @@ const { play } = require("../utilities/play");
 const Discord = require("discord.js");
 const config = require("../config");
 const ytsr = require("youtube-sr");
+ytsr.set("api", config.youtube);
 
 module.exports = {
  name: "play",
