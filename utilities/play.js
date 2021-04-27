@@ -153,6 +153,12 @@ module.exports = {
   collector.on("collect", async (reaction, user) => {
    if (!queue) return;
    const member = message.guild.member(user);
+   if (queue && channel !== message.guild.me.voice.channel) {
+    return message.channel.send({embed: {
+     color: 16734039,
+     description: "`You must be in the same voice channel as me",
+    }})
+   }
 
    switch (reaction.emoji.name) {
     case "⏭":
