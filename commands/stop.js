@@ -36,7 +36,7 @@ module.exports = {
     }})
    } else {
     message.channel.send({embed: {
-     color: 4779354,
+     color: 16734039,
      description: "Cannot stop the music",
     }})
    }
