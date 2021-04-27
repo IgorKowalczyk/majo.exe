@@ -2,13 +2,14 @@ const { play } = require("../utilities/play");
 const Discord = require("discord.js");
 const config = require("../config");
 const ytsr = require("youtube-sr").default;;
+await ytsr.set("api", "" + config.youtube + "");
 
 module.exports = {
  name: "play",
  aliases: ["p"],
  description: "Play the music",
  category: "Music",
- usage: "play <song>",
+ usage: "play <youtube link | youtube video name>",
  run: async (client, message, args) => {
   if (!message.guild) return;
   const { channel } = message.member.voice;
@@ -28,7 +29,7 @@ module.exports = {
   if (!args.length) {
    return message.channel.send({embed: {
     color: 16734039,
-    description: `Usage: ${config.prefix} play <YouTube URL | Video Name | Soundcloud URL>`,
+    description: `Usage: ${config.prefix} play <youtube link | youtube video name>`,
    }})
   }
   message.react("✅").catch(console.error);
@@ -105,7 +106,6 @@ module.exports = {
   } catch {}
   if (urlValid) {
    try {
-    ytsr.set("api", `${config.youtube}`);
     songInfo = await ytsr.searchOne(search);
     if (!songInfo) {
      console.log("0")
@@ -116,6 +116,12 @@ module.exports = {
      thumbnail: songInfo.thumbnail,
      duration: songInfo.durationFormatted,
     };
+   if(!song.title && !song.url && song.thumbnail && song.duration) {
+    return message.channel.send({embed: {
+     color: 16734039,
+     description: "Cannot play the video!",
+    }})
+   }
    } catch (error) {
     if (error.statusCode === 403) {
      return message.channel.send({embed: {
