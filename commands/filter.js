@@ -95,14 +95,11 @@ module.exports = {
     case "karaoke":
      varforfilter = 11;
      break;
-    case "sofa":
+    case "desilencer":
      varforfilter = 12;
      break;
-    case "desilencer":
-     varforfilter = 13;
-     break;
     case "clear":
-     varforfilter = 14;
+     varforfilter = 13;
      break;
     default:
      varforfilter = 404;
@@ -122,7 +119,6 @@ module.exports = {
        \`subboost\`
        \`chorus\`
        \`karaoke\`
-       \`sofa (makes audio suitable for earphone/headset)\`
        \`desilencer (removes silence in the song automatically)\`
        **To clear all filters just enter \`clear\` option.**`
       )
