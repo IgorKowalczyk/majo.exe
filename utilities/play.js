@@ -208,7 +208,7 @@ module.exports = {
       queue.connection.dispatcher.setVolumeLogarithmic(100 / 100);
       const voicestateunmute = await queue.textChannel.send({embed: {
        color: 4779354,
-       description: `${user} 🔊 unmuted the music!`,
+       description: `🔊 | ${user} unmuted the music!`,
       }})
       voicestateunmute.delete({
        timeout: 5000
@@ -218,7 +218,7 @@ module.exports = {
       queue.connection.dispatcher.setVolumeLogarithmic(0);
       const voicestatemute = await queue.textChannel.send({embed: {
        color: 4779354,
-       description: `${user} 🔇 muted the music!`,
+       description: `🔇 | ${user} muted the music!`,
       }})
       voicestatemute.delete({
        timeout: 5000
@@ -234,7 +234,7 @@ module.exports = {
      queue.connection.dispatcher.setVolumeLogarithmic(queue.volume / 100);
      const volumedown = await queue.textChannel.send({embed: {
       color: 4779354,
-      description: `${user} 🔉 decreased the volume, the volume is now ${queue.volume}%`,
+      description: `🔉 | ${user} decreased the volume, the volume is now ${queue.volume}%`,
      }})
      volumedown.delete({
       timeout: 5000
@@ -249,7 +249,7 @@ module.exports = {
      queue.connection.dispatcher.setVolumeLogarithmic(queue.volume / 100);
      const volumeup = await queue.textChannel.send({embed: {
       color: 4779354,
-      description: `${user} 🔊 increased the volume, the volume is now ${queue.volume}%`,
+      description: `🔊 | ${user} increased the volume, the volume is now ${queue.volume}%`,
      }}).catch(console.error);
      volumeup.delete({
       timeout: 5000
@@ -262,7 +262,7 @@ module.exports = {
      queue.loop = !queue.loop;
      const loop = await queue.textChannel.send({embed: {
       color: 4779354,
-      description: `Loop is now ${queue.loop ? "**on**" : "**off**"}`,
+      description: `🔁 | ${user} set the loop status to ${queue.loop ? "**on**" : "**off**"}`,
      }}).catch(console.error);
      loop.delete({
       timeout: 5000
