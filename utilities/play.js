@@ -163,13 +163,13 @@ module.exports = {
    switch (reaction.emoji.name) {
     case "⏭":
      queue.playing = true;
-     reaction.users.remove(user).catch(console.error);
+     reaction.users.remove(user)
      if (!canModifyQueue(member)) return;
      queue.connection.dispatcher.end();
      const skip = await queue.textChannel.send({embed: {
       color: 4779354,
       description: `${user} ⏩ skipped the song`,
-     }}).catch(console.error);
+     }})
      collector.stop();
      skip.delete({
       timeout: 5000
@@ -177,7 +177,7 @@ module.exports = {
      break;
 
     case "⏯":
-     reaction.users.remove(user).catch(console.error);
+     reaction.users.remove(user)
      if (!canModifyQueue(member)) return;
      if (queue.playing) {
       queue.playing = !queue.playing;
@@ -185,14 +185,14 @@ module.exports = {
       const pause = await queue.textChannel.send({embed: {
        color: 4779354,
        description: `${user} ⏸ paused the music.`,
-      }}).catch(console.error);
+      }})
      } else {
       queue.playing = !queue.playing;
       queue.connection.dispatcher.resume();
       const pause = await queue.textChannel.send({embed: {
        color: 4779354,
        description: `${user} ▶ resumed the music!`,
-      }}).catch(console.error);
+      }})
      }
      pause.delete({
       timeout: 5000
@@ -200,7 +200,7 @@ module.exports = {
      break;
 
     case "🔇":
-     reaction.users.remove(user).catch(console.error);
+     reaction.users.remove(user)
      if (!canModifyQueue(member)) return;
      if (queue.volume <= 0) {
       queue.volume = 100;
@@ -208,7 +208,7 @@ module.exports = {
       const voicestateunmute = await queue.textChannel.send({embed: {
        color: 4779354,
        description: `${user} 🔊 unmuted the music!`,
-      }}).catch(console.error);
+      }})
       voicestateunmute.delete({
        timeout: 5000
       })
@@ -218,7 +218,7 @@ module.exports = {
       const voicestatemute = await queue.textChannel.send({embed: {
        color: 4779354,
        description: `${user} 🔇 muted the music!`,
-      }}).catch(console.error);
+      }})
       voicestatemute.delete({
        timeout: 5000
       })
@@ -226,7 +226,7 @@ module.exports = {
      break;
 
     case "🔉":
-     reaction.users.remove(user).catch(console.error);
+     reaction.users.remove(user)
      if (!canModifyQueue(member)) return;
      if (queue.volume - 10 <= 0) queue.volume = 0;
      else queue.volume = queue.volume - 10;
@@ -234,7 +234,7 @@ module.exports = {
      const volumedown = await queue.textChannel.send({embed: {
       color: 4779354,
       description: `${user} 🔉 decreased the volume, the volume is now ${queue.volume}%`,
-     }}).catch(console.error);
+     }})
      volumedown.delete({
       timeout: 5000
      })

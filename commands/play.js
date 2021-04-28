@@ -32,7 +32,7 @@ module.exports = {
     description: `Usage: ${config.prefix} play <youtube link | youtube video name>`,
    }})
   }
-  message.react("✅").catch(console.error);
+  message.react("✅")
   const permissions = channel.permissionsFor(message.client.user);
   if (!permissions.has("CONNECT")){
    return message.channel.send({embed: {
@@ -199,14 +199,13 @@ module.exports = {
     .addField("Estimated time until playing:", `\`${estimatedtime}\``, true)
     .addField("Position in queue", `**\`${serverQueue.songs.length - 1}\`**`, true)
     .setFooter(`Requested by: ${message.author.username}#${message.author.discriminator}`, message.member.user.displayAvatarURL({ dynamic: true }));
-   return serverQueue.textChannel.send(newsong).catch(console.error);
+   return serverQueue.textChannel.send(newsong);
   }
   queueConstruct.songs.push(song);
   message.client.queue.set(message.guild.id, queueConstruct);
   try {
    play(queueConstruct.songs[0], message, client);
   } catch (error) {
-   console.error(error);
    message.client.queue.delete(message.guild.id);
    await channel.leave();
    return message.channel.send({embed: {

@@ -38,7 +38,6 @@ module.exports = {
      message.channel.send(queueembed);
    })
   } catch (err) {
-   console.log(err);
    return message.channel.send({embed: {
     color: 16734039,
     description: "Something went wrong... :cry:",
