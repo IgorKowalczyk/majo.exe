@@ -127,11 +127,10 @@ module.exports = {
    let embed = new Discord.MessageEmbed()
     .setColor("RANDOM")
     .setAuthor(`Started playing: ${song.title}`, queue.textChannel.guild.iconURL({ dynamic: true, format: 'png'}))
-    .setDescription(`[**${song.title}**](${song.url})`)
+    .setDescription(`[**${song.title}**](${song.url}) \`${song.duration}\``)
     .setTimestamp()
     .setThumbnail(song.thumbnail.url)
    var playingMessage = await queue.textChannel.send(embed);
-   var playingMessage = await queue.textChannel.send(`${song.url}`);
    await playingMessage.react("⏭");
    await playingMessage.react("⏯");
    await playingMessage.react("🔉");

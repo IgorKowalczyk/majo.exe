@@ -9,7 +9,8 @@ module.exports = {
  description: "Play the music",
  category: "Music",
  usage: "play <youtube link | youtube video name>",
- run: async (client, message, args) => {
+ run: async (client, message, args, silient) => {
+  silient = false
   // await ytsr.set("api", process.env.YOUTUBE);
   if (!message.guild) return;
   const { channel } = message.member.voice;
@@ -107,7 +108,6 @@ module.exports = {
   if (urlValid) {
    try {
     songInfo = await ytsr.searchOne(search);
-    silient = false
     if (!songInfo) {
      console.log("0")
     }
@@ -143,7 +143,6 @@ module.exports = {
   else {
    try {
     songInfo = await ytsr.searchOne(search);
-    silient = false;
     song = {
      title: songInfo.title,
      url: songInfo.url,
@@ -206,7 +205,7 @@ module.exports = {
   queueConstruct.songs.push(song);
   message.client.queue.set(message.guild.id, queueConstruct);
   try {
-   play(queueConstruct.songs[0], message, client);
+   play(queueConstruct.songs[0], message, client, silient);
   } catch (error) {
    message.client.queue.delete(message.guild.id);
    await channel.leave();
