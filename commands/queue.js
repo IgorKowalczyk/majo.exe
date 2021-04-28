@@ -17,7 +17,7 @@ module.exports = {
      description: "This is nothing playing right now",
     }})
    }
-   let description = "";
+   let description = "There is nothing in the queue!";
    for(let i = 1; i < queue.songs.length; i++){
      description += `**${i}.** [${queue.songs[i].title.substring(0,40)}](${queue.songs[i].url}) | \`${queue.songs[i].duration}\`\n`
    }
@@ -34,8 +34,7 @@ module.exports = {
    });
    splitDescription.forEach(async (m) => {
     queueembed.setDescription(m);
-     message.react("✅")
-     message.channel.send(queueembed);
+    message.channel.send(queueembed);
    })
   } catch (err) {
    return message.channel.send({embed: {

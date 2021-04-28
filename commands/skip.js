@@ -29,7 +29,6 @@ module.exports = {
    if(queue.songs.length !== 0) {
     if(queue.connection.dispatcher) {
      queue.connection.dispatcher.end()
-     message.react('✅')
      message.channel.send({embed: {
       color: 4779354,
       description: "Skipped the music",

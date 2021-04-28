@@ -11,7 +11,9 @@ require('dotenv').config()
 if (process.env.TOKEN) {
  client.commands = new Discord.Collection();
  client.aliases = new Discord.Collection();
- client.queue = new Map(); 
+ client.queue = new Map();
+ require('events').EventEmitter.prototype._maxListeners = 70;
+ require('events').defaultMaxListeners = 70;
  ['command', 'event'].forEach(handler => {
   require(`./handlers/${handler}`)(client);
  });

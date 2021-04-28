@@ -414,7 +414,7 @@ module.exports = {
       .setFooter("Requested by " + `${message.author.username}`, message.member.user.displayAvatarURL({ dynamic: true }))
      if (lyricsEmbed.description.length >= 2048) lyricsEmbed.description = `${lyricsEmbed.description.substr(0, 2045)}...`;
      message.react("✅");
-     return result.edit(lyricsEmbed).catch(console.error);
+     return result.edit(lyricsEmbed)
      break;
    }
   });
@@ -422,9 +422,9 @@ module.exports = {
    return console.log("Arbuz tutaj byl twoj blad, 404 message");
   }
   collector.on("end", () => {
-   playingMessage.reactions.removeAll().catch(console.error);
+   playingMessage.reactions.removeAll()
    if (config.pruning && playingMessage && !playingMessage.deleted) {
-    playingMessage.delete({ timeout: 3000 }).catch(console.error);
+    playingMessage.delete()
    }
   });
  },
