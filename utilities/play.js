@@ -145,12 +145,11 @@ module.exports = {
   } catch (error) {
    console.error(error);
   }
-
+  try {
   const filter = (reaction, user) => user.id !== message.client.user.id;
   var collector = playingMessage.createReactionCollector(filter, {
    time: song.duration > 0 ? song.duration * 1000 : 600000,
   });
-  try {
   collector.on("collect", async (reaction, user) => {
    if (!queue) return;
    const member = message.guild.member(user);
@@ -419,7 +418,7 @@ module.exports = {
    }
   });
   } catch (err) {
-   return;
+   return console.log("Arbuz tutaj byl twoj blad, 404 message");
   }
   collector.on("end", () => {
    playingMessage.reactions.removeAll().catch(console.error);
