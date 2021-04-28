@@ -154,10 +154,16 @@ module.exports = {
 
   }
   if (!song) {
-    console.log("Song not found");
+   return message.channel.send({embed: {
+     color: 16734039,
+     description: "Cannot play the video!",
+    }})
    }
    if(!song.title && !song.url && !song.thumbnail && !song.duration) {
-     console.log("Someting went wrong with url");
+    return message.channel.send({embed: {
+     color: 16734039,
+     description: "Cannot play the video!",
+    }})
    }
   let thumb = "https://images-ext-2.discordapp.net/external/55DLQjqMFAc-wAiT7O1NJS158tv6OUhsSHmBXmJ0Pkg/%3Fsqp%3D-oaymwEXCNAFEJQDSFryq4qpAwkIARUAAIhCGAE%3D%26rs%3DAOn4CLBz4zlh_7gUzfPyMIc3OcanVj2xyw/https/i.ytimg.com/vi/jJLpszZ6o-c/hq720.jpg";
   if (song.thumbnail === undefined) thumb = "https://images-ext-2.discordapp.net/external/55DLQjqMFAc-wAiT7O1NJS158tv6OUhsSHmBXmJ0Pkg/%3Fsqp%3D-oaymwEXCNAFEJQDSFryq4qpAwkIARUAAIhCGAE%3D%26rs%3DAOn4CLBz4zlh_7gUzfPyMIc3OcanVj2xyw/https/i.ytimg.com/vi/jJLpszZ6o-c/hq720.jpg";
