@@ -145,6 +145,12 @@ module.exports = {
      thumbnail: songInfo.thumbnail,
      duration: songInfo.durationFormatted,
     };
+    if (!song) {
+     console.log("Song not found");
+    }
+    if(!song.title && !song.url && !song.thumbnail && !song.duration) {
+      console.log("Someting went wrong with url");
+    }
    } catch (error) {
     message.channel.send({embed: {
      color: 16734039,
