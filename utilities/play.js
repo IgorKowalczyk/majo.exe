@@ -55,6 +55,11 @@ module.exports = {
      filter: "audioonly",
      opusEncoded: true,
      encoderArgs: encoderArgstoset,
+     requestOptions: {
+      headers: {
+        Cookie: config.cookies,
+      },
+     },
      bitrate: 320,
      seek: seekTime,
      quality: "highestaudio",
