@@ -150,7 +150,7 @@ module.exports = {
   var collector = playingMessage.createReactionCollector(filter, {
    time: song.duration > 0 ? song.duration * 1000 : 600000,
   });
-
+  try {
   collector.on("collect", async (reaction, user) => {
    if (!queue) return;
    const member = message.guild.member(user);
@@ -418,7 +418,9 @@ module.exports = {
      break;
    }
   });
-
+  } catch (err) {
+   return;
+  }
   collector.on("end", () => {
    playingMessage.reactions.removeAll().catch(console.error);
    if (config.pruning && playingMessage && !playingMessage.deleted) {
