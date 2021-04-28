@@ -124,13 +124,13 @@ module.exports = {
     }})
    }
    } catch (error) {
-    if (error.statusCode === 403) {
+    if (song.statusCode === 403) {
      queueConstruct.connection.disconnect();
      return message.channel.send({embed: {
       color: 16734039,
       description: "Max uses of api key, please update! (403)",
      }})
-    } else if (error.statusCode === 429) {
+    } else if (song.statusCode === 429) {
      queueConstruct.connection.disconnect();
      return message.channel.send({embed: {
       color: 16734039,
