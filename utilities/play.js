@@ -4,6 +4,7 @@ const Discord = require("discord.js");
 const createBar = require("string-progressbar");
 const lyricsFinder = require("lyrics-finder");
 const config = require("../config");
+const COOKIE = 'CONSENT=YES+PL.pl+V12+BX+394; VISITOR_INFO1_LIVE=-kmUuPsPyus; PREF=tz=Europe.Warsaw&f6=40000400&f5=30000; SID=8wcwFgG_WHD9w1m6ZpxznL36DERnmsiwd5w0blyxz_6YEDUOe-8HycbxdrV-X2YiIXGHMg.; __Secure-3PSID=8wcwFgG_WHD9w1m6ZpxznL36DERnmsiwd5w0blyxz_6YEDUO6EiL5_3eYDaqpiofD5bHCA.; HSID=A5r4OTkBwcgdk4yvf; SSID=AFOdus6lFk-aMhzsg; APISID=06gzaVL_cVO1hzhe/AbKNJtGCsXEZqagwF; SAPISID=gboSSjbnSubxsrqQ/Al3rofIlIbMygdACq; __Secure-3PAPISID=gboSSjbnSubxsrqQ/Al3rofIlIbMygdACq; LOGIN_INFO=AFmmF2swRgIhANWkqcQU9KdlgmZW_Sar3CNjMoiC3gPLordxt_zy3rCjAiEAyyBAdM7MjLNjZ5KK6TRVI_VrIKVA2GsGGsWTsnNiKSE:QUQ3MjNmelFkRl8yOGtZaVlIdXpoTlBDbjVvR01YbC1nc0hheUJxRkw2V2FtTVZ3dXFIWVduaEpmU3JEbUFfTF9GWnVNLXpPVE9jaThHd2VQXzhmTGN3cXI2ajdRalVsZm1NaEtFVFVycnhFUjdWMWlhSy1mdnJPdFU4R3pKTV82TUo0bDVrbmVIV3lzS0dTX0VvVXZ0alZIWE1aT1l5R3FmRDMxdVM5UnhuRmgzUjNicHhNUklR; SIDCC=AJi4QfGob0q98knQlfJvTZ288O8ie_rRv8LB6j3kpBt6yJwWWcUObIVNgBPrnJNVBCF9GFjT7OqT; __Secure-3PSIDCC=AJi4QfFPt9NsknhEuOmCmIl4eUCatg1okBZmWWDTHqxAe4zH2ylagpWhsFKn1uFNTh75qS8RKKc; YSC=6DzdNGR0pjM';
 
 module.exports = {
  async play(song, message, client, filters) {
@@ -44,9 +45,15 @@ module.exports = {
   try {
    if (song.url.includes("youtube.com")) {
     stream = ytdl(song.url, {
+     requestOptions: {
+      headers: {
+       cookie: COOKIE,
+      },
+     },
      filter: "audioonly",
      opusEncoded: true,
      encoderArgs: encoderArgstoset,
+     fmt: "mp3",
      bitrate: 320,
      seek: seekTime,
      quality: "highestaudio",
