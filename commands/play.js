@@ -10,7 +10,7 @@ module.exports = {
  category: "Music",
  usage: "play <youtube link | youtube video name>",
  run: async (client, message, args) => {
-  await ytsr.set("api", process.env.YOUTUBE);
+  // await ytsr.set("api", process.env.YOUTUBE);
   if (!message.guild) return;
   const { channel } = message.member.voice;
   const serverQueue = message.client.queue.get(message.guild.id);
