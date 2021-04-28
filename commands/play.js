@@ -111,6 +111,7 @@ module.exports = {
     if (!songInfo) {
      console.log("0")
     }
+    console.log(songInfo)
     song = {
      title: songInfo.title,
      url: songInfo.url,
@@ -153,13 +154,13 @@ module.exports = {
     queueConstruct.connection.disconnect();
     message.channel.send({embed: {
      color: 16734039,
-     description: "Something went wrong... :cry:"
+     description: "Something went wrong why searching for your song... :cry:"
     }})
    }
 
   }
   if (!song) {
-    queueConstruct.connection.disconnect();
+   queueConstruct.connection.disconnect();
    return message.channel.send({embed: {
      color: 16734039,
      description: "Cannot play the video!",
