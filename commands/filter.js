@@ -14,7 +14,12 @@ module.exports = {
    if (!message.guild) return;
    const { channel } = message.member.voice;
    const queue = message.client.queue.get(message.guild.id);
-   message.react("✅");
+   if(!queue) {
+    return message.channel.send({embed: {
+     color: 16734039,
+     description: "There is nothing in the queue right now!",
+    }})
+   }
    if (message.channel.activeCollector) {
     return message.channel.send({embed: {
      color: 16734039,
