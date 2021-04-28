@@ -156,7 +156,7 @@ module.exports = {
    if (member.voice.channel !== message.guild.me.voice.channel) {
     return message.channel.send({embed: {
      color: 16734039,
-     description: "`You must be in the same voice channel as me",
+     description: "You must be in the same voice channel as me",
     }})
    }
 
