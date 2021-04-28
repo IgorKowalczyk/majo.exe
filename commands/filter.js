@@ -50,7 +50,7 @@ module.exports = {
    ];
    let varforfilter;
    let choice;
-   let silient;
+   let silient = "true";
    switch (args[0]) {
     case "bassboost":
      varforfilter = 0;
@@ -120,7 +120,7 @@ module.exports = {
       .setColor("RANDOM")
       .setDescription("Applying effect: " + args[0])
      )
-    play(song, message, client, choice, silient == true);
+    play(song, message, client, choice, silient);
    } catch (error) {
     console.error(error);
     message.channel.activeCollector = false;
