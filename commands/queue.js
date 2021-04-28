@@ -19,7 +19,7 @@ module.exports = {
    }
    let description = "";
    for(let i = 1; i < queue.songs.length; i++){
-     description += `**${i}.** [${queue.songs[i].title.substring(1,40)}](${queue.songs[i].url}) | \`${queue.songs[i].duration}\`\n`
+     description += `**${i}.** [${queue.songs[i].title.substring(0,40)}](${queue.songs[i].url}) | \`${queue.songs[i].duration}\`\n`
    }
    let queueembed = new Discord.MessageEmbed()
     .setTitle("💿 Music Queue", message.author.displayAvatarURL({ dynamic: true, format: 'png', size: 2048 }))
