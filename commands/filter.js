@@ -1,6 +1,7 @@
 const ytsr = require("youtube-sr");
 const Discord = require("discord.js");
 const { play } = require("../utilities/play");
+const config = require("../config");
 
 module.exports = {
  name: "filter",
