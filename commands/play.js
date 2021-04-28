@@ -107,6 +107,7 @@ module.exports = {
   if (urlValid) {
    try {
     songInfo = await ytsr.searchOne(search);
+    silient = false
     if (!songInfo) {
      console.log("0")
     }
@@ -142,6 +143,7 @@ module.exports = {
   else {
    try {
     songInfo = await ytsr.searchOne(search);
+    silient = false;
     song = {
      title: songInfo.title,
      url: songInfo.url,

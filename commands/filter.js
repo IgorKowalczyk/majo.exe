@@ -5,7 +5,7 @@ const config = require("../config");
 
 module.exports = {
  name: "filter",
- aliases: [],
+ aliases: ["filters", "effects", "effect"],
  description: "Add effects to music",
  category: "Music",
  usage: "filter <filter>",
@@ -105,7 +105,7 @@ module.exports = {
        \`pulsator\`
        \`subboost\`
        \`chorus\`
-       \`clear\`   ---  removes all filters`
+       **To clear all filters just enter \`clear\` option.**`
       )
       .setFooter(`Example: ${config.prefix} filter bassboost`)
      message.channel.send(embed);
@@ -121,9 +121,6 @@ module.exports = {
       .setColor("RANDOM")
       .setDescription("Applying effect: " + args[0])
      )
-    .then((msg) => {
-     msg.delete({ timeout: 5000 });
-    });
     play(song, message, client, choice, silient);
    } catch (error) {
     console.error(error);
