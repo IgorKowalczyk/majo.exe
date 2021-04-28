@@ -123,7 +123,7 @@ module.exports = {
   else thumb = song.thumbnail.url;
 
   try {
-   if (silient == "true") return;
+   if (silient == true) return;
    let embed = new Discord.MessageEmbed()
     .setColor("RANDOM")
     .setAuthor(`Started playing: ${song.title}`, queue.textChannel.guild.iconURL({ dynamic: true, format: 'png'}))
@@ -146,7 +146,7 @@ module.exports = {
    console.error(error);
   }
   try {
-  if (silient == "true") return;
+  if (silient == true) return;
   const filter = (reaction, user) => user.id !== message.client.user.id;
   var collector = playingMessage.createReactionCollector(filter, {
    time: song.duration > 0 ? song.duration * 1000 : 600000,
