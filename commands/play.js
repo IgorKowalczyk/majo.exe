@@ -212,7 +212,7 @@ module.exports = {
    await channel.leave();
    return message.channel.send({embed: {
     color: 16734039,
-    description: "I could not join the channe"
+    description: "I could not join the channel"
    }})
   }
  },
