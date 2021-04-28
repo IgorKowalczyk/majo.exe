@@ -112,7 +112,6 @@ module.exports = {
      break;
    }
    choice = filters[varforfilter];
-   silient = true;
    if (varforfilter === 404) return;
    try {
     const song = queue.songs[0];
@@ -121,7 +120,7 @@ module.exports = {
       .setColor("RANDOM")
       .setDescription("Applying effect: " + args[0])
      )
-    play(song, message, client, choice, silient);
+    play(song, message, client, choice, silient == true);
    } catch (error) {
     console.error(error);
     message.channel.activeCollector = false;
