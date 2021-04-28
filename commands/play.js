@@ -33,7 +33,6 @@ module.exports = {
     description: `Usage: ${config.prefix} play <youtube link | youtube video name>`,
    }})
   }
-  message.react("✅")
   const permissions = channel.permissionsFor(message.client.user);
   if (!permissions.has("CONNECT")){
    return message.channel.send({embed: {
@@ -80,10 +79,9 @@ module.exports = {
      .setColor("RANDOM")
      .setDescription(`👍 Joined \`${channel.name}\` 📄 bound \`#${message.channel.name}\``)
      .setFooter("Requested by " + `${message.author.username}`, message.author.displayAvatarURL({ dynamic: true, format: 'png', size: 2048 }))
-    message.channel.send(successjoin);
-    successjoin.delete({
+    message.channel.send(successjoin).then(successjoin.delete({
      timeout: 5000
-    })
+    }))
     if (urlValid) {
      const urlvailds = new Discord.MessageEmbed()
       .setColor("RANDOM")

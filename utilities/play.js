@@ -14,6 +14,14 @@ module.exports = {
    const endembed = new Discord.MessageEmbed()
     .setColor("RANDOM")
     .setDescription(`💿 Music queue ended so I'm leaving the voice channel.`);
+   if (playingMessage && !playingMessage.deleted) {
+    try {
+     playingMessage.reactions.removeAll()
+     playingMessage.delete()
+    } catch (err) {
+     return;
+    }
+   }
    return queue.textChannel.send(endembed);
   }
   let stream = null;
@@ -422,7 +430,7 @@ module.exports = {
    return;
   }
   collector.on("end", () => {
-   if (config.pruning && playingMessage && !playingMessage.deleted) {
+   if (playingMessage && !playingMessage.deleted) {
     try {
      playingMessage.reactions.removeAll()
      playingMessage.delete()
