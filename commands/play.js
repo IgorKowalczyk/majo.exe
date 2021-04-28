@@ -117,6 +117,7 @@ module.exports = {
      duration: songInfo.durationFormatted,
     };
    if(!song.title && !song.url && song.thumbnail && song.duration) {
+    queueConstruct.connection.disconnect();
     return message.channel.send({embed: {
      color: 16734039,
      description: "Cannot play the video!",
@@ -124,11 +125,13 @@ module.exports = {
    }
    } catch (error) {
     if (error.statusCode === 403) {
+     queueConstruct.connection.disconnect();
      return message.channel.send({embed: {
       color: 16734039,
       description: "Max uses of api key, please update! (403)",
      }})
     } else if (error.statusCode === 429) {
+     queueConstruct.connection.disconnect();
      return message.channel.send({embed: {
       color: 16734039,
       description: "Max uses of host requests, please try again later (429)",
@@ -146,6 +149,7 @@ module.exports = {
      duration: songInfo.durationFormatted,
     };
    } catch (error) {
+    queueConstruct.connection.disconnect();
     message.channel.send({embed: {
      color: 16734039,
      description: "Something went wrong... :cry:"
@@ -154,6 +158,7 @@ module.exports = {
 
   }
   if (!song) {
+    queueConstruct.connection.disconnect();
    return message.channel.send({embed: {
      color: 16734039,
      description: "Cannot play the video!",
