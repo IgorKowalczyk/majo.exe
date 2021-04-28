@@ -53,7 +53,6 @@ module.exports = {
      filter: "audioonly",
      opusEncoded: true,
      encoderArgs: encoderArgstoset,
-     fmt: "mp3",
      bitrate: 320,
      seek: seekTime,
      quality: "highestaudio",
