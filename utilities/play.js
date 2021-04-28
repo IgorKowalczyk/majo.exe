@@ -4,7 +4,6 @@ const Discord = require("discord.js");
 const createBar = require("string-progressbar");
 const lyricsFinder = require("lyrics-finder");
 const config = require("../config");
-// const { delete } = require("snekfetch");
 
 module.exports = {
  async play(song, message, client, filters, silient) {
@@ -15,10 +14,6 @@ module.exports = {
    const endembed = new Discord.MessageEmbed()
     .setColor("RANDOM")
     .setDescription(`💿 Music queue ended so I'm leaving the voice channel.`);
-   try {
-    playingMessage.delete({timeout: 1000});
-   } catch (err) {
-   }
    return queue.textChannel.send(endembed);
   }
   let stream = null;
