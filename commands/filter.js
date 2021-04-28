@@ -46,13 +46,11 @@ module.exports = {
     "apulsator=hz=1", //pulsator
     "asubboost", //subboost
     "chorus=0.5:0.9:50|60|40:0.4|0.32|0.3:0.25|0.4|0.3:2|2.3|1.3", //chorus of 3
-    "stereotools=mlev=0.015625", //karaoke
-    "sofalizer=sofa=../utilities/music-filters/ClubFritz12.sofa:type=freq:radius=2:rotation=5", //sofa
-    "silenceremove=window=0:detection=peak:stop_mode=all:start_mode=all:stop_periods=-1:stop_threshold=0", //desilencer
     "remove",
    ];
    let varforfilter;
    let choice;
+   let silient;
    switch (args[0]) {
     case "bassboost":
      varforfilter = 0;
@@ -87,17 +85,8 @@ module.exports = {
     case "chorus":
      varforfilter = 10;
      break;
-    case "karaoke":
-     varforfilter = 11;
-     break;
-    case "sofa":
-     varforfilter = 12;
-     break;
-    case "desilencer":
-     varforfilter = 13;
-     break;
     case "clear":
-     varforfilter = 14;
+     varforfilter = 11;
      break;
     default:
      varforfilter = 404;
@@ -116,9 +105,6 @@ module.exports = {
        \`pulsator\`
        \`subboost\`
        \`chorus\`
-       \`karaoke\`
-       \`sofa (makes audio suitable for earphone/headset)\`
-       \`desilencer (removes silence in the song automatically)\`
        \`clear\`   ---  removes all filters`
       )
       .setFooter(`Example: ${config.prefix} filter bassboost`)
@@ -126,6 +112,7 @@ module.exports = {
      break;
    }
    choice = filters[varforfilter];
+   silient = true;
    if (varforfilter === 404) return;
    try {
     const song = queue.songs[0];
@@ -135,9 +122,9 @@ module.exports = {
       .setDescription("Applying effect: " + args[0])
      )
     .then((msg) => {
-     msg.delete({ timeout: 2000 });
+     msg.delete({ timeout: 5000 });
     });
-    play(song, message, client, choice);
+    play(song, message, client, choice, silient);
    } catch (error) {
     console.error(error);
     message.channel.activeCollector = false;
