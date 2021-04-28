@@ -242,7 +242,7 @@ module.exports = {
      break;
 
     case "🔊":
-     reaction.users.remove(user).catch(console.error);
+     reaction.users.remove(user)
      if (!canModifyQueue(member)) return;
      if (queue.volume + 10 >= 100) queue.volume = 100;
      else queue.volume = queue.volume + 10;
@@ -250,33 +250,33 @@ module.exports = {
      const volumeup = await queue.textChannel.send({embed: {
       color: 4779354,
       description: `🔊 | ${user} increased the volume, the volume is now ${queue.volume}%`,
-     }}).catch(console.error);
+     }})
      volumeup.delete({
       timeout: 5000
      })
      break;
 
     case "🔁":
-     reaction.users.remove(user).catch(console.error);
+     reaction.users.remove(user)
      if (!canModifyQueue(member)) return;
      queue.loop = !queue.loop;
      const loop = await queue.textChannel.send({embed: {
       color: 4779354,
       description: `🔁 | ${user} set the loop status to ${queue.loop ? "**on**" : "**off**"}`,
-     }}).catch(console.error);
+     }})
      loop.delete({
       timeout: 5000
      })
      break;
 
     case "⏹":
-     reaction.users.remove(user).catch(console.error);
+     reaction.users.remove(user)
      if (!canModifyQueue(member)) return;
      queue.songs = [];
      const stop = await queue.textChannel.send({embed: {
       color: 4779354,
       description: `${user} ⏹ stopped the music!`,
-     }}).catch(console.error);
+     }})
      stop.delete({
       timeout: 5000
      })
@@ -290,16 +290,16 @@ module.exports = {
      break;
 
     default:
-     reaction.users.remove(user).catch(console.error);
+     reaction.users.remove(user)
      break;
 
     case "🔀":
-     reaction.users.remove(user).catch(console.error);
+     reaction.users.remove(user)
      if (!queue) {
       const errormsg = await message.channel.send({embed: {
        color: 16734039,
        description: "There is no queue",
-      }}).catch(console.error);
+      }})
       errormsg.delete({
        timeout: 5000
       })
@@ -315,14 +315,14 @@ module.exports = {
      const shuffle = await queue.textChannel.send({embed: {
       color: 4779354,
       description: `${user} 🔀 Shuffled The Queue.`,
-     }}).catch(console.error);
+     }})
      shuffle.delete({
       timeout: 5000
      })
      break;
 
     case "🎵":
-     reaction.users.remove(user).catch(console.error);
+     reaction.users.remove(user)
      const song = queue.songs[0];
      let minutes = song.duration.split(":")[0];
      let seconds = song.duration.split(":")[1];
@@ -366,7 +366,7 @@ module.exports = {
      break;
 
     case "🎶":
-     reaction.users.remove(user).catch(console.error);
+     reaction.users.remove(user)
      const description = queue.songs.map((song, index) => `${index + 1}. ${Discord.escapeMarkdown(song.title)}`);
 
      let queueEmbed = new Discord.MessageEmbed()
@@ -390,7 +390,7 @@ module.exports = {
      break;
 
     case "📑":
-     reaction.users.remove(user).catch(console.error);
+     reaction.users.remove(user)
      if (!canModifyQueue(member)) return;
      let lyrics = null;
      let temEmbed = new Discord.MessageEmbed()
@@ -419,13 +419,17 @@ module.exports = {
    }
   });
   } catch (err) {
-   return console.log("Arbuz tutaj byl twoj blad, 404 message");
+   return;
   }
   collector.on("end", () => {
-   playingMessage.reactions.removeAll()
    if (config.pruning && playingMessage && !playingMessage.deleted) {
-    playingMessage.delete()
-   }
-  });
- },
-};
+    try {
+     playingMessage.reactions.removeAll()
+     playingMessage.delete()
+    } catch (err) {
+     return;
+    }
+    }
+  })
+ }
+}

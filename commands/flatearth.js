@@ -5,7 +5,7 @@ const prefix = config.prefix;
 module.exports = {
  name: "flatearth",
  aliases: [],
- description: "Shows why the Earth is flat",
+ description: "Demonstrates that the earth really is flat",
  category: "Fun",
  usage: "flatearth",
  run: async (client, message, args) => {
@@ -13,8 +13,7 @@ module.exports = {
    const embed = new Discord.MessageEmbed()
     .setColor("RANDOM")
     .setTitle("If the earth isn\'t flat, explain this:")
-    .attachFiles(['../lib/img/earth.png'])
-	.setImage('attachment:///earth.png')
+	.setImage('https://media1.tenor.com/images/462b6d76beee0f9501d20535dae9c00b/tenor.gif?itemid=13792633')
     .setFooter("Requested by " + `${message.author.username}`, message.author.displayAvatarURL({ dynamic: true, format: 'png', size: 2048 }))
     .setTimestamp()
    message.channel.send(embed);
