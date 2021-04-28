@@ -139,9 +139,6 @@ module.exports = {
       .setColor("RANDOM")
       .setDescription("Applying effect: " + args[0])
      )
-    .then((msg) => {
-     msg.delete({ timeout: 2000 });
-    });
     play(song, message, client, choice);
    } catch (error) {
     console.error(error);
