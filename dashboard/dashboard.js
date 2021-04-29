@@ -29,7 +29,7 @@ module.exports = async (client) => {
   clientSecret: config.clientSecret,
   callbackURL: `${config.domain}${config.port != 80 ? "" : `:${config.port}`}/callback`,
   response_type: `token`,
-  scope: ["identify", "connections", "guilds", "guilds.join"]
+  scope: ["identify", "guilds", "guilds.join", "bot"]
  },
  (accessToken, refreshToken, profile, done) => { 
   process.nextTick(() => done(null, profile));
