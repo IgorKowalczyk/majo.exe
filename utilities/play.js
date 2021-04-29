@@ -16,7 +16,7 @@ module.exports = {
     .setDescription(`💿 Music queue ended so I'm leaving the voice channel.`);
    if (playingMessage && !playingMessage.deleted) {
     try {
-     playingMessage.reactions.removeAll()
+     // playingMessage.reactions.removeAll()
      playingMessage.delete()
     } catch (err) {
      return;
@@ -91,7 +91,7 @@ module.exports = {
    const dispatcher = queue.connection
     .play(stream)
     .on("finish", () => {
-     if (collector && !collector.ended) collector.stop();
+     // if (collector && !collector.ended) collector.stop();
 
      if (queue.loop) {
       let lastSong = queue.songs.shift();
@@ -112,7 +112,7 @@ module.exports = {
    const dispatcher = queue.connection
     .play(stream, { type: streamType })
     .on("finish", () => {
-     if (collector && !collector.ended) collector.stop();
+     //if (collector && !collector.ended) collector.stop();
 
      if (queue.loop) {
       let lastSong = queue.songs.shift();
@@ -144,7 +144,7 @@ module.exports = {
     .setTimestamp()
     .setThumbnail(song.thumbnail.url)
    var playingMessage = await queue.textChannel.send(embed);
-   await playingMessage.react("⏭");
+   /* await playingMessage.react("⏭");
    await playingMessage.react("⏯");
    await playingMessage.react("🔉");
    await playingMessage.react("🔊");
@@ -155,11 +155,13 @@ module.exports = {
    await playingMessage.react("🎵");
    await playingMessage.react("🎶");
    await playingMessage.react("📑");
+   */
   } catch (error) {
    console.error(error);
   }
   try {
   if (silient == true) return;
+  /* 
   const filter = (reaction, user) => user.id !== message.client.user.id;
   var collector = playingMessage.createReactionCollector(filter, {
    time: song.duration > 0 ? song.duration * 1000 : 600000,
@@ -431,10 +433,11 @@ module.exports = {
      break;
    }
   });
+  */
   } catch (err) {
    return;
   }
-  collector.on("end", () => {
+  /*collector.on("end", () => {
    if (playingMessage && !playingMessage.deleted) {
     try {
      playingMessage.reactions.removeAll()
@@ -443,6 +446,6 @@ module.exports = {
      return;
     }
     }
-  })
+  })*/
  }
 }
