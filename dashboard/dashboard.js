@@ -196,7 +196,7 @@ module.exports = async (client) => {
 
  // 404
  app.use(function(req, res, next){
-  res.status(404).render('404.ejs');
+  res.status(404).renderTemplate(res, req, '404.ejs');
  });
 
  console.log("All dashboard process done... Starting in web");

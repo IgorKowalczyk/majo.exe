@@ -5,10 +5,7 @@
 <ul class="menu">
 <% if (user) { %>
 <% if (server) { %>
-<li><a href="https://<%= domain %>/server" target="_blank" rel="noopener">Discord server</a></li>
-<% } %>
-<% if (authorwebsite) { %>
-<li><a href="<%= authorwebsite %>" target="_blank" rel="noopener">Author</a></li>
+<li><a href="https://<%= domain %>/server" target="_blank" rel="noopener">Discord</a></li>
 <% } %>
 <% if (github) { %>
  <li><a href="https://<%= domain %>/github" target="_blank" rel="noopener">Github</a></li>
@@ -16,7 +13,7 @@
 <% if (user.avatar) {
  avatar = "https://cdn.discordapp.com/avatars/" + user.id + "/" + user.avatar + ".png?size=128";
 } else {
- avatar = "https://cdn.glitch.com/82fe990a-7942-42e3-9790-39807ccdb9f6%2Ficon-404.png?v=1602412158188";
+ avatar = "https://" + hostname + "/pics/invaild-avatar.png";
 }
 %>
 <a class="avatar-container dropdownHead" id="dropdownHead" onclick="dropdown(this)"><img class="user-avatar" src="<%= avatar %>"/><span class="user-name"><%= user.username %>#<%= user.discriminator %></span></a>
