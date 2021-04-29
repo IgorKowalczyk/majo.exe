@@ -126,9 +126,9 @@ module.exports = {
      message.channel.send(embed);
      break;
    }
+   try {
    choice = filters[varforfilter];
    if (varforfilter === 404) return;
-   try {
     const song = queue.songs[0];
     message.channel.send(
      new Discord.MessageEmbed()
@@ -137,17 +137,18 @@ module.exports = {
      )
     play(song, message, client, choice);
    } catch (error) {
-    console.error(error);
     message.channel.activeCollector = false;
+    return message.channel.send({embed: {
+    color: 16734039,
+     description: "Something went wrong why applying the effect... :cry:",
+    }})
    }
   } catch (err) {
    console.log(err);
-   message.channel.send({
-    embed: {
+   return message.channel.send({embed: {
      color: 16734039,
      description: "Something went wrong... :cry:",
-    },
-   });
+   }});
   }
  }
 }
