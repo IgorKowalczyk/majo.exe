@@ -133,7 +133,7 @@ module.exports = {
     message.channel.send(
      new Discord.MessageEmbed()
       .setColor("RANDOM")
-      .setDescription("Applying effect: " + args[0])
+      .setDescription("✨ | Applying effect: *" + args[0] + "*\n")
      )
     play(song, message, client, choice);
    } catch (error) {
