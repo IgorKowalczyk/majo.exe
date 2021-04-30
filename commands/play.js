@@ -109,7 +109,7 @@ module.exports = {
     if (!songInfo) {
      console.log("0")
     }
-    console.log(songInfo)
+    // console.log(songInfo)
     song = {
      title: songInfo.title,
      url: songInfo.url,

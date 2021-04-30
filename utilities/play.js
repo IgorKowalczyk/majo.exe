@@ -87,7 +87,7 @@ module.exports = {
   queue.connection.on("disconnect", () => message.client.queue.delete(message.guild.id));
 
   if (isnotayoutube) {
-   console.log("TEST");
+   // console.log("TEST");
    const dispatcher = queue.connection
     .play(stream)
     .on("finish", () => {
@@ -136,7 +136,7 @@ module.exports = {
   else thumb = song.thumbnail.url;
 
   try {
-   if (silient == true) return;
+   if (silient == true) return console.log("Silient is true");
    let embed = new Discord.MessageEmbed()
     .setColor("RANDOM")
     .setAuthor(`Started playing: ${song.title}`, queue.textChannel.guild.iconURL({ dynamic: true, format: 'png'}))

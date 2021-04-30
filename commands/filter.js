@@ -135,7 +135,8 @@ module.exports = {
       .setColor("RANDOM")
       .setDescription("✨ | Applying effect: *" + args[0] + "*\n")
      )
-    play(song, message, client, choice);
+    let silient = true;
+    play(song, message, client, choice, silient);
    } catch (error) {
     message.channel.activeCollector = false;
     return message.channel.send({embed: {
