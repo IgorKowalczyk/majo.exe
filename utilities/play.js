@@ -136,11 +136,12 @@ module.exports = {
   else thumb = song.thumbnail.url;
 
   try {
-   if (silient == true) return console.log("Silient is true");
+   if (silient == true) return // console.log("Silient is true");
    let embed = new Discord.MessageEmbed()
     .setColor("RANDOM")
-    .setAuthor(`Started playing: ${song.title}`, queue.textChannel.guild.iconURL({ dynamic: true, format: 'png'}))
+    .setAuthor(`🎶 Started playing: ${song.title}`, queue.textChannel.guild.iconURL({ dynamic: true, format: 'png'}))
     .setDescription(`[**${song.title}**](${song.url}) \`${song.duration}\``)
+    .setFooter("Requested by " + `${message.author.username}`, message.author.displayAvatarURL({ dynamic: true, format: 'png', size: 2048 }))
     .setTimestamp()
     .setThumbnail(song.thumbnail.url)
    var playingMessage = await queue.textChannel.send(embed);

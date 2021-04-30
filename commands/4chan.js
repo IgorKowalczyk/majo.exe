@@ -71,7 +71,7 @@ module.exports = {
       com = com.replace(/&quot/g, '"');
       com = com.replace(/&#039;/g, "'");
      }
-     var thread = "https://boards.4chan.org/"+ board +"/thread/";
+     var thread = "https://boards.4chan.org/" + board + "/thread/";
      thread += body.threads[postNr].posts[0].no;
      var imgUrl = "https://i.4cdn.org/" + board + "/";
      imgUrl += imgId + "" + imgExt;
