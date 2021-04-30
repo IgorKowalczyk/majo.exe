@@ -51,6 +51,10 @@ module.exports = (client) => {
   const statuschannel = client.channels.cache.get(config.statuschannel)
   if (statuschannel) {
    statuschannel.send("Bot Status - Online | :green_circle:");
+   statuschannel.send({embed: {
+    color: 4779354,
+    description: ":green_circle: | Bot Status - Online",
+   }})
   } else {
    return;
   }
