@@ -86,11 +86,11 @@ module.exports = {
       .setFooter("Requested by " + `${message.author.username}` + " • Image from 4chan boards", message.author.displayAvatarURL({ dynamic: true, format: 'png', size: 2048 }))
      if (embed.description.length >= 2048) {
       embed.description = `${embed.description.substr(0, 2045)}...`;
-      message.channel.send(embed)
-      return message.channel.send({
-       files: [imgUrl]
-      });
      }
+     message.channel.send(embed)
+     return message.channel.send({
+      files: [imgUrl]
+     });
     });
    });
   } catch (err) {
