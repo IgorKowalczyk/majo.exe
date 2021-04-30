@@ -18,32 +18,32 @@ module.exports = {
   if (!channel) {
    return message.channel.send({embed: {
     color: 16734039,
-    description: "You should join a voice channel before using this command!",
+    description: "❌ | You should join a voice channel before using this command!",
    }})
   }
   if (serverQueue && channel !== message.guild.me.voice.channel) {
    return message.channel.send({embed: {
     color: 16734039,
-    description: "`You must be in the same voice channel as me",
+    description: "❌ | You must be in the same voice channel as me",
    }})
   }
   if (!args.length) {
    return message.channel.send({embed: {
     color: 16734039,
-    description: `Usage: ${config.prefix} play <youtube link | youtube video name>`,
+    description: `❌ | Usage: ${config.prefix} play <youtube link | youtube video name>`,
    }})
   }
   const permissions = channel.permissionsFor(message.client.user);
   if (!permissions.has("CONNECT")){
    return message.channel.send({embed: {
     color: 16734039,
-    description: "I need permissions to join your channel!",
+    description: "❌ | I need permissions to join your channel!",
    }})
   }
   if (!permissions.has("SPEAK")) {
    return message.channel.send({embed: {
     color: 16734039,
-    description: "I need permissions to speak in your channel",
+    description: "❌ | I need permissions to speak in your channel",
    }})
   }
   const search = args.join(" ");
@@ -120,7 +120,7 @@ module.exports = {
     queueConstruct.connection.disconnect();
     return message.channel.send({embed: {
      color: 16734039,
-     description: "Cannot play the video!",
+     description: "❌ | Cannot play the video!",
     }})
    }
    } catch (error) {
@@ -128,13 +128,13 @@ module.exports = {
      queueConstruct.connection.disconnect();
      return message.channel.send({embed: {
       color: 16734039,
-      description: "Max uses of api key, please update! (403)",
+      description: "❌ | Max uses of api key, please update! (403)",
      }})
     } else if (song.statusCode === 429) {
      queueConstruct.connection.disconnect();
      return message.channel.send({embed: {
       color: 16734039,
-      description: "Max uses of host requests, please try again later (429)",
+      description: "❌ | Max uses of host requests, please try again later (429)",
      }})
     }
    }
@@ -161,13 +161,13 @@ module.exports = {
    queueConstruct.connection.disconnect();
    return message.channel.send({embed: {
      color: 16734039,
-     description: "Cannot play the video!",
+     description: "❌ | Cannot play the video!",
     }})
    }
    if(!song.title && !song.url && !song.thumbnail && !song.duration) {
     return message.channel.send({embed: {
      color: 16734039,
-     description: "Cannot play the video!",
+     description: "❌ | Cannot play the video!",
     }})
    }
   let thumb = "https://images-ext-2.discordapp.net/external/55DLQjqMFAc-wAiT7O1NJS158tv6OUhsSHmBXmJ0Pkg/%3Fsqp%3D-oaymwEXCNAFEJQDSFryq4qpAwkIARUAAIhCGAE%3D%26rs%3DAOn4CLBz4zlh_7gUzfPyMIc3OcanVj2xyw/https/i.ytimg.com/vi/jJLpszZ6o-c/hq720.jpg";
@@ -210,7 +210,7 @@ module.exports = {
    await channel.leave();
    return message.channel.send({embed: {
     color: 16734039,
-    description: "I could not join the channel"
+    description: "❌ | I could not join the channel"
    }})
   }
  },

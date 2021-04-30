@@ -14,13 +14,13 @@ module.exports = {
   try {
    if (!args[0]) return message.channel.send({embed: {
     color: 16734039,
-    description: "Please enter a Github username"
+    description: "❌ | Please enter a Github username"
    }})
    fetch(`https://api.github.com/users/${args.join('-')}`)
     .then(res => res.json()).then(body => {
      if(body.message) return message.channel.send({embed: {
       color: 16734039,
-      description: "0 Users found, please provide vaild username"
+      description: "❌ | 0 Users found, please provide vaild username"
      }})
      let {login, avatar_url, name, id, html_url, public_repos, followers, following, location, created_at, bio} = body;
      const embed = new Discord.MessageEmbed()

@@ -17,7 +17,7 @@ module.exports = {
    if (!queue) {
     return message.channel.send({embed: {
      color: 16734039,
-      description: "Nothing is playing right now!",
+      description: "❌ | Nothing is playing right now!",
     }})
    }
    let lyrics = null;
@@ -28,7 +28,7 @@ module.exports = {
     lyrics = `No lyrics found for ${queue.songs[0].title}`;
    }
    let embed = new Discord.MessageEmbed()
-    .setTitle(`Lyrics For ${queue.songs[0].title}`)
+    .setTitle(`📑 Lyrics For ${queue.songs[0].title}`)
     .setDescription(lyrics)
     .setColor("RANDOM")
     .setTimestamp()

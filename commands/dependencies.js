@@ -11,7 +11,7 @@ module.exports = {
  run: async (client, message, args) => {
   try {
    const embed = new Discord.MessageEmbed()
-    .setTitle(":bricks: Dependencies")
+    .setTitle("📦 Dependencies")
     .setDescription(client.user.tag + " run on " + Object.keys(require('../package').dependencies).length + " npm dependencies (Javascript power 💪)")
     .setTimestamp()
     .setColor("RANDOM")

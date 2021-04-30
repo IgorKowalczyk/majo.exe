@@ -16,28 +16,27 @@ module.exports = {
    if (!channel) {
     return message.channel.send({embed: {
      color: 16734039,
-     description: "You should join a voice channel before using this command!",
+     description: "❌ | You should join a voice channel before using this command!",
     }})
    }
    let queue = message.client.queue.get(message.guild.id);
    if(!queue) {
     return message.channel.send({embed: {
      color: 16734039,
-     description: "There is nothing in the queue right now!",
+     description: "❌ | There is nothing in the queue right now!",
     }})
    }
    if (queue.connection.dispatcher) {
     queue.songs = []
     queue.connection.dispatcher.end()
-    message.react('✅')
     message.channel.send({embed: {
      color: 4779354,
-     description: "Stopped the music",
+     description: "⏸️ | Stopped the music",
     }})
    } else {
     message.channel.send({embed: {
      color: 16734039,
-     description: "Cannot stop the music",
+     description: "❌ | Cannot stop the music",
     }})
    }
   } catch (err) {

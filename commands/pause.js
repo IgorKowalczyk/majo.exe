@@ -15,7 +15,7 @@ module.exports = {
    if (!queue) {
     return message.channel.send({embed: {
      color: 16734039,
-     description: "This is nothing playing right now",
+     description: "❌ | This is nothing playing right now",
     }})
    }
    if (!canModifyQueue(message.member)) return;
@@ -24,8 +24,7 @@ module.exports = {
     queue.connection.dispatcher.pause(true);
     const pausemebed = new Discord.MessageEmbed()
      .setColor("RANDOM")
-     .setDescription(`<@${message.author.id}> paused the music.`)
-    message.react("⏸");
+     .setDescription(`⏸️ | <@${message.author.id}> paused the music.`)
     return queue.textChannel.send(pausemebed).catch(console.error);
    }
   } catch (err) {

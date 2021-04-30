@@ -12,33 +12,33 @@ module.exports = {
   let rate = args.join(" ");
   if (!rate) return  message.channel.send({embed: {
    color: 16734039,
-   description: "Please enter a text!"
+   description: "❌ | Please enter a text!"
   }})
   if (rate.length > 30) return  message.channel.send({embed: {
    color: 16734039,
-   title: "I can't rate that. Max text length is 30!"
+   title: "❌ | I can't rate that. Max text length is 30!"
    }})
   let result = Math.floor((Math.random() * 100) + 0);
   const happyrate = new Discord.MessageEmbed()
-   .setDescription(`I would rate **${rate}** ${result}/100 ?`)
+   .setDescription(`✨ | I would rate **${rate}** ${result}/100 ?`)
    .setColor(`GREEN`)
   const sadembed = new Discord.MessageEmbed()
-   .setDescription(`I would rate **${rate}** ${result}/100 ??`)
+   .setDescription(`✨ | I would rate **${rate}** ${result}/100 ??`)
    .setColor(`RED`)
   const idkembed = new Discord.MessageEmbed()
-   .setDescription(`I would rate **${rate}** ${result}/100 ??`)
-   .setColor(`RED`)
+   .setDescription(`✨ | I would rate **${rate}** ${result}/100 ??`)
+   .setColor(`YELLOW`)
   const shrugembed = new Discord.MessageEmbed()
-   .setDescription(`I would rate **${rate}** ${result}/100 ??`)
+   .setDescription(`✨ | I would rate **${rate}** ${result}/100 ??`)
    .setColor(`YELLOW`)
   const okembed = new Discord.MessageEmbed()
-   .setDescription(`I would rate **${rate}** ${result}/100 ??`)
+   .setDescription(`✨ | I would rate **${rate}** ${result}/100 ??`)
    .setColor(`GREEN`)
   const thumbupembed = new Discord.MessageEmbed()
-   .setDescription(`I would rate **${rate}** ${result}/100 ??`)
+   .setDescription(`✨ | I would rate **${rate}** ${result}/100 ??`)
    .setColor(`GREEN`)
   const eyesembed = new Discord.MessageEmbed()
-  .setDescription(`I would rate **${rate}** ${result}/100 ??`)
+  .setDescription(`✨ | I would rate **${rate}** ${result}/100 ??`)
   .setColor(`GREEN`)
   if (result > 90) return message.channel.send(happyrate)
   if (result < 30) return message.channel.send(sadembed)

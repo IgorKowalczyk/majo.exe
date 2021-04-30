@@ -18,13 +18,13 @@ module.exports = {
    if(!args[0]) {
     return message.channel.send({embed: {
      color: 16734039,
-     description: "Hey! Please provide some message to talk to me :("
+     description: "❌ | Hey! Please provide some message to talk to me :("
     }});
    }
    if(message.mentions.members.first()) {
     return message.channel.send({embed: {
      color: 16734039,
-     description: "Hey! Please don't ping people >:("
+     description: "❌ | Hey! Please don't ping people >:("
     }});
    }
    try {
@@ -33,7 +33,7 @@ module.exports = {
     if(body.cnt == 0) {
      return message.channel.send({embed: {
       color: 16734039,
-      description: "Some error occured with my brain cells... Please try again later"
+      description: "❌ | Some error occured with my brain cells... Please try again later"
      }});
     } else {
      const embed = new Discord.MessageEmbed()

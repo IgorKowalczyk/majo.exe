@@ -21,14 +21,14 @@ module.exports = {
     } else {
      await message.channel.send({embed: {
       color: 16734039,
-      description: "You need to enter a Message!"
+      description: "✨ | You need to enter a message!"
      }});
     }
    }
   } else {
    message.channel.send({embed: {
     color: 16734039,
-    description: "You don't have premission to send this message by me!"
+    description: "❌ | You don't have premission to send this message by me!"
    }})
   }
  }

@@ -16,27 +16,27 @@ module.exports = {
    if (!channel) {
     return message.channel.send({embed: {
      color: 16734039,
-     description: "You should join a voice channel before using this command!",
+     description: "❌ | You should join a voice channel before using this command!",
     }})
    }
    let queue = message.client.queue.get(message.guild.id)
    if(!args[0]) {
     return message.channel.send({embed: {
      color: 4779354,
-     description: 'The current volume is set to: ' + queue.volume,
+     description: '🔉 | The current volume is set to: ' + queue.volume,
     }})
    }
    if(args[0] > 10) {
     return message.channel.send({embed: {
      color: 4779354,
-     description: 'You can\t set volume higher than 10 (Your ears.. 🪦)'
+     description: '❌ | You can\'t set volume higher than 10 (Your ears.. 🪦)'
     }})
    }
    queue.connection.dispatcher.setVolumeLogarithmic(args[0] / 5);
    queue.volume = args[0]
    return message.channel.send({embed: {
     color: 4779354,
-    description: 'Volume is now set to ' + args[0],
+    description: '🔉 | Volume is now set to ' + args[0],
    }})
   } catch (err) {
    console.log(err);

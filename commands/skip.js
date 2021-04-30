@@ -16,14 +16,14 @@ module.exports = {
    if (!channel) {
     return message.channel.send({embed: {
      color: 16734039,
-     description: "You should join a voice channel before using this command!",
+     description: "❌ | You should join a voice channel before using this command!",
     }})
    }
    let queue = message.client.queue.get(message.guild.id)
    if(!queue) {
     return message.channel.send({embed: {
      color: 16734039,
-     description: "There is nothing in the queue right now!",
+     description: "❌ | There is nothing in the queue right now!",
     }})
    }
    if(queue.songs.length !== 0) {
@@ -31,12 +31,12 @@ module.exports = {
      queue.connection.dispatcher.end()
      message.channel.send({embed: {
       color: 4779354,
-      description: "Skipped the music",
+      description: "⏭️ | Skipped the music",
      }})
     } else {
      message.channel.send({embed: {
       color: 16734039,
-      description: "Error, cannot skip music!",
+      description: "❌ | Error, cannot skip music!",
      }})
     }
    }

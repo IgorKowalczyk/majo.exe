@@ -15,15 +15,15 @@ module.exports = {
     let user = message.mentions.members.first();
     if (!user) return message.channel.send({embed: {
      color: 16734039,
-     description: "You must mention someone to add money!"
+     description: "❌ | You must mention someone to add money!"
     }})
     if (isNaN(args[1])) return message.channel.send({embed: {
      color: 16734039,
-     description: "You must enter the amount of money to add!"
+     description: "❌ | You must enter the amount of money to add!"
     }})
     const negative = new Discord.MessageEmbed()
      .setColor("FF5757")
-     .setDescription(`You can't deposit negative money`);
+     .setDescription(`❌ | You can't deposit negative money`);
     if (message.content.includes('-')) { 
      return message.channel.send(negative).catch(err => console.log(err))
     }
@@ -39,7 +39,7 @@ module.exports = {
    } else {
     message.channel.send({embed: {
      color: 16734039,
-     description: "You don't have premission add money!"
+     description: "❌ | You don't have premission add money. You need the \`MANAGE_MESSAGES\` premission!"
     }})
    }
   } catch(err) {

@@ -14,38 +14,33 @@ module.exports = {
    if (!args[0]) {
     return message.channel.send({embed: {
      color: 16734039,
-     title: "You did not specify your time!",
-     description: "Correct formatting: \`number<d/h/m>\`.\nLegend: \`d\` - Day, \`h\` - Hour/s, \`m\` - Minute/s"
+     description: "❌ | You did not specify your time!\nCorrect formatting: \`number<d/h/m>\`.\nLegend: \`d\` - Day, \`h\` - Hour/s, \`m\` - Minute/s"
     }})
    }
    if (!args[0].endsWith("d") && !args[0].endsWith("h") && !args[0].endsWith("m")) {
     return message.channel.send({embed: {
      color: 16734039,
-     title: "You didn't use the correct formatting for the time!",
-     description: "Correct formatting: \`number<d/h/m>\`.\nLegend: \`d\` - Day, \`h\` - Hour/s, \`m\` - Minute/s"
+     description: "❌ | You didn't use the correct formatting for the time!\nCorrect formatting: \`number<d/h/m>\`.\nLegend: \`d\` - Day, \`h\` - Hour/s, \`m\` - Minute/s"
     }})
    }
    if (isNaN(args[0][0])) {
     return message.channel.send({embed: {
      color: 16734039,
-     title: "You didn't specify your time!",
-     description: "Correct formatting: \`number<d/h/m>\`.\nLegend: \`d\` - Day, \`h\` - Hour/s, \`m\` - Minute/s"
+     description: "❌ | You didn't specify your time!\nCorrect formatting: \`number<d/h/m>\`.\nLegend: \`d\` - Day, \`h\` - Hour/s, \`m\` - Minute/s"
     }})
    }
    let channel = message.mentions.channels.first();
    if (!channel) {
     return message.channel.send({embed: {
      color: 16734039,
-     title: "You didn't enter a channel!",
-     description: "You must provide a channel in the guild to create giveaway!"
+     description: "❌ | You didn't enter a channel!\nYou must provide a channel in the guild to create giveaway!"
     }})
    }
    let prize = args.slice(2).join(" ");
    if (!prize) {
     return message.channel.send({embed: {
      color: 16734039,
-     title: "You must enter a prize to start giveaway!",
-     description: "No prize specified!"
+     description: "❌ | You must enter a prize to start giveaway!",
     }})
    }
    const endembed = new Discord.MessageEmbed()
@@ -73,7 +68,7 @@ module.exports = {
     if (m.reactions.cache.get("🎉").count <= 1) {
     return channel.send({embed: {
      color: 16734039,
-     description: "Not enough people reacted for me to start draw a winner! (" + `${m.reactions.cache.get("🎉").count}` + " reactions)",
+     description: "❌ | Not enough people reacted for me to start draw a winner! (" + `${m.reactions.cache.get("🎉").count}` + " reactions)",
     }})
     }
     let winner = m.reactions.cache.get("🎉").users.cache.filter((u) => !u.bot).random();

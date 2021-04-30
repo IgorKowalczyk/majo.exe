@@ -14,13 +14,13 @@ module.exports = {
    if (!args[0]) {
     return message.channel.send({embed: {
      color: 16734039,
-     description: "You must provide a text!"
+     description: "❌ | You must provide a text!"
     }})
    }
    const max = 50;
    if (args.lenght > max) return message.channel.send({embed: {
     color: 16734039,
-    description: `The max lenght for text is ${max} letters!`
+    description: `❌ | The max lenght for text is ${max} letters!`
    }})
    var flipped = [];
    args.forEach((arg) => {

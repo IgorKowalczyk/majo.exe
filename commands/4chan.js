@@ -15,14 +15,14 @@ module.exports = {
    if (!message.channel.nsfw) {
     return message.channel.send({embed: {
      color: 16734039,
-     description: "This command can only be used in NSFW channels!"
+     description: "💢 | This command can only be used in NSFW channels!"
     }})
    }
    let chanargs = args.slice(0).join(' ');
    if (!chanargs) {
     return message.channel.send({embed: {
      color: 16734039,
-     description: "Please enter a board! To see all boards check \`" + `${prefix}` + " 4chan boards\`"
+     description: "💢 | Please enter a board! To see all boards check \`" + `${prefix}` + " 4chan boards\`"
     }})
    }
    if (chanargs === "boards") {
@@ -38,7 +38,7 @@ module.exports = {
    if(boards.indexOf(board) == -1) {
     let vb = new Discord.MessageEmbed()
      .setColor(16734039)
-     .setDescription("Please enter a vaild board! To see all boards check \`" + `${prefix}` + " 4chan boards\`")
+     .setDescription("💢 | Please enter a vaild board! To see all boards check \`" + `${prefix}` + " 4chan boards\`")
     return message.channel.send(vb);
    }
    var board = args;
@@ -75,21 +75,24 @@ module.exports = {
      thread += body.threads[postNr].posts[0].no;
      var imgUrl = "https://i.4cdn.org/" + board + "/";
      imgUrl += imgId + "" + imgExt;
-     let chan = new Discord.MessageEmbed()
+     let embed = new Discord.MessageEmbed()
       .setColor("RANDOM")
       .setTitle("🍀 " + sub, message.guild.iconURL({ dynamic: true, format: 'png'}), thread)
-      .addField("Description:", com.substring(0, maxlength))
+      .setDescription(com)
       .addField("Thread:", thread)
-      .addField("Img:", imgUrl)
+      .addField("Image:", imgUrl)
       .setURL(thread)
       .setTimestamp()
-      .setFooter("Requested by " + `${message.author.username}` + " • Img from 4chan boards", message.author.displayAvatarURL({ dynamic: true, format: 'png', size: 2048 }))
-     message.channel.send(chan);
-     message.channel.send({
-      files: [imgUrl]
+      .setFooter("Requested by " + `${message.author.username}` + " • Image from 4chan boards", message.author.displayAvatarURL({ dynamic: true, format: 'png', size: 2048 }))
+     if (embed.description.length >= 2048) {
+      embed.description = `${embed.description.substr(0, 2045)}...`;
+      message.channel.send(embed)
+      return message.channel.send({
+       files: [imgUrl]
+      });
+     }
     });
    });
-  });
   } catch (err) {
    message.channel.send({embed: {
     color: 16734039,

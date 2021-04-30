@@ -16,18 +16,18 @@ module.exports = {
    /*if (!channel) {
     return message.channel.send({embed: {
      color: 16734039,
-     description: "You should join a voice channel before using this command!",
+     description: "❌ | You should join a voice channel before using this command!",
     }})
    }*/
    let queue = message.client.queue.get(message.guild.id)
    if(!queue) {
     return message.channel.send({embed: {
      color: 16734039,
-     description: "There is nothing playing right now!",
+     description: "❌ | There is nothing playing right now!",
     }})
    }
    const embed = new Discord.MessageEmbed()
-   .setTitle("Now Playing", message.guild.iconURL({ dynamic: true, format: 'png'}))
+   .setTitle("🎶 Now Playing", message.guild.iconURL({ dynamic: true, format: 'png'}))
    .setDescription(queue.songs[0].title + ' Requested By: ' + '<@' + queue.songs[0].requester + '>')
    .setThumbnail(queue.songs[0].thumbnail)
    .setTimestamp()

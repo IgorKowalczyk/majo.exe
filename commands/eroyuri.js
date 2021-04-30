@@ -11,10 +11,9 @@ module.exports = {
  usage: "eroyuri",
  run: async (client, message, args) => {
   if (!message.channel.nsfw) {
-   message.react('💢');
    return message.channel.send({embed: {
     color: 16734039,
-    description: "You can use this command in an NSFW Channel!"
+    description: "💢 | You can use this command in an NSFW Channel!"
    }})
   }
   (async () => {
@@ -25,7 +24,7 @@ module.exports = {
      .setTitle(":smirk: Ero!", message.guild.iconURL({ dynamic: true, format: 'png'}))
      .setImage(body.url)
      .setColor("RANDOM")
-     .setFooter("Requested by " + `${message.author.username}` + " • (😏)", message.author.displayAvatarURL({ dynamic: true, format: 'png', size: 2048 }))
+     .setFooter("Requested by " + `${message.author.username}`, message.author.displayAvatarURL({ dynamic: true, format: 'png', size: 2048 }))
      .setTimestamp()
      .setURL(body.url);
     message.channel.send(embed);

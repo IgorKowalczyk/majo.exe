@@ -26,7 +26,7 @@ module.exports = {
    }
    const duration = moment.duration(client.uptime).format(" D [days], H [hrs], m [mins], s [secs]");
    const embed = new Discord.MessageEmbed()
-    .setTitle(`Information for developers`, message.guild.iconURL({ dynamic: true, format: 'png'}))
+    .setTitle(`📄 Information for developers`, message.guild.iconURL({ dynamic: true, format: 'png'}))
     .setColor("RANDOM")
     .setDescription(`My prefix is: \`${config.prefix}\`\n`)
     .addField('Head developer', `${config.author} \[[Website](${config.authorwebsite})\]`, true)

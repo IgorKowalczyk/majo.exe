@@ -19,9 +19,8 @@ module.exports = {
    if (beg !== null && timeout - (Date.now() - beg) > 0) {
     const errtime = ms(timeout - (Date.now() - beg));
     const time = new Discord.MessageEmbed()
-     .setTitle("Error!", message.guild.iconURL({ dynamic: true, format: 'png'}))
      .setColor("FF5757")
-     .setDescription(`You've already begged recently\n\nBeg again in ${time.minutes}m ${time.seconds}s`)
+     .setDescription(`❌ | You've already begged recently\n\nBeg again in ${time.minutes}m ${time.seconds}s`)
      .setFooter("Requested by " + `${message.author.username}`, message.author.displayAvatarURL({ dynamic: true, format: 'png', size: 2048 }))
     message.channel.send(errtime)
    } else {
@@ -35,6 +34,7 @@ module.exports = {
     db.set(`beg_${message.guild.id}_${user.id}`, Date.now())
    }
   } catch (err) {
+   console.log(err);
    message.channel.send({embed: {
     color: 16734039,
     description: "Something went wrong... :cry:"

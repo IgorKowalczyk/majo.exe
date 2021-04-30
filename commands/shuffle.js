@@ -16,14 +16,14 @@ module.exports = {
    if (!channel) {
     return message.channel.send({embed: {
      color: 16734039,
-     description: "You should join a voice channel before using this command!",
+     description: "❌ | You should join a voice channel before using this command!",
     }})
    }
    const queue = message.client.queue.get(message.guild.id)
    if(!queue) {
     return message.channel.send({embed: {
      color: 16734039,
-     description: "There is nothing in the queue right now!",
+     description: "❌ | There is nothing in the queue right now!",
     }})
    }
    let songs = queue.songs;
@@ -35,7 +35,7 @@ module.exports = {
    message.client.queue.set(message.guild.id, queue);
    message.channel.send({embed: {
     color: 4779354,
-    description: "Shuffled the current queue 🔀",
+    description: "🔀 | Shuffled the current queue",
    }})
   } catch (err) {
    console.log(err);

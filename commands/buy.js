@@ -17,9 +17,8 @@ module.exports = {
    if (args[0] == 'bronze') {
     if (author < 3500) {
      const bronzeerror = new Discord.MessageEmbed()
-      .setTitle("Error!", message.guild.iconURL({ dynamic: true, format: 'png'}))
       .setColor(16734039)
-      .setDescription(`You need 3500 coins to purchase Bronze VIP`)
+      .setDescription(`❌ | You need 3500 coins to purchase Bronze VIP`)
       .setFooter("Requested by " + `${message.author.username}`, message.author.displayAvatarURL({ dynamic: true, format: 'png', size: 2048 }))
      return message.channel.send(bronzeerror);
     }
@@ -36,9 +35,8 @@ module.exports = {
    } else if(args[0] == 'nikes') {
     if (author < 600) {
      const nikeserror = new Discord.MessageEmbed()
-      .setTitle("Error!", message.guild.iconURL({ dynamic: true, format: 'png'}))
       .setColor(16734039)
-      .setDescription(`You need 600 coins to purchase some Nikes`)
+      .setDescription(`❌ | You need 600 coins to purchase some Nikes`)
       .setFooter("Requested by " + `${message.author.username}`, message.author.displayAvatarURL({ dynamic: true, format: 'png', size: 2048 }))
      return message.channel.send(nikeserror);
     }
@@ -55,9 +53,8 @@ module.exports = {
    } else if(args[0] == 'car') {
     if (author < 800) {
      const carerror = new Discord.MessageEmbed()
-     .setTitle("Error!", message.guild.iconURL({ dynamic: true, format: 'png'}))
      .setColor(16734039)
-     .setDescription(`You need 800 coins to purchase a new car`)
+     .setDescription(`❌ | You need 800 coins to purchase a new car`)
      .setFooter("Requested by " + `${message.author.username}`, message.author.displayAvatarURL({ dynamic: true, format: 'png', size: 2048 }))
      return message.channel.send(carerror);
     }
@@ -74,9 +71,8 @@ module.exports = {
    } else if(args[0] == 'mansion') {
     if (author < 1200) {
      const mansionerror = new Discord.MessageEmbed()
-      .setTitle("Error!", message.guild.iconURL({ dynamic: true, format: 'png'}))
       .setColor(16734039)
-      .setDescription(` You need 1200 coins to purchase a Mansion`)
+      .setDescription(` ❌ | You need 1200 coins to purchase a Mansion`)
       .setFooter("Requested by " + `${message.author.username}`, message.author.displayAvatarURL({ dynamic: true, format: 'png', size: 2048 }))
      return message.channel.send(mansionerror);
     }
@@ -93,7 +89,7 @@ module.exports = {
 	 } else if(args[0] == 'list') {
     const list = new Discord.MessageEmbed()
      .setColor("RANDOM")
-     .setTitle("List of all items you have to buy:")
+     .setTitle("📄 List of all items you have to buy:")
      .addField("Bronze", "Cost: 3500 coins")
 	   .addField("Nikes", "Cost: 600 coins")
   	 .addField("Car", "Cost: 800 coins")
@@ -103,7 +99,7 @@ module.exports = {
    } else {
     const noitem = new Discord.MessageEmbed()
      .setColor("FF5757")
-     .setDescription("Enter an item to buy, type `" + `${prefix}` + " buy list` to show all things")
+     .setDescription("❌ | Enter an item to buy, type `" + `${prefix}` + " buy list` to show all things")
     message.channel.send(noitem)
    }
  } catch (err) {

@@ -14,18 +14,18 @@ module.exports = {
    if (!args[0]) {
     return message.channel.send({embed: {
      color: 16734039,
-     description: "You must enter a text!"
+     description: "❌ | You must enter a text!"
     }})
    }
    if (args.join(" ") > 20) {
     return message.channel.send({embed: {
      color: 16734039,
-     description: "Max lenght for the text is 20!"
+     description: "❌ | Max lenght for the text is 20!"
     }})
    }
    const wait = await message.channel.send({embed: {
     color: 4779354,
-    description: "Please wait... I'm generating your image",
+    description: "✨ | Please wait... I'm generating your image",
    }})
    const ohno = await canvacord.Canvas.ohno(args.join(" "));
    const attachment = new Discord.MessageAttachment(ohno, "ohno.png");

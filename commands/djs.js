@@ -16,7 +16,7 @@ module.exports = {
    if (!version) version = 'stable'
   if (!query) return message.channel.send({embed: {
    color: 16734039,
-   description: "Please enter a term to search!"
+   description: "❌ | Please enter a term to search!"
   }})
   const res = await fetch(`https://djsdocs.sorta.moe/v2/embed?src=${version}&q=${query}`)
   const body = await res.json()
@@ -25,7 +25,7 @@ module.exports = {
   }).catch(c => {
    message.channel.send({embed: {
     color: 16734039,
-    description: "Invaild query!"
+    description: "❌ | nvaild query!"
    }})
   })
   } catch (err) {

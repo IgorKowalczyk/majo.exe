@@ -15,11 +15,11 @@ module.exports = {
    var max = 1000;
    if(args.join(' ').length > max) return message.channel.send({embed: {
     color: 16734039,
-    description: "The max length for ascii is " + `${max}` + " !"
+    description: "❌ | The max length for ascii is " + `${max}` + " !"
    }})
    if(!args[0]) return message.channel.send({embed: {
     color: 16734039,
-    description: "Please enter a text to convert!"
+    description: "❌ | Please enter a text to convert!"
    }})
    figlet(`${args.join(' ')}`, function(err, data) {
     if (err) {
