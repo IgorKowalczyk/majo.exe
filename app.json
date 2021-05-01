@@ -22,6 +22,10 @@
    "description": "Your Amethyste api token",
    "required": true
   },
+  "COOKIES": {
+   "description": "Your Youtube cookies",
+   "required": true
+  },
   "BRAINID": {
    "description": "Your Brainshop AI Brain ID",
    "required": true
@@ -34,8 +38,8 @@
    "description": "Your website domain (eg https://example.com)",
    "required": false
   },
-  "PORT": {
-   "description": "Your webiste port, (eg. 8080)",
+  "ID": {
+   "description": "Your Discord Bot ID",
    "required": false
   },
   "DASHBOARD": {

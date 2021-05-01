@@ -22,6 +22,7 @@ However, if you want to host Majo yourself - take a look here](#self-hosting)
 
 ### Heroku Hosting
 Deploy the app to [Heroku](https://heroku.com)
+
 [![Deploy to heroku](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy?template=https://github.com/aurolia-css/majo-rebuild/tree/master)
 
 [Heroku hosting tutorial](#heroku)
@@ -38,10 +39,11 @@ Deploy the app to [Heroku](https://heroku.com)
     * **Required:**
     * `TOKEN` - Bot token from Discord Developer portal [no. 3]
     * `PREFIX` - Bot prefix, used to run commands eg. `your-prefix help`
+    * `ID` - Your Discord Bot ID
     * `AMEAPI` - your Ametyhyste API token [Tutorial how to get it](#ameapi-token)
     * `BRAINID` - Your Brainshop AI Brain ID [Tutorial](#ai-keys)
     * `BRAINKEY` - Your Brainshop AI Brain Key [Tutorial](#ai-keys)
-    * `YOUTUBE` - Your Youtube API key [Tutorial](#youtube)
+    * `COOKIES` - Your Youtube Cookies [Tutorial](#youtube)
     * **Not required (You can leave them blank):**
     * `DOMAIN` - your website domain, eg `https://example.com`
     * `PORT` - your website port, eg `8080`. [Note: If you are using heroku, not create this value. Heroku binds port automatically]
@@ -49,7 +51,7 @@ Deploy the app to [Heroku](https://heroku.com)
     * `SESSION_SECRET` - Session secret key, random sequence of words, letterss or numbers
     * `SECRET` - Client secret from Discord Developers portal [no. 3]
     * `ANALYTICS` - Google Trakcing ID, for Website analytics [Tutorial how to get it](#analytics-id)
-1. Run `npm run start`
+7. Run `npm run start`
 > Note: See the example [`.env` file below](#example-env-file)!
 
 # Example `.env` file
@@ -65,20 +67,20 @@ Deploy the app to [Heroku](https://heroku.com)
 # reference these in your code with process.env.SECRET
 
 # Required
-TOKEN=YOUR-TOKEN-GOES-HERE
+TOKEN=YOUR_TOKEN_GOES_HERE
 PREFIX=!majo
-AMEAPI=YOUR-AMETHYSTE-API-TOKEN
+AMEAPI=YOUR_AMETHYSTE_API_TOKEN
 
 # Not required
-DOMAIN-YOUR-WEBSITE-DOMAIN
-PORT=YOUR-WEBSITE-PORT
-BRAINID=YOUR-BRAINSHOP-AI-BRAIN-ID
-BRAINKEY=YOUR-BRAINSHOP-AI-BRAIN-KEY
-YOUTUBE-YOUR-YOUTUBE-API-KEY
+DOMAIN=YOUR_WEBSITE_DOMAIN
+PORT=YOUR_WEBSITE_PORT
+BRAINID=YOUR_BRAINSHOP_AI_BRAIN_ID
+BRAINKEY=YOUR_BRAINSHOP_AI_BRAIN_KEY
+COOKIES=YOUR_YOUTUBE_COOKIES
 DASHBOARD=[true/false]
-SESSION_SECRET=YOUR-SESSION-SECRET-(RANDOM-WORDS)
-SECRET=YOUR-BOT-CLIENT-SECRET
-ANALYTICS=YOUR-GOOGLE-TRACKING-ID
+SESSION_SECRET=YOUR_SESSION_SECRET_(RANDOM_WORDS)
+SECRET=YOUR_BOT_CLIENT_SECRET
+ANALYTICS=YOUR_GOOGLE_TRACKING_ID
 # !majo is the default prefix, you can change it later.
 
 # Note: .env is a shell file so there can't be spaces around =
@@ -90,10 +92,11 @@ ANALYTICS=YOUR-GOOGLE-TRACKING-ID
 |---|---|---|
 | TOKEN | The bot token (Remember! The `TOKEN` is super secret) | :heavy_check_mark: |
 | PREFIX | The default bot prefix (eg. `!majo`) | :heavy_check_mark: |
+| ID | Your Discord Bot ID | :heavy_check_mark: |
 | AMEAPI | Your Amethyste api token | :heavy_check_mark: |
 | BRAINID | Your Brainshop AI Brain ID | :heavy_check_mark: |
 | BRAINKEY | Your Brainshop AI Brain Key | :heavy_check_mark: |
-| YOUTUBE | Your Youtube API key | :heavy_check_mark: |
+| COOKIES | Your youtube cookies | :heavy_check_mark: |
 | DOMAIN | Your website domain (eg `https://example.com`)`*` | :x:/:heavy_check_mark: |
 | PORT| Your webiste port, (eg. `8008 `)`*`| :x:/:heavy_check_mark: |
 | DASHBOARD | The Web-Dashboard config value. (eg. `true/false`, default value: `false`)`*` | :x: |
