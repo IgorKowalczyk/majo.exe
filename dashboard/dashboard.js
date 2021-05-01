@@ -29,7 +29,7 @@ module.exports = async (client) => {
   clientSecret: config.clientSecret,
   callbackURL: `${config.domain}${config.port != 80 ? "" : `:${config.port}`}/callback`,
   response_type: `token`,
-  scope: ["identify", "guilds", "guilds.join", "bot"]
+  scope: ["identify", "guilds", "guilds.join"]
  },
  (accessToken, refreshToken, profile, done) => { 
   process.nextTick(() => done(null, profile));
@@ -175,20 +175,29 @@ module.exports = async (client) => {
  });
 
  // Dashboard error handler
- app.get("/dashboard-error", (req, res) => {
+ app.get("/dashboard-premissions-error", (req, res) => {
   renderTemplate(res,  req, "error.ejs", {
    perms: Discord.Permissions
   });
  });
-
+  app.get("/dashboard-guild-error", (req, res) => {
+   renderTemplate(res,  req, "error.ejs", {
+   perms: Discord.Permissions
+  });
+ });
+ app.get("/dashboard-member-error", (req, res) => {
+  renderTemplate(res,  req, "error.ejs", {
+  perms: Discord.Permissions
+  });
+ });
  // Settings endpoint.
  app.get("/dashboard/:guildID", checkAuth, async (req, res) => {
   // Vlidate the request, check if guild exists, member is in guild and if member has minimum permissions
   const guild = client.guilds.cache.get(req.params.guildID);
-  if (!guild) return res.redirect("/dashboard-error");
+  if (!guild) return res.redirect("/dashboard-guild-error");
   const member = guild.members.cache.get(req.user.id);
-  if (!member) return res.redirect("/dashboard-error");
-  if (!member.permissions.has("MANAGE_GUILD")) return res.redirect("/dashboard-error");
+  if (!member) return res.redirect("/dashboard-member-error");
+  if (!member.permissions.has("MANAGE_GUILD")) return res.redirect("/ddashboard-premissions-error");
   renderTemplate(res, req, "server.ejs", {
    guild: guild,
   });
