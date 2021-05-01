@@ -10,20 +10,20 @@ module.exports = {
  run: async (client, message, args) => {
   try {
    if(!args[0]) {
-    return message.channel.send('Please specify a location')
+    return message.channel.send('❌ | Please specify a location')
    }
-   weather.find({search: args.join(" "), degreeType: 'F'}, function (error, result){
+   weather.find({search: args.join(" "), degreeType: 'C'}, function (error, result){
     // 'C' can be changed to 'F' for farneheit results
     if(error) {
      return message.channel.send({embed: {
       color: 16734039,
-      description: "Something went wrong... :cry:"
+      description: "❌ | Something went wrong... :cry:"
      }})
     }
     if(result === undefined || result.length === 0) {
      return message.channel.send({embed: {
       color: 16734039,
-      description: "Invaild location!"
+      description: "❌ | Invaild location!"
      }})
     }
     const current = result[0].current;
