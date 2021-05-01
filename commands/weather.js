@@ -10,7 +10,10 @@ module.exports = {
  run: async (client, message, args) => {
   try {
    if(!args[0]) {
-    return message.channel.send('❌ | Please specify a location')
+    return message.channel.send({embed: {
+     color: 16734039,
+     description: "❌ | Please specify a location",
+    }})  
    }
    weather.find({search: args.join(" "), degreeType: 'C'}, function (error, result){
     // 'C' can be changed to 'F' for farneheit results
@@ -33,12 +36,12 @@ module.exports = {
      .setThumbnail(current.imageUrl)
      .setColor("RANDOM")
      .setDescription(`**${current.skytext}**`)
-     .addField('⏱️ Timezone', `UTC${location.timezone}`)
-     .addField('📏 Degree Type', 'Celsius')
      .addField('🌡️ Temperature', `${current.temperature}°`)
-     .addField('🌪️ Wind', current.winddisplay, true)
      .addField('🥵 Feels like', `${current.feelslike}°`)
+     .addField('🌪️ Wind', current.winddisplay, true)
      .addField('💦 Humidity', `${current.humidity}%`)
+     .addField('📏 Degree Type', 'Celsius')
+     .addField('⏱️ Timezone', `UTC${location.timezone}`)
      .setTimestamp()
      .setFooter("Requested by " + `${message.author.username}`, message.author.displayAvatarURL({ dynamic: true, format: 'png', size: 2048 }))
     message.channel.send(weatherinfo)

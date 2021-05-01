@@ -26,6 +26,7 @@ module.exports = {
  "pruning": "5000",
  "cookies": process.env.COOKIES,
  "statuschannel": "712024850675531786",
+ "suggestionschannel": "838092194530852884",
  "newstitle": "<a:success:759354039242063903> Good news!",
  "news":  "Majo.exe is waiting for verification because it is on over 75 servers. We are sorry if you can't add Majo.exe to your server now, it will be possible soon. Thank you for your support. Stay tuned!"
 }
