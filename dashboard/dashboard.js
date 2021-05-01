@@ -135,7 +135,7 @@ module.exports = async (client) => {
  // Github redirect endpoint.
  if (config.github && config.repo) {
  app.get("/github", (req, res) => {
-  res.redirect(`https://github.com/` + config.github + config.repo);
+  res.redirect(`https://github.com/` + config.github + "/" + config.repo);
   });
  }
 
