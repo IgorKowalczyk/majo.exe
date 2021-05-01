@@ -195,10 +195,10 @@ module.exports = async (client) => {
   // Vlidate the request, check if guild exists, member is in guild and if member has minimum permissions
   const guild = client.guilds.cache.get(req.params.guildID);
   if (!guild) return res.redirect("/dashboard-guild-error");
-  const member = guild.members.fetch(req.user.id);
+  const member = guild.members.cache.get(req.user.id);
   console.log(member)
   if (!member) return res.redirect("/dashboard-member-error");
-  if (!member.permissions.has("MANAGE_GUILD")) return res.redirect("/ddashboard-premissions-error");
+  if (!member.permissions.has("MANAGE_GUILD")) return res.redirect("/dashboard-premissions-error");
   renderTemplate(res, req, "server.ejs", {
    guild: guild,
   });
