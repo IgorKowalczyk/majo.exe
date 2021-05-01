@@ -196,6 +196,7 @@ module.exports = async (client) => {
   const guild = client.guilds.cache.get(req.params.guildID);
   if (!guild) return res.redirect("/dashboard-guild-error");
   const member = guild.members.fetch(req.user.id);
+  console.log(member)
   if (!member) return res.redirect("/dashboard-member-error");
   if (!member.permissions.has("MANAGE_GUILD")) return res.redirect("/ddashboard-premissions-error");
   renderTemplate(res, req, "server.ejs", {
