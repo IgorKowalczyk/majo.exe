@@ -196,7 +196,7 @@ module.exports = async (client) => {
   const guild = client.guilds.cache.get(req.params.guildID);
   if (!guild) return res.redirect("/dashboard-guild-error");
   console.log(req.user.id)
-  const member = guild.members.cache.get(req.user.id);
+  const member = guild.members.cache.fetch(req.user.id);
   console.log(member)
   if (!member) return res.redirect("/dashboard-member-error");
   if (!member.permissions.has("MANAGE_GUILD")) return res.redirect("/dashboard-premissions-error");
