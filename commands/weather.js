@@ -29,7 +29,7 @@ module.exports = {
     const current = result[0].current;
     const location = result[0].location;
     const weatherinfo = new Discord.MessageEmbed()
-    .setTitle(`Weather forecast for ${current.observationpoint}`)
+     .setTitle(`🌤️ Weather forecast for ${current.observationpoint}`, message.guild.iconURL({ dynamic: true, format: 'png'}))
      .setThumbnail(current.imageUrl)
      .setColor("RANDOM")
      .setDescription(`**${current.skytext}**`)
@@ -39,6 +39,8 @@ module.exports = {
      .addField('Wind', current.winddisplay, true)
      .addField('Feels like', `${current.feelslike}°`, true)
      .addField('Humidity', `${current.humidity}%`, true)
+     .setTimestamp()
+     .setFooter("Requested by " + `${message.author.username}`, message.author.displayAvatarURL({ dynamic: true, format: 'png', size: 2048 }))
     message.channel.send(weatherinfo)
    })        
   } catch (err) {
