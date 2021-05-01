@@ -454,7 +454,7 @@ font-size: 20px;
 }
 
 .avatar-container:hover {
-background-color: #4a4a4a;
+background-color: #34383e;
 }
 
 .button {
@@ -477,9 +477,13 @@ border: none;
 cursor: pointer;
 min-height: 32px;
 min-width: 60px;
-margin-bottom: 5px;
+margin-bottom: 10px;
 }
 
+.server .button {
+margin-bottom: 0px !important;
+}
+  
 .button:hover {
 background-color: var(--button-hover);
 background-size: 0;
