@@ -175,31 +175,19 @@ module.exports = async (client) => {
  });
 
  // Dashboard error handler
- app.get("/dashboard-premissions-error", (req, res) => {
+ app.get("/error", (req, res) => {
   renderTemplate(res,  req, "error.ejs", {
    perms: Discord.Permissions
-  });
- });
-  app.get("/dashboard-guild-error", (req, res) => {
-   renderTemplate(res,  req, "error.ejs", {
-   perms: Discord.Permissions
-  });
- });
- app.get("/dashboard-member-error", (req, res) => {
-  renderTemplate(res,  req, "error.ejs", {
-  perms: Discord.Permissions
   });
  });
  // Settings endpoint.
  app.get("/dashboard/:guildID", checkAuth, async (req, res) => {
   // Vlidate the request, check if guild exists, member is in guild and if member has minimum permissions
   const guild = client.guilds.cache.get(req.params.guildID);
-  if (!guild) return res.redirect("/dashboard-guild-error");
-  console.log(req.user.id)
+  if (!guild) return res.redirect("/error");
   const member = guild.members.cache.get(req.user.id);
-  console.log(member)
-  if (!member) return res.redirect("/dashboard-member-error");
-  if (!member.permissions.has("MANAGE_GUILD")) return res.redirect("/dashboard-premissions-error");
+  if (!member) return res.redirect("/error");
+  if (!member.permissions.has("MANAGE_GUILD")) return res.redirect("/error");
   renderTemplate(res, req, "server.ejs", {
    guild: guild,
   });
