@@ -26,6 +26,6 @@ module.exports = {
  "pruning": "5000",
  "cookies": process.env.COOKIES,
  "statuschannel": "712024850675531786",
- "newstitle": "<a:error:759354037803024395> Warning!",
- "news":  "Due to the fact that our bot will soon be on 100 Discord servers it needs to be verified. Soon Majo.exe will be sent for verification. We are sorry if you cannot add the bot to your server..."
+ "newstitle": "<a:success:759354039242063903> Good news!",
+ "news":  "Majo.exe is waiting for verification because it is on over 75 servers. We are sorry if you can't add Majo.exe to your server now, it will be possible soon. Thank you for your support. Stay tuned!"
 }
