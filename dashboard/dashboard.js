@@ -195,6 +195,7 @@ module.exports = async (client) => {
   // Vlidate the request, check if guild exists, member is in guild and if member has minimum permissions
   const guild = client.guilds.cache.get(req.params.guildID);
   if (!guild) return res.redirect("/dashboard-guild-error");
+  console.log(req.user.id)
   const member = guild.members.cache.get(req.user.id);
   console.log(member)
   if (!member) return res.redirect("/dashboard-member-error");
@@ -206,7 +207,8 @@ module.exports = async (client) => {
 
  // 404
  app.use(function(req, res, next){
-  res.status(404).renderTemplate(res, req, '404.ejs');
+  res.status(404);
+  renderTemplate(res, req, '404.ejs');
  });
 
  console.log("All dashboard process done... Starting in web");
