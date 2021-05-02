@@ -3,7 +3,7 @@ module.exports = {
  "description": "Majo.exe - Discord's multifunctional bot, contains moderation, fun, music, economics and NSFW commands.",
  "twitter": "@majonezexe",
  "mobile": "false",
- "image": "https://igorkowalczyk.github.io/lib/favicon/favicon.jpg",
+ "image": "banner.jpg",
  "server": "https://discord.gg/bVNNHuQ",
  "authorwebsite": "https://igorkowalczyk.github.io",
  "status": "https://stats.uptimerobot.com/5lVA7t0zZq",
