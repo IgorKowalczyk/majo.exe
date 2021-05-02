@@ -34,8 +34,6 @@ module.exports = (client) => {
    const random = Math.floor(Math.random() * (statuslist.length - 1) + 1);
    client.user.setActivity(statuslist[random], { type: 'WATCHING' });
   }, 10000);
-  
-  setInterval(() => { client.user.setActivity("[*]", { type: 'WATCHING' });}, 10000);
   client.user.setStatus("online");
   const datelog = new Date();
    currentDate = datelog.getDate();
