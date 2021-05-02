@@ -25,8 +25,8 @@
 <p class="server-description">
 <% let rolemap = guild.roles.cache
  .sort((a, b) => b.position - a.position)
- .map(r => r.name)
- .join(","); %>
+ .map(r => "<p color=`" + r.color + "`>" + r.name)
+ .join(" , "); %>
 <% if (rolemap.length > 1024) {
  rolemap = "To many roles to display";
 } %>
