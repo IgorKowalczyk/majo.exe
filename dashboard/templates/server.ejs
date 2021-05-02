@@ -23,9 +23,14 @@
 <hr>
 <h2>Roles</h2>
 <p class="server-description">
-<% let allroles %>
-<% guild.roles.forEach(role => allroles = allroles + role.name) %>
-<% if (!allroles) {
+<% let allroles = guild.roles.cache
+ .sort((a, b) => b.position - a.position)
+ .map(r => r.name)
+ .join(","); %>
+<% if (rolemap.length > 1024) {
+ rolemap = "To many roles to display";
+} %>
+<% if (!rolemap) {
  rolemap = "No roles";
 } %>
 <%= rolemap %>
