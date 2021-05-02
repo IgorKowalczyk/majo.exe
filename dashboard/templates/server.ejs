@@ -23,7 +23,7 @@
 <hr>
 <h2>Roles</h2>
 <p class="server-description">
-<% let allroles = guild.roles.cache
+<% let rolemap = guild.roles.cache
  .sort((a, b) => b.position - a.position)
  .map(r => r.name)
  .join(","); %>
