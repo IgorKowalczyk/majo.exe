@@ -1,6 +1,6 @@
 module.exports = {
  "verification": "-wuCsk4qLolXEPSUTGX7YBxywcyNNf5HS2ClzgEWxNY",
- "description": "Majo.exe - Discord's multifunctional bot, contains moderation, fun, music, economics and NSFW commands.",
+ "description": "Majo.exe - Discord bot for Fun, Memes, Images, Giveaway, Economy, Anime and NSFW! Majo serve over 100 commands!",
  "twitter": "@majonezexe",
  "mobile": "false",
  "image": "banner.jpg",
