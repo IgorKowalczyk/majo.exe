@@ -68,6 +68,7 @@ module.exports = async (client) => {
    domain: app.locals.domain,
    twitter: config.twitter,
    url: res,
+   title: client.username,
    prefix: config.prefix,
    req: req,
    mobile: config.mobile_support,
