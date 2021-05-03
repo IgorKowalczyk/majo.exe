@@ -6,7 +6,7 @@ const prefix = config.prefix;
 module.exports = {
  name: "4chan",
  aliases: [],
- description: "Shows a random image (and text) from the random board from 4chan",
+ description: "Shows a random image from the selected 4chan board",
  category: "Fun",
  usage: "4chan <board/boards>",
  run: async (client, message, args) => {
@@ -15,7 +15,7 @@ module.exports = {
    if (!message.channel.nsfw) {
     return message.channel.send({embed: {
      color: 16734039,
-     description: "💢 | This command can only be used in NSFW channels!"
+     description: "💢 | You can use this command only in an NSFW Channel!"
     }})
    }
    let chanargs = args.slice(0).join(' ');

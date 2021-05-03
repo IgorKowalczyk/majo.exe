@@ -15,7 +15,7 @@ module.exports = {
     if (!message.channel.nsfw) {
      return message.channel.send({embed: {
       color: 16734039,
-      description: "💢 | You can use this command in an NSFW Channel!"
+      description: "💢 | You can use this command only in an NSFW Channel!"
      }})
     }
     const response = await fetch("https://nekos.life/api/v2/img/classic")
