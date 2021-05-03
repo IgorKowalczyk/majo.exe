@@ -10,8 +10,8 @@ module.exports = {
  run: async (client, message, args) => {
   try {
    const users =  message.mentions.users.array();
-   let user1 = users[1] || message.author || args[0]
-   let user2 = users[2] || args[1];
+   let user1 = users[0] || args[0] || message.author
+   let user2 = users[1] || args[1];
 
    if (!user1) {
     return message.channel.send({embed: {
