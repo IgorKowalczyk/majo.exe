@@ -11,8 +11,8 @@ module.exports = {
   try {
    let user1;
    let user2
-   if (message.mentions.first()) {
-    user1 = message.mentions.first();
+   if (message.mentions.members.first()) {
+    user1 = message.mentions.members.first();
    } else if(args[0]) {
     console.log(args[0]);
     user1 = args[0];
@@ -20,9 +20,9 @@ module.exports = {
     user1 = message.author;
    }
    
-   if(message.mentions.first(1)) {
-    console.log(message.mentions.first(1));
-    user2 = message.mentions.first(1);
+   if(message.mentions.members.first(1)) {
+    console.log(message.mentions.members.first(1));
+    user2 = message.mentions.members.first(1);
    } else if(args[1]) {
     console.log(args[1]);
     user2 = args[1];
