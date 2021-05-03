@@ -11,16 +11,13 @@ module.exports = {
   try {
    const users =  message.mentions.users.array();
    let user1 = users[0] || message.author || args[0]
-   let user2 = users[1] || args[0];
-   if (user1 == message.author) {
-    let user2 = users[1] || args[0];   
-   } else {
+
     let user2 = users[1] || args[1];
-   }
+   
    if (!user2) {
     return message.channel.send({embed: {
      color: 16734039,
-     description: "❌ | Please mention secound user to ship!"
+     description: "❌ | Please mention a user to ship!"
     }})
    }
    let ship = Math.floor(Math.random() * 100) + 1;
