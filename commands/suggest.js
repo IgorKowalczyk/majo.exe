@@ -24,13 +24,13 @@ module.exports = {
    const channel = client.channels.cache.get(config.suggestionschannel)
    if (channel) {
     const embed = new Discord.MessageEmbed()
-     .setAuthor("🤔" + message.author.username + " suggestion!", message.guild.iconURL)
+     .setAuthor("🤔" + message.author.username + " suggestion!", message.guild.iconURL())
      .setColor("RANDOM")
      .setDescription(args.join(" "))
      .addField("Reporter", `<@${message.author.id}> (ID: ${message.author.id})`)
      .addField("User guild", `${message.guild.name} (ID: ${message.guild.id})`)
      .setFooter(message.author.displayAvatarURL({ dynamic: true, format: 'png', size: 2048 }))
-     .setImage(message.guild.iconURL())
+     .setThumbnail(message.guild.iconURL())
     channel.send(embed);
    } else {
     return message.channel.send({embed: {
