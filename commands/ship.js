@@ -11,6 +11,7 @@ module.exports = {
   try {
    const users =  message.mentions.users.array();
    let user1 = users[0] || message.author || args[0]
+   let user2 = users[1] || args[0];
    if (user1 == message.author) {
     let user2 = users[1] || args[0];   
    } else {
