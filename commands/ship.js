@@ -9,17 +9,28 @@ module.exports = {
  usage: "ship <member> (member)",
  run: async (client, message, args) => {
   try {
-   const users =  message.mentions.users.array();
-   const user1 = users[0] || args[0]
-   if(!user1) {
-    const user1 = message.author;
+   let user1;
+   let user2
+   if (message.mentions.first()) {
+    user1 = message.mentions.first();
+   } else if(args[0]) {
+    console.log(args[0]);
+    user1 = args[0];
+   } else {
+    user1 = message.author;
    }
-   let user2 = users[1] || args[1];
-   if (!user2) {
+   
+   if(message.mentions.first(1)) {
+    console.log(message.mentions.first(1));
+    user2 = message.mentions.first(1);
+   } else if(args[1]) {
+    console.log(args[1]);
+    user2 = args[1];
+   } else {
     return message.channel.send({embed: {
      color: 16734039,
-     description: "❌ | Please mention secound user to ship!"
-    }})
+     description: "❌ | Please mention a user to ship!"
+    }}) 
    }
    const ship = Math.floor(Math.random() * 100) + 1;
    const bar = progressbar(100, ship, 10, "<:bar:838757737327755335>", "<:bar2:838757737596190782>", "💔 ", " ❤️", false)
