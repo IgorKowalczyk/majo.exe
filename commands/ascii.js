@@ -1,7 +1,5 @@
 const Discord = require('discord.js')
 var figlet = require('figlet');
-const config = require("../config");
-const prefix = config.prefix;
 var hastebin = require('hastebin');
 
 module.exports = {

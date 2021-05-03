@@ -11,8 +11,11 @@ module.exports = {
   try {
    const users =  message.mentions.users.array();
    let user1 = users[0] || message.author || args[0]
-   let user2 = users[1] || args[0];
-
+   if (user1 == message.author) {
+    let user2 = users[1] || args[0];   
+   } else {
+    let user2 = users[1] || args[1];
+   }
    if (!user2) {
     return message.channel.send({embed: {
      color: 16734039,
@@ -20,7 +23,7 @@ module.exports = {
     }})
    }
    let ship = Math.floor(Math.random() * 100) + 1;
-   const bar = progressbar(100, ship, 10, "<:bar:838727459792093225>", "<:bar2:838731790797635634>", "💔 ", " ❤️", false)
+   const bar = progressbar(100, ship, 10, "<:bar:838757737327755335>", "<:bar2:838757737596190782>", "💔 ", " ❤️", false)
    const mehh = new Discord.MessageEmbed() 
     .setTitle(':twisted_rightwards_arrows: This isn\'t a match', message.guild.iconURL({ dynamic: true, format: 'png'}))
     .setThumbnail('https://cdn.discordapp.com/attachments/824906735176253450/828554687229067275/images.png')
