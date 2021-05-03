@@ -10,17 +10,19 @@ module.exports = {
  run: async (client, message, args) => {
   try {
    const users =  message.mentions.users.array();
-   let user1 = users[0] || message.author || args[0]
-
-    let user2 = users[1] || args[1];
-   
+   const user1 = users[0] || message.author || args[0]
+   if (user1 == message.author) {
+    const user2 = users[1] || args[0];   
+   } else {
+    const user2 = users[1] || args[1];
+   }
    if (!user2) {
     return message.channel.send({embed: {
      color: 16734039,
-     description: "❌ | Please mention a user to ship!"
+     description: "❌ | Please mention secound user to ship!"
     }})
    }
-   let ship = Math.floor(Math.random() * 100) + 1;
+   const ship = Math.floor(Math.random() * 100) + 1;
    const bar = progressbar(100, ship, 10, "<:bar:838757737327755335>", "<:bar2:838757737596190782>", "💔 ", " ❤️", false)
    const mehh = new Discord.MessageEmbed() 
     .setTitle(':twisted_rightwards_arrows: This isn\'t a match', message.guild.iconURL({ dynamic: true, format: 'png'}))
