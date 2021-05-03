@@ -20,7 +20,7 @@ module.exports = {
     }})
    }
 
-   if (!user2) {
+   if (args[1] && !user2) {
     return message.channel.send({embed: {
      color: 16734039,
      description: "❌ | Please mention secound user to ship!"
@@ -29,15 +29,15 @@ module.exports = {
    let ship = Math.floor(Math.random() * 100) + 1;
    const bar = progressbar(100, ship, 10, "<:bar:838727459792093225>", "<:bar2:838731790797635634>", "💔 ", " ❤️", false)
    const mehh = new Discord.MessageEmbed() 
-    .setTitle('This isn\'t a match', message.guild.iconURL({ dynamic: true, format: 'png'}))
+    .setTitle(':twisted_rightwards_arrows: This isn\'t a match', message.guild.iconURL({ dynamic: true, format: 'png'}))
     .setThumbnail('https://cdn.discordapp.com/attachments/824906735176253450/828554687229067275/images.png')
-    .setDescription(`${message.author} shipped ${user1} with ${user2} and it is **${ship}%**\n${bar}`)
+    .setDescription(`I shipped **${user1}** with **${user2}** and it is **${ship}%**\n${bar}`)
     .setFooter("Requested by " + `${message.author.username}`, message.author.displayAvatarURL({ dynamic: true, format: 'png', size: 2048 }))
     .setColor("RED")
    const love = new Discord.MessageEmbed() 
-    .setTitle('They are born for each others!', message.guild.iconURL({ dynamic: true, format: 'png'}))
+    .setTitle(':twisted_rightwards_arrows: They are born for each others!', message.guild.iconURL({ dynamic: true, format: 'png'}))
     .setThumbnail('https://cdn.discordapp.com/attachments/824906735176253450/828555115593859123/9k.png')
-    .setDescription(`${message.author} shipped ${user1} with ${user2} and it is **${ship}%**\n${bar}`)
+    .setDescription(`I shipped **${user1}** with **${user2}** and it is **${ship}%**\n${bar}`)
     .setFooter("Requested by " + `${message.author.username}`, message.author.displayAvatarURL({ dynamic: true, format: 'png', size: 2048 }))
     .setColor("GREEN")
    if(ship > 50) {
