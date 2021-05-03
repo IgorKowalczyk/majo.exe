@@ -11,10 +11,11 @@ module.exports = {
   try {
    const users =  message.mentions.users.array();
    const user1 = users[0] || message.author || args[0]
+   let user2;
    if (user1 == message.author) {
-    const user2 = users[1] || args[0];   
+    user2 = users[1] || args[0];   
    } else {
-    const user2 = users[1] || args[1];
+    user2 = users[1] || args[1];
    }
    if (!user2) {
     return message.channel.send({embed: {
