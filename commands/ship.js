@@ -13,7 +13,7 @@ module.exports = {
    let ship = Math.floor(Math.random() * 100) + 1;
    const line = '▬';
    const slider = '🔴';
-   const bar = progressbar(100, ship, 40, line, slider)
+   const bar = progressbar(100, ship, 10, line, slider)
    if(!user) {
     return message.channel.send({embed: {
      color: 16734039,
