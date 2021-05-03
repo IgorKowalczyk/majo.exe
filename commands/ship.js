@@ -1,5 +1,5 @@
 const Discord = require("discord.js");
-const progressbar = require('string-progressbar');
+const progressbar = require('percentagebar');
 
 module.exports = {
  name: "ship",
@@ -13,7 +13,7 @@ module.exports = {
    let ship = Math.floor(Math.random() * 100) + 1;
    const line = '▬';
    const slider = '🔴';
-   const bar = progressbar(100, ship, 10, line, slider)
+   const bar = statusbar(100, ship, 10, "▓", "░", ":broken-heart: ", " :heart:", false)
    if(!user) {
     return message.channel.send({embed: {
      color: 16734039,
