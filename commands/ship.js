@@ -12,20 +12,20 @@ module.exports = {
    let user1;
    let user2
    if (message.mentions.members.first()) {
+    console.log("M1 " + message.mentions.members.first())
     user1 = message.mentions.members.first();
    } else if(args[0]) {
-    console.log(args[0]);
+    console.log("A1" + args[0]);
     user1 = args[0];
    } else {
     user1 = message.author;
    }
-   
-   if(message.mentions.members.first(1)) {
-    console.log(message.mentions.members.first(1));
-    user2 = message.mentions.members.first(1);
-   } else if(args[1]) {
-    console.log(args[1]);
+   if(args[1]) {
+    console.log("A2 " + args[1]);
     user2 = args[1];
+   } else if(message.mentions.members.first(1)) {
+    console.log("M2 " + message.mentions.members.first(1));
+    user2 = message.mentions.members.first(1);
    } else {
     return message.channel.send({embed: {
      color: 16734039,
@@ -60,4 +60,3 @@ module.exports = {
   }
  }
 }
- 
