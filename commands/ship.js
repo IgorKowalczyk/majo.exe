@@ -10,9 +10,11 @@ module.exports = {
  run: async (client, message, args) => {
   try {
    const users =  message.mentions.users.array();
-   const user1 = users[0] || args[0] || message.author
-   let user2;
-    user2 = users[1] || args[1];
+   const user1 = users[0] || args[0]
+   if(!user1) {
+    const user1 = message.author;
+   }
+   let user2 = users[1] || args[1];
    if (!user2) {
     return message.channel.send({embed: {
      color: 16734039,
