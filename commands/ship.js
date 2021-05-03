@@ -10,7 +10,7 @@ module.exports = {
  run: async (client, message, args) => {
   try {
    const users =  message.mentions.users.array();
-   const user1 = users[0] || message.author || args[0]
+   const user1 = users[0] || args[0] || message.author
    let user2;
    if (user1 == message.author) {
     user2 = users[1] || args[0];   
