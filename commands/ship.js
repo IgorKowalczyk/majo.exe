@@ -11,9 +11,11 @@ module.exports = {
   try {
    let user1;
    let user2
-   if (message.mentions.members.first()) {
-    console.log("M1 " + message.mentions.members.first())
-    user1 = message.mentions.members.first();
+   const users =  message.mentions.users.array();
+   if (users[0]) {
+    console.log("M1 " + users[0])
+    
+    user1 = users[0];
    } else if(args[0]) {
     console.log("A1" + args[0]);
     user1 = args[0];
@@ -23,9 +25,9 @@ module.exports = {
    if(args[1]) {
     console.log("A2 " + args[1]);
     user2 = args[1];
-   } else if(message.mentions.members.first(1)) {
-    console.log("M2 " + message.mentions.members.first(1));
-    user2 = message.mentions.members.first(1);
+   } else if(users[1]) {
+    console.log("M2 " + users[1]);
+    user2 = users[1];
    } else {
     return message.channel.send({embed: {
      color: 16734039,
