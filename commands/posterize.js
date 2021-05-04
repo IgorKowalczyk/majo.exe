@@ -12,7 +12,7 @@ module.exports = {
  usage: "posterize [user mention, user id, user name] [posterize]",
  run: async (client, message, args) => {
   try {
-   const posterize = args[0] || 50;
+   const posterize = args[0] || 9;
    if (args[0]) {
     if (isNaN(args[0])) {
      return message.channel.send({embed: {
@@ -32,10 +32,10 @@ module.exports = {
       description: "❌ | Posterize must be higher than 2!"
      }})   
     }
-    if (args[0] > 30) {
+    if (args[0] > 40) {
      return message.channel.send({embed: {
       color: 16734039,
-      description: "❌ | Posterize must be lower than 30!"
+      description: "❌ | Posterize must be lower than 40!"
      }})   
     }
    }

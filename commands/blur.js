@@ -32,10 +32,10 @@ module.exports = {
       description: "❌ | Blur must be higher than 2!"
      }})   
     }
-    if (args[0] > 50) {
+    if (args[0] > 30) {
      return message.channel.send({embed: {
       color: 16734039,
-      description: "❌ | Blur must be lower than 50!"
+      description: "❌ | Blur must be lower than 30!"
      }})   
     }
    }
