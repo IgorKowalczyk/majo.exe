@@ -29,6 +29,7 @@ module.exports = {
        .setTitle(":smirk: Furry")
        .setImage(image.fileUrl)
        .setColor('RANDOM')
+       .setFooter("Requested by " + `${message.author.username}`, message.author.displayAvatarURL({ dynamic: true, format: 'png', size: 2048 }))
        .setURL(image.fileUrl);
       return message.channel.send({ embed });
      }
