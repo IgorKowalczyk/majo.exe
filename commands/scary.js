@@ -7,7 +7,7 @@ const AmeAPI = new AmeClient(process.env.AMEAPI);
 module.exports = {
  name: "scary",
  aliases: [],
- description: "Makes user avatar more scary",
+ description: "Booo!",
  category: "Image",
  usage: "scary [user mention, user id, user name]",
  run: async (client, message, args) => {
