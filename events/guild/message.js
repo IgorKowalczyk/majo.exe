@@ -39,15 +39,14 @@ module.exports = async (client, message) => {
   if (!command) {
    return message.channel.send({embed: {
     color: 16734039,
-    description:
-    "That command does not exist, Take a look at " + `${prefix}` + " help!"
+    description: "❌ | That command does not exist, Take a look at \`" + `${prefix}` + " help\`!"
    }});
   }
   if (message.content.toLowerCase().includes("process.env")) {
    console.log("[Security Log]: " + message.author.tag + ` (ID: ` + message.author.id + ") used process.env in the " + command.name + " command.");
    return message.channel.send({embed: {
     color: 16734039,
-    description: "Majo: The command cannot contain the `process.env` string for safetly reasons. We are sorry..."
+    description: "❌ | Majo: The command cannot contain the `process.env` string for safetly reasons. We are sorry..."
    }});
   }
   if (command) {
@@ -57,7 +56,7 @@ module.exports = async (client, message) => {
   console.log(err);
   message.channel.send({embed: {
    color: 16734039,
-   description: "That command does not exist, Take a look at " + `${prefix}` + " help!"
+   description: "❌ | That command does not exist, Take a look at \`" + `${prefix}` + " help\`!"
   }});
  }
 }
