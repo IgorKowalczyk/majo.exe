@@ -25,7 +25,7 @@ module.exports = {
   }).catch(c => {
    message.channel.send({embed: {
     color: 16734039,
-    description: "❌ | nvaild query!"
+    description: "❌ | Invaild query!"
    }})
   })
   } catch (err) {
