@@ -6,12 +6,31 @@ const AmeAPI = new AmeClient(process.env.AMEAPI);
 
 module.exports = {
  name: "pixelize",
- aliases: ["grayscale"],
+ aliases: [],
  description: "Pixelize the user avatar",
  category: "Image",
- usage: "pixelize [user mention, user id, user name]",
+ usage: "pixelize [user mention, user id, user name] (pixelize)",
  run: async (client, message, args) => {
   try {
+   const pixelize = args[0] || 5;
+   if (isNaN(args[0])) {
+    return message.channel.send({embed: {
+     color: 16734039,
+     description: "Pixelize must be a number!"
+    }})
+   }
+   if (message.content.includes('-')) {
+    return message.channel.send({embed: {
+     color: 16734039,
+     description: "Pixelize cannot be negative!"
+    }})
+   }
+   if (args[0] > 15) {
+    return message.channel.send({embed: {
+     color: 16734039,
+     description: "Pixelize must be lower than 15!"
+    }})   
+   }
    const User = await message.mentions.members.first() || message.guild.members.cache.get(args[0]) || message.guild.members.cache.find(r => r.user.username.toLowerCase().includes() === args.join(' ').toLocaleLowerCase()) || message.guild.members.cache.find(r => r.displayName.toLowerCase().includes() === args.join(' ').toLocaleLowerCase()) || message.member;
    const wait = await message.channel.send({embed: {
      color: 4779354,
@@ -22,7 +41,7 @@ module.exports = {
      format: "png",
      size: 2048
     }),
-    blur: 5
+    pixelize: pixelize
    });
    const attachment = new Discord.MessageAttachment(buffer, "pixelize.png");
    message.channel.send(attachment);
