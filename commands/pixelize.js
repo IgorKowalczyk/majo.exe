@@ -32,10 +32,10 @@ module.exports = {
       description: "❌ | Pixelize must be higher than 2!"
      }})   
     }
-    if (args[0] > 99) {
+    if (args[0] > 50) {
      return message.channel.send({embed: {
       color: 16734039,
-      description: "❌ | Pixelize must be liwer than 99!"
+      description: "❌ | Pixelize must be lower than 50!"
      }})   
     }
    }
