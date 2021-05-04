@@ -7,8 +7,8 @@ require("moment-duration-format");
 
 module.exports = {
  name: "info",
- aliases: ["botinfo", "clientinfo"],
- description: "Show client info for developers",
+ aliases: ["botinfo", "clientinfo", "stats"],
+ description: "Shows informations for developers",
  category: "General",
  usage: "info",
  run: async (client, message, args) => {
