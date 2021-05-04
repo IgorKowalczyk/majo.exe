@@ -12,23 +12,29 @@ module.exports = {
  usage: "pixelize [user mention, user id, user name] (pixelize)",
  run: async (client, message, args) => {
   try {
-   const pixelize = args[0] || 5;
-   if (isNaN(args[0])) {
+   const pixelize = args[1] || 50;
+   if (isNaN(args[1])) {
     return message.channel.send({embed: {
      color: 16734039,
-     description: "Pixelize must be a number!"
+     description: "❌ | Pixelize must be a number!"
     }})
    }
    if (message.content.includes('-')) {
     return message.channel.send({embed: {
      color: 16734039,
-     description: "Pixelize cannot be negative!"
+     description: "❌ | Pixelize cannot be negative!"
     }})
    }
-   if (args[0] > 15) {
+   if (args[1] < 2) {
     return message.channel.send({embed: {
      color: 16734039,
-     description: "Pixelize must be lower than 15!"
+     description: "❌ | Pixelize must be higher than 2!"
+    }})   
+   }
+   if (args[1] > 99) {
+    return message.channel.send({embed: {
+     color: 16734039,
+     description: "❌ | Pixelize must be liwer than 99!"
     }})   
    }
    const User = await message.mentions.members.first() || message.guild.members.cache.get(args[0]) || message.guild.members.cache.find(r => r.user.username.toLowerCase().includes() === args.join(' ').toLocaleLowerCase()) || message.guild.members.cache.find(r => r.displayName.toLowerCase().includes() === args.join(' ').toLocaleLowerCase()) || message.member;
