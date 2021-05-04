@@ -19,11 +19,11 @@ module.exports = {
     }})
    const buffer = await AmeAPI.generate("glitch", {
     url: User.user.displayAvatarURL({
-     format: "gif",
+     format: "png",
      size: 2048
     })
    });
-   const attachment = new Discord.MessageAttachment(buffer, "glitch.gif");
+   const attachment = new Discord.MessageAttachment(buffer, "glitch.png");
    message.channel.send(attachment);
   } catch (err) {
    console.log(err);
