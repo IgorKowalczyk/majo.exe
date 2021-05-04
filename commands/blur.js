@@ -5,37 +5,37 @@ const AmeClient = require('amethyste-api');
 const AmeAPI = new AmeClient(process.env.AMEAPI);
 
 module.exports = {
- name: "pixelize",
+ name: "blur",
  aliases: [],
- description: "Pixelize the user avatar",
+ description: "Blur the user avatar",
  category: "Image",
- usage: "pixelize [user mention, user id, user name] [pixelize]",
+ usage: "blur [user mention, user id, user name] [blur]",
  run: async (client, message, args) => {
   try {
-   const pixelize = args[0] || 50;
+   const blur = args[0] || 50;
    if (args[0]) {
     if (isNaN(args[0])) {
      return message.channel.send({embed: {
       color: 16734039,
-      description: "❌ | Pixelize must be a number!"
+      description: "❌ | blur must be a number!"
      }})
     }
     if (message.content.includes('-')) {
      return message.channel.send({embed: {
       color: 16734039,
-      description: "❌ | Pixelize cannot be negative!"
+      description: "❌ | blur cannot be negative!"
      }})
     }
     if (args[0] < 2) {
      return message.channel.send({embed: {
       color: 16734039,
-      description: "❌ | Pixelize must be higher than 2!"
+      description: "❌ | blur must be higher than 2!"
      }})   
     }
     if (args[0] > 50) {
      return message.channel.send({embed: {
       color: 16734039,
-      description: "❌ | Pixelize must be lower than 50!"
+      description: "❌ | blur must be lower than 50!"
      }})   
     }
    }
@@ -44,14 +44,14 @@ module.exports = {
      color: 4779354,
      description: "✨ | Please wait... I'm generating your image",
     }})
-   const buffer = await AmeAPI.generate("pixelize", {
+   const buffer = await AmeAPI.generate("blur", {
     url: User.user.displayAvatarURL({
      format: "png",
      size: 2048
     }),
-    pixelize: pixelize
+    pixelize: blur
    });
-   const attachment = new Discord.MessageAttachment(buffer, "pixelize.png");
+   const attachment = new Discord.MessageAttachment(buffer, "blur.png");
    message.channel.send(attachment);
   } catch (err) {
    console.log(err);
