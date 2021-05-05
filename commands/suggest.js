@@ -9,13 +9,14 @@ module.exports = {
  usage: "suggest <suggestion>",
  run: async (client, message, args) => {
   try {
-   if(!args[0]) {
+   const suggestion = args.join(" ");
+   if(!suggestion) {
     return message.channel.send({embed: {
      color: 16734039,
      description: "❌ | You need to enter a suggestion!",
     }})  
    }
-   if(args.join(" ") > 1000) {
+   if(suggestion.lenght > 1000) {
     return message.channel.send({embed: {
      color: 16734039,
      description: "❌ | Your suggestion can have a maximum of 1000 characters!",
@@ -26,7 +27,7 @@ module.exports = {
     const embed = new Discord.MessageEmbed()
      .setAuthor("🤔" + message.author.username + " suggestion!", message.guild.iconURL())
      .setColor("RANDOM")
-     .setDescription(message.args)
+     .setDescription(suggestion)
      .addField("Reporter", `<@${message.author.id}> (ID: ${message.author.id})`)
      .addField("User guild", `${message.guild.name} (ID: ${message.guild.id})`)
      .setFooter("Majo.exe", message.author.displayAvatarURL({ dynamic: true, format: 'png', size: 2048 }))
@@ -36,7 +37,8 @@ module.exports = {
      .setColor("RANDOM")
      .setDescription(`${message.author} your suggestion was send, you can view it in Majo.exe Developers server in <#${suggestionschannel} channel.`)
      .setFooter(`[Majo.exe Developers](${config.server})`, message.author.displayAvatarURL({ dynamic: true, format: 'png', size: 2048 }))
-   } else {
+    message.channel.send(success);
+    } else {
     return message.channel.send({embed: {
      color: 16734039,
      description: "❌ | I can't find suggestions channel. Mayby the channel didn't exist. If you are the bot developer please configure it in config.",
