@@ -35,7 +35,7 @@ module.exports = {
     channel.send(embed);
     const success = new Discord.MessageEmbed()
      .setColor("RANDOM")
-     .setDescription(`${message.author} your suggestion was send, you can view it in Majo.exe Developers server in <#${suggestionschannel} channel.`)
+     .setDescription(`${message.author} your suggestion was send, you can view it in Majo.exe Developers server in <#${config.suggestionschannel} channel.`)
      .setFooter(`[Majo.exe Developers](${config.server})`, message.author.displayAvatarURL({ dynamic: true, format: 'png', size: 2048 }))
     message.channel.send(success);
     } else {
@@ -45,7 +45,6 @@ module.exports = {
     }})
    }
   } catch (err) {
-   console.log(err);
    message.channel.send({embed: {
     color: 16734039,
     description: "Something went wrong... :cry:"
