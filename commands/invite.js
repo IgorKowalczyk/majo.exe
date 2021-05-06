@@ -6,7 +6,7 @@ module.exports = {
  name: "invite",
  aliases: [],
  description: "Invite me to your server",
- category: "Utility",
+ category: "General",
  usage: "invite",
  run: async (client, message, args) => {
   try {

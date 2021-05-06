@@ -4,7 +4,7 @@ module.exports = {
  name: "id",
  aliases: ["get-id"],
  description: "Display a mentioned user ID (Yes, you can copy this directly from Discord too)",
- category: "Utility",
+ category: "Moderation",
  usage: "id <mention>",
  run: async (client, message, args) => {
   try {

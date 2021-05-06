@@ -6,7 +6,7 @@ module.exports = {
  name: "dependencies",
  aliases: [],
  description: "Returns the amount of dependencies that I use",
- category: "Utility",
+ category: "General",
  usage: "dependencies",
  run: async (client, message, args) => {
   try {
