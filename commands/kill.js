@@ -26,7 +26,7 @@ module.exports = {
      description: "❌ | Mention a valid member of this server!"
     }})
    }
-   if (message.author === member) {
+   if (message.author === member || message.member == member) {
     return await message.channel.send({embed: {
      color: 16734039,
      description: "❌ | You cant kill yourself!"
