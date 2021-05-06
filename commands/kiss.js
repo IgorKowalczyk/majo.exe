@@ -28,7 +28,7 @@ module.exports = {
     const response = await fetch("https://nekos.life/api/v2/img/kiss")
     const body = await response.json();
     const embed = new Discord.MessageEmbed()
-     .setTitle(user.displayName + " Just got a kiss from " + message.author.username, message.guild.iconURL({ dynamic: true, format: 'png'}))
+     .setTitle("<@" + user + " Just got a kiss from " + message.author.username, message.guild.iconURL({ dynamic: true, format: 'png'}))
      .setImage(body.url)
      .setColor("RANDOM")
      .setFooter("Requested by " + `${message.author.username}`, message.author.displayAvatarURL({ dynamic: true, format: 'png', size: 2048 }))
