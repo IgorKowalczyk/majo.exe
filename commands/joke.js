@@ -13,16 +13,15 @@ module.exports = {
     const response = await fetch("http://icanhazdadjoke.com/", {
      method: 'get',
      headers: { 'Accept': 'application/json' },
-     
-    }).then(body => {
+    })
+    const body = await response.text();
     const embed = new Discord.MessageEmbed()
      .setTitle("Random Dad joke", message.guild.iconURL({ dynamic: true, format: 'png'}))
-     .setImage(response.body.joke)
+     .setImage(body.joke)
      .setColor("RANDOM")
      .setFooter("Requested by " + `${message.author.username}`, message.author.displayAvatarURL({ dynamic: true, format: 'png', size: 2048 }))
      .setTimestamp()
     message.channel.send(embed);
-    })
    } catch(err) {
     message.channel.send({embed: {
      color: 16734039,
