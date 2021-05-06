@@ -14,7 +14,7 @@ module.exports = {
      method: 'get',
      headers: { 'Accept': 'application/json' },
     })
-    const body = await response.text();
+    const body = await response.json();
     console.log(body);
     console.log(response)
     const embed = new Discord.MessageEmbed()
