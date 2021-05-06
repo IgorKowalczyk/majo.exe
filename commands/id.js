@@ -8,7 +8,7 @@ module.exports = {
  usage: "id <mention>",
  run: async (client, message, args) => {
   try {
-   const mention = message.guild.member(message.mentions.users.first());
+   const mention = await message.mentions.members.first() || message.guild.members.cache.get(args[0]) || message.guild.members.cache.find(r => r.user.username.toLowerCase().includes() === args.join(' ').toLocaleLowerCase()) || message.guild.members.cache.find(r => r.displayName.toLowerCase().includes() === args.join(' ').toLocaleLowerCase()) || message.member;
    if(!mention) {
     return message.channel.send({embed: {
      color: 16734039,
