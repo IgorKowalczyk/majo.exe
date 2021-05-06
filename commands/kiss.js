@@ -17,7 +17,7 @@ module.exports = {
     description: "❌ | You must mention user to kiss ;-;"
    }})
   }
-  if (message.author === user) {
+  if (message.author === user || message.member == member) {
    return await message.channel.send({embed: {
     color: 16734039,
     description: "❌ | You cant kiss yourself ;-; (Try kissing someone else, your love. Maybe you need some help?)"
