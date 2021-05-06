@@ -1,4 +1,5 @@
-const Discord = module.require("discord.js");
+const Discord = require("discord.js");
+const fetch = require("node-fetch");
 const deaths = [
  "[NAME1] ran over [NAME2] with a School Bus! :bus:",
  "[NAME1] poisoned [NAME2]’s candy bar",
