@@ -14,13 +14,13 @@ module.exports = {
   if (!user) {
    return message.channel.send({embed: {
     color: 16734039,
-    description: "❌ | You must mention user to kiss ;-;"
+    description: "💔 | You must mention user to kiss ;-;"
    }})
   }
   if (message.author === user || message.member == user) {
    return await message.channel.send({embed: {
     color: 16734039,
-    description: "❌ | You cant kiss yourself ;-; (Try kissing someone else, your love. Maybe you need some help?)"
+    description: "💔 | You cant kiss yourself ;-; (Try kissing someone else, your love. Maybe you need some help?)"
    }})
   }
   (async () => {
