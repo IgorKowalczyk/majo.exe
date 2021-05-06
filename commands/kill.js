@@ -34,11 +34,16 @@ module.exports = {
    const pickeddeath = deaths[Math.floor(Math.random()*deaths.length)];
    const change1 = pickeddeath.replace("[NAME1]", message.author.username);
    const change2 = change1.replace("[NAME2]", member.displayName);
-   const embed = await new Discord.MessageEmbed()
-    .setColor("RANDOM")
-    .setAuthor("Tombstone of " + member.displayName + "!", message.author.displayAvatarURL({ dynamic: true, format: 'png', size: 2048 }))
-    .setDescription(change2)
-   message.channel.send(embed);
+   (async () => {
+    const response = await fetch("https://nekos.life/api/v2/img/slap")
+    const body = await response.json();
+    const embed = await new Discord.MessageEmbed()
+     .setColor("RANDOM")
+     .setAuthor("Tombstone of " + member.displayName + "!", message.author.displayAvatarURL({ dynamic: true, format: 'png', size: 2048 }))
+     .setImage(body.url)
+     .setDescription(change2)
+    message.channel.send(embed);
+   })();
   } catch (err) {
    console.log(err);
    message.channel.send({embed: {
