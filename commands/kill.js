@@ -40,7 +40,7 @@ module.exports = {
     const body = await response.json();
     const embed = await new Discord.MessageEmbed()
      .setColor("RANDOM")
-     .setAuthor("Tombstone of " + member.displayName + "!", message.author.displayAvatarURL({ dynamic: true, format: 'png', size: 2048 }))
+     .setAuthor("Tombstone of " + member + "!", message.author.displayAvatarURL({ dynamic: true, format: 'png', size: 2048 }))
      .setImage(body.url)
      .setDescription(change2)
     message.channel.send(embed);
