@@ -17,8 +17,8 @@ module.exports = {
     const body = await response.json();
     console.log(body);
     const embed = new Discord.MessageEmbed()
-     .setTitle("Random Dad joke", message.guild.iconURL({ dynamic: true, format: 'png'}))
-     .setDescription("Dad said" + body.joke)
+     .setTitle("Random Dad joke", message.guild.iconURL())
+     .setDescription("Dad said: " + body.joke)
      .setColor("RANDOM")
      .setFooter("Requested by " + `${message.author.username}`, message.author.displayAvatarURL({ dynamic: true, format: 'png', size: 2048 }))
      .setTimestamp()
