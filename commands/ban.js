@@ -33,13 +33,10 @@ module.exports = {
      reason = "No reason provided! Banned by " + message.author + ". ~Majo.exe - The best discord bot!";
     }
     message.guild.members.ban(mentioned, { reason: reason });
-    const ban = new Discord.MessageEmbed()
-     .setColor("RANDOM")
-     .setTitle(":white_check_mark: Success!", message.guild.iconURL({ dynamic: true, format: 'png'}))
-     .setDescription(":no_entry: " + mentioned.displayName + " has been banned!")
-     .setTimestamp()
-     .setFooter("Requested by " + `${message.author.username}`, message.author.displayAvatarURL({ dynamic: true, format: 'png', size: 2048 }))
-    message.channel.send(ban);
+    await message.channel.send({embed: {
+     color: 16734039,
+     description: "⛔ " + mentioned.displayName + " has been banned. Reason: \`" + reason + "\`!"
+    }})
    } 
   } catch(err) {
    message.channel.send({embed: {

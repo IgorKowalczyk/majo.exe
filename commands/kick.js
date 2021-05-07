@@ -35,12 +35,12 @@ module.exports = {
     }})
    }
    if (!reason) {
-    reason = "No reason provided!";
+    reason = "No reason provided! ~Kicked by Majo.exe, the best discord bot";
    }
    mentioned.kick(reason);
    await message.channel.send({embed: {
     color: 16734039,
-    description: ":arrow_right: " + mentioned.displayName + " has been kicked. Reason: " + reason + "!"
+    description: ":arrow_right: " + mentioned.displayName + " has been kicked. Reason: \`" + reason + "\`!"
    }})
   } catch (err) {
     console.log(err);
