@@ -1,13 +1,12 @@
 const Discord = require('discord.js');
 const Canvas = require('canvas');
-const config = require("../../config");
-const prefix = config.prefix;
 
 module.exports = async (client, member) => {
  try {
   const channel = member.guild.channels.cache.find(channel => channel.name.includes('hello-or-bye'));
   if (!channel) return;
   if(!member.guild) return;
+  Canvas.registerFont('../../lib/fonts/quicksand-light.tff', { family: 'Quicksand' })
   const canvas = Canvas.createCanvas(1772, 633);
   const ctx = canvas.getContext('2d');
   const background = await Canvas.loadImage(`./lib/img/welcome.png`);
@@ -16,24 +15,24 @@ module.exports = async (client, member) => {
   ctx.strokeRect(0, 0, canvas.width, canvas.height);
   var textString3 = `${member.user.username}`;
   if (textString3.length >= 14) {
-   ctx.font = 'bold 100px Genta';
+   ctx.font = 'bold 100px "Quicksand"';
    ctx.fillStyle = '#f2f2f2';
    ctx.fillText(textString3, 720, canvas.height / 2 + 20);
   } else {
-   ctx.font = 'bold 150px Genta';
+   ctx.font = 'bold 150px "Quicksand"';
    ctx.fillStyle = '#f2f2f2';
    ctx.fillText(textString3, 720, canvas.height / 2 + 25);
   }
   var textString2 = `#${member.user.discriminator}`;
-  ctx.font = 'bold 40px Genta';
+  ctx.font = 'bold 40px "Quicksand"';
   ctx.fillStyle = '#f2f2f2';
   ctx.fillText(textString2, 730, canvas.height / 2 + 62);
   var textString4 = `Member #${member.guild.memberCount}`;
-  ctx.font = 'bold 60px Genta';
+  ctx.font = 'bold 60px "Quicksand"';
   ctx.fillStyle = '#f2f2f2';
   ctx.fillText(textString4, 750, canvas.height / 2 + 125);
   var textString4 = `${member.guild.name}`;
-  ctx.font = 'bold 60px Genta';
+  ctx.font = 'bold 60px "Quicksand"';
   ctx.fillStyle = '#f2f2f2';
   ctx.fillText(textString4, 700, canvas.height / 2 - 150);
   ctx.beginPath();
