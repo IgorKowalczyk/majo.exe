@@ -1,11 +1,18 @@
 const Discord = require('discord.js');
 const Canvas = require('canvas');
+const moment = require('moment');
 
 module.exports = async (client, member) => {
  try {
   const channel = member.guild.channels.cache.find(channel => channel.name.includes('hello-or-bye'));
   if (!channel) return;
   if(!member.guild) return;
+  function checkdays(date) {
+   let now = new Date();
+   let diff = now.getTime() - date.getTime();
+   let days = Math.floor(diff / 86400000);
+   return days + (days == 1 ? " day" : " days") + " ago";
+   }
   Canvas.registerFont('./lib/fonts/quicksand-light.ttf', { family: 'Quicksand' })
   const canvas = Canvas.createCanvas(1772, 633);
   const ctx = canvas.getContext('2d');
@@ -15,11 +22,11 @@ module.exports = async (client, member) => {
   ctx.strokeRect(0, 0, canvas.width, canvas.height);
   var textString3 = `${member.user.username}`;
   if (textString3.length >= 14) {
-   ctx.font = 'bold 100px "Quicksand"';
+   ctx.font = 'bold 150px "Quicksand"';
    ctx.fillStyle = '#f2f2f2';
    ctx.fillText(textString3, 720, canvas.height / 2 + 20);
   } else {
-   ctx.font = 'bold 150px "Quicksand"';
+   ctx.font = 'bold 200px "Quicksand"';
    ctx.fillStyle = '#f2f2f2';
    ctx.fillText(textString3, 720, canvas.height / 2 + 25);
   }
@@ -46,7 +53,8 @@ module.exports = async (client, member) => {
    .setColor("RANDOM")
    .setTimestamp()
    .setFooter(`${member.guild.name}`, member.user.displayAvatarURL({ dynamic: true, format: 'png', size: 2048 }))
-   .setDescription(`**Welcome to the server ${member.user.username}!**`)
+   .setAuthor(`**Welcome to the server ${member.user.username}!**`)
+   .setDescription(":calendar_spiral: **Acount created at:** \`" + member.user.createdAt.toUTCString().substr(0, 16) + "\`(" + checkdays(member.user.createdAt) + ")")
    .setImage("attachment://welcome-image.png")
    .attachFiles(attachment);
   channel.send(embed);
