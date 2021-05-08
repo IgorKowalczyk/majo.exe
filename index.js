@@ -6,28 +6,7 @@ const db = require("quick.db");
 const chalk = require("chalk");
 const config = require("./config");
 require('dotenv').config()
-const { pgClient } = require('pg');
 
-console.log("Connecting to database");
-try {
- var pclient = new pgClient({
-  connectionString: process.env.DATABASE_URL,
-  ssl: {
-   rejectUnauthorized: false
-  }
- });
- pclient.connect();
- console.log("Connected!")
- pclient.query('SELECT table_schema,table_name FROM information_schema.tables;', (err, res) => {
-  if (err) throw err;
-  for (let row of res.rows) {
-   console.log(JSON.stringify(row));
-  }
-  pclient.end();
- });
-} catch (err) {
-console.log("Error while connecting to database!")
-}
 
 
 /* Login and Commands */
@@ -38,7 +17,7 @@ if (process.env.TOKEN) {
  require('events').EventEmitter.prototype._maxListeners = 70;
  require('events').defaultMaxListeners = 70;
  ['command', 'event'].forEach(handler => {
-  require(`./handlers/${handler}`)(client, pclient);
+  require(`./handlers/${handler}`)(client);
  });
  client.login(process.env.TOKEN)
 } else {
