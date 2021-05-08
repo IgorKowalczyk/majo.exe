@@ -26,15 +26,15 @@ module.exports = async (client, member) => {
   var textString2 = `#${member.user.discriminator}`;
   ctx.font = 'bold 40px "Quicksand"';
   ctx.fillStyle = '#f2f2f2';
-  ctx.fillText(textString2, 720, canvas.height / 2 + 62);
+  ctx.fillText(textString2, 730, canvas.height / 2 + 62);
   var textString4 = `Member #${member.guild.memberCount}`;
   ctx.font = 'bold 60px "Quicksand"';
   ctx.fillStyle = '#f2f2f2';
-  ctx.fillText(textString4, 750, canvas.height / 2 + 100);
+  ctx.fillText(textString4, 720, canvas.height / 2 + 120);
   var textString4 = `${member.guild.name}`;
   ctx.font = 'bold 70px "Quicksand"';
   ctx.fillStyle = '#f2f2f2';
-  ctx.fillText(textString4, 700, canvas.height / 2 - 150);
+  ctx.fillText(textString4, 700, canvas.height / 2 - 140);
   ctx.beginPath();
   ctx.arc(315, canvas.height / 2, 250, 0, Math.PI * 2, true);
   ctx.closePath();
