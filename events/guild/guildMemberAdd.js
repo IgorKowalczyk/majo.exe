@@ -53,7 +53,7 @@ module.exports = async (client, member) => {
    .setColor("RANDOM")
    .setTimestamp()
    .setFooter(`${member.guild.name}`, member.user.displayAvatarURL({ dynamic: true, format: 'png', size: 2048 }))
-   .setAuthor(`**Welcome to the server ${member.user.username}!**`)
+   .setTitle(`**Welcome to the server ${member.user.username}!**`)
    .setDescription(":calendar_spiral: **Acount created at:** \`" + member.user.createdAt.toUTCString().substr(0, 16) + "\`(" + checkdays(member.user.createdAt) + ")")
    .setImage("attachment://welcome-image.png")
    .attachFiles(attachment);
