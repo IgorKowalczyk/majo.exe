@@ -52,8 +52,8 @@ module.exports = async (client, member) => {
    .setColor("RANDOM")
    .setTimestamp()
    .setFooter(`${member.guild.name}`, member.user.displayAvatarURL({ dynamic: true, format: 'png', size: 2048 }))
-   .setTitle(`**${member.user.username} left the server!**`)
-   .setDescription(":calendar_spiral: **User joined server at:** \`" + moment(member.user.joinedTimestamp).format("dddd, MMMM Do YYYY, h:mm:ss a") + "\`(" + moment(member.user.joinedTimestamp).fromNow() + ")")
+   .setTitle(`**${member.user.username} left the server!**`, member.guild.iconURL({ dynamic: true, format: 'png'}))
+   .setDescription(":calendar_spiral: **User joined server at:** \`" + moment(member.user.joinedAt).format("MMMM Do YYYY, h:mm:ss") + "\` (" + moment(member.user.joinedAt).fromNow() + ")")
    .setImage("attachment://welcome-image.png")
    .attachFiles(attachment);
   channel.send(embed);
