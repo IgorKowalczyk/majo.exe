@@ -2,7 +2,7 @@ const Discord = require('discord.js');
 const config = require("../../config");
 const prefix = config.prefix;
 
-module.exports = async (client, message) => {
+module.exports = async (client, message, pclient) => {
  try {
   const queue = new Map();
   if (message.author.bot) return;
@@ -56,7 +56,7 @@ module.exports = async (client, message) => {
   console.log(err);
   message.channel.send({embed: {
    color: 16734039,
-   description: "❌ | That command does not exist, Take a look at \`" + `${prefix}` + " help\`!"
+   description: "❌ | Something went wrong while running this command! Please try again later"
   }});
  }
 }
