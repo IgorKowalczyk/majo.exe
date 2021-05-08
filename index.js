@@ -11,13 +11,20 @@ const { pgClient } = require('pg');
 console.log("Connecting to database");
 try {
  var pclient = new pgClient({
- connectionString: process.env.DATABASE_URL,
- ssl: {
-  rejectUnauthorized: false
- }
-});
-client.connect();
-console.log("Connected!")
+  connectionString: process.env.DATABASE_URL,
+  ssl: {
+   rejectUnauthorized: false
+  }
+ });
+ pclient.connect();
+ console.log("Connected!")
+ pclient.query('SELECT table_schema,table_name FROM information_schema.tables;', (err, res) => {
+  if (err) throw err;
+  for (let row of res.rows) {
+   console.log(JSON.stringify(row));
+  }
+  pclient.end();
+ });
 } catch (err) {
 console.log("Error while connecting to database!")
 }
