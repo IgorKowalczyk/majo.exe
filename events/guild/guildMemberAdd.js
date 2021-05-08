@@ -1,6 +1,5 @@
 const Discord = require('discord.js');
 const Canvas = require('canvas');
-const moment = require('moment');
 
 module.exports = async (client, member) => {
  try {

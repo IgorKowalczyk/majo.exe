@@ -1,6 +1,5 @@
 const Discord = require('discord.js');
-const config = require("../../config");
-const prefix = config.prefix;
+const Canvas = require('canvas');
 
 module.exports = async (client, member) => {
  try {
@@ -15,7 +14,7 @@ module.exports = async (client, member) => {
   Canvas.registerFont('./lib/fonts/quicksand-light.ttf', { family: 'Quicksand' })
   const canvas = Canvas.createCanvas(1772, 633);
   const ctx = canvas.getContext('2d');
-  const background = await Canvas.loadImage(`./lib/img/welcome-grayscale.png`);
+  const background = await Canvas.loadImage(`./lib/img/welcome-gray.png`);
   ctx.drawImage(background, 0, 0, canvas.width, canvas.height);
   ctx.strokeStyle = '#f2f2f2';
   ctx.strokeRect(0, 0, canvas.width, canvas.height);
