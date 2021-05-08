@@ -6,6 +6,22 @@ const db = require("quick.db");
 const chalk = require("chalk");
 const config = require("./config");
 require('dotenv').config()
+const { pgClient } = require('pg');
+
+console.log("Connecting to database");
+try {
+const pclient = new pgClient({
+ connectionString: process.env.DATABASE_URL,
+ ssl: {
+  rejectUnauthorized: false
+ }
+});
+client.connect();
+console.log("Connected!")
+} catch (err) {
+console.log("Error while connecting to database!")
+}
+
 
 /* Login and Commands */
 if (process.env.TOKEN) {
@@ -15,7 +31,7 @@ if (process.env.TOKEN) {
  require('events').EventEmitter.prototype._maxListeners = 70;
  require('events').defaultMaxListeners = 70;
  ['command', 'event'].forEach(handler => {
-  require(`./handlers/${handler}`)(client);
+  require(`./handlers/${handler}`)(client, pclient);
  });
  client.login(process.env.TOKEN)
 } else {

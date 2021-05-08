@@ -50,7 +50,7 @@ module.exports = async (client, message) => {
    }});
   }
   if (command) {
-   command.run(client, message, args);
+   command.run(client, message, args, pclient);
   }
  } catch (err) {
   console.log(err);

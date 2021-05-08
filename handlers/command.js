@@ -6,7 +6,7 @@ table.setHeading('Command', 'Category', 'Load status');
 table.setTitleAlign(table.CENTER)
 
 /* Code by João Victor (https://github.com/Joao-Victor-Liporini). Thanks ❤️ */
-module.exports = (client) => {
+module.exports = (client, pclient) => {
  readdirSync('./commands/').forEach(file => {
    let pull = require(`../commands/${file}`);
    try {
