@@ -2,7 +2,7 @@ const Discord = require('discord.js');
 const config = require("../../config");
 const prefix = config.prefix;
 
-module.exports = async (client, message, pclient) => {
+module.exports = async (client, message) => {
  try {
   const queue = new Map();
   if (message.author.bot) return;
@@ -50,7 +50,7 @@ module.exports = async (client, message, pclient) => {
    }});
   }
   if (command) {
-   command.run(client, message, args, pclient);
+   command.run(client, message, args);
   }
  } catch (err) {
   console.log(err);

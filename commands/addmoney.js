@@ -1,5 +1,6 @@
 const Discord = require("discord.js");
 const db = require("quick.db");
+const { pgClient } = require ('pg');
 
 module.exports = {
  name: "addmoney",
@@ -8,6 +9,20 @@ module.exports = {
  category: "Economy",
  usage: "addmoney <user> <money>",
  run: async (client, message, args) => {
+  var pclient = new pgClient({
+   connectionString: process.env.DATABASE_URL,
+   ssl: {
+    rejectUnauthorized: false
+   }
+  });
+  pclient.connect(err => {
+   if(err) {
+    return message.channel.send({embed: {
+     color: 16734039,
+     description: "❌ | Cannot connect to database, please try again later"
+    }})
+   }
+  })
   try {
    if (message.member.hasPermission("MANAGE_MESSAGES")) {
     let user = message.mentions.members.first();
