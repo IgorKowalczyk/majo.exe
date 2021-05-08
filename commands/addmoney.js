@@ -1,6 +1,6 @@
 const Discord = require("discord.js");
 const db = require("quick.db");
-const pgClient = require('pg');
+const pgClient = require('pg').Client;
 
 module.exports = {
  name: "addmoney",
