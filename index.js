@@ -10,7 +10,7 @@ const { pgClient } = require('pg');
 
 console.log("Connecting to database");
 try {
-const pclient = new pgClient({
+ var pclient = new pgClient({
  connectionString: process.env.DATABASE_URL,
  ssl: {
   rejectUnauthorized: false
