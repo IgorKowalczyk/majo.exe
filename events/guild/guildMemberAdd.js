@@ -6,7 +6,7 @@ module.exports = async (client, member) => {
   const channel = member.guild.channels.cache.find(channel => channel.name.includes('hello-or-bye'));
   if (!channel) return;
   if(!member.guild) return;
-  Canvas.registerFont('../../lib/fonts/quicksand-light.tff', { family: 'Quicksand' })
+  Canvas.registerFont('./lib/fonts/quicksand-light.tff', { family: 'Quicksand' })
   const canvas = Canvas.createCanvas(1772, 633);
   const ctx = canvas.getContext('2d');
   const background = await Canvas.loadImage(`./lib/img/welcome.png`);
