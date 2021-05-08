@@ -8,7 +8,7 @@ const channel = member.guild.channels.cache.find(channel => channel.name.include
 if (!channel) return;
  let embed = new Discord.MessageEmbed()
   .setDescription(`**${member.displayName}#${member.user.discriminator}** left the server.`)
-  .setThumbnail(member.user.displayAvatarURL())
+  .setThumbnail(member.user.displayAvatarURL({format: 'jpg', size: 2048}))
   .setColor("RANDOM")
   .setTimestamp()
   .setFooter(`Total members: ${member.guild.memberCount}`);

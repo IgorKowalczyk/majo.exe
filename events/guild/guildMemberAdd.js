@@ -24,29 +24,29 @@ module.exports = async (client, member) => {
   if (textString3.length >= 14) {
    ctx.font = 'bold 150px "Quicksand"';
    ctx.fillStyle = '#f2f2f2';
-   ctx.fillText(textString3, 720, canvas.height / 2 + 20);
+   ctx.fillText(textString3, 720, canvas.height / 2 + 20); // User Name
   } else {
    ctx.font = 'bold 200px "Quicksand"';
    ctx.fillStyle = '#f2f2f2';
-   ctx.fillText(textString3, 720, canvas.height / 2 + 25);
+   ctx.fillText(textString3, 720, canvas.height / 2 + 25); // User Name
   }
   var textString2 = `#${member.user.discriminator}`;
   ctx.font = 'bold 40px "Quicksand"';
   ctx.fillStyle = '#f2f2f2';
-  ctx.fillText(textString2, 730, canvas.height / 2 + 62);
+  ctx.fillText(textString2, 730, canvas.height / 2 + 62); // User Tag
   var textString4 = `Member #${member.guild.memberCount}`;
   ctx.font = 'bold 60px "Quicksand"';
   ctx.fillStyle = '#f2f2f2';
-  ctx.fillText(textString4, 720, canvas.height / 2 + 120);
+  ctx.fillText(textString4, 720, canvas.height / 2 + 120); // Member Count
   var textString4 = `${member.guild.name}`;
   ctx.font = 'bold 70px "Quicksand"';
   ctx.fillStyle = '#f2f2f2';
-  ctx.fillText(textString4, 700, canvas.height / 2 - 140);
+  ctx.fillText(textString4, 720, canvas.height / 2 - 140); // Member Guild Name
   ctx.beginPath();
   ctx.arc(315, canvas.height / 2, 250, 0, Math.PI * 2, true);
   ctx.closePath();
   ctx.clip();
-  const avatar = await Canvas.loadImage(member.user.displayAvatarURL({ format: 'jpg' }));
+  const avatar = await Canvas.loadImage(member.user.displayAvatarURL({ format: 'jpg', size: 2048}));
   ctx.drawImage(avatar, 65, canvas.height / 2 - 250, 500, 500);
   const attachment = new Discord.MessageAttachment(canvas.toBuffer(), 'welcome-image.png');
   const embed = new Discord.MessageEmbed()
