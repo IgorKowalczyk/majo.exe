@@ -49,7 +49,7 @@ module.exports = async (client, member) => {
   ctx.drawImage(avatar, 65, canvas.height / 2 - 250, 500, 500);
   const attachment = new Discord.MessageAttachment(canvas.toBuffer(), 'welcome-image.png');
   member.guild.fetchInvites().then(async (guildInvites) => {
-   const ei = invites[member.guild.id];
+   const ei = guildInvites[member.guild.id];
    invites[member.guild.id] = guildInvites;
    const invite = guildInvites.find((i) => ei.get(i.code).uses < i.uses);
    const inviter = await client.users.fetch(invite.inviter.id);

@@ -6,6 +6,12 @@ module.exports = async (client, member) => {
  try {
   const channel = member.guild.channels.cache.find(channel => channel.name.includes('hello-or-bye'));
   if (!channel) return;
+  function checkdays(date) {
+   let now = new Date();
+   let diff = now.getTime() - date.getTime();
+   let days = Math.floor(diff / 86400000);
+   return days + (days == 1 ? " day" : " days") + " ago";
+  }
   Canvas.registerFont('./lib/fonts/quicksand-light.ttf', { family: 'Quicksand' })
   const canvas = Canvas.createCanvas(1772, 633);
   const ctx = canvas.getContext('2d');
@@ -47,7 +53,7 @@ module.exports = async (client, member) => {
    .setTimestamp()
    .setFooter(`${member.guild.name}`, member.user.displayAvatarURL({ dynamic: true, format: 'png', size: 2048 }))
    .setTitle(`**${member.user.username} left the server!**`)
-   .setDescription(":calendar_spiral: **User joined server at:** \`" + moment(member.guild.joinedTimestamp).format("dddd, MMMM Do YYYY, h:mm:ss a") + "\`(" + moment(member.guild.joinedTimestamp).fromNow() + ")")
+   .setDescription(":calendar_spiral: **User joined server at:** \`" + moment(member.user.joinedTimestamp).format("dddd, MMMM Do YYYY, h:mm:ss a") + "\`(" + moment(member.user.joinedTimestamp).fromNow() + ")")
    .setImage("attachment://welcome-image.png")
    .attachFiles(attachment);
   channel.send(embed);
