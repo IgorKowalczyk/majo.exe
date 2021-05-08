@@ -12,7 +12,7 @@ module.exports = async (client, member) => {
    let diff = now.getTime() - date.getTime();
    let days = Math.floor(diff / 86400000);
    return days + (days == 1 ? " day" : " days") + " ago";
-   }
+  }
   Canvas.registerFont('./lib/fonts/quicksand-light.ttf', { family: 'Quicksand' })
   const canvas = Canvas.createCanvas(1772, 633);
   const ctx = canvas.getContext('2d');
