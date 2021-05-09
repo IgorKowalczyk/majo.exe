@@ -5,8 +5,8 @@ module.exports = async (client, oldMessage, newMessage) => {
  try {
   if (oldMessage.author.bot) return;
   if (!oldMessage.guild.member(client.user).hasPermission("EMBED_LINKS", "VIEW_CHANNEL", "READ_MESSAGE_HISTORY", "VIEW_AUDIT_LOG", "SEND_MESSAGES")) return;
-  if (!log.guild.member(client.user).hasPermission("EMBED_LINKS", "VIEW_CHANNEL", "READ_MESSAGE_HISTORY", "VIEW_AUDIT_LOG", "SEND_MESSAGES")) return;
-  var log = oldMessage.guild.channels.cache.find(c => c.name === "log");
+  // if (!log.guild.member(client.user).hasPermission("EMBED_LINKS", "VIEW_CHANNEL", "READ_MESSAGE_HISTORY", "VIEW_AUDIT_LOG", "SEND_MESSAGES")) return;
+  const log = oldMessage.guild.channels.cache.find(c => c.name === "log");
   if (!log) return;
   if (oldMessage.content.startsWith("https://")) return;
   if (oldMessage.content.startsWith("http://")) return;

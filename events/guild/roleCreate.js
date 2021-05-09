@@ -2,11 +2,10 @@ const Discord = require('discord.js');
 const config = require("../../config");
 
 module.exports = async (client, role) => {
-/*
-try {
- if (!role.guild.member(client.user).hasPermission("EMBED_LINKS")) return;
- if (!role.guild.member(client.user).hasPermission("VIEW_AUDIT_LOG")) return;
- var logChannel = role.guild.channels.cache.find(channel => channel.name.includes('log'));
+ try {
+     /*
+ if (!role.guild.member(client.user).hasPermission("EMBED_LINKS", "VIEW_CHANNEL", "READ_MESSAGE_HISTORY", "VIEW_AUDIT_LOG", "SEND_MESSAGES")) return;
+ const log = role.guild.channels.cache.find(channel => channel.name.includes('log'));
  if (!logChannel) return;
  role.guild.fetchAuditLogs().then(logs => {
   var userID = logs.entries.first().executor.id;
@@ -18,15 +17,10 @@ try {
    .setColor("RANDOM")
    .setTimestamp()
    .setFooter(role.guild.name, role.guild.iconURL());
-  logChannel.send(roleCreate);
+   log.send(roleCreate);
  });
-} catch (err) {
- let embed = new Discord.MessageEmbed()
-  .setColor("#FF0000")
-  .setTitle("Error!")
-  .setDescription("**Error Code:** *" + err + "*")
-  .setTimestamp();
- console.log(err);
-}
-*/
+  */
+ } catch (err) {
+  console.log(err);
+ }
 }
