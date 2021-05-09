@@ -1,7 +1,7 @@
 const Discord = require('discord.js');
 const config = require("../../config");
 
-module.exports = async (client, oldGuild, newGuild) => {
+module.exports = async (client, oldGuild, newGuild, guild) => {
  try {
   if (!guild.member(client.user).hasPermission("EMBED_LINKS", "VIEW_CHANNEL", "READ_MESSAGE_HISTORY", "VIEW_AUDIT_LOG", "SEND_MESSAGES")) return;
   const log = guild.channels.cache.find(log => log.name === "log")
