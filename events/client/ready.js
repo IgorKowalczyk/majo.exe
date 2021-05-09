@@ -32,7 +32,7 @@ module.exports = (client) => {
     );	
    }	
    const random = Math.floor(Math.random() * (statuslist.length - 1) + 1);
-   client.user.setActivity(statuslist[random], { type: 'WATCHING' });
+   client.user.setActivity(statuslist[random], { type: 'LISTENING' });
   }, 10000);
   client.user.setStatus("online");
   const datelog = new Date();
