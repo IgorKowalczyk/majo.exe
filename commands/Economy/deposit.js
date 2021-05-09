@@ -6,7 +6,7 @@ module.exports = {
  aliases: ["dep"],
  description: "Deposit money to bank",
  category: "Economy",
- usage: "deposit <all/monety>",
+ usage: "deposit <all/money>",
  run: async (client, message, args) => {
   try {
    let user = message.author;

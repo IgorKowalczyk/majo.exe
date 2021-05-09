@@ -5,7 +5,7 @@ const Discord = require("discord.js");
 module.exports = {
  name: "shuffle",
  aliases: [],
- description: "`Shuffle the current queue",
+ description: "Shuffle the current queue",
  category: "Music",
  usage: "shuffle",
  run: async (client, message, args) => {

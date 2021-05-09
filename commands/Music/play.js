@@ -1,7 +1,7 @@
-const { play } = require("../utilities/play");
+const { play } = require("../../utilities/play");
 const Discord = require("discord.js");
-const config = require("../config");
-const ytsr = require("youtube-sr").default;;
+const config = require("../../config");
+const ytsr = require("youtube-sr").default;
 
 module.exports = {
  name: "play",

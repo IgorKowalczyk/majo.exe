@@ -7,8 +7,10 @@ table.setTitleAlign(table.CENTER)
 
 /* Code by João Victor (https://github.com/Joao-Victor-Liporini). Thanks ❤️ */
 module.exports = (client) => {
- readdirSync('./commands/').forEach(file => {
-   let pull = require(`../commands/${file}`);
+ readdirSync('./commands/').forEach(dir => {
+  const commands = readdirSync(`./commands/${dir}/`).filter(file => file.endsWith('.js'));
+  for (let file of commands) {
+   let pull = require(`../commands/${dir}/${file}`);
    try {
     if (typeof pull.name != 'string' || typeof pull != 'object') throw new Error('Missing a name or name is not a string');
     if (pull.category && typeof pull.category !== 'string') throw new Error('Category is not a string');
@@ -23,6 +25,7 @@ module.exports = (client) => {
    } catch (error) {
     table.addRow(file, '-', `ERROR -> ${error}`);
    }
+  }
  });
  console.log(chalk.blue("Loading commands..."));
  console.log(table.toString());

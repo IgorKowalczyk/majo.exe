@@ -1,5 +1,5 @@
 const Discord = require("discord.js");
-const { canModifyQueue } = require("../utilities/main");
+const { canModifyQueue } = require("../../utilities/main");
 
 module.exports = {
  name: "pause",

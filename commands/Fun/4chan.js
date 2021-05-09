@@ -1,6 +1,6 @@
 const Discord = require("discord.js");
 const https = require('https');
-const config = require("../config");
+const config = require("../../config");
 const prefix = config.prefix;
 
 module.exports = {
