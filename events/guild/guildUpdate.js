@@ -1,13 +1,13 @@
 const Discord = require('discord.js');
 const config = require("../../config");
 
-module.exports = async (client, oldGuild, newGuild, guild) => {
+module.exports = async (client, oldGuild, newGuild) => {
  try {
-  if (!guild.member(client.user).hasPermission("EMBED_LINKS", "VIEW_CHANNEL", "READ_MESSAGE_HISTORY", "VIEW_AUDIT_LOG", "SEND_MESSAGES")) return;
-  const log = guild.channels.cache.find(log => log.name === "log")
+  if (!newGuild.member(client.user).hasPermission("EMBED_LINKS", "VIEW_CHANNEL", "READ_MESSAGE_HISTORY", "VIEW_AUDIT_LOG", "SEND_MESSAGES")) return;
+  const log = newGuild.channels.cache.find(log => log.name === "log")
   if(!log) return;
   if(log.type !== "text") return;
-  if (!log.guild.member(client.user).hasPermission("EMBED_LINKS", "VIEW_CHANNEL", "READ_MESSAGE_HISTORY", "VIEW_AUDIT_LOG", "SEND_MESSAGES")) return;
+  if (!log.newGuild.member(client.user).hasPermission("EMBED_LINKS", "VIEW_CHANNEL", "READ_MESSAGE_HISTORY", "VIEW_AUDIT_LOG", "SEND_MESSAGES")) return;
   if(log) {
    if(oldGuild.name != newGuild.name) {
     const embed = new Discord.MessageEmbed()
@@ -17,7 +17,7 @@ module.exports = async (client, oldGuild, newGuild, guild) => {
      .addField("Old name", `${oldGuild.name}`)
      .addField("New name", `${newGuild.name}`)
      .setTimestamp()
-     .setFooter(guild.name, guild.iconURL())
+     .setFooter(newGuild.name, newGuild.iconURL())
     log.send(embed);
    }
    if(oldGuild.owner != newGuild.owner) {
@@ -28,7 +28,7 @@ module.exports = async (client, oldGuild, newGuild, guild) => {
      .addField("Old owner", `${oldGuild.owner}`)
      .addField("New owner", `${newGuild.owner}`)
      .setTimestamp()
-     .setFooter(guild.name, guild.iconURL())
+     .setFooter(newGuild.name, newGuild.iconURL())
     log.send(embed);  
    }
    if(oldGuild.preferredLocale != newGuild.preferredLocale) {
@@ -39,7 +39,7 @@ module.exports = async (client, oldGuild, newGuild, guild) => {
      .addField("Old preferred locale", `${oldGuild.preferredLocale}`)
      .addField("New preferred locale", `${newGuild.preferredLocale}`)
      .setTimestamp()
-     .setFooter(guild.name, guild.iconURL())
+     .setFooter(newGuild.name, newGuild.iconURL())
     log.send(embed);  
    }
    if(oldGuild.publicUpdatesChannelID != newGuild.publicUpdatesChannelID) {
@@ -50,7 +50,7 @@ module.exports = async (client, oldGuild, newGuild, guild) => {
      .addField("Old public updates channel", `<#${oldGuild.publicUpdatesChannelID}>`)
      .addField("New public updates channel", `<#${newGuild.publicUpdatesChannelID}>`)
      .setTimestamp()
-     .setFooter(guild.name, guild.iconURL())
+     .setFooter(newGuild.name, newGuild.iconURL())
     log.send(embed);  
    }
    if(oldGuild.rulesChannelID != newGuild.rulesChannelID) {
@@ -61,7 +61,7 @@ module.exports = async (client, oldGuild, newGuild, guild) => {
      .addField("Old rules channel", `<#${oldGuild.rulesChannelID}>`)
      .addField("New rules channel", `<#${newGuild.rulesChannelID}>`)
      .setTimestamp()
-     .setFooter(guild.name, guild.iconURL())
+     .setFooter(newGuild.name, newGuild.iconURL())
     log.send(embed);  
    }
    if(oldGuild.systemChannelID != newGuild.systemChannelID) {
@@ -72,7 +72,7 @@ module.exports = async (client, oldGuild, newGuild, guild) => {
      .addField("Old system channel", `<#${oldGuild.systemChannelID}>`)
      .addField("New system channel", `<#${newGuild.systemChannelID}>`)
      .setTimestamp()
-     .setFooter(guild.name, guild.iconURL())
+     .setFooter(newGuild.name, newGuild.iconURL())
     log.send(embed);  
    }
    if(oldGuild.verificationLevel != newGuild.verificationLevel) {
@@ -83,7 +83,7 @@ module.exports = async (client, oldGuild, newGuild, guild) => {
      .addField("Old verification level", `${oldGuild.verificationLevel}`)
      .addField("New verification level", `${newGuild.verificationLevel}`)
      .setTimestamp()
-     .setFooter(guild.name, guild.iconURL())
+     .setFooter(newGuild.name, newGuild.iconURL())
     log.send(embed);  
    }
    if(oldGuild.widgetEnabled != newGuild.widgetEnabled) {
@@ -94,7 +94,7 @@ module.exports = async (client, oldGuild, newGuild, guild) => {
      .addField("Old widget channel", `${oldGuild.widgetEnabled}`)
      .addField("New widget channel", `${newGuild.widgetEnabled}`)
      .setTimestamp()
-     .setFooter(guild.name, guild.iconURL())
+     .setFooter(newGuild.name, newGuild.iconURL())
     log.send(embed);  
    }
    if(oldGuild.widgetChannelID != newGuild.widgetChannelID) {
@@ -105,7 +105,7 @@ module.exports = async (client, oldGuild, newGuild, guild) => {
      .addField("Old widget channel", `${oldGuild.widgetChannelID}`)
      .addField("New widget channel", `${newGuild.widgetChannelID}`)
      .setTimestamp()
-     .setFooter(guild.name, guild.iconURL())
+     .setFooter(newGuild.name, newGuild.iconURL())
     log.send(embed);  
    }
   }
