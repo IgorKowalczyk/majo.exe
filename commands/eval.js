@@ -33,12 +33,12 @@ module.exports = {
     .addField(`Output:\n`, '```js\n' + evaluated + '```', true)
     .setFooter("Requested by " + `${message.author.username}`, message.author.displayAvatarURL({ dynamic: true, format: 'png', size: 2048 }))
    message.channel.send(success)
-  } catch (error) {
+  } catch (err) {
    const errormessage = new Discord.MessageEmbed()
    .setColor("#e31212")
    .setTitle("An error has occured")
    .addField(`Input:\n`, '```js\n' + `${result}` + '```', false)
-   .addField(`Output:\n`, '```js\n' + `${error.message}` + '```', true)
+   .addField(`Output:\n`, '```js\n' + `${err.message}` + '```', true)
    .setFooter("Requested by " + `${message.author.username}`, message.author.displayAvatarURL({ dynamic: true, format: 'png', size: 2048 }))
    return message.channel.send(errormessage)
   }
