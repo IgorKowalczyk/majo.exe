@@ -23,7 +23,7 @@ module.exports = async (client, oldMessage, newMessage) => {
    .addField("Old Message", "\`\`\`" + `${oldMessage}` + "\`\`\`")
    .addField("New Message", "\`\`\`" + `${newMessage}` + "\`\`\`")
    .setTimestamp()
-   .setFooter(message.guild.name, message.guild.iconURL())
+   .setFooter(oldMessage.guild.name, oldMessage.guild.iconURL())
   log.send(event);
  } catch (err) {
   console.log(err);
