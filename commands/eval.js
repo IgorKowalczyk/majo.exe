@@ -17,7 +17,7 @@ module.exports = {
      description: "❌ | You do not have permission to run this command (Only owner of the bot can run this)!"
     }});
    }
-   var result = args.join(" ").slice(5);
+   var result = args.join(" ");
    if (!result) {
     return message.channel.send({embed: {
      color: 16734039,
