@@ -29,7 +29,7 @@ module.exports = {
    const success = new Discord.MessageEmbed()
     .setColor("RANDOM")
     .setTitle("💡 Eval")
-    .addField(`Input:\n`, '```js\n' + `${args.join(" ").slice(5)}` + '```', false)
+    .addField(`Input:\n`, '```js\n' + `${args.join(" ")}` + '```', false)
     .addField(`Output:\n`, '```js\n' + evaluated + '```', true)
     .setFooter("Requested by " + `${message.author.username}`, message.author.displayAvatarURL({ dynamic: true, format: 'png', size: 2048 }))
    message.channel.send(success)
