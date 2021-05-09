@@ -7,7 +7,7 @@ module.exports = async (client, oldGuild, newGuild) => {
   const log = newGuild.channels.cache.find(log => log.name === "log")
   if(!log) return;
   if(log.type !== "text") return;
-  if (!log.newGuild.member(client.user).hasPermission("EMBED_LINKS", "VIEW_CHANNEL", "READ_MESSAGE_HISTORY", "VIEW_AUDIT_LOG", "SEND_MESSAGES")) return;
+  if (!log.member(client.user).hasPermission("EMBED_LINKS", "VIEW_CHANNEL", "READ_MESSAGE_HISTORY", "VIEW_AUDIT_LOG", "SEND_MESSAGES")) return;
   if(log) {
    if(oldGuild.name != newGuild.name) {
     const embed = new Discord.MessageEmbed()
