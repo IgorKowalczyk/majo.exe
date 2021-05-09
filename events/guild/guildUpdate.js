@@ -12,7 +12,6 @@ module.exports = async (client, oldGuild, newGuild) => {
    if(oldGuild.name != newGuild.name) {
     const embed = new Discord.MessageEmbed()
      .setTitle("Guild name changed")
-     .setThumbnail(uavatar)
      .setColor("RANDOM")
      .addField("Old name", `${oldGuild.name}`)
      .addField("New name", `${newGuild.name}`)
@@ -23,7 +22,6 @@ module.exports = async (client, oldGuild, newGuild) => {
    if(oldGuild.owner != newGuild.owner) {
     const embed = new Discord.MessageEmbed()
      .setTitle("Guild owner changed")
-     .setThumbnail(uavatar)
      .setColor("RANDOM")
      .addField("Old owner", `${oldGuild.owner}`)
      .addField("New owner", `${newGuild.owner}`)
@@ -34,7 +32,6 @@ module.exports = async (client, oldGuild, newGuild) => {
    if(oldGuild.preferredLocale != newGuild.preferredLocale) {
     const embed = new Discord.MessageEmbed()
      .setTitle("Guild preferred locale changed")
-     .setThumbnail(uavatar)
      .setColor("RANDOM")
      .addField("Old preferred locale", `${oldGuild.preferredLocale}`)
      .addField("New preferred locale", `${newGuild.preferredLocale}`)
@@ -45,7 +42,6 @@ module.exports = async (client, oldGuild, newGuild) => {
    if(oldGuild.publicUpdatesChannelID != newGuild.publicUpdatesChannelID) {
     const embed = new Discord.MessageEmbed()
      .setTitle("Guild public updates channel changed")
-     .setThumbnail(uavatar)
      .setColor("RANDOM")
      .addField("Old public updates channel", `<#${oldGuild.publicUpdatesChannelID}>`)
      .addField("New public updates channel", `<#${newGuild.publicUpdatesChannelID}>`)
@@ -56,7 +52,6 @@ module.exports = async (client, oldGuild, newGuild) => {
    if(oldGuild.rulesChannelID != newGuild.rulesChannelID) {
     const embed = new Discord.MessageEmbed()
      .setTitle("Guild rules channel changed")
-     .setThumbnail(uavatar)
      .setColor("RANDOM")
      .addField("Old rules channel", `<#${oldGuild.rulesChannelID}>`)
      .addField("New rules channel", `<#${newGuild.rulesChannelID}>`)
@@ -67,7 +62,6 @@ module.exports = async (client, oldGuild, newGuild) => {
    if(oldGuild.systemChannelID != newGuild.systemChannelID) {
     const embed = new Discord.MessageEmbed()
      .setTitle("Guild system channel changed")
-     .setThumbnail(uavatar)
      .setColor("RANDOM")
      .addField("Old system channel", `<#${oldGuild.systemChannelID}>`)
      .addField("New system channel", `<#${newGuild.systemChannelID}>`)
@@ -78,7 +72,6 @@ module.exports = async (client, oldGuild, newGuild) => {
    if(oldGuild.verificationLevel != newGuild.verificationLevel) {
     const embed = new Discord.MessageEmbed()
      .setTitle("Guild verification level changed")
-     .setThumbnail(uavatar)
      .setColor("RANDOM")
      .addField("Old verification level", `${oldGuild.verificationLevel}`)
      .addField("New verification level", `${newGuild.verificationLevel}`)
@@ -89,7 +82,6 @@ module.exports = async (client, oldGuild, newGuild) => {
    if(oldGuild.widgetEnabled != newGuild.widgetEnabled) {
     const embed = new Discord.MessageEmbed()
      .setTitle("Guild widget update")
-     .setThumbnail(uavatar)
      .setColor("RANDOM")
      .addField("Old widget channel", `${oldGuild.widgetEnabled}`)
      .addField("New widget channel", `${newGuild.widgetEnabled}`)
@@ -100,7 +92,6 @@ module.exports = async (client, oldGuild, newGuild) => {
    if(oldGuild.widgetChannelID != newGuild.widgetChannelID) {
     const embed = new Discord.MessageEmbed()
      .setTitle("Guild widget channel changed")
-     .setThumbnail(uavatar)
      .setColor("RANDOM")
      .addField("Old widget channel", `${oldGuild.widgetChannelID}`)
      .addField("New widget channel", `${newGuild.widgetChannelID}`)
