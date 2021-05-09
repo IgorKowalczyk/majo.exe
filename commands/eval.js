@@ -17,43 +17,30 @@ module.exports = {
      description: "❌ | You do not have permission to run this command (Only owner of the bot can run this)!"
     }});
    }
-   if(!args[0]) {
+   let result = args.join(" ").slice(5);
+   if (!result) {
     return message.channel.send({embed: {
      color: 16734039,
      description: "❌ | Please input code to evaluate!"
     }});
    }
-   if (args.join(" ").toLowerCase().includes("token")) {
-    return message.channel.send({embed: {
-     color: 16734039,
-     description: "❌ | You can't use this (This for safetly resons)!"
-    }});
-   }
-   if (args.join(" ").toLowerCase().includes("process.env")) {
-    return message.channel.send({embed: {
-     color: 16734039,
-     description: "❌ | You can't use this (This for safetly resons)!"
-    }});
-   }
-   const toEval = args.join(" ")
-   const evaluated = eval(toEval)
-   const embed = new Discord.MessageEmbed()
+   let evaluated = eval(result);
+   console.log(result);
+   const success = new Discord.MessageEmbed()
     .setColor("RANDOM")
-    .setTimestamp()
     .setTitle("💡 Eval")
-    .addField("To evaluate:", `\`\`\`js\n${beautify(args.join(" "), { format: "js"})}\n\`\`\``)
-    .addField("Evaluated:", evaluated)
-    .addField("Type of:", typeof(evaluated))
+    .addField(`Input:\n`, '```js\n' + `${args.join(" ").slice(5)}` + '```', false)
+    .addField(`Output:\n`, '```js\n' + evaluated + '```', true)
     .setFooter("Requested by " + `${message.author.username}`, message.author.displayAvatarURL({ dynamic: true, format: 'png', size: 2048 }))
-   message.channel.send(embed);
-  } catch (err) {
-   const embed = new Discord.MessageEmbed()
-    .setColor("#FF0000")
-    .setTitle("Error!")
-    .setDescription("Error Code: " + err)
-    .setFooter("Requested by " + `${message.author.username}`, message.author.displayAvatarURL({ dynamic: true, format: 'png', size: 2048 }))
-    .setTimestamp()
-   return message.channel.send(embed);
+   message.channel.send(success)
+  } catch (error) {
+   const errormessage = new Discord.MessageEmbed()
+   .setColor("#e31212")
+   .setTitle("An error has occured")
+   .addField(`Input:\n`, '```js\n' + `${result}` + '```', false)
+   .addField(`Output:\n`, '```js\n' + `${error.message}` + '```', true)
+   .setFooter("Requested by " + `${message.author.username}`, message.author.displayAvatarURL({ dynamic: true, format: 'png', size: 2048 }))
+   return message.channel.send(errormessage)
   }
  }
 }
