@@ -1,7 +1,5 @@
 const Discord = require("discord.js");
 const Random = require("srod-v2");
-const config = require("../config");
-const prefix = config.prefix;
 
 module.exports = {
  name: "glass",

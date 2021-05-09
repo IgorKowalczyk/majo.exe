@@ -10,7 +10,6 @@ const deaths = [
  "[NAME2] stepped on a lego brick"
 ];
 
-
 module.exports = {
  name: "kill",
  aliases: [],

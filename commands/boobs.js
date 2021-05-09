@@ -1,8 +1,5 @@
-const superagent = require("snekfetch");
 const Discord = require('discord.js')
 const rp = require('request-promise-native');
-const config = require("../config");
-const prefix = config.prefix;
 
 module.exports = {
  name: "boobs",

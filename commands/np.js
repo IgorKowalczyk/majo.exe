@@ -1,6 +1,4 @@
 const Discord = require("discord.js");
-const config = require("../config");
-const prefix = config.prefix;
 
 /* Music module by Dhvit (@dhvitOP). Thanks ❤️ */
 

@@ -1,6 +1,6 @@
 const Discord = require('discord.js')
-var figlet = require('figlet');
-var hastebin = require('hastebin');
+const figlet = require('figlet');
+const hastebin = require('hastebin');
 
 module.exports = {
  name: "ascii",

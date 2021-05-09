@@ -1,6 +1,4 @@
-const Discord = require('discord.js')
-const config = require("../config");
-const prefix = config.prefix;
+const Discord = require('discord.js');
 const AmeClient = require('amethyste-api');
 const AmeAPI = new AmeClient(process.env.AMEAPI);
 

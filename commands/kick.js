@@ -43,12 +43,11 @@ module.exports = {
     description: ":arrow_right: " + mentioned.displayName + " has been kicked. Reason: \`" + reason + "\`!"
    }})
   } catch (err) {
-    console.log(err);
-    message.channel.send({embed: {
-     color: 16734039,
-     description: "Something went wrong... :cry:"
+   console.log(err);
+   message.channel.send({embed: {
+    color: 16734039,
+    description: "Something went wrong... :cry:"
    }})
   }
  }
 }
- 

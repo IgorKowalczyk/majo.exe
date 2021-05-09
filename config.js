@@ -8,6 +8,7 @@ module.exports = {
  "authorwebsite": "https://igorkowalczyk.github.io",
  "status": "https://stats.uptimerobot.com/5lVA7t0zZq",
  "author": "Igor Kowalczyk (Majonez.exe#3957)",
+ "ownerid": "440200028292907048",
  "github": "aurolia-css",
  "repo": "majo-rebuild",
  "domain": process.env.DOMAIN,

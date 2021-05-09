@@ -1,11 +1,9 @@
 const Discord = require("discord.js");
 const fetch = require("node-fetch");
-const config = require("../config");
-const prefix = config.prefix;
 
 module.exports = {
  name: "hug",
- aliases: ["cuddle"],
+ aliases: [],
  description: "Give a hug to mention user",
  category: "Fun",
  usage: "cuddle <user>",

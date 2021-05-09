@@ -1,7 +1,6 @@
 const Discord = require("discord.js");
 const beautify = require("beautify")
 const config = require("../config");
-const prefix = config.prefix;
 
 module.exports = {
  name: "eval",
@@ -11,7 +10,7 @@ module.exports = {
  usage: "eval <code>",
  run: async (client, message, args) => {
   try {
-   if(message.author.id !== "440200028292907048") {
+   if(message.author.id !== config.ownerid) {
     return message.channel.send({embed: {
      color: 16734039,
      description: "❌ | You do not have permission to run this command (Only owner of the bot can run this)!"

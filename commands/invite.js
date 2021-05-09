@@ -1,6 +1,5 @@
 const Discord = require('discord.js')
 const config = require("../config");
-const prefix = config.prefix;
 
 module.exports = {
  name: "invite",

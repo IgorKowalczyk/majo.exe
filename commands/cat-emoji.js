@@ -1,8 +1,6 @@
 const client = require('nekos.life');
 const Discord = require('discord.js')
 const neko = new client();
-const config = require("../config");
-const prefix = config.prefix;
 
 module.exports = {
  name: "cat-emoji",

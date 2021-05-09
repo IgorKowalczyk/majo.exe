@@ -1,7 +1,5 @@
 const Discord = require("discord.js");
 const flip = require("flip-text");
-const config = require("../config");
-const prefix = config.prefix;
 
 module.exports = {
  name: "fliptext",

@@ -1,6 +1,5 @@
 const Discord = require("discord.js");
 const config = require("../config");
-const prefix = config.prefix;
 const moment = require("moment");
 const os = require('os');
 require("moment-duration-format");

@@ -1,7 +1,5 @@
 const Discord = require('discord.js')
 const lyricsFinder = require("lyrics-finder");
-const config = require("../config");
-const prefix = config.prefix;
 
 /* Music module by Dhvit (@dhvitOP). Thanks ❤️ */
 

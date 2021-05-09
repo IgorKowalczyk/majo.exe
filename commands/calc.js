@@ -1,8 +1,5 @@
-const math = require('math-expression-evaluator');
-const stripIndents = require('common-tags').stripIndents;
 const Discord = require("discord.js");
-const config = require("../config");
-const prefix = config.prefix;
+const math = require('math-expression-evaluator');
 
 module.exports = {
  name: "calc",
