@@ -20,7 +20,7 @@ module.exports = {
       color: 16734039,
       description: "❌ | 0 Users found, please provide vaild username"
      }})
-     let {login, avatar_url, name, id, html_url, public_repos, followers, following, location, created_at, bio} = body;
+     let {login, avatar_url, name, id, html_url, company, public_repos, public_gists, twitter_username, email, followers, following, location, created_at, bio} = body;
      const embed = new Discord.MessageEmbed()
       .setAuthor(`🐙 ${login} Information!`, avatar_url)
       .setColor(`RANDOM`)
@@ -29,11 +29,15 @@ module.exports = {
       .addField(`ID`, `${id}`)
       .addField(`Bio`, `${bio || "No Bio"}`)
       .addField(`Public Repositories`, `${public_repos || "None"}`, true)
+      .addField(`Public Gists`, `${public_gists || "None"}`, true)
       .addField(`Followers`, `${followers}`, true)
       .addField(`Following`, `${following}`, true)
       .addField(`Location`, `${location || "No Location"}`)
+      .addField(`E-Mail`, `${email || "No email provided"}`)
+      .addField(`Twitter`, `${twitter_username || "None"}`)
+      .addField(`Company`, `${company || "No company"}`)
       .addField(`Account Created`, moment.utc(created_at).format("dddd, MMMM, Do YYYY"))
-      .setFooter(message.client.user.username, message.client.user.displayAvatarURL())
+      .setFooter("Requested by " + `${message.author.username}`, message.author.displayAvatarURL({ dynamic: true, format: 'png', size: 2048 }))
       .setTimestamp()
      message.channel.send(embed)
     })

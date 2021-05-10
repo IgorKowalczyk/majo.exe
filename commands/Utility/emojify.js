@@ -22,7 +22,12 @@ module.exports = {
      description: '❌ | Please enter shorter string. Max characters: 20'
     }})
    }
-   emoji.convert(emojis)
+   const converted = emoji.convert(emojis);
+   const embed = new Discord.MessageEmbed()
+    .setColor("RANDOM")
+    .setDescription(`Converted text: ${converted}`)
+    .setFooter("Requested by " + `${message.author.username}`, message.author.displayAvatarURL({ dynamic: true, format: 'png', size: 2048 }))
+   message.channel.send(converted)
   } catch (err) {
    console.log(err);
    message.channel.send({embed: {
