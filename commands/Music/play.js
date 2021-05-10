@@ -1,5 +1,5 @@
-const { play } = require("../../utilities/play");
 const Discord = require("discord.js");
+const { play } = require("../../utilities/play");
 const config = require("../../config");
 const ytsr = require("youtube-sr").default;
 

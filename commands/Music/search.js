@@ -1,5 +1,6 @@
 const Discord = require("discord.js");
 const ytsr = require("youtube-sr").default;
+const { play } = require("../../utilities/play");
 
 module.exports = {
  name: "search",
@@ -7,7 +8,7 @@ module.exports = {
  description: "Search and select videos to play",
  category: "Music",
  usage: "search <term>",
- run: async (client, message, args) => {
+ run: async (client, message, args, silient) => {
   try {
    if(!message.guild) return;
     const { channel } = message.member.voice;
@@ -68,6 +69,7 @@ module.exports = {
        else { response = "error"; }
    });
    if(response === "error") {
+    message.channel.activeCollector = false;
     message.channel.send({embed: {
      color: 16734039,
      description: "❌ | An error occurred",
@@ -76,10 +78,12 @@ module.exports = {
    }
    const choice = resultsEmbed.fields[parseInt(response) - 1].name;
    message.channel.activeCollector = false;
-   message.client.commands.get("play").run(message, [choice]);
+   // message.client.commands.get("play").run(message, [choice]);
+   play(choice, message, client, silient);
    resultsMessage.delete();
   } catch (err) {
    console.log(err);
+   message.channel.activeCollector = false;
    return message.channel.send({embed: {
     color: 16734039,
     description: "Something went wrong... :cry:",
