@@ -9,7 +9,7 @@ module.exports = {
  run: async (client, message, args) => {
   try {
    const messageID = args[0];
-   if(!messageID && !args[0]) {
+   if(!messageID) {
     return message.channel.send({embed: {
      color: 16734039,
      description: "❌ | Please enter a giveaway message ID"
