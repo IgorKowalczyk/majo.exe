@@ -78,12 +78,12 @@ module.exports = {
    }
    const choice = resultsEmbed.fields[parseInt(response) - 1].name;
    message.channel.activeCollector = false;
-   console.log(choice)
    client.commands.get("play").run(client, message, [choice]);
    //play(choice, message, client, silient);
    resultsMessage.delete();
   } catch (err) {
    console.log(err);
+   resultsMessage.delete();
    message.channel.activeCollector = false;
    return message.channel.send({embed: {
     color: 16734039,
