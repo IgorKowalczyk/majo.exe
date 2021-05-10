@@ -16,21 +16,13 @@ module.exports = {
      description: '❌ | Please enter text'
     }})
    }
-   const re = new RegExp("^/abcdefghijklmnopqrstuvwxyz1234567890\\\+\\-x\\\*\\/\\\$!\\\?/$");
    if(emojis.lenght > 20) {
     return message.channel.send({embed: {
      color: 16734039,
      description: '❌ | Please enter shorter string. Max characters: 20'
     }})
    }
-   if (re.test(emojis)) {
-    emoji.convert(emojis)
-   } else {
-    return message.channel.send({embed: {
-     color: 16734039,
-     description: '❌ | Please enter a vaild string! \`abcdefghijklmnopqrstuvwxyz1234567890+-x*/$!?\`'
-    }})
-   }
+   emoji.convert(emojis)
   } catch (err) {
    console.log(err);
    message.channel.send({embed: {
