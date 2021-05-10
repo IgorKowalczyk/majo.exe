@@ -16,10 +16,10 @@ module.exports = {
      description: '❌ | Please enter text'
     }})
    }
-   if(emojis.lenght > 20) {
+   if(emojis.lenght < 30) {
     return message.channel.send({embed: {
      color: 16734039,
-     description: '❌ | Please enter shorter string. Max characters: 20'
+     description: '❌ | Please enter shorter string. Please shorten the text, maximum length is 30 characters!'
     }})
    }
    const converted = emoji.convert(emojis);
@@ -27,7 +27,7 @@ module.exports = {
     .setColor("RANDOM")
     .setDescription(`Converted text: ${converted}`)
     .setFooter("Requested by " + `${message.author.username}`, message.author.displayAvatarURL({ dynamic: true, format: 'png', size: 2048 }))
-   message.channel.send(converted)
+   message.channel.send(embed)
   } catch (err) {
    console.log(err);
    message.channel.send({embed: {
