@@ -76,7 +76,7 @@ module.exports = {
    }
    const choice = resultsEmbed.fields[parseInt(response) - 1].name;
    message.channel.activeCollector = false;
-   message.client.commands.get("play").execute(message, [choice]);
+   message.client.commands.get("play").run(message, [choice]);
    resultsMessage.delete();
   } catch (err) {
    console.log(err);
