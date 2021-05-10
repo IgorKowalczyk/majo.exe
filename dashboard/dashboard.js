@@ -175,7 +175,7 @@ module.exports = async (client) => {
    "guilds": "` + client.guilds.cache.size + `",
    "members": "` + client.guilds.cache.reduce((a, g) => a + g.memberCount, 0) + `",
    "prefix": "` + config.prefix + `",
-   "channels": "` + client.channels.cache.size + `",
+   "channels": "` + client.channels.cache.size + `"
   }`)
  });
 
