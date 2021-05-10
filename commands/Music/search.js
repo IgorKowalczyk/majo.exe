@@ -1,5 +1,5 @@
 const Discord = require("discord.js");
-const ytsr = require("youtube-sr")
+const ytsr = require("youtube-sr").default;
 
 module.exports = {
  name: "search",
@@ -41,7 +41,7 @@ module.exports = {
     .setAuthor("Searching...")
     .setColor("RANDOM")
     .setFooter("Requested by " + `${message.author.username}`, message.author.displayAvatarURL({ dynamic: true, format: 'png', size: 2048 }))
-   let resultsEmbed = new Discord.MessageEmbed()
+   const resultsEmbed = new Discord.MessageEmbed()
     .setTitle("Results for ")
     .setDescription(`\`${search}\``)
     .setColor("RANDOM")
