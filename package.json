@@ -89,7 +89,8 @@
   "canvas": "github:Automattic/node-canvas",
   "srod-v2": "^1.0.1",
   "canvacord": "^5.1.0",
-  "amethyste-api": "^1.1.4"
+  "amethyste-api": "^1.1.4",
+  "discord-giveaways": "^4.5.1"
  },
  "engines": {
   "node": "12.x"
