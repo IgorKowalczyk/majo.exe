@@ -16,8 +16,8 @@ module.exports = {
      description: '❌ | Unable to find a giveaway for `'+ args.join(' ') +'`.'
     }})
    }
-   const messageID = args[0];
-   if(!messageID) {
+   const messageID = message.args[0];
+   if(!messageID && !args[0]) {
     return message.channel.send({embed: {
      color: 16734039,
      description: "❌ | Please enter a giveaway message ID"
