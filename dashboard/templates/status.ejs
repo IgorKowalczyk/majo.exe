@@ -1,0 +1,9 @@
+<%- include("partials/head", { bot, user, path, description, title: "Server Dashboard", twitter, url, image }) %>
+<div class="content">
+
+<h1>Majo.exe in numbers</h1>
+<%= bot.guilds.cache.size %> Guilds
+<%= bot.channels.cache.size %> Channels
+<%= bot.guilds.cache.reduce((a, g) => a + g.memberCount, 0) %> Total members
+
+<%- include("partials/footer") %>

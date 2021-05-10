@@ -674,6 +674,48 @@ width: 100%;
 color: #ccc;
 }
 
+.r {
+background-color: rgba(54, 60, 70, 0.15);
+padding: 4px;
+border-radius: 5px;
+margin-left: 3px;
+margin-right: 3px;
+font-weight: 800;
+margin-bottom: 5px;
+line-height: 40px;
+}
+
+.sinfo {
+display: flex;
+-webkit-box-align: center;
+align-items: center;
+justify-content: center;
+background: rgba(var(--server-hover));
+padding: 5px;
+border-radius: 5px;
+}
+
+.ssvg {
+margin: 0px 5px 0px 0px !important;
+}
+
+.server-image {
+width: 119px;
+margin-left: 0;
+margin-right: 0;
+height: 119px;
+border-radius: 50%;
+}
+
+.server-description {
+font-size: 20px;
+}
+  
+.guild {
+text-align: center;
+max-width: 400px;
+}
+
 .left {
 float: left;
 }

@@ -147,10 +147,17 @@ module.exports = async (client) => {
   });
  }
 
- // Status page redirect endpoint.
+ // External status page redirect endpoint.
  if (config.status) {
- app.get("/status", (req, res) => {
+ app.get("/host-status", (req, res) => {
   res.redirect(config.status);
+  });
+ }
+
+ // Status page endpoint.
+ if (config.status) {
+  app.get("/status", (req, res) => {
+   renderTemplate(res, req, "status.ejs");
   });
  }
 
