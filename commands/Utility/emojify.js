@@ -13,10 +13,10 @@ module.exports = {
    if(!emojis) {
     return message.channel.send({embed: {
      color: 16734039,
-     description: '❌ | Unable to find a giveaway for `'+ args.join(' ') +'`.'
+     description: '❌ | Please enter text'
     }})
    }
-   const re = new RegExp("^([a-z0-9]{5,})$");
+   const re = new RegExp("^/abcdefghijklmnopqrstuvwxyz1234567890\\\+\\-x\\\*\\/\\\$!\\\?/$");
    if(emojis.lenght > 20) {
     return message.channel.send({embed: {
      color: 16734039,
