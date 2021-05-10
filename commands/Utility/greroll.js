@@ -24,7 +24,6 @@ module.exports = {
     }})
    }
    client.giveawaysManager.reroll(messageID).then(() => {
-    message.channel.send('Success! Giveaway rerolled!');
     return message.channel.send({embed: {
      color: 16734039,
      description: '✨ | Success! Giveaway rerolled!'

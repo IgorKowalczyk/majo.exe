@@ -21,7 +21,7 @@ if (process.env.TOKEN) {
   default: {
    botsCanWin: false,
    exemptPermissions: ['MANAGE_MESSAGES', 'ADMINISTRATOR'],
-   embedColor: '#FF0000',
+   embedColor: 'RANDOM',
    embedColorEnd: '#000000',
    reaction: '🎉'
   }

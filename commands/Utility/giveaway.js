@@ -57,7 +57,19 @@ module.exports = {
     time: ms(args[0]),
     winnerCount: parseInt(args[1]),
     prize: args.slice(3).join(' '),
-    hostedBy: message.author
+    hostedBy: message.author,
+    messages: {
+     giveaway: ' ',
+     giveawayEnded: ' ',
+     timeRemaining: 'Time remaining: **{duration}**',
+     inviteToParticipate: 'React with 🎉 to participate!',
+     winMessage: 'Congratulations, {winners}! You won **{prize}**!\n{messageURL}',
+     embedFooter: 'Majo.exe',
+     noWinner: 'Giveaway cancelled, no valid participations.',
+     hostedBy: 'Hosted by: {user}',
+     winners: 'winner(s)',
+     endedAt: 'Ended at',
+    }
    });
    const success = new Discord.MessageEmbed()
     .setColor("RANDOM")
