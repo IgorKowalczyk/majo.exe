@@ -170,6 +170,15 @@ module.exports = async (client) => {
   });
  });
 
+ app.get("/api", function(req, res) {
+  res.send(`{
+   "guilds": "` + client.guilds.cache.size + `",
+   "members": "` + client.guilds.cache.reduce((a, g) => a + g.memberCount, 0) + `",
+   "prefix": "` + config.prefix + `",
+   "channels": "` + client.channels.cache.size + `",
+  }`)
+ });
+
  // Index endpoint.
  app.get("/", (req, res) => {
   renderTemplate(res, req, "index.ejs");
