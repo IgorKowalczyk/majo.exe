@@ -26,7 +26,7 @@ module.exports = {
     else thumb = song.thumbnail.url;
     const seek = (queue.connection.dispatcher.streamTime - queue.connection.dispatcher.pausedTime) / 1000;
     const left = ms - seek;
-    let nowPlaying = new MessageEmbed()
+    let nowPlaying = new Discord.MessageEmbed()
      .setAuthor('♪ Now playing', message.author.displayAvatarURL({ dynamic: true, format: 'png', size: 2048 }))
      .setDescription(`[**${song.title}**](${song.url})`)
      .setThumbnail(song.thumbnail.url)
