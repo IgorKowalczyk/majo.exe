@@ -6,7 +6,7 @@ module.exports = {
  aliases: ["gstart", "giveaway-start"],
  description: "Create a giveaway",
  category: 'Utility',
- usage: "giveaway <time> <channel> <prize>",
+ usage: "giveaway <time> <winner count> <channel> <prize>",
  run: async (client, message, args) => {
   try {
    if (!args[0]) {
@@ -19,6 +19,18 @@ module.exports = {
     return message.channel.send({embed: {
      color: 16734039,
      description: "❌ | You didn't use the correct formatting for the time!\nCorrect formatting: \`number<d/h/m>\`.\nLegend: \`d\` - Day, \`h\` - Hour/s, \`m\` - Minute/s"
+    }})
+   }
+   if(!args[1]) {
+    return message.channel.send({embed: {
+     color: 16734039,
+     description: "❌ | You didn't enter the winner count. Eg. \`1\`"
+    }})
+   }
+   if (isNaN(args[1])) {
+    return message.channel.send({embed: {
+     color: 16734039,
+     description: "❌ | The winner count must be a number. Eg. \`1\`"
     }})
    }
    if (isNaN(args[0][0])) {
@@ -34,7 +46,7 @@ module.exports = {
      description: "❌ | You didn't enter a channel!\nYou must provide a channel in the guild to create giveaway!"
     }})
    }
-   let prize = args.slice(2).join(" ");
+   let prize = args.slice(3).join(" ");
    if (!prize) {
     return message.channel.send({embed: {
      color: 16734039,
@@ -44,7 +56,7 @@ module.exports = {
    client.giveawaysManager.start(channel, {
     time: ms(args[0]),
     winnerCount: parseInt(args[1]),
-    prize: args.slice(2).join(' '),
+    prize: args.slice(3).join(' '),
     hostedBy: message.author
    });
    const success = new Discord.MessageEmbed()
