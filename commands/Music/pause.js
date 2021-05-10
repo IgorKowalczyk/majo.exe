@@ -10,11 +10,24 @@ module.exports = {
  run: async (client, message, args) => {
   try {
    if (!message.guild) return;
+   const { channel } = message.member.voice;
    const queue = message.client.queue.get(message.guild.id);
    if (!queue) {
     return message.channel.send({embed: {
      color: 16734039,
      description: "❌ | This is nothing playing right now",
+    }})
+   }
+   if (!message.member.voice.channel) {
+    return message.channel.send({embed: {
+     color: 16734039,
+     description: "❌ | Please join a voice channel first",
+    }})
+   }
+   if (channel !== message.guild.me.voice.channel) {
+    return message.channel.send({embed: {
+     color: 16734039,
+     description: "❌ | You must be in the same voice channel as me",
     }})
    }
    if (!canModifyQueue(message.member)) return;
