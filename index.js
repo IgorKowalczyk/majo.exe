@@ -8,12 +8,29 @@ const config = require("./config");
 require('dotenv').config()
 const { GiveawaysManager } = require('discord-giveaways');
 const MySQL = require('mysql');
+const Eco = require("quick.eco");
+
+
+const eco = new Eco({
+ adapter: 'mysql',
+ adapterOptions: {
+  user: process.env.MYSQL_USER,
+  password: process.env.MYSQL_PASSWORD,
+  host: process.env.MYSQL_HOST,
+  database: process.env.MYSQL_DATABASE
+ }    
+});
+
+client.economy = new Eco.Manager();
+client.db = eco;
+
 const sql = MySQL.createConnection({
  host: process.env.MYSQL_HOST,
  user: process.env.MYSQL_USER,
  password: process.env.MYSQL_PASSWORD,
  database: process.env.MYSQL_DATABASE,
- charset: 'utf8mb4'
+ charset: 'utf8mb4',
+ port: "3306"
 });
 sql.connect((err) => {
  if (err) {
@@ -27,8 +44,6 @@ sql.query('CREATE TABLE IF NOT EXISTS `giveaways` (`id` INT(1) NOT NULL AUTO_INC
  if (err) console.error(err);
  console.log('[SQL] Created table `giveaways`');
 });
-
-
 const GiveawayManagerWithOwnDatabase = class extends GiveawaysManager {
  async getAllGiveaways() {
   return new Promise((resolve, reject) => {
