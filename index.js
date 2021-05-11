@@ -8,10 +8,10 @@ const config = require("./config");
 require('dotenv').config()
 const { GiveawaysManager } = require('discord-giveaways');
 const MySQL = require('mysql');
-const { Eco } = require("quick.eco");
+const { EconomyManager } = require("quick.eco")
 
 
-const eco = new Eco({
+const eco = new EconomyManager({
  adapter: 'mysql',
  adapterOptions: {
   user: process.env.MYSQL_USER,
@@ -21,7 +21,7 @@ const eco = new Eco({
  }    
 });
 
-client.economy = new Eco.Manager();
+client.economy = eco;
 client.db = eco;
 
 const sql = MySQL.createConnection({
