@@ -8,7 +8,7 @@ const config = require("./config");
 require('dotenv').config()
 const { GiveawaysManager } = require('discord-giveaways');
 const MySQL = require('mysql');
-const Eco = require("quick.eco");
+const { Eco } = require("quick.eco");
 
 
 const eco = new Eco({
