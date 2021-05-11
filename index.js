@@ -23,7 +23,7 @@ sql.connect((err) => {
   console.log('[SQL] Connected to the MySQL server! Connection ID: ' + sql.threadId);
  }
 });
-sql.query('CREATE TABLE IF NOT EXISTS `giveaways` ( `id` INT(1) NOT NULL AUTO_INCREMENT, `message_id` VARCHAR(64) NOT NULL, `data` JSON NOT NULL, PRIMARY KEY (`id`) );', (err) => {
+sql.query('CREATE TABLE IF NOT EXISTS `giveaways` (`id` INT(1) NOT NULL AUTO_INCREMENT, `message_id` VARCHAR(64) NOT NULL, `data` JSON NOT NULL, PRIMARY KEY (`id`));', (err) => {
  if (err) console.error(err);
  console.log('[SQL] Created table `giveaways`');
 });
@@ -35,6 +35,7 @@ const GiveawayManagerWithOwnDatabase = class extends GiveawaysManager {
    sql.query('SELECT `data` FROM `giveaways`', (err, res) => {
     if (err) {
      console.error(err);
+     sql.end();
      return reject(err);
     }
     const giveaways = res.map((row) => JSON.parse(row.data));
@@ -47,6 +48,7 @@ const GiveawayManagerWithOwnDatabase = class extends GiveawaysManager {
    sql.query('INSERT INTO `giveaways` (`message_id`, `data`) VALUES (?,?)', [messageID, JSON.stringify(giveawayData)], (err, res) => {
     if (err) {
      console.error(err);
+     sql.end()
      return reject(err);
     }
     resolve(true);
@@ -58,6 +60,7 @@ const GiveawayManagerWithOwnDatabase = class extends GiveawaysManager {
    sql.query('UPDATE `giveaways` SET `data` = ? WHERE `message_id` = ?', [JSON.stringify(giveawayData), messageID], (err, res) => {
     if (err) {
      console.error(err);
+     sql.end()
      return reject(err);
     }
     resolve(true);
@@ -69,6 +72,7 @@ const GiveawayManagerWithOwnDatabase = class extends GiveawaysManager {
    sql.query('DELETE FROM `giveaways` WHERE `message_id` = ?', messageID, (err, res) => {
     if (err) {
      console.error(err);
+     sql.end()
      return reject(err);
     }
     resolve(true);
