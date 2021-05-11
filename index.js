@@ -7,15 +7,88 @@ const chalk = require("chalk");
 const config = require("./config");
 require('dotenv').config()
 const { GiveawaysManager } = require('discord-giveaways');
-
+const MySQL = require('mysql');
+const sql = MySQL.createConnection({
+ host: process.env.MYSQL_HOST,
+ user: process.env.MYSQL_USER,
+ password: process.env.MYSQL_PASSWORD,
+ database: process.env.MYSQL_DATABASE,
+ charset: 'utf8mb4'
+});
+sql.connect((err) => {
+ if (err) {
+  console.error('Impossible to connect to MySQL server. Code: ' + err.code);
+  process.exit(99);
+ } else {
+  console.log('[SQL] Connected to the MySQL server! Connection ID: ' + sql.threadId);
+ }
+});
+sql.query(`
+ CREATE TABLE IF NOT EXISTS \`giveaways\`
+ (
+  \`id\` INT(1) NOT NULL AUTO_INCREMENT,
+  \`message_id\` VARCHAR(64) NOT NULL,
+  \`data\` JSON NOT NULL,
+  PRIMARY KEY (\`id\`)
+ );
+`, (err) => {
+ if (err) console.error(err);
+ console.log('[SQL] Created table `giveaways`');
+});
+const GiveawayManagerWithOwnDatabase = class extends GiveawaysManager {
+ async getAllGiveaways() {
+  return new Promise((resolve, reject) => {
+   sql.query('SELECT `data` FROM `giveaways`', (err, res) => {
+    if (err) {
+     console.error(err);
+     return reject(err);
+    }
+    const giveaways = res.map((row) => JSON.parse(row.data));
+    resolve(giveaways);
+   });
+  });
+ }
+ async saveGiveaway(messageID, giveawayData) {
+  return new Promise((resolve, reject) => {
+   sql.query('INSERT INTO `giveaways` (`message_id`, `data`) VALUES (?,?)', [messageID, JSON.stringify(giveawayData)], (err, res) => {
+    if (err) {
+     console.error(err);
+     return reject(err);
+    }
+    resolve(true);
+   });
+  });
+ }
+ async editGiveaway(messageID, giveawayData) {
+  return new Promise((resolve, reject) => {
+   sql.query('UPDATE `giveaways` SET `data` = ? WHERE `message_id` = ?', [JSON.stringify(giveawayData), messageID], (err, res) => {
+    if (err) {
+     console.error(err);
+     return reject(err);
+    }
+    resolve(true);
+   });
+  });
+ }
+ async deleteGiveaway(messageID) {
+  return new Promise((resolve, reject) => {
+   sql.query('DELETE FROM `giveaways` WHERE `message_id` = ?', messageID, (err, res) => {
+    if (err) {
+     console.error(err);
+     return reject(err);
+    }
+    resolve(true);
+   });
+  });
+ }
+};
 
 /* Login and Commands */
 if (process.env.TOKEN) {
  client.commands = new Discord.Collection();
  client.aliases = new Discord.Collection();
  client.queue = new Map();
- const manager = new GiveawaysManager(client, {
-  storage: './giveaways.json',
+ const manager = new GiveawayManagerWithOwnDatabase(client, {
   updateCountdownEvery: 10000,
   hasGuildMembersIntent: false,
   default: {
