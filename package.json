@@ -52,6 +52,7 @@
   "node-pre-gyp": "^0.15.0",
   "puppeteer": "^5.3.1",
   "sequelize": "^6.3.5",
+  "quick.eco": "^6.0.0",
   "@quick.eco/mysql": "^1.0.2",
   "mysql": "^2.18.1",
   "sqlite3": "^5.0.0",
