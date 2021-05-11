@@ -23,9 +23,7 @@ sql.connect((err) => {
   console.log('[SQL] Connected to the MySQL server! Connection ID: ' + sql.threadId);
  }
 });
-sql.query(`
- CREATE TABLE IF NOT EXISTS \`giveaways\` ( \`id\` INT(1) NOT NULL AUTO_INCREMENT, \`message_id\` VARCHAR(64) NOT NULL, \`data\` JSON NOT NULL, PRIMARY KEY (\`id\`) );
-`, (err) => {
+sql.query(`CREATE TABLE IF NOT EXISTS \`giveaways\` ( \`id\` INT(1) NOT NULL AUTO_INCREMENT, \`message_id\` VARCHAR(64) NOT NULL, \`data\` JSON NOT NULL, PRIMARY KEY (\`id\`) );`, (err) => {
  if (err) console.error(err);
  console.log('[SQL] Created table `giveaways`');
 });
