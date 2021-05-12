@@ -30,14 +30,13 @@ module.exports = {
     }})
    }
    let amount = args[1];
-   console.log(args[1]);
    if (!amount || isNaN(amount)) {
     return message.channel.send({embed: {
      color: 16734039,
      description: "❌ | Please specify a valid amount!"
     }})
    }
-   let data = client.economy.addMoney(user.id, args[1]);
+   let data = client.economy.addMoney(user.id, message.guild.id, amount);
    const embed = new MessageEmbed()
     .setTitle(`Money Added!`)
     .addField(`User`, `<@${data.user}>`)

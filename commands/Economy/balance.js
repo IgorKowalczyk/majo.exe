@@ -9,7 +9,7 @@ module.exports = {
  run: async (client, message, args) => {
   try {
    let user = message.mentions.users.first() || message.author;
-   let balance = client.economy.fetchMoney(user.id);
+   let balance = client.economy.fetchMoney(user.id, message.guild.id);
    const embed = new MessageEmbed()
     .setTitle(`${balance.username}'s Balance`)
     .addField(`Balance`, `${balance.amount} 💸`)
