@@ -40,9 +40,8 @@ module.exports = {
    let data = await client.economy.addMoney(user.id, message.guild.id, parseInt(amount));
    const embed = new Discord.MessageEmbed()
     .setTitle(`Money Added!`)
-    .addField(`User`, `<@${data.user}>`)
-    .addField(`Balance Given`, `${data.amount} 💸`)
-    .addField(`Total Amount`, data.after)
+    .addField(`User`, `<@${user}>`)
+    .addField(`Balance Given`, `${data} 💸`)
     .setColor("RANDOM")
     .setThumbnail(user.displayAvatarURL)
     .setTimestamp()
