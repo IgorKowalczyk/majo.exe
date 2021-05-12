@@ -1,5 +1,4 @@
 const Discord = require("discord.js");
-const db = require("quick.db");
 
 module.exports = {
  name: "balance",
@@ -9,18 +8,17 @@ module.exports = {
  usage: "balance <user>",
  run: async (client, message, args) => {
   try {
-   let user = message.mentions.members.first() || message.author;
-   let bal = db.fetch(`money_${message.guild.id}_${user.id}`)
-   if (bal === null) bal = 0;
-   let bank = await db.fetch(`bank_${message.guild.id}_${user.id}`)
-   if (bank === null) bank = 0;
-   const embed = new Discord.MessageEmbed()
+   let user = message.mentions.users.first() || message.author;
+   let balance = client.economy.fetchMoney(user.id);
+   const embed = new MessageEmbed()
+    .setTitle(`${balance.username}'s Balance`)
+    .addField(`Balance`, `${balance.amount} 💸`)
+    .addField(`Position`, balance.position)
     .setColor("RANDOM")
-    .setTitle(`💸 ${user}'s Balance:`, message.guild.iconURL({ dynamic: true, format: 'png'}))
-    .setDescription(`:money_with_wings: Pocket: \`${bal}\`\n:moneybag: Bank: \`${bank}\``)
-    .setTimestamp()
+    .setThumbnail(user.displayAvatarURL)
     .setFooter("Requested by " + `${message.author.username}`, message.author.displayAvatarURL({ dynamic: true, format: 'png', size: 2048 }))
-   message.channel.send(embed)
+    .setTimestamp();
+   return message.channel.send(embed);
   } catch(err) {
    message.channel.send({embed: {
     color: 16734039,
