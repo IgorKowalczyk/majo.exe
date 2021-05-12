@@ -16,7 +16,7 @@ module.exports = {
  run: async (client, message, args) => {
   try {
    let amount = Math.floor(Math.random() * 50) + 10;
-   let beg = client.economy.beg(message.author, message.guild, amount, { canLose: true });
+   let beg = client.economy.beg(message.author.id, message.guild, amount, { canLose: true });
    if (beg.onCooldown) {
     return message.channel.send({embed: {
      color: 16734039,
