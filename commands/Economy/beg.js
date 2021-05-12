@@ -16,7 +16,7 @@ module.exports = {
  run: async (client, message, args) => {
   try {
    let amount = Math.floor(Math.random() * 50) + 10;
-   let beg = await client.economy.beg(message.author.id, message.guild, amount, { timeout: "10000" }).then(function(beg) {
+   let beg = await client.economy.beg(message.author.id, message.guild, amount, { timeout: 10000 }).then(function(beg) {
    console.log(beg);
    console.log(beg.time);
    console.log(beg.cooldown);
