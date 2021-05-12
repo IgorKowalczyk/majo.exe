@@ -11,9 +11,9 @@ module.exports = {
    let user = message.mentions.users.first() || message.author;
    let balance = client.economy.fetchMoney(user.id, message.guild.id);
    const embed = new Discord.MessageEmbed()
-    .setTitle(`${balance.username}'s Balance`)
-    .addField(`Balance`, `${balance.amount} 💸`)
-    .addField(`Position`, balance.position)
+    .setTitle(`${user.username}'s Balance`)
+    .addField(`Balance`, `${balance} 💸`)
+    // .addField(`Position`, balance.position)
     .setColor("RANDOM")
     .setThumbnail(user.displayAvatarURL)
     .setFooter("Requested by " + `${message.author.username}`, message.author.displayAvatarURL({ dynamic: true, format: 'png', size: 2048 }))
