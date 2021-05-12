@@ -37,7 +37,7 @@ module.exports = {
      description: "❌ | Please specify a valid amount!"
     }})
    }
-   let data = client.economy.addMoney(user.id, amount);
+   let data = client.economy.addMoney(user.id, args[1]);
    const embed = new MessageEmbed()
     .setTitle(`Money Added!`)
     .addField(`User`, `<@${data.user}>`)
