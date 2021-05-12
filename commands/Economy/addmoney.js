@@ -23,12 +23,6 @@ module.exports = {
      description: "❌ | Please specify a user!"
     }})
    }
-   if (message.content.includes('-')) { 
-    return message.channel.send({embed: {
-     color: 16734039,
-     description: `❌ | You can\'t add negative money! If you want to remove money please check \`${prefix} removemoney\` command.`
-    }})
-   }
    let amount = args[1];
    if (!amount || isNaN(amount)) {
     return message.channel.send({embed: {
@@ -36,8 +30,14 @@ module.exports = {
      description: "❌ | Please specify a valid amount!"
     }})
    }
+   if (amount.includes('-')) { 
+    return message.channel.send({embed: {
+     color: 16734039,
+     description: `❌ | You can\'t add negative money! If you want to remove money please check \`${prefix} removemoney\` command.`
+    }})
+   }
    let data = client.economy.addMoney(user.id, message.guild.id, amount);
-   const embed = new MessageEmbed()
+   const embed = new Discord.MessageEmbed()
     .setTitle(`Money Added!`)
     .addField(`User`, `<@${data.user}>`)
     .addField(`Balance Given`, `${data.amount} 💸`)

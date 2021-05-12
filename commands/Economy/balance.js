@@ -10,7 +10,7 @@ module.exports = {
   try {
    let user = message.mentions.users.first() || message.author;
    let balance = client.economy.fetchMoney(user.id, message.guild.id);
-   const embed = new MessageEmbed()
+   const embed = new Discord.MessageEmbed()
     .setTitle(`${balance.username}'s Balance`)
     .addField(`Balance`, `${balance.amount} 💸`)
     .addField(`Position`, balance.position)

@@ -29,11 +29,11 @@ module.exports = {
      description: `❌ | **${users[Math.floor(Math.random() * users.length)]}:** Begon Thot! Try again later.`
     }})
    } else {
-    return message.channel.send({embed: {
-     color: 16734039,
-     description: `❌ | **${users[Math.floor(Math.random() * users.length)]}** donated you **${beg.amount}** 💸. Now you have **${beg.after}** 💸.`
-    }})
-  }
+    const embed = new Discord.MessageEmbed()
+     .setColor("RANDOMM")
+     .setDescription(`❌ | **${users[Math.floor(Math.random() * users.length)]}** donated you **${beg.amount}** 💸. Now you have **${beg.after}** 💸.`)
+    return message.channel.send(embed);
+   }
 } catch (err) {
    console.log(err);
    message.channel.send({embed: {
