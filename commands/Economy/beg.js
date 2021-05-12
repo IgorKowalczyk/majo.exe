@@ -1,6 +1,11 @@
 const Discord = require("discord.js");
-const db = require("quick.db");
-const ms = require("parse-ms");
+let users = [
+ "Litek",
+ "DankShit",
+ "Sans",
+ "Zero",
+ "MEE9",
+];
 
 module.exports = {
  name: "beg",
@@ -10,28 +15,26 @@ module.exports = {
  usage: "beg",
  run: async (client, message, args) => {
   try {
-   const user = message.author;
-   const timeout = 180000;
-   const amount = 100;
-   let beg = await db.fetch(`beg_${message.guild.id}_${user.id}`);
-   if (beg !== null && timeout - (Date.now() - beg) > 0) {
-    const errtime = ms(timeout - (Date.now() - beg));
-    const time = new Discord.MessageEmbed()
-     .setColor("FF5757")
-     .setDescription(`❌ | You've already begged recently\n\nBeg again in ${time.minutes}m ${time.seconds}s`)
-     .setFooter("Requested by " + `${message.author.username}`, message.author.displayAvatarURL({ dynamic: true, format: 'png', size: 2048 }))
-    message.channel.send(errtime)
-   } else {
-    const money = new Discord.MessageEmbed()
-     .setTitle("Succes!", message.guild.iconURL({ dynamic: true, format: 'png'}))
-     .setColor("RANDOM")
-     .setDescription(`:white_check_mark:  You've begged and received ${amount} coins`)
-     .setFooter("Requested by " + `${message.author.username}`, message.author.displayAvatarURL({ dynamic: true, format: 'png', size: 2048 }))
-    message.channel.send(money)
-    db.add(`money_${message.guild.id}_${user.id}`, amount)
-    db.set(`beg_${message.guild.id}_${user.id}`, Date.now())
+   let amount = Math.floor(Math.random() * 50) + 10;
+   let beg = client.eco.beg(message.author, message.guild, amount, { canLose: true });
+   if (beg.onCooldown) {
+    return message.channel.send({embed: {
+     color: 16734039,
+     description: `❌ | Begon Thot! Come back after ${beg.time.seconds} seconds`
+    }})
    }
-  } catch (err) {
+   if (beg.lost) {
+    return message.channel.send({embed: {
+     color: 16734039,
+     description: `❌ | **${users[Math.floor(Math.random() * users.length)]}:** Begon Thot! Try again later.`
+    }})
+   } else {
+    return message.channel.send({embed: {
+     color: 16734039,
+     description: `❌ | **${users[Math.floor(Math.random() * users.length)]}** donated you **${beg.amount}** 💸. Now you have **${beg.after}** 💸.`
+    }})
+  }
+} catch (err) {
    console.log(err);
    message.channel.send({embed: {
     color: 16734039,

@@ -8,7 +8,6 @@ const Strategy = require("passport-discord").Strategy;
 const config = require("../config");
 const ejs = require("ejs");
 const bodyParser = require("body-parser");
-const GuildSettings = require("./models/settings");
 const { readdirSync } = require('fs');
 const app = express();
 app.use(express.static('dashboard/static'));
