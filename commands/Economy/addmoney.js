@@ -37,7 +37,7 @@ module.exports = {
      description: `❌ | You can\'t add negative money! If you want to remove money please check \`${prefix} removemoney\` command.`
     }})
    }
-   let data = await client.economy.addMoney(user.id, message.guild.id, parseInt(amount));
+   let data = client.economy.addMoney(user.id, message.guild.id, parseInt(amount));
    const embed = new Discord.MessageEmbed()
     .setTitle(`Money Added!`)
     .addField(`User`, `<@${user}>`)
