@@ -15,18 +15,14 @@ module.exports = {
  usage: "beg",
  run: async (client, message, args) => {
   try {
-   (async () => {
    let amount = Math.floor(Math.random() * 50) + 10;
-   let beg = client.economy.beg(message.author.id, message.guild, amount, { canLose: true });
+   let beg = client.economy.beg(message.author.id, message.guild, amount, { canLose: true }).then(function(beg) {
    if (beg.onCooldown) {
     message.channel.send({embed: {
      color: 16734039,
      description: `❌ | Begon Thot! Come back after ${beg.time.seconds} seconds`
     }})
    }
-   console.log(beg);
-   console.log(beg.onCooldown)
-   console.log(beg.lost)
    if (beg.lost) {
     message.channel.send({embed: {
      color: 16734039,
@@ -38,7 +34,7 @@ module.exports = {
      .setDescription(`❌ | **${users[Math.floor(Math.random() * users.length)]}** donated you **${beg.amount}** 💸.`)
     return message.channel.send(embed);
    }
-   })()
+   })
   } catch (err) {
    console.log(err);
    message.channel.send({embed: {
