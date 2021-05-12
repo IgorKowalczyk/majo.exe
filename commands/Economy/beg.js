@@ -18,8 +18,8 @@ module.exports = {
    let amount = Math.floor(Math.random() * 50) + 10;
    let beg = await client.economy.beg(message.author.id, message.guild, amount, { canLose: true }).then(function(beg) {
    console.log(beg);
-   console.log(beg.onCooldown);
-   console.log(beg.lost);
+   console.log(beg.time);
+   console.log(beg.cooldown);
    if (beg.onCooldown) {
     return message.channel.send({embed: {
      color: 16734039,
