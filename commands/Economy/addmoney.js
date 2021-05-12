@@ -29,8 +29,8 @@ module.exports = {
      description: `❌ | You can\'t add negative money! If you want to remove money please check \`${prefix} removemoney\` command.`
     }})
    }
-   let amount = args[0];
-   console.log(args[0]);
+   let amount = args[1];
+   console.log(args[1]);
    if (!amount || isNaN(amount)) {
     return message.channel.send({embed: {
      color: 16734039,
