@@ -10,6 +10,7 @@ module.exports = {
  usage: "addmoney <user> <money>",
  run: async (client, message, args) => {
   try {
+   (async () => {
    if (!message.member.hasPermission("MANAGE_MESSAGES")) {
     return message.channel.send({embed: {
      color: 16734039,
@@ -36,7 +37,7 @@ module.exports = {
      description: `❌ | You can\'t add negative money! If you want to remove money please check \`${prefix} removemoney\` command.`
     }})
    }
-   let data = client.economy.addMoney(user.id, message.guild.id, parseInt(amount));
+   let data = await client.economy.addMoney(user.id, message.guild.id, parseInt(amount));
    const embed = new Discord.MessageEmbed()
     .setTitle(`Money Added!`)
     .addField(`User`, `<@${data.user}>`)
@@ -47,6 +48,7 @@ module.exports = {
     .setTimestamp()
     .setFooter("Requested by " + `${message.author.username}`, message.author.displayAvatarURL({ dynamic: true, format: 'png', size: 2048 }))
    return message.channel.send(embed);
+   })()
   } catch(err) {
    message.channel.send({embed: {
     color: 16734039,
