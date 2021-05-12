@@ -10,7 +10,6 @@ const { GiveawaysManager } = require('discord-giveaways');
 const MySQL = require('mysql');
 const { EconomyManager } = require("quick.eco")
 
-
 const eco = new EconomyManager({
  adapter: 'mysql',
  adapterOptions: {
@@ -22,7 +21,6 @@ const eco = new EconomyManager({
 });
 
 client.economy = eco;
-client.db = eco;
 
 const sql = MySQL.createConnection({
  host: process.env.MYSQL_HOST,

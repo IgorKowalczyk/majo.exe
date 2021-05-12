@@ -24,6 +24,9 @@ module.exports = {
      description: `❌ | Begon Thot! Come back after ${beg.time.seconds} seconds`
     }})
    }
+   console.log(beg);
+   console.log(beg.onCooldown)
+   console.log(beg.lost)
    if (beg.lost) {
     message.channel.send({embed: {
      color: 16734039,
@@ -31,7 +34,7 @@ module.exports = {
     }})
    } else {
     const embed = new Discord.MessageEmbed()
-     .setColor("RANDOMM")
+     .setColor("RANDOM")
      .setDescription(`❌ | **${users[Math.floor(Math.random() * users.length)]}** donated you **${beg.amount}** 💸.`)
     return message.channel.send(embed);
    }

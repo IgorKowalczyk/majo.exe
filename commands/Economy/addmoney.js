@@ -38,6 +38,7 @@ module.exports = {
     }})
    }
    let data = client.economy.addMoney(user.id, message.guild.id, parseInt(amount));
+   console.log(data);
    const embed = new Discord.MessageEmbed()
     .setTitle(`Money Added!`)
     .addField(`User`, `<@${user}>`)
