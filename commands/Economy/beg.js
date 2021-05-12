@@ -16,19 +16,16 @@ module.exports = {
  run: async (client, message, args) => {
   try {
    let amount = Math.floor(Math.random() * 50) + 10;
-   let beg = await client.economy.beg(message.author.id, message.guild, amount, { timeout: 10000, range: [100, 200] }).then(function(beg) {
-   console.log(beg);
-   console.log(beg.time);
-   console.log(beg.cooldown);
-   if (beg.cooldown) {
-    return message.channel.send({embed: {
-     color: 16734039,
-     description: `❌ | Begon Thot! Come back after ${beg.time} seconds`
-    }})
-   }
+   let beg = await client.economy.addMoney(message.author.id, message.guild, parseInt(amount)).then(function(beg) {
+ //  if (beg.cooldown) {
+ //   return message.channel.send({embed: {
+ //    color: 16734039,
+ //    description: `❌ | Begon Thot! Come back after ${beg.time} seconds`
+ //   }})
+ //  }
    const embed = new Discord.MessageEmbed()
     .setColor("RANDOM")
-    .setDescription(`✨ | **${users[Math.floor(Math.random() * users.length)]}** donated you **${beg.amount}** 💸.`)
+    .setDescription(`✨ | **${users[Math.floor(Math.random() * users.length)]}** donated you **${amount}** 💸.`)
    return message.channel.send(embed);
    })
   } catch (err) {
