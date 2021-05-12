@@ -16,15 +16,18 @@ module.exports = {
  run: async (client, message, args) => {
   try {
    let amount = Math.floor(Math.random() * 50) + 10;
-   let beg = client.economy.beg(message.author.id, message.guild, amount, { canLose: true }).then(function(beg) {
+   let beg = await client.economy.beg(message.author.id, message.guild, amount, { canLose: true }).then(function(beg) {
+   console.log(beg);
+   console.log(beg.onCooldown);
+   console.log(beg.lost);
    if (beg.onCooldown) {
-    message.channel.send({embed: {
+    return message.channel.send({embed: {
      color: 16734039,
      description: `❌ | Begon Thot! Come back after ${beg.time.seconds} seconds`
     }})
    }
    if (beg.lost) {
-    message.channel.send({embed: {
+    return message.channel.send({embed: {
      color: 16734039,
      description: `❌ | **${users[Math.floor(Math.random() * users.length)]}:** Begon Thot! Try again later.`
     }})

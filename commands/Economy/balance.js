@@ -9,7 +9,7 @@ module.exports = {
  run: async (client, message, args) => {
   try {
    let user = message.mentions.users.first() || message.author;
-   let balance = client.economy.fetchMoney(user.id, message.guild.id).then(function(bal) {
+   let balance = await client.economy.fetchMoney(user.id, message.guild.id).then(function(bal) {
     const embed = new Discord.MessageEmbed()
      .setTitle(`${user.username}'s Balance`)
      .addField(`Balance`, `${bal} 💸`)
