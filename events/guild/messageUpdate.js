@@ -8,7 +8,7 @@ module.exports = async (client, oldMessage, newMessage) => {
   // if (!log.guild.member(client.user).hasPermission("EMBED_LINKS", "VIEW_CHANNEL", "READ_MESSAGE_HISTORY", "VIEW_AUDIT_LOG", "SEND_MESSAGES")) return;
   const log = oldMessage.guild.channels.cache.find(c => c.name === "log");
   if (!log) return;
-  if (newMessage.embeds) return console.log("yes");
+  if (!newMessage.embeds) return console.log("yes");
   const event = new Discord.MessageEmbed()
    .setTitle(`Message Edited`)
    .setColor('RANDOM')
