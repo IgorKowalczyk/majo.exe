@@ -1,8 +1,8 @@
 const Discord = require('discord.js');
-const humanizeDuration = require('humanize-duration');
+const ms = require('ms');
 const config = require("../../config");
 const prefix = config.prefix;
-const db = require("quick.db");
+const Timeout = new Map();
 
 module.exports = async (client, message) => {
  try {
@@ -51,15 +51,18 @@ module.exports = async (client, message) => {
    }});
   }
   if (command) {
-   if (!command.timeout) return command.run(client, message, args);
-   const timeout = parseInt(command.timeout);
-   if (timeout.has(`${message.author.id}${command.name}`)) {
-    return message.reply(`**Slow down, you can only use this command every ${ms(timeout)}!**`)
+   const timeout = command.timeout || 5000;
+   const key = message.author.id + command.name;
+   const found = Timeout.get(key);
+   if(found) {
+    const timePassed = Date.now() - found;
+    const timeLeft = timeout - timePassed;
+    return message.reply(`**Slow down, you can use this command again in ${ms(timeLeft)} This command has a default cooldown of ${timeout}!**`);
    } else {
-    command.run(client, message, args);
-    timeout.add(`${message.author.id}${command.name}`)
+    command.run(bot, message, args);
+    Timeout.set(key, Date.now());
     setTimeout(() => {
-     timeout.delete(`${message.author.id}${command.name}`)
+     Timeout.delete(key);
     }, timeout);
    }
   }
