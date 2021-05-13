@@ -19,16 +19,15 @@ module.exports = {
      }})
     }
    }
-   let lyrics = null;
    const search = await Genius.song.search(song || queue.songs[0].title, "");
    const lsong = searches[0];
+   console.log(lsong);
+   const lyrics = await lsong.lyrics();
    try {
-    if (!lsong) lyrics = `No lyrics found for ${song || queue.songs[0].title, ""}`;
+    if (!lsong && !lyrics) lyrics = `No lyrics found for ${song || queue.songs[0].title, ""}`;
    } catch (error) {
     lyrics = `No lyrics found for ${song || queue.songs[0].title, ""}`;
    }
-   console.log(lsong);
-   const lyrics = await lsong.lyrics();
    let embed = new Discord.MessageEmbed()
     .setTitle(`📑 Lyrics For ${song || queue.songs[0].title, ""}`)
     .setDescription(lyrics)
