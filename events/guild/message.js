@@ -6,8 +6,7 @@ const prefix = config.prefix;
 module.exports = async (client, message) => {
  try {
   const cooldowns = new Map();
-  const cooldowns = new Map();
-  console.log()
+  console.log(cooldowns)
   if (message.author.bot) return;
   if (!message.guild) {
    try {
