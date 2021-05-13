@@ -27,7 +27,6 @@ module.exports = {
     .setDescription("Posted by: " + allowed[randomnumber].data.author)
     .setImage(allowed[randomnumber].data.url)
     .addField("Other info:", "Up votes: " + allowed[randomnumber].data.ups + " / Comments: " + allowed[randomnumber].data.num_comments)
-    .setFooter("r/" + random)
     .setFooter(`r/${random} | Requested by ${message.author.username}`, message.author.displayAvatarURL({ dynamic: true, format: 'png', size: 2048 }))
    message.channel.send(embed)
   } catch(err) {
