@@ -8,7 +8,7 @@ module.exports = {
  aliases: ["h", "commands"],
  category: "General",
  description: "Displays all the commands available",
- cooldown: "10000",
+ timeout: "10000",
  usage: "help [command]",
  run: async (client, message, args) => {
   try {

@@ -2,7 +2,7 @@ const Discord = require('discord.js');
 const humanizeDuration = require('humanize-duration');
 const config = require("../../config");
 const prefix = config.prefix;
-const cooldowns = new Map();
+const db = require("quick.db");
 
 module.exports = async (client, message) => {
  try {
@@ -51,18 +51,17 @@ module.exports = async (client, message) => {
    }});
   }
   if (command) {
-   const cooldown = cooldowns.get(message.author.id);
-   const cooldownuser = cooldowns.get(command.name)
-   cooldowns.set(message.author.id, Date.now() + command.cooldown, command.name);
-   setTimeout(() => cooldowns.delete(message.author.id), command.cooldown, command.name);
-   if (cooldown && cooldownuser) {
-    const remaining = humanizeDuration(cooldown - Date.now());
-    return message.channel.send({embed: {
-     color: 16734039,
-     description: `❌ | You have to wait \`${remaining}\` before you can use this command again`
-    }});
+   if (!command.timeout) return command.run(client, message, args);
+   const timeout = parseInt(command.timeout);
+   if (timeout.has(`${message.author.id}${command.name}`)) {
+    return message.reply(`**Slow down, you can only use this command every ${ms(timeout)}!**`)
+   } else {
+    command.run(client, message, args);
+    timeout.add(`${message.author.id}${command.name}`)
+    setTimeout(() => {
+     timeout.delete(`${message.author.id}${command.name}`)
+    }, timeout);
    }
-   command.run(client, message, args);
   }
  } catch (err) {
   console.log(err);
