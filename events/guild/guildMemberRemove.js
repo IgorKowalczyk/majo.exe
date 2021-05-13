@@ -48,6 +48,7 @@ module.exports = async (client, member) => {
   const avatar = await Canvas.loadImage(member.user.displayAvatarURL({ format: 'jpg', size: 2048}));
   ctx.drawImage(avatar, 65, canvas.height / 2 - 250, 500, 500);
   const attachment = new Discord.MessageAttachment(canvas.toBuffer(), 'welcome-image.png');
+  console.log(member.user.joinedAt)
   const embed = new Discord.MessageEmbed()
    .setColor("RANDOM")
    .setTimestamp()

@@ -14,8 +14,9 @@ module.exports = {
    }}).then(msg=>{
    const ping = new Discord.MessageEmbed()
     .setTitle(':ping_pong: Pong!')
-    .addField("My ping:", + `${Math.floor(msg.createdTimestamp - message.createdTimestamp)}` + "ms")
-    .setFooter("Requested by " + `${message.author.username}`, message.author.displayAvatarURL({ dynamic: true, format: 'png', size: 2048 }))
+    .addField("My ping:", Math.floor(msg.createdTimestamp - message.createdTimestamp) + "ms")
+    .adField("API ping (Websocket):", Math.round(client.ws.ping) + "ms")
+    .setFooter("Note: These results may not be accurate and may be different from actual ping | Requested by " + `${message.author.username}`, message.author.displayAvatarURL({ dynamic: true, format: 'png', size: 2048 }))
     .setColor('RANDOM')
     .setTimestamp()
    msg.edit(ping);
