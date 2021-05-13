@@ -11,7 +11,7 @@ module.exports = {
   try {
    const subReddits = ["meme","animemes", "MemesOfAnime", "animememes", "AnimeFunny", "dankmemes", "dankmeme", "wholesomememes", "MemeEconomy", "techsupportanimals", "meirl", "me_irl", "2meirl4meirl", "AdviceAnimals"];
    const random = subReddits[Math.floor(Math.random() * subReddits.length)];
-   randomPuppy(subreddit).then(async url => {
+   randomPuppy(random).then(async url => {
     const embed = new Discord.MessageEmbed()
      .setColor("RANDOM")
      .setTitle("Random meme")
