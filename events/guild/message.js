@@ -57,7 +57,10 @@ module.exports = async (client, message) => {
    if(found) {
     const timePassed = Date.now() - found;
     const timeLeft = timeout - timePassed;
-    return message.reply(`**Slow down, you can use this command again in ${ms(timeLeft)} This command has a default cooldown of ${timeout}!**`);
+    return message.channel.send({embed: {
+     color: 16734039,
+     description: ` ❌ | ${message.author} slow down! You have to wait \`${ms(timeLeft)}\` before you can use this command again!`
+    }});
    } else {
     command.run(client, message, args);
     Timeout.set(key, Date.now());
