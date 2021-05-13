@@ -21,14 +21,14 @@ module.exports = {
    }
    let lyrics = null;
    const search = await Genius.song.search(song || queue.songs[0].title, "");
-   const song = searches[0];
+   const lsong = searches[0];
    try {
-    if (!song) lyrics = `No lyrics found for ${song || queue.songs[0].title, ""}`;
+    if (!lsong) lyrics = `No lyrics found for ${song || queue.songs[0].title, ""}`;
    } catch (error) {
     lyrics = `No lyrics found for ${song || queue.songs[0].title, ""}`;
    }
-   console.log(song);
-   const lyrics = await song.lyrics();
+   console.log(lsong);
+   const lyrics = await lsong.lyrics();
    let embed = new Discord.MessageEmbed()
     .setTitle(`📑 Lyrics For ${song || queue.songs[0].title, ""}`)
     .setDescription(lyrics)
