@@ -52,13 +52,13 @@ module.exports = async (client, message) => {
    }});
   }
   if (command) {
-   cooldowns.set(message.author.id, Date.now() + 900000);
-   setTimeout(() => cooldowns.delete(message.author.id), 900000);
-   if (cooldown) {
+   cooldowns.set(message.author.id, Date.now() + command.cooldown, command.name);
+   setTimeout(() => cooldowns.delete(message.author.id), command.cooldown, command.name);
+   if (cooldown && cooldown.includes(command.name)) {
     const remaining = humanizeDuration(cooldown - Date.now());
     return message.channel.send({embed: {
      color: 16734039,
-     description: `❌ | You have to wait ${remaining} before you can use this command again`
+     description: `❌ | You have to wait \`${remaining}\` before you can use this command again`
     }});
    }
    command.run(client, message, args);
