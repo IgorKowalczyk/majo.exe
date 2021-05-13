@@ -21,7 +21,7 @@ module.exports = {
     }
    }
    const search = await geniuscli.songs.search(song || queue.songs[0].title, "");
-   const lsong = searches[0];
+   const lsong = search[0];
    console.log(lsong);
    const lyrics = await lsong.lyrics();
    try {
