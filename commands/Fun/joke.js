@@ -15,7 +15,6 @@ module.exports = {
      headers: { 'Accept': 'application/json' },
     })
     const body = await response.json();
-    console.log(body);
     const embed = new Discord.MessageEmbed()
      .setTitle("Random Dad joke", message.guild.iconURL())
      .setDescription("Dad said: " + body.joke)
