@@ -55,7 +55,7 @@ module.exports = async (client, message) => {
    }
    let time = cooldown[message.author.id][command.name] || 0;
    if(time && (time > Date.now())) {
-    let wait = Math.ceil((time - Date.now()) / 1000);
+    let wait = humanizeDuration(time - Date.now())
     return message.channel.send(`You have to wait ${wait} before you can use this command again!`)
    }
    cooldown[message.author.id][command.name] = Date.now() + command.cooldown;
