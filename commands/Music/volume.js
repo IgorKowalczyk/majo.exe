@@ -30,7 +30,7 @@ module.exports = {
      description: '❌ | You can\'t set volume higher than 10 (Your ears.. 🪦)'
     }})
    }
-   if(args[0].includes('-') || isNaN(args[0])) {
+   if(args[0].includes('-') || isNaN(args[0]) || args[0] == 0) {
     return message.channel.send({embed: {
      color: 4779354,
      description: '❌ | You must enter correct value. I only accept numbers from 1 to 10!'
