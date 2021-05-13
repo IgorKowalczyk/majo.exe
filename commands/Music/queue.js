@@ -20,9 +20,12 @@ module.exports = {
    for(let i = 1; i < queue.songs.length; i++){
      description += `**${i}.** [${queue.songs[i].title.substring(0,40)}](${queue.songs[i].url}) | \`${queue.songs[i].duration}\`\n`
    }
-   let queueembed = new Discord.MessageEmbed()
+   if (description.length == 0) {
+    description = "There is nothing in the queue!"
+   }
+   const queueembed = new Discord.MessageEmbed()
     .setTitle("💿 Music Queue", message.author.displayAvatarURL({ dynamic: true, format: 'png', size: 2048 }))
-    .setDescription(description || "There is nothing in the queue!")
+    .setDescription(description)
     .setColor("RANDOM")
     .setFooter("Requested by " + `${message.author.username}`, message.author.displayAvatarURL({ dynamic: true, format: 'png', size: 2048 }))
    const splitDescription = Discord.splitMessage(description, {

@@ -37,7 +37,7 @@ module.exports = {
      description: `❌ | You can\'t add negative money! If you want to remove money please check \`${prefix} removemoney\` command.`
     }})
    }
-   const sql = MySQL.createPool({
+   var sql = MySQL.createPool({
     connectionLimit : 10,
     host: process.env.MYSQL_HOST,
     user: process.env.MYSQL_USER,
