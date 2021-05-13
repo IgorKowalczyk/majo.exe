@@ -59,7 +59,7 @@ module.exports = async (client, message) => {
     const timeLeft = timeout - timePassed;
     return message.reply(`**Slow down, you can use this command again in ${ms(timeLeft)} This command has a default cooldown of ${timeout}!**`);
    } else {
-    command.run(bot, message, args);
+    command.run(client, message, args);
     Timeout.set(key, Date.now());
     setTimeout(() => {
      Timeout.delete(key);
