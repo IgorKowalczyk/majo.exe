@@ -16,13 +16,13 @@ module.exports = {
      description: "❌ | This is nothing playing right now",
     }})
    }
-   let description = "There is nothing in the queue!";
+   let description = "";
    for(let i = 1; i < queue.songs.length; i++){
      description += `**${i}.** [${queue.songs[i].title.substring(0,40)}](${queue.songs[i].url}) | \`${queue.songs[i].duration}\`\n`
    }
    let queueembed = new Discord.MessageEmbed()
     .setTitle("💿 Music Queue", message.author.displayAvatarURL({ dynamic: true, format: 'png', size: 2048 }))
-    .setDescription(description)
+    .setDescription(description || "There is nothing in the queue!")
     .setColor("RANDOM")
     .setFooter("Requested by " + `${message.author.username}`, message.author.displayAvatarURL({ dynamic: true, format: 'png', size: 2048 }))
    const splitDescription = Discord.splitMessage(description, {
