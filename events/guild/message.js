@@ -21,6 +21,7 @@ module.exports = async (client, message) => {
    }
   }
   const cooldown = cooldowns.get(message.author.id);
+  console.log(cooldown)
   if (cooldown) {
    const remaining = humanizeDuration(cooldown - Date.now());
    return message.channel.send(`You have to wait ${remaining} before you can use this command again`)
