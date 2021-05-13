@@ -20,12 +20,12 @@ module.exports = {
      }})
     }
    }
+   try {
    const search = await geniuscli.songs.search(song || queue.songs[0].title, "");
    const lsong = search[0];
    console.log(lsong);
    const lyrics = await lsong.lyrics();
-   try {
-    if (!lsong && !lyrics) lyrics = `No lyrics found for ${song || queue.songs[0].title, ""}`;
+    if (!search || !lsong || !lyrics) lyrics = `No lyrics found for ${song || queue.songs[0].title, ""}`;
    } catch (error) {
     lyrics = `No lyrics found for ${song || queue.songs[0].title, ""}`;
    }
