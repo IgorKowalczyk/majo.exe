@@ -1,5 +1,6 @@
 const Discord = require('discord.js')
 const Genius = require("genius-lyrics");
+const geniuscli = new Genius.Client()
 
 module.exports = {
  name: "lyrics",
@@ -19,7 +20,7 @@ module.exports = {
      }})
     }
    }
-   const search = await Genius.songs.search(song || queue.songs[0].title, "");
+   const search = await geniuscli.songs.search(song || queue.songs[0].title, "");
    const lsong = searches[0];
    console.log(lsong);
    const lyrics = await lsong.lyrics();
