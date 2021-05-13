@@ -1,10 +1,11 @@
 const Discord = require('discord.js');
+const humanizeDuration = require('humanize-duration');
 const config = require("../../config");
 const prefix = config.prefix;
 
 module.exports = async (client, message) => {
  try {
-  const queue = new Map();
+  const cooldowns = new Map();
   if (message.author.bot) return;
   if (!message.guild) {
    try {
@@ -18,6 +19,11 @@ module.exports = async (client, message) => {
    } catch (err) {
     return;
    }
+  }
+  const cooldown = cooldowns.get(message.author.id);
+  if (cooldown) {
+   const remaining = humanizeDuration(cooldown - Date.now());
+   return message.channel.send(`You have to wait ${remaining} before you can use this command again`)
   }
   if (message.content === `<@${client.user.id}>` || message.content === `<@!${client.user.id}>`) {
    const embed = new Discord.MessageEmbed()
@@ -51,6 +57,13 @@ module.exports = async (client, message) => {
   }
   if (command) {
    command.run(client, message, args);
+  }
+  if(command.cooldown) {
+  cooldowns.set(message.author.id, Date.now() + command.cooldown);
+  setTimeout(() => cooldowns.delete(message.author.id), command.cooldown);
+  } else {
+   cooldowns.set(message.author.id, Date.now() + 5000);
+   setTimeout(() => cooldowns.delete(message.author.id), 5000);
   }
  } catch (err) {
   console.log(err);
