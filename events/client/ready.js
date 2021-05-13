@@ -12,23 +12,17 @@ module.exports = (client) => {
    const statuslist = [];
    if (date == discordbday) {
     statuslist.push(
-     `🎉 ${client.guilds.cache.size} servers 🎉`,
-     `🎉 ${client.guilds.cache.reduce((a, g) => a + g.memberCount, 0)} members 🎉`,
-     `🎉 ${config.prefix} help 🎉`,	
-     `🎉 Happy Birthday Discord! 🎉`,
+     `🎉 ${client.guilds.cache.size} servers 🎉 #DISCORD-PLS-NOT-CHANGE-DESIGN`,
+     `🎉 ${client.guilds.cache.reduce((a, g) => a + g.memberCount, 0)} members 🎉 #DISCORD-PLS-NOT-CHANGE-DESIGN`,
+     `🎉 ${config.prefix} help 🎉 #DISCORD-PLS-NOT-CHANGE-DESIGN`,	
+     `🎉 Discord back old style, please not change the desing... 🎉`,
     );	
    } else {	
     statuslist.push(	
-     /*
-     `${emoji} | ${client.guilds.cache.size} servers`,
-     `${emoji} | ${client.guilds.cache.reduce((a, g) => a + g.memberCount, 0)} members`,
+     `${emoji} | ${client.guilds.cache.size} servers #DISCORD-PLS-NOT-CHANGE-DESIGN`,
+     `${emoji} | ${client.guilds.cache.reduce((a, g) => a + g.memberCount, 0)} members #DISCORD-PLS-NOT-CHANGE-DESIGN`,
      `${emoji} | ${config.prefix} help`,
-     `${emoji} | Waiting for verification! (${client.guilds.cache.size} guilds 🥰)`,
-     */
-     `[*] | ${client.guilds.cache.size} servers`,
-     `[*] | ${client.guilds.cache.reduce((a, g) => a + g.memberCount, 0)} members`,
-     `[*] | ${config.prefix} help`,
-     `[*] | Waiting for verification! (${client.guilds.cache.size} guilds)`,
+     `${emoji} | Waiting for verification! (${client.guilds.cache.size} guilds 🥰) #DISCORD-PLS-NOT-CHANGE-DESIGN`,
     );	
    }	
    const random = Math.floor(Math.random() * (statuslist.length - 1) + 1);
