@@ -1,5 +1,5 @@
 const Discord = require('discord.js')
-const lyricsFinder = require("lyrics-finder");
+const Genius = require("genius-lyrics");
 
 module.exports = {
  name: "lyrics",
@@ -20,12 +20,15 @@ module.exports = {
     }
    }
    let lyrics = null;
+   const search = await Genius.song.search(song || queue.songs[0].title, "");
+   const song = searches[0];
    try {
-    lyrics = await lyricsFinder(song || queue.songs[0].title, "");
-    if (!lyrics) lyrics = `No lyrics found for ${song || queue.songs[0].title, ""}`;
+    if (!song) lyrics = `No lyrics found for ${song || queue.songs[0].title, ""}`;
    } catch (error) {
     lyrics = `No lyrics found for ${song || queue.songs[0].title, ""}`;
    }
+   console.log(song);
+   const lyrics = await song.lyrics();
    let embed = new Discord.MessageEmbed()
     .setTitle(`📑 Lyrics For ${song || queue.songs[0].title, ""}`)
     .setDescription(lyrics)
