@@ -62,6 +62,7 @@ module.exports = async (client, message) => {
     cooldowns.set(message.author.id, Date.now() + command.cooldown);
     setTimeout(() => cooldowns.delete(message.author.id), command.cooldown);
    } else {
+       console.log("This happens")
     cooldowns.set(message.author.id, Date.now() + 5000);
     setTimeout(() => cooldowns.delete(message.author.id), 5000);
    }
