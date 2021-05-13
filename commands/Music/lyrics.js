@@ -30,10 +30,10 @@ module.exports = {
     lyrics = `No lyrics found for ${song || queue.songs[0].title, ""}`;
    }
    let embed = new Discord.MessageEmbed()
-    .setTitle(`📑 Lyrics For ${lsong.fullTitle}`)
+    .setTitle(`📑 Lyrics For \`${lsong.fullTitle}\``)
     .setDescription(lyrics)
     .setColor("RANDOM")
-    .setImage(song.setImage)
+    .setImage(song.image)
     .setTimestamp()
     .setFooter("Requested by " + `${message.author.username}`, message.author.displayAvatarURL({ dynamic: true, format: 'png', size: 2048 }))
    if (embed.description.length >= 2048)
