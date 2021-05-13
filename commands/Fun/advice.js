@@ -10,7 +10,6 @@ module.exports = {
  run: async (client, message, args) => {
   try {
    const Data = await Random.GetAdvice();
-   console.log(Data);
    return message.channel.send(Data);
   } catch (err) {
    message.channel.send({embed: {
