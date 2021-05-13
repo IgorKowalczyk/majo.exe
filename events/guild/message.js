@@ -56,14 +56,14 @@ module.exports = async (client, message) => {
    }});
   }
   if (command) {
+   if(command.cooldown) {
+    cooldowns.set(message.author.id, Date.now() + command.cooldown);
+    setTimeout(() => cooldowns.delete(message.author.id), command.cooldown);
+   } else {
+    cooldowns.set(message.author.id, Date.now() + 5000);
+    setTimeout(() => cooldowns.delete(message.author.id), 5000);
+   }
    command.run(client, message, args);
-  }
-  if(command.cooldown) {
-  cooldowns.set(message.author.id, Date.now() + command.cooldown);
-  setTimeout(() => cooldowns.delete(message.author.id), command.cooldown);
-  } else {
-   cooldowns.set(message.author.id, Date.now() + 5000);
-   setTimeout(() => cooldowns.delete(message.author.id), 5000);
   }
  } catch (err) {
   console.log(err);
