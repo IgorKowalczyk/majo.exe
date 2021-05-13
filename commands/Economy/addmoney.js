@@ -1,6 +1,7 @@
 const Discord = require("discord.js");
 const config = require("../../config");
 const prefix = config.prefix;
+const MySQL = require('mysql');
 
 module.exports = {
  name: "addmoney",
@@ -36,10 +37,26 @@ module.exports = {
      description: `❌ | You can\'t add negative money! If you want to remove money please check \`${prefix} removemoney\` command.`
     }})
    }
-   client.sql.query(`SELECT * FROM "money" WHERE id = "${user.id} AND guild = "${message.guild.id}`, (e, row1) => {
+   const sql = MySQL.createConnection({
+    host: process.env.MYSQL_HOST,
+    user: process.env.MYSQL_USER,
+    password: process.env.MYSQL_PASSWORD,
+    database: process.env.MYSQL_DATABASE,
+    charset: 'utf8mb4',
+    port: "3306"
+   });
+   sql.connect((err) => {
+    if (err) {
+     console.error('Impossible to connect to MySQL server. Code: ' + err.code);
+     process.exit(99);
+    } else {
+     console.log('[SQL] Connected to the MySQL server! Connection ID: ' + sql.threadId);
+    }
+   });
+   sql.query(`SELECT * FROM "money" WHERE id = "${user.id} AND guild = "${message.guild.id}`, (e, row1) => {
     if (!row1 || row1.length == 0) return client.sql.query(`INSERT INTO "money" (${user.id}, ${amount}, ${message.guild.id})`);
-    client.sql.query(`UPDATE "money" SET "money" ="${amount}" WHERE "id" = "${user.id} AND "guild" = "${message.guild.id}`, (e, row2) => {
-     client.sql.query(`SELECT * FROM "money" WHERE id = "${user.id} AND guild = "${message.guild.id}`, (e, rowfinal) => {
+    sql.query(`UPDATE "money" SET "money" ="${amount}" WHERE "id" = "${user.id} AND "guild" = "${message.guild.id}`, (e, row2) => {
+     sql.query(`SELECT * FROM "money" WHERE id = "${user.id} AND guild = "${message.guild.id}`, (e, rowfinal) => {
       const embed = new Discord.MessageEmbed()
       .setTitle(`Money Added!`)
       .addField(`User`, `${user}`)
@@ -54,6 +71,7 @@ module.exports = {
     })
    })
   } catch(err) {
+   console.log(err);
    message.channel.send({embed: {
     color: 16734039,
     description: "Something went wrong... :cry:"
