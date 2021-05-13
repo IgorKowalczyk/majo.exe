@@ -20,8 +20,6 @@ module.exports = async (client, message) => {
     return;
    }
   }
-  cooldowns.set(message.author.id, Date.now() + 900000);
-  setTimeout(() => cooldowns.delete(message.author.id), 900000);
   const cooldown = cooldowns.get(message.author.id);
   if (message.content === `<@${client.user.id}>` || message.content === `<@!${client.user.id}>`) {
    const embed = new Discord.MessageEmbed()
@@ -54,9 +52,14 @@ module.exports = async (client, message) => {
    }});
   }
   if (command) {
+   cooldowns.set(message.author.id, Date.now() + 900000);
+   setTimeout(() => cooldowns.delete(message.author.id), 900000);
    if (cooldown) {
     const remaining = humanizeDuration(cooldown - Date.now());
-    return message.channel.send(`You have to wait ${remaining} before you can use this command again`)
+    return message.channel.send({embed: {
+     color: 16734039,
+     description: `❌ | You have to wait ${remaining} before you can use this command again`
+    }});
    }
    command.run(client, message, args);
   }
