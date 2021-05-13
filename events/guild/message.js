@@ -20,7 +20,6 @@ module.exports = async (client, message) => {
     return;
    }
   }
-  const cooldown = cooldowns.get(message.author.id);
   if (message.content === `<@${client.user.id}>` || message.content === `<@!${client.user.id}>`) {
    const embed = new Discord.MessageEmbed()
     .setTitle(`<a:sucess:759354039242063903> Hi!`, message.guild.iconURL())
@@ -52,9 +51,11 @@ module.exports = async (client, message) => {
    }});
   }
   if (command) {
+   const cooldown = cooldowns.get(message.author.id);
+   const cooldownuser = cooldowns.get(command.name)
    cooldowns.set(message.author.id, Date.now() + command.cooldown, command.name);
    setTimeout(() => cooldowns.delete(message.author.id), command.cooldown, command.name);
-   if (cooldown && cooldown.includes(command.name)) {
+   if (cooldown && cooldownuser) {
     const remaining = humanizeDuration(cooldown - Date.now());
     return message.channel.send({embed: {
      color: 16734039,
