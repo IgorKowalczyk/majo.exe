@@ -19,7 +19,7 @@ module.exports = {
      }})
     }
    }
-   const search = await Genius.song.search(song || queue.songs[0].title, "");
+   const search = await Genius.songs.search(song || queue.songs[0].title, "");
    const lsong = searches[0];
    console.log(lsong);
    const lyrics = await lsong.lyrics();
