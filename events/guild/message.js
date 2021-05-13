@@ -57,6 +57,7 @@ module.exports = async (client, message) => {
    }});
   }
   if (command) {
+   console.log("Cooldown:" + command.cooldown)
    if(command.cooldown) {
     cooldowns.set(message.author.id, Date.now() + command.cooldown);
     setTimeout(() => cooldowns.delete(message.author.id), command.cooldown);
