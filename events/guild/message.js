@@ -3,6 +3,7 @@ const humanizeDuration = require('humanize-duration');
 const config = require("../../config");
 const prefix = config.prefix;
 const cooldown = {};
+
 module.exports = async (client, message) => {
  try {
   if (message.author.bot) return;
@@ -53,12 +54,12 @@ module.exports = async (client, message) => {
    if(!cooldown[message.author.id]) {
     cooldown[message.author.id] = {};
    }
-   let time = cooldown[message.author.id][command.name] || 0;
+   let time = cooldown[message.author.id][command.name][command.cooldown] || 0;
    if(time && (time > Date.now())) {
     let wait = humanizeDuration(time - Date.now())
     return message.channel.send(`You have to wait ${wait} before you can use this command again!`)
    }
-   cooldown[message.author.id][command.name] = Date.now() + command.cooldown;
+   cooldown[message.author.id][command.name][command.cooldown] = Date.now() + command.cooldown;
    command.run(client, message, args);
   }
  } catch (err) {
