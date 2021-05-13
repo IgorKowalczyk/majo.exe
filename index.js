@@ -5,10 +5,10 @@ const http = require("http");
 const db = require("quick.db");
 const chalk = require("chalk");
 const config = require("./config");
-require('dotenv').config()
 const { GiveawaysManager } = require('discord-giveaways');
 const MySQL = require('mysql');
-const { EconomyManager } = require("quick.eco")
+require('dotenv').config()
+/*( const { EconomyManager } = require("quick.eco")
 
 const eco = new EconomyManager({
  adapter: 'mysql',
@@ -21,6 +21,7 @@ const eco = new EconomyManager({
 });
 
 client.economy = eco;
+*/
 
 const sql = MySQL.createConnection({
  host: process.env.MYSQL_HOST,
@@ -38,17 +39,25 @@ sql.connect((err) => {
   console.log('[SQL] Connected to the MySQL server! Connection ID: ' + sql.threadId);
  }
 });
-sql.query('CREATE TABLE IF NOT EXISTS `giveaways` (`id` INT(1) NOT NULL AUTO_INCREMENT, `message_id` VARCHAR(64) NOT NULL, `data` JSON NOT NULL, PRIMARY KEY (`id`));', (err) => {
+client.sql == sql;
+
+client.sql.query('CREATE TABLE IF NOT EXISTS `giveaways` (`id` INT(1) NOT NULL AUTO_INCREMENT, `message_id` VARCHAR(64) NOT NULL, `data` JSON NOT NULL, PRIMARY KEY (`id`));', (err) => {
  if (err) console.error(err);
  console.log('[SQL] Created table `giveaways`');
 });
-const GiveawayManagerWithOwnDatabase = class extends GiveawaysManager {
+
+client.sql.query('CREATE TABLE IF NOT EXISTS `money` (`id` INT(30) NOT NULL, `money` INT(64) NOT NULL, `guild_id` VARCHAR(64) NOT NULL, PRIMARY KEY (`id`));', (err) => {
+if (err) console.error(err);
+console.log('[SQL] Created table `money`');
+});
+
+const Giveaways = class extends GiveawaysManager {
  async getAllGiveaways() {
   return new Promise((resolve, reject) => {
-   sql.query('SELECT `data` FROM `giveaways`', (err, res) => {
+   client.sql.query('SELECT `data` FROM `giveaways`', (err, res) => {
     if (err) {
      console.error(err);
-     sql.end();
+     client.sql.end();
      return reject(err);
     }
     const giveaways = res.map((row) => JSON.parse(row.data));
@@ -58,10 +67,10 @@ const GiveawayManagerWithOwnDatabase = class extends GiveawaysManager {
  }
  async saveGiveaway(messageID, giveawayData) {
   return new Promise((resolve, reject) => {
-   sql.query('INSERT INTO `giveaways` (`message_id`, `data`) VALUES (?,?)', [messageID, JSON.stringify(giveawayData)], (err, res) => {
+   client.sql.query('INSERT INTO `giveaways` (`message_id`, `data`) VALUES (?,?)', [messageID, JSON.stringify(giveawayData)], (err, res) => {
     if (err) {
      console.error(err);
-     sql.end()
+     client.sql.end()
      return reject(err);
     }
     resolve(true);
@@ -70,10 +79,10 @@ const GiveawayManagerWithOwnDatabase = class extends GiveawaysManager {
  }
  async editGiveaway(messageID, giveawayData) {
   return new Promise((resolve, reject) => {
-   sql.query('UPDATE `giveaways` SET `data` = ? WHERE `message_id` = ?', [JSON.stringify(giveawayData), messageID], (err, res) => {
+   client.sql.query('UPDATE `giveaways` SET `data` = ? WHERE `message_id` = ?', [JSON.stringify(giveawayData), messageID], (err, res) => {
     if (err) {
      console.error(err);
-     sql.end()
+     client.sql.end()
      return reject(err);
     }
     resolve(true);
@@ -82,10 +91,10 @@ const GiveawayManagerWithOwnDatabase = class extends GiveawaysManager {
  }
  async deleteGiveaway(messageID) {
   return new Promise((resolve, reject) => {
-   sql.query('DELETE FROM `giveaways` WHERE `message_id` = ?', messageID, (err, res) => {
+   client.sql.query('DELETE FROM `giveaways` WHERE `message_id` = ?', messageID, (err, res) => {
     if (err) {
      console.error(err);
-     sql.end()
+     client.sql.end()
      return reject(err);
     }
     resolve(true);
@@ -99,7 +108,7 @@ if (process.env.TOKEN) {
  client.commands = new Discord.Collection();
  client.aliases = new Discord.Collection();
  client.queue = new Map();
- const manager = new GiveawayManagerWithOwnDatabase(client, {
+ const manager = new Giveaways(client, {
   updateCountdownEvery: 10000,
   hasGuildMembersIntent: false,
   default: {

@@ -1,5 +1,5 @@
 const Discord = require("discord.js");
-const createBar = require("string-progressbar");
+const { createBar } = require("string-progressbar");
 
 module.exports = {
  name: "nowplaying",

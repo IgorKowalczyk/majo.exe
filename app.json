@@ -40,7 +40,7 @@
   },
   "ID": {
    "description": "Your Discord Bot ID",
-   "required": false
+   "required": true
   },
   "DASHBOARD": {
    "description": "The Web-Dashboard config value. (eg. true/false)",
@@ -55,8 +55,24 @@
    "required": true
   },
   "ANALYTICS": {
-   "description": "oogle analytics tracking ID, used in Web-Dashboard",
+   "description": "Google analytics tracking ID, used in Web-Dashboard",
    "required": false
+  },
+  "MYSQL_DATABASE": {
+   "description": "Your MYSQL Database name",
+   "required": true
+  },
+  "MYSQL_HOST": {
+   "description": "Your MYSQL Host Name",
+   "required": true
+  },
+  "MYSQL_PASSWORD": {
+   "description": "Your MYSQL user password",
+   "required": true
+  },
+  "MYSQL_USER": {
+   "description": "Your MYSQL User name who can acces to the database",
+   "required": true
   }
  },
  "keywords": [

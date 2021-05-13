@@ -44,6 +44,10 @@ Deploy the app to [Heroku](https://heroku.com)
     * `BRAINID` - Your Brainshop AI Brain ID [Tutorial](#ai-keys)
     * `BRAINKEY` - Your Brainshop AI Brain Key [Tutorial](#ai-keys)
     * `COOKIES` - Your Youtube Cookies [Tutorial](#youtube)
+    * `MYSQL_DATABASE` - Your MYSQL database name
+    * `MYSQL_HOST` - Your MYSQL Host name
+    * `MYSQL_PASSWORD` - Your MYSQL user password
+    * `MYSQL_USER` - Your MYSQL User name who can acces to the database
     * **Not required (You can leave them blank):**
     * `DOMAIN` - your website domain, eg `https://example.com`
     * `PORT` - your website port, eg `8080`. [Note: If you are using heroku, not create this value. Heroku binds port automatically]
@@ -70,6 +74,10 @@ Deploy the app to [Heroku](https://heroku.com)
 TOKEN=YOUR_TOKEN_GOES_HERE
 PREFIX=!majo
 AMEAPI=YOUR_AMETHYSTE_API_TOKEN
+MYSQL_DATABASE=YOUR_MYSQL_DATABASE_NAME
+MYSQL_HOST=YOUR_MYSQL_HOST
+MYSQL_PASSWORD=YOUR_MYSQL_USER_PASSWORD
+MYSQL_USER=YOUR_MYSQL_DATABASE_USER
 
 # Not required
 DOMAIN=YOUR_WEBSITE_DOMAIN
@@ -95,7 +103,10 @@ ANALYTICS=YOUR_GOOGLE_TRACKING_ID
 | ID | Your Discord Bot ID | :heavy_check_mark: |
 | AMEAPI | Your Amethyste api token | :heavy_check_mark: |
 | BRAINID | Your Brainshop AI Brain ID | :heavy_check_mark: |
-| BRAINKEY | Your Brainshop AI Brain Key | :heavy_check_mark: |
+| MYSQL_DATABASE | Your MYSQL database name | :heavy_check_mark: |
+| MYSQL_HOST | Your MYSQL Host | :heavy_check_mark: |
+| MYSQL_USER | Your MYSQL user | :heavy_check_mark: |
+| MYSQL_PASSWORD | Your Brainshop AI Brain Key | :heavy_check_mark: |
 | COOKIES | Your youtube cookies | :heavy_check_mark: |
 | DOMAIN | Your website domain (eg `https://example.com`)`*` | :x:/:heavy_check_mark: |
 | PORT| Your webiste port, (eg. `8008 `)`*`| :x:/:heavy_check_mark: |
