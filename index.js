@@ -41,12 +41,12 @@ sql.connect((err) => {
 });
 client.sql == sql;
 
-client.sql.query('CREATE TABLE IF NOT EXISTS `giveaways` (`id` INT(1) NOT NULL AUTO_INCREMENT, `message_id` VARCHAR(64) NOT NULL, `data` JSON NOT NULL, PRIMARY KEY (`id`));', (err) => {
+sql.query('CREATE TABLE IF NOT EXISTS `giveaways` (`id` INT(1) NOT NULL AUTO_INCREMENT, `message_id` VARCHAR(64) NOT NULL, `data` JSON NOT NULL, PRIMARY KEY (`id`));', (err) => {
  if (err) console.error(err);
  console.log('[SQL] Created table `giveaways`');
 });
 
-client.sql.query('CREATE TABLE IF NOT EXISTS `money` (`id` INT(30) NOT NULL, `money` INT(64) NOT NULL, `guild_id` VARCHAR(64) NOT NULL, PRIMARY KEY (`id`));', (err) => {
+sql.query('CREATE TABLE IF NOT EXISTS `money` (`id` INT(30) NOT NULL, `money` INT(64) NOT NULL, `guild_id` VARCHAR(64) NOT NULL, PRIMARY KEY (`id`));', (err) => {
 if (err) console.error(err);
 console.log('[SQL] Created table `money`');
 });
@@ -54,10 +54,10 @@ console.log('[SQL] Created table `money`');
 const Giveaways = class extends GiveawaysManager {
  async getAllGiveaways() {
   return new Promise((resolve, reject) => {
-   client.sql.query('SELECT `data` FROM `giveaways`', (err, res) => {
+   sql.query('SELECT `data` FROM `giveaways`', (err, res) => {
     if (err) {
      console.error(err);
-     client.sql.end();
+     sql.end();
      return reject(err);
     }
     const giveaways = res.map((row) => JSON.parse(row.data));
@@ -67,10 +67,10 @@ const Giveaways = class extends GiveawaysManager {
  }
  async saveGiveaway(messageID, giveawayData) {
   return new Promise((resolve, reject) => {
-   client.sql.query('INSERT INTO `giveaways` (`message_id`, `data`) VALUES (?,?)', [messageID, JSON.stringify(giveawayData)], (err, res) => {
+   sql.query('INSERT INTO `giveaways` (`message_id`, `data`) VALUES (?,?)', [messageID, JSON.stringify(giveawayData)], (err, res) => {
     if (err) {
      console.error(err);
-     client.sql.end()
+     sql.end()
      return reject(err);
     }
     resolve(true);
@@ -79,10 +79,10 @@ const Giveaways = class extends GiveawaysManager {
  }
  async editGiveaway(messageID, giveawayData) {
   return new Promise((resolve, reject) => {
-   client.sql.query('UPDATE `giveaways` SET `data` = ? WHERE `message_id` = ?', [JSON.stringify(giveawayData), messageID], (err, res) => {
+   sql.query('UPDATE `giveaways` SET `data` = ? WHERE `message_id` = ?', [JSON.stringify(giveawayData), messageID], (err, res) => {
     if (err) {
      console.error(err);
-     client.sql.end()
+     sql.end()
      return reject(err);
     }
     resolve(true);
@@ -91,10 +91,10 @@ const Giveaways = class extends GiveawaysManager {
  }
  async deleteGiveaway(messageID) {
   return new Promise((resolve, reject) => {
-   client.sql.query('DELETE FROM `giveaways` WHERE `message_id` = ?', messageID, (err, res) => {
+   sql.query('DELETE FROM `giveaways` WHERE `message_id` = ?', messageID, (err, res) => {
     if (err) {
      console.error(err);
-     client.sql.end()
+     sql.end()
      return reject(err);
     }
     resolve(true);
