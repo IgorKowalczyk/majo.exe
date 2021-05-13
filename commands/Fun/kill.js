@@ -40,6 +40,7 @@ module.exports = {
     const embed = await new Discord.MessageEmbed()
      .setColor("RANDOM")
      .setAuthor("Tombstone of " + member.displayName + "!", message.author.displayAvatarURL({ dynamic: true, format: 'png', size: 2048 }))
+     .setFooter("Requested by " + `${message.author.username}`, message.author.displayAvatarURL({ dynamic: true, format: 'png', size: 2048 }))
      .setImage(body.url)
      .setDescription(change2)
     message.channel.send(embed);
