@@ -8,6 +8,7 @@ module.exports = {
  aliases: [],
  description: "Shows a random image from the selected 4chan board",
  category: "Fun",
+ timeout: "1000",
  usage: "4chan <board/boards>",
  run: async (client, message, args) => {
   try {
