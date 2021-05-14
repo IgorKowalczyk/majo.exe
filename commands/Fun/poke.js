@@ -36,7 +36,7 @@ module.exports = {
      .setImage(body.url)
      .setURL(body.url)
      .setColor("RANDOM")
-     .setDescription((user.toString() + " got a hug from " + message.author.toString()))
+     .setDescription((user.toString() + " got a poke from " + message.author.toString()))
      .setFooter("Requested by " + `${message.author.username}` + " • (rip)", message.author.displayAvatarURL({ dynamic: true, format: 'png', size: 2048 }))
      .setTimestamp()
     .setURL(body.url);
