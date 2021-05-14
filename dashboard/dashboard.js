@@ -17,7 +17,7 @@ const port = process.env.PORT || 6565;
 
 console.log("Starting dashboard...");
 
-module.exports = async (client, commands) => {
+module.exports = async (client) => {
  console.log("Setting up dashboard main config...");
  const dataDir = path.resolve(`${process.cwd()}${path.sep}dashboard`);
  const templateDir = path.resolve(`${dataDir}${path.sep}templates`);
@@ -60,7 +60,6 @@ module.exports = async (client, commands) => {
    config: config,
    hostname: hostname,
    pathname: pathname,
-   commands: commands,
    path: req.path,
    user: req.isAuthenticated() ? req.user : null,
    verification: config.verification,
