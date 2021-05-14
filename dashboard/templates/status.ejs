@@ -1,7 +1,7 @@
 <%- include("partials/head", { bot, user, path, description, title: "Server Dashboard", twitter, url, image }) %>
 <div class="container">
 
-<h1>Majo.exe in numbers</h1>
+<h1 class="headerinfo">Majo.exe in numbers</h1>
 
 <div class="boxes">
 <div class="box box1">
@@ -51,9 +51,13 @@ box-shadow: 0 0 20px -10px rgba(0, 0, 0, 0.05);
 position: relative;
 border-radius: 4px;
 color: white;
-transition: 0.4s ease-out;
+transition: 250ms;
 }
 
+.box:hover {
+transform: scale(1.05);
+box-shadow: 0 3px 15px 0 rgba(0, 0, 0, 0.1), 0 1px 3px 0 rgba(0, 0, 0, 0.08);
+}
 
 .box1 {
 background: url("./svg/cards/1.svg"), linear-gradient(150deg, #5A57C9, #44409A);
@@ -94,6 +98,17 @@ margin-bottom: 0;
 .boxcontainter .heading {
 font-size: 17px;
 font-weight: 500;
+}
+
+.container {
+max-width: 800px;
+padding: 20px 0px;
+margin: auto;
+margin-top: 60px;
+}
+
+.headerinfo {
+text-align: center;
 }
 </style>
 
