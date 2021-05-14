@@ -56,25 +56,25 @@ transition: 0.4s ease-out;
 
 
 .box1 {
-background: url("./1.svg"), linear-gradient(150deg, #5A57C9, #44409A);
+background: url("./svg/cards/1.svg"), linear-gradient(150deg, #5A57C9, #44409A);
 background-position: center;
 background-size: 100%;
 }
 
 .box2 {
-background: url("./2.svg"), linear-gradient(150deg, #FFD3A5a5, #FD6F88a5);
+background: url("./svg/cards/2.svg"), linear-gradient(150deg, #FFD3A5a5, #FD6F88a5);
 background-position: center;
 background-size: 100%;
 }
 
 .box3 {
-background: url("./3.svg"), linear-gradient(150deg, #ABDCFFa5, #1BA0FFa5);
+background: url("./svg/cards/3.svg"), linear-gradient(150deg, #ABDCFFa5, #1BA0FFa5);
 background-position: center;
 background-size: 100%;
 }
 
 .box4 {
-background: url("./4.svg"), linear-gradient(150deg, #48435A, #39384A);
+background: url("./svg/cards/4.svg"), linear-gradient(150deg, #48435A, #39384A);
 background-position: center;
 background-size: 100%;
 }
@@ -87,16 +87,15 @@ color: var(--text);
 
 .boxcontainter h3.boxheader {
 font-size: 35px;
-position: relative;
-top: -5px;
+margin-top: 10px;
+margin-bottom: 0;
 }
 
 .boxcontainter .heading {
 font-size: 17px;
 font-weight: 500;
-position: relative;
-top: -10px;
 }
 </style>
 
+<%= bot.commands.size() %>
 <%- include("partials/footer") %>
