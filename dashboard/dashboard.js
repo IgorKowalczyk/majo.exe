@@ -60,6 +60,7 @@ module.exports = async (client) => {
    config: config,
    hostname: hostname,
    pathname: pathname,
+   commands: client.commands.size,
    path: req.path,
    user: req.isAuthenticated() ? req.user : null,
    verification: config.verification,
