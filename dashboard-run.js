@@ -2,6 +2,7 @@ const Discord = require("discord.js");
 const client = new Discord.Client({disableEveryone: true});
 const config = require("./config");
 require('dotenv').config()
+const {readdirSync} = require('fs');
 
  readdirSync('./commands/').forEach(file => {
    let pull = require(`../commands/${file}`);
