@@ -30,7 +30,7 @@ module.exports = {
     lyrics = `No lyrics found for ${song || queue.songs[0].title, ""}`;
    }
    let embed = new Discord.MessageEmbed()
-    .setTitle(`📑 Lyrics For \`${lsong.fullTitle}\``)
+    .setTitle(`📑 Lyrics`)
     .setDescription(lyrics)
     .setColor("RANDOM")
     .setImage(song.image)
