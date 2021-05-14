@@ -17,7 +17,7 @@ const port = process.env.PORT || 6565;
 
 console.log("Starting dashboard...");
 
-module.exports = async (client) => {
+module.exports = async (client, commands) => {
  console.log("Setting up dashboard main config...");
  const dataDir = path.resolve(`${process.cwd()}${path.sep}dashboard`);
  const templateDir = path.resolve(`${dataDir}${path.sep}templates`);
