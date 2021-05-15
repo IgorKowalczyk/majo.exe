@@ -45,7 +45,7 @@
   "to-zalgo": "^1.0.1",
   "request": "^2.88.2",
   "dotenv": "^8.2.0",
-  "axios": "^0.20.0",
+  "axios": "^0.21.1",
   "cheerio": "^1.0.0-rc.3",
   "event-handler": "^1.0.1",
   "beautify": "^0.0.8",
