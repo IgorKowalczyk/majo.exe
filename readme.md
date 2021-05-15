@@ -1,3 +1,5 @@
+> #### *This repository is only used to update [@igorkowalczyk/majobot](https://github.com/igorkowalczyk/majobot) to `Discord.js v12.3.1`. The code here may contain errors and bugs, do not use it on production*
+
 # Majo.exe
 
 Majo.exe have almost everything - Fun, Memes, Images, Giveaway, Economy, Anime and NSFW. This bot serve over 100 commands!
