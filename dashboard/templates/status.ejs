@@ -1,0 +1,117 @@
+<%- include("partials/head", { bot, user, path, description, title: "Server Dashboard", twitter, url, image }) %>
+<div class="container">
+
+<h1 class="headerinfo">Majo.exe in numbers</h1>
+
+<div class="boxes">
+<div class="box box1">
+<div class="boxcontainter">
+<h3 class="boxheader"><%= bot.guilds.cache.size %></h3>
+<p class="heading">Guilds</p>
+</div>                                   
+</div>
+<div class="box box2">
+<div class="boxcontainter">
+<h3 class="boxheader"><%= bot.channels.cache.size %></h3>
+<p class="heading">Total Channels</p>
+</div>
+</div>
+<div class="box box3">
+<div class="boxcontainter">
+<h3 class="boxheader"><%= bot.guilds.cache.reduce((a, g) => a + g.memberCount, 0) %></h3>
+<p class="heading">Total members</p>
+</div>
+</div>
+<div class="box box4">
+<div class="boxcontainter">
+<h3 class="boxheader" title="API Ping"><%= Math.round(bot.ws.ping) %>ms</h3>
+<p class="heading">Ping</p>
+</div>
+</div>
+</div>
+
+<style>
+.boxes {
+display: grid;
+font-family: Roboto-Thin;
+grid-template-columns: 1fr 1fr 1fr 1fr;
+grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+grid-gap: 20px;
+position: relative;
+margin-left: 20px;
+margin-right: 20px;
+}
+
+.box {
+background-position-x: 0%, 0%;
+background-position-y: 0%, 0%;
+background-size: auto, auto;
+background-position: center;
+background-size: 100%;
+height: 100px;
+box-shadow: 0 0 20px -10px rgba(0, 0, 0, 0.05);
+position: relative;
+border-radius: 4px;
+color: white;
+transition: 250ms;
+}
+
+.box:hover {
+transform: scale(1.05);
+box-shadow: 0 3px 15px 0 rgba(0, 0, 0, 0.1), 0 1px 3px 0 rgba(0, 0, 0, 0.08);
+}
+
+.box1 {
+background: url("./svg/cards/1.svg"), linear-gradient(150deg, #5A57C9, #44409A);
+background-position: center;
+background-size: 100%;
+}
+
+.box2 {
+background: url("./svg/cards/2.svg"), linear-gradient(150deg, #FFD3A5a5, #FD6F88a5);
+background-position: center;
+background-size: 100%;
+}
+
+.box3 {
+background: url("./svg/cards/3.svg"), linear-gradient(150deg, #ABDCFFa5, #1BA0FFa5);
+background-position: center;
+background-size: 100%;
+}
+
+.box4 {
+background: url("./svg/cards/4.svg"), linear-gradient(150deg, #48435A, #39384A);
+background-position: center;
+background-size: 100%;
+}
+
+.boxcontainter {
+position: absolute;
+padding: 0 0 0 10px;
+color: var(--text);
+}
+
+.boxcontainter h3.boxheader {
+font-size: 35px;
+margin-top: 10px;
+margin-bottom: 0;
+}
+
+.boxcontainter .heading {
+font-size: 17px;
+font-weight: 500;
+}
+
+.container {
+max-width: 800px;
+padding: 20px 0px;
+margin: auto;
+margin-top: 60px;
+}
+
+.headerinfo {
+text-align: center;
+}
+</style>
+
+<%- include("partials/footer") %>

@@ -1,42 +1,85 @@
 {
-  "name": "Majo.exe",
-  "description": "An advanced Discord bot",
-  "logo": "https://igorkowalczyk.github.io/lib/favicon/favicon.jpg",
-  "repository":"https://github.com/igorkowalczyk/majobot.git",
-  "buildpacks": [
-    {
-      "url": "heroku/nodejs"
-    }
-  ],
-  "env": {
-    "TOKEN": {
-      "description": "The bot token, required to run (Do not remember! The TOKEN value is Super-Secret)",
-      "required": true
-    },
-    "PREFIX": {
-      "description": "The default bot prefix (eg. !majo)",
-      "required": true
-    },
-    "DASHBOARD": {
-      "description": "The Web-Dashboard config value. (eg. true/false)",
-      "required": false
-    },
-    "SECRET": {
-      "description": "The bot client secret (Do not remember! The SECRET value is Super-Secret), required to run Web Dashboard",
-      "required": false
-    },
-    "UA": {
-      "description": "Google analytics tracking ID, used in Web-Dashboard",
-      "required": false
-    }
-	},
-  "keywords": [
-    "discord",
-    "discord-bot",
-    "javascript",
-    "js",
-    "node-js",
-    "web-dashboard",
-    "bot"
+ "name": "majo.exe",
+ "description": "An advanced Discord bot",
+ "logo": "https://igorkowalczyk.github.io/lib/favicon/favicon.jpg",
+ "repository":"https://github.com/igorkowalczyk/majobot.git",
+ "stack": "heroku-20",
+ "buildpacks": [
+  {
+   "url": "heroku/nodejs"
+  }
+ ],
+ "env": {
+  "TOKEN": {
+   "description": "The bot token (Remember! The TOKEN is super secret)",
+   "required": true
+  },
+  "PREFIX": {
+   "description": "The default bot prefix (eg. !majo)",
+   "required": true
+  },
+  "AMEAPI": {
+   "description": "Your Amethyste api token",
+   "required": true
+  },
+  "COOKIES": {
+   "description": "Your Youtube cookies",
+   "required": true
+  },
+  "BRAINID": {
+   "description": "Your Brainshop AI Brain ID",
+   "required": true
+  },
+  "BRAINKEY": {
+   "description": "Your Brainshop AI Brain Key",
+   "required": true
+  },
+  "DOMAIN": {
+   "description": "Your website domain (eg https://example.com)",
+   "required": false
+  },
+  "ID": {
+   "description": "Your Discord Bot ID",
+   "required": true
+  },
+  "DASHBOARD": {
+   "description": "The Web-Dashboard config value. (eg. true/false)",
+   "required": true
+  },
+  "SESSION_SECRET": {
+   "description": "Random sequence of words, letterss or numbers",
+   "required": true
+  },
+  "SECRET": {
+   "description": "The bot client secret (Remember! The SECRET value is Super-Secret)",
+   "required": true
+  },
+  "ANALYTICS": {
+   "description": "Google analytics tracking ID, used in Web-Dashboard",
+   "required": false
+  },
+  "MYSQL_DATABASE": {
+   "description": "Your MYSQL Database name",
+   "required": true
+  },
+  "MYSQL_HOST": {
+   "description": "Your MYSQL Host Name",
+   "required": true
+  },
+  "MYSQL_PASSWORD": {
+   "description": "Your MYSQL user password",
+   "required": true
+  },
+  "MYSQL_USER": {
+   "description": "Your MYSQL User name who can acces to the database",
+   "required": true
+  }
+ },
+ "keywords": [
+  "discord",
+  "discord-bot",
+  "node-js",
+  "web-dashboard",
+  "bot"
   ]
 }
