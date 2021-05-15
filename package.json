@@ -99,10 +99,10 @@
  },
  "repository": {
   "type": "git",
-  "url": "https://gihub.com/aurolia-css/majo-rebuild"
+  "url": "https://gihub.com/igorkowalczyk/majobot"
  },
  "bugs": {
-  "url": "https://github.com/aurolia-css/majo-rebuild/issues"
+  "url": "https://github.com/igorkowalczyk/majobot/issues"
  },
  "homepage": "https://majoexe.herokuapp.com/",
  "license": "MIT",
