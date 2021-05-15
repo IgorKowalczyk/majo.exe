@@ -4,10 +4,10 @@ Majo.exe have almost everything - Fun, Memes, Images, Giveaway, Economy, Anime a
 
 [![Discord](https://discord.com/api/guilds/666599184844980224/widget.png?style=banner2)](https://majoexe.herokuapp.com/server)
 
-[![Node.js](https://github.com/aurolia-css/majo-rebuild/actions/workflows/node.yml/badge.svg)](https://majoexe.herokuapp.com/)
-[![Jekyll](https://github.com/aurolia-css/majo-rebuild/workflows/Jekyll/badge.svg)](https://majoexe.herokuapp.com/)
-[![GitHub License](https://img.shields.io/github/license/aurolia-css/majo-rebuild?color=%2334D058&logo=github&logoColor=959DA5&labelColor=24292E)](https://majoexe.herokuapp.com/)
-[![Version](https://img.shields.io/github/package-json/v/aurolia-css/majo-rebuild?color=%2334D058&logo=github&logoColor=959DA5&labelColor=24292E)](https://github.com/aurolia-css/majo-rebuild/releases)
+[![Node.js](https://github.com/igorkowalczyk/majobot/actions/workflows/node.yml/badge.svg)](https://majoexe.herokuapp.com/)
+[![Jekyll](https://github.com/igorkowalczyk/majobot/workflows/Jekyll/badge.svg)](https://majoexe.herokuapp.com/)
+[![GitHub License](https://img.shields.io/github/license/igorkowalczyk/majobot?color=%2334D058&logo=github&logoColor=959DA5&labelColor=24292E)](https://majoexe.herokuapp.com/)
+[![Version](https://img.shields.io/github/package-json/v/igorkowalczyk/majobot?color=%2334D058&logo=github&logoColor=959DA5&labelColor=24292E)](https://github.com/igorkowalczyk/majobot/releases)
 
 # Invite
 
@@ -21,13 +21,13 @@ However, if you want to host Majo yourself - take a look here](#self-hosting)
 ### Heroku Hosting
 Deploy the app to [Heroku](https://heroku.com)
 
-[![Deploy to heroku](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy?template=https://github.com/aurolia-css/majo-rebuild/tree/master)
+[![Deploy to heroku](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy?template=https://github.com/igorkowalczyk/majobot/tree/master)
 
 [Heroku hosting tutorial](#heroku)
 
 ### Self-Hosting
 
-1. Clone [this repository](https://github.com/aurolia-css/majo-rebuild)
+1. Clone [this repository](https://github.com/igorkowalczyk/majobot)
    `git clone aurolia-css/majo-rebuild` or `git clone igorkowalczyk/majobot` - This is old and unsupported version!
 2. Run `npm install` to get all dependencies,
 3. Grab a Discord Bot token and client secret on [Discord's developer portal](https://discord.com/developers/applications) [Tutorial](#discord-token)
@@ -58,7 +58,7 @@ Deploy the app to [Heroku](https://heroku.com)
 
 # Example `.env` file
 
-[`.env.example`](https://github.com/aurolia-css/majo-rebuild/blob/master/.env.example)
+[`.env.example`](https://github.com/igorkowalczyk/majobot/blob/master/.env.example)
 
 ```
 # Environment Config
@@ -155,13 +155,13 @@ ANALYTICS=YOUR_GOOGLE_TRACKING_ID
 
 
 # Issues
-If you have any issues with the page please create [new issue here](https://github.com/aurolia-css/majo-rebuild/issues)
+If you have any issues with the page please create [new issue here](https://github.com/igorkowalczyk/majobot/issues)
 
 # Pull Requests
 When submitting a pull request:
 - Clone the repo.
 - Create a branch off of master and give it a meaningful name (e.g. my-awesome-new-feature).
-- Open a [pull request](https://github.com/aurolia-css/majo-rebuild/pulls) on [GitHub](https://github.com) and describe the feature or fix.
+- Open a [pull request](https://github.com/igorkowalczyk/majobot/pulls) on [GitHub](https://github.com) and describe the feature or fix.
 
 # License
-This project is licensed under the MIT. See the [LICENSE](https://github.com/aurolia-css/majo-rebuild/blob/master/license.md) file for details
+This project is licensed under the MIT. See the [LICENSE](https://github.com/igorkowalczyk/majobot/blob/master/license.md) file for details
