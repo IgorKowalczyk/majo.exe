@@ -1,5 +1,3 @@
-> #### *This repository is only used to update [@igorkowalczyk/majobot](https://github.com/igorkowalczyk/majobot) to `Discord.js v12.3.1`. The code here may contain errors and bugs, do not use it on production*
-
 # Majo.exe
 
 Majo.exe have almost everything - Fun, Memes, Images, Giveaway, Economy, Anime and NSFW. This bot serve over 100 commands!
@@ -150,6 +148,11 @@ ANALYTICS=YOUR_GOOGLE_TRACKING_ID
        https://your-domain.com/login
       ```
 4. Go to your dashboard in browser (eg. to `localhost:8000`)
+
+# Contributors
+- [@Joao-Victor-Liporini](https://github.com/Joao-Victor-Liporini) (Bug fixes, command-handler improvements, testing, new features)
+- [@dhvitOP](https://github.com/dhvitOP) (Music commands)
+
 
 # Issues
 If you have any issues with the page please create [new issue here](https://github.com/aurolia-css/majo-rebuild/issues)
