@@ -23,6 +23,7 @@ const eco = new EconomyManager({
 client.economy = eco;
 */
 
+/* Database connect and economy, giveaway configuration */
 const sql = MySQL.createConnection({
  host: process.env.MYSQL_HOST,
  user: process.env.MYSQL_USER,
@@ -131,8 +132,3 @@ if (process.env.TOKEN) {
  console.log(chalk.red("Stopping..."));
  process.exit(1);
 }
-
-
-//-------------------//
-// END (of index.js) //
-//-------------------//

@@ -58,7 +58,7 @@ module.exports = async (client, member) => {
    .setImage("attachment://welcome-image.png")
    .attachFiles(attachment);
   channel.send(embed);
-} catch(err) {
- console.log(err);
-}
+ } catch(err) {
+  console.log(err);
+ }
 }
