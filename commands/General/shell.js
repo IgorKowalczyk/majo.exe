@@ -25,9 +25,8 @@ module.exports = {
    }
    process.exec(result), (error, stdout) => {
     const response = (error || stdout);
-    message.channel.send(response, {code: "asciidoc", split: "\n"})
+    message.channel.send(response, {code: "asciidoc", split: "\n"}).catch(err => message.channel.send(err))
    }
-   return;
   } catch(err) {
    message.channel.send({embed: {
     color: 16734039,
