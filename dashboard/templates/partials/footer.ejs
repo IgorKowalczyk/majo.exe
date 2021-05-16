@@ -1,6 +1,8 @@
 </div>
 <footer class="footer">
-<span class="left">Created by: Igor Kowalczyk</span>
+<% if (config.author) { %>
+<span class="left">Created by: <%= config.author %></span>
+<% } %>
 <% if (config.status) { %>
 <a href="/status" target="_blank">Status</a>
 <% } %>
