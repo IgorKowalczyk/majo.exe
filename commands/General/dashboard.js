@@ -12,7 +12,7 @@ module.exports = {
    if(config.domain) {
    const embed = new Discord.MessageEmbed()
     .setTitle("<a:sucess:759354039242063903> Yay!")
-    .setDescription("🔗 Our dashboard link: https://" + config.domain)
+    .setDescription("🔗 Our dashboard link: " + config.domain)
     .setTimestamp()
     .setColor("RANDOM")
     .setFooter("Requested by " + `${message.author.username}`, message.author.displayAvatarURL({ dynamic: true, format: 'png', size: 2048 }))
