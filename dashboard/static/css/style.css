@@ -111,10 +111,6 @@ scrollbar-color: #353535 transparent;
 scrollbar-width: thin;
 }
 
-html, body {
-height: 100%;
-}
-
 body {
 background: var(--white);
 margin: 0 0;
