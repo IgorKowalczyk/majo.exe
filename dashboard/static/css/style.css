@@ -120,6 +120,8 @@ background: var(--white);
 margin: 0 0;
 padding: 0 0;
 transition: 300ms all;
+position: relative;
+padding-bottom: 6rem;
 }
 
 .page-content {
@@ -663,15 +665,14 @@ font-style: normal;
 }
 
 .footer {
-position: absolute;
-bottom: 0;
-left: 0;
-right: 0;
 padding: 10px 10px;
 text-align: right;
-clear: both;
 width: 100%;
 color: #ccc;
+position: absolute;
+right: 0;
+bottom: 0;
+left: 0;
 }
 
 .r {
