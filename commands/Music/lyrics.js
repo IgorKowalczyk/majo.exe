@@ -7,30 +7,27 @@ module.exports = {
  aliases: [],
  description: "Search for lyrics",
  category: "Music",
- usage: "lyrics [song name] | <first song from queue if exists>",
+ usage: "lyrics <song>",
  run: async (client, message, args) => {
   try {
    const song = args.join(" ")
    if (!song) {
-    const queue = message.client.queue.get(message.guild.id);
-    if (!queue) {
-     return message.lineReply({embed: {
-      color: 16734039,
-      description: "❌ | You not entered any song to search, and the queue is empty! Correct usage ${prefix} lyrics [song name] | <first song from queue if exists>",
-     }})
-    }
+    return message.lineReply({embed: {
+     color: 16734039,
+     description: "❌ | Please enter a song to search!",
+    }})
    }
    try {
-   const search = await geniuscli.songs.search(song || queue.songs[0].title, "");
+   const search = await geniuscli.songs.search(song);
    const lsong = search[0];
    console.log(lsong);
    const lyrics = await lsong.lyrics();
-    if (!search || !lsong || !lyrics) lyrics = `No lyrics found for ${song || queue.songs[0].title, ""}`;
+    if (!search || !lsong || !lyrics) lyrics = `No lyrics found for ${song}`;
    } catch (error) {
-    lyrics = `No lyrics found for ${song || queue.songs[0].title, ""}`;
+    lyrics = `No lyrics found for ${song}`;
    }
    let embed = new Discord.MessageEmbed()
-    .setTitle(`📑 Lyrics`)
+    .setTitle(`📑 Lyrics for ${song}`)
     .setDescription(lyrics)
     .setColor("RANDOM")
     .setImage(song.image)
