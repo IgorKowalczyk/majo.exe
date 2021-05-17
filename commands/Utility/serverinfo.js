@@ -45,11 +45,6 @@ module.exports = {
    } else {
     widget = "Server widget not enabled";
    }
-   if(message.guild.features) {
-    features = message.guild.features;
-   } else {
-    features = "None features enabled";
-   }
    const embed = new Discord.MessageEmbed()
     .setAuthor(message.guild.name, message.guild.iconURL)
     .setColor("RANDOM")
@@ -68,7 +63,6 @@ module.exports = {
     .addField("Emojis", message.guild.emojis.cache.size, true)
     .addField("Discovery Splash", `${message.guild.discoverySplash || "None"}`, true)
     .addField("Description", `${message.guild.description || "None"}`)
-    .addField("Guild Features", `${features}`)
     .addField("Rules channel", rules)
     .addField("Widget channel", widget, true)
     .addField("Creation Date", `${message.channel.guild.createdAt.toUTCString().substr(0, 16)} (${checkdays(message.channel.guild.createdAt)})`, true)
