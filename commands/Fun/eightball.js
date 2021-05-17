@@ -8,7 +8,7 @@ module.exports = {
  usage: "eightball <question>",
  run: async (client, message, args) => {
   try {
-   if (!args.length) return message.channel.send({embed: {
+   if (!args.length) return message.lineReply({embed: {
     color: 16734039,
     description: "❌ | You need to enter question :/"
    }})
@@ -18,9 +18,9 @@ module.exports = {
    .setTimestamp()
    .setColor("RANDOM")
    .setFooter("Requested by " + `${message.author.username}`, message.author.displayAvatarURL({ dynamic: true, format: 'png', size: 2048 }))
-  await message.channel.send(embed);
+  await message.lineReply(embed);
   } catch(err) {
-   message.channel.send({embed: {
+   message.lineReply({embed: {
     color: 16734039,
     description: "Something went wrong... :cry:"
    }})

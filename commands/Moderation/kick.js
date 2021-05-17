@@ -17,19 +17,19 @@ module.exports = {
    let mentioned = await message.mentions.members.first();
    let reason = await args.slice(1).join(' ');
    if (!mentioned) {
-    return await message.channel.send({embed: {
+    return await message.lineReply({embed: {
      color: 16734039,
      description: "❌ | Mention a valid member!"
     }})
    }
    if (!mentioned.kickable) {
-    return await message.channel.send({embed: {
+    return await message.lineReply({embed: {
      color: 16734039,
      description: "❌ | You cannot kick this member!"
     }})
    }
    if (message.author === mentioned) {
-    return await message.channel.send({embed: {
+    return await message.lineReply({embed: {
      color: 16734039,
      description: "❌ | You cant kick yourself!"
     }})
@@ -38,13 +38,13 @@ module.exports = {
     reason = "No reason provided! ~Kicked by Majo.exe, the best discord bot";
    }
    mentioned.kick(reason);
-   await message.channel.send({embed: {
+   await message.lineReply({embed: {
     color: 16734039,
     description: ":arrow_right: " + mentioned.displayName + " has been kicked. Reason: \`" + reason + "\`!"
    }})
   } catch (err) {
    console.log(err);
-   message.channel.send({embed: {
+   message.lineReply({embed: {
     color: 16734039,
     description: "Something went wrong... :cry:"
    }})

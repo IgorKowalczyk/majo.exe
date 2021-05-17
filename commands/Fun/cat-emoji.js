@@ -12,12 +12,12 @@ module.exports = {
   (async () => {
    try {
     let text = (await neko.sfw.catText());
-    message.channel.send({embed: {
+    message.lineReply({embed: {
      color: "RANDOM",
      description: text.cat
     }})
    } catch (err) {
-    message.channel.send({embed: {
+    message.lineReply({embed: {
      color: 16734039,
      description: "Something went wrong... :cry:"
     }});

@@ -11,14 +11,14 @@ module.exports = {
   try {
    const user1 = args[0];
    if (!user1) {
-    return message.channel.send({embed: {
+    return message.lineReply({embed: {
      color: 16734039,
      description: "❌ | Please mention a user to ship!"
     }})     
    }
    const user2 = args[1]
    if (!user2) {
-    return message.channel.send({embed: {
+    return message.lineReply({embed: {
      color: 16734039,
      description: "❌ | Please mention a secound user to ship!"
     }}) 
@@ -38,13 +38,12 @@ module.exports = {
     .setFooter("Requested by " + `${message.author.username}`, message.author.displayAvatarURL({ dynamic: true, format: 'png', size: 2048 }))
     .setColor("GREEN")
    if(ship > 50) {
-    message.channel.send(love)
+    message.lineReply(love)
    } else {
-    message.channel.send(mehh)
+    message.lineReply(mehh)
    }
   } catch(err) {
-   console.log(err);
-   message.channel.send({embed: {
+   message.lineReply({embed: {
     color: 16734039,
     description: "Something went wrong... :cry:"
    }})

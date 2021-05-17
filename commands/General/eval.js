@@ -11,14 +11,14 @@ module.exports = {
  run: async (client, message, args) => {
   try {
    if(message.author.id !== config.ownerid) {
-    return message.channel.send({embed: {
+    return message.lineReply({embed: {
      color: 16734039,
      description: "❌ | You do not have permission to run this command (Only owner of the bot can run this)!"
     }});
    }
    var result = args.join(" ");
    if (!result) {
-    return message.channel.send({embed: {
+    return message.lineReply({embed: {
      color: 16734039,
      description: "❌ | Please input code to evaluate!"
     }});
@@ -31,7 +31,7 @@ module.exports = {
     .addField(`Input:\n`, '```js\n' + `${args.join(" ")}` + '```', false)
     .addField(`Output:\n`, '```js\n' + evaluated + '```', true)
     .setFooter("Requested by " + `${message.author.username}`, message.author.displayAvatarURL({ dynamic: true, format: 'png', size: 2048 }))
-   message.channel.send(success)
+   message.lineReply(success)
   } catch (err) {
    const errormessage = new Discord.MessageEmbed()
    .setColor("#e31212")
@@ -39,7 +39,7 @@ module.exports = {
    .addField(`Input:\n`, '```js\n' + `${result}` + '```', false)
    .addField(`Output:\n`, '```js\n' + `${err.message}` + '```', true)
    .setFooter("Requested by " + `${message.author.username}`, message.author.displayAvatarURL({ dynamic: true, format: 'png', size: 2048 }))
-   return message.channel.send(errormessage)
+   return message.lineReply(errormessage)
   }
  }
 }

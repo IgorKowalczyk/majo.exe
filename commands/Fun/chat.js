@@ -15,13 +15,13 @@ module.exports = {
    const brainkey = config.brainkey;
    const uid = `majo-` + message.author.id;
    if(!args[0]) {
-    return message.channel.send({embed: {
+    return message.lineReply({embed: {
      color: 16734039,
      description: "❌ | Hey! Please provide some message to talk to me :("
     }});
    }
    if(message.mentions.members.first()) {
-    return message.channel.send({embed: {
+    return message.lineReply({embed: {
      color: 16734039,
      description: "❌ | Hey! Please don't ping people >:("
     }});
@@ -30,7 +30,7 @@ module.exports = {
     const response = await fetch(`http://api.brainshop.ai/get?bid=${brainid}&key=${brainkey}&uid=${uid}&msg=${aimessage}`)
     const body = await response.json();
     if(body.cnt == 0) {
-     return message.channel.send({embed: {
+     return message.lineReply({embed: {
       color: 16734039,
       description: "❌ | Some error occured with my brain cells... Please try again later"
      }});
@@ -40,11 +40,11 @@ module.exports = {
       .setColor("RANDOM")
       .setFooter("Requested by " + `${message.author.username}`, message.author.displayAvatarURL({ dynamic: true, format: 'png', size: 2048 }))
       .setTimestamp()
-     message.channel.send(embed);
+     message.lineReply(embed);
     }
    } catch(err) {
     console.log(err);
-    message.channel.send({embed: {
+    message.lineReply({embed: {
      color: 16734039,
      description: "Something went wrong... :cry:"
     }})

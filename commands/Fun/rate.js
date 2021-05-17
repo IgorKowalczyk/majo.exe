@@ -8,11 +8,11 @@ module.exports = {
  usage: "rate <text>",
  run: async (client, message, args) => {
   let rate = args.join(" ");
-  if (!rate) return  message.channel.send({embed: {
+  if (!rate) return message.lineReply({embed: {
    color: 16734039,
    description: "❌ | Please enter a text!"
   }})
-  if (rate.length > 30) return  message.channel.send({embed: {
+  if (rate.length > 30) return message.lineReply({embed: {
    color: 16734039,
    title: "❌ | I can't rate that. Max text length is 30!"
    }})
@@ -38,12 +38,12 @@ module.exports = {
   const eyesembed = new Discord.MessageEmbed()
   .setDescription(`✨ | I would rate **${rate}** ${result}/100 ??`)
   .setColor(`GREEN`)
-  if (result > 90) return message.channel.send(happyrate)
-  if (result < 30) return message.channel.send(sadembed)
-  if (result > 40) return message.channel.send(idkembed)
-  if (result > 50) return message.channel.send(shrugembed)
-  if (result > 60) return message.channel.send(okembed)
-  if (result > 70) return message.channel.send(thumbupembed)
-  if (result > 80) return message.channel.send(eyesembed)
+  if (result > 90) return message.lineReply(happyrate)
+  if (result < 30) return message.lineReply(sadembed)
+  if (result > 40) return message.lineReply(idkembed)
+  if (result > 50) return message.lineReply(shrugembed)
+  if (result > 60) return message.lineReply(okembed)
+  if (result > 70) return message.lineReply(thumbupembed)
+  if (result > 80) return message.lineReply(eyesembed)
  } 
 }

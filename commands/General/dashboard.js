@@ -16,7 +16,7 @@ module.exports = {
      .setTimestamp()
      .setColor("RANDOM")
      .setFooter("Requested by " + `${message.author.username}`, message.author.displayAvatarURL({ dynamic: true, format: 'png', size: 2048 }))
-    return message.channel.send(embed);
+    return message.lineReply(embed);
    }
    if(message.member.hasPermission("MANAGE_GUILD")) {
     const embed = new Discord.MessageEmbed()
@@ -25,18 +25,18 @@ module.exports = {
      .setTimestamp()
      .setColor("RANDOM")
      .setFooter("Requested by " + `${message.author.username}`, message.author.displayAvatarURL({ dynamic: true, format: 'png', size: 2048 }))
-    message.channel.send(embed);
+     message.lineReply(embed);
    } else {
-   const embed = new Discord.MessageEmbed()
-    .setTitle("<a:sucess:759354039242063903> Yay!")
-    .setDescription("🔗 Our dashboard link: " + config.domain)
-    .setTimestamp()
-    .setColor("RANDOM")
-    .setFooter("Requested by " + `${message.author.username}`, message.author.displayAvatarURL({ dynamic: true, format: 'png', size: 2048 }))
-   message.channel.send(embed);
+    const embed = new Discord.MessageEmbed()
+     .setTitle("<a:sucess:759354039242063903> Yay!")
+     .setDescription("🔗 Our dashboard link: " + config.domain)
+     .setTimestamp()
+     .setColor("RANDOM")
+     .setFooter("Requested by " + `${message.author.username}`, message.author.displayAvatarURL({ dynamic: true, format: 'png', size: 2048 }))
+    message.lineReply(embed);
    }
   } catch (err) {
-   message.channel.send({embed: {
+   message.lineReply({embed: {
     color: 16734039,
     description: "Something went wrong... :cry:"
    }})

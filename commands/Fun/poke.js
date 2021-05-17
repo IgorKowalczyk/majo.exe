@@ -12,19 +12,19 @@ module.exports = {
    try {
     const user = message.mentions.users.first();
     if(!user) {
-     return message.channel.send({embed: {
+     return message.lineReply({embed: {
       color: 16734039,
       description: "❌ | You must mention someone to poke!"
      }})
     }
     if(user == message.author) {
-     return message.channel.send({embed: {
+     return message.lineReply({embed: {
       color: 5294200,
       description: "🤦 | You can't poke yourself tfu!"
      }})
     }
     if(user == client.user) {
-     return message.channel.send({embed: {
+     return message.lineReply({embed: {
       color: 5294200,
       description: "🤦 | Oh, you tried to poke me but u cant hehe (hopefully)"
      }})
@@ -39,10 +39,10 @@ module.exports = {
      .setDescription((user.toString() + " got a poke from " + message.author.toString()))
      .setFooter("Requested by " + `${message.author.username}` + " • (rip)", message.author.displayAvatarURL({ dynamic: true, format: 'png', size: 2048 }))
      .setTimestamp()
-    .setURL(body.url);
-    message.channel.send(embed);
+     .setURL(body.url);
+    message.lineReply(embed);
    } catch(err) {
-    message.channel.send({embed: {
+    message.lineReply({embed: {
      color: 16734039,
      description: "Something went wrong... :cry:"
     }})

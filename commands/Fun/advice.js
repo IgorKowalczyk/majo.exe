@@ -10,9 +10,9 @@ module.exports = {
  run: async (client, message, args) => {
   try {
    const Data = await Random.GetAdvice();
-   return message.channel.send(Data);
+   return message.lineReply(Data);
   } catch (err) {
-   message.channel.send({embed: {
+   message.lineReply({embed: {
     color: 16734039,
     description: "Something went wrong... :cry:"
    }})

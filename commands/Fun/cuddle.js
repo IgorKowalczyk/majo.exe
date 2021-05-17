@@ -12,19 +12,19 @@ module.exports = {
    try {
     const user = message.mentions.users.first();
     if (!user) {
-     return message.channel.send({embed: {
+     return message.lineReply({embed: {
       color: 16734039,
       description: "❌ | You must mention user to cuddle!"
      }})
     }
     if(user == message.author) {
-     return message.channel.send({embed: {
+     return message.lineReply({embed: {
       color: 5294200,
       description: "😁 | You can't cuddle yourself ;-;"
      }})
     }
     if(user == client.user) {
-     return message.channel.send({embed: {
+     return message.lineReply({embed: {
       color: 5294200,
       description: "😁 | Oh, you tried to hug me but u can't... Im not real..."
      }})
@@ -38,9 +38,9 @@ module.exports = {
      .setFooter("Requested by " + `${message.author.username}`, message.author.displayAvatarURL({ dynamic: true, format: 'png', size: 2048 }))
      .setTimestamp()
     .setURL(body.url);
-    message.channel.send(embed);
+    message.lineReply(embed);
    } catch(err) {
-    message.channel.send({embed: {
+    message.lineReply({embed: {
      color: 16734039,
      description: "Something went wrong... :cry:"
     }})

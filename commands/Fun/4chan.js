@@ -14,14 +14,14 @@ module.exports = {
   try {
    var maxlength = 500;
    if (!message.channel.nsfw) {
-    return message.channel.send({embed: {
+    return message.lineReply({embed: {
      color: 16734039,
      description: "💢 | You can use this command only in an NSFW Channel!"
     }})
    }
    let chanargs = args.slice(0).join(' ');
    if (!chanargs) {
-    return message.channel.send({embed: {
+    return message.lineReply({embed: {
      color: 16734039,
      description: "💢 | Please enter a board! To see all boards check \`" + `${prefix}` + " 4chan boards\`"
     }})
@@ -32,7 +32,7 @@ module.exports = {
      .setTitle("All boards:")
      .setTimestamp()
      .setDescription('`a`, `b`, `c`, `d`, `e`, `f`, `g`, `gif`, `h`, `hr`, `k`, `m`, `o`, `p`, `r`, `s`, `t`, `u`, `v`, `vg`, `vr`, `w`, `wg`, `i`, `ic`, `r9k`, `s4s`, `vip`, `qa`, `cm`, `hm`, `lgbt`, `y`, `3`, `aco`, `adv`, `an`, `asp`, `bant`, `biz`, `cgl`, `ck`, `co`, `diy`, `fa`, `fit`, `gd`, `hc`, `his`, `int`, `jp`, `lit`, `mlp`, `mu`, `n`, `news`, `out`, `po`, `pol`, `qst`, `sci`, `soc`, `sp`, `tg`, `toy`, `trv`, `tv`, `vp`, `wsg`, `wsr`')
-    return message.channel.send(vboards);
+    return message.lineReply(vboards);
    }
    const boards = ["a", "b", "c", "d", "e", "f", "g", "gif", "h", "hr", "k", "m", "o", "p", "r", "s", "t", "u", "v", "vg", "vr", "w", "wg", "i", "ic", "r9k", "s4s", "vip", "qa", "cm", "hm", "lgbt", "y", "3", "aco", "adv", "an", "asp", "bant", "biz", "cgl", "ck", "co", "diy", "fa", "fit", "gd", "hc", "his", "int", "jp", "lit", "mlp", "mu", "n", "news", "out", "po", "pol", "qst", "sci", "soc", "sp", "tg", "toy", "trv", "tv", "vp", "wsg", "wsr"];
    var board = chanargs;
@@ -40,7 +40,7 @@ module.exports = {
     let vb = new Discord.MessageEmbed()
      .setColor(16734039)
      .setDescription("💢 | Please enter a vaild board! To see all boards check \`" + `${prefix}` + " 4chan boards\`")
-    return message.channel.send(vb);
+    return message.lineReply(vb);
    }
    var board = args;
    var page = Math.floor((Math.random() * 10) + 1);  // page 1 to 10
@@ -88,14 +88,14 @@ module.exports = {
      if (embed.description.length >= 2048) {
       embed.description = `${embed.description.substr(0, 2045)}...`;
      }
-     message.channel.send(embed)
+     message.lineReply(embed)
      return message.channel.send({
       files: [imgUrl]
      });
     });
    });
   } catch (err) {
-   message.channel.send({embed: {
+   message.lineReply({embed: {
     color: 16734039,
     description: "Something went wrong... :cry:"
    }})

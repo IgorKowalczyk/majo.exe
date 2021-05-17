@@ -20,13 +20,13 @@ module.exports = {
   try {
    const member = await await message.mentions.members.first() || message.guild.members.cache.get(args[0]) || message.guild.members.cache.find(r => r.user.username.toLowerCase().includes() === args.join(' ').toLocaleLowerCase()) || message.guild.members.cache.find(r => r.displayName.toLowerCase().includes() === args.join(' ').toLocaleLowerCase());
    if (!member) {
-    return message.channel.send({embed: {
+    return message.lineReply({embed: {
      color: 16734039,
      description: "❌ | Mention a valid member of this server!"
     }})
    }
    if (message.author === member || message.member == member) {
-    return await message.channel.send({embed: {
+    return await message.lineReply({embed: {
      color: 16734039,
      description: "❌ | You cant kill yourself!"
     }})
@@ -43,11 +43,10 @@ module.exports = {
      .setFooter("Requested by " + `${message.author.username}`, message.author.displayAvatarURL({ dynamic: true, format: 'png', size: 2048 }))
      .setImage(body.url)
      .setDescription(change2)
-    message.channel.send(embed);
+    message.lineReply(embed);
    })();
   } catch (err) {
-   console.log(err);
-   message.channel.send({embed: {
+   message.lineReply({embed: {
     color: 16734039,
     description: "Something went wrong... :cry:"
    }})

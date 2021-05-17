@@ -15,16 +15,16 @@ module.exports = {
    } else {
     const saymessage = await args.join(" ");
     if (saymessage.length >= 1) {
-     await message.lineReply(saymessage + "\n\n~Message sent by <@" + message.author + ">");
+     await message.channel.send(saymessage + "\n\n~Message sent by <@" + message.author + ">");
     } else {
-     await message.channel.send({embed: {
+     await message.lineReply({embed: {
       color: 16734039,
       description: "✨ | You need to enter a message!"
      }});
     }
    }
   } else {
-   message.channel.send({embed: {
+    message.lineReply({embed: {
     color: 16734039,
     description: "❌ | You don't have premission to send this message by me!"
    }})

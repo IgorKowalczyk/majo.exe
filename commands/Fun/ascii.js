@@ -11,17 +11,17 @@ module.exports = {
  run: async (client, message, args) => {
   try {
    var max = 1000;
-   if(args.join(' ').length > max) return message.channel.send({embed: {
+   if(args.join(' ').length > max) return message.lineReply({embed: {
     color: 16734039,
     description: "❌ | The max length for ascii is " + `${max}` + " !"
    }})
-   if(!args[0]) return message.channel.send({embed: {
+   if(!args[0]) return message.lineReply({embed: {
     color: 16734039,
     description: "❌ | Please enter a text to convert!"
    }})
    figlet(`${args.join(' ')}`, function(err, data) {
     if (err) {
-     return message.channel.send({embed: {
+     return message.lineReply({embed: {
       color: 16734039,
       description: "Something went wrong... :cry:"
      }})
@@ -38,17 +38,17 @@ module.exports = {
        .setDescription(":tada: Your ascii code is generated! \n:link: Link to ascii code paste: " + urlToPaste)
        .setFooter("Requested by " + `${message.author.username}`, message.author.displayAvatarURL({ dynamic: true, format: 'png', size: 2048 }))
        .setTimestamp()
-      message.channel.send(embed);
+      message.lineReply(embed);
      })
      .catch(function (requestError) {
-      message.channel.send({embed: {
+      message.lineReply({embed: {
        color: 16734039,
        description: "Something went wrong while uploading ascii code to server :cry:"
       }})
      })
    });
   } catch (err) {
-   message.channel.send({embed: {
+   message.lineReply({embed: {
     color: 16734039,
     description: "Something went wrong... :cry:"
    }})

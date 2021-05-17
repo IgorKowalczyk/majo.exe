@@ -11,9 +11,9 @@ module.exports = {
    const embed = new Discord.MessageEmbed()
     .setColor('RANDOM')
     .setTitle("⏰ Boop!")
-   message.channel.send(embed);
+   message.lineReply(embed);
   } catch(err) {
-   message.channel.send({embed: {
+   message.lineReply({embed: {
     color: 16734039,
     description: "Something went wrong... :cry:"
    }})

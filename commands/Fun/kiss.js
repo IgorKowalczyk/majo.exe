@@ -10,13 +10,13 @@ module.exports = {
  run: async (client, message, args) => {
   const user = await message.mentions.members.first() || message.guild.members.cache.get(args[0]) || message.guild.members.cache.find(r => r.user.username.toLowerCase().includes() === args.join(' ').toLocaleLowerCase()) || message.guild.members.cache.find(r => r.displayName.toLowerCase().includes() === args.join(' ').toLocaleLowerCase());
   if (!user) {
-   return message.channel.send({embed: {
+   return message.lineReply({embed: {
     color: 16734039,
     description: "💔 | You must mention user to kiss ;-;"
    }})
   }
   if (message.author === user || message.member == user) {
-   return await message.channel.send({embed: {
+   return await message.lineReply({embed: {
     color: 16734039,
     description: "💔 | You cant kiss yourself ;-; (Try kissing someone else, your love. Maybe you need some help?)"
    }})
@@ -33,9 +33,9 @@ module.exports = {
      .setFooter("Requested by " + `${message.author.username}`, message.author.displayAvatarURL({ dynamic: true, format: 'png', size: 2048 }))
      .setTimestamp()
      .setURL(body.url);
-    message.channel.send(embed);
+    message.lineReply(embed);
    } catch(err) {
-    message.channel.send({embed: {
+    message.lineReply({embed: {
      color: 16734039,
      description: "Something went wrong... :cry:"
     }})

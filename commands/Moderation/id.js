@@ -10,7 +10,7 @@ module.exports = {
   try {
    const mention = await message.mentions.members.first() || message.guild.members.cache.get(args[0]) || message.guild.members.cache.find(r => r.user.username.toLowerCase().includes() === args.join(' ').toLocaleLowerCase()) || message.guild.members.cache.find(r => r.displayName.toLowerCase().includes() === args.join(' ').toLocaleLowerCase()) || message.member;
    if(!mention) {
-    return message.channel.send({embed: {
+    return message.lineReply({embed: {
      color: 16734039,
      description: "❌ | You must mention a user"
     }})
@@ -19,10 +19,9 @@ module.exports = {
     .setThumbnail(mention.user.avatarURL())
     .setColor("RANDOM")
     .setDescription('Here is ' + `${mention.user.username} ID` + mention.id)
-   message.channel.send(userid)  
+   message.lineReply(userid)  
   } catch (err) {
-   console.log(err);
-   message.channel.send({embed: {
+   message.lineReply({embed: {
     color: 16734039,
     description: "Something went wrong... :cry:"
    }})

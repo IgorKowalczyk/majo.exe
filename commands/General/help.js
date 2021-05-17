@@ -62,7 +62,7 @@ module.exports = {
     embed.addField(`${config.newstitle}`, `${config.news}`);
     }
     embed.setFooter("Requested by " + `${message.author.username}` + " • " + `${client.commands.size}` + " Commands", message.author.displayAvatarURL({ dynamic: true, format: 'png', size: 2048 }))
-    return message.channel.send(embed);
+    return message.lineReply(embed);
    }
 
    function getCMD(client, message, input) {
@@ -71,12 +71,12 @@ module.exports = {
     const info = "No information found for command `" + input.toLowerCase() + "`!";
     if (!cmd) {
      try {
-      return message.channel.send({embed: {
+      return message.lineReply({embed: {
        color: 16734039,
        description: info
      }})
      } catch (err) {
-       message.channel.send({embed: {
+      message.lineReply({embed: {
       color: 16734039,
       description: "No information found"
      }})
@@ -92,11 +92,11 @@ module.exports = {
       .setTimestamp()
       .setDescription("Category: `" + cmd.category + "`\n Description: `" + cmd.description + "`\n Usage: `" + prefix + " " + cmd.usage + "`\n Aliases: `" + alliaseslist + "`")
       .setFooter('Syntax: <> = required, [] = optional • Requested by ' + `${message.author.username}`, message.author.displayAvatarURL({ dynamic: true, format: 'png', size: 2048 }))
-     message.channel.send(hembed);
+     message.lineReply(hembed);
     }
    }
   } catch (err) {
-   message.channel.send({embed: {
+   message.lineReply({embed: {
     color: 16734039,
     description: "Something went wrong... :cry:"
    }})

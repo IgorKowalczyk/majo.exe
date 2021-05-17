@@ -17,7 +17,7 @@ module.exports = {
     }})  
    }
    if(suggestion.lenght > 1000) {
-    return message.channel.send({embed: {
+    return message.lineReply({embed: {
      color: 16734039,
      description: "❌ | Your suggestion can have a maximum of 1000 characters!",
     }})
@@ -37,15 +37,15 @@ module.exports = {
      .setColor("RANDOM")
      .setDescription(`${message.author} your suggestion was send, you can view it in Majo.exe Developers server in <#${config.suggestionschannel}> channel.`)
      .setFooter("[Majo.exe Developers](" + config.server + ")", message.author.displayAvatarURL({ dynamic: true, format: 'png', size: 2048 }))
-    message.channel.send(success);
-    } else {
-    return message.channel.send({embed: {
+    message.lineReply(success);
+   } else {
+    return message.lineReply({embed: {
      color: 16734039,
      description: "❌ | I can't find suggestions channel. Mayby the channel didn't exist. If you are the bot developer please configure it in config.",
     }})
    }
   } catch (err) {
-   message.channel.send({embed: {
+   message.lineReply({embed: {
     color: 16734039,
     description: "Something went wrong... :cry:"
    }})

@@ -8,7 +8,7 @@ module.exports = {
  usage: "ping",
  run: async (client, message, args) => {
   try {
-   await message.channel.send({embed: {
+   await message.lineReply({embed: {
     color: 3447003,
     description: ":ping_pong: Pinging..."
    }}).then(msg=>{
@@ -23,7 +23,7 @@ module.exports = {
    msg.edit("\u200B")
    })
   } catch (err) {
-   message.channel.send({embed: {
+   message.lineReply({embed: {
     color: 16734039,
     description: "Something went wrong... :cry:"
    }})

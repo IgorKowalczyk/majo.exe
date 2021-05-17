@@ -40,9 +40,9 @@ module.exports = {
     .addField('Memory', `Memory used: ${usedmemory}\nUsed percentage: ${percentage}\nTotal memory: ${totalmemoryembed}`)
     .addField('Useful Links', `[Official server](${config.server}) | ${webpanel} [Invite me](https://discord.com/oauth2/authorize/?permissions=${config.premissions}&scope=bot&client_id=${client.user.id})`)
     .setFooter("Requested by " + `${message.author.username}`, message.author.displayAvatarURL({ dynamic: true, format: 'png', size: 2048 }))
-   message.channel.send(embed);
+   message.lineReply(embed);
   } catch(err) {
-   message.channel.send({embed: {
+   message.lineReply({embed: {
     color: 16734039,
     description: "Something went wrong... :cry:"
    }})
