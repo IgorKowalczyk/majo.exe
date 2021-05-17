@@ -21,7 +21,7 @@ module.exports = {
    if(message.member.hasPermission("MANAGE_GUILD")) {
     const embed = new Discord.MessageEmbed()
      .setTitle("<a:sucess:759354039242063903> Yay!")
-     .setDescription("🔗 Your server link: " + config.domain + "dashboard/" + message.guild.id + "\n🔗 Dashboard link: " + config.domain)
+     .setDescription("🔗 Your server link: " + config.domain + "/dashboard/" + message.guild.id + "\n🔗 Dashboard link: " + config.domain)
      .setTimestamp()
      .setColor("RANDOM")
      .setFooter("Requested by " + `${message.author.username}`, message.author.displayAvatarURL({ dynamic: true, format: 'png', size: 2048 }))
