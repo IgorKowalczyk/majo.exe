@@ -37,7 +37,13 @@ module.exports = {
      }})   
     }
    }
-   const User = await message.mentions.members.first() || message.guild.members.cache.get(args[0]) || message.guild.members.cache.find(r => r.user.username.toLowerCase().includes() === args.join(' ').toLocaleLowerCase()) || message.guild.members.cache.find(r => r.displayName.toLowerCase().includes() === args.join(' ').toLocaleLowerCase()) || message.member;
+   const User = await message.mentions.members.first() || message.guild.members.cache.get(args[0]) || message.guild.members.cache.find(r => r.user.username.toLowerCase().includes() === args.join(' ').toLocaleLowerCase()) || message.guild.members.cache.find(r => r.displayName.toLowerCase().includes() === args.join(' ').toLocaleLowerCase());
+   if (!User) {
+    return message.lineReply({embed: {
+     color: 16734039,
+     description: "❌ | Please mention a user!"
+    }})   
+   }
    const wait = await message.lineReply({embed: {
      color: 4779354,
      description: "✨ | Please wait... I'm generating your image",

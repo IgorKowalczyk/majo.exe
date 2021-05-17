@@ -10,68 +10,42 @@ module.exports = {
  usage: "posterize [user mention, user id, user name] [posterize]",
  run: async (client, message, args) => {
   try {
-   const User = await message.mentions.members.first() || message.guild.members.cache.get(args[0]) || message.guild.members.cache.find(r => r.user.username.toLowerCase().includes() === args.join(' ').toLocaleLowerCase()) || message.guild.members.cache.find(r => r.displayName.toLowerCase().includes() === args.join(' ').toLocaleLowerCase()) || message.member;
-   if (User == message.author) {
-    const posterize = args[1] || 9;
-    if (args[1]) {
-     if (isNaN(args[1])) {
-      return message.lineReply({embed: {
-       color: 16734039,
-       description: "❌ | Posterize must be a number!"
-      }})
-     }
-     if (message.content.includes('-')) {
-      return message.lineReply({embed: {
-       color: 16734039,
-       description: "❌ | Posterize cannot be negative!"
-      }})
-     }
-     if (args[1] < 2) {
-      return message.lineReply({embed: {
-       color: 16734039,
-       description: "❌ | Posterize must be higher than 2!"
-      }})   
-     }
-     if (args[1] > 40) {
-      return message.lineReply({embed: {
-       color: 16734039,
-       description: "❌ | Posterize must be lower than 40!"
-      }})   
-     }
-    }
-   } else {
-    const posterize = args[0] || 9;
-    if (args[0]) {
-     if (isNaN(args[0])) {
-      return message.lineReply({embed: {
-       color: 16734039,
-       description: "❌ | Posterize must be a number!"
-      }})
-     }
-     if (message.content.includes('-')) {
-      return message.lineReply({embed: {
-       color: 16734039,
-       description: "❌ | Posterize cannot be negative!"
-      }})
-     }
-     if (args[0] < 2) {
-      return message.lineReply({embed: {
-       color: 16734039,
-       description: "❌ | Posterize must be higher than 2!"
-      }})   
-     }
-     if (args[0] > 40) {
-      return message.lineReply({embed: {
-       color: 16734039,
-       description: "❌ | Posterize must be lower than 40!"
-      }})   
-     }
-    }
+   const User = await message.mentions.members.first() || message.guild.members.cache.get(args[0]) || message.guild.members.cache.find(r => r.user.username.toLowerCase().includes() === args.join(' ').toLocaleLowerCase()) || message.guild.members.cache.find(r => r.displayName.toLowerCase().includes() === args.join(' ').toLocaleLowerCase());
+   const posterize = args[0] || 9;
+   if (!User) {
+    return message.lineReply({embed: {
+     color: 16734039,
+     description: "❌ | Please mention a user!"
+    }})   
+   }
+   if (isNaN(args[0])) {
+    return message.lineReply({embed: {
+     color: 16734039,
+     description: "❌ | Posterize must be a number!"
+    }})
+   }
+   if (message.content.includes('-')) {
+    return message.lineReply({embed: {
+     color: 16734039,
+     description: "❌ | Posterize cannot be negative!"
+    }})
+   }
+   if (args[0] < 2) {
+    return message.lineReply({embed: {
+     color: 16734039,
+     description: "❌ | Posterize must be higher than 2!"
+     }})   
+   }
+   if (args[0] > 40) {
+    return message.lineReply({embed: {
+     color: 16734039,
+     description: "❌ | Posterize must be lower than 40!"
+    }})   
    }
    const wait = await message.lineReply({embed: {
-     color: 4779354,
-     description: "✨ | Please wait... I'm generating your image",
-    }})
+    color: 4779354,
+    description: "✨ | Please wait... I'm generating your image",
+   }})
    const buffer = await AmeAPI.generate("posterize", {
     url: User.user.displayAvatarURL({
      format: "png",
