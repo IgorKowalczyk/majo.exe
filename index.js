@@ -45,7 +45,7 @@ client.sql == sql;
 
 sql.query('CREATE TABLE IF NOT EXISTS `giveaways` (`id` INT(1) NOT NULL AUTO_INCREMENT, `message_id` VARCHAR(64) NOT NULL, `data` JSON NOT NULL, PRIMARY KEY (`id`));', (err) => {
  if (err) console.error(err);
- console.log('[SQL] Fetched table `giveaways`, Status: Success');
+ console.log('[SQL] Fetched table `giveaways`! Status: Success');
 });
 
 const Giveaways = class extends GiveawaysManager {
@@ -112,8 +112,8 @@ if (process.env.TOKEN) {
    botsCanWin: false,
    exemptPermissions: ['MANAGE_MESSAGES', 'ADMINISTRATOR'],
    embedColor: 'RANDOM',
-   embedColorEnd: '#000000',
-   reaction: '🎉'
+   embedColorEnd: 'RANDOM',
+   reaction: '842442529135788053'
   }
  });
  client.giveawaysManager = manager;
