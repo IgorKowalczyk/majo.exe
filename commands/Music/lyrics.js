@@ -17,15 +17,10 @@ module.exports = {
      description: "❌ | Please enter a song to search!",
     }})
    }
-   try {
    const search = await geniuscli.songs.search(song);
    const searchr = search[0];
-   const lyrics = await searchr.lyrics();;
-    if (!search || !lyrics) lyrics = `No lyrics found for ${song}`;
-   } catch (error) {
-    console.log(error)
-    lyrics = `I can't find lyrics for ${song}`;
-   }
+   let lyrics = await searchr.lyrics();;
+    if (!lyrics) lyrics = `No lyrics found for ${song}`;
    let embed = new Discord.MessageEmbed()
     .setTitle(`📑 Lyrics for ${song}`)
     .setDescription(lyrics)
