@@ -39,7 +39,7 @@ totalSeconds %= 3600;
 minutes = Math.floor(totalSeconds / 60) 
 seconds = Math.floor(totalSeconds % 60); %>
 
-<div class="uptime"><%= days %> Days, <%= hours %> hours, <%= minutes %> minutes, <%= seconds %> seconds</h3>
+<p class="uptime"><%= days %> Days, <%= hours %> hours, <%= minutes %> minutes, <%= seconds %> seconds</p>
 
 <style>
 .boxes {
@@ -121,6 +121,11 @@ margin-top: 60px;
 }
 
 .headerinfo {
+text-align: center;
+}
+
+.status {
+font-size: 25px;
 text-align: center;
 }
 </style>
