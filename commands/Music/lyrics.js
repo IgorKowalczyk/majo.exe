@@ -24,7 +24,7 @@ module.exports = {
    const lyrics = lsong.lyrics();
     if (!search || !lsong || !lyrics) lyrics = `No lyrics found for ${song}`;
    } catch (error) {
-    lyrics = `No lyrics found for ${song}`;
+    lyrics = `I can't find lyrics for ${song}`;
    }
    let embed = new Discord.MessageEmbed()
     .setTitle(`📑 Lyrics for ${song}`)
