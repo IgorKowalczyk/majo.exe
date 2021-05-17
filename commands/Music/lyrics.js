@@ -24,9 +24,10 @@ module.exports = {
    let songfetch = await searchr.fetch();
    if (!lyrics) lyrics = `No lyrics found for ${song}`;
    let embed = new Discord.MessageEmbed()
-    .setTitle(`📑 Lyrics for ${songfetch.fullTitle}`)
+    .setAuthor(`📑 Lyrics for ${songfetch.fullTitle}`, songfetch.url)
     .setDescription(lyrics)
     .setColor("RANDOM")
+    .setImage(songfetch.image)
     .setTimestamp()
     .setFooter("Requested by " + `${message.author.username}`, message.author.displayAvatarURL({ dynamic: true, format: 'png', size: 2048 }))
    if (embed.description.length >= 2048)
