@@ -27,13 +27,12 @@ Deploy the app to [Heroku](https://heroku.com)
 
 ### Self-Hosting
 
-1. Clone [this repository](https://github.com/igorkowalczyk/majobot)
-   `git clone aurolia-css/majo-rebuild` or `git clone igorkowalczyk/majobot` - This is old and unsupported version!
-2. Run `npm install` to get all dependencies,
-3. Grab a Discord Bot token and client secret on [Discord's developer portal](https://discord.com/developers/applications) [Tutorial](#discord-token)
-4. Fill `config.json` with your values (See that some values point to the `.env` file, see it below)
-5. Rename `.env.example` (Located in main dir) to `.env`. Remember - the file is super secret, better to not share it.
-6. In `.env` file set this values:
+1. Clone [this repository](https://github.com/igorkowalczyk/majobot) `git clone igorkowalczyk/majobot`
+1. Run `npm install` to get all dependencies,
+2. Grab a Discord Bot token and client secret on [Discord's developer portal](https://discord.com/developers/applications) [Tutorial](#discord-token)
+3. Fill `config.json` with your values (See that some values point to the `.env` file, see it below)
+4. Rename `.env.example` (Located in main dir) to `.env`. Remember - the file is super secret, better to not share it.
+5. In `.env` file set this values:
     * **Required:**
     * `TOKEN` - Bot token from Discord Developer portal [no. 3]
     * `PREFIX` - Bot prefix, used to run commands eg. `your-prefix help`
@@ -53,7 +52,7 @@ Deploy the app to [Heroku](https://heroku.com)
     * `SESSION_SECRET` - Session secret key, random sequence of words, letterss or numbers
     * `SECRET` - Client secret from Discord Developers portal [no. 3]
     * `ANALYTICS` - Google Trakcing ID, for Website analytics [Tutorial how to get it](#analytics-id)
-7. Run `npm run start`
+6. Run `npm run start`
 > Note: See the example [`.env` file below](#example-env-file)!
 
 # Example `.env` file
