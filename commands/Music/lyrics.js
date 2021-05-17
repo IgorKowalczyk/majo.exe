@@ -33,7 +33,10 @@ module.exports = {
    embed.description = `${embed.description.substr(0, 2045)}...`;
    return message.lineReply(embed);
    } catch (err) {
-    message.channel.send("Cannot fetch song!")
+    return message.lineReply({embed: {
+     color: 16734039,
+     description: "❌ | Cannot fetch song!",
+    }})
    }
   } catch (err) {
    console.log(err);
