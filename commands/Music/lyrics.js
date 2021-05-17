@@ -21,7 +21,7 @@ module.exports = {
    const search = await geniuscli.songs.search(song);
    const searchr = search[0];
    const lyrics = await searchr.lyrics();;
-    if (!search || !lsong || !lyrics) lyrics = `No lyrics found for ${song}`;
+    if (!search || !lyrics) lyrics = `No lyrics found for ${song}`;
    } catch (error) {
     console.log(error)
     lyrics = `I can't find lyrics for ${song}`;
@@ -30,7 +30,6 @@ module.exports = {
     .setTitle(`📑 Lyrics for ${song}`)
     .setDescription(lyrics)
     .setColor("RANDOM")
-    .setImage(song.image)
     .setTimestamp()
     .setFooter("Requested by " + `${message.author.username}`, message.author.displayAvatarURL({ dynamic: true, format: 'png', size: 2048 }))
    if (embed.description.length >= 2048)
