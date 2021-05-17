@@ -17,11 +17,12 @@ module.exports = {
      description: "❌ | Please enter a song to search!",
     }})
    }
+   try {
    const search = await geniuscli.songs.search(song);
    const searchr = search[0];
    let lyrics = await searchr.lyrics();
    let songfetch = await searchr.fetch();
-    if (!lyrics) lyrics = `No lyrics found for ${song}`;
+   if (!lyrics) lyrics = `No lyrics found for ${song}`;
    let embed = new Discord.MessageEmbed()
     .setTitle(`📑 Lyrics for ${songfetch.fullTitle}`)
     .setDescription(lyrics)
@@ -31,6 +32,9 @@ module.exports = {
    if (embed.description.length >= 2048)
    embed.description = `${embed.description.substr(0, 2045)}...`;
    return message.lineReply(embed);
+   } catch (err) {
+    message.channel.send("Cannot fetch song!")
+   }
   } catch (err) {
    console.log(err);
    message.lineReply({embed: {
