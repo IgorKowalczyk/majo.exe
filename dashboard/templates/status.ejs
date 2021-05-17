@@ -30,6 +30,8 @@
 </div>
 </div>
 
+<hr>
+
 <h1 class="headerinfo">Majo.exe Uptime</h1>
 <% totalSeconds = (bot.uptime / 1000);
 days = Math.floor(totalSeconds / 86400);
@@ -42,6 +44,7 @@ seconds = Math.floor(totalSeconds % 60); %>
 <p class="uptime"><%= days %> Days, <%= hours %> hours, <%= minutes %> minutes, <%= seconds %> seconds</p>
 
 <% if (config.status) { %>
+<hr>
 <h1 class="headerinfo">Downtime monitor</h1>
 <a class="edit button" href="<%= config.status %>">Check server's status</a>
 <% } %>
