@@ -41,6 +41,10 @@ seconds = Math.floor(totalSeconds % 60); %>
 
 <p class="uptime"><%= days %> Days, <%= hours %> hours, <%= minutes %> minutes, <%= seconds %> seconds</p>
 
+<% if (config.status) { %>
+<h1 class="headerinfo">Downtime monitor</h1>
+<a class="edit button" href="<%= config.status %>">Check server's status</a>
+<% } %>
 <style>
 .boxes {
 display: grid;
