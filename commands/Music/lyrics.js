@@ -21,9 +21,10 @@ module.exports = {
    const search = await geniuscli.songs.search(song);
    const lsong = search[0];
    console.log(lsong);
-   const lyrics = lsong.lyrics();
+   const lyrics = await lsong.lyrics();
     if (!search || !lsong || !lyrics) lyrics = `No lyrics found for ${song}`;
    } catch (error) {
+    console.log(error)
     lyrics = `I can't find lyrics for ${song}`;
    }
    let embed = new Discord.MessageEmbed()
