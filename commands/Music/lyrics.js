@@ -1,6 +1,6 @@
 const Discord = require('discord.js')
 const Genius = require("genius-lyrics");
-const geniuscli = new Genius.Client()
+const geniuscli = new Genius.Client(process.env.GENIUS)
 
 module.exports = {
  name: "lyrics",
@@ -21,7 +21,7 @@ module.exports = {
    const search = await geniuscli.songs.search(song);
    const lsong = search[0];
    console.log(lsong);
-   const lyrics = await lsong.lyrics();
+   const lyrics = lsong.lyrics();
     if (!search || !lsong || !lyrics) lyrics = `No lyrics found for ${song}`;
    } catch (error) {
     lyrics = `No lyrics found for ${song}`;
