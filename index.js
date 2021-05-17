@@ -113,7 +113,7 @@ if (process.env.TOKEN) {
    exemptPermissions: ['MANAGE_MESSAGES', 'ADMINISTRATOR'],
    embedColor: 'RANDOM',
    embedColorEnd: 'RANDOM',
-   reaction: '842442529135788053'
+   reaction: '843845378352873492'
   }
  });
  client.giveawaysManager = manager;

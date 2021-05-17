@@ -62,7 +62,7 @@ module.exports = {
      giveaway: ' ',
      giveawayEnded: ' ',
      timeRemaining: 'Time remaining: **{duration}**',
-     inviteToParticipate: 'React with <a:giveaway:842442529135788053> to participate!',
+     inviteToParticipate: 'React with <a:giveaway:843845378352873492> to participate!',
      winMessage: 'Congratulations, {winners}! You won **{prize}**!\n{messageURL}',
      embedFooter: 'Majo.exe',
      noWinner: 'Giveaway cancelled, no valid participations.',
