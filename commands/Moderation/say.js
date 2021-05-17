@@ -15,7 +15,7 @@ module.exports = {
    } else {
     const saymessage = await args.join(" ");
     if (saymessage.length >= 1) {
-     await message.channel.send(saymessage + "\n\n~Message sent by <@" + message.author + ">");
+     await message.lineReply(saymessage + "\n\n~Message sent by <@" + message.author + ">");
     } else {
      await message.channel.send({embed: {
       color: 16734039,

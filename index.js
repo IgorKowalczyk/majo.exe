@@ -8,6 +8,7 @@ const config = require("./config");
 const { GiveawaysManager } = require('discord-giveaways');
 const MySQL = require('mysql');
 require('dotenv').config()
+require("./utilities/inline_reply")
 /*( const { EconomyManager } = require("quick.eco")
 
 const eco = new EconomyManager({
