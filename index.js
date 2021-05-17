@@ -45,12 +45,7 @@ client.sql == sql;
 
 sql.query('CREATE TABLE IF NOT EXISTS `giveaways` (`id` INT(1) NOT NULL AUTO_INCREMENT, `message_id` VARCHAR(64) NOT NULL, `data` JSON NOT NULL, PRIMARY KEY (`id`));', (err) => {
  if (err) console.error(err);
- console.log('[SQL] Created table `giveaways`');
-});
-
-sql.query('CREATE TABLE IF NOT EXISTS `money` (`id` INT(30) NOT NULL, `money` INT(64) NOT NULL, `guild_id` VARCHAR(64) NOT NULL, PRIMARY KEY (`id`));', (err) => {
-if (err) console.error(err);
-console.log('[SQL] Created table `money`');
+ console.log('[SQL] Fetched table `giveaways`, Status: Success');
 });
 
 const Giveaways = class extends GiveawaysManager {
