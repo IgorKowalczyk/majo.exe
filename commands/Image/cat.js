@@ -19,9 +19,9 @@ module.exports = {
      .setFooter("Requested by " + `${message.author.username}` + " • (Aww cute =＾´• ⋏ •`＾=)", message.author.displayAvatarURL({ dynamic: true, format: 'png', size: 2048 }))
      .setTimestamp()
      .setURL(body.url);
-    message.channel.send(embed);
+    message.lineReply(embed);
    } catch(err) {
-    message.channel.send({embed: {
+    message.lineReply({embed: {
      color: 16734039,
      description: "Something went wrong... :cry:"
     }})
@@ -29,4 +29,3 @@ module.exports = {
   })();
  }
 }
-

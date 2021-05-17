@@ -22,7 +22,7 @@ module.exports = {
     })
    });
    const attachment = new Discord.MessageAttachment(buffer, "3000years.png");
-   message.lineReply(attachment);
+   message.channel.send(attachment);
   } catch (err) {
    console.log(err);
    message.lineReply({embed: {

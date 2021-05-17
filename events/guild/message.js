@@ -27,7 +27,7 @@ module.exports = async (client, message) => {
     .setDescription("I was pinged by you, here I am - " + client.user.username + "! My prefix is \`" + prefix + "\` To see all  my commands please type \`" + prefix + " help\`")
     .setTimestamp()
     .setFooter("Requested by " + `${message.author.username}`, message.author.displayAvatarURL({ dynamic: true, format: 'png', size: 2048 }))
-   return message.channel.send(embed);
+   return message.lineReply(embed);
   }
 
   if (!message.content.startsWith(prefix)) return;
@@ -38,14 +38,14 @@ module.exports = async (client, message) => {
   let command = client.commands.get(cmd);
   if (!command) command = client.commands.get(client.aliases.get(cmd));
   if (!command) {
-   return message.channel.send({embed: {
+   return message.lineReply({embed: {
     color: 16734039,
     description: "❌ | That command does not exist, Take a look at \`" + `${prefix}` + " help\`!"
    }});
   }
   if (message.content.toLowerCase().includes("process.env")) {
    console.log("[Security Log]: " + message.author.tag + ` (ID: ` + message.author.id + ") used process.env in the " + command.name + " command.");
-   return message.channel.send({embed: {
+   return message.lineReply({embed: {
     color: 16734039,
     description: "❌ | Majo: The command cannot contain the `process.env` string for safetly reasons. We are sorry..."
    }});
@@ -57,7 +57,7 @@ module.exports = async (client, message) => {
    if(found) {
     const timePassed = Date.now() - found;
     const timeLeft = timeout - timePassed;
-    return message.channel.send({embed: {
+    return message.lineReply({embed: {
      color: 16734039,
      description: ` ❌ | ${message.author} slow down! You have to wait \`${ms(timeLeft)}\` before you can use this command again!`
     }});
@@ -71,7 +71,7 @@ module.exports = async (client, message) => {
   }
  } catch (err) {
   console.log(err);
-  message.channel.send({embed: {
+  message.lineReply({embed: {
    color: 16734039,
    description: "❌ | Something went wrong while running this command! Please try again later"
   }});

@@ -10,18 +10,18 @@ module.exports = {
  run: async (client, message, args) => {
   try {
    if (!args[0]) {
-    return message.channel.send({embed: {
+    return message.lineReply({embed: {
      color: 16734039,
      description: "❌ | You must enter a text!"
     }})
    }
    if (args.join(" ") > 20) {
-    return message.channel.send({embed: {
+    return message.lineReply({embed: {
      color: 16734039,
      description: "❌ | Max lenght for the text is 20!"
     }})
    }
-   const wait = await message.channel.send({embed: {
+   const wait = await message.lineReply({embed: {
     color: 4779354,
     description: "✨ | Please wait... I'm generating your image",
    }})
@@ -33,7 +33,7 @@ module.exports = {
    });
   } catch (err) {
    console.log(err);
-   message.channel.send({embed: {
+   message.lineReply({embed: {
     color: 16734039,
     description: "Something went wrong... :cry:"
    }})
