@@ -197,6 +197,11 @@ module.exports = async (client) => {
    perms: Discord.Permissions
   });
  });
+
+ app.get("/admin", (req, res) => {
+  res.redirect("https://youtu.be/dQw4w9WgXcQ");
+ });
+
  // Settings endpoint.
  app.get("/dashboard/:guildID", checkAuth, async (req, res) => {
   // Vlidate the request, check if guild exists, member is in guild and if member has minimum permissions
