@@ -10,7 +10,7 @@ module.exports = {
  run: async (client, message, args) => {
   try {
    if(args.length < 1) {
-    return message.channel.send({embed: {
+    return message.lineReply({embed: {
      color: 16734039,
      description: "❌ | You must provide a equation to be solved on the calculator! (eg. 9 + 10)"
     }})
@@ -32,15 +32,15 @@ module.exports = {
      .addField("Question: ", `${question}`)
      .addField("Answer: ", `${answer}`)
      .setFooter(`${footer}`, message.author.displayAvatarURL({ dynamic: true, format: 'png', size: 2048 }))
-    return message.channel.send(calc);
+    return message.lineReply(calc);
    } catch (err) {
-    message.channel.send({embed: {
+    message.lineReply({embed: {
      color: 16734039,
      description: "Invalid math equation!"
    }});
    }
   } catch (err) {
-   message.channel.send({embed: {
+   message.lineReply({embed: {
     color: 16734039,
     description: "Something went wrong... :cry:"
    }})

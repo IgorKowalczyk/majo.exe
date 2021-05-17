@@ -10,7 +10,7 @@ module.exports = {
  run: async (client, message, args) => {
   try {
    if(!args[0]) {
-    return message.channel.send({embed: {
+    return message.lineReply({embed: {
      color: 16734039,
      description: "❌ | Please specify a location",
     }})  
@@ -18,13 +18,13 @@ module.exports = {
    weather.find({search: args.join(" "), degreeType: 'C'}, function (error, result){
     // 'C' can be changed to 'F' for farneheit results
     if(error) {
-     return message.channel.send({embed: {
+     return message.lineReply({embed: {
       color: 16734039,
       description: "❌ | Something went wrong... :cry:"
      }})
     }
     if(result === undefined || result.length === 0) {
-     return message.channel.send({embed: {
+     return message.lineReply({embed: {
       color: 16734039,
       description: "❌ | Invaild location!"
      }})
@@ -44,10 +44,10 @@ module.exports = {
      .addField('⏱️ Timezone', `UTC${location.timezone}`)
      .setTimestamp()
      .setFooter("Requested by " + `${message.author.username}`, message.author.displayAvatarURL({ dynamic: true, format: 'png', size: 2048 }))
-    message.channel.send(weatherinfo)
+    message.lineReply(weatherinfo)
    })        
   } catch (err) {
-   message.channel.send({embed: {
+   message.lineReply({embed: {
     color: 16734039,
     description: "Something went wrong... :cry:"
    }})

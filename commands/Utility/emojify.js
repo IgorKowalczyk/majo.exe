@@ -11,13 +11,13 @@ module.exports = {
   try {
    const emojis = args.join(" ");
    if(!emojis) {
-    return message.channel.send({embed: {
+    return message.lineReply({embed: {
      color: 16734039,
      description: '❌ | Please enter text'
     }})
    }
    if(emojis.lenght < 30) {
-    return message.channel.send({embed: {
+    return message.lineReply({embed: {
      color: 16734039,
      description: '❌ | Please enter shorter string. Please shorten the text, maximum length is 30 characters!'
     }})
@@ -27,10 +27,10 @@ module.exports = {
     .setColor("RANDOM")
     .setDescription(`Converted text: ${converted}`)
     .setFooter("Requested by " + `${message.author.username}`, message.author.displayAvatarURL({ dynamic: true, format: 'png', size: 2048 }))
-   message.channel.send(embed)
+   message.lineReply(embed)
   } catch (err) {
    console.log(err);
-   message.channel.send({embed: {
+   message.lineReply({embed: {
     color: 16734039,
     description: "Something went wrong... :cry:"
    }})

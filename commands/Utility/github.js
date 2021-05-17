@@ -10,13 +10,13 @@ module.exports = {
  usage: "github (search)",
  run: async (client, message, args) => {
   try {
-   if (!args[0]) return message.channel.send({embed: {
+   if (!args[0]) return message.lineReply({embed: {
     color: 16734039,
     description: "❌ | Please enter a Github username"
    }})
    fetch(`https://api.github.com/users/${args.join('-')}`)
     .then(res => res.json()).then(body => {
-     if(body.message) return message.channel.send({embed: {
+     if(body.message) return message.lineReply({embed: {
       color: 16734039,
       description: "❌ | 0 Users found, please provide vaild username"
      }})
@@ -39,13 +39,13 @@ module.exports = {
       .addField(`Account Created`, moment.utc(created_at).format("dddd, MMMM, Do YYYY"))
       .setFooter("Requested by " + `${message.author.username}`, message.author.displayAvatarURL({ dynamic: true, format: 'png', size: 2048 }))
       .setTimestamp()
-     message.channel.send(embed)
+     message.lineReply(embed)
     })
   } catch (err) {
-    message.channel.send({embed: {
-     color: 16734039,
-     description: "Something went wrong... :cry:"
-    }})
+   message.lineReply({embed: {
+    color: 16734039,
+    description: "Something went wrong... :cry:"
+   }})
   }
  }
 }

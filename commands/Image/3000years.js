@@ -11,7 +11,7 @@ module.exports = {
  run: async (client, message, args) => {
   try {
     const User = await message.mentions.members.first() || message.guild.members.cache.get(args[0]) || message.guild.members.cache.find(r => r.user.username.toLowerCase().includes() === args.join(' ').toLocaleLowerCase()) || message.guild.members.cache.find(r => r.displayName.toLowerCase().includes() === args.join(' ').toLocaleLowerCase()) || message.member;
-   const wait = await message.channel.send({embed: {
+   const wait = await message.lineReply({embed: {
      color: 4779354,
      description: "✨ | Please wait... I'm generating your image",
     }})
@@ -22,10 +22,10 @@ module.exports = {
     })
    });
    const attachment = new Discord.MessageAttachment(buffer, "3000years.png");
-   message.channel.send(attachment);
+   message.lineReply(attachment);
   } catch (err) {
    console.log(err);
-   message.channel.send({embed: {
+   message.lineReply({embed: {
     color: 16734039,
     description: "Something went wrong... :cry:"
    }})

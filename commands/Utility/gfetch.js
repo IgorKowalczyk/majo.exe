@@ -11,7 +11,7 @@ module.exports = {
    const giveaways = client.giveawaysManager.giveaways.filter(g => g.guildID === message.guild.id);
    console.log(giveaways);
   } catch (err) {
-   message.channel.send({embed: {
+   message.lineReply({embed: {
     color: 16734039,
     description: "Something went wrong... :cry:"
    }})

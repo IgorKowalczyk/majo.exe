@@ -10,7 +10,7 @@ module.exports = {
   try {
    const messageID = args[0];
    if(!messageID) {
-    return message.channel.send({embed: {
+    return message.lineReply({embed: {
      color: 16734039,
      description: "❌ | Please enter a giveaway message ID"
     }})
@@ -18,24 +18,24 @@ module.exports = {
    let giveaway = client.giveawaysManager.giveaways.find((g) => g.guildID === message.guild.id && g.prize === args.join(' ')) ||
    client.giveawaysManager.giveaways.find((g) => g.guildID === message.guild.id && g.messageID === args[0]);
    if (!giveaway) {
-    return message.channel.send({embed: {
+    return message.lineReply({embed: {
      color: 16734039,
      description: '❌ | Unable to find a giveaway for `'+ args.join(' ') +'`.'
     }})
    }
    client.giveawaysManager.end(messageID).then(() => {
-    return message.channel.send({embed: {
+    return message.lineReply({embed: {
      color: 16734039,
      description: '✨ | Success! Giveaway ended!'
     }})
    }).catch((err) => {
-    return message.channel.send({embed: {
+    return message.lineReply({embed: {
      color: 16734039,
      description: '❌ | No giveaway found for ' + messageID + ', please check and try again'
     }})
    });
   } catch (err) {
-   message.channel.send({embed: {
+   message.lineReply({embed: {
     color: 16734039,
     description: "Something went wrong... :cry:"
    }})
