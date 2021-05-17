@@ -15,25 +15,25 @@ module.exports = {
    const { channel } = message.member.voice;
    const queue = message.client.queue.get(message.guild.id);
    if(!queue) {
-    return message.channel.send({embed: {
+    return message.lineReply({embed: {
      color: 16734039,
      description: "There is nothing in the queue right now!",
     }})
    }
    if (message.channel.activeCollector) {
-    return message.channel.send({embed: {
+    return message.lineReply({embed: {
      color: 16734039,
      description: "There is a search active!",
     }})
    }
    if (!message.member.voice.channel) {
-    return message.channel.send({embed: {
+    return message.lineReply({embed: {
      color: 16734039,
      description: "Please join a voice channel first",
     }})
    }
    if (queue && channel !== message.guild.me.voice.channel) {
-    return message.channel.send({embed: {
+    return message.lineReply({embed: {
      color: 16734039,
      description: "You must be in the same voice channel as me",
     }})
@@ -130,7 +130,7 @@ module.exports = {
    choice = filters[varforfilter];
    if (varforfilter === 404) return;
     const song = queue.songs[0];
-    message.channel.send(
+    message.lineReply(
      new Discord.MessageEmbed()
       .setColor("RANDOM")
       .setDescription("✨ | Applying effect: *" + args[0] + "*\n")
@@ -139,14 +139,14 @@ module.exports = {
     play(song, message, client, choice, silient);
    } catch (error) {
     message.channel.activeCollector = false;
-    return message.channel.send({embed: {
+    return message.lineReply({embed: {
     color: 16734039,
      description: "Something went wrong why applying the effect... :cry:",
     }})
    }
   } catch (err) {
    console.log(err);
-   return message.channel.send({embed: {
+   return message.lineReply({embed: {
      color: 16734039,
      description: "Something went wrong... :cry:",
    }});

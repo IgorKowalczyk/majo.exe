@@ -14,7 +14,7 @@ module.exports = {
    if (!song) {
     const queue = message.client.queue.get(message.guild.id);
     if (!queue) {
-     return message.channel.send({embed: {
+     return message.lineReply({embed: {
       color: 16734039,
       description: "❌ | You not entered any song to search, and the queue is empty! Correct usage ${prefix} lyrics [song name] | <first song from queue if exists>",
      }})
@@ -38,10 +38,10 @@ module.exports = {
     .setFooter("Requested by " + `${message.author.username}`, message.author.displayAvatarURL({ dynamic: true, format: 'png', size: 2048 }))
    if (embed.description.length >= 2048)
    embed.description = `${embed.description.substr(0, 2045)}...`;
-   return message.channel.send(embed);
+   return message.lineReply(embed);
   } catch (err) {
    console.log(err);
-   message.channel.send({embed: {
+   message.lineReply({embed: {
     color: 16734039,
     description: "Something went wrong... :cry:"
    }})

@@ -16,7 +16,7 @@ module.exports = {
   const { channel } = message.member.voice;
   const serverQueue = message.client.queue.get(message.guild.id);
   if (!channel) {
-   return message.channel.send({embed: {
+   return message.lineReply({embed: {
     color: 16734039,
     description: "❌ | You should join a voice channel before using this command!",
    }})
@@ -35,13 +35,13 @@ module.exports = {
   }
   const permissions = channel.permissionsFor(message.client.user);
   if (!permissions.has("CONNECT")){
-   return message.channel.send({embed: {
+   return message.lineReply({embed: {
     color: 16734039,
     description: "❌ | I need permissions to join your channel!",
    }})
   }
   if (!permissions.has("SPEAK")) {
-   return message.channel.send({embed: {
+   return message.lineReply({embed: {
     color: 16734039,
     description: "❌ | I need permissions to speak in your channel",
    }})
@@ -65,11 +65,11 @@ module.exports = {
   try {
    if (serverQueue) {
     if (urlValid) {
-     message.channel.send(new Discord.MessageEmbed()
+     message.lineReply(new Discord.MessageEmbed()
       .setColor("RANDOM")
       .setDescription(`:notes: Searching 🔍 [\`LINK\`](${args.join(" ")})`));
     } else {
-     message.channel.send(new Discord.MessageEmbed()
+     message.lineReply(new Discord.MessageEmbed()
       .setColor("RANDOM")
       .setDescription(`:notes: Searching 🔍 \`${args.join(" ")}\``));
     }
@@ -79,14 +79,14 @@ module.exports = {
      .setColor("RANDOM")
      .setDescription(`👍 Joined \`${channel.name}\` 📄 bound \`#${message.channel.name}\``)
      .setFooter("Requested by " + `${message.author.username}`, message.author.displayAvatarURL({ dynamic: true, format: 'png', size: 2048 }))
-    message.channel.send(successjoin).then(successjoin.delete({
+    message.lineReply(successjoin).then(successjoin.delete({
      timeout: 5000
     }))
     if (urlValid) {
      const urlvailds = new Discord.MessageEmbed()
       .setColor("RANDOM")
       .setDescription(`:notes: Searching 🔍 [\`LINK\`](${args.join(" ")})`)
-     await message.channel.send(urlvailds);
+     await message.lineReply(urlvailds);
      urlvailds.delete({
       timeout: 5000
      })
@@ -94,7 +94,7 @@ module.exports = {
      const urlvaildnormal = new Discord.MessageEmbed()
       .setColor("RANDOM")
       .setDescription(`:notes: Searching 🔍 \`${args.join(" ")}\``)
-     await message.channel.send(urlvaildnormal)
+     await message.lineReply(urlvaildnormal)
      urlvaildnormal.delete({
       timeout: 5000
      })
@@ -118,7 +118,7 @@ module.exports = {
     };
    if(!song.title && !song.url && song.thumbnail && song.duration) {
     queueConstruct.connection.disconnect();
-    return message.channel.send({embed: {
+    return message.lineReply({embed: {
      color: 16734039,
      description: "❌ | Cannot play the video!",
     }})
@@ -126,13 +126,13 @@ module.exports = {
    } catch (error) {
     if (song.statusCode === 403) {
      queueConstruct.connection.disconnect();
-     return message.channel.send({embed: {
+     return message.lineReply({embed: {
       color: 16734039,
       description: "❌ | Max uses of api key, please update! (403)",
      }})
     } else if (song.statusCode === 429) {
      queueConstruct.connection.disconnect();
-     return message.channel.send({embed: {
+     return message.lineReply({embed: {
       color: 16734039,
       description: "❌ | Max uses of host requests, please try again later (429)",
      }})
@@ -150,7 +150,7 @@ module.exports = {
     };
    } catch (error) {
     queueConstruct.connection.disconnect();
-    message.channel.send({embed: {
+    message.lineReply({embed: {
      color: 16734039,
      description: "Something went wrong why searching for your song... :cry:"
     }})
@@ -159,13 +159,13 @@ module.exports = {
   }
   if (!song) {
    queueConstruct.connection.disconnect();
-   return message.channel.send({embed: {
+   return message.lineReply({embed: {
      color: 16734039,
      description: "❌ | Cannot play the video!",
     }})
    }
    if(!song.title && !song.url && !song.thumbnail && !song.duration) {
-    return message.channel.send({embed: {
+    return message.lineReply({embed: {
      color: 16734039,
      description: "❌ | Cannot play the video!",
     }})
@@ -199,7 +199,7 @@ module.exports = {
     .addField("Estimated time until playing:", `\`${estimatedtime}\``, true)
     .addField("Position in queue", `**\`${serverQueue.songs.length - 1}\`**`, true)
     .setFooter(`Requested by: ${message.author.username}#${message.author.discriminator}`, message.member.user.displayAvatarURL({ dynamic: true }));
-   return serverQueue.textChannel.send(newsong);
+   return serverQueue.textChannel.lineReply(newsong);
   }
   queueConstruct.songs.push(song);
   message.client.queue.set(message.guild.id, queueConstruct);

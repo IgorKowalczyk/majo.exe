@@ -14,26 +14,26 @@ module.exports = {
     const { channel } = message.member.voice;
     const serverQueue = message.client.queue.get(message.guild.id);
    if (message.channel.activeCollector) {
-    return message.channel.send({embed: {
+    return message.lineReply({embed: {
      color: 16734039,
      description: "❌ | There is a search active!",
     }})
    }
    if (!message.member.voice.channel) {
-    return message.channel.send({embed: {
+    return message.lineReply({embed: {
      color: 16734039,
      description: "❌ | Please join a voice channel first!",
     }})
    }
    if (serverQueue && channel !== message.guild.me.voice.channel) {
-    return message.channel.send({embed: {
+    return message.lineReply({embed: {
      color: 16734039,
      description: "❌ | You must be in the same voice channel as me!",
     }})
    }
    const search = args.join(" ");
    if (!search) {
-    return message.channel.send({embed: {
+    return message.lineReply({embed: {
      color: 16734039,
      description: "❌ | You must enter a song for search!",
     }})
@@ -50,7 +50,7 @@ module.exports = {
     .setFooter("Response with your favorite number | Requested by " + `${message.author.username}`, message.author.displayAvatarURL({ dynamic: true, format: 'png', size: 2048 }))
    const results = await ytsr.search(search, { limit: 5 });
    results.map((video, index) => resultsEmbed.addField(video.url, `${index + 1}. ${video.title}`));
-   const resultsMessage = await message.channel.send(first)
+   const resultsMessage = await message.lineReply(first)
    await resultsMessage.react("1️⃣");
    await resultsMessage.react("2️⃣");
    await resultsMessage.react("3️⃣");
@@ -70,7 +70,7 @@ module.exports = {
    });
    if(response === "error") {
     message.channel.activeCollector = false;
-    message.channel.send({embed: {
+    message.lineReply({embed: {
      color: 16734039,
      description: "❌ | An error occurred",
     }})
@@ -85,7 +85,7 @@ module.exports = {
    console.log(err);
    resultsMessage.delete();
    message.channel.activeCollector = false;
-   return message.channel.send({embed: {
+   return message.lineReply({embed: {
     color: 16734039,
     description: "Something went wrong... :cry:",
    }})

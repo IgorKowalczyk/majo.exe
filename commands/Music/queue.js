@@ -36,10 +36,10 @@ module.exports = {
    });
    splitDescription.forEach(async (m) => {
     queueembed.setDescription(m);
-    message.channel.send(queueembed);
+    message.lineReply(queueembed);
    })
   } catch (err) {
-   return message.channel.send({embed: {
+   return message.lineReply({embed: {
     color: 16734039,
     description: "Something went wrong... :cry:",
    }})
