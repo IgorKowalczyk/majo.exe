@@ -107,7 +107,7 @@ if (process.env.TOKEN) {
  client.queue = new Map();
  const manager = new Giveaways(client, {
   updateCountdownEvery: 10000,
-  hasGuildMembersIntent: false,
+  hasGuildMembersIntent: true,
   default: {
    botsCanWin: false,
    exemptPermissions: ['MANAGE_MESSAGES', 'ADMINISTRATOR'],
