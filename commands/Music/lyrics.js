@@ -20,8 +20,7 @@ module.exports = {
    try {
    const search = await geniuscli.songs.search(song);
    const searchr = search[0];
-   const lsong = await searchr.json();
-   const lyrics = await lsong.lyrics();
+   const lyrics = await searchr.lyrics();;
     if (!search || !lsong || !lyrics) lyrics = `No lyrics found for ${song}`;
    } catch (error) {
     console.log(error)
