@@ -25,35 +25,36 @@ module.exports = {
     .setColor("RANDOM")
     .setTimestamp()
     let categories;
+    let icon;
     categories = [...new Set(client.commands.map(cmd => cmd.category))];
     for (const id of categories) {
      const category = client.commands.filter(cmd => cmd.category === id);
      if (id == "General") {
-      var icon = ":bricks:";
+      icon = ":bricks:";
      }
      if (id == "Moderation") {
-      var icon = ":hammer:";
+      icon = ":hammer:";
      }
      if (id == "Fun") {
-      var icon = ":rofl:";
+      icon = ":rofl:";
      }
      if (id == "Music") {
-      var icon = ":notes:";
+      icon = ":notes:";
      }
-     if (id == "Economy") {
-      var icon = ":moneybag:";
-     }
+     //if (id == "Economy") {
+     // icon = ":moneybag:";
+    // }
      if (id == "Utility") {
-      var icon = ":toolbox:";
+      icon = ":toolbox:";
      }
      if (id == "Image") {
-      var icon = ":frame_photo:";
+      icon = ":frame_photo:";
      }
      if (id == "NSFW") {
-      var icon = ":smirk:";
+      icon = ":smirk:";
      }
      if (!id) {
-      var icon = ":grey_question:";
+      icon = ":grey_question:";
      }
      embed.addField(`${icon} ${id} (${category.size})`, category.map(cmd => `${cmd.name}`).join(', '));
     }
@@ -68,7 +69,7 @@ module.exports = {
    function getCMD(client, message, input) {
     const embed = new Discord.MessageEmbed();
     const cmd = client.commands.get(input.toLowerCase()) || client.commands.get(client.aliases.get(input.toLowerCase()));
-    const info = "No information found for command `" + input.toLowerCase() + "`!";
+    const info = "❌ | No information found for command `" + input.toLowerCase() + "`!";
     if (!cmd) {
      try {
       return message.lineReply({embed: {
@@ -78,7 +79,7 @@ module.exports = {
      } catch (err) {
       message.lineReply({embed: {
       color: 16734039,
-      description: "No information found"
+      description: "❌ | No information found"
      }})
      }
     } else {
