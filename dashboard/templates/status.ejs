@@ -31,14 +31,15 @@
 </div>
 
 <h1 class="headerinfo">Majo.exe Uptime</h1>
-<% let totalSeconds = (bot.uptime / 1000);
-let days = Math.floor(totalSeconds / 86400);
+<% totalSeconds = (bot.uptime / 1000);
+days = Math.floor(totalSeconds / 86400);
 totalSeconds %= 86400;
-let hours = Math.floor(totalSeconds / 3600);
+hours = Math.floor(totalSeconds / 3600);
 totalSeconds %= 3600;
-let minutes = Math.floor(totalSeconds / 60) %>
+minutes = Math.floor(totalSeconds / 60) 
+seconds = Math.floor(totalSeconds % 60); %>
 
-<h3><%= days %> d, <%= hours %> hr, <%= minutes %> mins</h3>
+<div class="uptime"><%= days %> Days, <%= hours %> hours, <%= minutes %> minutes, <%= seconds %> seconds</h3>
 
 <style>
 .boxes {
