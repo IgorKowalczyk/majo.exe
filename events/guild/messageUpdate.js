@@ -12,14 +12,15 @@ module.exports = async (client, oldMessage, newMessage) => {
   port: "3306"
  });
  try {
-  const sqlquery = 'SELECT channelid FROM logs WHERE guildid = ' + oldMessage.guild.id;
+  const sqlquery = 'SELECT channelid AS res FROM logs WHERE guildid = ' + oldMessage.guild.id;
   sql.query(sqlquery, function (error, results, fields) {
   if(error) {
    console.log(error);
   }
   console.log("results " + results[0]);
   console.log("Fields" + fields);
-
+  console.log("response" + results[0].res)
+  console.log("results lenght" + results.length);
   if (!results || results.length == 0) {
    sql.end();
    console.log(results);
