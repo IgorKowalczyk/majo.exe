@@ -154,6 +154,7 @@ ANALYTICS=YOUR_GOOGLE_TRACKING_ID
 
 # Builded with
 [![Freedb.tech](https://raw.githubusercontent.com/IgorKowalczyk/majobot/master/lib/img/free-db.png)](https://freedb.tech)
+<a href="https://heroku.com"><img src="https://raw.githubusercontent.com/IgorKowalczyk/majobot/master/lib/img/heroku.png" height="84" alt="Heroku"/></a>
 
 # Issues
 If you have any issues with the page please create [new issue here](https://github.com/igorkowalczyk/majobot/issues)
