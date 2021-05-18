@@ -21,16 +21,17 @@ module.exports = {
    const sqlquery = 'SELECT channelid AS res FROM logs WHERE guildid = ' + message.guild.id;
    sql.query(sqlquery, function (error, results, fields) {
     if(error) console.log(error);
-    console.log("test" + results[0].res);
     if(!results[0].res || results[0].res.lenght == 0) {
-     const sqlquery3 = "INSERT INTO `logs` VALUES (" + message.guild.id + "," + channel + ")"
-     sql.query(sqlquery3, function (error, results, fields) {
+     const insert = "INSERT INTO `logs` VALUES (" + message.guild.id + "," + channel + "); SELECT channelid AS res FROM logs WHERE guildid = " + message.guild.id;
+     sql.query(insert, function (error, results, fields) {
       console.log("success, added");
+      console.log("Added channel id: " + results[0].res)
      })
     } else {
-    const sqlquery2 = "UPDATE logs SET channelid = " + channel + "WHERE guildid = " + message.guild.id;
-    sql.query(sqlquery2, function (error, results, fields) {
+    const update = "UPDATE logs SET channelid = " + channel + "WHERE guildid = " + message.guild.id + "; SELECT channelid AS res FROM logs WHERE guildid = " + message.guild.id;
+    sql.query(update, function (error, results, fields) {
     console.log("success, updated");
+    console.log("Updated channel id " + results[0].res)
     })
     }
    })
