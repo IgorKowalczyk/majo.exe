@@ -17,7 +17,7 @@ module.exports = async (client, oldMessage, newMessage) => {
   }
  });
  try {
-  sql.query(`SELECT \`channelid\` FROM \`logs\` WHERE \`guildid\` = ${this.guild.id}`), (done) => {
+  sql.query(`SELECT \`channelid\` FROM \`logs\` WHERE \`guildid\` = ${oldmessage.guild.id}`), (done) => {
    if (!done || done == 0) {
     sql.end();
     return;
