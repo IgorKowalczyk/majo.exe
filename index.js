@@ -55,7 +55,7 @@ sql.query('CREATE TABLE IF NOT EXISTS `logs` (`guildid` VARCHAR(32) NOT NULL, `c
 
 sql.query('ALTER TABLE `logs` ADD UNIQUE(`guildid`)', (err) => {
  if (err) console.error(err);
- console.log('[SQL] Added unique key to guildd from logs! Status: Success');
+ console.log('[SQL] Added unique key to row `guildid` from table `logs`! Status: Success');
 });
 
 const Giveaways = class extends GiveawaysManager {
