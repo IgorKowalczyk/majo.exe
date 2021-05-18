@@ -21,7 +21,7 @@ module.exports = async (client, oldMessage, newMessage) => {
    }
    const logsetup = results[0].res;
    sql.end();
-   const log = oldMessage.channels.cache.find(c => c.id == logsetup && c.type == "text");
+   const log = oldMessage.guild.channels.cache.find(c => c.id == logsetup && c.type == "text");
    if (oldMessage.author.bot) return;
    if (!oldMessage.guild.member(client.user).hasPermission("EMBED_LINKS", "VIEW_CHANNEL", "READ_MESSAGE_HISTORY", "VIEW_AUDIT_LOG", "SEND_MESSAGES")) return;
    if (!log) return;
