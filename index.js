@@ -48,9 +48,14 @@ sql.query('CREATE TABLE IF NOT EXISTS `giveaways` (`id` INT(1) NOT NULL AUTO_INC
  console.log('[SQL] Fetched table `giveaways`! Status: Success');
 });
 
-sql.query('CREATE TABLE IF NOT EXISTS `logs` (`guildid` VARCHAR(32) NOT NULL, `channelid` VARCHAR(32) NOT NULL); ALTER TABLE `logs` ADD UNIQUE(`guildid`);', (err) => {
+sql.query('CREATE TABLE IF NOT EXISTS `logs` (`guildid` VARCHAR(32) NOT NULL, `channelid` VARCHAR(32) NOT NULL);', (err) => {
  if (err) console.error(err);
  console.log('[SQL] Fetched table `logs`! Status: Success');
+});
+
+sql.query('ALTER TABLE `logs` ADD UNIQUE(`guildid`)', (err) => {
+ if (err) console.error(err);
+ console.log('[SQL] Added unique key to guildd from logs! Status: Success');
 });
 
 const Giveaways = class extends GiveawaysManager {
