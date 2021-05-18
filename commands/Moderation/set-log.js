@@ -30,8 +30,12 @@ module.exports = {
    sql.query(sqlquery, function (error, results, fields) {
     if(error) return console.log(error);
     selectresponse = results[0].res;
+    if(selectresponse) {
+     console.log("1");
+    } else {
+     console.log("2");
+    }
    })
-   console.log(selectresponse);
   } catch (err) {
    console.log(err);
    message.lineReply({embed: {
