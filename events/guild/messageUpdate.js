@@ -12,23 +12,22 @@ module.exports = async (client, oldMessage, newMessage) => {
   port: "3306"
  });
  try {
-  console.log("Pre: " + oldMessage.guild.id);
   const sqlquery = 'SELECT channelid FROM logs WHERE guildid = ' + oldMessage.guild.id;
   sql.query(sqlquery, function (error, results, fields) {
-      console.log(".");
   if(error) {
-     console.log(error);
-    }
-    console.log(results[0]);
-    console.log(fields);
-    if (!results || results.length == 0) {
-    sql.end();
-    console.log(results);
-    return;
-   }
-   console.log(results) // For tests only
-   results.send("This happens if i'm thinking right");
+   console.log(error);
+  }
+  console.log("results " + results[0]);
+  console.log("Fields" + fields);
+
+  if (!results || results.length == 0) {
    sql.end();
+   console.log(results);
+   return;
+  }
+  console.log("results2 " + results) // For tests only
+  results.send("This happens if i'm thinking right");
+  sql.end();
   });
   if (oldMessage.author.bot) return;
   if (!oldMessage.guild.member(client.user).hasPermission("EMBED_LINKS", "VIEW_CHANNEL", "READ_MESSAGE_HISTORY", "VIEW_AUDIT_LOG", "SEND_MESSAGES")) return;
