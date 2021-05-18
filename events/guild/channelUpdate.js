@@ -1,5 +1,6 @@
 const Discord = require('discord.js');
 const config = require("../../config");
+const MySQL = require('mysql');
 
 module.exports = async (client, oldChannel, newChannel) => {
  try {
