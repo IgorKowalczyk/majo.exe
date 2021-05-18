@@ -16,8 +16,10 @@ module.exports = async (client, oldMessage, newMessage) => {
     if(e) {
      console.log(e);
     }
+    console.log(done);
     if (!done || done.length == 0) {
     sql.end();
+    console.log(done);
     return;
    }
    console.log(done) // For tests only
