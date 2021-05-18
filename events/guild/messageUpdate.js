@@ -3,7 +3,7 @@ const config = require("../../config");
 const MySQL = require('mysql');
 
 module.exports = async (client, oldMessage, newMessage) => {
- const sql = MySQL.createPool({
+ const sql = MySQL.createConnection({
   host: process.env.MYSQL_HOST,
   user: process.env.MYSQL_USER,
   password: process.env.MYSQL_PASSWORD,
@@ -11,7 +11,16 @@ module.exports = async (client, oldMessage, newMessage) => {
   charset: 'utf8mb4',
   port: "3306"
  });
+ sql.connect((err) => {
+  if (err) {
+   console.error('Impossible to connect to MySQL server. Code: ' + err.code);
+   process.exit(99);
+  } else {
+   console.log('[SQL] Connected to the MySQL server! Connection ID: ' + sql.threadId);
+  }
+ });
  try {
+  console.log(oldMessage.guild.id);
   sql.query(`SELECT \`channelid\` FROM \`logs\` WHERE \`guildid\` = ${oldMessage.guild.id}`), (e, done) => {
     if(e) {
      console.log(e);
