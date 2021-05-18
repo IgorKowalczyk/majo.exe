@@ -3,7 +3,7 @@ const config = require("../../config");
 const MySQL = require('mysql');
 
 module.exports = async (client, oldMessage, newMessage) => {
- const sql = MySQL.createConnection({
+ const sql = MySQL.createPool({
   host: process.env.MYSQL_HOST,
   user: process.env.MYSQL_USER,
   password: process.env.MYSQL_PASSWORD,
