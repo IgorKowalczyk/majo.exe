@@ -38,7 +38,7 @@ module.exports = {
       })
     } else {
      console.log("2");
-     const insert = "INSERT INTO `logs` VALUES (" + message.guild.id + "," + channel + "); SELECT channelid AS res FROM logs WHERE guildid = " + message.guild.id;
+     const insert = "INSERT INTO `logs` (`guildid`, `channelid`) VALUES (" + message.guild.id + "," + channel + "); SELECT channelid AS res FROM logs WHERE guildid = " + message.guild.id;
      sql.query(insert, function (error, results, fields) {
       console.log("success, added");
       console.log("Added channel id: " + results[0].res)
