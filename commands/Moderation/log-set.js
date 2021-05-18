@@ -22,7 +22,7 @@ module.exports = {
    sql.query(sqlquery, function (error, results, fields) {
     if(error) console.log(error);
     console.log("test" + results[0].res);
-    if(!results[0].res || results.res[0].lenght == 0) {
+    if(!results[0].res || results[0].res.lenght == 0) {
      const sqlquery3 = "INSERT INTO `logs` VALUES (" + message.guild.id + "," + channel + ")"
      sql.query(sqlquery3, function (error, results, fields) {
       console.log("success, added");
