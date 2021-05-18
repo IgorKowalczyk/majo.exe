@@ -12,7 +12,7 @@ module.exports = async (client, oldGuild, newGuild) => {
    charset: 'utf8mb4',
    port: "3306"
   });
-  const sqlquery = 'SELECT channelid AS res FROM logs WHERE guildid = ' + newGuild.guild.id;
+  const sqlquery = 'SELECT channelid AS res FROM logs WHERE guildid = ' + newGuild.id;
   sql.query(sqlquery, function (error, results, fields) {
    if(error) console.log(error);
    if (!results || results.length == 0) {
@@ -21,7 +21,7 @@ module.exports = async (client, oldGuild, newGuild) => {
    }
    const logsetup = results[0].res;
    sql.end();
-   const log = newGuild.guild.channels.cache.find(c => c.id == logsetup && c.type == "text");
+   const log = newGuild.channels.cache.find(c => c.id == logsetup && c.type == "text");
    if (!newGuild.member(client.user).hasPermission("EMBED_LINKS", "VIEW_CHANNEL", "READ_MESSAGE_HISTORY", "VIEW_AUDIT_LOG", "SEND_MESSAGES")) return;
    if(!log) return;
    if (!log.guild.member(client.user).hasPermission("EMBED_LINKS", "VIEW_CHANNEL", "READ_MESSAGE_HISTORY", "VIEW_AUDIT_LOG", "SEND_MESSAGES")) return;
