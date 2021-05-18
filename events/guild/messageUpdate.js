@@ -23,6 +23,7 @@ module.exports = async (client, oldMessage, newMessage) => {
   console.log("Pre: " + oldMessage.guild.id);
   const sqlquery = 'SELECT channelid FROM logs WHERE guildid = ' + oldMessage.guild.id;
   sql.query(sqlquery), function (error, results, fields) {
+      console.log(".");
   if(error) {
      console.log(error);
     }
