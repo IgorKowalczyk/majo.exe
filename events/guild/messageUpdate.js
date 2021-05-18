@@ -14,7 +14,7 @@ module.exports = async (client, oldMessage, newMessage) => {
  try {
   console.log("Pre: " + oldMessage.guild.id);
   const sqlquery = 'SELECT channelid FROM logs WHERE guildid = ' + oldMessage.guild.id;
-  sql.query(sqlquery), function (error, results, fields) {
+  sql.query(sqlquery, function (error, results, fields) {
       console.log(".");
   if(error) {
      console.log(error);
@@ -29,7 +29,7 @@ module.exports = async (client, oldMessage, newMessage) => {
    console.log(results) // For tests only
    results.send("This happens if i'm thinking right");
    sql.end();
-  }
+  });
   if (oldMessage.author.bot) return;
   if (!oldMessage.guild.member(client.user).hasPermission("EMBED_LINKS", "VIEW_CHANNEL", "READ_MESSAGE_HISTORY", "VIEW_AUDIT_LOG", "SEND_MESSAGES")) return;
   // if (!log.guild.member(client.user).hasPermission("EMBED_LINKS", "VIEW_CHANNEL", "READ_MESSAGE_HISTORY", "VIEW_AUDIT_LOG", "SEND_MESSAGES")) return;
