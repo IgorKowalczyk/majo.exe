@@ -29,8 +29,7 @@ module.exports = {
    const sqlquery = 'SELECT channelid AS res FROM logs WHERE guildid = ' + message.guild.id;
    sql.query(sqlquery, function (error, results, fields) {
     if(error) return console.log(error);
-    selectresponse = results[0].res;
-    if(selectresponse) {
+    if(results[0]) {
      console.log("1");
      const update = "UPDATE logs SET channelid = " + channel + "WHERE guildid = " + message.guild.id + "; SELECT channelid AS res FROM logs WHERE guildid = " + message.guild.id;
      sql.query(update, function (error, results, fields) {
