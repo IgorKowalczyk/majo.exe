@@ -18,8 +18,11 @@ module.exports = async (client, oldMessage, newMessage) => {
   }
  });
  try {
-  sql.query(`SELECT \`channelid\` FROM \`logs\` WHERE \`guildid\` = ${oldMessage.guild.id}`), (done) => {
-   if (!done || done == 0) {
+  sql.query(`SELECT \`channelid\` FROM \`logs\` WHERE \`guildid\` = ${oldMessage.guild.id}`), (e, done) => {
+    if(e) {
+     console.log(e);
+    }
+    if (!done || done.length == 0) {
     sql.end();
     return;
    }
