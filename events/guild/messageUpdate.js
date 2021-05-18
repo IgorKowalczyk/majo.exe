@@ -3,15 +3,15 @@ const config = require("../../config");
 const MySQL = require('mysql');
 
 module.exports = async (client, oldMessage, newMessage) => {
- const sql = MySQL.createPool({
-  host: process.env.MYSQL_HOST,
-  user: process.env.MYSQL_USER,
-  password: process.env.MYSQL_PASSWORD,
-  database: process.env.MYSQL_DATABASE,
-  charset: 'utf8mb4',
-  port: "3306"
- });
  try {
+  const sql = MySQL.createPool({
+   host: process.env.MYSQL_HOST,
+   user: process.env.MYSQL_USER,
+   password: process.env.MYSQL_PASSWORD,
+   database: process.env.MYSQL_DATABASE,
+   charset: 'utf8mb4',
+   port: "3306"
+  });
   const sqlquery = 'SELECT channelid AS res FROM logs WHERE guildid = ' + oldMessage.guild.id;
   sql.query(sqlquery, function (error, results, fields) {
    if(error) console.log(error);

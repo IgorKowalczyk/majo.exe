@@ -1,14 +1,30 @@
 const Discord = require('discord.js');
 const config = require("../../config");
+const MySQL = require('mysql');
 
 module.exports = async (client, oldGuild, newGuild) => {
  try {
-  if (!newGuild.member(client.user).hasPermission("EMBED_LINKS", "VIEW_CHANNEL", "READ_MESSAGE_HISTORY", "VIEW_AUDIT_LOG", "SEND_MESSAGES")) return;
-  const log = newGuild.channels.cache.find(log => log.name === "log")
-  if(!log) return;
-  if(log.type !== "text") return;
-  if (!log.guild.member(client.user).hasPermission("EMBED_LINKS", "VIEW_CHANNEL", "READ_MESSAGE_HISTORY", "VIEW_AUDIT_LOG", "SEND_MESSAGES")) return;
-  if(log) {
+  const sql = MySQL.createPool({
+   host: process.env.MYSQL_HOST,
+   user: process.env.MYSQL_USER,
+   password: process.env.MYSQL_PASSWORD,
+   database: process.env.MYSQL_DATABASE,
+   charset: 'utf8mb4',
+   port: "3306"
+  });
+  const sqlquery = 'SELECT channelid AS res FROM logs WHERE guildid = ' + newGuild.guild.id;
+  sql.query(sqlquery, function (error, results, fields) {
+   if(error) console.log(error);
+   if (!results || results.length == 0) {
+    sql.end();
+    return;
+   }
+   const logsetup = results[0].res;
+   sql.end();
+   const log = newGuild.guild.channels.cache.find(c => c.id == logsetup && c.type == "text");
+   if (!newGuild.member(client.user).hasPermission("EMBED_LINKS", "VIEW_CHANNEL", "READ_MESSAGE_HISTORY", "VIEW_AUDIT_LOG", "SEND_MESSAGES")) return;
+   if(!log) return;
+   if (!log.guild.member(client.user).hasPermission("EMBED_LINKS", "VIEW_CHANNEL", "READ_MESSAGE_HISTORY", "VIEW_AUDIT_LOG", "SEND_MESSAGES")) return;
    if(oldGuild.name != newGuild.name) {
     const embed = new Discord.MessageEmbed()
      .setTitle("Guild name changed")
@@ -99,7 +115,7 @@ module.exports = async (client, oldGuild, newGuild) => {
      .setFooter(newGuild.name, newGuild.iconURL())
     log.send(embed);  
    }
-  }
+  })
  } catch (err) {
   console.log(err);
  }
