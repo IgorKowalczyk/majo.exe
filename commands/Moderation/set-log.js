@@ -24,8 +24,18 @@ module.exports = {
     selectresponse = results[0].res;
     if(selectresponse) {
      console.log("1");
+     const update = "UPDATE logs SET channelid = " + channel + "WHERE guildid = " + message.guild.id + "; SELECT channelid AS res FROM logs WHERE guildid = " + message.guild.id;
+     sql.query(update, function (error, results, fields) {
+      console.log("success, updated");
+      console.log("Updated channel id " + results[0].res)
+      })
     } else {
      console.log("2");
+     const insert = "INSERT INTO `logs` VALUES (" + message.guild.id + "," + channel + "); SELECT channelid AS res FROM logs WHERE guildid = " + message.guild.id;
+     sql.query(insert, function (error, results, fields) {
+      console.log("success, added");
+      console.log("Added channel id: " + results[0].res)
+     })
     }
    })
   } catch (err) {
