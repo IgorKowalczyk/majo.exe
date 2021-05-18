@@ -11,12 +11,6 @@ module.exports = async (client, oldMessage, newMessage) => {
   charset: 'utf8mb4',
   port: "3306"
  });
- sql.connect((err) => {
-  if (err) {
-   console.error('Impossible to connect to MySQL server. Code: ' + err.code);
-   return process.exit(99);
-  }
- });
  try {
   sql.query(`SELECT \`channelid\` FROM \`logs\` WHERE \`guildid\` = ${oldMessage.guild.id}`), (e, done) => {
     if(e) {
