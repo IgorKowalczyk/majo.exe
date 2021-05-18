@@ -26,7 +26,7 @@ module.exports = async (client, oldMessage, newMessage) => {
   if(error) {
      console.log(error);
     }
-    console.log(results);
+    console.log(results[0]);
     if (!results || results.length == 0) {
     sql.end();
     console.log(results);
