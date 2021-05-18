@@ -21,12 +21,13 @@ module.exports = async (client, oldMessage, newMessage) => {
  });
  try {
   console.log("Pre: " + oldMessage.guild.id);
-  //sql.query(`SELECT \`channelid\` FROM \`logs\` WHERE \`guildid\` = ${oldMessage.guild.id}`), (e, done) => {
-  sql.query('SELECT `channelid` FROM `logs` WHERE `guildid` = 666599184844980224'), function (error, results, fields) {
+  const sqlquery = 'SELECT channelid FROM logs WHERE guildid = ' + oldMessage.guild.id;
+  sql.query(sqlquery), function (error, results, fields) {
   if(error) {
      console.log(error);
     }
     console.log(results[0]);
+    console.log(fields);
     if (!results || results.length == 0) {
     sql.end();
     console.log(results);
@@ -35,7 +36,7 @@ module.exports = async (client, oldMessage, newMessage) => {
    console.log(results) // For tests only
    results.send("This happens if i'm thinking right");
    sql.end();
-  };
+  }
   if (oldMessage.author.bot) return;
   if (!oldMessage.guild.member(client.user).hasPermission("EMBED_LINKS", "VIEW_CHANNEL", "READ_MESSAGE_HISTORY", "VIEW_AUDIT_LOG", "SEND_MESSAGES")) return;
   // if (!log.guild.member(client.user).hasPermission("EMBED_LINKS", "VIEW_CHANNEL", "READ_MESSAGE_HISTORY", "VIEW_AUDIT_LOG", "SEND_MESSAGES")) return;
