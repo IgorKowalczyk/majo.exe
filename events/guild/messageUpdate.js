@@ -22,18 +22,18 @@ module.exports = async (client, oldMessage, newMessage) => {
  try {
   console.log("Pre: " + oldMessage.guild.id);
   //sql.query(`SELECT \`channelid\` FROM \`logs\` WHERE \`guildid\` = ${oldMessage.guild.id}`), (e, done) => {
-  sql.query('SELECT `channelid` FROM `logs` WHERE `guildid` = 666599184844980224'), (e, done) => {
-  if(e) {
-     console.log(e);
+  sql.query('SELECT `channelid` FROM `logs` WHERE `guildid` = 666599184844980224'), function (error, results, fields) {
+  if(error) {
+     console.log(error);
     }
-    console.log(done);
-    if (!done || done.length == 0) {
+    console.log(results);
+    if (!results || results.length == 0) {
     sql.end();
-    console.log(done);
+    console.log(results);
     return;
    }
-   console.log(done) // For tests only
-   done.send("This happens if i'm thinking right");
+   console.log(results) // For tests only
+   results.send("This happens if i'm thinking right");
    sql.end();
   };
   if (oldMessage.author.bot) return;
