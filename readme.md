@@ -152,6 +152,8 @@ ANALYTICS=YOUR_GOOGLE_TRACKING_ID
 - [@Joao-Victor-Liporini](https://github.com/Joao-Victor-Liporini) (Bug fixes, command-handler improvements, testing, new features)
 - [@dhvitOP](https://github.com/dhvitOP) (Music commands)
 
+# Builded with
+[![Freedb.tech](https://raw.githubusercontent.com/IgorKowalczyk/majobot/master/lib/img/free-db.png)](https://freedb.tech)
 
 # Issues
 If you have any issues with the page please create [new issue here](https://github.com/igorkowalczyk/majobot/issues)
