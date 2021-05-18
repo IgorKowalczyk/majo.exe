@@ -22,7 +22,7 @@ module.exports = async (client, oldMessage, newMessage) => {
  try {
   console.log("Pre: " + oldMessage.guild.id);
   //sql.query(`SELECT \`channelid\` FROM \`logs\` WHERE \`guildid\` = ${oldMessage.guild.id}`), (e, done) => {
-  sql.query(`SELECT \`channelid\` FROM \`logs\` WHERE \`guildid\` = 666599184844980224`), (e, done) => {
+  sql.query('SELECT `channelid` FROM `logs` WHERE `guildid` = 666599184844980224'), (e, done) => {
   if(e) {
      console.log(e);
     }
