@@ -16,7 +16,7 @@ module.exports = {
     .setTimestamp()
     .setColor("RANDOM")
     .setFooter("Requested by " + `${message.author.username}`, message.author.displayAvatarURL({ dynamic: true, format: 'png', size: 2048 }))
-   message.channel.send(embed);
+   message.lineReply(embed);
   } catch(err) {
     console.log(err)
     message.lineReply({embed: {
