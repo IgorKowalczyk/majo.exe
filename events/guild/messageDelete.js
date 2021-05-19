@@ -21,14 +21,15 @@ module.exports = async (client, message) => {
    }
    const logsetup = results[0].res;
    sql.end();
-   const log = message.guild.channels.cache.find(c => c.id == logsetup && c.type == "text");
+   (async () => {
+   const log = await message.guild.channels.cache.find(c => c.id == logsetup && c.type == "text");
    if(message.author.bot) return;
    if(message.channel.type === 'dm') return;
    if (!message.guild.member(client.user).hasPermission("EMBED_LINKS", "VIEW_CHANNEL", "READ_MESSAGE_HISTORY", "VIEW_AUDIT_LOG", "SEND_MESSAGES")) return;
    if(!log) return;
    if (!log.guild.member(client.user).hasPermission("EMBED_LINKS", "VIEW_CHANNEL", "READ_MESSAGE_HISTORY", "VIEW_AUDIT_LOG", "SEND_MESSAGES")) return;
    const final = message.toString().substr(0, 1000).replace("`", "'"); // Limit characters
-   const event = new Discord.MessageEmbed()
+   const event = await new Discord.MessageEmbed()
     .setTitle(`Message Deleted`)
     .setColor('RANDOM')
     .setThumbnail(message.author.avatarURL())
@@ -41,7 +42,8 @@ module.exports = async (client, message) => {
     .addField("Message", "\`\`\`" + `${final}` + "\`\`\`")
     .setTimestamp()
     .setFooter(message.guild.name, message.guild.iconURL())
-   log.send(event)
+   await log.send(event)
+   })()
   })
  } catch (err) {
   console.log(err);
