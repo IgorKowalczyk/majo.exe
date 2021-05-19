@@ -21,7 +21,7 @@
 <% if (twitter) { %><meta name="twitter:site" content="<%= twitter %>"><% } %>
 <% if (twitter) { %><meta name="twitter:creator" content="<%= twitter %>"><% } %>
 <meta name="twitter:url" content="https://<%= domain %><%= path %>">
-<meta name="twitter:title" content="<%- if(title) { %><%- bot.user.username + ' | ' + title %><%- } else { %><%- bot.user.username %><%- } %>">
+<meta name="twitter:title" content="<% if(title) { %><%- bot.user.username + ' | ' + title %><% } else { %><%- bot.user.username %><% } %>">
 <meta name="twitter:description" content="<%= description %>">
 <% if (verification != null) { %>
 <meta name="google-site-verification" content="<%= verification %>">
