@@ -4,11 +4,11 @@ const config = require("../../config");
 const prefix = config.prefix;
 
 module.exports = {
- name: "del-welcome",
- aliases: ["welcome-gelete", "w-remove", "delete-welcome-channel", "rem-welcome"],
- description: "Delete welcome channel for the guild",
+ name: "del-leave",
+ aliases: ["leave-gelete", "lv-remove", "delete-leave-channel", "rem-leave"],
+ description: "Delete leave channel for the guild",
  category: "Moderation",
- usage: "del-welcome",
+ usage: "del-leave",
  run: async (client, message, args) => {
   try {
    const sql = MySQL.createPool({
@@ -19,22 +19,22 @@ module.exports = {
     charset: 'utf8mb4',
     port: "3306"
    });
-   const sqlquery = 'SELECT channelid AS res FROM welcome WHERE guildid = ' + message.guild.id;
+   const sqlquery = 'SELECT channelid AS res FROM leave WHERE guildid = ' + message.guild.id;
    sql.query(sqlquery, function (error, results, fields) {
     if(error) return console.log(error);
     if(results[0]) {
-     const deletequery = 'DELETE FROM welcome WHERE guildid = ' + message.guild.id;
+     const deletequery = 'DELETE FROM leave WHERE guildid = ' + message.guild.id;
      sql.query(deletequery, function (error, results, fields) {
       if(error) return console.log(error);
       message.lineReply({embed: {
        color: 4779354,
-       description: `✨ | You successfully deleted welcome channel. You can always set new channel using \`${prefix} set-welcome <channel>\`!`
+       description: `✨ | You successfully deleted leave channel. You can always set new channel using \`${prefix} set-leave <channel>\`!`
       }})
      })
     } else {
      message.lineReply({embed: {
       color: 16734039,
-      description: `❌ | You haven't configured welcome system on this server yet so you can't delete the channel, run \`${prefix} set-welcome <channel>\` to configure welcome!`,
+      description: `❌ | You haven't configured leave system on this server yet so you can't delete the channel, run \`${prefix} set-leave <channel>\` to configure leave!`,
      }})
     }
    })
