@@ -29,7 +29,7 @@ module.exports = {
      }})
     } else {
      message.lineReply({embed: {
-      color: 4779354,
+      color: 16734039,
       description: `❌ | You haven't configured logs on this server yet, run \`${prefix} set-log <channel>\` to configure logging!`,
      }})
     }
