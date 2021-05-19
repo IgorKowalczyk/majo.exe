@@ -37,7 +37,7 @@ module.exports = {
     if(error) return console.log(error);
     if(results[0]) {
      console.log("Updated");
-     const update = "UPDATE logs SET channelid = " + channel.id + "WHERE guildid = " + message.guild.id;
+     const update = "UPDATE logs SET channelid = " + channel.id + " WHERE guildid = " + message.guild.id;
      sql.query(update, function (error, results, fields) {
       if(error) console.log(error);
       message.lineReply({embed: {
