@@ -4,7 +4,6 @@ const moment = require('moment');
 const MySQL = require('mysql');
 
 module.exports = async (client, member) => {
- (async () => {
  try {
   const image = `./lib/img/welcome.png`;
   const sql = MySQL.createPool({
@@ -36,6 +35,7 @@ module.exports = async (client, member) => {
    Canvas.registerFont('./lib/fonts/quicksand-light.ttf', { family: 'Quicksand' })
    const canvas = Canvas.createCanvas(1772, 633);
    const ctx = canvas.getContext('2d');
+   (async () => {
    const background = await Canvas.loadImage(image);
    ctx.drawImage(background, 0, 0, canvas.width, canvas.height);
    ctx.strokeStyle = '#f2f2f2';
@@ -78,9 +78,9 @@ module.exports = async (client, member) => {
     .setImage("attachment://welcome-image.png")
     .attachFiles(attachment);
    channel.send(embed);
+   })()
   })
  } catch(err) {
   console.log(err);
  }
-})()
 }
