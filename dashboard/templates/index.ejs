@@ -1,4 +1,7 @@
 <%- include("partials/head", { bot, user, path, description, title, twitter, url, image }) %>
+<% function capitalizeFirstLetter(string) {
+ return string.charAt(0).toUpperCase() + string.slice(1);
+} %>
 <div class="page-content">
 <div class="content">
 <% if (bot.user.avatar) {
@@ -18,7 +21,7 @@
 <% } else { %>
 <div class="div">
 <img class="img" src="<%= botavatar %>" alt="Avatar"/>
-<h1>Hi! I'm Majo.exe</h1>
+<h1>Hi! I'm <% capitalizeFirstLetter(bot.user.username) %></h1>
 <p>I have almost everything - Fun, Memes, Images, Giveaway, Economy, Anime and NSFW!<br>I serve over 100 commands<br>To get started with me just login with your Discord account</p></div>
 <a class="main-button button" href="https://<%= domain %>/login">Login</a><br>
 <a class="main-button button edit" href="https://<%= domain %>/features">See Features</a><br>

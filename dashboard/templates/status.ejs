@@ -1,8 +1,9 @@
 <%- include("partials/head", { bot, user, path, description, title: "Status", twitter, url, image }) %>
 <div class="container">
-
-<h1 class="headerinfo">Majo.exe in numbers</h1>
-
+<% function capitalizeFirstLetter(string) {
+ return string.charAt(0).toUpperCase() + string.slice(1);
+} %>
+<h1 class="headerinfo"><% capitalizeFirstLetter(bot.user.username) %> in numbers</h1>
 <div class="boxes">
 <div class="box box1">
 <div class="boxcontainter">
@@ -33,7 +34,7 @@
 
 <hr>
 
-<h1 class="headerinfo">Majo.exe Uptime</h1>
+<h1 class="headerinfo"><% capitalizeFirstLetter(bot.user.username) %> Uptime</h1>
 <% totalSeconds = (bot.uptime / 1000);
 days = Math.floor(totalSeconds / 86400);
 totalSeconds %= 86400;
