@@ -11,6 +11,12 @@ module.exports = {
  usage: "del-welcome",
  run: async (client, message, args) => {
   try {
+   if (!message.member.hasPermission("MANAGE_CHANNELS")) {
+    return message.lineReply({embed: {
+     color: 16734039,
+     description: "❌ | You don't have premissions to delete welcome channel! You need `MANAGE_CHANNELS` premission!"
+    }})
+   }
    const sql = MySQL.createPool({
     host: process.env.MYSQL_HOST,
     user: process.env.MYSQL_USER,
