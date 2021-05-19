@@ -23,7 +23,8 @@ module.exports = async (client, member) => {
    }
    lsetup = results[0].res;
    sql.end();
-   const channel = member.guild.channels.cache.find(c => c.id == lsetup && c.type == "text");
+   (async () => {
+   const channel = await member.guild.channels.cache.find(c => c.id == lsetup && c.type == "text");
    if (!channel) return;
    function checkdays(date) {
     let now = new Date();
@@ -34,7 +35,6 @@ module.exports = async (client, member) => {
    Canvas.registerFont('./lib/fonts/quicksand-light.ttf', { family: 'Quicksand' })
    const canvas = Canvas.createCanvas(1772, 633);
    const ctx = canvas.getContext('2d');
-   (async () => {
    const background = await Canvas.loadImage(image);
    ctx.drawImage(background, 0, 0, canvas.width, canvas.height);
    ctx.strokeStyle = '#f2f2f2';
@@ -69,7 +69,7 @@ module.exports = async (client, member) => {
    ctx.drawImage(avatar, 65, canvas.height / 2 - 250, 500, 500);
    const attachment = new Discord.MessageAttachment(canvas.toBuffer(), 'welcome-image.png');
    console.log(member.user.joinedAt)
-   const embed = new Discord.MessageEmbed()
+   const embed = await new Discord.MessageEmbed()
     .setColor("RANDOM")
     .setTimestamp()
     .setFooter(`${member.guild.name}`, member.user.displayAvatarURL({ dynamic: true, format: 'png', size: 2048 }))
@@ -77,7 +77,7 @@ module.exports = async (client, member) => {
     .setDescription(":calendar_spiral: **User joined server at:** \`" + moment(member.user.joinedAt).format("MMMM Do YYYY, h:mm:ss") + "\` (" + moment(member.user.joinedAt).fromNow() + ")")
     .setImage("attachment://welcome-image.png")
     .attachFiles(attachment);
-   channel.send(embed);
+   await channel.send(embed);
   })()
   })
  } catch(err) {
