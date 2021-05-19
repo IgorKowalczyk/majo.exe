@@ -33,7 +33,7 @@ module.exports = {
     if(results[0]) {
      message.lineReply({embed: {
       color: 4779354,
-      description: `✨ | Your current logs channel is: ${results[0].res}. You can channge channel by using \`${prefix} set-log <channel>\`!`
+      description: `✨ | Your current logs channel is: <#${results[0].res}>. You can channge channel by using \`${prefix} set-log <channel>\`!`
      }})
     } else {
      message.lineReply({embed: {
