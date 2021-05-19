@@ -23,7 +23,7 @@ module.exports = async (client, member) => {
    welsetup = results[0].res;
    sql.end();
    })
-   const channel = guild.channels.cache.find(c => c.id == welsetup && c.type == "text");
+   const channel = member.guild.channels.cache.find(c => c.id == welsetup && c.type == "text");
    if (!channel) return;
    if(!member.guild) return;
    function checkdays(date) {
