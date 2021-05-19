@@ -15,8 +15,8 @@
 <meta property="og:site_name" content="<%- title %>">
 <meta property="og:description" content="<%- description %>">
 <meta name="description" content="<%- description %>">
-<% if (image) { %><meta property="og:image" content="https://<%= domain %>/pics/thumbs/<%= image %>" /><% } %>
-<% if (image) { %><meta name="twitter:image" content="https://<%= domain %>/pics/thumbs/<%= image %>"><% } else { %><meta name="twitter:image" content="https://<%= hostname %>/lib/favicon/favicon.jpg"><% } %>
+<% if (image) { %><meta property="og:image" content="<%= bot.user.avatar %>" /><% } %>
+<% if (image) { %><meta name="twitter:image" content="<%= bot.user.avatar %>"><% } else { %><meta name="twitter:image" content="https://<%= hostname %>/lib/favicon/favicon.jpg"><% } %>
 <meta name="twitter:card" content="summary">
 <% if (twitter) { %><meta name="twitter:site" content="<%= twitter %>"><% } %>
 <% if (twitter) { %><meta name="twitter:creator" content="<%= twitter %>"><% } %>
