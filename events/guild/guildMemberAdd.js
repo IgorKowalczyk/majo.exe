@@ -23,7 +23,7 @@ module.exports = async (client, member) => {
    }
    welsetup = results[0].res;
    sql.end();
-   const channel = member.guild.channels.cache.find(c => c.id == welsetup && c.type == "text");
+   const channel = await member.guild.channels.cache.find(c => c.id == welsetup && c.type == "text");
    if (!channel) return;
    if(!member.guild) return;
    function checkdays(date) {
@@ -69,7 +69,7 @@ module.exports = async (client, member) => {
    const avatar = await Canvas.loadImage(member.user.displayAvatarURL({ format: 'jpg', size: 2048}));
    ctx.drawImage(avatar, 65, canvas.height / 2 - 250, 500, 500);
    const attachment = new Discord.MessageAttachment(canvas.toBuffer(), 'welcome-image.png');
-   const embed = new Discord.MessageEmbed()
+   const embed = await new Discord.MessageEmbed()
     .setColor("RANDOM")
     .setTimestamp()
     .setFooter(`${member.guild.name}`, member.user.displayAvatarURL({ dynamic: true, format: 'png', size: 2048 }))
