@@ -5,7 +5,6 @@ const MySQL = require('mysql');
 
 module.exports = async (client, member) => {
  try {
-  (async () => {
   const image = `./lib/img/welcome.png`;
   const sql = MySQL.createPool({
    host: process.env.MYSQL_HOST,
@@ -16,7 +15,7 @@ module.exports = async (client, member) => {
    port: "3306"
   });
   const sqlquery = 'SELECT channelid AS res FROM welcome WHERE guildid = ' + member.guild.id;
-  await sql.query(sqlquery, function (error, results, fields) {
+  sql.query(sqlquery, function (error, results, fields) {
    if(error) console.log(error);
    if (!results || results.length == 0) {
     sql.end();
@@ -24,6 +23,7 @@ module.exports = async (client, member) => {
    }
    welsetup = results[0].res;
    sql.end();
+   (async () => {
    const channel = await member.guild.channels.cache.find(c => c.id == welsetup && c.type == "text");
    if (!channel) return;
    if(!member.guild) return;
