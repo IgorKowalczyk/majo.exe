@@ -26,6 +26,8 @@ module.exports = async (client, oldMessage, newMessage) => {
    if (!oldMessage.guild.member(client.user).hasPermission("EMBED_LINKS", "VIEW_CHANNEL", "READ_MESSAGE_HISTORY", "VIEW_AUDIT_LOG", "SEND_MESSAGES")) return;
    if (!log) return;
    if (!newMessage.embeds) return console.log("yes");
+   oldMessage.replace("`", "'") // To awoid quiting code block
+   newMessage.replace("`", "'") // To awoid quiting code block
    const event = new Discord.MessageEmbed()
     .setTitle(`Message Edited`)
     .setColor('RANDOM')
