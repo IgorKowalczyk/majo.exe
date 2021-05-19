@@ -5,7 +5,6 @@ const MySQL = require('mysql');
 
 module.exports = async (client, member) => {
  try {
-  (async () => {
   const sql = MySQL.createPool({
    host: process.env.MYSQL_HOST,
    user: process.env.MYSQL_USER,
@@ -21,8 +20,9 @@ module.exports = async (client, member) => {
     sql.end();
     return;
    }
-   const lsetup = results[0].res;
+   lsetup = results[0].res;
    sql.end();
+   })
    const channel = guild.channels.cache.find(c => c.id == lsetup && c.type == "text");
    if (!channel) return;
    function checkdays(date) {
@@ -77,8 +77,6 @@ module.exports = async (client, member) => {
     .setImage("attachment://welcome-image.png")
     .attachFiles(attachment);
    channel.send(embed);
-  })
-  })();
  } catch(err) {
   console.log(err);
  }
