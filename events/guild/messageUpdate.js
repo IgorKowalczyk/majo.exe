@@ -27,8 +27,8 @@ module.exports = async (client, oldMessage, newMessage) => {
    if (!oldMessage.guild.member(client.user).hasPermission("EMBED_LINKS", "VIEW_CHANNEL", "READ_MESSAGE_HISTORY", "VIEW_AUDIT_LOG", "SEND_MESSAGES")) return;
    if (!log) return;
    if (!newMessage.embeds) return console.log("yes");
-   oldMessage.replace("`", "'") // To awoid quiting code block
-   newMessage.replace("`", "'") // To awoid quiting code block
+   const oldone =  oldMessage.toString().substr(0, 1000).replace("`", "'"); // To awoid quiting code block
+   const newone =  oldMessage.toString().substr(0, 1000).replace("`", "'"); // To awoid quiting code block
    const event = await new Discord.MessageEmbed()
     .setTitle(`Message Edited`)
     .setColor('RANDOM')
@@ -39,8 +39,8 @@ module.exports = async (client, oldMessage, newMessage) => {
     .addField("TTS", `${oldMessage.tts}`)
     .addField("Pinned", `${oldMessage.pinned}`)
     .addField("Send By", `<@${oldMessage.author.id}> (ID: ${oldMessage.author.id})`)
-    .addField("Old Message", "\`\`\`" + `${oldMessage}` + "\`\`\`")
-    .addField("New Message", "\`\`\`" + `${newMessage}` + "\`\`\`")
+    .addField("Old Message", "\`\`\`" + `${oldone}` + "\`\`\`")
+    .addField("New Message", "\`\`\`" + `${newone}` + "\`\`\`")
     .setTimestamp()
     .setFooter(oldMessage.guild.name, oldMessage.guild.iconURL())
    await log.send(event);
