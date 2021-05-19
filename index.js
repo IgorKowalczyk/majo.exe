@@ -9,22 +9,8 @@ const { GiveawaysManager } = require('discord-giveaways');
 const MySQL = require('mysql');
 require('dotenv').config()
 require("./utilities/inline_reply")
-/*( const { EconomyManager } = require("quick.eco")
 
-const eco = new EconomyManager({
- adapter: 'mysql',
- adapterOptions: {
-  user: process.env.MYSQL_USER,
-  password: process.env.MYSQL_PASSWORD,
-  host: process.env.MYSQL_HOST,
-  database: process.env.MYSQL_DATABASE
- }    
-});
-
-client.economy = eco;
-*/
-
-/* Database connect and economy, giveaway configuration */
+/* Database connect */
 const sql = MySQL.createConnection({
  host: process.env.MYSQL_HOST,
  user: process.env.MYSQL_USER,
@@ -42,22 +28,51 @@ sql.connect((err) => {
  }
 });
 client.sql == sql;
+/* ---- */
 
-sql.query('CREATE TABLE IF NOT EXISTS `giveaways` (`id` INT(1) NOT NULL AUTO_INCREMENT, `message_id` VARCHAR(64) NOT NULL, `data` JSON NOT NULL, PRIMARY KEY (`id`));', (err) => {
- if (err) console.error(err);
- console.log('[SQL] Fetched table `giveaways`! Status: Success');
-});
 
+
+/* Logging system config */
 sql.query('CREATE TABLE IF NOT EXISTS `logs` (`guildid` VARCHAR(32) NOT NULL, `channelid` VARCHAR(32) NOT NULL);', (err) => {
  if (err) console.error(err);
  console.log('[SQL] Fetched table `logs`! Status: Success');
 });
-
 sql.query('ALTER TABLE `logs` ADD UNIQUE(`guildid`)', (err) => {
  if (err) console.error(err);
  console.log('[SQL] Added unique key to row `guildid` from table `logs`! Status: Success');
 });
+/* ---- */
 
+
+
+/* Welcome and leave messages config */
+/* = Welcome message = */
+sql.query('CREATE TABLE IF NOT EXISTS `welcome` (`guildid` VARCHAR(32) NOT NULL, `channelid` VARCHAR(32) NOT NULL);', (err) => {
+ if (err) console.error(err);
+ console.log('[SQL] Fetched table `welcome`! Status: Success');
+});
+sql.query('ALTER TABLE `welcome` ADD UNIQUE(`guildid`)', (err) => {
+ if (err) console.error(err);
+ console.log('[SQL] Added unique key to row `guildid` from table `welcome`! Status: Success');
+});
+/* = Leave message = */
+sql.query('CREATE TABLE IF NOT EXISTS `leave` (`guildid` VARCHAR(32) NOT NULL, `channelid` VARCHAR(32) NOT NULL);', (err) => {
+ if (err) console.error(err);
+ console.log('[SQL] Fetched table `leave`! Status: Success');
+});
+sql.query('ALTER TABLE `leave` ADD UNIQUE(`guildid`)', (err) => {
+ if (err) console.error(err);
+ console.log('[SQL] Added unique key to row `guildid` from table `leave`! Status: Success');
+});
+/* ---- */
+
+
+
+/* Giveaways config */
+sql.query('CREATE TABLE IF NOT EXISTS `giveaways` (`id` INT(1) NOT NULL AUTO_INCREMENT, `message_id` VARCHAR(64) NOT NULL, `data` JSON NOT NULL, PRIMARY KEY (`id`));', (err) => {
+ if (err) console.error(err);
+ console.log('[SQL] Fetched table `giveaways`! Status: Success');
+});
 const Giveaways = class extends GiveawaysManager {
  async getAllGiveaways() {
   return new Promise((resolve, reject) => {
@@ -109,6 +124,7 @@ const Giveaways = class extends GiveawaysManager {
   });
  }
 };
+/* ---- */
 
 /* Login and Commands */
 if (process.env.TOKEN) {
@@ -138,3 +154,4 @@ if (process.env.TOKEN) {
  console.log(chalk.red("Stopping..."));
  process.exit(1);
 }
+/* ---- */
