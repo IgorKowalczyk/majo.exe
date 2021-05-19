@@ -24,7 +24,7 @@ module.exports = {
     charset: 'utf8mb4',
     port: "3306"
    });
-   const sqlquery = 'SELECT channelid AS res FROM leave WHERE guildid = ' + message.guild.id;
+   const sqlquery = 'SELECT channelid AS res FROM \`leave\` WHERE guildid = ' + message.guild.id;
    sql.query(sqlquery, function (error, results, fields) {
     if(error) return console.log(error);
     if(results[0]) {
