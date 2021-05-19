@@ -43,7 +43,7 @@ module.exports = async (client, channel) => {
    channel.guild.fetchAuditLogs().then(logs => {
     const userid = logs.entries.first().executor.id;
     const uavatar = logs.entries.first().executor.avatarURL();
-    const event = await new Discord.MessageEmbed()
+    const event = new Discord.MessageEmbed()
      .setTitle("Channel Created")
      .setThumbnail(uavatar)
      .addField("Channel name", `<#${channel.id}> (ID: ${channel.id})`)
@@ -52,7 +52,7 @@ module.exports = async (client, channel) => {
      .setColor("RANDOM")
      .setTimestamp()
      .setFooter(channel.guild.name, channel.guild.iconURL());
-    await log.send(event);
+    log.send(event);
    })();
    });
   })

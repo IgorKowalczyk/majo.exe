@@ -30,7 +30,7 @@ module.exports = async (client, guild, user) => {
     const userid = logs.entries.first().executor.id;
     const uavatar = logs.entries.first().executor.avatarURL();
     if (userid === client.user.id) return;
-    const embed = await new Discord.MessageEmbed()
+    const embed = new Discord.MessageEmbed()
      .setTitle("User Banned")
      .setThumbnail(uavatar)
      .setColor("RANDOM")
@@ -38,7 +38,7 @@ module.exports = async (client, guild, user) => {
      .addField("Banned by", `<@${userid}> (ID: ${userid})`)
      .setTimestamp()
      .setFooter(guild.name, guild.iconURL())
-    await log.send(embed);
+    log.send(embed);
    })()
    });
   })

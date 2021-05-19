@@ -29,7 +29,7 @@ module.exports = async (client, guild, user) => {
    guild.fetchAuditLogs().then(logs => {
     var userid = logs.entries.first().executor.id;
      var uavatar = logs.entries.first().executor.avatarURL();
-     let embed = await new Discord.MessageEmbed()
+     let embed = new Discord.MessageEmbed()
       .setTitle("User Unbanned")
       .setThumbnail(uavatar)
       .setColor("RANDOM")
@@ -37,7 +37,7 @@ module.exports = async (client, guild, user) => {
       .addField("Unbanned by", `<@${userid}> (ID: ${userid})`)
       .setTimestamp()
       .setFooter(guild.name, guild.iconURL());
-     await log.send(embed);
+     log.send(embed);
    })();
    });
   })
