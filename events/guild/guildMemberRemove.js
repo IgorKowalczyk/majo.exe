@@ -23,7 +23,6 @@ module.exports = async (client, member) => {
    }
    lsetup = results[0].res;
    sql.end();
-   })
    const channel = member.guild.channels.cache.find(c => c.id == lsetup && c.type == "text");
    if (!channel) return;
    function checkdays(date) {
@@ -35,6 +34,7 @@ module.exports = async (client, member) => {
    Canvas.registerFont('./lib/fonts/quicksand-light.ttf', { family: 'Quicksand' })
    const canvas = Canvas.createCanvas(1772, 633);
    const ctx = canvas.getContext('2d');
+   (async () => {
    const background = await Canvas.loadImage(image);
    ctx.drawImage(background, 0, 0, canvas.width, canvas.height);
    ctx.strokeStyle = '#f2f2f2';
@@ -78,6 +78,8 @@ module.exports = async (client, member) => {
     .setImage("attachment://welcome-image.png")
     .attachFiles(attachment);
    channel.send(embed);
+  })()
+  })
  } catch(err) {
   console.log(err);
  }
