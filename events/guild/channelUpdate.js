@@ -56,7 +56,7 @@ module.exports = async (client, oldChannel, newChannel) => {
     const uavatar = logs.entries.first().executor.avatarURL();
     const guildsChannel = newChannel.guild;
     if(oldChannel.parent !== newChannel.parent) {
-     const channelname = await new Discord.MessageEmbed()
+     const channelname = new Discord.MessageEmbed()
       .setTitle("Channel Name changed")
       .setThumbnail(uavatar)
       .addField("Channel type", `${type}`)
@@ -67,10 +67,10 @@ module.exports = async (client, oldChannel, newChannel) => {
       .setColor("RANDOM")
       .setTimestamp()
       .setFooter(oldChannel.guild.name, oldChannel.guild.iconURL());
-     await log.send(channelname);
+     log.send(channelname);
     }
     if(oldChannel.name !== newChannel.name) {
-     const channelname = await new Discord.MessageEmbed()
+     const channelname = new Discord.MessageEmbed()
       .setTitle("Channel Name changed")
       .setThumbnail(uavatar)
       .addField("Old Channel name", `\`\`\`${oldChannel.name} \`\`\` `)
@@ -82,10 +82,10 @@ module.exports = async (client, oldChannel, newChannel) => {
       .setColor("RANDOM")
       .setTimestamp()
       .setFooter(oldChannel.guild.name, oldChannel.guild.iconURL());
-     await log.send(channelname);
+     log.send(channelname);
     }
     if(oldChannel.topic !== newChannel.topic) {
-     const newtopic = await new Discord.MessageEmbed()
+     const newtopic = new Discord.MessageEmbed()
       .setTitle("Channel Description changed")
       .setThumbnail(uavatar)
       .addField("Old Channel description", `\`\`\`\ ${oldChannel.topic || "(Not set)"} \`\`\` `)
@@ -97,7 +97,7 @@ module.exports = async (client, oldChannel, newChannel) => {
       .setColor("RANDOM")
       .setTimestamp()
       .setFooter(oldChannel.guild.name, oldChannel.guild.iconURL())
-     await log.send(newtopic);
+     log.send(newtopic);
     }
    })()
    });
