@@ -5,6 +5,7 @@ const MySQL = require('mysql');
 
 module.exports = async (client, member) => {
  try {
+  (async () => {
   const image = `./lib/img/welcome.png`;
   const sql = MySQL.createPool({
    host: process.env.MYSQL_HOST,
@@ -35,7 +36,6 @@ module.exports = async (client, member) => {
    Canvas.registerFont('./lib/fonts/quicksand-light.ttf', { family: 'Quicksand' })
    const canvas = Canvas.createCanvas(1772, 633);
    const ctx = canvas.getContext('2d');
-   (async () => {
    const background = await Canvas.loadImage(image);
    ctx.drawImage(background, 0, 0, canvas.width, canvas.height);
    ctx.strokeStyle = '#f2f2f2';
