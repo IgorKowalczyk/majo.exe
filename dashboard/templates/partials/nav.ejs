@@ -2,7 +2,7 @@
  return string.charAt(0).toUpperCase() + string.slice(1);
 } %>
 <nav class="nav" role="navigation">
-<span class="logo"><a href="https://<%= domain %>" rel="noopener" aria-label="Open home page"><span class="name"><% capitalizeFirstLetter(bot.user.username) %></span><span class="tag">#<%- bot.user.discriminator %></span></a></span>
+<span class="logo"><a href="https://<%= domain %>" rel="noopener" aria-label="Open home page"><span class="name"><%= capitalizeFirstLetter(bot.user.username) %></span><span class="tag">#<%- bot.user.discriminator %></span></a></span>
 <input class="menu-btn" type="checkbox" id="menu-btn"/>
 <label class="menu-icon" for="menu-btn"><span class="navicon"></span></label>
 <ul class="menu">
