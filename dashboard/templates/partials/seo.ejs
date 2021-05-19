@@ -1,3 +1,6 @@
+<% function capitalizeFirstLetter(string) {
+ return string.charAt(0).toUpperCase() + string.slice(1);
+} %>
 <meta name="description" content="<%- description %>">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <link rel="canonical" href="https://<%= domain %><%= path %>">
@@ -12,8 +15,8 @@
 <meta name="theme-color" content="#7289da">
 <meta property="og:locale" content="en_US">
 <meta property="og:type" content="website">
-<meta property="og:title" content="<% if(title) { %><%- bot.user.username + ' | ' + title %><% } else { %><%- bot.user.username %><% } %>">
-<meta property="og:site_name" content="Invite majo today!">
+<meta property="og:title" content="<% if(title) { %><%- capitalizeFirstLetter(bot.user.username) + ' | ' + title %><% } else { %><%- capitalizeFirstLetter(bot.user.username) + ' - The best Discord bot' %><% } %>">
+<meta property="og:site_name" content="Invite <%- capitalizeFirstLetter(bot.user.username) %> today!">
 <meta property="og:description" content="<%- description %>">
 <meta property="og:image" content="https://cdn.discordapp.com/avatars/<%= bot.user.id %>/<%= bot.user.avatar %>.png?size=256" />
 <meta name="twitter:image" content="https://cdn.discordapp.com/avatars/<%= bot.user.id %>/<%= bot.user.avatar %>.png?size=256">
@@ -21,7 +24,7 @@
 <% if (twitter) { %><meta name="twitter:site" content="<%= twitter %>"><% } %>
 <% if (twitter) { %><meta name="twitter:creator" content="<%= twitter %>"><% } %>
 <meta name="twitter:url" content="https://<%= domain %><%= path %>">
-<meta name="twitter:title" content="<% if(title) { %><%- bot.user.username + ' | ' + title %><% } else { %><%- bot.user.username %><% } %>">
+<meta name="twitter:title" content="<% if(title) { %><%- bot.user.username + ' | ' + title %><% } else { %><%- bot.user.username + ' - The best Discord bot' %><% } %>">
 <meta name="twitter:description" content="<%= description %>">
 <% if (verification != null) { %>
 <meta name="google-site-verification" content="<%= verification %>">
