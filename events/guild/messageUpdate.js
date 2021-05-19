@@ -28,7 +28,7 @@ module.exports = async (client, oldMessage, newMessage) => {
    if (!log) return;
    if (!newMessage.embeds) return console.log("yes");
    const oldone =  oldMessage.toString().substr(0, 1000).replace("`", "'"); // To awoid quiting code block
-   const newone =  oldMessage.toString().substr(0, 1000).replace("`", "'"); // To awoid quiting code block
+   const newone =  newMessage.toString().substr(0, 1000).replace("`", "'"); // To awoid quiting code block
    const event = await new Discord.MessageEmbed()
     .setTitle(`Message Edited`)
     .setColor('RANDOM')
