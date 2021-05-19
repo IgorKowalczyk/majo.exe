@@ -4,6 +4,7 @@ const moment = require('moment');
 const MySQL = require('mysql');
 
 module.exports = async (client, member) => {
+ (async () => {
  try {
   const image = `./lib/img/welcome.png`;
   const sql = MySQL.createPool({
@@ -23,7 +24,6 @@ module.exports = async (client, member) => {
    }
    welsetup = results[0].res;
    sql.end();
-})
    const channel = member.guild.channels.cache.find(c => c.id == welsetup && c.type == "text");
    if (!channel) return;
    if(!member.guild) return;
@@ -78,7 +78,9 @@ module.exports = async (client, member) => {
     .setImage("attachment://welcome-image.png")
     .attachFiles(attachment);
    channel.send(embed);
+  })
  } catch(err) {
   console.log(err);
  }
+})()
 }
