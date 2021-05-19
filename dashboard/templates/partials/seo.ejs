@@ -1,3 +1,4 @@
+<meta name="description" content="<%- description %>">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <link rel="canonical" href="https://<%= domain %><%= path %>">
 <% if (mobile == "true") { %>
@@ -14,9 +15,8 @@
 <meta property="og:title" content="<% if(title) { %><%- bot.user.username + ' | ' + title %><% } else { %><%- bot.user.username %><% } %>">
 <meta property="og:site_name" content="<%- title %>">
 <meta property="og:description" content="<%- description %>">
-<meta name="description" content="<%- description %>">
-<% if (image) { %><meta property="og:image" content="<%= bot.user.avatar %>" /><% } %>
-<% if (image) { %><meta name="twitter:image" content="<%= bot.user.avatar %>"><% } else { %><meta name="twitter:image" content="https://<%= hostname %>/lib/favicon/favicon.jpg"><% } %>
+<meta property="og:image" content="https://cdn.discordapp.com/avatars/<%= bot.user.id %>/<%= bot.user.avatar %>.png?size=512" />
+<meta name="twitter:image" content="https://cdn.discordapp.com/avatars/<%= bot.user.id %>/<%= bot.user.avatar %>.png?size=512">
 <meta name="twitter:card" content="summary">
 <% if (twitter) { %><meta name="twitter:site" content="<%= twitter %>"><% } %>
 <% if (twitter) { %><meta name="twitter:creator" content="<%= twitter %>"><% } %>
