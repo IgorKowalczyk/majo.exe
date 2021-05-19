@@ -21,14 +21,15 @@ module.exports = async (client, oldMessage, newMessage) => {
    }
    const logsetup = results[0].res;
    sql.end();
-   const log = oldMessage.guild.channels.cache.find(c => c.id == logsetup && c.type == "text");
+   (async () => {
+   const log = await oldMessage.guild.channels.cache.find(c => c.id == logsetup && c.type == "text");
    if (oldMessage.author.bot) return;
    if (!oldMessage.guild.member(client.user).hasPermission("EMBED_LINKS", "VIEW_CHANNEL", "READ_MESSAGE_HISTORY", "VIEW_AUDIT_LOG", "SEND_MESSAGES")) return;
    if (!log) return;
    if (!newMessage.embeds) return console.log("yes");
    oldMessage.replace("`", "'") // To awoid quiting code block
    newMessage.replace("`", "'") // To awoid quiting code block
-   const event = new Discord.MessageEmbed()
+   const event = await new Discord.MessageEmbed()
     .setTitle(`Message Edited`)
     .setColor('RANDOM')
     .setThumbnail(oldMessage.author.avatarURL())
@@ -42,7 +43,8 @@ module.exports = async (client, oldMessage, newMessage) => {
     .addField("New Message", "\`\`\`" + `${newMessage}` + "\`\`\`")
     .setTimestamp()
     .setFooter(oldMessage.guild.name, oldMessage.guild.iconURL())
-   log.send(event);
+   await log.send(event);
+   })();
   });
  } catch (err) {
   console.log(err);

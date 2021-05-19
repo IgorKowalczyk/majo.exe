@@ -21,7 +21,8 @@ module.exports = async (client, guild, user) => {
    }
    const logsetup = results[0].res;
    sql.end();
-   const log = guild.channels.cache.find(c => c.id == logsetup && c.type == "text");
+   (async () => {
+   const log = await guild.channels.cache.find(c => c.id == logsetup && c.type == "text");
    if (!guild.member(client.user).hasPermission("EMBED_LINKS", "VIEW_CHANNEL", "READ_MESSAGE_HISTORY", "VIEW_AUDIT_LOG", "SEND_MESSAGES")) return;
    if(!log) return;
    if (!log.guild.member(client.user).hasPermission("EMBED_LINKS", "VIEW_CHANNEL", "READ_MESSAGE_HISTORY", "VIEW_AUDIT_LOG", "SEND_MESSAGES")) return;
@@ -29,7 +30,7 @@ module.exports = async (client, guild, user) => {
     const userid = logs.entries.first().executor.id;
     const uavatar = logs.entries.first().executor.avatarURL();
     if (userid === client.user.id) return;
-    const embed = new Discord.MessageEmbed()
+    const embed = await new Discord.MessageEmbed()
      .setTitle("User Banned")
      .setThumbnail(uavatar)
      .setColor("RANDOM")
@@ -37,7 +38,8 @@ module.exports = async (client, guild, user) => {
      .addField("Banned by", `<@${userid}> (ID: ${userid})`)
      .setTimestamp()
      .setFooter(guild.name, guild.iconURL())
-    log.send(embed);
+    await log.send(embed);
+   })()
    });
   })
  } catch (err) {
