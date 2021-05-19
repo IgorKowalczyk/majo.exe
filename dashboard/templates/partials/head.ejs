@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title><%- bot.user.username + ' | ' + title %></title>
+<title><%- if(title) { %><%- bot.user.username + ' | ' + title %><%- } else { %><%- bot.user.username %><%- } %></title>
 <link rel="stylesheet" type="text/css" href="https://<%= domain %>/css/style.css">
 <%- include('./favicons.ejs') %>
 <% if (analitics) { %>
