@@ -24,11 +24,11 @@ module.exports = {
     charset: 'utf8mb4',
     port: "3306"
    });
-   const sqlquery = 'SELECT channelid AS res FROM \`leave\` WHERE guildid = ' + message.guild.id;
+   const sqlquery = 'SELECT \`channelid\` AS res FROM \`leave\` WHERE \`guildid\` = ' + message.guild.id;
    sql.query(sqlquery, function (error, results, fields) {
     if(error) return console.log(error);
     if(results[0]) {
-     const update = "UPDATE leave SET channelid = " + channel.id + " WHERE guildid = " + message.guild.id;
+     const update = "UPDATE \`leave\` SET \`channelid\` = " + channel.id + " WHERE \`guildid\` = " + message.guild.id;
      sql.query(update, function (error, results, fields) {
       if(error) console.log(error);
       message.lineReply({embed: {
@@ -38,7 +38,7 @@ module.exports = {
       // console.log("Updated channel id " + results[0].res)
       })
     } else {
-     const insert = "INSERT INTO `leave` (`guildid`, `channelid`) VALUES (" + message.guild.id + "," + channel.id + ");";
+     const insert = "INSERT INTO \`leave\` (\`guildid\`, \`channelid\`) VALUES (" + message.guild.id + "," + channel.id + ");";
      sql.query(insert, function (error, results, fields) {
       if(error) console.log(error);
       message.lineReply({embed: {
