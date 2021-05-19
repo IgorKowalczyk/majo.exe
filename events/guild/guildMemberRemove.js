@@ -5,6 +5,7 @@ const MySQL = require('mysql');
 
 module.exports = async (client, member) => {
  try {
+  (async () => {
   const sql = MySQL.createPool({
    host: process.env.MYSQL_HOST,
    user: process.env.MYSQL_USER,
@@ -77,6 +78,7 @@ module.exports = async (client, member) => {
     .attachFiles(attachment);
    channel.send(embed);
   })
+  })();
  } catch(err) {
   console.log(err);
  }
