@@ -16,7 +16,7 @@ module.exports = async (client, member) => {
    port: "3306"
   });
   const sqlquery = 'SELECT channelid AS res FROM welcome WHERE guildid = ' + member.guild.id;
-  sql.query(sqlquery, function (error, results, fields) {
+  await sql.query(sqlquery, function (error, results, fields) {
    if(error) console.log(error);
    if (!results || results.length == 0) {
     sql.end();
