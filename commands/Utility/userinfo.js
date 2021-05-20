@@ -50,7 +50,7 @@ module.exports = {
     .addField("ID", user.user.id)
     .addField("Discriminator", `#${user.user.discriminator}`, true)
     .addField("Is Bot?", user.user.bot, true)
-    .addField("Account Delted?", user.deleted, true)
+    .addField("Account Deleted?", user.deleted, true)
     .addField("Badges", capitalizeFirstLetter(newbadges.join(", ").toLowerCase()) || "None")
     .addField("Status", `${stat[user.user.presence.status]} ${capitalizeFirstLetter(user.user.presence.status)}`)
     .setFooter("Requested by " + `${message.author.username}`, message.author.displayAvatarURL({ dynamic: true, format: 'png', size: 2048 }))
