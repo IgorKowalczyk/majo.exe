@@ -39,8 +39,8 @@ module.exports = async (client, oldMessage, newMessage) => {
      .addField("TTS", `${oldMessage.tts}`)
      .addField("Pinned", `${oldMessage.pinned}`)
      .addField("Send By", `<@${oldMessage.author.id}> (ID: ${oldMessage.author.id})`)
-     .addField("Old Message", "\`\`\`" + `${oldone}` + "\`\`\`")
-     .addField("New Message", "\`\`\`" + `${newone}` + "\`\`\`")
+     .addField("Old Message", "\`\`\`" + `${oldone || "I can't fetch the message ~Majo"}` + "\`\`\`")
+     .addField("New Message", "\`\`\`" + `${newone || "I can't fetch the message ~Majo"}` + "\`\`\`")
      .setTimestamp()
      .setFooter(oldMessage.guild.name, oldMessage.guild.iconURL())
     await log.send(event);
