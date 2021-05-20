@@ -1,15 +1,14 @@
 const Discord = require("discord.js");
 const chalk = require('chalk');
 const config = require("../../config");
-async function createAPIMessage(interaction, content) {
- const apiMessage = await Discord.APIMessage.create(client.channels.resolve(interaction.channel_id), content)
-  .resolveData()
-  .resolveFiles();
- return { ...apiMessage.data, files: apiMessage.files };
-}
-
 module.exports = (client) => {
  try {
+  async function createAPIMessage(interaction, content) {
+   const apiMessage = await Discord.APIMessage.create(client.channels.resolve(interaction.channel_id), content)
+    .resolveData()
+    .resolveFiles();
+   return { ...apiMessage.data, files: apiMessage.files };
+  }
   setInterval(() => {
    const emojis = ["😆", "😄", "😎", "😂", "🥳", "😘", "😜", "🤑", "😁", "😉", "🥰", "😍", "🤯", "🥶", "🤩", "😇", "😊", "☺️", "😌", "😋"];
    const emoji = emojis[Math.floor(Math.random()*emojis.length)];
