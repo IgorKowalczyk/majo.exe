@@ -22,7 +22,7 @@ module.exports = {
    badges.forEach(m => {
     newbadges.push(m.replace("_", " "))
    })
-   const embed = new MessageEmbed()
+   const embed = new Discord.MessageEmbed()
    .setThumbnail(user.user.displayAvatarURL({ dynamic: true }))
    let array = []
    if (user.user.presence.activities.length) {
