@@ -12,7 +12,7 @@
   "test": "node index.js"
  },
  "dependencies": {
-  "discord.js": "^12.3.1",
+  "discord.js": "^12.5.1",
   "erela.js": "^2.0.0",
   "chalk": "^4.1.0",
   "common-tags": "^1.8.0",
