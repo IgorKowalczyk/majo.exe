@@ -9,12 +9,12 @@ module.exports = {
  usage: "userinfo [user]",
  run: async (client, message, args) => { 
   try {
-   const user = message.mentions.members.first() || message.author;
+   const user = message.mentions.members.first() || message.guild.members.cache.get(args[0]) || message.guild.members.cache.find(r => r.user.username.toLowerCase().includes() === args.join(' ').toLocaleLowerCase()) || message.guild.members.cache.find(r => r.displayName.toLowerCase().includes() === args.join(' ').toLocaleLowerCase()) || message.member;
    let stat = {
-    online: "https://emoji.gg/assets/emoji/9166_online.png",
-    idle: "https://emoji.gg/assets/emoji/3929_idle.png",
-    dnd: "https://emoji.gg/assets/emoji/2531_dnd.png",
-    offline: "https://emoji.gg/assets/emoji/7445_status_offline.png"
+    online: "<:online:844882507408211988>",
+    idle: "<:idle:844882507064410123>",
+    dnd: "<:dnd:844882506587176960>",
+    offline: "<:offline:844882504502870048>"
    }
    let badges = await user.user.flags
    badges = await badges.toArray();
@@ -39,14 +39,18 @@ module.exports = {
      embed.setDescription(array.join("\n"))
     }
    }
-   embed.setColor(user.displayHexColor === "#000000" ? "#ffffff" : user.displayHexColor)
+   embed.setColor("RANDOM")
    embed.setAuthor(user.user.tag, user.user.displayAvatarURL({ dynamic: true }))
    if (user.nickname !== null) embed.addField("Nickname", user.nickname)
    embed.addField("Joined At", moment(user.user.joinedAt).format("LLLL"))
     .addField("Account Created At", moment(user.user.createdAt).format("LLLL"))
-    .addField("Common Information", `ID: \`${user.user.id}\`\nDiscriminator: ${user.user.discriminator}\nBot: ${user.user.bot}\nDeleted User: ${user.deleted}`)
+    .addField("ID", user.user.id)
+    .addField("Discriminator", user.user.discriminator, true)
+    .addField("Is Bot?", user.user.bot, true)
+    .addField("Account Delted?", user.deleted, true)
     .addField("Badges", newbadges.join(", ").toLowerCase() || "None")
-    .setFooter(user.user.presence.status, stat[user.user.presence.status])
+    .addField("Status", stat[user.user.presence.status] + user.user.presence.status)
+    .setFooter("Requested by " + `${message.author.username}`, message.author.displayAvatarURL({ dynamic: true, format: 'png', size: 2048 }))
    message.lineReply(embed);
   } catch(err) {
    console.log(err);
