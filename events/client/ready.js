@@ -1,6 +1,7 @@
 const Discord = require("discord.js");
 const chalk = require('chalk');
 const config = require("../../config");
+
 module.exports = (client) => {
  try {
   setInterval(() => {
@@ -54,7 +55,7 @@ module.exports = (client) => {
   const args = interaction.data.options;
   if(command == "majo") {
    const embed = new Discord.MessageEmbed()
-    .setDescription(`Hello, ${client.user.username} unfortunately **do not support slash commands**. And we do not currently plan to add them either. We apologize ;-;`)
+    .setDescription(`Hello, ${client.user.username} unfortunately **do not support slash commands**. And we do not currently plan to add them either. We apologize ;-; If you want use my normal commands please check \`${config.prefix} help\`!`)
     .setTitle(`<a:sucess:759354039242063903> Hi ${interaction.member.user.username}! I'm ${client.user.username}`, client.user.displayAvatarURL({ dynamic: true, format: 'png', size: 2048 }))
     .setColor("RANDOM")
     .addField("Join support server", config.server)
