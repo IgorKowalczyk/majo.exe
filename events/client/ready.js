@@ -57,7 +57,7 @@ module.exports = (client) => {
   const command = interaction.data.name.toLowerCase();
   const args = interaction.data.options;
   if(command == "majo") {
-   const embed = new discord.MessageEmbed()
+   const embed = new Discord.MessageEmbed()
     .setTitle("Hi! I'm Majo!")
     .setDescription(".")
     .setAuthor(interaction.member.user.username);
