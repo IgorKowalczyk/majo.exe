@@ -143,29 +143,3 @@ if (process.env.TOKEN) {
  process.exit(1);
 }
 /* ---- */
-
- /* Slash command */
-client.on('ready', () => {
- client.api.applications(client.user.id).commands.post({data: {
-  name: 'majo',
-  description: 'Something about me!'
- }})
- client.ws.on('INTERACTION_CREATE', async interaction => {
-  const embed = new Discord.MessageEmbed()
-   .setTitle("Hi! I'm Majo!")
-   .setDescription(".")
-   .setAuthor(interaction.member.user.username)
-  client.api.interactions(interaction.id, interaction.token).callback.post({ //Post a response for your slash command
-   data: {
-    type: 4,
-    data: await createAPIMessage(interaction, embed)
-   }
-  });
- });
-});
-async function createAPIMessage(interaction, content) {
- const apiMessage = await Discord.APIMessage.create(client.channels.resolve(interaction.channel_id), content)
-  .resolveData()
-  .resolveFiles();
- return { ...apiMessage.data, files: apiMessage.files };
-}
