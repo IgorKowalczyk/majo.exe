@@ -61,6 +61,7 @@ module.exports = (client) => {
   if(command == "majo") {
    const embed = new discord.MessageEmbed()
     .setTitle("Hi! I'm Majo!")
+    .setDescription(".")
     .setAuthor(interaction.member.user.username);
    client.api.interactions(interaction.id, interaction.token).callback.post({
     data: {
