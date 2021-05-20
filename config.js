@@ -18,7 +18,7 @@ module.exports = {
  "port": process.env.PORT,
  "sessionSecret": process.env.SESSION_SECRET,
  "prefix": process.env.PREFIX,
- "scopes": "bot",
+ "scopes": "bot%20applications.commands",
  "premissions": "4294967287",
  "youtube": process.env.YOUTUBE,
  "dashboard": process.env.DASHBOARD,
