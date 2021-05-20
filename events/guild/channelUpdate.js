@@ -99,7 +99,7 @@ module.exports = async (client, oldChannel, newChannel) => {
       .setFooter(oldChannel.guild.name, oldChannel.guild.iconURL())
      log.send(newtopic);
     }
-   })()
+   })
    })();
   });
  } catch (err) {
