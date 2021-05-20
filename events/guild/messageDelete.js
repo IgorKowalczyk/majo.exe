@@ -39,7 +39,7 @@ module.exports = async (client, message) => {
     .addField("TTS", `${message.tts}`)
     .addField("Pinned", `${message.pinned}`)
     .addField("Send By", `<@${message.author.id}> (ID: ${message.author.id})`)
-    .addField("Message", "\`\`\`" + `${final.replaceAll("`", "'")}` + "\`\`\`")
+    .addField("Message", "\`\`\`" + `${final.replace("/`/g", "'")}` + "\`\`\`")
     .setTimestamp()
     .setFooter(message.guild.name, message.guild.iconURL())
    await log.send(event)
