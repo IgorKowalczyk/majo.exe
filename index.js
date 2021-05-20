@@ -33,13 +33,17 @@ client.sql == sql;
 
 
 /* Logging system config */
-sql.query('CREATE TABLE IF NOT EXISTS `logs` (`guildid` VARCHAR(32) NOT NULL, `channelid` VARCHAR(32) NOT NULL);', (err) => {
- if (err) console.error(err);
+sql.query('CREATE TABLE IF NOT EXISTS `logs` (`guildid` VARCHAR(32) NOT NULL, `channelid` VARCHAR(32) NOT NULL);', function (error, results, fields) {
+ if (error) console.error(error);
  console.log('[SQL] Fetched table `logs`! Status: Success');
-});
-sql.query('ALTER TABLE `logs` ADD UNIQUE(`guildid`)', (err) => {
- if (err) console.error(err);
- console.log('[SQL] Added unique key to row `guildid` from table `logs`! Status: Success');
+ if(results[0]) {
+  sql.query('ALTER TABLE `logs` ADD UNIQUE(`guildid`)', (err) => {
+   if (err) console.error(err);
+   console.log('[SQL] Added unique key to row `guildid` from table `logs`! Status: Success');
+  }); 
+ } else {
+  return console.log('[SQL] Skipped adding unique key to row `guildid` frm table `logs` - The table already exists!')
+ }
 });
 /* ---- */
 
