@@ -10,7 +10,7 @@ module.exports = {
  run: async (client, message, args) => { 
   try {
    const member = message.mentions.members.first() || message.author;
-   const embed = new MessageEmbed()
+   const embed = new Discord.MessageEmbed()
     .setTitle(`${member.displayName}'s Information`)
     .setThumbnail(member.user.displayAvatarURL({dynamic: true}))
     .addField('User', member, true)
