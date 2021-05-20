@@ -146,6 +146,10 @@ if (process.env.TOKEN) {
 
  /* Slash command */
 client.on('ready', () => {
+ client.api.applications(client.user.id).commands.post({data: {
+  name: 'majo',
+  description: 'Something about me!'
+ }})
  client.ws.on('INTERACTION_CREATE', async interaction => {
   const command = interaction.data.name.toLowerCase();
   const args = interaction.data.options;

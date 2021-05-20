@@ -48,11 +48,6 @@ module.exports = (client) => {
   } else {
    return;
   }
- client.api.applications(client.user.id).commands.post({data: {
-  name: 'majo',
-  description: 'Something about me!'
- }})
-
 } catch(err) {
   console.log(err);
  }
