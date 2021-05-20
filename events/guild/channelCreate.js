@@ -28,17 +28,17 @@ module.exports = async (client, channel) => {
    if(!log) return;
    if (!log.guild.member(client.user).hasPermission("EMBED_LINKS", "VIEW_CHANNEL", "READ_MESSAGE_HISTORY", "VIEW_AUDIT_LOG", "SEND_MESSAGES")) return;
    if (channel.type === "text") {
-    var type = "Text";
+    type = "Text";
    } else if (channel.type === "voice") {
-    var type = "Voice";
+    type = "Voice";
    } else if (channel.type === "category") {
-    var type = "Category";
+    type = "Category";
    } else if (channel.type === "news") {
-     var type = "News Feed";
+     type = "News Feed";
    } else if (channel.type === "store") {
-     var type = "Store channel";
+     type = "Store channel";
    } else if (!channel.type) {
-     var type = "?";
+     type = "?";
    }
    channel.guild.fetchAuditLogs().then(logs => {
     const userid = logs.entries.first().executor.id;

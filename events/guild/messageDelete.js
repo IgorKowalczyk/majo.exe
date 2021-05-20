@@ -22,27 +22,27 @@ module.exports = async (client, message) => {
    const logsetup = results[0].res;
    sql.end();
    (async () => {
-   const log = await message.guild.channels.cache.find(c => c.id == logsetup && c.type == "text");
-   if(message.author.bot) return;
-   if(message.channel.type === 'dm') return;
-   if (!message.guild.member(client.user).hasPermission("EMBED_LINKS", "VIEW_CHANNEL", "READ_MESSAGE_HISTORY", "VIEW_AUDIT_LOG", "SEND_MESSAGES")) return;
-   if(!log) return;
-   if (!log.guild.member(client.user).hasPermission("EMBED_LINKS", "VIEW_CHANNEL", "READ_MESSAGE_HISTORY", "VIEW_AUDIT_LOG", "SEND_MESSAGES")) return;
-   const final = message.toString().substr(0, 1000).replace(/`/g, "'"); // Limit characters
-   const event = await new Discord.MessageEmbed()
-    .setTitle(`Message Deleted`)
-    .setColor('RANDOM')
-    .setThumbnail(message.author.avatarURL())
-    .addField("Channel", `<#${message.channel.id}> (ID: ${message.channel.id})`)
-    .addField("Message ID", `${message.id}`)
-    .addField("Created at", `${message.createdAt}`)
-    .addField("TTS", `${message.tts}`)
-    .addField("Pinned", `${message.pinned}`)
-    .addField("Send By", `<@${message.author.id}> (ID: ${message.author.id})`)
-    .addField("Message", "\`\`\`" + `${final}` + "\`\`\`")
-    .setTimestamp()
-    .setFooter(message.guild.name, message.guild.iconURL())
-   await log.send(event)
+    const log = await message.guild.channels.cache.find(c => c.id == logsetup && c.type == "text");
+    if(message.author.bot) return;
+    if(message.channel.type === 'dm') return;
+    if (!message.guild.member(client.user).hasPermission("EMBED_LINKS", "VIEW_CHANNEL", "READ_MESSAGE_HISTORY", "VIEW_AUDIT_LOG", "SEND_MESSAGES")) return;
+    if(!log) return;
+    if (!log.guild.member(client.user).hasPermission("EMBED_LINKS", "VIEW_CHANNEL", "READ_MESSAGE_HISTORY", "VIEW_AUDIT_LOG", "SEND_MESSAGES")) return;
+    const final = message.toString().substr(0, 1000).replace(/`/g, "'"); // Limit characters
+    const event = await new Discord.MessageEmbed()
+     .setTitle(`Message Deleted`)
+     .setColor('RANDOM')
+     .setThumbnail(message.author.avatarURL())
+     .addField("Channel", `<#${message.channel.id}> (ID: ${message.channel.id})`)
+     .addField("Message ID", `${message.id}`)
+     .addField("Created at", `${message.createdAt}`)
+     .addField("TTS", `${message.tts}`)
+     .addField("Pinned", `${message.pinned}`)
+     .addField("Send By", `<@${message.author.id}> (ID: ${message.author.id})`)
+     .addField("Message", "\`\`\`" + `${final}` + "\`\`\`")
+     .setTimestamp()
+     .setFooter(message.guild.name, message.guild.iconURL())
+    await log.send(event)
    })()
   })
  } catch (err) {
