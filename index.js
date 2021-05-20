@@ -42,7 +42,7 @@ sql.query('CREATE TABLE IF NOT EXISTS `logs` (`guildid` VARCHAR(32) NOT NULL, `c
    console.log('[SQL] Added unique key to row `guildid` from table `logs`! Status: Success');
   }); 
  } else {
-  return console.log('[SQL] Skipped adding unique key to row `guildid` frm table `logs` - The table already exists!')
+  return console.log('[SQL] Skipped adding unique key to row `guildid` from table `logs` - The table already exists!')
  }
 });
 /* ---- */
@@ -51,22 +51,30 @@ sql.query('CREATE TABLE IF NOT EXISTS `logs` (`guildid` VARCHAR(32) NOT NULL, `c
 
 /* Welcome and leave messages config */
 /* = Welcome message = */
-sql.query('CREATE TABLE IF NOT EXISTS `welcome` (`guildid` VARCHAR(32) NOT NULL, `channelid` VARCHAR(32) NOT NULL);', (err) => {
- if (err) console.error(err);
+sql.query('CREATE TABLE IF NOT EXISTS `welcome` (`guildid` VARCHAR(32) NOT NULL, `channelid` VARCHAR(32) NOT NULL);', function (error, results, fields) {
+ if (error) console.error(error);
  console.log('[SQL] Fetched table `welcome`! Status: Success');
-});
-sql.query('ALTER TABLE `welcome` ADD UNIQUE(`guildid`)', (err) => {
- if (err) console.error(err);
- console.log('[SQL] Added unique key to row `guildid` from table `welcome`! Status: Success');
+ if(results[0]) {
+  sql.query('ALTER TABLE `welcome` ADD UNIQUE(`guildid`)', (err) => {
+   if (err) console.error(err);
+   console.log('[SQL] Added unique key to row `guildid` from table `welcome`! Status: Success');
+  });
+ } else {
+  console.log("[SQL] Skipped adding unique key to row `guildid` from table `welcome` - The table already exists!")
+ }
 });
 /* = Leave message = */
-sql.query('CREATE TABLE IF NOT EXISTS `leave` (`guildid` VARCHAR(32) NOT NULL, `channelid` VARCHAR(32) NOT NULL);', (err) => {
- if (err) console.error(err);
+sql.query('CREATE TABLE IF NOT EXISTS `leave` (`guildid` VARCHAR(32) NOT NULL, `channelid` VARCHAR(32) NOT NULL);', function (error, results, fields) {
+ if (error) console.error(error);
  console.log('[SQL] Fetched table `leave`! Status: Success');
-});
-sql.query('ALTER TABLE `leave` ADD UNIQUE(`guildid`)', (err) => {
- if (err) console.error(err);
- console.log('[SQL] Added unique key to row `guildid` from table `leave`! Status: Success');
+ if(results[0]) {
+  sql.query('ALTER TABLE `leave` ADD UNIQUE(`guildid`)', (err) => {
+   if (err) console.error(err);
+   console.log('[SQL] Added unique key to row `guildid` from table `leave`! Status: Success');
+  });
+ } else {
+  console.log("[SQL] Skipped adding unique key to row `guildid` from table `leave` - The table already exists!")
+ }
 });
 /* ---- */
 
