@@ -100,7 +100,7 @@ module.exports = async (client, oldChannel, newChannel) => {
      log.send(newtopic);
     }
    })()
-   });
+   })();
   });
  } catch (err) {
   console.log(err);

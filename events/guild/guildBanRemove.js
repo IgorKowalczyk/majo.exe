@@ -38,8 +38,8 @@ module.exports = async (client, guild, user) => {
       .setTimestamp()
       .setFooter(guild.name, guild.iconURL());
      log.send(embed);
-   })();
    });
+  })();
   })
  } catch (err) {
   console.log(err);

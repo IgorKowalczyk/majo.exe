@@ -53,8 +53,8 @@ module.exports = async (client, channel) => {
      .setTimestamp()
      .setFooter(channel.guild.name, channel.guild.iconURL());
     log.send(event);
-   })();
    });
+   })();
   })
  } catch (err) {
   console.log(err);
