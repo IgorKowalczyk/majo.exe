@@ -143,3 +143,27 @@ if (process.env.TOKEN) {
  process.exit(1);
 }
 /* ---- */
+
+/* Slash command */
+client.ws.on('INTERACTION_CREATE', async interaction => {
+  const command = interaction.data.name.toLowerCase();
+  const args = interaction.data.options;
+  if(command == "majo") {
+   const embed = new Discord.MessageEmbed()
+    .setTitle("Hi! I'm Majo!")
+    .setDescription(".")
+    .setAuthor(interaction.member.user.username);
+   client.api.interactions(interaction.id, interaction.token).callback.post({
+    data: {
+     type: 4,
+     data: await createAPIMessage(interaction, embed)
+    }
+   });
+  }
+ });
+ async function createAPIMessage(interaction, content) {
+  const apiMessage = await Discord.APIMessage.create(client.channels.resolve(interaction.channel_id), content)
+   .resolveData()
+   .resolveFiles();
+  return { ...apiMessage.data, files: apiMessage.files };
+ }
