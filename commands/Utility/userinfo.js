@@ -31,7 +31,7 @@ module.exports = {
     value: customStatus
    });
    if (userFlags.length > 0) embed.addField('Badges', userFlags.map(flag => flags[flag]).join('\n'));
-   message.channel.send(embed);
+   message.lineReply(embed);
   } catch(err) {
    console.log(err);
    message.lineReply({embed: {
