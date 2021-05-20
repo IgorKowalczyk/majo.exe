@@ -16,6 +16,9 @@ module.exports = {
     dnd: "<:dnd:844882506587176960>",
     offline: "<:offline:844882504502870048>"
    }
+   function capitalizeFirstLetter(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+   }
    let badges = await user.user.flags
    badges = await badges.toArray();
    let newbadges = [];
@@ -45,11 +48,11 @@ module.exports = {
    embed.addField("Joined At", moment(user.user.joinedAt).format("LLLL"))
     .addField("Account Created At", moment(user.user.createdAt).format("LLLL"))
     .addField("ID", user.user.id)
-    .addField("Discriminator", user.user.discriminator, true)
+    .addField("Discriminator", `#${user.user.discriminator}`, true)
     .addField("Is Bot?", user.user.bot, true)
     .addField("Account Delted?", user.deleted, true)
-    .addField("Badges", newbadges.join(", ").toLowerCase() || "None")
-    .addField("Status", stat[user.user.presence.status] + user.user.presence.status)
+    .addField("Badges", capitalizeFirstLetter(newbadges.join(", ").toLowerCase()) || "None")
+    .addField("Status", `${stat[user.user.presence.status]} ${capitalizeFirstLetter(user.user.presence.status)}`)
     .setFooter("Requested by " + `${message.author.username}`, message.author.displayAvatarURL({ dynamic: true, format: 'png', size: 2048 }))
    message.lineReply(embed);
   } catch(err) {
