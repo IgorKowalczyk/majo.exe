@@ -16,7 +16,7 @@ module.exports = {
     .addField('User', member, true)
     .addField('Discriminator', `\`#${member.user.discriminator}\``, true)
     .addField('ID', `\`${member.id}\``, true)
-    .addField('Status', statuses[member.presence.status], true)
+    .addField('Status', member.presence.status || "None", true)
     .addField('Bot', `\`${member.user.bot}\``, true)
     .addField('Color Role', member.roles.color || '`None`', true)
     .addField('Highest Role', member.roles.highest, true)
@@ -30,7 +30,7 @@ module.exports = {
     name: 'Custom Status',
     value: customStatus
    });
-   if (userFlags.length > 0) embed.addField('Badges', userFlags.map(flag => flags[flag]).join('\n'));
+   if (member.flags.length > 0) embed.addField('Badges', member.flags.map(flag => flags[flag]).join('\n'));
    message.lineReply(embed);
   } catch(err) {
    console.log(err);
