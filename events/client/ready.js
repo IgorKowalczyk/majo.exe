@@ -50,11 +50,9 @@ module.exports = (client) => {
    return;
   }
  client.api.applications(client.user.id).commands.post({data: {
-  data: {
-   name: "majo",
-   description: "Something about me!"
-  }
- }});
+  name: 'majo',
+  description: 'Something about me!'
+ }})
  client.ws.on('INTERACTION_CREATE', async interaction => {
   const command = interaction.data.name.toLowerCase();
   const args = interaction.data.options;
