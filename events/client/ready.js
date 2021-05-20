@@ -59,7 +59,7 @@ module.exports = (client) => {
     .setColor("RANDOM")
     .addField("Join support server", config.server)
     .addField("Invite me", `**[Click this link to invite me!](https://discord.com/oauth2/authorize/?permissions=${config.premissions}&scope=${config.scopes}&client_id=${client.user.id})** **__[Recomended!]__**\nOr [click this link to invite me *as root*](https://discord.com/oauth2/authorize/?permissions=8&scope=${config.scopes}&client_id=${client.user.id}) [Not recomended!]`)
-    .setFooter("Requested by: ", interaction.member.user.username, client.user.displayAvatarURL({ dynamic: true, format: 'png', size: 2048 }))
+    .setFooter("Requested by: " + interaction.member.user.username, client.user.displayAvatarURL({ dynamic: true, format: 'png', size: 2048 }))
    client.api.interactions(interaction.id, interaction.token).callback.post({
     data: {
      type: 4,
