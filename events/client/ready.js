@@ -49,6 +49,33 @@ module.exports = (client) => {
   } else {
    return;
   }
+ client.api.applications(client.user.id).commands.post({data: {
+  data: {
+   name: "majo",
+   description: "Something about me!"
+  }
+ }});
+ client.ws.on('INTERACTION_CREATE', async interaction => {
+  const command = interaction.data.name.toLowerCase();
+  const args = interaction.data.options;
+  if(command == "majo") {
+   const embed = new discord.MessageEmbed()
+    .setTitle("Hi! I'm Majo!")
+    .setAuthor(interaction.member.user.username);
+   client.api.interactions(interaction.id, interaction.token).callback.post({
+    data: {
+     type: 4,
+     data: await createAPIMessage(interaction, embed)
+    }
+   });
+  }
+ });
+ async function createAPIMessage(interaction, content) {
+  const apiMessage = await discord.APIMessage.create(client.channels.resolve(interaction.channel_id), content)
+   .resolveData()
+   .resolveFiles();
+  return { ...apiMessage.data, files: apiMessage.files };
+ }
 } catch(err) {
   console.log(err);
  }
