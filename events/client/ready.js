@@ -10,25 +10,24 @@ module.exports = (client) => {
    var date = new Date().toJSON().slice(0, 10).replace(/-/g, "/");
    const discordbday = new Date().getFullYear() + "/05/13";
    const statuslist = [];
-   /* if (date == discordbday) {
+   if (date == discordbday) {
     statuslist.push(
-     `🎉 ${client.guilds.cache.size} servers 🎉 #DISCORD-PLS-NOT-CHANGE-DESIGN`,
-     `🎉 ${client.guilds.cache.reduce((a, g) => a + g.memberCount, 0)} members 🎉 #DISCORD-PLS-NOT-CHANGE-DESIGN`,
-     `🎉 ${config.prefix} help 🎉 #DISCORD-PLS-NOT-CHANGE-DESIGN`,	
-     `🎉 Discord please back to old style, please not change the design... 🎉`,
+     `🎉 ${client.guilds.cache.size} servers 🎉`,
+     `🎉 ${client.guilds.cache.reduce((a, g) => a + g.memberCount, 0)} members 🎉`,
+     `🎉 ${config.prefix} help 🎉`,	
     );	
    } else {	
     statuslist.push(	
-     `${emoji} | ${client.guilds.cache.size} servers #DISCORD-PLS-NOT-CHANGE-DESIGN`,
-     `${emoji} | ${client.guilds.cache.reduce((a, g) => a + g.memberCount, 0)} members #DISCORD-PLS-NOT-CHANGE-DESIGN`,
+     `${emoji} | ${client.guilds.cache.size} servers | Discord please back to old style 😭`,
+     `${emoji} | ${client.guilds.cache.reduce((a, g) => a + g.memberCount, 0)} members | Discord please back to old style 😭`,
      `${emoji} | ${config.prefix} help`,
-     `${emoji} | Waiting for verification! (${client.guilds.cache.size} guilds 🥰) #DISCORD-PLS-NOT-CHANGE-DESIGN`,
-    );	
-   }	
+     `${emoji} | Waiting for verification! (${client.guilds.cache.size} guilds 🥰) | Discord please back to old style 😭`,
+     `${emoji} | Discord please back to old style, please not change the design...`,
+     );	
+   }
    const random = Math.floor(Math.random() * (statuslist.length - 1) + 1);
    client.user.setActivity(statuslist[random], { type: 'LISTENING' });
-   */
-  client.user.setActivity("😭 Discord please back to old style, please not change the design 😭", { type: 'LISTENING' });
+   // client.user.setActivity("😭 Discord please back to old style, please not change the design 😭", { type: 'LISTENING' });
   }, 10000);
   client.user.setStatus("online");
   const datelog = new Date();
