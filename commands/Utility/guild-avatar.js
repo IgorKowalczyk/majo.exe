@@ -1,4 +1,5 @@
 const Discord = require("discord.js");
+const Extra = require('discord-buttons');
 
 module.exports = {
  name: "guild-avatar",
@@ -9,13 +10,17 @@ module.exports = {
  run: async (client, message, args) => {
   try {
     const gavatar = message.guild.iconURL({ dynamic: true, format: 'png', size: 2048 });
+    const button = new Extra.MessageButton()
+     .setLabel("Avatar link")
+     .setStyle('url')
+     .setURL(gavatar)
     const embed = new Discord.MessageEmbed()
      .setColor("RANDOM")
      .setAuthor(message.guild.name + " Avatar", gavatar)
      .setImage(gavatar) 
      .setTimestamp()
      .setFooter("Requested by " + `${message.author.username}`, message.author.displayAvatarURL({ dynamic: true, format: 'png', size: 2048 }))
-    message.lineReply(embed)
+    message.channel.send({button: button, embed: embed})
   } catch (err) {
    message.lineReply({embed: {
     color: 16734039,
