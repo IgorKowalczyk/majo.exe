@@ -1,5 +1,5 @@
 const Discord = require("discord.js");
-const Extra = require('discord-buttons');
+const Extra = require('discord-buttons')(client);
 
 module.exports = {
  name: "avatar",
