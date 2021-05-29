@@ -1,5 +1,10 @@
 const Discord = require("discord.js");
-const client = new Discord.Client({disableEveryone: true});
+const client = new Discord.Client({
+ disableEveryone: true,
+ allowedMentions: {
+  repliedUser: false
+ }
+});
 const fs = require("fs");
 const http = require("http");
 const db = require("quick.db");
