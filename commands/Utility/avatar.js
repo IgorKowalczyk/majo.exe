@@ -1,4 +1,5 @@
 const Discord = require("discord.js");
+const Extra = require('discord-buttons');
 
 module.exports = {
  name: "avatar",
@@ -27,6 +28,10 @@ module.exports = {
     format: "png",
     size: 2048,
    });
+   const button = new Extra.MessageButton()
+    .setLabel("Avatar link")
+    .setStyle('url')
+    .setURL(uavatar)
    const embed = new Discord.MessageEmbed()
     .setColor("RANDOM")
     .setAuthor(User.user.username + "'s Avatar", uavatar)
@@ -34,23 +39,9 @@ module.exports = {
     .setTimestamp()
     .setFooter(
      "Requested by " + `${message.author.username}`,
-     message.author.displayAvatarURL({
-      dynamic: true,
-      format: "png",
-      size: 2048,
-     })
+     message.author.displayAvatarURL({dynamic: true, format: "png", size: 2048})
     );
-    message.buttons({
-      buttons: [
-       {
-        style: "url",
-        label: "Avatar link",
-        url: uavatar,
-       },
-      ],
-      embed: embed,
-     });
-   // message.lineReply(embed);
+   message.lineReply(embed, button);
   } catch (err) {
    message.lineReply({
     embed: {
