@@ -9,6 +9,7 @@ const { GiveawaysManager } = require('discord-giveaways');
 const MySQL = require('mysql');
 require('dotenv').config()
 require("./utilities/inline_reply")
+require("./utilities/buttons")
 
 /* Database connect */
 const sql = MySQL.createConnection({
