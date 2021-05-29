@@ -21,7 +21,7 @@ module.exports = {
     .setImage(uavatar)
     .setTimestamp()
     .setFooter("Requested by " + `${message.author.username}`, message.author.displayAvatarURL({dynamic: true, format: "png", size: 2048}) );
-   message.lineReply(embed, { button: button });
+   message.lineReply({ button: button, embed: embed });
   } catch (err) {
    message.lineReply({
     embed: {

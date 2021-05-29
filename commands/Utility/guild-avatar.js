@@ -16,11 +16,11 @@ module.exports = {
      .setURL(gavatar)
     const embed = new Discord.MessageEmbed()
      .setColor("RANDOM")
-     .setAuthor(message.guild.name + " Avatar", gavatar)
+     .setAuthor(message.guild.name + " Icon", gavatar)
      .setImage(gavatar) 
      .setTimestamp()
      .setFooter("Requested by " + `${message.author.username}`, message.author.displayAvatarURL({ dynamic: true, format: 'png', size: 2048 }))
-    message.channel.send({button: button, embed: embed})
+    message.lineReply({button: button, embed: embed})
   } catch (err) {
    message.lineReply({embed: {
     color: 16734039,
