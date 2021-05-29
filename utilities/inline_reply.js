@@ -1,38 +1,49 @@
-const { APIMessage, Structures } = require("discord.js");
-
-class ExtAPIMessage extends APIMessage {
- resolveData() {
-  if (this.data) return this;
-  super.resolveData();
-  const allowedMentions =
-   this.options.allowedMentions ||
-   this.target.client.options.allowedMentions ||
-   {};
-  if (allowedMentions.repliedUser !== undefined) {
-   if (this.data.allowed_mentions === undefined)
-    this.data.allowed_mentions = {};
-   Object.assign(this.data.allowed_mentions, {
-    replied_user: allowedMentions.repliedUser,
-   });
-  }
-  if (this.options.replyTo !== undefined) {
-   Object.assign(this.data, {
-    message_reference: { message_id: this.options.replyTo.id },
-   });
-  }
-  return this;
- }
-}
+const {APIMessage, Structures, APIMessageContentResolvable,} = require("discord.js");
 
 class Message extends Structures.get("Message") {
- lineReply(content, options) {
-  return this.channel.send(
-   ExtAPIMessage.create(this, content, options, { replyTo: this }).resolveData()
-  );
- }
+ async inlineReply(content, mention, options) {
+  const mentionRepliedUser =
+   typeof ((options || content || {}).allowedMentions || {}).repliedUser ===
+   "undefined"
+    ? true
+    : (options || content).allowedMentions.repliedUser;
+  delete ((options || content || {}).allowedMentions || {}).repliedUser;
 
- edit(content, options) {
-  return super.edit(ExtAPIMessage.create(this, content, options).resolveData());
+  const apiMessage =
+   content instanceof APIMessage
+    ? content.resolveData()
+    : APIMessage.create(this.channel, content, options).resolveData();
+  Object.assign(apiMessage.data, {
+   message_reference: { message_id: this.id },
+  });
+
+  if (
+   !apiMessage.data.allowed_mentions ||
+   Object.keys(apiMessage.data.allowed_mentions).length === 0
+  )
+   apiMessage.data.allowed_mentions = { parse: ["users", "roles", "everyone"] };
+  if (mention == true) {
+   if (typeof apiMessage.data.allowed_mentions.replied_user === "undefined")
+    Object.assign(apiMessage.data.allowed_mentions, {
+     replied_user: mentionRepliedUser,
+    });
+  }
+  if (Array.isArray(apiMessage.data.content)) {
+   return Promise.all(
+    apiMessage
+     .split()
+     .map((x) => {
+      x.data.allowed_mentions = apiMessage.data.allowed_mentions;
+      return x;
+     })
+     .map(this.inlineReply.bind(this))
+   );
+  }
+
+  const { data, files } = await apiMessage.resolveFiles();
+  return this.client.api.channels[this.channel.id].messages
+   .post({ data, files })
+   .then((d) => this.client.actions.MessageCreate.handle(d).message);
  }
 }
 
