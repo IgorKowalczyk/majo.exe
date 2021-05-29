@@ -1,6 +1,7 @@
 const Discord = require('discord.js')
 const fetch = require('node-fetch')
 const moment = require('moment')
+const Extra = require('discord-buttons');
 
 module.exports = {
  name: "github",
@@ -21,6 +22,10 @@ module.exports = {
       description: "❌ | 0 Users found, please provide vaild username"
      }})
      let {login, avatar_url, name, id, html_url, company, public_repos, public_gists, twitter_username, email, followers, following, location, created_at, bio} = body;
+     const button = new Extra.MessageButton()
+     .setLabel("See profile")
+     .setStyle('url')
+     .setURL(html_url)
      const embed = new Discord.MessageEmbed()
       .setAuthor(`🐙 ${login} Information!`, avatar_url)
       .setColor(`RANDOM`)
@@ -39,7 +44,7 @@ module.exports = {
       .addField(`Account Created`, moment.utc(created_at).format("dddd, MMMM, Do YYYY"))
       .setFooter("Requested by " + `${message.author.username}`, message.author.displayAvatarURL({ dynamic: true, format: 'png', size: 2048 }))
       .setTimestamp()
-     message.lineReply(embed)
+     message.lineReply({ button: button, embed: embed})
     })
   } catch (err) {
    message.lineReply({embed: {
