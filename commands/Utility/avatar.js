@@ -1,5 +1,4 @@
 const Discord = require("discord.js");
-const Extra = require('discord-buttons')(client);
 
 module.exports = {
  name: "avatar",
@@ -8,6 +7,7 @@ module.exports = {
  category: "Utility",
  usage: "avatar [user mention, user id, user name]",
  run: async (client, message, args) => {
+  const Extra = require('discord-buttons')(client);
   try {
    const User =
     (await message.mentions.members.first()) ||
