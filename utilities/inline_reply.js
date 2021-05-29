@@ -1,7 +1,7 @@
 const {APIMessage, Structures, APIMessageContentResolvable,} = require("discord.js");
 
 class Message extends Structures.get("Message") {
- async inlineReply(content, mention, options) {
+ async lineReply(content, mention, options) {
   const mentionRepliedUser =
    typeof ((options || content || {}).allowedMentions || {}).repliedUser ===
    "undefined"
@@ -36,7 +36,7 @@ class Message extends Structures.get("Message") {
       x.data.allowed_mentions = apiMessage.data.allowed_mentions;
       return x;
      })
-     .map(this.inlineReply.bind(this))
+     .map(this.lineReply.bind(this))
    );
   }
 
