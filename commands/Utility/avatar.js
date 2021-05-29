@@ -15,7 +15,6 @@ module.exports = {
     .setLabel("Avatar link")
     .setStyle('url')
     .setURL(uavatar)
-    .setID('useravatar')
    const embed = new Discord.MessageEmbed()
     .setColor("RANDOM")
     .setAuthor(User.user.username + "'s Avatar", uavatar)
