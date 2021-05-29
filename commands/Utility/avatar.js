@@ -41,7 +41,7 @@ module.exports = {
      "Requested by " + `${message.author.username}`,
      message.author.displayAvatarURL({dynamic: true, format: "png", size: 2048})
     );
-   message.lineReply(embed, button);
+   message.channel.send(embed, button);
   } catch (err) {
    message.lineReply({
     embed: {
