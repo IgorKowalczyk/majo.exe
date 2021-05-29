@@ -22,7 +22,7 @@ module.exports = {
     .setImage(uavatar)
     .setTimestamp()
     .setFooter("Requested by " + `${message.author.username}`, message.author.displayAvatarURL({dynamic: true, format: "png", size: 2048}) );
-   message.channel.send({ buttons: button, embed: embed});
+   message.channel.send({ button: button, embed: embed});
   } catch (err) {
    message.lineReply({
     embed: {
