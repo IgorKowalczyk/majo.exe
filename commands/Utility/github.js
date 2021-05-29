@@ -44,7 +44,7 @@ module.exports = {
       .addField(`Account Created`, moment.utc(created_at).format("dddd, MMMM, Do YYYY"))
       .setFooter("Requested by " + `${message.author.username}`, message.author.displayAvatarURL({ dynamic: true, format: 'png', size: 2048 }))
       .setTimestamp()
-     message.lineReply({ button: button, embed: embed})
+     message.lineReply(embed, button)
     })
   } catch (err) {
    message.lineReply({embed: {
