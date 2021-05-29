@@ -10,11 +10,7 @@ module.exports = {
   const Extra = require('discord-buttons')(client);
   try {
    const User = (await message.mentions.members.first()) || message.guild.members.cache.get(args[0]) || message.guild.members.cache.find((r) => r.user.username.toLowerCase().includes() === args.join(" ").toLocaleLowerCase() ) || message.guild.members.cache.find((r) => r.displayName.toLowerCase().includes() === args.join(" ").toLocaleLowerCase() ) || message.member;
-   const uavatar = User.user.displayAvatarURL({
-    dynamic: true,
-    format: "png",
-    size: 2048,
-   });
+   const uavatar = User.user.displayAvatarURL({dynamic: true, format: "png", size: 2048});
    const button = new Extra.MessageButton()
     .setLabel("Avatar link")
     .setStyle('url')
@@ -24,11 +20,8 @@ module.exports = {
     .setAuthor(User.user.username + "'s Avatar", uavatar)
     .setImage(uavatar)
     .setTimestamp()
-    .setFooter(
-     "Requested by " + `${message.author.username}`,
-     message.author.displayAvatarURL({dynamic: true, format: "png", size: 2048})
-    );
-   message.channel.send({ button: button, embed: embed});
+    .setFooter("Requested by " + `${message.author.username}`, message.author.displayAvatarURL({dynamic: true, format: "png", size: 2048}) );
+   message.channel.send({ buttons: button, embed: embed});
   } catch (err) {
    message.lineReply({
     embed: {
