@@ -41,6 +41,7 @@ module.exports = {
     .setFooter("Requested by " + `${message.author.username}`, message.author.displayAvatarURL({ dynamic: true, format: 'png', size: 2048 }))
    message.lineReply(embed);
   } catch(err) {
+   console.log(err);
    message.lineReply({embed: {
     color: 16734039,
     description: "Something went wrong... :cry:"
