@@ -81,6 +81,7 @@
   "nodemon": "^2.0.4",
   "i": "^0.3.6",
   "os": "^0.1.1",
+  "os-utils": "0.0.14",
   "memorystore": "^1.6.2",
   "passport": "^0.4.1",
   "passport-discord": "^0.1.4",
