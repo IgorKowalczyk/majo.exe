@@ -29,7 +29,8 @@ sql.query(sqlquery, function (error, results, fields) {
   channel = results[0].res
  } else {
   channel = "Not set!"
- } %>
+ }
+ }) %>
 <%= channel %>
 <h2>Roles</h2>
 <% let rolemap = guild.roles.cache
