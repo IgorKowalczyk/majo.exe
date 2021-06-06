@@ -1,4 +1,4 @@
-const Discord = require("discord.js");
+const Discord = require("discord.js")
 
 module.exports = {
  name: "iq",
@@ -8,20 +8,21 @@ module.exports = {
  usage: "iq",
  run: async (client, message, args) => {
   try {
-   const iq = Math.floor(Math.random() * 226);
+   const iq = Math.floor(Math.random() * 226)
    const embed = new Discord.MessageEmbed()
     .setTitle(":brain: IQ Test:")
     .setDescription(":bulb: " + message.author.username + " IQ: `" + iq + "`")
     .setColor(`RANDOM`)
     .setTimestamp()
-    .setFooter("Requested by " + `${message.author.username}`, message.author.displayAvatarURL({ dynamic: true, format: 'png', size: 2048 }))
-   message.lineReply(embed);
+    .setFooter("Requested by " + `${message.author.username}`, message.author.displayAvatarURL({ dynamic: true, format: "png", size: 2048 }))
+   message.lineReply(embed)
   } catch (err) {
-   message.lineReply({embed: {
-    color: 16734039,
-    description: "Something went wrong... :cry:"
-   }})
+   message.lineReply({
+    embed: {
+     color: 16734039,
+     description: "Something went wrong... :cry:",
+    },
+   })
   }
- }
+ },
 }
- 

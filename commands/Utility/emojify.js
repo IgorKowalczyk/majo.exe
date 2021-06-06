@@ -1,5 +1,5 @@
-const Discord = require("discord.js");
-const emoji = require('discord-emoji-convert');
+const Discord = require("discord.js")
+const emoji = require("discord-emoji-convert")
 
 module.exports = {
  name: "emojify",
@@ -9,32 +9,37 @@ module.exports = {
  usage: "emojify (text)",
  run: async (client, message, args) => {
   try {
-   const emojis = args.join(" ");
-   if(!emojis) {
-    return message.lineReply({embed: {
-     color: 16734039,
-     description: '❌ | Please enter text'
-    }})
+   const emojis = args.join(" ")
+   if (!emojis) {
+    return message.lineReply({
+     embed: {
+      color: 16734039,
+      description: "❌ | Please enter text",
+     },
+    })
    }
-   if(emojis.lenght < 30) {
-    return message.lineReply({embed: {
-     color: 16734039,
-     description: '❌ | Please enter shorter string. Please shorten the text, maximum length is 30 characters!'
-    }})
+   if (emojis.lenght < 30) {
+    return message.lineReply({
+     embed: {
+      color: 16734039,
+      description: "❌ | Please enter shorter string. Please shorten the text, maximum length is 30 characters!",
+     },
+    })
    }
-   const converted = emoji.convert(emojis);
+   const converted = emoji.convert(emojis)
    const embed = new Discord.MessageEmbed()
     .setColor("RANDOM")
     .setDescription(`Converted text: ${converted}`)
-    .setFooter("Requested by " + `${message.author.username}`, message.author.displayAvatarURL({ dynamic: true, format: 'png', size: 2048 }))
+    .setFooter("Requested by " + `${message.author.username}`, message.author.displayAvatarURL({ dynamic: true, format: "png", size: 2048 }))
    message.lineReply(embed)
   } catch (err) {
-   console.log(err);
-   message.lineReply({embed: {
-    color: 16734039,
-    description: "Something went wrong... :cry:"
-   }})
+   console.log(err)
+   message.lineReply({
+    embed: {
+     color: 16734039,
+     description: "Something went wrong... :cry:",
+    },
+   })
   }
- }
+ },
 }
- 

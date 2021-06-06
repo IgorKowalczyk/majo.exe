@@ -1,4 +1,4 @@
-const Discord = require("discord.js");
+const Discord = require("discord.js")
 const Random = require("srod-v2")
 
 module.exports = {
@@ -9,14 +9,15 @@ module.exports = {
  usage: "advice",
  run: async (client, message, args) => {
   try {
-   const Data = await Random.GetAdvice();
-   return message.lineReply(Data);
+   const Data = await Random.GetAdvice()
+   return message.lineReply(Data)
   } catch (err) {
-   message.lineReply({embed: {
-    color: 16734039,
-    description: "Something went wrong... :cry:"
-   }})
+   message.lineReply({
+    embed: {
+     color: 16734039,
+     description: "Something went wrong... :cry:",
+    },
+   })
   }
- }
+ },
 }
- 

@@ -2,7 +2,7 @@
  "name": "majo.exe",
  "description": "An advanced Discord bot",
  "logo": "https://igorkowalczyk.github.io/lib/favicon/favicon.jpg",
- "repository":"https://github.com/igorkowalczyk/majobot.git",
+ "repository": "https://github.com/igorkowalczyk/majobot.git",
  "stack": "heroku-20",
  "buildpacks": [
   {
@@ -75,11 +75,5 @@
    "required": true
   }
  },
- "keywords": [
-  "discord",
-  "discord-bot",
-  "node-js",
-  "web-dashboard",
-  "bot"
-  ]
+ "keywords": ["discord", "discord-bot", "node-js", "web-dashboard", "bot"]
 }

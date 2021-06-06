@@ -1,7 +1,7 @@
-const ytsr = require("youtube-sr");
-const Discord = require("discord.js");
-const { play } = require("../../utilities/play");
-const config = require("../../config");
+const ytsr = require("youtube-sr")
+const Discord = require("discord.js")
+const { play } = require("../../utilities/play")
+const config = require("../../config")
 
 module.exports = {
  name: "filter",
@@ -11,32 +11,40 @@ module.exports = {
  usage: "filter <filter>",
  run: async (client, message, args) => {
   try {
-   if (!message.guild) return;
-   const { channel } = message.member.voice;
-   const queue = message.client.queue.get(message.guild.id);
-   if(!queue) {
-    return message.lineReply({embed: {
-     color: 16734039,
-     description: "There is nothing in the queue right now!",
-    }})
+   if (!message.guild) return
+   const { channel } = message.member.voice
+   const queue = message.client.queue.get(message.guild.id)
+   if (!queue) {
+    return message.lineReply({
+     embed: {
+      color: 16734039,
+      description: "There is nothing in the queue right now!",
+     },
+    })
    }
    if (message.channel.activeCollector) {
-    return message.lineReply({embed: {
-     color: 16734039,
-     description: "There is a search active!",
-    }})
+    return message.lineReply({
+     embed: {
+      color: 16734039,
+      description: "There is a search active!",
+     },
+    })
    }
    if (!message.member.voice.channel) {
-    return message.lineReply({embed: {
-     color: 16734039,
-     description: "Please join a voice channel first",
-    }})
+    return message.lineReply({
+     embed: {
+      color: 16734039,
+      description: "Please join a voice channel first",
+     },
+    })
    }
    if (queue && channel !== message.guild.me.voice.channel) {
-    return message.lineReply({embed: {
-     color: 16734039,
-     description: "You must be in the same voice channel as me",
-    }})
+    return message.lineReply({
+     embed: {
+      color: 16734039,
+      description: "You must be in the same voice channel as me",
+     },
+    })
    }
    //Define all filters with ffmpeg https://ffmpeg.org/ffmpeg-filters.html
    const filters = [
@@ -55,58 +63,59 @@ module.exports = {
     // "sofalizer=sofa=../utilities/music-filters/ClubFritz12.sofa:type=freq:radius=2:rotation=5", //sofa
     "silenceremove=window=0:detection=peak:stop_mode=all:start_mode=all:stop_periods=-1:stop_threshold=0", //desilencer
     "remove",
-   ];
-   let varforfilter;
-   let choice;
+   ]
+   let varforfilter
+   let choice
    switch (args[0]) {
     case "bassboost":
-     varforfilter = 0;
-     break;
+     varforfilter = 0
+     break
     case "8D":
-     varforfilter = 1;
-     break;
+     varforfilter = 1
+     break
     case "vaporwave":
-     varforfilter = 2;
-     break;
+     varforfilter = 2
+     break
     case "nightcore":
-     varforfilter = 3;
-     break;
+     varforfilter = 3
+     break
     case "phaser":
-     varforfilter = 4;
-     break;
+     varforfilter = 4
+     break
     case "tremolo":
-     varforfilter = 5;
-     break;
+     varforfilter = 5
+     break
     case "vibrato":
-     varforfilter = 6;
-     break;
+     varforfilter = 6
+     break
     case "surrounding":
-     varforfilter = 7;
-     break;
+     varforfilter = 7
+     break
     case "pulsator":
-     varforfilter = 8;
-     break;
+     varforfilter = 8
+     break
     case "subboost":
-     varforfilter = 9;
-     break;
+     varforfilter = 9
+     break
     case "chorus":
-     varforfilter = 10;
-     break;
+     varforfilter = 10
+     break
     case "karaoke":
-     varforfilter = 11;
-     break;
+     varforfilter = 11
+     break
     case "desilencer":
-     varforfilter = 12;
-     break;
+     varforfilter = 12
+     break
     case "clear":
-     varforfilter = 13;
-     break;
+     varforfilter = 13
+     break
     default:
-     varforfilter = 404;
+     varforfilter = 404
      const embed = new Discord.MessageEmbed()
       .setColor("RANDOM")
       .setTitle("Not a valid Filter, use one of those:")
-      .setDescription(`
+      .setDescription(
+       `
        \`bassboost\`
        \`8D\`
        \`vaporwave\`
@@ -122,34 +131,34 @@ module.exports = {
        \`desilencer (removes silence in the song automatically)\`
        **To clear all filters just enter \`clear\` option.**\n**Example: ${config.prefix} filter bassboost**`
       )
-      .setFooter("Requested by " + `${message.author.username}`, message.author.displayAvatarURL({ dynamic: true, format: 'png', size: 2048 }))
-     message.channel.send(embed);
-     break;
+      .setFooter("Requested by " + `${message.author.username}`, message.author.displayAvatarURL({ dynamic: true, format: "png", size: 2048 }))
+     message.channel.send(embed)
+     break
    }
    try {
-   choice = filters[varforfilter];
-   if (varforfilter === 404) return;
-    const song = queue.songs[0];
-    message.lineReply(
-     new Discord.MessageEmbed()
-      .setColor("RANDOM")
-      .setDescription("✨ | Applying effect: *" + args[0] + "*\n")
-     )
-    let silient = true;
-    play(song, message, client, choice, silient);
+    choice = filters[varforfilter]
+    if (varforfilter === 404) return
+    const song = queue.songs[0]
+    message.lineReply(new Discord.MessageEmbed().setColor("RANDOM").setDescription("✨ | Applying effect: *" + args[0] + "*\n"))
+    let silient = true
+    play(song, message, client, choice, silient)
    } catch (error) {
-    message.channel.activeCollector = false;
-    return message.lineReply({embed: {
-    color: 16734039,
-     description: "Something went wrong why applying the effect... :cry:",
-    }})
+    message.channel.activeCollector = false
+    return message.lineReply({
+     embed: {
+      color: 16734039,
+      description: "Something went wrong why applying the effect... :cry:",
+     },
+    })
    }
   } catch (err) {
-   console.log(err);
-   return message.lineReply({embed: {
+   console.log(err)
+   return message.lineReply({
+    embed: {
      color: 16734039,
      description: "Something went wrong... :cry:",
-   }});
+    },
+   })
   }
- }
+ },
 }

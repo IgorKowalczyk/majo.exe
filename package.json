@@ -9,6 +9,8 @@
   "develop": "node index.js && node dashboard-run.js",
   "bot": "node index.js",
   "dashboard": "node dashboard-run.js",
+  "format": "prettier --write . --ignore-unknown",
+  "format:check": "prettier --check .",
   "test": "node index.js"
  },
  "dependencies": {
@@ -95,6 +97,9 @@
   "discord-giveaways": "^4.5.1",
   "discord-emoji-convert": "^1.6.0",
   "discord-buttons": "^2.4.1"
+ },
+ "devDependencies": {
+  "prettier": "^2.0.5"
  },
  "engines": {
   "node": "14.x"

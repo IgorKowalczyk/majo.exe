@@ -1,9 +1,9 @@
-const Discord = require('discord.js');
-const config = require("../../config");
+const Discord = require("discord.js")
+const config = require("../../config")
 
 module.exports = async (client, role) => {
  try {
-     /*
+  /*
  if (!role.guild.member(client.user).hasPermission("EMBED_LINKS", "VIEW_CHANNEL", "READ_MESSAGE_HISTORY", "VIEW_AUDIT_LOG", "SEND_MESSAGES")) return;
  const log = role.guild.channels.cache.find(channel => channel.name.includes('log'));
  if (!logChannel) return;
@@ -21,6 +21,6 @@ module.exports = async (client, role) => {
  });
   */
  } catch (err) {
-  console.log(err);
+  console.log(err)
  }
 }
