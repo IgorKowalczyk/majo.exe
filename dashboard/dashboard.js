@@ -12,7 +12,7 @@ const { readdirSync } = require("fs")
 const app = express()
 app.use(express.static("dashboard/static"))
 const MemoryStore = require("memorystore")(session)
-
+const sql = require("../utilities/database")
 const port = process.env.PORT || 6565
 
 console.log("Starting dashboard...")
@@ -81,6 +81,7 @@ module.exports = async (client) => {
    mobile: config.mobile_support,
    image: config.image,
    name: client.username,
+   sql: sql,
    tag: client.tag,
    server: config.server,
    authorwebsite: config.author_website,
