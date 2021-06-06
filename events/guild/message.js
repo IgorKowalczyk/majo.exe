@@ -1,12 +1,12 @@
 const Discord = require("discord.js")
 const ms = require("ms")
 const config = require("../../config")
-const prefix = config.prefix
 const Timeout = new Map()
 
 module.exports = async (client, message) => {
  try {
   if (message.author.bot) return
+  
   if (!message.guild) {
    try {
     const embed = new Discord.MessageEmbed()

@@ -5,36 +5,12 @@ const client = new Discord.Client({
   repliedUser: false,
  },
 })
-const fs = require("fs")
-const http = require("http")
-const db = require("quick.db")
 const chalk = require("chalk")
-const config = require("./config")
 const { GiveawaysManager } = require("discord-giveaways")
-const MySQL = require("mysql")
 require("dotenv").config()
 require("./utilities/inline_reply")
 require("discord-buttons")(client)
-
-/* Database connect */
-const sql = MySQL.createConnection({
- host: process.env.MYSQL_HOST,
- user: process.env.MYSQL_USER,
- password: process.env.MYSQL_PASSWORD,
- database: process.env.MYSQL_DATABASE,
- charset: "utf8mb4",
- port: "3306",
-})
-sql.connect((err) => {
- if (err) {
-  console.error("Impossible to connect to MySQL server. Code: " + err.code)
-  process.exit(99)
- } else {
-  console.log("[SQL] Connected to the MySQL server! Connection ID: " + sql.threadId)
- }
-})
-client.sql == sql
-/* ---- */
+const sql = require("./utilities/database");
 
 /* Logging system config */
 sql.query("CREATE TABLE IF NOT EXISTS `logs` (`guildid` VARCHAR(32) NOT NULL, `channelid` VARCHAR(32) NOT NULL, UNIQUE(`guildid`));", function (error, results, fields) {
