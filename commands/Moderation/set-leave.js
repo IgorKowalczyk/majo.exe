@@ -1,5 +1,5 @@
 const Discord = require("discord.js")
-const sql = require("../../utilities/database");
+const sql = require("../../utilities/database")
 
 module.exports = {
  name: "set-leave",

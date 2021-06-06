@@ -1,7 +1,7 @@
 const Discord = require("discord.js")
 const config = require("../../config")
 const prefix = config.prefix
-const sql = require("../../utilities/database");
+const sql = require("../../utilities/database")
 
 module.exports = {
  name: "check-log",
