@@ -1,7 +1,7 @@
 const Discord = require("discord.js")
-const MySQL = require("mysql")
 const config = require("../../config")
 const prefix = config.prefix
+const sql = require("../../utilities/database");
 
 module.exports = {
  name: "check-log",
@@ -19,14 +19,6 @@ module.exports = {
      },
     })
    }
-   const sql = MySQL.createPool({
-    host: process.env.MYSQL_HOST,
-    user: process.env.MYSQL_USER,
-    password: process.env.MYSQL_PASSWORD,
-    database: process.env.MYSQL_DATABASE,
-    charset: "utf8mb4",
-    port: "3306",
-   })
    const sqlquery = "SELECT channelid AS res FROM logs WHERE guildid = " + message.guild.id
    sql.query(sqlquery, function (error, results, fields) {
     if (error) return console.log(error)
