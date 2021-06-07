@@ -1,16 +1,8 @@
-/**
- * Shows a random image from the selected 4chan board
- * @module 4chan
- */
 const Discord = require("discord.js")
 const https = require("https")
 const config = require("../../config")
 const prefix = config.prefix
 
-/**
- * Command
- * @param {board/boards} args - The 4chan boards
- */
 module.exports = {
  name: "4chan",
  aliases: [],

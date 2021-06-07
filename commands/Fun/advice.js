@@ -1,3 +1,8 @@
+/**
+ * Get a random advice
+ * @module advice
+ *
+ */
 const Discord = require("discord.js")
 const Random = require("srod-v2")
 

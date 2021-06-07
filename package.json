@@ -11,8 +11,7 @@
   "dashboard": "node dashboard-run.js",
   "format": "prettier --write . --ignore-unknown",
   "format:check": "prettier --check .",
-  "test": "node index.js",
-  "docs": "jsdoc commands -r -d docs -c .jsdoc.json"
+  "test": "node index.js"
  },
  "dependencies": {
   "@discordjs/opus": "^0.3.3",
@@ -28,7 +27,6 @@
   "canvas": "github:Automattic/node-canvas",
   "chalk": "^4.1.0",
   "cheerio": "^1.0.0-rc.3",
-  "clean-jsdoc-theme": "^3.2.7",
   "common-tags": "^1.8.0",
   "dateformat": "^3.0.3",
   "delay": "^4.4.0",
@@ -58,7 +56,6 @@
   "humanize-duration": "^3.26.0",
   "i": "^0.3.6",
   "jimp": "^0.16.1",
-  "jsdoc": "^3.6.7",
   "lyrics-finder": "^21.4.0",
   "mal-scraper": "^2.11.2",
   "math-expression-evaluator": "^1.2.22",
