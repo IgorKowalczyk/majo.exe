@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Adding meta -->
+    
+    
+    <meta name="author" content="Igor Kowalczyk" />
+    
+    <meta name="description" content="Majo.exe - Discord bot for Fun, Memes, Images, Giveaway, Economy, Anime and NSFW! Majo serve over 100 commands! | Created by Igor Kowalczyk" />
+    
+    
+
+    <!-- Adding external script-->
+    
+
+    <!-- Adding external style-->
+    
+
+    <!-- Adding scripts-->
+    
+
+    <!-- Adding style-->
+    
+
+    <!-- Adding overlay script-->
+    
+
+    <!-- Adding overlay style-->
+    
+
+
+    <title>
+      Home
+    </title>
+
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/third-party/ionicons.min.css">
+    <link type="text/css" rel="stylesheet" href="styles/third-party/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/reset.css">
+    <link type="text/css" rel="stylesheet" href="styles/heading.css">
+    <link type="text/css" rel="stylesheet" href="styles/clean-jsdoc-theme-base.css">
+    <link type="text/css" rel="stylesheet" href="styles/clean-jsdoc-theme-dark.css">
+    
+    <svg aria-hidden="true" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+    style="display:none">
+    <defs>
+        <symbol id="copy-icon" viewbox="0 0 488.3 488.3">
+            <g>
+                <path
+                    d="M314.25,85.4h-227c-21.3,0-38.6,17.3-38.6,38.6v325.7c0,21.3,17.3,38.6,38.6,38.6h227c21.3,0,38.6-17.3,38.6-38.6V124    C352.75,102.7,335.45,85.4,314.25,85.4z M325.75,449.6c0,6.4-5.2,11.6-11.6,11.6h-227c-6.4,0-11.6-5.2-11.6-11.6V124    c0-6.4,5.2-11.6,11.6-11.6h227c6.4,0,11.6,5.2,11.6,11.6V449.6z" />
+                <path
+                    d="M401.05,0h-227c-21.3,0-38.6,17.3-38.6,38.6c0,7.5,6,13.5,13.5,13.5s13.5-6,13.5-13.5c0-6.4,5.2-11.6,11.6-11.6h227    c6.4,0,11.6,5.2,11.6,11.6v325.7c0,6.4-5.2,11.6-11.6,11.6c-7.5,0-13.5,6-13.5,13.5s6,13.5,13.5,13.5c21.3,0,38.6-17.3,38.6-38.6    V38.6C439.65,17.3,422.35,0,401.05,0z" />
+            </g>
+        </symbol>
+        <symbol id='search-icon' viewBox="0 0 512 512">
+            <g>
+                <g>
+                    <path
+                        d="M225.474,0C101.151,0,0,101.151,0,225.474c0,124.33,101.151,225.474,225.474,225.474    c124.33,0,225.474-101.144,225.474-225.474C450.948,101.151,349.804,0,225.474,0z M225.474,409.323    c-101.373,0-183.848-82.475-183.848-183.848S124.101,41.626,225.474,41.626s183.848,82.475,183.848,183.848    S326.847,409.323,225.474,409.323z" />
+                </g>
+            </g>
+            <g>
+                <g>
+                    <path
+                        d="M505.902,476.472L386.574,357.144c-8.131-8.131-21.299-8.131-29.43,0c-8.131,8.124-8.131,21.306,0,29.43l119.328,119.328    c4.065,4.065,9.387,6.098,14.715,6.098c5.321,0,10.649-2.033,14.715-6.098C514.033,497.778,514.033,484.596,505.902,476.472z" />
+                </g>
+            </g>
+        </symbol>
+        <symbol id="down-icon" viewBox="0 0 16 16">
+            <path 
+                fill-rule="evenodd" 
+                clip-rule="evenodd" 
+                d="M12.7803 6.21967C13.0732 6.51256 13.0732 6.98744 12.7803 7.28033L8.53033 11.5303C8.23744 11.8232 7.76256 11.8232 7.46967 11.5303L3.21967 7.28033C2.92678 6.98744 2.92678 6.51256 3.21967 6.21967C3.51256 5.92678 3.98744 5.92678 4.28033 6.21967L8 9.93934L11.7197 6.21967C12.0126 5.92678 12.4874 5.92678 12.7803 6.21967Z"
+            >
+            </path>
+        </symbol>
+    </defs>
+</svg>
+  </head>
+
+  <body>
+
+    <nav class="navbar" id="navbar">
+      <div class="navbar-heading" id="navbar-heading"><a href="index.html"><h2 class="navbar-heading-text">Majo.exe</h2></a></div><div class="search-box" id="search-box"><div class="search-box-input-container"><input class="search-box-input" type="text" placeholder="Search..." id="search-box-input" /><svg class="search-icon" alt="search-icon"><use xlink:href="#search-icon"></use></svg></div><div class="search-item-container" id="search-item-container"><ul class="search-item-ul" id="search-item-ul"></ul></div></div><div class="sidebar-main-content" id="sidebar-main-content"><ul><li class="menu-li"><a href='https://discord.com/oauth2/authorize/?permissions=4294967287&scope=bot%20applications.commands&client_id=681536055572430918' class=' menu-link' id='' target='_blank'>- Invite Majo.exe</a></li><li class="menu-li"><a href='https://majoexe.herokuapp.com' class=' menu-link' id='' target=''>- Dashboard</a></li><li class="menu-li"><a href='https://github.com/igorkowalczyk/majobot' class=' menu-link' id='' target='_blank'>- Github</a></li></ul><div class="accordion collapsed" id="4834033" > <h3 class="accordion-heading">Modules<svg><use xlink:href="#down-icon"></use></svg></h3><ul class="accordion-content"><li class="accordion collapsed child" id=1933488><div class="accordion-heading child"><a href="module-4chan.html">4chan</a><svg><use xlink:href="#down-icon"></use></svg></div><ul class='methods accordion-content'><li data-type='method'><a href="module-4chan.html#.run">run</a></li></ul></li></ul> </div></div>
+      
+
+    </nav>
+    <div class="navbar-ham" id="navbar-ham">
+      <div>
+        <div class="first"></div>
+        <div class="second"></div>
+        <div class="third"></div>
+      </div>
+    </div>
+
+    <div id="main" class="main-content">
+      
+
+      
+
+
+
+    
+
+
+
+
+
+
+
+
+
+    
+
+
+    <section class="readme">
+        <article><h1>Majo.exe</h1>
+<p>Majo.exe have almost everything - Fun, Memes, Images, Giveaway, Economy, Anime and NSFW. This bot serve over 100 commands!</p>
+<p><a href="https://majoexe.herokuapp.com/server"><img src="https://discord.com/api/guilds/666599184844980224/widget.png?style=banner2" alt="Discord"></a></p>
+<p><a href="https://majoexe.herokuapp.com/"><img src="https://github.com/igorkowalczyk/majobot/actions/workflows/node.yml/badge.svg" alt="Node.js"></a>
+<a href="https://majoexe.herokuapp.com/"><img src="https://github.com/igorkowalczyk/majobot/workflows/Jekyll/badge.svg" alt="Jekyll"></a>
+<a href="https://majoexe.herokuapp.com/"><img src="https://img.shields.io/github/license/igorkowalczyk/majobot?color=%2334D058&amp;logo=github&amp;logoColor=959DA5&amp;labelColor=24292E" alt="GitHub License"></a>
+<a href="https://github.com/igorkowalczyk/majobot/releases"><img src="https://img.shields.io/github/package-json/v/igorkowalczyk/majobot?color=%2334D058&amp;logo=github&amp;logoColor=959DA5&amp;labelColor=24292E" alt="Version"></a></p>
+<h1>Invite</h1>
+<p>Go to <a href="https://discord.com/oauth2/authorize/?permissions=4294967287&amp;scope=bot&amp;client_id=681536055572430918">this link</a> and add the bot (requires <code>MANAGE_GUILD</code> premission) to your server.</p>
+<ul>
+<li><a href="https://majoexe.herokuapp.com/">Or to make it easier, visit our website</a></li>
+</ul>
+<h1>Hosting</h1>
+<p>We host this bot. Majo.exe <em>will be</em> online 24/7. <a href="#invite">Invite Majo here!</a>
+However, if you want to host Majo yourself - take a look here](#self-hosting)</p>
+<h3>Heroku Hosting</h3>
+<p>Deploy the app to <a href="https://heroku.com">Heroku</a></p>
+<p><a href="https://heroku.com/deploy?template=https://github.com/igorkowalczyk/majobot/tree/master"><img src="https://www.herokucdn.com/deploy/button.png" alt="Deploy to heroku"></a></p>
+<p><a href="#heroku">Heroku hosting tutorial</a></p>
+<h3>Self-Hosting</h3>
+<ol>
+<li>Clone <a href="https://github.com/igorkowalczyk/majobot">this repository</a> <code>git clone https://github.com/IgorKowalczyk/majobot.git</code></li>
+<li>Run <code>npm install</code> to get all dependencies,</li>
+<li>Grab a Discord Bot token and client secret on <a href="https://discord.com/developers/applications">Discord's developer portal</a> <a href="#discord-token">Tutorial</a></li>
+<li>Fill <code>config.json</code> with your values (See that some values point to the <code>.env</code> file, see it below)</li>
+<li>Rename <code>.env.example</code> (Located in main dir) to <code>.env</code>. Remember - the file is super secret, better to not share it.</li>
+<li>In <code>.env</code> file set this values:
+<ul>
+<li><strong>Required:</strong></li>
+<li><code>TOKEN</code> - Bot token from Discord Developer portal [no. 3]</li>
+<li><code>PREFIX</code> - Bot prefix, used to run commands eg. <code>your-prefix help</code></li>
+<li><code>ID</code> - Your Discord Bot ID</li>
+<li><code>AMEAPI</code> - your Ametyhyste API token <a href="#ameapi-token">Tutorial how to get it</a></li>
+<li><code>BRAINID</code> - Your Brainshop AI Brain ID <a href="#ai-keys">Tutorial</a></li>
+<li><code>BRAINKEY</code> - Your Brainshop AI Brain Key <a href="#ai-keys">Tutorial</a></li>
+<li><code>COOKIES</code> - Your Youtube Cookies <a href="#youtube">Tutorial</a></li>
+<li><code>MYSQL_DATABASE</code> - Your MYSQL database name</li>
+<li><code>MYSQL_HOST</code> - Your MYSQL Host name</li>
+<li><code>MYSQL_PASSWORD</code> - Your MYSQL user password</li>
+<li><code>MYSQL_USER</code> - Your MYSQL User name who can acces to the database</li>
+<li><strong>Not required (You can leave them blank):</strong></li>
+<li><code>DOMAIN</code> - your website domain, eg <code>https://example.com</code></li>
+<li><code>PORT</code> - your website port, eg <code>8080</code>. [Note: If you are using heroku, not create this value. Heroku binds port automatically]</li>
+<li><code>DASHBOARD=[true/false]</code> - if <code>true</code> the bot will be hosted with web dasboard, if <code>false</code> the bot will be hosted without web dashboard.</li>
+<li><code>SESSION_SECRET</code> - Session secret key, random sequence of words, letterss or numbers</li>
+<li><code>SECRET</code> - Client secret from Discord Developers portal [no. 3]</li>
+<li><code>ANALYTICS</code> - Google Trakcing ID, for Website analytics <a href="#analytics-id">Tutorial how to get it</a></li>
+</ul>
+</li>
+<li>Run <code>npm run start</code></li>
+</ol>
+<blockquote>
+<p>Note: See the example <a href="#example-env-file"><code>.env</code> file below</a>!</p>
+</blockquote>
+<h1>Example <code>.env</code> file</h1>
+<p><a href="https://github.com/igorkowalczyk/majobot/blob/master/.env.example"><code>.env.example</code></a></p>
+<pre class="prettyprint source"><code># Environment Config
+
+# store your secrets and config variables in here
+# only invited collaborators will be able to see your .env values
+
+# reference these in your code with process.env.SECRET
+
+# Required
+TOKEN=YOUR_TOKEN_GOES_HERE
+PREFIX=!majo
+AMEAPI=YOUR_AMETHYSTE_API_TOKEN
+MYSQL_DATABASE=YOUR_MYSQL_DATABASE_NAME
+MYSQL_HOST=YOUR_MYSQL_HOST
+MYSQL_PASSWORD=YOUR_MYSQL_USER_PASSWORD
+MYSQL_USER=YOUR_MYSQL_DATABASE_USER
+
+# Not required
+DOMAIN=YOUR_WEBSITE_DOMAIN
+PORT=YOUR_WEBSITE_PORT
+BRAINID=YOUR_BRAINSHOP_AI_BRAIN_ID
+BRAINKEY=YOUR_BRAINSHOP_AI_BRAIN_KEY
+COOKIES=YOUR_YOUTUBE_COOKIES
+DASHBOARD=[true/false]
+SESSION_SECRET=YOUR_SESSION_SECRET_(RANDOM_WORDS)
+SECRET=YOUR_BOT_CLIENT_SECRET
+ANALYTICS=YOUR_GOOGLE_TRACKING_ID
+# !majo is the default prefix, you can change it later.
+
+# Note: .env is a shell file so there can't be spaces around =
+
+</code></pre>
+<h3><code>.env</code> config table</h3>
+<table>
+<thead>
+<tr>
+<th><code>.env</code> varriable</th>
+<th>Description</th>
+<th>Required</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>TOKEN</td>
+<td>The bot token (Remember! The <code>TOKEN</code> is super secret)</td>
+<td>:heavy_check_mark:</td>
+</tr>
+<tr>
+<td>PREFIX</td>
+<td>The default bot prefix (eg. <code>!majo</code>)</td>
+<td>:heavy_check_mark:</td>
+</tr>
+<tr>
+<td>ID</td>
+<td>Your Discord Bot ID</td>
+<td>:heavy_check_mark:</td>
+</tr>
+<tr>
+<td>AMEAPI</td>
+<td>Your Amethyste api token</td>
+<td>:heavy_check_mark:</td>
+</tr>
+<tr>
+<td>BRAINID</td>
+<td>Your Brainshop AI Brain ID</td>
+<td>:heavy_check_mark:</td>
+</tr>
+<tr>
+<td>MYSQL_DATABASE</td>
+<td>Your MYSQL database name</td>
+<td>:heavy_check_mark:</td>
+</tr>
+<tr>
+<td>MYSQL_HOST</td>
+<td>Your MYSQL Host</td>
+<td>:heavy_check_mark:</td>
+</tr>
+<tr>
+<td>MYSQL_USER</td>
+<td>Your MYSQL user</td>
+<td>:heavy_check_mark:</td>
+</tr>
+<tr>
+<td>MYSQL_PASSWORD</td>
+<td>Your Brainshop AI Brain Key</td>
+<td>:heavy_check_mark:</td>
+</tr>
+<tr>
+<td>COOKIES</td>
+<td>Your youtube cookies</td>
+<td>:heavy_check_mark:</td>
+</tr>
+<tr>
+<td>DOMAIN</td>
+<td>Your website domain (eg <code>https://example.com</code>)<code>*</code></td>
+<td>:x:/:heavy_check_mark:</td>
+</tr>
+<tr>
+<td>PORT</td>
+<td>Your webiste port, (eg. <code>8008 </code>)<code>*</code></td>
+<td>:x:/:heavy_check_mark:</td>
+</tr>
+<tr>
+<td>DASHBOARD</td>
+<td>The Web-Dashboard config value. (eg. <code>true/false</code>, default value: <code>false</code>)<code>*</code></td>
+<td>:x:</td>
+</tr>
+<tr>
+<td>SESSION_SECRET</td>
+<td>Random sequence of words, letterss or numbers<code>*</code></td>
+<td>:x:/:heavy_check_mark:</td>
+</tr>
+<tr>
+<td>SECRET</td>
+<td>The bot client secret (Remember! The <code>SECRET</code> value is Super-Secret)<code>*</code></td>
+<td>:x:/:heavy_check_mark:</td>
+</tr>
+<tr>
+<td>ANALYTICS</td>
+<td>Google analytics tracking ID, used in Web-Dashboard<code>*</code></td>
+<td>:x:</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>Note: All values are required except those marked with <code>*</code>!</p>
+<ul>
+<li><code>*</code> = Required to run the web dashboard</li>
+</ul>
+</blockquote>
+<h1>Tokens</h1>
+<h3>Discord Token</h3>
+<blockquote>
+<p>Soon!</p>
+</blockquote>
+<h3>Amethyste Api</h3>
+<blockquote>
+<p>Soon!</p>
+</blockquote>
+<h3>AI Keys</h3>
+<blockquote>
+<p>Soon!</p>
+</blockquote>
+<h3>Youtube</h3>
+<blockquote>
+<p>Soon!</p>
+</blockquote>
+<h3>Analytics ID</h3>
+<blockquote>
+<p>Soon!</p>
+</blockquote>
+<h3>Heroku</h3>
+<blockquote>
+<p>Soon!</p>
+</blockquote>
+<h1>Dashboard</h1>
+<ol>
+<li>To test site, in <code>.env</code> file set the <code>DASHBOARD</code> config to <code>true</code> and assign the <code>PORT</code> eg 8080. (<a href="#example-env-file">See example <code>.env</code> file</a>)</li>
+<li>Fill dashboard config in (<code>config.js</code> and <code>.env</code>)</li>
+<li>Add the redirect uri here: https://discord.com/developers/applications/YOUR-BOT-ID/oauth2
+<ul>
+<li>
+<pre class="prettyprint source"><code> https://your-domain.com
+ https://your-domain.com/callback
+ https://your-domain.com/dashboard
+ https://your-domain.com/login
+</code></pre>
+</li>
+</ul>
+</li>
+<li>Go to your dashboard in browser (eg. to <code>localhost:8000</code>)</li>
+</ol>
+<h1>Contributors</h1>
+<ul>
+<li><a href="https://github.com/Joao-Victor-Liporini">@Joao-Victor-Liporini</a> (Bug fixes, command-handler improvements, testing, new features)</li>
+<li><a href="https://github.com/dhvitOP">@dhvitOP</a> (Music commands)</li>
+</ul>
+<h1>Builded with</h1>
+<p><a href="https://freedb.tech"><img src="https://raw.githubusercontent.com/IgorKowalczyk/majobot/master/lib/img/free-db.png" alt="Freedb.tech"></a>
+<a href="https://heroku.com"><img src="https://raw.githubusercontent.com/IgorKowalczyk/majobot/master/lib/img/heroku.png" height="84" alt="Heroku"/></a></p>
+<h1>Issues</h1>
+<p>If you have any issues with the page please create <a href="https://github.com/igorkowalczyk/majobot/issues">new issue here</a></p>
+<h1>Pull Requests</h1>
+<p>When submitting a pull request:</p>
+<ul>
+<li>Clone the repo.</li>
+<li>Create a branch off of master and give it a meaningful name (e.g. my-awesome-new-feature).</li>
+<li>Open a <a href="https://github.com/igorkowalczyk/majobot/pulls">pull request</a> on <a href="https://github.com">GitHub</a> and describe the feature or fix.</li>
+</ul>
+<h1>License</h1>
+<p>This project is licensed under the MIT. See the <a href="https://github.com/igorkowalczyk/majobot/blob/master/license.md">LICENSE</a> file for details</p></article>
+    </section>
+
+
+
+
+
+
+    </div>
+
+    <footer class="footer" id="footer">
+      Majo.exe - The best Discord bot ever created!
+    </footer>
+
+    <script src="scripts/third-party/prettify.js"></script>
+    <script src="scripts/third-party/lang-css.js"></script>
+    <script type="text/javascript" src="scripts/misc.js"></script>
+
+    <script>prettyPrint();</script>
+    <script src="scripts/linenumber.js"></script>
+    <script src="scripts/fix-code-block.js"></script>
+    <script src="scripts/fix-navbar.js"></script>
+    
+      <script src="scripts/search.js"></script>
+      <script src="scripts/third-party/fuse.js"></script>
+      <script>
+        var list = [{"title":"4chan","link":"<a href=\"module-4chan.html\">4chan</a>"},{"title":"module:4chan.run","link":"<a href=\"module-4chan.html#.run\">module:4chan.run &rtrif; undefined</a>"}];
+        var options = 
+          setupSearch(list, options)
+      </script>
+    
+
+    
+
+    
+
+    
+
+    
+
+
+  </body>
+
+</html>

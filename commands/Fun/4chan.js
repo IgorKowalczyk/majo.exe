@@ -1,19 +1,16 @@
 /**
  * Shows a random image from the selected 4chan board
- * @module Commands/Fun/4chan
-*/
+ * @module 4chan
+ */
 const Discord = require("discord.js")
 const https = require("https")
 const config = require("../../config")
 const prefix = config.prefix
 
 /**
- * Execute command
- * @param {Discord.Client} client - The Discord client
- * @param {Discord.Message} message - The message of the command
- * @param {string} args - The arguments of the command
+ * Command
+ * @param {board/boards} args - The 4chan boards
  */
-
 module.exports = {
  name: "4chan",
  aliases: [],
@@ -21,6 +18,12 @@ module.exports = {
  category: "Fun",
  timeout: "1000",
  usage: "4chan <board/boards>",
+ /**
+  * Execute command
+  * @param {Discord.Client} client - The Discord client
+  * @param {Discord.Message} message - The message of the command
+  * @param {string} args - The arguments of the command
+  */
  run: async (client, message, args) => {
   try {
    var maxlength = 500
