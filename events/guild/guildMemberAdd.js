@@ -1,28 +1,18 @@
 const Discord = require("discord.js")
 const Canvas = require("canvas")
 const moment = require("moment")
-const MySQL = require("mysql")
+const sql = require("../../utilities/database")
 
 module.exports = async (client, member) => {
  try {
   const image = `./lib/img/welcome.png`
-  const sql = MySQL.createPool({
-   host: process.env.MYSQL_HOST,
-   user: process.env.MYSQL_USER,
-   password: process.env.MYSQL_PASSWORD,
-   database: process.env.MYSQL_DATABASE,
-   charset: "utf8mb4",
-   port: "3306",
-  })
   const sqlquery = "SELECT channelid AS res FROM welcome WHERE guildid = " + member.guild.id
   sql.query(sqlquery, function (error, results, fields) {
    if (error) console.log(error)
    if (!results || results.length == 0) {
-    sql.end()
     return
    }
    welsetup = results[0].res
-   sql.end()
    ;(async () => {
     const channel = await member.guild.channels.cache.find((c) => c.id == welsetup && c.type == "text")
     if (!channel) return
