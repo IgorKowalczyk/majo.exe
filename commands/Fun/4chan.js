@@ -1,7 +1,18 @@
+/**
+ * Shows a random image from the selected 4chan board
+ * @module Commands/Fun/4chan
+*/
 const Discord = require("discord.js")
 const https = require("https")
 const config = require("../../config")
 const prefix = config.prefix
+
+/**
+ * Execute command
+ * @param {Discord.Client} client - The Discord client
+ * @param {Discord.Message} message - The message of the command
+ * @param {string} args - The arguments of the command
+ */
 
 module.exports = {
  name: "4chan",
