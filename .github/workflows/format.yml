@@ -19,9 +19,9 @@ jobs:
       npm i prettier
       npm run format
    - name: 🚀 Commit changes
-     uses: stefanzweifel/git-auto-commit-action
+     uses: stefanzweifel/git-auto-commit-action@4.1.2
      with:
-      commit_message: [🚀] Code formatting
+      commit_message: "[🚀] Code formatting"
       branch: ${{ github.head_ref }}
       commit_user_name: IgorKowalczykBot
       commit_user_email: igor.kowalczyk.bot@onet.pl
