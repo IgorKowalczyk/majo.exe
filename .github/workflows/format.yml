@@ -1,0 +1,27 @@
+name: Auto Format
+
+on:
+ workflow_dispatch:
+
+jobs:
+ format:
+  name: ✨ Prettier format
+  runs-on: ubuntu-latest
+  steps:
+   - uses: actions/checkout@v2
+     with:
+      ref: ${{ github.head_ref }}
+   - uses: actions/setup-node@v1
+     with:
+      node-version: "12.x"
+   - name: ✨ Prettier format
+     run: |
+      npm i prettier
+      npm run format
+   - name: 🚀 Commit changes
+     uses: stefanzweifel/git-auto-commit-action
+     with:
+      commit_message: [🚀] Code formatting
+      branch: ${{ github.head_ref }}
+      commit_user_name: IgorKowalczykBot
+      commit_user_email: igor.kowalczyk.bot@onet.pl
