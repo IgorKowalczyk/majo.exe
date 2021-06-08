@@ -14,12 +14,12 @@ jobs:
    - uses: actions/setup-node@v1
      with:
       node-version: "12.x"
-   - name: ✨ Prettier format
+   - name: 🧱 Prettier format
      run: |
       npm i prettier
       npm run format
    - name: 🚀 Commit changes
-     uses: stefanzweifel/git-auto-commit-action@4.1.2
+     uses: stefanzweifel/git-auto-commit-action@v4
      with:
       commit_message: "[🚀] Code formatting"
       branch: ${{ github.head_ref }}
