@@ -16,7 +16,7 @@ Go to [this link](https://discord.com/oauth2/authorize/?permissions=4294967287&s
 # Hosting
 
 We host this bot. Majo.exe *will be* online 24/7. [Invite Majo here!](#invite)
-However, if you want to host Majo yourself - take a look here](#self-hosting)
+However, if you want to host Majo yourself - [take a look here](#self-hosting)
 
 ### Heroku Hosting
 Deploy the app to [Heroku](https://heroku.com)
