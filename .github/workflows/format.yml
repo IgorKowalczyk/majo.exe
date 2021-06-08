@@ -18,6 +18,8 @@ jobs:
      run: |
       npm i prettier
       npm run format
+   - name: 🧱 Formatting check
+     run: npm run format:check
    - name: 🚀 Commit changes
      uses: stefanzweifel/git-auto-commit-action@v4
      with:
