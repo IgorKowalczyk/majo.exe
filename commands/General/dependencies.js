@@ -1,4 +1,4 @@
-const Discord = require("discord.js")
+const Discord = require("discord.js");
 
 module.exports = {
  name: "dependencies",
@@ -14,15 +14,15 @@ module.exports = {
     .setTimestamp()
     .setImage("https://i.redd.it/tfugj4n3l6ez.png")
     .setColor("RANDOM")
-    .setFooter("Requested by " + `${message.author.username}`, message.author.displayAvatarURL({ dynamic: true, format: "png", size: 2048 }))
-   message.lineReply(embed)
+    .setFooter("Requested by " + `${message.author.username}`, message.author.displayAvatarURL({ dynamic: true, format: "png", size: 2048 }));
+   message.lineReply(embed);
   } catch (err) {
    message.lineReply({
     embed: {
      color: 16734039,
      description: "Something went wrong... :cry:",
     },
-   })
+   });
   }
  },
-}
+};

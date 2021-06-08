@@ -1,5 +1,5 @@
-const Discord = require("discord.js")
-const Extra = require("discord-buttons")
+const Discord = require("discord.js");
+const Extra = require("discord-buttons");
 
 module.exports = {
  name: "avatar",
@@ -9,23 +9,23 @@ module.exports = {
  usage: "avatar [user mention, user id, user name]",
  run: async (client, message, args) => {
   try {
-   const User = (await message.mentions.members.first()) || message.guild.members.cache.get(args[0]) || message.guild.members.cache.find((r) => r.user.username.toLowerCase().includes() === args.join(" ").toLocaleLowerCase()) || message.guild.members.cache.find((r) => r.displayName.toLowerCase().includes() === args.join(" ").toLocaleLowerCase()) || message.member
-   const uavatar = User.user.displayAvatarURL({ dynamic: true, format: "png", size: 2048 })
-   const button = new Extra.MessageButton().setLabel("Avatar link").setStyle("url").setURL(uavatar)
+   const User = (await message.mentions.members.first()) || message.guild.members.cache.get(args[0]) || message.guild.members.cache.find((r) => r.user.username.toLowerCase().includes() === args.join(" ").toLocaleLowerCase()) || message.guild.members.cache.find((r) => r.displayName.toLowerCase().includes() === args.join(" ").toLocaleLowerCase()) || message.member;
+   const uavatar = User.user.displayAvatarURL({ dynamic: true, format: "png", size: 2048 });
+   const button = new Extra.MessageButton().setLabel("Avatar link").setStyle("url").setURL(uavatar);
    const embed = new Discord.MessageEmbed()
     .setColor("RANDOM")
     .setAuthor(User.user.username + "'s Avatar", uavatar)
     .setImage(uavatar)
     .setTimestamp()
-    .setFooter("Requested by " + `${message.author.username}`, message.author.displayAvatarURL({ dynamic: true, format: "png", size: 2048 }))
-   message.lineReply({ button: button, embed: embed })
+    .setFooter("Requested by " + `${message.author.username}`, message.author.displayAvatarURL({ dynamic: true, format: "png", size: 2048 }));
+   message.lineReply({ button: button, embed: embed });
   } catch (err) {
    message.lineReply({
     embed: {
      color: 16734039,
      description: "Something went wrong... :cry:",
     },
-   })
+   });
   }
  },
-}
+};

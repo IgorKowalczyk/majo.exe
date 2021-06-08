@@ -1,5 +1,5 @@
-const Discord = require("discord.js")
-const canvacord = require("canvacord")
+const Discord = require("discord.js");
+const canvacord = require("canvacord");
 
 module.exports = {
  name: "wasted",
@@ -9,24 +9,24 @@ module.exports = {
  usage: "wasted [user mention, user id, user name]",
  run: async (client, message, args) => {
   try {
-   const User = (await message.mentions.members.first()) || message.guild.members.cache.get(args[0]) || message.guild.members.cache.find((r) => r.user.username.toLowerCase().includes() === args.join(" ").toLocaleLowerCase()) || message.guild.members.cache.find((r) => r.displayName.toLowerCase().includes() === args.join(" ").toLocaleLowerCase()) || message.member
+   const User = (await message.mentions.members.first()) || message.guild.members.cache.get(args[0]) || message.guild.members.cache.find((r) => r.user.username.toLowerCase().includes() === args.join(" ").toLocaleLowerCase()) || message.guild.members.cache.find((r) => r.displayName.toLowerCase().includes() === args.join(" ").toLocaleLowerCase()) || message.member;
    const wait = await message.lineReply({
     embed: {
      color: 4779354,
      description: "✨ | Please wait... I'm generating your image",
     },
-   })
-   const wasted = await canvacord.Canvas.wasted(User.user.displayAvatarURL({ dynamic: false, format: "png", size: 2048 }))
-   const attachment = new Discord.MessageAttachment(wasted, "wasted.png")
-   message.channel.send(attachment)
+   });
+   const wasted = await canvacord.Canvas.wasted(User.user.displayAvatarURL({ dynamic: false, format: "png", size: 2048 }));
+   const attachment = new Discord.MessageAttachment(wasted, "wasted.png");
+   message.channel.send(attachment);
   } catch (err) {
-   console.log(err)
+   console.log(err);
    message.lineReply({
     embed: {
      color: 16734039,
      description: "Something went wrong... :cry:",
     },
-   })
+   });
   }
  },
-}
+};

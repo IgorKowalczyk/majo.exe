@@ -1,4 +1,4 @@
-const Discord = require("discord.js")
+const Discord = require("discord.js");
 
 module.exports = {
  name: "servers",
@@ -12,15 +12,15 @@ module.exports = {
     .setDescription("I'm in " + `${client.guilds.size}` + " servers!")
     .setFooter("Requested by " + `${message.author.username}`, message.author.displayAvatarURL({ dynamic: true, format: "png", size: 2048 }))
     .setColor("RANDOM")
-    .setTimestamp()
-   message.lineReply(embed)
+    .setTimestamp();
+   message.lineReply(embed);
   } catch (err) {
    message.lineReply({
     embed: {
      color: 16734039,
      description: "Something went wrong... :cry:",
     },
-   })
+   });
   }
  },
-}
+};

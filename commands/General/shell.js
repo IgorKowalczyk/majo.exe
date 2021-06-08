@@ -1,6 +1,6 @@
-const Discord = require("discord.js")
-const config = require("../../config")
-const process = require("child_process")
+const Discord = require("discord.js");
+const config = require("../../config");
+const process = require("child_process");
 
 module.exports = {
  name: "shell",
@@ -16,29 +16,29 @@ module.exports = {
       color: 16734039,
       description: "❌ | You do not have permission to run this command (Only owner of the bot can run this)!",
      },
-    })
+    });
    }
-   const result = args.join(" ")
+   const result = args.join(" ");
    if (!result) {
     return message.lineReply({
      embed: {
       color: 16734039,
       description: "❌ | Please input some string!",
      },
-    })
+    });
    }
    process.exec(result),
     (error, stdout) => {
-     const response = error || stdout
-     message.lineReply(response, { code: "asciidoc", split: "\n" }).catch((err) => message.channel.send(err))
-    }
+     const response = error || stdout;
+     message.lineReply(response, { code: "asciidoc", split: "\n" }).catch((err) => message.channel.send(err));
+    };
   } catch (err) {
    message.lineReply({
     embed: {
      color: 16734039,
      description: "Something went wrong... :cry:",
     },
-   })
+   });
   }
  },
-}
+};

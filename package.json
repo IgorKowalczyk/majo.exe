@@ -99,7 +99,7 @@
   "ytdl-core-discord": "^1.2.3"
  },
  "devDependencies": {
-  "prettier": "^2.0.5"
+  "prettier": "^2.3.1"
  },
  "engines": {
   "node": "14.x"

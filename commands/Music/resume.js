@@ -1,4 +1,4 @@
-const Discord = require("discord.js")
+const Discord = require("discord.js");
 
 /* Music module by Dhvit (@dhvitOP). Thanks ❤️ */
 
@@ -10,50 +10,50 @@ module.exports = {
  usage: "resume",
  run: async (client, message, args) => {
   try {
-   const channel = message.member.voice.channel
+   const channel = message.member.voice.channel;
    if (!channel) {
     return message.channel.send({
      embed: {
       color: 16734039,
       description: "❌ | You should join a voice channel before using this command!",
      },
-    })
+    });
    }
-   let queue = message.client.queue.get(message.guild.id)
+   let queue = message.client.queue.get(message.guild.id);
    if (!queue) {
     return message.channel.send({
      embed: {
       color: 16734039,
       description: "❌ | There is nothing playing right now to resume!",
      },
-    })
+    });
    }
    if (queue.playing !== false) {
     if (queue.connection.dispatcher) {
-     queue.connection.dispatcher.resume()
+     queue.connection.dispatcher.resume();
      message.channel.send({
       embed: {
        color: 4779354,
        description: "▶ | Resumed the music",
       },
-     })
+     });
     } else {
      message.channel.send({
       embed: {
        color: 16734039,
        description: "❌ | Cannot resume the music!",
       },
-     })
+     });
     }
    }
   } catch (err) {
-   console.log(err)
+   console.log(err);
    message.channel.send({
     embed: {
      color: 16734039,
      description: "Something went wrong... :cry:",
     },
-   })
+   });
   }
  },
-}
+};

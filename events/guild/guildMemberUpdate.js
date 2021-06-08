@@ -1,5 +1,5 @@
-const Discord = require("discord.js")
-const config = require("../../config")
+const Discord = require("discord.js");
+const config = require("../../config");
 
 module.exports = async (client, oldMember, newMember) => {
  /*
@@ -72,4 +72,4 @@ try {
  console.log(err);
 }
 */
-}
+};

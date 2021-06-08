@@ -1,5 +1,5 @@
-const Discord = require("discord.js")
-const config = require("../../config")
+const Discord = require("discord.js");
+const config = require("../../config");
 
 module.exports = {
  name: "dashboard",
@@ -15,8 +15,8 @@ module.exports = {
      .setDescription("Our dashboard is not working at the moment, please try again later!")
      .setTimestamp()
      .setColor("RANDOM")
-     .setFooter("Requested by " + `${message.author.username}`, message.author.displayAvatarURL({ dynamic: true, format: "png", size: 2048 }))
-    return message.lineReply(embed)
+     .setFooter("Requested by " + `${message.author.username}`, message.author.displayAvatarURL({ dynamic: true, format: "png", size: 2048 }));
+    return message.lineReply(embed);
    }
    if (message.member.hasPermission("MANAGE_GUILD")) {
     const embed = new Discord.MessageEmbed()
@@ -24,16 +24,16 @@ module.exports = {
      .setDescription("🔗 Your server link: " + config.domain + "/dashboard/" + message.guild.id + "\n🔗 Dashboard link: " + config.domain)
      .setTimestamp()
      .setColor("RANDOM")
-     .setFooter("Requested by " + `${message.author.username}`, message.author.displayAvatarURL({ dynamic: true, format: "png", size: 2048 }))
-    message.lineReply(embed)
+     .setFooter("Requested by " + `${message.author.username}`, message.author.displayAvatarURL({ dynamic: true, format: "png", size: 2048 }));
+    message.lineReply(embed);
    } else {
     const embed = new Discord.MessageEmbed()
      .setTitle("<a:sucess:759354039242063903> Yay!")
      .setDescription("🔗 Our dashboard link: " + config.domain)
      .setTimestamp()
      .setColor("RANDOM")
-     .setFooter("Requested by " + `${message.author.username}`, message.author.displayAvatarURL({ dynamic: true, format: "png", size: 2048 }))
-    message.lineReply(embed)
+     .setFooter("Requested by " + `${message.author.username}`, message.author.displayAvatarURL({ dynamic: true, format: "png", size: 2048 }));
+    message.lineReply(embed);
    }
   } catch (err) {
    message.lineReply({
@@ -41,7 +41,7 @@ module.exports = {
      color: 16734039,
      description: "Something went wrong... :cry:",
     },
-   })
+   });
   }
  },
-}
+};

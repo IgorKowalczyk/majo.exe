@@ -1,5 +1,5 @@
-const Discord = require("discord.js")
-const config = require("../../config")
+const Discord = require("discord.js");
+const config = require("../../config");
 
 module.exports = async (client, oldRole, newRole) => {
  /*
@@ -61,4 +61,4 @@ try {
  return logChannel.send(embed);
 }
 */
-}
+};

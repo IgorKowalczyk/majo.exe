@@ -1,5 +1,5 @@
-const Discord = require("discord.js")
-const config = require("../../config")
+const Discord = require("discord.js");
+const config = require("../../config");
 
 module.exports = async (client, role) => {
  try {
@@ -21,6 +21,6 @@ module.exports = async (client, role) => {
  });
   */
  } catch (err) {
-  console.log(err)
+  console.log(err);
  }
-}
+};
