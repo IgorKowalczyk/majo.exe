@@ -11,7 +11,6 @@ module.exports = async (client, message) => {
     return;
    }
    const logsetup = results[0].res;
-   sql.end();
    (async () => {
     const log = await message.guild.channels.cache.find((c) => c.id == logsetup && c.type == "text");
     if (message.author.bot) return;
