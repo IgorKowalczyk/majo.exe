@@ -10,8 +10,8 @@ module.exports = async (client, oldChannel, newChannel) => {
    if (!results || results.length == 0) {
     return;
    }
-   const logsetup = results[0].res;
    (async () => {
+    const logsetup = await results[0].res;
     const log = await newChannel.guild.channels.cache.find((c) => c.id == logsetup && c.type == "text");
     if (!oldChannel.guild) return;
     if (!newChannel.guild.member(client.user).hasPermission("EMBED_LINKS", "VIEW_CHANNEL", "READ_MESSAGE_HISTORY", "VIEW_AUDIT_LOG", "SEND_MESSAGES")) return;

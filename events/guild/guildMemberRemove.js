@@ -12,8 +12,8 @@ module.exports = async (client, member) => {
    if (!results || results.length == 0) {
     return;
    }
-   lsetup = results[0].res;
    (async () => {
+    lsetup = await results[0].res;
     const channel = await member.guild.channels.cache.find((c) => c.id == lsetup && c.type == "text");
     if (!channel) return;
     function checkdays(date) {

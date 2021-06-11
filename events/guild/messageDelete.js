@@ -10,8 +10,8 @@ module.exports = async (client, message) => {
    if (!results || results.length == 0) {
     return;
    }
-   const logsetup = results[0].res;
    (async () => {
+    const logsetup = await results[0].res;
     const log = await message.guild.channels.cache.find((c) => c.id == logsetup && c.type == "text");
     if (message.author.bot) return;
     if (message.channel.type === "dm") return;

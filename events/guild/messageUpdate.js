@@ -10,8 +10,8 @@ module.exports = async (client, oldMessage, newMessage) => {
    if (!results || results.length == 0) {
     return;
    }
-   const logsetup = results[0].res;
    (async () => {
+    const logsetup = await results[0].res;
     const log = await oldMessage.guild.channels.cache.find((c) => c.id == logsetup && c.type == "text");
     if (oldMessage.author.bot) return;
     if (!oldMessage.guild.member(client.user).hasPermission("EMBED_LINKS", "VIEW_CHANNEL", "READ_MESSAGE_HISTORY", "VIEW_AUDIT_LOG", "SEND_MESSAGES")) return;

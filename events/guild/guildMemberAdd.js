@@ -12,8 +12,8 @@ module.exports = async (client, member) => {
    if (!results || results.length == 0) {
     return;
    }
-   welsetup = results[0].res;
    (async () => {
+    welsetup = await results[0].res;
     const channel = await member.guild.channels.cache.find((c) => c.id == welsetup && c.type == "text");
     if (!channel) return;
     if (!member.guild) return;

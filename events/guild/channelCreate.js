@@ -10,8 +10,8 @@ module.exports = async (client, channel) => {
    if (!results || results.length == 0) {
     return;
    }
-   const logsetup = results[0].res;
    (async () => {
+    const logsetup = await results[0].res;
     const log = await channel.guild.channels.cache.find((c) => c.id == logsetup && c.type == "text");
     if (!channel.guild) return;
     if (!channel.guild.member(client.user).hasPermission("EMBED_LINKS", "VIEW_CHANNEL", "READ_MESSAGE_HISTORY", "VIEW_AUDIT_LOG", "SEND_MESSAGES")) return;
@@ -34,7 +34,7 @@ module.exports = async (client, channel) => {
      const userid = logs.entries.first().executor.id;
      const uavatar = logs.entries.first().executor.avatarURL();
      const event = new Discord.MessageEmbed().setTitle("Channel Created").setThumbnail(uavatar).addField("Channel name", `<#${channel.id}> (ID: ${channel.id})`).addField("Channel type", `${type}`).addField("Created by", `<@${userid}> (ID: ${userid})`).setColor("RANDOM").setTimestamp().setFooter(channel.guild.name, channel.guild.iconURL());
-     log.send(event);
+     await log.send(event);
     });
    })();
   });
