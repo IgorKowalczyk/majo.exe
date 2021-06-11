@@ -18,8 +18,8 @@ module.exports = async (client, channel, oldPermissions, newPermissions) => {
     console.log("This");
     const newtopic = new Discord.MessageEmbed()
      .setTitle("Channel Description changed")
-     .addField("Old premissions", `\`\`\`\ ${newPermissions.type || "Unknown"} \`\`\` `)
-     .addField("New premissions", `\`\`\`\ ${newPermissions.type || "Unknown"} \`\`\` `)
+     .addField("Old premissions", `\`\`\`\ ${newPermissions.permissions.toArray() || "Unknown"} \`\`\` `)
+     .addField("New premissions", `\`\`\`\ ${newPermissions.permissions.toArray() || "Unknown"} \`\`\` `)
      .addField("Channel id", `${channel.id}`)
      //.addField("Channel type", `${type}`)
      //.addField("Changed by", `<@${userid}> (ID: ${userid})`)
