@@ -20,7 +20,7 @@ module.exports = async (client, guild, user) => {
      const userid = logs.entries.first().executor.id;
      const uavatar = logs.entries.first().executor.avatarURL();
      const embed = new Discord.MessageEmbed().setTitle("User Unbanned").setThumbnail(uavatar).setColor("RANDOM").addField("Unbanned User", `${user.username} [Ping: <@${user.id}>], (ID: ${user.id})`).addField("Unbanned by", `<@${userid}> (ID: ${userid})`).setTimestamp().setFooter(guild.name, guild.iconURL());
-     await log.send(embed);
+     log.send(embed);
     });
    })();
   });
