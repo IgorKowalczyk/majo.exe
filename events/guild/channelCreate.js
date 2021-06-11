@@ -34,7 +34,7 @@ module.exports = async (client, channel) => {
      const userid = logs.entries.first().executor.id;
      const uavatar = logs.entries.first().executor.avatarURL();
      const event = new Discord.MessageEmbed().setTitle("Channel Created").setThumbnail(uavatar).addField("Channel name", `<#${channel.id}> (ID: ${channel.id})`).addField("Channel type", `${type}`).addField("Created by", `<@${userid}> (ID: ${userid})`).setColor("RANDOM").setTimestamp().setFooter(channel.guild.name, channel.guild.iconURL());
-     await log.send(event);
+     log.send(event);
     });
    })();
   });

@@ -34,7 +34,7 @@ module.exports = async (client, channel) => {
      const userid = logs.entries.first().executor.id;
      const uavatar = logs.entries.first().executor.avatarURL();
      const event = new Discord.MessageEmbed().setTitle("Channel Deleted").setThumbnail(uavatar).addField("Channel name", `${channel.name} (ID: ${channel.id})`).addField("Channel type", `${type}`).addField("Created at", `${channel.createdAt}`).addField("Created by", `<@${userid}> (ID: ${userid})`).setColor("RANDOM").setTimestamp().setFooter(channel.guild.name, channel.guild.iconURL());
-     await log.send(event);
+     log.send(event);
     });
    })();
   });
