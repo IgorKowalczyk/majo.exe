@@ -15,6 +15,7 @@ module.exports = async (client, channel, oldPermissions, newPermissions) => {
    (async () => {
     const logsetup = await results[0].res;
     const log = await channel.guild.channels.cache.find((c) => c.id == logsetup && c.type == "text");
+    if (!log) return;
     console.log("This");
     const newtopic = new Discord.MessageEmbed()
      .setTitle("📝 Channel premissions changed!", channel.guild.iconURL())
@@ -29,5 +30,7 @@ module.exports = async (client, channel, oldPermissions, newPermissions) => {
     await log.send(newtopic);
    })();
   });
- } catch (err) {}
+ } catch (err) {
+  console.log(err);
+ }
 };
