@@ -18,7 +18,6 @@ module.exports = async (client, channel, oldPermissions, newPermissions) => {
     console.log("This");
     const newtopic = new Discord.MessageEmbed()
      .setTitle("Channel Description changed")
-     .setThumbnail(uavatar)
      .addField("Old premissions", `\`\`\`\ ${newPermissions || "Unknown"} \`\`\` `)
      .addField("New premissions", `\`\`\`\ ${newPermissions || "Unknown"} \`\`\` `)
      .addField("Channel id", `${channel.id}`)
