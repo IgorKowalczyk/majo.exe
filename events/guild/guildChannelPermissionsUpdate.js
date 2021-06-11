@@ -11,9 +11,11 @@ module.exports = async (client, channel, oldPermissions, newPermissions) => {
    if (!results || results.length == 0) {
     return;
    }
-   const logsetup = results[0].res;
+   console.log("This");
    (async () => {
+    const logsetup = await results[0].res;
     const log = await channel.guild.channels.cache.find((c) => c.id == logsetup && c.type == "text");
+    console.log("This");
     const newtopic = new Discord.MessageEmbed()
      .setTitle("Channel Description changed")
      .setThumbnail(uavatar)
@@ -26,7 +28,7 @@ module.exports = async (client, channel, oldPermissions, newPermissions) => {
      .setColor("RANDOM")
      .setTimestamp()
      .setFooter(channel.guild.name, channel.guild.iconURL());
-    log.send(newtopic);
+    await log.send(newtopic);
    })();
   });
  } catch (err) {}
