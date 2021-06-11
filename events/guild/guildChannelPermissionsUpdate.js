@@ -17,12 +17,11 @@ module.exports = async (client, channel, oldPermissions, newPermissions) => {
     const log = await channel.guild.channels.cache.find((c) => c.id == logsetup && c.type == "text");
     console.log("This");
     const newtopic = new Discord.MessageEmbed()
-     .setTitle("Channel Description changed")
+     .setTitle("📝 Channel premissions changed!", channel.guild.iconURL())
      .addField("Old premissions", `\`\`\`\ ${newPermissions.permissions.toArray() || "Unknown"} \`\`\` `)
      .addField("New premissions", `\`\`\`\ ${newPermissions.permissions.toArray() || "Unknown"} \`\`\` `)
-     .addField("Channel id", `${channel.id}`)
+     .addField("Channel ID", `${channel.id}`)
      //.addField("Channel type", `${type}`)
-     //.addField("Changed by", `<@${userid}> (ID: ${userid})`)
      .addField("Created at", `${channel.createdAt}`)
      .setColor("RANDOM")
      .setTimestamp()
