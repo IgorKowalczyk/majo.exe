@@ -96,7 +96,8 @@
   "weather-js": "^2.0.0",
   "youtube-sr": "^4.0.5",
   "ytdl-core": "^4.0.0",
-  "ytdl-core-discord": "^1.2.3"
+  "ytdl-core-discord": "^1.2.3",
+  "discord-logs": "^1.9.0"
  },
  "devDependencies": {
   "prettier": "^2.3.1"
