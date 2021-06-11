@@ -7,7 +7,7 @@ const client = new Discord.Client({
 });
 const chalk = require("chalk");
 const { GiveawaysManager } = require("discord-giveaways");
-const logs = require('discord-logs');
+const logs = require("discord-logs");
 logs(client);
 require("dotenv").config();
 require("./utilities/inline_reply");
