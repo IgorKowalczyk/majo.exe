@@ -41,9 +41,13 @@ module.exports = {
      embed.setDescription(array.join("\n"));
     }
    }
+
+   if (user.user.bot = true) {
+    isbot = " <:bot:853219015422246922>";
+   }
    embed.setColor("RANDOM");
    embed.setAuthor(user.user.tag, user.user.displayAvatarURL({ dynamic: true }));
-   if (user.nickname !== null) embed.addField("Nickname", user.nickname);
+   if (user.nickname !== null) embed.addField("Nickname", user.nickname + isbot);
    embed
     .addField("Joined At", moment(user.user.joinedAt).format("LLLL"))
     .addField("Account Created At", moment(user.user.createdAt).format("LLLL"))
@@ -51,7 +55,7 @@ module.exports = {
     .addField("Discriminator", `#${user.user.discriminator}`, true)
     .addField("Is Bot?", user.user.bot, true)
     .addField("Account Deleted?", user.deleted, true)
-    .addField("Badges", capitalizeFirstLetter(newbadges.join(", ").toLowerCase()) || "None")
+    .addField("Badges", newbadges.join(", ").toLowerCase() || "None")
     .addField("Status", `${stat[user.user.presence.status]} ${capitalizeFirstLetter(user.user.presence.status)}`)
     .setFooter("Requested by " + `${message.author.username}`, message.author.displayAvatarURL({ dynamic: true, format: "png", size: 2048 }));
    message.lineReply(embed);
