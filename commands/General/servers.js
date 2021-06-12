@@ -9,7 +9,7 @@ module.exports = {
  run: async (client, message, args) => {
   try {
    const embed = new Discord.MessageEmbed()
-    .setDescription("I'm in " + `${client.guilds.size}` + " servers!")
+    .setDescription("🚀 I'm in " + `${client.guilds.cache.size}` + " servers!")
     .setFooter("Requested by " + `${message.author.username}`, message.author.displayAvatarURL({ dynamic: true, format: "png", size: 2048 }))
     .setColor("RANDOM")
     .setTimestamp();
