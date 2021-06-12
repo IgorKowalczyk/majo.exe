@@ -5,7 +5,7 @@ const config = require("../../config");
 module.exports = (client) => {
  try {
   setInterval(() => {
-   const emojis = ["😆", "😄", "😎", "😂", "🥳", "😘", "😜", "🤑", "😁", "😉", "🥰", "😍", "🤯", "🥶", "🤩", "😇", "😊", "☺️", "😌", "😋"];
+   const emojis = ["😆", "😄", "😎", "😂", "🥳", "😘", "😜", "😁", "😉", "🥰", "😍", "🤯", "🥶", "🤩", "😇", "😊", "☺️", "😌", "😋"];
    const emoji = emojis[Math.floor(Math.random() * emojis.length)];
    var date = new Date().toJSON().slice(0, 10).replace(/-/g, "/");
    const discordbday = new Date().getFullYear() + "/05/13";
@@ -13,11 +13,10 @@ module.exports = (client) => {
    if (date == discordbday) {
     statuslist.push(`🎉 ${client.guilds.cache.size} servers 🎉`, `🎉 ${client.guilds.cache.reduce((a, g) => a + g.memberCount, 0)} members 🎉`, `🎉 ${config.prefix} help 🎉`);
    } else {
-    statuslist.push(`${emoji} | ${client.guilds.cache.size} servers | Discord please back to old style 😭`, `${emoji} | ${client.guilds.cache.reduce((a, g) => a + g.memberCount, 0)} members | Discord please back to old style 😭`, `${emoji} | ${config.prefix} help`, `${emoji} | Waiting for verification! (${client.guilds.cache.size} guilds 🥰) | Discord please back to old style 😭`, `${emoji} | Discord please back to old style, please not change the design...`);
+    statuslist.push(`${emoji} | ${client.guilds.cache.size} servers!`, `${emoji} | ${client.guilds.cache.reduce((a, g) => a + g.memberCount, 0)} members!`, `${emoji} | ${config.prefix} help`, `${emoji} | Waiting for verification! (${client.guilds.cache.size} guilds 🥰)`);
    }
    const random = Math.floor(Math.random() * (statuslist.length - 1) + 1);
    client.user.setActivity(statuslist[random], { type: "LISTENING" });
-   // client.user.setActivity("😭 Discord please back to old style, please not change the design 😭", { type: 'LISTENING' });
   }, 10000);
   client.user.setStatus("online");
   const datelog = new Date();
