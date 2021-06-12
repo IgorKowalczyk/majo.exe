@@ -53,7 +53,7 @@ module.exports = {
     .addField("Account Created At", moment(user.user.createdAt).format("LLLL"))
     .addField("ID", user.user.id)
     .addField("Discriminator", `#${user.user.discriminator}`, true)
-    .addField("Account Deleted?", capitalizeFirstLetter(user.deleted), true)
+    .addField("Account Deleted?", user.deleted, true)
     .addField("Badges", newbadges.join(", ").toLowerCase() || "None")
     .addField("Status", `${stat[user.user.presence.status]} ${capitalizeFirstLetter(user.user.presence.status)}`)
     .setFooter("Requested by " + `${message.author.username}`, message.author.displayAvatarURL({ dynamic: true, format: "png", size: 2048 }));
