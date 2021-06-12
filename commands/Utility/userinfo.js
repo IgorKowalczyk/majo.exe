@@ -34,7 +34,7 @@ module.exports = {
      let xname = data[i].details || "None";
      let zname = data[i].state || "None";
      let type = data[i].type;
-     array.push(`${type.toLowerCase()} : \`${name} : ${xname} : ${zname}\``);
+     array.push(capitalizeFirstLetter(type) + ` : \`${name} : ${xname} : ${zname}\``);
      if (data[i].name === "Spotify") {
       embed.setThumbnail(`https://i.scdn.co/image/${data[i].assets.largeImage.replace("spotify:", "")}`);
      }
@@ -46,17 +46,16 @@ module.exports = {
     var isbot = " <:botpart1:853243093485748254><:botpart2:853243092597604362>";
    }
    embed.setColor("RANDOM");
-   embed.setAuthor(user.user.tag + isbot, user.user.displayAvatarURL({ dynamic: true }));
-   if (user.nickname !== null) embed.addField("Nickname", user.nickname);
-   embed
-    .addField("ID", user.user.id)
-    .addField("Discriminator", `#${user.user.discriminator}`, true)
-    .addField("Joined At", moment(user.user.joinedAt).format("LLLL"))
-    .addField("Account Created At", moment(user.user.createdAt).format("LLLL"))
-    .addField("Account Deleted?", user.deleted, true)
-    .addField("Badges", newbadges.join(", ").toLowerCase() || "None")
-    .addField("Status", `${stat[user.user.presence.status]} ${capitalizeFirstLetter(user.user.presence.status)}`)
-    .setFooter("Requested by " + `${message.author.username}`, message.author.displayAvatarURL({ dynamic: true, format: "png", size: 2048 }));
+   embed.setTitle(user.user.tag + isbot, user.user.displayAvatarURL({ dynamic: true }));
+   embed.addField("Nickname", user.nickname);
+   embed.addField("ID", user.user.id);
+   embed.addField("Discriminator", `#${user.user.discriminator}`, true);
+   embed.addField("Joined At", moment(user.user.joinedAt).format("LLLL"));
+   embed.addField("Account Created At", moment(user.user.createdAt).format("LLLL"));
+   embed.addField("Account Deleted?", user.deleted, true);
+   embed.addField("Badges", newbadges.join(", ").toLowerCase() || "None");
+   embed.addField("Status", `${stat[user.user.presence.status]} ${capitalizeFirstLetter(user.user.presence.status)}`);
+   embed.setFooter("Requested by " + `${message.author.username}`, message.author.displayAvatarURL({ dynamic: true, format: "png", size: 2048 }));
    message.lineReply(embed);
   } catch (err) {
    console.log(err);
