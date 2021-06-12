@@ -43,7 +43,7 @@ module.exports = {
    }
 
    if (user.user.bot = true) {
-    let isbot = " <:bot:853219015422246922>";
+    var isbot = " <:bot:853219015422246922>";
    }
    embed.setColor("RANDOM");
    embed.setAuthor(user.user.tag, user.user.displayAvatarURL({ dynamic: true }));
