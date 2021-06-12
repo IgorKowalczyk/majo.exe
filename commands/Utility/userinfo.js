@@ -35,7 +35,7 @@ module.exports = {
      let zname = data[i].state || "None";
      let type = data[i].type;
      //array.push(capitalizeFirstLetter(type.toLowerCase()) + `: \`${name} : ${xname} : ${zname}\``);
-     array.push(capitalizeFirstLetter(type.toLowerCase()) + `: \`${name}\``);
+     array.push(`🎮` + capitalizeFirstLetter(type.toLowerCase()) + `: \`${name}\``);
      if (data[i].name === "Spotify") {
       embed.setThumbnail(`https://i.scdn.co/image/${data[i].assets.largeImage.replace("spotify:", "")}`);
      }
