@@ -4,3 +4,4 @@ node_modules
 *md
 *webmanifest
 docs/
+dashboard/static/arc-sw.js
