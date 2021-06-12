@@ -34,22 +34,22 @@ module.exports = {
      let xname = data[i].details || "None";
      let zname = data[i].state || "None";
      let type = data[i].type;
-     array.push(capitalizeFirstLetter(type.toLowerCase()) + `: \`${name} : ${xname} : ${zname}\``);
+     //array.push(capitalizeFirstLetter(type.toLowerCase()) + `: \`${name} : ${xname} : ${zname}\``);
+     array.push(capitalizeFirstLetter(type.toLowerCase()) + `: \`${name}\``);
      if (data[i].name === "Spotify") {
       embed.setThumbnail(`https://i.scdn.co/image/${data[i].assets.largeImage.replace("spotify:", "")}`);
      }
      embed.setDescription(array.join("\n"));
     }
    }
-
    if (user.user.bot == true) {
     var isbot = " <:botpart1:853243093485748254><:botpart2:853243092597604362>";
    }
    embed.setColor("RANDOM");
    embed.setTitle(user.user.tag + isbot, user.user.displayAvatarURL({ dynamic: true }));
-   embed.addField("Nickname", user.nickname);
-   embed.addField("ID", user.user.id);
-   embed.addField("Discriminator", `#${user.user.discriminator}`, true);
+   embed.addField("Nickname", user.username);
+   embed.addField("ID", `\`${user.user.id}\``);
+   embed.addField("Discriminator", `\`#${user.user.discriminator}\``, true);
    embed.addField("Joined At", moment(user.user.joinedAt).format("LLLL"));
    embed.addField("Account Created At", moment(user.user.createdAt).format("LLLL"));
    embed.addField("Account Deleted?", user.deleted, true);
