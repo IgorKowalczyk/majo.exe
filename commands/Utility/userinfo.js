@@ -49,7 +49,7 @@ module.exports = {
    }
    embed.setColor("RANDOM");
    embed.setTitle(user.user.tag + isbot, user.user.displayAvatarURL({ dynamic: true }));
-   if(user.username) embed.addField("Nickname", user.username);
+   if (user.username) embed.addField("Nickname", user.username);
    embed.addField("ID", `\`${user.user.id}\``);
    embed.addField("Discriminator", `\`#${user.user.discriminator}\``, true);
    embed.addField("Joined At", moment(user.user.joinedAt).format("LLLL"));
