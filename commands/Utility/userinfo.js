@@ -43,7 +43,7 @@ module.exports = {
    }
 
    if (user.user.bot == true) {
-    var isbot = " <:bot:853219015422246922>";
+    var isbot = " <:botpart1:853243093485748254><:botpart2:853243092597604362>";
    }
    embed.setColor("RANDOM");
    embed.setAuthor(user.user.tag, user.user.displayAvatarURL({ dynamic: true }));
