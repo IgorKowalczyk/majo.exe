@@ -44,10 +44,12 @@ module.exports = {
    }
    if (user.user.bot == true) {
     var isbot = " <:botpart1:853243093485748254><:botpart2:853243092597604362>";
+   } else {
+    var isbot = ""; // This exists because user.user.bot sometimes return nothing not boolean
    }
    embed.setColor("RANDOM");
    embed.setTitle(user.user.tag + isbot, user.user.displayAvatarURL({ dynamic: true }));
-   embed.addField("Nickname", user.username);
+   if(user.username) embed.addField("Nickname", user.username);
    embed.addField("ID", `\`${user.user.id}\``);
    embed.addField("Discriminator", `\`#${user.user.discriminator}\``, true);
    embed.addField("Joined At", moment(user.user.joinedAt).format("LLLL"));
