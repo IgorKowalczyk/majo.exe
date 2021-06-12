@@ -42,18 +42,17 @@ module.exports = {
     }
    }
 
-   if (user.user.bot = true) {
+   if (user.user.bot == true) {
     var isbot = " <:bot:853219015422246922>";
    }
    embed.setColor("RANDOM");
    embed.setAuthor(user.user.tag, user.user.displayAvatarURL({ dynamic: true }));
-   if (user.nickname !== null) embed.addField("Nickname", user.nickname);
+   if (user.nickname !== null) embed.addField("Nickname", user.nickname + isbot);
    embed
     .addField("Joined At", moment(user.user.joinedAt).format("LLLL"))
     .addField("Account Created At", moment(user.user.createdAt).format("LLLL"))
     .addField("ID", user.user.id)
     .addField("Discriminator", `#${user.user.discriminator}`, true)
-    .addField("Is Bot?", isbot, true)
     .addField("Account Deleted?", user.deleted, true)
     .addField("Badges", newbadges.join(", ").toLowerCase() || "None")
     .addField("Status", `${stat[user.user.presence.status]} ${capitalizeFirstLetter(user.user.presence.status)}`)
