@@ -712,7 +712,7 @@ code {
  margin-top: 5px;
 }
 
-button {
+.link-button {
  padding: 10px 25px;
  background: var(--button);
  font-family: "Poppins";
@@ -728,15 +728,15 @@ button {
  margin-top: 0;
 }
 
-button:hover {
+.link-button:hover {
  background: var(--button-hover);
 }
 
-button.green {
+.link-button .green {
  background: rgb(var(--edit));
 }
 
-button.green {
+.link-button .green {
  background: rgb(var(--edit-hover));
 }
 
