@@ -734,11 +734,11 @@ code {
  background: var(--button-hover);
 }
 
-.link-button .green {
+.link-button.green {
  background: rgb(var(--edit));
 }
 
-.link-button .green {
+.link-button.green {
  background: rgb(var(--edit-hover));
 }
 
