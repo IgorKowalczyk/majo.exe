@@ -59,7 +59,7 @@ module.exports = {
     if (config.news && config.newstitle) {
      embed.addField(`${config.newstitle}`, `${config.news}`);
     }
-    embed.setFooter("Requested by " + `${message.author.username}` + " • " + `${client.commands.size}` + " Commands", message.author.displayAvatarURL({ dynamic: true, format: "png", size: 2048 }));
+    embed.setFooter("Requested by " + `${message.author.username}` + " | " + `${client.commands.size}` + " Commands", message.author.displayAvatarURL({ dynamic: true, format: "png", size: 2048 }));
     return message.lineReply(embed);
    }
 
@@ -87,13 +87,17 @@ module.exports = {
      function capitalizeFirstLetter(string) {
       return string.charAt(0).toUpperCase() + string.slice(1);
      }
-     alliaseslist = cmd.aliases.toString() || "None";
+     alliaseslist = cmd.aliases.toString().join(", ") || "None";
      const hembed = new Discord.MessageEmbed()
-      .setTitle(`:grey_question: Help - ${cmd.name} command`, message.guild.iconURL())
+      .setTitle(`:grey_question: Help - \`${cmd.name}\``, message.guild.iconURL())
       .setColor("RANDOM")
       .setTimestamp()
-      .setDescription("Category: `" + cmd.category + "`\n Description: `" + cmd.description + "`\n Usage: `" + prefix + " " + cmd.usage + "`\n Aliases: `" + alliaseslist + "`")
-      .setFooter("Syntax: <> = required, [] = optional • Requested by " + `${message.author.username}`, message.author.displayAvatarURL({ dynamic: true, format: "png", size: 2048 }));
+      .addField("Category", `\`${cmd.category}\``)
+      .addField("Description", `\`${cmd.description}\``)
+      .addField("Usage", `\`${prefix} ${cmd.usage}\``)
+      .addField("Aliases", `\`${cmd.alliaseslist}\``)
+      // .setDescription("Category: `" + cmd.category + "`\n Description: `" + cmd.description + "`\n Usage: `" + prefix + " " + cmd.usage + "`\n Aliases: `" + alliaseslist + "`")
+      .setFooter("Syntax: <> = required, [] = optional | Requested by " + `${message.author.username}`, message.author.displayAvatarURL({ dynamic: true, format: "png", size: 2048 }));
      message.lineReply(hembed);
     }
    }
