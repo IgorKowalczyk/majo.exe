@@ -148,6 +148,8 @@ body {
  padding: 20px 0px;
  margin: auto;
  margin-top: 60px;
+ max-width: 800px;
+ font-family: "Poppins";
 }
 
 img:not(.img, .server-icon) {
