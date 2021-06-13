@@ -11,6 +11,6 @@ module.exports = {
  usage: "bal",
  run: async (client, message, args) => {
   let money = eco.fetchMoney(message.author.id);
-  return message.channel.send(`${message.author} has ${money} coins.`);
+  return message.channel.send(`${message.author} has ${money || "0"} coins.`);
  },
 };
