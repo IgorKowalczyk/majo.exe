@@ -12,7 +12,7 @@
  <% if (user) { %>
   <p class="hero-title">Yay!</p>
   <p class="hero-title2">You connected your Discord account! Go to your dashboard and me to your server!</p>
-  <button><a href="https://<%= domain %>/dashboard">Go to Dashboard</a></button>
+  <button><a href="https://<%= domain %>/dashboard" class="green">Dashboard</a></button>
   <button><a href="#features">More</a></button>
   <% } else { %>
   <p class="hero-title">Hi! I'm <%= capitalizeFirstLetter(bot.user.username) %></p>
