@@ -1,6 +1,13 @@
 @font-face {
- font-family: Roboto-Thin;
+ font-family: "Roboto-Thin";
  src: url("../fonts/roboto-thin.ttf");
+}
+
+@font-face {
+ font-family: "Poppins";
+ font-style: normal;
+ font-weight: 200;
+ src: url("../fonts/poppins.ttf");
 }
 
 :root {
@@ -29,7 +36,7 @@
 
 .no-js {
  background: #f44336;
- font-family: Roboto-Thin;
+ font-family: "Poppins";
  color: #fff;
  text-align: center;
  display: -ms-flexbox;
@@ -103,7 +110,6 @@
 
 * {
  box-sizing: border-box;
- font-family: "Roboto-Thin";
  scrollbar-color: #353535 transparent;
  scrollbar-width: thin;
 }
@@ -138,7 +144,7 @@ body {
  flex-direction: column;
  -webkit-box-align: center;
  align-items: center;
- max-width: 800px;
+ max-width: 100%;
  padding: 20px 0px;
  margin: auto;
  margin-top: 60px;
@@ -154,7 +160,6 @@ img:not(.img, .server-icon) {
  display: inline-block;
  width: 144px;
  height: 144px;
- margin-top: 10px;
  background-color: #202225;
  background-size: 144px;
  background-position: 50%;
@@ -219,6 +224,7 @@ a {
  transition: 500ms all !important;
  z-index: 9999;
  box-shadow: 0 3px 15px 0 rgba(0, 0, 0, 0.1), 0 1px 3px 0 rgba(0, 0, 0, 0.08);
+ font-family: "Roboto-Thin";
 }
 
 .nav ul {
@@ -255,9 +261,8 @@ a {
 .nav .logo a {
  display: block;
  float: left;
- padding: 20px 20px !important;
+ padding: 17px 20px !important;
  font-size: 20px;
- padding: 10px 20px;
  text-decoration: none;
 }
 
@@ -680,6 +685,7 @@ code {
  right: 0;
  bottom: 0;
  left: 0;
+ font-family: "Poppins";
 }
 
 .r {
