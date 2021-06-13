@@ -95,7 +95,7 @@ module.exports = {
       .addField("Category", `\`${cmd.category}\``)
       .addField("Description", `\`${cmd.description}\``)
       .addField("Usage", `\`${prefix} ${cmd.usage}\``)
-      .addField("Aliases", `\`${cmd.alliaseslist}\``)
+      .addField("Aliases", `\`${alliaseslist}\``)
       // .setDescription("Category: `" + cmd.category + "`\n Description: `" + cmd.description + "`\n Usage: `" + prefix + " " + cmd.usage + "`\n Aliases: `" + alliaseslist + "`")
       .setFooter("Syntax: <> = required, [] = optional | Requested by " + `${message.author.username}`, message.author.displayAvatarURL({ dynamic: true, format: "png", size: 2048 }));
      message.lineReply(hembed);
