@@ -38,9 +38,9 @@ module.exports = {
      if (id == "Music") {
       icon = ":notes:";
      }
-     //if (id == "Economy") {
-     // icon = ":moneybag:";
-     // }
+     if (id == "Economy") {
+      icon = ":moneybag:";
+     }
      if (id == "Utility") {
       icon = ":toolbox:";
      }
