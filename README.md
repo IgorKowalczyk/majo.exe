@@ -7,7 +7,7 @@ Majo.exe have almost everything - Fun, Memes, Images, Giveaway, Economy, Anime a
 [![Node.js](https://img.shields.io/github/workflow/status/igorkowalczyk/majobot/Node.js/master?style=flat-square&logo=github&color=%2334D058)](https://majoexe.herokuapp.com/)
 [![Jekyll](https://img.shields.io/github/workflow/status/igorkowalczyk/majobot/Jekyll/master?style=flat-square&logo=github&color=%2334D058)](https://majoexe.herokuapp.com/)
 [![GitHub License](https://img.shields.io/github/license/igorkowalczyk/majobot?style=flat-square&logo=github&color=%2334D058)](https://majoexe.herokuapp.com/)
-[![Version](https://img.shields.io/github/package-json/v/igorkowalczyk/majobot?style=flat-square&logo=github&color=%2334D058)](https://github.com/igorkowalczyk/majobot/releases)
+[![Version](https://img.shields.io/github/package-json/v/igorkowalczyk/majobot?style=flat-square&logo=github&color=%2334D058)](https://majoexe.herokuapp.com/server)
 
 ### Invite
 
