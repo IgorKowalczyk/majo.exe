@@ -90,7 +90,12 @@ module.exports = async (message) => {
 
  message.channel
   .send({
-   embed: new MessageEmbed().setTitle("Calculator").setDescription(stringify).setColor("RANDOM").setTimestamp(),.setFooter("Requested by " + `${message.author.username}`, message.author.displayAvatarURL({ dynamic: true, format: "png", size: 2048 })),
+   embed: new MessageEmbed() // prettier
+    .setTitle("Calculator")
+    .setDescription(stringify)
+    .setColor("RANDOM")
+    .setTimestamp()
+    .setFooter("Requested by " + `${message.author.username}`, message.author.displayAvatarURL({ dynamic: true, format: "png", size: 2048 })),
    components: [
     {
      type: 1,
