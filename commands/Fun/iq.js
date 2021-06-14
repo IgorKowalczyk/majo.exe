@@ -9,7 +9,7 @@ module.exports = {
  run: async (client, message, args) => {
   try {
    const iq = Math.floor(Math.random() * 226);
-   const embed = new Discord.MessageEmbed()
+   const embed = new Discord.MessageEmbed() // Prettier
     .setTitle(":brain: IQ Test:")
     .setDescription(":bulb: " + message.author.username + " IQ: `" + iq + "`")
     .setColor(`RANDOM`)
