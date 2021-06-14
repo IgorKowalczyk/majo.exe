@@ -773,7 +773,7 @@ code {
 
 .boxes {
 display: grid;
-font-family: "Poppins";
+font-family: "Roboto-Thin";
 grid-template-columns: 1fr 1fr 1fr 1fr;
 grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
 grid-gap: 20px;
@@ -847,6 +847,7 @@ max-width: 800px;
 padding: 20px 0px;
 margin: auto;
 margin-top: 60px;
+font-family: "Poppins";
 }
 
 .headerinfo {
