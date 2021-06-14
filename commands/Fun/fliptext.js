@@ -29,7 +29,7 @@ module.exports = {
    args.forEach((arg) => {
     flipped.push(flip(arg));
    });
-   const embed = new Discord.MessageEmbed()
+   const embed = new Discord.MessageEmbed() // Prettier
     .setColor("RANDOM")
     .setTitle(":white_check_mark: Success!")
     .setDescription("Flipped text: " + flipped.join(" "))
