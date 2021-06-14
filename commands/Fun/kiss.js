@@ -29,7 +29,7 @@ module.exports = {
    try {
     const response = await fetch("https://nekos.life/api/v2/img/kiss");
     const body = await response.json();
-    const embed = new Discord.MessageEmbed()
+    const embed = new Discord.MessageEmbed() // Prettier
      .setAuthor(user.displayName + " Just got a kiss from " + message.author.username, message.author.displayAvatarURL({ dynamic: true, format: "png", size: 2048 }))
      .setDescription("So sweeet :3")
      .setImage(body.url)
