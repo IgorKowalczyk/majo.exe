@@ -42,24 +42,24 @@ module.exports = (client) => {
   /* Slash command */
   client.ws.on("INTERACTION_CREATE", async (interaction) => {
    try {
-   const command = interaction.data.name.toLowerCase();
-   const args = interaction.data.options;
-   if (command == "majo") {
-    const embed = new Discord.MessageEmbed()
-     .setDescription(`Hello, ${client.user.username} unfortunately **do not support slash commands**. And we do not currently plan to add them either. We apologize ;-; If you want use my normal commands please check \`${config.prefix} help\`!`)
-     .setTitle(`<a:sucess:759354039242063903> Hi ${interaction.member.user.username}! I'm ${client.user.username}`, client.user.displayAvatarURL({ dynamic: true, format: "png", size: 2048 }))
-     .setColor("RANDOM")
-     .addField("Join support server", config.server)
-     .addField("Invite me", `[Click this link to invite me!](https://discord.com/oauth2/authorize/?permissions=${config.premissions}&scope=${config.scopes}&client_id=${client.user.id}) **__[Recomended!]__**\nOr [click this link to invite me __as root__](https://discord.com/oauth2/authorize/?permissions=8&scope=${config.scopes}&client_id=${client.user.id}) [Not recomended!]`)
-     .setFooter("Requested by: " + interaction.member.user.username, client.user.displayAvatarURL({ dynamic: true, format: "png", size: 2048 }));
-    client.api.interactions(interaction.id, interaction.token).callback.post({
-     data: {
-      type: 4,
-      data: await createAPIMessage(interaction, embed),
-     },
-    });
-   }
-   } catch(err) {
+    const command = interaction.data.name.toLowerCase();
+    const args = interaction.data.options;
+    if (command == "majo") {
+     const embed = new Discord.MessageEmbed()
+      .setDescription(`Hello, ${client.user.username} unfortunately **do not support slash commands**. And we do not currently plan to add them either. We apologize ;-; If you want use my normal commands please check \`${config.prefix} help\`!`)
+      .setTitle(`<a:sucess:759354039242063903> Hi ${interaction.member.user.username}! I'm ${client.user.username}`, client.user.displayAvatarURL({ dynamic: true, format: "png", size: 2048 }))
+      .setColor("RANDOM")
+      .addField("Join support server", config.server)
+      .addField("Invite me", `[Click this link to invite me!](https://discord.com/oauth2/authorize/?permissions=${config.premissions}&scope=${config.scopes}&client_id=${client.user.id}) **__[Recomended!]__**\nOr [click this link to invite me __as root__](https://discord.com/oauth2/authorize/?permissions=8&scope=${config.scopes}&client_id=${client.user.id}) [Not recomended!]`)
+      .setFooter("Requested by: " + interaction.member.user.username, client.user.displayAvatarURL({ dynamic: true, format: "png", size: 2048 }));
+     client.api.interactions(interaction.id, interaction.token).callback.post({
+      data: {
+       type: 4,
+       data: await createAPIMessage(interaction, embed),
+      },
+     });
+    }
+   } catch (err) {
     return;
    }
   });

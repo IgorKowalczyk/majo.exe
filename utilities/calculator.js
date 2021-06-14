@@ -90,11 +90,7 @@ module.exports = async (message) => {
 
  message.channel
   .send({
-   embed: new MessageEmbed()
-    .setTitle("Calculator")
-    .setDescription(stringify)
-    .setColor("RANDOM")
-    .setTimestamp(),
+   embed: new MessageEmbed().setTitle("Calculator").setDescription(stringify).setColor("RANDOM").setTimestamp(),
    components: [
     {
      type: 1,
@@ -121,11 +117,7 @@ module.exports = async (message) => {
   .then(async (msg) => {
    async function edit() {
     msg.edit({
-     embed: new MessageEmbed()
-      .setTitle("Calculator")
-      .setDescription(stringify)
-      .setColor("RANDOM")
-      .setTimestamp(),
+     embed: new MessageEmbed().setTitle("Calculator").setDescription(stringify).setColor("RANDOM").setTimestamp(),
      components: [
       {
        type: 1,
@@ -152,11 +144,7 @@ module.exports = async (message) => {
    }
    async function lock() {
     msg.edit({
-     embed: new MessageEmbed()
-      .setTitle("Calculator")
-      .setDescription(stringify)
-      .setColor("RANDOM")
-      .setTimestamp(),
+     embed: new MessageEmbed().setTitle("Calculator").setDescription(stringify).setColor("RANDOM").setTimestamp(),
      components: [
       {
        type: 1,
@@ -324,7 +312,7 @@ module.exports = async (message) => {
       }
      }
     } else if (btn.id === calc_irrc) {
-     str = "Calculator disabled! To run calculator again please type \"" + prefix + " calculator --gui\"";
+     str = 'Calculator disabled! To run calculator again please type "' + prefix + ' calculator --gui"';
      stringify = "```\n" + str + "\n```";
      edit();
      calc.stop();
