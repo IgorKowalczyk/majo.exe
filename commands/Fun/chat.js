@@ -41,7 +41,7 @@ module.exports = {
       },
      });
     } else {
-     const embed = new Discord.MessageEmbed()
+     const embed = new Discord.MessageEmbed() // Prettier
       .setDescription(body.cnt)
       .setColor("RANDOM")
       .setFooter("Requested by " + `${message.author.username}`, message.author.displayAvatarURL({ dynamic: true, format: "png", size: 2048 }))
