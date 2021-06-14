@@ -28,14 +28,7 @@ module.exports = {
       .setColor("RANDOM")
       .addField("Question: ", `${question}`)
       .addField("Answer: ", `${require("mathjs").evaluate(question)}`)
-      .setFooter(
-       "Requested by " + `${message.author.username}`,
-       message.author.displayAvatarURL({
-        dynamic: true,
-        format: "png",
-        size: 2048,
-       })
-      );
+      .setFooter("Requested by " + `${message.author.username}`, message.author.displayAvatarURL({ dynamic: true, format: "png", size: 2048 }))
      return message.lineReply(calc);
     } catch (err) {
      message.lineReply({
