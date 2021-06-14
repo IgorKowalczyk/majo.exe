@@ -46,27 +46,31 @@ module.exports = async (client, oldChannel, newChannel) => {
      const uavatar = logs.entries.first().executor.avatarURL();
      const guildsChannel = newChannel.guild;
      if (oldChannel.parent !== newChannel.parent) {
-      const channelname = new Discord.MessageEmbed().setTitle("Channel Name changed").setThumbnail(uavatar).addField("Channel type", `${type}`).addField("Old Channel category (parent)", `${oldcategory} (ID: ${newChannel.parentID})`).addField("New Channel category (parent)", `${newcategory} (ID: ${newChannel.parentID})`).addField("Changed by", `<@${userid}> (ID: ${userid})`).addField("Created at", `${oldChannel.createdAt}`).setColor("RANDOM").setTimestamp().setFooter(oldChannel.guild.name, oldChannel.guild.iconURL());
-      log.send(channelname);
-     }
-     if (oldChannel.name !== newChannel.name) {
-      const channelname = new Discord.MessageEmbed().setTitle("Channel Name changed").setThumbnail(uavatar).addField("Old Channel name", `\`\`\`${oldChannel.name} \`\`\` `).addField("New Channel name", `<#${newChannel.name}>`).addField("Channel id", `${oldChannel.id}`).addField("Channel type", `${type}`).addField("Changed by", `<@${userid}> (ID: ${userid})`).addField("Created at", `${oldChannel.createdAt}`).setColor("RANDOM").setTimestamp().setFooter(oldChannel.guild.name, oldChannel.guild.iconURL());
-      log.send(channelname);
-     }
-     if (oldChannel.topic !== newChannel.topic) {
-      const newtopic = new Discord.MessageEmbed()
-       .setTitle("Channel Description changed")
-       .setThumbnail(uavatar)
-       .addField("Old Channel description", `\`\`\`\ ${oldChannel.topic || "(Not set)"} \`\`\` `)
-       .addField("New Channel description", `\`\`\`\ ${newChannel.topic || "(Not set)"} \`\`\` `)
-       .addField("Channel id", `${newChannel.id}`)
-       .addField("Channel type", `${type}`)
+      const channelname = new Discord.MessageEmbed() // prettier
+       .setTitle("Channel position changed")
+       .setThumbnail(uavatar).addField("Channel type", `${type}`)
+       .addField("Old Channel category (parent)", `${oldcategory} (ID: ${newChannel.parentID})`)
+       .addField("New Channel category (parent)", `${newcategory} (ID: ${newChannel.parentID})`)
        .addField("Changed by", `<@${userid}> (ID: ${userid})`)
        .addField("Created at", `${oldChannel.createdAt}`)
        .setColor("RANDOM")
        .setTimestamp()
        .setFooter(oldChannel.guild.name, oldChannel.guild.iconURL());
-      log.send(newtopic);
+      log.send(channelname);
+     }
+     if (oldChannel.name !== newChannel.name) {
+      const channelname = new Discord.MessageEmbed() // prettier
+       .setTitle("Channel Name changed")
+       .setThumbnail(uavatar)
+       .addField("Old Channel name", `\`\`\`${oldChannel.name} \`\`\` `)
+       .addField("New Channel name", `<#${newChannel.name}>`)
+       .addField("Channel id", `${oldChannel.id}`)
+       .addField("Channel type", `${type}`)
+       .addField("Changed by", `<@${userid}> (ID: ${userid})`)
+       .addField("Created at", `${oldChannel.createdAt}`)
+       .setColor("RANDOM").setTimestamp()
+       .setFooter(oldChannel.guild.name, oldChannel.guild.iconURL());
+      log.send(channelname);
      }
     });
    })();
