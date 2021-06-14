@@ -9,7 +9,7 @@ module.exports = {
  usage: "calculator [--gui] [math task]",
  run: async (client, message, args) => {
   try {
-   if(args.includes("--gui")) {
+   if (args.includes("--gui")) {
     const calc = require("../../utilities/calculator");
     await calc(message);
    } else {
@@ -29,7 +29,14 @@ module.exports = {
       .setColor("RANDOM")
       .addField("Question: ", `${question}`)
       .addField("Answer: ", `${math.evaluate(question)}`)
-      .setFooter("Requested by " + `${message.author.username}`, message.author.displayAvatarURL({ dynamic: true, format: "png", size: 2048 }));
+      .setFooter(
+       "Requested by " + `${message.author.username}`,
+       message.author.displayAvatarURL({
+        dynamic: true,
+        format: "png",
+        size: 2048,
+       })
+      );
      return message.lineReply(calc);
     } catch (err) {
      message.lineReply({
@@ -39,14 +46,14 @@ module.exports = {
       },
      });
     }
-   } catch (err) {
-    message.lineReply({
-     embed: {
-      color: 16734039,
-      description: "Something went wrong... :cry:",
-     },
-    });
    }
+  } catch (err) {
+   message.lineReply({
+    embed: {
+     color: 16734039,
+     description: "Something went wrong... :cry:",
+    },
+   });
   }
  },
 };
