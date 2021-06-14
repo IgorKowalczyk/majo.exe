@@ -13,42 +13,40 @@ module.exports = {
     const calc = require("../../utilities/calculator");
     await calc(message);
    } else {
-    args.replace("--gui", "");
-   if (args.length < 1) {
-    return message.lineReply({
-     embed: {
-      color: 16734039,
-      description: "❌ | You must provide a equation to be solved on the calculator! (eg. 9 + 10)",
-     },
-    });
-   }
-   const question = args.join(" ");
-   try {
-    let answer;
-    let footer;
-    const calc = new Discord.MessageEmbed()
-     .setTitle("💡 Calculator")
-     .setColor("RANDOM")
-     .addField("Question: ", `${question}`)
-     .addField("Answer: ", `${math.evaluate(question)}`)
-     .setFooter("Requested by " + `${message.author.username}`, message.author.displayAvatarURL({ dynamic: true, format: "png", size: 2048 }));
-    return message.lineReply(calc);
+    try {
+     args.replace("--gui", "");
+     if (args.length < 1) {
+      return message.lineReply({
+       embed: {
+        color: 16734039,
+        description: "❌ | You must provide a equation to be solved on the calculator! (eg. 9 + 10)",
+       },
+      });
+     }
+     const question = args.join(" ");
+     const calc = new Discord.MessageEmbed()
+      .setTitle("💡 Calculator")
+      .setColor("RANDOM")
+      .addField("Question: ", `${question}`)
+      .addField("Answer: ", `${math.evaluate(question)}`)
+      .setFooter("Requested by " + `${message.author.username}`, message.author.displayAvatarURL({ dynamic: true, format: "png", size: 2048 }));
+     return message.lineReply(calc);
+    } catch (err) {
+     message.lineReply({
+      embed: {
+       color: 16734039,
+       description: "Invalid math equation!",
+      },
+     });
+    }
    } catch (err) {
     message.lineReply({
      embed: {
       color: 16734039,
-      description: "Invalid math equation!",
+      description: "Something went wrong... :cry:",
      },
     });
    }
-  } catch (err) {
-   message.lineReply({
-    embed: {
-     color: 16734039,
-     description: "Something went wrong... :cry:",
-    },
-   });
   }
- }
  },
 };
