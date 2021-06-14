@@ -43,7 +43,7 @@ module.exports = {
    .setColor(`GREEN`);
   const eyesembed = new Discord.MessageEmbed() // Prettier()
    .setDescription(`✨ | I would rate **${rate}** ${result}/100 ??`)
-    .setColor(`GREEN`);
+   .setColor(`GREEN`);
   if (result > 90) return message.lineReply(happyrate);
   if (result < 30) return message.lineReply(sadembed);
   if (result > 40) return message.lineReply(idkembed);

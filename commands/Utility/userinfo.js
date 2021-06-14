@@ -26,7 +26,7 @@ module.exports = {
     newbadges.push(m.replace("_", " "));
    });
    const embed = new Discord.MessageEmbed() // Prettier()
-    .setThumbnail(user.user.displayAvatarURL({ dynamic: true }))
+    .setThumbnail(user.user.displayAvatarURL({ dynamic: true }));
    let array = [];
    if (user.user.presence.activities.length) {
     let data = user.user.presence.activities;

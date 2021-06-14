@@ -49,7 +49,8 @@ module.exports = async (client, oldGuild, newGuild) => {
     if (oldGuild.publicUpdatesChannelID != newGuild.publicUpdatesChannelID) {
      const embed = await new Discord.MessageEmbed() // Prettier()
       .setTitle("Guild public updates channel changed")
-      .setColor("RANDOM").addField("Old public updates channel", `<#${oldGuild.publicUpdatesChannelID}>`)
+      .setColor("RANDOM")
+      .addField("Old public updates channel", `<#${oldGuild.publicUpdatesChannelID}>`)
       .addField("New public updates channel", `<#${newGuild.publicUpdatesChannelID}>`)
       .setTimestamp()
       .setFooter(newGuild.name, newGuild.iconURL());
@@ -61,7 +62,8 @@ module.exports = async (client, oldGuild, newGuild) => {
       .setColor("RANDOM")
       .addField("Old rules channel", `<#${oldGuild.rulesChannelID}>`)
       .addField("New rules channel", `<#${newGuild.rulesChannelID}>`)
-      .setTimestamp().setFooter(newGuild.name, newGuild.iconURL());
+      .setTimestamp()
+      .setFooter(newGuild.name, newGuild.iconURL());
      await log.send(embed);
     }
     if (oldGuild.systemChannelID != newGuild.systemChannelID) {
@@ -100,7 +102,8 @@ module.exports = async (client, oldGuild, newGuild) => {
       .setColor("RANDOM")
       .addField("Old widget channel", `<#${oldGuild.widgetChannelID}>`)
       .addField("New widget channel", `<#${newGuild.widgetChannelID}>`)
-      .setTimestamp().setFooter(newGuild.name, newGuild.iconURL());
+      .setTimestamp()
+      .setFooter(newGuild.name, newGuild.iconURL());
      await log.send(embed);
     }
    })();

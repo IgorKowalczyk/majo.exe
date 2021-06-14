@@ -75,13 +75,17 @@ module.exports = {
   try {
    if (serverQueue) {
     if (urlValid) {
-     message.lineReply(new Discord.MessageEmbed() // Prettier()
-      .setColor("RANDOM")
-      .setDescription(`:notes: Searching 🔍 [\`LINK\`](${args.join(" ")})`));
+     message.lineReply(
+      new Discord.MessageEmbed() // Prettier()
+       .setColor("RANDOM")
+       .setDescription(`:notes: Searching 🔍 [\`LINK\`](${args.join(" ")})`)
+     );
     } else {
-     message.lineReply(new Discord.MessageEmbed() // Prettier()
-      .setColor("RANDOM")
-      .setDescription(`:notes: Searching 🔍 \`${args.join(" ")}\``));
+     message.lineReply(
+      new Discord.MessageEmbed() // Prettier()
+       .setColor("RANDOM")
+       .setDescription(`:notes: Searching 🔍 \`${args.join(" ")}\``)
+     );
     }
    } else {
     queueConstruct.connection = await channel.join();
