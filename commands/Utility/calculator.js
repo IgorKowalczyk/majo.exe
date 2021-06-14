@@ -37,7 +37,7 @@ module.exports = {
       .setColor("RANDOM")
       .addField("Question: ", `\`\`\`${question}\`\`\``)
       .addField("Answer: ", `\`\`\`${require("mathjs").evaluate(question)}\`\`\``)
-      .setFooter("Note: Type `+ " + process.env.PREFIX + "| calculator --gui` to run graphic calculator! | Requested by " + `${message.author.username}`, message.author.displayAvatarURL({ dynamic: true, format: "png", size: 2048 }))
+      .setFooter("Note: Type `+ " + process.env.PREFIX + "| calculator --gui` to run graphic calculator! | Requested by " + `${message.author.username}`, message.author.displayAvatarURL({ dynamic: true, format: "png", size: 2048 }));
      return message.lineReply(calc);
     } catch (err) {
      console.log(err);

@@ -48,7 +48,8 @@ module.exports = async (client, oldChannel, newChannel) => {
      if (oldChannel.parent !== newChannel.parent) {
       const channelname = new Discord.MessageEmbed() // prettier
        .setTitle("Channel position changed")
-       .setThumbnail(uavatar).addField("Channel type", `${type}`)
+       .setThumbnail(uavatar)
+       .addField("Channel type", `${type}`)
        .addField("Old Channel category (parent)", `${oldcategory} (ID: ${newChannel.parentID})`)
        .addField("New Channel category (parent)", `${newcategory} (ID: ${newChannel.parentID})`)
        .addField("Changed by", `<@${userid}> (ID: ${userid})`)
@@ -68,7 +69,8 @@ module.exports = async (client, oldChannel, newChannel) => {
        .addField("Channel type", `${type}`)
        .addField("Changed by", `<@${userid}> (ID: ${userid})`)
        .addField("Created at", `${oldChannel.createdAt}`)
-       .setColor("RANDOM").setTimestamp()
+       .setColor("RANDOM")
+       .setTimestamp()
        .setFooter(oldChannel.guild.name, oldChannel.guild.iconURL());
       log.send(channelname);
      }

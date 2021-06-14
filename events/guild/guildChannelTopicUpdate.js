@@ -14,18 +14,9 @@ module.exports = async (client, channel, oldTopic, newTopic) => {
     const logsetup = await results[0].res;
     const log = await channel.guild.channels.cache.find((c) => c.id == logsetup && c.type == "text");
     if (!log) return;
-     const newtopic = new Discord.MessageEmbed()
-      .setTitle("📝 Channel topic changed!", channel.guild.iconURL())
-      .addField("Channel name", `${channel.name}`)
-      .addField("Old topic", `\`\`\`${oldTopic}\`\`\``)
-      .addField("New topic", `\`\`\`${newTopic}\`\`\``)
-      .addField("Channel ID", `${channel.id}`)
-      .addField("Created at", `${channel.createdAt}`)
-      .setColor("RANDOM")
-      .setTimestamp()
-      .setFooter(channel.guild.name, channel.guild.iconURL());
-     await log.send(newtopic);
-    })();
+    const newtopic = new Discord.MessageEmbed().setTitle("📝 Channel topic changed!", channel.guild.iconURL()).addField("Channel name", `${channel.name}`).addField("Old topic", `\`\`\`${oldTopic}\`\`\``).addField("New topic", `\`\`\`${newTopic}\`\`\``).addField("Channel ID", `${channel.id}`).addField("Created at", `${channel.createdAt}`).setColor("RANDOM").setTimestamp().setFooter(channel.guild.name, channel.guild.iconURL());
+    await log.send(newtopic);
+   })();
   });
  } catch (err) {
   console.log(err);
