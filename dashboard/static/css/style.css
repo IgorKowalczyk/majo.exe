@@ -686,7 +686,7 @@ code {
  text-align: center;
  background-attachment: fixed;
  background-position: center;
- background-image: url(https://cdn.discordapp.com/attachments/185046628732895232/204497752091000832/bg3.svg);
+ background-image: url("../svg/background.svg");
  width: 100%;
  height: 100vh;
  color: var(--light);
