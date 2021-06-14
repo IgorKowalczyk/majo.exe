@@ -13,7 +13,7 @@ module.exports = {
     await calc(message);
    } else {
     try {
-     args.replace("--gui", "");
+     args.toString().replace("--gui", "");
      if (args.length < 1) {
       console.log("args" + args);
       return message.lineReply({
@@ -42,6 +42,7 @@ module.exports = {
     }
    }
   } catch (err) {
+   console.log(err);
    message.lineReply({
     embed: {
      color: 16734039,
