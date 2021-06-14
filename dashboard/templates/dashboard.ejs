@@ -1,7 +1,7 @@
 <%- include("partials/head", { bot, user, path, title: "Dashboard" }) %>
 <div class="content">
 
-<h2>PLEASE SELECT A SERVER</h2>
+<h2>Select server</h2>
 <p class="note"><span class="bold">Info:</span> You need the <code>MANAGE_GUILD</code> permission to view your servers here.</p>
 <div class="servers">
 <% user.guilds.forEach(guild => {
