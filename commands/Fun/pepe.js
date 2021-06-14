@@ -10,12 +10,24 @@ module.exports = {
   try {
    const user = (await message.mentions.members.first()) || message.guild.members.cache.get(args[0]) || message.guild.members.cache.find((r) => r.user.username.toLowerCase().includes() === args.join(" ").toLocaleLowerCase()) || message.guild.members.cache.find((r) => r.displayName.toLowerCase().includes() === args.join(" ").toLocaleLowerCase()) || message.author;
    const pepe = "8" + "=".repeat(Math.floor(Math.random() * 15)) + "D";
-   const embed = new Discord.MessageEmbed() // Prettier
-    .setTitle(`Pepe :smirk:`, user.displayAvatarURL({ dynamic: true }))
+   const embed = new Discord.MessageEmbed() // Prettier()
+    .setTitle(
+     `Pepe :smirk:`,
+     user.displayAvatarURL({
+      dynamic: true,
+     })
+    )
     .setDescription(`${user}, you're Pepe is **${pepe}** long!`)
     .setTimestamp()
     .setColor("RANDOM")
-    .setFooter("Requested by " + `${message.author.username}`, message.author.displayAvatarURL({ dynamic: true, format: "png", size: 2048 }));
+    .setFooter(
+     "Requested by " + `${message.author.username}`,
+     message.author.displayAvatarURL({
+      dynamic: true,
+      format: "png",
+      size: 2048,
+     })
+    );
    message.lineReply(embed);
   } catch (err) {
    console.log(err);

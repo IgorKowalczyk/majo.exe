@@ -11,11 +11,24 @@ module.exports = {
  run: async (client, message, args) => {
   try {
    const duration = moment.duration(client.uptime).format(" D [days], H [hrs], m [mins], s [secs]");
-   const embed = new Discord.MessageEmbed()
-    .setTitle(":hourglass_flowing_sand: Uptime", message.guild.iconURL({ dynamic: true, format: "png" }))
+   const embed = new Discord.MessageEmbed() // Prettier()
+    .setTitle(
+     ":hourglass_flowing_sand: Uptime",
+     message.guild.iconURL({
+      dynamic: true,
+      format: "png",
+     })
+    )
     .setDescription(`My uptime: ${duration}`)
     .setTimestamp()
-    .setFooter("Requested by " + `${message.author.username}`, message.author.displayAvatarURL({ dynamic: true, format: "png", size: 2048 }))
+    .setFooter(
+     "Requested by " + `${message.author.username}`,
+     message.author.displayAvatarURL({
+      dynamic: true,
+      format: "png",
+      size: 2048,
+     })
+    )
     .setColor("RANDOM");
    message.lineReply(embed);
   } catch (err) {

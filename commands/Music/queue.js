@@ -25,11 +25,25 @@ module.exports = {
    if (description.length == 0) {
     description = "There is nothing in the queue!";
    }
-   const queueembed = new Discord.MessageEmbed()
-    .setTitle("💿 Music Queue", message.author.displayAvatarURL({ dynamic: true, format: "png", size: 2048 }))
+   const queueembed = new Discord.MessageEmbed() // Prettier()
+    .setTitle(
+     "💿 Music Queue",
+     message.author.displayAvatarURL({
+      dynamic: true,
+      format: "png",
+      size: 2048,
+     })
+    )
     .setDescription(description)
     .setColor("RANDOM")
-    .setFooter("Requested by " + `${message.author.username}`, message.author.displayAvatarURL({ dynamic: true, format: "png", size: 2048 }));
+    .setFooter(
+     "Requested by " + `${message.author.username}`,
+     message.author.displayAvatarURL({
+      dynamic: true,
+      format: "png",
+      size: 2048,
+     })
+    );
    const splitDescription = Discord.splitMessage(description, {
     maxLength: 2048,
     char: "\n",

@@ -16,7 +16,12 @@ module.exports = {
      description: "✨ | Please wait... I'm generating your image",
     },
    });
-   const embed = await Random.Glass({ Image: amember.user.displayAvatarURL({ format: "png" }), Color: "RANDOM" });
+   const embed = await Random.Glass({
+    Image: amember.user.displayAvatarURL({
+     format: "png",
+    }),
+    Color: "RANDOM",
+   });
    return message.channel.send(embed);
   } catch (err) {
    message.lineReply({

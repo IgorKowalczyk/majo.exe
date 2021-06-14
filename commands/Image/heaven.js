@@ -15,9 +15,15 @@ module.exports = {
      description: "✨ | Please wait... I'm generating your image",
     },
    });
-   const embed = new Discord.MessageEmbed()
+   const embed = new Discord.MessageEmbed() // Prettier()
     .setColor("RANDOM")
-    .setImage(encodeURI(`https://vacefron.nl/api/heaven?user=${hmember.user.displayAvatarURL({ format: "png" })}`))
+    .setImage(
+     encodeURI(
+      `https://vacefron.nl/api/heaven?user=${hmember.user.displayAvatarURL({
+       format: "png",
+      })}`
+     )
+    )
     .setTimestamp();
    message.channel.send(embed);
   } catch (err) {

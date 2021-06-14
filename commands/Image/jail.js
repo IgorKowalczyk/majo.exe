@@ -16,7 +16,13 @@ module.exports = {
      description: "✨ | Please wait... I'm generating your image",
     },
    });
-   const jail = await canvacord.Canvas.jail(User.user.displayAvatarURL({ dynamic: false, format: "png", size: 2048 }));
+   const jail = await canvacord.Canvas.jail(
+    User.user.displayAvatarURL({
+     dynamic: false,
+     format: "png",
+     size: 2048,
+    })
+   );
    const attachment = new Discord.MessageAttachment(jail, "jail.png");
    message.channel.send(attachment);
   } catch (err) {

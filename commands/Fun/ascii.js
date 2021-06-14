@@ -45,11 +45,24 @@ module.exports = {
       {}
      )
      .then(function (urlToPaste) {
-      const embed = new Discord.MessageEmbed() // Prettier
+      const embed = new Discord.MessageEmbed() // Prettier()
        .setColor("RANDOM")
-       .setTitle(":white_check_mark: Success!", message.guild.iconURL({ dynamic: true, format: "png" }))
+       .setTitle(
+        ":white_check_mark: Success!",
+        message.guild.iconURL({
+         dynamic: true,
+         format: "png",
+        })
+       )
        .setDescription(":tada: Your ascii code is generated! \n:link: Link to ascii code paste: " + urlToPaste)
-       .setFooter("Requested by " + `${message.author.username}`, message.author.displayAvatarURL({ dynamic: true, format: "png", size: 2048 }))
+       .setFooter(
+        "Requested by " + `${message.author.username}`,
+        message.author.displayAvatarURL({
+         dynamic: true,
+         format: "png",
+         size: 2048,
+        })
+       )
        .setTimestamp();
       message.lineReply(embed);
      })

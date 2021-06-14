@@ -23,19 +23,27 @@ module.exports = {
     },
    });
   let result = Math.floor(Math.random() * 100 + 0);
-  const happyrate = new Discord.MessageEmbed()
+  const happyrate = new Discord.MessageEmbed() // Prettier()
    .setDescription(`✨ | I would rate **${rate}** ${result}/100 ?`)
    .setColor(`GREEN`);
-  const sadembed = new Discord.MessageEmbed()
+  const sadembed = new Discord.MessageEmbed() // Prettier()
    .setDescription(`✨ | I would rate **${rate}** ${result}/100 ??`)
    .setColor(`RED`);
-  const idkembed = new Discord.MessageEmbed()
+  const idkembed = new Discord.MessageEmbed() // Prettier()
    .setDescription(`✨ | I would rate **${rate}** ${result}/100 ??`)
    .setColor(`YELLOW`);
-  const shrugembed = new Discord.MessageEmbed().setDescription(`✨ | I would rate **${rate}** ${result}/100 ??`).setColor(`YELLOW`);
-  const okembed = new Discord.MessageEmbed().setDescription(`✨ | I would rate **${rate}** ${result}/100 ??`).setColor(`GREEN`);
-  const thumbupembed = new Discord.MessageEmbed().setDescription(`✨ | I would rate **${rate}** ${result}/100 ??`).setColor(`GREEN`);
-  const eyesembed = new Discord.MessageEmbed().setDescription(`✨ | I would rate **${rate}** ${result}/100 ??`).setColor(`GREEN`);
+  const shrugembed = new Discord.MessageEmbed() // Prettier()
+   .setDescription(`✨ | I would rate **${rate}** ${result}/100 ??`)
+   .setColor(`YELLOW`);
+  const okembed = new Discord.MessageEmbed() // Prettier()
+   .setDescription(`✨ | I would rate **${rate}** ${result}/100 ??`)
+   .setColor(`GREEN`);
+  const thumbupembed = new Discord.MessageEmbed() // Prettier()
+   .setDescription(`✨ | I would rate **${rate}** ${result}/100 ??`)
+   .setColor(`GREEN`);
+  const eyesembed = new Discord.MessageEmbed() // Prettier()
+   .setDescription(`✨ | I would rate **${rate}** ${result}/100 ??`)
+    .setColor(`GREEN`);
   if (result > 90) return message.lineReply(happyrate);
   if (result < 30) return message.lineReply(sadembed);
   if (result > 40) return message.lineReply(idkembed);

@@ -23,7 +23,9 @@ module.exports = async (client, member) => {
      let days = Math.floor(diff / 86400000);
      return days + (days == 1 ? " day" : " days") + " ago";
     }
-    Canvas.registerFont("./lib/fonts/quicksand-light.ttf", { family: "Quicksand" });
+    Canvas.registerFont("./lib/fonts/quicksand-light.ttf", {
+     family: "Quicksand",
+    });
     const canvas = Canvas.createCanvas(1772, 633);
     const ctx = canvas.getContext("2d");
     const background = await Canvas.loadImage(image);
@@ -56,14 +58,32 @@ module.exports = async (client, member) => {
     ctx.arc(315, canvas.height / 2, 250, 0, Math.PI * 2, true);
     ctx.closePath();
     ctx.clip();
-    const avatar = await Canvas.loadImage(member.user.displayAvatarURL({ format: "jpg", size: 2048 }));
+    const avatar = await Canvas.loadImage(
+     member.user.displayAvatarURL({
+      format: "jpg",
+      size: 2048,
+     })
+    );
     ctx.drawImage(avatar, 65, canvas.height / 2 - 250, 500, 500);
     const attachment = new Discord.MessageAttachment(canvas.toBuffer(), "welcome-image.png");
-    const embed = await new Discord.MessageEmbed()
+    const embed = await new Discord.MessageEmbed() // Prettier()
      .setColor("RANDOM")
      .setTimestamp()
-     .setFooter(`${member.guild.name}`, member.user.displayAvatarURL({ dynamic: true, format: "png", size: 2048 }))
-     .setTitle(`**Welcome to the server ${member.user.username}!**`, member.guild.iconURL({ dynamic: true, format: "png" }))
+     .setFooter(
+      `${member.guild.name}`,
+      member.user.displayAvatarURL({
+       dynamic: true,
+       format: "png",
+       size: 2048,
+      })
+     )
+     .setTitle(
+      `**Welcome to the server ${member.user.username}!**`,
+      member.guild.iconURL({
+       dynamic: true,
+       format: "png",
+      })
+     )
      .setDescription(":calendar_spiral: **Acount created at:** `" + moment(member.user.createdAt).format("MMMM Do YYYY, h:mm:ss") + "` (" + moment(member.user.createdAt).fromNow() + ")")
      .setImage("attachment://welcome-image.png")
      .attachFiles(attachment);

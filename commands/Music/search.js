@@ -46,17 +46,40 @@ module.exports = {
      },
     });
    }
-   const first = new Discord.MessageEmbed()
+   const first = new Discord.MessageEmbed() // Prettier()
     .setAuthor("Searching...")
     .setColor("RANDOM")
-    .setFooter("Requested by " + `${message.author.username}`, message.author.displayAvatarURL({ dynamic: true, format: "png", size: 2048 }));
-   const resultsEmbed = new Discord.MessageEmbed()
+    .setFooter(
+     "Requested by " + `${message.author.username}`,
+     message.author.displayAvatarURL({
+      dynamic: true,
+      format: "png",
+      size: 2048,
+     })
+    );
+   const resultsEmbed = new Discord.MessageEmbed() // Prettier()
     .setTitle("Results for ")
     .setDescription(`\`${search}\``)
     .setColor("RANDOM")
-    .setAuthor("Search results", message.author.displayAvatarURL({ dynamic: true, format: "png", size: 2048 }))
-    .setFooter("Response with your favorite number | Requested by " + `${message.author.username}`, message.author.displayAvatarURL({ dynamic: true, format: "png", size: 2048 }));
-   const results = await ytsr.search(search, { limit: 5 });
+    .setAuthor(
+     "Search results",
+     message.author.displayAvatarURL({
+      dynamic: true,
+      format: "png",
+      size: 2048,
+     })
+    )
+    .setFooter(
+     "Response with your favorite number | Requested by " + `${message.author.username}`,
+     message.author.displayAvatarURL({
+      dynamic: true,
+      format: "png",
+      size: 2048,
+     })
+    );
+   const results = await ytsr.search(search, {
+    limit: 5,
+   });
    results.map((video, index) => resultsEmbed.addField(video.url, `${index + 1}. ${video.title}`));
    const resultsMessage = await message.lineReply(first);
    await resultsMessage.react("1️⃣");
@@ -68,7 +91,11 @@ module.exports = {
    message.channel.activeCollector = true;
    let response;
    await resultsMessage
-    .awaitReactions((reaction, user) => user.id == message.author.id, { max: 1, time: 60000, errors: ["time"] })
+    .awaitReactions((reaction, user) => user.id == message.author.id, {
+     max: 1,
+     time: 60000,
+     errors: ["time"],
+    })
     .then((collected) => {
      if (collected.first().emoji.name == "1️⃣") {
       return (response = 1);

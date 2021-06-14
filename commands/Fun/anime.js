@@ -13,8 +13,14 @@ module.exports = {
    malScraper
     .getInfoFromName(search)
     .then((data) => {
-     const embed = new Discord.MessageEmbed() // Prettier
-      .setAuthor(`🔍 My Anime List search result for ${args}`.split(",").join(" "), message.guild.iconURL({ dynamic: true, format: "png" }))
+     const embed = new Discord.MessageEmbed() // Prettier()
+      .setAuthor(
+       `🔍 My Anime List search result for ${args}`.split(",").join(" "),
+       message.guild.iconURL({
+        dynamic: true,
+        format: "png",
+       })
+      )
       .setImage(data.picture)
       .setColor("RANDOM")
       .addField(":flag_gb: English Title", data.englishTitle)
@@ -26,7 +32,14 @@ module.exports = {
       .addField(":star: Score", data.score)
       .addField(":bar_chart: Score Stats", data.scoreStats)
       .addField(":link: Link", data.url)
-      .setFooter("Requested by " + `${message.author.username}`, message.author.displayAvatarURL({ dynamic: true, format: "png", size: 2048 }))
+      .setFooter(
+       "Requested by " + `${message.author.username}`,
+       message.author.displayAvatarURL({
+        dynamic: true,
+        format: "png",
+        size: 2048,
+       })
+      )
       .setTimestamp();
      message.lineReply(embed);
     })

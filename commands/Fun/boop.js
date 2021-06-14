@@ -8,7 +8,9 @@ module.exports = {
  usage: "boop",
  run: async (client, message, args) => {
   try {
-   const embed = new Discord.MessageEmbed().setColor("RANDOM").setTitle("⏰ Beep!");
+   const embed = new Discord.MessageEmbed() // Prettier()
+    .setColor("RANDOM")
+    .setTitle("⏰ Beep!");
    message.lineReply(embed);
   } catch (err) {
    message.lineReply({

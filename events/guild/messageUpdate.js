@@ -19,7 +19,7 @@ module.exports = async (client, oldMessage, newMessage) => {
     if (!newMessage.embeds) return console.log("yes");
     const oldone = oldMessage.toString().substr(0, 1000).replace(/`/g, "'"); // To awoid quiting code block
     const newone = newMessage.toString().substr(0, 1000).replace(/`/g, "'"); // To awoid quiting code block
-    const event = await new Discord.MessageEmbed()
+    const event = await new Discord.MessageEmbed() // Prettier()
      .setTitle(`Message Edited`)
      .setColor("RANDOM")
      .setThumbnail(oldMessage.author.avatarURL())

@@ -37,7 +37,7 @@ module.exports = {
     });
    }
    if (chanargs === "boards") {
-    let vboards = new Discord.MessageEmbed() // Prettier`
+    let vboards = new Discord.MessageEmbed() // Prettier()
      .setColor("RANDOM")
      .setTitle("All boards:")
      .setTimestamp()
@@ -47,7 +47,7 @@ module.exports = {
    const boards = ["a", "b", "c", "d", "e", "f", "g", "gif", "h", "hr", "k", "m", "o", "p", "r", "s", "t", "u", "v", "vg", "vr", "w", "wg", "i", "ic", "r9k", "s4s", "vip", "qa", "cm", "hm", "lgbt", "y", "3", "aco", "adv", "an", "asp", "bant", "biz", "cgl", "ck", "co", "diy", "fa", "fit", "gd", "hc", "his", "int", "jp", "lit", "mlp", "mu", "n", "news", "out", "po", "pol", "qst", "sci", "soc", "sp", "tg", "toy", "trv", "tv", "vp", "wsg", "wsr"];
    var board = chanargs;
    if (boards.indexOf(board) == -1) {
-    let vb = new Discord.MessageEmbed() // Prettier
+    let vb = new Discord.MessageEmbed() // Prettier()
      .setColor(16734039)
      .setDescription("💢 | Please enter a vaild board! To see all boards check `" + `${prefix}` + " 4chan boards`");
     return message.lineReply(vb);
@@ -86,15 +86,29 @@ module.exports = {
      thread += body.threads[postNr].posts[0].no;
      var imgUrl = "https://i.4cdn.org/" + board + "/";
      imgUrl += imgId + "" + imgExt;
-     let embed = new Discord.MessageEmbed() // Prettier
+     let embed = new Discord.MessageEmbed() // Prettier()
       .setColor("RANDOM")
-      .setTitle("🍀 " + sub, message.guild.iconURL({ dynamic: true, format: "png" }), thread)
+      .setTitle(
+       "🍀 " + sub,
+       message.guild.iconURL({
+        dynamic: true,
+        format: "png",
+       }),
+       thread
+      )
       .setDescription(com)
       .addField("Thread:", thread)
       .addField("Image:", imgUrl)
       .setURL(thread)
       .setTimestamp()
-      .setFooter("Requested by " + `${message.author.username}` + " • Image from 4chan boards", message.author.displayAvatarURL({ dynamic: true, format: "png", size: 2048 }));
+      .setFooter(
+       "Requested by " + `${message.author.username}` + " • Image from 4chan boards",
+       message.author.displayAvatarURL({
+        dynamic: true,
+        format: "png",
+        size: 2048,
+       })
+      );
      if (embed.description.length >= 2048) {
       embed.description = `${embed.description.substr(0, 2045)}...`;
      }

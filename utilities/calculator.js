@@ -95,7 +95,14 @@ module.exports = async (message) => {
     .setDescription(stringify)
     .setColor("RANDOM")
     .setTimestamp()
-    .setFooter("Requested by " + `${message.author.username}`, message.author.displayAvatarURL({ dynamic: true, format: "png", size: 2048 })),
+    .setFooter(
+     "Requested by " + `${message.author.username}`,
+     message.author.displayAvatarURL({
+      dynamic: true,
+      format: "png",
+      size: 2048,
+     })
+    ),
    components: [
     {
      type: 1,
@@ -127,7 +134,14 @@ module.exports = async (message) => {
       .setDescription(stringify)
       .setColor("RANDOM")
       .setTimestamp()
-      .setFooter("Requested by " + `${message.author.username}`, message.author.displayAvatarURL({ dynamic: true, format: "png", size: 2048 })),
+      .setFooter(
+       "Requested by " + `${message.author.username}`,
+       message.author.displayAvatarURL({
+        dynamic: true,
+        format: "png",
+        size: 2048,
+       })
+      ),
      components: [
       {
        type: 1,
@@ -159,7 +173,14 @@ module.exports = async (message) => {
       .setDescription(stringify)
       .setColor("RANDOM")
       .setTimestamp()
-      .setFooter("Requested by " + `${message.author.username}`, message.author.displayAvatarURL({ dynamic: true, format: "png", size: 2048 })),
+      .setFooter(
+       "Requested by " + `${message.author.username}`,
+       message.author.displayAvatarURL({
+        dynamic: true,
+        format: "png",
+        size: 2048,
+       })
+      ),
      components: [
       {
        type: 1,

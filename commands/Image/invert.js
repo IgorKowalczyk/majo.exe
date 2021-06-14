@@ -16,7 +16,13 @@ module.exports = {
      description: "✨ | Please wait... I'm generating your image",
     },
    });
-   const invert = await canvacord.Canvas.invert(User.user.displayAvatarURL({ dynamic: false, format: "png", size: 2048 }));
+   const invert = await canvacord.Canvas.invert(
+    User.user.displayAvatarURL({
+     dynamic: false,
+     format: "png",
+     size: 2048,
+    })
+   );
    const attachment = new Discord.MessageAttachment(invert, "invert.png");
    message.channel.send(attachment);
   } catch (err) {

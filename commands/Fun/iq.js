@@ -9,12 +9,19 @@ module.exports = {
  run: async (client, message, args) => {
   try {
    const iq = Math.floor(Math.random() * 226);
-   const embed = new Discord.MessageEmbed() // Prettier
+   const embed = new Discord.MessageEmbed() // Prettier()
     .setTitle(":brain: IQ Test:")
     .setDescription(":bulb: " + message.author.username + " IQ: `" + iq + "`")
     .setColor(`RANDOM`)
     .setTimestamp()
-    .setFooter("Requested by " + `${message.author.username}`, message.author.displayAvatarURL({ dynamic: true, format: "png", size: 2048 }));
+    .setFooter(
+     "Requested by " + `${message.author.username}`,
+     message.author.displayAvatarURL({
+      dynamic: true,
+      format: "png",
+      size: 2048,
+     })
+    );
    message.lineReply(embed);
   } catch (err) {
    message.lineReply({

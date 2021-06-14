@@ -8,12 +8,19 @@ module.exports = {
  usage: "members",
  run: async (client, message, args) => {
   try {
-   const embed = new Discord.MessageEmbed()
+   const embed = new Discord.MessageEmbed() // Prettier()
     .setAuthor("🧑‍🍼 Total members", message.guild.iconURL)
     .setColor("RANDOM")
     .addField("Overall Members: ", message.guild.memberCount)
     .setTimestamp()
-    .setFooter("Requested by " + `${message.author.username}`, message.author.displayAvatarURL({ dynamic: true, format: "png", size: 2048 }));
+    .setFooter(
+     "Requested by " + `${message.author.username}`,
+     message.author.displayAvatarURL({
+      dynamic: true,
+      format: "png",
+      size: 2048,
+     })
+    );
    message.lineReply(embed);
   } catch (err) {
    message.lineReply({

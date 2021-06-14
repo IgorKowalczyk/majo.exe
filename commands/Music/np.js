@@ -28,12 +28,26 @@ module.exports = {
    else thumb = song.thumbnail.url;
    const seek = (queue.connection.dispatcher.streamTime - queue.connection.dispatcher.pausedTime) / 1000;
    const left = ms - seek;
-   let nowPlaying = new Discord.MessageEmbed()
-    .setAuthor("♪ Now playing", message.author.displayAvatarURL({ dynamic: true, format: "png", size: 2048 }))
+   let nowPlaying = new Discord.MessageEmbed() // Prettier()
+    .setAuthor(
+     "♪ Now playing",
+     message.author.displayAvatarURL({
+      dynamic: true,
+      format: "png",
+      size: 2048,
+     })
+    )
     .setDescription(`[**${song.title}**](${song.url})`)
     .setThumbnail(song.thumbnail.url)
     .setColor("RANDOM")
-    .setFooter("Requested by " + `${message.author.username}`, message.author.displayAvatarURL({ dynamic: true, format: "png", size: 2048 }));
+    .setFooter(
+     "Requested by " + `${message.author.username}`,
+     message.author.displayAvatarURL({
+      dynamic: true,
+      format: "png",
+      size: 2048,
+     })
+    );
    if (ms >= 10000) {
     nowPlaying.addField("\u200b", "🔴 LIVE", false);
     return message.channel.send(nowPlaying);

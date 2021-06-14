@@ -38,7 +38,9 @@ module.exports = {
     if (!reason) {
      reason = "No reason provided! Banned by " + message.author + ". ~Majo.exe - The best discord bot!";
     }
-    message.guild.members.ban(mentioned, { reason: reason });
+    message.guild.members.ban(mentioned, {
+     reason: reason,
+    });
     await message.lineReply({
      embed: {
       color: 16734039,

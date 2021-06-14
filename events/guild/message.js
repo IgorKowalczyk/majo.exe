@@ -9,24 +9,45 @@ module.exports = async (client, message) => {
   if (message.author.bot) return;
   if (!message.guild) {
    try {
-    const embed = new Discord.MessageEmbed()
-     .setTitle(`:thinking: Hmm?`, message.author.displayAvatarURL({ dynamic: true, format: "png", size: 2048 }))
+    const embed = new Discord.MessageEmbed() // Prettier()
+     .setTitle(
+      `:thinking: Hmm?`,
+      message.author.displayAvatarURL({
+       dynamic: true,
+       format: "png",
+       size: 2048,
+      })
+     )
      .setColor("RANDOM")
      .setDescription(`Why are you DMing me? I can only respond to commands on servers.\n [Maybe you want to invite me?](https://discord.com/oauth2/authorize/?permissions=${config.premissions}&scope=${config.scopes}&client_id=${client.user.id})`)
      .setTimestamp()
-     .setFooter(`~${client.user.username} created by ${config.author}`, message.author.displayAvatarURL({ dynamic: true, format: "png", size: 2048 }));
+     .setFooter(
+      `~${client.user.username} created by ${config.author}`,
+      message.author.displayAvatarURL({
+       dynamic: true,
+       format: "png",
+       size: 2048,
+      })
+     );
     return message.author.send(embed);
    } catch (err) {
     return;
    }
   }
   if (message.content === `<@${client.user.id}>` || message.content === `<@!${client.user.id}>`) {
-   const embed = new Discord.MessageEmbed()
+   const embed = new Discord.MessageEmbed() // Prettier()
     .setTitle(`<a:sucess:759354039242063903> Hi!`, message.guild.iconURL())
     .setColor("RANDOM")
     .setDescription("I was pinged by you, here I am - " + client.user.username + "! My prefix is `" + prefix + "` To see all  my commands please type `" + prefix + " help`")
     .setTimestamp()
-    .setFooter("Requested by " + `${message.author.username}`, message.author.displayAvatarURL({ dynamic: true, format: "png", size: 2048 }));
+    .setFooter(
+     "Requested by " + `${message.author.username}`,
+     message.author.displayAvatarURL({
+      dynamic: true,
+      format: "png",
+      size: 2048,
+     })
+    );
    return message.lineReply(embed);
   }
 

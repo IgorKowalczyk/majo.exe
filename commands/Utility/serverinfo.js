@@ -45,7 +45,7 @@ module.exports = {
    } else {
     widget = "Server widget not enabled";
    }
-   const embed = new Discord.MessageEmbed()
+   const embed = new Discord.MessageEmbed() // Prettier()
     .setAuthor(message.guild.name, message.guild.iconURL)
     .setColor("RANDOM")
     .setThumbnail(message.guild.iconURL())
@@ -66,7 +66,14 @@ module.exports = {
     .addField("Rules channel", rules)
     .addField("Widget channel", widget, true)
     .addField("Creation Date", `${message.channel.guild.createdAt.toUTCString().substr(0, 16)} (${checkdays(message.channel.guild.createdAt)})`, true)
-    .setFooter("Requested by " + `${message.author.username}`, message.author.displayAvatarURL({ dynamic: true, format: "png", size: 2048 }))
+    .setFooter(
+     "Requested by " + `${message.author.username}`,
+     message.author.displayAvatarURL({
+      dynamic: true,
+      format: "png",
+      size: 2048,
+     })
+    )
     .setTimestamp();
    message.lineReply(embed);
   } catch (err) {

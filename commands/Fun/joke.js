@@ -12,14 +12,23 @@ module.exports = {
    try {
     const response = await fetch("http://icanhazdadjoke.com/", {
      method: "get",
-     headers: { Accept: "application/json" },
+     headers: {
+      Accept: "application/json",
+     },
     });
     const body = await response.json();
-    const embed = new Discord.MessageEmbed() // Prettier
+    const embed = new Discord.MessageEmbed() // Prettier()
      .setTitle("Random Dad joke", message.guild.iconURL())
      .setDescription("Dad said: " + body.joke)
      .setColor("RANDOM")
-     .setFooter("Requested by " + `${message.author.username}`, message.author.displayAvatarURL({ dynamic: true, format: "png", size: 2048 }))
+     .setFooter(
+      "Requested by " + `${message.author.username}`,
+      message.author.displayAvatarURL({
+       dynamic: true,
+       format: "png",
+       size: 2048,
+      })
+     )
      .setTimestamp();
     message.lineReply(embed);
    } catch (err) {

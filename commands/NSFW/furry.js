@@ -27,16 +27,29 @@ module.exports = {
     });
    }
    booru
-    .search("e6", [query], { nsfw: true, limit: 1, random: true })
+    .search("e6", [query], {
+     nsfw: true,
+     limit: 1,
+     random: true,
+    })
     .then((images) => {
      for (let image of images) {
-      const embed = new Discord.MessageEmbed()
+      const embed = new Discord.MessageEmbed() // Prettier()
        .setTitle(":smirk: Furry")
        .setImage(image.fileUrl)
        .setColor("RANDOM")
-       .setFooter("Requested by " + `${message.author.username}`, message.author.displayAvatarURL({ dynamic: true, format: "png", size: 2048 }))
+       .setFooter(
+        "Requested by " + `${message.author.username}`,
+        message.author.displayAvatarURL({
+         dynamic: true,
+         format: "png",
+         size: 2048,
+        })
+       )
        .setURL(image.fileUrl);
-      return message.channel.send({ embed });
+      return message.channel.send({
+       embed,
+      });
      }
     })
     .catch((err) => {

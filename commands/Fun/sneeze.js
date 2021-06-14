@@ -9,10 +9,17 @@ module.exports = {
  run: async (client, message, args) => {
   try {
    const sneezes = ["***Achoo!***", "*chew!*", "Ah... Ah... **A_CHOO!_**", "_Ah..._***CHOOOOOOOOOOOOOOOOOOOO!***", "*Achoo!* Excuse me!"];
-   const embed = new Discord.MessageEmbed()
+   const embed = new Discord.MessageEmbed() // Prettier()
     .setColor("RANDOM")
     .setTitle(sneezes[Math.floor(Math.random() * Math.floor(sneezes.length))])
-    .setFooter("Requested by " + `${message.author.username}`, message.author.displayAvatarURL({ dynamic: true, format: "png", size: 2048 }));
+    .setFooter(
+     "Requested by " + `${message.author.username}`,
+     message.author.displayAvatarURL({
+      dynamic: true,
+      format: "png",
+      size: 2048,
+     })
+    );
    message.lineReply(embed);
   } catch (err) {
    message.lineReply({

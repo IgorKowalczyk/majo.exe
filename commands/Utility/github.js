@@ -29,8 +29,11 @@ module.exports = {
        },
       });
      let { login, avatar_url, name, id, html_url, company, public_repos, public_gists, twitter_username, email, followers, following, location, created_at, bio } = body;
-     const button = new Extra.MessageButton().setLabel("See profile").setStyle("url").setURL(html_url);
-     const embed = new Discord.MessageEmbed()
+     const button = new Extra.MessageButton() // Prettier()
+      .setLabel("See profile")
+      .setStyle("url")
+      .setURL(html_url);
+     const embed = new Discord.MessageEmbed() // Prettier()
       .setTitle(`🐙 ${login} Github`, avatar_url)
       .setColor(`RANDOM`)
       .setThumbnail(avatar_url)
@@ -46,9 +49,19 @@ module.exports = {
       .addField(`Twitter`, `${twitter_username || "None"}`)
       .addField(`Company`, `${company || ":x: No company"}`)
       .addField(`Account Created`, moment.utc(created_at).format("dddd, MMMM, Do YYYY"))
-      .setFooter("Requested by " + `${message.author.username}`, message.author.displayAvatarURL({ dynamic: true, format: "png", size: 2048 }))
+      .setFooter(
+       "Requested by " + `${message.author.username}`,
+       message.author.displayAvatarURL({
+        dynamic: true,
+        format: "png",
+        size: 2048,
+       })
+      )
       .setTimestamp();
-     message.lineReply({ button: button, embed: embed });
+     message.lineReply({
+      button: button,
+      embed: embed,
+     });
     });
   } catch (err) {
    message.lineReply({

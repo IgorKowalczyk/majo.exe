@@ -46,7 +46,12 @@ module.exports = {
     .addField("Unnbaned by", message.member, true)
     .addField("Member", user.tag, true)
     .addField("Reason", reason)
-    .setFooter(message.member.displayName, message.author.displayAvatarURL({ dynamic: true }))
+    .setFooter(
+     message.member.displayName,
+     message.author.displayAvatarURL({
+      dynamic: true,
+     })
+    )
     .setTimestamp()
     .setColor(message.guild.me.displayHexColor);
    message.lineReply(embed);

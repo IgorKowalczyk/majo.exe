@@ -21,7 +21,7 @@ try {
    } else {
     var newNM = newMember.nickname;
    }
-   let updateNickname = new Discord.MessageEmbed()
+   let updateNickname = new Discord.MessageEmbed() // Prettier()
     .setTitle("**UPDATE MEMBER NICKNAME**")
     .setThumbnail(userAvatar)
     .setColor("RANDOM")
@@ -32,7 +32,7 @@ try {
   }
   if (oldMember.roles.cache.size < newMember.roles.cache.size) {
    let role = newMember.roles.cache.filter(r => !oldMember.roles.cache.has(r.id)).first();
-   let roleAdded = new Discord.MessageEmbed()
+   let roleAdded = new Discord.MessageEmbed() // Prettier()
     .setTitle("**ADDED ROLE TO MEMBER**")
     .setThumbnail(oldMember.guild.iconURL())
     .setColor("RANDOM")
@@ -43,7 +43,7 @@ try {
    }
    if (oldMember.roles.cache.size > newMember.roles.cache.size) {
     let role = oldMember.roles.cache.filter(r => !newMember.roles.cache.has(r.id)).first();
-    let roleRemoved = new Discord.MessageEmbed()
+    let roleRemoved = new Discord.MessageEmbed() // Prettier()
      .setTitle("**REMOVED ROLE FROM MEMBER**")
      .setThumbnail(oldMember.guild.iconURL())
      .setColor("RANDOM")
@@ -54,7 +54,7 @@ try {
   }
  });
  if (oldMember.guild.owner.user.id !== newMember.guild.owner.user.id) {
-  let newOwner = new Discord.MessageEmbed()
+  let newOwner = new Discord.MessageEmbed() // Prettier()
    .setTitle("**UPDATE GUILD OWNER**")
    .setThumbnail(oldMember.guild.iconURL())
    .setColor("RANDOM")
@@ -64,7 +64,7 @@ try {
   logChannel.send(newOwner);
  } 
 } catch (err) {
- let embed = new Discord.MessageEmbed()
+ let embed = new Discord.MessageEmbed() // Prettier()
   .setColor("#FF0000")
   .setTitle("Error!")
   .setDescription("**Error Code:** *" + err + "*")

@@ -33,10 +33,24 @@ module.exports = {
    (async () => {
     const response = await fetch("https://nekos.life/api/v2/img/slap");
     const body = await response.json();
-    const embed = await new Discord.MessageEmbed() // Prettier
+    const embed = await new Discord.MessageEmbed() // Prettier()
      .setColor("RANDOM")
-     .setAuthor("Tombstone of " + member.displayName + "!", message.author.displayAvatarURL({ dynamic: true, format: "png", size: 2048 }))
-     .setFooter("Requested by " + `${message.author.username}`, message.author.displayAvatarURL({ dynamic: true, format: "png", size: 2048 }))
+     .setAuthor(
+      "Tombstone of " + member.displayName + "!",
+      message.author.displayAvatarURL({
+       dynamic: true,
+       format: "png",
+       size: 2048,
+      })
+     )
+     .setFooter(
+      "Requested by " + `${message.author.username}`,
+      message.author.displayAvatarURL({
+       dynamic: true,
+       format: "png",
+       size: 2048,
+      })
+     )
      .setImage(body.url)
      .setDescription(change2);
     message.lineReply(embed);

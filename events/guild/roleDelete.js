@@ -11,7 +11,7 @@ try {
  role.guild.fetchAuditLogs().then(logs => {
   var userID = logs.entries.first().executor.id;
   var userAvatar = logs.entries.first().executor.avatarURL();
-  let roleDelete = new Discord.MessageEmbed()
+  let roleDelete = new Discord.MessageEmbed() // Prettier()
    .setTitle("**ROLE DELETE**")
    .setThumbnail(userAvatar)
    .setDescription(`**\n**:white_check_mark: Successfully \`\`DELETE\`\` Role.\n\n**Role Name:** \`\`${role.name}\`\` (ID: ${role.id})\n**By:** <@${userID}> (ID: ${userID})`)
@@ -21,7 +21,7 @@ try {
   logChannel.send(roleDelete);
  });
 } catch (err) {
- let embed = new Discord.MessageEmbed()
+ let embed = new Discord.MessageEmbed() // Prettier()
   .setColor("#FF0000")
   .setTitle("Error!")
   .setDescription("**Error Code:** *" + err + "*")

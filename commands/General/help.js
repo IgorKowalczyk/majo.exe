@@ -20,7 +20,10 @@ module.exports = {
    }
    function getAll(client, message) {
     const commands = readdirSync("./commands/");
-    const embed = new Discord.MessageEmbed().setAuthor("Help", message.guild.iconURL()).setColor("RANDOM").setTimestamp();
+    const embed = new Discord.MessageEmbed() // Prettier()
+     .setAuthor("Help", message.guild.iconURL())
+     .setColor("RANDOM")
+     .setTimestamp();
     let categories;
     let icon;
     categories = [...new Set(client.commands.map((cmd) => cmd.category))];
@@ -59,12 +62,19 @@ module.exports = {
     if (config.news && config.newstitle) {
      embed.addField(`${config.newstitle}`, `${config.news}`);
     }
-    embed.setFooter("Requested by " + `${message.author.username}` + " | " + `${client.commands.size}` + " Commands", message.author.displayAvatarURL({ dynamic: true, format: "png", size: 2048 }));
+    embed.setFooter(
+     "Requested by " + `${message.author.username}` + " | " + `${client.commands.size}` + " Commands",
+     message.author.displayAvatarURL({
+      dynamic: true,
+      format: "png",
+      size: 2048,
+     })
+    );
     return message.lineReply(embed);
    }
 
    function getCMD(client, message, input) {
-    const embed = new Discord.MessageEmbed();
+    const embed = new Discord.MessageEmbed(); // Prettier();
     const cmd = client.commands.get(input.toLowerCase()) || client.commands.get(client.aliases.get(input.toLowerCase()));
     const info = "❌ | No information found for command `" + input.toLowerCase() + "`!";
     if (!cmd) {
@@ -88,7 +98,7 @@ module.exports = {
       return string.charAt(0).toUpperCase() + string.slice(1);
      }
      alliaseslist = cmd.aliases.toString().join(", ") || "None";
-     const hembed = new Discord.MessageEmbed()
+     const hembed = new Discord.MessageEmbed() // Prettier()
       .setTitle(`:grey_question: Help - \`${cmd.name}\``, message.guild.iconURL())
       .setColor("RANDOM")
       .setTimestamp()
@@ -97,7 +107,14 @@ module.exports = {
       .addField("Usage", `\`${prefix} ${cmd.usage}\``)
       .addField("Aliases", `\`${alliaseslist}\``)
       // .setDescription("Category: `" + cmd.category + "`\n Description: `" + cmd.description + "`\n Usage: `" + prefix + " " + cmd.usage + "`\n Aliases: `" + alliaseslist + "`")
-      .setFooter("Syntax: <> = required, [] = optional | Requested by " + `${message.author.username}`, message.author.displayAvatarURL({ dynamic: true, format: "png", size: 2048 }));
+      .setFooter(
+       "Syntax: <> = required, [] = optional | Requested by " + `${message.author.username}`,
+       message.author.displayAvatarURL({
+        dynamic: true,
+        format: "png",
+        size: 2048,
+       })
+      );
      message.lineReply(hembed);
     }
    }

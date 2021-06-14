@@ -32,12 +32,19 @@ module.exports = {
       });
      }
      const question = args.join(" ");
-     const calc = new Discord.MessageEmbed() // prettier
+     const calc = new Discord.MessageEmbed() // Prettier()
       .setTitle("🔢 Calculator")
       .setColor("RANDOM")
       .addField("Question: ", `\`\`\`${question}\`\`\``)
       .addField("Answer: ", `\`\`\`${require("mathjs").evaluate(question)}\`\`\``)
-      .setFooter('✨ Tip: Type "' + process.env.PREFIX + ' calculator --gui" to run graphic calculator! | Requested by ' + `${message.author.username}`, message.author.displayAvatarURL({ dynamic: true, format: "png", size: 2048 }));
+      .setFooter(
+       '✨ Tip: Type "' + process.env.PREFIX + ' calculator --gui" to run graphic calculator! | Requested by ' + `${message.author.username}`,
+       message.author.displayAvatarURL({
+        dynamic: true,
+        format: "png",
+        size: 2048,
+       })
+      );
      return message.lineReply(calc);
     } catch (err) {
      console.log(err);

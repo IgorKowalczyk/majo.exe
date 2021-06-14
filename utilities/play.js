@@ -11,7 +11,9 @@ module.exports = {
   if (!song) {
    queue.channel.leave();
    message.client.queue.delete(message.guild.id);
-   const endembed = new Discord.MessageEmbed().setColor("RANDOM").setDescription(`💿 Music queue ended so I'm leaving the voice channel.`);
+   const endembed = new Discord.MessageEmbed() // Prettier()
+    .setColor("RANDOM")
+    .setDescription(`💿 Music queue ended so I'm leaving the voice channel.`);
    if (playingMessage && !playingMessage.deleted) {
     try {
      // playingMessage.reactions.removeAll()
@@ -108,7 +110,9 @@ module.exports = {
    dispatcher.setVolumeLogarithmic(queue.volume / 100);
   } else {
    const dispatcher = queue.connection
-    .play(stream, { type: streamType })
+    .play(stream, {
+     type: streamType,
+    })
     .on("finish", () => {
      //if (collector && !collector.ended) collector.stop();
 
@@ -130,16 +134,33 @@ module.exports = {
   }
 
   let thumb;
-  if (song.thumbnail === undefined) thumb = queue.textChannel.guild.iconURL({ dynamic: true, format: "png" });
+  if (song.thumbnail === undefined)
+   thumb = queue.textChannel.guild.iconURL({
+    dynamic: true,
+    format: "png",
+   });
   else thumb = song.thumbnail.url;
 
   try {
    if (silient == true) return; // console.log("Silient is true");
-   let embed = new Discord.MessageEmbed()
+   let embed = new Discord.MessageEmbed() // Prettier()
     .setColor("RANDOM")
-    .setAuthor(`🎶 Started playing: ${song.title}`, queue.textChannel.guild.iconURL({ dynamic: true, format: "png" }))
+    .setAuthor(
+     `🎶 Started playing: ${song.title}`,
+     queue.textChannel.guild.iconURL({
+      dynamic: true,
+      format: "png",
+     })
+    )
     .setDescription(`[**${song.title}**](${song.url}) \`${song.duration}\``)
-    .setFooter("Requested by " + `${message.author.username}`, message.author.displayAvatarURL({ dynamic: true, format: "png", size: 2048 }))
+    .setFooter(
+     "Requested by " + `${message.author.username}`,
+     message.author.displayAvatarURL({
+      dynamic: true,
+      format: "png",
+      size: 2048,
+     })
+    )
     .setTimestamp()
     .setThumbnail(song.thumbnail.url);
    var playingMessage = await queue.textChannel.send(embed);
@@ -346,7 +367,7 @@ module.exports = {
      else thumb = song.thumbnail.url;
      const seek = (queue.connection.dispatcher.streamTime - queue.connection.dispatcher.pausedTime) / 1000;
      const left = ms - seek;
-     let nowPlaying = new Discord.MessageEmbed()
+     let nowPlaying = new Discord.MessageEmbed() // Prettier()
       .setAuthor("♪ Now playing", queue.textChannel.guild.iconURL({ dynamic: true, format: 'png'}))
       .setDescription(`[**${song.title}**](${song.url})`)
       .setThumbnail(song.thumbnail.url)
@@ -383,7 +404,7 @@ module.exports = {
      reaction.users.remove(user)
      const description = queue.songs.map((song, index) => `${index + 1}. ${Discord.escapeMarkdown(song.title)}`);
 
-     let queueEmbed = new Discord.MessageEmbed()
+     let queueEmbed = new Discord.MessageEmbed() // Prettier()
       .setTitle("💿 Music Queue", message.member.user.displayAvatarURL({ dynamic: true }))
       .setDescription(description)
       .setColor("RANDOM")
@@ -407,7 +428,7 @@ module.exports = {
      reaction.users.remove(user)
      if (!canModifyQueue(member)) return;
      let lyrics = null;
-     let temEmbed = new Discord.MessageEmbed()
+     let temEmbed = new Discord.MessageEmbed() // Prettier()
       .setTitle("Searching...", message.member.user.displayAvatarURL({ dynamic: true }))
       .setDescription("Lyrics")
       .setColor("RANDOM")
@@ -420,7 +441,7 @@ module.exports = {
      } catch (error) {
       lyrics = `No lyrics found for ${queue.songs[0].title}.`;
      }
-     let lyricsEmbed = new Discord.MessageEmbed()
+     let lyricsEmbed = new Discord.MessageEmbed() // Prettier()
       .setTitle("🗒️ Lyrics")
       .setDescription(lyrics)
       .setColor("RANDOM")

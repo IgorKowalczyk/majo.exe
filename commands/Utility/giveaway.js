@@ -85,12 +85,29 @@ module.exports = {
      endedAt: "Ended at",
     },
    });
-   const success = new Discord.MessageEmbed()
+   const success = new Discord.MessageEmbed() // Prettier()
     .setColor("RANDOM")
-    .setTitle(":white_check_mark: Success!", message.guild.iconURL({ dynamic: true, format: "png" }))
+    .setTitle(
+     ":white_check_mark: Success!",
+     message.guild.iconURL({
+      dynamic: true,
+      format: "png",
+     })
+    )
     .setDescription(":tada: Giveaway created in " + `${channel}` + "!")
-    .setFooter("This message will be deleted after 10 seconds", message.author.displayAvatarURL({ dynamic: true, format: "png", size: 2048 }));
-   message.lineReply(success).then((m) => m.delete({ timeout: 10000 }));
+    .setFooter(
+     "This message will be deleted after 10 seconds",
+     message.author.displayAvatarURL({
+      dynamic: true,
+      format: "png",
+      size: 2048,
+     })
+    );
+   message.lineReply(success).then((m) =>
+    m.delete({
+     timeout: 10000,
+    })
+   );
   } catch (err) {
    message.lineReply({
     embed: {

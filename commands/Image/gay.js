@@ -16,7 +16,13 @@ module.exports = {
      description: "✨ | Please wait... I'm generating your image",
     },
    });
-   const gay = await canvacord.Canvas.rainbow(User.user.displayAvatarURL({ dynamic: false, format: "png", size: 2048 }));
+   const gay = await canvacord.Canvas.rainbow(
+    User.user.displayAvatarURL({
+     dynamic: false,
+     format: "png",
+     size: 2048,
+    })
+   );
    const attachment = new Discord.MessageAttachment(gay, "gay.png");
    message.channel.send(attachment);
   } catch (err) {

@@ -28,19 +28,33 @@ module.exports = {
    }
    const channel = client.channels.cache.get(config.suggestionschannel);
    if (channel) {
-    const embed = new Discord.MessageEmbed()
+    const embed = new Discord.MessageEmbed() // Prettier()
      .setAuthor("🤔" + message.author.username + " suggestion!", message.guild.iconURL())
      .setColor("RANDOM")
      .setDescription(suggestion)
      .addField("Reporter", `<@${message.author.id}> (ID: ${message.author.id})`)
      .addField("User guild", `${message.guild.name} (ID: ${message.guild.id})`)
-     .setFooter("Majo.exe", message.author.displayAvatarURL({ dynamic: true, format: "png", size: 2048 }))
+     .setFooter(
+      "Majo.exe",
+      message.author.displayAvatarURL({
+       dynamic: true,
+       format: "png",
+       size: 2048,
+      })
+     )
      .setThumbnail(message.guild.iconURL());
     channel.send(embed);
-    const success = new Discord.MessageEmbed()
+    const success = new Discord.MessageEmbed() // Prettier()
      .setColor("RANDOM")
      .setDescription(`${message.author} your suggestion was send, you can view it in Majo.exe Developers server in <#${config.suggestionschannel}> channel.`)
-     .setFooter("[Majo.exe Developers](" + config.server + ")", message.author.displayAvatarURL({ dynamic: true, format: "png", size: 2048 }));
+     .setFooter(
+      "[Majo.exe Developers](" + config.server + ")",
+      message.author.displayAvatarURL({
+       dynamic: true,
+       format: "png",
+       size: 2048,
+      })
+     );
     message.lineReply(success);
    } else {
     return message.lineReply({

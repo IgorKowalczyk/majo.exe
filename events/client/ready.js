@@ -16,7 +16,9 @@ module.exports = (client) => {
     statuslist.push(`${emoji} | ${client.guilds.cache.size} servers!`, `${emoji} | ${client.guilds.cache.reduce((a, g) => a + g.memberCount, 0)} members!`, `${emoji} | ${config.prefix} help`, `${emoji} | Waiting for verification! (${client.guilds.cache.size} guilds 🥰)`);
    }
    const random = Math.floor(Math.random() * (statuslist.length - 1) + 1);
-   client.user.setActivity(statuslist[random], { type: "LISTENING" });
+   client.user.setActivity(statuslist[random], {
+    type: "LISTENING",
+   });
   }, 10000);
   client.user.setStatus("online");
   const datelog = new Date();
@@ -45,13 +47,27 @@ module.exports = (client) => {
     const command = interaction.data.name.toLowerCase();
     const args = interaction.data.options;
     if (command == "majo") {
-     const embed = new Discord.MessageEmbed()
+     const embed = new Discord.MessageEmbed() // Prettier()
       .setDescription(`Hello, ${client.user.username} unfortunately **do not support slash commands**. And we do not currently plan to add them either. We apologize ;-; If you want use my normal commands please check \`${config.prefix} help\`!`)
-      .setTitle(`<a:sucess:759354039242063903> Hi ${interaction.member.user.username}! I'm ${client.user.username}`, client.user.displayAvatarURL({ dynamic: true, format: "png", size: 2048 }))
+      .setTitle(
+       `<a:sucess:759354039242063903> Hi ${interaction.member.user.username}! I'm ${client.user.username}`,
+       client.user.displayAvatarURL({
+        dynamic: true,
+        format: "png",
+        size: 2048,
+       })
+      )
       .setColor("RANDOM")
       .addField("Join support server", config.server)
       .addField("Invite me", `[Click this link to invite me!](https://discord.com/oauth2/authorize/?permissions=${config.premissions}&scope=${config.scopes}&client_id=${client.user.id}) **__[Recomended!]__**\nOr [click this link to invite me __as root__](https://discord.com/oauth2/authorize/?permissions=8&scope=${config.scopes}&client_id=${client.user.id}) [Not recomended!]`)
-      .setFooter("Requested by: " + interaction.member.user.username, client.user.displayAvatarURL({ dynamic: true, format: "png", size: 2048 }));
+      .setFooter(
+       "Requested by: " + interaction.member.user.username,
+       client.user.displayAvatarURL({
+        dynamic: true,
+        format: "png",
+        size: 2048,
+       })
+      );
      client.api.interactions(interaction.id, interaction.token).callback.post({
       data: {
        type: 4,
@@ -65,7 +81,10 @@ module.exports = (client) => {
   });
   async function createAPIMessage(interaction, content) {
    const apiMessage = await Discord.APIMessage.create(client.channels.resolve(interaction.channel_id), content).resolveData().resolveFiles();
-   return { ...apiMessage.data, files: apiMessage.files };
+   return {
+    ...apiMessage.data,
+    files: apiMessage.files,
+   };
   }
   /* --- */
  } catch (err) {

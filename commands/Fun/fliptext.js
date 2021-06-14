@@ -29,11 +29,18 @@ module.exports = {
    args.forEach((arg) => {
     flipped.push(flip(arg));
    });
-   const embed = new Discord.MessageEmbed() // Prettier
+   const embed = new Discord.MessageEmbed() // Prettier()
     .setColor("RANDOM")
     .setTitle(":white_check_mark: Success!")
     .setDescription("Flipped text: " + flipped.join(" "))
-    .setFooter("Requested by " + `${message.author.username}`, message.author.displayAvatarURL({ dynamic: true, format: "png", size: 2048 }))
+    .setFooter(
+     "Requested by " + `${message.author.username}`,
+     message.author.displayAvatarURL({
+      dynamic: true,
+      format: "png",
+      size: 2048,
+     })
+    )
     .setTimestamp();
    await message.lineReply(embed);
   } catch (err) {

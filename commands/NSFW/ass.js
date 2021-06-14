@@ -27,12 +27,30 @@ module.exports = {
     });
    })
    .then(function (res) {
-    const embed = new Discord.MessageEmbed()
-     .setTitle(":smirk: Ass", message.guild.iconURL({ dynamic: true, format: "png" }))
+    const embed = new Discord.MessageEmbed() // Prettier()
+     .setTitle(
+      ":smirk: Ass",
+      message.guild.iconURL({
+       dynamic: true,
+       format: "png",
+      })
+     )
      .setColor("RANDOM")
      .setImage("attachment://ass.png")
-     .attachFiles([{ attachment: res, name: "ass.png" }])
-     .setFooter("Requested by " + `${message.author.username}`, message.author.displayAvatarURL({ dynamic: true, format: "png", size: 2048 }))
+     .attachFiles([
+      {
+       attachment: res,
+       name: "ass.png",
+      },
+     ])
+     .setFooter(
+      "Requested by " + `${message.author.username}`,
+      message.author.displayAvatarURL({
+       dynamic: true,
+       format: "png",
+       size: 2048,
+      })
+     )
      .setTimestamp();
     message.channel.send(embed);
    })

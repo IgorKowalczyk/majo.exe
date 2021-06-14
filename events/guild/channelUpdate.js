@@ -46,7 +46,7 @@ module.exports = async (client, oldChannel, newChannel) => {
      const uavatar = logs.entries.first().executor.avatarURL();
      const guildsChannel = newChannel.guild;
      if (oldChannel.parent !== newChannel.parent) {
-      const channelname = new Discord.MessageEmbed() // prettier
+      const channelname = new Discord.MessageEmbed() // Prettier()
        .setTitle("Channel position changed")
        .setThumbnail(uavatar)
        .addField("Channel type", `${type}`)
@@ -60,7 +60,7 @@ module.exports = async (client, oldChannel, newChannel) => {
       log.send(channelname);
      }
      if (oldChannel.name !== newChannel.name) {
-      const channelname = new Discord.MessageEmbed() // prettier
+      const channelname = new Discord.MessageEmbed() // Prettier()
        .setTitle("Channel Name changed")
        .setThumbnail(uavatar)
        .addField("Old Channel name", `\`\`\`${oldChannel.name} \`\`\` `)

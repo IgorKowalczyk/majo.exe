@@ -31,7 +31,12 @@ module.exports = {
     (error, stdout) => {
      const response = error || stdout;
      console.log("Response");
-     message.lineReply(response, { code: "asciidoc", split: "\n" }).catch((err) => message.channel.send(err));
+     message
+      .lineReply(response, {
+       code: "asciidoc",
+       split: "\n",
+      })
+      .catch((err) => message.channel.send(err));
     };
   } catch (err) {
    message.lineReply({

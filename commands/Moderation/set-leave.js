@@ -39,11 +39,18 @@ module.exports = {
         description: `✨ | Success! Updated leave channel, new leave channel is ${channel} (ID: ${channel.id})`,
        },
       });
-      const embed = new Discord.MessageEmbed()
+      const embed = new Discord.MessageEmbed() // Prettier()
        .setColor("RANDOM")
        .setTitle("Success!")
        .setDescription(`${message.author} set up this channel to send users leave messages`)
-       .setFooter("Requested by " + `${message.author.username}`, message.author.displayAvatarURL({ dynamic: true, format: "png", size: 2048 }))
+       .setFooter(
+        "Requested by " + `${message.author.username}`,
+        message.author.displayAvatarURL({
+         dynamic: true,
+         format: "png",
+         size: 2048,
+        })
+       )
        .setTimestamp();
       channel.send(embed);
      });

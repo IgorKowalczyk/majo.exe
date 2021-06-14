@@ -25,7 +25,8 @@ module.exports = {
    badges.forEach((m) => {
     newbadges.push(m.replace("_", " "));
    });
-   const embed = new Discord.MessageEmbed().setThumbnail(user.user.displayAvatarURL({ dynamic: true }));
+   const embed = new Discord.MessageEmbed() // Prettier()
+    .setThumbnail(user.user.displayAvatarURL({ dynamic: true }))
    let array = [];
    if (user.user.presence.activities.length) {
     let data = user.user.presence.activities;
@@ -48,7 +49,12 @@ module.exports = {
     var isbot = ""; // This exists because user.user.bot sometimes return nothing not boolean
    }
    embed.setColor("RANDOM");
-   embed.setTitle(user.user.tag + isbot, user.user.displayAvatarURL({ dynamic: true }));
+   embed.setTitle(
+    user.user.tag + isbot,
+    user.user.displayAvatarURL({
+     dynamic: true,
+    })
+   );
    if (user.username) embed.addField("Nickname", user.username);
    embed.addField("ID", `\`${user.user.id}\``);
    embed.addField("Discriminator", `\`#${user.user.discriminator}\``, true);
@@ -57,7 +63,14 @@ module.exports = {
    embed.addField("Account Deleted?", user.deleted, true);
    embed.addField("Badges", newbadges.join(", ").toLowerCase() || "None");
    embed.addField("Status", `${stat[user.user.presence.status]} ${capitalizeFirstLetter(user.user.presence.status)}`);
-   embed.setFooter("Requested by " + `${message.author.username}`, message.author.displayAvatarURL({ dynamic: true, format: "png", size: 2048 }));
+   embed.setFooter(
+    "Requested by " + `${message.author.username}`,
+    message.author.displayAvatarURL({
+     dynamic: true,
+     format: "png",
+     size: 2048,
+    })
+   );
    message.lineReply(embed);
   } catch (err) {
    console.log(err);

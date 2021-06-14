@@ -16,7 +16,13 @@ module.exports = {
      description: "✨ | Please wait... I'm generating your image",
     },
    });
-   const beautiful = await canvacord.Canvas.beautiful(User.user.displayAvatarURL({ dynamic: false, format: "png", size: 2048 }));
+   const beautiful = await canvacord.Canvas.beautiful(
+    User.user.displayAvatarURL({
+     dynamic: false,
+     format: "png",
+     size: 2048,
+    })
+   );
    const attachment = new Discord.MessageAttachment(beautiful, "beautiful.png");
    message.channel.send(attachment);
   } catch (err) {

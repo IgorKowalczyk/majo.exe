@@ -26,12 +26,30 @@ module.exports = {
     });
    })
    .then(function (res) {
-    const embed = new Discord.MessageEmbed()
-     .setTitle(":smirk: Boobs", message.guild.iconURL({ dynamic: true, format: "png" }))
+    const embed = new Discord.MessageEmbed() // Prettier()
+     .setTitle(
+      ":smirk: Boobs",
+      message.guild.iconURL({
+       dynamic: true,
+       format: "png",
+      })
+     )
      .setColor("RANDOM")
      .setImage("attachment://boobs.png")
-     .attachFiles([{ attachment: res, name: "ass.png" }])
-     .setFooter("Requested by " + `${message.author.username}`, message.author.displayAvatarURL({ dynamic: true, format: "png", size: 2048 }))
+     .attachFiles([
+      {
+       attachment: res,
+       name: "ass.png",
+      },
+     ])
+     .setFooter(
+      "Requested by " + `${message.author.username}`,
+      message.author.displayAvatarURL({
+       dynamic: true,
+       format: "png",
+       size: 2048,
+      })
+     )
      .setTimestamp();
     message.channel.send(embed);
    })

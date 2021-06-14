@@ -37,11 +37,24 @@ module.exports = {
     }
     const response = await fetch("https://nekos.life/api/v2/img/cuddle");
     const body = await response.json();
-    const embed = new Discord.MessageEmbed() // Prettier
-     .setTitle(user.username + " Just got a cuddle from " + message.author.username, message.guild.iconURL({ dynamic: true, format: "png" }))
+    const embed = new Discord.MessageEmbed() // Prettier()
+     .setTitle(
+      user.username + " Just got a cuddle from " + message.author.username,
+      message.guild.iconURL({
+       dynamic: true,
+       format: "png",
+      })
+     )
      .setImage(body.url)
      .setColor("RANDOM")
-     .setFooter("Requested by " + `${message.author.username}`, message.author.displayAvatarURL({ dynamic: true, format: "png", size: 2048 }))
+     .setFooter(
+      "Requested by " + `${message.author.username}`,
+      message.author.displayAvatarURL({
+       dynamic: true,
+       format: "png",
+       size: 2048,
+      })
+     )
      .setTimestamp()
      .setURL(body.url);
     message.lineReply(embed);
