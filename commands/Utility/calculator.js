@@ -24,12 +24,12 @@ module.exports = {
       });
      }
      const question = args.join(" ");
-     const calc = new Discord.MessageEmbed()
-      .setTitle("💡 Calculator")
+     const calc = new Discord.MessageEmbed() // prettier
+      .setTitle("🔢 Calculator")
       .setColor("RANDOM")
-      .addField("Question: ", `${question}`)
-      .addField("Answer: ", `${require("mathjs").evaluate(question)}`)
-      .setFooter("Requested by " + `${message.author.username}`, message.author.displayAvatarURL({ dynamic: true, format: "png", size: 2048 }))
+      .addField("Question: ", `\`\`\`${question}\`\`\``)
+      .addField("Answer: ", `\`\`\`${require("mathjs").evaluate(question)}\`\`\``)
+      .setFooter("Note: Type `+ " + process.env.PREFIX + "| calculator --gui` to run graphic calculator! | Requested by " + `${message.author.username}`, message.author.displayAvatarURL({ dynamic: true, format: "png", size: 2048 }))
      return message.lineReply(calc);
     } catch (err) {
      console.log(err);
