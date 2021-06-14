@@ -9,11 +9,11 @@ module.exports = {
  usage: "calculator [--gui] [math task]",
  run: async (client, message, args) => {
   try {
-   if(args.includes("--gui") {
-     const calc = require("../../utilities/calculator");
-     await calc(message);
+   if(args.includes("--gui")) {
+    const calc = require("../../utilities/calculator");
+    await calc(message);
    } else {
-    args.replace("--gui", "")
+    args.replace("--gui", "");
    if (args.length < 1) {
     return message.lineReply({
      embed: {
