@@ -4,8 +4,8 @@ const config = require("../../config");
 
 module.exports = (client) => {
  try {
-  /*setInterval(() => {
-   const emojis = ["😆", "😄", "😎", "😂", "🥳", "😘", "😜", "😁", "😉", "🥰", "😍", "🤯", "🥶", "🤩", "😇", "😊", "☺️", "😌", "😋"];
+  setInterval(() => {
+   /*const emojis = ["😆", "😄", "😎", "😂", "🥳", "😘", "😜", "😁", "😉", "🥰", "😍", "🤯", "🥶", "🤩", "😇", "😊", "☺️", "😌", "😋"];
    const emoji = emojis[Math.floor(Math.random() * emojis.length)];
    var date = new Date().toJSON().slice(0, 10).replace(/-/g, "/");
    const discordbday = new Date().getFullYear() + "/05/13";
@@ -16,9 +16,9 @@ module.exports = (client) => {
     statuslist.push(`${emoji} | ${client.guilds.cache.size} servers!`, `${emoji} | ${client.guilds.cache.reduce((a, g) => a + g.memberCount, 0)} members!`, `${emoji} | ${config.prefix} help`, `${emoji} | Waiting for verification! (${client.guilds.cache.size} guilds 🥰)`);
    }
    const random = Math.floor(Math.random() * (statuslist.length - 1) + 1);
-   client.user.setActivity(statuslist[random], { type: "LISTENING" });
-  }, 10000);*/
-  client.user.setActivity("🇵🇱 Poland!", { type: 'LISTENING' });
+   client.user.setActivity(statuslist[random], { type: "LISTENING" });*/
+   client.user.setActivity("🇵🇱 Poland!", { type: 'LISTENING' });
+  }, 10000);
   client.user.setStatus("online");
   const datelog = new Date();
   currentDate = datelog.getDate();
