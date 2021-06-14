@@ -90,8 +90,8 @@ module.exports = async (message) => {
 
  message.channel
   .send({
-   embed: new MessageEmbed() // prettier
-    .setTitle("Calculator")
+   embed: new MessageEmbed() // Prettier
+    .setTitle("🔢 Calculator")
     .setDescription(stringify)
     .setColor("RANDOM")
     .setTimestamp()
@@ -122,11 +122,12 @@ module.exports = async (message) => {
   .then(async (msg) => {
    async function edit() {
     msg.edit({
-     embed: new MessageEmbed() // prettier
-      .setTitle("Calculator")
+     embed: new MessageEmbed() // Prettier
+      .setTitle("🔢 Calculator")
       .setDescription(stringify)
       .setColor("RANDOM")
-      .setTimestamp(),
+      .setTimestamp()
+      .setFooter("Requested by " + `${message.author.username}`, message.author.displayAvatarURL({ dynamic: true, format: "png", size: 2048 })),
      components: [
       {
        type: 1,
@@ -153,8 +154,8 @@ module.exports = async (message) => {
    }
    async function lock() {
     msg.edit({
-     embed: new MessageEmbed() // prettier
-      .setTitle("Calculator")
+     embed: new MessageEmbed() // Prettier
+      .setTitle("🔢 Calculator")
       .setDescription(stringify)
       .setColor("RANDOM")
       .setTimestamp()
