@@ -38,7 +38,6 @@ module.exports = async (message) => {
  let empty_irrc = i(20);
  let calc_percent = i(20);
 
-
  let ac = new MessageButton().setLabel("AC").setID(calculator_clear).setStyle("red");
  let e1 = new MessageButton().setLabel("(").setID(calculator_e1).setStyle("blurple");
  let e2 = new MessageButton().setLabel(")").setID(calculator_e2).setStyle("blurple");

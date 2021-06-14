@@ -8,7 +8,7 @@ const eco = new EconomyManager({
   host: process.env.MYSQL_HOST,
   database: process.env.MYSQL_DATABASE,
   port: "3306",
-  table: "money"
+  table: "money",
  },
 });
 
