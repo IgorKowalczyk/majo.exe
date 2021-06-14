@@ -13,7 +13,7 @@ module.exports = {
    malScraper
     .getInfoFromName(search)
     .then((data) => {
-     const embed = new Discord.MessageEmbed()
+     const embed = new Discord.MessageEmbed() // Prettier
       .setAuthor(`🔍 My Anime List search result for ${args}`.split(",").join(" "), message.guild.iconURL({ dynamic: true, format: "png" }))
       .setImage(data.picture)
       .setColor("RANDOM")
