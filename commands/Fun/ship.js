@@ -29,13 +29,13 @@ module.exports = {
    }
    const ship = Math.floor(Math.random() * 100) + 1;
    const bar = progressbar(100, ship, 10, "<:bar:838757737327755335>", "<:bar2:838757737596190782>", "💔 ", " ❤️", false);
-   const mehh = new Discord.MessageEmbed()
+   const mehh = new Discord.MessageEmbed() // Prettier
     .setTitle(":twisted_rightwards_arrows: This isn't a match", message.guild.iconURL({ dynamic: true, format: "png" }))
     .setThumbnail("https://cdn.discordapp.com/attachments/824906735176253450/828554687229067275/images.png")
     .setDescription(`I shipped **${user1}** with **${user2}** and it is **${ship}%**\n${bar}`)
     .setFooter("Requested by " + `${message.author.username}`, message.author.displayAvatarURL({ dynamic: true, format: "png", size: 2048 }))
     .setColor("RED");
-   const love = new Discord.MessageEmbed()
+   const love = new Discord.MessageEmbed() // Prettier
     .setTitle(":twisted_rightwards_arrows: They are born for each others!", message.guild.iconURL({ dynamic: true, format: "png" }))
     .setThumbnail("https://cdn.discordapp.com/attachments/824906735176253450/828555115593859123/9k.png")
     .setDescription(`I shipped **${user1}** with **${user2}** and it is **${ship}%**\n${bar}`)
