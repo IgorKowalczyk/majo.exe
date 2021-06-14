@@ -23,9 +23,15 @@ module.exports = {
     },
    });
   let result = Math.floor(Math.random() * 100 + 0);
-  const happyrate = new Discord.MessageEmbed().setDescription(`✨ | I would rate **${rate}** ${result}/100 ?`).setColor(`GREEN`);
-  const sadembed = new Discord.MessageEmbed().setDescription(`✨ | I would rate **${rate}** ${result}/100 ??`).setColor(`RED`);
-  const idkembed = new Discord.MessageEmbed().setDescription(`✨ | I would rate **${rate}** ${result}/100 ??`).setColor(`YELLOW`);
+  const happyrate = new Discord.MessageEmbed()
+   .setDescription(`✨ | I would rate **${rate}** ${result}/100 ?`)
+   .setColor(`GREEN`);
+  const sadembed = new Discord.MessageEmbed()
+   .setDescription(`✨ | I would rate **${rate}** ${result}/100 ??`)
+   .setColor(`RED`);
+  const idkembed = new Discord.MessageEmbed()
+   .setDescription(`✨ | I would rate **${rate}** ${result}/100 ??`)
+   .setColor(`YELLOW`);
   const shrugembed = new Discord.MessageEmbed().setDescription(`✨ | I would rate **${rate}** ${result}/100 ??`).setColor(`YELLOW`);
   const okembed = new Discord.MessageEmbed().setDescription(`✨ | I would rate **${rate}** ${result}/100 ??`).setColor(`GREEN`);
   const thumbupembed = new Discord.MessageEmbed().setDescription(`✨ | I would rate **${rate}** ${result}/100 ??`).setColor(`GREEN`);
