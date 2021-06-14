@@ -324,7 +324,7 @@ module.exports = async (message) => {
       }
      }
     } else if (btn.id === calc_irrc) {
-     str = "Calculator disabled! To run calculator again please type \`" + prefix + " calculator --gui\`";
+     str = "Calculator disabled! To run calculator again please type \"" + prefix + " calculator --gui\"";
      stringify = "```\n" + str + "\n```";
      edit();
      calc.stop();
