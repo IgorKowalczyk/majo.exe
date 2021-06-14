@@ -45,7 +45,7 @@ module.exports = {
       {}
      )
      .then(function (urlToPaste) {
-      const embed = new Discord.MessageEmbed()
+      const embed = new Discord.MessageEmbed() // Prettier
        .setColor("RANDOM")
        .setTitle(":white_check_mark: Success!", message.guild.iconURL({ dynamic: true, format: "png" }))
        .setDescription(":tada: Your ascii code is generated! \n:link: Link to ascii code paste: " + urlToPaste)
