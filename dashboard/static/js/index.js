@@ -43,7 +43,7 @@ cross.addEventListener("click", () => {
  blur.classList.remove("visible");
 });
 
-document.addEventListener("click", function (event) {
+/* document.addEventListener("click", function (event) {
  if (event.target.tagName !== "A" || !event.target.href || event.target.target == "_blank") return;
  event.preventDefault();
  var link = event.target;
@@ -52,3 +52,4 @@ document.addEventListener("click", function (event) {
   location.href = link.href;
  });
 });
+*/
