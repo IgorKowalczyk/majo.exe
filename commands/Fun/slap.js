@@ -29,7 +29,7 @@ module.exports = {
    (async () => {
     const response = await fetch("https://nekos.life/api/v2/img/slap");
     const body = await response.json();
-    const embed = await new Discord.MessageEmbed()
+    const embed = await new Discord.MessageEmbed() // Prettier
      .setColor("RANDOM")
      .setTitle(user.username + " just got slapped by " + message.author.username)
      .setFooter("That must hurt ._. | Requested by " + `${message.author.username}`, message.author.displayAvatarURL({ dynamic: true, format: "png", size: 2048 }))
