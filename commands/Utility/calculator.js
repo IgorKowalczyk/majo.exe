@@ -1,5 +1,4 @@
 const Discord = require("discord.js");
-const math = require("mathjs");
 
 module.exports = {
  name: "calculator",
@@ -28,7 +27,7 @@ module.exports = {
       .setTitle("💡 Calculator")
       .setColor("RANDOM")
       .addField("Question: ", `${question}`)
-      .addField("Answer: ", `${math.evaluate(question)}`)
+      .addField("Answer: ", `${require("mathjs").evaluate(question)}`)
       .setFooter(
        "Requested by " + `${message.author.username}`,
        message.author.displayAvatarURL({
