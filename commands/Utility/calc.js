@@ -1,14 +1,19 @@
 const Discord = require("discord.js");
-const math = require("math-expression-evaluator");
+const math = require("mathjs");
 
 module.exports = {
- name: "calc",
- aliases: ["math"],
- description: "Discord calculator",
+ name: "calculator",
+ aliases: ["math", "calc"],
+ description: "Calculator",
  category: "Utility",
- usage: "calc <task>",
+ usage: "calculator [--gui] [math task]",
  run: async (client, message, args) => {
   try {
+   if(args.includes("--gui") {
+     const calc = require("../../utilities/calculator");
+     await calc(message);
+   } else {
+    args.replace("--gui", "")
    if (args.length < 1) {
     return message.lineReply({
      embed: {
@@ -21,19 +26,12 @@ module.exports = {
    try {
     let answer;
     let footer;
-    if (question.indexOf("9 + 10") > -1) {
-     answer = "21 (XD!)";
-     footer = "You are a idiot | Requested by " + `${message.author.username}`;
-    } else {
-     answer = math.eval(question);
-     footer = "Requested by " + `${message.author.username}`;
-    }
     const calc = new Discord.MessageEmbed()
      .setTitle("💡 Calculator")
      .setColor("RANDOM")
      .addField("Question: ", `${question}`)
-     .addField("Answer: ", `${answer}`)
-     .setFooter(`${footer}`, message.author.displayAvatarURL({ dynamic: true, format: "png", size: 2048 }));
+     .addField("Answer: ", `${math.evaluate(question)}`)
+     .setFooter("Requested by " + `${message.author.username}`, message.author.displayAvatarURL({ dynamic: true, format: "png", size: 2048 }));
     return message.lineReply(calc);
    } catch (err) {
     message.lineReply({
@@ -51,5 +49,6 @@ module.exports = {
     },
    });
   }
+ }
  },
 };
