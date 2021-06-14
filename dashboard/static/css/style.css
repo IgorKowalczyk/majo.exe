@@ -748,6 +748,7 @@ code {
  font-size: 40px;
  text-align: center;
  padding-top: 30px;
+ margin: 0;
 }
 
 .section-feautures {
@@ -767,7 +768,7 @@ code {
  bottom: 0;
  left: 0;
  font-family: "Poppins";
- background: #2f2f2f;
+ background: #24282d;
 }
 
 .r {
