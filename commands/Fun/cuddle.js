@@ -37,7 +37,7 @@ module.exports = {
     }
     const response = await fetch("https://nekos.life/api/v2/img/cuddle");
     const body = await response.json();
-    const embed = new Discord.MessageEmbed()
+    const embed = new Discord.MessageEmbed() // Prettier
      .setTitle(user.username + " Just got a cuddle from " + message.author.username, message.guild.iconURL({ dynamic: true, format: "png" }))
      .setImage(body.url)
      .setColor("RANDOM")
