@@ -37,17 +37,23 @@ module.exports = {
     });
    }
    if (chanargs === "boards") {
-    let vboards = new Discord.MessageEmbed().setColor("RANDOM").setTitle("All boards:").setTimestamp().setDescription("`a`, `b`, `c`, `d`, `e`, `f`, `g`, `gif`, `h`, `hr`, `k`, `m`, `o`, `p`, `r`, `s`, `t`, `u`, `v`, `vg`, `vr`, `w`, `wg`, `i`, `ic`, `r9k`, `s4s`, `vip`, `qa`, `cm`, `hm`, `lgbt`, `y`, `3`, `aco`, `adv`, `an`, `asp`, `bant`, `biz`, `cgl`, `ck`, `co`, `diy`, `fa`, `fit`, `gd`, `hc`, `his`, `int`, `jp`, `lit`, `mlp`, `mu`, `n`, `news`, `out`, `po`, `pol`, `qst`, `sci`, `soc`, `sp`, `tg`, `toy`, `trv`, `tv`, `vp`, `wsg`, `wsr`");
+    let vboards = new Discord.MessageEmbed() // Prettier`
+     .setColor("RANDOM")
+     .setTitle("All boards:")
+     .setTimestamp()
+     .setDescription("`a`, `b`, `c`, `d`, `e`, `f`, `g`, `gif`, `h`, `hr`, `k`, `m`, `o`, `p`, `r`, `s`, `t`, `u`, `v`, `vg`, `vr`, `w`, `wg`, `i`, `ic`, `r9k`, `s4s`, `vip`, `qa`, `cm`, `hm`, `lgbt`, `y`, `3`, `aco`, `adv`, `an`, `asp`, `bant`, `biz`, `cgl`, `ck`, `co`, `diy`, `fa`, `fit`, `gd`, `hc`, `his`, `int`, `jp`, `lit`, `mlp`, `mu`, `n`, `news`, `out`, `po`, `pol`, `qst`, `sci`, `soc`, `sp`, `tg`, `toy`, `trv`, `tv`, `vp`, `wsg`, `wsr`");
     return message.lineReply(vboards);
    }
    const boards = ["a", "b", "c", "d", "e", "f", "g", "gif", "h", "hr", "k", "m", "o", "p", "r", "s", "t", "u", "v", "vg", "vr", "w", "wg", "i", "ic", "r9k", "s4s", "vip", "qa", "cm", "hm", "lgbt", "y", "3", "aco", "adv", "an", "asp", "bant", "biz", "cgl", "ck", "co", "diy", "fa", "fit", "gd", "hc", "his", "int", "jp", "lit", "mlp", "mu", "n", "news", "out", "po", "pol", "qst", "sci", "soc", "sp", "tg", "toy", "trv", "tv", "vp", "wsg", "wsr"];
    var board = chanargs;
    if (boards.indexOf(board) == -1) {
-    let vb = new Discord.MessageEmbed().setColor(16734039).setDescription("💢 | Please enter a vaild board! To see all boards check `" + `${prefix}` + " 4chan boards`");
+    let vb = new Discord.MessageEmbed() // Prettier
+     .setColor(16734039)
+     .setDescription("💢 | Please enter a vaild board! To see all boards check `" + `${prefix}` + " 4chan boards`");
     return message.lineReply(vb);
    }
    var board = args;
-   var page = Math.floor(Math.random() * 10 + 1); // page 1 to 10
+   var page = Math.floor(Math.random() * 10 + 1);
    var url = "https://a.4cdn.org/" + board + "/" + page + ".json";
    https.get(url, (res) => {
     res.setEncoding("utf8");
@@ -80,7 +86,7 @@ module.exports = {
      thread += body.threads[postNr].posts[0].no;
      var imgUrl = "https://i.4cdn.org/" + board + "/";
      imgUrl += imgId + "" + imgExt;
-     let embed = new Discord.MessageEmbed()
+     let embed = new Discord.MessageEmbed() // Prettier
       .setColor("RANDOM")
       .setTitle("🍀 " + sub, message.guild.iconURL({ dynamic: true, format: "png" }), thread)
       .setDescription(com)
