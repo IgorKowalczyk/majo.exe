@@ -8,7 +8,7 @@ module.exports = {
  usage: "flatearth",
  run: async (client, message, args) => {
   try {
-   const embed = new Discord.MessageEmbed()
+   const embed = new Discord.MessageEmbed() // Prettier
     .setColor("RANDOM")
     .setTitle("🌍 If the earth isn't flat, explain this:")
     .setImage("https://media1.tenor.com/images/462b6d76beee0f9501d20535dae9c00b/tenor.gif?itemid=13792633")
