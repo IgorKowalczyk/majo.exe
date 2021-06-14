@@ -4,6 +4,7 @@ const path = require("path");
 const express = require("express");
 const passport = require("passport");
 const session = require("express-session");
+const securehttps = require('express-force-https');
 const Strategy = require("passport-discord").Strategy;
 const config = require("../config");
 const ejs = require("ejs");
@@ -47,7 +48,7 @@ module.exports = async (client) => {
    saveUninitialized: false,
   })
  );
-
+ app.use(securehttps);
  app.use(passport.initialize());
  app.use(passport.session());
  app.locals.domain = config.domain.split("//")[1];
