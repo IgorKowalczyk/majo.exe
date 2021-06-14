@@ -15,6 +15,7 @@ module.exports = {
     try {
      args.replace("--gui", "");
      if (args.length < 1) {
+      console.log("args" + args);
       return message.lineReply({
        embed: {
         color: 16734039,
