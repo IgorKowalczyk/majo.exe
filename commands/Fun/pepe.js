@@ -10,7 +10,7 @@ module.exports = {
   try {
    const user = (await message.mentions.members.first()) || message.guild.members.cache.get(args[0]) || message.guild.members.cache.find((r) => r.user.username.toLowerCase().includes() === args.join(" ").toLocaleLowerCase()) || message.guild.members.cache.find((r) => r.displayName.toLowerCase().includes() === args.join(" ").toLocaleLowerCase()) || message.author;
    const pepe = "8" + "=".repeat(Math.floor(Math.random() * 15)) + "D";
-   const embed = new Discord.MessageEmbed()
+   const embed = new Discord.MessageEmbed() // Prettier
     .setTitle(`Pepe :smirk:`, user.displayAvatarURL({ dynamic: true }))
     .setDescription(`${user}, you're Pepe is **${pepe}** long!`)
     .setTimestamp()
