@@ -10,7 +10,7 @@ const sql = MySQL.createConnection({
 });
 sql.connect((err) => {
  if (err) {
-  console.error("Impossible to connect to MySQL server. Code: " + err.code);
+  throw new Error("SQL] Impossible to connect to MySQL server. Code: " + err.code);
   process.exit(99);
  } else {
   console.log("[SQL] Connected to the MySQL server! Connection ID: " + sql.threadId);
