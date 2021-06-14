@@ -1,7 +1,7 @@
 module.exports = async (message) => {
  const { MessageButton } = require("discord-buttons");
  const { MessageEmbed } = require("discord.js");
-
+ const prefix = process.env.PREFIX;
  function i(length) {
   var randomChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
   var result = "";
@@ -91,15 +91,9 @@ module.exports = async (message) => {
  message.channel
   .send({
    embed: new MessageEmbed()
-    .setAuthor(
-     message.author.tag,
-     message.author.displayAvatarURL({
-      dynamic: true,
-     })
-    )
-    .setTitle("Button Calculator")
+    .setTitle("Calculator")
     .setDescription(stringify)
-    .setColor("BLURPLE")
+    .setColor("RANDOM")
     .setTimestamp(),
    components: [
     {
@@ -128,15 +122,9 @@ module.exports = async (message) => {
    async function edit() {
     msg.edit({
      embed: new MessageEmbed()
-      .setAuthor(
-       message.author.tag,
-       message.author.displayAvatarURL({
-        dynamic: true,
-       })
-      )
-      .setTitle("Button Calculator")
+      .setTitle("Calculator")
       .setDescription(stringify)
-      .setColor("BLURPLE")
+      .setColor("RANDOM")
       .setTimestamp(),
      components: [
       {
@@ -165,15 +153,9 @@ module.exports = async (message) => {
    async function lock() {
     msg.edit({
      embed: new MessageEmbed()
-      .setAuthor(
-       message.author.tag,
-       message.author.displayAvatarURL({
-        dynamic: true,
-       })
-      )
-      .setTitle("Button Calculator")
+      .setTitle("Calculator")
       .setDescription(stringify)
-      .setColor("RED")
+      .setColor("RANDOM")
       .setTimestamp(),
      components: [
       {
@@ -342,7 +324,7 @@ module.exports = async (message) => {
       }
      }
     } else if (btn.id === calc_irrc) {
-     str = "Calculator Disabled";
+     str = "Calculator disabled! To run calculator again please type \`" + prefix + " calculator --gui\`";
      stringify = "```\n" + str + "\n```";
      edit();
      calc.stop();
