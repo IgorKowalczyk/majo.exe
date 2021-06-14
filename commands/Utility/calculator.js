@@ -9,8 +9,17 @@ module.exports = {
  run: async (client, message, args) => {
   try {
    if (args.includes("--gui")) {
-    const calc = require("../../utilities/calculator");
-    await calc(message);
+    try {
+     const calc = require("../../utilities/calculator");
+     await calc(message);
+    } catch (err) {
+     message.lineReply({
+      embed: {
+       color: 16734039,
+       description: "Something went wrong... :cry:",
+      },
+     });
+    }
    } else {
     try {
      args.toString().replace("--gui", "");
