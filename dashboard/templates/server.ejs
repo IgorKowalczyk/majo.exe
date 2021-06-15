@@ -31,7 +31,7 @@ sql.query(welcomequery, function (error, results, fields) {
   welchannel = "Not set!"
  }
  }) %>
-<p class="welcome-channel sinfo"><%= welchannel %></p>
+<%= welchannel %>
 <% leavequery = "SELECT channelid AS res FROM leave WHERE guildid = " + guild.id
 sql.query(leavequery, function (error, results, fields) {
  if (error) return console.log(error);
