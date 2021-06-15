@@ -36,9 +36,9 @@ sql.query(welcomequery, function (error, results, fields) {
 sql.query(leavequery, function (error, results, fields) {
  if (error) return console.log(error);
  if (results[0]) {
-  leavechannel = results[0].res
+  let leavechannel = results[0].res
  } else {
-  leavechannel = "Not set!"
+  let leavechannel = "Not set!"
  }
 }) %>
 <p class="leave-channel sinfo"><%= leavechannel %></p>
@@ -46,9 +46,9 @@ sql.query(leavequery, function (error, results, fields) {
 sql.query(logsquery, function (error, results, fields) {
  if (error) return console.log(error)
  if (results[0]) {
-  logs = results[0].res
+  let logs = results[0].res
  } else {
-  logs = "Not set!"
+  let logs = "Not set!"
  }
 }) %>
 <p class="logs-channel sinfo"><%= logs %></p>
