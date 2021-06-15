@@ -26,12 +26,32 @@
 sql.query(sqlquery, function (error, results, fields) {
  if (error) return console.log(error)
  if (results[0]) {
-  channel = results[0].res
+  welchannel = results[0].res
  } else {
-  channel = "Not set!"
+  welchannel = "Not set!"
  }
  }) %>
-<%= channel %>
+<% sqlquery = "SELECT channelid AS res FROM leave WHERE guildid = " + guild.id
+sql.query(sqlquery, function (error, results, fields) {
+ if (error) return console.log(error)
+ if (results[0]) {
+  leavechannel = results[0].res
+ } else {
+  leavechannel = "Not set!"
+ }
+}) %>
+<% sqlquery = "SELECT channelid AS res FROM logs WHERE guildid = " + guild.id
+sql.query(sqlquery, function (error, results, fields) {
+ if (error) return console.log(error)
+ if (results[0]) {
+  logs = results[0].res
+ } else {
+  logs = "Not set!"
+ }
+}) %>
+<p class="welcome-channel sinfo"><%= welchannel %></p>
+<p class="leave-channel sinfo"><%= leavechannel %></p>
+<p class="logs-channel sinfo"><%= logs %></p>
 <h2>Roles</h2>
 <% let rolemap = guild.roles.cache
  .sort((a, b) => b.position - a.position)
