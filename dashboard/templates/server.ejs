@@ -31,6 +31,7 @@ sql.query(welcomequery, function (error, results, fields) {
   welchannel = "Not set!"
  }
  }) %>
+<p class="welcome-channel sinfo"><%= welchannel %></p>
 <% leavequery = "SELECT channelid AS res FROM leave WHERE guildid = " + guild.id
 sql.query(leavequery, function (error, results, fields) {
  if (error) return console.log(error);
@@ -40,6 +41,7 @@ sql.query(leavequery, function (error, results, fields) {
   leavechannel = "Not set!"
  }
 }) %>
+<p class="leave-channel sinfo"><%= leavechannel %></p>
 <% logsquery = "SELECT channelid AS res FROM logs WHERE guildid = " + guild.id
 sql.query(logsquery, function (error, results, fields) {
  if (error) return console.log(error)
@@ -49,8 +51,6 @@ sql.query(logsquery, function (error, results, fields) {
   logs = "Not set!"
  }
 }) %>
-<p class="welcome-channel sinfo"><%= welchannel %></p>
-<p class="leave-channel sinfo"><%= leavechannel %></p>
 <p class="logs-channel sinfo"><%= logs %></p>
 <h2>Roles</h2>
 <% 
