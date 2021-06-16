@@ -15,9 +15,9 @@ module.exports = {
     message.lineReply(embed);
    }
    const embed = new Discord.MessageEmbed() // Prettier
-    .setAuthor(msg.author, msg.member.user.displayAvatarURL())
-    .setDescription(msg.content)
-    .setFooter(`||Get sniped lmao!|| | Requested by ${message.author.username}`, message.author.displayAvatarURL())
+    .setAuthor(msg.member.author, msg.member.user.displayAvatarURL())
+    .setDescription("```" + msg.content + "```")
+    .setFooter(`Get sniped lmao! | Requested by ${message.author.username}`, message.author.displayAvatarURL())
     .setTimestamp();
    message.lineReply(embed);
   } catch (err) {
