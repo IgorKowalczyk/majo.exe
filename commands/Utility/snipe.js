@@ -10,9 +10,12 @@ module.exports = {
   try {
    const msg = client.snipes.get(message.channel.id);
    if (!msg) {
-    const embed = new Discord.MessageEmbed() // Prettier
-     .setDescription(":x: There is nothing to snipe :(");
-    message.lineReply(embed);
+    message.lineReply({
+     embed: {
+      color: 16734039,
+      description: ":x: There is nothing to snipe :(",
+     },
+    });
    }
    const embed = new Discord.MessageEmbed() // Prettier
     .setAuthor(msg.member.author, msg.member.user.displayAvatarURL())
