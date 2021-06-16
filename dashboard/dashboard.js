@@ -246,6 +246,11 @@ module.exports = async (client) => {
   renderTemplate(res, req, "404.ejs");
  });
 
+ app.use((error, req, res, next) => {
+  console.error(error.stack);
+  res.status(500);
+  renderTemplate(res, req, "500.ejs");
+ });
  console.log("All dashboard process done... Starting in web");
  app.listen(port, null, null, () => console.log(`Dashboard is up and running on port ${port}.`));
 };
