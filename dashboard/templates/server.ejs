@@ -23,13 +23,12 @@
 <hr>
 <h2>Majo.exe settings</h2>
 <% sqlquery = "SELECT channelid AS res FROM welcome WHERE guildid = " + guild.id;
- let channel;
 sql.query(sqlquery, function (error, results, fields) {
  if (error) return console.log(error)
  if (results[0]) {
-  channel = results[0].res
+  let channel = results[0].res
  } else {
-  channel = "Not set!"
+  let channel = "Not set!"
  }
  }) %>
 <%= channel %>
