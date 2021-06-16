@@ -11,8 +11,8 @@ module.exports = {
    const msg = client.snipes.get(message.channel.id);
    if (!msg) {
     const embed = new Discord.MessageEmbed() // Prettier
-     .setDescription(":x: There is nothing to snipe :(")
-     .message.lineReply(embed);
+     .setDescription(":x: There is nothing to snipe :(");
+    message.lineReply(embed);
    }
    const embed = new Discord.MessageEmbed() // Prettier
     .setAuthor(msg.author, msg.member.user.displayAvatarURL())
@@ -21,6 +21,7 @@ module.exports = {
     .setTimestamp();
    message.lineReply(embed);
   } catch (err) {
+   console.log(err);
    message.lineReply({
     embed: {
      color: 16734039,

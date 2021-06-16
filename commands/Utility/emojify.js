@@ -14,7 +14,7 @@ module.exports = {
     return message.lineReply({
      embed: {
       color: 16734039,
-      description: "❌ | Please enter text",
+      description: "❌ | Please enter text to convert!",
      },
     });
    }
@@ -22,14 +22,14 @@ module.exports = {
     return message.lineReply({
      embed: {
       color: 16734039,
-      description: "❌ | Please enter shorter string. Please shorten the text, maximum length is 30 characters!",
+      description: "❌ | Please enter shorter string, maximum length is 30 characters!",
      },
     });
    }
    const converted = emoji.convert(emojis);
    const embed = new Discord.MessageEmbed() // Prettier()
     .setColor("RANDOM")
-    .setDescription(`Converted text: ${converted}`)
+    .setDescription(`Converted text: ${converted || "I cannot convert the text. Please other text!"}`)
     .setFooter(
      "Requested by " + `${message.author.username}`,
      message.author.displayAvatarURL({
