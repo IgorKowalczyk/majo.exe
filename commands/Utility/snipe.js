@@ -10,7 +10,7 @@ module.exports = {
   try {
    const msg = client.snipes.get(message.channel.id);
    if (!msg) {
-    message.lineReply({
+    return message.lineReply({
      embed: {
       color: 16734039,
       description: ":x: There is nothing to snipe :(",
