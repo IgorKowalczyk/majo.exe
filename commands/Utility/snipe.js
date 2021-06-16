@@ -21,8 +21,8 @@ module.exports = {
     .setAuthor(msg.member.author, msg.member.user.displayAvatarURL())
     .setDescription("```" + msg.content + "```")
     .setFooter(`Get sniped lmao! | Requested by ${message.author.username}`, message.author.displayAvatarURL())
-    .setTimestamp();
-    .setColor("RANDOM")
+    .setTimestamp()
+    .setColor("RANDOM");
    message.lineReply(embed);
   } catch (err) {
    console.log(err);
