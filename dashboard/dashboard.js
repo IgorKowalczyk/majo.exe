@@ -47,9 +47,9 @@ module.exports = async (client) => {
    saveUninitialized: false,
   })
  );
- app.enable('trust proxy');
+ app.enable("trust proxy");
  app.use((req, res, next) => {
-  req.secure ? next() : res.redirect('https://' + req.headers.host + req.url);
+  req.secure ? next() : res.redirect("https://" + req.headers.host + req.url);
  });
  app.use(passport.initialize());
  app.use(passport.session());
