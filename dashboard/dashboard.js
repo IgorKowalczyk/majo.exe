@@ -213,12 +213,12 @@ module.exports = async (client) => {
  app.get("/", (req, res) => {
   renderTemplate(res, req, "index.ejs");
  });
- 
+
  // Arc.io file
  app.get("/arc-sw.js", (req, res) => {
-  res.sendFile(path.join(__dirname+'/static/js/arc.js'));
+  res.sendFile(path.join(__dirname + "/static/js/arc.js"));
  });
- 
+
  // Dashboard endpoint.
  app.get("/dashboard", checkAuth, (req, res) => {
   renderTemplate(res, req, "dashboard.ejs", {
@@ -255,7 +255,7 @@ module.exports = async (client) => {
   res.status(404);
   renderTemplate(res, req, "404.ejs");
  });
- 
+
  // 500
  app.use((error, req, res, next) => {
   console.error(error.stack);
