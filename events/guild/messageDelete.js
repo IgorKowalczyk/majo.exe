@@ -4,6 +4,12 @@ const sql = require("../../utilities/database");
 
 module.exports = async (client, message) => {
  try {
+  client.snipes.set(message.channel.id, {
+   content: message.content,
+   author: message.author.tag,
+   member: message.member,
+   image: message.attachments.first() ? message.attachments.first().proxyURL : null,
+  });
   const sqlquery = "SELECT channelid AS res FROM logs WHERE guildid = " + message.guild.id;
   sql.query(sqlquery, function (error, results, fields) {
    if (error) console.log(error);
