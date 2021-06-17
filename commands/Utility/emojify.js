@@ -18,7 +18,7 @@ module.exports = {
      },
     });
    }
-   if (emojis.lenght < 30) {
+   if (emojis.lenght > 30) {
     return message.lineReply({
      embed: {
       color: 16734039,
@@ -28,7 +28,7 @@ module.exports = {
    }
    const converted = emoji.convert(emojis);
    if (!converted) {
-    message.lineReply({
+    return message.lineReply({
      embed: {
       color: 16734039,
       description: "❌ | I cannot convert the text",
@@ -39,7 +39,7 @@ module.exports = {
     .setColor("RANDOM")
     .setTitle(`Text To Emoji`)
     .addField("Converted text", converted)
-    .addField("Converted text (Code)", "```" + converted + "```")
+    .addField("Converted text (Code)", "```" + converted.toString().substr(0, 1000) + "```")
     .setFooter(
      "Requested by " + `${message.author.username}`,
      message.author.displayAvatarURL({
