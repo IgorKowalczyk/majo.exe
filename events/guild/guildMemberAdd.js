@@ -14,7 +14,9 @@ module.exports = async (client, member) => {
    }
    (async () => {
     welsetup = await results[0].res;
+    await console.log(welsetup);
     const channel = await member.guild.channels.cache.find((c) => c.id == welsetup && c.type == "text");
+    await console.log(channel.id);
     if (!channel) return;
     if (!member.guild) return;
     function checkdays(date) {

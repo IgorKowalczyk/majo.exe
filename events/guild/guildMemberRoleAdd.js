@@ -12,7 +12,6 @@ module.exports = async (client, member, role) => {
    }
    (async () => {
     const logsetup = await results[0].res;
-    await console.log(logsetup);
     const log = await member.guild.channels.cache.find((c) => c.id == logsetup && c.type == "text");
     if (!member.guild.member(client.user).hasPermission("EMBED_LINKS", "VIEW_CHANNEL", "READ_MESSAGE_HISTORY", "VIEW_AUDIT_LOG", "SEND_MESSAGES")) return;
     if (!log) return;
