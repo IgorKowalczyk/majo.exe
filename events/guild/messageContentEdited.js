@@ -16,7 +16,7 @@ module.exports = async (client, message, oldContent, newContent) => {
     if (message.author.bot) return;
     if (!message.guild.member(client.user).hasPermission("EMBED_LINKS", "VIEW_CHANNEL", "READ_MESSAGE_HISTORY", "VIEW_AUDIT_LOG", "SEND_MESSAGES")) return;
     if (!log) return;
-    if (!newMessage.embeds) return console.log("yes");
+    if (!message.embeds) return console.log("yes");
     const oldone = oldContent.toString().substr(0, 1000).replace(/`/g, "'"); // To awoid quiting code block
     const newone = newContent.toString().substr(0, 1000).replace(/`/g, "'"); // To awoid quiting code block
     const event = await new Discord.MessageEmbed() // Prettier()

@@ -15,7 +15,7 @@ module.exports = async (client, guild, oldLevel, newLevel) => {
     if (!guild) return;
     if (!guild.member(client.user).hasPermission("EMBED_LINKS", "VIEW_CHANNEL", "READ_MESSAGE_HISTORY", "VIEW_AUDIT_LOG", "SEND_MESSAGES")) return;
     if (!log) return;
-    const embed = new Discord.MessageEmbed() // Prettier
+    const embed = await new Discord.MessageEmbed() // Prettier
      .setTitle("<a:boost:854794292190773308> Server boost level increases!")
      .setThumbnail(member.iconURL())
      .setColor("RANDOM")

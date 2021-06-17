@@ -15,7 +15,7 @@ module.exports = async (client, member) => {
     if (!member.guild) return;
     if (!member.guild.member(client.user).hasPermission("EMBED_LINKS", "VIEW_CHANNEL", "READ_MESSAGE_HISTORY", "VIEW_AUDIT_LOG", "SEND_MESSAGES")) return;
     if (!log) return;
-    const embed = new Discord.MessageEmbed() // Prettier
+    const embed = await new Discord.MessageEmbed() // Prettier
      .setTitle("<a:boost:854794292190773308> Server Boosted")
      .setThumbnail(member.user.avatarURL())
      .setColor("RANDOM")
