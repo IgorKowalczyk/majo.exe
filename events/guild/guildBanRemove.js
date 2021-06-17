@@ -19,7 +19,7 @@ module.exports = async (client, guild, user) => {
     guild.fetchAuditLogs().then((logs) => {
      const userid = logs.entries.first().executor.id;
      const uavatar = logs.entries.first().executor.avatarURL();
-     const embed = await new Discord.MessageEmbed() // Prettier()
+     const embed = new Discord.MessageEmbed() // Prettier()
       .setTitle("User Unbanned")
       .setThumbnail(uavatar)
       .setColor("RANDOM")
