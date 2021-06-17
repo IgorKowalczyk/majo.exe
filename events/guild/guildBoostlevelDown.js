@@ -17,7 +17,7 @@ module.exports = async (client, guild, oldLevel, newLevel) => {
     if (!log) return;
     const embed = new Discord.MessageEmbed() // Prettier
      .setTitle("<a:boost:854794292190773308> Server boost level decreases :sob:")
-     .setThumbnail(member.avatarURL())
+     .setThumbnail(guild.iconURL())
      .setColor("RANDOM")
      .setDescription("<a:boost:854794292190773308> " + guild.name + " now have" + newLevel + "boost level (Previous level: " + oldLevel + ")")
      .setTimestamp()

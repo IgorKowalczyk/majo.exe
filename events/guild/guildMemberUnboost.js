@@ -17,9 +17,9 @@ module.exports = async (client, member) => {
     if (!log) return;
     const embed = new Discord.MessageEmbed() // Prettier
      .setTitle("<a:boost:854794292190773308> Server Un-boosted")
-     .setThumbnail(member.avatarURL())
+     .setThumbnail(member.user.avatarURL())
      .setColor("RANDOM")
-     .addField("User", `${member.username} [Ping: <@${member.id}>], (ID: ${member.id})`)
+     .addField("User", `${member.user.username} [Ping: <@${member.user.id}>], (ID: ${member.user.id})`)
      .setTimestamp()
      .setFooter(member.guild.name, member.guild.iconURL());
     log.send(embed);
