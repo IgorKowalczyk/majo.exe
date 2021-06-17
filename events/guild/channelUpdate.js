@@ -30,7 +30,7 @@ module.exports = async (client, oldChannel, newChannel) => {
     } else if (!oldChannel.type) {
      type = "?";
     }
-    if (newChannel.type == text) {
+    if (newChannel.type == "text") {
      channelping = `<#${newchannel.id}>`;
     } else {
      channelping = `${newchannel.id}`;
