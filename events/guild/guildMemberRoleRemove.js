@@ -16,12 +16,12 @@ module.exports = async (client, member, role) => {
     if (!member.guild.member(client.user).hasPermission("EMBED_LINKS", "VIEW_CHANNEL", "READ_MESSAGE_HISTORY", "VIEW_AUDIT_LOG", "SEND_MESSAGES")) return;
     if (!log) return;
     if (!log.guild.member(client.user).hasPermission("EMBED_LINKS", "VIEW_CHANNEL", "READ_MESSAGE_HISTORY", "VIEW_AUDIT_LOG", "SEND_MESSAGES")) return;
-    const embed = new Discord.MessageEmbed() // Prettier()
+    const embed = await new Discord.MessageEmbed() // Prettier()
      .setTitle("User role removed")
      .setThumbnail(member.user.avatarURL())
      .setColor("RANDOM")
      .addField("User", `${member.user.username} [Ping: <@${member.user.id}>], (ID: ${member.user.id})`)
-     .addField("Role", `<@${role.user.id}> (ID: ${role.user.id})`)
+     .addField("Role", `<@${role.id}> (ID: ${role.id})`)
      .setTimestamp()
      .setFooter(member.guild.name, member.guild.iconURL());
     log.send(embed);
