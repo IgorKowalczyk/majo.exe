@@ -26,7 +26,7 @@ module.exports = async (client, message) => {
     if (!log.guild.member(client.user).hasPermission("EMBED_LINKS", "VIEW_CHANNEL", "READ_MESSAGE_HISTORY", "VIEW_AUDIT_LOG", "SEND_MESSAGES")) return;
     const final = message.toString().substr(0, 1000).replace(/`/g, "'"); // Limit characters
     const event = await new Discord.MessageEmbed() // Prettier()
-     .setTitle(`Message Deleted`)
+     .setTitle(`🗑️ Message Deleted`)
      .setColor("RANDOM")
      .setThumbnail(message.author.avatarURL())
      .addField("Channel", `<#${message.channel.id}> (ID: ${message.channel.id})`)

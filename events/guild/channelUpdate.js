@@ -30,6 +30,11 @@ module.exports = async (client, oldChannel, newChannel) => {
     } else if (!oldChannel.type) {
      type = "?";
     }
+    if (newChannel.type == text) {
+     channelping = `<#${newchannel.id}>`;
+    } else {
+     channelping = `${newchannel.id}`;
+    }
     const newcategory = newChannel.parent;
     if (!newcategory) {
      const newcategory = "None";
@@ -47,8 +52,9 @@ module.exports = async (client, oldChannel, newChannel) => {
      const guildsChannel = newChannel.guild;
      if (oldChannel.parent !== newChannel.parent) {
       const channelname = new Discord.MessageEmbed() // Prettier()
-       .setTitle("Channel position changed")
+       .setTitle("📝 Channel position changed")
        .setThumbnail(uavatar)
+       .addField("Channel", channelping)
        .addField("Channel type", `${type}`)
        .addField("Old Channel category (parent)", `${oldcategory} (ID: ${newChannel.parentID})`)
        .addField("New Channel category (parent)", `${newcategory} (ID: ${newChannel.parentID})`)
@@ -61,10 +67,10 @@ module.exports = async (client, oldChannel, newChannel) => {
      }
      if (oldChannel.name !== newChannel.name) {
       const channelname = new Discord.MessageEmbed() // Prettier()
-       .setTitle("Channel Name changed")
+       .setTitle("📝 Channel Name changed")
        .setThumbnail(uavatar)
        .addField("Old Channel name", `\`\`\`${oldChannel.name} \`\`\` `)
-       .addField("New Channel name", `<#${newChannel.name}>`)
+       .addField("New Channel name", channelping)
        .addField("Channel id", `${oldChannel.id}`)
        .addField("Channel type", `${type}`)
        .addField("Changed by", `<@${userid}> (ID: ${userid})`)

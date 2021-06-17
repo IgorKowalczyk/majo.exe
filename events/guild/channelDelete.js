@@ -34,7 +34,7 @@ module.exports = async (client, channel) => {
      const userid = logs.entries.first().executor.id;
      const uavatar = logs.entries.first().executor.avatarURL();
      const event = new Discord.MessageEmbed() // Prettier()
-      .setTitle("Channel Deleted")
+      .setTitle("<:channel_locked:585783907350478848> Channel Deleted")
       .setThumbnail(uavatar)
       .addField("Channel name", `${channel.name} (ID: ${channel.id})`)
       .addField("Channel type", `${type}`)

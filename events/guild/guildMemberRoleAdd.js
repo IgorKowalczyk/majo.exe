@@ -17,7 +17,7 @@ module.exports = async (client, member, role) => {
     if (!log) return;
     if (!log.guild.member(client.user).hasPermission("EMBED_LINKS", "VIEW_CHANNEL", "READ_MESSAGE_HISTORY", "VIEW_AUDIT_LOG", "SEND_MESSAGES")) return;
     const embed = await new Discord.MessageEmbed() // Prettier()
-     .setTitle("User role added")
+     .setTitle("📝 User role added")
      .setThumbnail(member.user.avatarURL())
      .setColor("RANDOM")
      .addField("User", `${member.user.username} [Ping: <@${member.user.id}>], (ID: ${member.user.id})`)

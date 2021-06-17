@@ -20,7 +20,7 @@ module.exports = async (client, guild, user) => {
      const userid = logs.entries.first().executor.id;
      const uavatar = logs.entries.first().executor.avatarURL();
      const embed = new Discord.MessageEmbed() // Prettier()
-      .setTitle("User Unbanned")
+      .setTitle("🎉 User Unbanned")
       .setThumbnail(uavatar)
       .setColor("RANDOM")
       .addField("Unbanned User", `${user.username} [Ping: <@${user.id}>], (ID: ${user.id})`)

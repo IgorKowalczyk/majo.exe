@@ -38,7 +38,7 @@ module.exports = async (client, oldGuild, newGuild) => {
     }
     if (oldGuild.preferredLocale != newGuild.preferredLocale) {
      const embed = await new Discord.MessageEmbed() // Prettier()
-      .setTitle("Guild preferred locale changed")
+      .setTitle("📝 Guild preferred locale changed")
       .setColor("RANDOM")
       .addField("Old preferred locale", `\`\`\`${oldGuild.preferredLocale}\`\`\``)
       .addField("New preferred locale", `\`\`\`${newGuild.preferredLocale}\`\`\``)
@@ -48,7 +48,7 @@ module.exports = async (client, oldGuild, newGuild) => {
     }
     if (oldGuild.publicUpdatesChannelID != newGuild.publicUpdatesChannelID) {
      const embed = await new Discord.MessageEmbed() // Prettier()
-      .setTitle("Guild public updates channel changed")
+      .setTitle("📝 Guild public updates channel changed")
       .setColor("RANDOM")
       .addField("Old public updates channel", `<#${oldGuild.publicUpdatesChannelID}>`)
       .addField("New public updates channel", `<#${newGuild.publicUpdatesChannelID}>`)
@@ -58,7 +58,7 @@ module.exports = async (client, oldGuild, newGuild) => {
     }
     if (oldGuild.rulesChannelID != newGuild.rulesChannelID) {
      const embed = await new Discord.MessageEmbed() // Prettier()
-      .setTitle("Guild rules channel changed")
+      .setTitle("📝 Guild rules channel changed")
       .setColor("RANDOM")
       .addField("Old rules channel", `<#${oldGuild.rulesChannelID}>`)
       .addField("New rules channel", `<#${newGuild.rulesChannelID}>`)
@@ -68,7 +68,7 @@ module.exports = async (client, oldGuild, newGuild) => {
     }
     if (oldGuild.systemChannelID != newGuild.systemChannelID) {
      const embed = await new Discord.MessageEmbed() // Prettier()
-      .setTitle("Guild system channel changed")
+      .setTitle("📝 Guild system channel changed")
       .setColor("RANDOM")
       .addField("Old system channel", `<#${oldGuild.systemChannelID}>`)
       .addField("New system channel", `<#${newGuild.systemChannelID}>`)
@@ -78,7 +78,7 @@ module.exports = async (client, oldGuild, newGuild) => {
     }
     if (oldGuild.verificationLevel != newGuild.verificationLevel) {
      const embed = await new Discord.MessageEmbed() // Prettier()
-      .setTitle("Guild verification level changed")
+      .setTitle("📝 Guild verification level changed")
       .setColor("RANDOM")
       .addField("Old verification level", `\`\`\`${oldGuild.verificationLevel}\`\`\``)
       .addField("New verification level", `\`\`\`${newGuild.verificationLevel}\`\`\``)
@@ -88,7 +88,7 @@ module.exports = async (client, oldGuild, newGuild) => {
     }
     if (oldGuild.widgetEnabled != newGuild.widgetEnabled) {
      const embed = await new Discord.MessageEmbed() // Prettier()
-      .setTitle("Guild widget update")
+      .setTitle("📝 Guild widget update")
       .setColor("RANDOM")
       .addField("Old widget channel", `\`\`\`${oldGuild.widgetEnabled}\`\`\``)
       .addField("New widget channel", `\`\`\`${newGuild.widgetEnabled}\`\`\``)
@@ -98,7 +98,7 @@ module.exports = async (client, oldGuild, newGuild) => {
     }
     if (oldGuild.widgetChannelID != newGuild.widgetChannelID) {
      const embed = await new Discord.MessageEmbed() // Prettier()
-      .setTitle("Guild widget channel changed")
+      .setTitle("📝 Guild widget channel changed")
       .setColor("RANDOM")
       .addField("Old widget channel", `<#${oldGuild.widgetChannelID}>`)
       .addField("New widget channel", `<#${newGuild.widgetChannelID}>`)

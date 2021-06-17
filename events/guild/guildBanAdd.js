@@ -21,7 +21,7 @@ module.exports = async (client, guild, user) => {
      const uavatar = logs.entries.first().executor.avatarURL();
      if (userid === client.user.id) return;
      const embed = new Discord.MessageEmbed() // Prettier()
-      .setTitle("User Banned")
+      .setTitle("⛔ User Banned")
       .setThumbnail(uavatar)
       .setColor("RANDOM")
       .addField("Banned User", `${user.username} [Ping: <@${user.id}>], (ID: ${user.id})`)

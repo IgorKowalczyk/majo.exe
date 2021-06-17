@@ -20,7 +20,7 @@ module.exports = async (client, message, oldContent, newContent) => {
     const oldone = oldContent.toString().substr(0, 1000).replace(/`/g, "'"); // To awoid quiting code block
     const newone = newContent.toString().substr(0, 1000).replace(/`/g, "'"); // To awoid quiting code block
     const event = await new Discord.MessageEmbed() // Prettier()
-     .setTitle(`Message Edited`)
+     .setTitle(`📝 Message Edited`)
      .setColor("RANDOM")
      .setThumbnail(message.author.avatarURL())
      .addField("Channel", `<#${message.channel.id}> (ID: ${message.channel.id})`)
