@@ -31,9 +31,9 @@ module.exports = async (client, oldChannel, newChannel) => {
      type = "?";
     }
     if (newChannel.type == "text") {
-     channelping = `<#${newchannel.id}>`;
+     channelping = `<#${newChannel.id}>`;
     } else {
-     channelping = "```" + newchannel.id + "```";
+     channelping = "```" + newChannel.id + "```";
     }
     const newcategory = newChannel.parent;
     if (!newcategory) {
