@@ -18,7 +18,7 @@ module.exports = {
      },
     });
    }
-   if (emojis.lenght > 30) {
+   if (args.join(" ").lenght > 30) {
     return message.lineReply({
      embed: {
       color: 16734039,
