@@ -9,5 +9,3 @@ module.exports = async (message) => {
   .setImage("https://media.discordapp.net/attachments/721019707607482409/855827123616481300/nsfw.gif")
  return nsfw;
 }
-
-module.exports = nsfw;
