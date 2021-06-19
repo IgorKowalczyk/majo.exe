@@ -1,8 +1,7 @@
 const Discord = require("discord.js");
 const https = require("https");
-const config = require("../../config");
 const prefix = process.env.PREFIX;
-const nsfw = require("../../utilities/nsfw")
+const { nsfw } = require("../../utilities/nsfw")
 
 module.exports = {
  name: "4chan",
@@ -11,19 +10,9 @@ module.exports = {
  category: "Fun",
  timeout: "1000",
  usage: "4chan <board/boards>",
- /**
-  * Execute command
-  * @param {Discord.Client} client - The Discord client
-  * @param {Discord.Message} message - The message of the command
-  * @param {string} args - The arguments of the command
-  */
  run: async (client, message, args) => {
   try {
-   var maxlength = 500;
-   if (!message.channel.nsfw) {
-    return message.lineReply(nsfw);
-   }
-
+   if (!nsfw) return;
    let chanargs = args.slice(0).join(" ");
    if (!chanargs) {
     return message.lineReply({
