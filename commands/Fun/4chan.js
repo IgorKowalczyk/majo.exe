@@ -21,7 +21,7 @@ module.exports = {
   try {
    var maxlength = 500;
    if (!message.channel.nsfw) {
-    message.lineReply(nsfw);
+    return message.lineReply(nsfw);
    }
 
    let chanargs = args.slice(0).join(" ");
