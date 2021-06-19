@@ -2,6 +2,7 @@ const Discord = require("discord.js");
 const https = require("https");
 const config = require("../../config");
 const prefix = process.env.PREFIX;
+const nsfw = require("../../utilities/nsfw")
 
 module.exports = {
  name: "4chan",
@@ -20,13 +21,9 @@ module.exports = {
   try {
    var maxlength = 500;
    if (!message.channel.nsfw) {
-    return message.lineReply({
-     embed: {
-      color: 16734039,
-      description: "💢 | You can use this command only in an NSFW Channel!",
-     },
-    });
+    message.lineReply(nsfw);
    }
+
    let chanargs = args.slice(0).join(" ");
    if (!chanargs) {
     return message.lineReply({
