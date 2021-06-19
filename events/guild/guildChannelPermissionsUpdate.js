@@ -14,9 +14,14 @@ module.exports = async (client, channel, oldPermissions, newPermissions) => {
     const logsetup = await results[0].res;
     const log = await channel.guild.channels.cache.find((c) => c.id == logsetup && c.type == "text");
     if (!log) return;
+    if (channel.type == "text") {
+     channelping = `<#${channel.id}>`;
+    } else {
+     channelping = "```" + channel.name + "```";
+    }
     const newtopic = await new Discord.MessageEmbed() // Prettier()
      .setTitle("📝 Channel premissions changed!", channel.guild.iconURL())
-     .addField("Channel name", `${channel.name}`)
+     .addField("Channel name", `${channelping}`)
      .addField("Channel type", `${channel.type}`)
      .addField("Channel ID", `${channel.id}`)
      .addField("Created at", `${channel.createdAt}`)
