@@ -15,10 +15,17 @@ const MemoryStore = require("memorystore")(session);
 const sql = require("../utilities/database");
 const port = process.env.PORT || 6565;
 
+if(!process.env.DASHBOARD) throw new Error("You need to provide Dashboard (Boolean) in .env - DASHBOARD=BOOLEAN")
+if(!process.env.SESSION_SECRET) throw new Error("You need to provide Session Secret in .env - SESSION_SECRET=YOUR_SESSION_SECRET_RANDOM_WORDS")
+if(!process.env.SECRET) throw new Error("You need to provide Secret in .env - SECRET=YOUR_BOT_SECRET")
+if(!process.env.PORT) throw new Error("You need to provide Port in .env - PORT=YOUR_WEBSITE_PORT")
+if(!process.env.ID) throw new Error("You need to provide Discord Bot ID in .env - ID=YOUR_DISCORD_BOT_ID")
+if(!process.env.DOMAIN) throw new Error("You need to provide Webiste domain in .env - DOMAIN=YOUR_WEBISTE_DOMAIN Note: Only website domain eg. https://example.com without slash at end!")
 console.log("Starting dashboard...");
 
 module.exports = async (client) => {
  console.log("Setting up dashboard main config...");
+ console.log(`Dashboard credentials: Domain: ${process.env.DOMAIN}\nPort: ${process.env.PORT}\nID: ${process.env.ID}\nAnalytics: ${process.env.ANALYTICS || "Not set"}`)
  const dataDir = path.resolve(`${process.cwd()}${path.sep}dashboard`);
  const templateDir = path.resolve(`${dataDir}${path.sep}templates`);
  passport.serializeUser((user, done) => done(null, user));
@@ -26,9 +33,9 @@ module.exports = async (client) => {
  passport.use(
   new Strategy(
    {
-    clientID: config.id,
-    clientSecret: config.clientSecret,
-    callbackURL: `${config.domain}${config.port != 80 ? "" : `:${config.port}`}/callback`,
+    clientID: process.env.ID,
+    clientSecret: process.env.SECRET,
+    callbackURL: `${process.env.DOMAIN}${process.env.PORT != 80 ? "" : `:${process.env.PORT}`}/callback`,
     response_type: `token`,
     scope: ["identify", "guilds"],
    },
@@ -42,7 +49,7 @@ module.exports = async (client) => {
    store: new MemoryStore({
     checkPeriod: 86400000,
    }),
-   secret: config.sessionSecret,
+   secret: process.env.SESSION_SECRET,
    resave: false,
    saveUninitialized: false,
   })
@@ -53,7 +60,7 @@ module.exports = async (client) => {
  });
  app.use(passport.initialize());
  app.use(passport.session());
- app.locals.domain = config.domain.split("//")[1];
+ app.locals.domain = process.env.DOMAIN.split("//")[1];
  app.engine("html", ejs.renderFile);
  app.set("view engine", "html");
  app.use(bodyParser.json());
@@ -79,7 +86,7 @@ module.exports = async (client) => {
    twitter: config.twitter,
    url: res,
    title: client.username,
-   prefix: config.prefix,
+   prefix: process.env.PREFIX,
    req: req,
    mobile: config.mobile_support,
    image: config.image,
@@ -200,7 +207,7 @@ module.exports = async (client) => {
     client.guilds.cache.reduce((a, g) => a + g.memberCount, 0) +
     `",
    "prefix": "` +
-    config.prefix +
+    process.env.PREFIX +
     `",
    "channels": "` +
     client.channels.cache.size +

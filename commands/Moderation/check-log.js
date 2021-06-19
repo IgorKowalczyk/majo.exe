@@ -1,6 +1,6 @@
 const Discord = require("discord.js");
 const config = require("../../config");
-const prefix = config.prefix;
+const prefix = process.env.PREFIX;
 const sql = require("../../utilities/database");
 
 module.exports = {

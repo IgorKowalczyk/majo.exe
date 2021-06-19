@@ -1,5 +1,4 @@
 const ytdl = require("discord-ytdl-core");
-const { canModifyQueue } = require("../utilities/main");
 const Discord = require("discord.js");
 const createBar = require("string-progressbar");
 const lyricsFinder = require("lyrics-finder");

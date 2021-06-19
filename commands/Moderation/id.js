@@ -13,14 +13,14 @@ module.exports = {
     return message.lineReply({
      embed: {
       color: 16734039,
-      description: "❌ | You must mention a user",
+      description: "❌ | You must mention a user!",
      },
     });
    }
    const userid = new Discord.MessageEmbed() // Prettier()
     .setThumbnail(mention.user.avatarURL())
     .setColor("RANDOM")
-    .setDescription("Here is " + `${mention.user.username} ID` + mention.id);
+    .setDescription("Here is " + `${mention.user.username} ID - \`` + mention.id + "`");
    message.lineReply(userid);
   } catch (err) {
    message.lineReply({

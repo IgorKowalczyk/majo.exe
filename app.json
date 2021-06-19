@@ -24,7 +24,7 @@
   },
   "COOKIES": {
    "description": "Your Youtube cookies",
-   "required": true
+   "required": false
   },
   "BRAINID": {
    "description": "Your Brainshop AI Brain ID",
@@ -42,17 +42,21 @@
    "description": "Your Discord Bot ID",
    "required": true
   },
+  "GENIUS": {
+   "description": "Your Genius API key",
+   "required": true
+   },
   "DASHBOARD": {
    "description": "The Web-Dashboard config value. (eg. true/false)",
    "required": true
   },
   "SESSION_SECRET": {
    "description": "Random sequence of words, letterss or numbers",
-   "required": true
+   "required": false
   },
   "SECRET": {
    "description": "The bot client secret (Remember! The SECRET value is Super-Secret)",
-   "required": true
+   "required": false
   },
   "ANALYTICS": {
    "description": "Google analytics tracking ID, used in Web-Dashboard",

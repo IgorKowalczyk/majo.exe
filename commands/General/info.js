@@ -13,7 +13,7 @@ module.exports = {
  run: async (client, message, args) => {
   try {
    if ((config.dashboard = "true")) {
-    webpanel = `[Dashboard](${config.domain}) |`;
+    webpanel = `[Dashboard](${process.env.DOMAIN}) |`;
    } else {
     webpanel = " ";
    }
@@ -27,7 +27,7 @@ module.exports = {
      })
     )
     .setColor("RANDOM")
-    .setDescription(`My global prefix is: \`${config.prefix}\`\n`)
+    .setDescription(`My global prefix is: \`${process.env.PREFIX}\`\n`)
     .addField("Developer", `${config.author} \[[Website](${config.authorwebsite})\]`, true)
     .setThumbnail(
      client.user.displayAvatarURL({

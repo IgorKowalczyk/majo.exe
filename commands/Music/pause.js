@@ -1,5 +1,4 @@
 const Discord = require("discord.js");
-const { canModifyQueue } = require("../../utilities/main");
 
 module.exports = {
  name: "pause",
@@ -36,7 +35,6 @@ module.exports = {
      },
     });
    }
-   if (!canModifyQueue(message.member)) return;
    if (queue.playing) {
     queue.playing = false;
     queue.connection.dispatcher.pause(true);

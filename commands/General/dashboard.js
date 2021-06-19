@@ -9,7 +9,7 @@ module.exports = {
  usage: "dashboard",
  run: async (client, message, args) => {
   try {
-   if (!config.domain) {
+   if (!process.env.DOMAIN) {
     const embed = new Discord.MessageEmbed() // Prettier()
      .setTitle("<a:error:759354037803024395> Mheh!")
      .setDescription("Our dashboard is not working at the moment, please try again later!")
@@ -28,7 +28,7 @@ module.exports = {
    if (message.member.hasPermission("MANAGE_GUILD")) {
     const embed = new Discord.MessageEmbed() // Prettier()
      .setTitle("<a:sucess:759354039242063903> Yay!")
-     .setDescription("🔗 Your server link: " + config.domain + "/dashboard/" + message.guild.id + "\n🔗 Dashboard link: " + config.domain)
+     .setDescription("🔗 Your server link: " + process.env.DOMAIN + "/dashboard/" + message.guild.id + "\n🔗 Dashboard link: " + process.env.DOMAIN)
      .setTimestamp()
      .setColor("RANDOM")
      .setFooter(
@@ -43,7 +43,7 @@ module.exports = {
    } else {
     const embed = new Discord.MessageEmbed() // Prettier()
      .setTitle("<a:sucess:759354039242063903> Yay!")
-     .setDescription("🔗 Our dashboard link: " + config.domain)
+     .setDescription("🔗 Our dashboard link: " + process.env.DOMAIN)
      .setTimestamp()
      .setColor("RANDOM")
      .setFooter(

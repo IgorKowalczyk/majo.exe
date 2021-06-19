@@ -1,7 +1,7 @@
 const Discord = require("discord.js");
 const ms = require("ms");
 const config = require("../../config");
-const prefix = config.prefix;
+const prefix = process.env.PREFIX;
 const Timeout = new Map();
 
 module.exports = async (client, message) => {

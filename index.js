@@ -16,7 +16,7 @@ const sql = require("./utilities/database");
 
 /* Logging system config */
 sql.query("CREATE TABLE IF NOT EXISTS `logs` (`guildid` VARCHAR(32) NOT NULL, `channelid` VARCHAR(32) NOT NULL, UNIQUE(`guildid`));", function (error, results, fields) {
- if (error) console.error(error);
+ if (error) throw new Error(error);
  console.log("[SQL] Fetched table `logs`! Status: Success");
 });
 /* ---- */
@@ -24,19 +24,19 @@ sql.query("CREATE TABLE IF NOT EXISTS `logs` (`guildid` VARCHAR(32) NOT NULL, `c
 /* Welcome and leave messages config */
 /* = Welcome message = */
 sql.query("CREATE TABLE IF NOT EXISTS `welcome` (`guildid` VARCHAR(32) NOT NULL, `channelid` VARCHAR(32) NOT NULL, UNIQUE(`guildid`));", function (error) {
- if (error) console.error(error);
+ if (error) throw new Error(error);
  console.log("[SQL] Fetched table `welcome`! Status: Success");
 });
 /* = Leave message = */
 sql.query("CREATE TABLE IF NOT EXISTS `leave` (`guildid` VARCHAR(32) NOT NULL, `channelid` VARCHAR(32) NOT NULL, UNIQUE(`guildid`));", function (error) {
- if (error) console.error(error);
+ if (error) throw new Error(error);
  console.log("[SQL] Fetched table `leave`! Status: Success");
 });
 /* ---- */
 
 /* Giveaways config */
 sql.query("CREATE TABLE IF NOT EXISTS `giveaways` (`id` INT(1) NOT NULL AUTO_INCREMENT, `message_id` VARCHAR(64) NOT NULL, `data` JSON NOT NULL, PRIMARY KEY (`id`));", (err) => {
- if (err) console.error(err);
+ if (err) throw new Error(err);
  console.log("[SQL] Fetched table `giveaways`! Status: Success");
 });
 const Giveaways = class extends GiveawaysManager {
@@ -44,8 +44,6 @@ const Giveaways = class extends GiveawaysManager {
   return new Promise((resolve, reject) => {
    sql.query("SELECT `data` FROM `giveaways`", (err, res) => {
     if (err) {
-     console.error(err);
-     sql.end();
      return reject(err);
     }
     const giveaways = res.map((row) => JSON.parse(row.data));
@@ -57,8 +55,6 @@ const Giveaways = class extends GiveawaysManager {
   return new Promise((resolve, reject) => {
    sql.query("INSERT INTO `giveaways` (`message_id`, `data`) VALUES (?,?)", [messageID, JSON.stringify(giveawayData)], (err, res) => {
     if (err) {
-     console.error(err);
-     sql.end();
      return reject(err);
     }
     resolve(true);
@@ -69,8 +65,6 @@ const Giveaways = class extends GiveawaysManager {
   return new Promise((resolve, reject) => {
    sql.query("UPDATE `giveaways` SET `data` = ? WHERE `message_id` = ?", [JSON.stringify(giveawayData), messageID], (err, res) => {
     if (err) {
-     console.error(err);
-     sql.end();
      return reject(err);
     }
     resolve(true);
@@ -81,8 +75,6 @@ const Giveaways = class extends GiveawaysManager {
   return new Promise((resolve, reject) => {
    sql.query("DELETE FROM `giveaways` WHERE `message_id` = ?", messageID, (err, res) => {
     if (err) {
-     console.error(err);
-     sql.end();
      return reject(err);
     }
     resolve(true);
@@ -117,8 +109,6 @@ if (process.env.TOKEN) {
  });
  client.login(process.env.TOKEN);
 } else {
- console.log(chalk.red.bold("Error:") + chalk.red(" Bot token is not provided! To give your bot life, you need to enter token value in the ") + chalk.grey.italic.bold(".env") + chalk.red(" file - ") + chalk.grey.italic.bold("TOKEN=Your_Token ") + chalk.red.underline.bold("REMEMBER: Token is super-secret - do not share it with anyone!"));
- console.log(chalk.red("Stopping..."));
- process.exit(1);
+ throw new Error("Bot token is not provided! To give your bot life, you need to enter token value in the .env file - TOKEN=Your_Bot_Token")
 }
 /* ---- */

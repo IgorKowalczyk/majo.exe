@@ -11,9 +11,9 @@ module.exports = (client) => {
    const discordbday = new Date().getFullYear() + "/05/13";
    const statuslist = [];
    if (date == discordbday) {
-    statuslist.push(`🎉 ${client.guilds.cache.size} servers 🎉`, `🎉 ${client.guilds.cache.reduce((a, g) => a + g.memberCount, 0)} members 🎉`, `🎉 ${config.prefix} help 🎉`);
+    statuslist.push(`🎉 ${client.guilds.cache.size} servers 🎉`, `🎉 ${client.guilds.cache.reduce((a, g) => a + g.memberCount, 0)} members 🎉`, `🎉 ${process.env.PREFIX} help 🎉`);
    } else {
-    statuslist.push(`${emoji} | ${client.guilds.cache.size} servers!`, `${emoji} | ${client.guilds.cache.reduce((a, g) => a + g.memberCount, 0)} members!`, `${emoji} | ${config.prefix} help`, `${emoji} | Waiting for verification! (${client.guilds.cache.size} guilds 🥰)`);
+    statuslist.push(`${emoji} | ${client.guilds.cache.size} servers!`, `${emoji} | ${client.guilds.cache.reduce((a, g) => a + g.memberCount, 0)} members!`, `${emoji} | ${process.env.PREFIX} help`, `${emoji} | Waiting for verification! (${client.guilds.cache.size} guilds 🥰)`);
    }
    const random = Math.floor(Math.random() * (statuslist.length - 1) + 1);
    client.user.setActivity(statuslist[random], {
@@ -48,7 +48,7 @@ module.exports = (client) => {
     const args = interaction.data.options;
     if (command == "majo") {
      const embed = new Discord.MessageEmbed() // Prettier()
-      .setDescription(`Hello, ${client.user.username} unfortunately **do not support slash commands**. And we do not currently plan to add them either. We apologize ;-; If you want use my normal commands please check \`${config.prefix} help\`!`)
+      .setDescription(`Hello, ${client.user.username} unfortunately **do not support slash commands**. And we do not currently plan to add them either. We apologize ;-; If you want use my normal commands please check \`${process.env.PREFIX} help\`!`)
       .setTitle(
        `<a:sucess:759354039242063903> Hi ${interaction.member.user.username}! I'm ${client.user.username}`,
        client.user.displayAvatarURL({

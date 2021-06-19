@@ -40,7 +40,7 @@ Deploy the app to [Heroku](https://heroku.com)
     * `AMEAPI` - your Ametyhyste API token [[Tutorial](#amethyste-api)]
     * `BRAINID` - Your Brainshop AI Brain ID [[Tutorial](#ai-keys)]
     * `BRAINKEY` - Your Brainshop AI Brain Key [[Tutorial](#ai-keys)]
-    * `COOKIES` - Your Youtube Cookies [[Tutorial](#youtube)]
+    * `GENIUS` - Your Genius API Key [[Tutorial](#genius)]
     * `MYSQL_DATABASE` - Your MYSQL database name
     * `MYSQL_HOST` - Your MYSQL Host name
     * `MYSQL_PASSWORD` - Your MYSQL user password
@@ -52,6 +52,7 @@ Deploy the app to [Heroku](https://heroku.com)
     * `SESSION_SECRET` - Session secret key, random sequence of words, letterss or numbers
     * `SECRET` - Client secret from Discord Developers portal [no. 3]
     * `ANALYTICS` - Google Trakcing ID, for Website analytics [[Tutorial](#analytics-id)]
+    * `COOKIES` - Your Youtube Cookies [[Tutorial](#youtube)]
 7. Run `npm run start`
 > Note: See the example [`.env` file below](#example-env-file)!
 
@@ -81,13 +82,14 @@ Deploy the app to [Heroku](https://heroku.com)
 | MYSQL_HOST | Your MYSQL Host | :heavy_check_mark: |
 | MYSQL_USER | Your MYSQL user | :heavy_check_mark: |
 | MYSQL_PASSWORD | Your Brainshop AI Brain Key | :heavy_check_mark: |
-| COOKIES | Your youtube cookies | :heavy_check_mark: |
+| GENIUS | Your genius API Key | :heavy_check_mark: |
 | DOMAIN | Your website domain (eg `https://example.com`)`*` | :x:/:heavy_check_mark: |
 | PORT| Your webiste port, (eg. `8008 `)`*`| :x:/:heavy_check_mark: |
 | DASHBOARD | The Web-Dashboard config value. (eg. `true/false`, default value: `false`)`*` | :x: |
 | SESSION_SECRET | Random sequence of words, letterss or numbers`*` | :x:/:heavy_check_mark: |
 | SECRET | The bot client secret (Remember! The `SECRET` value is Super-Secret)`*` | :x:/:heavy_check_mark: |
 | ANALYTICS | Google analytics tracking ID, used in Web-Dashboard`*` | :x: |
+| COOKIES | Your youtube cookies | :x: |
 > - `*` = Required to run the web dashboard!
 
 ### Example `.env` file
@@ -98,38 +100,34 @@ Deploy the app to [Heroku](https://heroku.com)
 ```
 # Environment Config
 
-# store your secrets and config variables in here
-# only invited collaborators will be able to see your .env values
-
-# reference these in your code with process.env.SECRET
-
 # Required
 TOKEN=YOUR_TOKEN_GOES_HERE
 PREFIX=!majo
+ID=YOUR_BOT_ID
 AMEAPI=YOUR_AMETHYSTE_API_TOKEN
 MYSQL_DATABASE=YOUR_MYSQL_DATABASE_NAME
 MYSQL_HOST=YOUR_MYSQL_HOST
 MYSQL_PASSWORD=YOUR_MYSQL_USER_PASSWORD
 MYSQL_USER=YOUR_MYSQL_DATABASE_USER
-
-# Not required
-DOMAIN=YOUR_WEBSITE_DOMAIN
-PORT=YOUR_WEBSITE_PORT
 BRAINID=YOUR_BRAINSHOP_AI_BRAIN_ID
 BRAINKEY=YOUR_BRAINSHOP_AI_BRAIN_KEY
-COOKIES=YOUR_YOUTUBE_COOKIES
+GENIUS=YOUR_GENIUS_API_KEY
+
+# Not required
 DASHBOARD=[true/false]
+DOMAIN=YOUR_WEBSITE_DOMAIN
+PORT=YOUR_WEBSITE_PORT
 SESSION_SECRET=YOUR_SESSION_SECRET_(RANDOM_WORDS)
 SECRET=YOUR_BOT_CLIENT_SECRET
 ANALYTICS=YOUR_GOOGLE_TRACKING_ID
-# !majo is the default prefix, you can change it later.
+COOKIES=YOUR_YOUTUBE_COOKIES
 
-# Note: .env is a shell file so there can't be spaces around =
+# Note: !majo is the default prefix, you can change it later.
 
 ```
 </details>
 
-## Tokens
+## Tokens tutorials
 
 ##### Discord Token
 > Soon!
@@ -141,6 +139,9 @@ ANALYTICS=YOUR_GOOGLE_TRACKING_ID
 > Soon!
 
 ##### Youtube
+> Soon!
+
+##### Genius
 > Soon!
 
 ##### Analytics ID

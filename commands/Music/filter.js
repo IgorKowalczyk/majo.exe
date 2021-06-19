@@ -1,7 +1,6 @@
 const ytsr = require("youtube-sr");
 const Discord = require("discord.js");
 const { play } = require("../../utilities/play");
-const config = require("../../config");
 
 module.exports = {
  name: "filter",
@@ -129,7 +128,7 @@ module.exports = {
        \`chorus\`
        \`karaoke\`
        \`desilencer (removes silence in the song automatically)\`
-       **To clear all filters just enter \`clear\` option.**\n**Example: ${config.prefix} filter bassboost**`
+       **To clear all filters just enter \`clear\` option.**\n**Example: ${process.env.PREFIX} filter bassboost**`
       )
       .setFooter("Requested by " + `${message.author.username}`, message.author.displayAvatarURL({ dynamic: true, format: "png", size: 2048 }));
      message.channel.send(embed);

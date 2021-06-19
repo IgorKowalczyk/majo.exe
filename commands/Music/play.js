@@ -1,6 +1,5 @@
 const Discord = require("discord.js");
 const { play } = require("../../utilities/play");
-const config = require("../../config");
 const ytsr = require("youtube-sr").default;
 
 module.exports = {
@@ -35,7 +34,7 @@ module.exports = {
    return message.channel.send({
     embed: {
      color: 16734039,
-     description: `❌ | Usage: ${config.prefix} play <youtube link | youtube video name>`,
+     description: `❌ | Usage: ${process.env.PREFIX} play <youtube link | youtube video name>`,
     },
    });
   }

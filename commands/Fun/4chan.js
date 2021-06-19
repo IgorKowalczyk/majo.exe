@@ -1,7 +1,7 @@
 const Discord = require("discord.js");
 const https = require("https");
 const config = require("../../config");
-const prefix = config.prefix;
+const prefix = process.env.PREFIX;
 
 module.exports = {
  name: "4chan",
