@@ -1,5 +1,6 @@
 const Discord = require("discord.js");
 const fetch = require("node-fetch");
+const { nsfw } = require("../../utilities/nsfw")
 
 module.exports = {
  name: "cum",
@@ -10,14 +11,7 @@ module.exports = {
  run: async (client, message, args) => {
   (async () => {
    try {
-    if (!message.channel.nsfw) {
-     return message.channel.send({
-      embed: {
-       color: 16734039,
-       description: "💢 | You can use this command only in an NSFW Channel!",
-      },
-     });
-    }
+    if (nsfw(message)) return;
     const response = await fetch("https://nekos.life/api/v2/img/cum");
     const body = await response.json();
     const embed = new Discord.MessageEmbed() // Prettier()

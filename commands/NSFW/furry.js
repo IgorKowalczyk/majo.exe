@@ -1,5 +1,6 @@
 const Discord = require("discord.js");
 const booru = require("booru");
+const { nsfw } = require("../../utilities/nsfw")
 
 module.exports = {
  name: "furry",
@@ -9,14 +10,7 @@ module.exports = {
  usage: "furry",
  run: async (client, message, args) => {
   try {
-   if (!message.channel.nsfw) {
-    return message.channel.send({
-     embed: {
-      color: 16734039,
-      description: "💢 | You can use this command only in an NSFW Channel!",
-     },
-    });
-   }
+   if (nsfw(message)) return;
    const query = message.content.split(/\s+/g).slice(1).join(" ");
    if (!query) {
     return message.channel.send({
