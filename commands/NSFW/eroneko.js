@@ -10,7 +10,7 @@ module.exports = {
  run: async (client, message, args) => {
   (async () => {
    try {
-    if (message.channel.nsfw) {
+    if (!message.channel.nsfw) {
      const nsfwembed = new Discord.MessageEmbed()
       .setColor("#FF5757")
       .setDescription("💢 | You can use this command only in an NSFW Channel!")

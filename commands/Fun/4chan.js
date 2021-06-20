@@ -11,7 +11,7 @@ module.exports = {
  usage: "4chan <board/boards>",
  run: async (client, message, args) => {
   try {
-   if (message.channel.nsfw == "true") {
+   if (!message.channel.nsfw) {
     const nsfwembed = new Discord.MessageEmbed()
      .setColor("#FF5757")
      .setDescription("💢 | You can use this command only in an NSFW Channel!")
