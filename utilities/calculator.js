@@ -3,7 +3,7 @@ const { MessageEmbed } = require("discord.js");
 const prefix = process.env.PREFIX;
 
 module.exports = async (message) => {
- if(!message) throw new Error("You need to provide message to run calculator!")
+ if (!message) throw new Error("You need to provide message to run calculator!");
 
  function i(length) {
   var randomChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";

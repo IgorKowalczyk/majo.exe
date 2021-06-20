@@ -1,6 +1,6 @@
 const Discord = require("discord.js");
 const config = require("../../config");
-const child = require ('child_process');
+const child = require("child_process");
 const { errors } = require("puppeteer");
 
 module.exports = {
@@ -29,20 +29,21 @@ module.exports = {
     });
    }
    child.exec(command, (err, res) => {
-    if(err) return message.lineReply({
-     embed: {
-      color: 16734039,
-      title: ":x: Error!",
-      description: `\`\`\`${err.toString().slice(0, 1000) || "Unknown error!"}\`\`\``,
-     },
-    });
+    if (err)
+     return message.lineReply({
+      embed: {
+       color: 16734039,
+       title: ":x: Error!",
+       description: `\`\`\`${err.toString().slice(0, 1000) || "Unknown error!"}\`\`\``,
+      },
+     });
     const embed = new Discord.MessageEmbed() // Prettier
      .setColor("RANDOM")
      .setTitle("📝 Shell")
      .addField("📤 Request", "```" + command + "```")
-     .addField("📥 Server response", `\`\`\`${res.slice(0, 1000) || "No response!"}\`\`\``)
+     .addField("📥 Server response", `\`\`\`${res.slice(0, 1000) || "No response!"}\`\`\``);
     message.lineReply(embed);
-   })
+   });
   } catch (err) {
    message.lineReply({
     embed: {

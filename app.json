@@ -45,7 +45,7 @@
   "GENIUS": {
    "description": "Your Genius API key",
    "required": true
-   },
+  },
   "DASHBOARD": {
    "description": "The Web-Dashboard config value. (eg. true/false)",
    "required": true

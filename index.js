@@ -109,6 +109,6 @@ if (process.env.TOKEN) {
  });
  client.login(process.env.TOKEN);
 } else {
- throw new Error("Bot token is not provided! To give your bot life, you need to enter token value in the .env file - TOKEN=Your_Bot_Token")
+ throw new Error("Bot token is not provided! To give your bot life, you need to enter token value in the .env file - TOKEN=Your_Bot_Token");
 }
 /* ---- */
