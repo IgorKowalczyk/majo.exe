@@ -12,7 +12,9 @@ module.exports = {
  usage: "4chan <board/boards>",
  run: async (client, message, args) => {
   try {
-   if (nsfw(message)) return;
+   if(message.channel.nsfw) {
+    message.lineReply(nsfw);
+   }
    let chanargs = args.slice(0).join(" ");
    if (!chanargs) {
     return message.lineReply({
