@@ -37,7 +37,7 @@ module.exports = {
       format: "png",
      })
     )
-    .setThumbnail("https://cdn.discordapp.com/attachments/824906735176253450/828554687229067275/images.png")
+    .setThumbnail("https://cdn.discordapp.com/emojis/853644938867769454.gif?v=1")
     .setDescription(`I shipped **${user1}** with **${user2}** and it is **${ship}%**\n${bar}`)
     .setFooter(
      "Requested by " + `${message.author.username}`,
@@ -56,7 +56,7 @@ module.exports = {
       format: "png",
      })
     )
-    .setThumbnail("https://cdn.discordapp.com/attachments/824906735176253450/828555115593859123/9k.png")
+    .setThumbnail("https://cdn.discordapp.com/emojis/797365365595439104.gif?v=1")
     .setDescription(`I shipped **${user1}** with **${user2}** and it is **${ship}%**\n${bar}`)
     .setFooter(
      "Requested by " + `${message.author.username}`,

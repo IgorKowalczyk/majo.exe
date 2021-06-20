@@ -10,7 +10,15 @@ module.exports = {
   try {
    const embed = new Discord.MessageEmbed() // Prettier()
     .setColor("RANDOM")
-    .setTitle("⏰ Beep!");
+    .setTitle("⏰ Beep!")
+    .setFooter(
+        "Requested by " + `${message.author.username}`,
+        message.author.displayAvatarURL({
+         dynamic: true,
+         format: "png",
+         size: 2048,
+        })
+       )
    message.lineReply(embed);
   } catch (err) {
    message.lineReply({

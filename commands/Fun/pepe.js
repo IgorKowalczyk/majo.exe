@@ -12,12 +12,12 @@ module.exports = {
    const pepe = "8" + "=".repeat(Math.floor(Math.random() * 15)) + "D";
    const embed = new Discord.MessageEmbed() // Prettier()
     .setTitle(
-     `Pepe :smirk:`,
+     `Pe-pe :smirk:`,
      user.displayAvatarURL({
       dynamic: true,
      })
     )
-    .setDescription(`${user}, you're Pepe is **${pepe}** long!`)
+    .setDescription(`😳 | ${user}, you're pepe is **${pepe}** long!`)
     .setTimestamp()
     .setColor("RANDOM")
     .setFooter(

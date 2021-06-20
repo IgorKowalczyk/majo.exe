@@ -12,7 +12,7 @@ module.exports = {
    const answer = answers[Math.floor(Math.random() * answers.length)];
    const embed = new Discord.MessageEmbed() // Prettier()
     .setColor("RANDOM")
-    .setDescription(`🪙 I'm get: ${answer}`)
+    .setDescription(`🪙 | I'm get: ${answer}`)
     .setFooter(
      "Requested by " + `${message.author.username}`,
      message.author.displayAvatarURL({
