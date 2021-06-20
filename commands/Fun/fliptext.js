@@ -31,8 +31,8 @@ module.exports = {
    });
    const embed = new Discord.MessageEmbed() // Prettier()
     .setColor("RANDOM")
-    .setTitle(":white_check_mark: Success!")
-    .setDescription("Flipped text: " + flipped.join(" "))
+    .setTitle("Flip text")
+    .addField("Flipped text", "```" + flipped.join(" ") + "```")
     .setFooter(
      "Requested by " + `${message.author.username}`,
      message.author.displayAvatarURL({

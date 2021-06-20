@@ -31,7 +31,7 @@ module.exports = {
     const body = await response.json();
     const embed = await new Discord.MessageEmbed() // Prettier()
      .setColor("RANDOM")
-     .setTitle(user.username + " just got tickled by " + message.author.username)
+     .setTitle(member.username + " just got tickled by " + message.author.username)
      .setFooter(
       "._. | Requested by " + `${message.author.username}`,
       message.author.displayAvatarURL({

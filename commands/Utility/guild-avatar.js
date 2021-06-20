@@ -20,6 +20,7 @@ module.exports = {
     .setURL(gavatar);
    const embed = new Discord.MessageEmbed() // Prettier()
     .setColor("RANDOM")
+    .setDescription("🔗 [Icon link](" + gavatar + ")")
     .setAuthor(message.guild.name + " Icon", gavatar)
     .setImage(gavatar)
     .setTimestamp()
