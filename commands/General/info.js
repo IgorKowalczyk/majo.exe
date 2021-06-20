@@ -28,7 +28,7 @@ module.exports = {
     )
     .setColor("RANDOM")
     .setDescription(`My global prefix is: \`${process.env.PREFIX}\`\n`)
-    .addField("Developer", `${config.author} \[[Website](${config.authorwebsite})\]`, true)
+    .addField("<:owner:856161806199947285> !maDeveloper", `${config.author} \[[Website](${config.authorwebsite})\]`)
     .setThumbnail(
      client.user.displayAvatarURL({
       dynamic: true,
@@ -37,7 +37,7 @@ module.exports = {
      })
     )
     .addField("<:discordlogo:856166057639149568> Guild Count", `${client.guilds.cache.size}`, true)
-    .addField("<:role:808826577785716756> User Count", `${client.guilds.cache.reduce((a, g) => a + g.memberCount, 0)}`, true)
+    .addField("<:members:856161806606401556> User Count", `${client.guilds.cache.reduce((a, g) => a + g.memberCount, 0)}`, true)
     .addField("<:channel:856161806586085376> Channel Count", `${client.channels.cache.size}`, true)
     .addField("⏳ Uptime", `${duration}`, true)
     .addField("🏓 Ping", Math.round(client.ws.ping) + "ms", true)
