@@ -56,13 +56,13 @@ module.exports = {
     })
    );
    if (user.username) embed.addField("Nickname", user.username);
-   embed.addField("<:role:808826577785716756> ID", `\`${user.user.id}\``);
+   embed.addField("<:role:856182143734775808> ID", `\`${user.user.id}\``);
    embed.addField("<:channel:856161806586085376> Discriminator", `\`#${user.user.discriminator}\``, true);
    embed.addField("⏱️ Joined At", moment(user.user.joinedAt).format("LLLL"));
    embed.addField("⏱️ Account Created At", moment(user.user.createdAt).format("LLLL"));
    embed.addField("🗑️ Account Deleted?", user.deleted, true);
    embed.addField("<a:badges_roll:842441895137640478> Badges", newbadges.join(", ").toLowerCase() || "None");
-   embed.addField(`${stat[user.user.presence.status]} Status`, `${stat[user.user.presence.status]} ${capitalizeFirstLetter(user.user.presence.status)}`);
+   embed.addField(`Status`, `${stat[user.user.presence.status]} ${capitalizeFirstLetter(user.user.presence.status)}`);
    embed.setFooter(
     "Requested by " + `${message.author.username}`,
     message.author.displayAvatarURL({

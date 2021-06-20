@@ -54,7 +54,7 @@ module.exports = {
     .addField("🌐 Region", region[message.guild.region] || message.guild.region, true)
     .addField("<:members:856161806606401556> Members", `${message.guild.memberCount}`, true)
     .addField("<:channel:856161806586085376> Channels", message.guild.channels.cache.size, true)
-    .addField("<:role:808826577785716756> Roles", message.guild.roles.cache.size, true)
+    .addField("<:role:856182143734775808> Roles", message.guild.roles.cache.size, true)
     .addField("<a:badges_roll:842441895137640478> Emojis", message.guild.emojis.cache.size, true)
     .addField("<a:boost:854794292190773308> Boosts", message.guild.premiumSubscriptionCount + " [*" + message.guild.premiumTier + "* tier]", true)
     .addField("🔐 Members verification", message.guild.verificationLevel.toLowerCase(), true)
