@@ -13,17 +13,17 @@ module.exports = {
    try {
     let text = await neko.sfw.catText();
     const embed = new Discord.MessageEmbed() // Prettier()
-    .setColor("RANDOM")
-    .setTitle(text.cat)
-    .setFooter(
-        "Requested by " + `${message.author.username}`,
-        message.author.displayAvatarURL({
-         dynamic: true,
-         format: "png",
-         size: 2048,
-        })
-       )
-   message.lineReply(embed);
+     .setColor("RANDOM")
+     .setTitle(text.cat)
+     .setFooter(
+      "Requested by " + `${message.author.username}`,
+      message.author.displayAvatarURL({
+       dynamic: true,
+       format: "png",
+       size: 2048,
+      })
+     );
+    message.lineReply(embed);
    } catch (err) {
     message.lineReply({
      embed: {

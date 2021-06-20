@@ -12,13 +12,13 @@ module.exports = {
     .setColor("RANDOM")
     .setTitle("⏰ Boop!")
     .setFooter(
-        "Requested by " + `${message.author.username}`,
-        message.author.displayAvatarURL({
-         dynamic: true,
-         format: "png",
-         size: 2048,
-        })
-       )
+     "Requested by " + `${message.author.username}`,
+     message.author.displayAvatarURL({
+      dynamic: true,
+      format: "png",
+      size: 2048,
+     })
+    );
    message.lineReply(embed);
   } catch (err) {
    message.lineReply({
