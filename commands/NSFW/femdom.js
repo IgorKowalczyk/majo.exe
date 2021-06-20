@@ -22,7 +22,7 @@ module.exports = {
     const body = await response.json();
     const embed = new Discord.MessageEmbed() // Prettier()
      .setTitle(
-      ":smirk: femdom!",
+      ":smirk: Femdom",
       message.guild.iconURL({
        dynamic: true,
        format: "png",

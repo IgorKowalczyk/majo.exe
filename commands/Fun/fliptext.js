@@ -31,7 +31,6 @@ module.exports = {
    });
    const embed = new Discord.MessageEmbed() // Prettier()
     .setColor("RANDOM")
-    .setTitle("Flip text")
     .addField("Flipped text", "```" + flipped.join(" ") + "```")
     .setFooter(
      "Requested by " + `${message.author.username}`,

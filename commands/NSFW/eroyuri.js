@@ -22,7 +22,7 @@ module.exports = {
     const body = await response.json();
     const embed = new Discord.MessageEmbed() // Prettier()
      .setTitle(
-      ":smirk: Ero!",
+      ":smirk: Ero yuri",
       message.guild.iconURL({
        dynamic: true,
        format: "png",
