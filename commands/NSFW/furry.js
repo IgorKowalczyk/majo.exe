@@ -1,6 +1,6 @@
 const Discord = require("discord.js");
 const booru = require("booru");
-const { nsfw } = require("../../utilities/nsfw")
+
 
 module.exports = {
  name: "furry",
@@ -10,7 +10,14 @@ module.exports = {
  usage: "furry",
  run: async (client, message, args) => {
   try {
-   if (nsfw(message)) return;
+      if(message.channel.nsfw) {
+    const nsfwembed = new Discord.MessageEmbed()
+     .setColor("#FF5757")
+     .setDescription("💢 | You can use this command only in an NSFW Channel!")
+     .setFooter("Requested by " + message.author.username, message.author.displayAvatarURL())
+     .setImage("https://media.discordapp.net/attachments/721019707607482409/855827123616481300/nsfw.gif")
+    return message.lineReply(nsfwembed);
+   }
    const query = message.content.split(/\s+/g).slice(1).join(" ");
    if (!query) {
     return message.channel.send({
