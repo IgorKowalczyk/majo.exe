@@ -11,6 +11,6 @@ module.exports = {
   if(!message.channel.nsfw) {
    return message.lineReply(nsfwembed);
   }
-  return message.lineReply("XD");
+  continue;
  }
 }
