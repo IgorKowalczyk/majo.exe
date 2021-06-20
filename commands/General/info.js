@@ -15,7 +15,7 @@ module.exports = {
    if ((config.dashboard = "true")) {
     webpanel = `[Dashboard](${process.env.DOMAIN}) |`;
    } else {
-    webpanel = " ";
+    webpanel = "| ";
    }
    const duration = moment.duration(client.uptime).format(" D [days], H [hrs], m [mins], s [secs]");
    const embed = new Discord.MessageEmbed() // Prettier()
