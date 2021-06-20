@@ -12,7 +12,7 @@ module.exports = {
  usage: "info",
  run: async (client, message, args) => {
   try {
-   if ((config.dashboard = "true")) {
+   if (config.dashboard = "true") {
     webpanel = `[Dashboard](${process.env.DOMAIN}) |`;
    } else {
     webpanel = "| ";
