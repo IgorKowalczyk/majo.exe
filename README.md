@@ -11,7 +11,7 @@ Majo.exe have almost everything - Fun, Memes, Images, Giveaway, Economy, Anime a
 
 ### Invite
 
-Go to [this link](https://discord.com/oauth2/authorize/?permissions=4294967287&scope=bot&client_id=681536055572430918) and add the bot (requires `MANAGE_GUILD` premission) to your server.
+Go to [this link](https://discord.com/oauth2/authorize/?permissions=4294967287&scope=bot&client_id=681536055572430918) and add the bot (this requires `MANAGE_GUILD` premission) to your server.
  - [Or to make it easier, visit our website](https://majoexe.herokuapp.com/)
 ## Hosting
 
