@@ -1,6 +1,7 @@
 const Discord = require("discord.js");
 const chalk = require("chalk");
 const config = require("../../config");
+const gradient = require('gradient-string');
 
 module.exports = (client) => {
  try {

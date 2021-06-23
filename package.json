@@ -26,6 +26,7 @@
   "canvacord": "^5.1.0",
   "canvas": "^2.8.0",
   "chalk": "^4.1.0",
+  "gradient-string": "^1.2.0",
   "cheerio": "^1.0.0-rc.3",
   "common-tags": "^1.8.0",
   "dateformat": "^3.0.3",
