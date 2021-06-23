@@ -35,18 +35,19 @@ module.exports = (client) => {
     gradient.pastel.multiline(
      [
       // Prettier
-      "  __  __        _                      ",
-      "  |  \/  | __ _ (_) ___   _____  ___ __ ",
-      "  | |\/| |/ _` || |/ _ \ / _ \ \/ / _ \ ",
-      "  | |  | | (_| || | (_) |  __/>  <  __/ ",
-      "  |_|  |_|\__,_|/ |\___(_)___/_/\_\___| ",
-      "              |__/                      ",,
-      "\n",                    
+      "\n\n",
+      "__  __        _                      ",
+      "|  \/  | __ _ (_) ___   _____  ___ __ ",
+      "| |\/| |/ _` || |/ _ \ / _ \ \/ / _ \ ",
+      "| |  | | (_| || | (_) |  __/>  <  __/ ",
+      "|_|  |_|\__,_|/ |\___(_)___/_/\_\___| ",
+      "            |__/                      ",,
+      "\n\n",                    
      ].join("\n")
     )
    )
   );
-  console.log(chalk.blue("Connected! Logged in as ") + chalk.blue.underline(`${client.user.tag}`) + chalk.blue("!")); // ${client.user.tag}
+  console.log(chalk.blue("Connected! Logged in as " + client.user.tag + " (ID: " + client.user.id + ")!"))
   const statuschannel = client.channels.cache.get(config.statuschannel);
   if (statuschannel) {
    statuschannel.send({
