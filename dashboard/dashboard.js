@@ -25,7 +25,7 @@ console.log("Starting dashboard...");
 
 module.exports = async (client) => {
  console.log("Setting up dashboard main config...");
- console.log(`Dashboard credentials: Domain: ${process.env.DOMAIN}\nPort: ${process.env.PORT}\nID: ${process.env.ID}\nAnalytics: ${process.env.ANALYTICS || "Not set"}`);
+ console.log(`Dashboard credentials: \nDomain: ${process.env.DOMAIN}\nPort: ${process.env.PORT}\nID: ${process.env.ID}\nAnalytics: ${process.env.ANALYTICS || "Not set"}`);
  const dataDir = path.resolve(`${process.cwd()}${path.sep}dashboard`);
  const templateDir = path.resolve(`${dataDir}${path.sep}templates`);
  passport.serializeUser((user, done) => done(null, user));
