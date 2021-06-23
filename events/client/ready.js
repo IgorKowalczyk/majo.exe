@@ -29,25 +29,24 @@ module.exports = (client) => {
   hour = datelog.getHours();
   min = datelog.getMinutes();
   sec = datelog.getSeconds();
-  console.log("Generated at: " + currentDate + "/" + month + "/" + year + " | " + hour + ":" + min + "." + sec);
+  console.log("[MAJO] Generated at: " + currentDate + "/" + month + "/" + year + " | " + hour + ":" + min + "." + sec);
   console.log(
    chalk.bold(
     gradient.pastel.multiline(
      [
       // Prettier
-      "\n\n",
       "__  __        _                      ",
       "|  \/  | __ _ (_) ___   _____  ___ __ ",
       "| |\/| |/ _` || |/ _ \ / _ \ \/ / _ \ ",
       "| |  | | (_| || | (_) |  __/>  <  __/ ",
       "|_|  |_|\__,_|/ |\___(_)___/_/\_\___| ",
       "            |__/                      ",,
-      "\n\n",                    
+      "\n",                    
      ].join("\n")
     )
    )
   );
-  console.log(chalk.blue("Connected! Logged in as " + client.user.tag + " (ID: " + client.user.id + ")!"))
+  console.log(chalk.blue("[MAJO] Client connected! Logged to Discord as " + client.user.tag + " (ID: " + client.user.id + ")!"))
   const statuschannel = client.channels.cache.get(config.statuschannel);
   if (statuschannel) {
    statuschannel.send({
