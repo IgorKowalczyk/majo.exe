@@ -983,6 +983,15 @@ code {
  width: 100%;
  padding: 0 20px;
  margin: 0 auto;
+ display: grid;
+ grid-template-columns: auto auto;
+ grid-template-rows: auto auto auto auto;
+ gap: 0px 0px;
+ grid-template-areas:
+  "title image"
+  "image2 title2"
+  "title3 image3"
+  "image4 title4";
 }
 
 .card-row {
@@ -993,24 +1002,29 @@ code {
 }
 
 .card-row .card-image {
- width: 70%;
+ grid-area: image;
+ width: 100%;
  margin: 0 auto;
+ transition: 500ms all;
 }
 .card-row .card-image:hover {
- transform: scale(1.1);
+ transform: scale(1.05);
 }
 
 .card-row .card-text {
+ grid-area: title;
  background: transparent;
  width: 90%;
  margin: 10px auto;
  text-align: center;
+ font-family: "Poppins";
 }
 
 .card-row .card-title {
  font-size: 2em;
  color: #ffffff;
  font-weight: 700;
+ margin-top: 0;
 }
 
 .card-row p {
