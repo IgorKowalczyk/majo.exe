@@ -4,6 +4,9 @@ const client = new Discord.Client({
  allowedMentions: {
   repliedUser: false,
  },
+ ws: {
+  properties: { $browser: "Discord iOS" },
+ },
 });
 const chalk = require("chalk");
 const { GiveawaysManager } = require("discord-giveaways");
