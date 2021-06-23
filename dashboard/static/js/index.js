@@ -14,6 +14,8 @@ function dropdown(e) {
 }
 
 window.onresize = function () {
+ if (!dropdownel) return console.log("Dropdown is not rendered");
+ if (!droddownhead) return console.log("Dropdown head is not rendered");
  dropdownel.classList.remove("dropdown-hidden");
  droddownhead.classList.remove("dropdown-actived");
  blur.classList.remove("visible");
@@ -31,6 +33,8 @@ document.addEventListener("click", function (e) {
 });
 
 blur.addEventListener("click", () => {
+ if (!dropdownel) return console.log("Dropdown is not rendered");
+ if (!droddownhead) return console.log("Dropdown head is not rendered");
  dropdownel.classList.remove("dropdown-hidden");
  droddownhead.classList.remove("dropdown-actived");
  blur.classList.remove("visible");
@@ -38,6 +42,8 @@ blur.addEventListener("click", () => {
 
 const cross = document.querySelector(".cross");
 cross.addEventListener("click", () => {
+ if (!dropdownel) return console.log("Dropdown is not rendered");
+ if (!blur) return console.log("Blur is not rendered");
  dropdownel.classList.remove("dropdown-hidden");
  document.getElementById("dropdownHead").classList.remove("dropdown-actived");
  blur.classList.remove("visible");
