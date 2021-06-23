@@ -48,7 +48,7 @@ module.exports = (client) => {
     )
    )
   );
-  console.log(chalk.blue("[MAJO] Client connected! Logged to Discord as " + client.user.tag + " (ID: " + client.user.id + ")!"))
+  console.log(gradient.pastel("[MAJO] Client connected! Logged to Discord as " + client.user.tag + " (ID: " + client.user.id + ")!"))
   const statuschannel = client.channels.cache.get(config.statuschannel);
   if (statuschannel) {
    statuschannel.send({
