@@ -15,17 +15,17 @@ const MemoryStore = require("memorystore")(session);
 const sql = require("../utilities/database");
 const port = process.env.PORT || 6565;
 
-if (!process.env.DASHBOARD) throw new Error("You need to provide Dashboard (Boolean) in .env - DASHBOARD=BOOLEAN");
-if (!process.env.SESSION_SECRET) throw new Error("You need to provide Session Secret in .env - SESSION_SECRET=YOUR_SESSION_SECRET_RANDOM_WORDS");
-if (!process.env.SECRET) throw new Error("You need to provide Secret in .env - SECRET=YOUR_BOT_SECRET");
-if (!process.env.PORT) throw new Error("You need to provide Port in .env - PORT=YOUR_WEBSITE_PORT");
-if (!process.env.ID) throw new Error("You need to provide Discord Bot ID in .env - ID=YOUR_DISCORD_BOT_ID");
-if (!process.env.DOMAIN) throw new Error("You need to provide Webiste domain in .env - DOMAIN=YOUR_WEBISTE_DOMAIN Note: Only website domain eg. https://example.com without slash at end!");
-console.log("Starting dashboard...");
+if (!process.env.DASHBOARD) throw new Error("[HOST] You need to provide Dashboard (Boolean) in .env - DASHBOARD=BOOLEAN");
+if (!process.env.SESSION_SECRET) throw new Error("[HOST] You need to provide Session Secret in .env - SESSION_SECRET=YOUR_SESSION_SECRET_RANDOM_WORDS");
+if (!process.env.SECRET) throw new Error("[HOST] You need to provide Secret in .env - SECRET=YOUR_BOT_SECRET");
+if (!process.env.PORT) throw new Error("[HOST] You need to provide Port in .env - PORT=YOUR_WEBSITE_PORT");
+if (!process.env.ID) throw new Error("[HOST] You need to provide Discord Bot ID in .env - ID=YOUR_DISCORD_BOT_ID");
+if (!process.env.DOMAIN) throw new Error("[HOST] You need to provide Webiste domain in .env - DOMAIN=YOUR_WEBISTE_DOMAIN Note: Only website domain eg. https://example.com without slash at end!");
+console.log("[HOST] Starting dashboard...");
 
 module.exports = async (client) => {
- console.log("Setting up dashboard main config...");
- console.log(`Dashboard credentials: \nDomain: ${process.env.DOMAIN}\nPort: ${process.env.PORT}\nID: ${process.env.ID}\nAnalytics: ${process.env.ANALYTICS || "Not set"}`);
+ console.log("[HOST] Setting up dashboard main config...");
+ console.log(`[HOST] Dashboard credentials: \n* Domain: ${process.env.DOMAIN}\n* Port: ${process.env.PORT}\n* ID: ${process.env.ID}\n* G Analytics: ${process.env.ANALYTICS || "Not set"}`);
  const dataDir = path.resolve(`${process.cwd()}${path.sep}dashboard`);
  const templateDir = path.resolve(`${dataDir}${path.sep}templates`);
  passport.serializeUser((user, done) => done(null, user));
@@ -100,7 +100,7 @@ module.exports = async (client) => {
   };
   res.render(path.resolve(`${templateDir}${path.sep}${template}`), Object.assign(baseData, data));
  };
- console.log("Setting up dashboard endpoints...");
+ console.log("[HOST] Setting up dashboard endpoints...");
  const checkAuth = (req, res, next) => {
   if (req.isAuthenticated()) return next();
   req.session.backURL = req.url;
@@ -270,6 +270,6 @@ module.exports = async (client) => {
   renderTemplate(res, req, "500.ejs");
  });
 
- console.log("All dashboard process done... Starting in web");
- app.listen(port, null, null, () => console.log(`Dashboard is up and running on port ${port}.`));
+ console.log("[HOST] All dashboard process done... Starting in web");
+ app.listen(port, null, null, () => console.log(`[HOST] Dashboard is up and running on port ${port}.`));
 };
