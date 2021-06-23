@@ -32,7 +32,7 @@ module.exports = (client) => {
   console.log("Generated at: " + currentDate + "/" + month + "/" + year + " | " + hour + ":" + min + "." + sec);
   console.log(
    chalk.bold(
-    gradient.pastel(
+    gradient.gradient.pastel.multiline(
      [
       // Prettier
       "    __  __        _                     ",
