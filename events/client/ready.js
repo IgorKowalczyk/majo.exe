@@ -29,7 +29,26 @@ module.exports = (client) => {
   min = datelog.getMinutes();
   sec = datelog.getSeconds();
   console.log("Generated at: " + currentDate + "/" + month + "/" + year + " | " + hour + ":" + min + "." + sec);
-  console.log(chalk.blue("Connected! Logged in as ") + chalk.blue.underline(`${client.user.username}`) + chalk.blue("!")); // ${client.user.tag}
+  console.log(
+   chalk.bold(
+    gradient(
+     "#8EA6DB",
+     "#7354F6"
+    )(
+     [
+      // Prettier
+      "    __  __        _                     ",
+      "    |  /  | __ _ (_) ___   _____  _____ ",
+      "    | |/| |/ _` || |/ _  / _  / / _  ",
+      "    | |  | | (_| || | (_) |  __/>  <  __/ ",
+      "    |_|  |_|__,_|/ |___(_)___/_/____| ",
+      "                |__/                     ",
+      "\n",
+     ].join("\n")
+    )
+   )
+  );
+  console.log(chalk.blue("Connected! Logged in as ") + chalk.blue.underline(`${client.user.tag}`) + chalk.blue("!")); // ${client.user.tag}
   const statuschannel = client.channels.cache.get(config.statuschannel);
   if (statuschannel) {
    statuschannel.send({
