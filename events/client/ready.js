@@ -1,7 +1,7 @@
 const Discord = require("discord.js");
 const chalk = require("chalk");
 const config = require("../../config");
-const gradient = require('gradient-string');
+const { gradient } = require("gradient-string");
 
 module.exports = (client) => {
  try {
@@ -32,7 +32,7 @@ module.exports = (client) => {
   console.log("Generated at: " + currentDate + "/" + month + "/" + year + " | " + hour + ":" + min + "." + sec);
   console.log(
    chalk.bold(
-    gradient.gradient.pastel.multiline(
+    gradient.pastel.multiline(
      [
       // Prettier
       "    __  __        _                     ",
