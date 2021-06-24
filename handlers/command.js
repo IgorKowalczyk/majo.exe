@@ -2,7 +2,7 @@ const { readdirSync } = require("fs");
 const ascii = require("ascii-table");
 const chalk = require("chalk");
 const gradient = require("gradient-string");
-const table = new ascii("Majo.exe commands");
+const table = new ascii();
 table.setHeading("Command", "Category", "Load status");
 table.setTitleAlign(table.CENTER);
 
