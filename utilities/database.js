@@ -1,4 +1,6 @@
 const MySQL = require("mysql");
+const chalk = require("chalk");
+const gradient = require("gradient-string");
 
 // Checking env values
 if (!process.env.MYSQL_HOST) throw new Error("[SQL] You need to provide MYSQL Host in .env file - MYSQL_HOST=YOUR_MYSQL_HOST Note: You don't need to provide port to MYSQL Server, you only need to provide domain eg. localhost not localhost:3306!");
@@ -18,7 +20,7 @@ sql.connect((err) => {
  if (err) {
   throw new Error("[SQL] Impossible to connect to MySQL server. Code: " + err.code);
  } else {
-  console.log("[SQL] Connected to the MySQL server! Connection ID: " + sql.threadId);
+  console.log(chalk.bold(gradient.pastel("[SQL]")) + gradient.pastel(" Connected to the MySQL server! Connection ID: " + sql.threadId));
  }
 });
 

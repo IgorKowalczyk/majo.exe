@@ -29,7 +29,7 @@ module.exports = (client) => {
   hour = datelog.getHours();
   min = datelog.getMinutes();
   sec = datelog.getSeconds();
-  console.log("[MAJO] Generated at: " + currentDate + "/" + month + "/" + year + " | " + hour + ":" + min + "." + sec);
+  console.log(chalk.bold(gradient.pastel("[MAJO] Generated at: " + currentDate + "/" + month + "/" + year + " | " + hour + ":" + min + "." + sec)));
   console.log(chalk.bold(gradient.pastel("[MAJO] Client connected! Logged to Discord as " + client.user.tag + " (ID: " + client.user.id + ")!")))
   const statuschannel = client.channels.cache.get(config.statuschannel);
   if (statuschannel) {
