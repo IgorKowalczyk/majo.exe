@@ -21,7 +21,7 @@ const sql = require("./utilities/database");
 /* Logging system config */
 sql.query("CREATE TABLE IF NOT EXISTS `logs` (`guildid` VARCHAR(32) NOT NULL, `channelid` VARCHAR(32) NOT NULL, UNIQUE(`guildid`));", function (error, results, fields) {
  if (error) throw new Error(error);
- console.log(chalk.bold(gradient.pastel("[SQL]")) + gradient.pastel(" Fetched table `logs`! Status: Success"));
+ console.log(chalk.bold(gradient.morning("[SQL]")) + gradient.pastel(" Fetched table `logs`! Status: Success"));
 });
 /* ---- */
 
@@ -29,19 +29,19 @@ sql.query("CREATE TABLE IF NOT EXISTS `logs` (`guildid` VARCHAR(32) NOT NULL, `c
 /* = Welcome message = */
 sql.query("CREATE TABLE IF NOT EXISTS `welcome` (`guildid` VARCHAR(32) NOT NULL, `channelid` VARCHAR(32) NOT NULL, UNIQUE(`guildid`));", function (error) {
  if (error) throw new Error(error);
- console.log(chalk.bold(gradient.pastel("[SQL]")) + gradient.pastel(" Fetched table `welcome`! Status: Success"));
+ console.log(chalk.bold(gradient.morning("[SQL]")) + gradient.pastel(" Fetched table `welcome`! Status: Success"));
 });
 /* = Leave message = */
 sql.query("CREATE TABLE IF NOT EXISTS `leave` (`guildid` VARCHAR(32) NOT NULL, `channelid` VARCHAR(32) NOT NULL, UNIQUE(`guildid`));", function (error) {
  if (error) throw new Error(error);
- console.log(chalk.bold(gradient.pastel("[SQL]")) + gradient.pastel(" Fetched table `leave`! Status: Success"));
+ console.log(chalk.bold(gradient.morning("[SQL]")) + gradient.pastel(" Fetched table `leave`! Status: Success"));
 });
 /* ---- */
 
 /* Giveaways config */
 sql.query("CREATE TABLE IF NOT EXISTS `giveaways` (`id` INT(1) NOT NULL AUTO_INCREMENT, `message_id` VARCHAR(64) NOT NULL, `data` JSON NOT NULL, PRIMARY KEY (`id`));", (err) => {
  if (err) throw new Error(err);
- console.log(chalk.bold(gradient.pastel("[SQL]")) + gradient.pastel(" Fetched table `giveaways`! Status: Success"));
+ console.log(chalk.bold(gradient.morning("[SQL]")) + gradient.pastel(" Fetched table `giveaways`! Status: Success"));
 });
 const Giveaways = class extends GiveawaysManager {
  async getAllGiveaways() {
