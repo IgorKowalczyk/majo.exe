@@ -38,7 +38,7 @@ module.exports = (client) => {
   ].join("\n")
  );
  console.log(chalk.bold(logo));
- console.log(chalk.bold(gradient.morning("[MAJO]")) + chalk.cyan.bold(" Loading commands..."));
+ console.log(chalk.bold(chalk.blue.bold("[MAJO]")) + chalk.cyan.bold(" Loading commands..."));
  console.log(chalk.cyan.bold(table.toString()));
- console.log(chalk.bold(gradient.morning("[MAJO]")) + chalk.cyan.bold(" Successfully loaded " + chalk.underline(`${client.commands.size}`) + " commands!"));
+ console.log(chalk.bold(chalk.blue.bold("[MAJO]")) + chalk.cyan.bold(" Successfully loaded " + chalk.underline(`${client.commands.size}`) + " commands!"));
 };

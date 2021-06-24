@@ -23,11 +23,11 @@ if (!process.env.SECRET) throw new Error("[HOST] You need to provide Secret in .
 if (!process.env.PORT) throw new Error("[HOST] You need to provide Port in .env - PORT=YOUR_WEBSITE_PORT");
 if (!process.env.ID) throw new Error("[HOST] You need to provide Discord Bot ID in .env - ID=YOUR_DISCORD_BOT_ID");
 if (!process.env.DOMAIN) throw new Error("[HOST] You need to provide Webiste domain in .env - DOMAIN=YOUR_WEBISTE_DOMAIN Note: Only website domain eg. https://example.com without slash at end!");
-console.log(chalk.bold(gradient.morning("[HOST]")) + chalk.cyan.bold(" Starting dashboard..."));
+console.log(chalk.bold(chalk.blue.bold("[HOST]")) + chalk.cyan.bold(" Starting dashboard..."));
 
 module.exports = async (client) => {
- console.log(chalk.bold(gradient.morning("[HOST]")) + chalk.cyan.bold(" Setting up dashboard main config..."));
- console.log(chalk.bold(gradient.morning("[HOST]")) + chalk.cyan.bold(` Dashboard credentials: \n* Domain: ${process.env.DOMAIN}\n* Port: ${process.env.PORT}\n* ID: ${process.env.ID}\n* G Analytics: ${process.env.ANALYTICS || "Not set"}`));
+ console.log(chalk.bold(chalk.blue.bold("[HOST]")) + chalk.cyan.bold(" Setting up dashboard main config..."));
+ console.log(chalk.bold(chalk.blue.bold("[HOST]")) + chalk.cyan.bold(` Dashboard credentials: \n* Domain: ${process.env.DOMAIN}\n* Port: ${process.env.PORT}\n* ID: ${process.env.ID}\n* G Analytics: ${process.env.ANALYTICS || "Not set"}`));
  const dataDir = path.resolve(`${process.cwd()}${path.sep}dashboard`);
  const templateDir = path.resolve(`${dataDir}${path.sep}templates`);
  passport.serializeUser((user, done) => done(null, user));
@@ -102,7 +102,7 @@ module.exports = async (client) => {
   };
   res.render(path.resolve(`${templateDir}${path.sep}${template}`), Object.assign(baseData, data));
  };
- console.log(chalk.bold(gradient.morning("[HOST]")) + chalk.cyan.bold(" Setting up dashboard endpoints..."));
+ console.log(chalk.bold(chalk.blue.bold("[HOST]")) + chalk.cyan.bold(" Setting up dashboard endpoints..."));
  const checkAuth = (req, res, next) => {
   if (req.isAuthenticated()) return next();
   req.session.backURL = req.url;
@@ -272,6 +272,6 @@ module.exports = async (client) => {
   renderTemplate(res, req, "500.ejs");
  });
 
- console.log(chalk.bold(gradient.morning("[HOST]")) + chalk.cyan.bold(" All dashboard process done... Starting in web"));
- app.listen(port, null, null, () => console.log(chalk.bold(gradient.morning("[HOST]")) + chalk.cyan.bold(` Dashboard is up and running on port ${port}.`)));
+ console.log(chalk.bold(chalk.blue.bold("[HOST]")) + chalk.cyan.bold(" All dashboard process done... Starting in web"));
+ app.listen(port, null, null, () => console.log(chalk.bold(chalk.blue.bold("[HOST]")) + chalk.cyan.bold(` Dashboard is up and running on port ${port}.`)));
 };
