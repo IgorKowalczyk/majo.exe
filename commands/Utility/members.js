@@ -11,7 +11,7 @@ module.exports = {
    const embed = new Discord.MessageEmbed() // Prettier()
     .setAuthor("🧑‍🍼 Total members", message.guild.iconURL)
     .setColor("RANDOM")
-    .addField("Overall Members: ", message.guild.memberCount)
+    .addField("<:online:844882507408211988> Overall Members: ", message.guild.memberCount)
     .setTimestamp()
     .setFooter(
      "Requested by " + `${message.author.username}`,
