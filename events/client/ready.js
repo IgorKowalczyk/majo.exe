@@ -35,20 +35,17 @@ module.exports = (client) => {
     gradient.pastel.multiline(
      [
       // Prettier
-      " /\'\\_/\`\\             __                                   ",
-      "/\\      \\     __    /\\_\\    ___        __   __  _    __   ",
-      "\\ \\ \\__\\ \\  /\'__\`\\  \\/\\ \\  / __\`\\    /\'__\`\\/\\ \\/\'\\ /\'__\`\\ ",
-      " \\ \\ \\_/\\ \\/\\ \\L\\.\\_ \\ \\ \\/\\ \\L\\ \\__/\\  __/\\/>  <//\\  __/ ",
-      "  \\ \\_\\\\ \\_\\ \\__/.\\_\\_\\ \\ \\ \\____/\\_\\ \\____\\/\\_/\\_\\ \\____\\",
-      "   \\/_/ \\/_/\\/__/\\/_/\\ \\_\\ \\/___/\\/_/\\/____/\\//\\/_/\\/____/",
-      "                    \\ \\____/                              ",
-      "                     \\/___/                               ",
-      "\n",                    
+      "                __    ___      ___ ",
+      "|\\/|  /\\     | /  \\  |__  \\_/ |__  ",
+      "|  | /~~\\ \\__/ \\__/ .|___ / \\ |___ ",
+      "                                   ",
      ].join("\n")
-    )
+    ), {
+     interpolation: "hsv"
+    }
    )
   );
-  console.log(gradient.pastel("[MAJO] Client connected! Logged to Discord as " + client.user.tag + " (ID: " + client.user.id + ")!"))
+  console.log(chalk.bold(gradient.pastel("[MAJO] Client connected! Logged to Discord as " + client.user.tag + " (ID: " + client.user.id + ")!")))
   const statuschannel = client.channels.cache.get(config.statuschannel);
   if (statuschannel) {
    statuschannel.send({

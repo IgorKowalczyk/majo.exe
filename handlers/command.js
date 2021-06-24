@@ -27,7 +27,7 @@ module.exports = (client) => {
    }
   }
  });
- console.log(chalk.blue("Loading commands..."));
+ console.log(chalk.blue("[MAJO] Loading commands..."));
  console.log(table.toString());
- console.log(chalk.blue("Successfully loaded ") + chalk.blue.underline(`${client.commands.size}`) + chalk.blue(" commands!"));
+ console.log(chalk.blue("[MAJO] Successfully loaded ") + chalk.blue.underline(`${client.commands.size}`) + chalk.blue(" commands!"));
 };
