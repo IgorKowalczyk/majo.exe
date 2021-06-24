@@ -37,8 +37,8 @@ module.exports = (client) => {
    "                                   ",
   ].join("\n")
  );
- console.log(chalk.bold(logo));
+ console.log(chalk.bold.bgBlack(logo));
  console.log(chalk.bold(chalk.blue.bold("[MAJO]")) + chalk.cyan.bold(" Please wait... Loading commands..."));
- console.log(chalk.blue.bold(table.toString()));
+ console.log(chalk.white.bgBlue.bold(table.toString()));
  console.log(chalk.bold(chalk.blue.bold("[MAJO]")) + chalk.cyan.bold(" Successfully loaded " + chalk.underline(`${client.commands.size}`) + " commands!"));
 };
