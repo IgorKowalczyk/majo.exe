@@ -40,5 +40,5 @@ module.exports = (client) => {
  console.log(chalk.bold.bgBlack(logo));
  console.log(chalk.bold(chalk.blue.bold("[MAJO]")) + chalk.cyan.bold(" Please wait... Loading commands..."));
  console.log(chalk.cyan.bold(table.toString()));
- console.log(chalk.bold(chalk.blue.bold("[MAJO]")) + chalk.cyan.bold(" Successfully loaded " + chalk.underline(`${client.commands.size}`) + " commands!"));
+ console.log(chalk.bold(chalk.blue.bold("[MAJO]")) + chalk.cyan.bold(" Successfully loaded " + chalk.blue.underline(`${client.commands.size}`) + " commands!"));
 };
