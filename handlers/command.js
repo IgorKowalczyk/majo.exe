@@ -36,7 +36,7 @@ module.exports = (client) => {
    "|  | /~~\\ \\__/ \\__/ .|___ / \\ |___ ",
    "                                   ",
   ].join("\n")
- ) + "       \n~ By Igor Kowalczyk ~       \n\n";
+ ) + "\n       ~ By Igor Kowalczyk ~       \n\n";
  console.log(chalk.bold.bgBlack(logo));
  console.log(chalk.bold(chalk.blue.bold("[MAJO]")) + chalk.cyan.bold(" Please wait... Loading commands..."));
  console.log(chalk.cyan.bold(table.toString()));
