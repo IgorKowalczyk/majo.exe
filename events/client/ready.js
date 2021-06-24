@@ -30,21 +30,6 @@ module.exports = (client) => {
   min = datelog.getMinutes();
   sec = datelog.getSeconds();
   console.log("[MAJO] Generated at: " + currentDate + "/" + month + "/" + year + " | " + hour + ":" + min + "." + sec);
-  console.log(
-   chalk.bold(
-    gradient.pastel.multiline(
-     [
-      // Prettier
-      "                __    ___      ___ ",
-      "|\\/|  /\\     | /  \\  |__  \\_/ |__  ",
-      "|  | /~~\\ \\__/ \\__/ .|___ / \\ |___ ",
-      "                                   ",
-     ].join("\n")
-    ), {
-     interpolation: "hsv"
-    }
-   )
-  );
   console.log(chalk.bold(gradient.pastel("[MAJO] Client connected! Logged to Discord as " + client.user.tag + " (ID: " + client.user.id + ")!")), {interpolation: "hsv"})
   const statuschannel = client.channels.cache.get(config.statuschannel);
   if (statuschannel) {

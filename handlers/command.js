@@ -1,6 +1,7 @@
 const { readdirSync } = require("fs");
 const ascii = require("ascii-table");
 const chalk = require("chalk");
+const gradient = require("gradient-string");
 const table = new ascii("Majo.exe commands");
 table.setHeading("Command", "Category", "Load status");
 table.setTitleAlign(table.CENTER);
@@ -27,7 +28,17 @@ module.exports = (client) => {
    }
   }
  });
- console.log(chalk.blue("[MAJO] Loading commands..."));
+ const logo = gradient.pastel.multiline(
+  [
+   // Prettier
+   "                __    ___      ___ ",
+   "|\\/|  /\\     | /  \\  |__  \\_/ |__  ",
+   "|  | /~~\\ \\__/ \\__/ .|___ / \\ |___ ",
+   "                                   ",
+  ].join("\n")
+ );
+ console.log(chalk.bold(logo));
+ console.log("[MAJO] Loading commands...");
  console.log(table.toString());
- console.log(chalk.blue("[MAJO] Successfully loaded ") + chalk.blue.underline(`${client.commands.size}`) + chalk.blue(" commands!"));
+ console.log("[MAJO] Successfully loaded " + chalk.underline(`${client.commands.size}`) + " commands!");
 };
