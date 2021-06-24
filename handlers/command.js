@@ -39,6 +39,6 @@ module.exports = (client) => {
  );
  console.log(chalk.bold(logo));
  console.log(chalk.bold(gradient.morning("[MAJO]")) + gradient.pastel(" Loading commands..."));
- console.log(table.toString());
+ console.log(gradient.pastel(table.toString()));
  console.log(chalk.bold(gradient.morning("[MAJO]")) + gradient.pastel(" Successfully loaded " + chalk.underline(`${client.commands.size}`) + " commands!"));
 };
