@@ -13,7 +13,7 @@ module.exports = {
      .setColor("FF5757")
      .setDescription("❌ | You don't have premission to prune messages!")
      .setFooter(
-      "This message will be deleted after 3 seconds",
+      "This message will be deleted after 10 seconds",
       message.author.displayAvatarURL({
        dynamic: true,
        format: "png",
@@ -22,11 +22,11 @@ module.exports = {
      );
     message.channel.send(error).then((m) =>
      m.delete({
-      timeout: 3000,
+      timeout: 10000,
      })
     );
     return message.delete({
-     timeout: 3000,
+     timeout: 10000,
     });
    }
    if (isNaN(args[0])) {
@@ -34,7 +34,7 @@ module.exports = {
      .setColor("FF5757")
      .setDescription("❌ | Please input a vaild number!")
      .setFooter(
-      "This message will be deleted after 3 seconds",
+      "This message will be deleted after 10 seconds",
       message.author.displayAvatarURL({
        dynamic: true,
        format: "png",
@@ -43,11 +43,11 @@ module.exports = {
      );
     message.channel.send(error).then((m) =>
      m.delete({
-      timeout: 3000,
+      timeout: 10000,
      })
     );
     return message.delete({
-     timeout: 3000,
+     timeout: 10000,
     });
    }
    if (args[0] > 100) {
@@ -55,7 +55,7 @@ module.exports = {
      .setColor("FF5757")
      .setDescription("❌ | Insert the number less than 100!")
      .setFooter(
-      "This message will be deleted after 3 seconds",
+      "This message will be deleted after 10 seconds",
       message.author.displayAvatarURL({
        dynamic: true,
        format: "png",
@@ -64,11 +64,11 @@ module.exports = {
      );
     message.channel.send(error).then((m) =>
      m.delete({
-      timeout: 3000,
+      timeout: 10000,
      })
     );
     return message.delete({
-     timeout: 3000,
+     timeout: 10000,
     });
    }
    if (args[0] < 2) {
@@ -76,7 +76,7 @@ module.exports = {
      .setColor("FF5757")
      .setDescription("❌ | Insert the number more than 1!")
      .setFooter(
-      "This message will be deleted after 3 seconds",
+      "This message will be deleted after 10 seconds",
       message.author.displayAvatarURL({
        dynamic: true,
        format: "png",
@@ -85,27 +85,20 @@ module.exports = {
      );
     message.channel.send(error).then((m) =>
      m.delete({
-      timeout: 3000,
+      timeout: 10000,
      })
     );
     return message.delete({
-     timeout: 3000,
+     timeout: 10000,
     });
    }
    await message.delete();
    await message.channel.bulkDelete(args[0]).then((messages) => {
     let error = new Discord.MessageEmbed() // Prettier()
      .setColor("RANDOM")
-     .setTitle(
-      ":white_check_mark: Success!",
-      message.guild.iconURL({
-       dynamic: true,
-       format: "png",
-      })
-     )
      .setDescription(":wastebasket: Deleted " + `${messages.size}/${args[0]}` + " messages.")
      .setFooter(
-      "This message will be deleted after 3 seconds",
+      "This message will be deleted after 10 seconds",
       message.author.displayAvatarURL({
        dynamic: true,
        format: "png",
@@ -114,7 +107,7 @@ module.exports = {
      );
     return message.channel.send(error).then((m) =>
      m.delete({
-      timeout: 3000,
+      timeout: 10000,
      })
     );
    });
