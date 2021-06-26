@@ -4,6 +4,7 @@ const sql = require("../../utilities/database");
 
 module.exports = async (client, channel, oldPermissions, newPermissions) => {
  try {
+  if(!guild || !oldPermissions || !newPermissions) return;
   const sqlquery = "SELECT channelid AS res FROM logs WHERE guildid = " + channel.guild.id;
   sql.query(sqlquery, function (error, results, fields) {
    if (error) console.log(error);

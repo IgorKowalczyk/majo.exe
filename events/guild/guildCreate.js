@@ -3,7 +3,8 @@ const config = require("../../config");
 
 module.exports = async (client, guild) => {
  try {
-  console.log(`New guild joined: ${guild.name} (ID: ${guild.id}). This guild has ${guild.memberCount} members!`);
+  if(!guild) return;
+  console.log(chalk.bold(chalk.blue.bold("[MAJO]")) + chalk.cyan.bold(` New guild joined: `) + chalk.blue.bold.underline(guild.name) + chalk.cyan.bold(" (ID: ") + chalk.blue.bold.underline(guild.id) + chalk.cyan.bold(") This guild has ") + chalk.blue.bold.underline(guild.memberCount) + chalk.cyan.bold("members!"));
  } catch (err) {
   console.log(err);
  }

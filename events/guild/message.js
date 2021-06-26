@@ -6,6 +6,7 @@ const Timeout = new Map();
 
 module.exports = async (client, message) => {
  try {
+  if(!message) return;
   if (message.author.bot) return;
   if (!message.guild) {
    try {
