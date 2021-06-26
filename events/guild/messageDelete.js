@@ -4,7 +4,7 @@ const sql = require("../../utilities/database");
 
 module.exports = async (client, message) => {
  try {
-  if(!message) return;
+  if (!message) return;
   client.snipes.set(message.channel.id, {
    content: message.content,
    author: message.author.tag,

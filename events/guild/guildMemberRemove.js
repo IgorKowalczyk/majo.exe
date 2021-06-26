@@ -5,7 +5,7 @@ const sql = require("../../utilities/database");
 
 module.exports = async (client, member) => {
  try {
-  if(!member) return;
+  if (!member) return;
   const image = `./lib/img/welcome-gray.png`;
   const sqlquery = "SELECT channelid AS res FROM `leave` WHERE guildid = " + member.guild.id;
   sql.query(sqlquery, function (error, results, fields) {
