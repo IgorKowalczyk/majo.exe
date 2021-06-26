@@ -5,4 +5,3 @@ node_modules
 *webmanifest
 docs/
 dashboard/static/arc-sw.js
-events/client/ready.js

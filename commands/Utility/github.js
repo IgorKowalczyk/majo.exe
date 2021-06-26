@@ -37,7 +37,7 @@ module.exports = {
       .setTitle(`🐙 ${login} Github`, avatar_url)
       .setColor(`RANDOM`)
       .setThumbnail(avatar_url)
-      .addField(`<:members:856161806606401556> Username`, `${login}`)
+      .addField(`<:members:856161806606401556> Username`, `\`\`\`${login}\`\`\``)
       .addField(`📝 Bio`, `\`\`\`${bio || "❌ Bio not provided"}\`\`\``)
       .addField(`📚 Public Repositories`, `\`\`\`${public_repos || "0"}\`\`\``, true)
       .addField(`📚 Public Gists`, `\`\`\`${public_gists || "0"}\`\`\``, true)

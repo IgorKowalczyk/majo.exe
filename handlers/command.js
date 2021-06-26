@@ -28,15 +28,16 @@ module.exports = (client) => {
    }
   }
  });
- const logo = gradient.pastel.multiline(
-  [
-   // Prettier
-   "                __    ___      ___ ",
-   "|\\/|  /\\     | /  \\  |__  \\_/ |__  ",
-   "|  | /~~\\ \\__/ \\__/ .|___ / \\ |___ ",
-   "                                   ",
-  ].join("\n")
- ) + "\n       ~ By Igor Kowalczyk ~       \n\n";
+ const logo =
+  gradient.pastel.multiline(
+   [
+    // Prettier
+    "                __    ___      ___ ",
+    "|\\/|  /\\     | /  \\  |__  \\_/ |__  ",
+    "|  | /~~\\ \\__/ \\__/ .|___ / \\ |___ ",
+    "                                   ",
+   ].join("\n")
+  ) + "\n       ~ By Igor Kowalczyk ~       \n\n";
  console.log(chalk.bold.bgBlack(logo));
  console.log(chalk.bold(chalk.blue.bold("[MAJO]")) + chalk.cyan.bold(" Please wait... Loading commands..."));
  console.log(chalk.cyan.bold(table.toString()));
