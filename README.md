@@ -53,10 +53,13 @@ Deploy the app to [Heroku](https://heroku.com)
     * `SECRET` - Client secret from Discord Developers portal [no. 3]
     * `ANALYTICS` - Google Trakcing ID, for Website analytics [[Tutorial](#analytics-id)]
     * `COOKIES` - Your Youtube Cookies [[Tutorial](#youtube)]
-    * `CONTACT_WEBHOOK_ID` - Your contact form webhook ID (Note: `https://discord.com/api/webhooks/HERE-IS-WEBHOOK-ID/HERE-IS-WEBHOOK-TOKEN`)
-    * `CONTACT_WEBHOOK_TOKEN` - Your contact form webhook token (Note: `https://discord.com/api/webhooks/HERE-IS-WEBHOOK-ID/HERE-IS-WEBHOOK-TOKEN`)
+    * `CONTACT_WEBHOOK_ID` - Your contact form webhook ID
+    * `CONTACT_WEBHOOK_TOKEN` - Your contact form webhook token
+    * `STATUS_WEBHOOK_ID` - Your status webhook ID
+    * `STATUS_WEBHOOK_TOKEN` - Your status webhook token
 7. Run `npm run start`
 > Note: See the example [`.env` file below](#example-env-file)!
+> Note: Discord webhook link syntax: `https://discord.com/api/webhooks/HERE-IS-WEBHOOK-ID/HERE-IS-WEBHOOK-TOKEN`)
 
 ### Dashboard hosting
 
@@ -94,6 +97,8 @@ Deploy the app to [Heroku](https://heroku.com)
 | COOKIES | Your youtube cookies | :x: |
 | CONTACT_WEBHOOK_ID | Your contact form webhook ID | :x: |
 | CONTACT_WEBHOOK_TOKEN | Your contact form webhook token | :x: |
+| STATUS_WEBHOOK_ID | Your status webhook ID | :x: |
+| STATUS_WEBHOOK_TOKEN | Your status webhook token | :x: |
 > - `*` = Required to run the web dashboard!
 
 ### Example `.env` file
@@ -116,6 +121,10 @@ MYSQL_USER=YOUR_MYSQL_DATABASE_USER
 BRAINID=YOUR_BRAINSHOP_AI_BRAIN_ID
 BRAINKEY=YOUR_BRAINSHOP_AI_BRAIN_KEY
 GENIUS=YOUR_GENIUS_API_KEY
+CONTACT_WEBHOOK_TOKEN=YOUR_CONTACT_FORM_WEBHOOK_TOKEN
+CONTACT_WEBHOOK_ID=YOUR_CONTACT_FORM_WEBHOOK_ID
+STATUS_WEBHOOK_TOKEN=YOUR_STATUS_WEBHOOK_TOKEN
+STATUS_WEBHOOK_ID=YOUR_STATUS_WEBHOOK_ID
 
 # Not required
 DASHBOARD=[true/false]
@@ -125,11 +134,8 @@ SESSION_SECRET=YOUR_SESSION_SECRET_(RANDOM_WORDS)
 SECRET=YOUR_BOT_CLIENT_SECRET
 ANALYTICS=YOUR_GOOGLE_TRACKING_ID
 COOKIES=YOUR_YOUTUBE_COOKIES
-CONTACT_WEBHOOK_TOKEN=YOUR_CONTACT_FORM_WEBHOOK_TOKEN
-CONTACT_WEBHOOK_ID=YOUR_CONTACT_FORM_WEBHOOK_ID
 
 # Note: !majo is the default prefix, you can change it later.
-
 ```
 </details>
 

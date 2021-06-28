@@ -24,7 +24,7 @@ if (!process.env.PORT) throw new Error("[HOST] You need to provide Port in .env 
 if (!process.env.ID) throw new Error("[HOST] You need to provide Discord Bot ID in .env - ID=YOUR_DISCORD_BOT_ID");
 if (!process.env.DOMAIN) throw new Error("[HOST] You need to provide Webiste domain in .env - DOMAIN=YOUR_WEBISTE_DOMAIN Note: Only website domain eg. https://example.com without slash at end!");
 if (!process.env.CONTACT_WEBHOOK_ID) throw new Error("[HOST] You need to provide Discord Contact Webhook ID in .env - CONTACT_WEBHOOK_ID=YOUR_WEBHOOK_ID");
-if (!process.env.CONTACT_WEBHOOK_TOKEN) throw new Error("[HOST] You need to provide Discord Contact Webhook URL in .env - CONTACT_WEBHOOK_ID=YOUR_WEBHOOK_URL");
+if (!process.env.CONTACT_WEBHOOK_TOKEN) throw new Error("[HOST] You need to provide Discord Contact Webhook Token in .env - CONTACT_WEBHOOK_TOKEN=YOUR_WEBHOOK_TOKEN");
 console.log(chalk.bold(chalk.blue.bold("[HOST]")) + chalk.cyan.bold(" Starting dashboard..."));
 
 module.exports = async (client) => {
@@ -267,7 +267,7 @@ module.exports = async (client) => {
     .setFooter("Recived from: " + req.body.url, client.user.displayAvatarURL())
    contactwebhook.send({
     // Prettier
-    username: client.user.username + "Contact",
+    username: client.user.username + " contact webhook",
     avatarURL: client.user.displayAvatarURL(),
     embeds: [contact],
    });

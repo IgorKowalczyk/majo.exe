@@ -31,17 +31,22 @@ module.exports = (client) => {
   sec = datelog.getSeconds();
   console.log(chalk.bold(chalk.blue.bold("[MAJO]")) + chalk.bold.cyan(" Generated at: " + chalk.blue.bold.underline(currentDate + "/" + month + "/" + year + " | " + hour + ":" + min + "." + sec)));
   console.log(chalk.bold(chalk.blue.bold("[MAJO]")) + chalk.bold.cyan(" Client connected! Logged to Discord as ") + chalk.bold.blue.underline(client.user.tag) + chalk.bold.cyan(" (ID: ") + chalk.bold.blue.underline(client.user.id) + chalk.bold.cyan(")!"));
-  const statuschannel = client.channels.cache.get(config.statuschannel);
-  if (statuschannel) {
-   statuschannel.send({
-    embed: {
-     color: 4779354,
-     description: ":green_circle: | Bot Status - Online",
-    },
-   });
-  } else {
-   return;
-  }
+  /* Status Webhook */
+  if (!process.env.STATUS_WEBHOOK_ID) throw new Error("[HOST] You need to provide Discord Status Webhook ID in .env - STATUS_WEBHOOK_ID=YOUR_WEBHOOK_ID");
+  if (!process.env.STATUS_WEBHOOK_TOKEN) throw new Error("[HOST] You need to provide Discord Status Webhook Token in .env - STATUS_WEBHOOK_TOKEN=YOUR_WEBHOOK_TOKEN");
+  const statuswebhook = new Discord.WebhookClient(process.env.STATUS_WEBHOOK_ID, process.env.STATUS_WEBHOOK_TOKEN);
+  const status = new Discord.MessageEmbed() // Prettier
+   .setColor("RANDOM")
+   .setDescription(`<:online:844882507408211988> ${client.user.username} status: Online`)
+   .setTimestamp()
+   .setFooter("From " + client.user.username + " status webhook", client.user.displayAvatarURL())
+   statuswebhook.send({
+   // Prettier
+   username: client.user.username + " status webhook",
+   avatarURL: client.user.displayAvatarURL(),
+   embeds: [status],
+  });
+
   /* Slash command */
   client.ws.on("INTERACTION_CREATE", async (interaction) => {
    try {
