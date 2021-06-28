@@ -39,8 +39,8 @@ module.exports = (client) => {
    .setColor("RANDOM")
    .setDescription(`<:online:844882507408211988> ${client.user.username} status: Online`)
    .setTimestamp()
-   .setFooter("From " + client.user.username + " status webhook", client.user.displayAvatarURL())
-   statuswebhook.send({
+   .setFooter("From " + client.user.username + " status webhook", client.user.displayAvatarURL());
+  statuswebhook.send({
    // Prettier
    username: client.user.username + " status webhook",
    avatarURL: client.user.displayAvatarURL(),
