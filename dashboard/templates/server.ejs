@@ -27,8 +27,8 @@ sqlquery = "SELECT channelid AS res FROM welcome WHERE guildid = " + guild.id
 sql.query(sqlquery, function (error, results, fields) {
  if (error) return console.log(error);
  (async () => {
-  var channel = await results[0].res;
-  var channelfinal = await guild.channels.cache.find((c) => c.id == channel && c.type == "text");
+  let channel = await results[0].res;
+  let channelfinal = await guild.channels.cache.find((c) => c.id == channel && c.type == "text");
  })();
  })
 %>
