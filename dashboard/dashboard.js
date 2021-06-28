@@ -263,7 +263,7 @@ module.exports = async (client) => {
     .setColor("RANDOM")
     .setTitle(`📬 Contact Form`)
     .setDescription(`Someone just send message to us!`)
-    .addField(`<:role:856182143734775808> User`, `${req.body.name.substr(0, 100) || "Unknown"} (ID: \`${req.body.id || "Unknown"}\`)`)
+    .addField(`🥺 User`, `${req.body.name.substr(0, 100) || "Unknown"} (ID: \`${req.body.id || "Unknown"}\`)`)
     .addField("📧 Email", `\`\`\`${req.body.email.substr(0, 100) || "Unknown"}\`\`\``)
     .addField("📝 Message", `\`\`\`${req.body.msg.substr(0, 2000) || "None"}\`\`\``)
     .setTimestamp()
