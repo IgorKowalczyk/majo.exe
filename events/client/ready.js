@@ -5,6 +5,9 @@ const gradient = require("gradient-string");
 
 module.exports = (client) => {
  try {
+  function capitalizeFirstLetter(string) {
+   return string.charAt(0).toUpperCase() + string.slice(1);
+  }
   setInterval(() => {
    const emojis = ["😆", "😄", "😎", "😂", "🥳", "😘", "😜", "😁", "😉", "🥰", "😍", "🤯", "🥶", "🤩", "😇", "😊", "☺️", "😌", "😋"];
    const emoji = emojis[Math.floor(Math.random() * emojis.length)];
@@ -37,7 +40,7 @@ module.exports = (client) => {
   const statuswebhook = new Discord.WebhookClient(process.env.STATUS_WEBHOOK_ID, process.env.STATUS_WEBHOOK_TOKEN);
   const status = new Discord.MessageEmbed() // Prettier
    .setColor("RANDOM")
-   .setDescription(`${client.user.username} status: 🟢 Online`)
+   .setDescription(`🟢 | ${capitalizeFirstLetter(client.user.username)} is online`)
    .setTimestamp()
    .setFooter("From " + client.user.username + " status webhook", client.user.displayAvatarURL());
   statuswebhook.send({
