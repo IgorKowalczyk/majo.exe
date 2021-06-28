@@ -37,7 +37,7 @@ module.exports = (client) => {
   const statuswebhook = new Discord.WebhookClient(process.env.STATUS_WEBHOOK_ID, process.env.STATUS_WEBHOOK_TOKEN);
   const status = new Discord.MessageEmbed() // Prettier
    .setColor("RANDOM")
-   .setDescription(`<:online:844882507408211988> ${client.user.username} status: Online`)
+   .setDescription(`${client.user.username} status: 🟢 Online`)
    .setTimestamp()
    .setFooter("From " + client.user.username + " status webhook", client.user.displayAvatarURL());
   statuswebhook.send({

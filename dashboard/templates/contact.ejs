@@ -1,5 +1,6 @@
 <%- include("partials/head", { bot, user, path, title: "Contact" }) %>
 
+<script src="https://<%= domain %>/css/contact.css"></script>
 <% if (user) { %>
  <script>var userID = <%= user.id %> </script>
  <div class="container-contact">
@@ -72,6 +73,6 @@
  </div>
 <% } %>
 
-<script src="<%domain%>/js/contact.js"></script>
+<script src="https://<%= domain %>/js/contact.js"></script>
 
 <%- include("partials/footer") %>
