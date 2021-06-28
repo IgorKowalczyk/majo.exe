@@ -8,29 +8,29 @@
  <span class="contact-form-title"></span>
  <div class="wrap-input rs1-wrap-input">
   <span class="label">Name</span>
-  <input disabled class="input" type="text" name="name" placeholder="Name"value="<%= user.username %>#<%= user.discriminator %>"/>
+  <input disabled class="input" maxlenght="100" autocomplete="off" spellcheck="false" type="text" name="name" placeholder="Name"value="<%= user.username %>#<%= user.discriminator %>"/>
   <span class="input-line"></span>
  </div>
  <div class="wrap-input rs1-wrap-input">
   <span class="label">Email (optional)</span>
-  <input class="input" type="email" name="email" placeholder="Email"/>
+  <input class="input" type="email" maxlenght="100" autocomplete="off" spellcheck="false" name="email" placeholder="Email"/>
   <span class="input-line"></span>
  </div>
  <div class="wrap-input">
   <span class="label">Message</span>
-  <textarea class="input" name="message" placeholder="Message" required></textarea>
+  <textarea class="input" name="message" maxlenght="2000" autocomplete="off" spellcheck="true" placeholder="Message" required></textarea>
   <span class="input-line"></span>
  </div>
  <div id="captcha"></div>
  <div class="container-contact-form-btn">
-  <button class="contact-form-btn" type="submit">Send</button>
+  <button class="link-button green" style="margin-top: 50px;margin-left: 0px;" type="submit">Send</button>
  </div>
  </form>
  </div>
  </div>
  <script type="text/javascript">
   var verifyCallback = function(response) {
-   alert(response);
+   console.log(response);
   };
   var onloadCallback = function() {
   grecaptcha.render('captcha', {
@@ -48,24 +48,24 @@
   <span class="contact-form-title"></span>
   <div class="wrap-input rs1-wrap-input">
    <span class="label">Name</span>
-   <input class="input" title="Please login to contact us!" type="text" name="name" placeholder="Name" disabled/>
+   <input class="input" title="Please login to contact us!" maxlenght="100" autocomplete="off" spellcheck="false" type="text" name="name" placeholder="Name" disabled/>
    <span class="input-line"></span>
   </div>
   <div class="wrap-input rs1-wrap-input">
    <span class="label">Email (optional)</span>
-   <input class="input" title="Please login to contact us!" type="email" name="email" placeholder="Email" disabled/>
+   <input class="input" title="Please login to contact us!" maxlenght="100" autocomplete="off" spellcheck="false" type="email" name="email" placeholder="Email" disabled/>
    <span class="input-line"></span>
   </div>
   <div class="wrap-input">
    <span class="label">Message</span>
-   <textarea class="input" title="Please login to contact us!" name="message" placeholder="Message" disabled></textarea>
+   <textarea class="input" title="Please login to contact us!" maxlenght="4000" autocomplete="off" spellcheck="true" name="message" placeholder="Message" disabled></textarea>
    <span class="input-line"></span>
   </div>
  <div class="container-contact-form-btn">
   <p>You must be logged in to contact us!</p>
  </div>
  <div class="container-contact-form-btn">
-  <a href="https://majoexe.herokuapp.com/login" class="link-button green">Login</a>
+  <a href="https://majoexe.herokuapp.com/login" style="margin-left: 0;" class="link-button green">Login</a>
  </div>
  </form>
  </div>

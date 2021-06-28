@@ -1061,6 +1061,7 @@ textarea {
  outline: none;
  max-width: 100%;
  min-width: 100%;
+ resize: vertical
  max-height: 200px;
 }
 
@@ -1101,12 +1102,10 @@ iframe {
 }
 
 .wrap-contact {
- width: 1170px;
  position: relative;
  border-radius: 10px;
  font-family: "Poppins";
  padding: 82px 180px 33px;
- box-shadow: 0px 0px 20px 15px rgba(0, 0, 0, 0.103);
 }
 
 .contact-form {
@@ -1246,6 +1245,9 @@ textarea.input {
 @media (max-width: 576px) {
  .wrap-contact {
   padding: 82px 15px 33px;
+ }
+ .container-contact {
+  display: inherit;
  }
  .contact-form-title::after {
   font-size: 35px;
