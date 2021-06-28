@@ -260,14 +260,14 @@ module.exports = async (client) => {
     .setColor("RANDOM")
     .setTitle(`📬 Contact Form`)
     .setDescription(`Someone just send message to us!`)
-    .addField(`<:members:856161806606401556> User`, `${req.body.name || "Unknown"} (ID: \`${req.body.id || "Unknown"}\`)`)
+    .addField(`<:role:856182143734775808> User`, `${req.body.name || "Unknown"} (ID: \`${req.body.id || "Unknown"}\`)`)
     .addField("📧 Email", `\`\`\`${req.body.email || "Unknown"}\`\`\``)
     .addField("📝 Message", `\`\`\`${req.body.msg || "None"}\`\`\``)
     .setTimestamp()
     .setFooter(client.user.username, client.user.displayAvatarURL());
    contactwebhook.send({
     // Prettier
-    username: client.user.username + " contact webhook",
+    username: capitalizeFirstLetter(client.user.username) + " Contact",
     avatarURL: client.user.displayAvatarURL(),
     embeds: [contact],
    });

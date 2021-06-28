@@ -42,10 +42,10 @@ module.exports = (client) => {
    .setColor("RANDOM")
    .setDescription(`🟢 | ${capitalizeFirstLetter(client.user.username)} is online`)
    .setTimestamp()
-   .setFooter("From " + client.user.username + " status webhook", client.user.displayAvatarURL());
+   .setFooter("From " + capitalizeFirstLetter(client.user.username) + " status webhook", client.user.displayAvatarURL());
   statuswebhook.send({
    // Prettier
-   username: client.user.username + " status webhook",
+   username: capitalizeFirstLetter(client.user.username) + " Status",
    avatarURL: client.user.displayAvatarURL(),
    embeds: [status],
   });
