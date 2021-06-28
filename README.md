@@ -53,6 +53,8 @@ Deploy the app to [Heroku](https://heroku.com)
     * `SECRET` - Client secret from Discord Developers portal [no. 3]
     * `ANALYTICS` - Google Trakcing ID, for Website analytics [[Tutorial](#analytics-id)]
     * `COOKIES` - Your Youtube Cookies [[Tutorial](#youtube)]
+    * `CONTACT_WEBHOOK_ID` - Your contact form webhook ID (Note: `https://discord.com/api/webhooks/HERE-IS-WEBHOOK-ID/HERE-IS-WEBHOOK-TOKEN`)
+    * `CONTACT_WEBHOOK_TOKEN` - Your contact form webhook token (Note: `https://discord.com/api/webhooks/HERE-IS-WEBHOOK-ID/HERE-IS-WEBHOOK-TOKEN`)
 7. Run `npm run start`
 > Note: See the example [`.env` file below](#example-env-file)!
 
@@ -90,6 +92,8 @@ Deploy the app to [Heroku](https://heroku.com)
 | SECRET | The bot client secret (Remember! The `SECRET` value is Super-Secret)`*` | :x:/:heavy_check_mark: |
 | ANALYTICS | Google analytics tracking ID, used in Web-Dashboard`*` | :x: |
 | COOKIES | Your youtube cookies | :x: |
+| CONTACT_WEBHOOK_ID | Your contact form webhook ID | :x: |
+| CONTACT_WEBHOOK_TOKEN | Your contact form webhook token | :x: |
 > - `*` = Required to run the web dashboard!
 
 ### Example `.env` file
@@ -121,6 +125,8 @@ SESSION_SECRET=YOUR_SESSION_SECRET_(RANDOM_WORDS)
 SECRET=YOUR_BOT_CLIENT_SECRET
 ANALYTICS=YOUR_GOOGLE_TRACKING_ID
 COOKIES=YOUR_YOUTUBE_COOKIES
+CONTACT_WEBHOOK_TOKEN=YOUR_CONTACT_FORM_WEBHOOK_TOKEN
+CONTACT_WEBHOOK_ID=YOUR_CONTACT_FORM_WEBHOOK_ID
 
 # Note: !majo is the default prefix, you can change it later.
 

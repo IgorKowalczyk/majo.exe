@@ -24,7 +24,7 @@ if (!process.env.PORT) throw new Error("[HOST] You need to provide Port in .env 
 if (!process.env.ID) throw new Error("[HOST] You need to provide Discord Bot ID in .env - ID=YOUR_DISCORD_BOT_ID");
 if (!process.env.DOMAIN) throw new Error("[HOST] You need to provide Webiste domain in .env - DOMAIN=YOUR_WEBISTE_DOMAIN Note: Only website domain eg. https://example.com without slash at end!");
 if (!process.env.CONTACT_WEBHOOK_ID) throw new Error("[HOST] You need to provide Discord Contact Webhook ID in .env - CONTACT_WEBHOOK_ID=YOUR_WEBHOOK_ID");
-if (!process.env.CONTACT_WEBHOOK_URL) throw new Error("[HOST] You need to provide Discord Contact Webhook URL in .env - CONTACT_WEBHOOK_ID=YOUR_WEBHOOK_URL");
+if (!process.env.CONTACT_WEBHOOK_TOKEN) throw new Error("[HOST] You need to provide Discord Contact Webhook URL in .env - CONTACT_WEBHOOK_ID=YOUR_WEBHOOK_URL");
 console.log(chalk.bold(chalk.blue.bold("[HOST]")) + chalk.cyan.bold(" Starting dashboard..."));
 
 module.exports = async (client) => {
@@ -255,7 +255,7 @@ module.exports = async (client) => {
  });
  app.post("/contact", async (req, res) => {
   if (req.body.type === "contact") {
-   const contactwebhook = new Discord.WebhookClient(process.env.CONTACT_WEBHOOK_ID, process.env.CONTACT_WEBHOOK_URL);
+   const contactwebhook = new Discord.WebhookClient(process.env.CONTACT_WEBHOOK_ID, process.env.CONTACT_WEBHOOK_TOKEN);
    const contact = new Discord.MessageEmbed() // Prettier
     .setColor("RANDOM")
     .setTitle(`Contact Form`)

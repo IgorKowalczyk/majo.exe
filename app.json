@@ -42,6 +42,14 @@
    "description": "Your Discord Bot ID",
    "required": true
   },
+  "CONTACT_WEBHOOK_TOKEN": {
+   "description": "Your contact form webhook token",
+   "required": false
+  },
+  "CONTACT_WEBHOOK_ID": {
+   "description": "Your contact form webhook id",
+   "required": false
+  },
   "GENIUS": {
    "description": "Your Genius API key",
    "required": true
