@@ -23,6 +23,8 @@ if (!process.env.SECRET) throw new Error("[HOST] You need to provide Secret in .
 if (!process.env.PORT) throw new Error("[HOST] You need to provide Port in .env - PORT=YOUR_WEBSITE_PORT");
 if (!process.env.ID) throw new Error("[HOST] You need to provide Discord Bot ID in .env - ID=YOUR_DISCORD_BOT_ID");
 if (!process.env.DOMAIN) throw new Error("[HOST] You need to provide Webiste domain in .env - DOMAIN=YOUR_WEBISTE_DOMAIN Note: Only website domain eg. https://example.com without slash at end!");
+if (!process.env.CONTACT_WEBHOOK_ID) throw new Error("[HOST] You need to provide Discord Contact Webhook ID in .env - CONTACT_WEBHOOK_ID=YOUR_WEBHOOK_ID");
+if (!process.env.CONTACT_WEBHOOK_URL) throw new Error("[HOST] You need to provide Discord Contact Webhook URL in .env - CONTACT_WEBHOOK_ID=YOUR_WEBHOOK_URL");
 console.log(chalk.bold(chalk.blue.bold("[HOST]")) + chalk.cyan.bold(" Starting dashboard..."));
 
 module.exports = async (client) => {
@@ -197,7 +199,7 @@ module.exports = async (client) => {
   });
  });
 
- // Api endpoint
+ // Simple api endpoint
  app.get("/api", function (req, res) {
   res.header("Content-Type", "application/json");
   res.send(
@@ -242,8 +244,33 @@ module.exports = async (client) => {
   });
  });
 
+ // Something ;)
  app.get("/admin", (req, res) => {
   res.redirect("https://youtu.be/dQw4w9WgXcQ");
+ });
+
+ // Contact endpoint
+ app.get("/contact", async (req, res) => {
+  renderTemplate(res, req, "contact.ejs");
+ });
+ app.post("/contact", async (req, res) => {
+  if (req.body.type === "contact") {
+   const contactwebhook = new Discord.WebhookClient(process.env.CONTACT_WEBHOOK_ID, process.env.CONTACT_WEBHOOK_URL);
+   const contact = new Discord.MessageEmbed() // Prettier
+    .setColor(RANDOM)
+    .setTitle(`Contact Form`)
+    .setDescription(`Someone just contacted us!`)
+    .addField("User", `${req.body.name || "Unknown"} (ID: ${req.body.id} || "Unknown")`)
+    .addField("Email", `${req.body.email || "Unknown"}`)
+    .addField("Message", `${req.body.msg || "None"}`)
+    .setTimestamp();
+   contactwebhook.send({
+    // Prettier
+    username: client.user.username + "Contact",
+    avatarURL: client.user.displayAvatarURL(),
+    embeds: [contact],
+   });
+  }
  });
 
  // Settings endpoint.
