@@ -264,7 +264,7 @@ module.exports = async (client) => {
     .addField("📧 Email", `\`\`\`${req.body.email || "Unknown"}\`\`\``)
     .addField("📝 Message", `\`\`\`${req.body.msg || "None"}\`\`\``)
     .setTimestamp()
-    .setFooter("Recived from: " + req.body.url, client.user.displayAvatarURL())
+    .setFooter("Recived from: " + req.url, client.user.displayAvatarURL())
    contactwebhook.send({
     // Prettier
     username: client.user.username + " contact webhook",
