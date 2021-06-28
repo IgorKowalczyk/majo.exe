@@ -16,6 +16,9 @@ app.use(express.static("dashboard/static"));
 const MemoryStore = require("memorystore")(session);
 const sql = require("../utilities/database");
 const port = process.env.PORT || 6565;
+function capitalizeFirstLetter(string) {
+ return string.charAt(0).toUpperCase() + string.slice(1);
+}
 
 if (!process.env.DASHBOARD) throw new Error("[HOST] You need to provide Dashboard (Boolean) in .env - DASHBOARD=BOOLEAN");
 if (!process.env.SESSION_SECRET) throw new Error("[HOST] You need to provide Session Secret in .env - SESSION_SECRET=YOUR_SESSION_SECRET_RANDOM_WORDS");
@@ -260,11 +263,11 @@ module.exports = async (client) => {
     .setColor("RANDOM")
     .setTitle(`📬 Contact Form`)
     .setDescription(`Someone just send message to us!`)
-    .addField(`<:role:856182143734775808> User`, `${req.body.name || "Unknown"} (ID: \`${req.body.id || "Unknown"}\`)`)
-    .addField("📧 Email", `\`\`\`${req.body.email || "Unknown"}\`\`\``)
-    .addField("📝 Message", `\`\`\`${req.body.msg || "None"}\`\`\``)
+    .addField(`<:role:856182143734775808> User`, `${req.body.name.substr(0, 100) || "Unknown"} (ID: \`${req.body.id || "Unknown"}\`)`)
+    .addField("📧 Email", `\`\`\`${req.body.email.substr(0, 100) || "Unknown"}\`\`\``)
+    .addField("📝 Message", `\`\`\`${req.body.msg.substr(0, 2000) || "None"}\`\`\``)
     .setTimestamp()
-    .setFooter(client.user.username, client.user.displayAvatarURL());
+    .setFooter(capitalizeFirstLetter(client.user.username), client.user.displayAvatarURL());
    contactwebhook.send({
     // Prettier
     username: capitalizeFirstLetter(client.user.username) + " Contact",
