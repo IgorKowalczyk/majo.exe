@@ -258,12 +258,13 @@ module.exports = async (client) => {
    const contactwebhook = new Discord.WebhookClient(process.env.CONTACT_WEBHOOK_ID, process.env.CONTACT_WEBHOOK_TOKEN);
    const contact = new Discord.MessageEmbed() // Prettier
     .setColor("RANDOM")
-    .setTitle(`Contact Form`)
-    .setDescription(`Someone just contacted us!`)
-    .addField("User", `${req.body.name || "Unknown"} (ID: ${req.body.id} || "Unknown")`)
-    .addField("Email", `${req.body.email || "Unknown"}`)
-    .addField("Message", `${req.body.msg || "None"}`)
-    .setTimestamp();
+    .setTitle(`📬 Contact Form`)
+    .setDescription(`Someone just send message to us!`)
+    .addField("<:members:856161806606401556> User", `${req.body.name || "Unknown"} (ID: \`${req.body.id || "Unknown"}\`)`)
+    .addField("📧 Email", `\`\`\`${req.body.email || "Unknown"}\`\`\``)
+    .addField("📝 Message", `\`\`\`${req.body.msg || "None"}\`\`\``)
+    .setTimestamp()
+    .setFooter("Recived from: " + req.body.url, client.user.displayAvatarURL())
    contactwebhook.send({
     // Prettier
     username: client.user.username + "Contact",
