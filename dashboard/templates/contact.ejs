@@ -1,6 +1,6 @@
 <%- include("partials/head", { bot, user, path, title: "Contact" }) %>
 
-<script src="https://<%= domain %>/css/contact.css"></script>
+<link rel="stylesheet" type="text/css" href="https://<%= domain %>/css/contact.css">
 <% if (user) { %>
  <script>var userID = <%= user.id %> </script>
  <div class="container-contact">
