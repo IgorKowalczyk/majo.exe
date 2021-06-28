@@ -1,5 +1,6 @@
 const Discord = require("discord.js");
 const config = require("../../config");
+const chalk = require("chalk");
 
 module.exports = async (client, guild) => {
  try {
