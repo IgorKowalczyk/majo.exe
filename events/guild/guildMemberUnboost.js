@@ -3,7 +3,6 @@ const sql = require("../../utilities/database");
 
 module.exports = async (client, member) => {
  try {
-  if (!member) return;
   const sqlquery = "SELECT channelid AS res FROM logs WHERE guildid = " + member.guild.id;
   sql.query(sqlquery, function (error, results, fields) {
    if (error) console.log(error);
