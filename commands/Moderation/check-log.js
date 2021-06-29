@@ -15,7 +15,7 @@ module.exports = {
     return message.lineReply({
      embed: {
       color: 16734039,
-      description: "❌ | You don't have premissions to check log channel! You need `MANAGE_CHANNELS` premission!",
+      description: "❌ | You don't have permissions to check log channel! You need `MANAGE_CHANNELS` permission!",
      },
     });
    }

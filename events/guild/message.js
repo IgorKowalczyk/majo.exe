@@ -20,7 +20,7 @@ module.exports = async (client, message) => {
       })
      )
      .setColor("RANDOM")
-     .setDescription(`Why are you DMing me? I can only respond to commands on servers.\n [Maybe you want to invite me?](https://discord.com/oauth2/authorize/?permissions=${config.premissions}&scope=${config.scopes}&client_id=${client.user.id})`)
+     .setDescription(`Why are you DMing me? I can only respond to commands on servers.\n [Maybe you want to invite me?](https://discord.com/oauth2/authorize/?permissions=${config.permissions}&scope=${config.scopes}&client_id=${client.user.id})`)
      .setTimestamp()
      .setFooter(
       `~${client.user.username} created by ${config.author}`,

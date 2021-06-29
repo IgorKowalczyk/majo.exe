@@ -13,7 +13,7 @@ module.exports = {
     return message.lineReply({
      embed: {
       color: 16734039,
-      description: "❌ | You don't have premissions to change logging channel! You need `MANAGE_CHANNELS` premission!",
+      description: "❌ | You don't have permissions to change logging channel! You need `MANAGE_CHANNELS` permission!",
      },
     });
    }

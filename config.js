@@ -19,7 +19,7 @@ module.exports = {
  sessionSecret: process.env.SESSION_SECRET,
  prefix: process.env.PREFIX,
  scopes: "bot%20applications.commands",
- premissions: "4294967287",
+ permissions: "4294967287",
  youtube: process.env.YOUTUBE,
  dashboard: process.env.DASHBOARD,
  brainid: process.env.BRAINID,

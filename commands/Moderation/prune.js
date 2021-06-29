@@ -11,7 +11,7 @@ module.exports = {
    if (!message.member.hasPermission("MANAGE_MESSAGES") || !message.member.hasPermission("ADMINISTRATOR")) {
     let error = new Discord.MessageEmbed() // Prettier()
      .setColor("FF5757")
-     .setDescription("❌ | You don't have premission to prune messages!")
+     .setDescription("❌ | You don't have permission to prune messages!")
      .setFooter(
       "This message will be deleted after 10 seconds",
       message.author.displayAvatarURL({

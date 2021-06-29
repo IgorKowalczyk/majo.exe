@@ -12,7 +12,7 @@ module.exports = {
     return await message.channel.send({
      embed: {
       color: 16734039,
-      description: "❌ | You don't have premission to kick members",
+      description: "❌ | You don't have permission to kick members",
      },
     });
    }
