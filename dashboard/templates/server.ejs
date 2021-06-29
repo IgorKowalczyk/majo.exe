@@ -29,7 +29,7 @@
  let rolemap = guild.roles.cache
  .sort((a, b) => b.position - a.position)
  .map(r => startstring + r.hexColor + middlestring + r.name + endstring)
- .join(" , "); %>
+ .join(" "); %>
 <% if (rolemap.length > 11024) {
  rolemap = "To many roles to display";
 } %>
