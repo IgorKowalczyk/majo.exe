@@ -3,7 +3,7 @@ const Discord = require("discord.js");
 module.exports = {
  name: "say",
  aliases: [],
- description: "Shows a random image (and text) from the random board from 4chan",
+ description: "Send a message using bot",
  category: "Moderation",
  usage: "say <channel> <message>",
  run: async (client, message, args) => {
@@ -29,7 +29,7 @@ module.exports = {
    message.lineReply({
     embed: {
      color: 16734039,
-     description: "❌ | You don't have premission to send this message by me!",
+     description: "❌ | You don't have permission to send this message by me!",
     },
    });
   }
