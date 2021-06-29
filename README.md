@@ -164,6 +164,7 @@ COOKIES=YOUR_YOUTUBE_COOKIES
 
 ## Contributors
 - [@Joao-Victor-Liporini](https://github.com/Joao-Victor-Liporini) (Bug fixes, command-handler improvements, testing, new features)
+- [@Wafelowski](https://github.com/HeavyWolfPL) (Translation improvements)
 - [@dhvitOP](https://github.com/dhvitOP) (Music commands)
 
 ## Developed using
