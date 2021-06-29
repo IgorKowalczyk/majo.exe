@@ -14,7 +14,7 @@ textarea {
  outline: none;
  max-width: 100%;
  min-width: 100%;
- resize: vertical
+ resize: vertical;
  max-height: 200px;
 }
 

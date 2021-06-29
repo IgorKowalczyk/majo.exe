@@ -24,14 +24,15 @@
 <h2>Majo.exe settings</h2>
 <% sqlquery = "SELECT channelid AS res FROM welcome WHERE guildid = " + guild.id
 sql.query(sqlquery, function (error, results, fields) {
- if (error) return console.log(error)
- if (results[0]) {
-  channel = results[0].res
- } else {
-  channel = "Not set!"
- }
- }) %>
-<%= channel %>
+ if (error) return console.log(error);
+ (async () => {
+  channel = await results[0].res;
+  channelfinal = await guild.channels.cache.find((c) => c.id == channel && c.type == "text");
+ })();
+ channelfinnal2 = channelfinal.name;
+ })
+%>
+<%= channelfinnal2 || "Not Set!" %>
 <h2>Roles</h2>
 <% 
  let startstring = "<span class='r' style='color:";
