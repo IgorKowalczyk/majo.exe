@@ -209,19 +209,19 @@ module.exports = async (client) => {
    `{
    "guilds": "` +
     client.guilds.cache.size +
-   `",
+    `",
    "members": "` +
     client.guilds.cache.reduce((a, g) => a + g.memberCount, 0) +
-   `",
+    `",
    "prefix": "` +
     process.env.PREFIX +
-   `",
+    `",
    "channels": "` +
     client.channels.cache.size +
-   `",
+    `",
    "uptime": "` +
     client.uptime +
-   `",
+    `",
    }`
   );
  });
