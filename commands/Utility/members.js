@@ -12,7 +12,7 @@ module.exports = {
    const embed = new Discord.MessageEmbed() // Prettier()
     .setAuthor("🧑‍🍼 Total members", message.guild.iconURL)
     .setColor("RANDOM")
-    .setDescription(` **<:members:658538493470965787> All members:** ${message.guild.memberCount}\n\n<:online:844882507408211988> **Online:** \`${members.filter((member) => member.presence.status === "online").size}\`\n<:idle:844882507064410123> **Idle:** \`${members.filter((member) => member.presence.status === "idle").size}\`\n<:dnd:844882506587176960> **Do Not Disturb:** \`${members.filter((member) => member.presence.status === "dnd").size}\`\n<:offline:844882504502870048> **Offline:** \`${members.filter((member) => member.presence.status === "offline").size}\``)
+    .setDescription(`All members:** ${message.guild.memberCount}\n\n<:online:844882507408211988> **Online:** \`${members.filter((member) => member.presence.status === "online").size}\`\n<:idle:844882507064410123> **Idle:** \`${members.filter((member) => member.presence.status === "idle").size}\`\n<:dnd:844882506587176960> **Do Not Disturb:** \`${members.filter((member) => member.presence.status === "dnd").size}\`\n<:offline:844882504502870048> **Offline:** \`${members.filter((member) => member.presence.status === "offline").size}\``)
     .setFooter(
      "Requested by " + `${message.author.username}`,
      message.author.displayAvatarURL({
