@@ -8,6 +8,7 @@ module.exports = {
  usage: "members",
  run: async (client, message, args) => {
   try {
+   const members = message.guild.members.cache;
    const embed = new Discord.MessageEmbed() // Prettier()
     .setAuthor("🧑‍🍼 Total members", message.guild.iconURL)
     .setColor("RANDOM")
