@@ -11,7 +11,11 @@ module.exports = {
    const embed = new Discord.MessageEmbed() // Prettier()
     .setAuthor("🧑‍🍼 Total members", message.guild.iconURL)
     .setColor("RANDOM")
-    .addField("<:online:844882507408211988> Overall Members: ", message.guild.memberCount)
+    .setDescription("Overall Members" + message.guild.memberCount)
+    .addField("<:online:844882507408211988> Online: ", members.filter(member => member.presence.status === 'online').size)
+    .addField("<:idle:844882507064410123> Idle: ", members.filter(member => member.presence.status === 'idle').size)
+    .addField("<:dnd:844882506587176960> Do Not Disturb: ", members.filter(member => member.presence.status === 'dnd').size)
+    .addField("<:offline:844882504502870048> Offline: ", members.filter(member => member.presence.status === 'offline').size)
     .setTimestamp()
     .setFooter(
      "Requested by " + `${message.author.username}`,
