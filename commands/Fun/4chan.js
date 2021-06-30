@@ -55,11 +55,13 @@ module.exports = {
     });
     res.on("end", (end) => {
      body = JSON.parse(body);
-     var postNr = Math.floor(Math.random() * body.threads.length);
-     var imgId = body.threads[postNr].posts[0].tim;
-     var imgExt = body.threads[postNr].posts[0].ext;
-     var com = body.threads[postNr].posts[0].com;
-     var sub = body.threads[postNr].posts[0].sub;
+     const postNr = Math.floor(Math.random() * body.threads.length);
+     const imgId = body.threads[postNr].posts[0].tim;
+     const imgExt = body.threads[postNr].posts[0].ext;
+     const com = body.threads[postNr].posts[0].com;
+     const sub = body.threads[postNr].posts[0].sub;
+     const replies = body.threads[postNr].posts[0].replies;
+     const images = body.threads[postNr].posts[0].images;
      if (!sub) {
       sub = "Random 4chan thread";
      }
@@ -89,12 +91,12 @@ module.exports = {
        thread
       )
       .setDescription(com)
-      .addField("Thread:", thread)
-      .addField("Image:", imgUrl)
+      .addField("📝 Thread:", thread)
+      .addField("🖼️ Image:", imgUrl)
       .setURL(thread)
       .setTimestamp()
       .setFooter(
-       "Requested by " + `${message.author.username}` + " • Image from 4chan boards",
+        "💬 " + replies + " | 🖼️ " + images + " | Requested by " + `${message.author.username}` + " • Image from 4chan boards",
        message.author.displayAvatarURL({
         dynamic: true,
         format: "png",
@@ -104,10 +106,7 @@ module.exports = {
      if (embed.description.length >= 2048) {
       embed.description = `${embed.description.substr(0, 2045)}...`;
      }
-     message.lineReply(embed);
-     return message.channel.send({
-      files: [imgUrl],
-     });
+     message.lineReply({ files: [imgUrl], embed: embed });
     });
    });
   } catch (err) {
