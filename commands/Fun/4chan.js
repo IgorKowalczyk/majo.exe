@@ -55,13 +55,13 @@ module.exports = {
     });
     res.on("end", (end) => {
      body = JSON.parse(body);
-     const postNr = Math.floor(Math.random() * body.threads.length);
-     const imgId = body.threads[postNr].posts[0].tim;
-     const imgExt = body.threads[postNr].posts[0].ext;
-     const com = body.threads[postNr].posts[0].com;
-     const sub = body.threads[postNr].posts[0].sub;
-     const replies = body.threads[postNr].posts[0].replies;
-     const images = body.threads[postNr].posts[0].images;
+     var postNr = Math.floor(Math.random() * body.threads.length);
+     var imgId = body.threads[postNr].posts[0].tim;
+     var imgExt = body.threads[postNr].posts[0].ext;
+     var com = body.threads[postNr].posts[0].com;
+     var sub = body.threads[postNr].posts[0].sub;
+     var replies = body.threads[postNr].posts[0].replies;
+     var images = body.threads[postNr].posts[0].images;
      if (!sub) {
       sub = "Random 4chan thread";
      }
