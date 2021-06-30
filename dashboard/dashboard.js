@@ -221,8 +221,7 @@ module.exports = async (client) => {
     `",
    "uptime": "` +
     client.uptime +
-    `",
-   }`
+    `"\n}`
   );
  });
 
