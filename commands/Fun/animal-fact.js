@@ -34,6 +34,7 @@ module.exports = {
         size: 2048,
        })
       )
+      .setTitle(`✨ ${args.join(" ")} Fact`)
       .setDescription(response.data.fact);
      message.lineReply(embed);
     })
