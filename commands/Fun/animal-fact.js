@@ -9,7 +9,7 @@ module.exports = {
  usage: "animal-fact",
  run: async (client, message, args) => {
   try {
-   if (!args) {
+   if (!args[0]) {
     return message.lineReply({
      embed: {
       color: 16734039,
@@ -21,20 +21,30 @@ module.exports = {
     method: "GET",
     url: `https://some-random-api.ml/facts/${args.join(" ")}`,
    };
-   axios.request(options).then((response) => {
-    const embed = new Discord.MessageEmbed()
-     .setColor("RANDOM")
-     .setFooter(
-      "Requested by " + `${message.author.username}`,
-      message.author.displayAvatarURL({
-       dynamic: true,
-       format: "png",
-       size: 2048,
-      })
-     )
-     .setDescription(response.data.fact);
-    message.lineReply(embed);
-   });
+   axios
+    .request(options)
+    .then((response) => {
+     const embed = new Discord.MessageEmbed()
+      .setColor("RANDOM")
+      .setFooter(
+       "Requested by " + `${message.author.username}`,
+       message.author.displayAvatarURL({
+        dynamic: true,
+        format: "png",
+        size: 2048,
+       })
+      )
+      .setDescription(response.data.fact);
+     message.lineReply(embed);
+    })
+    .catch(() => {
+     return message.lineReply({
+      embed: {
+       color: 16734039,
+       description: "❌ | Sorry, we don't have any facts for that animal",
+      },
+     });
+    });
   } catch (err) {
    message.lineReply({
     embed: {

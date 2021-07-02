@@ -24,7 +24,8 @@ module.exports = {
        size: 2048,
       })
      )
-     .setDescription("```" + response.data.token + "```\n\n||Note: This token is propabbly fake!||");
+     .setTitle("<:discordlogo:856166057639149568> Random Discord Bot Token")
+     .setDescription("```" + response.data.token + "```\n||Note: This token is propabbly fake!||");
     message.lineReply(embed);
    });
   } catch (err) {

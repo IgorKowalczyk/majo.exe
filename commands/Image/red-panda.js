@@ -24,6 +24,7 @@ module.exports = {
        size: 2048,
       })
      )
+     .setImage("🐼 Red Panda")
      .setImage(response.data.link);
     message.lineReply(embed);
    });
