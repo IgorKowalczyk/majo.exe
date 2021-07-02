@@ -41,7 +41,7 @@ module.exports = {
       })
      )
      .setTitle(`✨ Base64 Decoder`)
-     .setDescription("```" + response.data.base64 + "```");
+     .setDescription("```" + response.data.text + "```");
     message.lineReply(embed);
    });
   } catch (err) {
