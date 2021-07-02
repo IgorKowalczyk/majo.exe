@@ -1,5 +1,5 @@
 const Discord = require("discord.js");
-const randomPuppy = require("random-puppy");
+const axios = require("axios").default;
 
 module.exports = {
  name: "meme",
@@ -9,15 +9,19 @@ module.exports = {
  usage: "meme",
  run: async (client, message, args) => {
   try {
-   const subReddits = ["meme", "animemes", "MemesOfAnime", "animememes", "AnimeFunny", "dankmemes", "dankmeme", "wholesomememes", "MemeEconomy", "techsupportanimals", "meirl", "me_irl", "2meirl4meirl", "AdviceAnimals"];
-   const random = subReddits[Math.floor(Math.random() * subReddits.length)];
-   randomPuppy(random).then(async (url) => {
+   const options = {
+    method: "GET",
+    url: `https://reddit.com/r/dankmemes/random/.json`,
+   };
+   axios.request(options).then((response) => {
+    let meme = response.data[0].data.children[0].data;
     const embed = new Discord.MessageEmbed() // Prettier()
      .setColor("RANDOM")
-     .setTitle("Random meme")
-     .setImage(url)
+     .setTitle(meme.title)
+     .setURL(`https://reddit.com${meme.permalink}`)
+     .setImage(meme.url)
      .setFooter(
-      "Requested by " + `${message.author.username}`,
+      `👍 ${meme.ups} | 💬 ${meme.num_comments} | Requested by ${message.author.username}`,
       message.author.displayAvatarURL({
        dynamic: true,
        format: "png",

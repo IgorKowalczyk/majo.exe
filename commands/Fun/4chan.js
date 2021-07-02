@@ -96,7 +96,7 @@ module.exports = {
       .setURL(thread)
       .setTimestamp()
       .setFooter(
-        "💬 " + replies + " | 🖼️ " + images + " | Requested by " + `${message.author.username}` + " • Image from 4chan boards",
+       "💬 " + replies + " | 🖼️ " + images + " | Requested by " + `${message.author.username}` + " • Image from 4chan boards",
        message.author.displayAvatarURL({
         dynamic: true,
         format: "png",
