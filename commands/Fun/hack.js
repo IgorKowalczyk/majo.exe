@@ -30,12 +30,12 @@ module.exports = {
      .send({
       embed: {
        color: 8118348,
-       description: "<:discduckmicroshit:856174395205615647> Hacking" + member.user.username,
+       description: "<:discduckmicroshit:856174395205615647> Hacking " + member.user.username + "...",
       },
      })
      .then((msg) => {
       setTimeout(function () {
-       msg.edit({ embed: { color: 8118348, title: "<:discduckmicroshit:856174395205615647> I hacked " + member.user.username, description: "<a:success:759354039242063903> `" + hacks[Math.floor(Math.random() * hacks.length)] + "`" } });
+       msg.edit({ embed: { color: 8118348, title: "<:discduckmicroshit:856174395205615647> I hacked " + member.user.username + "!", description: "<a:success:759354039242063903> `" + hacks[Math.floor(Math.random() * hacks.length)] + "`" } });
       }, randomDelay);
      })
      .catch(console.error);
@@ -44,12 +44,12 @@ module.exports = {
      .send({
       embed: {
        color: 16734039,
-       description: "<:discduckmicroshit:856174395205615647> Hacking" + member.user.username,
+       description: "<:discduckmicroshit:856174395205615647> Hacking " + member.user.username + "...",
       },
      })
      .then((msg) => {
       setTimeout(function () {
-       msg.edit({ embed: { color: 16734039, title: "<:discduckmicroshit:856174395205615647> I can't hack " + member.user.username, description: ":x: `" + fails[Math.floor(Math.random() * fails.length)] + "`" } });
+       msg.edit({ embed: { color: 16734039, title: "<:discduckmicroshit:856174395205615647> I can't hack " + member.user.username + "!", description: ":x: `" + fails[Math.floor(Math.random() * fails.length)] + "`" } });
       }, randomDelay);
      });
    }
