@@ -2,7 +2,7 @@ const Discord = require("discord.js");
 
 module.exports = {
  name: "servers",
- aliases: [],
+ aliases: ["guilds"],
  description: "Displays total servers where I'm",
  category: "General",
  usage: "servers",
