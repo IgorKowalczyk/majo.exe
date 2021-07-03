@@ -30,6 +30,7 @@
   "common-tags": "^1.8.0",
   "dateformat": "^3.0.3",
   "delay": "^4.4.0",
+  "base64-js": "1.5.1",
   "discord-buttons": "^3.0.1",
   "discord-emoji-convert": "^1.6.0",
   "discord-giveaways": "^4.5.1",

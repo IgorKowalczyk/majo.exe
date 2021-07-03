@@ -1,4 +1,4 @@
-const axios = require("axios").default;
+const base = require("base64-js");
 const Discord = require("discord.js");
 
 module.exports = {
@@ -25,25 +25,19 @@ module.exports = {
      },
     });
    }
-   const options = {
-    method: "GET",
-    url: `https://some-random-api.ml/base64?encode=${args.join(" ")}`,
-   };
-   axios.request(options).then((response) => {
-    const embed = new Discord.MessageEmbed()
-     .setColor("RANDOM")
-     .setFooter(
-      "Requested by " + `${message.author.username}`,
-      message.author.displayAvatarURL({
-       dynamic: true,
-       format: "png",
-       size: 2048,
-      })
-     )
-     .setTitle(`✨ Base64 Encoder`)
-     .setDescription("```" + response.data.base64 + "```");
-    message.lineReply(embed);
-   });
+   const embed = new Discord.MessageEmbed()
+    .setColor("RANDOM")
+    .setFooter(
+     "Requested by " + `${message.author.username}`,
+     message.author.displayAvatarURL({
+      dynamic: true,
+      format: "png",
+      size: 2048,
+     })
+    )
+    .setTitle(`✨ Base64 Encoder`)
+    .setDescription("```" + base.fromByteArray(args.join(" ")) + "```");
+   message.lineReply(embed);
   } catch (err) {
    message.lineReply({
     embed: {
