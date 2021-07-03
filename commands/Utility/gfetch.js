@@ -3,13 +3,29 @@ const Discord = require("discord.js");
 module.exports = {
  name: "gfetch",
  aliases: ["giveaway-fetch", "glist", "giveaway-list"],
- description: "Create a giveaway",
+ description: "Fetch server current giveaways",
  category: "Utility",
  usage: "gfetch",
  run: async (client, message, args) => {
   try {
    const giveaways = client.giveawaysManager.giveaways.filter((g) => g.guildID === message.guild.id);
-   console.log(giveaways);
+   let giveaways = [];
+   const giveaways1 = client.giveawaysManager.giveaways.filter((g) => g.guildID === message.guild.id);
+   const giveaways2 = giveaways1.filter((g) => !g.ended);
+   const giveaways3 = giveaways2.forEach((thisGiveaway) => {
+    let winners = "";
+    if (thisGiveaway.winnerCount == 1) {
+     winners = "winner";
+    } else {
+     winners = "winners";
+    }
+    giveaways.push(`\`${thisGiveaway.messageID}\` | <#${thisGiveaway.channelID}> | **${thisGiveaway.winnerCount}** ${winners} | Prize: **${thisGiveaway.prize}** | [Giveaway Link](https://discord.com/channels/${message.guild.id}/${thisGiveaway.channelID}/${thisGiveaway.messageID})`);
+   });
+   const embed = new Discord.MessageEmbed()
+    .setColor("RANDOM")
+    .setTitle("Current Giveaways")
+    .setDescription(giveaways.join("\n") || "<:error:860884617770303519> No giveaways are currently running!");
+   message.channel.send(embed);
   } catch (err) {
    message.lineReply({
     embed: {
