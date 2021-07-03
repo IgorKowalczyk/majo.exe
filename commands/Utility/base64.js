@@ -38,7 +38,7 @@ module.exports = {
     )
     .setTitle(`✨ Base64 Encoder`)
     .addField("📥 Text to encode", `\`\`\`${args.join(" ")}\`\`\``)
-    .addField("📤 Encoded text", `\`\`\` ${base64 || "An unknown error ocurred while encoding!"}\`\`\``);
+    .addField("📤 Encoded text", `\`\`\`${base64 || "An unknown error ocurred while encoding!"}\`\`\``);
    message.lineReply(embed);
   } catch (err) {
    message.lineReply({

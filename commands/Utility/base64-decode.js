@@ -38,7 +38,7 @@ module.exports = {
     )
     .setTitle(`✨ Base64 Decoder`)
     .addField("📥 Text to decode", `\`\`\`${args.join(" ")}\`\`\``)
-    .addField("📤 Decoded text", `\`\`\` ${base64 || "An unknown error ocurred while decoding!"}\`\`\``);
+    .addField("📤 Decoded text", `\`\`\`${base64 || "An unknown error ocurred while decoding!"}\`\`\``);
    message.lineReply(embed);
   } catch (err) {
    message.lineReply({
