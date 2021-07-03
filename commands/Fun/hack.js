@@ -27,7 +27,7 @@ module.exports = {
    let chance = Math.random();
    if (chance >= 0.4) {
     return message.channel
-     .send({
+     .lineReply({
       embed: {
        color: 8118348,
        description: "<:discduckmicroshit:856174395205615647> Hacking " + member.user.username + "...",
@@ -41,7 +41,7 @@ module.exports = {
      .catch(console.error);
    } else {
     return message.channel
-     .send({
+     .lineReply({
       embed: {
        color: 16734039,
        description: "<:discduckmicroshit:856174395205615647> Hacking " + member.user.username + "...",
