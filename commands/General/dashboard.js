@@ -27,7 +27,7 @@ module.exports = {
    }
    if (message.member.hasPermission("MANAGE_GUILD")) {
     const embed = new Discord.MessageEmbed() // Prettier()
-     .setTitle("<a:sucess:759354039242063903> Yay!")
+     .setTitle("<:success:860884617820110909> Yay!")
      .setDescription("🔗 Your server link: " + process.env.DOMAIN + "/dashboard/" + message.guild.id + "\n🔗 Dashboard link: " + process.env.DOMAIN)
      .setTimestamp()
      .setColor("RANDOM")
@@ -42,7 +42,7 @@ module.exports = {
     message.lineReply(embed);
    } else {
     const embed = new Discord.MessageEmbed() // Prettier()
-     .setTitle("<a:sucess:759354039242063903> Yay!")
+     .setTitle("<:success:860884617820110909> Yay!")
      .setDescription("🔗 Our dashboard link: " + process.env.DOMAIN)
      .setTimestamp()
      .setColor("RANDOM")

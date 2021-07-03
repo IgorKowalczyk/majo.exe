@@ -16,7 +16,7 @@ module.exports = {
     return message.lineReply({
      embed: {
       color: 16734039,
-      description: "❌ | Please mention a user!",
+      description: "<:error:860884617770303519> | Please mention a user!",
      },
     });
    }
@@ -24,7 +24,7 @@ module.exports = {
     return message.lineReply({
      embed: {
       color: 16734039,
-      description: "❌ | Posterize must be a number!",
+      description: "<:error:860884617770303519> | Posterize must be a number!",
      },
     });
    }
@@ -32,7 +32,7 @@ module.exports = {
     return message.lineReply({
      embed: {
       color: 16734039,
-      description: "❌ | Posterize cannot be negative!",
+      description: "<:error:860884617770303519> | Posterize cannot be negative!",
      },
     });
    }
@@ -40,7 +40,7 @@ module.exports = {
     return message.lineReply({
      embed: {
       color: 16734039,
-      description: "❌ | Posterize must be higher than 2!",
+      description: "<:error:860884617770303519> | Posterize must be higher than 2!",
      },
     });
    }
@@ -48,7 +48,7 @@ module.exports = {
     return message.lineReply({
      embed: {
       color: 16734039,
-      description: "❌ | Posterize must be lower than 40!",
+      description: "<:error:860884617770303519> | Posterize must be lower than 40!",
      },
     });
    }

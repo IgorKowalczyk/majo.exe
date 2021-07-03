@@ -26,7 +26,7 @@ module.exports = {
     return message.lineReply(embed);
    }
    const embed = new Discord.MessageEmbed() // Prettier()
-    .setTitle("<a:sucess:759354039242063903> Yay!")
+    .setTitle("<:success:860884617820110909> Yay!")
     .setDescription("🔗 Contact Form: " + process.env.DOMAIN + "/contact")
     .setTimestamp()
     .setColor("RANDOM")

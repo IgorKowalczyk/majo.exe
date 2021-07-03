@@ -17,7 +17,7 @@ module.exports = {
     return message.lineReply({
      embed: {
       color: 16734039,
-      description: "❌ | There is a search active!",
+      description: "<:error:860884617770303519> | There is a search active!",
      },
     });
    }
@@ -25,7 +25,7 @@ module.exports = {
     return message.lineReply({
      embed: {
       color: 16734039,
-      description: "❌ | Please join a voice channel first!",
+      description: "<:error:860884617770303519> | Please join a voice channel first!",
      },
     });
    }
@@ -33,7 +33,7 @@ module.exports = {
     return message.lineReply({
      embed: {
       color: 16734039,
-      description: "❌ | You must be in the same voice channel as me!",
+      description: "<:error:860884617770303519> | You must be in the same voice channel as me!",
      },
     });
    }
@@ -42,7 +42,7 @@ module.exports = {
     return message.lineReply({
      embed: {
       color: 16734039,
-      description: "❌ | You must enter a song for search!",
+      description: "<:error:860884617770303519> | You must enter a song for search!",
      },
     });
    }
@@ -120,7 +120,7 @@ module.exports = {
     message.lineReply({
      embed: {
       color: 16734039,
-      description: "❌ | An error occurred",
+      description: "<:error:860884617770303519> | An error occurred",
      },
     });
     return resultsMessage.delete();

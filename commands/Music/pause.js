@@ -15,7 +15,7 @@ module.exports = {
     return message.channel.send({
      embed: {
       color: 16734039,
-      description: "❌ | This is nothing playing right now",
+      description: "<:error:860884617770303519> | This is nothing playing right now",
      },
     });
    }
@@ -23,7 +23,7 @@ module.exports = {
     return message.channel.send({
      embed: {
       color: 16734039,
-      description: "❌ | Please join a voice channel first",
+      description: "<:error:860884617770303519> | Please join a voice channel first",
      },
     });
    }
@@ -31,7 +31,7 @@ module.exports = {
     return message.channel.send({
      embed: {
       color: 16734039,
-      description: "❌ | You must be in the same voice channel as me",
+      description: "<:error:860884617770303519> | You must be in the same voice channel as me",
      },
     });
    }

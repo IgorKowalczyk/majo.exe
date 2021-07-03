@@ -14,7 +14,7 @@ module.exports = {
     return message.lineReply({
      embed: {
       color: 16734039,
-      description: "❌ | Please enter text to convert!",
+      description: "<:error:860884617770303519> | Please enter text to convert!",
      },
     });
    }
@@ -22,7 +22,7 @@ module.exports = {
     return message.lineReply({
      embed: {
       color: 16734039,
-      description: "❌ | Please enter shorter string, maximum length is 30 characters!",
+      description: "<:error:860884617770303519> | Please enter shorter string, maximum length is 30 characters!",
      },
     });
    }
@@ -31,7 +31,7 @@ module.exports = {
     return message.lineReply({
      embed: {
       color: 16734039,
-      description: "❌ | I cannot convert the text",
+      description: "<:error:860884617770303519> | I cannot convert the text",
      },
     });
    }

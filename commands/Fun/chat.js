@@ -18,7 +18,7 @@ module.exports = {
     return message.lineReply({
      embed: {
       color: 16734039,
-      description: "❌ | Hey! Please provide some message to talk to me :(",
+      description: "<:error:860884617770303519> | Hey! Please provide some message to talk to me :(",
      },
     });
    }
@@ -26,7 +26,7 @@ module.exports = {
     return message.lineReply({
      embed: {
       color: 16734039,
-      description: "❌ | Hey! Please don't ping people >:(",
+      description: "<:error:860884617770303519> | Hey! Please don't ping people >:(",
      },
     });
    }
@@ -37,7 +37,7 @@ module.exports = {
      return message.lineReply({
       embed: {
        color: 16734039,
-       description: "❌ | Some error occured with my brain cells... Please try again later",
+       description: "<:error:860884617770303519> | Some error occured with my brain cells... Please try again later",
       },
      });
     } else {

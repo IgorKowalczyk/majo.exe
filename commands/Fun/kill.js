@@ -15,7 +15,7 @@ module.exports = {
     return message.lineReply({
      embed: {
       color: 16734039,
-      description: "❌ | Mention a valid member of this server!",
+      description: "<:error:860884617770303519> | Mention a valid member of this server!",
      },
     });
    }
@@ -23,7 +23,7 @@ module.exports = {
     return await message.lineReply({
      embed: {
       color: 16734039,
-      description: "❌ | You cant kill yourself!",
+      description: "<:error:860884617770303519> | You cant kill yourself!",
      },
     });
    }

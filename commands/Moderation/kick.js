@@ -12,7 +12,7 @@ module.exports = {
     return await message.channel.send({
      embed: {
       color: 16734039,
-      description: "❌ | You don't have permission to kick members",
+      description: "<:error:860884617770303519> | You don't have permission to kick members",
      },
     });
    }
@@ -22,7 +22,7 @@ module.exports = {
     return await message.lineReply({
      embed: {
       color: 16734039,
-      description: "❌ | Mention a valid member!",
+      description: "<:error:860884617770303519> | Mention a valid member!",
      },
     });
    }
@@ -30,7 +30,7 @@ module.exports = {
     return await message.lineReply({
      embed: {
       color: 16734039,
-      description: "❌ | You cannot kick this member!",
+      description: "<:error:860884617770303519> | You cannot kick this member!",
      },
     });
    }
@@ -38,7 +38,7 @@ module.exports = {
     return await message.lineReply({
      embed: {
       color: 16734039,
-      description: "❌ | You cant kick yourself!",
+      description: "<:error:860884617770303519> | You cant kick yourself!",
      },
     });
    }

@@ -18,7 +18,7 @@ module.exports = {
    return message.lineReply({
     embed: {
      color: 16734039,
-     description: "❌ | You should join a voice channel before using this command!",
+     description: "<:error:860884617770303519> | You should join a voice channel before using this command!",
     },
    });
   }
@@ -26,7 +26,7 @@ module.exports = {
    return message.channel.send({
     embed: {
      color: 16734039,
-     description: "❌ | You must be in the same voice channel as me",
+     description: "<:error:860884617770303519> | You must be in the same voice channel as me",
     },
    });
   }
@@ -34,7 +34,7 @@ module.exports = {
    return message.channel.send({
     embed: {
      color: 16734039,
-     description: `❌ | Usage: ${process.env.PREFIX} play <youtube link | youtube video name>`,
+     description: `<:error:860884617770303519> | Usage: ${process.env.PREFIX} play <youtube link | youtube video name>`,
     },
    });
   }
@@ -43,7 +43,7 @@ module.exports = {
    return message.lineReply({
     embed: {
      color: 16734039,
-     description: "❌ | I need permissions to join your channel!",
+     description: "<:error:860884617770303519> | I need permissions to join your channel!",
     },
    });
   }
@@ -51,7 +51,7 @@ module.exports = {
    return message.lineReply({
     embed: {
      color: 16734039,
-     description: "❌ | I need permissions to speak in your channel",
+     description: "<:error:860884617770303519> | I need permissions to speak in your channel",
     },
    });
   }
@@ -136,7 +136,7 @@ module.exports = {
      return message.lineReply({
       embed: {
        color: 16734039,
-       description: "❌ | Cannot play the video!",
+       description: "<:error:860884617770303519> | Cannot play the video!",
       },
      });
     }
@@ -146,7 +146,7 @@ module.exports = {
      return message.lineReply({
       embed: {
        color: 16734039,
-       description: "❌ | Max uses of api key, please update! (403)",
+       description: "<:error:860884617770303519> | Max uses of api key, please update! (403)",
       },
      });
     } else if (song.statusCode === 429) {
@@ -154,7 +154,7 @@ module.exports = {
      return message.lineReply({
       embed: {
        color: 16734039,
-       description: "❌ | Max uses of host requests, please try again later (429)",
+       description: "<:error:860884617770303519> | Max uses of host requests, please try again later (429)",
       },
      });
     }
@@ -183,7 +183,7 @@ module.exports = {
    return message.lineReply({
     embed: {
      color: 16734039,
-     description: "❌ | Cannot play the video!",
+     description: "<:error:860884617770303519> | Cannot play the video!",
     },
    });
   }
@@ -191,7 +191,7 @@ module.exports = {
    return message.lineReply({
     embed: {
      color: 16734039,
-     description: "❌ | Cannot play the video!",
+     description: "<:error:860884617770303519> | Cannot play the video!",
     },
    });
   }
@@ -236,7 +236,7 @@ module.exports = {
    return message.channel.send({
     embed: {
      color: 16734039,
-     description: "❌ | I could not join the channel",
+     description: "<:error:860884617770303519> | I could not join the channel",
     },
    });
   }

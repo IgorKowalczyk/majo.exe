@@ -13,7 +13,7 @@ module.exports = {
     return message.lineReply({
      embed: {
       color: 16734039,
-      description: "❌ | You must provide a text!",
+      description: "<:error:860884617770303519> | You must provide a text!",
      },
     });
    }
@@ -22,7 +22,7 @@ module.exports = {
     return message.lineReply({
      embed: {
       color: 16734039,
-      description: `❌ | The max lenght for text is ${max} letters!`,
+      description: `<:error:860884617770303519> | The max lenght for text is ${max} letters!`,
      },
     });
    var flipped = [];

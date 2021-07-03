@@ -29,7 +29,7 @@ module.exports = {
    message.lineReply({
     embed: {
      color: 16734039,
-     description: "❌ | You don't have permission to send this message by me!",
+     description: "<:error:860884617770303519> | You don't have permission to send this message by me!",
     },
    });
   }

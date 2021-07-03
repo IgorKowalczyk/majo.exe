@@ -11,7 +11,7 @@ module.exports = {
   try {
    const embed = new Discord.MessageEmbed() // Prettier()
     .setTitle(
-     `<a:sucess:759354039242063903> YAY!`,
+     `<:success:860884617820110909> YAY!`,
      message.author.displayAvatarURL({
       dynamic: true,
       format: "png",

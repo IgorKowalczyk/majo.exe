@@ -22,7 +22,7 @@ module.exports = {
     return message.channel.send({
      embed: {
       color: 16734039,
-      description: "❌ | You must enter a text to search for furry!",
+      description: "<:error:860884617770303519> | You must enter a text to search for furry!",
      },
     });
    }
@@ -57,14 +57,14 @@ module.exports = {
       return message.channel.send({
        embed: {
         color: 16734039,
-        description: `❌ | No results found for: ${query}`,
+        description: `<:error:860884617770303519> | No results found for: ${query}`,
        },
       });
      } else {
       return message.channel.send({
        embed: {
         color: 16734039,
-        description: `❌ | No results found for: ${query}`,
+        description: `<:error:860884617770303519> | No results found for: ${query}`,
        },
       });
      }

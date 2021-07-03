@@ -13,7 +13,7 @@ module.exports = {
     return message.lineReply({
      embed: {
       color: 16734039,
-      description: "❌ | You must mention a vaild member",
+      description: "<:error:860884617770303519> | You must mention a vaild member",
      },
     });
    }
@@ -35,7 +35,7 @@ module.exports = {
      })
      .then((msg) => {
       setTimeout(function () {
-       msg.edit({ embed: { color: 8118348, title: "<:discduckmicroshit:856174395205615647> I hacked " + member.user.username + "!", description: "<a:success:759354039242063903> `" + hacks[Math.floor(Math.random() * hacks.length)] + "`" } });
+       msg.edit({ embed: { color: 8118348, title: "<:discduckmicroshit:856174395205615647> I hacked " + member.user.username + "!", description: "<:success:860884617820110909> `" + hacks[Math.floor(Math.random() * hacks.length)] + "`" } });
       }, randomDelay);
      })
      .catch(console.error);

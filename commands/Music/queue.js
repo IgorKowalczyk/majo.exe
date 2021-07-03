@@ -14,7 +14,7 @@ module.exports = {
     return message.channel.send({
      embed: {
       color: 16734039,
-      description: "❌ | This is nothing playing right now",
+      description: "<:error:860884617770303519> | This is nothing playing right now",
      },
     });
    }

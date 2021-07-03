@@ -15,7 +15,7 @@ module.exports = {
     return message.lineReply({
      embed: {
       color: 16734039,
-      description: "❌ | You don't have permissions to delete logging channel! You need `MANAGE_CHANNELS` permission!",
+      description: "<:error:860884617770303519> | You don't have permissions to delete logging channel! You need `MANAGE_CHANNELS` permission!",
      },
     });
    }
@@ -37,7 +37,7 @@ module.exports = {
      message.lineReply({
       embed: {
        color: 16734039,
-       description: `❌ | You haven't configured logs on this server yet so you can't delete the channel, run \`${prefix} set-log <channel>\` to configure logging!`,
+       description: `<:error:860884617770303519> | You haven't configured logs on this server yet so you can't delete the channel, run \`${prefix} set-log <channel>\` to configure logging!`,
       },
      });
     }

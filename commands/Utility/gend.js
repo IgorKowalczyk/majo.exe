@@ -13,7 +13,7 @@ module.exports = {
     return message.lineReply({
      embed: {
       color: 16734039,
-      description: "❌ | Please enter a giveaway message ID",
+      description: "<:error:860884617770303519> | Please enter a giveaway message ID",
      },
     });
    }
@@ -22,7 +22,7 @@ module.exports = {
     return message.lineReply({
      embed: {
       color: 16734039,
-      description: "❌ | Unable to find a giveaway for `" + args.join(" ") + "`.",
+      description: "<:error:860884617770303519> | Unable to find a giveaway for `" + args.join(" ") + "`.",
      },
     });
    }
@@ -40,7 +40,7 @@ module.exports = {
      return message.lineReply({
       embed: {
        color: 16734039,
-       description: "❌ | No giveaway found for " + messageID + ", please check and try again",
+       description: "<:error:860884617770303519> | No giveaway found for " + messageID + ", please check and try again",
       },
      });
     });

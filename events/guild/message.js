@@ -37,7 +37,7 @@ module.exports = async (client, message) => {
   }
   if (message.content === `<@${client.user.id}>` || message.content === `<@!${client.user.id}>`) {
    const embed = new Discord.MessageEmbed() // Prettier()
-    .setTitle(`<a:sucess:759354039242063903> Hi!`, message.guild.iconURL())
+    .setTitle(`<:success:860884617820110909> Hi!`, message.guild.iconURL())
     .setColor("RANDOM")
     .setDescription("I was pinged by you, here I am - " + client.user.username + "! My prefix is `" + prefix + "` To see all  my commands please type `" + prefix + " help`")
     .setTimestamp()
@@ -63,7 +63,7 @@ module.exports = async (client, message) => {
    return message.lineReply({
     embed: {
      color: 16734039,
-     description: "❌ | That command does not exist, Take a look at `" + `${prefix}` + " help`!",
+     description: "<:error:860884617770303519> | That command does not exist, Take a look at `" + `${prefix}` + " help`!",
     },
    });
   }
@@ -72,7 +72,7 @@ module.exports = async (client, message) => {
    return message.lineReply({
     embed: {
      color: 16734039,
-     description: "❌ | Majo: The command cannot contain the `process.env` string for safetly reasons. We are sorry...",
+     description: "<:error:860884617770303519> | Majo: The command cannot contain the `process.env` string for safetly reasons. We are sorry...",
     },
    });
   }
@@ -86,7 +86,7 @@ module.exports = async (client, message) => {
     return message.lineReply({
      embed: {
       color: 16734039,
-      description: ` ❌ | ${message.author} slow down! You have to wait \`${ms(timeLeft)}\` before you can use this command again!`,
+      description: ` <:error:860884617770303519> | ${message.author} slow down! You have to wait \`${ms(timeLeft)}\` before you can use this command again!`,
      },
     });
    } else {
@@ -102,7 +102,7 @@ module.exports = async (client, message) => {
   message.lineReply({
    embed: {
     color: 16734039,
-    description: "❌ | Something went wrong while running this command! Please try again later",
+    description: "<:error:860884617770303519> | Something went wrong while running this command! Please try again later",
    },
   });
  }

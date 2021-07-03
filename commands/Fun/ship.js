@@ -14,7 +14,7 @@ module.exports = {
     return message.lineReply({
      embed: {
       color: 16734039,
-      description: "❌ | Please mention a user to ship!",
+      description: "<:error:860884617770303519> | Please mention a user to ship!",
      },
     });
    }
@@ -23,7 +23,7 @@ module.exports = {
     return message.lineReply({
      embed: {
       color: 16734039,
-      description: "❌ | Please mention a secound user to ship!",
+      description: "<:error:860884617770303519> | Please mention a secound user to ship!",
      },
     });
    }

@@ -15,7 +15,7 @@ module.exports = {
     return message.lineReply({
      embed: {
       color: 16734039,
-      description: "❌ | Please enter a song to search!",
+      description: "<:error:860884617770303519> | Please enter a song to search!",
      },
     });
    }
@@ -53,7 +53,7 @@ module.exports = {
     return message.lineReply({
      embed: {
       color: 16734039,
-      description: "❌ | Cannot fetch song!",
+      description: "<:error:860884617770303519> | Cannot fetch song!",
      },
     });
    }

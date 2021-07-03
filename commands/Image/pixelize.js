@@ -16,7 +16,7 @@ module.exports = {
      return message.lineReply({
       embed: {
        color: 16734039,
-       description: "❌ | Pixelize must be a number!",
+       description: "<:error:860884617770303519> | Pixelize must be a number!",
       },
      });
     }
@@ -24,7 +24,7 @@ module.exports = {
      return message.lineReply({
       embed: {
        color: 16734039,
-       description: "❌ | Pixelize cannot be negative!",
+       description: "<:error:860884617770303519> | Pixelize cannot be negative!",
       },
      });
     }
@@ -32,7 +32,7 @@ module.exports = {
      return message.lineReply({
       embed: {
        color: 16734039,
-       description: "❌ | Pixelize must be higher than 2!",
+       description: "<:error:860884617770303519> | Pixelize must be higher than 2!",
       },
      });
     }
@@ -40,7 +40,7 @@ module.exports = {
      return message.lineReply({
       embed: {
        color: 16734039,
-       description: "❌ | Pixelize must be lower than 50!",
+       description: "<:error:860884617770303519> | Pixelize must be lower than 50!",
       },
      });
     }
@@ -50,7 +50,7 @@ module.exports = {
     return message.lineReply({
      embed: {
       color: 16734039,
-      description: "❌ | Please mention a user!",
+      description: "<:error:860884617770303519> | Please mention a user!",
      },
     });
    }

@@ -15,7 +15,7 @@ module.exports = {
     return message.channel.send({
      embed: {
       color: 16734039,
-      description: "❌ | You should join a voice channel before using this command!",
+      description: "<:error:860884617770303519> | You should join a voice channel before using this command!",
      },
     });
    }
@@ -32,7 +32,7 @@ module.exports = {
     return message.channel.send({
      embed: {
       color: 4779354,
-      description: "❌ | You can't set volume higher than 10 (Your ears.. 🪦)",
+      description: "<:error:860884617770303519> | You can't set volume higher than 10 (Your ears.. 🪦)",
      },
     });
    }
@@ -40,7 +40,7 @@ module.exports = {
     return message.channel.send({
      embed: {
       color: 4779354,
-      description: "❌ | You must enter correct value. I only accept numbers from 1 to 10!",
+      description: "<:error:860884617770303519> | You must enter correct value. I only accept numbers from 1 to 10!",
      },
     });
    }

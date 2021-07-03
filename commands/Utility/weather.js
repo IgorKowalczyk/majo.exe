@@ -13,7 +13,7 @@ module.exports = {
     return message.lineReply({
      embed: {
       color: 16734039,
-      description: "❌ | Please specify a location",
+      description: "<:error:860884617770303519> | Please specify a location",
      },
     });
    }
@@ -27,7 +27,7 @@ module.exports = {
       return message.lineReply({
        embed: {
         color: 16734039,
-        description: "❌ | Something went wrong... :cry:",
+        description: "<:error:860884617770303519> | Something went wrong... :cry:",
        },
       });
      }
@@ -35,7 +35,7 @@ module.exports = {
       return message.lineReply({
        embed: {
         color: 16734039,
-        description: "❌ | Invaild location!",
+        description: "<:error:860884617770303519> | Invaild location!",
        },
       });
      }

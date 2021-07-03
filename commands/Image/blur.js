@@ -16,7 +16,7 @@ module.exports = {
      return message.lineReply({
       embed: {
        color: 16734039,
-       description: "❌ | Blur must be a number!",
+       description: "<:error:860884617770303519> | Blur must be a number!",
       },
      });
     }
@@ -24,7 +24,7 @@ module.exports = {
      return message.lineReply({
       embed: {
        color: 16734039,
-       description: "❌ | Blur cannot be negative!",
+       description: "<:error:860884617770303519> | Blur cannot be negative!",
       },
      });
     }
@@ -32,7 +32,7 @@ module.exports = {
      return message.lineReply({
       embed: {
        color: 16734039,
-       description: "❌ | Blur must be higher than 2!",
+       description: "<:error:860884617770303519> | Blur must be higher than 2!",
       },
      });
     }
@@ -40,7 +40,7 @@ module.exports = {
      return message.lineReply({
       embed: {
        color: 16734039,
-       description: "❌ | Blur must be lower than 30!",
+       description: "<:error:860884617770303519> | Blur must be lower than 30!",
       },
      });
     }
@@ -50,7 +50,7 @@ module.exports = {
     return message.lineReply({
      embed: {
       color: 16734039,
-      description: "❌ | Please mention a user!",
+      description: "<:error:860884617770303519> | Please mention a user!",
      },
     });
    }

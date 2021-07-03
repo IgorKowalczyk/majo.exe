@@ -15,7 +15,7 @@ module.exports = {
     return message.lineReply({
      embed: {
       color: 16734039,
-      description: "❌ | Please enter a Github username",
+      description: "<:error:860884617770303519> | Please enter a Github username",
      },
     });
    fetch(`https://api.github.com/users/${args.join("-")}`)
@@ -25,7 +25,7 @@ module.exports = {
       return message.lineReply({
        embed: {
         color: 16734039,
-        description: "❌ | 0 Users found, please provide vaild username",
+        description: "<:error:860884617770303519> | 0 Users found, please provide vaild username",
        },
       });
      let { login, avatar_url, name, id, html_url, company, public_repos, public_gists, twitter_username, email, followers, following, location, created_at, bio } = body;
@@ -38,16 +38,16 @@ module.exports = {
       .setColor(`RANDOM`)
       .setThumbnail(avatar_url)
       .addField(`<:members:856161806606401556> Username`, `\`\`\`${login}\`\`\``)
-      .addField(`📝 Bio`, `\`\`\`${bio || "❌ Bio not provided"}\`\`\``)
+      .addField(`📝 Bio`, `\`\`\`${bio || "<:error:860884617770303519> Bio not provided"}\`\`\``)
       .addField(`📚 Public Repositories`, `\`\`\`${public_repos || "0"}\`\`\``, true)
       .addField(`📚 Public Gists`, `\`\`\`${public_gists || "0"}\`\`\``, true)
       .addField(`🖇️ Followers`, `\`\`\`${followers}\`\`\``, true)
       .addField(`📎 Following`, `\`\`\`${following}\`\`\``, true)
       .addField(`🐙 Github ID`, `\`\`\`${id}\`\`\``)
-      .addField(`🌐 Location`, `\`\`\`${location || "❌ Unknown location"}\`\`\``)
-      .addField(`📧 E-Mail`, `\`\`\`${email || "❌ No public email provided"}\`\`\``)
+      .addField(`🌐 Location`, `\`\`\`${location || "<:error:860884617770303519> Unknown location"}\`\`\``)
+      .addField(`📧 E-Mail`, `\`\`\`${email || "<:error:860884617770303519> No public email provided"}\`\`\``)
       .addField(`🐦 Twitter`, `\`\`\`${twitter_username || "None"}\`\`\``)
-      .addField(`🚀 Company`, `\`\`\`${company || "❌ No company"}\`\`\``)
+      .addField(`🚀 Company`, `\`\`\`${company || "<:error:860884617770303519> No company"}\`\`\``)
       .addField(`⏱️ Account Created`, moment.utc(created_at).format("dddd, MMMM, Do YYYY"))
       .setFooter(
        "Requested by " + `${message.author.username}`,

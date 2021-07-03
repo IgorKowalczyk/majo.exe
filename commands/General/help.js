@@ -76,7 +76,7 @@ module.exports = {
    function getCMD(client, message, input) {
     const embed = new Discord.MessageEmbed(); // Prettier();
     const cmd = client.commands.get(input.toLowerCase()) || client.commands.get(client.aliases.get(input.toLowerCase()));
-    const info = "❌ | No information found for command `" + input.toLowerCase() + "`!";
+    const info = "<:error:860884617770303519> | No information found for command `" + input.toLowerCase() + "`!";
     if (!cmd) {
      try {
       return message.lineReply({
@@ -89,7 +89,7 @@ module.exports = {
       message.lineReply({
        embed: {
         color: 16734039,
-        description: "❌ | No information found",
+        description: "<:error:860884617770303519> | No information found",
        },
       });
      }

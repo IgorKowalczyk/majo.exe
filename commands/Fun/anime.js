@@ -47,7 +47,7 @@ module.exports = {
      message.lineReply({
       embed: {
        color: 16734039,
-       description: "❌ | Please enter a vaild name!",
+       description: "<:error:860884617770303519> | Please enter a vaild name!",
       },
      })
     );

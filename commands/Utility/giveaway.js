@@ -13,7 +13,7 @@ module.exports = {
     return message.lineReply({
      embed: {
       color: 16734039,
-      description: "❌ | You did not specify your time!\nCorrect formatting: `number<d/h/m>`.\nLegend: `d` - Day, `h` - Hour/s, `m` - Minute/s",
+      description: "<:error:860884617770303519> | You did not specify your time!\nCorrect formatting: `number<d/h/m>`.\nLegend: `d` - Day, `h` - Hour/s, `m` - Minute/s",
      },
     });
    }
@@ -21,7 +21,7 @@ module.exports = {
     return message.lineReply({
      embed: {
       color: 16734039,
-      description: "❌ | You didn't use the correct formatting for the time!\nCorrect formatting: `number<d/h/m>`.\nLegend: `d` - Day, `h` - Hour/s, `m` - Minute/s",
+      description: "<:error:860884617770303519> | You didn't use the correct formatting for the time!\nCorrect formatting: `number<d/h/m>`.\nLegend: `d` - Day, `h` - Hour/s, `m` - Minute/s",
      },
     });
    }
@@ -29,7 +29,7 @@ module.exports = {
     return message.lineReply({
      embed: {
       color: 16734039,
-      description: "❌ | You didn't enter the winner count. Eg. `1`",
+      description: "<:error:860884617770303519> | You didn't enter the winner count. Eg. `1`",
      },
     });
    }
@@ -37,7 +37,7 @@ module.exports = {
     return message.lineReply({
      embed: {
       color: 16734039,
-      description: "❌ | The winner count must be a number. Eg. `1`",
+      description: "<:error:860884617770303519> | The winner count must be a number. Eg. `1`",
      },
     });
    }
@@ -45,7 +45,7 @@ module.exports = {
     return message.lineReply({
      embed: {
       color: 16734039,
-      description: "❌ | You didn't specify your time!\nCorrect formatting: `number<d/h/m>`.\nLegend: `d` - Day, `h` - Hour/s, `m` - Minute/s",
+      description: "<:error:860884617770303519> | You didn't specify your time!\nCorrect formatting: `number<d/h/m>`.\nLegend: `d` - Day, `h` - Hour/s, `m` - Minute/s",
      },
     });
    }
@@ -54,7 +54,7 @@ module.exports = {
     return message.lineReply({
      embed: {
       color: 16734039,
-      description: "❌ | You didn't enter a channel!\nYou must provide a channel in the guild to create giveaway!",
+      description: "<:error:860884617770303519> | You didn't enter a channel!\nYou must provide a channel in the guild to create giveaway!",
      },
     });
    }
@@ -63,7 +63,7 @@ module.exports = {
     return message.lineReply({
      embed: {
       color: 16734039,
-      description: "❌ | You must enter a prize to start giveaway!",
+      description: "<:error:860884617770303519> | You must enter a prize to start giveaway!",
      },
     });
    }

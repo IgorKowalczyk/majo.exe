@@ -59,7 +59,7 @@ module.exports = (client) => {
      const embed = new Discord.MessageEmbed() // Prettier()
       .setDescription(`Hello, ${client.user.username} unfortunately **do not support slash commands**. And we do not currently plan to add them either. We apologize ;-; If you want use my normal commands please check \`${process.env.PREFIX} help\`!`)
       .setTitle(
-       `<a:sucess:759354039242063903> Hi ${interaction.member.user.username}! I'm ${client.user.username}`,
+       `<:success:860884617820110909> Hi ${interaction.member.user.username}! I'm ${client.user.username}`,
        client.user.displayAvatarURL({
         dynamic: true,
         format: "png",

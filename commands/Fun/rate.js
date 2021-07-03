@@ -12,14 +12,14 @@ module.exports = {
    return message.lineReply({
     embed: {
      color: 16734039,
-     description: "❌ | Please enter a text!",
+     description: "<:error:860884617770303519> | Please enter a text!",
     },
    });
   if (rate.length > 30)
    return message.lineReply({
     embed: {
      color: 16734039,
-     title: "❌ | I can't rate that. Max text length is 30!",
+     title: "<:error:860884617770303519> | I can't rate that. Max text length is 30!",
     },
    });
   let result = Math.floor(Math.random() * 100 + 0);

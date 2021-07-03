@@ -15,7 +15,7 @@ module.exports = {
     return message.channel.send({
      embed: {
       color: 16734039,
-      description: "❌ | You should join a voice channel before using this command!",
+      description: "<:error:860884617770303519> | You should join a voice channel before using this command!",
      },
     });
    }
@@ -24,7 +24,7 @@ module.exports = {
     return message.channel.send({
      embed: {
       color: 16734039,
-      description: "❌ | There is nothing playing right now to resume!",
+      description: "<:error:860884617770303519> | There is nothing playing right now to resume!",
      },
     });
    }
@@ -41,7 +41,7 @@ module.exports = {
      message.channel.send({
       embed: {
        color: 16734039,
-       description: "❌ | Cannot resume the music!",
+       description: "<:error:860884617770303519> | Cannot resume the music!",
       },
      });
     }

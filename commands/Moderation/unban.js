@@ -14,7 +14,7 @@ module.exports = {
     return message.lineReply({
      embed: {
       color: 16734039,
-      description: "❌ | Please provide user id!",
+      description: "<:error:860884617770303519> | Please provide user id!",
      },
     });
    }
@@ -22,7 +22,7 @@ module.exports = {
     return message.lineReply({
      embed: {
       color: 16734039,
-      description: "❌ | Please provide vaild user id!",
+      description: "<:error:860884617770303519> | Please provide vaild user id!",
      },
     });
    }
@@ -32,7 +32,7 @@ module.exports = {
     return message.lineReply({
      embed: {
       color: 16734039,
-      description: "❌ | Unable to find user, please check the provided ID",
+      description: "<:error:860884617770303519> | Unable to find user, please check the provided ID",
      },
     });
    }

@@ -13,7 +13,7 @@ module.exports = {
     return message.lineReply({
      embed: {
       color: 16734039,
-      description: "❌ | You must enter animal name!",
+      description: "<:error:860884617770303519> | You must enter animal name!",
      },
     });
    }
@@ -42,7 +42,7 @@ module.exports = {
      return message.lineReply({
       embed: {
        color: 16734039,
-       description: "❌ | Sorry, we don't have any facts for that animal",
+       description: "<:error:860884617770303519> | Sorry, we don't have any facts for that animal",
       },
      });
     });

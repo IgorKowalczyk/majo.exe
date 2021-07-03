@@ -14,7 +14,7 @@ module.exports = {
     return message.channel.send({
      embed: {
       color: 16734039,
-      description: "❌ | You need to enter a suggestion!",
+      description: "<:error:860884617770303519> | You need to enter a suggestion!",
      },
     });
    }
@@ -22,7 +22,7 @@ module.exports = {
     return message.lineReply({
      embed: {
       color: 16734039,
-      description: "❌ | Your suggestion can have a maximum of 1000 characters!",
+      description: "<:error:860884617770303519> | Your suggestion can have a maximum of 1000 characters!",
      },
     });
    }
@@ -60,7 +60,7 @@ module.exports = {
     return message.lineReply({
      embed: {
       color: 16734039,
-      description: "❌ | I can't find suggestions channel. Mayby the channel didn't exist. If you are the bot developer please configure it in config.",
+      description: "<:error:860884617770303519> | I can't find suggestions channel. Mayby the channel didn't exist. If you are the bot developer please configure it in config.",
      },
     });
    }

@@ -27,7 +27,7 @@ module.exports = {
       return message.lineReply({
        embed: {
         color: 16734039,
-        description: "❌ | You must provide a equation to be solved on the calculator! (eg. `9 + 10`)",
+        description: "<:error:860884617770303519> | You must provide a equation to be solved on the calculator! (eg. `9 + 10`)",
        },
       });
      }
