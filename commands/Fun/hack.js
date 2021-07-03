@@ -26,7 +26,7 @@ module.exports = {
    let hacks = [`Found ${member.user.username}'s IP address: ${ip1}.${ip2}.${ip3}.${ip4} ||Jk||`, `${member.user.username}'s private data has been sold to the government.`, `${member.user.username} has been hacked and will get viruses on his computer forever!`, `${member.user.username}'s Fortnite dances have been uploaded to his boss's network!`, `${member.user.username} has to pay $${ip1} to get his data back.`, `Oh look, ${member.user.username} just lost all his money!`];
    let chance = Math.random();
    if (chance >= 0.4) {
-    return message.channel
+    return message
      .lineReply({
       embed: {
        color: 8118348,
@@ -40,7 +40,7 @@ module.exports = {
      })
      .catch(console.error);
    } else {
-    return message.channel
+    return message
      .lineReply({
       embed: {
        color: 16734039,
