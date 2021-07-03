@@ -167,9 +167,9 @@ COOKIES=YOUR_YOUTUBE_COOKIES
 - [@Wafelowski](https://github.com/HeavyWolfPL) (Translation improvements)
 - [@dhvitOP](https://github.com/dhvitOP) (Music commands)
 
-## Developed using
+## Special thanks to
 [![Freedb.tech](https://raw.githubusercontent.com/IgorKowalczyk/majobot/master/lib/img/free-db.png)](https://freedb.tech)
-<a href="https://heroku.com"><img src="https://raw.githubusercontent.com/IgorKowalczyk/majobot/master/lib/img/heroku.png" height="84" alt="Heroku"/></a>
+> For __free__ MYSQL Database ❤️
 
 ## Issues
 If you have any issues with the page please create [new issue here](https://github.com/igorkowalczyk/majobot/issues)
