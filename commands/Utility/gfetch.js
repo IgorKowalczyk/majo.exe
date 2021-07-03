@@ -9,7 +9,7 @@ module.exports = {
  run: async (client, message, args) => {
   try {
    const giveaways = client.giveawaysManager.giveaways.filter((g) => g.guildID === message.guild.id);
-   let giveaways = [];
+   let giveawaysarr = [];
    const giveaways1 = client.giveawaysManager.giveaways.filter((g) => g.guildID === message.guild.id);
    const giveaways2 = giveaways1.filter((g) => !g.ended);
    const giveaways3 = giveaways2.forEach((thisGiveaway) => {
@@ -19,12 +19,12 @@ module.exports = {
     } else {
      winners = "winners";
     }
-    giveaways.push(`\`${thisGiveaway.messageID}\` | <#${thisGiveaway.channelID}> | **${thisGiveaway.winnerCount}** ${winners} | Prize: **${thisGiveaway.prize}** | [Giveaway Link](https://discord.com/channels/${message.guild.id}/${thisGiveaway.channelID}/${thisGiveaway.messageID})`);
+    giveawaysarr.push(`\`${thisGiveaway.messageID}\` | <#${thisGiveaway.channelID}> | **${thisGiveaway.winnerCount}** ${winners} | Prize: **${thisGiveaway.prize}** | [Giveaway Link](https://discord.com/channels/${message.guild.id}/${thisGiveaway.channelID}/${thisGiveaway.messageID})`);
    });
    const embed = new Discord.MessageEmbed()
     .setColor("RANDOM")
     .setTitle("Current Giveaways")
-    .setDescription(giveaways.join("\n") || "<:error:860884617770303519> No giveaways are currently running!");
+    .setDescription(giveawaysarr.join("\n") || "<:error:860884617770303519> No giveaways are currently running!");
    message.channel.send(embed);
   } catch (err) {
    message.lineReply({
