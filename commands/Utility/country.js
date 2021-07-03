@@ -41,7 +41,7 @@ module.exports = {
    }
    const embed = new Discord.MessageEmbed()
     .setColor("RANDOM")
-    .setTitle(data.name)
+    .setTitle(data.name + " Information")
     .setThumbnail(`https://www.countryflags.io/${data.alpha2Code}/flat/64.png`)
     .setTimestamp()
     .addField("🖊️ Native Name", `\`\`\`${data.nativeName}\`\`\``)
@@ -59,7 +59,7 @@ module.exports = {
       size: 2048,
      })
     );
-   message.channel.send(embed);
+   message.lineReply(embed);
   } catch (err) {
    message.lineReply({
     embed: {
