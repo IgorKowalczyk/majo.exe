@@ -1,4 +1,3 @@
-const axios = require("axios").default;
 const Discord = require("discord.js");
 
 module.exports = {
@@ -25,25 +24,22 @@ module.exports = {
      },
     });
    }
-   const options = {
-    method: "GET",
-    url: `https://some-random-api.ml/base64?decode=${args.join(" ")}`,
-   };
-   axios.request(options).then((response) => {
-    const embed = new Discord.MessageEmbed()
-     .setColor("RANDOM")
-     .setFooter(
-      "Requested by " + `${message.author.username}`,
-      message.author.displayAvatarURL({
-       dynamic: true,
-       format: "png",
-       size: 2048,
-      })
-     )
-     .setTitle(`✨ Base64 Decoder`)
-     .setDescription("```" + response.data.text + "```");
-    message.lineReply(embed);
-   });
+   const buffer = new Buffer.from(args.join(" "), "base64");
+   const base64 = buffer.toString("utf-8");
+   const embed = new Discord.MessageEmbed()
+    .setColor("RANDOM")
+    .setFooter(
+     "Requested by " + `${message.author.username}`,
+     message.author.displayAvatarURL({
+      dynamic: true,
+      format: "png",
+      size: 2048,
+     })
+    )
+    .setTitle(`✨ Base64 Decoder`)
+    .addField("📥 Text to decode", `\`\`\`${args.join(" ")}\`\`\``)
+    .addField("📤 Decoded text", `\`\`\` ${base64 || "An unknown error ocurred while decoding!"}\`\`\``);
+   message.lineReply(embed);
   } catch (err) {
    message.lineReply({
     embed: {

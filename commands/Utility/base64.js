@@ -1,4 +1,3 @@
-const base = require("base64-js");
 const Discord = require("discord.js");
 
 module.exports = {
@@ -25,6 +24,8 @@ module.exports = {
      },
     });
    }
+   const buffer = new Buffer.from(args.join(" "), "utf-8");
+   const base64 = buffer.toString("base64");
    const embed = new Discord.MessageEmbed()
     .setColor("RANDOM")
     .setFooter(
@@ -36,7 +37,8 @@ module.exports = {
      })
     )
     .setTitle(`✨ Base64 Encoder`)
-    .setDescription("```" + base.fromByteArray(args.join(" ")) + "```");
+    .addField("📥 Text to encode", `\`\`\`${args.join(" ")}\`\`\``)
+    .addField("📤 Encoded text", `\`\`\` ${base64 || "An unknown error ocurred while encoding!"}\`\`\``);
    message.lineReply(embed);
   } catch (err) {
    message.lineReply({
