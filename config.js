@@ -28,5 +28,5 @@ module.exports = {
  statuschannel: "712024850675531786",
  suggestionschannel: "838092194530852884",
  newstitle: "<:success:860884617820110909> Good news!",
- news: "Majo.exe is waiting for verification because it is on over 75 servers. We are sorry if you can't add Majo.exe to your server now, it will be possible soon. Thank you for your support. Stay tuned!",
+ news: "<@681536055572430918> is waiting for verification because it is already on more than 75 servers!. We are sorry if you can't add <@681536055572430918> to your server now (<@681536055572430918> can now be only on a 100 servers in total!). Thank you for your support, Without you, <@681536055572430918> wouldn't exist!. Stay tuned!",
 };
