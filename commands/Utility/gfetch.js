@@ -21,7 +21,7 @@ module.exports = {
     }
     giveawaysarr.push(`\`${thisGiveaway.messageID}\` | <#${thisGiveaway.channelID}> | **${thisGiveaway.winnerCount}** ${winners} | Prize: **${thisGiveaway.prize}** | [Giveaway Link](https://discord.com/channels/${message.guild.id}/${thisGiveaway.channelID}/${thisGiveaway.messageID})`);
    });
-   const embed = new Discord.MessageEmbed()
+   const embed = new Discord.MessageEmbed() // Prettier
     .setColor("RANDOM")
     .setTitle("Current Giveaways")
     .setDescription(giveawaysarr.join("\n") || "<:error:860884617770303519> No giveaways are currently running!")

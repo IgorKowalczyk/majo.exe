@@ -39,7 +39,7 @@ module.exports = {
      },
     });
    }
-   const embed = new Discord.MessageEmbed()
+   const embed = new Discord.MessageEmbed() // Prettier
     .setColor("RANDOM")
     .setTitle(data.name + " Information")
     .setThumbnail(`https://www.countryflags.io/${data.alpha2Code}/flat/64.png`)

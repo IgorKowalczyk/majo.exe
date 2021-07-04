@@ -127,3 +127,6 @@ temp/
 
 # Sqlite files
 *.sqlite
+
+# Compressed repo
+majobot.zip
