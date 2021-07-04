@@ -33,6 +33,7 @@ module.exports = {
      .setColor(info.hex);
     message.lineReply(embed);
    } catch (err) {
+    console.log(err);
     message.lineReply({
      embed: {
       color: 16734039,
