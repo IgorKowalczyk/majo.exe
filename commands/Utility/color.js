@@ -23,7 +23,7 @@ module.exports = {
    }
    try {
     const info = await pop.colorinfo(color);
-    const embed = new MessageEmbed() // Prettier
+    const embed = new Discord.MessageEmbed() // Prettier
      .setTitle("Color Info")
      .addField("Name", info.name, true)
      .addField("Hex", "`" + info.hex + "`", true)
@@ -33,7 +33,6 @@ module.exports = {
      .setColor(info.hex);
     message.lineReply(embed);
    } catch (err) {
-    console.log(err);
     message.lineReply({
      embed: {
       color: 16734039,
