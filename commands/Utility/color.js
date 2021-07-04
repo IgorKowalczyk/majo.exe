@@ -21,16 +21,25 @@ module.exports = {
    if (color.includes("#")) {
     color = color.split("#")[1];
    }
-   const info = await pop.colorinfo(color);
-   const embed = new MessageEmbed() // Prettier
-    .setTitle("Color Info")
-    .addField("Name", info.name, true)
-    .addField("Hex", "`" + info.hex + "`", true)
-    .addField("RGB", "`" + info.rgb + "`", true)
-    .addField("Brighter Shade", "`" + info.brightened + "`", true)
-    .setImage(info.color_image)
-    .setColor(info.hex);
-   message.lineReply(embed);
+   try {
+    const info = await pop.colorinfo(color);
+    const embed = new MessageEmbed() // Prettier
+     .setTitle("Color Info")
+     .addField("Name", info.name, true)
+     .addField("Hex", "`" + info.hex + "`", true)
+     .addField("RGB", "`" + info.rgb + "`", true)
+     .addField("Brighter Shade", "`" + info.brightened + "`", true)
+     .setImage(info.color_image)
+     .setColor(info.hex);
+    message.lineReply(embed);
+   } catch (err) {
+    message.lineReply({
+     embed: {
+      color: 16734039,
+      description: "<:error:860884617770303519> | Please provide a vaild HEX color code!",
+     },
+    });
+   }
   } catch (err) {
    message.lineReply({
     embed: {
