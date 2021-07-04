@@ -99,7 +99,7 @@
   "uid-safe": "^2.1.5",
   "weather-js": "^2.0.0",
   "youtube-sr": "^4.0.5",
-  "ytdl-core": "^4.0.0",
+  "ytdl-core": "^4.8.3",
   "ytdl-core-discord": "^1.2.3"
  },
  "devDependencies": {
