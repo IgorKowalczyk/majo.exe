@@ -15,9 +15,9 @@ module.exports = {
       color: 16734039,
       description: "<:error:860884617770303519> | You did not specify your time!\nCorrect formatting: `number<d/h/m>`.\nLegend: `d` - Day, `h` - Hour/s, `m` - Minute/s",
       footer: {
-        text: "Syntax: " + process.env.PREFIX + " giveaway <time> <winner count> <channel> <prize>"
-      }
-    },
+       text: "Syntax: " + process.env.PREFIX + " giveaway <time> <winner count> <channel> <prize>",
+      },
+     },
     });
    }
    if (!args[0].endsWith("d") && !args[0].endsWith("h") && !args[0].endsWith("m")) {
@@ -26,9 +26,9 @@ module.exports = {
       color: 16734039,
       description: "<:error:860884617770303519> | You didn't use the correct formatting for the time!\nCorrect formatting: `number<d/h/m>`.\nLegend: `d` - Day, `h` - Hour/s, `m` - Minute/s",
       footer: {
-        text: "Syntax: " + process.env.PREFIX + " giveaway <time> <winner count> <channel> <prize>"
-      }
-    },
+       text: "Syntax: " + process.env.PREFIX + " giveaway <time> <winner count> <channel> <prize>",
+      },
+     },
     });
    }
    if (!args[1]) {
@@ -37,8 +37,8 @@ module.exports = {
       color: 16734039,
       description: "<:error:860884617770303519> | You didn't enter the winner count. Eg. `1`",
       footer: {
-        text: "Syntax: " + process.env.PREFIX + " giveaway <time> <winner count> <channel> <prize>"
-      }
+       text: "Syntax: " + process.env.PREFIX + " giveaway <time> <winner count> <channel> <prize>",
+      },
      },
     });
    }
@@ -48,8 +48,8 @@ module.exports = {
       color: 16734039,
       description: "<:error:860884617770303519> | The winner count must be a number. Eg. `1`",
       footer: {
-        text: "Syntax: " + process.env.PREFIX + " giveaway <time> <winner count> <channel> <prize>"
-      }
+       text: "Syntax: " + process.env.PREFIX + " giveaway <time> <winner count> <channel> <prize>",
+      },
      },
     });
    }
@@ -59,8 +59,8 @@ module.exports = {
       color: 16734039,
       description: "<:error:860884617770303519> | You didn't specify your time!\nCorrect formatting: `number<d/h/m>`.\nLegend: `d` - Day, `h` - Hour/s, `m` - Minute/s",
       footer: {
-        text: "Syntax: " + process.env.PREFIX + " giveaway <time> <winner count> <channel> <prize>"
-      }
+       text: "Syntax: " + process.env.PREFIX + " giveaway <time> <winner count> <channel> <prize>",
+      },
      },
     });
    }
@@ -71,8 +71,8 @@ module.exports = {
       color: 16734039,
       description: "<:error:860884617770303519> | You didn't enter a channel!\nYou must provide a channel in the guild to create giveaway!",
       footer: {
-        text: "Syntax: " + process.env.PREFIX + " giveaway <time> <winner count> <channel> <prize>"
-      }
+       text: "Syntax: " + process.env.PREFIX + " giveaway <time> <winner count> <channel> <prize>",
+      },
      },
     });
    }
@@ -83,8 +83,8 @@ module.exports = {
       color: 16734039,
       description: "<:error:860884617770303519> | You must enter a prize to start giveaway!",
       footer: {
-        text: "Syntax: " + process.env.PREFIX + " giveaway <time> <winner count> <channel> <prize>"
-      }
+       text: "Syntax: " + process.env.PREFIX + " giveaway <time> <winner count> <channel> <prize>",
+      },
      },
     });
    }
