@@ -6,7 +6,7 @@ module.exports = {
  image: "banner.jpg",
  server: "https://discord.gg/bVNNHuQ",
  authorwebsite: "https://igorkowalczyk.github.io",
- status: "https://stats.uptimerobot.com/5lVA7t0zZq",
+ status: "https://majoexe.instatus.com",
  author: "Igor Kowalczyk (Majonez.exe#3957)",
  ownerid: "440200028292907048",
  github: "igorkowalczyk",
