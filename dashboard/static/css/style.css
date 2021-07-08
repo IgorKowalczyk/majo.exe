@@ -802,25 +802,25 @@ code {
 }
 
 .box1 {
- background: url("./svg/cards/1.svg"), linear-gradient(150deg, #5a57c9, #44409a);
+ background: url("../svg/cards/1.svg"), linear-gradient(150deg, #5a57c9, #44409a);
  background-position: center;
  background-size: 100%;
 }
 
 .box2 {
- background: url("./svg/cards/2.svg"), linear-gradient(150deg, #ffd3a5a5, #fd6f88a5);
+ background: url("../svg/cards/2.svg"), linear-gradient(150deg, #ffd3a5a5, #fd6f88a5);
  background-position: center;
  background-size: 100%;
 }
 
 .box3 {
- background: url("./svg/cards/3.svg"), linear-gradient(150deg, #abdcffa5, #1ba0ffa5);
+ background: url("../svg/cards/3.svg"), linear-gradient(150deg, #abdcffa5, #1ba0ffa5);
  background-position: center;
  background-size: 100%;
 }
 
 .box4 {
- background: url("./svg/cards/4.svg"), linear-gradient(150deg, #48435a, #39384a);
+ background: url("../svg/cards/4.svg"), linear-gradient(150deg, #48435a, #39384a);
  background-position: center;
  background-size: 100%;
 }
