@@ -106,7 +106,7 @@ module.exports = {
      if (embed.description.length >= 2048) {
       embed.description = `${embed.description.substr(0, 2045)}...`;
      }
-     message.lineReply({ files: [imgUrl], embed: embed });
+     message.lineReply({ embed: embed, files: [imgUrl] });
     });
    });
   } catch (err) {
