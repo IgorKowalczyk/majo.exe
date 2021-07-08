@@ -4,7 +4,9 @@
 <span class="left">Created by: <%= config.author %></span>
 <% } %>
 <% if (config.status) { %>
-<a href="/status">Status</a>
+ <% if (path !== "/status") { %>
+  <a href="/status">Status</a>
+ <% } %>
 <% } %>
 <span> | </span>
 <% if (config.authorwebsite) { %>
