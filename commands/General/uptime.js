@@ -11,7 +11,7 @@ module.exports = {
  run: async (client, message, args) => {
   try {
    const duration = moment.duration(client.uptime).format(" D [days], H [hrs], m [mins], s [secs]");
-   const date = new Date()
+   const date = new Date();
    const timestamp = date.getTime() - Math.floor(client.uptime);
    const embed = new Discord.MessageEmbed() // Prettier()
     .setTitle(
@@ -22,7 +22,7 @@ module.exports = {
      })
     )
     .addField("Uptime", `\`\`\`${duration}\`\`\``)
-    .addField("Date Launched",  `\`\`\`${moment(timestamp).format("LLLL")}\`\`\``)
+    .addField("Date Launched", `\`\`\`${moment(timestamp).format("LLLL")}\`\`\``)
     .setTimestamp()
     .setFooter(
      "Requested by " + `${message.author.username}`,
