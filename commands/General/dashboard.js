@@ -12,7 +12,7 @@ module.exports = {
    if (!process.env.DOMAIN) {
     const embed = new Discord.MessageEmbed() // Prettier()
      .setTitle("<a:error:759354037803024395> Mheh!")
-     .setDescription("Our dashboard is not working at the moment, please try again later!")
+     .setDescription("Our dashboard is not working at the moment, please try again later! ||If you are dev check the `config.js` file!||")
      .setTimestamp()
      .setColor("RANDOM")
      .setFooter(

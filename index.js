@@ -102,7 +102,7 @@ if (process.env.TOKEN) {
    exemptPermissions: ["MANAGE_MESSAGES", "ADMINISTRATOR"],
    embedColor: "RANDOM",
    embedColorEnd: "RANDOM",
-   reaction: "843845378352873492",
+   reaction: "843845378352873492", // Unicode Emoji or Discord Emoji ID
   },
  });
  client.giveawaysManager = manager;
