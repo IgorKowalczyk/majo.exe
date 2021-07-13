@@ -40,7 +40,7 @@ module.exports = (client) => {
   const statuswebhook = new Discord.WebhookClient(process.env.STATUS_WEBHOOK_ID, process.env.STATUS_WEBHOOK_TOKEN);
   const status = new Discord.MessageEmbed() // Prettier
    .setColor("#18A64E")
-   .setDescription(`${capitalizeFirstLetter(client.user.username)} is online\nLogged at: ${currentDate}`);
+   .setDescription(`${capitalizeFirstLetter(client.user.username)} is online!\nGuilds: ${client.guilds.cache.size}\nMembers: ${client.guilds.cache.reduce((a, g) => a + g.memberCount, 0)}\nLogged at: ${datelog}`);
   statuswebhook.send({
    // Prettier
    username: capitalizeFirstLetter(client.user.username) + " Status",
