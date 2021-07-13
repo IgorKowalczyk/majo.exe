@@ -13,7 +13,7 @@
  let days = Math.floor(diff / 86400000);
  return days + (days == 1 ? " day" : " days") + " ago";
 } %>
-<%= guild.createdAt.toUTCString().substr(0, 16)> <%= checkdays(guild.createdAt) =%>
+<%= guild.createdAt.toUTCString().substr(0, 16)%> <%= checkdays(guild.createdAt) %>
 <div class="guild">
 <img class="server-image img" src="<%= iconurl %>" alt="<%= guild.name %>"/>
 <h1 class="server-name"><%= guild.name %></h1>
