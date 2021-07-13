@@ -39,10 +39,8 @@ module.exports = (client) => {
   if (!process.env.STATUS_WEBHOOK_TOKEN) throw new Error("[HOST] You need to provide Discord Status Webhook Token in .env - STATUS_WEBHOOK_TOKEN=YOUR_WEBHOOK_TOKEN");
   const statuswebhook = new Discord.WebhookClient(process.env.STATUS_WEBHOOK_ID, process.env.STATUS_WEBHOOK_TOKEN);
   const status = new Discord.MessageEmbed() // Prettier
-   .setColor("RANDOM")
-   .setDescription(`🟢 | ${capitalizeFirstLetter(client.user.username)} is online`)
-   .setTimestamp()
-   .setFooter("From " + capitalizeFirstLetter(client.user.username) + " status webhook", client.user.displayAvatarURL());
+   .setColor("#18A64E")
+   .setDescription(`${capitalizeFirstLetter(client.user.username)} is online\nLogged at: ${currentDate}`)
   statuswebhook.send({
    // Prettier
    username: capitalizeFirstLetter(client.user.username) + " Status",
