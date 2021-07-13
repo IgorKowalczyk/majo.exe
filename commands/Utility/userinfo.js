@@ -55,11 +55,13 @@ module.exports = {
      dynamic: true,
     })
    );
+   const date = new.Date();
+   const timestamp = date.getTime() - Math.floor(user.user.createdTimestamp);
    if (user.username) embed.addField("Nickname", user.username);
    embed.addField("<:role:856182143734775808> ID", `\`${user.user.id}\``);
    embed.addField("<:channel:856161806586085376> Discriminator", `\`#${user.user.discriminator}\``, true);
    embed.addField("⏱️ Joined At", moment(user.user.joinedAt).format("LLLL"));
-   embed.addField("⏱️ Account Created At", moment(user.user.createdAt).format("LLLL") + ` <t:${user.user.createdTimestamp}:F>`);
+   embed.addField("⏱️ Account Created At", moment(user.user.createdAt).format("LLLL") + ` <t:${timestamp}:F>`);
    embed.addField("🗑️ Account Deleted?", user.deleted, true);
    embed.addField("<a:badges_roll:842441895137640478> Badges", newbadges.join(", ").toLowerCase() || "None");
    embed.addField(`Status`, `${stat[user.user.presence.status]} ${capitalizeFirstLetter(user.user.presence.status)}`);
