@@ -1025,6 +1025,10 @@ code {
  margin-top: 0;
 }
 
+.notactive {
+opacity: 0.5;
+}
+
 ::-webkit-scrollbar {
  width: 6px;
  background-color: var(--scrollbar);
