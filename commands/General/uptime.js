@@ -22,7 +22,7 @@ module.exports = {
      })
     )
     .addField("Uptime", `\`\`\`${duration}\`\`\``)
-    .addField("Date Launched", `<t:${duration}:F>`)
+    .addField("Date Launched", `<t:${timestamp}:F>`)
     .setTimestamp()
     .setFooter(
      "Requested by " + `${message.author.username}`,
