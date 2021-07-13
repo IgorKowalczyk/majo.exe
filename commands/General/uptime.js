@@ -21,8 +21,8 @@ module.exports = {
       format: "png",
      })
     )
-    .addField("Uptime", `\`\`\`${duration}\`\`\``)
-    .addField("Date Launched", `\`\`\`${moment(timestamp).format("LLLL")}\`\`\``)
+    .addField("⏱️ Uptime", `\`\`\`${duration}\`\`\``)
+    .addField("🚀 Date Launched", `\`\`\`${moment(timestamp).format("LLLL")}\`\`\``)
     .setTimestamp()
     .setFooter(
      "Requested by " + `${message.author.username}`,
