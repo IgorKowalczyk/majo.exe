@@ -261,7 +261,7 @@ module.exports = async (client) => {
  app.post("/contact", async (req, res) => {
   if (req.body.type === "contact") {
    const contactwebhook = new Discord.WebhookClient(process.env.CONTACT_WEBHOOK_ID, process.env.CONTACT_WEBHOOK_TOKEN);
-   if(!req.body.name || !req.body.id || !req.body.email || !req.body.msg) return;
+   if (!req.body.name || !req.body.id || !req.body.email || !req.body.msg) return;
    const contact = new Discord.MessageEmbed() // Prettier
     .setColor("RANDOM")
     .setTitle(`📬 Contact Form`)
