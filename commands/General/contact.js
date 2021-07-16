@@ -12,7 +12,7 @@ module.exports = {
    if (!process.env.DOMAIN) {
     const embed = new Discord.MessageEmbed() // Prettier()
      .setTitle("<a:error:759354037803024395> Mheh!")
-     .setDescription("Our dashboard (and the contact page) is not working at the moment, please try again later!")
+     .setDescription("Our dashboard (and the contact page itself) is not working at the moment, please try again later! We are sorry...")
      .setTimestamp()
      .setColor("RANDOM")
      .setFooter(
