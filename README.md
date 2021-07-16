@@ -47,7 +47,7 @@ Deploy the app to [Heroku](https://heroku.com)
     * `MYSQL_USER` - Your MYSQL User name who can acces to the database
     * **Not required (You can leave them blank):**
     * `DOMAIN` - your website domain, eg `https://example.com`
-    * `PORT` - your website port, eg `8080`. [Note: If you are using heroku, not add this value. Heroku binds port automatically!]
+    * `PORT` - your website port, eg `8080`. [Note: If you are using heroku, don't add this value. Heroku binds port automatically!]
     * `DASHBOARD=[true/false]` - if `true` the bot will be hosted with web dasboard, if `false` the bot will be hosted without web dashboard.
     * `SESSION_SECRET` - Session secret key, random sequence of words, letterss or numbers
     * `SECRET` - Client secret from Discord Developers portal [no. 3]
