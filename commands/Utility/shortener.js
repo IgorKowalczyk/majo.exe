@@ -22,7 +22,7 @@ module.exports = {
     const urldone = new Discord.MessageEmbed() // Prettier
      .setColor("RANDOM")
      .setTitle("🔗 Your shortened URL")
-     .setDescription(`> **${res}**\n`);
+     .setDescription(`> **${res}**`);
     const url_button = new MessageButton() // Prettier
      .setStyle("url")
      .setLabel(`go to ${res}`)
