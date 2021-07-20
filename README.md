@@ -176,7 +176,7 @@ COOKIES=YOUR_YOUTUBE_COOKIES
 - [@dhvitOP](https://github.com/dhvitOP) (Music commands)
 
 ## Special thanks to
-[![Freedb.tech](https://raw.githubusercontent.com/IgorKowalczyk/majobot/master/lib/img/free-db.png)](https://freedb.tech)
+[![Freedb.tech](https://raw.githubusercontent.com/IgorKowalczyk/majobot/master/lib/img/readme/free-db.png)](https://freedb.tech)
 > For __free__ MYSQL Database ❤️
 
 ## Issues
