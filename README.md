@@ -1,6 +1,6 @@
 # Majo.exe
 
-Majo.exe have almost everything - Fun, Memes, Images, Giveaway, Economy, Anime and NSFW. This bot serve over 100 commands!
+Majo.exe have almost everything - Fun, Memes, Images, Giveaway, Economy, Anime and NSFW. This bot serve over 150 commands!
 
 [![Discord](https://discord.com/api/guilds/666599184844980224/widget.png?style=banner2)](https://majoexe.herokuapp.com/server)
 
@@ -13,6 +13,14 @@ Majo.exe have almost everything - Fun, Memes, Images, Giveaway, Economy, Anime a
 
 Go to [this link](https://discord.com/oauth2/authorize/?permissions=4294967287&scope=bot&client_id=681536055572430918) and add the bot (this requires `MANAGE_GUILD` permission) to your server.
  - [Or to make it easier, visit our website](https://majoexe.herokuapp.com/)
+
+## Features
+ - ⚙️ Fully customizable
+ - 🌆 Build-in Dashboard
+ - 📝 Easy Config
+ - 💯 150+ Commands
+ - 📚 Easy Hosting
+
 ## Hosting
 
 We host this bot. Majo.exe *will be* online 24/7. [Invite Majo here!](#invite)
