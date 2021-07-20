@@ -20,7 +20,7 @@ module.exports = async (client, message) => {
       })
      )
      .setColor("RANDOM")
-     .setDescription(`Why are you DMing me? I can only respond to commands on servers.\n [Maybe you want to invite me?](https://discord.com/oauth2/authorize/?permissions=${config.permissions}&scope=${config.scopes}&client_id=${client.user.id})`)
+     .setDescription(`Why are you DM'ing me? Remember - I can only respond to commands on servers.\n [Maybe you want to invite me?](https://discord.com/oauth2/authorize/?permissions=${config.permissions}&scope=${config.scopes}&client_id=${client.user.id})`)
      .setTimestamp()
      .setFooter(
       `~${client.user.username} created by ${config.author}`,
@@ -39,7 +39,7 @@ module.exports = async (client, message) => {
    const embed = new Discord.MessageEmbed() // Prettier()
     .setTitle(`<:success:860884617820110909> Hi!`, message.guild.iconURL())
     .setColor("RANDOM")
-    .setDescription("I was pinged by you, here I am - " + client.user.username + "! My prefix is `" + prefix + "` To see all  my commands please type `" + prefix + " help`")
+    .setDescription("I was pinged by you, here I am - " + client.user.username + "! My prefix is `" + prefix + "` To see all  my commands please type `" + prefix + " help`!")
     .setTimestamp()
     .setFooter(
      "Requested by " + `${message.author.username}`,
