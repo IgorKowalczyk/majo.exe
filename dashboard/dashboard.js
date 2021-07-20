@@ -308,13 +308,17 @@ module.exports = async (client) => {
   renderTemplate(res, req, "500.ejs");
  });
  console.log(chalk.bold(chalk.blue.bold("[HOST]")) + chalk.cyan.bold(" All dashboard process done... Starting in web"));
+ // **SEE /certs/ folder! **
+ // If you have certs - remove the comments and add commend the normal port listen `app.listen[...]`
+ /*
  https
   .createServer(
    {
-    key: fs.readFileSync("./server.key"),
-    cert: fs.readFileSync("./server.cert"),
+    key: fs.readFileSync(path.resolve(__dirname, "./certs/server.key")),
+    cert: fs.readFileSync(path.resolve(__dirname, "./certs/server.cert")),
    },
    app
-  )
-  .listen(port, null, null, () => console.log(chalk.bold(chalk.blue.bold("[HOST]")) + chalk.cyan.bold(` Dashboard is up and running on port ${port}.`)));
+  ).listen(port, null, null, () => console.log(chalk.bold(chalk.blue.bold("[HOST]")) + chalk.cyan.bold(` Dashboard is up and running on port ${port}.`)));
+ */
+ app.listen(port, null, null, () => console.log(chalk.bold(chalk.blue.bold("[HOST]")) + chalk.cyan.bold(` Dashboard is up and running on port ${port}.`)));
 };
