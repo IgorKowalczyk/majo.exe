@@ -10,8 +10,10 @@ const Strategy = require("passport-discord").Strategy;
 const config = require("../config");
 const ejs = require("ejs");
 const bodyParser = require("body-parser");
+const fs = require('fs');
 const { readdirSync } = require("fs");
 const app = express();
+const https = require("https");
 app.use(express.static("dashboard/static"));
 const MemoryStore = require("memorystore")(session);
 const sql = require("../utilities/database");
@@ -305,7 +307,14 @@ module.exports = async (client) => {
   res.status(500);
   renderTemplate(res, req, "500.ejs");
  });
-
  console.log(chalk.bold(chalk.blue.bold("[HOST]")) + chalk.cyan.bold(" All dashboard process done... Starting in web"));
- app.listen(port, null, null, () => console.log(chalk.bold(chalk.blue.bold("[HOST]")) + chalk.cyan.bold(` Dashboard is up and running on port ${port}.`)));
+ https
+  .createServer(
+   {
+    key: fs.readFileSync("./server.key"),
+    cert: fs.readFileSync("./server.cert"),
+   },
+   app
+  )
+  .listen(port, null, null, () => console.log(chalk.bold(chalk.blue.bold("[HOST]")) + chalk.cyan.bold(` Dashboard is up and running on port ${port}.`)));
 };

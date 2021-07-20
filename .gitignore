@@ -130,3 +130,8 @@ temp/
 
 # Compressed repo
 majobot.zip
+
+# Cert
+*.key
+*.cert
+
