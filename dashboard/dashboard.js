@@ -63,6 +63,7 @@ module.exports = async (client) => {
    saveUninitialized: false,
   })
  );
+ // **Note: If you want to use localhost just comment these lines!**
  app.enable("trust proxy");
  app.use((req, res, next) => {
   req.secure ? next() : res.redirect("https://" + req.headers.host + req.url);
