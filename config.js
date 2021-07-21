@@ -29,4 +29,6 @@ module.exports = {
  suggestionschannel: "838092194530852884",
  newstitle: "<:success:860884617820110909> Good news!",
  news: "<@681536055572430918> is waiting for verification because it is already on more than 75 servers! We are sorry if you can't add Majo.exe to your server now (Discord bots before verification can be only on a 100 servers in total!). Thank you for your support, Without you, Majo.exe wouldn't exist! Stay tuned!",
+ certs: true,
+ localhost: false,
 };

@@ -63,11 +63,12 @@ module.exports = async (client) => {
    saveUninitialized: false,
   })
  );
- // **Note: If you want to use localhost just comment these lines!**
- app.enable("trust proxy");
- app.use((req, res, next) => {
-  req.secure ? next() : res.redirect("https://" + req.headers.host + req.url);
- });
+ if (config.localhost == false) {
+  app.enable("trust proxy");
+  app.use((req, res, next) => {
+   req.secure ? next() : res.redirect("https://" + req.headers.host + req.url);
+  });
+ }
  app.use(passport.initialize());
  app.use(passport.session());
  app.locals.domain = process.env.DOMAIN.split("//")[1];
@@ -309,17 +310,18 @@ module.exports = async (client) => {
   renderTemplate(res, req, "500.ejs");
  });
  console.log(chalk.bold(chalk.blue.bold("[HOST]")) + chalk.cyan.bold(" All dashboard process done... Starting in web"));
- // **SEE /certs/ folder! **
- // If you have certs - remove the comments and add commend the normal port listen `app.listen[...]`
- /*
- https
-  .createServer(
-   {
-    key: fs.readFileSync(path.resolve(__dirname, "./certs/server.key")),
-    cert: fs.readFileSync(path.resolve(__dirname, "./certs/server.cert")),
-   },
-   app
-  ).listen(port, null, null, () => console.log(chalk.bold(chalk.blue.bold("[HOST]")) + chalk.cyan.bold(` Dashboard is up and running on port ${port}.`)));
- */
- app.listen(port, null, null, () => console.log(chalk.bold(chalk.blue.bold("[HOST]")) + chalk.cyan.bold(` Dashboard is up and running on port ${port}.`)));
+ // **See /certs folder!**
+ if (config.certs == true) {
+  https
+   .createServer(
+    {
+     key: fs.readFileSync(path.resolve(__dirname, "./certs/server.key")),
+     cert: fs.readFileSync(path.resolve(__dirname, "./certs/server.cert")),
+    },
+    app
+   )
+   .listen(port, null, null, () => console.log(chalk.bold(chalk.blue.bold("[HOST]")) + chalk.cyan.bold(` Dashboard is up and running on port ${port}.`)));
+ } else {
+  app.listen(port, null, null, () => console.log(chalk.bold(chalk.blue.bold("[HOST]")) + chalk.cyan.bold(` Dashboard is up and running on port ${port}.`)));
+ }
 };
