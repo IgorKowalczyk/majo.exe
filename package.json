@@ -74,7 +74,6 @@
   "node-fetch": "^2.6.1",
   "node-pre-gyp": "^0.15.0",
   "node.js": "0.0.1-security",
-  "nodemon": "^2.0.4",
   "opusscript": "^0.0.7",
   "os": "^0.1.1",
   "os-utils": "0.0.14",
