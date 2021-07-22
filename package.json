@@ -1,7 +1,7 @@
 {
  "name": "majo.exe",
  "version": "0.0.1",
- "description": "Majo.exe have almost everything - Fun, Memes, Images, Giveaway, Economy, Anime and NSFW. This bot serve over 100 commands!",
+ "description": "Majo.exe have almost everything - Fun, Memes, Images, Giveaway, Economy, Anime and NSFW",
  "author": "Igor Kowalczyk [Majonez.exe#3957]",
  "main": "node index.js",
  "scripts": {
