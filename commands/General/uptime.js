@@ -34,9 +34,9 @@ module.exports = {
      })
     )
     .setColor("RANDOM");
-    if(config.status) {
-     embed.addField("<:online:844882507408211988> Servers Status", config.status)
-    }
+   if (config.status) {
+    embed.addField("<:online:844882507408211988> Servers Status", config.status);
+   }
    message.lineReply(embed);
   } catch (err) {
    message.lineReply({
