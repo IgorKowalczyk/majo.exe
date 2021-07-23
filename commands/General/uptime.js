@@ -1,6 +1,7 @@
 const Discord = require("discord.js");
 const moment = require("moment");
 require("moment-duration-format");
+const config = require("../../config");
 
 module.exports = {
  name: "uptime",
@@ -33,6 +34,9 @@ module.exports = {
      })
     )
     .setColor("RANDOM");
+    if(config.status) {
+     embed.addField("<:online:844882507408211988> Servers Status", config.status)
+    }
    message.lineReply(embed);
   } catch (err) {
    message.lineReply({
