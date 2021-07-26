@@ -216,7 +216,7 @@ module.exports = {
    }
    serverQueue.songs.push(song);
    const newsong = new Discord.MessageEmbed() // Prettier()
-    .setTitle(":notes:" + song.title)
+    .setTitle(":notes: " + song.title)
     .setColor("RANDOM")
     .setThumbnail(thumb)
     .setURL(song.url)
