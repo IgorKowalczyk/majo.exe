@@ -1,4 +1,4 @@
-const pop = require("popcat-wrapper");
+const { Color, isColor } = require("coloras");
 const Discord = require("discord.js");
 
 module.exports = {
@@ -9,37 +9,32 @@ module.exports = {
  usage: "color <hex color>",
  run: async (client, message, args) => {
   try {
-   let color = args[0];
-   if (!color) {
-    return message.lineReply({
-     embed: {
-      color: 16734039,
-      description: "<:error:860884617770303519> | Please provide a HEX color code!",
-     },
-    });
+   let random;
+   if (!args.join(" ")) {
+    random = true;
+   } else {
+    if (!isColor(args.join(" ")).color) {
+     return message.lineReply({
+      embed: {
+       color: 16734039,
+       description: "<:error:860884617770303519> | This is not a vaild color!",
+      },
+     });
+    }
    }
-   if (color.includes("#")) {
-    color = color.split("#")[1];
-   }
-   try {
-    const info = await pop.colorinfo(color);
-    const embed = new Discord.MessageEmbed() // Prettier
-     .setTitle("Color Info")
-     .addField("Name", info.name, true)
-     .addField("Hex", "`" + info.hex + "`", true)
-     .addField("RGB", "`" + info.rgb + "`", true)
-     .addField("Brighter Shade", "`" + info.brightened + "`", true)
-     .setImage(info.color_image)
-     .setColor(info.hex);
-    message.lineReply(embed);
-   } catch (err) {
-    message.lineReply({
-     embed: {
-      color: 16734039,
-      description: "<:error:860884617770303519> | Please provide a vaild HEX color code!",
-     },
-    });
-   }
+   const value = random ? null : args.join(" ");
+   const color = new Color(value);
+   const embed = new Discord.MessageEmbed() // Prettier
+    .setTitle("Color Info")
+    .addField("Name", info.name, true)
+    .addField("HEX", "`" + color.toHex() + "`", true)
+    .addField("RGB", "`" + color.toRgb() + "`", true)
+    .addField("HSL", "`" + color.toHsl() + "`", true)
+    .addField("HSV", "`" + color.toHsv() + "`", true)
+    .addField("CMYK", "`" + color.toCmyk() + "`", true)
+    .setImage(color.imageUrl)
+    .setColor(color.toHex());
+   message.lineReply(embed);
   } catch (err) {
    message.lineReply({
     embed: {
