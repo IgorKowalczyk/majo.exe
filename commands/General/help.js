@@ -99,13 +99,14 @@ module.exports = {
      }
      alliaseslist = cmd.aliases.join(", ") || "None";
      const hembed = new Discord.MessageEmbed() // Prettier()
-      .setTitle(`:grey_question: Help - \`${cmd.name}\``, message.guild.iconURL())
+      .setTitle(`:grey_question: \`${cmd.name}\` command help page`, message.guild.iconURL())
       .setColor("RANDOM")
       .setTimestamp()
-      .addField("Category", `\`${cmd.category}\``)
-      .addField("Description", `\`${cmd.description}\``)
-      .addField("Usage", `\`${prefix} ${cmd.usage}\``)
-      .addField("Aliases", `\`${alliaseslist}\``)
+      .addField("📚 Category", `\`${cmd.category}\``)
+      .addField("⏱️ Cooldown", `\`${cmd.timeout || "5000"}\``)
+      .addField("📝 Description", `\`${cmd.description}\``)
+      .addField("🔩 Usage", `\`${prefix} ${cmd.usage}\``)
+      .addField("🪧 Aliases", `\`${alliaseslist}\``)
       // .setDescription("Category: `" + cmd.category + "`\n Description: `" + cmd.description + "`\n Usage: `" + prefix + " " + cmd.usage + "`\n Aliases: `" + alliaseslist + "`")
       .setFooter(
        "Syntax: <> = required, [] = optional | Requested by " + `${message.author.username}`,
