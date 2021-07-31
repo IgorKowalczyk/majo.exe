@@ -103,7 +103,7 @@ module.exports = {
       .setColor("RANDOM")
       .setTimestamp()
       .addField("📚 Category", `\`${cmd.category}\``)
-      .addField("⏱️ Cooldown", `\`${cmd.timeout || "5000"}\``)
+      .addField("⏱️ Cooldown", `\`${cmd.timeout || "5000"}ms\``)
       .addField("📝 Description", `\`${cmd.description}\``)
       .addField("🔩 Usage", `\`${prefix} ${cmd.usage}\``)
       .addField("🪧 Aliases", `\`${alliaseslist}\``)
