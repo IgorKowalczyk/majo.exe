@@ -97,7 +97,7 @@ module.exports = {
      function capitalizeFirstLetter(string) {
       return string.charAt(0).toUpperCase() + string.slice(1);
      }
-     alliaseslist = cmd.aliases.toString().join(", ") || "None";
+     alliaseslist = cmd.aliases.join(", ") || "None";
      const hembed = new Discord.MessageEmbed() // Prettier()
       .setTitle(`:grey_question: Help - \`${cmd.name}\``, message.guild.iconURL())
       .setColor("RANDOM")
