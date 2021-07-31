@@ -26,7 +26,6 @@ module.exports = {
    const color = new Color(value);
    const embed = new Discord.MessageEmbed() // Prettier
     .setTitle("Color Info")
-    .addField("Name", info.name, true)
     .addField("HEX", "`" + color.toHex() + "`", true)
     .addField("RGB", "`" + color.toRgb() + "`", true)
     .addField("HSL", "`" + color.toHsl() + "`", true)
