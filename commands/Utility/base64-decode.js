@@ -12,7 +12,7 @@ module.exports = {
     return message.lineReply({
      embed: {
       color: 16734039,
-      description: "<:error:860884617770303519> | You must enter a text to decode!",
+      description: "<:error:860884617770303519> | You must enter a Base64 code to decode!",
      },
     });
    }
@@ -20,7 +20,7 @@ module.exports = {
     return message.lineReply({
      embed: {
       color: 16734039,
-      description: "<:error:860884617770303519> | You must enter a text shorer than 50 characters!",
+      description: "<:error:860884617770303519> | You must enter a Base64 code shorer than 50 characters!",
      },
     });
    }
