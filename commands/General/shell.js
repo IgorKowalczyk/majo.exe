@@ -8,7 +8,7 @@ module.exports = {
  aliases: ["cmd", "exec", "terminal"],
  description: "Shows informations for developers",
  category: "General",
- usage: "info",
+ usage: "shell <script>",
  run: async (client, message, args) => {
   try {
    if (message.author.id !== config.ownerid) {
