@@ -8,7 +8,15 @@ module.exports = {
  usage: "prune <amount>",
  run: async (client, message, args) => {
   try {
-   if (!message.member.hasPermission("MANAGE_MESSAGES") || !message.member.hasPermission("ADMINISTRATOR")) {
+   if(!message.guild.me.hasPermission("MANAGE_MESSAGES")) {
+    return await message.lineReply({
+     embed: {
+      color: 16734039,
+      description: "<:error:860884617770303519> | I don't have premission to manage messages!",
+     },
+    });
+   }
+   if (!message.member.hasPermission("MANAGE_MESSAGES")) {
     let error = new Discord.MessageEmbed() // Prettier()
      .setColor("FF5757")
      .setDescription("<:error:860884617770303519> | You don't have permission to prune messages!")

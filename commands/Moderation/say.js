@@ -7,6 +7,14 @@ module.exports = {
  category: "Moderation",
  usage: "say <channel> <message>",
  run: async (client, message, args) => {
+  if(!message.guild.me.hasPermission("MANAGE_MESSAGES")) {
+   return await message.lineReply({
+    embed: {
+     color: 16734039,
+     description: "<:error:860884617770303519> | I don't have premission to manage messages!",
+    },
+   });
+  }
   if (message.member.hasPermission("MANAGE_MESSAGES")) {
    message.delete();
    const taggedChannel = await message.mentions.channels.first();

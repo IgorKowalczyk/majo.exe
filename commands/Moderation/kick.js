@@ -8,6 +8,14 @@ module.exports = {
  usage: "kick <mention> <reason>",
  run: async (client, message, args) => {
   try {
+   if(!message.guild.me.hasPermission("KICK_MEMBERS")) {
+    return await message.lineReply({
+     embed: {
+      color: 16734039,
+      description: "<:error:860884617770303519> | I don't have premission to kick members!",
+     },
+    });
+   }
    if (!message.member.hasPermission("KICK_MEMBERS")) {
     return await message.channel.send({
      embed: {

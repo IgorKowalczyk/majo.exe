@@ -8,7 +8,22 @@ module.exports = {
  usage: "ban <mention> <reason>",
  run: async (client, message, args) => {
   try {
-   if (message.member.hasPermission("BAN_MEMBERS")) {
+   if(!message.guild.me.hasPermission("BAN_MEMBERS")) {
+    return await message.lineReply({
+     embed: {
+      color: 16734039,
+      description: "<:error:860884617770303519> | I don't have premission to ban members!",
+     },
+    });
+   }
+   if (!message.member.hasPermission("BAN_MEMBERS")) {
+    return await message.lineReply({
+     embed: {
+      color: 16734039,
+      description: "<:error:860884617770303519> | You don't have premission to ban members!",
+     },
+    });
+   }
     let mentioned = await message.mentions.members.first();
     let reason = await args.slice(1).join(" ");
     if (!mentioned) {
@@ -47,7 +62,6 @@ module.exports = {
       description: "⛔ " + mentioned.displayName + " has been banned. Reason: `" + reason + "`!",
      },
     });
-   }
   } catch (err) {
    message.lineReply({
     embed: {
