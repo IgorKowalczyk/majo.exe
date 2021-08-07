@@ -12,6 +12,7 @@ module.exports = {
     .setTitle("Premission check")
     .setDescription(
      `These are the bot premissions on this server. If ${client.user.username} misses them some commands & functions will be disabled!
+     • \`ADMINISTRATOR\`: ${message.guild.me.hasPermission("ADMINISTRATOR") ? "<:success:860884617820110909>" : "<:error:860884617770303519>"}\n
      • \`MANAGE_MESSAGES\`: ${message.guild.me.hasPermission("MANAGE_MESSAGES") ? "<:success:860884617820110909> Passed!" : "<:error:860884617770303519> Error!"}
      • \`MANAGE_CHANNELS\`: ${message.guild.me.hasPermission("MANAGE_CHANNELS") ? "<:success:860884617820110909> Passed!" : "<:error:860884617770303519> Error!"}
      • \`KICK_MEMBERS\`: ${message.guild.me.hasPermission("KICK_MEMBERS") ? "<:success:860884617820110909> Passed!" : "<:error:860884617770303519> Error!"}
@@ -24,8 +25,7 @@ module.exports = {
      • \`ATTACH_FILES\`: ${message.guild.me.hasPermission("ATTACH_FILES") ? "<:success:860884617820110909> Passed!" : "<:error:860884617770303519> Error!"}
      • \`USE_EXTERNAL_EMOJIS\`: ${message.guild.me.hasPermission("USE_EXTERNAL_EMOJIS") ? "<:success:860884617820110909> Passed!" : "<:error:860884617770303519> Error!"}
      • \`CONNECT\`: ${message.guild.me.hasPermission("CONNECT") ? "<:success:860884617820110909> Passed!" : "<:error:860884617770303519> Error!"}
-     • \`SPEAK\`: ${message.guild.me.hasPermission("SPEAK") ? "<:success:860884617820110909> Passed!" : "<:error:860884617770303519> Error!"}\n
-     • \`ADMINISTRATOR\`: ${message.guild.me.hasPermission("ADMINISTRATOR") ? "<:success:860884617820110909>" : "<:error:860884617770303519>"}
+     • \`SPEAK\`: ${message.guild.me.hasPermission("SPEAK") ? "<:success:860884617820110909> Passed!" : "<:error:860884617770303519> Error!"}
      `
     )
     .setTimestamp()
