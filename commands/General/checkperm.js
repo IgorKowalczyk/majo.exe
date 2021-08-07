@@ -11,7 +11,7 @@ module.exports = {
    const embed = new Discord.MessageEmbed()
     .setTitle("Premission check")
     .setDescription(
-     `These are the bot premissions on this server. If ${client.username.username} misses them some commands & functions will be disabled!\n
+     `These are the bot premissions on this server. If ${client.user.username} misses them some commands & functions will be disabled!\n
      • \`MANAGE_MESSAGES\`: ${message.guild.me.hasPermission("MANAGE_MESSAGES") ? "<:success:860884617820110909> Passed!" : "<:error:860884617770303519> Error!"}
      • \`MANAGE_CHANNELS\`: ${message.guild.me.hasPermission("MANAGE_CHANNELS") ? "<:success:860884617820110909> Passed!" : "<:error:860884617770303519> Error!"}
      • \`KICK_MEMBERS\`: ${message.guild.me.hasPermission("KICK_MEMBERS") ? "<:success:860884617820110909> Passed!" : "<:error:860884617770303519> Error!"}
