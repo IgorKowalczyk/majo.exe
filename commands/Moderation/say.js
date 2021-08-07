@@ -7,7 +7,7 @@ module.exports = {
  category: "Moderation",
  usage: "say <channel> <message>",
  run: async (client, message, args) => {
-  if(!message.guild.me.hasPermission("MANAGE_MESSAGES")) {
+  if (!message.guild.me.hasPermission("MANAGE_MESSAGES")) {
    return await message.lineReply({
     embed: {
      color: 16734039,

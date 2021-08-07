@@ -8,7 +8,7 @@ module.exports = {
  usage: "kick <mention> <reason>",
  run: async (client, message, args) => {
   try {
-   if(!message.guild.me.hasPermission("KICK_MEMBERS")) {
+   if (!message.guild.me.hasPermission("KICK_MEMBERS")) {
     return await message.lineReply({
      embed: {
       color: 16734039,

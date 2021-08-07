@@ -8,7 +8,7 @@ module.exports = {
  usage: "unban <user> [reason]",
  run: async (client, message, args) => {
   try {
-   if(!message.guild.me.hasPermission("BAN_MEMBERS")) {
+   if (!message.guild.me.hasPermission("BAN_MEMBERS")) {
     return await message.lineReply({
      embed: {
       color: 16734039,

@@ -8,7 +8,7 @@ module.exports = {
  usage: "prune <amount>",
  run: async (client, message, args) => {
   try {
-   if(!message.guild.me.hasPermission("MANAGE_MESSAGES")) {
+   if (!message.guild.me.hasPermission("MANAGE_MESSAGES")) {
     return await message.lineReply({
      embed: {
       color: 16734039,
