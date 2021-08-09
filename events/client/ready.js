@@ -41,9 +41,9 @@ module.exports = (client) => {
   const status = new Discord.MessageEmbed() // Prettier
    .setColor("#18A64E")
    .setTimestamp()
+   .setAuthor(`${capitalizeFirstLetter(client.user.username)} is online!`)
    .setThumbnail(client.displayAvatarURL())
-   .setDescription(`${capitalizeFirstLetter(client.user.username)} is online!
-   Guilds: \`\`\`${client.guilds.cache.size}\`\`\`
+   .setDescription(`Guilds: \`\`\`${client.guilds.cache.size}\`\`\`
    Members: \`\`\`${client.guilds.cache.reduce((a, g) => a + g.memberCount, 0)}\`\`\`
    Logged at: \`\`\`${datelog}\`\`\``);
   statuswebhook.send({
