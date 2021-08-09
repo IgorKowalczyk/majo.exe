@@ -38,16 +38,14 @@ module.exports = (client) => {
   if (!process.env.STATUS_WEBHOOK_ID) throw new Error("[HOST] You need to provide Discord Status Webhook ID in .env - STATUS_WEBHOOK_ID=YOUR_WEBHOOK_ID");
   if (!process.env.STATUS_WEBHOOK_TOKEN) throw new Error("[HOST] You need to provide Discord Status Webhook Token in .env - STATUS_WEBHOOK_TOKEN=YOUR_WEBHOOK_TOKEN");
   const statuswebhook = new Discord.WebhookClient(process.env.STATUS_WEBHOOK_ID, process.env.STATUS_WEBHOOK_TOKEN);
-  const role = client.emojis.cache.get('856182143734775808');
-  const members = client.emojis.cache.get('856161806606401556');
   const status = new Discord.MessageEmbed() // Prettier
    .setColor("#18A64E")
    .setTimestamp()
    .setAuthor(`${capitalizeFirstLetter(client.user.username)} is online!`)
    .setThumbnail(client.user.displayAvatarURL())
-   .setDescription(`${role} Guilds: \`${client.guilds.cache.size}\`
-   ${members} Members: \`${client.guilds.cache.reduce((a, g) => a + g.memberCount, 0)}\`
-   ⏱️Logged at: \`${datelog}\``);
+   .setDescription(`• Guilds: \`${client.guilds.cache.size}\`
+   • Members: \`${client.guilds.cache.reduce((a, g) => a + g.memberCount, 0)}\`
+   • Logged at: \`${datelog}\``);
   statuswebhook.send({
    // Prettier
    username: capitalizeFirstLetter(client.user.username) + " Status",
