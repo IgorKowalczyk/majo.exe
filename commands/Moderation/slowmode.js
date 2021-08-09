@@ -70,6 +70,7 @@ module.exports = {
     }
    }
    if (args[0] === amount + "h") {
+    
     message.channel.setRateLimitPerUser(amount * 60 * 60);
     if (amount > 1) {
      return message.lineReply({
@@ -78,8 +79,15 @@ module.exports = {
        description: "<:sucess:872104651179323432> slowmode is now set to " + amount + " hours",
       },
      });
-    } else {
+    } else if(amout > 21600) {
      return message.lineReply({
+      embed: {
+       color: 16734039,
+       description: "<:error:860884617770303519> You can't set slowmode longer than 6 hours!",
+      },
+     });
+    } else {
+    return message.lineReply({
       embed: {
        color: 4779354,
        description: "<:sucess:872104651179323432> slowmode is now set to " + amount + " hour",
