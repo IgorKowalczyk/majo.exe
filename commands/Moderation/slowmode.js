@@ -79,7 +79,7 @@ module.exports = {
        description: "<:sucess:872104651179323432> slowmode is now set to " + amount + " hours",
       },
      });
-    } else if(amout > 21600) {
+    } else if(amout * 60 * 60 > 21600) {
      return message.lineReply({
       embed: {
        color: 16734039,
