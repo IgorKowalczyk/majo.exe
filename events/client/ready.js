@@ -42,9 +42,8 @@ module.exports = (client) => {
    .setColor("#18A64E")
    .setTimestamp()
    .setAuthor(`${capitalizeFirstLetter(client.user.username)} is online!`)
-   .setThumbnail(client.user.displayAvatarURL()).setDescription(`<:role:856182143734775808> Guilds: \`${client.guilds.cache.size}\`
-   <:members:856161806606401556> Members: \`${client.guilds.cache.reduce((a, g) => a + g.memberCount, 0)}\`
-   ⏱️ Logged at: \`${datelog}\``);
+   .setThumbnail(client.user.displayAvatarURL())
+   .setDescription("<:role:856182143734775808> Guilds: `" + client.guilds.cache.size + "`\n<:members:856161806606401556> Members: `" + client.guilds.cache.reduce((a, g) => a + g.memberCount, 0) + "`\n⏱️ Logged at: `" + datelog + "`");
   statuswebhook.send({
    // Prettier
    username: capitalizeFirstLetter(client.user.username) + " Status",
