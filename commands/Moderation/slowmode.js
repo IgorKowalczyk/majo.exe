@@ -25,6 +25,14 @@ module.exports = {
     });
    }
    const amount = parseInt(args[0]);
+   if(amount * 60 * 60 > 21600) {
+    return message.lineReply({
+     embed: {
+      color: 16734039,
+      description: "<:error:860884617770303519> | Slowmode can't be longer than 6 hours!",
+     },
+    });
+   }
    if (isNaN(amount) || !args[0]) {
     return message.lineReply({
      embed: {
@@ -39,14 +47,14 @@ module.exports = {
      return message.lineReply({
       embed: {
        color: 4779354,
-       description: "<:sucess:872104651179323432> slowmode is now set to " + amount + " seconds",
+       description: "<:sucess:872104651179323432> | Slowmode is now set to " + amount + " seconds",
       },
      });
     } else {
      return message.lineReply({
       embed: {
        color: 4779354,
-       description: "<:sucess:872104651179323432> slowmode is now set to " + amount + " second",
+       description: "<:sucess:872104651179323432> | Slowmode is now set to " + amount + " second",
       },
      });
     }
@@ -57,40 +65,32 @@ module.exports = {
      return message.lineReply({
       embed: {
        color: 4779354,
-       description: "<:sucess:872104651179323432> slowmode is now set to " + amount + " minutes",
+       description: "<:sucess:872104651179323432> | Slowmode is now set to " + amount + " minutes",
       },
      });
     } else {
      return message.lineReply({
       embed: {
        color: 4779354,
-       description: "<:sucess:872104651179323432> slowmode is now set to " + amount + " minute",
+       description: "<:sucess:872104651179323432> | Slowmode is now set to " + amount + " minute",
       },
      });
     }
    }
    if (args[0] === amount + "h") {
-    
     message.channel.setRateLimitPerUser(amount * 60 * 60);
     if (amount > 1) {
      return message.lineReply({
       embed: {
        color: 4779354,
-       description: "<:sucess:872104651179323432> slowmode is now set to " + amount + " hours",
-      },
-     });
-    } else if(amout * 60 * 60 > 21600) {
-     return message.lineReply({
-      embed: {
-       color: 16734039,
-       description: "<:error:860884617770303519> You can't set slowmode longer than 6 hours!",
+       description: "<:sucess:872104651179323432> | Slowmode is now set to " + amount + " hours",
       },
      });
     } else {
     return message.lineReply({
       embed: {
        color: 4779354,
-       description: "<:sucess:872104651179323432> slowmode is now set to " + amount + " hour",
+       description: "<:sucess:872104651179323432> | Slowmode is now set to " + amount + " hour",
       },
      });
     }
@@ -98,7 +98,7 @@ module.exports = {
     return message.lineReply({
      embed: {
       color: 16734039,
-      description: "<:error:860884617770303519> |  You can only set seconds(s), minutes(min) and hours(h)",
+      description: "<:error:860884617770303519> | You can only set seconds(s), minutes(min) and hours(h)",
      },
     });
    }
