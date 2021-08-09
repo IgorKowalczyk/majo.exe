@@ -42,8 +42,7 @@ module.exports = (client) => {
    .setColor("#18A64E")
    .setTimestamp()
    .setAuthor(`${capitalizeFirstLetter(client.user.username)} is online!`)
-   .setThumbnail(client.user.displayAvatarURL())
-   .setDescription(`Guilds: \`\`\`${client.guilds.cache.size}\`\`\`
+   .setThumbnail(client.user.displayAvatarURL()).setDescription(`Guilds: \`\`\`${client.guilds.cache.size}\`\`\`
    Members: \`\`\`${client.guilds.cache.reduce((a, g) => a + g.memberCount, 0)}\`\`\`
    Logged at: \`\`\`${datelog}\`\`\``);
   statuswebhook.send({

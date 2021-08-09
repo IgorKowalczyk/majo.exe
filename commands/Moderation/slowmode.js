@@ -25,7 +25,15 @@ module.exports = {
     });
    }
    const amount = parseInt(args[0]);
-   if(amount * 60 * 60 > 21600) {
+   if (args[0].includes("-")) {
+    return message.lineReply({
+     embed: {
+      color: 16734039,
+      description: "<:error:860884617770303519> | Slowmode can't be negative!",
+     },
+    });
+   }
+   if (amount * 60 * 60 > 21600) {
     return message.lineReply({
      embed: {
       color: 16734039,
@@ -87,7 +95,7 @@ module.exports = {
       },
      });
     } else {
-    return message.lineReply({
+     return message.lineReply({
       embed: {
        color: 4779354,
        description: "<:sucess:872104651179323432> | Slowmode is now set to " + amount + " hour",
