@@ -5,10 +5,10 @@
  "author": "Igor Kowalczyk [Majonez.exe#3957]",
  "main": "node index.js",
  "scripts": {
-  "start": "node index.js && node dashboard-run.js",
-  "develop": "node index.js && node dashboard-run.js",
-  "bot": "node index.js",
-  "dashboard": "node dashboard-run.js",
+  "start": "node --trace-warnings index.js && node dashboard-run.js",
+  "develop": "node --trace-warnings index.js && node dashboard-run.js",
+  "bot": "node --trace-warnings index.js",
+  "dashboard": "node --trace-warnings dashboard-run.js",
   "format": "prettier --write . --ignore-unknown",
   "format:check": "prettier --check .",
   "test": "node index.js"
