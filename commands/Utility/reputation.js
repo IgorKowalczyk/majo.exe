@@ -33,7 +33,7 @@ module.exports = {
      if (error) return console.log(error);
      const embed = new Discord.MessageEmbed()
       .setTitle("Reputation")
-      .setDescription(`${member} reputation: \`${results[0] ? (rep = results[0]) : (rep = 0)}\`\nYou can add or remove reputation by using \`${prefix} reputation [+/-] <member>\``)
+      .setDescription(`✨ ${member} reputation: \`${results[0] ? (rep = results[0].toString()) : (rep = 0)}\`\n\n💡 You can add or remove reputation by using \`${prefix} reputation [+/-] <member>\``)
       .setTimestamp()
       .setThumbnail(member.user.displayAvatarURL())
       .setColor("RANDOM")
