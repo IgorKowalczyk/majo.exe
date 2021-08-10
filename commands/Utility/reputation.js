@@ -30,7 +30,7 @@ module.exports = {
        .setTitle("Reputation")
        .setDescription(`${member} reputation: \`${results[0].res}\`\nYou can add or remove reputation by using ${prefix} reputation [+/-] <member>`)
        .setTimestamp()
-       .setThumbnail(member.displayAvatarURL())
+       .setThumbnail(member.user.displayAvatarURL())
        .setColor("RANDOM")
        .setFooter(
         "Requested by " + `${message.author.username}`,
@@ -46,7 +46,7 @@ module.exports = {
        .setTitle("Reputation")
        .setDescription(`${member} reputation: \`0\`\nYou can add or remove reputation by using ${prefix} reputation [+/-] <member>`)
        .setTimestamp()
-       .setThumbnail(member.displayAvatarURL())
+       .setThumbnail(member.user.displayAvatarURL())
        .setColor("RANDOM")
        .setFooter(
         "Requested by " + `${message.author.username}`,
@@ -69,7 +69,7 @@ module.exports = {
        .setTitle("Reputation")
        .setDescription(`${member} reputation: \`${results[0].res}\`\nYou can add or remove reputation by using ${prefix} reputation [+/-] <member>`)
        .setTimestamp()
-       .setThumbnail(member.displayAvatarURL())
+       .setThumbnail(member.user.displayAvatarURL())
        .setColor("RANDOM")
        .setFooter(
         "Requested by " + `${message.author.username}`,
@@ -85,7 +85,7 @@ module.exports = {
        .setTitle("Reputation")
        .setDescription(`${member} reputation: \`0\`\nYou can add or remove reputation by using ${prefix} reputation [+/-] <member>`)
        .setTimestamp()
-       .setThumbnail(member.displayAvatarURL())
+       .setThumbnail(member.user.displayAvatarURL())
        .setColor("RANDOM")
        .setFooter(
         "Requested by " + `${message.author.username}`,
@@ -108,7 +108,7 @@ module.exports = {
        .setTitle("Reputation")
        .setDescription(`${member} reputation: \`${results[0].res}\`\nYou can add or remove reputation by using ${prefix} reputation [+/-] <member>`)
        .setTimestamp()
-       .setThumbnail(member.displayAvatarURL())
+       .setThumbnail(member.user.displayAvatarURL())
        .setColor("RANDOM")
        .setFooter(
         "Requested by " + `${message.author.username}`,
@@ -124,7 +124,7 @@ module.exports = {
        .setTitle("Reputation")
        .setDescription(`${member} reputation: \`0\`\nYou can add or remove reputation by using ${prefix} reputation [+/-] <member>`)
        .setTimestamp()
-       .setThumbnail(member.displayAvatarURL())
+       .setThumbnail(member.user.displayAvatarURL())
        .setColor("RANDOM")
        .setFooter(
         "Requested by " + `${message.author.username}`,
