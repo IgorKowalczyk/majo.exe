@@ -28,23 +28,23 @@ module.exports = {
      if (results[0]) {
       const sum = parseInt(Object.values(JSON.parse(JSON.stringify(results[0])))) + 1;
       const update = "UPDATE reputation SET rep = " + sum + " WHERE memberid = " + member.id;
-      sql.query(update, function (error, results, fields) {
+      sql.query(update, function (error, results2, fields) {
        if (error) console.log(error);
        message.lineReply({
         embed: {
          color: 4779354,
-         description: `<:success:860884617820110909> | Success! ${member} now has ${results[0]} reputation!`,
+         description: `<:success:860884617820110909> | Success! ${member} now has ${sum} reputation!`,
         },
        });
       });
      } else {
       const insert = "INSERT INTO `reputation` (`memberid`, `rep`) VALUES (" + member.id + "," + 1 + ");";
-      sql.query(insert, function (error, results, fields) {
+      sql.query(insert, function (error, results3, fields) {
        if (error) console.log(error);
        message.lineReply({
         embed: {
          color: 4779354,
-         description: `<:success:860884617820110909> | Success! ${member} now has ${results[0]} reputation!`,
+         description: `<:success:860884617820110909> | Success! ${member} now has ${sum} reputation!`,
         },
        });
       });
