@@ -26,7 +26,7 @@ module.exports = {
     sql.query(sqlquery, function (error, results, fields) {
      if (error) return console.log(error);
      if (results[0]) {
-      const update = "UPDATE reputation SET rep = " + results[0] + 1 + " WHERE memberid = " + member.id;
+      const update = "UPDATE reputation SET rep = " + (Object.values(JSON.parse(JSON.stringify(results[0]))) + 1) + " WHERE memberid = " + member.id;
       sql.query(update, function (error, results, fields) {
        if (error) console.log(error);
        message.lineReply({
