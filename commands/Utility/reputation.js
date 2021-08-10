@@ -84,13 +84,13 @@ module.exports = {
        });
       });
      } else {
-      const insert = "INSERT INTO `reputation` (`memberid`, `rep`) VALUES (" + member.id + "," + 1 + ");";
+      const insert = "INSERT INTO `reputation` (`memberid`, `rep`) VALUES (" + member.id + "," + "-1" + ");";
       sql.query(insert, function (error, results3, fields) {
        if (error) console.log(error);
        message.lineReply({
         embed: {
          color: 4779354,
-         description: `<:success:860884617820110909> | Success! Reputation removed! ${member} now has \`${sum}\` reputation points!`,
+         description: `<:success:860884617820110909> | Success! Reputation removed! ${member} now has \`-1\` reputation points!`,
         },
        });
       });
