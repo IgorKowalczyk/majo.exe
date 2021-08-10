@@ -22,7 +22,33 @@ module.exports = {
    }
    if (args[0] === "+") {
     // Add reputation
-    message.lineReply("Add reputation");
+    const sqlquery = "SELECT rep AS res FROM reputation WHERE memberid = " + member.id;
+    sql.query(sqlquery, function (error, results, fields) {
+     if (error) return console.log(error);
+     if (results[0]) {
+      const update = "UPDATE reputation SET rep = " + results[0] + 1 + " WHERE memberid = " + member.id;
+      sql.query(update, function (error, results, fields) {
+       if (error) console.log(error);
+       message.lineReply({
+        embed: {
+         color: 4779354,
+         description: `✨ | Success!`,
+        },
+       });
+      });
+     } else {
+      const insert = "INSERT INTO `reputation` (`memberid`, `rep`) VALUES (" + member.id + "," + 1 + ");";
+      sql.query(insert, function (error, results, fields) {
+       if (error) console.log(error);
+       message.lineReply({
+        embed: {
+         color: 4779354,
+         description: `✨ | Success!`,
+        },
+       });
+      });
+     }
+    });
    } else if (args[0] === "-") {
     // Remove reputation
     message.lineReply("Remove reputation");
