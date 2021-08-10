@@ -31,10 +31,10 @@ module.exports = {
     const sqlquery = "SELECT rep AS res FROM `reputation` WHERE memberid = " + member.id;
     sql.query(sqlquery, function (error, results, fields) {
      if (error) return console.log(error);
-     console.log(results[0]);
+     console.log(JSON.stringify(results[0]));
      const embed = new Discord.MessageEmbed()
       .setTitle(`${member.user.username} Reputation`)
-      .setDescription(`✨ ${member} reputation: \`${results[0] ? rep = results[0].toString() : rep = 0}\`\n\n💡 You can add or remove user reputation by using: \`${prefix} reputation [+/-] <member>\``)
+      .setDescription(`✨ ${member} reputation: \`${results[0] ? rep = JSON.stringify(results[0]) : rep = 0}\`\n\n💡 You can add or remove user reputation by using: \`${prefix} reputation [+/-] <member>\``)
       .setTimestamp()
       .setThumbnail(member.user.displayAvatarURL())
       .setColor("RANDOM")
