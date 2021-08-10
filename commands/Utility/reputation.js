@@ -52,7 +52,7 @@ module.exports = {
        message.lineReply({
         embed: {
          color: 4779354,
-         description: `<:success:860884617820110909> | Success! Reputation added! ${member} now has \`${sum}\` reputation points!`,
+         description: `<:success:860884617820110909> | Success! Reputation added! ${member} now has \`1\` reputation points!`,
         },
        });
       });
