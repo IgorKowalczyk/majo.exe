@@ -32,7 +32,7 @@ module.exports = {
     sql.query(sqlquery, function (error, results, fields) {
      if (error) return console.log(error);
      const embed = new Discord.MessageEmbed()
-      .setTitle(`${member} Reputation`)
+      .setTitle(`${member.user.username} Reputation`)
       .setDescription(`✨ ${member} reputation: \`${results[0] ? (results[0].toString()) : (0)}\`\n\n💡 You can add or remove user reputation by using: \`${prefix} reputation [+/-] <member>\``)
       .setTimestamp()
       .setThumbnail(member.user.displayAvatarURL())
