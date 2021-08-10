@@ -22,120 +22,30 @@ module.exports = {
    }
    if (args[0] === "+") {
     // Add reputation
-    const sqlquery = "SELECT rep AS res FROM `reputation` WHERE memberid = " + member.id;
-    sql.query(sqlquery, function (error, results, fields) {
-     if (error) return console.log(error);
-     if (results[0]) {
-      const embed = new Discord.MessageEmbed()
-       .setTitle("Reputation")
-       .setDescription(`${member} reputation: \`${results[0].res}\`\nYou can add or remove reputation by using ${prefix} reputation [+/-] <member>`)
-       .setTimestamp()
-       .setThumbnail(member.user.displayAvatarURL())
-       .setColor("RANDOM")
-       .setFooter(
-        "Requested by " + `${message.author.username}`,
-        message.author.displayAvatarURL({
-         dynamic: true,
-         format: "png",
-         size: 2048,
-        })
-       );
-      message.lineReply(embed);
-     } else {
-      const embed = new Discord.MessageEmbed()
-       .setTitle("Reputation")
-       .setDescription(`${member} reputation: \`0\`\nYou can add or remove reputation by using ${prefix} reputation [+/-] <member>`)
-       .setTimestamp()
-       .setThumbnail(member.user.displayAvatarURL())
-       .setColor("RANDOM")
-       .setFooter(
-        "Requested by " + `${message.author.username}`,
-        message.author.displayAvatarURL({
-         dynamic: true,
-         format: "png",
-         size: 2048,
-        })
-       );
-      message.lineReply(embed);
-     }
-    });
+    message.lineReply("Add reputation");
    } else if (args[0] === "-") {
     // Remove reputation
-    const sqlquery = "SELECT rep AS res FROM `reputation` WHERE memberid = " + member.id;
-    sql.query(sqlquery, function (error, results, fields) {
-     if (error) return console.log(error);
-     if (results[0]) {
-      const embed = new Discord.MessageEmbed()
-       .setTitle("Reputation")
-       .setDescription(`${member} reputation: \`${results[0].res}\`\nYou can add or remove reputation by using ${prefix} reputation [+/-] <member>`)
-       .setTimestamp()
-       .setThumbnail(member.user.displayAvatarURL())
-       .setColor("RANDOM")
-       .setFooter(
-        "Requested by " + `${message.author.username}`,
-        message.author.displayAvatarURL({
-         dynamic: true,
-         format: "png",
-         size: 2048,
-        })
-       );
-      message.lineReply(embed);
-     } else {
-      const embed = new Discord.MessageEmbed()
-       .setTitle("Reputation")
-       .setDescription(`${member} reputation: \`0\`\nYou can add or remove reputation by using ${prefix} reputation [+/-] <member>`)
-       .setTimestamp()
-       .setThumbnail(member.user.displayAvatarURL())
-       .setColor("RANDOM")
-       .setFooter(
-        "Requested by " + `${message.author.username}`,
-        message.author.displayAvatarURL({
-         dynamic: true,
-         format: "png",
-         size: 2048,
-        })
-       );
-      message.lineReply(embed);
-     }
-    });
+    message.lineReply("Remove reputation");
    } else {
     // Check reputation
     const sqlquery = "SELECT rep AS res FROM `reputation` WHERE memberid = " + member.id;
     sql.query(sqlquery, function (error, results, fields) {
      if (error) return console.log(error);
-     if (results[0]) {
-      const embed = new Discord.MessageEmbed()
-       .setTitle("Reputation")
-       .setDescription(`${member} reputation: \`${results[0].res}\`\nYou can add or remove reputation by using ${prefix} reputation [+/-] <member>`)
-       .setTimestamp()
-       .setThumbnail(member.user.displayAvatarURL())
-       .setColor("RANDOM")
-       .setFooter(
-        "Requested by " + `${message.author.username}`,
-        message.author.displayAvatarURL({
-         dynamic: true,
-         format: "png",
-         size: 2048,
-        })
-       );
-      message.lineReply(embed);
-     } else {
-      const embed = new Discord.MessageEmbed()
-       .setTitle("Reputation")
-       .setDescription(`${member} reputation: \`0\`\nYou can add or remove reputation by using ${prefix} reputation [+/-] <member>`)
-       .setTimestamp()
-       .setThumbnail(member.user.displayAvatarURL())
-       .setColor("RANDOM")
-       .setFooter(
-        "Requested by " + `${message.author.username}`,
-        message.author.displayAvatarURL({
-         dynamic: true,
-         format: "png",
-         size: 2048,
-        })
-       );
-      message.lineReply(embed);
-     }
+     const embed = new Discord.MessageEmbed()
+      .setTitle("Reputation")
+      .setDescription(`${member} reputation: \`${results[0] ? (rep = results[0]) : (rep = 0)}\`\nYou can add or remove reputation by using \`${prefix} reputation [+/-] <member>\``)
+      .setTimestamp()
+      .setThumbnail(member.user.displayAvatarURL())
+      .setColor("RANDOM")
+      .setFooter(
+       "Requested by " + `${message.author.username}`,
+       message.author.displayAvatarURL({
+        dynamic: true,
+        format: "png",
+        size: 2048,
+       })
+      );
+     message.lineReply(embed);
     });
    }
   } catch (err) {
