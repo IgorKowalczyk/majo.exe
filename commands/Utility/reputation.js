@@ -22,6 +22,14 @@ module.exports = {
    }
    if (args[0] === "+") {
     // Add reputation
+    if(member == message.author) {
+     return message.lineReply({
+      embed: {
+       color: 4779354,
+       description: `<:success:860884617820110909> | You can't assign reputation to yourself!`,
+      },
+     });
+    }
     const sqlquery = "SELECT rep AS res FROM reputation WHERE memberid = " + member.id;
     sql.query(sqlquery, function (error, results, fields) {
      if (error) return console.log(error);
@@ -33,7 +41,7 @@ module.exports = {
        message.lineReply({
         embed: {
          color: 4779354,
-         description: `<:success:860884617820110909> | Success! ${member} now has ${sum} reputation!`,
+         description: `<:success:860884617820110909> | Success! Reputation added! ${member} now has \`${sum}\` reputation points!`,
         },
        });
       });
@@ -44,7 +52,7 @@ module.exports = {
        message.lineReply({
         embed: {
          color: 4779354,
-         description: `<:success:860884617820110909> | Success! ${member} now has ${sum} reputation!`,
+         description: `<:success:860884617820110909> | Success! Reputation added! ${member} now has \`${sum}\` reputation points!`,
         },
        });
       });
@@ -52,7 +60,42 @@ module.exports = {
     });
    } else if (args[0] === "-") {
     // Remove reputation
-    message.lineReply("Remove reputation");
+    if(member == message.author) {
+     return message.lineReply({
+      embed: {
+       color: 4779354,
+       description: `<:success:860884617820110909> | You can't assign reputation to yourself!`,
+      },
+     });
+    }
+    const sqlquery = "SELECT rep AS res FROM reputation WHERE memberid = " + member.id;
+    sql.query(sqlquery, function (error, results, fields) {
+     if (error) return console.log(error);
+     if (results[0]) {
+      const sum = parseInt(Object.values(JSON.parse(JSON.stringify(results[0])))) - 1;
+      const update = "UPDATE reputation SET rep = " + sum + " WHERE memberid = " + member.id;
+      sql.query(update, function (error, results2, fields) {
+       if (error) console.log(error);
+       message.lineReply({
+        embed: {
+         color: 4779354,
+         description: `<:success:860884617820110909> | Success! Reputation removed! ${member} now has \`${sum}\` reputation points!`,
+        },
+       });
+      });
+     } else {
+      const insert = "INSERT INTO `reputation` (`memberid`, `rep`) VALUES (" + member.id + "," + 1 + ");";
+      sql.query(insert, function (error, results3, fields) {
+       if (error) console.log(error);
+       message.lineReply({
+        embed: {
+         color: 4779354,
+         description: `<:success:860884617820110909> | Success! Reputation removed! ${member} now has \`${sum}\` reputation points!`,
+        },
+       });
+      });
+     }
+    });
    } else {
     // Check reputation
     const sqlquery = "SELECT rep AS res FROM `reputation` WHERE memberid = " + member.id;
