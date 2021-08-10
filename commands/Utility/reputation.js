@@ -12,7 +12,6 @@ module.exports = {
  run: async (client, message, args) => {
   try {
    const member =  (await message.mentions.members.first()) || message.guild.members.cache.get(args[0]) || message.guild.members.cache.find((r) => r.user.username.toLowerCase().includes() === args.join(" ").toLocaleLowerCase()) || message.guild.members.cache.find((r) => r.displayName.toLowerCase().includes() === args.join(" ").toLocaleLowerCase());
-   console.log(member.id)
    if (!member) {
     return message.lineReply({
      embed: {
@@ -21,6 +20,7 @@ module.exports = {
      },
     });
    }
+   console.log(member.id);
    const sqlquery = "SELECT rep AS res FROM `reputation` WHERE memberid = " + member.id;
    sql.query(sqlquery, function (error, results, fields) {
     if (error) return console.log(error);
@@ -41,6 +41,7 @@ module.exports = {
     }
    });
   } catch (err) {
+   console.log(err);
    message.lineReply({
     embed: {
      color: 16734039,
