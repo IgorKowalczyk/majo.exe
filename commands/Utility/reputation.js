@@ -9,6 +9,7 @@ const timeout = 10800000;
 module.exports = {
  name: "reputation",
  aliases: ["rep"],
+ timeout: "250",
  description: "Adds, checks or removes reputation for a user",
  category: "Utility",
  usage: "reputation [+ / add or - / remove] <user>",
@@ -41,7 +42,7 @@ module.exports = {
      return message.lineReply({
       embed: {
        color: 16734039,
-       description: ` <:error:860884617770303519> | ${message.author} slow down! You have to wait \`${ms(timeLeft)}\` before you can add reputaton again!`,
+       description: ` <:error:860884617770303519> | ${message.author} You have to wait \`${ms(timeLeft)}\` before you can add reputaton again!`,
       },
      });
     }
@@ -95,7 +96,7 @@ module.exports = {
      return message.lineReply({
       embed: {
        color: 16734039,
-       description: ` <:error:860884617770303519> | ${message.author} slow down! You have to wait \`${ms(timeLeft)}\` before you can remove reputaton again!`,
+       description: ` <:error:860884617770303519> | ${message.author} You have to wait \`${ms(timeLeft)}\` before you can remove reputaton again!`,
       },
      });
     }
