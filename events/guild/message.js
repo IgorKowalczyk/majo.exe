@@ -30,7 +30,7 @@ module.exports = async (client, message) => {
        size: 2048,
       })
      );
-    return message.author.send(embed);
+    return message.lineReply(embed);
    } catch (err) {
     return;
    }
