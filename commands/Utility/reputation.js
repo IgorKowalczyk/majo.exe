@@ -2,6 +2,9 @@ const Discord = require("discord.js");
 const sql = require("../../utilities/database");
 const config = require("../../config");
 const prefix = process.env.PREFIX;
+const Timeout = new Map();
+const ms = require("ms");
+const timeout = 10800000;
 
 module.exports = {
  name: "reputation",
@@ -27,6 +30,18 @@ module.exports = {
       embed: {
        color: 16734039,
        description: `<:error:860884617770303519> | You can't assign reputation to yourself!`,
+      },
+     });
+    }
+    const key = message.author.id + "420$%@&$&@!$!@$@";
+    const found = Timeout.get(key);
+    if (found) {
+     const timePassed = Date.now() - found;
+     const timeLeft = timeout - timePassed;
+     return message.lineReply({
+      embed: {
+       color: 16734039,
+       description: ` <:error:860884617770303519> | ${message.author} slow down! You have to wait \`${ms(timeLeft)}\` before you can add reputaton again!`,
       },
      });
     }
@@ -58,6 +73,10 @@ module.exports = {
       });
      }
     });
+    Timeout.set(key, Date.now());
+    setTimeout(() => {
+     Timeout.delete(key);
+    }, timeout);
    } else if (args[0] === "-") {
     // Remove reputation
     if (member == message.author || member.id == message.author.id) {
@@ -65,6 +84,18 @@ module.exports = {
       embed: {
        color: 16734039,
        description: `<:error:860884617770303519> | You can't assign reputation to yourself!`,
+      },
+     });
+    }
+    const key = message.author.id + "420$%@&$&@!$!@$@";
+    const found = Timeout.get(key);
+    if (found) {
+     const timePassed = Date.now() - found;
+     const timeLeft = timeout - timePassed;
+     return message.lineReply({
+      embed: {
+       color: 16734039,
+       description: ` <:error:860884617770303519> | ${message.author} slow down! You have to wait \`${ms(timeLeft)}\` before you can remove reputaton again!`,
       },
      });
     }
@@ -96,6 +127,10 @@ module.exports = {
       });
      }
     });
+    Timeout.set(key, Date.now());
+    setTimeout(() => {
+     Timeout.delete(key);
+    }, timeout);
    } else {
     // Check reputation
     const sqlquery = "SELECT rep AS res FROM `reputation` WHERE memberid = " + member.id;
