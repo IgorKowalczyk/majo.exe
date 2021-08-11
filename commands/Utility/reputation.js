@@ -22,7 +22,7 @@ module.exports = {
    }
    if (args[0] === "+") {
     // Add reputation
-    if(member == message.author || member.id == message.author.id) {
+    if (member == message.author || member.id == message.author.id) {
      return message.lineReply({
       embed: {
        color: 16734039,
@@ -60,7 +60,7 @@ module.exports = {
     });
    } else if (args[0] === "-") {
     // Remove reputation
-    if(member == message.author || member.id == message.author.id) {
+    if (member == message.author || member.id == message.author.id) {
      return message.lineReply({
       embed: {
        color: 16734039,
@@ -103,7 +103,7 @@ module.exports = {
      if (error) return console.log(error);
      const embed = new Discord.MessageEmbed()
       .setTitle(`👏 ${member.user.username} Reputation`)
-      .setDescription(`✨ ${member} reputation: \`${results[0] ? Object.values(JSON.parse(JSON.stringify(results[0]))) : rep = 0}\`\n\n💡 You can add or remove user reputation by using: \`${prefix} reputation [+/-] <member>\``)
+      .setDescription(`✨ ${member} reputation: \`${results[0] ? Object.values(JSON.parse(JSON.stringify(results[0]))) : (rep = 0)}\`\n\n💡 You can add or remove user reputation by using: \`${prefix} reputation [+/-] <member>\``)
       .setTimestamp()
       .setThumbnail(member.user.displayAvatarURL())
       .setColor("RANDOM")
