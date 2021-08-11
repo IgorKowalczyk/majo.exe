@@ -22,7 +22,7 @@ module.exports = {
    }
    if (args[0] === "+") {
     // Add reputation
-    if(member == message.author) {
+    if(member == message.author || member.id == message.author.id) {
      return message.lineReply({
       embed: {
        color: 4779354,
@@ -60,7 +60,7 @@ module.exports = {
     });
    } else if (args[0] === "-") {
     // Remove reputation
-    if(member == message.author) {
+    if(member == message.author || member.id == message.author.id) {
      return message.lineReply({
       embed: {
        color: 4779354,
