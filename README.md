@@ -53,6 +53,7 @@ Deploy the app to [Heroku](https://heroku.com)
     * `MYSQL_HOST` - Your MYSQL Host name
     * `MYSQL_PASSWORD` - Your MYSQL user password
     * `MYSQL_USER` - Your MYSQL User name who can acces to the database
+    * `COOKIES` - Your Youtube Cookies [[Tutorial](#youtube)]
     * **Not required (You can leave them blank):**
     * `DOMAIN` - your website domain, eg `https://example.com`
     * `PORT` - your website port, eg `8080`. [Note: If you are using heroku, don't add this value. Heroku binds port automatically!]
@@ -60,7 +61,6 @@ Deploy the app to [Heroku](https://heroku.com)
     * `SESSION_SECRET` - Session secret key, random sequence of words, letterss or numbers
     * `SECRET` - Client secret from Discord Developers portal [no. 3]
     * `ANALYTICS` - Google Trakcing ID, for Website analytics [[Tutorial](#analytics-id)]
-    * `COOKIES` - Your Youtube Cookies [[Tutorial](#youtube)]
     * `CONTACT_WEBHOOK_ID` - Your contact form webhook ID
     * `CONTACT_WEBHOOK_TOKEN` - Your contact form webhook token
     * `STATUS_WEBHOOK_ID` - Your status webhook ID
@@ -102,7 +102,7 @@ Deploy the app to [Heroku](https://heroku.com)
 | SESSION_SECRET | Random sequence of words, letterss or numbers`*` | :x:/:heavy_check_mark: |
 | SECRET | The bot client secret (Remember! The `SECRET` value is Super-Secret)`*` | :x:/:heavy_check_mark: |
 | ANALYTICS | Google analytics tracking ID, used in Web-Dashboard`*` | :x: |
-| COOKIES | Your youtube cookies | :x: |
+| COOKIES | Your youtube cookies | :heavy_check_mark: |
 | CONTACT_WEBHOOK_ID | Your contact form webhook ID | :x: |
 | CONTACT_WEBHOOK_TOKEN | Your contact form webhook token | :x: |
 | STATUS_WEBHOOK_ID | Your status webhook ID | :x: |
