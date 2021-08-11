@@ -32,7 +32,7 @@ sql.query("CREATE TABLE IF NOT EXISTS `welcome` (`guildid` VARCHAR(32) NOT NULL,
  console.log(chalk.bold(chalk.blue.bold("[SQL]")) + chalk.cyan.bold(" Fetched table `welcome`! Status: Success"));
 });
 /* = Reputation = */
-sql.query("CREATE TABLE IF NOT EXISTS `reputation` (`memberid` VARCHAR(32) NOT NULL, `rep` VARCHAR(32) NOT NULL, UNIQUE(`guildid`));", function (error) {
+sql.query("CREATE TABLE IF NOT EXISTS `reputation` (`memberid` VARCHAR(32) NOT NULL, `rep` VARCHAR(32) NOT NULL, UNIQUE(`memberid`));", function (error) {
  if (error) throw new Error(error);
  console.log(chalk.bold(chalk.blue.bold("[SQL]")) + chalk.cyan.bold(" Fetched table `reputation`! Status: Success"));
 });
