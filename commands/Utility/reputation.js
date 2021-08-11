@@ -25,8 +25,8 @@ module.exports = {
     if(member == message.author || member.id == message.author.id) {
      return message.lineReply({
       embed: {
-       color: 4779354,
-       description: `<:success:860884617820110909> | You can't assign reputation to yourself!`,
+       color: 16734039,
+       description: `<:error:860884617770303519> | You can't assign reputation to yourself!`,
       },
      });
     }
@@ -63,8 +63,8 @@ module.exports = {
     if(member == message.author || member.id == message.author.id) {
      return message.lineReply({
       embed: {
-       color: 4779354,
-       description: `<:success:860884617820110909> | You can't assign reputation to yourself!`,
+       color: 16734039,
+       description: `<:error:860884617770303519> | You can't assign reputation to yourself!`,
       },
      });
     }
