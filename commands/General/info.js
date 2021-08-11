@@ -26,6 +26,7 @@ module.exports = {
     return string.charAt(0).toUpperCase() + string.slice(1);
    }
    const duration = moment.duration(client.uptime).format(" D [days], H [hrs], m [mins], s [secs]");
+   cpu.usage().then(cpupercentage => {
    const embed = new Discord.MessageEmbed() // Prettier()
     .setTitle(
      `📄 Generic Information`,
@@ -53,7 +54,7 @@ module.exports = {
     .addField("<:node:792080285205790760> Node", "`" + process.version + "`", true)
     .addField("<:discordjs:756951296392560811> Discord.js", "`" + dependencies["discord.js"].replace("^", "v") + "`", true)
     .addField("<:cpu:856174395436171294> CPU", "```" + cpu.model() + " (" + cpu.count() + " cores)```")
-    .addField("<:cpu:856174395436171294> CPU Usage", "```" + cpu.usage().then(percentage => { let cpupercentage = percentage }) + "%```")
+    .addField("<:cpu:856174395436171294> CPU Usage", "```" + cpupercentage + "%```")
     .addField("<:ram:856174395508391986> RAM Usage (VPS)", `\`\`\`${(osutils.totalmem() - osutils.freemem()).toString().split(".")[0] + "." + (osutils.totalmem() - osutils.freemem()).toString().split(".")[1].split("")[0] + (osutils.totalmem() - osutils.freemem()).toString().split(".")[1].split("")[1]}/${osutils.totalmem().toString().split(".")[0] + "." + osutils.totalmem().toString().split(".")[1].split("")[0] + osutils.totalmem().toString().split(".")[1].split("")[1]}MB (${(100 - osutils.freememPercentage() * 100).toString().split(".")[0] + "." + (100 - osutils.freememPercentage() * 100).toString().split(".")[1].split("")[0] + (100 - osutils.freememPercentage() * 100).toString().split(".")[1].split("")[1]}%)\`\`\``)
     .addField("<:ram:856174395508391986> RAM Usage (BOT)", "```" + (process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2) + "MB/" + osutils.totalmem().toString().split(".")[0] + "." + osutils.totalmem().toString().split(".")[1].split("")[0] + osutils.totalmem().toString().split(".")[1].split("")[1] + "MB " + `(${((100 * (process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2)) / osutils.totalmem().toString().split(".")[0]).toFixed(2)}%)` + "```")
     .addField("🔗 Useful Links", `[Support server](${config.server}) | ${webpanel} [Invite me](https://discord.com/oauth2/authorize/?permissions=${config.permissions}&scope=bot&client_id=${client.user.id})`)
@@ -65,6 +66,7 @@ module.exports = {
       size: 2048,
      })
     );
+   })
    message.lineReply(embed);
   } catch (err) {
    console.log(err);
