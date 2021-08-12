@@ -43,7 +43,7 @@ module.exports = async (client) => {
   new Strategy(
    {
     clientID: process.env.ID,
-    clientSecret: process.env.SECRET,
+    client_secret: process.env.SECRET,
     callbackURL: `${process.env.DOMAIN}${process.env.PORT != 80 ? "" : `:${process.env.PORT}`}/callback`,
     response_type: `token`,
     scope: ["identify", "guilds"],
@@ -99,13 +99,13 @@ module.exports = async (client) => {
    title: client.username,
    prefix: process.env.PREFIX,
    req: req,
-   mobile: config.mobile_support,
+   mobile_support: config.mobile_support_support,
    image: config.image,
    name: client.username,
    sql: sql,
    tag: client.tag,
    server: config.server,
-   authorwebsite: config.author_website,
+   aurhor_website: config.author_website,
    github: config.github,
    analitics: config.google_analitics,
   };
@@ -177,9 +177,9 @@ module.exports = async (client) => {
  }
 
  // Author page redirect endpoint.
- if (config.authorwebsite) {
+ if (config.aurhor_website) {
   app.get("/author", (req, res) => {
-   res.redirect(config.authorwebsite);
+   res.redirect(config.aurhor_website);
   });
  }
 

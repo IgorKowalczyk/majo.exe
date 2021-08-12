@@ -10,7 +10,7 @@ module.exports = {
  usage: "eval <code>",
  run: async (client, message, args) => {
   try {
-   if (message.author.id !== config.ownerid) {
+   if (message.author.id !== config.owner_id) {
     return message.lineReply({
      embed: {
       color: 16734039,

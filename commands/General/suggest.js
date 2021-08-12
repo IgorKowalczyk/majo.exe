@@ -26,7 +26,7 @@ module.exports = {
      },
     });
    }
-   const channel = client.channels.cache.get(config.suggestionschannel);
+   const channel = client.channels.cache.get(config.suggestions_channel);
    if (channel) {
     const embed = new Discord.MessageEmbed() // Prettier()
      .setAuthor("🤔" + message.author.username + " suggestion!", message.guild.iconURL())
@@ -46,7 +46,7 @@ module.exports = {
     channel.send(embed);
     const success = new Discord.MessageEmbed() // Prettier()
      .setColor("RANDOM")
-     .setDescription(`${message.author} your suggestion was send, you can view it in Majo.exe Developers server in <#${config.suggestionschannel}> channel.`)
+     .setDescription(`${message.author} your suggestion was send, you can view it in Majo.exe Developers server in <#${config.suggestions_channel}> channel.`)
      .setFooter(
       "[Majo.exe Developers](" + config.server + ")",
       message.author.displayAvatarURL({

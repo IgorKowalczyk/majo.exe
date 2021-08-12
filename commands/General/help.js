@@ -59,8 +59,8 @@ module.exports = {
      embed.addField(`${icon} ${id} (${category.size})`, category.map((cmd) => `${cmd.name}`).join(", "));
     }
     embed.addField(":grey_question: Command Information", `${prefix} help <command>`);
-    if (config.news && config.newstitle) {
-     embed.addField(`${config.newstitle}`, `${config.news}`);
+    if (config.news && config.bot_news_title) {
+     embed.addField(`${config.bot_news_title}`, `${config.news}`);
     }
     embed.setFooter(
      "Requested by " + `${message.author.username}` + " | " + `${client.commands.size}` + " Commands",

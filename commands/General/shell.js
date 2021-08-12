@@ -11,7 +11,7 @@ module.exports = {
  usage: "shell <script>",
  run: async (client, message, args) => {
   try {
-   if (message.author.id !== config.ownerid) {
+   if (message.author.id !== config.owner_id) {
     return message.lineReply({
      embed: {
       color: 16734039,
