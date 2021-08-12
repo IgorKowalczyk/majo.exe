@@ -56,7 +56,7 @@ module.exports = {
      if (!id) {
       icon = ":grey_question:";
      }
-     embed.addField(`${icon} ${id} (${category.size})`, ">" + category.map((cmd) => `${cmd.name}`).join(", "));
+     embed.addField(`${icon} ${id} (${category.size})`, "> " + category.map((cmd) => `${cmd.name}`).join(", "));
     }
     embed.addField(":grey_question: Command Information", "`" + prefix + " help <command>`");
     if (config.news && config.bot_news_title) {
