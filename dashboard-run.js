@@ -20,5 +20,5 @@ if (process.env.TOKEN) {
  client.login(process.env.TOKEN);
  console.log(chalk.bold(chalk.blue.bold("[SQL]")) + chalk.cyan.bold(" Web dashboard client logged"));
 } else {
- throw new Error("You need to enter bot token to run dashboard!");
+ throw new Error("[MAJO] You need to enter bot token to run dashboard!");
 }
