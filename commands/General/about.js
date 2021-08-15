@@ -1,0 +1,46 @@
+const Discord = require("discord.js");
+const config = require("../../config");
+
+module.exports = {
+ name: "about",
+ aliases: [],
+ description: "Info about the bot and developer",
+ category: "General",
+ usage: "about",
+ run: async (client, message, args) => {
+  try {
+   const embed = new Discord.MessageEmbed()
+    .setTitle(`About ${client.user.username}`)
+    .setAuthor(config.author)
+    .setDescription(config.about_bot)
+    .setTimestamp()
+    .setThumbnail(
+     client.user.displayAvatarURL({
+      dynamic: true,
+      format: "png",
+      size: 2048,
+     })
+    )
+    .setColor("RANDOM")
+    .setFooter(
+     "Requested by " + `${message.author.username}`,
+     message.author.displayAvatarURL({
+      dynamic: true,
+      format: "png",
+      size: 2048,
+     })
+    );
+   if (config.about_dev) {
+    embed.addField("<:owner:856161806199947285> About Dev", config.about_dev);
+   }
+   message.lineReply(embed);
+  } catch (err) {
+   message.lineReply({
+    embed: {
+     color: 16734039,
+     description: "Something went wrong... :cry:",
+    },
+   });
+  }
+ },
+};

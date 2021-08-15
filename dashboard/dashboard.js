@@ -104,7 +104,7 @@ module.exports = async (client) => {
    name: client.username,
    sql: sql,
    tag: client.tag,
-   server: config.server,
+   server: config.support_server,
    aurhor_website: config.author_website,
    github: config.github,
    analitics: config.google_analitics,
@@ -163,16 +163,16 @@ module.exports = async (client) => {
  });
 
  // Server redirect endpoint.
- if (config.server) {
+ if (config.support_server) {
   app.get("/server", (req, res) => {
-   res.redirect(config.server);
+   res.redirect(config.support_server);
   });
  }
 
  // Github redirect endpoint.
- if (config.github && config.repo) {
+ if (config.github && config.github_repo) {
   app.get("/github", (req, res) => {
-   res.redirect(`https://github.com/` + config.github + "/" + config.repo);
+   res.redirect(`https://github.com/` + config.github + "/" + config.github_repo);
   });
  }
 

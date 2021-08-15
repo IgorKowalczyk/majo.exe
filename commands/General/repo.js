@@ -9,7 +9,7 @@ module.exports = {
  usage: "repo",
  run: async (client, message, args) => {
   try {
-   if (!config.github && !config.repo) {
+   if (!config.github && !config.github_repo) {
     return message.lineReply({
      embed: {
       color: 16734039,
@@ -22,7 +22,7 @@ module.exports = {
    }
    const embed = new Discord.MessageEmbed() // Prettier
     .setTitle("🐙 " + capitalize(client.user.username) + " Github Repo")
-    .setDescription("📚 This project is open source, you can check the code at: [@" + config.github + "/" + config.repo + "](https://github.com/" + config.github + "/" + config.repo + ")")
+    .setDescription("📚 This project is open source, you can check the code at: [@" + config.github + "/" + config.github_repo + "](https://github.com/" + config.github + "/" + config.github_repo + ")")
     .setFooter("Requested by " + `${message.author.username}`, message.author.displayAvatarURL({ dynamic: true, format: "png", size: 2048 }))
     .setColor("RANDOM")
     .setTimestamp();

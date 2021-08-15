@@ -48,7 +48,7 @@ module.exports = {
      .setColor("RANDOM")
      .setDescription(`${message.author} your suggestion was send, you can view it in Majo.exe Developers server in <#${config.suggestions_channel}> channel.`)
      .setFooter(
-      "[Majo.exe Developers](" + config.server + ")",
+      "[Majo.exe Developers](" + config.support_server + ")",
       message.author.displayAvatarURL({
        dynamic: true,
        format: "png",
