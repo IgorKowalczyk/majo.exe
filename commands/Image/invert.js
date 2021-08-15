@@ -27,7 +27,7 @@ module.exports = {
    message.channel.send(attachment);
   } catch (err) {
    console.log(err);
-   message.channel.send({
+   message.lineReply({
     embed: {
      color: 16734039,
      description: "Something went wrong... :cry:",

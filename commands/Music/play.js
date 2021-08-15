@@ -23,7 +23,7 @@ module.exports = {
    });
   }
   if (serverQueue && channel !== message.guild.me.voice.channel) {
-   return message.channel.send({
+   return message.lineReply({
     embed: {
      color: 16734039,
      description: "<:error:860884617770303519> | You must be in the same voice channel as me",
@@ -31,7 +31,7 @@ module.exports = {
    });
   }
   if (!args.length) {
-   return message.channel.send({
+   return message.lineReply({
     embed: {
      color: 16734039,
      description: `<:error:860884617770303519> | Usage: ${process.env.PREFIX} play <youtube link | youtube video name>`,
@@ -233,7 +233,7 @@ module.exports = {
   } catch (error) {
    message.client.queue.delete(message.guild.id);
    await channel.leave();
-   return message.channel.send({
+   return message.lineReply({
     embed: {
      color: 16734039,
      description: "<:error:860884617770303519> | I could not join the channel",

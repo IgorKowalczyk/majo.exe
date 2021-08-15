@@ -12,7 +12,7 @@ module.exports = {
   try {
    const channel = message.member.voice.channel;
    if (!channel) {
-    return message.channel.send({
+    return message.lineReply({
      embed: {
       color: 16734039,
       description: "<:error:860884617770303519> | You should join a voice channel before using this command!",
@@ -21,7 +21,7 @@ module.exports = {
    }
    let queue = message.client.queue.get(message.guild.id);
    if (!args[0]) {
-    return message.channel.send({
+    return message.lineReply({
      embed: {
       color: 4779354,
       description: "🔉 | The current volume is set to: " + queue.volume,
@@ -29,7 +29,7 @@ module.exports = {
     });
    }
    if (args[0] > 10) {
-    return message.channel.send({
+    return message.lineReply({
      embed: {
       color: 4779354,
       description: "<:error:860884617770303519> | You can't set volume higher than 10 (Your ears.. 🪦)",
@@ -37,7 +37,7 @@ module.exports = {
     });
    }
    if (args[0].includes("-") || isNaN(args[0]) || args[0] == 0) {
-    return message.channel.send({
+    return message.lineReply({
      embed: {
       color: 4779354,
       description: "<:error:860884617770303519> | You must enter correct value. I only accept numbers from 1 to 10!",
@@ -46,7 +46,7 @@ module.exports = {
    }
    queue.connection.dispatcher.setVolumeLogarithmic(args[0] / 5);
    queue.volume = args[0];
-   return message.channel.send({
+   return message.lineReply({
     embed: {
      color: 4779354,
      description: "🔉 | Volume is now set to " + args[0],
@@ -54,7 +54,7 @@ module.exports = {
    });
   } catch (err) {
    console.log(err);
-   message.channel.send({
+   message.lineReply({
     embed: {
      color: 16734039,
      description: "Something went wrong... :cry:",

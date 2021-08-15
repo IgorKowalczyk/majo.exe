@@ -11,7 +11,7 @@ module.exports = {
    if (!message.guild) return;
    const queue = message.client.queue.get(message.guild.id);
    if (!queue) {
-    return message.channel.send({
+    return message.lineReply({
      embed: {
       color: 16734039,
       description: "<:error:860884617770303519> | This is nothing playing right now",

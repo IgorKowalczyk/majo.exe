@@ -12,7 +12,7 @@ module.exports = {
   try {
    const channel = message.member.voice.channel;
    if (!channel) {
-    return message.channel.send({
+    return message.lineReply({
      embed: {
       color: 16734039,
       description: "<:error:860884617770303519> | You should join a voice channel before using this command!",
@@ -21,7 +21,7 @@ module.exports = {
    }
    let queue = message.client.queue.get(message.guild.id);
    if (!queue) {
-    return message.channel.send({
+    return message.lineReply({
      embed: {
       color: 16734039,
       description: "<:error:860884617770303519> | There is nothing playing right now to resume!",
@@ -31,14 +31,14 @@ module.exports = {
    if (queue.playing !== false) {
     if (queue.connection.dispatcher) {
      queue.connection.dispatcher.resume();
-     message.channel.send({
+     message.lineReply({
       embed: {
        color: 4779354,
        description: "▶ | Resumed the music",
       },
      });
     } else {
-     message.channel.send({
+     message.lineReply({
       embed: {
        color: 16734039,
        description: "<:error:860884617770303519> | Cannot resume the music!",
@@ -48,7 +48,7 @@ module.exports = {
    }
   } catch (err) {
    console.log(err);
-   message.channel.send({
+   message.lineReply({
     embed: {
      color: 16734039,
      description: "Something went wrong... :cry:",

@@ -33,7 +33,7 @@ module.exports = {
       size: 2048,
      })
     );
-   message.channel.send(embed);
+   message.lineReply(embed);
   } catch (err) {
    message.lineReply({
     embed: {

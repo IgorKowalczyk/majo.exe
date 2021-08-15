@@ -22,7 +22,7 @@ module.exports = {
     }),
     Color: "RANDOM",
    });
-   return message.channel.send(embed);
+   return message.lineReply(embed);
   } catch (err) {
    message.lineReply({
     embed: {

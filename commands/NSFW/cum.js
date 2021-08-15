@@ -40,9 +40,9 @@ module.exports = {
      )
      .setTimestamp()
      .setURL(body.url);
-    message.channel.send(embed);
+    message.lineReply(embed);
    } catch (err) {
-    message.channel.send({
+    message.lineReply({
      embed: {
       color: 16734039,
       description: "Something went wrong... :cry:",

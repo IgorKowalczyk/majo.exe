@@ -189,7 +189,7 @@ module.exports = {
    if (!queue) return;
    const member = message.guild.member(user);
    if (member.voice.channel !== message.guild.me.voice.channel) {
-    return message.channel.send({embed: {
+    return message.lineReply({embed: {
      color: 16734039,
      description: "You must be in the same voice channel as me",
     }})
@@ -330,7 +330,7 @@ module.exports = {
     case "🔀":
      reaction.users.remove(user)
      if (!queue) {
-      const errormsg = await message.channel.send({embed: {
+      const errormsg = await message.lineReply({embed: {
        color: 16734039,
        description: "There is no queue",
       }})
@@ -375,7 +375,7 @@ module.exports = {
       .setFooter("Requested by " + `${message.author.username}`, message.member.user.displayAvatarURL({ dynamic: true }));
      if (ms >= 10000) {
       nowPlaying.addField("\u200b", "🔴 LIVE", false);
-      return message.channel.send(nowPlaying);
+      return message.lineReply(nowPlaying);
      }
      if (ms > 0 && ms < 10000) {
       nowPlaying.addField(
@@ -419,7 +419,7 @@ module.exports = {
      splitDescription.forEach(async (m) => {
       queueEmbed.setDescription(m);
       message.react("✅");
-      message.channel.send(queueEmbed);
+      message.lineReply(queueEmbed);
      });
      break;
 
@@ -433,7 +433,7 @@ module.exports = {
       .setColor("RANDOM")
       .setTimestamp()
       .setFooter("Requested by " + `${message.author.username}`, message.member.user.displayAvatarURL({ dynamic: true }));
-     let result = await message.channel.send(temEmbed);
+     let result = await message.lineReply(temEmbed);
      try {
       lyrics = await lyricsFinder(queue.songs[0].title, "");
       if (!lyrics) lyrics = `No lyrics found for ${queue.songs[0].title}.`;

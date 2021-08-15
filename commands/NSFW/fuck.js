@@ -31,7 +31,7 @@ module.exports = {
      return message.lineReply({
       embed: {
        color: 5294200,
-       description: "😁 | Oh, you tried to fuck me but u can't... XD Im not real... But I can fuck you, Can I? 😏",
+       description: "😏 | Oh, you tried to fuck me but u can't... XD Im not real... But I can fuck you, Can I? ",
       },
      });
     }
@@ -47,7 +47,7 @@ module.exports = {
     const body = await response.json();
     const embed = new Discord.MessageEmbed() // Prettier()
      .setTitle(
-      user.user.username + " is being fucked by " + message.author.username,
+      user.username + " is being fucked by " + message.author.username,
       message.guild.iconURL({
        dynamic: true,
        format: "png",
@@ -65,9 +65,10 @@ module.exports = {
      )
      .setTimestamp()
      .setURL(body.url);
-    message.channel.send(embed);
+    message.lineReply(embed);
    } catch (err) {
-    message.channel.send({
+    console.log(err);
+    message.lineReply({
      embed: {
       color: 16734039,
       description: "Something went wrong... :cry:",

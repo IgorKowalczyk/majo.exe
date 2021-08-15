@@ -17,7 +17,7 @@ module.exports = {
     });
    }
    if (!message.member.hasPermission("KICK_MEMBERS")) {
-    return await message.channel.send({
+    return await message.lineReply({
      embed: {
       color: 16734039,
       description: "<:error:860884617770303519> | You don't have permission to kick members",

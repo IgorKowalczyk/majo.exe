@@ -12,7 +12,7 @@ module.exports = {
   try {
    const channel = message.member.voice.channel;
    if (!channel) {
-    return message.channel.send({
+    return message.lineReply({
      embed: {
       color: 16734039,
       description: "<:error:860884617770303519> | You should join a voice channel before using this command!",
@@ -21,7 +21,7 @@ module.exports = {
    }
    const queue = message.client.queue.get(message.guild.id);
    if (!queue) {
-    return message.channel.send({
+    return message.lineReply({
      embed: {
       color: 16734039,
       description: "<:error:860884617770303519> | There is nothing in the queue right now!",
@@ -35,7 +35,7 @@ module.exports = {
    }
    queue.songs = songs;
    message.client.queue.set(message.guild.id, queue);
-   message.channel.send({
+   message.lineReply({
     embed: {
      color: 4779354,
      description: "🔀 | Shuffled the current queue",
@@ -43,7 +43,7 @@ module.exports = {
    });
   } catch (err) {
    console.log(err);
-   message.channel.send({
+   message.lineReply({
     embed: {
      color: 16734039,
      description: "Something went wrong... :cry:",

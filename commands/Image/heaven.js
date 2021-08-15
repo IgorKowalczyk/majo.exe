@@ -25,7 +25,7 @@ module.exports = {
      )
     )
     .setTimestamp();
-   message.channel.send(embed);
+   message.lineReply(embed);
   } catch (err) {
    message.lineReply({
     embed: {

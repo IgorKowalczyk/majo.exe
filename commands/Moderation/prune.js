@@ -28,7 +28,7 @@ module.exports = {
        size: 2048,
       })
      );
-    message.channel.send(error).then((m) =>
+    message.lineReply(error).then((m) =>
      m.delete({
       timeout: 10000,
      })
@@ -49,7 +49,7 @@ module.exports = {
        size: 2048,
       })
      );
-    message.channel.send(error).then((m) =>
+    message.lineReply(error).then((m) =>
      m.delete({
       timeout: 10000,
      })
@@ -70,7 +70,7 @@ module.exports = {
        size: 2048,
       })
      );
-    message.channel.send(error).then((m) =>
+    message.lineReply(error).then((m) =>
      m.delete({
       timeout: 10000,
      })
@@ -91,7 +91,7 @@ module.exports = {
        size: 2048,
       })
      );
-    message.channel.send(error).then((m) =>
+    message.lineReply(error).then((m) =>
      m.delete({
       timeout: 10000,
      })
@@ -113,14 +113,14 @@ module.exports = {
        size: 2048,
       })
      );
-    return message.channel.send(error).then((m) =>
+    return message.lineReply(error).then((m) =>
      m.delete({
       timeout: 10000,
      })
     );
    });
   } catch (err) {
-   message.channel.send({
+   message.lineReply({
     embed: {
      color: 16734039,
      description: "Something went wrong... :cry:",

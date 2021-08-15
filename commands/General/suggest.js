@@ -11,7 +11,7 @@ module.exports = {
   try {
    const suggestion = args.join(" ");
    if (!suggestion) {
-    return message.channel.send({
+    return message.lineReply({
      embed: {
       color: 16734039,
       description: "<:error:860884617770303519> | You need to enter a suggestion!",

@@ -19,7 +19,7 @@ module.exports = {
    }
    const query = message.content.split(/\s+/g).slice(1).join(" ");
    if (!query) {
-    return message.channel.send({
+    return message.lineReply({
      embed: {
       color: 16734039,
       description: "<:error:860884617770303519> | You must enter a text to search for furry!",
@@ -47,21 +47,21 @@ module.exports = {
         })
        )
        .setURL(image.fileUrl);
-      return message.channel.send({
+      return message.lineReply({
        embed,
       });
      }
     })
     .catch((err) => {
      if (err.name === "booruError") {
-      return message.channel.send({
+      return message.lineReply({
        embed: {
         color: 16734039,
         description: `<:error:860884617770303519> | No results found for: ${query}`,
        },
       });
      } else {
-      return message.channel.send({
+      return message.lineReply({
        embed: {
         color: 16734039,
         description: `<:error:860884617770303519> | No results found for: ${query}`,
@@ -71,7 +71,7 @@ module.exports = {
     });
   } catch (err) {
    console.log(err);
-   message.channel.send({
+   message.lineReply({
     embed: {
      color: 16734039,
      description: "Something went wrong... :cry:",
