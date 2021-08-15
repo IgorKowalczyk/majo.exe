@@ -28,12 +28,13 @@ module.exports = {
       format: "png",
       size: 2048,
      })
-    )
-    .setDescription(`${config.patreon ? "<:patreon:876452398879629322> **Patreon:** [https://patreon.com/" + config.patreon + "](" + config.patreon + ")" : "<:patreon:876452398879629322> **Patreon:** -"}
+    ).setDescription(`${config.patreon ? "<:patreon:876452398879629322> **Patreon:** [https://patreon.com/" + config.patreon + "](" + config.patreon + ")" : "<:patreon:876452398879629322> **Patreon:** -"}
     ${config.open_collective ? "<:opencollective:876452400171479100> **OpenCollective:** [https://opencollective.com/" + config.open_collective + "](" + config.open_collective + ")" : "<:opencollective:876452400171479100> **OpenCollective:** -"}
     ${config.ko_fi ? "<:kofi:876452398934155264> **Ko-Fi:** [https://ko-fi.com/" + config.ko_fi + "](" + config.ko_fi + ")" : "<:kofi:876452398934155264> **Ko-Fi:** -"}
     `);
+   message.lineReply(embed);
   } catch (err) {
+   console.log(err);
    message.lineReply({
     embed: {
      color: 16734039,

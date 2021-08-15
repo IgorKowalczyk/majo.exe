@@ -10,7 +10,6 @@ module.exports = {
  run: async (client, message, args) => {
   try {
    const embed = new Discord.MessageEmbed()
-    .setTitle(`About ${client.user.username}`)
     .setAuthor(config.author)
     .setDescription(config.about_bot)
     .setTimestamp()
@@ -29,7 +28,8 @@ module.exports = {
       format: "png",
       size: 2048,
      })
-    );
+    )
+    .addField(`<:botpart1:853243093485748254><:botpart2:853243092597604362> About ${client.user.username}`, config.about_bot);
    if (config.about_dev) {
     embed.addField("<:owner:856161806199947285> About Dev", config.about_dev);
    }
