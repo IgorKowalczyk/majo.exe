@@ -47,7 +47,7 @@ module.exports = {
     const body = await response.json();
     const embed = new Discord.MessageEmbed() // Prettier()
      .setTitle(
-      user.toString() + " is being fucked by " + message.author.toString(),
+      user.user.username + " is being fucked by " + message.author.username,
       message.guild.iconURL({
        dynamic: true,
        format: "png",
