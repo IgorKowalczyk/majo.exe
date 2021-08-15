@@ -10,7 +10,7 @@ module.exports = {
  run: async (client, message, args) => {
   try {
    const embed = new Discord.MessageEmbed() // Prettier
-    .setTitle(`Donate ${client.user.username}`) //
+    .setTitle(`✨ Donate ${client.user.username}`) //
     .setTimestamp()
     .setThumbnail(
      client.user.displayAvatarURL({
