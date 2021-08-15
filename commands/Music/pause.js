@@ -12,7 +12,7 @@ module.exports = {
    const { channel } = message.member.voice;
    const queue = message.client.queue.get(message.guild.id);
    if (!queue) {
-    return message.channel.send({
+    return message.lineReply({
      embed: {
       color: 16734039,
       description: "<:error:860884617770303519> | This is nothing playing right now",
@@ -20,7 +20,7 @@ module.exports = {
     });
    }
    if (!message.member.voice.channel) {
-    return message.channel.send({
+    return message.lineReply({
      embed: {
       color: 16734039,
       description: "<:error:860884617770303519> | Please join a voice channel first",
@@ -28,7 +28,7 @@ module.exports = {
     });
    }
    if (channel !== message.guild.me.voice.channel) {
-    return message.channel.send({
+    return message.lineReply({
      embed: {
       color: 16734039,
       description: "<:error:860884617770303519> | You must be in the same voice channel as me",
@@ -45,7 +45,7 @@ module.exports = {
    }
   } catch (err) {
    console.log(err);
-   return message.channel.send({
+   return message.lineReply({
     embed: {
      color: 16734039,
      description: "Something went wrong... :cry:",
