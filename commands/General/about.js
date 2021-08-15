@@ -11,7 +11,6 @@ module.exports = {
   try {
    const embed = new Discord.MessageEmbed()
     .setAuthor(config.author)
-    .setDescription(config.about_bot)
     .setTimestamp()
     .setThumbnail(
      client.user.displayAvatarURL({
