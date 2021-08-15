@@ -45,7 +45,7 @@ module.exports = {
      .addField("<:discord_2:876473291777404959> Guild Count", `\`${client.guilds.cache.size} guilds\``, true)
      .addField("<:members:856161806606401556> User Count", `\`${client.guilds.cache.reduce((a, g) => a + g.memberCount, 0)} members\``, true)
      .addField("<:channel:856161806586085376> Channel Count", `\`${client.channels.cache.size} channels\``, true)
-     .addField("💿 Operating System", "`" + capitalizeFirstLetter(osutils.platform()) + " (" + os.arch() + ")`", true)
+     .addField("💿 Operating System", "```" + capitalizeFirstLetter(osutils.platform()) + " (" + os.arch() + ")```", true)
      .addField("📦 Tools", `\`\`\`Node.js: ${process.version} | Discord.js: ${dependencies["discord.js"].replace("^", "v")}\`\`\``)
      .addField("⏳ Uptime", `\`\`\`Bot: ${botuptime}\nServer: ${osuptime}\`\`\``)
      .addField("🏓 Ping", `\`\`\`Bot: ${Math.round(client.ws.ping)}ms | API: ${(Date.now() - message.createdTimestamp).toString().replace(/-/g, "")}ms\`\`\``)
