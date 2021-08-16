@@ -1,7 +1,6 @@
 const Discord = require("discord.js");
 const config = require("../../config");
 const child = require("child_process");
-const { errors } = require("puppeteer");
 
 module.exports = {
  name: "shell",

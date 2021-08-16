@@ -1,5 +1,4 @@
 const Discord = require("discord.js");
-const beautify = require("beautify");
 const config = require("../../config");
 
 module.exports = {
