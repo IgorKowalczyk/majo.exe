@@ -66,7 +66,7 @@ module.exports = async (client, member) => {
     );
     ctx.drawImage(avatar, 65, canvas.height / 2 - 250, 500, 500);
     const attachment = new Discord.MessageAttachment(canvas.toBuffer(), "welcome-image.png");
-    const embed = await new Discord.MessageEmbed() // Prettier()
+    const embed = await new Discord.MessageEmbed() // Prettier
      .setColor("RANDOM")
      .setTimestamp()
      .setFooter(

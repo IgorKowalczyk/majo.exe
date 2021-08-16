@@ -68,7 +68,7 @@ module.exports = (client) => {
     const command = interaction.data.name.toLowerCase();
     const args = interaction.data.options;
     if (command == "majo") {
-     const embed = new Discord.MessageEmbed() // Prettier()
+     const embed = new Discord.MessageEmbed() // Prettier
       .setDescription(`Hello, ${client.user.username} unfortunately **do not support slash commands**. And we do not currently plan to add them either. We apologize ;-; If you want use my normal commands please check \`${process.env.PREFIX} help\`!`)
       .setTitle(
        `<:success:860884617820110909> Hi ${interaction.member.user.username}! I'm ${client.user.username}`,

@@ -20,7 +20,7 @@ module.exports = {
    }
    function getAll(client, message) {
     const commands = readdirSync("./commands/");
-    const embed = new Discord.MessageEmbed() // Prettier()
+    const embed = new Discord.MessageEmbed() // Prettier
      .setAuthor("Help", message.guild.iconURL())
      .setColor("RANDOM")
      .setTimestamp();
@@ -74,7 +74,7 @@ module.exports = {
    }
 
    function getCMD(client, message, input) {
-    const embed = new Discord.MessageEmbed(); // Prettier();
+    const embed = new Discord.MessageEmbed(); // Prettier;
     const cmd = client.commands.get(input.toLowerCase()) || client.commands.get(client.aliases.get(input.toLowerCase()));
     const info = "<:error:860884617770303519> | No information found for command `" + input.toLowerCase() + "`!";
     if (!cmd) {
@@ -98,7 +98,7 @@ module.exports = {
       return string.charAt(0).toUpperCase() + string.slice(1);
      }
      alliaseslist = cmd.aliases.join(", ") || "None";
-     const hembed = new Discord.MessageEmbed() // Prettier()
+     const hembed = new Discord.MessageEmbed() // Prettier
       .setTitle(`:grey_question: \`${cmd.name}\` command help page`, message.guild.iconURL())
       .setColor("RANDOM")
       .setTimestamp()

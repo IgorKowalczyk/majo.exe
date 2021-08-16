@@ -39,7 +39,7 @@ module.exports = {
         description: `✨ | Success! Updated welcome channel, new welcome channel is ${channel} (ID: ${channel.id})`,
        },
       });
-      const embed = new Discord.MessageEmbed() // Prettier()
+      const embed = new Discord.MessageEmbed() // Prettier
        .setColor("RANDOM")
        .setTitle("Success!")
        .setDescription(`${message.author} set up this channel to send users welcome messages`)

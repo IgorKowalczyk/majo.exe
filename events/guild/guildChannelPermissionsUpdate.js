@@ -19,7 +19,7 @@ module.exports = async (client, channel, oldPermissions, newPermissions) => {
     } else {
      channelping = "```" + channel.name + "```";
     }
-    const newtopic = await new Discord.MessageEmbed() // Prettier()
+    const newtopic = await new Discord.MessageEmbed() // Prettier
      .setTitle("📝 Channel permissions changed!", channel.guild.iconURL())
      .addField("Channel name", `${channelping}`)
      .addField("Channel type", `${channel.type}`)

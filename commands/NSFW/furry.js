@@ -34,7 +34,7 @@ module.exports = {
     })
     .then((images) => {
      for (let image of images) {
-      const embed = new Discord.MessageEmbed() // Prettier()
+      const embed = new Discord.MessageEmbed() // Prettier
        .setTitle(":smirk: Furry")
        .setImage(image.fileUrl)
        .setColor("RANDOM")

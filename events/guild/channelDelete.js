@@ -33,7 +33,7 @@ module.exports = async (client, channel) => {
     channel.guild.fetchAuditLogs().then((logs) => {
      const userid = logs.entries.first().executor.id;
      const uavatar = logs.entries.first().executor.avatarURL();
-     const event = new Discord.MessageEmbed() // Prettier()
+     const event = new Discord.MessageEmbed() // Prettier
       .setTitle("<:channel_locked:585783907350478848> Channel Deleted")
       .setThumbnail(uavatar)
       .addField("Channel name", `${channel.name} (ID: ${channel.id})`)

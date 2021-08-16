@@ -8,7 +8,7 @@ module.exports = {
  usage: "ping",
  run: async (client, message, args) => {
   try {
-   const ping = new Discord.MessageEmbed() // Prettier()
+   const ping = new Discord.MessageEmbed() // Prettier
     .setTitle(":ping_pong: Pong!")
     .addField("⏱️ My ping: ", `\`\`\`${(Date.now() - message.createdTimestamp).toString().replace(/-/g, "")}ms\`\`\``)
     .addField("⏱️ API ping (Websocket): ", `\`\`\`${Math.round(client.ws.ping)}ms\`\`\``)

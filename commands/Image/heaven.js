@@ -15,7 +15,7 @@ module.exports = {
      description: "✨ | Please wait... I'm generating your image",
     },
    });
-   const embed = new Discord.MessageEmbed() // Prettier()
+   const embed = new Discord.MessageEmbed() // Prettier
     .setColor("RANDOM")
     .setImage(
      encodeURI(

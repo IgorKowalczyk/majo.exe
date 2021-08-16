@@ -10,7 +10,7 @@ module.exports = {
  run: async (client, message, args) => {
   try {
    if (!process.env.DOMAIN) {
-    const embed = new Discord.MessageEmbed() // Prettier()
+    const embed = new Discord.MessageEmbed() // Prettier
      .setTitle("<a:error:759354037803024395> Mheh!")
      .setDescription("Our dashboard (and the contact page itself) is not working at the moment, please try again later! We are sorry...")
      .setTimestamp()
@@ -25,7 +25,7 @@ module.exports = {
      );
     return message.lineReply(embed);
    }
-   const embed = new Discord.MessageEmbed() // Prettier()
+   const embed = new Discord.MessageEmbed() // Prettier
     .setTitle("<:success:860884617820110909> Yay!")
     .setDescription("🔗 | Contact Form: " + process.env.DOMAIN + "/contact")
     .setTimestamp()

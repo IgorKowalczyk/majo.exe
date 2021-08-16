@@ -28,7 +28,7 @@ module.exports = {
    else thumb = song.thumbnail.url;
    const seek = (queue.connection.dispatcher.streamTime - queue.connection.dispatcher.pausedTime) / 1000;
    const left = ms - seek;
-   let nowPlaying = new Discord.MessageEmbed() // Prettier()
+   let nowPlaying = new Discord.MessageEmbed() // Prettier
     .setAuthor(
      "♪ Now playing",
      message.author.displayAvatarURL({

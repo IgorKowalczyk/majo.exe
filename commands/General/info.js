@@ -27,7 +27,7 @@ module.exports = {
     drive.info().then((driveinf) => {
      const driveinf0 = JSON.stringify(driveinf);
      const driveinfo = JSON.parse(driveinf0);
-     const embed = new Discord.MessageEmbed() // Prettier()
+     const embed = new Discord.MessageEmbed() // Prettier
       .setTitle(
        `📄 Generic Information`,
        message.guild.iconURL({

@@ -32,7 +32,7 @@ module.exports = {
       });
      }
      const question = args.join(" ");
-     const calc = new Discord.MessageEmbed() // Prettier()
+     const calc = new Discord.MessageEmbed() // Prettier
       .setTitle("🔢 Calculator")
       .setColor("RANDOM")
       .addField("Question: ", `\`\`\`${question}\`\`\``)

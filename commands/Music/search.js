@@ -46,7 +46,7 @@ module.exports = {
      },
     });
    }
-   const first = new Discord.MessageEmbed() // Prettier()
+   const first = new Discord.MessageEmbed() // Prettier
     .setAuthor("Searching...")
     .setColor("RANDOM")
     .setFooter(
@@ -57,7 +57,7 @@ module.exports = {
       size: 2048,
      })
     );
-   const resultsEmbed = new Discord.MessageEmbed() // Prettier()
+   const resultsEmbed = new Discord.MessageEmbed() // Prettier
     .setTitle("Results for ")
     .setDescription(`\`${search}\``)
     .setColor("RANDOM")

@@ -14,7 +14,7 @@ module.exports = {
    const duration = moment.duration(client.uptime).format(" D [days], H [hrs], m [mins], s [secs]");
    const date = new Date();
    const timestamp = date.getTime() - Math.floor(client.uptime);
-   const embed = new Discord.MessageEmbed() // Prettier()
+   const embed = new Discord.MessageEmbed() // Prettier
     .setTitle(
      ":hourglass_flowing_sand: Uptime",
      message.guild.iconURL({

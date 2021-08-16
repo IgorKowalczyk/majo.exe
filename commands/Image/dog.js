@@ -12,7 +12,7 @@ module.exports = {
    try {
     const response = await fetch("https://nekos.life/api/v2/img/woof");
     const body = await response.json();
-    const embed = new Discord.MessageEmbed() // Prettier()
+    const embed = new Discord.MessageEmbed() // Prettier
      .setTitle(
       "🐕 Random dog",
       message.guild.iconURL({

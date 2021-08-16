@@ -15,7 +15,7 @@ module.exports = {
    };
    axios.request(options).then((response) => {
     let meme = response.data[0].data.children[0].data;
-    const embed = new Discord.MessageEmbed() // Prettier()
+    const embed = new Discord.MessageEmbed() // Prettier
      .setColor("RANDOM")
      .setTitle(meme.title)
      .setURL(`https://reddit.com${meme.permalink}`)

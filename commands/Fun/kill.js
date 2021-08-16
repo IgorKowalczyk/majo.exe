@@ -33,7 +33,7 @@ module.exports = {
    (async () => {
     const response = await fetch("https://nekos.life/api/v2/img/slap");
     const body = await response.json();
-    const embed = await new Discord.MessageEmbed() // Prettier()
+    const embed = await new Discord.MessageEmbed() // Prettier
      .setColor("RANDOM")
      .setAuthor(
       "Tombstone of " + member.displayName + "!",

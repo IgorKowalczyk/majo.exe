@@ -25,7 +25,7 @@ module.exports = {
    if (description.length == 0) {
     description = "There is nothing in the queue!";
    }
-   const queueembed = new Discord.MessageEmbed() // Prettier()
+   const queueembed = new Discord.MessageEmbed() // Prettier
     .setTitle(
      "💿 Music Queue",
      message.author.displayAvatarURL({

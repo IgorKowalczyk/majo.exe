@@ -34,7 +34,7 @@ module.exports = async (client, channel) => {
     channel.guild.fetchAuditLogs().then((logs) => {
      const userid = logs.entries.first().executor.id;
      const uavatar = logs.entries.first().executor.avatarURL();
-     const event = new Discord.MessageEmbed() // Prettier()
+     const event = new Discord.MessageEmbed() // Prettier
       .setTitle("<:channel:585783907841212418> Channel Created")
       .setThumbnail(uavatar)
       .addField("Channel name", `<#${channel.id}> (ID: ${channel.id})`)

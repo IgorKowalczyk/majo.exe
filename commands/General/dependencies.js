@@ -8,7 +8,7 @@ module.exports = {
  usage: "dependencies",
  run: async (client, message, args) => {
   try {
-   const embed = new Discord.MessageEmbed() // Prettier()
+   const embed = new Discord.MessageEmbed() // Prettier
     .setTitle("📦 Dependencies")
     .setDescription(client.user.tag + " run on " + Object.keys(require("../../package").dependencies).length + " npm dependencies (Javascript power 💪)")
     .setTimestamp()

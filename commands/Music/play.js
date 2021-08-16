@@ -75,20 +75,20 @@ module.exports = {
    if (serverQueue) {
     if (urlValid) {
      message.lineReply(
-      new Discord.MessageEmbed() // Prettier()
+      new Discord.MessageEmbed() // Prettier
        .setColor("RANDOM")
        .setDescription(`:notes: Searching 🔍 [\`LINK\`](${args.join(" ")})`)
      );
     } else {
      message.lineReply(
-      new Discord.MessageEmbed() // Prettier()
+      new Discord.MessageEmbed() // Prettier
        .setColor("RANDOM")
        .setDescription(`:notes: Searching 🔍 \`${args.join(" ")}\``)
      );
     }
    } else {
     queueConstruct.connection = await channel.join();
-    const successjoin = new Discord.MessageEmbed() // Prettier()
+    const successjoin = new Discord.MessageEmbed() // Prettier
      .setColor("RANDOM")
      .setDescription(`👍 Joined \`${channel.name}\` 📄 bound \`#${message.channel.name}\``)
      .setFooter("Requested by " + `${message.author.username}`, message.author.displayAvatarURL({ dynamic: true, format: "png", size: 2048 }));
@@ -98,7 +98,7 @@ module.exports = {
      })
     );
     if (urlValid) {
-     const urlvailds = new Discord.MessageEmbed() // Prettier()
+     const urlvailds = new Discord.MessageEmbed() // Prettier
       .setColor("RANDOM")
       .setDescription(`:notes: Searching 🔍 [\`LINK\`](${args.join(" ")})`);
      await message.lineReply(urlvailds);
@@ -106,7 +106,7 @@ module.exports = {
       timeout: 5000,
      });
     } else {
-     const urlvaildnormal = new Discord.MessageEmbed() // Prettier()
+     const urlvaildnormal = new Discord.MessageEmbed() // Prettier
       .setColor("RANDOM")
       .setDescription(`:notes: Searching 🔍 \`${args.join(" ")}\``);
      await message.lineReply(urlvaildnormal);
@@ -215,7 +215,7 @@ module.exports = {
     estimatedtime = estimatedtime + " Seconds";
    }
    serverQueue.songs.push(song);
-   const newsong = new Discord.MessageEmbed() // Prettier()
+   const newsong = new Discord.MessageEmbed() // Prettier
     .setTitle(":notes: " + song.title)
     .setColor("RANDOM")
     .setThumbnail(thumb)

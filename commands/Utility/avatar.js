@@ -15,11 +15,11 @@ module.exports = {
     format: "png",
     size: 2048,
    });
-   const button = new Extra.MessageButton() // Prettier()
+   const button = new Extra.MessageButton() // Prettier
     .setLabel("Avatar link")
     .setStyle("url")
     .setURL(uavatar);
-   const embed = new Discord.MessageEmbed() // Prettier()
+   const embed = new Discord.MessageEmbed() // Prettier
     .setColor("RANDOM")
     .setAuthor(User.user.username + "'s Avatar", uavatar)
     .setImage(uavatar)

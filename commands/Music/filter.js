@@ -110,7 +110,7 @@ module.exports = {
      break;
     default:
      varforfilter = 404;
-     const embed = new Discord.MessageEmbed() // Prettier()
+     const embed = new Discord.MessageEmbed() // Prettier
       .setColor("RANDOM")
       .setTitle("Not a valid Filter, use one of those:")
       .setDescription(
@@ -139,7 +139,7 @@ module.exports = {
     if (varforfilter === 404) return;
     const song = queue.songs[0];
     message.lineReply(
-     new Discord.MessageEmbed() // Prettier()
+     new Discord.MessageEmbed() // Prettier
       .setColor("RANDOM")
       .setDescription("✨ | Applying effect: *" + args[0] + "*\n")
     );

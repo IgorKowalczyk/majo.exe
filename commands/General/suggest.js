@@ -28,7 +28,7 @@ module.exports = {
    }
    const channel = client.channels.cache.get(config.suggestions_channel);
    if (channel) {
-    const embed = new Discord.MessageEmbed() // Prettier()
+    const embed = new Discord.MessageEmbed() // Prettier
      .setAuthor("🤔" + message.author.username + " suggestion!", message.guild.iconURL())
      .setColor("RANDOM")
      .setDescription(suggestion)
@@ -44,7 +44,7 @@ module.exports = {
      )
      .setThumbnail(message.guild.iconURL());
     channel.send(embed);
-    const success = new Discord.MessageEmbed() // Prettier()
+    const success = new Discord.MessageEmbed() // Prettier
      .setColor("RANDOM")
      .setDescription(`${message.author} your suggestion was send, you can view it in Majo.exe Developers server in <#${config.suggestions_channel}> channel.`)
      .setFooter(

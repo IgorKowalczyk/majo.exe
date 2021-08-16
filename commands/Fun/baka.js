@@ -12,7 +12,7 @@ module.exports = {
    try {
     const response = await fetch("https://nekos.life/api/v2/img/baka");
     const body = await response.json();
-    const embed = new Discord.MessageEmbed() // Prettier()
+    const embed = new Discord.MessageEmbed() // Prettier
      .setTitle(
       ":rage: Baka!",
       message.guild.iconURL({

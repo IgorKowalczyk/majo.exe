@@ -14,11 +14,11 @@ module.exports = {
     format: "png",
     size: 2048,
    });
-   const button = new Extra.MessageButton() // Prettier()
+   const button = new Extra.MessageButton() // Prettier
     .setLabel("Avatar link")
     .setStyle("url")
     .setURL(gavatar);
-   const embed = new Discord.MessageEmbed() // Prettier()
+   const embed = new Discord.MessageEmbed() // Prettier
     .setColor("RANDOM")
     .setDescription("🔗 [Icon link](" + gavatar + ")")
     .setAuthor(message.guild.name + " Icon", gavatar)

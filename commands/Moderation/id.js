@@ -17,7 +17,7 @@ module.exports = {
      },
     });
    }
-   const userid = new Discord.MessageEmbed() // Prettier()
+   const userid = new Discord.MessageEmbed() // Prettier
     .setThumbnail(mention.user.avatarURL())
     .setColor("RANDOM")
     .setDescription("Here is " + `${mention.user.username} ID - \`` + mention.id + "`");

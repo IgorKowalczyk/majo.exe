@@ -20,7 +20,7 @@ module.exports = {
     }
     const response = await fetch("https://nekos.life/api/v2/img/fox_girl");
     const body = await response.json();
-    const embed = new Discord.MessageEmbed() // Prettier()
+    const embed = new Discord.MessageEmbed() // Prettier
      .setTitle(
       ":smirk: Foxgirl",
       message.guild.iconURL({

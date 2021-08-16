@@ -41,7 +41,7 @@ module.exports = {
       },
      });
     } else {
-     const embed = new Discord.MessageEmbed() // Prettier()
+     const embed = new Discord.MessageEmbed() // Prettier
       .setDescription(body.cnt)
       .setColor("RANDOM")
       .setFooter(

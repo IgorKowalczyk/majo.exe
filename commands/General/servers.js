@@ -8,7 +8,7 @@ module.exports = {
  usage: "servers",
  run: async (client, message, args) => {
   try {
-   const embed = new Discord.MessageEmbed() // Prettier()
+   const embed = new Discord.MessageEmbed() // Prettier
     .setDescription("🚀 I'm in " + `${client.guilds.cache.size}` + " servers!")
     .setFooter(
      "Requested by " + `${message.author.username}`,

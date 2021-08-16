@@ -12,7 +12,7 @@ module.exports = {
   (async () => {
    try {
     let text = await neko.sfw.catText();
-    const embed = new Discord.MessageEmbed() // Prettier()
+    const embed = new Discord.MessageEmbed() // Prettier
      .setColor("RANDOM")
      .setTitle(text.cat)
      .setFooter(

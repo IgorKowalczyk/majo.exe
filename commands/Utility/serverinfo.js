@@ -45,7 +45,7 @@ module.exports = {
    } else {
     widget = "Server widget not enabled";
    }
-   const embed = new Discord.MessageEmbed() // Prettier()
+   const embed = new Discord.MessageEmbed() // Prettier
     .setTitle(message.guild.name, message.guild.iconURL)
     .setColor("RANDOM")
     .setThumbnail(message.guild.iconURL())

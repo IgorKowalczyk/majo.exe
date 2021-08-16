@@ -38,7 +38,7 @@ module.exports = {
    if (queue.playing) {
     queue.playing = false;
     queue.connection.dispatcher.pause(true);
-    const pausemebed = new Discord.MessageEmbed() // Prettier()
+    const pausemebed = new Discord.MessageEmbed() // Prettier
      .setColor("RANDOM")
      .setDescription(`⏸️ | <@${message.author.id}> paused the music.`);
     return queue.textChannel.send(pausemebed).catch(console.error);

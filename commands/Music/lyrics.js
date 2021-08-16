@@ -25,7 +25,7 @@ module.exports = {
     let lyrics = await searchr.lyrics();
     let songfetch = await searchr.fetch();
     if (!lyrics) lyrics = `No lyrics found for ${song}`;
-    let embed = new Discord.MessageEmbed() // Prettier()
+    let embed = new Discord.MessageEmbed() // Prettier
      .setAuthor(
       `📑 Lyrics for ${songfetch.fullTitle}`,
       message.author.displayAvatarURL({

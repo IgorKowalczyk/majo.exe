@@ -10,7 +10,7 @@ module.exports = {
   try {
    const answers = ["Heads", "Tails"];
    const answer = answers[Math.floor(Math.random() * answers.length)];
-   const embed = new Discord.MessageEmbed() // Prettier()
+   const embed = new Discord.MessageEmbed() // Prettier
     .setColor("RANDOM")
     .setDescription(`🪙 | I'm get: ${answer}`)
     .setFooter(

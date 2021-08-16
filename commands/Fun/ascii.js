@@ -45,7 +45,7 @@ module.exports = {
       {}
      )
      .then(function (urlToPaste) {
-      const embed = new Discord.MessageEmbed() // Prettier()
+      const embed = new Discord.MessageEmbed() // Prettier
        .setColor("RANDOM")
        .setTitle(
         ":white_check_mark: Success!",

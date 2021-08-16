@@ -17,7 +17,7 @@ module.exports = {
      },
     });
     const body = await response.json();
-    const embed = new Discord.MessageEmbed() // Prettier()
+    const embed = new Discord.MessageEmbed() // Prettier
      .setTitle("Random Dad joke", message.guild.iconURL())
      .setDescription("Dad said: " + body.joke)
      .setColor("RANDOM")

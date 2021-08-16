@@ -10,7 +10,7 @@ module.exports = async (client, message) => {
   if (message.author.bot) return;
   if (!message.guild) {
    try {
-    const embed = new Discord.MessageEmbed() // Prettier()
+    const embed = new Discord.MessageEmbed() // Prettier
      .setTitle(
       `:thinking: Hmm?`,
       message.author.displayAvatarURL({
@@ -36,7 +36,7 @@ module.exports = async (client, message) => {
    }
   }
   if (message.content === `<@${client.user.id}>` || message.content === `<@!${client.user.id}>`) {
-   const embed = new Discord.MessageEmbed() // Prettier()
+   const embed = new Discord.MessageEmbed() // Prettier
     .setTitle(`<:success:860884617820110909> Hi!`, message.guild.iconURL())
     .setColor("RANDOM")
     .setDescription("I was pinged by you, here I am - " + client.user.username + "! My prefix is `" + prefix + "` To see all  my commands please type `" + prefix + " help`!")

@@ -29,7 +29,7 @@ module.exports = {
    (async () => {
     const response = await fetch("https://nekos.life/api/v2/img/tickle");
     const body = await response.json();
-    const embed = await new Discord.MessageEmbed() // Prettier()
+    const embed = await new Discord.MessageEmbed() // Prettier
      .setColor("RANDOM")
      .setTitle(member.username + " just got tickled by " + message.author.username)
      .setFooter(

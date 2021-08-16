@@ -106,7 +106,7 @@ module.exports = {
      endedAt: "Ended at",
     },
    });
-   const success = new Discord.MessageEmbed() // Prettier()
+   const success = new Discord.MessageEmbed() // Prettier
     .setColor("RANDOM")
     .setTitle(
      ":white_check_mark: Success!",

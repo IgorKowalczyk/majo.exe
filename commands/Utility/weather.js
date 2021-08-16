@@ -41,7 +41,7 @@ module.exports = {
      }
      const current = result[0].current;
      const location = result[0].location;
-     const weatherinfo = new Discord.MessageEmbed() // Prettier()
+     const weatherinfo = new Discord.MessageEmbed() // Prettier
       .setTitle(
        `🌤️ Weather forecast for ${current.observationpoint}`,
        message.guild.iconURL({

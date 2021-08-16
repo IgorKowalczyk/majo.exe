@@ -29,11 +29,11 @@ module.exports = {
        },
       });
      let { login, avatar_url, name, id, html_url, company, public_repos, public_gists, twitter_username, email, followers, following, location, created_at, bio } = body;
-     const button = new Extra.MessageButton() // Prettier()
+     const button = new Extra.MessageButton() // Prettier
       .setLabel("See profile")
       .setStyle("url")
       .setURL(html_url);
-     const embed = new Discord.MessageEmbed() // Prettier()
+     const embed = new Discord.MessageEmbed() // Prettier
       .setTitle(`🐙 ${login} Github`, avatar_url)
       .setColor(`RANDOM`)
       .setThumbnail(avatar_url)

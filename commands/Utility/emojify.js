@@ -35,7 +35,7 @@ module.exports = {
      },
     });
    }
-   const embed = new Discord.MessageEmbed() // Prettier()
+   const embed = new Discord.MessageEmbed() // Prettier
     .setColor("RANDOM")
     .setTitle(`Text To Emoji`)
     .addField("Converted text", converted)

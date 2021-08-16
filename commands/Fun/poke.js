@@ -37,7 +37,7 @@ module.exports = {
     }
     const response = await fetch("https://nekos.life/api/v2/img/poke");
     const body = await response.json();
-    const embed = new Discord.MessageEmbed() // Prettier()
+    const embed = new Discord.MessageEmbed() // Prettier
      .setTitle(
       user.username + " just got poked by " + message.author.username,
       message.guild.iconURL({

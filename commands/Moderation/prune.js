@@ -17,7 +17,7 @@ module.exports = {
     });
    }
    if (!message.member.hasPermission("MANAGE_MESSAGES")) {
-    let error = new Discord.MessageEmbed() // Prettier()
+    let error = new Discord.MessageEmbed() // Prettier
      .setColor("FF5757")
      .setDescription("<:error:860884617770303519> | You don't have permission to prune messages!")
      .setFooter(
@@ -38,7 +38,7 @@ module.exports = {
     });
    }
    if (isNaN(args[0])) {
-    let error = new Discord.MessageEmbed() // Prettier()
+    let error = new Discord.MessageEmbed() // Prettier
      .setColor("FF5757")
      .setDescription("<:error:860884617770303519> | Please input a vaild number!")
      .setFooter(
@@ -59,7 +59,7 @@ module.exports = {
     });
    }
    if (args[0] > 100) {
-    let error = new Discord.MessageEmbed() // Prettier()
+    let error = new Discord.MessageEmbed() // Prettier
      .setColor("FF5757")
      .setDescription("<:error:860884617770303519> | Insert the number less than 100!")
      .setFooter(
@@ -80,7 +80,7 @@ module.exports = {
     });
    }
    if (args[0] < 2) {
-    let error = new Discord.MessageEmbed() // Prettier()
+    let error = new Discord.MessageEmbed() // Prettier
      .setColor("FF5757")
      .setDescription("<:error:860884617770303519> | Insert the number more than 1!")
      .setFooter(
@@ -102,7 +102,7 @@ module.exports = {
    }
    await message.delete();
    await message.channel.bulkDelete(args[0]).then((messages) => {
-    let error = new Discord.MessageEmbed() // Prettier()
+    let error = new Discord.MessageEmbed() // Prettier
      .setColor("RANDOM")
      .setDescription(":wastebasket: Deleted " + `${messages.size}/${args[0]}` + " messages.")
      .setFooter(

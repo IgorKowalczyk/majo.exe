@@ -29,7 +29,7 @@ module.exports = {
    }
    let evaluated = eval(result);
    console.log(result);
-   const success = new Discord.MessageEmbed() // Prettier()
+   const success = new Discord.MessageEmbed() // Prettier
     .setColor("RANDOM")
     .setTitle("💡 Eval")
     .addField(`Input:\n`, "```js\n" + `${args.join(" ")}` + "```", false)
@@ -44,7 +44,7 @@ module.exports = {
     );
    message.lineReply(success);
   } catch (err) {
-   const errormessage = new Discord.MessageEmbed() // Prettier()
+   const errormessage = new Discord.MessageEmbed() // Prettier
     .setColor("#e31212")
     .setTitle("An error has occured")
     .addField(`Input:\n`, "```js\n" + `${result}` + "```", false)

@@ -39,7 +39,7 @@ module.exports = {
         description: `✨ | Success! Updated logs channel, new logs channel is ${channel} (ID: ${channel.id})`,
        },
       });
-      const embed = new Discord.MessageEmbed() // Prettier()
+      const embed = new Discord.MessageEmbed() // Prettier
        .setColor("RANDOM")
        .setTitle("Success!")
        .setDescription(`${message.author} has set this channel for logging all events!`)

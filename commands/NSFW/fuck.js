@@ -45,7 +45,7 @@ module.exports = {
     }
     const response = await fetch("https://nekos.life/api/v2/img/anal");
     const body = await response.json();
-    const embed = new Discord.MessageEmbed() // Prettier()
+    const embed = new Discord.MessageEmbed() // Prettier
      .setTitle(
       user.username + " is being fucked by " + message.author.username,
       message.guild.iconURL({

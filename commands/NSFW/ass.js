@@ -27,7 +27,7 @@ module.exports = {
     });
    })
    .then(function (res) {
-    const embed = new Discord.MessageEmbed() // Prettier()
+    const embed = new Discord.MessageEmbed() // Prettier
      .setTitle(
       ":smirk: Ass",
       message.guild.iconURL({
