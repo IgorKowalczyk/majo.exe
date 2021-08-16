@@ -7,7 +7,7 @@ module.exports = {
  name: "shell",
  aliases: ["cmd", "exec", "terminal"],
  description: "Shows informations for developers",
- category: "General",
+ category: "Owner",
  usage: "shell <script>",
  run: async (client, message, args) => {
   try {
