@@ -27,7 +27,7 @@ module.exports = {
    }
    const embed = new Discord.MessageEmbed() // Prettier()
     .setTitle("<:success:860884617820110909> Yay!")
-    .setDescription("🔗 Contact Form: " + process.env.DOMAIN + "/contact")
+    .setDescription("🔗 | Contact Form: " + process.env.DOMAIN + "/contact")
     .setTimestamp()
     .setColor("RANDOM")
     .setFooter(

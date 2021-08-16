@@ -28,7 +28,7 @@ module.exports = {
       size: 2048,
      })
     )
-    .addField(`<:bot:853219015422246922> About ${client.user.username}`, "> " + config.about_bot);
+    .addField(`<:discord_2:876473291777404959> About ${client.user.username}`, "> " + config.about_bot);
    if (config.about_dev) {
     embed.addField("<:owner:856161806199947285> About Dev", "> " + config.about_dev);
    }

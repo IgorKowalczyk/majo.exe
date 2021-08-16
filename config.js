@@ -10,6 +10,7 @@ module.exports = {
  github_repo: "majobot",
  about_bot: "... Soon!",
  about_dev: "... Soon!",
+ donation_perks: "",
  patreon: "igorkowalczyk",
  ko_fi: "igorkowalczyk",
  open_collective: "igorkowalczyk",
