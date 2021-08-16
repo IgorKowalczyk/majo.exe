@@ -6,7 +6,7 @@ module.exports = {
  name: "eval",
  aliases: [],
  description: "Evaluates and runs JavaScript code",
- category: "General",
+ category: "Owner",
  usage: "eval <code>",
  run: async (client, message, args) => {
   try {

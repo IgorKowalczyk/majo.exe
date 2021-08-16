@@ -56,7 +56,11 @@ module.exports = {
      if (!id) {
       icon = ":grey_question:";
      }
+     if(id == "Owner") return;
      embed.addField(`${icon} ${id} (${category.size})`, "> " + category.map((cmd) => `${cmd.name}`).join(", "));
+     if(message.author.id == config.owner_id) {
+      embed.addField(`<:owner:856161806199947285> Owner`, ">")
+     }
     }
     embed.addField(":grey_question: Command Information", "`" + prefix + " help <command>`");
     if (config.news && config.bot_news_title) {
