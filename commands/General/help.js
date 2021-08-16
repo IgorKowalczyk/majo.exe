@@ -56,11 +56,12 @@ module.exports = {
      if (!id) {
       icon = ":grey_question:";
      }
+     if (id == "Owner") continue;
      embed.addField(`${icon} ${id} (${category.size})`, "> " + category.map((cmd) => `${cmd.name}`).join(", "));
     }
-    const owner = [...new Set(client.commands.filter(cmd => `${cmd.category}` == "Owner").map((cmd) => cmd.name))];
-    if(message.author.id == config.owner_id) {
-     embed.addField(`<:owner:856161806199947285> Owner`, "> Note: Only owner of the bot can use the commands below!\n> " + owner.join(", "))
+    const owner = [...new Set(client.commands.filter((cmd) => `${cmd.category}` == "Owner").map((cmd) => cmd.name))];
+    if (message.author.id == config.owner_id) {
+     embed.addField(`<:owner:856161806199947285> Owner`, "> <:info:876827701963550750> **Note:** *Only the bot owner (<@" + config.owner_id + ">) can use the commands below!*\n> " + owner.join(", "));
     }
     embed.addField(":grey_question: Command Information", "`" + prefix + " help <command>`");
     if (config.news && config.bot_news_title) {
