@@ -2,7 +2,7 @@ const Discord = require("discord.js");
 
 module.exports = {
  name: "checkperm",
- aliases: [],
+ aliases: ["check-perm", "perm-check", "checkperms", "check-perms", "perms-check"],
  description: "Check premission for the bot",
  category: "General",
  usage: "checkperm",
@@ -18,6 +18,7 @@ module.exports = {
      • \`KICK_MEMBERS\`: ${message.guild.me.hasPermission("KICK_MEMBERS") ? "<:success:860884617820110909> Passed!" : "<:error:860884617770303519> Error!"}
      • \`BAN_MEMBERS\`: ${message.guild.me.hasPermission("BAN_MEMBERS") ? "<:success:860884617820110909> Passed!" : "<:error:860884617770303519> Error!"}
      • \`ADD_REACTIONS\`: ${message.guild.me.hasPermission("ADD_REACTIONS") ? "<:success:860884617820110909> Passed!" : "<:error:860884617770303519> Error!"}
+     • \`MANAGE_EMOJIS_AND_STICKERS\`: ${message.guild.me.hasPermission("MANAGE_EMOJIS_AND_STICKERS") ? "<:success:860884617820110909> Passed!" : "<:error:860884617770303519> Error!"}
      • \`VIEW_AUDIT_LOG\`: ${message.guild.me.hasPermission("VIEW_AUDIT_LOG") ? "<:success:860884617820110909> Passed!" : "<:error:860884617770303519> Error!"}
      • \`SEND_MESSAGES\`: ${message.guild.me.hasPermission("SEND_MESSAGES") ? "<:success:860884617820110909> Passed!" : "<:error:860884617770303519> Error!"}
      • \`MANAGE_MESSAGES\`: ${message.guild.me.hasPermission("MANAGE_MESSAGES") ? "<:success:860884617820110909> Passed!" : "<:error:860884617770303519> Error!"}
