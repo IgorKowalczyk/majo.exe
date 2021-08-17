@@ -1,4 +1,4 @@
-const Discord = require("discord.js");
+const { Util } = require("discord.js")
 const prefix = process.env.PREFIX;
 
 module.exports = {
@@ -33,7 +33,7 @@ module.exports = {
     },
    });
   }
-  let custom = Discord.parseEmoji(emoji);
+  let custom = Util.parseEmoji(emoji);
   const name = args[1] ? args[1].replace(/[^a-z0-9]/gi, "") : null;
   if (!name) {
    return message.lineReply({
