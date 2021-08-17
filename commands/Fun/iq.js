@@ -12,7 +12,7 @@ module.exports = {
    const iq = Math.floor(Math.random() * 226);
    const embed = new Discord.MessageEmbed() // Prettier
     .setTitle(":brain: IQ Test:")
-    .setDescription(":bulb: " + user.username + " IQ: `" + iq + "`")
+    .setDescription(":bulb: " + user.user.username + " IQ: `" + iq + "`")
     .setColor(`RANDOM`)
     .setTimestamp()
     .setFooter(
