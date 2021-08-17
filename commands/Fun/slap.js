@@ -14,7 +14,7 @@ module.exports = {
     return message.lineReply({
      embed: {
       color: 16734039,
-      description: "<:error:860884617770303519> | Mention a valid member of this server!",
+      description: "<:error:860884617770303519> | Mention a valid member!",
      },
     });
    }

@@ -25,25 +25,88 @@ module.exports = {
   let result = Math.floor(Math.random() * 100 + 0);
   const happyrate = new Discord.MessageEmbed() // Prettier
    .setDescription(`✨ | I would rate **${rate}** ${result}/100 ?`)
-   .setColor(`GREEN`);
+   .setColor(`GREEN`)
+   .setFooter(
+    "Requested by " + `${message.author.username}`,
+    message.author.displayAvatarURL({
+     dynamic: true,
+     format: "png",
+     size: 2048,
+    })
+   )
+   .setTimestamp()
   const sadembed = new Discord.MessageEmbed() // Prettier
    .setDescription(`✨ | I would rate **${rate}** ${result}/100 ??`)
-   .setColor(`RED`);
+   .setColor(`RED`)
+   .setFooter(
+    "Requested by " + `${message.author.username}`,
+    message.author.displayAvatarURL({
+     dynamic: true,
+     format: "png",
+     size: 2048,
+    })
+   )
+   .setTimestamp()
   const idkembed = new Discord.MessageEmbed() // Prettier
    .setDescription(`✨ | I would rate **${rate}** ${result}/100 ??`)
-   .setColor(`YELLOW`);
+   .setColor(`YELLOW`)
+   .setFooter(
+    "Requested by " + `${message.author.username}`,
+    message.author.displayAvatarURL({
+     dynamic: true,
+     format: "png",
+     size: 2048,
+    })
+   )
+   .setTimestamp()
   const shrugembed = new Discord.MessageEmbed() // Prettier
    .setDescription(`✨ | I would rate **${rate}** ${result}/100 ??`)
-   .setColor(`YELLOW`);
+   .setColor(`YELLOW`)
+   .setFooter(
+    "Requested by " + `${message.author.username}`,
+    message.author.displayAvatarURL({
+     dynamic: true,
+     format: "png",
+     size: 2048,
+    })
+   )
+   .setTimestamp()
   const okembed = new Discord.MessageEmbed() // Prettier
    .setDescription(`✨ | I would rate **${rate}** ${result}/100 ??`)
-   .setColor(`GREEN`);
+   .setColor(`GREEN`)
+   .setFooter(
+    "Requested by " + `${message.author.username}`,
+    message.author.displayAvatarURL({
+     dynamic: true,
+     format: "png",
+     size: 2048,
+    })
+   )
+   .setTimestamp()
   const thumbupembed = new Discord.MessageEmbed() // Prettier
    .setDescription(`✨ | I would rate **${rate}** ${result}/100 ??`)
-   .setColor(`GREEN`);
+   .setColor(`GREEN`)
+   .setFooter(
+    "Requested by " + `${message.author.username}`,
+    message.author.displayAvatarURL({
+     dynamic: true,
+     format: "png",
+     size: 2048,
+    })
+   )
+   .setTimestamp()
   const eyesembed = new Discord.MessageEmbed() // Prettier
    .setDescription(`✨ | I would rate **${rate}** ${result}/100 ??`)
-   .setColor(`GREEN`);
+   .setColor(`GREEN`)
+   .setFooter(
+    "Requested by " + `${message.author.username}`,
+    message.author.displayAvatarURL({
+     dynamic: true,
+     format: "png",
+     size: 2048,
+    })
+   )
+   .setTimestamp()
   if (result > 90) return message.lineReply(happyrate);
   if (result < 30) return message.lineReply(sadembed);
   if (result > 40) return message.lineReply(idkembed);

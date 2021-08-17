@@ -51,7 +51,7 @@ module.exports = {
     });
    }
    if (!reason) {
-    reason = "No reason provided! ~Kicked by Majo.exe, the best discord bot";
+    reason = `No reason provided! ~Kicked by ${message.author}`;
    }
    mentioned.kick(reason);
    await message.lineReply({

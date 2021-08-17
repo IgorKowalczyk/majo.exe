@@ -25,7 +25,7 @@ module.exports = {
       })
      )
      .setTitle("<:discordlogo:856166057639149568> Random Discord Bot Token")
-     .setDescription("```" + response.data.token + "```\n||Note: This token is propabbly fake!||");
+     .setDescription("```" + response.data.token + "```||Notice: This token is automatically generated, it is not a real token fordiscord bot! It is only supposed to look like this!||");
     message.lineReply(embed);
    });
   } catch (err) {

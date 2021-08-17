@@ -26,7 +26,7 @@ module.exports = {
     return message.lineReply({
      embed: {
       color: 16734039,
-      description: "<:error:860884617770303519> | Hey! Please don't ping people >:(",
+      description: "<:error:860884617770303519> | Hey! Please don't ping other people >:(",
      },
     });
    }
@@ -37,7 +37,7 @@ module.exports = {
      return message.lineReply({
       embed: {
        color: 16734039,
-       description: "<:error:860884617770303519> | Some error occured with my brain cells... Please try again later",
+       description: "🧠 | Some error occured with my brain... Please try again later",
       },
      });
     } else {
