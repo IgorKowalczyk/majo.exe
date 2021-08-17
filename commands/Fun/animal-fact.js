@@ -42,7 +42,7 @@ module.exports = {
      return message.lineReply({
       embed: {
        color: 16734039,
-       description: "<:error:860884617770303519> | Sorry, we don't have any facts for that animal",
+       description: `${client.bot_emojis.error} | Sorry, we don't have any facts for that animal`,
       },
      });
     });

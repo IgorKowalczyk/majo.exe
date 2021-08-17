@@ -17,6 +17,8 @@ require("dotenv").config();
 require("./utilities/inline_reply");
 require("discord-buttons")(client);
 const sql = require("./utilities/database");
+const emojis = require("./emojis_config");
+client.bot_emojis = emojis;
 
 /* Logging system config */
 sql.query("CREATE TABLE IF NOT EXISTS `logs` (`guildid` VARCHAR(32) NOT NULL, `channelid` VARCHAR(32) NOT NULL, UNIQUE(`guildid`));", function (error, results, fields) {

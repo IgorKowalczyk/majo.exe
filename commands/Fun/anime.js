@@ -47,7 +47,7 @@ module.exports = {
      message.lineReply({
       embed: {
        color: 16734039,
-       description: "<:error:860884617770303519> | Please enter a vaild name!",
+       description: `${client.bot_emojis.error} | Please enter a vaild name!`,
       },
      })
     );

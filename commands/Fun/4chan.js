@@ -14,7 +14,7 @@ module.exports = {
    if (!message.channel.nsfw) {
     const nsfwembed = new Discord.MessageEmbed()
      .setColor("#FF5757")
-     .setDescription("💢 | You can use this command only in an NSFW Channel!")
+     .setDescription(`${client.bot_emojis.anger} | You can use this command only in an NSFW Channel!`)
      .setFooter("Requested by " + message.author.username, message.author.displayAvatarURL())
      .setImage("https://media.discordapp.net/attachments/721019707607482409/855827123616481300/nsfw.gif");
     return message.lineReply(nsfwembed);
@@ -24,7 +24,7 @@ module.exports = {
     return message.lineReply({
      embed: {
       color: 16734039,
-      description: "💢 | Please enter a board! To see all boards check `" + `${prefix}` + " 4chan boards`",
+      description: `${client.bot_emojis.anger} | Please enter a board! To see all boards check \`${prefix} 4chan boards\``,
      },
     });
    }
@@ -41,7 +41,7 @@ module.exports = {
    if (boards.indexOf(board) == -1) {
     let vb = new Discord.MessageEmbed() // Prettier
      .setColor(16734039)
-     .setDescription("💢 | Please enter a vaild board! To see all boards check `" + `${prefix}` + " 4chan boards`");
+     .setDescription(`${client.bot_emojis.anger} | Please enter a vaild board! To see all boards check \`${prefix} 4chan boards\``);
     return message.lineReply(vb);
    }
    var board = args;
