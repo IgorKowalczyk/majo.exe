@@ -61,24 +61,35 @@ module.exports = {
     });
    }
    const URL = `https://cdn.discordapp.com/emojis/${custom.id}.${custom.animated ? "gif" : "png"}`;
-   message.guild.emojis.create(URL, name).then((emoji) => {
-    message
-     .lineReply({
-      embed: {
-       color: 4779354,
-       description: `<:success:860884617820110909> | Emoji ${emoji} was successfully added!`,
-      },
-     })
-     .catch((err) => {
-      message.lineReply({
+   message.guild.emojis
+    .create(URL, name)
+    .then((emoji) => {
+     message
+      .lineReply({
        embed: {
-        color: 16734039,
-        description: "<:error:860884617770303519> | I can't add the emoji, please try again!",
+        color: 4779354,
+        description: `<:success:860884617820110909> | Emoji ${emoji} was successfully added!`,
        },
+      })
+      .catch((err) => {
+       message.lineReply({
+        embed: {
+         color: 16734039,
+         description: "<:error:860884617770303519> | I can't add the emoji, please try again!",
+        },
+       });
+       console.log(err);
       });
-      console.log(err);
+    })
+    .catch((err) => {
+     message.lineReply({
+      embed: {
+       color: 16734039,
+       description: "<:error:860884617770303519> | I can't add the emoji, please try again!",
+      },
      });
-   });
+     console.log(err);
+    });
   } catch (err) {
    message.lineReply({
     embed: {
