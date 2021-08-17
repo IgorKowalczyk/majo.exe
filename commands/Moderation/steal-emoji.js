@@ -66,7 +66,7 @@ module.exports = {
      .lineReply({
       embed: {
        color: 4779354,
-       description: `<:error:860884617770303519> | Emoji ${emoji} was successfully added!`,
+       description: `<:success:860884617820110909> | Emoji ${emoji} was successfully added!`,
       },
      })
      .catch((err) => {
