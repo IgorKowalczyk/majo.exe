@@ -31,4 +31,4 @@ module.exports = {
  open_collective_logo: "<:opencollective:876452400171479100>", // https://cdn.discordapp.com/emojis/876452400171479100.png?v=1
  parteon_logo: "<:patreon:876452398879629322>", // https://cdn.discordapp.com/emojis/876452398879629322.png?v=1
  kofi_logo: "<:kofi:876452398934155264>", // https://cdn.discordapp.com/emojis/876452398934155264.png?v=1
-}
+};

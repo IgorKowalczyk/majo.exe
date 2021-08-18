@@ -34,7 +34,7 @@ module.exports = {
      size: 2048,
     })
    )
-   .setTimestamp()
+   .setTimestamp();
   const sadembed = new Discord.MessageEmbed() // Prettier
    .setDescription(`✨ | I would rate **${rate}** ${result}/100 ??`)
    .setColor(`RED`)
@@ -46,7 +46,7 @@ module.exports = {
      size: 2048,
     })
    )
-   .setTimestamp()
+   .setTimestamp();
   const idkembed = new Discord.MessageEmbed() // Prettier
    .setDescription(`✨ | I would rate **${rate}** ${result}/100 ??`)
    .setColor(`YELLOW`)
@@ -58,7 +58,7 @@ module.exports = {
      size: 2048,
     })
    )
-   .setTimestamp()
+   .setTimestamp();
   const shrugembed = new Discord.MessageEmbed() // Prettier
    .setDescription(`✨ | I would rate **${rate}** ${result}/100 ??`)
    .setColor(`YELLOW`)
@@ -70,7 +70,7 @@ module.exports = {
      size: 2048,
     })
    )
-   .setTimestamp()
+   .setTimestamp();
   const okembed = new Discord.MessageEmbed() // Prettier
    .setDescription(`✨ | I would rate **${rate}** ${result}/100 ??`)
    .setColor(`GREEN`)
@@ -82,7 +82,7 @@ module.exports = {
      size: 2048,
     })
    )
-   .setTimestamp()
+   .setTimestamp();
   const thumbupembed = new Discord.MessageEmbed() // Prettier
    .setDescription(`✨ | I would rate **${rate}** ${result}/100 ??`)
    .setColor(`GREEN`)
@@ -94,7 +94,7 @@ module.exports = {
      size: 2048,
     })
    )
-   .setTimestamp()
+   .setTimestamp();
   const eyesembed = new Discord.MessageEmbed() // Prettier
    .setDescription(`✨ | I would rate **${rate}** ${result}/100 ??`)
    .setColor(`GREEN`)
@@ -106,7 +106,7 @@ module.exports = {
      size: 2048,
     })
    )
-   .setTimestamp()
+   .setTimestamp();
   if (result > 90) return message.lineReply(happyrate);
   if (result < 30) return message.lineReply(sadembed);
   if (result > 40) return message.lineReply(idkembed);
