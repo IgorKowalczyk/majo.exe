@@ -1,5 +1,6 @@
 module.exports = {
- // Note: See /utilities/emojis!
+ // **The config is still in beta!!!**
+ // Note: See /utilities/emojis
  // You must upload the emojis to the server when the bot is!
  success: "<:success:860884617820110909>", // https://cdn.discordapp.com/emojis/860884617820110909.png
  error: "<:error:860884617770303519>", // https://cdn.discordapp.com/emojis/860884617770303519.png
