@@ -20,7 +20,16 @@ module.exports = {
    const userid = new Discord.MessageEmbed() // Prettier
     .setThumbnail(mention.user.avatarURL())
     .setColor("RANDOM")
-    .setDescription("Here is " + `${mention.user.username} ID - \`` + mention.id + "`");
+    .setTitle(`${mention.user.username} ID`)
+    .setDescription(`\`\`\`${mention.id}\`\`\``)
+    .setFooter(
+     "Requested by " + `${message.author.username}`,
+     message.author.displayAvatarURL({
+      dynamic: true,
+      format: "png",
+      size: 2048,
+     })
+    );
    message.lineReply(userid);
   } catch (err) {
    message.lineReply({

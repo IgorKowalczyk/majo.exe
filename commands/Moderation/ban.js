@@ -51,7 +51,7 @@ module.exports = {
     });
    }
    if (!reason) {
-    reason = "No reason provided! Banned by " + message.author + ". ~Majo.exe - The best discord bot!";
+    reason = "No reason provided! Banned by " + message.author;
    }
    message.guild.members.ban(mentioned, {
     reason: reason,
