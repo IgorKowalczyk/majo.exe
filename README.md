@@ -38,8 +38,8 @@ Deploy the app to [Heroku](https://heroku.com)
 1. Clone [this repository](https://github.com/igorkowalczyk/majobot) `git clone https://github.com/IgorKowalczyk/majobot.git`
 2. Run `npm install` to get all dependencies,
 3. Grab a Discord Bot token and client secret on [Discord's developer portal](https://discord.com/developers/applications) [Tutorial](#discord-token)
-4. Fill `config.json` with your values (See that some values point to the `.env` file, see it below)
-5. Rename `.env.example` (Located in main dir) to `.env`. Remember - the file is super secret, better to not share it.
+4. Fill `config.js`, `emojis_config.js` with your values (Tip: See `/examples` dir for config examples!)
+5. Create new file named `.env` Remember - the file is super secret, better to not share it. (Tip: See `/examples` dir for example `.env` file!)
 6. In `.env` file set this values:
     * **Required:**
     * `TOKEN` - Bot token from Discord Developer portal [no. 3]
@@ -55,11 +55,11 @@ Deploy the app to [Heroku](https://heroku.com)
     * `MYSQL_USER` - Your MYSQL User name who can acces to the database
     * `COOKIES` - Your Youtube Cookies [[Tutorial](#youtube)]
     * **Not required (You can leave them blank):**
-    * `DOMAIN` - your website domain, eg `https://example.com`
-    * `PORT` - your website port, eg `8080`. [Note: If you are using heroku, don't add this value. Heroku binds port automatically!]
+    * `DOMAIN`^ - your website domain, eg `https://example.com`
+    * `PORT`^ - your website port, eg `8080`. [Note: If you are using heroku, don't add this value. Heroku binds port automatically!]
     * `DASHBOARD=[true/false]` - if `true` the bot will be hosted with web dasboard, if `false` the bot will be hosted without web dashboard.
-    * `SESSION_SECRET` - Session secret key, random sequence of words, letterss or numbers
-    * `SECRET` - Client secret from Discord Developers portal [no. 3]
+    * `SESSION_SECRET`^ - Session secret key, random sequence of words, letterss or numbers
+    * `SECRET`^ - Client secret from Discord Developers portal [no. 3]
     * `ANALYTICS` - Google Trakcing ID, for Website analytics [[Tutorial](#analytics-id)]
     * `CONTACT_WEBHOOK_ID` - Your contact form webhook ID
     * `CONTACT_WEBHOOK_TOKEN` - Your contact form webhook token
@@ -67,11 +67,12 @@ Deploy the app to [Heroku](https://heroku.com)
     * `STATUS_WEBHOOK_TOKEN` - Your status webhook token
 7. Run `npm run start`
 > Note: See the example [`.env` file below](#example-env-file)!
+> Note: Values with `^` are required to run web dashboard!
 > Note: Discord webhook link syntax: `https://discord.com/api/webhooks/HERE-IS-WEBHOOK-ID/HERE-IS-WEBHOOK-TOKEN`)
 
 ### Dashboard hosting
 
-1. To test site, in `.env` file set the `DASHBOARD` config to `true` and assign the `PORT` eg 8080. ([See example `.env` file](#example-env-file))
+1. In `.env` file set the `DASHBOARD` config to `true` and assign the `PORT` eg. `8080`. ([See example `.env` file](#example-env-file))
 2. Fill dashboard config in (`config.js` and `.env`)
 3. Add the redirect uri here: https://discord.com/developers/applications/YOUR-BOT-ID/oauth2
     * ```
@@ -80,8 +81,14 @@ Deploy the app to [Heroku](https://heroku.com)
        https://your-domain.com/dashboard
        https://your-domain.com/login
       ```
-4. Go to your dashboard in browser (eg. to `localhost:8000`)
+4. Run `npm run dashboard` in your terminal
+5. If everyting is ok go to your dashboard in browser (eg. to `localhost:8000`)
 > Note: See the example [`.env` file below](#example-env-file)!
+
+##### Additional info
+> If you are hosting the site locally it is best to generate certificates for it. If you have them:
+> 1. Change `certs: false` & `localhost: false` values in `config.js` to true
+> 2. Place the `server.cert` & `server.key` certs in `/dashboard/certs/` directory
 
 ### `.env` config table
 | `.env` varriable | Description | Required |
@@ -174,10 +181,6 @@ COOKIES=YOUR_YOUTUBE_COOKIES
 - [@Joao-Victor-Liporini](https://github.com/Joao-Victor-Liporini) (Bug fixes, command-handler improvements, testing, new features)
 - [@Wafelowski](https://github.com/HeavyWolfPL) (Translation improvements)
 - [@dhvitOP](https://github.com/dhvitOP) (Music commands)
-
-## Special thanks to
-[![Freedb.tech](https://raw.githubusercontent.com/IgorKowalczyk/majobot/master/lib/img/readme/free-db.png)](https://freedb.tech)
-> For __free__ MYSQL Database ❤️
 
 ## Issues
 If you have any issues with the page please create [new issue here](https://github.com/igorkowalczyk/majobot/issues)

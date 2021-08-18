@@ -5,7 +5,7 @@ const client = new Discord.Client({
   repliedUser: false,
  },
  ws: {
-  properties: { $browser: "Discord iOS" },
+  properties: { $browser: "Discord iOS" }, // To change the bot online icon to phone
  },
 });
 const chalk = require("chalk");
@@ -20,14 +20,14 @@ const sql = require("./utilities/database");
 const emojis = require("./emojis_config");
 client.bot_emojis = emojis;
 
-/* Logging system config */
+/* Logging system db config */
 sql.query("CREATE TABLE IF NOT EXISTS `logs` (`guildid` VARCHAR(32) NOT NULL, `channelid` VARCHAR(32) NOT NULL, UNIQUE(`guildid`));", function (error, results, fields) {
  if (error) throw new Error(error);
  console.log(chalk.bold(chalk.blue.bold("[SQL]")) + chalk.cyan.bold(" Fetched table `logs`! Status: Success"));
 });
 /* ---- */
 
-/* Welcome and leave messages config */
+/* Welcome, leave and reputation db config */
 /* = Welcome message = */
 sql.query("CREATE TABLE IF NOT EXISTS `welcome` (`guildid` VARCHAR(32) NOT NULL, `channelid` VARCHAR(32) NOT NULL, UNIQUE(`guildid`));", function (error) {
  if (error) throw new Error(error);
@@ -45,7 +45,7 @@ sql.query("CREATE TABLE IF NOT EXISTS `leave` (`guildid` VARCHAR(32) NOT NULL, `
 });
 /* ---- */
 
-/* Giveaways config */
+/* Giveaways db config */
 sql.query("CREATE TABLE IF NOT EXISTS `giveaways` (`id` INT(1) NOT NULL AUTO_INCREMENT, `message_id` VARCHAR(64) NOT NULL, `data` JSON NOT NULL, PRIMARY KEY (`id`));", (err) => {
  if (err) throw new Error(err);
  console.log(chalk.bold(chalk.blue.bold("[SQL]")) + chalk.cyan.bold(" Fetched table `giveaways`! Status: Success"));

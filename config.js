@@ -1,4 +1,5 @@
 module.exports = {
+ // Main config
  author: "Igor Kowalczyk (Majonez.exe#3957)",
  aurhor_website: "https://igorkowalczyk.github.io",
  owner_id: "440200028292907048",
@@ -16,24 +17,26 @@ module.exports = {
  open_collective: "igorkowalczyk",
  scopes: "bot%20applications.commands",
  permissions: "4294967287",
- verification: "-wuCsk4qLolXEPSUTGX7YBxywcyNNf5HS2ClzgEWxNY",
  suggestions_channel: "838092194530852884",
  bot_news_title: "<:success:860884617820110909> Good news!",
  news: "<@681536055572430918> is waiting for verification because it is already on more than 75 servers! We are sorry if you can't add Majo.exe to your server now (Discord bots before verification can be only on a 100 servers in total!). Thank you for your support, Without you, Majo.exe wouldn't exist! Stay tuned!",
+ brainid: process.env.BRAINID,
+ brainkey: process.env.BRAINKEY,
+ prefix: process.env.PREFIX,
+ youtube: process.env.YOUTUBE,
+ id: process.env.ID,
+
+ // Dashboard config
  domain: process.env.DOMAIN,
  certs: false,
  localhost: false,
  google_analitics: process.env.ANALYTICS,
  client_secret: process.env.SECRET,
- id: process.env.ID,
  port: process.env.PORT,
  session_secret: process.env.SESSION_SECRET,
- prefix: process.env.PREFIX,
- youtube: process.env.YOUTUBE,
  dashboard: process.env.DASHBOARD,
- brainid: process.env.BRAINID,
- brainkey: process.env.BRAINKEY,
  cookies: process.env.COOKIES,
  mobile_support: "false",
  image: "banner.jpg",
+ verification: "-wuCsk4qLolXEPSUTGX7YBxywcyNNf5HS2ClzgEWxNY",
 };
