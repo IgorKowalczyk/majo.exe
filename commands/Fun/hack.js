@@ -35,7 +35,7 @@ module.exports = {
      })
      .then((msg) => {
       setTimeout(function () {
-       msg.edit({ embed: { color: 8118348, title: `${client.bot_emojis.cpu_icon} I hacked ${member.user.username}!`, description: `${client.bot_emojis.success} \`${hacks[Math.floor(Math.random() * hacks.length)]}\``}});
+       msg.edit({ embed: { color: 8118348, title: `${client.bot_emojis.cpu_icon} I hacked ${member.user.username}!`, description: `${client.bot_emojis.success} \`${hacks[Math.floor(Math.random() * hacks.length)]}\`` } });
       }, randomDelay);
      })
      .catch(console.error);
@@ -49,7 +49,7 @@ module.exports = {
      })
      .then((msg) => {
       setTimeout(function () {
-       msg.edit({ embed: { color: 16734039, title: `${client.bot_emojis.cpu_icon} I can't hack ${member.user.username}!`, description: `${client.bot_emojis.error} ${fails[Math.floor(Math.random() * fails.length)]}` }});
+       msg.edit({ embed: { color: 16734039, title: `${client.bot_emojis.cpu_icon} I can't hack ${member.user.username}!`, description: `${client.bot_emojis.error} ${fails[Math.floor(Math.random() * fails.length)]}` } });
       }, randomDelay);
      });
    }
