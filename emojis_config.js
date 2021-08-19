@@ -75,4 +75,6 @@ module.exports = {
  flushed: "😳",
  facepalm: "🤦",
  sneeze: "🤧",
+ input: "📥",
+ output: "📤",
 };
