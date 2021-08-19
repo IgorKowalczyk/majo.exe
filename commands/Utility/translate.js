@@ -44,6 +44,7 @@ module.exports = {
     )
     message.lineReply(embed); 
   }).catch(err => {
+   console.log(err);
    return message.lineReply({
     embed: {
      color: 16734039,
