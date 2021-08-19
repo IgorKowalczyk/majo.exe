@@ -1,5 +1,6 @@
 const Discord = require("discord.js");
 const translate = require("@iamtraction/google-translate");
+const languages = require("../../utilities/translate");
 
 module.exports = {
  name: "translate",
@@ -27,31 +28,35 @@ module.exports = {
      },
     });
    }
-   translate(text, { to: language.toLowerCase()}).then(res => {
-    const embed = new Discord.MessageEmbed()
-    .setTitle(`${client.bot_emojis.success} Success!`)
-    .setDescription(`From: \`${JSON.stringify(JSON.parse(res.from.language)).iso}\`\nTo: \`${language.toLowerCase()}\``)
-    .addField(`${client.bot_emojis.input} Text to translate`, "```" + text + "```")
-    .addField(`${client.bot_emojis.output} Tanslated text`, "```" + res.text + "```")
-    .setColor("RANDOM")
-    .setFooter(
-     `Requested by ${message.author.username}`,
-     message.author.displayAvatarURL({
-      dynamic: true,
-      format: "png",
-      size: 2048,
-     })
-    )
-    message.lineReply(embed); 
-  }).catch(err => {
-   console.log(err);
-   return message.lineReply({
-    embed: {
-     color: 16734039,
-     description: `${client.bot_emojis.error} | Something went wrong while translating!`,
-    },
-   });
-  });
+   console.log(languages.some((ele) => ele.name === language));
+   console.log(languages.filter((ele) => ele.name === language)[0].abrv);
+   translate(text, { to: language.toLowerCase() })
+    .then((res) => {
+     const embed = new Discord.MessageEmbed()
+      .setTitle(`${client.bot_emojis.success} Success!`)
+      .setDescription(`From: \`${JSON.stringify(JSON.parse(res.from.language)).iso}\`\nTo: \`${language.toLowerCase()}\``)
+      .addField(`${client.bot_emojis.input} Text to translate`, "```" + text + "```")
+      .addField(`${client.bot_emojis.output} Tanslated text`, "```" + res.text + "```")
+      .setColor("RANDOM")
+      .setFooter(
+       `Requested by ${message.author.username}`,
+       message.author.displayAvatarURL({
+        dynamic: true,
+        format: "png",
+        size: 2048,
+       })
+      );
+     message.lineReply(embed);
+    })
+    .catch((err) => {
+     console.log(err);
+     return message.lineReply({
+      embed: {
+       color: 16734039,
+       description: `${client.bot_emojis.error} | Something went wrong while translating!`,
+      },
+     });
+    });
   } catch (err) {
    console.log(err);
    message.lineReply({
