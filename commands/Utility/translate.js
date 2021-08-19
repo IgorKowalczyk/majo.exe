@@ -28,10 +28,9 @@ module.exports = {
     });
    }
    translate(text, { to: language.toLowerCase()}).then(res => {
-    console.log(res.from.language);
     const embed = new Discord.MessageEmbed()
     .setTitle(`${client.bot_emojis.success} Success!`)
-    .setDescription(`From: \`${res.from.language}\`\nTo: \`${language.toLowerCase()}\``)
+    .setDescription(`From: \`${JSON.parse(res.from.language).iso}\`\nTo: \`${language.toLowerCase()}\``)
     .addField(`${client.bot_emojis.input} Text to translate`, "```" + text + "```")
     .addField(`${client.bot_emojis.output} Tanslated text`, "```" + res.text + "```")
     .setColor("RANDOM")
