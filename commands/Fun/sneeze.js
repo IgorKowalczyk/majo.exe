@@ -11,9 +11,9 @@ module.exports = {
    const sneezes = ["**Achoo!**", "*chew!*", "Ah... Ah... **A_CHOO!_**", "_Ah..._***CHOOOOOOOOOOOOOOOOOOOO!***", "*Achoo!* Excuse me!"];
    const embed = new Discord.MessageEmbed() // Prettier
     .setColor("RANDOM")
-    .setTitle("🤧 " + sneezes[Math.floor(Math.random() * Math.floor(sneezes.length))])
+    .setTitle(`${client.bot_emojis.sneeze} ${sneezes[Math.floor(Math.random() * Math.floor(sneezes.length))]}`)
     .setFooter(
-     "Requested by " + `${message.author.username}`,
+     `Requested by ${message.author.username}`,
      message.author.displayAvatarURL({
       dynamic: true,
       format: "png",
@@ -25,7 +25,7 @@ module.exports = {
    message.lineReply({
     embed: {
      color: 16734039,
-     description: "Something went wrong... :cry:",
+     description: `Something went wrong... ${client.bot_emojis.sadness}`,
     },
    });
   }

@@ -10,9 +10,9 @@ module.exports = {
   try {
    const embed = new Discord.MessageEmbed() // Prettier
     .setColor("RANDOM")
-    .setTitle("⏰ Boop!")
+    .setTitle(`${client.bot_emojis.clock} Boop!`)
     .setFooter(
-     "Requested by " + `${message.author.username}`,
+     `Requested by ${message.author.username}`,
      message.author.displayAvatarURL({
       dynamic: true,
       format: "png",
@@ -24,7 +24,7 @@ module.exports = {
    message.lineReply({
     embed: {
      color: 16734039,
-     description: "Something went wrong... :cry:",
+     description: `Something went wrong... ${client.bot_emojis.sadness}`,
     },
    });
   }

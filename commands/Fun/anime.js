@@ -15,7 +15,7 @@ module.exports = {
     .then((data) => {
      const embed = new Discord.MessageEmbed() // Prettier
       .setAuthor(
-       `🔍 My Anime List search result for ${args}`.split(",").join(" "),
+       `${client.bot_emojis.search_glass} My Anime List search result for ${args}`.split(",").join(" "),
        message.guild.iconURL({
         dynamic: true,
         format: "png",
@@ -23,17 +23,17 @@ module.exports = {
       )
       .setImage(data.picture)
       .setColor("RANDOM")
-      .addField(":flag_gb: English Title", data.englishTitle)
-      .addField(":flag_jp: Japanese Title", data.japaneseTitle)
-      .addField(":book: Type", data.type)
-      .addField(":1234: Episodes", data.episodes)
-      .addField(":star2: Rating", data.rating)
-      .addField(":calendar_spiral: Aired", data.aired)
-      .addField(":star: Score", data.score)
-      .addField(":bar_chart: Score Stats", data.scoreStats)
-      .addField(":link: Link", data.url)
+      .addField(`${client.bot_emojis.flag_gb} English Title`, data.englishTitle)
+      .addField(`${client.bot_emojis.flag_jp} Japanese Title`, data.japaneseTitle)
+      .addField(`${client.bot_emojis.book} Type`, data.type)
+      .addField(`${client.bot_emojis.counter} Episodes`, data.episodes)
+      .addField(`${client.bot_emojis.star2} Rating`, data.rating)
+      .addField(`${client.bot_emojis.calendar_spillar} Aired`, data.aired)
+      .addField(`${client.bot_emojis.star} Score`, data.score)
+      .addField(`${client.bot_emojis.barchart} Score Stats`, data.scoreStats)
+      .addField(`${client.bot_emojis.link} Link`, data.url)
       .setFooter(
-       "Requested by " + `${message.author.username}`,
+       `Requested by ${message.author.username}`,
        message.author.displayAvatarURL({
         dynamic: true,
         format: "png",
@@ -55,7 +55,7 @@ module.exports = {
    message.lineReply({
     embed: {
      color: 16734039,
-     description: "Something went wrong... :cry:",
+     description: `Something went wrong... ${client.bot_emojis.sadness}`,
     },
    });
   }

@@ -109,7 +109,7 @@ module.exports = {
    const success = new Discord.MessageEmbed() // Prettier
     .setColor("RANDOM")
     .setTitle(
-     ":white_check_mark: Success!",
+     `${client.bot_emojis.success} Success!`,
      message.guild.iconURL({
       dynamic: true,
       format: "png",
@@ -133,7 +133,7 @@ module.exports = {
    message.lineReply({
     embed: {
      color: 16734039,
-     description: "Something went wrong... :cry:",
+     description: `Something went wrong... ${client.bot_emojis.sadness}`,
     },
    });
   }

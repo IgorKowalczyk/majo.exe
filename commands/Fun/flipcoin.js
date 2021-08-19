@@ -12,9 +12,9 @@ module.exports = {
    const answer = answers[Math.floor(Math.random() * answers.length)];
    const embed = new Discord.MessageEmbed() // Prettier
     .setColor("RANDOM")
-    .setDescription(`🪙 | I'm get: ${answer}`)
+    .setDescription(`${client.bot_emojis.coin} | I'm get: ${answer}`)
     .setFooter(
-     "Requested by " + `${message.author.username}`,
+     `Requested by ${message.author.username}`,
      message.author.displayAvatarURL({
       dynamic: true,
       format: "png",
@@ -27,7 +27,7 @@ module.exports = {
    message.lineReply({
     embed: {
      color: 16734039,
-     description: "Something went wrong... :cry:",
+     description: `Something went wrong... ${client.bot_emojis.sadness}`,
     },
    });
   }

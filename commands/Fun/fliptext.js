@@ -13,7 +13,7 @@ module.exports = {
     return message.lineReply({
      embed: {
       color: 16734039,
-      description: "<:error:860884617770303519> | You must provide a text!",
+      description: `${client.bot_emojis.error} | You must provide a text!`,
      },
     });
    }
@@ -22,7 +22,7 @@ module.exports = {
     return message.lineReply({
      embed: {
       color: 16734039,
-      description: `<:error:860884617770303519> | The max lenght for text is ${max} letters!`,
+      description: `${client.bot_emojis.error} | The max lenght for text is ${max} letters!`,
      },
     });
    var flipped = [];
@@ -31,9 +31,9 @@ module.exports = {
    });
    const embed = new Discord.MessageEmbed() // Prettier
     .setColor("RANDOM")
-    .addField("↕️ | Flipped text", "```" + flipped.join(" ") + "```")
+    .addField(`${client.bot_emojis.reverse_motherfucker} | Flipped text`, "```" + flipped.join(" ") + "```")
     .setFooter(
-     "Requested by " + `${message.author.username}`,
+     `Requested by ${message.author.username}`,
      message.author.displayAvatarURL({
       dynamic: true,
       format: "png",
@@ -46,7 +46,7 @@ module.exports = {
    message.lineReply({
     embed: {
      color: 16734039,
-     description: "Something went wrong... :cry:",
+     description: `Something went wrong... ${client.bot_emojis.sadness}`,
     },
    });
   }

@@ -34,7 +34,7 @@ module.exports = {
     .addField(`Input:\n`, "```js\n" + `${args.join(" ")}` + "```", false)
     .addField(`Output:\n`, "```js\n" + evaluated + "```", true)
     .setFooter(
-     "Requested by " + `${message.author.username}`,
+     `Requested by ${message.author.username}`,
      message.author.displayAvatarURL({
       dynamic: true,
       format: "png",
@@ -49,7 +49,7 @@ module.exports = {
     .addField(`Input:\n`, "```js\n" + `${result}` + "```", false)
     .addField(`Output:\n`, "```js\n" + `${err.message}` + "```", true)
     .setFooter(
-     "Requested by " + `${message.author.username}`,
+     `Requested by ${message.author.username}`,
      message.author.displayAvatarURL({
       dynamic: true,
       format: "png",

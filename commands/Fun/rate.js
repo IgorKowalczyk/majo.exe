@@ -12,22 +12,22 @@ module.exports = {
    return message.lineReply({
     embed: {
      color: 16734039,
-     description: "<:error:860884617770303519> | Please enter a text!",
+     description: `${client.bot_emojis.error} | Please enter a text!`,
     },
    });
   if (rate.length > 30)
    return message.lineReply({
     embed: {
      color: 16734039,
-     title: "<:error:860884617770303519> | I can't rate that. Max text length is 30!",
+     title: `${client.bot_emojis.error} | I can't rate that. Max text length is 30!`,
     },
    });
   let result = Math.floor(Math.random() * 100 + 0);
   const happyrate = new Discord.MessageEmbed() // Prettier
-   .setDescription(`✨ | I would rate **${rate}** ${result}/100 ?`)
+   .setDescription(`${client.bot_emojis.sparkles} | I would rate **${rate}** ${result}/100 ?`)
    .setColor(`GREEN`)
    .setFooter(
-    "Requested by " + `${message.author.username}`,
+    `Requested by ${message.author.username}`,
     message.author.displayAvatarURL({
      dynamic: true,
      format: "png",
@@ -36,10 +36,10 @@ module.exports = {
    )
    .setTimestamp();
   const sadembed = new Discord.MessageEmbed() // Prettier
-   .setDescription(`✨ | I would rate **${rate}** ${result}/100 ??`)
+   .setDescription(`${client.bot_emojis.sparkles} | I would rate **${rate}** ${result}/100 ??`)
    .setColor(`RED`)
    .setFooter(
-    "Requested by " + `${message.author.username}`,
+    `Requested by ${message.author.username}`,
     message.author.displayAvatarURL({
      dynamic: true,
      format: "png",
@@ -48,10 +48,10 @@ module.exports = {
    )
    .setTimestamp();
   const idkembed = new Discord.MessageEmbed() // Prettier
-   .setDescription(`✨ | I would rate **${rate}** ${result}/100 ??`)
+   .setDescription(`${client.bot_emojis.sparkles} | I would rate **${rate}** ${result}/100 ??`)
    .setColor(`YELLOW`)
    .setFooter(
-    "Requested by " + `${message.author.username}`,
+    `Requested by ${message.author.username}`,
     message.author.displayAvatarURL({
      dynamic: true,
      format: "png",
@@ -60,10 +60,10 @@ module.exports = {
    )
    .setTimestamp();
   const shrugembed = new Discord.MessageEmbed() // Prettier
-   .setDescription(`✨ | I would rate **${rate}** ${result}/100 ??`)
+   .setDescription(`${client.bot_emojis.sparkles} | I would rate **${rate}** ${result}/100 ??`)
    .setColor(`YELLOW`)
    .setFooter(
-    "Requested by " + `${message.author.username}`,
+    `Requested by ${message.author.username}`,
     message.author.displayAvatarURL({
      dynamic: true,
      format: "png",
@@ -72,10 +72,10 @@ module.exports = {
    )
    .setTimestamp();
   const okembed = new Discord.MessageEmbed() // Prettier
-   .setDescription(`✨ | I would rate **${rate}** ${result}/100 ??`)
+   .setDescription(`${client.bot_emojis.sparkles} | I would rate **${rate}** ${result}/100 ??`)
    .setColor(`GREEN`)
    .setFooter(
-    "Requested by " + `${message.author.username}`,
+    `Requested by ${message.author.username}`,
     message.author.displayAvatarURL({
      dynamic: true,
      format: "png",
@@ -84,10 +84,10 @@ module.exports = {
    )
    .setTimestamp();
   const thumbupembed = new Discord.MessageEmbed() // Prettier
-   .setDescription(`✨ | I would rate **${rate}** ${result}/100 ??`)
+   .setDescription(`${client.bot_emojis.sparkles} | I would rate **${rate}** ${result}/100 ??`)
    .setColor(`GREEN`)
    .setFooter(
-    "Requested by " + `${message.author.username}`,
+    `Requested by ${message.author.username}`,
     message.author.displayAvatarURL({
      dynamic: true,
      format: "png",
@@ -96,10 +96,10 @@ module.exports = {
    )
    .setTimestamp();
   const eyesembed = new Discord.MessageEmbed() // Prettier
-   .setDescription(`✨ | I would rate **${rate}** ${result}/100 ??`)
+   .setDescription(`${client.bot_emojis.sparkles} | I would rate **${rate}** ${result}/100 ??`)
    .setColor(`GREEN`)
    .setFooter(
-    "Requested by " + `${message.author.username}`,
+    `Requested by ${message.author.username}`,
     message.author.displayAvatarURL({
      dynamic: true,
      format: "png",

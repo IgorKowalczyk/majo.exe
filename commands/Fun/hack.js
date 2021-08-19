@@ -13,7 +13,7 @@ module.exports = {
     return message.lineReply({
      embed: {
       color: 16734039,
-      description: "<:error:860884617770303519> | You must mention a vaild member",
+      description: `${client.bot_emojis.error} | You must mention a vaild member`,
      },
     });
    }
@@ -30,12 +30,12 @@ module.exports = {
      .lineReply({
       embed: {
        color: 8118348,
-       description: "<:discduckmicroshit:856174395205615647> Hacking " + member.user.username + "...",
+       description: `${client.bot_emojis.cpu_icon} Hacking ${member.user.username}...`,
       },
      })
      .then((msg) => {
       setTimeout(function () {
-       msg.edit({ embed: { color: 8118348, title: "<:discduckmicroshit:856174395205615647> I hacked " + member.user.username + "!", description: "<:success:860884617820110909> `" + hacks[Math.floor(Math.random() * hacks.length)] + "`" } });
+       msg.edit({ embed: { color: 8118348, title: `${client.bot_emojis.cpu_icon} I hacked ${member.user.username}!`, description: `${client.bot_emojis.success} \`${hacks[Math.floor(Math.random() * hacks.length)]}\``}});
       }, randomDelay);
      })
      .catch(console.error);
@@ -44,12 +44,12 @@ module.exports = {
      .lineReply({
       embed: {
        color: 16734039,
-       description: "<:discduckmicroshit:856174395205615647> Hacking " + member.user.username + "...",
+       description: `${client.bot_emojis.cpu_icon} Hacking ${member.user.username}...`,
       },
      })
      .then((msg) => {
       setTimeout(function () {
-       msg.edit({ embed: { color: 16734039, title: "<:discduckmicroshit:856174395205615647> I can't hack " + member.user.username + "!", description: ":x: `" + fails[Math.floor(Math.random() * fails.length)] + "`" } });
+       msg.edit({ embed: { color: 16734039, title: `${client.bot_emojis.cpu_icon} I can't hack ${member.user.username}!`, description: `${client.bot_emojis.error} ${fails[Math.floor(Math.random() * fails.length)]}` }});
       }, randomDelay);
      });
    }
@@ -58,7 +58,7 @@ module.exports = {
    message.lineReply({
     embed: {
      color: 16734039,
-     description: "Something went wrong... :cry:",
+     description: `Something went wrong... ${client.bot_emojis.sadness}`,
     },
    });
   }

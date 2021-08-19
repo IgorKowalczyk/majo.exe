@@ -15,7 +15,7 @@ module.exports = {
      return message.lineReply({
       embed: {
        color: 16734039,
-       description: "<:error:860884617770303519> | You must mention someone to poke!",
+       description: `${client.bot_emojis.error} | You must mention someone to poke!`,
       },
      });
     }
@@ -23,7 +23,7 @@ module.exports = {
      return message.lineReply({
       embed: {
        color: 5294200,
-       description: "🤦 | You can't poke yourself tfu!",
+       description: `${client.bot_emojis.facepalm} | You can't poke yourself tfu!`,
       },
      });
     }
@@ -31,7 +31,7 @@ module.exports = {
      return message.lineReply({
       embed: {
        color: 5294200,
-       description: "🤦 | Oh, you tried to poke me but u cant hehe (hopefully)",
+       description: `${client.bot_emojis.facepalm} | Oh, you tried to poke me but u cant hehe (hopefully)`,
       },
      });
     }
@@ -64,7 +64,7 @@ module.exports = {
     message.lineReply({
      embed: {
       color: 16734039,
-      description: "Something went wrong... :cry:",
+      description: `Something went wrong... ${client.bot_emojis.sadness}`,
      },
     });
    }

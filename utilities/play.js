@@ -78,7 +78,7 @@ module.exports = {
    return queue.textChannel.send({
     embed: {
      color: 16734039,
-     description: "Something went wrong... :cry:",
+     description: `Something went wrong... ${client.bot_emojis.sadness}`,
     },
    });
   }
@@ -153,7 +153,7 @@ module.exports = {
     )
     .setDescription(`[**${song.title}**](${song.url}) \`${song.duration}\``)
     .setFooter(
-     "Requested by " + `${message.author.username}`,
+     `Requested by ${message.author.username}`,
      message.author.displayAvatarURL({
       dynamic: true,
       format: "png",
@@ -372,7 +372,7 @@ module.exports = {
       .setThumbnail(song.thumbnail.url)
       .setColor("RANDOM")
       .setTimestamp()
-      .setFooter("Requested by " + `${message.author.username}`, message.member.user.displayAvatarURL({ dynamic: true }));
+      .setFooter(`Requested by ${message.author.username}`, message.member.user.displayAvatarURL({ dynamic: true }));
      if (ms >= 10000) {
       nowPlaying.addField("\u200b", "🔴 LIVE", false);
       return message.lineReply(nowPlaying);
@@ -408,7 +408,7 @@ module.exports = {
       .setDescription(description)
       .setColor("RANDOM")
       .setTimestamp()
-      .setFooter("Requested by " + `${message.author.username}`, message.member.user.displayAvatarURL({ dynamic: true }));
+      .setFooter(`Requested by ${message.author.username}`, message.member.user.displayAvatarURL({ dynamic: true }));
      const splitDescription = Discord.splitMessage(description, {
       maxLength: 2048,
       char: "\n",
@@ -432,7 +432,7 @@ module.exports = {
       .setDescription("Lyrics")
       .setColor("RANDOM")
       .setTimestamp()
-      .setFooter("Requested by " + `${message.author.username}`, message.member.user.displayAvatarURL({ dynamic: true }));
+      .setFooter(`Requested by ${message.author.username}`, message.member.user.displayAvatarURL({ dynamic: true }));
      let result = await message.lineReply(temEmbed);
      try {
       lyrics = await lyricsFinder(queue.songs[0].title, "");
@@ -445,7 +445,7 @@ module.exports = {
       .setDescription(lyrics)
       .setColor("RANDOM")
       .setTimestamp()
-      .setFooter("Requested by " + `${message.author.username}`, message.member.user.displayAvatarURL({ dynamic: true }))
+      .setFooter(`Requested by ${message.author.username}`, message.member.user.displayAvatarURL({ dynamic: true }))
      if (lyricsEmbed.description.length >= 2048) lyricsEmbed.description = `${lyricsEmbed.description.substr(0, 2045)}...`;
      message.react("✅");
      return result.edit(lyricsEmbed)

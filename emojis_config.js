@@ -1,10 +1,11 @@
+const sneeze = require("./commands/Fun/sneeze");
+
 module.exports = {
  // **The config is still in beta!!!**
  // Note: See /utilities/emojis
  // You must upload the emojis to the server when the bot is!
  success: "<:success:860884617820110909>", // https://cdn.discordapp.com/emojis/860884617820110909.png
  error: "<:error:860884617770303519>", // https://cdn.discordapp.com/emojis/860884617770303519.png
- anger: "💢", // Unicode Emoji
  giveaway: "<a:giveaway:843845378352873492>", // https://cdn.discordapp.com/emojis/843845378352873492.gif
  discord_logo: "<:discord_2:876473291777404959>", // https://cdn.discordapp.com/emojis/876473291777404959.png
  member: "<:members:856161806606401556>", // https://cdn.discordapp.com/emojis/856161806606401556.png
@@ -32,4 +33,46 @@ module.exports = {
  open_collective_logo: "<:opencollective:876452400171479100>", // https://cdn.discordapp.com/emojis/876452400171479100.png
  parteon_logo: "<:patreon:876452398879629322>", // https://cdn.discordapp.com/emojis/876452398879629322.png
  kofi_logo: "<:kofi:876452398934155264>", // https://cdn.discordapp.com/emojis/876452398934155264.png
+
+ // Utility emojis
+ picture_frame: "🖼️",
+ anger: "💢",
+ like: "👍",
+ dislike: "👎",
+ grin: "😁",
+ pleading_face: "🥺",
+ angry: "😡",
+ rage: "🤬",
+ drooling_face: "🤤",
+ smirk: "😏",
+ game_dice: "🎲",
+ coin: "🪙",
+ sparkles: "✨",
+ earth: "🌎",
+ clock: "⏰",
+ search_glass: "🔍",
+ chan: "🍀",
+ edit: "📝",
+ chat: "💬",
+ sadness: "😢",
+ flag_gb: ":flag_gb:",
+ flag_jp: ":flag_jp:",
+ book: "📚",
+ counting: "🔢",
+ star2: "🌟",
+ calendar_spillar: "🗓️",
+ star: "⭐",
+ barchart: "📊",
+ link: "🔗",
+ tada: "🎉",
+ brain: "🧠",
+ magic_ball: "🔮",
+ reverse_motherfucker: "↕️",
+ reverse_nr_2_motherfucker: "🔀",
+ light_bulb: "💡",
+ broken_heart: "💔",
+ heart: "❤️",
+ flushed: "😳",
+ facepalm: "🤦",
+ sneeze: "🤧",
 };

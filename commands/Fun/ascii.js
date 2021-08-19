@@ -15,22 +15,22 @@ module.exports = {
     return message.lineReply({
      embed: {
       color: 16734039,
-      description: "<:error:860884617770303519> | The max length for ascii is " + `${max}` + " !",
+      description: `${client.bot_emojis.error} | The max length for ascii is ${max} characters!`,
      },
     });
    if (!args[0])
     return message.lineReply({
      embed: {
       color: 16734039,
-      description: "<:error:860884617770303519> | Please enter a text to convert!",
+      description: `${client.bot_emojis.error} | Please enter a text to convert!`,
      },
     });
-   figlet(`${args.join(" ")}`, function (err, data) {
+   figlet(args.join(" "), function (err, data) {
     if (err) {
      return message.lineReply({
       embed: {
        color: 16734039,
-       description: "Something went wrong... :cry:",
+       description: `Something went wrong... ${client.bot_emojis.sadness}`,
       },
      });
     }
@@ -48,15 +48,15 @@ module.exports = {
       const embed = new Discord.MessageEmbed() // Prettier
        .setColor("RANDOM")
        .setTitle(
-        ":white_check_mark: Success!",
+        `${client.bot_emojis.success} Success!`,
         message.guild.iconURL({
          dynamic: true,
          format: "png",
         })
        )
-       .setDescription(":tada: Your ascii code is generated! \n:link: Link to ascii code paste: " + urlToPaste)
+       .setDescription(`${client.bot_emojis.tada} Your ascii code is generated! \n${client.bot_emojis.link} Link to ascii code paste: ${urlToPaste}`)
        .setFooter(
-        "Requested by " + `${message.author.username}`,
+        `Requested by ${message.author.username}`,
         message.author.displayAvatarURL({
          dynamic: true,
          format: "png",
@@ -70,7 +70,7 @@ module.exports = {
       message.lineReply({
        embed: {
         color: 16734039,
-        description: "Something went wrong while uploading ascii code to server :cry:",
+        description: `Something went wrong while uploading ascii code to server ${client.bot_emojis.sadness}`,
        },
       });
      });
@@ -79,7 +79,7 @@ module.exports = {
    message.lineReply({
     embed: {
      color: 16734039,
-     description: "Something went wrong... :cry:",
+     description: `Something went wrong... ${client.bot_emojis.sadness}`,
     },
    });
   }

@@ -17,22 +17,22 @@ module.exports = {
     const embed = new Discord.MessageEmbed()
      .setColor("RANDOM")
      .setFooter(
-      "Requested by " + `${message.author.username}`,
+      `Requested by ${message.author.username}`,
       message.author.displayAvatarURL({
        dynamic: true,
        format: "png",
        size: 2048,
       })
      )
-     .setTitle("<:discordlogo:856166057639149568> Random Discord Bot Token")
-     .setDescription("```" + response.data.token + "```||Notice: This token is automatically generated, it is not a real token fordiscord bot! It is only supposed to look like this!||");
+     .setTitle(`${client.bot_emojis.discord_logo} Random Discord Bot Token`)
+     .setDescription("```" + response.data.token + "```||Notice: This token is automatically generated, it is not a real token for discord bot! It is only supposed to look like this!||");
     message.lineReply(embed);
    });
   } catch (err) {
    message.lineReply({
     embed: {
      color: 16734039,
-     description: "Something went wrong... :cry:",
+     description: `Something went wrong... ${client.bot_emojis.sadness}`,
     },
    });
   }

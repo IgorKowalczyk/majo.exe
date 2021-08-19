@@ -14,7 +14,7 @@ module.exports = {
     return message.lineReply({
      embed: {
       color: 16734039,
-      description: "<:error:860884617770303519> | Please mention a user to ship!",
+      description: `${client.bot_emojis.error} | Please mention a user to ship!`,
      },
     });
    }
@@ -23,15 +23,15 @@ module.exports = {
     return message.lineReply({
      embed: {
       color: 16734039,
-      description: "<:error:860884617770303519> | Please mention a secound user to ship!",
+      description: `${client.bot_emojis.error} | Please mention a secound user to ship!`,
      },
     });
    }
    const ship = Math.floor(Math.random() * 100) + 1;
-   const bar = progressbar(100, ship, 10, "<:bar:838757737327755335>", "<:bar2:838757737596190782>", "💔 ", " ❤️", false);
+   const bar = progressbar(100, ship, 10, `${client.bot_emojis.emoji_bar_1}`, `${client.bot_emojis.emoji_bar_2}`, `${client.bot_emojis.broken_heart} `, ` ${client.bot_emojis.heart}`, false);
    const mehh = new Discord.MessageEmbed() // Prettier
     .setTitle(
-     ":twisted_rightwards_arrows: This isn't a match",
+     `${client.bot_emojis.reverse_nr_2_motherfucker} This isn't a match`,
      message.guild.iconURL({
       dynamic: true,
       format: "png",
@@ -40,7 +40,7 @@ module.exports = {
     .setThumbnail("https://cdn.discordapp.com/emojis/853644938867769454.gif?v=1")
     .setDescription(`I shipped **${user1}** with **${user2}** and it is **${ship}%**\n${bar}`)
     .setFooter(
-     "Requested by " + `${message.author.username}`,
+     `Requested by ${message.author.username}`,
      message.author.displayAvatarURL({
       dynamic: true,
       format: "png",
@@ -50,7 +50,7 @@ module.exports = {
     .setColor("RED");
    const love = new Discord.MessageEmbed() // Prettier
     .setTitle(
-     ":twisted_rightwards_arrows: They are born for each others!",
+     `${client.bot_emojis.reverse_nr_2_motherfucker} They are born for each others!`,
      message.guild.iconURL({
       dynamic: true,
       format: "png",
@@ -59,7 +59,7 @@ module.exports = {
     .setThumbnail("https://cdn.discordapp.com/emojis/797365365595439104.gif?v=1")
     .setDescription(`I shipped **${user1}** with **${user2}** and it is **${ship}%**\n${bar}`)
     .setFooter(
-     "Requested by " + `${message.author.username}`,
+     `Requested by ${message.author.username}`,
      message.author.displayAvatarURL({
       dynamic: true,
       format: "png",
@@ -76,7 +76,7 @@ module.exports = {
    message.lineReply({
     embed: {
      color: 16734039,
-     description: "Something went wrong... :cry:",
+     description: `Something went wrong... ${client.bot_emojis.sadness}`,
     },
    });
   }

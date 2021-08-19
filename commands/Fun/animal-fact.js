@@ -13,7 +13,7 @@ module.exports = {
     return message.lineReply({
      embed: {
       color: 16734039,
-      description: "<:error:860884617770303519> | You must enter animal name!",
+      description: `${client.bot_emojis.error} | You must enter animal name!`,
      },
     });
    }
@@ -27,14 +27,14 @@ module.exports = {
      const embed = new Discord.MessageEmbed()
       .setColor("RANDOM")
       .setFooter(
-       "Requested by " + `${message.author.username}`,
+       `Requested by ${message.author.username}`,
        message.author.displayAvatarURL({
         dynamic: true,
         format: "png",
         size: 2048,
        })
       )
-      .setTitle(`✨ ${args.join(" ")} Fact`)
+      .setTitle(`${client.bot_emojis.sparkles} ${args.join(" ")} Fact`)
       .setDescription(response.data.fact);
      message.lineReply(embed);
     })
@@ -50,7 +50,7 @@ module.exports = {
    message.lineReply({
     embed: {
      color: 16734039,
-     description: "Something went wrong... :cry:",
+     description: `Something went wrong... ${client.bot_emojis.sadness}`,
     },
    });
   }

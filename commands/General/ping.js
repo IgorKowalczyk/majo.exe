@@ -12,7 +12,7 @@ module.exports = {
     .setTitle(":ping_pong: Pong!")
     .addField("⏱️ My ping: ", `\`\`\`${(Date.now() - message.createdTimestamp).toString().replace(/-/g, "")}ms\`\`\``)
     .addField("⏱️ API ping (Websocket): ", `\`\`\`${Math.round(client.ws.ping)}ms\`\`\``)
-    .setFooter("Requested by " + `${message.author.username}`, message.author.displayAvatarURL({ dynamic: true, format: "png", size: 2048 }))
+    .setFooter(`Requested by ${message.author.username}`, message.author.displayAvatarURL({ dynamic: true, format: "png", size: 2048 }))
     .setColor("RANDOM")
     .setTimestamp();
    message.lineReply(ping);
@@ -21,7 +21,7 @@ module.exports = {
    message.lineReply({
     embed: {
      color: 16734039,
-     description: "Something went wrong... :cry:",
+     description: `Something went wrong... ${client.bot_emojis.sadness}`,
     },
    });
   }

@@ -14,7 +14,7 @@ module.exports = {
     return message.lineReply({
      embed: {
       color: 16734039,
-      description: "<:error:860884617770303519> | Mention a valid member of this server!",
+      description: `${client.bot_emojis.error} | Mention a valid member of this server!`,
      },
     });
    }
@@ -22,7 +22,7 @@ module.exports = {
     return await message.lineReply({
      embed: {
       color: 16734039,
-      description: "<:error:860884617770303519> | You cant tickle yourself!",
+      description: `${client.bot_emojis.error} | You cant tickle yourself!`,
      },
     });
    }
@@ -47,7 +47,7 @@ module.exports = {
    message.lineReply({
     embed: {
      color: 16734039,
-     description: "Something went wrong... :cry:",
+     description: `Something went wrong... ${client.bot_emojis.sadness}`,
     },
    });
   }

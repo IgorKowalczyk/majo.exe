@@ -91,7 +91,7 @@ module.exports = {
     const successjoin = new Discord.MessageEmbed() // Prettier
      .setColor("RANDOM")
      .setDescription(`👍 Joined \`${channel.name}\` 📄 bound \`#${message.channel.name}\``)
-     .setFooter("Requested by " + `${message.author.username}`, message.author.displayAvatarURL({ dynamic: true, format: "png", size: 2048 }));
+     .setFooter(`Requested by ${message.author.username}`, message.author.displayAvatarURL({ dynamic: true, format: "png", size: 2048 }));
     message.lineReply(successjoin).then(
      successjoin.delete({
       timeout: 5000,

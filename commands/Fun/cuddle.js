@@ -15,7 +15,7 @@ module.exports = {
      return message.lineReply({
       embed: {
        color: 16734039,
-       description: "<:error:860884617770303519> | You must mention user to cuddle!",
+       description: `${client.bot_emojis.error}| You must mention user to cuddle!`,
       },
      });
     }
@@ -23,7 +23,7 @@ module.exports = {
      return message.lineReply({
       embed: {
        color: 5294200,
-       description: "😁 | You can't cuddle yourself ;-;",
+       description: `${client.bot_emojis.grin} | You can't cuddle yourself ;-;`,
       },
      });
     }
@@ -31,7 +31,7 @@ module.exports = {
      return message.lineReply({
       embed: {
        color: 5294200,
-       description: "😁 | Oh, you tried to hug me but u can't... Im not real...",
+       description: `${client.bot_emojis.grin} | Oh, you tried to hug me but u can't... Im not real...`,
       },
      });
     }
@@ -48,7 +48,7 @@ module.exports = {
      .setImage(body.url)
      .setColor("RANDOM")
      .setFooter(
-      "Requested by " + `${message.author.username}`,
+      `Requested by ${message.author.username}`,
       message.author.displayAvatarURL({
        dynamic: true,
        format: "png",
@@ -62,7 +62,7 @@ module.exports = {
     message.lineReply({
      embed: {
       color: 16734039,
-      description: "Something went wrong... :cry:",
+      description: `Something went wrong... ${client.bot_emojis.sadness}`,
      },
     });
    }
