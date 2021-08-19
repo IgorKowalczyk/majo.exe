@@ -28,7 +28,7 @@ module.exports = {
      },
     });
    }
-   if (languages.some((ele) => ele.name === language.toLowerCase())) {
+   if (languages.some((ele) => ele.name === language.toLowerCase()) || languages.some((ele) => ele.abrv === language.toLowerCase())) {
     translate(text, { to: language.toLowerCase() })
      .then((res) => {
       const embed = new Discord.MessageEmbed()
