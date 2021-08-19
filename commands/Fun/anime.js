@@ -26,7 +26,7 @@ module.exports = {
       .addField(`${client.bot_emojis.flag_gb} English Title`, data.englishTitle)
       .addField(`${client.bot_emojis.flag_jp} Japanese Title`, data.japaneseTitle)
       .addField(`${client.bot_emojis.book} Type`, data.type)
-      .addField(`${client.bot_emojis.counter} Episodes`, data.episodes)
+      .addField(`${client.bot_emojis.counting} Episodes`, data.episodes)
       .addField(`${client.bot_emojis.star2} Rating`, data.rating)
       .addField(`${client.bot_emojis.calendar_spillar} Aired`, data.aired)
       .addField(`${client.bot_emojis.star} Score`, data.score)
