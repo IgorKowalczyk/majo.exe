@@ -15,7 +15,7 @@ module.exports = {
      return message.lineReply({
       embed: {
        color: 16734039,
-       description: `${client.bot_emojis.error} | You must mention someone to hug!`,
+       description: `${client.bot_emojis.error} | You must mention someone to hug!\n\n**Usage:** \`${process.env.PREFIX} hug <user>\``,
       },
      });
     }

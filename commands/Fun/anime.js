@@ -47,7 +47,7 @@ module.exports = {
      message.lineReply({
       embed: {
        color: 16734039,
-       description: `${client.bot_emojis.error} | Please enter a vaild name!`,
+       description: `${client.bot_emojis.error} | Please enter a vaild anime name!\n\n**Usage:** \`${process.env.PREFIX} anime <anime>\``,
       },
      })
     );

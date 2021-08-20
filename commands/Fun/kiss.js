@@ -13,7 +13,7 @@ module.exports = {
    return message.lineReply({
     embed: {
      color: 16734039,
-     description: `${client.bot_emojis.broken_heart} | You must mention user to kiss ;-;`,
+     description: `${client.bot_emojis.broken_heart} | You must mention user to kiss ;-;\n\n**Usage:** \`${process.env.PREFIX} kiss <user>\``,
     },
    });
   }

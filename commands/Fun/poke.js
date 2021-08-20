@@ -15,7 +15,7 @@ module.exports = {
      return message.lineReply({
       embed: {
        color: 16734039,
-       description: `${client.bot_emojis.error} | You must mention someone to poke!`,
+       description: `${client.bot_emojis.error} | You must mention someone to poke!\n\n**Usage:** \`${process.env.PREFIX} poke <user>\``,
       },
      });
     }

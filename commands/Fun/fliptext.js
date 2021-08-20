@@ -13,16 +13,15 @@ module.exports = {
     return message.lineReply({
      embed: {
       color: 16734039,
-      description: `${client.bot_emojis.error} | You must provide a text!`,
+      description: `${client.bot_emojis.error} | You must provide a text!\n\n**Usage:** \`${process.env.PREFIX} fliptext <text>\``,
      },
     });
    }
-   const max = 50;
-   if (args.lenght > max)
+   if (args.lenght > 50)
     return message.lineReply({
      embed: {
       color: 16734039,
-      description: `${client.bot_emojis.error} | The max lenght for text is ${max} letters!`,
+      description: `${client.bot_emojis.error} | The text can't be longer than 50 characters!`,
      },
     });
    var flipped = [];

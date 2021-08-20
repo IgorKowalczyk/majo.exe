@@ -6,14 +6,14 @@ module.exports = {
  aliases: ["ani-fact"],
  description: "Shows a random fact about animal",
  category: "Fun",
- usage: "animal-fact",
+ usage: "animal-fact <animal>",
  run: async (client, message, args) => {
   try {
    if (!args[0]) {
     return message.lineReply({
      embed: {
       color: 16734039,
-      description: `${client.bot_emojis.error} | You must enter animal name!`,
+      description: `${client.bot_emojis.error} | You must enter animal name!\n\n**Usage:** \`${process.env.PREFIX} animal-fact <animal>\``,
      },
     });
    }

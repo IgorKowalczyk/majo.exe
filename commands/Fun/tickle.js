@@ -14,7 +14,7 @@ module.exports = {
     return message.lineReply({
      embed: {
       color: 16734039,
-      description: `${client.bot_emojis.error} | Mention a valid member of this server!`,
+      description: `${client.bot_emojis.error} | Mention someone to tickle!\n\n**Usage:** \`${process.env.PREFIX} tickle <user>\``,
      },
     });
    }

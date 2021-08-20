@@ -15,14 +15,14 @@ module.exports = {
     return message.lineReply({
      embed: {
       color: 16734039,
-      description: `${client.bot_emojis.error} | The max length for ascii is ${max} characters!`,
+      description: `${client.bot_emojis.error} | The max length for ascii is ${max} characters!\n\n**Usage:** \`${process.env.PREFIX} ascii <text>\``,
      },
     });
    if (!args[0])
     return message.lineReply({
      embed: {
       color: 16734039,
-      description: `${client.bot_emojis.error} | Please enter a text to convert!`,
+      description: `${client.bot_emojis.error} | Please enter a text to convert!\n\n**Usage:** \`${process.env.PREFIX} ascii <text>\``,
      },
     });
    figlet(args.join(" "), function (err, data) {

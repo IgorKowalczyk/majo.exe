@@ -5,16 +5,19 @@
  "author": "Igor Kowalczyk [Majonez.exe#3957]",
  "main": "node index.js",
  "scripts": {
-  "start": "node --trace-warnings index.js && node dashboard-run.js",
-  "develop": "node --trace-warnings index.js && node dashboard-run.js",
-  "bot": "node --trace-warnings index.js",
-  "dashboard": "node --trace-warnings dashboard-run.js",
+  "start": "npm-run-all --parallel bot dashboard",
+  "bot": "node index.js",
+  "dashboard": "node dashboard-run.js",
+  "dev": "npm-run-all --parallel dev:bot dev:dashboard",
+  "dev:bot": "node --trace-warnings index.js",
+  "dev:dashboard": "node --trace-warnings dashboard-run.js",
   "format": "prettier --write . --ignore-unknown",
   "format:check": "prettier --check .",
-  "test": "node index.js"
+  "test": "jest --passWithNoTests"
  },
  "dependencies": {
   "@discordjs/opus": "^0.3.3",
+  "@iamtraction/google-translate": "^1.1.2",
   "@quick.eco/mysql": "^1.0.2",
   "amethyste-api": "^1.1.4",
   "array.prototype.move": "0.0.4",
@@ -60,6 +63,7 @@
   "humanize-duration": "^3.26.0",
   "i": "^0.3.6",
   "isgd": "^1.1.3",
+  "jest": "^27.0.6",
   "jimp": "^0.16.1",
   "lyrics-finder": "^21.4.0",
   "mal-scraper": "^2.11.2",
@@ -107,6 +111,7 @@
   "ytdl-core-discord": "^1.2.3"
  },
  "devDependencies": {
+  "npm-run-all": "^4.1.5",
   "prettier": "^2.3.2"
  },
  "engines": {

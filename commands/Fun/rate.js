@@ -12,7 +12,7 @@ module.exports = {
    return message.lineReply({
     embed: {
      color: 16734039,
-     description: `${client.bot_emojis.error} | Please enter a text!`,
+     description: `${client.bot_emojis.error} | Please enter a text!\n\n**Usage:** \`${process.env.PREFIX} rate <text>\``,
     },
    });
   if (rate.length > 30)

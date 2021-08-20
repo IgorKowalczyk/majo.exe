@@ -14,7 +14,7 @@ module.exports = {
     return message.lineReply({
      embed: {
       color: 16734039,
-      description: `${client.bot_emojis.error} | Mention a valid member!`,
+      description: `${client.bot_emojis.error} | Mention someone to slap!\n\n**Usage:** \`${process.env.PREFIX} slap <user>\``,
      },
     });
    }

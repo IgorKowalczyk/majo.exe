@@ -4,9 +4,9 @@ const progressbar = require("percentagebar");
 module.exports = {
  name: "ship",
  aliases: [],
- description: "Ship members",
+ description: "Ship useers together",
  category: "Fun",
- usage: "ship <member> <member>",
+ usage: "ship <user> <user>",
  run: async (client, message, args) => {
   try {
    const user1 = args[0];
@@ -14,7 +14,7 @@ module.exports = {
     return message.lineReply({
      embed: {
       color: 16734039,
-      description: `${client.bot_emojis.error} | Please mention a user to ship!`,
+      description: `${client.bot_emojis.error} | Please mention a first user to ship!\n\n**Usage:** \`${process.env.PREFIX} ship <user> <user>\``,
      },
     });
    }
@@ -23,7 +23,7 @@ module.exports = {
     return message.lineReply({
      embed: {
       color: 16734039,
-      description: `${client.bot_emojis.error} | Please mention a secound user to ship!`,
+      description: `${client.bot_emojis.error} | Please mention a secound user to ship!\n\n**Usage:** \`${process.env.PREFIX} ship <user> <user>\``,
      },
     });
    }

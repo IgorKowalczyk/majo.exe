@@ -67,7 +67,9 @@ Deploy the app to [Heroku](https://heroku.com)
     * `STATUS_WEBHOOK_TOKEN` - Your status webhook token
 7. Run `npm run start`
 > Note: See the example [`.env` file below](#example-env-file)!
+
 > Note: Values with `^` are required to run web dashboard!
+
 > Note: Discord webhook link syntax: `https://discord.com/api/webhooks/HERE-IS-WEBHOOK-ID/HERE-IS-WEBHOOK-TOKEN`)
 
 ### Dashboard hosting

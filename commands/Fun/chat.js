@@ -18,7 +18,7 @@ module.exports = {
     return message.lineReply({
      embed: {
       color: 16734039,
-      description: `${client.bot_emojis.error} | Hey! Please provide some message to talk to me :(`,
+      description: `${client.bot_emojis.error} | Hey! Please provide some message to talk to me :(\n\n**Usage:** \`${process.env.PREFIX} chat <message>\``,
      },
     });
    }
@@ -26,7 +26,7 @@ module.exports = {
     return message.lineReply({
      embed: {
       color: 16734039,
-      description: `${client.bot_emojis.error} | Hey! Please don't ping other people >:(`,
+      description: `${client.bot_emojis.error} | Hey! Please don't ping other people >:(\n\n**Usage:** \`${process.env.PREFIX} ascii <message>\``,
      },
     });
    }
@@ -37,7 +37,7 @@ module.exports = {
      return message.lineReply({
       embed: {
        color: 16734039,
-       description: `${client.bot_emojis.brain} | Some error occured with my brain... Please try again later`,
+       description: `${client.bot_emojis.brain} | Some error occured with my brain... Please try again later!`,
       },
      });
     } else {

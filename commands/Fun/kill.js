@@ -15,7 +15,7 @@ module.exports = {
     return message.lineReply({
      embed: {
       color: 16734039,
-      description: `${client.bot_emojis.error} | Mention a valid member of this server!`,
+      description: `${client.bot_emojis.error} | You must mention someone to kill!\n\n**Usage:** \`${process.env.PREFIX} kill <user>\``,
      },
     });
    }
