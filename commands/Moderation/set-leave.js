@@ -44,7 +44,7 @@ module.exports = {
        .setTitle("Success!")
        .setDescription(`${message.author} set up this channel to send users leave messages`)
        .setFooter(
-        "Requested by " + `${message.author.username}`,
+        `Requested by ${message.author.username}`,
         message.author.displayAvatarURL({
          dynamic: true,
          format: "png",
@@ -72,7 +72,7 @@ module.exports = {
    message.lineReply({
     embed: {
      color: 16734039,
-     description: "Something went wrong... :cry:",
+     description: `Something went wrong... ${client.bot_emojis.sadness}`,
     },
    });
   }

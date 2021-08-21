@@ -13,7 +13,7 @@ module.exports = {
    return message.lineReply({
     embed: {
      color: 16734039,
-     description: "💔 | You must mention user to kiss ;-;",
+     description: `${client.bot_emojis.broken_heart} | You must mention user to kiss ;-;\n\n**Usage:** \`${process.env.PREFIX} kiss <user>\``,
     },
    });
   }
@@ -21,7 +21,7 @@ module.exports = {
    return await message.lineReply({
     embed: {
      color: 16734039,
-     description: "💔 | You cant kiss yourself ;-; (Try kissing someone else, your love. Maybe you need some help?)",
+     description: `${client.bot_emojis.broken_heart} | You cant kiss yourself ;-; (Try kissing someone else, your love. Maybe you need some help?)`,
     },
    });
   }
@@ -42,7 +42,7 @@ module.exports = {
      .setImage(body.url)
      .setColor("RANDOM")
      .setFooter(
-      "Requested by " + `${message.author.username}`,
+      `Requested by ${message.author.username}`,
       message.author.displayAvatarURL({
        dynamic: true,
        format: "png",
@@ -56,7 +56,7 @@ module.exports = {
     message.lineReply({
      embed: {
       color: 16734039,
-      description: "Something went wrong... :cry:",
+      description: `Something went wrong... ${client.bot_emojis.sadness}`,
      },
     });
    }

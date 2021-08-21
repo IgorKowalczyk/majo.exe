@@ -11,11 +11,11 @@ module.exports = {
    const answers = ["1", "2", "3", "4", "5", "6"];
    const dice = answers[Math.floor(Math.random() * answers.length)];
    const dicerolled = new Discord.MessageEmbed() // Prettier
-    .setDescription(":game_die: | The dice rolled `" + dice + "`!")
+    .setDescription(`${client.bot_emojis.game_dice} | The dice rolled \`${dice}\``)
     .setColor("RANDOM")
     .setTimestamp()
     .setFooter(
-     "Requested by " + `${message.author.username}`,
+     `Requested by ${message.author.username}`,
      message.author.displayAvatarURL({
       dynamic: true,
       format: "png",
@@ -27,7 +27,7 @@ module.exports = {
    message.lineReply({
     embed: {
      color: 16734039,
-     description: "Something went wrong... :cry:",
+     description: `Something went wrong... ${client.bot_emojis.sadness}`,
     },
    });
   }

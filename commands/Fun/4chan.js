@@ -83,7 +83,7 @@ module.exports = {
      let embed = new Discord.MessageEmbed() // Prettier
       .setColor("RANDOM")
       .setTitle(
-       "🍀 " + sub,
+       `${client.bot_emojis.chan} ` + sub,
        message.guild.iconURL({
         dynamic: true,
         format: "png",
@@ -91,12 +91,12 @@ module.exports = {
        thread
       )
       .setDescription(com)
-      .addField("📝 Thread:", thread)
-      .addField("🖼️ Image:", imgUrl)
+      .addField(`${client.bot_emojis.edit} Thread: `, thread)
+      .addField(`${client.bot_emojis.picture_frame} Image: `, imgUrl)
       .setURL(thread)
       .setTimestamp()
       .setFooter(
-       "💬 " + replies + " | 🖼️ " + images + " | Requested by " + `${message.author.username}` + " • Image from 4chan boards",
+       `${client.bot_emojis.chat} ${replies} replies | ${client.bot_emojis.picture_frame} ${images} images | Requested by ${message.author.username} • Image from 4chan boards`,
        message.author.displayAvatarURL({
         dynamic: true,
         format: "png",
@@ -113,7 +113,7 @@ module.exports = {
    message.lineReply({
     embed: {
      color: 16734039,
-     description: "Something went wrong... :cry:",
+     description: `Something went wrong... ${client.bot_emojis.sadness}`,
     },
    });
   }

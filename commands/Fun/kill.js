@@ -15,7 +15,7 @@ module.exports = {
     return message.lineReply({
      embed: {
       color: 16734039,
-      description: "<:error:860884617770303519> | Mention a valid member of this server!",
+      description: `${client.bot_emojis.error} | You must mention someone to kill!\n\n**Usage:** \`${process.env.PREFIX} kill <user>\``,
      },
     });
    }
@@ -23,7 +23,7 @@ module.exports = {
     return await message.lineReply({
      embed: {
       color: 16734039,
-      description: "<:error:860884617770303519> | You cant kill yourself!",
+      description: `${client.bot_emojis.error} | You can't kill yourself...`,
      },
     });
    }
@@ -44,7 +44,7 @@ module.exports = {
       })
      )
      .setFooter(
-      "Requested by " + `${message.author.username}`,
+      `Requested by ${message.author.username}`,
       message.author.displayAvatarURL({
        dynamic: true,
        format: "png",
@@ -59,7 +59,7 @@ module.exports = {
    message.lineReply({
     embed: {
      color: 16734039,
-     description: "Something went wrong... :cry:",
+     description: `Something went wrong... ${client.bot_emojis.sadness}`,
     },
    });
   }

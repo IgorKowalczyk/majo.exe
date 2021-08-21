@@ -21,7 +21,7 @@ module.exports = {
      .setURL(`https://reddit.com${meme.permalink}`)
      .setImage(meme.url)
      .setFooter(
-      `👍 ${meme.ups} | 💬 ${meme.num_comments} | Requested by ${message.author.username}`,
+      `${client.bot_emojis.like} ${meme.ups} | ${client.bot_emojis.chat} ${meme.num_comments} | Requested by ${message.author.username}`,
       message.author.displayAvatarURL({
        dynamic: true,
        format: "png",
@@ -35,7 +35,7 @@ module.exports = {
    message.lineReply({
     embed: {
      color: 16734039,
-     description: "Something went wrong... :cry:",
+     description: `Something went wrong... ${client.bot_emojis.sadness}`,
     },
    });
   }

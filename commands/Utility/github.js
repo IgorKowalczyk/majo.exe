@@ -35,7 +35,7 @@ module.exports = {
       .setURL(html_url);
      const embed = new Discord.MessageEmbed() // Prettier
       .setTitle(`🐙 ${login} Github`, avatar_url)
-      .setColor(`RANDOM`)
+      .setColor("RANDOM")
       .setThumbnail(avatar_url)
       .addField(`<:members:856161806606401556> Username`, `\`\`\`${login}\`\`\``)
       .addField(`📝 Bio`, `\`\`\`${bio || "<:error:860884617770303519> Bio not provided"}\`\`\``)
@@ -50,7 +50,7 @@ module.exports = {
       .addField(`🚀 Company`, `\`\`\`${company || "<:error:860884617770303519> No company"}\`\`\``)
       .addField(`⏱️ Account Created`, moment.utc(created_at).format("dddd, MMMM, Do YYYY"))
       .setFooter(
-       "Requested by " + `${message.author.username}`,
+       `Requested by ${message.author.username}`,
        message.author.displayAvatarURL({
         dynamic: true,
         format: "png",
@@ -67,7 +67,7 @@ module.exports = {
    message.lineReply({
     embed: {
      color: 16734039,
-     description: "Something went wrong... :cry:",
+     description: `Something went wrong... ${client.bot_emojis.sadness}`,
     },
    });
   }

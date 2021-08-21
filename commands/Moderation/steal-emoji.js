@@ -14,7 +14,7 @@ module.exports = {
     return await message.lineReply({
      embed: {
       color: 16734039,
-      description: "<:error:860884617770303519> | I don't have premission to manage emojis!",
+      description: `${client.bot_emojis.error} | I don't have premission to manage emojis!`,
      },
     });
    }
@@ -22,7 +22,7 @@ module.exports = {
     return await message.lineReply({
      embed: {
       color: 16734039,
-      description: "<:error:860884617770303519> | You don't have premission to manage emojis!",
+      description: `${client.bot_emojis.error} | You don't have premission to manage emojis!`,
      },
     });
    }
@@ -30,7 +30,7 @@ module.exports = {
     return message.lineReply({
      embed: {
       color: 16734039,
-      description: "<:error:860884617770303519> | Please provide emoji to add\n\n**Usage:** `" + prefix + " steal-emoji <emoji> <new name>`",
+      description: `${client.bot_emojis.error} | Please provide emoji to add\n\n**Usage:** \`${prefix} steal-emoji <emoji> <new name>\``,
      },
     });
    }
@@ -40,7 +40,7 @@ module.exports = {
     return message.lineReply({
      embed: {
       color: 16734039,
-      description: "<:error:860884617770303519> | Please provide a new emoji name",
+      description: `${client.bot_emojis.error} | Please provide a new emoji name\n\n**Usage:** \`${prefix} steal-emoji <emoji> <new name>\``,
      },
     });
    }
@@ -48,7 +48,7 @@ module.exports = {
     return message.lineReply({
      embed: {
       color: 16734039,
-      description: "<:error:860884617770303519> | Emoji name length should be between 2 and 32 characters",
+      description: `${client.bot_emojis.error} | Emoji name length should be between 2 and 32 characters`,
      },
     });
    }
@@ -56,7 +56,7 @@ module.exports = {
     return message.lineReply({
      embed: {
       color: 16734039,
-      description: "<:error:860884617770303519> | Cannot find that emoji! Please try another emoji",
+      description: `${client.bot_emojis.error} | Cannot find that emoji! Please try another emoji`,
      },
     });
    }
@@ -68,14 +68,14 @@ module.exports = {
       .lineReply({
        embed: {
         color: 4779354,
-        description: `<:success:860884617820110909> | Emoji ${emoji} was successfully added!`,
+        description: `${client.bot_emojis.success} | Emoji ${emoji} was successfully added!`,
        },
       })
       .catch((err) => {
        message.lineReply({
         embed: {
          color: 16734039,
-         description: "<:error:860884617770303519> | I can't add the emoji, please try again!",
+         description: `${client.bot_emojis.error} | I can't add the emoji, please try again!`,
         },
        });
        console.log(err);
@@ -85,16 +85,17 @@ module.exports = {
      message.lineReply({
       embed: {
        color: 16734039,
-       description: "<:error:860884617770303519> | I can't add the emoji, please try again!",
+       description: `${client.bot_emojis.error} | I can't add the emoji, please try again!`,
       },
      });
      console.log(err);
     });
   } catch (err) {
+   console.log(err);
    message.lineReply({
     embed: {
      color: 16734039,
-     description: "Something went wrong... :cry:",
+     description: `Something went wrong... ${client.bot_emojis.sadness}`,
     },
    });
   }

@@ -1,8 +1,3 @@
-/**
- * Get a random advice
- * @module advice
- *
- */
 const Discord = require("discord.js");
 const Random = require("srod-v2");
 
@@ -20,7 +15,7 @@ module.exports = {
    message.lineReply({
     embed: {
      color: 16734039,
-     description: "Something went wrong... :cry:",
+     description: `Something went wrong... ${client.bot_emojis.sadness}`,
     },
    });
   }

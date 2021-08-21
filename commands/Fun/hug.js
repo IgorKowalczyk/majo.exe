@@ -15,7 +15,7 @@ module.exports = {
      return message.lineReply({
       embed: {
        color: 16734039,
-       description: "<:error:860884617770303519> | You must mention someone to hug!",
+       description: `${client.bot_emojis.error} | You must mention someone to hug!\n\n**Usage:** \`${process.env.PREFIX} hug <user>\``,
       },
      });
     }
@@ -23,7 +23,7 @@ module.exports = {
      return message.lineReply({
       embed: {
        color: 5294200,
-       description: "😁 | You can't hug yourself but... Ok, get the hug from me ＼( ^o^ )／ !",
+       description: `${client.bot_emojis.grin} | You can't hug yourself but... Ok, get the hug from me ＼( ^o^ )／ !`,
       },
      });
     }
@@ -31,7 +31,7 @@ module.exports = {
      return message.lineReply({
       embed: {
        color: 5294200,
-       description: "😁 | Oh, you tried to hug me but u can't... Im not real... But I can hug you ＼( ^o^ )／",
+       description: `${client.bot_emojis.grin} | Oh, you tried to hug me but u can't... Im not real... But I can hug you ＼( ^o^ )／`,
       },
      });
     }
@@ -64,7 +64,7 @@ module.exports = {
     message.lineReply({
      embed: {
       color: 16734039,
-      description: "Something went wrong... :cry:",
+      description: `Something went wrong... ${client.bot_emojis.sadness}`,
      },
     });
    }

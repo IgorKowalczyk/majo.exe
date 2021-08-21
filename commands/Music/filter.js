@@ -130,7 +130,7 @@ module.exports = {
        \`desilencer (removes silence in the song automatically)\`
        **To clear all filters just enter \`clear\` option.**\n**Example: ${process.env.PREFIX} filter bassboost**`
       )
-      .setFooter("Requested by " + `${message.author.username}`, message.author.displayAvatarURL({ dynamic: true, format: "png", size: 2048 }));
+      .setFooter(`Requested by ${message.author.username}`, message.author.displayAvatarURL({ dynamic: true, format: "png", size: 2048 }));
      message.lineReply(embed);
      break;
    }
@@ -159,7 +159,7 @@ module.exports = {
    return message.lineReply({
     embed: {
      color: 16734039,
-     description: "Something went wrong... :cry:",
+     description: `Something went wrong... ${client.bot_emojis.sadness}`,
     },
    });
   }

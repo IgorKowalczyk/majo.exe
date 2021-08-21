@@ -99,7 +99,7 @@ module.exports = async (message) => {
     .setColor("RANDOM")
     .setTimestamp()
     .setFooter(
-     "Requested by " + `${message.author.username}`,
+     `Requested by ${message.author.username}`,
      message.author.displayAvatarURL({
       dynamic: true,
       format: "png",
@@ -138,7 +138,7 @@ module.exports = async (message) => {
       .setColor("RANDOM")
       .setTimestamp()
       .setFooter(
-       "Requested by " + `${message.author.username}`,
+       `Requested by ${message.author.username}`,
        message.author.displayAvatarURL({
         dynamic: true,
         format: "png",
@@ -177,7 +177,7 @@ module.exports = async (message) => {
       .setColor("RANDOM")
       .setTimestamp()
       .setFooter(
-       "Requested by " + `${message.author.username}`,
+       `Requested by ${message.author.username}`,
        message.author.displayAvatarURL({
         dynamic: true,
         format: "png",

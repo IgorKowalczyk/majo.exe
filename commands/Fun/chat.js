@@ -18,7 +18,7 @@ module.exports = {
     return message.lineReply({
      embed: {
       color: 16734039,
-      description: "<:error:860884617770303519> | Hey! Please provide some message to talk to me :(",
+      description: `${client.bot_emojis.error} | Hey! Please provide some message to talk to me :(\n\n**Usage:** \`${process.env.PREFIX} chat <message>\``,
      },
     });
    }
@@ -26,7 +26,7 @@ module.exports = {
     return message.lineReply({
      embed: {
       color: 16734039,
-      description: "<:error:860884617770303519> | Hey! Please don't ping other people >:(",
+      description: `${client.bot_emojis.error} | Hey! Please don't ping other people >:(\n\n**Usage:** \`${process.env.PREFIX} ascii <message>\``,
      },
     });
    }
@@ -37,7 +37,7 @@ module.exports = {
      return message.lineReply({
       embed: {
        color: 16734039,
-       description: "🧠 | Some error occured with my brain... Please try again later",
+       description: `${client.bot_emojis.brain} | Some error occured with my brain... Please try again later!`,
       },
      });
     } else {
@@ -45,7 +45,7 @@ module.exports = {
       .setDescription(body.cnt)
       .setColor("RANDOM")
       .setFooter(
-       "Requested by " + `${message.author.username}`,
+       `Requested by ${message.author.username}`,
        message.author.displayAvatarURL({
         dynamic: true,
         format: "png",
@@ -60,7 +60,7 @@ module.exports = {
     message.lineReply({
      embed: {
       color: 16734039,
-      description: "Something went wrong... :cry:",
+      description: `Something went wrong... ${client.bot_emojis.sadness}`,
      },
     });
    }

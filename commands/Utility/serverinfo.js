@@ -67,7 +67,7 @@ module.exports = {
     .addField("<:rules:856166510857814087> Rules channel", rules)
     .addField("<:channel:856161806586085376> Widget channel", widget, true)
     .setFooter(
-     "Requested by " + `${message.author.username}`,
+     `Requested by ${message.author.username}`,
      message.author.displayAvatarURL({
       dynamic: true,
       format: "png",
@@ -81,7 +81,7 @@ module.exports = {
    message.lineReply({
     embed: {
      color: 16734039,
-     description: "Something went wrong... :cry:",
+     description: `Something went wrong... ${client.bot_emojis.sadness}`,
     },
    });
   }
