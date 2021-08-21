@@ -26,7 +26,7 @@ module.exports = {
     return message.lineReply({
      embed: {
       color: 16734039,
-      description: `${client.bot_emojis.error} | Hey! Please don't ping other people >:(\n\n**Usage:** \`${process.env.PREFIX} ascii <message>\``,
+      description: `${client.bot_emojis.error} | Hey! Please don't ping other people >:(\n\n**Usage:** \`${process.env.PREFIX} chat <message>\``,
      },
     });
    }
