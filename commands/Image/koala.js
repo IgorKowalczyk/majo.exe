@@ -24,7 +24,7 @@ module.exports = {
        size: 2048,
       })
      )
-     .setTitle("🐨 Koala")
+     .setTitle(`${client.bot_emojis.koala} Koala`)
      .setImage(response.data.link);
     message.lineReply(embed);
    });

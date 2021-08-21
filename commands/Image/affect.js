@@ -13,7 +13,7 @@ module.exports = {
    const wait = await message.lineReply({
     embed: {
      color: 4779354,
-     description: "✨ | Please wait... I'm generating your image",
+     description: `${client.bot_emojis.sparkles} Please wait... I'm generating your image`,
     },
    });
    const affect = await canvacord.Canvas.affect(

@@ -63,7 +63,7 @@ module.exports = async (client, message) => {
    return message.lineReply({
     embed: {
      color: 16734039,
-     description: "<:error:860884617770303519> | That command does not exist, Take a look at `" + `${prefix}` + " help`!",
+     description: `${client.bot_emojis.error} | That command does not exist, Take a look at \`${prefix} help\`!`,
     },
    });
   }
@@ -72,7 +72,7 @@ module.exports = async (client, message) => {
    return message.lineReply({
     embed: {
      color: 16734039,
-     description: "<:error:860884617770303519> | Majo: The command cannot contain the `process.env` string for safetly reasons. We are sorry...",
+     description: `${client.bot_emojis.error} | The command cannot contain the \`process.env\` string for safetly reasons. We are sorry...`,
     },
    });
   }
@@ -86,7 +86,7 @@ module.exports = async (client, message) => {
     return message.lineReply({
      embed: {
       color: 16734039,
-      description: ` <:error:860884617770303519> | ${message.author} slow down! You have to wait \`${ms(timeLeft)}\` before you can use this command again!`,
+      description: `${client.bot_emojis.error} | ${message.author} slow down! You have to wait \`${ms(timeLeft)}\` before you can use this command again!`,
      },
     });
    } else {
@@ -102,7 +102,7 @@ module.exports = async (client, message) => {
   message.lineReply({
    embed: {
     color: 16734039,
-    description: "<:error:860884617770303519> | Something went wrong while running this command! Please try again later",
+    description: `${client.bot_emojis.error} | Something went wrong while running this command! Please try again later!`,
    },
   });
  }

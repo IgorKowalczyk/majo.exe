@@ -24,7 +24,7 @@ module.exports = {
        size: 2048,
       })
      )
-     .setTitle("😉 Hehe")
+     .setTitle(`${client.bot_emojis.wink} Hehe`)
      .setImage(response.data.link);
     message.lineReply(embed);
    });

@@ -33,6 +33,7 @@ module.exports = {
  open_collective_logo: "<:opencollective:876452400171479100>", // https://cdn.discordapp.com/emojis/876452400171479100.png
  parteon_logo: "<:patreon:876452398879629322>", // https://cdn.discordapp.com/emojis/876452398879629322.png
  kofi_logo: "<:kofi:876452398934155264>", // https://cdn.discordapp.com/emojis/876452398934155264.png
+ pikachu: "<:what:792081636530978847>", // https://cdn.discordapp.com/emojis/792081636530978847.png
 
  // Utility emojis
  picture_frame: "🖼️",
@@ -77,4 +78,9 @@ module.exports = {
  sneeze: "🤧",
  input: "📥",
  output: "📤",
+ bird: "🐦",
+ cat: "🐱",
+ koala: "🐨",
+ panda: "🐼",
+ wink: "😉",
 };

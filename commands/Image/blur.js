@@ -16,7 +16,7 @@ module.exports = {
      return message.lineReply({
       embed: {
        color: 16734039,
-       description: "<:error:860884617770303519> | Blur must be a number!",
+       description: `${client.bot_emojis.error} | Blur must be a number!`,
       },
      });
     }
@@ -24,7 +24,7 @@ module.exports = {
      return message.lineReply({
       embed: {
        color: 16734039,
-       description: "<:error:860884617770303519> | Blur cannot be negative!",
+       description: `${client.bot_emojis.error} | Blur cannot be negative!`,
       },
      });
     }
@@ -32,7 +32,7 @@ module.exports = {
      return message.lineReply({
       embed: {
        color: 16734039,
-       description: "<:error:860884617770303519> | Blur must be higher than 2!",
+       description: `${client.bot_emojis.error} | Blur must be higher than 2!`,
       },
      });
     }
@@ -40,7 +40,7 @@ module.exports = {
      return message.lineReply({
       embed: {
        color: 16734039,
-       description: "<:error:860884617770303519> | Blur must be lower than 30!",
+       description: `${client.bot_emojis.error} | Blur must be lower than 30!`,
       },
      });
     }
@@ -50,14 +50,14 @@ module.exports = {
     return message.lineReply({
      embed: {
       color: 16734039,
-      description: "<:error:860884617770303519> | Please mention a user!",
+      description: `${client.bot_emojis.error} | Please mention a user!`,
      },
     });
    }
    const wait = await message.lineReply({
     embed: {
      color: 4779354,
-     description: "✨ | Please wait... I'm generating your image",
+     description: `${client.bot_emojis.sparkles} Please wait... I'm generating your image`,
     },
    });
    const buffer = await AmeAPI.generate("blur", {

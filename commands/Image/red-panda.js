@@ -24,7 +24,7 @@ module.exports = {
        size: 2048,
       })
      )
-     .setTitle("🐼 Red Panda")
+     .setTitle(`${client.bot_emojis.panda} Red Panda`)
      .setImage(response.data.link);
     message.lineReply(embed);
    });

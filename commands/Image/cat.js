@@ -14,7 +14,7 @@ module.exports = {
     const body = await response.json();
     const embed = new Discord.MessageEmbed() // Prettier
      .setTitle(
-      "🐱 Random Cat",
+      `${client.bot_emojis.cat} Random Cat`,
       message.guild.iconURL({
        dynamic: true,
        format: "png",

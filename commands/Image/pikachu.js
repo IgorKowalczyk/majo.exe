@@ -24,7 +24,7 @@ module.exports = {
        size: 2048,
       })
      )
-     .setTitle("<:what:792081636530978847> Pikachu!")
+     .setTitle(`${client.bot_emojis.pikachu} Pikachu!`)
      .setImage(response.data.link);
     message.lineReply(embed);
    });

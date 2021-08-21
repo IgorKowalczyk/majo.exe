@@ -24,7 +24,7 @@ module.exports = {
        size: 2048,
       })
      )
-     .setTitle("🐦 Bird")
+     .setTitle(`${client.bot_emojis.bird} Bird`)
      .setImage(response.data.link);
     message.lineReply(embed);
    });
