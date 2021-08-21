@@ -1,6 +1,6 @@
 <%- include("partials/head", { bot, user, path, description, title, twitter, url, image }) %>
 
-<% function capitalizeFirstLetter(string) { return string.charAt(0).toUpperCase() + string.slice(1); } %>
+<% function capitalize(string) { return string.charAt(0).toUpperCase() + string.slice(1); } %>
 
 <% if (bot.user.avatar) { botavatar = "https://cdn.discordapp.com/avatars/" + bot.user.id + "/" + bot.user.avatar + ".png?size=512";
  } else {
@@ -14,7 +14,7 @@
   <p class="hero-title2">You connected your Discord account! Go to your dashboard and me to your server!</p>
   <a href="https://<%= domain %>/dashboard" class="link-button green reload"><span class="reload-container"><svg xmlns="http://www.w3.org/2000/svg" style="margin-left: 0;margin-right: 5px;" height="24" viewBox="0 0 24 24" width="24"><path d="M0 0h24v24H0z" fill="none"></path><path d="M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z"></path></svg>Dashboard</span></a>
   <% } else { %>
-  <p class="hero-title">Hi! I'm <%= capitalizeFirstLetter(bot.user.username) %></p>
+  <p class="hero-title">Hi! I'm <%= capitalize(bot.user.username) %></p>
   <p class="hero-title2">I have almost everything - Fun, Memes, Images, Giveaway, Economy, Anime and NSFW!<br />I serve over 100 commands<br />To get started with me just login with your Discord account</p>
   <a href="https://<%= domain %>/login" class="link-button green">Login</a>
   <a href="#feautures" class="link-button">More</a>
@@ -29,7 +29,7 @@
 <div class="card-image"><img src="https://<%= domain %>/pics/cards/image.png"></div>
 <div class="card-text">
 <h3 class="card-title">Images</h3>
-<p><%= capitalizeFirstLetter(bot.user.username) %> allows you to make your custom images (or even memes!), <%= capitalizeFirstLetter(bot.user.username) %> also can display random images for you!</p>
+<p><%= capitalize(bot.user.username) %> allows you to make your custom images (or even memes!), <%= capitalize(bot.user.username) %> also can display random images for you!</p>
 </div>
 </div>
 </div>

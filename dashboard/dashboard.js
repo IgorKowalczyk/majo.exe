@@ -18,7 +18,7 @@ app.use(express.static("dashboard/static"));
 const MemoryStore = require("memorystore")(session);
 const sql = require("../utilities/database");
 const port = process.env.PORT || 6565;
-function capitalizeFirstLetter(string) {
+function capitalize(string) {
  return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
@@ -274,10 +274,10 @@ module.exports = async (client) => {
     .addField("📧 Email", `\`\`\`${req.body.email.substr(0, 100) || "Unknown"}\`\`\``)
     .addField("📝 Message", `\`\`\`${req.body.msg.substr(0, 2000) || "None"}\`\`\``)
     .setTimestamp()
-    .setFooter(capitalizeFirstLetter(client.user.username), client.user.displayAvatarURL());
+    .setFooter(capitalize(client.user.username), client.user.displayAvatarURL());
    contactwebhook.send({
     // Prettier
-    username: capitalizeFirstLetter(client.user.username) + " Contact",
+    username: capitalize(client.user.username) + " Contact",
     avatarURL: client.user.displayAvatarURL(),
     embeds: [contact],
    });

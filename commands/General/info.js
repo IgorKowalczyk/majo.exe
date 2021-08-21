@@ -20,7 +20,7 @@ module.exports = {
   try {
    const botuptime = moment.duration(client.uptime).format(" D [days], H [hrs], m [mins], s [secs]");
    const osuptime = moment.duration(os.uptime()).format(" D [days], H [hrs], m [mins], s [secs]");
-   function capitalizeFirstLetter(string) {
+   function capitalize(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
    }
    cpu.usage().then((cpupercentage) => {
@@ -48,7 +48,7 @@ module.exports = {
       .addField("<:discord_2:876473291777404959> Guild Count", `\`${client.guilds.cache.size} guilds\``, true)
       .addField("<:members:856161806606401556> User Count", `\`${client.guilds.cache.reduce((a, g) => a + g.memberCount, 0)} members\``, true)
       .addField("<:channel:856161806586085376> Channel Count", `\`${client.channels.cache.size} channels\``, true)
-      .addField("💿 Operating System", "```" + capitalizeFirstLetter(osutils.platform()) + " (" + os.arch() + ")```", true)
+      .addField("💿 Operating System", "```" + capitalize(osutils.platform()) + " (" + os.arch() + ")```", true)
       .addField("📦 Tools", `\`\`\`Node.js: ${process.version} | Discord.js: ${dependencies["discord.js"].replace("^", "v")}\`\`\``)
       .addField("⏳ Uptime", `\`\`\`Bot: ${botuptime}\nServer: ${osuptime}\`\`\``)
       // Yea, quite long strings

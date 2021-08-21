@@ -99,7 +99,7 @@ module.exports = {
       });
      }
     } else {
-     function capitalizeFirstLetter(string) {
+     function capitalize(string) {
       return string.charAt(0).toUpperCase() + string.slice(1);
      }
      alliaseslist = cmd.aliases.join(", ") || "None";

@@ -16,7 +16,7 @@ module.exports = {
     dnd: "<:dnd:844882506587176960>",
     offline: "<:offline:844882504502870048>",
    };
-   function capitalizeFirstLetter(string) {
+   function capitalize(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
    }
    let badges = await user.user.flags;
@@ -35,8 +35,8 @@ module.exports = {
      let xname = data[i].details || "None";
      let zname = data[i].state || "None";
      let type = data[i].type;
-     //array.push(capitalizeFirstLetter(type.toLowerCase()) + `: \`${name} : ${xname} : ${zname}\``);
-     array.push(`🎮 ` + capitalizeFirstLetter(type.toLowerCase()) + `: \`${name}\``);
+     //array.push(capitalize(type.toLowerCase()) + `: \`${name} : ${xname} : ${zname}\``);
+     array.push(`🎮 ` + capitalize(type.toLowerCase()) + `: \`${name}\``);
      if (data[i].name === "Spotify") {
       embed.setThumbnail(`https://i.scdn.co/image/${data[i].assets.largeImage.replace("spotify:", "")}`);
      }
@@ -62,7 +62,7 @@ module.exports = {
    embed.addField("⏱️ Account Created At", moment(user.user.createdAt).format("LLLL"));
    embed.addField("🗑️ Account Deleted?", user.deleted, true);
    embed.addField("<a:badges_roll:842441895137640478> Badges", newbadges.join(", ").toLowerCase() || "None");
-   embed.addField(`Status`, `${stat[user.user.presence.status]} ${capitalizeFirstLetter(user.user.presence.status)}`);
+   embed.addField(`Status`, `${stat[user.user.presence.status]} ${capitalize(user.user.presence.status)}`);
    embed.setFooter(
     "Requested by " + `${message.author.username}`,
     message.author.displayAvatarURL({
