@@ -11,7 +11,7 @@ module.exports = {
   try {
    if (!process.env.DOMAIN) {
     const embed = new Discord.MessageEmbed() // Prettier
-     .setTitle(`${client.bot_emojis.success} Mheh!`)
+     .setTitle(`${client.bot_emojis.error} Mheh!`)
      .setDescription("Our dashboard (and the contact page itself) is not working at the moment, please try again later! We are sorry...")
      .setTimestamp()
      .setColor("RANDOM")
