@@ -14,7 +14,7 @@ module.exports = {
     return message.lineReply({
      embed: {
       color: 16734039,
-      description: "<:error:860884617770303519> | You need to enter a suggestion!",
+      description: `${client.bot_emojis.error} | You need to enter a suggestion!`,
      },
     });
    }
@@ -22,7 +22,7 @@ module.exports = {
     return message.lineReply({
      embed: {
       color: 16734039,
-      description: "<:error:860884617770303519> | Your suggestion can have a maximum of 1000 characters!",
+      description: `${client.bot_emojis.error} | Your suggestion can have a maximum of 1000 characters!`,
      },
     });
    }
@@ -60,7 +60,7 @@ module.exports = {
     return message.lineReply({
      embed: {
       color: 16734039,
-      description: "<:error:860884617770303519> | I can't find suggestions channel. Mayby the channel didn't exist. If you are the bot developer please configure it in config.",
+      description: `${client.bot_emojis.error} | I can't find suggestions channel. Mayby the channel didn't exist. If you are the bot developer please configure it in config.`,
      },
     });
    }

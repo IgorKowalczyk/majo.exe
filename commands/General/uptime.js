@@ -35,7 +35,7 @@ module.exports = {
     )
     .setColor("RANDOM");
    if (config.status) {
-    embed.addField("<:online:871409206748667904> Servers Status", "```" + config.status + "```");
+    embed.addField(`${client.bot_emojis.status_online} Servers Status`, "```" + config.status + "```");
    }
    message.lineReply(embed);
   } catch (err) {

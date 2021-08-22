@@ -13,7 +13,7 @@ module.exports = {
     return message.lineReply({
      embed: {
       color: 16734039,
-      description: "<:error:860884617770303519> | This project is close-source! Sorry!\n||If you are dev check the `config.js` file!||",
+      description: `${client.bot_emojis.error} | This project is close-source! Sorry!\n||If you are dev check the \`config.js\` file!||`,
      },
     });
    }

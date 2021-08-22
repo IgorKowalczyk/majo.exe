@@ -14,6 +14,7 @@ module.exports = {
  donation_perks: "",
  patreon: "igorkowalczyk",
  ko_fi: "igorkowalczyk",
+ buymeacoffee: "rkjha",
  open_collective: "igorkowalczyk",
  scopes: "bot%20applications.commands",
  permissions: "4294967287",
