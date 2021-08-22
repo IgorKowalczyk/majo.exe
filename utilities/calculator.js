@@ -73,7 +73,7 @@ module.exports = async (message) => {
  let qseven = new MessageButton().setLabel("7️").setID(calculator_7_lock).setStyle("gray").setDisabled();
  let qeight = new MessageButton().setLabel("8️").setID(calculator_8_lock).setStyle("gray").setDisabled();
  let qnine = new MessageButton().setLabel("9️").setID(calculator_9_lock).setStyle("gray").setDisabled();
- let qslash = new MessageButton().setLabel("÷").setID(calculator_devide_lock.setStyle("blurple").setDisabled();
+ let qslash = new MessageButton().setLabel("÷").setID(calculator_devide_lock).setStyle("blurple").setDisabled();
  let qfour = new MessageButton().setLabel("4️").setID(calculator_4_lock).setStyle("gray").setDisabled();
  let qfive = new MessageButton().setLabel("5️").setID(calculator_5_lock).setStyle("gray").setDisabled();
  let qsix = new MessageButton().setLabel("6️").setID(calculator_6_lock).setStyle("gray").setDisabled();
