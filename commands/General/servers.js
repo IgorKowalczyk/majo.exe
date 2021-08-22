@@ -9,7 +9,7 @@ module.exports = {
  run: async (client, message, args) => {
   try {
    const embed = new Discord.MessageEmbed() // Prettier
-    .setDescription(`${client.bot_emojis.rocket} I'm in \`${client.guilds.cache.size}\` servers!`)
+    .setTitle(`${client.bot_emojis.rocket} I'm in \`${client.guilds.cache.size}\` servers!`)
     .setFooter(
      `Requested by ${message.author.username}`,
      message.author.displayAvatarURL({
