@@ -21,8 +21,8 @@ module.exports = {
     return string.charAt(0).toUpperCase() + string.slice(1);
    }
    const embed = new Discord.MessageEmbed() // Prettier
-    .setTitle("🐙 " + capitalize(client.user.username) + " Github Repo")
-    .setDescription("📚 This project is open source, you can check the code at: [@" + config.github + "/" + config.github_repo + "](https://github.com/" + config.github + "/" + config.github_repo + ")")
+    .setTitle(`${client.bot_emojis.octo} ${capitalize(client.user.username)} Github Repo`)
+    .setDescription(`${client.bot_emojis.book} This project is open source, you can check the code at: [@${config.github}/${config.github_repo}](https://github.com/${config.github}/${config.github_repo})`)
     .setFooter(`Requested by ${message.author.username}`, message.author.displayAvatarURL({ dynamic: true, format: "png", size: 2048 }))
     .setColor("RANDOM")
     .setTimestamp();

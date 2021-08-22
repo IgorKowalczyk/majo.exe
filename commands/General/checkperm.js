@@ -9,9 +9,9 @@ module.exports = {
  run: async (client, message, args) => {
   try {
    const embed = new Discord.MessageEmbed()
-    .setTitle("Premission check")
+    .setTitle(`${client.bot_emojis.discord_logo} Bot premissions check`)
     .setDescription(
-     `These are the bot premissions on this server. If ${client.user.username} misses them some commands & functions will be disabled!
+     `These are the bot premissions on this server. If <@${client.user.id}> misses them some commands & functions will be disabled!
      • \`ADMINISTRATOR\`: ${message.guild.me.hasPermission("ADMINISTRATOR") ? `${client.bot_emojis.success}` : `${client.bot_emojis.error}`}\n
      • \`MANAGE_MESSAGES\`: ${message.guild.me.hasPermission("MANAGE_MESSAGES") ? `${client.bot_emojis.success} Passed!` : `${client.bot_emojis.error} Error!`}
      • \`MANAGE_CHANNELS\`: ${message.guild.me.hasPermission("MANAGE_CHANNELS") ? `${client.bot_emojis.success} Passed!` : `${client.bot_emojis.error} Error!`}

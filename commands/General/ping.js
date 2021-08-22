@@ -9,9 +9,9 @@ module.exports = {
  run: async (client, message, args) => {
   try {
    const ping = new Discord.MessageEmbed() // Prettier
-    .setTitle(":ping_pong: Pong!")
-    .addField("⏱️ My ping: ", `\`\`\`${(Date.now() - message.createdTimestamp).toString().replace(/-/g, "")}ms\`\`\``)
-    .addField("⏱️ API ping (Websocket): ", `\`\`\`${Math.round(client.ws.ping)}ms\`\`\``)
+    .setTitle(`${client.bot_emojis.ping} Pong!`)
+    .addField(`${client.bot_emojis.stopwatch} My ping:`, `\`\`\`${(Date.now() - message.createdTimestamp).toString().replace(/-/g, "")}ms\`\`\``)
+    .addField(`${client.bot_emojis.stopwatch} API ping (Websocket):`, `\`\`\`${Math.round(client.ws.ping)}ms\`\`\``)
     .setFooter(`Requested by ${message.author.username}`, message.author.displayAvatarURL({ dynamic: true, format: "png", size: 2048 }))
     .setColor("RANDOM")
     .setTimestamp();

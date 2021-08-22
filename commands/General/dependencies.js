@@ -2,15 +2,15 @@ const Discord = require("discord.js");
 
 module.exports = {
  name: "dependencies",
- aliases: [],
+ aliases: ["packages", "pkgs"],
  description: "Returns the amount of dependencies that I use",
  category: "General",
  usage: "dependencies",
  run: async (client, message, args) => {
   try {
    const embed = new Discord.MessageEmbed() // Prettier
-    .setTitle("📦 Dependencies")
-    .setDescription(client.user.tag + " run on " + Object.keys(require("../../package").dependencies).length + " npm dependencies (Javascript power 💪)")
+    .setTitle(`${client.bot_emojis.package} Dependencies`)
+    .setDescription(`> ${client.user.username} runs on ${Object.keys(require("../../package").dependencies).length} npm packages (Javascript power ${client.bot_emojis.muscule}!)`)
     .setTimestamp()
     .setImage("https://i.redd.it/tfugj4n3l6ez.png")
     .setColor("RANDOM")

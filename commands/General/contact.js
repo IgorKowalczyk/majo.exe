@@ -27,7 +27,7 @@ module.exports = {
    }
    const embed = new Discord.MessageEmbed() // Prettier
     .setTitle(`${client.bot_emojis.success} Yay!`)
-    .setDescription("🔗 | Contact Form: " + process.env.DOMAIN + "/contact")
+    .setDescription(`${client.bot_emojis.link} | Contact Form: ${process.env.DOMAIN}/contact`)
     .setTimestamp()
     .setColor("RANDOM")
     .setFooter(

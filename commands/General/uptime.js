@@ -16,14 +16,14 @@ module.exports = {
    const timestamp = date.getTime() - Math.floor(client.uptime);
    const embed = new Discord.MessageEmbed() // Prettier
     .setTitle(
-     ":hourglass_flowing_sand: Uptime",
+     `${client.bot_emojis.uptime} Uptime`,
      message.guild.iconURL({
       dynamic: true,
       format: "png",
      })
     )
-    .addField("⏱️ Uptime", `\`\`\`${duration}\`\`\``)
-    .addField("🚀 Date Launched", `\`\`\`${moment(timestamp).format("LLLL")}\`\`\``)
+    .addField(`${client.bot_emojis.stopwatch} Uptime`, `\`\`\`${duration}\`\`\``)
+    .addField(`${client.bot_emojis.rocket} Date Launched`, `\`\`\`${moment(timestamp).format("LLLL")}\`\`\``)
     .setTimestamp()
     .setFooter(
      `Requested by ${message.author.username}`,

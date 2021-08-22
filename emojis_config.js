@@ -90,4 +90,18 @@ module.exports = {
  uptime: "⏳",
  package: "📦",
  optical_disk: "💿",
+ muscule: "💪",
+ stopwatch: "⏱️",
+ octo: "🐙",
+ rocket: "🚀",
+ thinking: "🤔",
+ question: "❔",
+ tools: "🧰",
+ money: "💰",
+ music: "🎶",
+ rofl: "🤣",
+ hammer: "🔨",
+ bricks: "🧱",
+ screw_that: "🔩",
+ sign: "🪧"
 };

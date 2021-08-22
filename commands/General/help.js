@@ -12,16 +12,20 @@ module.exports = {
  usage: "help [command]",
  run: async (client, message, args) => {
   try {
+   function capitalize(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+   }
    if (args[0]) {
     return getCMD(client, message, args[0]);
    }
    if (!args[0]) {
     return getAll(client, message);
    }
+
    function getAll(client, message) {
     const commands = readdirSync("./commands/");
     const embed = new Discord.MessageEmbed() // Prettier
-     .setAuthor("Help", message.guild.iconURL())
+     .setAuthor(`${capitalize(client.user.username)} Help`, message.guild.iconURL())
      .setColor("RANDOM")
      .setTimestamp();
     let categories;
@@ -30,31 +34,31 @@ module.exports = {
     for (const id of categories) {
      const category = client.commands.filter((cmd) => cmd.category === id);
      if (id == "General") {
-      icon = ":bricks:";
+      icon = client.bot_emojis.bricks;
      }
      if (id == "Moderation") {
-      icon = ":hammer:";
+      icon = client.bot_emojis.hammer;
      }
      if (id == "Fun") {
-      icon = ":rofl:";
+      icon = client.bot_emojis.rofl;
      }
      if (id == "Music") {
-      icon = ":notes:";
+      icon = client.bot_emojis.music;
      }
      if (id == "Economy") {
-      icon = ":moneybag:";
+      icon = client.bot_emojis.money;
      }
      if (id == "Utility") {
-      icon = ":toolbox:";
+      icon = client.bot_emojis.tools;
      }
      if (id == "Image") {
-      icon = ":frame_photo:";
+      icon = client.bot_emojis.picture_frame;
      }
      if (id == "NSFW") {
-      icon = ":smirk:";
+      icon = client.bot_emojis.smirk; // https://www.youtube.com/watch?v=YMm2gv7TStc&t=37s ...
      }
      if (!id) {
-      icon = ":grey_question:";
+      icon = client.bot_emojis.question;
      }
      if (id == "Owner") continue;
      embed.addField(`${icon} ${id} (${category.size})`, "> " + category.map((cmd) => `${cmd.name}`).join(", "));
@@ -63,7 +67,7 @@ module.exports = {
     if (message.author.id == config.owner_id) {
      embed.addField(`${client.bot_emojis.owner_crown} Owner`, "**Note:** *Only the bot owner (<@" + config.owner_id + ">) can see and use the commands below!*\n> " + owner.join(", "));
     }
-    embed.addField(":grey_question: Command Information", "`" + prefix + " help <command>`");
+    embed.addField(`${client.bot_emojis.question} Command Information`, `> \`${prefix} help <command>\``);
     if (config.news && config.bot_news_title) {
      embed.addField(`${config.bot_news_title}`, `${config.news}`);
     }
@@ -81,7 +85,7 @@ module.exports = {
    function getCMD(client, message, input) {
     const embed = new Discord.MessageEmbed(); // Prettier;
     const cmd = client.commands.get(input.toLowerCase()) || client.commands.get(client.aliases.get(input.toLowerCase()));
-    const info =  `${client.bot.bot_emojis.error} | No information found for command \`${input.toLowerCase()}`;
+    const info = `${client.bot.bot_emojis.error} | No information found for command \`${input.toLowerCase()}`;
     if (!cmd) {
      try {
       return message.lineReply({
@@ -99,22 +103,19 @@ module.exports = {
       });
      }
     } else {
-     function capitalize(string) {
-      return string.charAt(0).toUpperCase() + string.slice(1);
-     }
      alliaseslist = cmd.aliases.join(", ") || "None";
      const hembed = new Discord.MessageEmbed() // Prettier
-      .setTitle(`:grey_question: \`${cmd.name}\` command help page`, message.guild.iconURL())
+      .setTitle(`${client.bot_emojis.question} \`${cmd.name}\` command help page`)
       .setColor("RANDOM")
       .setTimestamp()
-      .addField("📚 Category", `\`${cmd.category}\``)
-      .addField("⏱️ Cooldown", `\`${cmd.timeout || "5000"}ms\``)
-      .addField("📝 Description", `\`${cmd.description}\``)
-      .addField("🔩 Usage", `\`${prefix} ${cmd.usage}\``)
-      .addField("🪧 Aliases", `\`${alliaseslist}\``)
-      // .setDescription("Category: `" + cmd.category + "`\n Description: `" + cmd.description + "`\n Usage: `" + prefix + " " + cmd.usage + "`\n Aliases: `" + alliaseslist + "`")
+      .setDescription("> Syntax: `<>` = required, `[]` = optional")
+      .addField(`${client.bot_emojis.book} Category`, `\`${cmd.category}\``)
+      .addField(`${client.bot_emojis.stopwatch} Cooldown`, `\`${cmd.timeout || "5000"}ms\``)
+      .addField(`${client.bot_emojis.edit} Description`, `\`${cmd.description}\``)
+      .addField(`${client.bot_emojis.screw_that} Usage`, `\`${prefix} ${cmd.usage}\``)
+      .addField(`${client.bot_emojis.sign} Aliases`, `\`${alliaseslist}\``)
       .setFooter(
-       "Syntax: <> = required, [] = optional | Requested by " + `${message.author.username}`,
+       `Requested by ${message.author.username}`,
        message.author.displayAvatarURL({
         dynamic: true,
         format: "png",
