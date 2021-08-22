@@ -28,7 +28,7 @@ module.exports = {
    message.lineReply({
     embed: {
      color: 4779354,
-     description: `✨ | Success! Member join event emitted, watch your majo welcome channel (if you have one!)`,
+     description: `${client.bot_emojis.sparkles} | Success! Member join event emitted, watch your majo welcome channel (if you have one!)`,
     },
    });
   } catch (err) {

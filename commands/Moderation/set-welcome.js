@@ -36,7 +36,7 @@ module.exports = {
       message.lineReply({
        embed: {
         color: 4779354,
-        description: `✨ | Success! Updated welcome channel, new welcome channel is ${channel} (ID: ${channel.id})`,
+        description: `${client.bot_emojis.sparkles} | Success! Updated welcome channel, new welcome channel is ${channel} (ID: ${channel.id})`,
        },
       });
       const embed = new Discord.MessageEmbed() // Prettier
@@ -61,7 +61,7 @@ module.exports = {
       message.lineReply({
        embed: {
         color: 4779354,
-        description: `✨ | Success! New channel for welcome messages is ${channel} (ID: ${channel.id})`,
+        description: `${client.bot_emojis.sparkles} | Success! New channel for welcome messages is ${channel} (ID: ${channel.id})`,
        },
       });
      });

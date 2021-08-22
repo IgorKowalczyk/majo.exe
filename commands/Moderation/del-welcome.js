@@ -29,7 +29,7 @@ module.exports = {
       message.lineReply({
        embed: {
         color: 4779354,
-        description: `✨ | You successfully deleted welcome channel. You can always set new channel using \`${prefix} set-welcome <channel>\`!`,
+        description: `${client.bot_emojis.success} | You successfully deleted welcome channel. You can always set new channel using \`${prefix} set-welcome <channel>\`!`,
        },
       });
      });

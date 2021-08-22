@@ -104,7 +104,7 @@ module.exports = {
    await message.channel.bulkDelete(args[0]).then((messages) => {
     let error = new Discord.MessageEmbed() // Prettier
      .setColor("RANDOM")
-     .setDescription(":wastebasket: Deleted " + `${messages.size}/${args[0]}` + " messages.")
+     .setDescription(`${client.bot_emojis.wastebasket} Deleted ${messages.size}/${args[0]} messages`)
      .setFooter(
       "This message will be deleted after 10 seconds",
       message.author.displayAvatarURL({

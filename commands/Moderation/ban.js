@@ -59,7 +59,7 @@ module.exports = {
    await message.lineReply({
     embed: {
      color: 16734039,
-     description: "⛔ " + mentioned.displayName + " has been banned. Reason: `" + reason + "`!",
+     description: `${client.bot_emojis.success} | ${mentioned.displayName} has been banned. Reason: \`${reason}\``,
     },
    });
   } catch (err) {

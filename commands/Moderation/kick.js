@@ -57,7 +57,7 @@ module.exports = {
    await message.lineReply({
     embed: {
      color: 16734039,
-     description: ":arrow_right: " + mentioned.displayName + " has been kicked. Reason: `" + reason + "`!",
+     description: `${client.bot_emojis.success} | ${mentioned.displayName} has been kicked. Reason: \`${reason}\``,
     },
    });
   } catch (err) {

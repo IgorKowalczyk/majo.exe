@@ -26,7 +26,7 @@ module.exports = {
      message.lineReply({
       embed: {
        color: 4779354,
-       description: `✨ | Your current welcome channel is: <#${results[0].res}>. You can channge channel by using \`${prefix} set-welcome <channel>\`!`,
+       description: `${client.bot_emojis.success} | Your current welcome channel is: <#${results[0].res}>. You can channge channel by using \`${prefix} set-welcome <channel>\`!`,
       },
      });
     } else {

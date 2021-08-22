@@ -84,4 +84,5 @@ module.exports = {
  koala: "🐨",
  panda: "🐼",
  wink: "😉",
+ wastebasket: "🗑️",
 };

@@ -28,7 +28,7 @@ module.exports = {
      await message.lineReply({
       embed: {
        color: 16734039,
-       description: "✨ | You need to enter a message!",
+       description: `${client.bot_emojis.sparkles} | You need to enter a message!`,
       },
      });
     }
