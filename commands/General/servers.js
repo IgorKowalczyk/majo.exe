@@ -18,6 +18,7 @@ module.exports = {
       size: 2048,
      })
     )
+    .setImage("https://media.discordapp.net/attachments/721019707607482409/879067533557256263/10-37-discorddiscord-discord-discorddiscord-messenger-oh-no-40275865.png?width=338&height=645")
     .setColor("RANDOM")
     .setTimestamp();
    message.lineReply(embed);

@@ -10,7 +10,7 @@ module.exports = {
   try {
    const embed = new Discord.MessageEmbed() // Prettier
     .setTitle(`${client.bot_emojis.package} Dependencies`)
-    .setDescription(`> ${client.user.username} runs on ${Object.keys(require("../../package").dependencies).length} npm packages (Javascript power ${client.bot_emojis.muscule}!)`)
+    .setDescription(`> <@${client.user.id}> runs on ${Object.keys(require("../../package").dependencies).length} (NPM packages)[https://www.npmjs.com] (Javascript power ${client.bot_emojis.muscule}!)`)
     .setTimestamp()
     .setImage("https://i.redd.it/tfugj4n3l6ez.png")
     .setColor("RANDOM")
