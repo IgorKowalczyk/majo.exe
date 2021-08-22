@@ -10,7 +10,7 @@ module.exports = {
  run: async (client, message, args) => {
   try {
    const embed = new Discord.MessageEmbed() // Prettier
-    .setTitle(`✨ Donate ${client.user.username}`) //
+    .setTitle(`✨ Donate to ${client.user.username}`) //
     .setTimestamp()
     .setThumbnail(
      client.user.displayAvatarURL({
@@ -28,9 +28,10 @@ module.exports = {
       format: "png",
       size: 2048,
      })
-    ).setDescription(`${config.patreon ? "• <:patreon:876452398879629322> **Patreon:** https://patreon.com/" + config.patreon : "<:patreon:876452398879629322> **Patreon:** -"}
-    ${config.open_collective ? "• <:opencollective:876452400171479100> **OpenCollective:** https://opencollective.com/" + config.open_collective : "<:opencollective:876452400171479100> **OpenCollective:** -"}
-    ${config.ko_fi ? "• <:kofi:876452398934155264> **Ko-Fi:** https://ko-fi.com/" + config.ko_fi : "<:kofi:876452398934155264> **Ko-Fi:** -"}
+    ).setDescription(`${config.patreon ? `• ${client.bot_emojis.parteon_logo} **Patreon:** https://patreon.com/` + config.patreon : `${client.bot_emojis.parteon_logo} **Patreon:** -`}
+    ${config.open_collective ? `• ${client.bot_emojis.open_collective_logo} **OpenCollective:** https://opencollective.com/` + config.open_collective : `${client.bot_emojis.open_collective_logo} **OpenCollective:** -`}
+    ${config.ko_fi ? `• ${client.bot_emojis.kofi_logo} **Ko-Fi:** https://ko-fi.com/` + config.ko_fi : `${client.bot_emojis.kofi_logo} **Ko-Fi:** -`}
+    ${config.buymeacoffee ? `• ${client.bot_emojis.buymeacoffee_logo} **BuyMeaCoffee:** https://buymeacoffee.com/` + config.buymeacoffee : `${client.bot_emojis.buymeacoffee_logo} **BuyMeaCoffee:** -`}
     `);
    message.lineReply(embed);
   } catch (err) {

@@ -37,7 +37,7 @@ module.exports = {
       )
       .setColor("RANDOM")
       .setDescription(`Global prefix: \`${process.env.PREFIX}\`\n`)
-      .addField("<:owner:856161806199947285> Developer", `<@${config.owner_id}> \[[Website](${config.aurhor_website})\]`)
+      .addField(`${client.bot_emojis.owner_crown} Developer`, `<@${config.owner_id}> \[[Website](${config.aurhor_website})\]`)
       .setThumbnail(
        client.user.displayAvatarURL({
         dynamic: true,

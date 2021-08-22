@@ -61,7 +61,7 @@ module.exports = {
     }
     const owner = [...new Set(client.commands.filter((cmd) => `${cmd.category}` == "Owner").map((cmd) => cmd.name))];
     if (message.author.id == config.owner_id) {
-     embed.addField(`<:owner:856161806199947285> Owner`, "**Note:** *Only the bot owner (<@" + config.owner_id + ">) can see and use the commands below!*\n> " + owner.join(", "));
+     embed.addField(`${client.bot_emojis.owner_crown} Owner`, "**Note:** *Only the bot owner (<@" + config.owner_id + ">) can see and use the commands below!*\n> " + owner.join(", "));
     }
     embed.addField(":grey_question: Command Information", "`" + prefix + " help <command>`");
     if (config.news && config.bot_news_title) {
@@ -81,7 +81,7 @@ module.exports = {
    function getCMD(client, message, input) {
     const embed = new Discord.MessageEmbed(); // Prettier;
     const cmd = client.commands.get(input.toLowerCase()) || client.commands.get(client.aliases.get(input.toLowerCase()));
-    const info = "<:error:860884617770303519> | No information found for command `" + input.toLowerCase() + "`!";
+    const info =  `${client.bot.bot_emojis.error} | No information found for command \`${input.toLowerCase()}`;
     if (!cmd) {
      try {
       return message.lineReply({
