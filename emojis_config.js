@@ -34,7 +34,7 @@ module.exports = {
  parteon_logo: "<:patreon:876452398879629322>", // https://cdn.discordapp.com/emojis/876452398879629322.png
  kofi_logo: "<:kofi:876452398934155264>", // https://cdn.discordapp.com/emojis/876452398934155264.png
  pikachu: "<:what:792081636530978847>", // https://cdn.discordapp.com/emojis/792081636530978847.png
- buymeacoffee: "<:bmclogoyellow:878519525686014002>", // 
+ buymeacoffee: "<:buy_me_a_coffe:878937137574211644>", // https://cdn.discordapp.com/emojis/878937137574211644.png
 
  // Utility emojis
  picture_frame: "🖼️",
