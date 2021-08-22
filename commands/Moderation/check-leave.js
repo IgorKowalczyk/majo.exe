@@ -15,7 +15,7 @@ module.exports = {
     return message.lineReply({
      embed: {
       color: 16734039,
-      description: "<:error:860884617770303519> | You don't have permissions to check leave channel! You need `MANAGE_CHANNELS` permission!",
+      description: `${client.bot_emojis.error} | You don't have permissions to check leave channel! You need \`MANAGE_CHANNELS\` permission!`,
      },
     });
    }
@@ -33,7 +33,7 @@ module.exports = {
      message.lineReply({
       embed: {
        color: 16734039,
-       description: `<:error:860884617770303519> | You haven't configured leave on this server yet, run \`${prefix} set-leave <channel>\` to configure leave messages!`,
+       description: `${client.bot_emojis.error} | You haven't configured leave on this server yet, run \`${prefix} set-leave <channel>\` to configure leave messages!`,
       },
      });
     }
