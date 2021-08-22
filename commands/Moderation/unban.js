@@ -12,7 +12,7 @@ module.exports = {
     return await message.lineReply({
      embed: {
       color: 16734039,
-      description: "<:error:860884617770303519> | I don't have premission to unban members!",
+      description: `${client.bot_emojis.error} | I don't have premission to unban members!`,
      },
     });
    }
@@ -20,7 +20,7 @@ module.exports = {
     return await message.lineReply({
      embed: {
       color: 16734039,
-      description: "<:error:860884617770303519> | You don't have premissions to unban members!",
+      description: `${client.bot_emojis.error} | You don't have premissions to unban members!`,
      },
     });
    }
@@ -30,7 +30,7 @@ module.exports = {
     return message.lineReply({
      embed: {
       color: 16734039,
-      description: "<:error:860884617770303519> | Please provide user id!",
+      description: `${client.bot_emojis.error} | Please provide user id!`,
      },
     });
    }
@@ -38,7 +38,7 @@ module.exports = {
     return message.lineReply({
      embed: {
       color: 16734039,
-      description: "<:error:860884617770303519> | Please provide vaild user id!",
+      description: `${client.bot_emojis.error} | Please provide vaild user id!`,
      },
     });
    }
@@ -48,7 +48,7 @@ module.exports = {
     return message.lineReply({
      embed: {
       color: 16734039,
-      description: "<:error:860884617770303519> | Unable to find user, please check the provided ID",
+      description: `${client.bot_emojis.error} | Unable to find user, please check the provided ID`,
      },
     });
    }

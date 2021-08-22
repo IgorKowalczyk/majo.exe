@@ -12,14 +12,14 @@ module.exports = {
     return await message.lineReply({
      embed: {
       color: 16734039,
-      description: "<:error:860884617770303519> | I don't have premission to manage messages!",
+      description: `${client.bot_emojis.error} | I don't have premission to manage messages!`,
      },
     });
    }
    if (!message.member.hasPermission("MANAGE_MESSAGES")) {
     let error = new Discord.MessageEmbed() // Prettier
      .setColor("FF5757")
-     .setDescription("<:error:860884617770303519> | You don't have permission to prune messages!")
+     .setDescription(`${client.bot_emojis.error} | You don't have permission to prune messages!`)
      .setFooter(
       "This message will be deleted after 10 seconds",
       message.author.displayAvatarURL({
@@ -40,7 +40,7 @@ module.exports = {
    if (isNaN(args[0])) {
     let error = new Discord.MessageEmbed() // Prettier
      .setColor("FF5757")
-     .setDescription("<:error:860884617770303519> | Please input a vaild number!")
+     .setDescription(`${client.bot_emojis.error} | Please input a vaild number!`)
      .setFooter(
       "This message will be deleted after 10 seconds",
       message.author.displayAvatarURL({
@@ -61,7 +61,7 @@ module.exports = {
    if (args[0] > 100) {
     let error = new Discord.MessageEmbed() // Prettier
      .setColor("FF5757")
-     .setDescription("<:error:860884617770303519> | Insert the number less than 100!")
+     .setDescription(`${client.bot_emojis.error} | Insert the number less than 100!`)
      .setFooter(
       "This message will be deleted after 10 seconds",
       message.author.displayAvatarURL({
@@ -82,7 +82,7 @@ module.exports = {
    if (args[0] < 2) {
     let error = new Discord.MessageEmbed() // Prettier
      .setColor("FF5757")
-     .setDescription("<:error:860884617770303519> | Insert the number more than 1!")
+     .setDescription(`${client.bot_emojis.error} | Insert the number more than 1!`)
      .setFooter(
       "This message will be deleted after 10 seconds",
       message.author.displayAvatarURL({
