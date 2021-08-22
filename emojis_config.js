@@ -103,5 +103,5 @@ module.exports = {
  hammer: "🔨",
  bricks: "🧱",
  screw_that: "🔩",
- sign: "🪧"
+ sign: "🪧",
 };
