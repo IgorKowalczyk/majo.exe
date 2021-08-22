@@ -12,21 +12,21 @@ module.exports = {
     .setTitle("Premission check")
     .setDescription(
      `These are the bot premissions on this server. If ${client.user.username} misses them some commands & functions will be disabled!
-     • \`ADMINISTRATOR\`: ${message.guild.me.hasPermission("ADMINISTRATOR") ? "<:success:860884617820110909>" : "<:error:860884617770303519>"}\n
-     • \`MANAGE_MESSAGES\`: ${message.guild.me.hasPermission("MANAGE_MESSAGES") ? "<:success:860884617820110909> Passed!" : "<:error:860884617770303519> Error!"}
-     • \`MANAGE_CHANNELS\`: ${message.guild.me.hasPermission("MANAGE_CHANNELS") ? "<:success:860884617820110909> Passed!" : "<:error:860884617770303519> Error!"}
-     • \`KICK_MEMBERS\`: ${message.guild.me.hasPermission("KICK_MEMBERS") ? "<:success:860884617820110909> Passed!" : "<:error:860884617770303519> Error!"}
-     • \`BAN_MEMBERS\`: ${message.guild.me.hasPermission("BAN_MEMBERS") ? "<:success:860884617820110909> Passed!" : "<:error:860884617770303519> Error!"}
-     • \`ADD_REACTIONS\`: ${message.guild.me.hasPermission("ADD_REACTIONS") ? "<:success:860884617820110909> Passed!" : "<:error:860884617770303519> Error!"}
-     • \`MANAGE_EMOJIS_AND_STICKERS\`: ${message.guild.me.hasPermission("MANAGE_EMOJIS_AND_STICKERS") ? "<:success:860884617820110909> Passed!" : "<:error:860884617770303519> Error!"}
-     • \`VIEW_AUDIT_LOG\`: ${message.guild.me.hasPermission("VIEW_AUDIT_LOG") ? "<:success:860884617820110909> Passed!" : "<:error:860884617770303519> Error!"}
-     • \`SEND_MESSAGES\`: ${message.guild.me.hasPermission("SEND_MESSAGES") ? "<:success:860884617820110909> Passed!" : "<:error:860884617770303519> Error!"}
-     • \`MANAGE_MESSAGES\`: ${message.guild.me.hasPermission("MANAGE_MESSAGES") ? "<:success:860884617820110909> Passed!" : "<:error:860884617770303519> Error!"}
-     • \`EMBED_LINKS\`: ${message.guild.me.hasPermission("EMBED_LINKS") ? "<:success:860884617820110909> Passed!" : "<:error:860884617770303519> Error!"}
-     • \`ATTACH_FILES\`: ${message.guild.me.hasPermission("ATTACH_FILES") ? "<:success:860884617820110909> Passed!" : "<:error:860884617770303519> Error!"}
-     • \`USE_EXTERNAL_EMOJIS\`: ${message.guild.me.hasPermission("USE_EXTERNAL_EMOJIS") ? "<:success:860884617820110909> Passed!" : "<:error:860884617770303519> Error!"}
-     • \`CONNECT\`: ${message.guild.me.hasPermission("CONNECT") ? "<:success:860884617820110909> Passed!" : "<:error:860884617770303519> Error!"}
-     • \`SPEAK\`: ${message.guild.me.hasPermission("SPEAK") ? "<:success:860884617820110909> Passed!" : "<:error:860884617770303519> Error!"}
+     • \`ADMINISTRATOR\`: ${message.guild.me.hasPermission("ADMINISTRATOR") ? `${client.bot_emojis.success}` : `${client.bot_emojis.error}`}\n
+     • \`MANAGE_MESSAGES\`: ${message.guild.me.hasPermission("MANAGE_MESSAGES") ? `${client.bot_emojis.success} Passed!` : `${client.bot_emojis.error} Error!`}
+     • \`MANAGE_CHANNELS\`: ${message.guild.me.hasPermission("MANAGE_CHANNELS") ? `${client.bot_emojis.success} Passed!` : `${client.bot_emojis.error} Error!`}
+     • \`KICK_MEMBERS\`: ${message.guild.me.hasPermission("KICK_MEMBERS") ? `${client.bot_emojis.success} Passed!` : `${client.bot_emojis.error} Error!`}
+     • \`BAN_MEMBERS\`: ${message.guild.me.hasPermission("BAN_MEMBERS") ? `${client.bot_emojis.success} Passed!` : `${client.bot_emojis.error} Error!`}
+     • \`ADD_REACTIONS\`: ${message.guild.me.hasPermission("ADD_REACTIONS") ? `${client.bot_emojis.success} Passed!` : `${client.bot_emojis.error} Error!`}
+     • \`MANAGE_EMOJIS_AND_STICKERS\`: ${message.guild.me.hasPermission("MANAGE_EMOJIS_AND_STICKERS") ? `${client.bot_emojis.success} Passed!` : `${client.bot_emojis.error} Error!`}
+     • \`VIEW_AUDIT_LOG\`: ${message.guild.me.hasPermission("VIEW_AUDIT_LOG") ? `${client.bot_emojis.success} Passed!` : `${client.bot_emojis.error} Error!`}
+     • \`SEND_MESSAGES\`: ${message.guild.me.hasPermission("SEND_MESSAGES") ? `${client.bot_emojis.success} Passed!` : `${client.bot_emojis.error} Error!`}
+     • \`MANAGE_MESSAGES\`: ${message.guild.me.hasPermission("MANAGE_MESSAGES") ? `${client.bot_emojis.success} Passed!` : `${client.bot_emojis.error} Error!`}
+     • \`EMBED_LINKS\`: ${message.guild.me.hasPermission("EMBED_LINKS") ? `${client.bot_emojis.success} Passed!` : `${client.bot_emojis.error} Error!`}
+     • \`ATTACH_FILES\`: ${message.guild.me.hasPermission("ATTACH_FILES") ? `${client.bot_emojis.success} Passed!` : `${client.bot_emojis.error} Error!`}
+     • \`USE_EXTERNAL_EMOJIS\`: ${message.guild.me.hasPermission("USE_EXTERNAL_EMOJIS") ? `${client.bot_emojis.success} Passed!` : `${client.bot_emojis.error} Error!`}
+     • \`CONNECT\`: ${message.guild.me.hasPermission("CONNECT") ? `${client.bot_emojis.success} Passed!` : `${client.bot_emojis.error} Error!`}
+     • \`SPEAK\`: ${message.guild.me.hasPermission("SPEAK") ? `${client.bot_emojis.success} Passed!` : `${client.bot_emojis.error} Error!`}
      `
     )
     .setTimestamp()
