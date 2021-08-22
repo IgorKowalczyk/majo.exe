@@ -32,11 +32,17 @@ module.exports = {
       });
      }
      const question = args.join(" ");
+     if(question == "9 + 10") {
+      answer = "21 (XD)";
+     } else {
+     answer = require("mathjs").evaluate(question);
+     }
+ 
      const calc = new Discord.MessageEmbed() // Prettier
       .setTitle("🔢 Calculator")
       .setColor("RANDOM")
       .addField("Question: ", `\`\`\`${question}\`\`\``)
-      .addField("Answer: ", `\`\`\`${require("mathjs").evaluate(question)}\`\`\``)
+      .addField("Answer: ", `\`\`\`${answer}\`\`\``)
       .setFooter(
        '✨ Tip: Type "' + process.env.PREFIX + ' calculator --gui" to run graphic calculator! | Requested by ' + `${message.author.username}`,
        message.author.displayAvatarURL({

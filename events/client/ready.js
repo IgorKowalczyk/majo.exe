@@ -9,7 +9,7 @@ module.exports = (client) => {
    return string.charAt(0).toUpperCase() + string.slice(1);
   }
   setInterval(() => {
-   const emojis = ["😆", "😄", "😎", "😂", "🥳", "😘", "😜", "😁", "😉", "🥰", "😍", "🤯", "🤩", "😇", "😊", "☺️", "😌", "😋", "😳", "😚", "😏", "😱", "🥵", "😶‍🌫️", "🤕", "😴"];
+   const emojis = ["😆", "😄", "😎", "😂", "🥳", "😘", "😜", "😁", "😉", "🥰", "😍", "🤯", "🤩", "😇", "😊", "☺️", "😌", "😋", "😳", "😚", "😏", "😱", "🥵", "😶‍🌫️", "🤕", "😴", "( ͡° ͜ʖ ͡°)"]; // Smirk is here becase Luna_CatArt#4514 idea XD
    const emoji = emojis[Math.floor(Math.random() * emojis.length)];
    var date = new Date().toJSON().slice(0, 10).replace(/-/g, "/");
    const discordbday = new Date().getFullYear() + "/05/13";
