@@ -12,7 +12,7 @@ module.exports = {
     return await message.lineReply({
      embed: {
       color: 16734039,
-      description: "<:error:860884617770303519> | I don't have premission to set slowmode!",
+      description: `${client.bot_emojis.error} | I don't have premission to set slowmode!`,
      },
     });
    }
@@ -20,7 +20,7 @@ module.exports = {
     return await message.lineReply({
      embed: {
       color: 16734039,
-      description: "<:error:860884617770303519> | You don't have premission to set slowmode!",
+      description: `${client.bot_emojis.error} | You don't have premission to set slowmode!`,
      },
     });
    }
@@ -29,7 +29,7 @@ module.exports = {
     return message.lineReply({
      embed: {
       color: 16734039,
-      description: "<:error:860884617770303519> | Slowmode can't be negative!",
+      description: `${client.bot_emojis.error} | Slowmode can't be negative!`,
      },
     });
    }
@@ -37,7 +37,7 @@ module.exports = {
     return message.lineReply({
      embed: {
       color: 16734039,
-      description: "<:error:860884617770303519> | Slowmode can't be longer than 6 hours!",
+      description: `${client.bot_emojis.error} | Slowmode can't be longer than 6 hours!`,
      },
     });
    }
@@ -45,7 +45,7 @@ module.exports = {
     return message.lineReply({
      embed: {
       color: 16734039,
-      description: "<:error:860884617770303519> | It doesn't seem to be valid number",
+      description: `${client.bot_emojis.error} | It doesn't seem to be valid number`,
      },
     });
    }
@@ -55,14 +55,14 @@ module.exports = {
      return message.lineReply({
       embed: {
        color: 4779354,
-       description: "<:sucess:872104651179323432> | Slowmode is now set to " + amount + " seconds",
+       description: `${client.bot_emojis.success} | Slowmode is now set to ` + amount + " seconds",
       },
      });
     } else {
      return message.lineReply({
       embed: {
        color: 4779354,
-       description: "<:sucess:872104651179323432> | Slowmode is now set to " + amount + " second",
+       description: `${client.bot_emojis.success} | Slowmode is now set to ` + amount + " second",
       },
      });
     }
@@ -73,14 +73,14 @@ module.exports = {
      return message.lineReply({
       embed: {
        color: 4779354,
-       description: "<:sucess:872104651179323432> | Slowmode is now set to " + amount + " minutes",
+       description: `${client.bot_emojis.success} | Slowmode is now set to ` + amount + " minutes",
       },
      });
     } else {
      return message.lineReply({
       embed: {
        color: 4779354,
-       description: "<:sucess:872104651179323432> | Slowmode is now set to " + amount + " minute",
+       description: `${client.bot_emojis.success} | Slowmode is now set to ` + amount + " minute",
       },
      });
     }
@@ -91,14 +91,14 @@ module.exports = {
      return message.lineReply({
       embed: {
        color: 4779354,
-       description: "<:sucess:872104651179323432> | Slowmode is now set to " + amount + " hours",
+       description: `${client.bot_emojis.success} | Slowmode is now set to ` + amount + " hours",
       },
      });
     } else {
      return message.lineReply({
       embed: {
        color: 4779354,
-       description: "<:sucess:872104651179323432> | Slowmode is now set to " + amount + " hour",
+       description: `${client.bot_emojis.success} | Slowmode is now set to ` + amount + " hour",
       },
      });
     }
@@ -106,7 +106,7 @@ module.exports = {
     return message.lineReply({
      embed: {
       color: 16734039,
-      description: "<:error:860884617770303519> | You can only set seconds(s), minutes(min) and hours(h)",
+      description: `${client.bot_emojis.error} | You can only set seconds(s), minutes(min) and hours(h)`,
      },
     });
    }

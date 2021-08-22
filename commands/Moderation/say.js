@@ -11,7 +11,7 @@ module.exports = {
    return await message.lineReply({
     embed: {
      color: 16734039,
-     description: "<:error:860884617770303519> | I don't have premission to manage messages!",
+     description: `${client.bot_emojis.error} | I don't have premission to manage messages!`,
     },
    });
   }
@@ -37,7 +37,7 @@ module.exports = {
    message.lineReply({
     embed: {
      color: 16734039,
-     description: "<:error:860884617770303519> | You don't have permission to send this message by me!",
+     description: `${client.bot_emojis.error} | You don't have permission to send this message by me!`,
     },
    });
   }

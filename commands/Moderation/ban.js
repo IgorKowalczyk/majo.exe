@@ -12,7 +12,7 @@ module.exports = {
     return await message.lineReply({
      embed: {
       color: 16734039,
-      description: "<:error:860884617770303519> | I don't have premission to ban members!",
+      description: `${client.bot_emojis.error} | I don't have premission to ban members!`,
      },
     });
    }
@@ -20,7 +20,7 @@ module.exports = {
     return await message.lineReply({
      embed: {
       color: 16734039,
-      description: "<:error:860884617770303519> | You don't have premission to ban members!",
+      description: `${client.bot_emojis.error} | You don't have premission to ban members!`,
      },
     });
    }
@@ -30,7 +30,7 @@ module.exports = {
     return await message.lineReply({
      embed: {
       color: 16734039,
-      description: "<:error:860884617770303519> | Mention a valid member!",
+      description: `${client.bot_emojis.error} | Mention a valid member!`,
      },
     });
    }
@@ -38,7 +38,7 @@ module.exports = {
     return await message.lineReply({
      embed: {
       color: 16734039,
-      description: "<:error:860884617770303519> | You cannot ban this member!",
+      description: `${client.bot_emojis.error} | You cannot ban this member!`,
      },
     });
    }
@@ -46,7 +46,7 @@ module.exports = {
     return await message.lineReply({
      embed: {
       color: 16734039,
-      description: "<:error:860884617770303519> | You can't ban yourself!",
+      description: `${client.bot_emojis.error} | You can't ban yourself!`,
      },
     });
    }

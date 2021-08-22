@@ -12,7 +12,7 @@ module.exports = {
     return await message.lineReply({
      embed: {
       color: 16734039,
-      description: "<:error:860884617770303519> | I don't have premission to debug join leave! I need `BAN_MEMBERS` premission!",
+      description: `${client.bot_emojis.error} | I don't have premission to debug join leave! I need \`BAN_MEMBERS\` premission!`,
      },
     });
    }
@@ -20,7 +20,7 @@ module.exports = {
     return await message.lineReply({
      embed: {
       color: 16734039,
-      description: "<:error:860884617770303519> | You don't have premission to debug leave event! You need `BAN_MEMBERS` premission!",
+      description: `${client.bot_emojis.error} | You don't have premission to debug leave event! You need \`BAN_MEMBERS\` premission!`,
      },
     });
    }
