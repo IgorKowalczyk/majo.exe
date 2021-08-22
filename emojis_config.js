@@ -85,4 +85,9 @@ module.exports = {
  panda: "🐼",
  wink: "😉",
  wastebasket: "🗑️",
+ page: "📄",
+ ping: "🏓",
+ uptime: "⏳",
+ package: "📦",
+ optical_disk: "💿",
 };
