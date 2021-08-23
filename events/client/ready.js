@@ -100,9 +100,9 @@ module.exports = (client) => {
        type: 4,
        data: {
         flags: 64,
-        content: embed
-       }
-      }
+        content: embed,
+       },
+      },
      });
     }
    } catch (err) {
