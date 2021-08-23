@@ -85,7 +85,7 @@ module.exports = {
    function getCMD(client, message, input) {
     const embed = new Discord.MessageEmbed(); // Prettier;
     const cmd = client.commands.get(input.toLowerCase()) || client.commands.get(client.aliases.get(input.toLowerCase()));
-    const info = `${client.bot.bot_emojis.error} | No information found for command \`${input.toLowerCase()}`;
+    const info = `${client.bot_emojis.error} | No information found for command \`${input.toLowerCase()}`;
     if (!cmd) {
      try {
       return message.lineReply({
