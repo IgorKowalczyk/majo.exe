@@ -32,12 +32,12 @@ module.exports = {
       });
      }
      const question = args.join(" ");
-     if(question == "9 + 10") {
+     if (question == "9 + 10") {
       answer = "21 (XD)";
      } else {
-     answer = require("mathjs").evaluate(question);
+      answer = require("mathjs").evaluate(question);
      }
- 
+
      const calc = new Discord.MessageEmbed() // Prettier
       .setTitle("🔢 Calculator")
       .setColor("RANDOM")
