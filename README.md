@@ -45,7 +45,7 @@ Deploy the app to [Heroku](https://heroku.com)
     * `TOKEN` - Bot token from Discord Developer portal [no. 3]
     * `PREFIX` - Bot prefix, used to run commands eg. `your-prefix help`
     * `ID` - Your Discord Bot ID
-    * `AMEAPI` - your Ametyhyste API token [[Tutorial](#amethyste-api)]
+    * `AMEAPI` - your Amethyste API token [[Tutorial](#amethyste-api)]
     * `BRAINID` - Your Brainshop AI Brain ID [[Tutorial](#ai-keys)]
     * `BRAINKEY` - Your Brainshop AI Brain Key [[Tutorial](#ai-keys)]
     * `GENIUS` - Your Genius API Key [[Tutorial](#genius)]

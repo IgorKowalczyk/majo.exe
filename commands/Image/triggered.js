@@ -2,11 +2,11 @@ const Discord = require("discord.js");
 const canvacord = require("canvacord");
 
 module.exports = {
- name: "trigerred",
+ name: "triggered",
  aliases: ["tgd"],
  description: "Returns a triggered image",
  category: "Image",
- usage: "trigerred [user mention, user id, user name]",
+ usage: "triggered [user mention, user id, user name]",
  run: async (client, message, args) => {
   try {
    const User = (await message.mentions.members.first()) || message.guild.members.cache.get(args[0]) || message.guild.members.cache.find((r) => r.user.username.toLowerCase().includes() === args.join(" ").toLocaleLowerCase()) || message.guild.members.cache.find((r) => r.displayName.toLowerCase().includes() === args.join(" ").toLocaleLowerCase()) || message.member;
