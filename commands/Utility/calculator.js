@@ -5,62 +5,48 @@ module.exports = {
  aliases: ["math", "calc"],
  description: "Calculator",
  category: "Utility",
- usage: "calculator [--gui] [math task]",
+ usage: "calculator [math task]",
  run: async (client, message, args) => {
   try {
-   if (args.includes("--gui")) {
-    try {
-     const calc = require("../../utilities/calculator");
-     await calc(message);
-    } catch (err) {
-     message.lineReply({
+   try {
+    args.toString().replace("--gui", "");
+    if (args.length < 1) {
+     return message.lineReply({
       embed: {
        color: 16734039,
-       description: `Something went wrong... ${client.bot_emojis.sadness}`,
+       description: "<:error:860884617770303519> | You must provide a equation to be solved on the calculator! (eg. `9 + 10`)",
       },
      });
     }
-   } else {
-    try {
-     args.toString().replace("--gui", "");
-     if (args.length < 1) {
-      return message.lineReply({
-       embed: {
-        color: 16734039,
-        description: "<:error:860884617770303519> | You must provide a equation to be solved on the calculator! (eg. `9 + 10`)",
-       },
-      });
-     }
-     const question = args.join(" ");
-     if (question == "9 + 10") {
-      answer = "21 (XD)";
-     } else {
-      answer = require("mathjs").evaluate(question);
-     }
+    const question = args.join(" ");
+    if (question == "9 + 10") {
+     answer = "21 (XD)";
+    } else {
+     answer = require("mathjs").evaluate(question);
+    }
 
-     const calc = new Discord.MessageEmbed() // Prettier
-      .setTitle("🔢 Calculator")
-      .setColor("RANDOM")
-      .addField("Question: ", `\`\`\`${question}\`\`\``)
-      .addField("Answer: ", `\`\`\`${answer}\`\`\``)
-      .setFooter(
-       '✨ Tip: Type "' + process.env.PREFIX + ' calculator --gui" to run graphic calculator! | Requested by ' + `${message.author.username}`,
-       message.author.displayAvatarURL({
-        dynamic: true,
-        format: "png",
-        size: 2048,
-       })
-      );
-     return message.lineReply(calc);
-    } catch (err) {
-     console.log(err);
-     message.lineReply({
-      embed: {
-       color: 16734039,
-       description: "Invalid math equation!",
-      },
-     });
-    }
+    const calc = new Discord.MessageEmbed() // Prettier
+     .setTitle("🔢 Calculator")
+     .setColor("RANDOM")
+     .addField(`${client.bot_emojis.input} Question`, `\`\`\`${question}\`\`\``)
+     .addField(`${client.bot_emojis.output} Answer`, `\`\`\`${answer}\`\`\``)
+     .setFooter(
+      `Requested by ${message.author.username}`,
+      message.author.displayAvatarURL({
+       dynamic: true,
+       format: "png",
+       size: 2048,
+      })
+     );
+    return message.lineReply(calc);
+   } catch (err) {
+    console.log(err);
+    message.lineReply({
+     embed: {
+      color: 16734039,
+      description: "Invalid math equation!",
+     },
+    });
    }
   } catch (err) {
    console.log(err);
