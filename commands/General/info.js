@@ -48,7 +48,7 @@ module.exports = {
       .addField(`${client.bot_emojis.discord_logo} Guild Count`, `\`${client.guilds.cache.size} guilds\``, true)
       .addField(`${client.bot_emojis.member} User Count`, `\`${client.guilds.cache.reduce((a, g) => a + g.memberCount, 0)} members\``, true)
       .addField(`${client.bot_emojis.channel} Channel Count`, `\`${client.channels.cache.size} channels\``, true)
-      .addField(`${clien.bot_emojis.optical_disk} Operating System`, "```" + capitalize(osutils.platform()) + " (" + os.arch() + ")```", true)
+      .addField(`${client.bot_emojis.optical_disk} Operating System`, "```" + capitalize(osutils.platform()) + " (" + os.arch() + ")```", true)
       .addField(`${client.bot_emojis.package} Tools`, `\`\`\`Node.js: ${process.version} | Discord.js: ${dependencies["discord.js"].replace("^", "v")}\`\`\``)
       .addField(`${client.bot_emojis.uptime} Uptime`, `\`\`\`Bot: ${botuptime}\nServer: ${osuptime}\`\`\``)
       // Yea, quite long strings XD
