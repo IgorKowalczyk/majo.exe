@@ -106,7 +106,7 @@ module.exports = {
      .setColor("RANDOM")
      .setDescription(`${client.bot_emojis.wastebasket} Deleted ${messages.size}/${args[0]} messages`)
      .setFooter(
-      "This message will be deleted after 10 seconds",
+      `This message will be deleted after 10 seconds`,
       message.author.displayAvatarURL({
        dynamic: true,
        format: "png",
