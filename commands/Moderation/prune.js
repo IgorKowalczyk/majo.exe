@@ -113,7 +113,7 @@ module.exports = {
        size: 2048,
       })
      );
-    return message.lineReply(error).then((m) =>
+    return message.channel.send(error).then((m) =>
      m.delete({
       timeout: 10000,
      })
