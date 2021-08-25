@@ -24,7 +24,7 @@ module.exports = {
      },
     });
    }
-   client.emit("guildMemberAdd", message.member);
+   client.emit("guildMemberLeave", message.member);
    message.lineReply({
     embed: {
      color: 4779354,
