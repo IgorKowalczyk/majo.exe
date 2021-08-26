@@ -46,7 +46,6 @@ sql.query("CREATE TABLE IF NOT EXISTS `stats` (`messages` BIGINT NOT NULL, `comm
  console.log(chalk.bold(chalk.blue.bold("[SQL]")) + chalk.cyan.bold(" Fetched table `stats`! Status: Success"));
 });
 
-
 /* Giveaways db config */
 sql.query("CREATE TABLE IF NOT EXISTS `giveaways` (`id` INT(1) NOT NULL AUTO_INCREMENT, `message_id` VARCHAR(64) NOT NULL, `data` JSON NOT NULL, PRIMARY KEY (`id`));", (err) => {
  if (err) throw new Error(err);
@@ -106,15 +105,15 @@ setInterval(() => {
    const sum = parseInt(Object.values(JSON.parse(JSON.stringify(results[0])))) + client.message_count;
    const update = `UPDATE stats SET messages = ${sum}`;
    sql.query(update, function (error, results, fields) {
-    if(error) return console.log(error);
-    if(client.config.advanved_logging == true) console.log(chalk.bold(chalk.blue.bold("[SQL]")) + chalk.cyan.bold(" Client total messages stats updated!"));
-   })
+    if (error) return console.log(error);
+    if (client.config.advanved_logging == true) console.log(chalk.bold(chalk.blue.bold("[SQL]")) + chalk.cyan.bold(" Client total messages stats updated!"));
+   });
   } else {
    const update = "INSERT INTO `stats` (`messages`) VALUES (" + client.message_count + ")";
    sql.query(update, function (error, results, fields) {
-    if(error) return console.log(error);
-    if(client.config.advanved_logging == true) console.log(chalk.bold(chalk.blue.bold("[SQL]")) + chalk.cyan.bold(" Client total messages stats added!"));
-   })
+    if (error) return console.log(error);
+    if (client.config.advanved_logging == true) console.log(chalk.bold(chalk.blue.bold("[SQL]")) + chalk.cyan.bold(" Client total messages stats added!"));
+   });
   }
  });
  const total_commands_sql = "SELECT commands AS res FROM `stats`";
@@ -124,15 +123,15 @@ setInterval(() => {
    const sum = parseInt(Object.values(JSON.parse(JSON.stringify(results[0])))) + client.command_count;
    const update = `UPDATE stats SET commands = ${sum}`;
    sql.query(update, function (error, results, fields) {
-    if(error) return console.log(error);
-    if(client.config.advanved_logging == true) console.log(chalk.bold(chalk.blue.bold("[SQL]")) + chalk.cyan.bold(` Client total commands stats updated! [${sum}]`));
-   })
+    if (error) return console.log(error);
+    if (client.config.advanved_logging == true) console.log(chalk.bold(chalk.blue.bold("[SQL]")) + chalk.cyan.bold(` Client total commands stats updated! [${sum}]`));
+   });
   } else {
    const update = "INSERT INTO `stats` (`commands`) VALUES (" + client.command_count + ")";
    sql.query(update, function (error, results, fields) {
-    if(error) return console.log(error);
-    if(client.config.advanved_logging == true) console.log(chalk.bold(chalk.blue.bold("[SQL]")) + chalk.cyan.bold(` Client total messages stats added! [${client.command_count}]`));
-   })
+    if (error) return console.log(error);
+    if (client.config.advanved_logging == true) console.log(chalk.bold(chalk.blue.bold("[SQL]")) + chalk.cyan.bold(` Client total messages stats added! [${client.command_count}]`));
+   });
   }
  });
 }, 60000);
