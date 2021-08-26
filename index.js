@@ -103,7 +103,8 @@ setInterval(() => {
  sql.query(total_messages_sql, function (error, results, fields) {
   if (error) return console.log(error);
   if (results[0]) {
-   const update = `UPDATE stats SET messages = ${results[0] + client.message_count}`;
+   const sum = parseInt(Object.values(JSON.parse(JSON.stringify(results[0])))) + client.message_count;
+   const update = `UPDATE stats SET messages = ${sum}`;
    sql.query(update, function (error, results, fields) {
     if(error) return console.log(error);
     if(client.config.advanved_logging == true) console.log("Client total messages stats updated!");
@@ -120,7 +121,8 @@ setInterval(() => {
  sql.query(total_commands_sql, function (error, results, fields) {
   if (error) return console.log(error);
   if (results[0]) {
-   const update = `UPDATE stats SET commands = ${results[0] + client.command_count}`;
+   const sum = parseInt(Object.values(JSON.parse(JSON.stringify(results[0])))) + client.command_count;
+   const update = `UPDATE stats SET commands = ${sum}`;
    sql.query(update, function (error, results, fields) {
     if(error) return console.log(error);
     if(client.config.advanved_logging == true) console.log("Client total messages stats updated!");
