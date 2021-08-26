@@ -125,13 +125,13 @@ setInterval(() => {
    const update = `UPDATE stats SET commands = ${sum}`;
    sql.query(update, function (error, results, fields) {
     if(error) return console.log(error);
-    if(client.config.advanved_logging == true) console.log(chalk.bold(chalk.blue.bold("[SQL]")) + chalk.cyan.bold(" Client total commands stats updated!"));
+    if(client.config.advanved_logging == true) console.log(chalk.bold(chalk.blue.bold("[SQL]")) + chalk.cyan.bold(` Client total commands stats updated! [${sum}]`));
    })
   } else {
    const update = "INSERT INTO `stats` (`commands`) VALUES (" + client.command_count + ")";
    sql.query(update, function (error, results, fields) {
     if(error) return console.log(error);
-    if(client.config.advanved_logging == true) console.log(chalk.bold(chalk.blue.bold("[SQL]")) + chalk.cyan.bold(" Client total messages stats added!"));
+    if(client.config.advanved_logging == true) console.log(chalk.bold(chalk.blue.bold("[SQL]")) + chalk.cyan.bold(` Client total messages stats added! [${client.command_count}]`));
    })
   }
  });
