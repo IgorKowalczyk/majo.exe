@@ -1,5 +1,3 @@
-const sneeze = require("./commands/Fun/sneeze");
-
 module.exports = {
  // **The config is still in beta!!!**
  // Note: See /utilities/emojis
