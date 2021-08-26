@@ -44,6 +44,8 @@ module.exports = async (client) => {
    {
     clientID: process.env.ID,
     client_secret: process.env.SECRET,
+    clientSecret: process.env.SECRET,
+    // Choose one ^ XD
     callbackURL: `${process.env.DOMAIN}${process.env.PORT != 80 ? "" : `:${process.env.PORT}`}/callback`,
     response_type: `token`,
     scope: ["identify", "guilds"],
