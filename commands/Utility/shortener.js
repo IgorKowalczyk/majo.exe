@@ -14,7 +14,7 @@ module.exports = {
     return message.lineReply({
      embed: {
       color: 16734039,
-      description: "<:error:860884617770303519> | Please provide a link!",
+      description: `${client.bot_emojis.error} | Please provide a link!`,
      },
     });
    }

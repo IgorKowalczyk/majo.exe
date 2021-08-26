@@ -12,7 +12,7 @@ module.exports = {
     return message.lineReply({
      embed: {
       color: 16734039,
-      description: "<:error:860884617770303519> | You must enter a text to encode!",
+      description: `${client.bot_emojis.error} | You must enter a text to encode!`,
      },
     });
    }
@@ -20,7 +20,7 @@ module.exports = {
     return message.lineReply({
      embed: {
       color: 16734039,
-      description: "<:error:860884617770303519> | You must enter a text shorer than 50 characters!",
+      description: `${client.bot_emojis.error} | You must enter a text shorer than 50 characters!`,
      },
     });
    }

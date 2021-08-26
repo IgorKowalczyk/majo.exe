@@ -24,7 +24,7 @@ module.exports = {
    const embed = new Discord.MessageEmbed() // Prettier
     .setColor("RANDOM")
     .setTitle("Current Giveaways")
-    .setDescription(giveawaysarr.join("\n") || "<:error:860884617770303519> No giveaways are currently running!")
+    .setDescription(giveawaysarr.join("\n") || `${client.bot_emojis.error} No giveaways are currently running!`)
     .setFooter(
      `Requested by ${message.author.username}`,
      message.author.displayAvatarURL({
