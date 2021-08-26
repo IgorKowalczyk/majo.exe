@@ -135,7 +135,7 @@ setInterval(() => {
    })
   }
  });
-}, 10000);
+}, 60000);
 
 /* Login and Commands */
 if (process.env.TOKEN) {
