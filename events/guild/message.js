@@ -7,9 +7,11 @@ const Timeout = new Map();
 module.exports = async (client, message) => {
  try {
   if (!message) return;
+  client.message_count++;
   if (message.author.bot) return;
   if (!message.guild) {
    try {
+    client.command_count++;
     const embed = new Discord.MessageEmbed() // Prettier
      .setTitle(
       `:thinking: Hmm?`,
@@ -36,6 +38,7 @@ module.exports = async (client, message) => {
    }
   }
   if (message.content === `<@${client.user.id}>` || message.content === `<@!${client.user.id}>`) {
+   client.command_count++;
    const embed = new Discord.MessageEmbed() // Prettier
     .setTitle(`<:success:860884617820110909> Hi!`, message.guild.iconURL())
     .setColor("RANDOM")
@@ -60,6 +63,7 @@ module.exports = async (client, message) => {
   let command = client.commands.get(cmd);
   if (!command) command = client.commands.get(client.aliases.get(cmd));
   if (!command) {
+   client.command_count++;
    return message.lineReply({
     embed: {
      color: 16734039,
@@ -69,6 +73,7 @@ module.exports = async (client, message) => {
   }
   if (message.content.toLowerCase().includes("process.env")) {
    console.log("[Security Log]: " + message.author.tag + ` (ID: ` + message.author.id + ") used process.env in the " + command.name + " command.");
+   client.command_count++;
    return message.lineReply({
     embed: {
      color: 16734039,
@@ -90,6 +95,7 @@ module.exports = async (client, message) => {
      },
     });
    } else {
+    client.command_count++;
     command.run(client, message, args);
     Timeout.set(key, Date.now());
     setTimeout(() => {

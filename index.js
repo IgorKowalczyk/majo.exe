@@ -1,4 +1,5 @@
 const Discord = require("discord.js");
+require("dotenv").config();
 const client = new Discord.Client({
  disableEveryone: true,
  allowedMentions: {
@@ -9,41 +10,42 @@ const client = new Discord.Client({
  },
 });
 const chalk = require("chalk");
-const gradient = require("gradient-string");
 const { GiveawaysManager } = require("discord-giveaways");
 const logs = require("discord-logs");
-logs(client);
-require("dotenv").config();
-require("./utilities/inline_reply");
-require("discord-buttons")(client);
 const sql = require("./utilities/database");
 const emojis = require("./emojis_config");
+const config = require("./config");
+let command_count = 0;
+let message_count = 0;
+client.config = config;
 client.bot_emojis = emojis;
+client.message_count = message_count;
+client.command_count = command_count;
+logs(client);
+require("./utilities/inline_reply");
+require("discord-buttons")(client);
 
-/* Logging system db config */
 sql.query("CREATE TABLE IF NOT EXISTS `logs` (`guildid` VARCHAR(32) NOT NULL, `channelid` VARCHAR(32) NOT NULL, UNIQUE(`guildid`));", function (error, results, fields) {
  if (error) throw new Error(error);
  console.log(chalk.bold(chalk.blue.bold("[SQL]")) + chalk.cyan.bold(" Fetched table `logs`! Status: Success"));
 });
-/* ---- */
-
-/* Welcome, leave and reputation db config */
-/* = Welcome message = */
 sql.query("CREATE TABLE IF NOT EXISTS `welcome` (`guildid` VARCHAR(32) NOT NULL, `channelid` VARCHAR(32) NOT NULL, UNIQUE(`guildid`));", function (error) {
  if (error) throw new Error(error);
  console.log(chalk.bold(chalk.blue.bold("[SQL]")) + chalk.cyan.bold(" Fetched table `welcome`! Status: Success"));
 });
-/* = Reputation = */
 sql.query("CREATE TABLE IF NOT EXISTS `reputation` (`memberid` VARCHAR(32) NOT NULL, `rep` BIGINT NOT NULL, UNIQUE(`memberid`));", function (error) {
  if (error) throw new Error(error);
  console.log(chalk.bold(chalk.blue.bold("[SQL]")) + chalk.cyan.bold(" Fetched table `reputation`! Status: Success"));
 });
-/* = Leave message = */
 sql.query("CREATE TABLE IF NOT EXISTS `leave` (`guildid` VARCHAR(32) NOT NULL, `channelid` VARCHAR(32) NOT NULL, UNIQUE(`guildid`));", function (error) {
  if (error) throw new Error(error);
  console.log(chalk.bold(chalk.blue.bold("[SQL]")) + chalk.cyan.bold(" Fetched table `leave`! Status: Success"));
 });
-/* ---- */
+sql.query("CREATE TABLE IF NOT EXISTS `stats` (`messages` BIGINT NOT NULL, `commands` BIGINT NOT NULL);", function (error) {
+ if (error) throw new Error(error);
+ console.log(chalk.bold(chalk.blue.bold("[SQL]")) + chalk.cyan.bold(" Fetched table `stats`! Status: Success"));
+});
+
 
 /* Giveaways db config */
 sql.query("CREATE TABLE IF NOT EXISTS `giveaways` (`id` INT(1) NOT NULL AUTO_INCREMENT, `message_id` VARCHAR(64) NOT NULL, `data` JSON NOT NULL, PRIMARY KEY (`id`));", (err) => {
@@ -94,6 +96,44 @@ const Giveaways = class extends GiveawaysManager {
  }
 };
 /* ---- */
+
+/* Stats */
+setInterval(() => {
+ const total_messages_sql = "SELECT messages AS res FROM `stats`";
+ sql.query(total_messages_sql, function (error, results, fields) {
+  if (error) return console.log(error);
+  if (results[0]) {
+   const update = `UPDATE stats SET messages = ${results[0] + client.message_count}`;
+   sql.query(update, function (error, results, fields) {
+    if(error) return console.log(error);
+    if(client.config.advanved_logging == true) console.log("Client total messages stats updated!");
+   })
+  } else {
+   const update = "INSERT INTO `stats` (`messages`) VALUES (" + client.message_count + ")";
+   sql.query(update, function (error, results, fields) {
+    if(error) return console.log(error);
+    if(client.config.advanved_logging == true) console.log("Client total messages stats added!");
+   })
+  }
+ });
+ const total_commands_sql = "SELECT commands AS res FROM `stats`";
+ sql.query(total_commands_sql, function (error, results, fields) {
+  if (error) return console.log(error);
+  if (results[0]) {
+   const update = `UPDATE stats SET commands = ${results[0] + client.command_count}`;
+   sql.query(update, function (error, results, fields) {
+    if(error) return console.log(error);
+    if(client.config.advanved_logging == true) console.log("Client total messages stats updated!");
+   })
+  } else {
+   const update = "INSERT INTO `stats` (`commands`) VALUES (" + client.command_count + ")";
+   sql.query(update, function (error, results, fields) {
+    if(error) return console.log(error);
+    if(client.config.advanved_logging == true) console.log("Client total messages stats added!");
+   })
+  }
+ });
+}, 10000);
 
 /* Login and Commands */
 if (process.env.TOKEN) {
