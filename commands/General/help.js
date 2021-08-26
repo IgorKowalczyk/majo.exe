@@ -64,7 +64,7 @@ module.exports = {
      embed.addField(`${icon} ${id} (${category.size})`, "> " + category.map((cmd) => `${cmd.name}`).join(", "));
     }
     // Disabled module
-    embed.addField(`${client.bot_emojis.music} ~~Music~~ (12)`, "> ~~filter, lyrics, nowplaying, pause, play, queue, resume, search, shuffle, skip, stop, volume~~")
+    embed.addField(`${client.bot_emojis.music} ~~Music~~ (12)`, "**Note:** The music module is disabled due to a large amount of bugs. We are already working on a new version\n> ~~filter, lyrics, nowplaying, pause, play, queue, resume, search, shuffle, skip, stop, volume~~")
     const owner = [...new Set(client.commands.filter((cmd) => `${cmd.category}` == "Owner").map((cmd) => cmd.name))];
     if (message.author.id == config.owner_id) {
      embed.addField(`${client.bot_emojis.owner_crown} Owner`, "**Note:** *Only the bot owner (<@" + config.owner_id + ">) can see and use the commands below!*\n> " + owner.join(", "));
