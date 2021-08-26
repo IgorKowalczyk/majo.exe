@@ -15,7 +15,7 @@ module.exports = {
     return message.lineReply({
      embed: {
       color: 16734039,
-      description: "<:error:860884617770303519> | You should join a voice channel before using this command!",
+      description: `${client.bot_emojis.error} | You should join a voice channel before using this command!`,
      },
     });
    }
@@ -32,7 +32,7 @@ module.exports = {
     return message.lineReply({
      embed: {
       color: 4779354,
-      description: "<:error:860884617770303519> | You can't set volume higher than 10 (Your ears.. 🪦)",
+      description: `${client.bot_emojis.error} | You can't set volume higher than 10 (Your ears.. 🪦)`,
      },
     });
    }
@@ -40,7 +40,7 @@ module.exports = {
     return message.lineReply({
      embed: {
       color: 4779354,
-      description: "<:error:860884617770303519> | You must enter correct value. I only accept numbers from 1 to 10!",
+      description: `${client.bot_emojis.error} | You must enter correct value. I only accept numbers from 1 to 10!`,
      },
     });
    }

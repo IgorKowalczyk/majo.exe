@@ -15,7 +15,7 @@ module.exports = {
     return message.lineReply({
      embed: {
       color: 16734039,
-      description: "<:error:860884617770303519> | This is nothing playing right now",
+      description: `${client.bot_emojis.error} | This is nothing playing right now`,
      },
     });
    }
@@ -23,7 +23,7 @@ module.exports = {
     return message.lineReply({
      embed: {
       color: 16734039,
-      description: "<:error:860884617770303519> | Please join a voice channel first",
+      description: `${client.bot_emojis.error} | Please join a voice channel first`,
      },
     });
    }
@@ -31,7 +31,7 @@ module.exports = {
     return message.lineReply({
      embed: {
       color: 16734039,
-      description: "<:error:860884617770303519> | You must be in the same voice channel as me",
+      description: `${client.bot_emojis.error} | You must be in the same voice channel as me`,
      },
     });
    }

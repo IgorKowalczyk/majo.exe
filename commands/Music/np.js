@@ -15,7 +15,7 @@ module.exports = {
     return message.lineReply({
      embed: {
       color: 16734039,
-      description: "<:error:860884617770303519> | This is nothing playing right now",
+      description: `${client.bot_emojis.error} | This is nothing playing right now`,
      },
     });
    }
@@ -53,7 +53,7 @@ module.exports = {
     return message.lineReply(nowPlaying);
    }
    if (ms > 0 && ms < 10000) {
-    nowPlaying.addField("\u200b", "**[" + progressbar.filledBar(ms == 0 ? seek : ms, seek, 25, "<:bar2:838757737596190782>", "<:bar:838757737327755335>")[0] + "]**\n**" + "[" + new Date(seek * 1000).toISOString().substr(11, 8) + " / " + (ms == 0 ? " ◉ LIVE" : new Date(ms * 1000).toISOString().substr(11, 8)) + "]**" + "\n" + "**Time Remaining:** " + "``" + new Date(left * 1000).toISOString().substr(11, 8) + "``", false);
+    nowPlaying.addField("\u200b", "**[" + progressbar.filledBar(ms == 0 ? seek : ms, seek, 25, `${client.bot_emojis.emoji_bar_1}`, ``${client.bot_emojis.emoji_bar_2}`)[0] + "]**\n**" + "[" + new Date(seek * 1000).toISOString().substr(11, 8) + " / " + (ms == 0 ? " ◉ LIVE" : new Date(ms * 1000).toISOString().substr(11, 8)) + "]**" + "\n" + "**Time Remaining:** " + "``" + new Date(left * 1000).toISOString().substr(11, 8) + "``", false);
     return message.lineReply(nowPlaying);
    }
   } catch (err) {

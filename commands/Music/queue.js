@@ -14,7 +14,7 @@ module.exports = {
     return message.lineReply({
      embed: {
       color: 16734039,
-      description: "<:error:860884617770303519> | This is nothing playing right now",
+      description: `${client.bot_emojis.error} | This is nothing playing right now`,
      },
     });
    }

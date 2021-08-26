@@ -15,7 +15,7 @@ module.exports = {
     return message.lineReply({
      embed: {
       color: 16734039,
-      description: "<:error:860884617770303519> | You should join a voice channel before using this command!",
+      description: `${client.bot_emojis.error} | You should join a voice channel before using this command!`,
      },
     });
    }
@@ -24,7 +24,7 @@ module.exports = {
     return message.lineReply({
      embed: {
       color: 16734039,
-      description: "<:error:860884617770303519> | There is nothing playing right now to resume!",
+      description: `${client.bot_emojis.error} | There is nothing playing right now to resume!`,
      },
     });
    }
@@ -41,7 +41,7 @@ module.exports = {
      message.lineReply({
       embed: {
        color: 16734039,
-       description: "<:error:860884617770303519> | Cannot resume the music!",
+       description: `${client.bot_emojis.error} | Cannot resume the music!`,
       },
      });
     }
