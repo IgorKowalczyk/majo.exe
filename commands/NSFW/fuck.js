@@ -15,7 +15,7 @@ module.exports = {
      return message.lineReply({
       embed: {
        color: 16734039,
-       description: "<:error:860884617770303519> | You must mention someone to fuck!",
+       description: `${client.bot_emojis.error} | You must mention someone to fuck!`,
       },
      });
     }

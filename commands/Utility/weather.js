@@ -13,7 +13,7 @@ module.exports = {
     return message.lineReply({
      embed: {
       color: 16734039,
-      description: "<:error:860884617770303519> | Please specify a location",
+      description: `${client.bot_emojis.success} | Please specify a location`,
      },
     });
    }
@@ -27,7 +27,7 @@ module.exports = {
       return message.lineReply({
        embed: {
         color: 16734039,
-        description: "<:error:860884617770303519> | Something went wrong... :cry:",
+        description: `${client.bot_emojis.success} | Something went wrong... :cry:`,
        },
       });
      }
@@ -35,7 +35,7 @@ module.exports = {
       return message.lineReply({
        embed: {
         color: 16734039,
-        description: "<:error:860884617770303519> | Invaild location!",
+        description: `${client.bot_emojis.success} | Invaild location!`,
        },
       });
      }

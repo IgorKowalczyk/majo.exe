@@ -20,7 +20,7 @@ module.exports = {
     return message.lineReply({
      embed: {
       color: 16734039,
-      description: "<:error:860884617770303519> | You must mention vaild member!",
+      description: `${client.bot_emojis.error} | You must mention vaild member!`,
      },
     });
    }
@@ -30,7 +30,7 @@ module.exports = {
      return message.lineReply({
       embed: {
        color: 16734039,
-       description: `<:error:860884617770303519> | You can't assign reputation to yourself!`,
+       description: `${client.bot_emojis.error} | You can't assign reputation to yourself!`,
       },
      });
     }
@@ -42,7 +42,7 @@ module.exports = {
      return message.lineReply({
       embed: {
        color: 16734039,
-       description: ` <:error:860884617770303519> | ${message.author} You have to wait \`${ms(timeLeft)}\` before you can add reputaton again!`,
+       description: ` ${client.bot_emojis.error} | ${message.author} You have to wait \`${ms(timeLeft)}\` before you can add reputaton again!`,
       },
      });
     }
@@ -57,7 +57,7 @@ module.exports = {
        message.lineReply({
         embed: {
          color: 4779354,
-         description: `<:success:860884617820110909> | Success! Reputation added! ${member} now has \`${sum}\` reputation points!`,
+         description: `${client.bot_emojis.success} | Success! Reputation added! ${member} now has \`${sum}\` reputation points!`,
         },
        });
       });
@@ -68,7 +68,7 @@ module.exports = {
        message.lineReply({
         embed: {
          color: 4779354,
-         description: `<:success:860884617820110909> | Success! Reputation added! ${member} now has \`1\` reputation points!`,
+         description: `${client.bot_emojis.success} | Success! Reputation added! ${member} now has \`1\` reputation points!`,
         },
        });
       });
@@ -84,7 +84,7 @@ module.exports = {
      return message.lineReply({
       embed: {
        color: 16734039,
-       description: `<:error:860884617770303519> | You can't assign reputation to yourself!`,
+       description: `${client.bot_emojis.error} | You can't assign reputation to yourself!`,
       },
      });
     }
@@ -96,7 +96,7 @@ module.exports = {
      return message.lineReply({
       embed: {
        color: 16734039,
-       description: ` <:error:860884617770303519> | ${message.author} You have to wait \`${ms(timeLeft)}\` before you can remove reputaton again!`,
+       description: ` ${client.bot_emojis.error} | ${message.author} You have to wait \`${ms(timeLeft)}\` before you can remove reputaton again!`,
       },
      });
     }
@@ -111,7 +111,7 @@ module.exports = {
        message.lineReply({
         embed: {
          color: 4779354,
-         description: `<:success:860884617820110909> | Success! Reputation removed! ${member} now has \`${sum}\` reputation points!`,
+         description: `${client.bot_emojis.success} | Success! Reputation removed! ${member} now has \`${sum}\` reputation points!`,
         },
        });
       });
@@ -122,7 +122,7 @@ module.exports = {
        message.lineReply({
         embed: {
          color: 4779354,
-         description: `<:success:860884617820110909> | Success! Reputation removed! ${member} now has \`-1\` reputation points!`,
+         description: `${client.bot_emojis.success} | Success! Reputation removed! ${member} now has \`-1\` reputation points!`,
         },
        });
       });

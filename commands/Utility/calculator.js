@@ -2,7 +2,7 @@ const Discord = require("discord.js");
 
 module.exports = {
  name: "calculator",
- aliases: ["math", "calc"],
+ aliases: ["math", "calc", "calculate"],
  description: "Calculator",
  category: "Utility",
  usage: "calculator [math task]",
@@ -14,7 +14,7 @@ module.exports = {
      return message.lineReply({
       embed: {
        color: 16734039,
-       description: "<:error:860884617770303519> | You must provide a equation to be solved on the calculator! (eg. `9 + 10`)",
+       description: `${client.bot_emojis.error} | You must provide a equation to be solved on the calculator! (eg. \`9 + 10\`)`,
       },
      });
     }

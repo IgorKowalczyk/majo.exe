@@ -16,7 +16,7 @@ module.exports = {
     return message.lineReply({
      embed: {
       color: 16734039,
-      description: "<:error:860884617770303519> | Please enter a term to search!",
+      description: `${client.bot_emojis.error} | Please enter a term to search!`,
      },
     });
    const res = await fetch(`https://djsdocs.sorta.moe/v2/embed?src=${version}&q=${query}`);
@@ -29,7 +29,7 @@ module.exports = {
      message.lineReply({
       embed: {
        color: 16734039,
-       description: "<:error:860884617770303519> | Invaild query!",
+       description: `${client.bot_emojis.error} | Invaild query!`,
       },
      });
     });

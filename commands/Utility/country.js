@@ -14,7 +14,7 @@ module.exports = {
     return message.lineReply({
      embed: {
       color: 16734039,
-      description: "<:error:860884617770303519> | Please provide a country name!",
+      description: `${client.bot_emojis.error} | Please provide a country name!`,
      },
     });
    }
@@ -26,7 +26,7 @@ module.exports = {
     return message.lineReply({
      embed: {
       color: 16734039,
-      description: "<:error:860884617770303519> | An error occured, please try again!",
+      description: `${client.bot_emojis.error} | An error occured, please try again!`,
      },
     });
    }
@@ -35,7 +35,7 @@ module.exports = {
     return message.lineReply({
      embed: {
       color: 16734039,
-      description: "<:error:860884617770303519> | Please provide a country name!",
+      description: `${client.bot_emojis.error} | Please provide a country name!`,
      },
     });
    }

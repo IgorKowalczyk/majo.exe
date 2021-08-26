@@ -14,7 +14,7 @@ module.exports = {
     return message.lineReply({
      embed: {
       color: 16734039,
-      description: "<:error:860884617770303519> | You do not have permission to run this command (Only owner of the bot can run this)!",
+      description: `${client.bot_emojis.error} | You do not have permission to run this command (Only owner of the bot can run this)!`,
      },
     });
    }
@@ -23,7 +23,7 @@ module.exports = {
     return message.lineReply({
      embed: {
       color: 16734039,
-      description: "<:error:860884617770303519> | Please input some string!",
+      description: `${client.bot_emojis.error} | Please input some string!`,
      },
     });
    }
