@@ -1,54 +1,83 @@
-<%- include("partials/head", { bot, user, path, description, title: "Status", twitter, url, image }) %>
-<div class="container">
-<% function capitalize(string) {
- return string.charAt(0).toUpperCase() + string.slice(1);
-} %>
-<h1 class="headerinfo"><%= capitalize(bot.user.username) %> in numbers</h1>
-<div class="boxes">
-<div class="box box1">
-<div class="boxcontainter">
-<h3 class="boxheader"><%= bot.guilds.cache.size %></h3>
-<p class="heading">Guilds</p>
-</div>                                   
-</div>
-<div class="box box2">
-<div class="boxcontainter">
-<h3 class="boxheader"><%= bot.channels.cache.size %></h3>
-<p class="heading">Total Channels</p>
-</div>
-</div>
-<div class="box box3">
-<div class="boxcontainter">
-<h3 class="boxheader"><%= bot.guilds.cache.reduce((a, g) => a + g.memberCount, 0) %></h3>
-<p class="heading">Total members</p>
-</div>
-</div>
-<div class="box box4">
-<div class="boxcontainter">
-<h3 class="boxheader" title="[!] This is Discord API ping, not actual bot ping"><%= Math.round(bot.ws.ping) %>ms</h3>
-<p class="heading">Ping</p>
-</div>
-</div>
-</div>
-<!-- <a class="button reload" href="#" onclick="window.location.reload(true);"><span class="reload-container"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#FFFFFF" style="margin-left: 0;margin-right: 5px;"><path d="M0 0h24v24H0z" fill="none"></path><path d="M17.65 6.35C16.2 4.9 14.21 4 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08c-.82 2.33-3.04 4-5.65 4-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z"></path></svg> Refresh</span></a> -->
+<%- include("partials/head", { bot, user, path, description, title: "Status" , twitter, url, image }) %>
+ <div class="container">
+  <% function capitalize(string) { return string.charAt(0).toUpperCase() + string.slice(1); } %>
+   <h1 class="headerinfo">
+    <%= capitalize(bot.user.username) %> in numbers
+   </h1>
+   <div class="boxes">
+    <div class="box box1">
+     <div class="boxcontainter">
+      <h3 class="boxheader">
+       <%= bot.guilds.cache.size %>
+      </h3>
+      <p class="heading">Guilds</p>
+     </div>
+    </div>
+    <div class="box box2">
+     <div class="boxcontainter">
+      <h3 class="boxheader">
+       <%= bot.channels.cache.size %>
+      </h3>
+      <p class="heading">Total Channels</p>
+     </div>
+    </div>
+    <div class="box box3">
+     <div class="boxcontainter">
+      <h3 class="boxheader">
+       <%= bot.guilds.cache.reduce((a, g)=> a + g.memberCount, 0) %>
+      </h3>
+      <p class="heading">Total members</p>
+     </div>
+    </div>
+    <div class="box box4">
+     <div class="boxcontainter">
+      <h3 class="boxheader" title="[!] This is Discord API ping, not actual bot ping">
+       <%= Math.round(bot.ws.ping) %>ms
+      </h3>
+      <p class="heading">Ping</p>
+     </div>
+    </div>
+    <div class="box box1">
+     <div class="boxcontainter">
+      <h3 class="boxheader" title="[!] Approximate amout">
+       Soon!
+      </h3>
+      <p class="heading">Total messages Send</p>
+     </div>
+    </div>
+    <div class="box box2">
+     <div class="boxcontainter">
+      <h3 class="boxheader" title="[!] Approximate amout">
+       Soon!
+      </h3>
+      <p class="heading">Total commands sent</p>
+     </div>
+    </div>
+   </div>
+   <!-- <a class="button reload" href="#" onclick="window.location.reload(true);"><span class="reload-container"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#FFFFFF" style="margin-left: 0;margin-right: 5px;"><path d="M0 0h24v24H0z" fill="none"></path><path d="M17.65 6.35C16.2 4.9 14.21 4 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08c-.82 2.33-3.04 4-5.65 4-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z"></path></svg> Refresh</span></a> -->
 
-<hr>
+   <hr>
 
-<h1 class="headerinfo">Uptime</h1>
-<% totalSeconds = (bot.uptime / 1000);
-days = Math.floor(totalSeconds / 86400);
-totalSeconds %= 86400;
-hours = Math.floor(totalSeconds / 3600);
-totalSeconds %= 3600;
-minutes = Math.floor(totalSeconds / 60) 
-seconds = Math.floor(totalSeconds % 60); %>
+   <h1 class="headerinfo">Uptime</h1>
+   <% totalSeconds=(bot.uptime / 1000); days=Math.floor(totalSeconds / 86400); totalSeconds %=86400;
+    hours=Math.floor(totalSeconds / 3600); totalSeconds %=3600; minutes=Math.floor(totalSeconds / 60)
+    seconds=Math.floor(totalSeconds % 60); %>
 
-<p class="uptime"><%= days %> Days, <%= hours %> hours, <%= minutes %> minutes, <%= seconds %> seconds</p>
+    <p class="uptime">
+     <%= days %> Days, <%= hours %> hours, <%= minutes %> minutes, <%= seconds %> seconds
+    </p>
 
-<% if (config.status) { %>
-<hr>
-<h1 class="headerinfo">Status</h1>
-<iframe src="<%= config.status %>/embed-status/dark-sm" width="230" height="61" frameborder="0" scrolling="no" style="border: none;margin: 0 auto;display: block;margin-bottom: 20px;"></iframe>
-<a class="edit button status reload" href="<%= config.status %>"><span class="reload-container"><svg xmlns="http://www.w3.org/2000/svg" style="margin-left: 0;margin-right: 5px;" height="24px" viewBox="0 0 24 24" width="24px" fill="#FFFFFF"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M19 15v4H5v-4h14m1-2H4c-.55 0-1 .45-1 1v6c0 .55.45 1 1 1h16c.55 0 1-.45 1-1v-6c0-.55-.45-1-1-1zM7 18.5c-.82 0-1.5-.67-1.5-1.5s.68-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zM19 5v4H5V5h14m1-2H4c-.55 0-1 .45-1 1v6c0 .55.45 1 1 1h16c.55 0 1-.45 1-1V4c0-.55-.45-1-1-1zM7 8.5c-.82 0-1.5-.67-1.5-1.5S6.18 5.5 7 5.5s1.5.68 1.5 1.5S7.83 8.5 7 8.5z"/></svg>Check server's status</span></a>
-<% } %>
-<%- include("partials/footer") %>
+    <% if (config.status) { %>
+     <hr>
+     <h1 class="headerinfo">Status</h1>
+     <iframe src="<%= config.status %>/embed-status/dark-sm" width="230" height="61" frameborder="0" scrolling="no"
+      style="border: none;margin: 0 auto;display: block;margin-bottom: 20px;"></iframe>
+     <a class="edit button status reload" href="<%= config.status %>"><span class="reload-container"><svg
+        xmlns="http://www.w3.org/2000/svg" style="margin-left: 0;margin-right: 5px;" height="24px" viewBox="0 0 24 24"
+        width="24px" fill="#FFFFFF">
+        <path d="M0 0h24v24H0V0z" fill="none" />
+        <path
+         d="M19 15v4H5v-4h14m1-2H4c-.55 0-1 .45-1 1v6c0 .55.45 1 1 1h16c.55 0 1-.45 1-1v-6c0-.55-.45-1-1-1zM7 18.5c-.82 0-1.5-.67-1.5-1.5s.68-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zM19 5v4H5V5h14m1-2H4c-.55 0-1 .45-1 1v6c0 .55.45 1 1 1h16c.55 0 1-.45 1-1V4c0-.55-.45-1-1-1zM7 8.5c-.82 0-1.5-.67-1.5-1.5S6.18 5.5 7 5.5s1.5.68 1.5 1.5S7.83 8.5 7 8.5z" />
+       </svg>Check server's status</span></a>
+     <% } %>
+      <%- include("partials/footer") %>
