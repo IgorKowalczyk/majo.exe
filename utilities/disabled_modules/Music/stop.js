@@ -3,11 +3,11 @@ const Discord = require("discord.js");
 /* Music module by Dhvit (@dhvitOP). Thanks ❤️ */
 
 module.exports = {
- name: "volume",
- aliases: [],
- description: "Control the sound volume",
+ name: "stop",
+ aliases: ["pause"],
+ description: "Stop the music",
  category: "Music",
- usage: "volume <number>",
+ usage: "stop",
  run: async (client, message, args) => {
   try {
    const channel = message.member.voice.channel;
@@ -20,38 +20,31 @@ module.exports = {
     });
    }
    let queue = message.client.queue.get(message.guild.id);
-   if (!args[0]) {
+   if (!queue) {
     return message.lineReply({
      embed: {
-      color: 4779354,
-      description: "🔉 | The current volume is set to: " + queue.volume,
+      color: 16734039,
+      description: `${client.bot_emojis.error} | There is nothing in the queue right now!`,
      },
     });
    }
-   if (args[0] > 10) {
-    return message.lineReply({
+   if (queue.connection.dispatcher) {
+    queue.songs = [];
+    queue.connection.dispatcher.end();
+    message.lineReply({
      embed: {
       color: 4779354,
-      description: `${client.bot_emojis.error} | You can't set volume higher than 10 (Your ears.. 🪦)`,
+      description: `${client.bot_emojis.pause} | Stopped the music`,
+     },
+    });
+   } else {
+    message.lineReply({
+     embed: {
+      color: 16734039,
+      description: `${client.bot_emojis.error} | Cannot stop the music`,
      },
     });
    }
-   if (args[0].includes("-") || isNaN(args[0]) || args[0] == 0) {
-    return message.lineReply({
-     embed: {
-      color: 4779354,
-      description: `${client.bot_emojis.error} | You must enter correct value. I only accept numbers from 1 to 10!`,
-     },
-    });
-   }
-   queue.connection.dispatcher.setVolumeLogarithmic(args[0] / 5);
-   queue.volume = args[0];
-   return message.lineReply({
-    embed: {
-     color: 4779354,
-     description: "🔉 | Volume is now set to " + args[0],
-    },
-   });
   } catch (err) {
    console.log(err);
    message.lineReply({

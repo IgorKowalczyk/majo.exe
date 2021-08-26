@@ -27,7 +27,7 @@ module.exports = {
    }
    const queueembed = new Discord.MessageEmbed() // Prettier
     .setTitle(
-     "💿 Music Queue",
+     `${client.bot_emojis.optical_disk} Music Queue`,
      message.author.displayAvatarURL({
       dynamic: true,
       format: "png",

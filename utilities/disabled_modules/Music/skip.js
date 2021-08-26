@@ -3,11 +3,11 @@ const Discord = require("discord.js");
 /* Music module by Dhvit (@dhvitOP). Thanks ❤️ */
 
 module.exports = {
- name: "shuffle",
+ name: "skip",
  aliases: [],
- description: "Shuffle the current queue",
+ description: "Skip the music",
  category: "Music",
- usage: "shuffle",
+ usage: "skip",
  run: async (client, message, args) => {
   try {
    const channel = message.member.voice.channel;
@@ -19,7 +19,7 @@ module.exports = {
      },
     });
    }
-   const queue = message.client.queue.get(message.guild.id);
+   let queue = message.client.queue.get(message.guild.id);
    if (!queue) {
     return message.lineReply({
      embed: {
@@ -28,19 +28,24 @@ module.exports = {
      },
     });
    }
-   let songs = queue.songs;
-   for (let i = songs.length - 1; i > 1; i--) {
-    let j = 1 + Math.floor(Math.random() * i);
-    [songs[i], songs[j]] = [songs[j], songs[i]];
+   if (queue.songs.length !== 0) {
+    if (queue.connection.dispatcher) {
+     queue.connection.dispatcher.end();
+     message.lineReply({
+      embed: {
+       color: 4779354,
+       description: `${client.bot_emojis.skip} | Skipped the music`,
+      },
+     });
+    } else {
+     message.lineReply({
+      embed: {
+       color: 16734039,
+       description: `${client.bot_emojis.error} | Error, cannot skip music!`,
+      },
+     });
+    }
    }
-   queue.songs = songs;
-   message.client.queue.set(message.guild.id, queue);
-   message.lineReply({
-    embed: {
-     color: 4779354,
-     description: "🔀 | Shuffled the current queue",
-    },
-   });
   } catch (err) {
    console.log(err);
    message.lineReply({

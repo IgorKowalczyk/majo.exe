@@ -27,7 +27,7 @@ module.exports = {
     if (!lyrics) lyrics = `No lyrics found for ${song}`;
     let embed = new Discord.MessageEmbed() // Prettier
      .setAuthor(
-      `📑 Lyrics for ${songfetch.fullTitle}`,
+      `${client.bot_emojis.lyrics} Lyrics for ${songfetch.fullTitle}`,
       message.author.displayAvatarURL({
        dynamic: true,
        format: "png",
@@ -53,7 +53,7 @@ module.exports = {
     return message.lineReply({
      embed: {
       color: 16734039,
-      description: "<:error:860884617770303519> | Cannot fetch song!",
+      description: `${client.bot_emojis.error} | Cannot fetch song!`,
      },
     });
    }

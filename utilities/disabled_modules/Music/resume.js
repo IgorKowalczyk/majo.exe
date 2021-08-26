@@ -3,11 +3,11 @@ const Discord = require("discord.js");
 /* Music module by Dhvit (@dhvitOP). Thanks ❤️ */
 
 module.exports = {
- name: "stop",
- aliases: [],
- description: "Stop the music",
+ name: "resume",
+ aliases: ["r"],
+ description: "Resume the music",
  category: "Music",
- usage: "stop",
+ usage: "resume",
  run: async (client, message, args) => {
   try {
    const channel = message.member.voice.channel;
@@ -24,26 +24,27 @@ module.exports = {
     return message.lineReply({
      embed: {
       color: 16734039,
-      description: `${client.bot_emojis.error} | There is nothing in the queue right now!`,
+      description: `${client.bot_emojis.error} | There is nothing playing right now to resume!`,
      },
     });
    }
-   if (queue.connection.dispatcher) {
-    queue.songs = [];
-    queue.connection.dispatcher.end();
-    message.lineReply({
-     embed: {
-      color: 4779354,
-      description: "⏸️ | Stopped the music",
-     },
-    });
-   } else {
-    message.lineReply({
-     embed: {
-      color: 16734039,
-      description: `${client.bot_emojis.error} | Cannot stop the music`,
-     },
-    });
+   if (queue.playing !== false) {
+    if (queue.connection.dispatcher) {
+     queue.connection.dispatcher.resume();
+     message.lineReply({
+      embed: {
+       color: 4779354,
+       description: `${client.bot_emojis.play} | Resumed the music`,
+      },
+     });
+    } else {
+     message.lineReply({
+      embed: {
+       color: 16734039,
+       description: `${client.bot_emojis.error} | Cannot resume the music!`,
+      },
+     });
+    }
    }
   } catch (err) {
    console.log(err);

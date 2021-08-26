@@ -104,4 +104,9 @@ module.exports = {
  bricks: "🧱",
  screw_that: "🔩",
  sign: "🪧",
+ lyrics: "📑",
+ pause: "⏸️",
+ play: "▶",
+ skip: "⏭️",
+ volume: "🔉",
 };
