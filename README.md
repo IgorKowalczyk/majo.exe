@@ -38,8 +38,8 @@ Deploy the app to [Heroku](https://heroku.com)
 1. Clone [this repository](https://github.com/igorkowalczyk/majobot) `git clone https://github.com/IgorKowalczyk/majobot.git`
 2. Run `npm install` to get all dependencies,
 3. Grab a Discord Bot token and client secret on [Discord's developer portal](https://discord.com/developers/applications) [Tutorial](#discord-token)
-4. Fill `config.js`, `emojis_config.js` with your values (Tip: See `/examples` dir for config examples!)
-5. Create new file named `.env` Remember - the file is super secret, better to not share it. (Tip: See `/examples` dir for example `.env` file!)
+4. Fill `config.js`, `emojis_config.js` with your values
+5. Create new file named `.env` Remember - the file is super secret, better to not share it.
 6. In `.env` file set this values:
     * **Required:**
     * `TOKEN` - Bot token from Discord Developer portal [no. 3]

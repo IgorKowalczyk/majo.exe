@@ -201,6 +201,13 @@ module.exports = async (client) => {
   });
  }
 
+ // Policy privacy page endpoint.
+ if (config.privacy_policy_page == true) {
+  app.get("/policy", (req, res) => {
+   renderTemplate(res, req, "policy.ejs");
+  });
+ }
+
  // Logout endpoint.
  app.get("/logout", function (req, res) {
   // We destroy the session || logout user.
