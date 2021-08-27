@@ -51,7 +51,7 @@
     };
     var onloadCallback = function () {
      grecaptcha.render("captcha", {
-      sitekey: "6LdxomAbAAAAACa_5IkStpLjoi4VsVhzs9Rnxx-W",
+      sitekey: <%= recaptcha %>,
       callback: verifyCallback,
       theme: "dark",
      });
@@ -66,7 +66,7 @@
     <p>You must be logged in to contact us!</p>
    </div>
    <div class="container-contact-form-btn">
-    <a href="https://majoexe.herokuapp.com/login" style="margin-left: 0" class="link-button green">Login</a>
+    <a href="https://<%= domain %>/login" style="margin-left: 0" class="link-button green">Login</a>
    </div>
    <% } %>
   </form>

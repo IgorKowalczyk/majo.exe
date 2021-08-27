@@ -61,8 +61,9 @@ Deploy the app to [Heroku](https://heroku.com)
     * `SESSION_SECRET`^ - Session secret key, random sequence of words, letterss or numbers
     * `SECRET`^ - Client secret from Discord Developers portal [no. 3]
     * `ANALYTICS` - Google Trakcing ID, for Website analytics [[Tutorial](#analytics-id)]
-    * `CONTACT_WEBHOOK_ID` - Your contact form webhook ID
-    * `CONTACT_WEBHOOK_TOKEN` - Your contact form webhook token
+    * `RECAPTCHA_KEY`^ - Google Recaptcha v2 site key
+    * `CONTACT_WEBHOOK_ID`^ - Your contact form webhook ID
+    * `CONTACT_WEBHOOK_TOKEN`^ - Your contact form webhook token
     * `STATUS_WEBHOOK_ID` - Your status webhook ID
     * `STATUS_WEBHOOK_TOKEN` - Your status webhook token
 7. Run `npm run start`
@@ -111,6 +112,7 @@ Deploy the app to [Heroku](https://heroku.com)
 | SESSION_SECRET | Random sequence of words, letterss or numbers`*` | :x:/:heavy_check_mark: |
 | SECRET | The bot client secret (Remember! The `SECRET` value is Super-Secret)`*` | :x:/:heavy_check_mark: |
 | ANALYTICS | Google analytics tracking ID, used in Web-Dashboard`*` | :x: |
+| RECAPTCHA_KEY | Google recaptcha v2 key`*` | :x:/:heavy_check_mark: |
 | COOKIES | Your youtube cookies | :heavy_check_mark: |
 | CONTACT_WEBHOOK_ID | Your contact form webhook ID | :x: |
 | CONTACT_WEBHOOK_TOKEN | Your contact form webhook token | :x: |
@@ -142,6 +144,8 @@ CONTACT_WEBHOOK_TOKEN=YOUR_CONTACT_FORM_WEBHOOK_TOKEN
 CONTACT_WEBHOOK_ID=YOUR_CONTACT_FORM_WEBHOOK_ID
 STATUS_WEBHOOK_TOKEN=YOUR_STATUS_WEBHOOK_TOKEN
 STATUS_WEBHOOK_ID=YOUR_STATUS_WEBHOOK_ID
+COOKIES=YOUR_YOUTUBE_COOKIES
+RECAPTCHA_KEY=YOUR_RECAPTCHA_KEY
 
 # Not required
 DASHBOARD=[true/false]
@@ -150,8 +154,6 @@ PORT=YOUR_WEBSITE_PORT
 SESSION_SECRET=YOUR_SESSION_SECRET_(RANDOM_WORDS)
 SECRET=YOUR_BOT_CLIENT_SECRET
 ANALYTICS=YOUR_GOOGLE_TRACKING_ID
-COOKIES=YOUR_YOUTUBE_COOKIES
-
 # Note: !majo is the default prefix, you can change it later.
 ```
 </details>

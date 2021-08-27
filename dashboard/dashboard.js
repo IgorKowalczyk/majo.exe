@@ -30,6 +30,7 @@ if (!process.env.ID) throw new Error("[HOST] You need to provide Discord Bot ID 
 if (!process.env.DOMAIN) throw new Error("[HOST] You need to provide Webiste domain in .env - DOMAIN=YOUR_WEBISTE_DOMAIN Note: Only website domain eg. https://example.com without slash at end!");
 if (!process.env.CONTACT_WEBHOOK_ID) throw new Error("[HOST] You need to provide Discord Contact Webhook ID in .env - CONTACT_WEBHOOK_ID=YOUR_WEBHOOK_ID");
 if (!process.env.CONTACT_WEBHOOK_TOKEN) throw new Error("[HOST] You need to provide Discord Contact Webhook Token in .env - CONTACT_WEBHOOK_TOKEN=YOUR_WEBHOOK_TOKEN");
+if (!process.env.RECAPTCHA_KEY) throw new Error("[HOST] You need to provide Google Recaptcha v2 Token in .env - RECAPTCHA_KEY=YOUR_RECAPTCHA_TOKEN");
 console.log(chalk.bold(chalk.blue.bold("[HOST]")) + chalk.cyan.bold(" Starting dashboard..."));
 
 module.exports = async (client) => {
@@ -105,6 +106,7 @@ module.exports = async (client) => {
    image: config.image,
    name: client.username,
    sql: sql,
+   recaptcha: process.env.RECAPTCHA_KEY,
    tag: client.tag,
    server: config.support_server,
    aurhor_website: config.author_website,
