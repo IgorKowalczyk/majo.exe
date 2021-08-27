@@ -51,7 +51,7 @@
     };
     var onloadCallback = function () {
      grecaptcha.render("captcha", {
-      sitekey: <%= recaptcha %>,
+      sitekey: "<%= recaptcha %>",
       callback: verifyCallback,
       theme: "dark",
      });
