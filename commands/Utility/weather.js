@@ -43,7 +43,7 @@ module.exports = {
      const location = result[0].location;
      const weatherinfo = new Discord.MessageEmbed() // Prettier
       .setTitle(
-       `🌤️ Weather forecast for ${current.observationpoint}`,
+       `${client.bot_emojis.weather} Weather forecast for ${current.observationpoint}`,
        message.guild.iconURL({
         dynamic: true,
         format: "png",
@@ -52,12 +52,12 @@ module.exports = {
       .setThumbnail(current.imageUrl)
       .setColor("RANDOM")
       .setDescription(`**${current.skytext}**`)
-      .addField("🌡️ Temperature", `${current.temperature}°`)
-      .addField("🥵 Feels like", `${current.feelslike}°`)
-      .addField("🌪️ Wind", current.winddisplay, true)
-      .addField("💦 Humidity", `${current.humidity}%`)
-      .addField("📏 Degree Type", "Celsius")
-      .addField("⏱️ Timezone", `UTC${location.timezone}`)
+      .addField(`${client.bot_emojis.temperature} Temperature`, `${current.temperature}°`)
+      .addField(`${client.bot_emojis.hot} Feels like`, `${current.feelslike}°`)
+      .addField(`${client.bot_emojis.tornado} Wind`, current.winddisplay, true)
+      .addField(`${client.bot_emojis.humidity} Humidity `, `${current.humidity}%`)
+      .addField(`${client.bot_emojis.ruler} Degree Type`, "Celsius")
+      .addField(`${client.bot_emojis.earth} Timezone`, `UTC${location.timezone}`)
       .setTimestamp()
       .setFooter(
        `Requested by ${message.author.username}`,

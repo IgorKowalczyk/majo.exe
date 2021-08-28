@@ -3,13 +3,13 @@ const Extra = require("discord-buttons");
 
 module.exports = {
  name: "guild-avatar",
- aliases: ["g-avatar"],
+ aliases: ["g-avatar", "guild-icon", "icon-guild", "guild-image", "guild-img", "guild-pfp"],
  description: "Get a guild avatar",
  category: "Utility",
  usage: "guild-avatar",
  run: async (client, message, args) => {
   try {
-   const gavatar = message.guild.iconURL({
+   const gicon = message.guild.iconURL({
     dynamic: true,
     format: "png",
     size: 2048,
@@ -17,12 +17,12 @@ module.exports = {
    const button = new Extra.MessageButton() // Prettier
     .setLabel("Avatar link")
     .setStyle("url")
-    .setURL(gavatar);
+    .setURL(gicon);
    const embed = new Discord.MessageEmbed() // Prettier
     .setColor("RANDOM")
-    .setDescription("🔗 [Icon link](" + gavatar + ")")
-    .setAuthor(message.guild.name + " Icon", gavatar)
-    .setImage(gavatar)
+    .setDescription(`${client.bot_emojis.link} [Icon link](${gicon})`)
+    .setAuthor(message.guild.name + " Icon", gicon)
+    .setImage(gicon)
     .setTimestamp()
     .setFooter(
      `Requested by ${message.author.username}`,

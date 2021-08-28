@@ -26,7 +26,7 @@ module.exports = {
  prefix: process.env.PREFIX,
  youtube: process.env.YOUTUBE,
  id: process.env.ID,
- advanved_logging: true,
+ advanved_logging: false,
 
  // Dashboard config
  domain: process.env.DOMAIN,

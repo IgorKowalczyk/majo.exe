@@ -36,9 +36,9 @@ module.exports = {
       size: 2048,
      })
     )
-    .setTitle(`✨ Base64 Encoder`)
-    .addField("📥 Text to encode", `\`\`\`${args.join(" ")}\`\`\``)
-    .addField("📤 Encoded text", `\`\`\`${base64 || "An unknown error ocurred while encoding!"}\`\`\``);
+    .setTitle(`${client.bot_emojis.sparkles} Base64 Encoder`)
+    .addField(`${client.bot_emojis.input} Text to encode`, `\`\`\`${args.join(" ")}\`\`\``)
+    .addField(`${client.bot_emojis.output} Encoded text`, `\`\`\`${base64 || "An unknown error ocurred while encoding!"}\`\`\``);
    message.lineReply(embed);
   } catch (err) {
    message.lineReply({

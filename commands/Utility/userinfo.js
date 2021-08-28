@@ -11,10 +11,10 @@ module.exports = {
   try {
    const user = message.mentions.members.first() || message.guild.members.cache.get(args[0]) || message.guild.members.cache.find((r) => r.user.username.toLowerCase().includes() === args.join(" ").toLocaleLowerCase()) || message.guild.members.cache.find((r) => r.displayName.toLowerCase().includes() === args.join(" ").toLocaleLowerCase()) || message.member;
    let stat = {
-    online: "<:online:844882507408211988>",
-    idle: "<:idle:844882507064410123>",
-    dnd: "<:dnd:844882506587176960>",
-    offline: "<:offline:844882504502870048>",
+    online: client.bot_emojis.status_online,
+    idle: client.bot_emojis.status_idle,
+    dnd: client.bot_emojis.status_dnd,
+    offline: client.bot_emojis.status_offline,
    };
    function capitalize(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
@@ -36,7 +36,7 @@ module.exports = {
      let zname = data[i].state || "None";
      let type = data[i].type;
      //array.push(capitalize(type.toLowerCase()) + `: \`${name} : ${xname} : ${zname}\``);
-     array.push(`🎮 ` + capitalize(type.toLowerCase()) + `: \`${name}\``);
+     array.push(`${client.bot_emojis.game_controller} ` + capitalize(type.toLowerCase()) + `: \`${name}\``);
      if (data[i].name === "Spotify") {
       embed.setThumbnail(`https://i.scdn.co/image/${data[i].assets.largeImage.replace("spotify:", "")}`);
      }
@@ -55,13 +55,13 @@ module.exports = {
      dynamic: true,
     })
    );
-   if (user.username) embed.addField("Nickname", user.username);
-   embed.addField("<:role:856182143734775808> ID", `\`${user.user.id}\``);
-   embed.addField("<:channel:856161806586085376> Discriminator", `\`#${user.user.discriminator}\``, true);
-   embed.addField("⏱️ Joined At", moment(user.user.joinedAt).format("LLLL"));
-   embed.addField("⏱️ Account Created At", moment(user.user.createdAt).format("LLLL"));
-   embed.addField("🗑️ Account Deleted?", user.deleted, true);
-   embed.addField("<a:badges_roll:842441895137640478> Badges", newbadges.join(", ").toLowerCase() || "None");
+   if (user.username) embed.addField("${client.bot_emojis.Nickname", user.username);
+   embed.addField(`${client.bot_emojis.role} ID`, `\`${user.user.id}\``);
+   embed.addField(`${client.bot_emojis.channel} Discriminator`, `\`#${user.user.discriminator}\``, true);
+   embed.addField(`${client.bot_emojis.stopwatch} Joined server at`, `\`${moment(user.user.joinedAt).format("LLLL")}\``);
+   embed.addField(`${client.bot_emojis.stopwatch} Account created at`, `\`${moment(user.user.createdAt).format("LLLL")}\``);
+   embed.addField(`${client.bot_emojis.wastebasket} Account Deleted?`, `\`${capitalize(user.deleted)}\``, true);
+   embed.addField(`${client.bot_emojis.discord_badges} Badges`, newbadges.join(", ").toLowerCase() || "None");
    embed.addField(`Status`, `${stat[user.user.presence.status]} ${capitalize(user.user.presence.status)}`);
    embed.setFooter(
     `Requested by ${message.author.username}`,

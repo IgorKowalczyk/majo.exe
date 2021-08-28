@@ -26,7 +26,7 @@ module.exports = {
     }
 
     const calc = new Discord.MessageEmbed() // Prettier
-     .setTitle("🔢 Calculator")
+     .setTitle(`${client.bot_emojis.counting} Calculator`)
      .setColor("RANDOM")
      .addField(`${client.bot_emojis.input} Question`, `\`\`\`${question}\`\`\``)
      .addField(`${client.bot_emojis.output} Answer`, `\`\`\`${answer}\`\`\``)

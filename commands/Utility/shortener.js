@@ -21,13 +21,13 @@ module.exports = {
    shorten.shorten(args[0], function (res) {
     const urldone = new Discord.MessageEmbed() // Prettier
      .setColor("RANDOM")
-     .setTitle("🔗 Your shortened URL")
-     .setDescription(`> **${res}**`);
+     .setTitle(`${client.bot_emojis.link} Your shortened URL`)
+     .setDescription(`> Link: **${res}**`);
     const url_button = new MessageButton() // Prettier
      .setStyle("url")
-     .setLabel(`go to ${res}`)
+     .setLabel(`Go to ${res}`)
      .setURL(`${res}`)
-     .setEmoji("🤖");
+     .setEmoji(client.bot_emojis.link);
     message.lineReply(urldone, url_button);
    });
   } catch (err) {

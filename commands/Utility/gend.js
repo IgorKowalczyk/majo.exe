@@ -32,7 +32,7 @@ module.exports = {
      return message.lineReply({
       embed: {
        color: 16734039,
-       description: "✨ | Success! Giveaway ended!",
+       description: `${client.bot_emojis.sparkles} | Success! Giveaway ended!`,
       },
      });
     })

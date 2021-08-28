@@ -23,7 +23,7 @@ module.exports = {
     .setColor("RANDOM")
     .setAuthor(User.user.username + "'s Avatar", uavatar)
     .setImage(uavatar)
-    .setDescription("🔗 [Avatar link](" + uavatar + ")")
+    .setDescription(`${client.bot_emojis.link} [Avatar link](${uavatar})`)
     .setTimestamp()
     .setFooter(
      `Requested by ${message.author.username}`,

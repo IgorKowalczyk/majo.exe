@@ -13,14 +13,14 @@ module.exports = {
     return message.lineReply({
      embed: {
       color: 16734039,
-      description: ":x: There is nothing to snipe :(",
+      description: `${client.bot_emojis.error} There is nothing to snipe!`,
      },
     });
    }
    const embed = new Discord.MessageEmbed() // Prettier
     .setAuthor(msg.author, msg.member.user.displayAvatarURL())
-    .setDescription("```" + msg.content + "```")
-    .setFooter(`Get sniped lmao! | Requested by ${message.author.username}`, message.author.displayAvatarURL())
+    .setDescription("```" + msg.content || "I can't download the message content. Sorry!"  + "```")
+    .setFooter(`Requested by ${message.author.username}`, message.author.displayAvatarURL())
     .setTimestamp()
     .setColor("RANDOM");
    message.lineReply(embed);

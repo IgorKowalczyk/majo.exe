@@ -44,13 +44,13 @@ module.exports = {
     .setTitle(data.name + " Information")
     .setThumbnail(`https://www.countryflags.io/${data.alpha2Code}/flat/64.png`)
     .setTimestamp()
-    .addField("🖊️ Native Name", `\`\`\`${data.nativeName}\`\`\``)
-    .addField("🏛️ Capital", `\`\`\`${data.capital ? data.capital : "None"}\`\`\``)
-    .addField("📍 Location", `\`\`\`${data.subregion ? data.subregion : data.region}\`\`\``)
-    .addField("💱 Currency", `\`\`\`${data.currencies[0].code} ${data.currencies[0].symbol}\`\`\``)
-    .addField("<:members:856161806606401556> Population", `\`\`\`${data.population.toLocaleString()}\`\`\``)
-    .addField("🌐 Area", `\`\`\`${data.area.toLocaleString()}km\`\`\``)
-    .addField("👅 Languages", `\`\`\`${data.languages.map((lang) => lang.name).join("/")}\`\`\``)
+    .addField(`${client.bot_emojis.pen} Native Name`, `\`\`\`${data.nativeName}\`\`\``)
+    .addField(`${client.bot_emojis.capital} Capital`, `\`\`\`${data.capital ? data.capital : "None"}\`\`\``)
+    .addField(`${client.bot_emojis.location} Location`, `\`\`\`${data.subregion ? data.subregion : data.region}\`\`\``)
+    .addField(`${client.bot_emojis.currency} Currency`, `\`\`\`${data.currencies[0].code} ${data.currencies[0].symbol}\`\`\``)
+    .addField(`${client.bot_emojis.member} Population`, `\`\`\`${data.population.toLocaleString()}\`\`\``)
+    .addField(`${client.bot_emojis.earth} Area`, `\`\`\`${data.area.toLocaleString()}km\`\`\``)
+    .addField(`${client.bot_emojis.tongue} Languages`, `\`\`\`${data.languages.map((lang) => lang.name).join("/")}\`\`\``)
     .setFooter(
      `Requested by ${message.author.username}`,
      message.author.displayAvatarURL({
