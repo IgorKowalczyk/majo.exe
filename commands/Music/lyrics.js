@@ -53,7 +53,7 @@ module.exports = {
     return message.lineReply({
      embed: {
       color: 16734039,
-      description: "<:error:860884617770303519> | Cannot fetch song!",
+      description: `${client.bot_emojis.error} | Cannot fetch song!`,
      },
     });
    }

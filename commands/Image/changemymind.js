@@ -13,7 +13,7 @@ module.exports = {
     return message.lineReply({
      embed: {
       color: 16734039,
-      description: "<:error:860884617770303519> | You must enter a text!",
+      description: `${client.bot_emojis.error} | You must enter a text!`,
      },
     });
    }
@@ -21,7 +21,7 @@ module.exports = {
     return message.lineReply({
      embed: {
       color: 16734039,
-      description: "<:error:860884617770303519> | Max lenght for the text is 20!",
+      description: `${client.bot_emojis.error} | Max lenght for the text is 20!`,
      },
     });
    }

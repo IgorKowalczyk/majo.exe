@@ -98,7 +98,7 @@ module.exports = {
       message.lineReply({
        embed: {
         color: 16734039,
-        description: "<:error:860884617770303519> | No information found",
+        description: `${client.bot_emojis.error} | No information found`,
        },
       });
      }
