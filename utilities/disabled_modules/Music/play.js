@@ -77,20 +77,20 @@ module.exports = {
      message.lineReply(
       new Discord.MessageEmbed() // Prettier
        .setColor("RANDOM")
-       .setDescription(`:notes: Searching 🔍 [\`LINK\`](${args.join(" ")})`)
+       .setDescription(`:notes: Searching ${client.bot_emojis.search_glass} [\`LINK\`](${args.join(" ")})`)
      );
     } else {
      message.lineReply(
       new Discord.MessageEmbed() // Prettier
        .setColor("RANDOM")
-       .setDescription(`:notes: Searching 🔍 \`${args.join(" ")}\``)
+       .setDescription(`:notes: Searching ${client.bot_emojis.search_glass} \`${args.join(" ")}\``)
      );
     }
    } else {
     queueConstruct.connection = await channel.join();
     const successjoin = new Discord.MessageEmbed() // Prettier
      .setColor("RANDOM")
-     .setDescription(`👍 Joined \`${channel.name}\` 📄 bound \`#${message.channel.name}\``)
+     .setDescription(`${client.bot_emojis.like} Joined \`${channel.name}\` ${client.bot_emojis.lyrics} bound \`#${message.channel.name}\``)
      .setFooter(`Requested by ${message.author.username}`, message.author.displayAvatarURL({ dynamic: true, format: "png", size: 2048 }));
     message.lineReply(successjoin).then(
      successjoin.delete({
@@ -100,7 +100,7 @@ module.exports = {
     if (urlValid) {
      const urlvailds = new Discord.MessageEmbed() // Prettier
       .setColor("RANDOM")
-      .setDescription(`:notes: Searching 🔍 [\`LINK\`](${args.join(" ")})`);
+      .setDescription(`:notes: Searching ${client.bot_emojis.search_glass} [\`LINK\`](${args.join(" ")})`);
      await message.lineReply(urlvailds);
      urlvailds.delete({
       timeout: 5000,
@@ -108,7 +108,7 @@ module.exports = {
     } else {
      const urlvaildnormal = new Discord.MessageEmbed() // Prettier
       .setColor("RANDOM")
-      .setDescription(`:notes: Searching 🔍 \`${args.join(" ")}\``);
+      .setDescription(`:notes: Searching ${client.bot_emojis.search_glass} \`${args.join(" ")}\``);
      await message.lineReply(urlvaildnormal);
      urlvaildnormal.delete({
       timeout: 5000,
@@ -173,7 +173,7 @@ module.exports = {
     message.lineReply({
      embed: {
       color: 16734039,
-      description: "Something went wrong why searching for your song... :cry:",
+      description: `Something went wrong why searching for your song... ${client.bot_emojis.sadness}`,
      },
     });
    }

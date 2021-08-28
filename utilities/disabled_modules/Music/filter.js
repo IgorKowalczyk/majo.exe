@@ -17,7 +17,7 @@ module.exports = {
     return message.lineReply({
      embed: {
       color: 16734039,
-      description: "There is nothing in the queue right now!",
+      description: `${client.bot_emojis.error} There is nothing in the queue right now!`,
      },
     });
    }
@@ -25,7 +25,7 @@ module.exports = {
     return message.lineReply({
      embed: {
       color: 16734039,
-      description: "There is a search active!",
+      description: `${client.bot_emojis.error}  There is a search active!`,
      },
     });
    }
@@ -33,7 +33,7 @@ module.exports = {
     return message.lineReply({
      embed: {
       color: 16734039,
-      description: "Please join a voice channel first",
+      description: `${client.bot_emojis.error}  Please join a voice channel first`,
      },
     });
    }
@@ -41,7 +41,7 @@ module.exports = {
     return message.lineReply({
      embed: {
       color: 16734039,
-      description: "You must be in the same voice channel as me",
+      description: `${client.bot_emojis.error}  You must be in the same voice channel as me`,
      },
     });
    }
@@ -112,7 +112,7 @@ module.exports = {
      varforfilter = 404;
      const embed = new Discord.MessageEmbed() // Prettier
       .setColor("RANDOM")
-      .setTitle("Not a valid Filter, use one of those:")
+      .setTitle(`${client.bot_emojis.error} Not a valid Filter, use one of those:`)
       .setDescription(
        `
        \`bassboost\`
@@ -141,7 +141,7 @@ module.exports = {
     message.lineReply(
      new Discord.MessageEmbed() // Prettier
       .setColor("RANDOM")
-      .setDescription("✨ | Applying effect: *" + args[0] + "*\n")
+      .setDescription(`${client.bot_emojis.sparkles} | Applying effect: \`${args[0]}\``)
     );
     let silient = true;
     play(song, message, client, choice, silient);
@@ -150,7 +150,7 @@ module.exports = {
     return message.lineReply({
      embed: {
       color: 16734039,
-      description: "Something went wrong why applying the effect... :cry:",
+      description: `Something went wrong why applying the effect... ${client.bot_emojis.sadness}`,
      },
     });
    }

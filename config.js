@@ -26,11 +26,13 @@ module.exports = {
  prefix: process.env.PREFIX,
  youtube: process.env.YOUTUBE,
  id: process.env.ID,
+ advanved_logging: true,
 
  // Dashboard config
  domain: process.env.DOMAIN,
  certs: false,
  localhost: false,
+ privacy_policy_page: true,
  google_analitics: process.env.ANALYTICS,
  client_secret: process.env.SECRET,
  port: process.env.PORT,

@@ -27,7 +27,7 @@ module.exports = {
     if (!lyrics) lyrics = `No lyrics found for ${song}`;
     let embed = new Discord.MessageEmbed() // Prettier
      .setAuthor(
-      `📑 Lyrics for ${songfetch.fullTitle}`,
+      `${client.bot_emojis.lyrics} Lyrics for ${songfetch.fullTitle}`,
       message.author.displayAvatarURL({
        dynamic: true,
        format: "png",

@@ -40,7 +40,7 @@ module.exports = {
     queue.connection.dispatcher.pause(true);
     const pausemebed = new Discord.MessageEmbed() // Prettier
      .setColor("RANDOM")
-     .setDescription(`⏸️ | <@${message.author.id}> paused the music.`);
+     .setDescription(`${client.bot_emojis.pause} | <@${message.author.id}> paused the music.`);
     return queue.textChannel.send(pausemebed).catch(console.error);
    }
   } catch (err) {

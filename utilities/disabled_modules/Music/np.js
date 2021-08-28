@@ -30,7 +30,7 @@ module.exports = {
    const left = ms - seek;
    let nowPlaying = new Discord.MessageEmbed() // Prettier
     .setAuthor(
-     "♪ Now playing",
+     `${client.bot_emojis.music} Now playing`,
      message.author.displayAvatarURL({
       dynamic: true,
       format: "png",
@@ -53,7 +53,7 @@ module.exports = {
     return message.lineReply(nowPlaying);
    }
    if (ms > 0 && ms < 10000) {
-    nowPlaying.addField("\u200b", "**[" + progressbar.filledBar(ms == 0 ? seek : ms, seek, 25, `${client.bot_emojis.emoji_bar_1}`, ``${client.bot_emojis.emoji_bar_2}`)[0] + "]**\n**" + "[" + new Date(seek * 1000).toISOString().substr(11, 8) + " / " + (ms == 0 ? " ◉ LIVE" : new Date(ms * 1000).toISOString().substr(11, 8)) + "]**" + "\n" + "**Time Remaining:** " + "``" + new Date(left * 1000).toISOString().substr(11, 8) + "``", false);
+    nowPlaying.addField("\u200b", "**[" + progressbar.filledBar(ms == 0 ? seek : ms, seek, 25, client.bot_emojis.emoji_bar_1, client.bot_emojis.emoji_bar_2)[0] + "]**\n**" + "[" + new Date(seek * 1000).toISOString().substr(11, 8) + " / " + (ms == 0 ? " ◉ LIVE" : new Date(ms * 1000).toISOString().substr(11, 8)) + "]**" + "\n" + "**Time Remaining:** " + "``" + new Date(left * 1000).toISOString().substr(11, 8) + "``", false);
     return message.lineReply(nowPlaying);
    }
   } catch (err) {
