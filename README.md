@@ -24,19 +24,17 @@ Go to [this link](https://discord.com/oauth2/authorize/?permissions=4294967287&s
 ## Hosting
 
 We host this bot. Majo.exe *will be* online 24/7. [Invite Majo here!](#invite)
-However, if you want to host Majo yourself - [take a look here](#self-hosting)
+However, if you want to host Majo.exe yourself - [take a look here](#self-hosting)
 
-[![Deploy to heroku](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy?template=https://github.com/igorkowalczyk/majobot/tree/master)
+Deploy Majo.exe to Heroku: [![Deploy to heroku](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy?template=https://github.com/igorkowalczyk/majobot/tree/master)
 
-[![Run on Repl.it](https://repl.it/badge/github/igorkowalczyk/majobot)](https://repl.it/github/igorkowalczyk/majobot)
-
-[Heroku hosting tutorial](#heroku)
+Run Majo.exe on Replit: [![Run on Repl.it](https://repl.it/badge/github/igorkowalczyk/majobot)](https://repl.it/github/igorkowalczyk/majobot)
 
 ### Self-Hosting
 
 1. Clone [this repository](https://github.com/igorkowalczyk/majobot) `git clone https://github.com/IgorKowalczyk/majobot.git`
-2. Run `npm install` to get all dependencies,
-3. Grab a Discord Bot token and client secret on [Discord's developer portal](https://discord.com/developers/applications) [Tutorial](#discord-token)
+2. Run `npm i` to install all dependencies,
+3. Grab a Discord Bot token and client secret on [Discord's developer portal](https://discord.com/developers/applications) [Tutorial](#discord-credentials)
 4. Fill `config.js`, `emojis_config.js` with your values
 5. Create new file named `.env` Remember - the file is super secret, better to not share it.
 6. In `.env` file set this values:
@@ -54,10 +52,10 @@ However, if you want to host Majo yourself - [take a look here](#self-hosting)
     * `MYSQL_USER` - Your MYSQL User name who can acces to the database
     * `COOKIES` - Your Youtube Cookies [[Tutorial](#youtube)]
     * **Not required (You can leave them blank):**
-    * `DOMAIN`^ - your website domain, eg `https://example.com`
+    * `DOMAIN`^ - your website domain, eg. `https://example.com` or `https://localhost`
     * `PORT`^ - your website port, eg `8080`. [Note: If you are using heroku, don't add this value. Heroku binds port automatically!]
     * `DASHBOARD=[true/false]` - if `true` the bot will be hosted with web dasboard, if `false` the bot will be hosted without web dashboard.
-    * `SESSION_SECRET`^ - Session secret key, random sequence of words, letterss or numbers
+    * `SESSION_SECRET`^ - Session secret key, random sequence of words, letters or numbers
     * `SECRET`^ - Client secret from Discord Developers portal [no. 3]
     * `ANALYTICS` - Google Trakcing ID, for Website analytics [[Tutorial](#analytics-id)]
     * `RECAPTCHA_KEY`^ - Google Recaptcha v2 site key
@@ -75,7 +73,7 @@ However, if you want to host Majo yourself - [take a look here](#self-hosting)
 ### Dashboard hosting
 
 1. In `.env` file set the `DASHBOARD` config to `true` and assign the `PORT` eg. `8080`. ([See example `.env` file](#example-env-file))
-2. Fill dashboard config in (`config.js` and `.env`)
+2. Fill dashboard config in (`/config/config.js` and `.env`)
 3. Add the redirect uri here: https://discord.com/developers/applications/YOUR-BOT-ID/oauth2
     * ```
        https://your-domain.com
@@ -122,7 +120,7 @@ However, if you want to host Majo yourself - [take a look here](#self-hosting)
 ### Example `.env` file
 <details><summary>Example <code>.env</code> file</summary>
  
-[`.env.example`](https://github.com/igorkowalczyk/majobot/blob/master/.env.example)
+[`.env.example`](https://github.com/igorkowalczyk/majobot/blob/master/config/examples/.env.example)
 
 ```
 # Environment Config
@@ -159,7 +157,7 @@ ANALYTICS=YOUR_GOOGLE_TRACKING_ID
 
 ## Tokens tutorials
 
-##### Discord Token
+##### Discord Credentials
 > Soon!
 
 ##### Amethyste Api
@@ -175,9 +173,6 @@ ANALYTICS=YOUR_GOOGLE_TRACKING_ID
 > Soon!
 
 ##### Analytics ID
-> Soon!
-
-##### Heroku
 > Soon!
 
 ## Contributors

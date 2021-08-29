@@ -7,10 +7,10 @@
  "scripts": {
   "start": "npm-run-all --parallel bot dashboard",
   "bot": "node index.js",
-  "dashboard": "node dashboard-run.js",
+  "dashboard": "node dashboard/run.js",
   "dev": "npm-run-all --parallel dev:bot dev:dashboard",
   "dev:bot": "node --trace-warnings index.js",
-  "dev:dashboard": "node --trace-warnings dashboard-run.js",
+  "dev:dashboard": "node --trace-warnings dashboard/run.js",
   "format": "prettier --write . --ignore-unknown",
   "format:check": "prettier --check .",
   "test": "jest --passWithNoTests"

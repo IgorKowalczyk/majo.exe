@@ -13,7 +13,7 @@ const chalk = require("chalk");
 client.on("ready", () => {
  if (process.env.DASHBOARD == "true") {
   console.log(chalk.bold(chalk.blue.bold("[SQL]")) + chalk.cyan.bold(" Getting dashboard config file..."));
-  const webrun = require("./dashboard/dashboard");
+  const webrun = require("./dashboard");
   webrun(client);
  } else {
   console.log(chalk.bold(chalk.blue.bold("[SQL]")) + chalk.cyan.bold(" Not running dashboard! The dashboard config value (process.env.DASHBOARD) is set to " + process.env.DASHBOARD + ". Please change it to `true` to run the dashboard."));
