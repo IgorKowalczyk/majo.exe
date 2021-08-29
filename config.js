@@ -20,7 +20,7 @@ module.exports = {
  permissions: "4294967287",
  suggestions_channel: "838092194530852884",
  bot_news_title: "<:success:860884617820110909> Good news!",
- news: "<@681536055572430918> is waiting for verification because it is already on more than 75 servers! We are sorry if you can't add Majo.exe to your server now (Discord bots before verification can be only on a 100 servers in total!). Thank you for your support, Without you, Majo.exe wouldn't exist! Stay tuned!",
+ news: "Majo.exe - Discord.js v13 Beta!",
  brainid: process.env.BRAINID,
  brainkey: process.env.BRAINKEY,
  prefix: process.env.PREFIX,

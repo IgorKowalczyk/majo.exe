@@ -1,14 +1,25 @@
 const Discord = require("discord.js");
-require("dotenv").config();
 const client = new Discord.Client({
- disableEveryone: true,
  allowedMentions: {
-  repliedUser: false,
+  parse: ["users", "roles"],
+  repliedUser: true,
  },
  ws: {
   properties: { $browser: "Discord iOS" }, // To change the bot online icon to phone
  },
+ presence: {
+  status: "online",
+  afk: false,
+  activities: [
+   {
+    name: "Discord.js v13!",
+    type: "LISTENING",
+   },
+  ],
+ },
+ intents: [Discord.Intents.FLAGS.GUILDS, Discord.Intents.FLAGS.GUILD_MESSAGES, Discord.Intents.FLAGS.GUILD_VOICE_STATES, Discord.Intents.FLAGS.GUILD_PRESENCES, Discord.Intents.FLAGS.GUILD_MEMBERS],
 });
+require("dotenv").config();
 const chalk = require("chalk");
 const { GiveawaysManager } = require("discord-giveaways");
 const logs = require("discord-logs");
@@ -22,8 +33,6 @@ client.bot_emojis = emojis;
 client.message_count = message_count;
 client.command_count = command_count;
 logs(client);
-require("./utilities/inline_reply");
-require("discord-buttons")(client);
 
 sql.query("CREATE TABLE IF NOT EXISTS `logs` (`guildid` VARCHAR(32) NOT NULL, `channelid` VARCHAR(32) NOT NULL, UNIQUE(`guildid`));", function (error, results, fields) {
  if (error) throw new Error(error);

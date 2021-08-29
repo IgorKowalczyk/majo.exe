@@ -1,10 +1,14 @@
 const Discord = require("discord.js");
 const client = new Discord.Client({
- disableEveryone: true,
+ allowedMentions: {
+  parse: ["users", "roles"],
+  repliedUser: true,
+ },
+ intents: [Discord.Intents.FLAGS.GUILDS, Discord.Intents.FLAGS.GUILD_MESSAGES, Discord.Intents.FLAGS.GUILD_VOICE_STATES, Discord.Intents.FLAGS.GUILD_PRESENCES, Discord.Intents.FLAGS.GUILD_MEMBERS],
 });
+require("dotenv").config();
 const chalk = require("chalk");
 
-require("dotenv").config();
 
 client.on("ready", () => {
  if (process.env.DASHBOARD == "true") {
