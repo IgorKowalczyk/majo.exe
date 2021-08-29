@@ -27,6 +27,7 @@ We host this bot. Majo.exe *will be* online 24/7. [Invite Majo here!](#invite)
 However, if you want to host Majo yourself - [take a look here](#self-hosting)
 
 [![Deploy to heroku](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy?template=https://github.com/igorkowalczyk/majobot/tree/master)
+
 [![Run on Repl.it](https://repl.it/badge/github/igorkowalczyk/majobot)](https://repl.it/github/igorkowalczyk/majobot)
 
 [Heroku hosting tutorial](#heroku)
