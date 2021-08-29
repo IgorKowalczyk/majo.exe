@@ -9,7 +9,6 @@ const client = new Discord.Client({
 require("dotenv").config();
 const chalk = require("chalk");
 
-
 client.on("ready", () => {
  if (process.env.DASHBOARD == "true") {
   console.log(chalk.bold(chalk.blue.bold("[SQL]")) + chalk.cyan.bold(" Getting dashboard config file..."));

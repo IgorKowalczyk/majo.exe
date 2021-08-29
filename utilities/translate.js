@@ -1,3 +1,5 @@
+// https://cloud.google.com/translate/docs/languages
+
 module.exports = languages = [
  { name: "afrikaans", abrv: "af" },
  { name: "albanian", abrv: "sq" },

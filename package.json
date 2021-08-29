@@ -122,7 +122,7 @@
  "bugs": {
   "url": "https://github.com/igorkowalczyk/majobot/issues"
  },
- "homepage": "https://majoexe.herokuapp.com/",
+ "homepage": "https://majobot.igorkowalczyk.repl.co/",
  "license": "MIT",
  "keywords": [
   "node",

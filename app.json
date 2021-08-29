@@ -4,7 +4,7 @@
  "logo": "https://github.com/IgorKowalczyk/majobot/blob/master/lib/img/readme/avatar.png",
  "repository": "https://github.com/igorkowalczyk/majobot.git",
  "stack": "heroku-20",
- "website": "https://majoexe.herokuapp.com",
+ "website": "https://majobot.igorkowalczyk.repl.co",
  "success_url": "/",
  "buildpacks": [
   {
