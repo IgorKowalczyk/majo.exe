@@ -19,7 +19,7 @@ module.exports = {
    }
    const embed = new Discord.MessageEmbed() // Prettier
     .setAuthor(msg.author, msg.member.user.displayAvatarURL())
-    .setDescription("```" + msg.content || "I can't download the message content. Sorry!"  + "```")
+    .setDescription("```" + msg.content || "I can't download the message content. Sorry!" + "```")
     .setFooter(`Requested by ${message.author.username}`, message.author.displayAvatarURL())
     .setTimestamp()
     .setColor("RANDOM");
