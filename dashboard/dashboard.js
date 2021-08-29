@@ -62,7 +62,7 @@ module.exports = async (client) => {
     checkPeriod: 86400000,
    }),
    secret: process.env.SESSION_SECRET,
-   resave: false,
+   resave: true,
    saveUninitialized: false,
   })
  );
