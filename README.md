@@ -9,7 +9,7 @@ Majo.exe have almost everything - Fun, Memes, Images, Giveaway, Economy, Anime a
 [![GitHub License](https://img.shields.io/github/license/igorkowalczyk/majobot?style=flat-square&logo=github&color=%2334D058)](https://majobot.igorkowalczyk.repl.co/)
 [![Version](https://img.shields.io/github/package-json/v/igorkowalczyk/majobot?style=flat-square&logo=github&color=%2334D058)](https://majobot.igorkowalczyk.repl.co/server)
 
-### Invite
+## Invite
 
 Go to [this link](https://discord.com/oauth2/authorize/?permissions=4294967287&scope=bot&client_id=681536055572430918) and add the bot (this requires `MANAGE_GUILD` permission) to your server.
  - [Or to make it easier, visit our website](https://majobot.igorkowalczyk.repl.co/)
@@ -30,8 +30,7 @@ Deploy Majo.exe to Heroku: [![Deploy to heroku](https://www.herokucdn.com/deploy
 
 Run Majo.exe on Replit: [![Run on Repl.it](https://repl.it/badge/github/igorkowalczyk/majobot)](https://repl.it/github/igorkowalczyk/majobot)
 
-### Self-Hosting
-
+#### Self-Hosting
 1. Clone [this repository](https://github.com/igorkowalczyk/majobot) `git clone https://github.com/IgorKowalczyk/majobot.git`
 2. Run `npm i` to install all dependencies,
 3. Grab a Discord Bot token and client secret on [Discord's developer portal](https://discord.com/developers/applications) [Tutorial](#discord-credentials)
@@ -51,6 +50,7 @@ Run Majo.exe on Replit: [![Run on Repl.it](https://repl.it/badge/github/igorkowa
     * `MYSQL_PASSWORD` - Your MYSQL user password
     * `MYSQL_USER` - Your MYSQL User name who can acces to the database
     * `COOKIES` - Your Youtube Cookies [[Tutorial](#youtube)]
+    * `STATUS_WEBHOOK` - Your Stats Webhook URL
     * **Not required (You can leave them blank):**
     * `DOMAIN`^ - your website domain, eg. `https://example.com` or `https://localhost`
     * `PORT`^ - your website port, eg `8080`. [Note: If you are using heroku, don't add this value. Heroku binds port automatically!]
@@ -61,17 +61,11 @@ Run Majo.exe on Replit: [![Run on Repl.it](https://repl.it/badge/github/igorkowa
     * `RECAPTCHA_KEY`^ - Google Recaptcha v2 site key
     * `CONTACT_WEBHOOK_ID`^ - Your contact form webhook ID
     * `CONTACT_WEBHOOK_TOKEN`^ - Your contact form webhook token
-    * `STATUS_WEBHOOK_ID` - Your status webhook ID
-    * `STATUS_WEBHOOK_TOKEN` - Your status webhook token
 7. Run `npm run start`
 > Note: See the example [`.env` file below](#example-env-file)!
-
 > Note: Values with `^` are required to run web dashboard!
 
-> Note: Discord webhook link syntax: `https://discord.com/api/webhooks/HERE-IS-WEBHOOK-ID/HERE-IS-WEBHOOK-TOKEN`)
-
-### Dashboard hosting
-
+#### Dashboard hosting
 1. In `.env` file set the `DASHBOARD` config to `true` and assign the `PORT` eg. `8080`. ([See example `.env` file](#example-env-file))
 2. Fill dashboard config in (`/config/config.js` and `.env`)
 3. Add the redirect uri here: https://discord.com/developers/applications/YOUR-BOT-ID/oauth2
@@ -83,14 +77,14 @@ Run Majo.exe on Replit: [![Run on Repl.it](https://repl.it/badge/github/igorkowa
       ```
 4. Run `npm run dashboard` in your terminal
 5. If everyting is ok go to your dashboard in browser (eg. to `localhost:8000`)
-> Note: See the example [`.env` file below](#example-env-file)!
 
-##### Additional info
+**Additional info**
 > If you are hosting the site locally it is best to generate certificates for it. If you have them:
 > 1. Change `certs: false` & `localhost: false` values in `config.js` to true
 > 2. Place the `server.cert` & `server.key` certs in `/dashboard/certs/` directory
 
-### `.env` config table
+## `.env` File (Main Config)
+#### `.env` config table
 | `.env` varriable | Description | Required |
 |---|---|---|
 | TOKEN | The bot token (Remember! The `TOKEN` is super secret) | :heavy_check_mark: |
@@ -113,12 +107,11 @@ Run Majo.exe on Replit: [![Run on Repl.it](https://repl.it/badge/github/igorkowa
 | COOKIES | Your youtube cookies | :heavy_check_mark: |
 | CONTACT_WEBHOOK_ID | Your contact form webhook ID | :x: |
 | CONTACT_WEBHOOK_TOKEN | Your contact form webhook token | :x: |
-| STATUS_WEBHOOK_ID | Your status webhook ID | :x: |
-| STATUS_WEBHOOK_TOKEN | Your status webhook token | :x: |
+| STATUS_WEBHOOK | Your status webhook ID | :heavy_check_mark: |
 > - `*` = Required to run the web dashboard!
 
-### Example `.env` file
-<details><summary>Example <code>.env</code> file</summary>
+#### Example `.env` file
+<details><summary>Click to see example <code>.env</code> file!</summary>
  
 [`.env.example`](https://github.com/igorkowalczyk/majobot/blob/master/config/examples/.env.example)
 
@@ -139,8 +132,7 @@ BRAINKEY=YOUR_BRAINSHOP_AI_BRAIN_KEY
 GENIUS=YOUR_GENIUS_API_KEY
 CONTACT_WEBHOOK_TOKEN=YOUR_CONTACT_FORM_WEBHOOK_TOKEN
 CONTACT_WEBHOOK_ID=YOUR_CONTACT_FORM_WEBHOOK_ID
-STATUS_WEBHOOK_TOKEN=YOUR_STATUS_WEBHOOK_TOKEN
-STATUS_WEBHOOK_ID=YOUR_STATUS_WEBHOOK_ID
+STATUS_WEBHOOK=YOUR_STATUS_WEBHOOK_URL
 COOKIES=YOUR_YOUTUBE_COOKIES
 RECAPTCHA_KEY=YOUR_RECAPTCHA_KEY
 
@@ -156,7 +148,6 @@ ANALYTICS=YOUR_GOOGLE_TRACKING_ID
 </details>
 
 ## Tokens tutorials
-
 ##### Discord Credentials
 > Soon!
 
