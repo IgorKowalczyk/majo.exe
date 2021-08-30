@@ -69,7 +69,7 @@ module.exports = {
     if (message.author.id == config.owner_id) {
      embed.addField(`${client.bot_emojis.owner_crown} Owner`, "**Note:** *Only the bot owner (<@" + config.owner_id + ">) can see and use the commands below!*\n> " + owner.join(", "));
     }
-    embed.addField(`${client.bot_emojis.question} Command Information`, `> \`${prefix} help <command>\``);
+    embed.addField(`${client.bot_emojis.question} Command Information`, `> \`${prefix} help <command>\`\n`);
     if (config.news && config.bot_news_title) {
      embed.addField(`${config.bot_news_title}`, `${config.news}`);
     }
