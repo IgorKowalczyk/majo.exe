@@ -23,52 +23,44 @@ Go to [this link](https://discord.com/oauth2/authorize/?permissions=4294967287&s
 
 ## Hosting
 
-We host this bot. Majo.exe *will be* online 24/7. [Invite Majo here!](#invite)
-However, if you want to host Majo.exe yourself - [take a look here](#self-hosting)
+> We host this bot. Majo.exe *will be* online 24/7. [Invite Majo here!](#invite)<br>
+> However, if you want to host Majo.exe yourself - [take a look here](#self-hosting-bot)
 
-Deploy Majo.exe to Heroku: [![Deploy to heroku](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy?template=https://github.com/igorkowalczyk/majobot/tree/master)
+| Heroku | Replit |
+|---|---|
+| [![Deploy to heroku](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy?template=https://github.com/igorkowalczyk/majobot/tree/master) | [![Run on Repl.it](https://repl.it/badge/github/igorkowalczyk/majobot)](https://repl.it/github/igorkowalczyk/majobot) |
 
-Run Majo.exe on Replit: [![Run on Repl.it](https://repl.it/badge/github/igorkowalczyk/majobot)](https://repl.it/github/igorkowalczyk/majobot)
-
-#### Self-Hosting
+#### Self-Hosting (Bot)
 1. Clone [this repository](https://github.com/igorkowalczyk/majobot) `git clone https://github.com/IgorKowalczyk/majobot.git`
 2. Run `npm i` to install all dependencies,
 3. Grab a Discord Bot token and client secret on [Discord's developer portal](https://discord.com/developers/applications) [Tutorial](#discord-credentials)
 4. Fill `config.js`, `emojis_config.js` with your values
 5. Create new file named `.env` Remember - the file is super secret, better to not share it.
 6. In `.env` file set this values:
-    * **Required:**
-    * `TOKEN` - Bot token from Discord Developer portal [no. 3]
-    * `PREFIX` - Bot prefix, used to run commands eg. `your-prefix help`
+    * `TOKEN` - Discord bot token
+    * `PREFIX` - Discord bot main prefix
     * `ID` - Your Discord Bot ID
     * `AMEAPI` - your Amethyste API token [[Tutorial](#amethyste-api)]
     * `BRAINID` - Your Brainshop AI Brain ID [[Tutorial](#ai-keys)]
     * `BRAINKEY` - Your Brainshop AI Brain Key [[Tutorial](#ai-keys)]
     * `GENIUS` - Your Genius API Key [[Tutorial](#genius)]
     * `MYSQL_DATABASE` - Your MYSQL database name
-    * `MYSQL_HOST` - Your MYSQL Host name
+    * `MYSQL_HOST` - Your MYSQL Host Endpoint
     * `MYSQL_PASSWORD` - Your MYSQL user password
-    * `MYSQL_USER` - Your MYSQL User name who can acces to the database
+    * `MYSQL_USER` - Your MYSQL User name who can acces the database
     * `COOKIES` - Your Youtube Cookies [[Tutorial](#youtube)]
     * `STATUS_WEBHOOK` - Your Stats Webhook URL
-    * **Not required (You can leave them blank):**
-    * `DOMAIN`^ - your website domain, eg. `https://example.com` or `https://localhost`
-    * `PORT`^ - your website port, eg `8080`. [Note: If you are using heroku, don't add this value. Heroku binds port automatically!]
-    * `DASHBOARD=[true/false]` - if `true` the bot will be hosted with web dasboard, if `false` the bot will be hosted without web dashboard.
-    * `SESSION_SECRET`^ - Session secret key, random sequence of words, letters or numbers
-    * `SECRET`^ - Client secret from Discord Developers portal [no. 3]
-    * `ANALYTICS` - Google Trakcing ID, for Website analytics [[Tutorial](#analytics-id)]
-    * `RECAPTCHA_KEY`^ - Google Recaptcha v2 site key
-    * `CONTACT_WEBHOOK_ID`^ - Your contact form webhook ID
-    * `CONTACT_WEBHOOK_TOKEN`^ - Your contact form webhook token
-7. Run `npm run start`
+7. Run `npm run bot`
 > Note: See the example [`.env` file below](#example-env-file)!
-> Note: Values with `^` are required to run web dashboard!
+
+---
 
 #### Dashboard hosting
-1. In `.env` file set the `DASHBOARD` config to `true` and assign the `PORT` eg. `8080`. ([See example `.env` file](#example-env-file))
-2. Fill dashboard config in (`/config/config.js` and `.env`)
-3. Add the redirect uri here: https://discord.com/developers/applications/YOUR-BOT-ID/oauth2
+1. In `.env` file set this values:
+    * `TOKEN` - Discord bot token
+    * ... (i don't want to write this rn XD)
+3. Fill dashboard config in (`/config/config.js` and `.env`)
+4. Add the redirect uri here: [https://discord.com/developers/applications/<YOUR-BOT-ID\>/oauth2](https://discord.com/developers/applications)
     * ```
        https://your-domain.com
        https://your-domain.com/callback
@@ -83,33 +75,32 @@ Run Majo.exe on Replit: [![Run on Repl.it](https://repl.it/badge/github/igorkowa
 > 1. Change `certs: false` & `localhost: false` values in `config.js` to true
 > 2. Place the `server.cert` & `server.key` certs in `/dashboard/certs/` directory
 
+<br>
+
 ## `.env` File (Main Config)
 #### `.env` config table
-| `.env` varriable | Description | Required |
-|---|---|---|
-| TOKEN | The bot token (Remember! The `TOKEN` is super secret) | :heavy_check_mark: |
-| PREFIX | The default bot prefix (eg. `!majo`) | :heavy_check_mark: |
-| ID | Your Discord Bot ID | :heavy_check_mark: |
-| AMEAPI | Your Amethyste api token | :heavy_check_mark: |
-| BRAINID | Your Brainshop AI Brain ID | :heavy_check_mark: |
-| MYSQL_DATABASE | Your MYSQL database name | :heavy_check_mark: |
-| MYSQL_HOST | Your MYSQL Host | :heavy_check_mark: |
-| MYSQL_USER | Your MYSQL user | :heavy_check_mark: |
-| MYSQL_PASSWORD | Your Brainshop AI Brain Key | :heavy_check_mark: |
-| GENIUS | Your genius API Key | :heavy_check_mark: |
-| DOMAIN | Your website domain (eg `https://example.com`)`*` | :x:/:heavy_check_mark: |
-| PORT| Your webiste port, (eg. `8008 `)`*`| :x:/:heavy_check_mark: |
-| DASHBOARD | The Web-Dashboard config value. (eg. `true/false`, default value: `false`)`*` | :x: |
-| SESSION_SECRET | Random sequence of words, letterss or numbers`*` | :x:/:heavy_check_mark: |
-| SECRET | The bot client secret (Remember! The `SECRET` value is Super-Secret)`*` | :x:/:heavy_check_mark: |
-| ANALYTICS | Google analytics tracking ID, used in Web-Dashboard`*` | :x: |
-| RECAPTCHA_KEY | Google recaptcha v2 key`*` | :x:/:heavy_check_mark: |
-| COOKIES | Your youtube cookies | :heavy_check_mark: |
-| CONTACT_WEBHOOK_ID | Your contact form webhook ID | :x: |
-| CONTACT_WEBHOOK_TOKEN | Your contact form webhook token | :x: |
-| STATUS_WEBHOOK | Your status webhook ID | :heavy_check_mark: |
-> - `*` = Required to run the web dashboard!
-
+| `.env` varriable | Description | Required (Bot) | Required (Dashboard)
+|---|---|:---:|:---:|
+| `TOKEN` | The bot token (Remember! The `TOKEN` is super secret) | :heavy_check_mark: | :heavy_check_mark: |
+| `PREFIX` | The default bot prefix (eg. `!majo`) | :heavy_check_mark: | :heavy_check_mark: |
+| `ID` | Your Discord Bot ID | :heavy_check_mark: | :heavy_check_mark: |
+| `AMEAPI` | Your Amethyste api token | :heavy_check_mark: | :x: |
+| `BRAINID` | Your Brainshop AI Brain ID | :heavy_check_mark: | :x: |
+| `MYSQL_DATABASE` | Your MYSQL database name | :heavy_check_mark: | :heavy_check_mark: |
+| `MYSQL_HOST` | Your MYSQL Host | :heavy_check_mark: | :heavy_check_mark: |
+| `MYSQL_USER` | Your MYSQL user | :heavy_check_mark: | :heavy_check_mark: |
+| `MYSQL_PASSWORD` | Your Brainshop AI Brain Key | :heavy_check_mark: | :heavy_check_mark: |
+| `GENIUS` | Your genius API Key | :heavy_check_mark: | :x: |
+| `DOMAIN` | Your website domain (eg `https://example.com`) | :x: | :heavy_check_mark: |
+| `PORT` | Your webiste port eg. `8008`<br> - Note: Heroku don't need port. Heroku assings port automatically! | :x: | :heavy_check_mark: |
+| `DASHBOARD` | The Web-Dashboard config value. (Boolean) | :x: | :heavy_check_mark: |
+| `SESSION_SECRET` | Random sequence of words, letterss or numbers | :x: | :heavy_check_mark: |
+| `SECRET` | The bot client secret | :x: | :heavy_check_mark: |
+| `ANALYTICS` | Google analytics tracking ID, used in Web-Dashboard | :x: | :x: |
+| `RECAPTCHA_KEY` | Google recaptcha v2 key | :x: | :heavy_check_mark: |
+| `COOKIES` | Your youtube cookies | :heavy_check_mark: | :x: |
+| `CONTACT_WEBHOOK` | Your contact form webhook url | :x: | :heavy_check_mark: |
+| `STATUS_WEBHOOK` | Your status webhook ID | :heavy_check_mark: | :x: |
 #### Example `.env` file
 <details><summary>Click to see example <code>.env</code> file!</summary>
  
