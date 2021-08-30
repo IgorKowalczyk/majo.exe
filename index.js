@@ -41,7 +41,7 @@ sql.query("CREATE TABLE IF NOT EXISTS `leave` (`guildid` VARCHAR(32) NOT NULL, `
  if (error) throw new Error(error);
  console.log(chalk.bold(chalk.blue.bold("[SQL]")) + chalk.cyan.bold(" Fetched table `leave`! Status: Success"));
 });
-sql.query("CREATE TABLE IF NOT EXISTS `stats` (`messages` BIGINT NOT NULL DEFAULT NULL, `commands` BIGINT NOT NULL DEFAULT NULL);", function (error) {
+sql.query("CREATE TABLE IF NOT EXISTS `stats` (`messages` BIGINT NOT NULL UNIQUE, `commands` BIGINT NOT NULL UNIQUE);", function (error) {
  if (error) throw new Error(error);
  console.log(chalk.bold(chalk.blue.bold("[SQL]")) + chalk.cyan.bold(" Fetched table `stats`! Status: Success"));
 });
