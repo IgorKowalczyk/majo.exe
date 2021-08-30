@@ -2,7 +2,7 @@ const Discord = require("discord.js");
 const client = new Discord.Client({
  allowedMentions: {
   parse: ["users", "roles"],
-  repliedUser: true,
+  repliedUser: false,
  },
  ws: {
   properties: { $browser: "Discord iOS" }, // To change the bot online icon to phone

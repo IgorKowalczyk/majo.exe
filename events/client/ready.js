@@ -17,7 +17,7 @@ module.exports = (client) => {
   console.log(chalk.bold(chalk.blue.bold("[MAJO]")) + chalk.bold.cyan(" Client connected! Logged to Discord as ") + chalk.bold.blue.underline(client.user.tag) + chalk.bold.cyan(" (ID: ") + chalk.bold.blue.underline(client.user.id) + chalk.bold.cyan(")!"));
   /* Status Webhook */
   if (!process.env.STATUS_WEBHOOK) throw new Error("[HOST] You need to provide Discord Status Webhook URL in .env - STATUS_WEBHOOK=YOUR_WEBHOOK_URL");
-  const statuswebhook = new Discord.WebhookClient({ url: process.env.STATUS_WEBHOOK});
+  const statuswebhook = new Discord.WebhookClient({ url: process.env.STATUS_WEBHOOK });
   const status = new Discord.MessageEmbed() // Prettier
    .setColor("#18A64E")
    .setTimestamp()

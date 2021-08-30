@@ -277,7 +277,7 @@ module.exports = async (client) => {
   if (req.body.type === "contact") {
    const webhookid = process.env.CONTACT_WEBHOOK_ID;
    const webhooktoken = process.env.CONTACT_WEBHOOK_TOKEN;
-   const contactwebhook = new Discord.WebhookClient({webhookid, webhooktoken});
+   const contactwebhook = new Discord.WebhookClient({ webhookid, webhooktoken });
    if (!req.body.name || !req.body.id || !req.body.email || !req.body.msg) return;
    const contact = new Discord.MessageEmbed() // Prettier
     .setColor("RANDOM")
@@ -307,6 +307,7 @@ module.exports = async (client) => {
   if (!member.permissions.has("MANAGE_GUILD")) return res.redirect("/error");
   renderTemplate(res, req, "server.ejs", {
    guild: guild,
+   owner: guild.fetchOwner(),
   });
  });
 
