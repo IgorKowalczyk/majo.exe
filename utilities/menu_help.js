@@ -17,7 +17,7 @@ const create_mh = (array) => {
   fun: emojis.rofl,
   music: emojis.music,
   economy: emojis.money,
-  utility: emojis.utility,
+  utility: emojis.tools,
   image: emojis.picture_frame,
   nsfw: emojis.smirk, // https://www.youtube.com/watch?v=YMm2gv7TStc&t=37s ...
  };
@@ -34,13 +34,9 @@ const create_mh = (array) => {
    emoji: `${emo[name.toLowerCase()] || "❔"}`,
   });
  });
- let selectionmenu = new MessageSelectMenu()
-  .setCustomId(id)
+ let selectionmenu = new MessageSelectMenu().setCustomId(id).setPlaceholder(`${emojis.sparkles} | Choose the command category!`).addOptions(menus);
 
-  .setPlaceholder(`${emojis.sparkles} | Choose the command category!`)
-  .addOptions(menus);
  select_menu = new MessageActionRow().addComponents(selectionmenu);
- //console.log(select_menu.components[0].options)
  return {
   smenu: [select_menu],
   sid: id,

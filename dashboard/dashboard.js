@@ -308,6 +308,7 @@ module.exports = async (client) => {
   renderTemplate(res, req, "server.ejs", {
    guild: guild,
    owner: guild.fetchOwner(),
+   perms: Discord.Permissions,
   });
  });
 

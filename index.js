@@ -149,6 +149,7 @@ setInterval(() => {
 if (process.env.TOKEN) {
  client.commands = new Discord.Collection();
  client.aliases = new Discord.Collection();
+ client.slashCommands = new Discord.Collection();
  client.snipes = new Discord.Collection();
  client.queue = new Map();
  const manager = new Giveaways(client, {

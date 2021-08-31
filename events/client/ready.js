@@ -1,11 +1,24 @@
 const Discord = require("discord.js");
 const chalk = require("chalk");
+const { glob } = require("glob");
+const { promisify } = require("util");
 
-module.exports = (client) => {
+module.exports = async (client) => {
  try {
   function capitalize(string) {
    return string.charAt(0).toUpperCase() + string.slice(1);
   }
+  const globPromise = promisify(glob);
+  const slashCommands = await globPromise(`${process.cwd()}/scommands/*/*.js`);
+  const arrayOfSlashCommands = [];
+  slashCommands.map((value) => {
+   const file = require(value);
+   client.slashCommands.set(file.name, file);
+   arrayOfSlashCommands.push(file);
+  });
+  await client.application.commands.set(arrayOfSlashCommands);
+  console.log(chalk.bold(chalk.blue.bold("[MAJO]")) + chalk.cyan.bold(" Successfully loaded " + chalk.blue.underline(`${client.slashCommands.size}`) + " slash commands!"));
+  console.log(chalk.bold(chalk.blue.bold("[MAJO]")) + chalk.cyan.bold(" Successfully loaded " + chalk.blue.underline(`${client.commands.size}`) + " commands!"));
   const datelog = new Date();
   currentDate = datelog.getDate();
   month = datelog.getMonth() + 1;

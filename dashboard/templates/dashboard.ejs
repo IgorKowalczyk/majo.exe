@@ -6,7 +6,7 @@
 <div class="servers">
 <% user.guilds.forEach(guild => {
 console.log(guild.permissions);
-
+const permse = new perms(guild.permissions.bitfield);
 %>
 
 <% if (guild.icon) {

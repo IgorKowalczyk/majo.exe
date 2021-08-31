@@ -23,7 +23,7 @@ module.exports = {
     fun: client.bot_emojis.rofl,
     music: client.bot_emojis.music,
     economy: client.bot_emojis.money,
-    utility: client.bot_emojis.utility,
+    utility: client.bot_emojis.tools,
     image: client.bot_emojis.picture_frame,
     nsfw: client.bot_emojis.smirk, // https://www.youtube.com/watch?v=YMm2gv7TStc&t=37s ...
    };
@@ -63,9 +63,10 @@ module.exports = {
      })
     )
     .setColor("RANDOM");
-    if (client.config.news && client.config.bot_news_title) {
-     embed.addField(`${client.config.bot_news_title}`, `${client.config.news}`);
-    }
+   if (client.config.news && client.config.bot_news_title) {
+    embed.addField(`${client.config.bot_news_title}`, `${client.config.news}`);
+   }
+
    let menus = create_mh(ccate);
    return message.reply({ embeds: [embed], components: menus.smenu }).then((msgg) => {
     const menuID = menus.sid;
