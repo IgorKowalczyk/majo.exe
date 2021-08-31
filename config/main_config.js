@@ -19,8 +19,8 @@ module.exports = {
  scopes: "bot%20applications.commands",
  permissions: "4294967287",
  suggestions_channel: "838092194530852884",
- bot_news_title: "<:success:860884617820110909> Good news!",
- news: "Majo.exe - Discord.js v13 Beta!",
+ bot_news_title: "<:terohost:881846121201291284> Terohost",
+ news: "Are you looking for cheap, fast and reliable hosting? [Terohost](https://terohost.com/) is perfect for you! Plans start at $1/mo! Go to [terohost.com](https://terohost.com/) and order your dream server today!\n\n*Ps! I am being hosted on Terohost :grin:*",
  brainid: process.env.BRAINID,
  brainkey: process.env.BRAINKEY,
  prefix: process.env.PREFIX,
@@ -42,4 +42,5 @@ module.exports = {
  mobile_support: "false",
  image: "banner.jpg",
  verification: "-wuCsk4qLolXEPSUTGX7YBxywcyNNf5HS2ClzgEWxNY",
+ arc_token: "mW9UikUT",
 };

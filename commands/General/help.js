@@ -63,7 +63,9 @@ module.exports = {
      })
     )
     .setColor("RANDOM");
-
+    if (client.config.news && client.config.bot_news_title) {
+     embed.addField(`${client.config.bot_news_title}`, `${client.config.news}`);
+    }
    let menus = create_mh(ccate);
    return message.reply({ embeds: [embed], components: menus.smenu }).then((msgg) => {
     const menuID = menus.sid;
