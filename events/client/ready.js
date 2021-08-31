@@ -8,6 +8,32 @@ module.exports = async (client) => {
   function capitalize(string) {
    return string.charAt(0).toUpperCase() + string.slice(1);
   }
+  setInterval(() => {
+   const emojis = ["😆", "😄", "😎", "😂", "🥳", "😘", "😜", "😁", "😉", "🥰", "😍", "🤯", "🤩", "😇", "😊", "☺️", "😌", "😋", "😳", "😚", "😏", "😱", "🥵", "😶‍🌫️", "🤕", "😴", "( ͡° ͜ʖ ͡°)"]; // Smirk is here becase of Luna_CatArt#4514 idea XD
+   const emoji = emojis[Math.floor(Math.random() * emojis.length)];
+   var date = new Date().toJSON().slice(0, 10).replace(/-/g, "/");
+   const discordbday = new Date().getFullYear() + "/05/13";
+   const statuslist = [];
+   if (date == discordbday) {
+    statuslist.push(
+     `🎉 ${client.guilds.cache.size} servers 🎉`, // Prettier
+     `🎉 ${client.guilds.cache.reduce((a, g) => a + g.memberCount, 0)} members 🎉`, // Prettier
+     `🎉 ${process.env.PREFIX} help 🎉`
+    );
+   } else {
+    statuslist.push(
+     `${emoji} | ${client.guilds.cache.size} servers!`, // Prettier
+     `${emoji} | ${client.guilds.cache.reduce((a, g) => a + g.memberCount, 0)} members!`, // Prettier
+     `${emoji} | ${process.env.PREFIX} help`, // Prettier
+     `${emoji} | Waiting for verification! (${client.guilds.cache.size} guilds 🥰)`
+    );
+   }
+   const random = Math.floor(Math.random() * (statuslist.length - 1) + 1);
+   client.user.setActivity(statuslist[random], {
+    type: "LISTENING",
+   });
+  }, 10000);
+  client.user.setStatus("online");
   const globPromise = promisify(glob);
   const slashCommands = await globPromise(`${process.cwd()}/scommands/*/*.js`);
   const arrayOfSlashCommands = [];

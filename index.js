@@ -10,12 +10,6 @@ const client = new Discord.Client({
  presence: {
   status: "online",
   afk: false,
-  activities: [
-   {
-    name: "Discord.js v13!",
-    type: "LISTENING",
-   },
-  ],
  },
  intents: [Discord.Intents.FLAGS.GUILDS, Discord.Intents.FLAGS.GUILD_MESSAGES, Discord.Intents.FLAGS.GUILD_VOICE_STATES, Discord.Intents.FLAGS.GUILD_PRESENCES, Discord.Intents.FLAGS.GUILD_MEMBERS],
 });
