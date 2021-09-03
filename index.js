@@ -30,23 +30,23 @@ logs(client);
 
 sql.query("CREATE TABLE IF NOT EXISTS `logs` (`guildid` VARCHAR(32) NOT NULL, `channelid` VARCHAR(32) NOT NULL, UNIQUE(`guildid`));", function (error, results, fields) {
  if (error) throw new Error(error);
- console.log(chalk.bold(chalk.blue.bold("[SQL]")) + chalk.cyan.bold(" Fetched table `logs`! Status: Success"));
+ console.log(chalk.bold(chalk.blue.bold("[SQL]")) + chalk.cyan.bold(" Fetched table ") + chalk.blue.underline("logs") + chalk.cyan.bold("! Status: ") + chalk.blue.bold("Success (OK)") + chalk.cyan.bold("!"));
 });
 sql.query("CREATE TABLE IF NOT EXISTS `welcome` (`guildid` VARCHAR(32) NOT NULL, `channelid` VARCHAR(32) NOT NULL, UNIQUE(`guildid`));", function (error) {
  if (error) throw new Error(error);
- console.log(chalk.bold(chalk.blue.bold("[SQL]")) + chalk.cyan.bold(" Fetched table `welcome`! Status: Success"));
+ console.log(chalk.bold(chalk.blue.bold("[SQL]")) + chalk.cyan.bold(" Fetched table ") + chalk.blue.underline("welcome") + chalk.cyan.bold("! Status: ") + chalk.blue.bold("Success (OK)") + chalk.cyan.bold("!"));
 });
 sql.query("CREATE TABLE IF NOT EXISTS `reputation` (`memberid` VARCHAR(32) NOT NULL, `rep` BIGINT NOT NULL, UNIQUE(`memberid`));", function (error) {
  if (error) throw new Error(error);
- console.log(chalk.bold(chalk.blue.bold("[SQL]")) + chalk.cyan.bold(" Fetched table `reputation`! Status: Success"));
+ console.log(chalk.bold(chalk.blue.bold("[SQL]")) + chalk.cyan.bold(" Fetched table ") + chalk.blue.underline("reputation") + chalk.cyan.bold("! Status: ") + chalk.blue.bold("Success (OK)") + chalk.cyan.bold("!"));
 });
 sql.query("CREATE TABLE IF NOT EXISTS `leave` (`guildid` VARCHAR(32) NOT NULL, `channelid` VARCHAR(32) NOT NULL, UNIQUE(`guildid`));", function (error) {
  if (error) throw new Error(error);
- console.log(chalk.bold(chalk.blue.bold("[SQL]")) + chalk.cyan.bold(" Fetched table `leave`! Status: Success"));
+ console.log(chalk.bold(chalk.blue.bold("[SQL]")) + chalk.cyan.bold(" Fetched table ") + chalk.blue.underline("leave") + chalk.cyan.bold("! Status: ") + chalk.blue.bold("Success (OK)") + chalk.cyan.bold("!"));
 });
 sql.query("CREATE TABLE IF NOT EXISTS `stats` (`messages` BIGINT NOT NULL, `commands` BIGINT NOT NULL);", function (error) {
  if (error) throw new Error(error);
- console.log(chalk.bold(chalk.blue.bold("[SQL]")) + chalk.cyan.bold(" Fetched table `stats`! Status: Success"));
+  console.log(chalk.bold(chalk.blue.bold("[SQL]")) + chalk.cyan.bold(" Fetched table ") + chalk.blue.underline("stats") + chalk.cyan.bold("! Status: ") + chalk.blue.bold("Success (OK)") + chalk.cyan.bold("!"));
 });
 
 /* Giveaways db config */
