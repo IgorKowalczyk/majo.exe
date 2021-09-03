@@ -49,7 +49,7 @@ Go to [this link](https://discord.com/oauth2/authorize/?permissions=4294967287&s
     * `MYSQL_PASSWORD` - Your MYSQL user password
     * `MYSQL_USER` - Your MYSQL User name who can acces the database
     * `COOKIES` - Your Youtube Cookies [[Tutorial](#youtube)]
-    * `STATUS_WEBHOOK` - Your Stats Webhook URL
+    * `STATUS_WEBHOOK` - Your Stats Webhook URL (Discord)
 7. Run `npm run bot`
 > Note: See the example [`.env` file below](#example-env-file)!
 
@@ -58,9 +58,18 @@ Go to [this link](https://discord.com/oauth2/authorize/?permissions=4294967287&s
 #### Dashboard hosting
 1. In `.env` file set this values:
     * `TOKEN` - Discord bot token
-    * ... (i don't want to write this rn XD)
-3. Fill dashboard config in (`/config/config.js` and `.env`)
-4. Add the redirect uri here: [https://discord.com/developers/applications/<YOUR-BOT-ID\>/oauth2](https://discord.com/developers/applications)
+    * `PREFIX` - Discord bot main prefix
+    * `ID` - Your Discord Bot ID
+    * `MYSQL_DATABASE` - Your MYSQL database name
+    * `MYSQL_HOST` - Your MYSQL Host Endpoint
+    * `MYSQL_PASSWORD` - Your MYSQL user password
+    * `MYSQL_USER` - Your MYSQL User name who can acces the database
+    * `CONTACT_WEBHOOK` - Your Contact Webhook URL (Discord)
+    * `PORT` - Your website port
+    * `SESSION_SECRET` - Your session secret (Random characters)
+    * `SECRET` - Discord bot secret
+3. Fill dashboard config in `/config/config.js`
+4. Add these redirect uris ([https://discord.com/developers/applications/<YOUR-BOT-ID\>/oauth2](https://discord.com/developers/applications))
     * ```
        https://your-domain.com
        https://your-domain.com/callback
