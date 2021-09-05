@@ -21,12 +21,12 @@ module.exports = {
     .setImage("https://media.discordapp.net/attachments/721019707607482409/879068001264107520/hehehe-gangbang-hehhehe.png")
     .setColor("RANDOM")
     .setTimestamp();
-   message.reply({ embeds: [embed]});
+   message.reply({ embeds: [embed] });
   } catch (err) {
    console.log(err);
-   const error = new MessageEmbed()// Prettier
-   .setDescription(`Something went wrong... ${client.bot_emojis.sadness}`)
-   .setColor("RED")
+   const error = new MessageEmbed() // Prettier
+    .setDescription(`Something went wrong... ${client.bot_emojis.sadness}`)
+    .setColor("RED");
    message.reply({ embeds: [error] });
   }
  },

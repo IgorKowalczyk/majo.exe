@@ -32,7 +32,7 @@ module.exports = async (client) => {
    client.user.setActivity(statuslist[random], {
     type: "LISTENING",
    });
-   if(client.config.advanced_logging == true) console.log(chalk.bold(chalk.blue.bold(`[${client.user.username.toUpperCase().split(" ")[0]}]`)) + chalk.cyan.bold(" Successfully changed client status"));
+   if (client.config.advanced_logging == true) console.log(chalk.bold(chalk.blue.bold(`[${client.user.username.toUpperCase().split(" ")[0]}]`)) + chalk.cyan.bold(" Successfully changed client status"));
   }, 10000);
   client.user.setStatus("online");
   const globPromise = promisify(glob);

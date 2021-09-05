@@ -69,9 +69,9 @@ module.exports = {
    });
   } catch (err) {
    console.log(err);
-   const error = new MessageEmbed()// Prettier
-   .setDescription(`Something went wrong... ${client.bot_emojis.sadness}`)
-   .setColor("RED")
+   const error = new MessageEmbed() // Prettier
+    .setDescription(`Something went wrong... ${client.bot_emojis.sadness}`)
+    .setColor("RED");
    message.reply({ embeds: [error] });
   }
  },

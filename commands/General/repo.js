@@ -25,12 +25,12 @@ module.exports = {
     .setFooter(`Requested by ${message.author.username}`, message.author.displayAvatarURL({ dynamic: true, format: "png", size: 2048 }))
     .setColor("RANDOM")
     .setTimestamp();
-   message.reply({ embeds : [embed]});
+   message.reply({ embeds: [embed] });
   } catch (err) {
    console.log(err);
-   const error = new MessageEmbed()// Prettier
-   .setDescription(`Something went wrong... ${client.bot_emojis.sadness}`)
-   .setColor("RED")
+   const error = new MessageEmbed() // Prettier
+    .setDescription(`Something went wrong... ${client.bot_emojis.sadness}`)
+    .setColor("RED");
    message.reply({ embeds: [error] });
   }
  },

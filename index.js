@@ -46,7 +46,7 @@ sql.query("CREATE TABLE IF NOT EXISTS `leave` (`guildid` VARCHAR(32) NOT NULL, `
 });
 sql.query("CREATE TABLE IF NOT EXISTS `stats` (`messages` BIGINT NOT NULL, `commands` BIGINT NOT NULL);", function (error) {
  if (error) throw new Error(error);
-  console.log(chalk.bold(chalk.blue.bold("[SQL]")) + chalk.cyan.bold(" Fetched table ") + chalk.blue.underline("stats") + chalk.cyan.bold("! Status: ") + chalk.blue.bold("Success (OK)") + chalk.cyan.bold("!"));
+ console.log(chalk.bold(chalk.blue.bold("[SQL]")) + chalk.cyan.bold(" Fetched table ") + chalk.blue.underline("stats") + chalk.cyan.bold("! Status: ") + chalk.blue.bold("Success (OK)") + chalk.cyan.bold("!"));
 });
 
 /* Giveaways db config */
