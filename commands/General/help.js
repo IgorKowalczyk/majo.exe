@@ -1,4 +1,4 @@
-const { MessageEmbed, Message, Client } = require("discord.js");
+const { MessageEmbed, MessageActionRow, MessageButton, Message, Client } = require("discord.js");
 const { readdirSync } = require("fs");
 const prefix = process.env.PREFIX;
 const create_mh = require("../../utilities/menu_help");
@@ -16,17 +16,17 @@ module.exports = {
  run: async (client, message, args) => {
   let categories = [];
   let cots = [];
+  const emo = {
+   general: client.bot_emojis.bricks,
+   moderation: client.bot_emojis.hammer,
+   fun: client.bot_emojis.rofl,
+   music: client.bot_emojis.music,
+   economy: client.bot_emojis.money,
+   utility: client.bot_emojis.tools,
+   image: client.bot_emojis.picture_frame,
+   nsfw: client.bot_emojis.smirk, // https://www.youtube.com/watch?v=YMm2gv7TStc&t=37s ...
+  };
   if (!args[0]) {
-   const emo = {
-    general: client.bot_emojis.bricks,
-    moderation: client.bot_emojis.hammer,
-    fun: client.bot_emojis.rofl,
-    music: client.bot_emojis.music,
-    economy: client.bot_emojis.money,
-    utility: client.bot_emojis.tools,
-    image: client.bot_emojis.picture_frame,
-    nsfw: client.bot_emojis.smirk, // https://www.youtube.com/watch?v=YMm2gv7TStc&t=37s ...
-   };
    let ccate = [];
    readdirSync("./commands/").forEach((dir) => {
     // if (ignored.includes(dir.toLowerCase())) return;
@@ -66,7 +66,6 @@ module.exports = {
    if (client.config.news && client.config.bot_news_title) {
     embed.addField(`${client.config.bot_news_title}`, `${client.config.news}`);
    }
-
    let menus = create_mh(ccate);
    return message.reply({ embeds: [embed], components: menus.smenu }).then((msgg) => {
     const menuID = menus.sid;
@@ -92,25 +91,26 @@ module.exports = {
        };
        return obj;
       });
-      let dota = new Object();
+      let command_names = new Object();
       cmds.map((co) => {
        if (co == undefined) return;
-       dota = {
+       /*command_names = {
         name: `${cmds.length === 0 ? "In progress." : co.cname}`,
         value: co.des ? `> ${co.des}` : "> No Description",
         inline: true,
-       };
-       catts.push(dota);
+       };*/
+       command_names = ` ${cmds.length === 0 ? "In progress." : co.cname}`;
+       catts.push(command_names);
       });
       cots.push(dir.toLowerCase());
      });
 
      if (cots.includes(value.toLowerCase())) {
       const combed = new MessageEmbed()
-       .setTitle(`\`${capitalize(value.toLowerCase())}\` commands`)
+       .setTitle(`${emo[value.toLowerCase()] || "❔"} \`${capitalize(value.toLowerCase())}\` commands`)
        .setAuthor(`${client.user.username} Help`, message.guild.iconURL())
-       .setDescription(`Use \`${prefix} help\` followed by a command name to get more information on a command.\nFor example: \`${prefix} help ping\`.\n\n`)
-       .addFields(catts)
+       .setDescription(`>${catts}`)
+       //.addFields(catts)
        .setColor("RANDOM")
        .setThumbnail(
         client.user.displayAvatarURL({
@@ -137,9 +137,33 @@ module.exports = {
     const collector = msgg.createMessageComponentCollector({
      filter,
      componentType: "SELECT_MENU",
+     time: 61912, // 19.12 | Milliseconds pass as quickly as relationships
     });
     collector.on("collect", select);
-    collector.on("end", () => null);
+    collector.on("end", () => {
+     const end_embed = new MessageEmbed()
+      .setAuthor(`${client.user.username} Help`, message.guild.iconURL())
+      .setTitle(`Time elapsed!`)
+      .setColor("RED")
+      .setDescription(`> To see the help menu again please type \`${prefix} help\`\n> Or to see commands from category please type \`${prefix} help [category]\``)
+      .setFooter(
+       `Requested by ${message.author.tag} | ${client.ws.ping} ms ping!`,
+       message.author.displayAvatarURL({
+        dynamic: true,
+       })
+      )
+      .setTimestamp()
+      .setThumbnail(
+       client.user.displayAvatarURL({
+        dynamic: true,
+        size: 2048,
+       })
+      );
+     msgg.edit({
+      embeds: [end_embed],
+      components: [],
+     });
+    });
    });
   } else {
    let catts = [];
@@ -162,26 +186,22 @@ module.exports = {
      return obj;
     });
 
-    let dota = new Object();
+    let command_names = new Object();
     cmds.map((co) => {
      if (co == undefined) return;
-     dota = {
-      name: `${cmds.length === 0 ? "In progress." : co.cname}`,
-      value: co.des ? co.des : "No Description",
-      inline: true,
-     };
-     catts.push(dota);
+     command_names = ` ${cmds.length === 0 ? "In progress." : co.cname}`;
+     catts.push(command_names);
     });
     cots.push(dir.toLowerCase());
    });
-
+   console.log(catts);
    const command = client.commands.get(args[0].toLowerCase()) || client.commands.find((c) => c.aliases && c.aliases.includes(args[0].toLowerCase()));
    if (cots.includes(args[0].toLowerCase())) {
     const combed = new MessageEmbed()
-     .setTitle(`\`${capitalize(args[0])}\` commands`)
+     .setTitle(`${emo[args[0].toLowerCase()] || "❔"} \`${capitalize(args[0])}\` commands`)
      .setAuthor(`${client.user.username} Help`, message.guild.iconURL())
-     .setDescription(`Use \`${prefix} help\` followed by a command name to get more information on a command.\nFor example: \`${prefix} help ping\`.\n\n`)
-     .addFields(catts)
+     .setDescription(`>${catts}`)
+     //.addFields(catts)
      .setColor("RANDOM")
      .setThumbnail(
       client.user.displayAvatarURL({
