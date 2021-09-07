@@ -1,4 +1,3 @@
-
 const { MessageEmbed } = require("discord.js");
 const moment = require("moment");
 require("moment-duration-format");
@@ -37,13 +36,10 @@ module.exports = {
    if (client.config.status) {
     embed.addField(`${client.bot_emojis.status_online} Servers Status`, "```" + client.config.status + "```");
    }
-   message.reply({embeds: [embed]});
+   message.reply({ embeds: [embed] });
   } catch (err) {
    console.log(err);
-   const error = new MessageEmbed() // Prettier
-    .setDescription(`Something went wrong... ${client.bot_emojis.sadness}`)
-    .setColor("RED");
-   message.reply({ embeds: [error] });
+   message.reply({embeds: [client.command_error_embed]})
   }
  },
 };
