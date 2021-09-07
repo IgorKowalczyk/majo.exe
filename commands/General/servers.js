@@ -21,7 +21,8 @@ module.exports = {
     .setImage("https://media.discordapp.net/attachments/710425657003212810/884064564034023454/Screenshot_2021-09-05-15-16-44-22_7c6675ada7b05a8d2d5c5ffa2a487337.jpg")
     .setColor("RANDOM")
     .setTimestamp();
-   const row = new MessageActionRow().addComponents(
+   const row = new MessageActionRow()// Prettier
+   .addComponents(
     new MessageButton() // Prettier
      .setURL(`https://discord.com/oauth2/authorize/?permissions=${client.config.permissions}&scope=${client.config.scopes}&client_id=${client.user.id}`)
      .setEmoji(client.bot_emojis.giveaway)
