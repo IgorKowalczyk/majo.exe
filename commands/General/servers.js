@@ -18,16 +18,13 @@ module.exports = {
       size: 2048,
      })
     )
-    .setImage("https://media.discordapp.net/attachments/721019707607482409/879068001264107520/hehehe-gangbang-hehhehe.png")
+    .setImage("https://media.discordapp.net/attachments/710425657003212810/884064564034023454/Screenshot_2021-09-05-15-16-44-22_7c6675ada7b05a8d2d5c5ffa2a487337.jpg")
     .setColor("RANDOM")
     .setTimestamp();
    message.reply({ embeds: [embed] });
   } catch (err) {
    console.log(err);
-   const error = new MessageEmbed() // Prettier
-    .setDescription(`Something went wrong... ${client.bot_emojis.sadness}`)
-    .setColor("RED");
-   message.reply({ embeds: [error] });
+   message.reply({embeds: [client.command_error_embed]})
   }
  },
 };
