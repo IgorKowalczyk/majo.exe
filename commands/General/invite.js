@@ -1,4 +1,4 @@
-const { MessageEmbed } = require("discord.js");
+const { MessageEmbed, MessageActionRow, MessageButton } = require("discord.js");
 
 module.exports = {
  name: "invite",
@@ -21,10 +21,19 @@ module.exports = {
       size: 2048,
      })
     );
-   return message.reply({ embeds: [embed] });
+       const row = new MessageActionRow()// Prettier
+   .addComponents(
+    new MessageButton() // Prettier
+     .setURL(`https://discord.com/oauth2/authorize/?permissions=${client.config.permissions}&scope=${client.config.scopes}&client_id=${client.user.id}`)
+     .setEmoji(client.bot_emojis.giveaway)
+     .setLabel("Invite me!")
+     .setStyle("LINK")
+   );
+
+   return message.reply({ embeds: [embed], components: [row] });
   } catch (err) {
    console.log(err);
-   message.reply({embeds: [client.command_error_embed]})
+   message.reply({ embeds: [client.command_error_embed] });
   }
  },
 };
