@@ -1,4 +1,4 @@
-const { MessageEmbed } = require("discord.js");
+const { MessageEmbed, MessageActionRow, MessageButton } = require("discord.js");
 const moment = require("moment");
 require("moment-duration-format");
 const osutils = require("os-utils");
@@ -55,7 +55,6 @@ module.exports = {
       .addField(`${client.bot_emojis.cpu_icon} CPU`, "```" + cpu.model() + " (" + cpu.count() + " cores)" + " [" + cpupercentage + "% used]```")
       .addField(`${client.bot_emojis.drive_icon} Drive`, `\`\`\`${driveinfo.usedGb}GB/${driveinfo.totalGb}GB (${driveinfo.freePercentage}% free)\`\`\``)
       .addField(`${client.bot_emojis.ram_icon} RAM Usage`, `\`\`\`VPS: ${(osutils.totalmem() - osutils.freemem()).toString().split(".")[0] + "." + (osutils.totalmem() - osutils.freemem()).toString().split(".")[1].split("")[0] + (osutils.totalmem() - osutils.freemem()).toString().split(".")[1].split("")[1]}/${osutils.totalmem().toString().split(".")[0] + "." + osutils.totalmem().toString().split(".")[1].split("")[0] + osutils.totalmem().toString().split(".")[1].split("")[1]}MB (${(100 - osutils.freememPercentage() * 100).toString().split(".")[0] + "." + (100 - osutils.freememPercentage() * 100).toString().split(".")[1].split("")[0] + (100 - osutils.freememPercentage() * 100).toString().split(".")[1].split("")[1]}%)\nBOT: ${(process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2)}MB/${osutils.totalmem().toString().split(".")[0] + "." + osutils.totalmem().toString().split(".")[1].split("")[0] + osutils.totalmem().toString().split(".")[1].split("")[1]}MB (${((100 * (process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2)) / osutils.totalmem().toString().split(".")[0]).toFixed(2)} %)\`\`\``)
-      .addField(`${client.bot_emojis.link} Useful Links`, `[Support server](${client.config.support_server}) |${process.env.DOMAIN ? " [Dashboard](" + process.env.DOMAIN + "}) |" : ""} [Invite me](https://discord.com/oauth2/authorize/?permissions=${client.config.permissions}&scope=bot&client_id=${client.user.id})`)
       .setFooter(
        `Requested by ${message.author.username}`,
        message.author.displayAvatarURL({
@@ -64,12 +63,36 @@ module.exports = {
         size: 2048,
        })
       );
-     message.reply({ embeds: [embed] });
+     const row = new MessageActionRow() // Prettier
+      .addComponents(
+       new MessageButton() // Prettier
+        .setURL(`${client.config.support_server}`)
+        .setEmoji(client.bot_emojis.member)
+        .setLabel("Support")
+        .setStyle("LINK")
+      )
+      .addComponents(
+       new MessageButton() // Prettier
+        .setURL(`https://discord.com/oauth2/authorize/?permissions=${client.config.permissions}&scope=${client.config.scopes}&client_id=${client.user.id}`)
+        .setEmoji(client.bot_emojis.channel)
+        .setLabel("Invite me")
+        .setStyle("LINK")
+      );
+     if (process.env.DOMAIN) {
+      row.addComponents(
+       new MessageButton() // Prettier
+        .setURL(`${process.env.DOMAIN}`)
+        .setEmoji(client.bot_emojis.role)
+        .setLabel("Dashboard")
+        .setStyle("LINK")
+      );
+     }
+     return message.reply({ embeds: [embed], components: [row] });
     });
    });
   } catch (err) {
    console.log(err);
-   message.reply({embeds: [client.command_error_embed]})
+   message.reply({ embeds: [client.command_error_embed] });
   }
  },
 };
