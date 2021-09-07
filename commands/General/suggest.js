@@ -26,7 +26,7 @@ module.exports = {
     const embed = new MessageEmbed() // Prettier
      .setAuthor(`${client.bot_emojis.thinking} ${message.author.username} suggestion!`, message.guild.iconURL())
      .setColor("RANDOM")
-     .setDescription(suggestion)
+     .setDescription(`\`\`\`${suggestion}\`\`\``)
      .addField("Reporter", `<@${message.author.id}> (ID: ${message.author.id})`)
      .addField("User guild", `${message.guild.name} (ID: ${message.guild.id})`)
      .setFooter(
@@ -63,10 +63,7 @@ module.exports = {
    }
   } catch (err) {
    console.log(err);
-   const error = new MessageEmbed() // Prettier
-    .setDescription(`Something went wrong... ${client.bot_emojis.sadness}`)
-    .setColor("RED");
-   message.reply({ embeds: [error] });
+   message.reply({embeds: [client.command_error_embed]})
   }
  },
 };
