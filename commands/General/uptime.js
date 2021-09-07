@@ -1,4 +1,4 @@
-const { MessageEmbed } = require("discord.js");
+const { MessageEmbed, MessageActionRow, MessageButton } = require("discord.js");
 const moment = require("moment");
 require("moment-duration-format");
 
@@ -35,11 +35,20 @@ module.exports = {
     .setColor("RANDOM");
    if (client.config.status) {
     embed.addField(`${client.bot_emojis.status_online} Servers Status`, "```" + client.config.status + "```");
+    const row = new MessageActionRow().addComponents(
+     new MessageButton() // Prettier
+      .setURL(`${client.config.status}`)
+      .setEmoji(client.bot_emojis.status_online)
+      .setLabel("Check server status")
+      .setStyle("LINK")
+    );
+    message.reply({ embeds: [embed], components: [row] });
+   } else {
+    message.reply({ embeds: [embed] });
    }
-   message.reply({ embeds: [embed] });
   } catch (err) {
    console.log(err);
-   message.reply({embeds: [client.command_error_embed]})
+   message.reply({ embeds: [client.command_error_embed] });
   }
  },
 };
