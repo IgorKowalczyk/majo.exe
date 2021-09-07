@@ -1,4 +1,4 @@
-const { MessageEmbed } = require("discord.js");
+const { MessageEmbed, MessageActionRow, MessageButton } = require("discord.js");
 
 module.exports = {
  name: "repo",
@@ -25,7 +25,15 @@ module.exports = {
     .setFooter(`Requested by ${message.author.username}`, message.author.displayAvatarURL({ dynamic: true, format: "png", size: 2048 }))
     .setColor("RANDOM")
     .setTimestamp();
-   message.reply({ embeds: [embed] });
+   const row = new MessageActionRow()
+    .addComponents(
+     new MessageButton() // Prettier
+      .setURL(`https://github.com/${client.config.github}/${client.config.github_repo}`)
+      .setEmoji(client.bot_emojis.octo)
+      .setLabel("Github repo")
+      .setStyle("LINK")
+    );
+   message.reply({ embeds: [embed], components: [row] });
   } catch (err) {
    console.log(err);
    message.reply({embeds: [client.command_error_embed]})
