@@ -36,7 +36,8 @@ const create_mh = (array) => {
  });
  let selectionmenu = new MessageSelectMenu().setCustomId(id).setPlaceholder(`${emojis.sparkles} | Choose the command category!`).addOptions(menus);
 
- select_menu = new MessageActionRow().addComponents(selectionmenu);
+ select_menu = new MessageActionRow() // Prettier
+  .addComponents(selectionmenu);
  return {
   smenu: [select_menu],
   sid: id,
