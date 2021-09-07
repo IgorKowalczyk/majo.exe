@@ -18,8 +18,7 @@ module.exports = {
    message.reply({ embeds: [ping] });
   } catch (err) {
    console.log(err);
-   const error = new MessageEmbed().setDescription(`Something went wrong... ${client.bot_emojis.sadness}`);
-   message.reply({ embeds: [error] });
+   message.reply({embeds: [client.command_error_embed]})
   }
  },
 };
