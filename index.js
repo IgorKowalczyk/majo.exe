@@ -20,12 +20,15 @@ const logs = require("discord-logs");
 const sql = require("./utilities/database");
 const emojis = require("./config/emojis_config");
 const config = require("./config/main_config");
+const command_error = new Discord.MessageEmbed().setDescription(`Something went wrong... ${emojis.sadness}`).setColor("RED");
 let command_count = 0;
 let message_count = 0;
 client.config = config;
 client.bot_emojis = emojis;
 client.message_count = message_count;
 client.command_count = command_count;
+client.command_error_embed = command_error;
+client.prefix = process.env.PREFIX;
 logs(client);
 
 sql.query("CREATE TABLE IF NOT EXISTS `logs` (`guildid` VARCHAR(32) NOT NULL, `channelid` VARCHAR(32) NOT NULL, UNIQUE(`guildid`));", function (error, results, fields) {
