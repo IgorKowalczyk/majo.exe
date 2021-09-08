@@ -39,7 +39,7 @@ module.exports = {
     cats = {
      name: name,
      value: `> \`${prefix} help ${dir.toLowerCase()}\``,
-     inline: true,
+     inline: false,
     };
     categories.push(cats);
     ccate.push(nome);
@@ -159,9 +159,17 @@ module.exports = {
         size: 2048,
        })
       );
+     const row = new MessageActionRow() // Prettier
+      .addComponents(
+       new MessageButton() // Prettier
+        .setURL(`https://discord.com/oauth2/authorize/?permissions=${client.config.permissions}&scope=${client.config.scopes}&client_id=${client.user.id}`)
+        //.setEmoji(client.bot_emojis.giveaway)
+        .setLabel("Maybe invite me!")
+        .setStyle("LINK")
+      );
      msgg.edit({
       embeds: [end_embed],
-      components: [],
+      components: [row],
      });
     });
    });
