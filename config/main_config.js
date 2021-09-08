@@ -27,7 +27,7 @@ module.exports = {
  youtube: process.env.YOUTUBE,
  id: process.env.ID,
  advanved_logging: true,
- rickroll: true, // Secret Option
+ rickroll: false, // Secret Option
  
  // Dashboard config
  domain: process.env.DOMAIN,
