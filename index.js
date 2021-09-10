@@ -20,7 +20,9 @@ const logs = require("discord-logs");
 const sql = require("./utilities/database");
 const emojis = require("./config/emojis_config");
 const config = require("./config/main_config");
-const command_error = new Discord.MessageEmbed().setDescription(`Something went wrong... ${emojis.sadness}`).setColor("RED");
+const command_error = new Discord.MessageEmbed() // Prettier
+ .setDescription(`Something went wrong... ${emojis.sadness}`)
+ .setColor("RED");
 let command_count = 0;
 let message_count = 0;
 client.config = config;
