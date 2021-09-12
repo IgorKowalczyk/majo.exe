@@ -27,10 +27,12 @@ module.exports = {
     });
    }
    let evaluated = eval(result);
+   let type = typeof(evaluated)
    console.log(result);
    const success = new Discord.MessageEmbed() // Prettier
     .setColor("RANDOM")
     .setTitle("💡 Eval")
+    .addField(`Type:\n`, "```js\n" + `${type}` + "```", true)
     .addField(`Input:\n`, "```js\n" + `${args.join(" ")}` + "```", false)
     .addField(`Output:\n`, "```js\n" + evaluated + "```", true)
     .setFooter(
