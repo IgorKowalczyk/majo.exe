@@ -9,8 +9,8 @@
   "bot": "node index.js",
   "dashboard": "node dashboard/run.js",
   "dev": "npm-run-all --parallel dev:bot dev:dashboard",
-  "dev:bot": "node --trace-warnings index.js",
-  "dev:dashboard": "node --trace-warnings dashboard/run.js",
+  "dev:bot": "pm2 start index.js",
+  "dev:dashboard": "pm2 start dashboard/run.js",
   "format": "prettier --write . --ignore-unknown",
   "format:check": "prettier --check .",
   "test": "jest --passWithNoTests"
@@ -89,6 +89,7 @@
   "passport-discord": "^0.1.4",
   "percentagebar": "^1.0.3",
   "popcat-wrapper": "^1.3.7",
+  "pm2": "^5.1.1",
   "quick.db": "^7.1.2",
   "quick.eco": "^6.0.0",
   "random-puppy": "^1.1.0",
