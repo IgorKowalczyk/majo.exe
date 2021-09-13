@@ -90,26 +90,26 @@ Go to [this link](https://discord.com/oauth2/authorize/?permissions=4294967287&s
 #### `.env` config table
 | `.env` varriable | Description | Required (Bot) | Required (Dashboard)
 |---|---|:---:|:---:|
-| `TOKEN` | The bot token (Remember! The `TOKEN` is super secret) | :heavy_check_mark: | :heavy_check_mark: |
-| `PREFIX` | The default bot prefix (eg. `!majo`) | :heavy_check_mark: | :heavy_check_mark: |
-| `ID` | Your Discord Bot ID | :heavy_check_mark: | :heavy_check_mark: |
-| `AMEAPI` | Your Amethyste api token | :heavy_check_mark: | :x: |
-| `BRAINID` | Your Brainshop AI Brain ID | :heavy_check_mark: | :x: |
-| `MYSQL_DATABASE` | Your MYSQL database name | :heavy_check_mark: | :heavy_check_mark: |
-| `MYSQL_HOST` | Your MYSQL Host | :heavy_check_mark: | :heavy_check_mark: |
-| `MYSQL_USER` | Your MYSQL user | :heavy_check_mark: | :heavy_check_mark: |
-| `MYSQL_PASSWORD` | Your Brainshop AI Brain Key | :heavy_check_mark: | :heavy_check_mark: |
-| `GENIUS` | Your genius API Key | :heavy_check_mark: | :x: |
-| `DOMAIN` | Your website domain (eg `https://example.com`) | :x: | :heavy_check_mark: |
-| `PORT` | Your webiste port eg. `8008`<br> - Note: Heroku don't need port. Heroku assings port automatically! | :x: | :heavy_check_mark: |
-| `DASHBOARD` | The Web-Dashboard config value. (Boolean) | :x: | :heavy_check_mark: |
-| `SESSION_SECRET` | Random sequence of words, letterss or numbers | :x: | :heavy_check_mark: |
-| `SECRET` | The bot client secret | :x: | :heavy_check_mark: |
-| `ANALYTICS` | Google analytics tracking ID, used in Web-Dashboard | :x: | :x: |
-| `RECAPTCHA_KEY` | Google recaptcha v2 key | :x: | :heavy_check_mark: |
-| `COOKIES` | Your youtube cookies | :heavy_check_mark: | :x: |
-| `CONTACT_WEBHOOK` | Your contact form webhook url | :x: | :heavy_check_mark: |
-| `STATUS_WEBHOOK` | Your status webhook ID | :heavy_check_mark: | :x: |
+| `TOKEN` | The bot token (Remember! The `TOKEN` is super secret) | ✅ | ✅ |
+| `PREFIX` | The default bot prefix (eg. `!majo`) | ✅ | ✅ |
+| `ID` | Your Discord Bot ID | ✅ | ✅ |
+| `AMEAPI` | Your Amethyste api token | ✅ | ❌ |
+| `BRAINID` | Your Brainshop AI Brain ID | ✅ | ❌ |
+| `MYSQL_DATABASE` | Your MYSQL database name | ✅ | ✅ |
+| `MYSQL_HOST` | Your MYSQL Host | ✅ | ✅ |
+| `MYSQL_USER` | Your MYSQL user | ✅ | ✅ |
+| `MYSQL_PASSWORD` | Your Brainshop AI Brain Key | ✅ | ✅ |
+| `GENIUS` | Your genius API Key | ✅ | ❌ |
+| `DOMAIN` | Your website domain (eg `https://example.com`) | ❌ | ✅ |
+| `PORT` | Your webiste port eg. `8008`<br> - Note: Heroku don't need port. Heroku assings port automatically! | ❌ | ✅ |
+| `DASHBOARD` | The Web-Dashboard config value. (Boolean) | ❌ | ✅ |
+| `SESSION_SECRET` | Random sequence of words, letterss or numbers | ❌ | ✅ |
+| `SECRET` | The bot client secret | ❌ | ✅ |
+| `ANALYTICS` | Google analytics tracking ID, used in Web-Dashboard | ❌ | ❌ |
+| `RECAPTCHA_KEY` | Google recaptcha v2 key | ❌ | ✅ |
+| `COOKIES` | Your youtube cookies | ✅ | ❌ |
+| `CONTACT_WEBHOOK` | Your contact form webhook url | ❌ | ✅ |
+| `STATUS_WEBHOOK` | Your status webhook ID | ✅ | ❌ |
 #### Example `.env` file
 <details><summary>Click to see example <code>.env</code> file!</summary>
  
