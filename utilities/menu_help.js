@@ -19,6 +19,7 @@ const create_mh = (array) => {
   economy: emojis.money,
   utility: emojis.tools,
   image: emojis.picture_frame,
+  owner: emojis.owner_crown,
   nsfw: emojis.smirk, // https://www.youtube.com/watch?v=YMm2gv7TStc&t=37s ...
  };
 
