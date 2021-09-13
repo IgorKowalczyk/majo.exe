@@ -24,6 +24,7 @@ module.exports = {
    economy: client.bot_emojis.money,
    utility: client.bot_emojis.tools,
    image: client.bot_emojis.picture_frame,
+   owner: client.bot_emojis.owner_crown,
    nsfw: client.bot_emojis.smirk, // https://www.youtube.com/watch?v=YMm2gv7TStc&t=37s ...
   };
   if (!args[0]) {
