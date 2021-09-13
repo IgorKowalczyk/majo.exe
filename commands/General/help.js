@@ -11,7 +11,7 @@ module.exports = {
  aliases: ["h", "commands"],
  category: "General",
  description: "Displays all the commands available",
- timeout: "10000",
+ timeout: "5000",
  usage: "help [command]",
  run: async (client, message, args) => {
   let categories = [];
