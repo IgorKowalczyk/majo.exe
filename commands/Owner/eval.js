@@ -26,10 +26,9 @@ module.exports = {
    console.log("Code to eval: " + result);
    const success = new MessageEmbed() // Prettier
     .setColor("#2f3136")
-    //.setTitle("💡 Eval")
-    .addField(`${client.bot_emojis.screw_that} Type`, "```js\n" + `${type}` + "```")
-    .addField(`${client.bot_emojis.input} Input`, "```js\n" + `${args.join(" ")}` + "```")
-    .addField(`${client.bot_emojis.output} Output`, "```js\n" + evaluated + "```")
+    .addField(`${client.bot_emojis.screw_that} Type`, `\`\`\`js\n${type}\`\`\``)
+    .addField(`${client.bot_emojis.input} Input`, `\`\`\`js\n${args.join(" ")}\`\`\``)
+    .addField(`${client.bot_emojis.output} Output`, `\`\`\`js\n${evaluated}\`\`\``)
     .setFooter(
      `Requested by ${message.author.username}`,
      message.author.displayAvatarURL({
@@ -42,9 +41,9 @@ module.exports = {
   } catch (err) {
    const errormessage = new MessageEmbed() // Prettier
     .setColor("#e31212")
-    .setTitle("An error has occured")
-    .addField(`Input:\n`, "```js\n" + `${result}` + "```", false)
-    .addField(`Output:\n`, "```js\n" + `${err.message}` + "```", true)
+    .setTitle(`${client.bot_emojis.error} An error has occured!`)
+    .addField(`Input`, `\`\`\`js\n${result}\`\`\``)
+    .addField(`Output`, `\`\`\`js\n${err.message}\`\`\``)
     .setFooter(
      `Requested by ${message.author.username}`,
      message.author.displayAvatarURL({
