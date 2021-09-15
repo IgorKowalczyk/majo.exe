@@ -26,9 +26,9 @@ Go to [this link](https://discord.com/oauth2/authorize/?permissions=4294967287&s
 > We host this bot. Majo.exe *will be* online 24/7. [Invite Majo here!](#invite)<br>
 > However, if you want to host Majo.exe yourself - [take a look here](#self-hosting-bot)
 
-| Heroku | Replit |
-|---|---|
-| [![Deploy to heroku](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy?template=https://github.com/igorkowalczyk/majobot/tree/master) | [![Run on Repl.it](https://repl.it/badge/github/igorkowalczyk/majobot)](https://repl.it/github/igorkowalczyk/majobot) |
+| Heroku | Replit | Terohost |
+|---|---|---|
+| [![Deploy to heroku](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy?template=https://github.com/igorkowalczyk/majobot/tree/master) | [![Run on Repl.it](https://repl.it/badge/github/igorkowalczyk/majobot)](https://repl.it/github/igorkowalczyk/majobot) | [![Run on Terohost](https://raw.githubusercontent.com/IgorKowalczyk/majobot/v13-(WIP)/src/img/readme/terohost_scaled.png)](https://terohost.com) |
 
 #### Self-Hosting (Bot)
 1. Clone [this repository](https://github.com/igorkowalczyk/majobot) `git clone https://github.com/IgorKowalczyk/majobot.git`
