@@ -21,14 +21,14 @@ module.exports = {
       size: 2048,
      })
     );
-       const row = new MessageActionRow()// Prettier
-   .addComponents(
-    new MessageButton() // Prettier
-     .setURL(`https://discord.com/oauth2/authorize/?permissions=${client.config.permissions}&scope=${client.config.scopes}&client_id=${client.user.id}`)
-     .setEmoji(client.bot_emojis.giveaway)
-     .setLabel("Invite me!")
-     .setStyle("LINK")
-   );
+   const row = new MessageActionRow() // Prettier
+    .addComponents(
+     new MessageButton() // Prettier
+      .setURL(`https://discord.com/oauth2/authorize/?permissions=${client.config.permissions}&scope=${client.config.scopes}&client_id=${client.user.id}`)
+      .setEmoji(client.bot_emojis.giveaway)
+      .setLabel("Invite me!")
+      .setStyle("LINK")
+    );
 
    return message.reply({ embeds: [embed], components: [row] });
   } catch (err) {

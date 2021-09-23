@@ -18,7 +18,7 @@ module.exports = {
     .setColor("RANDOM")
     .setTimestamp()
     .setTitle(`${client.bot_emojis.ping} Pong!`);
-   interaction.followUp({ephemeral: true, embeds: [msg]});
+   interaction.followUp({ ephemeral: true, embeds: [msg] });
   } catch (err) {
    console.log(err);
    interaction.followUp({ ephemeral: true, content: "An error has occured!" });

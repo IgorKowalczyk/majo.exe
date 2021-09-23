@@ -40,22 +40,16 @@ module.exports = {
        })
       )
       .setTimestamp();
-      const row = new MessageActionRow()
-      .addComponents(
-        new MessageButton()
-         .setStyle("LINK")
-         .setURL(data.url)
-         .setLabel("My Anime List")
-      )
-     message.reply({embeds: [embed], components: [row]});
+     const row = new MessageActionRow().addComponents(new MessageButton().setStyle("LINK").setURL(data.url).setLabel("My Anime List"));
+     message.reply({ embeds: [embed], components: [row] });
     })
     .catch((err) => {
-      console.log(err);
+     console.log(err);
      const error = new MessageEmbed() // Prettier
       .setColor("RED")
       .setDescription(`${client.bot_emojis.error} | Please enter vaild anime name!`);
      return message.reply({ embeds: [error] });
-    })
+    });
   } catch (err) {
    console.log(err);
    message.reply({ embeds: [client.command_error_embed] });

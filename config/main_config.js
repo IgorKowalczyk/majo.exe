@@ -28,7 +28,7 @@ module.exports = {
  id: process.env.ID,
  advanved_logging: true,
  rickroll: false, // Secret Option
- 
+
  // Dashboard config
  domain: process.env.DOMAIN,
  certs: false,

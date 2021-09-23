@@ -63,7 +63,7 @@ module.exports = {
    }
   } catch (err) {
    console.log(err);
-   message.reply({embeds: [client.command_error_embed]})
+   message.reply({ embeds: [client.command_error_embed] });
   }
  },
 };

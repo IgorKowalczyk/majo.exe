@@ -2,7 +2,9 @@ const Discord = require("discord.js");
 
 module.exports = async (client, interaction) => {
  if (interaction.isCommand()) {
-  await interaction.deferReply({ ephemeral: true }).catch(err => {console.log(err)})
+  await interaction.deferReply({ ephemeral: true }).catch((err) => {
+   console.log(err);
+  });
   const cmd = client.slashCommands.get(interaction.commandName);
   if (!cmd) return interaction.followUp({ ephemeral: true, content: "An error has occured!" });
   const args = [];

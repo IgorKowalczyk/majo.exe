@@ -32,11 +32,11 @@ module.exports = {
      )
      .setTimestamp()
      .setURL(body.url);
-    message.reply({ embeds: [embed]});
-  } catch (err) {
-   console.log(err);
-   message.reply({ embeds: [client.command_error_embed] });
-  }
+    message.reply({ embeds: [embed] });
+   } catch (err) {
+    console.log(err);
+    message.reply({ embeds: [client.command_error_embed] });
+   }
   })();
  },
 };

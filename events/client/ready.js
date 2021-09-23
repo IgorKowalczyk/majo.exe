@@ -29,15 +29,15 @@ module.exports = async (client) => {
     );
    }
    const random = Math.floor(Math.random() * (statuslist.length - 1) + 1);
-   if(client.config.rickroll == true) {
-   client.user.setActivity(statuslist[random], {
-    type: "STREAMING",
-    url: "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
-   });
+   if (client.config.rickroll == true) {
+    client.user.setActivity(statuslist[random], {
+     type: "STREAMING",
+     url: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+    });
    } else {
     client.user.setActivity(statuslist[random], {
-    type: "WATCHING",
-   });
+     type: "WATCHING",
+    });
    }
    if (client.config.advanved_logging == true) console.log(chalk.bold(chalk.blue.bold(`[${client.user.username.toUpperCase().split(" ")[0]}]`)) + chalk.cyan.bold(" Successfully changed client status"));
   }, 10000);

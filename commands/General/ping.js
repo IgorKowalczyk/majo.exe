@@ -18,7 +18,7 @@ module.exports = {
    message.reply({ embeds: [ping] });
   } catch (err) {
    console.log(err);
-   message.reply({embeds: [client.command_error_embed]})
+   message.reply({ embeds: [client.command_error_embed] });
   }
  },
 };

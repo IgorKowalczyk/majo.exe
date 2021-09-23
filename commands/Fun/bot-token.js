@@ -1,4 +1,3 @@
-
 const { MessageEmbed } = require("discord.js");
 const axios = require("axios").default;
 
@@ -9,7 +8,7 @@ module.exports = {
  category: "Fun",
  usage: "bot-token",
  run: async (client, message, args) => {
-   try {
+  try {
    const options = {
     method: "GET",
     url: "https://some-random-api.ml/bottoken",
@@ -27,9 +26,9 @@ module.exports = {
      )
      .setTitle(`${client.bot_emojis.discord_logo} Random Discord Token`)
      .setDescription("```" + response.data.token + "```\n||Notice: This token is automatically generated, it is not a real token for discord bot! It is only supposed to look like this!||");
-    message.reply({embeds: [embed]});
+    message.reply({ embeds: [embed] });
    });
-   } catch (err) {
+  } catch (err) {
    console.log(err);
    message.reply({ embeds: [client.command_error_embed] });
   }
