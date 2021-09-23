@@ -40,7 +40,11 @@ module.exports = {
        })
       )
       .setTimestamp();
-     const row = new MessageActionRow().addComponents(new MessageButton().setStyle("LINK").setURL(data.url).setLabel("My Anime List"));
+     const row = new MessageActionRow() // Prettier
+      .addComponents(
+       // Prettier
+       new MessageButton().setStyle("LINK").setURL(data.url).setLabel("My Anime List")
+      );
      message.reply({ embeds: [embed], components: [row] });
     })
     .catch((err) => {
