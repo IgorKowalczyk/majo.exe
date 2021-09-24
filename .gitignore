@@ -122,7 +122,9 @@ dist/
 # Stores VSCode versions used for testing VSCode extensions
 .vscode-test
 
-# Temporary folders
+# Temporary folders / files
+*.swp
+*.save
 tmp/
 temp/
 

@@ -262,3 +262,7 @@ body.done form > div {
 body.done .contact-form-title::after {
  content: "Your message was sent!" !important;
 }
+
+#captcha {
+ color: #fa2727;
+}

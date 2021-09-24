@@ -22,17 +22,18 @@
  </div>
  </div>
 </section>
-<section class="section-feautures">
-<h2 id="feautures">Feautures</h2>
-<div class="content-container">
-<div class="card-row content-container">
-<div class="card-image"><img src="https://<%= domain %>/pics/cards/image.png"></div>
-<div class="card-text">
-<h3 class="card-title">Images</h3>
-<p><%= capitalize(bot.user.username) %> allows you to make your custom images (or even memes!), <%= capitalize(bot.user.username) %> also can display random images for you!</p>
-</div>
-</div>
-</div>
-</section>
+<link rel="stylesheet" type="text/css" href="https://<%= domain %>/css/cards.css">
 
+<div class="content-container">
+ <div id="feautures" class="product-row">
+  <div class="product-image">
+   <img src="https://media.discordapp.net/attachments/859772658403901440/891003669984710726/embeds.png">
+  </div>
+  <div class="product-text">
+   <h2 class="product-title">Many commands!</h2>
+    <p><%= bot.user.username.split(" ")[0] %> has more than 150 commands. From moderation to memes commands. Everything is clear and quick to use!</p>
+   </div>
+  </div>
+</div>
 <%- include("partials/footer") %>
+
