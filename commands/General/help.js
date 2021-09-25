@@ -228,7 +228,8 @@ module.exports = {
    }
 
    if (!command) {
-    const embed = new MessageEmbed().setDescription(`${client.bot_emojis.error} | Invalid command! Use \`${prefix} help\` for all of my commands!`).setColor("RED");
+    const embed = new MessageEmbed() // Prettier
+    .setDescription(`${client.bot_emojis.error} | Invalid command! Use \`${prefix} help\` for all of my commands!`).setColor("RED");
     return await message.reply({ embeds: [embed] });
    }
 

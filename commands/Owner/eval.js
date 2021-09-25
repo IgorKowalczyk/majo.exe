@@ -18,7 +18,7 @@ module.exports = {
    if (!result) {
     const embed = new MessageEmbed() // Prettier
      .setColor("RED")
-     .setDescription(`${client.bot_emojis.error} | Please input code to evaluate!`);
+     .setDescription(`${client.bot_emojis.error} | Please input code to evaluate!\n\n**Usage:** \`${process.env.PREFIX} eval <code>\``);
     return message.reply({ embeds: [embed] });
    }
    let evaluated = eval(result);
