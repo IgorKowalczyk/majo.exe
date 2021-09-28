@@ -33,6 +33,7 @@ module.exports = {
  domain: process.env.DOMAIN,
  certs: false,
  localhost: false,
+ secure_connection: false,
  privacy_policy_page: true,
  google_analitics: process.env.ANALYTICS,
  client_secret: process.env.SECRET,

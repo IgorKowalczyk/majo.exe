@@ -112,6 +112,7 @@ module.exports = async (client) => {
    aurhor_website: config.author_website,
    github: config.github,
    analitics: config.google_analitics,
+   secure_connection: config.secure_connection,
   };
   res.render(path.resolve(`${templateDir}${path.sep}${template}`), Object.assign(baseData, data));
  };

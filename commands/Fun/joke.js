@@ -19,7 +19,7 @@ module.exports = {
     const body = await response.json();
     const embed = new MessageEmbed() // Prettier
      .setTitle("Random Dad joke", message.guild.iconURL())
-     .setDescription("Dad said: " + body.joke)
+     .setDescription(`>>> `{body.joke}`)
      .setColor("RANDOM")
      .setFooter(
       `Requested by ${message.author.username}`,
