@@ -15,13 +15,7 @@ module.exports = {
    };
    axios.request(options).then((response) => {
     let meme = response.data[0].data.children[0].data;
-    const row = new MessageActionRow()
-    .addComponents(
-     new MessageButton()
-      .setStyle("LINK")
-      .setURL(`https://reddit.com${meme.permalink}`)
-      .setLabel("View meme")
-    )
+    const row = new MessageActionRow().addComponents(new MessageButton().setStyle("LINK").setURL(`https://reddit.com${meme.permalink}`).setLabel("View meme"));
     const embed = new MessageEmbed() // Prettier
      .setColor("RANDOM")
      .setTitle(meme.title)
@@ -35,7 +29,7 @@ module.exports = {
        size: 2048,
       })
      );
-    message.reply({embeds: [embed], components: [row]});
+    message.reply({ embeds: [embed], components: [row] });
    });
   } catch (err) {
    console.log(err);
