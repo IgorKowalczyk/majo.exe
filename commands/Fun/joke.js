@@ -30,7 +30,7 @@ module.exports = {
       })
      )
      .setTimestamp();
-    message.reply({ embeds: [embed]});
+    message.reply({ embeds: [embed] });
    } catch (err) {
     console.log(err);
     message.reply({ embeds: [client.command_error_embed] });
