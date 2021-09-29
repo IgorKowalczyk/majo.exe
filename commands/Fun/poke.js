@@ -12,15 +12,21 @@ module.exports = {
    try {
     const user = message.mentions.users.first();
     if (!user) {
-     const error = new MessageEmbed().setColor("RED").setDescription(`${client.bot_emojis.error} | You must mention someone to poke!\n\n**Usage:** \`${process.env.PREFIX} poke <user>\``);
+     const error = new MessageEmbed() // Prettier
+      .setColor("RED")
+      .setDescription(`${client.bot_emojis.error} | You must mention someone to poke!\n\n**Usage:** \`${process.env.PREFIX} poke <user>\``);
      return message.reply({ embeds: [error] });
     }
     if (user == message.author) {
-     const error = new MessageEmbed().setColor("RED").setDescription(`${client.bot_emojis.facepalm} | You can't poke yourself tfu!`);
+     const error = new MessageEmbed() // Prettier
+      .setColor("RED")
+      .setDescription(`${client.bot_emojis.facepalm} | You can't poke yourself tfu!`);
      return message.reply({ embeds: [error] });
     }
     if (user == client.user) {
-     const error = new MessageEmbed().setColor("RED").setDescription(`${client.bot_emojis.facepalm} | Oh, you tried to poke me but u cant hehe (hopefully ;~;)`);
+     const error = new MessageEmbed() // Prettier
+      .setColor("RED")
+      .setDescription(`${client.bot_emojis.facepalm} | Oh, you tried to poke me but u cant hehe (hopefully ;~;)`);
      return message.reply({ embeds: [error] });
     }
     const response = await fetch("https://nekos.life/api/v2/img/poke");

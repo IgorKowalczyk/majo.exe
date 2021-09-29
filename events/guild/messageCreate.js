@@ -1,7 +1,5 @@
 const { MessageEmbed } = require("discord.js");
 const ms = require("ms");
-const config = require("../../config/main_config");
-const prefix = process.env.PREFIX;
 const Timeout = new Map();
 
 module.exports = async (client, message) => {
@@ -22,10 +20,10 @@ module.exports = async (client, message) => {
       })
      )
      .setColor("RANDOM")
-     .setDescription(`Why are you DM'ing me? Remember - I can only respond to commands on servers.\n [Maybe you want to invite me?](https://discord.com/oauth2/authorize/?permissions=${config.permissions}&scope=${config.scopes}&client_id=${client.user.id})`)
+     .setDescription(`Why are you DM'ing me? Remember - I can only respond to commands on servers.\n [Maybe you want to invite me?](https://discord.com/oauth2/authorize/?permissions=${client.config.permissions}&scope=${client.config.scopes}&client_id=${client.user.id})`)
      .setTimestamp()
      .setFooter(
-      `~${client.user.username} created by ${config.author}`,
+      `~${client.user.username} created by ${client.config.author}`,
       message.author.displayAvatarURL({
        dynamic: true,
        format: "png",
@@ -42,7 +40,7 @@ module.exports = async (client, message) => {
    const embed = new MessageEmbed() // Prettier
     .setTitle(`${client.bot_emojis.success} Hi!`, message.guild.iconURL())
     .setColor("RANDOM")
-    .setDescription("I was pinged by you, here I am - " + client.user.username + "! My prefix is `" + prefix + "` To see all  my commands please type `" + prefix + " help`!")
+    .setDescription("I was pinged by you, here I am - <@" + client.user.id + ">! My prefix is `" + client.prefix + "` To see all  my commands please type `" + client.prefix + " help`!")
     .setTimestamp()
     .setFooter(
      `Requested by ${message.author.username}`,
@@ -55,9 +53,9 @@ module.exports = async (client, message) => {
    return message.reply({ embeds: [embed] });
   }
 
-  if (!message.content.startsWith(prefix)) return;
+  if (!message.content.startsWith(client.prefix)) return;
   if (!message.member) message.member = await message.guild.fetchMember(message);
-  const args = message.content.slice(prefix.length).trim().split(/ +/g);
+  const args = message.content.slice(client.prefix.length).trim().split(/ +/g);
   const cmd = args.shift().toLowerCase();
   if (cmd.length === 0) return;
   let command = client.commands.get(cmd);
@@ -66,7 +64,7 @@ module.exports = async (client, message) => {
    client.command_count++;
    const embed = new MessageEmbed() // Prettier
     .setColor("RED")
-    .setDescription(`${client.bot_emojis.error} | That command does not exist, Take a look at \`${prefix} help\`!`);
+    .setDescription(`${client.bot_emojis.error} | That command does not exist, Take a look at \`${client.prefix} help\`!`);
    return message.reply({ embeds: [embed] });
   }
   if (message.content.toLowerCase().includes("process.env")) {
@@ -78,7 +76,7 @@ module.exports = async (client, message) => {
    return message.reply({ embeds: [embed] });
   }
   if (command) {
-   const timeout = command.timeout || 5000;
+   const timeout = command.timeout || client.config.ratelimit;
    const key = message.author.id + command.name;
    const found = Timeout.get(key);
    if (found) {

@@ -27,6 +27,7 @@ module.exports = {
  youtube: process.env.YOUTUBE,
  id: process.env.ID,
  advanved_logging: true,
+ ratelimit: 2500, // Command ratelimit (can be customized for each command)
  rickroll: false, // Secret Option
 
  // Dashboard config
