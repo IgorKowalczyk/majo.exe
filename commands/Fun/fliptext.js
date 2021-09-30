@@ -12,7 +12,7 @@ module.exports = {
    if (!args[0]) {
     const embed = new MessageEmbed() // Prettier
      .setColor("RED")
-     .setDescription(`${client.bot_emojis.error} | You must provide a text!\n\n**Usage:** \`${process.env.PREFIX} fliptext <text>\``);
+     .setDescription(`${client.bot_emojis.error} | You must provide a text!\n\n**Usage:** \`${client.prefix} fliptext <text>\``);
     return message.reply({ embeds: [embed] });
    }
    if (args.lenght > 50) {

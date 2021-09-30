@@ -5,38 +5,8 @@ const Timeout = new Map();
 module.exports = async (client, message) => {
  try {
   if (!message) return;
-  client.message_count++;
   if (message.author.bot) return;
-  if (!message.guild) {
-   try {
-    client.command_count++;
-    const embed = new MessageEmbed() // Prettier
-     .setTitle(
-      `:thinking: Hmm?`,
-      message.author.displayAvatarURL({
-       dynamic: true,
-       format: "png",
-       size: 2048,
-      })
-     )
-     .setColor("RANDOM")
-     .setDescription(`Why are you DM'ing me? Remember - I can only respond to commands on servers.\n [Maybe you want to invite me?](https://discord.com/oauth2/authorize/?permissions=${client.config.permissions}&scope=${client.config.scopes}&client_id=${client.user.id})`)
-     .setTimestamp()
-     .setFooter(
-      `~${client.user.username} created by ${client.config.author}`,
-      message.author.displayAvatarURL({
-       dynamic: true,
-       format: "png",
-       size: 2048,
-      })
-     );
-    return message.reply({ embeds: [embed] });
-   } catch (err) {
-    return;
-   }
-  }
   if (message.content === `<@${client.user.id}>` || message.content === `<@!${client.user.id}>`) {
-   client.command_count++;
    const embed = new MessageEmbed() // Prettier
     .setTitle(`${client.bot_emojis.success} Hi!`, message.guild.iconURL())
     .setColor("RANDOM")
@@ -52,7 +22,6 @@ module.exports = async (client, message) => {
     );
    return message.reply({ embeds: [embed] });
   }
-
   if (!message.content.startsWith(client.prefix)) return;
   if (!message.member) message.member = await message.guild.fetchMember(message);
   const args = message.content.slice(client.prefix.length).trim().split(/ +/g);
@@ -61,7 +30,6 @@ module.exports = async (client, message) => {
   let command = client.commands.get(cmd);
   if (!command) command = client.commands.get(client.aliases.get(cmd));
   if (!command) {
-   client.command_count++;
    const embed = new MessageEmbed() // Prettier
     .setColor("RED")
     .setDescription(`${client.bot_emojis.error} | That command does not exist, Take a look at \`${client.prefix} help\`!`);
@@ -69,7 +37,6 @@ module.exports = async (client, message) => {
   }
   if (message.content.toLowerCase().includes("process.env")) {
    console.log("[Security Log]: " + message.author.tag + ` (ID: ` + message.author.id + ") used process.env in the " + command.name + " command.");
-   client.command_count++;
    const embed = new MessageEmbed() // Prettier
     .setColor("RED")
     .setDescription(`${client.bot_emojis.error} | The command cannot contain the \`process.env\` string for safetly reasons. We are sorry...`);
@@ -87,7 +54,6 @@ module.exports = async (client, message) => {
      .setDescription(`${client.bot_emojis.error} | ${message.author} slow down! You have to wait \`${ms(timeLeft)}\` before you can use this command again!`);
     return message.reply({ embeds: [embed] });
    } else {
-    client.command_count++;
     command.run(client, message, args);
     Timeout.set(key, Date.now());
     setTimeout(() => {

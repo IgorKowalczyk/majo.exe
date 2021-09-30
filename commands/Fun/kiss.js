@@ -12,7 +12,7 @@ module.exports = {
   if (!user) {
    const error = new MessageEmbed() // Prettier
     .setColor("RED")
-    .setDescription(`${client.bot_emojis.broken_heart} | You must mention user to kiss ;-;\n\n**Usage:** \`${process.env.PREFIX} kiss <user>\``);
+    .setDescription(`${client.bot_emojis.broken_heart} | You must mention user to kiss ;-;\n\n**Usage:** \`${client.prefix} kiss <user>\``);
    return message.reply({ embeds: [error] });
   }
   if (message.author === user || message.member == user) {

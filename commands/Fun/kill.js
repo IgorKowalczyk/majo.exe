@@ -14,7 +14,7 @@ module.exports = {
    if (!member) {
     const embed = new MessageEmbed() // Prettier
      .setColor("RED")
-     .setDescription(`${client.bot_emojis.error} | You must mention someone to kill!\n\n**Usage:** \`${process.env.PREFIX} kill <user>\``);
+     .setDescription(`${client.bot_emojis.error} | You must mention someone to kill!\n\n**Usage:** \`${client.prefix} kill <user>\``);
     return message.reply({ embeds: [embed] });
    }
    if (message.author === member || message.member == member) {

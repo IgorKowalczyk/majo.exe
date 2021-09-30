@@ -51,7 +51,7 @@ module.exports = {
      console.log(err);
      const error = new MessageEmbed() // Prettier
       .setColor("RED")
-      .setDescription(`${client.bot_emojis.error} | Please enter vaild anime name!\n\n**Usage:** \`${process.env.PREFIX} anime <anime name>\``);
+      .setDescription(`${client.bot_emojis.error} | Please enter vaild anime name!\n\n**Usage:** \`${client.prefix} anime <anime name>\``);
      return message.reply({ embeds: [error] });
     });
   } catch (err) {

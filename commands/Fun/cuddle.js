@@ -14,7 +14,7 @@ module.exports = {
     if (!user) {
      const embed = new MessageEmbed() // Prettier
       .setColor("RED")
-      .setDescription(`${client.bot_emojis.error} | You must mention user to cuddle!\n\n**Usage:** \`${process.env.PREFIX} cuddle <user>\``);
+      .setDescription(`${client.bot_emojis.error} | You must mention user to cuddle!\n\n**Usage:** \`${client.prefix} cuddle <user>\``);
      return message.reply({ embeds: [embed] });
     }
     if (user == message.author) {

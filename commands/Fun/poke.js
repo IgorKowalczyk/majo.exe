@@ -14,7 +14,7 @@ module.exports = {
     if (!user) {
      const error = new MessageEmbed() // Prettier
       .setColor("RED")
-      .setDescription(`${client.bot_emojis.error} | You must mention someone to poke!\n\n**Usage:** \`${process.env.PREFIX} poke <user>\``);
+      .setDescription(`${client.bot_emojis.error} | You must mention someone to poke!\n\n**Usage:** \`${client.prefix} poke <user>\``);
      return message.reply({ embeds: [error] });
     }
     if (user == message.author) {

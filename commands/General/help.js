@@ -1,6 +1,5 @@
 const { MessageEmbed, MessageActionRow, MessageButton, Message, Client } = require("discord.js");
 const { readdirSync } = require("fs");
-const prefix = process.env.PREFIX;
 const create_mh = require("../../utilities/menu_help");
 function capitalize(string) {
  return string.charAt(0).toUpperCase() + string.slice(1);
@@ -39,7 +38,7 @@ module.exports = {
     let cats = new Object();
     cats = {
      name: name,
-     value: `> \`${prefix} help ${dir.toLowerCase()}\``,
+     value: `> \`${client.prefix} help ${dir.toLowerCase()}\``,
      inline: false,
     };
     categories.push(cats);
@@ -48,7 +47,7 @@ module.exports = {
 
    const embed = new MessageEmbed()
     .setAuthor(`${client.user.username} Help`, message.guild.iconURL())
-    .setDescription(`My prefix is \`${prefix}\`\nUse the menu, or use \`${prefix} help [category]\` to view commands base on their category!`)
+    .setDescription(`My prefix is \`${client.prefix}\`\nUse the menu, or use \`${client.prefix} help [category]\` to view commands base on their category!`)
     .addFields(categories)
     .setFooter(
      `Requested by ${message.author.tag} | ${client.commands.size} commands in total`,
@@ -146,7 +145,7 @@ module.exports = {
       .setAuthor(`${client.user.username} Help`, message.guild.iconURL())
       .setTitle(`Time elapsed!`)
       .setColor("RED")
-      .setDescription(`> To see the help menu again please type \`${prefix} help\`\n> Or to see commands from category please type \`${prefix} help [category]\``)
+      .setDescription(`> To see the help menu again please type \`${client.prefix} help\`\n> Or to see commands from category please type \`${client.prefix} help [category]\``)
       .setFooter(
        `Requested by ${message.author.tag} | ${client.ws.ping} ms ping!`,
        message.author.displayAvatarURL({
@@ -229,7 +228,7 @@ module.exports = {
 
    if (!command) {
     const embed = new MessageEmbed() // Prettier
-     .setDescription(`${client.bot_emojis.error} | Invalid command! Use \`${prefix} help\` for all of my commands!`)
+     .setDescription(`${client.bot_emojis.error} | Invalid command or module! Use \`${client.prefix} help\` to see all my commands!`)
      .setColor("RED");
     return await message.reply({ embeds: [embed] });
    }
@@ -240,7 +239,7 @@ module.exports = {
     .addField(`${client.bot_emojis.stopwatch} Category`, `\`${command.category}\``)
     .addField(`${client.bot_emojis.stopwatch} Cooldown`, `\`${command.timeout || "5000"}ms\``)
     .addField(`${client.bot_emojis.edit} Description`, command.description ? `\`${command.description}\`` : "`No description found for this command!`")
-    .addField(`${client.bot_emojis.screw_that} Usage`, command.usage ? `\`${prefix} ${command.name} ${command.usage}\`` : `\`${prefix}${command.name}\``)
+    .addField(`${client.bot_emojis.screw_that} Usage`, command.usage ? `\`${client.prefix} ${command.name} ${command.usage}\`` : `\`${client.prefix}${command.name}\``)
     .addField(`${client.bot_emojis.sign} Aliases (${command.aliases.length})`, `\`${command.aliases.join("`, `") || "None!"}\``)
     .setFooter(
      `Requested by ${message.author.tag}`,

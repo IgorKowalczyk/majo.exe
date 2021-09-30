@@ -19,7 +19,7 @@ module.exports = {
    if (!command) {
     const embed = new MessageEmbed() // Prettier
      .setColor("RED")
-     .setDescription(`${client.bot_emojis.error} | Please input script to run!\n\n**Usage:** \`${process.env.PREFIX} shell <script>\``);
+     .setDescription(`${client.bot_emojis.error} | Please input script to run!\n\n**Usage:** \`${client.prefix} shell <script>\``);
     return message.reply({ embeds: [embed] });
    }
    child.exec(command, (err, res) => {

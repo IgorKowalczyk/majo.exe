@@ -11,7 +11,7 @@ module.exports = {
   if (!rate) {
    const error = new MessageEmbed() // Prettier
     .setColor("RED")
-    .setDescription(`${client.bot_emojis.error} | Please enter a text!\n\n**Usage:** \`${process.env.PREFIX} rate <text>\``);
+    .setDescription(`${client.bot_emojis.error} | Please enter a text!\n\n**Usage:** \`${client.prefix} rate <text>\``);
    return message.reply({ embeds: [error] });
   }
   if (rate.length > 400) {

@@ -22,7 +22,7 @@ module.exports = {
    const chanargs = args.slice(0).join(" ");
    const boards = ["3", "a", "aco", "adv", "an", "b", "bant", "biz", "c", "cgl", "ck", "cm", "co", "d", "diy", "e", "f", "fa", "fit", "g", "gd", "gif", "h", "hc", "his", "hm", "hr", "i", "ic", "int", "jp", "k", "lgbt", "lit", "m", "mlp", "mu", "n", "news", "o", "out", "p", "po", "pol", "pw", "qa", "qst", "r", "r9k", "s", "s4s", "sci", "soc", "sp", "t", "tg", "toy", "trash", "trv", "tv", "u", "v", "vg", "vip", "vm", "vmg", "vp", "vr", "vrpg", "vst", "vt", "w", "wg", "wsg", "wsr", "x", "xs", "y"];
    const board_error = new MessageEmbed() // Prettier
-    .setTitle(`${client.bot_emojis.anger} Please enter a vaild board!\n\n**Usage:** \`${process.env.PREFIX} 4chan <board>\``)
+    .setTitle(`${client.bot_emojis.anger} Please enter a vaild board!\n\n**Usage:** \`${client.prefix} 4chan <board>\``)
     .setColor("RED")
     .setDescription(`\`${boards.join("`, `")}\``);
    if (!chanargs) {

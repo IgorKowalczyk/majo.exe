@@ -18,13 +18,13 @@ module.exports = async (client) => {
     statuslist.push(
      `🎉 ${client.guilds.cache.size} servers 🎉`, // Prettier
      `🎉 ${client.guilds.cache.reduce((a, g) => a + g.memberCount, 0)} members 🎉`, // Prettier
-     `🎉 ${process.env.PREFIX} help 🎉`
+     `🎉 ${client.prefix} help 🎉`
     );
    } else {
     statuslist.push(
      `${emoji} | ${client.guilds.cache.size} servers!`, // Prettier
      `${emoji} | ${client.guilds.cache.reduce((a, g) => a + g.memberCount, 0)} members!`, // Prettier
-     `${emoji} | ${process.env.PREFIX} help`, // Prettier
+     `${emoji} | ${client.prefix} help`, // Prettier
      `${emoji} | Waiting for verification! (${client.guilds.cache.size} guilds 🥰)`
     );
    }

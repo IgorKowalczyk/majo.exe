@@ -13,12 +13,12 @@ module.exports = {
    if (args.join(" ").length > 1000) {
     const error = new MessageEmbed() // Prettier
      .setColor("RED")
-     .setDescription(`${client.bot_emojis.error} | The max length for ascii is 1000 characters!\n\n**Usage:** \`${process.env.PREFIX} ascii <text>\``);
+     .setDescription(`${client.bot_emojis.error} | The max length for ascii is 1000 characters!\n\n**Usage:** \`${client.prefix} ascii <text>\``);
     return message.reply({ embeds: [error] });
    }
    if (!args[0]) {
     const error = new MessageEmbed() // Prettier
-     .setDescription(`${client.bot_emojis.error} | Please enter a text to convert!\n\n**Usage:** \`${process.env.PREFIX} ascii <text>\``);
+     .setDescription(`${client.bot_emojis.error} | Please enter a text to convert!\n\n**Usage:** \`${client.prefix} ascii <text>\``);
     return message.reply({ embeds: [error] });
    }
    figlet(args.join(" "), function (err, data) {
