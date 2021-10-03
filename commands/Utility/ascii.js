@@ -18,7 +18,7 @@ module.exports = {
    }
    figlet(args.join(" "), function (err, data) {
     if (err) {
-     return message.reply({ embeds: [client.command_error_embed] });
+     return client.createCommandError(message, err);
     }
     hastebin
      .createPaste(
@@ -65,7 +65,7 @@ module.exports = {
    });
   } catch (err) {
    console.log(err);
-   message.reply({ embeds: [client.command_error_embed] });
+   return client.createCommandError(message, err);
   }
  },
 };

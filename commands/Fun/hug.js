@@ -47,7 +47,7 @@ module.exports = {
     message.reply({ embeds: [embed] });
    } catch (err) {
     console.log(err);
-    message.reply({ embeds: [client.command_error_embed] });
+    return client.createCommandError(message, err);
    }
   })();
  },
