@@ -20,7 +20,7 @@ module.exports = {
  permissions: "4294967287",
  suggestions_channel: "838092194530852884",
  bot_news_title: "<:terohost:881846121201291284> Terohost",
- news: "Are you looking for cheap, fast and reliable hosting? [Terohost](https://terohost.com/) is perfect for you! Plans start at $1/mo! Go to [terohost.com](https://terohost.com/) and order your dream server today!\n\n*Ps! I am being hosted on Terohost :grin:*",
+ news: "Are you looking for cheap, fast and reliable hosting? [Terohost](https://terohost.com/) is perfect for you! Plans start at $1/mo! Go to [terohost.com](https://terohost.com/) and order your dream server today!",
  brainid: process.env.BRAINID,
  brainkey: process.env.BRAINKEY,
  prefix: process.env.PREFIX,
