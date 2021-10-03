@@ -9,12 +9,7 @@ module.exports = {
  run: async (client, message, args) => {
   try {
    if (!client.config.github && !client.config.github_repo) {
-    return message.lineReply({
-     embed: {
-      color: 16734039,
-      description: `${client.bot_emojis.error} | This project is close-source!`,
-     },
-    });
+    return client.createError(message, `${client.bot_emojis.error} | This project is close-source!`);
    }
    function capitalize(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);

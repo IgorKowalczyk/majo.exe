@@ -9,16 +9,10 @@ module.exports = {
  run: async (client, message, args) => {
   let rate = args.join(" ");
   if (!rate) {
-   const error = new MessageEmbed() // Prettier
-    .setColor("RED")
-    .setDescription(`${client.bot_emojis.error} | Please enter a text!\n\n**Usage:** \`${client.prefix} rate <text>\``);
-   return message.reply({ embeds: [error] });
+   return client.createError(message, `${client.bot_emojis.error} | Please enter a text!\n\n**Usage:** \`${client.prefix} rate <text>\``);
   }
   if (rate.length > 400) {
-   const error = new MessageEmbed() // Prettier
-    .setColor("RED")
-    .setDescription(`${client.bot_emojis.error} | I can't rate that! Max text length is \`400\` characters!`);
-   return message.reply({ embeds: [error] });
+   return client.createError(message, `${client.bot_emojis.error} | I can't rate that! Max text length is \`400\` characters!`);
   }
   let result = Math.floor(Math.random() * 100 + 0);
   const happyrate = new MessageEmbed() // Prettier

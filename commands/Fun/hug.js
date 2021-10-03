@@ -12,22 +12,13 @@ module.exports = {
    try {
     const user = message.mentions.users.first();
     if (!user) {
-     const embed = new MessageEmbed() // Prettier
-      .setColor("RED")
-      .setDescription(`${client.bot_emojis.error} | You must mention someone to hug!\n\n**Usage:** \`${client.prefix} hug <user>\``);
-     return message.reply({ embeds: [embed] });
+     return client.createError(message, `${client.bot_emojis.error} | You must mention someone to hug!\n\n**Usage:** \`${client.prefix} hug <user>\``);
     }
     if (user == message.author) {
-     const embed = new MessageEmbed() // Prettier
-      .setColor("RED")
-      .setDescription(`${client.bot_emojis.grin} | You can't hug yourself but... Ok, get the hug from me ＼( ^o^ )／ !`);
-     return message.reply({ embeds: [embed] });
+     return client.createError(message, `${client.bot_emojis.grin} | You can't hug yourself but... Ok, get the hug from me ＼( ^o^ )／ !`);
     }
     if (user == client.user) {
-     const embed = new MessageEmbed() // Prettier
-      .setColor("RED")
-      .setDescription(`${client.bot_emojis.grin} | Oh, you tried to hug me but u can't... Im not real... But I can hug you ＼( ^o^ )／`);
-     return message.reply({ embeds: [embed] });
+     return client.createError(message, `${client.bot_emojis.grin} | Oh, you tried to hug me but u can't... Im not real... But I can hug you ＼( ^o^ )／`);
     }
     const response = await fetch("https://nekos.life/api/v2/img/cuddle");
     const body = await response.json();

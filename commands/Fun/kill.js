@@ -12,16 +12,11 @@ module.exports = {
   try {
    const member = (await await message.mentions.members.first()) || message.guild.members.cache.get(args[0]) || message.guild.members.cache.find((r) => r.user.username.toLowerCase().includes() === args.join(" ").toLocaleLowerCase()) || message.guild.members.cache.find((r) => r.displayName.toLowerCase().includes() === args.join(" ").toLocaleLowerCase());
    if (!member) {
-    const embed = new MessageEmbed() // Prettier
-     .setColor("RED")
-     .setDescription(`${client.bot_emojis.error} | You must mention someone to kill!\n\n**Usage:** \`${client.prefix} kill <user>\``);
-    return message.reply({ embeds: [embed] });
+    return client.createError(message, `${client.bot_emojis.error} | You must mention someone to kill!\n\n**Usage:** \`${client.prefix} kill <user>\``);
    }
    if (message.author === member || message.member == member) {
-    const embed = new MessageEmbed() // Prettier
-     .setColor("RED")
-     .setDescription(`${client.bot_emojis.error} | You can't kill yourself...`);
-    return message.reply({ embeds: [embed] });
+    s;
+    return client.createError(message, `${client.bot_emojis.error} | You can't kill yourself...`);
    }
    const pickeddeath = deaths[Math.floor(Math.random() * deaths.length)];
    const change1 = pickeddeath.replace("[NAME1]", "<@" + message.author + ">");

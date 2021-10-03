@@ -10,16 +10,10 @@ module.exports = {
  run: async (client, message, args) => {
   const user = (await message.mentions.members.first()) || message.guild.members.cache.get(args[0]) || message.guild.members.cache.find((r) => r.user.username.toLowerCase().includes() === args.join(" ").toLocaleLowerCase()) || message.guild.members.cache.find((r) => r.displayName.toLowerCase().includes() === args.join(" ").toLocaleLowerCase());
   if (!user) {
-   const error = new MessageEmbed() // Prettier
-    .setColor("RED")
-    .setDescription(`${client.bot_emojis.broken_heart} | You must mention user to kiss ;-;\n\n**Usage:** \`${client.prefix} kiss <user>\``);
-   return message.reply({ embeds: [error] });
+   return client.createError(message, `${client.bot_emojis.broken_heart} | You must mention user to kiss ;-;\n\n**Usage:** \`${client.prefix} kiss <user>\``);
   }
   if (message.author === user || message.member == user) {
-   const error = new MessageEmbed() // Prettier
-    .setColor("RED")
-    .setDescription(`${client.bot_emojis.broken_heart} | You cant kiss yourself ;-; (Try kissing someone else, your love. Maybe you need some help?)`);
-   return message.reply({ embeds: [error] });
+   return client.createError(message, `${client.bot_emojis.broken_heart} | You cant kiss yourself ;-; (Try kissing someone else, your love. Maybe you need some help?)`);
   }
   (async () => {
    try {

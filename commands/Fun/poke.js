@@ -12,22 +12,13 @@ module.exports = {
    try {
     const user = message.mentions.users.first();
     if (!user) {
-     const error = new MessageEmbed() // Prettier
-      .setColor("RED")
-      .setDescription(`${client.bot_emojis.error} | You must mention someone to poke!\n\n**Usage:** \`${client.prefix} poke <user>\``);
-     return message.reply({ embeds: [error] });
+     return client.createError(message, `${client.bot_emojis.error} | You must mention someone to poke!\n\n**Usage:** \`${client.prefix} poke <user>\``);
     }
     if (user == message.author) {
-     const error = new MessageEmbed() // Prettier
-      .setColor("RED")
-      .setDescription(`${client.bot_emojis.facepalm} | You can't poke yourself tfu!`);
-     return message.reply({ embeds: [error] });
+     return client.createError(message, `${client.bot_emojis.facepalm} | You can't poke yourself tfu!`);
     }
     if (user == client.user) {
-     const error = new MessageEmbed() // Prettier
-      .setColor("RED")
-      .setDescription(`${client.bot_emojis.facepalm} | Oh, you tried to poke me but u cant hehe (hopefully ;~;)`);
-     return message.reply({ embeds: [error] });
+     return client.createError(message, `${client.bot_emojis.facepalm} | Oh, you tried to poke me but u cant hehe (hopefully ;~;)`);
     }
     const response = await fetch("https://nekos.life/api/v2/img/poke");
     const body = await response.json();

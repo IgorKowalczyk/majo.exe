@@ -9,17 +9,11 @@ module.exports = {
  run: async (client, message, args) => {
   try {
    if (message.author.id !== client.config.owner_id) {
-    const embed = new MessageEmbed() // Prettier
-     .setColor("RED")
-     .setDescription(`${client.bot_emojis.error} | You do not have permission to run this command (Only owner of the bot can run this)!`);
-    return message.reply({ embeds: [embed] });
+    return client.createError(message, `${client.bot_emojis.error} | You do not have permission to run this command (Only owner of the bot can run this)!`);
    }
    var result = args.join(" ");
    if (!result) {
-    const embed = new MessageEmbed() // Prettier
-     .setColor("RED")
-     .setDescription(`${client.bot_emojis.error} | Please input code to evaluate!\n\n**Usage:** \`${client.prefix} eval <code>\``);
-    return message.reply({ embeds: [embed] });
+    return client.createError(message, `${client.bot_emojis.error} | Please input code to evaluate!\n\n**Usage:** \`${client.prefix} eval <code>\``);
    }
    let evaluated = eval(result);
    let type = typeof evaluated;

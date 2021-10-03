@@ -12,22 +12,13 @@ module.exports = {
    try {
     const user = message.mentions.users.first();
     if (!user) {
-     const embed = new MessageEmbed() // Prettier
-      .setColor("RED")
-      .setDescription(`${client.bot_emojis.error} | You must mention user to cuddle!\n\n**Usage:** \`${client.prefix} cuddle <user>\``);
-     return message.reply({ embeds: [embed] });
+     return client.createError(message, `${client.bot_emojis.error} | You must mention user to cuddle!\n\n**Usage:** \`${client.prefix} cuddle <user>\``);
     }
     if (user == message.author) {
-     const embed = new MessageEmbed() // Prettier
-      .setColor("RED")
-      .setDescription(`${client.bot_emojis.grin} | You can't cuddle yourself ;-;`);
-     return message.reply({ embeds: [embed] });
+     return client.createError(message, `${client.bot_emojis.grin} | You can't cuddle yourself ;-;`);
     }
     if (user == client.user) {
-     const embed = new MessageEmbed() // Prettier
-      .setColor("RED")
-      .setDescription(`${client.bot_emojis.grin} | Oh, you tried to hug me but u can't... Im not real...`);
-     return message.reply({ embeds: [embed] });
+     return client.createError(message, `${client.bot_emojis.grin} | Oh, you tried to hug me but u can't... Im not real...`);
     }
     const response = await fetch("https://nekos.life/api/v2/img/cuddle");
     const body = await response.json();

@@ -43,16 +43,16 @@ module.exports = {
      const row = new MessageActionRow() // Prettier
       .addComponents(
        // Prettier
-       new MessageButton().setStyle("LINK").setURL(data.url).setLabel("My Anime List")
+       new MessageButton() // Prettier
+        .setStyle("LINK")
+        .setURL(data.url)
+        .setLabel("My Anime List")
       );
      message.reply({ embeds: [embed], components: [row] });
     })
     .catch((err) => {
      console.log(err);
-     const error = new MessageEmbed() // Prettier
-      .setColor("RED")
-      .setDescription(`${client.bot_emojis.error} | Please enter vaild anime name!\n\n**Usage:** \`${client.prefix} anime <anime name>\``);
-     return message.reply({ embeds: [error] });
+     return client.createError(message, `${client.bot_emojis.error} | Please enter vaild anime name!\n\n**Usage:** \`${client.prefix} anime <anime name>\``);
     });
   } catch (err) {
    console.log(err);

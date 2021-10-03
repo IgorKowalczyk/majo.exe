@@ -11,15 +11,10 @@ module.exports = {
  run: async (client, message, args) => {
   try {
    if (args.join(" ").length > 1000) {
-    const error = new MessageEmbed() // Prettier
-     .setColor("RED")
-     .setDescription(`${client.bot_emojis.error} | The max length for ascii is 1000 characters!\n\n**Usage:** \`${client.prefix} ascii <text>\``);
-    return message.reply({ embeds: [error] });
+    return client.createError(message, `${client.bot_emojis.error} | The max length for ascii is 1000 characters!\n\n**Usage:** \`${client.prefix} ascii <text>\``);
    }
    if (!args[0]) {
-    const error = new MessageEmbed() // Prettier
-     .setDescription(`${client.bot_emojis.error} | Please enter a text to convert!\n\n**Usage:** \`${client.prefix} ascii <text>\``);
-    return message.reply({ embeds: [error] });
+    return client.createError(message, `${client.bot_emojis.error} | Please enter a text to convert!\n\n**Usage:** \`${client.prefix} ascii <text>\``);
    }
    figlet(args.join(" "), function (err, data) {
     if (err) {
@@ -65,10 +60,7 @@ module.exports = {
       message.reply({ embeds: [embed], components: [row] });
      })
      .catch(function (requestError) {
-      const error = new MessageEmbed() // Prettier
-       .setColor("RED")
-       .setDescription(`Something went wrong while uploading ascii code to server ${client.bot_emojis.sadness}`);
-      return message.reply({ embeds: [error] });
+      return client.createError(message, `Something went wrong while uploading ascii code to server ${client.bot_emojis.sadness}`);
      });
    });
   } catch (err) {

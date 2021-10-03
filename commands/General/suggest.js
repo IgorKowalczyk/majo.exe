@@ -10,16 +10,10 @@ module.exports = {
   try {
    const suggestion = args.join(" ");
    if (!suggestion) {
-    const error = new MessageEmbed() //Prettier
-     .setColor("RED")
-     .setDescription(`${client.bot_emojis.error} | You need to enter a suggestion!`);
-    return message.reply({ embeds: [error] });
+    return client.createError(message, `${client.bot_emojis.error} | You need to enter a suggestion!`);
    }
    if (suggestion.lenght > 1000) {
-    const error = new MessageEmbed() // Prettier
-     .setColor("RED")
-     .setDescription(`${client.bot_emojis.error} | Your suggestion can have a maximum of 1000 characters!`);
-    return message.reply({ embeds: [error] });
+    return client.createError(message, `${client.bot_emojis.error} | Your suggestion can have a maximum of 1000 characters!`);
    }
    const channel = client.channels.cache.get(client.config.suggestions_channel);
    if (channel) {
@@ -54,12 +48,18 @@ module.exports = {
        size: 2048,
       })
      );
-    const row = new MessageActionRow().addComponents(new MessageButton().setURL(client.config.support_server).setLabel("View suggestion").setStyle("LINK"));
+    const row = new MessageActionRow() // Prettier
+     .addComponents(
+      // Prettier
+      new MessageButton() // Prettier
+       .setURL(client.config.support_server)
+       .setLabel("View suggestion")
+       .setStyle("LINK")
+     );
 
     message.reply({ embeds: [embed], components: [row] });
    } else {
-    const error = new MessageEmbed().setColor("RED").setDescription(`${client.bot_emojis.error} | I can't find suggestions channel. Mayby the channel didn't exist. If you are the bot developer please configure it in config.`);
-    return message.reply({ embeds: [error] });
+    return client.createError(message, `${client.bot_emojis.error} | I can't find suggestions channel. Mayby the channel didn't exist. If you are the bot developer please configure it in config.`);
    }
   } catch (err) {
    console.log(err);

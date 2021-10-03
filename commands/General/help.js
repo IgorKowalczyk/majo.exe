@@ -227,10 +227,7 @@ module.exports = {
    }
 
    if (!command) {
-    const embed = new MessageEmbed() // Prettier
-     .setDescription(`${client.bot_emojis.error} | Invalid command or module! Use \`${client.prefix} help\` to see all my commands!`)
-     .setColor("RED");
-    return await message.reply({ embeds: [embed] });
+    return client.createError(message, `${client.bot_emojis.error} | Invalid command or module! Use \`${client.prefix} help\` to see all my commands!`);
    }
 
    const embed = new MessageEmbed()
