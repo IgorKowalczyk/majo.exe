@@ -31,12 +31,12 @@ module.exports = function (client) {
  client.giveawaysManager = require("./giveaways")(client);
  const logs = require("discord-logs");
  logs(client);
- client.createError = function (message, error_message, color) {
+ client.createError = function (message, error_message, color, error_ephemeral) {
   if (!message) throw new Error("You must provide message object to create new error!");
   if (!error_message) throw new Error("You must provide error_message text to create new error!");
   const error = new Discord.MessageEmbed() // Prettier
    .setColor(color || "RED")
    .setDescription(error_message);
-  return message.reply({ embeds: [error] });
+  return message.reply({ embeds: [error], ephemeral: (error_ephemeral) ? true : false});
  };
 };
