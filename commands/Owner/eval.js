@@ -1,4 +1,4 @@
-const { MessageEmbed } = require("discord.js");
+const Discord = require("discord.js");
 
 module.exports = {
  name: "eval",
@@ -18,7 +18,7 @@ module.exports = {
    let evaluated = eval(result);
    let type = typeof evaluated;
    console.log("Code to eval: " + result);
-   const success = new MessageEmbed() // Prettier
+   const success = new Discord.MessageEmbed() // Prettier
     .setColor("#2f3136")
     .addField(`${client.bot_emojis.screw_that} Type`, `\`\`\`js\n${type}\`\`\``)
     .addField(`${client.bot_emojis.input} Input`, `\`\`\`js\n${args.join(" ")}\`\`\``)
@@ -33,7 +33,7 @@ module.exports = {
     );
    message.reply({ embeds: [success] });
   } catch (err) {
-   const errormessage = new MessageEmbed() // Prettier
+   const errormessage = new Discord.MessageEmbed() // Prettier
     .setColor("#e31212")
     .setTitle(`${client.bot_emojis.error} An error has occured!`)
     .addField(`Input`, `\`\`\`js\n${result}\`\`\``)
