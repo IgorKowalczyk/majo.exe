@@ -13,7 +13,7 @@ module.exports = {
     return client.createError(message, `${client.bot_emojis.error} | You must provide a text!\n\n**Usage:** \`${client.prefix} fliptext <text>\``);
    }
    if (args.lenght > 50) {
-    return client.createError(message, `${client.bot_emojis.error} | The text can't be longer than 50 characters!`);
+    return client.createError(message, `${client.bot_emojis.error} | The text can't be longer than 50 characters!\n\n**Usage:** \`${client.prefix} fliptext <text>\``);
    }
    let flipped = [];
    args.forEach((arg) => {

@@ -21,3 +21,7 @@ sql.query("CREATE TABLE IF NOT EXISTS `giveaways` (`id` INT(1) NOT NULL AUTO_INC
  if (err) throw new Error(err);
  console.log(chalk.bold(chalk.blue.bold("[SQL]")) + chalk.cyan.bold(" Fetched table ") + chalk.blue.underline("giveaways") + chalk.cyan.bold("! Status: ") + chalk.blue.bold("Success (OK)") + chalk.cyan.bold("!"));
 });
+sql.query("CREATE TABLE IF NOT EXISTS `anti_selfbots` (`guildid` VARCHAR(32) NOT NULL, `enabled` INT(1) NOT NULL, UNIQUE(`guildid`));", function (error) {
+ if (error) throw new Error(error);
+ console.log(chalk.bold(chalk.blue.bold("[SQL]")) + chalk.cyan.bold(" Fetched table ") + chalk.blue.underline("anti_selfbots") + chalk.cyan.bold("! Status: ") + chalk.blue.bold("Success (OK)") + chalk.cyan.bold("!"));
+});

@@ -1,11 +1,28 @@
 const { MessageEmbed } = require("discord.js");
 const ms = require("ms");
 const Timeout = new Map();
+const sql = require("../../utilities/database");
 
 module.exports = async (client, message) => {
  try {
   if (!message) return;
   if (message.author.bot) return;
+  if(message.guild && !message.author.bot && message.embeds.length > 0) {
+   const sqlquery = "SELECT enabled AS res FROM anti_selfbots WHERE guildid = " + message.guild.id;
+   sql.query(sqlquery, function (error, results, fields) {
+    if(error) return console.log(error);
+    if (results[0]) {
+     let selfbot = parseInt(Object.values(JSON.parse(JSON.stringify(results[0]))));
+     if(selfbot == 1) {
+       const error_message = new MessageEmbed()
+        .setColor("RED")
+        .setDescription(`${message.author} no selfbots in ${message.guild.name} (ID: \`${message.guild.id}\`)!`);
+       message.author.send({embeds: [error_message]});
+       return message.delete()
+     }
+    }
+   });
+  }
   if (message.content === `<@${client.user.id}>` || message.content === `<@!${client.user.id}>`) {
    const embed = new MessageEmbed() // Prettier
     .setTitle(`${client.bot_emojis.success} Hi!`, message.guild.iconURL())
