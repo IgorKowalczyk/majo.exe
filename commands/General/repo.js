@@ -1,4 +1,5 @@
 const { MessageEmbed, MessageActionRow, MessageButton } = require("discord.js");
+const fetch = require("node-fetch");
 
 module.exports = {
  name: "repo",
@@ -14,23 +15,35 @@ module.exports = {
    function capitalize(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
    }
+   (async () => {
+   const response = await fetch(`https://api.github.com/repos/${client.config.github}/${client.config.github_repo}/commits`);
+   const body = await response.json();
    const embed = new MessageEmbed() // Prettier
     .setTitle(`${client.bot_emojis.octo} ${capitalize(client.user.username)} Github Repo`)
-    .setDescription(`${client.bot_emojis.book} This project is open source, you can check the code at: [@${client.config.github}/${client.config.github_repo}](https://github.com/${client.config.github}/${client.config.github_repo})`)
+    .setDescription(`• This project is open source: [@${client.config.github}/${client.config.github_repo}](https://github.com/${client.config.github}/${client.config.github_repo})\n\`\`\` \`\`\``)
+    .addField(`${client.bot_emojis.book} Latest commit [${body[0].commit.committer.date}]`, `SHA: \`${body[0].sha}\`\n[${body[0].html_url.slice(0, 55)}...](${body[0].html_url})`)
     .setFooter(`Requested by ${message.author.username}`, message.author.displayAvatarURL({ dynamic: true, format: "png", size: 2048 }))
     .setColor("RANDOM")
     .setTimestamp();
-   const row = new MessageActionRow().addComponents(
+   const row = new MessageActionRow()
+   .addComponents(
     new MessageButton() // Prettier
      .setURL(`https://github.com/${client.config.github}/${client.config.github_repo}`)
-     .setEmoji(client.bot_emojis.octo)
      .setLabel("Github repo")
      .setStyle("LINK")
-   );
+   )
+   .addComponents(
+    new MessageButton() // Prettier
+    .setURL(body[0].html_url)
+    .setLabel("Latest commit")
+    .setStyle("LINK")
+   )
    message.reply({ embeds: [embed], components: [row] });
+  })();
   } catch (err) {
    console.log(err);
    return client.createCommandError(message, err);
   }
  },
 };
+
