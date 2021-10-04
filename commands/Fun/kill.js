@@ -15,7 +15,6 @@ module.exports = {
     return client.createError(message, `${client.bot_emojis.error} | You must mention someone to kill!\n\n**Usage:** \`${client.prefix} kill <user>\``);
    }
    if (message.author === member || message.member == member) {
-    s;
     return client.createError(message, `${client.bot_emojis.error} | You can't kill yourself...`);
    }
    const pickeddeath = deaths[Math.floor(Math.random() * deaths.length)];

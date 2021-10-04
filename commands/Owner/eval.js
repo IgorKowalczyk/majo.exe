@@ -37,7 +37,7 @@ module.exports = {
     .setColor("#e31212")
     .setTitle(`${client.bot_emojis.error} An error has occured!`)
     .addField(`Input`, `\`\`\`js\n${result}\`\`\``)
-    .addField(`Output`, `\`\`\`js\n${err.message}\`\`\``)
+    .addField(`Output`, `\`\`\`js\n${err.message.toString().slice(0, 1000)}\`\`\``)
     .setFooter(
      `Requested by ${message.author.username}`,
      message.author.displayAvatarURL({

@@ -9,7 +9,7 @@ module.exports = function (client) {
   if (!message) throw new Error("You must provide message object to create new error!");
   const error = new Discord.MessageEmbed() // Prettier
    .setTitle(`${emojis.error} A wild error appeared!`)
-   .setDescription(`>>> \`\`\`${err.slice(0, 1000) || `Something went wrong... ${emojis.sadness}`}\`\`\``)
+   .setDescription(`>>> \`\`\`${err.toString().slice(0, 1000) || `Something went wrong... ${emojis.sadness}`}\`\`\``)
    .setFooter(`Error  nr. ${message.channel.id}/${message.id}`, client.user.displayAvatarURL())
    .setColor("RED");
   const row = new Discord.MessageActionRow() // Prettier

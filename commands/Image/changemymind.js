@@ -1,0 +1,33 @@
+const { MessageEmbed, MessageAttachment } = require("discord.js");
+const canvacord = require("canvacord");
+
+module.exports = {
+ name: "changemymind",
+ aliases: [],
+ description: "Try to change my mind!",
+ category: "Image",
+ usage: "changemymind <text>",
+ run: async (client, message, args) => {
+  try {
+   if (!args[0]) {
+    return client.createError(message, `${client.bot_emojis.error} | You must enter a text!\n\n**Usage:** \`${client.prefix} changemymind <text>\``);
+   }
+   if (args.join(" ") > 20) {
+    return client.createError(message, `${client.bot_emojis.error} | Max lenght for the text is \`20\`!\n\n**Usage:** \`${client.prefix} changemymind <text>\``);
+   }
+   const wait = new MessageEmbed() // Prettier
+    .setColor("GREEN")
+    .setDescription(`${client.bot_emojis.sparkles} Please wait... I'm generating your image`);
+      message.reply({ embeds: [wait] }).then((msg) => {
+    (async () => {
+   const changemymind = await canvacord.Canvas.changemymind(args.join(" "));
+   const attachment = new MessageAttachment(changemymind, "changemymind.png");
+   msg.edit({ embeds: [], files: [attachment] });
+    })()
+  })
+  } catch (err) {
+   console.log(err);
+   return client.createCommandError(message, err);
+  }
+ },
+};

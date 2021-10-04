@@ -236,7 +236,7 @@ module.exports = {
     .addField(`${client.bot_emojis.stopwatch} Category`, `\`${command.category}\``)
     .addField(`${client.bot_emojis.stopwatch} Cooldown`, `\`${command.timeout || "5000"}ms\``)
     .addField(`${client.bot_emojis.edit} Description`, command.description ? `\`${command.description}\`` : "`No description found for this command!`")
-    .addField(`${client.bot_emojis.screw_that} Usage`, command.usage ? `\`${client.prefix} ${command.name} ${command.usage}\`` : `\`${client.prefix}${command.name}\``)
+    .addField(`${client.bot_emojis.screw_that} Usage`, command.usage ? `\`${client.prefix} ${command.usage}\`` : `\`${client.prefix}${command.name}\``)
     .addField(`${client.bot_emojis.sign} Aliases (${command.aliases.length})`, `\`${command.aliases.join("`, `") || "None!"}\``)
     .setFooter(
      `Requested by ${message.author.tag}`,

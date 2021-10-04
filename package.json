@@ -16,7 +16,7 @@
   "@discordjs/opus": "^0.6.0",
   "@iamtraction/google-translate": "^1.1.2",
   "@quick.eco/mysql": "^1.0.2",
-  "amethyste-api": "^1.1.4",
+  "amethyste-api": "^1.1.5",
   "array.prototype.move": "0.0.4",
   "ascii-table": "^0.0.9",
   "axios": "^0.21.1",
