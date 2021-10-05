@@ -5,7 +5,7 @@ module.exports = {
  owner_id: "440200028292907048",
  description: "Majo.exe - Discord bot for Fun, Memes, Images, Giveaway, Economy, Anime and NSFW! Majo serve over 100 commands!",
  support_server: "https://discord.gg/bVNNHuQ",
- status: "https://majoexe.instatus.com",
+ status: "",
  twitter: "@majonezexe",
  github: "igorkowalczyk",
  github_repo: "majobot",
