@@ -26,7 +26,7 @@ module.exports = {
      )
      .setTitle(`${client.bot_emojis.wink} Hehe`)
      .setImage(response.data.link);
-    message.reply({embeds: [embed]});
+    message.reply({ embeds: [embed] });
    });
   } catch (err) {
    console.log(err);

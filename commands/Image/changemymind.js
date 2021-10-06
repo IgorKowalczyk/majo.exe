@@ -18,13 +18,13 @@ module.exports = {
    const wait = new MessageEmbed() // Prettier
     .setColor("GREEN")
     .setDescription(`${client.bot_emojis.sparkles} Please wait... I'm generating your image`);
-      message.reply({ embeds: [wait] }).then((msg) => {
+   message.reply({ embeds: [wait] }).then((msg) => {
     (async () => {
-   const changemymind = await canvacord.Canvas.changemymind(args.join(" "));
-   const attachment = new MessageAttachment(changemymind, "changemymind.png");
-   msg.edit({ embeds: [], files: [attachment] });
-    })()
-  })
+     const changemymind = await canvacord.Canvas.changemymind(args.join(" "));
+     const attachment = new MessageAttachment(changemymind, "changemymind.png");
+     msg.edit({ embeds: [], files: [attachment] });
+    })();
+   });
   } catch (err) {
    console.log(err);
    return client.createCommandError(message, err);

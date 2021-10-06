@@ -11,8 +11,8 @@ module.exports = {
  run: async (client, message, args) => {
   try {
    const User = (await message.mentions.members.first()) || message.guild.members.cache.get(args[0]) || message.guild.members.cache.find((r) => r.user.username.toLowerCase().includes() === args.join(" ").toLocaleLowerCase()) || message.guild.members.cache.find((r) => r.displayName.toLowerCase().includes() === args.join(" ").toLocaleLowerCase());
-   const blur = (User) ? args[1] : 50;
-   if(User) {
+   const blur = User ? args[1] : 50;
+   if (User) {
     if (args[1] && isNaN(args[1])) {
      return client.createError(message, `${client.bot_emojis.error} | Blur must be a number!\n\n**Usage:** \`${client.prefix} blur <user mention, user id, user name> [number between 2-30]\``);
     }

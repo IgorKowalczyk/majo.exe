@@ -16,7 +16,7 @@ module.exports = {
    }
    let mentioned = await message.mentions.members.first();
    let message_args = await args.slice(1).join(" ");
-   let reason = `${message_args || "No reason provided!"} | Banned by: ${message.author.tag}`
+   let reason = `${message_args || "No reason provided!"} | Banned by: ${message.author.tag}`;
    if (!mentioned) {
     return client.createError(message, `${client.bot_emojis.error} | Mention a valid member!\n\n**Usage:** \`${client.prefix} ban <mention> [reason]\``);
    }
@@ -41,7 +41,7 @@ module.exports = {
       size: 2048,
      })
     );
- await message.reply({embeds: [embed]})
+   await message.reply({ embeds: [embed] });
   } catch (err) {
    console.log(err);
    return client.createCommandError(message, err);

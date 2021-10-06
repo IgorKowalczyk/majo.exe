@@ -37,6 +37,6 @@ module.exports = function (client) {
   const error = new Discord.MessageEmbed() // Prettier
    .setColor(color || "RED")
    .setDescription(error_message);
-  return message.reply({ embeds: [error], ephemeral: (error_ephemeral) ? true : false});
+  return message.reply({ embeds: [error], ephemeral: error_ephemeral ? true : false });
  };
 };

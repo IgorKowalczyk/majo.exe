@@ -33,7 +33,7 @@ module.exports = {
     const commands = readdirSync(`./commands/${dir}/`).filter((file) => file.endsWith(".js"));
     // if (ignored.includes(dir.toLowerCase())) return;
     const name = `${emo[dir.toLowerCase()]} ${capitalize(dir)}`;
-    if(dir.toLowerCase() == "owner" && message.author.id !== client.config.owner_id) return;
+    if (dir.toLowerCase() == "owner" && message.author.id !== client.config.owner_id) return;
     let nome = dir.charAt(0) + dir.slice(1).toLowerCase();
     // let nome = dir;
     let cats = new Object();
@@ -133,7 +133,7 @@ module.exports = {
      }
     };
     const filter = (interaction) => {
-     if(interaction.user.id !== message.author.id) return client.createError(interaction, `You can't use the menu! Only ${message.author} can do that! If you want control menu by yourself run \`${client.prefix} help \``, "RED", true);
+     if (interaction.user.id !== message.author.id) return client.createError(interaction, `You can't use the menu! Only ${message.author} can do that! If you want control menu by yourself run \`${client.prefix} help \``, "RED", true);
      return !interaction.user.bot;
     };
     const collector = msgg.createMessageComponentCollector({

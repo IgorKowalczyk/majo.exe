@@ -32,7 +32,7 @@ module.exports = {
      )
      .setTimestamp()
      .setURL(body.url);
-    message.reply({embeds: [embed]});
+    message.reply({ embeds: [embed] });
    } catch (err) {
     console.log(err);
     return client.createCommandError(message, err);
