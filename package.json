@@ -54,6 +54,7 @@
   "got": "^11.7.0",
   "gradient-string": "^1.2.0",
   "hastebin": "^0.2.1",
+  "helmet": "^4.6.0",
   "https": "^1.0.0",
   "humanize-duration": "^3.26.0",
   "i": "^0.3.6",
