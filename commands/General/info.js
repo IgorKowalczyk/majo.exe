@@ -23,8 +23,8 @@ module.exports = {
     return string.charAt(0).toUpperCase() + string.slice(1);
    }
    const wait_embed = new MessageEmbed() 
-    .setColor("GREEN")
-    .setDescription(`${client.bot_emojis.sparkles} | I'm collecting info about myself. Please wait...`)
+    .setColor("#5865f2")
+    .setDescription(`${client.bot_emojis.loading} | I'm collecting info about myself. Please wait...`)
    message.reply({embeds: [wait_embed]}).then((process_message) => {
    cpu.usage().then((cpupercentage) => {
     drive.info().then((driveinf) => {

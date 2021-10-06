@@ -29,8 +29,8 @@ module.exports = {
     return client.createError(message, `${client.bot_emojis.error} | Please mention a user!\n\n**Usage:** \`${client.prefix} blur <user mention, user id, user name> [number between 2-30]\``);
    }
    const wait = new MessageEmbed() // Prettier
-    .setColor("GREEN")
-    .setDescription(`${client.bot_emojis.sparkles} Please wait... I'm generating your image`);
+    .setColor("#5865f2")
+    .setDescription(`${client.bot_emojis.loading} Please wait... I'm generating your image`);
    message.reply({ embeds: [wait] }).then((msg) => {
     (async () => {
      const buffer = await AmeAPI.generate("blur", {

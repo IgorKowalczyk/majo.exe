@@ -32,8 +32,8 @@ module.exports = {
     return message.reply({ embeds: [board_error] });
    }
    const wait_embed = new MessageEmbed() // Prettier
-    .setColor("GREEN")
-    .setDescription(`${client.bot_emojis.sparkles} | I'm downloading random image from \`/${chanargs}/\`. Please wait...`)
+    .setColor("5865f2")
+    .setDescription(`${client.bot_emojis.loading} | I'm downloading random image from \`/${chanargs}/\`. Please wait...`)
    message.reply({embeds: [wait_embed]}).then((process_message) => {
    var board = chanargs;
    var page = Math.floor(Math.random() * 10 + 1);

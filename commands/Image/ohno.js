@@ -16,8 +16,8 @@ module.exports = {
     return client.createError(message, `${client.bot_emojis.error} | Max lenght for the text is \`20\`!\n\n**Usage:** \`${client.prefix} ohno <text>\``);
    }
    const wait = new MessageEmbed() // Prettier
-    .setColor("GREEN")
-    .setDescription(`${client.bot_emojis.sparkles} Please wait... I'm generating your image`);
+    .setColor("#5865f2")
+    .setDescription(`${client.bot_emojis.loading} Please wait... I'm generating your image`);
    message.reply({ embeds: [wait] }).then((msg) => {
     (async () => {
      const ohno = await canvacord.Canvas.ohno(args.join(" "));
