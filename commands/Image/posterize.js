@@ -30,7 +30,7 @@ module.exports = {
    }
    const wait = new MessageEmbed() // Prettier
     .setColor("#5865f2")
-    .setDescription(`${client.bot_emojis.loading} Please wait... I'm generating your image`);
+    .setDescription(`${client.bot_emojis.loading} | Please wait... I'm generating your image`);
    message.reply({ embeds: [wait] }).then((msg) => {
     (async () => {
      const buffer = await AmeAPI.generate("posterize", {
