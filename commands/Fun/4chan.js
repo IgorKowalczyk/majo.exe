@@ -31,6 +31,10 @@ module.exports = {
    if (boards.indexOf(chanargs) == -1) {
     return message.reply({ embeds: [board_error] });
    }
+   const wait_embed = new MessageEmbed() // Prettier
+    .setColor("GREEN")
+    .setDescription(`${client.bot_emojis.sparkles} | I'm downloading random image from \`/${chanargs}/\`. Please wait...`)
+   message.reply({embeds: [wait_embed]}).then((process_message) => {
    var board = chanargs;
    var page = Math.floor(Math.random() * 10 + 1);
    var url = "https://a.4cdn.org/" + board + "/" + page + ".json";
@@ -100,9 +104,10 @@ module.exports = {
         .setLabel("Image")
         .setStyle("LINK")
       );
-     message.reply({ embeds: [embed], files: [imgUrl], components: [row] });
+      process_message.edit({ embeds: [embed], files: [imgUrl], components: [row] });
     });
    });
+  })
   } catch (err) {
    console.log(err);
    return client.createCommandError(message, err);

@@ -22,6 +22,10 @@ module.exports = {
    function capitalize(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
    }
+   const wait_embed = new MessageEmbed() 
+    .setColor("GREEN")
+    .setDescription(`${client.bot_emojis.sparkles} | I'm collecting info about myself. Please wait...`)
+   message.reply({embeds: [wait_embed]}).then((process_message) => {
    cpu.usage().then((cpupercentage) => {
     drive.info().then((driveinf) => {
      const driveinf0 = JSON.stringify(driveinf);
@@ -87,9 +91,10 @@ module.exports = {
         .setStyle("LINK")
       );
      }
-     return message.reply({ embeds: [embed], components: [row] });
+     process_message.edit({ embeds: [embed], components: [row] });
     });
    });
+  })
   } catch (err) {
    console.log(err);
    return client.createCommandError(message, err);

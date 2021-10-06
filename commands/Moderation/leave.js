@@ -9,21 +9,21 @@ module.exports = {
  usage: "leave [channel]",
  run: async (client, message, args) => {
   try {
-   if (!message.member.permissions.has("MANAGE_CHANNELS")) {
-    return client.createError(message, `${client.bot_emojis.error} | You don't have permissions to manage leave channels! You need \`MANAGE_CHANNELS\` permission!`);
+   if (!message.member.permissions.has("MANAGE_GUILD")) {
+    return client.createError(message, `${client.bot_emojis.error} | You don't have permissions to manage leave channels! You need \`MANAGE_GUILD\` permission!`);
    }
    if (args[0]) {
     const channel = message.mentions.channels.first();
     if (!channel) {
      return client.createError(message, `${client.bot_emojis.error} | You must mention channel to set-up\n\n**Usage:** \`${client.prefix} welcome [channel]\``);
     }
-    const userperms = channel.permissionsFor(message.author);
-    const botperms = channel.permissionsFor(guild.me);
-    if (!userperms.has("MANAGE_CHANNEL")) {
-     return client.createError(message, `${client.bot_emojis.error} | You can't set leave messages to this channel - you don't have permissions to do that! You need \`MANAGE_CHANNEL\` perm!\``);
+    const user_perms = channel.permissionsFor(message.author);
+    const bot_perms = channel.permissionsFor(message.guild.me);
+    if (!user_perms.has("VIEW_CHANNEL") || !user_perms.has("SEND_MESSAGES") || !user_perms.has("MANAGE_GUILD")) {
+     return client.createError(message, `${client.bot_emojis.error} | You can't set leave messages to this channel! You need \`MANAGE_GUILD, VIEW_CHANNEL, SEND_MESSAGES\` permissions!\``);
     }
-    if (!botperms.has("MANAGE_CHANNEL")) {
-     return client.createError(message, `${client.bot_emojis.error} | You can't set leave messages to this channel - you don't have permissions to do that! You need \`MANAGE_CHANNEL\` perm!\``);
+    if (!bot_perms.has("VIEW_CHANNEL") || !bot_perms.has("SEND_MESSAGES") || !bot_perms.has("MANAGE_GUILD")) {
+     return client.createError(message, `${client.bot_emojis.error} | I can't set leave messages to this channel! I need \`MANAGE_GUILD, VIEW_CHANNEL, SEND_MESSAGES\` permissions!\``);
     }
     const sqlquery = "SELECT channelid AS res FROM `leave` WHERE guildid = " + message.guild.id;
     sql.query(sqlquery, function (error, results, fields) {
