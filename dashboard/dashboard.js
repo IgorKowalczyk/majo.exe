@@ -52,17 +52,16 @@ module.exports = async (client) => {
  );
  app.use(express.static("dashboard/static"));
 
-
-app.use(helmet.dnsPrefetchControl());
-app.use(helmet.expectCt());
-app.use(helmet.frameguard());
-app.use(helmet.hidePoweredBy());
-app.use(helmet.hsts());
-app.use(helmet.ieNoOpen());
-app.use(helmet.noSniff());
-app.use(helmet.permittedCrossDomainPolicies());
-app.use(helmet.referrerPolicy());
-app.use(helmet.xssFilter());
+ app.use(helmet.dnsPrefetchControl());
+ app.use(helmet.expectCt());
+ app.use(helmet.frameguard());
+ app.use(helmet.hidePoweredBy());
+ app.use(helmet.hsts());
+ app.use(helmet.ieNoOpen());
+ app.use(helmet.noSniff());
+ app.use(helmet.permittedCrossDomainPolicies());
+ app.use(helmet.referrerPolicy());
+ app.use(helmet.xssFilter());
  app.use((req, res, next) => {
   res.setHeader("Permissions-Policy", "	accelerometer=(), camera=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), payment=(), usb=(), interest-cohort=()");
   res.setHeader("Access-Control-Allow-Origin", "*");
