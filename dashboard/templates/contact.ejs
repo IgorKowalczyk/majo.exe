@@ -2,9 +2,7 @@
 
 <link rel="stylesheet" type="text/css" href="https://<%= domain %>/css/contact.css" />
 <% if (user) { %>
-<script>
- var userID = <%= user.id %>
-</script>
+<script>let userID = "<%= user.id %>";</script>
 <% } %>
 <div class="container-contact">
  <div class="wrap-contact">

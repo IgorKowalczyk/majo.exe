@@ -4,14 +4,7 @@
 <meta name="description" content="<%- description %>">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <link rel="canonical" href="https://<%= domain %><%= path %>">
-<% if (mobile_support == "true") { %>
-<meta name="copyright" content="(c) Copyright <%= new Date().getFullYear() %> <%- config.author %>">
-<meta name="HandheldFriendly" content="true">
-<meta name="mobile_supportOptimized" content="375">
-<meta name="apple-mobile_support-web-app-capable" content="yes">
-<meta name="apple-mobile_support-web-app-status-bar-style" content="#7289da">
-<meta http-equiv="cleartype" content="on">
-<% } %>
+<meta name="copyright" content="(c) Copyright <%= new Date().getFullYear() %> Igor Kowalczyk">
 <meta name="theme-color" content="#7289da">
 <meta property="og:locale" content="en_US">
 <meta property="og:type" content="website">
@@ -26,6 +19,6 @@
 <meta name="twitter:url" content="https://<%= domain %><%= path %>">
 <meta name="twitter:title" content="<% if(title) { %><%- bot.user.username + ' | ' + title %><% } else { %><%- bot.user.username + ' - The best Discord bot' %><% } %>">
 <meta name="twitter:description" content="<%= description %>">
-<% if (verification != null) { %>
-<meta name="google-site-verification" content="<%= verification %>">
+<% if (config.verification != null) { %>
+<meta name="google-site-verification" content="<%= config.verification %>">
 <% } %>

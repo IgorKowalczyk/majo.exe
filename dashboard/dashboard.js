@@ -52,26 +52,20 @@ module.exports = async (client) => {
  );
  app.use(express.static("dashboard/static"));
 
- app.use(helmet.dnsPrefetchControl());
- app.use(helmet.expectCt());
- app.use(helmet.frameguard());
- app.use(helmet.hidePoweredBy());
- app.use(helmet.hsts());
- app.use(helmet.ieNoOpen());
- app.use(helmet.noSniff());
- app.use(helmet.permittedCrossDomainPolicies());
- app.use(helmet.referrerPolicy());
- app.use(helmet.xssFilter());
- app.use(
-  helmet.contentSecurityPolicy({
-   useDefaults: false,
-   directives: {
-    defaultSrc: ["'self'", "*.discordapp.com", "*.discordapp.net", "*.repl.co", "*.herokuapp.com", "*.github.com"],
-   },
-  })
- );
+
+app.use(helmet.dnsPrefetchControl());
+app.use(helmet.expectCt());
+app.use(helmet.frameguard());
+app.use(helmet.hidePoweredBy());
+app.use(helmet.hsts());
+app.use(helmet.ieNoOpen());
+app.use(helmet.noSniff());
+app.use(helmet.permittedCrossDomainPolicies());
+app.use(helmet.referrerPolicy());
+app.use(helmet.xssFilter());
  app.use((req, res, next) => {
   res.setHeader("Permissions-Policy", "	accelerometer=(), camera=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), payment=(), usb=(), interest-cohort=()");
+  res.setHeader("Access-Control-Allow-Origin", "*");
   next();
  });
  app.use(
@@ -112,7 +106,6 @@ module.exports = async (client) => {
    pathname: pathname,
    path: req.path,
    user: req.isAuthenticated() ? req.user : null,
-   verification: config.verification,
    description: config.description,
    domain: app.locals.domain,
    twitter: config.twitter,
@@ -120,15 +113,9 @@ module.exports = async (client) => {
    title: client.username,
    prefix: process.env.PREFIX,
    req: req,
-   mobile_support: config.mobile_support_support,
-   image: config.image,
    name: client.username,
    recaptcha: process.env.RECAPTCHA_KEY,
    tag: client.tag,
-   server: config.support_server,
-   aurhor_website: config.author_website,
-   github: config.github,
-   analitics: config.google_analitics,
   };
   res.render(path.resolve(`${templateDir}${path.sep}${template}`), Object.assign(baseData, data));
  };
@@ -292,15 +279,13 @@ module.exports = async (client) => {
  });
  app.post("/contact", async (req, res) => {
   if (req.body.type === "contact") {
-   const webhookid = process.env.CONTACT_WEBHOOK_ID;
-   const webhooktoken = process.env.CONTACT_WEBHOOK_TOKEN;
-   const contactwebhook = new Discord.WebhookClient({ webhookid, webhooktoken });
+   const contactwebhook = new Discord.WebhookClient({ url: process.env.CONTACT_WEBHOOK });
    if (!req.body.name || !req.body.id || !req.body.email || !req.body.msg) return;
    const contact = new Discord.MessageEmbed() // Prettier
     .setColor("RANDOM")
     .setTitle(`📬 Contact Form`)
     .setDescription(`Someone just send message to us!`)
-    .addField(`👥 User`, `${req.body.name.substr(0, 100) || "Unknown"}/<@${req.body.id}> (ID: \`${req.body.id || "Unknown"}\`)`)
+    .addField(`👥 User`, `\`${req.body.name.substr(0, 100) || "Unknown"}\` | <@${req.body.id}> (ID: \`${req.body.id || "Unknown"}\`)`)
     .addField("📧 Email", `\`\`\`${req.body.email.substr(0, 100) || "Unknown"}\`\`\``)
     .addField("📝 Message", `\`\`\`${req.body.msg.substr(0, 2000) || "None"}\`\`\``)
     .setTimestamp()

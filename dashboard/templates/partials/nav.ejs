@@ -7,10 +7,10 @@
 <label class="menu-icon" for="menu-btn"><span class="navicon"></span></label>
 <ul class="menu">
 <% if (user) { %>
-<% if (server) { %>
+<% if (config.server) { %>
 <li><a href="https://<%= domain %>/server" target="_blank" rel="noopener">Discord</a></li>
 <% } %>
-<% if (github) { %>
+<% if (config.github) { %>
  <li><a href="https://<%= domain %>/github" target="_blank" rel="noopener">Github</a></li>
 <% } %>
 <% if (user.avatar) {
@@ -21,13 +21,13 @@
 %>
 <a class="avatar-container dropdownHead" id="dropdownHead" onclick="dropdown(this)"><img class="user-avatar" src="<%= avatar %>"/><span class="user-name"><%= user.username %>#<%= user.discriminator %></span></a>
 <% } else { %>
-<% if (server) { %>
+<% if (config.server) { %>
  <li><a href="https://<%= domain %>/server" target="_blank" rel="noopener">Discord</a></li>
 <% } %>
-<% if (aurhor_website) { %>
- <li><a href="<%= aurhor_website %>" target="_blank" rel="noopener">Author</a></li>
+<% if (config.aurhor_website) { %>
+ <li><a href="<%= config.aurhor_website %>" target="_blank" rel="noopener">Author</a></li>
 <% } %>
-<% if (github) { %>
+<% if (config.github) { %>
  <li><a href="https://<%= domain %>/github" target="_blank" rel="noopener">Github</a></li>
 <% } %>
  <li><a href="https://<%= domain %>/login">Login</a></li>
