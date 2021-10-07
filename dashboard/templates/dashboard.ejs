@@ -5,8 +5,8 @@
 <p class="note"><span class="bold">Info:</span> You need the <code>MANAGE_GUILD</code> permission to view your servers here.</p>
 <div class="servers">
 <% user.guilds.forEach(guild => {
-console.log(guild.permissions);
-const permse = new perms(guild.permissions.bitfield);
+const guild_perms = new perms(guild.permissions.toString())
+if(!guild_perms.has("MANAGE_GUILD")) return;
 %>
 
 <% if (guild.icon) {
