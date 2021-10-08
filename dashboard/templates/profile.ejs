@@ -1,0 +1,13 @@
+<%- include("partials/head", { bot, user, path, title: user.username + " profile" }) %>
+<div class="content">
+<% if (user.avatar) {
+ iconurl = `https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}`
+} else {
+ iconurl = `https://${hostname}/pics/invaild-avatar.png`;
+}
+%>
+
+<img class="server-image img" src="<%= iconurl %>" alt="<%= user.username %>"/>
+<h1 class="server-name"><%= user.username %></h1>
+ <%- include("partials/footer") %>
+</div>
