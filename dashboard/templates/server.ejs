@@ -1,9 +1,9 @@
 <%- include("partials/head", { bot, user, path, description, title: guild.name + " dashboard", twitter, url }) %>
 <div class="content">
 <% if (guild.icon) {
- iconurl = "https://cdn.discordapp.com/icons/" + guild.id + "/" + guild.icon + ".png?size=512";
+ iconurl = `https://cdn.discordapp.com/icons/${guild.id}/${guild.icon}`;
 } else {
- iconurl = "https://" + hostname + "/pics/invaild-avatar.png";
+ iconurl = `https://${hostname}/pics/invaild-avatar.png`;
 }
 %>
 <% let ownerg %>
