@@ -2,9 +2,11 @@
 
 <% function capitalize(string) { return string.charAt(0).toUpperCase() + string.slice(1); } %>
 
-<% if (bot.user.avatar) { botavatar = "https://cdn.discordapp.com/avatars/" + bot.user.id + "/" + bot.user.avatar + ".png?size=512";
+<% if (bot.user.avatar) {
+ botavatar = `https://cdn.discordapp.com/avatars/${bot.user.id}/${bot.user.avatar}`;
  } else {
- botavatar = "https://" + hostname + "/pics/invaild-avatar.png"; } %>
+ botavatar = `https://${hostname}/pics/invaild-avatar.png`;
+ } %>
 <section class="hero-section">
  <div class="hero-grid">
  <div class="hero-content">
