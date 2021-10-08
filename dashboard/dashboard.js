@@ -300,7 +300,6 @@ module.exports = async (client) => {
 
  // Settings endpoint.
  app.get("/dashboard/:guildID", checkAuth, async (req, res) => {
-  // Vlidate the request, check if guild exists, member is in guild and if member has minimum permissions
   const guild = client.guilds.cache.get(req.params.guildID);
   if (!guild) return res.redirect("/error");
   const member = guild.members.cache.get(req.user.id);
@@ -308,7 +307,6 @@ module.exports = async (client) => {
   if (!member.permissions.has("MANAGE_GUILD")) return res.redirect("/error");
   renderTemplate(res, req, "server.ejs", {
    guild: guild,
-   owner: guild.fetchOwner(),
    perms: Discord.Permissions,
   });
  });
