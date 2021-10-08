@@ -14,9 +14,9 @@
  <li><a href="https://<%= domain %>/github" target="_blank" rel="noopener">Github</a></li>
 <% } %>
 <% if (user.avatar) {
- avatar = "https://cdn.discordapp.com/avatars/" + user.id + "/" + user.avatar + ".png?size=128";
+ avatar = `https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}`;
 } else {
- avatar = "https://" + hostname + "/pics/invaild-avatar.png";
+ avatar = `https://${hostname}/pics/invaild-avatar.png`;
 }
 %>
 <a class="avatar-container dropdownHead" id="dropdownHead" onclick="dropdown(this)"><img class="user-avatar" src="<%= avatar %>"/><span class="user-name"><%= user.username %>#<%= user.discriminator %></span></a>

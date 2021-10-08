@@ -1,4 +1,4 @@
-<%- include("partials/head", { bot, user, path, title: "Dashboard" }) %>
+<%- include("includes/head", { bot, user, path, title: "Dashboard" }) %>
 <div class="content">
 <link rel="stylesheet" type="text/css" href="https://<%= domain %>/css/dashboard.css">
 
@@ -43,4 +43,4 @@ if(!guild_perms.has("MANAGE_GUILD")) return;
 <% }); %>
 </div>
 
-<%- include("partials/footer") %>
+<%- include("includes/footer") %>

@@ -1,4 +1,4 @@
-<%- include("partials/head", { bot, user, path, description, title: "Status" , twitter, url }) %>
+<%- include("includes/head", { bot, user, path, description, title: "Status" , twitter, url }) %>
  <div class="container">
   <% function capitalize(string) { return string.charAt(0).toUpperCase() + string.slice(1); } %>
    <h1 class="headerinfo">
@@ -82,4 +82,4 @@
        <div class="majo-ad-container"><div class="majo-ad">Ad</div>Hetrixtools - Free uptime monitor<br>15 Uptime Monitors • 1 Minute Interval • Free Forever!</div>
        </a>
      <% } %>
-      <%- include("partials/footer") %>
+      <%- include("includes/footer") %>

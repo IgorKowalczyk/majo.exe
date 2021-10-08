@@ -1,4 +1,4 @@
-<%- include("partials/head", { bot, user, path, description, title: guild.name + " dashboard", twitter, url }) %>
+<%- include("includes/head", { bot, user, path, description, title: guild.name + " dashboard", twitter, url }) %>
 <div class="content">
 <% if (guild.icon) {
  iconurl = `https://cdn.discordapp.com/icons/${guild.id}/${guild.icon}`;
@@ -49,4 +49,4 @@
 } %>
 <%- rolemap -%>
 </div>
-<%- include("partials/footer") %>
+<%- include("includes/footer") %>
