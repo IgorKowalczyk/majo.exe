@@ -15,3 +15,17 @@
 .user-name {
  word-break: break-word;
 }
+
+.buttons-container {
+ display: flex;
+ align-items: center;
+ justify-content: center;
+}
+
+.button-one {
+ margin-right: 5px;
+}
+
+.button-two {
+ margin-left: 5px;
+}

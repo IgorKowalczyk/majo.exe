@@ -25,8 +25,23 @@
 <img class="server-image img user-profile-image" src="<%= iconurl %>" alt="<%= user.username %>"/>
 <h1 class="server-name user-name"><%= user.username %></h1>
 </div>
-<p class="sinfo"><%- include('includes/icons/server.ejs') %> Guilds: <%= JSON.parse(JSON.stringify(user.guilds)).length %></p>
+<p class="sinfo"><%- include('includes/icons/tag.ejs') %> Tag: <%= user.username %>#<%= user.discriminator %></p>
 <p class="sinfo"><%- include('includes/icons/fingerprint.ejs') %> ID: <%= user.id %></p>
+<p class="sinfo"><%- include('includes/icons/server.ejs') %> Total guilds: <%= JSON.parse(JSON.stringify(user.guilds)).length %></p>
+
+ <div class="buttons-container">
+<% if(user.banner) { %>
+<a class="button button-one" href="https://cdn.discordapp.com/banners/<%= user.id %>/<%= user.banner %>?size=480" download="true"><span class="reload-container"><%- include('includes/icons/download.ejs') %> Download Banner</span></a>
+<% } else { %>
+<a class="button disabled button-one" title="You don't have banner!"><span class="reload-container"><%- include('includes/icons/download.ejs') %> Download Banner</span></a>
+<% } %>
+
+<% if(user.avatar) { %>
+<a class="button button-two" href="https://cdn.discordapp.com/avatars/<%= user.id %>/<%= user.avatar %>" download="<%= user.id %>"><span class="reload-container"><%- include('includes/icons/download.ejs') %> Download Avatar</span></a>
+<% } else { %>
+<a class="button disabled button-two" title="You don't have avatar!"><span class="reload-container"><%- include('includes/icons/download.ejs') %> Download Avatar</span></a>
+<% } %>
+</div>
 </div>
 <%- include("includes/footer") %>
 </div>
