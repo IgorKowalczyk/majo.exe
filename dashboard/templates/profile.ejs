@@ -1,4 +1,5 @@
 <%- include("includes/head", { bot, user, path, title: user.username + " profile" }) %>
+<link rel="stylesheet" type="text/css" href="https://<%= domain %>/css/user-profile.css">
 <div class="content">
 <% if (user.avatar) {
  iconurl = `https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}`
@@ -7,7 +8,25 @@
 }
 %>
 
-<img class="server-image img" src="<%= iconurl %>" alt="<%= user.username %>"/>
-<h1 class="server-name"><%= user.username %></h1>
- <%- include("includes/footer") %>
+<% if(user.banner) { %>
+<style>
+.banner-container {
+ background-image: url("https://cdn.discordapp.com/banners/<%= user.id %>/<%= user.banner %>?size=480");
+ }
+</style>
+<% } else { %>
+<style>
+.banner-container {
+ background-color: <%= user.banner_color %>;
+</style>
+<% } %>
+<div class="guild">
+<div class="banner-container">
+<img class="server-image img user-profile-image" src="<%= iconurl %>" alt="<%= user.username %>"/>
+<h1 class="server-name user-name"><%= user.username %></h1>
+</div>
+<p class="sinfo"><%- include('includes/icons/server.ejs') %> Guilds: <%= JSON.parse(JSON.stringify(user.guilds)).length %></p>
+<p class="sinfo"><%- include('includes/icons/fingerprint.ejs') %> ID: <%= user.id %></p>
+</div>
+<%- include("includes/footer") %>
 </div>

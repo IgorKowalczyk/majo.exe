@@ -113,7 +113,7 @@ iframe {
  font-size: 18px;
  background: 0 0;
  line-height: 1.2;
- font-weight: 500;
+ font-weight: 300;
 }
 
 .input-line {
@@ -150,6 +150,8 @@ textarea.input {
  min-height: 110px;
  border-radius: 5px;
  padding-bottom: 13px;
+ font-weight: 300;
+ font-family: Poppins;
 }
 
 .container-contact-form-btn {

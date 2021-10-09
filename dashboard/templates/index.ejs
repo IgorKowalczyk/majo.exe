@@ -14,7 +14,7 @@
  <% if (user) { %>
   <p class="hero-title">Yay!</p>
   <p class="hero-title2">You connected your Discord account! Go to your dashboard and me to your server!</p>
-  <a href="https://<%= domain %>/dashboard" class="link-button green reload"><span class="reload-container"><svg xmlns="http://www.w3.org/2000/svg" style="margin-left: 0;margin-right: 5px;" height="24" viewBox="0 0 24 24" width="24"><path d="M0 0h24v24H0z" fill="none"></path><path d="M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z"></path></svg>Dashboard</span></a>
+  <a href="https://<%= domain %>/dashboard" class="link-button green reload"><span class="reload-container"><%- include('includes/icons/dashboard-main.ejs') %> Dashboard</span></a>
   <% } else { %>
   <p class="hero-title">Hi! I'm <%= capitalize(bot.user.username) %></p>
   <p class="hero-title2">I have almost everything - Fun, Memes, Images, Giveaway, Economy, Anime and NSFW!<br />I serve over 100 commands<br />To get started with me just login with your Discord account</p>
