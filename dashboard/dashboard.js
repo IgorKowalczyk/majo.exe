@@ -107,7 +107,7 @@ app.use(helmet.xssFilter());
    path: req.path,
    user: req.isAuthenticated() ? req.user : null,
    description: config.description,
-   domain: app.locals.domain,
+   domain: process.env.DOMAIN,
    twitter: config.twitter,
    url: res,
    title: client.username,
@@ -161,9 +161,9 @@ app.use(helmet.xssFilter());
    }
   }
  );
-
+   
  // Features list redirect endpoint.
- app.get("/profile", (req, res) => {
+  app.get("/profile", checkAuth, async (req, res) => {
   renderTemplate(res, req, "profile.ejs", {
    perms: Discord.Permissions,
   });

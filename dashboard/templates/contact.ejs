@@ -1,6 +1,6 @@
 <%- include("includes/head", { bot, user, path, title: "Contact" }) %>
 
-<link rel="stylesheet" type="text/css" href="https://<%= domain %>/css/contact.css" />
+<link rel="stylesheet" type="text/css" href="<%= domain %>/css/contact.css" />
 <% if (user) { %>
 <script>let userID = "<%= user.id %>";</script>
 <% } %>
@@ -15,7 +15,7 @@
     <span class="input-line"></span>
    </div>
    <div class="wrap-input rs1-wrap-input">
-    <span class="label">Email (optional)</span>
+    <span class="label">Email</span>
     <input class="input" type="email" maxlenght="100" autocomplete="off" spellcheck="false" name="email" placeholder="Email" />
     <span class="input-line"></span>
    </div>
@@ -31,7 +31,7 @@
     <span class="input-line"></span>
    </div>
    <div class="wrap-input rs1-wrap-input noactive">
-    <span class="label">Email (optional)</span>
+    <span class="label">Email</span>
     <input class="input" title="Please login to contact us!" maxlenght="100" autocomplete="off" spellcheck="false" type="email" name="email" placeholder="Email" disabled />
     <span class="input-line"></span>
    </div>
@@ -64,7 +64,7 @@
     <p>You must be logged in to contact us!</p>
    </div>
    <div class="container-contact-form-btn">
-    <a href="https://<%= domain %>/login" style="margin-left: 0" class="link-button green">Login</a>
+    <a href="<%= domain %>/login" style="margin-left: 0" class="link-button green">Login</a>
    </div>
    <% } %>
   </form>
@@ -75,6 +75,6 @@
 <script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit" async defer></script>
 <% } %>
 
-<script src="https://<%= domain %>/js/contact.js"></script>
+<script src="<%= domain %>/js/contact.js"></script>
 
 <%- include("includes/footer") %>

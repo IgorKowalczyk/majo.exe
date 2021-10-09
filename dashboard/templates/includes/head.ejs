@@ -7,7 +7,7 @@
  return string.charAt(0).toUpperCase() + string.slice(1);
 } %>
 <title><% if(title) { %><%- capitalize(bot.user.username) + ' | ' + title %><% } else { %><%- capitalize(bot.user.username) + ' - The best Discord bot' %><% } %></title>
-<link rel="stylesheet" type="text/css" href="https://<%= domain %>/css/style.css">
+<link rel="stylesheet" type="text/css" href="<%= domain %>/css/style.css">
 <%- include('./favicons.ejs') %>
 <% if (config.google_analitics) { %>
 <%- include('./analytics.ejs') %>

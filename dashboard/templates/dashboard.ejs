@@ -1,6 +1,6 @@
 <%- include("includes/head", { bot, user, path, title: "Dashboard" }) %>
 <div class="content">
-<link rel="stylesheet" type="text/css" href="https://<%= domain %>/css/dashboard.css">
+<link rel="stylesheet" type="text/css" href="<%= domain %>/css/dashboard.css">
 
 <h2>Select server</h2>
 <p class="note"><span class="bold">Info:</span> You need the <code>MANAGE_GUILD</code> permission to view your servers here.</p>
@@ -21,7 +21,7 @@ if(!guild_perms.has("MANAGE_GUILD")) return;
 <% if (guild.icon) {
  iconurl = `https://cdn.discordapp.com/icons/${guild.id}/${guild.icon}`;
 } else {
- iconurl = `https://${hostname}/pics/invaild-avatar.png`;
+ iconurl = `${dashboard}/pics/invaild-avatar.png`;
 }
 %>
 <% if (!user.guilds) { %>

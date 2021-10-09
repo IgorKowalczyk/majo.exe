@@ -1,10 +1,10 @@
 <%- include("includes/head", { bot, user, path, title: user.username + " profile" }) %>
-<link rel="stylesheet" type="text/css" href="https://<%= domain %>/css/user-profile.css">
+<link rel="stylesheet" type="text/css" href="<%= domain %>/css/user-profile.css">
 <div class="content">
 <% if (user.avatar) {
  iconurl = `https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}`
 } else {
- iconurl = `https://${hostname}/pics/invaild-avatar.png`;
+ iconurl = `${domain}/pics/invaild-avatar.png`;
 }
 %>
 
