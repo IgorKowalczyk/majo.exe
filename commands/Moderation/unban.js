@@ -30,7 +30,7 @@ module.exports = {
    let reason = `${args.slice(1).join(" ") || "No reason provided!"} | Unbanned by: ${message.author.tag}`;
    if (reason.length > 1024) reason = reason.slice(0, 1021) + "...";
    await message.guild.members.unban(user, reason);
-    const embed = new MessageEmbed()
+   const embed = new MessageEmbed()
     .setDescription(`${client.bot_emojis.success} | \`${user.tag}\` has been unbanned.\n\n>>> Reason: \`${reason}\``)
     .setTimestamp()
     .setColor("GREEN")
@@ -43,8 +43,7 @@ module.exports = {
      })
     );
 
-
-   message.reply({embeds: [embed]})
+   message.reply({ embeds: [embed] });
   } catch (err) {
    console.log(err);
    return client.createCommandError(message, err);
