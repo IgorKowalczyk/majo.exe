@@ -12,9 +12,6 @@ module.exports = {
    if (!args[0]) {
     return client.createError(message, `${client.bot_emojis.error} | You must enter a text!\n\n**Usage:** \`${client.prefix} changemymind <text>\``);
    }
-   if (args.join(" ") > 20) {
-    return client.createError(message, `${client.bot_emojis.error} | Max lenght for the text is \`20\`!\n\n**Usage:** \`${client.prefix} changemymind <text>\``);
-   }
    const wait = new MessageEmbed() // Prettier
     .setColor("#5865f2")
     .setDescription(`${client.bot_emojis.loading} | Please wait... I'm generating your image`);

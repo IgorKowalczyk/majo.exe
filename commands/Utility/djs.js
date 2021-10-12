@@ -16,14 +16,12 @@ module.exports = {
    }
    const res = await fetch(`https://djsdocs.sorta.moe/v2/embed?src=${version}&q=${query}`);
    const body = await res.json();
-   return message.reply({embeds: [body]})
-    .catch((c) => {
-     return client.createError(message, `${client.bot_emojis.error} | Invaild query. Please try again with diffrent query!!\n\n**Usage:** \`${client.prefix} djs <query>\``);
-    });
-   } catch (err) {
-    console.log(err);
-    return client.createCommandError(message, err);
-   }
-  },
- };
- 
+   return message.reply({ embeds: [body] }).catch((c) => {
+    return client.createError(message, `${client.bot_emojis.error} | Invaild query. Please try again with diffrent query!!\n\n**Usage:** \`${client.prefix} djs <query>\``);
+   });
+  } catch (err) {
+   console.log(err);
+   return client.createCommandError(message, err);
+  }
+ },
+};

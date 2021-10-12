@@ -10,10 +10,10 @@ module.exports = {
   try {
    if (!args[0]) {
     return client.createError(message, `${client.bot_emojis.error} | You must enter a text to encode!\n\n**Usage:** \`${client.prefix} base64 <text>\``);
-       }
-       if (!args[0].lenght > 50) {
+   }
+   if (!args[0].lenght > 50) {
     return client.createError(message, `${client.bot_emojis.error} | You must enter a text shorter than \`50\` characters!\n\n**Usage:** \`${client.prefix} base64 <text>\``);
-       }
+   }
    const buffer = new Buffer.from(args.join(" "), "utf-8");
    const base64 = buffer.toString("base64");
    const embed = new MessageEmbed()
@@ -29,7 +29,7 @@ module.exports = {
     .setTitle(`${client.bot_emojis.sparkles} Base64 Encoder`)
     .addField(`${client.bot_emojis.input} Text to encode`, `\`\`\`${args.join(" ")}\`\`\``)
     .addField(`${client.bot_emojis.output} Encoded text`, `\`\`\`${base64 || "An unknown error ocurred while encoding!"}\`\`\``);
-   message.reply({embeds: [embed]})
+   message.reply({ embeds: [embed] });
   } catch (err) {
    console.log(err);
    return client.createCommandError(message, err);

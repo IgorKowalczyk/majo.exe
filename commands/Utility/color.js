@@ -28,7 +28,7 @@ module.exports = {
     .addField("CMYK", "`" + color.toCmyk() + "`", true)
     .setImage(color.imageUrl)
     .setColor(color.toHex());
-   message.reply({embeds: [embed]});
+   message.reply({ embeds: [embed] });
   } catch (err) {
    console.log(err);
    return client.createCommandError(message, err);
