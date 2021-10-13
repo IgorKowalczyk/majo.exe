@@ -8,7 +8,7 @@ module.exports = {
  usage: "suggest <suggestion>",
  run: async (client, message, args) => {
   try {
-  const suggestion = args.join(" ");
+   const suggestion = args.join(" ");
    if (!suggestion) {
     return client.createError(message, `${client.bot_emojis.error} | You need to enter a suggestion!\n\n**Usage:** \`${client.prefix} suggest <suggestion>\``);
    }

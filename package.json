@@ -31,7 +31,7 @@
   "common-tags": "^1.8.0",
   "dateformat": "^3.0.3",
   "delay": "^4.4.0",
-  "discord-giveaways": "^4.5.1",
+  "discord-giveaways": "^5.0.1",
   "discord-logs": "^1.9.0",
   "discord.js": "^13.1.0",
   "dotenv": "^8.2.0",

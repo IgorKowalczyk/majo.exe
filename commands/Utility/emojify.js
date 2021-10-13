@@ -1,7 +1,6 @@
 const { MessageEmbed } = require("discord.js");
 const emojify = require("../../utilities/emojify");
 
-
 module.exports = {
  name: "emojify",
  aliases: [],
@@ -10,28 +9,28 @@ module.exports = {
  usage: "emojify <text>",
  run: async (client, message, args) => {
   try {
-    const emojis = args.join(" ");
-    if (!emojis) {
-     return client.createError(message, `${client.bot_emojis.error} | Please enter text to convert!\n\n**Usage:** \`${client.prefix} emojify <text>\``);
-    }
-    const converted = emojify(emojis);
-    if (!converted) {
-     return client.createError(message, `${client.bot_emojis.error} | I cannot convert the text! Please try again!\n\n**Usage:** \`${client.prefix} emojify <text>\``);
-    }
-    const embed = new MessageEmbed() // Prettier
-     .setColor("RANDOM")
-     .setTitle(`Text To Emoji`)
-     .addField("Converted text", converted)
-     .addField("Converted text (Code)", "```" + converted.toString().substr(0, 1000) + "```")
-     .setFooter(
-      `Requested by ${message.author.username}`,
-      message.author.displayAvatarURL({
-       dynamic: true,
-       format: "png",
-       size: 2048,
-      })
-     );
-    message.reply({embeds: [embed]});
+   const emojis = args.join(" ");
+   if (!emojis) {
+    return client.createError(message, `${client.bot_emojis.error} | Please enter text to convert!\n\n**Usage:** \`${client.prefix} emojify <text>\``);
+   }
+   const converted = emojify(emojis);
+   if (!converted) {
+    return client.createError(message, `${client.bot_emojis.error} | I cannot convert the text! Please try again!\n\n**Usage:** \`${client.prefix} emojify <text>\``);
+   }
+   const embed = new MessageEmbed() // Prettier
+    .setColor("RANDOM")
+    .setTitle(`Text To Emoji`)
+    .addField("Converted text", converted)
+    .addField("Converted text (Code)", "```" + converted.toString().substr(0, 1000) + "```")
+    .setFooter(
+     `Requested by ${message.author.username}`,
+     message.author.displayAvatarURL({
+      dynamic: true,
+      format: "png",
+      size: 2048,
+     })
+    );
+   message.reply({ embeds: [embed] });
   } catch (err) {
    console.log(err);
    return client.createCommandError(message, err);

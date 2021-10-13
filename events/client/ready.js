@@ -25,7 +25,10 @@ module.exports = async (client) => {
      `${emoji} | ${client.guilds.cache.size} servers!`, // Prettier
      `${emoji} | ${client.guilds.cache.reduce((a, g) => a + g.memberCount, 0)} members!`, // Prettier
      `${emoji} | ${client.prefix} help`, // Prettier
-     `${emoji} | Waiting for verification! (${client.guilds.cache.size} guilds 🥰)`
+     `🇵🇱 F**K POLISH GOVERNMENT`, // Protest
+     `🇵🇱 F**K POLISH GOVERNMENT`, // Protest
+     `🇵🇱 F**K POLISH GOVERNMENT`, // Protest
+     `🇵🇱 F**K POLISH GOVERNMENT` // Protest
     );
    }
    const random = Math.floor(Math.random() * (statuslist.length - 1) + 1);
@@ -41,7 +44,7 @@ module.exports = async (client) => {
    }
    if (client.config.advanved_logging == true) console.log(chalk.bold(chalk.blue.bold(`[${client.user.username.toUpperCase().split(" ")[0]}]`)) + chalk.cyan.bold(" Successfully changed client status"));
   }, 10000);
-  client.user.setStatus("online");
+  client.user.setStatus(client.config.display_status); // #protest
   const globPromise = promisify(glob);
   const slashCommands = await globPromise(`${process.cwd()}/scommands/*/*.js`);
   const arrayOfSlashCommands = [];
@@ -66,7 +69,7 @@ module.exports = async (client) => {
   if (!process.env.STATUS_WEBHOOK) throw new Error("[HOST] You need to provide Discord Status Webhook URL in .env - STATUS_WEBHOOK=YOUR_WEBHOOK_URL");
   const statuswebhook = new Discord.WebhookClient({ url: process.env.STATUS_WEBHOOK });
   const status = new Discord.MessageEmbed() // Prettier
-   .setColor("#18A64E")
+   .setColor("GREEN")
    .setTimestamp()
    .setAuthor(`${capitalize(client.user.username)} is online!`)
    .setThumbnail(client.user.displayAvatarURL()) // Prettier

@@ -1,6 +1,7 @@
 const { GiveawaysManager } = require("discord-giveaways");
 const sql = require("./database");
 const emojis = require("../config/emojis_config");
+
 module.exports = function (client) {
  const Giveaways = class extends GiveawaysManager {
   async getAllGiveaways() {
@@ -49,13 +50,13 @@ module.exports = function (client) {
  const manager = new Giveaways(client, {
   updateCountdownEvery: 10000,
   hasGuildMembersIntent: true,
+  embedColorEnd: "15859772",
+  embedColor: "#ab4b52",
   default: {
    botsCanWin: false,
    exemptPermissions: ["MANAGE_MESSAGES", "ADMINISTRATOR"],
-   embedColor: "RANDOM",
-   embedColorEnd: "RANDOM",
    reaction: emojis.giveaway,
   },
  });
- return manager;
+ client.giveawaysManager = manager;
 };

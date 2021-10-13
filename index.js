@@ -4,17 +4,18 @@ const client = new Discord.Client({
   parse: ["users", "roles"],
   repliedUser: false,
  },
- ws: {
-  properties: { $browser: "Discord iOS" }, // To change the bot online icon to phone
- },
+ //ws: {
+ //  properties: { $browser: "Discord iOS" }, // To change the bot online icon to phone
+ // },
  presence: {
   status: "online",
   afk: false,
  },
- intents: [Discord.Intents.FLAGS.GUILDS, Discord.Intents.FLAGS.GUILD_MESSAGES, Discord.Intents.FLAGS.GUILD_VOICE_STATES, Discord.Intents.FLAGS.GUILD_PRESENCES, Discord.Intents.FLAGS.GUILD_MEMBERS],
+ intents: [Discord.Intents.FLAGS.GUILDS, Discord.Intents.FLAGS.GUILD_MESSAGE_REACTIONS, Discord.Intents.FLAGS.GUILD_MESSAGES, Discord.Intents.FLAGS.GUILD_VOICE_STATES, Discord.Intents.FLAGS.GUILD_PRESENCES, Discord.Intents.FLAGS.GUILD_MEMBERS],
 });
 require("./utilities/database-scripts");
 require("./utilities/client-utilities")(client);
+require("./utilities/giveaways")(client);
 require("events").EventEmitter.prototype._maxListeners = 100;
 require("events").defaultMaxListeners = 100;
 require("dotenv").config();

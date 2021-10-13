@@ -27,9 +27,10 @@ module.exports = {
  prefix: process.env.PREFIX,
  youtube: process.env.YOUTUBE,
  id: process.env.ID,
- advanved_logging: true,
+ advanved_logging: false,
  ratelimit: 2500, // Command ratelimit (can be customized for each command)
  rickroll: false, // Secret Option
+ display_status: "dnd", // online | idle | invisible | dnd
 
  // Dashboard config
  domain: process.env.DOMAIN,
