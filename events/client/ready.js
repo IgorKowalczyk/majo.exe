@@ -25,13 +25,12 @@ module.exports = async (client) => {
      `${emoji} | ${client.guilds.cache.size} servers!`, // Prettier
      `${emoji} | ${client.guilds.cache.reduce((a, g) => a + g.memberCount, 0)} members!`, // Prettier
      `${emoji} | ${client.prefix} help`, // Prettier
-     `🇵🇱 F**K POLISH GOVERNMENT`, // Protest
-     `🇵🇱 F**K POLISH GOVERNMENT`, // Protest
-     `🇵🇱 F**K POLISH GOVERNMENT`, // Protest
-     `🇵🇱 F**K POLISH GOVERNMENT` // Protest
+     `🇵🇱 | F**K POLISH GOVERNMENT!`, // Protest
+     `🇵🇱 | F**K POLISH GOVERNMENT!`, // Protest
     );
    }
    const random = Math.floor(Math.random() * (statuslist.length - 1) + 1);
+   client.user.setStatus(client.config.display_status);
    if (client.config.rickroll == true) {
     client.user.setActivity(statuslist[random], {
      type: "STREAMING",
@@ -44,7 +43,6 @@ module.exports = async (client) => {
    }
    if (client.config.advanved_logging == true) console.log(chalk.bold(chalk.blue.bold(`[${client.user.username.toUpperCase().split(" ")[0]}]`)) + chalk.cyan.bold(" Successfully changed client status"));
   }, 10000);
-  client.user.setStatus(client.config.display_status); // #protest
   const globPromise = promisify(glob);
   const slashCommands = await globPromise(`${process.cwd()}/scommands/*/*.js`);
   const arrayOfSlashCommands = [];
