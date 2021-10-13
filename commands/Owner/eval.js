@@ -27,7 +27,7 @@ module.exports = {
     });
    }
    let evaluated = eval(result);
-   let type = typeof(evaluated)
+   let type = typeof evaluated;
    console.log(result);
    const success = new Discord.MessageEmbed() // Prettier
     .setColor("RANDOM")
