@@ -39,7 +39,7 @@ module.exports = {
         })
        )
        .setColor("RANDOM")
-       .setDescription(`Global prefix: \`${client.prefix}\`\n`)
+       .setDescription(`> Global prefix: \`${client.prefix}\`\n`)
        .addField(`${client.bot_emojis.owner_crown} Developer`, `<@${client.config.owner_id}> [[Website](${client.config.aurhor_website})]`)
        .setThumbnail(
         client.user.displayAvatarURL({

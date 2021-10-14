@@ -51,7 +51,7 @@ module.exports = {
     .setDescription(`> Use the menu, or use ${client.config.domain ? `[\`${client.prefix} help [category]\`](${client.config.domain})` : `\`${client.prefix} help [category]\``} to view commands base on their category!\n\n`)
     .addFields(categories)
     .setFooter(
-     `Requested by ${message.author.tag} | ${client.commands.size} commands in total`,
+     `Requested by ${message.author.tag} • ${client.commands.size} commands in total`,
      message.author.displayAvatarURL({
       dynamic: true,
      })
@@ -120,7 +120,7 @@ module.exports = {
         })
        )
        .setFooter(
-        `Requested by ${message.author.tag} | ${client.commands.size} commands in total`,
+        `Requested by ${message.author.tag} • ${client.commands.size} commands in total`,
         message.author.displayAvatarURL({
          dynamic: true,
         })
@@ -149,7 +149,7 @@ module.exports = {
       .setColor("RED")
       .setDescription(`> To see the help menu again please type \`${client.prefix} help\`\n> Or to see commands from category please type \`${client.prefix} help [category]\``)
       .setFooter(
-       `Requested by ${message.author.tag} | ${client.ws.ping} ms ping!`,
+       `Requested by ${message.author.tag} • ${client.ws.ping} ms ping!`,
        message.author.displayAvatarURL({
         dynamic: true,
        })
@@ -219,7 +219,7 @@ module.exports = {
       })
      )
      .setFooter(
-      `Requested by ${message.author.tag} | ${client.commands.size} commands in total`,
+      `Requested by ${message.author.tag} • ${client.commands.size} commands in total`,
       message.author.displayAvatarURL({
        dynamic: true,
       })
