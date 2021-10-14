@@ -23,7 +23,11 @@ module.exports = {
        size: 2048,
       })
      );
-    message.reply({ embeds: [error] }).then((m) => setTimeout(() => m.delete(), 10000));
+    message.reply({ embeds: [error] }).then((m) =>
+     setTimeout(() => {
+      if (!m.deleted) m.delete();
+     }, 10000)
+    );
     return setTimeout(() => message.delete(), 10000);
    }
    if (isNaN(args[0])) {
@@ -38,7 +42,11 @@ module.exports = {
        size: 2048,
       })
      );
-    message.reply({ embeds: [error] }).then((m) => setTimeout(() => m.delete(), 10000));
+    message.reply({ embeds: [error] }).then((m) =>
+     setTimeout(() => {
+      if (!m.deleted) m.delete();
+     }, 10000)
+    );
     return setTimeout(() => message.delete(), 10000);
    }
    if (args[0] > 99) {
@@ -53,7 +61,11 @@ module.exports = {
        size: 2048,
       })
      );
-    message.reply({ embeds: [error] }).then((m) => setTimeout(() => m.delete(), 10000));
+    message.reply({ embeds: [error] }).then((m) =>
+     setTimeout(() => {
+      if (!m.deleted) m.delete();
+     }, 10000)
+    );
     return setTimeout(() => message.delete(), 10000);
    }
    if (args[0] < 2) {
@@ -68,7 +80,11 @@ module.exports = {
        size: 2048,
       })
      );
-    message.reply({ embeds: [error] }).then((m) => setTimeout(() => m.delete(), 10000));
+    message.reply({ embeds: [error] }).then((m) =>
+     setTimeout(() => {
+      if (!m.deleted) m.delete();
+     }, 10000)
+    );
     return setTimeout(() => message.delete(), 10000);
    }
    const wait_embed = new MessageEmbed() // Prettier

@@ -8,37 +8,44 @@ module.exports = function (client) {
    return new Promise((resolve, reject) => {
     sql.query("SELECT `data` FROM `giveaways`", (err, res) => {
      if (err) {
+      console.error(err);
       return reject(err);
      }
-     const giveaways = res.map((row) => JSON.parse(row.data));
+     const giveaways = res.map((row) => JSON.parse(row.data, (_, v) => (typeof v === "string" && /BigInt\("(-?\d+)"\)/.test(v) ? eval(v) : v)));
      resolve(giveaways);
     });
    });
   }
-  async saveGiveaway(messageID, giveawayData) {
+
+  async saveGiveaway(messageId, giveawayData) {
    return new Promise((resolve, reject) => {
-    sql.query("INSERT INTO `giveaways` (`message_id`, `data`) VALUES (?,?)", [messageID, JSON.stringify(giveawayData)], (err, res) => {
+    sql.query("INSERT INTO `giveaways` (`message_id`, `data`) VALUES (?,?)", [messageId, JSON.stringify(giveawayData, (_, v) => (typeof v === "bigint" ? `BigInt("${v}")` : v))], (err, res) => {
      if (err) {
+      console.error(err);
       return reject(err);
      }
      resolve(true);
     });
    });
   }
-  async editGiveaway(messageID, giveawayData) {
+
+  async editGiveaway(messageId, giveawayData) {
    return new Promise((resolve, reject) => {
-    sql.query("UPDATE `giveaways` SET `data` = ? WHERE `message_id` = ?", [JSON.stringify(giveawayData), messageID], (err, res) => {
+    sql.query("UPDATE `giveaways` SET `data` = ? WHERE `message_id` = ?", [JSON.stringify(giveawayData, (_, v) => (typeof v === "bigint" ? `BigInt("${v}")` : v)), messageId], (err, res) => {
      if (err) {
+      console.error(err);
       return reject(err);
      }
      resolve(true);
     });
    });
   }
-  async deleteGiveaway(messageID) {
+
+  async deleteGiveaway(messageId) {
    return new Promise((resolve, reject) => {
-    sql.query("DELETE FROM `giveaways` WHERE `message_id` = ?", messageID, (err, res) => {
+    sql.query("DELETE FROM `giveaways` WHERE `message_id` = ?", messageId, (err, res) => {
      if (err) {
+      console.error(err);
       return reject(err);
      }
      resolve(true);

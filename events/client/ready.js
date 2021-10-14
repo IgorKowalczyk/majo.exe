@@ -26,7 +26,7 @@ module.exports = async (client) => {
      `${emoji} | ${client.guilds.cache.reduce((a, g) => a + g.memberCount, 0)} members!`, // Prettier
      `${emoji} | ${client.prefix} help`, // Prettier
      `🇵🇱 | F**K POLISH GOVERNMENT!`, // Protest
-     `🇵🇱 | F**K POLISH GOVERNMENT!`, // Protest
+     `🇵🇱 | F**K POLISH GOVERNMENT!` // Protest
     );
    }
    const random = Math.floor(Math.random() * (statuslist.length - 1) + 1);

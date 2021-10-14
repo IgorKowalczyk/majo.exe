@@ -27,7 +27,15 @@ module.exports = {
     .addField("HSV", "`" + color.toHsv() + "`", true)
     .addField("CMYK", "`" + color.toCmyk() + "`", true)
     .setImage(color.imageUrl)
-    .setColor(color.toHex());
+    .setColor(color.toHex())
+    .setFooter(
+     `Requested by ${message.author.username}`,
+     message.author.displayAvatarURL({
+      dynamic: true,
+      format: "png",
+      size: 2048,
+     })
+    );
    message.reply({ embeds: [embed] });
   } catch (err) {
    console.log(err);

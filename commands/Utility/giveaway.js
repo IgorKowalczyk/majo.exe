@@ -50,7 +50,11 @@ module.exports = {
       size: 2048,
      })
     );
-   message.reply({ embeds: [success] }).then((m) => setTimeout(() => m.delete(), 10000));
+   message.reply({ embeds: [success] }).then((m) =>
+    setTimeout(() => {
+     if (!m.deleted) m.delete();
+    }, 10000)
+   );
    client.giveawaysManager.start(channel, {
     duration: ms(args[0]),
     guildId: message.guild.id,
@@ -64,8 +68,8 @@ module.exports = {
      giveaway: " ",
      giveawayEnded: " ",
      inviteToParticipate: `> **React with ${client.bot_emojis.giveaway} to participate!**`,
-     winMessage: `${client.bot_emojis.giveaway} Congratulations, {winners}! You won **{prize}**!\n{messageURL}`,
-     embedFooter: { text: client.user.username, iconURL: client.user.displayAvatarURL() },
+     winMessage: { content: "", embed: new MessageEmbed() },
+     embedFooter: { text: `{this.winnerCount} winner(s)`, iconURL: client.user.displayAvatarURL() },
      noWinner: `> **${client.bot_emojis.error} Giveaway cancelled, no valid participations!**\n`,
      drawing: `\n• ${client.bot_emojis.stopwatch} Drawing winner {timestamp}`,
      hostedBy: `• ${client.bot_emojis.member} Hosted by ${message.author}`,
