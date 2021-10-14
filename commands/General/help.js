@@ -10,7 +10,7 @@ module.exports = {
  aliases: ["h", "commands"],
  category: "General",
  description: "Displays all the commands available",
- timeout: "5000",
+ timeout: "4000",
  usage: "help [command]",
  run: async (client, message, args) => {
   let categories = [];
