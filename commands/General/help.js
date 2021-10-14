@@ -40,7 +40,7 @@ module.exports = {
     cats = {
      name: name,
      value: `> \`${client.prefix} help ${dir.toLowerCase()}\``,
-     inline: false,
+     inline: client.config.help_embed.grid,
     };
     categories.push(cats);
     ccate.push(nome);
@@ -48,7 +48,7 @@ module.exports = {
 
    const embed = new MessageEmbed()
     .setAuthor(`${client.user.username} Help`, message.guild.iconURL())
-    .setDescription(`My prefix is \`${client.prefix}\`\nUse the menu, or use \`${client.prefix} help [category]\` to view commands base on their category!`)
+    .setDescription(`> Use the menu, or use ${client.config.domain ? `[\`${client.prefix} help [category]\`](${client.config.domain})` : `\`${client.prefix} help [category]\``} to view commands base on their category!\n\n`)
     .addFields(categories)
     .setFooter(
      `Requested by ${message.author.tag} | ${client.commands.size} commands in total`,
@@ -64,8 +64,8 @@ module.exports = {
      })
     )
     .setColor("RANDOM");
-   if (client.config.news && client.config.bot_news_title) {
-    embed.addField(`${client.config.bot_news_title}`, `${client.config.news}`);
+   if (client.config.help_embed.display_news == true && client.config.help_embed.news_title && client.config.help_embed.news) {
+    embed.addField(`${client.config.help_embed.news_title}`, `${client.config.help_embed.news}`);
    }
    let menus = create_mh(ccate);
    return message.reply({ embeds: [embed], components: menus.smenu }).then((msgg) => {
@@ -204,7 +204,6 @@ module.exports = {
     });
     cots.push(dir.toLowerCase());
    });
-   console.log(catts);
    const command = client.commands.get(args[0].toLowerCase()) || client.commands.find((c) => c.aliases && c.aliases.includes(args[0].toLowerCase()));
    if (cots.includes(args[0].toLowerCase())) {
     const combed = new MessageEmbed()
