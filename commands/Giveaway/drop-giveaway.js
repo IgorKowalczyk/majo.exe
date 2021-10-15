@@ -4,7 +4,7 @@ module.exports = {
  name: "drop-giveaway",
  aliases: [],
  description: "Create a drop giveaway",
- category: "Utility",
+ category: "Giveaway",
  usage: "drop-giveaway <winner count> <channel> <prize>",
  run: async (client, message, args) => {
   try {

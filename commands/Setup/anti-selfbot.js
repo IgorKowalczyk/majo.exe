@@ -5,7 +5,7 @@ module.exports = {
  name: "anti-selfbot",
  aliases: [],
  description: "Enable/Disable selfbot protection",
- category: "Moderation",
+ category: "Setup",
  usage: "anti-selfbot [true/false]",
  run: async (client, message, args) => {
   try {

@@ -25,15 +25,30 @@ module.exports = {
    image: client.bot_emojis.picture_frame,
    owner: client.bot_emojis.owner_crown,
    nsfw: client.bot_emojis.smirk, // https://www.youtube.com/watch?v=YMm2gv7TStc&t=37s ...
+   giveaway: client.bot_emojis.giveaway,
+   setup: client.bot_emojis.screw_that,
+   anime: client.bot_emojis.flower,
   };
   if (!args[0]) {
    let ccate = [];
+   let category_id = 0;
+   // let separator = new Object();
+   // separator = {
+   //  name: "\u200B",
+   //  value: "\u200B",
+   //  inline: true
+   //  }
    readdirSync("./commands/").forEach((dir) => {
+    //category_id++;
+    // if(category_id % 3 == 0) {
+    //   category_id++;
+    //   categories.push(separator);
+    // }
     // if (ignored.includes(dir.toLowerCase())) return;
     const commands = readdirSync(`./commands/${dir}/`).filter((file) => file.endsWith(".js"));
     // if (ignored.includes(dir.toLowerCase())) return;
     const name = `${emo[dir.toLowerCase()]} ${capitalize(dir)}`;
-    if (dir.toLowerCase() == "owner" && message.author.id !== client.config.owner_id) return;
+    if ((dir.toLowerCase() == "owner" && message.author.id !== client.config.owner_id) || (dir.toLowerCase() == "owner" && message.author.id == client.config.owner_id && client.config.help_embed.show_owner_commands == false)) return category_id--;
     let nome = dir.charAt(0) + dir.slice(1).toLowerCase();
     // let nome = dir;
     let cats = new Object();

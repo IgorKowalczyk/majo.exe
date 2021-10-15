@@ -5,7 +5,7 @@ module.exports = {
  name: "logging",
  aliases: ["log"],
  description: "Set up logging module for guild",
- category: "Moderation",
+ category: "Setup",
  usage: "logging [channel]",
  run: async (client, message, args) => {
   try {

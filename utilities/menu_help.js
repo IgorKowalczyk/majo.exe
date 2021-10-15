@@ -21,6 +21,9 @@ const create_mh = (array) => {
   image: emojis.picture_frame,
   owner: emojis.owner_crown,
   nsfw: emojis.smirk, // https://www.youtube.com/watch?v=YMm2gv7TStc&t=37s ...
+  giveaway: emojis.giveaway,
+  setup: emojis.screw_that,
+  anime: emojis.flower,
  };
 
  array.forEach((cca) => {

@@ -34,6 +34,7 @@ module.exports = {
  pikachu: "<:what:792081636530978847>", // https://cdn.discordapp.com/emojis/792081636530978847.png
  buymeacoffee_logo: "<:buy_me_a_coffe:878937137574211644>", // https://cdn.discordapp.com/emojis/878937137574211644.png
  loading: "<a:loading:895227261752582154>", // https://cdn.discordapp.com/emojis/895227261752582154.gif
+
  // Utility emojis
  picture_frame: "🖼️",
  anger: "💢",
@@ -125,4 +126,5 @@ module.exports = {
  email: "📧",
  paper_clip: "📎",
  paper_clips: "🖇️",
+ flower: "💮",
 };

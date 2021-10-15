@@ -5,15 +5,15 @@ module.exports = {
  name: "giveaway",
  aliases: ["gstart", "giveaway-start"],
  description: "Create a giveaway",
- category: "Utility",
+ category: "Giveaway",
  usage: "giveaway <time> <winner count> <channel> <prize>",
  run: async (client, message, args) => {
   try {
    if (!args[0]) {
-    return client.createError(message, `${client.bot_emojis.error} | You did not specify your time!\n\nCorrect formatting: \`number<d/h/m>\`.\n**Legend:** \`d\` - Day, \`h\` - Hour/s, \`m\` - Minute/s\n\n**Usage:** \`${client.prefix} giveaway <time> <winner count> <channel> <prize>\``);
+    return client.createError(message, `${client.bot_emojis.error} | You did not specify your time!\n\n**Correct formatting:** \`number<d/h/m>\`.\n**Legend:** \`d\` - Day, \`h\` - Hour/s, \`m\` - Minute/s\n**Usage:** \`${client.prefix} giveaway <time> <winner count> <channel> <prize>\``);
    }
    if (!args[0].endsWith("d") && !args[0].endsWith("h") && !args[0].endsWith("m")) {
-    return client.createError(message, `${client.bot_emojis.error} | You didn't use the correct formatting for the time!\n\nCorrect formatting: \`number<d/h/m>\`.\n**Legend:** \`d\` - Day, \`h\` - Hour/s, \`m\` - Minute/s\n\n**Usage:** \`${client.prefix} giveaway <time> <winner count> <channel> <prize>\``);
+    return client.createError(message, `${client.bot_emojis.error} | You didn't use the correct formatting for the time!\n\n**Correct formatting:** \`number<d/h/m>\`.\n**Legend:** \`d\` - Day, \`h\` - Hour/s, \`m\` - Minute/s\n**Usage:** \`${client.prefix} giveaway <time> <winner count> <channel> <prize>\``);
    }
    if (!args[1]) {
     return client.createError(message, `${client.bot_emojis.error} | You didn't enter the winner count!\n\n**Usage:** \`${client.prefix} giveaway <time> <winner count> <channel> <prize>\``);
@@ -68,7 +68,7 @@ module.exports = {
      giveaway: " ",
      giveawayEnded: " ",
      inviteToParticipate: `> **React with ${client.bot_emojis.giveaway} to participate!**`,
-     winMessage: { content: "", embed: new MessageEmbed() },
+     winMessage: { content: "", embed: new MessageEmbed().setColor("GREEN").setDescription(`${client.bot_emojis.giveaway} Congratulations, {winners}! You won **{this.prize}**!\n[Jump to giveaway!]({this.messageURL})`) },
      embedFooter: { text: `{this.winnerCount} winner(s)`, iconURL: client.user.displayAvatarURL() },
      noWinner: `> **${client.bot_emojis.error} Giveaway cancelled, no valid participations!**\n`,
      drawing: `\n• ${client.bot_emojis.stopwatch} Drawing winner {timestamp}`,
