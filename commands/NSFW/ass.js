@@ -1,5 +1,4 @@
 const { MessageEmbed, MessageAttachment } = require("discord.js");
-const superagent = require("snekfetch");
 const rp = require("request-promise-native");
 
 module.exports = {

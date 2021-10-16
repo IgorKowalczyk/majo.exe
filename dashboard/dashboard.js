@@ -3,7 +3,6 @@ const url = require("url");
 const path = require("path");
 const express = require("express");
 const chalk = require("chalk");
-const gradient = require("gradient-string");
 const passport = require("passport");
 const session = require("express-session");
 const Strategy = require("passport-discord").Strategy;
