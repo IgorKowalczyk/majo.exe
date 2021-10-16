@@ -1,15 +1,14 @@
 const { MessageEmbed, MessageActionRow, MessageButton } = require("discord.js");
 
 module.exports = {
- name: "avatar",
- aliases: ["user-avatar"],
- description: "Get user avatar",
+ name: "guild-avatar",
+ aliases: ["g-avatar", "guild-icon", "icon-guild", "guild-image", "guild-img", "guild-pfp"],
+ description: "Get current guild avatar",
  category: "Utility",
- usage: "avatar [user mention, user id, user name]",
+ usage: "guild-avatar",
  run: async (client, message, args) => {
   try {
-   const User = (await message.mentions.members.first()) || message.guild.members.cache.get(args[0]) || message.guild.members.cache.find((r) => r.user.username.toLowerCase().includes() === args.join(" ").toLocaleLowerCase()) || message.guild.members.cache.find((r) => r.displayName.toLowerCase().includes() === args.join(" ").toLocaleLowerCase()) || message.member;
-   const uavatar = User.user.displayAvatarURL({
+   const gavatar = message.guild.iconURL({
     dynamic: true,
     format: "png",
     size: 4096,
@@ -18,15 +17,15 @@ module.exports = {
     .addComponents(
      // Prettier
      new MessageButton() // Prettier
-      .setLabel("Avatar Link")
+      .setLabel("Icon Link")
       .setStyle("LINK")
-      .setURL(uavatar)
+      .setURL(gavatar)
     );
    const embed = new MessageEmbed() // Prettier
     .setColor("RANDOM")
-    .setAuthor(`${User.user.username} Avatar`, uavatar)
-    .setImage(uavatar)
-    .setDescription(`> ${client.bot_emojis.link} [Avatar link](${uavatar})`)
+    .setAuthor(`${message.guild.name} Icon`, gavatar)
+    .setImage(gavatar)
+    .setDescription(`> ${client.bot_emojis.link} [Icon link](${gavatar})`)
     .setTimestamp()
     .setFooter(
      `Requested by ${message.author.username}`,

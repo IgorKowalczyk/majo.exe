@@ -33,7 +33,7 @@
   "delay": "^4.4.0",
   "discord-giveaways": "^5.0.1",
   "discord-logs": "^1.9.0",
-  "discord.js": "^13.1.0",
+  "discord.js": "^13.2.0",
   "dotenv": "^8.2.0",
   "ejs": "^3.1.5",
   "erela.js": "^2.0.0",

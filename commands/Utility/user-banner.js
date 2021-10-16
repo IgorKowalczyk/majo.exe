@@ -30,7 +30,7 @@ module.exports = {
     const embed = new MessageEmbed()
      .setColor("RANDOM")
      .setImage(url)
-     .setAuthor(member.user.username + "'s banner", member.displayAvatarURL())
+     .setAuthor(`${member.user.username} banner`, member.user.displayAvatarURL())
      .setDescription(`> ${client.bot_emojis.link} [Banner link](${url})`)
      .setTimestamp()
      .setFooter(
