@@ -34,7 +34,16 @@ module.exports = {
  pikachu: "<:what:792081636530978847>", // https://cdn.discordapp.com/emojis/792081636530978847.png
  buymeacoffee_logo: "<:buy_me_a_coffe:878937137574211644>", // https://cdn.discordapp.com/emojis/878937137574211644.png
  loading: "<a:loading:895227261752582154>", // https://cdn.discordapp.com/emojis/895227261752582154.gif
-
+ hypesquad: "<:hypesquad:898956482945617980>", // https://cdn.discordapp.com/emojis/898956482945617980.png
+ hypesquad_balance: "<:hypesquad_balance:898956482270335106>", // https://cdn.discordapp.com/emojis/898956482270335106.png
+ hypesquad_bravery: "<:hypesquad_bravery:898956481674756106>", // https://cdn.discordapp.com/emojis/898956481674756106.png
+ hypesquad_brilliance: "<:brilliance:853245937345888287>", // https://cdn.discordapp.com/emojis/853245937345888287.png
+ verified_bot_developer: "<:verified_bot_developer:898956482517815306>", // https://cdn.discordapp.com/emojis/898956482517815306.png
+ early_supporter: "<:discord_early_supporter:898956482136113173>", // https://cdn.discordapp.com/emojis/898956482136113173.png
+ bug_hunter_1: "<:bug_hunter:898956482580721696>", // https://cdn.discordapp.com/emojis/898956482580721696.png
+ bug_hunter_2: "<:bug_hunter_2:898956482161278976>", // https://cdn.discordapp.com/emojis/898956482161278976.png
+ discord_employee: "<:discordemployee:898956482102566954>", // https://cdn.discordapp.com/emojis/898956482102566954.png
+ 
  // Utility emojis
  picture_frame: "🖼️",
  anger: "💢",

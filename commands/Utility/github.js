@@ -30,7 +30,7 @@ module.exports = {
      const embed = new MessageEmbed() // Prettier
       .setAuthor(login, avatar_url)
       .setTitle(`${client.bot_emojis.octo} Github Info`)
-      .setColor("RANDOM")
+      .setColor("#4f545c")
       .setThumbnail(avatar_url)
       .addField(`${client.bot_emojis.member} Username`, `[${login}](${html_url})`)
       if(bio) embed.addField(`${client.bot_emojis.edit} Bio`, `>>> ${bio}`)
@@ -39,7 +39,7 @@ module.exports = {
       embed.addField(`${client.bot_emojis.paper_clips} Followers`, `> \`${followers}\``, true)
       embed.addField(`${client.bot_emojis.paper_clip} Following`, `> \`${following}\``, true)
       embed.addField(`${client.bot_emojis.octo} Github ID`, `> \`${id}\``, true)
-      if(location) embed.addField(`${client.bot_emojis.earth} Location`, `>>> ${location}`, true)
+      if(location) embed.addField(`${client.bot_emojis.earth} Location`, `>>> \`${location}\``, true)
       if(twitter_username) embed.addField(`${client.bot_emojis.bird} Twitter`, `> https://twitter.com/${twitter_username}`)
       if(company) embed.addField(`${client.bot_emojis.rocket} Company`, `> ${company}`)
       if(email) embed.addField(`${client.bot_emojis.email} E-Mail`, `> \`${email}\``)
