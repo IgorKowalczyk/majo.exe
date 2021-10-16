@@ -1,16 +1,16 @@
 const { MessageEmbed } = require("discord.js");
 
 module.exports = {
- name: "pause-giveaway",
- aliases: ["gpause", "giveaway-pause"],
+ name: "unpause-giveaway",
+ aliases: ["gunpause", "giveaway-unpause"],
  description: "Pause a giveaway",
  category: "Giveaway",
- usage: "pause-giveaway <giveaway id/giveaway prize>",
+ usage: "unpause-giveaway <giveaway id/giveaway prize>",
  run: async (client, message, args) => {
   try {
    const query = args.join(" ");
    if (!query) {
-    return client.createError(message, `${client.bot_emojis.error} | Please enter a giveaway message ID / giveaway prize!\n\n**Usage:** \`${client.prefix} pause-giveaway <giveaway id/giveaway prize>\``);
+    return client.createError(message, `${client.bot_emojis.error} | Please enter a giveaway message ID / giveaway prize!\n\n**Usage:** \`${client.prefix} unpause-giveaway <giveaway id/giveaway prize>\``);
    }
    const giveaway =
     client.giveawaysManager.giveaways.find((g) => g.prize === query && g.guildId === message.guild.id) ||
@@ -19,15 +19,15 @@ module.exports = {
    if (!giveaway) {
     return client.createError(message, `${client.bot_emojis.error} | No giveaway found for \`${query}\`!`);
    }
-   if (giveaway.pauseOptions.isPaused) {
-    return client.createError(message, `${client.bot_emojis.error} | This giveaway is already paused!`);
+   if (!giveaway.pauseOptions.isPaused) {
+    return client.createError(message, `${client.bot_emojis.error} | This giveaway is not paused!`);
    }
 
    client.giveawaysManager
-    .pause(giveaway.messageId)
+    .unpause(giveaway.messageId)
     .then(() => {
      const embed = new MessageEmbed()
-      .setDescription(`${client.bot_emojis.sparkles} | Success! Giveaway \`${query}\` paused!`)
+      .setDescription(`${client.bot_emojis.sparkles} | Success! Giveaway \`${query}\` unpaused!`)
       .setColor("GREEN")
       .setFooter(
        `Requested by ${message.author.username}`,
