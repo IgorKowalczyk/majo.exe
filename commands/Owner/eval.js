@@ -17,12 +17,22 @@ module.exports = {
    }
    let evaluated = eval(result);
    let type = typeof evaluated;
+<<<<<<< HEAD
    console.log("Code to eval: " + result);
    const success = new Discord.MessageEmbed() // Prettier
     .setColor("#2f3136")
     .addField(`${client.bot_emojis.screw_that} Type`, `\`\`\`js\n${type}\`\`\``)
     .addField(`${client.bot_emojis.input} Input`, `\`\`\`js\n${args.join(" ")}\`\`\``)
     .addField(`${client.bot_emojis.output} Output`, `\`\`\`js\n${evaluated}\`\`\``)
+=======
+   console.log(result);
+   const success = new Discord.MessageEmbed() // Prettier
+    .setColor("RANDOM")
+    .setTitle("💡 Eval")
+    .addField(`Type:\n`, "```js\n" + `${type}` + "```", true)
+    .addField(`Input:\n`, "```js\n" + `${args.join(" ")}` + "```", false)
+    .addField(`Output:\n`, "```js\n" + evaluated + "```", true)
+>>>>>>> master
     .setFooter(
      `Requested by ${message.author.username}`,
      message.author.displayAvatarURL({

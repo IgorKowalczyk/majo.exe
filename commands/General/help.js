@@ -61,12 +61,68 @@ module.exports = {
     ccate.push(nome);
    });
 
+<<<<<<< HEAD
    const embed = new MessageEmbed()
     .setAuthor(`${client.user.username} Help`, message.guild.iconURL())
     .setDescription(`> Use the menu, or use ${client.config.domain ? `[\`${client.prefix} help [category]\`](${client.config.domain})` : `\`${client.prefix} help [category]\``} to view commands base on their category!\n\n`)
     .addFields(categories)
     .setFooter(
      `Requested by ${message.author.tag} • ${client.commands.size} commands in total`,
+=======
+   function getAll(client, message) {
+    const commands = readdirSync("./commands/");
+    const embed = new Discord.MessageEmbed() // Prettier
+     .setAuthor(`${capitalize(client.user.username)} Help`, message.guild.iconURL())
+     .setColor("RANDOM")
+     .setTimestamp();
+    let categories;
+    let icon;
+    categories = [...new Set(client.commands.map((cmd) => cmd.category))];
+    for (const id of categories) {
+     const category = client.commands.filter((cmd) => cmd.category === id);
+     if (id == "General") {
+      icon = client.bot_emojis.bricks;
+     }
+     if (id == "Moderation") {
+      icon = client.bot_emojis.hammer;
+     }
+     if (id == "Fun") {
+      icon = client.bot_emojis.rofl;
+     }
+     if (id == "Music") {
+      icon = client.bot_emojis.music;
+     }
+     if (id == "Economy") {
+      icon = client.bot_emojis.money;
+     }
+     if (id == "Utility") {
+      icon = client.bot_emojis.tools;
+     }
+     if (id == "Image") {
+      icon = client.bot_emojis.picture_frame;
+     }
+     if (id == "NSFW") {
+      icon = client.bot_emojis.smirk; // https://www.youtube.com/watch?v=YMm2gv7TStc&t=37s ...
+     }
+     if (!id) {
+      icon = client.bot_emojis.question;
+     }
+     if (id == "Owner") continue;
+     embed.addField(`${icon} ${id} (${category.size})`, "> " + category.map((cmd) => `${cmd.name}`).join(", "));
+    }
+    // Disabled module
+    embed.addField(`${client.bot_emojis.music} ~~Music~~ (12)`, "> **Note:** The music module is disabled due to a large amount of bugs. We are already working on a new version\n~~filter, lyrics, nowplaying, pause, play, queue, resume, search, shuffle, skip, stop, volume~~");
+    const owner = [...new Set(client.commands.filter((cmd) => `${cmd.category}` == "Owner").map((cmd) => cmd.name))];
+    if (message.author.id == config.owner_id) {
+     embed.addField(`${client.bot_emojis.owner_crown} Owner`, "**Note:** *Only the bot owner (<@" + config.owner_id + ">) can see and use the commands below!*\n> " + owner.join(", "));
+    }
+    embed.addField(`${client.bot_emojis.question} Command Information`, `> \`${prefix} help <command>\`\n`);
+    if (config.news && config.bot_news_title) {
+     embed.addField(`${config.bot_news_title}`, `${config.news}`);
+    }
+    embed.setFooter(
+     "Requested by " + `${message.author.username}` + " | " + `${client.commands.size}` + " Commands",
+>>>>>>> master
      message.author.displayAvatarURL({
       dynamic: true,
      })
@@ -82,6 +138,7 @@ module.exports = {
    if (client.config.help_embed.display_news == true && client.config.help_embed.news_title && client.config.help_embed.news) {
     embed.addField(`${client.config.help_embed.news_title}`, `${client.config.help_embed.news}`);
    }
+<<<<<<< HEAD
    let menus = create_mh(ccate);
    return message.reply({ embeds: [embed], components: menus.smenu }).then((msgg) => {
     const menuID = menus.sid;
@@ -106,6 +163,20 @@ module.exports = {
         des,
        };
        return obj;
+=======
+
+   function getCMD(client, message, input) {
+    const embed = new Discord.MessageEmbed(); // Prettier;
+    const cmd = client.commands.get(input.toLowerCase()) || client.commands.get(client.aliases.get(input.toLowerCase()));
+    const info = `${client.bot_emojis.error} | No information found for command \`${input.toLowerCase()}\``;
+    if (!cmd) {
+     try {
+      return message.lineReply({
+       embed: {
+        color: 16734039,
+        description: info,
+       },
+>>>>>>> master
       });
       let command_names = new Object();
       cmds.map((co) => {

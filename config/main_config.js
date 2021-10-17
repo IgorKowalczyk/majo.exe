@@ -20,6 +20,13 @@ module.exports = {
  scopes: "bot%20applications.commands",
  permissions: "4294967287",
  suggestions_channel: "838092194530852884",
+<<<<<<< HEAD:config/main_config.js
+=======
+ bot_news_title: "<:terohost:881846121201291284> Terohost",
+ news: "Are you looking for cheap, fast and reliable hosting? [Terohost](https://terohost.com/) is perfect for you! Plans start at $1/mo! Go to [terohost.com](https://terohost.com/) and order your dream server today!\n\n*Ps! I am being hosted on Terohost :grin:*",
+ brainid: process.env.BRAINID,
+ brainkey: process.env.BRAINKEY,
+>>>>>>> master:config.js
  prefix: process.env.PREFIX,
  youtube: process.env.YOUTUBE,
  id: process.env.ID,
