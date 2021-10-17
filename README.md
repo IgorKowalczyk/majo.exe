@@ -41,9 +41,6 @@ Go to [this link](https://discord.com/oauth2/authorize/?permissions=4294967287&s
     * `PREFIX` - Discord bot main prefix
     * `ID` - Your Discord Bot ID
     * `AMEAPI` - your Amethyste API token [[Tutorial](#amethyste-api)]
-    * `BRAINID` - Your Brainshop AI Brain ID [[Tutorial](#ai-keys)]
-    * `BRAINKEY` - Your Brainshop AI Brain Key [[Tutorial](#ai-keys)]
-    * `GENIUS` - Your Genius API Key [[Tutorial](#genius)]
     * `MYSQL_DATABASE` - Your MYSQL database name
     * `MYSQL_HOST` - Your MYSQL Host Endpoint
     * `MYSQL_PASSWORD` - Your MYSQL user password
@@ -94,12 +91,10 @@ Go to [this link](https://discord.com/oauth2/authorize/?permissions=4294967287&s
 | `PREFIX` | The default bot prefix (eg. `!majo`) | ✅ | ✅ |
 | `ID` | Your Discord Bot ID | ✅ | ✅ |
 | `AMEAPI` | Your Amethyste api token | ✅ | ❌ |
-| `BRAINID` | Your Brainshop AI Brain ID | ✅ | ❌ |
 | `MYSQL_DATABASE` | Your MYSQL database name | ✅ | ✅ |
 | `MYSQL_HOST` | Your MYSQL Host | ✅ | ✅ |
 | `MYSQL_USER` | Your MYSQL user | ✅ | ✅ |
-| `MYSQL_PASSWORD` | Your Brainshop AI Brain Key | ✅ | ✅ |
-| `GENIUS` | Your genius API Key | ✅ | ❌ |
+| `MYSQL_PASSWORD` | Your MYSQL password | ✅ | ✅ |
 | `DOMAIN` | Your website domain (eg `https://example.com`) | ❌ | ✅ |
 | `PORT` | Your webiste port eg. `8008`<br> - Note: Heroku don't need port. Heroku assings port automatically! | ❌ | ✅ |
 | `DASHBOARD` | The Web-Dashboard config value. (Boolean) | ❌ | ✅ |
@@ -127,9 +122,6 @@ MYSQL_DATABASE=YOUR_MYSQL_DATABASE_NAME
 MYSQL_HOST=YOUR_MYSQL_HOST
 MYSQL_PASSWORD=YOUR_MYSQL_USER_PASSWORD
 MYSQL_USER=YOUR_MYSQL_DATABASE_USER
-BRAINID=YOUR_BRAINSHOP_AI_BRAIN_ID
-BRAINKEY=YOUR_BRAINSHOP_AI_BRAIN_KEY
-GENIUS=YOUR_GENIUS_API_KEY
 CONTACT_WEBHOOK=YOUR_CONTACT_FORM_WEBHOOK
 STATUS_WEBHOOK=YOUR_STATUS_WEBHOOK_URL
 COOKIES=YOUR_YOUTUBE_COOKIES
@@ -153,14 +145,6 @@ ANALYTICS=YOUR_GOOGLE_TRACKING_ID
 ##### Amethyste Api
 > Soon!
 
-##### AI Keys
-> Soon!
-
-##### Youtube
-> Soon!
-
-##### Genius
-> Soon!
 
 ##### Analytics ID
 > Soon!

@@ -1,10 +1,13 @@
 const Discord = require("discord.js");
 const emojis = require("../config/emojis_config");
 const config = require("../config/main_config");
+const backup = require("discord-backup");
 
 module.exports = function (client) {
  client.config = config;
  client.bot_emojis = emojis;
+ client.backupManager = backup;
+ client.backupManager.setStorageFolder(`${process.cwd()}/database`);
  client.createCommandError = function (message, err) {
   if (!message) throw new Error("You must provide message object to create new error!");
   const error = new Discord.MessageEmbed() // Prettier

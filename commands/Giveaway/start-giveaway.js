@@ -42,7 +42,7 @@ module.exports = {
       format: "png",
       size: 2048,
      })
-    )
+    );
    message.reply({ embeds: [success] }).then((m) =>
     setTimeout(() => {
      if (!m.deleted) m.delete();

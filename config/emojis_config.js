@@ -43,7 +43,7 @@ module.exports = {
  bug_hunter_1: "<:bug_hunter:898956482580721696>", // https://cdn.discordapp.com/emojis/898956482580721696.png
  bug_hunter_2: "<:bug_hunter_2:898956482161278976>", // https://cdn.discordapp.com/emojis/898956482161278976.png
  discord_employee: "<:discordemployee:898956482102566954>", // https://cdn.discordapp.com/emojis/898956482102566954.png
- 
+
  // Utility emojis
  picture_frame: "🖼️",
  anger: "💢",

@@ -5,3 +5,4 @@ node_modules
 *webmanifest
 docs/
 dashboard/static/arc-sw.js
+database/

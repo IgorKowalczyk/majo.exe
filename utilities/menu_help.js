@@ -38,7 +38,9 @@ const create_mh = (array) => {
   });
  });
  let selectionmenu = new MessageSelectMenu() // Prettier
- .setCustomId(id).setPlaceholder(`${emojis.sparkles} | Choose the command category!`).addOptions(menus);
+  .setCustomId(id)
+  .setPlaceholder(`${emojis.sparkles} | Choose the command category!`)
+  .addOptions(menus);
 
  select_menu = new MessageActionRow() // Prettier
   .addComponents(selectionmenu);

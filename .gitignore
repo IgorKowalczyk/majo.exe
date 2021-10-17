@@ -131,10 +131,13 @@ temp/
 # Sqlite files
 *.sqlite
 
+# Database folders
+database/
+
 # Compressed repo
 majobot.zip
 
-# Cert
+# Certificates
 *.key
 *.cert
 

@@ -13,10 +13,10 @@ module.exports = {
    const language = args[0];
    const text = args.slice(1).join(" ");
    if (!language) {
-    return client.createError(message, `${client.bot_emojis.error} | You must specify the language to which you want the text to be translated!\n\n**Usage:** \`${client.prefix} <language> <text to translate>\``)
+    return client.createError(message, `${client.bot_emojis.error} | You must specify the language to which you want the text to be translated!\n\n**Usage:** \`${client.prefix} <language> <text to translate>\``);
    }
    if (!text) {
-    return client.createError(message, `${client.bot_emojis.error} | You must specify the text to translate!\n\n**Usage:** \`${client.prefix} <language> <text to translate>\``)
+    return client.createError(message, `${client.bot_emojis.error} | You must specify the text to translate!\n\n**Usage:** \`${client.prefix} <language> <text to translate>\``);
    }
    if (languages.some((ele) => ele.name === language.toLowerCase()) || languages.some((ele) => ele.abrv === language.toLowerCase())) {
     translate(text, { to: language.toLowerCase() })
@@ -35,13 +35,13 @@ module.exports = {
          size: 2048,
         })
        );
-      message.reply({embeds: [embed]});
+      message.reply({ embeds: [embed] });
      })
      .catch((err) => {
       return client.createCommandError(message, err);
      });
    } else {
-    return client.createError(`${client.bot_emojis.error} | Please enter a correct language to translate!`)
+    return client.createError(`${client.bot_emojis.error} | Please enter a correct language to translate!`);
    }
   } catch (err) {
    console.log(err);
