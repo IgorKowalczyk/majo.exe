@@ -28,7 +28,6 @@ module.exports = {
       const filter = (m) => (m.author.id === message.author.id && m.content.includes("-confirm")) || (m.author.id === message.author.id && m.content.includes("cancel"));
       const collector = message.channel.createMessageCollector({ filter, time: 15000, max: 1 });
       collector.on("collect", (m) => {
-       console.log(m);
        collector.stop();
        if (m.content == "-confirm") {
         const wait = new MessageEmbed() // Prettier

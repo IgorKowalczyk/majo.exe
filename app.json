@@ -28,14 +28,6 @@
    "description": "Youtube cookies",
    "required": false
   },
-  "BRAINID": {
-   "description": "Brainshop AI Brain ID",
-   "required": true
-  },
-  "BRAINKEY": {
-   "description": "Brainshop AI Brain Key",
-   "required": true
-  },
   "DOMAIN": {
    "description": "Website domain (same as your heroku app name!)",
    "required": false
@@ -59,10 +51,6 @@
   "STATUS_WEBHOOK_ID": {
    "description": "Status webhook id",
    "required": false
-  },
-  "GENIUS": {
-   "description": "Genius API key",
-   "required": true
   },
   "DASHBOARD": {
    "description": "Dashboard launch config (Boolean | true/false)",

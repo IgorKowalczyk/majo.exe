@@ -1,4 +1,4 @@
-# Majo.exe (v13 BETA)
+# Majo.exe
 
 Majo.exe have almost everything - Fun, Memes, Images, Giveaway, Economy, Anime and NSFW. This bot serve over 150 commands!
 
