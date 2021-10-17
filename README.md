@@ -2,14 +2,7 @@
 
 Majo.exe have almost everything - Fun, Memes, Images, Giveaway, Economy, Anime and NSFW. This bot serve over 150 commands!
 
-<<<<<<< HEAD
 [![Discord](https://discord.com/api/guilds/666599184844980224/widget.png?style=banner2)](https://majobot.igorkowalczyk.repl.co/server)
-=======
-> Discord.js v12 is deprecated! We are working on rebuild Majo to Discord.js v13, you can contribute or see progress by clicking link below!<br>
-> [See Majo.exe on Discord.js v13!](https://github.com/IgorKowalczyk/majobot/tree/v13-(WIP))
-
-[![Discord](https://discord.com/api/guilds/666599184844980224/widget.png?style=banner2)](https://majoexe.herokuapp.com/server)
->>>>>>> master
 
 [![Node.js](https://img.shields.io/github/workflow/status/igorkowalczyk/majobot/Node.js/master?style=flat-square&logo=github&color=%2334D058)](https://majobot.igorkowalczyk.repl.co/)
 [![Jekyll](https://img.shields.io/github/workflow/status/igorkowalczyk/majobot/Jekyll/master?style=flat-square&logo=github&color=%2334D058)](https://majobot.igorkowalczyk.repl.co/)
