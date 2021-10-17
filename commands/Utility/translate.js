@@ -13,10 +13,10 @@ module.exports = {
    const language = args[0];
    const text = args.slice(1).join(" ");
    if (!language) {
-    return client.createError(message, `${client.bot_emojis.error} | You must specify the language to which you want the text to be translated!`)
+    return client.createError(message, `${client.bot_emojis.error} | You must specify the language to which you want the text to be translated!\n\n**Usage:** \`${client.prefix} <language> <text to translate>\``)
    }
    if (!text) {
-    return client.createError(message, `${client.bot_emojis.error} | You must specify the text to translate!`)
+    return client.createError(message, `${client.bot_emojis.error} | You must specify the text to translate!\n\n**Usage:** \`${client.prefix} <language> <text to translate>\``)
    }
    if (languages.some((ele) => ele.name === language.toLowerCase()) || languages.some((ele) => ele.abrv === language.toLowerCase())) {
     translate(text, { to: language.toLowerCase() })
