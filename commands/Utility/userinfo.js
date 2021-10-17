@@ -51,11 +51,7 @@ module.exports = {
     embed.addField(`${client.bot_emojis.role} Highest role`, `> ${user.roles.highest}`, true)
     embed.addField(`${client.bot_emojis.discord_badges} Badges`, `> ${flags[mention.user.flags.toArray().join(", ")]}`, true)
     embed.addField(`${client.bot_emojis.member} Account banned?`, `> ${user.deleted ? "Yes, account banned!" : "No, account still available"}`)
-    embed.setTitle(`${user.user.tag} ${(user.user.bot) ? `${client.bot_emojis.bot_badge_part_1}${client.bot_emojis.bot_badge_part_2}` : ""}`,
-     user.user.displayAvatarURL({
-      dynamic: true,
-     })
-    )
+    embed.setTitle(`${user.user.tag} ${(user.user.bot) ? `${client.bot_emojis.bot_badge_part_1}${client.bot_emojis.bot_badge_part_2}` : ""}`)
    message.reply({ embeds: [embed] });
   } catch (err) {
    console.log(err);

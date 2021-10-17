@@ -1,4 +1,3 @@
-const chalk = require("chalk");
 const { MessageSelectMenu, MessageActionRow } = require("discord.js");
 const emojis = require("../config/emojis_config");
 function capitalize(string) {
@@ -6,8 +5,8 @@ function capitalize(string) {
 }
 
 const create_mh = (array) => {
- if (!array) throw new Error(chalk.red.bold("The options were not provided! Make sure you provide all the options!"));
- if (array.length < 0) throw new Error(chalk.red.bold(`The array has to have atleast one thing to select!`));
+ if (!array) throw new Error("The options were not provided! Make sure you provide all the options!");
+ if (array.length < 0) throw new Error(`The array has to have atleast one thing to select!`);
  let select_menu;
  let id = "help-menus";
  let menus = [];
@@ -38,7 +37,8 @@ const create_mh = (array) => {
    emoji: `${emo[name.toLowerCase()] || "❔"}`,
   });
  });
- let selectionmenu = new MessageSelectMenu().setCustomId(id).setPlaceholder(`${emojis.sparkles} | Choose the command category!`).addOptions(menus);
+ let selectionmenu = new MessageSelectMenu() // Prettier
+ .setCustomId(id).setPlaceholder(`${emojis.sparkles} | Choose the command category!`).addOptions(menus);
 
  select_menu = new MessageActionRow() // Prettier
   .addComponents(selectionmenu);
