@@ -1,5 +1,5 @@
-const Discord = require("discord.js");
-const Random = require("srod-v2");
+const { MessageEmbed } = require("discord.js");
+const fetch = require("node-fetch");
 
 module.exports = {
  name: "advice",
@@ -9,15 +9,31 @@ module.exports = {
  usage: "advice",
  run: async (client, message, args) => {
   try {
-   const Data = await Random.GetAdvice();
-   return message.lineReply(Data);
+   const res = await fetch("https://api.adviceslip.com/advice"),
+    { slip } = await res.json();
+   const embed = new MessageEmbed()
+    .setTitle(`${client.bot_emojis.thinking} My advice`)
+    .setDescription(`>>> ${slip.advice}`)
+    .setColor("RANDOM")
+    .setFooter(
+     `Requested by ${message.author.username}`,
+     message.author.displayAvatarURL({
+      dynamic: true,
+      format: "png",
+      size: 2048,
+     })
+    )
+    .setThumbnail(
+     message.author.displayAvatarURL({
+      dynamic: true,
+      format: "png",
+      size: 2048,
+     })
+    );
+   return message.reply({ embeds: [embed] });
   } catch (err) {
-   message.lineReply({
-    embed: {
-     color: 16734039,
-     description: `Something went wrong... ${client.bot_emojis.sadness}`,
-    },
-   });
+   console.log(err);
+   return client.createCommandError(message, err);
   }
  },
 };

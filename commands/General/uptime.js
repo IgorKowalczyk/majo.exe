@@ -1,6 +1,5 @@
-const Discord = require("discord.js");
+const { MessageEmbed, MessageActionRow, MessageButton } = require("discord.js");
 const moment = require("moment");
-const config = require("../../config");
 require("moment-duration-format");
 
 module.exports = {
@@ -14,7 +13,7 @@ module.exports = {
    const duration = moment.duration(client.uptime).format(" D [days], H [hrs], m [mins], s [secs]");
    const date = new Date();
    const timestamp = date.getTime() - Math.floor(client.uptime);
-   const embed = new Discord.MessageEmbed() // Prettier
+   const embed = new MessageEmbed() // Prettier
     .setTitle(
      `${client.bot_emojis.uptime} Uptime`,
      message.guild.iconURL({
@@ -34,17 +33,22 @@ module.exports = {
      })
     )
     .setColor("RANDOM");
-   if (config.status) {
-    embed.addField(`${client.bot_emojis.status_online} Servers Status`, "```" + config.status + "```");
+   if (client.config.status) {
+    embed.addField(`${client.bot_emojis.status_online} Servers Status`, "```" + client.config.status + "```");
+    const row = new MessageActionRow().addComponents(
+     new MessageButton() // Prettier
+      .setURL(`${client.config.status}`)
+      .setEmoji(client.bot_emojis.status_online)
+      .setLabel("Check server status")
+      .setStyle("LINK")
+    );
+    message.reply({ embeds: [embed], components: [row] });
+   } else {
+    message.reply({ embeds: [embed] });
    }
-   message.lineReply(embed);
   } catch (err) {
-   message.lineReply({
-    embed: {
-     color: 16734039,
-     description: `Something went wrong... ${client.bot_emojis.sadness}`,
-    },
-   });
+   console.log(err);
+   return client.createCommandError(message, err);
   }
  },
 };

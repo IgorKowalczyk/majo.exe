@@ -1,7 +1,6 @@
-const Discord = require("discord.js");
+const { MessageEmbed, MessageActionRow, MessageButton } = require("discord.js");
 const fetch = require("node-fetch");
 const moment = require("moment");
-const Extra = require("discord-buttons");
 
 module.exports = {
  name: "github",
@@ -11,65 +10,48 @@ module.exports = {
  usage: "github (search)",
  run: async (client, message, args) => {
   try {
-   if (!args[0])
-    return message.lineReply({
-     embed: {
-      color: 16734039,
-      description: `${client.bot_emojis.error} | Please enter a Github username`,
-     },
-    });
+   if (!args[0]) {
+    return client.createError(message, `${client.bot_emojis.error} | Please enter a Github username!`);
+   }
    fetch(`https://api.github.com/users/${args.join("-")}`)
     .then((res) => res.json())
     .then((body) => {
-     if (body.message)
-      return message.lineReply({
-       embed: {
-        color: 16734039,
-        description: `${client.bot_emojis.error} | \`0\` Users found, please provide vaild username`,
-       },
-      });
+     if (body.message) {
+      return client.createError(message, `${client.bot_emojis.error} | \`0\` users found, please provide vaild Github username!`);
+     }
      let { login, avatar_url, name, id, html_url, company, public_repos, public_gists, twitter_username, email, followers, following, location, created_at, bio } = body;
-     const button = new Extra.MessageButton() // Prettier
-      .setLabel("See profile")
-      .setStyle("url")
-      .setURL(html_url);
-     const embed = new Discord.MessageEmbed() // Prettier
-      .setTitle(`${client.bot_emojis.octo} ${login} Github`, avatar_url)
-      .setColor("RANDOM")
+     const row = new MessageActionRow().addComponents(new MessageButton().setLabel("See profile").setURL(html_url).setStyle("LINK"));
+     const embed = new MessageEmbed() // Prettier
+      .setAuthor(login, avatar_url)
+      .setTitle(`${client.bot_emojis.octo} Github Info`)
+      .setColor("#4f545c")
       .setThumbnail(avatar_url)
-      .addField(`${client.bot_emojis.member} Username`, `\`\`\`${login}\`\`\``)
-      .addField(`${client.bot_emojis.edit} Bio`, `\`\`\`${bio || `${client.bot_emojis.error} Bio not provided`}\`\`\``)
-      .addField(`${client.bot_emojis.book} Public Repositories`, `\`\`\`${public_repos || "0"}\`\`\``, true)
-      .addField(`${client.bot_emojis.book} Public Gists`, `\`\`\`${public_gists || "0"}\`\`\``, true)
-      .addField(`${client.bot_emojis.paper_clips} Followers`, `\`\`\`${followers}\`\`\``, true)
-      .addField(`${client.bot_emojis.paper_clip} Following`, `\`\`\`${following}\`\`\``, true)
-      .addField(`${client.bot_emojis.octo} Github ID`, `\`\`\`${id}\`\`\``)
-      .addField(`${client.bot_emojis.earth} Location`, `\`\`\`${location || `${client.bot_emojis.error} Unknown location`}\`\`\``)
-      .addField(`${client.bot_emojis.email} E-Mail`, `\`\`\`${email || `${client.bot_emojis.error} No public email provided`}\`\`\``)
-      .addField(`${client.bot_emojis.bird} Twitter`, `\`\`\`${twitter_username || "None"}\`\`\``)
-      .addField(`${client.bot_emojis.rocket} Company`, `\`\`\`${company || `${client.bot_emojis.error} No company`}\`\`\``)
-      .addField(`${client.bot_emojis.stopwatch} Account Created`, moment.utc(created_at).format("dddd, MMMM, Do YYYY"))
-      .setFooter(
-       `Requested by ${message.author.username}`,
-       message.author.displayAvatarURL({
-        dynamic: true,
-        format: "png",
-        size: 2048,
-       })
-      )
-      .setTimestamp();
-     message.lineReply({
-      button: button,
-      embed: embed,
-     });
+      .addField(`${client.bot_emojis.member} Username`, `[${login}](${html_url})`);
+     if (bio) embed.addField(`${client.bot_emojis.edit} Bio`, `>>> ${bio}`);
+     embed.addField(`${client.bot_emojis.book} Repositories`, `> \`${public_repos || "0"}\``, true);
+     embed.addField(`${client.bot_emojis.book} Public Gists`, `> \`${public_gists || "0"}\``, true);
+     embed.addField(`${client.bot_emojis.paper_clips} Followers`, `> \`${followers}\``, true);
+     embed.addField(`${client.bot_emojis.paper_clip} Following`, `> \`${following}\``, true);
+     embed.addField(`${client.bot_emojis.octo} Github ID`, `> \`${id}\``, true);
+     if (location) embed.addField(`${client.bot_emojis.earth} Location`, `>>> \`${location}\``, true);
+     if (twitter_username) embed.addField(`${client.bot_emojis.bird} Twitter`, `> https://twitter.com/${twitter_username}`);
+     if (company) embed.addField(`${client.bot_emojis.rocket} Company`, `> ${company}`);
+     if (email) embed.addField(`${client.bot_emojis.email} E-Mail`, `> \`${email}\``);
+     embed.addField(`${client.bot_emojis.stopwatch} Account Created`, `> <t:${moment(created_at).unix()}> (<t:${moment(created_at).unix()}:R>)`);
+     embed.setFooter(
+      `Requested by ${message.author.username}`,
+      message.author.displayAvatarURL({
+       dynamic: true,
+       format: "png",
+       size: 2048,
+      })
+     );
+     embed.setTimestamp();
+     message.reply({ embeds: [embed], components: [row] });
     });
   } catch (err) {
-   message.lineReply({
-    embed: {
-     color: 16734039,
-     description: `Something went wrong... ${client.bot_emojis.sadness}`,
-    },
-   });
+   console.log(err);
+   return client.createCommandError(message, err);
   }
  },
 };

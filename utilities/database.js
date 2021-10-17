@@ -1,13 +1,11 @@
 const MySQL = require("mysql");
 const chalk = require("chalk");
-const gradient = require("gradient-string");
+require("dotenv").config();
 
-// Checking env values
 if (!process.env.MYSQL_HOST) throw new Error("[SQL] You need to provide MYSQL Host in .env file - MYSQL_HOST=YOUR_MYSQL_HOST Note: You don't need to provide port to MYSQL Server, you only need to provide domain eg. localhost not localhost:3306!");
 if (!process.env.MYSQL_USER) throw new Error("[SQL] You need to provide MYSQL User in .env file - MYSQL_USER=YOUR_MYSQL_USER_NAME");
 if (!process.env.MYSQL_PASSWORD) throw new Error("[SQL] You need to provide MYSQL Password in .env file - MYSQL_PASSWORD=YOUR_MYSQL_PASSWORD");
 if (!process.env.MYSQL_DATABASE) throw new Error("[SQL] You need to provide MYSQL Database name in .env file - MYSQL_DATABASE=YOUR_MYSQL_DATABASE_NAME");
-
 const sql = MySQL.createConnection({
  host: process.env.MYSQL_HOST,
  user: process.env.MYSQL_USER,

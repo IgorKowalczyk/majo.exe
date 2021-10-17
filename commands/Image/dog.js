@@ -1,4 +1,4 @@
-const Discord = require("discord.js");
+const { MessageEmbed } = require("discord.js");
 const fetch = require("node-fetch");
 
 module.exports = {
@@ -12,7 +12,7 @@ module.exports = {
    try {
     const response = await fetch("https://nekos.life/api/v2/img/woof");
     const body = await response.json();
-    const embed = new Discord.MessageEmbed() // Prettier
+    const embed = new MessageEmbed() // Prettier
      .setTitle(
       "🐕 Random dog",
       message.guild.iconURL({
@@ -32,14 +32,10 @@ module.exports = {
      )
      .setTimestamp()
      .setURL(body.url);
-    message.lineReply(embed);
+    message.reply({ embeds: [embed] });
    } catch (err) {
-    message.lineReply({
-     embed: {
-      color: 16734039,
-      description: `Something went wrong... ${client.bot_emojis.sadness}`,
-     },
-    });
+    console.log(err);
+    return client.createCommandError(message, err);
    }
   })();
  },

@@ -1,4 +1,4 @@
-const Discord = require("discord.js");
+const { MessageEmbed } = require("discord.js");
 const fetch = require("node-fetch");
 
 module.exports = {
@@ -11,16 +11,23 @@ module.exports = {
   (async () => {
    try {
     if (!message.channel.nsfw) {
-     const nsfwembed = new Discord.MessageEmbed()
-      .setColor("#FF5757")
+     const nsfwembed = new MessageEmbed()
+      .setColor("RED")
       .setDescription(`${client.bot_emojis.anger} | You can use this command only in an NSFW Channel!`)
-      .setFooter("Requested by " + message.author.username, message.author.displayAvatarURL())
+      .setFooter(
+       `Requested by ${message.author.username}`,
+       message.author.displayAvatarURL({
+        dynamic: true,
+        format: "png",
+        size: 2048,
+       })
+      )
       .setImage("https://media.discordapp.net/attachments/721019707607482409/855827123616481300/nsfw.gif");
-     return message.lineReply(nsfwembed);
+     return message.reply({ embeds: [nsfwembed] });
     }
     const response = await fetch("https://nekos.life/api/v2/img/cum");
     const body = await response.json();
-    const embed = new Discord.MessageEmbed() // Prettier
+    const embed = new MessageEmbed() // Prettier
      .setTitle(
       ":smirk: Cum",
       message.guild.iconURL({
@@ -40,14 +47,10 @@ module.exports = {
      )
      .setTimestamp()
      .setURL(body.url);
-    message.lineReply(embed);
+    message.reply({ embeds: [embed] });
    } catch (err) {
-    message.lineReply({
-     embed: {
-      color: 16734039,
-      description: `Something went wrong... ${client.bot_emojis.sadness}`,
-     },
-    });
+    console.log(err);
+    return client.createCommandError(message, err);
    }
   })();
  },

@@ -1,4 +1,4 @@
-const Discord = require("discord.js");
+const { MessageEmbed, MessageActionRow, MessageButton } = require("discord.js");
 const axios = require("axios").default;
 
 module.exports = {
@@ -15,29 +15,25 @@ module.exports = {
    };
    axios.request(options).then((response) => {
     let meme = response.data[0].data.children[0].data;
-    const embed = new Discord.MessageEmbed() // Prettier
+    const row = new MessageActionRow().addComponents(new MessageButton().setStyle("LINK").setURL(`https://reddit.com${meme.permalink}`).setLabel("View meme"));
+    const embed = new MessageEmbed() // Prettier
      .setColor("RANDOM")
      .setTitle(meme.title)
      .setURL(`https://reddit.com${meme.permalink}`)
      .setImage(meme.url)
      .setFooter(
-      `${client.bot_emojis.like} ${meme.ups} | ${client.bot_emojis.chat} ${meme.num_comments} | Requested by ${message.author.username}`,
+      `${client.bot_emojis.like} ${meme.ups} • ${client.bot_emojis.chat} ${meme.num_comments} | Requested by ${message.author.username}`,
       message.author.displayAvatarURL({
        dynamic: true,
        format: "png",
        size: 2048,
       })
      );
-    message.lineReply(embed);
+    message.reply({ embeds: [embed], components: [row] });
    });
   } catch (err) {
    console.log(err);
-   message.lineReply({
-    embed: {
-     color: 16734039,
-     description: `Something went wrong... ${client.bot_emojis.sadness}`,
-    },
-   });
+   return client.createCommandError(message, err);
   }
  },
 };

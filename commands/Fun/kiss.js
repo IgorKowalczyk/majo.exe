@@ -1,4 +1,4 @@
-const Discord = require("discord.js");
+const { MessageEmbed } = require("discord.js");
 const fetch = require("node-fetch");
 
 module.exports = {
@@ -10,26 +10,16 @@ module.exports = {
  run: async (client, message, args) => {
   const user = (await message.mentions.members.first()) || message.guild.members.cache.get(args[0]) || message.guild.members.cache.find((r) => r.user.username.toLowerCase().includes() === args.join(" ").toLocaleLowerCase()) || message.guild.members.cache.find((r) => r.displayName.toLowerCase().includes() === args.join(" ").toLocaleLowerCase());
   if (!user) {
-   return message.lineReply({
-    embed: {
-     color: 16734039,
-     description: `${client.bot_emojis.broken_heart} | You must mention user to kiss ;-;\n\n**Usage:** \`${process.env.PREFIX} kiss <user>\``,
-    },
-   });
+   return client.createError(message, `${client.bot_emojis.broken_heart} | You must mention user to kiss ;-;\n\n**Usage:** \`${client.prefix} kiss <user>\``);
   }
   if (message.author === user || message.member == user) {
-   return await message.lineReply({
-    embed: {
-     color: 16734039,
-     description: `${client.bot_emojis.broken_heart} | You cant kiss yourself ;-; (Try kissing someone else, your love. Maybe you need some help?)`,
-    },
-   });
+   return client.createError(message, `${client.bot_emojis.broken_heart} | You cant kiss yourself ;-; (Try kissing someone else, your love. Maybe you need some help?)`);
   }
   (async () => {
    try {
     const response = await fetch("https://nekos.life/api/v2/img/kiss");
     const body = await response.json();
-    const embed = new Discord.MessageEmbed() // Prettier
+    const embed = new MessageEmbed() // Prettier
      .setAuthor(
       user.displayName + " Just got a kiss from " + message.author.username,
       message.author.displayAvatarURL({
@@ -51,14 +41,10 @@ module.exports = {
      )
      .setTimestamp()
      .setURL(body.url);
-    message.lineReply(embed);
+    message.reply({ embeds: [embed] });
    } catch (err) {
-    message.lineReply({
-     embed: {
-      color: 16734039,
-      description: `Something went wrong... ${client.bot_emojis.sadness}`,
-     },
-    });
+    console.log(err);
+    return client.createCommandError(message, err);
    }
   })();
  },

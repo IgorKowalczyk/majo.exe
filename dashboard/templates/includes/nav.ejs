@@ -1,0 +1,43 @@
+<% function capitalize(string) {
+ return string.charAt(0).toUpperCase() + string.slice(1);
+} %>
+<nav class="nav" role="navigation">
+<span class="logo"><a href="<%= domain %>" rel="noopener" aria-label="Open home page"><span class="name"><%= capitalize(bot.user.username) %></span><span class="tag">#<%- bot.user.discriminator %></span></a></span>
+<input class="menu-btn" type="checkbox" id="menu-btn"/>
+<label class="menu-icon" for="menu-btn"><span class="navicon"></span></label>
+<ul class="menu">
+<% if (user) { %>
+<% if (config.support_server) { %>
+<li><a href="<%= domain %>/server" target="_blank" rel="noopener">Discord</a></li>
+<% } %>
+<% if (user.avatar) {
+ avatar = `https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}`;
+} else {
+ avatar = `${dashboard}/pics/invaild-avatar.png`;
+}
+%>
+<a class="avatar-container dropdownHead" id="dropdownHead" onclick="dropdown(this)"><img class="user-avatar" src="<%= avatar %>"/><span class="user-name"><%= user.username %>#<%= user.discriminator %></span></a>
+<% } else { %>
+<% if (config.support_server) { %>
+ <li><a href="<%= domain %>/server" target="_blank" rel="noopener">Discord</a></li>
+<% } %>
+ <li><a href="<%= domain %>/login">Login</a></li>
+<% } %>
+
+</ul>
+
+<ul class="dropdown" id="dropdown">
+<div class="cross-container"><div class="cross"></div></div>
+<% if (path === "/dashboard") { %>
+ <span><a class="dropdown-li" href="<%= domain %>/"><%- include('./icons/home.ejs') %> Home</a></span>
+<% } else if (path !== "/") { %>
+ <span><a class="dropdown-li" href="<%= domain %>/"><%- include('./icons/home.ejs') %> Home</a></span>
+ <span><a class="dropdown-li" href="<%= domain %>/dashboard"><%- include('./icons/dashboard-nav.ejs') %> Dashboard</a></span>
+<% } else { %>
+ <span><a class="dropdown-li" href="<%= domain %>/dashboard"><%- include('./icons/dashboard-nav.ejs') %> Dashboard</a></span>
+<% } %>
+ <span><a class="dropdown-li" href="<%= domain %>/profile"><%- include('./icons/profile.ejs') %> Profile</a></span>
+<span><a class="dropdown-li disabled" disabled="true" title="Soon!"><%- include('./icons/language.ejs') %> Language</a></span>
+<span><a class="dropdown-li logout" href="<%= domain %>/logout" class="logout"><%- include('./icons/logout.ejs') %> Logout</a></span>
+</ul>
+</nav>

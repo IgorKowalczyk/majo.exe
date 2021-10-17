@@ -1,5 +1,5 @@
+const { MessageEmbed } = require("discord.js");
 const axios = require("axios").default;
-const Discord = require("discord.js");
 
 module.exports = {
  name: "fox",
@@ -14,7 +14,7 @@ module.exports = {
     url: "https://some-random-api.ml/img/fox",
    };
    axios.request(options).then((response) => {
-    const embed = new Discord.MessageEmbed()
+    const embed = new MessageEmbed()
      .setColor("RANDOM")
      .setFooter(
       `Requested by ${message.author.username}`,
@@ -26,15 +26,11 @@ module.exports = {
      )
      .setTitle("🦊 Fox")
      .setImage(response.data.link);
-    message.lineReply(embed);
+    message.reply({ embeds: [embed] });
    });
   } catch (err) {
-   message.lineReply({
-    embed: {
-     color: 16734039,
-     description: `Something went wrong... ${client.bot_emojis.sadness}`,
-    },
-   });
+   console.log(err);
+   return client.createCommandError(message, err);
   }
  },
 };

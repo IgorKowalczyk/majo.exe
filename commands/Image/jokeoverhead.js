@@ -1,3 +1,4 @@
+const { MessageEmbed, MessageAttachment } = require("discord.js");
 const Discord = require("discord.js");
 const canvacord = require("canvacord");
 
@@ -10,29 +11,25 @@ module.exports = {
  run: async (client, message, args) => {
   try {
    const User = (await message.mentions.members.first()) || message.guild.members.cache.get(args[0]) || message.guild.members.cache.find((r) => r.user.username.toLowerCase().includes() === args.join(" ").toLocaleLowerCase()) || message.guild.members.cache.find((r) => r.displayName.toLowerCase().includes() === args.join(" ").toLocaleLowerCase()) || message.member;
-   const wait = await message.lineReply({
-    embed: {
-     color: 4779354,
-     description: `${client.bot_emojis.sparkles} Please wait... I'm generating your image`,
-    },
+   const wait = new MessageEmbed() // Prettier
+    .setColor("#5865f2")
+    .setDescription(`${client.bot_emojis.loading} | Please wait... I'm generating your image`);
+   message.reply({ embeds: [wait] }).then((msg) => {
+    (async () => {
+     const jokeoverhead = await canvacord.Canvas.jokeOverHead(
+      User.user.displayAvatarURL({
+       dynamic: false,
+       format: "png",
+       size: 2048,
+      })
+     );
+     const attachment = new MessageAttachment(jokeoverhead, "jokeoverhead.png");
+     msg.edit({ embeds: [], files: [attachment] });
+    })();
    });
-   const jokeoverhead = await canvacord.Canvas.jokeOverHead(
-    User.user.displayAvatarURL({
-     dynamic: false,
-     format: "png",
-     size: 2048,
-    })
-   );
-   const attachment = new Discord.MessageAttachment(jokeoverhead, "jokeoverhead.png");
-   message.channel.send(attachment);
   } catch (err) {
    console.log(err);
-   message.lineReply({
-    embed: {
-     color: 16734039,
-     description: `Something went wrong... ${client.bot_emojis.sadness}`,
-    },
-   });
+   return client.createCommandError(message, err);
   }
  },
 };

@@ -1,7 +1,6 @@
-const Discord = require("discord.js");
+const { MessageEmbed, MessageActionRow, MessageButton } = require("discord.js");
 const shorten = require("isgd");
-const { MessageButton, default: discordButtons, MessageActionRow } = require("discord-buttons");
-
+const { isURL } = require("validator");
 module.exports = {
  name: "shortener",
  aliases: ["url-shortener", "link-shortener"],
@@ -11,33 +10,22 @@ module.exports = {
  run: async (client, message, args) => {
   try {
    if (!args[0]) {
-    return message.lineReply({
-     embed: {
-      color: 16734039,
-      description: `${client.bot_emojis.error} | Please provide a link!`,
-     },
-    });
+    return client.createError(message, `${client.bot_emojis.error} | Please provide link!`);
+   }
+   if (!isURL(args[0])) {
+    return client.createError(message, `${client.bot_emojis.error} | Please provide vaild link!`);
    }
    shorten.shorten(args[0], function (res) {
-    const urldone = new Discord.MessageEmbed() // Prettier
+    const urldone = new MessageEmbed() // Prettier
      .setColor("RANDOM")
      .setTitle(`${client.bot_emojis.link} Your shortened URL`)
      .setDescription(`> Link: **${res}**`);
-    const url_button = new MessageButton() // Prettier
-     .setStyle("url")
-     .setLabel(`Go to ${res}`)
-     .setURL(`${res}`)
-     .setEmoji(client.bot_emojis.link);
-    message.lineReply(urldone, url_button);
+    const row = new MessageActionRow().addComponents(new MessageButton().setStyle("LINK").setURL(res).setLabel(`Go to ${res}`));
+    message.reply({ embeds: [urldone], components: [row] });
    });
   } catch (err) {
    console.log(err);
-   message.lineReply({
-    embed: {
-     color: 16734039,
-     description: `Something went wrong... ${client.bot_emojis.sadness}`,
-    },
-   });
+   return client.createCommandError(message, err);
   }
  },
 };

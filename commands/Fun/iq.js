@@ -1,4 +1,4 @@
-const Discord = require("discord.js");
+const { MessageEmbed } = require("discord.js");
 
 module.exports = {
  name: "iq",
@@ -10,7 +10,7 @@ module.exports = {
   try {
    const user = (await message.mentions.members.first()) || message.guild.members.cache.get(args[0]) || message.guild.members.cache.find((r) => r.user.username.toLowerCase().includes() === args.join(" ").toLocaleLowerCase()) || message.guild.members.cache.find((r) => r.displayName.toLowerCase().includes() === args.join(" ").toLocaleLowerCase()) || message.member;
    const iq = Math.floor(Math.random() * 226);
-   const embed = new Discord.MessageEmbed() // Prettier
+   const embed = new MessageEmbed() // Prettier
     .setTitle(`${client.bot_emojis.brain} IQ Test:`)
     .setDescription(`${client.bot_emojis.light_bulb} ${user.user.username} IQ: \`${iq}\``)
     .setColor("RANDOM")
@@ -23,14 +23,10 @@ module.exports = {
       size: 2048,
      })
     );
-   message.lineReply(embed);
+   message.reply({ embeds: [embed] });
   } catch (err) {
-   message.lineReply({
-    embed: {
-     color: 16734039,
-     description: `Something went wrong... ${client.bot_emojis.sadness}`,
-    },
-   });
+   console.log(err);
+   return client.createCommandError(message, err);
   }
  },
 };

@@ -1,16 +1,17 @@
-const Discord = require("discord.js");
+const { MessageEmbed } = require("discord.js");
 
 module.exports = {
  name: "boop",
  aliases: [],
- description: "Boop-Beep!",
+ description: "Beep-Boop!",
  category: "Fun",
  usage: "boop",
  run: async (client, message, args) => {
   try {
-   const embed = new Discord.MessageEmbed() // Prettier
+   const embed = new MessageEmbed() // Prettier
     .setColor("RANDOM")
-    .setTitle(`${client.bot_emojis.clock} Beep!`)
+    .setTitle(`${client.bot_emojis.clock} Boop!`)
+    .setImage(`https://c.tenor.com/xEv4LjI27pkAAAAC/time-clock.gif`)
     .setFooter(
      `Requested by ${message.author.username}`,
      message.author.displayAvatarURL({
@@ -19,14 +20,10 @@ module.exports = {
       size: 2048,
      })
     );
-   message.lineReply(embed);
+   message.reply({ embeds: [embed] });
   } catch (err) {
-   message.lineReply({
-    embed: {
-     color: 16734039,
-     description: `Something went wrong... ${client.bot_emojis.sadness}`,
-    },
-   });
+   console.log(err);
+   return client.createCommandError(message, err);
   }
  },
 };

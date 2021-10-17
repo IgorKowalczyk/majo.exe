@@ -1,34 +1,42 @@
-const { readdirSync } = require("fs");
+const { glob } = require("glob");
+const { promisify } = require("util");
+const { Client } = require("discord.js");
+const globPromise = promisify(glob);
 const ascii = require("ascii-table");
 const chalk = require("chalk");
-const gradient = require("gradient-string");
 const table = new ascii();
+const config = require("../config/main_config");
 table.setHeading("Command", "Category", "Load status");
 table.setTitleAlign(table.CENTER);
 
-/* Code by João Victor (https://github.com/Joao-Victor-Liporini). Thanks ❤️ */
-module.exports = (client) => {
- readdirSync("./commands/").forEach((dir) => {
-  const commands = readdirSync(`./commands/${dir}/`).filter((file) => file.endsWith(".js"));
-  for (let file of commands) {
-   let pull = require(`../commands/${dir}/${file}`);
-   try {
-    if (typeof pull.name != "string" || typeof pull != "object") throw new Error("Missing a name or name is not a string");
-    if (pull.category && typeof pull.category !== "string") throw new Error("Category is not a string");
-    if (pull.description && typeof pull.description !== "string") throw new Error("Description is not a string");
-    if (pull.usage && typeof pull.usage !== "string") throw new Error("Usage is not a string");
-    if (pull.name && pull.category) {
-     client.commands.set(pull.name, pull);
-     table.addRow(pull.name, pull.category, "OK");
-    }
-
-    if (pull.aliases && Array.isArray(pull.aliases)) pull.aliases.forEach((alias) => client.aliases.set(alias, pull.name));
-   } catch (error) {
-    table.addRow(file, "-", `ERROR -> ${error}`);
+module.exports = async (client) => {
+ const commandFiles = await globPromise(`${process.cwd()}/commands/**/*.js`);
+ commandFiles.map((value) => {
+  const file = require(value);
+  const splitted = value.split("/");
+  const directory = splitted[splitted.length - 2];
+  try {
+   if (typeof file.name != "string" || typeof file != "object") throw new Error("Missing a name or name is not a string");
+   if (file.category && typeof file.category !== "string") throw new Error("Missing command category or category is not a string");
+   if (file.description && typeof file.description !== "string") throw new Error("Missing command description or description is not a string");
+   if (file.usage && typeof file.usage !== "string") throw new Error("Missing command usage example or example is not a string");
+   if (file.name) {
+    const properties = { directory, ...file };
+    client.commands.set(file.name, properties);
    }
+   if (file.aliases && Array.isArray(file.aliases)) {
+    file.aliases.forEach((alias) => client.aliases.set(alias, file.name));
+   }
+   table.addRow(file.name, file.category, "OK");
+  } catch (error) {
+   table.addRow(file, "-", error);
   }
  });
+
  console.log(chalk.bold(chalk.blue.bold("[MAJO]")) + chalk.cyan.bold(" Please wait... Loading commands..."));
- console.log(chalk.cyan.bold(table.toString()));
- console.log(chalk.bold(chalk.blue.bold("[MAJO]")) + chalk.cyan.bold(" Successfully loaded " + chalk.blue.underline(`${client.commands.size}`) + " commands!"));
+ if (config.show_commands_list == true) console.log(chalk.cyan.bold(table.toString()));
+
+ // Events
+ const eventFiles = await globPromise(`${process.cwd()}/events/*.js`);
+ eventFiles.map((value) => require(value));
 };

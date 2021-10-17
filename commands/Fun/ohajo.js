@@ -1,4 +1,4 @@
-const Discord = require("discord.js");
+const { MessageEmbed } = require("discord.js");
 
 module.exports = {
  name: "ohajo",
@@ -8,7 +8,7 @@ module.exports = {
  usage: "ohajo",
  run: async (client, message, args) => {
   try {
-   const embed = new Discord.MessageEmbed() // Prettier
+   const embed = new MessageEmbed() // Prettier
     .setColor("RANDOM")
     .setTitle(`${client.bot_emojis.hot} OHAJO!`)
     .setImage("https://media.discordapp.net/attachments/721019707607482409/881184668542730290/i_mean_ohajo.png")
@@ -20,14 +20,10 @@ module.exports = {
       size: 2048,
      })
     );
-   message.lineReply(embed);
+   message.reply({ embeds: [embed] });
   } catch (err) {
-   message.lineReply({
-    embed: {
-     color: 16734039,
-     description: `Something went wrong... ${client.bot_emojis.sadness}`,
-    },
-   });
+   console.log(err);
+   return client.createCommandError(message, err);
   }
  },
 };

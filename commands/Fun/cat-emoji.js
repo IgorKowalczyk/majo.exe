@@ -1,5 +1,5 @@
+const { MessageEmbed } = require("discord.js");
 const client = require("nekos.life");
-const Discord = require("discord.js");
 const neko = new client();
 
 module.exports = {
@@ -12,9 +12,10 @@ module.exports = {
   (async () => {
    try {
     let text = await neko.sfw.catText();
-    const embed = new Discord.MessageEmbed() // Prettier
+    const embed = new MessageEmbed()
      .setColor("RANDOM")
-     .setTitle(text.cat)
+     .setTitle(client.bot_emojis.cat)
+     .setDescription(`>>> \`${text.cat}\``)
      .setFooter(
       `Requested by ${message.author.username}`,
       message.author.displayAvatarURL({
@@ -23,14 +24,10 @@ module.exports = {
        size: 2048,
       })
      );
-    message.lineReply(embed);
+    message.reply({ embeds: [embed] });
    } catch (err) {
-    message.lineReply({
-     embed: {
-      color: 16734039,
-      description: `Something went wrong... ${client.bot_emojis.sadness}`,
-     },
-    });
+    console.log(err);
+    return client.createCommandError(message, err);
    }
   })();
  },

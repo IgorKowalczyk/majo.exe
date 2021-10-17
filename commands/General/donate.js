@@ -1,5 +1,4 @@
-const Discord = require("discord.js");
-const config = require("../../config");
+const { MessageEmbed, MessageActionRow, MessageButton } = require("discord.js");
 
 module.exports = {
  name: "donate",
@@ -9,7 +8,7 @@ module.exports = {
  usage: "donate",
  run: async (client, message, args) => {
   try {
-   const embed = new Discord.MessageEmbed() // Prettier
+   const embed = new MessageEmbed() // Prettier
     .setTitle(`${client.bot_emojis.sparkles} Donate to ${client.user.username}`) //
     .setTimestamp()
     .setThumbnail(
@@ -19,7 +18,7 @@ module.exports = {
       size: 2048,
      })
     )
-    .setAuthor(config.author)
+    .setAuthor(client.config.author)
     .setColor("RANDOM")
     .setFooter(
      `Requested by ${message.author.username}`,
@@ -29,20 +28,54 @@ module.exports = {
       size: 2048,
      })
     ) // Prettier
-    .setDescription(`${config.patreon ? `• ${client.bot_emojis.parteon_logo} **Patreon:** https://patreon.com/` + config.patreon : `${client.bot_emojis.parteon_logo} **Patreon:** -`}
-    ${config.open_collective ? `• ${client.bot_emojis.open_collective_logo} **OpenCollective:** https://opencollective.com/` + config.open_collective : `${client.bot_emojis.open_collective_logo} **OpenCollective:** -`}
-    ${config.ko_fi ? `• ${client.bot_emojis.kofi_logo} **Ko-Fi:** https://ko-fi.com/` + config.ko_fi : `${client.bot_emojis.kofi_logo} **Ko-Fi:** -`}
-    ${config.buymeacoffee ? `• ${client.bot_emojis.buymeacoffee_logo} **BuyMeaCoffee:** https://buymeacoffee.com/` + config.buymeacoffee : `${client.bot_emojis.buymeacoffee_logo} **BuyMeaCoffee:** -`}
+    .setDescription(`${client.config.patreon ? `• ${client.bot_emojis.patreon_logo} **Patreon:** https://patreon.com/` + client.config.patreon : `${client.bot_emojis.patreon_logo} **Patreon:** -`}
+    ${client.config.open_collective ? `• ${client.bot_emojis.open_collective_logo} **OpenCollective:** https://opencollective.com/` + client.config.open_collective : `${client.bot_emojis.open_collective_logo} **OpenCollective:** -`}
+    ${client.config.ko_fi ? `• ${client.bot_emojis.kofi_logo} **Ko-Fi:** https://ko-fi.com/` + client.config.ko_fi : `${client.bot_emojis.kofi_logo} **Ko-Fi:** -`}
+    ${client.config.buymeacoffee ? `• ${client.bot_emojis.buymeacoffee_logo} **BuyMeaCoffee:** https://buymeacoffee.com/` + client.config.buymeacoffee : `${client.bot_emojis.buymeacoffee_logo} **BuyMeaCoffee:** -`}
     `);
-   message.lineReply(embed);
+
+   const row = new MessageActionRow();
+   if (client.config.patreon) {
+    row.addComponents(
+     new MessageButton() // Prettier
+      .setURL(`https://patreon.com/${client.config.patreon}`)
+      .setEmoji(client.bot_emojis.patreon_logo)
+      .setLabel("Patreon")
+      .setStyle("LINK")
+    );
+   }
+   if (client.config.open_collective) {
+    row.addComponents(
+     new MessageButton() // Prettier
+      .setURL(`https://opencollective.com/${client.config.open_collective}`)
+      .setEmoji(client.bot_emojis.open_collective_logo)
+      .setLabel("OpenCollective")
+      .setStyle("LINK")
+    );
+   }
+   if (client.config.ko_fi) {
+    row.addComponents(
+     new MessageButton() // Prettier
+      .setURL(`https://ko-fi.com/${client.config.ko_fi}`)
+      .setEmoji(client.bot_emojis.kofi_logo)
+      .setLabel("Ko-Fi")
+      .setStyle("LINK")
+    );
+   }
+   if (client.config.buymeacoffee) {
+    row.addComponents(
+     new MessageButton() // Prettier
+      .setURL(`https://buymeacoffee.com/${client.config.buymeacoffee}`)
+      .setEmoji(client.bot_emojis.buymeacoffee_logo)
+      .setLabel("Buy Me a Coffee")
+      .setStyle("LINK")
+    );
+   }
+
+   message.reply({ embeds: [embed], components: [row] });
   } catch (err) {
    console.log(err);
-   message.lineReply({
-    embed: {
-     color: 16734039,
-     description: `Something went wrong... ${client.bot_emojis.sadness}`,
-    },
-   });
+   return client.createCommandError(message, err);
   }
  },
 };

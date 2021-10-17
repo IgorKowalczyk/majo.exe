@@ -1,4 +1,4 @@
-const Discord = require("discord.js");
+const { MessageEmbed, MessageAttachment } = require("discord.js");
 const canvacord = require("canvacord");
 
 module.exports = {
@@ -6,42 +6,25 @@ module.exports = {
  aliases: [],
  description: "Try to change my mind!",
  category: "Image",
- usage: "changemymind (text)",
+ usage: "changemymind <text>",
  run: async (client, message, args) => {
   try {
    if (!args[0]) {
-    return message.lineReply({
-     embed: {
-      color: 16734039,
-      description: `${client.bot_emojis.error} | You must enter a text!`,
-     },
-    });
+    return client.createError(message, `${client.bot_emojis.error} | You must enter a text!\n\n**Usage:** \`${client.prefix} changemymind <text>\``);
    }
-   if (args.join(" ") > 20) {
-    return message.lineReply({
-     embed: {
-      color: 16734039,
-      description: `${client.bot_emojis.error} | Max lenght for the text is 20!`,
-     },
-    });
-   }
-   const wait = await message.lineReply({
-    embed: {
-     color: 4779354,
-     description: `${client.bot_emojis.sparkles} Please wait... I'm generating your image`,
-    },
+   const wait = new MessageEmbed() // Prettier
+    .setColor("#5865f2")
+    .setDescription(`${client.bot_emojis.loading} | Please wait... I'm generating your image`);
+   message.reply({ embeds: [wait] }).then((msg) => {
+    (async () => {
+     const changemymind = await canvacord.Canvas.changemymind(args.join(" "));
+     const attachment = new MessageAttachment(changemymind, "changemymind.png");
+     msg.edit({ embeds: [], files: [attachment] });
+    })();
    });
-   const changemymind = await canvacord.Canvas.changemymind(args.join(" "));
-   const attachment = new Discord.MessageAttachment(changemymind, "changemymind.png");
-   return message.channel.send(attachment);
   } catch (err) {
    console.log(err);
-   message.lineReply({
-    embed: {
-     color: 16734039,
-     description: `Something went wrong... ${client.bot_emojis.sadness}`,
-    },
-   });
+   return client.createCommandError(message, err);
   }
  },
 };

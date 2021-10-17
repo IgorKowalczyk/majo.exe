@@ -1,4 +1,4 @@
-const Discord = require("discord.js");
+const { MessageEmbed } = require("discord.js");
 
 module.exports = {
  name: "rate",
@@ -8,24 +8,16 @@ module.exports = {
  usage: "rate <text>",
  run: async (client, message, args) => {
   let rate = args.join(" ");
-  if (!rate)
-   return message.lineReply({
-    embed: {
-     color: 16734039,
-     description: `${client.bot_emojis.error} | Please enter a text!\n\n**Usage:** \`${process.env.PREFIX} rate <text>\``,
-    },
-   });
-  if (rate.length > 30)
-   return message.lineReply({
-    embed: {
-     color: 16734039,
-     title: `${client.bot_emojis.error} | I can't rate that. Max text length is 30!`,
-    },
-   });
+  if (!rate) {
+   return client.createError(message, `${client.bot_emojis.error} | Please enter a text!\n\n**Usage:** \`${client.prefix} rate <text>\``);
+  }
+  if (rate.length > 400) {
+   return client.createError(message, `${client.bot_emojis.error} | I can't rate that! Max text length is \`400\` characters!`);
+  }
   let result = Math.floor(Math.random() * 100 + 0);
-  const happyrate = new Discord.MessageEmbed() // Prettier
-   .setDescription(`${client.bot_emojis.sparkles} | I would rate **${rate}** ${result}/100 ?`)
-   .setColor(`GREEN`)
+  const happyrate = new MessageEmbed() // Prettier
+   .setDescription(`${client.bot_emojis.sparkles} | I would rate **${rate}** \`${result}/100\` ?`)
+   .setColor("GREEN")
    .setFooter(
     `Requested by ${message.author.username}`,
     message.author.displayAvatarURL({
@@ -35,9 +27,9 @@ module.exports = {
     })
    )
    .setTimestamp();
-  const sadembed = new Discord.MessageEmbed() // Prettier
-   .setDescription(`${client.bot_emojis.sparkles} | I would rate **${rate}** ${result}/100 ??`)
-   .setColor(`RED`)
+  const sadembed = new MessageEmbed() // Prettier
+   .setDescription(`${client.bot_emojis.sparkles} | I would rate **${rate}** \`${result}/100\` ??`)
+   .setColor("RED")
    .setFooter(
     `Requested by ${message.author.username}`,
     message.author.displayAvatarURL({
@@ -47,9 +39,9 @@ module.exports = {
     })
    )
    .setTimestamp();
-  const idkembed = new Discord.MessageEmbed() // Prettier
-   .setDescription(`${client.bot_emojis.sparkles} | I would rate **${rate}** ${result}/100 ??`)
-   .setColor(`YELLOW`)
+  const idkembed = new MessageEmbed() // Prettier
+   .setDescription(`${client.bot_emojis.sparkles} | I would rate **${rate}** \`${result}/100\` ??`)
+   .setColor("YELLOW")
    .setFooter(
     `Requested by ${message.author.username}`,
     message.author.displayAvatarURL({
@@ -59,9 +51,9 @@ module.exports = {
     })
    )
    .setTimestamp();
-  const shrugembed = new Discord.MessageEmbed() // Prettier
-   .setDescription(`${client.bot_emojis.sparkles} | I would rate **${rate}** ${result}/100 ??`)
-   .setColor(`YELLOW`)
+  const shrugembed = new MessageEmbed() // Prettier
+   .setDescription(`${client.bot_emojis.sparkles} | I would rate **${rate}** \`${result}/100\` ??`)
+   .setColor("YELLOW")
    .setFooter(
     `Requested by ${message.author.username}`,
     message.author.displayAvatarURL({
@@ -71,9 +63,9 @@ module.exports = {
     })
    )
    .setTimestamp();
-  const okembed = new Discord.MessageEmbed() // Prettier
-   .setDescription(`${client.bot_emojis.sparkles} | I would rate **${rate}** ${result}/100 ??`)
-   .setColor(`GREEN`)
+  const okembed = new MessageEmbed() // Prettier
+   .setDescription(`${client.bot_emojis.sparkles} | I would rate **${rate}** \`${result}/100\` ??`)
+   .setColor("GREEN")
    .setFooter(
     `Requested by ${message.author.username}`,
     message.author.displayAvatarURL({
@@ -83,9 +75,9 @@ module.exports = {
     })
    )
    .setTimestamp();
-  const thumbupembed = new Discord.MessageEmbed() // Prettier
-   .setDescription(`${client.bot_emojis.sparkles} | I would rate **${rate}** ${result}/100 ??`)
-   .setColor(`GREEN`)
+  const thumbupembed = new MessageEmbed() // Prettier
+   .setDescription(`${client.bot_emojis.sparkles} | I would rate **${rate}** \`${result}/100\` ??`)
+   .setColor("GREEN")
    .setFooter(
     `Requested by ${message.author.username}`,
     message.author.displayAvatarURL({
@@ -95,9 +87,9 @@ module.exports = {
     })
    )
    .setTimestamp();
-  const eyesembed = new Discord.MessageEmbed() // Prettier
-   .setDescription(`${client.bot_emojis.sparkles} | I would rate **${rate}** ${result}/100 ??`)
-   .setColor(`GREEN`)
+  const eyesembed = new MessageEmbed() // Prettier
+   .setDescription(`${client.bot_emojis.sparkles} | I would rate **${rate}** \`${result}/100\` ??`)
+   .setColor("GREEN")
    .setFooter(
     `Requested by ${message.author.username}`,
     message.author.displayAvatarURL({
@@ -107,12 +99,12 @@ module.exports = {
     })
    )
    .setTimestamp();
-  if (result > 90) return message.lineReply(happyrate);
-  if (result < 30) return message.lineReply(sadembed);
-  if (result > 40) return message.lineReply(idkembed);
-  if (result > 50) return message.lineReply(shrugembed);
-  if (result > 60) return message.lineReply(okembed);
-  if (result > 70) return message.lineReply(thumbupembed);
-  if (result > 80) return message.lineReply(eyesembed);
+  if (result > 90) return message.reply({ embeds: [happyrate] });
+  if (result < 30) return message.reply({ embeds: [sadembed] });
+  if (result > 40) return message.reply({ embeds: [idkembed] });
+  if (result > 50) return message.reply({ embeds: [shrugembed] });
+  if (result > 60) return message.reply({ embeds: [okembed] });
+  if (result > 70) return message.reply({ embeds: [thumbupembed] });
+  if (result > 80) return message.reply({ embeds: [eyesembed] });
  },
 };

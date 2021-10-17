@@ -1,5 +1,4 @@
 const Discord = require("discord.js");
-const config = require("../../config");
 
 module.exports = {
  name: "eval",
@@ -9,32 +8,21 @@ module.exports = {
  usage: "eval <code>",
  run: async (client, message, args) => {
   try {
-   if (message.author.id !== config.owner_id) {
-    return message.lineReply({
-     embed: {
-      color: 16734039,
-      description: `${client.bot_emojis.error} | You do not have permission to run this command (Only owner of the bot can run this)!`,
-     },
-    });
+   if (message.author.id !== client.config.owner_id) {
+    return client.createError(message, `${client.bot_emojis.error} | You do not have permission to run this command (Only owner of the bot can run this)!`);
    }
    var result = args.join(" ");
    if (!result) {
-    return message.lineReply({
-     embed: {
-      color: 16734039,
-      description: `${client.bot_emojis.error} | Please input code to evaluate!`,
-     },
-    });
+    return client.createError(message, `${client.bot_emojis.error} | Please input code to evaluate!\n\n**Usage:** \`${client.prefix} eval <code>\``);
    }
    let evaluated = eval(result);
    let type = typeof evaluated;
-   console.log(result);
+   console.log("Code to eval: " + result);
    const success = new Discord.MessageEmbed() // Prettier
-    .setColor("RANDOM")
-    .setTitle("💡 Eval")
-    .addField(`Type:\n`, "```js\n" + `${type}` + "```", true)
-    .addField(`Input:\n`, "```js\n" + `${args.join(" ")}` + "```", false)
-    .addField(`Output:\n`, "```js\n" + evaluated + "```", true)
+    .setColor("#2f3136")
+    .addField(`${client.bot_emojis.screw_that} Type`, `\`\`\`js\n${type}\`\`\``)
+    .addField(`${client.bot_emojis.input} Input`, `\`\`\`js\n${args.join(" ")}\`\`\``)
+    .addField(`${client.bot_emojis.output} Output`, `\`\`\`js\n${evaluated}\`\`\``)
     .setFooter(
      `Requested by ${message.author.username}`,
      message.author.displayAvatarURL({
@@ -43,13 +31,13 @@ module.exports = {
       size: 2048,
      })
     );
-   message.lineReply(success);
+   message.reply({ embeds: [success] });
   } catch (err) {
    const errormessage = new Discord.MessageEmbed() // Prettier
     .setColor("#e31212")
-    .setTitle("An error has occured")
-    .addField(`Input:\n`, "```js\n" + `${result}` + "```", false)
-    .addField(`Output:\n`, "```js\n" + `${err.message}` + "```", true)
+    .setTitle(`${client.bot_emojis.error} An error has occured!`)
+    .addField(`Input`, `\`\`\`js\n${result}\`\`\``)
+    .addField(`Output`, `\`\`\`js\n${err.message.toString().slice(0, 1000)}\`\`\``)
     .setFooter(
      `Requested by ${message.author.username}`,
      message.author.displayAvatarURL({
@@ -58,7 +46,7 @@ module.exports = {
       size: 2048,
      })
     );
-   return message.lineReply(errormessage);
+   return message.reply({ embeds: [errormessage] });
   }
  },
 };

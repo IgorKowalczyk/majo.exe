@@ -1,4 +1,4 @@
-const Discord = require("discord.js");
+const { MessageEmbed } = require("discord.js");
 
 module.exports = {
  name: "prune",
@@ -8,17 +8,12 @@ module.exports = {
  usage: "prune <amount>",
  run: async (client, message, args) => {
   try {
-   if (!message.guild.me.hasPermission("MANAGE_MESSAGES")) {
-    return await message.lineReply({
-     embed: {
-      color: 16734039,
-      description: `${client.bot_emojis.error} | I don't have premission to manage messages!`,
-     },
-    });
+   if (!message.guild.me.permissions.has("MANAGE_MESSAGES")) {
+    return client.createError(message, `${client.bot_emojis.error} | I don't have premission to manage messages!`);
    }
-   if (!message.member.hasPermission("MANAGE_MESSAGES")) {
-    let error = new Discord.MessageEmbed() // Prettier
-     .setColor("FF5757")
+   if (!message.member.permissions.has("MANAGE_MESSAGES")) {
+    const error = new MessageEmbed() // Prettier
+     .setColor("RED")
      .setDescription(`${client.bot_emojis.error} | You don't have permission to prune messages!`)
      .setFooter(
       "This message will be deleted after 10 seconds",
@@ -28,19 +23,17 @@ module.exports = {
        size: 2048,
       })
      );
-    message.lineReply(error).then((m) =>
-     m.delete({
-      timeout: 10000,
-     })
+    message.reply({ embeds: [error] }).then((m) =>
+     setTimeout(() => {
+      if (!m.deleted) m.delete();
+     }, 10000)
     );
-    return message.delete({
-     timeout: 10000,
-    });
+    return setTimeout(() => message.delete(), 10000);
    }
    if (isNaN(args[0])) {
-    let error = new Discord.MessageEmbed() // Prettier
-     .setColor("FF5757")
-     .setDescription(`${client.bot_emojis.error} | Please input a vaild number!`)
+    const error = new MessageEmbed() // Prettier
+     .setColor("RED")
+     .setDescription(`${client.bot_emojis.error} | Please input a vaild number!\n\n**Usage:** \`${client.prefix} prune <amount>\``)
      .setFooter(
       "This message will be deleted after 10 seconds",
       message.author.displayAvatarURL({
@@ -49,19 +42,17 @@ module.exports = {
        size: 2048,
       })
      );
-    message.lineReply(error).then((m) =>
-     m.delete({
-      timeout: 10000,
-     })
+    message.reply({ embeds: [error] }).then((m) =>
+     setTimeout(() => {
+      if (!m.deleted) m.delete();
+     }, 10000)
     );
-    return message.delete({
-     timeout: 10000,
-    });
+    return setTimeout(() => message.delete(), 10000);
    }
-   if (args[0] > 100) {
-    let error = new Discord.MessageEmbed() // Prettier
-     .setColor("FF5757")
-     .setDescription(`${client.bot_emojis.error} | Insert the number less than 100!`)
+   if (args[0] > 99) {
+    const error = new MessageEmbed() // Prettier
+     .setColor("RED")
+     .setDescription(`${client.bot_emojis.error} | Insert the number smaller than \`99\`!\n\n**Usage:** \`${client.prefix} prune <amount>\``)
      .setFooter(
       "This message will be deleted after 10 seconds",
       message.author.displayAvatarURL({
@@ -70,19 +61,17 @@ module.exports = {
        size: 2048,
       })
      );
-    message.lineReply(error).then((m) =>
-     m.delete({
-      timeout: 10000,
-     })
+    message.reply({ embeds: [error] }).then((m) =>
+     setTimeout(() => {
+      if (!m.deleted) m.delete();
+     }, 10000)
     );
-    return message.delete({
-     timeout: 10000,
-    });
+    return setTimeout(() => message.delete(), 10000);
    }
    if (args[0] < 2) {
-    let error = new Discord.MessageEmbed() // Prettier
-     .setColor("FF5757")
-     .setDescription(`${client.bot_emojis.error} | Insert the number more than 1!`)
+    let error = new MessageEmbed() // Prettier
+     .setColor("RED")
+     .setDescription(`${client.bot_emojis.error} | Insert number greater than \`1\`!\n\n**Usage:** \`${client.prefix} prune <amount>\``)
      .setFooter(
       "This message will be deleted after 10 seconds",
       message.author.displayAvatarURL({
@@ -91,42 +80,48 @@ module.exports = {
        size: 2048,
       })
      );
-    message.lineReply(error).then((m) =>
-     m.delete({
-      timeout: 10000,
-     })
+    message.reply({ embeds: [error] }).then((m) =>
+     setTimeout(() => {
+      if (!m.deleted) m.delete();
+     }, 10000)
     );
-    return message.delete({
-     timeout: 10000,
-    });
+    return setTimeout(() => message.delete(), 10000);
    }
-   await message.delete();
-   await message.channel.bulkDelete(args[0]).then((messages) => {
-    let error = new Discord.MessageEmbed() // Prettier
-     .setColor("RANDOM")
-     .setDescription(`${client.bot_emojis.wastebasket} Deleted ${messages.size}/${args[0]} messages`)
-     .setFooter(
-      `This message will be deleted after 10 seconds`,
-      message.author.displayAvatarURL({
-       dynamic: true,
-       format: "png",
-       size: 2048,
-      })
-     );
-    return message.channel.send(error).then((m) =>
-     m.delete({
-      timeout: 10000,
-     })
-    );
+   const wait_embed = new MessageEmbed() // Prettier
+    .setColor("#5865f2")
+    .setDescription(`${client.bot_emojis.loading} | Deleting messages. Please wait...`);
+   message.channel.send({ embeds: [wait_embed] }).then(async (process_message) => {
+    const message_count = parseInt(args[0]) + 1; // + one system message
+    await message.channel.messages.fetch({ limit: message_count }).then(async (fetched_messages) => {
+     try {
+      await message.channel.bulkDelete(fetched_messages).then(async (messages) => {
+       const success = new MessageEmbed() // Prettier
+        .setColor("RANDOM")
+        .setDescription(`> ${client.bot_emojis.success} | Deleted \`${messages.size - 1}\`/\`${args[0]}\` messages`) // + one system message
+        .setFooter(
+         `This message will be deleted after 10 seconds`,
+         message.author.displayAvatarURL({
+          dynamic: true,
+          format: "png",
+          size: 2048,
+         })
+        );
+       await message.channel.send({ embeds: [success] }).then((m) =>
+        setTimeout(() => {
+         if (!m.deleted) m.delete();
+        }, 10000)
+       );
+      });
+     } catch (err) {
+      if (!process_message.deleted) {
+       process_message.delete();
+      }
+      return client.createError(message, `${client.bot_emojis.error} | You can't delete messages older than \`14\` days!`);
+     }
+    });
    });
   } catch (err) {
-   message.lineReply({
-    embed: {
-     color: 16734039,
-     description: `Something went wrong... ${client.bot_emojis.sadness}`,
-    },
-   });
-   console.log(err);
+   return client.createCommandError(message, err);
   }
  },
 };

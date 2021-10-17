@@ -1,83 +1,52 @@
-const Discord = require("discord.js");
+const { MessageEmbed } = require("discord.js");
 
 module.exports = {
  name: "unban",
  aliases: ["ub"],
  description: "Unbans a member from the server",
  category: "Moderation",
- usage: "unban <user> [reason]",
+ usage: "unban <id> [reason]",
  run: async (client, message, args) => {
   try {
-   if (!message.guild.me.hasPermission("BAN_MEMBERS")) {
-    return await message.lineReply({
-     embed: {
-      color: 16734039,
-      description: `${client.bot_emojis.error} | I don't have premission to unban members!`,
-     },
-    });
+   if (!message.guild.me.permissions.has("BAN_MEMBERS")) {
+    return client.createError(message, `${client.bot_emojis.error} | I don't have premission to ban members!`);
    }
-   if (!message.member.hasPermission("BAN_MEMBERS")) {
-    return await message.lineReply({
-     embed: {
-      color: 16734039,
-      description: `${client.bot_emojis.error} | You don't have premissions to unban members!`,
-     },
-    });
+   if (!message.member.permissions.has("BAN_MEMBERS")) {
+    return client.createError(message, `${client.bot_emojis.error} | You don't have premission to ban members!`);
    }
    const id = args[0];
    const rgx = /^(?:<@!?)?(\d+)>?$/;
    if (!id) {
-    return message.lineReply({
-     embed: {
-      color: 16734039,
-      description: `${client.bot_emojis.error} | Please provide user id!`,
-     },
-    });
+    return client.createError(message, `${client.bot_emojis.error} | You have to provide user ID!\n\n**Usage:** \`${client.prefix} unban <ID> [reason]\``);
    }
    if (!rgx.test(id)) {
-    return message.lineReply({
-     embed: {
-      color: 16734039,
-      description: `${client.bot_emojis.error} | Please provide vaild user id!`,
-     },
-    });
+    return client.createError(message, `${client.bot_emojis.error} | You have to provide vaild user ID\n\n**Usage:** \`${client.prefix} unban <ID> [reason]\``);
    }
-   const bannedUsers = await message.guild.fetchBans();
+   const bannedUsers = await message.guild.bans.fetch();
    const user = bannedUsers.get(id).user;
    if (!user) {
-    return message.lineReply({
-     embed: {
-      color: 16734039,
-      description: `${client.bot_emojis.error} | Unable to find user, please check the provided ID`,
-     },
-    });
+    return client.createError(message, `${client.bot_emojis.error} | Unable to find user, please check ID\n\n**Usage:** \`${client.prefix} unban <ID> [reason]\``);
    }
-   let reason = args.slice(1).join(" ");
-   if (!reason) reason = "`None`";
+   let reason = `${args.slice(1).join(" ") || "No reason provided!"} | Unbanned by: ${message.author.tag}`;
    if (reason.length > 1024) reason = reason.slice(0, 1021) + "...";
    await message.guild.members.unban(user, reason);
    const embed = new MessageEmbed()
-    .setTitle("Unbanned Member")
-    .setDescription(`${user.tag} was successfully unbanned.`)
-    .addField("Unnbaned by", message.member, true)
-    .addField("Member", user.tag, true)
-    .addField("Reason", reason)
+    .setDescription(`${client.bot_emojis.success} | \`${user.tag}\` has been unbanned.\n\n>>> Reason: \`${reason}\``)
+    .setTimestamp()
+    .setColor("GREEN")
     .setFooter(
-     message.member.displayName,
+     `Requested by ${message.author.username}`,
      message.author.displayAvatarURL({
       dynamic: true,
+      format: "png",
+      size: 2048,
      })
-    )
-    .setTimestamp()
-    .setColor(message.guild.me.displayHexColor);
-   message.lineReply(embed);
+    );
+
+   message.reply({ embeds: [embed] });
   } catch (err) {
-   message.lineReply({
-    embed: {
-     color: 16734039,
-     description: `Something went wrong... ${client.bot_emojis.sadness}`,
-    },
-   });
+   console.log(err);
+   return client.createCommandError(message, err);
   }
  },
 };

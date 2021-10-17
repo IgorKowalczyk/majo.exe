@@ -1,4 +1,4 @@
-const Discord = require("discord.js");
+const { MessageEmbed } = require("discord.js");
 const fetch = require("node-fetch");
 const deaths = ["[NAME1] ran over [NAME2] with a School Bus! :bus:", "[NAME1] poisoned [NAME2]’s candy bar", "[NAME2] swallowed a grenade", "[NAME1] sent John Wick to kill [NAME2]!", "[NAME1] pressed Ctrl+Alt+Del deleting [NAME2] from the Universe!", "[NAME1] threw the ban hammer at [NAME2] for spamming", "[NAME2] stepped on a lego brick"];
 
@@ -12,20 +12,10 @@ module.exports = {
   try {
    const member = (await await message.mentions.members.first()) || message.guild.members.cache.get(args[0]) || message.guild.members.cache.find((r) => r.user.username.toLowerCase().includes() === args.join(" ").toLocaleLowerCase()) || message.guild.members.cache.find((r) => r.displayName.toLowerCase().includes() === args.join(" ").toLocaleLowerCase());
    if (!member) {
-    return message.lineReply({
-     embed: {
-      color: 16734039,
-      description: `${client.bot_emojis.error} | You must mention someone to kill!\n\n**Usage:** \`${process.env.PREFIX} kill <user>\``,
-     },
-    });
+    return client.createError(message, `${client.bot_emojis.error} | You must mention someone to kill!\n\n**Usage:** \`${client.prefix} kill <user>\``);
    }
    if (message.author === member || message.member == member) {
-    return await message.lineReply({
-     embed: {
-      color: 16734039,
-      description: `${client.bot_emojis.error} | You can't kill yourself...`,
-     },
-    });
+    return client.createError(message, `${client.bot_emojis.error} | You can't kill yourself...`);
    }
    const pickeddeath = deaths[Math.floor(Math.random() * deaths.length)];
    const change1 = pickeddeath.replace("[NAME1]", "<@" + message.author + ">");
@@ -33,7 +23,7 @@ module.exports = {
    (async () => {
     const response = await fetch("https://nekos.life/api/v2/img/slap");
     const body = await response.json();
-    const embed = await new Discord.MessageEmbed() // Prettier
+    const embed = await new MessageEmbed() // Prettier
      .setColor("RANDOM")
      .setAuthor(
       "Tombstone of " + member.displayName + "!",
@@ -53,15 +43,11 @@ module.exports = {
      )
      .setImage(body.url)
      .setDescription(change2);
-    message.lineReply(embed);
+    message.reply({ embeds: [embed] });
    })();
   } catch (err) {
-   message.lineReply({
-    embed: {
-     color: 16734039,
-     description: `Something went wrong... ${client.bot_emojis.sadness}`,
-    },
-   });
+   console.log(err);
+   return client.createCommandError(message, err);
   }
  },
 };

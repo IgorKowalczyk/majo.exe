@@ -1,5 +1,4 @@
-const Discord = require("discord.js");
-const superagent = require("snekfetch");
+const { MessageEmbed, MessageAttachment } = require("discord.js");
 const rp = require("request-promise-native");
 
 module.exports = {
@@ -10,12 +9,19 @@ module.exports = {
  usage: "ass",
  run: async (client, message, args) => {
   if (!message.channel.nsfw) {
-   const nsfwembed = new Discord.MessageEmbed()
-    .setColor("#FF5757")
+   const nsfwembed = new MessageEmbed()
+    .setColor("RED")
     .setDescription(`${client.bot_emojis.anger} | You can use this command only in an NSFW Channel!`)
-    .setFooter("Requested by " + message.author.username, message.author.displayAvatarURL())
+    .setFooter(
+     `Requested by ${message.author.username}`,
+     message.author.displayAvatarURL({
+      dynamic: true,
+      format: "png",
+      size: 2048,
+     })
+    )
     .setImage("https://media.discordapp.net/attachments/721019707607482409/855827123616481300/nsfw.gif");
-   return message.lineReply(nsfwembed);
+   return message.reply({ embeds: [nsfwembed] });
   }
   return rp
    .get("http://api.obutts.ru/butts/0/1/random")
@@ -27,7 +33,8 @@ module.exports = {
     });
    })
    .then(function (res) {
-    const embed = new Discord.MessageEmbed() // Prettier
+    const file = new MessageAttachment(res, "ass.png");
+    const embed = new MessageEmbed() // Prettier
      .setTitle(
       ":smirk: Ass",
       message.guild.iconURL({
@@ -37,12 +44,6 @@ module.exports = {
      )
      .setColor("RANDOM")
      .setImage("attachment://ass.png")
-     .attachFiles([
-      {
-       attachment: res,
-       name: "ass.png",
-      },
-     ])
      .setFooter(
       `Requested by ${message.author.username}`,
       message.author.displayAvatarURL({
@@ -52,15 +53,10 @@ module.exports = {
       })
      )
      .setTimestamp();
-    message.lineReply(embed);
+    message.reply({ embeds: [embed], files: [file] });
    })
-   .catch((err) =>
-    message.lineReply({
-     embed: {
-      color: 16734039,
-      description: `Something went wrong... ${client.bot_emojis.sadness}`,
-     },
-    })
-   );
+   .catch((err) => {
+    return client.createCommandError(message, err);
+   });
  },
 };

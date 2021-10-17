@@ -1,41 +1,23 @@
-const Discord = require("discord.js");
-const emoji = require("discord-emoji-convert");
+const { MessageEmbed } = require("discord.js");
+const emojify = require("../../utilities/emojify");
 
 module.exports = {
  name: "emojify",
  aliases: [],
  description: "Convert text to emojis",
  category: "Utility",
- usage: "emojify (text)",
+ usage: "emojify <text>",
  run: async (client, message, args) => {
   try {
    const emojis = args.join(" ");
    if (!emojis) {
-    return message.lineReply({
-     embed: {
-      color: 16734039,
-      description: `${client.bot_emojis.error} | Please enter text to convert!`,
-     },
-    });
+    return client.createError(message, `${client.bot_emojis.error} | Please enter text to convert!\n\n**Usage:** \`${client.prefix} emojify <text>\``);
    }
-   if (args.join(" ").lenght > 30) {
-    return message.lineReply({
-     embed: {
-      color: 16734039,
-      description: `${client.bot_emojis.error} | Please enter shorter string, maximum length is 30 characters!`,
-     },
-    });
-   }
-   const converted = emoji.convert(emojis);
+   const converted = emojify(emojis);
    if (!converted) {
-    return message.lineReply({
-     embed: {
-      color: 16734039,
-      description: `${client.bot_emojis.error} | I cannot convert the text`,
-     },
-    });
+    return client.createError(message, `${client.bot_emojis.error} | I cannot convert the text! Please try again!\n\n**Usage:** \`${client.prefix} emojify <text>\``);
    }
-   const embed = new Discord.MessageEmbed() // Prettier
+   const embed = new MessageEmbed() // Prettier
     .setColor("RANDOM")
     .setTitle(`Text To Emoji`)
     .addField("Converted text", converted)
@@ -48,15 +30,10 @@ module.exports = {
       size: 2048,
      })
     );
-   message.lineReply(embed);
+   message.reply({ embeds: [embed] });
   } catch (err) {
    console.log(err);
-   message.lineReply({
-    embed: {
-     color: 16734039,
-     description: `Something went wrong... ${client.bot_emojis.sadness}`,
-    },
-   });
+   return client.createCommandError(message, err);
   }
  },
 };

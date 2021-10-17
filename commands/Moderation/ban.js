@@ -1,74 +1,51 @@
-const Discord = require("discord.js");
+const { MessageEmbed } = require("discord.js");
 
 module.exports = {
  name: "ban",
  aliases: [],
  description: "Ban a member",
  category: "Moderation",
- usage: "ban <mention> <reason>",
+ usage: "ban <mention> [reason]",
  run: async (client, message, args) => {
   try {
-   if (!message.guild.me.hasPermission("BAN_MEMBERS")) {
-    return await message.lineReply({
-     embed: {
-      color: 16734039,
-      description: `${client.bot_emojis.error} | I don't have premission to ban members!`,
-     },
-    });
+   if (!message.guild.me.permissions.has("BAN_MEMBERS")) {
+    return client.createError(message, `${client.bot_emojis.error} | I don't have premission to ban members!`);
    }
-   if (!message.member.hasPermission("BAN_MEMBERS")) {
-    return await message.lineReply({
-     embed: {
-      color: 16734039,
-      description: `${client.bot_emojis.error} | You don't have premission to ban members!`,
-     },
-    });
+   if (!message.member.permissions.has("BAN_MEMBERS")) {
+    return client.createError(message, `${client.bot_emojis.error} | You don't have premission to ban members!`);
    }
    let mentioned = await message.mentions.members.first();
-   let reason = await args.slice(1).join(" ");
+   let message_args = await args.slice(1).join(" ");
+   let reason = `${message_args || "No reason provided!"} | Banned by: ${message.author.tag}`;
    if (!mentioned) {
-    return await message.lineReply({
-     embed: {
-      color: 16734039,
-      description: `${client.bot_emojis.error} | Mention a valid member!`,
-     },
-    });
+    return client.createError(message, `${client.bot_emojis.error} | Mention a valid member!\n\n**Usage:** \`${client.prefix} ban <mention> [reason]\``);
    }
    if (!mentioned.bannable) {
-    return await message.lineReply({
-     embed: {
-      color: 16734039,
-      description: `${client.bot_emojis.error} | You cannot ban this member!`,
-     },
-    });
+    return client.createError(message, `${client.bot_emojis.error} | You cannot ban this member!`);
    }
    if (message.author === mentioned) {
-    return await message.lineReply({
-     embed: {
-      color: 16734039,
-      description: `${client.bot_emojis.error} | You can't ban yourself!`,
-     },
-    });
+    return client.createError(message, `${client.bot_emojis.error} | You can't ban yourself!`);
    }
-   if (!reason) {
-    reason = "No reason provided! Banned by " + message.author;
-   }
+   if (reason.length > 1024) reason = reason.slice(0, 1021) + "...";
    message.guild.members.ban(mentioned, {
     reason: reason,
    });
-   await message.lineReply({
-    embed: {
-     color: 16734039,
-     description: `${client.bot_emojis.success} | ${mentioned.displayName} has been banned. Reason: \`${reason}\``,
-    },
-   });
+   const embed = new MessageEmbed()
+    .setDescription(`${client.bot_emojis.success} | ${mentioned.displayName} has been banned.\n\n>>> Reason: \`${reason}\``)
+    .setTimestamp()
+    .setColor("GREEN")
+    .setFooter(
+     `Requested by ${message.author.username}`,
+     message.author.displayAvatarURL({
+      dynamic: true,
+      format: "png",
+      size: 2048,
+     })
+    );
+   await message.reply({ embeds: [embed] });
   } catch (err) {
-   message.lineReply({
-    embed: {
-     color: 16734039,
-     description: `Something went wrong... ${client.bot_emojis.sadness}`,
-    },
-   });
+   console.log(err);
+   return client.createCommandError(message, err);
   }
  },
 };

@@ -3,34 +3,27 @@ const url = require("url");
 const path = require("path");
 const express = require("express");
 const chalk = require("chalk");
-const gradient = require("gradient-string");
 const passport = require("passport");
 const session = require("express-session");
 const Strategy = require("passport-discord").Strategy;
-const config = require("../config");
+const config = require("../config/main_config");
 const ejs = require("ejs");
 const bodyParser = require("body-parser");
 const fs = require("fs");
 const { readdirSync } = require("fs");
 const app = express();
 const https = require("https");
-app.use(express.static("dashboard/static"));
+const child_process = require("child_process");
 const MemoryStore = require("memorystore")(session);
-const sql = require("../utilities/database");
+const helmet = require("helmet");
+const { constants } = require("crypto");
 const port = process.env.PORT || 6565;
+require("dotenv").config();
+require("../utilities/dashboard");
 function capitalize(string) {
  return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
-if (!process.env.DASHBOARD) throw new Error("[HOST] You need to provide Dashboard (Boolean) in .env - DASHBOARD=BOOLEAN");
-if (!process.env.SESSION_SECRET) throw new Error("[HOST] You need to provide Session Secret in .env - SESSION_SECRET=YOUR_SESSION_SECRET_RANDOM_WORDS");
-if (!process.env.SECRET) throw new Error("[HOST] You need to provide Secret in .env - SECRET=YOUR_BOT_SECRET");
-if (!process.env.PORT) throw new Error("[HOST] You need to provide Port in .env - PORT=YOUR_WEBSITE_PORT");
-if (!process.env.ID) throw new Error("[HOST] You need to provide Discord Bot ID in .env - ID=YOUR_DISCORD_BOT_ID");
-if (!process.env.DOMAIN) throw new Error("[HOST] You need to provide Webiste domain in .env - DOMAIN=YOUR_WEBISTE_DOMAIN Note: Only website domain eg. https://example.com without slash at end!");
-if (!process.env.CONTACT_WEBHOOK_ID) throw new Error("[HOST] You need to provide Discord Contact Webhook ID in .env - CONTACT_WEBHOOK_ID=YOUR_WEBHOOK_ID");
-if (!process.env.CONTACT_WEBHOOK_TOKEN) throw new Error("[HOST] You need to provide Discord Contact Webhook Token in .env - CONTACT_WEBHOOK_TOKEN=YOUR_WEBHOOK_TOKEN");
-if (!process.env.RECAPTCHA_KEY) throw new Error("[HOST] You need to provide Google Recaptcha v2 Token in .env - RECAPTCHA_KEY=YOUR_RECAPTCHA_TOKEN");
 console.log(chalk.bold(chalk.blue.bold("[HOST]")) + chalk.cyan.bold(" Starting dashboard..."));
 
 module.exports = async (client) => {
@@ -56,13 +49,30 @@ module.exports = async (client) => {
    }
   )
  );
+ app.use(express.static("dashboard/static"));
+
+ app.use(helmet.dnsPrefetchControl());
+ app.use(helmet.expectCt());
+ app.use(helmet.frameguard());
+ app.use(helmet.hidePoweredBy());
+ app.use(helmet.hsts());
+ app.use(helmet.ieNoOpen());
+ app.use(helmet.noSniff());
+ app.use(helmet.permittedCrossDomainPolicies());
+ app.use(helmet.referrerPolicy());
+ app.use(helmet.xssFilter());
+ app.use((req, res, next) => {
+  res.setHeader("Permissions-Policy", "	accelerometer=(), camera=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), payment=(), usb=(), interest-cohort=()");
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  next();
+ });
  app.use(
   session({
    store: new MemoryStore({
     checkPeriod: 86400000,
    }),
    secret: process.env.SESSION_SECRET,
-   resave: false,
+   resave: true,
    saveUninitialized: false,
   })
  );
@@ -94,24 +104,16 @@ module.exports = async (client) => {
    pathname: pathname,
    path: req.path,
    user: req.isAuthenticated() ? req.user : null,
-   verification: config.verification,
    description: config.description,
-   domain: app.locals.domain,
+   domain: process.env.DOMAIN,
    twitter: config.twitter,
    url: res,
    title: client.username,
    prefix: process.env.PREFIX,
    req: req,
-   mobile_support: config.mobile_support_support,
-   image: config.image,
    name: client.username,
-   sql: sql,
    recaptcha: process.env.RECAPTCHA_KEY,
    tag: client.tag,
-   server: config.support_server,
-   aurhor_website: config.author_website,
-   github: config.github,
-   analitics: config.google_analitics,
   };
   res.render(path.resolve(`${templateDir}${path.sep}${template}`), Object.assign(baseData, data));
  };
@@ -159,9 +161,8 @@ module.exports = async (client) => {
  );
 
  // Features list redirect endpoint.
- app.get("/features", (req, res) => {
-  renderTemplate(res, req, "features.ejs", {
-   readdirSync: readdirSync,
+ app.get("/profile", checkAuth, async (req, res) => {
+  renderTemplate(res, req, "profile.ejs", {
    perms: Discord.Permissions,
   });
  });
@@ -275,13 +276,13 @@ module.exports = async (client) => {
  });
  app.post("/contact", async (req, res) => {
   if (req.body.type === "contact") {
-   const contactwebhook = new Discord.WebhookClient(process.env.CONTACT_WEBHOOK_ID, process.env.CONTACT_WEBHOOK_TOKEN);
+   const contactwebhook = new Discord.WebhookClient({ url: process.env.CONTACT_WEBHOOK });
    if (!req.body.name || !req.body.id || !req.body.email || !req.body.msg) return;
    const contact = new Discord.MessageEmbed() // Prettier
     .setColor("RANDOM")
     .setTitle(`📬 Contact Form`)
     .setDescription(`Someone just send message to us!`)
-    .addField(`👥 User`, `${req.body.name.substr(0, 100) || "Unknown"}/<@${req.body.id}> (ID: \`${req.body.id || "Unknown"}\`)`)
+    .addField(`👥 User`, `\`${req.body.name.substr(0, 100) || "Unknown"}\` | <@${req.body.id}> (ID: \`${req.body.id || "Unknown"}\`)`)
     .addField("📧 Email", `\`\`\`${req.body.email.substr(0, 100) || "Unknown"}\`\`\``)
     .addField("📝 Message", `\`\`\`${req.body.msg.substr(0, 2000) || "None"}\`\`\``)
     .setTimestamp()
@@ -297,7 +298,6 @@ module.exports = async (client) => {
 
  // Settings endpoint.
  app.get("/dashboard/:guildID", checkAuth, async (req, res) => {
-  // Vlidate the request, check if guild exists, member is in guild and if member has minimum permissions
   const guild = client.guilds.cache.get(req.params.guildID);
   if (!guild) return res.redirect("/error");
   const member = guild.members.cache.get(req.user.id);
@@ -305,6 +305,7 @@ module.exports = async (client) => {
   if (!member.permissions.has("MANAGE_GUILD")) return res.redirect("/error");
   renderTemplate(res, req, "server.ejs", {
    guild: guild,
+   perms: Discord.Permissions,
   });
  });
 
@@ -321,18 +322,19 @@ module.exports = async (client) => {
   renderTemplate(res, req, "500.ejs");
  });
  console.log(chalk.bold(chalk.blue.bold("[HOST]")) + chalk.cyan.bold(" All dashboard process done... Starting in web"));
- // **See /certs folder!**
+ // **See $config/certs folder!**
  if (config.certs == true) {
-  https
-   .createServer(
-    {
-     key: fs.readFileSync(path.resolve(__dirname, "./certs/server.key")),
-     cert: fs.readFileSync(path.resolve(__dirname, "./certs/server.cert")),
-    },
-    app
-   )
-   .listen(port, null, null, () => console.log(chalk.bold(chalk.blue.bold("[HOST]")) + chalk.cyan.bold(` Dashboard is up and running on port ${port}.`)));
+  const http_options = {
+   key: fs.readFileSync(path.resolve(__dirname, "../config/certs/server.key")),
+   cert: fs.readFileSync(path.resolve(__dirname, "../config/certs/server.cert")),
+   secureOptions: constants.SSL_OP_NO_TLSv1 | constants.SSL_OP_NO_TLSv1_1,
+  };
+  https.createServer(http_options, app).listen(port, null, null, () => {
+   console.log(chalk.bold(chalk.blue.bold("[HOST]")) + chalk.cyan.bold(` Dashboard is up and running on port ${port}.`));
+  });
  } else {
-  app.listen(port, null, null, () => console.log(chalk.bold(chalk.blue.bold("[HOST]")) + chalk.cyan.bold(` Dashboard is up and running on port ${port}.`)));
+  app.listen(port, null, null, () => {
+   console.log(chalk.bold(chalk.blue.bold("[HOST]")) + chalk.cyan.bold(` Dashboard is up and running on port ${port}.`));
+  });
  }
 };

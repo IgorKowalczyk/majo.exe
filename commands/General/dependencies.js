@@ -1,4 +1,4 @@
-const Discord = require("discord.js");
+const { MessageEmbed } = require("discord.js");
 
 module.exports = {
  name: "dependencies",
@@ -8,7 +8,7 @@ module.exports = {
  usage: "dependencies",
  run: async (client, message, args) => {
   try {
-   const embed = new Discord.MessageEmbed() // Prettier
+   const embed = new MessageEmbed() // Prettier
     .setTitle(`${client.bot_emojis.package} Dependencies`)
     .setDescription(`> <@${client.user.id}> runs on ${Object.keys(require("../../package").dependencies).length} [NPM packages](https://www.npmjs.com) (Javascript power ${client.bot_emojis.muscule}!)`)
     .setTimestamp()
@@ -22,15 +22,10 @@ module.exports = {
       size: 2048,
      })
     );
-   message.lineReply(embed);
+   message.reply({ embeds: [embed] });
   } catch (err) {
    console.log(err);
-   message.lineReply({
-    embed: {
-     color: 16734039,
-     description: `Something went wrong... ${client.bot_emojis.sadness}`,
-    },
-   });
+   return client.createCommandError(message, err);
   }
  },
 };

@@ -1,4 +1,4 @@
-const Discord = require("discord.js");
+const { MessageEmbed } = require("discord.js");
 
 module.exports = {
  name: "eightball",
@@ -8,15 +8,11 @@ module.exports = {
  usage: "eightball <question>",
  run: async (client, message, args) => {
   try {
-   if (!args.length)
-    return message.lineReply({
-     embed: {
-      color: 16734039,
-      description: `${client.bot_emojis.error} | You need to enter question :/\n\n**Usage:** \`${process.env.PREFIX} 8ball <question>\``,
-     },
-    });
+   if (!args.length) {
+    return client.createError(message, `${client.bot_emojis.error} | You need to enter question :/\n\n**Usage:** \`${client.prefix} 8ball <question>\``);
+   }
    const fortunes = ["Yes.", "It is certain.", "It is decidedly so.", "Without a doubt.", "Yes definelty.", "You may rely on it.", "As I see it, yes.", "Most likely.", "Outlook good.", "Signs point to yes.", "Reply hazy, try again.", "Ask again later.", "Better not tell you now...", "Cannot predict now.", "Concentrate and ask again.", "Don't count on it.", "My reply is no.", "My sources say no.", "Outlook not so good...", "Very doubtful."];
-   const embed = new Discord.MessageEmbed() // Prettier
+   const embed = new MessageEmbed() // Prettier
     .setDescription(`${client.bot_emojis.magic_ball} | ${fortunes[Math.floor(Math.random() * fortunes.length)]}`)
     .setTimestamp()
     .setColor("RANDOM")
@@ -28,14 +24,10 @@ module.exports = {
       size: 2048,
      })
     );
-   await message.lineReply(embed);
+   await message.reply({ embeds: [embed] });
   } catch (err) {
-   message.lineReply({
-    embed: {
-     color: 16734039,
-     description: `Something went wrong... ${client.bot_emojis.sadness}`,
-    },
-   });
+   console.log(err);
+   return client.createCommandError(message, err);
   }
  },
 };

@@ -1,4 +1,4 @@
-const Discord = require("discord.js");
+const { MessageEmbed } = require("discord.js");
 
 module.exports = {
  name: "base64-decode",
@@ -9,24 +9,14 @@ module.exports = {
  run: async (client, message, args) => {
   try {
    if (!args[0]) {
-    return message.lineReply({
-     embed: {
-      color: 16734039,
-      description: `${client.bot_emojis.error} | You must enter a Base64 code to decode!`,
-     },
-    });
+    return client.createError(message, `${client.bot_emojis.error} | You must enter a Base64 code to decode!\n\n**Usage:** \`${client.prefix} base64-decode <text>\``);
    }
    if (!args[0].lenght > 50) {
-    return message.lineReply({
-     embed: {
-      color: 16734039,
-      description: `${client.bot_emojis.error} | You must enter a Base64 code shorer than 50 characters!`,
-     },
-    });
+    return client.createError(message, `${client.bot_emojis.error} | You must enter a Base64 code shorer than \`50\` characters!\n\n**Usage:** \`${client.prefix} base64-decode <text>\``);
    }
    const buffer = new Buffer.from(args.join(" "), "base64");
    const base64 = buffer.toString("utf-8");
-   const embed = new Discord.MessageEmbed()
+   const embed = new MessageEmbed()
     .setColor("RANDOM")
     .setFooter(
      `Requested by ${message.author.username}`,
@@ -39,14 +29,10 @@ module.exports = {
     .setTitle(`${client.bot_emojis.sparkles} Base64 Decoder`)
     .addField(`${client.bot_emojis.input} Text to decode`, `\`\`\`${args.join(" ")}\`\`\``)
     .addField(`${client.bot_emojis.output} Decoded text`, `\`\`\`${base64 || "An unknown error ocurred while decoding!"}\`\`\``);
-   message.lineReply(embed);
+   message.reply({ embeds: [embed] });
   } catch (err) {
-   message.lineReply({
-    embed: {
-     color: 16734039,
-     description: `Something went wrong... ${client.bot_emojis.sadness}`,
-    },
-   });
+   console.log(err);
+   return client.createCommandError(message, err);
   }
  },
 };

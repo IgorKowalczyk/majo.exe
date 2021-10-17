@@ -1,28 +1,31 @@
-const Discord = require("discord.js");
-const Extra = require("discord-buttons");
+const { MessageEmbed, MessageActionRow, MessageButton } = require("discord.js");
 
 module.exports = {
  name: "guild-avatar",
  aliases: ["g-avatar", "guild-icon", "icon-guild", "guild-image", "guild-img", "guild-pfp"],
- description: "Get a guild avatar",
+ description: "Get current guild avatar",
  category: "Utility",
  usage: "guild-avatar",
  run: async (client, message, args) => {
   try {
-   const gicon = message.guild.iconURL({
+   const gavatar = message.guild.iconURL({
     dynamic: true,
     format: "png",
-    size: 2048,
+    size: 4096,
    });
-   const button = new Extra.MessageButton() // Prettier
-    .setLabel("Avatar link")
-    .setStyle("url")
-    .setURL(gicon);
-   const embed = new Discord.MessageEmbed() // Prettier
+   const row = new MessageActionRow() // Prettier
+    .addComponents(
+     // Prettier
+     new MessageButton() // Prettier
+      .setLabel("Icon Link")
+      .setStyle("LINK")
+      .setURL(gavatar)
+    );
+   const embed = new MessageEmbed() // Prettier
     .setColor("RANDOM")
-    .setDescription(`${client.bot_emojis.link} [Icon link](${gicon})`)
-    .setAuthor(message.guild.name + " Icon", gicon)
-    .setImage(gicon)
+    .setAuthor(`${message.guild.name} Icon`, gavatar)
+    .setImage(gavatar)
+    .setDescription(`> ${client.bot_emojis.link} [Icon link](${gavatar})`)
     .setTimestamp()
     .setFooter(
      `Requested by ${message.author.username}`,
@@ -32,17 +35,10 @@ module.exports = {
       size: 2048,
      })
     );
-   message.lineReply({
-    button: button,
-    embed: embed,
-   });
+   message.reply({ embeds: [embed], components: [row] });
   } catch (err) {
-   message.lineReply({
-    embed: {
-     color: 16734039,
-     description: `Something went wrong... ${client.bot_emojis.sadness}`,
-    },
-   });
+   console.log(err);
+   return client.createCommandError(message, err);
   }
  },
 };

@@ -1,10 +1,12 @@
-<%- include("partials/head", { bot, user, path, description, title, twitter, url, image }) %>
+<%- include("includes/head", { bot, user, path, description, title, twitter, url }) %>
 
 <% function capitalize(string) { return string.charAt(0).toUpperCase() + string.slice(1); } %>
 
-<% if (bot.user.avatar) { botavatar = "https://cdn.discordapp.com/avatars/" + bot.user.id + "/" + bot.user.avatar + ".png?size=512";
+<% if (bot.user.avatar) {
+ botavatar = `https://cdn.discordapp.com/avatars/${bot.user.id}/${bot.user.avatar}`;
  } else {
- botavatar = "https://" + hostname + "/pics/invaild-avatar.png"; } %>
+ botavatar = `${domain}/pics/invaild-avatar.png`;
+ } %>
 <section class="hero-section">
  <div class="hero-grid">
  <div class="hero-content">
@@ -12,27 +14,27 @@
  <% if (user) { %>
   <p class="hero-title">Yay!</p>
   <p class="hero-title2">You connected your Discord account! Go to your dashboard and me to your server!</p>
-  <a href="https://<%= domain %>/dashboard" class="link-button green reload"><span class="reload-container"><svg xmlns="http://www.w3.org/2000/svg" style="margin-left: 0;margin-right: 5px;" height="24" viewBox="0 0 24 24" width="24"><path d="M0 0h24v24H0z" fill="none"></path><path d="M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z"></path></svg>Dashboard</span></a>
+  <a href="<%= domain %>/dashboard" class="link-button green reload"><span class="reload-container"><%- include('includes/icons/dashboard-main.ejs') %> Dashboard</span></a>
   <% } else { %>
   <p class="hero-title">Hi! I'm <%= capitalize(bot.user.username) %></p>
   <p class="hero-title2">I have almost everything - Fun, Memes, Images, Giveaway, Economy, Anime and NSFW!<br />I serve over 100 commands<br />To get started with me just login with your Discord account</p>
-  <a href="https://<%= domain %>/login" class="link-button green">Login</a>
+  <a href="<%= domain %>/login" class="link-button green">Login</a>
   <a href="#feautures" class="link-button">More</a>
   <% } %>
  </div>
  </div>
 </section>
-<section class="section-feautures">
-<h2 id="feautures">Feautures</h2>
-<div class="content-container">
-<div class="card-row content-container">
-<div class="card-image"><img src="https://<%= domain %>/pics/cards/image.png"></div>
-<div class="card-text">
-<h3 class="card-title">Images</h3>
-<p><%= capitalize(bot.user.username) %> allows you to make your custom images (or even memes!), <%= capitalize(bot.user.username) %> also can display random images for you!</p>
-</div>
-</div>
-</div>
-</section>
+<link rel="stylesheet" type="text/css" href="<%= domain %>/css/cards.css">
 
-<%- include("partials/footer") %>
+<div class="content-container">
+ <div id="feautures" class="product-row">
+  <div class="product-image">
+   <img src="https://media.discordapp.net/attachments/859772658403901440/891003669984710726/embeds.png">
+  </div>
+  <div class="product-text">
+   <h2 class="product-title">Many commands!</h2>
+    <p><%= bot.user.username.split(" ")[0] %> has more than 150 commands. From moderation to memes commands. Everything is clear and quick to use!</p>
+   </div>
+  </div>
+</div>
+<%- include("includes/footer") %>

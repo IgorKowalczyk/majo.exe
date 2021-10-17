@@ -1,5 +1,4 @@
-const Discord = require("discord.js");
-const config = require("../../config");
+const { MessageEmbed } = require("discord.js");
 const child = require("child_process");
 
 module.exports = {
@@ -10,46 +9,43 @@ module.exports = {
  usage: "shell <script>",
  run: async (client, message, args) => {
   try {
-   if (message.author.id !== config.owner_id) {
-    return message.lineReply({
-     embed: {
-      color: 16734039,
-      description: `${client.bot_emojis.error} | You do not have permission to run this command (Only owner of the bot can run this)!`,
-     },
-    });
+   if (message.author.id !== client.config.owner_id) {
+    const embed = new MessageEmed() // Prettier
+     .setColor("RED")
+     .setDescription(`${client.bot_emojis.error} | You do not have permission to run this command (Only owner of the bot can run this)!`);
+    return message.reply({ embeds: [embed] });
    }
    const command = args.join(" ");
    if (!command) {
-    return message.lineReply({
-     embed: {
-      color: 16734039,
-      description: `${client.bot_emojis.error} | Please input some string!`,
-     },
-    });
+    const embed = new MessageEmbed() // Prettier
+     .setColor("RED")
+     .setDescription(`${client.bot_emojis.error} | Please input script to run!\n\n**Usage:** \`${client.prefix} shell <script>\``);
+    return message.reply({ embeds: [embed] });
    }
    child.exec(command, (err, res) => {
-    if (err)
-     return message.lineReply({
-      embed: {
-       color: 16734039,
-       title: ":x: Error!",
-       description: `\`\`\`${err.toString().slice(0, 1000) || "Unknown error!"}\`\`\``,
-      },
-     });
-    const embed = new Discord.MessageEmbed() // Prettier
-     .setColor("RANDOM")
-     .setTitle("📝 Shell")
-     .addField("📤 Request", "```" + command + "```")
-     .addField("📥 Server response", `\`\`\`${res.slice(0, 1000) || "No response!"}\`\`\``);
-    message.lineReply(embed);
+    if (err) {
+     const embed = new MessageEmbed() // Prettier
+      .setColor("RED")
+      .setDescrption(`\`\`\`${err.toString().slice(0, 1000) || "Unknown error!"}\`\`\``);
+     return message.reply({ embeds: [embed] });
+    }
+    const embed = new MessageEmbed() // Prettier
+     .setColor("#2f3136")
+     .addField(`${client.bot_emojis.input} Request`, `\`\`\`sh\n${command}\`\`\``)
+     .addField(`${client.bot_emojis.output} Server response`, `\`\`\`sh\n${res.slice(0, 1000) || "No response!"}\`\`\``)
+     .setFooter(
+      `Requested by ${message.author.username}`,
+      message.author.displayAvatarURL({
+       dynamic: true,
+       format: "png",
+       size: 2048,
+      })
+     );
+    message.reply({ embeds: [embed] });
    });
   } catch (err) {
-   message.lineReply({
-    embed: {
-     color: 16734039,
-     description: `Something went wrong... ${client.bot_emojis.sadness}`,
-    },
-   });
+   console.log(err);
+   return client.createCommandError(message, err);
   }
  },
 };

@@ -1,4 +1,4 @@
-const Discord = require("discord.js");
+const { MessageEmbed } = require("discord.js");
 const progressbar = require("percentagebar");
 
 module.exports = {
@@ -11,25 +11,15 @@ module.exports = {
   try {
    const user1 = args[0];
    if (!user1) {
-    return message.lineReply({
-     embed: {
-      color: 16734039,
-      description: `${client.bot_emojis.error} | Please mention a first user to ship!\n\n**Usage:** \`${process.env.PREFIX} ship <user> <user>\``,
-     },
-    });
+    return client.createError(message, `${client.bot_emojis.error} | Please mention a first user to ship!\n\n**Usage:** \`${client.prefix} ship <user> <user>\``);
    }
    const user2 = args[1];
    if (!user2) {
-    return message.lineReply({
-     embed: {
-      color: 16734039,
-      description: `${client.bot_emojis.error} | Please mention a secound user to ship!\n\n**Usage:** \`${process.env.PREFIX} ship <user> <user>\``,
-     },
-    });
+    return client.createError(message, `${client.bot_emojis.error} | Please mention a secound user to ship!\n\n**Usage:** \`${client.prefix} ship <user> <user>\``);
    }
    const ship = Math.floor(Math.random() * 100) + 1;
    const bar = progressbar(100, ship, 10, `${client.bot_emojis.emoji_bar_1}`, `${client.bot_emojis.emoji_bar_2}`, `${client.bot_emojis.broken_heart} `, ` ${client.bot_emojis.heart}`, false);
-   const mehh = new Discord.MessageEmbed() // Prettier
+   const mehh = new MessageEmbed() // Prettier
     .setTitle(
      `${client.bot_emojis.reverse_nr_2_motherfucker} This isn't a match`,
      message.guild.iconURL({
@@ -48,7 +38,7 @@ module.exports = {
      })
     )
     .setColor("RED");
-   const love = new Discord.MessageEmbed() // Prettier
+   const love = new MessageEmbed() // Prettier
     .setTitle(
      `${client.bot_emojis.reverse_nr_2_motherfucker} They are born for each others!`,
      message.guild.iconURL({
@@ -68,17 +58,13 @@ module.exports = {
     )
     .setColor("GREEN");
    if (ship > 50) {
-    message.lineReply(love);
+    message.reply({ embeds: [love] });
    } else {
-    message.lineReply(mehh);
+    message.reply({ embeds: [mehh] });
    }
   } catch (err) {
-   message.lineReply({
-    embed: {
-     color: 16734039,
-     description: `Something went wrong... ${client.bot_emojis.sadness}`,
-    },
-   });
+   console.log(err);
+   return client.createCommandError(message, err);
   }
  },
 };

@@ -1,4 +1,4 @@
-const Discord = require("discord.js");
+const { MessageEmbed } = require("discord.js");
 const fetch = require("node-fetch");
 
 module.exports = {
@@ -12,32 +12,17 @@ module.exports = {
    try {
     const user = message.mentions.users.first();
     if (!user) {
-     return message.lineReply({
-      embed: {
-       color: 16734039,
-       description: `${client.bot_emojis.error} | You must mention someone to hug!\n\n**Usage:** \`${process.env.PREFIX} hug <user>\``,
-      },
-     });
+     return client.createError(message, `${client.bot_emojis.error} | You must mention someone to hug!\n\n**Usage:** \`${client.prefix} hug <user>\``);
     }
     if (user == message.author) {
-     return message.lineReply({
-      embed: {
-       color: 5294200,
-       description: `${client.bot_emojis.grin} | You can't hug yourself but... Ok, get the hug from me ＼( ^o^ )／ !`,
-      },
-     });
+     return client.createError(message, `${client.bot_emojis.grin} | You can't hug yourself but... Ok, get the hug from me ＼( ^o^ )／ !`);
     }
     if (user == client.user) {
-     return message.lineReply({
-      embed: {
-       color: 5294200,
-       description: `${client.bot_emojis.grin} | Oh, you tried to hug me but u can't... Im not real... But I can hug you ＼( ^o^ )／`,
-      },
-     });
+     return client.createError(message, `${client.bot_emojis.grin} | Oh, you tried to hug me but u can't... Im not real... But I can hug you ＼( ^o^ )／`);
     }
     const response = await fetch("https://nekos.life/api/v2/img/cuddle");
     const body = await response.json();
-    const embed = new Discord.MessageEmbed() // Prettier
+    const embed = new MessageEmbed() // Prettier
      .setTitle(
       user.username + " Just got a hug from " + message.author.username,
       message.guild.iconURL({
@@ -59,14 +44,10 @@ module.exports = {
      )
      .setTimestamp()
      .setURL(body.url);
-    message.lineReply(embed);
+    message.reply({ embeds: [embed] });
    } catch (err) {
-    message.lineReply({
-     embed: {
-      color: 16734039,
-      description: `Something went wrong... ${client.bot_emojis.sadness}`,
-     },
-    });
+    console.log(err);
+    return client.createCommandError(message, err);
    }
   })();
  },

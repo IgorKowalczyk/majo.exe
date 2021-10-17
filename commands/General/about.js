@@ -1,5 +1,4 @@
-const Discord = require("discord.js");
-const config = require("../../config");
+const { MessageEmbed } = require("discord.js");
 
 module.exports = {
  name: "about",
@@ -9,8 +8,8 @@ module.exports = {
  usage: "about",
  run: async (client, message, args) => {
   try {
-   const embed = new Discord.MessageEmbed()
-    .setAuthor(config.author)
+   const embed = new MessageEmbed()
+    .setAuthor(client.config.author)
     .setTimestamp()
     .setThumbnail(
      client.user.displayAvatarURL({
@@ -28,18 +27,14 @@ module.exports = {
       size: 2048,
      })
     )
-    .addField(`${client.bot_emojis.discord_logo} About ${client.user.username}`, "> " + config.about_bot);
-   if (config.about_dev) {
-    embed.addField(`${client.bot_emojis.owner_crown} About Dev`, "> " + config.about_dev);
+    .addField(`${client.bot_emojis.discord_logo} About ${client.user.username}`, "> " + client.config.about_bot);
+   if (client.config.about_dev) {
+    embed.addField(`${client.bot_emojis.owner_crown} About Dev`, "> " + client.config.about_dev);
    }
-   message.lineReply(embed);
+   message.reply({ embeds: [embed] });
   } catch (err) {
-   message.lineReply({
-    embed: {
-     color: 16734039,
-     description: `Something went wrong... ${client.bot_emojis.sadness}`,
-    },
-   });
+   console.log(err);
+   return client.createCommandError(message, err);
   }
  },
 };

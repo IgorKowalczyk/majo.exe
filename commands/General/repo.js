@@ -1,5 +1,5 @@
-const Discord = require("discord.js");
-const config = require("../../config");
+const { MessageEmbed, MessageActionRow, MessageButton } = require("discord.js");
+const fetch = require("node-fetch");
 
 module.exports = {
  name: "repo",
@@ -9,31 +9,40 @@ module.exports = {
  usage: "repo",
  run: async (client, message, args) => {
   try {
-   if (!config.github && !config.github_repo) {
-    return message.lineReply({
-     embed: {
-      color: 16734039,
-      description: `${client.bot_emojis.error} | This project is close-source! Sorry!\n||If you are dev check the \`config.js\` file!||`,
-     },
-    });
+   if (!client.config.github && !client.config.github_repo) {
+    return client.createError(message, `${client.bot_emojis.error} | This project is close-source!`);
    }
    function capitalize(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
    }
-   const embed = new Discord.MessageEmbed() // Prettier
-    .setTitle(`${client.bot_emojis.octo} ${capitalize(client.user.username)} Github Repo`)
-    .setDescription(`${client.bot_emojis.book} This project is open source, you can check the code at: [@${config.github}/${config.github_repo}](https://github.com/${config.github}/${config.github_repo})`)
-    .setFooter(`Requested by ${message.author.username}`, message.author.displayAvatarURL({ dynamic: true, format: "png", size: 2048 }))
-    .setColor("RANDOM")
-    .setTimestamp();
-   message.lineReply(embed);
+   (async () => {
+    const response = await fetch(`https://api.github.com/repos/${client.config.github}/${client.config.github_repo}/commits`);
+    const body = await response.json();
+    const embed = new MessageEmbed() // Prettier
+     .setTitle(`${client.bot_emojis.octo} ${capitalize(client.user.username)} Github Repo`)
+     .setDescription(`• This project is open source: [@${client.config.github}/${client.config.github_repo}](https://github.com/${client.config.github}/${client.config.github_repo})\n\`\`\` \`\`\``)
+     .addField(`${client.bot_emojis.book} Latest commit [${body[0].commit.committer.date}]`, `SHA: \`${body[0].sha}\`\n[${body[0].html_url.slice(0, 55)}...](${body[0].html_url})`)
+     .setFooter(`Requested by ${message.author.username}`, message.author.displayAvatarURL({ dynamic: true, format: "png", size: 2048 }))
+     .setColor("RANDOM")
+     .setTimestamp();
+    const row = new MessageActionRow()
+     .addComponents(
+      new MessageButton() // Prettier
+       .setURL(`https://github.com/${client.config.github}/${client.config.github_repo}`)
+       .setLabel("Github repo")
+       .setStyle("LINK")
+     )
+     .addComponents(
+      new MessageButton() // Prettier
+       .setURL(body[0].html_url)
+       .setLabel("Latest commit")
+       .setStyle("LINK")
+     );
+    message.reply({ embeds: [embed], components: [row] });
+   })();
   } catch (err) {
-   message.lineReply({
-    embed: {
-     color: 16734039,
-     description: `Something went wrong... ${client.bot_emojis.sadness}`,
-    },
-   });
+   console.log(err);
+   return client.createCommandError(message, err);
   }
  },
 };

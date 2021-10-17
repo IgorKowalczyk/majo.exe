@@ -1,10 +1,10 @@
-const Discord = require("discord.js");
+const { MessageEmbed } = require("discord.js");
 const translate = require("@iamtraction/google-translate");
 const languages = require("../../utilities/translate");
 
 module.exports = {
  name: "translate",
- aliases: [],
+ aliases: ["google-translate"],
  description: "Translate a text using the Google Translator",
  category: "Utility",
  usage: "translate <language> <text to translate>",
@@ -13,27 +13,17 @@ module.exports = {
    const language = args[0];
    const text = args.slice(1).join(" ");
    if (!language) {
-    return message.lineReply({
-     embed: {
-      color: 16734039,
-      description: `${client.bot_emojis.error} | You must specify the language to which you want the text to be translated!`,
-     },
-    });
+    return client.createError(message, `${client.bot_emojis.error} | You must specify the language to which you want the text to be translated!\n\n**Usage:** \`${client.prefix} <language> <text to translate>\``);
    }
    if (!text) {
-    return message.lineReply({
-     embed: {
-      color: 16734039,
-      description: `${client.bot_emojis.error} | You must specify the text to translate!`,
-     },
-    });
+    return client.createError(message, `${client.bot_emojis.error} | You must specify the text to translate!\n\n**Usage:** \`${client.prefix} <language> <text to translate>\``);
    }
    if (languages.some((ele) => ele.name === language.toLowerCase()) || languages.some((ele) => ele.abrv === language.toLowerCase())) {
     translate(text, { to: language.toLowerCase() })
      .then((res) => {
-      const embed = new Discord.MessageEmbed()
+      const embed = new MessageEmbed()
        .setTitle(`${client.bot_emojis.success} Success!`)
-       .setDescription(`From: \`${res.from.language.iso}\`\nTo: \`${language.toLowerCase()}\``)
+       .setDescription(`>>> From: \`${res.from.language.iso}\`\nTo: \`${language.toLowerCase()}\``)
        .addField(`${client.bot_emojis.input} Text to translate`, "```" + text + "```")
        .addField(`${client.bot_emojis.output} Tanslated text`, "```" + res.text + "```")
        .setColor("RANDOM")
@@ -45,33 +35,17 @@ module.exports = {
          size: 2048,
         })
        );
-      message.lineReply(embed);
+      message.reply({ embeds: [embed] });
      })
      .catch((err) => {
-      console.log(err);
-      return message.lineReply({
-       embed: {
-        color: 16734039,
-        description: `${client.bot_emojis.error} | Something went wrong while translating!`,
-       },
-      });
+      return client.createCommandError(message, err);
      });
    } else {
-    return message.lineReply({
-     embed: {
-      color: 16734039,
-      description: `${client.bot_emojis.error} | Please enter a correct language to translate!`,
-     },
-    });
+    return client.createError(`${client.bot_emojis.error} | Please enter a correct language to translate!`);
    }
   } catch (err) {
    console.log(err);
-   message.lineReply({
-    embed: {
-     color: 16734039,
-     description: `Something went wrong... ${client.bot_emojis.sadness}`,
-    },
-   });
+   return client.createCommandError(message, err);
   }
  },
 };

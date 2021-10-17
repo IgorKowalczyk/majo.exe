@@ -1,10 +1,9 @@
-const Discord = require("discord.js");
-const Extra = require("discord-buttons");
+const { MessageEmbed, MessageActionRow, MessageButton } = require("discord.js");
 
 module.exports = {
  name: "avatar",
- aliases: [],
- description: "Get a user avatar",
+ aliases: ["user-avatar"],
+ description: "Get user avatar",
  category: "Utility",
  usage: "avatar [user mention, user id, user name]",
  run: async (client, message, args) => {
@@ -13,17 +12,21 @@ module.exports = {
    const uavatar = User.user.displayAvatarURL({
     dynamic: true,
     format: "png",
-    size: 2048,
+    size: 4096,
    });
-   const button = new Extra.MessageButton() // Prettier
-    .setLabel("Avatar link")
-    .setStyle("url")
-    .setURL(uavatar);
-   const embed = new Discord.MessageEmbed() // Prettier
+   const row = new MessageActionRow() // Prettier
+    .addComponents(
+     // Prettier
+     new MessageButton() // Prettier
+      .setLabel("Avatar Link")
+      .setStyle("LINK")
+      .setURL(uavatar)
+    );
+   const embed = new MessageEmbed() // Prettier
     .setColor("RANDOM")
-    .setAuthor(User.user.username + "'s Avatar", uavatar)
+    .setAuthor(`${User.user.username} Avatar`, uavatar)
     .setImage(uavatar)
-    .setDescription(`${client.bot_emojis.link} [Avatar link](${uavatar})`)
+    .setDescription(`> ${client.bot_emojis.link} [Avatar link](${uavatar})`)
     .setTimestamp()
     .setFooter(
      `Requested by ${message.author.username}`,
@@ -33,17 +36,10 @@ module.exports = {
       size: 2048,
      })
     );
-   message.lineReply({
-    button: button,
-    embed: embed,
-   });
+   message.reply({ embeds: [embed], components: [row] });
   } catch (err) {
-   message.lineReply({
-    embed: {
-     color: 16734039,
-     description: `Something went wrong... ${client.bot_emojis.sadness}`,
-    },
-   });
+   console.log(err);
+   return client.createCommandError(message, err);
   }
  },
 };

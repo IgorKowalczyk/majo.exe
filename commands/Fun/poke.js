@@ -1,4 +1,4 @@
-const Discord = require("discord.js");
+const { MessageEmbed } = require("discord.js");
 const fetch = require("node-fetch");
 
 module.exports = {
@@ -12,32 +12,17 @@ module.exports = {
    try {
     const user = message.mentions.users.first();
     if (!user) {
-     return message.lineReply({
-      embed: {
-       color: 16734039,
-       description: `${client.bot_emojis.error} | You must mention someone to poke!\n\n**Usage:** \`${process.env.PREFIX} poke <user>\``,
-      },
-     });
+     return client.createError(message, `${client.bot_emojis.error} | You must mention someone to poke!\n\n**Usage:** \`${client.prefix} poke <user>\``);
     }
     if (user == message.author) {
-     return message.lineReply({
-      embed: {
-       color: 5294200,
-       description: `${client.bot_emojis.facepalm} | You can't poke yourself tfu!`,
-      },
-     });
+     return client.createError(message, `${client.bot_emojis.facepalm} | You can't poke yourself tfu!`);
     }
     if (user == client.user) {
-     return message.lineReply({
-      embed: {
-       color: 5294200,
-       description: `${client.bot_emojis.facepalm} | Oh, you tried to poke me but u cant hehe (hopefully)`,
-      },
-     });
+     return client.createError(message, `${client.bot_emojis.facepalm} | Oh, you tried to poke me but u cant hehe (hopefully ;~;)`);
     }
     const response = await fetch("https://nekos.life/api/v2/img/poke");
     const body = await response.json();
-    const embed = new Discord.MessageEmbed() // Prettier
+    const embed = new MessageEmbed() // Prettier
      .setTitle(
       user.username + " just got poked by " + message.author.username,
       message.guild.iconURL({
@@ -59,14 +44,10 @@ module.exports = {
      )
      .setTimestamp()
      .setURL(body.url);
-    message.lineReply(embed);
+    message.reply({ embeds: [embed] });
    } catch (err) {
-    message.lineReply({
-     embed: {
-      color: 16734039,
-      description: `Something went wrong... ${client.bot_emojis.sadness}`,
-     },
-    });
+    console.log(err);
+    return client.createCommandError(message, err);
    }
   })();
  },

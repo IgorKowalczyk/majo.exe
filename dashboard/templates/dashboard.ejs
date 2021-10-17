@@ -1,20 +1,27 @@
-<%- include("partials/head", { bot, user, path, title: "Dashboard" }) %>
+<%- include("includes/head", { bot, user, path, title: "Dashboard" }) %>
 <div class="content">
+<link rel="stylesheet" type="text/css" href="<%= domain %>/css/dashboard.css">
 
 <h2>Select server</h2>
 <p class="note"><span class="bold">Info:</span> You need the <code>MANAGE_GUILD</code> permission to view your servers here.</p>
-<p class="note"><span class="bold">Note:</span> Dashboard might be a little bit buggy due to discord intent problems!</p>
+
+<% if (config.support_server) { %>
+ <div class="support-server-container">
+  <h3 class="support-server-header">Hey <%= user.username%>!</h3>
+  <p class="support-server-text">Join the Majo.exe server if you haven't already! <a href="/server">Join Now!</a></p>
+ </div>
+<% } %>
+  
 <div class="servers">
 <% user.guilds.forEach(guild => {
- const permsOnGuild = new perms(guild.permissions);
- if(!permsOnGuild.has("MANAGE_GUILD")) {
- return
- }
+const guild_perms = new perms(guild.permissions.toString())
+if(!guild_perms.has("MANAGE_GUILD")) return;
 %>
+
 <% if (guild.icon) {
- iconurl = "https://cdn.discordapp.com/icons/" + guild.id + "/" + guild.icon + ".png?size=512";
+ iconurl = `https://cdn.discordapp.com/icons/${guild.id}/${guild.icon}`;
 } else {
- iconurl = "https://" + hostname + "/pics/invaild-avatar.png";
+ iconurl = `${domain}/pics/invaild-avatar.png`;
 }
 %>
 <% if (!user.guilds) { %>
@@ -36,4 +43,4 @@
 <% }); %>
 </div>
 
-<%- include("partials/footer") %>
+<%- include("includes/footer") %>
