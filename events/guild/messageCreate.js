@@ -78,7 +78,8 @@ module.exports = async (client, message) => {
   }
  } catch (err) {
   console.log(err);
-  const embed = new MessageEmbed().setDescription(`${client.bot_emojis.error} | Something went wrong while running this command! Please try again later!`).setColor("RED");
+  const embed = new MessageEmbed() // Prettier
+  .setDescription(`${client.bot_emojis.error} | Something went wrong while running this command! Please try again later!`).setColor("RED");
   return message.reply({ embeds: [embed] });
  }
 };
