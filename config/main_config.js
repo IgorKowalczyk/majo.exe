@@ -26,7 +26,7 @@ module.exports = {
  advanved_logging: false,
  ratelimit: 2500, // Command ratelimit (can be customized for each command)
  rickroll: false, // Secret Option
- display_status: "dnd", // online | idle | invisible | dnd
+ display_status: "online", // online | idle | invisible | dnd
  show_commands_list: true,
  help_embed: {
   grid: true,
