@@ -59,7 +59,7 @@ module.exports = async (client, message) => {
   }
   if (command) {
    const timeout = command.timeout || client.config.ratelimit;
-   const key = message.author.id + command.name;
+   const key = message.author.id + command.name + message.guild.id;
    const found = Timeout.get(key);
    if (found) {
     const timePassed = Date.now() - found;
@@ -79,7 +79,8 @@ module.exports = async (client, message) => {
  } catch (err) {
   console.log(err);
   const embed = new MessageEmbed() // Prettier
-  .setDescription(`${client.bot_emojis.error} | Something went wrong while running this command! Please try again later!`).setColor("RED");
+   .setDescription(`${client.bot_emojis.error} | Something went wrong while running this command! Please try again later!`)
+   .setColor("RED");
   return message.reply({ embeds: [embed] });
  }
 };

@@ -22,6 +22,9 @@ module.exports = {
      .setDescription(`${client.bot_emojis.error} | Please input script to run!\n\n**Usage:** \`${client.prefix} shell <script>\``);
     return message.reply({ embeds: [embed] });
    }
+   if (command.length > 1024) {
+    return client.createError(message, `${client.bot_emojis.error} | Command can't be longer than \`1024\` characters!\n\n**Usage:** \`${client.prefix} shell <script>\``);
+   }
    child.exec(command, (err, res) => {
     if (err) {
      const embed = new MessageEmbed() // Prettier

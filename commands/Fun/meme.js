@@ -21,8 +21,9 @@ module.exports = {
      .setTitle(meme.title)
      .setURL(`https://reddit.com${meme.permalink}`)
      .setImage(meme.url)
+     .setTimestamp()
      .setFooter(
-      `${client.bot_emojis.like} ${meme.ups} • ${client.bot_emojis.chat} ${meme.num_comments} | Requested by ${message.author.username}`,
+      `${client.bot_emojis.like} ${meme.ups} • ${client.bot_emojis.chat} ${meme.num_comments} • Requested by ${message.author.username}`,
       message.author.displayAvatarURL({
        dynamic: true,
        format: "png",

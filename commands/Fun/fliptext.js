@@ -3,17 +3,18 @@ const flip = require("flip-text");
 
 module.exports = {
  name: "fliptext",
- aliases: [],
+ aliases: ["flip-text"],
  description: "Flip some text",
  category: "Fun",
+ timeout: 5000000,
  usage: "fliptext <text>",
  run: async (client, message, args) => {
   try {
    if (!args[0]) {
     return client.createError(message, `${client.bot_emojis.error} | You must provide a text!\n\n**Usage:** \`${client.prefix} fliptext <text>\``);
    }
-   if (args.lenght > 50) {
-    return client.createError(message, `${client.bot_emojis.error} | The text can't be longer than 50 characters!\n\n**Usage:** \`${client.prefix} fliptext <text>\``);
+   if (args.toString().length > client.max_input) {
+    return client.createError(message, `${client.bot_emojis.error} | The text can't be longer than \`${client.max_input}\` characters!\n\n**Usage:** \`${client.prefix} fliptext <text>\``);
    }
    let flipped = [];
    args.forEach((arg) => {

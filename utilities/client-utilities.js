@@ -7,6 +7,7 @@ module.exports = function (client) {
  client.config = config;
  client.bot_emojis = emojis;
  client.backupManager = backup;
+ client.max_input = config.max_input;
  client.backupManager.setStorageFolder(`${process.cwd()}/database`);
  client.createCommandError = function (message, err) {
   if (!message) throw new Error("You must provide message object to create new error!");

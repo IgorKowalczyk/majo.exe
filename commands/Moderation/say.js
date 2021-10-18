@@ -15,6 +15,9 @@ module.exports = {
    if (!args[0]) {
     return client.createError(message, `${client.bot_emojis.error} | You have to enter a message!\n\n**Usage:** \`${client.prefix} say [channel] <message>\``);
    }
+   if (args.toString().length > client.max_input) {
+    return client.createError(message, `${client.bot_emojis.error} | Message can't be longer than \`${client.max_input}\` characters!\n\n**Usage:** \`${client.prefix} say [channel] <message>\``);
+   }
    const channel = message.mentions.channels.first();
    if (channel && args[0] == `<#${channel.id}>`) {
     message.delete();

@@ -18,6 +18,9 @@ module.exports = {
    if (!text) {
     return client.createError(message, `${client.bot_emojis.error} | You must specify the text to translate!\n\n**Usage:** \`${client.prefix} <language> <text to translate>\``);
    }
+   if (text.toString().length > client.max_input) {
+    return client.createError(message, `${client.bot_emojis.error} | Text must be shorter than \`${client.max_input}\` characters!\n\n**Usage:** \`${client.prefix} <language> <text to translate>\``);
+   }
    if (languages.some((ele) => ele.name === language.toLowerCase()) || languages.some((ele) => ele.abrv === language.toLowerCase())) {
     translate(text, { to: language.toLowerCase() })
      .then((res) => {

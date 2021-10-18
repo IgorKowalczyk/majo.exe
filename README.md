@@ -45,7 +45,6 @@ Go to [this link](https://discord.com/oauth2/authorize/?permissions=4294967287&s
     * `MYSQL_HOST` - Your MYSQL Host Endpoint
     * `MYSQL_PASSWORD` - Your MYSQL user password
     * `MYSQL_USER` - Your MYSQL User name who can acces the database
-    * `COOKIES` - Your Youtube Cookies [[Tutorial](#youtube)]
     * `STATUS_WEBHOOK` - Your Stats Webhook URL (Discord)
 7. Run `npm run bot`
 > Note: See the example [`.env` file below](#example-env-file)!
@@ -102,7 +101,6 @@ Go to [this link](https://discord.com/oauth2/authorize/?permissions=4294967287&s
 | `SECRET` | The bot client secret | ❌ | ✅ |
 | `ANALYTICS` | Google analytics tracking ID, used in Web-Dashboard | ❌ | ❌ |
 | `RECAPTCHA_KEY` | Google recaptcha v2 key | ❌ | ✅ |
-| `COOKIES` | Your youtube cookies | ✅ | ❌ |
 | `CONTACT_WEBHOOK` | Your contact form webhook url | ❌ | ✅ |
 | `STATUS_WEBHOOK` | Your status webhook ID | ✅ | ❌ |
 #### Example `.env` file
@@ -124,7 +122,6 @@ MYSQL_PASSWORD=YOUR_MYSQL_USER_PASSWORD
 MYSQL_USER=YOUR_MYSQL_DATABASE_USER
 CONTACT_WEBHOOK=YOUR_CONTACT_FORM_WEBHOOK
 STATUS_WEBHOOK=YOUR_STATUS_WEBHOOK_URL
-COOKIES=YOUR_YOUTUBE_COOKIES
 RECAPTCHA_KEY=YOUR_RECAPTCHA_KEY
 
 # Not required

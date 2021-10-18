@@ -12,7 +12,7 @@ module.exports = {
    if (!message.guild.me.permissions.has("MANAGE_EMOJIS_AND_STICKERS")) {
     return client.createError(message, `${client.bot_emojis.error} | I don't have premission to manage emojis!`);
    }
-   if (!message.member.permissions.has("KICK_MANAGE_EMOJIS_AND_STICKERSMEMBERS")) {
+   if (!message.member.permissions.has("MANAGE_EMOJIS_AND_STICKERS")) {
     return client.createError(message, `${client.bot_emojis.error} | You don't have premission to manage emojis`);
    }
    if (!emoji) {

@@ -17,6 +17,9 @@ module.exports = {
    if (!user2) {
     return client.createError(message, `${client.bot_emojis.error} | Please mention a secound user to ship!\n\n**Usage:** \`${client.prefix} ship <user> <user>\``);
    }
+   if (args[0].toString().length > client.max_input || args[1].toString().length > client.max_input) {
+    return client.createError(message, `${client.bot_emojis.error} | User can't be longer than \`${client.max_input}\` characters!\n\n**Usage:** \`${client.prefix} ship <text> <user>\``);
+   }
    const ship = Math.floor(Math.random() * 100) + 1;
    const bar = progressbar(100, ship, 10, `${client.bot_emojis.emoji_bar_1}`, `${client.bot_emojis.emoji_bar_2}`, `${client.bot_emojis.broken_heart} `, ` ${client.bot_emojis.heart}`, false);
    const mehh = new MessageEmbed() // Prettier

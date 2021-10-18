@@ -1,7 +1,7 @@
 {
  "name": "majo.exe-v13-beta",
  "description": "Majo.exe have almost everything - Fun, Memes, Images, Giveaway, Economy, Anime and NSFW",
- "logo": "https://github.com/IgorKowalczyk/majobot/blob/master/lib/img/readme/avatar.png",
+ "logo": "https://cdn.discordapp.com/avatars/681536055572430918/440725bbe2324ebf70dd1d2e6ca997c1.png?size=4096",
  "repository": "https://github.com/igorkowalczyk/majobot.git",
  "stack": "heroku-20",
  "website": "https://majobot.igorkowalczyk.repl.co",
@@ -24,10 +24,6 @@
    "description": "Amethyste api token",
    "required": true
   },
-  "COOKIES": {
-   "description": "Youtube cookies",
-   "required": false
-  },
   "DOMAIN": {
    "description": "Website domain (same as your heroku app name!)",
    "required": false
@@ -36,21 +32,13 @@
    "description": "Discord Bot ID",
    "required": true
   },
-  "CONTACT_WEBHOOK_TOKEN": {
-   "description": "Contact form webhook token",
+  "CONTACT_WEBHOOK": {
+   "description": "Contact form webhook URL",
    "required": false
   },
-  "CONTACT_WEBHOOK_ID": {
-   "description": "Contact form webhook id",
-   "required": false
-  },
-  "STATUS_WEBHOOK_TOKEN": {
-   "description": "Status webhook token",
-   "required": false
-  },
-  "STATUS_WEBHOOK_ID": {
-   "description": "Status webhook id",
-   "required": false
+  "STATUS_WEBHOOK": {
+   "description": "Status webhook URL",
+   "required": true
   },
   "DASHBOARD": {
    "description": "Dashboard launch config (Boolean | true/false)",

@@ -12,8 +12,8 @@ module.exports = {
    if (!suggestion) {
     return client.createError(message, `${client.bot_emojis.error} | You need to enter a suggestion!\n\n**Usage:** \`${client.prefix} suggest <suggestion>\``);
    }
-   if (args.join(" ").lenght > 1000) {
-    return client.createError(message, `${client.bot_emojis.error} | Your suggestion can have a maximum of \`1000\` characters!\n\n**Usage:** \`${client.prefix} suggest <suggestion>\``);
+   if (args.toString().length > client.max_input) {
+    return client.createError(message, `${client.bot_emojis.error} |  Your suggestion can have a maximum of \`${client.max_input}\` characters!\n\n**Usage:** \`${client.prefix} suggest <suggestion>\``);
    }
    const channel = client.channels.cache.get(client.config.suggestions_channel);
    if (channel) {

@@ -10,11 +10,11 @@ module.exports = {
  usage: "ascii <text>",
  run: async (client, message, args) => {
   try {
-   if (args.join(" ").length > 1000) {
-    return client.createError(message, `${client.bot_emojis.error} | The max length for ascii is 1000 characters!\n\n**Usage:** \`${client.prefix} ascii <text>\``);
-   }
    if (!args[0]) {
     return client.createError(message, `${client.bot_emojis.error} | Please enter a text to convert!\n\n**Usage:** \`${client.prefix} ascii <text>\``);
+   }
+   if (args.join(" ").length > client.max_input) {
+    return client.createError(message, `${client.bot_emojis.error} | The max length for ascii is \`${client.max_input}\` characters!\n\n**Usage:** \`${client.prefix} ascii <text>\``);
    }
    figlet(args.join(" "), function (err, data) {
     if (err) {

@@ -11,8 +11,8 @@ module.exports = {
   if (!rate) {
    return client.createError(message, `${client.bot_emojis.error} | Please enter a text!\n\n**Usage:** \`${client.prefix} rate <text>\``);
   }
-  if (rate.length > 400) {
-   return client.createError(message, `${client.bot_emojis.error} | I can't rate that! Max text length is \`400\` characters!`);
+  if (args.toString().length > client.max_input) {
+   return client.createError(message, `${client.bot_emojis.error} | Question can't be longer than \`${client.max_input}\` characters!\n\n**Usage:** \`${client.prefix} rate <text>\``);
   }
   let result = Math.floor(Math.random() * 100 + 0);
   const happyrate = new MessageEmbed() // Prettier

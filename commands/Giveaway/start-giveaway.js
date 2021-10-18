@@ -32,6 +32,9 @@ module.exports = {
    if (!prize) {
     return client.createError(message, `${client.bot_emojis.error} | You must enter a prize to start giveaway!\n\n**Usage:** \`${client.prefix} start-giveaway <time> <winner count> <channel> <prize>\``);
    }
+   if (prize.length > client.max_input) {
+    return client.createError(message, `${client.bot_emojis.error} | Prize can't be longer than \`${client.max_input}\` characters!\n\n**Usage:** \`${client.prefix} giveaway <winner count> <channel> <prize>\``);
+   }
    const success = new MessageEmbed() // Prettier
     .setColor("GREEN")
     .setDescription(`> ${client.bot_emojis.giveaway} Giveaway created in ${channel}!`)

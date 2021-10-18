@@ -15,6 +15,9 @@ module.exports = {
    if (!isURL(args[0])) {
     return client.createError(message, `${client.bot_emojis.error} | Please provide vaild link!`);
    }
+   if (args[0].toString().length > client.max_input) {
+    return client.createError(message, `${client.bot_emojis.error} | Link must be shorter than \`${client.max_input}\` characters!\n\n**Usage:** \`${client.prefix} shortener <link>\``);
+   }
    shorten.shorten(args[0], function (res) {
     const urldone = new MessageEmbed() // Prettier
      .setColor("RANDOM")

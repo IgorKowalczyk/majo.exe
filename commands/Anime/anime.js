@@ -10,6 +10,9 @@ module.exports = {
  run: async (client, message, args) => {
   try {
    const search = args.join(" ");
+   if (search.toString().length > client.max_input) {
+    return client.createError(message, `${client.bot_emojis.error} | Anime name can't be longer than \`${client.max_input}\` characters!\n\n**Usage:** \`${client.prefix} anime <name>\``);
+   }
    mal
     .getInfoFromName(search)
     .then((data) => {

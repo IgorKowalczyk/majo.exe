@@ -13,6 +13,9 @@ module.exports = {
    if (!emojis) {
     return client.createError(message, `${client.bot_emojis.error} | Please enter text to convert!\n\n**Usage:** \`${client.prefix} emojify <text>\``);
    }
+   if (args.toString().length > client.max_input) {
+    return client.createError(message, `${client.bot_emojis.error} | You must enter a text shorter than \`${client.max_input}\` characters!\n\n**Usage:** \`${client.prefix} emojify <text>\``);
+   }
    const converted = emojify(emojis);
    if (!converted) {
     return client.createError(message, `${client.bot_emojis.error} | I cannot convert the text! Please try again!\n\n**Usage:** \`${client.prefix} emojify <text>\``);

@@ -11,8 +11,8 @@ module.exports = {
    if (!args[0]) {
     return client.createError(message, `${client.bot_emojis.error} | You must enter a Base64 code to decode!\n\n**Usage:** \`${client.prefix} base64-decode <text>\``);
    }
-   if (!args[0].lenght > 50) {
-    return client.createError(message, `${client.bot_emojis.error} | You must enter a Base64 code shorer than \`50\` characters!\n\n**Usage:** \`${client.prefix} base64-decode <text>\``);
+   if (args[0].toString().length > client.max_input) {
+    return client.createError(message, `${client.bot_emojis.error} | You must enter a Base64 code shorer than \`${client.max_input}\` characters!\n\n**Usage:** \`${client.prefix} base64-decode <text>\``);
    }
    const buffer = new Buffer.from(args.join(" "), "base64");
    const base64 = buffer.toString("utf-8");

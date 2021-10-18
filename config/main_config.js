@@ -25,6 +25,7 @@ module.exports = {
  id: process.env.ID,
  advanved_logging: false,
  ratelimit: 2500, // Command ratelimit (can be customized for each command)
+ max_input: 200, // Maximum command arguments length
  rickroll: false, // Secret Option
  display_status: "online", // online | idle | invisible | dnd
  show_commands_list: true,

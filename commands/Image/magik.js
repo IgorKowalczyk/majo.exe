@@ -5,7 +5,7 @@ const AmeAPI = new AmeClient(process.env.AMEAPI);
 module.exports = {
  name: "magik",
  aliases: [],
- description: "Add a dash of magik to the user avatar",
+ description: "Add a dash of magik to the user avatar *magik*",
  category: "Image",
  usage: "magik [user mention, user id, user name]",
  run: async (client, message, args) => {

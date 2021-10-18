@@ -15,6 +15,9 @@ module.exports = {
    if (!result) {
     return client.createError(message, `${client.bot_emojis.error} | Please input code to evaluate!\n\n**Usage:** \`${client.prefix} eval <code>\``);
    }
+   if (result.length > 1024) {
+    return client.createError(message, `${client.bot_emojis.error} | Command can't be longer than \`1024\` characters!\n\n**Usage:** \`${client.prefix} shell <script>\``);
+   }
    let evaluated = eval(result);
    let type = typeof evaluated;
    console.log("Code to eval: " + result);
