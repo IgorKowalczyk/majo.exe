@@ -30,7 +30,7 @@ module.exports = {
      return message.reply({ embeds: [embed] });
     }
     const embed = new MessageEmbed() // Prettier
-     .setColor("#2f3136")
+     .setColor("#4f545c")
      .addField(`${client.bot_emojis.input} Request`, `\`\`\`sh\n${command}\`\`\``)
      .addField(`${client.bot_emojis.output} Server response`, `\`\`\`sh\n${res.slice(0, 1000) || "No response!"}\`\`\``)
      .setFooter(
