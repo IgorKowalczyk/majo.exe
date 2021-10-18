@@ -1,5 +1,5 @@
 {
- "name": "majo.exe-v13-beta",
+ "name": "Majo.exe",
  "description": "Majo.exe have almost everything - Fun, Memes, Images, Giveaway, Economy, Anime and NSFW",
  "logo": "https://cdn.discordapp.com/avatars/681536055572430918/440725bbe2324ebf70dd1d2e6ca997c1.png?size=4096",
  "repository": "https://github.com/igorkowalczyk/majobot.git",
@@ -13,7 +13,7 @@
  ],
  "env": {
   "TOKEN": {
-   "description": "Bot token",
+   "description": "Discord bot token",
    "required": true
   },
   "PREFIX": {
