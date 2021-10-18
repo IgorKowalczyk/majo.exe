@@ -62,6 +62,7 @@ Go to [this link](https://discord.com/oauth2/authorize/?permissions=4294967287&s
     * `MYSQL_USER` - Your MYSQL User name who can acces the database
     * `CONTACT_WEBHOOK` - Your Contact Webhook URL (Discord)
     * `PORT` - Your website port
+    * `RECAPTCHA_KEY` - Google recaptcha v2 key
     * `SESSION_SECRET` - Your session secret (Random characters)
     * `SECRET` - Discord bot secret
 3. Fill dashboard config in `/config/config.js`
