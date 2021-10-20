@@ -15,6 +15,7 @@ const app = express();
 const https = require("https");
 const child_process = require("child_process");
 const MemoryStore = require("memorystore")(session);
+const rate_limit = require("express-rate-limit");
 const helmet = require("helmet");
 const { constants } = require("crypto");
 const port = process.env.PORT || 6565;
@@ -66,6 +67,7 @@ module.exports = async (client) => {
   res.setHeader("Access-Control-Allow-Origin", "*");
   next();
  });
+
  app.use(
   session({
    store: new MemoryStore({
@@ -123,6 +125,12 @@ module.exports = async (client) => {
   req.session.backURL = req.url;
   res.redirect("/login");
  };
+
+ const limiter = rate_limit({
+  windowMs: 60 * 1000, // 1 minute
+  max: 30,
+ });
+ app.use(limiter);
 
  // Login endpoint.
  app.get(
