@@ -35,7 +35,6 @@
   "discord.js": "^13.2.0",
   "dotenv": "^8.2.0",
   "ejs": "^3.1.5",
-  "erela.js": "^2.0.0",
   "express": "^4.17.1",
   "express-session": "^1.17.1",
   "figlet": "^1.5.0",
