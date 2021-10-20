@@ -21,6 +21,7 @@
  --link: #fff;
  --server-hover: 54, 60, 70, 0.58;
  --logout: 240, 71, 71;
+ --main-page-accent: 19, 20, 23, 0.7;
  --logout-background: 240, 71, 71, 0.1;
  --edit: 67, 181, 129;
  --edit-hover: 60, 163, 116;
@@ -692,6 +693,7 @@ code {
  color: var(--light);
  background-size: 50%;
  transition: 500ms all;
+ background-color: rgba(var(--main-page-accent));
 }
 .hero-grid {
  display: grid;
