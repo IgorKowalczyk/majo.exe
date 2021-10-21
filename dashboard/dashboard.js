@@ -1,11 +1,10 @@
-if (Number(process.version.slice(1).split(".")[0]) < 16) throw new Error("Majo.exe requires Node.js v16 or higher. Re-run the bot with Node.js v16 or higher!")
+if (Number(process.version.slice(1).split(".")[0]) < 16) throw new Error("Majo.exe requires Node.js v16 or higher. Re-run the bot with Node.js v16 or higher!");
 const Discord = require("discord.js");
 const url = require("url");
 const path = require("path");
 const express = require("express");
 const chalk = require("chalk");
 const passport = require("passport");
-const session = require("express-session");
 const Strategy = require("passport-discord").Strategy;
 const config = require("../config/main_config");
 const ejs = require("ejs");
@@ -13,6 +12,9 @@ const bodyParser = require("body-parser");
 const fs = require("fs");
 const { readdirSync } = require("fs");
 const app = express();
+const database = require("../utilities/database");
+const session = require("express-session");
+const MySQLStore = require("express-mysql-session")(session);
 const https = require("https");
 const child_process = require("child_process");
 const MemoryStore = require("memorystore")(session);
@@ -39,6 +41,7 @@ module.exports = async (client) => {
  const templateDir = path.resolve(`${dataDir}${path.sep}templates`);
  passport.serializeUser((user, done) => done(null, user));
  passport.deserializeUser((obj, done) => done(null, obj));
+ const sessionStore = new MySQLStore({}, database);
  passport.use(
   new Strategy(
    {
@@ -73,13 +76,17 @@ module.exports = async (client) => {
   next();
  });
 
+ const cookieExpire = 1000 * 60 * 60 * 24 * 7; // 1 week
  app.use(
   session({
-   store: new MemoryStore({
-    checkPeriod: 86400000,
-   }),
+   cookie: {
+    expires: cookieExpire,
+    secure: false,
+    maxAge: cookieExpire,
+   },
    secret: process.env.SESSION_SECRET,
-   resave: true,
+   store: sessionStore,
+   resave: false,
    saveUninitialized: false,
   })
  );
@@ -221,6 +228,10 @@ module.exports = async (client) => {
    renderTemplate(res, req, "policy.ejs");
   });
  }
+
+ app.get("/commands", (req, res) => {
+  renderTemplate(res, req, "commands.ejs");
+ });
 
  // Logout endpoint.
  app.get("/logout", function (req, res) {

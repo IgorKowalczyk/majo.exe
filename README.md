@@ -61,6 +61,7 @@ Go to [this link](https://discord.com/oauth2/authorize/?permissions=4294967287&s
 1. In `.env` file set this values:
     * `TOKEN` - Discord bot token
     * `PREFIX` - Discord bot main prefix
+    * `AMEAPI` - Your Amethyste api token
     * `ID` - Your Discord Bot ID
     * `MYSQL_DATABASE` - Your MYSQL database name
     * `MYSQL_HOST` - Your MYSQL Host Endpoint
@@ -95,7 +96,7 @@ Go to [this link](https://discord.com/oauth2/authorize/?permissions=4294967287&s
 | `TOKEN` | The bot token (Remember! The `TOKEN` is super secret) | ✅ | ✅ |
 | `PREFIX` | The default bot prefix (eg. `!majo`) | ✅ | ✅ |
 | `ID` | Your Discord Bot ID | ✅ | ✅ |
-| `AMEAPI` | Your Amethyste api token | ✅ | ❌ |
+| `AMEAPI` | Your Amethyste api token | ✅ | ✅ |
 | `MYSQL_DATABASE` | Your MYSQL database name | ✅ | ✅ |
 | `MYSQL_HOST` | Your MYSQL Host | ✅ | ✅ |
 | `MYSQL_USER` | Your MYSQL user | ✅ | ✅ |
