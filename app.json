@@ -44,10 +44,6 @@
    "description": "Dashboard launch config (Boolean | true/false)",
    "required": true
   },
-  "SESSION_SECRET": {
-   "description": "Random sequence of words, letters and numbers",
-   "required": false
-  },
   "SECRET": {
    "description": "Bot client secret",
    "required": false

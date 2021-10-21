@@ -1,3 +1,4 @@
+if (Number(process.version.slice(1).split(".")[0]) < 16) throw new Error("Majo.exe requires Node.js v16 or higher. Re-run the bot with Node.js v16 or higher!")
 const Discord = require("discord.js");
 const client = new Discord.Client({
  allowedMentions: {

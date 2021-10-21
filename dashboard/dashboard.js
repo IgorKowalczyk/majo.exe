@@ -1,3 +1,4 @@
+if (Number(process.version.slice(1).split(".")[0]) < 16) throw new Error("Majo.exe requires Node.js v16 or higher. Re-run the bot with Node.js v16 or higher!")
 const Discord = require("discord.js");
 const url = require("url");
 const path = require("path");
@@ -23,6 +24,10 @@ require("dotenv").config();
 require("../utilities/dashboard");
 function capitalize(string) {
  return string.charAt(0).toUpperCase() + string.slice(1);
+}
+process.env.SESSION_SECRET = "";
+for (let i = 0; i <= 15; i++) {
+ process.env.SESSION_SECRET += Math.random().toString(16).slice(2, 8).toUpperCase().slice(-6) + i;
 }
 
 console.log(chalk.bold(chalk.blue.bold("[HOST]")) + chalk.cyan.bold(" Starting dashboard..."));

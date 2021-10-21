@@ -9,6 +9,19 @@ module.exports = function (client) {
  client.backupManager = backup;
  client.max_input = config.max_input;
  client.backupManager.setStorageFolder(`${process.cwd()}/database`);
+ client.prefix = process.env.PREFIX; // WIP - Per server prefix
+ client.commands = new Discord.Collection();
+ client.aliases = new Discord.Collection();
+ client.slashCommands = new Discord.Collection();
+ client.snipes = new Discord.Collection();
+ client.queue = new Map();
+ client.giveawaysManager = require("./giveaways")(client);
+ const logs = require("discord-logs");
+ logs(client);
+ process.env.SESSION_SECRET = "";
+ for (let i = 0; i <= 15; i++) {
+  process.env.SESSION_SECRET += Math.random().toString(16).slice(2, 8).toUpperCase().slice(-6) + i;
+ }
  client.createCommandError = function (message, err) {
   if (!message) throw new Error("You must provide message object to create new error!");
   const error = new Discord.MessageEmbed() // Prettier
@@ -26,15 +39,6 @@ module.exports = function (client) {
    );
   return message.reply({ embeds: [error], components: [row] });
  };
- client.prefix = process.env.PREFIX; // WIP - Per server prefix
- client.commands = new Discord.Collection();
- client.aliases = new Discord.Collection();
- client.slashCommands = new Discord.Collection();
- client.snipes = new Discord.Collection();
- client.queue = new Map();
- client.giveawaysManager = require("./giveaways")(client);
- const logs = require("discord-logs");
- logs(client);
  client.createError = function (message, error_message, color, error_ephemeral) {
   if (!message) throw new Error("You must provide message object to create new error!");
   if (!error_message) throw new Error("You must provide error_message text to create new error!");

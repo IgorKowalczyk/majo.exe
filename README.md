@@ -69,7 +69,6 @@ Go to [this link](https://discord.com/oauth2/authorize/?permissions=4294967287&s
     * `CONTACT_WEBHOOK` - Your Contact Webhook URL (Discord)
     * `PORT` - Your website port
     * `RECAPTCHA_KEY` - Google recaptcha v2 key
-    * `SESSION_SECRET` - Your session secret (Random characters)
     * `SECRET` - Discord bot secret
 3. Fill dashboard config in `/config/config.js`
 4. Add these redirect uris ([https://discord.com/developers/applications/<YOUR-BOT-ID\>/oauth2](https://discord.com/developers/applications))
@@ -104,7 +103,6 @@ Go to [this link](https://discord.com/oauth2/authorize/?permissions=4294967287&s
 | `DOMAIN` | Your website domain (eg `https://example.com`) | ❌ | ✅ |
 | `PORT` | Your webiste port eg. `8008`<br> - Note: Heroku don't need port. Heroku assings port automatically! | ❌ | ✅ |
 | `DASHBOARD` | The Web-Dashboard config value. (Boolean) | ❌ | ✅ |
-| `SESSION_SECRET` | Random sequence of words, letterss or numbers | ❌ | ✅ |
 | `SECRET` | The bot client secret | ❌ | ✅ |
 | `ANALYTICS` | Google analytics tracking ID, used in Web-Dashboard | ❌ | ❌ |
 | `RECAPTCHA_KEY` | Google recaptcha v2 key | ❌ | ✅ |
@@ -135,7 +133,6 @@ RECAPTCHA_KEY=YOUR_RECAPTCHA_KEY
 DASHBOARD=[true/false]
 DOMAIN=YOUR_WEBSITE_DOMAIN
 PORT=YOUR_WEBSITE_PORT
-SESSION_SECRET=YOUR_SESSION_SECRET_(RANDOM_WORDS)
 SECRET=YOUR_BOT_CLIENT_SECRET
 ANALYTICS=YOUR_GOOGLE_TRACKING_ID
 # Note: !majo is the default prefix, you can change it later.
