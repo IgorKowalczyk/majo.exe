@@ -6,7 +6,7 @@ module.exports = {
  description: "Majo.exe - Discord bot for Fun, Memes, Images, Giveaway, Economy, Anime and NSFW! Majo serve over 100 commands!",
  support_server: "https://discord.gg/bVNNHuQ",
  support_server_id: "666599184844980224",
- status: "https://hetrixtools.com/r/b327a38f4c3d4cdb1068dfe61e1b2144/",
+ status: "https://bit.ly/majo-status",
  twitter: "@majonezexe",
  github: "igorkowalczyk",
  github_repo: "majobot",
