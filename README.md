@@ -107,8 +107,8 @@ Go to [this link](https://discord.com/oauth2/authorize/?permissions=4294967287&s
 | `SECRET` | The bot client secret | ❌ | ✅ |
 | `ANALYTICS` | Google analytics tracking ID, used in Web-Dashboard | ❌ | ❌ |
 | `RECAPTCHA_KEY` | Google recaptcha v2 key | ❌ | ✅ |
-| `CONTACT_WEBHOOK` | Your contact form webhook url | ❌ | ✅ |
-| `STATUS_WEBHOOK` | Your status webhook ID | ✅ | ❌ |
+| `CONTACT_WEBHOOK` | Your contact form webhook URL | ❌ | ✅ |
+| `STATUS_WEBHOOK` | Your status webhook URL | ✅ | ❌ |
 #### Example `.env` file
 <details><summary>[?] Click to see example <code>.env</code> file!</summary>
  
