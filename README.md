@@ -110,7 +110,7 @@ Go to [this link](https://discord.com/oauth2/authorize/?permissions=4294967287&s
 | `CONTACT_WEBHOOK` | Your contact form webhook url | ❌ | ✅ |
 | `STATUS_WEBHOOK` | Your status webhook ID | ✅ | ❌ |
 #### Example `.env` file
-<details><summary>Click to see example <code>.env</code> file!</summary>
+<details><summary>[?] Click to see example <code>.env</code> file!</summary>
  
 [`.env.example`](https://github.com/igorkowalczyk/majobot/blob/master/config/examples/.env.example)
 
@@ -139,6 +139,12 @@ ANALYTICS=YOUR_GOOGLE_TRACKING_ID
 # Note: !majo is the default prefix, you can change it later.
 ```
 </details>
+
+## Requirements
+ - MySQL: `<= 5.7`
+ - Node.js: `<16x`
+ - Disk space: `>= 1GB`
+
 
 ## Tokens tutorials
 ##### Discord Credentials
