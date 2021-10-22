@@ -40,7 +40,7 @@ Go to [this link](https://discord.com/oauth2/authorize/?permissions=4294967287&s
 1. Clone [this repository](https://github.com/igorkowalczyk/majobot) `git clone https://github.com/IgorKowalczyk/majobot.git`
 2. Run `npm i` to install all dependencies,
 3. Grab a Discord Bot token and client secret on [Discord's developer portal](https://discord.com/developers/applications) [Tutorial](#discord-credentials)
-4. Fill `config.js`, `emojis_config.js` with your values
+4. Fill `/config/config.js`, `/config/emojis_config.js` with your values
 5. Create new file named `.env` Remember - the file is super secret, better to not share it.
 6. In `.env` file set this values:
     * `TOKEN` - Discord bot token
@@ -71,7 +71,7 @@ Go to [this link](https://discord.com/oauth2/authorize/?permissions=4294967287&s
     * `PORT` - Your website port
     * `RECAPTCHA_KEY` - Google recaptcha v2 key
     * `SECRET` - Discord bot secret
-3. Fill dashboard config in `/config/config.js`
+3. Fill dashboard config in `/config/main_config.js`
 4. Add these redirect uris ([https://discord.com/developers/applications/<YOUR-BOT-ID\>/oauth2](https://discord.com/developers/applications))
     * ```
        https://your-domain.com
@@ -84,7 +84,7 @@ Go to [this link](https://discord.com/oauth2/authorize/?permissions=4294967287&s
 
 **Additional info**
 > If you are hosting the site locally it is best to generate certificates for it. If you have them:
-> 1. Change `certs: false` & `localhost: false` values in `config.js` to true
+> 1. Change `certs: false` & `localhost: false` values in `/config/main_config.js` to true
 > 2. Place the `server.cert` & `server.key` certs in `/dashboard/certs/` directory
 
 <br>
