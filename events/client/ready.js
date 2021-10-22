@@ -11,38 +11,83 @@ module.exports = async (client) => {
   setInterval(() => {
    const emojis = ["😆", "😄", "😎", "😂", "🥳", "😘", "😜", "😁", "😉", "🥰", "😍", "🤯", "🤩", "😇", "😊", "☺️", "😌", "😋", "😳", "😚", "😏", "😱", "🥵", "😶‍🌫️", "🤕", "😴", "( ͡° ͜ʖ ͡°)"]; // Smirk is here becase of Luna_CatArt#4514 idea XD
    const emoji = emojis[Math.floor(Math.random() * emojis.length)];
-   var date = new Date().toJSON().slice(0, 10).replace(/-/g, "/");
-   const discordbday = new Date().getFullYear() + "/05/13";
-   const statuslist = [];
-   if (date == discordbday) {
-    statuslist.push(
-     `🎉 ${client.guilds.cache.size} servers 🎉`, // Prettier
-     `🎉 ${client.guilds.cache.reduce((a, g) => a + g.memberCount, 0)} members 🎉`, // Prettier
-     `🎉 ${client.prefix} help 🎉`
-    );
-   } else {
-    statuslist.push(
-     `${emoji} | ${client.guilds.cache.size} servers!`, // Prettier
-     `${emoji} | ${client.guilds.cache.reduce((a, g) => a + g.memberCount, 0)} members!`, // Prettier
-     `${emoji} | ${client.prefix} help`, // Prettier
-     `🇵🇱 | F**K POLISH GOVERNMENT!`, // Protest
-     `🇵🇱 | F**K POLISH GOVERNMENT!` // Protest
-    );
-   }
+   const statuslist = [
+    {
+     msg: `outside (JK who does that?) ${emoji}`,
+     type: "PLAYING",
+    },
+    {
+     msg: `alone 😢`,
+     type: "PLAYING",
+    },
+    {
+     msg: `with your heart 💔`,
+     type: "PLAYING",
+    },
+    {
+     msg: `with over ${client.guilds.cache.reduce((a, g) => a + g.memberCount, 0)} users ${emoji}!`,
+     type: "PLAYING",
+    },
+    {
+     msg: `who even reads these anyways? 🤕`,
+     type: "PLAYING",
+    },
+    {
+     msg: `the haters hate ${emoji}`,
+     type: "WATCHING",
+    },
+    {
+     msg: `${client.prefix} help! ${emoji}`,
+     type: "WATCHING",
+    },
+    {
+     msg: `you (turn around) 🔪`,
+     type: "WATCHING",
+    },
+    {
+     msg: `grass grow 🥬`,
+     type: "WATCHING",
+    },
+    {
+     msg: `over ${client.guilds.cache.size} servers ${emoji}!`,
+     type: "WATCHING",
+    },
+    {
+     msg: `funny cat videos 🐈`,
+     type: "WATCHING",
+    },
+    {
+     msg: `Déjà vu 🎶`,
+     type: "WATCHING",
+    },
+    {
+     msg: `the world crumble 🤯`,
+     type: "WATCHING",
+    },
+    {
+     msg: `over you from above 👼`,
+     type: "WATCHING",
+    },
+    {
+     msg: `your conversations ${emoji}`,
+     type: "LISTENING",
+    },
+   ];
    const random = Math.floor(Math.random() * (statuslist.length - 1) + 1);
    client.user.setStatus(client.config.display_status);
    if (client.config.rickroll == true) {
-    client.user.setActivity(statuslist[random], {
+    client.user.setActivity(statuslist[random].msg, {
      type: "STREAMING",
      url: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
     });
    } else {
-    client.user.setActivity(statuslist[random], {
-     type: "WATCHING",
+    client.user.setActivity(statuslist[random].msg, {
+     type: statuslist[random].type,
     });
    }
    if (client.config.advanved_logging == true) console.log(chalk.bold(chalk.blue.bold(`[${client.user.username.toUpperCase().split(" ")[0]}]`)) + chalk.cyan.bold(" Successfully changed client status"));
   }, 10000);
+
   const globPromise = promisify(glob);
   const slashCommands = await globPromise(`${process.cwd()}/scommands/*/*.js`);
   const arrayOfSlashCommands = [];

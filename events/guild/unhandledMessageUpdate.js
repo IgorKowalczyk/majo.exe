@@ -19,9 +19,9 @@ module.exports = async (client, oldMessage, newMessage) => {
     const event = await new MessageEmbed() // Prettier
      .setTitle(`${client.bot_emojis.edit} Unhandled Message Event`)
      .setColor("#4f545c")
-     .setThumbnail(message.author.avatarURL())
+     .setThumbnail(oldMessage.author.avatarURL())
      .setDescription(`Message \`${oldMessage.id}\` was edited but I couldn't find what was updated...`)
-     .addField("Message link", `https://discord.com/channels/${message.guild.id}/${message.channel.id}/${message.id}`)
+     .addField("Message link", `https://discord.com/channels/${oldMessage.guild.id}/${oldMessage.channel.id}/${oldMessage.id}`)
      .setTimestamp()
      .setFooter(message.guild.name, message.guild.iconURL());
     await log.send({ embeds: [event] });
