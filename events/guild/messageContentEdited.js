@@ -1,4 +1,4 @@
-const {MessageEmbed} = require("discord.js")
+const { MessageEmbed } = require("discord.js");
 const sql = require("../../utilities/database");
 
 module.exports = async (client, message, oldContent, newContent) => {
@@ -33,7 +33,7 @@ module.exports = async (client, message, oldContent, newContent) => {
      .addField("Message link", `https://discord.com/channels/${message.guild.id}/${message.channel.id}/${message.id}`)
      .setTimestamp()
      .setFooter(message.guild.name, message.guild.iconURL());
-    await log.send({embeds: [event]});
+    await log.send({ embeds: [event] });
    })();
   });
  } catch (err) {

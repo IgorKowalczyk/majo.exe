@@ -86,8 +86,8 @@ module.exports = async (client, member) => {
       })
      )
      .setDescription(":calendar_spiral: **User joined server at:** `" + moment(member.user.joinedAt).format("MMMM Do YYYY, h:mm:ss") + "` (" + moment(member.user.joinedAt).fromNow() + ")")
-     .setImage("attachment://leave-image.png")
-    await channel.send({embeds: [embed], files: [attachment]});
+     .setImage("attachment://leave-image.png");
+    await channel.send({ embeds: [embed], files: [attachment] });
    })();
   });
  } catch (err) {

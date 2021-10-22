@@ -10,7 +10,7 @@ module.exports = {
   try {
    const msg = client.snipes.get(message.channel.id);
    if (!msg) {
-    return client.createError(message, `${client.bot_emojis.error} There's nothing to snipe!`)
+    return client.createError(message, `${client.bot_emojis.error} There's nothing to snipe!`);
    }
    const embed = new MessageEmbed() // Prettier
     .setAuthor(msg.author, msg.member.user.displayAvatarURL())
@@ -18,7 +18,7 @@ module.exports = {
     .setFooter(`Requested by ${message.author.username}`, message.author.displayAvatarURL())
     .setTimestamp()
     .setColor("RANDOM");
-   message.reply({embeds: [embed]});
+   message.reply({ embeds: [embed] });
   } catch (err) {
    console.log(err);
    return client.createCommandError(message, err);

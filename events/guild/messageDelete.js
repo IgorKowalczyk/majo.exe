@@ -1,4 +1,4 @@
-const {MessageEmbed} = require("discord.js")
+const { MessageEmbed } = require("discord.js");
 const sql = require("../../utilities/database");
 
 module.exports = async (client, message) => {
@@ -36,7 +36,7 @@ module.exports = async (client, message) => {
      .addField("Message", `${final || "I can't fetch the message ~Majo"}`)
      .setTimestamp()
      .setFooter(message.guild.name, message.guild.iconURL());
-    await log.send({embeds: [event]});
+    await log.send({ embeds: [event] });
    })();
   });
  } catch (err) {

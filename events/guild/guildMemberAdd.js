@@ -86,8 +86,8 @@ module.exports = async (client, member) => {
       })
      )
      .setDescription(":calendar_spiral: **Acount created at:** `" + moment(member.user.createdAt).format("MMMM Do YYYY, h:mm:ss") + "` (" + moment(member.user.createdAt).fromNow() + ")")
-     .setImage("attachment://welcome-image.png")
-    await channel.send({embeds: [embed], files: [attachment]});
+     .setImage("attachment://welcome-image.png");
+    await channel.send({ embeds: [embed], files: [attachment] });
    })();
   });
  } catch (err) {
