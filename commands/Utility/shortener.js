@@ -23,7 +23,13 @@ module.exports = {
      .setColor("RANDOM")
      .setTitle(`${client.bot_emojis.link} Your shortened URL`)
      .setDescription(`> Link: **${res}**`);
-    const row = new MessageActionRow().addComponents(new MessageButton().setStyle("LINK").setURL(res).setLabel(`Go to ${res}`));
+    const row = new MessageActionRow() // Prettier
+     .addComponents(
+      new MessageButton() // Prettier
+       .setStyle("LINK")
+       .setURL(res)
+       .setLabel(`Go to ${res}`)
+     );
     message.reply({ embeds: [urldone], components: [row] });
    });
   } catch (err) {
