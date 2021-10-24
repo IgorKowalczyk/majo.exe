@@ -1,6 +1,6 @@
 module.exports = {
  // Main config
- author: "Igor Kowalczyk (Majonez.exe#3957)",
+ author: "Majonez.exe#3957",
  aurhor_website: "https://igorkowalczyk.github.io",
  owner_id: "440200028292907048",
  description: "Majo.exe - Discord bot for Fun, Memes, Images, Giveaway, Economy, Anime and NSFW! Majo serve over 100 commands!",
