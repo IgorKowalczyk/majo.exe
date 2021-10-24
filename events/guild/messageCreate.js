@@ -8,7 +8,7 @@ module.exports = async (client, message) => {
   if (!message) return;
   if (message.author.bot) return;
   if (message.guild && !message.author.bot && message.embeds.length > 0 && !message.content.includes(`http`)) {
-   const sqlquery = "SELECT enabled AS res FROM anti_selfbots WHERE guildid = " + message.guild.id;
+   const sqlquery = "SELECT anti_selfbots AS res FROM `guild_settings` WHERE guildid = " + message.guild.id;
    sql.query(sqlquery, function (error, results, fields) {
     if (error) return console.log(error);
     if (results[0]) {

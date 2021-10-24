@@ -17,12 +17,11 @@ module.exports = {
      let selfbot_config;
      if (args[0].toLowerCase() == "true") selfbot_config = 1;
      if (args[0].toLowerCase() == "false") selfbot_config = 0;
-     console.log(selfbot_config);
-     const sql_start_query = "SELECT enabled AS res FROM anti_selfbots WHERE guildid = " + message.guild.id;
+     const sql_start_query = "SELECT anti_selfbots AS res FROM guild_settings WHERE guild_id = " + message.guild.id;
      sql.query(sql_start_query, function (error, results, fields) {
       if (error) return console.log(error);
       if (results[0]) {
-       const update = "UPDATE anti_selfbots SET enabled = " + selfbot_config + " WHERE guildid = " + message.guild.id;
+       const update = "UPDATE guild_settings SET anti_selfbots = " + selfbot_config + " WHERE guild_id = " + message.guild.id;
        sql.query(update, function (error, results2, fields) {
         if (error) console.log(error);
         const embed = new MessageEmbed() // Prettier
@@ -31,7 +30,7 @@ module.exports = {
         message.reply({ embeds: [embed] });
        });
       } else {
-       const create = "INSERT INTO `anti_selfbots` (`guildid`, `enabled`) VALUES (" + message.guild.id + "," + selfbot_config + ")";
+       const create = "INSERT INTO `guild_settings` (`guild_id`, `anti_selfbots`) VALUES (" + message.guild.id + "," + selfbot_config + ")";
        sql.query(create, function (error, results2, fields) {
         if (error) console.log(error);
         const embed = new MessageEmbed() // Prettier
@@ -45,7 +44,7 @@ module.exports = {
      return client.createError(message, `${client.bot_emojis.error} | Value must be \`true/false\`\n\n**Usage:** \`${client.prefix} anti-selfbot [true/false]\``);
     }
    } else if (!args[0]) {
-    const sqlquery = "SELECT enabled AS res FROM anti_selfbots WHERE guildid = " + message.guild.id;
+    const sqlquery = "SELECT anti_selfbots AS res FROM guild_settings WHERE guild_id = " + message.guild.id;
     sql.query(sqlquery, function (error, results, fields) {
      if (error) return console.log(error);
      if (results[0]) {
