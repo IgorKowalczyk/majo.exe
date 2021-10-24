@@ -1,2 +1,2 @@
->>> If you have any certs - put it here.
->>> Then check dashbard.js http server!
+# If you have any certs - put it here.
+> Then check `dashbard.js` http server & `config.js`!
