@@ -61,6 +61,7 @@ Go to [this link](https://discord.com/oauth2/authorize/?permissions=4294967287&s
 1. In `.env` file set this values:
     * `TOKEN` - Discord bot token
     * `PREFIX` - Discord bot main prefix
+    * `DOMAIN` - Your website domain (eg `https://example.com`)
     * `AMEAPI` - Your Amethyste api token
     * `ID` - Your Discord Bot ID
     * `MYSQL_DATABASE` - Your MYSQL database name
@@ -72,7 +73,7 @@ Go to [this link](https://discord.com/oauth2/authorize/?permissions=4294967287&s
     * `RECAPTCHA_KEY` - Google recaptcha v2 key
     * `SECRET` - Discord bot secret
 3. Fill dashboard config in `/config/main_config.js`
-4. Add these redirect uris ([https://discord.com/developers/applications/<YOUR-BOT-ID\>/oauth2](https://discord.com/developers/applications))
+4. Add these redirect URI's ([https://discord.com/developers/applications/<YOUR-BOT-ID\>/oauth2](https://discord.com/developers/applications))
     * ```
        https://your-domain.com
        https://your-domain.com/callback
@@ -83,9 +84,12 @@ Go to [this link](https://discord.com/oauth2/authorize/?permissions=4294967287&s
 5. If everyting is ok go to your dashboard in browser (eg. to `localhost:8000`)
 
 **Additional info**
+> If you are hosting dashboard on [Replit](https://replit.com) please run this command to install Node.js 16x:
+> * `npm init -y && npm i --save-dev node@16 && npm config set prefix=$(pwd)/node_modules/node && export PATH=$(pwd)/node_modules/node/bin:$PATH`
+>
 > If you are hosting the site locally it is best to generate certificates for it. If you have them:
 > 1. Change `certs: false` & `localhost: false` values in `/config/main_config.js` to true
-> 2. Place the `server.cert` & `server.key` certs in `/dashboard/certs/` directory
+> 2. Place the `server.cert` & `server.key` certs in `/config/certs/` directory
 
 <br>
 
@@ -147,15 +151,30 @@ ANALYTICS=YOUR_GOOGLE_TRACKING_ID
 
 
 ## Tokens tutorials
-##### Discord Credentials
-> Soon!
+### Discord Credentials
+<details>
+ <summary>Click here to see Discord API Credentials tutorial!</summary>
+ Soon!
+</details>
 
-##### Amethyste Api
-> Soon!
+### Amethyste API
+<details>
+ <summary>Click here to see Amethyste API Credentials tutorial!</summary>
+ Soon!
+</details>
 
+### Analytics ID
+<details>
+ <summary>Click here to see Analytics ID tutorial!</summary>
+ Soon!
+</details>
 
-##### Analytics ID
-> Soon!
+### Re-Captcha Key
+<details>
+ <summary>Click here to see Re-Captcha Key tutorial!</summary>
+ Soon!
+</details>
+
 
 ## Contributors
 - [@r-kjha](https://github.com/r-kjha) (Emoji config support, Bug fixes, New features, Testing)
