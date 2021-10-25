@@ -119,7 +119,7 @@ module.exports = async (client) => {
    path: req.path,
    user: req.isAuthenticated() ? req.user : null,
    description: config.description,
-   domain: process.env.DOMAIN,
+   domain: app.locals.domain,
    twitter: config.twitter,
    url: res,
    title: client.username,
