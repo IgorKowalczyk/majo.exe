@@ -1,6 +1,6 @@
 <%- include("includes/head", { bot, user, path, title: "Contact" }) %>
 
-<link rel="stylesheet" type="text/css" href="<%= domain %>/css/contact.css" />
+<link rel="stylesheet" type="text/css" href="<%= secure_connection %><%= domain %>/css/contact.css" />
 <% if (user) { %>
 <script>let userID = "<%= user.id %>";</script>
 <% } %>
@@ -64,7 +64,7 @@
     <p>You must be logged in to contact us!</p>
    </div>
    <div class="container-contact-form-btn">
-    <a href="<%= domain %>/login" style="margin-left: 0" class="link-button green">Login</a>
+    <a href="<%= secure_connection %><%= domain %>/login" style="margin-left: 0" class="link-button green">Login</a>
    </div>
    <% } %>
   </form>
@@ -75,6 +75,6 @@
 <script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit" async defer></script>
 <% } %>
 
-<script src="<%= domain %>/js/contact.js"></script>
+<script src="<%= secure_connection %><%= domain %>/js/contact.js"></script>
 
 <%- include("includes/footer") %>
