@@ -23,7 +23,7 @@ module.exports = async (client, oldMessage, newMessage) => {
      .setDescription(`Message \`${oldMessage.id}\` was edited but I couldn't find what was updated...`)
      .addField("Message link", `https://discord.com/channels/${oldMessage.guild.id}/${oldMessage.channel.id}/${oldMessage.id}`)
      .setTimestamp()
-     .setFooter(message.guild.name, message.guild.iconURL());
+     .setFooter(oldMessage.guild.name, oldMessage.guild.iconURL());
     await log.send({ embeds: [event] });
    })();
   });
