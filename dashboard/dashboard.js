@@ -120,7 +120,7 @@ module.exports = async (client) => {
    user: req.isAuthenticated() ? req.user : null,
    description: config.description,
    domain: app.locals.domain,
-   secure_connection: (config.secure_connection == true) ? "https://" : "http://",
+   secure_connection: config.secure_connection == true ? "https://" : "http://",
    twitter: config.twitter,
    url: res,
    title: client.username,
