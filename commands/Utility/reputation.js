@@ -1,4 +1,3 @@
-
 const { MessageEmbed } = require("discord.js");
 const sql = require("../../utilities/database");
 const prefix = process.env.PREFIX;
@@ -17,19 +16,19 @@ module.exports = {
   try {
    const member = (await message.mentions.members.first()) || message.guild.members.cache.get(args[0]) || message.guild.members.cache.find((r) => r.user.username.toLowerCase().includes() === args.join(" ").toLocaleLowerCase()) || message.guild.members.cache.find((r) => r.displayName.toLowerCase().includes() === args.join(" ").toLocaleLowerCase());
    if (!member) {
-    return client.createError(message, `${client.bot_emojis.error} | You must mention vaild member!`)
+    return client.createError(message, `${client.bot_emojis.error} | You must mention vaild member!`);
    }
    if (args[0] === "+") {
     // Add reputation
     if (member == message.author || member.id == message.author.id) {
-     return client.createError(message, `${client.bot_emojis.error} | You can't assign reputation point to yourself!`)
+     return client.createError(message, `${client.bot_emojis.error} | You can't assign reputation point to yourself!`);
     }
     const key = message.author.id + "420$%@&$&@!$!@$@";
     const found = Timeout.get(key);
     if (found) {
      const timePassed = Date.now() - found;
      const timeLeft = timeout - timePassed;
-     return client.createError(message, `${client.bot_emojis.error} | ${message.author} You have to wait \`${ms(timeLeft)}\` before you can add reputaton again!`)
+     return client.createError(message, `${client.bot_emojis.error} | ${message.author} You have to wait \`${ms(timeLeft)}\` before you can add reputaton again!`);
     }
     const sqlquery = "SELECT rep AS res FROM reputation WHERE memberid = " + member.id;
     sql.query(sqlquery, function (error, results, fields) {
@@ -39,13 +38,13 @@ module.exports = {
       const update = "UPDATE reputation SET rep = " + sum + " WHERE memberid = " + member.id;
       sql.query(update, function (error, results2, fields) {
        if (error) console.log(error);
-       return client.createError(message, `${client.bot_emojis.success} | Success! Reputation added! ${member} now has \`${sum}\` reputation points!`, "GREEN")
+       return client.createError(message, `${client.bot_emojis.success} | Success! Reputation added! ${member} now has \`${sum}\` reputation points!`, "GREEN");
       });
      } else {
       const insert = "INSERT INTO `reputation` (`memberid`, `rep`) VALUES (" + member.id + "," + 1 + ");";
       sql.query(insert, function (error, results3, fields) {
        if (error) console.log(error);
-       return client.createError(message, `${client.bot_emojis.success} | Success! Reputation added! ${member} now has \`1\` reputation points!`, "GREEN")
+       return client.createError(message, `${client.bot_emojis.success} | Success! Reputation added! ${member} now has \`1\` reputation points!`, "GREEN");
       });
      }
     });
@@ -56,14 +55,14 @@ module.exports = {
    } else if (args[0] === "-") {
     // Remove reputation
     if (member == message.author || member.id == message.author.id) {
-     return client.createError(message, `${client.bot_emojis.error} | You can't assign reputation point to yourself!`)
+     return client.createError(message, `${client.bot_emojis.error} | You can't assign reputation point to yourself!`);
     }
     const key = message.author.id + "420$%@&$&@!$!@$@";
     const found = Timeout.get(key);
     if (found) {
      const timePassed = Date.now() - found;
      const timeLeft = timeout - timePassed;
-     return client.createError(message, `${client.bot_emojis.error} | ${message.author} You have to wait \`${ms(timeLeft)}\` before you can remove reputaton again!`)
+     return client.createError(message, `${client.bot_emojis.error} | ${message.author} You have to wait \`${ms(timeLeft)}\` before you can remove reputaton again!`);
     }
     const sqlquery = "SELECT rep AS res FROM reputation WHERE memberid = " + member.id;
     sql.query(sqlquery, function (error, results, fields) {
@@ -73,13 +72,13 @@ module.exports = {
       const update = "UPDATE reputation SET rep = " + sum + " WHERE memberid = " + member.id;
       sql.query(update, function (error, results2, fields) {
        if (error) console.log(error);
-       return client.createError(message, `${client.bot_emojis.success} | Success! Reputation removed! ${member} now has \`${sum}\` reputation points!`, "GREEN")
+       return client.createError(message, `${client.bot_emojis.success} | Success! Reputation removed! ${member} now has \`${sum}\` reputation points!`, "GREEN");
       });
      } else {
       const insert = "INSERT INTO `reputation` (`memberid`, `rep`) VALUES (" + member.id + "," + "-1" + ");";
       sql.query(insert, function (error, results3, fields) {
        if (error) console.log(error);
-       return client.createError(message, `${client.bot_emojis.success} | Success! Reputation removed! ${member} now has \`-1\` reputation points!`)
+       return client.createError(message, `${client.bot_emojis.success} | Success! Reputation removed! ${member} now has \`-1\` reputation points!`);
       });
      }
     });
@@ -106,7 +105,7 @@ module.exports = {
         size: 2048,
        })
       );
-     message.reply({embeds: [embed]});
+     message.reply({ embeds: [embed] });
     });
    }
   } catch (err) {
