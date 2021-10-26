@@ -27,7 +27,7 @@
   "canvacord": "^5.2.3",
   "canvas": "^2.8.0",
   "chalk": "^4.1.2",
-  "coloras": "^2.0.0",
+  "coloras": "^2.0.2",
   "common-tags": "^1.8.0",
   "discord-backup": "^3.0.1",
   "discord-giveaways": "^5.0.1",
