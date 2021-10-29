@@ -39,7 +39,7 @@ module.exports = {
      new MessageButton() // Prettier
       .setURL(`${client.config.status}`)
       .setEmoji(client.bot_emojis.status_online)
-      .setLabel("Check server status")
+      .setLabel("Status page")
       .setStyle("LINK")
     );
     message.reply({ embeds: [embed], components: [row] });
