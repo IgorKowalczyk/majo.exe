@@ -6,3 +6,5 @@ node_modules
 docs/
 dashboard/static/arc-sw.js
 database/
+package-lock.json
+package.json
