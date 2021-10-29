@@ -7,16 +7,19 @@ jobs:
  format:
   name: ✨ Prettier format
   runs-on: ubuntu-latest
+  strategy:
+   matrix:
+    node-version: [16.x]
   steps:
    - uses: actions/checkout@v2
      with:
       ref: ${{ github.head_ref }}
    - uses: actions/setup-node@v1
      with:
-      node-version: "12.x"
+      node-version: "16.x"
    - name: 🧱 Prettier format
      run: |
-      npm i prettier
+      npm i prettier -f
       npm run format
    - name: 🧱 Formatting check
      run: npm run format:check
