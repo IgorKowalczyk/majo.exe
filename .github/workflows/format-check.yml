@@ -15,5 +15,6 @@ jobs:
     node-version: [16.x]
   steps:
    - uses: actions/checkout@v1
-   - run: npm i prettier
+   - run: node -v
+   - run: npm i prettier --ignore-engines
    - run: npm run format:check
