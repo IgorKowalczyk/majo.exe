@@ -24,6 +24,3 @@ jobs:
      run: |
       npm i prettier -f
       npm run format:check
-
-
-
