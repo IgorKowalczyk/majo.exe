@@ -14,7 +14,16 @@ jobs:
    matrix:
     node-version: [16.x]
   steps:
-   - uses: actions/checkout@v1
-   - run: node -v
-   - run: npm i prettier -f
-   - run: npm run format:check
+   - uses: actions/checkout@v2
+     with:
+      ref: ${{ github.head_ref }}
+   - uses: actions/setup-node@v1
+     with:
+      node-version: "16.x"
+   - name: 🧱 Prettier format check
+     run: |
+      npm i prettier -f
+      npm run format:check
+
+
+
