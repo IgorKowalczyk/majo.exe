@@ -16,5 +16,5 @@ jobs:
   steps:
    - uses: actions/checkout@v1
    - run: node -v
-   - run: npm i prettier --ignore-engines
+   - run: npm i prettier -f
    - run: npm run format:check
