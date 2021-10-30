@@ -5,7 +5,7 @@ sql.query("CREATE TABLE IF NOT EXISTS `guild_settings` ( `guild_id` BIGINT(64) N
  if (error) throw new Error(error);
  console.log(chalk.bold(chalk.blue.bold("[SQL]")) + chalk.cyan.bold(" Fetched table ") + chalk.blue.underline('"guild_settings"') + chalk.cyan.bold(" | Status: ") + chalk.blue.bold("200"));
 });
-sql.query("CREATE TABLE IF NOT EXISTS `users` ( `user_id` INT(32) NOT NULL , `reputation` INT, `ban` INT(1), PRIMARY KEY(`user_id`))", function (error) {
+sql.query("CREATE TABLE IF NOT EXISTS `users` ( `user_id` INT(32) NOT NULL , `reputation` bigint(20), `ban` INT(1), PRIMARY KEY(`user_id`))", function (error) {
  if (error) throw new Error(error);
  console.log(chalk.bold(chalk.blue.bold("[SQL]")) + chalk.cyan.bold(" Fetched table ") + chalk.blue.underline('"users"') + chalk.cyan.bold(" | Status: ") + chalk.blue.bold("200"));
 });
