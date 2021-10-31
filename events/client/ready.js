@@ -2,6 +2,8 @@ const Discord = require("discord.js");
 const chalk = require("chalk");
 const { glob } = require("glob");
 const { promisify } = require("util");
+const ascii = require("ascii-table");
+const table = new ascii();
 
 module.exports = async (client) => {
  try {
@@ -107,7 +109,18 @@ module.exports = async (client) => {
   min = datelog.getMinutes();
   sec = datelog.getSeconds();
   console.log(chalk.bold(chalk.blue.bold(`[${client.user.username.toUpperCase().split(" ")[0]}]`)) + chalk.bold.cyan(" Generated at: " + chalk.blue.bold.underline(currentDate + "/" + month + "/" + year + " | " + hour + ":" + min + "." + sec)));
-  console.log(chalk.bold(chalk.blue.bold(`[${client.user.username.toUpperCase().split(" ")[0]}]`)) + chalk.bold.cyan(" Client connected! Logged to Discord as ") + chalk.bold.blue.underline(client.user.tag) + chalk.bold.cyan(" (ID: ") + chalk.bold.blue.underline(client.user.id) + chalk.bold.cyan(")!"));
+  table.addRow('Bot User:', client.user.tag);
+  table.addRow('Bot ID:', client.user.id);
+  table.addRow('Guild(s):', `${client.guilds.cache.size} Servers`)
+  table.addRow('Watching:', `${client.guilds.cache.reduce((a, b) => a + b.memberCount, 0)} Members`)
+  table.addRow('Commands:', `${client.commands.size}`);
+  table.addRow('Alliases:', `${client.aliases.size}`);
+  table.addRow('Prefix:', client.prefix);
+  table.addRow('Node.js:', process.version);
+  table.addRow('Plattform:', `${process.platform} ${process.arch}`);
+  table.addRow('Memory:', `${(process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2)}/${(process.memoryUsage().rss / 1024 / 1024).toFixed(2)} MB`);
+  console.log(table.toString());
+  console.log(chalk.bold(chalk.blue.bold(`[${client.user.username.toUpperCase().split(" ")[0]}]`)) + chalk.bold.cyan(" Client connected! Logged to Discord as ") + chalk.bold.blue.underline(client.user.tag));
   /* Status Webhook */
   if (!process.env.STATUS_WEBHOOK) throw new Error("[HOST] You need to provide Discord Status Webhook URL in .env - STATUS_WEBHOOK=YOUR_WEBHOOK_URL");
   const statuswebhook = new Discord.WebhookClient({ url: process.env.STATUS_WEBHOOK });
