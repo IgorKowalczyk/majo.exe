@@ -2,8 +2,7 @@ const Discord = require("discord.js");
 const chalk = require("chalk");
 const { glob } = require("glob");
 const { promisify } = require("util");
-const ascii = require("ascii-table");
-const table = new ascii();
+const moment = require("moment");
 
 module.exports = async (client) => {
  try {
@@ -101,25 +100,16 @@ module.exports = async (client) => {
   await client.application.commands.set(arrayOfSlashCommands);
   console.log(chalk.bold(chalk.blue.bold(`[${client.user.username.toUpperCase().split(" ")[0]}]`)) + chalk.cyan.bold(" Successfully loaded " + chalk.blue.underline(`${client.slashCommands.size}`) + " slash commands!"));
   console.log(chalk.bold(chalk.blue.bold(`[${client.user.username.toUpperCase().split(" ")[0]}]`)) + chalk.cyan.bold(" Successfully loaded " + chalk.blue.underline(`${client.commands.size}`) + " commands!"));
-  const datelog = new Date();
-  currentDate = datelog.getDate();
-  month = datelog.getMonth() + 1;
-  year = datelog.getFullYear();
-  hour = datelog.getHours();
-  min = datelog.getMinutes();
-  sec = datelog.getSeconds();
-  console.log(chalk.bold(chalk.blue.bold(`[${client.user.username.toUpperCase().split(" ")[0]}]`)) + chalk.bold.cyan(" Generated at: " + chalk.blue.bold.underline(currentDate + "/" + month + "/" + year + " | " + hour + ":" + min + "." + sec)));
-  table.addRow('Bot User:', client.user.tag);
-  table.addRow('Bot ID:', client.user.id);
-  table.addRow('Guild(s):', `${client.guilds.cache.size} Servers`)
-  table.addRow('Watching:', `${client.guilds.cache.reduce((a, b) => a + b.memberCount, 0)} Members`)
-  table.addRow('Commands:', `${client.commands.size}`);
-  table.addRow('Alliases:', `${client.aliases.size}`);
-  table.addRow('Prefix:', client.prefix);
-  table.addRow('Node.js:', process.version);
-  table.addRow('Plattform:', `${process.platform} ${process.arch}`);
-  table.addRow('Memory:', `${(process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2)}/${(process.memoryUsage().rss / 1024 / 1024).toFixed(2)} MB`);
-  console.log(table.toString());
+  console.log(chalk.bold.cyan("\n------------------------------\n"));
+  console.log(chalk.bold(chalk.blue.bold(`[${client.user.username.toUpperCase().split(" ")[0]}]`)) + chalk.bold.cyan(` Bot User: ${client.user.tag}`));
+  console.log(chalk.bold(chalk.blue.bold(`[${client.user.username.toUpperCase().split(" ")[0]}]`)) + chalk.bold.cyan(` Bot ID: ${client.user.id}`));
+  console.log(chalk.bold(chalk.blue.bold(`[${client.user.username.toUpperCase().split(" ")[0]}]`)) + chalk.bold.cyan(` Guild(s): ${client.guilds.cache.size}`));
+  console.log(chalk.bold(chalk.blue.bold(`[${client.user.username.toUpperCase().split(" ")[0]}]`)) + chalk.bold.cyan(` Watching: ${client.guilds.cache.reduce((a, b) => a + b.memberCount, 0)} members`));
+  console.log(chalk.bold(chalk.blue.bold(`[${client.user.username.toUpperCase().split(" ")[0]}]`)) + chalk.bold.cyan(` Prefix: ${client.prefix}`));
+  console.log(chalk.bold(chalk.blue.bold(`[${client.user.username.toUpperCase().split(" ")[0]}]`)) + chalk.bold.cyan(` Node.js: ${process.version}`));
+  console.log(chalk.bold(chalk.blue.bold(`[${client.user.username.toUpperCase().split(" ")[0]}]`)) + chalk.bold.cyan(` Plattform: ${process.platform} ${process.arch}`));
+  console.log(chalk.bold(chalk.blue.bold(`[${client.user.username.toUpperCase().split(" ")[0]}]`)) + chalk.bold.cyan(` Memory: ${(process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2)}/${(process.memoryUsage().rss / 1024 / 1024).toFixed(2)} MB`));
+  console.log(chalk.bold(chalk.blue.bold(`[${client.user.username.toUpperCase().split(" ")[0]}]`)) + chalk.bold.cyan(" Raport generated at: " + chalk.blue.bold.underline(moment().format('LLLL'))));
   console.log(chalk.bold(chalk.blue.bold(`[${client.user.username.toUpperCase().split(" ")[0]}]`)) + chalk.bold.cyan(" Client connected! Logged to Discord as ") + chalk.bold.blue.underline(client.user.tag));
   /* Status Webhook */
   if (!process.env.STATUS_WEBHOOK) throw new Error("[HOST] You need to provide Discord Status Webhook URL in .env - STATUS_WEBHOOK=YOUR_WEBHOOK_URL");
@@ -127,11 +117,11 @@ module.exports = async (client) => {
   const status = new Discord.MessageEmbed() // Prettier
    .setColor("GREEN")
    .setTimestamp()
-   .setAuthor(`${capitalize(client.user.username)} is online!`)
+   .setAuthor(`${capitalize(client.user.username)} is online!`, client.user.displayAvatarURL())
    .setThumbnail(client.user.displayAvatarURL()) // Prettier
-   .setDescription(`• Guilds: \`${client.guilds.cache.size}\`
-   • Members: \`${client.guilds.cache.reduce((a, g) => a + g.memberCount, 0)}\`
-   • Logged at: \`${datelog}\``);
+   .setDescription(`>>> Guilds: \`${client.guilds.cache.size} servers\`
+   Members: \`${client.guilds.cache.reduce((a, g) => a + g.memberCount, 0)} members\`
+   Logged at: <t:${moment(new Date()).unix()}>`);
   statuswebhook.send({
    // Prettier
    username: capitalize(client.user.username) + " Status",
