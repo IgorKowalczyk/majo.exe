@@ -15,6 +15,7 @@ module.exports = {
      • \`ADMINISTRATOR\`: ${message.guild.me.permissions.has("ADMINISTRATOR") ? `${client.bot_emojis.success}` : `${client.bot_emojis.error}`}\n
      • \`MANAGE_MESSAGES\`: ${message.guild.me.permissions.has("MANAGE_MESSAGES") ? `${client.bot_emojis.success} Passed!` : `${client.bot_emojis.error} Error!`}
      • \`MANAGE_CHANNELS\`: ${message.guild.me.permissions.has("MANAGE_CHANNELS") ? `${client.bot_emojis.success} Passed!` : `${client.bot_emojis.error} Error!`}
+     • \`MANAGE_ROLES\`: ${message.guild.me.permissions.has("MANAGE_ROLES") ? `${client.bot_emojis.success} Passed!` : `${client.bot_emojis.error} Error!`}
      • \`KICK_MEMBERS\`: ${message.guild.me.permissions.has("KICK_MEMBERS") ? `${client.bot_emojis.success} Passed!` : `${client.bot_emojis.error} Error!`}
      • \`BAN_MEMBERS\`: ${message.guild.me.permissions.has("BAN_MEMBERS") ? `${client.bot_emojis.success} Passed!` : `${client.bot_emojis.error} Error!`}
      • \`ADD_REACTIONS\`: ${message.guild.me.permissions.has("ADD_REACTIONS") ? `${client.bot_emojis.success} Passed!` : `${client.bot_emojis.error} Error!`}
@@ -30,7 +31,7 @@ module.exports = {
      `
     )
     .setTimestamp()
-    .setColor("RANDOM")
+    .setColor("#4f545c")
     .setFooter(
      `Requested by ${message.author.username}`,
      message.author.displayAvatarURL({
