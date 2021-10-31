@@ -27,7 +27,7 @@ module.exports = {
    nsfw: client.bot_emojis.smirk, // https://www.youtube.com/watch?v=YMm2gv7TStc&t=37s ...
    giveaway: client.bot_emojis.giveaway,
    setup: client.bot_emojis.screw_that,
-   anime: client.bot_emojis.flower,
+   social: client.bot_emojis.rocket,
   };
   if (!args[0]) {
    let ccate = [];

@@ -5,7 +5,7 @@ module.exports = {
  name: "anime",
  aliases: ["animesearch"],
  description: "Search anime list",
- category: "Anime",
+ category: "Fun",
  usage: "anime <name>",
  run: async (client, message, args) => {
   try {

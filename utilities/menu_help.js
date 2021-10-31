@@ -22,7 +22,7 @@ const create_mh = (array) => {
   nsfw: emojis.smirk, // https://www.youtube.com/watch?v=YMm2gv7TStc&t=37s ...
   giveaway: emojis.giveaway,
   setup: emojis.screw_that,
-  anime: emojis.flower,
+  social: emojis.rocket,
  };
 
  array.forEach((cca) => {
