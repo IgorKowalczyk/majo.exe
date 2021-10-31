@@ -1,4 +1,4 @@
-const Discord = require("discord.js");
+const { MessageEmbed, WebhookClient } = require("discord.js");
 const chalk = require("chalk");
 const { glob } = require("glob");
 const { promisify } = require("util");
@@ -32,8 +32,8 @@ module.exports = async (client) => {
   console.log(chalk.bold(chalk.blue.bold(`[${client.user.username.toUpperCase().split(" ")[0]}]`)) + chalk.bold.cyan(" Raport generated at: " + chalk.blue.bold.underline(moment().format('LLLL'))));
   console.log(chalk.bold(chalk.blue.bold(`[${client.user.username.toUpperCase().split(" ")[0]}]`)) + chalk.bold.cyan(" Client connected! Logged to Discord as ") + chalk.bold.blue.underline(client.user.tag));
   if (!process.env.STATUS_WEBHOOK) throw new Error("[HOST] You need to provide Discord Status Webhook URL in .env - STATUS_WEBHOOK=YOUR_WEBHOOK_URL");
-  const statuswebhook = new Discord.WebhookClient({ url: process.env.STATUS_WEBHOOK });
-  const status = new Discord.MessageEmbed() // Prettier
+  const statuswebhook = new WebhookClient({ url: process.env.STATUS_WEBHOOK });
+  const status = new MessageEmbed() // Prettier
    .setColor("GREEN")
    .setTimestamp()
    .setAuthor(`${capitalize(client.user.username)} is online!`, client.user.displayAvatarURL())
