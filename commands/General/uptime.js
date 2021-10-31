@@ -22,7 +22,7 @@ module.exports = {
      })
     )
     .addField(`${client.bot_emojis.stopwatch} Uptime`, `\`\`\`${duration}\`\`\``)
-    .addField(`${client.bot_emojis.rocket} Date Launched`, `\`\`\`${moment(timestamp).format("LLLL")}\`\`\``)
+    .addField(`${client.bot_emojis.rocket} Date Launched`, `<t:${moment(new Date()).unix()}> (<t:${moment(new Date()).unix()}:R>)`)
     .setTimestamp()
     .setFooter(
      `Requested by ${message.author.username}`,

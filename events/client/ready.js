@@ -9,6 +9,44 @@ module.exports = async (client) => {
   function capitalize(string) {
    return string.charAt(0).toUpperCase() + string.slice(1);
   }
+  console.log(chalk.bold(chalk.blue.bold(`[${client.user.username.toUpperCase().split(" ")[0]}]`)) + chalk.cyan.bold(" Loading slash commands... Please wait"));
+  const globPromise = promisify(glob);
+  const slashCommands = await globPromise(`${process.cwd()}/scommands/*/*.js`);
+  const arrayOfSlashCommands = [];
+  slashCommands.map((value) => {
+   const file = require(value);
+   client.slashCommands.set(file.name, file);
+   arrayOfSlashCommands.push(file);
+  });
+  await client.application.commands.set(arrayOfSlashCommands);
+  console.log(chalk.bold(chalk.blue.bold(`[${client.user.username.toUpperCase().split(" ")[0]}]`)) + chalk.cyan.bold(" Successfully loaded " + chalk.blue.underline(`${client.slashCommands.size}`) + " slash commands!"));
+  console.log(chalk.bold(chalk.blue.bold(`[${client.user.username.toUpperCase().split(" ")[0]}]`)) + chalk.cyan.bold(" Successfully loaded " + chalk.blue.underline(`${client.commands.size}`) + " commands!"));
+  console.log(chalk.bold(chalk.blue.bold(`[${client.user.username.toUpperCase().split(" ")[0]}]`)) + chalk.bold.cyan(` Bot User: ${client.user.tag}`));
+  console.log(chalk.bold(chalk.blue.bold(`[${client.user.username.toUpperCase().split(" ")[0]}]`)) + chalk.bold.cyan(` Bot ID: ${client.user.id}`));
+  console.log(chalk.bold(chalk.blue.bold(`[${client.user.username.toUpperCase().split(" ")[0]}]`)) + chalk.bold.cyan(` Guild(s): ${client.guilds.cache.size}`));
+  console.log(chalk.bold(chalk.blue.bold(`[${client.user.username.toUpperCase().split(" ")[0]}]`)) + chalk.bold.cyan(` Watching: ${client.guilds.cache.reduce((a, b) => a + b.memberCount, 0)} members`));
+  console.log(chalk.bold(chalk.blue.bold(`[${client.user.username.toUpperCase().split(" ")[0]}]`)) + chalk.bold.cyan(` Prefix: ${client.prefix}`));
+  console.log(chalk.bold(chalk.blue.bold(`[${client.user.username.toUpperCase().split(" ")[0]}]`)) + chalk.bold.cyan(` Node.js: ${process.version}`));
+  console.log(chalk.bold(chalk.blue.bold(`[${client.user.username.toUpperCase().split(" ")[0]}]`)) + chalk.bold.cyan(` Plattform: ${process.platform} ${process.arch}`));
+  console.log(chalk.bold(chalk.blue.bold(`[${client.user.username.toUpperCase().split(" ")[0]}]`)) + chalk.bold.cyan(` Memory: ${(process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2)}/${(process.memoryUsage().rss / 1024 / 1024).toFixed(2)} MB`));
+  console.log(chalk.bold(chalk.blue.bold(`[${client.user.username.toUpperCase().split(" ")[0]}]`)) + chalk.bold.cyan(" Raport generated at: " + chalk.blue.bold.underline(moment().format('LLLL'))));
+  console.log(chalk.bold(chalk.blue.bold(`[${client.user.username.toUpperCase().split(" ")[0]}]`)) + chalk.bold.cyan(" Client connected! Logged to Discord as ") + chalk.bold.blue.underline(client.user.tag));
+  if (!process.env.STATUS_WEBHOOK) throw new Error("[HOST] You need to provide Discord Status Webhook URL in .env - STATUS_WEBHOOK=YOUR_WEBHOOK_URL");
+  const statuswebhook = new Discord.WebhookClient({ url: process.env.STATUS_WEBHOOK });
+  const status = new Discord.MessageEmbed() // Prettier
+   .setColor("GREEN")
+   .setTimestamp()
+   .setAuthor(`${capitalize(client.user.username)} is online!`, client.user.displayAvatarURL())
+   .setThumbnail(client.user.displayAvatarURL()) // Prettier
+   .setDescription(`>>> Guilds: \`${client.guilds.cache.size} servers\`
+   Members: \`${client.guilds.cache.reduce((a, g) => a + g.memberCount, 0)} members\`
+   Logged at: <t:${moment(new Date()).unix()}>`);
+  statuswebhook.send({
+   // Prettier
+   username: capitalize(client.user.username) + " Status",
+   avatarURL: client.user.displayAvatarURL(),
+   embeds: [status],
+  });
   setInterval(() => {
    const emojis = ["😆", "😄", "😎", "😂", "🥳", "😘", "😜", "😁", "😉", "🥰", "😍", "🤯", "🤩", "😇", "😊", "☺️", "😌", "😋", "😳", "😚", "😏", "😱", "🥵", "😶‍🌫️", "🤕", "😴", "( ͡° ͜ʖ ͡°)"]; // Smirk is here becase of Luna_CatArt#4514 idea XD
    const emoji = emojis[Math.floor(Math.random() * emojis.length)];
@@ -88,46 +126,6 @@ module.exports = async (client) => {
    }
    if (client.config.advanved_logging == true) console.log(chalk.bold(chalk.blue.bold(`[${client.user.username.toUpperCase().split(" ")[0]}]`)) + chalk.cyan.bold(" Successfully changed client status"));
   }, 10000);
-
-  const globPromise = promisify(glob);
-  const slashCommands = await globPromise(`${process.cwd()}/scommands/*/*.js`);
-  const arrayOfSlashCommands = [];
-  slashCommands.map((value) => {
-   const file = require(value);
-   client.slashCommands.set(file.name, file);
-   arrayOfSlashCommands.push(file);
-  });
-  await client.application.commands.set(arrayOfSlashCommands);
-  console.log(chalk.bold(chalk.blue.bold(`[${client.user.username.toUpperCase().split(" ")[0]}]`)) + chalk.cyan.bold(" Successfully loaded " + chalk.blue.underline(`${client.slashCommands.size}`) + " slash commands!"));
-  console.log(chalk.bold(chalk.blue.bold(`[${client.user.username.toUpperCase().split(" ")[0]}]`)) + chalk.cyan.bold(" Successfully loaded " + chalk.blue.underline(`${client.commands.size}`) + " commands!"));
-  console.log(chalk.bold.cyan("\n------------------------------\n"));
-  console.log(chalk.bold(chalk.blue.bold(`[${client.user.username.toUpperCase().split(" ")[0]}]`)) + chalk.bold.cyan(` Bot User: ${client.user.tag}`));
-  console.log(chalk.bold(chalk.blue.bold(`[${client.user.username.toUpperCase().split(" ")[0]}]`)) + chalk.bold.cyan(` Bot ID: ${client.user.id}`));
-  console.log(chalk.bold(chalk.blue.bold(`[${client.user.username.toUpperCase().split(" ")[0]}]`)) + chalk.bold.cyan(` Guild(s): ${client.guilds.cache.size}`));
-  console.log(chalk.bold(chalk.blue.bold(`[${client.user.username.toUpperCase().split(" ")[0]}]`)) + chalk.bold.cyan(` Watching: ${client.guilds.cache.reduce((a, b) => a + b.memberCount, 0)} members`));
-  console.log(chalk.bold(chalk.blue.bold(`[${client.user.username.toUpperCase().split(" ")[0]}]`)) + chalk.bold.cyan(` Prefix: ${client.prefix}`));
-  console.log(chalk.bold(chalk.blue.bold(`[${client.user.username.toUpperCase().split(" ")[0]}]`)) + chalk.bold.cyan(` Node.js: ${process.version}`));
-  console.log(chalk.bold(chalk.blue.bold(`[${client.user.username.toUpperCase().split(" ")[0]}]`)) + chalk.bold.cyan(` Plattform: ${process.platform} ${process.arch}`));
-  console.log(chalk.bold(chalk.blue.bold(`[${client.user.username.toUpperCase().split(" ")[0]}]`)) + chalk.bold.cyan(` Memory: ${(process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2)}/${(process.memoryUsage().rss / 1024 / 1024).toFixed(2)} MB`));
-  console.log(chalk.bold(chalk.blue.bold(`[${client.user.username.toUpperCase().split(" ")[0]}]`)) + chalk.bold.cyan(" Raport generated at: " + chalk.blue.bold.underline(moment().format('LLLL'))));
-  console.log(chalk.bold(chalk.blue.bold(`[${client.user.username.toUpperCase().split(" ")[0]}]`)) + chalk.bold.cyan(" Client connected! Logged to Discord as ") + chalk.bold.blue.underline(client.user.tag));
-  /* Status Webhook */
-  if (!process.env.STATUS_WEBHOOK) throw new Error("[HOST] You need to provide Discord Status Webhook URL in .env - STATUS_WEBHOOK=YOUR_WEBHOOK_URL");
-  const statuswebhook = new Discord.WebhookClient({ url: process.env.STATUS_WEBHOOK });
-  const status = new Discord.MessageEmbed() // Prettier
-   .setColor("GREEN")
-   .setTimestamp()
-   .setAuthor(`${capitalize(client.user.username)} is online!`, client.user.displayAvatarURL())
-   .setThumbnail(client.user.displayAvatarURL()) // Prettier
-   .setDescription(`>>> Guilds: \`${client.guilds.cache.size} servers\`
-   Members: \`${client.guilds.cache.reduce((a, g) => a + g.memberCount, 0)} members\`
-   Logged at: <t:${moment(new Date()).unix()}>`);
-  statuswebhook.send({
-   // Prettier
-   username: capitalize(client.user.username) + " Status",
-   avatarURL: client.user.displayAvatarURL(),
-   embeds: [status],
-  });
  } catch (err) {
   console.log(err);
  }
