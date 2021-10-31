@@ -13,7 +13,6 @@
   "test": "jest --passWithNoTests"
  },
  "dependencies": {
-  "@discordjs/opus": "^0.6.0",
   "@iamtraction/google-translate": "^1.1.2",
   "@mapbox/node-pre-gyp": "^1.0.5",
   "@quick.eco/mysql": "^1.0.2",
