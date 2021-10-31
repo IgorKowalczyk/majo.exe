@@ -33,7 +33,7 @@ module.exports = {
      .setImage(body.url)
      .setURL(body.url)
      .setColor("RANDOM")
-     .setDescription(user.toString() + " got a poke from " + message.author.toString())
+     .setDescription(`>>> ${user.toString()} got a poke from ${message.author}`)
      .setFooter(
       "Requested by " + `${message.author.username}` + " • (rip)",
       message.author.displayAvatarURL({

@@ -19,7 +19,7 @@ module.exports = {
    (async () => {
     const response = await fetch("https://nekos.life/api/v2/img/tickle");
     const body = await response.json();
-    const embed = await new MessageEmbed() // Prettier
+    const embed = new MessageEmbed() // Prettier
      .setColor("RANDOM")
      .setTitle(member.user.username + " just got tickled by " + message.author.username)
      .setFooter(

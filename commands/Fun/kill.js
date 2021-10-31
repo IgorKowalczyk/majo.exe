@@ -42,7 +42,7 @@ module.exports = {
       })
      )
      .setImage(body.url)
-     .setDescription(change2);
+     .setDescription(`>>> ${change2}`);
     message.reply({ embeds: [embed] });
    })();
   } catch (err) {
