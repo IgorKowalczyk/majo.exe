@@ -17,7 +17,7 @@ module.exports = {
    let reason = `${args.join(" ") || "No reason provided!"} | Nuked by: ${message.author.tag}`;
    if (reason.length > 1024) reason = reason.slice(0, 1021) + "...";
    if (!message.channel.deletable) {
-    return client.createError(message, `${client.bot_emojis.error} | This channel cannot be nuked!`);
+    return client.createError(message, `${client.bot_emojis.error} | This channel cannot be nuked!\n\n**Usage:** \`${client.prefix} add-role <nuke> [channel]\``);
    }
    const wait = new MessageEmbed() // Prettier
     .setColor("#5865f2")

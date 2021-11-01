@@ -16,12 +16,12 @@ module.exports = {
   try {
    const member = (await message.mentions.members.first()) || message.guild.members.cache.get(args[0]) || message.guild.members.cache.find((r) => r.user.username.toLowerCase().includes() === args.join(" ").toLocaleLowerCase()) || message.guild.members.cache.find((r) => r.displayName.toLowerCase().includes() === args.join(" ").toLocaleLowerCase());
    if (!member) {
-    return client.createError(message, `${client.bot_emojis.error} | You must mention vaild member!`);
+    return client.createError(message, `${client.bot_emojis.error} | You must mention vaild member!\n\n**Usage:** \`${client.prefix} reputation [+ / add or - / remove] <user>\``);
    }
    if (args[0] === "+") {
     // Add reputation
     if (member == message.author || member.id == message.author.id) {
-     return client.createError(message, `${client.bot_emojis.error} | You can't assign reputation point to yourself!`);
+     return client.createError(message, `${client.bot_emojis.error} | You can't assign reputation point to yourself!\n\n**Usage:** \`${client.prefix} reputation [+ / add or - / remove] <user>\``);
     }
     const key = message.author.id + "420$%@&$&@!$!@$@";
     const found = Timeout.get(key);
@@ -55,7 +55,7 @@ module.exports = {
    } else if (args[0] === "-") {
     // Remove reputation
     if (member == message.author || member.id == message.author.id) {
-     return client.createError(message, `${client.bot_emojis.error} | You can't assign reputation point to yourself!`);
+     return client.createError(message, `${client.bot_emojis.error} | You can't assign reputation point to yourself!\n\n**Usage:** \`${client.prefix} reputation [+ / add or - / remove] <user>\``);
     }
     const key = message.author.id + "420$%@&$&@!$!@$@";
     const found = Timeout.get(key);

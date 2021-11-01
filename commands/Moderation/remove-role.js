@@ -19,10 +19,10 @@ module.exports = {
    let reason = `${args.join(" ") || "No reason provided!"} | Role removed by: ${message.author.tag}`;
    if (reason.length > 1024) reason = reason.slice(0, 1021) + "...";
    if (!mention) {
-    return client.createError(message, `${client.bot_emojis.error} | You must mention member to remove role!`);
+    return client.createError(message, `${client.bot_emojis.error} | You must mention member to remove role!\n\n**Usage:** \`${client.prefix} remove-role <member> <role> [reason]\``);
    }
    if (!role) {
-    return client.createError(message, `${client.bot_emojis.error} | You must specify role to remove!`);
+    return client.createError(message, `${client.bot_emojis.error} | You must specify role to remove!\n\n**Usage:** \`${client.prefix} remove-role <member> <role> [reason]\``);
    }
    await mention.roles.remove(role, {
     reason: reason,
