@@ -23,19 +23,13 @@ module.exports = {
     const response = await fetch("https://nekos.life/api/v2/img/cuddle");
     const body = await response.json();
     const embed = new MessageEmbed() // Prettier
-     .setTitle(
-      user.username + " Just got a hug from " + message.author.username,
-      message.guild.iconURL({
-       dynamic: true,
-       format: "png",
-      })
-     )
+     .setTitle(`${user.username} just got a hug from ${message.author.username}`)
      .setImage(body.url)
      .setURL(body.url)
      .setColor("RANDOM")
-     .setDescription(user.toString() + " got a hug from " + message.author.toString())
+     .setDescription(`> ${user} got a hug from ${message.author}${(Math.floor(Math.random() * 100 + 1) == 1) ? "\n||I want someone I can hug...||" : ""}`)
      .setFooter(
-      "Requested by " + `${message.author.username}` + " • (this is so cute ＼( ^o^ )／)",
+      `Requested by ${message.author.username} • (this is so cute ._.)`,
       message.author.displayAvatarURL({
        dynamic: true,
        format: "png",

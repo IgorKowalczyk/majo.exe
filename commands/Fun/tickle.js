@@ -21,9 +21,9 @@ module.exports = {
     const body = await response.json();
     const embed = new MessageEmbed() // Prettier
      .setColor("RANDOM")
-     .setTitle(member.user.username + " just got tickled by " + message.author.username)
+     .setTitle(`${member.user.username} just got tickled by ${message.author.username}`)
      .setFooter(
-      "._. | Requested by " + `${message.author.username}`,
+      `Requested by ${message.author.username} • ._.`,
       message.author.displayAvatarURL({
        dynamic: true,
        format: "png",

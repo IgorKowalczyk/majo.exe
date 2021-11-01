@@ -26,7 +26,7 @@ module.exports = {
     const embed = await new MessageEmbed() // Prettier
      .setColor("RANDOM")
      .setAuthor(
-      "Tombstone of " + member.displayName + "!",
+      `Tombstone of ${member.displayName}!`,
       message.author.displayAvatarURL({
        dynamic: true,
        format: "png",
@@ -42,7 +42,7 @@ module.exports = {
       })
      )
      .setImage(body.url)
-     .setDescription(`>>> ${change2}`);
+     .setDescription(`>>> ${change2}${(Math.floor(Math.random() * 100 + 1) == 1) ? "\n||I want to kill myself||" : ""}`);
     message.reply({ embeds: [embed] });
    })();
   } catch (err) {

@@ -23,19 +23,13 @@ module.exports = {
     const response = await fetch("https://nekos.life/api/v2/img/poke");
     const body = await response.json();
     const embed = new MessageEmbed() // Prettier
-     .setTitle(
-      user.username + " just got poked by " + message.author.username,
-      message.guild.iconURL({
-       dynamic: true,
-       format: "png",
-      })
-     )
+     .setTitle(`${user.username} just got poked by ${message.author.username}`)
      .setImage(body.url)
      .setURL(body.url)
      .setColor("RANDOM")
-     .setDescription(`>>> ${user.toString()} got a poke from ${message.author}`)
+     .setDescription(`>>> ${user.toString()} got a poke from ${message.author}${(Math.floor(Math.random() * 100 + 1) == 1) ? "\n||I want someone I can poke...||" : ""}`)
      .setFooter(
-      "Requested by " + `${message.author.username}` + " • (rip)",
+      `Requested by ${message.author.username} • rip ;~;`,
       message.author.displayAvatarURL({
        dynamic: true,
        format: "png",
