@@ -1,6 +1,5 @@
 const { glob } = require("glob");
 const { promisify } = require("util");
-const { Client } = require("discord.js");
 const globPromise = promisify(glob);
 const ascii = require("ascii-table");
 const chalk = require("chalk");
