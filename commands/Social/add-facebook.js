@@ -8,12 +8,7 @@ module.exports = {
  usage: "add-facebook [Facebook username/id]",
  run: async (client, message, args) => {
   try {
-   const embed = new MessageEmbed()
-    .setTitle("Soon!")
-    .setColor("GREEN")
-    .setDescription("> WIP")
-    .setImage("https://media4.giphy.com/media/MHVc6pPqfiUnK/giphy.gif")
-    .setTimestamp();
+   const embed = new MessageEmbed().setTitle("Soon!").setColor("GREEN").setDescription("> WIP").setImage("https://media4.giphy.com/media/MHVc6pPqfiUnK/giphy.gif").setTimestamp();
    message.reply({ embeds: [embed] });
   } catch (err) {
    console.log(err);

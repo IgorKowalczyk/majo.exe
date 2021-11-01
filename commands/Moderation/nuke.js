@@ -20,8 +20,8 @@ module.exports = {
     return client.createError(message, `${client.bot_emojis.error} | This channel cannot be nuked!`);
    }
    const wait = new MessageEmbed() // Prettier
-   .setColor("#5865f2")
-   .setDescription(`${client.bot_emojis.loading} | Please wait... I'm nuking the channel`);
+    .setColor("#5865f2")
+    .setDescription(`${client.bot_emojis.loading} | Please wait... I'm nuking the channel`);
    await message.reply({ embeds: [wait] });
    let newchannel = await message.channel.clone();
    await message.channel.delete();
