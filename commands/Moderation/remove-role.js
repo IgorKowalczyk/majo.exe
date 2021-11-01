@@ -5,7 +5,7 @@ module.exports = {
  aliases: ["role-remove", "removerole", "roleremove"],
  description: "Remove role from member",
  category: "Moderation",
- usage: "remove-role <member> <role>",
+ usage: "remove-role <member> <role> [reason]",
  run: async (client, message, args) => {
   try {
    const mention = (await message.mentions.members.first()) || message.guild.members.cache.get(args[0]) || message.guild.members.cache.find((r) => r.user.username.toLowerCase().includes() === args.join(" ").toLocaleLowerCase()) || message.guild.members.cache.find((r) => r.displayName.toLowerCase().includes() === args.join(" ").toLocaleLowerCase());
