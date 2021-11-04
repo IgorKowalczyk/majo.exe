@@ -20,14 +20,15 @@ module.exports = {
     const response = await fetch("https://nekos.life/api/v2/img/kiss");
     const body = await response.json();
     const embed = new MessageEmbed() // Prettier
-     .setAuthor(`${user.displayName} just got a kiss from ${message.author.username}`,
+     .setAuthor(
+      `${user.displayName} just got a kiss from ${message.author.username}`,
       message.author.displayAvatarURL({
        dynamic: true,
        format: "png",
        size: 2048,
       })
      )
-     .setDescription(`>>> So sweeet :3${(Math.floor(Math.random() * 100 + 1) == 1) ? "\n||I want someone I can kiss...||" : ""}`)
+     .setDescription(`>>> So sweeet :3${Math.floor(Math.random() * 100 + 1) == 1 ? "\n||I want someone I can kiss...||" : ""}`)
      .setImage(body.url)
      .setColor("RANDOM")
      .setFooter(

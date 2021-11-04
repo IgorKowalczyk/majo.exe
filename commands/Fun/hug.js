@@ -27,7 +27,7 @@ module.exports = {
      .setImage(body.url)
      .setURL(body.url)
      .setColor("RANDOM")
-     .setDescription(`> ${user} got a hug from ${message.author}${(Math.floor(Math.random() * 100 + 1) == 1) ? "\n||I want someone I can hug...||" : ""}`)
+     .setDescription(`> ${user} got a hug from ${message.author}${Math.floor(Math.random() * 100 + 1) == 1 ? "\n||I want someone I can hug...||" : ""}`)
      .setFooter(
       `Requested by ${message.author.username} • (this is so cute ._.)`,
       message.author.displayAvatarURL({

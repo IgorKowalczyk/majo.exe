@@ -42,7 +42,7 @@ module.exports = {
       })
      )
      .setImage(body.url)
-     .setDescription(`>>> ${change2}${(Math.floor(Math.random() * 100 + 1) == 1) ? "\n||I want to kill myself||" : ""}`);
+     .setDescription(`>>> ${change2}${Math.floor(Math.random() * 100 + 1) == 1 ? "\n||I want to kill myself||" : ""}`);
     message.reply({ embeds: [embed] });
    })();
   } catch (err) {

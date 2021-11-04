@@ -27,7 +27,7 @@ module.exports = {
      .setImage(body.url)
      .setURL(body.url)
      .setColor("RANDOM")
-     .setDescription(`>>> ${user.toString()} got a poke from ${message.author}${(Math.floor(Math.random() * 100 + 1) == 1) ? "\n||I want someone I can poke...||" : ""}`)
+     .setDescription(`>>> ${user.toString()} got a poke from ${message.author}${Math.floor(Math.random() * 100 + 1) == 1 ? "\n||I want someone I can poke...||" : ""}`)
      .setFooter(
       `Requested by ${message.author.username} • rip ;~;`,
       message.author.displayAvatarURL({
