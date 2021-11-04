@@ -51,5 +51,5 @@ module.exports = {
  cookies: process.env.COOKIES,
  image: "banner.jpg",
  verification: "-wuCsk4qLolXEPSUTGX7YBxywcyNNf5HS2ClzgEWxNY",
- arc_token: "mW9UikUT",
+ arc_token: "oFnnmBwr",
 };
