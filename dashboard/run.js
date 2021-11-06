@@ -13,7 +13,7 @@ const chalk = require("chalk");
 
 client.on("ready", () => {
  if (process.env.DASHBOARD == "true") {
-  console.log(chalk.bold(chalk.blue.bold("[SQL]")) + chalk.cyan.bold(" Getting dashboard config file..."));
+  console.log(chalk.bold(chalk.blue.bold("[MAJO]")) + chalk.cyan.bold(" Getting dashboard config file..."));
   client.commands = new Discord.Collection();
   client.aliases = new Discord.Collection();
   require(`../handlers/dashboard-handler`)(client);
