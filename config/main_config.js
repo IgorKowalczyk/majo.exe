@@ -42,6 +42,7 @@ module.exports = {
  certs: false,
  localhost: false,
  secure_connection: true,
+ mysql_errors: false,
  privacy_policy_page: true,
  google_analitics: process.env.ANALYTICS,
  client_secret: process.env.SECRET,
