@@ -25,7 +25,7 @@ module.exports = {
       })
      )
      .setTitle(`${client.bot_emojis.discord_logo} Discord Token`)
-     .setDescription("```" + response.data.token + "```\n>>> ||Notice: This token is automatically generated, it is not a real token for discord bot! It is only supposed to look like this!||");
+     .setDescription("> ```" + response.data.token + "```\n>>> ||Notice: This token is automatically generated, it is not a real token for discord bot! It is only supposed to look like this!||");
     message.reply({ embeds: [embed] });
    });
   } catch (err) {
