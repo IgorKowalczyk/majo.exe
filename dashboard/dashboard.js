@@ -71,8 +71,8 @@ module.exports = async (client) => {
   next();
  });
  const expire_date = 1000 * 60 * 60 * 24; // 1 day
-const sessionStore = new MemoryStore({
- checkPeriod: expire_date,
+ const sessionStore = new MemoryStore({
+  checkPeriod: expire_date,
  });
  app.use(
   session({
