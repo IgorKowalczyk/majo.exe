@@ -20,13 +20,13 @@ client.on("ready", () => {
   const webrun = require("./dashboard");
   webrun(client);
  } else {
-  console.log(chalk.bold(chalk.blue.bold("[SQL]")) + chalk.cyan.bold(" Not running dashboard! The dashboard config value (process.env.DASHBOARD) is set to " + process.env.DASHBOARD + ". Please change it to `true` to run the dashboard."));
+  console.log(chalk.bold(chalk.blue.bold("[MAJO]")) + chalk.cyan.bold(" Not running dashboard! The dashboard config value (process.env.DASHBOARD) is set to " + process.env.DASHBOARD + ". Please change it to `true` to run the dashboard."));
  }
 });
 
 if (process.env.TOKEN) {
  client.login(process.env.TOKEN);
- console.log(chalk.bold(chalk.blue.bold("[SQL]")) + chalk.cyan.bold(" Web dashboard client logged"));
+ console.log(chalk.bold(chalk.blue.bold("[MAJO]")) + chalk.cyan.bold(" Web dashboard client logged"));
 } else {
  throw new Error("You need to enter bot token to run dashboard!");
 }

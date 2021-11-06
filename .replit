@@ -1,2 +1,2 @@
-run = "npm run start"
+run = "npm run dashboard"
 language = "nodejs"

@@ -12,12 +12,9 @@ const bodyParser = require("body-parser");
 const fs = require("fs");
 const { readdirSync } = require("fs");
 const app = express();
-const database = require("../utilities/database");
 const session = require("express-session");
-const MySQLStore = require("express-mysql-session")(session);
-const https = require("https");
-const child_process = require("child_process");
 const MemoryStore = require("memorystore")(session);
+const https = require("https");
 const rate_limit = require("express-rate-limit");
 const helmet = require("helmet");
 const { constants } = require("crypto");
@@ -41,7 +38,6 @@ module.exports = async (client) => {
  const templateDir = path.resolve(`${dataDir}${path.sep}templates`);
  passport.serializeUser((user, done) => done(null, user));
  passport.deserializeUser((obj, done) => done(null, obj));
- const sessionStore = new MySQLStore({}, database);
  passport.use(
   new Strategy(
    {
@@ -59,7 +55,6 @@ module.exports = async (client) => {
   )
  );
  app.use(express.static("dashboard/static"));
-
  app.use(helmet.dnsPrefetchControl());
  app.use(helmet.expectCt());
  app.use(helmet.frameguard());
@@ -75,14 +70,16 @@ module.exports = async (client) => {
   res.setHeader("Access-Control-Allow-Origin", "*");
   next();
  });
-
- const cookieExpire = 1000 * 60 * 60 * 24 * 7; // 1 week
+ const expire_date = 1000 * 60 * 60 * 24; // 1 day
+const sessionStore = new MemoryStore({
+ checkPeriod: expire_date,
+ });
  app.use(
   session({
    cookie: {
-    expires: cookieExpire,
+    expires: expire_date,
     secure: false,
-    maxAge: cookieExpire,
+    maxAge: expire_date,
    },
    secret: process.env.SESSION_SECRET,
    store: sessionStore,
@@ -90,7 +87,7 @@ module.exports = async (client) => {
    saveUninitialized: false,
   })
  );
- if (config.localhost == false) {
+ if (config.secure_connection == true) {
   app.enable("trust proxy");
   app.use((req, res, next) => {
    req.secure ? next() : res.redirect("https://" + req.headers.host + req.url);
