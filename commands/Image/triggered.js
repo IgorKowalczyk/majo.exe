@@ -3,7 +3,7 @@ const canvacord = require("canvacord");
 
 module.exports = {
  name: "triggered",
- aliases: ["tgd"],
+ aliases: ["tgd", "trigger"],
  description: "Returns a triggered image",
  category: "Image",
  usage: "triggered [user mention, user id, user name]",
