@@ -1,5 +1,6 @@
 const { MessageSelectMenu, MessageActionRow } = require("discord.js");
 const emojis = require("../config/emojis_config");
+const descriptions_config = require("../config/categories_config");
 function capitalize(string) {
  return string.charAt(0).toUpperCase() + string.slice(1);
 }
@@ -24,7 +25,20 @@ const create_mh = (array) => {
   setup: emojis.screw_that,
   social: emojis.rocket,
  };
-
+ const descriptions = {
+  general: descriptions_config.general,
+  moderation: descriptions_config.moderation,
+  fun: descriptions_config.fun,
+  music: descriptions_config.music,
+  economy: descriptions_config.economy,
+  utility: descriptions_config.utility,
+  image: descriptions_config.image,
+  owner: descriptions_config.owner,
+  nsfw: descriptions_config.nsfw,
+  giveaway: descriptions_config.giveaway,
+  setup: descriptions_config.setup,
+  social: descriptions_config.social,
+ };
  array.forEach((cca) => {
   let name = cca;
   let sName = `${capitalize(name)}`;
@@ -32,7 +46,7 @@ const create_mh = (array) => {
   let fName = name.toUpperCase();
   return menus.push({
    label: sName,
-   description: `${tName} commands!`,
+   description: `${descriptions[name.toLowerCase()] || "No description! 👻"}`,
    value: fName,
    emoji: `${emo[name.toLowerCase()] || "❔"}`,
   });
