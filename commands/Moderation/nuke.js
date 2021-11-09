@@ -8,10 +8,10 @@ module.exports = {
  usage: "nuke [channel]",
  run: async (client, message, args) => {
   try {
-   if (!message.guild.me.permissions.has("MANNAGE_CHANNEL")) {
+   if (!message.guild.me.permissions.has("MANAGE_CHANNEL")) {
     return client.createError(message, `${client.bot_emojis.error} | I don't have premission to nuke channels!`);
    }
-   if (!message.member.permissions.has("MANNAGE_CHANNEL")) {
+   if (!message.member.permissions.has("MANAGE_CHANNEL")) {
     return client.createError(message, `${client.bot_emojis.error} | You don't have premission to nuke channels!`);
    }
    let reason = `${args.join(" ") || "No reason provided!"} | Nuked by: ${message.author.tag}`;
