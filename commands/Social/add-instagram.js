@@ -4,7 +4,7 @@ module.exports = {
  name: "add-instagram",
  aliases: [],
  description: "Add/Remove your Instagram from social profile",
- category: "Utility",
+ category: "Social",
  usage: "add-instagram [Instagram username]",
  run: async (client, message, args) => {
   try {

@@ -4,7 +4,7 @@ module.exports = {
  name: "add-wattpad",
  aliases: [],
  description: "Add/Remove your Wattpad from social profile",
- category: "Utility",
+ category: "Social",
  usage: "add-wattpad [Wattpad username]",
  run: async (client, message, args) => {
   try {

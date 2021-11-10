@@ -4,7 +4,7 @@ module.exports = {
  name: "add-facebook",
  aliases: [],
  description: "Add/Remove your Facebook from social profile",
- category: "Utility",
+ category: "Social",
  usage: "add-facebook [Facebook username/id]",
  run: async (client, message, args) => {
   try {

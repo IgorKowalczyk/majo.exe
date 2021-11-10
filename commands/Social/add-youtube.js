@@ -4,7 +4,7 @@ module.exports = {
  name: "add-youtube",
  aliases: [],
  description: "Add/Remove your Youtube Channel from social profile",
- category: "Utility",
+ category: "Social",
  usage: "add-youtube [Youtube channel name]",
  run: async (client, message, args) => {
   try {

@@ -4,7 +4,7 @@ module.exports = {
  name: "add-steam",
  aliases: [],
  description: "Add/Remove your Steam from social profile",
- category: "Utility",
+ category: "Social",
  usage: "add-steam [Steam username]",
  run: async (client, message, args) => {
   try {

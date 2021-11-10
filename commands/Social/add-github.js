@@ -4,7 +4,7 @@ module.exports = {
  name: "add-github",
  aliases: [],
  description: "Add/Remove your Github from social profile",
- category: "Utility",
+ category: "Social",
  usage: "add-github [Github Username]",
  run: async (client, message, args) => {
   try {

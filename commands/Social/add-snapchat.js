@@ -4,7 +4,7 @@ module.exports = {
  name: "add-snapchat",
  aliases: [],
  description: "Add/Remove your Snapchat from social profile",
- category: "Utility",
+ category: "Social",
  usage: "add-snapchat [Snapchat username]",
  run: async (client, message, args) => {
   try {

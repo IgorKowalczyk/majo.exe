@@ -4,7 +4,7 @@ module.exports = {
  name: "add-email",
  aliases: [],
  description: "Add/Remove your email from social profile",
- category: "Utility",
+ category: "Social",
  usage: "add-email [email]",
  run: async (client, message, args) => {
   try {

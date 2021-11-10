@@ -4,7 +4,7 @@ module.exports = {
  name: "profile",
  aliases: ["user-profile", "check-profile"],
  description: "Create & share your social profile with Steam, Facebook etc links!",
- category: "Utility",
+ category: "Social",
  usage: "profile [user]",
  run: async (client, message, args) => {
   try {
