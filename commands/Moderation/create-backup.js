@@ -21,7 +21,7 @@ module.exports = {
    message.reply({ embeds: [wait] }).then((msg) => {
     client.backupManager
      .create(message.guild, {
-      maxMessagesPerChannel: 10,
+      maxMessagesPerChannel: 1000,
       jsonBeautify: true,
       saveImages: "base64",
      })

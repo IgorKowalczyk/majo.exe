@@ -200,9 +200,9 @@ module.exports = async (client) => {
  }
 
  // Author page redirect endpoint.
- if (config.aurhor_website) {
+ if (config.author_website) {
   app.get("/author", (req, res) => {
-   res.redirect(config.aurhor_website);
+   res.redirect(config.author_website);
   });
  }
 
