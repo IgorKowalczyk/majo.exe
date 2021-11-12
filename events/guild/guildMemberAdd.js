@@ -18,12 +18,6 @@ module.exports = async (client, member) => {
     const channel = await member.guild.channels.cache.find((c) => c.id == welsetup);
     if (!channel) return;
     if (!member.guild) return;
-    function checkdays(date) {
-     let now = new Date();
-     let diff = now.getTime() - date.getTime();
-     let days = Math.floor(diff / 86400000);
-     return days + (days == 1 ? " day" : " days") + " ago";
-    }
     Canvas.registerFont("./src/fonts/quicksand-light.ttf", {
      family: "Quicksand",
     });
