@@ -28,9 +28,9 @@ module.exports = {
    let nick = args.slice(1).join(" ");
    member.setNickname(nick);
    const embed = new MessageEmbed() // Prettier
-   .setColor("GREEN")
-   .setDescription(`> Changed ${member} \`${member.displayName}\` (ID: \`${member.id}\`) nickname to \`${nick}\``);
-   message.reply({embeds: [embed] });
+    .setColor("GREEN")
+    .setDescription(`> Changed ${member} \`${member.displayName}\` (ID: \`${member.id}\`) nickname to \`${nick}\``);
+   message.reply({ embeds: [embed] });
   } catch (err) {
    console.log(err);
    return client.createCommandError(message, err);
