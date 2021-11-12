@@ -24,6 +24,9 @@ module.exports = {
    if (!role) {
     return client.createError(message, `${client.bot_emojis.error} | You must specify role to remove!\n\n**Usage:** \`${client.prefix} remove-role <member> <role> [reason]\``);
    }
+   if (mention.roles.highest.comparePositionTo(message.guild.me.roles.highest) >= 0) {
+    return client.createError(message, `${client.bot_emojis.error} | You cant remove role from this user!`);
+   }
    await mention.roles.remove(role, {
     reason: reason,
    });

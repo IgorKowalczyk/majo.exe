@@ -24,6 +24,9 @@ module.exports = {
    if (!role) {
     return client.createError(message, `${client.bot_emojis.error} | You must specify role to add!\n\n**Usage:** \`${client.prefix} add-role <member> <role> [reason]\``);
    }
+   if (mention.roles.highest.comparePositionTo(message.guild.me.roles.highest) >= 0) {
+    return client.createError(message, `${client.bot_emojis.error} | You cant add role to this user!`);
+   }
    await mention.roles.add(role, {
     reason: reason,
    });

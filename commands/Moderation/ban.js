@@ -26,6 +26,9 @@ module.exports = {
    if (message.author === mentioned) {
     return client.createError(message, `${client.bot_emojis.error} | You can't ban yourself!`);
    }
+   if (mentioned.roles.highest.comparePositionTo(message.guild.me.roles.highest) >= 0) {
+    return client.createError(message, `${client.bot_emojis.error} | You cant ban this user!`);
+   }
    if (reason.length > 1024) reason = reason.slice(0, 1021) + "...";
    message.guild.members.ban(mentioned, {
     reason: reason,
