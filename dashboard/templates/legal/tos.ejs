@@ -1,0 +1,4 @@
+<%- include("../includes/head", { bot, user, path, title: "Terms of service" }) %>
+<div class="content">
+ <% function capitalize(string) { return string.charAt(0).toUpperCase() + string.slice(1); } %>
+<h1 class="center"><%= capitalize(bot.user.username) %> TOS</h1>

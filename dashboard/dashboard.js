@@ -222,11 +222,19 @@ module.exports = async (client) => {
 
  // Policy privacy page endpoint.
  if (config.privacy_policy_page == true) {
-  app.get("/policy", (req, res) => {
-   renderTemplate(res, req, "policy.ejs");
+  app.get("/privacy-policy", (req, res) => {
+   renderTemplate(res, req, "/legal/policy.ejs");
   });
  }
 
+ // Policy privacy page endpoint.
+ if (config.terms_of_service_page == true) {
+  app.get("/tos", (req, res) => {
+   renderTemplate(res, req, "/legal/tos.ejs");
+  });
+ }
+
+ // Commands list endoint.
  app.get("/commands", (req, res) => {
   renderTemplate(res, req, "commands.ejs");
  });
