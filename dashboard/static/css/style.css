@@ -259,7 +259,7 @@ p {
  background-position: 50% 100%;
  background-repeat: no-repeat;
  background-size: 0 2px;
- transition: 500ms, background-size 0.3s;
+ transition: 500ms, background-size 350ms;
 }
 
 .nav li a:hover {
@@ -333,7 +333,7 @@ a:hover {
 .nav .menu {
  clear: both;
  max-height: 0;
- transition: 500ms background-color, 500ms background, 400ms max-height, 1s color !important;
+ transition: 500ms background-color, 500ms background, 350ms max-height, 1s color !important;
  display: flex;
 }
 
@@ -424,7 +424,7 @@ a:hover {
 }
 
 .logo {
- transition: 500ms all;
+ transition: 350ms all;
 }
 
 ul,
@@ -693,7 +693,7 @@ code {
  height: 100vh;
  color: var(--light);
  background-size: 50%;
- transition: 500ms all;
+ transition: 350ms all;
  background-color: rgba(var(--main-page-accent));
 }
 .hero-grid {
@@ -725,7 +725,7 @@ code {
  border-radius: 3px;
  font-weight: 400;
  color: #fff;
- transition: 500ms all;
+ transition: 350ms all;
  cursor: pointer;
  font-size: 15px;
  text-decoration: none;
