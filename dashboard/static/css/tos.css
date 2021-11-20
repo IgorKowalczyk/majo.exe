@@ -11,7 +11,8 @@
  font-family: "Poppins";
 }
 
-ul, li {
+ul,
+li {
  list-style: unset;
  color: var(--text);
 }

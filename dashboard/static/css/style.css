@@ -513,7 +513,7 @@ li {
 
 .button:hover {
  background-color: var(--button-hover);
- background-size: 0;
+ text-decoration: none;
 }
 
 .edit {
@@ -737,6 +737,7 @@ code {
 
 .link-button:hover {
  background: var(--button-hover);
+ text-decoration: none;
 }
 
 .link-button.green {
