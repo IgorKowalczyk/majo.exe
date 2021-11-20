@@ -10,3 +10,8 @@
  max-width: 800px;
  font-family: "Poppins";
 }
+
+ul, li {
+ list-style: unset;
+ color: var(--text);
+}

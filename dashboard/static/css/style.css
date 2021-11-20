@@ -213,8 +213,7 @@ hr {
  margin-top: 50px;
 }
 
-p,
-a {
+p {
  font-weight: 300;
  color: #ffffff;
 }
@@ -254,6 +253,17 @@ a {
  color: #fff;
  font-weight: 600;
  color: #ccc !important;
+ position: relative;
+ color: var(--link) !important;
+ background-image: linear-gradient(var(--aqua), var(--aqua));
+ background-position: 50% 100%;
+ background-repeat: no-repeat;
+ background-size: 0 2px;
+ transition: 500ms, background-size 0.3s;
+}
+
+.nav li a:hover {
+ background-size: 100% 2px;
 }
 
 .nav li a:hover,
@@ -268,21 +278,16 @@ a {
  font-size: 20px;
  text-decoration: none;
  font-family: "Poppins";
+ color: var(--text);
 }
 
 a {
- position: relative;
- color: var(--link) !important;
  text-decoration: none;
- background-image: linear-gradient(var(--aqua), var(--aqua));
- background-position: 50% 100%;
- background-repeat: no-repeat;
- background-size: 0 2px;
- transition: 500ms, background-size 0.3s;
+ color: rgb(0, 175, 244);
 }
 
 a:hover {
- background-size: 100% 2px;
+ text-decoration: underline;
 }
 
 @media screen and (max-width: 950px) {
@@ -429,11 +434,6 @@ li {
 
 .menu-icon svg {
  stroke: #ccc;
-}
-
-main a {
- color: #fff !important;
- transition: 500ms;
 }
 
 .tag {

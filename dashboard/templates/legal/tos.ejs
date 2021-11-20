@@ -3,6 +3,7 @@
 <div class="tos">
  <% function capitalize(string) { return string.charAt(0).toUpperCase() + string.slice(1); } %>
 <h1 class="center">Terms and Conditions of <b><%= capitalize(bot.user.username) %></b></h1>
+<p>The following applies to usage of the <%= capitalize(bot.user.username) %> (including other versions) Discord bot: (referred to as "<%= capitalize(bot.user.username) %>")</p>
 <h2 class="small_header"><b>Introduction</b></h2>
 <p>By adding <%= capitalize(bot.user.username) %>, Majo.exe v2 or Maja.exe to your server, you agree that you have read, understood and accept the Terms. You are also responsible for informing the members in your server about the Terms.
 If you do not agree with any of these terms, you are prohibited from using or adding any version of <%= capitalize(bot.user.username) %> to your server.</p>
@@ -12,6 +13,7 @@ If you do not agree with any of these terms, you are prohibited from using or ad
 <hr>
 <h2 class="small_header"><b>Proprietary Rights</b></h2>
 <p>We (more specifically <%= capitalize(bot.user.username) %> Team) own and retain all rights for public available data. We grant you the permission to use this available data for your own needs, but strictly disallow any commercial use. You therefore shall not sell, license or otherwise commercialize the data except if the permission was expressly granted to you.</p>
+<hr>
 <h2 class="small_header"><b>Availability</b></h2>
 <p>
 <ul>
@@ -21,6 +23,13 @@ If you do not agree with any of these terms, you are prohibited from using or ad
  <li>Access to all or specific features of <%= capitalize(bot.user.username) %> may be revoked, for all or a specific user, at any time.</li>
 </ul>
 </p>
+<hr>
+<h2 class="small_header"><b>User Data</b></h2>
+To operate <%= capitalize(bot.user.username) %> we save some information of you, your server and the members. The bot does not save anything if you or your server administrators don't enable it.
+<ul>
+ <li>Usernames, nicknames, avatars, banners, ID's and discriminators.</li>
+ <li>Channel names, topics, permission overrides and message history (up to 1000 messages per channel).</li>
+ <li>Server name, splash, banner, icon, settings, emojis, banned members.</li>
+ <li>Role names, permissions, colors and assignments.</li>
+</ul>
 </div>
-
-
