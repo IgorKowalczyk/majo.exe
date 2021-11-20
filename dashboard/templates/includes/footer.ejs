@@ -1,7 +1,7 @@
 </div>
 <footer class="footer">
 <% if (config.author) { %>
-<span class="left">Created by: <%= config.author %></span>
+<span class="left">Created by: <a style="color: #fff" href="https://discord.com/users/<%= config.owner_id %>" target="_blank" rel="noopener"><%= config.author %></a></span>
 <% } %>
 <% if (config.status) { %>
  <% if (path !== "/status") { %>
@@ -10,13 +10,13 @@
 <% } %>
 <% } %>
 <% if (config.author_website) { %>
-<a href="/author" target="_blank">Author</a>
+<a href="/author" target="_blank" rel="noopener">Author</a>
 <% } %>
 <span> | </span>
-<a href="/contact" target="_blank">Contact Us</a>
+<a href="/contact" target="_blank" rel="noopener">Contact Us</a>
 <span> | </span>
 <% if (config.github) { %>
-<a href="/github" target="_blank">Github</a>
+<a href="/github" target="_blank" rel="noopener">Github</a>
 <% } %>
 </footer>
 <script src="<%= secure_connection %><%= domain %>/js/index.js"></script>
