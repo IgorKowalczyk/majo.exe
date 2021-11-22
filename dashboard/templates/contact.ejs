@@ -41,8 +41,11 @@
     <span class="input-line"></span>
    </div>
 
-   <% } %> <% if (user) { %>
-   <div id="captcha"></div>
+   <% } %>
+
+   <div class="container-contact-form-btn">
+   <% if (user) { %>
+      <div id="captcha"></div>
    <script type="text/javascript">
     var verifyCallback = function (response) {
      console.log(response);
@@ -55,17 +58,15 @@
      });
     };
    </script>
-   <% } %> <% if (user) { %>
-   <div class="container-contact-form-btn">
+   </div>
     <button class="link-button green" style="margin-top: 50px; margin-left: 0px" type="submit">Send</button>
-   </div>
    <% } else { %>
-   <div class="container-contact-form-btn">
     <p>You must be logged in to contact us!</p>
-   </div>
-   <div class="container-contact-form-btn">
+    </div>
     <a href="<%= secure_connection %><%= domain %>/login" style="margin-left: 0" class="link-button green">Login</a>
-   </div>
+<% if (config.support_server) { %>
+<a href="<%= secure_connection %><%= domain %>/server" style="margin-left: 0;     display: flex; padding: 10px 17px;" class="link-button"><%- include('includes/icons/new_tab.ejs') %> Discord</a>
+<% } %>
    <% } %>
   </form>
  </div>
