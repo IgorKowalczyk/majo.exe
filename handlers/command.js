@@ -4,7 +4,7 @@ const globPromise = promisify(glob);
 const ascii = require("ascii-table");
 const chalk = require("chalk");
 const table = new ascii();
-const config = require("../config/main_config");
+const additional_config = require("../config/additional_config");
 table.setHeading("Command", "Category", "Load status");
 table.setTitleAlign(table.CENTER);
 
@@ -33,7 +33,7 @@ module.exports = async (client) => {
  });
 
  console.log(chalk.bold(chalk.blue.bold("[MAJO]")) + chalk.cyan.bold(" Please wait... Loading commands..."));
- if (config.show_commands_list == true) console.log(chalk.cyan.bold(table.toString()));
+ if (additional_config.show_commands_list == true) console.log(chalk.cyan.bold(table.toString()));
 
  // Events
  const eventFiles = await globPromise(`${process.cwd()}/events/*.js`);

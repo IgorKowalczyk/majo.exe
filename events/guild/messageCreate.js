@@ -44,7 +44,7 @@ module.exports = async (client, message) => {
   if (cmd.length === 0) return;
   let command = client.commands.get(cmd);
   if (!command) command = client.commands.get(client.aliases.get(cmd));
-  if (!command) {
+  if (!command && client.additional_config.show_errors_on_no_command == true) {
    const embed = new MessageEmbed() // Prettier
     .setColor("RED")
     .setDescription(`${client.bot_emojis.error} | That command does not exist, Take a look at \`${client.prefix} help\`!`);

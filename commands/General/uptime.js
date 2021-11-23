@@ -32,7 +32,7 @@ module.exports = {
       size: 2048,
      })
     )
-    .setColor("RANDOM");
+    .setColor("#5865F2");
    if (client.config.status) {
     embed.addField(`${client.bot_emojis.status_online} Servers Status`, "```" + client.config.status + "```");
     const row = new MessageActionRow().addComponents(

@@ -1,10 +1,12 @@
 const Discord = require("discord.js");
 const emojis = require("../config/emojis_config");
 const config = require("../config/main_config");
+const additional_config = require("../config/additional_config");
 const backup = require("discord-backup");
 
 module.exports = function (client) {
  client.config = config;
+ client.additional_config = additional_config;
  client.bot_emojis = emojis;
  client.backupManager = backup;
  client.max_input = config.max_input;

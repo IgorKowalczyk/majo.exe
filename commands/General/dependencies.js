@@ -13,7 +13,7 @@ module.exports = {
     .setDescription(`> <@${client.user.id}> runs on ${Object.keys(require("../../package").dependencies).length} [NPM packages](https://www.npmjs.com) (Javascript power ${client.bot_emojis.muscule}!)`)
     .setTimestamp()
     .setImage("https://i.redd.it/tfugj4n3l6ez.png")
-    .setColor("RANDOM")
+    .setColor("#5865F2")
     .setFooter(
      `Requested by ${message.author.username}`,
      message.author.displayAvatarURL({

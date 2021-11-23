@@ -1,6 +1,6 @@
 const { MessageEmbed } = require("discord.js");
 const translate = require("@iamtraction/google-translate");
-const languages = require("../../utilities/translate");
+const languages = require("../../utilities/translator");
 
 module.exports = {
  name: "translate",
@@ -29,7 +29,7 @@ module.exports = {
        .setDescription(`>>> From: \`${res.from.language.iso}\`\nTo: \`${language.toLowerCase()}\``)
        .addField(`${client.bot_emojis.input} Text to translate`, "```" + text + "```")
        .addField(`${client.bot_emojis.output} Tanslated text`, "```" + res.text + "```")
-       .setColor("RANDOM")
+       .setColor("#4f545c")
        .setFooter(
         `Requested by ${message.author.username}`,
         message.author.displayAvatarURL({

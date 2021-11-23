@@ -13,7 +13,7 @@ module.exports = {
     .addField(`${client.bot_emojis.stopwatch} My ping:`, `\`\`\`${(Date.now() - message.createdTimestamp).toString().replace(/-/g, "")}ms\`\`\``)
     .addField(`${client.bot_emojis.stopwatch} API ping (Websocket):`, `\`\`\`${Math.round(client.ws.ping)}ms\`\`\``)
     .setFooter(`Requested by ${message.author.username}`, message.author.displayAvatarURL({ dynamic: true, format: "png", size: 2048 }))
-    .setColor("RANDOM")
+    .setColor("#5865F2")
     .setTimestamp();
    message.reply({ embeds: [ping] });
   } catch (err) {

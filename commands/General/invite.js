@@ -9,7 +9,7 @@ module.exports = {
  run: async (client, message, args) => {
   try {
    const embed = new MessageEmbed() // Prettier
-    .setColor("RANDOM")
+    .setColor("#5865F2")
     .setTitle(`${client.bot_emojis.success} Yay!`)
     .setDescription(`${client.bot_emojis.tada} **[Click this link to invite me!](https://discord.com/oauth2/authorize/?permissions=${client.config.permissions}&scope=${client.config.scopes}&client_id=${client.user.id})** **__[Recomended!]__**\nOr [click this link to invite me *as root*](https://discord.com/oauth2/authorize/?permissions=8&scope=${client.config.scopes}&client_id=${client.user.id}) [Not recomended!]`)
     .setTimestamp()

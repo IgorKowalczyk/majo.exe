@@ -28,16 +28,6 @@ module.exports = {
  advanved_logging: false,
  ratelimit: 2500, // Command ratelimit (can be customized for each command)
  max_input: 200, // Maximum command arguments length
- rickroll: false, // Secret Option
- display_status: "online", // online | idle | invisible | dnd
- show_commands_list: true,
- help_embed: {
-  grid: true,
-  display_news: false,
-  news: "Are you looking for cheap, fast and reliable hosting? [Terohost](https://terohost.com/) is perfect for you! Plans start at $1/mo! Go to [terohost.com](https://terohost.com/) and order your dream server today!",
-  news_title: "<:terohost:881846121201291284> Terohost",
-  show_owner_commands: false,
- },
 
  // Dashboard config
  domain: process.env.DOMAIN,

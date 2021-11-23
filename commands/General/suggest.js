@@ -19,12 +19,12 @@ module.exports = {
    if (channel) {
     const embed = new MessageEmbed() // Prettier
      .setAuthor(`${client.bot_emojis.thinking} ${message.author.username} suggestion!`, message.guild.iconURL())
-     .setColor("RANDOM")
+     .setColor("#5865F2")
      .setDescription(`\`\`\`${suggestion}\`\`\``)
      .addField("Reporter", `<@${message.author.id}> (ID: ${message.author.id})`)
      .addField("User guild", `${message.guild.name} (ID: ${message.guild.id})`)
      .setFooter(
-      "Majo.exe",
+      client.user.username,
       message.author.displayAvatarURL({
        dynamic: true,
        format: "png",

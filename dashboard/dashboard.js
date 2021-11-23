@@ -10,7 +10,6 @@ const config = require("../config/main_config");
 const ejs = require("ejs");
 const bodyParser = require("body-parser");
 const fs = require("fs");
-const { readdirSync } = require("fs");
 const app = express();
 const session = require("express-session");
 const MemoryStore = require("memorystore")(session);

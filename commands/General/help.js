@@ -48,14 +48,14 @@ module.exports = {
     const commands = readdirSync(`./commands/${dir}/`).filter((file) => file.endsWith(".js"));
     // if (ignored.includes(dir.toLowerCase())) return;
     const name = `${emo[dir.toLowerCase()]} ${capitalize(dir)}`;
-    if ((dir.toLowerCase() == "owner" && message.author.id !== client.config.owner_id) || (dir.toLowerCase() == "owner" && message.author.id == client.config.owner_id && client.config.help_embed.show_owner_commands == false)) return category_id--;
+    if ((dir.toLowerCase() == "owner" && message.author.id !== client.config.owner_id) || (dir.toLowerCase() == "owner" && message.author.id == client.config.owner_id && client.additional_config.help_embed.show_owner_commands == false)) return category_id--;
     let nome = dir.charAt(0) + dir.slice(1).toLowerCase();
     // let nome = dir;
     let cats = new Object();
     cats = {
      name: name,
      value: `> \`${client.prefix} help ${dir.toLowerCase()}\``,
-     inline: client.config.help_embed.grid,
+     inline: client.additional_config.help_embed.grid,
     };
     categories.push(cats);
     ccate.push(nome);
@@ -79,8 +79,8 @@ module.exports = {
      })
     )
     .setColor("RANDOM");
-   if (client.config.help_embed.display_news == true && client.config.help_embed.news_title && client.config.help_embed.news) {
-    embed.addField(`${client.config.help_embed.news_title}`, `${client.config.help_embed.news}`);
+   if (client.additional_config.help_embed.display_news == true && client.additional_config.help_embed.news_title && client.additional_config.help_embed.news) {
+    embed.addField(`${client.additional_config.help_embed.news_title}`, `${client.additional_config.help_embed.news}`);
    }
    let menus = create_mh(ccate);
    return message.reply({ embeds: [embed], components: menus.smenu }).then((msgg) => {

@@ -13,7 +13,7 @@ module.exports = {
      .setTitle(`${client.bot_emojis.error} Mheh!`)
      .setDescription("Our dashboard is not working at the moment, please try again later! We are sorry...")
      .setTimestamp()
-     .setColor("RANDOM")
+     .setColor("RED")
      .setFooter(
       `Requested by ${message.author.username}`,
       message.author.displayAvatarURL({
@@ -27,7 +27,7 @@ module.exports = {
    const embed = new MessageEmbed() // Prettier
     .setTitle(`${client.bot_emojis.success} Yay!`)
     .setTimestamp()
-    .setColor("RANDOM")
+    .setColor("#5865F2")
     .setFooter(
      `Requested by ${message.author.username}`,
      message.author.displayAvatarURL({
@@ -44,7 +44,7 @@ module.exports = {
       .setLabel("Dashboard")
       .setStyle("LINK")
     );
-   message.reply({ embeds: [embed] });
+   // message.reply({ embeds: [embed] });
    if (message.member.permissions.has("MANAGE_GUILD")) {
     embed.setDescription(`${client.bot_emojis.link} | Your server link: ${process.env.DOMAIN}/dashboard/${message.guild.id}\n${client.bot_emojis.link} | Dashboard link: ${process.env.DOMAIN}`);
     row.addComponents(
