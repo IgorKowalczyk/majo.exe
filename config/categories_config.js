@@ -1,7 +1,7 @@
 module.exports = {
  // Categories descriptions
  general: "Majo.exe status, Help etc. Nothing more o.O!",
- moderation: "Banning was never that easy!",
+ moderation: "Banning was never that easy! o_o",
  fun: "Funny memes, dad jokes and even more!",
  music: "Fvck you Youtube",
  economy: "Soon!",
