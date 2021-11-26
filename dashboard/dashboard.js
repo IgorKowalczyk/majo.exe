@@ -77,7 +77,7 @@ module.exports = async (client) => {
   session({
    cookie: {
     expires: expire_date,
-    secure: false,
+    secure: true,
     maxAge: expire_date,
    },
    secret: process.env.SESSION_SECRET,
