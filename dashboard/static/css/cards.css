@@ -128,3 +128,32 @@ img {
   margin-right: 1em;
  }
 }
+
+.more-header {
+ font-size: 30px;
+ color: #ffffff;
+ font-weight: 700;
+ text-align: center;
+ font-family: "Poppins";
+}
+
+.more-text {
+ color: #ffffff;
+ font-weight: 700;
+ text-align: center;
+ font-family: "Poppins";
+}
+
+.center-button {
+ margin: 10px auto;
+ display: flex;
+ align-content: center;
+ text-align: center;
+ flex-direction: column;
+ align-items: center;
+ max-width: 200px;
+}
+
+.blue {
+ background-color: rgb(88, 101, 242);
+}
