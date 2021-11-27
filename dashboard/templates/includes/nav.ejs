@@ -13,7 +13,7 @@
 <% if (user.avatar) {
  avatar = `https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}`;
 } else {
- avatar = `${secure_connection + dashboard}/pics/invaild-avatar.png`;
+ avatar = `${secure_connection + domain}/pics/invaild-avatar.png`;
 }
 %>
 <a class="avatar-container dropdownHead" id="dropdownHead" onclick="dropdown(this)"><img class="user-avatar" src="<%= avatar %>"/><span class="user-name"><%= user.username %>#<%= user.discriminator %></span></a>
