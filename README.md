@@ -195,3 +195,9 @@ When submitting a pull request:
 
 ## License
 This project is licensed under the MIT. See the [LICENSE](https://github.com/igorkowalczyk/majobot/blob/master/license.md) file for details
+
+<details>
+ <summary> </summary>
+ <h5>The cake is a lie 🍰</h5>
+ <a href="https://igorkowalczyk.github.io"><img src="https://komarev.com/ghpvc/?username=majobot&style=flat-square&color=333333&label=Repo+views" alt="Github profile views"></a>
+</details>
