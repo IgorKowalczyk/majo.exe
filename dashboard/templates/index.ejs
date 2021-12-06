@@ -1,6 +1,6 @@
 <%- include("includes/head", { bot, user, path, description, title, twitter, url }) %>
 <% function capitalize(string) { return string.charAt(0).toUpperCase() + string.slice(1); } %>
-<% if (bot.user.avatar) { botavatar = `https://cdn.discordapp.com/avatars/${bot.user.id}/${bot.user.avatar}`; } else { botavatar = `${secure_connection + domain}/pics/invaild-avatar.png`; } %>
+<% if (bot.user.avatar) { botavatar = `https://cdn.discordapp.com/avatars/${bot.user.id}/${bot.user.avatar}?size=256`; } else { botavatar = `${secure_connection + domain}/pics/invaild-avatar.png`; } %>
 <section class="hero-section">
  <div class="hero-grid">
   <div class="hero-content">
@@ -23,7 +23,7 @@
 <div class="content-container">
  <div id="feautures" class="product-row">
   <div class="product-image">
-   <img src="https://media.discordapp.net/attachments/905722570286960650/914158357324107786/1_page.png" />
+   <img src="https://media.discordapp.net/attachments/905722570286960650/914158357324107786/1_page.png" alt="Many commands!"/>
   </div>
   <div class="product-text">
    <h2 class="product-title">Many commands!</h2>
@@ -32,7 +32,7 @@
  </div>
  <div class="product-row">
   <div class="product-image">
-   <img src="https://media.discordapp.net/attachments/905722570286960650/914163555325063188/2_page.png" />
+   <img src="https://media.discordapp.net/attachments/905722570286960650/914163555325063188/2_page.png" alt="More reactions!"/>
   </div>
   <div class="product-text">
    <h2 class="product-title">More reactions!</h2>
