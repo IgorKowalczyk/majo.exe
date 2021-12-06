@@ -497,6 +497,7 @@ li {
  align-items: center;
  text-decoration: none;
  padding: 10px 25px;
+ font-weight: bold;
  transition: border 180ms ease-out 0s, background 180ms ease-out 0s;
  color: #fff;
  background-color: var(--button);
