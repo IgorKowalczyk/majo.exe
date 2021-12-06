@@ -151,9 +151,13 @@ img {
  text-align: center;
  flex-direction: column;
  align-items: center;
- max-width: 200px;
+ max-width: 220px;
 }
 
 .blue {
  background-color: rgb(88, 101, 242);
+}
+
+.blue:hover {
+ background-color: rgb(71, 83, 197);
 }
