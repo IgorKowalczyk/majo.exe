@@ -74,7 +74,7 @@ iframe {
  padding-bottom: 68px;
  justify-content: space-between;
  background: #1e2125;
- margin-top: 10%;
+ /* margin-top: 10%; */
  padding: 5%;
  border-radius: 10px;
 }
