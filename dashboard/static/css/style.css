@@ -190,7 +190,7 @@ img:not(.img, .server-icon) {
  text-align: center;
  background: rgba(255, 0, 0, 0.16);
  border: 1px solid rgba(255, 0, 0, 0.5);
- padding: 5px;
+ padding: 20px;
  border-radius: 5px;
  margin-top: 0;
 }
