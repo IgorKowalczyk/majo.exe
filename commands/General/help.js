@@ -2,12 +2,12 @@ const { MessageEmbed, MessageActionRow, MessageButton, Message, Client } = requi
 const { readdirSync } = require("fs");
 const create_mh = require("../../utilities/menu_help");
 function capitalize(string) {
-  if(string == "nsfw") {
-   return string.toUpperCase();
-  } else {
-   return string.charAt(0).toUpperCase() + string.slice(1);
-  }
+ if (string == "nsfw") {
+  return string.toUpperCase();
+ } else {
+  return string.charAt(0).toUpperCase() + string.slice(1);
  }
+}
 
 module.exports = {
  name: "help",
