@@ -318,10 +318,12 @@ module.exports = async (client) => {
 
  // Settings endpoint.
  app.get("/dashboard/:guildID", checkAuth, async (req, res) => {
-  const guild = client.guilds.cache.get(req.params.guildID);
-  if (!guild) return res.redirect("/error");
+  const guild = await client.guilds.cache.get(req.params.guildID);
+  if (!guild) return res.redirect("/error=no+guild");
+  const first_member = req.user.id;
+  await guild.members.fetch({first_member})
   const member = guild.members.cache.get(req.user.id);
-  if (!member) return res.redirect("/error");
+  if (!member) return res.redirect("/error?message=no+member");
   if (!member.permissions.has("MANAGE_GUILD")) return res.redirect("/error");
   renderTemplate(res, req, "server.ejs", {
    guild: guild,

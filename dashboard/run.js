@@ -13,6 +13,10 @@ require("dotenv").config();
 const chalk = require("chalk");
 
 client.on("ready", () => {
+ // client.guilds.cache.forEach(g => {
+ //  g.fetch();
+ //  g.members.fetch();
+//  })
  if (process.env.DASHBOARD == "true") {
   console.log(chalk.bold(chalk.blue.bold("[MAJO]")) + chalk.cyan.bold(" Getting dashboard config file..."));
   client.commands = new Discord.Collection();

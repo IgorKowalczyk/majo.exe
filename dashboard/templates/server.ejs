@@ -1,4 +1,5 @@
 <%- include("includes/head", { bot, user, path, description, title: guild.name + " dashboard", twitter, url }) %>
+<%- include("includes/side_nav", { bot, user, path }) %>
 <div class="content">
 <% if (guild.icon) {
  iconurl = `https://cdn.discordapp.com/icons/${guild.id}/${guild.icon}`;
