@@ -2,8 +2,12 @@ const { MessageEmbed, MessageActionRow, MessageButton, Message, Client } = requi
 const { readdirSync } = require("fs");
 const create_mh = require("../../utilities/menu_help");
 function capitalize(string) {
- return string.charAt(0).toUpperCase() + string.slice(1);
-}
+  if(string == "nsfw") {
+   return string.toUpperCase();
+  } else {
+   return string.charAt(0).toUpperCase() + string.slice(1);
+  }
+ }
 
 module.exports = {
  name: "help",
@@ -78,7 +82,7 @@ module.exports = {
       size: 2048,
      })
     )
-    .setColor("RANDOM");
+    .setColor("#4f545c");
    if (client.additional_config.help_embed.display_news == true && client.additional_config.help_embed.news_title && client.additional_config.help_embed.news) {
     embed.addField(`${client.additional_config.help_embed.news_title}`, `${client.additional_config.help_embed.news}`);
    }
@@ -127,7 +131,7 @@ module.exports = {
        .setAuthor(`${client.user.username} Help`, message.guild.iconURL())
        .setDescription(`>${catts}`)
        //.addFields(catts)
-       .setColor("RANDOM")
+       .setColor("#4f545c")
        .setThumbnail(
         client.user.displayAvatarURL({
          dynamic: true,
@@ -226,7 +230,7 @@ module.exports = {
      .setAuthor(`${client.user.username} Help`, message.guild.iconURL())
      .setDescription(`>${catts}`)
      //.addFields(catts)
-     .setColor("RANDOM")
+     .setColor("#4f545c")
      .setThumbnail(
       client.user.displayAvatarURL({
        dynamic: true,
@@ -262,7 +266,7 @@ module.exports = {
      })
     )
     .setTimestamp()
-    .setColor("RANDOM");
+    .setColor("#4f545c");
    return await message.reply({ embeds: [embed] });
   }
  },

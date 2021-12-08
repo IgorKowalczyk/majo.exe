@@ -2,7 +2,11 @@ const { MessageSelectMenu, MessageActionRow } = require("discord.js");
 const emojis = require("../config/emojis_config");
 const descriptions_config = require("../config/categories_config");
 function capitalize(string) {
- return string.charAt(0).toUpperCase() + string.slice(1);
+ if(string == "Nsfw") {
+  return string.toUpperCase();
+ } else {
+  return string.charAt(0).toUpperCase() + string.slice(1);
+ }
 }
 
 const create_mh = (array) => {
