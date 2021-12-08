@@ -34,7 +34,7 @@ module.exports = {
         })
        )
        .setColor("#4f545c");
-      if (body.online.toString().length > 1) embed.addField(`${client.bot_emojis.status_online} Online`, `> \`${body.online}\``, true);
+      if (body.online.toString().length > 1) embed.addField(`${body.online ? client.bot_emojis.status_online : client.bot_emojis.status_dnd} ${body.online ? "Online" : "Offline"}`, `> \`${body.online ? "Online" : "Offline"}\``, true);
       if (body.motd && body.motd.raw[0]) embed.setDescription(">>> " + body.motd.raw[0].replace(/§[0-9A-FK-OR]/gi, "").replaceAll("`", ""));
       if (body.players && body.players.max && body.players.online) embed.addField(`${client.bot_emojis.member} Players`, `> \`${body.players.online}/${body.players.max}\``, true);
       if (body.version) embed.addField(`${client.bot_emojis.stage_channel} Version(s)`, `> \`${body.version}\``, true);
