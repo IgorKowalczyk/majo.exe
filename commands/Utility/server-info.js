@@ -5,8 +5,8 @@ function capitalize(string) {
 }
 
 module.exports = {
- name: "serverinfo",
- aliases: ["sv", "server-info", "server"],
+ name: "server-info",
+ aliases: ["sv", "serverinfo", "server", "guildinfo", "guild-info"],
  description: "Display server info",
  category: "Utility",
  usage: "serverinfo",
