@@ -37,7 +37,7 @@
 <% } %>
 
 <% if(user.avatar) { %>
-<a class="button button-two" href="https://cdn.discordapp.com/avatars/<%= user.id %>/<%= user.avatar %>" download="<%= user.id %>"><span class="reload-container"><%- include('includes/icons/download.ejs') %> Download Avatar</span></a>
+<a class="button button-two" href="https://cdn.discordapp.com/avatars/<%= user.id %>/<%= user.avatar %>?size=2048" download="<%= user.id %>"><span class="reload-container"><%- include('includes/icons/download.ejs') %> Download Avatar</span></a>
 <% } else { %>
 <a class="button disabled button-two" title="You don't have avatar!"><span class="reload-container"><%- include('includes/icons/download.ejs') %> Download Avatar</span></a>
 <% } %>

@@ -14,19 +14,157 @@
  let days = Math.floor(diff / 86400000);
  return days + (days == 1 ? " day" : " days") + " ago";
 } %>
-<div class="guild">
 <img class="server-image img" src="<%= iconurl %>" alt="<%= guild.name %>"/>
 <h1 class="server-name"><%= guild.name %></h1>
 <p class="server-description"><%= guild.description %></p>
 <hr>
-<h2>Server Info</h2>
+
+
+<h2 style="text-align: center">Overview</h2>
+
+<% if (alert) { %>
+<div class="banner">
+ <div class="banner-content">
+  <div class="banner-text">
+   <%= alert %>
+  </div>
+  <button class="banner-close" type="button">
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#FFFFFF"><path d="M0 0h24v24H0z" fill="none"/><path d="M12 2C6.47 2 2 6.47 2 12s4.47 10 10 10 10-4.47 10-10S17.53 2 12 2zm5 13.59L15.59 17 12 13.41 8.41 17 7 15.59 10.59 12 7 8.41 8.41 7 12 10.59 15.59 7 17 8.41 13.41 12 17 15.59z"/></svg>
+  </button>
+  </div>
+ </div>
+ <script>
+const close_banner = document.querySelector(".banner-close")
+const banner = document.querySelector (".banner")
+close_banner.addEventListener("click", function () {
+  banner.style.display = "none";
+});
+</script>
+<% }  %>
+
+<div class="all">
+<div class="otherinfo grid-2">
+<form role="form" action="/dashboard/<%= guild.id %>/" method="POST">
+<h2 style="margin-bottom: 0;">Nickname</h2>
+<p>Change the bot's nickname in the current server</p>
+<input id="nickname" name="nickname" type="text" placeholder="<%= bot.user.username %>" value="<%= guild.me.nickname || guild.me.user.username %>"/>
+<h2 style="margin-bottom: 0;">Prefix</h2>
+<p>Change the prefix by which the bot will reply</p>
+<input id="prefix" name="prefix" type="text" disabled placeholder="<%= prefix %>" value="<%= prefix %>"/>
+<button type="submit" style="margin-left: 0;font-size: 14px;float: right" class="link-button blue">Save changes</button>
+</form>
+</div>
+
+
+ <div class="boxes grid-1" style="width: 45%">
+    <div class="box box1">
+     <div class="boxcontainter">
+      <h3 class="boxheader">
+       <%= guild.memberCount %>
+      </h3>
+      <p class="heading">Members</p>
+     </div>
+    </div>
+    <div class="box box2">
+     <div class="boxcontainter">
+      <h3 class="boxheader">
+       <%= guild.channels.cache.size %>
+      </h3>
+      <p class="heading">Channels</p>
+     </div>
+    </div>
+    <div class="box box3">
+     <div class="boxcontainter">
+      <h3 class="boxheader">
+       <%= guild.roles.cache.size %>
+      </h3>
+      <p class="heading">Roles</p>
+     </div>
+    </div>
+    <div class="box box4">
+     <div class="boxcontainter">
+      <h3 class="boxheader">
+       <%= guild.premiumSubscriptionCount %> (<%= guild.premiumTier.toString().toLowerCase().replace("none", "0").replace("tier_", "") %> level)
+      </h3>
+      <p class="heading">Boosts</p>
+     </div>
+    </div>
+<p class="server-members sinfo"><%- include('includes/icons/members.ejs') %> Members: <%= guild.memberCount %>/<%= guild.maximumMembers %>
+<p class="server-owner sinfo" title="ID: <%= guild.ownerId %>"><%- include('includes/icons/owner.ejs') %> Owner: <%= guild_owner.user.username %>#<%= guild_owner.user.discriminator %></p>
+<p class="server-time sinfo" title="<%= guild.createdAt.toUTCString().substr(0, 16)%>"><%- include('includes/icons/date.ejs') %> Created: <%= checkdays(guild.createdAt) %></p>
 <p class="region sinfo"><%- include('includes/icons/location.ejs') %> Location: <%= guild.preferredLocale
  %></p>
-<p class="server-owner sinfo" title="ID: <%= guild.ownerId %>"><%- include('includes/icons/owner.ejs') %> Owner: <%= guild_owner.user.username %>#<%= guild_owner.user.discriminator %></p>
-<p class="verification sinfo"><%- include('includes/icons/verification.ejs') %> Verification Level: <%= guild.verificationLevel.toLowerCase() %></p>
-<p class="server-members sinfo"><%- include('includes/icons/members.ejs') %> Members: <%= guild.memberCount %>/<%= guild.maximumMembers %>
-<p class="server-boosts sinfo"><%- include('includes/icons/boosts.ejs') %> Server boosts: <%= guild.premiumSubscriptionCount %> (<%= guild.premiumTier.toString().toLowerCase().replace("none", "0").replace("tier_", "") %> level)</p>
-<p class="server-time sinfo"><%- include('includes/icons/date.ejs') %> Created: <%= guild.createdAt.toUTCString().substr(0, 16)%> (<%= checkdays(guild.createdAt) %>)</p>
-<p class="server-mfa sinfo"><%- include('includes/icons/mfa.ejs') %> MFA Level: <%= guild.mfaLevel.toString().toLowerCase() %></p>
 </div>
+
+</div>
+
+<style>
+.grid-1, .grid-2 {
+width: 45%;
+position: relative;
+border-radius: 5px;
+padding: 15px;
+box-shadow: 0 3px 15px 0 rgba(0, 0, 0, 0.1), 0 1px 3px 0 rgba(0, 0, 0, 0.08);
+background-color: var(--navbar);
+}
+
+.grid-1 {
+float: right;
+align-content: baseline;
+}
+
+.all {
+width: 100%;
+justify-content: center;
+display: flex;
+margin-bottom: 60px;
+}
+
+.content {
+display: block !important;
+}
+
+.server-image {
+margin: 0 auto;
+text-align: center;
+display: flex;
+}
+
+.server-name {
+text-align: center;
+}
+
+input {
+background-color: rgba(0, 0, 0, 0.1);
+border: 1px solid #4b4f58;
+transition: 300ms all;
+padding: 10px;
+font-family: "Poppins";
+border-radius: 3px;
+width: 100%;
+height: 40px;
+font-size: 16px;
+color: rgb(220, 221, 222);
+outline: none;
+}
+
+input:disabled {
+opacity: 0.5;
+cursor: not-allowed;
+}
+
+input:focus {
+border-color: rgb(0, 175, 244);
+}
+
+.blue {
+    background-color: rgb(88, 101, 242);
+}
+
+.blue:hover {
+    background-color: rgb(71, 83, 197);
+}
+
+</style>
+
 <%- include("includes/footer") %>

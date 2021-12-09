@@ -97,12 +97,8 @@ module.exports = async (client) => {
  app.locals.domain = process.env.DOMAIN.split("//")[1];
  app.engine("html", ejs.renderFile);
  app.set("view engine", "html");
- app.use(bodyParser.json());
- app.use(
-  bodyParser.urlencoded({
-   extended: true,
-  })
- );
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
  const renderTemplate = (res, req, template, data = {}) => {
   var hostname = req.headers.host;
@@ -118,6 +114,7 @@ module.exports = async (client) => {
    domain: app.locals.domain,
    secure_connection: config.secure_connection == true ? "https://" : "http://",
    twitter: config.twitter,
+   alert: "",
    url: res,
    title: client.username,
    prefix: process.env.PREFIX,
@@ -294,7 +291,7 @@ module.exports = async (client) => {
  app.get("/contact", async (req, res) => {
   renderTemplate(res, req, "contact.ejs");
  });
- app.post("/contact", async (req, res) => {
+ app.post("/contact", checkAuth, async (req, res) => {
   if (req.body.type === "contact") {
    const contactwebhook = new Discord.WebhookClient({ url: process.env.CONTACT_WEBHOOK });
    if (!req.body.name || !req.body.id || !req.body.email || !req.body.msg) return;
@@ -321,29 +318,57 @@ module.exports = async (client) => {
   const guild = await client.guilds.cache.get(req.params.guildID);
   if (!guild) return res.redirect("/error?message=no+guild");
   const first_member = req.user.id;
-  await guild.members.fetch({first_member})
+  await guild.members.fetch({ first_member });
   const member = guild.members.cache.get(req.user.id);
   if (!member) return res.redirect("/error?message=no+member");
   if (!member.permissions.has("MANAGE_GUILD")) return res.redirect("/error?message=missing+perm");
   renderTemplate(res, req, "server.ejs", {
    guild: guild,
    perms: Discord.Permissions,
-   guild_owner: await guild.fetchOwner()
+   guild_owner: await guild.fetchOwner(),
   });
  });
 
-  app.get("/dashboard/:guildID/roles", checkAuth, async (req, res) => {
+ app.post("/dashboard/:guildID", checkAuth, async (req, res) => {
   const guild = await client.guilds.cache.get(req.params.guildID);
   if (!guild) return res.redirect("/error?message=no+guild");
   const first_member = req.user.id;
-  await guild.members.fetch({first_member})
+  await guild.members.fetch({ first_member });
+  const member = guild.members.cache.get(req.user.id);
+  if (!member) return res.redirect("/error?message=no+member");
+  if (!member.permissions.has("MANAGE_GUILD")) return res.redirect("/error?message=missing+perm");
+  const data = req.body;
+  if (!data) {
+   res.status(403);
+   return res.redirect("/error?message=no+data+send");
+  }
+  const nickname = data.nickname;
+  if (nickname && nickname.length < 1) nickname = guild.me.nickname || guild.me.user.username;
+  if (data.nickname) {
+   if (!nickname) nickname = guild.me.nickname || guild.me.user.username;
+   guild.me.setNickname(nickname);
+  }
+  renderTemplate(res, req, "server.ejs", {
+   guild: guild,
+   perms: Discord.Permissions,
+   alert: "Your changes have been saved! ✅",
+   guild_owner: await guild.fetchOwner(),
+  });
+
+ });
+
+ app.get("/dashboard/:guildID/roles", checkAuth, async (req, res) => {
+  const guild = await client.guilds.cache.get(req.params.guildID);
+  if (!guild) return res.redirect("/error?message=no+guild");
+  const first_member = req.user.id;
+  await guild.members.fetch({ first_member });
   const member = guild.members.cache.get(req.user.id);
   if (!member) return res.redirect("/error?message=no+member");
   if (!member.permissions.has("MANAGE_GUILD")) return res.redirect("/error?message=missing+perm");
   renderTemplate(res, req, "/server/roles.ejs", {
    guild: guild,
    perms: Discord.Permissions,
-   guild_owner: await guild.fetchOwner()
+   guild_owner: await guild.fetchOwner(),
   });
  });
 
@@ -351,34 +376,31 @@ module.exports = async (client) => {
   const guild = await client.guilds.cache.get(req.params.guildID);
   if (!guild) return res.redirect("/error?message=no+guild");
   const first_member = req.user.id;
-  await guild.members.fetch({first_member})
+  await guild.members.fetch({ first_member });
   const member = guild.members.cache.get(req.user.id);
   if (!member) return res.redirect("/error?message=no+member");
   if (!member.permissions.has("MANAGE_GUILD")) return res.redirect("/error?message=missing+perm");
   renderTemplate(res, req, "/server/embeds.ejs", {
    guild: guild,
    perms: Discord.Permissions,
-   guild_owner: await guild.fetchOwner()
+   guild_owner: await guild.fetchOwner(),
   });
  });
-
 
  app.get("/dashboard/:guildID/logging", checkAuth, async (req, res) => {
   const guild = await client.guilds.cache.get(req.params.guildID);
   if (!guild) return res.redirect("/error?message=no+guild");
   const first_member = req.user.id;
-  await guild.members.fetch({first_member})
+  await guild.members.fetch({ first_member });
   const member = guild.members.cache.get(req.user.id);
   if (!member) return res.redirect("/error?message=no+member");
   if (!member.permissions.has("MANAGE_GUILD")) return res.redirect("/error?message=missing+perm");
   renderTemplate(res, req, "/server/logging.ejs", {
    guild: guild,
    perms: Discord.Permissions,
-   guild_owner: await guild.fetchOwner()
+   guild_owner: await guild.fetchOwner(),
   });
  });
-
-
 
  // 404
  app.use(function (req, res, next) {

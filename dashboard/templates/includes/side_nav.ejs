@@ -7,6 +7,17 @@
 <a href="/dashboard/<%= guild.id %>/embeds" class="guildname <% if(checked_nav == "embeds") { %>checked<% } %>"><%- include('./icons/embeds-sidenav.ejs') %> Embeds</a>
 <a href="/dashboard/<%= guild.id %>/logging" class="guildname <% if(checked_nav == "logs") { %>checked<% } %>"><%- include('./icons/logs-sidenav.ejs') %>Logging</a>
 </div>
+<script>
+   document.addEventListener("click", function (event) {
+ if (event.target.tagName !== "A" || !event.target.href || !event.target.classList == "guildname") return;
+ const currentElement = document.getElementsByClassName("checked")[0];
+ const content = document.getElementsByClassName("content")[0];
+  currentElement.classList.remove("checked");
+  event.target.classList.add("checked");
+ });
+
+
+</script>
 <style>
 
 .open-sidenav {

@@ -20,20 +20,28 @@
 <p class="server-description"><%= guild.description %></p>
 <hr>
 <h2>Roles</h2>
-<% 
- let startstring = "<span class='r' style='color:";
- let middlestring = "'>";
- let endstring = "</span>";
- let rolemap = guild.roles.cache
- .sort((a, b) => b.position - a.position)
- .map(r => startstring + r.hexColor + middlestring + r.name + endstring)
- .join(" "); %>
-<% if (rolemap.length > 11024) {
- rolemap = "To many roles to display";
+
+<% function pick_color(color) {
+var c = color.substring(1);
+var rgb = parseInt(c, 16);
+var r = (rgb >> 16) & 0xff;
+var g = (rgb >>  8) & 0xff;
+var b = (rgb >>  0) & 0xff;
+
+var luma = 0.2126 * r + 0.7152 * g + 0.0722 * b;
+
+if (luma < 50) {
+ return "#ccc";
+} else {
+ return color.toString();
+}
 } %>
-<% if (!rolemap) {
- rolemap = "No roles";
-} %>
-<%- rolemap -%>
+
+
+<% guild.roles.cache.forEach(role => { %>
+<div class="r" style="color: <%= pick_color(role.hexColor) %>" title="<%= role.id %>"><%= role.name %></div>
+<% }) %>
+
+
 </div>
 <%- include("../includes/footer") %>

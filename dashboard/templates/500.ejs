@@ -1,7 +1,12 @@
-<%- include("includes/head", { bot, user, path, title: "500!" }) %>
-<div class="content" style="margin-top: 10px;">
+<%- include("includes/head", { bot, user, path, title: "Error: 500!" }) %>
 <div class="content">
-<h1 class="center">500!</h1>
-<p class="error">Internal server error - the server encountered unexpected problems that prevented the request from completing. Please try again later</p>
-<a class="add button" href="/dashboard/">Return</a>
-<%- include("includes/footer") %>
+<h1 class="center error-icon">T^T</h1>
+ <h1 class="center" style="margin-bottom: 0">Error 500!</h1>
+ <h3 class="center">An error occurred while viewing this page!</h3>
+ <p class="error"><span style="font-weight: bold">Internal server error - the server encountered unexpected problems that prevented the request from completing. Please try again later</span></p>
+ <a class="add button center-button blue" href="<%= secure_connection %><%= domain %>/">Go back to home page!</a>
+ <%- include("includes/footer") %>
+</div>
+
+
+

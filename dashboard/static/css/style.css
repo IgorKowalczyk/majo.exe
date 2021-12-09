@@ -14,7 +14,7 @@
  --white: #1a1c20;
  --navbar: #24282d;
  --code: 54, 60, 70, 0.58;
- --preloader: #222;
+ --preloader: #1a1c20;
  --spinner: #888;
  --spinner-border: #333;
  --aqua: #fff;
@@ -211,6 +211,8 @@ hr {
  margin-left: 15px;
  margin-right: 15px;
  margin-top: 50px;
+ max-width: 70%;
+ margin: 0 auto;
 }
 
 p {
@@ -881,6 +883,8 @@ code {
  margin-left: 3px;
  margin-right: 3px;
  font-weight: 800;
+ display: inline;
+ cursor: pointer;
  margin-bottom: 5px;
  line-height: 40px;
 }
@@ -892,6 +896,7 @@ code {
  justify-content: center;
  background: rgba(var(--server-hover));
  padding: 5px;
+ margin: 0;
  border-radius: 5px;
 }
 
@@ -1029,3 +1034,60 @@ code {
  transition: border 180ms ease-out 0s, background 180ms ease-out 0s;
  background-image: none;
 }
+
+.banner {
+background: #009579;
+text-align: left;
+border-radius: 5px;
+max-width: 90%;
+margin: 0 auto;
+color: #fff;
+margin-bottom: 15px;
+}
+
+.banner-content {
+padding: 10px;
+width: 100%;
+display: flex;
+align-content: center;
+align-items: center;
+}
+
+.banner-text {
+flex-grow: 1;
+line-height: 1.4;
+font-family: "Poppins";
+}
+
+.banner-close {
+background: none;
+border: none;
+cursor: pointer;
+}
+
+.error-icon {
+color: #9a98a1;
+border-radius: 50%;
+background: var(--navbar);
+padding: 20px;
+margin-bottom: 0;
+}
+
+.center-button {
+ margin: 10px auto;
+ display: flex;
+ align-content: center;
+ text-align: center;
+ flex-direction: column;
+ align-items: center;
+ max-width: 220px;
+}
+
+.blue {
+ background-color: rgb(88, 101, 242);
+}
+
+.blue:hover {
+ background-color: rgb(71, 83, 197);
+}
+
