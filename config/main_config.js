@@ -1,7 +1,7 @@
 module.exports = {
  // Main config
  // author: "Majonez.exe#3957", // ->> Banned account
- author: "Majonez.exe v2#5271",
+ author: "Majonez.exe#2495",
  author_website: "https://igorkowalczyk.github.io",
  // owner_id: "440200028292907048", // ->> Banned account
  owner_id: "544164729354977282",
