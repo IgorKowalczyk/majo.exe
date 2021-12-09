@@ -1,17 +1,13 @@
 <%- include("includes/head", { bot, user, path, description, title: guild.name + " dashboard", twitter, url }) %>
-<%- include("includes/side_nav", { bot, user, path }) %>
-<div class="content">
 <% if (guild.icon) {
  iconurl = `https://cdn.discordapp.com/icons/${guild.id}/${guild.icon}`;
 } else {
  iconurl = `${secure_connection + domain}/pics/invaild-avatar.png`;
 }
 %>
-<% let ownerg %>
-<% guild.fetchOwner().then(ownerstring => {
- ownerg = ownerstring.id;
- })
-%>
+<% const checked = "home" %>
+<%- include("includes/side_nav", { bot, user, path, guild_name: guild.name, guild_icon: iconurl, checked_nav: checked, guild }) %>
+<div class="content">
 <% function checkdays(date) {
  let now = new Date();
  let diff = now.getTime() - date.getTime();
@@ -26,28 +22,11 @@
 <h2>Server Info</h2>
 <p class="region sinfo"><%- include('includes/icons/location.ejs') %> Location: <%= guild.preferredLocale
  %></p>
-<p class="server-owner sinfo" title="ID: <%= guild.ownerId %>"><%- include('includes/icons/owner.ejs') %> Owner: <%= ownerg %></p>
+<p class="server-owner sinfo" title="ID: <%= guild.ownerId %>"><%- include('includes/icons/owner.ejs') %> Owner: <%= guild_owner.user.username %>#<%= guild_owner.user.discriminator %></p>
 <p class="verification sinfo"><%- include('includes/icons/verification.ejs') %> Verification Level: <%= guild.verificationLevel.toLowerCase() %></p>
 <p class="server-members sinfo"><%- include('includes/icons/members.ejs') %> Members: <%= guild.memberCount %>/<%= guild.maximumMembers %>
 <p class="server-boosts sinfo"><%- include('includes/icons/boosts.ejs') %> Server boosts: <%= guild.premiumSubscriptionCount %> (<%= guild.premiumTier.toString().toLowerCase().replace("none", "0").replace("tier_", "") %> level)</p>
 <p class="server-time sinfo"><%- include('includes/icons/date.ejs') %> Created: <%= guild.createdAt.toUTCString().substr(0, 16)%> (<%= checkdays(guild.createdAt) %>)</p>
 <p class="server-mfa sinfo"><%- include('includes/icons/mfa.ejs') %> MFA Level: <%= guild.mfaLevel.toString().toLowerCase() %></p>
-<hr>
-<h2>Roles</h2>
-<% 
- let startstring = "<span class='r' style='color:";
- let middlestring = "'>";
- let endstring = "</span>";
- let rolemap = guild.roles.cache
- .sort((a, b) => b.position - a.position)
- .map(r => startstring + r.hexColor + middlestring + r.name + endstring)
- .join(" "); %>
-<% if (rolemap.length > 11024) {
- rolemap = "To many roles to display";
-} %>
-<% if (!rolemap) {
- rolemap = "No roles";
-} %>
-<%- rolemap -%>
 </div>
 <%- include("includes/footer") %>

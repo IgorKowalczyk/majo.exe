@@ -141,3 +141,5 @@ majobot.zip
 *.key
 *.cert
 
+# Auto-generated files
+.breakpoints

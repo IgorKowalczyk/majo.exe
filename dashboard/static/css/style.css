@@ -223,7 +223,7 @@ p {
  background-color: var(--navbar);
  width: 100%;
  top: 0;
- transition: 500ms all !important;
+ transition: 300ms all !important;
  z-index: 9999;
  box-shadow: 0 3px 15px 0 rgba(0, 0, 0, 0.1), 0 1px 3px 0 rgba(0, 0, 0, 0.08);
  font-family: "Roboto-Thin";
@@ -249,7 +249,7 @@ p {
  font-size: 20px;
  padding: 20px 20px;
  text-decoration: none;
- transition: 500ms all;
+ transition: 300ms all;
  color: #fff;
  font-weight: 600;
  color: #ccc !important;
@@ -259,7 +259,7 @@ p {
  background-position: 50% 100%;
  background-repeat: no-repeat;
  background-size: 0 2px;
- transition: 500ms, background-size 350ms;
+ transition: 300ms, background-size 350ms;
 }
 
 .nav li a:hover {
@@ -333,7 +333,7 @@ a:hover {
 .nav .menu {
  clear: both;
  max-height: 0;
- transition: 500ms background-color, 500ms background, 350ms max-height, 1s color !important;
+ transition: 300ms background-color, 300ms background, 350ms max-height, 1s color !important;
  display: flex;
 }
 
@@ -476,11 +476,13 @@ li {
  align-items: center;
  cursor: pointer;
  padding: 0px 20px;
+ transition: 300ms;
  font-size: 20px;
 }
 
 .avatar-container:hover {
  background-color: #34383e;
+ text-decoration: none;
 }
 
 .button {
@@ -605,6 +607,7 @@ li {
 .dropdown-li:hover {
  background-color: rgba(var(--server-hover));
  background-size: 0;
+ text-decoration: none;
 }
 
 .dropdown-actived {
