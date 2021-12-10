@@ -66,8 +66,6 @@ module.exports = async (client) => {
  app.use(helmet.permittedCrossDomainPolicies());
  app.use(helmet.referrerPolicy());
  app.use(helmet.xssFilter());
- app.use(cookieParser());
- app.use(csrf({ cookie: true }));
  app.use((req, res, next) => {
   res.setHeader("Permissions-Policy", "	accelerometer=(), camera=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), payment=(), usb=(), interest-cohort=()");
   res.setHeader("Access-Control-Allow-Origin", "*");
@@ -97,13 +95,12 @@ module.exports = async (client) => {
    req.secure ? next() : res.redirect("https://" + req.headers.host + req.url);
   });
  }
+
  app.use(passport.initialize());
  app.use(passport.session());
  app.locals.domain = process.env.DOMAIN.split("//")[1];
  app.engine("html", ejs.renderFile);
  app.set("view engine", "html");
- app.use(express.json());
- app.use(express.urlencoded({ extended: true }));
  const renderTemplate = (res, req, template, data = {}) => {
   var hostname = req.headers.host;
   var pathname = url.parse(req.url).pathname;
@@ -129,6 +126,11 @@ module.exports = async (client) => {
   };
   res.render(path.resolve(`${templateDir}${path.sep}${template}`), Object.assign(baseData, data));
  };
+ app.use(express.json());
+ app.use(express.urlencoded({ extended: false }));
+ app.use(cookieParser());
+ const csrfProtection = csrf({ cookie: true });
+
  console.log(chalk.bold(chalk.blue.bold("[HOST]")) + chalk.cyan.bold(" Setting up dashboard endpoints..."));
  const checkAuth = (req, res, next) => {
   if (req.isAuthenticated()) return next();
@@ -318,7 +320,7 @@ module.exports = async (client) => {
  });
 
  // Settings endpoint.
- app.get("/dashboard/:guildID", checkAuth, async (req, res) => {
+ app.get("/dashboard/:guildID", csrfProtection, checkAuth, async (req, res) => {
   const guild = await client.guilds.cache.get(req.params.guildID);
   if (!guild) return res.redirect("/error?message=no+guild");
   const first_member = req.user.id;
@@ -330,10 +332,11 @@ module.exports = async (client) => {
    guild: guild,
    perms: Discord.Permissions,
    guild_owner: await guild.fetchOwner(),
+   csrfToken: req.csrfToken(),
   });
  });
 
- app.post("/dashboard/:guildID", checkAuth, async (req, res) => {
+ app.post("/dashboard/:guildID", csrfProtection, checkAuth, async (req, res) => {
   const guild = await client.guilds.cache.get(req.params.guildID);
   if (!guild) return res.redirect("/error?message=no+guild");
   const first_member = req.user.id;
@@ -357,6 +360,7 @@ module.exports = async (client) => {
    perms: Discord.Permissions,
    alert: "Your changes have been saved! ✅",
    guild_owner: await guild.fetchOwner(),
+   csrfToken: req.csrfToken(),
   });
  });
 
@@ -389,7 +393,6 @@ module.exports = async (client) => {
    guild_owner: await guild.fetchOwner(),
   });
  });
-
  app.get("/dashboard/:guildID/logging", checkAuth, async (req, res) => {
   const guild = await client.guilds.cache.get(req.params.guildID);
   if (!guild) return res.redirect("/error?message=no+guild");
