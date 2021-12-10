@@ -1036,41 +1036,41 @@ code {
 }
 
 .banner {
-background: #009579;
-text-align: left;
-border-radius: 5px;
-max-width: 90%;
-margin: 0 auto;
-color: #fff;
-margin-bottom: 15px;
+ background: #009579;
+ text-align: left;
+ border-radius: 5px;
+ max-width: 90%;
+ margin: 0 auto;
+ color: #fff;
+ margin-bottom: 15px;
 }
 
 .banner-content {
-padding: 10px;
-width: 100%;
-display: flex;
-align-content: center;
-align-items: center;
+ padding: 10px;
+ width: 100%;
+ display: flex;
+ align-content: center;
+ align-items: center;
 }
 
 .banner-text {
-flex-grow: 1;
-line-height: 1.4;
-font-family: "Poppins";
+ flex-grow: 1;
+ line-height: 1.4;
+ font-family: "Poppins";
 }
 
 .banner-close {
-background: none;
-border: none;
-cursor: pointer;
+ background: none;
+ border: none;
+ cursor: pointer;
 }
 
 .error-icon {
-color: #9a98a1;
-border-radius: 50%;
-background: var(--navbar);
-padding: 20px;
-margin-bottom: 0;
+ color: #9a98a1;
+ border-radius: 50%;
+ background: var(--navbar);
+ padding: 20px;
+ margin-bottom: 0;
 }
 
 .center-button {
@@ -1091,3 +1091,29 @@ margin-bottom: 0;
  background-color: rgb(71, 83, 197);
 }
 
+.copy-message {
+ visibility: hidden;
+ opacity: 0;
+ pointer-events: none;
+ min-width: 120px;
+ background-color: rgb(var(--edit));
+ color: #fff;
+ box-shadow: 0 3px 15px 0 rgba(0, 0, 0, 0.1), 0 1px 3px 0 rgba(0, 0, 0, 0.08);
+ text-align: center;
+ border-radius: 4px;
+ padding: 16px;
+ position: fixed;
+ font-weight: bold;
+ z-index: 9999;
+ transition: 350ms all;
+ right: 0;
+ bottom: 0;
+ font-size: 14px;
+ margin: 15px;
+}
+
+.copy-message.show {
+ visibility: visible;
+ opacity: 1;
+ pointer-events: all;
+}

@@ -8,18 +8,12 @@
 <% const checked = "roles" %>
 <%- include("../includes/side_nav", { bot, user, path, guild_name: guild.name, guild_icon: iconurl, checked_nav: checked, guild }) %>
 <div class="content">
-<% function checkdays(date) {
- let now = new Date();
- let diff = now.getTime() - date.getTime();
- let days = Math.floor(diff / 86400000);
- return days + (days == 1 ? " day" : " days") + " ago";
-} %>
 <div class="guild">
 <img class="server-image img" src="<%= iconurl %>" alt="<%= guild.name %>"/>
 <h1 class="server-name"><%= guild.name %></h1>
 <p class="server-description"><%= guild.description %></p>
 <hr>
-<h2>Roles</h2>
+<h2>Roles (<%= guild.roles.cache.size %>)</h2>
 
 <% function pick_color(color) {
 var c = color.substring(1);
@@ -39,9 +33,32 @@ if (luma < 50) {
 
 
 <% guild.roles.cache.forEach(role => { %>
-<div class="r" style="color: <%= pick_color(role.hexColor) %>" title="<%= role.id %>"><%= role.name %></div>
+<div class="r"  data-clipboard="<%= role.id %>" style="color: <%= pick_color(role.hexColor) %>" title="Click to copy ID: <%= role.id %>"><%= role.name %></div>
 <% }) %>
+<div id="copy" class="copy-message">ID coppied! ✅</div>
+<script>
+
+document.querySelectorAll('.r').forEach(item => {
+  item.addEventListener('click', event => {
+let text = item.getAttribute("data-clipboard");
+if(text) navigator.clipboard.writeText(text);
+let copymessage = document.getElementById("copy");
+copymessage.classList.add("show");
+setTimeout(function(){ copymessage.className = copymessage.className.replace("show", ""); 
+}, 1500);
+
+  })
+})
 
 
+function copied() {
+var text = "Example text to appear on clipboard";
+navigator.clipboard.writeText(text)
+var copymessage = document.getElementById("copy");
+copymessage.classList.add("show");
+setTimeout(function(){ copymessage.className = copymessage.className.replace("show", ""); 
+}, 1500);
+}
+</script>
 </div>
 <%- include("../includes/footer") %>

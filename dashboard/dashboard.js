@@ -97,8 +97,8 @@ module.exports = async (client) => {
  app.locals.domain = process.env.DOMAIN.split("//")[1];
  app.engine("html", ejs.renderFile);
  app.set("view engine", "html");
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+ app.use(express.json());
+ app.use(express.urlencoded({ extended: true }));
 
  const renderTemplate = (res, req, template, data = {}) => {
   var hostname = req.headers.host;
@@ -346,15 +346,14 @@ app.use(express.urlencoded({ extended: true }));
   if (nickname && nickname.length < 1) nickname = guild.me.nickname || guild.me.user.username;
   if (data.nickname) {
    if (!nickname) nickname = guild.me.nickname || guild.me.user.username;
-   guild.me.setNickname(nickname);
+   await guild.me.setNickname(nickname);
   }
-  renderTemplate(res, req, "server.ejs", {
+  await renderTemplate(res, req, "server.ejs", {
    guild: guild,
    perms: Discord.Permissions,
    alert: "Your changes have been saved! ✅",
    guild_owner: await guild.fetchOwner(),
   });
-
  });
 
  app.get("/dashboard/:guildID/roles", checkAuth, async (req, res) => {
