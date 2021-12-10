@@ -4,6 +4,8 @@ const url = require("url");
 const path = require("path");
 const express = require("express");
 const chalk = require("chalk");
+const cookieParser = require("cookie-parser");
+const csrf = require("csurf");
 const passport = require("passport");
 const Strategy = require("passport-discord").Strategy;
 const config = require("../config/main_config");
@@ -64,6 +66,8 @@ module.exports = async (client) => {
  app.use(helmet.permittedCrossDomainPolicies());
  app.use(helmet.referrerPolicy());
  app.use(helmet.xssFilter());
+ app.use(cookieParser());
+ app.use(csrf({ cookie: true }));
  app.use((req, res, next) => {
   res.setHeader("Permissions-Policy", "	accelerometer=(), camera=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), payment=(), usb=(), interest-cohort=()");
   res.setHeader("Access-Control-Allow-Origin", "*");
@@ -86,6 +90,7 @@ module.exports = async (client) => {
    saveUninitialized: false,
   })
  );
+
  if (config.secure_connection == true) {
   app.enable("trust proxy");
   app.use((req, res, next) => {
@@ -99,7 +104,6 @@ module.exports = async (client) => {
  app.set("view engine", "html");
  app.use(express.json());
  app.use(express.urlencoded({ extended: true }));
-
  const renderTemplate = (res, req, template, data = {}) => {
   var hostname = req.headers.host;
   var pathname = url.parse(req.url).pathname;
