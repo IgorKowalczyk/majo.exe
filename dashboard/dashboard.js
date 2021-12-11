@@ -1,5 +1,5 @@
 if (Number(process.version.slice(1).split(".")[0]) < 16) throw new Error("Majo.exe requires Node.js v16 or higher. Re-run the bot with Node.js v16 or higher!");
-const Discord = require("discord.js");
+const { Permissions, MessageEmbed, WebhookClient } = require("discord.js");
 const url = require("url");
 const path = require("path");
 const express = require("express");
@@ -10,6 +10,7 @@ const passport = require("passport");
 const Strategy = require("passport-discord").Strategy;
 const config = require("../config/main_config");
 const ejs = require("ejs");
+const validator = require("validator");
 const bodyParser = require("body-parser");
 const fs = require("fs");
 const app = express();
@@ -183,7 +184,7 @@ module.exports = async (client) => {
  // Features list redirect endpoint.
  app.get("/profile", checkAuth, async (req, res) => {
   renderTemplate(res, req, "profile.ejs", {
-   perms: Discord.Permissions,
+   perms: Permissions,
   });
  });
 
@@ -277,14 +278,14 @@ module.exports = async (client) => {
  // Dashboard endpoint.
  app.get("/dashboard", checkAuth, (req, res) => {
   renderTemplate(res, req, "dashboard.ejs", {
-   perms: Discord.Permissions,
+   perms: Permissions,
   });
  });
 
  // Dashboard error handler
  app.get("/error", (req, res) => {
   renderTemplate(res, req, "error.ejs", {
-   perms: Discord.Permissions,
+   perms: Permissions,
   });
  });
 
@@ -294,29 +295,93 @@ module.exports = async (client) => {
  });
 
  // Contact endpoint
- app.get("/contact", async (req, res) => {
-  renderTemplate(res, req, "contact.ejs");
+ app.get("/contact", csrfProtection, async (req, res) => {
+  renderTemplate(res, req, "contact.ejs", {
+   csrfToken: req.csrfToken(),
+  });
  });
- app.post("/contact", checkAuth, async (req, res) => {
-  if (req.body.type === "contact") {
-   const contactwebhook = new Discord.WebhookClient({ url: process.env.CONTACT_WEBHOOK });
-   if (!req.body.name || !req.body.id || !req.body.email || !req.body.msg) return;
-   const contact = new Discord.MessageEmbed() // Prettier
-    .setColor("RANDOM")
-    .setTitle(`📬 Contact Form`)
-    .setDescription(`Someone just send message to us!`)
-    .addField(`👥 User`, `\`${req.body.name.substr(0, 100) || "Unknown"}\` | <@${req.body.id}> (ID: \`${req.body.id || "Unknown"}\`)`)
-    .addField("📧 Email", `\`\`\`${req.body.email.substr(0, 100) || "Unknown"}\`\`\``)
-    .addField("📝 Message", `\`\`\`${req.body.msg.substr(0, 2000) || "None"}\`\`\``)
-    .setTimestamp()
-    .setFooter(capitalize(client.user.username), client.user.displayAvatarURL());
-   contactwebhook.send({
-    // Prettier
-    username: capitalize(client.user.username) + " Contact",
-    avatarURL: client.user.displayAvatarURL(),
-    embeds: [contact],
+
+ app.post("/contact", csrfProtection, checkAuth, async (req, res) => {
+  const data = req.body;
+  if (!data) {
+   res.status(400);
+   return res.redirect("/error?message=no+data+send");
+  }
+  if (!data.id) {
+   res.status(401);
+   return res.redirect("/error?message=please+login");
+  }
+  if (!data.name || data.name.length < 1) {
+   return renderTemplate(res, req, "contact.ejs", {
+    alert: data.name && data.name.lenght < 1 ? "Invaild nickname!" : "Please enter your nickname!",
+    error: true,
+    csrfToken: req.csrfToken(),
    });
   }
+  if (data.name && data.name.lenght > 100) {
+   return renderTemplate(res, req, "contact.ejs", {
+    alert: "Too long nickname!",
+    error: true,
+    csrfToken: req.csrfToken(),
+   });
+  }
+
+  if (!data.email || data.email.length < 1) {
+   return renderTemplate(res, req, "contact.ejs", {
+    alert: data.email && data.email.lenght < 1 ? "Invaild email!" : "Please enter email!",
+    error: true,
+    csrfToken: req.csrfToken(),
+   });
+  }
+  if (data.email && !validator.isEmail(data.email)) {
+   return renderTemplate(res, req, "contact.ejs", {
+    alert: "Please enter vaild email!",
+    error: true,
+    csrfToken: req.csrfToken(),
+   });
+  }
+  if (data.email && data.email.lenght > 100) {
+   return renderTemplate(res, req, "contact.ejs", {
+    alert: "Too long email!",
+    error: true,
+    csrfToken: req.csrfToken(),
+   });
+  }
+  if (!data.message || data.message.length < 1) {
+   return renderTemplate(res, req, "contact.ejs", {
+    alert: "Please enter your message!",
+    error: true,
+    csrfToken: req.csrfToken(),
+   });
+  }
+  if (data.message && data.message.lenght > 1000) {
+   return renderTemplate(res, req, "contact.ejs", {
+    alert: "Too long message!",
+    error: true,
+    csrfToken: req.csrfToken(),
+   });
+  }
+  const webhook = new WebhookClient({ url: process.env.CONTACT_WEBHOOK });
+  const contact_form = new MessageEmbed() // Prettier
+   .setColor("#4f545c")
+   .setTitle(`📬 Contact Form`)
+   .setDescription(`Someone just send message to us!`)
+   .addField(`User`, `> \`${req.body.name.substr(0, 100)}\` | <@${req.body.id}> (ID: \`${req.body.id}\`)`)
+   .addField("Email", `> [${req.body.email.substr(0, 100)}](https://discord.com/users/${req.body.id})`)
+   .addField("Message", `> \`\`\`${req.body.message.substr(0, 2000)}\`\`\``)
+   .setTimestamp()
+   .setFooter(capitalize(client.user.username), client.user.displayAvatarURL());
+  await webhook.send({
+   // Prettier
+   username: capitalize(client.user.username) + " Contact",
+   avatarURL: client.user.displayAvatarURL(),
+   embeds: [contact_form],
+  });
+  return renderTemplate(res, req, "contact.ejs", {
+   alert: "Your message have been send! ✅",
+   error: false,
+   csrfToken: req.csrfToken(),
+  });
  });
 
  // Settings endpoint.
@@ -336,6 +401,7 @@ module.exports = async (client) => {
   });
  });
 
+ // Settings save endpoint
  app.post("/dashboard/:guildID", csrfProtection, checkAuth, async (req, res) => {
   const guild = await client.guilds.cache.get(req.params.guildID);
   if (!guild) return res.redirect("/error?message=no+guild");

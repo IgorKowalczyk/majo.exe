@@ -10,19 +10,5 @@ window.onload = () => {
    document.getElementById("captcha").innerHTML = "Invalid Captcha Attempt.";
    return false;
   }
-  if (v.length != 0) {
-   document.body.classList.add("done");
-   fetch("/contact", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({
-     type: "contact",
-     name: name.value || "Unknown",
-     email: email.value || "Unknown",
-     msg: msg.value,
-     id: userID || "Unknown",
-    }),
-   }).then((res) => res.ok && document.body.classList.add("done"));
-  }
  });
 };

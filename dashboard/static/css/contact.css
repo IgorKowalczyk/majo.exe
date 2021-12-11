@@ -11,7 +11,7 @@ input {
 
 input:disabled,
 textarea:disabled {
- opacity: 0.5;
+ opacity: 0.3;
  cursor: not-allowed;
 }
 
@@ -151,6 +151,7 @@ iframe {
 input.input {
  height: 40px;
  margin-top: 10px;
+ font-family: "Poppins";
  border-radius: 5px;
 }
 
