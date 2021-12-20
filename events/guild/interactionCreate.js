@@ -2,7 +2,7 @@
 
 module.exports = async (client, interaction) => {
  if (interaction.isCommand()) {
-  await interaction.deferReply({ ephemeral: true }).catch((err) => {
+  await interaction.deferReply({ ephemeral: false }).catch((err) => {
    console.log(err);
   });
   const cmd = client.slashCommands.get(interaction.commandName);

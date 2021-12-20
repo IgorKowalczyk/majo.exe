@@ -167,6 +167,7 @@ module.exports = {
      });
      collector.on("collect", select);
      collector.on("end", () => {
+      (async () => {
       const end_embed = new MessageEmbed()
        .setAuthor(`${client.user.username} Help`)
        .setTitle(`Time elapsed!`)
@@ -193,11 +194,12 @@ module.exports = {
          .setLabel("Maybe invite me!")
          .setStyle("LINK")
        );
-      msgg.editReply({
+      await interaction.editReply({
        embeds: [end_embed],
        components: [row],
       });
-     });
+     })();
+    })
     });
    } else {
     let catts = [];
@@ -216,7 +218,6 @@ module.exports = {
        cname: `${emoe}\`${name}\``,
        des,
       };
-
       return obj;
      });
 

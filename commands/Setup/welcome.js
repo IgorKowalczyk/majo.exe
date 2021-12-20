@@ -8,6 +8,7 @@ module.exports = {
  category: "Setup",
  usage: "welcome [channel]",
  run: async (client, message, args) => {
+  const prefix = client.prefix;
   try {
    if (!message.member.permissions.has("MANAGE_GUILD")) {
     return client.createError(message, `${client.bot_emojis.error} | You don't have permissions to manage welcome channels! You need \`MANAGE_GUILD\` permission!`);
