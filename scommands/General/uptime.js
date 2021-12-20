@@ -4,11 +4,8 @@ require("moment-duration-format");
 
 module.exports = {
  name: "uptime",
- aliases: ["bot", "botuptime"],
- description: "Display bot uptime",
- category: "General",
- usage: "uptime",
- run: async (client, message, args) => {
+ description: "Display Majo.exe uptime",
+ run: async (client, interaction, args) => {
   try {
    const duration = moment.duration(client.uptime).format(" D [days], H [hrs], m [mins], s [secs]");
    const date = new Date();
@@ -16,7 +13,7 @@ module.exports = {
    const embed = new MessageEmbed() // Prettier
     .setTitle(
      `${client.bot_emojis.uptime} Uptime`,
-     message.guild.iconURL({
+     interaction.guild.iconURL({
       dynamic: true,
       format: "png",
      })
@@ -25,8 +22,8 @@ module.exports = {
     .addField(`${client.bot_emojis.rocket} Date Launched`, `<t:${moment(timestamp).unix()}> (<t:${moment(timestamp).unix()}:R>)`)
     .setTimestamp()
     .setFooter(
-     `Requested by ${message.author.username}`,
-     message.author.displayAvatarURL({
+     `Requested by ${interaction.member.user.username}`,
+     interaction.member.user.displayAvatarURL({
       dynamic: true,
       format: "png",
       size: 2048,
@@ -42,13 +39,13 @@ module.exports = {
       .setLabel("Status page")
       .setStyle("LINK")
     );
-    message.reply({ embeds: [embed], components: [row] });
+    interaction.followUp({ ephemeral: false, embeds: [embed], components: [row] });
    } else {
-    message.reply({ embeds: [embed] });
+    interaction.followUp({ ephemeral: false, embeds: [embed] });
    }
   } catch (err) {
    console.log(err);
-   return client.createCommandError(message, err);
+   return client.createSlashCommandError(interaction, err);
   }
  },
 };

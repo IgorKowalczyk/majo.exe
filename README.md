@@ -51,7 +51,8 @@ Go to [this link](https://discord.com/oauth2/authorize/?permissions=4294967287&s
     * `MYSQL_HOST` - Your MYSQL Host Endpoint
     * `MYSQL_PASSWORD` - Your MYSQL user password
     * `MYSQL_USER` - Your MYSQL User name who can acces the database
-    * `STATUS_WEBHOOK` - Your Stats Webhook URL (Discord)
+    * `STATUS_WEBHOOK` - Your status webhook URL (Discord)
+    * `ERRORS_WEBHOOK` - Your errors webhook URL (Discord)
 7. Run `npm run bot`
 > Note: See the example [`.env` file below](#example-env-file)!
 
@@ -113,6 +114,7 @@ Go to [this link](https://discord.com/oauth2/authorize/?permissions=4294967287&s
 | `RECAPTCHA_KEY` | Google recaptcha v2 key | ❌ | ✅ |
 | `CONTACT_WEBHOOK` | Your contact form webhook URL | ❌ | ✅ |
 | `STATUS_WEBHOOK` | Your status webhook URL | ✅ | ❌ |
+| `ERRORS_WEBHOOK` | Your errors webhook URL | ✅ | ✅ |
 #### Example `.env` file
 <details><summary>[?] Click to see example <code>.env</code> file!</summary>
  
@@ -132,6 +134,7 @@ MYSQL_PASSWORD=YOUR_MYSQL_USER_PASSWORD
 MYSQL_USER=YOUR_MYSQL_DATABASE_USER
 CONTACT_WEBHOOK=YOUR_CONTACT_FORM_WEBHOOK
 STATUS_WEBHOOK=YOUR_STATUS_WEBHOOK_URL
+ERRORS_WEBHOOK=YOUR_ERRORS_WEBHOOK_URL
 RECAPTCHA_KEY=YOUR_RECAPTCHA_KEY
 
 # Not required

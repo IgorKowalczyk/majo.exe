@@ -40,6 +40,10 @@
    "description": "Status webhook URL",
    "required": true
   },
+  "ERRORS_WEBHOOK": {
+   "description": "Errors webhook URL",
+   "required": true
+  },
   "DASHBOARD": {
    "description": "Dashboard launch config (Boolean | true/false)",
    "required": true

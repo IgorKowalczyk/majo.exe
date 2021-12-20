@@ -2,7 +2,7 @@ const { Client, CommandInteraction, MessageEmbed } = require("discord.js");
 
 module.exports = {
  name: "ping",
- description: "Checks Majo response time to Discord",
+ description: "Checks Majo.exe response time to Discord",
  run: async (client, interaction, args) => {
   try {
    const msg = new MessageEmbed()
@@ -15,13 +15,13 @@ module.exports = {
       size: 2048,
      })
     )
-    .setColor("RANDOM")
+    .setColor("#5865F2")
     .setTimestamp()
     .setTitle(`${client.bot_emojis.ping} Pong!`);
    interaction.followUp({ ephemeral: true, embeds: [msg] });
   } catch (err) {
    console.log(err);
-   interaction.followUp({ ephemeral: true, content: "An error has occured!" });
+   return client.createSlashCommandError(interaction, err);
   }
  },
 };
