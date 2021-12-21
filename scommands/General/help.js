@@ -168,38 +168,38 @@ module.exports = {
      collector.on("collect", select);
      collector.on("end", () => {
       (async () => {
-      const end_embed = new MessageEmbed()
-       .setAuthor(`${client.user.username} Help`)
-       .setTitle(`Time elapsed!`)
-       .setColor("RED")
-       .setDescription(`> To see the help menu again please type \`${client.prefix} help\`\n> Or to see commands from category please type \`${client.prefix} help [category]\``)
-       .setFooter(
-        `Requested by ${interaction.member.user.tag} • ${client.ws.ping} ms ping!`,
-        interaction.member.user.displayAvatarURL({
-         dynamic: true,
-        })
-       )
-       .setTimestamp()
-       .setThumbnail(
-        client.user.displayAvatarURL({
-         dynamic: true,
-         size: 2048,
-        })
-       );
-      const row = new MessageActionRow() // Prettier
-       .addComponents(
-        new MessageButton() // Prettier
-         .setURL(`https://discord.com/oauth2/authorize/?permissions=${client.config.permissions}&scope=${client.config.scopes}&client_id=${client.user.id}`)
-         //.setEmoji(client.bot_emojis.giveaway)
-         .setLabel("Maybe invite me!")
-         .setStyle("LINK")
-       );
-      await interaction.editReply({
-       embeds: [end_embed],
-       components: [row],
-      });
-     })();
-    })
+       const end_embed = new MessageEmbed()
+        .setAuthor(`${client.user.username} Help`)
+        .setTitle(`Time elapsed!`)
+        .setColor("RED")
+        .setDescription(`> To see the help menu again please type \`${client.prefix} help\`\n> Or to see commands from category please type \`${client.prefix} help [category]\``)
+        .setFooter(
+         `Requested by ${interaction.member.user.tag} • ${client.ws.ping} ms ping!`,
+         interaction.member.user.displayAvatarURL({
+          dynamic: true,
+         })
+        )
+        .setTimestamp()
+        .setThumbnail(
+         client.user.displayAvatarURL({
+          dynamic: true,
+          size: 2048,
+         })
+        );
+       const row = new MessageActionRow() // Prettier
+        .addComponents(
+         new MessageButton() // Prettier
+          .setURL(`https://discord.com/oauth2/authorize/?permissions=${client.config.permissions}&scope=${client.config.scopes}&client_id=${client.user.id}`)
+          //.setEmoji(client.bot_emojis.giveaway)
+          .setLabel("Maybe invite me!")
+          .setStyle("LINK")
+        );
+       await interaction.editReply({
+        embeds: [end_embed],
+        components: [row],
+       });
+      })();
+     });
     });
    } else {
     let catts = [];

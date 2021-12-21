@@ -1,4 +1,4 @@
-const {  MessageEmbed, MessageActionRow, MessageButton } = require("discord.js");
+const { MessageEmbed, MessageActionRow, MessageButton } = require("discord.js");
 const fetch = require("node-fetch");
 
 module.exports = {
@@ -43,25 +43,25 @@ module.exports = {
  run: async (client, interaction, args) => {
   try {
    let activities = {
-    "bio": "773336526917861400",
-    "chess": "832012774040141894",
-    "fio": "814288819477020702",
-    "pn": "755827207812677713",
-    "yt": "755600276941176913",
-   }
+    bio: "773336526917861400",
+    chess: "832012774040141894",
+    fio: "814288819477020702",
+    pn: "755827207812677713",
+    yt: "755600276941176913",
+   };
    let activities_names = {
-    "bio": "Betrayal.io",
-    "chess": "Chess in the Park",
-    "fio": "Fishington.io",
-    "pn": "Poker Night",
-    "yt": "YouTube Together",
-   }
+    bio: "Betrayal.io",
+    chess: "Chess in the Park",
+    fio: "Fishington.io",
+    pn: "Poker Night",
+    yt: "YouTube Together",
+   };
    let channel = client.channels.cache.get(args[0]);
-   if(!channel) {
-    return client.createSlashError(interaction, `❌ | Please select vaild voice channel!`)
+   if (!channel) {
+    return client.createSlashError(interaction, `❌ | Please select vaild voice channel!`);
    }
    if (channel.type !== "GUILD_VOICE") {
-    return client.createSlashError(interaction, `❌ | Channel must be a voice channel!`)
+    return client.createSlashError(interaction, `❌ | Channel must be a voice channel!`);
    }
    //console.log(activities[args[1]]);
    //console.log(activities_names[args[1]]);
@@ -83,7 +83,7 @@ module.exports = {
     .then((res) => res.json())
     .then((invite) => {
      if (!invite.code) {
-      return client.createSlashError(interaction, `❌ | Something went wrong while creating ${activities_names[args[1]]} invite! Please try again later!`)
+      return client.createSlashError(interaction, `❌ | Something went wrong while creating ${activities_names[args[1]]} invite! Please try again later!`);
      }
      const row = new MessageActionRow() // Prettier
       .addComponents(
@@ -95,7 +95,7 @@ module.exports = {
      const embed = new MessageEmbed() // Prettier
       .setDescription(`> [**Click on the button to start playing ${activities_names[args[1]]}**](https://discord.com/invite/${invite.code})`)
       .setColor("GREEN");
-     interaction.followUp({ ephemeral: false, embeds: [embed], components: [row]});
+     interaction.followUp({ ephemeral: false, embeds: [embed], components: [row] });
     });
   } catch (err) {
    console.log(err);

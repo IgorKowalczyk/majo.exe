@@ -1,7 +1,11 @@
 <%- include("includes/head", { bot, user, path, title: "Dashboard" }) %>
+<% if (user) { %>
+<% const checked = "servers" %>
+<%- include("includes/side_nav_other", { bot, user, path, checked_nav: checked }) %>
+<% } %>
 <div class="content">
 <link rel="stylesheet" type="text/css" href="<%= secure_connection %><%= domain %>/css/dashboard.css">
-
+<h1 class="center server-emoji">^_^</h1>
 <h2>Select server</h2>
 <p class="note"><span class="bold">Info:</span> You need the <code>MANAGE_GUILD</code> permission to view your servers here.</p>
 

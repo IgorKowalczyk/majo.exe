@@ -17,9 +17,11 @@ const app = express();
 const session = require("express-session");
 const MemoryStore = require("memorystore")(session);
 const https = require("https");
+const moment = require("moment");
 const rate_limit = require("express-rate-limit");
 const helmet = require("helmet");
 const { constants } = require("crypto");
+const package = require("../package.json");
 const port = process.env.PORT || 6565;
 require("dotenv").config();
 require("../utilities/dashboard");
@@ -120,6 +122,7 @@ module.exports = async (client) => {
    url: res,
    title: client.username,
    prefix: process.env.PREFIX,
+   package: package,
    req: req,
    name: client.username,
    recaptcha: process.env.RECAPTCHA_KEY,
@@ -219,7 +222,9 @@ module.exports = async (client) => {
  // Status page endpoint.
  if (config.status) {
   app.get("/status", (req, res) => {
-   renderTemplate(res, req, "status.ejs");
+   renderTemplate(res, req, "status.ejs", {
+    moment: moment,
+   });
   });
  }
 
@@ -395,7 +400,7 @@ module.exports = async (client) => {
   if (!member.permissions.has("MANAGE_GUILD")) return res.redirect("/error?message=missing+perm");
   renderTemplate(res, req, "server.ejs", {
    guild: guild,
-   perms: Discord.Permissions,
+   perms: Permissions,
    guild_owner: await guild.fetchOwner(),
    csrfToken: req.csrfToken(),
   });
@@ -423,7 +428,7 @@ module.exports = async (client) => {
   }
   await renderTemplate(res, req, "server.ejs", {
    guild: guild,
-   perms: Discord.Permissions,
+   perms: Permissions,
    alert: "Your changes have been saved! ✅",
    guild_owner: await guild.fetchOwner(),
    csrfToken: req.csrfToken(),
@@ -440,7 +445,7 @@ module.exports = async (client) => {
   if (!member.permissions.has("MANAGE_GUILD")) return res.redirect("/error?message=missing+perm");
   renderTemplate(res, req, "/server/roles.ejs", {
    guild: guild,
-   perms: Discord.Permissions,
+   perms: Permissions,
    guild_owner: await guild.fetchOwner(),
   });
  });
@@ -455,7 +460,7 @@ module.exports = async (client) => {
   if (!member.permissions.has("MANAGE_GUILD")) return res.redirect("/error?message=missing+perm");
   renderTemplate(res, req, "/server/embeds.ejs", {
    guild: guild,
-   perms: Discord.Permissions,
+   perms: Permissions,
    guild_owner: await guild.fetchOwner(),
   });
  });
@@ -469,7 +474,7 @@ module.exports = async (client) => {
   if (!member.permissions.has("MANAGE_GUILD")) return res.redirect("/error?message=missing+perm");
   renderTemplate(res, req, "/server/logging.ejs", {
    guild: guild,
-   perms: Discord.Permissions,
+   perms: Permissions,
    guild_owner: await guild.fetchOwner(),
   });
  });

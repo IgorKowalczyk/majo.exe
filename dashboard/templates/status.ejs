@@ -1,9 +1,48 @@
 <%- include("includes/head", { bot, user, path, description, title: "Status" , twitter, url }) %>
+<% if (user) { %>
+<% const checked = "status" %>
+<%- include("includes/side_nav_other", { bot, user, path, checked_nav: checked }) %>
+  <style>
+    @media screen and (min-width: 950px) {
+    .container {
+      max-width: unset;
+margin: 0 auto;
+    margin-top: 0px;
+    margin-left: auto;
+margin-left: 270px;
+margin-top: 60px;
+transition: 300ms all;
+    }
+    .boxes {
+      max-width: 800px;
+    }
+    }
+    </style>
+<% } %>
  <div class="container">
   <% function capitalize(string) { return string.charAt(0).toUpperCase() + string.slice(1); } %>
+
+<% if (bot.user.avatar) { botavatar = `https://cdn.discordapp.com/avatars/${bot.user.id}/${bot.user.avatar}?size=256`; } else { botavatar = `${secure_connection + domain}/pics/invaild-avatar.png`; } %>
    <h1 class="headerinfo">
-    <a style="color: #fff" href="https://discord.com/users/<%= bot.user.id %>" target="_blank" rel="noopener"><%= capitalize(bot.user.username) %> in numbers</a>
+  <img class="img statusimg" src="<%= botavatar %>" alt="Avatar" />
+    <a style="color: #fff" href="https://discord.com/users/<%= bot.user.id %>" target="_blank" rel="noopener"><%= capitalize(bot.user.username) %></a>
    </h1>
+   <% let status = bot.user.presence.status; %>
+   <style> 
+   .statusimg {
+    border: 3px solid;
+    display: block;
+    }
+       <% if(status == "online") { %>
+    .statusimg { border-color: #3ba55d }
+    <% } else if(status == "idle") { %>
+    .statusimg { border-color: #faa81a }
+   <% } else if(status == "dnd") { %>
+       .statusimg { border-color: #ed4245 }
+       <% } else { %>
+              .statusimg { border-color: #fff }
+              <% } %>
+   </style>
    <div class="boxes">
     <div class="box box1">
      <div class="boxcontainter">
@@ -58,14 +97,26 @@
    <hr>
 
    <h1 class="headerinfo">Uptime</h1>
-   <% totalSeconds=(bot.uptime / 1000); days=Math.floor(totalSeconds / 86400); totalSeconds %=86400;
-    hours=Math.floor(totalSeconds / 3600); totalSeconds %=3600; minutes=Math.floor(totalSeconds / 60)
-    seconds=Math.floor(totalSeconds % 60); %>
-
-    <p class="uptime">
-     <%= days %> Days, <%= hours %> hours, <%= minutes %> minutes, <%= seconds %> seconds
-    </p>
-
+    <p class="uptime" id="uptime"></p>
+<% const timestamp = new Date().getTime() - Math.floor(bot.uptime); %>
+<script type="text/javascript">
+function format({time: time, element: element}) {
+ let hours = Math.floor(time / 3600)
+ let minutes = Math.floor(time / 60 % 60)
+ let seconds = Math.floor(time % 60)
+ let arr = [];
+ arr.push(hours == 1 ? '1 hr' : hours + ' hrs');
+ arr.push(minutes > 1 ? minutes + ' mins' : minutes + ' min');
+ arr.push(seconds > 1 ? seconds + ' secs' : seconds + ' sec');
+ element.innerHTML = arr.join(' ');
+};
+const start = <%= moment(timestamp).unix() %>;
+var el = document.getElementById("uptime");
+  console.log(el)
+setInterval(function () {
+ format({time: new Date().getTime() / 1000 - start, element: el});
+}, 1000);
+ </script>
     <% if (config.status) { %>
      <hr>
      <h1 class="headerinfo">Status</h1>

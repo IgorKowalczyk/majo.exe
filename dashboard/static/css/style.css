@@ -195,6 +195,16 @@ img:not(.img, .server-icon) {
  margin-top: 0;
 }
 
+.server-emoji {
+ color: #9a98a1;
+ border-radius: 50%;
+ background: var(--navbar);
+ margin-bottom: 0;
+ width: 90px;
+ height: 90px;
+ padding-top: 20px;
+}
+
 h1,
 h2,
 h3,
@@ -552,7 +562,7 @@ li {
  flex: 1 1 0%;
  flex-direction: column;
  padding: 0px 0.5em;
- align-self: stretch;
+ /* align-self: stretch; */
 }
 
 .icon-and-name {

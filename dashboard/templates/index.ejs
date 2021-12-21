@@ -1,6 +1,27 @@
 <%- include("includes/head", { bot, user, path, description, title, twitter, url }) %>
 <% function capitalize(string) { return string.charAt(0).toUpperCase() + string.slice(1); } %>
 <% if (bot.user.avatar) { botavatar = `https://cdn.discordapp.com/avatars/${bot.user.id}/${bot.user.avatar}?size=256`; } else { botavatar = `${secure_connection + domain}/pics/invaild-avatar.png`; } %>
+<% if (user) { %>
+<% const checked = "home" %>
+<%- include("includes/side_nav_other", { bot, user, path, checked_nav: checked }) %>
+  <style>
+      @media screen and (min-width: 950px) {
+  .content-container, .hero-section {
+    width: unset !important;
+    margin-left: 270px !important;
+  }
+    .hero-section {
+      margin-top: 60px;
+    }
+  .hero-content {
+    margin-top: -60px !important;
+  }
+  .content-container {
+    padding: 0 40px !important;
+  }
+      }
+</style>
+<% } %>
 <section class="hero-section">
  <div class="hero-grid">
   <div class="hero-content">

@@ -1,4 +1,6 @@
 <%- include("includes/head", { bot, user, path, title: user.username + " profile" }) %>
+<% const checked = "profile" %>
+<%- include("includes/side_nav_other", { bot, user, path, checked_nav: checked }) %>
 <link rel="stylesheet" type="text/css" href="<%= secure_connection %><%= domain %>/css/user-profile.css">
 <div class="content">
 <% if (user.avatar) {
@@ -43,5 +45,11 @@
 <% } %>
 </div>
 </div>
+<style>
+  .sinfo {
+margin-bottom: 10px;
+margin-top: 5px;
+  }
+</style>
 <%- include("includes/footer") %>
 </div>

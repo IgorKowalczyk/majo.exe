@@ -1,13 +1,20 @@
 <link rel="stylesheet" type="text/css" href="<%= secure_connection %><%= domain %>/css/sidenav.css" />
+<% if (user.avatar) {
+ iconurl = `https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}`
+} else {
+ iconurl = `${secure_connection + domain}/pics/invaild-avatar.png`;
+}
+%>
 <div class="open-sidenav"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#FFFFFF"><path d="M0 0h24v24H0z" fill="none"/><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></svg></div>
 <div class="sidenav">
-<img class="server-avatar img " src="<%= guild_icon %>" alt="<%= guild_name %>"/>
-<h3 class="sidenav-header"><%= guild_name %></h3>
+<img class="server-avatar img " src="<%= iconurl %>" alt="<%= user.username %>"/>
+<h3 class="sidenav-header"><%= user.username %><span class="tag">#<%= user.discriminator %></span></h3>
 <hr class="hr-edited">
-<a href="/dashboard/<%= guild.id %>" class="guildname <% if(checked_nav == "home") { %>checked<% } %>"><%- include('./icons/home-sidenav.ejs') %> Home</a>
-<a href="/dashboard/<%= guild.id %>/roles" class="guildname <% if(checked_nav == "roles") { %>checked<% } %>"><%- include('./icons/role-sidenav.ejs') %> Roles</a>
-<a href="/dashboard/<%= guild.id %>/embeds" class="guildname <% if(checked_nav == "embeds") { %>checked<% } %>"><%- include('./icons/embeds-sidenav.ejs') %> Embeds</a>
-<a href="/dashboard/<%= guild.id %>/logging" class="guildname <% if(checked_nav == "logs") { %>checked<% } %>"><%- include('./icons/logs-sidenav.ejs') %>Logging</a>
+<a href="/" class="guildname <% if(checked_nav == "home") { %>checked<% } %>"><%- include('./icons/home-sidenav.ejs') %> Home</a>
+<a href="/dashboard" class="guildname <% if(checked_nav == "servers") { %>checked<% } %>"><%- include('./icons/dashboard-nav.ejs') %> Manage Servers</a>
+<a href="/profile" class="guildname <% if(checked_nav == "profile") { %>checked<% } %>"><%- include('./icons/profile.ejs') %> Profile</a>
+<a href="/contact" class="guildname <% if(checked_nav == "contact") { %>checked<% } %>"><%- include('./icons/embeds-sidenav.ejs') %> Contact</a>
+<!-- <a href="/logout" class="guildname red"><%- include('./icons/logout.ejs') %> Logout</a> -->
 <div class="position-bottom">
 <a href="/status" class="bottom-item" style="float: right"><%- include('./icons/signal.ejs') %> Status</a>
 <% if (config.github && package.version) { %>
@@ -23,4 +30,6 @@
   currentElement.classList.remove("checked");
   event.target.classList.add("checked");
  });
+
+
 </script>

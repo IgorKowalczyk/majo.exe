@@ -1,8 +1,14 @@
 <%- include("includes/head", { bot, user, path, title: "Contact" }) %>
 
-<link rel="stylesheet" type="text/css" href="<%= secure_connection %><%= domain %>/css/contact.css" />
+<% if (user) { %>
+<% const checked = "contact" %>
+<%- include("includes/side_nav_other", { bot, user, path, checked_nav: checked }) %>
+<div class="content" style="padding: 40px 20px 40px;">
+<% } else { %>
 <div class="container-contact">
  <div class="wrap-contact">
+<% } %>
+<link rel="stylesheet" type="text/css" href="<%= secure_connection %><%= domain %>/css/contact.css" />
   <% if (alert) { %>
   <% if(error == true) { %>
   <style>
