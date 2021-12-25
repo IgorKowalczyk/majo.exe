@@ -1,7 +1,7 @@
 const { MessageEmbed, MessageActionRow, MessageButton } = require("discord.js");
-const currency = require("currency-converter-lt");
-const currency_converter = new currency();
 const currencies_list = require("../../utilities/currencies");
+const cheerio = require("cheerio");
+const fetch = require("node-fetch");
 
 module.exports = {
  name: "currency-converter",
@@ -55,12 +55,16 @@ module.exports = {
     .setDescription(`${client.bot_emojis.loading} | Please wait... I'm converting \`${args[0]} ${args[1].toUpperCase()}\` to \`${args[2].toUpperCase()}\``);
    message.reply({ embeds: [wait] }).then((msg) => {
     (async () => {
-     await currency_converter
-      .from(args[1].toUpperCase())
-      .to(args[2].toUpperCase())
-      .amount(parseInt(args[0]))
-      .convert()
-      .then((response) => {
+     fetch(`https://www.google.co.in/search?q=${args[1].toUpperCase()}+to+${args[2].toUpperCase()}`)
+      .then((res) => res.text())
+      .then((html) => {
+       return cheerio.load(html);
+      })
+      .then(($) => {
+       return $(".iBp4i").text().split(" ")[0];
+      })
+      .then((rates) => {
+      if (rates.includes(",")) rates = rates.replace(",", "");
        const row = new MessageActionRow() // Prettier
         .addComponents(
          // Prettier
@@ -72,7 +76,7 @@ module.exports = {
        const embed = new MessageEmbed() // Prettier
         .setColor("GREEN")
         .setTitle(`${client.bot_emojis.success} Success!`)
-        .setDescription(`\`${args[0]} ${args[1].toUpperCase()}\` ➡️ \`${response.toString()} ${args[2].toUpperCase()}\`\n\n||Data provided by Google||`)
+        .setDescription(`\`${args[0]} ${args[1].toUpperCase()}\` ➡️ \`${parseFloat(rates)} ${args[2].toUpperCase()}\`\n\n||Data provided by [Google LLC](https://google.com)||`)
         .setFooter(
          `Requested by ${message.author.username}`,
          message.author.displayAvatarURL({
