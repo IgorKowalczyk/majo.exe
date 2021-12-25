@@ -1,5 +1,15 @@
 if (Number(process.version.slice(1).split(".")[0]) < 16) throw new Error("Majo.exe requires Node.js v16 or higher. Re-run the bot with Node.js v16 or higher!");
-const { Permissions, MessageEmbed, WebhookClient } = require("discord.js");
+const { Permissions, MessageEmbed, WebhookClient, Client } = require("discord.js");
+const Discord = require("discord.js");
+const client = new Client({
+ allowedMentions: {
+  parse: ["users", "roles"],
+  repliedUser: true,
+ },
+  // Uncomment line below (and delete line after ofc) if you enabled all indents!
+ //intents: [Discord.Intents.FLAGS.GUILDS, Discord.Intents.FLAGS.GUILD_MEMBERS, Discord.Intents.FLAGS.GUILD_BANS, Discord.Intents.FLAGS.GUILD_EMOJIS_AND_STICKERS, Discord.Intents.FLAGS.GUILD_INTEGRATIONS, Discord.Intents.FLAGS.GUILD_WEBHOOKS, Discord.Intents.FLAGS.GUILD_INVITES, Discord.Intents.FLAGS.GUILD_VOICE_STATES, Discord.Intents.FLAGS.GUILD_PRESENCES, Discord.Intents.FLAGS.GUILD_MESSAGES, Discord.Intents.FLAGS.GUILD_MESSAGE_REACTIONS, Discord.Intents.FLAGS.GUILD_MESSAGE_TYPING, Discord.Intents.FLAGS.DIRECT_MESSAGES, Discord.Intents.FLAGS.DIRECT_MESSAGE_REACTIONS, Discord.Intents.FLAGS.DIRECT_MESSAGE_TYPING],
+ intents: [Discord.Intents.FLAGS.GUILDS, Discord.Intents.FLAGS.GUILD_BANS, Discord.Intents.FLAGS.GUILD_EMOJIS_AND_STICKERS, Discord.Intents.FLAGS.GUILD_INTEGRATIONS, Discord.Intents.FLAGS.GUILD_WEBHOOKS, Discord.Intents.FLAGS.GUILD_INVITES, Discord.Intents.FLAGS.GUILD_VOICE_STATES, Discord.Intents.FLAGS.GUILD_MESSAGES, Discord.Intents.FLAGS.GUILD_MESSAGE_REACTIONS, Discord.Intents.FLAGS.GUILD_MESSAGE_TYPING, Discord.Intents.FLAGS.DIRECT_MESSAGES, Discord.Intents.FLAGS.DIRECT_MESSAGE_REACTIONS, Discord.Intents.FLAGS.DIRECT_MESSAGE_TYPING],
+});
 const url = require("url");
 const path = require("path");
 const express = require("express");
@@ -22,9 +32,15 @@ const rate_limit = require("express-rate-limit");
 const helmet = require("helmet");
 const { constants } = require("crypto");
 const package = require("../package.json");
-const port = process.env.PORT || 6565;
 require("dotenv").config();
 require("../utilities/dashboard");
+client.on("ready", () => {
+client.commands = new Discord.Collection();
+client.aliases = new Discord.Collection();
+require(`../handlers/dashboard-handler`)(client);
+})
+client.login(process.env.TOKEN);
+const port = process.env.PORT || 6565;
 function capitalize(string) {
  return string.charAt(0).toUpperCase() + string.slice(1);
 }
@@ -34,8 +50,6 @@ for (let i = 0; i <= 15; i++) {
 }
 
 console.log(chalk.bold(chalk.blue.bold("[HOST]")) + chalk.cyan.bold(" Starting dashboard..."));
-
-module.exports = async (client) => {
  console.log(chalk.bold(chalk.blue.bold("[HOST]")) + chalk.cyan.bold(" Setting up dashboard main config..."));
  console.log(chalk.bold(chalk.blue.bold("[HOST]")) + chalk.cyan.bold(` Dashboard credentials: \n* Domain: ${process.env.DOMAIN}\n* Port: ${process.env.PORT}\n* ID: ${process.env.ID}\n* G Analytics: ${process.env.ANALYTICS || "Not set"}`));
  const dataDir = path.resolve(`${process.cwd()}${path.sep}dashboard`);
@@ -507,4 +521,3 @@ module.exports = async (client) => {
    console.log(chalk.bold(chalk.blue.bold("[HOST]")) + chalk.cyan.bold(` Dashboard is up and running on port ${port}.`));
   });
  }
-};
