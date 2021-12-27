@@ -64,7 +64,7 @@ module.exports = {
        return $(".iBp4i").text().split(" ")[0];
       })
       .then((rates) => {
-      if (rates.includes(",")) rates = rates.replace(",", "");
+       if (rates.includes(",")) rates = rates.replace(",", "");
        const row = new MessageActionRow() // Prettier
         .addComponents(
          // Prettier
