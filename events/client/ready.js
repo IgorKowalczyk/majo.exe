@@ -3,6 +3,7 @@ const chalk = require("chalk");
 const { glob } = require("glob");
 const { promisify } = require("util");
 const moment = require("moment");
+const io = require("@pm2/io");
 
 module.exports = async (client) => {
  try {
@@ -128,6 +129,23 @@ module.exports = async (client) => {
 
    if (client.config.advanved_logging == true) console.log(chalk.bold(chalk.blue.bold(`[${client.user.username.toUpperCase().split(" ")[0]}]`)) + chalk.cyan.bold(" Successfully changed client status"));
   }, 10000);
+  if(client.additional_config.pm2.enabled == true) {
+   if (client.additional_config.pm2.metrics.ws_ping == true) {
+    setInterval(() => {
+     client.bot_ping_metrics.update(Math.round(client.ws.ping));
+    }, 30000);
+   }
+   if (client.additional_config.pm2.metrics.users_count == true) {
+    setInterval(() => {
+     client.users_count.update(client.guilds.cache.reduce((a, g) => a + g.memberCount, 0));
+    }, 10000);
+   }
+   if (client.additional_config.pm2.metrics.guilds_count == true) {
+    setInterval(() => {
+     client.guilds_count.update(client.guilds.cache.size);
+    }, 10000);
+   }
+  }
  } catch (err) {
   console.log(err);
  }

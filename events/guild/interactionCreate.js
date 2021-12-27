@@ -17,5 +17,8 @@ module.exports = async (client, interaction) => {
    } else if (option.value) args.push(option.value);
   }
   cmd.run(client, interaction, args);
+  if (client.additional_config.pm2.enabled == true && client.additional_config.pm2.metrics.slash_commands_used == true) {
+   client.slash_commands_used.inc();
+  }
  }
 };

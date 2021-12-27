@@ -115,6 +115,7 @@ Go to [this link](https://discord.com/oauth2/authorize/?permissions=4294967287&s
 | `CONTACT_WEBHOOK` | Your contact form webhook URL | ❌ | ✅ |
 | `STATUS_WEBHOOK` | Your status webhook URL | ✅ | ❌ |
 | `ERRORS_WEBHOOK` | Your errors webhook URL | ✅ | ✅ |
+| `NODE_ENV` | Environment variable (production/development) | ✅ | ✅ |
 #### Example `.env` file
 <details><summary>[?] Click to see example <code>.env</code> file!</summary>
  
@@ -136,6 +137,7 @@ CONTACT_WEBHOOK=YOUR_CONTACT_FORM_WEBHOOK
 STATUS_WEBHOOK=YOUR_STATUS_WEBHOOK_URL
 ERRORS_WEBHOOK=YOUR_ERRORS_WEBHOOK_URL
 RECAPTCHA_KEY=YOUR_RECAPTCHA_KEY
+NODE_ENV=production/development
 
 # Not required
 DASHBOARD=[true/false]

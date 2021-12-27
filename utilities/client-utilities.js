@@ -3,6 +3,7 @@ const emojis = require("../config/emojis_config");
 const config = require("../config/main_config");
 const additional_config = require("../config/additional_config");
 const backup = require("discord-backup");
+const io = require("@pm2/io");
 
 module.exports = function (client) {
  client.config = config;
@@ -18,6 +19,44 @@ module.exports = function (client) {
  client.snipes = new Discord.Collection();
  client.queue = new Map();
  client.giveawaysManager = require("./giveaways")(client);
+ if (additional_config.pm2.enabled == true) {
+  if (additional_config.pm2.metrics.messages_seen == true) {
+   client.messages_seen = io.counter({
+    name: "Messages seen",
+    type: "counter",
+   });
+  }
+  if (additional_config.pm2.metrics.commands_used == true) {
+   client.commands_used = io.counter({
+    name: "Commands used",
+    type: "counter",
+   });
+  }
+  if (additional_config.pm2.metrics.slash_commands_used == true) {
+    client.slash_commands_used = io.counter({
+     name: "Slash commands used",
+     type: "counter",
+    });
+   }
+  if (additional_config.pm2.metrics.ws_ping == true) {
+   client.bot_ping_metrics = io.histogram({
+    name: "Bot Ping (ms)",
+    measurement: "mean",
+   });
+  }
+  if (additional_config.pm2.metrics.users_count == true) {
+    client.users_count = io.histogram({
+     name: "Users count",
+     measurement: "mean",
+    });
+   }
+   if (additional_config.pm2.metrics.guilds_count == true) {
+    client.guilds_count = io.histogram({
+     name: "Guilds count",
+     measurement: "mean",
+    });
+   }
+ }
  const logs = require("discord-logs");
  logs(client);
  process.env.SESSION_SECRET = "";
