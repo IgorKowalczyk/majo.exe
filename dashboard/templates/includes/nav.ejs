@@ -2,6 +2,7 @@
  return string.charAt(0).toUpperCase() + string.slice(1);
 } %>
 <nav class="nav" role="navigation">
+<div style="inset: 0px; z-index: -1; position: absolute; backdrop-filter: blur(5px); opacity: 1;"></div>
 <span class="logo"><a href="<%= secure_connection %><%= domain %>" rel="noopener" aria-label="Open home page"><span class="name"><%= capitalize(bot.user.username) %></span><span class="tag">#<%- bot.user.discriminator %></span></a></span>
 <input class="menu-btn" type="checkbox" id="menu-btn"/>
 <label class="menu-icon" for="menu-btn"><span class="navicon"></span></label>
@@ -26,6 +27,7 @@
 
 </ul>
 
+<% if(user) { %>
 <ul class="dropdown" id="dropdown">
 <div class="cross-container"><div class="cross"></div></div>
 <% if (path === "/dashboard") { %>
@@ -40,4 +42,5 @@
 <span><a class="dropdown-li disabled" disabled="true" title="Soon!"><%- include('./icons/language.ejs') %> Language</a></span>
 <span><a class="dropdown-li logout" href="<%= secure_connection %><%= domain %>/logout" class="logout"><%- include('./icons/logout.ejs') %> Logout</a></span>
 </ul>
+  <% } %>
 </nav>

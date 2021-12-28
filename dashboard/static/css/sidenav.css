@@ -33,7 +33,7 @@
  overflow-y: auto;
  transition: all 0.3s ease-in-out;
  z-index: 9997;
- background-color: var(--navbar);
+ background-color: rgba(var(--navbar-rgb), 0.9);
  box-shadow: 0 3px 15px 0 rgba(0, 0, 0, 0.1), 0 1px 3px 0 rgba(0, 0, 0, 0.08);
  padding: 15px;
 }
@@ -116,6 +116,7 @@
  width: 30%;
  margin-top: 2px;
  margin-bottom: 15px;
+ background-color: #565e6a;
 }
 
 .red {

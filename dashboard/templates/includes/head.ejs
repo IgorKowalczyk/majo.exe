@@ -8,6 +8,7 @@
 } %>
 <title><% if(title) { %><%- capitalize(bot.user.username) + ' | ' + title %><% } else { %><%- capitalize(bot.user.username) + ' - The best Discord bot' %><% } %></title>
 <link rel="stylesheet" type="text/css" href="<%= secure_connection %><%= domain %>/css/style.css">
+<script src="https://twemoji.maxcdn.com/v/latest/twemoji.min.js"></script>
 <%- include('./favicons.ejs') %>
 <% if (config.google_analitics) { %>
 <%- include('./analytics.ejs') %>

@@ -9,7 +9,7 @@ module.exports = {
    slash_commands_used: true, // Boolean. Counter for all slash commands requested
    ws_ping: true, // Boolean. Meter for client ping
    users_count: true, // Boolean. Counter for all users seen by bot
-   guilds_count: true,// Boolean. Counter for all bot guilds
+   guilds_count: true, // Boolean. Counter for all bot guilds
   },
  },
  show_errors_on_no_command: true, // Show errors when no command was found. Example: {prefix} help -> output | {prefix} no_command -> nothing

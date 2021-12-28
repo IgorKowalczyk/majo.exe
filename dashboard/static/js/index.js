@@ -40,7 +40,7 @@ blur.addEventListener("click", () => {
  blur.classList.remove("visible");
 });
 
-const cross = document.querySelector(".cross");
+const cross = document.querySelector(".menu-icon");
 cross.addEventListener("click", () => {
  if (!dropdownel) return console.info("Dropdown is not rendered");
  if (!blur) return console.info("Blur is not rendered");
@@ -59,3 +59,7 @@ cross.addEventListener("click", () => {
  });
 });
 */
+
+window.onload = function () {
+ twemoji.parse(document.body, { folder: "svg", ext: ".svg" });
+};

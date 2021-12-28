@@ -33,11 +33,11 @@ module.exports = function (client) {
    });
   }
   if (additional_config.pm2.metrics.slash_commands_used == true) {
-    client.slash_commands_used = io.counter({
-     name: "Slash commands used",
-     type: "counter",
-    });
-   }
+   client.slash_commands_used = io.counter({
+    name: "Slash commands used",
+    type: "counter",
+   });
+  }
   if (additional_config.pm2.metrics.ws_ping == true) {
    client.bot_ping_metrics = io.histogram({
     name: "Bot Ping (ms)",
@@ -45,17 +45,17 @@ module.exports = function (client) {
    });
   }
   if (additional_config.pm2.metrics.users_count == true) {
-    client.users_count = io.histogram({
-     name: "Users count",
-     measurement: "mean",
-    });
-   }
-   if (additional_config.pm2.metrics.guilds_count == true) {
-    client.guilds_count = io.histogram({
-     name: "Guilds count",
-     measurement: "mean",
-    });
-   }
+   client.users_count = io.histogram({
+    name: "Users count",
+    measurement: "mean",
+   });
+  }
+  if (additional_config.pm2.metrics.guilds_count == true) {
+   client.guilds_count = io.histogram({
+    name: "Guilds count",
+    measurement: "mean",
+   });
+  }
  }
  const logs = require("discord-logs");
  logs(client);

@@ -44,6 +44,37 @@
 <a class="button disabled button-two" title="You don't have avatar!"><span class="reload-container"><%- include('includes/icons/download.ejs') %> Download Avatar</span></a>
 <% } %>
 </div>
+<% if (config.support_server) { %>
+ <div class="support-server-container">
+  <h3 class="support-server-header">Hey <%= user.username%>!</h3>
+  <p class="support-server-text">Join the Majo.exe server if you haven't already! <a href="/server">Join Now!</a></p>
+ </div>
+  <style>
+    .support-server-container {
+ padding: 16px;
+ margin: 8px;
+ border-radius: 5px;
+ background-color: rgba(88, 101, 242, 0.2);
+ border: 1px solid RGBA(88, 101, 242, 0.4);
+}
+
+.support-server-header {
+ color: #fff;
+ margin-top: 0;
+ margin-bottom: 8px;
+ font-size: 18px;
+ font-family: "Poppins";
+}
+
+.support-server-text {
+ margin: 0;
+ font-size: 14px;
+ font-family: "Poppins";
+ color: #aeaeae;
+}
+
+    </style>
+<% } %>
 </div>
 <style>
   .sinfo {

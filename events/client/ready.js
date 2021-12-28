@@ -129,7 +129,7 @@ module.exports = async (client) => {
 
    if (client.config.advanved_logging == true) console.log(chalk.bold(chalk.blue.bold(`[${client.user.username.toUpperCase().split(" ")[0]}]`)) + chalk.cyan.bold(" Successfully changed client status"));
   }, 10000);
-  if(client.additional_config.pm2.enabled == true) {
+  if (client.additional_config.pm2.enabled == true) {
    if (client.additional_config.pm2.metrics.ws_ping == true) {
     setInterval(() => {
      client.bot_ping_metrics.update(Math.round(client.ws.ping));
