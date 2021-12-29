@@ -9,6 +9,10 @@ module.exports = {
  support_server: "https://discord.gg/bVNNHuQ",
  support_server_id: "666599184844980224",
  status: "https://bit.ly/majo-status",
+ status_page: {
+  only_link: false,
+  embed: "https://wl.hetrixtools.com/r/b327a38f4c3d4cdb1068dfe61e1b2144/",
+ },
  twitter: "@majonezexe",
  github: "igorkowalczyk",
  github_repo: "majobot",

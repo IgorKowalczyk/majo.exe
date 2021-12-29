@@ -29,6 +29,7 @@
 
 <% if(user) { %>
 <ul class="dropdown" id="dropdown">
+<div style="inset: 0px; z-index: -1; position: absolute; backdrop-filter: blur(5px); opacity: 1;"></div>
 <div class="cross-container"><div class="cross"></div></div>
 <% if (path === "/dashboard") { %>
  <span><a class="dropdown-li" href="<%= secure_connection %><%= domain %>/"><%- include('./icons/home.ejs') %> Home</a></span>
