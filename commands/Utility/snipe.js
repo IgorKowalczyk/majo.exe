@@ -13,9 +13,16 @@ module.exports = {
     return client.createError(message, `${client.bot_emojis.error} There's nothing to snipe!`);
    }
    const embed = new MessageEmbed() // Prettier
-    .setAuthor(msg.author, msg.member.user.displayAvatarURL())
+    .setAuthor({ name: msg.author, iconURL: msg.member.user.displayAvatarURL() })
     .setDescription(msg.content || "I can't download the message content. Sorry!")
-    .setFooter(`Requested by ${message.author.username}`, message.author.displayAvatarURL())
+    .setFooter({
+     text: `Requested by ${message.author.username}`,
+     iconURL: message.author.displayAvatarURL({
+      dynamic: true,
+      format: "png",
+      size: 2048,
+     }),
+    })
     .setTimestamp()
     .setColor("RANDOM");
    message.reply({ embeds: [embed] });

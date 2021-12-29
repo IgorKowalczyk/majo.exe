@@ -71,7 +71,7 @@ module.exports = {
     });
 
     const embed = new MessageEmbed()
-     .setAuthor(`${client.user.username} Help`)
+     .setAuthor({ name: `${client.user.username} Help` })
      .setDescription(`> Use the menu, or use ${client.config.domain ? `[\`${client.prefix} help [category]\`](${client.config.domain})` : `\`${client.prefix} help [category]\``} to view commands base on their category!\n\n`)
      .addFields(categories)
      .setFooter(
@@ -133,7 +133,7 @@ module.exports = {
       if (cots.includes(value.toLowerCase())) {
        const combed = new MessageEmbed()
         .setTitle(`${emo[value.toLowerCase()] || "❔"} \`${capitalize(value.toLowerCase())}\` commands`)
-        .setAuthor(`${client.user.username} Help`)
+        .setAuthor({ name: `${client.user.username} Help` })
         .setDescription(`>${catts}`)
         //.addFields(catts)
         .setColor("#4f545c")
@@ -169,7 +169,7 @@ module.exports = {
      collector.on("end", () => {
       (async () => {
        const end_embed = new MessageEmbed()
-        .setAuthor(`${client.user.username} Help`)
+        .setAuthor({ name: `${client.user.username} Help` })
         .setTitle(`Time elapsed!`)
         .setColor("RED")
         .setDescription(`> To see the help menu again please type \`${client.prefix} help\`\n> Or to see commands from category please type \`${client.prefix} help [category]\``)
@@ -233,7 +233,7 @@ module.exports = {
     if (cots.includes(args[0].toLowerCase())) {
      const combed = new MessageEmbed()
       .setTitle(`${emo[args[0].toLowerCase()] || "❔"} \`${capitalize(args[0])}\` commands`)
-      .setAuthor(`${client.user.username} Help`)
+      .setAuthor({ name: `${client.user.username} Help` })
       .setDescription(`>${catts}`)
       //.addFields(catts)
       .setColor("#4f545c")

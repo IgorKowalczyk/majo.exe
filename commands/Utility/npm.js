@@ -35,14 +35,14 @@ module.exports = {
     .setColor("#4f545c")
     .setFooter("Thanks for using me")
     .setURL(`https://npmjs.com/package/${pkg}`)
-    .setFooter(
-     `Requested by ${message.author.username}`,
-     message.author.displayAvatarURL({
+    .setFooter({
+     text: `Requested by ${message.author.username}`,
+     iconURL: message.author.displayAvatarURL({
       dynamic: true,
       format: "png",
       size: 2048,
-     })
-    )
+     }),
+    })
     .setThumbnail("https://media.discordapp.net/attachments/721019707607482409/904777543423492157/58a19602036db1daee0d7863c94673a4.png").setDescription(`${">>> " + body.description || "> No Description"}\n
 				**Version:** ${body["dist-tags"].latest}
 				**License:** ${body.license}

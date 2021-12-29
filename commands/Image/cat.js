@@ -22,14 +22,14 @@ module.exports = {
      )
      .setImage(body.url)
      .setColor("RANDOM")
-     .setFooter(
-      "Requested by " + `${message.author.username}` + " • (Aww cute =＾´• ⋏ •`＾=)",
-      message.author.displayAvatarURL({
+     .setFooter({
+      text: "Requested by " + `${message.author.username}` + " • (Aww cute =＾´• ⋏ •`＾=)",
+      iconURL: message.author.displayAvatarURL({
        dynamic: true,
        format: "png",
        size: 2048,
-      })
-     )
+      }),
+     })
      .setTimestamp()
      .setURL(body.url);
     message.reply({ embeds: [embed] });

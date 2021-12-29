@@ -22,7 +22,7 @@ module.exports = {
      .setTitle(`${client.bot_emojis.octo} ${capitalize(client.user.username)} Github Repo`)
      .setDescription(`• This project is open source: [@${client.config.github}/${client.config.github_repo}](https://github.com/${client.config.github}/${client.config.github_repo})\n\`\`\` \`\`\``)
      .addField(`${client.bot_emojis.book} Latest commit [${body[0].commit.committer.date}]`, `SHA: \`${body[0].sha}\`\n[${body[0].html_url.slice(0, 55)}...](${body[0].html_url})`)
-     .setFooter(`Requested by ${message.author.username}`, message.author.displayAvatarURL({ dynamic: true, format: "png", size: 2048 }))
+     .setFooter({ text: `Requested by ${message.author.username}`, iconURL: message.author.displayAvatarURL({ dynamic: true, format: "png", size: 2048 }) })
      .setColor("RANDOM")
      .setTimestamp();
     const row = new MessageActionRow()

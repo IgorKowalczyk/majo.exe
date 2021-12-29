@@ -30,14 +30,14 @@ module.exports = async (client, message) => {
     .setColor("RANDOM")
     .setDescription("I was pinged by you, here I am - <@" + client.user.id + ">! My prefix is `" + client.prefix + "` To see all  my commands please type `" + client.prefix + " help`!")
     .setTimestamp()
-    .setFooter(
-     `Requested by ${message.author.username}`,
-     message.author.displayAvatarURL({
+    .setFooter({
+     text: `Requested by ${message.author.username}`,
+     iconURL: message.author.displayAvatarURL({
       dynamic: true,
       format: "png",
       size: 2048,
-     })
-    );
+     }),
+    });
    return message.reply({ embeds: [embed] });
   }
   if (!message.content.startsWith(client.prefix)) return;

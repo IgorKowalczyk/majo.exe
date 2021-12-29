@@ -23,14 +23,14 @@ module.exports = {
    const embed = new MessageEmbed() // Prettier
     .setColor("RANDOM")
     .addField(`${client.bot_emojis.reverse_motherfucker} | Flipped text`, "```" + flipped.join(" ") + "```")
-    .setFooter(
-     `Requested by ${message.author.username}`,
-     message.author.displayAvatarURL({
+    .setFooter({
+     text: `Requested by ${message.author.username}`,
+     iconURL: message.author.displayAvatarURL({
       dynamic: true,
       format: "png",
       size: 2048,
-     })
-    )
+     }),
+    })
     .setTimestamp();
    await message.reply({ embeds: [embed] });
   } catch (err) {

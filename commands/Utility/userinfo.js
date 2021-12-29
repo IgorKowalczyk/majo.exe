@@ -28,7 +28,7 @@ module.exports = {
    };
    const embed = new MessageEmbed() // Prettier
     .setColor("#4f545c")
-    .setAuthor("User information", user.user.displayAvatarURL())
+    .setAuthor({ name: "User information", iconURL: user.user.displayAvatarURL() })
     .setThumbnail(
      user.user.displayAvatarURL({
       dynamic: true,
@@ -37,14 +37,14 @@ module.exports = {
      })
     )
     .setTimestamp()
-    .setFooter(
-     `Requested by ${message.author.username}`,
-     message.author.displayAvatarURL({
+    .setFooter({
+     text: `Requested by ${message.author.username}`,
+     iconURL: message.author.displayAvatarURL({
       dynamic: true,
       format: "png",
       size: 2048,
-     })
-    );
+     }),
+    });
    embed.addField(`${client.bot_emojis.role} ID`, `> \`${user.user.id}\``, true);
    embed.addField(`${client.bot_emojis.channel} Discriminator`, `> \`#${user.user.discriminator}\``, true);
    if (user.nickname) embed.addField(`${client.bot_emojis.member} Nickname`, `> \`${user.nickname}\``);

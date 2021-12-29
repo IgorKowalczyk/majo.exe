@@ -18,16 +18,16 @@ module.exports = {
       size: 2048,
      })
     )
-    .setAuthor(client.config.author)
+    .setAuthor({ name: client.config.author })
     .setColor("RANDOM")
-    .setFooter(
-     `Requested by ${message.author.username}`,
-     message.author.displayAvatarURL({
+    .setFooter({
+     text: `Requested by ${message.author.username}`,
+     iconURL: message.author.displayAvatarURL({
       dynamic: true,
       format: "png",
       size: 2048,
-     })
-    ) // Prettier
+     }),
+    }) // Prettier
     .setDescription(`${client.config.patreon ? `• ${client.bot_emojis.patreon_logo} **Patreon:** https://patreon.com/` + client.config.patreon : `${client.bot_emojis.patreon_logo} **Patreon:** -`}
     ${client.config.open_collective ? `• ${client.bot_emojis.open_collective_logo} **OpenCollective:** https://opencollective.com/` + client.config.open_collective : `${client.bot_emojis.open_collective_logo} **OpenCollective:** -`}
     ${client.config.ko_fi ? `• ${client.bot_emojis.kofi_logo} **Ko-Fi:** https://ko-fi.com/` + client.config.ko_fi : `${client.bot_emojis.kofi_logo} **Ko-Fi:** -`}

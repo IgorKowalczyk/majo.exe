@@ -35,14 +35,14 @@ module.exports = {
      })
     )
     .setDescription(":tada: Drop giveaway created in " + `${channel}` + "!")
-    .setFooter(
-     "This message will be deleted after 10 seconds",
-     message.author.displayAvatarURL({
+    .setFooter({
+     text: "This message will be deleted after 10 seconds",
+     iconURL: message.author.displayAvatarURL({
       dynamic: true,
       format: "png",
       size: 2048,
-     })
-    );
+     }),
+    });
    message.reply({ embeds: [success] }).then((m) =>
     setTimeout(() => {
      if (!m.deleted) m.delete();

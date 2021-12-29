@@ -23,7 +23,11 @@ module.exports = {
     client.backupManager
      .fetch(backupID)
      .then(() => {
-      const msg = new MessageEmbed().setColor("RED").setAuthor("Warning!").setDescription(":warning: | All the server channels, roles, and settings will be cleared. Do you want to continue? Send `-confirm` or `cancel`!").setFooter("You have 15s to reply!", message.author.displayAvatarURL());
+      const msg = new MessageEmbed() // Prettier
+       .setColor("RED")
+       .setAuthor({ name: "Warning!" })
+       .setDescription(":warning: | All the server channels, roles, and settings will be cleared. Do you want to continue? Send `-confirm` or `cancel`!")
+       .setFooter("You have 15s to reply!", message.author.displayAvatarURL());
       message.reply({ embeds: [msg] });
       const filter = (m) => (m.author.id === message.author.id && m.content.includes("-confirm")) || (m.author.id === message.author.id && m.content.includes("cancel"));
       const collector = message.channel.createMessageCollector({ filter, time: 15000, max: 1 });

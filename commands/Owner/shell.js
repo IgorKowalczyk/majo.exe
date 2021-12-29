@@ -36,14 +36,14 @@ module.exports = {
      .setColor("#4f545c")
      .addField(`${client.bot_emojis.input} Request`, `\`\`\`sh\n${command}\`\`\``)
      .addField(`${client.bot_emojis.output} Server response`, `\`\`\`sh\n${res.slice(0, 1000) || "No response!"}\`\`\``)
-     .setFooter(
-      `Requested by ${message.author.username}`,
-      message.author.displayAvatarURL({
+     .setFooter({
+      text: `Requested by ${message.author.username}`,
+      iconURL: message.author.displayAvatarURL({
        dynamic: true,
        format: "png",
        size: 2048,
-      })
-     );
+      }),
+     });
     message.reply({ embeds: [embed] });
    });
   } catch (err) {

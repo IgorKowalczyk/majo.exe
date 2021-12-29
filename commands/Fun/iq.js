@@ -15,14 +15,14 @@ module.exports = {
     .setDescription(`${client.bot_emojis.light_bulb} ${user.user.username} IQ: \`${iq}\``)
     .setColor("RANDOM")
     .setTimestamp()
-    .setFooter(
-     `Requested by ${message.author.username}`,
-     message.author.displayAvatarURL({
+    .setFooter({
+     text: `Requested by ${message.author.username}`,
+     iconURL: message.author.displayAvatarURL({
       dynamic: true,
       format: "png",
       size: 2048,
-     })
-    );
+     }),
+    });
    message.reply({ embeds: [embed] });
   } catch (err) {
    console.log(err);

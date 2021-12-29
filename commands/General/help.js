@@ -66,15 +66,15 @@ module.exports = {
    });
 
    const embed = new MessageEmbed()
-    .setAuthor(`${client.user.username} Help`, message.guild.iconURL())
+    .setAuthor({ name: `${client.user.username} Help`, iconURL: message.guild.iconURL() })
     .setDescription(`> Use the menu, or use ${client.config.domain ? `[\`${client.prefix} help [category]\`](${client.config.domain})` : `\`${client.prefix} help [category]\``} to view commands base on their category!\n\n`)
     .addFields(categories)
-    .setFooter(
-     `Requested by ${message.author.tag} • ${client.commands.size} commands in total`,
-     message.author.displayAvatarURL({
+    .setFooter({
+     text: `Requested by ${message.author.tag} • ${client.commands.size} commands in total`,
+     iconURL: message.author.displayAvatarURL({
       dynamic: true,
-     })
-    )
+     }),
+    })
     .setTimestamp()
     .setThumbnail(
      client.user.displayAvatarURL({
@@ -128,7 +128,7 @@ module.exports = {
      if (cots.includes(value.toLowerCase())) {
       const combed = new MessageEmbed()
        .setTitle(`${emo[value.toLowerCase()] || "❔"} \`${capitalize(value.toLowerCase())}\` commands`)
-       .setAuthor(`${client.user.username} Help`, message.guild.iconURL())
+       .setAuthor({ name: `${client.user.username} Help`, iconURL: message.guild.iconURL() })
        .setDescription(`>${catts}`)
        //.addFields(catts)
        .setColor("#4f545c")
@@ -138,12 +138,12 @@ module.exports = {
          size: 2048,
         })
        )
-       .setFooter(
-        `Requested by ${message.author.tag} • ${client.commands.size} commands in total`,
-        message.author.displayAvatarURL({
+       .setFooter({
+        text: `Requested by ${message.author.tag} • ${client.commands.size} commands in total`,
+        iconURL: message.author.displayAvatarURL({
          dynamic: true,
-        })
-       );
+        }),
+       });
       await interaction.deferUpdate();
       return interaction.message.edit({
        embeds: [combed],
@@ -163,16 +163,16 @@ module.exports = {
     collector.on("collect", select);
     collector.on("end", () => {
      const end_embed = new MessageEmbed()
-      .setAuthor(`${client.user.username} Help`, message.guild.iconURL())
+      .setAuthor({ name: `${client.user.username} Help`, iconURL: message.guild.iconURL() })
       .setTitle(`Time elapsed!`)
       .setColor("RED")
       .setDescription(`> To see the help menu again please type \`${client.prefix} help\`\n> Or to see commands from category please type \`${client.prefix} help [category]\``)
-      .setFooter(
-       `Requested by ${message.author.tag} • ${client.ws.ping} ms ping!`,
-       message.author.displayAvatarURL({
+      .setFooter({
+       text: `Requested by ${message.author.tag} • ${client.ws.ping} ms ping!`,
+       iconURL: message.author.displayAvatarURL({
         dynamic: true,
-       })
-      )
+       }),
+      })
       .setTimestamp()
       .setThumbnail(
        client.user.displayAvatarURL({
@@ -227,7 +227,7 @@ module.exports = {
    if (cots.includes(args[0].toLowerCase())) {
     const combed = new MessageEmbed()
      .setTitle(`${emo[args[0].toLowerCase()] || "❔"} \`${capitalize(args[0])}\` commands`)
-     .setAuthor(`${client.user.username} Help`, message.guild.iconURL())
+     .setAuthor({ name: `${client.user.username} Help`, iconURL: message.guild.iconURL() })
      .setDescription(`>${catts}`)
      //.addFields(catts)
      .setColor("#4f545c")
@@ -237,12 +237,12 @@ module.exports = {
        size: 2048,
       })
      )
-     .setFooter(
-      `Requested by ${message.author.tag} • ${client.commands.size} commands in total`,
-      message.author.displayAvatarURL({
+     .setFooter({
+      text: `Requested by ${message.author.tag} • ${client.commands.size} commands in total`,
+      iconURL: message.author.displayAvatarURL({
        dynamic: true,
-      })
-     );
+      }),
+     });
     return message.reply({ embeds: [combed] });
    }
 
@@ -258,13 +258,13 @@ module.exports = {
     .addField(`${client.bot_emojis.edit} Description`, command.description ? `\`${command.description}\`` : "`No description found for this command!`")
     .addField(`${client.bot_emojis.screw_that} Usage`, command.usage ? `\`${client.prefix} ${command.usage}\`` : `\`${client.prefix}${command.name}\``)
     .addField(`${client.bot_emojis.sign} Aliases (${command.aliases.length})`, `\`${command.aliases.join("`, `") || "None!"}\``)
-    .setFooter(
-     `Requested by ${message.author.tag}`,
-     message.author.displayAvatarURL({
+    .setFooter({
+     text: `Requested by ${message.author.tag}`,
+     iconURL: message.author.displayAvatarURL({
       dynamic: true,
       size: 2048,
-     })
-    )
+     }),
+    })
     .setTimestamp()
     .setColor("#4f545c");
    return await message.reply({ embeds: [embed] });

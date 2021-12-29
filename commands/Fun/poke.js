@@ -28,14 +28,14 @@ module.exports = {
      .setURL(body.url)
      .setColor("RANDOM")
      .setDescription(`>>> ${user.toString()} got a poke from ${message.author}${Math.floor(Math.random() * 100 + 1) == 1 ? "\n||I want someone I can poke...||" : ""}`)
-     .setFooter(
-      `Requested by ${message.author.username} • rip ;~;`,
-      message.author.displayAvatarURL({
+     .setFooter({
+      text: `Requested by ${message.author.username} • rip ;~;`,
+      iconURL: message.author.displayAvatarURL({
        dynamic: true,
        format: "png",
        size: 2048,
-      })
-     )
+      }),
+     })
      .setTimestamp()
      .setURL(body.url);
     message.reply({ embeds: [embed] });

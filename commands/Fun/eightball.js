@@ -18,16 +18,16 @@ module.exports = {
    const embed = new MessageEmbed() // Prettier
     .setDescription(`>>> ${fortunes[Math.floor(Math.random() * fortunes.length)]}`)
     .setTimestamp()
-    .setAuthor(client.bot_emojis.magic_ball)
+    .setAuthor({ name: client.bot_emojis.magic_ball })
     .setColor("RANDOM")
-    .setFooter(
-     `Requested by ${message.author.username}`,
-     message.author.displayAvatarURL({
+    .setFooter({
+     text: `Requested by ${message.author.username}`,
+     iconURL: message.author.displayAvatarURL({
       dynamic: true,
       format: "png",
       size: 2048,
-     })
-    );
+     }),
+    });
    await message.reply({ embeds: [embed] });
   } catch (err) {
    console.log(err);

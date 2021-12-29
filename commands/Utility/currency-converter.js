@@ -19,14 +19,14 @@ module.exports = {
      .setDescription(`\`${currencies_list.join("`, `")}\``)
      .setColor("GREEN")
      .setTitle(`${client.bot_emojis.success} All supported currencies`)
-     .setFooter(
-      `Requested by ${message.author.username}`,
-      message.author.displayAvatarURL({
+     .setFooter({
+      text: `Requested by ${message.author.username}`,
+      iconURL: message.author.displayAvatarURL({
        dynamic: true,
        format: "png",
        size: 2048,
-      })
-     );
+      }),
+     });
     return message.reply({ embeds: [embed] });
    }
    if (isNaN(args[0])) {
@@ -77,14 +77,14 @@ module.exports = {
         .setColor("GREEN")
         .setTitle(`${client.bot_emojis.success} Success!`)
         .setDescription(`\`${args[0]} ${args[1].toUpperCase()}\` ➡️ \`${parseFloat(rates)} ${args[2].toUpperCase()}\`\n\n||Data provided by [Google LLC](https://google.com)||`)
-        .setFooter(
-         `Requested by ${message.author.username}`,
-         message.author.displayAvatarURL({
+        .setFooter({
+         text: `Requested by ${message.author.username}`,
+         iconURL: message.author.displayAvatarURL({
           dynamic: true,
           format: "png",
           size: 2048,
-         })
-        );
+         }),
+        });
        msg.edit({ embeds: [embed], components: [row] });
       });
     })();

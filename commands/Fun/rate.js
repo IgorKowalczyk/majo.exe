@@ -18,86 +18,86 @@ module.exports = {
   const happyrate = new MessageEmbed() // Prettier
    .setDescription(`${client.bot_emojis.sparkles} | I would rate **${rate}** \`${result}/100\` ?`)
    .setColor("GREEN")
-   .setFooter(
-    `Requested by ${message.author.username}`,
-    message.author.displayAvatarURL({
+   .setFooter({
+    text: `Requested by ${message.author.username}`,
+    iconURL: message.author.displayAvatarURL({
      dynamic: true,
      format: "png",
      size: 2048,
-    })
-   )
+    }),
+   })
    .setTimestamp();
   const sadembed = new MessageEmbed() // Prettier
    .setDescription(`${client.bot_emojis.sparkles} | I would rate **${rate}** \`${result}/100\` ??`)
    .setColor("RED")
-   .setFooter(
-    `Requested by ${message.author.username}`,
-    message.author.displayAvatarURL({
+   .setFooter({
+    text: `Requested by ${message.author.username}`,
+    iconURL: message.author.displayAvatarURL({
      dynamic: true,
      format: "png",
      size: 2048,
-    })
-   )
+    }),
+   })
    .setTimestamp();
   const idkembed = new MessageEmbed() // Prettier
    .setDescription(`${client.bot_emojis.sparkles} | I would rate **${rate}** \`${result}/100\` ??`)
    .setColor("YELLOW")
-   .setFooter(
-    `Requested by ${message.author.username}`,
-    message.author.displayAvatarURL({
+   .setFooter({
+    text: `Requested by ${message.author.username}`,
+    iconURL: message.author.displayAvatarURL({
      dynamic: true,
      format: "png",
      size: 2048,
-    })
-   )
+    }),
+   })
    .setTimestamp();
   const shrugembed = new MessageEmbed() // Prettier
    .setDescription(`${client.bot_emojis.sparkles} | I would rate **${rate}** \`${result}/100\` ??`)
    .setColor("YELLOW")
-   .setFooter(
-    `Requested by ${message.author.username}`,
-    message.author.displayAvatarURL({
+   .setFooter({
+    text: `Requested by ${message.author.username}`,
+    iconURL: message.author.displayAvatarURL({
      dynamic: true,
      format: "png",
      size: 2048,
-    })
-   )
+    }),
+   })
    .setTimestamp();
   const okembed = new MessageEmbed() // Prettier
    .setDescription(`${client.bot_emojis.sparkles} | I would rate **${rate}** \`${result}/100\` ??`)
    .setColor("GREEN")
-   .setFooter(
-    `Requested by ${message.author.username}`,
-    message.author.displayAvatarURL({
+   .setFooter({
+    text: `Requested by ${message.author.username}`,
+    iconURL: message.author.displayAvatarURL({
      dynamic: true,
      format: "png",
      size: 2048,
-    })
-   )
+    }),
+   })
    .setTimestamp();
   const thumbupembed = new MessageEmbed() // Prettier
    .setDescription(`${client.bot_emojis.sparkles} | I would rate **${rate}** \`${result}/100\` ??`)
    .setColor("GREEN")
-   .setFooter(
-    `Requested by ${message.author.username}`,
-    message.author.displayAvatarURL({
+   .setFooter({
+    text: `Requested by ${message.author.username}`,
+    iconURL: message.author.displayAvatarURL({
      dynamic: true,
      format: "png",
      size: 2048,
-    })
-   )
+    }),
+   })
    .setTimestamp();
   const eyesembed = new MessageEmbed() // Prettier
    .setDescription(`${client.bot_emojis.sparkles} | I would rate **${rate}** \`${result}/100\` ??`)
    .setColor("GREEN")
-   .setFooter(
-    `Requested by ${message.author.username}`,
-    message.author.displayAvatarURL({
+   .setFooter({
+    text: `Requested by ${message.author.username}`,
+    iconURL: message.author.displayAvatarURL({
      dynamic: true,
      format: "png",
      size: 2048,
-    })
-   )
+    }),
+   })
    .setTimestamp();
   if (result > 90) return message.reply({ embeds: [happyrate] });
   if (result < 30) return message.reply({ embeds: [sadembed] });

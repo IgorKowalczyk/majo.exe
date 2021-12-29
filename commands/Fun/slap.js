@@ -22,14 +22,14 @@ module.exports = {
     const embed = await new MessageEmbed() // Prettier
      .setColor("RANDOM")
      .setTitle(`${member.user.username} just got slapped by ${message.author.username}`)
-     .setFooter(
-      `Requested by ${message.author.username} • That must hurt ._.`,
-      message.author.displayAvatarURL({
+     .setFooter({
+      text: `Requested by ${message.author.username} • That must hurt ._.`,
+      iconURL: message.author.displayAvatarURL({
        dynamic: true,
        format: "png",
        size: 2048,
-      })
-     )
+      }),
+     })
      .setImage(body.url);
     message.reply({ embeds: [embed] });
    })();

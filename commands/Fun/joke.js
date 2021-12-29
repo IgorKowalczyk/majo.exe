@@ -21,14 +21,14 @@ module.exports = {
      .setTitle("Random Dad joke", message.guild.iconURL())
      .setDescription(`>>> ${body.joke}`)
      .setColor("RANDOM")
-     .setFooter(
-      `Requested by ${message.author.username}`,
-      message.author.displayAvatarURL({
+     .setFooter({
+      text: `Requested by ${message.author.username}`,
+      iconURL: message.author.displayAvatarURL({
        dynamic: true,
        format: "png",
        size: 2048,
-      })
-     )
+      }),
+     })
      .setTimestamp();
     message.reply({ embeds: [embed] });
    } catch (err) {

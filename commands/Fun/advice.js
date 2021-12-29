@@ -15,14 +15,14 @@ module.exports = {
     .setTitle(`${client.bot_emojis.thinking} My advice`)
     .setDescription(`>>> ${slip.advice}`)
     .setColor("RANDOM")
-    .setFooter(
-     `Requested by ${message.author.username}`,
-     message.author.displayAvatarURL({
+    .setFooter({
+     text: `Requested by ${message.author.username}`,
+     iconURL: message.author.displayAvatarURL({
       dynamic: true,
       format: "png",
       size: 2048,
-     })
-    )
+     }),
+    })
     .setThumbnail(
      message.author.displayAvatarURL({
       dynamic: true,

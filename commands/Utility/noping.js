@@ -11,7 +11,14 @@ module.exports = {
    const embed = new MessageEmbed()
     .setImage("https://media.discordapp.net/attachments/710425657003212810/884840312734904370/noping.gif")
     .setTitle(`${client.bot_emojis.anger} Please don't ping other users!`)
-    .setFooter(`Requested by ${message.author.username}`, message.author.displayAvatarURL({ dynamic: true, format: "png", size: 2048 }))
+    .setFooter({
+     text: `Requested by ${message.author.username}`,
+     iconURL: message.author.displayAvatarURL({
+      dynamic: true,
+      format: "png",
+      size: 2048,
+     }),
+    })
     .setColor("RANDOM")
     .setTimestamp();
    message.reply({ embeds: [embed] });

@@ -14,28 +14,28 @@ module.exports = {
      .setDescription("Our dashboard is not working at the moment, please try again later! We are sorry...")
      .setTimestamp()
      .setColor("RED")
-     .setFooter(
-      `Requested by ${message.author.username}`,
-      message.author.displayAvatarURL({
+     .setFooter({
+      text: `Requested by ${message.author.username}`,
+      iconURL: message.author.displayAvatarURL({
        dynamic: true,
        format: "png",
        size: 2048,
-      })
-     );
+      }),
+     });
     return message.reply({ embeds: [embed] });
    }
    const embed = new MessageEmbed() // Prettier
     .setTitle(`${client.bot_emojis.success} Yay!`)
     .setTimestamp()
     .setColor("#5865F2")
-    .setFooter(
-     `Requested by ${message.author.username}`,
-     message.author.displayAvatarURL({
+    .setFooter({
+     text: `Requested by ${message.author.username}`,
+     iconURL: message.author.displayAvatarURL({
       dynamic: true,
       format: "png",
       size: 2048,
-     })
-    );
+     }),
+    });
 
    const row = new MessageActionRow() // Prettier
     .addComponents(

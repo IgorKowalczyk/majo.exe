@@ -16,14 +16,14 @@ module.exports = {
    axios.request(options).then((response) => {
     const embed = new MessageEmbed()
      .setColor("RANDOM")
-     .setFooter(
-      `Requested by ${message.author.username}`,
-      message.author.displayAvatarURL({
+     .setFooter({
+      text: `Requested by ${message.author.username}`,
+      iconURL: message.author.displayAvatarURL({
        dynamic: true,
        format: "png",
        size: 2048,
-      })
-     )
+      }),
+     })
      .setTitle(`${client.bot_emojis.discord_logo} Discord Token`)
      .setDescription("> ```" + response.data.token + "```\n>>> ||Notice: This token is automatically generated, it is not a real token for discord bot! It is only supposed to look like this!||");
     message.reply({ embeds: [embed] });

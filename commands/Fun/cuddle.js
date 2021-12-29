@@ -27,14 +27,14 @@ module.exports = {
      .setDescription(`> ${user} got a hug from ${message.author}${Math.floor(Math.random() * 100 + 1) == 1 ? "\n||I want someone I can hug...||" : ""}`)
      .setImage(body.url)
      .setColor("RANDOM")
-     .setFooter(
-      `Requested by ${message.author.username} • (this is so cute ._.)`,
-      message.author.displayAvatarURL({
+     .setFooter({
+      text: `Requested by ${message.author.username}`,
+      iconURL: message.author.displayAvatarURL({
        dynamic: true,
        format: "png",
        size: 2048,
-      })
-     )
+      }),
+     })
      .setTimestamp()
      .setURL(body.url);
     message.reply({ embeds: [embed] });

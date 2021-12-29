@@ -32,14 +32,14 @@ module.exports = {
     )
     .setThumbnail("https://cdn.discordapp.com/emojis/853644938867769454.gif?v=1")
     .setDescription(`I shipped **${user1}** with **${user2}** and it is **${ship}%**\n${bar}`)
-    .setFooter(
-     `Requested by ${message.author.username}`,
-     message.author.displayAvatarURL({
+    .setFooter({
+     text: `Requested by ${message.author.username}`,
+     iconURL: message.author.displayAvatarURL({
       dynamic: true,
       format: "png",
       size: 2048,
-     })
-    )
+     }),
+    })
     .setColor("RED");
    const love = new MessageEmbed() // Prettier
     .setTitle(
@@ -51,14 +51,14 @@ module.exports = {
     )
     .setThumbnail("https://cdn.discordapp.com/emojis/797365365595439104.gif?v=1")
     .setDescription(`I shipped **${user1}** with **${user2}** and it is **${ship}%**\n${bar}`)
-    .setFooter(
-     `Requested by ${message.author.username}`,
-     message.author.displayAvatarURL({
+    .setFooter({
+     text: `Requested by ${message.author.username}`,
+     iconURL: message.author.displayAvatarURL({
       dynamic: true,
       format: "png",
       size: 2048,
-     })
-    )
+     }),
+    })
     .setColor("GREEN");
    if (ship > 50) {
     message.reply({ embeds: [love] });

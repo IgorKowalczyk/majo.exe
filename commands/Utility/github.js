@@ -22,7 +22,7 @@ module.exports = {
      let { login, avatar_url, name, id, html_url, company, public_repos, public_gists, twitter_username, email, followers, following, location, created_at, bio } = body;
      const row = new MessageActionRow().addComponents(new MessageButton().setLabel("See profile").setURL(html_url).setStyle("LINK"));
      const embed = new MessageEmbed() // Prettier
-      .setAuthor(login, avatar_url)
+      .setAuthor({ name: login, iconURL: avatar_url })
       .setTitle(`${client.bot_emojis.octo} Github Info`)
       .setColor("#4f545c")
       .setThumbnail(avatar_url)
@@ -38,14 +38,14 @@ module.exports = {
      if (company) embed.addField(`${client.bot_emojis.rocket} Company`, `> ${company}`);
      if (email) embed.addField(`${client.bot_emojis.email} E-Mail`, `> \`${email}\``);
      embed.addField(`${client.bot_emojis.stopwatch} Account Created`, `> <t:${moment(created_at).unix()}> (<t:${moment(created_at).unix()}:R>)`);
-     embed.setFooter(
-      `Requested by ${message.author.username}`,
-      message.author.displayAvatarURL({
+     embed.setFooter({
+      text: `Requested by ${message.author.username}`,
+      iconURL: message.author.displayAvatarURL({
        dynamic: true,
        format: "png",
        size: 2048,
-      })
-     );
+      }),
+     });
      embed.setTimestamp();
      message.reply({ embeds: [embed], components: [row] });
     });

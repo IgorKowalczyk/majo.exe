@@ -24,18 +24,18 @@ module.exports = {
     );
    const embed = new MessageEmbed() // Prettier
     .setColor("RANDOM")
-    .setAuthor(`${User.user.username} Avatar`, uavatar)
+    .setAuthor({ name: `${User.user.username} Avatar`, iconURL: uavatar })
     .setImage(uavatar)
     .setDescription(`> ${client.bot_emojis.link} [Avatar link](${uavatar})`)
     .setTimestamp()
-    .setFooter(
-     `Requested by ${message.author.username}`,
-     message.author.displayAvatarURL({
+    .setFooter({
+     text: `Requested by ${message.author.username}`,
+     iconURL: message.author.displayAvatarURL({
       dynamic: true,
       format: "png",
       size: 2048,
-     })
-    );
+     }),
+    });
    message.reply({ embeds: [embed], components: [row] });
   } catch (err) {
    console.log(err);

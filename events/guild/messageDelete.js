@@ -35,7 +35,7 @@ module.exports = async (client, message) => {
      .addField("Send By", `<@${message.author.id}> (ID: \`${message.author.id}\`)`)
      .addField("Message", `${final || "I can't fetch the message ~Majo"}`)
      .setTimestamp()
-     .setFooter(message.guild.name, message.guild.iconURL());
+     .setFooter({ text: message.guild.name, iconURL: message.guild.iconURL() });
     await log.send({ embeds: [event] });
    })();
   });

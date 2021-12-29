@@ -18,19 +18,19 @@ module.exports = {
    const channel = client.channels.cache.get(client.config.suggestions_channel);
    if (channel) {
     const embed = new MessageEmbed() // Prettier
-     .setAuthor(`${client.bot_emojis.thinking} ${message.author.username} suggestion!`, message.guild.iconURL())
+     .setAuthor({ name: `${client.bot_emojis.thinking} ${message.author.username} suggestion!`, iconURL: message.guild.iconURL() })
      .setColor("#5865F2")
      .setDescription(`\`\`\`${suggestion}\`\`\``)
      .addField("Reporter", `<@${message.author.id}> (ID: ${message.author.id})`)
      .addField("User guild", `${message.guild.name} (ID: ${message.guild.id})`)
-     .setFooter(
-      client.user.username,
-      message.author.displayAvatarURL({
+     .setFooter({
+      text: client.user.username,
+      iconURL: message.author.displayAvatarURL({
        dynamic: true,
        format: "png",
        size: 2048,
-      })
-     )
+      }),
+     })
      .setThumbnail(message.guild.iconURL());
     channel.send({ embeds: [embed] });
     const success = new MessageEmbed() // Prettier
@@ -40,14 +40,14 @@ module.exports = {
   `
      )
      .setDescription(`${message.author} your suggestion was send, you can view it in Majo.exe Developers server in <#${client.config.suggestions_channel}> channel.`)
-     .setFooter(
-      client.config.support_server,
-      message.author.displayAvatarURL({
+     .setFooter({
+      text: client.config.support_server,
+      iconURL: message.author.displayAvatarURL({
        dynamic: true,
        format: "png",
        size: 2048,
-      })
-     );
+      }),
+     });
     const row = new MessageActionRow() // Prettier
      .addComponents(
       // Prettier

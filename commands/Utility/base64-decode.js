@@ -18,14 +18,14 @@ module.exports = {
    const base64 = buffer.toString("utf-8");
    const embed = new MessageEmbed()
     .setColor("RANDOM")
-    .setFooter(
-     `Requested by ${message.author.username}`,
-     message.author.displayAvatarURL({
+    .setFooter({
+     text: `Requested by ${message.author.username}`,
+     iconURL: message.author.displayAvatarURL({
       dynamic: true,
       format: "png",
       size: 2048,
-     })
-    )
+     }),
+    })
     .setTitle(`${client.bot_emojis.sparkles} Base64 Decoder`)
     .addField(`${client.bot_emojis.input} Text to decode`, `\`\`\`${args.join(" ")}\`\`\``)
     .addField(`${client.bot_emojis.output} Decoded text`, `\`\`\`${base64 || "An unknown error ocurred while decoding!"}\`\`\``);

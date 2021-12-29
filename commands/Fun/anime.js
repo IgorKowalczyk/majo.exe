@@ -17,13 +17,13 @@ module.exports = {
     .getInfoFromName(search)
     .then((data) => {
      const embed = new MessageEmbed() // Prettier
-      .setAuthor(
-       `${client.bot_emojis.search_glass} My Anime List search result for ${args}`.split(",").join(" "),
-       message.guild.iconURL({
+      .setAuthor({
+       name: `${client.bot_emojis.search_glass} My Anime List search result for ${args}`.split(",").join(" "),
+       iconURL: message.guild.iconURL({
         dynamic: true,
         format: "png",
-       })
-      )
+       }),
+      })
       .setImage(data.picture)
       .setColor("RANDOM")
       .addField(`${client.bot_emojis.flag_gb} English Title`, "```" + data.englishTitle + "```")
@@ -34,14 +34,14 @@ module.exports = {
       .addField(`${client.bot_emojis.calendar_spillar} Aired`, "```" + data.aired + "```")
       .addField(`${client.bot_emojis.star} Score`, "```" + data.score + "```")
       .addField(`${client.bot_emojis.barchart} Score Stats`, "```" + data.scoreStats + "```")
-      .setFooter(
-       `Requested by ${message.author.username}`,
-       message.author.displayAvatarURL({
+      .setFooter({
+       text: `Requested by ${message.author.username}`,
+       iconURL: message.author.displayAvatarURL({
         dynamic: true,
         format: "png",
         size: 2048,
-       })
-      )
+       }),
+      })
       .setTimestamp();
      const row = new MessageActionRow() // Prettier
       .addComponents(

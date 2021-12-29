@@ -26,18 +26,18 @@ module.exports = {
     .then((backup) => {
      const embed = new MessageEmbed()
       .setDescription(`> ${client.bot_emojis.role} Server name: ${backup.data.name}\n> ${client.bot_emojis.channel} Backup ID: \`${backup.id}\`\n> ${client.bot_emojis.stage_channel} Backup size: \`${backup.size}kb\`\n> ${client.bot_emojis.stopwatch} Created at: <t:${parseInt(backup.data.createdTimestamp / 1000)}> (<t:${parseInt(backup.data.createdTimestamp / 1000)}:R>)\n\n> Note: You can load the backup by running \`${client.prefix} load-backup ${backup.id}\`!`)
-      .setAuthor(`#${backup.id}`, backup.data.iconURL)
+      .setAuthor({ name: `#${backup.id}`, iconURL: backup.data.iconURL })
       .setThumbnail(backup.data.iconURL)
       .setColor("4f545c")
       .setFooter("Backup ID: " + backup.id)
-      .setFooter(
-       `Requested by ${message.author.username}`,
-       message.author.displayAvatarURL({
+      .setFooter({
+       text: `Requested by ${message.author.username}`,
+       iconURL: message.author.displayAvatarURL({
         dynamic: true,
         format: "png",
         size: 2048,
-       })
-      );
+       }),
+      });
      return message.reply({ embeds: [embed] });
     })
     .catch((err) => {

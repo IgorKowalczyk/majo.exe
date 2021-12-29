@@ -41,14 +41,14 @@ module.exports = {
         })
        )
        .setDescription(`${client.bot_emojis.tada} Your ascii code is generated! \n${client.bot_emojis.link} Link to ascii code paste: ${urlToPaste}`)
-       .setFooter(
-        `Requested by ${message.author.username}`,
-        message.author.displayAvatarURL({
+       .setFooter({
+        text: `Requested by ${message.author.username}`,
+        iconURL: message.author.displayAvatarURL({
          dynamic: true,
          format: "png",
          size: 2048,
-        })
-       )
+        }),
+       })
        .setTimestamp();
       const row = new MessageActionRow() // Prettier
        .addComponents(

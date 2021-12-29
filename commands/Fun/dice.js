@@ -13,14 +13,14 @@ module.exports = {
     .setTitle(`${client.bot_emojis.game_dice} | The dice rolled \`${dice}\``)
     .setColor("RANDOM")
     .setTimestamp()
-    .setFooter(
-     `Requested by ${message.author.username}`,
-     message.author.displayAvatarURL({
+    .setFooter({
+     text: `Requested by ${message.author.username}`,
+     iconURL: message.author.displayAvatarURL({
       dynamic: true,
       format: "png",
       size: 2048,
-     })
-    );
+     }),
+    });
    message.reply({ embeds: [embed] });
   } catch (err) {
    console.log(err);

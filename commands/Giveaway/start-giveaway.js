@@ -38,14 +38,14 @@ module.exports = {
    const success = new MessageEmbed() // Prettier
     .setColor("GREEN")
     .setDescription(`> ${client.bot_emojis.giveaway} Giveaway created in ${channel}!`)
-    .setFooter(
-     `This message will be deleted in 10s • Requested by ${message.author.username}`,
-     message.author.displayAvatarURL({
+    .setFooter({
+     text: `This message will be deleted in 10s • Requested by ${message.author.username}`,
+     iconURL: message.author.displayAvatarURL({
       dynamic: true,
       format: "png",
       size: 2048,
-     })
-    );
+     }),
+    });
    message.reply({ embeds: [success] }).then((m) =>
     setTimeout(() => {
      if (!m.deleted) m.delete();

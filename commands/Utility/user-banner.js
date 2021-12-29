@@ -30,17 +30,17 @@ module.exports = {
     const embed = new MessageEmbed()
      .setColor("RANDOM")
      .setImage(url)
-     .setAuthor(`${member.user.username} banner`, member.user.displayAvatarURL())
+     .setAuthor({ name: `${member.user.username} banner`, iconURL: member.user.displayAvatarURL() })
      .setDescription(`> ${client.bot_emojis.link} [Banner link](${url})`)
      .setTimestamp()
-     .setFooter(
-      `Requested by ${message.author.username}`,
-      message.author.displayAvatarURL({
+     .setFooter({
+      text: `Requested by ${message.author.username}`,
+      iconURL: message.author.displayAvatarURL({
        dynamic: true,
        format: "png",
        size: 2048,
-      })
-     );
+      }),
+     });
     message.reply({ embeds: [embed], components: [row] });
    } else {
     return client.createError(message, `${client.bot_emojis.error} | User has no banner!`);

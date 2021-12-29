@@ -26,7 +26,7 @@ module.exports = async (client, message) => {
      .addField("Send By", `<@${message.author.id}> (ID: \`${message.author.id}\`)`)
      .addField("Message link", `https://discord.com/channels/${message.guild.id}/${message.channel.id}/${message.id}`)
      .setTimestamp()
-     .setFooter(message.guild.name, message.guild.iconURL());
+     .setFooter({ text: message.guild.name, iconURL: message.guild.iconURL() });
     await log.send({ embeds: [event] });
    })();
   });

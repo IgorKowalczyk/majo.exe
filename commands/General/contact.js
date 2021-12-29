@@ -14,14 +14,14 @@ module.exports = {
      .setDescription("Our dashboard (and the contact page itself) is not working at the moment, please try again later! We are sorry...")
      .setTimestamp()
      .setColor("RANDOM")
-     .setFooter(
-      `Requested by ${message.author.username}`,
-      message.author.displayAvatarURL({
+     .setFooter({
+      text: `Requested by ${message.author.username}`,
+      iconURL: message.author.displayAvatarURL({
        dynamic: true,
        format: "png",
        size: 2048,
-      })
-     );
+      }),
+     });
     return message.reply({ embeds: [embed] });
    }
    const embed = new MessageEmbed() // Prettier
@@ -29,14 +29,14 @@ module.exports = {
     .setDescription(`${client.bot_emojis.link} | Contact Form: ${process.env.DOMAIN}/contact`)
     .setTimestamp()
     .setColor("RANDOM")
-    .setFooter(
-     `Requested by ${message.author.username}`,
-     message.author.displayAvatarURL({
+    .setFooter({
+     text: `Requested by ${message.author.username}`,
+     iconURL: message.author.displayAvatarURL({
       dynamic: true,
       format: "png",
       size: 2048,
-     })
-    );
+     }),
+    });
    const row = new MessageActionRow() // Prettier
     .addComponents(
      new MessageButton() // Prettier

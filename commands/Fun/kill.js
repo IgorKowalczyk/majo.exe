@@ -25,22 +25,22 @@ module.exports = {
     const body = await response.json();
     const embed = await new MessageEmbed() // Prettier
      .setColor("RANDOM")
-     .setAuthor(
-      `Tombstone of ${member.displayName}!`,
-      message.author.displayAvatarURL({
+     .setAuthor({
+      name: `Tombstone of ${member.displayName}!`,
+      iconURL: message.author.displayAvatarURL({
        dynamic: true,
        format: "png",
        size: 2048,
-      })
-     )
-     .setFooter(
-      `Requested by ${message.author.username}`,
-      message.author.displayAvatarURL({
+      }),
+     })
+     .setFooter({
+      text: `Requested by ${message.author.username}`,
+      iconURL: message.author.displayAvatarURL({
        dynamic: true,
        format: "png",
        size: 2048,
-      })
-     )
+      }),
+     })
      .setImage(body.url)
      .setDescription(`>>> ${change2}${Math.floor(Math.random() * 100 + 1) == 1 ? "\n||I want to kill myself||" : ""}`);
     message.reply({ embeds: [embed] });

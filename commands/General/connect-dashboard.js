@@ -20,14 +20,14 @@ module.exports = {
        .setTitle(`${client.bot_emojis.success} Connected!`)
        .setDescription(`The server has been connected! Now you can safely return to the dashboard and manage your server. If you have any further issues, please contact us using the [contact form on our dashboard!](${process.env.DOMAIN}/contact)`)
        .setThumbnail(message.guild.iconURL())
-       .setFooter(
-        `Requested by ${message.author.username}`,
-        message.author.displayAvatarURL({
+       .setFooter({
+        text: `Requested by ${message.author.username}`,
+        iconURL: message.author.displayAvatarURL({
          dynamic: true,
          format: "png",
          size: 2048,
-        })
-       )
+        }),
+       })
        .setTimestamp();
       const row = new MessageActionRow() // Prettier
        .addComponents(
@@ -45,14 +45,14 @@ module.exports = {
      .setDescription("Our dashboard is not working at the moment, please try again later! We are sorry...")
      .setTimestamp()
      .setColor("RED")
-     .setFooter(
-      `Requested by ${message.author.username}`,
-      message.author.displayAvatarURL({
+     .setFooter({
+      text: `Requested by ${message.author.username}`,
+      iconURL: message.author.displayAvatarURL({
        dynamic: true,
        format: "png",
        size: 2048,
-      })
-     );
+      }),
+     });
     return message.reply({ embeds: [embed] });
    }
   } catch (err) {

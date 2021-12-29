@@ -28,14 +28,14 @@ module.exports = {
      const embed = new MessageEmbed()
       .setDescription(`${client.bot_emojis.sparkles} | Success! Giveaway \`${query}\` rerolled!`)
       .setColor("GREEN")
-      .setFooter(
-       `Requested by ${message.author.username}`,
-       message.author.displayAvatarURL({
+      .setFooter({
+       text: `Requested by ${message.author.username}`,
+       iconURL: message.author.displayAvatarURL({
         dynamic: true,
         format: "png",
         size: 2048,
-       })
-      );
+       }),
+      });
      return message.reply({ embeds: [embed] });
     })
     .catch((err) => {

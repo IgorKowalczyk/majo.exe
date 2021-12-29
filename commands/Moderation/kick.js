@@ -37,14 +37,14 @@ module.exports = {
     .setDescription(`${client.bot_emojis.success} | ${mentioned.displayName} has been kicked.\n\n>>> Reason: \`${reason}\``)
     .setTimestamp()
     .setColor("GREEN")
-    .setFooter(
-     `Requested by ${message.author.username}`,
-     message.author.displayAvatarURL({
+    .setFooter({
+     text: `Requested by ${message.author.username}`,
+     iconURL: message.author.displayAvatarURL({
       dynamic: true,
       format: "png",
       size: 2048,
-     })
-    );
+     }),
+    });
    await message.reply({ embeds: [embed] });
   } catch (err) {
    console.log(err);

@@ -15,14 +15,14 @@ module.exports = {
     const error = new MessageEmbed() // Prettier
      .setColor("RED")
      .setDescription(`${client.bot_emojis.error} | You don't have permission to prune messages!`)
-     .setFooter(
-      "This message will be deleted after 10 seconds",
-      message.author.displayAvatarURL({
+     .setFooter({
+      text: "This message will be deleted after 10 seconds",
+      iconURL: message.author.displayAvatarURL({
        dynamic: true,
        format: "png",
        size: 2048,
-      })
-     );
+      }),
+     });
     message.reply({ embeds: [error] }).then((m) =>
      setTimeout(() => {
       if (!m.deleted) m.delete();
@@ -34,14 +34,14 @@ module.exports = {
     const error = new MessageEmbed() // Prettier
      .setColor("RED")
      .setDescription(`${client.bot_emojis.error} | Please input a vaild number!\n\n**Usage:** \`${client.prefix} prune <amount>\``)
-     .setFooter(
-      "This message will be deleted after 10 seconds",
-      message.author.displayAvatarURL({
+     .setFooter({
+      text: "This message will be deleted after 10 seconds",
+      iconURL: message.author.displayAvatarURL({
        dynamic: true,
        format: "png",
        size: 2048,
-      })
-     );
+      }),
+     });
     message.reply({ embeds: [error] }).then((m) =>
      setTimeout(() => {
       if (!m.deleted) m.delete();
@@ -53,14 +53,14 @@ module.exports = {
     const error = new MessageEmbed() // Prettier
      .setColor("RED")
      .setDescription(`${client.bot_emojis.error} | Insert the number smaller than \`99\`!\n\n**Usage:** \`${client.prefix} prune <amount>\``)
-     .setFooter(
-      "This message will be deleted after 10 seconds",
-      message.author.displayAvatarURL({
+     .setFooter({
+      text: "This message will be deleted after 10 seconds",
+      iconURL: message.author.displayAvatarURL({
        dynamic: true,
        format: "png",
        size: 2048,
-      })
-     );
+      }),
+     });
     message.reply({ embeds: [error] }).then((m) =>
      setTimeout(() => {
       if (!m.deleted) m.delete();
@@ -72,14 +72,14 @@ module.exports = {
     let error = new MessageEmbed() // Prettier
      .setColor("RED")
      .setDescription(`${client.bot_emojis.error} | Insert number greater than \`1\`!\n\n**Usage:** \`${client.prefix} prune <amount>\``)
-     .setFooter(
-      "This message will be deleted after 10 seconds",
-      message.author.displayAvatarURL({
+     .setFooter({
+      text: "This message will be deleted after 10 seconds",
+      iconURL: message.author.displayAvatarURL({
        dynamic: true,
        format: "png",
        size: 2048,
-      })
-     );
+      }),
+     });
     message.reply({ embeds: [error] }).then((m) =>
      setTimeout(() => {
       if (!m.deleted) m.delete();
@@ -98,14 +98,14 @@ module.exports = {
        const success = new MessageEmbed() // Prettier
         .setColor("RANDOM")
         .setDescription(`> ${client.bot_emojis.success} | Deleted \`${messages.size - 1}\`/\`${args[0]}\` messages`) // + one system message
-        .setFooter(
-         `This message will be deleted after 10 seconds`,
-         message.author.displayAvatarURL({
+        .setFooter({
+         text: `This message will be deleted after 10 seconds`,
+         iconURL: message.author.displayAvatarURL({
           dynamic: true,
           format: "png",
           size: 2048,
-         })
-        );
+         }),
+        });
        await message.channel.send({ embeds: [success] }).then((m) =>
         setTimeout(() => {
          if (!m.deleted) m.delete();

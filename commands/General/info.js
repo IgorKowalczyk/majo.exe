@@ -64,14 +64,14 @@ module.exports = {
         .addField(`${client.bot_emojis.drive_icon} Drive`, `\`\`\`${driveinfo.usedGb}GB/${driveinfo.totalGb}GB (${driveinfo.freePercentage}% free)\`\`\``)
         .addField(`${client.bot_emojis.ram_icon} RAM Usage`, `\`\`\`VPS: ${(osutils.totalmem() - osutils.freemem()).toString().split(".")[0] + "." + (osutils.totalmem() - osutils.freemem()).toString().split(".")[1].split("")[0] + (osutils.totalmem() - osutils.freemem()).toString().split(".")[1].split("")[1]}/${osutils.totalmem().toString().split(".")[0] + "." + osutils.totalmem().toString().split(".")[1].split("")[0] + osutils.totalmem().toString().split(".")[1].split("")[1]}MB (${(100 - osutils.freememPercentage() * 100).toString().split(".")[0] + "." + (100 - osutils.freememPercentage() * 100).toString().split(".")[1].split("")[0] + (100 - osutils.freememPercentage() * 100).toString().split(".")[1].split("")[1]}%)\nBOT: ${(process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2)}MB/${osutils.totalmem().toString().split(".")[0] + "." + osutils.totalmem().toString().split(".")[1].split("")[0] + osutils.totalmem().toString().split(".")[1].split("")[1]}MB (${((100 * (process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2)) / osutils.totalmem().toString().split(".")[0]).toFixed(2)} %)\`\`\``)
         .addField(`${client.bot_emojis.octo} Latest commit`, `>>> *[${body[0].sha}](${body[0].html_url})*\n<t:${moment(body[0].commit.committer.date).unix()}:D> (<t:${moment(body[0].commit.committer.date).unix()}:R>)`)
-        .setFooter(
-         `Requested by ${message.author.username}`,
-         message.author.displayAvatarURL({
+        .setFooter({
+         text: `Requested by ${message.author.username}`,
+         iconURL: message.author.displayAvatarURL({
           dynamic: true,
           format: "png",
           size: 2048,
-         })
-        );
+         }),
+        });
        const row = new MessageActionRow() // Prettier
         .addComponents(
          new MessageButton() // Prettier

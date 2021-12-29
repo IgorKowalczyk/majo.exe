@@ -30,17 +30,17 @@ module.exports = {
     const embed = new MessageEmbed()
      .setColor("RANDOM")
      .setImage(url)
-     .setAuthor(`${member.user.username} server avatar`, url)
+     .setAuthor({ name: `${member.user.username} server avatar`, iconURL: url })
      .setDescription(`> ${client.bot_emojis.link} [Avatar link](${url})`)
      .setTimestamp()
-     .setFooter(
-      `Requested by ${message.author.username}`,
-      message.author.displayAvatarURL({
+     .setFooter({
+      text: `Requested by ${message.author.username}`,
+      iconURL: message.author.displayAvatarURL({
        dynamic: true,
        format: "png",
        size: 2048,
-      })
-     );
+      }),
+     });
     message.reply({ embeds: [embed], components: [row] });
    } else {
     return client.createError(message, `${client.bot_emojis.error} | User has no custom avatar!`);

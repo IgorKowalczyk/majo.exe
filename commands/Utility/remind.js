@@ -24,11 +24,17 @@ module.exports = {
    const embed = new MessageEmbed()
     .setColor("GREEN")
     .setTimestamp()
-    .setFooter(`After ${args[0]} I'll send you dm! • Requested by ${message.author.username}`, message.author.displayAvatarURL({ dynamic: true, format: "png", size: 2048 }))
+    .setFooter({ text: `After ${args[0]} I'll send you dm! • Requested by ${message.author.username}`, iconURL: message.author.displayAvatarURL({ dynamic: true, format: "png", size: 2048 }) })
     .setDescription(`${client.bot_emojis.success} | Reminder for \`${reminder}\` has been set! I will remind you <t:${moment(reminder_date).unix()}:R>`);
    message.reply({ embeds: [embed] });
    setTimeout(function () {
-    const reminder_embed = new MessageEmbed().setColor("#4f545c").setAuthor(`${client.bot_emojis.stopwatch} Reminder!`).setDescription(`\`${reminder}\``).setThumbnail(message.author.displayAvatarURL()).setFooter(message.author.username, message.author.displayAvatarURL()).setTimestamp();
+    const reminder_embed = new MessageEmbed() // Prettier
+     .setColor("#4f545c")
+     .setAuthor({ name: `${client.bot_emojis.stopwatch} Reminder!` })
+     .setDescription(`\`${reminder}\``)
+     .setThumbnail(message.author.displayAvatarURL())
+     .setFooter(message.author.username, message.author.displayAvatarURL())
+     .setTimestamp();
     message.author.send({ embeds: [reminder_embed] });
    }, ms(args[0]));
   } catch (err) {

@@ -11,7 +11,7 @@ module.exports = (client) => {
    content: `__**[antiCrash] :: Unhandled Rejection/Catch**__`,
    embeds: [
     new MessageEmbed()
-     .setAuthor(`AntiCrash`, client.user.displayAvatarURL({ dynamic: true }))
+     .setAuthor({ name: `AntiCrash`, iconURL: client.user.displayAvatarURL({ dynamic: true }) })
      .setTitle(`Unhandled Rejection/Catch`)
      .setDescription(`\`\`\`js\n${reason}\`\`\``)
      .setColor("RED")
@@ -27,7 +27,7 @@ module.exports = (client) => {
    content: `__**[antiCrash] :: Uncaught Exception/Catch**__`,
    embeds: [
     new MessageEmbed()
-     .setAuthor(`AntiCrash`, client.user.displayAvatarURL({ dynamic: true }))
+     .setAuthor({ name: `AntiCrash`, iconURL: client.user.displayAvatarURL({ dynamic: true }) })
      .setTitle(`Uncaught Exception/Catch`)
      .setDescription(`\`\`\`js\n${err}\`\`\``)
      .addField("At", `\`\`\`${origin}\`\`\``)
@@ -44,7 +44,7 @@ module.exports = (client) => {
    content: `__**[antiCrash] :: Uncaught Exception/Catch (MONITOR)**__`,
    embeds: [
     new MessageEmbed()
-     .setAuthor(`AntiCrash`, client.user.displayAvatarURL({ dynamic: true }))
+     .setAuthor({ name: `AntiCrash`, iconURL: client.user.displayAvatarURL({ dynamic: true }) })
      .setTitle(`Uncaught Exception/Catch (MONITOR)`)
      .setDescription(`\`\`\`js\n${err}\`\`\``)
      .addField("At", `\`\`\`${origin}\`\`\``)
@@ -61,7 +61,7 @@ module.exports = (client) => {
    content: `__**[antiCrash] :: Multiple Resolves**__`,
    embeds: [
     new MessageEmbed()
-     .setAuthor(`AntiCrash`, client.user.displayAvatarURL({ dynamic: true }))
+     .setAuthor({ name: `AntiCrash`, iconURL: client.user.displayAvatarURL({ dynamic: true }) })
      .setTitle(`Multiple Resolves`)
      .setDescription(`\`\`\`js\n${reason}\`\`\``)
      .setColor("RED")

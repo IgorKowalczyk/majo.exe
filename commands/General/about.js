@@ -9,7 +9,7 @@ module.exports = {
  run: async (client, message, args) => {
   try {
    const embed = new MessageEmbed()
-    .setAuthor(client.config.author)
+    .setAuthor({ name: client.config.author })
     .setTimestamp()
     .setThumbnail(
      client.user.displayAvatarURL({
@@ -19,14 +19,14 @@ module.exports = {
      })
     )
     .setColor("RANDOM")
-    .setFooter(
-     `Requested by ${message.author.username}`,
-     message.author.displayAvatarURL({
+    .setFooter({
+     text: `Requested by ${message.author.username}`,
+     iconURL: message.author.displayAvatarURL({
       dynamic: true,
       format: "png",
       size: 2048,
-     })
-    )
+     }),
+    })
     .addField(`${client.bot_emojis.discord_logo} About ${client.user.username}`, "> " + client.config.about_bot);
    if (client.config.about_dev) {
     embed.addField(`${client.bot_emojis.owner_crown} About Dev`, "> " + client.config.about_dev);

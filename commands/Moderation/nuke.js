@@ -30,14 +30,14 @@ module.exports = {
     .setColor("GREEN")
     .setDescription(`> Reason: ${reason}`)
     .setImage("https://media2.giphy.com/media/iISIZHlk3DTnNg0uG0/giphy.gif")
-    .setFooter(
-     `Requested by ${message.author.username}`,
-     message.author.displayAvatarURL({
+    .setFooter({
+     text: `Requested by ${message.author.username}`,
+     iconURL: message.author.displayAvatarURL({
       dynamic: true,
       format: "png",
       size: 2048,
-     })
-    )
+     }),
+    })
     .setTimestamp();
    await newchannel.send({ embeds: [embed] });
   } catch (err) {

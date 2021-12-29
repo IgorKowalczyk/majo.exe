@@ -15,7 +15,7 @@ module.exports = {
    message.guild.fetch();
    message.guild.members.fetch();
    const embed = new MessageEmbed() // Prettier
-    .setAuthor(message.guild.name, message.guild.iconURL())
+    .setAuthor({ name: message.guild.name, iconURL: message.guild.iconURL() })
     .setColor("#4f545c")
     .setThumbnail(message.guild.iconURL())
     .addField(`${client.bot_emojis.owner_crown} Owner`, `> <@${message.guild.ownerId}> (ID: \`${message.guild.ownerId}\`)`, true)
@@ -28,14 +28,14 @@ module.exports = {
     .addField(`${client.bot_emojis.boosts_animated} Boosts`, `> \`${message.guild.premiumSubscriptionCount}\` (${capitalize(message.guild.premiumTier.toLowerCase().replace("_", " "))})`, true)
     .addField(`${client.bot_emojis.lock} Verification`, `> \`${capitalize(message.guild.verificationLevel.toLowerCase().replace("_", " "))}\``, true)
     .addField(`${client.bot_emojis.stopwatch} Creation Date`, `> <t:${moment(message.channel.guild.createdTimestamp).unix()}> (<t:${moment(message.channel.guild.createdTimestamp).unix()}:R>)`, true)
-    .setFooter(
-     `Requested by ${message.author.username}`,
-     message.author.displayAvatarURL({
+    .setFooter({
+     text: `Requested by ${message.author.username}`,
+     iconURL: message.author.displayAvatarURL({
       dynamic: true,
       format: "png",
       size: 2048,
-     })
-    )
+     }),
+    })
     .setTimestamp();
    message.reply({ embeds: [embed] });
   } catch (err) {

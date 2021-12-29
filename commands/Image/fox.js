@@ -16,14 +16,14 @@ module.exports = {
    axios.request(options).then((response) => {
     const embed = new MessageEmbed()
      .setColor("RANDOM")
-     .setFooter(
-      `Requested by ${message.author.username}`,
-      message.author.displayAvatarURL({
+     .setFooter({
+      text: `Requested by ${message.author.username}`,
+      iconURL: message.author.displayAvatarURL({
        dynamic: true,
        format: "png",
        size: 2048,
-      })
-     )
+      }),
+     })
      .setTitle("🦊 Fox")
      .setImage(response.data.link);
     message.reply({ embeds: [embed] });

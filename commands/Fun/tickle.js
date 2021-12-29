@@ -22,14 +22,14 @@ module.exports = {
     const embed = new MessageEmbed() // Prettier
      .setColor("RANDOM")
      .setTitle(`${member.user.username} just got tickled by ${message.author.username}`)
-     .setFooter(
-      `Requested by ${message.author.username} • ._.`,
-      message.author.displayAvatarURL({
+     .setFooter({
+      text: `Requested by ${message.author.username} • ._.`,
+      iconURL: message.author.displayAvatarURL({
        dynamic: true,
        format: "png",
        size: 2048,
-      })
-     )
+      }),
+     })
      .setImage(body.url);
     message.reply({ embeds: [embed] });
    })();

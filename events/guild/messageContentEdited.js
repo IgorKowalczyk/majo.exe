@@ -32,7 +32,7 @@ module.exports = async (client, message, oldContent, newContent) => {
      .addField("Old Message", `${orgin || "I can't fetch the message ~Majo"}`)
      .addField("Message link", `https://discord.com/channels/${message.guild.id}/${message.channel.id}/${message.id}`)
      .setTimestamp()
-     .setFooter(message.guild.name, message.guild.iconURL());
+     .setFooter({ text: message.guild.name, iconURL: message.guild.iconURL() });
     await log.send({ embeds: [event] });
    })();
   });

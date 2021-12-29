@@ -64,14 +64,14 @@ module.exports = async (client, member) => {
     const embed = new MessageEmbed() // Prettier
      .setColor("RANDOM")
      .setTimestamp()
-     .setFooter(
-      `${member.guild.name}`,
-      member.user.displayAvatarURL({
+     .setFooter({
+      text: `${member.guild.name}`,
+      iconURL: member.user.displayAvatarURL({
        dynamic: true,
        format: "png",
        size: 2048,
-      })
-     )
+      }),
+     })
      .setTitle(
       `**${member.user.username} left the server!**`,
       member.guild.iconURL({
