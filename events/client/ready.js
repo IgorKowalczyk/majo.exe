@@ -38,7 +38,7 @@ module.exports = async (client) => {
   const status = new MessageEmbed() // Prettier
    .setColor("GREEN")
    .setTimestamp()
-   .setAuthor(`${capitalize(client.user.username)} is online!`, client.user.displayAvatarURL())
+   .setAuthor({name: `${capitalize(client.user.username)} is online!`, iconURL: client.user.displayAvatarURL()})
    .setThumbnail(client.user.displayAvatarURL()) // Prettier
    .setDescription(`>>> Guilds: \`${client.guilds.cache.size} servers\`
    Members: \`${client.guilds.cache.reduce((a, g) => a + g.memberCount, 0)} members\`
