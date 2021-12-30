@@ -15,6 +15,10 @@
   <p class="support-server-text">Join the Majo.exe server if you haven't already! <a href="/server">Join Now!</a></p>
  </div>
 <% } %>
+
+  <% if (additional_config.intents.problems) { %>
+  <p class="error">Dashboard might be a little bit buggy due to Discord intent problems!</p>
+<% } %>
   
 <div class="servers">
 <% user.guilds.forEach(guild => {

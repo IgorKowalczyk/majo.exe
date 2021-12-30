@@ -118,6 +118,7 @@ setInterval(function () {
  </script>
     <% if (config.status) { %>
       <% if (config.status_page.only_link) { %>
+        </br>
      <a class="edit button status reload" href="<%= config.status %>"><span class="reload-container"><%- include('includes/icons/status.ejs') %>Check server's status</span></a>
         <% } else { %>
 <iframe class="htframe" src="https://wl.hetrixtools.com/r/b327a38f4c3d4cdb1068dfe61e1b2144/" width="100%" scrolling="no" style="border:none;" sandbox="allow-scripts allow-same-origin allow-popups"></iframe>

@@ -19,6 +19,7 @@ const csrf = require("csurf");
 const passport = require("passport");
 const Strategy = require("passport-discord").Strategy;
 const config = require("../config/main_config");
+const additional_config = require("../config/additional_config");
 const ejs = require("ejs");
 const validator = require("validator");
 const bodyParser = require("body-parser");
@@ -134,6 +135,7 @@ client.on("ready", () => {
    url: res,
    title: client.username,
    prefix: process.env.PREFIX,
+   additional_config: additional_config,
    package: package,
    req: req,
    name: client.username,

@@ -23,4 +23,9 @@ module.exports = {
   show_owner_commands: false, // Show commands for owner(s) [only when commmand was used by owner]
   show_commands_list: true, // Show commands list in help embed
  },
+ intents: {
+  // Experimental function [WIP]
+  all: false,
+  problems: true,
+ },
 };

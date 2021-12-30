@@ -927,15 +927,36 @@ code {
 
 .r {
  background-color: rgba(54, 60, 70, 0.15);
- padding: 4px;
+ padding: 10px;
  border-radius: 5px;
  margin-left: 3px;
- margin-right: 3px;
  font-weight: 800;
- display: inline;
  cursor: pointer;
  margin-bottom: 5px;
  line-height: 40px;
+ display: flex;
+ text-align: left;
+ width: 80%;
+ margin-bottom: 10px;
+ align-items: center;
+}
+
+.r-members {
+ display: flex;
+ align-items: center;
+ margin-left: auto;
+ margin-right: 10px;
+ color: var(--spinner);
+}
+
+.roles-container {
+ color: #fff;
+ font-size: 18px;
+ display: flex;
+ width: 80%;
+ margin-bottom: 10px;
+ justify-content: space-between;
+ margin-top: 30px;
 }
 
 .sinfo {
