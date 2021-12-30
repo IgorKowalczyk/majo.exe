@@ -33,6 +33,7 @@ const rate_limit = require("express-rate-limit");
 const helmet = require("helmet");
 const { constants } = require("crypto");
 const package = require("../package.json");
+const secure_connection = config.secure_connection == true ? "https://" : "http://";
 require("dotenv").config();
 require("../utilities/dashboard");
 client.on("ready", () => {
@@ -129,7 +130,7 @@ client.on("ready", () => {
    user: req.isAuthenticated() ? req.user : null,
    description: config.description,
    domain: app.locals.domain,
-   secure_connection: config.secure_connection == true ? "https://" : "http://",
+   secure_connection: secure_connection,
    twitter: config.twitter,
    alert: "",
    url: res,
@@ -211,6 +212,10 @@ client.on("ready", () => {
    res.redirect(config.support_server);
   });
  }
+
+ app.get("/invite", (req, res) => {
+  res.redirect(`https://discord.com/oauth2/authorize?client_id=${client.user.id}&permissions=1916267615&redirect_uri=${secure_connection + app.locals.domain}%2Fcallback&response_type=code&scope=guilds%20identify%20bot%20applications.commands`);
+ });
 
  // Github redirect endpoint.
  if (config.github && config.github_repo) {

@@ -483,6 +483,20 @@ li {
  font-size: 20px;
 }
 
+.avatar-container-bot {
+ display: flex;
+ -webkit-box-align: center;
+ align-items: center;
+ cursor: pointer;
+ float: left;
+ padding: 17px 20px !important;
+ font-size: 20px;
+ text-decoration: none;
+ font-family: "Poppins";
+ color: var(--text);
+ transition: 300ms;
+}
+
 .avatar-container:hover {
  background-color: #34383e;
  text-decoration: none;

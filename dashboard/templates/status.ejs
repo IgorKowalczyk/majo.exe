@@ -96,7 +96,7 @@ transition: 300ms all;
    </div>
    <hr>
 -->
-    <p class="uptime">Uptime: <span id="uptime"></span>
+    <p class="uptime">Uptime: <span id="uptime">Fetching...</span>
 <% const timestamp = new Date().getTime() - Math.floor(bot.uptime); %>
 <script type="text/javascript">
 function format({time: time, element: element}) {
@@ -127,8 +127,5 @@ setInterval(function () {
 
           <% } %>
        <br>
-       <a class="majo-ad-link" href="https://hetrixtools.com/848593.html" target="_blank">
-       <div class="majo-ad-container"><div class="majo-ad">Ad</div>Hetrixtools - Free uptime monitor<br>15 Uptime Monitors • 1 Minute Interval • Free Forever!</div>
-       </a>
      <% } %>
       <%- include("includes/footer") %>

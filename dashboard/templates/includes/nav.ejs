@@ -3,7 +3,9 @@
 } %>
 <nav class="nav" role="navigation">
 <div style="inset: 0px; z-index: -1; position: absolute; backdrop-filter: blur(5px); opacity: 1;"></div>
-<span class="logo"><a href="<%= secure_connection %><%= domain %>" rel="noopener" aria-label="Open home page"><span class="name"><%= capitalize(bot.user.username) %></span><span class="tag">#<%- bot.user.discriminator %></span></a></span>
+<% if (bot.user.avatar) { botavatar = `https://cdn.discordapp.com/avatars/${bot.user.id}/${bot.user.avatar}?size=256`; } else { botavatar = `${secure_connection + domain}/pics/invaild-avatar.png`; } %>
+<a class="avatar-container-bot logo" href="<%= secure_connection %><%= domain %>" rel="noopener" aria-label="Open home page"><img class="user-avatar" src="<%= botavatar %>" style="margin-right: 10px;"/><span class="name"><%= capitalize(bot.user.username) %><span class="tag">#<%- bot.user.discriminator %></span></span></a>
+
 <input class="menu-btn" type="checkbox" id="menu-btn"/>
 <label class="menu-icon" for="menu-btn"><span class="navicon"></span></label>
 <ul class="menu">
@@ -17,7 +19,7 @@
  avatar = `${secure_connection + domain}/pics/invaild-avatar.png`;
 }
 %>
-<a class="avatar-container dropdownHead" id="dropdownHead" onclick="dropdown(this)"><img class="user-avatar" src="<%= avatar %>"/><span class="user-name"><%= user.username %>#<%= user.discriminator %></span></a>
+<a class="avatar-container dropdownHead" id="dropdownHead" onclick="dropdown(this)"><img class="user-avatar" src="<%= avatar %>"/><span class="user-name"><%= user.username %><span class="tag">#<%- user.discriminator %></span></span></a>
 <% } else { %>
 <% if (config.support_server) { %>
  <li><a href="<%= secure_connection %><%= domain %>/server" target="_blank" rel="noopener">Discord</a></li>

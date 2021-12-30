@@ -64,7 +64,7 @@
 <div class="content-container">
  <h2 class="more-header">Ready to boost your server?</h2>
  <p class="more-text"><%= bot.user.username.split(" ")[0] %> is the best discord bot to grow your Discord server!</p>
- <a href="<%= `https://discord.com/oauth2/authorize?client_id=${bot.user.id}&permissions=1916267615&redirect_uri=${secure_connection + domain}%2Fdashboard&response_type=code&scope=guilds%20identify%20bot%20applications.commands` %>" class="link-button blue center-button">Invite <%= bot.user.username.split(" ")[0] %> now!</a>
+ <a href="<%= secure_connection %><%= domain %>/invite %>" class="link-button blue center-button">Invite <%= bot.user.username.split(" ")[0] %> now!</a>
 </div>
 
 <%- include("includes/footer") %>
