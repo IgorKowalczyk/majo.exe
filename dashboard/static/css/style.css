@@ -497,6 +497,10 @@ li {
  transition: 300ms;
 }
 
+.avatar-container-bot:hover {
+ text-decoration: none;
+}
+
 .avatar-container:hover {
  background-color: #34383e;
  text-decoration: none;
