@@ -10,7 +10,7 @@ module.exports = {
    watch_options: {
     followSymlinks: false,
    },
-   args: ["--color"]
+   args: ["--color"],
   },
   {
    name: "Majo.exe - Dashboard",

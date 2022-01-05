@@ -1,12 +1,12 @@
-const { MessageEmbed, MessageActionRow, MessageButton } = require("discord.js");
+const { MessageEmbed } = require("discord.js");
 const fetch = require("node-fetch");
 
 module.exports = {
  name: "baka",
  description: "Baka!!",
  run: async (client, interaction, args) => {
-   try {
-    (async () => {
+  try {
+   (async () => {
     const response = await fetch("https://nekos.life/api/v2/img/baka");
     const body = await response.json();
     const embed = new MessageEmbed() // Prettier
@@ -30,11 +30,10 @@ module.exports = {
      .setTimestamp()
      .setURL(body.url);
     interaction.followUp({ embeds: [embed] });
-    })()
+   })();
   } catch (err) {
    console.log(err);
    return client.createSlashCommandError(interaction, err);
   }
  },
 };
-

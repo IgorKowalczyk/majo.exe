@@ -76,38 +76,38 @@ module.exports = async (client, message) => {
     /* ---------------------------- */
     /* MIGARTING TO SLASH COMMANDS! */
     /* ---------------------------- */
-    let slash_command_search = client.slashCommands.get(cmd)
-    if(slash_command_search) {
-    const slash_key = message.author.id;
-    const slash_found = slash_info.get(slash_key);
-    if (!slash_found) {
-     const slash_row = new MessageActionRow().addComponents(
-      // Prettier
-      new MessageButton() // Prettier
-       .setCustomId("slash_timeout")
-       .setLabel("Dismiss")
-       .setStyle("SECONDARY")
-     );
-     const slash_embed = new MessageEmbed().setTitle(`${client.bot_emojis.slash_commands} Try Majo.exe slash commands!`).setDescription(`>>> Majo.exe will soon switch to slash commands!\nWe are still working on this feature so please be patient :tada:!`).setColor("#4f545c");
-     message.reply({ embeds: [slash_embed], components: [slash_row] }).then((m) =>
-      setTimeout(() => {
-       if (m.deletable) m.delete();
-      }, 30000)
-     );
-     const filter = (i) => i.customId === "slash_timeout" && i.user.id === message.author.id;
-     const collector = message.channel.createMessageComponentCollector({ filter, time: 30000 });
-     collector.on("collect", async (i) => {
-      if (i.customId === "slash_timeout" && i.user.id === message.author.id) {
-       const update_slash = new MessageEmbed().setTitle(`${client.bot_emojis.slash_commands} Oke!`).setDescription(`>>> You will not receive this notification for the next 12 hours :tada:!`).setColor("GREEN");
-       await i.update({ embeds: [update_slash], components: [] })
-       slash_info.set(slash_key, Date.now());
+    let slash_command_search = client.slashCommands.get(cmd);
+    if (slash_command_search) {
+     const slash_key = message.author.id;
+     const slash_found = slash_info.get(slash_key);
+     if (!slash_found) {
+      const slash_row = new MessageActionRow().addComponents(
+       // Prettier
+       new MessageButton() // Prettier
+        .setCustomId("slash_timeout")
+        .setLabel("Dismiss")
+        .setStyle("SECONDARY")
+      );
+      const slash_embed = new MessageEmbed().setTitle(`${client.bot_emojis.slash_commands} Try Majo.exe slash commands!`).setDescription(`>>> Majo.exe will soon switch to slash commands!\nWe are still working on this feature so please be patient :tada:!`).setColor("#4f545c");
+      message.reply({ embeds: [slash_embed], components: [slash_row] }).then((m) =>
        setTimeout(() => {
-        slash_info.delete(slash_key);
-       }, 43200000);
-      }
-     });
+        if (m.deletable) m.delete();
+       }, 30000)
+      );
+      const filter = (i) => i.customId === "slash_timeout" && i.user.id === message.author.id;
+      const collector = message.channel.createMessageComponentCollector({ filter, time: 30000 });
+      collector.on("collect", async (i) => {
+       if (i.customId === "slash_timeout" && i.user.id === message.author.id) {
+        const update_slash = new MessageEmbed().setTitle(`${client.bot_emojis.slash_commands} Oke!`).setDescription(`>>> You will not receive this notification for the next 12 hours :tada:!`).setColor("GREEN");
+        await i.update({ embeds: [update_slash], components: [] });
+        slash_info.set(slash_key, Date.now());
+        setTimeout(() => {
+         slash_info.delete(slash_key);
+        }, 43200000);
+       }
+      });
+     }
     }
-  }
     /* ---------------------------- */
     /* /MIGARTING TO SLASH COMMANDS! */
     /* ---------------------------- */

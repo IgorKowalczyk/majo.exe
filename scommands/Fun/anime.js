@@ -61,11 +61,9 @@ module.exports = {
     .catch((err) => {
      return client.createSlashError(interaction, `${client.bot_emojis.error} | Please enter vaild anime name!`);
     });
-
   } catch (err) {
    console.log(err);
    return client.createSlashCommandError(interaction, err);
   }
  },
 };
-

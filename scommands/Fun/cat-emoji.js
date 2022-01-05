@@ -4,30 +4,26 @@ const neko = new client();
 
 module.exports = {
  name: "cat-emoji",
- aliases: [],
  description: "Cats are cute",
- category: "Fun",
- usage: "cat-emoji",
- run: async (client, message, args) => {
+ run: async (client, interaction, args) => {
   (async () => {
    try {
     let text = await neko.sfw.catText();
     const embed = new MessageEmbed()
      .setColor("RANDOM")
-     .setTitle(client.bot_emojis.cat)
      .setDescription(`>>> \`${text.cat}\``)
      .setFooter({
-      text: `Requested by ${message.author.username}`,
-      iconURL: message.author.displayAvatarURL({
+      text: `Requested by ${interaction.user.username}`,
+      iconURL: interaction.user.displayAvatarURL({
        dynamic: true,
        format: "png",
        size: 2048,
       }),
      });
-    message.reply({ embeds: [embed] });
+    interaction.followUp({ embeds: [embed] });
    } catch (err) {
     console.log(err);
-    return client.createCommandError(message, err);
+    return client.createSlashCommandError(interaction, err);
    }
   })();
  },
