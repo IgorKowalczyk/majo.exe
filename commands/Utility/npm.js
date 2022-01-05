@@ -33,7 +33,6 @@ module.exports = {
    const embed = new MessageEmbed()
     .setTitle(`NPM - ${pkg}`)
     .setColor("#4f545c")
-    .setFooter("Thanks for using me")
     .setURL(`https://npmjs.com/package/${pkg}`)
     .setFooter({
      text: `Requested by ${message.author.username}`,

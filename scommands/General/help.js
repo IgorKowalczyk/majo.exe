@@ -74,12 +74,12 @@ module.exports = {
      .setAuthor({ name: `${client.user.username} Help` })
      .setDescription(`> Use the menu, or use ${client.config.domain ? `[\`${client.prefix} help [category]\`](${client.config.domain})` : `\`${client.prefix} help [category]\``} to view commands base on their category!\n\n`)
      .addFields(categories)
-     .setFooter(
-      `Requested by ${interaction.member.user.tag} • ${client.commands.size} commands in total`,
-      interaction.member.user.displayAvatarURL({
+     .setFooter({
+      text: `Requested by ${interaction.member.user.tag} • ${client.commands.size} commands in total`,
+      iconURL: interaction.member.user.displayAvatarURL({
        dynamic: true,
-      })
-     )
+      }),
+     })
      .setTimestamp()
      .setThumbnail(
       client.user.displayAvatarURL({
@@ -143,12 +143,12 @@ module.exports = {
           size: 2048,
          })
         )
-        .setFooter(
-         `Requested by ${interaction.member.user.tag} • ${client.commands.size} commands in total`,
-         interaction.member.user.displayAvatarURL({
+        .setFooter({
+         text: `Requested by ${interaction.member.user.tag} • ${client.commands.size} commands in total`,
+         iconURL: interaction.member.user.displayAvatarURL({
           dynamic: true,
-         })
-        );
+         }),
+        });
        await interaction.deferUpdate();
        return interaction.editReply({
         embeds: [combed],
@@ -173,12 +173,12 @@ module.exports = {
         .setTitle(`Time elapsed!`)
         .setColor("RED")
         .setDescription(`> To see the help menu again please type \`${client.prefix} help\`\n> Or to see commands from category please type \`${client.prefix} help [category]\``)
-        .setFooter(
-         `Requested by ${interaction.member.user.tag} • ${client.ws.ping} ms ping!`,
-         interaction.member.user.displayAvatarURL({
+        .setFooter({
+         text: `Requested by ${interaction.member.user.tag} • ${client.ws.ping} ms ping!`,
+         iconURL: interaction.member.user.displayAvatarURL({
           dynamic: true,
-         })
-        )
+         }),
+        })
         .setTimestamp()
         .setThumbnail(
          client.user.displayAvatarURL({
@@ -243,12 +243,12 @@ module.exports = {
         size: 2048,
        })
       )
-      .setFooter(
-       `Requested by ${interaction.member.user.tag} • ${client.commands.size} commands in total`,
-       interaction.member.user.displayAvatarURL({
+      .setFooter({
+       text: `Requested by ${interaction.member.user.tag} • ${client.commands.size} commands in total`,
+       iconURL: interaction.member.user.displayAvatarURL({
         dynamic: true,
-       })
-      );
+       }),
+      });
      return interaction.followUp({ embeds: [combed] });
     }
     if (!command) {
@@ -262,13 +262,13 @@ module.exports = {
      .addField(`${client.bot_emojis.edit} Description`, command.description ? `\`${command.description}\`` : "`No description found for this command!`")
      .addField(`${client.bot_emojis.screw_that} Usage`, command.usage ? `\`${client.prefix} ${command.usage}\`` : `\`${client.prefix}${command.name}\``)
      .addField(`${client.bot_emojis.sign} Aliases (${command.aliases.length})`, `\`${command.aliases.join("`, `") || "None!"}\``)
-     .setFooter(
-      `Requested by ${interaction.member.user.tag}`,
-      interaction.member.user.displayAvatarURL({
+     .setFooter({
+      text: `Requested by ${interaction.member.user.tag}`,
+      iconURL: interaction.member.user.displayAvatarURL({
        dynamic: true,
        size: 2048,
-      })
-     )
+      }),
+     })
      .setTimestamp()
      .setColor("#4f545c");
     return await interaction.followUp({ embeds: [embed] });

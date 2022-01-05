@@ -48,7 +48,7 @@ module.exports = {
     });
    message.reply({ embeds: [success] }).then((m) =>
     setTimeout(() => {
-     if (!m.deleted) m.delete();
+     if (m.deletable) m.delete();
     }, 10000)
    );
    client.giveawaysManager.start(channel, {

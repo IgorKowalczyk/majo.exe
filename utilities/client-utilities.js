@@ -68,7 +68,7 @@ module.exports = function (client) {
   const error = new Discord.MessageEmbed() // Prettier
    .setTitle(`${emojis.error} A wild error appeared!`)
    .setDescription(`>>> \`\`\`${err.toString().slice(0, 1000) || `Something went wrong... ${emojis.sadness}`}\`\`\``)
-   .setFooter(`Error  nr. ${message.channel.id}/${message.id}`, client.user.displayAvatarURL())
+   .setFooter({ text: `Error  nr. ${message.channel.id}/${message.id}`, iconURL: client.user.displayAvatarURL() })
    .setColor("RED");
   const row = new Discord.MessageActionRow() // Prettier
    .addComponents(
@@ -101,7 +101,7 @@ module.exports = function (client) {
   const error = new Discord.MessageEmbed() // Prettier
    .setTitle(`❌ A wild error appeared!`)
    .setDescription(`>>> \`\`\`${err.toString().slice(0, 1000) || `Something went wrong... 😢`}\`\`\``)
-   .setFooter(`Error  nr. ${interaction.id}/${interaction.guild.id}`, client.user.displayAvatarURL())
+   .setFooter({ text: `Error  nr. ${interaction.id}/${interaction.guild.id}`, iconURL: client.user.displayAvatarURL() })
    .setColor("RED");
   const row = new Discord.MessageActionRow() // Prettier
    .addComponents(

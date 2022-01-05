@@ -9,6 +9,7 @@ module.exports = {
    name: "channel",
    description: "Select the voice channel you want.",
    required: true,
+   channel_types: [2],
    type: 7,
   },
   {
@@ -63,8 +64,6 @@ module.exports = {
    if (channel.type !== "GUILD_VOICE") {
     return client.createSlashError(interaction, `❌ | Channel must be a voice channel!`);
    }
-   //console.log(activities[args[1]]);
-   //console.log(activities_names[args[1]]);
    fetch(`https://discord.com/api/v8/channels/${channel.id}/invites`, {
     method: "POST",
     body: JSON.stringify({
@@ -93,7 +92,7 @@ module.exports = {
         .setURL(`https://discord.com/invite/${invite.code}`)
       );
      const embed = new MessageEmbed() // Prettier
-      .setDescription(`> [**Click on the button to start playing ${activities_names[args[1]]}**](https://discord.com/invite/${invite.code})`)
+      .setDescription(`> [**Click on the button to start playing ${activities_names[args[1]]}**](https://discord.com/invite/${invite.code}) on ${channel}`)
       .setColor("GREEN");
      interaction.followUp({ ephemeral: false, embeds: [embed], components: [row] });
     });

@@ -54,7 +54,6 @@ module.exports = {
      message.reply({ embeds: [embed], components: [row] });
     })
     .catch((err) => {
-     console.log(err);
      return client.createError(message, `${client.bot_emojis.error} | Please enter vaild anime name!\n\n**Usage:** \`${client.prefix} anime <anime name>\``);
     });
   } catch (err) {

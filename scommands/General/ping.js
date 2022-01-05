@@ -7,14 +7,14 @@ module.exports = {
   try {
    const msg = new MessageEmbed()
     .addField(`${client.bot_emojis.stopwatch} API ping (Websocket):`, `\`\`\`${Math.round(client.ws.ping)}ms\`\`\``)
-    .setFooter(
-     `Requested by ${interaction.member.user.username}`,
-     client.user.displayAvatarURL({
+    .setFooter({
+     text: `Requested by ${interaction.member.user.username}`,
+     iconURL: interaction.member.user.displayAvatarURL({
       dynamic: true,
       format: "png",
       size: 2048,
-     })
-    )
+     }),
+    })
     .setColor("#5865F2")
     .setTimestamp()
     .setTitle(`${client.bot_emojis.ping} Pong!`);

@@ -25,7 +25,7 @@ module.exports = {
      });
     message.reply({ embeds: [error] }).then((m) =>
      setTimeout(() => {
-      if (!m.deleted) m.delete();
+      if (m.deletable) m.delete();
      }, 10000)
     );
     return setTimeout(() => message.delete(), 10000);
@@ -44,7 +44,7 @@ module.exports = {
      });
     message.reply({ embeds: [error] }).then((m) =>
      setTimeout(() => {
-      if (!m.deleted) m.delete();
+      if (m.deletable) m.delete();
      }, 10000)
     );
     return setTimeout(() => message.delete(), 10000);
@@ -63,7 +63,7 @@ module.exports = {
      });
     message.reply({ embeds: [error] }).then((m) =>
      setTimeout(() => {
-      if (!m.deleted) m.delete();
+      if (m.deletable) m.delete();
      }, 10000)
     );
     return setTimeout(() => message.delete(), 10000);
@@ -82,7 +82,7 @@ module.exports = {
      });
     message.reply({ embeds: [error] }).then((m) =>
      setTimeout(() => {
-      if (!m.deleted) m.delete();
+      if (m.deletable) m.delete();
      }, 10000)
     );
     return setTimeout(() => message.delete(), 10000);
@@ -108,12 +108,12 @@ module.exports = {
         });
        await message.channel.send({ embeds: [success] }).then((m) =>
         setTimeout(() => {
-         if (!m.deleted) m.delete();
+         if (m.deletable) m.delete();
         }, 10000)
        );
       });
      } catch (err) {
-      if (!process_message.deleted) {
+      if (process_message.deletable) {
        process_message.delete();
       }
       return client.createError(message, `${client.bot_emojis.error} | You can't delete messages older than \`14\` days!`);
