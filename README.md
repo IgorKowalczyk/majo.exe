@@ -2,7 +2,7 @@
 
 # Majo.exe
 
-> Majo.exe have almost everything - Fun, Memes, Images, Giveaway Moderation, Anime, NSFW and eveb more!. Majo.exe serve over 150 commands!
+> Majo.exe has almost everything - Fun, Memes, Images, Giveaway Moderation, Anime, NSFW and eveb more!. Majo.exe serve over 150 commands!
 <br>
 
 ---
