@@ -21,7 +21,7 @@
     "ansi-regex": "^6.0.1",
     "array.prototype.move": "0.0.4",
     "ascii-table": "^0.0.9",
-    "axios": "^0.21.1",
+    "axios": "^0.24.0",
     "body-parser": "^1.19.0",
     "booru": "^2.3.2",
     "canvacord": "^5.2.3",

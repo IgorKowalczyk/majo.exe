@@ -1,16 +1,12 @@
 const { MessageEmbed } = require("discord.js");
-const axios = require("axios").default;
-
+const fetch = require("node-fetch");
 module.exports = {
  name: "bot-token",
  description: "Generate (fake) random Discord Bot token",
  run: async (client, interaction, args) => {
   try {
-   const options = {
-    method: "GET",
-    url: "https://some-random-api.ml/bottoken",
-   };
-   axios.request(options).then((response) => {
+   const response = await fetch("https://some-random-api.ml/bottoken");
+   const body = await response.json();
     const embed = new MessageEmbed()
      .setColor("#4f545c")
      .setFooter({
@@ -22,9 +18,8 @@ module.exports = {
       }),
      })
      .setTitle(`${client.bot_emojis.discord_logo} Discord Token`)
-     .setDescription("> ```" + response.data.token + "```\n>>> ||Notice: This token is automatically generated, it is not a real token for discord bot! It is only supposed to look like this!||");
+     .setDescription("> ```" + body.token + "```\n>>> Note: This token is automatically generated, it is not a real token for discord bot! It is only supposed to look like this!");
     interaction.followUp({ embeds: [embed] });
-   });
   } catch (err) {
    console.log(err);
    return client.createSlashCommandError(interaction, err);
