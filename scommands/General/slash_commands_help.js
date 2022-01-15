@@ -233,7 +233,7 @@ module.exports = {
     if (cots.includes(args[0].toLowerCase())) {
      const combed = new MessageEmbed()
       .setTitle(`${emo[args[0].toLowerCase()] || "❔"} \`${capitalize(args[0])}\` commands`)
-      .setAuthor({ name: `${client.user.username} Help`, iconURL: client.user.displayAvatarURL()})
+      .setAuthor({ name: `${client.user.username} Help`, iconURL: client.user.displayAvatarURL() })
       .setDescription(`>${catts}`)
       //.addFields(catts)
       .setColor("#4f545c")
