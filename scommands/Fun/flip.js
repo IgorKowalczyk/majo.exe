@@ -47,7 +47,7 @@ module.exports = {
      return client.createSlashError(interaction, `${client.bot_emojis.error} | The text can't be longer than \`${client.max_input}\` characters!`);
     }
     let flipped = [];
-    args.forEach((arg) => {
+    args.slice(1).forEach((arg) => {
      flipped.push(flip(arg));
     });
     const embed = new MessageEmbed() // Prettier

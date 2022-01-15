@@ -21,15 +21,14 @@ module.exports = {
     .addField(`${client.bot_emojis.stopwatch} Uptime`, `\`\`\`${duration}\`\`\``)
     .addField(`${client.bot_emojis.rocket} Date Launched`, `<t:${moment(timestamp).unix()}> (<t:${moment(timestamp).unix()}:R>)`)
     .setTimestamp()
-    .setFooter(
-     { text: `Requested by ${interaction.member.user.username}`,
+    .setFooter({
+     text: `Requested by ${interaction.member.user.username}`,
      iconURL: interaction.member.user.displayAvatarURL({
       dynamic: true,
       format: "png",
       size: 2048,
-     })
-    }
-    )
+     }),
+    })
     .setColor("#5865F2");
    if (client.config.status) {
     embed.addField(`${client.bot_emojis.status_online} Servers Status`, "```" + client.config.status + "```");
