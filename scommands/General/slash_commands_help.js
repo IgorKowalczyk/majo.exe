@@ -10,7 +10,7 @@ function capitalize(string) {
 }
 
 module.exports = {
- name: "help",
+ name: "slash_commands_help",
  description: "Get a list of commands or more information about a specific command",
  options: [
   {
@@ -47,14 +47,14 @@ module.exports = {
     //  value: "\u200B",
     //  inline: true
     //  }
-    readdirSync("./commands/").forEach((dir) => {
+    readdirSync("./scommands/").forEach((dir) => {
      //category_id++;
      // if(category_id % 3 == 0) {
      //   category_id++;
      //   categories.push(separator);
      // }
      // if (ignored.includes(dir.toLowerCase())) return;
-     const commands = readdirSync(`./commands/${dir}/`).filter((file) => file.endsWith(".js"));
+     const commands = readdirSync(`./scommands/${dir}/`).filter((file) => file.endsWith(".js"));
      // if (ignored.includes(dir.toLowerCase())) return;
      const name = `${emo[dir.toLowerCase()]} ${capitalize(dir)}`;
      if ((dir.toLowerCase() == "owner" && interaction.member.user.id !== client.config.owner_id) || (dir.toLowerCase() == "owner" && interaction.member.user.id == client.config.owner_id && client.additional_config.help_embed.show_owner_commands == false)) return category_id--;
@@ -75,7 +75,7 @@ module.exports = {
      .setDescription(`> Use the menu, or use ${client.config.domain ? `[\`${client.prefix} help [category]\`](${client.config.domain})` : `\`${client.prefix} help [category]\``} to view commands base on their category!\n\n`)
      .addFields(categories)
      .setFooter({
-      text: `Requested by ${interaction.member.user.tag} • ${client.commands.size} commands in total`,
+      text: `Requested by ${interaction.member.user.tag} • ${client.slashCommands.size} commands in total`,
       iconURL: interaction.member.user.displayAvatarURL({
        dynamic: true,
       }),
@@ -99,16 +99,16 @@ module.exports = {
       let { values } = interaction;
       let value = values[0];
       let catts = [];
-      readdirSync("./commands/").forEach((dir) => {
+      readdirSync("./scommands/").forEach((dir) => {
        if (dir.toLowerCase() !== value.toLowerCase()) return;
-       const commands = readdirSync(`./commands/${dir}/`).filter((file) => file.endsWith(".js"));
+       const commands = readdirSync(`./scommands/${dir}/`).filter((file) => file.endsWith(".js"));
        const cmds = commands.map((command) => {
-        let file = require(`../../commands/${dir}/${command}`);
+        let file = require(`../../scommands/${dir}/${command}`);
         if (!file.name) return "No command name.";
         let name = file.name.replace(".js", "");
-        if (client.commands.get(name).hidden) return;
-        let des = client.commands.get(name).description;
-        let emo = client.commands.get(name).emoji;
+        if (client.slashCommands.get(name).hidden) return;
+        let des = client.slashCommands.get(name).description;
+        let emo = client.slashCommands.get(name).emoji;
         let emoe = emo ? `${emo} | ` : "";
         let obj = {
          cname: `${emoe}\`${name}\``,
@@ -144,7 +144,7 @@ module.exports = {
          })
         )
         .setFooter({
-         text: `Requested by ${interaction.member.user.tag} • ${client.commands.size} commands in total`,
+         text: `Requested by ${interaction.member.user.tag} • ${client.slashCommands.size} commands in total`,
          iconURL: interaction.member.user.displayAvatarURL({
           dynamic: true,
          }),
@@ -210,9 +210,9 @@ module.exports = {
       let file = require(`../../commands/${dir}/${command}`);
       if (!file.name) return "No command name.";
       let name = file.name.replace(".js", "");
-      if (client.commands.get(name).hidden) return;
-      let des = client.commands.get(name).description;
-      let emo = client.commands.get(name).emoji;
+      if (client.slashCommands.get(name).hidden) return;
+      let des = client.slashCommands.get(name).description;
+      let emo = client.slashCommands.get(name).emoji;
       let emoe = emo ? `${emo} | ` : "";
       let obj = {
        cname: `${emoe}\`${name}\``,
@@ -229,7 +229,7 @@ module.exports = {
      });
      cots.push(dir.toLowerCase());
     });
-    const command = client.commands.get(args[0].toLowerCase()) || client.commands.find((c) => c.aliases && c.aliases.includes(args[0].toLowerCase()));
+    const command = client.slashCommands.get(args[0].toLowerCase()) || client.slashCommands.find((c) => c.aliases && c.aliases.includes(args[0].toLowerCase()));
     if (cots.includes(args[0].toLowerCase())) {
      const combed = new MessageEmbed()
       .setTitle(`${emo[args[0].toLowerCase()] || "❔"} \`${capitalize(args[0])}\` commands`)
@@ -244,7 +244,7 @@ module.exports = {
        })
       )
       .setFooter({
-       text: `Requested by ${interaction.member.user.tag} • ${client.commands.size} commands in total`,
+       text: `Requested by ${interaction.member.user.tag} • ${client.slashCommands.size} commands in total`,
        iconURL: interaction.member.user.displayAvatarURL({
         dynamic: true,
        }),
