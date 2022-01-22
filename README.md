@@ -5,9 +5,9 @@
 > Majo.exe have almost everything - Fun, Memes, Images, Giveaway Moderation, Anime, NSFW and eveb more!. Majo.exe serve over 150 commands!
 <br><br>[![Discord](https://img.shields.io/discord/666599184844980224?color=%2334D058&logo=discord&label=Discord&style=flat-square&logoColor=fff)](https://majoexe.ml/server)
 [![Discord.js](https://img.shields.io/badge/Discord.js-v13-%2334d058?style=flat-square&logo=npm&logoColor=fff)](https://www.npmjs.com/package/discord.js)
-[![CodeQL Checks](https://img.shields.io/github/workflow/status/igorkowalczyk/majobot/CodeQL%20Checks/master?style=flat-square&label=CodeQL&logo=github&color=%2334D058)](https://majoexe.ml/)
-[![GitHub License](https://img.shields.io/github/license/igorkowalczyk/majobot?style=flat-square&logo=github&label=License&color=%2334D058)](https://majoexe.ml)
-[![Version](https://img.shields.io/github/package-json/v/igorkowalczyk/majobot?style=flat-square&logo=github&label=Version&color=%2334D058)](https://majoexe.ml/server)
+[![CodeQL Checks](https://img.shields.io/github/workflow/status/igorkowalczyk/majo.exe/CodeQL%20Checks/master?style=flat-square&label=CodeQL&logo=github&color=%2334D058)](https://majoexe.ml/)
+[![GitHub License](https://img.shields.io/github/license/igorkowalczyk/majo.exe?style=flat-square&logo=github&label=License&color=%2334D058)](https://majoexe.ml)
+[![Version](https://img.shields.io/github/package-json/v/igorkowalczyk/majo.exe?style=flat-square&logo=github&label=Version&color=%2334D058)](https://majoexe.ml/server)
 ---
 
 ## Invite
@@ -29,10 +29,10 @@ Go to [this link](https://discord.com/oauth2/authorize/?permissions=4294967287&s
 
 | Heroku | Replit | Terohost |
 |---|---|---|
-| [![Deploy to heroku](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy?template=https://github.com/igorkowalczyk/majobot/tree/master) | [![Run on Repl.it](https://repl.it/badge/github/igorkowalczyk/majobot)](https://repl.it/github/igorkowalczyk/majobot) | [![Run on Terohost](https://raw.githubusercontent.com/IgorKowalczyk/majobot/master/src/img/readme/terohost_scaled.png)](https://terohost.com) |
+| [![Deploy to heroku](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy?template=https://github.com/igorkowalczyk/majo.exe/tree/master) | [![Run on Repl.it](https://repl.it/badge/github/igorkowalczyk/majo.exe)](https://repl.it/github/igorkowalczyk/majo.exe) | [![Run on Terohost](https://raw.githubusercontent.com/IgorKowalczyk/majo.exe/master/src/img/readme/terohost_scaled.png)](https://terohost.com) |
 
 #### Self-Hosting (Bot)
-1. Clone [this repository](https://github.com/igorkowalczyk/majobot) `git clone https://github.com/IgorKowalczyk/majobot.git`
+1. Clone [this repository](https://github.com/igorkowalczyk/majo.exe) `git clone https://github.com/IgorKowalczyk/majo.exe.git`
 2. Run `npm i` to install all dependencies,
 3. Grab a Discord Bot token and client secret on [Discord's developer portal](https://discord.com/developers/applications) [Tutorial](#discord-credentials)
 4. Fill `/config/config.js`, `/config/emojis_config.js` with your values
@@ -114,7 +114,7 @@ Go to [this link](https://discord.com/oauth2/authorize/?permissions=4294967287&s
 #### Example `.env` file
 <details><summary>[?] Click to see example <code>.env</code> file!</summary>
  
-[`.env.example`](https://github.com/igorkowalczyk/majobot/blob/master/config/examples/.env.example)
+[`.env.example`](https://github.com/igorkowalczyk/majo.exe/blob/master/config/examples/.env.example)
 
 ```
 # Environment Config
@@ -185,16 +185,16 @@ ANALYTICS=YOUR_GOOGLE_TRACKING_ID
 - [@Wafelowski](https://github.com/HeavyWolfPL) (Translation improvements)
 
 ## Issues
-If you have any issues with the page please create [new issue here](https://github.com/igorkowalczyk/majobot/issues)
+If you have any issues with the page please create [new issue here](https://github.com/igorkowalczyk/majo.exe/issues)
 
 ## Pull Requests
 When submitting a pull request:
 - Clone the repo.
 - Create a branch off of master and give it a meaningful name (e.g. my-awesome-new-feature).
-- Open a [pull request](https://github.com/igorkowalczyk/majobot/pulls) on [GitHub](https://github.com) and describe the feature or fix.
+- Open a [pull request](https://github.com/igorkowalczyk/majo.exe/pulls) on [GitHub](https://github.com) and describe the feature or fix.
 
 ## License
-This project is licensed under the MIT. See the [LICENSE](https://github.com/igorkowalczyk/majobot/blob/master/license.md) file for details
+This project is licensed under the MIT. See the [LICENSE](https://github.com/igorkowalczyk/majo.exe/blob/master/license.md) file for details
 
 <details>
  <summary> </summary>
