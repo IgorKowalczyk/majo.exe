@@ -15,7 +15,7 @@ module.exports = {
  },
  twitter: "@majonezexe",
  github: "igorkowalczyk",
- github_repo: "majobot",
+ github_repo: "majo.exe",
  about_bot: "... Soon!",
  about_dev: "... Soon!",
  donation_perks: "",

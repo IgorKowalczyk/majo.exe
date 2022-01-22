@@ -32,7 +32,7 @@ module.exports = {
       const driveinf0 = JSON.stringify(driveinf);
       const driveinfo = JSON.parse(driveinf0);
       (async () => {
-       const response = await fetch("https://api.github.com/repos/igorkowalczyk/majobot/commits?per_page=1");
+       const response = await fetch("https://api.github.com/repos/igorkowalczyk/majo.exe/commits?per_page=1");
        const body = await response.json();
        const embed = new MessageEmbed() // Prettier
         .setTitle(

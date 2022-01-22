@@ -135,7 +135,7 @@ temp/
 database/
 
 # Compressed repo
-majobot.zip
+majo.exe.zip
 
 # Certificates
 *.key

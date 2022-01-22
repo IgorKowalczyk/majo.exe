@@ -97,12 +97,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://gihub.com/igorkowalczyk/majobot"
+    "url": "https://gihub.com/igorkowalczyk/majo.exe"
   },
   "bugs": {
-    "url": "https://github.com/igorkowalczyk/majobot/issues"
+    "url": "https://github.com/igorkowalczyk/majo.exe/issues"
   },
-  "homepage": "https://majobot.igorkowalczyk.repl.co/",
+  "homepage": "https://majoexe.ml",
   "license": "MIT",
   "keywords": [
     "node",
