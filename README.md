@@ -146,9 +146,10 @@ ANALYTICS=YOUR_GOOGLE_TRACKING_ID
 
 ## Requirements
  - MySQL: `<= 5.7`
- - Node.js: `<16x`
- - Disk space: `>= 1GB`
+ - Node.js: `>= 16x`
  - Linux x64 `(Any)`
+ - RAM: `>= 250MB`
+ - Disk space: `>= 1GB`
 
 
 ## Tokens tutorials

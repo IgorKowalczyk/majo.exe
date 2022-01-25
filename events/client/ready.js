@@ -4,6 +4,7 @@ const { glob } = require("glob");
 const { promisify } = require("util");
 const moment = require("moment");
 const io = require("@pm2/io");
+const os = require('os')
 
 module.exports = async (client) => {
  try {
@@ -12,7 +13,7 @@ module.exports = async (client) => {
   }
   console.log(chalk.bold(chalk.blue.bold(`[${client.user.username.toUpperCase().split(" ")[0]}]`)) + chalk.cyan.bold(" Loading slash commands... Please wait"));
   const globPromise = promisify(glob);
-  const slashCommands = await globPromise(`${process.cwd()}/scommands/*/*.js`);
+  const slashCommands = await globPromise(`${process.cwd()}/slash_commands/*/*.js`);
   const arrayOfSlashCommands = [];
   slashCommands.map((value) => {
    const file = require(value);

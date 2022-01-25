@@ -47,14 +47,14 @@ module.exports = {
     //  value: "\u200B",
     //  inline: true
     //  }
-    readdirSync("./scommands/").forEach((dir) => {
+    readdirSync("./slash_commands/").forEach((dir) => {
      //category_id++;
      // if(category_id % 3 == 0) {
      //   category_id++;
      //   categories.push(separator);
      // }
      // if (ignored.includes(dir.toLowerCase())) return;
-     const commands = readdirSync(`./scommands/${dir}/`).filter((file) => file.endsWith(".js"));
+     const commands = readdirSync(`./slash_commands/${dir}/`).filter((file) => file.endsWith(".js"));
      // if (ignored.includes(dir.toLowerCase())) return;
      const name = `${emo[dir.toLowerCase()]} ${capitalize(dir)}`;
      if ((dir.toLowerCase() == "owner" && interaction.member.user.id !== client.config.owner_id) || (dir.toLowerCase() == "owner" && interaction.member.user.id == client.config.owner_id && client.additional_config.help_embed.show_owner_commands == false)) return category_id--;
@@ -99,11 +99,11 @@ module.exports = {
       let { values } = interaction;
       let value = values[0];
       let catts = [];
-      readdirSync("./scommands/").forEach((dir) => {
+      readdirSync("./slash_commands/").forEach((dir) => {
        if (dir.toLowerCase() !== value.toLowerCase()) return;
-       const commands = readdirSync(`./scommands/${dir}/`).filter((file) => file.endsWith(".js"));
+       const commands = readdirSync(`./slash_commands/${dir}/`).filter((file) => file.endsWith(".js"));
        const cmds = commands.map((command) => {
-        let file = require(`../../scommands/${dir}/${command}`);
+        let file = require(`../../slash_commands/${dir}/${command}`);
         if (!file.name) return "No command name.";
         let name = file.name.replace(".js", "");
         if (client.slashCommands.get(name).hidden) return;
