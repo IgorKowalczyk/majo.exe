@@ -200,7 +200,6 @@ ANALYTICS=YOUR_GOOGLE_TRACKING_ID
 - [@Joao-Victor-Liporini](https://github.com/Joao-Victor-Liporini) (Bug fixes, Command handler improvements, Testing, New features)
 - [@krzesl0](https://github.com/krzesl0) (New Features, Bug fixes, Testing)
 - [@Sakshyam6966](https://github.com/Sakshyam6966) (New Features, Bug fixes, Testing)
-- [@dhvitOP](https://github.com/dhvitOP) (Music commands)
 - [@Wafelowski](https://github.com/HeavyWolfPL) (Translation improvements)
 
 ## Issues

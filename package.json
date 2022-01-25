@@ -30,6 +30,7 @@
     "chalk": "^4.1.2",
     "cheerio": "^1.0.0-rc.10",
     "coloras": "^2.0.2",
+    "colors": "^1.4.0",
     "common-tags": "^1.8.0",
     "cookie-parser": "^1.4.6",
     "csurf": "^1.11.0",
