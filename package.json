@@ -7,6 +7,7 @@
   "scripts": {
     "start": "npm-run-all --parallel bot dashboard",
     "bot": "node index.js",
+    "majo": "node majo.js",
     "test": "node utilities/checks.js",
     "dashboard": "node dashboard/dashboard.js",
     "format": "prettier --write . --ignore-unknown",

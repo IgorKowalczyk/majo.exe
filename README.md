@@ -25,19 +25,20 @@ Go to [this link](https://discord.com/oauth2/authorize/?permissions=4294967287&s
 ## Hosting
 
 > We host this bot. Majo.exe *will be* online 24/7. [Invite Majo here!](#invite)<br>
-> However, if you want to host Majo.exe yourself - [take a look here](#self-hosting-bot)
+> However, if you want to host Majo.exe yourself - [take a look here](#-self-hosting-bot)
 
 | Heroku | Replit | Terohost |
 |---|---|---|
 | [![Deploy to heroku](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy?template=https://github.com/igorkowalczyk/majo.exe/tree/master) | [![Run on Repl.it](https://repl.it/badge/github/igorkowalczyk/majo.exe)](https://repl.it/github/igorkowalczyk/majo.exe) | [![Run on Terohost](https://raw.githubusercontent.com/IgorKowalczyk/majo.exe/master/src/img/readme/terohost_scaled.png)](https://terohost.com) |
 
-#### Self-Hosting (Bot)
+#### 🤖 Self-Hosting (Bot)
 1. Clone [this repository](https://github.com/igorkowalczyk/majo.exe) `git clone https://github.com/IgorKowalczyk/majo.exe.git`
 2. Run `npm i` to install all dependencies,
 3. Grab a Discord Bot token and client secret on [Discord's developer portal](https://discord.com/developers/applications) [Tutorial](#discord-credentials)
 4. Fill `/config/config.js`, `/config/emojis_config.js` with your values
 5. Create new file named `.env` Remember - the file is super secret, better to not share it.
 6. In `.env` file set this values:
+    * `RUN_BOT` - Boolean [true/false]
     * `TOKEN` - Discord bot token
     * `PREFIX` - Discord bot main prefix
     * `ID` - Your Discord Bot ID
@@ -48,13 +49,18 @@ Go to [this link](https://discord.com/oauth2/authorize/?permissions=4294967287&s
     * `MYSQL_USER` - Your MYSQL User name who can acces the database
     * `STATUS_WEBHOOK` - Your status webhook URL (Discord)
     * `ERRORS_WEBHOOK` - Your errors webhook URL (Discord)
-7. Run `npm run bot`
+7. Run `npm run majo`
 > Note: See the example [`.env` file below](#example-env-file)!
 
 ---
 
-#### Dashboard hosting
-1. In `.env` file set this values:
+#### 💾 Self-Hosting (Dashboard)
+1. Clone [this repository](https://github.com/igorkowalczyk/majo.exe) `git clone https://github.com/IgorKowalczyk/majo.exe.git`
+2. Run `npm i` to install all dependencies,
+3. Grab a Discord Bot token and client secret on [Discord's developer portal](https://discord.com/developers/applications) [Tutorial](#discord-credentials)
+4. Create new file named `.env` Remember - the file is super secret, better to not share it.
+5. In `.env` file set this values:
+    * `RUN_DASHBOARD` - Boolean [true/false]
     * `TOKEN` - Discord bot token
     * `PREFIX` - Discord bot main prefix
     * `DOMAIN` - Your website domain (eg `https://example.com`)
@@ -68,16 +74,17 @@ Go to [this link](https://discord.com/oauth2/authorize/?permissions=4294967287&s
     * `PORT` - Your website port
     * `RECAPTCHA_KEY` - Google recaptcha v2 key
     * `SECRET` - Discord bot secret
-3. Fill dashboard config in `/config/main_config.js`
-4. Add these redirect URI's ([https://discord.com/developers/applications/<YOUR-BOT-ID\>/oauth2](https://discord.com/developers/applications))
+6. Fill dashboard config in `/config/main_config.js`
+7. Add these redirect URI's ([https://discord.com/developers/applications/<YOUR-BOT-ID\>/oauth2](https://discord.com/developers/applications))
     * ```
        https://your-domain.com
        https://your-domain.com/callback
        https://your-domain.com/dashboard
        https://your-domain.com/login
       ```
-4. Run `npm run dashboard` in your terminal
-5. If everyting is ok go to your dashboard in browser (eg. to `localhost:8000`)
+8. Run `npm run majo` in your terminal
+9. If everyting is ok go to your dashboard in browser (eg. to `localhost:8000`)
+> Note: See the example [`.env` file below](#example-env-file)!
 
 **Additional info**
 > If you are hosting dashboard on [Replit](https://replit.com) please run this command to install Node.js 16x:
@@ -87,37 +94,47 @@ Go to [this link](https://discord.com/oauth2/authorize/?permissions=4294967287&s
 > 1. Change `certs: false` & `localhost: false` values in `/config/main_config.js` to true
 > 2. Place the `server.cert` & `server.key` certs in `/config/certs/` directory
 
+---
+
+#### 🧱 Self-Hosting (API)
+> Soon!
+
+
 <br>
 
 ## `.env` File (Main Config)
 #### `.env` config table
-| `.env` varriable | Description | Required (Bot) | Required (Dashboard)
-|---|---|:---:|:---:|
-| `TOKEN` | The bot token (Remember! The `TOKEN` is super secret) | ✅ | ✅ |
-| `PREFIX` | The default bot prefix (eg. `!majo`) | ✅ | ✅ |
-| `ID` | Your Discord Bot ID | ✅ | ✅ |
-| `AMEAPI` | Your Amethyste api token | ✅ | ✅ |
-| `MYSQL_DATABASE` | Your MYSQL database name | ✅ | ✅ |
-| `MYSQL_HOST` | Your MYSQL Host | ✅ | ✅ |
-| `MYSQL_USER` | Your MYSQL user | ✅ | ✅ |
-| `MYSQL_PASSWORD` | Your MYSQL password | ✅ | ✅ |
-| `DOMAIN` | Your website domain (eg `https://example.com`) | ❌ | ✅ |
-| `PORT` | Your webiste port eg. `8008`<br> - Note: Heroku don't need port. Heroku assings port automatically! | ❌ | ✅ |
-| `DASHBOARD` | The Web-Dashboard config value. (Boolean) | ❌ | ✅ |
-| `SECRET` | The bot client secret | ❌ | ✅ |
-| `ANALYTICS` | Google analytics tracking ID, used in Web-Dashboard | ❌ | ❌ |
-| `RECAPTCHA_KEY` | Google recaptcha v2 key | ❌ | ✅ |
-| `CONTACT_WEBHOOK` | Your contact form webhook URL | ❌ | ✅ |
-| `STATUS_WEBHOOK` | Your status webhook URL | ✅ | ❌ |
-| `ERRORS_WEBHOOK` | Your errors webhook URL | ✅ | ✅ |
-| `NODE_ENV` | Environment variable (production/development) | ✅ | ✅ |
+| `.env` varriable | Description | Type | Required (Bot) | Required (Dashboard) | Required (API) |
+|---|---|:---:|:---:|:---:|:---:|
+| `TOKEN` | Discord bot token | String | ✅ | ✅ | ❓ |
+| `PREFIX` | The default bot prefix (eg. `!majo`) [Deprecated!] | String | ✅ | ✅ | ❓ |
+| `ID` | Your Discord Bot ID | Number | ✅ | ✅ | ❓ |
+| `AMEAPI` | Your Amethyste api token | String | ✅ | ✅ | ❓ |
+| `MYSQL_DATABASE` | Your MYSQL database name | String | ✅ | ✅ | ❓ |
+| `MYSQL_HOST` | Your MYSQL Host | String | ✅ | ✅ | ❓ |
+| `MYSQL_USER` | Your MYSQL user | String | ✅ | ✅ | ❓ |
+| `MYSQL_PASSWORD` | Your MYSQL password | String | ✅ | ✅ | ❓ |
+| `DOMAIN` | Your website domain (eg `https://example.com`) | URL | ❌ | ✅ | ❓ |
+| `PORT` | Your webiste port eg. `8008`<br> - Note: Heroku don't need port. Heroku assings port automatically! | Number | ❌ | ✅ | ❓ |
+| `DASHBOARD` | The Web-Dashboard config value. (Boolean) [Deprecated!] | Boolean | ❌ | ✅ | ❓ |
+| `SECRET` | The bot client secret | String | ❌ | ✅ | ❓ |
+| `ANALYTICS` | Google analytics tracking ID, used in Web-Dashboard | String | ❌ | ❌ | ❓ |
+| `RECAPTCHA_KEY` | Google recaptcha v2 key | String | ❌ | ✅ | ❓ |
+| `CONTACT_WEBHOOK` | Your contact form webhook URL | URL | ❌ | ✅ | ❓ |
+| `STATUS_WEBHOOK` | Your status webhook URL | URL | ✅ | ❌ | ❓ |
+| `ERRORS_WEBHOOK` | Your errors webhook URL | URL | ✅ | ✅ | ❓ |
+| `NODE_ENV` | Environment variable (production/development) | String | ✅ | ✅ | ❓ |
 #### Example `.env` file
-<details><summary>[?] Click to see example <code>.env</code> file!</summary>
  
 [`.env.example`](https://github.com/igorkowalczyk/majo.exe/blob/master/config/examples/.env.example)
 
 ```
 # Environment Config
+
+# ~REQUIRED TO RUN ANYTHING~
+RUN_BOT=BOOLEAN
+RUN_DASHBOARD=BOOLEAN
+RUN_API=BOOLEAN
 
 # Required
 TOKEN=YOUR_TOKEN_GOES_HERE
@@ -136,13 +153,13 @@ NODE_ENV=production/development
 
 # Not required
 DASHBOARD=[true/false]
+# Deprecated ^
 DOMAIN=YOUR_WEBSITE_DOMAIN
 PORT=YOUR_WEBSITE_PORT
 SECRET=YOUR_BOT_CLIENT_SECRET
 ANALYTICS=YOUR_GOOGLE_TRACKING_ID
 # Note: !majo is the default prefix, you can change it later.
 ```
-</details>
 
 ## Requirements
  - MySQL: `<= 5.7`
