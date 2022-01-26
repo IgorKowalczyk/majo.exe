@@ -191,7 +191,26 @@ ANALYTICS=YOUR_GOOGLE_TRACKING_ID
 ### Re-Captcha Key
 <details>
  <summary>Click here to see Re-Captcha Key tutorial!</summary>
- Soon!
+ 
+1. Go to <a href="https://www.google.com/recaptcha/about/">Google reCAPTCHA About Page</a>
+2. Choose v3 Admin Console.
+3. If you have never generated a reCAPTCHA key before, you will be redirected to the key generation page.
+> If you have generated a reCAPTCHA key before, you will be redirected to the reCAPTCHA dashboard. Here will display the statistics of your past key. And to generate a key, tap the `+` button on the top right.
+4. Fill in the information in the form:
+> * `Label`: Enter the label to identify the site.<br>
+> * `reCAPTCHA type`: Choose the type of reCAPTCHA for this site key<br>
+> * `reCAPTCHA v3` : allows you to verify if an interaction is legitimate without any user interaction *[Not recommended!]*<br>
+> * `reCAPTCHA v2` *[Recommended!]* :<br>
+>    * `I’m not a robot" Checkbox` *[Recommended!]*<br>
+>    * `Invisible reCAPTCHA badge`<br>
+>    * `reCAPTCHA Android`<br>
+> * `Domains`: Enter your domain where the keys will be used.<br>
+> * `Owners`: By default, it will receive the email address you log in with. If you want to register for more accounts, enter the email addresses you want to specify<br>
+> * `Terms of Service`: Check the box to accept the reCAPTCHA Terms of Service<br>
+> * `Send alerts to owners`: Check the box to get alerts if Google detects problems with your site<br>
+5. When complete, click the SUBMIT button.
+
+> Written by: <a href="https://github.com/MashedTuna">MashedPotato</a>
 </details>
 
 
