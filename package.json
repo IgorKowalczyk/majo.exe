@@ -26,7 +26,7 @@
     "body-parser": "^1.19.0",
     "booru": "^2.3.2",
     "canvacord": "^5.2.3",
-    "canvas": "^2.8.0",
+    "canvas": "^2.9.0",
     "chalk": "^4.1.2",
     "cheerio": "^1.0.0-rc.10",
     "coloras": "^2.0.2",
