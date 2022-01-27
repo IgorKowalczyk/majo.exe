@@ -88,7 +88,8 @@ module.exports = async (client, message) => {
         .setLabel("Dismiss")
         .setStyle("SECONDARY")
       );
-      const slash_embed = new MessageEmbed().setTitle(`${client.bot_emojis.slash_commands} Try Majo.exe slash commands!`).setDescription(`>>> Majo.exe will soon switch to slash commands!\nWe are still working on this feature so please be patient :tada:!`).setColor("#4f545c");
+      const slash_embed = new MessageEmbed() // Prettier
+      .setTitle(`${client.bot_emojis.slash_commands} Try Majo.exe slash commands!`).setDescription(`>>> Majo.exe will soon switch to slash commands!\nWe are still working on this feature so please be patient :tada:! \n\n*❕Majo.exe will stop responding to normal prefixes <t:1651269660:R>*`).setColor("#4f545c");
       message.reply({ embeds: [slash_embed], components: [slash_row] }).then((m) =>
        setTimeout(() => {
         if (m.deletable) m.delete();
