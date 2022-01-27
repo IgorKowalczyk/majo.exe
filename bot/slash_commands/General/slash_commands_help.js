@@ -103,7 +103,7 @@ module.exports = {
        if (dir.toLowerCase() !== value.toLowerCase()) return;
        const commands = readdirSync(`${process.cwd()}/bot/slash_commands/${dir}/`).filter((file) => file.endsWith(".js"));
        const cmds = commands.map((command) => {
-        let file = require(`../../../slash_commands/${dir}/${command}`);
+        let file = require(`${process.cwd()}/bot/slash_commands/${dir}/${command}`);
         if (!file.name) return "No command name.";
         let name = file.name.replace(".js", "");
         if (client.slashCommands.get(name).hidden) return;
