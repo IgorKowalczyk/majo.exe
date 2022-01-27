@@ -5,7 +5,6 @@ require("dotenv").config();
 require("./utilities/ascii");
 require("./utilities/checks");
 
-console.log(process.argv.includes( `--bot` ))
 if (!process.env.TOKEN) return console.log(chalk.bold(chalk.red(`[X]`)) + chalk.bold.redBright(` Skipping everything! Token is not provided!`));
 
 console.log(chalk.bold(chalk.blue(`[❔]`) + chalk.cyan(` Green`) + chalk.green(` ">" `) + chalk.cyan(`= logs from Majo.exe Bot`)));

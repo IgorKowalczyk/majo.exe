@@ -3,8 +3,29 @@ const { MessageEmbed } = require("discord.js");
 module.exports = {
  name: "debug",
  description: "Debug bot in this server",
+ options: [
+  {
+   name: "query",
+   required: true,
+   description: "Debug what?",
+   type:	3,
+   choices: [
+    {
+     name: "Debug bot",
+     value: "bot",
+    },
+    {
+     name: "Debug dependencies",
+     value: "dependencies",
+    },
+   ]
+  },
+
+ ],
  run: async (client, interaction, args) => {
+  console.log(args)
   try {
+   if(args[0] == "bot") {
    const embed = new MessageEmbed()
     .setTitle(`${client.bot_emojis.discord_logo} ${client.user.username} Debug`)
     .setDescription(
@@ -36,6 +57,23 @@ module.exports = {
      }),
     });
    interaction.followUp({ embeds: [embed] });
+   } else if(args[0] == "dependencies") {
+    const embed = new MessageEmbed() // Prettier
+    .setTitle(`${client.bot_emojis.package} Dependencies`)
+    .setDescription(`> <@${client.user.id}> runs on ${Object.keys(require("../../../package").dependencies).length} [NPM packages](https://www.npmjs.com) (Javascript power ${client.bot_emojis.muscule}!)`)
+    .setTimestamp()
+    .setImage("https://i.redd.it/tfugj4n3l6ez.png")
+    .setColor("#5865F2")
+    .setFooter({
+     text: `Requested by ${interaction.user.username}`,
+     iconURL: interaction.user.displayAvatarURL({
+      dynamic: true,
+      format: "png",
+      size: 2048,
+     }),
+    });
+   interaction.followUp({ embeds: [embed] });
+   }
   } catch (err) {
    console.log(err);
    return client.createSlashCommandError(interaction, err);
