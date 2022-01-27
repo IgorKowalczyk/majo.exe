@@ -38,7 +38,6 @@ Go to [this link](https://discord.com/oauth2/authorize/?permissions=4294967287&s
 4. Fill `/config/config.js`, `/config/emojis_config.js` with your values
 5. Create new file named `.env` Remember - the file is super secret, better to not share it.
 6. In `.env` file set this values:
-    * `RUN_BOT` - Boolean [true/false]
     * `TOKEN` - Discord bot token
     * `PREFIX` - Discord bot main prefix
     * `ID` - Your Discord Bot ID
@@ -49,7 +48,7 @@ Go to [this link](https://discord.com/oauth2/authorize/?permissions=4294967287&s
     * `MYSQL_USER` - Your MYSQL User name who can acces the database
     * `STATUS_WEBHOOK` - Your status webhook URL (Discord)
     * `ERRORS_WEBHOOK` - Your errors webhook URL (Discord)
-7. Run `npm run majo`
+7. Run `npm run majo:bot`
 > Note: See the example [`.env` file below](#example-env-file)!
 
 ---
@@ -60,7 +59,6 @@ Go to [this link](https://discord.com/oauth2/authorize/?permissions=4294967287&s
 3. Grab a Discord Bot token and client secret on [Discord's developer portal](https://discord.com/developers/applications) [Tutorial](#discord-credentials)
 4. Create new file named `.env` Remember - the file is super secret, better to not share it.
 5. In `.env` file set this values:
-    * `RUN_DASHBOARD` - Boolean [true/false]
     * `TOKEN` - Discord bot token
     * `PREFIX` - Discord bot main prefix
     * `DOMAIN` - Your website domain (eg `https://example.com`)
@@ -82,7 +80,7 @@ Go to [this link](https://discord.com/oauth2/authorize/?permissions=4294967287&s
        https://your-domain.com/dashboard
        https://your-domain.com/login
       ```
-8. Run `npm run majo` in your terminal
+8. Run `npm run majo:dashboard` in your terminal
 9. If everyting is ok go to your dashboard in browser (eg. to `localhost:8000`)
 > Note: See the example [`.env` file below](#example-env-file)!
 
@@ -130,11 +128,6 @@ Go to [this link](https://discord.com/oauth2/authorize/?permissions=4294967287&s
 
 ```
 # Environment Config
-
-# ~REQUIRED TO RUN ANYTHING~
-RUN_BOT=BOOLEAN
-RUN_DASHBOARD=BOOLEAN
-RUN_API=BOOLEAN
 
 # Required
 TOKEN=YOUR_TOKEN_GOES_HERE

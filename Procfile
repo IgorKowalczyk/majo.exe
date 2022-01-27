@@ -1,2 +1,2 @@
-worker: node majo.js
+worker: node majo.js --bot
 web: node /dashboard/dashboard.js

@@ -5,9 +5,9 @@
   "author": "Igor Kowalczyk [Majonez.exe#3957]",
   "main": "node index.js",
   "scripts": {
-    "start": "npm-run-all --parallel bot dashboard",
-    "bot": "node index.js",
-    "majo": "node majo.js",
+    "start": "npm-run-all --parallel majo:dashboard majo:bot",
+    "majo:dashboard": "node majo.js --dashboard",
+    "majo:bot": "node majo.js --bot",
     "test": "node utilities/checks.js",
     "dashboard": "node dashboard/dashboard.js",
     "format": "prettier --write . --ignore-unknown",

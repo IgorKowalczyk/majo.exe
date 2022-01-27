@@ -1,2 +1,2 @@
-run = "npm run majo"
+run = "npm run majo:bot"
 language = "nodejs"
