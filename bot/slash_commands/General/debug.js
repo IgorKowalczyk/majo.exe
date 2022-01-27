@@ -18,7 +18,7 @@ module.exports = {
    name: "query",
    required: true,
    description: "Thing to debug",
-   type:	3,
+   type: 3,
    choices: [
     {
      name: "Debug permissions (in this server)",
@@ -32,18 +32,16 @@ module.exports = {
      name: "Debug dependencies (NPM packages)",
      value: "dependencies",
     },
-   ]
+   ],
   },
-
  ],
  run: async (client, interaction, args) => {
-  console.log(args)
   try {
-   if(args[0] == "bot") {
-   const embed = new MessageEmbed()
-    .setTitle(`${client.bot_emojis.discord_logo} ${client.user.username} Debug`)
-    .setDescription(
-     `These are the bot premissions on this server. If <@${client.user.id}> misses them some commands & functions will be disabled!
+   if (args[0] == "bot") {
+    const embed = new MessageEmbed()
+     .setTitle(`${client.bot_emojis.discord_logo} ${client.user.username} Debug`)
+     .setDescription(
+      `These are the bot premissions on this server. If <@${client.user.id}> misses them some commands & functions will be disabled!
      • \`ADMINISTRATOR\`: ${interaction.guild.me.permissions.has("ADMINISTRATOR") ? `${client.bot_emojis.success}` : `${client.bot_emojis.error}`}\n
      • \`MANAGE_MESSAGES\`: ${interaction.guild.me.permissions.has("MANAGE_MESSAGES") ? `${client.bot_emojis.success} Passed!` : `${client.bot_emojis.error} Error!`}
      • \`MANAGE_CHANNELS\`: ${interaction.guild.me.permissions.has("MANAGE_CHANNELS") ? `${client.bot_emojis.success} Passed!` : `${client.bot_emojis.error} Error!`}
@@ -59,35 +57,35 @@ module.exports = {
      • \`ATTACH_FILES\`: ${interaction.guild.me.permissions.has("ATTACH_FILES") ? `${client.bot_emojis.success} Passed!` : `${client.bot_emojis.error} Error!`}
      • \`USE_EXTERNAL_EMOJIS\`: ${interaction.guild.me.permissions.has("USE_EXTERNAL_EMOJIS") ? `${client.bot_emojis.success} Passed!` : `${client.bot_emojis.error} Error!`}
      > ${client.bot_emojis.stopwatch} Ping: ${Math.round(client.ws.ping)}ms`
-    )
-    .setTimestamp()
-    .setColor("#4f545c")
-    .setFooter({
-     text: `Requested by ${interaction.user.username}`,
-     iconURL: interaction.user.displayAvatarURL({
-      dynamic: true,
-      format: "png",
-      size: 2048,
-     }),
-    });
-   interaction.followUp({ embeds: [embed] });
-   } else if(args[0] == "dependencies") {
+     )
+     .setTimestamp()
+     .setColor("#4f545c")
+     .setFooter({
+      text: `Requested by ${interaction.user.username}`,
+      iconURL: interaction.user.displayAvatarURL({
+       dynamic: true,
+       format: "png",
+       size: 2048,
+      }),
+     });
+    interaction.followUp({ embeds: [embed] });
+   } else if (args[0] == "dependencies") {
     const embed = new MessageEmbed() // Prettier
-    .setTitle(`${client.bot_emojis.package} Dependencies`)
-    .setDescription(`> <@${client.user.id}> runs on ${Object.keys(require("../../../package").dependencies).length} [NPM packages](https://www.npmjs.com) (Javascript power ${client.bot_emojis.muscule}!)`)
-    .setTimestamp()
-    .setImage("https://i.redd.it/tfugj4n3l6ez.png")
-    .setColor("#5865F2")
-    .setFooter({
-     text: `Requested by ${interaction.user.username}`,
-     iconURL: interaction.user.displayAvatarURL({
-      dynamic: true,
-      format: "png",
-      size: 2048,
-     }),
-    });
-   interaction.followUp({ embeds: [embed] });
-   } else if(args[0] == "host") {
+     .setTitle(`${client.bot_emojis.package} Dependencies`)
+     .setDescription(`> <@${client.user.id}> runs on ${Object.keys(require("../../../package").dependencies).length} [NPM packages](https://www.npmjs.com) (Javascript power ${client.bot_emojis.muscule}!)`)
+     .setTimestamp()
+     .setImage("https://i.redd.it/tfugj4n3l6ez.png")
+     .setColor("#5865F2")
+     .setFooter({
+      text: `Requested by ${interaction.user.username}`,
+      iconURL: interaction.user.displayAvatarURL({
+       dynamic: true,
+       format: "png",
+       size: 2048,
+      }),
+     });
+    interaction.followUp({ embeds: [embed] });
+   } else if (args[0] == "host") {
     const botuptime = moment.duration(client.uptime).format(" D [days], H [hrs], m [mins], s [secs]");
     const osuptime = moment.duration(os.uptime()).format(" D [days], H [hrs], m [mins], s [secs]");
     function capitalize(string) {
@@ -170,7 +168,6 @@ module.exports = {
       });
      });
     });
-
    }
   } catch (err) {
    console.log(err);

@@ -3,6 +3,14 @@ const { MessageEmbed, MessageActionRow, MessageButton } = require("discord.js");
 module.exports = {
  name: "suggest",
  description: "Suggest feature in bot",
+ options: [
+  {
+   name: "suggestion",
+   description: "What you want to tell us",
+   type: 3,
+   required: true,
+  },
+ ],
  run: async (client, interaction, args) => {
   try {
    const suggestion = args.join(" ");
