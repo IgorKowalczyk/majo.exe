@@ -4,7 +4,7 @@ const progressbar = require("percentagebar");
 module.exports = {
  name: "ship",
  aliases: [],
- description: "Ship useers together",
+ description: "Ship users together",
  category: "Fun",
  usage: "ship <user> <user>",
  run: async (client, message, args) => {

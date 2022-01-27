@@ -1,7 +1,5 @@
 // Majo.exe
-// WIP
 
-// Todo: move all folders to /api | /dashboard | /bot
 const chalk = require("chalk");
 require("dotenv").config();
 require("./utilities/ascii");
@@ -22,7 +20,6 @@ if (process.env.RUN_BOT == "true") {
 if (process.env.RUN_DASHBOARD == "true") {
  console.log(chalk.bold(chalk.green(`[✅]`)) + chalk.bold.greenBright(` Running Majo.exe Dashboard! (2/3) `));
  require("./dashboard/dashboard");
- //require("./dashboard/index")
 } else {
  console.log(chalk.bold(chalk.red(`[❌]`)) + chalk.bold.red(` Skipping Dashboard launch! (2/3) `) + chalk.bold.red.dim(`[Set RUN_DASHBOARD to "true" in .env]`));
 }

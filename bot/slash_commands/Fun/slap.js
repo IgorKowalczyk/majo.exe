@@ -2,12 +2,12 @@ const { MessageEmbed } = require("discord.js");
 const fetch = require("node-fetch");
 
 module.exports = {
- name: "hug",
- description: "Cuddle user",
+ name: "slap",
+ description: "Slap user",
  options: [
   {
    name: "user",
-   description: "User to hug",
+   description: "User to slap",
    required: true,
    type: 6,
   },
@@ -17,20 +17,22 @@ module.exports = {
    const user = interaction.guild.members.cache.get(args[0]);
    console.log(user);
    if (!user) {
-    return client.createSlashError(interaction, `${client.bot_emojis.error} | You must mention user to hug!`);
+    return client.createSlashError(interaction, `${client.bot_emojis.error} | You must mention user to slap!`);
    }
    if (user == interaction.user) {
-    return client.createSlashError(interaction, `${client.bot_emojis.grin} | You can't hug yourself ;-;`);
+    return client.createSlashError(interaction, `${client.bot_emojis.grin} | You can't slap yourself ;-;`);
    }
-   const response = await fetch("https://nekos.life/api/v2/img/cuddle");
+   if (user == client.user) {
+    return client.createSlashError(interaction, `${client.bot_emojis.grin} | Oh, you tried to slap me but u can't... Im not real...`);
+   }
+   const response = await fetch("https://nekos.life/api/v2/img/slap");
    const body = await response.json();
    const embed = new MessageEmbed() // Prettier
-    .setTitle(`${user.user.username} has just been cuddled by ${interaction.user.username}`)
-    .setDescription(`> ${user} got a hug from ${interaction.user}${Math.floor(Math.random() * 100 + 1) == 1 ? "\n||I want someone I can hug...||" : ""}`)
+    .setTitle(`${user.user.username} just got slapped by ${interaction.user.username}`)
     .setImage(body.url)
     .setColor("RANDOM")
     .setFooter({
-     text: `Requested by ${interaction.user.username}`,
+     text: `Requested by ${interaction.user.username} • That must hurt ._.`,
      iconURL: interaction.user.displayAvatarURL({
       dynamic: true,
       format: "png",
