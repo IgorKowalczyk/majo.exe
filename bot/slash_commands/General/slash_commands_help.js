@@ -75,7 +75,7 @@ module.exports = {
      .setDescription(`> Use the menu, or use ${client.config.domain ? `[\`${client.prefix} help [category]\`](${client.config.domain})` : `\`${client.prefix} help [category]\``} to view commands base on their category!\n\n`)
      .addFields(categories)
      .setFooter({
-      text: `Requested by ${interaction.member.user.tag} • ${client.slashCommands.size} commands in total`,
+      text: `Requested by ${interaction.member.user.tag} • ${client.slash_commands.size} commands in total`,
       iconURL: interaction.member.user.displayAvatarURL({
        dynamic: true,
       }),
@@ -106,9 +106,9 @@ module.exports = {
         let file = require(`${process.cwd()}/bot/slash_commands/${dir}/${command}`);
         if (!file.name) return "No command name.";
         let name = file.name.replace(".js", "");
-        if (client.slashCommands.get(name).hidden) return;
-        let des = client.slashCommands.get(name).description;
-        let emo = client.slashCommands.get(name).emoji;
+        if (client.slash_commands.get(name).hidden) return;
+        let des = client.slash_commands.get(name).description;
+        let emo = client.slash_commands.get(name).emoji;
         let emoe = emo ? `${emo} | ` : "";
         let obj = {
          cname: `${emoe}\`${name}\``,
@@ -144,7 +144,7 @@ module.exports = {
          })
         )
         .setFooter({
-         text: `Requested by ${interaction.member.user.tag} • ${client.slashCommands.size} commands in total`,
+         text: `Requested by ${interaction.member.user.tag} • ${client.slash_commands.size} commands in total`,
          iconURL: interaction.member.user.displayAvatarURL({
           dynamic: true,
          }),
@@ -210,9 +210,9 @@ module.exports = {
       let file = require(`${process.cwd()}/bot/commands/${dir}/${command}`);
       if (!file.name) return "No command name.";
       let name = file.name.replace(".js", "");
-      if (client.slashCommands.get(name).hidden) return;
-      let des = client.slashCommands.get(name).description;
-      let emo = client.slashCommands.get(name).emoji;
+      if (client.slash_commands.get(name).hidden) return;
+      let des = client.slash_commands.get(name).description;
+      let emo = client.slash_commands.get(name).emoji;
       let emoe = emo ? `${emo} | ` : "";
       let obj = {
        cname: `${emoe}\`${name}\``,
@@ -229,7 +229,7 @@ module.exports = {
      });
      cots.push(dir.toLowerCase());
     });
-    const command = client.slashCommands.get(args[0].toLowerCase()) || client.slashCommands.find((c) => c.aliases && c.aliases.includes(args[0].toLowerCase()));
+    const command = client.slash_commands.get(args[0].toLowerCase()) || client.slash_commands.find((c) => c.aliases && c.aliases.includes(args[0].toLowerCase()));
     if (cots.includes(args[0].toLowerCase())) {
      const combed = new MessageEmbed()
       .setTitle(`${emo[args[0].toLowerCase()] || "❔"} \`${capitalize(args[0])}\` commands`)
@@ -244,7 +244,7 @@ module.exports = {
        })
       )
       .setFooter({
-       text: `Requested by ${interaction.member.user.tag} • ${client.slashCommands.size} commands in total`,
+       text: `Requested by ${interaction.member.user.tag} • ${client.slash_commands.size} commands in total`,
        iconURL: interaction.member.user.displayAvatarURL({
         dynamic: true,
        }),

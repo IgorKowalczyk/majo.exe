@@ -7,8 +7,8 @@ const sql = require("../../../utilities/database");
 module.exports = async (client, message) => {
  try {
   if (!message) return;
-  if(message.content.toLowerCase() == "get the cross") {
-    message.react('🤌');
+  if (message.content.toLowerCase() == "get the cross") {
+   message.react("🤌");
   }
   if (client.additional_config.pm2.enabled == true && client.additional_config.pm2.metrics.messages_seen == true) {
    client.messages_seen.inc();
@@ -79,7 +79,7 @@ module.exports = async (client, message) => {
     /* ---------------------------- */
     /* MIGARTING TO SLASH COMMANDS! */
     /* ---------------------------- */
-    let slash_command_search = client.slashCommands.get(cmd);
+    let slash_command_search = client.slash_commands.get(cmd);
     if (slash_command_search) {
      const slash_key = message.author.id;
      const slash_found = slash_info.get(slash_key);

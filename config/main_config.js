@@ -30,7 +30,7 @@ module.exports = {
  youtube: process.env.YOUTUBE,
  id: process.env.ID,
  advanved_logging: false,
- ratelimit: 2500, // Command ratelimit (can be customized for each command)
+ ratelimit: 2500, // Command ratelimit (can be customized for each command) [DEPRECATED]
  max_input: 200, // Maximum command arguments length
 
  // Dashboard config

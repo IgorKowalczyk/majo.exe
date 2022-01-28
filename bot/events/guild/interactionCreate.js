@@ -5,7 +5,7 @@ module.exports = async (client, interaction) => {
   await interaction.deferReply({ ephemeral: false }).catch((err) => {
    console.log(err);
   });
-  const cmd = client.slashCommands.get(interaction.commandName);
+  const cmd = client.slash_commands.get(interaction.commandName);
   if (!cmd) return interaction.followUp({ ephemeral: true, content: "An error has occured!" });
   const args = [];
   for (let option of interaction.options.data) {

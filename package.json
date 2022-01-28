@@ -35,7 +35,7 @@
     "cookie-parser": "^1.4.6",
     "csurf": "^1.11.0",
     "discord-backup": "^3.0.1",
-    "discord-giveaways": "^5.0.1",
+    "discord-giveaways": "^5.1.0",
     "discord-logs": "^2.0.1",
     "discord.js": "^13.6.0",
     "dotenv": "^8.2.0",
