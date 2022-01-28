@@ -2,7 +2,7 @@ const { MessageEmbed } = require("discord.js");
 
 module.exports = {
  name: "rate",
- description: "Rate something (0-100%)",
+ description: "💯 Rate something (0-100%)",
  options: [
   {
    name: "query",

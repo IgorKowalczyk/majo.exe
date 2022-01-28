@@ -2,7 +2,7 @@ const { MessageEmbed } = require("discord.js");
 
 module.exports = {
  name: "dice",
- description: "Roll a virtual dice",
+ description: `🎲 Roll a virtual dice`,
  run: async (client, interaction, args) => {
   try {
    const dice = Math.floor(Math.random() * (6 - 1) + 1);

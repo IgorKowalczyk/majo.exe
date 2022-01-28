@@ -3,7 +3,7 @@ const fetch = require("node-fetch");
 
 module.exports = {
  name: "activities",
- description: "Start Discord activities",
+ description: `🚀 Start Discord activities`,
  options: [
   {
    name: "channel",

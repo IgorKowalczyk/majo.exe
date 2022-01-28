@@ -2,7 +2,7 @@ const { MessageEmbed, MessageActionRow, MessageButton } = require("discord.js");
 
 module.exports = {
  name: "contact",
- description: "Provide website link to contact us",
+ description: "📝 Provide website link to contact us",
  run: async (client, interaction, args) => {
   try {
    if (!process.env.DOMAIN) {

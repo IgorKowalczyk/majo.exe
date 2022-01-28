@@ -11,7 +11,7 @@ function capitalize(string) {
 
 module.exports = {
  name: "slash_commands_help",
- description: "Get a list of commands or more information about a specific command",
+ description: "❔ Get a list of commands or more information about a specific command",
  options: [
   {
    name: "command",

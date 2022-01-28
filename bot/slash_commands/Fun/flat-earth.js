@@ -2,7 +2,7 @@ const { MessageEmbed } = require("discord.js");
 
 module.exports = {
  name: "flat-earth",
- description: "Demonstrates that the earth really is flat",
+ description: `🌍 Demonstrates that the earth really is flat`,
  options: [
   {
    name: "user",

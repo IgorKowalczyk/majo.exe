@@ -2,7 +2,7 @@ const { MessageEmbed, MessageActionRow, MessageButton } = require("discord.js");
 
 module.exports = {
  name: "servers",
- description: "Displays total servers where I'm",
+ description: "👾 Displays total servers where I'm",
  run: async (client, interaction, args) => {
   try {
    const embed = new MessageEmbed() // Prettier

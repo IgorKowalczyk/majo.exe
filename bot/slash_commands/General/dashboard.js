@@ -2,7 +2,7 @@ const { MessageEmbed, MessageActionRow, MessageButton } = require("discord.js");
 
 module.exports = {
  name: "dashboard",
- description: "Provide link to the web-dashboard",
+ description: "💻 Provide link to the web-dashboard",
  run: async (client, interaction, args) => {
   try {
    if (!process.env.DOMAIN) {

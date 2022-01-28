@@ -7,6 +7,9 @@ const sql = require("../../../utilities/database");
 module.exports = async (client, message) => {
  try {
   if (!message) return;
+  if(message.content.toLowerCase() == "get the cross") {
+    message.react('🤌');
+  }
   if (client.additional_config.pm2.enabled == true && client.additional_config.pm2.metrics.messages_seen == true) {
    client.messages_seen.inc();
   }

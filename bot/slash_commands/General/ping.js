@@ -2,7 +2,7 @@ const { Client, CommandInteraction, MessageEmbed } = require("discord.js");
 
 module.exports = {
  name: "ping",
- description: "Checks Majo.exe response time to Discord",
+ description: "🏓 Checks Majo.exe response time to Discord",
  run: async (client, interaction, args) => {
   try {
    const msg = new MessageEmbed()

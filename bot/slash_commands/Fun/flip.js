@@ -3,16 +3,16 @@ const flip = require("flip-text");
 
 module.exports = {
  name: "flip",
- description: "Flip coin/text",
+ description: "🔁 Flip coin/text",
  options: [
   {
    name: "coin",
-   description: "Flip coin",
+   description: "🪙 Flip coin",
    type: 1,
   },
   {
    name: "text",
-   description: "Flip text",
+   description: "🔁 Flip text",
    type: 1,
    options: [
     {

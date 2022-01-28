@@ -4,7 +4,7 @@ require("moment-duration-format");
 
 module.exports = {
  name: "uptime",
- description: "Display Majo.exe uptime",
+ description: "⌛ Display Majo.exe uptime",
  run: async (client, interaction, args) => {
   try {
    const duration = moment.duration(client.uptime).format(" D [days], H [hrs], m [mins], s [secs]");

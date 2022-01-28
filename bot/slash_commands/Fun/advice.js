@@ -3,7 +3,7 @@ const fetch = require("node-fetch");
 
 module.exports = {
  name: "advice",
- description: "Get random advice",
+ description: `🤌 Get random advice`,
  run: async (client, interaction, args) => {
   try {
    const res = await fetch("https://api.adviceslip.com/advice"),

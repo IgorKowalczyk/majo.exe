@@ -3,7 +3,7 @@ const fetch = require("node-fetch");
 
 module.exports = {
  name: "hug",
- description: "Cuddle user",
+ description: "🤗 Cuddle user",
  options: [
   {
    name: "user",

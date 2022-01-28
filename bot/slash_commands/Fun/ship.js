@@ -3,7 +3,7 @@ const progressbar = require("percentagebar");
 
 module.exports = {
  name: "ship",
- description: "Ship users together",
+ description: "❤️ Ship users together",
  options: [
   {
    name: "first",
