@@ -18,7 +18,7 @@ module.exports = {
    name: "query",
    description: "Script to run",
    type: 3,
-   required: false,
+   required: true,
   },
  ],
  run: async (client, interaction, args) => {
