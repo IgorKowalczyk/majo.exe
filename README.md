@@ -184,7 +184,7 @@ ANALYTICS=YOUR_GOOGLE_TRACKING_ID
 2. Your next step is to go over the menu on the left side of the screen and click “OAuth2”. It’s the icon that looks like a wrench.
 3. Now you want to click the blue “Copy” button,which is under the CLIENT SECRET text to copy your bot secret
 > Bonus : Click the copy button on your left to copy your bot id
-> Like your bot's token,remember to keep your client secret secure!
+> * Like your bot's token,remember to keep your client secret secure!
 
 </details>
 
