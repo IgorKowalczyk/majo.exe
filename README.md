@@ -179,9 +179,10 @@ ANALYTICS=YOUR_GOOGLE_TRACKING_ID
 ### Discord Bot's Secret
 <details>
  <summary>Click here to see how to get your bot's client secret!</summary>
+
 1. Go to <a href="https://discordapp.com/developers/applications)">Discord Developer Portal</a>
 2. Your next step is to go over the menu on the left side of the screen and click “OAuth2”. It’s the icon that looks like a wrench.
-3. Now you want to click the blue “Copy” button,which is under the CLIENT SECRET text to copy your bot secret.
+3. Now you want to click the blue “Copy” button,which is under the CLIENT SECRET text to copy your bot secret
 > Bonus : Click the copy button on your left to copy your bot id
 > Like your bot's token,remember to keep your client secret secure!
 
