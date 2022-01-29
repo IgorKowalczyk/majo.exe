@@ -10,19 +10,19 @@
 [![Version](https://img.shields.io/github/package-json/v/igorkowalczyk/majo.exe?style=flat-square&logo=github&label=Version&color=%2334D058)](https://majoexe.ml/server)
 ---
 
-## Invite
+## 🔗 Invite
 
 Go to [this link](https://discord.com/oauth2/authorize/?permissions=4294967287&scope=bot&client_id=681536055572430918) and add the bot (this requires `MANAGE_GUILD` permission) to your server.
  - [Or to make it easier, visit our website](https://majoexe.ml/)
 
-## Features
+## ✨ Features
  - ⚙️ Fully customizable
  - 🌆 Build-in Dashboard
  - 📝 Easy Config
  - 💯 150+ Commands
  - 📚 Easy Hosting
 
-## Hosting
+## 🖥️ Hosting
 
 > We host this bot. Majo.exe *will be* online 24/7. [Invite Majo here!](#invite)<br>
 > However, if you want to host Majo.exe yourself - [take a look here](#-self-hosting-bot)
@@ -100,7 +100,7 @@ Go to [this link](https://discord.com/oauth2/authorize/?permissions=4294967287&s
 
 <br>
 
-## `.env` File (Main Config)
+## 💾 `.env` File (Main Config)
 #### `.env` config table
 | `.env` varriable | Description | Type | Required (Bot) | Required (Dashboard) | Required (API) |
 |---|---|:---:|:---:|:---:|:---:|
@@ -122,6 +122,8 @@ Go to [this link](https://discord.com/oauth2/authorize/?permissions=4294967287&s
 | `STATUS_WEBHOOK` | Your status webhook URL | URL | ✅ | ❌ | ❓ |
 | `ERRORS_WEBHOOK` | Your errors webhook URL | URL | ✅ | ✅ | ❓ |
 | `NODE_ENV` | Environment variable (production/development) | String | ✅ | ✅ | ❓ |
+
+
 #### Example `.env` file
  
 [`.env.example`](https://github.com/igorkowalczyk/majo.exe/blob/master/config/examples/.env.example)
@@ -154,7 +156,7 @@ ANALYTICS=YOUR_GOOGLE_TRACKING_ID
 # Note: !majo is the default prefix, you can change it later.
 ```
 
-## Requirements
+## 🗜️ Requirements
  - MySQL: `<= 5.7`
  - Node.js: `>= 16x`
  - Linux x64 `(Any)`
@@ -207,27 +209,27 @@ ANALYTICS=YOUR_GOOGLE_TRACKING_ID
 </details>
 
 
-## Contributors
+## 📝 Contributors
 - [@r-kjha](https://github.com/r-kjha) (Emoji config support, Bug fixes, New features, Testing)
 - [@Joao-Victor-Liporini](https://github.com/Joao-Victor-Liporini) (Bug fixes, Command handler improvements, Testing, New features)
 - [@krzesl0](https://github.com/krzesl0) (New Features, Bug fixes, Testing)
 - [@Sakshyam6966](https://github.com/Sakshyam6966) (New Features, Bug fixes, Testing)
 - [@Wafelowski](https://github.com/HeavyWolfPL) (Translation improvements)
 
-## Issues
+## ⁉️ Issues
 If you have any issues with the page please create [new issue here](https://github.com/igorkowalczyk/majo.exe/issues)
 
-## Pull Requests
+## 📥 Pull Requests
 When submitting a pull request:
 - Clone the repo.
 - Create a branch off of master and give it a meaningful name (e.g. my-awesome-new-feature).
 - Open a [pull request](https://github.com/igorkowalczyk/majo.exe/pulls) on [GitHub](https://github.com) and describe the feature or fix.
 
-## License
+## 📋 License
 This project is licensed under the MIT. See the [LICENSE](https://github.com/igorkowalczyk/majo.exe/blob/master/license.md) file for details
 
 <details>
- <summary> </summary>
- <h5>The cake is a lie 🍰</h5>
+ <summary>The cake is a lie 🍰</summary>
+ 
  <a href="https://igorkowalczyk.github.io"><img src="https://komarev.com/ghpvc/?username=majobot&style=flat-square&color=333333&label=Repo+views" alt="Github profile views"></a>
 </details>
