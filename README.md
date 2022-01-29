@@ -166,7 +166,14 @@ ANALYTICS=YOUR_GOOGLE_TRACKING_ID
 ### Discord Credentials
 <details>
  <summary>Click here to see Discord API Credentials tutorial!</summary>
- Soon!
+ 1. Go to <a href="https://discordapp.com/developers/applications)">Discord Developer Portal</a>
+ 2. Your next step is to go over the menu on the left side of the screen and click “Bot”. It’s the icon that looks like a little puzzle piece.
+Now you want to click the blue “Add Bot” button
+![This is an image](https://media.discordapp.net/attachments/919561893662846986/936972404570345512/discord-bot-token-9.png)
+ 3. Click the “Yes, do it!” button…
+![This is an image](https://cdn.discordapp.com/attachments/919561893662846986/936972483788165170/discord-bot-token-10.png
+ 4. You’ll see a green message, “A wild bot has appeared!”,you’ll also see a “Token” and a blue button you can click called “Click to Reveal Token”
+> As soon as you click this link, your token will be revealed,copy it and remember to keep it secret
 </details>
 
 ### Amethyste API
