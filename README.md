@@ -114,7 +114,6 @@ Go to [this link](https://discord.com/oauth2/authorize/?permissions=4294967287&s
 | `MYSQL_PASSWORD` | Your MYSQL password | String | ✅ | ✅ | ❓ |
 | `DOMAIN` | Your website domain (eg `https://example.com`) | URL | ❌ | ✅ | ❓ |
 | `PORT` | Your webiste port eg. `8008`<br> - Note: Heroku don't need port. Heroku assings port automatically! | Number | ❌ | ✅ | ❓ |
-| `DASHBOARD` | The Web-Dashboard config value. (Boolean) [Deprecated!] | Boolean | ❌ | ✅ | ❓ |
 | `SECRET` | The bot client secret | String | ❌ | ✅ | ❓ |
 | `ANALYTICS` | Google analytics tracking ID, used in Web-Dashboard | String | ❌ | ❌ | ❓ |
 | `RECAPTCHA_KEY` | Google recaptcha v2 key | String | ❌ | ✅ | ❓ |
@@ -147,8 +146,6 @@ RECAPTCHA_KEY=YOUR_RECAPTCHA_KEY
 NODE_ENV=production/development
 
 # Not required
-DASHBOARD=[true/false]
-# Deprecated ^
 DOMAIN=YOUR_WEBSITE_DOMAIN
 PORT=YOUR_WEBSITE_PORT
 SECRET=YOUR_BOT_CLIENT_SECRET
