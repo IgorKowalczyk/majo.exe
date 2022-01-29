@@ -165,14 +165,26 @@ ANALYTICS=YOUR_GOOGLE_TRACKING_ID
 ## Tokens tutorials
 ### Discord Bot's Token
 <details>
- <summary>Click here to see Discord API Credentials tutorial!</summary>
+ <summary>Click here to see how to get your bot's token!</summary>
 
 1. Go to <a href="https://discordapp.com/developers/applications)">Discord Developer Portal</a>
 2. Your next step is to go over the menu on the left side of the screen and click “Bot”. It’s the icon that looks like a little puzzle piece.
 > Now you want to click the blue “Add Bot” button
 3. Click the “Yes, do it!” button.
 4. You’ll see a green message, “A wild bot has appeared!”,you’ll also see a “Token” and a blue button you can click called “Click to Reveal Token”
-> As soon as you click that button,your token will be revealed,copy it and remember to keep it secret
+> As soon as you click that button,your token will be revealed,copy it and remember to keep it secure!
+
+</details>
+
+### Discord Bot's Secret
+<details>
+ <summary>Click here to see how to get your bot's client secret!</summary>
+and like bot token,remember to keep your client secret private!!
+1. Go to <a href="https://discordapp.com/developers/applications)">Discord Developer Portal</a>
+2. Your next step is to go over the menu on the left side of the screen and click “OAuth2”. It’s the icon that looks like a wrench.
+3. Now you want to click the blue “Copy” button,which is under the CLIENT SECRET text to copy your bot secret
+> * Bonus : Click the copy button on your left to copy your bot id
+> Like your bot's token,remember to keep your client secret secure!
 
 </details>
 
@@ -212,6 +224,7 @@ ANALYTICS=YOUR_GOOGLE_TRACKING_ID
 
 > Written by: <a href="https://github.com/MashedTuna">MashedPotato</a>
 </details>
+
 
 
 
