@@ -1,5 +1,3 @@
-if (!process.env.DASHBOARD == true) throw new Error(`[HOST] Invaild config - not running dashboard! The dashboard config value is set to "${process.env.DASHBOARD}". Change it to "true" to run the dashboard!`);
-if (!process.env.DASHBOARD) throw new Error("[HOST] You need to provide Dashboard (Boolean) in .env - DASHBOARD=BOOLEAN");
 if (!process.env.SECRET) throw new Error("[HOST] You need to provide Secret in .env - SECRET=YOUR_BOT_SECRET");
 if (!process.env.PORT) throw new Error("[HOST] You need to provide Port in .env - PORT=YOUR_WEBSITE_PORT");
 if (!process.env.ID) throw new Error("[HOST] You need to provide Discord Bot ID in .env - ID=YOUR_DISCORD_BOT_ID");
