@@ -163,15 +163,14 @@ ANALYTICS=YOUR_GOOGLE_TRACKING_ID
 
 
 ## Tokens tutorials
-### Discord Credentials
+### Discord Bot's Token
 <details>
  <summary>Click here to see Discord API Credentials tutorial!</summary>
 
 1. Go to <a href="https://discordapp.com/developers/applications)">Discord Developer Portal</a>
 2. Your next step is to go over the menu on the left side of the screen and click “Bot”. It’s the icon that looks like a little puzzle piece.
 > Now you want to click the blue “Add Bot” button
-3. IClick the “Yes, do it!” button.
-> If you have generated a reCAPTCHA key before, you will be redirected to the reCAPTCHA dashboard. Here will display the statistics of your past key. And to generate a key, tap the `+` button on the top right.
+3. Click the “Yes, do it!” button.
 4. You’ll see a green message, “A wild bot has appeared!”,you’ll also see a “Token” and a blue button you can click called “Click to Reveal Token”
 > As soon as you click that button,your token will be revealed,copy it and remember to keep it secret
 
