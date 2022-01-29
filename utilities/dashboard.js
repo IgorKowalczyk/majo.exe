@@ -1,6 +1,3 @@
-const os = require("os");
-const chalk = require("chalk");
-if (os.platform() != "linux") console.log(chalk.bold(chalk.blue.red(`[DEBUG]`)) + chalk.bold.cyan(` Detected `) + chalk.blue.underline(`${process.platform} ${process.arch}` + chalk.bold.cyan(`! Please use Linux based system to avoid errors`)));
 if (!process.env.DASHBOARD == true) throw new Error(`[HOST] Invaild config - not running dashboard! The dashboard config value is set to "${process.env.DASHBOARD}". Change it to "true" to run the dashboard!`);
 if (!process.env.DASHBOARD) throw new Error("[HOST] You need to provide Dashboard (Boolean) in .env - DASHBOARD=BOOLEAN");
 if (!process.env.SECRET) throw new Error("[HOST] You need to provide Secret in .env - SECRET=YOUR_BOT_SECRET");

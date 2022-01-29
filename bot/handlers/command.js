@@ -1,3 +1,5 @@
+// DEPRECATED
+
 const { glob } = require("glob");
 const { promisify } = require("util");
 const globPromise = promisify(glob);
@@ -9,6 +11,7 @@ table.setHeading("Command", "Category", "Load status");
 table.setTitleAlign(table.CENTER);
 
 module.exports = async (client) => {
+ /* DEPRECATED */
  const commandFiles = await globPromise(`${process.cwd()}/bot/commands/**/*.js`);
  commandFiles.map((value) => {
   const file = require(value);
@@ -34,8 +37,4 @@ module.exports = async (client) => {
 
  console.log(chalk.bold(chalk.green.bold("> ") + chalk.blue.bold("[MAJO]")) + chalk.cyan.bold(" Please wait... Loading commands..."));
  if (additional_config.show_commands_list == true) console.log(chalk.cyan.bold(table.toString()));
-
- // Events
- const eventFiles = await globPromise(`${process.cwd()}/events/*.js`);
- eventFiles.map((value) => require(value));
 };
