@@ -163,7 +163,19 @@ ANALYTICS=YOUR_GOOGLE_TRACKING_ID
 
 ## 🔓 Tokens tutorials
 ### 🔑 Discord Credentials
-Soon!
+#### 🔏 Discord Token
+1. Go to <a href="https://discordapp.com/developers/applications)">Discord Developer Portal</a>
+2. At the top right of the screen, click "New application" and assign it a name. Next in the left part of the screen on the navigation bar, find "Bot" then click it and find button named "Add Bot"
+3. After confirming the bot creation, click the "Copy token" button
+4. Paste your token in `.env` file - `TOKEN=BOT_TOKEN`
+
+#### 🔓 Discord Bot Secret
+1. Go to <a href="https://discordapp.com/developers/applications)">Discord Developer Portal</a>
+2. In the left part of the screen on the bar, find "OAuth2" then click it
+3. Find section named "Client Secret", under the bot secret click "Copy" button
+4. Paste client secret to `.env` - `SECRET=CLIENT_SECRET`
+
+> Written by: <a href="https://github.com/MashedTuna">MashedPotato</a>
 
 ---
 
@@ -197,7 +209,6 @@ Soon!
 5. When complete, click the SUBMIT button.
 
 > Written by: <a href="https://github.com/MashedTuna">MashedPotato</a>
-
 
 ## 📝 Contributors
 - [@r-kjha](https://github.com/r-kjha) (Emoji config support, Bug fixes, New features, Testing)
