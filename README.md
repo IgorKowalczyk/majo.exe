@@ -34,14 +34,14 @@ Go to [this link](https://discord.com/oauth2/authorize/?permissions=4294967287&s
 #### 🤖 Self-Hosting (Bot)
 1. Clone [this repository](https://github.com/igorkowalczyk/majo.exe) `git clone https://github.com/IgorKowalczyk/majo.exe.git`
 2. Run `npm i` to install all dependencies,
-3. Grab a Discord Bot token and client secret on [Discord's developer portal](https://discord.com/developers/applications) [Tutorial](#discord-credentials)
+3. Grab a Discord Bot token and client secret on [Discord's developer portal](https://discord.com/developers/applications) [Tutorial](#-discord-credentials)
 4. Fill `/config/config.js`, `/config/emojis_config.js` with your values
 5. Create new file named `.env` Remember - the file is super secret, better to not share it.
 6. In `.env` file set this values:
     * `TOKEN` - Discord bot token
     * `PREFIX` - Discord bot main prefix
     * `ID` - Your Discord Bot ID
-    * `AMEAPI` - your Amethyste API token [[Tutorial](#amethyste-api)]
+    * `AMEAPI` - your Amethyste API token [[Tutorial](#-amethyste-api)]
     * `MYSQL_DATABASE` - Your MYSQL database name
     * `MYSQL_HOST` - Your MYSQL Host Endpoint
     * `MYSQL_PASSWORD` - Your MYSQL user password
@@ -56,7 +56,7 @@ Go to [this link](https://discord.com/oauth2/authorize/?permissions=4294967287&s
 #### 💾 Self-Hosting (Dashboard)
 1. Clone [this repository](https://github.com/igorkowalczyk/majo.exe) `git clone https://github.com/IgorKowalczyk/majo.exe.git`
 2. Run `npm i` to install all dependencies,
-3. Grab a Discord Bot token and client secret on [Discord's developer portal](https://discord.com/developers/applications) [Tutorial](#discord-credentials)
+3. Grab a Discord Bot token and client secret on [Discord's developer portal](https://discord.com/developers/applications) [Tutorial](#-discord-credentials)
 4. Create new file named `.env` Remember - the file is super secret, better to not share it.
 5. In `.env` file set this values:
     * `TOKEN` - Discord bot token
@@ -161,29 +161,23 @@ ANALYTICS=YOUR_GOOGLE_TRACKING_ID
  - Disk space: `>= 1GB`
 
 
-## Tokens tutorials
-### Discord Credentials
-<details>
- <summary>Click here to see Discord API Credentials tutorial!</summary>
- Soon!
-</details>
+## 🔓 Tokens tutorials
+### 🔑 Discord Credentials
+Soon!
 
-### Amethyste API
-<details>
- <summary>Click here to see Amethyste API Credentials tutorial!</summary>
- Soon!
-</details>
+---
 
-### Analytics ID
-<details>
- <summary>Click here to see Analytics ID tutorial!</summary>
- Soon!
-</details>
+### 🔐 Amethyste API
+Soon!
 
-### Re-Captcha Key
-<details>
- <summary>Click here to see Re-Captcha Key tutorial!</summary>
- 
+---
+
+### 📈 Analytics ID
+Soon!
+
+---
+
+### 🔐 Re-Captcha Key
 1. Go to <a href="https://www.google.com/recaptcha/about/">Google reCAPTCHA About Page</a>
 2. Choose v3 Admin Console.
 3. If you have never generated a reCAPTCHA key before, you will be redirected to the key generation page.
@@ -203,7 +197,6 @@ ANALYTICS=YOUR_GOOGLE_TRACKING_ID
 5. When complete, click the SUBMIT button.
 
 > Written by: <a href="https://github.com/MashedTuna">MashedPotato</a>
-</details>
 
 
 ## 📝 Contributors
