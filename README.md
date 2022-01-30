@@ -163,20 +163,19 @@ ANALYTICS=YOUR_GOOGLE_TRACKING_ID
 
 ## 🔓 Tokens tutorials
 ### 🔑 Discord Credentials
-#### Discord Token
+#### 🔏 Discord Token
 1. Go to <a href="https://discordapp.com/developers/applications)">Discord Developer Portal</a>
-2. Your next step is to go over the menu on the left side of the screen and click “Bot”. It’s the icon that looks like a little puzzle piece.
-> Now you want to click the blue “Add Bot” button
-3. Click the “Yes, do it!” button.
-4. You’ll see a green message, “A wild bot has appeared!”,you’ll also see a “Token” and a blue button you can click called “Click to Reveal Token”
-> As soon as you click that button,your token will be revealed,copy it and remember to keep it secure!
+2. At the top right of the screen, click "New application" and assign it a name. Next in the left part of the screen on the navigation bar, find "Bot" then click it and find button named "Add Bot"
+3. After confirming the bot creation, click the "Copy token" button
+4. Paste your token in `.env` file - `TOKEN=BOT_TOKEN`
 
-#### Discord Bot Secret
+#### 🔓 Discord Bot Secret
 1. Go to <a href="https://discordapp.com/developers/applications)">Discord Developer Portal</a>
-2. Your next step is to go over the menu on the left side of the screen and click “OAuth2”. It’s the icon that looks like a wrench.
-3. Now you want to click the blue “Copy” button,which is under the CLIENT SECRET text to copy your bot secret
-> Bonus : Click the copy button on your left to copy your bot id
-> * Like your bot's token,remember to keep your client secret secure!
+2. In the left part of the screen on the bar, find "OAuth2" then click it
+3. Find section named "Client Secret", under the bot secret click "Copy" button
+4. Paste client secret to `.env` - `SECRET=CLIENT_SECRET`
+
+> Written by: <a href="https://github.com/MashedTuna">MashedPotato</a>
 
 ---
 
