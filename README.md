@@ -38,7 +38,7 @@ Go to [this link](https://discord.com/oauth2/authorize/?permissions=4294967287&s
 4. Fill `/config/config.js`, `/config/emojis_config.js` with your values
 5. Create new file named `.env` Remember - the file is super secret, better to not share it.
 6. In `.env` file set this values:
-    * `TOKEN` - Discord bot token
+    * `TOKEN` - Discord bot token [[Tutorial](#-discord-token)]
     * `PREFIX` - Discord bot main prefix
     * `ID` - Your Discord Bot ID
     * `AMEAPI` - your Amethyste API token [[Tutorial](#-amethyste-api)]
@@ -59,10 +59,10 @@ Go to [this link](https://discord.com/oauth2/authorize/?permissions=4294967287&s
 3. Grab a Discord Bot token and client secret on [Discord's developer portal](https://discord.com/developers/applications) [Tutorial](#-discord-credentials)
 4. Create new file named `.env` Remember - the file is super secret, better to not share it.
 5. In `.env` file set this values:
-    * `TOKEN` - Discord bot token
+    * `TOKEN` - Discord bot token [[Tutorial](#-discord-token)]
     * `PREFIX` - Discord bot main prefix
     * `DOMAIN` - Your website domain (eg `https://example.com`)
-    * `AMEAPI` - Your Amethyste api token
+    * `AMEAPI` - Your Amethyste api token [[Tutorial](#-amethyste-api)]
     * `ID` - Your Discord Bot ID
     * `MYSQL_DATABASE` - Your MYSQL database name
     * `MYSQL_HOST` - Your MYSQL Host Endpoint
@@ -71,7 +71,7 @@ Go to [this link](https://discord.com/oauth2/authorize/?permissions=4294967287&s
     * `CONTACT_WEBHOOK` - Your Contact Webhook URL (Discord)
     * `PORT` - Your website port
     * `RECAPTCHA_KEY` - Google recaptcha v2 key
-    * `SECRET` - Discord bot secret
+    * `SECRET` - Discord bot secret [[Tutorial](#-discord-bot-secret)]
 6. Fill dashboard config in `/config/main_config.js`
 7. Add these redirect URI's ([https://discord.com/developers/applications/<YOUR-BOT-ID\>/oauth2](https://discord.com/developers/applications))
     * ```
