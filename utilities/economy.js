@@ -1,3 +1,5 @@
+// DEPRECATED
+
 const { EconomyManager } = require("quick.eco");
 
 // Checking env values

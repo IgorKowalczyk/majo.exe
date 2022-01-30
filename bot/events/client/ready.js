@@ -1,10 +1,6 @@
 const { MessageEmbed, WebhookClient } = require("discord.js");
 const chalk = require("chalk");
-const { glob } = require("glob");
-const { promisify } = require("util");
 const moment = require("moment");
-const io = require("@pm2/io");
-const os = require("os");
 
 module.exports = async (client) => {
  try {
@@ -12,16 +8,7 @@ module.exports = async (client) => {
    return string.charAt(0).toUpperCase() + string.slice(1);
   }
   console.log(chalk.bold(chalk.green.bold("> ") + chalk.blue.bold(`[${client.user.username.toUpperCase().split(" ")[0]}]`)) + chalk.cyan.bold(" Loading slash commands... Please wait"));
-  const globPromise = promisify(glob);
-  const slash_commands = await globPromise(`${process.cwd()}/bot/slash_commands/*/*.js`);
-  const slash_commands_array = [];
-  slash_commands.map((value) => {
-   const file = require(value);
-   if(!file.name) return console.log("err");
-   client.slash_commands.set(file.name, file);
-   slash_commands_array.push(file);
-  });
-  await client.application.commands.set(slash_commands_array);
+  await require("../../handlers/slash_command")(client);
   console.log(chalk.bold(chalk.green.bold("> ") + chalk.blue.bold(`[${client.user.username.toUpperCase().split(" ")[0]}]`)) + chalk.cyan.bold(" Successfully loaded " + chalk.blue.underline(`${client.slash_commands.size}`) + " slash commands! (/)"));
   console.log(chalk.bold(chalk.green.bold("> ") + chalk.blue.bold(`[${client.user.username.toUpperCase().split(" ")[0]}]`)) + chalk.cyan.bold(" Successfully loaded " + chalk.blue.underline(`${client.commands.size}`) + ` text commands! (${client.prefix})`));
   console.log(chalk.bold(chalk.green.bold("> ") + chalk.blue.bold(`[${client.user.username.toUpperCase().split(" ")[0]}]`)) + chalk.bold.cyan(` Bot User: `) + chalk.blue.underline(`${client.user.tag}`));

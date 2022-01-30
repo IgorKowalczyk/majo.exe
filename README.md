@@ -10,19 +10,19 @@
 [![Version](https://img.shields.io/github/package-json/v/igorkowalczyk/majo.exe?style=flat-square&logo=github&label=Version&color=%2334D058)](https://majoexe.ml/server)
 ---
 
-## Invite
+## 🔗 Invite
 
 Go to [this link](https://discord.com/oauth2/authorize/?permissions=4294967287&scope=bot&client_id=681536055572430918) and add the bot (this requires `MANAGE_GUILD` permission) to your server.
  - [Or to make it easier, visit our website](https://majoexe.ml/)
 
-## Features
+## ✨ Features
  - ⚙️ Fully customizable
  - 🌆 Build-in Dashboard
  - 📝 Easy Config
  - 💯 150+ Commands
  - 📚 Easy Hosting
 
-## Hosting
+## 🖥️ Hosting
 
 > We host this bot. Majo.exe *will be* online 24/7. [Invite Majo here!](#invite)<br>
 > However, if you want to host Majo.exe yourself - [take a look here](#-self-hosting-bot)
@@ -34,14 +34,14 @@ Go to [this link](https://discord.com/oauth2/authorize/?permissions=4294967287&s
 #### 🤖 Self-Hosting (Bot)
 1. Clone [this repository](https://github.com/igorkowalczyk/majo.exe) `git clone https://github.com/IgorKowalczyk/majo.exe.git`
 2. Run `npm i` to install all dependencies,
-3. Grab a Discord Bot token and client secret on [Discord's developer portal](https://discord.com/developers/applications) [Tutorial](#discord-credentials)
+3. Grab a Discord Bot token and client secret on [Discord's developer portal](https://discord.com/developers/applications) [Tutorial](#-discord-credentials)
 4. Fill `/config/config.js`, `/config/emojis_config.js` with your values
 5. Create new file named `.env` Remember - the file is super secret, better to not share it.
 6. In `.env` file set this values:
     * `TOKEN` - Discord bot token
     * `PREFIX` - Discord bot main prefix
     * `ID` - Your Discord Bot ID
-    * `AMEAPI` - your Amethyste API token [[Tutorial](#amethyste-api)]
+    * `AMEAPI` - your Amethyste API token [[Tutorial](#-amethyste-api)]
     * `MYSQL_DATABASE` - Your MYSQL database name
     * `MYSQL_HOST` - Your MYSQL Host Endpoint
     * `MYSQL_PASSWORD` - Your MYSQL user password
@@ -56,7 +56,7 @@ Go to [this link](https://discord.com/oauth2/authorize/?permissions=4294967287&s
 #### 💾 Self-Hosting (Dashboard)
 1. Clone [this repository](https://github.com/igorkowalczyk/majo.exe) `git clone https://github.com/IgorKowalczyk/majo.exe.git`
 2. Run `npm i` to install all dependencies,
-3. Grab a Discord Bot token and client secret on [Discord's developer portal](https://discord.com/developers/applications) [Tutorial](#discord-credentials)
+3. Grab a Discord Bot token and client secret on [Discord's developer portal](https://discord.com/developers/applications) [Tutorial](#-discord-credentials)
 4. Create new file named `.env` Remember - the file is super secret, better to not share it.
 5. In `.env` file set this values:
     * `TOKEN` - Discord bot token
@@ -100,7 +100,7 @@ Go to [this link](https://discord.com/oauth2/authorize/?permissions=4294967287&s
 
 <br>
 
-## `.env` File (Main Config)
+## 💾 `.env` File (Main Config)
 #### `.env` config table
 | `.env` varriable | Description | Type | Required (Bot) | Required (Dashboard) | Required (API) |
 |---|---|:---:|:---:|:---:|:---:|
@@ -114,7 +114,6 @@ Go to [this link](https://discord.com/oauth2/authorize/?permissions=4294967287&s
 | `MYSQL_PASSWORD` | Your MYSQL password | String | ✅ | ✅ | ❓ |
 | `DOMAIN` | Your website domain (eg `https://example.com`) | URL | ❌ | ✅ | ❓ |
 | `PORT` | Your webiste port eg. `8008`<br> - Note: Heroku don't need port. Heroku assings port automatically! | Number | ❌ | ✅ | ❓ |
-| `DASHBOARD` | The Web-Dashboard config value. (Boolean) [Deprecated!] | Boolean | ❌ | ✅ | ❓ |
 | `SECRET` | The bot client secret | String | ❌ | ✅ | ❓ |
 | `ANALYTICS` | Google analytics tracking ID, used in Web-Dashboard | String | ❌ | ❌ | ❓ |
 | `RECAPTCHA_KEY` | Google recaptcha v2 key | String | ❌ | ✅ | ❓ |
@@ -122,6 +121,8 @@ Go to [this link](https://discord.com/oauth2/authorize/?permissions=4294967287&s
 | `STATUS_WEBHOOK` | Your status webhook URL | URL | ✅ | ❌ | ❓ |
 | `ERRORS_WEBHOOK` | Your errors webhook URL | URL | ✅ | ✅ | ❓ |
 | `NODE_ENV` | Environment variable (production/development) | String | ✅ | ✅ | ❓ |
+
+
 #### Example `.env` file
  
 [`.env.example`](https://github.com/igorkowalczyk/majo.exe/blob/master/config/examples/.env.example)
@@ -145,8 +146,6 @@ RECAPTCHA_KEY=YOUR_RECAPTCHA_KEY
 NODE_ENV=production/development
 
 # Not required
-DASHBOARD=[true/false]
-# Deprecated ^
 DOMAIN=YOUR_WEBSITE_DOMAIN
 PORT=YOUR_WEBSITE_PORT
 SECRET=YOUR_BOT_CLIENT_SECRET
@@ -154,7 +153,7 @@ ANALYTICS=YOUR_GOOGLE_TRACKING_ID
 # Note: !majo is the default prefix, you can change it later.
 ```
 
-## Requirements
+## 🗜️ Requirements
  - MySQL: `<= 5.7`
  - Node.js: `>= 16x`
  - Linux x64 `(Any)`
@@ -162,11 +161,9 @@ ANALYTICS=YOUR_GOOGLE_TRACKING_ID
  - Disk space: `>= 1GB`
 
 
-## Tokens tutorials
-### Discord Bot's Token
-<details>
- <summary>Click here to see how to get your bot's token!</summary>
-
+## 🔓 Tokens tutorials
+### 🔑 Discord Credentials
+#### Discord Token
 1. Go to <a href="https://discordapp.com/developers/applications)">Discord Developer Portal</a>
 2. Your next step is to go over the menu on the left side of the screen and click “Bot”. It’s the icon that looks like a little puzzle piece.
 > Now you want to click the blue “Add Bot” button
@@ -174,36 +171,26 @@ ANALYTICS=YOUR_GOOGLE_TRACKING_ID
 4. You’ll see a green message, “A wild bot has appeared!”,you’ll also see a “Token” and a blue button you can click called “Click to Reveal Token”
 > As soon as you click that button,your token will be revealed,copy it and remember to keep it secure!
 
-</details>
-
-### Discord Bot's Secret
-<details>
- <summary>Click here to see how to get your bot's client secret!</summary>
-
+#### Discord Bot Secret
 1. Go to <a href="https://discordapp.com/developers/applications)">Discord Developer Portal</a>
 2. Your next step is to go over the menu on the left side of the screen and click “OAuth2”. It’s the icon that looks like a wrench.
 3. Now you want to click the blue “Copy” button,which is under the CLIENT SECRET text to copy your bot secret
 > Bonus : Click the copy button on your left to copy your bot id
 > * Like your bot's token,remember to keep your client secret secure!
 
-</details>
+---
 
-### Amethyste API
-<details>
- <summary>Click here to see Amethyste API Credentials tutorial!</summary>
- Soon!
-</details>
+### 🔐 Amethyste API
+Soon!
 
-### Analytics ID
-<details>
- <summary>Click here to see Analytics ID tutorial!</summary>
- Soon!
-</details>
+---
 
-### Re-Captcha Key
-<details>
- <summary>Click here to see Re-Captcha Key tutorial!</summary>
- 
+### 📈 Analytics ID
+Soon!
+
+---
+
+### 🔐 Re-Captcha Key
 1. Go to <a href="https://www.google.com/recaptcha/about/">Google reCAPTCHA About Page</a>
 2. Choose v3 Admin Console.
 3. If you have never generated a reCAPTCHA key before, you will be redirected to the key generation page.
@@ -223,32 +210,28 @@ ANALYTICS=YOUR_GOOGLE_TRACKING_ID
 5. When complete, click the SUBMIT button.
 
 > Written by: <a href="https://github.com/MashedTuna">MashedPotato</a>
-</details>
 
-
-
-
-## Contributors
+## 📝 Contributors
 - [@r-kjha](https://github.com/r-kjha) (Emoji config support, Bug fixes, New features, Testing)
 - [@Joao-Victor-Liporini](https://github.com/Joao-Victor-Liporini) (Bug fixes, Command handler improvements, Testing, New features)
 - [@krzesl0](https://github.com/krzesl0) (New Features, Bug fixes, Testing)
 - [@Sakshyam6966](https://github.com/Sakshyam6966) (New Features, Bug fixes, Testing)
 - [@Wafelowski](https://github.com/HeavyWolfPL) (Translation improvements)
 
-## Issues
+## ⁉️ Issues
 If you have any issues with the page please create [new issue here](https://github.com/igorkowalczyk/majo.exe/issues)
 
-## Pull Requests
+## 📥 Pull Requests
 When submitting a pull request:
 - Clone the repo.
 - Create a branch off of master and give it a meaningful name (e.g. my-awesome-new-feature).
 - Open a [pull request](https://github.com/igorkowalczyk/majo.exe/pulls) on [GitHub](https://github.com) and describe the feature or fix.
 
-## License
+## 📋 License
 This project is licensed under the MIT. See the [LICENSE](https://github.com/igorkowalczyk/majo.exe/blob/master/license.md) file for details
 
 <details>
- <summary> </summary>
- <h5>The cake is a lie 🍰</h5>
+ <summary>The cake is a lie 🍰</summary>
+ 
  <a href="https://igorkowalczyk.github.io"><img src="https://komarev.com/ghpvc/?username=majobot&style=flat-square&color=333333&label=Repo+views" alt="Github profile views"></a>
 </details>

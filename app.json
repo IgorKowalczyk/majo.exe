@@ -44,10 +44,6 @@
    "description": "Errors webhook URL",
    "required": true
   },
-  "DASHBOARD": {
-   "description": "Dashboard launch config (Boolean | true/false)",
-   "required": true
-  },
   "SECRET": {
    "description": "Bot client secret",
    "required": false
@@ -73,5 +69,5 @@
    "required": true
   }
  },
- "keywords": ["discord", "discord-bot", "node-js", "web-dashboard", "bot"]
+ "keywords": ["discord", "discord-bot", "node-js", "web-dashboard", "bot", "majoexe"]
 }

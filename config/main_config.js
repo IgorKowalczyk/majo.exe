@@ -45,7 +45,6 @@ module.exports = {
  client_secret: process.env.SECRET,
  port: process.env.PORT,
  session_secret: process.env.SESSION_SECRET,
- dashboard: process.env.DASHBOARD,
  cookies: process.env.COOKIES,
  image: "banner.jpg",
  verification: "-wuCsk4qLolXEPSUTGX7YBxywcyNNf5HS2ClzgEWxNY",
