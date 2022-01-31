@@ -15,10 +15,10 @@ module.exports = {
  ],
  run: async (client, interaction, args) => {
   try {
-   if(!interaction.member.permissions.has("MANAGE_GUILD")) {
+   if (!interaction.member.permissions.has("MANAGE_GUILD")) {
     return client.createSlashError(interaction, `${client.bot_emojis.error} | You can't resume giveaway. Missing permission: \`MANAGE_GUILD\``);
    }
-   if(!interaction.member.permissions.has("MANAGE_MESSAGES")) {
+   if (!interaction.member.permissions.has("MANAGE_MESSAGES")) {
     return client.createSlashError(interaction, `${client.bot_emojis.error} | You can't resume giveaway. Missing permission: \`MANAGE_MESSAGES\``);
    }
    const query = args.join(" ");
@@ -59,5 +59,5 @@ module.exports = {
    console.log(err);
    return client.createSlashCommandError(interaction, err);
   }
- }
-}
+ },
+};

@@ -43,11 +43,7 @@ module.exports = async (client) => {
    const emoji = emojis[Math.floor(Math.random() * emojis.length)];
    const statuslist = [
     {
-     msg: `outside (JK who does that?) ${emoji}`,
-     type: "PLAYING",
-    },
-    {
-     msg: `alone 😢`,
+     msg: `outside (you know who does that?) ${emoji}`,
      type: "PLAYING",
     },
     {
@@ -55,11 +51,7 @@ module.exports = async (client) => {
      type: "PLAYING",
     },
     {
-     msg: `with over ${client.guilds.cache.reduce((a, g) => a + g.memberCount, 0)} users ${emoji}!`,
-     type: "PLAYING",
-    },
-    {
-     msg: `who even reads these anyways? 🤕`,
+     msg: `with over ${client.guilds.cache.reduce((a, g) => a + g.memberCount, 0)} users ${emoji}`,
      type: "PLAYING",
     },
     {
@@ -67,23 +59,15 @@ module.exports = async (client) => {
      type: "WATCHING",
     },
     {
-     msg: `${client.prefix} help! ${emoji}`,
-     type: "WATCHING",
-    },
-    {
      msg: `you (turn around) 🔪`,
      type: "WATCHING",
     },
     {
-     msg: `grass grow 🥬`,
+     msg: `grass grow 🌱`,
      type: "WATCHING",
     },
     {
-     msg: `over ${client.guilds.cache.size} servers ${emoji}!`,
-     type: "WATCHING",
-    },
-    {
-     msg: `funny cat videos 🐈`,
+     msg: `over ${client.guilds.cache.size} servers ${emoji}`,
      type: "WATCHING",
     },
     {
@@ -101,6 +85,18 @@ module.exports = async (client) => {
     {
      msg: `your conversations ${emoji}`,
      type: "LISTENING",
+    },
+    {
+     msg: `Mahou Shoujo Site ${emoji}`,
+     type: "WATCHING",
+    },
+    {
+     msg: `Youtube ${emoji}`,
+     type: "WATCHING",
+    },
+    {
+     msg: `exploits ⛔`,
+     type: "WATCHING",
     },
    ];
    const random = Math.floor(Math.random() * (statuslist.length - 1) + 1);
