@@ -4,6 +4,8 @@ const fetch = require("node-fetch");
 module.exports = {
  name: "meme",
  description: "😆 Get random meme from reddit",
+ usage: "/meme",
+ category: "Fun",
  run: async (client, interaction, args) => {
   try {
    const response = await fetch("https://reddit.com/r/dankmemes/random/.json");

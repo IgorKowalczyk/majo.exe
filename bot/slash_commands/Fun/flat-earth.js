@@ -3,6 +3,8 @@ const { MessageEmbed } = require("discord.js");
 module.exports = {
  name: "flat-earth",
  description: `🌍 Demonstrates that the earth really is flat`,
+ usage: "/flat-earth [user]",
+ category: "Fun",
  options: [
   {
    name: "user",

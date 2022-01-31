@@ -6,6 +6,8 @@ module.exports = {
  name: "4chan",
  description: `🍀 Shows a random image from the selected 4chan board`,
  nsfw: true,
+ usage: "/4chan <board>",
+ category: "Fun",
  options: [
   {
    name: "board",

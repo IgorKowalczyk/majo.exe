@@ -4,6 +4,8 @@ const config = require("../../../config/main_config");
 module.exports = {
  name: "eval",
  description: "👑 Evaluates and runs JavaScript code",
+ usage: "/eval <code>",
+ category: "Owner",
  permissions: [
   {
    id: config.owner_id.toString(),

@@ -4,6 +4,8 @@ const mal = require("mal-scraper");
 module.exports = {
  name: "anime",
  description: `💮 Search for information on a given anime`,
+ usage: "/anime <query>",
+ category: "Fun",
  options: [
   {
    name: "query",

@@ -12,6 +12,8 @@ function capitalize(string) {
 module.exports = {
  name: "slash_commands_help",
  description: "❔ Get a list of commands or more information about a specific command",
+ usage: "/slash_commands_help [command]",
+ category: "General",
  options: [
   {
    name: "command",
@@ -260,7 +262,7 @@ module.exports = {
      .addField(`${client.bot_emojis.stopwatch} Category`, `\`${command.category}\``)
      .addField(`${client.bot_emojis.stopwatch} Cooldown`, `\`${command.timeout || "5000"}ms\``)
      .addField(`${client.bot_emojis.edit} Description`, command.description ? `\`${command.description}\`` : "`No description found for this command!`")
-     .addField(`${client.bot_emojis.screw_that} Usage`, command.usage ? `\`${client.prefix} ${command.usage}\`` : `\`${client.prefix}${command.name}\``)
+     .addField(`${client.bot_emojis.screw_that} Usage`, command.usage ? `\`${command.usage}\`` : `\`/${command.name}\``)
      .setFooter({
       text: `Requested by ${interaction.member.user.tag}`,
       iconURL: interaction.member.user.displayAvatarURL({

@@ -5,6 +5,8 @@ const neko = new client();
 module.exports = {
  name: "cat-emoji",
  description: `🐱 Cats are cute`,
+ usage: "/cat-emoji",
+ category: "Fun",
  run: async (client, interaction, args) => {
   (async () => {
    try {

@@ -3,6 +3,8 @@ const { MessageEmbed } = require("discord.js");
 module.exports = {
  name: "pp",
  description: "👌 Show user PP size",
+ usage: "/pp <user>",
+ category: "Fun",
  options: [
   {
    name: "user",

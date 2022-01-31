@@ -4,6 +4,8 @@ const fetch = require("node-fetch");
 module.exports = {
  name: "activities",
  description: `🚀 Start Discord activities`,
+ usage: "/8ball <channel> <activity type>",
+ category: "Fun",
  options: [
   {
    name: "channel",

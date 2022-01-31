@@ -3,6 +3,8 @@ const { MessageEmbed, MessageActionRow, MessageButton } = require("discord.js");
 module.exports = {
  name: "invite",
  description: "🎉 Invite me to your server",
+ usage: "/invite",
+ category: "General",
  run: async (client, interaction, args) => {
   try {
    const embed = new MessageEmbed() // Prettier

@@ -3,6 +3,8 @@ const fetch = require("node-fetch");
 module.exports = {
  name: "bot-token",
  description: `💾 Generate (fake) random Discord Bot token`,
+ usage: "/bot-token",
+ category: "Fun",
  run: async (client, interaction, args) => {
   try {
    const response = await fetch("https://some-random-api.ml/bottoken");

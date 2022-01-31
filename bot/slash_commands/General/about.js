@@ -3,6 +3,8 @@ const { MessageEmbed } = require("discord.js");
 module.exports = {
  name: "about",
  description: "📝 Info about the bot and developer",
+ usage: "/about",
+ category: "General",
  run: async (client, interaction, args) => {
   try {
    const embed = new MessageEmbed()

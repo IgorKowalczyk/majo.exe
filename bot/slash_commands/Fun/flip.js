@@ -4,6 +4,8 @@ const flip = require("flip-text");
 module.exports = {
  name: "flip",
  description: "🔁 Flip coin/text",
+ usage: "/flip coin | /flip text <text>",
+ category: "Fun",
  options: [
   {
    name: "coin",

@@ -13,6 +13,8 @@ const fetch = require("node-fetch");
 module.exports = {
  name: "debug",
  description: "🎛️ Debug bot",
+ usage: "/debug <query>",
+ category: "General",
  options: [
   {
    name: "query",

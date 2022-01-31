@@ -5,6 +5,8 @@ const deaths = ["[NAME1] ran over [NAME2] with a School Bus! :bus:", "[NAME1] po
 module.exports = {
  name: "kill",
  description: "🔪 Murders a user",
+ usage: "/kill <user>",
+ category: "Fun",
  options: [
   {
    name: "user",

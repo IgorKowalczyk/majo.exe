@@ -4,6 +4,8 @@ const fetch = require("node-fetch");
 module.exports = {
  name: "repo",
  description: "📚 Provide link to the github project",
+ usage: "/repo",
+ category: "General",
  run: async (client, interaction, args) => {
   try {
    if (!client.config.github && !client.config.github_repo) {

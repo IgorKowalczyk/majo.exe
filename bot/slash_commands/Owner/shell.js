@@ -5,6 +5,8 @@ const config = require("../../../config/main_config");
 module.exports = {
  name: "shell",
  description: "👑 Evaluate shell script",
+ usage: "/shell <query>",
+ category: "Owner",
  default_permission: false,
  permissions: [
   {

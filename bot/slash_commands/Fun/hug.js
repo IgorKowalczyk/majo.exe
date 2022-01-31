@@ -4,6 +4,8 @@ const fetch = require("node-fetch");
 module.exports = {
  name: "hug",
  description: "🤗 Cuddle user",
+ usage: "/hug <user>",
+ category: "Fun",
  options: [
   {
    name: "user",

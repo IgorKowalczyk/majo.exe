@@ -3,6 +3,8 @@ const { MessageEmbed } = require("discord.js");
 module.exports = {
  name: "drop-giveaway",
  description: "🎉 Create a drop giveaway",
+ usage: "/drop-giveaway <winners> <channel> <prize>",
+ category: "Giveaway",
  options: [
   {
    name: "winners",
