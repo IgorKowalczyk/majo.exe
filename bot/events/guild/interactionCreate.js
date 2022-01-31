@@ -2,6 +2,8 @@
 
 module.exports = async (client, interaction) => {
  if (interaction.isCommand()) {
+  if(!interaction.guild.me.permissions.has("EMBED_LINKS")) return;
+  if(!interaction.guild.me.permissions.has("SEND_MESSAGES")) return;
   await interaction.deferReply({ ephemeral: false }).catch((err) => {
    console.log(err);
   });

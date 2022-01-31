@@ -1,9 +1,9 @@
 const { MessageEmbed } = require("discord.js");
 
 module.exports = {
- name: "end-giveaway",
- description: "🎉 End a giveaway",
- usage: "/end-giveaway <giveaway id/giveaway prize>",
+ name: "resume-giveaway",
+ description: "🎉 Resume a giveaway",
+ usage: "/resume-giveaway <giveaway id/giveaway prize>",
  category: "Giveaway",
  options: [
   {
@@ -16,10 +16,10 @@ module.exports = {
  run: async (client, interaction, args) => {
   try {
    if(!interaction.member.permissions.has("MANAGE_GUILD")) {
-    return client.createSlashError(interaction, `${client.bot_emojis.error} | You can't end giveaway. Missing permission: \`MANAGE_GUILD\``);
+    return client.createSlashError(interaction, `${client.bot_emojis.error} | You can't resume giveaway. Missing permission: \`MANAGE_GUILD\``);
    }
    if(!interaction.member.permissions.has("MANAGE_MESSAGES")) {
-    return client.createSlashError(interaction, `${client.bot_emojis.error} | You can't end giveaway. Missing permission: \`MANAGE_MESSAGES\``);
+    return client.createSlashError(interaction, `${client.bot_emojis.error} | You can't resume giveaway. Missing permission: \`MANAGE_MESSAGES\``);
    }
    const query = args.join(" ");
    if (!query) {
@@ -33,14 +33,14 @@ module.exports = {
     return client.createSlashError(interaction, `${client.bot_emojis.error} | No giveaway found for \`${query}\`!`);
    }
    if (giveaway.ended) {
-    return client.createSlashError(interaction, `${client.bot_emojis.error} | This giveaway already ended!`);
+    return client.createSlashError(interaction, `${client.bot_emojis.error} | This giveaway is already paused!`);
    }
 
    client.giveawaysManager
-    .end(giveaway.messageId)
+    .unpause(giveaway.messageId)
     .then(() => {
      const embed = new MessageEmbed()
-      .setDescription(`${client.bot_emojis.sparkles} | Success! Giveaway \`${query}\` ended!`)
+      .setDescription(`${client.bot_emojis.sparkles} | Success! Giveaway \`${query}\` resumed!`)
       .setColor("GREEN")
       .setFooter({
        text: `Requested by ${interaction.user.username}`,
