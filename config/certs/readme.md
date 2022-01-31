@@ -1,2 +1,2 @@
 # If you have any certs - put it here.
-> Then check `dashbard.js` http server & `config.js`!
+> Then check `dashbard.js` http server & `main_config.js`!
