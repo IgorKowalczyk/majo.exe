@@ -98,6 +98,10 @@ module.exports = async (client) => {
      msg: `exploits ⛔`,
      type: "WATCHING",
     },
+    {
+     msg: `new slash commands (/)`,
+     type: "WATCHING",
+    },
    ];
    const random = Math.floor(Math.random() * (statuslist.length - 1) + 1);
    client.user.setStatus(client.additional_config.display_status);
