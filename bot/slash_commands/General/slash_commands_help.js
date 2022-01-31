@@ -229,7 +229,7 @@ module.exports = {
      });
      cots.push(dir.toLowerCase());
     });
-    const command = client.slash_commands.get(args[0].toLowerCase()) || client.slash_commands.find((c) => c.aliases && c.aliases.includes(args[0].toLowerCase()));
+    const command = client.slash_commands.get(args[0].toLowerCase());
     if (cots.includes(args[0].toLowerCase())) {
      const combed = new MessageEmbed()
       .setTitle(`${emo[args[0].toLowerCase()] || "❔"} \`${capitalize(args[0])}\` commands`)
@@ -261,7 +261,6 @@ module.exports = {
      .addField(`${client.bot_emojis.stopwatch} Cooldown`, `\`${command.timeout || "5000"}ms\``)
      .addField(`${client.bot_emojis.edit} Description`, command.description ? `\`${command.description}\`` : "`No description found for this command!`")
      .addField(`${client.bot_emojis.screw_that} Usage`, command.usage ? `\`${client.prefix} ${command.usage}\`` : `\`${client.prefix}${command.name}\``)
-     .addField(`${client.bot_emojis.sign} Aliases (${command.aliases.length})`, `\`${command.aliases.join("`, `") || "None!"}\``)
      .setFooter({
       text: `Requested by ${interaction.member.user.tag}`,
       iconURL: interaction.member.user.displayAvatarURL({
