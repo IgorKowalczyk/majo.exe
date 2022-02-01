@@ -108,7 +108,7 @@ module.exports = {
  tools: "🧰",
  money: "💰",
  music: "🎶",
- rofl: "🤣",
+ rofl: "😆",
  hammer: "🔨",
  bricks: "🧱",
  screw_that: "🔩",

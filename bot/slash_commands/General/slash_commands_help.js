@@ -11,12 +11,12 @@ function capitalize(string) {
 
 module.exports = {
  name: "slash_commands_help",
- description: "❔ Get a list of commands or more information about a specific command",
+ description: "❔ Get a list of commands or more information about a specific command [BETA]",
  usage: "/slash_commands_help [command]",
  category: "General",
  options: [
   {
-   name: "command",
+   name: "query",
    description: "The full name of command or category",
    type: 3,
    required: false,
@@ -65,7 +65,7 @@ module.exports = {
      let cats = new Object();
      cats = {
       name: name,
-      value: `> \`${client.prefix} help ${dir.toLowerCase()}\``,
+      value: `> \`/help ${dir.toLowerCase()}\``,
       inline: client.additional_config.help_embed.grid,
      };
      categories.push(cats);
@@ -74,7 +74,7 @@ module.exports = {
 
     const embed = new MessageEmbed()
      .setAuthor({ name: `${client.user.username} Help`, iconURL: client.user.displayAvatarURL() })
-     .setDescription(`> Use the menu, or use ${client.config.domain ? `[\`${client.prefix} help [category]\`](${client.config.domain})` : `\`${client.prefix} help [category]\``} to view commands base on their category!\n\n`)
+     .setDescription(`> Use the menu, or use ${client.config.domain ? `[\`/help [category]\`](${client.config.domain})` : `\`/help [category]\``} to view commands base on their category!\n\n`)
      .addFields(categories)
      .setFooter({
       text: `Requested by ${interaction.member.user.tag} • ${client.slash_commands.size} commands in total`,
@@ -89,7 +89,7 @@ module.exports = {
        size: 2048,
       })
      )
-     .setColor("#4f545c");
+     .setColor("#5865F2");
     if (client.additional_config.help_embed.display_news == true && client.additional_config.help_embed.news_title && client.additional_config.help_embed.news) {
      embed.addField(`${client.additional_config.help_embed.news_title}`, `${client.additional_config.help_embed.news}`);
     }
@@ -108,12 +108,11 @@ module.exports = {
         let file = require(`${process.cwd()}/bot/slash_commands/${dir}/${command}`);
         if (!file.name) return "No command name.";
         let name = file.name.replace(".js", "");
-        if (client.slash_commands.get(name).hidden) return;
         let des = client.slash_commands.get(name).description;
         let emo = client.slash_commands.get(name).emoji;
         let emoe = emo ? `${emo} | ` : "";
         let obj = {
-         cname: `${emoe}\`${name}\``,
+         cname: `${emoe}\`/${name}\``,
          des,
         };
         return obj;
@@ -138,7 +137,7 @@ module.exports = {
         .setAuthor({ name: `${client.user.username} Help`, iconURL: client.user.displayAvatarURL() })
         .setDescription(`>${catts}`)
         //.addFields(catts)
-        .setColor("#4f545c")
+        .setColor("#5865F2")
         .setThumbnail(
          client.user.displayAvatarURL({
           dynamic: true,
@@ -159,7 +158,7 @@ module.exports = {
       }
      };
      const filter = (interaction) => {
-      if (interaction.user.id !== interaction.member.user.id) return client.createError(interaction, `You can't use the menu! Only ${interaction.member.user} can do that! If you want control menu by yourself run \`${client.prefix} help \``, "RED", true);
+      if (interaction.user.id !== interaction.member.user.id) return client.createError(interaction, `You can't use the menu! Only ${interaction.member.user} can do that! If you want control menu by yourself run \`/help \``, "RED", true);
       return !interaction.user.bot;
      };
      const collector = msgg.createMessageComponentCollector({
@@ -174,7 +173,7 @@ module.exports = {
         .setAuthor({ name: `${client.user.username} Help` })
         .setTitle(`Time elapsed!`)
         .setColor("RED")
-        .setDescription(`> To see the help menu again please type \`${client.prefix} help\`\n> Or to see commands from category please type \`${client.prefix} help [category]\``)
+        .setDescription(`> To see the help menu again please type \`/help\`\n> Or to see commands from category please type \`/help [category]\``)
         .setFooter({
          text: `Requested by ${interaction.member.user.tag} • ${client.ws.ping} ms ping!`,
          iconURL: interaction.member.user.displayAvatarURL({
@@ -205,19 +204,18 @@ module.exports = {
     });
    } else {
     let catts = [];
-    readdirSync(`${process.cwd()}/bot/commands/`).forEach((dir) => {
+    readdirSync(`${process.cwd()}/bot/slash_commands/`).forEach((dir) => {
      if (dir.toLowerCase() !== args[0].toLowerCase()) return;
-     const commands = readdirSync(`${process.cwd()}/bot/commands/${dir}/`).filter((file) => file.endsWith(".js"));
+     const commands = readdirSync(`${process.cwd()}/bot/slash_commands/${dir}/`).filter((file) => file.endsWith(".js"));
      const cmds = commands.map((command) => {
-      let file = require(`${process.cwd()}/bot/commands/${dir}/${command}`);
+      let file = require(`${process.cwd()}/bot/slash_commands/${dir}/${command}`);
       if (!file.name) return "No command name.";
       let name = file.name.replace(".js", "");
-      if (client.slash_commands.get(name).hidden) return;
-      let des = client.slash_commands.get(name).description;
-      let emo = client.slash_commands.get(name).emoji;
+      let des = file.description;
+      let emo = file.emoji;
       let emoe = emo ? `${emo} | ` : "";
       let obj = {
-       cname: `${emoe}\`${name}\``,
+       cname: `${emoe}\`/${name}\``,
        des,
       };
       return obj;
@@ -236,9 +234,9 @@ module.exports = {
      const combed = new MessageEmbed()
       .setTitle(`${emo[args[0].toLowerCase()] || "❔"} \`${capitalize(args[0])}\` commands`)
       .setAuthor({ name: `${client.user.username} Help`, iconURL: client.user.displayAvatarURL() })
-      .setDescription(`>${catts}`)
+      .setDescription(`>${catts || "In progress"}`)
       //.addFields(catts)
-      .setColor("#4f545c")
+      .setColor("#5865F2")
       .setThumbnail(
        client.user.displayAvatarURL({
         dynamic: true,
@@ -271,7 +269,7 @@ module.exports = {
       }),
      })
      .setTimestamp()
-     .setColor("#4f545c");
+     .setColor("#5865F2");
     return await interaction.followUp({ embeds: [embed] });
    }
   } catch (err) {
