@@ -33,7 +33,8 @@ module.exports = {
     const answer = answers[Math.floor(Math.random() * answers.length)];
     const embed = new MessageEmbed() // Prettier
      .setColor("#4f545c")
-     .setDescription(`${client.bot_emojis.coin} ${answer}`)
+     .setThumbnail(`https://i.pinimg.com/originals/d7/49/06/d74906d39a1964e7d07555e7601b06ad.gif`)
+     .setDescription(`> **I drew: ${client.bot_emojis.coin} ${answer}**`)
      .setFooter({
       text: `Requested by ${interaction.user.username}`,
       iconURL: interaction.user.displayAvatarURL({

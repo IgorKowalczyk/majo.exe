@@ -521,11 +521,11 @@ client.on("ready", () => {
    secureOptions: constants.SSL_OP_NO_TLSv1 | constants.SSL_OP_NO_TLSv1_1,
   };
   https.createServer(http_options, app).listen(port, null, null, () => {
-   console.log(chalk.bold(chalk.bold.magenta("> ") + chalk.blue.bold("[HOST]")) + chalk.cyan.bold(` Dashboard is up and running on port ${port}.`));
+   console.log(chalk.bold(chalk.bold.magenta("> ") + chalk.blue.bold("[HOST]")) + chalk.cyan.bold(` Dashboard is up and running on url ${process.env.DOMAIN} and port ${port}!`));
   });
  } else {
   app.listen(port, null, null, () => {
-   console.log(chalk.bold(chalk.bold.magenta("> ") + chalk.blue.bold("[HOST]")) + chalk.cyan.bold(` Dashboard is up and running on port ${port}.`));
+   console.log(chalk.bold(chalk.bold.magenta("> ") + chalk.blue.bold("[HOST]")) + chalk.cyan.bold(` Dashboard is up and running on url ${process.env.DOMAIN} and port ${port}!`));
   });
  }
 });

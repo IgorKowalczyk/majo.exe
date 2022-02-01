@@ -8,6 +8,7 @@
     "start": "npm-run-all --parallel majo:dashboard majo:bot",
     "majo:dashboard": "node majo.js --dashboard",
     "majo:bot": "node majo.js --bot",
+    "majo:api": "node majo.js --api",
     "test": "node utilities/checks.js",
     "dashboard": "node dashboard/dashboard.js",
     "format": "prettier --write . --ignore-unknown",
