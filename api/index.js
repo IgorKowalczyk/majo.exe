@@ -22,7 +22,6 @@ const globPromise = promisify(glob);
 const app = express();
 require("dotenv").config();
 client.on("ready", () => {
- console.log("API IS STILL IN WIP!");
  const port = parseInt(process.env.PORT) + 1;
  function capitalize(string) {
   return string.charAt(0).toUpperCase() + string.slice(1);
@@ -45,16 +44,16 @@ client.on("ready", () => {
  readdirSync(`${process.cwd()}/api/endpoints`).forEach((dir) => {
   const endpoints = readdirSync(`${process.cwd()}/api/endpoints/${dir}/`).filter((file) => file.endsWith(".js"));
   const endpoint = endpoints.map((eachendp) => {
-   require(`${process.cwd()}/api/endpoints/${dir}/${eachendp}`)(app);
-   console.log(chalk.bold(chalk.bold.red("> ") + chalk.blue.bold("[API]")) + chalk.cyan.bold(` Loaded endpoint ${process.env.DOMAIN}:${port}/api/${eachendp.replace(".js", "")}`));
+   require(`${process.cwd()}/api/endpoints/${dir}/${eachendp}`)(app, client);
+   console.log(chalk.bold(chalk.bold.red("> ") + chalk.blue.bold("[API]")) + chalk.cyan.bold(` Loaded endpoint ${process.env.DOMAIN}:${port}/api/${dir}/${eachendp.replace(".js", "")}`));
   });
  });
  app.get("*", (req, res, next) => {
   res.send({
    error: true,
-   message: "Invaild endpoint!"
-  })
- })
+   message: "Invaild endpoint!",
+  });
+ });
  app.listen(port, null, null, () => {
   console.log(chalk.bold(chalk.bold.red("> ") + chalk.blue.bold("[API]")) + chalk.cyan.bold(` API is up and running on url ${process.env.DOMAIN} and port ${port}!`));
  });
