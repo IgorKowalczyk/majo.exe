@@ -128,7 +128,7 @@ Go to [this link](https://discord.com/oauth2/authorize/?permissions=4294967287&s
 | `MYSQL_USER` | Your MYSQL user | String | ✅ | ✅ | ❌ |
 | `MYSQL_PASSWORD` | Your MYSQL password | String | ✅ | ✅ | ❌ |
 | `DOMAIN` | Your website domain (eg `https://example.com`) | URL | ❌ | ✅ | ✅ |
-| `PORT` | Your webiste port eg. `8008`<br> - Note: Heroku don't need port. Heroku assings port automatically! | Number | ❌ | ✅ | ✅ ((Note: API port will be higher eg. 8000 + 1 = 8001!) |
+| `PORT` | Your webiste port eg. `8008`<br> - Note: Heroku don't need port. Heroku assings port automatically! | Number | ❌ | ✅ | ✅ (Note: API port will be higher eg. 8000 + 1 = 8001!) |
 | `SECRET` | The bot client secret | String | ❌ | ✅ | ❌ |
 | `ANALYTICS` | Google analytics tracking ID, used in Web-Dashboard | String | ❌ | ❌ | ❌ |
 | `RECAPTCHA_KEY` | Google recaptcha v2 key | String | ❌ | ✅ | ❌ |
