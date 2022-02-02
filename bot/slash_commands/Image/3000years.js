@@ -16,22 +16,22 @@ module.exports = {
   },
  ],
  run: async (client, interaction, args) => {
-  const member =  interaction.guild.members.cache.get(args[0]) || interaction.member;
+  const member = interaction.guild.members.cache.get(args[0]) || interaction.member;
   const wait = new MessageEmbed() // Prettier
-    .setColor("#5865f2")
-    .setDescription(`${client.bot_emojis.loading} | Please wait... I'm generating your image`);
-   interaction.followUp({ embeds: [wait] }).then((msg) => {
-    (async () => {
-     const buffer = await AmeAPI.generate("3000years", {
-      url: member.user.displayAvatarURL({
-       format: "png",
-       size: 2048,
-      }),
-     });
-     const attachment = new MessageAttachment(buffer, "3000years.png");
-     msg.edit({ embeds: [], files: [attachment] });
-    })();
-   });
+   .setColor("#5865f2")
+   .setDescription(`${client.bot_emojis.loading} | Please wait... I'm generating your image`);
+  interaction.followUp({ embeds: [wait] }).then((msg) => {
+   (async () => {
+    const buffer = await AmeAPI.generate("3000years", {
+     url: member.user.displayAvatarURL({
+      format: "png",
+      size: 2048,
+     }),
+    });
+    const attachment = new MessageAttachment(buffer, "3000years.png");
+    msg.edit({ embeds: [], files: [attachment] });
+   })();
+  });
   try {
   } catch (err) {
    console.log(err);

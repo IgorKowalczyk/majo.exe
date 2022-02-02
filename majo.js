@@ -26,7 +26,7 @@ if (process.argv.includes(`--dashboard`)) {
 
 if (process.argv.includes(`--api`)) {
  console.log(chalk.bold(chalk.green(`[✅]`)) + chalk.bold.greenBright(` Running Majo.exe API! (3/3) `));
- require("./api/index")
+ require("./api/index");
 } else {
  console.log(chalk.bold(chalk.red(`[❌]`)) + chalk.bold.red(` Skipping API launch! (3/3) `) + chalk.bold.red.dim(`[Run script with "--api" argument]`));
 }

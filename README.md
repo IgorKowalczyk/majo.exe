@@ -95,9 +95,16 @@ Go to [this link](https://discord.com/oauth2/authorize/?permissions=4294967287&s
 ---
 
 #### 🧱 Self-Hosting (API)
-> Soon!
-
-
+1. Clone [this repository](https://github.com/igorkowalczyk/majo.exe) `git clone https://github.com/IgorKowalczyk/majo.exe.git`
+2. Run `npm i` to install all dependencies,
+3. Grab a Discord Bot token and client secret on [Discord's developer portal](https://discord.com/developers/applications) [Tutorial](#-discord-credentials)
+4. Create new file named `.env` Remember - the file is super secret, better to not share it.
+5. In `.env` file set this values:
+    * `TOKEN` - Discord bot token [[Tutorial](#-discord-token)]
+    * `DOMAIN` - Your website domain (eg `https://example.com`)
+    * `PORT` - Your website port (Note: API port will be higher eg. 8000 + 1 = 8001!)
+8. Run `npm run majo:api` in your terminal
+9. If everyting is ok go to your dashboard in browser (eg. to `localhost:8001/api`)
 <br>
 
 ## 💾 `.env` File (Main Config)

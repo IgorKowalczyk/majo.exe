@@ -10,20 +10,19 @@ const client = new Client({
  //intents: [Discord.Intents.FLAGS.GUILDS, Discord.Intents.FLAGS.GUILD_MEMBERS, Discord.Intents.FLAGS.GUILD_BANS, Discord.Intents.FLAGS.GUILD_EMOJIS_AND_STICKERS, Discord.Intents.FLAGS.GUILD_INTEGRATIONS, Discord.Intents.FLAGS.GUILD_WEBHOOKS, Discord.Intents.FLAGS.GUILD_INVITES, Discord.Intents.FLAGS.GUILD_VOICE_STATES, Discord.Intents.FLAGS.GUILD_PRESENCES, Discord.Intents.FLAGS.GUILD_MESSAGES, Discord.Intents.FLAGS.GUILD_MESSAGE_REACTIONS, Discord.Intents.FLAGS.GUILD_MESSAGE_TYPING, Discord.Intents.FLAGS.DIRECT_MESSAGES, Discord.Intents.FLAGS.DIRECT_MESSAGE_REACTIONS, Discord.Intents.FLAGS.DIRECT_MESSAGE_TYPING],
  intents: [Discord.Intents.FLAGS.GUILDS, Discord.Intents.FLAGS.GUILD_BANS, Discord.Intents.FLAGS.GUILD_EMOJIS_AND_STICKERS, Discord.Intents.FLAGS.GUILD_INTEGRATIONS, Discord.Intents.FLAGS.GUILD_WEBHOOKS, Discord.Intents.FLAGS.GUILD_INVITES, Discord.Intents.FLAGS.GUILD_VOICE_STATES, Discord.Intents.FLAGS.GUILD_MESSAGES, Discord.Intents.FLAGS.GUILD_MESSAGE_REACTIONS, Discord.Intents.FLAGS.GUILD_MESSAGE_TYPING, Discord.Intents.FLAGS.DIRECT_MESSAGES, Discord.Intents.FLAGS.DIRECT_MESSAGE_REACTIONS, Discord.Intents.FLAGS.DIRECT_MESSAGE_TYPING],
 });
-const url = require("url");
-const path = require("path");
 const express = require("express");
 const chalk = require("chalk");
-const fetch = require("node-fetch")
-const cookieParser = require("cookie-parser");
+const { readdirSync } = require("fs");
 const config = require("../config/main_config");
 const additional_config = require("../config/additional_config");
 const rate_limit = require("express-rate-limit");
-const package = require("../package.json");
+const { glob } = require("glob");
+const { promisify } = require("util");
+const globPromise = promisify(glob);
 const app = express();
 require("dotenv").config();
 client.on("ready", () => {
- console.log("API IS STILL IN WIP!")
+ console.log("API IS STILL IN WIP!");
  const port = parseInt(process.env.PORT) + 1;
  function capitalize(string) {
   return string.charAt(0).toUpperCase() + string.slice(1);
@@ -43,13 +42,21 @@ client.on("ready", () => {
  }
  app.locals.domain = process.env.DOMAIN.split("//")[1];
  app.set("view engine", "html");
-
- app.get(
-  "/api",
-  (req, res, next) => {
+ readdirSync(`${process.cwd()}/api/endpoints`).forEach((dir) => {
+  const endpoints = readdirSync(`${process.cwd()}/api/endpoints/${dir}/`).filter((file) => file.endsWith(".js"));
+  const endpoint = endpoints.map((eachendp) => {
+   require(`${process.cwd()}/api/endpoints/${dir}/${eachendp}`)(app);
+   console.log(chalk.bold(chalk.bold.red("> ") + chalk.blue.bold("[API]")) + chalk.cyan.bold(` Loaded endpoint ${process.env.DOMAIN}:${port}/api/${eachendp.replace(".js", "")}`));
+  });
+ });
+ app.get("*", (req, res, next) => {
+  res.send({
+   error: true,
+   message: "Invaild endpoint!"
   })
+ })
  app.listen(port, null, null, () => {
   console.log(chalk.bold(chalk.bold.red("> ") + chalk.blue.bold("[API]")) + chalk.cyan.bold(` API is up and running on url ${process.env.DOMAIN} and port ${port}!`));
  });
-})
+});
 client.login(process.env.TOKEN);
