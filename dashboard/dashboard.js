@@ -49,9 +49,9 @@ client.on("ready", () => {
   process.env.SESSION_SECRET += Math.random().toString(16).slice(2, 8).toUpperCase().slice(-6) + i;
  }
 
- console.log(chalk.bold(chalk.bold.magenta("> ") + chalk.blue.bold("[HOST]")) + chalk.cyan.bold(" Starting dashboard..."));
- console.log(chalk.bold(chalk.bold.magenta("> ") + chalk.blue.bold("[HOST]")) + chalk.cyan.bold(" Setting up dashboard main config..."));
- console.log(chalk.bold(chalk.bold.magenta("> ") + chalk.blue.bold("[HOST]")) + chalk.cyan.bold(` Dashboard credentials: \n* Domain: ${process.env.DOMAIN}\n* Port: ${process.env.PORT}\n* ID: ${process.env.ID}\n* G Analytics: ${process.env.ANALYTICS || "Not set"}`));
+ console.log(chalk.bold(chalk.bold.magenta("> ") + chalk.blue.bold("[DASH]")) + chalk.cyan.bold(" Starting dashboard..."));
+ console.log(chalk.bold(chalk.bold.magenta("> ") + chalk.blue.bold("[DASH]")) + chalk.cyan.bold(" Setting up dashboard main config..."));
+ console.log(chalk.bold(chalk.bold.magenta("> ") + chalk.blue.bold("[DASH]")) + chalk.cyan.bold(` Dashboard credentials: \n* Domain: ${process.env.DOMAIN}\n* Port: ${process.env.PORT}\n* ID: ${process.env.ID}\n* G Analytics: ${process.env.ANALYTICS || "Not set"}`));
  const dataDir = path.resolve(`${process.cwd()}${path.sep}dashboard`);
  const templateDir = path.resolve(`${dataDir}${path.sep}templates`);
  passport.serializeUser((user, done) => done(null, user));
@@ -150,7 +150,7 @@ client.on("ready", () => {
  app.use(cookieParser());
  const csrfProtection = csrf({ cookie: true });
 
- console.log(chalk.bold(chalk.bold.magenta("> ") + chalk.blue.bold("[HOST]")) + chalk.cyan.bold(" Setting up dashboard endpoints..."));
+ console.log(chalk.bold(chalk.bold.magenta("> ") + chalk.blue.bold("[DASH]")) + chalk.cyan.bold(" Setting up dashboard endpoints..."));
  const checkAuth = (req, res, next) => {
   if (req.isAuthenticated()) return next();
   req.session.backURL = req.url;
@@ -512,7 +512,7 @@ client.on("ready", () => {
    error: error,
   });
  });
- console.log(chalk.bold(chalk.bold.magenta("> ") + chalk.blue.bold("[HOST]")) + chalk.cyan.bold(" All dashboard process done... Starting in web"));
+ console.log(chalk.bold(chalk.bold.magenta("> ") + chalk.blue.bold("[DASH]")) + chalk.cyan.bold(" All dashboard process done... Starting in web"));
  // **See $config/certs folder!**
  if (config.certs == true) {
   const http_options = {
@@ -521,11 +521,11 @@ client.on("ready", () => {
    secureOptions: constants.SSL_OP_NO_TLSv1 | constants.SSL_OP_NO_TLSv1_1,
   };
   https.createServer(http_options, app).listen(port, null, null, () => {
-   console.log(chalk.bold(chalk.bold.magenta("> ") + chalk.blue.bold("[HOST]")) + chalk.cyan.bold(` Dashboard is up and running on url ${process.env.DOMAIN} and port ${port}!`));
+   console.log(chalk.bold(chalk.bold.magenta("> ") + chalk.blue.bold("[DASH]")) + chalk.cyan.bold(` Dashboard is up and running on url ${process.env.DOMAIN} and port ${port}!`));
   });
  } else {
   app.listen(port, null, null, () => {
-   console.log(chalk.bold(chalk.bold.magenta("> ") + chalk.blue.bold("[HOST]")) + chalk.cyan.bold(` Dashboard is up and running on url ${process.env.DOMAIN} and port ${port}!`));
+   console.log(chalk.bold(chalk.bold.magenta("> ") + chalk.blue.bold("[DASH]")) + chalk.cyan.bold(` Dashboard is up and running on url ${process.env.DOMAIN} and port ${port}!`));
   });
  }
 });
