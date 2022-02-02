@@ -109,11 +109,15 @@ Go to [this link](https://discord.com/oauth2/authorize/?permissions=4294967287&s
 9. If everyting is ok go to your dashboard in browser (eg. to `localhost:8001/api`)
 
 ## 🧱 API Endpoints
-| API Endpoint (`/api`) | Values (`/`) | Response (`json`) | Conditions (`Any`) | Error Codes (`0 - 20000`) |
+> API Link: SOON!<br>
+> Error codes: `0 - 20000`
+
+| API Endpoint (`/api`) | Values | Response (`json`) | Conditions | Error Codes |
 |---|---|---|---|---|
-| `*` (Invaild endpoint) | `None` | `Error Code & Message` | `Error Code` | `0` |
-| `/v1/user/ID` | `userID` | `User Object` | `None` | `1 / Any Discord API Error` |
-| `/v1/guild/ID` | `guildID` | `Guild Object` | `Vaild Majo.exe Guild` | `2 / Any Discord API Error` |
+| `*` (Invaild endpoint) | `None` | `Error Code` | `Error Code` | `0` |
+| `/v1/user/:ID` | `userID` | `User Object` | `None` | `1 / Any Discord Error` |
+| `/v1/guild/:ID` | `guildID` | `Guild Object` | `Majo.exe Guild` | `2 / Any Discord Error` |
+| `/v1/fun/cat_fact` | `None` | `JSON Object` | `None` | `None` |
 
 ## 💾 `.env` File (Main Config)
 #### `.env` config table
