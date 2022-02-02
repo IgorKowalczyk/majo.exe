@@ -50,7 +50,7 @@ client.on("ready", () => {
  });
  app.get("*", (req, res, next) => {
   res.send({
-   error: true,
+   code: 0,
    message: "Invaild endpoint!",
   });
  });

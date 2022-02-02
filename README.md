@@ -105,29 +105,35 @@ Go to [this link](https://discord.com/oauth2/authorize/?permissions=4294967287&s
     * `PORT` - Your website port (Note: API port will be higher eg. 8000 + 1 = 8001!)
 8. Run `npm run majo:api` in your terminal
 9. If everyting is ok go to your dashboard in browser (eg. to `localhost:8001/api`)
-<br>
+
+## 🧱 API Endpoints
+| API Endpoint (`/api`) | Values (`/`) | Response (`json`) | Conditions (`Any`) | Error Codes (`0 - 20000`) |
+|---|---|---|---|---|
+| `*` (Invaild endpoint) | `None` | `Error Code & Message` | `Error Code` | `0` |
+| `/v1/user/ID` | `userID` | `User Object` | `None` | `1 / Any Discord API Error` |
+| `/v1/guild/ID` | `guildID` | `Guild Object` | `Vaild Majo.exe Guild` | `2 / Any Discord API Error` |
 
 ## 💾 `.env` File (Main Config)
 #### `.env` config table
 | `.env` varriable | Description | Type | Required (Bot) | Required (Dashboard) | Required (API) |
 |---|---|:---:|:---:|:---:|:---:|
-| `TOKEN` | Discord bot token | String | ✅ | ✅ | ❓ |
-| `PREFIX` | The default bot prefix (eg. `!majo`) [Deprecated!] | String | ✅ | ✅ | ❓ |
-| `ID` | Your Discord Bot ID | Number | ✅ | ✅ | ❓ |
-| `AMEAPI` | Your Amethyste api token | String | ✅ | ✅ | ❓ |
-| `MYSQL_DATABASE` | Your MYSQL database name | String | ✅ | ✅ | ❓ |
-| `MYSQL_HOST` | Your MYSQL Host | String | ✅ | ✅ | ❓ |
-| `MYSQL_USER` | Your MYSQL user | String | ✅ | ✅ | ❓ |
-| `MYSQL_PASSWORD` | Your MYSQL password | String | ✅ | ✅ | ❓ |
-| `DOMAIN` | Your website domain (eg `https://example.com`) | URL | ❌ | ✅ | ❓ |
-| `PORT` | Your webiste port eg. `8008`<br> - Note: Heroku don't need port. Heroku assings port automatically! | Number | ❌ | ✅ | ❓ |
-| `SECRET` | The bot client secret | String | ❌ | ✅ | ❓ |
-| `ANALYTICS` | Google analytics tracking ID, used in Web-Dashboard | String | ❌ | ❌ | ❓ |
-| `RECAPTCHA_KEY` | Google recaptcha v2 key | String | ❌ | ✅ | ❓ |
-| `CONTACT_WEBHOOK` | Your contact form webhook URL | URL | ❌ | ✅ | ❓ |
-| `STATUS_WEBHOOK` | Your status webhook URL | URL | ✅ | ❌ | ❓ |
-| `ERRORS_WEBHOOK` | Your errors webhook URL | URL | ✅ | ✅ | ❓ |
-| `NODE_ENV` | Environment variable (production/development) | String | ✅ | ✅ | ❓ |
+| `TOKEN` | Discord bot token | String | ✅ | ✅ | ✅ |
+| `PREFIX` | The default bot prefix (eg. `!majo`) [Deprecated!] | String | ✅ | ✅ | ❌ |
+| `ID` | Your Discord Bot ID | Number | ✅ | ✅ | ❌ |
+| `AMEAPI` | Your Amethyste api token | String | ✅ | ✅ | ❌ |
+| `MYSQL_DATABASE` | Your MYSQL database name | String | ✅ | ✅ | ❌ |
+| `MYSQL_HOST` | Your MYSQL Host | String | ✅ | ✅ | ❌ |
+| `MYSQL_USER` | Your MYSQL user | String | ✅ | ✅ | ❌ |
+| `MYSQL_PASSWORD` | Your MYSQL password | String | ✅ | ✅ | ❌ |
+| `DOMAIN` | Your website domain (eg `https://example.com`) | URL | ❌ | ✅ | ✅ |
+| `PORT` | Your webiste port eg. `8008`<br> - Note: Heroku don't need port. Heroku assings port automatically! | Number | ❌ | ✅ | ✅ ((Note: API port will be higher eg. 8000 + 1 = 8001!) |
+| `SECRET` | The bot client secret | String | ❌ | ✅ | ❌ |
+| `ANALYTICS` | Google analytics tracking ID, used in Web-Dashboard | String | ❌ | ❌ | ❌ |
+| `RECAPTCHA_KEY` | Google recaptcha v2 key | String | ❌ | ✅ | ❌ |
+| `CONTACT_WEBHOOK` | Your contact form webhook URL | URL | ❌ | ✅ | ❌ |
+| `STATUS_WEBHOOK` | Your status webhook URL | URL | ✅ | ❌ | ❌ |
+| `ERRORS_WEBHOOK` | Your errors webhook URL | URL | ✅ | ✅ | ❌ |
+| `NODE_ENV` | Environment variable (production/development) | String | ✅ | ✅ | ✅ |
 
 
 #### Example `.env` file
