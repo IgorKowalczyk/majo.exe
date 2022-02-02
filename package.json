@@ -1,6 +1,6 @@
 {
   "name": "majo.exe",
-  "version": "3.0.2",
+  "version": "3.0.3",
   "description": "Majo.exe have almost everything - Fun, Memes, Images, Giveaway Moderation, Anime, NSFW and eveb more!. Majo.exe serve over 150 commands!",
   "author": "Igor Kowalczyk [Majonez.exe#3957]",
   "main": "node index.js",
@@ -9,6 +9,7 @@
     "majo:dashboard": "node majo.js --dashboard",
     "majo:bot": "node majo.js --bot",
     "majo:api": "node majo.js --api",
+    "majo:web": "node majo.js --api --dashboard",
     "test": "node utilities/checks.js",
     "dashboard": "node dashboard/dashboard.js",
     "format": "prettier --write . --ignore-unknown",

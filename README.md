@@ -109,8 +109,8 @@ Go to [this link](https://discord.com/oauth2/authorize/?permissions=4294967287&s
 9. If everyting is ok go to your dashboard in browser (eg. to `localhost:8001/api`)
 
 ## 🧱 API Endpoints
-> API Link: SOON!<br>
-> Error codes: `0 - 20000`
+> 🔗 API Link: SOON!<br>
+> ⛔ Error codes: `0 - 20000`
 
 | API Endpoint (`/api`) | Values | Response (`json`) | Conditions | Error Codes |
 |---|---|---|---|---|
