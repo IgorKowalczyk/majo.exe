@@ -14,7 +14,7 @@ module.exports = {
   },
   {
    name: "Majo.exe - Dashboard",
-   script: "./dashboard/dashboard.js",
+   script: "./majo.js",
    watch: true,
    node_args: "--trace-deprecation",
    exec_mode: "cluster",
@@ -22,7 +22,19 @@ module.exports = {
    watch_options: {
     followSymlinks: false,
    },
-   args: ["--color"],
+   args: ["--color", "--dashboard"],
+  },
+  {
+   name: "Majo.exe - API",
+   script: "./majo.js",
+   watch: true,
+   node_args: "--trace-deprecation",
+   exec_mode: "cluster",
+   ignore_watch: ["[/\\]./", "node_modules", "database", "cache", "^.", "^[.]"],
+   watch_options: {
+    followSymlinks: false,
+   },
+   args: ["--color", "--api"],
   },
  ],
 };

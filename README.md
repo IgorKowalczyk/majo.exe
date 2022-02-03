@@ -54,6 +54,7 @@ Go to [this link](https://discord.com/oauth2/authorize/?permissions=4294967287&s
 ---
 
 #### 💾 Self-Hosting (Dashboard)
+> Note: API Process is children of Dashboard!
 1. Clone [this repository](https://github.com/igorkowalczyk/majo.exe) `git clone https://github.com/IgorKowalczyk/majo.exe.git`
 2. Run `npm i` to install all dependencies,
 3. Grab a Discord Bot token and client secret on [Discord's developer portal](https://discord.com/developers/applications) [Tutorial](#-discord-credentials)
@@ -84,7 +85,6 @@ Go to [this link](https://discord.com/oauth2/authorize/?permissions=4294967287&s
 9. If everyting is ok go to your dashboard in browser (eg. to `localhost:8000`)
 > Note: See the example [`.env` file below](#example-env-file)!
 
-**Additional info**
 > If you are hosting dashboard on [Replit](https://replit.com) please run this command to install Node.js 16x:
 > * `npm init -y && npm i --save-dev node@16 && npm config set prefix=$(pwd)/node_modules/node && export PATH=$(pwd)/node_modules/node/bin:$PATH`
 >
@@ -105,6 +105,11 @@ Go to [this link](https://discord.com/oauth2/authorize/?permissions=4294967287&s
     * `PORT` - Your website port
 8. Run `npm run majo:api` in your terminal
 9. If everyting is ok go to your dashboard in browser (eg. to `localhost:8001/api`)
+
+**Additional info**
+> Note: You can run API & Dashboard at the same time by running `npm run majo:web`
+> 
+> Note: You can run Dashboard, API & Dashboard at the same time by running `npm run start`
 
 ## 🧱 API Endpoints
 > 🔗 API Link: https://majoexe.ml/api/<br>
