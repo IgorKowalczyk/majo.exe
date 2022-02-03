@@ -147,3 +147,8 @@
  color: #ccc;
  text-align: left;
 }
+
+.opened {
+ transform: unset;
+ z-index: 99999;
+}

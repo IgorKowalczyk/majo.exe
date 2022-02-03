@@ -1,6 +1,9 @@
 const dropdownel = document.getElementById("dropdown");
 const droddownhead = document.getElementById("dropdownHead");
 const blur = document.querySelector(".blur");
+const open_sidenav = document.getElementsByClassName("open-sidenav")[0];
+const side_nav = document.getElementsByClassName("sidenav")[0];
+const menu_open = document.getElementsByClassName("menu-icon")[0];
 
 function dropdown(e) {
  if (dropdownel.style.visibility != "visible") {
@@ -19,6 +22,8 @@ window.onresize = function () {
  dropdownel.classList.remove("dropdown-hidden");
  droddownhead.classList.remove("dropdown-actived");
  blur.classList.remove("visible");
+ side_nav.classList.remove("opened");
+ if (menu_open) menu_open.classList.remove("disabled");
 };
 
 document.addEventListener("click", function (e) {
@@ -47,6 +52,22 @@ cross.addEventListener("click", () => {
  dropdownel.classList.remove("dropdown-hidden");
  document.getElementById("dropdownHead").classList.remove("dropdown-actived");
  blur.classList.remove("visible");
+});
+
+if (open_sidenav && side_nav) {
+ open_sidenav.addEventListener("click", () => {
+  if (menu_open) menu_open.classList.toggle("disabled");
+  side_nav.classList.toggle("opened");
+  blur.classList.add("visible");
+ });
+}
+
+blur.addEventListener("click", () => {
+ if (side_nav && side_nav.classList.contains("opened")) {
+  if (menu_open) menu_open.classList.toggle("disabled");
+  side_nav.classList.toggle("opened");
+  blur.classList.remove("visible");
+ }
 });
 
 /* document.addEventListener("click", function (event) {
