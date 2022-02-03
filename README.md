@@ -231,8 +231,9 @@ Soon!
 - [@r-kjha](https://github.com/r-kjha) (Emoji config support, Bug fixes, New features, Testing)
 - [@Joao-Victor-Liporini](https://github.com/Joao-Victor-Liporini) (Bug fixes, Command handler improvements, Testing, New features)
 - [@krzesl0](https://github.com/krzesl0) (New Features, Bug fixes, Testing)
-- [@Sakshyam6966](https://github.com/Sakshyam6966) (New Features, Bug fixes, Testing)
+- [@MashedTuna](https://github.com/MashedTuna) (Readme tutorials)
 - [@Wafelowski](https://github.com/HeavyWolfPL) (Translation improvements)
+- [@Sakshyam6966](https://github.com/Sakshyam6966) (New Features, Bug fixes, Testing)
 
 ## ⁉️ Issues
 If you have any issues with the page please create [new issue here](https://github.com/igorkowalczyk/majo.exe/issues)
