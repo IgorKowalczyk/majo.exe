@@ -95,8 +95,6 @@ Go to [this link](https://discord.com/oauth2/authorize/?permissions=4294967287&s
 ---
 
 #### 🧱 Self-Hosting (API)
-> Note: It is best to host the API on separate server and set the port to `7999` (Port on production will be `8000`)
-> <br>Explanation: Adding `+ 1` to port is caused by possible conflicts with the Dashboard. Each port can be used only once.<br>You should also use [Nginx](https://nginx.org/en/) or [Apache](https://apache.org/) to redirect traffic to the main domain.
 1. Clone [this repository](https://github.com/igorkowalczyk/majo.exe) `git clone https://github.com/IgorKowalczyk/majo.exe.git`
 2. Run `npm i` to install all dependencies,
 3. Grab a Discord Bot token and client secret on [Discord's developer portal](https://discord.com/developers/applications) [Tutorial](#-discord-credentials)
@@ -104,7 +102,7 @@ Go to [this link](https://discord.com/oauth2/authorize/?permissions=4294967287&s
 5. In `.env` file set this values:
     * `TOKEN` - Discord bot token [[Tutorial](#-discord-token)]
     * `DOMAIN` - Your website domain (eg `https://example.com`)
-    * `PORT` - Your website port (Note: API port will be higher eg. 8000 + 1 = 8001!)
+    * `PORT` - Your website port
 8. Run `npm run majo:api` in your terminal
 9. If everyting is ok go to your dashboard in browser (eg. to `localhost:8001/api`)
 

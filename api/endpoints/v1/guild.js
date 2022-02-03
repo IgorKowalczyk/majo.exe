@@ -1,4 +1,5 @@
 const fetch = require("node-fetch");
+
 module.exports = (app, client) => {
  app.get("/api/v1/guild/:guildID", (req, res, next) => {
   if (!req.params.guildID) {
