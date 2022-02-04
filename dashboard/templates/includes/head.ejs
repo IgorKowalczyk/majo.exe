@@ -14,7 +14,9 @@
 <%- include('./analytics.ejs') %>
 <% } %>
 <%- include("./seo", { bot, user, path, description, title, twitter, url }) %>
+<% if(config.arc_token) { %>
 <script async src="https://arc.io/widget.min.js#<%= config.arc_token %>"></script>
+<% } %>
 </head>
 <body>
 <script type="text/javascript">var preload = document.createElement('div'); preload.className = "preloader"; preload.innerHTML = '</div><div class="spinner"></div>'; document.body.appendChild(preload); window.addEventListener('load', function() { preload.className +=  ' fade'; setTimeout(function(){ preload.style.display = 'none'; },500); })</script>
