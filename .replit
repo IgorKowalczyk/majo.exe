@@ -1,2 +1,2 @@
-run = "npm run majo:bot"
+run = "while true; do npm run majo:web; sleep 2; done"
 language = "nodejs"
