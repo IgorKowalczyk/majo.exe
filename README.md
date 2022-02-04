@@ -206,9 +206,9 @@ ANALYTICS=YOUR_GOOGLE_TRACKING_ID
 1. Go to <a href="https://api.amethyste.moe/register">Amethyste Register Page</a> to create an new account
 2. Fill in all the required infomation
 3. Check your email to active your account 
-4. After login,you'll be redicted to home page,scroll down and click Generate
-> Some randomstring will appear on top of that button,its your own Amethyste Api,you can regenerate it any time
-
+4. After login, you'll be redicted to home page, scroll down and click Generate
+> Token will appear on top of that button, you can regenerate it in any time
+5. Paste your token in `.env` file - `AMEAPI=TOKEN`
 ---
 
 ### 📈 Analytics ID
