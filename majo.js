@@ -17,7 +17,7 @@ if (process.argv.includes(`--bot`)) {
 }
 
 if (process.argv.includes(`--dashboard`)) console.log(chalk.bold(chalk.green(`[✅]`)) + chalk.bold.greenBright(` Running Majo.exe Dashboard! (2/3) `));
-if (process.argv.includes(`--api`)) console.log(chalk.bold(chalk.green(`[✅]`)) + chalk.bold.greenBright(` Running Majo.exe API! (3/3) `));
-if (process.argv.includes(`--dashboard`) || process.argv.includes(`--api`)) require("./dashboard/dashboard");
 if (!process.argv.includes(`--dashboard`)) console.log(chalk.bold(chalk.red(`[❌]`)) + chalk.bold.red(` Skipping Dashboard launch! (2/3) `) + chalk.bold.red.dim(`[Run script with "--dashboard" argument]`));
+if (process.argv.includes(`--api`)) console.log(chalk.bold(chalk.green(`[✅]`)) + chalk.bold.greenBright(` Running Majo.exe API! (3/3) `));
 if (!process.argv.includes(`--api`)) console.log(chalk.bold(chalk.red(`[❌]`)) + chalk.bold.red(` Skipping API launch! (3/3) `) + chalk.bold.red.dim(`[Run script with "--api" argument]`));
+if (process.argv.includes(`--dashboard`) || process.argv.includes(`--api`)) require("./dashboard/dashboard");

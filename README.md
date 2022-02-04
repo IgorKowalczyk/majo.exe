@@ -121,6 +121,7 @@ Go to [this link](https://discord.com/oauth2/authorize/?permissions=4294967287&s
 | `/v1/user/:ID` | `userID` | `User Object` | `None` | `1 / Any Discord Error` |
 | `/v1/guild/:ID` | `guildID` | `Guild Object` | `Majo.exe Guild` | `2 / Any Discord Error` |
 | `/v1/fun/cat_fact` | `None` | `JSON Object` | `None` | `None` |
+| `/v1/bot_info` | `None` | `JSON Object` | `None` | `None` |
 
 ## 💾 `.env` File (Main Config)
 #### `.env` config table
