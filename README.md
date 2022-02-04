@@ -209,6 +209,9 @@ ANALYTICS=YOUR_GOOGLE_TRACKING_ID
 4. After login, you'll be redicted to home page, scroll down and click Generate
 > Token will appear on top of that button, you can regenerate it in any time
 5. Paste your token in `.env` file - `AMEAPI=TOKEN`
+
+> Written by: <a href="https://github.com/MashedTuna">MashedPotato</a>
+
 ---
 
 ### 📈 Analytics ID
