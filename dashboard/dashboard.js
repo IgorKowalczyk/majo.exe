@@ -48,38 +48,38 @@ client.on("ready", () => {
  for (let i = 0; i <= 15; i++) {
   process.env.SESSION_SECRET += Math.random().toString(16).slice(2, 8).toUpperCase().slice(-6) + i;
  }
-  app.use(helmet.dnsPrefetchControl());
-  app.use(helmet.expectCt());
-  // app.use(helmet.frameguard());
-  app.use(helmet.hidePoweredBy());
-  app.use(helmet.hsts());
-  app.use(helmet.ieNoOpen());
-  app.use(helmet.noSniff());
-  app.use(helmet.permittedCrossDomainPolicies());
-  app.use(helmet.referrerPolicy());
-  app.use(helmet.xssFilter());
-  app.use((req, res, next) => {
-   res.setHeader("Permissions-Policy", "	accelerometer=(), camera=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), payment=(), usb=(), interest-cohort=()");
-   res.setHeader("Access-Control-Allow-Origin", "*");
-   next();
-  });
-  const expire_date = 1000 * 60 * 60 * 24; // 1 day
-  const sessionStore = new MemoryStore({
-   checkPeriod: expire_date,
-  });
-  app.use(
-   session({
-    cookie: {
-     expires: expire_date,
-     secure: true,
-     maxAge: expire_date,
-    },
-    secret: process.env.SESSION_SECRET,
-    store: sessionStore,
-    resave: false,
-    saveUninitialized: false,
-   })
-  );
+ app.use(helmet.dnsPrefetchControl());
+ app.use(helmet.expectCt());
+ // app.use(helmet.frameguard());
+ app.use(helmet.hidePoweredBy());
+ app.use(helmet.hsts());
+ app.use(helmet.ieNoOpen());
+ app.use(helmet.noSniff());
+ app.use(helmet.permittedCrossDomainPolicies());
+ app.use(helmet.referrerPolicy());
+ app.use(helmet.xssFilter());
+ app.use((req, res, next) => {
+  res.setHeader("Permissions-Policy", "	accelerometer=(), camera=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), payment=(), usb=(), interest-cohort=()");
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  next();
+ });
+ const expire_date = 1000 * 60 * 60 * 24; // 1 day
+ const sessionStore = new MemoryStore({
+  checkPeriod: expire_date,
+ });
+ app.use(
+  session({
+   cookie: {
+    expires: expire_date,
+    secure: true,
+    maxAge: expire_date,
+   },
+   secret: process.env.SESSION_SECRET,
+   store: sessionStore,
+   resave: false,
+   saveUninitialized: false,
+  })
+ );
  if (process.argv.includes(`--api`)) {
   (async () => {
    await require("../api/index")(app, client, port, config, secure_connection);
