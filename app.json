@@ -1,7 +1,7 @@
 {
  "name": "Majo.exe",
  "description": "Majo.exe have almost everything - Fun, Memes, Images, Giveaway, Economy, Anime and NSFW",
- "logo": "https://cdn.discordapp.com/avatars/681536055572430918/440725bbe2324ebf70dd1d2e6ca997c1.png?size=4096",
+ "logo": "https://user-images.githubusercontent.com/49127376/138303201-7f8db506-b11b-40bf-9b89-3966616b16d5.png",
  "repository": "https://github.com/igorkowalczyk/majo.exe.git",
  "stack": "heroku-20",
  "website": "https://majoexe.ml",
@@ -26,7 +26,7 @@
   },
   "DOMAIN": {
    "description": "Website domain (same as your heroku app name!)",
-   "required": false
+   "required": true
   },
   "ID": {
    "description": "Discord Bot ID",
@@ -34,7 +34,7 @@
   },
   "CONTACT_WEBHOOK": {
    "description": "Contact form webhook URL",
-   "required": false
+   "required": true
   },
   "STATUS_WEBHOOK": {
    "description": "Status webhook URL",
@@ -46,7 +46,7 @@
   },
   "SECRET": {
    "description": "Bot client secret",
-   "required": false
+   "required": true
   },
   "ANALYTICS": {
    "description": "Google Analytics tracking ID",
