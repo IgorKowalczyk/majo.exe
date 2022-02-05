@@ -113,15 +113,16 @@ Go to [this link](https://discord.com/oauth2/authorize/?permissions=4294967287&s
 
 ## 🧱 API Endpoints
 > 🔗 API Link: https://majoexe.ml/api/<br>
-> ⛔ Error codes: `0 - 20000`
+> ⛔ Error codes: `0 - 99999`
 
 | API Endpoint (`/api`) | Values | Response (`json`) | Conditions | Error Codes |
 |---|---|---|---|---|
-| `*` (Invaild endpoint) | `None` | `Error Code` | `Error Code` | `0` |
-| `/v1/user/:ID` | `userID` | `User Object` | `None` | `1 / Any Discord Error` |
-| `/v1/guild/:ID` | `guildID` | `Guild Object` | `Majo.exe Guild` | `2 / Any Discord Error` |
+| `/` | `None` | `Endpoints list` | `None` | `None` |
+| `/v1/info/user/:ID` | `userID` | `User Object` | `None` | `1 / Any Discord Error` |
+| `/v1/info/guild/:ID` | `guildID` | `Guild Object` | `Majo.exe Guild` | `2 / Any Discord Error` |
+| `/v1/info/bot_info` | `None` | `JSON Object` | `None` | `None` |
 | `/v1/fun/cat_fact` | `None` | `JSON Object` | `None` | `None` |
-| `/v1/bot_info` | `None` | `JSON Object` | `None` | `None` |
+> Note: Any other endpoint will return error code `0`
 
 ## 💾 `.env` File (Main Config)
 #### `.env` config table

@@ -1,21 +1,26 @@
 const fetch = require("node-fetch");
 
-module.exports = (app, client) => {
- app.get("/api/v1/guild/:guildID", (req, res, next) => {
-  if (!req.params.guildID) {
+module.exports = {
+ name: "/api/v1/info/guild",
+ version: "v1",
+ description: "Returns info about guild",
+ category: "info",
+ params: ["guildID"],
+ run: async (client, req, res, next, params) => {
+  if (!params[0]) {
    return res.json({
     code: 2,
     message: "Invaild guild ID!",
    });
   }
-  if (isNaN(req.params.guildID)) {
+  if (isNaN(params[0])) {
    return res.json({
     code: 2,
     message: "Invaild guild ID!",
    });
   }
   (async () => {
-   const request = await fetch(`https://discord.com/api/guilds/${req.params.guildID}`, {
+   const request = await fetch(`https://discord.com/api/guilds/${params[0]}`, {
     method: "GET",
     headers: {
      authorization: `Bot ${client.token}`,
@@ -30,5 +35,5 @@ module.exports = (app, client) => {
    const json = await request.json();
    return res.json(json);
   })();
- });
+ },
 };

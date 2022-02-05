@@ -40,7 +40,7 @@ client.on("ready", () => {
  client.commands = new Discord.Collection();
  client.aliases = new Discord.Collection();
  require(`../bot/handlers/dashboard-handler`)(client);
- const port = process.env.PORT || 6565;
+ const port = process.env.PORT || 8080;
  function capitalize(string) {
   return string.charAt(0).toUpperCase() + string.slice(1);
  }
@@ -48,34 +48,6 @@ client.on("ready", () => {
  for (let i = 0; i <= 15; i++) {
   process.env.SESSION_SECRET += Math.random().toString(16).slice(2, 8).toUpperCase().slice(-6) + i;
  }
- if (process.argv.includes(`--api`)) {
-  require("../api/index")(app, client, port, config, secure_connection);
- }
- if (process.argv.includes(`--dashboard`)) {
-  console.log(chalk.bold(chalk.bold.magenta("> ") + chalk.blue.bold("[DASH]")) + chalk.cyan.bold(" Starting dashboard..."));
-  console.log(chalk.bold(chalk.bold.magenta("> ") + chalk.blue.bold("[DASH]")) + chalk.cyan.bold(" Setting up dashboard main config..."));
-  // console.log(chalk.bold(chalk.bold.magenta("> ") + chalk.blue.bold("[DASH]")) + chalk.cyan.bold(` Dashboard credentials: \n* Domain: ${process.env.DOMAIN}\n* Port: ${process.env.PORT}\n* ID: ${process.env.ID}\n* G Analytics: ${process.env.ANALYTICS || "Not set"}`));
-  const dataDir = path.resolve(`${process.cwd()}${path.sep}dashboard`);
-  const templateDir = path.resolve(`${dataDir}${path.sep}templates`);
-  passport.serializeUser((user, done) => done(null, user));
-  passport.deserializeUser((obj, done) => done(null, obj));
-  passport.use(
-   new Strategy(
-    {
-     clientID: process.env.ID,
-     client_secret: process.env.SECRET,
-     clientSecret: process.env.SECRET,
-     // Choose one ^ XD
-     callbackURL: `${process.env.DOMAIN}${process.env.PORT != 80 ? "" : `:${process.env.PORT}`}/callback`,
-     response_type: `token`,
-     scope: ["identify", "guilds"],
-    },
-    (accessToken, refreshToken, profile, done) => {
-     process.nextTick(() => done(null, profile));
-    }
-   )
-  );
-  app.use(express.static("dashboard/static"));
   app.use(helmet.dnsPrefetchControl());
   app.use(helmet.expectCt());
   // app.use(helmet.frameguard());
@@ -108,7 +80,36 @@ client.on("ready", () => {
     saveUninitialized: false,
    })
   );
-
+ if (process.argv.includes(`--api`)) {
+  (async () => {
+   await require("../api/index")(app, client, port, config, secure_connection);
+  })();
+ }
+ if (process.argv.includes(`--dashboard`)) {
+  console.log(chalk.bold(chalk.bold.magenta("> ") + chalk.blue.bold("[DASH]")) + chalk.cyan.bold(" Starting dashboard..."));
+  console.log(chalk.bold(chalk.bold.magenta("> ") + chalk.blue.bold("[DASH]")) + chalk.cyan.bold(" Setting up dashboard main config..."));
+  // console.log(chalk.bold(chalk.bold.magenta("> ") + chalk.blue.bold("[DASH]")) + chalk.cyan.bold(` Dashboard credentials: \n* Domain: ${process.env.DOMAIN}\n* Port: ${process.env.PORT}\n* ID: ${process.env.ID}\n* G Analytics: ${process.env.ANALYTICS || "Not set"}`));
+  const dataDir = path.resolve(`${process.cwd()}${path.sep}dashboard`);
+  const templateDir = path.resolve(`${dataDir}${path.sep}templates`);
+  passport.serializeUser((user, done) => done(null, user));
+  passport.deserializeUser((obj, done) => done(null, obj));
+  passport.use(
+   new Strategy(
+    {
+     clientID: process.env.ID,
+     client_secret: process.env.SECRET,
+     clientSecret: process.env.SECRET,
+     // Choose one ^ XD
+     callbackURL: `${process.env.DOMAIN}${process.env.PORT != 80 ? "" : `:${process.env.PORT}`}/callback`,
+     response_type: `token`,
+     scope: ["identify", "guilds"],
+    },
+    (accessToken, refreshToken, profile, done) => {
+     process.nextTick(() => done(null, profile));
+    }
+   )
+  );
+  app.use(express.static("dashboard/static"));
   if (config.secure_connection == true) {
    app.enable("trust proxy");
    app.use((req, res, next) => {
@@ -512,13 +513,13 @@ client.on("ready", () => {
    secureOptions: constants.SSL_OP_NO_TLSv1 | constants.SSL_OP_NO_TLSv1_1,
   };
   https.createServer(http_options, app).listen(port, null, null, () => {
-   if (process.argv.includes(`--dashboard`)) console.log(chalk.bold(chalk.bold.magenta("> ") + chalk.blue.bold("[DASH]")) + chalk.cyan.bold(` Dashboard is up and running on url ${process.env.DOMAIN} and port ${port}!`));
+   if (process.argv.includes(`--dashboard`)) console.log(chalk.bold(chalk.bold.magenta("> ") + chalk.blue.bold("[DASH]")) + chalk.cyan.bold(` Dashboard is up and running on url ${process.env.DOMAIN}${port}!`));
    if (process.argv.includes(`--api`)) console.log(chalk.bold(chalk.bold.red("> ") + chalk.blue.bold("[API]")) + chalk.cyan.bold(` API is up and running on url ${process.env.DOMAIN} and port ${port}!`));
   });
  } else {
   app.listen(port, null, null, () => {
-   if (process.argv.includes(`--dashboard`)) console.log(chalk.bold(chalk.bold.magenta("> ") + chalk.blue.bold("[DASH]")) + chalk.cyan.bold(` Dashboard is up and running on url ${process.env.DOMAIN} and port ${port}!`));
-   if (process.argv.includes(`--api`)) console.log(chalk.bold(chalk.bold.red("> ") + chalk.blue.bold("[API]")) + chalk.cyan.bold(` API is up and running on url ${process.env.DOMAIN} and port ${port}!`));
+   if (process.argv.includes(`--dashboard`)) console.log(chalk.bold(chalk.bold.magenta("> ") + chalk.blue.bold("[DASH]")) + chalk.cyan.bold(` Dashboard is up and running on url ${process.env.DOMAIN}${port == 8080 ? "" : `:${port}`} !`));
+   if (process.argv.includes(`--api`)) console.log(chalk.bold(chalk.bold.red("> ") + chalk.blue.bold("[API]")) + chalk.cyan.bold(` API is up and running on url ${process.env.DOMAIN}${port == 8080 ? "" : `:${port}`} !`));
   });
  }
 });

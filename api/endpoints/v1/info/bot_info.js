@@ -1,5 +1,10 @@
-module.exports = (app, client) => {
- app.get("/api/v1/bot_info", (req, res, next) => {
+module.exports = {
+ name: "/api/v1/info/bot_info",
+ version: "v1",
+ description: "Returns info about bot",
+ category: "info",
+ params: null,
+ run: async (client, req, res, next) => {
   const json = {
    guilds: client.guilds.cache.size,
    id: client.id,
@@ -9,5 +14,5 @@ module.exports = (app, client) => {
    uptime: client.uptime,
   };
   res.json(json);
- });
+ },
 };
