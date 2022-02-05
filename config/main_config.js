@@ -13,6 +13,7 @@ module.exports = {
   only_link: false, // Display only link to external status page
   embed: "https://wl.hetrixtools.com/r/b327a38f4c3d4cdb1068dfe61e1b2144/", // External status page link
  },
+ default_database: process.env.DEFAULT_DB, // Default Database [mysql | mongo] [WIP!]
  twitter: "@majonezexe", // Owner twitter
  github: "igorkowalczyk", // Github repository owner
  github_repo: "majo.exe", // Github repository
