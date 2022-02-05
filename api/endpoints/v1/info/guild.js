@@ -2,6 +2,7 @@ const fetch = require("node-fetch");
 
 module.exports = {
  name: "/api/v1/info/guild",
+ url: `${process.env.DOMAIN}${process.env.PORT == 8080 ? "" : `:${process.env.PORT}`}/api/v1/info/guild`,
  version: "v1",
  description: "Returns info about guild",
  category: "info",
