@@ -5,7 +5,7 @@ const AmeAPI = new AmeClient(process.env.AMEAPI);
 module.exports = {
  name: "approve",
  description: "✅ Approve user avatar",
- usage: "/approve <user>",
+ usage: "/approve [user]",
  category: "Image",
  options: [
   {
@@ -18,6 +18,9 @@ module.exports = {
  run: async (client, interaction, args) => {
   try {
    const member = interaction.guild.members.cache.get(args[0]) || interaction.member;
+   if(!member) {
+    return client.createSlashError(interaction, `${client.bot_emojis.error} | Invaild user!`);
+   }
    const wait = new MessageEmbed() // Prettier
     .setColor("#5865f2")
     .setDescription(`${client.bot_emojis.loading} | Please wait... I'm generating your image`);

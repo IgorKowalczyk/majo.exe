@@ -4,8 +4,7 @@ const canvacord = require("canvacord");
 module.exports = {
  name: "affect",
  description: "🍷 No, it doesn't affect my baby",
- usage: "/affect <user>",
- category: "Image",
+ usage: "/affect [user]",
  options: [
   {
    name: "user",
@@ -17,6 +16,9 @@ module.exports = {
  run: async (client, interaction, args) => {
   try {
    const member = interaction.guild.members.cache.get(args[0]) || interaction.member;
+   if(!member) {
+    return client.createSlashError(interaction, `${client.bot_emojis.error} | Invaild user!`);
+   }
    const wait = new MessageEmbed() // Prettier
     .setColor("#5865f2")
     .setDescription(`${client.bot_emojis.loading} | Please wait... I'm generating your image`);
