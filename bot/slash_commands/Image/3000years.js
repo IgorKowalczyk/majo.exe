@@ -18,7 +18,7 @@ module.exports = {
  run: async (client, interaction, args) => {
   try {
    const member = interaction.guild.members.cache.get(args[0]) || interaction.member;
-   if(!member) {
+   if (!member) {
     return client.createSlashError(interaction, `${client.bot_emojis.error} | Invaild user!`);
    }
    const wait = new MessageEmbed() // Prettier

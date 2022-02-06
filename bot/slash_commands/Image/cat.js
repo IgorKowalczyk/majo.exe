@@ -31,7 +31,7 @@ module.exports = {
      })
      .setTimestamp()
      .setURL(body.url);
-     interaction.followUp({ embeds: [embed] });
+    interaction.followUp({ embeds: [embed] });
    } catch (err) {
     console.log(err);
     return client.createSlashCommandError(interaction, err);

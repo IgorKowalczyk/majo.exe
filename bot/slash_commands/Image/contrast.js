@@ -1,19 +1,12 @@
 const { MessageEmbed, MessageAttachment } = require("discord.js");
-const canvacord = require("canvacord");
+const AmeClient = require("amethyste-api");
+const AmeAPI = new AmeClient(process.env.AMEAPI);
 
 module.exports = {
- name: "circle",
- description: "⭕ Creates circular image",
+ name: "contrast",
+ description: "🎨 Add contrast effect to user avatar",
  category: "Image",
- usage: "/circle [user]",
- options: [
-  {
-   name: "user",
-   description: "User whose avatar will be used",
-   required: false,
-   type: 6,
-  },
- ],
+ usage: "/contrast [user ]",
  run: async (client, interaction, args) => {
   try {
    const member = interaction.guild.members.cache.get(args[0]) || interaction.member;
@@ -25,14 +18,13 @@ module.exports = {
     .setDescription(`${client.bot_emojis.loading} | Please wait... I'm generating your image`);
    interaction.followUp({ embeds: [wait] }).then((msg) => {
     (async () => {
-     const circle = await canvacord.Canvas.circle(
-      member.user.displayAvatarURL({
-       dynamic: false,
+     const buffer = await AmeAPI.generate("contrast", {
+      url: member.user.displayAvatarURL({
        format: "png",
        size: 2048,
-      })
-     );
-     const attachment = new MessageAttachment(circle, "circle.png");
+      }),
+     });
+     const attachment = new MessageAttachment(buffer, "contrast.png");
      msg.edit({ embeds: [], files: [attachment] });
     })();
    });
