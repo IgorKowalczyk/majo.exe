@@ -999,6 +999,7 @@ code {
  margin-right: 0;
  height: 119px;
  border-radius: 50%;
+ box-shadow: 0 3px 15px 0 rgba(0, 0, 0, 0.1), 0 1px 3px 0 rgba(0, 0, 0, 0.08);
 }
 
 .server-description {

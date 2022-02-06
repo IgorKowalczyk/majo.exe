@@ -104,6 +104,7 @@
  height: 80px;
  width: 80px;
  margin-top: 30px;
+ box-shadow: 0 3px 15px 0 rgba(0, 0, 0, 0.1), 0 1px 3px 0 rgba(0, 0, 0, 0.08);
 }
 
 .hr-edited {
