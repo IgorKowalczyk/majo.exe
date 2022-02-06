@@ -1,11 +1,10 @@
 const { MessageEmbed, MessageAttachment } = require("discord.js");
-const AmeClient = require("amethyste-api");
-const AmeAPI = new AmeClient(process.env.AMEAPI);
+const canvacord = require("canvacord");
 
 module.exports = {
- name: "approve",
- description: "✅ Approve user avatar",
- usage: "/approve <user>",
+ name: "beautiful",
+ description: "🖼️ Oh this? This is beautiful!",
+ usage: "/beautiful <user>",
  category: "Image",
  options: [
   {
@@ -23,13 +22,14 @@ module.exports = {
     .setDescription(`${client.bot_emojis.loading} | Please wait... I'm generating your image`);
    interaction.followUp({ embeds: [wait] }).then((msg) => {
     (async () => {
-     const buffer = await AmeAPI.generate("approved", {
-      url: member.user.displayAvatarURL({
+     const beautiful = await canvacord.Canvas.beautiful(
+      member.user.displayAvatarURL({
+       dynamic: false,
        format: "png",
        size: 2048,
-      }),
-     });
-     const attachment = new MessageAttachment(buffer, "3000years.png");
+      })
+     );
+     const attachment = new MessageAttachment(beautiful, "beautiful.png");
      msg.edit({ embeds: [], files: [attachment] });
     })();
    });
