@@ -24,8 +24,7 @@ module.exports = {
   show_commands_list: true, // Show commands list in help embed
  },
  intents: {
-  // Experimental function [WIP]
-  all: false,
-  problems: true,
+  all: true,
+  problems: false,
  },
 };
