@@ -1,6 +1,6 @@
 <%- include("includes/head", { bot, user, path, description, title, twitter, url }) %>
 <% function capitalize(string) { return string.charAt(0).toUpperCase() + string.slice(1); } %>
-<% if (bot.user.avatar) { botavatar = `https://cdn.discordapp.com/avatars/${bot.user.id}/${bot.user.avatar}?size=256`; } else { botavatar = `${secure_connection + domain}/pics/invaild-avatar.png`; } %>
+<% if (bot.user.avatar) { botavatar = `https://cdn.discordapp.com/avatars/${bot.user.id}/${bot.user.avatar}.webp?size=256`; } else { botavatar = `${secure_connection + domain}/pics/invaild-avatar.png`; } %>
 <% if (user) { %>
 <% const checked = "home" %>
 <%- include("includes/side_nav_other", { bot, user, path, checked_nav: checked }) %>

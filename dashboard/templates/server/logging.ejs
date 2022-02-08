@@ -7,25 +7,22 @@
 %>
 <% const checked = "logs" %>
 <%- include("../includes/side_nav", { bot, user, path, guild_name: guild.name, guild_icon: iconurl, checked_nav: checked, guild }) %>
+<% function capitalize(string) { return string.charAt(0).toUpperCase() + string.slice(1); } %>
 <div class="content">
-<% function checkdays(date) {
- let now = new Date();
- let diff = now.getTime() - date.getTime();
- let days = Math.floor(diff / 86400000);
- return days + (days == 1 ? " day" : " days") + " ago";
-} %>
 <img class="server-image img" src="<%= iconurl %>" alt="<%= guild.name %>"/>
 <h1 class="server-name"><%= guild.name %></h1>
 <p class="server-description"><%= guild.description %></p>
-<hr>
-<h2>Soon!</h2>
-
+<hr style="width: 25%;">
+<h2>Logging</h2>
+<p>Configure the events after which the message should be sent on the channel</p>
 <div class="servers">
+<% all_events.forEach(event => { %>
  <div class="server">
  <div class="icon-and-name">
- <p class="guild-name">Message Delete</p>
+ <p class="guild-name"><%= capitalize(event) %></p>
  </div>
-  <input type="checkbox"/>
+  <input type="switch"/>
  </div>
+<% }) %>
 </div>
 <%- include("../includes/footer") %>

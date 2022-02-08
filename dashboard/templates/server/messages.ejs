@@ -1,0 +1,39 @@
+<%- include("../includes/head", { bot, user, path, description, title: guild.name + " dashboard", twitter, url }) %>
+<% if (guild.icon) {
+ iconurl = `https://cdn.discordapp.com/icons/${guild.id}/${guild.icon}`;
+} else {
+ iconurl = `${secure_connection + domain}/pics/invaild-avatar.png`;
+}
+%>
+<% const checked = "messages" %>
+<%- include("../includes/side_nav", { bot, user, path, guild_name: guild.name, guild_icon: iconurl, checked_nav: checked, guild }) %>
+<div class="content">
+<img class="server-image img" src="<%= iconurl %>" alt="<%= guild.name %>"/>
+<h1 class="server-name"><%= guild.name %></h1>
+<p class="server-description"><%= guild.description %></p>
+<hr style="width: 25%;">
+<h2>Join or Leave messages</h2>
+<p>These messages will be sent when someone joins or leaves the server</p>
+<div class="servers">
+ <div class="server">
+ <div class="icon-and-name">
+ <p class="guild-name"><%- include('../includes/icons/add') %> Send Message when someone join server</p>
+ </div>
+  <input type="switch"/>
+ </div>
+   <div class="server">
+ <div class="icon-and-name">
+ <p class="guild-name"><%- include('../includes/icons/remove') %> Send Message when someone leave server</p>
+ </div>
+  <input type="switch"/>
+ </div>
+</div>
+
+<div class="servers" style="padding: 20px;">
+      <h2 style="padding: 0; text-align: center">Examples</h2>
+     <h3 style="text-align: center">Join message</h3>
+    <img src="https://media.discordapp.net/attachments/905722570286960650/940634497047756820/join.png" style="width: 450px;border-radius: 15px;margin: 0 auto;"/>
+        <h3 style="text-align: center">Leave message</h3>
+    <img src="https://media.discordapp.net/attachments/905722570286960650/940634497362325514/leave.png" style="width: 450px;border-radius: 15px;margin: 0 auto;"/>
+  </div>
+<%- include("../includes/footer") %>

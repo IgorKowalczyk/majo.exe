@@ -1,12 +1,14 @@
 @font-face {
  font-family: "Roboto-Thin";
  src: url("../fonts/roboto-thin.ttf");
+ font-display: swap;
 }
 
 @font-face {
  font-family: "Poppins";
  font-style: normal;
  font-weight: 200;
+ font-display: swap;
  src: url("../fonts/poppins.ttf");
 }
 
@@ -963,8 +965,7 @@ code {
 }
 
 .r:hover {
-  background-color: rgba(var(--server-hover));
-  
+ background-color: rgba(var(--server-hover));
 }
 .r-members {
  display: flex;
@@ -1212,4 +1213,83 @@ code {
  visibility: visible;
  opacity: 1;
  pointer-events: all;
+}
+
+input[type="switch"] {
+ display: none;
+}
+.switch-uQvapcxk,
+.switch-uQvapcxk:after,
+.switch-uQvapcxk:before {
+ display: block;
+ margin: 0;
+ padding: 0;
+ background: 0;
+ line-height: 0;
+ font-size: 0;
+ text-indent: 100%;
+ white-space: nowrap;
+ border: 0;
+ outline: 0;
+ overflow: hidden;
+ -webkit-tap-highlight-color: transparent;
+ -webkit-user-select: none;
+ -moz-user-select: none;
+ -ms-user-select: none;
+ user-select: none;
+}
+.switch-uQvapcxk {
+ display: inline-block;
+ position: relative;
+ width: 42px;
+ transition: transform 0.15s ease-in-out, width 0.1s ease-in-out, left 0.1s ease-in-out, -webkit-transform 0.15s ease-in-out, background-color 0.15s ease-in;
+ height: 24px;
+ background-color: #72767d;
+ border-radius: 12px;
+ transition: background-color 300ms;
+ box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.15);
+ cursor: pointer;
+}
+.switch-uQvapcxk:before {
+ content: "";
+ position: absolute;
+ top: 0;
+ left: 0;
+ width: 42px;
+ height: 24px;
+ background-color: rgba(0, 0, 0, 0);
+ border-radius: 12px;
+}
+.switch-uQvapcxk:active:before {
+ background-color: rgba(0, 0, 0, 0.1);
+}
+.switch-uQvapcxk:after {
+ content: "";
+ position: absolute;
+ top: 0;
+ left: 0;
+ margin: 3px;
+ width: 18px;
+ height: 18px;
+ background-color: white;
+ border-radius: 9px;
+ box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+ pointer-events: none;
+ transition: transform 0.15s ease-in-out, width 0.2s ease-in-out, left 0.1s ease-in-out, -webkit-transform 0.15s ease-in-out, background-color 0.3s ease-in;
+}
+.switch-uQvapcxk:active:after {
+ /*  width: 26px; */
+}
+.switch-uQvapcxk[data-value="true"] {
+ background-color: #5865f2;
+}
+.switch-uQvapcxk[data-value="true"]:after {
+ -webkit-transform: translateX(18px);
+ transform: translateX(18px);
+}
+.switch-uQvapcxk[data-value="true"]:active:after {
+ /* left: -8px; */
+}
+.switch-uQvapcxk input {
+ display: none;
 }

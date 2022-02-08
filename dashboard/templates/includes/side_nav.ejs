@@ -6,9 +6,10 @@
 <h3 class="sidenav-header"><%= guild_name %></h3>
 <hr class="hr-edited">
 <a href="/dashboard/<%= guild.id %>" class="guildname <% if(checked_nav == "home") { %>checked<% } %>"><%- include('./icons/home-sidenav.ejs') %> Home</a>
-<a href="/dashboard/<%= guild.id %>/roles" class="guildname <% if(checked_nav == "roles") { %>checked<% } %>"><%- include('./icons/role-sidenav.ejs') %> Roles</a>
-<a href="/dashboard/<%= guild.id %>/embeds" class="guildname <% if(checked_nav == "embeds") { %>checked<% } %>"><%- include('./icons/embeds-sidenav.ejs') %> Embeds</a>
+<a href="/dashboard/<%= guild.id %>/messages" class="guildname <% if(checked_nav == "messages") { %>checked<% } %>"><%- include('./icons/message-sidenav.ejs') %> Messages</a>
 <a href="/dashboard/<%= guild.id %>/logging" class="guildname <% if(checked_nav == "logs") { %>checked<% } %>"><%- include('./icons/logs-sidenav.ejs') %>Logging</a>
+<a href="/dashboard/<%= guild.id %>/embeds" class="guildname <% if(checked_nav == "embeds") { %>checked<% } %>"><%- include('./icons/embeds-sidenav.ejs') %> Embeds</a>
+<a href="/dashboard/<%= guild.id %>/roles" class="guildname <% if(checked_nav == "roles") { %>checked<% } %>"><%- include('./icons/role-sidenav.ejs') %> Roles</a>
 <div class="position-bottom">
 <a href="/status" class="bottom-item" style="float: right"><%- include('./icons/signal.ejs') %> Status</a>
 <% if (config.github && package.version) { %>

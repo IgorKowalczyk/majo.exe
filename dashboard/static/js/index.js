@@ -84,3 +84,16 @@ blur.addEventListener("click", () => {
 window.onload = function () {
  twemoji.parse(document.body, { folder: "svg", ext: ".svg" });
 };
+
+const c = document.querySelectorAll('input[type="switch"]');
+for (var b = 0; b < c.length; b++) {
+ const a = document.createElement("label");
+ a.className = "switch-uQvapcxk";
+ c[b].parentNode.insertBefore(a, c[b]);
+ a.appendChild(c[b]);
+ a.dataset.value = c[b].checked;
+ c[b].type = "checkbox";
+ c[b].oninput = function () {
+  this.parentNode.dataset.value = this.checked;
+ };
+}

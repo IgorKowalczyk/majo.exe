@@ -15,6 +15,7 @@ const express = require("express");
 const chalk = require("chalk");
 const cookieParser = require("cookie-parser");
 const csrf = require("csurf");
+const compression = require("compression");
 const passport = require("passport");
 const Strategy = require("passport-discord").Strategy;
 const config = require("../config/main_config");
@@ -52,6 +53,7 @@ client.on("ready", () => {
  for (let i = 0; i <= 15; i++) {
   process.env.SESSION_SECRET += Math.random().toString(16).slice(2, 8).toUpperCase().slice(-6) + i;
  }
+ app.use(compression({ threshold: 0 }));
  app.use(helmet.dnsPrefetchControl());
  app.use(helmet.expectCt());
  // app.use(helmet.frameguard());
@@ -158,25 +160,30 @@ client.on("ready", () => {
   app.use(cookieParser());
   const csrfProtection = csrf({ cookie: true });
   (async () => {
-  const endpoints = await globPromise(`${process.cwd()}/bot/events/guild/*.js`);
-  endpoints.map(async (value) => {
-  const name = value.split("/").pop().replace(".js", "")
-  if(!additional_config.ignored_events.includes(name)) {
-  all_events.push(name)
-  }
-  });
-  })()
- 
+   const endpoints = await globPromise(`${process.cwd()}/bot/events/guild/*.js`);
+   endpoints.map(async (value) => {
+    const name = value.split("/").pop().replace(".js", "");
+    if (!additional_config.ignored_events.includes(name)) {
+     all_events.push(name.split(/(?=[A-Z])/).join(" "));
+    }
+   });
+  })();
+
   console.log(chalk.bold(chalk.bold.magenta("> ") + chalk.blue.bold("[DASH]")) + chalk.cyan.bold(" Setting up dashboard endpoints..."));
   const checkAuth = (req, res, next) => {
    if (req.isAuthenticated()) return next();
    req.session.backURL = req.url;
    res.redirect("/login");
   };
-
   const limiter = rate_limit({
    windowMs: 60 * 1000, // 1 minute
    max: 30,
+   message: "my initial message",
+   handler: function (req, res) {
+    renderTemplate(res, req, "rate_limit.ejs", {
+     perms: Permissions,
+    });
+   },
   });
   app.use(limiter);
 
@@ -472,8 +479,7 @@ client.on("ready", () => {
    });
   });
 
-
-     app.get("/dashboard/:guildID/roles/:roleID", checkAuth, async (req, res) => {
+  app.get("/dashboard/:guildID/roles/:roleID", checkAuth, async (req, res) => {
    const guild = await client.guilds.cache.get(req.params.guildID);
    if (!guild) return res.redirect("/error?message=no+guild");
    if (!req.params.roleID) return res.redirect("/error?message=no+role");
@@ -482,7 +488,7 @@ client.on("ready", () => {
    const member = guild.members.cache.get(req.user.id);
    if (!member) return res.redirect("/error?message=no+member");
    if (!member.permissions.has("MANAGE_GUILD")) return res.redirect("/error?message=missing+perm");
-   const role = guild.roles.cache.find(role => role.id === req.params.roleID);
+   const role = guild.roles.cache.find((role) => role.id === req.params.roleID);
    if (!role) return res.redirect("/error?message=invaild+role");
    renderTemplate(res, req, "/server/role-info.ejs", {
     guild: guild,
@@ -491,7 +497,7 @@ client.on("ready", () => {
     guild_owner: await guild.fetchOwner(),
    });
   });
-   
+
   app.get("/dashboard/:guildID/embeds", checkAuth, async (req, res) => {
    const guild = await client.guilds.cache.get(req.params.guildID);
    if (!guild) return res.redirect("/error?message=no+guild");
@@ -539,7 +545,22 @@ client.on("ready", () => {
    renderTemplate(res, req, "/server/logging.ejs", {
     guild: guild,
     perms: Permissions,
-    all_events,
+    all_events: all_events,
+    guild_owner: await guild.fetchOwner(),
+   });
+  });
+
+  app.get("/dashboard/:guildID/messages", checkAuth, async (req, res) => {
+   const guild = await client.guilds.cache.get(req.params.guildID);
+   if (!guild) return res.redirect("/error?message=no+guild");
+   const first_member = req.user.id;
+   await guild.members.fetch({ first_member });
+   const member = guild.members.cache.get(req.user.id);
+   if (!member) return res.redirect("/error?message=no+member");
+   if (!member.permissions.has("MANAGE_GUILD")) return res.redirect("/error?message=missing+perm");
+   renderTemplate(res, req, "/server/messages.ejs", {
+    guild: guild,
+    perms: Permissions,
     guild_owner: await guild.fetchOwner(),
    });
   });

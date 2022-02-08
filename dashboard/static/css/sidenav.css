@@ -36,6 +36,8 @@
  background-color: rgba(var(--navbar-rgb), 0.9);
  box-shadow: 0 3px 15px 0 rgba(0, 0, 0, 0.1), 0 1px 3px 0 rgba(0, 0, 0, 0.08);
  padding: 15px;
+ overflow-x: hidden;
+ overflow-y: auto;
 }
 
 @media screen and (max-width: 950px) {

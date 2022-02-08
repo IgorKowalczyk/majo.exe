@@ -27,5 +27,5 @@ module.exports = {
   all: true,
   problems: false,
  },
- ignored_events: ["guildCreate", "guildDelete", "guildMemberAdd", "guildMemberRemove", "interactionCreate", "messageCreate"] // Ignore this events in dashboard settings
+ ignored_events: ["guildCreate", "guildDelete", "guildMemberAdd", "guildMemberRemove", "interactionCreate", "messageCreate"], // Ignore this events in dashboard settings
 };
