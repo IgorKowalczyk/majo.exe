@@ -14,11 +14,18 @@
  let days = Math.floor(diff / 86400000);
  return days + (days == 1 ? " day" : " days") + " ago";
 } %>
-<div class="guild">
 <img class="server-image img" src="<%= iconurl %>" alt="<%= guild.name %>"/>
 <h1 class="server-name"><%= guild.name %></h1>
 <p class="server-description"><%= guild.description %></p>
 <hr>
 <h2>Soon!</h2>
+
+<div class="servers">
+ <div class="server">
+ <div class="icon-and-name">
+ <p class="guild-name">Message Delete</p>
+ </div>
+  <input type="checkbox"/>
+ </div>
 </div>
 <%- include("../includes/footer") %>

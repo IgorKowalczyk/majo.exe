@@ -33,6 +33,11 @@ const helmet = require("helmet");
 const { constants } = require("crypto");
 const package = require("../package.json");
 const secure_connection = config.secure_connection == true ? "https://" : "http://";
+const { glob } = require("glob");
+const { promisify } = require("util");
+const globPromise = promisify(glob);
+const all_events = [];
+
 require("dotenv").config();
 require("../utilities/dashboard");
 client.on("ready", () => {
@@ -152,7 +157,16 @@ client.on("ready", () => {
   app.use(express.urlencoded({ extended: false }));
   app.use(cookieParser());
   const csrfProtection = csrf({ cookie: true });
-
+  (async () => {
+  const endpoints = await globPromise(`${process.cwd()}/bot/events/guild/*.js`);
+  endpoints.map(async (value) => {
+  const name = value.split("/").pop().replace(".js", "")
+  if(!additional_config.ignored_events.includes(name)) {
+  all_events.push(name)
+  }
+  });
+  })()
+ 
   console.log(chalk.bold(chalk.bold.magenta("> ") + chalk.blue.bold("[DASH]")) + chalk.cyan.bold(" Setting up dashboard endpoints..."));
   const checkAuth = (req, res, next) => {
    if (req.isAuthenticated()) return next();
@@ -525,6 +539,7 @@ client.on("ready", () => {
    renderTemplate(res, req, "/server/logging.ejs", {
     guild: guild,
     perms: Permissions,
+    all_events,
     guild_owner: await guild.fetchOwner(),
    });
   });
