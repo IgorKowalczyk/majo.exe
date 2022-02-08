@@ -64,6 +64,8 @@ client.on("ready", () => {
  app.use(helmet.permittedCrossDomainPolicies());
  app.use(helmet.referrerPolicy());
  app.use(helmet.xssFilter());
+ app.use(cookieParser());
+ const csrfProtection = csrf({ cookie: true });
  app.use((req, res, next) => {
   res.setHeader("Permissions-Policy", "	accelerometer=(), camera=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), payment=(), usb=(), interest-cohort=()");
   res.setHeader("Access-Control-Allow-Origin", "*");
@@ -157,8 +159,6 @@ client.on("ready", () => {
   };
   app.use(express.json());
   app.use(express.urlencoded({ extended: false }));
-  app.use(cookieParser());
-  const csrfProtection = csrf({ cookie: true });
   (async () => {
    const endpoints = await globPromise(`${process.cwd()}/bot/events/guild/*.js`);
    endpoints.map(async (value) => {
