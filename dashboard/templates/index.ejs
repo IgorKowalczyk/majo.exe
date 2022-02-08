@@ -27,7 +27,7 @@
   <div class="hero-content">
    <img class="img" src="<%= botavatar %>" alt="Avatar" />
    <% if (user) { %>
-   <p class="hero-title">Yay!</p>
+   <p class="hero-title">Yay <%= user.username %>!</p>
    <p class="hero-title2">You connected your Discord account! Go to your dashboard and me to your server!</p>
    <a href="<%= secure_connection %><%= domain %>/dashboard" class="link-button green reload"><span class="reload-container"><%- include('includes/icons/dashboard-main.ejs') %> Dashboard</span></a>
    <% } else { %>
