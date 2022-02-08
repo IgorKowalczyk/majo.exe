@@ -404,7 +404,7 @@ client.on("ready", () => {
     .addField("Email", `> [${req.body.email.substr(0, 100)}](https://discord.com/users/${req.body.id})`)
     .addField("Message", `> \`\`\`${req.body.message.substr(0, 2000)}\`\`\``)
     .setTimestamp()
-    .setFooter(capitalize(client.user.username), client.user.displayAvatarURL());
+    .setFooter({text: capitalize(client.user.username), iconURL: client.user.displayAvatarURL()});
    await webhook.send({
     // Prettier
     username: capitalize(client.user.username) + " Contact",
