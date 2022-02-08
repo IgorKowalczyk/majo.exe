@@ -498,7 +498,7 @@ client.on("ready", () => {
    });
   });
 
-  app.get("/dashboard/:guildID/embeds", checkAuth, async (req, res) => {
+  app.get("/dashboard/:guildID/embeds", csrfProtection, checkAuth, async (req, res) => {
    const guild = await client.guilds.cache.get(req.params.guildID);
    if (!guild) return res.redirect("/error?message=no+guild");
    const first_member = req.user.id;
@@ -513,7 +513,7 @@ client.on("ready", () => {
    });
   });
 
-  app.post("/dashboard/:guildID/embeds", checkAuth, async (req, res) => {
+  app.post("/dashboard/:guildID/embeds", csrfProtection, checkAuth, async (req, res) => {
    const guild = await client.guilds.cache.get(req.params.guildID);
    if (!guild) return res.redirect("/error?message=no+guild");
    const first_member = req.user.id;
