@@ -528,7 +528,7 @@ client.on("ready", () => {
    try {
     await channel.send(data);
    } catch (err) {
-    res.status(403).send(`403 - ${err}`);
+    res.status(403).send(`403`);
     return;
    }
    res.send();
