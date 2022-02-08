@@ -8,12 +8,6 @@
 <% const checked = "embeds" %>
 <%- include("../includes/side_nav", { bot, user, path, guild_name: guild.name, guild_icon: iconurl, checked_nav: checked, guild }) %>
 <div class="content">
-<% function checkdays(date) {
- let now = new Date();
- let diff = now.getTime() - date.getTime();
- let days = Math.floor(diff / 86400000);
- return days + (days == 1 ? " day" : " days") + " ago";
-} %>
 <div class="guild">
 <img class="server-image img" src="<%= iconurl %>" alt="<%= guild.name %>"/>
 <h1 class="server-name"><%= guild.name %></h1>

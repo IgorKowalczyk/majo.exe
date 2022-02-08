@@ -958,8 +958,14 @@ code {
  width: 80%;
  margin-bottom: 10px;
  align-items: center;
+ transition: 300ms all;
+ text-decoration: none !important;
 }
 
+.r:hover {
+  background-color: rgba(var(--server-hover));
+  
+}
 .r-members {
  display: flex;
  align-items: center;

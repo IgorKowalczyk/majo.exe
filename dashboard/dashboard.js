@@ -458,6 +458,26 @@ client.on("ready", () => {
    });
   });
 
+
+     app.get("/dashboard/:guildID/roles/:roleID", checkAuth, async (req, res) => {
+   const guild = await client.guilds.cache.get(req.params.guildID);
+   if (!guild) return res.redirect("/error?message=no+guild");
+   if (!req.params.roleID) return res.redirect("/error?message=no+role");
+   const first_member = req.user.id;
+   await guild.members.fetch({ first_member });
+   const member = guild.members.cache.get(req.user.id);
+   if (!member) return res.redirect("/error?message=no+member");
+   if (!member.permissions.has("MANAGE_GUILD")) return res.redirect("/error?message=missing+perm");
+   const role = guild.roles.cache.find(role => role.id === req.params.roleID);
+   if (!role) return res.redirect("/error?message=invaild+role");
+   renderTemplate(res, req, "/server/role-info.ejs", {
+    guild: guild,
+    perms: Permissions,
+    role,
+    guild_owner: await guild.fetchOwner(),
+   });
+  });
+   
   app.get("/dashboard/:guildID/embeds", checkAuth, async (req, res) => {
    const guild = await client.guilds.cache.get(req.params.guildID);
    if (!guild) return res.redirect("/error?message=no+guild");
@@ -472,6 +492,28 @@ client.on("ready", () => {
     guild_owner: await guild.fetchOwner(),
    });
   });
+
+  app.post("/dashboard/:guildID/embeds", checkAuth, async (req, res) => {
+   const guild = await client.guilds.cache.get(req.params.guildID);
+   if (!guild) return res.redirect("/error?message=no+guild");
+   const first_member = req.user.id;
+   await guild.members.fetch({ first_member });
+   const member = guild.members.cache.get(req.user.id);
+   if (!member) return res.redirect("/error?message=no+member");
+   if (!member.permissions.has("ADMINISTRATOR")) return res.redirect("/error?message=missing+perm");
+   const channel = guild && guild.channels.cache.get(req.body.to);
+   const data = req.body.json;
+   if (!guild || !channel || !data) return res.status(400).send("Some data is missing");
+   if (!channel.permissionsFor(channel.guild.client.user).has("SEND_MESSAGES")) return res.status(403).send("I'm missing 'send message' permissions");
+   try {
+    await channel.send(data);
+   } catch (err) {
+    res.status(403).send(`403 - ${err}`);
+    return;
+   }
+   res.send();
+  });
+
   app.get("/dashboard/:guildID/logging", checkAuth, async (req, res) => {
    const guild = await client.guilds.cache.get(req.params.guildID);
    if (!guild) return res.redirect("/error?message=no+guild");
