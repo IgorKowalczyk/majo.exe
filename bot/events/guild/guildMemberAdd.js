@@ -5,6 +5,51 @@ const sql = require("../../../utilities/database");
 
 module.exports = async (client, member) => {
  try {
+  await sql.query(`SELECT joins as res, last_updated as ls from guild_stats WHERE guild_id = ${member.guild.id}`, async function (serror, sresults, sfields) {
+    if (serror) console.log(serror);
+    if (!sresults[0]) {
+      const current_month = moment().daysInMonth();
+      const stats = new Array();
+      const empty_stats = new Array();
+      for(let i = 0; i <= current_month; i++) {
+       stats[i] = 0;
+       empty_stats[i] = 0;
+      }
+     let current_day_in_week = moment().weekday();
+     if(current_day_in_week == 1) {
+      stats[0] = 1;
+     } else {
+      stats[current_day_in_week - 1] = 1;
+     }
+     console.log(stats.length)
+     await sql.query(`INSERT INTO guild_stats (guild_id, joins, leaves, last_updated) VALUES ('${member.guild.id}', '${stats}', '${empty_stats}', '${moment(new Date()).format("YYYY-MM-DD")}')`, function (sserror, ssresults, ssfields) {
+      if(sserror) console.log(sserror)
+    })
+   } else {
+    let array_stats = sresults[0].res.split(",");
+    let curr_stats = moment().weekday();
+    const current_month = moment().daysInMonth();
+    let last_updated = sresults[0].ls;
+    if(!moment(last_updated).isSame(new Date(), 'month')) {
+      const empty_stats = new Array();
+      for(let i = 0; i <= current_month; i++) {
+       empty_stats[i] = 0;
+      }
+      sql.query(`UPDATE guild_stats SET leaves = '${empty_stats}', joins = '${empty_stats}', last_updated = '${moment(new Date()).format("YYYY-MM-DD")}' WHERE guild_id = ${member.guild.id}`, function (fixerror, fixresults, fixfields) {
+      if(fixerror) console.log(fixerror)
+      })
+    }
+    if(curr_stats == 1) {
+      array_stats[0]++;
+    } else {
+      let day = (curr_stats - 1);
+      array_stats[day]++;
+    }
+     sql.query(`UPDATE guild_stats SET joins = '${array_stats}', last_updated = '${moment(new Date()).format("YYYY-MM-DD")}' WHERE guild_id = ${member.guild.id}`, function (ferror, fresults, fields) {
+      if(ferror) console.log(ferror)
+    })
+     }
+   })
   const image = `${process.cwd()}/src/img/welcome.png`;
   const sqlquery = "SELECT channelid AS res FROM welcome WHERE guildid = " + member.guild.id;
   sql.query(sqlquery, function (error, results, fields) {
