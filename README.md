@@ -137,7 +137,7 @@ Go to [this link](https://discord.com/oauth2/authorize/?permissions=4294967287&s
 | `MYSQL_USER` | Your MYSQL user | String | ✅ | ✅ | ❌ |
 | `MYSQL_PASSWORD` | Your MYSQL password | String | ✅ | ✅ | ❌ |
 | `DOMAIN` | Your website domain (eg `https://example.com`) | URL | ❌ | ✅ | ✅ |
-| `PORT` | Your webiste port eg. `8008`<br> - Note: Heroku don't need port. Heroku assings port automatically! | Number | ❌ | ✅ | ✅ |
+| `PORT` | Your webiste port eg. `8080`<br> - Note: Heroku don't need port. Heroku assings port automatically! | Number | ❌ | ✅ | ✅ |
 | `SECRET` | The bot client secret | String | ❌ | ✅ | ❌ |
 | `ANALYTICS` | Google analytics tracking ID, used in Web-Dashboard | String | ❌ | ❌ | ❌ |
 | `RECAPTCHA_KEY` | Google recaptcha v2 key | String | ❌ | ✅ | ❌ |
@@ -178,12 +178,12 @@ ANALYTICS=YOUR_GOOGLE_TRACKING_ID
 ```
 
 ## 🗜️ Requirements
- - MySQL: `<= 5.7`
- - Node.js: `>= 16x`
- - Linux x64 `(Any)`
- - RAM: `>= 250MB`
- - Disk space: `>= 1GB`
-
+ - `MySQL 5.7` or higher
+ - `Node.js 16x` or higher
+ - `(Any)` Linux x64*
+ - `256MB` of RAM
+ - `512MB/1GB` of hard drive space
+> * Debian based distro recommended
 
 ## 🔓 Tokens tutorials
 ### 🔑 Discord Credentials

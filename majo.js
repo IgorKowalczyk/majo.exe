@@ -9,6 +9,7 @@ if (!process.env.TOKEN) return console.log(chalk.bold(chalk.red(`[X]`)) + chalk.
 console.log(chalk.bold(chalk.blue(`[❔]`) + chalk.cyan(` Green`) + chalk.green(` ">" `) + chalk.cyan(`= logs from Majo.exe Bot`)));
 console.log(chalk.bold(chalk.blue(`[❔]`) + chalk.cyan(` Magenta`) + chalk.magenta(` ">" `) + chalk.cyan(`= logs from Majo.exe Dashboard`)));
 console.log(chalk.bold(chalk.blue(`[❔]`) + chalk.cyan(` Red`) + chalk.red(` ">" `) + chalk.cyan(`= logs from Majo.exe API`)));
+console.log(chalk.bold(chalk.blue(`[❔]`) + chalk.cyan(` White`) + chalk.white(` ">" `) + chalk.cyan(`= logs from Majo.exe Database`)));
 if (process.argv.includes(`--bot`)) {
  console.log(chalk.bold(chalk.green(`[✅]`)) + chalk.bold.greenBright(` Running Majo.exe Bot! (1/3) `));
  require("./bot/index");
