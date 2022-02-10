@@ -183,7 +183,7 @@ ANALYTICS=YOUR_GOOGLE_TRACKING_ID
  - `(Any)` Linux x64*
  - `256MB` of RAM
  - `512MB/1GB` of hard drive space
-> * Debian based distro recommended
+> *Debian based distro recommended
 
 ## 🔓 Tokens tutorials
 ### 🔑 Discord Credentials
