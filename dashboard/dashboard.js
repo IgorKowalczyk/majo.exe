@@ -160,6 +160,7 @@ client.on("ready", () => {
   app.use(express.json());
   app.use(express.urlencoded({ extended: false }));
   (async () => {
+   await require("../utilities/database-scripts");
    const endpoints = await globPromise(`${process.cwd()}/bot/events/guild/*.js`);
    endpoints.map(async (value) => {
     const name = value.split("/").pop().replace(".js", "");
@@ -177,7 +178,7 @@ client.on("ready", () => {
   };
   const limiter = rate_limit({
    windowMs: 60 * 1000, // 1 minute
-   max: 30,
+   max: 60,
    message: "my initial message",
    handler: function (req, res) {
     renderTemplate(res, req, "rate_limit.ejs", {
@@ -404,7 +405,7 @@ client.on("ready", () => {
     .addField("Email", `> [${req.body.email.substr(0, 100)}](https://discord.com/users/${req.body.id})`)
     .addField("Message", `> \`\`\`${req.body.message.substr(0, 2000)}\`\`\``)
     .setTimestamp()
-    .setFooter({text: capitalize(client.user.username), iconURL: client.user.displayAvatarURL()});
+    .setFooter({ text: capitalize(client.user.username), iconURL: client.user.displayAvatarURL() });
    await webhook.send({
     // Prettier
     username: capitalize(client.user.username) + " Contact",
@@ -534,7 +535,7 @@ client.on("ready", () => {
    res.send();
   });
 
-  app.get("/dashboard/:guildID/logging", checkAuth, async (req, res) => {
+  app.get("/dashboard/:guildID/logging", csrfProtection, checkAuth, async (req, res) => {
    const guild = await client.guilds.cache.get(req.params.guildID);
    if (!guild) return res.redirect("/error?message=no+guild");
    const first_member = req.user.id;
@@ -550,7 +551,7 @@ client.on("ready", () => {
    });
   });
 
-  app.get("/dashboard/:guildID/messages", checkAuth, async (req, res) => {
+  app.get("/dashboard/:guildID/messages", csrfProtection, checkAuth, async (req, res) => {
    const guild = await client.guilds.cache.get(req.params.guildID);
    if (!guild) return res.redirect("/error?message=no+guild");
    const first_member = req.user.id;
@@ -558,11 +559,107 @@ client.on("ready", () => {
    const member = guild.members.cache.get(req.user.id);
    if (!member) return res.redirect("/error?message=no+member");
    if (!member.permissions.has("MANAGE_GUILD")) return res.redirect("/error?message=missing+perm");
-   renderTemplate(res, req, "/server/messages.ejs", {
-    guild: guild,
-    perms: Permissions,
-    guild_owner: await guild.fetchOwner(),
+   const sql = require("../utilities/database");
+   const sqlquery = "SELECT `leave`.`guildid` AS `guild_id`, `leave`.`channelid` AS `leave`, `welcome`.`channelid` AS `welcome` FROM `leave` INNER JOIN welcome ON `leave`.`guildid` = `welcome`.`guildid` WHERE `leave`.guildid = " + guild.id;
+   await sql.query(sqlquery, async function (error, results, fields) {
+    if (results[0]) {
+     welcome = guild.channels.cache.get(results[0].welcome);
+     leave = guild.channels.cache.get(results[0].leave);
+    } else {
+     welcome = null;
+     leave = null;
+    }
+    renderTemplate(res, req, "/server/messages.ejs", {
+     guild: guild,
+     perms: Permissions,
+     welcome: welcome,
+     leave: leave,
+     csrfToken: req.csrfToken(),
+     guild_owner: await guild.fetchOwner(),
+    });
    });
+  });
+
+  app.post("/dashboard/:guildID/messages", csrfProtection, checkAuth, async (req, res) => {
+   const guild = await client.guilds.cache.get(req.params.guildID);
+   if (!guild) return res.redirect("/error?message=no+guild");
+   const first_member = req.user.id;
+   await guild.members.fetch({ first_member });
+   const member = guild.members.cache.get(req.user.id);
+   if (!member) return res.redirect("/error?message=no+member");
+   if (!member.permissions.has("MANAGE_GUILD")) return res.redirect("/error?message=missing+perm");
+   const data = req.body;
+   if (data) {
+    console.log(data);
+    const sql = require("../utilities/database");
+    sql.query(`SELECT \`leave\`.\`guildid\` AS \`guild_id\`, \`leave\`.\`channelid\` AS \`leave\`, \`welcome\`.\`channelid\` AS \`welcome\` FROM \`leave\` INNER JOIN \`welcome\` ON \`leave\`.\`guildid\` = \`welcome\`.\`guildid\` WHERE \`leave\`.\`guildid\` = ${guild.id}`, async function (error, results, fields) {
+     if (results[0]) {
+      welcome = guild.channels.cache.get(data.welcomechannel);
+      leave = guild.channels.cache.get(data.leavechannel);
+      data.welcome_enabled ? (welcome_enabled = true) : (welcome_enabled = false);
+      data.leave_enabled ? (leave_enabled = true) : (leave_enabled = false);
+      if (welcome_enabled && welcome) {
+       await sql.query(`UPDATE \`welcome\` SET channelid = ${welcome.id} WHERE guildid = ${guild.id};`, async function (update_error) {
+        if (update_error) console.log(update_error);
+       });
+      } else if (welcome_enabled == false) {
+       await sql.query(`DELETE FROM \`welcome\` WHERE guildid = ${guild.id};`, async function (update_error) {
+        if (update_error) console.log(update_error);
+       });
+      }
+      if (leave_enabled && leave) {
+       sql.query(`UPDATE \`leave\` SET channelid = ${leave.id} WHERE guildid = ${guild.id};`, async function (update_error) {
+        if (update_error) console.log(update_error);
+       });
+      } else if (leave_enabled == false) {
+       await sql.query(`DELETE FROM \`leave\` WHERE guildid = ${guild.id};`, async function (update_error) {
+        if (update_error) console.log(update_error);
+       });
+      }
+      sql.query(`SELECT \`leave\`.\`guildid\` AS \`guild_id\`, \`leave\`.\`channelid\` AS \`leave\`, \`welcome\`.\`channelid\` AS \`welcome\` FROM \`leave\` INNER JOIN \`welcome\` ON \`leave\`.\`guildid\` = \`welcome\`.\`guildid\` WHERE \`leave\`.\`guildid\` =  "${guild.id}";`, async function (update_error, update_results, update_fields) {
+       if (update_error) console.log(update_error);
+       console.log(update_results);
+       renderTemplate(res, req, "/server/messages.ejs", {
+        guild: guild,
+        perms: Permissions,
+        welcome: welcome,
+        leave: leave,
+        alert: "Successfully updated channels! ✅",
+        csrfToken: req.csrfToken(),
+        guild_owner: await guild.fetchOwner(),
+       });
+      });
+     } else {
+      welcome = guild.channels.cache.get(data.welcomechannel);
+      leave = guild.channels.cache.get(data.leavechannel);
+      data.welcome_enabled ? (welcome_enabled = true) : (welcome_enabled = false);
+      data.leave_enabled ? (leave_enabled = true) : (leave_enabled = false);
+      if (welcome_enabled && welcome) {
+       await sql.query(`INSERT INTO \`welcome\`(\`guildid\`, \`channelid\`) VALUES (${guild.id}, ${welcome.id});`, async function (update_error) {
+        if (update_error) console.log(update_error);
+       });
+      }
+      if (leave_enabled && leave) {
+       sql.query(`INSERT INTO \`leave\`(\`guildid\`, \`channelid\`) VALUES (${guild.id}, ${leave.id});`, async function (update_error) {
+        if (update_error) console.log(update_error);
+       });
+      }
+      sql.query(`SELECT \`leave\`.\`guildid\` AS \`guild_id\`, \`leave\`.\`channelid\` AS \`leave\`, \`welcome\`.\`channelid\` AS \`welcome\` FROM \`leave\` INNER JOIN \`welcome\` ON \`leave\`.\`guildid\` = \`welcome\`.\`guildid\` WHERE \`leave\`.\`guildid\` =  "${guild.id}";`, async function (update_error, update_results, update_fields) {
+       if (update_error) console.log(update_error);
+       console.log(update_results);
+       renderTemplate(res, req, "/server/messages.ejs", {
+        guild: guild,
+        perms: Permissions,
+        welcome: welcome,
+        leave: leave,
+        alert: "Successfully updated channels! ✅",
+        csrfToken: req.csrfToken(),
+        guild_owner: await guild.fetchOwner(),
+       });
+      });
+     }
+    });
+   }
   });
 
   // 404

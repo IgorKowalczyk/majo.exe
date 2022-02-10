@@ -585,12 +585,19 @@ li {
 
 .icon-and-name {
  display: flex;
- flex-flow: row wrap;
+ flex-flow: unset;
  -webkit-box-align: center;
  align-items: center;
  -webkit-box-pack: start;
  justify-content: flex-start;
  margin-left: -20px;
+ overflow-y: scroll;
+ white-space: nowrap;
+ scrollbar-width: none;
+}
+
+.icon-and-name::-webkit-scrollbar {
+ display: none;
 }
 
 .guild-name {
@@ -1292,4 +1299,8 @@ input[type="switch"] {
 }
 .switch-uQvapcxk input {
  display: none;
+}
+
+.server-name {
+ text-align: center;
 }

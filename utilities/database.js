@@ -19,7 +19,7 @@ sql.connect((err) => {
  if (err && config.mysql_errors == true) {
   throw new Error("[SQL] Impossible to connect to MySQL server. Code: " + err.code);
  } else {
-  console.log(chalk.bold(chalk.green.bold("> ") + chalk.blue.bold("[SQL]")) + chalk.cyan.bold(" Connected to the MySQL server! Connection ID: ") + chalk.blue.bold.underline(sql.threadId));
+  console.log(chalk.bold(chalk.white.bold("> ") + chalk.blue.bold("[SQL]")) + chalk.cyan.bold(" Connected to the MySQL server! Connection ID: ") + chalk.blue.bold.underline(sql.threadId));
  }
 });
 

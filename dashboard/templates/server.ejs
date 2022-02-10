@@ -91,8 +91,9 @@ close_banner.addEventListener("click", function () {
       <p class="heading">Boosts</p>
      </div>
     </div>
+         <% owner_str = guild_owner.user.username.toString() %>
 <p class="server-members sinfo"><%- include('includes/icons/members.ejs') %> Members: <%= guild.memberCount %>/<%= guild.maximumMembers %>
-<p class="server-owner sinfo" title="ID: <%= guild.ownerId %>"><%- include('includes/icons/owner.ejs') %> Owner: <%= guild_owner.user.username %>#<%= guild_owner.user.discriminator %></p>
+<p class="server-owner sinfo" title="ID: <%= guild.ownerId %>"><%- include('includes/icons/owner.ejs') %> Owner: <%= owner_str.substring(0, 11) + (owner_str.length > 11 ? "..." : "") %>#<%= guild_owner.user.discriminator %></p>
 <p class="server-time sinfo" title="<%= guild.createdAt.toUTCString().substr(0, 16)%>"><%- include('includes/icons/date.ejs') %> Created: <%= checkdays(guild.createdAt) %></p>
 <p class="region sinfo"><%- include('includes/icons/location.ejs') %> Location: <%= guild.preferredLocale
  %></p>
