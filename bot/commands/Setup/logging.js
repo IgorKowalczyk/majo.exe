@@ -88,7 +88,7 @@ module.exports = {
      } else {
       const embed = new MessageEmbed() // Prettier
        .setColor("GREEN")
-       .setDescription(`${client.bot_emojis.error} | You haven't configured logs on this server yet, run \`${prefix} logging [channel]\` to configure logging!`);
+       .setDescription(`${client.bot_emojis.error} | You haven't configured logs on this server yet, run \`${client.prefix} logging [channel]\` to configure logging!`);
       return message.reply({ embeds: [embed] });
      }
     });
