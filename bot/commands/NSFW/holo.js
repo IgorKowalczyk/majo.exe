@@ -2,11 +2,11 @@ const { MessageEmbed } = require("discord.js");
 const fetch = require("node-fetch");
 
 module.exports = {
- name: "femdom",
+ name: "holo",
  aliases: [],
- description: "Display a random femdom image/gif",
+ description: "Display a random holo image/gif",
  category: "NSFW",
- usage: "femdom",
+ usage: "holo",
  run: async (client, message, args) => {
   (async () => {
    try {
@@ -25,17 +25,17 @@ module.exports = {
       .setImage("https://media.discordapp.net/attachments/721019707607482409/855827123616481300/nsfw.gif");
      return message.reply({ embeds: [nsfwembed] });
     }
-    const response = await fetch("https://nekos.life/api/v2/img/femdom");
+    const response = await fetch("http://api.nekos.fun:8080/api/holo");
     const body = await response.json();
     const embed = new MessageEmbed() // Prettier
      .setTitle(
-      ":smirk: Femdom",
+      ":smirk: Holo",
       message.guild.iconURL({
        dynamic: true,
        format: "png",
       })
      )
-     .setImage(body.url)
+     .setImage(body.image)
      .setColor("RANDOM")
      .setFooter({
       text: `Requested by ${message.author.username}`,
@@ -46,7 +46,7 @@ module.exports = {
       }),
      })
      .setTimestamp()
-     .setURL(body.url);
+     .setURL(body.image);
     message.reply({ embeds: [embed] });
    } catch (err) {
     console.log(err);

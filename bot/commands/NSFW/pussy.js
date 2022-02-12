@@ -2,11 +2,11 @@ const { MessageEmbed } = require("discord.js");
 const fetch = require("node-fetch");
 
 module.exports = {
- name: "classic",
+ name: "pussy",
  aliases: [],
- description: "Display a random classic porn image/gif",
+ description: "Display a random pussy image/gif",
  category: "NSFW",
- usage: "classic",
+ usage: "pussy",
  run: async (client, message, args) => {
   (async () => {
    try {
@@ -25,11 +25,11 @@ module.exports = {
       .setImage("https://media.discordapp.net/attachments/721019707607482409/855827123616481300/nsfw.gif");
      return message.reply({ embeds: [nsfwembed] });
     }
-    const response = await fetch("http://api.nekos.fun:8080/api/4k");
+    const response = await fetch("http://api.nekos.fun:8080/api/pussy");
     const body = await response.json();
     const embed = new MessageEmbed() // Prettier
      .setTitle(
-      ":smirk: Classic",
+      ":smirk: Pussy",
       message.guild.iconURL({
        dynamic: true,
        format: "png",

@@ -1,12 +1,12 @@
 const { MessageEmbed, MessageAttachment } = require("discord.js");
-const canvacord = require("canvacord");
+const AmeClient = require("amethyste-api");
+const AmeAPI = new AmeClient(process.env.AMEAPI);
 
 module.exports = {
- name: "facepalm",
- aliases: [],
- description: "🤦 Creates facepalm image",
+ name: "fire",
+ description: "🔥 Burns the users avatar",
  category: "Image",
- usage: "facepalm [user]",
+ usage: "fire [user]",
  options: [
   {
    name: "user",
@@ -23,14 +23,13 @@ module.exports = {
     .setDescription(`${client.bot_emojis.loading} | Please wait... I'm generating your image`);
    interaction.followUp({ embeds: [wait] }).then((msg) => {
     (async () => {
-     const facepalm = await canvacord.Canvas.facepalm(
-      member.user.displayAvatarURL({
-       dynamic: false,
+     const buffer = await AmeAPI.generate("fire", {
+      url: User.user.displayAvatarURL({
        format: "png",
        size: 2048,
-      })
-     );
-     const attachment = new MessageAttachment(facepalm, "facepalm.png");
+      }),
+     });
+     const attachment = new MessageAttachment(buffer, "fire.png");
      msg.edit({ embeds: [], files: [attachment] });
     })();
    });

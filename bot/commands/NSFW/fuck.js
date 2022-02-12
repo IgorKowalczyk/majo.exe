@@ -35,7 +35,7 @@ module.exports = {
     if (user == client.user) {
      return client.createError(message, "😏 | Oh, you tried to fuck me but u can't... XD Im not real... But I can fuck you, Can I?");
     }
-    const response = await fetch("https://nekos.life/api/v2/img/anal");
+    const response = await fetch("http://api.nekos.fun:8080/api/anal");
     const body = await response.json();
     const embed = new MessageEmbed() // Prettier
      .setTitle(
@@ -45,7 +45,7 @@ module.exports = {
        format: "png",
       })
      )
-     .setImage(body.url)
+     .setImage(body.image)
      .setColor("RANDOM")
      .setFooter({
       text: `Requested by ${message.author.username}`,
@@ -56,7 +56,7 @@ module.exports = {
       }),
      })
      .setTimestamp()
-     .setURL(body.url);
+     .setURL(body.image);
     message.reply({ embeds: [embed] });
    } catch (err) {
     console.log(err);
