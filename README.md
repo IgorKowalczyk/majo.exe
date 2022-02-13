@@ -118,8 +118,6 @@ Go to [this link](https://discord.com/oauth2/authorize/?permissions=4294967287&s
 | API Endpoint (`/api`) | Values | Response (`json`) | Conditions | Error Codes |
 |---|---|---|---|---|
 | `/` | `None` | `Endpoints list` | `None` | `None` |
-| `/v1/info/user/:ID` | `userID` | `User Object` | `None` | `1 / Any Discord Error` |
-| `/v1/info/guild/:ID` | `guildID` | `Guild Object` | `Majo.exe Guild` | `2 / Any Discord Error` |
 | `/v1/info/bot_info` | `None` | `JSON Object` | `None` | `None` |
 | `/v1/fun/cat_fact` | `None` | `JSON Object` | `None` | `None` |
 > Note: Any other endpoint will return error code `0`
