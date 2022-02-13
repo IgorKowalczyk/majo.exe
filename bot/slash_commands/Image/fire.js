@@ -24,7 +24,7 @@ module.exports = {
    interaction.followUp({ embeds: [wait] }).then((msg) => {
     (async () => {
      const buffer = await AmeAPI.generate("fire", {
-      url: User.user.displayAvatarURL({
+      url: member.user.displayAvatarURL({
        format: "png",
        size: 2048,
       }),
