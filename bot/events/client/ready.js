@@ -7,6 +7,8 @@ module.exports = async (client) => {
   function capitalize(string) {
    return string.charAt(0).toUpperCase() + string.slice(1);
   }
+     // Todo: Allow dynamic strings
+  client.status = await require("../../../config/status_config");
   console.log(chalk.bold(chalk.green.bold("> ") + chalk.blue.bold(`[${client.user.username.toUpperCase().split(" ")[0]}]`)) + chalk.cyan.bold(" Loading slash commands... Please wait"));
   await require("../../handlers/slash_command")(client);
   console.log(chalk.bold(chalk.green.bold("> ") + chalk.blue.bold(`[${client.user.username.toUpperCase().split(" ")[0]}]`)) + chalk.cyan.bold(" Successfully loaded " + chalk.blue.underline(`${client.slash_commands.size}`) + " slash commands! (/)"));
@@ -23,8 +25,8 @@ module.exports = async (client) => {
   console.log(chalk.bold(chalk.green.bold("> ") + chalk.blue.bold(`[${client.user.username.toUpperCase().split(" ")[0]}]`)) + chalk.bold.cyan(" Client connected! Logged to Discord as ") + chalk.bold.blue.underline(client.user.tag));
   require("../../../utilities/anti-crash")(client);
   if (!process.env.STATUS_WEBHOOK) throw new Error("[HOST] You need to provide Discord Status Webhook URL in .env - STATUS_WEBHOOK=YOUR_WEBHOOK_URL");
-  const statuswebhook = new WebhookClient({ url: process.env.STATUS_WEBHOOK });
-  const status = new MessageEmbed() // Prettier
+  const status_webhook = new WebhookClient({ url: process.env.STATUS_WEBHOOK });
+  const status_embed = new MessageEmbed() // Prettier
    .setColor("GREEN")
    .setTimestamp()
    .setAuthor({ name: `${capitalize(client.user.username)} is online!`, iconURL: client.user.displayAvatarURL() })
@@ -32,91 +34,41 @@ module.exports = async (client) => {
    .setDescription(`>>> Guilds: \`${client.guilds.cache.size} servers\`
    Members: \`${client.guilds.cache.reduce((a, g) => a + g.memberCount, 0)} members\`
    Logged at: <t:${moment(new Date()).unix()}>`);
-  statuswebhook.send({
+  status_webhook.send({
    // Prettier
    username: capitalize(client.user.username) + " Status",
    avatarURL: client.user.displayAvatarURL(),
-   embeds: [status],
+   embeds: [status_embed],
   });
   setInterval(() => {
-   const emojis = ["😆", "😄", "😎", "😂", "🥳", "😘", "😜", "😁", "😉", "🥰", "😍", "🤯", "🤩", "😇", "😊", "☺️", "😌", "😋", "😳", "😚", "😏", "😱", "🥵", "😶‍🌫️", "🤕", "😴", "( ͡° ͜ʖ ͡°)"]; // Smirk is here becase of Luna_CatArt#4514 idea XD
-   const emoji = emojis[Math.floor(Math.random() * emojis.length)];
-   const statuslist = [
-    {
-     msg: `outside (you know who does that?) ${emoji}`,
-     type: "PLAYING",
-    },
-    {
-     msg: `with your heart 💔`,
-     type: "PLAYING",
-    },
-    {
-     msg: `with over ${client.guilds.cache.reduce((a, g) => a + g.memberCount, 0)} users ${emoji}`,
-     type: "PLAYING",
-    },
-    {
-     msg: `the haters hate ${emoji}`,
-     type: "WATCHING",
-    },
-    {
-     msg: `you (turn around) 🔪`,
-     type: "WATCHING",
-    },
-    {
-     msg: `grass grow 🌱`,
-     type: "WATCHING",
-    },
-    {
-     msg: `over ${client.guilds.cache.size} servers ${emoji}`,
-     type: "WATCHING",
-    },
-    {
-     msg: `Déjà vu 🎶`,
-     type: "WATCHING",
-    },
-    {
-     msg: `the world crumble 🤯`,
-     type: "WATCHING",
-    },
-    {
-     msg: `over you from above 👼`,
-     type: "WATCHING",
-    },
-    {
-     msg: `your conversations ${emoji}`,
-     type: "LISTENING",
-    },
-    {
-     msg: `Mahou Shoujo Site ${emoji}`,
-     type: "WATCHING",
-    },
-    {
-     msg: `Youtube ${emoji}`,
-     type: "WATCHING",
-    },
-    {
-     msg: `exploits ⛔`,
-     type: "WATCHING",
-    },
-    {
-     msg: `new slash commands (/)`,
-     type: "WATCHING",
-    },
-   ];
-   const random = Math.floor(Math.random() * (statuslist.length - 1) + 1);
-   client.user.setStatus(client.additional_config.display_status);
-   if (client.additional_config.rickroll == true) {
-    client.user.setActivity(statuslist[random].msg, {
-     type: "STREAMING",
-     url: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
-    });
-   } else {
-    client.user.setActivity(statuslist[random].msg, {
-     type: statuslist[random].type,
+   const emoji = client.status.emojis[Math.floor(Math.random() * client.status.emojis.length)];
+   if(client.status.options.type == "dynamic") {
+   //const today = moment().format("MM-DD");
+   const today = "02-15";
+   const special_message = client.status.dates[`${today}`];
+   if(special_message) {
+    const motd = special_message[Math.floor(Math.random() * special_message.length)]
+    if(motd.message && motd.type) {
+    client.user.setActivity(motd.message, {
+     type: motd.type,
     });
    }
-
-   if (client.config.advanved_logging == true) console.log(chalk.bold(chalk.green.bold("> ") + chalk.blue.bold(`[${client.user.username.toUpperCase().split(" ")[0]}]`)) + chalk.cyan.bold(" Successfully changed client status"));
+  } else {
+   const dynamic_message = client.status.dynamic[Math.floor(Math.random() * client.status.dynamic.length)];
+   // Todo: Allow dynamic strings
+   const message = dynamic_message.message.replaceAll("{{ emoji }}", emoji).replaceAll("{{ members }}", client.guilds.cache.reduce((a, g) => a + g.memberCount, 0)).replaceAll("{{ servers }}", client.guilds.cache.size)
+   client.user.setActivity(message, {
+     type: dynamic_message.type,
+    });
+  }
+ } else {
+ if(client.status.static.message && client.status.static.type) {
+  client.user.setActivity(client.status.static.message, {
+   type: client.status.static.type,
+  });
+ }
+ }
+ if (client.config.advanved_logging == true) console.log(chalk.bold(chalk.green.bold("> ") + chalk.blue.bold(`[${client.user.username.toUpperCase().split(" ")[0]}]`)) + chalk.cyan.bold(" Successfully changed client status"));
   }, 10000);
   if (client.additional_config.pm2.enabled == true) {
    if (client.additional_config.pm2.metrics.ws_ping == true) {
