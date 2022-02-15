@@ -7,7 +7,7 @@ module.exports = async (client) => {
   function capitalize(string) {
    return string.charAt(0).toUpperCase() + string.slice(1);
   }
-     // Todo: Allow dynamic strings
+  // Todo: Allow dynamic strings
   client.status = await require("../../../config/status_config");
   console.log(chalk.bold(chalk.green.bold("> ") + chalk.blue.bold(`[${client.user.username.toUpperCase().split(" ")[0]}]`)) + chalk.cyan.bold(" Loading slash commands... Please wait"));
   await require("../../handlers/slash_command")(client);
@@ -42,33 +42,38 @@ module.exports = async (client) => {
   });
   setInterval(() => {
    const emoji = client.status.emojis[Math.floor(Math.random() * client.status.emojis.length)];
-   if(client.status.options.type == "dynamic") {
-   //const today = moment().format("MM-DD");
-   const today = "02-15";
-   const special_message = client.status.dates[`${today}`];
-   if(special_message) {
-    const motd = special_message[Math.floor(Math.random() * special_message.length)]
-    if(motd.message && motd.type) {
-    client.user.setActivity(motd.message, {
-     type: motd.type,
-    });
+   if (client.status.options.type == "dynamic") {
+    const today = moment().format("MM-DD");
+    const special_message = client.status.dates[today];
+    if (special_message) {
+     const motd = special_message[Math.floor(Math.random() * special_message.length)];
+     if (motd.message && motd.type) {
+      client.user.setActivity(motd.message, {
+       type: motd.type,
+      });
+     }
+    } else {
+     const dynamic_message = client.status.dynamic[Math.floor(Math.random() * client.status.dynamic.length)];
+     // Todo: Allow dynamic strings
+     const message = dynamic_message.message
+      .replaceAll("{{ emoji }}", emoji)
+      .replaceAll(
+       "{{ members }}",
+       client.guilds.cache.reduce((a, g) => a + g.memberCount, 0)
+      )
+      .replaceAll("{{ servers }}", client.guilds.cache.size);
+     client.user.setActivity(message, {
+      type: dynamic_message.type,
+     });
+    }
+   } else {
+    if (client.status.static.message && client.status.static.type) {
+     client.user.setActivity(client.status.static.message, {
+      type: client.status.static.type,
+     });
+    }
    }
-  } else {
-   const dynamic_message = client.status.dynamic[Math.floor(Math.random() * client.status.dynamic.length)];
-   // Todo: Allow dynamic strings
-   const message = dynamic_message.message.replaceAll("{{ emoji }}", emoji).replaceAll("{{ members }}", client.guilds.cache.reduce((a, g) => a + g.memberCount, 0)).replaceAll("{{ servers }}", client.guilds.cache.size)
-   client.user.setActivity(message, {
-     type: dynamic_message.type,
-    });
-  }
- } else {
- if(client.status.static.message && client.status.static.type) {
-  client.user.setActivity(client.status.static.message, {
-   type: client.status.static.type,
-  });
- }
- }
- if (client.config.advanved_logging == true) console.log(chalk.bold(chalk.green.bold("> ") + chalk.blue.bold(`[${client.user.username.toUpperCase().split(" ")[0]}]`)) + chalk.cyan.bold(" Successfully changed client status"));
+   if (client.config.advanved_logging == true) console.log(chalk.bold(chalk.green.bold("> ") + chalk.blue.bold(`[${client.user.username.toUpperCase().split(" ")[0]}]`)) + chalk.cyan.bold(" Successfully changed client status"));
   }, 10000);
   if (client.additional_config.pm2.enabled == true) {
    if (client.additional_config.pm2.metrics.ws_ping == true) {
