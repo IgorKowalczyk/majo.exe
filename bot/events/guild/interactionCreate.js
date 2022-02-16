@@ -1,9 +1,11 @@
-// const Discord = require("discord.js");
+const { MessageEmbed } = require("discord.js");
 
 module.exports = async (client, interaction) => {
  if (interaction.isCommand()) {
+  if(interaction.guild) {
   if (!interaction.guild.me.permissions.has("EMBED_LINKS")) return;
   if (!interaction.guild.me.permissions.has("SEND_MESSAGES")) return;
+  }
   await interaction.deferReply({ ephemeral: false }).catch((err) => {
    console.log(err);
   });
@@ -17,6 +19,13 @@ module.exports = async (client, interaction) => {
      if (x.value) args.push(x.value);
     });
    } else if (option.value) args.push(option.value);
+  }
+  if(!cmd.allow_dm) cmd.allow_dm = false
+  if(!interaction.guild && cmd.allow_dm == false) {
+   const only_dm = new MessageEmbed()
+   .setColor("RED")
+   .setDescription("❌ | This command can only be used on servers!")
+   return interaction.followUp({ ephemeral: true, embeds: [only_dm] });
   }
   cmd.run(client, interaction, args);
   if (client.additional_config.pm2.enabled == true && client.additional_config.pm2.metrics.slash_commands_used == true) {

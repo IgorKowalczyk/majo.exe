@@ -5,6 +5,7 @@ module.exports = {
  description: "👾 Displays total servers where I'm",
  usage: "/servers",
  category: "General",
+ allow_dm: true,
  run: async (client, interaction, args) => {
   try {
    const embed = new MessageEmbed() // Prettier
