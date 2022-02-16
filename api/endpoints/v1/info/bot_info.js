@@ -13,12 +13,12 @@ module.exports = {
    prefix: process.env.PREFIX,
    channels: {
     total: client.channels.cache.size,
-    voice: client.channels.cache.filter(c => c.type === 'GUILD_VOICE').size,
-    text: client.channels.cache.filter(c => c.type === 'GUILD_TEXT').size,
-    category: client.channels.cache.filter(c => c.type === 'GUILD_CATEGORY').size,
-    news: client.channels.cache.filter(c => c.type === 'GUILD_NEWS').size,
-    stage: client.channels.cache.filter(c => c.type === 'GUILD_STAGE_VOICE').size,
-    unknown: client.channels.cache.filter(c => c.type === 'UNKNOWN').size,
+    voice: client.channels.cache.filter((c) => c.type === "GUILD_VOICE").size,
+    text: client.channels.cache.filter((c) => c.type === "GUILD_TEXT").size,
+    category: client.channels.cache.filter((c) => c.type === "GUILD_CATEGORY").size,
+    news: client.channels.cache.filter((c) => c.type === "GUILD_NEWS").size,
+    stage: client.channels.cache.filter((c) => c.type === "GUILD_STAGE_VOICE").size,
+    unknown: client.channels.cache.filter((c) => c.type === "UNKNOWN").size,
    },
    uptime: client.uptime,
   };

@@ -23,7 +23,6 @@ module.exports = {
   },
  ],
  run: async (client, interaction, args) => {
-  console.log(interaction);
   try {
    if (interaction.user.id !== client.config.owner_id) {
     return client.createSlashError(interaction, `${client.bot_emojis.error} | You do not have permission to run this command (Only owner of the bot can run this)!`);
