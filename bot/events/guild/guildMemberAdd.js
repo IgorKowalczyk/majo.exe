@@ -9,43 +9,33 @@ module.exports = async (client, member) => {
    if (serror) console.log(serror);
    if (!sresults[0]) {
     const current_month = moment().daysInMonth();
-    const stats = new Array();
-    const empty_stats = new Array();
+    const stats = {};
+    const empty_stats = {};
     for (let i = 0; i <= current_month; i++) {
      stats[i] = 0;
      empty_stats[i] = 0;
     }
-    let current_day_in_week = moment().weekday();
-    if (current_day_in_week == 1) {
-     stats[0] = 1;
-    } else {
-     stats[current_day_in_week - 1] = 1;
-    }
-    console.log(stats.length);
-    await sql.query(`INSERT INTO guild_stats (guild_id, joins, leaves, last_updated) VALUES ('${member.guild.id}', '${stats}', '${empty_stats}', '${moment(new Date()).format("YYYY-MM-DD")}')`, function (sserror, ssresults, ssfields) {
+    let current_day = moment().date();
+    stats[current_day] = 1;
+    await sql.query(`INSERT INTO guild_stats (guild_id, joins, leaves, last_updated) VALUES ('${member.guild.id}', '${JSON.stringify(stats)}', '${JSON.stringify(empty_stats)}', '${moment(new Date()).format("YYYY-MM-DD")}')`, function (sserror, ssresults, ssfields) {
      if (sserror) console.log(sserror);
     });
    } else {
-    let array_stats = sresults[0].res.split(",");
-    let curr_stats = moment().weekday();
+    let array_stats = JSON.parse(sresults[0].res);
+    let current_day = moment().date();
     const current_month = moment().daysInMonth();
     let last_updated = sresults[0].ls;
     if (!moment(last_updated).isSame(new Date(), "month")) {
-     const empty_stats = new Array();
+     const empty_stats = {};
      for (let i = 0; i <= current_month; i++) {
       empty_stats[i] = 0;
      }
-     sql.query(`UPDATE guild_stats SET leaves = '${empty_stats}', joins = '${empty_stats}', last_updated = '${moment(new Date()).format("YYYY-MM-DD")}' WHERE guild_id = ${member.guild.id}`, function (fixerror, fixresults, fixfields) {
+     sql.query(`UPDATE guild_stats SET leaves = '${JSON.stringify(empty_stats)}', joins = '${JSON.stringify(empty_stats)}', last_updated = '${moment(new Date()).format("YYYY-MM-DD")}' WHERE guild_id = ${member.guild.id}`, function (fixerror, fixresults, fixfields) {
       if (fixerror) console.log(fixerror);
      });
     }
-    if (curr_stats == 1) {
-     array_stats[0]++;
-    } else {
-     let day = curr_stats - 1;
-     array_stats[day]++;
-    }
-    sql.query(`UPDATE guild_stats SET joins = '${array_stats}', last_updated = '${moment(new Date()).format("YYYY-MM-DD")}' WHERE guild_id = ${member.guild.id}`, function (ferror, fresults, fields) {
+    array_stats[current_day]++;
+    sql.query(`UPDATE guild_stats SET joins = '${JSON.stringify(array_stats)}', last_updated = '${moment(new Date()).format("YYYY-MM-DD")}' WHERE guild_id = ${member.guild.id}`, function (ferror, fresults, fields) {
      if (ferror) console.log(ferror);
     });
    }

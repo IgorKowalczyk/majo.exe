@@ -6,7 +6,7 @@ sql.query("CREATE TABLE IF NOT EXISTS `guild_settings` ( `guild_id` BIGINT(64) N
  console.log(chalk.bold(chalk.white.bold("> ") + chalk.blue.bold("[SQL]")) + chalk.cyan.bold(" Fetched table ") + chalk.blue.underline('"guild_settings"') + chalk.cyan.bold(" | Status: ") + chalk.blue.bold("200"));
 });
 
-sql.query("CREATE TABLE IF NOT EXISTS `guild_stats` ( `guild_id` BIGINT(64) NOT NULL , `joins` TEXT  NULL, `leaves` TEXT NULL, `last_updated` DATE NOT NULL, PRIMARY KEY (`guild_id`));", function (error) {
+sql.query("CREATE TABLE IF NOT EXISTS `guild_stats` ( `guild_id` BIGINT(64) NOT NULL , `joins` JSON NULL, `leaves` JSON NULL, `last_updated` DATE NOT NULL, PRIMARY KEY (`guild_id`));", function (error) {
  if (error) throw new Error(error);
  console.log(chalk.bold(chalk.white.bold("> ") + chalk.blue.bold("[SQL]")) + chalk.cyan.bold(" Fetched table ") + chalk.blue.underline('"guild_stats"') + chalk.cyan.bold(" | Status: ") + chalk.blue.bold("200"));
 });
