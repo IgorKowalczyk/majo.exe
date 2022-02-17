@@ -6,7 +6,7 @@ module.exports = {
  name: "fire",
  description: "🔥 Burns the users avatar",
  category: "Image",
- usage: "fire [user]",
+ usage: "/fire [user]",
  options: [
   {
    name: "user",

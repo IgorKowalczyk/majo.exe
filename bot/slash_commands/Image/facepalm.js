@@ -6,7 +6,7 @@ module.exports = {
  aliases: [],
  description: "🤦 Creates facepalm image",
  category: "Image",
- usage: "facepalm [user]",
+ usage: "/facepalm [user]",
  options: [
   {
    name: "user",

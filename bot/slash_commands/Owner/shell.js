@@ -46,7 +46,7 @@ module.exports = {
      const embed = new MessageEmbed() // Prettier
       .setColor("RED")
       .setDescrption(`\`\`\`${err.toString().slice(0, 1000) || "Unknown error!"}\`\`\``);
-     return message.reply({ embeds: [embed] });
+     return interaction.followUp({ embeds: [embed] });
     }
     const embed = new MessageEmbed() // Prettier
      .setColor("#4f545c")
