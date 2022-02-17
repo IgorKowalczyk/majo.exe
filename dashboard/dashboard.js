@@ -169,7 +169,7 @@ client.on("ready", () => {
     }
    });
   })();
-
+  const sql = require("../utilities/database");
   console.log(chalk.bold(chalk.bold.magenta("> ") + chalk.blue.bold("[DASH]")) + chalk.cyan.bold(" Setting up dashboard endpoints..."));
   const checkAuth = (req, res, next) => {
    if (req.isAuthenticated()) return next();
@@ -428,11 +428,35 @@ client.on("ready", () => {
    const member = guild.members.cache.get(req.user.id);
    if (!member) return res.redirect("/error?message=no+member");
    if (!member.permissions.has("MANAGE_GUILD")) return res.redirect("/error?message=missing+perm");
-   renderTemplate(res, req, "server.ejs", {
-    guild: guild,
-    perms: Permissions,
-    guild_owner: await guild.fetchOwner(),
-    csrfToken: req.csrfToken(),
+   sql.query(`SELECT \`joins\` as 'join', \`leaves\` as 'leave', \`last_updated\` as 'ls' from \`guild_stats\` WHERE \`guild_id\` = ${guild.id}`, async function (serror, results, sfields) {
+    if (serror) console.log(serror);
+    if (results[0]) {
+     renderTemplate(res, req, "server.ejs", {
+      guild: guild,
+      perms: Permissions,
+      joins: results[0].join,
+      leaves: results[0].leave,
+      guild_owner: await guild.fetchOwner(),
+      csrfToken: req.csrfToken(),
+     });
+    } else {
+     const current_month = moment().daysInMonth();
+     const empty_stats = {};
+     for (let i = 0; i <= current_month; i++) {
+      empty_stats[i] = 0;
+     }
+     sql.query(`INSERT INTO guild_stats (guild_id, joins, leaves, last_updated) VALUES ('${guild.id}', '${JSON.stringify(empty_stats)}', '${JSON.stringify(empty_stats)}', '${moment(new Date()).format("YYYY-MM-DD")}')`, function (sserror, ssresults, ssfields) {
+      if (sserror) console.log(sserror);
+     });
+     renderTemplate(res, req, "server.ejs", {
+      guild: guild,
+      perms: Permissions,
+      joins: empty_stats,
+      leaves: empty_stats,
+      guild_owner: await guild.fetchOwner(),
+      csrfToken: req.csrfToken(),
+     });
+    }
    });
   });
 
@@ -559,7 +583,6 @@ client.on("ready", () => {
    const member = guild.members.cache.get(req.user.id);
    if (!member) return res.redirect("/error?message=no+member");
    if (!member.permissions.has("MANAGE_GUILD")) return res.redirect("/error?message=missing+perm");
-   const sql = require("../utilities/database");
    const sqlquery = "SELECT `leave`.`guildid` AS `guild_id`, `leave`.`channelid` AS `leave`, `welcome`.`channelid` AS `welcome` FROM `leave` INNER JOIN welcome ON `leave`.`guildid` = `welcome`.`guildid` WHERE `leave`.guildid = " + guild.id;
    await sql.query(sqlquery, async function (error, results, fields) {
     if (results[0]) {
@@ -590,8 +613,6 @@ client.on("ready", () => {
    if (!member.permissions.has("MANAGE_GUILD")) return res.redirect("/error?message=missing+perm");
    const data = req.body;
    if (data) {
-    console.log(data);
-    const sql = require("../utilities/database");
     sql.query(`SELECT \`leave\`.\`guildid\` AS \`guild_id\`, \`leave\`.\`channelid\` AS \`leave\`, \`welcome\`.\`channelid\` AS \`welcome\` FROM \`leave\` INNER JOIN \`welcome\` ON \`leave\`.\`guildid\` = \`welcome\`.\`guildid\` WHERE \`leave\`.\`guildid\` = ${guild.id}`, async function (error, results, fields) {
      if (results[0]) {
       welcome = guild.channels.cache.get(data.welcomechannel);
