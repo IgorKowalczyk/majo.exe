@@ -435,6 +435,7 @@ client.on("ready", () => {
       guild: guild,
       perms: Permissions,
       joins: results[0].join,
+      moment: moment,
       leaves: results[0].leave,
       guild_owner: await guild.fetchOwner(),
       csrfToken: req.csrfToken(),
@@ -453,6 +454,7 @@ client.on("ready", () => {
       perms: Permissions,
       joins: empty_stats,
       leaves: empty_stats,
+      moment: moment,
       guild_owner: await guild.fetchOwner(),
       csrfToken: req.csrfToken(),
      });

@@ -101,4 +101,122 @@ close_banner.addEventListener("click", function () {
 
 </div>
 
+<div class="servers" style="margin: 0 auto; background-color: var(--navbar);">
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<h2>Members flow (This month)</h2>
+  <figure class="highcharts-figure">
+    <div id="container"></div>
+</figure>
+<style>
+  .highcharts-background {
+    fill: none;
+  }
+  .higharts-title {
+    color: #fff !important;
+    fill: #fff !important;
+    font-family: "Poppins" !important;
+  }
+  .highcharts-point {
+    fill: #5865F2;
+    stroke: #5865F2;
+  }
+  .highcharts-graph {
+        stroke: #5865F2;
+  }
+  .highcharts-credits {
+    display: none;
+  }
+  .highcharts-axis-title {
+    fill: #b9bbbe !important;
+    font-family: Poppins !important;
+  }
+  .highcharts-yaxis-grid .highcharts-grid-line, .highcharts-axis-line, .highcharts-tick {
+stroke: rgb(64 71 82);
+    stroke-width: 1.5;
+  }
+  .highcharts-axis-labels .highcharts-xaxis-labels {
+    font-family: Poppins !important;
+    fill: #b9bbbe;
+    font-size: 12px
+  }
+  .highcharts-legend-item .highcharts-line-series .highcharts-color-0 .highcharts-series-0 {
+    font-family: 'Poppins';
+    fill: unset;
+    stroke: unset;
+    font-weight: 100;
+  }
+  .highcharts-tooltip .highcharts-tooltip-box {
+    fill: #1e2125;
+  }
+  text {
+    font-family: 'Poppins';
+    fill: #c0c0c0 !important;
+  }
+  .highcharts-axis-line {
+    display: none !important;
+  }
+</style>
+
+<script>
+  Highcharts.chart('container', {
+
+    title: {
+        text: null
+    },
+    yAxis: {
+        title: {
+            text: 'Members'
+        }
+      
+    },
+
+    xAxis: {
+            tickInterval: 1,
+      type: 'datetime',
+      dateTimeLabelFormats: {
+        millisecond: '%b %e',
+        second: '%b %e',
+        minute: '%b %e',
+        hour: '%b %e',
+        day: '%b %e',
+        week: '%b %e',
+        month: '%b %e',
+        year: '%b %e'
+      }
+    },
+    legend: {
+        layout: 'vertical',
+        align: 'right',
+        verticalAlign: 'middle'
+    },
+
+    series: [
+      {
+        name: 'Joins',
+        data: [<%= Object.values(JSON.parse(joins)) %>],
+    },
+                         {
+        name: 'Leaves',
+        data: [<%= Object.values(JSON.parse(leaves)) %>]
+    },
+    ],
+
+    responsive: {
+        rules: [{
+            condition: {
+                maxWidth: 500
+            },
+            chartOptions: {
+                legend: {
+                    layout: 'horizontal',
+                    align: 'center',
+                    verticalAlign: 'bottom'
+                }
+            }
+        }]
+    }
+
+});
+  </script>
+  </div>
 <%- include("includes/footer") %>
