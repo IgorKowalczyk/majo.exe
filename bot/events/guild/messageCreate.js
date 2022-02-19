@@ -1,7 +1,6 @@
 const { MessageEmbed, MessageActionRow, MessageButton } = require("discord.js");
 const ms = require("ms");
 const Timeout = new Map();
-const slash_info = new Map();
 const sql = require("../../../utilities/database");
 
 module.exports = async (client, message) => {
@@ -81,38 +80,11 @@ module.exports = async (client, message) => {
     /* ---------------------------- */
     let slash_command_search = client.slash_commands.get(cmd);
     if (slash_command_search) {
-     const slash_key = message.author.id;
-     const slash_found = slash_info.get(slash_key);
-     if (!slash_found) {
-      const slash_row = new MessageActionRow().addComponents(
-       // Prettier
-       new MessageButton() // Prettier
-        .setCustomId("slash_timeout")
-        .setLabel("Dismiss")
-        .setStyle("SECONDARY")
-      );
       const slash_embed = new MessageEmbed() // Prettier
-       .setTitle(`${client.bot_emojis.slash_commands} Try Majo.exe slash commands!`)
-       .setDescription(`>>> Majo.exe will soon switch to slash commands!\nWe are still working on this feature so please be patient :tada:! \n\n*❕Majo.exe will stop responding to normal prefixes <t:1651269660:R>*`)
-       .setColor("#4f545c");
-      message.reply({ embeds: [slash_embed], components: [slash_row] }).then((m) =>
-       setTimeout(() => {
-        if (m.deletable) m.delete();
-       }, 30000)
-      );
-      const filter = (i) => i.customId === "slash_timeout" && i.user.id === message.author.id;
-      const collector = message.channel.createMessageComponentCollector({ filter, time: 30000 });
-      collector.on("collect", async (i) => {
-       if (i.customId === "slash_timeout" && i.user.id === message.author.id) {
-        const update_slash = new MessageEmbed().setTitle(`${client.bot_emojis.slash_commands} Oke!`).setDescription(`>>> You will not receive this notification for the next 12 hours :tada:!`).setColor("GREEN");
-        await i.update({ embeds: [update_slash], components: [] });
-        slash_info.set(slash_key, Date.now());
-        setTimeout(() => {
-         slash_info.delete(slash_key);
-        }, 43200000);
-       }
-      });
-     }
+       .setTitle(`${client.bot_emojis.slash_commands} Please use new slash commands instead!`)
+       .setDescription(`>>> ${client.bot_emojis.slash_commands} **To run new command please use: \`/${cmd}\`**\n\nMajo.exe will soon switch to slash commands!\nWe are still working on this feature so please be patient :tada:! \n\n*❕Majo.exe will stop responding to normal prefixes <t:1651269660:R>*`)
+       .setColor("RED");
+      return message.reply({ embeds: [slash_embed] })
     }
     /* ---------------------------- */
     /* /MIGARTING TO SLASH COMMANDS! */

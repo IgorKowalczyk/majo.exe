@@ -101,13 +101,20 @@ close_banner.addEventListener("click", function () {
 
 </div>
 
-<div class="servers" style="margin: 0 auto; background-color: var(--navbar);">
+<div class="servers stats">
 <script src="https://code.highcharts.com/highcharts.js"></script>
 <h2>Members flow (This month)</h2>
+  <% if(joins && leaves) { %>
   <figure class="highcharts-figure">
-    <div id="container"></div>
+    <div id="container">      <p>No data! Wait a few days for the stats to show up here!</p>
+      <p style="opacity: 0.5">All data is cleared on the first day of the month.</p></div>
 </figure>
 <style>
+  .stats {
+    box-shadow: 0 3px 15px 0 rgba(0, 0, 0, 0.1), 0 1px 3px 0 rgba(0, 0, 0, 0.08);
+    margin: 0 auto;
+    background-color: var(--navbar); 
+  }
   .highcharts-background {
     fill: none;
   }
@@ -156,8 +163,28 @@ stroke: rgb(64 71 82);
     display: none !important;
   }
 </style>
-
+<script src="https://momentjs.com/downloads/moment.js"></script>
 <script>
+let joins = [];
+let leaves = [];
+let joins_array = JSON.parse(JSON.stringify(<%- JSON.parse(JSON.stringify(joins)) %>));
+let leaves_array = JSON.parse(JSON.stringify(<%- JSON.parse(JSON.stringify(leaves)) %>));
+let current_year = moment().year();
+let current_month = moment().month();
+for (let el of Object.entries(joins_array)) {
+ if(el[0].replaceAll("/", "-") == `${moment().year()}-${moment().format('MM')}-${moment().date() + 1}`) break;
+ joins.push([el[0].replaceAll("/", "-"), el[1]])
+}
+for (let el of Object.entries(leaves_array)) {
+ if(el[0].replaceAll("/", "-") == `${moment().year()}-${moment().format('MM')}-${moment().date() + 1}`) break;
+ leaves.push([el[0].replaceAll("/", "-"), el[1]])
+}
+  joins.forEach(function(point) {
+  point[0] = Date.parse(point[0])
+});
+    leaves.forEach(function(point) {
+  point[0] = Date.parse(point[0])
+});
   Highcharts.chart('container', {
 
     title: {
@@ -171,18 +198,20 @@ stroke: rgb(64 71 82);
     },
 
     xAxis: {
-            tickInterval: 1,
+       //  tickInterval: 1,
+   //   startOnTick: true,
+//endOnTick: true,
       type: 'datetime',
-      dateTimeLabelFormats: {
-        millisecond: '%b %e',
-        second: '%b %e',
-        minute: '%b %e',
-        hour: '%b %e',
-        day: '%b %e',
-        week: '%b %e',
-        month: '%b %e',
-        year: '%b %e'
-      }
+  dateTimeLabelFormats: {
+    millisecond: '%b %e',
+    second: '%b %e',
+    minute: '%b %e',
+    hour: '%b %e',
+    day: '%b %e',
+    week: '%b %e',
+    month: '%b %e',
+    year: '%b %e'
+  }
     },
     legend: {
         layout: 'vertical',
@@ -193,11 +222,11 @@ stroke: rgb(64 71 82);
     series: [
       {
         name: 'Joins',
-        data: [<%= Object.values(JSON.parse(joins)) %>],
+        data: joins,
     },
-                         {
+            {
         name: 'Leaves',
-        data: [<%= Object.values(JSON.parse(leaves)) %>]
+        data: leaves,
     },
     ],
 
@@ -218,5 +247,9 @@ stroke: rgb(64 71 82);
 
 });
   </script>
+    <% } else { %>
+      <p>No data! Wait a few days for the stats to show up here!</p>
+      <p style="opacity: 0.5">All data is cleared on the first day of the month.</p>
+      <% } %>
   </div>
 <%- include("includes/footer") %>

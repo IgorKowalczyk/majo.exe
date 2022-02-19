@@ -11,12 +11,12 @@ module.exports = async (client, member) => {
     const current_month = moment().daysInMonth();
     const stats = {};
     const empty_stats = {};
-    for (let i = 0; i <= current_month; i++) {
-     stats[i] = 0;
-     empty_stats[i] = 0;
+    for (let i = 1; i <= current_month; i++) {
+     empty_stats[`${moment().year()}/${moment().format('MM')}/${i}`] = 0;
+     stats[`${moment().year()}/${moment().format('MM')}/${i}`] = 0;
     }
     let current_day = moment().date();
-    stats[current_day] = 1;
+    stats[`${moment().year()}/${moment().format('MM')}/${current_day}`] = 1;
     await sql.query(`INSERT INTO guild_stats (guild_id, joins, leaves, last_updated) VALUES ('${member.guild.id}', '${JSON.stringify(stats)}', '${JSON.stringify(empty_stats)}', '${moment(new Date()).format("YYYY-MM-DD")}')`, function (sserror, ssresults, ssfields) {
      if (sserror) console.log(sserror);
     });
@@ -27,14 +27,14 @@ module.exports = async (client, member) => {
     let last_updated = sresults[0].ls;
     if (!moment(last_updated).isSame(new Date(), "month")) {
      const empty_stats = {};
-     for (let i = 0; i <= current_month; i++) {
-      empty_stats[i] = 0;
+     for (let i = 1; i <= current_month; i++) {
+      empty_stats[`${moment().year()}/${moment().format('MM')}/${i}`] = 0;
      }
      sql.query(`UPDATE guild_stats SET leaves = '${JSON.stringify(empty_stats)}', joins = '${JSON.stringify(empty_stats)}', last_updated = '${moment(new Date()).format("YYYY-MM-DD")}' WHERE guild_id = ${member.guild.id}`, function (fixerror, fixresults, fixfields) {
       if (fixerror) console.log(fixerror);
      });
     }
-    array_stats[current_day]++;
+    array_stats[`${moment().year()}/${moment().format('MM')}/${current_day}`]++;
     sql.query(`UPDATE guild_stats SET joins = '${JSON.stringify(array_stats)}', last_updated = '${moment(new Date()).format("YYYY-MM-DD")}' WHERE guild_id = ${member.guild.id}`, function (ferror, fresults, fields) {
      if (ferror) console.log(ferror);
     });

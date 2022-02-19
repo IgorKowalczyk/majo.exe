@@ -443,8 +443,8 @@ client.on("ready", () => {
     } else {
      const current_month = moment().daysInMonth();
      const empty_stats = {};
-     for (let i = 0; i <= current_month; i++) {
-      empty_stats[i] = 0;
+     for (let i = 1; i <= current_month; i++) {
+      empty_stats[`${moment().year()}/${moment().format("MM")}/${i}`] = 0;
      }
      sql.query(`INSERT INTO guild_stats (guild_id, joins, leaves, last_updated) VALUES ('${guild.id}', '${JSON.stringify(empty_stats)}', '${JSON.stringify(empty_stats)}', '${moment(new Date()).format("YYYY-MM-DD")}')`, function (sserror, ssresults, ssfields) {
       if (sserror) console.log(sserror);
@@ -452,8 +452,8 @@ client.on("ready", () => {
      renderTemplate(res, req, "server.ejs", {
       guild: guild,
       perms: Permissions,
-      joins: empty_stats,
-      leaves: empty_stats,
+      joins: JSON.parse(JSON.stringify(empty_stats)),
+      leaves: JSON.parse(JSON.stringify(empty_stats)),
       moment: moment,
       guild_owner: await guild.fetchOwner(),
       csrfToken: req.csrfToken(),
@@ -669,7 +669,6 @@ client.on("ready", () => {
       }
       sql.query(`SELECT \`leave\`.\`guildid\` AS \`guild_id\`, \`leave\`.\`channelid\` AS \`leave\`, \`welcome\`.\`channelid\` AS \`welcome\` FROM \`leave\` INNER JOIN \`welcome\` ON \`leave\`.\`guildid\` = \`welcome\`.\`guildid\` WHERE \`leave\`.\`guildid\` =  "${guild.id}";`, async function (update_error, update_results, update_fields) {
        if (update_error) console.log(update_error);
-       console.log(update_results);
        renderTemplate(res, req, "/server/messages.ejs", {
         guild: guild,
         perms: Permissions,

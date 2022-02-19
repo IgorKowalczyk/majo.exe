@@ -62,7 +62,7 @@ close_banner.addEventListener("click", function () {
 });
 </script>
 <% }  %>
-<div class="servers">
+<div class="servers" style="background-color: var(--navbar); box-shadow: 0 3px 15px 0 rgba(0, 0, 0, 0.1), 0 1px 3px 0 rgba(0, 0, 0, 0.08);">
 <form role="form" action="/dashboard/<%= guild.id %>/messages" method="POST">
 <h2 style="margin-bottom: 10px;">Join message</h2>
   <% if(welcome) { %>
@@ -159,7 +159,7 @@ checkbox_leave.addEventListener('change', (event) => {
   </div>
 </div>
 
-<div class="servers" style="padding: 20px;">
+<div class="servers" style="padding: 20px; background-color: var(--navbar); box-shadow: 0 3px 15px 0 rgba(0, 0, 0, 0.1), 0 1px 3px 0 rgba(0, 0, 0, 0.08);">
       <h2 style="padding: 0; text-align: center">Examples</h2>
      <h3 style="text-align: center">Join message</h3>
 
