@@ -1,4 +1,4 @@
-<%- include("includes/head", { bot, user, path, description, title: guild.name + " dashboard", twitter, url }) %>
+<%- include("../includes/head", { bot, user, path, description, title: guild.name + " dashboard", twitter, url }) %>
 <link rel="stylesheet" type="text/css" href="<%= secure_connection %><%= domain %>/css/server.css" />
 <% if (guild.icon) {
  iconurl = `https://cdn.discordapp.com/icons/${guild.id}/${guild.icon}`;
@@ -7,7 +7,7 @@
 }
 %>
 <% const checked = "home" %>
-<%- include("includes/side_nav", { bot, user, path, guild_name: guild.name, guild_icon: iconurl, checked_nav: checked, guild }) %>
+<%- include("../includes/side_nav", { bot, user, path, guild_name: guild.name, guild_icon: iconurl, checked_nav: checked, guild }) %>
 <div class="content">
 <% function checkdays(date) {
  let now = new Date();
@@ -92,10 +92,10 @@ close_banner.addEventListener("click", function () {
      </div>
     </div>
          <% owner_str = guild_owner.user.username.toString() %>
-<p class="server-members sinfo"><%- include('includes/icons/members.ejs') %> Members: <%= guild.memberCount %>/<%= guild.maximumMembers %>
-<p class="server-owner sinfo" title="ID: <%= guild.ownerId %>"><%- include('includes/icons/owner.ejs') %> Owner: <%= owner_str.substring(0, 11) + (owner_str.length > 11 ? "..." : "") %>#<%= guild_owner.user.discriminator %></p>
-<p class="server-time sinfo" title="<%= guild.createdAt.toUTCString().substr(0, 16)%>"><%- include('includes/icons/date.ejs') %> Created: <%= checkdays(guild.createdAt) %></p>
-<p class="region sinfo"><%- include('includes/icons/location.ejs') %> Location: <%= guild.preferredLocale
+<p class="server-members sinfo"><%- include('../includes/icons/members.ejs') %> Members: <%= guild.memberCount %>/<%= guild.maximumMembers %>
+<p class="server-owner sinfo" title="ID: <%= guild.ownerId %>"><%- include('../includes/icons/owner.ejs') %> Owner: <%= owner_str.substring(0, 11) + (owner_str.length > 11 ? "..." : "") %>#<%= guild_owner.user.discriminator %></p>
+<p class="server-time sinfo" title="<%= guild.createdAt.toUTCString().substr(0, 16)%>"><%- include('../includes/icons/date.ejs') %> Created: <%= checkdays(guild.createdAt) %></p>
+<p class="region sinfo"><%- include('../includes/icons/location.ejs') %> Location: <%= guild.preferredLocale
  %></p>
 </div>
 
@@ -191,6 +191,7 @@ for (let el of Object.entries(leaves_array)) {
         text: null
     },
     yAxis: {
+      tickInterval: 1,
         title: {
             text: 'Members'
         }
@@ -252,4 +253,4 @@ for (let el of Object.entries(leaves_array)) {
       <p style="opacity: 0.5">All data is cleared on the first day of the month.</p>
       <% } %>
   </div>
-<%- include("includes/footer") %>
+<%- include("../includes/footer") %>

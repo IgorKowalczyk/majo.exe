@@ -431,7 +431,7 @@ client.on("ready", () => {
    sql.query(`SELECT \`joins\` as 'join', \`leaves\` as 'leave', \`last_updated\` as 'ls' from \`guild_stats\` WHERE \`guild_id\` = ${guild.id}`, async function (serror, results, sfields) {
     if (serror) console.log(serror);
     if (results[0]) {
-     renderTemplate(res, req, "server.ejs", {
+     renderTemplate(res, req, "/server/server.ejs", {
       guild: guild,
       perms: Permissions,
       joins: results[0].join,
@@ -449,7 +449,7 @@ client.on("ready", () => {
      sql.query(`INSERT INTO guild_stats (guild_id, joins, leaves, last_updated) VALUES ('${guild.id}', '${JSON.stringify(empty_stats)}', '${JSON.stringify(empty_stats)}', '${moment(new Date()).format("YYYY-MM-DD")}')`, function (sserror, ssresults, ssfields) {
       if (sserror) console.log(sserror);
      });
-     renderTemplate(res, req, "server.ejs", {
+     renderTemplate(res, req, "/server/server.ejs", {
       guild: guild,
       perms: Permissions,
       joins: JSON.parse(JSON.stringify(empty_stats)),
@@ -482,7 +482,7 @@ client.on("ready", () => {
     if (!nickname) nickname = guild.me.nickname || guild.me.user.username;
     await guild.me.setNickname(nickname);
    }
-   await renderTemplate(res, req, "server.ejs", {
+   await renderTemplate(res, req, "/server/server.ejs", {
     guild: guild,
     perms: Permissions,
     alert: "Your changes have been saved! ✅",
