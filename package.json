@@ -1,6 +1,6 @@
 {
   "name": "majo.exe",
-  "version": "3.1.0",
+  "version": "3.1.1",
   "description": "Majo.exe have almost everything - Fun, Memes, Images, Giveaway Moderation, Anime, NSFW and eveb more!. Majo.exe serve over 150 commands!",
   "author": "Igor Kowalczyk [Majonez.exe#3957]",
   "main": "node index.js",

@@ -80,11 +80,11 @@ module.exports = async (client, message) => {
     /* ---------------------------- */
     let slash_command_search = client.slash_commands.get(cmd);
     if (slash_command_search) {
-      const slash_embed = new MessageEmbed() // Prettier
-       .setTitle(`${client.bot_emojis.slash_commands} Please use new slash commands instead!`)
-       .setDescription(`>>> ${client.bot_emojis.slash_commands} **To run new command please use: \`/${cmd}\`**\n\nMajo.exe will soon switch to slash commands!\nWe are still working on this feature so please be patient :tada:! \n\n*❕Majo.exe will stop responding to normal prefixes <t:1651269660:R>*`)
-       .setColor("RED");
-      return message.reply({ embeds: [slash_embed] })
+     const slash_embed = new MessageEmbed() // Prettier
+      .setTitle(`${client.bot_emojis.slash_commands} Please use new slash commands instead!`)
+      .setDescription(`>>> ${client.bot_emojis.slash_commands} **To run new command please use: \`/${cmd}\`**\n\nMajo.exe will soon switch to slash commands!\nWe are still working on this feature so please be patient :tada:! \n\n*❕Majo.exe will stop responding to normal prefixes <t:1651269660:R>*`)
+      .setColor("RED");
+     return message.reply({ embeds: [slash_embed] });
     }
     /* ---------------------------- */
     /* /MIGARTING TO SLASH COMMANDS! */
