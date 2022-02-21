@@ -1,13 +1,13 @@
 const { MessageEmbed, MessageActionRow, MessageButton } = require("discord.js");
 const sql = require("../../../utilities/database");
 const moment = require("moment");
-const date_ping = moment(Date.now()).unix();
 module.exports = {
  name: "ping",
  description: "🏓 Checks Majo.exe response time to Discord",
  usage: "/ping",
  category: "General",
  run: async (client, interaction, args) => {
+  const date_ping = moment(Date.now()).unix();
   try {
    sql.ping(function (err) {
     let ping = moment(Date.now()).unix() - date_ping;
