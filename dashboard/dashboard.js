@@ -482,7 +482,7 @@ client.on("ready", () => {
     if (!nickname) nickname = guild.me.nickname || guild.me.user.username;
     await guild.me.setNickname(nickname);
    }
-sql.query(`SELECT \`joins\` as 'join', \`leaves\` as 'leave', \`last_updated\` as 'ls' from \`guild_stats\` WHERE \`guild_id\` = ${guild.id}`, async function (serror, results, sfields) {
+   sql.query(`SELECT \`joins\` as 'join', \`leaves\` as 'leave', \`last_updated\` as 'ls' from \`guild_stats\` WHERE \`guild_id\` = ${guild.id}`, async function (serror, results, sfields) {
     if (serror) console.log(serror);
     if (results[0]) {
      renderTemplate(res, req, "/server/server.ejs", {
