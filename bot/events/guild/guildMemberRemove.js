@@ -53,7 +53,7 @@ module.exports = async (client, member) => {
     const channel = await member.guild.channels.cache.find((c) => c.id == leavesetup);
     if (!channel) return;
     if (!member.guild) return;
-    Canvas.registerFont(`${process.cwd()}/src/fonts/quicksand-light.ttf`, {
+    await Canvas.registerFont(`${process.cwd()}/src/fonts/quicksand-light.ttf`, {
      family: "Quicksand",
     });
     const canvas = Canvas.createCanvas(1772, 633);

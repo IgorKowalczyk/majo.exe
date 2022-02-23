@@ -89,7 +89,7 @@ module.exports = {
        size: 2048,
       })
      )
-     .setColor("#4f545c");
+     .setColor("#5865F2");
     if (client.additional_config.help_embed.display_news == true && client.additional_config.help_embed.news_title && client.additional_config.help_embed.news) {
      embed.addField(`${client.additional_config.help_embed.news_title}`, `${client.additional_config.help_embed.news}`);
     }
@@ -138,7 +138,7 @@ module.exports = {
         .setAuthor({ name: `${client.user.username} Help`, iconURL: client.user.displayAvatarURL() })
         .setDescription(`>${catts}`)
         //.addFields(catts)
-        .setColor("#4f545c")
+        .setColor("#5865F2")
         .setThumbnail(
          client.user.displayAvatarURL({
           dynamic: true,
@@ -238,7 +238,7 @@ module.exports = {
       .setAuthor({ name: `${client.user.username} Help`, iconURL: client.user.displayAvatarURL() })
       .setDescription(`>${catts}`)
       //.addFields(catts)
-      .setColor("#4f545c")
+      .setColor("#5865F2")
       .setThumbnail(
        client.user.displayAvatarURL({
         dynamic: true,
@@ -272,7 +272,7 @@ module.exports = {
       }),
      })
      .setTimestamp()
-     .setColor("#4f545c");
+     .setColor("#5865F2");
     return await interaction.followUp({ embeds: [embed] });
    }
   } catch (err) {

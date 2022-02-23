@@ -1,6 +1,6 @@
 module.exports = {
- name: "/api/v1/info/bot_info",
- url: `${process.env.DOMAIN}${process.env.PORT == 8080 ? "" : `:${process.env.PORT}`}/api/v1/info/bot_info`,
+ name: "/api/v1/info/bot",
+ url: `${process.env.DOMAIN}${process.env.PORT == 8080 ? "" : `:${process.env.PORT}`}/api/v1/info/bot`,
  version: "v1",
  description: "Returns info about bot",
  category: "info",

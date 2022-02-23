@@ -30,8 +30,8 @@ module.exports = async (client, message) => {
   if (message.content === `<@${client.user.id}>` || message.content === `<@!${client.user.id}>`) {
    const embed = new MessageEmbed() // Prettier
     .setTitle(`${client.bot_emojis.success} Hi!`, message.guild.iconURL())
-    .setColor("RANDOM")
-    .setDescription("I was pinged by you, here I am - <@" + client.user.id + ">! My prefix is `" + client.prefix + "` To see all  my commands please type `" + client.prefix + " help`!")
+    .setColor("GREEN")
+    .setDescription(`I was pinged by you, here I am - <@${client.user.id}>! ~~My prefix is \`${client.prefix}\`~~\*. To see all  my commands please type ~~${client.prefix} help~~\* \`/help\`!\n\n>>> ${client.bot_emojis.slash_commands} \*Note: Majo.exe will soon switch to slash commands (/)!\nWe are still working on this feature so please be patient :tada:! \n\n***Majo.exe will stop responding to normal prefixes <t:1651269660:R>***`)
     .setTimestamp()
     .setFooter({
      text: `Requested by ${message.author.username}`,
@@ -56,13 +56,6 @@ module.exports = async (client, message) => {
     .setDescription(`${client.bot_emojis.error} | That command does not exist, Take a look at \`${client.prefix} help\`!`);
    return message.reply({ embeds: [embed] });
   }
-  if (message.content.toLowerCase().includes("process.env")) {
-   console.log("[Security Log]: " + message.author.tag + ` (ID: ` + message.author.id + ") used process.env in the " + command.name + " command.");
-   const embed = new MessageEmbed() // Prettier
-    .setColor("RED")
-    .setDescription(`${client.bot_emojis.error} | The command cannot contain the \`process.env\` string for safetly reasons. We are sorry...`);
-   return message.reply({ embeds: [embed] });
-  }
   if (command) {
    const timeout = command.timeout || client.config.ratelimit;
    const key = message.author.id + command.name + message.guild.id;
@@ -84,7 +77,7 @@ module.exports = async (client, message) => {
       .setTitle(`${client.bot_emojis.slash_commands} To run new command please use: \`/${cmd}\``)
       .setDescription(`>>> **Please use new slash commands instead!**\n\nMajo.exe will soon switch to slash commands!\nWe are still working on this feature so please be patient :tada:! \n\n***Majo.exe will stop responding to normal prefixes <t:1651269660:R>***`)
       .setColor("RED")
-      .setImage("https://media.discordapp.net/attachments/922505955885867011/945367544045395978/unknown.png")
+      .setImage("https://media.discordapp.net/attachments/922505955885867011/945367544045395978/unknown.png");
      return message.reply({ embeds: [slash_embed] });
     }
     /* ---------------------------- */
