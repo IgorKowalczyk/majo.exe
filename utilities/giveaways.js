@@ -1,12 +1,11 @@
 const { GiveawaysManager } = require("discord-giveaways");
-const sql = require("./database");
 const emojis = require("../config/emojis_config");
 
 module.exports = function (client) {
  const Giveaways = class extends GiveawaysManager {
   async getAllGiveaways() {
    return new Promise((resolve, reject) => {
-    sql.query("SELECT `data` FROM `giveaways`", (err, res) => {
+    client.database.query("SELECT `data` FROM `giveaways`", (err, res) => {
      if (err) {
       console.error(err);
       return reject(err);
@@ -19,7 +18,7 @@ module.exports = function (client) {
 
   async saveGiveaway(messageId, giveawayData) {
    return new Promise((resolve, reject) => {
-    sql.query("INSERT INTO `giveaways` (`message_id`, `data`) VALUES (?,?)", [messageId, JSON.stringify(giveawayData, (_, v) => (typeof v === "bigint" ? `BigInt("${v}")` : v))], (err, res) => {
+    client.database.query("INSERT INTO `giveaways` (`message_id`, `data`) VALUES (?,?)", [messageId, JSON.stringify(giveawayData, (_, v) => (typeof v === "bigint" ? `BigInt("${v}")` : v))], (err, res) => {
      if (err) {
       console.error(err);
       return reject(err);
@@ -31,7 +30,7 @@ module.exports = function (client) {
 
   async editGiveaway(messageId, giveawayData) {
    return new Promise((resolve, reject) => {
-    sql.query("UPDATE `giveaways` SET `data` = ? WHERE `message_id` = ?", [JSON.stringify(giveawayData, (_, v) => (typeof v === "bigint" ? `BigInt("${v}")` : v)), messageId], (err, res) => {
+    client.database.query("UPDATE `giveaways` SET `data` = ? WHERE `message_id` = ?", [JSON.stringify(giveawayData, (_, v) => (typeof v === "bigint" ? `BigInt("${v}")` : v)), messageId], (err, res) => {
      if (err) {
       console.error(err);
       return reject(err);
@@ -43,7 +42,7 @@ module.exports = function (client) {
 
   async deleteGiveaway(messageId) {
    return new Promise((resolve, reject) => {
-    sql.query("DELETE FROM `giveaways` WHERE `message_id` = ?", messageId, (err, res) => {
+    client.database.query("DELETE FROM `giveaways` WHERE `message_id` = ?", messageId, (err, res) => {
      if (err) {
       console.error(err);
       return reject(err);

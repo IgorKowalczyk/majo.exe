@@ -38,14 +38,19 @@ const { glob } = require("glob");
 const { promisify } = require("util");
 const globPromise = promisify(glob);
 const all_events = [];
-
 require("dotenv").config();
 require("../utilities/dashboard");
 client.on("ready", () => {
  client.commands = new Discord.Collection();
  client.aliases = new Discord.Collection();
- require(`../bot/handlers/dashboard-handler`)(client);
+ // require(`../bot/handlers/dashboard-handler`)(client);
  const port = process.env.PORT || 8080;
+ const { Database } = require("../utilities/mysql/database");
+ const database = new Database();
+ database.events.on("ready", () => {
+ database.setup();
+ });
+ const sql = database.connection;
  function capitalize(string) {
   return string.charAt(0).toUpperCase() + string.slice(1);
  }
@@ -160,7 +165,6 @@ client.on("ready", () => {
   app.use(express.json());
   app.use(express.urlencoded({ extended: false }));
   (async () => {
-   await require("../utilities/database-scripts");
    const endpoints = await globPromise(`${process.cwd()}/bot/events/guild/*.js`);
    endpoints.map(async (value) => {
     const name = value.split("/").pop().replace(".js", "");
@@ -169,7 +173,6 @@ client.on("ready", () => {
     }
    });
   })();
-  const sql = require("../utilities/database");
   console.log(chalk.bold(chalk.bold.magenta("> ") + chalk.blue.bold("[DASH]")) + chalk.cyan.bold(" Setting up dashboard endpoints..."));
   const checkAuth = (req, res, next) => {
    if (req.isAuthenticated()) return next();

@@ -1,7 +1,7 @@
 const Discord = require("discord.js");
-const emojis = require("../config/emojis_config");
-const config = require("../config/main_config");
-const additional_config = require("../config/additional_config");
+const emojis = require("../../config/emojis_config");
+const config = require("../../config/main_config");
+const additional_config = require("../../config/additional_config");
 const backup = require("discord-backup");
 const io = require("@pm2/io");
 
@@ -18,7 +18,7 @@ module.exports = function (client) {
  client.slash_commands = new Discord.Collection();
  client.snipes = new Discord.Collection();
  client.queue = new Map();
- client.giveawaysManager = require("./giveaways")(client);
+ client.giveawaysManager = require("../giveaways")(client);
  if (additional_config.pm2.enabled == true) {
   if (additional_config.pm2.metrics.messages_seen == true) {
    client.messages_seen = io.counter({

@@ -14,8 +14,13 @@ const client = new Discord.Client({
  },
  intents: [Discord.Intents.FLAGS.GUILDS, Discord.Intents.FLAGS.GUILD_MESSAGE_REACTIONS, Discord.Intents.FLAGS.GUILD_MESSAGES, Discord.Intents.FLAGS.GUILD_VOICE_STATES, Discord.Intents.FLAGS.GUILD_PRESENCES, Discord.Intents.FLAGS.GUILD_MEMBERS],
 });
-require("../utilities/database-scripts");
-require("../utilities/client-utilities")(client);
+const { Database } = require("../utilities/mysql/database");
+const database = new Database();
+database.events.on("ready", () => {
+ database.setup();
+});
+client.database = database.connection;
+require("../utilities/client/util")(client);
 require("../utilities/giveaways")(client);
 require("events").EventEmitter.prototype._maxListeners = 100;
 require("events").defaultMaxListeners = 100;

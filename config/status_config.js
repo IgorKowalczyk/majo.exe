@@ -1,15 +1,15 @@
 module.exports = {
  // Stauts config
  options: {
-  type: "dynamic", // dynamic | static
+  type: "static", // dynamic | static
  },
  static: {
   // Only if options.stype = static
-  message: `tralalala`,
-  type: "PLAYING", // PLAYING | STREAMING | LISTENING | WATCHING
+  message: `🇺🇦 | Russia, stop the war!`,
+  type: "WATCHING", // PLAYING | STREAMING | LISTENING | WATCHING
  },
  dates: {
-  // Special dates for change status [Date Format: MM-DD]. If null = no special dates. Note: special date
+  // Special dates for change status [Date Format: MM-DD]. If null = no special dates.
   "02-14": [
    // Array
    {
