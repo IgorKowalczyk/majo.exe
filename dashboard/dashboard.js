@@ -48,7 +48,7 @@ client.on("ready", () => {
  const { Database } = require("../utilities/mysql/database");
  const database = new Database();
  database.events.on("ready", () => {
- database.setup();
+  database.setup();
  });
  const sql = database.connection;
  function capitalize(string) {
