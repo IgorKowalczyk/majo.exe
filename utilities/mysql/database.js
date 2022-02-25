@@ -11,7 +11,7 @@ class Database {
    password: process.env.MYSQL_PASSWORD,
    database: process.env.MYSQL_DATABASE,
    charset: "utf8mb4",
-   port: "3306",
+   port: process.env.MYSQL_PORT || "3306",
   });
   this.events = new EventEmitter();
   this.connect();

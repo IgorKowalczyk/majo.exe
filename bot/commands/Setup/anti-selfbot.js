@@ -1,5 +1,4 @@
 const { MessageEmbed } = require("discord.js");
-const sql = require("../../../utilities/database");
 
 module.exports = {
  name: "anti-selfbot",
@@ -18,11 +17,11 @@ module.exports = {
      if (args[0].toLowerCase() == "true") selfbot_config = 1;
      if (args[0].toLowerCase() == "false") selfbot_config = 0;
      const sql_start_query = "SELECT anti_selfbots AS res FROM guild_settings WHERE guild_id = " + message.guild.id;
-     sql.query(sql_start_query, function (error, results, fields) {
+     client.database.query(sql_start_query, function (error, results, fields) {
       if (error) return console.log(error);
       if (results[0]) {
        const update = "UPDATE guild_settings SET anti_selfbots = " + selfbot_config + " WHERE guild_id = " + message.guild.id;
-       sql.query(update, function (error, results2, fields) {
+       client.database.query(update, function (error, results2, fields) {
         if (error) console.log(error);
         const embed = new MessageEmbed() // Prettier
          .setColor("GREEN")
@@ -31,7 +30,7 @@ module.exports = {
        });
       } else {
        const create = "INSERT INTO `guild_settings` (`guild_id`, `anti_selfbots`) VALUES (" + message.guild.id + "," + selfbot_config + ")";
-       sql.query(create, function (error, results2, fields) {
+       client.database.query(create, function (error, results2, fields) {
         if (error) console.log(error);
         const embed = new MessageEmbed() // Prettier
          .setColor("GREEN")
@@ -45,7 +44,7 @@ module.exports = {
     }
    } else if (!args[0]) {
     const sqlquery = "SELECT anti_selfbots AS res FROM guild_settings WHERE guild_id = " + message.guild.id;
-    sql.query(sqlquery, function (error, results, fields) {
+    client.database.query(sqlquery, function (error, results, fields) {
      if (error) return console.log(error);
      if (results[0]) {
       let selfbot = parseInt(Object.values(JSON.parse(JSON.stringify(results[0]))));
