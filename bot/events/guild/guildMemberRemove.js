@@ -1,11 +1,10 @@
 const { MessageEmbed, MessageAttachment } = require("discord.js");
 const Canvas = require("canvas");
 const moment = require("moment");
-const sql = require("../../../utilities/database");
 
 module.exports = async (client, member) => {
  try {
-  await sql.query(`SELECT leaves as res, last_updated as ls from guild_stats WHERE guild_id = ${member.guild.id}`, async function (serror, sresults, sfields) {
+  await client.database.query(`SELECT leaves as res, last_updated as ls from guild_stats WHERE guild_id = ${member.guild.id}`, async function (serror, sresults, sfields) {
    if (serror) console.log(serror);
    if (!sresults[0]) {
     const current_month = moment().daysInMonth();
@@ -17,7 +16,7 @@ module.exports = async (client, member) => {
     }
     let current_day = moment().date();
     stats[`${moment().year()}/${moment().format("MM")}/${current_day}`] = 1;
-    await sql.query(`INSERT INTO guild_stats (guild_id, joins, leaves, last_updated) VALUES ('${member.guild.id}', '${JSON.stringify(empty_stats)}', '${JSON.stringify(stats)}', '${moment(new Date()).format("YYYY-MM-DD")}')`, function (sserror, ssresults, ssfields) {
+    await client.database.query(`INSERT INTO guild_stats (guild_id, joins, leaves, last_updated) VALUES ('${member.guild.id}', '${JSON.stringify(empty_stats)}', '${JSON.stringify(stats)}', '${moment(new Date()).format("YYYY-MM-DD")}')`, function (sserror, ssresults, ssfields) {
      if (sserror) console.log(sserror);
     });
    } else {
@@ -30,19 +29,19 @@ module.exports = async (client, member) => {
      for (let i = 1; i <= current_month; i++) {
       empty_stats[`${moment().year()}/${moment().format("MM")}/${i}`] = 0;
      }
-     sql.query(`UPDATE guild_stats SET leaves = '${JSON.stringify(empty_stats)}', joins = '${JSON.stringify(empty_stats)}', last_updated = '${moment(new Date()).format("YYYY-MM-DD")}' WHERE guild_id = ${member.guild.id}`, function (fixerror, fixresults, fixfields) {
+     client.database.query(`UPDATE guild_stats SET leaves = '${JSON.stringify(empty_stats)}', joins = '${JSON.stringify(empty_stats)}', last_updated = '${moment(new Date()).format("YYYY-MM-DD")}' WHERE guild_id = ${member.guild.id}`, function (fixerror, fixresults, fixfields) {
       if (fixerror) console.log(fixerror);
      });
     }
     array_stats[`${moment().year()}/${moment().format("MM")}/${current_day}`]++;
-    sql.query(`UPDATE guild_stats SET leaves = '${JSON.stringify(array_stats)}', last_updated = '${moment(new Date()).format("YYYY-MM-DD")}' WHERE guild_id = ${member.guild.id}`, function (ferror, fresults, fields) {
+    client.database.query(`UPDATE guild_stats SET leaves = '${JSON.stringify(array_stats)}', last_updated = '${moment(new Date()).format("YYYY-MM-DD")}' WHERE guild_id = ${member.guild.id}`, function (ferror, fresults, fields) {
      if (ferror) console.log(ferror);
     });
    }
   });
   const image = `${process.cwd()}/src/img/welcome-gray.png`;
   const sqlquery = "SELECT channelid AS res FROM `leave` WHERE guildid = " + member.guild.id;
-  sql.query(sqlquery, function (error, results, fields) {
+  client.database.query(sqlquery, function (error, results, fields) {
    if (error) console.log(error);
    if (!results || results.length == 0) {
     return;

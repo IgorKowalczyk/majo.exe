@@ -1,5 +1,4 @@
 const { MessageEmbed } = require("discord.js");
-const sql = require("../../../utilities/database");
 const prefix = process.env.PREFIX;
 const Timeout = new Map();
 const ms = require("ms");
@@ -31,18 +30,18 @@ module.exports = {
      return client.createError(message, `${client.bot_emojis.error} | ${message.author} You have to wait \`${ms(timeLeft)}\` before you can add reputaton again!`);
     }
     const sqlquery = "SELECT reputation AS res FROM users WHERE user_id = " + member.id;
-    sql.query(sqlquery, function (error, results, fields) {
+    client.database.query(sqlquery, function (error, results, fields) {
      if (error) return console.log(error);
      if (results[0]) {
       const sum = parseInt(Object.values(JSON.parse(JSON.stringify(results[0])))) + 1;
       const update = "UPDATE users SET reputation = " + sum + " WHERE user_id = " + member.id;
-      sql.query(update, function (error, results2, fields) {
+      client.database.query(update, function (error, results2, fields) {
        if (error) console.log(error);
        return client.createError(message, `${client.bot_emojis.success} | Success! Reputation added! ${member} now has \`${sum}\` reputation points!`, "GREEN");
       });
      } else {
       const insert = "INSERT INTO `users` (`user_id`, `reputation`) VALUES (" + member.id + "," + 1 + ");";
-      sql.query(insert, function (error, results3, fields) {
+      client.database.query(insert, function (error, results3, fields) {
        if (error) console.log(error);
        return client.createError(message, `${client.bot_emojis.success} | Success! Reputation added! ${member} now has \`1\` reputation points!`, "GREEN");
       });
@@ -65,18 +64,18 @@ module.exports = {
      return client.createError(message, `${client.bot_emojis.error} | ${message.author} You have to wait \`${ms(timeLeft)}\` before you can remove reputaton again!`);
     }
     const sqlquery = "SELECT reputation AS res FROM users WHERE user_id = " + member.id;
-    sql.query(sqlquery, function (error, results, fields) {
+    client.database.query(sqlquery, function (error, results, fields) {
      if (error) return console.log(error);
      if (results[0]) {
       const sum = parseInt(Object.values(JSON.parse(JSON.stringify(results[0])))) - 1;
       const update = "UPDATE users SET reputation = " + sum + " WHERE user_id = " + member.id;
-      sql.query(update, function (error, results2, fields) {
+      client.database.query(update, function (error, results2, fields) {
        if (error) console.log(error);
        return client.createError(message, `${client.bot_emojis.success} | Success! Reputation removed! ${member} now has \`${sum}\` reputation points!`, "GREEN");
       });
      } else {
       const insert = "INSERT INTO `users` (`user_id`, `reputation`) VALUES (" + member.id + "," + "-1" + ");";
-      sql.query(insert, function (error, results3, fields) {
+      client.database.query(insert, function (error, results3, fields) {
        if (error) console.log(error);
        return client.createError(message, `${client.bot_emojis.success} | Success! Reputation removed! ${member} now has \`-1\` reputation points!`);
       });
@@ -89,7 +88,7 @@ module.exports = {
    } else {
     // Check reputation
     const sqlquery = "SELECT reputation AS res FROM `users` WHERE user_id = " + member.id;
-    sql.query(sqlquery, function (error, results, fields) {
+    client.database.query(sqlquery, function (error, results, fields) {
      if (error) return console.log(error);
      const embed = new MessageEmbed()
       .setTitle(`${client.bot_emojis.clap} ${member.user.username} Reputation`)

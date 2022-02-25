@@ -1,7 +1,6 @@
 const { MessageEmbed, MessageActionRow, MessageButton } = require("discord.js");
 const ms = require("ms");
 const Timeout = new Map();
-const sql = require("../../../utilities/database");
 
 module.exports = async (client, message) => {
  try {
@@ -15,7 +14,7 @@ module.exports = async (client, message) => {
   if (message.author.bot) return;
   if (message.guild && !message.author.bot && message.embeds.length > 0 && !message.content.includes(`http`)) {
    const sqlquery = "SELECT anti_selfbots AS res FROM `guild_settings` WHERE guildid = " + message.guild.id;
-   sql.query(sqlquery, function (error, results, fields) {
+   client.database.query(sqlquery, function (error, results, fields) {
     if (error) return console.log(error);
     if (results[0]) {
      let selfbot = parseInt(Object.values(JSON.parse(JSON.stringify(results[0]))));

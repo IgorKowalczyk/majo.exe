@@ -1,6 +1,6 @@
 const { MessageEmbed, MessageActionRow, MessageButton } = require("discord.js");
-const sql = require("../../../utilities/database");
 const moment = require("moment");
+
 module.exports = {
  name: "ping",
  description: "🏓 Checks Majo.exe response time to Discord",
@@ -9,7 +9,7 @@ module.exports = {
  run: async (client, interaction, args) => {
   const date_ping = moment(Date.now()).unix();
   try {
-   sql.ping(function (err) {
+   client.database.ping(function (err) {
     let ping = moment(Date.now()).unix() - date_ping;
     const wait = new MessageEmbed() // Prettier
      .setColor("#5865f2")

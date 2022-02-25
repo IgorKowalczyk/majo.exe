@@ -1,11 +1,10 @@
 const { MessageEmbed } = require("discord.js");
-const sql = require("../../../utilities/database");
 
 module.exports = async (client, oldMessage, newMessage) => {
  try {
   if (newMessage.embeds.length >= 0) return;
   const sqlquery = "SELECT channelid AS res FROM logs WHERE guildid = " + oldMessage.guild.id;
-  sql.query(sqlquery, function (error, results, fields) {
+  client.database.query(sqlquery, function (error, results, fields) {
    if (error) console.log(error);
    if (!results || results.length == 0) {
     return;
