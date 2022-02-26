@@ -35,6 +35,6 @@ module.exports = async (client) => {
   }
  });
 
- console.log(chalk.bold(chalk.green.bold("> ") + chalk.blue.bold("[MAJO]")) + chalk.cyan.bold(" Please wait... Loading commands..."));
+ console.log(chalk.bold(chalk.green.bold("> ") + chalk.blue.bold("[MAJO.EXE]")) + chalk.cyan.bold(" Please wait... Loading commands..."));
  if (additional_config.show_commands_list == true) console.log(chalk.cyan.bold(table.toString()));
 };

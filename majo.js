@@ -3,7 +3,7 @@
 const chalk = require("chalk");
 require("dotenv").config();
 require("./utilities/ascii");
-require("./utilities/checks");
+require("./utilities/requirments");
 if (!process.env.TOKEN) return console.log(chalk.bold(chalk.red(`[X]`)) + chalk.bold.redBright(` Skipping everything! Token is not provided!`));
 console.log(chalk.bold(chalk.blue(`[❔]`) + chalk.cyan(` Green`) + chalk.green(` ">" `) + chalk.cyan(`= logs from Majo.exe Bot`)));
 console.log(chalk.bold(chalk.blue(`[❔]`) + chalk.cyan(` Magenta`) + chalk.magenta(` ">" `) + chalk.cyan(`= logs from Majo.exe Dashboard`)));

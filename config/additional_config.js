@@ -1,5 +1,4 @@
 module.exports = {
- use_mysql: true, // WIP
  pm2: {
   // Send app statistics to PM2 Dashboard [only works if the application has been started with pm2 and pm2 is linked to the panel]
   enabled: true, // boolean
@@ -13,8 +12,6 @@ module.exports = {
   },
  },
  show_errors_on_no_command: true, // Show errors when no command was found. Example: {prefix} help -> output | {prefix} no_command -> nothing DEPRECATED
- rickroll: false, // Secret option ;>
- display_status: "online", // online | idle | invisible | dnd
  help_embed: {
   grid: true, // Use grid for fields in help command embed
   display_news: false,
@@ -25,7 +22,7 @@ module.exports = {
  },
  intents: {
   all: true,
-  problems: false,
+  issues: false,
  },
  ignored_events: ["guildCreate", "guildDelete", "guildMemberAdd", "guildMemberRemove", "interactionCreate", "messageCreate"], // Ignore this events in dashboard settings
 };

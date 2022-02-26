@@ -134,6 +134,7 @@ Go to [this link](https://discord.com/oauth2/authorize/?permissions=4294967287&s
 | `MYSQL_HOST` | Your MYSQL Host | String | ✅ | ✅ | ❌ |
 | `MYSQL_USER` | Your MYSQL user | String | ✅ | ✅ | ❌ |
 | `MYSQL_PASSWORD` | Your MYSQL password | String | ✅ | ✅ | ❌ |
+| `MYSQL_PORT` | Your MYSQL Port (default is `3306`) | Number | ❌ | ❌ | ❌ |
 | `DOMAIN` | Your website domain (eg `https://example.com`) | URL | ❌ | ✅ | ✅ |
 | `PORT` | Your webiste port eg. `8080`<br> - Note: Heroku don't need port. Heroku assings port automatically! | Number | ❌ | ✅ | ✅ |
 | `SECRET` | The bot client secret | String | ❌ | ✅ | ❌ |
@@ -172,6 +173,7 @@ DOMAIN=YOUR_WEBSITE_DOMAIN
 PORT=YOUR_WEBSITE_PORT
 SECRET=YOUR_BOT_CLIENT_SECRET
 ANALYTICS=YOUR_GOOGLE_TRACKING_ID
+MYSQL_PORT=YOUR_MYSQL_PORT
 # Note: !majo is the default prefix, you can change it later.
 ```
 
@@ -235,7 +237,7 @@ Soon!
 > * `Domains`: Enter your domain where the keys will be used.<br>
 > * `Owners`: By default, it will receive the email address you log in with. If you want to register for more accounts, enter the email addresses you want to specify<br>
 > * `Terms of Service`: Check the box to accept the reCAPTCHA Terms of Service<br>
-> * `Send alerts to owners`: Check the box to get alerts if Google detects problems with your site<br>
+> * `Send alerts to owners`: Check the box to get alerts if Google detects issues with your site<br>
 5. When complete, click the SUBMIT button.
 
 > Written by: <a href="https://github.com/MashedTuna">MashedPotato</a>

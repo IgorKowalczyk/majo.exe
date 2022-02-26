@@ -33,7 +33,7 @@ module.exports = {
  id: process.env.ID, // Discord Client prefix
  advanved_logging: false, // Show debug info
  ratelimit: 2500, // Command ratelimit (can be customized for each command) [DEPRECATED]
- max_input: 200, // Maximum command arguments length
+ max_input: 200, // Maximum command arguments length [DEPRECATED]
 
  // Dashboard config
  domain: process.env.DOMAIN, // Domain link
@@ -47,8 +47,6 @@ module.exports = {
  client_secret: process.env.SECRET, // Discord Client secret
  port: process.env.PORT, // Website & API Port
  session_secret: process.env.SESSION_SECRET, // Session Secret (Auto Generated)
- cookies: process.env.COOKIES, // Cookies (not used)
- image: "banner.jpg", // Social image (not used)
  verification: "-wuCsk4qLolXEPSUTGX7YBxywcyNNf5HS2ClzgEWxNY", // Google site verification token
  arc_token: "oFnnmBwr", // Arc.io token
 };

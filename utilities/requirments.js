@@ -9,7 +9,7 @@ if (os.platform() != "linux") {
 }
 if (Math.round(os.totalmem() / (1024 * 1024)) < 250) {
  failed++;
- console.log(chalk.bold(chalk.blue.red(`[DEBUG]`)) + chalk.bold.redBright(` Detected `) + chalk.red.bold.underline(`${Math.round(os.totalmem() / (1024 * 1024))}MB`) + chalk.bold.redBright(` RAM! Please use more than 250MB of RAM to run app smoothly`));
+ console.log(chalk.bold(chalk.blue.red(`[DEBUG]`)) + chalk.bold.redBright(` Detected `) + chalk.red.bold.underline(`${Math.round(os.totalmem() / (1024 * 1024))}MB`) + chalk.bold.redBright(` RAM! Please use more than 250MB of RAM to run Majo.exe smoothly`));
 }
 if (Number(process.version.slice(1).split(".")[0]) < 16) {
  failed++;

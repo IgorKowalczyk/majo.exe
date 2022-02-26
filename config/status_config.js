@@ -1,5 +1,6 @@
 module.exports = {
  // Stauts config
+ display_status: "online", // online | idle | invisible | dnd
  options: {
   type: "static", // dynamic | static
  },

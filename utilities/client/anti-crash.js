@@ -1,6 +1,7 @@
 const { MessageEmbed, WebhookClient } = require("discord.js");
 if (!process.env.ERRORS_WEBHOOK) throw new Error("You need to enter ERRORS_WEBHOOK url in .env!");
 const errweb = new WebhookClient({ url: process.env.ERRORS_WEBHOOK });
+const discord_protection = /(?:https?:\/\/)?(?:[^.]+\.)?discord\.com(\/.*)?$/;
 
 module.exports = (client) => {
  process.on("unhandledRejection", (reason, p) => {
@@ -13,7 +14,7 @@ module.exports = (client) => {
     new MessageEmbed()
      .setAuthor({ name: `AntiCrash`, iconURL: client.user.displayAvatarURL({ dynamic: true }) })
      .setTitle(`Unhandled Rejection/Catch`)
-     .setDescription(`\`\`\`js\n${reason}\`\`\``)
+     .setDescription(`\`\`\`js\n${reason.replace(discord_protection, "[https://discord.com/[replaced-token]")}\`\`\``)
      .setColor("RED")
      .setTimestamp(),
    ],
@@ -29,8 +30,8 @@ module.exports = (client) => {
     new MessageEmbed()
      .setAuthor({ name: `AntiCrash`, iconURL: client.user.displayAvatarURL({ dynamic: true }) })
      .setTitle(`Uncaught Exception/Catch`)
-     .setDescription(`\`\`\`js\n${err}\`\`\``)
-     .addField("At", `\`\`\`${origin}\`\`\``)
+     .setDescription(`\`\`\`js\n${err.replace(discord_protection, "[https://discord.com/[replaced-token]")}\`\`\``)
+     .addField("At", `\`\`\`${origin.replace(discord_protection, "[https://discord.com/[replaced-token]")}\`\`\``)
      .setColor("RED")
      .setTimestamp(),
    ],
@@ -46,8 +47,8 @@ module.exports = (client) => {
     new MessageEmbed()
      .setAuthor({ name: `AntiCrash`, iconURL: client.user.displayAvatarURL({ dynamic: true }) })
      .setTitle(`Uncaught Exception/Catch (MONITOR)`)
-     .setDescription(`\`\`\`js\n${err}\`\`\``)
-     .addField("At", `\`\`\`${origin}\`\`\``)
+     .setDescription(`\`\`\`js\n${err.replace(discord_protection, "[https://discord.com/[replaced-token]")}\`\`\``)
+     .addField("At", `\`\`\`${origin.replace(discord_protection, "[https://discord.com/[replaced-token]")}\`\`\``)
      .setTimestamp()
      .setColor("RED"),
    ],
@@ -63,7 +64,7 @@ module.exports = (client) => {
     new MessageEmbed()
      .setAuthor({ name: `AntiCrash`, iconURL: client.user.displayAvatarURL({ dynamic: true }) })
      .setTitle(`Multiple Resolves`)
-     .setDescription(`\`\`\`js\n${reason}\`\`\``)
+     .setDescription(`\`\`\`js\n${reason.replace(discord_protection, "[https://discord.com/[replaced-token]")}\`\`\``)
      .setColor("RED")
      .setTimestamp(),
    ],

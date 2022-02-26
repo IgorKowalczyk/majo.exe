@@ -67,6 +67,10 @@
   "MYSQL_USER": {
    "description": "MYSQL User name (user must have access to database!)",
    "required": true
+  },
+  "MYSQL_PORT": {
+   "description": "MYSQL Port (default is 3306)",
+   "required": false
   }
  },
  "keywords": ["discord", "discord-bot", "node-js", "web-dashboard", "bot", "majoexe"]
