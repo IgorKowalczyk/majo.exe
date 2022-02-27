@@ -2,7 +2,6 @@ const Discord = require("discord.js");
 const crypto = require("crypto");
 const chalk = require("chalk");
 const { Database } = require("../utilities/mysql/database");
-const { errors } = require("../utilities/errors/codes");
 const { LoginError } = require("../utilities/errors/util");
 const intents = new Discord.Intents(4095);
 
@@ -34,12 +33,12 @@ class Client extends Discord.Client {
   process.env.SESSION_SECRET = crypto.randomBytes(64).toString("hex");
  }
  start(token) {
-  if (!token) throw new LoginError(errors[0]);
+  if (!token) throw new LoginError("No token provided! Please provide it in .env");
   this.secure();
   this.login(token);
  }
  reload() {
-  if (!process.env.TOKEN) throw new MissingENV(errors[2], "TOKEN");
+  if (!process.env.TOKEN) throw new MissingENV("No token provided! Please provide it in .env", "TOKEN");
   this.destroy();
   this.login(process.env.token);
  }
