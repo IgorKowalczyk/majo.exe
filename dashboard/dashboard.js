@@ -1,62 +1,36 @@
-if (Number(process.version.slice(1).split(".")[0]) < 16) throw new Error("Majo.exe requires Node.js v16 or higher. Re-run the bot with Node.js v16 or higher!");
-const { Permissions, MessageEmbed, WebhookClient, Client } = require("discord.js");
-const Discord = require("discord.js");
-const client = new Client({
- allowedMentions: {
-  parse: ["users", "roles"],
-  repliedUser: true,
- },
- // Uncomment line below (and delete line after ofc) if you enabled all indents!
- intents: [Discord.Intents.FLAGS.GUILDS, Discord.Intents.FLAGS.GUILD_MEMBERS, Discord.Intents.FLAGS.GUILD_BANS, Discord.Intents.FLAGS.GUILD_EMOJIS_AND_STICKERS, Discord.Intents.FLAGS.GUILD_INTEGRATIONS, Discord.Intents.FLAGS.GUILD_WEBHOOKS, Discord.Intents.FLAGS.GUILD_INVITES, Discord.Intents.FLAGS.GUILD_VOICE_STATES, Discord.Intents.FLAGS.GUILD_PRESENCES, Discord.Intents.FLAGS.GUILD_MESSAGES, Discord.Intents.FLAGS.GUILD_MESSAGE_REACTIONS, Discord.Intents.FLAGS.GUILD_MESSAGE_TYPING, Discord.Intents.FLAGS.DIRECT_MESSAGES, Discord.Intents.FLAGS.DIRECT_MESSAGE_REACTIONS, Discord.Intents.FLAGS.DIRECT_MESSAGE_TYPING],
-});
-const url = require("url");
-const path = require("path");
-const express = require("express");
-const chalk = require("chalk");
-const cookieParser = require("cookie-parser");
-const csrf = require("csurf");
-const compression = require("compression");
-const passport = require("passport");
-const Strategy = require("passport-discord").Strategy;
-const config = require("../config/main_config");
-const additional_config = require("../config/additional_config");
-const ejs = require("ejs");
-const validator = require("validator");
-const bodyParser = require("body-parser");
-const fs = require("fs");
-const app = express();
-const session = require("express-session");
-const MemoryStore = require("memorystore")(session);
-const https = require("https");
-const moment = require("moment");
-const rate_limit = require("express-rate-limit");
-const helmet = require("helmet");
-const { constants } = require("crypto");
-const package = require("../package.json");
-const secure_connection = config.secure_connection == true ? "https://" : "http://";
-const { glob } = require("glob");
-const { promisify } = require("util");
-const globPromise = promisify(glob);
-const all_events = [];
-require("dotenv").config();
-require("../utilities/dashboard");
-client.on("ready", () => {
- client.commands = new Discord.Collection();
- client.aliases = new Discord.Collection();
- // require(`../bot/handlers/dashboard-handler`)(client);
+module.exports = (client) => {
+ const { Permissions, MessageEmbed, WebhookClient, Client } = require("discord.js");
+ const url = require("url");
+ const path = require("path");
+ const express = require("express");
+ const chalk = require("chalk");
+ const cookieParser = require("cookie-parser");
+ const csrf = require("csurf");
+ const compression = require("compression");
+ const passport = require("passport");
+ const Strategy = require("passport-discord").Strategy;
+ const config = require("../config/main_config");
+ const additional_config = require("../config/additional_config");
+ const ejs = require("ejs");
+ const validator = require("validator");
+ const fs = require("fs");
+ const app = express();
+ const session = require("express-session");
+ const MemoryStore = require("memorystore")(session);
+ const https = require("https");
+ const moment = require("moment");
+ const rate_limit = require("express-rate-limit");
+ const helmet = require("helmet");
+ const { constants } = require("crypto");
+ const package = require("../package.json");
+ const secure_connection = config.secure_connection == true ? "https://" : "http://";
+ const { glob } = require("glob");
+ const { promisify } = require("util");
+ const globPromise = promisify(glob);
+ const all_events = [];
  const port = process.env.PORT || 8080;
- const { Database } = require("../utilities/mysql/database");
- const database = new Database();
- database.events.on("ready", () => {
-  database.setup();
- });
- const sql = database.connection;
  function capitalize(string) {
   return string.charAt(0).toUpperCase() + string.slice(1);
- }
- process.env.SESSION_SECRET = "";
- for (let i = 0; i <= 15; i++) {
-  process.env.SESSION_SECRET += Math.random().toString(16).slice(2, 8).toUpperCase().slice(-6) + i;
  }
  app.use(compression({ threshold: 0 }));
  app.use(helmet.dnsPrefetchControl());
@@ -431,7 +405,7 @@ client.on("ready", () => {
    const member = guild.members.cache.get(req.user.id);
    if (!member) return res.redirect("/error?message=no+member");
    if (!member.permissions.has("MANAGE_GUILD")) return res.redirect("/error?message=missing+perm");
-   sql.query(`SELECT \`joins\` as 'join', \`leaves\` as 'leave', \`last_updated\` as 'ls' from \`guild_stats\` WHERE \`guild_id\` = ${guild.id}`, async function (serror, results, sfields) {
+   client.database.query(`SELECT \`joins\` as 'join', \`leaves\` as 'leave', \`last_updated\` as 'ls' from \`guild_stats\` WHERE \`guild_id\` = ${guild.id}`, async function (serror, results, sfields) {
     if (serror) console.log(serror);
     if (results[0]) {
      renderTemplate(res, req, "/server/server.ejs", {
@@ -449,7 +423,7 @@ client.on("ready", () => {
      for (let i = 1; i <= current_month; i++) {
       empty_stats[`${moment().year()}/${moment().format("MM")}/${i}`] = 0;
      }
-     sql.query(`INSERT INTO guild_stats (guild_id, joins, leaves, last_updated) VALUES ('${guild.id}', '${JSON.stringify(empty_stats)}', '${JSON.stringify(empty_stats)}', '${moment(new Date()).format("YYYY-MM-DD")}')`, function (sserror, ssresults, ssfields) {
+     client.database.query(`INSERT INTO guild_stats (guild_id, joins, leaves, last_updated) VALUES ('${guild.id}', '${JSON.stringify(empty_stats)}', '${JSON.stringify(empty_stats)}', '${moment(new Date()).format("YYYY-MM-DD")}')`, function (sserror, ssresults, ssfields) {
       if (sserror) console.log(sserror);
      });
      renderTemplate(res, req, "/server/server.ejs", {
@@ -485,7 +459,7 @@ client.on("ready", () => {
     if (!nickname) nickname = guild.me.nickname || guild.me.user.username;
     await guild.me.setNickname(nickname);
    }
-   sql.query(`SELECT \`joins\` as 'join', \`leaves\` as 'leave', \`last_updated\` as 'ls' from \`guild_stats\` WHERE \`guild_id\` = ${guild.id}`, async function (serror, results, sfields) {
+   client.database.query(`SELECT \`joins\` as 'join', \`leaves\` as 'leave', \`last_updated\` as 'ls' from \`guild_stats\` WHERE \`guild_id\` = ${guild.id}`, async function (serror, results, sfields) {
     if (serror) console.log(serror);
     if (results[0]) {
      renderTemplate(res, req, "/server/server.ejs", {
@@ -504,7 +478,7 @@ client.on("ready", () => {
      for (let i = 1; i <= current_month; i++) {
       empty_stats[`${moment().year()}/${moment().format("MM")}/${i}`] = 0;
      }
-     sql.query(`INSERT INTO guild_stats (guild_id, joins, leaves, last_updated) VALUES ('${guild.id}', '${JSON.stringify(empty_stats)}', '${JSON.stringify(empty_stats)}', '${moment(new Date()).format("YYYY-MM-DD")}')`, function (sserror, ssresults, ssfields) {
+     client.database.query(`INSERT INTO guild_stats (guild_id, joins, leaves, last_updated) VALUES ('${guild.id}', '${JSON.stringify(empty_stats)}', '${JSON.stringify(empty_stats)}', '${moment(new Date()).format("YYYY-MM-DD")}')`, function (sserror, ssresults, ssfields) {
       if (sserror) console.log(sserror);
      });
      renderTemplate(res, req, "/server/server.ejs", {
@@ -616,7 +590,7 @@ client.on("ready", () => {
    if (!member) return res.redirect("/error?message=no+member");
    if (!member.permissions.has("MANAGE_GUILD")) return res.redirect("/error?message=missing+perm");
    const sqlquery = "SELECT `leave`.`guildid` AS `guild_id`, `leave`.`channelid` AS `leave`, `welcome`.`channelid` AS `welcome` FROM `leave` INNER JOIN welcome ON `leave`.`guildid` = `welcome`.`guildid` WHERE `leave`.guildid = " + guild.id;
-   await sql.query(sqlquery, async function (error, results, fields) {
+   await client.database.query(sqlquery, async function (error, results, fields) {
     if (results[0]) {
      welcome = guild.channels.cache.get(results[0].welcome);
      leave = guild.channels.cache.get(results[0].leave);
@@ -645,31 +619,31 @@ client.on("ready", () => {
    if (!member.permissions.has("MANAGE_GUILD")) return res.redirect("/error?message=missing+perm");
    const data = req.body;
    if (data) {
-    sql.query(`SELECT \`leave\`.\`guildid\` AS \`guild_id\`, \`leave\`.\`channelid\` AS \`leave\`, \`welcome\`.\`channelid\` AS \`welcome\` FROM \`leave\` INNER JOIN \`welcome\` ON \`leave\`.\`guildid\` = \`welcome\`.\`guildid\` WHERE \`leave\`.\`guildid\` = ${guild.id}`, async function (error, results, fields) {
+    client.database.query(`SELECT \`leave\`.\`guildid\` AS \`guild_id\`, \`leave\`.\`channelid\` AS \`leave\`, \`welcome\`.\`channelid\` AS \`welcome\` FROM \`leave\` INNER JOIN \`welcome\` ON \`leave\`.\`guildid\` = \`welcome\`.\`guildid\` WHERE \`leave\`.\`guildid\` = ${guild.id}`, async function (error, results, fields) {
      if (results[0]) {
       welcome = guild.channels.cache.get(data.welcomechannel);
       leave = guild.channels.cache.get(data.leavechannel);
       data.welcome_enabled ? (welcome_enabled = true) : (welcome_enabled = false);
       data.leave_enabled ? (leave_enabled = true) : (leave_enabled = false);
       if (welcome_enabled && welcome) {
-       await sql.query(`UPDATE \`welcome\` SET channelid = ${welcome.id} WHERE guildid = ${guild.id};`, async function (update_error) {
+       await client.database.query(`UPDATE \`welcome\` SET channelid = ${welcome.id} WHERE guildid = ${guild.id};`, async function (update_error) {
         if (update_error) console.log(update_error);
        });
       } else if (welcome_enabled == false) {
-       await sql.query(`DELETE FROM \`welcome\` WHERE guildid = ${guild.id};`, async function (update_error) {
+       await client.database.query(`DELETE FROM \`welcome\` WHERE guildid = ${guild.id};`, async function (update_error) {
         if (update_error) console.log(update_error);
        });
       }
       if (leave_enabled && leave) {
-       sql.query(`UPDATE \`leave\` SET channelid = ${leave.id} WHERE guildid = ${guild.id};`, async function (update_error) {
+       client.database.query(`UPDATE \`leave\` SET channelid = ${leave.id} WHERE guildid = ${guild.id};`, async function (update_error) {
         if (update_error) console.log(update_error);
        });
       } else if (leave_enabled == false) {
-       await sql.query(`DELETE FROM \`leave\` WHERE guildid = ${guild.id};`, async function (update_error) {
+       await client.database.query(`DELETE FROM \`leave\` WHERE guildid = ${guild.id};`, async function (update_error) {
         if (update_error) console.log(update_error);
        });
       }
-      sql.query(`SELECT \`leave\`.\`guildid\` AS \`guild_id\`, \`leave\`.\`channelid\` AS \`leave\`, \`welcome\`.\`channelid\` AS \`welcome\` FROM \`leave\` INNER JOIN \`welcome\` ON \`leave\`.\`guildid\` = \`welcome\`.\`guildid\` WHERE \`leave\`.\`guildid\` =  "${guild.id}";`, async function (update_error, update_results, update_fields) {
+      client.database.query(`SELECT \`leave\`.\`guildid\` AS \`guild_id\`, \`leave\`.\`channelid\` AS \`leave\`, \`welcome\`.\`channelid\` AS \`welcome\` FROM \`leave\` INNER JOIN \`welcome\` ON \`leave\`.\`guildid\` = \`welcome\`.\`guildid\` WHERE \`leave\`.\`guildid\` =  "${guild.id}";`, async function (update_error, update_results, update_fields) {
        if (update_error) console.log(update_error);
        console.log(update_results);
        renderTemplate(res, req, "/server/messages.ejs", {
@@ -688,16 +662,16 @@ client.on("ready", () => {
       data.welcome_enabled ? (welcome_enabled = true) : (welcome_enabled = false);
       data.leave_enabled ? (leave_enabled = true) : (leave_enabled = false);
       if (welcome_enabled && welcome) {
-       await sql.query(`INSERT INTO \`welcome\`(\`guildid\`, \`channelid\`) VALUES (${guild.id}, ${welcome.id});`, async function (update_error) {
+       await client.database.query(`INSERT INTO \`welcome\`(\`guildid\`, \`channelid\`) VALUES (${guild.id}, ${welcome.id});`, async function (update_error) {
         if (update_error) console.log(update_error);
        });
       }
       if (leave_enabled && leave) {
-       sql.query(`INSERT INTO \`leave\`(\`guildid\`, \`channelid\`) VALUES (${guild.id}, ${leave.id});`, async function (update_error) {
+       client.database.query(`INSERT INTO \`leave\`(\`guildid\`, \`channelid\`) VALUES (${guild.id}, ${leave.id});`, async function (update_error) {
         if (update_error) console.log(update_error);
        });
       }
-      sql.query(`SELECT \`leave\`.\`guildid\` AS \`guild_id\`, \`leave\`.\`channelid\` AS \`leave\`, \`welcome\`.\`channelid\` AS \`welcome\` FROM \`leave\` INNER JOIN \`welcome\` ON \`leave\`.\`guildid\` = \`welcome\`.\`guildid\` WHERE \`leave\`.\`guildid\` =  "${guild.id}";`, async function (update_error, update_results, update_fields) {
+      client.database.query(`SELECT \`leave\`.\`guildid\` AS \`guild_id\`, \`leave\`.\`channelid\` AS \`leave\`, \`welcome\`.\`channelid\` AS \`welcome\` FROM \`leave\` INNER JOIN \`welcome\` ON \`leave\`.\`guildid\` = \`welcome\`.\`guildid\` WHERE \`leave\`.\`guildid\` =  "${guild.id}";`, async function (update_error, update_results, update_fields) {
        if (update_error) console.log(update_error);
        renderTemplate(res, req, "/server/messages.ejs", {
         guild: guild,
@@ -748,5 +722,4 @@ client.on("ready", () => {
    if (process.argv.includes(`--api`)) console.log(chalk.bold(chalk.bold.red("> ") + chalk.blue.bold("[API]")) + chalk.cyan.bold(` API is up and running on url ${process.env.DOMAIN}${port == 8080 ? "" : `:${port}`} !`));
   });
  }
-});
-client.login(process.env.TOKEN);
+};
