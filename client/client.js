@@ -1,43 +1,27 @@
 const Discord = require("discord.js");
-const { Database } = require("../utilities/mysql/database");
+const crypto = require("crypto");
 const chalk = require("chalk");
+const { Database } = require("../utilities/mysql/database");
+const { errors } = require("../utilities/errors/codes");
+const { LoginError } = require("../utilities/errors/util");
+const intents = new Discord.Intents(4095);
 
-class majo {
+class Client extends Discord.Client {
  constructor() {
-  this.client = new Discord.Client({
+  super({
+   intents,
    allowedMentions: {
     parse: ["users", "roles"],
     repliedUser: false,
    },
    failIfNotExists: false,
-   presence: {
-    status: "online",
-    afk: false,
-   },
-   intents: [Discord.Intents.FLAGS.GUILDS, Discord.Intents.FLAGS.GUILD_MESSAGE_REACTIONS, Discord.Intents.FLAGS.GUILD_MESSAGES, Discord.Intents.FLAGS.GUILD_VOICE_STATES, Discord.Intents.FLAGS.GUILD_PRESENCES, Discord.Intents.FLAGS.GUILD_MEMBERS],
   });
   const db = new Database();
-  db.events.on("ready", () => {
+  this.db_events = db.events;
+  this.db_events.on("ready", () => {
    db.setup();
   });
-  this.client.database = db.connection;
- }
- login() {
-  process.env.SESSION_SECRET = "";
-  for (let i = 0; i <= 15; i++) {
-   process.env.SESSION_SECRET += Math.random().toString(16).slice(2, 8).toUpperCase().slice(-6) + i;
-  }
-  if (process.env.TOKEN) {
-   this.client.login(process.env.TOKEN);
-  }
-  return this.client;
- }
- reload() {
-  this.client.destroy();
-  this.client.login(process.env.token);
- }
- destroy() {
-  this.client.destroy();
+  this.database = db.connection;
  }
  log_info() {
   console.log(chalk.blue.bold(`[❔]`) + chalk.cyan.bold(` Green`) + chalk.green.bold(` ">" `) + chalk.cyan.bold(`= logs from Majo.exe Bot`));
@@ -45,15 +29,28 @@ class majo {
   console.log(chalk.blue.bold(`[❔]`) + chalk.cyan.bold(` Red`) + chalk.red.bold(` ">" `) + chalk.cyan.bold(`= logs from Majo.exe API`));
   console.log(chalk.blue.bold(`[❔]`) + chalk.cyan.bold(` White`) + chalk.white.bold(` ">" `) + chalk.cyan.bold(`= logs from Majo.exe Database`));
  }
+ secure() {
+  process.env.SESSION_SECRET = "";
+  process.env.SESSION_SECRET = crypto.randomBytes(64).toString("hex");
+ }
+ start(token) {
+  if (!token) throw new LoginError(errors[0]);
+  this.secure();
+  this.login(token);
+ }
+ reload() {
+  if (!process.env.TOKEN) throw new MissingENV(errors[2], "TOKEN");
+  this.destroy();
+  this.login(process.env.token);
+ }
  bot() {
-  if (process.argv.includes(`--bot`)) require("../bot/index")(this.client);
+  if (process.argv.includes(`--bot`)) require("../bot/index")(this);
   return true;
  }
- // WIP | /web/web.js
  web() {
-  if (process.argv.includes(`--api`)) require("../dashboard/dashboard")(this.client);
+  if (process.argv.includes(`--dashboard`) || process.argv.includes(`--api`)) require("../dashboard/dashboard")(this);
   return true;
  }
 }
 
-module.exports = { majo };
+module.exports = { Client };

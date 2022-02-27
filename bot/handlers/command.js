@@ -12,6 +12,7 @@ table.setTitleAlign(table.CENTER);
 
 module.exports = async (client) => {
  /* DEPRECATED */
+ console.log(chalk.bold(chalk.green.bold("> ") + chalk.blue.bold("[MAJO.EXE]")) + chalk.cyan.bold(" Please wait... Loading commands..."));
  const commandFiles = await globPromise(`${process.cwd()}/bot/commands/**/*.js`);
  commandFiles.map((value) => {
   const file = require(value);
@@ -34,7 +35,5 @@ module.exports = async (client) => {
    table.addRow(file, "-", error);
   }
  });
-
- console.log(chalk.bold(chalk.green.bold("> ") + chalk.blue.bold("[MAJO.EXE]")) + chalk.cyan.bold(" Please wait... Loading commands..."));
  if (additional_config.show_commands_list == true) console.log(chalk.cyan.bold(table.toString()));
 };
