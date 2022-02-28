@@ -1,4 +1,4 @@
-module.exports = function (input) {
+module.exports = (input) => {
  if (!input) throw new Error("You must provide text!");
  const numWords = ["zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"];
  const charTable = {

@@ -72,6 +72,7 @@
     "passport": "^0.4.1",
     "passport-discord": "^0.1.4",
     "percentagebar": "^1.0.3",
+    "rate-limiter-flexible": "^2.3.6",
     "request-promise-native": "^1.0.9",
     "sequelize": "^6.15.1",
     "striptags": "^3.2.0",
