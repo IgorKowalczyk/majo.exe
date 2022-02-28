@@ -28,6 +28,7 @@ module.exports = (client) => {
  const { promisify } = require("util");
  const globPromise = promisify(glob);
  const all_events = [];
+ const rateLimiterMiddleware = require('./util/ratelimit');
  const port = process.env.PORT || 8080;
  function capitalize(string) {
   return string.charAt(0).toUpperCase() + string.slice(1);
@@ -44,6 +45,7 @@ module.exports = (client) => {
  app.use(helmet.referrerPolicy());
  app.use(helmet.xssFilter());
  app.use(cookieParser());
+ app.use(rateLimiterMiddleware);
  const csrfProtection = csrf({ cookie: true });
  app.use((req, res, next) => {
   res.setHeader("Permissions-Policy", "	accelerometer=(), camera=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), payment=(), usb=(), interest-cohort=()");
