@@ -25,7 +25,7 @@ module.exports = (client) => {
   const { constants } = require("crypto");
   const package = require("../package.json");
   const secure_connection = config.secure_connection == true ? "https://" : "http://";
-  const domain = domain.endsWith("/") ? domain.slice(0, -1) : domain;
+  const domain = process.env.DOMAIN.endsWith("/") ? process.env.DOMAIN.slice(0, -1) : process.env.DOMAIN;
   const { glob } = require("glob");
   const { promisify } = require("util");
   const globPromise = promisify(glob);

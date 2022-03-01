@@ -144,3 +144,5 @@ majo.exe.zip
 # Auto-generated files
 .breakpoints
 !majo
+
+test.js
