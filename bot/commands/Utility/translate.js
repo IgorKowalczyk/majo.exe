@@ -44,7 +44,7 @@ module.exports = {
       return client.createCommandError(message, err);
      });
    } else {
-    return client.createError(`${client.bot_emojis.error} | Please enter a correct language to translate!`);
+    return client.createError(message, `${client.bot_emojis.error} | Please enter a correct language to translate!`);
    }
   } catch (err) {
    console.log(err);
