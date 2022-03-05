@@ -160,6 +160,6 @@ module.exports = {
   },
  ],
  run: async (client, interaction, args) => {
-  require(`./modules/${args[0]}`)(client, interaction)
+  require(`./modules/${args[0]}`)(client, interaction);
  },
 };

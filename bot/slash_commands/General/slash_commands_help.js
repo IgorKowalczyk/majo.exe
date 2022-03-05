@@ -113,10 +113,10 @@ module.exports = {
        });
        cots.push(dir.toLowerCase());
       });
-      client.extra_slash_commands.map(co => {
-        if(co.category.toLowerCase() !== value.toLowerCase()) return;
-        catts.push(` \`/${co.orgin} ${co.name}\``)
-       })
+      client.extra_slash_commands.map((co) => {
+       if (co.category.toLowerCase() !== value.toLowerCase()) return;
+       catts.push(` \`/${co.orgin} ${co.name}\``);
+      });
       if (cots.includes(value.toLowerCase())) {
        const combed = new MessageEmbed()
         .setTitle(`${emo[value.toLowerCase()] || "❔"} \`${capitalize(value.toLowerCase())}\` commands`)
@@ -215,10 +215,10 @@ module.exports = {
      });
      cots.push(dir.toLowerCase());
     });
-    client.extra_slash_commands.map(co => {
-     if(co.category.toLowerCase() !== args[0].toLowerCase()) return;
-     catts.push(` \`/${co.orgin} ${co.name}\``)
-    })
+    client.extra_slash_commands.map((co) => {
+     if (co.category.toLowerCase() !== args[0].toLowerCase()) return;
+     catts.push(` \`/${co.orgin} ${co.name}\``);
+    });
     const command = client.slash_commands.get(args[0].toLowerCase()) || client.extra_slash_commands.get(args[0].toLowerCase());
     if (cots.includes(args[0].toLowerCase())) {
      const combed = new MessageEmbed()
