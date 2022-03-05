@@ -12,10 +12,24 @@ module.exports = async (client) => {
   const file = require(value);
   if (typeof file.name != "string" || typeof file != "object") return console.log(chalk.bold(chalk.green.bold("> ") + chalk.bold(chalk.red(`[/]`))) + chalk.red.bold(` Error while loading ${value.split("/").slice(-1)}: `) + chalk.redBright.dim.bold.underline(`Missing command name or name is not a string!`));
   if (typeof file.description !== "string") return console.log(chalk.bold(chalk.green.bold("> ") + chalk.bold(chalk.red(`[/]`))) + chalk.red.bold(` Error while loading ${value.split("/").slice(-1)}: `) + chalk.redBright.dim.bold.underline(`Missing command description or description is not a string!`));
+  if(file.options) {
+  file.options.forEach(option => {
+   if(option.choices) {
+    option.choices.forEach(cmd => {
+    if(cmd.usage && cmd.category) {
+      client.extra_slash_commands.set(cmd.usage, cmd)
+    }
+   })
+  } else if(option.type === 1) {
+   client.extra_slash_commands.set(option.usage, option)
+  }
+  })
+  }
   client.slash_commands.set(file.name, file);
   slash_commands_array.push(file);
  });
  await client.application.commands.set(slash_commands_array);
+ client.all_commands = client.slash_commands.size + client.slash_commands.size;
  //console.log(chalk.bold(chalk.green.bold("> ") + chalk.blue.bold(`[${client.user.username.toUpperCase().split(" ")[0]}]`)) + chalk.cyan.bold(" Setting permissions for slash commands (/)... Please wait"));
  await fetch(`https://discordapp.com/api/v9/applications/${client.config.id}/commands`, {
   method: "GET",

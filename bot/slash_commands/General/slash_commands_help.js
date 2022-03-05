@@ -43,19 +43,7 @@ module.exports = {
    if (!args[0]) {
     let ccate = [];
     let category_id = 0;
-    // let separator = new Object();
-    // separator = {
-    //  name: "\u200B",
-    //  value: "\u200B",
-    //  inline: true
-    //  }
     readdirSync(`${process.cwd()}/bot/slash_commands/`).forEach((dir) => {
-     //category_id++;
-     // if(category_id % 3 == 0) {
-     //   category_id++;
-     //   categories.push(separator);
-     // }
-     // if (ignored.includes(dir.toLowerCase())) return;
      const commands = readdirSync(`${process.cwd()}/bot/slash_commands/${dir}/`).filter((file) => file.endsWith(".js"));
      // if (ignored.includes(dir.toLowerCase())) return;
      const name = `${emo[dir.toLowerCase()]} ${capitalize(dir)}`;
@@ -77,7 +65,7 @@ module.exports = {
      .setDescription(`> Use the menu, or use ${client.config.domain ? `[\`/help [category]\`](${client.config.domain})` : `\`/help [category]\``} to view commands base on their category!\n\n`)
      .addFields(categories)
      .setFooter({
-      text: `Requested by ${interaction.member.user.tag} • ${client.slash_commands.size} commands in total`,
+      text: `Requested by ${interaction.member.user.tag} • ${client.all_commands} commands in total`,
       iconURL: interaction.member.user.displayAvatarURL({
        dynamic: true,
       }),
@@ -120,17 +108,15 @@ module.exports = {
        let command_names = new Object();
        cmds.map((co) => {
         if (co == undefined) return;
-        /*command_names = {
-            name: `${cmds.length === 0 ? "In progress." : co.cname}`,
-            value: co.des ? `> ${co.des}` : "> No Description",
-            inline: true,
-           };*/
         command_names = ` ${cmds.length === 0 ? "In progress." : co.cname}`;
         catts.push(command_names);
        });
        cots.push(dir.toLowerCase());
       });
-
+      client.extra_slash_commands.map(co => {
+        if(co.category.toLowerCase() !== value.toLowerCase()) return;
+        catts.push(` \`/${co.orgin} ${co.name}\``)
+       })
       if (cots.includes(value.toLowerCase())) {
        const combed = new MessageEmbed()
         .setTitle(`${emo[value.toLowerCase()] || "❔"} \`${capitalize(value.toLowerCase())}\` commands`)
@@ -145,7 +131,7 @@ module.exports = {
          })
         )
         .setFooter({
-         text: `Requested by ${interaction.member.user.tag} • ${client.slash_commands.size} commands in total`,
+         text: `Requested by ${interaction.member.user.tag} • ${client.all_commands} commands in total`,
          iconURL: interaction.member.user.displayAvatarURL({
           dynamic: true,
          }),
@@ -203,6 +189,7 @@ module.exports = {
      });
     });
    } else {
+    let command_names = new Object();
     let catts = [];
     readdirSync(`${process.cwd()}/bot/slash_commands/`).forEach((dir) => {
      if (dir.toLowerCase() !== args[0].toLowerCase()) return;
@@ -221,7 +208,6 @@ module.exports = {
       return obj;
      });
 
-     let command_names = new Object();
      cmds.map((co) => {
       if (co == undefined) return;
       command_names = ` ${cmds.length === 0 ? "In progress." : co.cname}`;
@@ -229,13 +215,16 @@ module.exports = {
      });
      cots.push(dir.toLowerCase());
     });
-    const command = client.slash_commands.get(args[0].toLowerCase());
+    client.extra_slash_commands.map(co => {
+     if(co.category.toLowerCase() !== args[0].toLowerCase()) return;
+     catts.push(` \`/${co.orgin} ${co.name}\``)
+    })
+    const command = client.slash_commands.get(args[0].toLowerCase()) || client.extra_slash_commands.get(args[0].toLowerCase());
     if (cots.includes(args[0].toLowerCase())) {
      const combed = new MessageEmbed()
       .setTitle(`${emo[args[0].toLowerCase()] || "❔"} \`${capitalize(args[0])}\` commands`)
       .setAuthor({ name: `${client.user.username} Help`, iconURL: client.user.displayAvatarURL() })
       .setDescription(`>${catts || "In progress"}`)
-      //.addFields(catts)
       .setColor("#5865F2")
       .setThumbnail(
        client.user.displayAvatarURL({
@@ -244,7 +233,7 @@ module.exports = {
        })
       )
       .setFooter({
-       text: `Requested by ${interaction.member.user.tag} • ${client.slash_commands.size} commands in total`,
+       text: `Requested by ${interaction.member.user.tag} • ${client.all_commands} commands in total`,
        iconURL: interaction.member.user.displayAvatarURL({
         dynamic: true,
        }),

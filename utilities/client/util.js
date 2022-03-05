@@ -12,12 +12,14 @@ module.exports = function (client) {
  client.backupManager = backup;
  client.max_input = config.max_input;
  client.backupManager.setStorageFolder(`${process.cwd()}/database`);
- client.prefix = process.env.PREFIX; // WIP - Per server prefix
+ client.prefix = process.env.PREFIX; // DEPRECATED
  client.commands = new Discord.Collection();
  client.aliases = new Discord.Collection();
  client.slash_commands = new Discord.Collection();
+ client.extra_slash_commands = new Discord.Collection();
  client.snipes = new Discord.Collection();
  client.queue = new Map();
+ client.all_commands = 0;
  client.giveawaysManager = require("../giveaways")(client);
  if (additional_config.pm2.enabled == true) {
   if (additional_config.pm2.metrics.messages_seen == true) {
@@ -59,10 +61,6 @@ module.exports = function (client) {
  }
  const logs = require("discord-logs");
  logs(client);
- process.env.SESSION_SECRET = "";
- for (let i = 0; i <= 15; i++) {
-  process.env.SESSION_SECRET += Math.random().toString(16).slice(2, 8).toUpperCase().slice(-6) + i;
- }
  client.createCommandError = function (message, err) {
   if (!message) throw new Error("You must provide message object to create new error!");
   const error = new Discord.MessageEmbed() // Prettier

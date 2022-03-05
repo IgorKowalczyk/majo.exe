@@ -11,11 +11,17 @@ module.exports = {
    name: "coin",
    description: "🪙 Flip coin",
    type: 1,
+   usage: `/flip coin`,
+   category: "Fun",
+   orgin: "flip",
   },
   {
    name: "text",
    description: "🔁 Flip text",
    type: 1,
+   usage: `/flip text`,
+   category: "Fun",
+   orgin: "flip",
    options: [
     {
      name: "text",
