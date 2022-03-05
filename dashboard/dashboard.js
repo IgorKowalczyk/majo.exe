@@ -160,7 +160,6 @@ module.exports = (client) => {
    const limiter = rate_limit({
     windowMs: 60 * 1000, // 1 minute
     max: 60,
-    message: "my initial message",
     handler: function (req, res) {
      renderTemplate(res, req, "rate_limit.ejs", {
       perms: Permissions,
@@ -169,6 +168,18 @@ module.exports = (client) => {
    });
    app.use(limiter);
 
+   function errorPage(req, res, alert) {
+    if (alert) {
+     renderTemplate(res, req, "error.ejs", {
+      perms: Permissions,
+      alert: alert,
+     });
+    } else {
+     renderTemplate(res, req, "error.ejs", {
+      perms: Permissions,
+     });
+    }
+   }
    // Login endpoint.
    app.get(
     "/login",
@@ -300,9 +311,7 @@ module.exports = (client) => {
 
    // Dashboard error handler
    app.get("/error", (req, res) => {
-    renderTemplate(res, req, "error.ejs", {
-     perms: Permissions,
-    });
+    errorPage(req, res);
    });
 
    // Something ;)
@@ -321,11 +330,11 @@ module.exports = (client) => {
     const data = req.body;
     if (!data) {
      res.status(400);
-     return res.redirect("/error?message=no+data+send");
+     return errorPage(req, res, "No data was sent!");
     }
     if (!data.id) {
      res.status(401);
-     return res.redirect("/error?message=please+login");
+     return errorPage(req, res, "You must be logged in to perform this action!");
     }
     if (!data.name || data.name.length < 1) {
      return renderTemplate(res, req, "contact.ejs", {
@@ -403,12 +412,12 @@ module.exports = (client) => {
    // Settings endpoint.
    app.get("/dashboard/:guildID", csrfProtection, checkAuth, async (req, res) => {
     const guild = await client.guilds.cache.get(req.params.guildID);
-    if (!guild) return res.redirect("/error?message=no+guild");
+    if (!guild) return errorPage(req, res, "No such server, add a bot to perform this action!");
     const first_member = req.user.id;
     await guild.members.fetch({ first_member });
     const member = guild.members.cache.get(req.user.id);
-    if (!member) return res.redirect("/error?message=no+member");
-    if (!member.permissions.has("MANAGE_GUILD")) return res.redirect("/error?message=missing+perm");
+    if (!member) return errorPage(req, res, "You must be on this server to perform this action!");
+    if (!member.permissions.has("MANAGE_GUILD")) return errorPage(req, res, "You do not have the MANAGE_GUILD permissions!");
     client.database.query(`SELECT \`joins\` as 'join', \`leaves\` as 'leave', \`last_updated\` as 'ls' from \`guild_stats\` WHERE \`guild_id\` = ${guild.id}`, async function (serror, results, sfields) {
      if (serror) console.log(serror);
      if (results[0]) {
@@ -446,16 +455,16 @@ module.exports = (client) => {
    // Settings save endpoint
    app.post("/dashboard/:guildID", csrfProtection, checkAuth, async (req, res) => {
     const guild = await client.guilds.cache.get(req.params.guildID);
-    if (!guild) return res.redirect("/error?message=no+guild");
+    if (!guild) return errorPage(req, res, "No such server, add a bot to perform this action!");
     const first_member = req.user.id;
     await guild.members.fetch({ first_member });
     const member = guild.members.cache.get(req.user.id);
-    if (!member) return res.redirect("/error?message=no+member");
-    if (!member.permissions.has("MANAGE_GUILD")) return res.redirect("/error?message=missing+perm");
+    if (!member) return errorPage(req, res, "You must be on this server to perform this action!");
+    if (!member.permissions.has("MANAGE_GUILD")) return errorPage(req, res, "You do not have the MANAGE_GUILD permissions!");
     const data = req.body;
     if (!data) {
      res.status(403);
-     return res.redirect("/error?message=no+data+send");
+     return errorPage(req, res, "No data send!");
     }
     const nickname = data.nickname;
     if (nickname && nickname.length < 1) nickname = guild.me.nickname || guild.me.user.username;
@@ -501,12 +510,12 @@ module.exports = (client) => {
 
    app.get("/dashboard/:guildID/roles", checkAuth, async (req, res) => {
     const guild = await client.guilds.cache.get(req.params.guildID);
-    if (!guild) return res.redirect("/error?message=no+guild");
+    if (!guild) return errorPage(req, res, "No such server, add a bot to perform this action!");
     const first_member = req.user.id;
     await guild.members.fetch({ first_member });
     const member = guild.members.cache.get(req.user.id);
-    if (!member) return res.redirect("/error?message=no+member");
-    if (!member.permissions.has("MANAGE_GUILD")) return res.redirect("/error?message=missing+perm");
+    if (!member) return errorPage(req, res, "You must be on this server to perform this action!");
+    if (!member.permissions.has("MANAGE_GUILD")) return errorPage(req, res, "You do not have the MANAGE_GUILD permissions!");
     renderTemplate(res, req, "/server/roles.ejs", {
      guild: guild,
      perms: Permissions,
@@ -516,15 +525,15 @@ module.exports = (client) => {
 
    app.get("/dashboard/:guildID/roles/:roleID", checkAuth, async (req, res) => {
     const guild = await client.guilds.cache.get(req.params.guildID);
-    if (!guild) return res.redirect("/error?message=no+guild");
-    if (!req.params.roleID) return res.redirect("/error?message=no+role");
+    if (!guild) return errorPage(req, res, "No such server, add a bot to perform this action!");
+    if (!req.params.roleID) return errorPage(req, res, "There is no such role! You cannot display information about it");
     const first_member = req.user.id;
     await guild.members.fetch({ first_member });
     const member = guild.members.cache.get(req.user.id);
-    if (!member) return res.redirect("/error?message=no+member");
-    if (!member.permissions.has("MANAGE_GUILD")) return res.redirect("/error?message=missing+perm");
+    if (!member) return errorPage(req, res, "You must be on this server to perform this action!");
+    if (!member.permissions.has("MANAGE_GUILD")) return errorPage(req, res, "You do not have the MANAGE_GUILD permissions!");
     const role = guild.roles.cache.find((role) => role.id === req.params.roleID);
-    if (!role) return res.redirect("/error?message=invaild+role");
+    if (!role) return errorPage(req, res, "There is no such role! You cannot display information about it");
     renderTemplate(res, req, "/server/role-info.ejs", {
      guild: guild,
      perms: Permissions,
@@ -535,12 +544,12 @@ module.exports = (client) => {
 
    app.get("/dashboard/:guildID/embeds", csrfProtection, checkAuth, async (req, res) => {
     const guild = await client.guilds.cache.get(req.params.guildID);
-    if (!guild) return res.redirect("/error?message=no+guild");
+    if (!guild) return errorPage(req, res, "No such server, add a bot to perform this action!");
     const first_member = req.user.id;
     await guild.members.fetch({ first_member });
     const member = guild.members.cache.get(req.user.id);
-    if (!member) return res.redirect("/error?message=no+member");
-    if (!member.permissions.has("MANAGE_GUILD")) return res.redirect("/error?message=missing+perm");
+    if (!member) return errorPage(req, res, "You must be on this server to perform this action!");
+    if (!member.permissions.has("MANAGE_GUILD")) return errorPage(req, res, "You do not have the MANAGE_GUILD permissions!");
     renderTemplate(res, req, "/server/embeds.ejs", {
      guild: guild,
      perms: Permissions,
@@ -550,12 +559,12 @@ module.exports = (client) => {
 
    app.post("/dashboard/:guildID/embeds", csrfProtection, checkAuth, async (req, res) => {
     const guild = await client.guilds.cache.get(req.params.guildID);
-    if (!guild) return res.redirect("/error?message=no+guild");
+    if (!guild) return errorPage(req, res, "No such server, add a bot to perform this action!");
     const first_member = req.user.id;
     await guild.members.fetch({ first_member });
     const member = guild.members.cache.get(req.user.id);
-    if (!member) return res.redirect("/error?message=no+member");
-    if (!member.permissions.has("ADMINISTRATOR")) return res.redirect("/error?message=missing+perm");
+    if (!member) return errorPage(req, res, "You must be on this server to perform this action!");
+    if (!member.permissions.has("ADMINISTRATOR")) return errorPage(req, res, "You do not have the ADMINISTRATOR permission!");
     const channel = guild && guild.channels.cache.get(req.body.to);
     const data = req.body.json;
     if (!guild || !channel || !data) return res.status(400).send("Some data is missing");
@@ -571,12 +580,12 @@ module.exports = (client) => {
 
    app.get("/dashboard/:guildID/logging", csrfProtection, checkAuth, async (req, res) => {
     const guild = await client.guilds.cache.get(req.params.guildID);
-    if (!guild) return res.redirect("/error?message=no+guild");
+    if (!guild) return errorPage(req, res, "No such server, add a bot to perform this action!");
     const first_member = req.user.id;
     await guild.members.fetch({ first_member });
     const member = guild.members.cache.get(req.user.id);
-    if (!member) return res.redirect("/error?message=no+member");
-    if (!member.permissions.has("MANAGE_GUILD")) return res.redirect("/error?message=missing+perm");
+    if (!member) return errorPage(req, res, "You must be on this server to perform this action!");
+    if (!member.permissions.has("MANAGE_GUILD")) return errorPage(req, res, "You do not have the MANAGE_GUILD permissions!");
     renderTemplate(res, req, "/server/logging.ejs", {
      guild: guild,
      perms: Permissions,
@@ -587,12 +596,12 @@ module.exports = (client) => {
 
    app.get("/dashboard/:guildID/messages", csrfProtection, checkAuth, async (req, res) => {
     const guild = await client.guilds.cache.get(req.params.guildID);
-    if (!guild) return res.redirect("/error?message=no+guild");
+    if (!guild) return errorPage(req, res, "No such server, add a bot to perform this action!");
     const first_member = req.user.id;
     await guild.members.fetch({ first_member });
     const member = guild.members.cache.get(req.user.id);
-    if (!member) return res.redirect("/error?message=no+member");
-    if (!member.permissions.has("MANAGE_GUILD")) return res.redirect("/error?message=missing+perm");
+    if (!member) return errorPage(req, res, "You must be on this server to perform this action!");
+    if (!member.permissions.has("MANAGE_GUILD")) return errorPage(req, res, "You do not have the MANAGE_GUILD permissions!");
     const sqlquery = "SELECT `leave`.`guildid` AS `guild_id`, `leave`.`channelid` AS `leave`, `welcome`.`channelid` AS `welcome` FROM `leave` INNER JOIN welcome ON `leave`.`guildid` = `welcome`.`guildid` WHERE `leave`.guildid = " + guild.id;
     await client.database.query(sqlquery, async function (error, results, fields) {
      if (results[0]) {
@@ -615,12 +624,12 @@ module.exports = (client) => {
 
    app.post("/dashboard/:guildID/messages", csrfProtection, checkAuth, async (req, res) => {
     const guild = await client.guilds.cache.get(req.params.guildID);
-    if (!guild) return res.redirect("/error?message=no+guild");
+    if (!guild) return errorPage(req, res, "No such server, add a bot to perform this action!");
     const first_member = req.user.id;
     await guild.members.fetch({ first_member });
     const member = guild.members.cache.get(req.user.id);
-    if (!member) return res.redirect("/error?message=no+member");
-    if (!member.permissions.has("MANAGE_GUILD")) return res.redirect("/error?message=missing+perm");
+    if (!member) return errorPage(req, res, "You must be on this server to perform this action!");
+    if (!member.permissions.has("MANAGE_GUILD")) return errorPage(req, res, "You do not have the MANAGE_GUILD permissions!");
     const data = req.body;
     if (data) {
      client.database.query(`SELECT \`leave\`.\`guildid\` AS \`guild_id\`, \`leave\`.\`channelid\` AS \`leave\`, \`welcome\`.\`channelid\` AS \`welcome\` FROM \`leave\` INNER JOIN \`welcome\` ON \`leave\`.\`guildid\` = \`welcome\`.\`guildid\` WHERE \`leave\`.\`guildid\` = ${guild.id}`, async function (error, results, fields) {
