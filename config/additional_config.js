@@ -3,15 +3,15 @@ module.exports = {
   // Send app statistics to PM2 Dashboard [only works if the application has been started with pm2 and pm2 is linked to the panel]
   enabled: true, // boolean
   metrics: {
-   messages_seen: true, // Boolean. Counter for all messages seen by bot DEPRECATED
-   commands_used: true, // Boolean. Counter for all commands requested DEPRECATED
+   messages_seen: true, // Boolean. Counter for all messages seen by bot [DEPRECATED]
+   commands_used: true, // Boolean. Counter for all commands requested [DEPRECATED]
    slash_commands_used: true, // Boolean. Counter for all slash commands requested
    ws_ping: true, // Boolean. Meter for client ping
    users_count: true, // Boolean. Counter for all users seen by bot
    guilds_count: true, // Boolean. Counter for all bot guilds
   },
  },
- show_errors_on_no_command: true, // Show errors when no command was found. Example: {prefix} help -> output | {prefix} no_command -> nothing DEPRECATED
+ show_errors_on_no_command: true, // Show errors when no command was found. Example: {prefix} help -> output | {prefix} no_command -> nothing [DEPRECATED]
  help_embed: {
   grid: true, // Use grid for fields in help command embed
   display_news: false,
