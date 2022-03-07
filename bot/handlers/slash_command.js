@@ -39,16 +39,16 @@ module.exports = async (client) => {
  })
   .then((res) => res.json())
   .then((body) => {
-   if(body) {
-   body.forEach((obj) => {
-    if (obj.default_permission != true) {
-     const cmd = client.slash_commands.get(obj.name);
-     client.application.commands.permissions.add({ command: obj.id, permissions: cmd.permissions, guild: client.config.support_server_id });
-    }
-   });
-  }
+   if (body) {
+    body.forEach((obj) => {
+     if (obj.default_permission != true) {
+      const cmd = client.slash_commands.get(obj.name);
+      client.application.commands.permissions.add({ command: obj.id, permissions: cmd.permissions, guild: client.config.support_server_id });
+     }
+    });
+   }
   });
-  
+
  //console.log(chalk.bold(chalk.green.bold("> ") + chalk.blue.bold(`[${client.user.username.toUpperCase().split(" ")[0]}]`)) + chalk.cyan.bold(" Setting permissions for slash commands (/) done!"));
  console.log(chalk.bold(chalk.green.bold("> ") + chalk.blue.bold(`[${client.user.username.toUpperCase().split(" ")[0]}]`)) + chalk.cyan.bold(" Successfully loaded " + chalk.blue.underline(`${client.slash_commands.size}`) + " slash commands! (/)"));
 };
