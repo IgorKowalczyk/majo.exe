@@ -31,8 +31,8 @@ module.exports = {
    if (!result) {
     return client.createSlashError(interaction, `${client.bot_emojis.error} | Please input code to evaluate!`);
    }
-   if (result.length > 1024) {
-    return client.createSlashError(interaction, `${client.bot_emojis.error} | Command can't be longer than \`1024\` characters!`);
+   if (result.length > 3024) {
+    return client.createSlashError(interaction, `${client.bot_emojis.error} | Command can't be longer than \`3024\` characters!`);
    }
    let evaluated = eval(result);
    let type = typeof evaluated;

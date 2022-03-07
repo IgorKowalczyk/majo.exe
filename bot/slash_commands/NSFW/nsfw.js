@@ -14,13 +14,13 @@ module.exports = {
    type: 3,
    choices: [
     {
-        name: "4k",
-        value: "anal",
-        description: "🔞 4K nsfw image or gif",
-        usage: "/nsfw 4k",
-        category: "NSFW",
-        orgin: "nsfw",
-       },
+     name: "4k",
+     value: "anal",
+     description: "🔞 4K nsfw image or gif",
+     usage: "/nsfw 4k",
+     category: "NSFW",
+     orgin: "nsfw",
+    },
     {
      name: "anal",
      value: "anal",
