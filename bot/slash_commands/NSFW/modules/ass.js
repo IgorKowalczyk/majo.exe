@@ -37,7 +37,7 @@ module.exports = async (client, interaction) => {
    interaction.followUp({ embeds: [embed] });
   } catch (err) {
    console.log(err);
-   return client.createCommandError(interaction, err);
+   return client.createSlashCommandError(interaction, err);
   }
  })();
 };
