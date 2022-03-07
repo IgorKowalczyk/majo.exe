@@ -19,11 +19,10 @@ module.exports = async (client, interaction) => {
      .setImage("https://media.discordapp.net/attachments/721019707607482409/855827123616481300/nsfw.gif");
     return interaction.followUp({ embeds: [nsfwembed] });
    }
-   const response = await fetch("http://api.nekos.fun:8080/api/anal");
+   const response = await fetch("http://api.oboobs.ru/boobs/0/1/random");
    const body = await response.json();
    const embed = new MessageEmbed() // Prettier
-    .setTitle(":smirk: Anal")
-    .setImage(body.image)
+    .setTitle(":smirk: Boobs")
     .setColor("RANDOM")
     .setFooter({
      text: `Requested by ${interaction.user.username}`,
@@ -33,8 +32,8 @@ module.exports = async (client, interaction) => {
       size: 2048,
      }),
     })
-    .setTimestamp()
-    .setURL(body.image);
+    .setImage(`http://media.oboobs.ru/${body[0].preview}`)
+    .setTimestamp();
    interaction.followUp({ embeds: [embed] });
   } catch (err) {
    console.log(err);
