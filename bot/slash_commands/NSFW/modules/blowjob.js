@@ -4,7 +4,7 @@ const fetch = require("node-fetch");
 module.exports = async (client, interaction) => {
  (async () => {
   try {
-   if (!Interaction.channel.nsfw) {
+   if (!interaction.channel.nsfw) {
     const nsfwembed = new MessageEmbed()
      .setColor("RED")
      .setDescription(`${client.bot_emojis.anger} | You can use this command only in an NSFW Channel!`)

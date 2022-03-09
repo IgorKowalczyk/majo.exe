@@ -4,7 +4,7 @@ module.exports = {
  name: "nsfw",
  description: "🍑 Something he he",
  usage: "/nsfw <command>",
- category: "Fun",
+ category: "NSFW",
  nsfw: true,
  options: [
   {
