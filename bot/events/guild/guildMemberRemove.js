@@ -32,11 +32,12 @@ module.exports = async (client, member) => {
      client.database.query(`UPDATE guild_stats SET leaves = '${JSON.stringify(empty_stats)}', joins = '${JSON.stringify(empty_stats)}', last_updated = '${moment(new Date()).format("YYYY-MM-DD")}' WHERE guild_id = ${member.guild.id}`, function (fixerror, fixresults, fixfields) {
       if (fixerror) console.log(fixerror);
      });
-    }
+    } else {
     array_stats[`${moment().year()}/${moment().format("MM")}/${current_day}`]++;
     client.database.query(`UPDATE guild_stats SET leaves = '${JSON.stringify(array_stats)}', last_updated = '${moment(new Date()).format("YYYY-MM-DD")}' WHERE guild_id = ${member.guild.id}`, function (ferror, fresults, fields) {
      if (ferror) console.log(ferror);
     });
+   }
    }
   });
   const image = `${process.cwd()}/src/img/welcome-gray.png`;
