@@ -311,7 +311,7 @@ module.exports = (client) => {
 
    // Dashboard error handler
    app.get("/error", (req, res) => {
-    errorPage(req, res);
+    return errorPage(req, res);
    });
 
    // Something ;)
