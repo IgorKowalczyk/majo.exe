@@ -2,20 +2,20 @@ const { MessageEmbed } = require("discord.js");
 const fetch = require("node-fetch");
 
 module.exports = {
-    name: "fuck",
-    description: "🍑 Fuck a user",
-    usage: "/fuck <user>",
-    category: "NSFW",
-    nsfw: true,
-    options: [
-      {
-       name: "user",
-       description: "User who will be fucked",
-       required: true,
-       type: 6,
-      },
-     ],
-  run: async (client, interaction, args) => {
+ name: "fuck",
+ description: "🍑 Fuck a user",
+ usage: "/fuck <user>",
+ category: "NSFW",
+ nsfw: true,
+ options: [
+  {
+   name: "user",
+   description: "User who will be fucked",
+   required: true,
+   type: 6,
+  },
+ ],
+ run: async (client, interaction, args) => {
   (async () => {
    try {
     const member = interaction.guild.members.cache.get(args[0]);
