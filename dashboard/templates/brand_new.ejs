@@ -1,0 +1,171 @@
+<%- include("includes/head", { bot, user, path, description, title, twitter, url }) %>
+<% function capitalize(string) { return string.charAt(0).toUpperCase() + string.slice(1); } %>
+<% if (bot.user.avatar) { botavatar = `https://cdn.discordapp.com/avatars/${bot.user.id}/${bot.user.avatar}.webp?size=256`; } else { botavatar = `${secure_connection + domain}/pics/invaild-avatar.png`; } %>
+
+
+<style>
+@import url('https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800,900&display=swap');
+.brand_new_avatar {
+float: right;
+box-shadow: 0 0px 60px rgba(77, 160, 255, 0.17);
+animation: pulse_green 4s infinite;
+height: 214px;
+width: 214px;
+}
+
+.brand_new_hero_small_title {
+ text-transform: uppercase;
+ font-family: "Poppins";
+ font-size: 20px;
+ font-weight: 800;
+ margin: 0;
+ line-height: 1em;
+}
+
+@keyframes pulse_green {
+ 0% {
+  transform: scale(0.95);
+   box-shadow: 0 0px 40px rgba(0, 0, 0, 0.17);
+ }
+ 70% {
+  transform: scale(1.05);
+   box-shadow: 0 0px 60px rgba(0, 0, 0, 0.17);
+ }
+ 100% {
+  transform: scale(0.95);
+   box-shadow: 0 0px 40px rgba(0, 0, 0, 0.17);
+ }
+}
+
+.brand_new_hero_section {
+ display: flex;
+ width: 100%;
+ align-items: center;
+ height: 100vh;
+ padding: 100px;
+ padding-bottom: 0;
+background-attachment: fixed;
+background-position: center;
+background-image: url("../svg/background.svg");
+background-color: rgba(var(--main-page-accent));
+}
+
+.brand_new_header_line {
+ margin-bottom: 0.1em;
+ font-family: "Poppins";
+ margin-top: 5px;
+ font-size: 40px;
+ font-weight: 800;
+ line-height: 1em;
+ text-align: left;
+ text-transform: uppercase;
+}
+
+.promo_gradient_one {
+background: -webkit-linear-gradient(-70deg, #db469f 0%, #2188ff 100%);
+background-clip: border-box;
+-webkit-background-clip: text;
+background-clip: text;
+-webkit-text-fill-color: transparent;
+}
+
+.brand_new_description {
+font-family: "Poppins";
+font-size: 21px;
+max-width: 65%;
+padding-bottom: 20px;
+line-height: 32px !important;
+}
+
+.brand_new_hero_grid {
+ max-width: 80%;
+ margin: 0 auto;
+}
+
+.link-button {
+ margin-left: 0;
+}
+
+.stats {
+ border-bottom: 1px solid rgba(255,255,255,0.1);
+ padding-top: 24px;
+ padding-bottom: 24px;
+ text-align: center;
+ font-family: "Poppins";
+ max-width: 80%;
+ margin: 0 auto;
+}
+
+  .stats_column_title {
+    margin: 0;
+  }
+  .stats_collumn_small {
+    text-align: left;
+    margin: 0;
+    padding: 0;
+  }
+.stats_inner {
+ display: flex;
+ justify-content: space-between;
+ margin-right: -24px;
+ margin-left: -24px;
+ width: 100%;
+}
+.text-white-fade {
+ color: rgba(255,255,255,.7);
+}
+</style>
+<section class="brand_new_hero_section">
+  <div class="brand_new_hero_grid">
+   <img class="img brand_new_avatar" src="<%= botavatar %>" alt="Avatar" />
+   <p class="brand_new_hero_small_title">Hi! I'm <%= capitalize(bot.user.username) %>!</p>
+    <p class="brand_new_header_line promo_gradient_one">The only one bot</p>
+    <p class="brand_new_header_line">you will ever need!</p>
+   <p class="brand_new_description">I have almost everything - Fun, Memes, Images, Giveaway, Economy, Anime and NSFW! I serve over 150 commands To get started with me just login with your Discord account</p>
+   <a href="<%= secure_connection %><%= domain %>/login" class="link-button green">Get Started</a>
+   <a href="#feautures" class="link-button">Learn More</a>
+  </div>
+</section>
+
+<div class="stats">
+<div class="stats_inner">
+ <div class="stats_column">
+  <h2 class="stats_column_title"><%= bot.guilds.cache.reduce((a, g) => a + g.memberCount, 0) %><span class="text-white-fade">+</span> Users</h2>
+ </div>
+ <div class="stats_column">
+  <h2 class="stats_column_title"><%= bot.guilds.cache.size %><span class="text-white-fade">+</span> Servers</h2>
+ </div>
+   <div class="stats_column">
+  <h2 class="stats_column_title"><%= bot.channels.cache.size %><span class="text-white-fade">+</span> Channels</h2>
+ </div>
+</div>
+</div>
+<link rel="stylesheet" type="text/css" href="<%= secure_connection %><%= domain %>/css/cards.css" />
+
+<div class="content-container">
+ <div id="feautures" class="product-row">
+  <div class="product-image">
+   <img src="<%= secure_connection %><%= domain %>/pics/feautures/1.webp" alt="Many commands!"/>
+  </div>
+  <div class="product-text">
+   <h2 class="product-title">Many commands!</h2>
+   <p><%= bot.user.username.split(" ")[0] %> has more than 150 commands. From memes to moderation commands. Everything is clear and quick to use!</p>
+  </div>
+ </div>
+ <div class="product-row">
+  <div class="product-image">
+   <img src="<%= secure_connection %><%= domain %>/pics/feautures/2.webp" alt="More reactions!"/>
+  </div>
+  <div class="product-text">
+   <h2 class="product-title">More reactions!</h2>
+   <p><%= bot.user.username.split(" ")[0] %> also allows you to send pictures for any occasion, you can fight a person and then hug them ^.^</p>
+  </div>
+ </div>
+</div>
+<div class="content-container">
+ <h2 class="more-header">Ready to boost your server?</h2>
+ <p class="more-text"><%= bot.user.username.split(" ")[0] %> is the best discord bot to grow your Discord server!</p>
+ <a href="<%= secure_connection %><%= domain %>/invite %>" class="link-button blue center-button">Invite <%= bot.user.username.split(" ")[0] %> now!</a>
+</div>
+
+<%- include("includes/footer") %>
