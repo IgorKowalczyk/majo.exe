@@ -1,102 +1,80 @@
 <%- include("includes/head", { bot, user, path, description, title: "Status" , twitter, url }) %>
+<link rel="stylesheet" type="text/css" href="<%= secure_connection %><%= domain %>/css/status.css">
 <% if (user) { %>
 <% const checked = "status" %>
 <%- include("includes/side_nav_other", { bot, user, path, checked_nav: checked }) %>
-  <style>
-    @media screen and (min-width: 950px) {
-    .container {
-      max-width: unset;
-margin: 0 auto;
-    margin-top: 0px;
-    margin-left: auto;
-margin-left: 270px;
-margin-top: 60px;
-transition: 300ms all;
-    }
-    .boxes {
-      max-width: 800px;
-    }
-    }
-    </style>
+<style>
+ @media screen and (min-width: 950px) {
+  .container {
+   max-width: unset;
+   margin: 0 auto;
+   margin-top: 0px;
+   margin-left: auto;
+   margin-left: 270px;
+   margin-top: 60px;
+   transition: 300ms all;
+  }
+  .boxes {
+   max-width: 800px;
+  }
+ }
+</style>
 <% } %>
- <div class="container">
-  <% function capitalize(string) { return string.charAt(0).toUpperCase() + string.slice(1); } %>
-
+<div class="container">
+ <% function capitalize(string) { return string.charAt(0).toUpperCase() + string.slice(1); } %>
 <% if (bot.user.avatar) { botavatar = `https://cdn.discordapp.com/avatars/${bot.user.id}/${bot.user.avatar}?size=256`; } else { botavatar = `${secure_connection + domain}/pics/invaild-avatar.png`; } %>
-   <h1 class="headerinfo">
-  <img class="img statusimg" src="<%= botavatar %>" alt="Avatar" />
-    <a style="color: #fff" href="https://discord.com/users/<%= bot.user.id %>" target="_blank" rel="noopener"><%= capitalize(bot.user.username) %></a>
-   </h1>
-   <% let status = bot.user.presence.status; %>
-   <style> 
-   .statusimg {
-    border: 3px solid;
-    display: block;
-    }
-       <% if(status == "online") { %>
-    .statusimg { border-color: #3ba55d }
-    <% } else if(status == "idle") { %>
-    .statusimg { border-color: #faa81a }
-   <% } else if(status == "dnd") { %>
-       .statusimg { border-color: #ed4245 }
-       <% } else { %>
-              .statusimg { border-color: #fff }
-              <% } %>
-   </style>
-<!--
-   <div class="boxes">
-    <div class="box box1">
-     <div class="boxcontainter">
-      <h3 class="boxheader">
-       <%= bot.guilds.cache.size %>
-      </h3>
-      <p class="heading">Guilds</p>
-     </div>
-    </div>
-    <div class="box box2">
-     <div class="boxcontainter">
-      <h3 class="boxheader">
-       <%= bot.channels.cache.size %>
-      </h3>
-      <p class="heading">Total Channels</p>
-     </div>
-    </div>
-    <div class="box box3">
-     <div class="boxcontainter">
-      <h3 class="boxheader">
-       <%= bot.guilds.cache.reduce((a, g)=> a + g.memberCount, 0) %>
-      </h3>
-      <p class="heading">Total members</p>
-     </div>
-    </div>
-    <div class="box box4">
-     <div class="boxcontainter">
-      <h3 class="boxheader" title="[!] This is Discord API ping, not actual bot ping">
-       <%= Math.round(bot.ws.ping) %>ms
-      </h3>
-      <p class="heading">Ping</p>
-     </div>
-    </div>
-    <div class="box box1">
-     <div class="boxcontainter">
-      <h3 class="boxheader" title="[!] Approximate amout">
-       Soon!
-      </h3>
-      <p class="heading">Total messages send</p>
-     </div>
-    </div>
-    <div class="box box2">
-     <div class="boxcontainter">
-      <h3 class="boxheader" title="[!] Approximate amout">
-       Soon!
-      </h3>
-      <p class="heading">Total commands sent</p>
-     </div>
-    </div>
-   </div>
-   <hr>
--->
-    <p class="uptime">Uptime: <span id="uptime">Fetching...</span>
+<h1 class="headerinfo" style="margin-bottom: 5px;">
+<img class="img statusimg pulse" src="<%= botavatar %>" alt="Avatar" />
+<a style="color: #fff" href="https://discord.com/users/<%= bot.user.id %>" target="_blank" rel="noopener"><%= capitalize(bot.user.username) %><span class="tag">#<%- bot.user.discriminator %></span></a>
+</h1>
+<% let status = bot.user.presence.status; %>
+<style> 
+:root {
+<% if(status == "online") { %>
+ --status-color: 59, 165, 93;
+<% } else if(status == "idle") { %>
+ --status-color: 250, 168, 26;
+<% } else if(status == "dnd") { %>
+ --status-color: 237, 66, 69;
+<% } else { %>
+ --status-color: 255, 255, 255;
+<% } %>
+}
+@keyframes pulse {
+ 0% {
+  transform: scale(0.95);
+  box-shadow: 0 0 0 0 rgba(var(--status-color), 0.7);
+ }
+ 70% {
+  transform: scale(1);
+  box-shadow: 0 0 0 10px rgba(var(--status-color), 0);
+	}
+ 100% {
+  transform: scale(0.95);
+  box-shadow: 0 0 0 0 rgba(var(--status-color), 0);
+ }
+}
+     
+ .statusimg {
+  border: 3px solid;
+  border-color: rgba(var(--status-color));
+  display: block;
+  animation: pulse 2s infinite;
+  margin-bottom: 15px;
+ }
+</style>
+<p class="uptime">Uptime: <span id="uptime">Fetching...</span>
+<div class="legend-wrapper">
+  <div class="legend bg-success">
+    <span class="legend-marker"></span>Operational
+  </div>
+  <div class="legend bg-warning">
+    <span class="legend-marker"></span>Partial Outage
+  </div>
+  <div class="legend bg-error">
+    <span class="legend-marker"></span>Major Outage
+  </div>
+</div>
 <% const timestamp = new Date().getTime() - Math.floor(bot.uptime); %>
 <script type="text/javascript">
 function format({time: time, element: element}) {
@@ -116,16 +94,16 @@ setInterval(function () {
  format({time: new Date().getTime() / 1000 - start, element: el});
 }, 1000);
  </script>
-    <% if (config.status) { %>
-      <% if (config.status_page.only_link) { %>
-        </br>
-     <a class="edit button status reload" href="<%= config.status %>"><span class="reload-container"><%- include('includes/icons/status.ejs') %>Check server's status</span></a>
-        <% } else { %>
+
+<% if (config.status) { %>
+ <% if (config.status_page.only_link) { %>
+  </br>
+  <a class="edit button status reload" href="<%= config.status %>"><span class="reload-container"><%- include('includes/icons/status.ejs') %>Check server's status</span></a>
+ <% } else { %>
 <iframe class="htframe" src="https://wl.hetrixtools.com/r/b327a38f4c3d4cdb1068dfe61e1b2144/" width="100%" scrolling="no" style="border:none;" sandbox="allow-scripts allow-same-origin allow-popups"></iframe>
 <script type="text/javascript" src="https://cdn.rawgit.com/davidjbradshaw/iframe-resizer/master/js/iframeResizer.min.js"></script>
 <script>var iframes = iFrameResize([{log:false}],'.htframe');</script>
-
-          <% } %>
-       <br>
-     <% } %>
-      <%- include("includes/footer") %>
+ <% } %>
+ <br>
+<% } %>
+<%- include("includes/footer") %>
