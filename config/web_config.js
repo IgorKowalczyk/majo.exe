@@ -4,5 +4,5 @@ module.exports = {
  },
  dashboard: {
   // Soon!
- }
-}
+ },
+};

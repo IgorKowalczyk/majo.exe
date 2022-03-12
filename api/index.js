@@ -31,7 +31,7 @@ module.exports = async (app, client, port, config, secure_connection) => {
  const endpoints = await globPromise(`${process.cwd()}/api/endpoints/*/*/*.js`);
  endpoints.map(async (value) => {
   const file = require(value.replace(".js", ""));
-  if(api_config.show_endpoints_list) console.log(chalk.bold(chalk.bold.red("> ") + chalk.blue.bold("[API]")) + chalk.cyan.bold(` Loaded endpoint ${process.env.DOMAIN}${port == 8080 ? "" : `:${port}`}${file.name}`));
+  if (api_config.show_endpoints_list) console.log(chalk.bold(chalk.bold.red("> ") + chalk.blue.bold("[API]")) + chalk.cyan.bold(` Loaded endpoint ${process.env.DOMAIN}${port == 8080 ? "" : `:${port}`}${file.name}`));
   all_endpoints.set(file.name, file);
  });
 };
