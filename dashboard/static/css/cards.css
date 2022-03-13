@@ -130,16 +130,27 @@ img {
 }
 
 .more-header {
- font-size: 30px;
+ font-size: 40px;
  color: #ffffff;
  font-weight: 700;
+ text-transform: uppercase;
  text-align: center;
  font-family: "Poppins";
+ padding: 0;
+ margin: 0;
+}
+
+.yellow-gradient {
+ background: -webkit-linear-gradient(-70deg, #ff7170 0%, #ffe57f 100%);
+ -webkit-background-clip: text;
+ background-clip: text;
+ -webkit-text-fill-color: transparent;
+ -webkit-box-decoration-break: clone;
 }
 
 .more-text {
  color: #ffffff;
- font-weight: 700;
+ font-weight: 400;
  text-align: center;
  font-family: "Poppins";
 }

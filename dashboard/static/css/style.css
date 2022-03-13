@@ -1,16 +1,4 @@
-@font-face {
- font-family: "Roboto-Thin";
- src: url("../fonts/roboto-thin.ttf");
- font-display: swap;
-}
-
-@font-face {
- font-family: "Poppins";
- font-style: normal;
- font-weight: 200;
- font-display: swap;
- src: url("../fonts/poppins.ttf");
-}
+@import url("https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800,900&display=swap");
 
 :root {
  --white: #1a1c20;
@@ -139,6 +127,7 @@ body {
  position: relative;
  padding-bottom: 40px;
  min-height: 100%;
+ font-weight: 300;
 }
 
 .page-content {
@@ -222,7 +211,7 @@ h3,
 h4,
 h5,
 h6 {
- font-weight: 500;
+ font-weight: 200;
  color: #ffffff;
 }
 
@@ -250,7 +239,7 @@ p {
  transition: 300ms all !important;
  z-index: 9999;
  box-shadow: 0 3px 15px 0 rgba(0, 0, 0, 0.1), 0 1px 3px 0 rgba(0, 0, 0, 0.08);
- font-family: "Roboto-Thin";
+ font-family: "Poppins";
 }
 
 .nav ul {
@@ -275,7 +264,7 @@ p {
  text-decoration: none;
  transition: 300ms all;
  color: #fff;
- font-weight: 600;
+ font-weight: 400;
  color: #ccc !important;
  position: relative;
  color: var(--link) !important;
@@ -284,6 +273,7 @@ p {
  background-repeat: no-repeat;
  background-size: 0 2px;
  transition: 300ms, background-size 350ms;
+ font-weight: 200;
 }
 
 .nav li a:hover {
@@ -491,7 +481,7 @@ li {
  align-items: center;
  cursor: pointer;
  float: left;
- padding: 11px 20px !important;
+ padding: 17.7px 20px !important;
  font-size: 20px;
  text-decoration: none;
  font-family: "Poppins";
@@ -524,6 +514,7 @@ li {
  padding: 10px 25px;
  font-weight: bold;
  transition: border 180ms ease-out 0s, background 180ms ease-out 0s;
+ font-weight: 400;
  color: #fff;
  background-color: var(--button);
  border: none;
@@ -602,12 +593,13 @@ li {
 
 .guild-name {
  margin: 0px 1em;
- font-weight: bold;
+ font-weight: 300;
 }
 
 .user-name {
  margin-left: 0.5rem;
- font-weight: 600;
+
+ font-weight: 300;
  color: #ccc;
 }
 
@@ -632,9 +624,8 @@ li {
 .dropdown-li {
  display: flex;
  margin: 5px;
- padding: 10px;
+ padding: 7px;
  font-size: 20px;
- font-weight: 400;
  color: rgb(166, 170, 181);
  -webkit-box-align: center;
  align-items: center;
@@ -642,6 +633,7 @@ li {
  transition: 300ms;
  border-radius: 4px;
  min-width: 200px;
+ font-weight: 200;
 }
 
 .dropdown-li:hover {
@@ -792,6 +784,7 @@ code {
  margin-bottom: 0.1em;
  font-family: "Poppins";
  margin-top: 5px;
+ font-weight: 800;
 }
 
 .hero-title2 {
@@ -815,7 +808,7 @@ code {
  margin: 20px;
  margin-top: 20px;
  margin-left: 10px;
- font-weight: bold;
+ font-weight: 400;
  margin-right: 10px;
 }
 
@@ -847,7 +840,7 @@ code {
 
 .boxes {
  display: grid;
- font-family: "Roboto-Thin";
+ font-family: "Poppins";
  grid-template-columns: 1fr 1fr 1fr 1fr;
  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
  grid-gap: 20px;
@@ -912,8 +905,9 @@ code {
 }
 
 .boxcontainter .heading {
- font-size: 17px;
- font-weight: 500;
+ font-size: 14px;
+ font-weight: 200;
+ margin-top: 10px;
 }
 
 .container {
@@ -934,6 +928,7 @@ code {
  max-width: 150px;
  margin: auto;
  margin-top: 25px;
+ justify-content: center;
  padding: 10px 25px;
 }
 
@@ -941,6 +936,7 @@ code {
  line-height: 100%;
  display: flex;
  align-items: center;
+ justify-content: center;
 }
 
 .status {
@@ -953,7 +949,7 @@ code {
  padding: 10px;
  border-radius: 5px;
  margin-left: 3px;
- font-weight: 800;
+ font-weight: 300;
  cursor: pointer;
  margin-bottom: 5px;
  line-height: 40px;
@@ -975,6 +971,7 @@ code {
  margin-left: auto;
  margin-right: 10px;
  color: var(--spinner);
+ font-weight: 300;
 }
 
 .roles-container {
@@ -996,6 +993,7 @@ code {
  padding: 5px;
  margin: 0;
  border-radius: 5px;
+ font-weight: 200;
 }
 
 .ssvg {

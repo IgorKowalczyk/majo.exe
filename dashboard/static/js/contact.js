@@ -7,7 +7,7 @@ window.onload = () => {
   if (!msg || !msg.value) return msg.focus();
   var v = grecaptcha.getResponse();
   if (v.length == 0) {
-   document.getElementById("captcha").innerHTML = "Invalid Captcha Attempt.";
+   document.getElementById("captcha").innerHTML = "Invalid Captcha Attempt! Please refresh the page";
    return false;
   }
  });

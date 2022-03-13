@@ -149,6 +149,7 @@
  align-items: center;
  color: #ccc;
  text-align: left;
+ font-weight: 300;
 }
 
 .opened {
