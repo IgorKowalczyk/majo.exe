@@ -5,6 +5,10 @@ const Timeout = new Map();
 module.exports = async (client, message) => {
  try {
   if (!message) return;
+  if (message.guild) {
+   if (!message.guild.me.permissions.has("EMBED_LINKS")) return;
+   if (!message.guild.me.permissions.has("SEND_MESSAGES")) return;
+  }
   if (message.content.toLowerCase() == "get the cross") {
    message.react("🤌");
   }
