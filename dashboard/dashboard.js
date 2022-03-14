@@ -297,11 +297,6 @@ module.exports = (client) => {
     renderTemplate(res, req, "index.ejs");
    });
 
-   // Testing endpoint.
-   app.get("/brand-new", (req, res) => {
-    renderTemplate(res, req, "brand_new.ejs");
-   });
-
    // Arc.io file
    app.get("/arc-sw.js", (req, res) => {
     res.sendFile(path.join(__dirname + "/static/js/arc.js"));

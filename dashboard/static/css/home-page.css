@@ -194,3 +194,24 @@
   display: none;
  }
 }
+
+.sparkles {
+ animation: brightness 4s infinite;
+}
+@keyframes brightness {
+ 0% {
+  filter: brightness(100%);
+ }
+ 25% {
+  filter: brightness(150%);
+ }
+ 50% {
+  filter: brightness(120%);
+ }
+ 75% {
+  filter: brightness(60%);
+ }
+ 100% {
+  filter: brightness(100%);
+ }
+}
