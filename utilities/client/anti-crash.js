@@ -5,7 +5,7 @@ const discord_protection = /(?:https?:\/\/)?(?:[^.]+\.)?discord\.com(\/.*)?$/;
 
 module.exports = (client) => {
  process.on("unhandledRejection", (reason, p) => {
-   if(!reason) return;
+  if (!reason) return;
   return errweb.send({
    username: `${client.user.username} Error`,
    avatarURL: client.user.displayAvatarURL({ dynamic: true }),
@@ -21,7 +21,7 @@ module.exports = (client) => {
   });
  });
  process.on("uncaughtException", (err, origin) => {
-  if(!err || !origin) return;
+  if (!err || !origin) return;
   return errweb.send({
    username: `${client.user.username} Error`,
    avatarURL: client.user.displayAvatarURL({ dynamic: true }),
@@ -38,7 +38,7 @@ module.exports = (client) => {
   });
  });
  process.on("uncaughtExceptionMonitor", (err, origin) => {
-  if(!err || !origin) return
+  if (!err || !origin) return;
   return errweb.send({
    username: `${client.user.username} Error`,
    avatarURL: client.user.displayAvatarURL({ dynamic: true }),
@@ -55,7 +55,7 @@ module.exports = (client) => {
   });
  });
  process.on("multipleResolves", (type, promise, reason) => {
-  if(!reason) return
+  if (!reason) return;
   return errweb.send({
    username: `${client.user.username} Error`,
    avatarURL: client.user.displayAvatarURL({ dynamic: true }),
