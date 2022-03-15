@@ -5,7 +5,7 @@ const discord_protection = /(?:https?:\/\/)?(?:[^.]+\.)?discord\.com(\/.*)?$/;
 
 module.exports = (client) => {
  process.on("unhandledRejection", (reason, p) => {
-  //console.log(" [antiCrash] :: Unhandled Rejection/Catch");
+   if(!reason) return;
   return errweb.send({
    username: `${client.user.username} Error`,
    avatarURL: client.user.displayAvatarURL({ dynamic: true }),
@@ -21,7 +21,7 @@ module.exports = (client) => {
   });
  });
  process.on("uncaughtException", (err, origin) => {
-  //console.log(" [antiCrash] :: Uncaught Exception/Catch");
+  if(!err || !origin) return;
   return errweb.send({
    username: `${client.user.username} Error`,
    avatarURL: client.user.displayAvatarURL({ dynamic: true }),
@@ -38,7 +38,7 @@ module.exports = (client) => {
   });
  });
  process.on("uncaughtExceptionMonitor", (err, origin) => {
-  //console.log(" [antiCrash] :: Uncaught Exception/Catch (MONITOR)");
+  if(!err || !origin) return
   return errweb.send({
    username: `${client.user.username} Error`,
    avatarURL: client.user.displayAvatarURL({ dynamic: true }),
@@ -55,7 +55,7 @@ module.exports = (client) => {
   });
  });
  process.on("multipleResolves", (type, promise, reason) => {
-  //console.log(" [antiCrash] :: Multiple Resolves");
+  if(!reason) return
   return errweb.send({
    username: `${client.user.username} Error`,
    avatarURL: client.user.displayAvatarURL({ dynamic: true }),
