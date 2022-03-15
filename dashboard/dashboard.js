@@ -12,6 +12,7 @@ module.exports = (client) => {
   const Strategy = require("passport-discord").Strategy;
   const config = require("../config/main_config");
   const additional_config = require("../config/additional_config");
+  const web_config = require("../config/web_config");
   const ejs = require("ejs");
   const validator = require("validator");
   const fs = require("fs");
@@ -24,7 +25,7 @@ module.exports = (client) => {
   const helmet = require("helmet");
   const { constants } = require("crypto");
   const package = require("../package.json");
-  const secure_connection = config.secure_connection == true ? "https://" : "http://";
+  const secure_connection = web_config.web.secure_connection == true ? "https://" : "http://";
   const domain = process.env.DOMAIN.endsWith("/") ? process.env.DOMAIN.slice(0, -1) : process.env.DOMAIN;
   const { glob } = require("glob");
   const { promisify } = require("util");
@@ -101,7 +102,7 @@ module.exports = (client) => {
     )
    );
    app.use(express.static("dashboard/static"));
-   if (config.secure_connection == true) {
+   if (web_config.web.secure_connection) {
     app.enable("trust proxy");
     app.use((req, res, next) => {
      req.secure ? next() : res.redirect("https://" + req.headers.host + req.url);
@@ -119,6 +120,7 @@ module.exports = (client) => {
     const baseData = {
      bot: client,
      config: config,
+     web_config: web_config,
      hostname: hostname,
      pathname: pathname,
      path: req.path,
@@ -265,14 +267,14 @@ module.exports = (client) => {
    }
 
    // Policy privacy page endpoint.
-   if (config.privacy_policy_page == true) {
+   if (web_config.dashboard.privacy_policy_page) {
     app.get("/privacy-policy", (req, res) => {
      renderTemplate(res, req, "./legal/policy.ejs");
     });
    }
 
    // Policy privacy page endpoint.
-   if (config.terms_of_service_page == true) {
+   if (web_config.dashboard.terms_of_service_page) {
     app.get("/tos", (req, res) => {
      renderTemplate(res, req, "./legal/tos.ejs");
     });
@@ -720,7 +722,7 @@ module.exports = (client) => {
   }
 
   // **See $config/certs folder!**
-  if (config.certs == true) {
+  if (config.web.ssl_certs == true) {
    const http_options = {
     key: fs.readFileSync(path.resolve(__dirname, "../config/certs/server.key")),
     cert: fs.readFileSync(path.resolve(__dirname, "../config/certs/server.cert")),

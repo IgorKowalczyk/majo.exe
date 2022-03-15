@@ -10,12 +10,12 @@
 
 <link rel="stylesheet" type="text/css" href="<%= secure_connection %><%= domain %>/css/style.css" media="all">
 <%- include('./favicons.ejs') %>
-<% if (config.google_analitics) { %>
+<% if (web_config.dashboard.google_analitics) { %>
 <%- include('./analytics.ejs') %>
 <% } %>
 <%- include("./seo", { bot, user, path, description, title, twitter, url }) %>
-<% if(config.arc_token) { %>
-<script async src="https://arc.io/widget.min.js#<%= config.arc_token %>"></script>
+<% if(web_config.dashboard.arc_token) { %>
+<script async src="https://arc.io/widget.min.js#<%= web_config.dashboard.arc_token %>"></script>
 <% } %>
 </head>
 <body>

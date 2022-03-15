@@ -89,7 +89,7 @@ Go to [this link](https://discord.com/oauth2/authorize/?permissions=4294967287&s
 > * `npm init -y && npm i --save-dev node@16 && npm config set prefix=$(pwd)/node_modules/node && export PATH=$(pwd)/node_modules/node/bin:$PATH`
 >
 > If you are hosting the site locally it is best to generate certificates for it. If you have them:
-> 1. Change `certs: false` & `localhost: false` values in `/config/main_config.js` to true
+> 1. Change `certs: false` & `localhost: false` values in `/config/web_config.js` to true
 > 2. Place the `server.cert` & `server.key` certs in `/config/certs/` directory
 
 ---

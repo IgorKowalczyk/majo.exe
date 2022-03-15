@@ -1,19 +1,13 @@
 module.exports = {
  // Main config
- // author: "Majonez.exe#3957", // ->> Banned account
  author: "Majonez.exe#2495", // Bot owner
  author_website: "https://igorkowalczyk.github.io", // Owner website
- // owner_id: "440200028292907048", // ->> Banned account
  owner_id: "544164729354977282", // Owner ID
  description: "Majo.exe - Discord bot for Fun, Memes, Images, Giveaway, Economy, Anime and NSFW! Majo serve over 100 commands!", // Bot description
  support_server: "https://discord.gg/bVNNHuQ", // Support server invite
  support_server_id: "666599184844980224", // Support server ID
  status: "https://bit.ly/majo-status", // Status page link
- status_page: {
-  only_link: false, // Display only link to external status page
-  embed: "https://wl.hetrixtools.com/r/b327a38f4c3d4cdb1068dfe61e1b2144/", // External status page link
- },
- use_text_commands: true, // Allow usage of deprecated text commands [WIP]
+ send_statistics: true, // Every 30 seconds script will send the bot statistics to the Dashboard API (<domain>/dashboard/stats not to be confused with the <domain>/api endpoint!) (API link set in process.env.DASHBOARD) like uptime, CPU Used, RAM Used, Commands Count, etc.
  twitter: "@majonezexe", // Owner twitter
  github: "igorkowalczyk", // Github repository owner
  github_repo: "majo.exe", // Github repository
@@ -36,16 +30,7 @@ module.exports = {
 
  // Dashboard config
  domain: process.env.DOMAIN, // Domain link
- certs: false, // SSL Certs
- localhost: false, // Localhost (redirects from https to http)
- secure_connection: true, // Redirect from http to https
- mysql_errors: false, // Show mysql errors
- privacy_policy_page: true, // Enable privacy policy page
- terms_of_service_page: true, // Enable TOS page
- google_analitics: process.env.ANALYTICS, // Google Analytics ID
- client_secret: process.env.SECRET, // Discord Client secret
  port: process.env.PORT, // Website & API Port
- session_secret: process.env.SESSION_SECRET, // Session Secret (Auto Generated)
- verification: "-wuCsk4qLolXEPSUTGX7YBxywcyNNf5HS2ClzgEWxNY", // Google site verification token
- arc_token: "oFnnmBwr", // Arc.io token
+
+ use_text_commands: true, // Allow usage of deprecated text commands [WIP]
 };

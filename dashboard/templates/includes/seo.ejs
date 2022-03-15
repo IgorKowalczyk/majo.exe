@@ -19,6 +19,6 @@
 <meta name="twitter:url" content="<%= domain %><%= path %>">
 <meta name="twitter:title" content="<% if(title) { %><%- bot.user.username + ' | ' + title %><% } else { %><%- bot.user.username + ' - The best Discord bot' %><% } %>">
 <meta name="twitter:description" content="<%= description %>">
-<% if (config.verification != null) { %>
-<meta name="google-site-verification" content="<%= config.verification %>">
+<% if (web_config.dashboard.google_verification != null) { %>
+<meta name="google-site-verification" content="<%= web_config.dashboard.google_verification %>">
 <% } %>
