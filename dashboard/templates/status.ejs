@@ -63,7 +63,13 @@
   margin-bottom: 15px;
  }
 </style>
-<p class="uptime">Uptime: <span id="uptime">Fetching...</span>
+<% if(statistics && web_config.dashboard.receive_stats) { %>
+ <p class="uptime">Uptime: <span id="uptime">Fetching...</span> <span class="vr">|</span> Ping: <%= statistics.ping %>ms</p>
+ <p class="uptime"><span>CPU: <%= statistics.cpu_usage %>% <span class="vr">|</span> RAM: <%= statistics.ram %>MB <span class="vr">|</span> Drive: <%= statistics.drive %>GB</span></p>
+<% } else { %>
+ <p class="uptime">Uptime: <span id="uptime">Fetching...</span></p>
+<% } %>
+
 <div class="legend-wrapper">
   <div class="legend bg-success">
     <span class="legend-marker"></span>Operational
@@ -75,7 +81,11 @@
     <span class="legend-marker"></span>Major Outage
   </div>
 </div>
-<% const timestamp = new Date().getTime() - Math.floor(bot.uptime); %>
+<% if(statistics && web_config.dashboard.receive_stats) {
+ timestamp = new Date().getTime() - Math.floor(statistics.uptime)
+} else {
+ timestamp = new Date().getTime() - Math.floor(bot.uptime);
+} %>
 <script type="text/javascript">
 function format({time: time, element: element}) {
  let hours = Math.floor(time / 3600)

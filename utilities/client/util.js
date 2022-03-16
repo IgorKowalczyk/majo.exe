@@ -4,6 +4,10 @@ const config = require("../../config/main_config");
 const additional_config = require("../../config/additional_config");
 const backup = require("discord-backup");
 const io = require("@pm2/io");
+const fetch = require("node-fetch");
+const osu = require("node-os-utils");
+const cpu = osu.cpu;
+const drive = osu.drive;
 
 module.exports = function (client) {
  client.config = config;
@@ -111,4 +115,31 @@ module.exports = function (client) {
    );
   return interaction.followUp({ embeds: [error], components: [row] });
  };
+
+ if (config.send_statistics && config.domain && process.env.SECRET) {
+  setInterval(() => {
+   cpu.usage().then((cpupercentage) => {
+    drive.info().then((driveinf) => {
+     const driveinf0 = JSON.stringify(driveinf);
+     const driveinfo = JSON.parse(driveinf0);
+     fetch(`${config.domain}/dashboard/statistics`, {
+      method: "POST",
+      body: JSON.stringify({
+       uptime: client.uptime,
+       servers: client.guilds.cache.size,
+       members: client.guilds.cache.reduce((a, b) => a + b.memberCount, 0),
+       ping: Math.round(client.ws.ping),
+       cpu_usage: cpupercentage,
+       ram: `${(process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2)}/${(process.memoryUsage().rss / 1024 / 1024).toFixed(2)}`,
+       drive: `${driveinfo.usedGb}/${driveinfo.totalGb}`,
+      }),
+      headers: {
+       "Content-type": "application/json",
+       Authorization: process.env.SECRET,
+      },
+     });
+    });
+   });
+  }, 30000);
+ }
 };

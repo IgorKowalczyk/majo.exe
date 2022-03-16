@@ -225,6 +225,17 @@ module.exports = (client) => {
     });
    });
 
+   // Statistics API endpoint
+   if (web_config.dashboard.receive_stats) {
+    app.post("/dashboard/statistics", (req, res, next) => {
+     if (req.headers.authorization != process.env.SECRET) return;
+     statistics = req.body;
+     res.json({
+      ok: true,
+     });
+    });
+   }
+
    // Server redirect endpoint.
    if (config.support_server) {
     app.get("/server", (req, res) => {
@@ -260,9 +271,16 @@ module.exports = (client) => {
    // Status page endpoint.
    if (config.status) {
     app.get("/status", (req, res) => {
-     renderTemplate(res, req, "status.ejs", {
-      moment: moment,
-     });
+     if (statistics && web_config.dashboard.receive_stats) {
+      renderTemplate(res, req, "status.ejs", {
+       moment: moment,
+       statistics,
+      });
+     } else {
+      renderTemplate(res, req, "status.ejs", {
+       moment: moment,
+      });
+     }
     });
    }
 
@@ -722,7 +740,7 @@ module.exports = (client) => {
   }
 
   // **See $config/certs folder!**
-  if (config.web.ssl_certs == true) {
+  if (web_config.web.ssl_certs == true) {
    const http_options = {
     key: fs.readFileSync(path.resolve(__dirname, "../config/certs/server.key")),
     cert: fs.readFileSync(path.resolve(__dirname, "../config/certs/server.cert")),
