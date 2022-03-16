@@ -41,6 +41,7 @@ Go to [this link](https://discord.com/oauth2/authorize/?permissions=4294967287&s
     * `TOKEN` - Discord bot token [[Tutorial](#-discord-token)]
     * `PREFIX` - Discord bot main prefix
     * `ID` - Your Discord Bot ID
+    * `SUPPORT_SERVER_ID` - Your Support Server ID
     * `AMEAPI` - your Amethyste API token [[Tutorial](#-amethyste-api)]
     * `MYSQL_DATABASE` - Your MYSQL database name
     * `MYSQL_HOST` - Your MYSQL Host Endpoint
@@ -129,6 +130,7 @@ Go to [this link](https://discord.com/oauth2/authorize/?permissions=4294967287&s
 | `TOKEN` | Discord bot token | String | ✅ | ✅ | ✅ |
 | `PREFIX` | The default bot prefix (eg. `!majo`) [Deprecated!] | String | ✅ | ✅ | ❌ |
 | `ID` | Your Discord Bot ID | Number | ✅ | ✅ | ❌ |
+| `SUPPORT_SERVER_ID` | Your support server ID | Number | ✅ | ❌ | ❌ |
 | `AMEAPI` | Your Amethyste api token | String | ✅ | ✅ | ❌ |
 | `MYSQL_DATABASE` | Your MYSQL database name | String | ✅ | ✅ | ❌ |
 | `MYSQL_HOST` | Your MYSQL Host | String | ✅ | ✅ | ❌ |
@@ -157,6 +159,7 @@ Go to [this link](https://discord.com/oauth2/authorize/?permissions=4294967287&s
 TOKEN=YOUR_TOKEN_GOES_HERE
 PREFIX=!majo
 ID=YOUR_BOT_ID
+SUPPORT_SERVER_ID=YOUR_SUPPORT_SERVER_ID
 AMEAPI=YOUR_AMETHYSTE_API_TOKEN
 MYSQL_DATABASE=YOUR_MYSQL_DATABASE_NAME
 MYSQL_HOST=YOUR_MYSQL_HOST
