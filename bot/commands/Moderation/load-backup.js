@@ -9,9 +9,9 @@ module.exports = {
  usage: "load-backup <backup id>",
  run: async (client, message, args) => {
   try {
-   if (!message.guild.me.permissions.has("ADMINISTRATOR")) {
-    return client.createError(message, `${client.bot_emojis.error} | I don't have premission to load backups! I need \`ADMINISTRATOR\` permission!`);
-   }
+//   if (!message.guild.me.permissions.has("ADMINISTRATOR")) {
+  //  return client.createError(message, `${client.bot_emojis.error} | I don't have premission to load backups! I need \`ADMINISTRATOR\` permission!`);
+ //  }
    if (!message.member.permissions.has("ADMINISTRATOR")) {
     return client.createError(message, `${client.bot_emojis.error} | You don't have permission to load backups! You need \`ADMINISTRATOR\` permission!`);
    }
