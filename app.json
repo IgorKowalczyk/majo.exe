@@ -4,7 +4,7 @@
  "logo": "https://user-images.githubusercontent.com/49127376/138303201-7f8db506-b11b-40bf-9b89-3966616b16d5.png",
  "repository": "https://github.com/igorkowalczyk/majo.exe.git",
  "stack": "heroku-20",
- "website": "https://majoexe.ml",
+ "website": "https://majoexe.xyz",
  "success_url": "/",
  "buildpacks": [
   {
