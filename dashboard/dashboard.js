@@ -225,17 +225,6 @@ module.exports = (client) => {
     });
    });
 
-   // Statistics API endpoint
-   if (web_config.dashboard.receive_stats) {
-    app.post("/dashboard/statistics", (req, res, next) => {
-     if (req.headers.authorization != process.env.SECRET) return;
-     statistics = req.body;
-     res.json({
-      ok: true,
-     });
-    });
-   }
-
    // Server redirect endpoint.
    if (config.support_server) {
     app.get("/server", (req, res) => {
@@ -271,16 +260,9 @@ module.exports = (client) => {
    // Status page endpoint.
    if (config.status) {
     app.get("/status", (req, res) => {
-     if (statistics && web_config.dashboard.receive_stats) {
-      renderTemplate(res, req, "status.ejs", {
-       moment: moment,
-       statistics,
-      });
-     } else {
-      renderTemplate(res, req, "status.ejs", {
-       moment: moment,
-      });
-     }
+     renderTemplate(res, req, "status.ejs", {
+      moment: moment,
+     });
     });
    }
 

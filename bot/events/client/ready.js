@@ -7,8 +7,7 @@ module.exports = async (client) => {
   function capitalize(string) {
    return string.charAt(0).toUpperCase() + string.slice(1);
   }
-  // Todo: Allow dynamic strings
-  client.status = await require("../../../config/status_config");
+  client.status = await require("../../../config/presence_config"); // Todo: Allow dynamic strings
   await require("../../handlers/slash_command")(client);
   console.log(chalk.bold(chalk.green.bold("> ") + chalk.blue.bold(`[${client.user.username.toUpperCase().split(" ")[0]}]`)) + chalk.cyan.bold(" Successfully loaded " + chalk.blue.underline(`${client.commands.size}`) + ` text commands! (${client.prefix})`));
   console.log(chalk.bold(chalk.green.bold("> ") + chalk.blue.bold(`[${client.user.username.toUpperCase().split(" ")[0]}]`)) + chalk.bold.cyan(` Bot User: `) + chalk.blue.underline(`${client.user.tag}`));
@@ -21,7 +20,6 @@ module.exports = async (client) => {
   console.log(chalk.bold(chalk.green.bold("> ") + chalk.blue.bold(`[${client.user.username.toUpperCase().split(" ")[0]}]`)) + chalk.bold.cyan(` Memory: `) + chalk.blue.underline(`${(process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2)}/${(process.memoryUsage().rss / 1024 / 1024).toFixed(2)} MB`));
   console.log(chalk.bold(chalk.green.bold("> ") + chalk.blue.bold(`[${client.user.username.toUpperCase().split(" ")[0]}]`)) + chalk.bold.cyan(" Report generated at: " + chalk.blue.bold.underline(moment().format("LLLL"))));
   console.log(chalk.bold(chalk.green.bold("> ") + chalk.blue.bold(`[${client.user.username.toUpperCase().split(" ")[0]}]`)) + chalk.bold.cyan(" Client connected! Logged to Discord as ") + chalk.bold.blue.underline(client.user.tag));
-  require("../../../utilities/client/anti-crash")(client);
   if (!process.env.STATUS_WEBHOOK) throw new Error("[HOST] You need to provide Discord Status Webhook URL in .env - STATUS_WEBHOOK=YOUR_WEBHOOK_URL");
   const status_webhook = new WebhookClient({ url: process.env.STATUS_WEBHOOK });
   const status_embed = new MessageEmbed() // Prettier
@@ -71,25 +69,8 @@ module.exports = async (client) => {
      });
     }
    }
-   if (client.config.advanved_logging == true) console.log(chalk.bold(chalk.green.bold("> ") + chalk.blue.bold(`[${client.user.username.toUpperCase().split(" ")[0]}]`)) + chalk.cyan.bold(" Successfully changed client status"));
+   if (client.config.advanved_logging) console.log(chalk.bold(chalk.green.bold("> ") + chalk.blue.bold(`[${client.user.username.toUpperCase().split(" ")[0]}]`)) + chalk.cyan.bold(" Successfully changed client status"));
   }, 10000);
-  if (client.additional_config.pm2.enabled == true) {
-   if (client.additional_config.pm2.metrics.ws_ping == true) {
-    setInterval(() => {
-     client.bot_ping_metrics.update(Math.round(client.ws.ping));
-    }, 30000);
-   }
-   if (client.additional_config.pm2.metrics.users_count == true) {
-    setInterval(() => {
-     client.users_count.update(client.guilds.cache.reduce((a, g) => a + g.memberCount, 0));
-    }, 10000);
-   }
-   if (client.additional_config.pm2.metrics.guilds_count == true) {
-    setInterval(() => {
-     client.guilds_count.update(client.guilds.cache.size);
-    }, 10000);
-   }
-  }
  } catch (err) {
   console.log(err);
  }

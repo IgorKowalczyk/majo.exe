@@ -49,9 +49,9 @@
    "required": true
   },
   "SUPPORT_SERVER_ID": {
-    "description": "Support server ID",
-    "required": true
-   },
+   "description": "Support server ID",
+   "required": true
+  },
   "ANALYTICS": {
    "description": "Google Analytics tracking ID",
    "required": false

@@ -26,8 +26,5 @@ module.exports = async (client, interaction) => {
    return interaction.followUp({ ephemeral: true, embeds: [only_dm] });
   }
   cmd.run(client, interaction, args);
-  if (client.additional_config.pm2.enabled == true && client.additional_config.pm2.metrics.slash_commands_used == true) {
-   client.slash_commands_used.inc();
-  }
  }
 };

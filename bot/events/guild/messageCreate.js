@@ -12,9 +12,6 @@ module.exports = async (client, message) => {
   if (message.content.toLowerCase() == "get the cross") {
    message.react("🤌");
   }
-  if (client.additional_config.pm2.enabled == true && client.additional_config.pm2.metrics.messages_seen == true) {
-   client.messages_seen.inc();
-  }
   if (message.author.bot) return;
   if (message.guild && !message.author.bot && message.embeds.length > 0 && !message.content.includes(`http`)) {
    const sqlquery = "SELECT anti_selfbots AS res FROM `guild_settings` WHERE guildid = " + message.guild.id;
@@ -88,9 +85,6 @@ module.exports = async (client, message) => {
     /* ---------------------------- */
 
     command.run(client, message, args);
-    if (client.additional_config.pm2.enabled == true && client.additional_config.pm2.metrics.commands_used == true) {
-     client.commands_used.inc();
-    }
     Timeout.set(key, Date.now());
     setTimeout(() => {
      Timeout.delete(key);

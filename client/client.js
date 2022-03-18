@@ -1,10 +1,9 @@
 const Discord = require("discord.js");
 const crypto = require("crypto");
-const chalk = require("chalk");
 const { Database } = require("../utilities/mysql/database");
-const { LoginError } = require("../utilities/errors/util");
+const LoginError = require("../utilities/errors/util");
+const MissingENV = require("../utilities/errors/util");
 const intents = new Discord.Intents(4095);
-
 class Client extends Discord.Client {
  constructor() {
   super({
@@ -22,31 +21,22 @@ class Client extends Discord.Client {
   });
   this.database = db.connection;
  }
- log_info() {
-  console.log(chalk.blue.bold(`[❔]`) + chalk.cyan.bold(` Green`) + chalk.green.bold(` ">" `) + chalk.cyan.bold(`= logs from Majo.exe Bot`));
-  console.log(chalk.blue.bold(`[❔]`) + chalk.cyan.bold(` Magenta`) + chalk.magenta.bold(` ">" `) + chalk.cyan.bold(`= logs from Majo.exe Dashboard`));
-  console.log(chalk.blue.bold(`[❔]`) + chalk.cyan.bold(` Red`) + chalk.red.bold(` ">" `) + chalk.cyan.bold(`= logs from Majo.exe API`));
-  console.log(chalk.blue.bold(`[❔]`) + chalk.cyan.bold(` White`) + chalk.white.bold(` ">" `) + chalk.cyan.bold(`= logs from Majo.exe Database`));
- }
- secure() {
-  process.env.SESSION_SECRET = "";
+ async start() {
+  require("../utilities/client/anti-crash")(this);
   process.env.SESSION_SECRET = crypto.randomBytes(64).toString("hex");
+  if (!process.env.TOKEN) throw new LoginError("No token provided! Please provide it in .env");
+  this.login(process.env.TOKEN);
  }
- start(token) {
-  if (!token) throw new LoginError("No token provided! Please provide it in .env");
-  this.secure();
-  this.login(token);
- }
- reload() {
+ async reload() {
   if (!process.env.TOKEN) throw new MissingENV("No token provided! Please provide it in .env", "TOKEN");
   this.destroy();
-  this.login(process.env.token);
+  this.login(process.env.TOKEN);
  }
- bot() {
+ async bot() {
   if (process.argv.includes(`--bot`)) require("../bot/index")(this);
   return true;
  }
- web() {
+ async web() {
   if (process.argv.includes(`--dashboard`) || process.argv.includes(`--api`)) require("../dashboard/dashboard")(this);
   return true;
  }

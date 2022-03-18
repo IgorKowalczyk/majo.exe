@@ -1,7 +1,7 @@
 const { RateLimiterMemory } = require("rate-limiter-flexible");
 
 const rateLimiter = new RateLimiterMemory({
- points: 5,
+ points: 20,
  duration: 1,
 });
 

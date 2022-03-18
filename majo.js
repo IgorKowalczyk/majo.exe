@@ -7,7 +7,7 @@
 //
 //   Created by: Majonez.exe#2495 under MIT License
 //   Support: https://discord.gg/bVNNHuQ
-//   Website: https://majoexe.ml
+//   Website: https://majoexe.xyz
 //
 
 require("dotenv").config();
@@ -20,7 +20,7 @@ const chalk = require("chalk");
 const { Client } = require("./client/client");
 const majo = new Client();
 majo.db_events.on("ready", async () => {
- await majo.start(process.env.TOKEN);
+ await majo.start();
  if (process.argv.includes(`--bot`)) console.log(chalk.green.bold(`[✅]`) + chalk.bold.greenBright(` Starting Majo.exe Bot! (1/3) `));
  else console.log(chalk.red.bold(`[❌]`) + chalk.bold.red(` Skipping Bot launch! (1/3) `) + chalk.bold.red.dim(`[Run script with "--bot" argument]`));
  if (process.argv.includes(`--dashboard`)) console.log(chalk.green.bold(`[✅]`) + chalk.bold.greenBright(` Starting Majo.exe Dashboard! (2/3) `));

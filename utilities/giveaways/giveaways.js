@@ -1,5 +1,5 @@
 const { GiveawaysManager } = require("discord-giveaways");
-const emojis = require("../config/emojis_config");
+const emojis = require("../../config/emojis_config");
 
 module.exports = function (client) {
  const Giveaways = class extends GiveawaysManager {
@@ -60,7 +60,7 @@ module.exports = function (client) {
   embedColor: "#ab4b52",
   default: {
    botsCanWin: false,
-   exemptPermissions: ["MANAGE_MESSAGES", "ADMINISTRATOR"],
+   // exemptPermissions: ["MANAGE_MESSAGES", "ADMINISTRATOR"],
    reaction: emojis.giveaway,
   },
  });

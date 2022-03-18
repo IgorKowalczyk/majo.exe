@@ -1,5 +1,3 @@
-"use strict";
-
 module.exports = class LoginError extends Error {
  constructor(message, extra) {
   super(message);
