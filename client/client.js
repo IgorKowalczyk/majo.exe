@@ -22,10 +22,12 @@ class Client extends Discord.Client {
   this.database = db.connection;
  }
  async start() {
-  require("../utilities/client/anti-crash")(this);
   process.env.SESSION_SECRET = crypto.randomBytes(64).toString("hex");
   if (!process.env.TOKEN) throw new LoginError("No token provided! Please provide it in .env");
   this.login(process.env.TOKEN);
+  this.on("ready", () => {
+   require("../utilities/client/anti-crash")(this);
+  })
  }
  async reload() {
   if (!process.env.TOKEN) throw new MissingENV("No token provided! Please provide it in .env", "TOKEN");
