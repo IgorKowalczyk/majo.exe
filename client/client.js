@@ -27,7 +27,7 @@ class Client extends Discord.Client {
   this.login(process.env.TOKEN);
   this.on("ready", () => {
    require("../utilities/client/anti-crash")(this);
-  })
+  });
  }
  async reload() {
   if (!process.env.TOKEN) throw new MissingENV("No token provided! Please provide it in .env", "TOKEN");

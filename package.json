@@ -6,10 +6,10 @@
   "main": "node index.js",
   "scripts": {
     "start": "node majo.js --bot --dashboard --api",
-    "majo:dashboard": "node majo.js --dashboard",
-    "majo:bot": "node majo.js --bot",
-    "majo:api": "node majo.js --api",
-    "majo:web": "node majo.js --api --dashboard",
+    "majo:dashboard": "node index.js --dashboard",
+    "majo:bot": "node index.js --bot",
+    "majo:api": "node index.js --api",
+    "majo:web": "node index.js --api --dashboard",
     "test": "node utilities/checks.js",
     "format": "prettier --write . --ignore-unknown",
     "format:check": "prettier --check ."
