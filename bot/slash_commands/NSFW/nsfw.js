@@ -102,14 +102,6 @@ module.exports = {
      orgin: "nsfw",
     },
     {
-     name: "fuck",
-     value: "fuck",
-     description: "🔞 Fuck image or gif",
-     usage: `/nsfw fuck`,
-     category: "NSFW",
-     orgin: "nsfw",
-    },
-    {
      name: "hentai",
      value: "hentai",
      description: "🔞 Hentai image or gif",
@@ -168,6 +160,11 @@ module.exports = {
   },
  ],
  run: async (client, interaction, args) => {
-  require(`./modules/${args[0]}`)(client, interaction);
+  try {
+   require(`./modules/${args[0]}`)(client, interaction);
+  } catch (err) {
+   console.log(err);
+   return client.createSlashCommandError(interaction, err);
+  }
  },
 };

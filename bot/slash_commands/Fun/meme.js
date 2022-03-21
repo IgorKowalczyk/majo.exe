@@ -12,7 +12,12 @@ module.exports = {
    const body = await response.json();
    let meme = body[0].data.children[0].data;
    const row = new MessageActionRow() // Prettier
-    .addComponents(new MessageButton().setStyle("LINK").setURL(`https://reddit.com${meme.permalink}`).setLabel("View meme"));
+    .addComponents(
+     new MessageButton() // Prettier
+      .setStyle("LINK")
+      .setURL(`https://reddit.com${meme.permalink}`)
+      .setLabel("View meme")
+    );
    const embed = new MessageEmbed() // Prettier
     .setColor("RANDOM")
     .setTitle(meme.title)
@@ -20,7 +25,7 @@ module.exports = {
     .setImage(meme.url)
     .setTimestamp()
     .setFooter({
-     text: `${client.bot_emojis.like} ${meme.ups} • ${client.bot_emojis.chat} ${meme.num_comments} • Requested by ${interaction.user.username}`,
+     text: `${client.bot_emojis.like} ${meme.ups} upvotes • ${client.bot_emojis.chat} ${meme.num_comments} comments • Requested by ${interaction.user.username}`,
      iconURL: interaction.user.displayAvatarURL({
       dynamic: true,
       format: "png",

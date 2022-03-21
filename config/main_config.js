@@ -18,7 +18,7 @@ module.exports = {
  buymeacoffee: "rkjha", // Sponsor link
  open_collective: "igorkowalczyk", // Sponsor link
  scopes: "bot%20applications.commands", // Dashboard scopes
- permissions: "4294967287", // Default invite perms
+ permissions: "1539679190263", // Default invite perms
  suggestions_channel: "838092194530852884", // Suggestions channel
  prefix: process.env.PREFIX, // Client prefix (deprecated)
  youtube: process.env.YOUTUBE, // Youtube token (not used)

@@ -6,7 +6,7 @@ module.exports = {
    watch: true,
    node_args: "--trace-deprecation",
    exec_mode: "cluster",
-   ignore_watch: ["[/\\]./", "node_modules", "database", "cache", "^.", "^[.]"],
+   ignore_watch: ["[/\\]./", "node_modules", "database", "cache", "^.", "^[.]", ".git"],
    watch_options: {
     followSymlinks: false,
    },
@@ -18,7 +18,7 @@ module.exports = {
    watch: true,
    node_args: "--trace-deprecation",
    exec_mode: "cluster",
-   ignore_watch: ["[/\\]./", "node_modules", "database", "cache", "^.", "^[.]"],
+   ignore_watch: ["[/\\]./", "node_modules", "database", "cache", "^.", "^[.]", ".git"],
    watch_options: {
     followSymlinks: false,
    },
@@ -30,7 +30,7 @@ module.exports = {
    watch: true,
    node_args: "--trace-deprecation",
    exec_mode: "cluster",
-   ignore_watch: ["[/\\]./", "node_modules", "database", "cache", "^.", "^[.]"],
+   ignore_watch: ["[/\\]./", "node_modules", "database", "cache", "^.", "^[.]", ".git"],
    watch_options: {
     followSymlinks: false,
    },

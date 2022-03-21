@@ -1,5 +1,5 @@
 const { MessageEmbed, MessageActionRow, MessageButton } = require("discord.js");
-const https = require("https");
+const fetch = require("node-fetch");
 const striptags = require("striptags");
 
 module.exports = {
@@ -96,79 +96,52 @@ module.exports = {
    const wait_embed = new MessageEmbed() // Prettier
     .setColor("5865f2")
     .setDescription(`${client.bot_emojis.loading} | I'm downloading random image from \`/${chanargs}/\`. Please wait...`);
-   interaction.followUp({ embeds: [wait_embed] }).then(() => {
-    var board = chanargs;
-    var page = Math.floor(Math.random() * 10 + 1);
-    var url = "https://a.4cdn.org/" + board + "/" + page + ".json";
-    https.get(url, (res) => {
-     res.setEncoding("utf8");
-     let body = "";
-     res.on("data", (data) => {
-      body += data;
+   interaction.followUp({ embeds: [wait_embed] }).then(async () => {
+    const board = chanargs;
+    const page = Math.floor(Math.random() * 10 + 1);
+    const response = await fetch(`https://a.4cdn.org/${board}/${page}.json`);
+    const body = await response.json();
+    const post_nr = Math.floor(Math.random() * body.threads.length);
+    const img_id = body.threads[post_nr].posts[0].tim;
+    const img_ext = body.threads[post_nr].posts[0].ext;
+    const description = striptags(body.threads[post_nr].posts[0].com) ?? "**No description!**";
+    const title = body.threads[post_nr].posts[0].sub ?? "Random 4chan thread";
+    const replies_count = body.threads[post_nr].posts[0].replies;
+    const images_count = body.threads[post_nr].posts[0].images;
+    const thread_url = `https://boards.4chan.org/${board}/thread/${body.threads[post_nr].posts[0].no}`;
+    const img_url = `https://i.4cdn.org/${board}/${img_id}${img_ext}`;
+    const embed = new MessageEmbed() // Prettier
+     .setColor("#76ff7b")
+     .setTitle(`${client.bot_emojis.chan} ${title}`)
+     .setDescription(`>>> ${description || "**No description!**"}`)
+     // .addField(`${client.bot_emojis.edit} Thread: `, thread)
+     // .addField(`${client.bot_emojis.picture_frame} Image: `, imgUrl)
+     .setURL(thread_url)
+     .setFooter({
+      text: `${client.bot_emojis.chat} ${replies_count} replies • ${client.bot_emojis.picture_frame} ${images_count} images • Requested by ${interaction.user.username}`,
+      iconURL: interaction.user.displayAvatarURL({
+       dynamic: true,
+       format: "png",
+       size: 2048,
+      }),
      });
-     res.on("end", (end) => {
-      body = JSON.parse(body);
-      var postNr = Math.floor(Math.random() * body.threads.length);
-      var imgId = body.threads[postNr].posts[0].tim;
-      var imgExt = body.threads[postNr].posts[0].ext;
-      var com = body.threads[postNr].posts[0].com;
-      var sub = body.threads[postNr].posts[0].sub;
-      var replies = body.threads[postNr].posts[0].replies;
-      var images = body.threads[postNr].posts[0].images;
-      if (!sub) {
-       sub = "Random 4chan thread";
-      }
-      if (com == null) {
-       com = "**No description!**";
-      } else {
-       com = striptags(com);
-      }
-      var thread = "https://boards.4chan.org/" + board + "/thread/";
-      thread += body.threads[postNr].posts[0].no;
-      var imgUrl = "https://i.4cdn.org/" + board + "/";
-      imgUrl += imgId + "" + imgExt;
-      let embed = new MessageEmbed() // Prettier
-       .setColor("RANDOM")
-       .setTitle(
-        `${client.bot_emojis.chan} ` + sub,
-        interaction.guild.iconURL({
-         dynamic: true,
-         format: "png",
-        }),
-        thread
-       )
-       .setDescription(`>>> ${com}`)
-       // .addField(`${client.bot_emojis.edit} Thread: `, thread)
-       // .addField(`${client.bot_emojis.picture_frame} Image: `, imgUrl)
-       .setURL(thread)
-       .setTimestamp()
-       .setFooter({
-        text: `${client.bot_emojis.chat} ${replies} replies | ${client.bot_emojis.picture_frame} ${images} images | Requested by ${interaction.user.username}`,
-        iconURL: interaction.user.displayAvatarURL({
-         dynamic: true,
-         format: "png",
-         size: 2048,
-        }),
-       });
-      if (embed.description.length >= 2048) {
-       embed.description = `${embed.description.substr(0, 2045)}...`;
-      }
-      const row = new MessageActionRow() // Prettier
-       .addComponents(
-        new MessageButton() // Prettier
-         .setURL(thread)
-         .setLabel("Board")
-         .setStyle("LINK")
-       )
-       .addComponents(
-        new MessageButton() // Prettier
-         .setURL(imgUrl)
-         .setLabel("Image")
-         .setStyle("LINK")
-       );
-      interaction.editReply({ embeds: [embed], files: [imgUrl], components: [row] });
-     });
-    });
+    if (embed.description.length >= 2048) {
+     embed.description = `${embed.description.substr(0, 2045)}...`;
+    }
+    const row = new MessageActionRow() // Prettier
+     .addComponents(
+      new MessageButton() // Prettier
+       .setURL(thread_url)
+       .setLabel("Board")
+       .setStyle("LINK")
+     )
+     .addComponents(
+      new MessageButton() // Prettier
+       .setURL(img_url)
+       .setLabel("Image")
+       .setStyle("LINK")
+     );
+    interaction.editReply({ embeds: [embed], files: [img_url], components: [row] });
    });
   } catch (err) {
    console.log(err);

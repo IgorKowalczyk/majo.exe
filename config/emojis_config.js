@@ -44,7 +44,8 @@ module.exports = {
  bug_hunter_2: "<:bug_hunter_2:898956482161278976>", // https://cdn.discordapp.com/emojis/898956482161278976.png
  discord_employee: "<:discordemployee:898956482102566954>", // https://cdn.discordapp.com/emojis/898956482102566954.png
  slash_commands: "<:slash_commands:927627163144949820>", // https://cdn.discordapp.com/emojis/927627163144949820.png
-
+ mention: "<:mention:955194876604084315>", // https://cdn.discordapp.com/emojis/955194876604084315.png
+ settings: "<:settings:955195385306034237>", // https://cdn.discordapp.com/emojis/955195385306034237.png
  // Utility emojis
  picture_frame: "🖼️",
  anger: "💢",
@@ -137,4 +138,6 @@ module.exports = {
  paper_clip: "📎",
  paper_clips: "🖇️",
  flower: "💮",
+ arrows_clockwise: "🔃",
+ jigsaw: "🧩",
 };

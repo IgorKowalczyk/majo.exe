@@ -13,7 +13,7 @@ module.exports = {
    const embed = new MessageEmbed() // Prettier
     .setTitle(`${client.bot_emojis.rocket} I'm in \`${guilds}\` servers!`)
     //.addField(`${client.bot_emojis.member} Total users`, `\`${members} members\``, true)
-   // .addField(`${client.bot_emojis.channel} Total channels`, `\`${client.channels.cache.size} channels\``, true)
+    // .addField(`${client.bot_emojis.channel} Total channels`, `\`${client.channels.cache.size} channels\``, true)
     .setDescription(`> **I serve over \`${client.all_commands}\` commands on \`${guilds}\` servers to \`${members}\` users!**`)
     .setFooter({
      text: `Requested by ${interaction.user.username}`,
