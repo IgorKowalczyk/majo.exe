@@ -233,7 +233,7 @@ module.exports = (client) => {
    }
 
    app.get("/invite", (req, res) => {
-    res.redirect(`https://discord.com/oauth2/authorize?client_id=${client.user.id}&permissions=1916267615&redirect_uri=${secure_connection + app.locals.domain}%2Fcallback&response_type=code&scope=guilds%20identify%20bot%20applications.commands`);
+    res.redirect(`https://discord.com/oauth2/authorize?client_id=${client.user.id}&permissions=${config.permissions}&redirect_uri=${secure_connection}${app.locals.domain}%2Fcallback&response_type=code&scope=guilds%20identify%20bot%20applications.commands`);
    });
 
    // Github redirect endpoint.

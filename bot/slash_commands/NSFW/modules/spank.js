@@ -22,13 +22,7 @@ module.exports = async (client, interaction, args) => {
    const response = await fetch("http://api.nekos.fun:8080/api/spank");
    const body = await response.json();
    const embed = new MessageEmbed() // Prettier
-    .setTitle(
-     ":smirk: Spank",
-     message.guild.iconURL({
-      dynamic: true,
-      format: "png",
-     })
-    )
+    .setTitle(":smirk: Spank")
     .setImage(body.image)
     .setColor("RANDOM")
     .setFooter({
