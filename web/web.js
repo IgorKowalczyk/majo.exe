@@ -1,4 +1,4 @@
-require("dotenv").config()
+require("dotenv").config();
 const express = require("express");
 const config = require("../config/main_config");
 const additional_config = require("../config/additional_config");
@@ -25,4 +25,3 @@ app.use(helmet.referrerPolicy());
 app.use(helmet.xssFilter());
 app.use(cookieParser());
 // app.use(helmet.frameguard());
-

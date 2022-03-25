@@ -29,7 +29,12 @@ module.exports = {
 
  // Dashboard config
  domain: process.env.DOMAIN, // Domain link
- port: process.env.PORT, // Website & API Port
 
  use_text_commands: true, // Allow usage of deprecated text commands [WIP]
+
+ bypass_modules: {
+  bot: false, // Bypass check for --bot argument [For pterodactyl panel]
+  dashboard: false, // Bypass check for --dashboard argument [For pterodactyl panel]
+  api: false, // Bypass check for --api argument [For pterodactyl panel]
+ },
 };

@@ -1,5 +1,6 @@
 const Discord = require("discord.js");
 const crypto = require("crypto");
+const config = require("../config/main_config");
 const { Database } = require("../utilities/mysql/database");
 const LoginError = require("../utilities/errors/util");
 const MissingENV = require("../utilities/errors/util");
@@ -35,11 +36,11 @@ class Client extends Discord.Client {
   this.login(process.env.TOKEN);
  }
  async bot() {
-  if (process.argv.includes(`--bot`)) require("../bot/index")(this);
+  if (config.bypass_modules.bot || process.argv.includes(`--bot`)) require("../bot/index")(this);
   return true;
  }
  async web() {
-  if (process.argv.includes(`--dashboard`) || process.argv.includes(`--api`)) require("../dashboard/dashboard")(this);
+  if (config.bypass_modules.dashboard || config.bypass_modules.api || process.argv.includes(`--dashboard`) || process.argv.includes(`--api`)) require("../dashboard/dashboard")(this);
   return true;
  }
 }
