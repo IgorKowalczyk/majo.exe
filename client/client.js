@@ -40,10 +40,10 @@ class Client extends Discord.Client {
  async start_bot() {
   if (config.bypass_modules.bot || process.argv.includes(`--bot`)) {
    try {
-    console.log(chalk.bold.green("> ") + chalk.blue.bold(`[MAJO.EXE]`) + chalk.cyan.bold(" Starting bot..."));
+    console.log(chalk.bold.green("> ") + chalk.blue.bold(`[MAJO.EXE]`) + chalk.cyan.bold(" Setting up bot..."));
     require("../bot/index")(this);
    } catch (e) {
-    throw new Error(e);
+    console.log(e);
    }
   } else {
    return false;
@@ -54,7 +54,7 @@ class Client extends Discord.Client {
    try {
     require("../web/web")(this);
    } catch (e) {
-    throw new Error(e);
+    console.log(e);
    }
   } else {
    return false;

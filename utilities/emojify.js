@@ -8,7 +8,7 @@ module.exports = (input) => {
   "-": "heavy_minus_sign",
   "×": "heavy_multiplication_x",
   "*": "asterisk",
-  "$": "heavy_dollar_sign",
+  $: "heavy_dollar_sign",
   "/": "heavy_division_sign",
  };
 

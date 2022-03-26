@@ -74,7 +74,7 @@ module.exports = {
 
     const embed = new MessageEmbed()
      .setAuthor({ name: `${client.user.username} Help`, iconURL: client.user.displayAvatarURL() })
-     .setDescription(`> Use the menu, or use ${client.process.env.DOMAIN ? `[\`${client.prefix} help [category]\`](${client.process.env.DOMAIN})` : `\`${client.prefix} help [category]\``} to view commands base on their category!\n\n`)
+     .setDescription(`> Use the menu, or use ${process.env.DOMAIN ? `[\`${client.prefix} help [category]\`](${process.env.DOMAIN})` : `\`${client.prefix} help [category]\``} to view commands base on their category!\n\n`)
      .addFields(categories)
      .setFooter({
       text: `Requested by ${interaction.member.user.tag} • ${client.commands.size} commands in total`,

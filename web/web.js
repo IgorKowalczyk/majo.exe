@@ -1,4 +1,4 @@
-module.exports = (client) => {
+module.exports = async (client) => {
  const express = require("express");
  const config = require("../config/main_config");
  const additional_config = require("../config/additional_config");
@@ -40,16 +40,17 @@ module.exports = (client) => {
   res.setHeader("Access-Control-Allow-Origin", "*");
   next();
  });
- client.on("ready", async () => {
+ client.once("ready", async () => {
+  if (config.bypass_modules.api || process.argv.includes("--api")) {
+   console.log(chalk.bold(chalk.bold.red("> ") + chalk.blue.bold("[API]")) + chalk.cyan.bold(" Setting up api..."));
+   await require("../api/index")(app, client, port, config, secure_connection, domain);
+  }
+  if (config.bypass_modules.dashboard || process.argv.includes("--dashboard")) {
+   console.log(chalk.bold(chalk.bold.magenta("> ") + chalk.blue.bold("[DASHBOARD]")) + chalk.cyan.bold(` Setting up dashboard...`));
+   await require("../dashboard/dashboard")(app, client, port, config, secure_connection, domain);
+  }
   app.listen(port, null, null, async () => {
-   if (config.bypass_modules.api || process.argv.includes("--api")) {
-    console.log(chalk.bold(chalk.bold.red("> ") + chalk.blue.bold("[API]")) + chalk.cyan.bold(" Starting api..."));
-    require("../api/index")(app, client, port, config, secure_connection, domain);
-   }
-   if (config.bypass_modules.dashboard || process.argv.includes("--dashboard")) {
-    console.log(chalk.bold(chalk.bold.magenta("> ") + chalk.blue.bold("[DASHBOARD]")) + chalk.cyan.bold(` Starting dashboard...`));
-    require("../dashboard/dashboard")(app, client, port, config, secure_connection, domain);
-   }
+   console.log(chalk.bold(chalk.bold.yellow("> ") + chalk.blue.bold("[WEB]")) + chalk.cyan.bold(` Starting in web...`));
   });
  });
 };
