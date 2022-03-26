@@ -58,7 +58,7 @@ module.exports = (client) => {
  });
  process.on("multipleResolves", (type, promise, reason) => {
   if (!reason) return;
-  console.error(err);
+  console.error(reason);
   return errors_webhook.send({
    username: `${client.user.username} Error`,
    avatarURL: client.user.displayAvatarURL({ dynamic: true }),
