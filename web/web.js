@@ -40,14 +40,16 @@ module.exports = (client) => {
   res.setHeader("Access-Control-Allow-Origin", "*");
   next();
  });
- app.listen(port, null, null, async () => {
-  if (config.bypass_modules.api || process.argv.includes("--api")) {
-   console.log(chalk.bold(chalk.bold.red("> ") + chalk.blue.bold("[API]")) + chalk.cyan.bold(" Starting api..."));
-   require("../api/index")(app, client, port, config, secure_connection, domain);
-  }
-  if (config.bypass_modules.dashboard || process.argv.includes("--dashboard")) {
-   console.log(chalk.bold(chalk.bold.magenta("> ") + chalk.blue.bold("[DASHBOARD]")) + chalk.cyan.bold(` Starting dashboard...`));
-   require("../dashboard/dashboard")(app, client, port, config, secure_connection, domain);
-  }
+ client.on("ready", async () => {
+  app.listen(port, null, null, async () => {
+   if (config.bypass_modules.api || process.argv.includes("--api")) {
+    console.log(chalk.bold(chalk.bold.red("> ") + chalk.blue.bold("[API]")) + chalk.cyan.bold(" Starting api..."));
+    require("../api/index")(app, client, port, config, secure_connection, domain);
+   }
+   if (config.bypass_modules.dashboard || process.argv.includes("--dashboard")) {
+    console.log(chalk.bold(chalk.bold.magenta("> ") + chalk.blue.bold("[DASHBOARD]")) + chalk.cyan.bold(` Starting dashboard...`));
+    require("../dashboard/dashboard")(app, client, port, config, secure_connection, domain);
+   }
+  });
  });
 };
