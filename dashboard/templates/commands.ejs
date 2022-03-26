@@ -1,6 +1,5 @@
 <%- include("includes/head", { bot, user, path, title: "Commands" }) %>
 <div class="content">
- <% function capitalize(string) { return string.charAt(0).toUpperCase() + string.slice(1); } %>
-<h1 class="center"><%= capitalize(bot.user.username) %> Commands (<%= bot.commands.size %>)</h1>
+<h1 class="center"><%= bot.user.username.capitalize() %> Commands (<%= bot.commands.size %>)</h1>
 
 <%- include("includes/footer") %>

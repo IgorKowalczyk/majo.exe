@@ -7,7 +7,6 @@
 %>
 <% const checked = "logs" %>
 <%- include("../includes/side_nav", { bot, user, path, guild_name: guild.name, guild_icon: iconurl, checked_nav: checked, guild }) %>
-<% function capitalize(string) { return string.charAt(0).toUpperCase() + string.slice(1); } %>
 <div class="content">
 <img class="server-image img" src="<%= iconurl %>" alt="<%= guild.name %>"/>
 <h1 class="server-name"><%= guild.name %></h1>
@@ -19,7 +18,7 @@
 <% all_events.forEach(event => { %>
  <div class="server">
  <div class="icon-and-name">
- <p class="guild-name"><%= capitalize(event) %></p>
+ <p class="guild-name"><%= event.capitalize() %></p>
  </div>
   <input type="switch"/>
  </div>

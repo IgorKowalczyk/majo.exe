@@ -67,7 +67,7 @@ module.exports = {
 
    const embed = new MessageEmbed()
     .setAuthor({ name: `${client.user.username} Help`, iconURL: message.guild.iconURL() })
-    .setDescription(`> Use the menu, or use ${client.config.domain ? `[\`${client.prefix} help [category]\`](${client.config.domain})` : `\`${client.prefix} help [category]\``} to view commands base on their category!\n\n`)
+    .setDescription(`> Use the menu, or use ${client.process.env.DOMAIN ? `[\`${client.prefix} help [category]\`](${client.process.env.DOMAIN})` : `\`${client.prefix} help [category]\``} to view commands base on their category!\n\n`)
     .addFields(categories)
     .setFooter({
      text: `Requested by ${message.author.tag} • ${client.commands.size} commands in total`,

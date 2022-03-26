@@ -88,10 +88,6 @@ Go to [this link](https://discord.com/oauth2/authorize/?permissions=4294967287&s
 
 > If you are hosting dashboard on [Replit](https://replit.com) please run this command to install Node.js 16x:
 > * `npm init -y && npm i --save-dev node@16 && npm config set prefix=$(pwd)/node_modules/node && export PATH=$(pwd)/node_modules/node/bin:$PATH`
->
-> If you are hosting the site locally it is best to generate certificates for it. If you have them:
-> 1. Change `certs: false` & `localhost: false` values in `/config/web_config.js` to true
-> 2. Place the `server.cert` & `server.key` certs in `/config/certs/` directory
 
 ---
 
@@ -114,14 +110,15 @@ Go to [this link](https://discord.com/oauth2/authorize/?permissions=4294967287&s
 
 ## 🧱 API Endpoints
 > 🔗 API Link: https://majoexe.ml/api/<br>
-> ⛔ Error codes: `0 - 99999`
 
 | API Endpoint (`/api`) | Values | Response (`json`) | Conditions | Error Codes |
 |---|---|---|---|---|
 | `/` | `None` | `Endpoints list` | `None` | `None` |
 | `/v1/info/bot` | `None` | `JSON Object` | `None` | `None` |
 | `/v1/fun/cat_fact` | `None` | `JSON Object` | `None` | `None` |
-> Note: Any other endpoint will return error code `0`
+| `/v1/fun/eightball` | `None` | `JSON Object` | `None` | `None` |
+| `/v1/fun/fortunes` | `None` | `JSON Object` | `None` | `None` |
+> Note: Any other endpoint will return error code `0` and error message
 
 ## 💾 `.env` File (Main Config)
 #### `.env` config table

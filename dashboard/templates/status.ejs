@@ -21,11 +21,10 @@
 </style>
 <% } %>
 <div class="container">
- <% function capitalize(string) { return string.charAt(0).toUpperCase() + string.slice(1); } %>
 <% if (bot.user.avatar) { botavatar = `https://cdn.discordapp.com/avatars/${bot.user.id}/${bot.user.avatar}?size=256`; } else { botavatar = `${secure_connection + domain}/pics/invaild-avatar.png`; } %>
 <h1 class="headerinfo" style="margin-bottom: 5px;">
 <img class="img statusimg pulse" src="<%= botavatar %>" alt="Avatar" />
-<a style="color: #fff" href="https://discord.com/users/<%= bot.user.id %>" target="_blank" rel="noopener"><%= capitalize(bot.user.username) %><span class="tag">#<%- bot.user.discriminator %></span></a>
+<a style="color: #fff" href="https://discord.com/users/<%= bot.user.id %>" target="_blank" rel="noopener"><%= bot.user.username.capitalize() %><span class="tag">#<%- bot.user.discriminator %></span></a>
 </h1>
 <% let status = bot.user.presence.status; %>
 <style> 

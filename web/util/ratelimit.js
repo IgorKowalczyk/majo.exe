@@ -4,16 +4,19 @@ const rateLimiter = new RateLimiterMemory({
  points: 20,
  duration: 1,
 });
-
-const rateLimiterMiddleware = (req, res, next) => {
+const ratelimit = (req, res, next) => {
  rateLimiter
   .consume(req.ip)
   .then(() => {
    next();
   })
   .catch(() => {
-   res.status(429).send("[ANTI DDOS] Too Many Requests! Please try again later!");
+   res.status(429).json({
+    message: "Too Many Requests! Please try again later!",
+    code: 429,
+    ratelimit: true,
+   });
   });
 };
 
-module.exports = rateLimiterMiddleware;
+module.exports = ratelimit;

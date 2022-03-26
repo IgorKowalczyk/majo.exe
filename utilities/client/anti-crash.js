@@ -5,6 +5,7 @@ const errors_webhook = new WebhookClient({ url: process.env.ERRORS_WEBHOOK });
 module.exports = (client) => {
  process.on("unhandledRejection", (reason, p) => {
   if (!reason) return;
+  console.error(reason);
   return errors_webhook.send({
    username: `${client.user.username} Error`,
    avatarURL: client.user.displayAvatarURL({ dynamic: true }),
@@ -21,6 +22,7 @@ module.exports = (client) => {
  });
  process.on("uncaughtException", (err, origin) => {
   if (!err || !origin) return;
+  console.error(err);
   return errors_webhook.send({
    username: `${client.user.username} Error`,
    avatarURL: client.user.displayAvatarURL({ dynamic: true }),
@@ -38,6 +40,7 @@ module.exports = (client) => {
  });
  process.on("uncaughtExceptionMonitor", (err, origin) => {
   if (!err || !origin) return;
+  console.error(err);
   return errors_webhook.send({
    username: `${client.user.username} Error`,
    avatarURL: client.user.displayAvatarURL({ dynamic: true }),
@@ -55,6 +58,7 @@ module.exports = (client) => {
  });
  process.on("multipleResolves", (type, promise, reason) => {
   if (!reason) return;
+  console.error(err);
   return errors_webhook.send({
    username: `${client.user.username} Error`,
    avatarURL: client.user.displayAvatarURL({ dynamic: true }),

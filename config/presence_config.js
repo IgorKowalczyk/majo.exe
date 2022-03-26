@@ -18,49 +18,7 @@ module.exports = {
     type: "PLAYING", // PLAYING | STREAMING | LISTENING | WATCHING
    },
    {
-    message: `I Love W.R Arbuz ❤️`,
-    type: "PLAYING",
-   },
-  ],
-  "02-15": [
-   // Array
-   {
-    message: `I Love W.R Arbuz ❤️`,
-    type: "PLAYING",
-   },
-  ],
-  "02-16": [
-   // Array
-   {
-    message: `I Love W.R Arbuz ❤️`,
-    type: "PLAYING",
-   },
-  ],
-  "02-17": [
-   // Array
-   {
-    message: `I Love W.R Arbuz ❤️`,
-    type: "PLAYING",
-   },
-  ],
-  "02-18": [
-   // Array
-   {
-    message: `I Love W.R Arbuz ❤️`,
-    type: "PLAYING",
-   },
-  ],
-  "02-19": [
-   // Array
-   {
-    message: `I Love W.R Arbuz ❤️`,
-    type: "PLAYING",
-   },
-  ],
-  "02-20": [
-   // Array
-   {
-    message: `I Love W.R Arbuz ❤️`,
+    message: `Can you be my valentine? ❤️`,
     type: "PLAYING",
    },
   ],
@@ -90,10 +48,6 @@ module.exports = {
   ],
  },
  dynamic: [
-  {
-   message: `outside (you know who does that?) {{ emoji }}`,
-   type: "PLAYING",
-  },
   {
    message: `with your heart 💔`,
    type: "PLAYING",

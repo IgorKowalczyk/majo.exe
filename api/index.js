@@ -1,6 +1,4 @@
-if (Number(process.version.slice(1).split(".")[0]) < 16) throw new Error("Majo.exe requires Node.js v16 or higher. Re-run the bot with Node.js v16 or higher!");
 const chalk = require("chalk");
-require("dotenv").config();
 const { glob } = require("glob");
 const { promisify } = require("util");
 const Discord = require("discord.js");
@@ -8,9 +6,7 @@ const globPromise = promisify(glob);
 const api_config = require("../config/web_config").api;
 const all_endpoints = new Discord.Collection();
 
-module.exports = async (app, client, port, config, secure_connection) => {
- console.log(chalk.bold(chalk.bold.red("> ") + chalk.blue.bold("[API]")) + chalk.cyan.bold(" Starting api..."));
- console.log(chalk.bold(chalk.bold.red("> ") + chalk.blue.bold("[API]")) + chalk.cyan.bold(" Setting up api endpoints..."));
+module.exports = async (app, client, port, config, secure_connection, domain) => {
  app.get("/api/", (req, res, next) => {
   res.json(all_endpoints);
  });
@@ -34,4 +30,5 @@ module.exports = async (app, client, port, config, secure_connection) => {
   if (api_config.show_endpoints_list) console.log(chalk.bold(chalk.bold.red("> ") + chalk.blue.bold("[API]")) + chalk.cyan.bold(` Loaded endpoint ${process.env.DOMAIN}${port == 8080 ? "" : `:${port}`}${file.name}`));
   all_endpoints.set(file.name, file);
  });
+ console.log(chalk.bold.red("> ") + chalk.blue.bold("[API]") + chalk.cyan.bold(` API is running on url `) + chalk.blue.bold(`${domain}${port == 8080 ? "" : `:${port}`}/api!`));
 };

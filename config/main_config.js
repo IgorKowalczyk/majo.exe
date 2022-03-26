@@ -20,17 +20,13 @@ module.exports = {
  scopes: "bot%20applications.commands", // Dashboard scopes
  permissions: "1539679190263", // Default invite perms
  suggestions_channel: "838092194530852884", // Suggestions channel
- prefix: process.env.PREFIX, // Client prefix (deprecated)
- youtube: process.env.YOUTUBE, // Youtube token (not used)
+ prefix: process.env.PREFIX, // Client prefix [DEPRECATED]
  id: process.env.ID, // Discord Client prefix
  advanved_logging: false, // Show debug info
  ratelimit: 2500, // Command ratelimit (can be customized for each command) [DEPRECATED]
- max_input: 200, // Maximum command arguments length [DEPRECATED]
+ max_input: 200, // Maximum text input for slash commands
 
- // Dashboard config
- domain: process.env.DOMAIN, // Domain link
-
- use_text_commands: true, // Allow usage of deprecated text commands [WIP]
+ use_text_commands: true, // Allow usage of DEPRECATED text commands
 
  bypass_modules: {
   bot: false, // Bypass check for --bot argument [For pterodactyl panel]

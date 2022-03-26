@@ -13,8 +13,7 @@ module.exports = {
   },
  },
  web: {
-  secure_connection: true, // Redirect from http to https
-  ssl_certs: false, // Use own SSL Certificates
+  secure_connection: false, // Redirect from http to https
   google_verification: "-wuCsk4qLolXEPSUTGX7YBxywcyNNf5HS2ClzgEWxNY", // Google site verification token
   domain: process.env.DOMAIN,
  },
