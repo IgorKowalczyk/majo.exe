@@ -1,5 +1,5 @@
 <%- include("includes/head", { bot, user, path, description, title: "Status" , twitter, url }) %>
-<link rel="stylesheet" type="text/css" href="<%= secure_connection %><%= domain %>/css/status.css">
+<link rel="stylesheet" type="text/css" href="<%= secure_connection %><%= domain %><%= port %>/css/status.css">
 <% if (user) { %>
 <% const checked = "status" %>
 <%- include("includes/side_nav_other", { bot, user, path, checked_nav: checked }) %>

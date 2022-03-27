@@ -1,25 +1,26 @@
-module.exports = (app, client, port, config, secure_connection, domain) => {
+module.exports = (app, client, port, config, secure_connection, domain, express) => {
  const { Permissions, MessageEmbed, WebhookClient } = require("discord.js");
  const url = require("url");
  const path = require("path");
  const chalk = require("chalk");
  const csrf = require("csurf");
- const passport = require("passport");
- const Strategy = require("passport-discord").Strategy;
  const additional_config = require("../config/additional_config");
  const web_config = require("../config/web_config");
  const ejs = require("ejs");
  const validator = require("validator");
- const session = require("express-session");
- const MemoryStore = require("memorystore")(session);
  const moment = require("moment");
  const rate_limit = require("express-rate-limit");
  const package = require("../package.json");
  const { glob } = require("glob");
  const { promisify } = require("util");
  const globPromise = promisify(glob);
- const all_events = [];
  const csrfProtection = csrf({ cookie: true });
+ const render_port = process.env.PORT == 8080 ? "" : `:${process.env.PORT}`;
+ const session = require("express-session");
+ const MemoryStore = require("memorystore")(session);
+ const passport = require("passport");
+ const Strategy = require("passport-discord").Strategy;
+ app.use(express.static("dashboard/static"));
  const expire_date = 1000 * 60 * 60 * 24; // 1 day
  const sessionStore = new MemoryStore({
   checkPeriod: expire_date,
@@ -28,28 +29,24 @@ module.exports = (app, client, port, config, secure_connection, domain) => {
   session({
    cookie: {
     expires: expire_date,
-    secure: true,
+    secure: web_config.web.secure_connection,
     maxAge: expire_date,
    },
    secret: process.env.SESSION_SECRET,
    store: sessionStore,
    resave: false,
-   saveUninitialized: false,
+   saveUninitialized: true,
   })
  );
- const dataDir = path.resolve(`${process.cwd()}${path.sep}dashboard`);
- const templateDir = path.resolve(`${dataDir}${path.sep}templates`);
  passport.serializeUser((user, done) => done(null, user));
  passport.deserializeUser((obj, done) => done(null, obj));
  passport.use(
   new Strategy(
    {
     clientID: process.env.ID,
-    client_secret: process.env.SECRET,
     clientSecret: process.env.SECRET,
-    // Choose one ^ XD
-    callbackURL: `${domain}${process.env.PORT != 80 ? "" : `:${process.env.PORT}`}/callback`,
-    response_type: `token`,
+    callbackURL: `${domain}${process.env.PORT == 8080 ? "" : `:${process.env.PORT}`}/callback`,
+    response_type: `code`,
     scope: ["identify", "guilds"],
    },
    (accessToken, refreshToken, profile, done) => {
@@ -59,11 +56,52 @@ module.exports = (app, client, port, config, secure_connection, domain) => {
  );
  app.use(passport.initialize());
  app.use(passport.session());
+ app.get(
+  "/login",
+  (req, res, next) => {
+   if (req.session.backURL) {
+    req.session.backURL = req.session.backURL;
+   } else if (req.headers.referer) {
+    const parsed = url.parse(req.headers.referer);
+    if (parsed.hostname === app.locals.domain) {
+     req.session.backURL = parsed.path;
+    }
+   } else {
+    req.session.backURL = "/";
+   }
+   next();
+  },
+  passport.authenticate("discord")
+ );
+ app.get(
+  "/callback",
+  passport.authenticate("discord", {
+   failureRedirect: "/errriir",
+  }),
+  (req, res) => {
+   if (req.session.backURL) {
+    const url = req.session.backURL;
+    req.session.backURL = null;
+    res.redirect(url);
+   } else {
+    res.redirect("/");
+   }
+  }
+ );
+
+ const checkAuth = (req, res, next) => {
+  if (req.isAuthenticated()) return next();
+  req.session.backURL = req.url;
+  res.redirect("/login");
+ };
+
+ const data_dir = path.resolve(`${process.cwd()}${path.sep}dashboard`);
+ const template_dir = path.resolve(`${data_dir}${path.sep}templates`);
  app.engine("html", ejs.renderFile);
  app.set("view engine", "html");
  const renderTemplate = (res, req, template, data = {}) => {
-  var hostname = req.headers.host;
-  var pathname = url.parse(req.url).pathname;
+  let hostname = req.headers.host;
+  let pathname = url.parse(req.url).pathname;
   const baseData = {
    bot: client,
    config: config,
@@ -83,13 +121,15 @@ module.exports = (app, client, port, config, secure_connection, domain) => {
    additional_config: additional_config,
    package: package,
    req: req,
+   port: render_port,
    name: client.username,
    recaptcha: process.env.RECAPTCHA_KEY,
    tag: client.tag,
   };
-  res.render(path.resolve(`${templateDir}${path.sep}${template}`), Object.assign(baseData, data));
+  res.render(path.resolve(`${template_dir}${path.sep}${template}`), Object.assign(baseData, data));
  };
  (async () => {
+  const all_events = [];
   const endpoints = await globPromise(`${process.cwd()}/bot/events/guild/*.js`);
   endpoints.map(async (value) => {
    const name = value.split("/").pop().replace(".js", "");
@@ -98,11 +138,7 @@ module.exports = (app, client, port, config, secure_connection, domain) => {
    }
   });
  })();
- const checkAuth = (req, res, next) => {
-  if (req.isAuthenticated()) return next();
-  req.session.backURL = req.url;
-  res.redirect("/login");
- };
+
  const limiter = rate_limit({
   windowMs: 60 * 1000, // 1 minute
   max: 60,

@@ -1,7 +1,7 @@
 <%- include("includes/head", { bot, user, path, title: user.username + " profile" }) %>
 <% const checked = "profile" %>
 <%- include("includes/side_nav_other", { bot, user, path, checked_nav: checked }) %>
-<link rel="stylesheet" type="text/css" href="<%= secure_connection %><%= domain %>/css/user-profile.css">
+<link rel="stylesheet" type="text/css" href="<%= secure_connection %><%= domain %><%= port %>/css/user-profile.css">
 <div class="content">
 <% if (user.avatar) {
  iconurl = `https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}`

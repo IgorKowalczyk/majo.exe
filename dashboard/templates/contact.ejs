@@ -8,7 +8,7 @@
 <div class="container-contact">
  <div class="wrap-contact">
 <% } %>
-<link rel="stylesheet" type="text/css" href="<%= secure_connection %><%= domain %>/css/contact.css" />
+<link rel="stylesheet" type="text/css" href="<%= secure_connection %><%= domain %><%= port %>/css/contact.css" />
   <% if (alert) { %>
   <% if(error == true) { %>
   <style>
@@ -96,9 +96,9 @@ close_banner.addEventListener("click", function () {
    <% } else { %>
     <p>You must be logged in to contact us!</p>
     </div>
-    <a href="<%= secure_connection %><%= domain %>/login" style="margin-left: 0" class="link-button green">Login</a>
+    <a href="<%= secure_connection %><%= domain %><%= port %>/login" style="margin-left: 0" class="link-button green">Login</a>
 <% if (config.support_server) { %>
-<a href="<%= secure_connection %><%= domain %>/server" style="margin-left: 0;     display: flex; padding: 10px 17px;" class="link-button"><%- include('includes/icons/new_tab.ejs') %> Discord</a>
+<a href="<%= secure_connection %><%= domain %><%= port %>/server" style="margin-left: 0;     display: flex; padding: 10px 17px;" class="link-button"><%- include('includes/icons/new_tab.ejs') %> Discord</a>
 <% } %>
    <% } %>
   </form>

@@ -1,6 +1,6 @@
 <%- include("includes/head", { bot, user, path, description, title, twitter, url }) %>
 <% if (bot.user.avatar) { botavatar = `https://cdn.discordapp.com/avatars/${bot.user.id}/${bot.user.avatar}.webp?size=256`; } else { botavatar = `${secure_connection + domain}/pics/invaild-avatar.png`; } %>
-<link rel="stylesheet" type="text/css" href="<%= secure_connection %><%= domain %>/css/home-page.css" />
+<link rel="stylesheet" type="text/css" href="<%= secure_connection %><%= domain %><%= port %>/css/home-page.css" />
 
 <% if (user) { %>
   <% const checked = "home" %>
@@ -29,7 +29,7 @@
    <p class="hero-title">Yay <span class="gradient-pink"><%= user.username %></span>!</p>
    <p class="hero-title2">You successfully connected your Discord account!</br>Go to your dashboard and me to your server!</p>
    <span class="reload-container" style="margin: 0 auto;max-width: 20px;">
-   <a href="<%= secure_connection %><%= domain %>/dashboard" class="link-button green reload"><span class="reload-container"><%- include('includes/icons/dashboard-main.ejs') %> Dashboard</span></a>
+   <a href="<%= secure_connection %><%= domain %><%= port %>/dashboard" class="link-button green reload"><span class="reload-container"><%- include('includes/icons/dashboard-main.ejs') %> Dashboard</span></a>
    </span>
   </div>
  </div>
@@ -43,14 +43,14 @@
   <p class="brand_new_header_line">you will ever need!</p>
   <p class="brand_new_description">I have almost everything - Fun, Memes, Images, Giveaway, Moderation, Anime and NSFW! I serve over 150 commands To get started with me just login with your Discord account</p>
   <span class="center-buttons">
-   <a href="<%= secure_connection %><%= domain %>/login" class="link-button green">Get Started</a>
+   <a href="<%= secure_connection %><%= domain %><%= port %>/login" class="link-button green">Get Started</a>
    <a href="#features" class="link-button">Learn More</a>
   </span>
  </div>
 </section>
 <% } %>
 
-<link rel="stylesheet" type="text/css" href="<%= secure_connection %><%= domain %>/css/cards.css" />
+<link rel="stylesheet" type="text/css" href="<%= secure_connection %><%= domain %><%= port %>/css/cards.css" />
 <div class="content-container">
 <div class="stats">
 <div class="stats_inner">
@@ -70,7 +70,7 @@
 </div>
  <div id="features" class="product-row">
   <div class="product-image">
-   <img src="<%= secure_connection %><%= domain %>/pics/features/1.webp" alt="Many commands!"/>
+   <img src="<%= secure_connection %><%= domain %><%= port %>/pics/features/1.webp" alt="Many commands!"/>
   </div>
   <div class="product-text">
    <h2 class="product-title">Many commands!</h2>
@@ -79,7 +79,7 @@
  </div>
  <div class="product-row">
   <div class="product-image">
-   <img src="<%= secure_connection %><%= domain %>/pics/features/2.webp" alt="More reactions!"/>
+   <img src="<%= secure_connection %><%= domain %><%= port %>/pics/features/2.webp" alt="More reactions!"/>
   </div>
   <div class="product-text">
    <h2 class="product-title">More reactions!</h2>
@@ -91,7 +91,7 @@
   <img class="sparkles" src="https://cdn.discordapp.com/attachments/947240167431884800/952604316374552626/fuckdiscord.svg"/>
  <h2 class="more-header">Ready to <span class="yellow-gradient">boost your server?</span></h2>
  <p class="more-text">From auto-moderation to generating your own memes! We'll take care of everything.</br><%= bot.user.username.split(" ")[0] %> is the best choice to grow your Discord server!</p>
- <a href="<%= secure_connection %><%= domain %>/invite %>" class="link-button blue center-button">Invite <%= bot.user.username.split(" ")[0] %> now!</a>
+ <a href="<%= secure_connection %><%= domain %><%= port %>/invite %>" class="link-button blue center-button">Invite <%= bot.user.username.split(" ")[0] %> now!</a>
 </div>
 
 <%- include("includes/footer") %>

@@ -1,5 +1,5 @@
 <%- include("../includes/head", { bot, user, path, title: "Terms of service" }) %>
-<link rel="stylesheet" type="text/css" href="<%= secure_connection %><%= domain %>/css/tos.css" />
+<link rel="stylesheet" type="text/css" href="<%= secure_connection %><%= domain %><%= port %>/css/tos.css" />
 <div class="tos">
 <h1 class="center">Terms and Conditions of <b><%= bot.user.username.capitalize() %></b></h1>
 <p class="center">The following applies to usage of the <%= bot.user.username.capitalize() %> (including other versions) Discord bot: (referred to as "<%= bot.user.username.capitalize() %>")</p>

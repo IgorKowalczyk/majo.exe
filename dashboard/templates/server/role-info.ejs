@@ -14,7 +14,7 @@
 <p class="server-description"><%= guild.description %></p>
 <hr style="width: 20%;">
 <div class="roles-container" style="margin-bottom: 20px">
-<span><a href="<%= secure_connection %><%= domain %>/dashboard/<%= guild.id %>/roles" class="link-button">&#60; Back to roles</a></span>
+<span><a href="<%= secure_connection %><%= domain %><%= port %>/dashboard/<%= guild.id %>/roles" class="link-button">&#60; Back to roles</a></span>
 </div>
 
 <% function pick_color(color) {

@@ -8,6 +8,6 @@
   <% } else { %>
      <p class="error"><span style="font-weight: bold"><%= alert %></span></p>
   <% } %>
- <a class="add button center-button blue" href="<%= secure_connection %><%= domain %>/">Go back to home page!</a>
+ <a class="add button center-button blue" href="<%= secure_connection %><%= domain %><%= port %>/">Go back to home page!</a>
  <%- include("includes/footer") %>
 </div>

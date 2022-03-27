@@ -1,7 +1,7 @@
 
 <meta name="description" content="<%- description %>">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<link rel="canonical" href="<%= secure_connection %><%= domain %><%= path %>">
+<link rel="canonical" href="<%= secure_connection %><%= domain %><%= port %><%= path %>">
 <meta name="copyright" content="(c) Copyright <%= new Date().getFullYear() %> Igor Kowalczyk">
 <meta name="theme-color" content="#5865F2">
 <meta property="og:locale" content="en_US">
@@ -14,7 +14,7 @@
 <meta name="twitter:card" content="summary">
 <% if (twitter) { %><meta name="twitter:site" content="<%= twitter %>"><% } %>
 <% if (twitter) { %><meta name="twitter:creator" content="<%= twitter %>"><% } %>
-<meta name="twitter:url" content="<%= domain %><%= path %>">
+<meta name="twitter:url" content="<%= domain %><%= port %><%= path %>">
 <meta name="twitter:title" content="<% if(title) { %><%- bot.user.username + ' | ' + title %><% } else { %><%- bot.user.username + ' - The best Discord bot' %><% } %>">
 <meta name="twitter:description" content="<%= description %>">
 <% if (web_config.dashboard.google_verification != null) { %>

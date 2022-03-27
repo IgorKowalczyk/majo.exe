@@ -1,5 +1,5 @@
 <%- include("../includes/head", { bot, user, path, description, title: guild.name + " dashboard", twitter, url }) %>
-<link rel="stylesheet" type="text/css" href="<%= secure_connection %><%= domain %>/css/server.css" />
+<link rel="stylesheet" type="text/css" href="<%= secure_connection %><%= domain %><%= port %>/css/server.css" />
 <% if (guild.icon) {
  iconurl = `https://cdn.discordapp.com/icons/${guild.id}/${guild.icon}`;
 } else {

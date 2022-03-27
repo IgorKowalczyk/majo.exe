@@ -5,7 +5,7 @@
  <h3 class="center">An error occurred while viewing this page!</h3>
  <p class="error"><span style="font-weight: bold">Internal server error - the server encountered unexpected problems that prevented the request from completing. Please try again later</span></p>
    <p class="error"><span style="font-weight: bold"><%= error.toString() %></span></p>
- <a class="add button center-button blue" href="<%= secure_connection %><%= domain %>/">Go back to home page!</a>
+ <a class="add button center-button blue" href="<%= secure_connection %><%= domain %><%= port %>/">Go back to home page!</a>
  <%- include("includes/footer") %>
 </div>
 

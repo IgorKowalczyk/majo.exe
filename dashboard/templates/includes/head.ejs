@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title><% if(title) { %><%- bot.user.username.capitalize() + ' | ' + title %><% } else { %><%- bot.user.username.capitalize() + ' - The best Discord bot' %><% } %></title>
 
-<link rel="stylesheet" type="text/css" href="<%= secure_connection %><%= domain %>/css/style.css" media="all">
+<link rel="stylesheet" type="text/css" href="<%= secure_connection %><%= domain %><%= port %>/css/style.css" media="all">
 <%- include('./favicons.ejs') %>
 <% if (web_config.dashboard.google_analitics) { %>
 <%- include('./analytics.ejs') %>
