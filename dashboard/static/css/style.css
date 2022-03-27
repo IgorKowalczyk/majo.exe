@@ -273,7 +273,7 @@ p {
  background-repeat: no-repeat;
  background-size: 0 2px;
  transition: 300ms, background-size 350ms;
- font-weight: 200;
+ font-weight: 300;
 }
 
 .nav li a:hover {

@@ -81,6 +81,16 @@
  -webkit-text-fill-color: transparent;
  -webkit-box-decoration-break: clone;
 }
+
+.grandient-blue {
+background: -webkit-linear-gradient(-70deg, #3bf0e4 0%, #bca1f7 100%);
+  background-clip: border-box;
+-webkit-background-clip: text;
+background-clip: text;
+-webkit-text-fill-color: transparent;
+-webkit-box-decoration-break: clone;
+}
+
 .brand_new_description {
  font-family: "Poppins";
  font-size: 21px;
@@ -214,4 +224,8 @@
  100% {
   filter: brightness(100%);
  }
+}
+
+.line_underline {
+ border-bottom: 1.5px solid rgba(255, 255, 255, 0.5);
 }
