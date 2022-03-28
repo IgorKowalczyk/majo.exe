@@ -82,3 +82,58 @@ input:focus {
 .blue:hover {
  background-color: rgb(71, 83, 197);
 }
+
+.stats {
+ box-shadow: 0 3px 15px 0 rgba(0, 0, 0, 0.1), 0 1px 3px 0 rgba(0, 0, 0, 0.08);
+ margin: 0 auto;
+ background-color: var(--navbar);
+}
+.highcharts-background {
+ fill: none;
+}
+.higharts-title {
+ color: #fff !important;
+ fill: #fff !important;
+ font-family: "Poppins" !important;
+}
+.highcharts-point {
+ fill: #5865f2;
+ stroke: #5865f2;
+}
+.highcharts-graph {
+ stroke: #5865f2;
+}
+.highcharts-credits {
+ display: none;
+}
+.highcharts-axis-title {
+ fill: #b9bbbe !important;
+ font-family: Poppins !important;
+}
+.highcharts-yaxis-grid .highcharts-grid-line,
+.highcharts-axis-line,
+.highcharts-tick {
+ stroke: rgb(64 71 82);
+ stroke-width: 1.5;
+}
+.highcharts-axis-labels .highcharts-xaxis-labels {
+ font-family: Poppins !important;
+ fill: #b9bbbe;
+ font-size: 12px;
+}
+.highcharts-legend-item .highcharts-line-series .highcharts-color-0 .highcharts-series-0 {
+ font-family: "Poppins";
+ fill: unset;
+ stroke: unset;
+ font-weight: 100;
+}
+.highcharts-tooltip .highcharts-tooltip-box {
+ fill: #1e2125;
+}
+text {
+ font-family: "Poppins";
+ fill: #c0c0c0 !important;
+}
+.highcharts-axis-line {
+ display: none !important;
+}

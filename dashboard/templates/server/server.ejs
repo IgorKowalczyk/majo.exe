@@ -103,154 +103,87 @@ close_banner.addEventListener("click", function () {
 
 <div class="servers stats">
 <script src="https://code.highcharts.com/highcharts.js"></script>
-<h2>Members flow (This month)</h2>
-  <% if(joins && leaves) { %>
+<h2 style="margin-bottom: 0;">Members flow</h2>
+<h4 style="margin: 0;margin-bottom: 10px;padding-left: 2%;">In this month</h4>
+ <% if(joins && leaves) { %>
+  <div style="display: flex;color: #fff;"><%- include('../includes/icons/group_add.ejs') %> Total joins: <span id="joins" style="padding-left: 5px"><%= total_joins %></span></div>
+  <div style="display: flex;color: #fff;"><%- include('../includes/icons/group_remove.ejs') %>Total leaves: <span id="leaves" style="padding-left: 5px"><%= total_leaves %></span></div>
   <figure class="highcharts-figure">
-    <div id="container">      <p>No data! Wait a few days for the stats to show up here!</p>
-      <p style="opacity: 0.5">All data is cleared on the first day of the month.</p></div>
-</figure>
-<style>
-  .stats {
-    box-shadow: 0 3px 15px 0 rgba(0, 0, 0, 0.1), 0 1px 3px 0 rgba(0, 0, 0, 0.08);
-    margin: 0 auto;
-    background-color: var(--navbar); 
-  }
-  .highcharts-background {
-    fill: none;
-  }
-  .higharts-title {
-    color: #fff !important;
-    fill: #fff !important;
-    font-family: "Poppins" !important;
-  }
-  .highcharts-point {
-    fill: #5865F2;
-    stroke: #5865F2;
-  }
-  .highcharts-graph {
-        stroke: #5865F2;
-  }
-  .highcharts-credits {
-    display: none;
-  }
-  .highcharts-axis-title {
-    fill: #b9bbbe !important;
-    font-family: Poppins !important;
-  }
-  .highcharts-yaxis-grid .highcharts-grid-line, .highcharts-axis-line, .highcharts-tick {
-stroke: rgb(64 71 82);
-    stroke-width: 1.5;
-  }
-  .highcharts-axis-labels .highcharts-xaxis-labels {
-    font-family: Poppins !important;
-    fill: #b9bbbe;
-    font-size: 12px
-  }
-  .highcharts-legend-item .highcharts-line-series .highcharts-color-0 .highcharts-series-0 {
-    font-family: 'Poppins';
-    fill: unset;
-    stroke: unset;
-    font-weight: 100;
-  }
-  .highcharts-tooltip .highcharts-tooltip-box {
-    fill: #1e2125;
-  }
-  text {
-    font-family: 'Poppins';
-    fill: #c0c0c0 !important;
-  }
-  .highcharts-axis-line {
-    display: none !important;
-  }
-</style>
-<script src="https://momentjs.com/downloads/moment.js"></script>
-<script>
-let joins = [];
-let leaves = [];
-let joins_array = JSON.parse(JSON.stringify(<%- JSON.parse(JSON.stringify(joins)) %>));
-let leaves_array = JSON.parse(JSON.stringify(<%- JSON.parse(JSON.stringify(leaves)) %>));
-let current_year = moment().year();
-let current_month = moment().month();
-for (let el of Object.entries(joins_array)) {
- if(el[0].replaceAll("/", "-") == `${moment().year()}-${moment().format('MM')}-${moment().date() + 1}`) break;
- joins.push([el[0].replaceAll("/", "-"), el[1]])
-}
-for (let el of Object.entries(leaves_array)) {
- if(el[0].replaceAll("/", "-") == `${moment().year()}-${moment().format('MM')}-${moment().date() + 1}`) break;
- leaves.push([el[0].replaceAll("/", "-"), el[1]])
-}
-  joins.forEach(function(point) {
-  point[0] = Date.parse(point[0])
-});
-    leaves.forEach(function(point) {
-  point[0] = Date.parse(point[0])
-});
-  Highcharts.chart('container', {
-
-    title: {
-        text: null
-    },
-    yAxis: {
-      minTickInterval: 1,
-        title: {
-            text: 'Members'
-        }
-      
-    },
-
-    xAxis: {
-       //  tickInterval: 1,
-   //   startOnTick: true,
-//endOnTick: true,
-      type: 'datetime',
-  dateTimeLabelFormats: {
-    millisecond: '%b %e',
-    second: '%b %e',
-    minute: '%b %e',
-    hour: '%b %e',
-    day: '%b %e',
-    week: '%b %e',
-    month: '%b %e',
-    year: '%b %e'
-  }
-    },
-    legend: {
-        layout: 'vertical',
-        align: 'right',
-        verticalAlign: 'middle'
-    },
-
-    series: [
-      {
-        name: 'Joins',
-        data: joins,
-    },
-            {
-        name: 'Leaves',
-        data: leaves,
-    },
-    ],
-
-    responsive: {
-        rules: [{
-            condition: {
-                maxWidth: 500
-            },
-            chartOptions: {
-                legend: {
-                    layout: 'horizontal',
-                    align: 'center',
-                    verticalAlign: 'bottom'
-                }
-            }
-        }]
-    }
-
-});
-  </script>
-    <% } else { %>
-      <p>No data! Wait a few days for the stats to show up here!</p>
-      <p style="opacity: 0.5">All data is cleared on the first day of the month.</p>
-      <% } %>
+  <div id="container">
+   <p>No data! Wait a few days for the stats to show up here!</p>
+   <p style="opacity: 0.5">All data is cleared on the first day of the month.</p> 
   </div>
+</figure>
+<script>
+let joins_array = <%- JSON.stringify(joins) %>;
+let leaves_array =  <%- JSON.stringify(leaves) %>;
+joins_array.forEach(function(point) {
+ point[0] = Date.parse(point[0])
+});
+leaves_array.forEach(function(point) {
+ point[0] = Date.parse(point[0])
+});
+
+Highcharts.chart('container', {
+ title: {
+  text: null
+ },
+ yAxis: {
+  minTickInterval: 1,
+  title: {
+   text: 'Members'
+  } 
+ },
+ xAxis: {
+  //  tickInterval: 1,
+  //   startOnTick: true,
+  //endOnTick: true,
+  type: 'datetime',
+  dateTimeLabelFormats: {
+   millisecond: '%b %e',
+   second: '%b %e',
+   minute: '%b %e',
+   hour: '%b %e',
+   day: '%b %e',
+   week: '%b %e',
+   month: '%b %e',
+   year: '%b %e'
+  }
+ },
+ legend: {
+  layout: 'vertical',
+  align: 'right',
+  verticalAlign: 'middle'
+ },
+ series: [
+  {
+   name: 'Joins',
+   data: joins_array,
+  },
+  {
+   name: 'Leaves',
+   data: leaves_array,
+  },
+ ],
+ responsive: {
+  rules: [{
+   condition: {
+   maxWidth: 500
+  },
+  chartOptions: {
+   legend: {
+    layout: 'horizontal',
+    align: 'center',
+    verticalAlign: 'bottom'
+   }
+  }
+ }]
+}
+});
+</script>
+ <% } else { %>
+  <p>No data! Wait a few days for the stats to show up here!</p>
+  <p style="opacity: 0.5">All data is cleared on the first day of the month.</p>
+ <% } %>
+</div>
 <%- include("../includes/footer") %>
