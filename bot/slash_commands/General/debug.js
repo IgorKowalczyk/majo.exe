@@ -6,7 +6,7 @@ const osu = require("node-os-utils");
 const cpu = osu.cpu;
 const os = osu.os;
 const drive = osu.drive;
-const proc = osu.proc;
+const memory = osu.mem;
 const { dependencies } = require("../../../package.json");
 const fetch = require("node-fetch");
 
@@ -88,29 +88,21 @@ module.exports = {
      });
     interaction.followUp({ embeds: [embed] });
    } else if (args[0] == "host") {
-    const botuptime = moment.duration(client.uptime).format(" D [days], H [hrs], m [mins], s [secs]");
-    const osuptime = moment.duration(os.uptime()).format(" D [days], H [hrs], m [mins], s [secs]");
+    const client_uptime = new Date().getTime() - Math.floor(client.uptime);
     const wait_embed = new MessageEmbed() // Prettier
      .setColor("#5865f2")
      .setDescription(`${client.bot_emojis.loading} | I'm collecting info about myself. Please wait...`);
     interaction.followUp({ embeds: [wait_embed] }).then((process_message) => {
-     cpu.usage().then((cpupercentage) => {
-      drive.info().then((driveinf) => {
-       const driveinf0 = JSON.stringify(driveinf);
-       const driveinfo = JSON.parse(driveinf0);
-       (async () => {
-        const response = await fetch("https://api.github.com/repos/igorkowalczyk/majo.exe/commits?per_page=1");
-        const body = await response.json();
+     Promise.all(// Prettier
+      [cpu.usage(), drive.info(), os.oos(), fetch(`https://api.github.com/repos/${client.config.github}/${client.config.github_repo}/commits?per_page=1`)])
+      .then(([cpu_info, drive_info, os_info, git]) => {
+       return Promise.all( // Prettier
+       [cpu_info, JSON.parse(JSON.stringify(drive_info)), os_info, git.json()]);
+      })
+      .then(([cpu_info, drive_info, os_info, git]) => {
         const embed = new MessageEmbed() // Prettier
-         .setTitle(
-          `${client.bot_emojis.page} Generic Information`,
-          interaction.guild.iconURL({
-           dynamic: true,
-           format: "png",
-          })
-         )
+         .setTitle(`${client.bot_emojis.page} Generic Information`)
          .setColor("#4f545c")
-         .addField(`${client.bot_emojis.owner_crown} Developer`, `<@${client.config.owner_id}> [[Website](${client.config.author_website})]`)
          .setThumbnail(
           client.user.displayAvatarURL({
            dynamic: true,
@@ -118,18 +110,18 @@ module.exports = {
            size: 2048,
           })
          )
-         .addField(`${client.bot_emojis.discord_logo} Guild Count`, `\`${client.guilds.cache.size} guilds\``, true)
-         .addField(`${client.bot_emojis.member} User Count`, `\`${client.guilds.cache.reduce((a, g) => a + g.memberCount, 0)} members\``, true)
-         .addField(`${client.bot_emojis.channel} Channel Count`, `\`${client.channels.cache.size} channels\``, true)
-         .addField(`${client.bot_emojis.optical_disk} Operating System`, "```" + osutils.platform().capitalize() + " (" + os.arch() + ")```", true)
+         .setDescription(`>>> ${client.bot_emojis.owner_crown} **Bot created with ${client.bot_emojis.heart} by <@${client.config.owner_id}> in Poland 🇵🇱**`)
+         .addField(`${client.bot_emojis.discord_logo} Guild Count`, `>>> \`${client.guilds.cache.size} guilds\``, true)
+         .addField(`${client.bot_emojis.member} Users Count`, `>>> \`${client.guilds.cache.reduce((a, g) => a + g.memberCount, 0)} members\``, true)
+         .addField(`${client.bot_emojis.channel} Channels Count`, `>>> \`${client.channels.cache.size} channels\``, true)
+         .addField(`${client.bot_emojis.optical_disk} Operating System`, `\`\`\`${os_info} (${os.platform().capitalize()} ${os.arch()})\`\`\``)
          .addField(`${client.bot_emojis.package} Tools`, `\`\`\`Node.js: ${process.version} | Discord.js: ${dependencies["discord.js"].replace("^", "v")}\`\`\``)
-         .addField(`${client.bot_emojis.uptime} Uptime`, `\`\`\`Bot: ${botuptime}\nServer: ${osuptime}\`\`\``)
-         // Yea, quite long strings XD
          .addField(`${client.bot_emojis.ping} Ping`, `\`\`\`Bot: ${Math.round(client.ws.ping)}ms | API: ${(Date.now() - interaction.createdTimestamp).toString().replace(/-/g, "")}ms\`\`\``)
-         .addField(`${client.bot_emojis.cpu_icon} CPU`, "```" + cpu.model() + " (" + cpu.count() + " cores)" + " [" + cpupercentage + "% used]```")
-         .addField(`${client.bot_emojis.drive_icon} Drive`, `\`\`\`${driveinfo.usedGb}GB/${driveinfo.totalGb}GB (${driveinfo.freePercentage}% free)\`\`\``)
-         .addField(`${client.bot_emojis.ram_icon} RAM Usage`, `\`\`\`VPS: ${(osutils.totalmem() - osutils.freemem()).toString().split(".")[0] + "." + (osutils.totalmem() - osutils.freemem()).toString().split(".")[1].split("")[0] + (osutils.totalmem() - osutils.freemem()).toString().split(".")[1].split("")[1]}/${osutils.totalmem().toString().split(".")[0] + "." + osutils.totalmem().toString().split(".")[1].split("")[0] + osutils.totalmem().toString().split(".")[1].split("")[1]}MB (${(100 - osutils.freememPercentage() * 100).toString().split(".")[0] + "." + (100 - osutils.freememPercentage() * 100).toString().split(".")[1].split("")[0] + (100 - osutils.freememPercentage() * 100).toString().split(".")[1].split("")[1]}%)\nBOT: ${(process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2)}MB/${osutils.totalmem().toString().split(".")[0] + "." + osutils.totalmem().toString().split(".")[1].split("")[0] + osutils.totalmem().toString().split(".")[1].split("")[1]}MB (${((100 * (process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2)) / osutils.totalmem().toString().split(".")[0]).toFixed(2)} %)\`\`\``)
-         .addField(`${client.bot_emojis.octo} Latest commit`, `>>> *[${body[0].sha}](${body[0].html_url})*\n<t:${moment(body[0].commit.committer.date).unix()}:D> (<t:${moment(body[0].commit.committer.date).unix()}:R>)`)
+         .addField(`${client.bot_emojis.cpu_icon} CPU`, `\`\`\`${cpu.model()} (${cpu.count()} cores) [${cpu_info}% used]\`\`\``)
+         .addField(`${client.bot_emojis.drive_icon} Drive`, `\`\`\`${drive_info.usedGb}GB/${drive_info.totalGb}GB (${drive_info.freePercentage}% free)\`\`\``)
+         .addField(`${client.bot_emojis.ram_icon} RAM Usage`, `\`\`\`Server: ${(osutils.totalmem() - osutils.freemem()).toString().split(".")[0] + "." + (osutils.totalmem() - osutils.freemem()).toString().split(".")[1].split("")[0] + (osutils.totalmem() - osutils.freemem()).toString().split(".")[1].split("")[1]}/${osutils.totalmem().toString().split(".")[0] + "." + osutils.totalmem().toString().split(".")[1].split("")[0] + osutils.totalmem().toString().split(".")[1].split("")[1]}MB (${(100 - osutils.freememPercentage() * 100).toString().split(".")[0] + "." + (100 - osutils.freememPercentage() * 100).toString().split(".")[1].split("")[0] + (100 - osutils.freememPercentage() * 100).toString().split(".")[1].split("")[1]}%)\nClient: ${(process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2)}MB/${osutils.totalmem().toString().split(".")[0] + "." + osutils.totalmem().toString().split(".")[1].split("")[0] + osutils.totalmem().toString().split(".")[1].split("")[1]}MB (${((100 * (process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2)) / osutils.totalmem().toString().split(".")[0]).toFixed(2)} %)\`\`\``)
+         .addField(`${client.bot_emojis.uptime} Date launched`, `>>> <t:${moment(client_uptime).unix()}> (<t:${moment(client_uptime).unix()}:R>)\n`)
+         .addField(`${client.bot_emojis.octo} Latest commit`, `>>> **Git:** *[${git[0].sha}](${git[0].html_url})*\n**Time:** <t:${moment(git[0].commit.committer.date).unix()}:D> (<t:${moment(git[0].commit.committer.date).unix()}:R>)`)
          .setFooter({
           text: `Requested by ${interaction.user.username}`,
           iconURL: interaction.user.displayAvatarURL({
@@ -163,9 +155,7 @@ module.exports = {
          );
         }
         process_message.edit({ embeds: [embed], components: [row] });
-       })();
       });
-     });
     });
    }
   } catch (err) {

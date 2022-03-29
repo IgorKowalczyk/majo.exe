@@ -10,8 +10,7 @@ module.exports = {
  run: async (client, interaction, args) => {
   try {
    const duration = moment.duration(client.uptime).format(" D [days], H [hrs], m [mins], s [secs]");
-   const date = new Date();
-   const timestamp = date.getTime() - Math.floor(client.uptime);
+   const timestamp = new Date().getTime() - Math.floor(client.uptime);
    const embed = new MessageEmbed() // Prettier
     .setTitle(
      `${client.bot_emojis.uptime} Uptime`,
