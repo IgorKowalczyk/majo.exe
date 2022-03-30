@@ -7,7 +7,7 @@
 //
 //   Created by: Majonez.exe#2495 under MIT License
 //   Support: https://discord.gg/bVNNHuQ
-//   Website: https://majoexe.ml
+//   Website: https://majoexe.xyz
 //
 
 require("dotenv").config();
