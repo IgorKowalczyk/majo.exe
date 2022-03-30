@@ -3,7 +3,7 @@ const moment = require("moment");
 
 module.exports = {
  name: "ping",
- description: "🏓 Checks Majo.exe response time to Discord",
+ description: "🏓 Get the ping for Majo.exe",
  usage: "/ping",
  category: "General",
  run: async (client, interaction, args) => {

@@ -1,6 +1,6 @@
 module.exports = {
  name: "debug",
- description: "🎛️ Debug bot",
+ description: "🎛️ View advanced information for devs about the bot",
  usage: "/debug <query>",
  category: "General",
  options: [
