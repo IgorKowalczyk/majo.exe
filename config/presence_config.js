@@ -2,7 +2,7 @@ module.exports = {
  // Stauts config
  display_status: "online", // online | idle | invisible | dnd
  options: {
-  type: "dynamic", // dynamic | static
+  type: "static", // dynamic | static
  },
  static: {
   // Only if options.stype = static
