@@ -103,8 +103,9 @@ close_banner.addEventListener("click", function () {
 
 <div class="servers stats">
 <script src="https://code.highcharts.com/highcharts.js"></script>
+<% const flow = total_joins - total_leaves %>
 <h2 style="margin-bottom: 0;">Members flow</h2>
-<h4 style="margin: 0;margin-bottom: 10px;padding-left: 2%;">In this month</h4>
+<h4 style="margin: 0;margin-bottom: 10px;padding-left: 2%;">In this month: <%= flow < 0 ? `${flow}` : `+${flow}` %> members</h4>
  <% if(joins && leaves) { %>
   <div style="display: flex;color: #fff;"><%- include('../includes/icons/group_add.ejs') %> Total joins: <span id="joins" style="padding-left: 5px"><%= total_joins %></span></div>
   <div style="display: flex;color: #fff;"><%- include('../includes/icons/group_remove.ejs') %>Total leaves: <span id="leaves" style="padding-left: 5px"><%= total_leaves %></span></div>
