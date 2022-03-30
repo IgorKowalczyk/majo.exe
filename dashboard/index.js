@@ -425,7 +425,6 @@ module.exports = (app, client, port, config, secure_connection, domain, express)
       joins: joins,
       total_joins: parseInt(total_joins),
       total_leaves: parseInt(total_leaves),
-      moment: moment,
       leaves: leaves,
       guild_owner: await guild.fetchOwner(),
       csrfToken: req.csrfToken(),
@@ -444,7 +443,6 @@ module.exports = (app, client, port, config, secure_connection, domain, express)
       if (el[0].replaceAll("/", "-") == `${moment().year()}-${moment().format("MM")}-${moment().date() + 1}`) break;
       empty_array.push([el[0].replaceAll("/", "-"), el[1]]);
      }
-
      renderTemplate(res, req, "/server/server.ejs", {
       guild: guild,
       perms: Permissions,
@@ -452,7 +450,6 @@ module.exports = (app, client, port, config, secure_connection, domain, express)
       total_leaves: 0,
       joins: empty_array,
       leaves: empty_array,
-      moment: moment,
       guild_owner: await guild.fetchOwner(),
       csrfToken: req.csrfToken(),
      });
@@ -465,6 +462,7 @@ module.exports = (app, client, port, config, secure_connection, domain, express)
 
  // Settings save endpoint
  app.post("/dashboard/:guildID", csrfProtection, checkAuth, async (req, res) => {
+  try {
   const guild = await client.guilds.cache.get(req.params.guildID);
   if (!guild) return errorPage(req, res, "No such server, add a bot to perform this action!");
   const first_member = req.user.id;
@@ -492,29 +490,28 @@ module.exports = (app, client, port, config, secure_connection, domain, express)
    if (results[0]) {
     let total_joins = 0;
     let total_leaves = 0;
-    let joins_array = JSON.parse(JSON.stringify(results[0].join));
-    let leaves_array = JSON.parse(JSON.stringify(results[0].leave));
-    let joins = [0];
-    let leaves = [0];
+    let joins_array = JSON.parse(results[0].join);
+    let leaves_array = JSON.parse(results[0].leave);
+    let joins = new Array();
+    let leaves = new Array();
     for (let el of Object.entries(joins_array)) {
      if (el[0].replaceAll("/", "-") == `${moment().year()}-${moment().format("MM")}-${moment().date() + 1}`) break;
      joins.push([el[0].replaceAll("/", "-"), el[1]]);
-     total_joins += el[1];
+     total_joins += parseInt(el[1]);
     }
     for (let el of Object.entries(leaves_array)) {
      if (el[0].replaceAll("/", "-") == `${moment().year()}-${moment().format("MM")}-${moment().date() + 1}`) break;
      leaves.push([el[0].replaceAll("/", "-"), el[1]]);
-     total_leaves += el[1];
+     total_leaves += parseInt(el[1]);
     }
     renderTemplate(res, req, "/server/server.ejs", {
      guild: guild,
      perms: Permissions,
      joins: joins,
-     total_joins: total_joins,
-     total_leaves: total_leaves,
-     moment: moment,
-     leaves: leaves,
+     total_joins: parseInt(total_joins),
+     total_leaves: parseInt(total_leaves),
      alert: "Your changes have been saved! ✅",
+     leaves: leaves,
      guild_owner: await guild.fetchOwner(),
      csrfToken: req.csrfToken(),
     });
@@ -527,20 +524,37 @@ module.exports = (app, client, port, config, secure_connection, domain, express)
     client.database.query(`INSERT INTO guild_stats (guild_id, joins, leaves, last_updated) VALUES ('${guild.id}', '${JSON.stringify(empty_stats)}', '${JSON.stringify(empty_stats)}', '${moment(new Date()).format("YYYY-MM-DD")}')`, function (sserror, ssresults, ssfields) {
      if (sserror) console.log(sserror);
     });
+    let empty_array = [];
+    for (let el of Object.entries(empty_stats)) {
+     if (el[0].replaceAll("/", "-") == `${moment().year()}-${moment().format("MM")}-${moment().date() + 1}`) break;
+     empty_array.push([el[0].replaceAll("/", "-"), el[1]]);
+    }
     renderTemplate(res, req, "/server/server.ejs", {
      guild: guild,
      perms: Permissions,
      total_joins: 0,
      total_leaves: 0,
-     joins: JSON.parse(JSON.stringify(empty_stats)),
-     leaves: JSON.parse(JSON.stringify(empty_stats)),
+     joins: empty_array,
+     leaves: empty_array,
      alert: "Your changes have been saved! ✅",
-     moment: moment,
      guild_owner: await guild.fetchOwner(),
      csrfToken: req.csrfToken(),
     });
    }
   });
+
+
+
+
+
+
+
+
+
+
+ } catch (e) {
+  return errorPage(req, res, e);
+ }
  });
 
  app.get("/dashboard/:guildID/roles", checkAuth, async (req, res) => {
