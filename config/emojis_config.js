@@ -46,7 +46,7 @@ module.exports = {
  slash_commands: "<:slash_commands:927627163144949820>", // https://cdn.discordapp.com/emojis/927627163144949820.png
  mention: "<:mention:955194876604084315>", // https://cdn.discordapp.com/emojis/955194876604084315.png
  settings: "<:settings:955195385306034237>", // https://cdn.discordapp.com/emojis/955195385306034237.png
- 
+
  // Utility emojis
  picture_frame: "🖼️",
  anger: "💢",

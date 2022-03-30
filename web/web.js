@@ -41,13 +41,13 @@ module.exports = async (client) => {
    res.setHeader("Access-Control-Allow-Origin", "*");
    next();
   });
-  if (config.bypass_modules.dashboard || process.argv.includes("--dashboard")) {
-   console.log(chalk.bold(chalk.bold.magenta("> ") + chalk.blue.bold("[DASHBOARD]")) + chalk.cyan.bold(` Setting up dashboard...`));
-   await require("../dashboard/index")(app, client, port, config, secure_connection, domain, express);
-  }
   if (config.bypass_modules.api || process.argv.includes("--api")) {
    console.log(chalk.bold(chalk.bold.red("> ") + chalk.blue.bold("[API]")) + chalk.cyan.bold(" Setting up api..."));
    await require("../api/index")(app, client, port, config, secure_connection, domain);
+  }
+  if (config.bypass_modules.dashboard || process.argv.includes("--dashboard")) {
+   console.log(chalk.bold(chalk.bold.magenta("> ") + chalk.blue.bold("[DASHBOARD]")) + chalk.cyan.bold(` Setting up dashboard...`));
+   await require("../dashboard/index")(app, client, port, config, secure_connection, domain, express);
   }
   app.listen(port, null, null, async () => {
    console.log(chalk.bold(chalk.bold.yellow("> ") + chalk.blue.bold("[WEB]")) + chalk.cyan.bold(` Starting in web on port ${port}...`));
