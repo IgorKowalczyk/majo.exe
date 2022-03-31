@@ -39,7 +39,7 @@ module.exports = async (client, interaction, args) => {
        size: 2048,
       })
      )
-     .setDescription(`>>> ${client.bot_emojis.owner_crown} **Bot created with ${client.bot_emojis.heart} by <@${client.config.owner_id}> in Poland 🇵🇱**`)
+     .setDescription(`>>> **Bot created with ${client.bot_emojis.heart} by [Majonez.exe#2495](https://discord.com/users/544164729354977282) in Poland 🇵🇱**`)
      .addField(`${client.bot_emojis.discord_logo} Guild Count`, `>>> \`${client.guilds.cache.size} guilds\``, true)
      .addField(`${client.bot_emojis.member} Users Count`, `>>> \`${client.guilds.cache.reduce((a, g) => a + g.memberCount, 0)} members\``, true)
      .addField(`${client.bot_emojis.channel} Channels Count`, `>>> \`${client.channels.cache.size} channels\``, true)
@@ -48,7 +48,7 @@ module.exports = async (client, interaction, args) => {
      .addField(`${client.bot_emojis.ping} Ping`, `\`\`\`Bot: ${Math.round(client.ws.ping)}ms | API: ${(Date.now() - interaction.createdTimestamp).toString().replace(/-/g, "")}ms\`\`\``)
      .addField(`${client.bot_emojis.cpu_icon} CPU`, `\`\`\`${cpu.model()} (${cpu.count()} cores) [${cpu_info}% used]\`\`\``)
      .addField(`${client.bot_emojis.drive_icon} Drive`, `\`\`\`${drive_info.usedGb}GB/${drive_info.totalGb}GB (${drive_info.freePercentage}% free)\`\`\``)
-     .addField(`${client.bot_emojis.ram_icon} RAM Usage`, `\`\`\`Server: ${memory_info.usedMemMb.toFixed()}MB/${memory_info.totalMemMb.toFixed()}MB (${100 - memory_info.freeMemPercentage}% used)\nClient: ${(process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2)}MB/${memory_info.totalMemMb.toFixed()}MB (${((100 * (process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2)) / memory_info.totalMemMb.toFixed()).toFixed(2)}% used)\`\`\``)
+     .addField(`${client.bot_emojis.ram_icon} RAM Usage`, `\`\`\`Server: ${memory_info.usedMemMb.toFixed()}MB/${memory_info.totalMemMb.toFixed()}MB (${(100 - memory_info.freeMemPercentage).toFixed(2)}% used)\nClient: ${(process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2)}MB/${memory_info.totalMemMb.toFixed()}MB (${((100 * (process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2)) / memory_info.totalMemMb.toFixed()).toFixed(2)}% used)\`\`\``)
      .addField(`${client.bot_emojis.uptime} Date launched`, `>>> <t:${moment(client_uptime).unix()}> (<t:${moment(client_uptime).unix()}:R>)\n`)
      .addField(`${client.bot_emojis.octo} Latest commit`, `>>> **Git:** *[${git[0].sha}](${git[0].html_url})*\n**Time:** <t:${moment(git[0].commit.committer.date).unix()}:D> (<t:${moment(git[0].commit.committer.date).unix()}:R>)`)
      .setFooter({

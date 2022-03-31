@@ -2,7 +2,7 @@ const { MessageEmbed } = require("discord.js");
 
 module.exports = {
  name: "8ball",
- description: `🔮 Tells you a fortune`,
+ description: `🔮 Tells you a *magic* fortune`,
  usage: "/8ball <question>",
  category: "Fun",
  options: [

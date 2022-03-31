@@ -5,7 +5,7 @@ module.exports = {
  success: "<:success:860884617820110909>", // https://cdn.discordapp.com/emojis/860884617820110909.png
  error: "<:error:860884617770303519>", // https://cdn.discordapp.com/emojis/860884617770303519.png
  giveaway: "<a:giveaway:843845378352873492>", // https://cdn.discordapp.com/emojis/843845378352873492.gif
- discord_logo: "<:discord_2:876473291777404959>", // https://cdn.discordapp.com/emojis/876473291777404959.png
+ discord_logo: "<:discord_logo:959148568382439484>", // https://cdn.discordapp.com/emojis/959148568382439484.png
  member: "<:members:856161806606401556>", // https://cdn.discordapp.com/emojis/856161806606401556.png
  channel: "<:channel:856161806586085376>", // https://cdn.discordapp.com/emojis/856161806586085376.png
  role: "<:role:856182143734775808>", // https://cdn.discordapp.com/emojis/856182143734775808.png
@@ -42,7 +42,7 @@ module.exports = {
  early_supporter: "<:discord_early_supporter:898956482136113173>", // https://cdn.discordapp.com/emojis/898956482136113173.png
  bug_hunter_1: "<:bug_hunter:898956482580721696>", // https://cdn.discordapp.com/emojis/898956482580721696.png
  bug_hunter_2: "<:bug_hunter_2:898956482161278976>", // https://cdn.discordapp.com/emojis/898956482161278976.png
- discord_employee: "<:discordemployee:898956482102566954>", // https://cdn.discordapp.com/emojis/898956482102566954.png
+ discord_employee: "<:staff:959152617458663465>", // https://cdn.discordapp.com/emojis/898956482102566954.png
  slash_commands: "<:slash_commands:927627163144949820>", // https://cdn.discordapp.com/emojis/927627163144949820.png
  mention: "<:mention:955194876604084315>", // https://cdn.discordapp.com/emojis/955194876604084315.png
  settings: "<:settings:955195385306034237>", // https://cdn.discordapp.com/emojis/955195385306034237.png

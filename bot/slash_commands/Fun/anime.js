@@ -3,7 +3,7 @@ const mal = require("mal-scraper");
 
 module.exports = {
  name: "anime",
- description: `💮 Search for information on a given anime`,
+ description: `💮 Search for information about Anime by given name`,
  usage: "/anime <query>",
  category: "Fun",
  options: [

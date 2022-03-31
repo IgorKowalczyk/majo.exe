@@ -2,7 +2,7 @@ const { MessageEmbed } = require("discord.js");
 const fetch = require("node-fetch");
 module.exports = {
  name: "bot-token",
- description: `💾 Generate (fake) random Discord Bot token`,
+ description: `💾 Generate (fake) random Discord Token`,
  usage: "/bot-token",
  category: "Fun",
  run: async (client, interaction, args) => {

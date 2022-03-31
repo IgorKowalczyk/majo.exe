@@ -19,7 +19,7 @@ module.exports = async (client, interaction, args) => {
      • \`EMBED_LINKS\`: ${interaction.guild.me.permissions.has("EMBED_LINKS") ? `${client.bot_emojis.success} Passed!` : `${client.bot_emojis.error} Error!`}
      • \`ATTACH_FILES\`: ${interaction.guild.me.permissions.has("ATTACH_FILES") ? `${client.bot_emojis.success} Passed!` : `${client.bot_emojis.error} Error!`}
      • \`USE_EXTERNAL_EMOJIS\`: ${interaction.guild.me.permissions.has("USE_EXTERNAL_EMOJIS") ? `${client.bot_emojis.success} Passed!` : `${client.bot_emojis.error} Error!`}
-     \n> ${client.bot_emojis.stopwatch} Ping: ${Math.round(client.ws.ping)}ms`
+     `
   )
   .setTimestamp()
   .setColor("#5865F2")

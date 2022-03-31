@@ -4,7 +4,7 @@ const striptags = require("striptags");
 
 module.exports = {
  name: "4chan",
- description: `🍀 Shows a random image from the selected 4chan board`,
+ description: `🍀 Display a random photo (or video) from selected 4chan board`,
  nsfw: true,
  usage: "/4chan <board>",
  category: "Fun",

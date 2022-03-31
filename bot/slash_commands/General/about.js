@@ -2,14 +2,13 @@ const { MessageEmbed } = require("discord.js");
 
 module.exports = {
  name: "about",
- description: "📝 Info about the bot and developer",
+ description: "🏷️ View info about me bot and developer",
  usage: "/about",
  category: "General",
  run: async (client, interaction, args) => {
   try {
    const embed = new MessageEmbed()
-    .setAuthor({ name: client.config.author })
-    .setTimestamp()
+    .setAuthor({ name: `${client.user.username} is developed by: Majonez.exe#2495` })
     .setThumbnail(
      client.user.displayAvatarURL({
       dynamic: true,
@@ -17,7 +16,7 @@ module.exports = {
       size: 2048,
      })
     )
-    .setColor("RANDOM")
+    .setColor("#5865f2")
     .setFooter({
      text: `Requested by ${interaction.user.username}`,
      iconURL: interaction.user.displayAvatarURL({
@@ -28,7 +27,7 @@ module.exports = {
     })
     .addField(`${client.bot_emojis.discord_logo} About ${client.user.username}`, "> " + client.config.about_bot);
    if (client.config.about_dev) {
-    embed.addField(`${client.bot_emojis.owner_crown} About Dev`, "> " + client.config.about_dev);
+    embed.addField(`${client.bot_emojis.owner} About Developer (Majonez.exe#2495)`, "> " + client.config.about_dev);
    }
    interaction.followUp({ embeds: [embed] });
   } catch (err) {

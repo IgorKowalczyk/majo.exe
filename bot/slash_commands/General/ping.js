@@ -7,18 +7,18 @@ module.exports = {
  usage: "/ping",
  category: "General",
  run: async (client, interaction, args) => {
-  const date_ping = moment(Date.now()).unix();
+  const date_ping = await moment(Date.now()).unix();
   try {
-   client.database.ping(function (err) {
+   await client.database.ping(function (err) {
     let ping = moment(Date.now()).unix() - date_ping;
     const wait = new MessageEmbed() // Prettier
      .setColor("#5865f2")
      .setDescription(`${client.bot_emojis.loading} | Pong!...`);
     interaction.followUp({ embeds: [wait] }).then((msg) => {
      const ping_message = new MessageEmbed()
-      .addField(`${client.bot_emojis.stopwatch} API Request Latency:`, `\`\`\`${(Date.now() - msg.createdTimestamp).toString().replace(/-/g, "")}ms\`\`\``)
-      .addField(`${client.bot_emojis.stopwatch} API Websocket Latency:`, `\`\`\`${Math.round(client.ws.ping)}ms\`\`\``)
-      .addField(`${client.bot_emojis.stopwatch} Database Latency:`, `\`\`\`${ping == 0 ? 1 : ping}ms\`\`\``)
+      .addField(`${client.bot_emojis.stopwatch} API Request Latency`, `\`\`\`${(Date.now() - msg.createdTimestamp).toString().replace(/-/g, "")}ms\`\`\``)
+      .addField(`${client.bot_emojis.stopwatch} API Websocket Latency`, `\`\`\`${Math.round(client.ws.ping)}ms\`\`\``)
+      .addField(`${client.bot_emojis.stopwatch} Database Latency`, `\`\`\`${ping == 0 ? 1 : ping}ms\`\`\``)
       .setFooter({
        text: `Requested by ${interaction.member.user.username}`,
        iconURL: interaction.member.user.displayAvatarURL({

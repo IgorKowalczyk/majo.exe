@@ -15,7 +15,7 @@ module.exports = (app, client, port, config, secure_connection, domain, express)
  const { promisify } = require("util");
  const globPromise = promisify(glob);
  const csrfProtection = csrf({ cookie: true });
- const render_port = process.env.PORT == 8080 ? "" : `:${process.env.PORT}`;
+ const render_port = port == 8080 ? "" : `:${port}`;
  const session = require("express-session");
  const MemoryStore = require("memorystore")(session);
  const passport = require("passport");
@@ -45,7 +45,7 @@ module.exports = (app, client, port, config, secure_connection, domain, express)
    {
     clientID: process.env.ID,
     clientSecret: process.env.SECRET,
-    callbackURL: `${domain}${process.env.PORT == 8080 ? "" : `:${process.env.PORT}`}/callback`,
+    callbackURL: `${domain}${port == 8080 ? "" : `:${port}`}/callback`,
     response_type: `code`,
     scope: ["identify", "guilds"],
    },
