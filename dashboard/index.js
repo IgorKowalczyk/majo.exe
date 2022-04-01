@@ -370,7 +370,7 @@ module.exports = (app, client, port, config, secure_connection, domain, express)
    .setDescription(`Someone just send message to us!`)
    .addField(`User`, `> \`${req.body.name.substr(0, 100)}\` | <@${req.body.id}> (ID: \`${req.body.id}\`)`)
    .addField("Email", `> [${req.body.email.substr(0, 100)}](https://discord.com/users/${req.body.id})`)
-   .addField("Message", `> \`\`\`${req.body.message.substr(0, 2000)}\`\`\``)
+   .addField("Message", `> \`\`\`${req.body.message.substr(0, 2000)}\n\`\`\``)
    .setTimestamp()
    .setFooter({ text: client.user.username.capitalize(), iconURL: client.user.displayAvatarURL() });
   await webhook.send({
