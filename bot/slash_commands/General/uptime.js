@@ -4,7 +4,7 @@ require("moment-duration-format");
 
 module.exports = {
  name: "uptime",
- description: "⌛ Display Majo.exe uptime",
+ description: "⌛ View Majo.exe bot uptime and past status",
  usage: "/uptime",
  category: "General",
  run: async (client, interaction, args) => {

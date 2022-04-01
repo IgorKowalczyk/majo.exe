@@ -3,7 +3,7 @@ const fetch = require("node-fetch");
 
 module.exports = {
  name: "kiss",
- description: "😘 Kiss Kiss Kiss <3",
+ description: "😘 Kiss someone in front of @everyone, romantically",
  usage: "/kiss <user>",
  category: "Fun",
  options: [

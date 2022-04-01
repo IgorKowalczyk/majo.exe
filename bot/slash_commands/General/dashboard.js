@@ -2,7 +2,7 @@ const { MessageEmbed, MessageActionRow, MessageButton } = require("discord.js");
 
 module.exports = {
  name: "dashboard",
- description: "💻 Provide link to the web-dashboard",
+ description: "💻 Get the link to your web panel",
  usage: "/dashboard",
  category: "General",
  run: async (client, interaction, args) => {

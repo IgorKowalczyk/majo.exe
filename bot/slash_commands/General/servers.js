@@ -2,7 +2,7 @@ const { MessageEmbed, MessageActionRow, MessageButton } = require("discord.js");
 
 module.exports = {
  name: "servers",
- description: "👾 Displays total servers where I'm",
+ description: "🧭 Display the number of servers I am on",
  usage: "/servers",
  category: "General",
  allow_dm: true,

@@ -4,7 +4,7 @@ const canvacord = require("canvacord");
 module.exports = {
  name: "facepalm",
  aliases: [],
- description: "🤦 Creates facepalm image",
+ description: "🤦 Facepalm... that was seriously stupid",
  category: "Image",
  usage: "/facepalm [user]",
  options: [

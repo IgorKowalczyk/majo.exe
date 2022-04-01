@@ -3,7 +3,7 @@ const fetch = require("node-fetch");
 
 module.exports = {
  name: "poke",
- description: "👉 Poke someone",
+ description: "👉 Poke someone (without ping of course)",
  usage: "/poke",
  category: "Fun",
  options: [

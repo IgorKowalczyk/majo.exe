@@ -3,7 +3,7 @@ const fetch = require("node-fetch");
 
 module.exports = {
  name: "repo",
- description: "📚 Provide link to the github project",
+ description: "📚 Check out the bot code on github",
  usage: "/repo",
  category: "General",
  run: async (client, interaction, args) => {

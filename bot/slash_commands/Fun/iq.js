@@ -2,7 +2,7 @@ const { MessageEmbed } = require("discord.js");
 
 module.exports = {
  name: "iq",
- description: "🧠 Display a user IQ",
+ description: "🧠 Display user's IQ (or your own)",
  usage: "/iq [user]",
  category: "Fun",
  options: [

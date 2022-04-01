@@ -2,7 +2,7 @@ const { MessageEmbed, MessageActionRow, MessageButton } = require("discord.js");
 
 module.exports = {
  name: "suggest",
- description: "📤 Suggest feature in bot",
+ description: "📤 Suggest a new feature in the bot",
  usage: "/suggest <suggestion>",
  category: "General",
  options: [

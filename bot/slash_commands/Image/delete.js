@@ -3,7 +3,7 @@ const fetch = require("node-fetch");
 
 module.exports = {
  name: "delete",
- description: "🗑️ Delete a image",
+ description: "🗑️ Delete a image (even from memory)",
  category: "Image",
  usage: "/delete <user>",
  options: [

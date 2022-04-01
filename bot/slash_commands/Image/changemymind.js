@@ -3,7 +3,7 @@ const canvacord = require("canvacord");
 
 module.exports = {
  name: "changemymind",
- description: "📝 Try to change my mind!",
+ description: "📝 Try to change my mind! Oh no! You can't",
  category: "Image",
  usage: "/changemymind <text>",
  options: [

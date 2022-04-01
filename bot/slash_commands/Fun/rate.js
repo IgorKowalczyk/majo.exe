@@ -2,13 +2,13 @@ const { MessageEmbed } = require("discord.js");
 
 module.exports = {
  name: "rate",
- description: "💯 Rate something (0-100%)",
+ description: "💯 Let me rate anything you want (0-100%)",
  usage: "/rate <query>",
  category: "Fun",
  options: [
   {
    name: "query",
-   description: "Anything to rate",
+   description: "What do you want me to rate?",
    required: true,
    type: 3,
   },

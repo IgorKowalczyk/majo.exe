@@ -2,7 +2,7 @@ const { MessageEmbed, MessageActionRow, MessageButton } = require("discord.js");
 
 module.exports = {
  name: "donate",
- description: "🪙 Donate the project to help us!",
+ description: "🪙 Make a donation to this project to help us",
  usage: "/donate",
  category: "General",
  run: async (client, interaction, args) => {

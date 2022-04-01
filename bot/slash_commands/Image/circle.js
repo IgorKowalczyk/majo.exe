@@ -3,7 +3,7 @@ const canvacord = require("canvacord");
 
 module.exports = {
  name: "circle",
- description: "⭕ Creates circular image",
+ description: "⭕ Convert any image into a circle",
  category: "Image",
  usage: "/circle [user]",
  options: [

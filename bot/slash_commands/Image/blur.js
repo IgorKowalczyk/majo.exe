@@ -4,7 +4,7 @@ const AmeAPI = new AmeClient(process.env.AMEAPI);
 
 module.exports = {
  name: "blur",
- description: "👁️ Blur user image",
+ description: "👁️ Blur user avatar",
  usage: "/blur <user> <blur>",
  category: "Image",
  options: [
