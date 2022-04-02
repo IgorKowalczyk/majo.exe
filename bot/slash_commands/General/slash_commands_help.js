@@ -25,7 +25,7 @@ module.exports = {
  run: async (client, interaction, args) => {
   try {
    let categories = [];
-   let cots = [];
+   let cattegories_help = [];
    const emo = {
     general: client.bot_emojis.bricks,
     moderation: client.bot_emojis.hammer,
@@ -41,28 +41,24 @@ module.exports = {
     social: client.bot_emojis.rocket,
    };
    if (!args[0]) {
-    let ccate = [];
+    let dir_categories = [];
     let category_id = 0;
     readdirSync(`${process.cwd()}/bot/slash_commands/`).forEach((dir) => {
-     const commands = readdirSync(`${process.cwd()}/bot/slash_commands/${dir}/`).filter((file) => file.endsWith(".js"));
-     // if (ignored.includes(dir.toLowerCase())) return;
      const name = `${emo[dir.toLowerCase()]} ${capitalize(dir)}`;
      if ((dir.toLowerCase() == "owner" && interaction.member.user.id !== client.config.owner_id) || (dir.toLowerCase() == "owner" && interaction.member.user.id == client.config.owner_id && client.additional_config.help_embed.show_owner_commands == false)) return category_id--;
-     let nome = dir.charAt(0) + dir.slice(1).toLowerCase();
-     // let nome = dir;
-     let cats = new Object();
-     cats = {
+     let dir_uppercase = dir.charAt(0) + dir.slice(1).toLowerCase();
+     let categories_obj = new Object();
+     categories_obj = {
       name: name,
       value: `> \`/help ${dir.toLowerCase()}\``,
       inline: client.additional_config.help_embed.grid,
      };
-     categories.push(cats);
-     ccate.push(nome);
+     categories.push(categories_obj);
+     dir_categories.push(dir_uppercase);
     });
-
     const embed = new MessageEmbed()
      .setAuthor({ name: `${client.user.username} Help`, iconURL: client.user.displayAvatarURL() })
-     .setDescription(`> Use the menu, or use ${process.env.DOMAIN ? `[\`/help [category]\`](${process.env.DOMAIN})` : `\`/help [category]\``} to view commands base on their category!\n\n`)
+     .setDescription(`> Use the menu, or use ${process.env.DOMAIN ? `[\`/help [category]\`](${process.env.DOMAIN})` : `\`/help [category]\``} to view commands based on their category!\n\n`)
      .addFields(categories)
      .setFooter({
       text: `Requested by ${interaction.member.user.tag} • ${client.all_commands} commands in total`,
@@ -81,48 +77,50 @@ module.exports = {
     if (client.additional_config.help_embed.display_news == true && client.additional_config.help_embed.news_title && client.additional_config.help_embed.news) {
      embed.addField(`${client.additional_config.help_embed.news_title}`, `${client.additional_config.help_embed.news}`);
     }
-    let menus = create_mh(ccate);
+    let menus = create_mh(dir_categories);
     return interaction.followUp({ embeds: [embed], components: menus.smenu }).then((msgg) => {
      const menuID = menus.sid;
      const select = async (interaction) => {
       if (interaction.customId != menuID) return;
       let { values } = interaction;
       let value = values[0];
-      let catts = [];
+      let categories_arr = [];
       readdirSync(`${process.cwd()}/bot/slash_commands/`).forEach((dir) => {
        if (dir.toLowerCase() !== value.toLowerCase()) return;
        const commands = readdirSync(`${process.cwd()}/bot/slash_commands/${dir}/`).filter((file) => file.endsWith(".js"));
        const cmds = commands.map((command) => {
         let file = require(`${process.cwd()}/bot/slash_commands/${dir}/${command}`);
-        if (!file.name) return "No command name.";
+        if (!file.name) return "Unknown command";
         let name = file.name.replace(".js", "");
-        let des = client.slash_commands.get(name).description;
-        let emo = client.slash_commands.get(name).emoji;
-        let emoe = emo ? `${emo} | ` : "";
+        if (file.container) return;
+        let description = client.slash_commands.get(name).description;
+        let cmd_emoji = client.slash_commands.get(name).emoji;
+        let cmd_emoji_string = cmd_emoji ? `${cmd_emoji} | ` : "";
         let obj = {
-         cname: `${emoe}\`/${name}\``,
-         des,
+         cname: `${cmd_emoji_string}\`/${name}\``,
+         description,
         };
         return obj;
        });
        let command_names = new Object();
        cmds.map((co) => {
-        if (co == undefined) return;
-        command_names = ` ${cmds.length === 0 ? "In progress." : co.cname}`;
-        catts.push(command_names);
+        if (!co) return;
+        console.log(`2 ${co.container}`);
+        command_names = ` ${cmds.length === 0 ? "Soon!" : co.cname}`;
+        categories_arr.push(command_names);
        });
-       cots.push(dir.toLowerCase());
+       cattegories_help.push(dir.toLowerCase());
       });
       client.extra_slash_commands.map((co) => {
        if (co.category.toLowerCase() !== value.toLowerCase()) return;
-       catts.push(` \`/${co.orgin} ${co.name}\``);
+       categories_arr.push(` \`/${co.orgin} ${co.name}\``);
       });
-      if (cots.includes(value.toLowerCase())) {
+      if (cattegories_help.includes(value.toLowerCase())) {
        const combed = new MessageEmbed()
         .setTitle(`${emo[value.toLowerCase()] || "❔"} \`${capitalize(value.toLowerCase())}\` commands`)
         .setAuthor({ name: `${client.user.username} Help`, iconURL: client.user.displayAvatarURL() })
-        .setDescription(`>${catts}`)
-        //.addFields(catts)
+        .setDescription(`>${categories_arr}`)
+        //.addFields(categories_arr)
         .setColor("#5865F2")
         .setThumbnail(
          client.user.displayAvatarURL({
@@ -153,50 +151,56 @@ module.exports = {
       time: 61912, // 19.12 | Milliseconds pass as quickly as relationships
      });
      collector.on("collect", select);
-     collector.on("end", () => {
-      (async () => {
-       const end_embed = new MessageEmbed()
-        .setAuthor({ name: `${client.user.username} Help` })
-        .setTitle(`Time elapsed!`)
-        .setColor("RED")
-        .setDescription(`> To see the help menu again please type \`/help\`\n> Or to see commands from category please type \`/help [category]\``)
-        .setFooter({
-         text: `Requested by ${interaction.member.user.tag} • ${client.ws.ping} ms ping!`,
-         iconURL: interaction.member.user.displayAvatarURL({
-          dynamic: true,
-         }),
+     collector.on("end", async () => {
+      const end_embed = new MessageEmbed()
+       .setAuthor({ name: `${client.user.username} Help`, iconURL: client.user.displayAvatarURL() })
+       .setTitle(`Time elapsed!`)
+       .setColor("RED")
+       .setDescription(`> To see the help menu again please type \`/help\`\n> Or to see commands from category please type \`/help [category]\``)
+       .setFooter({
+        text: `Requested by ${interaction.member.user.tag} • Ping: ${client.ws.ping}ms`,
+        iconURL: interaction.member.user.displayAvatarURL({
+         dynamic: true,
+        }),
+       })
+       .setTimestamp()
+       .setThumbnail(
+        client.user.displayAvatarURL({
+         dynamic: true,
+         size: 2048,
         })
-        .setTimestamp()
-        .setThumbnail(
-         client.user.displayAvatarURL({
-          dynamic: true,
-          size: 2048,
-         })
-        );
-       const row = new MessageActionRow() // Prettier
-        .addComponents(
-         new MessageButton() // Prettier
-          .setURL(`https://discord.com/oauth2/authorize/?permissions=${client.config.permissions}&scope=${client.config.scopes}&client_id=${client.user.id}`)
-          //.setEmoji(client.bot_emojis.giveaway)
-          .setLabel("Maybe invite me!")
-          .setStyle("LINK")
-        );
-       await interaction.editReply({
-        embeds: [end_embed],
-        components: [row],
-       });
-      })();
+       );
+      const row = new MessageActionRow() // Prettier
+       .addComponents(
+        new MessageButton() // Prettier
+         .setURL(`https://discord.com/oauth2/authorize/?permissions=${client.config.permissions}&scope=${client.config.scopes}&client_id=${client.user.id}`)
+         .setLabel("Maybe invite me!")
+         .setStyle("LINK")
+       );
+      if (client.config.support_server) {
+       row.addComponents(
+        new MessageButton() // Prettier
+         .setURL(`${client.config.support_server}`)
+         .setLabel("Support server")
+         .setStyle("LINK")
+       );
+      }
+      await interaction.editReply({
+       embeds: [end_embed],
+       components: [row],
+      });
      });
     });
    } else {
     let command_names = new Object();
-    let catts = [];
+    let categories_arr = [];
     readdirSync(`${process.cwd()}/bot/slash_commands/`).forEach((dir) => {
      if (dir.toLowerCase() !== args[0].toLowerCase()) return;
      const commands = readdirSync(`${process.cwd()}/bot/slash_commands/${dir}/`).filter((file) => file.endsWith(".js"));
      const cmds = commands.map((command) => {
       let file = require(`${process.cwd()}/bot/slash_commands/${dir}/${command}`);
       if (!file.name) return "No command name.";
+      if (file.container) return;
       let name = file.name.replace(".js", "");
       let des = file.description;
       let emo = file.emoji;
@@ -209,22 +213,22 @@ module.exports = {
      });
 
      cmds.map((co) => {
-      if (co == undefined) return;
+      if (!co) return;
       command_names = ` ${cmds.length === 0 ? "In progress." : co.cname}`;
-      catts.push(command_names);
+      categories_arr.push(command_names);
      });
-     cots.push(dir.toLowerCase());
+     cattegories_help.push(dir.toLowerCase());
     });
     client.extra_slash_commands.map((co) => {
      if (co.category.toLowerCase() !== args[0].toLowerCase()) return;
-     catts.push(` \`/${co.orgin} ${co.name}\``);
+     categories_arr.push(` \`/${co.orgin} ${co.name}\``);
     });
     const command = client.slash_commands.get(args[0].toLowerCase()) || client.extra_slash_commands.get(args[0].toLowerCase());
-    if (cots.includes(args[0].toLowerCase())) {
+    if (cattegories_help.includes(args[0].toLowerCase())) {
      const combed = new MessageEmbed()
       .setTitle(`${emo[args[0].toLowerCase()] || "❔"} \`${capitalize(args[0])}\` commands`)
       .setAuthor({ name: `${client.user.username} Help`, iconURL: client.user.displayAvatarURL() })
-      .setDescription(`>${catts || "In progress"}`)
+      .setDescription(`>${categories_arr || "In progress..."}`)
       .setColor("#5865F2")
       .setThumbnail(
        client.user.displayAvatarURL({

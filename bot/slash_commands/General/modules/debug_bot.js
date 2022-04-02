@@ -3,10 +3,11 @@ const { MessageEmbed } = require("discord.js");
 module.exports = async (client, interaction, args) => {
  const embed = new MessageEmbed()
   .setTitle(`${client.bot_emojis.discord_logo} ${client.user.username} Debug`)
-  .setDescription(
-   `These are the bot premissions on this server. If <@${client.user.id}> misses them some commands & functions will be disabled!`)
-   .addField("Not required",  `> \`ADMINISTRATOR\`: ${interaction.guild.me.permissions.has("ADMINISTRATOR") ? client.bot_emojis.success : client.bot_emojis.error}`)
-   .addField("Required", `
+  .setDescription(`These are the bot premissions on this server. If <@${client.user.id}> misses them some commands & functions will be disabled!`)
+  .addField("Not required", `> \`ADMINISTRATOR\`: ${interaction.guild.me.permissions.has("ADMINISTRATOR") ? client.bot_emojis.success : client.bot_emojis.error}`)
+  .addField(
+   "Required",
+   `
    > \`MANAGE_MESSAGES\`: ${interaction.guild.me.permissions.has("MANAGE_MESSAGES") ? client.bot_emojis.success : client.bot_emojis.error}
    > \`MANAGE_CHANNELS\`: ${interaction.guild.me.permissions.has("MANAGE_CHANNELS") ? client.bot_emojis.success : client.bot_emojis.error}
    > \`MANAGE_ROLES\`: ${interaction.guild.me.permissions.has("MANAGE_ROLES") ? client.bot_emojis.success : client.bot_emojis.error}
@@ -19,7 +20,8 @@ module.exports = async (client, interaction, args) => {
    > \`MANAGE_MESSAGES\`: ${interaction.guild.me.permissions.has("MANAGE_MESSAGES") ? client.bot_emojis.success : client.bot_emojis.error}
    > \`EMBED_LINKS\`: ${interaction.guild.me.permissions.has("EMBED_LINKS") ? client.bot_emojis.success : client.bot_emojis.error}
    > \`ATTACH_FILES\`: ${interaction.guild.me.permissions.has("ATTACH_FILES") ? client.bot_emojis.success : client.bot_emojis.error}
-   > \`USE_EXTERNAL_EMOJIS\`: ${interaction.guild.me.permissions.has("USE_EXTERNAL_EMOJIS") ? client.bot_emojis.success : client.bot_emojis.error}`)
+   > \`USE_EXTERNAL_EMOJIS\`: ${interaction.guild.me.permissions.has("USE_EXTERNAL_EMOJIS") ? client.bot_emojis.success : client.bot_emojis.error}`
+  )
   .setTimestamp()
   .setColor("#5865F2")
   .setThumbnail(

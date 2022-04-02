@@ -6,6 +6,7 @@ module.exports = {
  usage: "/nsfw <command>",
  category: "NSFW",
  nsfw: true,
+ container: true,
  options: [
   {
    name: "command",

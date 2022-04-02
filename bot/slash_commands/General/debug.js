@@ -3,6 +3,7 @@ module.exports = {
  description: "🎛️ View advanced information for devs about the bot",
  usage: "/debug <query>",
  category: "General",
+ container: true,
  options: [
   {
    name: "query",

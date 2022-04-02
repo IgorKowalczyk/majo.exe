@@ -29,7 +29,7 @@ module.exports = async (client) => {
   slash_commands_array.push(file);
  });
  await client.application.commands.set(slash_commands_array);
- client.all_commands = client.slash_commands.size + client.slash_commands.size;
+ client.all_commands = client.slash_commands.size + client.extra_slash_commands.size;
  //console.log(chalk.bold(chalk.green.bold("> ") + chalk.blue.bold(`[${client.user.username.toUpperCase().split(" ")[0]}]`)) + chalk.cyan.bold(" Setting permissions for slash commands (/)... Please wait"));
  await fetch(`https://discordapp.com/api/v9/applications/${client.config.id}/commands`, {
   method: "GET",
@@ -50,5 +50,5 @@ module.exports = async (client) => {
   });
 
  //console.log(chalk.bold(chalk.green.bold("> ") + chalk.blue.bold(`[${client.user.username.toUpperCase().split(" ")[0]}]`)) + chalk.cyan.bold(" Setting permissions for slash commands (/) done!"));
- console.log(chalk.bold(chalk.green.bold("> ") + chalk.blue.bold(`[${client.user.username.toUpperCase().split(" ")[0]}]`)) + chalk.cyan.bold(" Successfully loaded " + chalk.blue.underline(`${client.slash_commands.size}`) + " slash commands! (/)"));
+ console.log(chalk.bold(chalk.green.bold("> ") + chalk.blue.bold(`[${client.user.username.toUpperCase().split(" ")[0]}]`)) + chalk.cyan.bold(" Successfully loaded " + chalk.blue.underline(`${client.slash_commands.size}`) + " (total: " + chalk.blue.underline(client.all_commands) + ") slash commands! (/)"));
 };

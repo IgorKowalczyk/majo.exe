@@ -12,7 +12,7 @@ module.exports = {
     { slip } = await res.json();
    const embed = new MessageEmbed()
     .setTitle(`${client.bot_emojis.thinking} My advice`)
-    .setDescription(`>>> ${slip.advice}`)
+    .setDescription(`>>> **${slip.advice}**`)
     .setColor("#00b0f4")
     .setFooter({
      text: `Requested by ${interaction.member.user.username}`,
@@ -21,14 +21,7 @@ module.exports = {
       format: "png",
       size: 2048,
      }),
-    })
-    .setThumbnail(
-     interaction.member.user.displayAvatarURL({
-      dynamic: true,
-      format: "png",
-      size: 2048,
-     })
-    );
+    });
    interaction.followUp({ ephemeral: true, embeds: [embed] });
   } catch (err) {
    console.log(err);

@@ -6,10 +6,11 @@ module.exports = {
  description: "🔁 Flip coin/text",
  usage: "/flip coin | /flip text <text>",
  category: "Fun",
+ container: true,
  options: [
   {
    name: "coin",
-   description: "🪙 Flip coin",
+   description: "🪙 Flip coin (heads or tails)",
    type: 1,
    usage: `/flip coin`,
    category: "Fun",
@@ -17,7 +18,7 @@ module.exports = {
   },
   {
    name: "text",
-   description: "🔁 Flip text",
+   description: "🔁 Flip text (upside down)",
    type: 1,
    usage: `/flip text`,
    category: "Fun",

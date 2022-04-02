@@ -5,6 +5,7 @@ module.exports = {
  description: "🎉 Manage giveaway's",
  usage: "/giveaway <command>",
  category: "Giveaway",
+ container: true,
  options: [
   {
    name: "start",

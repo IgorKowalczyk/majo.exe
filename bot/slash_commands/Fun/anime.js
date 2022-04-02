@@ -24,23 +24,17 @@ module.exports = {
     .getInfoFromName(search)
     .then((data) => {
      const embed = new MessageEmbed() // Prettier
-      .setAuthor({
-       name: `${client.bot_emojis.search_glass} My Anime List search result for ${args}`.split(",").join(" "),
-       iconURL: interaction.guild.iconURL({
-        dynamic: true,
-        format: "png",
-       }),
-      })
+      .setAuthor({ name: `${client.bot_emojis.search_glass} My Anime List search result for ${args}` })
       .setImage(data.picture)
-      .setColor("RANDOM")
+      .setColor("#5865F2")
       .addField(`${client.bot_emojis.flag_gb} English Title`, `\`\`\`${data.englishTitle || "None!"}\`\`\``)
       .addField(`${client.bot_emojis.flag_jp} Japanese Title`, `\`\`\`${data.japaneseTitle || "None!"}\`\`\``)
-      .addField(`${client.bot_emojis.book} Type`, `\`\`\`${data.type || "N/A!"}\`\`\``)
-      .addField(`${client.bot_emojis.counting} Episodes`, `\`\`\`${data.episodes || "N/A!"} episodes\`\`\``)
+      .addField(`${client.bot_emojis.book} Type`, `\`\`\`${data.type || "N/A!"}\`\`\``, true)
+      .addField(`${client.bot_emojis.counting} Episodes`, `\`\`\`${data.episodes || "N/A!"} episodes\`\`\``, true)
+      .addField(`${client.bot_emojis.star} Score`, `\`\`\`${data.score || "N/A!"}\`\`\``, true)
       .addField(`${client.bot_emojis.star2} Rating`, `\`\`\`${data.rating || "N/A!"}\`\`\``)
       .addField(`${client.bot_emojis.calendar_spillar} Aired`, `\`\`\`${data.aired || "N/A!"}\`\`\``)
-      .addField(`${client.bot_emojis.star} Score`, `\`\`\`${data.score || "N/A!"}\`\`\``)
-      .addField(`${client.bot_emojis.barchart} Score Stats`, `\`\`\`${data.scoreStats || "N/A!"}\`\`\``)
+      .addField(`${client.bot_emojis.barchart} Scored by`, `\`\`\`${data.scoreStats || "N/A!"}\`\`\``)
       .setFooter({
        text: `Requested by ${interaction.user.username}`,
        iconURL: interaction.user.displayAvatarURL({

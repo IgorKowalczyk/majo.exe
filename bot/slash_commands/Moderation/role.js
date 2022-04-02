@@ -5,6 +5,7 @@ module.exports = {
  description: "🧩 Add/Remove role from user",
  usage: "/role add <role> <user> | /role remove <role> <user> | /role info <role>",
  category: "Moderation",
+ container: true,
  options: [
   {
    name: "add",
