@@ -1297,3 +1297,7 @@ input[type="switch"] {
 .server-name {
  text-align: center;
 }
+
+select {
+ font-family: "Poppins";
+}
