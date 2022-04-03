@@ -45,7 +45,8 @@ box-shadow: unset;
 <div class="servers stats">
 <div class="banner-container"></div>
 <img class="server-image img user-profile-image" src="<%= iconurl %>" alt="<%= user.username %>"/>
-<h1 class="server-name user-name" style="font-weight: 500;font-family: &quot;Poppins&quot;;color: #fff;"><%= user.username %><span class="tag">#<%= user.discriminator %></span></h1>
+<h1 class="server-name user-name" style="font-weight: 500;font-family: &quot;Poppins&quot;;color: #fff;margin-bottom: 5px;"><%= user.username %><span class="tag">#<%= user.discriminator %></span></h1>
+<p style="margin: 0; margin-bottom: 15px;">Joined: <span style="font-weight: 500;"><%= moment(fetched.createdTimestamp).format('LLL'); %></span> (<%= moment(fetched.createdTimestamp).fromNow() %>)</p>
 <p class="sinfo"><%- include('includes/icons/tag.ejs') %> Tag: <%= user.username %>#<%= user.discriminator %></p>
 <p class="sinfo"><%- include('includes/icons/fingerprint.ejs') %> ID: <%= user.id %></p>
 <p class="sinfo"><%- include('includes/icons/server.ejs') %> Total guilds: <%= JSON.parse(JSON.stringify(user.guilds)).length %></p>

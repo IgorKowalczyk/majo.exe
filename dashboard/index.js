@@ -200,8 +200,12 @@ module.exports = (app, client, port, config, secure_connection, domain, express)
 
  // Features list redirect endpoint.
  app.get("/profile", checkAuth, async (req, res) => {
-  renderTemplate(res, req, "profile.ejs", {
+  const user = req.user.id;
+  const fetched_user = await client.users.fetch(user);
+  await renderTemplate(res, req, "profile.ejs", {
    perms: Permissions,
+    moment: moment,
+    fetched: fetched_user,
   });
  });
 
