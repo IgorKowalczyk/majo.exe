@@ -204,8 +204,8 @@ module.exports = (app, client, port, config, secure_connection, domain, express)
   const fetched_user = await client.users.fetch(user);
   await renderTemplate(res, req, "profile.ejs", {
    perms: Permissions,
-    moment: moment,
-    fetched: fetched_user,
+   moment: moment,
+   fetched: fetched_user,
   });
  });
 
