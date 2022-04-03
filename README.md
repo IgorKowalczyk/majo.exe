@@ -250,6 +250,14 @@ Soon!
 - [@Wafelowski](https://github.com/HeavyWolfPL) (Translation improvements)
 - [@Sakshyam6966](https://github.com/Sakshyam6966) (New Features, Bug fixes, Testing)
 
+## 💝 Sponsors
+**These wonderful people and services have helped develop Majo.exe, without them this project would not exist. Thanks goes to these wonderful people!**
+
+| Logo | Sponsor | Description | Sponsored |
+|:-:| - | :- | -|
+| <a href="https://terohost.com"><img src="https://cdn.discordapp.com/icons/854586817738047518/87b29fced887e8181d46d82551cc0ae0.png" alt="Terohost Logo" width="50" height="50"/></a> | [Terohost](https://terohost.com) | **TeroHost is a Discord Bot hosting** provider that helps take care of all your needs regarding your Discord Bot to ensure your bot perfect uptime, ping and speed. | **.xyz Domain** & MySQL Database |
+
+
 ## ⁉️ Issues
 If you have any issues with the page please create [new issue here](https://github.com/igorkowalczyk/majo.exe/issues)
 
