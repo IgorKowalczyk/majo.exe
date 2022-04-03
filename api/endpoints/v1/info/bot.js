@@ -8,7 +8,7 @@ module.exports = {
  run: async (client, req, res, next) => {
   const json = {
    guilds: client.guilds.cache.size,
-   id: client.id,
+   id: client.application.id,
    members: client.guilds.cache.reduce((a, g) => a + g.memberCount, 0),
    prefix: process.env.PREFIX,
    channels: {
