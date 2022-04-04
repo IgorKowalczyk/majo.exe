@@ -72,7 +72,7 @@ input:disabled {
 }
 
 input:focus {
- border-color: rgb(0, 175, 244);
+ border-color: #5865f2;
 }
 
 .blue {

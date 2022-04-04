@@ -45,34 +45,52 @@ close_banner.addEventListener("click", function () {
    <div class="wrap-input rs1-wrap-input">
     <span class="label">Name</span>
     <input disabled class="input" maxlenght="100" autocomplete="off" spellcheck="false" title="You can't change your nickname here!" type="text" name="name_invi" placeholder="Name" value="<%= user.username %>#<%= user.discriminator %>" />
-    <span class="input-line"></span>
    </div>
    <div class="wrap-input rs1-wrap-input">
     <span class="label">Email</span>
     <input class="input" type="email" maxlenght="100" title="E-mail through which we can contact you" spellcheck="false" name="email" placeholder="wumpus@discord.com" required="true"/>
-    <span class="input-line"></span>
    </div>
    <div class="wrap-input">
     <span class="label">Message</span>
     <textarea class="input" name="message" maxlenght="1000" title="Message we have to read <3"spellcheck="true" placeholder="Your looong message" required="true"></textarea>
-    <span class="input-line"></span>
    </div>
+   <div class="wrap-input">
+    <span class="label">Why are you contacting us?</span>
+    <select autocomplete="off" class="select input" title="Why are you contacting us?" style="height: 40px;margin-top: 10px;width: 100%;">
+     <option value="select_disabled" disabled="" selected="">Select option</option>
+     <option value=>Feauture Request</option>
+     <option>Bug report</option>
+     <option>General question</option>
+     <option>Developer question</option>
+     <option>Partnership</option>
+     <option>Other</option>
+     </select>
+    </div>
    <% } else { %>
    <div class="wrap-input rs1-wrap-input noactive">
     <span class="label">Name</span>
     <input class="input" title="Please login to contact us!" maxlenght="100" autocomplete="off" spellcheck="false" type="text" name="tmp_name" placeholder="Wumpus#0001" disabled />
-    <span class="input-line"></span>
    </div>
    <div class="wrap-input rs1-wrap-input noactive">
     <span class="label">Email</span>
     <input class="input" title="Please login to contact us!" maxlenght="100" autocomplete="off" spellcheck="false" type="email" name="tmp_email" placeholder="wumpus@discord.com" disabled />
-    <span class="input-line"></span>
    </div>
    <div class="wrap-input noactive">
     <span class="label">Message</span>
     <textarea class="input" title="Please login to contact us!" maxlenght="2000" autocomplete="off" spellcheck="true" name="tmp_message" placeholder="Your looong message" disabled></textarea>
-    <span class="input-line"></span>
    </div>
+        <div class="wrap-input noactive">
+    <span class="label">Why are you contacting us?</span>
+     <select class="input" disabled title="Please login to contact us!" style="height: 40px;margin-top: 10px;width: 100%;">
+     <option value="select_disabled" disabled="" selected="">Select option</option>
+     <option value="">Feauture Request</option>
+     <option>Bug report</option>
+     <option>General question</option>
+     <option>Developer question</option>
+     <option>Partnership</option>
+     <option>Other</option>
+     </select>
+    </div>
    <% } %>
 
    <div class="container-contact-form-btn">
@@ -104,7 +122,6 @@ close_banner.addEventListener("click", function () {
   </form>
  </div>
 </div>
-
 <% if (user) { %>
 <script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit" async defer></script>
 <% } %>
