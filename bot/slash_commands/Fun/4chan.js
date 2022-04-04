@@ -8,6 +8,7 @@ module.exports = {
  nsfw: true,
  usage: "/4chan <board>",
  category: "Fun",
+ timeout: 5000,
  options: [
   {
    name: "board",

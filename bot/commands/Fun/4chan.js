@@ -15,7 +15,7 @@ module.exports = {
     const nsfwembed = new MessageEmbed() // Prettier
      .setColor("RED")
      .setDescription(`${client.bot_emojis.anger} | You can use this command only in an NSFW Channel!`)
-     .setFooter({ text: "Requested by " + message.author.username, iconURL: message.author.displayAvatarURL() })
+     .setFooter({ text: `Requested by ${message.author.username}`, iconURL: message.author.displayAvatarURL() })
      .setImage("https://media.discordapp.net/attachments/721019707607482409/855827123616481300/nsfw.gif");
     return message.reply({ embeds: [nsfwembed] });
    }

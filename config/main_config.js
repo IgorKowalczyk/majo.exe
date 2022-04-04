@@ -23,10 +23,10 @@ module.exports = {
  prefix: process.env.PREFIX, // Client prefix [DEPRECATED]
  id: process.env.ID, // Discord Client prefix
  advanved_logging: false, // Show debug info
- ratelimit: 2500, // Command ratelimit (can be customized for each command) [DEPRECATED]
- max_input: 200, // Maximum text input for slash commands
+ ratelimit: 2500, // Global slash command ratelimit in ms (can be customized for each command)
+ max_input: 200, // Maximum text input for slash commands (characters)
 
- use_text_commands: true, // Allow usage of DEPRECATED text commands
+ use_text_commands: true, // Allow usage of *DEPRECATED* text commands (You have to enable Message intent in Discord Developer Portal)
 
  bypass_modules: {
   bot: false, // Bypass check for --bot argument [For pterodactyl panel]

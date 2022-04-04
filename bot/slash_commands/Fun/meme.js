@@ -5,6 +5,7 @@ module.exports = {
  name: "meme",
  description: "😆 Check out a random meme from Reddit",
  usage: "/meme",
+ timeout: 3000,
  category: "Fun",
  run: async (client, interaction, args) => {
   try {
