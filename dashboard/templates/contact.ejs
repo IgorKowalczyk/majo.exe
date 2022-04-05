@@ -56,14 +56,14 @@ close_banner.addEventListener("click", function () {
    </div>
    <div class="wrap-input">
     <span class="label">Why are you contacting us?</span>
-    <select autocomplete="off" class="select input" title="Why are you contacting us?" style="height: 40px;margin-top: 10px;width: 100%;">
-     <option value="select_disabled" disabled="" selected="">Select option</option>
-     <option value=>Feauture Request</option>
-     <option>Bug report</option>
-     <option>General question</option>
-     <option>Developer question</option>
-     <option>Partnership</option>
-     <option>Other</option>
+     <select class="input" title="Why are you contacting us?" style="height: 40px;margin-top: 10px;width: 100%;" name="reason">
+     <option value="select_disabled" disabled selected>Select option</option>
+     <option value="feature_request">Feauture Request</option>
+     <option value="bug_report">Bug report</option>
+     <option value="general_question">General question</option>
+     <option value="developer_question">Developer question</option>
+     <option value="partnership">Partnership</option>
+     <option value="other">Other</option>
      </select>
     </div>
    <% } else { %>
@@ -81,14 +81,14 @@ close_banner.addEventListener("click", function () {
    </div>
         <div class="wrap-input noactive">
     <span class="label">Why are you contacting us?</span>
-     <select class="input" disabled title="Please login to contact us!" style="height: 40px;margin-top: 10px;width: 100%;">
-     <option value="select_disabled" disabled="" selected="">Select option</option>
-     <option value="">Feauture Request</option>
-     <option>Bug report</option>
-     <option>General question</option>
-     <option>Developer question</option>
-     <option>Partnership</option>
-     <option>Other</option>
+     <select class="input" disabled title="Please login to contact us!" style="height: 40px;margin-top: 10px;width: 100%;" name="reason">
+     <option value="select_disabled" disabled selected>Select option</option>
+     <option value="feature_request">Feauture Request</option>
+     <option value="bug_report">Bug report</option>
+     <option value="general_question">General question</option>
+     <option value="developer_question">Developer question</option>
+     <option value="partnership">Partnership</option>
+     <option value="other">Other</option>
      </select>
     </div>
    <% } %>

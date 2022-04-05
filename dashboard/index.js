@@ -1,9 +1,10 @@
 module.exports = (app, client, port, config, secure_connection, domain, express) => {
- const { Permissions, MessageEmbed, WebhookClient } = require("discord.js");
+ const { Permissions, MessageEmbed, WebhookClient, Util } = require("discord.js");
  const url = require("url");
  const path = require("path");
  const chalk = require("chalk");
  const csrf = require("csurf");
+ const fetch = require("node-fetch");
  const additional_config = require("../config/additional_config");
  const web_config = require("../config/web_config");
  const ejs = require("ejs");
@@ -309,6 +310,8 @@ module.exports = (app, client, port, config, secure_connection, domain, express)
 
  app.post("/contact", csrfProtection, checkAuth, async (req, res) => {
   const data = req.body;
+   const reasons = ["feature_request", "bug_report", "general_question", "developer_question", "partnership", "other"]
+  console.log(data)
   if (!data) {
    res.status(400);
    return errorPage(req, res, "No data was sent!");
@@ -326,12 +329,18 @@ module.exports = (app, client, port, config, secure_connection, domain, express)
   }
   if (data.name && data.name.lenght > 100) {
    return renderTemplate(res, req, "contact.ejs", {
-    alert: "Too long nickname!",
+    alert: "Too long username! (Max: 100)",
     error: true,
     csrfToken: req.csrfToken(),
    });
   }
-
+  if (!data.name.includes("#")) {
+   return renderTemplate(res, req, "contact.ejs", {
+    alert: "Not vaild username!",
+    error: true,
+    csrfToken: req.csrfToken(),
+   });
+  }
   if (!data.email || data.email.length < 1) {
    return renderTemplate(res, req, "contact.ejs", {
     alert: data.email && data.email.lenght < 1 ? "Invaild email!" : "Please enter email!",
@@ -339,16 +348,16 @@ module.exports = (app, client, port, config, secure_connection, domain, express)
     csrfToken: req.csrfToken(),
    });
   }
-  if (data.email && !validator.isEmail(data.email)) {
+  if (!validator.isEmail(data.email)) {
    return renderTemplate(res, req, "contact.ejs", {
     alert: "Please enter vaild email!",
     error: true,
     csrfToken: req.csrfToken(),
    });
   }
-  if (data.email && data.email.lenght > 100) {
+  if (data.email.lenght > 100) {
    return renderTemplate(res, req, "contact.ejs", {
-    alert: "Too long email!",
+    alert: "Too long email (Max: 100)!",
     error: true,
     csrfToken: req.csrfToken(),
    });
@@ -362,24 +371,33 @@ module.exports = (app, client, port, config, secure_connection, domain, express)
   }
   if (data.message && data.message.lenght > 1000) {
    return renderTemplate(res, req, "contact.ejs", {
-    alert: "Too long message!",
+    alert: "Too long message! (Max: 1000)",
     error: true,
     csrfToken: req.csrfToken(),
    });
   }
+  if (!data.reason || !reasons.includes(data.reason)) {
+   return renderTemplate(res, req, "contact.ejs", {
+    alert: !data.reason ? "Invaild reason selected!" : "Please select vaild reason!",
+    error: true,
+    csrfToken: req.csrfToken(),
+   });
+  }
+   
   const webhook = new WebhookClient({ url: process.env.CONTACT_WEBHOOK });
   const contact_form = new MessageEmbed() // Prettier
    .setColor("#4f545c")
    .setTitle(`📬 Contact Form`)
-   .setDescription(`Someone just send message to us!`)
-   .addField(`User`, `> \`${req.body.name.substr(0, 100)}\` | <@${req.body.id}> (ID: \`${req.body.id}\`)`)
-   .addField("Email", `> [${req.body.email.substr(0, 100)}](https://discord.com/users/${req.body.id})`)
-   .addField("Message", `> \`\`\`${req.body.message.substr(0, 2000)}\n\`\`\``)
+   .setDescription(`**Someone just send message to us!**`)
+   .addField(`User`, `>>> Tag: \`${data.name.substr(0, 100)}\`\n Mention: <@${data.id}>\nID: \`${data.id}\`)`)
+   .addField("Email", `> ||[${data.email.substr(0, 100)}](https://discord.com/users/${data.id})||`)
+   .addField("Message", `> \`\`\`${Util.escapeCodeBlock(data.message.substr(0, 1000))}\`\`\` `)
+   .addField("Reason", `> \`${data.reason.replaceAll("_", " ").capitalize()}\``)
    .setTimestamp()
    .setFooter({ text: client.user.username.capitalize(), iconURL: client.user.displayAvatarURL() });
   await webhook.send({
    // Prettier
-   username: client.user.username.capitalize() + " Contact",
+   username: `${client.user.username.capitalize()} Contact`,
    avatarURL: client.user.displayAvatarURL(),
    embeds: [contact_form],
   });
