@@ -13,19 +13,19 @@ module.exports = {
    type: 3,
    choices: [
     {
-     name: "Debug bot permissions on this server",
+     name: "permissions",
      value: "bot",
     },
     {
-     name: "Debug the server (host) where the bot is hosted",
+     name: "hosting",
      value: "host",
     },
     {
-     name: "Debug the bandwitch on the bot hosting server",
+     name: "bandwitch",
      value: "bandwidth",
     },
     {
-     name: "Debug the external packages that the bot uses",
+     name: "packages",
      value: "dependencies",
     },
    ],

@@ -36,9 +36,7 @@ module.exports = async (client) => {
     req.secure ? next() : res.redirect("https://" + req.headers.host + req.url);
    });
   }
-   let total_req = 0;
   app.use((req, res, next) => {
-   total_req++;
    res.setHeader("Permissions-Policy", "	accelerometer=(), camera=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), payment=(), usb=(), interest-cohort=()");
    res.setHeader("Access-Control-Allow-Origin", "*");
    next();

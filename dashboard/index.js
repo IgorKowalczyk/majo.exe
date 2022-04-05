@@ -124,7 +124,7 @@ module.exports = (app, client, port, config, secure_connection, domain, express)
    req: req,
    port: render_port,
    name: client.username,
-   recaptcha: process.env.RECAPTCHA_KEY,
+   recaptcha: process.env.RECAPTCHA_SITE_KEY,
    tag: client.tag,
   };
   res.render(path.resolve(`${template_dir}${path.sep}${template}`), Object.assign(baseData, data));
@@ -310,8 +310,7 @@ module.exports = (app, client, port, config, secure_connection, domain, express)
 
  app.post("/contact", csrfProtection, checkAuth, async (req, res) => {
   const data = req.body;
-   const reasons = ["feature_request", "bug_report", "general_question", "developer_question", "partnership", "other"]
-  console.log(data)
+  const reasons = ["feature_request", "bug_report", "general_question", "developer_question", "partnership", "other"];
   if (!data) {
    res.status(400);
    return errorPage(req, res, "No data was sent!");
@@ -383,7 +382,14 @@ module.exports = (app, client, port, config, secure_connection, domain, express)
     csrfToken: req.csrfToken(),
    });
   }
-   
+  const recaptcha = await fetch(`https://www.google.com/recaptcha/api/siteverify?secret=${process.env.RECAPTCHA_SECRET_KEY}&response=${data["g-recaptcha-response"]}&remoteip=${req.connection.remoteAddress}`).then((res) => res.json());
+  if (recaptcha.success !== true) {
+   return renderTemplate(res, req, "contact.ejs", {
+    alert: "Please verify that you are not a robot!",
+    error: true,
+    csrfToken: req.csrfToken(),
+   });
+  }
   const webhook = new WebhookClient({ url: process.env.CONTACT_WEBHOOK });
   const contact_form = new MessageEmbed() // Prettier
    .setColor("#4f545c")

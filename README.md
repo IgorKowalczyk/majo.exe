@@ -72,7 +72,8 @@ Go to [this link](https://discord.com/oauth2/authorize/?permissions=4294967287&s
     * `MYSQL_USER` - Your MYSQL User name who can acces the database
     * `CONTACT_WEBHOOK` - Your Contact Webhook URL (Discord)
     * `PORT` - Your website port
-    * `RECAPTCHA_KEY` - Google recaptcha v2 key
+    * `RECAPTCHA_SITE_KEY` - Google recaptcha v2 site key
+    * `RECAPTCHA_SECRET_KEY` - Google recaptcha v2 secret key
     * `SECRET` - Discord bot secret [[Tutorial](#-discord-bot-secret)]
 6. Fill dashboard config in `/config/main_config.js`
 7. Add these redirect URI's ([https://discord.com/developers/applications/<YOUR-BOT-ID\>/oauth2](https://discord.com/developers/applications))
@@ -138,7 +139,8 @@ Go to [this link](https://discord.com/oauth2/authorize/?permissions=4294967287&s
 | `PORT` | Your webiste port eg. `8080`<br> - Note: Heroku don't need port. Heroku assings port automatically! | Number | ❌ | ✅ | ✅ |
 | `SECRET` | The bot client secret | String | ❌ | ✅ | ❌ |
 | `ANALYTICS` | Google analytics tracking ID, used in Web-Dashboard | String | ❌ | ❌ | ❌ |
-| `RECAPTCHA_KEY` | Google recaptcha v2 key | String | ❌ | ✅ | ❌ |
+| `RECAPTCHA_SITE_KEY` | Google recaptcha v2 site key | String | ❌ | ✅ | ❌ |
+| `RECAPTCHA_SECRET_KEY` | Google recaptcha v2 secret key | String | ❌ | ✅ | ❌ |
 | `CONTACT_WEBHOOK` | Your contact form webhook URL | URL | ❌ | ✅ | ❌ |
 | `STATUS_WEBHOOK` | Your status webhook URL | URL | ✅ | ❌ | ❌ |
 | `ERRORS_WEBHOOK` | Your errors webhook URL | URL | ✅ | ✅ | ❌ |
@@ -165,7 +167,8 @@ MYSQL_USER=YOUR_MYSQL_DATABASE_USER
 CONTACT_WEBHOOK=YOUR_CONTACT_FORM_WEBHOOK
 STATUS_WEBHOOK=YOUR_STATUS_WEBHOOK_URL
 ERRORS_WEBHOOK=YOUR_ERRORS_WEBHOOK_URL
-RECAPTCHA_KEY=YOUR_RECAPTCHA_KEY
+RECAPTCHA_SITE_KEY=YOUR_RECAPTCHA_SITE_KEY
+RECAPTCHA_SECRET_KEY=YOUR_RECAPTCHA_SECRET_KEY
 NODE_ENV=production/development
 
 # Not required
