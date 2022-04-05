@@ -13,7 +13,7 @@
 <% if(user.banner) { %>
 <style>
 .banner-container {
- background-image: url("https://cdn.discordapp.com/banners/<%= user.id %>/<%= user.banner %>?size=4096");
+ background-image: url("https://cdn.discordapp.com/banners/<%= user.id %>/<%= user.banner %>?size=480");
  }
 </style>
 <% } else { %>
@@ -53,7 +53,7 @@ box-shadow: unset;
 
  <div class="buttons-container" style="width: 400px;">
 <% if(user.banner) { %>
-<a class="button button-one" href="https://cdn.discordapp.com/banners/<%= user.id %>/<%= user.banner %>?size=480" download="true"><span class="reload-container"><%- include('includes/icons/download.ejs') %> Download Banner</span></a>
+<a class="button button-one" href="https://cdn.discordapp.com/banners/<%= user.id %>/<%= user.banner %>?size=4096" download="true"><span class="reload-container"><%- include('includes/icons/download.ejs') %> Download Banner</span></a>
 <% } else { %>
 <a class="button disabled button-one" title="You don't have banner!"><span class="reload-container"><%- include('includes/icons/download.ejs') %> Download Banner</span></a>
 <% } %>
