@@ -12,6 +12,7 @@ module.exports = (app, client, port, config, secure_connection, domain, express)
  const moment = require("moment");
  const rate_limit = require("express-rate-limit");
  const package = require("../package.json");
+ const fetch_stats = require("../utilities/mysql/util/server_stats/fetch");
  const { glob } = require("glob");
  const { promisify } = require("util");
  const globPromise = promisify(glob);
@@ -422,66 +423,40 @@ module.exports = (app, client, port, config, secure_connection, domain, express)
    const first_member = req.user.id;
    await guild.members.fetch({ first_member });
    const member = guild.members.cache.get(req.user.id);
+   const owner = await guild.fetchOwner();
    if (!member) return errorPage(req, res, "You must be on this server to perform this action!");
    if (!member.permissions.has("MANAGE_GUILD")) return errorPage(req, res, "You do not have the MANAGE_GUILD permissions!");
-   client.database.query(`SELECT \`joins\` as 'join', \`leaves\` as 'leave', \`last_updated\` as 'ls' from \`guild_stats\` WHERE \`guild_id\` = ${guild.id}`, async function (serror, results, sfields) {
-    if (serror) console.log(serror);
-    if (!results) {
+   await fetch_stats(client, guild, function (stats) {
+    if (!stats) {
      res.status(403);
      return errorPage(req, res, "No server statistics, please refresh the page...");
     }
-    if (results[0]) {
-     let total_joins = 0;
-     let total_leaves = 0;
-     let joins_array = JSON.parse(results[0].join);
-     let leaves_array = JSON.parse(results[0].leave);
-     let joins = new Array();
-     let leaves = new Array();
-     for (let el of Object.entries(joins_array)) {
-      if (el[0].replaceAll("/", "-") == `${moment().year()}-${moment().format("MM")}-${moment().date() + 1}`) break;
-      joins.push([el[0].replaceAll("/", "-"), el[1]]);
-      total_joins += parseInt(el[1]);
-     }
-     for (let el of Object.entries(leaves_array)) {
-      if (el[0].replaceAll("/", "-") == `${moment().year()}-${moment().format("MM")}-${moment().date() + 1}`) break;
-      leaves.push([el[0].replaceAll("/", "-"), el[1]]);
-      total_leaves += parseInt(el[1]);
-     }
-     renderTemplate(res, req, "/server/server.ejs", {
-      guild: guild,
-      perms: Permissions,
-      joins: joins,
-      total_joins: parseInt(total_joins),
-      total_leaves: parseInt(total_leaves),
-      leaves: leaves,
-      guild_owner: await guild.fetchOwner(),
-      csrfToken: req.csrfToken(),
-     });
-    } else {
-     const current_month = moment().daysInMonth();
-     const empty_stats = {};
-     for (let i = 1; i <= current_month; i++) {
-      empty_stats[`${moment().year()}/${moment().format("MM")}/${i}`] = 0;
-     }
-     client.database.query(`INSERT INTO guild_stats (guild_id, joins, leaves, last_updated) VALUES ('${guild.id}', '${JSON.stringify(empty_stats)}', '${JSON.stringify(empty_stats)}', '${moment(new Date()).format("YYYY-MM-DD")}')`, function (sserror, ssresults, ssfields) {
-      if (sserror) console.log(sserror);
-     });
-     let empty_array = [];
-     for (let el of Object.entries(empty_stats)) {
-      if (el[0].replaceAll("/", "-") == `${moment().year()}-${moment().format("MM")}-${moment().date() + 1}`) break;
-      empty_array.push([el[0].replaceAll("/", "-"), el[1]]);
-     }
-     renderTemplate(res, req, "/server/server.ejs", {
-      guild: guild,
-      perms: Permissions,
-      total_joins: 0,
-      total_leaves: 0,
-      joins: empty_array,
-      leaves: empty_array,
-      guild_owner: await guild.fetchOwner(),
-      csrfToken: req.csrfToken(),
-     });
+    const joins_array = JSON.parse(stats.joins);
+    const leavess_array = JSON.parse(stats.leaves);
+    let total_joins = 0;
+    let total_leaves = 0;
+    let joins = new Array();
+    let leaves = new Array();
+    for (let el of Object.entries(joins_array)) {
+     if (el[0].replaceAll("/", "-") == `${moment().year()}-${moment().format("MM")}-${moment().date() + 1}`) break;
+     joins.push([el[0].replaceAll("/", "-"), el[1]]);
+     total_joins += parseInt(el[1]);
     }
+    for (let el of Object.entries(leavess_array)) {
+     if (el[0].replaceAll("/", "-") == `${moment().year()}-${moment().format("MM")}-${moment().date() + 1}`) break;
+     leaves.push([el[0].replaceAll("/", "-"), el[1]]);
+     total_leaves += parseInt(el[1]);
+    }
+    renderTemplate(res, req, "/server/server.ejs", {
+     guild: guild,
+     perms: Permissions,
+     joins: joins,
+     total_joins: parseInt(total_joins),
+     total_leaves: parseInt(total_leaves),
+     leaves: leaves,
+     guild_owner: owner,
+     csrfToken: req.csrfToken(),
+    });
    });
   } catch (e) {
    return errorPage(req, res, e);
@@ -496,6 +471,7 @@ module.exports = (app, client, port, config, secure_connection, domain, express)
    const first_member = req.user.id;
    await guild.members.fetch({ first_member });
    const member = guild.members.cache.get(req.user.id);
+   const owner = await guild.fetchOwner();
    if (!member) return errorPage(req, res, "You must be on this server to perform this action!");
    if (!member.permissions.has("MANAGE_GUILD")) return errorPage(req, res, "You do not have the MANAGE_GUILD permissions!");
    const data = req.body;
@@ -509,66 +485,38 @@ module.exports = (app, client, port, config, secure_connection, domain, express)
     if (!nickname) nickname = guild.me.nickname || guild.me.user.username;
     await guild.me.setNickname(nickname);
    }
-   client.database.query(`SELECT \`joins\` as 'join', \`leaves\` as 'leave', \`last_updated\` as 'ls' from \`guild_stats\` WHERE \`guild_id\` = ${guild.id}`, async function (serror, results, sfields) {
-    if (serror) console.log(serror);
-    if (!results) {
+   await fetch_stats(client, guild, function (stats) {
+    if (!stats) {
      res.status(403);
      return errorPage(req, res, "No server statistics, please refresh the page...");
     }
-    if (results[0]) {
-     let total_joins = 0;
-     let total_leaves = 0;
-     let joins_array = JSON.parse(results[0].join);
-     let leaves_array = JSON.parse(results[0].leave);
-     let joins = new Array();
-     let leaves = new Array();
-     for (let el of Object.entries(joins_array)) {
-      if (el[0].replaceAll("/", "-") == `${moment().year()}-${moment().format("MM")}-${moment().date() + 1}`) break;
-      joins.push([el[0].replaceAll("/", "-"), el[1]]);
-      total_joins += parseInt(el[1]);
-     }
-     for (let el of Object.entries(leaves_array)) {
-      if (el[0].replaceAll("/", "-") == `${moment().year()}-${moment().format("MM")}-${moment().date() + 1}`) break;
-      leaves.push([el[0].replaceAll("/", "-"), el[1]]);
-      total_leaves += parseInt(el[1]);
-     }
-     renderTemplate(res, req, "/server/server.ejs", {
-      guild: guild,
-      perms: Permissions,
-      joins: joins,
-      total_joins: parseInt(total_joins),
-      total_leaves: parseInt(total_leaves),
-      alert: "Your changes have been saved! ✅",
-      leaves: leaves,
-      guild_owner: await guild.fetchOwner(),
-      csrfToken: req.csrfToken(),
-     });
-    } else {
-     const current_month = moment().daysInMonth();
-     const empty_stats = {};
-     for (let i = 1; i <= current_month; i++) {
-      empty_stats[`${moment().year()}/${moment().format("MM")}/${i}`] = 0;
-     }
-     client.database.query(`INSERT INTO guild_stats (guild_id, joins, leaves, last_updated) VALUES ('${guild.id}', '${JSON.stringify(empty_stats)}', '${JSON.stringify(empty_stats)}', '${moment(new Date()).format("YYYY-MM-DD")}')`, function (sserror, ssresults, ssfields) {
-      if (sserror) console.log(sserror);
-     });
-     let empty_array = [];
-     for (let el of Object.entries(empty_stats)) {
-      if (el[0].replaceAll("/", "-") == `${moment().year()}-${moment().format("MM")}-${moment().date() + 1}`) break;
-      empty_array.push([el[0].replaceAll("/", "-"), el[1]]);
-     }
-     renderTemplate(res, req, "/server/server.ejs", {
-      guild: guild,
-      perms: Permissions,
-      total_joins: 0,
-      total_leaves: 0,
-      joins: empty_array,
-      leaves: empty_array,
-      alert: "Your changes have been saved! ✅",
-      guild_owner: await guild.fetchOwner(),
-      csrfToken: req.csrfToken(),
-     });
+    const joins_array = JSON.parse(stats.joins);
+    const leavess_array = JSON.parse(stats.leaves);
+    let total_joins = 0;
+    let total_leaves = 0;
+    let joins = new Array();
+    let leaves = new Array();
+    for (let el of Object.entries(joins_array)) {
+     if (el[0].replaceAll("/", "-") == `${moment().year()}-${moment().format("MM")}-${moment().date() + 1}`) break;
+     joins.push([el[0].replaceAll("/", "-"), el[1]]);
+     total_joins += parseInt(el[1]);
     }
+    for (let el of Object.entries(leavess_array)) {
+     if (el[0].replaceAll("/", "-") == `${moment().year()}-${moment().format("MM")}-${moment().date() + 1}`) break;
+     leaves.push([el[0].replaceAll("/", "-"), el[1]]);
+     total_leaves += parseInt(el[1]);
+    }
+    renderTemplate(res, req, "/server/server.ejs", {
+     guild: guild,
+     perms: Permissions,
+     joins: joins,
+     total_joins: parseInt(total_joins),
+     total_leaves: parseInt(total_leaves),
+     alert: "Your changes have been saved! ✅",
+     leaves: leaves,
+     guild_owner: owner,
+     csrfToken: req.csrfToken(),
+    });
    });
   } catch (e) {
    return errorPage(req, res, e);
