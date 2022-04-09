@@ -13,6 +13,7 @@ module.exports = (app, client, port, config, secure_connection, domain, express)
  const rate_limit = require("express-rate-limit");
  const package = require("../package.json");
  const fetch_stats = require("../utilities/mysql/util/server_stats/fetch");
+ const fetch_message_channels = require("../utilities/mysql/util/get_messages_channels");
  const { glob } = require("glob");
  const { promisify } = require("util");
  const globPromise = promisify(glob);
@@ -614,14 +615,14 @@ module.exports = (app, client, port, config, secure_connection, domain, express)
   if (!guild) return errorPage(req, res, "No such server, add a bot to perform this action!");
   const first_member = req.user.id;
   await guild.members.fetch({ first_member });
+  const owner = await guild.fetchOwner();
   const member = guild.members.cache.get(req.user.id);
   if (!member) return errorPage(req, res, "You must be on this server to perform this action!");
   if (!member.permissions.has("MANAGE_GUILD")) return errorPage(req, res, "You do not have the MANAGE_GUILD permissions!");
-  const sqlquery = "SELECT `leave`.`guildid` AS `guild_id`, `leave`.`channelid` AS `leave`, `welcome`.`channelid` AS `welcome` FROM `leave` INNER JOIN welcome ON `leave`.`guildid` = `welcome`.`guildid` WHERE `leave`.guildid = " + guild.id;
-  await client.database.query(sqlquery, async function (error, results, fields) {
-   if (results[0]) {
-    welcome = guild.channels.cache.get(results[0].welcome);
-    leave = guild.channels.cache.get(results[0].leave);
+  await await fetch_message_channels(client, guild, function (channels) {
+   if (channels) {
+    welcome = channels.welcome_channel;
+    leave = channels.leave_channel;
    } else {
     welcome = null;
     leave = null;
@@ -632,7 +633,7 @@ module.exports = (app, client, port, config, secure_connection, domain, express)
     welcome: welcome,
     leave: leave,
     csrfToken: req.csrfToken(),
-    guild_owner: await guild.fetchOwner(),
+    guild_owner: owner,
    });
   });
  });

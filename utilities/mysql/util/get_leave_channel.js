@@ -1,4 +1,4 @@
-const get_leave_channel = async function get_leave_channel(client, guild, callback) {
+module.exports = async (client, guild, callback) => {
  const result = await client.database.query(`SELECT channelid AS res FROM \`leave\` WHERE guildid = ${guild.id}`);
  result.on("result", async function (row, index) {
   const row_id = row.res;
@@ -11,5 +11,3 @@ const get_leave_channel = async function get_leave_channel(client, guild, callba
   return callback(channel);
  });
 };
-
-module.exports = get_leave_channel;
