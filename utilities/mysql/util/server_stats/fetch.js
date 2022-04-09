@@ -18,7 +18,7 @@ module.exports = async (client, guild, callback) => {
      empty_stats[`${moment().year()}/${moment().format("MM")}/${i}`] = 0;
     }
     client.database.query(`UPDATE guild_stats SET leaves = '${JSON.stringify(empty_stats)}', joins = '${JSON.stringify(empty_stats)}', last_updated = '${moment(new Date()).format("YYYY-MM-DD")}' WHERE guild_id = ${guild.id}`);
-   return callback(JSON.stringify(empty_stats));
+    return callback(JSON.stringify(empty_stats));
    } else {
     return callback(results[0]);
    }
