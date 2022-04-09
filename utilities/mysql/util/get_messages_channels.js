@@ -1,6 +1,7 @@
 module.exports = async (client, guild, callback) => {
  client.database.query(`SELECT \`leave\`.\`guildid\` AS \`guild_id\`, \`leave\`.\`channelid\` AS \`leave\`, \`welcome\`.\`channelid\` AS \`welcome\` FROM \`leave\` INNER JOIN welcome ON \`leave\`.\`guildid\` = \`welcome\`.\`guildid\` WHERE \`leave\`.guildid = ${guild.id}`, async (err, result) => {
   if (!result) return callback(null);
+  if (!result[0]) return callback(null);
   const welcome = result[0].welcome;
   const leave = result[0].leave;
   if (!welcome || !leave) return callback(null);
