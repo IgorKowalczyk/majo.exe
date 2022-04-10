@@ -13,7 +13,7 @@ module.exports = (app, client, port, config, secure_connection, domain, express)
  const rate_limit = require("express-rate-limit");
  const package = require("../package.json");
  const fetch_stats = require("../utilities/mysql/util/server_stats/fetch");
- const fetch_message_channels = require("../utilities/mysql/util/get_messages_channels");
+ const fetch_message_channels = require("../utilities/mysql/util/member_messages/get_messages_channels");
  const { glob } = require("glob");
  const { promisify } = require("util");
  const globPromise = promisify(glob);
@@ -433,7 +433,7 @@ module.exports = (app, client, port, config, secure_connection, domain, express)
      return errorPage(req, res, "No server statistics, please refresh the page...");
     }
     const joins_array = JSON.parse(stats.joins);
-    const leavess_array = JSON.parse(stats.leaves);
+    const leaves_array = JSON.parse(stats.leaves);
     let total_joins = 0;
     let total_leaves = 0;
     let joins = new Array();
@@ -443,7 +443,7 @@ module.exports = (app, client, port, config, secure_connection, domain, express)
      joins.push([el[0].replaceAll("/", "-"), el[1]]);
      total_joins += parseInt(el[1]);
     }
-    for (let el of Object.entries(leavess_array)) {
+    for (let el of Object.entries(leaves_array)) {
      if (el[0].replaceAll("/", "-") == `${moment().year()}-${moment().format("MM")}-${moment().date() + 1}`) break;
      leaves.push([el[0].replaceAll("/", "-"), el[1]]);
      total_leaves += parseInt(el[1]);
@@ -492,7 +492,7 @@ module.exports = (app, client, port, config, secure_connection, domain, express)
      return errorPage(req, res, "No server statistics, please refresh the page...");
     }
     const joins_array = JSON.parse(stats.joins);
-    const leavess_array = JSON.parse(stats.leaves);
+    const leaves_array = JSON.parse(stats.leaves);
     let total_joins = 0;
     let total_leaves = 0;
     let joins = new Array();
@@ -502,7 +502,7 @@ module.exports = (app, client, port, config, secure_connection, domain, express)
      joins.push([el[0].replaceAll("/", "-"), el[1]]);
      total_joins += parseInt(el[1]);
     }
-    for (let el of Object.entries(leavess_array)) {
+    for (let el of Object.entries(leaves_array)) {
      if (el[0].replaceAll("/", "-") == `${moment().year()}-${moment().format("MM")}-${moment().date() + 1}`) break;
      leaves.push([el[0].replaceAll("/", "-"), el[1]]);
      total_leaves += parseInt(el[1]);

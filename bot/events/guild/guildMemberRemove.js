@@ -1,5 +1,5 @@
 const create_leave_card = require("../../../utilities/cards/leave.js");
-const get_leave_channel = require("../../../utilities/mysql/util/get_leave_channel.js");
+const get_leave_channel = require("../../../utilities/mysql/util/member_messages/get_leave_channel.js");
 const server_stats = require("../../../utilities/mysql/util/server_stats/leave.js");
 
 module.exports = async (client, member) => {

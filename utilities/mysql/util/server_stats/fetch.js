@@ -9,7 +9,7 @@ module.exports = async (client, guild, callback) => {
     empty_stats[`${moment().year()}/${moment().format("MM")}/${i}`] = 0;
    }
    await client.database.query(`INSERT INTO guild_stats (guild_id, joins, leaves, last_updated) VALUES ('${guild.id}', '${JSON.stringify(empty_stats)}', '${JSON.stringify(empty_stats)}', '${moment(new Date()).format("YYYY-MM-DD")}')`);
-   return callback(JSON.stringify(empty_stats));
+    return callback({guild_id: guild.id, joins: JSON.stringify(empty_stats), leaves: JSON.stringify(empty_stats)});
   } else {
    let last_updated = results[0].last_updated;
    if (!moment(last_updated).isSame(new Date(), "month")) {
@@ -18,7 +18,7 @@ module.exports = async (client, guild, callback) => {
      empty_stats[`${moment().year()}/${moment().format("MM")}/${i}`] = 0;
     }
     client.database.query(`UPDATE guild_stats SET leaves = '${JSON.stringify(empty_stats)}', joins = '${JSON.stringify(empty_stats)}', last_updated = '${moment(new Date()).format("YYYY-MM-DD")}' WHERE guild_id = ${guild.id}`);
-    return callback(JSON.stringify(empty_stats));
+    return callback({guild_id: guild.id, joins: JSON.stringify(empty_stats), leaves: JSON.stringify(empty_stats)});
    } else {
     return callback(results[0]);
    }

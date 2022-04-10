@@ -1,5 +1,5 @@
 const create_welcome_card = require("../../../utilities/cards/welcome.js");
-const get_welcome_channel = require("../../../utilities/mysql/util/get_welcome_channel.js");
+const get_welcome_channel = require("../../../utilities/mysql/util/member_messages/get_welcome_channel.js");
 const server_stats = require("../../../utilities/mysql/util/server_stats/join.js");
 
 module.exports = async (client, member) => {
