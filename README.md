@@ -27,9 +27,9 @@ Go to [this link](https://discord.com/oauth2/authorize/?permissions=4294967287&s
 > We host this bot. Majo.exe *will be* online 24/7. [Invite Majo here!](#invite)<br>
 > However, if you want to host Majo.exe yourself - [take a look here](#-self-hosting-bot)
 
-| Heroku | Replit | Terohost |
-|---|---|---|
-| [![Deploy to heroku](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy?template=https://github.com/igorkowalczyk/majo.exe/tree/master) | [![Run on Repl.it](https://repl.it/badge/github/igorkowalczyk/majo.exe)](https://repl.it/github/igorkowalczyk/majo.exe) | [![Run on Terohost](https://raw.githubusercontent.com/IgorKowalczyk/majo.exe/master/src/img/readme/terohost_scaled.png)](https://terohost.com) |
+| Replit | Terohost |
+|---|---|
+| [![Run on Repl.it](https://repl.it/badge/github/igorkowalczyk/majo.exe)](https://repl.it/github/igorkowalczyk/majo.exe) | [![Run on Terohost](https://raw.githubusercontent.com/IgorKowalczyk/majo.exe/master/src/img/readme/terohost_scaled.png)](https://terohost.com) |
 
 #### 🤖 Self-Hosting (Bot)
 1. Clone [this repository](https://github.com/igorkowalczyk/majo.exe) `git clone https://github.com/IgorKowalczyk/majo.exe.git`
@@ -136,7 +136,7 @@ Go to [this link](https://discord.com/oauth2/authorize/?permissions=4294967287&s
 | `MYSQL_PASSWORD` | Your MYSQL password | String | ✅ | ✅ | ❌ |
 | `MYSQL_PORT` | Your MYSQL Port (default is `3306`) | Number | ❌ | ❌ | ❌ |
 | `DOMAIN` | Your website domain (eg `https://example.com`) | URL | ❌ | ✅ | ✅ |
-| `PORT` | Your webiste port eg. `8080`<br> - Note: Heroku don't need port. Heroku assings port automatically! | Number | ❌ | ✅ | ✅ |
+| `PORT` | Your webiste port eg. `8080` | Number | ❌ | ✅ | ✅ |
 | `SECRET` | The bot client secret | String | ❌ | ✅ | ❌ |
 | `ANALYTICS` | Google analytics tracking ID, used in Web-Dashboard | String | ❌ | ❌ | ❌ |
 | `RECAPTCHA_SITE_KEY` | Google recaptcha v2 site key | String | ❌ | ✅ | ❌ |
