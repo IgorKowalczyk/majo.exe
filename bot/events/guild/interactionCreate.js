@@ -12,7 +12,7 @@ module.exports = async (client, interaction) => {
    console.log(err);
   });
   const cmd = client.slash_commands.get(interaction.commandName);
-  if (!cmd) return interaction.followUp({ ephemeral: true, content: "An error has occured!" });
+  if (!cmd) return interaction.followUp({ ephemeral: true, content: "It appears this command does not exist? If you believe this is a mistake please contact support!" });
   const timeout = cmd.timeout || client.config.ratelimit;
   const key = `${interaction.user.id}/${cmd.name}/${interaction.guild.id}`;
   const found = Timeout.get(key);
