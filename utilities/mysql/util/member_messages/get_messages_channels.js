@@ -5,8 +5,8 @@ module.exports = async (client, guild, callback) => {
   const welcome = result[0].welcome;
   const leave = result[0].leave;
   if (!welcome || !leave) return callback(null);
-  const welcome_channel = await guild.channels.fetch(welcome);
-  const leave_channel = await guild.channels.fetch(leave);
+  const welcome_channel = await guild.channels.fetch(welcome).catch(() => {});
+  const leave_channel = await guild.channels.fetch(leave).catch(() => {});
   if (!welcome_channel) {
    await client.database.query(`DELETE FROM welcome WHERE guildid = ${guild.id}`);
    return callback(null);

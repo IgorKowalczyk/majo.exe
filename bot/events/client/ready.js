@@ -4,28 +4,34 @@ const moment = require("moment");
 
 module.exports = async (client) => {
  try {
-  function capitalize(string) {
-   return string.charAt(0).toUpperCase() + string.slice(1);
+  if (client.config.member_limit.respect) {
+   client.guilds.cache.forEach(async (guild) => {
+    if (guild.memberCount <= client.config.member_limit.min_members && !client.config.member_limit.ignore.id.includes(guild.id)) {
+     guild.leave();
+     client.database.query(`DELETE FROM guild_stats WHERE guild_id = '${guild.id}'`);
+    }
+   });
   }
   client.status = await require("../../../config/presence_config"); // Todo: Allow dynamic strings
   await require("../../handlers/slash_command")(client);
   if (client.config.use_text_commands) console.log(chalk.green.bold("> ") + chalk.blue.bold(`[${client.user.username.toUpperCase().split(" ")[0]}]`) + chalk.cyan.bold(" Successfully loaded " + chalk.blue.underline(`${client.commands.size}`) + ` text commands! (${client.prefix})`));
-  if (!process.env.STATUS_WEBHOOK) throw new Error("[HOST] You need to provide Discord Status Webhook URL in .env - STATUS_WEBHOOK=YOUR_WEBHOOK_URL");
-  const status_webhook = new WebhookClient({ url: process.env.STATUS_WEBHOOK });
-  const status_embed = new MessageEmbed() // Prettier
-   .setColor("GREEN")
-   .setTimestamp()
-   .setAuthor({ name: `${capitalize(client.user.username)} is online!`, iconURL: client.user.displayAvatarURL() })
-   .setThumbnail(client.user.displayAvatarURL()) // Prettier
-   .setDescription(`>>> Guilds: \`${client.guilds.cache.size} servers\`
+  if (process.env.STATUS_WEBHOOK) {
+   const status_webhook = new WebhookClient({ url: process.env.STATUS_WEBHOOK });
+   const status_embed = new MessageEmbed() // Prettier
+    .setColor("GREEN")
+    .setTimestamp()
+    .setAuthor({ name: `${client.user.username.capitalize()} is online!`, iconURL: client.user.displayAvatarURL() })
+    .setThumbnail(client.user.displayAvatarURL()) // Prettier
+    .setDescription(`>>> Guilds: \`${client.guilds.cache.size} servers\`
    Members: \`${client.guilds.cache.reduce((a, g) => a + g.memberCount, 0)} members\`
    Logged at: <t:${moment(new Date()).unix()}>`);
-  status_webhook.send({
-   // Prettier
-   username: capitalize(client.user.username) + " Status",
-   avatarURL: client.user.displayAvatarURL(),
-   embeds: [status_embed],
-  });
+   status_webhook.send({
+    // Prettier
+    username: `${client.user.username.capitalize()} Status`,
+    avatarURL: client.user.displayAvatarURL(),
+    embeds: [status_embed],
+   });
+  }
   setInterval(() => {
    const emoji = client.status.emojis[Math.floor(Math.random() * client.status.emojis.length)];
    if (client.status.options.type == "dynamic") {

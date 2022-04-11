@@ -47,7 +47,6 @@ Go to [this link](https://discord.com/oauth2/authorize/?permissions=4294967287&s
     * `MYSQL_HOST` - Your MYSQL Host Endpoint
     * `MYSQL_PASSWORD` - Your MYSQL user password
     * `MYSQL_USER` - Your MYSQL User name who can acces the database
-    * `STATUS_WEBHOOK` - Your status webhook URL (Discord)
     * `ERRORS_WEBHOOK` - Your errors webhook URL (Discord)
 7. Run `npm run majo:bot`
 > Note: See the example [`.env` file below](#example-env-file)!
@@ -142,8 +141,8 @@ Go to [this link](https://discord.com/oauth2/authorize/?permissions=4294967287&s
 | `RECAPTCHA_SITE_KEY` | Google recaptcha v2 site key | String | ❌ | ✅ | ❌ |
 | `RECAPTCHA_SECRET_KEY` | Google recaptcha v2 secret key | String | ❌ | ✅ | ❌ |
 | `CONTACT_WEBHOOK` | Your contact form webhook URL | URL | ❌ | ✅ | ❌ |
-| `STATUS_WEBHOOK` | Your status webhook URL | URL | ✅ | ❌ | ❌ |
-| `ERRORS_WEBHOOK` | Your errors webhook URL | URL | ✅ | ✅ | ❌ |
+| `STATUS_WEBHOOK` | Your status webhook URL | URL | ❌ | ❌ | ❌ |
+| `ERRORS_WEBHOOK` | Your errors webhook URL | URL | ✅ | ✅ | ✅ |
 | `NODE_ENV` | Environment variable (production/development) | String | ✅ | ✅ | ✅ |
 
 
@@ -154,29 +153,34 @@ Go to [this link](https://discord.com/oauth2/authorize/?permissions=4294967287&s
 ```
 # Environment Config
 
-# Required
+# Required for everything (Bot, Dashboard & API)
 TOKEN=YOUR_TOKEN_GOES_HERE
-PREFIX=!majo
-ID=YOUR_BOT_ID
-SUPPORT_SERVER_ID=YOUR_SUPPORT_SERVER_ID
-AMEAPI=YOUR_AMETHYSTE_API_TOKEN
+ERRORS_WEBHOOK=YOUR_ERRORS_WEBHOOK_URL
 MYSQL_DATABASE=YOUR_MYSQL_DATABASE_NAME
 MYSQL_HOST=YOUR_MYSQL_HOST
 MYSQL_PASSWORD=YOUR_MYSQL_USER_PASSWORD
 MYSQL_USER=YOUR_MYSQL_DATABASE_USER
+
+# Required for bot
+PREFIX=!majo
+ID=YOUR_BOT_ID
+SUPPORT_SERVER_ID=YOUR_SUPPORT_SERVER_ID
+AMEAPI=YOUR_AMETHYSTE_API_TOKEN
+
+# Required for Dashboard
 CONTACT_WEBHOOK=YOUR_CONTACT_FORM_WEBHOOK
-STATUS_WEBHOOK=YOUR_STATUS_WEBHOOK_URL
 ERRORS_WEBHOOK=YOUR_ERRORS_WEBHOOK_URL
 RECAPTCHA_SITE_KEY=YOUR_RECAPTCHA_SITE_KEY
 RECAPTCHA_SECRET_KEY=YOUR_RECAPTCHA_SECRET_KEY
-NODE_ENV=production/development
-
-# Not required
-DOMAIN=YOUR_WEBSITE_DOMAIN
-PORT=YOUR_WEBSITE_PORT
 SECRET=YOUR_BOT_CLIENT_SECRET
+
+# Required for web workers (Dashboard or API)
+PORT=YOUR_WEBSITE_PORT
+
+# Not required (optional)
 ANALYTICS=YOUR_GOOGLE_TRACKING_ID
-MYSQL_PORT=YOUR_MYSQL_PORT
+STATUS_WEBHOOK=YOUR_STATUS_WEBHOOK_URL
+
 # Note: !majo is the default prefix, you can change it later.
 ```
 

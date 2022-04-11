@@ -28,6 +28,15 @@ module.exports = {
 
  use_text_commands: true, // Allow usage of *DEPRECATED* text commands (You have to enable Message intent in Discord Developer Portal)
 
+ member_limit: {
+  respect: true, // Respect guild member limit
+  min_members: 15, // Minimum guild members to join the bot
+  ignore: {
+   // Ignore guilds
+   id: ["709486554862714991", "695282860399001640"], // Guild IDs
+  },
+ },
+
  bypass_modules: {
   bot: false, // Bypass check for --bot argument [For pterodactyl panel]
   dashboard: false, // Bypass check for --dashboard argument [For pterodactyl panel]
