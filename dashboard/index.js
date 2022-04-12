@@ -718,19 +718,20 @@ module.exports = (app, client, port, config, secure_connection, domain, express)
  });
 
  // 404
- app.use(function (req, res, next) {
+ app.use(function (req, res) {
   res.status(404);
   res.set("Cache-control", "no-cache, must-revalidate, max-age=0");
   return renderTemplate(res, req, "404.ejs");
  });
 
  // 500
- app.use((error, req, res, next) => {
+ app.use((error, req, res) => {
   console.error(error);
   res.status(500);
   return renderTemplate(res, req, "500.ejs", {
    error: error,
   });
  });
+
  console.log(chalk.bold.magenta("> ") + chalk.blue.bold("[DASHBOARD]") + chalk.cyan.bold(` Dashboard is running on url `) + chalk.blue.bold(`${domain}${port == 8080 ? "" : `:${port}`}!`));
 };

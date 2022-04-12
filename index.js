@@ -17,9 +17,9 @@ require("./utilities/console/info");
 require("events").EventEmitter.prototype._maxListeners = 100;
 require("events").defaultMaxListeners = 100;
 const chalk = require("chalk");
-const { Client } = require("./client/client");
+const { DClient } = require("./client/client");
 const config = require("./config/main_config");
-const majo = new Client();
+const majo = new DClient();
 majo.db_events.on("ready", async () => {
  await majo.init();
  if (config.bypass_modules.bot || process.argv.includes(`--bot`)) console.log(chalk.green.bold(`[✅]`) + chalk.bold.greenBright(` Starting Majo.exe Bot! (1/3) `));

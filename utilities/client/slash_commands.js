@@ -1,13 +1,13 @@
 const { glob } = require("glob");
 const { promisify } = require("util");
-const Discord = require("discord.js");
+const { Collection } = require("discord.js");
 
 module.exports = async (client) => {
  const globPromise = promisify(glob);
  const slash_commands = await globPromise(`${process.cwd()}/bot/slash_commands/*/*.js`);
  const slash_commands_array = [];
- client.slash_commands = new Discord.Collection();
- client.extra_slash_commands = new Discord.Collection();
+ client.slash_commands = new Collection();
+ client.extra_slash_commands = new Collection();
  client.all_commands = 0;
  await slash_commands.map(async (value) => {
   const file = require(value);

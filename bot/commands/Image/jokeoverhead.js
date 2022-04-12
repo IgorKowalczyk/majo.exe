@@ -1,5 +1,4 @@
 const { MessageEmbed, MessageAttachment } = require("discord.js");
-const Discord = require("discord.js");
 const canvacord = require("canvacord");
 
 module.exports = {

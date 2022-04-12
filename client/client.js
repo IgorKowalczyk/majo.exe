@@ -1,11 +1,11 @@
-const Discord = require("discord.js");
+const { Intents, Client } = require("discord.js");
 const crypto = require("crypto");
 const config = require("../config/main_config");
 const { Database } = require("../utilities/mysql/database");
 const LoginError = require("../utilities/errors/login_error");
 const chalk = require("chalk");
-const intents = new Discord.Intents(4095);
-class Client extends Discord.Client {
+const intents = new Intents(4095);
+class DClient extends Client {
  constructor() {
   super({
    intents,
@@ -65,4 +65,4 @@ class Client extends Discord.Client {
  }
 }
 
-module.exports = { Client };
+module.exports = { DClient };

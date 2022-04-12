@@ -1,10 +1,10 @@
 const chalk = require("chalk");
 const { glob } = require("glob");
 const { promisify } = require("util");
-const Discord = require("discord.js");
+const { Collection } = require("discord.js");
 const globPromise = promisify(glob);
 const api_config = require("../config/web_config").api;
-const all_endpoints = new Discord.Collection();
+const all_endpoints = new Collection();
 
 module.exports = async (app, client, port, config, secure_connection, domain) => {
  app.get("/api/", (req, res, next) => {
