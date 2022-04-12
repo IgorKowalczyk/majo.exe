@@ -277,7 +277,7 @@ p {
 }
 
 .nav li a:hover {
- background-size: 100% 2px;
+ background-size: 100% 2.5px;
 }
 
 .nav li a:hover,
@@ -1303,4 +1303,18 @@ input[type="switch"] {
 
 select {
  font-family: "Poppins";
+}
+
+.button_empty {
+ padding: 5px 20px 5px 20px !important;
+ border-radius: 5px;
+ border: 2px solid #5865F2;
+ font-weight: 400 !important;
+ font-family: 'Poppins';
+ background-size: 0 !important;
+ transition: 300ms all !important;
+}
+
+.button_empty:hover {
+  background-color: #5865F2 !important;
 }
