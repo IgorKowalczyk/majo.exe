@@ -129,7 +129,7 @@ module.exports = (app, client, port, config, secure_connection, domain, express)
    recaptcha: process.env.RECAPTCHA_SITE_KEY,
    tag: client.tag,
   };
-  res.render(path.resolve(`${template_dir}${path.sep}${template}`), Object.assign(baseData, data));
+  return res.render(path.resolve(`${template_dir}${path.sep}${template}`), Object.assign(baseData, data));
  };
  const all_events = [];
  (async () => {
@@ -721,14 +721,14 @@ module.exports = (app, client, port, config, secure_connection, domain, express)
  app.use(function (req, res, next) {
   res.status(404);
   res.set("Cache-control", "no-cache, must-revalidate, max-age=0");
-  renderTemplate(res, req, "404.ejs");
+  return renderTemplate(res, req, "404.ejs");
  });
 
  // 500
  app.use((error, req, res, next) => {
   console.error(error);
   res.status(500);
-  renderTemplate(res, req, "500.ejs", {
+  return renderTemplate(res, req, "500.ejs", {
    error: error,
   });
  });
