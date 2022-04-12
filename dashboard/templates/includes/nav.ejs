@@ -21,7 +21,8 @@
 <% if (config.support_server) { %>
  <li><a href="<%= secure_connection %><%= domain %><%= port %>/server" target="_blank" rel="noopener">Discord</a></li>
 <% } %>
- <li><a href="<%= secure_connection %><%= domain %><%= port %>/login">Login</a></li>
+ <li>
+  <a href="<%= secure_connection %><%= domain %><%= port %>/login" class="button_empty" style="margin: 13px;">Login</a>
 <% } %>
 
 </ul>
