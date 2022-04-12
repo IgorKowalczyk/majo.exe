@@ -1,35 +1,9 @@
-const { glob } = require("glob");
-const { promisify } = require("util");
 const chalk = require("chalk");
 const fetch = require("node-fetch");
 
 module.exports = async (client) => {
- console.log(chalk.bold(chalk.green.bold("> ") + chalk.blue.bold(`[${client.user.username.toUpperCase().split(" ")[0]}]`)) + chalk.cyan.bold(" Loading slash commands... Please wait"));
- const globPromise = promisify(glob);
- const slash_commands = await globPromise(`${process.cwd()}/bot/slash_commands/*/*.js`);
- const slash_commands_array = [];
- slash_commands.map((value) => {
-  const file = require(value);
-  if (typeof file.name != "string" || typeof file != "object") return console.log(chalk.bold(chalk.green.bold("> ") + chalk.bold(chalk.red(`[/]`))) + chalk.red.bold(` Error while loading ${value.split("/").slice(-1)}: `) + chalk.redBright.dim.bold.underline(`Missing command name or name is not a string!`));
-  if (typeof file.description !== "string") return console.log(chalk.bold(chalk.green.bold("> ") + chalk.bold(chalk.red(`[/]`))) + chalk.red.bold(` Error while loading ${value.split("/").slice(-1)}: `) + chalk.redBright.dim.bold.underline(`Missing command description or description is not a string!`));
-  if (file.options) {
-   file.options.forEach((option) => {
-    if (option.choices) {
-     option.choices.forEach((cmd) => {
-      if (cmd.usage && cmd.category) {
-       client.extra_slash_commands.set(cmd.usage, cmd);
-      }
-     });
-    } else if (option.type === 1) {
-     client.extra_slash_commands.set(option.usage, option);
-    }
-   });
-  }
-  client.slash_commands.set(file.name, file);
-  slash_commands_array.push(file);
- });
- await client.application.commands.set(slash_commands_array);
- client.all_commands = client.slash_commands.size + client.extra_slash_commands.size;
+ console.log(chalk.bold(chalk.green.bold("> ") + chalk.blue.bold(`[${client.user.username.toUpperCase().split(" ")[0]}]`)) + chalk.cyan.bold(" Registering slash commands..."));
+ await client.application.commands.set(client.slash_commands_array);
  //console.log(chalk.bold(chalk.green.bold("> ") + chalk.blue.bold(`[${client.user.username.toUpperCase().split(" ")[0]}]`)) + chalk.cyan.bold(" Setting permissions for slash commands (/)... Please wait"));
  await fetch(`https://discordapp.com/api/v9/applications/${client.config.id}/commands`, {
   method: "GET",
@@ -50,5 +24,5 @@ module.exports = async (client) => {
   });
 
  //console.log(chalk.bold(chalk.green.bold("> ") + chalk.blue.bold(`[${client.user.username.toUpperCase().split(" ")[0]}]`)) + chalk.cyan.bold(" Setting permissions for slash commands (/) done!"));
- console.log(chalk.bold(chalk.green.bold("> ") + chalk.blue.bold(`[${client.user.username.toUpperCase().split(" ")[0]}]`)) + chalk.cyan.bold(" Successfully loaded " + chalk.blue.underline(`${client.slash_commands.size}`) + " (total: " + chalk.blue.underline(client.all_commands) + ") slash commands! (/)"));
+ console.log(chalk.bold(chalk.green.bold("> ") + chalk.blue.bold(`[${client.user.username.toUpperCase().split(" ")[0]}]`)) + chalk.cyan.bold(" Successfully registered " + chalk.blue.underline(`${client.slash_commands.size}`) + " (total: " + chalk.blue.underline(client.all_commands) + ") slash commands! (/)"));
 };

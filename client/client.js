@@ -22,12 +22,15 @@ class Client extends Discord.Client {
   });
   this.database = db.connection;
   require("../utilities/string/capitalize");
+  if(config.bypass_modules.bot || process.argv.includes(`--bot`) || config.bypass_module.dashboard || process.argv.includes(`--dashboard`)) {
+   require("../utilities/client/slash_commands")(this);
+  }
  }
  async init() {
   if (!process.env.TOKEN) throw new LoginError("No token provided! Please provide it in .env");
   process.env.SESSION_SECRET = crypto.randomBytes(64).toString("hex");
   this.login(process.env.TOKEN);
-  this.on("ready", () => {
+  this.on("ready", async() => {
    require("../utilities/client/anti-crash")(this);
    console.log(chalk.green.bold("> ") + chalk.blue.bold(`[${this.user.username.toUpperCase().split(" ")[0]}]`) + chalk.bold.cyan(" Client connected! Logged to Discord as ") + chalk.bold.blue.underline(this.user.tag));
   });

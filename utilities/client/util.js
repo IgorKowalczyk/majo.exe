@@ -14,11 +14,8 @@ module.exports = function (client) {
  client.prefix = process.env.PREFIX; // DEPRECATED
  client.commands = new Discord.Collection();
  client.aliases = new Discord.Collection();
- client.slash_commands = new Discord.Collection();
- client.extra_slash_commands = new Discord.Collection();
  client.snipes = new Discord.Collection();
  client.queue = new Map();
- client.all_commands = 0;
  client.giveawaysManager = require("../giveaways/giveaways")(client);
  const logs = require("discord-logs");
  logs(client);
