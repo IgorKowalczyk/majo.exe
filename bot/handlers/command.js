@@ -1,16 +1,15 @@
-
 module.exports = async (client) => {
  /* DEPRECATED */
  if (client.config.use_text_commands) {
   const { glob } = require("glob");
-const { promisify } = require("util");
-const globPromise = promisify(glob);
-const ascii = require("ascii-table");
-const chalk = require("chalk");
-const table = new ascii();
-const additional_config = require("../../config/additional_config");
-table.setHeading("Command", "Category", "Load status");
-table.setTitleAlign(table.CENTER);
+  const { promisify } = require("util");
+  const globPromise = promisify(glob);
+  const ascii = require("ascii-table");
+  const chalk = require("chalk");
+  const table = new ascii();
+  const additional_config = require("../../config/additional_config");
+  table.setHeading("Command", "Category", "Load status");
+  table.setTitleAlign(table.CENTER);
   console.log(chalk.bold(chalk.green.bold("> ") + chalk.blue.bold("[MAJO.EXE]")) + chalk.cyan.bold(" Please wait... Loading commands..."));
   const commandFiles = await globPromise(`${process.cwd()}/bot/commands/**/*.js`);
   commandFiles.map((value) => {
