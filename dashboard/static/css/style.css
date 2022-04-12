@@ -1308,13 +1308,13 @@ select {
 .button_empty {
  padding: 5px 20px 5px 20px !important;
  border-radius: 5px;
- border: 2px solid #5865F2;
+ border: 2px solid #5865f2;
  font-weight: 400 !important;
- font-family: 'Poppins';
+ font-family: "Poppins";
  background-size: 0 !important;
  transition: 300ms all !important;
 }
 
 .button_empty:hover {
-  background-color: #5865F2 !important;
+ background-color: #5865f2 !important;
 }
