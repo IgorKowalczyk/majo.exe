@@ -7,6 +7,7 @@ module.exports = async (client) => {
   if (client.config.member_limit.respect) {
    client.guilds.cache.forEach(async (guild) => {
     if (guild.memberCount <= client.config.member_limit.min_members && !client.config.member_limit.ignore.id.includes(guild.id)) {
+     console.log(chalk.blue.bold(`[${client.user.username.toUpperCase().split(" ")[0]}]`) + chalk.cyan.bold(` Leaving guild (below minimal members) `) + chalk.blue.bold.underline(guild.name) + chalk.cyan.bold(" (ID: ") + chalk.blue.bold.underline(guild.id) + chalk.cyan.bold(")"));
      guild.leave();
      client.database.query(`DELETE FROM guild_stats WHERE guild_id = '${guild.id}'`);
     }

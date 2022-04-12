@@ -29,7 +29,7 @@ module.exports = {
  use_text_commands: true, // Allow usage of *DEPRECATED* text commands (You have to enable Message intent in Discord Developer Portal)
 
  member_limit: {
-  respect: true, // Respect guild member limit
+  respect: false, // Respect guild member limit
   min_members: 15, // Minimum guild members to join the bot
   ignore: {
    // Ignore guilds

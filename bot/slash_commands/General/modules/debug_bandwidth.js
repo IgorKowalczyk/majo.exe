@@ -8,7 +8,7 @@ module.exports = async (client, interaction, args) => {
   const input = Math.round(test.inputBytes / 1024 / 1024 / 1024);
   const output = Math.round(test.outputBytes / 1024 / 1024 / 1024);
   const embed = new MessageEmbed()
-   .setTitle(`${client.bot_emojis.connection_good} Debug bandwith`)
+   .setTitle(`${client.bot_emojis.status_online} Debug bandwith`)
    .setColor("#5865F2")
    .setThumbnail(client.user.displayAvatarURL({ dynamic: true, format: "png", size: 2048 }))
    .setDescription(`⬇️ In: \`${input}MB/s\` | ⬆️ Out: \`${output}MB/s\`\n\n> Websocket ping: \`${client.ws.ping}ms\``)
