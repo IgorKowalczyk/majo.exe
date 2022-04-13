@@ -2,11 +2,11 @@ const { MessageEmbed, MessageButton, MessageActionRow } = require("discord.js");
 const fetch = require("node-fetch");
 
 module.exports = async (client, interaction, args) => {
-  try {
- const user = interaction.guild.members.cache.get(args[1]);
- if (!user) {
-  return client.createSlashError(interaction, `${client.bot_emojis.error} | I couldn't find that user!`);
- }
+ try {
+  const user = interaction.guild.members.cache.get(args[1]);
+  if (!user) {
+   return client.createSlashError(interaction, `${client.bot_emojis.error} | I couldn't find that user!`);
+  }
   const response = await fetch(`https://discord.com/api/users/${user.id}`, {
    headers: {
     Authorization: `Bot ${client.token}`,
@@ -41,8 +41,8 @@ module.exports = async (client, interaction, args) => {
   } else {
    return client.createSlashError(interaction, `${client.bot_emojis.error} | User has no custom banner!`);
   }
-} catch (err) {
+ } catch (err) {
   console.log(err);
   return client.createSlashCommandError(interaction, err);
  }
-}
+};
