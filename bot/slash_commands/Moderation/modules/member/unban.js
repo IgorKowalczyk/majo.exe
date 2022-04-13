@@ -45,6 +45,7 @@ module.exports = async (client, interaction, args) => {
    return client.createSlashError(interaction, `${client.bot_emojis.error} | Unable to find user, please check ID\n\n**Usage:** \`/member unban <ID> [reason]\``);
   }
  } catch (err) {
-  return client.createCommandError(message, err);
+  console.log(err);
+  return client.createSlashCommandError(interaction, err);
  }
 };

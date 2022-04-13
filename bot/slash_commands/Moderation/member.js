@@ -113,7 +113,7 @@ module.exports = {
    name: "banner",
    description: "🧩 Get user banner",
    type: 1,
-   usage: `/member banner <user>`,
+   usage: `/member banner <user> [guild_banner]`,
    category: "Moderation",
    orgin: "member",
    options: [
@@ -122,6 +122,12 @@ module.exports = {
      description: "The user which banner should be shown",
      required: true,
      type: 6,
+    },
+    {
+     name: "guild_banner",
+     description: "Show guild banner instead of user banner",
+     required: false,
+     type: 5,
     },
    ],
   },
@@ -180,6 +186,8 @@ module.exports = {
     require("./modules/member/info")(client, interaction, args);
    } else if (args[0] == "avatar") {
     require("./modules/member/avatar")(client, interaction, args);
+   } else if (args[0] == "banner") {
+    require("./modules/member/banner")(client, interaction, args);
    } else {
     return client.createSlashError(interaction, `${client.bot_emojis.error} | You need to specify a vaild command!`);
    }

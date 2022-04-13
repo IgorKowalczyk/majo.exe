@@ -22,7 +22,7 @@ class DClient extends Client {
   });
   this.database = db.connection;
   require("../utilities/string/capitalize");
-  if (config.bypass_modules.bot || process.argv.includes(`--bot`) || config.bypass_module.dashboard || process.argv.includes(`--dashboard`)) {
+  if (config.bypass_modules.bot || process.argv.includes(`--bot`) || config.bypass_modules.dashboard || process.argv.includes(`--dashboard`)) {
    require("../utilities/client/slash_commands")(this);
   }
  }

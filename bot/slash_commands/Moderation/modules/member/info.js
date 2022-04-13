@@ -1,6 +1,7 @@
 const { MessageEmbed } = require("discord.js");
 
 module.exports = async (client, interaction, args) => {
+ try {
  const member = await interaction.guild.members.fetch(args[1]);
  if (!member) {
   return client.createSlashError(interaction, `${client.bot_emojis.error} | I couldn't find that user.`);
@@ -48,4 +49,8 @@ module.exports = async (client, interaction, args) => {
  embed.addField(`${client.bot_emojis.discord_badges} Badges`, `> ${flags[member.user.flags.toArray().join(", ")]}`, true);
  embed.setTitle(`${member.user.tag} ${member.user.bot ? `${client.bot_emojis.bot_badge_part_1}${client.bot_emojis.bot_badge_part_2}` : ""}`);
  interaction.followUp({ embeds: [embed] });
+} catch (err) {
+ console.log(err);
+ return client.createSlashCommandError(interaction, err);
+}
 };

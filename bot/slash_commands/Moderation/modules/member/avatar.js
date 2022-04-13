@@ -2,6 +2,7 @@ const { MessageEmbed, MessageButton, MessageActionRow } = require("discord.js");
 const fetch = require("node-fetch");
 
 module.exports = async (client, interaction, args) => {
+  try {
  const user = interaction.guild.members.cache.get(args[1]);
  if (!user) {
   return client.createSlashError(interaction, `${client.bot_emojis.error} | I couldn't find that user!`);
@@ -69,5 +70,9 @@ module.exports = async (client, interaction, args) => {
     }),
    });
   await interaction.followUp({ embeds: [embed], components: [row] });
+ }
+} catch (err) {
+  console.log(err);
+  return client.createSlashCommandError(interaction, err);
  }
 };
