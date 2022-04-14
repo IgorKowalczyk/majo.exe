@@ -2,7 +2,7 @@ const chalk = require("chalk");
 const { MessageEmbed, MessageActionRow, MessageButton } = require("discord.js");
 
 module.exports = async (client, guild) => {
- console.log(chalk.bold(chalk.blue.bold(`[${client.user.username.toUpperCase().split(" ")[0]}]`)) + chalk.cyan.bold(` New guild joined: `) + chalk.blue.bold.underline(guild.name) + chalk.cyan.bold(" (ID: ") + chalk.blue.bold.underline(guild.id) + chalk.cyan.bold(") This guild has ") + chalk.blue.bold.underline(guild.memberCount) + chalk.cyan.bold(" members!"));
+ console.log(chalk.bold(chalk.blue.bold(`[${client.user.username.toUpperCase().split(" ")[0]}]`)) + chalk.cyan.bold(` New guild joined: `) + chalk.blue.bold.underline(guild.name) + chalk.cyan.bold(" (ID: ") + chalk.blue.bold.underline(guild.id) +  chalk.cyan.bold(" | Members: ") + chalk.blue.bold.underline(guild.memberCount) + chalk.cyan.bold(")"));
  const first_channel = guild.channels.cache.filter((f) => f.type === "GUILD_TEXT" && f.permissionsFor(guild.me).has(["SEND_MESSAGES", "VIEW_CHANNEL", "EMBED_LINKS"])).first();
  if (guild.memberCount <= client.config.member_limit.min_members && !client.config.member_limit.ignore.id.includes(guild.id)) {
   console.log(chalk.bold(chalk.blue.bold(`[${client.user.username.toUpperCase().split(" ")[0]}]`)) + chalk.cyan.bold(` New guild joined: `) + chalk.blue.bold.underline(guild.name) + chalk.cyan.bold(" (ID: ") + chalk.blue.bold.underline(guild.id) + chalk.cyan.bold(") This guild has ") + chalk.blue.bold.underline(guild.members.cache.filter((f) => !f.user.bot).size) + chalk.cyan.bold(" members!"));

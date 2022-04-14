@@ -16,11 +16,11 @@ class DClient extends Client {
    failIfNotExists: false,
   });
   const db = new Database();
-  this.db_events = db.events;
-  this.db_events.on("ready", () => {
+  this.database = db.connection;
+  this.database.events = db.events;
+  this.database.events.on("ready", () => {
    db.setup();
   });
-  this.database = db.connection;
   require("../utilities/string/capitalize");
   if (config.bypass_modules.bot || process.argv.includes(`--bot`) || config.bypass_modules.dashboard || process.argv.includes(`--dashboard`)) {
    require("../utilities/client/slash_commands")(this);
