@@ -5,7 +5,6 @@ module.exports = async (client, guild) => {
  console.log(chalk.bold(chalk.blue.bold(`[${client.user.username.toUpperCase().split(" ")[0]}]`)) + chalk.cyan.bold(` New guild joined: `) + chalk.blue.bold.underline(guild.name) + chalk.cyan.bold(" (ID: ") + chalk.blue.bold.underline(guild.id) +  chalk.cyan.bold(" | Members: ") + chalk.blue.bold.underline(guild.memberCount) + chalk.cyan.bold(")"));
  const first_channel = guild.channels.cache.filter((f) => f.type === "GUILD_TEXT" && f.permissionsFor(guild.me).has(["SEND_MESSAGES", "VIEW_CHANNEL", "EMBED_LINKS"])).first();
  if (guild.memberCount <= client.config.member_limit.min_members && !client.config.member_limit.ignore.id.includes(guild.id)) {
-  console.log(chalk.bold(chalk.blue.bold(`[${client.user.username.toUpperCase().split(" ")[0]}]`)) + chalk.cyan.bold(` New guild joined: `) + chalk.blue.bold.underline(guild.name) + chalk.cyan.bold(" (ID: ") + chalk.blue.bold.underline(guild.id) + chalk.cyan.bold(") This guild has ") + chalk.blue.bold.underline(guild.members.cache.filter((f) => !f.user.bot).size) + chalk.cyan.bold(" members!"));
   const embed = new MessageEmbed()
    .setTitle(`${client.bot_emojis.error} It appears that this guild is not big enough!`)
    .setDescription(`It appears **${guild.name}** does not meet our requirments:\n - This guild has less than \`${client.config.member_limit.min_members}\` members.\nPlease consider inviting more members to this guild!`)
