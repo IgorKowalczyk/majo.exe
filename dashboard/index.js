@@ -113,7 +113,7 @@ module.exports = (app, client, port, config, secure_connection, domain, express)
    pathname: pathname,
    path: req.path,
    user: req.isAuthenticated() ? req.user : null,
-   description: config.description,
+   description: `${config.description} ${client.user.username} serve over ${client.all_commands} commands!`,
    domain: app.locals.domain,
    secure_connection: secure_connection,
    twitter: config.twitter,

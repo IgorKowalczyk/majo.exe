@@ -41,7 +41,7 @@
   <p class="brand_new_hero_small_title">Hi! I'm <%= bot.user.username.capitalize() %>! <span style="border-radius: 5px 10px; background-color: #5865F2; padding: 5px 10px 5px 10px; font-size: 9px; font-weight: 600; position: relative; top: -12px;">BETA</span></p>
   <p class="brand_new_header_line gradient-blue">The only one bot</p>
   <p class="brand_new_header_line">you will ever need!</p>
-  <p class="brand_new_description">I have almost everything - Fun, Memes, Images, Giveaway, Moderation, Anime and NSFW! I serve over 150 commands To get started with me just login with your Discord account</p>
+  <p class="brand_new_description">I have almost everything - Fun, Memes, Images, Giveaway, Moderation, Anime and NSFW! I serve over <%= bot.all_commands %> commands To get started with me just login with your Discord account</p>
   <span class="center-buttons">
    <a href="<%= secure_connection %><%= domain %><%= port %>/login" class="link-button green">Get Started</a>
    <a href="#features" class="link-button">Learn More</a>
@@ -58,7 +58,7 @@
   <h2 class="stats_column_title stats_hide_two"><%= bot.guilds.cache.reduce((a, g) => a + g.memberCount, 0) %><span class="text-white-fade">+</span> Users</h2>
  </div>
  <div class="stats_column">
-  <h2 class="stats_column_title">180<span class="text-white-fade">+</span> Commands</h2>
+  <h2 class="stats_column_title"><%= bot.all_commands %><span class="text-white-fade">+</span> Commands</h2>
  </div>
  <div class="stats_column">
   <h2 class="stats_column_title"><%= bot.guilds.cache.size %><span class="text-white-fade">+</span> Servers</h2>
@@ -74,7 +74,7 @@
   </div>
   <div class="product-text">
    <h2 class="product-title">Many commands!</h2>
-   <p><%= bot.user.username.split(" ")[0] %> has more <span class="line_underline">than 180 commands</span>. From memes to moderation commands. Everything is clear and quick to use!</p>
+   <p><%= bot.user.username.split(" ")[0] %> has more <span class="line_underline">than <%= bot.all_commands %> commands</span>. From memes to moderation commands. Everything is clear and quick to use!</p>
   </div>
  </div>
  <div class="product-row">
