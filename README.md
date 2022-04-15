@@ -1,8 +1,3 @@
-[![Stand With Ukraine](https://raw.githubusercontent.com/vshymanskyy/StandWithUkraine/main/banner-direct.svg)](https://stand-with-ukraine.pp.ua)
-
----
-
-
 <img width="170" height="170" align="left" style="float: left; margin: 0 10px 0 0; border-radius: 50%;" alt="Majo.exe Logo" src="https://user-images.githubusercontent.com/49127376/138303201-7f8db506-b11b-40bf-9b89-3966616b16d5.png">  
 
 # Majo.exe
@@ -14,6 +9,8 @@
 [![GitHub License](https://img.shields.io/github/license/igorkowalczyk/majo.exe?style=flat-square&logo=github&label=License&color=%2334D058)](https://majoexe.xyz)
 [![Version](https://img.shields.io/github/package-json/v/igorkowalczyk/majo.exe?style=flat-square&logo=github&label=Version&color=%2334D058)](https://majoexe.xyz/server)
 ---
+
+[![Stand With Ukraine](https://raw.githubusercontent.com/vshymanskyy/StandWithUkraine/main/banner-direct.svg)](https://stand-with-ukraine.pp.ua)
 
 ## 🔗 Invite
 
