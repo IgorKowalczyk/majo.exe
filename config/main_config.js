@@ -24,12 +24,11 @@ module.exports = {
  ratelimit: 2500, // Global slash command ratelimit in ms (can be customized for each command)
  max_input: 200, // Maximum text input for slash commands (characters)
 
-  // DEPRECATED SETTINGS:
+ // DEPRECATED SETTINGS:
  use_text_commands: true, // Allow usage of *DEPRECATED* text commands (You have to enable Message intent in Discord Developer Portal)
  prefix: process.env.PREFIX, // Client text commands prefix [DEPRECATED]
  suggestions_channel: "838092194530852884", // Suggestions channel [DEPRECATED]
-  
-  
+
  member_limit: {
   respect: false, // Respect guild member limit
   min_members: 15, // Minimum guild members to join the bot

@@ -115,6 +115,23 @@ close_banner.addEventListener("click", function () {
    <p style="opacity: 0.5">All data is cleared on the first day of the month.</p> 
   </div>
 </figure>
+<style>
+  .highcharts-legend-item text {
+  fill: #b9bbbe !important;
+  font-weight: 500 !important;
+  font-size: 14px !important;
+  cursor: pointer !important;
+  stroke-width: 0 !important;
+  }
+  .highcharts-axis-labels {
+  fill: #b9bbbe !important;
+  cursor: default !important;
+  font-size: 12px !important;
+}
+  .highcharts-tooltip .highcharts-tooltip-box {
+    fill: #0e0e17 !important;
+  }
+</style>
 <script>
 let joins_array = <%- JSON.stringify(joins) %>;
 let leaves_array =  <%- JSON.stringify(leaves) %>;
@@ -129,6 +146,18 @@ Highcharts.chart('container', {
  title: {
   text: null
  },
+ tooltip: {
+  crosshairs: [{
+   width: 1.5,
+   color: '#404752'
+  }],
+  shared: true,
+  useHTML: false,
+  valueDecimals: 0,
+  borderRadius: 5,
+  borderWidth: 0,
+  shadow: false,
+ },
  yAxis: {
   minTickInterval: 1,
   title: {
@@ -136,9 +165,6 @@ Highcharts.chart('container', {
   } 
  },
  xAxis: {
-  //  tickInterval: 1,
-  //   startOnTick: true,
-  //endOnTick: true,
   type: 'datetime',
   dateTimeLabelFormats: {
    millisecond: '%b %e',
@@ -158,12 +184,20 @@ Highcharts.chart('container', {
  },
  series: [
   {
-   name: 'Joins',
-   data: joins_array,
+   name: 'Leaves',
+   color: '#ea595b',
+   marker: {
+   symbol: 'circle',
+   },
+   data: leaves_array,
   },
   {
-   name: 'Leaves',
-   data: leaves_array,
+   name: 'Joins',
+   color: '#57f288',
+   marker: {
+   symbol: 'circle',
+   },
+   data: joins_array,
   },
  ],
  responsive: {

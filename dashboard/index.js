@@ -718,18 +718,18 @@ module.exports = (app, client, port, config, secure_connection, domain, express)
  });
 
  // 404
- app.use(function (req, res) {
+ app.use(function (req, res, next) {
   res.status(404);
   res.set("Cache-control", "no-cache, must-revalidate, max-age=0");
   renderTemplate(res, req, "404.ejs");
  });
 
  // 500
- app.use((error, req, res) => {
+ app.use((error, req, res, next) => {
   console.error(error);
   res.status(500);
   renderTemplate(res, req, "500.ejs", {
-   error: error,
+   error: error.message,
   });
  });
 

@@ -1,5 +1,5 @@
 <%- include("includes/head", { bot, user, path, title: "Commands" }) %>
 <div class="content">
-<h1 class="center"><%= bot.user.username.capitalize() %> Commands (<%= bot.commands.size %>)</h1>
+<h1 class="center"><%= bot.user.username.capitalize() %> Commands (<%= bot.all_commands %>)</h1>
 
 <%- include("includes/footer") %>

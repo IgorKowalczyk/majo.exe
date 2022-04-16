@@ -25,6 +25,13 @@
 }
 
 @media (max-width: 992px) {
+ .highcharts-figure {
+  margin: 0;
+  margin-top: 20px;
+ }
+ .highcharts-root {
+  margin: 0 !important;
+ }
  .grid-1,
  .grid-2 {
   float: unset;
@@ -96,13 +103,6 @@ input:focus {
  fill: #fff !important;
  font-family: "Poppins" !important;
 }
-.highcharts-point {
- fill: #5865f2;
- stroke: #5865f2;
-}
-.highcharts-graph {
- stroke: #5865f2;
-}
 .highcharts-credits {
  display: none;
 }
@@ -136,4 +136,7 @@ text {
 }
 .highcharts-axis-line {
  display: none !important;
+}
+.highcharts-point {
+ stroke: none !important;
 }
