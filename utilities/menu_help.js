@@ -1,6 +1,7 @@
-const { MessageSelectMenu, MessageActionRow } = require("discord.js");
+const { MessageSelectMenu, MessageActionRow, MessageButton } = require("discord.js");
 const emojis = require("../config/emojis_config");
 const descriptions_config = require("../config/categories_config");
+const config = require("../config/main_config");
 function capitalize(string) {
  if (string == "Nsfw") {
   return string.toUpperCase();
@@ -12,8 +13,6 @@ function capitalize(string) {
 const create_mh = (array) => {
  if (!array) throw new Error("The options were not provided! Make sure you provide all the options!");
  if (array.length < 0) throw new Error(`The array has to have atleast one thing to select!`);
- let select_menu;
- let id = "help-menus";
  let menus = [];
  const emo = {
   general: emojis.bricks,
@@ -45,26 +44,43 @@ const create_mh = (array) => {
  };
  array.forEach((cca) => {
   let name = cca;
-  let sName = `${capitalize(name)}`;
-  let tName = name.charAt(0).toUpperCase() + name.slice(1);
-  let fName = name.toUpperCase();
+  let category_name = `${capitalize(name)}`;
+  let function_name = name.toUpperCase();
   return menus.push({
-   label: sName,
+   label: category_name,
    description: `${descriptions[name.toLowerCase()] || "No description! 👻"}`,
-   value: fName,
+   value: function_name,
    emoji: `${emo[name.toLowerCase()] || "❔"}`,
   });
  });
- let selectionmenu = new MessageSelectMenu() // Prettier
-  .setCustomId(id)
+ const selectionmenu = new MessageSelectMenu() // Prettier
+  .setCustomId("help-menus")
   .setPlaceholder(`${emojis.sparkles} | Choose the command category!`)
   .addOptions(menus);
-
- select_menu = new MessageActionRow() // Prettier
-  .addComponents(selectionmenu);
+ const components = new MessageActionRow() // Prettier
+  .addComponents(selectionmenu)
+  const buttons_components = new MessageActionRow() // Prettier
+  .addComponents(
+   new MessageButton() // Prettier
+    .setURL(`https://discord.com/oauth2/authorize/?permissions=${config.permissions}&scope=${config.scopes}&client_id=${config.id}`)
+    .setStyle("LINK")
+    .setLabel("Invite me")
+  )
+  if(process.env.DASHBOARD) {
+  buttons_components.addComponents( // Prettier
+   new MessageButton() // Prettier
+    .setURL(`${process.env.DOMAIN}/commands`)
+    .setStyle("LINK")
+    .setLabel("View all commands"),
+    new MessageButton() // Prettier
+    .setLabel("Dashboard")
+    .setURL(`${process.env.DOMAIN}`)
+    .setStyle("LINK")
+  )
+  }
  return {
-  smenu: [select_menu],
-  sid: id,
+  smenu: [buttons_components, components],
+  sid: "help-menus",
  };
 };
 
