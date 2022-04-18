@@ -2,17 +2,17 @@ const { MessageEmbed } = require("discord.js");
 const moment = require("moment");
 module.exports = async (client, interaction, args) => {
  try {
- if(!args[1]) {
-  return client.createSlashError(interaction, `${client.bot_emojis.error} | You need to specify vaild emoji!`);
- }
- if(!isNaN(args[1])) {
- emoji = await interaction.guild.emojis.fetch(args[1]);
- } else {
-  emoji = interaction.guild.emojis.cache.find((emoji) => emoji.name === args[1].split(":")[1]);
- }
- if(!emoji) {
-  return client.createSlashError(interaction, `${client.bot_emojis.error} | The emoji name or ID is incorrect!`);
- }
+  if (!args[1]) {
+   return client.createSlashError(interaction, `${client.bot_emojis.error} | You need to specify vaild emoji!`);
+  }
+  if (!isNaN(args[1])) {
+   emoji = await interaction.guild.emojis.fetch(args[1]);
+  } else {
+   emoji = interaction.guild.emojis.cache.find((emoji) => emoji.name === args[1].split(":")[1]);
+  }
+  if (!emoji) {
+   return client.createSlashError(interaction, `${client.bot_emojis.error} | The emoji name or ID is incorrect!`);
+  }
   const added_by = await emoji.fetchAuthor();
   const embed = new MessageEmbed()
    .setColor("#5865F2")
@@ -36,4 +36,4 @@ module.exports = async (client, interaction, args) => {
  } catch (err) {
   return client.createSlashError(interaction, `${client.bot_emojis.error} | Invaild emoji!`);
  }
-}
+};

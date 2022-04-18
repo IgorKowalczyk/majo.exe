@@ -21,4 +21,4 @@ module.exports = async (client, interaction, args) => {
  } catch (err) {
   return client.createSlashCommandError(interaction, err);
  }
-}
+};

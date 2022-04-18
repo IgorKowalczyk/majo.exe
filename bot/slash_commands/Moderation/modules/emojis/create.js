@@ -13,8 +13,8 @@ module.exports = async (client, interaction, args) => {
    return client.createSlashError(interaction, `${client.bot_emojis.error} | You must provide a name for the emoji.`);
   }
   if (args[1].length < 2 || args[1] > 32) {
-    return client.createSlashError(interaction, `${client.bot_emojis.error} | Emoji name length should be between 2 and 32 characters`);
-   }
+   return client.createSlashError(interaction, `${client.bot_emojis.error} | Emoji name length should be between 2 and 32 characters`);
+  }
   if (!args[2]) {
    return client.createSlashError(interaction, `${client.bot_emojis.error} | You must provide vaild image for the emoji`);
   }
