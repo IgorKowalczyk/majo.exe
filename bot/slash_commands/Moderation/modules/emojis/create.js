@@ -12,6 +12,9 @@ module.exports = async (client, interaction, args) => {
   if (!args[1]) {
    return client.createSlashError(interaction, `${client.bot_emojis.error} | You must provide a name for the emoji.`);
   }
+  if (args[1].length < 2 || args[1] > 32) {
+    return client.createSlashError(interaction, `${client.bot_emojis.error} | Emoji name length should be between 2 and 32 characters`);
+   }
   if (!args[2]) {
    return client.createSlashError(interaction, `${client.bot_emojis.error} | You must provide vaild image for the emoji`);
   }
@@ -27,6 +30,7 @@ module.exports = async (client, interaction, args) => {
      .addField(`${client.bot_emojis.edit} Emoji name`, `\`\`\`${emoji.name}\`\`\``, true)
      .addField(`${client.bot_emojis.screw_that} Emoji ID`, `\`\`\`${emoji.id}\`\`\``, true)
      .addField(`${client.bot_emojis.link} Emoji URL`, `> <${emoji.url}>`)
+     .setThumbnail(emoji.url)
      .setFooter({
       text: `Requested by ${interaction.user.username}`,
       iconURL: interaction.user.displayAvatarURL({

@@ -93,26 +93,7 @@ module.exports = {
  ],
  run: async (client, interaction, args) => {
   try {
-   if (args[0] == "create") {
-    require("./modules/emojis/create")(client, interaction, args);
-   }
-   if (args[0] == "delete") {
-    require("./modules/emojis/delete")(client, interaction, args);
-   }
-   if (args[0] == "info") {
-    require("./modules/emojis/info")(client, interaction, args);
-   }
-   if (args[0] == "steal") {
-    if (!args[1] || !args[2]) return interaction.channel.send("You need to provide an emoji name and url");
-    let emoji_name = args[1];
-    let emoji_url = args[2];
-    let emoji = await interaction.channel.guild.createEmoji(emoji_url, emoji_name);
-    interaction.channel.send(`Emoji created: ${emoji}`);
-   }
-   if (args[0] == "list") {
-    let emojis = interaction.channel.guild.emojis.map((emoji) => emoji);
-    interaction.channel.send(`Emojis: ${emojis}`);
-   }
+   require(`./modules/emojis/${args[0]}.js`)(client, interaction, args);
   } catch (err) {
    console.log(err);
    return client.createSlashCommandError(interaction, err);
