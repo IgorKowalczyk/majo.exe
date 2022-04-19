@@ -58,26 +58,27 @@ const create_mh = (array) => {
   .setPlaceholder(`${emojis.sparkles} | Choose the command category!`)
   .addOptions(menus);
  const components = new MessageActionRow() // Prettier
-  .addComponents(selectionmenu)
-  const buttons_components = new MessageActionRow() // Prettier
+  .addComponents(selectionmenu);
+ const buttons_components = new MessageActionRow() // Prettier
   .addComponents(
    new MessageButton() // Prettier
     .setURL(`https://discord.com/oauth2/authorize/?permissions=${config.permissions}&scope=${config.scopes}&client_id=${config.id}`)
     .setStyle("LINK")
     .setLabel("Invite me")
-  )
-  if(process.env.DASHBOARD) {
-  buttons_components.addComponents( // Prettier
+  );
+ if (process.env.DASHBOARD) {
+  buttons_components.addComponents(
+   // Prettier
    new MessageButton() // Prettier
     .setURL(`${process.env.DOMAIN}/commands`)
     .setStyle("LINK")
     .setLabel("View all commands"),
-    new MessageButton() // Prettier
+   new MessageButton() // Prettier
     .setLabel("Dashboard")
     .setURL(`${process.env.DOMAIN}`)
     .setStyle("LINK")
-  )
-  }
+  );
+ }
  return {
   smenu: [buttons_components, components],
   sid: "help-menus",

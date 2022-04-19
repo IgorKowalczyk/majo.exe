@@ -27,14 +27,16 @@ module.exports = {
     if (err) {
      return client.createSlashCommandError(interaction, err);
     }
-     createPaste(data, {
-       raw: true,
-       contentType: "text/plain",
-       server: "https://haste.zneix.eu/",
-      },
-      {}
-     )
-     .then(paste => {
+    createPaste(
+     data,
+     {
+      raw: true,
+      contentType: "text/plain",
+      server: "https://haste.zneix.eu/",
+     },
+     {}
+    )
+     .then((paste) => {
       const embed = new MessageEmbed() // Prettier
        .setColor("#5865F2")
        .setTitle(`${client.bot_emojis.success} Your ascii code has been successfully generated!`)
