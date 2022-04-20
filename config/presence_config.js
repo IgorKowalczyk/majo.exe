@@ -46,6 +46,12 @@ module.exports = {
     type: "PLAYING", // PLAYING | STREAMING | LISTENING | WATCHING
    },
   ],
+  "04-30": [
+   {
+    message: ` heaven... Goodbye Grandma... 🕯️`,
+    type: "WATCHING", // PLAYING | STREAMING | LISTENING | WATCHING
+   },
+  ],
  },
  dynamic: [
   {

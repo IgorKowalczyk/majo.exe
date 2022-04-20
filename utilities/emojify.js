@@ -1,5 +1,5 @@
 module.exports = (input) => {
- if (!input) throw new Error("You must provide text!");
+ if (!input) throw new Error("You must provide text to convert it!");
  const numWords = ["zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"];
  const charTable = {
   "!": "exclamation",
