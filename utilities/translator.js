@@ -1,5 +1,5 @@
 // https://cloud.google.com/translate/docs/languages
-// Outdated 
+// Outdated
 
 module.exports = languages = [
  { name: "afrikaans", abrv: "af" },
