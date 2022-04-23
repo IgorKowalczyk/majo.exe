@@ -22,7 +22,7 @@ module.exports = async (client, interaction, args) => {
     }),
    })
    .addField(`${client.bot_emojis.role} Role ID`, `> \`${role.id}\``)
-   .addField(`🎨 Color`, `> \`${role.hexColor}\``)
+   .addField(`${client.bot_emojis.color} Color`, `> \`${role.hexColor}\``)
    .addField(`${client.bot_emojis.stage_channel} Mention`, `> <@&${role.id}>`)
    .addField(`${client.bot_emojis.stopwatch} Date created`, `> <t:${Math.floor(role.createdTimestamp / 1000)}:F> (<t:${Math.floor(role.createdTimestamp / 1000)}:R>)`)
    .addField(`${client.bot_emojis.member} Members `, `\`${role.members.size}\` members with this role`)

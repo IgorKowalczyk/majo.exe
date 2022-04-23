@@ -139,4 +139,5 @@ module.exports = {
  arrows_clockwise: "🔃",
  jigsaw: "🧩",
  wave: "👋",
+ color: "🎨",
 };

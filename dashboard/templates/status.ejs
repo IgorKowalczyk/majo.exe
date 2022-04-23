@@ -89,7 +89,6 @@ function format({time: time, element: element}) {
 };
 const start = <%= moment(timestamp).unix() %>;
 var el = document.getElementById("uptime");
-  console.log(el)
 setInterval(function () {
  format({time: new Date().getTime() / 1000 - start, element: el});
 }, 1000);
