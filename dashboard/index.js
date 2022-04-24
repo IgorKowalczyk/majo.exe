@@ -385,38 +385,38 @@ module.exports = (app, client, port, config, secure_connection, domain, express)
     csrfToken: req.csrfToken(),
    });
   }
- verify(process.env.RECAPTCHA_SECRET_KEY, data["h-captcha-response"]).then((recaptcha_data) => {
-    if (recaptcha_data.success !== true) {
-   return renderTemplate(res, req, "contact.ejs", {
-    alert: "Please verify that you are not a robot!",
-    error: true,
-    csrfToken: req.csrfToken(),
-   });
-    } else {
-        const webhook = new WebhookClient({ url: process.env.CONTACT_WEBHOOK });
-  const contact_form = new MessageEmbed() // Prettier
-   .setColor("#4f545c")
-   .setTitle(`📬 Contact Form`)
-   .setDescription(`**Someone just send message to us!**`)
-   .addField(`User`, `>>> Tag: \`${data.name.substr(0, 100)}\`\n Mention: <@${data.id}>\nID: \`${data.id}\`)`)
-   .addField("Email", `> ||[${data.email.substr(0, 100)}](https://discord.com/users/${data.id})||`)
-   .addField("Message", `> \`\`\`${Util.escapeCodeBlock(data.message.substr(0, 1000))}\`\`\` `)
-   .addField("Reason", `> \`${data.reason.replaceAll("_", " ").capitalize()}\``)
-   .setTimestamp()
-   .setFooter({ text: client.user.username.capitalize(), iconURL: client.user.displayAvatarURL() });
-  webhook.send({
-   // Prettier
-   username: `${client.user.username.capitalize()} Contact`,
-   avatarURL: client.user.displayAvatarURL(),
-   embeds: [contact_form],
+  verify(process.env.RECAPTCHA_SECRET_KEY, data["h-captcha-response"]).then((recaptcha_data) => {
+   if (recaptcha_data.success !== true) {
+    return renderTemplate(res, req, "contact.ejs", {
+     alert: "Please verify that you are not a robot!",
+     error: true,
+     csrfToken: req.csrfToken(),
+    });
+   } else {
+    const webhook = new WebhookClient({ url: process.env.CONTACT_WEBHOOK });
+    const contact_form = new MessageEmbed() // Prettier
+     .setColor("#4f545c")
+     .setTitle(`📬 Contact Form`)
+     .setDescription(`**Someone just send message to us!**`)
+     .addField(`User`, `>>> Tag: \`${data.name.substr(0, 100)}\`\n Mention: <@${data.id}>\nID: \`${data.id}\`)`)
+     .addField("Email", `> ||[${data.email.substr(0, 100)}](https://discord.com/users/${data.id})||`)
+     .addField("Message", `> \`\`\`${Util.escapeCodeBlock(data.message.substr(0, 1000))}\`\`\` `)
+     .addField("Reason", `> \`${data.reason.replaceAll("_", " ").capitalize()}\``)
+     .setTimestamp()
+     .setFooter({ text: client.user.username.capitalize(), iconURL: client.user.displayAvatarURL() });
+    webhook.send({
+     // Prettier
+     username: `${client.user.username.capitalize()} Contact`,
+     avatarURL: client.user.displayAvatarURL(),
+     embeds: [contact_form],
+    });
+    return renderTemplate(res, req, "contact.ejs", {
+     alert: "Your message have been send! ✅",
+     error: false,
+     csrfToken: req.csrfToken(),
+    });
+   }
   });
-  return renderTemplate(res, req, "contact.ejs", {
-   alert: "Your message have been send! ✅",
-   error: false,
-   csrfToken: req.csrfToken(),
-  });
-    }
-  })
  });
 
  // Settings endpoint.
