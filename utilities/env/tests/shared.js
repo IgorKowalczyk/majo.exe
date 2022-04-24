@@ -1,6 +1,6 @@
 const chalk = require("chalk");
 
-module.exports = () => {
+module.exports = async() => {
  if (!process.env.TOKEN) console.log(chalk.blue.bold("[DEBUG]") + chalk.red.bold(` Missing process.env.TOKEN!`));
  if (!process.env.ERRORS_WEBHOOK) console.log(chalk.blue.bold("[DEBUG]") + chalk.red.bold(` Missing process.env.ERRORS_WEBHOOK!`));
  if (!process.env.MYSQL_DATABASE && (process.argv.includes("--bot") || process.argv.includes("--dashboard"))) console.log(chalk.blue.bold("[DEBUG]") + chalk.red.bold(` Missing process.env.MYSQL_DATABASE!`));

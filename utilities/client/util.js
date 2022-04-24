@@ -15,7 +15,6 @@ module.exports = function (client) {
  client.commands = new Collection();
  client.aliases = new Collection();
  client.snipes = new Collection();
- client.queue = new Map();
  client.giveawaysManager = require("../giveaways/giveaways")(client);
  const logs = require("discord-logs");
  logs(client);
