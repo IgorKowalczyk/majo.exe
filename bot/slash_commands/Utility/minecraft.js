@@ -18,8 +18,8 @@ module.exports = {
    name: "bedrock",
    description: "Display bedrock info",
    required: false,
-   type: 5
-  }
+   type: 5,
+  },
  ],
  run: async (client, interaction, args) => {
   try {
@@ -73,7 +73,7 @@ module.exports = {
          size: 2048,
         }),
        });
-      if (body.description) embed.setDescription(`>>> ${body.description && body.description.length > 1 ? body.description.replace(/§[0-9A-FK-OR]/gi, "").replaceAll("\`", "") : "No description"}`);
+      if (body.description) embed.setDescription(`>>> ${body.description && body.description.length > 1 ? body.description.replace(/§[0-9A-FK-OR]/gi, "").replaceAll("`", "") : "No description"}`);
       if (body.players && body.players.max && body.players.online) embed.addField(`${client.bot_emojis.member} Players`, `> \`${body.players.online}/${body.players.max}\``, true);
       if (body.latency) embed.addField(`${client.bot_emojis.status_online} Latency`, `> \`${body.latency}\``, true);
       if (body.version && body.version.name) embed.addField(`${client.bot_emojis.stage_channel} Version(s)`, `> \`${body.version.name}\``, true);

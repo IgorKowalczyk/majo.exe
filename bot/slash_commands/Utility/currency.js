@@ -48,7 +48,7 @@ module.exports = {
  ],
  run: async (client, interaction, args) => {
   try {
-   if(args[0] === "convert") {
+   if (args[0] === "convert") {
     if (isNaN(args[1])) {
      return client.createSlashError(message, `${client.bot_emojis.error} | Amout of money must be number!`);
     }

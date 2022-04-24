@@ -12,22 +12,22 @@ module.exports = {
    description: "The color to show info about",
    required: false,
    type: 3,
-  }
+  },
  ],
  run: async (client, interaction, args) => {
   try {
-   !args[0] ? random = true : random = false;
-    if (!random && !isColor(args[0]).color) {
-     return client.createSlashError(interaction, `${client.bot_emojis.error} | Please provide a valid color`);
-    }
-   console.log(random)
+   !args[0] ? (random = true) : (random = false);
+   if (!random && !isColor(args[0]).color) {
+    return client.createSlashError(interaction, `${client.bot_emojis.error} | Please provide a valid color`);
+   }
+   console.log(random);
    const value = random ? null : args[0];
-   console.log(value)
+   console.log(value);
    const color = new Color(value);
    const embed = new MessageEmbed() // Prettier
     .setTitle(random ? `${client.bot_emojis.color} Random Color` : `${client.bot_emojis.color} Color: ${color.toHex()}`)
     .addField("HEX", `> \`${color.toHex()}\``, true)
-    .addField("RGB",`> \`${color.toRgb()}\``, true)
+    .addField("RGB", `> \`${color.toRgb()}\``, true)
     .addField("HSL", `> \`${color.toHsl()}\``, true)
     .addField("HSV", `> \`${color.toHsv()}\``, true)
     .addField("CMYK", `> \`${color.toCmyk()}\``, true)
