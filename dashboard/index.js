@@ -16,6 +16,7 @@ module.exports = (app, client, port, config, secure_connection, domain, express)
  const fetch_message_channels = require("../utilities/mysql/util/member_messages/get_messages_channels");
  const { glob } = require("glob");
  const { promisify } = require("util");
+ const { verify } = require("hcaptcha");
  const globPromise = promisify(glob);
  const csrfProtection = csrf({ cookie: true });
  const render_port = port == 8080 ? "" : `:${port}`;
@@ -321,14 +322,14 @@ module.exports = (app, client, port, config, secure_connection, domain, express)
    res.status(401);
    return errorPage(req, res, "You must be logged in to perform this action!");
   }
-  if (!data.name || data.name.length < 1) {
+  if (!data.name) {
    return renderTemplate(res, req, "contact.ejs", {
-    alert: data.name && data.name.lenght < 1 ? "Invaild nickname!" : "Please enter your nickname!",
+    alert: data.name && data.name.length < 1 ? "Invaild nickname!" : "Please enter your nickname!",
     error: true,
     csrfToken: req.csrfToken(),
    });
   }
-  if (data.name && data.name.lenght > 100) {
+  if (data.name && data.name.length > 100) {
    return renderTemplate(res, req, "contact.ejs", {
     alert: "Too long username! (Max: 100)",
     error: true,
@@ -344,7 +345,7 @@ module.exports = (app, client, port, config, secure_connection, domain, express)
   }
   if (!data.email || data.email.length < 1) {
    return renderTemplate(res, req, "contact.ejs", {
-    alert: data.email && data.email.lenght < 1 ? "Invaild email!" : "Please enter email!",
+    alert: data.email && data.email.length < 1 ? "Invaild email!" : "Please enter email!",
     error: true,
     csrfToken: req.csrfToken(),
    });
@@ -356,7 +357,7 @@ module.exports = (app, client, port, config, secure_connection, domain, express)
     csrfToken: req.csrfToken(),
    });
   }
-  if (data.email.lenght > 100) {
+  if (data.email.length > 100) {
    return renderTemplate(res, req, "contact.ejs", {
     alert: "Too long email (Max: 100)!",
     error: true,
@@ -370,7 +371,7 @@ module.exports = (app, client, port, config, secure_connection, domain, express)
     csrfToken: req.csrfToken(),
    });
   }
-  if (data.message && data.message.lenght > 1000) {
+  if (data.message && data.message.length > 1000) {
    return renderTemplate(res, req, "contact.ejs", {
     alert: "Too long message! (Max: 1000)",
     error: true,
@@ -384,15 +385,15 @@ module.exports = (app, client, port, config, secure_connection, domain, express)
     csrfToken: req.csrfToken(),
    });
   }
-  const recaptcha = await fetch(`https://www.google.com/recaptcha/api/siteverify?secret=${process.env.RECAPTCHA_SECRET_KEY}&response=${data["g-recaptcha-response"]}&remoteip=${req.connection.remoteAddress}`).then((res) => res.json());
-  if (recaptcha.success !== true) {
+ verify(process.env.RECAPTCHA_SECRET_KEY, data["h-captcha-response"]).then((recaptcha_data) => {
+    if (recaptcha_data.success !== true) {
    return renderTemplate(res, req, "contact.ejs", {
     alert: "Please verify that you are not a robot!",
     error: true,
     csrfToken: req.csrfToken(),
    });
-  }
-  const webhook = new WebhookClient({ url: process.env.CONTACT_WEBHOOK });
+    } else {
+        const webhook = new WebhookClient({ url: process.env.CONTACT_WEBHOOK });
   const contact_form = new MessageEmbed() // Prettier
    .setColor("#4f545c")
    .setTitle(`📬 Contact Form`)
@@ -403,7 +404,7 @@ module.exports = (app, client, port, config, secure_connection, domain, express)
    .addField("Reason", `> \`${data.reason.replaceAll("_", " ").capitalize()}\``)
    .setTimestamp()
    .setFooter({ text: client.user.username.capitalize(), iconURL: client.user.displayAvatarURL() });
-  await webhook.send({
+  webhook.send({
    // Prettier
    username: `${client.user.username.capitalize()} Contact`,
    avatarURL: client.user.displayAvatarURL(),
@@ -414,6 +415,8 @@ module.exports = (app, client, port, config, secure_connection, domain, express)
    error: false,
    csrfToken: req.csrfToken(),
   });
+    }
+  })
  });
 
  // Settings endpoint.
