@@ -25,7 +25,7 @@ module.exports = {
  max_input: 200, // Maximum text input for slash commands (characters)
 
  // DEPRECATED SETTINGS:
- use_text_commands: true, // Allow usage of *DEPRECATED* text commands (You have to enable Message intent in Discord Developer Portal)
+ use_text_commands: false, // Allow usage of *DEPRECATED* text commands (You have to enable Message intent in Discord Developer Portal)
  prefix: process.env.PREFIX, // Client text commands prefix [DEPRECATED]
  suggestions_channel: "838092194530852884", // Suggestions channel [DEPRECATED]
 
