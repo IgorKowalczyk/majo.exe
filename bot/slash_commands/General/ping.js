@@ -1,5 +1,4 @@
 const { MessageEmbed, MessageActionRow, MessageButton } = require("discord.js");
-const moment = require("moment");
 
 module.exports = {
  name: "ping",
@@ -8,21 +7,21 @@ module.exports = {
  category: "General",
  run: async (client, interaction, args) => {
   try {
-   const date_ping = await moment(Date.now()).unix();
-   const websocket_ping = Math.round(client.ws.ping);
+   const date = Math.floor(Date.now() / 10);
+   const websocket_ping = Math.floor(client.ws.ping);
    const wait = new MessageEmbed() // Prettier
     .setColor("#5865f2")
     .setDescription(`${client.bot_emojis.loading} | Pong!...`);
    interaction.followUp({ embeds: [wait] }).then(async (msg) => {
-    const api_ping = Date.now() - msg.createdTimestamp;
+    const client_ping = Math.floor((Date.now() / 10) - date);
     await client.database.getConnection(async (err, conn) => {
      if (err) return client.createSlashCommandError(interaction, err);
-     await conn.ping(function (err) {
-      let ping = moment(Date.now()).unix() - date_ping;
+     await conn.ping(() => {
+      const database_ping = Math.floor((Date.now() / 10) - date);
       const ping_message = new MessageEmbed()
-       .addField(`${client.bot_emojis.stopwatch} API Request Latency`, `\`\`\`${api_ping.toString().replace(/-/g, "")}ms\`\`\``)
-       .addField(`${client.bot_emojis.stopwatch} API Websocket Latency`, `\`\`\`${websocket_ping}ms\`\`\``)
-       .addField(`${client.bot_emojis.stopwatch} Database Latency`, `\`\`\`${ping == 0 ? 1 : ping}ms\`\`\``)
+       .addField(`${client.bot_emojis.stopwatch} Client Latency`, `\`\`\`${Math.floor(websocket_ping + client_ping)}ms\`\`\``)
+       .addField(`${client.bot_emojis.stopwatch} Host Latency`, `\`\`\`${websocket_ping}ms\`\`\``)
+       .addField(`${client.bot_emojis.stopwatch} Database Latency`, `\`\`\`${database_ping}ms\`\`\``)
        .setFooter({
         text: `Requested by ${interaction.member.user.username}`,
         iconURL: interaction.member.user.displayAvatarURL({
@@ -55,3 +54,4 @@ module.exports = {
   }
  },
 };
+
