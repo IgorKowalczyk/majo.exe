@@ -13,11 +13,11 @@ module.exports = {
     .setColor("#5865f2")
     .setDescription(`${client.bot_emojis.loading} | Pong!...`);
    interaction.followUp({ embeds: [wait] }).then(async (msg) => {
-    const client_ping = Math.floor((Date.now() / 10) - date);
+    const client_ping = Math.floor(Date.now() / 10 - date);
     await client.database.getConnection(async (err, conn) => {
      if (err) return client.createSlashCommandError(interaction, err);
      await conn.ping(() => {
-      const database_ping = Math.floor((Date.now() / 10) - date);
+      const database_ping = Math.floor(Date.now() / 10 - date);
       const ping_message = new MessageEmbed()
        .addField(`${client.bot_emojis.stopwatch} Client Latency`, `\`\`\`${Math.floor(websocket_ping + client_ping)}ms\`\`\``)
        .addField(`${client.bot_emojis.stopwatch} Host Latency`, `\`\`\`${websocket_ping}ms\`\`\``)
@@ -54,4 +54,3 @@ module.exports = {
   }
  },
 };
-

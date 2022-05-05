@@ -15,20 +15,20 @@ module.exports = async (client, interaction, args) => {
  const wait_embed = new MessageEmbed() // Prettier
   .setColor("#5865f2")
   .setDescription(`${client.bot_emojis.loading} | I'm collecting info about myself. Please wait...`);
- interaction.followUp({ embeds: [wait_embed] }).then(async(process_message) => {
+ interaction.followUp({ embeds: [wait_embed] }).then(async (process_message) => {
   client.database.getConnection(async (err, conn) => {
-    await conn.ping(() => {
-      database_ping = Math.floor((Date.now() / 10) - date);
-    })
-  })
-  const client_ping = Math.floor((Date.now() / 10) - date);
+   await conn.ping(() => {
+    database_ping = Math.floor(Date.now() / 10 - date);
+   });
+  });
+  const client_ping = Math.floor(Date.now() / 10 - date);
   Promise.all([
    // Prettier
    cpu.usage(),
    drive.info(),
    os.oos(),
    memory.info(),
-   fetch(`https://api.github.com/repos/${client.config.github}/${client.config.github_repo}/commits?per_page=1`)
+   fetch(`https://api.github.com/repos/${client.config.github}/${client.config.github_repo}/commits?per_page=1`),
   ])
    .then(([cpu_info, drive_info, os_info, memory_info, git]) => {
     return Promise.all(
