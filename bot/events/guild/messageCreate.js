@@ -33,7 +33,7 @@ module.exports = async (client, message) => {
      // .setTitle(`${client.bot_emojis.success} Hi!`, message.guild.iconURL())
      .setColor("GREEN")
      .setAuthor({ name: `${client.bot_emojis.wave} Hello ${message.author.username}`, iconURL: client.user.displayAvatarURL({ dynamic: true, format: "png", size: 2048 }) })
-     .setDescription(`> I was pinged by you, here I am - <@${client.user.id}>!\n> To see all  my commands please type \`/help\`!\n\n>>> ${client.bot_emojis.slash_commands} *Note: Majo.exe will soon switch to slash commands (/)!\nWe are still working on this feature so please be patient :tada:!\n\nMajo.exe will stop responding to normal prefixes <t:1651269660:R>*`)
+     .setDescription(`> I was pinged by you, here I am - <@${client.user.id}>!\n> To see all  my commands please type \`/help\` (as slash command ${client.bot_emojis.slash_command})!`)
      .setTimestamp()
      .setThumbnail(client.user.displayAvatarURL({ dynamic: true, format: "png", size: 2048 }))
      .setFooter({
