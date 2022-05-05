@@ -10,17 +10,25 @@ const fetch = require("node-fetch");
 
 module.exports = async (client, interaction, args) => {
  const client_uptime = new Date().getTime() - Math.floor(client.uptime);
+ const date = Math.floor(Date.now() / 10);
+ const websocket_ping = Math.floor(client.ws.ping);
  const wait_embed = new MessageEmbed() // Prettier
   .setColor("#5865f2")
   .setDescription(`${client.bot_emojis.loading} | I'm collecting info about myself. Please wait...`);
- interaction.followUp({ embeds: [wait_embed] }).then((process_message) => {
+ interaction.followUp({ embeds: [wait_embed] }).then(async(process_message) => {
+  client.database.getConnection(async (err, conn) => {
+    await conn.ping(() => {
+      database_ping = Math.floor((Date.now() / 10) - date);
+    })
+  })
+  const client_ping = Math.floor((Date.now() / 10) - date);
   Promise.all([
    // Prettier
    cpu.usage(),
    drive.info(),
    os.oos(),
    memory.info(),
-   fetch(`https://api.github.com/repos/${client.config.github}/${client.config.github_repo}/commits?per_page=1`),
+   fetch(`https://api.github.com/repos/${client.config.github}/${client.config.github_repo}/commits?per_page=1`)
   ])
    .then(([cpu_info, drive_info, os_info, memory_info, git]) => {
     return Promise.all(
@@ -45,7 +53,7 @@ module.exports = async (client, interaction, args) => {
      .addField(`${client.bot_emojis.channel} Channels Count`, `>>> \`${client.channels.cache.size} channels\``, true)
      .addField(`${client.bot_emojis.optical_disk} Operating System`, `\`\`\`${os_info} (${os.platform().capitalize()} ${os.arch()})\`\`\``)
      .addField(`${client.bot_emojis.package} Tools`, `\`\`\`Node.js: ${process.version} | Discord.js: ${dependencies["discord.js"].replace("^", "v")}\`\`\``)
-     .addField(`${client.bot_emojis.ping} Ping`, `\`\`\`Bot: ${Math.round(client.ws.ping)}ms | API: ${(Date.now() - interaction.createdTimestamp).toString().replace(/-/g, "")}ms\`\`\``)
+     .addField(`${client.bot_emojis.ping} Ping`, `\`\`\`Client: ${Math.floor(websocket_ping + client_ping)}ms | Host: ${Math.floor(websocket_ping)}ms | MySQL: ${Math.floor(database_ping)}ms\`\`\``)
      .addField(`${client.bot_emojis.cpu_icon} CPU`, `\`\`\`${cpu.model()} (${cpu.count()} cores) [${cpu_info}% used]\`\`\``)
      .addField(`${client.bot_emojis.drive_icon} Drive`, `\`\`\`${drive_info.usedGb}GB/${drive_info.totalGb}GB (${drive_info.freePercentage}% free)\`\`\``)
      .addField(`${client.bot_emojis.ram_icon} RAM Usage`, `\`\`\`Server: ${memory_info.usedMemMb.toFixed()}MB/${memory_info.totalMemMb.toFixed()}MB (${(100 - memory_info.freeMemPercentage).toFixed(2)}% used)\nClient: ${(process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2)}MB/${memory_info.totalMemMb.toFixed()}MB (${((100 * (process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2)) / memory_info.totalMemMb.toFixed()).toFixed(2)}% used)\`\`\``)
