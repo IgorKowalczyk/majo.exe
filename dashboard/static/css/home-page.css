@@ -73,6 +73,7 @@
  background-clip: text;
  -webkit-text-fill-color: transparent;
  -webkit-box-decoration-break: clone;
+ box-decoration-break: clone;
 }
 .gradient-pink {
  background: -webkit-linear-gradient(-70deg, #9867f0 0%, #ed4e50 100%);
@@ -80,6 +81,7 @@
  background-clip: text;
  -webkit-text-fill-color: transparent;
  -webkit-box-decoration-break: clone;
+ box-decoration-break: clone;
 }
 
 .grandient-blue {
@@ -89,6 +91,7 @@
  background-clip: text;
  -webkit-text-fill-color: transparent;
  -webkit-box-decoration-break: clone;
+ box-decoration-break: clone;
 }
 
 .brand_new_description {
