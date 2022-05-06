@@ -4,7 +4,7 @@ node_modules
 *md
 *webmanifest
 docs/
-dashboard/static/arc-sw.js
+dashboard/static/js/arc.js
 database/
 package-lock.json
 package.json
