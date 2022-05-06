@@ -289,6 +289,7 @@ module.exports = (app, client, port, config, secure_connection, domain, express)
 
  // Arc.io file
  app.get("/arc-sw.js", (req, res) => {
+  res.type("text/javascript");
   res.sendFile(path.join(__dirname + "/static/js/arc.js"));
  });
 
