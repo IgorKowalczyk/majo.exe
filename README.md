@@ -41,7 +41,6 @@ Go to [this link](https://discord.com/oauth2/authorize/?permissions=4294967287&s
 5. Create new file named `.env` Remember - the file is super secret, better to not share it.
 6. In `.env` file set this values:
     * `TOKEN` - Discord bot token [[Tutorial](#-discord-token)]
-    * `PREFIX` - Discord bot main prefix
     * `ID` - Your Discord Bot ID
     * `SUPPORT_SERVER_ID` - Your Support Server ID
     * `AMEAPI` - your Amethyste API token [[Tutorial](#-amethyste-api)]
@@ -63,7 +62,6 @@ Go to [this link](https://discord.com/oauth2/authorize/?permissions=4294967287&s
 4. Create new file named `.env` Remember - the file is super secret, better to not share it.
 5. In `.env` file set this values:
     * `TOKEN` - Discord bot token [[Tutorial](#-discord-token)]
-    * `PREFIX` - Discord bot main prefix
     * `DOMAIN` - Your website domain (eg `https://example.com`)
     * `AMEAPI` - Your Amethyste api token [[Tutorial](#-amethyste-api)]
     * `ID` - Your Discord Bot ID
@@ -127,7 +125,6 @@ Go to [this link](https://discord.com/oauth2/authorize/?permissions=4294967287&s
 | `.env` varriable | Description | Type | Required (Bot) | Required (Dashboard) | Required (API) |
 |---|---|:---:|:---:|:---:|:---:|
 | `TOKEN` | Discord bot token | String | ✅ | ✅ | ✅ |
-| `PREFIX` | The default bot prefix (eg. `!majo`) [Deprecated!] | String | ✅ | ✅ | ❌ |
 | `ID` | Your Discord Bot ID | Number | ✅ | ✅ | ❌ |
 | `SUPPORT_SERVER_ID` | Your support server ID | Number | ✅ | ❌ | ❌ |
 | `AMEAPI` | Your Amethyste api token | String | ✅ | ✅ | ❌ |
@@ -183,7 +180,7 @@ PORT=YOUR_WEBSITE_PORT
 ANALYTICS=YOUR_GOOGLE_TRACKING_ID
 STATUS_WEBHOOK=YOUR_STATUS_WEBHOOK_URL
 
-# Note: !majo is the default prefix, you can change it later.
+# Note: !majo is the default , you can change it later.
 ```
 
 ## 🗜️ Requirements

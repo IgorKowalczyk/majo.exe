@@ -26,7 +26,7 @@ module.exports = async (client, interaction, args) => {
   }
   let channel = interaction.guild.channels.cache.get(args[2]);
   if (!channel) {
-   return client.createSlashError(interaction, `${client.bot_emojis.error} | You didn't enter a channel! You must provide a channel in the guild to create giveaway!\n\n**Usage:** \`${client.prefix} start-giveaway <time> <winner count> <channel> <prize>\``);
+   return client.createSlashError(interaction, `${client.bot_emojis.error} | You didn't enter a channel! You must provide a channel in the guild to create giveaway!\n\n**Usage:** \`/start-giveaway <time> <winner count> <channel> <prize>\``);
   }
   if (!interaction.guild.me.permissionsIn(channel).has("VIEW_CHANNEL")) {
    return client.createSlashError(interaction, `${client.bot_emojis.error} | You can't create giveaway in this channel! I'm missing permission \`VIEW_CHANNEL\``);
@@ -60,7 +60,7 @@ module.exports = async (client, interaction, args) => {
   }
   let prize = args.slice(3).join(" ");
   if (!prize) {
-   return client.createSlashError(interaction, `${client.bot_emojis.error} | You must enter a prize to start giveaway!\n\n**Usage:** \`${client.prefix} start-giveaway <time> <winner count> <channel> <prize>\``);
+   return client.createSlashError(interaction, `${client.bot_emojis.error} | You must enter a prize to start giveaway!\n\n**Usage:** \`/start-giveaway <time> <winner count> <channel> <prize>\``);
   }
   if (prize.length > client.max_input) {
    return client.createSlashError(interaction, `${client.bot_emojis.error} | Prize can't be longer than \`${client.max_input}\` characters!`);

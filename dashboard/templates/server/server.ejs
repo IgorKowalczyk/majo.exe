@@ -49,9 +49,6 @@ close_banner.addEventListener("click", function () {
 <h2 style="margin-bottom: 0;">Nickname</h2>
 <p>Change the bot's nickname in the current server</p>
 <input id="nickname" name="nickname" type="text" required="true" placeholder="<%= bot.user.username %>" value="<%= guild.me.nickname || guild.me.user.username %>"/>
-<h2 style="margin-bottom: 0;">Prefix</h2>
-<p>Change the prefix by which the bot will reply</p>
-<input id="prefix" name="prefix" type="text" disabled placeholder="<%= prefix %>" value="<%= prefix %>"/>
 <input type="hidden" name="_csrf" value="<%= csrfToken %>">
 <button type="submit" style="margin-left: 0;font-size: 14px;float: right" class="link-button blue">Save changes</button>
 </form>

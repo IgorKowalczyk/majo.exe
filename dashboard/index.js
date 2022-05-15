@@ -121,7 +121,6 @@ module.exports = (app, client, port, config, secure_connection, domain, express)
    alert: "",
    url: res,
    title: client.username,
-   prefix: process.env.PREFIX,
    additional_config: additional_config,
    package: package,
    req: req,

@@ -19,15 +19,11 @@ module.exports = {
  open_collective: "igorkowalczyk", // Sponsor link
  scopes: "bot%20applications.commands", // Dashboard scopes
  permissions: "1539679190263", // Default invite perms
- id: process.env.ID, // Discord Client prefix
+ id: process.env.ID, // Discord Client ID
  advanved_logging: false, // Show debug info
  ratelimit: 2500, // Global slash command ratelimit in ms (can be customized for each command)
  max_input: 200, // Maximum text input for slash commands (characters)
-
- // DEPRECATED SETTINGS:
- use_text_commands: false, // Allow usage of *DEPRECATED* text commands (You have to enable Message intent in Discord Developer Portal)
- prefix: process.env.PREFIX, // Client text commands prefix [DEPRECATED]
- suggestions_channel: "838092194530852884", // Suggestions channel [DEPRECATED]
+ suggestions_channel: "838092194530852884", // Suggestions channel 
 
  member_limit: {
   respect: false, // Respect guild member limit

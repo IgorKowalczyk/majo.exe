@@ -15,7 +15,6 @@ module.exports = async (client) => {
   }
   client.status = await require("../../../config/presence_config"); // Todo: Allow dynamic strings
   await require("../../handlers/slash_command")(client);
-  if (client.config.use_text_commands) console.log(chalk.green.bold("> ") + chalk.blue.bold(`[${client.user.username.toUpperCase().split(" ")[0]}]`) + chalk.cyan.bold(" Successfully loaded " + chalk.blue.underline(`${client.commands.size}`) + ` text commands! (${client.prefix})`));
   if (process.env.STATUS_WEBHOOK) {
    const status_webhook = new WebhookClient({ url: process.env.STATUS_WEBHOOK });
    const status_embed = new MessageEmbed() // Prettier

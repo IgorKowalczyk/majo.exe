@@ -11,7 +11,6 @@ module.exports = function (client) {
  client.backupManager = backup;
  client.max_input = config.max_input;
  client.backupManager.setStorageFolder(`${process.cwd()}/database/backups`);
- client.prefix = process.env.PREFIX; // DEPRECATED
  client.commands = new Collection();
  client.aliases = new Collection();
  client.snipes = new Collection();

@@ -1,5 +1,4 @@
 const chalk = require("chalk");
-const fetch = require("node-fetch");
 
 module.exports = async (client) => {
  console.log(chalk.bold(chalk.green.bold("> ") + chalk.blue.bold(`[${client.user.username.toUpperCase().split(" ")[0]}]`)) + chalk.cyan.bold(" Registering slash commands..."));

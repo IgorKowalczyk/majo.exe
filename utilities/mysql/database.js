@@ -30,7 +30,7 @@ class Database {
  }
  setup() {
   if (this.connection.state !== "disconnected") {
-   this.connection.query("CREATE TABLE IF NOT EXISTS `guild_settings` ( `guild_id` BIGINT(64) NOT NULL , `anti_selfbots` INT(1), `prefix` VARCHAR(10) DEFAULT '', PRIMARY KEY (`guild_id`)); ", (error) => {
+   this.connection.query("CREATE TABLE IF NOT EXISTS `guild_settings` ( `guild_id` BIGINT(64) NOT NULL , `anti_selfbots` INT(1), PRIMARY KEY (`guild_id`)); ", (error) => {
     if (error & config.show_errors) console.log(chalk.white.bold("> ") + chalk.blue.bold("[MYSQL]") + chalk.red.bold(` Database error: ${error.code}`));
     if (config.show_tables) console.log(chalk.white.bold("> ") + chalk.blue.bold("[MYSQL]") + chalk.cyan.bold(" Fetched table ") + chalk.blue.underline('"guild_settings"') + chalk.cyan.bold(" | Status: ") + chalk.blue.bold("200"));
    });

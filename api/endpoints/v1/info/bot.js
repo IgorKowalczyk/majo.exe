@@ -10,7 +10,6 @@ module.exports = {
    guilds: client.guilds.cache.size,
    id: client.application.id,
    members: client.guilds.cache.reduce((a, g) => a + g.memberCount, 0),
-   prefix: process.env.PREFIX,
    channels: {
     total: client.channels.cache.size,
     voice: client.channels.cache.filter((c) => c.type === "GUILD_VOICE").size,

@@ -3,7 +3,7 @@ const config = require("../config/main_config");
 const web_config = require("../config/web_config");
 const ratelimit = require("./util/ratelimit");
 const domain = process.env.DOMAIN.endsWith("/") ? process.env.DOMAIN.slice(0, -1) : process.env.DOMAIN;
-const secure_connection = web_config.web.secure_connection == true ? "https://" : "http://";
+const secure_connection = web_config.web.secure_connection ? "https://" : "http://";
 const port = process.env.PORT || 8080;
 const chalk = require("chalk");
 const cookieParser = require("cookie-parser");

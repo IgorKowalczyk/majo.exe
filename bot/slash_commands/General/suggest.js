@@ -17,10 +17,10 @@ module.exports = {
   try {
    const suggestion = args.join(" ");
    if (!suggestion) {
-    return client.createSlashError(interaction, `${client.bot_emojis.error} | You need to enter a suggestion!\n\n**Usage:** \`${client.prefix} suggest <suggestion>\``);
+    return client.createSlashError(interaction, `${client.bot_emojis.error} | You need to enter a suggestion!`);
    }
    if (args.toString().length > client.max_input) {
-    return client.createSlashError(interaction, `${client.bot_emojis.error} |  Your suggestion can have a maximum of \`${client.max_input}\` characters!\n\n**Usage:** \`${client.prefix} suggest <suggestion>\``);
+    return client.createSlashError(interaction, `${client.bot_emojis.error} |  Your suggestion can have a maximum of \`${client.max_input}\` characters!`);
    }
    const channel = client.channels.cache.get(client.config.suggestions_channel);
    if (channel) {
