@@ -23,7 +23,7 @@ module.exports = {
  advanved_logging: false, // Show debug info
  ratelimit: 2500, // Global slash command ratelimit in ms (can be customized for each command)
  max_input: 200, // Maximum text input for slash commands (characters)
- suggestions_channel: "838092194530852884", // Suggestions channel 
+ suggestions_channel: "838092194530852884", // Suggestions channel
 
  member_limit: {
   respect: false, // Respect guild member limit
