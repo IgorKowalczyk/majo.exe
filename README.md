@@ -204,7 +204,7 @@ STATUS_WEBHOOK=YOUR_STATUS_WEBHOOK_URL
 3. Find section named "Client Secret", under the bot secret click "Copy" button
 4. Paste client secret to `.env` - `SECRET=CLIENT_SECRET`
 
-> Written by: <a href="https://github.com/MashedTuna">MashedPotato</a>
+> Written by: <a href="https://github.com/index1337">_index1337</a>
 
 ---
 
@@ -217,7 +217,7 @@ STATUS_WEBHOOK=YOUR_STATUS_WEBHOOK_URL
 > Token will appear on top of that button, you can regenerate it in any time
 5. Paste your token in `.env` file - `AMEAPI=TOKEN`
 
-> Written by: <a href="https://github.com/MashedTuna">MashedPotato</a>
+> Written by: <a href="https://github.com/index1337">_index1337</a>
 
 ---
 
@@ -245,22 +245,22 @@ Soon!
 > * `Send alerts to owners`: Check the box to get alerts if Google detects issues with your site<br>
 5. When complete, click the SUBMIT button.
 
-> Written by: <a href="https://github.com/MashedTuna">MashedPotato</a>
+> Written by: <a href="https://github.com/index1337">_index1337</a>
 
 ## 📝 Contributors
 - [@r-kjha](https://github.com/r-kjha) (Emoji config support, Bug fixes, New features, Testing)
 - [@Joao-Victor-Liporini](https://github.com/Joao-Victor-Liporini) (Bug fixes, Command handler improvements, Testing, New features)
 - [@krzesl0](https://github.com/krzesl0) (New Features, Bug fixes, Testing)
-- [@MashedTuna](https://github.com/MashedTuna) (Readme tutorials)
+- [@_index1337](https://github.com/index1337) (Readme tutorials)
 - [@Wafelowski](https://github.com/HeavyWolfPL) (Translation improvements)
 - [@Sakshyam6966](https://github.com/Sakshyam6966) (New Features, Bug fixes, Testing)
 
 ## 💝 Sponsors
 **These wonderful people and services have helped develop Majo.exe, without them this project would not exist. Thanks goes to these wonderful people!**
 
-| Logo | Sponsor | Description | Sponsored |
-|:-:| - | :- | -|
-| <a href="https://terohost.com"><img src="https://cdn.discordapp.com/icons/854586817738047518/87b29fced887e8181d46d82551cc0ae0.png" alt="Terohost Logo" width="50" height="50"/></a> | [Terohost](https://terohost.com) | **TeroHost is a Discord Bot hosting** provider that helps take care of all your needs regarding your Discord Bot to ensure your bot perfect uptime, ping and speed. | **.xyz Domain** & MySQL Database |
+| Sponsor | Description | Sponsored |
+| - | :- | -|
+| [Terohost](https://terohost.com) | **TeroHost is a Discord Bot hosting** provider that helps take care of all your needs regarding your Discord Bot to ensure your bot perfect uptime, ping and speed. | **.xyz Domain** & MySQL Database |
 
 
 ## ⁉️ Issues
