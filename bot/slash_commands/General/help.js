@@ -105,7 +105,6 @@ module.exports = {
        let command_names = new Object();
        cmds.map((co) => {
         if (!co) return;
-        console.log(`2 ${co.container}`);
         command_names = ` ${cmds.length === 0 ? "Soon!" : co.cname}`;
         categories_arr.push(command_names);
        });
