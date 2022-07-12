@@ -1,0 +1,39 @@
+@import url("https://fonts.googleapis.com/css?family=Poppins:300,400,600,700&display=swap");
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html,
+body {
+ @apply m-0 scroll-smooth p-0 font-poppins antialiased transition-[background-color] duration-300 motion-reduce:transition-none;
+}
+
+html {
+ @apply !overflow-auto !pr-0;
+}
+
+* {
+ @apply box-border;
+ scrollbar-color: #08152b transparent;
+ scrollbar-width: thin;
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+ @apply hidden;
+}
+
+.hide-scrollbar {
+ scrollbar-width: none;
+}
+
+::-webkit-scrollbar {
+ @apply w-[10px];
+}
+
+::selection {
+ @apply bg-black/10 dark:bg-white/10;
+}
+
+img.twemoji {
+ @apply relative top-[-0.1rem] inline-block h-[1em] w-[1em] align-middle;
+}
