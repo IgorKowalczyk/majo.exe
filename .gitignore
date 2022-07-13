@@ -131,9 +131,6 @@ temp/
 # Sqlite files
 *.sqlite
 
-# Database folders
-database/
-
 # Compressed repo
 majo.exe.zip
 
