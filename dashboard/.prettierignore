@@ -2,3 +2,4 @@ node_modules
 package*
 .next
 .cache
+.swc
