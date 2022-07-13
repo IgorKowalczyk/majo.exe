@@ -2,7 +2,7 @@ import fetch from "node-fetch";
 import { serialize } from "cookie";
 import { credentials } from "@/config";
 import { sign } from "jsonwebtoken";
-import { createUser } from "@/database/db";
+import { createUser } from "../../database/db";
 import { meta } from "@/config"
 
 const scope = ["identify", "guilds"].join(" ");
