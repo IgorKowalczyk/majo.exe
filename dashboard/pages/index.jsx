@@ -8,8 +8,8 @@ export default function Main(props) {
    <Nav />
    <Container>
     <div className="flex h-screen flex-col items-center justify-center gap-2">
-     <h1 className="font-poppins text-5xl">Soon!</h1>
-     <h3 className="font-poppins text-3xl opacity-50">Majo.exe - v6.0.0</h3>
+     <h1 className="text-center font-poppins text-5xl">Soon!</h1>
+     <h3 className="text-center font-poppins text-3xl opacity-50">Majo.exe - v6.0.0</h3>
      <Login />
     </div>
    </Container>

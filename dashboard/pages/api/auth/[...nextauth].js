@@ -10,11 +10,15 @@ export const authOptions = {
    clientSecret: credentials.clientSecret,
   }),
  ],
+ pages: {
+  signIn: "/auth/signin",
+  signOut: "/auth/signout",
+ },
  secret: credentials.secret,
  session: {
   strategy: "jwt",
   maxAge: 30 * 24 * 60 * 60, // 30 days
-},
+ },
  theme: {
   colorScheme: "auto", // "auto" | "dark" | "light"
   brandColor: "#111927",
