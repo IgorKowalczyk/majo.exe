@@ -34,8 +34,7 @@
     "@headlessui/react": "^1.6.5",
     "@headlessui/tailwindcss": "^0.1.0",
     "@igorkowalczyk/is-browser": "^1.0.1",
-    "framer-motion": "^6.4.2",
-    "mini-svg-data-uri": "^1.4.4",
+    "framer-motion": "^6.5.0",
     "next": "^12.2.0",
     "next-auth": "^4.10.0",
     "next-themes": "^0.2.0",
@@ -44,11 +43,12 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-ga4": "^1.4.1",
-    "react-twemoji": "^0.5.0",
-    "tailwind-gradient-mask-image": "^1.0.0",
-    "tailwindcss-text-fill": "^0.2.0"
+    "react-twemoji": "^0.5.0"
   },
   "devDependencies": {
+    "mini-svg-data-uri": "^1.4.4",
+    "tailwind-gradient-mask-image": "^1.0.0",
+    "tailwindcss-text-fill": "^0.2.0",
     "autoprefixer": "^10.4.7",
     "compression-webpack-plugin": "^10.0.0",
     "eslint": "^8.19.0",
@@ -59,7 +59,7 @@
     "postcss": "^8.4.14",
     "prettier": "^2.7.1",
     "prettier-plugin-tailwindcss": "^0.1.11",
-    "tailwindcss": "^3.1.4",
+    "tailwindcss": "^3.1.6",
     "terser-webpack-plugin": "^5.3.3",
     "webpack": "^5.73.0"
   },
