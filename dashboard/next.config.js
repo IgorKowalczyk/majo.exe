@@ -43,9 +43,7 @@ module.exports = {
     new webpack.DefinePlugin({
      "process.env.ASSET_PATH": JSON.stringify("./public/"),
      "process.env.VERSION": JSON.stringify(process.env.npm_package_version),
-     "process.env.CLIENT_ID": JSON.stringify(process.env.CLIENT_ID),
-     "process.env.CLIENT_SECRET": JSON.stringify(process.env.CLIENT_SECRET),
-     "process.env.JWT_SECRET": JSON.stringify(process.env.JWT_SECRET),
+     "process.env.NEXTAUTH_SECRET": JSON.stringify(Math.random().toString(16).substr(2, 8)),
     })
    ),
     (config.optimization.minimizer = [new TerserPlugin()]);
