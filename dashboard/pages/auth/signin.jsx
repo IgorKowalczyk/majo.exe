@@ -28,8 +28,8 @@ export default function SignIn({ providers }) {
       </>
      ) : (
       <>
-       <h1 className="text-center font-poppins text-5xl">Log-In with Discord</h1>
-       <p className="text-center text-lg">Log in with Discord to use all the features of Majo.exe</p>
+       <h1 className="text-center font-poppins text-5xl">Log-In</h1>
+       <p className="text-center text-lg">Authorize Discord account to use all the Majo.exe features</p>
        {Object.values(providers).map((provider) => (
         <div key={provider.name}>
          <button onClick={() => signIn(provider.id)} className="flex h-8 cursor-pointer items-center rounded bg-button-primary px-4 py-0 leading-6 text-white duration-200 hover:bg-button-primary-hover motion-reduce:transition-none">

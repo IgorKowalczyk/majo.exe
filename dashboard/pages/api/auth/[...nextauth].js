@@ -13,6 +13,7 @@ export const authOptions = {
  pages: {
   signIn: "/auth/signin",
   signOut: "/auth/signout",
+  newUser: "/404",
  },
  secret: credentials.secret,
  session: {
