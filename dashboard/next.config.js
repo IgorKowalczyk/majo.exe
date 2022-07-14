@@ -15,6 +15,7 @@ module.exports = {
   domains: [
    "github.githubassets.com", // GitHub assets
    "cdn.discordapp.com", // Discord
+   "media.discordapp.net", // Discord
   ],
  },
  async redirects() {
@@ -43,8 +44,8 @@ module.exports = {
      "process.env.ASSET_PATH": JSON.stringify("./public/"),
      "process.env.VERSION": JSON.stringify(process.env.npm_package_version),
      "process.env.CLIENT_ID": JSON.stringify(process.env.CLIENT_ID),
-      "process.env.CLIENT_SECRET": JSON.stringify(process.env.CLIENT_SECRET),
-      "process.env.JWT_SECRET": JSON.stringify(process.env.JWT_SECRET),
+     "process.env.CLIENT_SECRET": JSON.stringify(process.env.CLIENT_SECRET),
+     "process.env.JWT_SECRET": JSON.stringify(process.env.JWT_SECRET),
     })
    ),
     (config.optimization.minimizer = [new TerserPlugin()]);

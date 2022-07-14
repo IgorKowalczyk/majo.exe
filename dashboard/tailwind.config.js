@@ -9,6 +9,15 @@ module.exports = {
    fontFamily: {
     poppins: ["Poppins", "sans-serif"],
    },
+   colors: {
+    "background-primary": "#111927",
+    "background-navbar": "#141f2f",
+    "background-secondary": "#1c283d",
+    "button-primary": "#2869ff",
+    "button-primary-hover": "#6390fd",
+    "button-action-primary": "#ea4d4d",
+    "button-action-hover": "#ff5f5f",
+   },
   },
  },
  plugins: [

@@ -56,7 +56,7 @@ export function Container(props) {
     {meta.twitter && <meta property="article:published_time" content={meta.twitter} />}
     {meta.date && <meta property="article:published_time" content={meta.date} />}
    </Head>
-   <main className="flex flex-col justify-center bg-[#1b1c21] antialiased">
+   <main className="flex flex-col justify-center bg-[#101827] antialiased">
     <Twemoji options={{ className: "twemoji" }}>{feautures.smoothTransition ? <motion.div {...variants}>{children}</motion.div> : children}</Twemoji>
    </main>
   </>

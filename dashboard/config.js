@@ -20,5 +20,6 @@ export const feautures = {
 };
 
 export const social = {
+ logo: "https://media.discordapp.net/attachments/905722570286960650/997068981187919962/logo-modified.png",
  image: "/assets/banner.png",
 };
