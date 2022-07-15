@@ -19,7 +19,7 @@ export default function Document({ props }) {
     <link rel="dns-prefetch" href="https://fonts.googleapis.com/" />
     <link rel="dns-prefetch" href="https://twemoji.maxcdn.com" />
    </Head>
-   <body className="bg-main-white dark:bg-main-dark">
+   <body className="bg-main-white dark:bg-main-dark relative">
     <Main {...props} />
     <NextScript />
    </body>

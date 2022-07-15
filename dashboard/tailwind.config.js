@@ -14,6 +14,7 @@ module.exports = {
     "background-navbar": "#141f2f",
     "background-menu": "#162235",
     "background-secondary": "#1c283d",
+    "accent-primary": "#2869ff",
     "button-primary": "#2869ff",
     "button-primary-hover": "#6390fd",
     "button-action-primary": "#ea4d4d",

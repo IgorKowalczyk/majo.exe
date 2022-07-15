@@ -32,8 +32,8 @@ export function Nav() {
           <Menu.Button className="ml-4 flex cursor-pointer items-center gap-3 duration-200 motion-reduce:transition-none">
            {({ open }) => (
             <div className={`${open ? "opacity-80" : "hover:opacity-80"} flex select-none items-center duration-200 motion-reduce:transition-none `}>
-             <Image width={36} height={36} className="mr-2 rounded-full" src={session.user.image} loading="lazy" alt={`${session.user.name} Avatar`} />
-             <span>{session.user.name}</span>
+             <Image width={36} height={36} className="rounded-full" src={session.user.image} loading="lazy" alt={`${session.user.name} Avatar`} />
+             <span className="!ml-2 ">{session.user.name}</span>
              <ChevronDownIcon className={`${open ? "rotate-180" : ""} ml-2 h-4 w-4 duration-200 motion-reduce:transition-none`} />
             </div>
            )}
