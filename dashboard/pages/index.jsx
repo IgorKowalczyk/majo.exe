@@ -4,7 +4,7 @@ import Login from "@components/elements/buttons/Login";
 export default function Main(props) {
  return (
   <Container>
-   <div className="flex h-screen animate-movebackground flex-col items-center justify-center  gap-4 bg-primary-cubes bg-fixed bg-center">
+   <div className="flex h-screen  flex-col items-center justify-center  gap-4 ">
     <h1 className="ml-[61px] flex items-start text-center font-poppins text-5xl">
      Majo.exe <span className="rounded bg-background-secondary py-1 px-2 text-base">v6.0.0</span>
     </h1>

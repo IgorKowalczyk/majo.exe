@@ -17,6 +17,8 @@ module.exports = {
     "accent-primary": "#2869ff",
     "button-primary": "#2869ff",
     "button-primary-hover": "#6390fd",
+    "button-secondary": "#1c283d",
+    "button-secondary-hover": "#1f2d44",
     "button-action-primary": "#ea4d4d",
     "button-action-hover": "#ff5f5f",
    },
