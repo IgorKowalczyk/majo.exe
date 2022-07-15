@@ -12,11 +12,24 @@ module.exports = {
    colors: {
     "background-primary": "#111927",
     "background-navbar": "#141f2f",
+    "background-menu": "#162235",
     "background-secondary": "#1c283d",
     "button-primary": "#2869ff",
     "button-primary-hover": "#6390fd",
     "button-action-primary": "#ea4d4d",
     "button-action-hover": "#ff5f5f",
+   },
+   backgroundImage: {
+    "primary-cubes": `url('https://majoexe.xyz/svg/background.svg')`,
+   },
+   animation: {
+    movebackground: "movebg 60s linear infinite",
+   },
+   keyframes: {
+    movebg: {
+     "0% 100%": { backgroundPosition: "0% 0%" },
+     "50%": { backgroundPosition: "-10% 10%" },
+    },
    },
   },
  },
