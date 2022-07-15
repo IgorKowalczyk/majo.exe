@@ -8,15 +8,25 @@ export default function Main(props) {
     <h1 className="flex items-start text-center font-poppins text-5xl">
      Error 404!
     </h1>
-    <h2 className="text-center font-poppins text-xl opacity-50">This page does not exist</h2>
-    <Link href="/">
-        <div className="flex h-8 cursor-pointer items-center rounded bg-button-primary px-4 py-0 leading-6 text-white duration-200 hover:bg-button-primary-hover motion-reduce:transition-none">
+    <h2 className="text-center font-poppins text-xl opacity-50">We're sorry — we can't find the page you're looking for.</h2>
+    <div className="flex gap-4">
+    <Link href="/discord">
+        <div className="flex cursor-pointer items-center rounded px-5 py-2 font-poppins leading-6 text-white duration-200 bg-button-secondary hover:bg-button-secondary-hover motion-reduce:transition-none">
          <svg className="mr-1 h-5 w-5" aria-hidden="true" role="img" viewBox="0 0 24 24">
           <path fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m15 4l-8 8l8 8" />
          </svg>{" "}
-         Back to Dashboard
+         Support
         </div>
        </Link>
+    <Link href="/">
+        <div className="flex cursor-pointer items-center rounded px-5 py-2 font-poppins leading-6 text-white duration-200 bg-button-primary hover:bg-button-primary-hover motion-reduce:transition-none">
+         <svg className="mr-1 h-5 w-5" aria-hidden="true" role="img" viewBox="0 0 24 24">
+          <path fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m15 4l-8 8l8 8" />
+         </svg>{" "}
+         Go back
+        </div>
+       </Link>
+       </div>
    </div>
   </Container>
  );
