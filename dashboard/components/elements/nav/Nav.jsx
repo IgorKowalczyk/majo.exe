@@ -8,7 +8,7 @@ import { Fragment } from "react";
 export function Nav() {
  const { data: session } = useSession();
  return (
-  <nav className="fixed flex w-full items-center bg-[#141f2f]/90 py-4 text-left text-xl shadow-lg backdrop-blur-[9px]">
+  <nav className="fixed flex w-full items-center bg-[#141f2f]/70 z-[9999] py-4 text-left text-xl shadow-lg backdrop-blur-[9px]">
    <Link href="/" className=" font-poppins text-lg text-white">
     <div className="flex cursor-pointer items-center gap-2 px-4 duration-200 hover:opacity-90 motion-reduce:transition-none">
      <Image className="rounded-full" src={social.logo} alt="Majo.exe" width={36} height={36} />
