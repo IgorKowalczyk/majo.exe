@@ -1,6 +1,7 @@
 import { useRouter } from "next/router";
 import { motion, useReducedMotion } from "framer-motion";
 import { meta as head_meta, feautures, social } from "@/config";
+import { Nav } from "@/components/elements/nav/Nav";
 import Head from "next/head";
 import Twemoji from "react-twemoji";
 
@@ -56,6 +57,7 @@ export function Container(props) {
     {meta.twitter && <meta property="article:published_time" content={meta.twitter} />}
     {meta.date && <meta property="article:published_time" content={meta.date} />}
    </Head>
+   <Nav />
    <main className="flex flex-col justify-center bg-[#101827] antialiased">
     <Twemoji options={{ className: "twemoji" }}>{feautures.smoothTransition ? <motion.div {...variants}>{children}</motion.div> : children}</Twemoji>
    </main>
