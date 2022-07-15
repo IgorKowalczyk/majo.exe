@@ -33,6 +33,7 @@
   "dependencies": {
     "@headlessui/react": "^1.6.5",
     "@headlessui/tailwindcss": "^0.1.0",
+    "@heroicons/react": "^1.0.6",
     "@igorkowalczyk/is-browser": "^1.0.1",
     "framer-motion": "^6.5.0",
     "next": "^12.2.0",
@@ -46,9 +47,6 @@
     "react-twemoji": "^0.5.0"
   },
   "devDependencies": {
-    "mini-svg-data-uri": "^1.4.4",
-    "tailwind-gradient-mask-image": "^1.0.0",
-    "tailwindcss-text-fill": "^0.2.0",
     "autoprefixer": "^10.4.7",
     "compression-webpack-plugin": "^10.0.0",
     "eslint": "^8.19.0",
@@ -56,10 +54,13 @@
     "globby": "^13.1.2",
     "lodash": "^4.17.21",
     "lodash-webpack-plugin": "^0.11.6",
+    "mini-svg-data-uri": "^1.4.4",
     "postcss": "^8.4.14",
     "prettier": "^2.7.1",
     "prettier-plugin-tailwindcss": "^0.1.11",
+    "tailwind-gradient-mask-image": "^1.0.0",
     "tailwindcss": "^3.1.6",
+    "tailwindcss-text-fill": "^0.2.0",
     "terser-webpack-plugin": "^5.3.3",
     "webpack": "^5.73.0"
   },

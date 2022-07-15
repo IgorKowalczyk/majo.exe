@@ -22,6 +22,9 @@ module.exports = {
    backgroundImage: {
     "primary-cubes": `url('https://majoexe.xyz/svg/background.svg')`,
    },
+   fontSize: {
+    "normal": ["1.1rem", "1.45rem"],
+   },
    animation: {
     movebackground: "movebg 60s linear infinite",
    },
