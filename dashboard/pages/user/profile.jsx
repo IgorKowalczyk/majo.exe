@@ -1,5 +1,5 @@
 import { useSession } from "next-auth/react";
-import { Container } from "@components/elements/blocks/Container";
+import { Container } from "@components/blocks/Container";
 
 export default function Profile() {
  const { data } = useSession();

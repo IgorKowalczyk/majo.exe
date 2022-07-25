@@ -1,5 +1,5 @@
-import { Container } from "@components/elements/blocks/Container";
-import { Link } from "@components/elements/blocks/Link";
+import { Container } from "@components/blocks/Container";
+import { Link } from "@components/blocks/Link";
 
 export default function Main(props) {
  return (

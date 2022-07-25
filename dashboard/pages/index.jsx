@@ -1,5 +1,5 @@
-import { Container } from "@components/elements/blocks/Container";
-import Login from "@components/elements/buttons/Login";
+import { Container } from "@components/blocks/Container";
+import Login from "@components/buttons/Login";
 
 export default function Main(props) {
  return (

@@ -1,7 +1,7 @@
 import { useRouter } from "next/router";
 import { motion, useReducedMotion } from "framer-motion";
 import { meta as head_meta, feautures, social } from "@/config";
-import { Nav } from "@/components/elements/nav/Nav";
+import { Nav } from "@components/nav/Nav";
 import Head from "next/head";
 import Twemoji from "react-twemoji";
 

@@ -1,6 +1,6 @@
-import { Container } from "@components/elements/blocks/Container";
+import { Container } from "@components/blocks/Container";
 import { useSession, getProviders, signIn, signOut } from "next-auth/react";
-import { Link } from "@components/elements/blocks/Link";
+import { Link } from "@components/blocks/Link";
 
 export default function SignIn({ providers }) {
  const { data: session } = useSession();

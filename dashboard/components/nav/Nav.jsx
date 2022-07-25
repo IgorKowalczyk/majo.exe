@@ -4,7 +4,7 @@ import { useSession, signIn, signOut } from "next-auth/react";
 import { Menu, Transition } from "@headlessui/react";
 import { Fragment } from "react";
 import { HashtagIcon, CollectionIcon, CogIcon, UserIcon, UserAddIcon, LogoutIcon, QuestionMarkCircleIcon, ChevronDownIcon } from "@heroicons/react/outline";
-import { Link } from "@components/elements/blocks/Link";
+import { Link } from "@components/blocks/Link";
 
 export function Nav() {
  const { data: session } = useSession();
