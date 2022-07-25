@@ -53,7 +53,7 @@ module.exports = {
 
 const ContentSecurityPolicy = `
 default-src 'self' *.googletagmanager.com;
-script-src 'self' 'unsafe-eval' 'unsafe-inline' *.googletagmanager.com;
+script-src 'self' 'unsafe-eval' 'unsafe-inline' *.googletagmanager.com pagead2.googlesyndication.com googleads.g.doubleclick.net googleadservices.com;
 child-src 'self' ;
 style-src 'self' 'unsafe-inline' *.googleapis.com *.cloudflare.com;
 img-src * blob: data:;
@@ -63,10 +63,6 @@ font-src 'self' *.googleapis.com *.gstatic.com;
 `;
 
 const securityHeaders = [
- {
-  key: "Content-Security-Policy",
-  value: ContentSecurityPolicy.replace(/\n/g, ""),
- },
  {
   key: "Referrer-Policy",
   value: "no-referrer",
