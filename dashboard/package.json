@@ -37,7 +37,7 @@
     "@igorkowalczyk/is-browser": "^1.0.1",
     "framer-motion": "^6.5.0",
     "next": "^12.2.0",
-    "next-auth": "^4.10.0",
+    "next-auth": "^4.10.3",
     "next-themes": "^0.2.0",
     "node-fetch": "^3.2.8",
     "nprogress": "^0.2.0",
