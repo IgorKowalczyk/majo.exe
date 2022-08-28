@@ -142,4 +142,5 @@ majo.exe.zip
 .breakpoints
 !majo
 
-test.js
+# Turborepo
+.turbo
