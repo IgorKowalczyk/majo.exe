@@ -1,8 +1,14 @@
 version: 2
 updates:
+ # Main repo
  - package-ecosystem: "npm"
    directory: "/"
    schedule:
     interval: "daily"
    labels:
     - "dependencies"
+  # Packages
+ - package-ecosystem: "npm"
+   directory: "/packages"
+   schedule:
+    interval: "daily"
