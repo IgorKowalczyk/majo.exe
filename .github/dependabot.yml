@@ -7,12 +7,19 @@ updates:
     interval: "daily"
    labels:
     - "dependencies"
-  # Packages
+  # Majo.exe Dashboard
  - package-ecosystem: "npm"
-   directory: "/packages"
+   directory: "/packages/dashboard"
    schedule:
     interval: "daily"
    labels:
     - "dependencies"
     - "dashboard"
+  # Majo.exe Dashboard
+ - package-ecosystem: "npm"
+   directory: "/packages/majoexe"
+   schedule:
+    interval: "daily"
+   labels:
+    - "dependencies"
     - "bot"
