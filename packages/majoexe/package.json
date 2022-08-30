@@ -37,7 +37,7 @@
   "express-session": "^1.17.3",
   "figlet": "^1.5.2",
   "flip-text": "^1.2.0",
-  "glob": "^7.2.0",
+  "glob": "^8.0.3",
   "hastebin": "^0.2.1",
   "hcaptcha": "^0.1.1",
   "helmet": "^4.6.0",
