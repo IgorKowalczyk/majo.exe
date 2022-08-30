@@ -12,3 +12,7 @@ updates:
    directory: "/packages"
    schedule:
     interval: "daily"
+   labels:
+    - "dependencies"
+    - "dashboard"
+    - "bot"
