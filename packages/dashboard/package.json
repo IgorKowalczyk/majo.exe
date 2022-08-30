@@ -39,7 +39,7 @@
     "next": "^12.2.5",
     "next-auth": "^4.10.3",
     "next-themes": "^0.2.0",
-    "node-fetch": "^3.2.8",
+    "node-fetch": "^3.2.10",
     "nprogress": "^0.2.0",
     "react": "^18.2.0",
     "react-adsense": "^0.1.0",
