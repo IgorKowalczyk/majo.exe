@@ -1,12 +1,5 @@
 version: 2
 updates:
- # Main repo
- - package-ecosystem: "npm"
-   directory: "/"
-   schedule:
-    interval: "daily"
-   labels:
-    - "dependencies"
   # Majo.exe Dashboard
  - package-ecosystem: "npm"
    directory: "/packages/dashboard"
