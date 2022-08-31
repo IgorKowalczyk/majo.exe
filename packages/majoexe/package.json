@@ -42,7 +42,7 @@
   "hcaptcha": "^0.1.1",
   "helmet": "^4.6.0",
   "https": "^1.0.0",
-  "humanize-duration": "^3.27.1",
+  "humanize-duration": "^3.27.3",
   "i": "^0.3.6",
   "isgd": "^1.1.3",
   "mal-scraper": "^2.11.4",
