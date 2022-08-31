@@ -66,7 +66,7 @@
   "percentagebar": "^1.0.3",
   "rate-limiter-flexible": "^2.3.6",
   "request-promise-native": "^1.0.9",
-  "sequelize": "^6.15.1",
+  "sequelize": "^6.21.4",
   "striptags": "^3.2.0",
   "to-zalgo": "^1.0.1",
   "validator": "^13.7.0",
