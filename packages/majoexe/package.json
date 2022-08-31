@@ -48,7 +48,7 @@
   "mal-scraper": "^2.11.4",
   "math-expression-evaluator": "^1.4.0",
   "mathjs": "^10.1.1",
-  "memorystore": "^1.6.2",
+  "memorystore": "^1.6.7",
   "moment": "^2.29.4",
   "moment-duration-format": "^2.3.2",
   "ms": "^2.1.2",
