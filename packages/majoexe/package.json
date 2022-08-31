@@ -17,7 +17,7 @@
   "amethyste-api": "^1.1.5",
   "ascii-table": "^0.0.9",
   "canvacord": "^5.2.3",
-  "canvas": "^2.9.0",
+  "canvas": "^2.9.3",
   "chalk": "^4.1.2",
   "cheerio": "^1.0.0-rc.10",
   "coloras": "^2.0.2",
