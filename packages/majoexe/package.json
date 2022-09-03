@@ -19,7 +19,7 @@
   "canvacord": "^5.4.6",
   "canvas": "^2.9.3",
   "chalk": "^4.1.2",
-  "cheerio": "^1.0.0-rc.10",
+  "cheerio": "^1.0.0-rc.12",
   "coloras": "^2.0.2",
   "colors": "^1.4.0",
   "compression": "^1.7.4",
