@@ -60,7 +60,7 @@
   "npm": "^8.19.1",
   "os": "^0.1.1",
   "os-utils": "0.0.14",
-  "parse-ms": "^2.1.0",
+  "parse-ms": "^3.0.0",
   "passport": "^0.6.0",
   "passport-discord": "^0.1.4",
   "percentagebar": "^1.0.3",
