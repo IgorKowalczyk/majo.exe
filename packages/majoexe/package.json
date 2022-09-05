@@ -13,7 +13,7 @@
  },
  "dependencies": {
   "@iamtraction/google-translate": "^1.1.2",
-  "@mapbox/node-pre-gyp": "^1.0.8",
+  "@mapbox/node-pre-gyp": "^1.0.9",
   "amethyste-api": "^1.1.5",
   "ascii-table": "^0.0.9",
   "canvacord": "^5.4.6",
@@ -73,7 +73,7 @@
   "weather-js": "^2.0.0"
  },
  "devDependencies": {
-  "node": "^16.13.0",
+  "node": "^16.17.0",
   "prettier": "^2.6.2"
  },
  "engines": {
