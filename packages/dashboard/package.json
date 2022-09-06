@@ -32,7 +32,7 @@
   "homepage": "https://github.com/igorkowalczyk/majo.exe#readme",
   "dependencies": {
     "@headlessui/react": "^1.6.6",
-    "@headlessui/tailwindcss": "^0.1.0",
+    "@headlessui/tailwindcss": "^0.1.1",
     "@heroicons/react": "^1.0.6",
     "@igorkowalczyk/is-browser": "^1.0.1",
     "framer-motion": "^7.2.1",
