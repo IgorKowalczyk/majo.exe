@@ -1,5 +1,4 @@
 import { Html, Head, Main, NextScript } from "next/document";
-import { ads } from "@/config";
 import Script from "next/script";
 
 export default function Document({ props }) {
@@ -20,16 +19,6 @@ export default function Document({ props }) {
     <link rel="preconnect" href="https://twemoji.maxcdn.com" crossOrigin="anonymous" />
     <link rel="dns-prefetch" href="https://fonts.googleapis.com/" />
     <link rel="dns-prefetch" href="https://twemoji.maxcdn.com" />
-    <Script
-     id="adsense"
-     data-ad-client={`ca-pub-${ads.caPub}`}
-     async
-     strategy="afterInteractive"
-     onError={(e) => {
-      console.error("Script failed to load", e);
-     }}
-     src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"
-    />
    </Head>
    <body className="bg-main-white dark:bg-main-dark relative">
     <Main {...props} />

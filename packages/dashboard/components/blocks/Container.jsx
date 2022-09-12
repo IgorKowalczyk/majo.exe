@@ -1,6 +1,6 @@
 import { useRouter } from "next/router";
 import { motion, useReducedMotion } from "framer-motion";
-import { meta as head_meta, feautures, social } from "@/config";
+import { meta as head_meta, social } from "@/config";
 import { Nav } from "@components/nav/Nav";
 import Head from "next/head";
 import Twemoji from "react-twemoji";
@@ -9,6 +9,7 @@ export function Container(props) {
  const { children, ...customMeta } = props;
  const reduceMotion = useReducedMotion();
  const router = useRouter();
+ 
  const meta = {
   ...head_meta,
   ...customMeta,
@@ -36,6 +37,7 @@ export function Container(props) {
    duration: reduceMotion ? 0 : 0.2,
   },
  };
+
  return (
   <>
    <Head>
@@ -59,7 +61,9 @@ export function Container(props) {
    </Head>
    <Nav />
    <main className="flex flex-col justify-center bg-[#101827] antialiased">
-    <Twemoji options={{ className: "twemoji" }}>{feautures.smoothTransition ? <motion.div {...variants}>{children}</motion.div> : children}</Twemoji>
+    <Twemoji options={{ className: "twemoji" }}>
+     <motion.div {...variants}>{children}</motion.div>
+    </Twemoji>
    </main>
   </>
  );
