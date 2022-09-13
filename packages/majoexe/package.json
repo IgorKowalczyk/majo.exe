@@ -18,7 +18,7 @@
   "ascii-table": "^0.0.9",
   "canvacord": "^5.4.6",
   "canvas": "^2.9.3",
-  "chalk": "^4.1.2",
+  "chalk": "^5.0.1",
   "cheerio": "^1.0.0-rc.12",
   "coloras": "^2.0.2",
   "colors": "^1.4.0",
