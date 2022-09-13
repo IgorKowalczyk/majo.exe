@@ -1,9 +1,17 @@
 import { Container } from "@components/blocks/Container";
 import { useSession, getProviders, signIn, signOut } from "next-auth/react";
 import { Link } from "@components/blocks/Link";
+import { useEffect } from "react";
+import { useRouter } from "next/router";
 
-export default function SignIn({ providers }) {
+export default function Login({ providers }) {
  const { data: session } = useSession();
+ const router = useRouter();
+ useEffect(() => {
+  if (session) {
+   router.push("/");
+  }
+ }, [session]);
  return (
   <Container>
    <div className="flex h-screen  flex-col items-center justify-center gap-4 ">

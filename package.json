@@ -4,9 +4,9 @@
   "private": true,
   "description": "Majo.exe have almost everything - Fun, Memes, Images, Giveaway Moderation, Anime, NSFW and eveb more!. Majo.exe serve over 150 commands!",
   "scripts": {
-    "dev": "turbo run dev",
-    "build": "turbo run build",
-    "deploy": "turbo run deploy",
+    "dev": "turbo run dev --color",
+    "build": "turbo run build --color",
+    "deploy": "turbo run deploy --color",
     "lint": "turbo run lint",
     "format": "turbo run format",
     "format:check": "turbo run format:check",

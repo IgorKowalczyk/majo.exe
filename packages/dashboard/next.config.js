@@ -9,8 +9,7 @@ module.exports = {
  poweredByHeader: false,
  trailingSlash: false,
  compress: true,
- optimizeCss: true,
- swcMinify: false,
+ swcMinify: true,
  images: {
   domains: [
    "github.githubassets.com", // GitHub assets

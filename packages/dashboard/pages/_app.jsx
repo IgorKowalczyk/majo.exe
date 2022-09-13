@@ -15,7 +15,7 @@ export default function App({ Component, pageProps, router }) {
   <SessionProvider session={pageProps.session} refetchInterval={0}>
    <ThemeProvider attribute="class" themes={["light", "dark"]} defaultTheme="system">
     <MotionConfig reducedMotion="user">
-     <AnimatePresence exitBeforeEnter>
+     <AnimatePresence mode="wait">
       <Component {...pageProps} key={router.route} />
      </AnimatePresence>
     </MotionConfig>
