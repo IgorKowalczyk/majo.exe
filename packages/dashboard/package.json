@@ -33,7 +33,7 @@
   "dependencies": {
     "@headlessui/react": "^1.7.2",
     "@headlessui/tailwindcss": "^0.1.1",
-    "@heroicons/react": "^1.0.6",
+    "@heroicons/react": "^2.0.11",
     "@igorkowalczyk/is-browser": "^1.0.1",
     "framer-motion": "^7.3.6",
     "next": "^12.3.1",
