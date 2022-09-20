@@ -1,7 +1,7 @@
 import { readdirSync } from "fs";
 import { color_info } from "../util/colors.js";
 
-export default async function load(client) {
+export default async function load_events(client) {
  const read = async (dirs) => {
   const events = readdirSync(`${process.cwd()}/events/${dirs}/`).filter((d) => d.endsWith("js"));
   for (const file of events) {
