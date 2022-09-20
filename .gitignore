@@ -144,3 +144,6 @@ majo.exe.zip
 
 # Turborepo
 .turbo
+
+# VSCode
+.vscode
