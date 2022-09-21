@@ -3,7 +3,7 @@ import { meta, social } from "@/config";
 import { useSession, signIn, signOut } from "next-auth/react";
 import { Menu, Transition } from "@headlessui/react";
 import { Fragment } from "react";
-import { HashtagIcon, CollectionIcon, CogIcon, UserIcon, UserAddIcon, LogoutIcon, QuestionMarkCircleIcon, ChevronDownIcon } from "@heroicons/react/outline";
+import { HashtagIcon, RectangleStackIcon, Cog8ToothIcon, UserIcon, ArrowRightOnRectangleIcon, QuestionMarkCircleIcon, ChevronDownIcon } from "@heroicons/react/24/outline";
 import { Link } from "@components/blocks/Link";
 import { Invite } from "@components/buttons/Invite";
 
@@ -53,7 +53,7 @@ export function Nav() {
             <Menu.Item>
              {({ active }) => (
               <Link href="/user/settings" className={`${active ? "bg-button-primary text-white" : "text-gray-400"} group my-1 flex w-full items-center rounded-md px-2 py-2 text-sm duration-200 motion-reduce:transition-none`}>
-               <CogIcon className="mr-2 h-5 w-5 " aria-hidden="true" role="img" /> Settings
+               <Cog8ToothIcon className="mr-2 h-5 w-5 " aria-hidden="true" role="img" /> Settings
               </Link>
              )}
             </Menu.Item>
@@ -62,7 +62,7 @@ export function Nav() {
             <Menu.Item>
              {({ active }) => (
               <Link href="/dashboard" className={`${active ? "bg-button-primary text-white" : "text-gray-400"} group my-1 flex w-full items-center rounded-md px-2 py-2 text-sm duration-200 motion-reduce:transition-none`}>
-               <CollectionIcon className="mr-2 h-5 w-5 " aria-hidden="true" role="img" /> Dashboard
+               <RectangleStackIcon className="mr-2 h-5 w-5 " aria-hidden="true" role="img" /> Dashboard
               </Link>
              )}
             </Menu.Item>
@@ -85,7 +85,7 @@ export function Nav() {
             <Menu.Item>
              {({ active }) => (
               <button onClick={() => signOut()} className={`${active ? "bg-button-action-primary text-white" : "text-gray-400"} group my-1 flex w-full items-center rounded-md px-2 py-2 text-sm duration-200 motion-reduce:transition-none`}>
-               <LogoutIcon className="mr-2 h-5 w-5" aria-hidden="true" role="img" /> Logout
+               <ArrowRightOnRectangleIcon className="mr-2 h-5 w-5" aria-hidden="true" role="img" /> Logout
               </button>
              )}
             </Menu.Item>
