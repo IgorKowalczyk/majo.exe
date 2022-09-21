@@ -1,4 +1,5 @@
 import { useSession, signIn, signOut } from "next-auth/react";
+import { ArrowRightOnRectangleIcon } from "@heroicons/react/24/outline";
 
 export function Login() {
  const { data: session } = useSession();
@@ -7,9 +8,7 @@ export function Login() {
   return (
    <>
     <button onClick={() => signOut()} className="flex cursor-pointer items-center rounded bg-button-action-primary px-5 py-2 leading-6 text-white duration-200 hover:bg-button-action-hover motion-reduce:transition-none">
-     <svg className="h-5 w-5" aria-hidden="true" role="img" viewBox="-5 -3 24 24">
-      <path fill="currentColor" d="M3.414 7.828h5.642a1 1 0 1 1 0 2H3.414l1.122 1.122a1 1 0 1 1-1.415 1.414L.293 9.536a.997.997 0 0 1 0-1.415L3.12 5.293a1 1 0 0 1 1.415 1.414L3.414 7.828zM13 0a1 1 0 0 1 1 1v16a1 1 0 0 1-2 0V1a1 1 0 0 1 1-1z" />
-     </svg>{" "}
+     <ArrowRightOnRectangleIcon className="mr-2 h-5 w-5" aria-hidden="true" role="img" />{" "}
      Log Out from beta
     </button>
    </>
