@@ -1,24 +1,19 @@
+<h3 align="center">You're currently on the <code>rebuild</code> branch. The code you find here may not work or contain a lot of bugs. Do not use it in production!</h3>
+<h3 align="center">⚠️ <a href="https://github.com/IgorKowalczyk/majo.exe/tree/master"/>Go to stable branch ⚠️</h3>
 
-# ⚠️ The project is under development! (`v6.x.x`)
-### You're currently on the `rebuild` branch. The code you find here may not work or contain a lot of bugs. Do not use it in production!
-### ⚠️ [If you want a stable code (`v5.x.x`) go to the `master` branch.](https://github.com/IgorKowalczyk/majo.exe/tree/master) 
 
-<img width="170" height="170" align="left" style="float: left; margin: 0 10px 0 0; border-radius: 50%;" alt="Majo.exe Logo" src="https://user-images.githubusercontent.com/49127376/138303201-7f8db506-b11b-40bf-9b89-3966616b16d5.png">  
-
-# Majo.exe
-
-> Majo.exe have almost everything - Fun, Memes, Images, Giveaway Moderation, Anime, NSFW and even more! Majo.exe serve over 150 commands!
-<br><br>[![Discord](https://img.shields.io/discord/666599184844980224?color=%2334D058&logo=discord&label=Discord&style=flat-square&logoColor=fff)](https://majoexe.xyz/server)
-[![Discord.js](https://img.shields.io/badge/Discord.js-v13-%2334d058?style=flat-square&logo=npm&logoColor=fff)](https://www.npmjs.com/package/discord.js)
-[![CodeQL Checks](https://img.shields.io/github/workflow/status/igorkowalczyk/majo.exe/CodeQL%20Checks/master?style=flat-square&label=CodeQL&logo=github&color=%2334D058)](https://majoexe.xyz/)
-[![GitHub License](https://img.shields.io/github/license/igorkowalczyk/majo.exe?style=flat-square&logo=github&label=License&color=%2334D058)](https://majoexe.xyz)
-[![Version](https://img.shields.io/github/package-json/v/igorkowalczyk/majo.exe?style=flat-square&logo=github&label=Version&color=%2334D058)](https://majoexe.xyz/server)
 ---
+<br/>
 
-## 🔗 Invite
+![Header](https://user-images.githubusercontent.com/49127376/191831293-b763c616-afb9-4063-8239-0560feddbd5e.png)
 
-Go to [this link](https://discord.com/oauth2/authorize/?permissions=4294967287&scope=bot%20applications.commands&client_id=949342410150924319) and add the bot (this requires `MANAGE_GUILD` permission) to your server.
-> - [Or to make it easier, visit our website](https://majoexe.xyz/)
+<p align="center">
+ <a href="https://majoexe.xyz/server"><img src="https://img.shields.io/discord/666599184844980224?color=%234552ef&amp;logo=discord&amp;label=Discord&amp;style=flat&amp;logoColor=fff" alt="Discord" /></a>
+ <a href="https://www.npmjs.com/package/discord.js"><img src="https://img.shields.io/badge/Discord.js-v13-%234552ef?style=flat&amp;logo=npm&amp;logoColor=fff" alt="Discord.js" /></a>
+ <a href="https://majoexe.xyz/"><img src="https://img.shields.io/github/workflow/status/igorkowalczyk/majo.exe/CodeQL%20Checks/master?style=flat&amp;label=CodeQL&amp;logo=github&amp;color=%234552ef" alt="CodeQL Checks" /></a>
+ <a href="https://majoexe.xyz"><img src="https://img.shields.io/github/license/igorkowalczyk/majo.exe?style=flat&amp;logo=github&amp;label=License&amp;color=%234552ef" alt="GitHub License" /></a>
+ <a href="https://majoexe.xyz/server"><img src="https://img.shields.io/github/package-json/v/igorkowalczyk/majo.exe?style=flat&amp;logo=github&amp;label=Version&amp;color=%234552ef" alt="Version" /></a>
+</p>
 
 ## ✨ Features
  - ⚙️ Fully customizable
@@ -26,6 +21,11 @@ Go to [this link](https://discord.com/oauth2/authorize/?permissions=4294967287&s
  - 📝 Easy Config
  - 💯 150+ Commands
  - 📚 Easy Hosting
+
+## 🔗 Invite
+
+Go to [this link](https://discord.com/oauth2/authorize/?permissions=4294967287&scope=bot%20applications.commands&client_id=949342410150924319) and add the bot (this requires `MANAGE_GUILD` permission) to your server.
+> - [Or to make it easier, visit our website](https://majoexe.xyz/)
 
 ## 🖥️ Hosting
 
