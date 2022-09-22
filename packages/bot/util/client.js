@@ -11,3 +11,5 @@ try {
 }
 
 export default client;
+
+// Todo: Add more options
