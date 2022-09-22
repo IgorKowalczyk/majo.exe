@@ -5,7 +5,8 @@
 ---
 <br/>
 
-![Header](https://user-images.githubusercontent.com/49127376/191831293-b763c616-afb9-4063-8239-0560feddbd5e.png)
+![Header](https://user-images.githubusercontent.com/49127376/191840820-98df5ad0-93f4-46a4-99f0-a3987cf4f91c.png)
+
 
 <p align="center">
  <a href="https://majoexe.xyz/server"><img src="https://img.shields.io/discord/666599184844980224?color=%234552ef&amp;logo=discord&amp;label=Discord&amp;style=flat&amp;logoColor=fff" alt="Discord" /></a>
