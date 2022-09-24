@@ -15,7 +15,7 @@ export default function Profile() {
 
  return (
   <Container>
-   <div className="flex h-screen  min-w-[40rem] max-w-4xl flex-col items-center  justify-center gap-4 ">
+   <div className="flex h-screen m-auto min-w-[40rem] max-w-4xl flex-col items-center justify-center gap-4 ">
     <h1 className="flex items-start text-center font-poppins text-5xl"></h1>
     <div className="relative w-full overflow-hidden rounded-lg bg-[#141f2f]">
      <div
