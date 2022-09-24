@@ -8,8 +8,7 @@ export function Login() {
   return (
    <>
     <button onClick={() => signOut()} className="flex cursor-pointer items-center rounded bg-button-action-primary px-5 py-2 leading-6 text-white duration-200 hover:bg-button-action-hover motion-reduce:transition-none">
-     <ArrowRightOnRectangleIcon className="mr-2 h-5 w-5" aria-hidden="true" role="img" />{" "}
-     Log Out from beta
+     <ArrowRightOnRectangleIcon className="mr-2 h-5 w-5" aria-hidden="true" role="img" /> Log Out from beta
     </button>
    </>
   );

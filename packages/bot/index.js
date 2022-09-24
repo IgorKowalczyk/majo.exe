@@ -6,4 +6,3 @@ import load_events from "./handlers/event.js";
 
 // Load all events
 load_events(client);
-

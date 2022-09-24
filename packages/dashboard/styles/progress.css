@@ -3,7 +3,7 @@
 }
 
 #nprogress .bar {
- @apply bg-accent-primary fixed top-0  left-0 w-full h-[2px] z-[10000];
+ @apply fixed top-0 left-0  z-[10000] h-[2px] w-full bg-accent-primary;
 }
 
 #nprogress .spinner {

@@ -9,7 +9,7 @@ export function Container(props) {
  const { children, ...customMeta } = props;
  const reduceMotion = useReducedMotion();
  const router = useRouter();
- 
+
  const meta = {
   ...head_meta,
   ...customMeta,
@@ -60,7 +60,7 @@ export function Container(props) {
     {meta.date && <meta property="article:published_time" content={meta.date} />}
    </Head>
    <Nav />
-   <main className="flex flex-col justify-center bg-[#101827] antialiased">
+   <main className="flex flex-col items-center justify-center bg-[#101827] antialiased">
     <Twemoji options={{ className: "twemoji" }}>
      <motion.div {...variants}>{children}</motion.div>
     </Twemoji>

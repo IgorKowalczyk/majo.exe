@@ -11,6 +11,7 @@ export default function Login({ providers }) {
   if (session) {
    router.push("/");
   }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
  }, [session]);
  return (
   <Container>
