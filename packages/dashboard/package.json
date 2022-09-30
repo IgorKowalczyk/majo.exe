@@ -35,7 +35,7 @@
     "@headlessui/tailwindcss": "^0.1.1",
     "@heroicons/react": "^2.0.11",
     "@igorkowalczyk/is-browser": "^1.0.1",
-    "framer-motion": "^7.5.0",
+    "framer-motion": "^7.5.1",
     "next": "^12.3.1",
     "next-auth": "^4.12.2",
     "next-themes": "^0.2.1",
