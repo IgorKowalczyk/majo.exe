@@ -262,9 +262,9 @@ Soon!
 ## 💝 Sponsors
 **These wonderful people and services have helped develop Majo.exe, without them this project would not exist. Thanks goes to these wonderful people!**
 
-| Sponsor | Description | Sponsored |
-| - | :- | -|
-| [Terohost](https://terohost.com) | **TeroHost is a Discord Bot hosting** provider that helps take care of all your needs regarding your Discord Bot to ensure your bot perfect uptime, ping and speed. | **.xyz Domain** & MySQL Database |
+| Sponsor | Description |
+| - | :- |
+| [Terohost](https://terohost.com) | **TeroHost is a Discord Bot hosting** provider that helps take care of all your needs regarding your Discord Bot to ensure your bot perfect uptime, ping and speed. |
 
 
 ## ⁉️ Issues
