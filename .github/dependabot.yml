@@ -8,7 +8,7 @@ updates:
    labels:
     - "dependencies"
     - "dashboard"
-  # Majo.exe Dashboard
+  # Majo.exe Bot
  - package-ecosystem: "npm"
    directory: "/packages/majoexe"
    schedule:

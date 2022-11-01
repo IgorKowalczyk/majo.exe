@@ -1,9 +1,9 @@
 import { useSession } from "next-auth/react";
 import { Container } from "@components/blocks/Container";
-import Image from "next/image";
-import { useState, useEffect } from "react";
 import { ArrowTopRightOnSquareIcon } from "@heroicons/react/24/outline";
 import Link from "next/link";
+import Image from "next/image";
+
 export default function Profile() {
  const { data: session, loading } = useSession();
 
