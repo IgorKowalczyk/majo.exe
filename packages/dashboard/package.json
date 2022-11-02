@@ -33,7 +33,7 @@
   "dependencies": {
     "@headlessui/react": "^1.7.3",
     "@headlessui/tailwindcss": "^0.1.1",
-    "@heroicons/react": "^2.0.12",
+    "@heroicons/react": "^2.0.13",
     "@igorkowalczyk/is-browser": "^1.0.1",
     "@next-auth/mongodb-adapter": "^1.1.1",
     "mongodb": "^4.11.0",
