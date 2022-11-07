@@ -7,20 +7,23 @@ on:
   branches: [master]
 
 jobs:
- format:
-  name: ✨ Prettier
+ check:
+  name: Check Format
   runs-on: ubuntu-latest
   strategy:
+   fail-fast: false
    matrix:
-    node-version: [16.x]
+    language: ["javascript"]
+    node: ["16.x"]
   steps:
-   - uses: actions/checkout@v2
+   - name: 🧱 Checkout repository
+     uses: actions/checkout@v3
+   - name: 🔩 Setup Node
+     uses: actions/setup-node@v3
      with:
-      ref: ${{ github.head_ref }}
-   - uses: actions/setup-node@v1
-     with:
-      node-version: "16.x"
-   - name: 🧱 Prettier format check
-     run: |
-      npm i prettier -f
-      npm run format:check
+      node-version: 16
+      cache: "npm"
+   - name: 🚀 Install dependencies
+     run: npm i --legacy-peer-deps
+   - name: 🚀 Check formatting
+     run: "npm run format:check"
