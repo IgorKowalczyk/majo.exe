@@ -10,7 +10,7 @@
 
 <p align="center">
  <a href="https://majoexe.xyz/server"><img src="https://img.shields.io/discord/666599184844980224?color=%234552ef&amp;logo=discord&amp;label=Discord&amp;style=flat&amp;logoColor=fff" alt="Discord" /></a>
- <a href="https://www.npmjs.com/package/discord.js"><img src="https://img.shields.io/badge/Discord.js-v13-%234552ef?style=flat&amp;logo=npm&amp;logoColor=fff" alt="Discord.js" /></a>
+ <a href="https://www.npmjs.com/package/discord.js"><img src="https://img.shields.io/badge/Discord.js-v14-%234552ef?style=flat&amp;logo=npm&amp;logoColor=fff" alt="Discord.js" /></a>
  <a href="https://majoexe.xyz/"><img src="https://img.shields.io/github/workflow/status/igorkowalczyk/majo.exe/CodeQL%20Checks/master?style=flat&amp;label=CodeQL&amp;logo=github&amp;color=%234552ef" alt="CodeQL Checks" /></a>
  <a href="https://majoexe.xyz"><img src="https://img.shields.io/github/license/igorkowalczyk/majo.exe?style=flat&amp;logo=github&amp;label=License&amp;color=%234552ef" alt="GitHub License" /></a>
  <a href="https://majoexe.xyz/server"><img src="https://img.shields.io/github/package-json/v/igorkowalczyk/majo.exe?style=flat&amp;logo=github&amp;label=Version&amp;color=%234552ef" alt="Version" /></a>
