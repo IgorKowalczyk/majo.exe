@@ -35,9 +35,11 @@ export function Container(props) {
     {meta.date && <meta property="article:published_time" content={meta.date} />}
    </Head>
    <Nav />
-   <main className="flex w-full flex-col items-center bg-[#101827] antialiased">
-    <Twemoji options={{ className: "twemoji" }}>{children}</Twemoji>
-   </main>
+   <Twemoji options={{ className: "twemoji" }}>
+   <div className="flex w-full flex-col items-center bg-[#101827] antialiased">
+    {children}
+   </div>
+   </Twemoji>
   </>
  );
 }

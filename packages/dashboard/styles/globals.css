@@ -1,11 +1,10 @@
-@import url("https://fonts.googleapis.com/css?family=Poppins:300,400,600,700&display=swap");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 html,
 body {
- @apply m-0 scroll-smooth p-0 font-poppins antialiased transition-[background-color] duration-300 motion-reduce:transition-none;
+ @apply m-0 scroll-smooth p-0 font-inter antialiased transition-[background-color] duration-300 motion-reduce:transition-none;
 }
 
 html {

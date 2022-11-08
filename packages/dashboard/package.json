@@ -10,6 +10,7 @@
     "deploy": "npm run build && npm run start",
     "format": "prettier --write . --ignore-unknown",
     "format:check": "prettier --check .",
+    "analyze": "ANALYZE=true next build",
     "lint": "next lint"
   },
   "repository": {
@@ -36,19 +37,22 @@
     "@heroicons/react": "^2.0.13",
     "@igorkowalczyk/is-browser": "^1.0.1",
     "@next-auth/mongodb-adapter": "^1.1.1",
+    "@next/font": "^13.0.2",
+    "@vercel/og": "^0.0.20",
     "mongodb": "^4.11.0",
-    "next": "^12.3.1",
+    "next": "^13.0.2",
     "next-auth": "^4.16.4",
     "next-themes": "^0.2.1",
     "node-fetch": "^3.2.10",
     "nprogress": "^0.2.0",
+    "preact": "^8.5.3",
+    "preact-compat": "^3.19.0",
     "react": "^18.2.0",
-    "react-adsense": "^0.1.0",
     "react-dom": "^18.2.0",
-    "react-ga4": "^1.4.1",
     "react-twemoji": "^0.5.0"
   },
   "devDependencies": {
+    "@next/bundle-analyzer": "^13.0.2",
     "autoprefixer": "^10.4.13",
     "compression-webpack-plugin": "^10.0.0",
     "eslint": "^8.27.0",
