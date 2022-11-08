@@ -1,3 +1,4 @@
+const { fontFamily } = require("tailwindcss/defaultTheme");
 const plugin = require("tailwindcss/plugin");
 const svgToDataUri = require("mini-svg-data-uri");
 
@@ -7,7 +8,7 @@ module.exports = {
  theme: {
   extend: {
    fontFamily: {
-    poppins: ["Poppins", "sans-serif"],
+    inter: ["Inter", ...fontFamily.sans],
    },
    colors: {
     "background-primary": "#111927",
@@ -23,7 +24,6 @@ module.exports = {
     "button-action-hover": "#ff5f5f",
    },
    backgroundImage: {
-    "primary-cubes": `url('https://majoexe.xyz/svg/background.svg')`,
     shapes: `url('/assets/svg/background.svg')`,
    },
    fontSize: {
