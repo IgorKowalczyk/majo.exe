@@ -68,7 +68,7 @@
     "tailwindcss": "^3.2.3",
     "tailwindcss-text-fill": "^0.2.0",
     "terser-webpack-plugin": "^5.3.6",
-    "webpack": "^5.74.0"
+    "webpack": "^5.75.0"
   },
   "browserslist": [
     ">0.3%",
