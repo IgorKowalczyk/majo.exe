@@ -52,7 +52,7 @@
     "react-twemoji": "^0.5.0"
   },
   "devDependencies": {
-    "@next/bundle-analyzer": "^13.0.2",
+    "@next/bundle-analyzer": "^13.0.3",
     "autoprefixer": "^10.4.13",
     "compression-webpack-plugin": "^10.0.0",
     "eslint": "^8.27.0",
