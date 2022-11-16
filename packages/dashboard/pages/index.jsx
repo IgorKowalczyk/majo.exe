@@ -5,7 +5,7 @@ import { Invite } from "@components/buttons/Invite";
 export default function Main() {
  return (
   <Container>
-   <div className="flex h-screen flex-col w-full items-center justify-center gap-4 bg-cover md:bg-shapes">
+   <div className="flex h-screen w-full flex-col items-center justify-center gap-4 bg-cover md:bg-shapes">
     <h1 className="ml-[61px] flex items-start text-center font-inter text-6xl font-normal text-white">
      Majo.exe <span className="ml-2 rounded bg-background-secondary py-1 px-2 text-base">v6.0.0</span>
     </h1>

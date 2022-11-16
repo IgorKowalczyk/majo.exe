@@ -16,9 +16,9 @@ export default function App({ Component, pageProps, router }) {
  return (
   <SessionProvider session={pageProps.session} refetchInterval={0}>
    <ThemeProvider attribute="class" themes={["light", "dark"]} defaultTheme="system">
-   <main className={inter.className}>
-    <Component {...pageProps} key={router.route} />
-   </main>
+    <main className={inter.className}>
+     <Component {...pageProps} key={router.route} />
+    </main>
    </ThemeProvider>
   </SessionProvider>
  );
