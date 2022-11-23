@@ -55,7 +55,7 @@
     "@next/bundle-analyzer": "^13.0.4",
     "autoprefixer": "^10.4.13",
     "compression-webpack-plugin": "^10.0.0",
-    "eslint": "^8.27.0",
+    "eslint": "^8.28.0",
     "eslint-config-next": "^13.0.4",
     "globby": "^13.1.2",
     "lodash": "^4.17.21",
