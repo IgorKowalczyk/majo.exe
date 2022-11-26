@@ -37,5 +37,5 @@
     "bot",
     "discord-bot"
   ],
-  "packageManager": "npm@9.0.1"
+  "packageManager": "pnpm@7.17.0"
 }
