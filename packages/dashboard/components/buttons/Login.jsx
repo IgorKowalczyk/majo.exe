@@ -5,15 +5,13 @@ import Link from "next/link";
 export function Login() {
  const { status } = useSession();
 
- if (status === "loading") return null;
-
  if (status === "authenticated") {
   return (
    <Link href="/dashboard" className="flex cursor-pointer items-center rounded bg-button-primary px-4 py-2 font-inter leading-6 text-white duration-200 hover:bg-button-primary-hover motion-reduce:transition-none">
     <ArrowUturnRightIcon className="mr-2 h-5 w-5" aria-hidden="true" role="img" /> Go to dashboard
    </Link>
   );
- } else {
+ } else if(status === "unauthenticated") {
   return (
    <Link href="/auth/login" onClick={() => signIn("discord")} className="flex cursor-pointer items-center rounded bg-button-primary px-4 py-2 font-inter leading-6 text-white duration-200 hover:bg-button-primary-hover motion-reduce:transition-none">
     <>
