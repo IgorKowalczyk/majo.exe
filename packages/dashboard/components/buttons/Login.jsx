@@ -1,21 +1,20 @@
-import { useSession, signIn, signOut } from "next-auth/react";
-import { ArrowRightOnRectangleIcon } from "@heroicons/react/24/outline";
+import { useSession, signIn } from "next-auth/react";
+import { ArrowUturnRightIcon } from "@heroicons/react/24/outline";
 import Link from "next/link";
 
 export function Login() {
- const { data: session } = useSession();
+ const { status } = useSession();
 
- if (session) {
+ if (status === "loading") return null;
+
+ if (status === "authenticated") {
   return (
-   <>
-    <button onClick={() => signOut()} className="flex cursor-pointer items-center rounded bg-button-action-primary px-4 py-2 font-inter leading-6 text-white duration-200 hover:bg-button-action-hover motion-reduce:transition-none">
-     <ArrowRightOnRectangleIcon className="mr-2 h-5 w-5" aria-hidden="true" role="img" /> Log Out from beta
-    </button>
-   </>
+   <Link href="/dashboard" className="flex cursor-pointer items-center rounded bg-button-primary px-4 py-2 font-inter leading-6 text-white duration-200 hover:bg-button-primary-hover motion-reduce:transition-none">
+    <ArrowUturnRightIcon className="mr-2 h-5 w-5" aria-hidden="true" role="img" /> Go to dashboard
+   </Link>
   );
- }
- return (
-  <>
+ } else {
+  return (
    <Link href="/auth/login" onClick={() => signIn("discord")} className="flex cursor-pointer items-center rounded bg-button-primary px-4 py-2 font-inter leading-6 text-white duration-200 hover:bg-button-primary-hover motion-reduce:transition-none">
     <>
      <svg className="mr-2 h-5 w-5" aria-hidden="true" role="img" viewBox="0 0 24 24">
@@ -24,6 +23,6 @@ export function Login() {
      Login to Beta
     </>
    </Link>
-  </>
- );
+  );
+ }
 }
