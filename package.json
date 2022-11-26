@@ -35,5 +35,6 @@
     "majoexe",
     "bot",
     "discord-bot"
-  ]
+  ],
+  "packageManager": "npm@9.0.1"
 }
