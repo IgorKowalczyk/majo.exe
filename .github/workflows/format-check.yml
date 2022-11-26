@@ -24,9 +24,9 @@ jobs:
         version: 7
    - name: 🔩 Setup Node
      uses: actions/setup-node@v3
-      with:
-        node-version: 16
-        cache: "pnpm"
+     with:
+      node-version: 16
+      cache: "pnpm"
    - name: 🚀 Install dependencies
      run: pnpm install
    - name: 🚀 Check formatting
