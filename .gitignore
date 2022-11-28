@@ -147,3 +147,5 @@ majo.exe.zip
 
 # VSCode
 .vscode
+
+package-lock.json

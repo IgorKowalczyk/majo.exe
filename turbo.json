@@ -24,5 +24,9 @@
    "dependsOn": ["format"],
    "outputs": []
   }
- }
+ },
+ "globalDependencies": [
+  "pnpm-lock.yaml",
+  "pnpm-workspace.yaml"
+ ]
 }
