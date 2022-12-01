@@ -5,5 +5,15 @@
  "dependencyDashboardAutoclose": true,
  "prConcurrentLimit": 15,
  "ignorePaths": ["**/node_modules/**"],
- "labels": ["dependencies"]
+  "labels": ["dependencies"],
+  "packageRules": [
+    {
+      "matchFiles": ["/packages/dashboard/**"],
+      "labels": ["dependencies", "dashboard"]
+    },
+    {
+      "matchFiles": ["/packages/bot/**"],
+      "labels": ["dependencies"]
+    }
+  ]
 }
