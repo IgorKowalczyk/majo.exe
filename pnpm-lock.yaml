@@ -48,7 +48,7 @@ importers:
       node-fetch: ^3.3.0
       nprogress: ^0.2.0
       postcss: ^8.4.19
-      preact: ^10.11.3
+      preact: 10.11.3
       preact-compat: ^3.19.0
       prettier: ^2.8.0
       prettier-plugin-tailwindcss: ^0.2.0

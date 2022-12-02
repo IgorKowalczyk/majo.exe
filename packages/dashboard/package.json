@@ -45,7 +45,7 @@
     "next-themes": "^0.2.1",
     "node-fetch": "^3.3.0",
     "nprogress": "^0.2.0",
-    "preact": "^10.11.3",
+    "preact": "10.11.3",
     "preact-compat": "^3.19.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
