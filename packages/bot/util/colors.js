@@ -12,4 +12,8 @@ export function color_info() {
  return chalk.cyan(`info`) + ` -`;
 }
 
+export function color_warn() {
+ return chalk.yellow(`warn`) + ` -`;
+}
+
 export default chalk;
