@@ -1,37 +1,37 @@
 {
- "name": "@igorkowalczyk/majo.exe",
- "version": "6.0.0",
- "description": "Majo.exe have almost everything - Fun, Memes, Images, Giveaway Moderation, Anime, NSFW and eveb more!. Majo.exe serve over 150 commands!",
- "author": "Igor Kowalczyk [Majonez.exe#3957]",
- "main": "index.js",
- "type": "module",
- "scripts": {
-  "dev": "node -r dotenv/config index.js",
-  "deploy": "node -r dotenv/config index.js",
-  "format": "prettier --write . --ignore-unknown",
-  "format:check": "prettier --check .",
-  "lint": "eslint .",
-  "test": "echo \"Error: no test specified\" && exit 1"
- },
- "dependencies": {
-  "chalk": "^5.0.1",
-  "discord.js": "^14.3.0",
-  "dotenv": "^16.0.2"
- },
- "license": "MIT",
- "repository": {
-  "type": "git",
-  "url": "https://gihub.com/igorkowalczyk/majo.exe"
- },
- "keywords": [
-  "node",
-  "nodejs",
-  "discord",
-  "discordjs",
-  "discordbot",
-  "majoexe"
- ],
- "devDependencies": {
-  "eslint": "^8.23.1"
- }
+  "name": "@igorkowalczyk/majo.exe",
+  "version": "6.0.0",
+  "description": "Majo.exe have almost everything - Fun, Memes, Images, Giveaway Moderation, Anime, NSFW and eveb more!. Majo.exe serve over 150 commands!",
+  "author": "Igor Kowalczyk [Majonez.exe#3957]",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "dev": "node -r dotenv/config index.js",
+    "deploy": "node -r dotenv/config index.js",
+    "format": "prettier --write . --ignore-unknown",
+    "format:check": "prettier --check .",
+    "lint": "eslint .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "chalk": "^5.2.0",
+    "discord.js": "^14.7.1",
+    "dotenv": "^16.0.3"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://gihub.com/igorkowalczyk/majo.exe"
+  },
+  "keywords": [
+    "node",
+    "nodejs",
+    "discord",
+    "discordjs",
+    "discordbot",
+    "majoexe"
+  ],
+  "devDependencies": {
+    "eslint": "^8.29.0"
+  }
 }
