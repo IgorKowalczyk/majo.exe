@@ -1,18 +1,18 @@
 import chalk from "chalk";
 
-export function color_ready() {
+export function colorReady() {
  return chalk.green(`ready`) + ` -`;
 }
 
-export function color_event() {
+export function colorEvent() {
  return chalk.magenta(`event`) + ` -`;
 }
 
-export function color_info() {
+export function colorInfo() {
  return chalk.cyan(`info`) + ` -`;
 }
 
-export function color_warn() {
+export function colorWarn() {
  return chalk.yellow(`warn`) + ` -`;
 }
 

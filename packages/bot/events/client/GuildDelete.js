@@ -1,5 +1,5 @@
-import { color_info } from "../../util/colors.js";
+import { colorInfo } from "../../util/colors.js";
 
 export function GuildDelete(client, guild) {
- console.log(`${color_info()} Leaved guild ${guild.name} (${guild.id})`);
+ console.log(`${colorInfo()} Leaved guild ${guild.name} (${guild.id})`);
 }
