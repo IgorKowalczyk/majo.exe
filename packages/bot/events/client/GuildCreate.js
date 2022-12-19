@@ -1,5 +1,5 @@
-import { color_info } from "../../util/colors.js";
+import { colorInfo } from "../../util/colors.js";
 
 export function GuildCreate(client, guild) {
- console.log(`${color_info()} Joined guild ${guild.name} (${guild.id})`);
+ console.log(`${colorInfo()} Joined guild ${guild.name} (${guild.id})`);
 }
