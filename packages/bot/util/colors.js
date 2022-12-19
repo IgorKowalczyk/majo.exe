@@ -1,5 +1,4 @@
-import { Chalk } from 'chalk';
-const customChalk = new Chalk({level: 2});
+import chalk from "chalk";
 
 export function colorReady() {
  return chalk.green(`ready`) + ` -`;
