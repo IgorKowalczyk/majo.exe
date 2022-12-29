@@ -1,5 +1,5 @@
 const { chromium } = require("playwright");
-const endpoints = ["/", "/repositories", "/blog", "/uses"];
+const endpoints = ["/", "/auth/login"];
 
 (async () => {
  const chrome = await chromium.launch();
