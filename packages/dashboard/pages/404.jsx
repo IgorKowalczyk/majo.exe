@@ -2,12 +2,13 @@ import { Container } from "../components/blocks/Container";
 import { QuestionMarkCircleIcon, ArrowLeftIcon } from "@heroicons/react/24/outline";
 import Link from "next/link";
 import Image from "next/image";
+import NotFound from "../public/assets/error.png";
 
 export default function Main(props) {
  return (
   <Container>
    <div className="flex h-screen flex-col items-center justify-center gap-4">
-    <Image src="/assets/error.png" width={500} height={500} alt="404 broken page" />
+    <Image src={NotFound} placeholder="blur" width={500} height={500} alt="404 broken page" />
     <h1 className="flex items-start text-center font-inter text-5xl font-bold">Sorry, page not found</h1>
     <h2 className="text-center font-inter text-xl opacity-50">We're sorry we can't find the page you're looking for.</h2>
     <div className="flex gap-4">
