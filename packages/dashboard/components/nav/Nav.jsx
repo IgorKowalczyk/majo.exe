@@ -1,9 +1,9 @@
-import { meta, social } from "@/config";
+import { meta, social } from "../../config";
 import { useSession, signIn, signOut } from "next-auth/react";
 import { Menu, Transition } from "@headlessui/react";
 import { Fragment } from "react";
 import { HashtagIcon, RectangleStackIcon, Cog8ToothIcon, UserIcon, ArrowRightOnRectangleIcon, QuestionMarkCircleIcon, ChevronDownIcon } from "@heroicons/react/24/outline";
-import { Invite } from "@components/buttons/Invite";
+import { Invite } from "../buttons/Invite";
 import Link from "next/link";
 import Image from "next/image";
 

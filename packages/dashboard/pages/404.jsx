@@ -1,4 +1,4 @@
-import { Container } from "@components/blocks/Container";
+import { Container } from "../components/blocks/Container";
 import { QuestionMarkCircleIcon, ArrowLeftIcon } from "@heroicons/react/24/outline";
 import Link from "next/link";
 import Image from "next/image";

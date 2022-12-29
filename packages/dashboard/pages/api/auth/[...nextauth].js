@@ -1,7 +1,7 @@
+import { credentials, social } from "../../../config";
+import { MongoDBAdapter } from "@next-auth/mongodb-adapter";
 import NextAuth from "next-auth";
 import DiscordProvider from "next-auth/providers/discord";
-import { credentials, social } from "@/config";
-import { MongoDBAdapter } from "@next-auth/mongodb-adapter";
 import clientPromise from "../../../lib/mongodb";
 
 // https://next-auth.js.org/configuration/options
