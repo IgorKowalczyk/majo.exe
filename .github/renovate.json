@@ -2,17 +2,20 @@
  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
  "extends": ["config:base"],
  "dependencyDashboard": false,
- "ignorePaths": ["**/node_modules/**"],
-  "labels": ["dependencies"],
-  "packageRules": [
-    {
-      "matchFiles": ["/packages/dashboard/**"],
-      "labels": ["dependencies", "dashboard"]
-    },
-    {
-      "matchFiles": ["/packages/bot/**"],
-      "labels": ["dependencies"]
-    }
-  ],
-  "reviewers": ["igorkowalczyk"]
+ "labels": ["dependencies"],
+ "packageRules": [
+  {
+   "matchFiles": ["/packages/dashboard/**"],
+   "labels": ["dependencies", "dashboard"]
+  },
+  {
+   "matchFiles": ["/packages/bot/**"],
+   "labels": ["dependencies"]
+  },
+  {
+   "matchPaths": ["+(package.json)"],
+   "labels": ["dependencies"]
+  }
+ ],
+ "reviewers": ["igorkowalczyk"]
 }

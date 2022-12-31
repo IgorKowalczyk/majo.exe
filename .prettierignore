@@ -1,5 +1,2 @@
-node_modules
-*min.css
-*min.js
-*md
-package*
+package.json
+pnpm-lock.yaml
