@@ -43,7 +43,7 @@ importers:
       mini-svg-data-uri: 1.4.4
       mongodb: 4.13.0
       next: 13.1.1
-      next-auth: 4.18.6
+      next-auth: 4.18.7
       next-themes: 0.2.1
       node-fetch: 3.3.0
       nprogress: 0.2.0
@@ -66,12 +66,12 @@ importers:
       '@headlessui/tailwindcss': 0.1.2_tailwindcss@3.2.4
       '@heroicons/react': 2.0.13_react@18.2.0
       '@igorkowalczyk/is-browser': 2.1.2_tailwindcss@3.2.4
-      '@next-auth/mongodb-adapter': 1.1.1_g77xrly66f7qlyoyaeqtyorwy4
+      '@next-auth/mongodb-adapter': 1.1.1_hfctdfwmomhbeathxql5fffjyy
       '@next/font': 13.1.1
       '@vercel/og': 0.0.21
       mongodb: 4.13.0
       next: 13.1.1_biqbaboplfbrettd7655fr4n2y
-      next-auth: 4.18.6_q76c2b4vyoegvsbrcwkfvimnai
+      next-auth: 4.18.7_q76c2b4vyoegvsbrcwkfvimnai
       next-themes: 0.2.1_q76c2b4vyoegvsbrcwkfvimnai
       node-fetch: 3.3.0
       nprogress: 0.2.0
@@ -1079,14 +1079,14 @@ packages:
       '@jridgewell/sourcemap-codec': 1.4.14
     dev: true
 
-  /@next-auth/mongodb-adapter/1.1.1_g77xrly66f7qlyoyaeqtyorwy4:
+  /@next-auth/mongodb-adapter/1.1.1_hfctdfwmomhbeathxql5fffjyy:
     resolution: {integrity: sha512-X5O4U4l2M8nyp/B3qF5GOr/JJw2ShKgWfTZRa80Y5CUzTPPmf09ggL5v5UwCmz9l2RIv2GUxO8hK4qrcaZvDRw==}
     peerDependencies:
       mongodb: ^4.1.1
       next-auth: ^4
     dependencies:
       mongodb: 4.13.0
-      next-auth: 4.18.6_q76c2b4vyoegvsbrcwkfvimnai
+      next-auth: 4.18.7_q76c2b4vyoegvsbrcwkfvimnai
     dev: false
 
   /@next/bundle-analyzer/13.0.7:
@@ -3244,8 +3244,8 @@ packages:
     resolution: {integrity: sha512-Yd3UES5mWCSqR+qNT93S3UoYUkqAZ9lLg8a7g9rimsWmYGK8cVToA4/sF3RrshdyV3sAGMXVUmpMYOw+dLpOuw==}
     dev: true
 
-  /next-auth/4.18.6_q76c2b4vyoegvsbrcwkfvimnai:
-    resolution: {integrity: sha512-0TQwbq5X9Jyd1wUVYUoyvHJh4JWXeW9UOcMEl245Er/Y5vsSbyGJHt8M7xjRMzk9mORVMYehoMdERgyiq/jCgA==}
+  /next-auth/4.18.7_q76c2b4vyoegvsbrcwkfvimnai:
+    resolution: {integrity: sha512-kR3s1JVPMaDuSAlFxcGyv7Ec3fdE6za71r1F77IOII5zJmW2wfkIA2xj223fM0D20ip2pzFpHfk/qN4L6l5XMA==}
     engines: {node: ^12.19.0 || ^14.15.0 || ^16.13.0 || ^18.12.0}
     peerDependencies:
       next: ^12.2.5 || ^13
