@@ -55,7 +55,7 @@ importers:
       react: 18.2.0
       react-dom: 18.2.0
       react-twemoji: 0.5.0
-      sharp: 0.31.2
+      sharp: 0.31.3
       tailwind-gradient-mask-image: 1.0.0
       tailwindcss: 3.2.4
       tailwindcss-text-fill: 0.2.0
@@ -80,7 +80,7 @@ importers:
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
       react-twemoji: 0.5.0_react@18.2.0
-      sharp: 0.31.2
+      sharp: 0.31.3
     devDependencies:
       '@next/bundle-analyzer': 13.0.7
       autoprefixer: 10.4.13_postcss@8.4.20
@@ -3946,8 +3946,8 @@ packages:
       randombytes: 2.1.0
     dev: true
 
-  /sharp/0.31.2:
-    resolution: {integrity: sha512-DUdNVEXgS5A97cTagSLIIp8dUZ/lZtk78iNVZgHdHbx1qnQR7JAHY0BnXnwwH39Iw+VKhO08CTYhIg0p98vQ5Q==}
+  /sharp/0.31.3:
+    resolution: {integrity: sha512-XcR4+FCLBFKw1bdB+GEhnUNXNXvnt0tDo4WsBsraKymuo/IAuPuCBVAL2wIkUw2r/dwFW5Q5+g66Kwl2dgDFVg==}
     engines: {node: '>=14.15.0'}
     requiresBuild: true
     dependencies:
