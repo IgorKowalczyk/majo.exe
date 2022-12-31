@@ -1,6 +1,7 @@
 <h3 align="center">You're currently on the <code>rebuild</code> branch. The code you find here may not work or contain a lot of bugs. Do not use it in production!</h3>
-<h3 align="center">⚠️ <a href="https://github.com/IgorKowalczyk/majo.exe/tree/master"/>Go to stable branch ⚠️</h3>
+<h3 align="center">Planned release date: Q3/Q4 2023</h3>
 
+<h3 align="center">⚠️ <a href="https://github.com/IgorKowalczyk/majo.exe/tree/master"/>Go to stable branch ⚠️</h3>
 
 ---
 <br/>
