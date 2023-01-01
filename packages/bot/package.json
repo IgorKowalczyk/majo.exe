@@ -32,6 +32,6 @@
   "majoexe"
  ],
  "devDependencies": {
-  "eslint": "8.30.0"
+  "eslint": "8.31.0"
  }
 }
