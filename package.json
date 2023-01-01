@@ -17,7 +17,6 @@
     "packages/*"
   ],
   "devDependencies": {
-    "ajv": "8.11.2",
     "turbo": "1.6.3"
   },
   "repository": {
