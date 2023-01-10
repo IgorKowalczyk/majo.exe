@@ -10,14 +10,20 @@ importers:
 
   packages/bot:
     specifiers:
+      '@majoexe/util': workspace:*
+      bad-words: ^3.0.4
       chalk: 5.2.0
       discord.js: 14.7.1
       dotenv: 16.0.3
       eslint: 8.31.0
+      mongodb: 4.13.0
     dependencies:
+      '@majoexe/util': link:../util
+      bad-words: 3.0.4
       chalk: 5.2.0
       discord.js: 14.7.1
       dotenv: 16.0.3
+      mongodb: 4.13.0
     devDependencies:
       eslint: 8.31.0
 
@@ -97,6 +103,12 @@ importers:
       tailwindcss-text-fill: 0.2.0_tailwindcss@3.2.4
       terser-webpack-plugin: 5.3.6_webpack@5.75.0
       webpack: 5.75.0
+
+  packages/util:
+    specifiers:
+      mongodb: 4.13.0
+    dependencies:
+      mongodb: 4.13.0
 
 packages:
 
@@ -1739,6 +1751,17 @@ packages:
   /axobject-query/2.2.0:
     resolution: {integrity: sha512-Td525n+iPOOyUQIeBfcASuG6uJsDOITl7Mds5gFyerkWiX7qhUTdYUBlSgNMyVqtSJqwpt1kXGLdUt6SykLMRA==}
     dev: true
+
+  /bad-words/3.0.4:
+    resolution: {integrity: sha512-v/Q9uRPH4+yzDVLL4vR1+S9KoFgOEUl5s4axd6NIAq8SV2mradgi4E8lma/Y0cw1ltVdvyegCQQKffCPRCp8fg==}
+    engines: {node: '>=8.0.0'}
+    dependencies:
+      badwords-list: 1.0.0
+    dev: false
+
+  /badwords-list/1.0.0:
+    resolution: {integrity: sha512-oWhaSG67e+HQj3OGHQt2ucP+vAPm1wTbdp2aDHeuh4xlGXBdWwzZ//pfu6swf5gZ8iX0b7JgmSo8BhgybbqszA==}
+    dev: false
 
   /balanced-match/1.0.2:
     resolution: {integrity: sha512-3oSeUO0TMV67hN1AmbXsK4yaqU7tjiHlbxRDZOpH0KW9+CeX4bRAaX0Anxt0tx2MrpRpWwQaPwIlISEJhYU5Pw==}

@@ -1,5 +1,5 @@
 {
-  "name": "@igorkowalczyk/majo-dashboard",
+  "name": "@majoexe/dashboard",
   "version": "6.0.0",
   "description": "Dashboard for Majo.exe built on Next.js and Tailwind.css",
   "main": "index.js",
@@ -50,7 +50,8 @@
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-twemoji": "0.5.0",
-    "sharp": "0.31.3"
+    "sharp": "0.31.3",
+    "@majoexe/util": "workspace:*"
   },
   "devDependencies": {
     "@next/bundle-analyzer": "13.1.1",

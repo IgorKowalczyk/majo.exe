@@ -2,7 +2,7 @@ import { credentials, social } from "../../../config";
 import { MongoDBAdapter } from "@next-auth/mongodb-adapter";
 import NextAuth from "next-auth";
 import DiscordProvider from "next-auth/providers/discord";
-import clientPromise from "../../../lib/mongodb";
+import clientPromise from "@majoexe/util/src/database/database.js";
 
 // https://next-auth.js.org/configuration/options
 export const authOptions = {

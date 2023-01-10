@@ -1,6 +1,6 @@
 {
-  "name": "@igorkowalczyk/majo.exe",
-  "version": "6.0.0",
+  "name": "majoexe-project",
+  "version": "0.0.0",
   "private": true,
   "description": "Majo.exe have almost everything - Fun, Memes, Images, Giveaway Moderation, Anime, NSFW and eveb more!. Majo.exe serve over 150 commands!",
   "scripts": {
@@ -36,5 +36,8 @@
     "bot",
     "discord-bot"
   ],
+  "engines": {
+    "node": ">=14.6.0"
+  },
   "packageManager": "pnpm@7.23.0"
 }

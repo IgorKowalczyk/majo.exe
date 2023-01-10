@@ -27,6 +27,10 @@
  },
  "globalDependencies": [
   "pnpm-lock.yaml",
-  "pnpm-workspace.yaml"
- ]
+  "pnpm-workspace.yaml",
+  ".prettierignore",
+  ".prettierrc",
+  ".env"
+ ],
+ "globalEnv": ["TOKEN", "SECRET"]
 }

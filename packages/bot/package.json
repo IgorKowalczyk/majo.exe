@@ -1,22 +1,25 @@
 {
- "name": "@igorkowalczyk/majo.exe",
+ "name": "@majoexe/bot",
  "version": "6.0.0",
  "description": "Majo.exe have almost everything - Fun, Memes, Images, Giveaway Moderation, Anime, NSFW and eveb more!. Majo.exe serve over 150 commands!",
  "author": "Igor Kowalczyk [Majonez.exe#3957]",
  "main": "index.js",
  "type": "module",
  "scripts": {
-  "dev": "node -r dotenv/config index.js",
-  "deploy": "node -r dotenv/config index.js",
+  "dev": "node index.js",
+  "deploy": "node index.js",
   "format": "prettier --write . --ignore-unknown",
   "format:check": "prettier --check .",
   "lint": "eslint .",
   "test": "echo \"Error: no test specified\" && exit 1"
  },
  "dependencies": {
+  "bad-words": "^3.0.4",
   "chalk": "5.2.0",
   "discord.js": "14.7.1",
-  "dotenv": "16.0.3"
+  "dotenv": "16.0.3",
+  "mongodb": "4.13.0",
+  "@majoexe/util": "workspace:*"
  },
  "license": "MIT",
  "repository": {

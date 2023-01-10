@@ -1,0 +1,27 @@
+{
+  "name": "@majoexe/util",
+  "version": "1.0.0",
+  "description": "Scripts that are shared by various projects in repository",
+  "module": "index.mjs",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/igorkowalczyk/majo.exe.git"
+  },
+  "keywords": [
+    "Majo.exe",
+    "util"
+  ],
+  "author": "Igor Kowalczyk",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/igorkowalczyk/majo.exe/issues"
+  },
+  "homepage": "https://github.com/igorkowalczyk/majo.exe#readme",
+  "dependencies": {
+    "mongodb": "4.13.0"
+  }
+}
