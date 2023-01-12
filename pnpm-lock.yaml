@@ -37,7 +37,7 @@ importers:
       '@next-auth/mongodb-adapter': 1.1.1
       '@next/bundle-analyzer': 13.1.1
       '@next/font': 13.1.1
-      '@vercel/og': 0.0.25
+      '@vercel/og': 0.0.26
       autoprefixer: 10.4.13
       compression-webpack-plugin: 10.0.0
       eslint: 8.31.0
@@ -74,7 +74,7 @@ importers:
       '@majoexe/util': link:../util
       '@next-auth/mongodb-adapter': 1.1.1_ckpck52kcb65gf4nrith6z32oe
       '@next/font': 13.1.1
-      '@vercel/og': 0.0.25
+      '@vercel/og': 0.0.26
       mongodb: 4.13.0
       next: 13.1.1_biqbaboplfbrettd7655fr4n2y
       next-auth: 4.18.8_q76c2b4vyoegvsbrcwkfvimnai
@@ -1433,8 +1433,8 @@ packages:
       eslint-visitor-keys: 3.3.0
     dev: true
 
-  /@vercel/og/0.0.25:
-    resolution: {integrity: sha512-Zirui1w0CjiOqHrMTOIDptghiEyxhiyVEdgUnJAeQYaXYrtQPUWLDWBIh5J+xHxIstWhT0C6DIw0iMGfHSXTNQ==}
+  /@vercel/og/0.0.26:
+    resolution: {integrity: sha512-YCVcVa0UMI4gfmldpBx9l1H28m6rVuwGakNVhbTtjShldxMYJC7eggtTrWxPUydYZomaVElzFl2uumyUwv0MnQ==}
     engines: {node: '>=16'}
     dependencies:
       '@resvg/resvg-wasm': 2.0.0-alpha.4
