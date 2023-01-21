@@ -32,7 +32,7 @@ importers:
       '@headlessui/react': 1.7.7
       '@headlessui/tailwindcss': 0.1.2
       '@heroicons/react': 2.0.13
-      '@igorkowalczyk/is-browser': 2.1.2
+      '@igorkowalczyk/is-browser': 3.0.0
       '@majoexe/util': workspace:*
       '@next-auth/mongodb-adapter': 1.1.1
       '@next/bundle-analyzer': 13.1.4
@@ -70,7 +70,7 @@ importers:
       '@headlessui/react': 1.7.7_biqbaboplfbrettd7655fr4n2y
       '@headlessui/tailwindcss': 0.1.2_tailwindcss@3.2.4
       '@heroicons/react': 2.0.13_react@18.2.0
-      '@igorkowalczyk/is-browser': 2.1.2_tailwindcss@3.2.4
+      '@igorkowalczyk/is-browser': 3.0.0_tailwindcss@3.2.4
       '@majoexe/util': link:../util
       '@next-auth/mongodb-adapter': 1.1.1_ckpck52kcb65gf4nrith6z32oe
       '@next/font': 13.1.4
@@ -1045,11 +1045,11 @@ packages:
     resolution: {integrity: sha512-ZnQMnLV4e7hDlUvw8H+U8ASL02SS2Gn6+9Ac3wGGLIe7+je2AeAOxPY+izIPJDfFDb7eDjev0Us8MO1iFRN8hA==}
     dev: true
 
-  /@igorkowalczyk/is-browser/2.1.2_tailwindcss@3.2.4:
-    resolution: {integrity: sha512-qbBae9oj2x/wy10Hq+XRmt/n9pPdFpNSQBxtrldV+1hCLNav6uSO83ug3fkhbEJnM79EiNVjWaNktesZMxDWkQ==}
+  /@igorkowalczyk/is-browser/3.0.0_tailwindcss@3.2.4:
+    resolution: {integrity: sha512-90HHmYxNg4S9zR8COlc56mtFxG8Q5qdPJ1mWmWx2xvtySZdOUnSS/UycvvEDC3bZJiRLvGfzmpsW+DRATDWIkg==}
     engines: {node: '>=10'}
     peerDependencies:
-      tailwindcss: ^3.0
+      tailwindcss: 3.0 || 3.2
     dependencies:
       tailwindcss: 3.2.4_postcss@8.4.21
     dev: false
