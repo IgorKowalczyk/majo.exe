@@ -31,7 +31,7 @@ importers:
     specifiers:
       '@headlessui/react': 1.7.7
       '@headlessui/tailwindcss': 0.1.2
-      '@heroicons/react': 2.0.13
+      '@heroicons/react': 2.0.14
       '@igorkowalczyk/is-browser': 3.0.0
       '@majoexe/util': workspace:*
       '@next-auth/mongodb-adapter': 1.1.1
@@ -69,7 +69,7 @@ importers:
     dependencies:
       '@headlessui/react': 1.7.7_biqbaboplfbrettd7655fr4n2y
       '@headlessui/tailwindcss': 0.1.2_tailwindcss@3.2.4
-      '@heroicons/react': 2.0.13_react@18.2.0
+      '@heroicons/react': 2.0.14_react@18.2.0
       '@igorkowalczyk/is-browser': 3.0.0_tailwindcss@3.2.4
       '@majoexe/util': link:../util
       '@next-auth/mongodb-adapter': 1.1.1_khu2i5ob5ez73grstwpsbifi6m
@@ -1017,8 +1017,8 @@ packages:
       tailwindcss: 3.2.4_postcss@8.4.21
     dev: false
 
-  /@heroicons/react/2.0.13_react@18.2.0:
-    resolution: {integrity: sha512-iSN5XwmagrnirWlYEWNPdCDj9aRYVD/lnK3JlsC9/+fqGF80k8C7rl+1HCvBX0dBoagKqOFBs6fMhJJ1hOg1EQ==}
+  /@heroicons/react/2.0.14_react@18.2.0:
+    resolution: {integrity: sha512-eFL4if6L7woL1fUvk/jjXx4z9NxVESHHrQnEd2qKVelTFTIr/3VLGWdPb0biia9ZVe26P0JSs/xmOlRNur3SrQ==}
     peerDependencies:
       react: '>= 16'
     dependencies:
