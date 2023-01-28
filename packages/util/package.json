@@ -5,7 +5,7 @@
   "module": "index.mjs",
   "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "lint": "eslint . --ext .js,.mjs"
   },
   "repository": {
     "type": "git",
@@ -23,5 +23,9 @@
   "homepage": "https://github.com/igorkowalczyk/majo.exe#readme",
   "dependencies": {
     "mongodb": "4.13.0"
+  },
+  "devDependencies": {
+    "eslint": "8.32.0",
+    "eslint-config-prettier": "8.6.0"
   }
 }

@@ -1,5 +1,5 @@
 {
- "extends": "next",
+ "extends": ["next", "prettier"],
  "rules": {
   "react/prop-types": "off",
   "camelcase": "warn",

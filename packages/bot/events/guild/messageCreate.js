@@ -2,7 +2,7 @@ import Filter from "bad-words";
 const filter = new Filter();
 import { EmbedBuilder } from "discord.js";
 import { CreateAvatar } from "../../util/functions.js";
-import { fetchProfanity } from "../../util/database.js";
+import { fetchProfanity } from "@majoexe/util/src/settings/fetchProfanity.js";
 
 export async function messageCreate(client, message) {
  if (message.content) {
@@ -16,7 +16,6 @@ export async function messageCreate(client, message) {
     .setColor("#EF4444")
     .setTimestamp()
     .setFooter({ iconURL: CreateAvatar(client.user, "44"), text: `The filter was applied because message scanning was enabled on the server!` });
-
    await message.channel.send({ embeds: [embed] });
   }
  }

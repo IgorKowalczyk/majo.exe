@@ -1,14 +1,14 @@
 import { readdirSync } from "node:fs";
-import { colorInfo } from "../util/colors.js";
+import { Logger } from "../util/colors.js";
 
 export default async function loadEvents(client) {
- console.log(`${colorInfo()} Loading events...`);
+ console.log(Logger("info", "Loading events..."));
  const read = async (dirs) => {
   const events = readdirSync(`${process.cwd()}/events/${dirs}/`).filter((d) => d.endsWith("js"));
   for (const file of events) {
    await import(`${process.cwd()}/events/${dirs}/${file}`).then((e) => {
     const eventName = file.split(".")[0];
-    console.log(`${colorInfo()} Loaded event ${eventName} from /events/${dirs}/${file}`);
+    console.log(Logger("info", `Loaded event ${eventName} from /events/${dirs}/${file}`));
     client.on(eventName, e[eventName].bind(null, client));
    });
   }

@@ -1,19 +1,19 @@
 import chalk from "chalk";
 
-export function colorReady() {
- return chalk.green(`ready`) + ` -`;
-}
+const colors = {
+ info: "cyan",
+ event: "magenta",
+ error: "red",
+ warn: "yellow",
+ ready: "green",
+};
 
-export function colorEvent() {
- return chalk.magenta(`event`) + ` -`;
+/**
+ * @param {string} type The type of the log
+ * @param {...any} args The arguments to log
+ * @returns {string} The colored log message
+ * @example Logger("info", "Hello world!")
+ */
+export function Logger(type, ...args) {
+ return chalk[colors[type] || "white"](type + " ") + chalk.white("- " + args.join(" "));
 }
-
-export function colorInfo() {
- return chalk.cyan(`info`) + ` -`;
-}
-
-export function colorWarn() {
- return chalk.yellow(`warn`) + ` -`;
-}
-
-export default chalk;
