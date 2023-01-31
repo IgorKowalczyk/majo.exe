@@ -50,7 +50,7 @@ importers:
       mini-svg-data-uri: 1.4.4
       mongodb: 4.13.0
       next: 13.1.6
-      next-auth: 4.19.0
+      next-auth: 4.19.1
       next-themes: 0.2.1
       node-fetch: 3.3.0
       nprogress: 0.2.0
@@ -74,12 +74,12 @@ importers:
       '@heroicons/react': 2.0.14_react@18.2.0
       '@igorkowalczyk/is-browser': 3.0.0_tailwindcss@3.2.4
       '@majoexe/util': link:../util
-      '@next-auth/mongodb-adapter': 1.1.1_vjdin6ifz4yqi3kcqwbqj7pjw4
+      '@next-auth/mongodb-adapter': 1.1.1_agtitbikoa2k3ux4zuzo4t2aqy
       '@next/font': 13.1.6
       '@vercel/og': 0.0.27
       mongodb: 4.13.0
       next: 13.1.6_biqbaboplfbrettd7655fr4n2y
-      next-auth: 4.19.0_3vryta7zmbcsw4rrqf4axjqggm
+      next-auth: 4.19.1_3vryta7zmbcsw4rrqf4axjqggm
       next-themes: 0.2.1_3vryta7zmbcsw4rrqf4axjqggm
       node-fetch: 3.3.0
       nprogress: 0.2.0
@@ -1098,14 +1098,14 @@ packages:
       '@jridgewell/sourcemap-codec': 1.4.14
     dev: true
 
-  /@next-auth/mongodb-adapter/1.1.1_vjdin6ifz4yqi3kcqwbqj7pjw4:
+  /@next-auth/mongodb-adapter/1.1.1_agtitbikoa2k3ux4zuzo4t2aqy:
     resolution: {integrity: sha512-X5O4U4l2M8nyp/B3qF5GOr/JJw2ShKgWfTZRa80Y5CUzTPPmf09ggL5v5UwCmz9l2RIv2GUxO8hK4qrcaZvDRw==}
     peerDependencies:
       mongodb: ^4.1.1
       next-auth: ^4
     dependencies:
       mongodb: 4.13.0
-      next-auth: 4.19.0_3vryta7zmbcsw4rrqf4axjqggm
+      next-auth: 4.19.1_3vryta7zmbcsw4rrqf4axjqggm
     dev: false
 
   /@next/bundle-analyzer/13.1.6:
@@ -3279,8 +3279,8 @@ packages:
     resolution: {integrity: sha512-Yd3UES5mWCSqR+qNT93S3UoYUkqAZ9lLg8a7g9rimsWmYGK8cVToA4/sF3RrshdyV3sAGMXVUmpMYOw+dLpOuw==}
     dev: true
 
-  /next-auth/4.19.0_3vryta7zmbcsw4rrqf4axjqggm:
-    resolution: {integrity: sha512-56Pc/Ni0cxfrVDAz2KeWdj+VXvABbHF1grgFR4+ktXbRmKQOiMU9uyMwhasBQkbL+pRrWujO0Ib/bwkP0oZS4g==}
+  /next-auth/4.19.1_3vryta7zmbcsw4rrqf4axjqggm:
+    resolution: {integrity: sha512-Wo0b1tWtEh1ORR+AzTtBHSPxAA2zKqynoMS/nQQVrT5RD/umVzpXz25fOkoRrO9t+Is+scU2DmKeyFIkhx45WQ==}
     peerDependencies:
       next: ^12.2.5 || ^13
       nodemailer: ^6.6.5
