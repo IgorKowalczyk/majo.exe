@@ -17,7 +17,7 @@
     "packages/*"
   ],
   "devDependencies": {
-    "turbo": "1.7.1"
+    "turbo": "1.7.2"
   },
   "repository": {
     "type": "git",
