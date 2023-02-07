@@ -55,7 +55,7 @@ importers:
       node-fetch: 3.3.0
       nprogress: 0.2.0
       postcss: 8.4.21
-      preact: 10.11.3
+      preact: 10.12.0
       preact-compat: 3.19.0
       prettier: 2.8.3
       prettier-plugin-tailwindcss: 0.2.2
@@ -83,8 +83,8 @@ importers:
       next-themes: 0.2.1_3vryta7zmbcsw4rrqf4axjqggm
       node-fetch: 3.3.0
       nprogress: 0.2.0
-      preact: 10.11.3
-      preact-compat: 3.19.0_preact@10.11.3
+      preact: 10.12.0
+      preact-compat: 3.19.0_preact@10.12.0
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
       react-twemoji: 0.5.0_react@18.2.0
@@ -2475,8 +2475,8 @@ packages:
       next: 13.1.6_biqbaboplfbrettd7655fr4n2y
       oauth: 0.9.15
       openid-client: 5.3.1
-      preact: 10.11.3
-      preact-render-to-string: 5.2.6_preact@10.11.3
+      preact: 10.12.0
+      preact-render-to-string: 5.2.6_preact@10.12.0
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
       uuid: 8.3.2
@@ -2827,56 +2827,56 @@ packages:
       picocolors: 1.0.0
       source-map-js: 1.0.2
 
-  /preact-compat/3.19.0_preact@10.11.3:
+  /preact-compat/3.19.0_preact@10.12.0:
     resolution: {integrity: sha512-f83A4hIhH8Uzhb9GbIcGk8SM19ffWlwP9mDaYwQdRnMdekZwcCA7eIAbeV4EMQaV9C0Yuy8iKgBAtyTKPZQt/Q==}
     peerDependencies:
       preact: <10
     dependencies:
       immutability-helper: 2.9.1
-      preact: 10.11.3
-      preact-context: 1.1.4_preact@10.11.3
-      preact-render-to-string: 3.8.2_preact@10.11.3
-      preact-transition-group: 1.1.1_preact@10.11.3
+      preact: 10.12.0
+      preact-context: 1.1.4_preact@10.12.0
+      preact-render-to-string: 3.8.2_preact@10.12.0
+      preact-transition-group: 1.1.1_preact@10.12.0
       prop-types: 15.8.1
       standalone-react-addons-pure-render-mixin: 0.1.1
     dev: false
 
-  /preact-context/1.1.4_preact@10.11.3:
+  /preact-context/1.1.4_preact@10.12.0:
     resolution: {integrity: sha512-gcCjPJ65R0MiW9hDu8W/3WAmyTElIvwLyEO6oLQiM6/TbLKLxCpBCWV8GJjx52TTEyUr60HLDcmoCXZlslelzQ==}
     peerDependencies:
       preact: ^8.2.7
     dependencies:
-      preact: 10.11.3
+      preact: 10.12.0
     dev: false
 
-  /preact-render-to-string/3.8.2_preact@10.11.3:
+  /preact-render-to-string/3.8.2_preact@10.12.0:
     resolution: {integrity: sha512-przuZPajiurStGgxMoJP0EJeC4xj5CgHv+M7GfF3YxAdhGgEWAkhOSE0xympAFN20uMayntBZpttIZqqLl77fw==}
     peerDependencies:
       preact: '*'
     dependencies:
-      preact: 10.11.3
+      preact: 10.12.0
       pretty-format: 3.8.0
     dev: false
 
-  /preact-render-to-string/5.2.6_preact@10.11.3:
+  /preact-render-to-string/5.2.6_preact@10.12.0:
     resolution: {integrity: sha512-JyhErpYOvBV1hEPwIxc/fHWXPfnEGdRKxc8gFdAZ7XV4tlzyzG847XAyEZqoDnynP88akM4eaHcSOzNcLWFguw==}
     peerDependencies:
       preact: '>=10'
     dependencies:
-      preact: 10.11.3
+      preact: 10.12.0
       pretty-format: 3.8.0
     dev: false
 
-  /preact-transition-group/1.1.1_preact@10.11.3:
+  /preact-transition-group/1.1.1_preact@10.12.0:
     resolution: {integrity: sha512-v89XLodCvylf5lMrhI+LqIhDsAjWfiDKV4keAU+L5yDtxmqn8uvjZXn+haKMEG0x0PZz81own19SuNJD5NlOFQ==}
     peerDependencies:
       preact: '*'
     dependencies:
-      preact: 10.11.3
+      preact: 10.12.0
     dev: false
 
-  /preact/10.11.3:
-    resolution: {integrity: sha512-eY93IVpod/zG3uMF22Unl8h9KkrcKIRs2EGar8hwLZZDU1lkjph303V9HZBwufh2s736U6VXuhD109LYqPoffg==}
+  /preact/10.12.0:
+    resolution: {integrity: sha512-+w8ix+huD8CNZemheC53IPjMUFk921i02o30u0K6h53spMX41y/QhVDnG/nU2k42/69tvqWmVsgNLIiwRAcmxg==}
     dev: false
 
   /prebuild-install/7.1.1:
