@@ -36,6 +36,7 @@
     "@headlessui/tailwindcss": "0.1.2",
     "@heroicons/react": "2.0.14",
     "@igorkowalczyk/is-browser": "3.0.0",
+    "@majoexe/util": "workspace:*",
     "@next-auth/mongodb-adapter": "1.1.1",
     "@next/font": "13.1.6",
     "@vercel/og": "0.1.0",
@@ -45,13 +46,10 @@
     "next-themes": "0.2.1",
     "node-fetch": "3.3.0",
     "nprogress": "0.2.0",
-    "preact": "10.12.0",
-    "preact-compat": "3.19.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-twemoji": "0.5.0",
-    "sharp": "0.31.3",
-    "@majoexe/util": "workspace:*"
+    "sharp": "0.31.3"
   },
   "devDependencies": {
     "@next/bundle-analyzer": "13.1.6",
@@ -74,7 +72,6 @@
   },
   "browserslist": [
     ">0.3%",
-    "not ie 11",
     "not dead",
     "not op_mini all"
   ]
