@@ -39,6 +39,7 @@ importers:
       '@next-auth/mongodb-adapter': 1.1.1
       '@next/bundle-analyzer': 13.1.6
       '@next/font': 13.1.6
+      '@tippyjs/react': ^4.2.6
       '@vercel/og': 0.1.0
       autoprefixer: 10.4.13
       compression-webpack-plugin: 10.0.0
@@ -74,6 +75,7 @@ importers:
       '@majoexe/util': link:../util
       '@next-auth/mongodb-adapter': 1.1.1_rfa6mluha3koflqf4dpnumqcrm
       '@next/font': 13.1.6
+      '@tippyjs/react': 4.2.6_biqbaboplfbrettd7655fr4n2y
       '@vercel/og': 0.1.0
       mongodb: 5.0.0
       next: 13.1.6_biqbaboplfbrettd7655fr4n2y
@@ -467,6 +469,10 @@ packages:
     resolution: {integrity: sha512-a5Sab1C4/icpTZVzZc5Ghpz88yQtGOyNqYXcZgOssB2uuAr+wF/MvN6bgtW32q7HHrvBki+BsZ0OuNv6EV3K9g==}
     dev: true
 
+  /@popperjs/core/2.11.6:
+    resolution: {integrity: sha512-50/17A98tWUfQ176raKiOGXuYpLyyVMkxxG6oylzL3BPOlA6ADGdK7EYunSa4I064xerltq9TGXs8HmOk5E+vw==}
+    dev: false
+
   /@resvg/resvg-wasm/2.0.0-alpha.4:
     resolution: {integrity: sha512-pWIG9a/x1ky8gXKRhPH1OPKpHFoMN1ISLbJ+O+gPXQHIAKhNd5I28RlWf7q576hAOQA9JZTlo3p/M2uyLzJmmw==}
     engines: {node: '>= 10'}
@@ -507,6 +513,17 @@ packages:
     resolution: {integrity: sha512-4C7nX/dvpzB7za4Ql9K81xK3HPxCpHMgwTZVyf+9JQ6VUbn9jjZVN7/Nkdz/Ugzs2CSjqnL/UPXroiVBVHUWUw==}
     dependencies:
       tslib: 2.4.1
+    dev: false
+
+  /@tippyjs/react/4.2.6_biqbaboplfbrettd7655fr4n2y:
+    resolution: {integrity: sha512-91RicDR+H7oDSyPycI13q3b7o4O60wa2oRbjlz2fyRLmHImc4vyDwuUP8NtZaN0VARJY5hybvDYrFzhY9+Lbyw==}
+    peerDependencies:
+      react: '>=16.8'
+      react-dom: '>=16.8'
+    dependencies:
+      react: 18.2.0
+      react-dom: 18.2.0_react@18.2.0
+      tippy.js: 6.3.7
     dev: false
 
   /@tokenizer/token/0.3.0:
@@ -3487,6 +3504,12 @@ packages:
       globalyzer: 0.1.0
       globrex: 0.1.2
     dev: true
+
+  /tippy.js/6.3.7:
+    resolution: {integrity: sha512-E1d3oP2emgJ9dRQZdf3Kkn0qJgI6ZLpyS5z6ZkY1DF3kaQaBsGZsndEpHwx+eC+tYM41HaSNvNtLx8tU57FzTQ==}
+    dependencies:
+      '@popperjs/core': 2.11.6
+    dev: false
 
   /to-regex-range/5.0.1:
     resolution: {integrity: sha512-65P7iz6X5yEr1cwcgvQxbbIw7Uk3gOy5dIdtZ4rDveLqhrdJP+Li/Hx6tyK0NEb+2GCyneCMJiGqrADCSNk8sQ==}

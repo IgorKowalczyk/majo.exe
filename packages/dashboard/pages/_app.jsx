@@ -5,6 +5,7 @@ import { Router } from "next/router";
 import { Inter } from "@next/font/google";
 import "../styles/globals.css";
 import "../styles/progress.css";
+import "../styles/tippy.css";
 
 const inter = Inter();
 
