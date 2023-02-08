@@ -41,7 +41,7 @@
     "@next/font": "13.1.6",
     "@tippyjs/react": "^4.2.6",
     "@vercel/og": "0.1.0",
-    "mongodb": "5.0.0",
+    "mongodb": "5.0.1",
     "next": "13.1.6",
     "next-auth": "4.19.2",
     "next-themes": "0.2.1",
