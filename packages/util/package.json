@@ -22,7 +22,7 @@
   },
   "homepage": "https://github.com/igorkowalczyk/majo.exe#readme",
   "dependencies": {
-    "mongodb": "5.0.0"
+    "mongodb": "5.0.1"
   },
   "devDependencies": {
     "eslint": "8.33.0",
