@@ -63,15 +63,15 @@ importers:
       react-twemoji: 0.5.0
       sharp: 0.31.3
       tailwind-gradient-mask-image: 1.0.0
-      tailwindcss: 3.2.4
+      tailwindcss: 3.2.6
       tailwindcss-text-fill: 0.2.0
       terser-webpack-plugin: 5.3.6
       webpack: 5.75.0
     dependencies:
       '@headlessui/react': 1.7.10_biqbaboplfbrettd7655fr4n2y
-      '@headlessui/tailwindcss': 0.1.2_tailwindcss@3.2.4
+      '@headlessui/tailwindcss': 0.1.2_tailwindcss@3.2.6
       '@heroicons/react': 2.0.14_react@18.2.0
-      '@igorkowalczyk/is-browser': 3.0.0_tailwindcss@3.2.4
+      '@igorkowalczyk/is-browser': 3.0.0_tailwindcss@3.2.6
       '@majoexe/util': link:../util
       '@next-auth/mongodb-adapter': 1.1.1_xwwnzn5etzzmlsspwbcftii5mm
       '@next/font': 13.1.6
@@ -101,8 +101,8 @@ importers:
       prettier: 2.8.4
       prettier-plugin-tailwindcss: 0.2.2_prettier@2.8.4
       tailwind-gradient-mask-image: 1.0.0
-      tailwindcss: 3.2.4_postcss@8.4.21
-      tailwindcss-text-fill: 0.2.0_tailwindcss@3.2.4
+      tailwindcss: 3.2.6_postcss@8.4.21
+      tailwindcss-text-fill: 0.2.0_tailwindcss@3.2.6
       terser-webpack-plugin: 5.3.6_webpack@5.75.0
       webpack: 5.75.0
 
@@ -198,13 +198,13 @@ packages:
       react-dom: 18.2.0_react@18.2.0
     dev: false
 
-  /@headlessui/tailwindcss/0.1.2_tailwindcss@3.2.4:
+  /@headlessui/tailwindcss/0.1.2_tailwindcss@3.2.6:
     resolution: {integrity: sha512-AQNESz+f1grCxifrocOE6hDMDFqhqY0g3xrSGOS0ocGkmVkssaBzXaAPAPNSs/nHmr4ZUhfl5THQpYrvaouWlQ==}
     engines: {node: '>=10'}
     peerDependencies:
       tailwindcss: ^3.0
     dependencies:
-      tailwindcss: 3.2.4_postcss@8.4.21
+      tailwindcss: 3.2.6_postcss@8.4.21
     dev: false
 
   /@heroicons/react/2.0.14_react@18.2.0:
@@ -235,13 +235,13 @@ packages:
     resolution: {integrity: sha512-ZnQMnLV4e7hDlUvw8H+U8ASL02SS2Gn6+9Ac3wGGLIe7+je2AeAOxPY+izIPJDfFDb7eDjev0Us8MO1iFRN8hA==}
     dev: true
 
-  /@igorkowalczyk/is-browser/3.0.0_tailwindcss@3.2.4:
+  /@igorkowalczyk/is-browser/3.0.0_tailwindcss@3.2.6:
     resolution: {integrity: sha512-90HHmYxNg4S9zR8COlc56mtFxG8Q5qdPJ1mWmWx2xvtySZdOUnSS/UycvvEDC3bZJiRLvGfzmpsW+DRATDWIkg==}
     engines: {node: '>=10'}
     peerDependencies:
       tailwindcss: 3.0 || 3.2
     dependencies:
-      tailwindcss: 3.2.4_postcss@8.4.21
+      tailwindcss: 3.2.6_postcss@8.4.21
     dev: false
 
   /@jridgewell/gen-mapping/0.3.2:
@@ -3392,17 +3392,17 @@ packages:
     resolution: {integrity: sha512-eZJhn6wHZ0Irfpq5sm0ErewH6IC82gqjfVsDQ7MYrJcfTgepOoTI6EryLppNPoZds4EeD6/H0WrysT8HE90H5g==}
     dev: true
 
-  /tailwindcss-text-fill/0.2.0_tailwindcss@3.2.4:
+  /tailwindcss-text-fill/0.2.0_tailwindcss@3.2.6:
     resolution: {integrity: sha512-3lo6a/9jXSx4+24onFv7xnHO/1DZCk6qM+LoCsEUxn79sAeoc/ts74LSH0vRhLvWe4Yn+YglFfT+lxDv6wn2sQ==}
     peerDependencies:
       tailwindcss: '>=2.0.0'
     dependencies:
       flatten-tailwindcss-theme: 1.0.0
-      tailwindcss: 3.2.4_postcss@8.4.21
+      tailwindcss: 3.2.6_postcss@8.4.21
     dev: true
 
-  /tailwindcss/3.2.4_postcss@8.4.21:
-    resolution: {integrity: sha512-AhwtHCKMtR71JgeYDaswmZXhPcW9iuI9Sp2LvZPo9upDZ7231ZJ7eA9RaURbhpXGVlrjX4cFNlB4ieTetEb7hQ==}
+  /tailwindcss/3.2.6_postcss@8.4.21:
+    resolution: {integrity: sha512-BfgQWZrtqowOQMC2bwaSNe7xcIjdDEgixWGYOd6AL0CbKHJlvhfdbINeAW76l1sO+1ov/MJ93ODJ9yluRituIw==}
     engines: {node: '>=12.13.0'}
     hasBin: true
     peerDependencies:
