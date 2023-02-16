@@ -31,7 +31,7 @@ importers:
 
   packages/dashboard:
     specifiers:
-      '@headlessui/react': 1.7.10
+      '@headlessui/react': 1.7.11
       '@headlessui/tailwindcss': 0.1.2
       '@heroicons/react': 2.0.15
       '@igorkowalczyk/is-browser': 3.0.0
@@ -68,7 +68,7 @@ importers:
       terser-webpack-plugin: 5.3.6
       webpack: 5.75.0
     dependencies:
-      '@headlessui/react': 1.7.10_biqbaboplfbrettd7655fr4n2y
+      '@headlessui/react': 1.7.11_biqbaboplfbrettd7655fr4n2y
       '@headlessui/tailwindcss': 0.1.2_tailwindcss@3.2.6
       '@heroicons/react': 2.0.15_react@18.2.0
       '@igorkowalczyk/is-browser': 3.0.0_tailwindcss@3.2.6
@@ -186,8 +186,8 @@ packages:
       - supports-color
     dev: true
 
-  /@headlessui/react/1.7.10_biqbaboplfbrettd7655fr4n2y:
-    resolution: {integrity: sha512-1m66h/5eayTEZVT2PI13/2PG3EVC7a9XalmUtVSC8X76pcyKYMuyX1XAL2RUtCr8WhoMa/KrDEyoeU5v+kSQOw==}
+  /@headlessui/react/1.7.11_biqbaboplfbrettd7655fr4n2y:
+    resolution: {integrity: sha512-EaDbVgcyiylhtskZZf4Qb/JiiByY7cYbd0qgZ9xm2pm2X7hKojG0P4TaQYKgPOV3vojPhd/pZyQh3nmRkkcSyw==}
     engines: {node: '>=10'}
     peerDependencies:
       react: ^16 || ^17 || ^18
