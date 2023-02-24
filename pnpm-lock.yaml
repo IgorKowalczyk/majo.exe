@@ -17,14 +17,14 @@ importers:
       dotenv: 16.0.3
       eslint: 8.34.0
       eslint-config-prettier: 8.6.0
-      mongodb: 5.0.1
+      mongodb: 5.1.0
     dependencies:
       '@majoexe/util': link:../util
       bad-words: 3.0.4
       chalk: 5.2.0
       discord.js: 14.7.1
       dotenv: 16.0.3
-      mongodb: 5.0.1
+      mongodb: 5.1.0
     devDependencies:
       eslint: 8.34.0
       eslint-config-prettier: 8.6.0_eslint@8.34.0
@@ -49,7 +49,7 @@ importers:
       lodash: 4.17.21
       lodash-webpack-plugin: 0.11.6
       mini-svg-data-uri: 1.4.4
-      mongodb: 5.0.1
+      mongodb: 5.1.0
       next: 13.2.1
       next-auth: 4.19.2
       next-themes: 0.2.1
@@ -73,11 +73,11 @@ importers:
       '@heroicons/react': 2.0.16_react@18.2.0
       '@igorkowalczyk/is-browser': 3.0.0_tailwindcss@3.2.7
       '@majoexe/util': link:../util
-      '@next-auth/mongodb-adapter': 1.1.1_xwwnzn5etzzmlsspwbcftii5mm
+      '@next-auth/mongodb-adapter': 1.1.1_ka7cmjxz2wm2tpnjlunhwpfz5u
       '@next/font': 13.2.1
       '@tippyjs/react': 4.2.6_biqbaboplfbrettd7655fr4n2y
       '@vercel/og': 0.1.0
-      mongodb: 5.0.1
+      mongodb: 5.1.0
       next: 13.2.1_biqbaboplfbrettd7655fr4n2y
       next-auth: 4.19.2_qgtcjgzkkjtbiyvnx7d32fl5vu
       next-themes: 0.2.1_qgtcjgzkkjtbiyvnx7d32fl5vu
@@ -110,9 +110,9 @@ importers:
     specifiers:
       eslint: 8.34.0
       eslint-config-prettier: 8.6.0
-      mongodb: 5.0.1
+      mongodb: 5.1.0
     dependencies:
-      mongodb: 5.0.1
+      mongodb: 5.1.0
     devDependencies:
       eslint: 8.34.0
       eslint-config-prettier: 8.6.0_eslint@8.34.0
@@ -281,13 +281,13 @@ packages:
       '@jridgewell/sourcemap-codec': 1.4.14
     dev: true
 
-  /@next-auth/mongodb-adapter/1.1.1_xwwnzn5etzzmlsspwbcftii5mm:
+  /@next-auth/mongodb-adapter/1.1.1_ka7cmjxz2wm2tpnjlunhwpfz5u:
     resolution: {integrity: sha512-X5O4U4l2M8nyp/B3qF5GOr/JJw2ShKgWfTZRa80Y5CUzTPPmf09ggL5v5UwCmz9l2RIv2GUxO8hK4qrcaZvDRw==}
     peerDependencies:
       mongodb: ^4.1.1
       next-auth: ^4
     dependencies:
-      mongodb: 5.0.1
+      mongodb: 5.1.0
       next-auth: 4.19.2_qgtcjgzkkjtbiyvnx7d32fl5vu
     dev: false
 
@@ -1014,8 +1014,8 @@ packages:
       update-browserslist-db: 1.0.10_browserslist@4.21.4
     dev: true
 
-  /bson/5.0.0:
-    resolution: {integrity: sha512-EL2KpZdyhshyyptj6pnQfnFKPoncD9KwZYvgmj/FXQiOUU1HWTHWmBOP4TZXU3YzStcI5qgpIl68YnMo16s26A==}
+  /bson/5.0.1:
+    resolution: {integrity: sha512-y09gBGusgHtinMon/GVbv1J6FrXhnr/+6hqLlSmEFzkz6PodqF6TxjyvfvY3AfO+oG1mgUtbC86xSbOlwvM62Q==}
     engines: {node: '>=14.20.1'}
     dev: false
 
@@ -2402,8 +2402,8 @@ packages:
       whatwg-url: 11.0.0
     dev: false
 
-  /mongodb/5.0.1:
-    resolution: {integrity: sha512-KpjtY+NWFmcic6UDYEdfn768ZTuKyv7CRaui7ZSd6q/0/o1AURMC7KygTUwB1Cl8V10Pe5NiP+Y2eBMCDs/ygQ==}
+  /mongodb/5.1.0:
+    resolution: {integrity: sha512-qgKb7y+EI90y4weY3z5+lIgm8wmexbonz0GalHkSElQXVKtRuwqXuhXKccyvIjXCJVy9qPV82zsinY0W1FBnJw==}
     engines: {node: '>=14.20.1'}
     peerDependencies:
       '@aws-sdk/credential-providers': ^3.201.0
@@ -2417,7 +2417,7 @@ packages:
       snappy:
         optional: true
     dependencies:
-      bson: 5.0.0
+      bson: 5.0.1
       mongodb-connection-string-url: 2.6.0
       socks: 2.7.1
     optionalDependencies:
