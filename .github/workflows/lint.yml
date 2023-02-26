@@ -1,0 +1,28 @@
+name: Lint
+on: [push, pull_request]
+
+jobs:
+ lint:
+  name: ESLint
+  runs-on: ubuntu-latest
+  strategy:
+   fail-fast: false
+   matrix:
+    language: ["javascript"]
+    node: ["16.x"]
+  steps:
+   - name: 🧱 Checkout repository
+     uses: actions/checkout@v3
+   - name: 🔩 Setup PNPM
+     uses: pnpm/action-setup@v2
+     with:
+      version: 7
+   - name: 🔩 Setup Node ${{ matrix.node }}
+     uses: actions/setup-node@v3
+     with:
+      node-version: ${{ matrix.node }}
+      cache: "pnpm"
+   - name: 🚀 Install dependencies
+     run: pnpm install
+   - name: 🚀 Run ESLint
+     run: pnpm lint
