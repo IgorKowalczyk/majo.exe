@@ -57,7 +57,7 @@ importers:
       nprogress: 0.2.0
       postcss: 8.4.21
       prettier: 2.8.4
-      prettier-plugin-tailwindcss: 0.2.3
+      prettier-plugin-tailwindcss: 0.2.4
       react: 18.2.0
       react-dom: 18.2.0
       react-twemoji: 0.5.0
@@ -99,7 +99,7 @@ importers:
       mini-svg-data-uri: 1.4.4
       postcss: 8.4.21
       prettier: 2.8.4
-      prettier-plugin-tailwindcss: 0.2.3_prettier@2.8.4
+      prettier-plugin-tailwindcss: 0.2.4_prettier@2.8.4
       tailwind-gradient-mask-image: 1.0.0
       tailwindcss: 3.2.7_postcss@8.4.21
       tailwindcss-text-fill: 0.2.0_tailwindcss@3.2.7
@@ -2890,8 +2890,8 @@ packages:
     engines: {node: '>= 0.8.0'}
     dev: true
 
-  /prettier-plugin-tailwindcss/0.2.3_prettier@2.8.4:
-    resolution: {integrity: sha512-s2N5Dh7Ao5KTV1mao5ZBnn8EKtUcDPJEkGViZIjI0Ij9TTI5zgTz4IHOxW33jOdjHKa8CSjM88scelUiC5TNRQ==}
+  /prettier-plugin-tailwindcss/0.2.4_prettier@2.8.4:
+    resolution: {integrity: sha512-wMyugRI2yD8gqmMpZSS8kTA0gGeKozX/R+w8iWE+yiCZL09zY0SvfiHfHabNhjGhzxlQ2S2VuTxPE3T72vppCQ==}
     engines: {node: '>=12.17.0'}
     peerDependencies:
       '@ianvs/prettier-plugin-sort-imports': '*'
