@@ -51,7 +51,7 @@ importers:
       mini-svg-data-uri: 1.4.4
       mongodb: 5.1.0
       next: 13.2.3
-      next-auth: 4.20.0
+      next-auth: 4.20.1
       next-themes: 0.2.1
       node-fetch: 3.3.0
       nprogress: 0.2.0
@@ -73,13 +73,13 @@ importers:
       '@heroicons/react': 2.0.16_react@18.2.0
       '@igorkowalczyk/is-browser': 3.0.0_tailwindcss@3.2.7
       '@majoexe/util': link:../util
-      '@next-auth/mongodb-adapter': 1.1.1_qyczo444fbcd2li2uyueideowm
+      '@next-auth/mongodb-adapter': 1.1.1_ekl6mgou7ynshj3llzs5q4xzui
       '@next/font': 13.2.3
       '@tippyjs/react': 4.2.6_biqbaboplfbrettd7655fr4n2y
       '@vercel/og': 0.2.0
       mongodb: 5.1.0
       next: 13.2.3_biqbaboplfbrettd7655fr4n2y
-      next-auth: 4.20.0_nvzgbose6yf6w7ijjprgspqefi
+      next-auth: 4.20.1_nvzgbose6yf6w7ijjprgspqefi
       next-themes: 0.2.1_nvzgbose6yf6w7ijjprgspqefi
       node-fetch: 3.3.0
       nprogress: 0.2.0
@@ -286,14 +286,14 @@ packages:
       '@jridgewell/sourcemap-codec': 1.4.14
     dev: true
 
-  /@next-auth/mongodb-adapter/1.1.1_qyczo444fbcd2li2uyueideowm:
+  /@next-auth/mongodb-adapter/1.1.1_ekl6mgou7ynshj3llzs5q4xzui:
     resolution: {integrity: sha512-X5O4U4l2M8nyp/B3qF5GOr/JJw2ShKgWfTZRa80Y5CUzTPPmf09ggL5v5UwCmz9l2RIv2GUxO8hK4qrcaZvDRw==}
     peerDependencies:
       mongodb: ^4.1.1
       next-auth: ^4
     dependencies:
       mongodb: 5.1.0
-      next-auth: 4.20.0_nvzgbose6yf6w7ijjprgspqefi
+      next-auth: 4.20.1_nvzgbose6yf6w7ijjprgspqefi
     dev: false
 
   /@next/bundle-analyzer/13.2.3:
@@ -2476,8 +2476,8 @@ packages:
     resolution: {integrity: sha512-Yd3UES5mWCSqR+qNT93S3UoYUkqAZ9lLg8a7g9rimsWmYGK8cVToA4/sF3RrshdyV3sAGMXVUmpMYOw+dLpOuw==}
     dev: true
 
-  /next-auth/4.20.0_nvzgbose6yf6w7ijjprgspqefi:
-    resolution: {integrity: sha512-Ff8Otk76rkZd230GVlf6oyj6K6Hz3Y8A0xr3AmRX1bOPagUWhlb2TBtgmktQlHrPI6QoINfPiAgsAOKTax1z3A==}
+  /next-auth/4.20.1_nvzgbose6yf6w7ijjprgspqefi:
+    resolution: {integrity: sha512-ZcTUN4qzzZ/zJYgOW0hMXccpheWtAol8QOMdMts+LYRcsPGsqf2hEityyaKyECQVw1cWInb9dF3wYwI5GZdEmQ==}
     peerDependencies:
       next: ^12.2.5 || ^13
       nodemailer: ^6.6.5
