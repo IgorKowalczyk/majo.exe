@@ -2,7 +2,6 @@
  "$schema": "https://turborepo.org/schema.json",
  "pipeline": {
   "dev": {
-   "dependsOn": [],
    "outputs": []
   },
   "build": {
@@ -21,7 +20,6 @@
    "outputs": []
   },
   "format:check": {
-   "dependsOn": ["format"],
    "outputs": []
   }
  },
