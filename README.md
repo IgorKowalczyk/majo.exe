@@ -59,7 +59,7 @@ Go to [this link](https://discord.com/oauth2/authorize/?permissions=4294967287&s
 
 | Sponsor | Description |
 | - | :- |
-| [Terohost](https://terohost.com) | **TeroHost is a Discord Bot hosting** provider that helps take care of all your needs regarding your Discord Bot to ensure your bot perfect uptime, ping and speed. |
+| [Terohost](https://my.terohost.com/aff.php?aff=17) | **TeroHost is a Discord Bot hosting** provider that helps take care of all your needs regarding your Discord Bot to ensure your bot perfect uptime, ping and speed. |
 
 
 ## ⁉️ Issues
