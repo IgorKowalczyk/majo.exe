@@ -10,7 +10,7 @@
     "lint": "turbo run lint",
     "format": "turbo run format",
     "format:check": "turbo run format:check",
-    "int": "prettier --write . --ignore-unknown",
+    "int": "prettier --write . --cache --ignore-unknown",
     "int:check": "prettier --check ."
   },
   "workspaces": [

@@ -8,7 +8,7 @@
  "scripts": {
   "dev": "node index.js",
   "deploy": "node index.js",
-  "format": "prettier --write . --ignore-unknown",
+  "format": "prettier --write . --cache --ignore-unknown",
   "format:check": "prettier --check .",
   "lint": "eslint .",
   "test": "echo \"Error: no test specified\" && exit 1"
