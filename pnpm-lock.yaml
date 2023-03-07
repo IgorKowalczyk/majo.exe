@@ -40,7 +40,7 @@ importers:
       '@next/bundle-analyzer': 13.2.3
       '@next/font': 13.2.3
       '@tippyjs/react': ^4.2.6
-      '@vercel/og': 0.3.0
+      '@vercel/og': 0.4.0
       autoprefixer: 10.4.13
       compression-webpack-plugin: 10.0.0
       eslint: 8.35.0
@@ -76,7 +76,7 @@ importers:
       '@next-auth/mongodb-adapter': 1.1.1_ekl6mgou7ynshj3llzs5q4xzui
       '@next/font': 13.2.3
       '@tippyjs/react': 4.2.6_biqbaboplfbrettd7655fr4n2y
-      '@vercel/og': 0.3.0
+      '@vercel/og': 0.4.0
       mongodb: 5.1.0
       next: 13.2.3_biqbaboplfbrettd7655fr4n2y
       next-auth: 4.20.1_nvzgbose6yf6w7ijjprgspqefi
@@ -643,8 +643,8 @@ packages:
       eslint-visitor-keys: 3.3.0
     dev: true
 
-  /@vercel/og/0.3.0:
-    resolution: {integrity: sha512-0L7tAgyLJWv2jdCg7NQtoWOs+ZK+pYeJBev3r1Y8apHjcu7Qj/OfR65JlAPfTMH8b6iUpVtBeHWVUo5KAhaC2A==}
+  /@vercel/og/0.4.0:
+    resolution: {integrity: sha512-FFjXYCD5ZM0VotC9niy11qf4m6D99JVQ73P/uCLJl/r2PeOj0l26xwTEQ4HHJ/yZ6ncByCNoWAjk+S0fjMJmwg==}
     engines: {node: '>=16'}
     dependencies:
       '@resvg/resvg-wasm': 2.4.1
