@@ -65,7 +65,7 @@ importers:
       tailwind-gradient-mask-image: 1.0.0
       tailwindcss: 3.2.7
       tailwindcss-text-fill: 0.2.0
-      terser-webpack-plugin: 5.3.6
+      terser-webpack-plugin: 5.3.7
       webpack: 5.76.0
     dependencies:
       '@headlessui/react': 1.7.13_biqbaboplfbrettd7655fr4n2y
@@ -103,7 +103,7 @@ importers:
       tailwind-gradient-mask-image: 1.0.0
       tailwindcss: 3.2.7_postcss@8.4.21
       tailwindcss-text-fill: 0.2.0_tailwindcss@3.2.7
-      terser-webpack-plugin: 5.3.6_webpack@5.76.0
+      terser-webpack-plugin: 5.3.7_webpack@5.76.0
       webpack: 5.76.0
 
   packages/util:
@@ -3192,6 +3192,12 @@ packages:
       randombytes: 2.1.0
     dev: true
 
+  /serialize-javascript/6.0.1:
+    resolution: {integrity: sha512-owoXEFjWRllis8/M1Q+Cw5k8ZH40e3zhp/ovX+Xr/vi1qj6QesbyXXViFbpNvWvPNAD62SutwEXavefrLJWj7w==}
+    dependencies:
+      randombytes: 2.1.0
+    dev: true
+
   /sharp/0.31.3:
     resolution: {integrity: sha512-XcR4+FCLBFKw1bdB+GEhnUNXNXvnt0tDo4WsBsraKymuo/IAuPuCBVAL2wIkUw2r/dwFW5Q5+g66Kwl2dgDFVg==}
     engines: {node: '>=14.15.0'}
@@ -3488,8 +3494,8 @@ packages:
       readable-stream: 3.6.0
     dev: false
 
-  /terser-webpack-plugin/5.3.6_webpack@5.76.0:
-    resolution: {integrity: sha512-kfLFk+PoLUQIbLmB1+PZDMRSZS99Mp+/MHqDNmMA6tOItzRt+Npe3E+fsMs5mfcM0wCtrrdU387UnV+vnSffXQ==}
+  /terser-webpack-plugin/5.3.7_webpack@5.76.0:
+    resolution: {integrity: sha512-AfKwIktyP7Cu50xNjXF/6Qb5lBNzYaWpU6YfoX3uZicTx0zTy0stDDCsvjDapKsSDvOeWo5MEq4TmdBy2cNoHw==}
     engines: {node: '>= 10.13.0'}
     peerDependencies:
       '@swc/core': '*'
@@ -3507,13 +3513,13 @@ packages:
       '@jridgewell/trace-mapping': 0.3.17
       jest-worker: 27.5.1
       schema-utils: 3.1.1
-      serialize-javascript: 6.0.0
-      terser: 5.16.1
+      serialize-javascript: 6.0.1
+      terser: 5.16.5
       webpack: 5.76.0
     dev: true
 
-  /terser/5.16.1:
-    resolution: {integrity: sha512-xvQfyfA1ayT0qdK47zskQgRZeWLoOQ8JQ6mIgRGVNwZKdQMU+5FkCBjmv4QjcrTzyZquRw2FVtlJSRUmMKQslw==}
+  /terser/5.16.5:
+    resolution: {integrity: sha512-qcwfg4+RZa3YvlFh0qjifnzBHjKGNbtDo9yivMqMFDy9Q6FSaQWSB/j1xKhsoUFJIqDOM3TsN6D5xbrMrFcHbg==}
     engines: {node: '>=10'}
     hasBin: true
     dependencies:
@@ -3824,7 +3830,7 @@ packages:
       neo-async: 2.6.2
       schema-utils: 3.1.1
       tapable: 2.2.1
-      terser-webpack-plugin: 5.3.6_webpack@5.76.0
+      terser-webpack-plugin: 5.3.7_webpack@5.76.0
       watchpack: 2.4.0
       webpack-sources: 3.2.3
     transitivePeerDependencies:
