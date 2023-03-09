@@ -13,13 +13,13 @@ export default function Login({ providers }) {
      flex flex-col items-center gap-4 drop-shadow-[0_0_150px_rgba(0,124,240,0.5)]"
     >
      <div className="mb-4 flex flex-row">
-      <Image src="/assets/avatar.png" width={80} height={80} alt="Avatar" className="rounded-full" />
+      <Image src="/assets/avatar.png" width={90} height={90} alt="Avatar" className="rounded-full" quality={90} />
       <div className="mx-4 flex flex-row items-center gap-2">
-       <div className="h-2 w-2 animate-pulse rounded-full bg-gray-500"></div>
-       <div className="h-2 w-2 animate-pulse rounded-full bg-gray-500"></div>
-       <div className="h-2 w-2 animate-pulse rounded-full bg-gray-500"></div>
+       {[...Array(3)].map((_, i) => (
+        <div key={i} className="h-2 w-2 animate-pulse rounded-full bg-gray-400" style={{ animationDelay: `${150 * i - 50}ms` }} />
+       ))}
       </div>
-      <div className="flex h-[80px] w-[80px] items-center justify-center rounded-full bg-white/5 text-5xl text-[#939DB8]">?</div>
+      <div className="flex h-[90px] w-[90px] items-center justify-center rounded-full bg-white/5 text-5xl text-[#939DB8]">?</div>
      </div>
 
      <h1 className="text-center font-inter text-6xl font-bold">Connect your account</h1>

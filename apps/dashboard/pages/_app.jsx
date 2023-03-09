@@ -2,7 +2,7 @@ import nProgress from "nprogress";
 import { SessionProvider } from "next-auth/react";
 import { ThemeProvider } from "next-themes";
 import { Router } from "next/router";
-import { Inter } from "@next/font/google";
+import { Inter } from "next/font/google";
 import "../styles/globals.css";
 import "../styles/progress.css";
 import "../styles/tippy.css";

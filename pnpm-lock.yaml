@@ -38,7 +38,6 @@ importers:
       '@majoexe/util': workspace:*
       '@next-auth/mongodb-adapter': 1.1.1
       '@next/bundle-analyzer': 13.2.3
-      '@next/font': 13.2.3
       '@tippyjs/react': ^4.2.6
       '@vercel/og': 0.2.0
       autoprefixer: 10.4.13
@@ -69,7 +68,6 @@ importers:
       '@majoexe/eslint-config': link:../../packages/eslint-config
       '@majoexe/util': link:../../packages/util
       '@next-auth/mongodb-adapter': 1.1.1_ekl6mgou7ynshj3llzs5q4xzui
-      '@next/font': 13.2.3
       '@tippyjs/react': 4.2.6_biqbaboplfbrettd7655fr4n2y
       '@vercel/og': 0.2.0
       mongodb: 5.1.0
@@ -261,10 +259,6 @@ packages:
     dependencies:
       glob: 7.1.7
     dev: true
-
-  /@next/font/13.2.3:
-    resolution: {integrity: sha512-7EHzk0f7FVYICLUZTpyPk93IfcTUao++Xt1Sgb+Zk5dVOCYHabqLtlF5ywSoXIqyFlo0qlshEBxsrzHAGTWkDw==}
-    dev: false
 
   /@next/swc-android-arm-eabi/13.2.3:
     resolution: {integrity: sha512-mykdVaAXX/gm+eFO2kPeVjnOCKwanJ9mV2U0lsUGLrEdMUifPUjiXKc6qFAIs08PvmTMOLMNnUxqhGsJlWGKSw==}
