@@ -1,4 +1,5 @@
 import { Container } from "../components/blocks/Container";
+import { getSession } from "next-auth/react";
 
 export default function Dashboard() {
  return (
@@ -20,4 +21,11 @@ export default function Dashboard() {
    </div>
   </Container>
  );
+}
+
+export async function getServerSideProps(context) {
+ const session = await getSession(context);
+ if (!session) return { redirect: { destination: "/", permanent: false } };
+
+ return { props: { session } };
 }

@@ -1,0 +1,29 @@
+{
+ "name": "@majoexe/eslint-config",
+ "version": "6.0.0",
+ "description": "Our shared eslint config",
+ "main": "index.js",
+ "scripts": {
+  "format": "prettier --write . --cache --ignore-unknown",
+  "format:check": "prettier --check .",
+  "lint": "eslint . --ext .js,.jsx,.ts,.tsx"
+ },
+ "dependencies": {
+  "eslint": "8.35.0",
+  "eslint-config-prettier": "8.6.0",
+  "eslint-config-turbo": "^0.0.9"
+ },
+ "repository": {
+  "type": "git",
+  "url": "git+https://github.com/igorkowalczyk/majo.exe.git"
+ },
+ "keywords": [
+  "eslint"
+ ],
+ "author": "Igor Kowalczyk",
+ "license": "MIT",
+ "bugs": {
+  "url": "https://github.com/igorkowalczyk/majo.exe/issues"
+ },
+ "homepage": "https://github.com/igorkowalczyk/majo.exe#readme"
+}

@@ -1,8 +1,3 @@
-const CompressionPlugin = require("compression-webpack-plugin");
-const LodashModuleReplacementPlugin = require("lodash-webpack-plugin");
-const TerserPlugin = require("terser-webpack-plugin");
-const webpack = require("webpack");
-
 const withBundleAnalyzer = require("@next/bundle-analyzer")({
  enabled: process.env.ANALYZE === "true",
 });
@@ -63,19 +58,6 @@ const nextConfig = {
     ],
    },
   ];
- },
- webpack: (config, { isServer, dev }) => {
-  if (!dev && !isServer) {
-   config.plugins.push(
-    new CompressionPlugin(),
-    new LodashModuleReplacementPlugin(),
-    new webpack.DefinePlugin({
-     "process.env.VERSION": JSON.stringify(process.env.npm_package_version),
-    })
-   ),
-    (config.optimization.minimizer = [new TerserPlugin()]);
-  }
-  return config;
  },
 };
 

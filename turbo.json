@@ -16,19 +16,12 @@
    "outputs": []
   },
   "format": {
-   "dependsOn": ["lint"],
    "outputs": []
   },
   "format:check": {
    "outputs": []
   }
  },
- "globalDependencies": [
-  "pnpm-lock.yaml",
-  "pnpm-workspace.yaml",
-  ".prettierignore",
-  ".prettierrc",
-  ".env"
- ],
+ "globalDependencies": ["pnpm-lock.yaml", "pnpm-workspace.yaml", ".prettierignore", ".prettierrc", ".env"],
  "globalEnv": ["TOKEN", "SECRET"]
 }

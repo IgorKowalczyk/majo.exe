@@ -1,5 +1,5 @@
 {
- "extends": ["eslint:recommended", "prettier"],
+ "extends": ["@majoexe/eslint-config"],
  "env": {
   "node": true,
   "es6": true
@@ -7,8 +7,5 @@
  "parserOptions": {
   "ecmaVersion": 2021,
   "sourceType": "module"
- },
- "rules": {
-  "camelcase": "warn"
  }
 }

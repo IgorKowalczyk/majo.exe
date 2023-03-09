@@ -1,3 +1,5 @@
+/* eslint-disable no-undef */
+
 const { chromium } = require("playwright");
 const endpoints = ["/", "/auth/login"];
 

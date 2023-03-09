@@ -1,8 +1,7 @@
 {
- "extends": ["next", "prettier"],
+ "extends": ["@majoexe/eslint-config", "next"],
  "rules": {
   "react/prop-types": "off",
-  "camelcase": "warn",
   "react/no-unescaped-entities": "off"
  }
 }

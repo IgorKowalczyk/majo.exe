@@ -1,2 +1,2 @@
-export * from './src/database';
-export * from './src/settings'
+export * from "./src/database";
+export * from "./src/settings";

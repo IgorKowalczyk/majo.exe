@@ -2,21 +2,23 @@
   "name": "majoexe-project",
   "version": "0.0.0",
   "private": true,
-  "description": "Majo.exe have almost everything - Fun, Memes, Images, Giveaway Moderation, Anime, NSFW and eveb more!. Majo.exe serve over 150 commands!",
+  "description": "Majo.exe have almost everything - Fun, Memes, Images, Giveaway Moderation, Anime, NSFW and even more! Majo.exe serve over 150 commands!",
   "scripts": {
     "dev": "turbo run dev --color",
     "build": "turbo run build --color",
     "deploy": "turbo run deploy --color",
-    "lint": "turbo run lint",
-    "format": "turbo run format",
-    "format:check": "turbo run format:check",
+    "lint": "turbo run lint --color",
+    "format": "turbo run format --color",
+    "format:check": "turbo run format:check --color",
     "int": "prettier --write . --cache --ignore-unknown",
     "int:check": "prettier --check ."
   },
   "workspaces": [
-    "packages/*"
+    "packages/*",
+    "apps/*"
   ],
   "devDependencies": {
+    "@majoexe/eslint-config": "workspace:*",
     "turbo": "1.8.3"
   },
   "repository": {

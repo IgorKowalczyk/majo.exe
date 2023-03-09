@@ -1,4 +1,4 @@
-import { useSession } from "next-auth/react";
+import { getSession } from "next-auth/react";
 import { Container } from "../../components/blocks/Container";
 import { ArrowTopRightOnSquareIcon } from "@heroicons/react/24/outline";
 import Link from "next/link";
@@ -11,14 +11,7 @@ import "tippy.js/dist/backdrop.css";
 import "tippy.js/animations/shift-away.css";
 import "tippy.js/dist/tippy.css";
 
-export default function Profile() {
- const { data: session, loading } = useSession();
- if (typeof window !== "undefined" && loading) return null;
- if (!session) {
-  return;
- }
-
- console.log(getFlags(session.public_flags));
+export default function Profile({ session }) {
  return (
   <Container>
    <div className="m-auto flex h-screen min-w-[24em] md:min-w-[40em] max-w-4xl w-auto flex-col items-center justify-center gap-4 ">
@@ -68,4 +61,11 @@ export default function Profile() {
    </div>
   </Container>
  );
+}
+
+export async function getServerSideProps(context) {
+ const session = await getSession(context);
+ if (!session) return { redirect: { destination: "/", permanent: false } };
+
+ return { props: { session } };
 }

@@ -1,3 +1,3 @@
-export function CreateAvatar(user, size) {
+export function getAvatar(user, size) {
  return `https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}.webp?size=${size.toString() || 128}`;
 }
