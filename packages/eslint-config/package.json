@@ -9,7 +9,7 @@
   "lint": "eslint . --ext .js,.jsx,.ts,.tsx"
  },
  "dependencies": {
-  "eslint": "8.35.0",
+  "eslint": "8.36.0",
   "eslint-config-prettier": "8.6.0",
   "eslint-config-turbo": "^0.0.9"
  },
