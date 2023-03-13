@@ -1,5 +1,5 @@
-import { Container } from "../components/blocks/Container";
 import { getSession } from "next-auth/react";
+import { Container } from "../components/blocks/Container";
 
 export default function Dashboard() {
  return (

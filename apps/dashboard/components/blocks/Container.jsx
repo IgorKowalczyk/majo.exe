@@ -1,8 +1,8 @@
+import Head from "next/head";
 import { useRouter } from "next/router";
+import Twemoji from "react-twemoji";
 import { meta as headMeta, social } from "../../config";
 import { Nav } from "../nav/Nav";
-import Head from "next/head";
-import Twemoji from "react-twemoji";
 
 export function Container(props) {
  const { children, ...customMeta } = props;

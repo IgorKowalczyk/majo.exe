@@ -1,5 +1,5 @@
 {
-  "name": "majoexe-project",
+  "name": "@majoexe/monorepo",
   "version": "0.0.0",
   "private": true,
   "description": "Majo.exe have almost everything - Fun, Memes, Images, Giveaway Moderation, Anime, NSFW and even more! Majo.exe serve over 150 commands!",
@@ -8,6 +8,7 @@
     "build": "turbo run build --color",
     "deploy": "turbo run deploy --color",
     "lint": "turbo run lint --color",
+    "lint:fix": "turbo run lint:fix --color",
     "format": "turbo run format --color",
     "format:check": "turbo run format:check --color",
     "int": "prettier --write . --cache --ignore-unknown",
@@ -19,6 +20,8 @@
   ],
   "devDependencies": {
     "@majoexe/eslint-config": "workspace:*",
+    "@igorkowalczyk/eslint-config": "1.0.3",
+    "@igorkowalczyk/prettier-config": "1.0.3",
     "turbo": "1.8.3"
   },
   "repository": {

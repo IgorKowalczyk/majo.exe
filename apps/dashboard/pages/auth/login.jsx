@@ -1,8 +1,8 @@
-import { Container } from "../../components/blocks/Container";
-import { getProviders, signIn, getSession } from "next-auth/react";
 import { ArrowUturnLeftIcon } from "@heroicons/react/24/outline";
 import Image from "next/image";
 import Link from "next/link";
+import { getProviders, signIn, getSession } from "next-auth/react";
+import { Container } from "../../components/blocks/Container";
 
 export default function Login({ providers }) {
  return (

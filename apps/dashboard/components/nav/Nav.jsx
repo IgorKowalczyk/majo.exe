@@ -1,11 +1,11 @@
-import { meta, social } from "../../config";
-import { useSession, signIn, signOut } from "next-auth/react";
 import { Menu, Transition } from "@headlessui/react";
-import { Fragment } from "react";
 import { HashtagIcon, RectangleStackIcon, Cog8ToothIcon, UserIcon, ArrowRightOnRectangleIcon, QuestionMarkCircleIcon, ChevronDownIcon } from "@heroicons/react/24/outline";
-import { Invite } from "../buttons/Invite";
-import Link from "next/link";
 import Image from "next/image";
+import Link from "next/link";
+import { useSession, signIn, signOut } from "next-auth/react";
+import { Fragment } from "react";
+import { meta, social } from "../../config";
+import { Invite } from "../buttons/Invite";
 
 export function Nav() {
  const { data: session } = useSession();

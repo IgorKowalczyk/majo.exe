@@ -1,6 +1,6 @@
 import { Container } from "../components/blocks/Container";
-import { Login } from "../components/buttons/Login";
 import { Invite } from "../components/buttons/Invite";
+import { Login } from "../components/buttons/Login";
 
 export default function Main() {
  return (

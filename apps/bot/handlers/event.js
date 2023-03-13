@@ -1,5 +1,5 @@
-import { readdirSync } from "node:fs";
 import { Logger } from "../util/colors.js";
+import { readdirSync } from "node:fs";
 
 export default async function loadEvents(client) {
  console.log(Logger("info", "Loading events..."));

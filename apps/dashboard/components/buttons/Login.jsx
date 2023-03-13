@@ -1,6 +1,6 @@
-import { useSession, signIn } from "next-auth/react";
 import { ArrowUturnRightIcon } from "@heroicons/react/24/outline";
 import Link from "next/link";
+import { useSession, signIn } from "next-auth/react";
 
 export function Login() {
  const { status } = useSession();

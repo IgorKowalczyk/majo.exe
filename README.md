@@ -36,8 +36,8 @@ Go to [this link](https://discord.com/oauth2/authorize/?permissions=4294967287&s
 > We host this bot. Majo.exe _will be_ online 24/7. [Invite Majo here!](#invite)<br>
 > However, if you want to host Majo.exe yourself - [take a look here](#-self-hosting-bot)
 
-1. **[🔩 Dashboard setup tutorial](/packages/dashboard/README.md)**
-2. **[🤖 Bot setup tutorial](/packages/bot/README.md)**
+1. **[🔩 Dashboard setup tutorial](/apps/dashboard/README.md)**
+2. **[🤖 Bot setup tutorial](/apps/bot/README.md)**
 
 ## 🗜️ Requirements
 

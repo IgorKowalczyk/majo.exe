@@ -6,6 +6,7 @@
   },
   "build": {
    "dependsOn": ["^build"],
+   "env": ["ANALYZE"],
    "outputs": ["dist/**", ".next/**"]
   },
   "deploy": {
@@ -13,6 +14,9 @@
    "outputs": ["dist/**", ".next/**"]
   },
   "lint": {
+   "outputs": []
+  },
+  "lint:fix": {
    "outputs": []
   },
   "format": {
@@ -23,5 +27,5 @@
   }
  },
  "globalDependencies": ["pnpm-lock.yaml", "pnpm-workspace.yaml", ".prettierignore", ".prettierrc", ".env"],
- "globalEnv": ["TOKEN", "SECRET"]
+ "globalEnv": ["TOKEN", "SECRET", "npm_package_version", "NEXTAUTH_URL", "CLIENT_ID", "CLIENT_SECRET", "ANALYZE", "MONGODB_URI", "NODE_ENV", "ENVIRONMENT_URL", "HOTJAR_ID"]
 }
