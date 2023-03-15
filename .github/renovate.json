@@ -1,8 +1,6 @@
 {
  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
- "extends": ["config:base"],
- "dependencyDashboard": false,
- "labels": ["dependencies"],
+ "extends": ["github>igorkowalczyk/shared-configs//packages/renovate-config/index.json"],
  "packageRules": [
   {
    "matchFiles": ["/packages/dashboard/**"],
@@ -16,6 +14,5 @@
    "matchPaths": ["+(package.json)"],
    "labels": ["dependencies"]
   }
- ],
- "reviewers": ["igorkowalczyk"]
+ ]
 }
