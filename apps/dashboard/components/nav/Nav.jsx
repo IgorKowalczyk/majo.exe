@@ -33,7 +33,7 @@ export function Nav() {
           <Menu.Button className="ml-4 flex cursor-pointer items-center gap-3 duration-200 motion-reduce:transition-none">
            {({ open }) => (
             <div className={`${open ? "opacity-80" : "hover:opacity-80"} flex h-10 select-none items-center rounded bg-button-secondary px-4 py-2 duration-200 hover:bg-button-secondary-hover motion-reduce:transition-none`}>
-             <Image width="30" height="30" className="!h-5 !w-5 rounded-full" src={session.user.image} loading="lazy" alt={`${session.user.name} Avatar`} />
+             <Image width="32" height="32" quality={100} className="!h-8 !w-8 rounded-full" src={session.user.image} loading="lazy" alt={`${session.user.name} Avatar`} />
              <span className="!ml-2 ">{session.user.name}</span>
              <ChevronDownIcon className={`${open ? "rotate-180" : ""} ml-2 h-4 w-4 duration-200 motion-reduce:transition-none`} />
             </div>
@@ -45,22 +45,6 @@ export function Nav() {
            <div className="px-1 py-1 ">
             <Menu.Item>
              {({ active }) => (
-              <Link href="/user/profile" className={`${active ? "bg-button-primary text-white" : "text-gray-400"} group my-1 flex w-full items-center rounded-md px-2 py-2 text-sm duration-200 motion-reduce:transition-none`}>
-               <UserIcon className="mr-2 h-5 w-5 " aria-hidden="true" role="img" /> View profile
-              </Link>
-             )}
-            </Menu.Item>
-            <Menu.Item>
-             {({ active }) => (
-              <Link href="/user/settings" className={`${active ? "bg-button-primary text-white" : "text-gray-400"} group my-1 flex w-full items-center rounded-md px-2 py-2 text-sm duration-200 motion-reduce:transition-none`}>
-               <Cog8ToothIcon className="mr-2 h-5 w-5 " aria-hidden="true" role="img" /> Settings
-              </Link>
-             )}
-            </Menu.Item>
-           </div>
-           <div className="px-1 py-1">
-            <Menu.Item>
-             {({ active }) => (
               <Link href="/dashboard" className={`${active ? "bg-button-primary text-white" : "text-gray-400"} group my-1 flex w-full items-center rounded-md px-2 py-2 text-sm duration-200 motion-reduce:transition-none`}>
                <RectangleStackIcon className="mr-2 h-5 w-5 " aria-hidden="true" role="img" /> Dashboard
               </Link>
@@ -68,8 +52,15 @@ export function Nav() {
             </Menu.Item>
             <Menu.Item>
              {({ active }) => (
-              <Link href="/dashboard/guilds" className={`${active ? "bg-button-primary text-white" : "text-gray-400"} group my-1 flex w-full items-center rounded-md px-2 py-2 text-sm duration-200 motion-reduce:transition-none`}>
-               <HashtagIcon className="mr-2 h-5 w-5 " aria-hidden="true" role="img" /> Your servers
+              <Link href="/user/profile" className={`${active ? "bg-button-primary text-white" : "text-gray-400"} group my-1 flex w-full items-center rounded-md px-2 py-2 text-sm duration-200 motion-reduce:transition-none`}>
+               <UserIcon className="mr-2 h-5 w-5 " aria-hidden="true" role="img" /> Profile
+              </Link>
+             )}
+            </Menu.Item>
+            <Menu.Item>
+             {({ active }) => (
+              <Link href="/user/settings" className={`${active ? "bg-button-primary text-white" : "text-gray-400"} group my-1 flex w-full items-center rounded-md px-2 py-2 text-sm duration-200 motion-reduce:transition-none`}>
+               <Cog8ToothIcon className="mr-2 h-5 w-5 " aria-hidden="true" role="img" /> Settings
               </Link>
              )}
             </Menu.Item>

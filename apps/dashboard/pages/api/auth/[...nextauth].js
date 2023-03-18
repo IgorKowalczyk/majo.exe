@@ -11,6 +11,7 @@ export const authOptions = {
   DiscordProvider({
    clientId: credentials.clientId,
    clientSecret: credentials.clientSecret,
+   authorization: { params: { scope: "identify email guilds" } },
    profile(profile) {
     return profile;
    },
@@ -32,10 +33,11 @@ export const authOptions = {
   buttonText: "#000000",
  },
  callbacks: {
-  async jwt({ token, profile }) {
-   if (profile) {
+  async jwt({ token, account, profile }) {
+   if (account) {
     token = {
      ...token,
+     ...account,
      ...profile,
      role: "user",
     };

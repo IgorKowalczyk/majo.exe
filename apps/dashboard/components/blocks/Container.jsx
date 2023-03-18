@@ -52,7 +52,7 @@ export function Container(props) {
    </Head>
    <Nav />
    <Twemoji options={{ className: "twemoji" }}>
-    <div className="flex w-full flex-col items-center bg-background-primary antialiased">{children}</div>
+    <div className="flex w-full flex-col items-center bg-background-primary antialiased md:py-16 md:px-16 px-8 py-8">{children}</div>
    </Twemoji>
   </>
  );

@@ -28,6 +28,8 @@
  },
  "homepage": "https://github.com/igorkowalczyk/majo.exe#readme",
  "dependencies": {
+  "chalk": "5.2.0",
+  "discord.js": "14.8.0",
   "mongodb": "5.1.0"
  },
  "devDependencies": {
