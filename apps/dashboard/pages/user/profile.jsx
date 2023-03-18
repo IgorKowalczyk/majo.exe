@@ -1,5 +1,6 @@
 import { ArrowTopRightOnSquareIcon } from "@heroicons/react/24/outline";
 import { getFlags } from "@majoexe/util/src/functions/getFlags";
+import { getServers } from "@majoexe/util/src/functions/getServers";
 import Tippy from "@tippyjs/react";
 import { Emojis } from "components/decorations/emojis";
 import Image from "next/image";
@@ -7,7 +8,6 @@ import Link from "next/link";
 import { getSession } from "next-auth/react";
 import { animateFill } from "tippy.js";
 import { Container } from "../../components/blocks/Container";
-import { getServers } from "@majoexe/util/src/functions/getServers";
 import "tippy.js/dist/backdrop.css";
 import "tippy.js/animations/shift-away.css";
 import "tippy.js/dist/tippy.css";

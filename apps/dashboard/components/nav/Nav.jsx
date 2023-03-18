@@ -1,5 +1,7 @@
+"use client";
+
 import { Menu, Transition } from "@headlessui/react";
-import { HashtagIcon, RectangleStackIcon, Cog8ToothIcon, UserIcon, ArrowRightOnRectangleIcon, QuestionMarkCircleIcon, ChevronDownIcon } from "@heroicons/react/24/outline";
+import { RectangleStackIcon, Cog8ToothIcon, UserIcon, ArrowRightOnRectangleIcon, QuestionMarkCircleIcon, ChevronDownIcon } from "@heroicons/react/24/outline";
 import Image from "next/image";
 import Link from "next/link";
 import { useSession, signIn, signOut } from "next-auth/react";

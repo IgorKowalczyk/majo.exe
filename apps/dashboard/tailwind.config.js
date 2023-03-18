@@ -1,10 +1,10 @@
+const svgToDataUri = require("mini-svg-data-uri");
 const { fontFamily } = require("tailwindcss/defaultTheme");
 const plugin = require("tailwindcss/plugin");
-const svgToDataUri = require("mini-svg-data-uri");
 
 module.exports = {
  darkMode: "class",
- content: ["./pages/**/*.{js,ts,jsx,tsx}", "./components/**/*.{js,ts,jsx,tsx}", "./config.js"],
+ content: ["./pages/**/*.{js,ts,jsx,tsx}", "./app/**/*.{js,ts,jsx,tsx}", "./components/**/*.{js,ts,jsx,tsx}", "./config.js"],
  theme: {
   extend: {
    fontFamily: {
