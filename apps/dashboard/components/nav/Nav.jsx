@@ -16,7 +16,7 @@ export function Nav() {
    <Link href="/" className="font-inter text-lg text-white">
     <div className="flex cursor-pointer items-center gap-2 px-4 text-xl duration-200 hover:opacity-90 motion-reduce:transition-none">
      <Image className="rounded-full" src={social.logo} alt="Majo.exe" width={36} height={36} />
-     <h1 className="font-inter sm:block hidden">{meta.title}</h1>
+     <h1 className="font-inter sm:block hidden font-bold">{meta.title}</h1>
     </div>
    </Link>
    <div className="ml-auto mr-4 font-inter">

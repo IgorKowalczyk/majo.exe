@@ -12,7 +12,9 @@
     "format": "turbo run format --color",
     "format:check": "turbo run format:check --color",
     "int": "prettier --write . --cache --ignore-unknown",
-    "int:check": "prettier --check ."
+    "int:check": "prettier --check .",
+    "int:lint": "eslint . --ext .ts,.tsx,.js,.jsx --fix",
+    "int:lint:check": "eslint . --ext .ts,.tsx,.js,.jsx --fix"
   },
   "workspaces": [
     "packages/*",

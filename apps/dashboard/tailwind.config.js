@@ -24,7 +24,7 @@ module.exports = {
     "button-action-hover": "#ff5f5f",
    },
    backgroundImage: {
-    shapes: `url('/assets/svg/background.svg')`,
+    shapes: "url('/assets/svg/background.svg')",
    },
    fontSize: {
     normal: ["1.1rem", "1.45rem"],
@@ -41,16 +41,18 @@ module.exports = {
   },
  },
  plugins: [
-  plugin(function ({ matchUtilities }) {
+  plugin(({ matchUtilities }) => {
    matchUtilities({
     "bg-grid": (value) => ({
      backgroundImage: `url("${svgToDataUri(`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32" fill="none" stroke="${value}"><path d="M0 .5H31.5V32"/></svg>`)}")`,
     }),
    });
   }),
+  /* eslint-disable global-require */
   require("tailwindcss-text-fill"),
   require("tailwind-gradient-mask-image"),
   require("@headlessui/tailwindcss"),
   require("@igorkowalczyk/is-browser"),
+  /* eslint-enable global-require */
  ],
 };

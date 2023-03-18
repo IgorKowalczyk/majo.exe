@@ -1,6 +1,5 @@
 import { ArrowTopRightOnSquareIcon } from "@heroicons/react/24/outline";
 import { getFlags } from "@majoexe/util/src/functions/getFlags";
-import { getServers } from "@majoexe/util/src/functions/getServers";
 import Tippy from "@tippyjs/react";
 import { Emojis } from "components/decorations/emojis";
 import Image from "next/image";
@@ -12,7 +11,7 @@ import "tippy.js/dist/backdrop.css";
 import "tippy.js/animations/shift-away.css";
 import "tippy.js/dist/tippy.css";
 
-export default function Profile({ session, count }) {
+export default function Profile({ session }) {
  return (
   <Container>
    <div className="flex min-h-screen flex-col justify-center gap-4">
@@ -67,8 +66,5 @@ export default function Profile({ session, count }) {
 export async function getServerSideProps(context) {
  const session = await getSession(context);
  if (!session) return { redirect: { destination: "/auth/login", permanent: false } };
-
- const servers = (await getServers(session.access_token)) || [];
- const count = servers.length;
- return { props: { session, count } };
+ return { props: { session } };
 }

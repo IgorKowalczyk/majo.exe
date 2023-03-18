@@ -1,4 +1,5 @@
 import Head from "next/head";
+import Link from "next/link";
 import { useRouter } from "next/router";
 import Twemoji from "react-twemoji";
 import { meta as headMeta, social } from "../../config";
@@ -53,6 +54,12 @@ export function Container(props) {
    <Nav />
    <Twemoji options={{ className: "twemoji" }}>
     <div className="flex w-full flex-col items-center bg-background-primary antialiased md:py-16 md:px-16 px-8 py-8">{children}</div>
+    <div className="fixed z-50 bottom-0 left-0 rounded-xl right-0 w-fit mx-auto mb-6 backdrop-blur px-6 bg-button-secondary/80 border border-gray-700 text-white text-center py-4">
+     Note: The site is still in development. Please report any bugs or issues to the{" "}
+     <Link href="/discord" target={"_blank"} className="text-button-primary hover:underline">
+      support server.
+     </Link>
+    </div>
    </Twemoji>
   </>
  );
