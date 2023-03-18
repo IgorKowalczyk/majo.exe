@@ -20,4 +20,7 @@ if (process.env.NODE_ENV === "development") {
  clientPromise = client.connect();
 }
 
+/** Create database promise
+ * @returns {Promise<any>} The connection to the database
+ */
 export default clientPromise;
