@@ -10,10 +10,13 @@ export default async function handler(req, res) {
  try {
   const servers = (await getServers(session.access_token)) || [];
   const filteredServers = servers.length > 0 ? servers.filter((server) => canAddBotToServer(server.permissions)) : [];
-  for (const server of filteredServers) {
+  const promises = filteredServers.map(async (server) => {
    server.bot = await isBotInServer(server.id);
-  }
-  return res.status(200).json(filteredServers);
+   return server;
+  });
+
+  /* eslint-disable-next-line no-undef */
+  return res.status(200).json(await Promise.all(promises));
  } catch (err) {
   console.log(err);
   return res.status(500).json({ error: "Internal Server Error" });

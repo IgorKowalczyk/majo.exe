@@ -17,7 +17,7 @@ export default function Document({ props }) {
     <link rel="preconnect" href="https://twemoji.maxcdn.com" crossOrigin="anonymous" />
     <link rel="dns-prefetch" href="https://twemoji.maxcdn.com" />
    </Head>
-   <body className="bg-main-white dark:bg-main-dark relative">
+   <body className="bg-background-primary relative">
     <Main {...props} />
     <NextScript />
    </body>

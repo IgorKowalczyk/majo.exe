@@ -1,22 +1,41 @@
+"use server";
+
 import { PlusSmallIcon, RectangleStackIcon } from "@heroicons/react/24/outline";
+import { canAddBotToServer } from "@majoexe/util/src/functions/checkPermissions";
+import { getServers } from "@majoexe/util/src/functions/getServers.js";
+import { isBotInServer } from "@majoexe/util/src/functions/isBotInServer";
 import { PrimaryButton } from "components/buttons/Primary";
 import { SecondaryButton } from "components/buttons/Secondary";
-import { SWR } from "lib/swr";
+import { getSession } from "lib/session";
 import Image from "next/image";
-import { getServerSession } from "next-auth/next";
-import { Container } from "../../components/blocks/Container";
-import { authOptions } from "../api/auth/[...nextauth]";
 import "tippy.js/dist/backdrop.css";
 import "tippy.js/animations/shift-away.css";
 import "tippy.js/dist/tippy.css";
+import { redirect } from "next/navigation";
 
-export default function Dashboard() {
- const { data: servers } = SWR("/api/servers/fetch");
+export async function getAllServers(session) {
+ const servers = (await getServers(session.access_token)) || [];
+ const filteredServers = servers.length > 0 ? servers.filter((server) => canAddBotToServer(server.permissions)) : [];
+ const promises = filteredServers.map(async (server) => {
+  const isbot = await isBotInServer(server.id);
+  server.bot = isbot;
+  return server;
+ });
+
+ /* eslint-disable-next-line no-undef */
+ return await Promise.all(promises);
+}
+
+export default async function Dashboard() {
+ const session = await getSession();
+ if (!session) return redirect("/auth/login");
+ const servers = await getAllServers(session);
+
  return (
-  <Container>
-   <div className="flex min-h-screen flex-col justify-center gap-4">
+  <div className="flex w-full flex-col items-center bg-background-primary antialiased md:py-16 md:px-16 px-8 py-8">
+   <div className="flex flex-col justify-center gap-4">
     <h1 className="flex items-center justify-center gap-4 text-center font-inter text-5xl font-bold">
-     {servers ? <RectangleStackIcon className="h-10 w-10" aria-hidden="true" role="img" /> : <div className="box-border h-9 w-9 animate-[spin_500ms_linear_infinite] rounded-[50%] border-[4px] border-solid border-transparent border-t-white border-l-white motion-reduce:transition-none" />}
+     <RectangleStackIcon className="h-10 w-10" aria-hidden="true" role="img" />
      Dashboard
     </h1>
     <h2 className="text-center font-inter text-xl opacity-50">You can only add the bot to servers you have the "Manage Server" permission in.</h2>
@@ -41,28 +60,10 @@ export default function Dashboard() {
        </div>
       ))
      ) : (
-      <>
-       {[...Array(5)].map((_, i) => (
-        <div key={i} className="flex flex-row items-center">
-         <div className="flex flex-row items-center justify-center gap-4">
-          <div className="w-16 h-16 rounded-full bg-button-secondary animate-pulse" style={{ animationDelay: `${150 * i - 50}ms` }} />
-          <div className="w-40 h-8 rounded-full bg-button-secondary animate-pulse" style={{ animationDelay: `${150 * i - 50}ms` }} />
-         </div>
-         <div className="ml-auto">
-          <div className="h-[40px] w-32 rounded bg-button-secondary animate-pulse" style={{ animationDelay: `${150 * i - 50}ms` }} />
-         </div>
-        </div>
-       ))}
-      </>
+      <h3 className="text-center font-inter text-xl font-bold">You don't have any servers!</h3>
      )}
     </div>
    </div>
-  </Container>
+  </div>
  );
-}
-
-export async function getServerSideProps(context) {
- const session = await getServerSession(context.req, context.res, authOptions);
- if (!session) return { redirect: { destination: "/auth/login", permanent: false } };
- return { props: { session } };
 }

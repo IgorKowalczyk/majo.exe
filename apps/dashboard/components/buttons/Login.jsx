@@ -1,3 +1,5 @@
+"use client";
+
 import { ArrowUturnRightIcon } from "@heroicons/react/24/outline";
 import Link from "next/link";
 import { useSession, signIn } from "next-auth/react";
@@ -10,6 +12,12 @@ export function Login() {
    <Link href="/dashboard" className="flex cursor-pointer items-center rounded bg-button-primary px-4 py-2 font-inter leading-6 text-white duration-200 hover:bg-button-primary-hover motion-reduce:transition-none">
     <ArrowUturnRightIcon className="mr-2 h-5 w-5" aria-hidden="true" role="img" /> Go to dashboard
    </Link>
+  );
+ } else if (status === "loading") {
+  return (
+   <button className="flex cursor-pointer items-center rounded bg-button-primary px-4 py-2 font-inter leading-6 text-white duration-200 hover:bg-button-primary-hover motion-reduce:transition-none">
+    <div className="box-border mr-2 h-5 w-5 animate-[spin_500ms_linear_infinite] rounded-[50%] border-[2px] border-solid border-transparent border-t-white border-l-white motion-reduce:transition-none" /> Loading...
+   </button>
   );
  } else {
   return (

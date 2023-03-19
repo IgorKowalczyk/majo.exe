@@ -14,7 +14,7 @@ export async function getServer(id) {
   });
   if (res.status === 404) return { error: "Server not found" };
   const json = await res.json();
-  json.bot = isBotInServer(id);
+  json.bot = await isBotInServer(id);
   return json;
  } catch (err) {
   return err;

@@ -1,3 +1,5 @@
+"use server";
+
 /**
  * Checks if the bot is in a server
  * @param {string} guildId The guild ID.
@@ -10,7 +12,9 @@ export async function isBotInServer(guildId) {
     Authorization: `Bot ${process.env.TOKEN}`,
    },
   });
-  return res.status === 200;
+  const response = await res.json();
+  if (response.code) return false;
+  return true;
  } catch (err) {
   return false;
  }
