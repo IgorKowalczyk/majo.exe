@@ -24,7 +24,7 @@
     "@majoexe/eslint-config": "workspace:*",
     "@igorkowalczyk/eslint-config": "1.0.3",
     "@igorkowalczyk/prettier-config": "1.0.3",
-    "turbo": "1.8.3"
+    "turbo": "1.8.4"
   },
   "repository": {
     "type": "git",
