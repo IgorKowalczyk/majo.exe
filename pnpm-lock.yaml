@@ -46,7 +46,7 @@ importers:
       '@next-auth/mongodb-adapter': 1.1.1
       '@next/bundle-analyzer': 13.2.4
       '@tippyjs/react': ^4.2.6
-      '@vercel/og': 0.2.0
+      '@vercel/og': 0.4.1
       autoprefixer: 10.4.14
       eslint: 8.36.0
       eslint-config-next: 13.2.4
@@ -77,7 +77,7 @@ importers:
       '@majoexe/util': link:../../packages/utils
       '@next-auth/mongodb-adapter': 1.1.1_ekl6mgou7ynshj3llzs5q4xzui
       '@tippyjs/react': 4.2.6_biqbaboplfbrettd7655fr4n2y
-      '@vercel/og': 0.2.0
+      '@vercel/og': 0.4.1
       mongodb: 5.1.0
       next: 13.2.4_biqbaboplfbrettd7655fr4n2y
       next-auth: 4.20.1_ld2jel3hspngo3u5lti2kgl2sq
@@ -620,12 +620,12 @@ packages:
       eslint-visitor-keys: 3.3.0
     dev: true
 
-  /@vercel/og/0.2.0:
-    resolution: {integrity: sha512-nBxtwJpxeK52XQjzNKOlbT0XF6oTyrMHd1/heSUI2pdgjBf5rGS3nWpjlIurWoLGTHhtxwS7zxTgP45sX6Q29Q==}
+  /@vercel/og/0.4.1:
+    resolution: {integrity: sha512-N8SXkbmQQRK0iHpqwUe50Fe8JO3sx2ByV6hgPTi16ONiMdqOM9uzE4QMWoY1Oa0uYZuUVA30sEB84mVMn+gT3w==}
     engines: {node: '>=16'}
     dependencies:
       '@resvg/resvg-wasm': 2.4.1
-      satori: 0.4.0
+      satori: 0.4.1
       yoga-wasm-web: 0.3.0
     dev: false
 
@@ -2879,8 +2879,8 @@ packages:
     dev: false
     optional: true
 
-  /satori/0.4.0:
-    resolution: {integrity: sha512-ROtZJkBErgJ2HVMk5jDUrJ8B+FuOTFlHYjcNCfSHjwgEavkaZsDvxPwl/1VCa4XpdkHrPcMuUDF+36w+lUECUg==}
+  /satori/0.4.1:
+    resolution: {integrity: sha512-uQm4+vQj57E9PO/ASAlxsRb+78fHkRUmkNLBBmfuEeGNLGqJ9ufYU7TzYP4XH60PLHYt9Wz1jSsgcAe2cz7+ng==}
     engines: {node: '>=16'}
     dependencies:
       '@shuding/opentype.js': 1.4.0-beta.0

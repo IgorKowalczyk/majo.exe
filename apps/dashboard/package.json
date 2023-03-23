@@ -40,7 +40,7 @@
   "@majoexe/util": "workspace:*",
   "@next-auth/mongodb-adapter": "1.1.1",
   "@tippyjs/react": "^4.2.6",
-  "@vercel/og": "0.2.0",
+  "@vercel/og": "0.4.1",
   "mongodb": "5.1.0",
   "next": "13.2.4",
   "next-auth": "4.20.1",
