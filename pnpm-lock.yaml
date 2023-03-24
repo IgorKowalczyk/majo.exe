@@ -64,7 +64,7 @@ importers:
       react: 18.2.0
       react-dom: 18.2.0
       react-twemoji: 0.5.0
-      sharp: 0.31.3
+      sharp: 0.32.0
       swr: ^2.1.0
       tailwind-gradient-mask-image: 1.0.0
       tailwindcss: 3.2.7
@@ -87,7 +87,7 @@ importers:
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
       react-twemoji: 0.5.0_react@18.2.0
-      sharp: 0.31.3
+      sharp: 0.32.0
       swr: 2.1.0_react@18.2.0
     devDependencies:
       '@majoexe/eslint-config': link:../../packages/eslint-config
@@ -2323,8 +2323,8 @@ packages:
       semver: 7.3.8
     dev: false
 
-  /node-addon-api/5.1.0:
-    resolution: {integrity: sha512-eh0GgfEkpnoWDq+VY8OyvYhFEzBk6jIYbRKdIlyTiAXIVJ8PyBaKb0rp7oDtoddbdoHWhq8wwr+XZ81F1rpNdA==}
+  /node-addon-api/6.0.0:
+    resolution: {integrity: sha512-GyHvgPvUXBvAkXa0YvYnhilSB1A+FRYMpIVggKzPZqdaZfevZOuzfWzyvgzOwRLHBeo/MMswmJFsrNF4Nw1pmA==}
     dev: false
 
   /node-domexception/1.0.0:
@@ -2910,14 +2910,14 @@ packages:
     dependencies:
       lru-cache: 6.0.0
 
-  /sharp/0.31.3:
-    resolution: {integrity: sha512-XcR4+FCLBFKw1bdB+GEhnUNXNXvnt0tDo4WsBsraKymuo/IAuPuCBVAL2wIkUw2r/dwFW5Q5+g66Kwl2dgDFVg==}
+  /sharp/0.32.0:
+    resolution: {integrity: sha512-yLAypVcqj1toSAqRSwbs86nEzfyZVDYqjuUX8grhFpeij0DDNagKJXELS/auegDBRDg1XBtELdOGfo2X1cCpeA==}
     engines: {node: '>=14.15.0'}
     requiresBuild: true
     dependencies:
       color: 4.2.3
       detect-libc: 2.0.1
-      node-addon-api: 5.1.0
+      node-addon-api: 6.0.0
       prebuild-install: 7.1.1
       semver: 7.3.8
       simple-get: 4.0.1
