@@ -14,8 +14,8 @@ importers:
         specifier: workspace:*
         version: link:packages/eslint-config
       turbo:
-        specifier: 1.8.6
-        version: 1.8.6
+        specifier: 1.8.7
+        version: 1.8.7
 
   apps/bot:
     dependencies:
@@ -154,8 +154,8 @@ importers:
         specifier: 8.37.0
         version: 8.37.0
       eslint-config-turbo:
-        specifier: 1.8.6
-        version: 1.8.6(eslint@8.37.0)
+        specifier: 1.8.7
+        version: 1.8.7(eslint@8.37.0)
 
   packages/utils:
     dependencies:
@@ -1317,13 +1317,13 @@ packages:
     dependencies:
       eslint: 8.36.0
 
-  /eslint-config-turbo@1.8.6(eslint@8.37.0):
-    resolution: {integrity: sha512-LSMqrHmFeQcYRuBnzrzw+B2bJ3+o8wxPkRwfK0Y+SSLsq2F/niRJ2kqB8j4uOSCfxybHHpFEB2CgUpQiiyfeoQ==}
+  /eslint-config-turbo@1.8.7(eslint@8.37.0):
+    resolution: {integrity: sha512-kqK63y8e/cV2DJMbC5tPyfJgV+LxQxfik19qC+wtuiicb+3yRdjTbv+M5z+UCPHpCVWi33x9FxuOXn83jAlOkw==}
     peerDependencies:
       eslint: '>6.6.0'
     dependencies:
       eslint: 8.37.0
-      eslint-plugin-turbo: 1.8.6(eslint@8.37.0)
+      eslint-plugin-turbo: 1.8.7(eslint@8.37.0)
     dev: false
 
   /eslint-import-resolver-node@0.3.7:
@@ -1489,8 +1489,8 @@ packages:
       string.prototype.matchall: 4.0.8
     dev: true
 
-  /eslint-plugin-turbo@1.8.6(eslint@8.37.0):
-    resolution: {integrity: sha512-LieXzur+4XtIsLst8GdupTMhvGn2ebFetG3AVErh2jHBy1EobPHbatjcdNZQMy5EsdG35axQVB8KFF3jo4u+OQ==}
+  /eslint-plugin-turbo@1.8.7(eslint@8.37.0):
+    resolution: {integrity: sha512-6pkvcU+aynbC7gtSiV8rUAVtxWQsn74HdOt6STBWGLBw1fZy4O6hkU77Xi6gh8gtdvTrYMEP+nBl8ZV0erRZbg==}
     peerDependencies:
       eslint: '>6.6.0'
     dependencies:
@@ -3427,65 +3427,65 @@ packages:
       safe-buffer: 5.2.1
     dev: false
 
-  /turbo-darwin-64@1.8.6:
-    resolution: {integrity: sha512-VlXkQR0TEBAEyBRsvAXBax+fj1EdPKPliwBaCnRLiDUcA/8wYlKte/Kk6ubmj9E0n7U/B4keCxxHiJZqW/5Rqg==}
+  /turbo-darwin-64@1.8.7:
+    resolution: {integrity: sha512-QOa7SI1sv8IH9biO4qThmyz0w2WNlQMJ8CmJ9NmyujlqQYdcP3r2JJY6GlJkUk2PdX9YV3mBVrOePicBy3gcjA==}
     cpu: [x64]
     os: [darwin]
     requiresBuild: true
     dev: true
     optional: true
 
-  /turbo-darwin-arm64@1.8.6:
-    resolution: {integrity: sha512-w4L2QLj90ex68UXxTPoqtZPl8mWzc6a1RtPjQhoxAWtZf9T2WXi813dCzYEbVUVC09/DOW/VxZRN7sb2r0KP9A==}
+  /turbo-darwin-arm64@1.8.7:
+    resolution: {integrity: sha512-q2pvkuZBoP1iljSZC+vtIObkgFZeo9kDdOJvj+bloLIEkkksBWNGvgabVWBAzJyNnoUHCQVxKPIstEhfmzW3eA==}
     cpu: [arm64]
     os: [darwin]
     requiresBuild: true
     dev: true
     optional: true
 
-  /turbo-linux-64@1.8.6:
-    resolution: {integrity: sha512-eV245jefIhMAZskqQKalFwreC5UEdQcuHcBiWcgUk0py76fbwB7+1HfH5cmeJlb3a1sB6f3H0HHmGPmb34feCA==}
+  /turbo-linux-64@1.8.7:
+    resolution: {integrity: sha512-xlNS6cFCLDcQeuHFINn+p4Z5H880v3/KSdYKiuIpxAwijhLq5ZTTpGQegNiOXrct3cotKUI7lWgDPn6Y2G/A8Q==}
     cpu: [x64]
     os: [linux]
     requiresBuild: true
     dev: true
     optional: true
 
-  /turbo-linux-arm64@1.8.6:
-    resolution: {integrity: sha512-Kiw3nyEvNU6Bpil4zE5FwhasPAOi59R4YdCmjJp0Sen6V9u+/Jij6SWwaoUdATORJLiYQBbhontWBH55B53VDw==}
+  /turbo-linux-arm64@1.8.7:
+    resolution: {integrity: sha512-lmQ09jHGOyMqmA66a/Hcm6Ox9ZqVFIIFFZHEiO1L4dRtl2PNCzzgp+DoNP1VEvVOgRTxy71MU5Z3APOLjmC05A==}
     cpu: [arm64]
     os: [linux]
     requiresBuild: true
     dev: true
     optional: true
 
-  /turbo-windows-64@1.8.6:
-    resolution: {integrity: sha512-34BkAG9r4nE00xeMeVahaF82h8R6SO+IIOcD60fNr2p+Ch+YcQa+DbEWA/KUj3coUTIiNP5XnRCLRUYADdlxjQ==}
+  /turbo-windows-64@1.8.7:
+    resolution: {integrity: sha512-XcHNYAzCWESpqULDU0USXidfOXmkoLzYzTrUWhmXUdTNL4pcUysFn+CHKbiYU8nSBFcZacJnHQ/kEjduqRoJ9g==}
     cpu: [x64]
     os: [win32]
     requiresBuild: true
     dev: true
     optional: true
 
-  /turbo-windows-arm64@1.8.6:
-    resolution: {integrity: sha512-4jWUaI7Lmonp2I3x81GruiCYd0aQsG/xDOYhuv9+j2yIgB/UHJFz/P8PWp/nziwPtGpRd/AheDlPzzyd9lWoqw==}
+  /turbo-windows-arm64@1.8.7:
+    resolution: {integrity: sha512-Ly1mksTC94lrK3/MxKKBmyf4roVYoeo43Rj+kv9qtx20+2Fzf3Iclw8H5/eGucnOOoxeinfdz4tjzhAHdNRwfA==}
     cpu: [arm64]
     os: [win32]
     requiresBuild: true
     dev: true
     optional: true
 
-  /turbo@1.8.6:
-    resolution: {integrity: sha512-6IOOaa8ytgjnSCTnp3LKAd2uGBZ/Kmx8ZPlI/YMWuKMUqvkXKLbh+w76ApMgMm+faUqti+QujVWovCu2kY6KuQ==}
+  /turbo@1.8.7:
+    resolution: {integrity: sha512-0EtA4OfLSPpcErAQBKArDueQ/EoYPiPlRAWidHV8l030aVFY3B05dDd3CcfTM41IFSSgqk9n4R8DgesC8fVrDA==}
     hasBin: true
     requiresBuild: true
     optionalDependencies:
-      turbo-darwin-64: 1.8.6
-      turbo-darwin-arm64: 1.8.6
-      turbo-linux-64: 1.8.6
-      turbo-linux-arm64: 1.8.6
-      turbo-windows-64: 1.8.6
-      turbo-windows-arm64: 1.8.6
+      turbo-darwin-64: 1.8.7
+      turbo-darwin-arm64: 1.8.7
+      turbo-linux-64: 1.8.7
+      turbo-linux-arm64: 1.8.7
+      turbo-windows-64: 1.8.7
+      turbo-windows-arm64: 1.8.7
     dev: true
 
   /twemoji-parser@14.0.0:
