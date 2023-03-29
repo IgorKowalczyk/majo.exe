@@ -8,8 +8,8 @@ importers:
         specifier: 1.0.3
         version: 1.0.3(prettier@2.8.7)
       '@igorkowalczyk/prettier-config':
-        specifier: 1.0.3
-        version: 1.0.3
+        specifier: 1.1.0
+        version: 1.1.0
       '@majoexe/eslint-config':
         specifier: workspace:*
         version: link:packages/eslint-config
@@ -359,10 +359,10 @@ packages:
       tailwindcss: 3.2.7(postcss@8.4.21)
     dev: false
 
-  /@igorkowalczyk/prettier-config@1.0.3:
-    resolution: {integrity: sha512-STNkpxGegsCkoi3v/g88OvzDTATONNhF/U/ZzyLLDnDaLTTFg3dil7Ab8rRe5RoLSQhBnLzcXVea6VBGGqArxg==}
+  /@igorkowalczyk/prettier-config@1.1.0:
+    resolution: {integrity: sha512-rPqlxjKwAtLHwIX/8OeR5O5Vn6QtAGK4x9ZWlwn63nB/2ek6D85yRKRhv2oy+/MEB4gQpaPFbFEILsSIIsqYgQ==}
     dependencies:
-      prettier: 2.8.4
+      prettier: 2.8.7
     dev: true
 
   /@next-auth/mongodb-adapter@1.1.1(mongodb@5.1.0)(next-auth@4.20.1):
@@ -2820,12 +2820,6 @@ packages:
         optional: true
     dependencies:
       prettier: 2.8.7
-    dev: true
-
-  /prettier@2.8.4:
-    resolution: {integrity: sha512-vIS4Rlc2FNh0BySk3Wkd6xmwxB0FpOndW5fisM5H8hsZSxU2VWVB5CWIkIjWvrHjIhxk2g3bfMKM87zNTrZddw==}
-    engines: {node: '>=10.13.0'}
-    hasBin: true
     dev: true
 
   /prettier@2.8.7:
