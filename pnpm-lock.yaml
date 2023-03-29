@@ -57,8 +57,8 @@ importers:
         specifier: 2.0.16
         version: 2.0.16(react@18.2.0)
       '@igorkowalczyk/is-browser':
-        specifier: 3.0.0
-        version: 3.0.0(tailwindcss@3.2.7)
+        specifier: 3.1.0
+        version: 3.1.0(tailwindcss@3.2.7)
       '@majoexe/util':
         specifier: workspace:*
         version: link:../../packages/utils
@@ -350,11 +350,11 @@ packages:
       - prettier
       - supports-color
 
-  /@igorkowalczyk/is-browser@3.0.0(tailwindcss@3.2.7):
-    resolution: {integrity: sha512-90HHmYxNg4S9zR8COlc56mtFxG8Q5qdPJ1mWmWx2xvtySZdOUnSS/UycvvEDC3bZJiRLvGfzmpsW+DRATDWIkg==}
+  /@igorkowalczyk/is-browser@3.1.0(tailwindcss@3.2.7):
+    resolution: {integrity: sha512-rSkk/ih69gCZB99N+5FYt4YlWTDhIJV6z+TrAr/MAhVlE1Hd6jBv0N8E4dk6gYupxzCB3UiVpmlHeUNuaWCZgQ==}
     engines: {node: '>=10'}
     peerDependencies:
-      tailwindcss: 3.0 || 3.2
+      tailwindcss: 3.0 || 3.2 || 3.3
     dependencies:
       tailwindcss: 3.2.7(postcss@8.4.21)
     dev: false
