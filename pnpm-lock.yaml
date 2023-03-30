@@ -54,8 +54,8 @@ importers:
         specifier: 0.1.2
         version: 0.1.2(tailwindcss@3.3.1)
       '@heroicons/react':
-        specifier: 2.0.16
-        version: 2.0.16(react@18.2.0)
+        specifier: 2.0.17
+        version: 2.0.17(react@18.2.0)
       '@igorkowalczyk/is-browser':
         specifier: 3.1.0
         version: 3.1.0(tailwindcss@3.3.1)
@@ -295,8 +295,8 @@ packages:
       tailwindcss: 3.3.1(postcss@8.4.21)
     dev: false
 
-  /@heroicons/react@2.0.16(react@18.2.0):
-    resolution: {integrity: sha512-x89rFxH3SRdYaA+JCXwfe+RkE1SFTo9GcOkZettHer71Y3T7V+ogKmfw5CjTazgS3d0ClJ7p1NA+SP7VQLQcLw==}
+  /@heroicons/react@2.0.17(react@18.2.0):
+    resolution: {integrity: sha512-90GMZktkA53YbNzHp6asVEDevUQCMtxWH+2UK2S8OpnLEu7qckTJPhNxNQG52xIR1WFTwFqtH6bt7a60ZNcLLA==}
     peerDependencies:
       react: '>= 16'
     dependencies:
