@@ -29,15 +29,6 @@ module.exports = {
    fontSize: {
     normal: ["1.1rem", "1.45rem"],
    },
-   animation: {
-    movebackground: "movebg 60s linear infinite",
-   },
-   keyframes: {
-    movebg: {
-     "0% 100%": { backgroundPosition: "0% 0%" },
-     "50%": { backgroundPosition: "-10% 10%" },
-    },
-   },
   },
  },
  plugins: [

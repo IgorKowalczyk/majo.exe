@@ -30,7 +30,7 @@ html {
 }
 
 ::selection {
- @apply bg-black/10 dark:bg-white/10;
+ @apply bg-accent-primary/20;
 }
 
 img.twemoji {
