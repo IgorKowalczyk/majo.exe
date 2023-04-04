@@ -19,7 +19,7 @@
   "chalk": "5.2.0",
   "discord.js": "14.9.0",
   "dotenv": "16.0.3",
-  "mongodb": "5.1.0"
+  "mongodb": "5.2.0"
  },
  "devDependencies": {
   "@majoexe/eslint-config": "workspace:*",
