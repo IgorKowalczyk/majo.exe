@@ -42,7 +42,7 @@
   "@tippyjs/react": "^4.2.6",
   "@vercel/og": "0.5.0",
   "mongodb": "5.2.0",
-  "next": "13.2.4",
+  "next": "13.3.0",
   "next-auth": "4.21.1",
   "next-themes": "0.2.1",
   "node-fetch": "3.3.1",
@@ -62,9 +62,9 @@
  },
  "devDependencies": {
   "@majoexe/eslint-config": "workspace:*",
-  "@next/bundle-analyzer": "13.2.4",
+  "@next/bundle-analyzer": "13.3.0",
   "eslint": "8.37.0",
-  "eslint-config-next": "13.2.4",
+  "eslint-config-next": "13.3.0",
   "prettier": "2.8.7",
   "prettier-plugin-tailwindcss": "0.2.7"
  },
