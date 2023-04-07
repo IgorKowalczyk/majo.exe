@@ -3,8 +3,10 @@ export const meta = {
  author: "Igor Kowalczyk",
  description: "Majo.exe - Discord bot for Fun, Memes, Images, Giveaway, Economy, Anime and NSFW! Majo.exe serve over 117 commands!",
  //url: "https://beta.majoexe.xyz",
+ image: "/assets/og.png",
  url: process.env.NEXTAUTH_URL,
  theme_color: "#5865F2",
+ locale: "en_US",
  type: "website",
 };
 

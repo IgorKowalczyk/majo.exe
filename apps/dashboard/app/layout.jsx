@@ -1,12 +1,54 @@
 import { Session } from "components/blocks/Session";
 import { Nav } from "components/nav/Nav";
 import { Inter } from "next/font/google";
+import { meta } from "config.js";
 import Link from "next/link";
 import "../styles/globals.css";
 import "../styles/progress.css";
 import "../styles/tippy.css";
 
 const inter = Inter({ subsets: ["latin"] });
+
+export const metadata = {
+ title: {
+  default: meta.title,
+  template: `%s | ${meta.title}`,
+ },
+ description: meta.description,
+ openGraph: {
+  title: meta.title,
+  description: meta.description,
+  url: meta.url,
+  siteName: meta.title,
+  images: [
+   {
+    url: meta.url + meta.image,
+    width: 1200,
+    height: 630,
+   },
+  ],
+  locale: meta.locale,
+  type: "website",
+ },
+ robots: {
+  index: true,
+  follow: true,
+  googleBot: {
+   index: true,
+   follow: true,
+   "max-video-preview": -1,
+   "max-image-preview": "large",
+   "max-snippet": -1,
+  },
+ },
+ twitter: {
+  title: meta.title,
+  card: "summary_large_image",
+ },
+ icons: {
+  shortcut: "/favicon.ico",
+ },
+};
 
 export default function RootLayout({ children }) {
  return (
