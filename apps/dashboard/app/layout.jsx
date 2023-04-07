@@ -1,5 +1,3 @@
-"use server";
-
 import { Session } from "components/blocks/Session";
 import { Nav } from "components/nav/Nav";
 import { Inter } from "next/font/google";

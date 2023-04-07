@@ -8,7 +8,6 @@ const nextConfig = {
  poweredByHeader: false,
  trailingSlash: false,
  experimental: {
-  fontLoaders: [{ loader: "next/font/google", options: { subsets: ["latin"] } }],
   appDir: true,
  },
  images: {

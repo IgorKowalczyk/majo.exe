@@ -10,7 +10,7 @@ export async function fetchProfanity(guild) {
  const db = await client.db();
  const collection = await db.collection("guilds");
  try {
-  await collection.findOne({ guildID: guild }).then((res) => {
+  await collection.findOne({ id: guild }).then((res) => {
    return res;
   });
  } catch (err) {
