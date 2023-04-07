@@ -28,7 +28,7 @@ export async function getAllServers(session) {
 
 export default async function Dashboard() {
  const session = await getSession();
- if (!session) return redirect("/auth/login");
+ if (!session) redirect("/auth/login");
  const servers = await getAllServers(session);
 
  return (
