@@ -63,7 +63,7 @@
   "devDependencies": {
     "@majoexe/eslint-config": "workspace:*",
     "@next/bundle-analyzer": "13.2.4",
-    "eslint": "8.37.0",
+    "eslint": "8.38.0",
     "eslint-config-next": "13.2.4",
     "prettier": "2.8.7",
     "prettier-plugin-tailwindcss": "0.2.7"
