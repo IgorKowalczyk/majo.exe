@@ -81,8 +81,8 @@ importers:
         specifier: ^4.2.6
         version: 4.2.6(react-dom@18.2.0)(react@18.2.0)
       '@vercel/og':
-        specifier: 0.5.0
-        version: 0.5.0
+        specifier: 0.5.1
+        version: 0.5.1
       autoprefixer:
         specifier: 10.4.14
         version: 10.4.14(postcss@8.4.21)
@@ -693,12 +693,12 @@ packages:
       '@typescript-eslint/types': 5.54.1
       eslint-visitor-keys: 3.4.0
 
-  /@vercel/og@0.5.0:
-    resolution: {integrity: sha512-NrHyWFj7fLixXPjgCXlyX90VdbiIfP6IBcyimiFGgwpnmyRgLiYTvrnPIKI/JP49VF9bnYHFfVqzMupeyCamuQ==}
+  /@vercel/og@0.5.1:
+    resolution: {integrity: sha512-54L69pLu2uBscGQh0/xYrgwOEcCT9ADJb4o0yzSTxoD3HEHNcS755oroO0K7inPO4Qrn/gYYRtUL0YwfKWNiKw==}
     engines: {node: '>=16'}
     dependencies:
       '@resvg/resvg-wasm': 2.4.1
-      satori: 0.4.4
+      satori: 0.4.7
       yoga-wasm-web: 0.3.3
     dev: false
 
@@ -3057,8 +3057,8 @@ packages:
     dev: false
     optional: true
 
-  /satori@0.4.4:
-    resolution: {integrity: sha512-UCgoY7CXibFQmgI4ay4QSWUOca07nI9pY56w8NKrBq+bkGgiMbcPXZWj9bxukyJkEl/cgAICGjjxvwlDF2NYRw==}
+  /satori@0.4.7:
+    resolution: {integrity: sha512-angaQXTa5geGKxSD9+n85GlH71SfPJTMmrUJf76PZeV4gXWz8aOAxSEH0M1Ok/yUacrWxVto0WjV7iGkK0h3CQ==}
     engines: {node: '>=16'}
     dependencies:
       '@shuding/opentype.js': 1.4.0-beta.0
