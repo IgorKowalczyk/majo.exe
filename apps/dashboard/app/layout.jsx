@@ -1,7 +1,7 @@
 import { Session } from "components/blocks/Session";
 import { Nav } from "components/nav/Nav";
-import { Inter } from "next/font/google";
 import { meta } from "config.js";
+import { Inter } from "next/font/google";
 import Link from "next/link";
 import "../styles/globals.css";
 import "../styles/progress.css";
