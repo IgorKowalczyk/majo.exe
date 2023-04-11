@@ -23,7 +23,7 @@
   "devDependencies": {
     "@majoexe/eslint-config": "workspace:*",
     "@igorkowalczyk/eslint-config": "1.1.0",
-    "@igorkowalczyk/prettier-config": "1.1.0",
+    "@igorkowalczyk/prettier-config": "1.2.0",
     "turbo": "1.8.8"
   },
   "repository": {
