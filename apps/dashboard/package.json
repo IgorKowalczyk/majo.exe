@@ -38,7 +38,7 @@
     "@heroicons/react": "2.0.17",
     "@igorkowalczyk/is-browser": "3.1.0",
     "@majoexe/util": "workspace:*",
-    "@next-auth/mongodb-adapter": "1.1.1",
+    "@next-auth/mongodb-adapter": "1.1.2",
     "@tippyjs/react": "^4.2.6",
     "@vercel/og": "0.5.3",
     "autoprefixer": "10.4.14",
