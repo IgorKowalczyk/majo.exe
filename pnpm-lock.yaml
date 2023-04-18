@@ -76,7 +76,7 @@ importers:
         version: link:../../packages/utils
       '@next-auth/mongodb-adapter':
         specifier: 1.1.2
-        version: 1.1.2(mongodb@5.3.0)(next-auth@4.22.0)
+        version: 1.1.2(mongodb@5.3.0)(next-auth@4.22.1)
       '@tippyjs/react':
         specifier: ^4.2.6
         version: 4.2.6(react-dom@18.2.0)(react@18.2.0)
@@ -99,8 +99,8 @@ importers:
         specifier: 13.2.4
         version: 13.2.4(react-dom@18.2.0)(react@18.2.0)
       next-auth:
-        specifier: 4.22.0
-        version: 4.22.0(next@13.2.4)(react-dom@18.2.0)(react@18.2.0)
+        specifier: 4.22.1
+        version: 4.22.1(next@13.2.4)(react-dom@18.2.0)(react@18.2.0)
       next-themes:
         specifier: 0.2.1
         version: 0.2.1(next@13.2.4)(react-dom@18.2.0)(react@18.2.0)
@@ -355,14 +355,14 @@ packages:
       prettier: 2.8.7
     dev: true
 
-  /@next-auth/mongodb-adapter@1.1.2(mongodb@5.3.0)(next-auth@4.22.0):
+  /@next-auth/mongodb-adapter@1.1.2(mongodb@5.3.0)(next-auth@4.22.1):
     resolution: {integrity: sha512-4Z4uvlVKzwhhz5Kk/eVK9BtsU2RYpEOKjzshjg5bDuTlZ0bvvSkTg1edVsUiMpP2wzBrYMCc+pwXYa62uTyYYw==}
     peerDependencies:
       mongodb: ^5 | ^4
       next-auth: ^4
     dependencies:
       mongodb: 5.3.0
-      next-auth: 4.22.0(next@13.2.4)(react-dom@18.2.0)(react@18.2.0)
+      next-auth: 4.22.1(next@13.2.4)(react-dom@18.2.0)(react@18.2.0)
     dev: false
 
   /@next/bundle-analyzer@13.2.4:
@@ -2319,8 +2319,8 @@ packages:
   /natural-compare@1.4.0:
     resolution: {integrity: sha512-OWND8ei3VtNC9h7V60qff3SVobHr996CTwgxubgyQYEpg290h9J0buyECNNJexkFm5sOajh5G116RYA1c8ZMSw==}
 
-  /next-auth@4.22.0(next@13.2.4)(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-08+kjnDoE7aQ52O996x6cwA3ffc2CbHIkrCgLYhbE+aDIJBKI0oA9UbIEIe19/+ODYJgpAHHOtJx4izmsgaVag==}
+  /next-auth@4.22.1(next@13.2.4)(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-NTR3f6W7/AWXKw8GSsgSyQcDW6jkslZLH8AiZa5PQ09w1kR8uHtR9rez/E9gAq/o17+p0JYHE8QjF3RoniiObA==}
     peerDependencies:
       next: ^12.2.5 || ^13
       nodemailer: ^6.6.5
