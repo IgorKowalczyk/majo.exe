@@ -44,8 +44,8 @@ importers:
         specifier: 13.1.4
         version: 13.1.4
       mongodb:
-        specifier: 5.2.0
-        version: 5.2.0
+        specifier: 5.3.0
+        version: 5.3.0
     devDependencies:
       '@majoexe/eslint-config':
         specifier: workspace:*
@@ -76,7 +76,7 @@ importers:
         version: link:../../packages/utils
       '@next-auth/mongodb-adapter':
         specifier: 1.1.2
-        version: 1.1.2(mongodb@5.2.0)(next-auth@4.22.0)
+        version: 1.1.2(mongodb@5.3.0)(next-auth@4.22.0)
       '@tippyjs/react':
         specifier: ^4.2.6
         version: 4.2.6(react-dom@18.2.0)(react@18.2.0)
@@ -93,8 +93,8 @@ importers:
         specifier: 1.4.4
         version: 1.4.4
       mongodb:
-        specifier: 5.2.0
-        version: 5.2.0
+        specifier: 5.3.0
+        version: 5.3.0
       next:
         specifier: 13.2.4
         version: 13.2.4(react-dom@18.2.0)(react@18.2.0)
@@ -178,8 +178,8 @@ importers:
         specifier: 14.9.0
         version: 14.9.0
       mongodb:
-        specifier: 5.2.0
-        version: 5.2.0
+        specifier: 5.3.0
+        version: 5.3.0
     devDependencies:
       '@majoexe/eslint-config':
         specifier: workspace:*
@@ -355,13 +355,13 @@ packages:
       prettier: 2.8.7
     dev: true
 
-  /@next-auth/mongodb-adapter@1.1.2(mongodb@5.2.0)(next-auth@4.22.0):
+  /@next-auth/mongodb-adapter@1.1.2(mongodb@5.3.0)(next-auth@4.22.0):
     resolution: {integrity: sha512-4Z4uvlVKzwhhz5Kk/eVK9BtsU2RYpEOKjzshjg5bDuTlZ0bvvSkTg1edVsUiMpP2wzBrYMCc+pwXYa62uTyYYw==}
     peerDependencies:
       mongodb: ^5 | ^4
       next-auth: ^4
     dependencies:
-      mongodb: 5.2.0
+      mongodb: 5.3.0
       next-auth: 4.22.0(next@13.2.4)(react-dom@18.2.0)(react@18.2.0)
     dev: false
 
@@ -2259,12 +2259,12 @@ packages:
       whatwg-url: 11.0.0
     dev: false
 
-  /mongodb@5.2.0:
-    resolution: {integrity: sha512-nLgo95eP1acvjBcOdrUV3aqpWwHZCZwhYA2opB8StybbtQL/WoE5pk92qUUfjbKOWcGLYJczTqQbfOQhYtrkKg==}
+  /mongodb@5.3.0:
+    resolution: {integrity: sha512-Wy/sbahguL8c3TXQWXmuBabiLD+iVmz+tOgQf+FwkCjhUIorqbAxRbbz00g4ZoN4sXIPwpAlTANMaGRjGGTikQ==}
     engines: {node: '>=14.20.1'}
     peerDependencies:
       '@aws-sdk/credential-providers': ^3.201.0
-      mongodb-client-encryption: ^2.3.0
+      mongodb-client-encryption: '>=2.3.0 <3'
       snappy: ^7.2.2
     peerDependenciesMeta:
       '@aws-sdk/credential-providers':
