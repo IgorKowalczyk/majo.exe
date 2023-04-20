@@ -75,8 +75,8 @@ importers:
         specifier: workspace:*
         version: link:../../packages/utils
       '@next-auth/mongodb-adapter':
-        specifier: 1.1.2
-        version: 1.1.2(mongodb@5.3.0)(next-auth@4.22.1)
+        specifier: 1.1.3
+        version: 1.1.3(mongodb@5.3.0)(next-auth@4.22.1)
       '@tippyjs/react':
         specifier: ^4.2.6
         version: 4.2.6(react-dom@18.2.0)(react@18.2.0)
@@ -355,10 +355,10 @@ packages:
       prettier: 2.8.7
     dev: true
 
-  /@next-auth/mongodb-adapter@1.1.2(mongodb@5.3.0)(next-auth@4.22.1):
-    resolution: {integrity: sha512-4Z4uvlVKzwhhz5Kk/eVK9BtsU2RYpEOKjzshjg5bDuTlZ0bvvSkTg1edVsUiMpP2wzBrYMCc+pwXYa62uTyYYw==}
+  /@next-auth/mongodb-adapter@1.1.3(mongodb@5.3.0)(next-auth@4.22.1):
+    resolution: {integrity: sha512-nH/may8hntYBlcuxepSsR2b95w6SRnP+c/FFt3KKjdTScNjhrN0zZdlT90nisjG/3gK+MvzMbz/F4Rwpgr9RMA==}
     peerDependencies:
-      mongodb: ^5 | ^4
+      mongodb: ^5 || ^4
       next-auth: ^4
     dependencies:
       mongodb: 5.3.0
