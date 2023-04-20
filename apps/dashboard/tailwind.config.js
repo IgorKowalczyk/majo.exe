@@ -29,6 +29,13 @@ module.exports = {
    fontSize: {
     normal: ["1.1rem", "1.45rem"],
    },
+   keyframes: {
+    shimmer: {
+     "100%": {
+      transform: "translateX(100%)",
+     },
+    },
+   },
   },
  },
  plugins: [

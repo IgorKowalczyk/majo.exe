@@ -1,5 +1,3 @@
-"use server";
-
 import { Invite } from "../components/buttons/Invite";
 import { Login } from "../components/buttons/Login";
 

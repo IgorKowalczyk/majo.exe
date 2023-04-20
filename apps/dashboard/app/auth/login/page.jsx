@@ -5,6 +5,11 @@ import { redirect } from "next/navigation";
 import { getProviders, signIn } from "next-auth/react";
 import { getSession } from "/lib/session";
 
+export const metadata = {
+ title: "Login",
+ description: "Login to your account",
+};
+
 export default async function Login() {
  const providers = getProviders();
  const user = await getSession();

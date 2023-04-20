@@ -1,5 +1,3 @@
-"use server";
-
 import { PlusSmallIcon, RectangleStackIcon } from "@heroicons/react/24/outline";
 import { canAddBotToServer } from "@majoexe/util/src/functions/checkPermissions";
 import { getServers } from "@majoexe/util/src/functions/getServers.js";
@@ -22,7 +20,6 @@ export async function getAllServers(session) {
   return server;
  });
 
- /* eslint-disable-next-line no-undef */
  return await Promise.all(promises);
 }
 

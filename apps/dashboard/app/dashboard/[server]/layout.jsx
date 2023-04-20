@@ -1,5 +1,3 @@
-"use server";
-
 import { SideNav } from "components/nav/SideNav";
 import { getSession } from "lib/session";
 import { notFound } from "next/navigation";

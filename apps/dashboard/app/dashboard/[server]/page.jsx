@@ -1,5 +1,3 @@
-"use server";
-
 import { getServer } from "@majoexe/util/src/functions/getServer";
 import Image from "next/image";
 import { redirect } from "next/navigation";
