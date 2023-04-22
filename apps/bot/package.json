@@ -14,11 +14,11 @@
     "lint:fix": "eslint . --ext .js,.ts --fix"
   },
   "dependencies": {
-    "@discordjs/rest": "^1.7.0",
+    "@discordjs/rest": "1.7.0",
     "@majoexe/util": "workspace:*",
     "bad-words": "3.0.4",
     "chalk": "5.2.0",
-    "discord-api-types": "^0.37.37",
+    "discord-api-types": "0.37.37",
     "discord.js": "14.9.0",
     "dotenv": "16.0.3",
     "globby": "13.1.4",
@@ -27,12 +27,13 @@
   "devDependencies": {
     "@majoexe/eslint-config": "workspace:*",
     "eslint": "8.39.0",
-    "nodemon": "^2.0.22"
+    "nodemon": "2.0.22"
   },
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://gihub.com/igorkowalczyk/majo.exe"
+    "url": "https://gihub.com/igorkowalczyk/majo.exe",
+    "directory": "apps/bot"
   },
   "keywords": [
     "node",
