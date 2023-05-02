@@ -1,3 +1,5 @@
+import { Analytics } from "@vercel/analytics/react";
+import { Hotjar } from "components/blocks/Hotjar";
 import { Session } from "components/blocks/Session";
 import { Nav } from "components/nav/Nav";
 import { meta } from "config.js";
@@ -54,24 +56,7 @@ export default function RootLayout({ children }) {
  return (
   <Session>
    <html lang="en">
-    <head>
-     {process.env.HOTJAR_ID && (
-      <script
-       dangerouslySetInnerHTML={{
-        __html: `
-  (function(h,o,t,j,a,r){
-      h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
-      h._hjSettings={hjid:${process.env.HOTJAR_ID},hjsv:6};
-      a=o.getElementsByTagName('head')[0];
-      r=o.createElement('script');r.async=1;
-      r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
-      a.appendChild(r);
-  })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
-`,
-       }}
-      />
-     )}
-    </head>
+    <head>{process.env.HOTJAR_ID && <Hotjar id={process.env.HOTJAR_ID} />}</head>
     <body className={`bg-background-primary text-white relative ${inter.className}`}>
      <Nav />
      <main className="flex w-full flex-col items-center bg-background-primary antialiased md:py-16 md:px-16 px-8 py-8">
@@ -83,6 +68,7 @@ export default function RootLayout({ children }) {
        </Link>
       </div>
      </main>
+     <Analytics />
     </body>
    </html>
   </Session>
