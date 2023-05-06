@@ -37,7 +37,7 @@
     "@headlessui/react": "1.7.14",
     "@headlessui/tailwindcss": "0.1.3",
     "@heroicons/react": "2.0.17",
-    "@igorkowalczyk/is-browser": "3.1.0",
+    "@igorkowalczyk/is-browser": "3.2.0",
     "@majoexe/util": "workspace:*",
     "@next-auth/mongodb-adapter": "1.1.3",
     "@tippyjs/react": "4.2.6",
