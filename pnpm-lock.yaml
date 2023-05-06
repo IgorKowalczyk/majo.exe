@@ -35,8 +35,8 @@ importers:
         specifier: 0.37.40
         version: 0.37.40
       discord.js:
-        specifier: 14.10.2
-        version: 14.10.2
+        specifier: 14.11.0
+        version: 14.11.0
       dotenv:
         specifier: 16.0.3
         version: 16.0.3
@@ -181,8 +181,8 @@ importers:
         specifier: 5.2.0
         version: 5.2.0
       discord.js:
-        specifier: 14.10.2
-        version: 14.10.2
+        specifier: 14.11.0
+        version: 14.11.0
       mongodb:
         specifier: 5.4.0
         version: 5.4.0
@@ -275,8 +275,8 @@ packages:
     engines: {node: '>=16.9.0'}
     dev: false
 
-  /@discordjs/ws@0.8.2:
-    resolution: {integrity: sha512-av2yboE9VrBn0xyObiMMCrBbls+ucjjR3MNI5hc78hdNnYLoZQuvEVLGN8h/I+W1Vr08WATxke69RXsNZS5FBQ==}
+  /@discordjs/ws@0.8.3:
+    resolution: {integrity: sha512-hcYtppanjHecbdNyCKQNH2I4RP9UrphDgmRgLYrATEQF1oo4sYSve7ZmGsBEXSzH72MO2tBPdWSThunbxUVk0g==}
     engines: {node: '>=16.9.0'}
     dependencies:
       '@discordjs/collection': 1.5.1
@@ -1270,8 +1270,8 @@ packages:
     resolution: {integrity: sha512-FaPGBK9hx3zqSRX1x3KQWj+OElAJKmcyyfcdCy+U4AKv+gYuIkRySM7zd1So2sE4gc1DikkghkSBgBgKh6pe4Q==}
     dev: false
 
-  /discord.js@14.10.2:
-    resolution: {integrity: sha512-yPMJ/vGSWJP8WbbfPX18WGU2wOLBjL+OKVOVKI1eWx3ICcUhDg5MvFkg5aNGiokjPfKlAgqnFIUH0jl59ONHrQ==}
+  /discord.js@14.11.0:
+    resolution: {integrity: sha512-CkueWYFQ28U38YPR8HgsBR/QT35oPpMbEsTNM30Fs8loBIhnA4s70AwQEoy6JvLcpWWJO7GY0y2BUzZmuBMepQ==}
     engines: {node: '>=16.9.0'}
     dependencies:
       '@discordjs/builders': 1.6.3
@@ -1279,7 +1279,7 @@ packages:
       '@discordjs/formatters': 0.3.1
       '@discordjs/rest': 1.7.1
       '@discordjs/util': 0.3.1
-      '@discordjs/ws': 0.8.2
+      '@discordjs/ws': 0.8.3
       '@sapphire/snowflake': 3.4.2
       '@types/ws': 8.5.4
       discord-api-types: 0.37.41
