@@ -11,14 +11,14 @@ jobs:
    fail-fast: false
    matrix:
     language: ["javascript"]
-    node: ["16.x"]
+    node: ["18.x"]
   steps:
    - name: 🧱 Checkout repository
      uses: actions/checkout@v3
    - name: 🔩 Setup PNPM
      uses: pnpm/action-setup@v2
      with:
-      version: 7
+      version: latest
    - name: 🔩 Setup Node ${{ matrix.node }}
      uses: actions/setup-node@v3
      with:

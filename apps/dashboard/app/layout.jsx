@@ -1,4 +1,5 @@
 import { Analytics } from "@vercel/analytics/react";
+import clsx from "clsx";
 import { Hotjar } from "components/blocks/Hotjar";
 import { Session } from "components/blocks/Session";
 import { Nav } from "components/nav/Nav";
@@ -57,7 +58,7 @@ export default function RootLayout({ children }) {
   <Session>
    <html lang="en">
     <head>{process.env.HOTJAR_ID && <Hotjar id={process.env.HOTJAR_ID} />}</head>
-    <body className={`bg-background-primary text-white relative ${inter.className}`}>
+    <body className={clsx("bg-background-primary text-white relative", inter.className)}>
      <Nav />
      <main className="flex w-full flex-col items-center bg-background-primary antialiased md:py-16 md:px-16 px-8 py-8">
       <>{children}</>

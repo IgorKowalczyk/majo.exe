@@ -31,17 +31,17 @@ export default async function Dashboard() {
  return (
   <div className="flex w-full flex-col items-center bg-background-primary antialiased md:py-16 md:px-16 px-8 py-8">
    <div className="flex flex-col justify-center gap-4">
-    <h1 className="flex items-center justify-center gap-4 text-center font-inter text-5xl font-bold">
+    <h1 className="flex items-center justify-center gap-4 text-center  text-5xl font-bold">
      <RectangleStackIcon className="h-10 w-10" aria-hidden="true" role="img" />
      Dashboard
     </h1>
-    <h2 className="text-center font-inter text-xl opacity-50">You can only add the bot to servers you have the "Manage Server" permission in.</h2>
+    <h2 className="text-center  text-xl opacity-50">You can only add the bot to servers you have the "Manage Server" permission in.</h2>
     <div className="flex flex-col gap-4">
      {servers && servers.length > 0 ? (
       servers.map((server) => (
        <div key={server.id} className="flex flex-row items-center justify-start gap-4">
         {server.icon ? <Image src={`https://cdn.discordapp.com/icons/${server.id}/${server.icon}.${server.icon.startsWith("a_") ? "gif" : "png"}`} alt={server.name} quality={95} width={64} height={64} className="w-16 h-16 rounded-full" /> : <div className="w-16 h-16 rounded-full bg-button-secondary" />}
-        <h3 className="text-center font-inter text-xl font-bold">{server.name}</h3>
+        <h3 className="text-center  text-xl font-bold">{server.name}</h3>
 
         <>
          {server.bot ? (
@@ -57,7 +57,7 @@ export default async function Dashboard() {
        </div>
       ))
      ) : (
-      <h3 className="text-center font-inter text-xl font-bold">You don't have any servers!</h3>
+      <h3 className="text-center  text-xl font-bold">You don't have any servers!</h3>
      )}
     </div>
    </div>

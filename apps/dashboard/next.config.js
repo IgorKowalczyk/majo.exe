@@ -7,9 +7,6 @@ const nextConfig = {
  pageExtensions: ["mdx", "md", "jsx", "js"],
  poweredByHeader: false,
  trailingSlash: false,
- experimental: {
-  appDir: true,
- },
  images: {
   domains: [
    "github.githubassets.com", // GitHub assets

@@ -31,7 +31,7 @@ export default async function Login() {
      <div className="flex h-[90px] w-[90px] items-center justify-center rounded-full bg-white/5 text-5xl text-[#939DB8]">?</div>
     </div>
 
-    <h1 className="text-center font-inter text-6xl font-bold">Connect your account</h1>
+    <h1 className="text-center  text-6xl font-bold">Connect your account</h1>
     <p className="my-1 text-center text-xl text-[#939DB8]">Authorize your Discord account to use all the Majo.exe features</p>
     <div className="flex flex-row gap-4">
      {Object.values(providers).map((provider) => (
@@ -44,7 +44,7 @@ export default async function Login() {
        </button>
       </div>
      ))}
-     <Link href="/" className="flex cursor-pointer items-center rounded bg-button-secondary px-4 py-2 font-inter leading-6 text-white duration-200 hover:bg-button-secondary-hover motion-reduce:transition-none">
+     <Link href="/" className="flex cursor-pointer items-center rounded bg-button-secondary px-4 py-2  leading-6 text-white duration-200 hover:bg-button-secondary-hover motion-reduce:transition-none">
       <>
        <ArrowUturnLeftIcon className="mr-2 h-5 w-5" aria-hidden="true" role="img" />
        Go back

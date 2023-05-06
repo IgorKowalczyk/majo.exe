@@ -1,5 +1,3 @@
-"use server";
-
 /**
  * Checks if the bot is in a server
  * @param {string} guildId The guild ID.

@@ -48,7 +48,7 @@
     "globby": "13.1.4",
     "mini-svg-data-uri": "1.4.4",
     "mongodb": "5.4.0",
-    "next": "13.2.4",
+    "next": "13.4.1",
     "next-auth": "4.22.1",
     "next-themes": "0.2.1",
     "node-fetch": "3.3.1",
@@ -65,9 +65,9 @@
   },
   "devDependencies": {
     "@majoexe/eslint-config": "workspace:*",
-    "@next/bundle-analyzer": "13.3.1",
+    "@next/bundle-analyzer": "13.4.1",
     "eslint": "8.40.0",
-    "eslint-config-next": "13.3.1",
+    "eslint-config-next": "13.4.1",
     "prettier": "2.8.8",
     "prettier-plugin-tailwindcss": "0.2.8"
   },
