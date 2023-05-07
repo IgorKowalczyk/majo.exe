@@ -45,7 +45,9 @@ Go to [this link](https://discord.com/oauth2/authorize/?permissions=4294967287&s
  - `(Any)` Linux x64*
  - `256MB` of RAM
  - `512MB/1GB` of hard drive space
-> *Debian based distro recommended
+
+> **Note**:
+> \*Debian based distros are recommended, bot can also run on Windows and MacOS but it's not recommended.
 
 ## 📝 Contributors
 

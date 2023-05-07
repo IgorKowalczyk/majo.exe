@@ -80,7 +80,22 @@ MONGODB_URI=MONGODB_CONNECTION_STRING
 6. Select "Connect your application" and copy connection string
 7. Paste connection string to `.env` - `MONGODB_URI=MONGODB_CONNECTION_STRING`
 
----
+## 📝 Contributors
+
+- [@r-kjha](https://github.com/r-kjha) (Emoji config support, Bug fixes, New features, Testing)
+- [@Joao-Victor-Liporini](https://github.com/Joao-Victor-Liporini) (Bug fixes, Command handler improvements, Testing, New features)
+- [@krzesl0](https://github.com/krzesl0) (New Features, Bug fixes, Testing)
+- [@\_index1337](https://github.com/index1337) (Readme tutorials)
+- [@Wafelowski](https://github.com/HeavyWolfPL) (Translation improvements)
+- [@Sakshyam6966](https://github.com/Sakshyam6966) (New Features, Bug fixes, Testing)
+
+## 💝 Sponsors
+
+**These wonderful people and services have helped develop Majo.exe, without them this project would not exist. Thanks goes to these wonderful people!**
+
+| Sponsor                                            | Description                                                                                                                                                         |
+| -------------------------------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| [Terohost](https://my.terohost.com/aff.php?aff=17) | **TeroHost is a Discord Bot hosting** provider that helps take care of all your needs regarding your Discord Bot to ensure your bot perfect uptime, ping and speed. |
 
 ## ⁉️ Issues
 
