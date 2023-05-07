@@ -1,9 +1,9 @@
 import { REST } from "@discordjs/rest";
+import { Logger } from "@majoexe/util/src/functions/logger.js";
 import { Routes } from "discord-api-types/v10";
 import { Client, GatewayIntentBits, PermissionsBitField, Collection } from "discord.js";
 import dotenv from "dotenv";
 import { globby } from "globby";
-import { Logger } from "./colors.js";
 dotenv.config({ path: "../../.env" });
 
 console.log(Logger("info", "Starting Majo.exe Bot..."));

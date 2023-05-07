@@ -1,4 +1,4 @@
-import { Logger } from "../util/colors.js";
+import { Logger } from "@majoexe/util/src/functions/logger.js";
 import { readdirSync } from "node:fs";
 
 export default async function loadEvents(client) {
