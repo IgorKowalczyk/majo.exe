@@ -1,1 +1,102 @@
-# Majo.exe Discord Bot
+![Header Bot](https://user-images.githubusercontent.com/49127376/236699649-bea10af2-7783-4fa3-9f90-29e172f8f53b.png)
+
+<p align="center">
+ <a href="https://majoexe.xyz/server"><img src="https://img.shields.io/discord/666599184844980224?color=%234552ef&logo=discord&label=Discord&style=flat&logoColor=fff" alt="Discord" /></a>
+ <a href="https://www.npmjs.com/package/discord.js"><img src="https://img.shields.io/badge/Discord.js-v14-%234552ef?style=flat&logo=npm&logoColor=fff" alt="Discord.js" /></a>
+ <a href="https://majoexe.xyz/"><img src="https://img.shields.io/github/actions/workflow/status/igorkowalczyk/majo.exe/codeql-analysis.yml?branch=rebuild&style=flat&label=CodeQL&logo=github&color=%234552ef" alt="CodeQL Checks" /></a>
+ <a href="https://majoexe.xyz"><img src="https://img.shields.io/github/license/igorkowalczyk/majo.exe?style=flat&;logo=github&label=License&color=%234552ef" alt="GitHub License" /></a>
+</p>
+
+## 🤖 Self-Hosting
+
+1. Clone [this repository](https://github.com/igorkowalczyk/majo.exe) `git clone https://github.com/IgorKowalczyk/majo.exe.git`
+2. Grab a Discord Bot token and client secret on [Discord's developer portal](https://discord.com/developers/applications) [Tutorial](#-discord-credentials)
+3. Create new file named `.env` (in main directory). (Remember - the file is super secret, better to not share it!)
+4. In `.env` file set this values:
+   - `TOKEN` - Discord bot token [[Tutorial](#-discord-token)]
+   - `SECRET` - Random string (min. length = 32 chars)
+   - `CLIENT_ID` - Discord bot ID
+   - `CLIENT_SECRET` - Discord bot secret [[Tutorial](#-discord-secret)]
+   - `NEXTAUTH_URL` - Dashboard url (if you are not hosting dashboard - keep it empty)
+   - `MONGODB_URI` - MongoDB connection string
+5. Go to `/apps/bot/` directory
+6. Run `pnpm i` or `npm i` to install all dependencies,
+7. Fill `/config/index.js` with your values
+8. Run `pnpm run dev` or `pnpm run deploy` to start bot
+
+> Note: See the example [`.env` file below](#example-env-file)!
+
+##### Example `.env` file
+
+```
+TOKEN=YOUR_TOKEN_GOES_HERE
+SECRET=RANDOM_STRING
+CLIENT_ID=DISCORD_BOT_ID
+CLIENT_SECRET=DISCORD_BOT_SECRET
+NEXTAUTH_URL=DASHBOARD_URL
+MONGODB_URI=MONGODB_CONNECTION_STRING
+```
+
+---
+
+## 🗜️ Requirements
+
+- `MongoDB 5` or higher
+- `Node.js 16x` or higher
+- `(Any)` Linux x64\*
+- `256MB` of RAM
+- `512MB/1GB` of hard drive space
+
+> **Note**:
+> \*Debian based distros are recommended, bot can also run on Windows and MacOS but it's not recommended.
+
+## 🔓 Tokens tutorials
+
+### 🔏 Discord Token
+
+1. Go to <a href="https://discordapp.com/developers/applications)">Discord Developer Portal</a>
+2. At the top right of the screen, click "New application" and assign it a name. Next in the left part of the screen on the navigation bar, find "Bot" then click it and find button named "Add Bot"
+3. After confirming the bot creation, click the "Copy token" button
+4. Paste your token in `.env` file - `TOKEN=BOT_TOKEN`
+
+> Tutorial written by: <a href="https://github.com/index1337">\_index1337</a>
+
+### 🔓 Discord Bot Secret
+
+1. Go to <a href="https://discordapp.com/developers/applications)">Discord Developer Portal</a>
+2. In the left part of the screen on the bar, find "OAuth2" then click it
+3. Find section named "Client Secret", under the bot secret click "Copy" button
+4. Paste client secret to `.env` - `CLIENT_SECRET=CLIENT_SECRET`
+
+> Tutorial written by: <a href="https://github.com/index1337">\_index1337</a>
+
+### 💾 MongoDB
+
+1. Go to <a href="https://www.mongodb.com/cloud/atlas">MongoDB Atlas</a>
+2. Create new cluster (free tier is enough)
+3. Go to "Database Access" tab and create new user
+4. Go to "Network Access" tab and add your IP address or set `0.0.0.0` to allow all connections
+5. Go to "Clusters" tab and click "Connect" button
+6. Select "Connect your application" and copy connection string
+7. Paste connection string to `.env` - `MONGODB_URI=MONGODB_CONNECTION_STRING`
+
+---
+
+## ⁉️ Issues
+
+If you have any issues with the bot please create [new issue here](https://github.com/igorkowalczyk/majo.exe/issues).
+When creating new issue please provide as much information as possible. If you can, please provide logs from console.
+
+## 📥 Pull Requests
+
+When submitting a pull request:
+
+- Clone the repo.
+- Create a branch off of `master` and give it a meaningful name (e.g. `my-awesome-new-feature`).
+- Open a [pull request](https://github.com/igorkowalczyk/majo.exe/pulls) on [GitHub](https://github.com) and describe the feature or fix.
+
+We will review your pull request as soon as possible. We might suggest some changes or improvements.
+
+## 📋 License
+
+This project is licensed under the MIT. See the [LICENSE](https://github.com/igorkowalczyk/majo.exe/blob/master/license.md) file for details

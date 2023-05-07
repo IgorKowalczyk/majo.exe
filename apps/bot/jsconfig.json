@@ -1,10 +1,10 @@
 {
-  "compilerOptions": {
-    "baseUrl": ".",
-    "paths": {
-      "@/*": ["./*"],
-      "@config/*": ["./config/*"],
-      "@slashCommands/*": ["./slashCommands/*"]
-    }
+ "compilerOptions": {
+  "baseUrl": ".",
+  "paths": {
+   "@/*": ["./*"],
+   "@config/*": ["./config/*"],
+   "@slashCommands/*": ["./slashCommands/*"]
   }
+ }
 }
