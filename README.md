@@ -32,11 +32,11 @@ Go to [this link](https://discord.com/oauth2/authorize/?permissions=4294967287&s
 
 ## 🖥️ Hosting
 
-> We host this bot. Majo.exe _will be_ online 24/7. [Invite Majo here!](#invite)<br>
-> However, if you want to host Majo.exe yourself - [take a look here](/apps/bot/README.md)
+We are hosting Majo.exe on our own servers. Majo.exe _will be_ online 24/7. [Invite Majo here!](https://beta.majoexe.xyz/invite)<br>
+However, if you want to host Majo.exe yourself see links below.
 
-1. **[🔩 Dashboard setup tutorial](/apps/dashboard/README.md)**
-2. **[🤖 Bot setup tutorial](/apps/bot/README.md)**
+- **[🤖 Bot setup tutorial](/apps/bot/README.md)**
+- **[🔩 Dashboard setup tutorial](/apps/dashboard/README.md)**
 
 ## 🗜️ Requirements
 
@@ -68,15 +68,18 @@ Go to [this link](https://discord.com/oauth2/authorize/?permissions=4294967287&s
 
 ## ⁉️ Issues
 
-If you have any issues with the page please create [new issue here](https://github.com/igorkowalczyk/majo.exe/issues)
+If you have any issues with the page please create [new issue here](https://github.com/igorkowalczyk/majo.exe/issues). When creating new issue please provide as much information as possible. If you can, please provide logs from console.
+
+We will review your pull request as soon as possible. We might suggest some changes or improvements.
 
 ## 📥 Pull Requests
 
 When submitting a pull request:
 
 - Clone the repo.
-- Create a branch off of master and give it a meaningful name (e.g. my-awesome-new-feature).
+- Create a branch off of `master` and give it a meaningful name (e.g. `my-awesome-new-feature`).
 - Open a [pull request](https://github.com/igorkowalczyk/majo.exe/pulls) on [GitHub](https://github.com) and describe the feature or fix.
+
 
 ## 📋 License
 
