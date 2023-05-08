@@ -18,7 +18,7 @@
     "@majoexe/util": "workspace:*",
     "bad-words": "3.0.4",
     "chalk": "5.2.0",
-    "discord-api-types": "0.37.40",
+    "discord-api-types": "0.37.42",
     "discord.js": "14.11.0",
     "dotenv": "16.0.3",
     "globby": "13.1.4",
