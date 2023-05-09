@@ -4,7 +4,15 @@ export const config = {
   */
  dashboard: {
   enabled: true, // boolean. Is bot using dashboard
-  link: process.env.NEXTAUTH_URL, // Dashboard main url
+  link: process.env.NEXTAUTH_URL, // string. Dashboard main url
  },
- displayDirectoryTree: true, // boolean. Display directories trees on startup
+
+ /*
+  Debugger configuration. Set everything to true if you want console hell
+  */
+ debugger: {
+  displayEventList: false, // boolean. Display event list on startup
+  displayCommandList: false, // boolean. Display command list on startup
+  displayCommandUsage: false, // boolean. Display command usage on command run
+ },
 };

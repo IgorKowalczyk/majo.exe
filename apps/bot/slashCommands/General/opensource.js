@@ -30,7 +30,6 @@ export default {
      }),
     })
     .setColor("#5865F2")
-    .setTimestamp()
     .setTimestamp();
    const row = new ActionRowBuilder()
     .addComponents(

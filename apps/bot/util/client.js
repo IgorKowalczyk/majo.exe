@@ -4,13 +4,15 @@ import { Routes } from "discord-api-types/v10";
 import { Client, GatewayIntentBits, PermissionsBitField, Collection } from "discord.js";
 import dotenv from "dotenv";
 import { globby } from "globby";
+import { config } from "../config/index.js";
+import chalk from "chalk";
 dotenv.config({ path: "../../.env" });
 
-console.log(Logger("info", "Starting Majo.exe Bot..."));
-console.log(Logger("info", `Running version v${process.env.npm_package_version} on Node.js ${process.version} on ${process.platform} ${process.arch}`));
+Logger("info", "Starting Majo.exe Bot...");
+Logger("info", `Running version v${process.env.npm_package_version} on Node.js ${process.version} on ${process.platform} ${process.arch}`);
 
-console.log(Logger("warn", "This is a development version of Majo.exe. It may be unstable and may contain bugs. Use at your own risk!"));
-console.log(Logger("warn", "Check out the source code at https://github.com/igorkowalczyk/majo.exe"));
+Logger("warn", "This is a development version of Majo.exe. It may be unstable and may contain bugs. Use at your own risk!");
+Logger("warn", "Check out the source code at https://github.com/igorkowalczyk/majo.exe");
 
 const client = new Client({
  intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMembers, GatewayIntentBits.GuildModeration, GatewayIntentBits.GuildEmojisAndStickers, GatewayIntentBits.GuildIntegrations, GatewayIntentBits.GuildWebhooks, GatewayIntentBits.GuildInvites, GatewayIntentBits.GuildPresences, GatewayIntentBits.GuildMessages, GatewayIntentBits.MessageContent, GatewayIntentBits.GuildMessageReactions],
@@ -22,15 +24,44 @@ try {
  console.log(error);
 }
 
-const time = performance.now();
+const loadTime = performance.now();
 const rest = new REST({ version: "10" }).setToken(process.env.TOKEN);
-console.log(Logger("info", "Loading slash commands..."));
 const slashCommands = await globby(`${process.cwd()}/slashCommands/**/*.js`);
 const slash = [];
 client.slashCommands = new Collection();
 
+client.performance = (time) => {
+ const run = Math.floor(performance.now() - time);
+ if (run < 500) return chalk.underline(`${run}ms`);
+ if (run > 500) return chalk.underline.red(`${run}ms`);
+};
+
 for (const value of slashCommands) {
  const file = await import(value);
+ if (!file.default) {
+  Logger("error", `Slash command ${value} doesn't have a default export!`);
+  continue;
+ }
+ if (!file.default.name) {
+  Logger("error", `Slash command ${value} doesn't have a name!`);
+  continue;
+ }
+
+ if (!file.default.description) {
+  Logger("error", `Slash command ${value} doesn't have a description!`);
+  continue;
+ }
+
+ if (!file.default.type) {
+  Logger("error", `Slash command ${value} doesn't have a type!`);
+  continue;
+ }
+
+ if (!file.default.run) {
+  Logger("error", `Slash command ${value} doesn't have a run function!`);
+  continue;
+ }
+
  slash.push({
   name: file.default.name,
   description: file.default.description,
@@ -40,14 +71,17 @@ for (const value of slashCommands) {
   default_member_permissions: file.default.default_member_permissions ? PermissionsBitField.resolve(file.default.default_member_permissions).toString() : null,
  });
  client.slashCommands.set(file.default.name, file.default);
- console.log(Logger("info", `Loaded slash command ${file.default.name} from ${value}`));
+ config.debugger.displayCommandList && Logger("info", `Loaded slash command ${file.default.name} from ${value.replace(process.cwd(), "")}`);
 }
 
-console.log(Logger("info", "Registering slash commands..."));
+Logger("event", `Loaded ${slash.length} slash commands from /slashCommands in ${client.performance(loadTime)}`);
+const registerTime = performance.now();
+Logger("info", "Registering slash commands...");
+
 await rest
  .put(Routes.applicationCommands(process.env.CLIENT_ID), { body: slash })
  .then(() => {
-  console.log(Logger("info", `Successfully registered ${slash.length} slash commands in ${performance.now() - time}ms`));
+  Logger("event", `Successfully registered ${slash.length} slash commands in ${client.performance(registerTime)}`);
  })
  .catch((error) => {
   console.log(error);
