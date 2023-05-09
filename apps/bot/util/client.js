@@ -1,11 +1,11 @@
 import { REST } from "@discordjs/rest";
 import { Logger } from "@majoexe/util/src/functions/logger.js";
+import chalk from "chalk";
 import { Routes } from "discord-api-types/v10";
 import { Client, GatewayIntentBits, PermissionsBitField, Collection } from "discord.js";
 import dotenv from "dotenv";
 import { globby } from "globby";
 import { config } from "../config/index.js";
-import chalk from "chalk";
 dotenv.config({ path: "../../.env" });
 
 Logger("info", "Starting Majo.exe Bot...");

@@ -1,3 +1,8 @@
+/**
+ * Formats a duration in milliseconds to a human readable string.
+ * @param {number} durationInMs The duration in milliseconds.
+ * @returns {string} The formatted duration.
+ */
 export function formatDuration(durationInMs) {
  const ms = durationInMs % 1000;
  const totalSeconds = Math.floor(durationInMs / 1000);

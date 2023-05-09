@@ -1,5 +1,6 @@
 export * from "./checkPermissions";
 export * from "./createErrorEmbed";
+export * from "./formatDuration";
 export * from "./getAvatar";
 export * from "./getFlags";
 export * from "./getServer";
