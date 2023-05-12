@@ -1,4 +1,3 @@
-import { createErrorEmbed } from "@majoexe/util/src/functions/createErrorEmbed.js";
 import { ApplicationCommandType } from "discord.js";
 import { EmbedBuilder, time, ButtonBuilder, ActionRowBuilder, ButtonStyle } from "discord.js";
 import { config } from "../../config/index.js";
@@ -8,6 +7,7 @@ export default {
  description: "⌛ View Majo.exe bot uptime and past status",
  type: ApplicationCommandType.ChatInput,
  cooldown: 3000,
+ dmPermission: true,
  usage: "/uptime",
  run: async (client, interaction) => {
   try {
@@ -37,9 +37,7 @@ export default {
     return interaction.reply({ ephemeral: false, embeds: [embed] });
    }
   } catch (err) {
-   console.log(err);
-   const errorEmbed = createErrorEmbed(err);
-   return interaction?.reply({ embeds: [errorEmbed] });
+   client.errorMessages.generateErrorMessage(interaction, err);
   }
  },
 };

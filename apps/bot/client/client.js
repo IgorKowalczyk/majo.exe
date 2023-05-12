@@ -1,7 +1,6 @@
-import { REST } from "@discordjs/rest";
+import { createErrorEmbed } from "@/../../packages/utils/src/functions/createErrorEmbed.js";
 import { Logger } from "@majoexe/util/src/functions/logger.js";
 import chalk from "chalk";
-import { Routes } from "discord-api-types/v10";
 import { Client, GatewayIntentBits, PermissionsBitField, Collection } from "discord.js";
 import dotenv from "dotenv";
 import { globby } from "globby";
@@ -25,15 +24,24 @@ try {
 }
 
 const loadTime = performance.now();
-const rest = new REST({ version: "10" }).setToken(process.env.TOKEN);
 const slashCommands = await globby(`${process.cwd()}/slashCommands/**/*.js`);
 const slash = [];
+
+// Add custom properties to client
 client.slashCommands = new Collection();
+client.config = config;
+client.errorMessages = {
+ generateErrorMessage: (interaction, error) => {
+  Logger("error", error?.toString() ?? "Unknown error occured");
+  const embed = createErrorEmbed(interaction);
+  return interaction.reply({ embeds: [embed], ephemeral: true });
+ },
+};
+client.debugger = Logger;
 
 client.performance = (time) => {
  const run = Math.floor(performance.now() - time);
- if (run < 500) return chalk.underline(`${run}ms`);
- if (run > 500) return chalk.underline.red(`${run}ms`);
+ return run > 500 ? chalk.underline.red(`${run}ms`) : chalk.underline(`${run}ms`);
 };
 
 for (const value of slashCommands) {
@@ -75,16 +83,5 @@ for (const value of slashCommands) {
 }
 
 Logger("event", `Loaded ${slash.length} slash commands from /slashCommands in ${client.performance(loadTime)}`);
-const registerTime = performance.now();
-Logger("info", "Registering slash commands...");
-
-await rest
- .put(Routes.applicationCommands(process.env.CLIENT_ID), { body: slash })
- .then(() => {
-  Logger("event", `Successfully registered ${slash.length} slash commands in ${client.performance(registerTime)}`);
- })
- .catch((error) => {
-  console.log(error);
- });
 
 export default client;

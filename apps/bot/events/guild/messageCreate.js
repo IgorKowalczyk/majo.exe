@@ -1,4 +1,3 @@
-import { getAvatar } from "@majoexe/util/src/functions/getAvatar.js";
 import { fetchProfanity } from "@majoexe/util/src/settings/fetchProfanity.js";
 import Filter from "bad-words";
 import { EmbedBuilder } from "discord.js";
@@ -17,7 +16,11 @@ export async function messageCreate(client, message) {
   .setColor("#EF4444")
   .setTimestamp()
   .setFooter({
-   iconURL: getAvatar(client.user, "44"),
+   iconURL: client.user?.displayAvatarURL({
+    dynamic: true,
+    format: "png",
+    size: 2048,
+   }),
    text: "The filter was applied because message scanning was enabled on the server!",
   });
  await message.channel.send({ embeds: [embed] });

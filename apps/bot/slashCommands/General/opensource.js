@@ -1,4 +1,3 @@
-import { createErrorEmbed } from "@majoexe/util/src/functions/createErrorEmbed.js";
 import { ApplicationCommandType, EmbedBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle, time } from "discord.js";
 
 export default {
@@ -7,6 +6,7 @@ export default {
  type: ApplicationCommandType.ChatInput,
  cooldown: 3000,
  usage: "/contact",
+ dmPermission: true,
  run: async (client, interaction) => {
   try {
    const response = await fetch("https://api.github.com/repos/igorkowalczyk/majo.exe/commits?per_page=1").then((res) => res.json());
@@ -46,9 +46,7 @@ export default {
     );
    return interaction.reply({ ephemeral: false, embeds: [embed], components: [row] });
   } catch (err) {
-   console.log(err);
-   const errorEmbed = createErrorEmbed(err);
-   return interaction?.reply({ embeds: [errorEmbed] });
+   client.errorMessages.generateErrorMessage(interaction, err);
   }
  },
 };

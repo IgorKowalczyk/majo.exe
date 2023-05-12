@@ -1,12 +1,11 @@
 import { formatDuration } from "@majoexe/util/src/functions/formatDuration.js";
 import { Logger } from "@majoexe/util/src/functions/logger.js";
 import { EmbedBuilder } from "discord.js";
-import { config } from "../../config/index.js";
 const timeout = new Map();
 
 export async function interactionCreate(client, interaction) {
  if (!interaction.isCommand()) return;
- config.debugger.displayCommandUsage && Logger("info", `Command used: ${interaction.commandName} by ${interaction.user.tag} (${interaction.user.id})`);
+ client.config.debugger.displayCommandUsage && Logger("info", `Command used: ${interaction.commandName} by ${interaction.user.tag} (${interaction.user.id})`);
 
  if (!interaction.inGuild() && client.slashCommands.get(interaction.commandName).guildOnly) {
   const embed = new EmbedBuilder()

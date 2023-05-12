@@ -1,5 +1,4 @@
 import clientPromise from "@majoexe/util/src/database/database.js";
-import { createErrorEmbed } from "@majoexe/util/src/functions/createErrorEmbed.js";
 import { ApplicationCommandType, EmbedBuilder, codeBlock } from "discord.js";
 
 export default {
@@ -8,6 +7,7 @@ export default {
  type: ApplicationCommandType.ChatInput,
  cooldown: 3000,
  usage: "/ping",
+ dmPermission: true,
  run: async (client, interaction) => {
   try {
    const dbTime = performance.now();
@@ -52,9 +52,7 @@ export default {
     msg.edit({ ephemeral: false, embeds: [pingMessage] });
    });
   } catch (err) {
-   console.log(err);
-   const errorEmbed = createErrorEmbed(err);
-   return interaction?.reply({ embeds: [errorEmbed] });
+   client.errorMessages.generateErrorMessage(interaction, err);
   }
  },
 };

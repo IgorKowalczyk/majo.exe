@@ -7,6 +7,11 @@ export const config = {
   link: process.env.NEXTAUTH_URL, // string. Dashboard main url
  },
 
+ bot: {
+  permissions: "1539679190263", // string. Bot permissions. You can use https://discordapi.com/permissions.html to generate it
+  scopes: "applications.commands%20bot", // string. Bot scopes. You can use https://discordapi.com/permissions.html to generate it
+ },
+
  /*
   Debugger configuration. Set everything to true if you want console hell
   */
