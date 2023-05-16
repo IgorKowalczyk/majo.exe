@@ -1,12 +1,12 @@
-import { RectangleStackIcon } from "@heroicons/react/24/outline";
-import { getSession } from "lib/session";
-import Image from "next/image";
-import Link from "next/link";
 import { meta, social } from "@config";
+import { RectangleStackIcon } from "@heroicons/react/24/outline";
 import { LoginClient } from "components/buttons/client/Login";
 import { Invite } from "components/buttons/Invite";
 import { SecondaryButton } from "components/buttons/Secondary";
 import { MenuDropdown } from "components/nav/client/MenuDropdown";
+import { getSession } from "lib/session";
+import Image from "next/image";
+import Link from "next/link";
 
 export async function Nav() {
  const session = await getSession();

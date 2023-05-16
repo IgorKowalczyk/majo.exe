@@ -1,5 +1,5 @@
-import { ApplicationCommandType, EmbedBuilder, codeBlock } from "discord.js";
 import prismaClient from "@majoexe/database";
+import { ApplicationCommandType, EmbedBuilder, codeBlock } from "discord.js";
 
 export default {
  name: "ping",
