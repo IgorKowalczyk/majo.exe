@@ -11,7 +11,7 @@ export default {
  run: async (client, interaction) => {
   try {
    const dbTime = performance.now();
-   await prismaClient.user.findUnique({ where: { id: 1 } });
+   await prismaClient.user.findUnique({ where: { id: "1" } });
    const dbTiming = performance.now() - dbTime;
    const websocketPing = Math.floor(client.ws?.ping);
    const wait = new EmbedBuilder().setColor("#5865f2").setDescription("🏓 Pong!...");
