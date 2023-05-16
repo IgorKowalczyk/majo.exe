@@ -12,7 +12,7 @@
  "dependencies": {
   "@igorkowalczyk/eslint-config": "1.3.2",
   "eslint": "8.40.0",
-  "eslint-config-turbo": "1.9.4"
+  "eslint-config-turbo": "1.9.6"
  },
  "repository": {
   "type": "git",
