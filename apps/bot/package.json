@@ -15,6 +15,7 @@
   },
   "dependencies": {
     "@discordjs/rest": "1.7.0",
+    "@majoexe/database": "workspace:^",
     "@majoexe/util": "workspace:*",
     "bad-words": "3.0.4",
     "chalk": "5.2.0",

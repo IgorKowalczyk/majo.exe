@@ -1,7 +1,7 @@
 {
  "name": "@majoexe/util",
  "version": "6.0.0",
- "description": "Scripts that are shared by various projects in repository",
+ "description": "Shared utility functions for Majo.exe",
  "module": "index.mjs",
  "type": "module",
  "scripts": {

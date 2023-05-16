@@ -1,7 +1,7 @@
 {
  "name": "@majoexe/eslint-config",
  "version": "6.0.0",
- "description": "Our shared eslint config, based on @igorkowalczyk/eslint-config",
+ "description": "Majo.exe shared eslint config, based on @igorkowalczyk/eslint-config",
  "main": "index.js",
  "scripts": {
   "format": "prettier --write . --cache --ignore-unknown",

@@ -1,5 +1,5 @@
-import clientPromise from "@majoexe/util/src/database/database.js";
 import { ApplicationCommandType, EmbedBuilder, codeBlock } from "discord.js";
+import prismaClient from "@majoexe/database";
 
 export default {
  name: "ping",
@@ -11,9 +11,7 @@ export default {
  run: async (client, interaction) => {
   try {
    const dbTime = performance.now();
-   const database = await clientPromise;
-   const db = await database.db();
-   await db.command({ ping: 1 });
+   await prismaClient.user.findUnique({ where: { id: 1 } });
    const dbTiming = performance.now() - dbTime;
    const websocketPing = Math.floor(client.ws?.ping);
    const wait = new EmbedBuilder().setColor("#5865f2").setDescription("🏓 Pong!...");

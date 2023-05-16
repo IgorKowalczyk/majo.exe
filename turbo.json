@@ -2,11 +2,11 @@
  "$schema": "https://turborepo.org/schema.json",
  "pipeline": {
   "dev": {
+   "dependsOn": ["^prisma:generate"],
    "outputs": []
   },
   "build": {
-   "dependsOn": ["^build"],
-   "env": ["ANALYZE"],
+   "dependsOn": ["^build", "^prisma:generate"],
    "outputs": ["dist/**", ".next/**"]
   },
   "deploy": {
@@ -14,18 +14,33 @@
    "outputs": ["dist/**", ".next/**"]
   },
   "lint": {
+   "dependsOn": ["^lint"],
    "outputs": []
   },
   "lint:fix": {
+   "dependsOn": ["^lint:fix"],
    "outputs": []
   },
   "format": {
+   "dependsOn": ["^format"],
    "outputs": []
   },
   "format:check": {
+   "dependsOn": ["^format:check"],
+   "outputs": []
+  },
+  "prisma:generate": {
+   "dependsOn": ["^prisma:generate"],
+   "cache": false,
+   "outputs": ["prisma/schema.prisma"]
+  },
+  "prisma:migrate": {
+   "dependsOn": ["^prisma:migrate"],
+   "outputs": ["prisma/migrations/**"]
+  },
+  "prisma:format": {
    "outputs": []
   }
  },
- "globalDependencies": ["pnpm-lock.yaml", "pnpm-workspace.yaml", ".prettierignore", ".prettierrc", ".env"],
- "globalEnv": ["TOKEN", "SECRET", "npm_package_version", "NEXTAUTH_URL", "CLIENT_ID", "CLIENT_SECRET", "ANALYZE", "MONGODB_URI", "NODE_ENV", "ENVIRONMENT_URL", "HOTJAR_ID"]
+ "globalDependencies": ["pnpm-lock.yaml", "pnpm-workspace.yaml", ".prettierignore", ".prettierrc"]
 }
