@@ -3,12 +3,15 @@ import clsx from "clsx";
 import { Hotjar } from "components/blocks/Hotjar";
 import { Session } from "components/blocks/Session";
 import { Nav } from "components/nav/Nav";
-import { meta } from "config.js";
+import { meta } from "@config";
 import { Inter } from "next/font/google";
 import Link from "next/link";
 import "../styles/globals.css";
 import "../styles/progress.css";
 import "../styles/tippy.css";
+import "tippy.js/dist/backdrop.css";
+import "tippy.js/animations/shift-away.css";
+import "tippy.js/dist/tippy.css";
 
 const inter = Inter({ subsets: ["latin"] });
 

@@ -1,3 +1,4 @@
+const { PrismaPlugin } = require("@prisma/nextjs-monorepo-workaround-plugin");
 const withBundleAnalyzer = require("@next/bundle-analyzer")({
  enabled: process.env.ANALYZE === "true",
 });
@@ -13,6 +14,13 @@ const nextConfig = {
    "cdn.discordapp.com", // Discord
    "media.discordapp.net", // Discord
   ],
+ },
+ webpack: (config, { isServer }) => {
+  if (isServer) {
+   config.plugins = [...config.plugins, new PrismaPlugin()];
+  }
+
+  return config;
  },
  async redirects() {
   return [

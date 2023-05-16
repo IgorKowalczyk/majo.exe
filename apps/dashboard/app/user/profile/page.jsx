@@ -34,8 +34,8 @@ export default function Profile() {
        <div className="flex h-[72px] gap-6  w-auto justify-between bg-[#141f2f] p-12 flex-row">
         <div className="mt-[-20px] ml-[-16px] box-content rounded-full flex items-center">
          <Tippy animation="shift-away" hideOnClick={false} duration={400} animateFill={true} plugins={[animateFill]} className="tippy-box" theme="translucent" content={"View avatar"}>
-          <Link href={`${data.user.image}?size=2048`} target="_blank" className="w-24 h-24">
-           <Image quality={100} src={data.user.image} alt={data.username} width={94} height={94} className="hover:opacity-75 duration-200 rounded-full backdrop-blur-sm !border-4 !border-solid !border-[#141f2f]" />
+          <Link href={`${data.image}?size=2048`} target="_blank" className="w-24 h-24">
+           <Image quality={100} src={data.image} alt={data.username} width={94} height={94} className="hover:opacity-75 duration-200 rounded-full backdrop-blur-sm !border-4 !border-solid !border-[#141f2f]" />
           </Link>
          </Tippy>
          <div className="flex text-lg items-center font-bold ml-2">

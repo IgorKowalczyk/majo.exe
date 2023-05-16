@@ -1,5 +1,5 @@
-import { Invite } from "../components/buttons/Invite";
-import { Login } from "../components/buttons/Login";
+import { Invite } from "components/buttons/Invite";
+import { Login } from "components/buttons/Login";
 
 export default async function Main() {
  return (

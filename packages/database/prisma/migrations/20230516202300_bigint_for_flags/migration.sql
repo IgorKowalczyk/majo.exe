@@ -1,0 +1,3 @@
+-- AlterTable
+ALTER TABLE "users" ALTER COLUMN "flags" SET DATA TYPE BIGINT,
+ALTER COLUMN "public_flags" SET DATA TYPE BIGINT;

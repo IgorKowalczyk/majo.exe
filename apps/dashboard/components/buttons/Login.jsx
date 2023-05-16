@@ -1,7 +1,7 @@
 import { ArrowUturnRightIcon } from "@heroicons/react/24/outline";
 import { getSession } from "lib/session";
 import Link from "next/link";
-import { LoginClient } from "./client/Login";
+import { LoginClient } from "components/buttons/client/Login";
 
 export async function Login() {
  const session = await getSession();

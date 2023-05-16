@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import { getProviders, signIn } from "next-auth/react";
-import { getSession } from "/lib/session";
+import { getSession } from "lib/session";
 
 export const metadata = {
  title: "Login",

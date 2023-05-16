@@ -6,9 +6,6 @@ import { PrimaryButton } from "components/buttons/Primary";
 import { SecondaryButton } from "components/buttons/Secondary";
 import { getSession } from "lib/session";
 import Image from "next/image";
-import "tippy.js/dist/backdrop.css";
-import "tippy.js/animations/shift-away.css";
-import "tippy.js/dist/tippy.css";
 import { redirect } from "next/navigation";
 
 export async function getAllServers(session) {
