@@ -3,7 +3,7 @@
   "version": "6.0.0",
   "description": "Majo.exe have almost everything - Fun, Memes, Images, Giveaway Moderation, Anime, NSFW and eveb more!. Majo.exe serve over 150 commands!",
   "author": "Igor Kowalczyk [Majonez.exe#3957]",
-  "main": "index.js",
+  "module": "index.js",
   "type": "module",
   "scripts": {
     "dev": "nodemon index.js",

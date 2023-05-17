@@ -1,7 +1,7 @@
 "use client";
 
 import { ArrowTopRightOnSquareIcon } from "@heroicons/react/24/outline";
-import { getFlags } from "@majoexe/util/src/functions/getFlags";
+import { getFlags } from "@majoexe/util/functions";
 import Tippy from "@tippyjs/react";
 import { Emojis } from "components/decorations/emojis";
 import Image from "next/image";

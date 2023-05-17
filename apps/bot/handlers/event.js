@@ -1,4 +1,4 @@
-import { Logger } from "@majoexe/util/src/functions/logger.js";
+import { Logger } from "@majoexe/util/functions/index.js";
 import { config } from "../config/index.js";
 import { readdirSync } from "node:fs";
 

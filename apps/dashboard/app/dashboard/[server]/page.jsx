@@ -1,4 +1,4 @@
-import { getServer } from "@majoexe/util/src/functions/getServer";
+import { getServer } from "@majoexe/util/functions";
 import { getSession } from "lib/session";
 import Image from "next/image";
 import { redirect } from "next/navigation";

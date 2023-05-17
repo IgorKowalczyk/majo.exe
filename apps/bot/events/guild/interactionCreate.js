@@ -1,5 +1,5 @@
-import { formatDuration } from "@majoexe/util/src/functions/formatDuration.js";
-import { Logger } from "@majoexe/util/src/functions/logger.js";
+import { formatDuration } from "@majoexe/util/functions/index.js";
+import { Logger } from "@majoexe/util/functions/index.js";
 import { EmbedBuilder } from "discord.js";
 const timeout = new Map();
 

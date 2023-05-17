@@ -1,11 +1,11 @@
 import { ArrowUturnLeftIcon } from "@heroicons/react/24/outline";
+import { Dots } from "components/blocks/Loaders";
+import { ProviderLogin } from "components/buttons/client/Provider";
 import { getSession } from "lib/session";
 import Image from "next/image";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import { getProviders } from "next-auth/react";
-import { ProviderLogin } from "@/components/buttons/client/Provider";
-import { Dots } from "@/components/blocks/Loaders";
 
 export const metadata = {
  title: "Login",

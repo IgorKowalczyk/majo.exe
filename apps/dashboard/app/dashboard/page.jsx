@@ -1,7 +1,7 @@
 import { PlusSmallIcon, RectangleStackIcon } from "@heroicons/react/24/outline";
-import { canAddBotToServer } from "@majoexe/util/src/functions/checkPermissions";
-import { getServers } from "@majoexe/util/src/functions/getServers.js";
-import { isBotInServer } from "@majoexe/util/src/functions/isBotInServer";
+import { canAddBotToServer } from "@majoexe/util/functions";
+import { getServers } from "@majoexe/util/functions";
+import { isBotInServer } from "@majoexe/util/functions";
 import { PrimaryButton } from "components/buttons/Primary";
 import { SecondaryButton } from "components/buttons/Secondary";
 import { getSession } from "lib/session";

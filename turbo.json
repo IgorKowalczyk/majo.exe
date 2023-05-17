@@ -2,12 +2,11 @@
  "$schema": "https://turborepo.org/schema.json",
  "pipeline": {
   "dev": {
-   "env": ["CLIENT_ID", "NEXTAUTH_URL", "HOTJAR_ID", "ENVIRONMENT_URL"],
    "dependsOn": ["^prisma:generate"],
    "outputs": []
   },
   "build": {
-   "dependsOn": ["^build", "^prisma:generate"],
+   "dependsOn": ["^build", "prisma:generate"],
    "outputs": ["dist/**", ".next/**"]
   },
   "deploy": {
@@ -43,5 +42,6 @@
    "outputs": []
   }
  },
+ "globalEnv": ["CLIENT_ID", "NEXTAUTH_URL", "HOTJAR_ID", "ENVIRONMENT_URL", "TOKEN", "NODE_ENV", "npm_package_version"],
  "globalDependencies": ["pnpm-lock.yaml", "pnpm-workspace.yaml", ".prettierignore", ".prettierrc"]
 }

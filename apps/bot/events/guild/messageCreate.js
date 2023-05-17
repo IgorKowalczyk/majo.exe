@@ -1,4 +1,4 @@
-import { fetchProfanity } from "@majoexe/util/src/settings/fetchProfanity.js";
+import { fetchProfanity } from "@majoexe/util/settings/index.js";
 import Filter from "bad-words";
 import { EmbedBuilder } from "discord.js";
 

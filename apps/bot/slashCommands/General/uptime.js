@@ -1,5 +1,4 @@
-import { ApplicationCommandType } from "discord.js";
-import { EmbedBuilder, time, ButtonBuilder, ActionRowBuilder, ButtonStyle } from "discord.js";
+import { EmbedBuilder, time, ButtonBuilder, ActionRowBuilder, ApplicationCommandType, ButtonStyle } from "discord.js";
 import { config } from "../../config/index.js";
 
 export default {

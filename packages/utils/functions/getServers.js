@@ -5,15 +5,11 @@
  * @example getServers("token").then((res) => console.log(res))
  * */
 export async function getServers(token) {
- try {
-  const res = await fetch("https://discord.com/api/users/@me/guilds", {
-   headers: {
-    Authorization: `Bearer ${token}`,
-   },
-  });
-  const json = await res.json();
-  return json;
- } catch (err) {
-  return err;
- }
+ const res = await fetch("https://discord.com/api/users/@me/guilds", {
+  headers: {
+   Authorization: `Bearer ${token}`,
+  },
+ });
+ if (res.ok) return await res.json();
+ return { error: "Invalid token" };
 }
