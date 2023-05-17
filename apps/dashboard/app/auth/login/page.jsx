@@ -22,13 +22,13 @@ export default async function Login() {
      flex flex-col items-center gap-4 drop-shadow-[0_0_150px_rgba(0,124,240,0.5)]"
    >
     <div className="mb-4 flex flex-row">
-     <Image src="/assets/avatar.png" width={90} height={90} alt="Avatar" className="rounded-full" quality={90} />
+     <Image src="/assets/avatar.png" width={112} height={112} alt="Avatar" className="rounded-full w-28 h-28" quality={90} />
      <div className="mx-4 flex flex-row items-center gap-2">
       {[...Array(3)].map((_, i) => (
-       <div key={i} className="h-2 w-2 animate-pulse rounded-full bg-gray-400" style={{ animationDelay: `${150 * i - 50}ms` }} />
+       <div key={i} className="h-3 w-3 animate-pulse rounded-full bg-gray-400" style={{ animationDelay: `${150 * i - 50}ms` }} />
       ))}
      </div>
-     <div className="flex h-[90px] w-[90px] items-center justify-center rounded-full bg-white/5 text-5xl text-[#939DB8]">?</div>
+     <div className="flex h-28 w-28 items-center justify-center rounded-full bg-white/5 text-5xl text-[#939DB8]">?</div>
     </div>
 
     <h1 className="text-center  text-6xl font-bold">Connect your account</h1>
