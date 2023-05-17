@@ -12,8 +12,7 @@ export async function getAllServers(session) {
  const servers = (await getServers(session.access_token)) || [];
  const filteredServers = servers.length > 0 ? servers.filter((server) => canAddBotToServer(server.permissions)) : [];
  const promises = filteredServers.map(async (server) => {
-  const isbot = await isBotInServer(server.id);
-  server.bot = isbot;
+  server.bot = await isBotInServer(server.id);
   return server;
  });
 

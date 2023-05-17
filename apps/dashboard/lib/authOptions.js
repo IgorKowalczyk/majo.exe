@@ -1,6 +1,6 @@
 import prismaClient from "@majoexe/database";
 import { PrismaAdapter } from "@next-auth/prisma-adapter";
-import { credentials, social } from "config";
+import { credentials } from "config";
 import DiscordProvider from "next-auth/providers/discord";
 
 const authOptions = {
