@@ -50,7 +50,7 @@
   },
   "packageManager": "pnpm@8.5.1",
   "dependencies": {
-    "turbo": "1.9.7",
+    "turbo": "1.9.8",
     "dotenv-cli": "7.2.1"
   }
 }
