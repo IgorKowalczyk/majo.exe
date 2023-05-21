@@ -1,19 +1,15 @@
-import clientPromise from "../database/database.js";
-
+import prismaClient from "@majoexe/database/index.js";
 /**
  * Fetch profanity setting for Guild
  * @param { string } guild The id of the guild
  * @returns { boolean } The profanity setting
  */
-export async function fetchProfanity(guild) {
- const client = await clientPromise;
- const db = await client.db();
- const collection = await db.collection("guilds");
- try {
-  await collection.findOne({ id: guild }).then((res) => {
-   return res;
-  });
- } catch (err) {
-  return false;
- }
+export async function fetchProfanity(guildId) {
+ const guild = await prismaClient.guild.findUnique({
+  where: {
+   guildId: guildId,
+  },
+ });
+
+ return guild?.profanityLevel;
 }

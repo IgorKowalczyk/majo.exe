@@ -78,3 +78,25 @@ model Suggestions {
 
   @@map(name: "suggestions")
 }
+
+model Guild {
+  id             String      @id @default(cuid())
+  guildId        String      @unique @map(name: "discord_id")
+  profanityLevel Int         @default(0) @map(name: "profanity_level")
+  lastUpdated    DateTime    @default(now()) @map(name: "last_updated")
+  GuildLogs      GuildLogs[]
+
+  @@map(name: "guilds")
+}
+
+model GuildLogs {
+  id        String   @id @default(cuid())
+  guildId   String
+  authorId  String
+  content   String
+  type      String
+  createdAt DateTime @default(now()) @map(name: "created_at")
+  Guild     Guild    @relation(fields: [guildId], references: [guildId], onDelete: Cascade)
+
+  @@map(name: "guild_logs")
+}
