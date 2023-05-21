@@ -1,4 +1,4 @@
-import { ApplicationCommandType, EmbedBuilder, codeBlock} from "discord.js";
+import { ApplicationCommandType, EmbedBuilder, codeBlock } from "discord.js";
 
 function convertCamelCaseToWords(text) {
  return text.replace(/([A-Z])/g, " $1").replace(/^./, function (str) {
@@ -17,7 +17,7 @@ export default {
   try {
    const clientMember = interaction.guild?.members.cache.get(client.user?.id);
    const permissions = clientMember?.permissions.toArray();
-   const words =  permissions.map(permission => convertCamelCaseToWords(permission));
+   const words = permissions.map((permission) => convertCamelCaseToWords(permission));
 
    const embed = new EmbedBuilder()
     .setColor("#5865F2")
