@@ -21,12 +21,13 @@ const takeAction = async (client, message) => {
     },
    },
    authorId: message.author.id,
-   avatar: message.author.displayAvatarURL({
-    dynamic: true,
-    format: "png",
-    size: 2048,
-   }) || "https://cdn.discordapp.com/embed/avatars/0.png",
-   content: `Detected and deleted a message because it contained a bad word.`,
+   avatar:
+    message.author.displayAvatarURL({
+     dynamic: true,
+     format: "png",
+     size: 2048,
+    }) || "https://cdn.discordapp.com/embed/avatars/0.png",
+   content: "Detected and deleted a message because it contained a bad word.",
    type: "profanity",
   },
  });
