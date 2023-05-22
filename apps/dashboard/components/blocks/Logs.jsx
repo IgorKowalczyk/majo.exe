@@ -41,14 +41,14 @@ export default function Logs({ initialItems, id }) {
 
  return (
   <div className="flex w-auto items-center flex-col gap-4">
-   <InfiniteScroll hasMore={hasMore} pageStart={0} loadMore={loadMore} loader={<TextSkeleton className="w-full !h-20" />}>
+   <InfiniteScroll hasMore={hasMore} pageStart={0} loadMore={loadMore} loader={<TextSkeleton className="w-full mt-4 !h-20" />}>
     {items.map((item) => (
      <Disclosure key={item.id}>
       {({ open }) => (
        <>
         <Disclosure.Button
-         className={clsx("flex flex-row items-center justify-start gap-4 py-4 w-full my-4 px-6 max-w-2xl rounded-md border border-white/10 bg-button-secondary/80", {
-          "rounded-b-none border-b-0 mb-0": open,
+         className={clsx("flex flex-row duration-200 items-center justify-start gap-4 py-4 w-full my-4 px-6 max-w-2xl rounded-md border border-white/10 bg-button-secondary/80", {
+          "rounded-b-none mb-0": open,
          })}
         >
          <div className="relative">

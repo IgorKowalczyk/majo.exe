@@ -30,8 +30,8 @@ export default async function ServerLogs({ params }) {
  });
 
  return (
-  <div className="flex min-h-screen flex-col justify-center gap-4">
-   <h1 className="flex items-center justify-center gap-4 text-center  text-5xl font-bold">
+  <div className="flex w-full flex-col items-center bg-background-primary antialiased md:py-16 md:px-16 px-8 py-8">
+   <h1 className="flex items-center justify-center gap-4 text-center text-5xl font-bold">
     {serverDownload.icon ? <Image src={`https://cdn.discordapp.com/icons/${serverDownload.id}/${serverDownload.icon}.${serverDownload.icon.startsWith("a_") ? "gif" : "png"}`} alt={serverDownload.name} quality={95} width={64} height={64} className="w-16 h-16 rounded-full" /> : <div className="w-16 h-16 rounded-full bg-button-secondary" />}
     Activity Logs
    </h1>
