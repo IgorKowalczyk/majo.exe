@@ -52,7 +52,7 @@ export default function Logs({ initialItems, id }) {
          })}
         >
          <div className="relative">
-          <Image src={item.avatar} alt={item.id} quality={95} width={32} height={32} className="w-12 h-12 rounded-full" />
+          {item.user.avatar && <Image src={`https://cdn.discordapp.com/avatars/${item.user.discordId}/${item.user.avatar}.${item.user.avatar.startsWith("a_") ? "gif" : "png"}`} alt={item.user.username} quality={95} width={32} height={32} className="w-12 h-12 rounded-full" />}
           {item.type === "profanity" && <NoSymbolIcon className="h-5 w-5 min-w-[20px] min-h-[20px] opacity-80 absolute bottom-0 right-0 border border-white/10 bg-button-secondary/80 rounded-full p-1" />}
          </div>
          <div className="flex flex-col">
@@ -81,7 +81,8 @@ export default function Logs({ initialItems, id }) {
            <span class="font-bold">Date:</span> {item.createdAt}
           </p>
           <p>
-           <span class="font-bold">User:</span> {item.authorId}
+           <span class="font-bold">User:</span> {item.user.name || item.user.id}
+           <span className="opacity-70">#{item.user.discriminator || "0000"}</span> (ID: {item.user.discordId || item.user.id})
           </p>
          </Disclosure.Panel>
         </Transition>

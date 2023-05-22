@@ -23,6 +23,9 @@ export default async function ServerLogs({ params }) {
   orderBy: {
    createdAt: "desc",
   },
+  include: {
+   user: true,
+  },
  });
 
  logs.forEach((log) => {

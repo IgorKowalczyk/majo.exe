@@ -10,21 +10,22 @@ generator client {
 }
 
 model User {
-  id            String    @id @default(cuid())
-  discordId     String    @unique
+  id            String      @id @default(cuid())
+  discordId     String      @unique
   name          String
-  global_name   String    @unique @map(name: "global_name")
+  global_name   String      @unique @map(name: "global_name")
   avatar        String?
   discriminator String
-  public_flags  BigInt    @map(name: "public_flags")
+  public_flags  BigInt      @map(name: "public_flags")
   flags         BigInt
   locale        String?
   nitro         Int?
   verified      Boolean?
-  email         String?   @unique
-  emailVerified DateTime? @map(name: "email_verified")
+  email         String?     @unique
+  emailVerified DateTime?   @map(name: "email_verified")
   accounts      Account[]
   sessions      Session[]
+  GuildLogs     GuildLogs[]
 
   @@map(name: "users")
 }
@@ -84,7 +85,7 @@ model Guild {
   guildId        String      @unique @map(name: "discord_id")
   profanityLevel Int         @default(0) @map(name: "profanity_level")
   lastUpdated    DateTime    @default(now()) @map(name: "last_updated")
-  GuildLogs      GuildLogs[]
+  guildLogs      GuildLogs[]
 
   @@map(name: "guilds")
 }
@@ -93,22 +94,11 @@ model GuildLogs {
   id        String   @id @default(cuid())
   guildId   String
   authorId  String
-  avatar    String  @map(name: "avatar_url") @default("")
   content   String
   type      String
   createdAt DateTime @default(now()) @map(name: "created_at")
-  Guild     Guild    @relation(fields: [guildId], references: [guildId], onDelete: Cascade)
+  guild     Guild    @relation(fields: [guildId], references: [guildId], onDelete: Cascade)
+  user      User     @relation(fields: [authorId], references: [discordId], onDelete: Cascade)
 
   @@map(name: "guild_logs")
 }
-
-// model GuildCommandStatistics {
-//   id        String   @id @default(cuid())
-//   guildId   String
-//   command   String
-//   count     Int      @default(0)
-//   createdAt DateTime @default(now()) @map(name: "created_at")
-//   Guild     Guild    @relation(fields: [guildId], references: [guildId], onDelete: Cascade)
-
-//   @@map(name: "guild_command_statistics")
-// }

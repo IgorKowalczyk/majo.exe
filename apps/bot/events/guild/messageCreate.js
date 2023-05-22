@@ -10,7 +10,7 @@ const takeAction = async (client, message) => {
 
  const query = await prismaClient.guildLogs.create({
   data: {
-   Guild: {
+   guild: {
     connectOrCreate: {
      where: {
       guildId: message.guild.id,
@@ -20,13 +20,27 @@ const takeAction = async (client, message) => {
      },
     },
    },
-   authorId: message.author.id,
-   avatar:
-    message.author.displayAvatarURL({
-     dynamic: true,
-     format: "png",
-     size: 2048,
-    }) || "https://cdn.discordapp.com/embed/avatars/0.png",
+   user: {
+    connectOrCreate: {
+     where: {
+      discordId: message.author.id,
+     },
+     create: {
+      discordId: message.author.id,
+      name: message.author.username,
+      global_name: message.author.username,
+      avatar:
+       message.author.displayAvatarURL({
+        dynamic: true,
+        format: "png",
+        size: 2048,
+       }) || null,
+      discriminator: message.author.discriminator,
+      public_flags: message.author.flags?.bitfield,
+      flags: message.author.flags?.bitfield,
+     },
+    },
+   },
    content: "Detected and deleted a message because it contained a bad word.",
    type: "profanity",
   },
