@@ -93,6 +93,7 @@ model GuildLogs {
   id        String   @id @default(cuid())
   guildId   String
   authorId  String
+  avatar    String  @map(name: "avatar_url") @default("")
   content   String
   type      String
   createdAt DateTime @default(now()) @map(name: "created_at")
@@ -100,3 +101,14 @@ model GuildLogs {
 
   @@map(name: "guild_logs")
 }
+
+// model GuildCommandStatistics {
+//   id        String   @id @default(cuid())
+//   guildId   String
+//   command   String
+//   count     Int      @default(0)
+//   createdAt DateTime @default(now()) @map(name: "created_at")
+//   Guild     Guild    @relation(fields: [guildId], references: [guildId], onDelete: Cascade)
+
+//   @@map(name: "guild_command_statistics")
+// }

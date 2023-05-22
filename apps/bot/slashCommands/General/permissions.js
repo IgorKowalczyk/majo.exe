@@ -1,7 +1,7 @@
 import { ApplicationCommandType, EmbedBuilder, codeBlock } from "discord.js";
 
 function convertCamelCaseToWords(text) {
- return text.replace(/([A-Z])/g, " $1").replace(/^./, function (str) {
+ return text.replace(/([A-Z])/g, " $1").replace(/^./, (str) => {
   return str.toUpperCase().trim();
  });
 }

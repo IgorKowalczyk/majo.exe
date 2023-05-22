@@ -1,7 +1,7 @@
+import prismaClient from "@majoexe/database/index.js";
 import { formatDuration } from "@majoexe/util/functions/index.js";
 import { Logger } from "@majoexe/util/functions/index.js";
 import { EmbedBuilder } from "discord.js";
-import prismaClient from "@majoexe/database/index.js";
 const timeout = new Map();
 
 export async function interactionCreate(client, interaction) {

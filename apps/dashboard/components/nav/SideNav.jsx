@@ -1,6 +1,6 @@
 "use client";
 
-import { ArrowLeftIcon, ChartPieIcon, Cog8ToothIcon, QueueListIcon, RectangleStackIcon } from "@heroicons/react/24/outline";
+import { ArrowLeftIcon, ChartPieIcon, Cog8ToothIcon, ListBulletIcon, QueueListIcon, RectangleStackIcon } from "@heroicons/react/24/outline";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
@@ -26,6 +26,10 @@ export function SideNav({ server }) {
     <Link href={`/dashboard/${server}/leaderboard`} className={`${isSelected(`/dashboard/${server}/leaderboard`) ? "bg-button-primary hover:bg-button-primary-hover" : "hover:bg-button-secondary"} flex items-center gap-2 duration-200 w-full px-4 py-2 rounded`}>
      <QueueListIcon className="w-6 h-6" />
      Leaderboard
+    </Link>
+    <Link href={`/dashboard/${server}/logs`} className={`${isSelected(`/dashboard/${server}/logs`) ? "bg-button-primary hover:bg-button-primary-hover" : "hover:bg-button-secondary"} flex items-center gap-2 duration-200 w-full px-4 py-2 rounded`}>
+     <ListBulletIcon className="w-6 h-6" />
+     Logs
     </Link>
     <Link href={`/dashboard/${server}/settings`} className={`${isSelected(`/dashboard/${server}/settings`) ? "bg-button-primary hover:bg-button-primary-hover" : "hover:bg-button-secondary"} flex items-center gap-2 duration-200 w-full px-4 py-2 rounded`}>
      <Cog8ToothIcon className="w-6 h-6" />

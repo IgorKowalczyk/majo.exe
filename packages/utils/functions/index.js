@@ -1,5 +1,6 @@
 export * from "./checkPermissions.js";
 export * from "./formatDuration.js";
+export * from "./formatDate.js";
 export * from "./getAvatar.js";
 export * from "./getFlags.js";
 export * from "./getServer.js";
