@@ -72,16 +72,16 @@ export default function Logs({ initialItems, id }) {
         <Transition enter="transition duration-100 ease-out" enterFrom="transform scale-95 opacity-0" enterTo="transform scale-100 opacity-100" leave="transition duration-75 ease-out" leaveFrom="transform scale-100 opacity-100" leaveTo="transform scale-95 opacity-0">
          <Disclosure.Panel className="py-4 w-full px-6 max-w-2xl rounded-md border border-white/10 border-t-0 rounded-t-none bg-button-secondary/80">
           <p>
-           <span class="font-bold">Action taken:</span> Message delete
+           <span className="font-bold">Action taken:</span> Message delete
           </p>
           <p>
-           <span class="font-bold">Type:</span> {item.type}
+           <span className="font-bold">Type:</span> {item.type}
           </p>
           <p>
-           <span class="font-bold">Date:</span> {item.createdAt}
+           <span className="font-bold">Date:</span> {item.createdAt}
           </p>
           <p>
-           <span class="font-bold">User:</span> {item.user.name || item.user.id}
+           <span className="font-bold">User:</span> {item.user.name || item.user.id}
            <span className="opacity-70">#{item.user.discriminator || "0000"}</span> (ID: {item.user.discordId || item.user.id})
           </p>
          </Disclosure.Panel>
