@@ -8,8 +8,8 @@ export default function Loading() {
     Activity Logs
    </h1>
    <div className="flex w-full items-center flex-col mt-4 gap-4">
-    {[...Array(5)].map(() => (
-     <TextSkeleton className={"!h-20 max-w-2xl w-full"} />
+    {[...Array(5)].map((_, i) => (
+     <TextSkeleton className={"!h-20 max-w-2xl w-full"} key={i} />
     ))}
    </div>
   </div>
