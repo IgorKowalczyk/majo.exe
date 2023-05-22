@@ -85,7 +85,7 @@ importers:
         specifier: workspace:*
         version: link:../../packages/utils
       '@next-auth/prisma-adapter':
-        specifier: ^1.0.6
+        specifier: 1.0.6
         version: 1.0.6(@prisma/client@4.14.1)(next-auth@4.22.1)
       '@tippyjs/react':
         specifier: 4.2.6
@@ -133,7 +133,7 @@ importers:
         specifier: 18.2.0
         version: 18.2.0(react@18.2.0)
       react-infinite-scroller:
-        specifier: ^1.2.6
+        specifier: 1.2.6
         version: 1.2.6(react@18.2.0)
       react-twemoji:
         specifier: 0.5.0
@@ -161,7 +161,7 @@ importers:
         specifier: 13.4.1
         version: 13.4.1
       '@prisma/nextjs-monorepo-workaround-plugin':
-        specifier: ^4.14.0
+        specifier: 4.14.0
         version: 4.14.0
       eslint:
         specifier: 8.41.0
