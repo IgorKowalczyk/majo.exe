@@ -87,6 +87,5 @@ This project is licensed under the MIT. See the [LICENSE](https://github.com/igo
 
 <details>
  <summary>The cake is a lie 🍰</summary>
- 
- <a href="https://igorkowalczyk.dev"><img src="https://komarev.com/ghpvc/?username=majobot&style=flat-square&color=333333&label=Repo+views" alt="Github repository views"></a>
+ <a href="https://igorkowalczyk.dev"><img src="https://views.igorkowalczyk.vercel.app/api/badge/majo.exe?style=flat-square&color=333333&label=Repo+views" alt="Github repository views"></a>
 </details>
