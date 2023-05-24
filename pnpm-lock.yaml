@@ -94,8 +94,8 @@ importers:
         specifier: 1.0.1
         version: 1.0.1
       '@vercel/og':
-        specifier: 0.5.4
-        version: 0.5.4
+        specifier: 0.5.6
+        version: 0.5.6
       autoprefixer:
         specifier: 10.4.14
         version: 10.4.14(postcss@8.4.23)
@@ -807,12 +807,12 @@ packages:
     resolution: {integrity: sha512-Ux0c9qUfkcPqng3vrR0GTrlQdqNJ2JREn/2ydrVuKwM3RtMfF2mWX31Ijqo1opSjNAq6rK76PwtANw6kl6TAow==}
     dev: false
 
-  /@vercel/og@0.5.4:
-    resolution: {integrity: sha512-o4Zjgw66HPtfGFYG4CFcKfnCcK6qCY+3FC6g22Z1SdAN5jN8XjbHCh3hRVHH5IGBQp8mxH941EcH53KimAm+wg==}
+  /@vercel/og@0.5.6:
+    resolution: {integrity: sha512-C7loD/Ryt+cXgZ93KVNOIa/r/WcPVPk1JflUODGUdngFwxOJab0eCdugMrwGR2Oq85g4TXXHMBZIC2Z0C9P1NQ==}
     engines: {node: '>=16'}
     dependencies:
       '@resvg/resvg-wasm': 2.4.1
-      satori: 0.7.2
+      satori: 0.9.1
       yoga-wasm-web: 0.3.3
     dev: false
 
@@ -3220,8 +3220,8 @@ packages:
     dev: false
     optional: true
 
-  /satori@0.7.2:
-    resolution: {integrity: sha512-Eltg0/i3OEbBLaveCnYi2j+p0J9Bb5rmDMXddq4Zy0/NYHbpTkPIlPYGgb+DKamhmvXhiGvWGiFdqHVjJCaCpA==}
+  /satori@0.9.1:
+    resolution: {integrity: sha512-2ggMOiY8O8rIxQ6vywiw3LlBheWHbsOzu5hZdMXTDFKzE9sDHUOtJegGmGE+e9aRSO1ttttgXrcHVsHPKYU2GQ==}
     engines: {node: '>=16'}
     dependencies:
       '@shuding/opentype.js': 1.4.0-beta.0
