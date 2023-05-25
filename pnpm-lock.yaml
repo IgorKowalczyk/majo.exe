@@ -15,8 +15,8 @@ importers:
         specifier: 1.3.2
         version: 1.3.2(prettier@2.8.8)
       '@igorkowalczyk/prettier-config':
-        specifier: 1.3.2
-        version: 1.3.2
+        specifier: 1.4.0
+        version: 1.4.0(prettier@2.8.8)
       '@majoexe/eslint-config':
         specifier: workspace:*
         version: link:packages/eslint-config
@@ -450,8 +450,10 @@ packages:
       tailwindcss: 3.3.2
     dev: false
 
-  /@igorkowalczyk/prettier-config@1.3.2:
-    resolution: {integrity: sha512-wObu+P7B/5hsRnkhnRXeoSNVi3nK+RyBjT3bIUQ2qbR+VayRJ0tp64btGGEbhEu/gdIJ+Od9sTc7c15BACpMAQ==}
+  /@igorkowalczyk/prettier-config@1.4.0(prettier@2.8.8):
+    resolution: {integrity: sha512-HOKHOBMD2pb9Gt34iP/HaQURb/BEuu/vAQKPI/Ix7hhf9h0fUfeD/GNO9nzPEpTVqI2IjVBny5jl7U8yURMonw==}
+    peerDependencies:
+      prettier: '>=2.0.0'
     dependencies:
       prettier: 2.8.8
     dev: true
