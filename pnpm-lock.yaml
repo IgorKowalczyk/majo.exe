@@ -197,6 +197,9 @@ importers:
       prettier:
         specifier: 2.8.8
         version: 2.8.8
+      prettier-plugin-prisma:
+        specifier: ^4.13.0
+        version: 4.13.0(prettier@2.8.8)
 
   packages/eslint-config:
     dependencies:
@@ -663,6 +666,10 @@ packages:
 
   /@prisma/nextjs-monorepo-workaround-plugin@4.14.1:
     resolution: {integrity: sha512-WbK3DajKklEdeWh4Ds4ltTTBs0s+0yqXMtGVR1jFB2ma8vtrqKdRJtEi0xVNc8Sb6V+kS2fJ5sPSNP43LeMRRQ==}
+    dev: true
+
+  /@prisma/prisma-fmt-wasm@4.13.0-52.integration-mobc-upstream-d100a9299fcb9cffb064301998e9a94ce2722c49:
+    resolution: {integrity: sha512-12dZRXW36s3hRHLeD8c4S3o1ZZcnFt1NxhBrSlYepnMxatfkj5S8aIDP/G+zzUqucB//kGZZWNX3eUcmxMsEqw==}
     dev: true
 
   /@resvg/resvg-wasm@2.4.1:
@@ -2975,6 +2982,16 @@ packages:
     engines: {node: '>=6.0.0'}
     dependencies:
       fast-diff: 1.2.0
+
+  /prettier-plugin-prisma@4.13.0(prettier@2.8.8):
+    resolution: {integrity: sha512-bnOWoQTVXM9VWBErPGE6rVgI8kCQts+DMQolg7Sj/Q0/oAlpDYOhce4ljQKf5BhJW061yrB3+CRVps6tNcUkQg==}
+    engines: {node: '>=14', npm: '>=8'}
+    peerDependencies:
+      prettier: '>=2'
+    dependencies:
+      '@prisma/prisma-fmt-wasm': 4.13.0-52.integration-mobc-upstream-d100a9299fcb9cffb064301998e9a94ce2722c49
+      prettier: 2.8.8
+    dev: true
 
   /prettier-plugin-tailwindcss@0.3.0(prettier@2.8.8):
     resolution: {integrity: sha512-009/Xqdy7UmkcTBpwlq7jsViDqXAYSOMLDrHAdTMlVZOrKfM2o9Ci7EMWTMZ7SkKBFTG04UM9F9iM2+4i6boDA==}
