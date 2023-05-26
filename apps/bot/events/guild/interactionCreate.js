@@ -1,6 +1,6 @@
-import prismaClient from "@majoexe/database/index.js";
-import { formatDuration } from "@majoexe/util/functions/index.js";
-import { Logger } from "@majoexe/util/functions/index.js";
+import prismaClient from "@majoexe/database";
+import { formatDuration } from "@majoexe/util/functions";
+import { Logger } from "@majoexe/util/functions";
 import { EmbedBuilder } from "discord.js";
 const timeout = new Map();
 

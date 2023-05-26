@@ -46,7 +46,7 @@
     "discord-bot"
   ],
   "engines": {
-    "node": ">=14.6.0"
+    "node": ">=16"
   },
   "packageManager": "pnpm@8.5.1",
   "dependencies": {

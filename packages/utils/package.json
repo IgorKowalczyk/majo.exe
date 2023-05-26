@@ -2,7 +2,11 @@
   "name": "@majoexe/util",
   "version": "6.0.0",
   "description": "Shared utility functions for Majo.exe",
-  "module": "index.js",
+  "exports": {
+    "./functions": "./functions/index.js",
+    "./embeds": "./embeds/index.js",
+    "./settings": "./settings/index.js"
+  },
   "type": "module",
   "scripts": {
     "format": "prettier --write . --cache --ignore-unknown",

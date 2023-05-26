@@ -1,4 +1,4 @@
-import prismaClient from "@majoexe/database/index.js";
+import prismaClient from "@majoexe/database";
 /**
  * Fetch profanity setting for Guild
  * @param { string } guild The id of the guild

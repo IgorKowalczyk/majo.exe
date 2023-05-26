@@ -2,7 +2,7 @@
  "name": "@majoexe/eslint-config",
  "version": "6.0.0",
  "description": "Majo.exe shared eslint config, based on @igorkowalczyk/eslint-config",
- "main": "index.js",
+ "exports": "./index.js",
  "scripts": {
   "format": "prettier --write . --cache --ignore-unknown",
   "format:check": "prettier --check --cache .",

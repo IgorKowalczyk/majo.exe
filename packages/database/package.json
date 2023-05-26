@@ -2,10 +2,10 @@
   "name": "@majoexe/database",
   "version": "6.0.0",
   "description": "Majo.exe main database schema/client/migrations package",
-  "main": "index.js",
+  "exports": "./index.js",
   "type": "module",
   "scripts": {
-    "format": "prettier --write . --cache --ignore-unknown",
+    "format": "prettier --write --cache --ignore-unknown --plugin=prettier-plugin-prisma . ",
     "format:check": "prettier --check --cache .",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
     "lint:fix": "eslint . --ext .js,.jsx,.ts,.tsx --fix",
@@ -23,7 +23,7 @@
     "eslint": "8.41.0",
     "eslint-config-turbo": "1.9.9",
     "prettier": "2.8.8",
-    "prettier-plugin-prisma": "^4.13.0"
+    "prettier-plugin-prisma": "4.13.0"
   },
   "repository": {
     "type": "git",

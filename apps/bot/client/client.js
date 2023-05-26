@@ -1,5 +1,5 @@
-import { createErrorEmbed } from "@majoexe/util/embeds/index.js";
-import { Logger } from "@majoexe/util/functions/index.js";
+import { createErrorEmbed } from "@majoexe/util/embeds";
+import { Logger } from "@majoexe/util/functions";
 import chalk from "chalk";
 import { Client, GatewayIntentBits, PermissionsBitField, Collection } from "discord.js";
 import dotenv from "dotenv";

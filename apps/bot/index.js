@@ -1,4 +1,4 @@
-import { Logger } from "@majoexe/util/functions/index.js";
+import { Logger } from "@majoexe/util/functions";
 import client from "./client/client.js";
 import loadEvents from "./handlers/event.js";
 

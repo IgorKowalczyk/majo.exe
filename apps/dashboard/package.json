@@ -2,7 +2,6 @@
   "name": "@majoexe/dashboard",
   "version": "6.0.0",
   "description": "Dashboard for Majo.exe built on Next.js and Tailwind.css",
-  "main": "index.js",
   "scripts": {
     "start": "next start",
     "dev": "next dev",

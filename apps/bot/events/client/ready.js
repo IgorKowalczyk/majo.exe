@@ -1,4 +1,4 @@
-import { Logger } from "@majoexe/util/functions/index.js";
+import { Logger } from "@majoexe/util/functions";
 
 export async function ready(client) {
  const registerTime = performance.now();

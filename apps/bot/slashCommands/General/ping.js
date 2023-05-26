@@ -1,4 +1,4 @@
-import prismaClient from "@majoexe/database/index.js";
+import prismaClient from "@majoexe/database";
 import { ApplicationCommandType, EmbedBuilder, codeBlock } from "discord.js";
 
 export default {

@@ -1,104 +1,104 @@
 datasource db {
-  provider          = "postgresql"
-  url               = env("DATABASE_URL")
-  directUrl         = env("DIRECT_URL")
-  shadowDatabaseUrl = env("SHADOW_DATABASE_URL")
+ provider          = "postgresql"
+ url               = env("DATABASE_URL")
+ directUrl         = env("DIRECT_URL")
+ shadowDatabaseUrl = env("SHADOW_DATABASE_URL")
 }
 
 generator client {
-  provider = "prisma-client-js"
+ provider = "prisma-client-js"
 }
 
 model User {
-  id            String      @id @default(cuid())
-  discordId     String      @unique
-  name          String
-  global_name   String      @unique @map(name: "global_name")
-  avatar        String?
-  discriminator String
-  public_flags  BigInt      @map(name: "public_flags")
-  flags         BigInt
-  locale        String?
-  nitro         Int?
-  verified      Boolean?
-  email         String?     @unique
-  emailVerified DateTime?   @map(name: "email_verified")
-  accounts      Account[]
-  sessions      Session[]
-  GuildLogs     GuildLogs[]
+ id            String      @id @default(cuid())
+ discordId     String      @unique
+ name          String
+ global_name   String      @unique @map(name: "global_name")
+ avatar        String?
+ discriminator String
+ public_flags  BigInt      @map(name: "public_flags")
+ flags         BigInt
+ locale        String?
+ nitro         Int?
+ verified      Boolean?
+ email         String?     @unique
+ emailVerified DateTime?   @map(name: "email_verified")
+ accounts      Account[]
+ sessions      Session[]
+ GuildLogs     GuildLogs[]
 
-  @@map(name: "users")
+ @@map(name: "users")
 }
 
 model Account {
-  id                String   @id @default(cuid())
-  userId            String
-  type              String
-  provider          String   @unique
-  providerAccountId String   @unique
-  refresh_token     String?  @db.Text
-  access_token      String?  @db.Text
-  expires_at        Int?
-  token_type        String?
-  scope             String?
-  id_token          String?  @db.Text
-  session_state     String?
-  createdAt         DateTime @default(now()) @map(name: "created_at")
-  user              User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+ id                String   @id @default(cuid())
+ userId            String
+ type              String
+ provider          String   @unique
+ providerAccountId String   @unique
+ refresh_token     String?  @db.Text
+ access_token      String?  @db.Text
+ expires_at        Int?
+ token_type        String?
+ scope             String?
+ id_token          String?  @db.Text
+ session_state     String?
+ createdAt         DateTime @default(now()) @map(name: "created_at")
+ user              User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 
-  @@unique([provider, providerAccountId])
-  @@map("accounts")
+ @@unique([provider, providerAccountId])
+ @@map("accounts")
 }
 
 model Session {
-  id           String   @id @default(cuid())
-  sessionToken String   @unique
-  userId       String
-  expires      DateTime
-  createdAt    DateTime @default(now()) @map(name: "created_at")
-  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+ id           String   @id @default(cuid())
+ sessionToken String   @unique
+ userId       String
+ expires      DateTime
+ createdAt    DateTime @default(now()) @map(name: "created_at")
+ user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 
-  @@map(name: "sessions")
+ @@map(name: "sessions")
 }
 
 model VerificationToken {
-  identifier String
-  token      String   @unique
-  expires    DateTime
+ identifier String
+ token      String   @unique
+ expires    DateTime
 
-  @@unique([identifier, token])
-  @@map(name: "verification_tokens")
+ @@unique([identifier, token])
+ @@map(name: "verification_tokens")
 }
 
 model Suggestions {
-  id        String   @id @default(cuid())
-  userId    String
-  guildId   String?
-  message   String
-  createdAt DateTime @default(now()) @map(name: "created_at")
+ id        String   @id @default(cuid())
+ userId    String
+ guildId   String?
+ message   String
+ createdAt DateTime @default(now()) @map(name: "created_at")
 
-  @@map(name: "suggestions")
+ @@map(name: "suggestions")
 }
 
 model Guild {
-  id             String      @id @default(cuid())
-  guildId        String      @unique @map(name: "discord_id")
-  profanityLevel Int         @default(0) @map(name: "profanity_level")
-  lastUpdated    DateTime    @default(now()) @map(name: "last_updated")
-  guildLogs      GuildLogs[]
+ id             String      @id @default(cuid())
+ guildId        String      @unique @map(name: "discord_id")
+ profanityLevel Int         @default(0) @map(name: "profanity_level")
+ lastUpdated    DateTime    @default(now()) @map(name: "last_updated")
+ guildLogs      GuildLogs[]
 
-  @@map(name: "guilds")
+ @@map(name: "guilds")
 }
 
 model GuildLogs {
-  id        String   @id @default(cuid())
-  guildId   String
-  authorId  String
-  content   String
-  type      String
-  createdAt DateTime @default(now()) @map(name: "created_at")
-  guild     Guild    @relation(fields: [guildId], references: [guildId], onDelete: Cascade)
-  user      User     @relation(fields: [authorId], references: [discordId], onDelete: Cascade)
+ id        String   @id @default(cuid())
+ guildId   String
+ authorId  String
+ content   String
+ type      String
+ createdAt DateTime @default(now()) @map(name: "created_at")
+ guild     Guild    @relation(fields: [guildId], references: [guildId], onDelete: Cascade)
+ user      User     @relation(fields: [authorId], references: [discordId], onDelete: Cascade)
 
-  @@map(name: "guild_logs")
+ @@map(name: "guild_logs")
 }
