@@ -1,7 +1,7 @@
 module.exports = {
  apps: [
   {
-   name: "Majo.exe - Bot",
+   name: "Majo.exe - Bot v6",
    script: "./index.js",
    watch: true,
    exec_mode: "cluster",
