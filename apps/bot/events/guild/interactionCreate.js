@@ -140,5 +140,11 @@ export async function interactionCreate(client, interaction) {
   }
  }
 
- client.slashCommands.get(interaction.commandName).run(client, interaction);
+ const guildSettings = await prismaClient.guild.findFirst({
+  where: {
+   guildId: interaction.guild?.id,
+  },
+ });
+
+ client.slashCommands.get(interaction.commandName).run(client, interaction, guildSettings);
 }

@@ -7,7 +7,7 @@ export default {
  cooldown: 10000,
  dmPermission: false,
  usage: "/suggestion",
- run: async (client, interaction) => {
+ run: async (client, interaction, guildSettings) => {
   try {
    // create a new modal
    const modal = new ModalBuilder().setCustomId("suggestion").setTitle("📝 Suggestion");

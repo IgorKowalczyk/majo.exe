@@ -8,7 +8,7 @@ export default {
  cooldown: 3000,
  dmPermission: true,
  usage: "/uptime",
- run: async (client, interaction) => {
+ run: async (client, interaction, guildSettings) => {
   try {
    const embed = new EmbedBuilder()
     .setDescription(
@@ -19,7 +19,7 @@ export default {
      `
     )
     .setTimestamp()
-    .setColor("#5865F2")
+    .setColor(guildSettings.embedColor || client.config.bot.defaultEmbedColor)
     .setFooter({
      text: `Requested by ${interaction.member?.user?.username}`,
      iconURL: interaction.member.user.displayAvatarURL({

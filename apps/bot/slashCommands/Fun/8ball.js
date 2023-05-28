@@ -15,13 +15,13 @@ export default {
    type: 3,
   },
  ],
- run: async (client, interaction) => {
+ run: async (client, interaction, guildSettings) => {
   try {
    const args = interaction.options.getString("question");
    if (!args) {
     const embed = new EmbedBuilder()
      .setDescription("Please provide a question!")
-     .setColor("#5865F2")
+     .setColor(guildSettings.embedColor || client.config.bot.defaultEmbedColor)
      .setTimestamp()
      .setFooter({
       text: `Requested by ${interaction.member?.user?.username}`,
@@ -35,7 +35,7 @@ export default {
    if (args.toString().length > client.config.maxInputLength) {
     const embed = new EmbedBuilder()
      .setDescription(`Please provide a question that is less than ${client.config.maxInputLength} characters!`)
-     .setColor("#5865F2")
+     .setColor(guildSettings.embedColor || client.config.bot.defaultEmbedColor)
      .setTimestamp()
      .setFooter({
       text: `Requested by ${interaction.member?.user?.username}`,
@@ -72,7 +72,7 @@ export default {
     .setDescription(`>>> **Q:** ${args} \n**A:** ${parsed[random][0]}`)
     .setImage(parsed[random][1])
     .setTimestamp()
-    .setColor("#5865F2")
+    .setColor(guildSettings.embedColor || client.config.bot.defaultEmbedColor)
     .setFooter({
      text: `Requested by ${interaction.member?.user?.username}`,
      iconURL: interaction.member?.user?.displayAvatarURL({

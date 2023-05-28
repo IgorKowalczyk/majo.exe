@@ -7,7 +7,7 @@ export default {
  cooldown: 3000,
  dmPermission: true,
  usage: "/servers",
- run: async (client, interaction) => {
+ run: async (client, interaction, guildSettings) => {
   try {
    const allGuilds = client.guilds.cache;
    const inviteLink = `https://discord.com/oauth2/authorize/?permissions=${client.config.bot.permissions}&scope=${client.config.bot.scopes}&client_id=${client.user?.id}`;
@@ -22,7 +22,7 @@ export default {
       size: 2048,
      }),
     })
-    .setColor("#5865F2")
+    .setColor(guildSettings.embedColor || client.config.bot.defaultEmbedColor)
     .setTimestamp()
     .setThumbnail(client.user?.displayAvatarURL({ dynamic: true, format: "png", size: 2048 }));
 

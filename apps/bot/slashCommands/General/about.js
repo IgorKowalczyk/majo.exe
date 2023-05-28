@@ -7,7 +7,7 @@ export default {
  cooldown: 3000,
  dmPermission: true,
  usage: "/about",
- run: async (client, interaction) => {
+ run: async (client, interaction, guildSettings) => {
   try {
    const embed = new EmbedBuilder() // Prettier
     .setTitle(`🤖 About ${client.user?.username}`)
@@ -27,7 +27,7 @@ export default {
       size: 2048,
      }),
     })
-    .setColor("#5865F2")
+    .setColor(guildSettings.embedColor || client.config.bot.defaultEmbedColor)
     .setTimestamp()
     .setTimestamp();
    return interaction.reply({ ephemeral: false, embeds: [embed] });

@@ -17,7 +17,7 @@ export default {
   },
  ],
 
- run: async (client, interaction) => {
+ run: async (client, interaction, guildSettings) => {
   try {
    const query = interaction.options.getString("query");
    const isCategory = client.slashCommands.map((cmd) => cmd.category?.toLowerCase()).includes(query?.toLowerCase());
@@ -25,7 +25,7 @@ export default {
     const command = client.slashCommands.get(query.toLowerCase()) || client.slashCommands.find((cmd) => cmd.aliases && cmd.aliases.includes(query.toLowerCase()));
     if (!command) {
      const embed = new EmbedBuilder()
-      .setColor("#5865F2")
+      .setColor(guildSettings.embedColor || client.config.bot.defaultEmbedColor)
       .setTimestamp()
       .setTitle("❌ Command not found")
       .setDescription(`> The command \`${query}\` does not exist. Please check your spelling and try again.`)
@@ -73,7 +73,7 @@ export default {
        inline: true,
       },
      ])
-     .setColor("#5865F2")
+     .setColor(guildSettings.embedColor || client.config.bot.defaultEmbedColor)
      .setTimestamp()
      .setFooter({
       text: `Requested by ${interaction.member?.user?.username}`,
@@ -89,7 +89,7 @@ export default {
     const embed = new EmbedBuilder()
      .setTitle(`${client.botEmojis.categories.find((cat) => cat.name === query.toLowerCase()).emoji} Available \`${query}\` commands \`(${commands.size})\``)
      .setDescription(`> ${commands.map((cmd) => `\`/${cmd.name}\``).join(", ")}`)
-     .setColor("#5865F2")
+     .setColor(guildSettings.embedColor || client.config.bot.defaultEmbedColor)
      .setTimestamp()
      .setFooter({
       text: `Requested by ${interaction.member?.user?.username}`,
@@ -116,7 +116,7 @@ export default {
        inline: true,
       }))
      )
-     .setColor("#5865F2")
+     .setColor(guildSettings.embedColor || client.config.bot.defaultEmbedColor)
      .setTimestamp()
      .setThumbnail(client.user?.displayAvatarURL({ dynamic: true, format: "png", size: 2048 }))
      .setAuthor({
@@ -136,5 +136,5 @@ export default {
   } catch (err) {
    client.errorMessages.generateErrorMessage(interaction, err);
   }
- }
-}
+ },
+};

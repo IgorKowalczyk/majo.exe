@@ -84,6 +84,7 @@ model Guild {
  id             String      @id @default(cuid())
  guildId        String      @unique @map(name: "discord_id")
  profanityLevel Int         @default(0) @map(name: "profanity_level")
+ embedColor     String      @default("#5865F2") @map(name: "embed_color")
  lastUpdated    DateTime    @default(now()) @map(name: "last_updated")
  guildLogs      GuildLogs[]
 

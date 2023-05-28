@@ -8,7 +8,7 @@ export default {
  cooldown: 3000,
  usage: "/contact",
  dmPermission: true,
- run: async (client, interaction) => {
+ run: async (client, interaction, guildSettings) => {
   try {
    const response = await fetch("https://api.github.com/repos/igorkowalczyk/majo.exe/commits?per_page=1").then((res) => res.json());
    const lastTimestamp = Math.floor(new Date(response[0].commit.committer.date) / 1000);
@@ -30,7 +30,7 @@ export default {
       size: 2048,
      }),
     })
-    .setColor("#5865F2")
+    .setColor(guildSettings.embedColor || client.config.bot.defaultEmbedColor)
     .setTimestamp();
    const row = new ActionRowBuilder()
     .addComponents(

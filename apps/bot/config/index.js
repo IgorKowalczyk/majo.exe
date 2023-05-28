@@ -13,6 +13,7 @@ export const config = {
   permissions: "1539679190263", // string. Bot permissions. You can use https://discordapi.com/permissions.html to generate it
   scopes: "applications.commands%20bot", // string. Bot scopes. You can use https://discordapi.com/permissions.html to generate it
   maxInputLength: 250, // number. Max input length for commands
+  defaultEmbedColor: "#5865F2", // string. Default embed color
  },
 
  /*

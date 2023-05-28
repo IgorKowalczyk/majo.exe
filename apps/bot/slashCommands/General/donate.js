@@ -7,7 +7,7 @@ export default {
  cooldown: 3000,
  dmPermission: true,
  usage: "/donate",
- run: async (client, interaction) => {
+ run: async (client, interaction, guildSettings) => {
   try {
    if (!client.config.donate.enabled || !client.config.donate.links) {
     const embed = new EmbedBuilder()
@@ -20,7 +20,7 @@ export default {
        size: 2048,
       }),
      })
-     .setColor("#5865F2")
+     .setColor(guildSettings.embedColor || client.config.bot.defaultEmbedColor)
      .setTimestamp()
      .setTitle("🪙 Donate to Majo.exe");
     return interaction.reply({ ephemeral: false, embeds: [embed] });
@@ -43,7 +43,7 @@ export default {
       size: 2048,
      }),
     })
-    .setColor("#5865F2")
+    .setColor(guildSettings.embedColor || client.config.bot.defaultEmbedColor)
     .setTimestamp()
     .setTitle("🪙 Donate to Majo.exe");
 

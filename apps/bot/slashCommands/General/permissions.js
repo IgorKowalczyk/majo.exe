@@ -13,14 +13,14 @@ export default {
  cooldown: 5000,
  dmPermission: false,
  usage: "/permissions",
- run: async (client, interaction) => {
+ run: async (client, interaction, guildSettings) => {
   try {
    const clientMember = interaction.guild?.members.cache.get(client.user?.id);
    const permissions = clientMember?.permissions.toArray();
    const words = permissions.map((permission) => convertCamelCaseToWords(permission));
 
    const embed = new EmbedBuilder()
-    .setColor("#5865F2")
+    .setColor(guildSettings.embedColor || client.config.bot.defaultEmbedColor)
     .setTimestamp()
     .setTitle(`🎛️ Permissions in ${interaction.guild?.name}`)
     .setDescription(`> **${client.user?.username}** has the following permissions in this server:\n${codeBlock(words?.join("\n"))}`)
