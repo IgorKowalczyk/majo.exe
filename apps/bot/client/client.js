@@ -5,6 +5,7 @@ import { Client, GatewayIntentBits, PermissionsBitField, Collection } from "disc
 import dotenv from "dotenv";
 import { globby } from "globby";
 import { config } from "../config/index.js";
+import { emojis } from "../config/emojis.js";
 dotenv.config({ path: "../../.env" });
 
 Logger("info", "Starting Majo.exe Bot...");
@@ -25,11 +26,11 @@ try {
 
 const loadTime = performance.now();
 const slashCommands = await globby(`${process.cwd()}/slashCommands/**/*.js`);
-const slash = [];
 
 // Add custom properties to client
 client.slashCommands = new Collection();
 client.config = config;
+client.botEmojis = emojis;
 client.errorMessages = {
  generateErrorMessage: (interaction, error) => {
   Logger("error", error?.toString() ?? "Unknown error occured");
@@ -46,6 +47,7 @@ client.performance = (time) => {
 
 for (const value of slashCommands) {
  const file = await import(value);
+ const category = value.split("/")[value.split("/").length - 2];
  if (!file.default) {
   Logger("error", `Slash command ${value} doesn't have a default export!`);
   continue;
@@ -70,18 +72,16 @@ for (const value of slashCommands) {
   continue;
  }
 
- slash.push({
-  name: file.default.name,
-  description: file.default.description,
-  type: file.default.type,
+ client.slashCommands.set(file.default.name, {
+  ...file.default,
+  category: category,
   options: file.default.options ? file.default.options : null,
   default_permission: file.default.default_permission ? file.default.default_permission : null,
   default_member_permissions: file.default.default_member_permissions ? PermissionsBitField.resolve(file.default.default_member_permissions).toString() : null,
  });
- client.slashCommands.set(file.default.name, file.default);
  config.debugger.displayCommandList && Logger("info", `Loaded slash command ${file.default.name} from ${value.replace(process.cwd(), "")}`);
 }
 
-Logger("event", `Loaded ${slash.length} slash commands from /slashCommands in ${client.performance(loadTime)}`);
+Logger("event", `Loaded ${client.slashCommands.size} slash commands from /slashCommands in ${client.performance(loadTime)}`);
 
 export default client;

@@ -43,6 +43,49 @@ export const emojis = {
  mention: "<:mention:963333541259792384>", // https://cdn.discordapp.com/emojis/963333541259792384.png
  settings: "<:settings:963333541716963348>", // https://cdn.discordapp.com/emojis/963333541716963348.png
 
+ categories: [
+  {
+   name: "general",
+   emoji: "🧱",
+  },
+  {
+   name: "moderation",
+   emoji: "🛠️",
+  },
+  {
+   name: "fun",
+   emoji: "😆",
+  },
+  {
+   name: "utility",
+   emoji: "🔧",
+  },
+  {
+   name: "economy",
+   emoji: "💰",
+  },
+  {
+   name: "nsfw",
+   emoji: "🔞",
+  },
+  {
+   name: "image",
+   emoji: "🖼️",
+  },
+  {
+   name: "giveaway",
+   emoji: "🎉",
+  },
+  {
+   name: "ticket",
+   emoji: "🎫",
+  },
+  {
+   name: "reaction",
+   emoji: "🎭",
+  },
+ ],
+
  // Utility emojis
  picture_frame: "🖼️",
  anger: "💢",
