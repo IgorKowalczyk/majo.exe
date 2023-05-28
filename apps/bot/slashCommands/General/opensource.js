@@ -1,4 +1,5 @@
 import { ApplicationCommandType, EmbedBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle, time } from "discord.js";
+import fetch from "node-fetch";
 
 export default {
  name: "opensource",
