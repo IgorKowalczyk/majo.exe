@@ -1,5 +1,5 @@
-import { ApplicationCommandType, EmbedBuilder, codeBlock } from "discord.js";
 import { formatDuration } from "@majoexe/util/functions";
+import { ApplicationCommandType, EmbedBuilder, codeBlock } from "discord.js";
 
 export default {
  name: "help",

@@ -1,8 +1,8 @@
 import { meta } from "@config";
 import { Analytics } from "@vercel/analytics/react";
 import clsx from "clsx";
+import { Session } from "components/blocks/client/Session";
 import { Hotjar } from "components/blocks/Hotjar";
-import { Session } from "components/blocks/Session";
 import { Nav } from "components/nav/Nav";
 import { Inter } from "next/font/google";
 import Link from "next/link";

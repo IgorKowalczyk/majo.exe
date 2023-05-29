@@ -1,13 +1,13 @@
 "use client";
 
 import { Disclosure, Transition } from "@headlessui/react";
-import { NoSymbolIcon, ChevronDownIcon } from "@heroicons/react/24/outline";
+import { NoSymbolIcon, ChevronDownIcon, PaintBrushIcon } from "@heroicons/react/24/outline";
 import { formatDate } from "@majoexe/util/functions";
 import clsx from "clsx";
 import Image from "next/image";
 import { useRef, useState, useEffect } from "react";
 import InfiniteScroll from "react-infinite-scroller";
-import { TextSkeleton } from "./Skeletons";
+import { TextSkeleton } from "../Skeletons";
 
 export default function Logs({ initialItems, id }) {
  const fetching = useRef(false);
@@ -52,8 +52,9 @@ export default function Logs({ initialItems, id }) {
          })}
         >
          <div className="relative">
-          {item.user.avatar && <Image src={`https://cdn.discordapp.com/avatars/${item.user.discordId}/${item.user.avatar}.${item.user.avatar.startsWith("a_") ? "gif" : "png"}`} alt={item.user.username} quality={95} width={32} height={32} className="w-12 h-12 rounded-full" />}
+          {item.user?.avatar && <Image src={`https://cdn.discordapp.com/avatars/${item.user?.discordId}/${item.user?.avatar}.${item.user?.avatar.startsWith("a_") ? "gif" : "png"}`} alt={item.user?.username} quality={95} width={32} height={32} className="w-12 h-12 rounded-full" />}
           {item.type === "profanity" && <NoSymbolIcon className="h-5 w-5 min-w-[20px] min-h-[20px] opacity-80 absolute bottom-0 right-0 border border-white/10 bg-button-secondary/80 rounded-full p-1" />}
+          {item.type === "embed_color" && <PaintBrushIcon className="h-5 w-5 min-w-[20px] min-h-[20px] opacity-80 absolute bottom-0 right-0 border border-white/10 bg-button-secondary/80 rounded-full p-1" />}
          </div>
          <div className="flex flex-col">
           <p className="font-bold text-left">{item.content}</p>
@@ -64,16 +65,18 @@ export default function Logs({ initialItems, id }) {
            {
             "rotate-180": open,
            },
-           "ml-2 h-4 w-4 duration-200 motion-reduce:transition-none"
+           "ml-auto h-4 w-4 duration-200 motion-reduce:transition-none"
           )}
          />
         </Disclosure.Button>
 
         <Transition enter="transition duration-100 ease-out" enterFrom="transform scale-95 opacity-0" enterTo="transform scale-100 opacity-100" leave="transition duration-75 ease-out" leaveFrom="transform scale-100 opacity-100" leaveTo="transform scale-95 opacity-0">
          <Disclosure.Panel className="py-4 w-full px-6 max-w-2xl rounded-md border border-white/10 border-t-0 rounded-t-none bg-button-secondary/80">
-          <p>
-           <span className="font-bold">Action taken:</span> Message delete
-          </p>
+          {item.actionTaken && (
+           <p>
+            <span className="font-bold">Action taken:</span> None
+           </p>
+          )}
           <p>
            <span className="font-bold">Type:</span> {item.type}
           </p>
@@ -81,8 +84,8 @@ export default function Logs({ initialItems, id }) {
            <span className="font-bold">Date:</span> {item.createdAt}
           </p>
           <p>
-           <span className="font-bold">User:</span> {item.user.name || item.user.id}
-           <span className="opacity-70">#{item.user.discriminator || "0000"}</span> (ID: {item.user.discordId || item.user.id})
+           <span className="font-bold">User:</span> {item.user?.name || item.user?.id}
+           <span className="opacity-70">#{item.user?.discriminator || "0000"}</span> (ID: {item.user?.discordId || item.user?.id})
           </p>
          </Disclosure.Panel>
         </Transition>

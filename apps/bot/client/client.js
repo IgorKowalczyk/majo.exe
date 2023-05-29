@@ -4,8 +4,8 @@ import chalk from "chalk";
 import { Client, GatewayIntentBits, PermissionsBitField, Collection } from "discord.js";
 import dotenv from "dotenv";
 import { globby } from "globby";
-import { config } from "../config/index.js";
 import { emojis } from "../config/emojis.js";
+import { config } from "../config/index.js";
 dotenv.config({ path: "../../.env" });
 
 Logger("info", "Starting Majo.exe Bot...");
