@@ -25,7 +25,7 @@ export async function POST(request) {
   });
 
   if (current.embedColor === color) return new NextResponse(JSON.stringify({ error: "Embed color is already set to that", code: 400 }), { status: 200 });
-  // if (new Date().getTime() - current.embedLastChanged.getTime() < 60000) return new NextResponse(JSON.stringify({ error: "You can only change the embed color once every minute", code: 400 }), { status: 200 });
+  if (new Date().getTime() - current.embedLastChanged.getTime() < 10000) return new NextResponse(JSON.stringify({ error: "You can only change the embed color every 10 seconds", code: 400 }), { status: 200 });
   await prismaClient.guild.update({
    where: {
     guildId: id,
