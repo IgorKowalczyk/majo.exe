@@ -1,5 +1,7 @@
 import { NextResponse } from "next/server";
 
+export const runtime = "edge";
+
 export function GET(request, { params }) {
  const invite = params.invite;
  if (!invite) return NextResponse.redirect("/dashboard");
