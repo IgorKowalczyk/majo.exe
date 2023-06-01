@@ -1,4 +1,6 @@
 import { Logger } from "@majoexe/util/functions";
+import { PresenceUpdateStatus } from "discord.js";
+
 
 export async function ready(client) {
  const registerTime = performance.now();
@@ -8,4 +10,10 @@ export async function ready(client) {
  });
  Logger("event", `Successfully registered ${commands.size} slash commands in ${client.performance(registerTime)}`);
  Logger("ready", `Logged in as ${client.user.tag}, id: ${client.user.id}`);
+
+ client.user.setPresence({
+  activities: client.config.bot.presence.activities,
+  status: PresenceUpdateStatus[client.config.bot.presence.status] ?? PresenceUpdateStatus.Online
+ });
+
 }

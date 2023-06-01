@@ -1,4 +1,5 @@
 import { emojis } from "./emojis.js";
+import { ActivityType, PresenceUpdateStatus, OAuth2Scopes } from "discord.js";
 
 export const config = {
  /*
@@ -11,9 +12,18 @@ export const config = {
 
  bot: {
   permissions: "1539679190263", // string. Bot permissions. You can use https://discordapi.com/permissions.html to generate it
-  scopes: "applications.commands%20bot", // string. Bot scopes. You can use https://discordapi.com/permissions.html to generate it
+  scopesNew: [OAuth2Scopes.ApplicationsCommands, OAuth2Scopes.Bot].join("%20"), // string. Bot scopes.
   maxInputLength: 250, // number. Max input length for commands
   defaultEmbedColor: "#5865F2", // string. Default embed color
+  presence: {
+   status: PresenceUpdateStatus.Online, // string. Bot status. Can be: Online, Idle, DND, Invisible
+   activities: [
+    {
+     name: "/help",
+     type: ActivityType.Watching, // string. Activity type. Can be: PLAYING, STREAMING, LISTENING, WATCHING,
+    },
+   ],
+  },
  },
 
  /*
