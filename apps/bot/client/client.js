@@ -26,9 +26,12 @@ try {
 
 const loadTime = performance.now();
 const slashCommands = await globby(`${process.cwd()}/slashCommands/**/*.js`);
+const modalLoadTime = performance.now();
+const modals = await globby(`${process.cwd()}/modals/**/*.js`);
 
 // Add custom properties to client
 client.slashCommands = new Collection();
+client.modals = new Collection();
 client.config = config;
 client.botEmojis = emojis;
 client.errorMessages = {
@@ -82,6 +85,29 @@ for (const value of slashCommands) {
  config.debugger.displayCommandList && Logger("info", `Loaded slash command ${file.default.name} from ${value.replace(process.cwd(), "")}`);
 }
 
+for (const value of modals) {
+ const file = await import(value);
+ if (!file.default) {
+  Logger("error", `Modal ${value} doesn't have a default export!`);
+  continue;
+ }
+ if (!file.default.id) {
+  Logger("error", `Modal ${value} doesn't have a id!`);
+  continue;
+ }
+
+ if (!file.default.run) {
+  Logger("error", `Modal ${value} doesn't have a run function!`);
+  continue;
+ }
+
+ client.modals.set(file.default.id, {
+  ...file.default,
+ });
+ config.debugger.displayModalList && Logger("info", `Loaded modal ${file.default.id} from ${value.replace(process.cwd(), "")}`);
+}
+
+Logger("event", `Loaded ${client.modals.size} modals from /modals in ${client.performance(modalLoadTime)}`);
 Logger("event", `Loaded ${client.slashCommands.size} slash commands from /slashCommands in ${client.performance(loadTime)}`);
 
 export default client;
