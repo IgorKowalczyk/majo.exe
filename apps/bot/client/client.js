@@ -38,7 +38,7 @@ client.errorMessages = {
  generateErrorMessage: (interaction, error) => {
   Logger("error", error?.toString() ?? "Unknown error occured");
   const embed = createErrorEmbed(interaction);
-  return interaction.reply({ embeds: [embed], ephemeral: true });
+  return interaction.followUp({ embeds: [embed], ephemeral: true });
  },
 };
 client.debugger = Logger;

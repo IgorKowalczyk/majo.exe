@@ -45,7 +45,7 @@ export default {
       .setLabel("Latest commit")
       .setStyle(ButtonStyle.Link)
     );
-   return interaction.reply({ ephemeral: false, embeds: [embed], components: [row] });
+   return interaction.followUp({ ephemeral: false, embeds: [embed], components: [row] });
   } catch (err) {
    client.errorMessages.generateErrorMessage(interaction, err);
   }

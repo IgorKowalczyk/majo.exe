@@ -1,5 +1,5 @@
 import { formatDuration } from "@majoexe/util/functions";
-import { ApplicationCommandType, EmbedBuilder, codeBlock } from "discord.js";
+import { ApplicationCommandType, ApplicationCommandOptionType, EmbedBuilder, codeBlock } from "discord.js";
 
 export default {
  name: "help",
@@ -12,7 +12,7 @@ export default {
   {
    name: "query",
    description: "The full name of command or category",
-   type: 3,
+   type: ApplicationCommandOptionType.String,
    required: false,
   },
  ],
@@ -37,7 +37,7 @@ export default {
         size: 2048,
        }),
       });
-     return interaction.reply({ ephemeral: true, embeds: [embed] });
+     return interaction.followUp({ ephemeral: true, embeds: [embed] });
     }
 
     const embed = new EmbedBuilder()
@@ -83,7 +83,7 @@ export default {
        size: 2048,
       }),
      });
-    return interaction.reply({ ephemeral: false, embeds: [embed] });
+    return interaction.followUp({ ephemeral: false, embeds: [embed] });
    } else if (query && isCategory) {
     const commands = client.slashCommands.filter((cmd) => cmd.category.toLowerCase() === query.toLowerCase());
     const embed = new EmbedBuilder()
@@ -99,7 +99,7 @@ export default {
        size: 2048,
       }),
      });
-    return interaction.reply({ ephemeral: false, embeds: [embed] });
+    return interaction.followUp({ ephemeral: false, embeds: [embed] });
    } else {
     const categories = [...new Set(client.slashCommands.map((cmd) => cmd.category))];
 
@@ -131,7 +131,7 @@ export default {
        size: 2048,
       }),
      });
-    return interaction.reply({ ephemeral: false, embeds: [embed] });
+    return interaction.followUp({ ephemeral: false, embeds: [embed] });
    }
   } catch (err) {
    client.errorMessages.generateErrorMessage(interaction, err);

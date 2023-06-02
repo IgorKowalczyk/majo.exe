@@ -43,6 +43,7 @@ export const emojis = {
  mention: "<:mention:963333541259792384>", // https://cdn.discordapp.com/emojis/963333541259792384.png
  settings: "<:settings:963333541716963348>", // https://cdn.discordapp.com/emojis/963333541716963348.png
 
+ // Categories emoji
  categories: [
   {
    name: "general",
@@ -83,6 +84,18 @@ export const emojis = {
   {
    name: "reaction",
    emoji: "🎭",
+  },
+ ],
+
+ // Log types
+ logs: [
+  {
+   type: "profanity",
+   emoji: "🤬",
+  },
+  {
+   type: "embed_color",
+   emoji: "🎨",
   },
  ],
 

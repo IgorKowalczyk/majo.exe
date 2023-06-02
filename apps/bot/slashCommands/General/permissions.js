@@ -33,7 +33,7 @@ export default {
       size: 2048,
      }),
     });
-   return interaction.reply({ ephemeral: false, embeds: [embed] });
+   return interaction.followUp({ ephemeral: false, embeds: [embed] });
   } catch (err) {
    client.errorMessages.generateErrorMessage(interaction, err);
   }

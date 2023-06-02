@@ -5,8 +5,15 @@ import { EmbedBuilder } from "discord.js";
 const timeout = new Map();
 
 export async function interactionCreate(client, interaction) {
+ if (!interaction.user) {
+  await interaction?.guild?.members?.fetch(interaction?.member?.user?.id);
+ }
  if (interaction.isCommand()) {
   client.config.debugger.displayCommandUsage && Logger("info", `Command used: ${interaction.commandName} by ${interaction.user.tag} (${interaction.user.id})`);
+  const shouldDefer = client.slashCommands.get(interaction.commandName).defer ?? true;
+  if (shouldDefer) {
+   await interaction.deferReply({ ephemeral: false });
+  }
 
   if (!interaction.inGuild() && client.slashCommands.get(interaction.commandName).guildOnly) {
    const embed = new EmbedBuilder()
@@ -21,7 +28,7 @@ export async function interactionCreate(client, interaction) {
       format: "png",
      }),
     });
-   return interaction.reply({ ephemeral: true, embeds: [embed] });
+   return interaction.followUp({ ephemeral: true, embeds: [embed] });
   } else if (interaction.inGuild() && client.slashCommands.get(interaction.commandName).dmOnly) {
    const embed = new EmbedBuilder()
     .setTitle("‼️ This command is DM only!")
@@ -35,7 +42,7 @@ export async function interactionCreate(client, interaction) {
       format: "png",
      }),
     });
-   return interaction.reply({ ephemeral: true, embeds: [embed] });
+   return interaction.followUp({ ephemeral: true, embeds: [embed] });
   }
 
   if (!client.slashCommands.has(interaction.commandName)) return;
@@ -55,7 +62,7 @@ export async function interactionCreate(client, interaction) {
        format: "png",
       }),
      });
-    return interaction.reply({ ephemeral: true, embeds: [embed] });
+    return interaction.followUp({ ephemeral: true, embeds: [embed] });
    } else {
     timeout.set(key, { time: Date.now() });
     setTimeout(() => {

@@ -1,5 +1,5 @@
-import prismaClient from "@majoexe/database";
 import { getServer } from "@majoexe/util/functions";
+import { fetchLogs } from "@majoexe/util/database";
 import { getSession } from "lib/session";
 import { NextResponse } from "next/server";
 
@@ -15,16 +15,7 @@ export async function GET(request, { params }) {
  if (server.error) return new NextResponse(JSON.stringify({ error: "Server not found" }), { status: 404 });
  if (!server.bot) return new NextResponse(JSON.stringify({ error: "Bot is not in server" }), { status: 404 });
 
- const logs = await prismaClient.guildLogs.findMany({
-  where: {
-   guildId: serverId,
-  },
-  take: 20,
-  skip: (page - 1) * 20,
-  orderBy: {
-   createdAt: "desc",
-  },
- });
+ const logs = await fetchLogs(serverId, page);
 
  return new NextResponse(JSON.stringify(logs), { status: 200 });
 }

@@ -31,9 +31,9 @@ export default {
    if (config.dashboard.enabled && config.dashboard.link) {
     const contactButton = new ButtonBuilder().setLabel("Status page").setStyle(ButtonStyle.Link).setURL(`${config.dashboard.link}/status`);
     const action = new ActionRowBuilder().addComponents(contactButton);
-    return interaction.reply({ ephemeral: false, embeds: [embed], components: [action] });
+    return interaction.followUp({ ephemeral: false, embeds: [embed], components: [action] });
    } else {
-    return interaction.reply({ ephemeral: false, embeds: [embed] });
+    return interaction.followUp({ ephemeral: false, embeds: [embed] });
    }
   } catch (err) {
    client.errorMessages.generateErrorMessage(interaction, err);

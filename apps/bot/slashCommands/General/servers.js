@@ -31,12 +31,12 @@ export default {
    if (client.config.dashboard.enabled && client.config.dashboard.link) {
     const contactButton = new ButtonBuilder().setLabel("Dashboard").setStyle(ButtonStyle.Link).setURL(client.config.dashboard.link);
     const action = new ActionRowBuilder().addComponents(inviteButton, contactButton);
-    return interaction.reply({ ephemeral: false, embeds: [embed], components: [action] });
+    return interaction.followUp({ ephemeral: false, embeds: [embed], components: [action] });
    }
 
    const action = new ActionRowBuilder().addComponents(inviteButton);
 
-   return interaction.reply({ ephemeral: false, embeds: [embed], components: [action] });
+   return interaction.followUp({ ephemeral: false, embeds: [embed], components: [action] });
   } catch (err) {
    client.errorMessages.generateErrorMessage(interaction, err);
   }

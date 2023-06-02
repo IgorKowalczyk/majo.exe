@@ -23,7 +23,7 @@ export default {
      .setColor(guildSettings.embedColor || client.config.bot.defaultEmbedColor)
      .setTimestamp()
      .setTitle("💻 Dashboard");
-    return interaction.reply({ ephemeral: false, embeds: [embed] });
+    return interaction.followUp({ ephemeral: false, embeds: [embed] });
    }
 
    const contactButton = new ButtonBuilder().setLabel("Dashboard").setStyle(ButtonStyle.Link).setURL(client.config.dashboard.link);
@@ -43,7 +43,7 @@ export default {
     .setTimestamp()
     .setTitle("💻 Dashboard");
 
-   return interaction.reply({ ephemeral: false, embeds: [embed], components: [action] });
+   return interaction.followUp({ ephemeral: false, embeds: [embed], components: [action] });
   } catch (err) {
    client.errorMessages.generateErrorMessage(interaction, err);
   }

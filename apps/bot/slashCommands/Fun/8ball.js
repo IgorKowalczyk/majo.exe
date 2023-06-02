@@ -30,7 +30,7 @@ export default {
        format: "png",
       }),
      });
-    return interaction.reply({ ephemeral: true, embeds: [embed] });
+    return interaction.followUp({ ephemeral: true, embeds: [embed] });
    }
    if (args.toString().length > client.config.maxInputLength) {
     const embed = new EmbedBuilder()
@@ -44,7 +44,7 @@ export default {
        format: "png",
       }),
      });
-    return interaction.reply({ ephemeral: true, embeds: [embed] });
+    return interaction.followUp({ ephemeral: true, embeds: [embed] });
    }
    const images = [
     ["Yes.", "https://c.tenor.com/TFhmPga4xEwAAAAC/magic8ball-yes.gif"],
@@ -56,13 +56,13 @@ export default {
     ["Most likely", "https://c.tenor.com/EIAYng3CUf0AAAAC/yoda-8ball.gif"],
     ["Outlook not so good", "https://c.tenor.com/Ji3GcuKvu1cAAAAC/magic8ball-simpsons.gif"],
     ["Signs point to yes", "https://c.tenor.com/mrN4WoxyRE8AAAAC/shaking8ball-stranger-things4.gif"],
-    ["Reply hazy, try again", "https://c.tenor.com/BokmYoZhr1AAAAAC/yoda-8ball.gif"],
+    ["followUp hazy, try again", "https://c.tenor.com/BokmYoZhr1AAAAAC/yoda-8ball.gif"],
     ["Ask again later", "https://c.tenor.com/Voqiq18wUFIAAAAC/yoda-8ball.gif"],
     ["Better not tell you now...", "https://c.tenor.com/Voqiq18wUFIAAAAC/yoda-8ball.gif"],
     ["Cannot predict now", "https://c.tenor.com/fs_hXVg58LkAAAAC/yoda-8ball.gif"],
     ["Concentrate and ask again", "https://c.tenor.com/Voqiq18wUFIAAAAC/yoda-8ball.gif"],
     ["Don't count on it", "https://c.tenor.com/cw2aa9cnQ6QAAAAC/magic-eight.gif"],
-    ["My reply is no", "https://c.tenor.com/rJ1ioW_FkhUAAAAC/yoda-8ball.gif"],
+    ["My followUp is no", "https://c.tenor.com/rJ1ioW_FkhUAAAAC/yoda-8ball.gif"],
    ];
 
    const parsed = images.map((x) => [x[0], x[1]]);
@@ -80,7 +80,7 @@ export default {
       format: "png",
      }),
     });
-   return interaction.reply({ embeds: [embed] });
+   return interaction.followUp({ embeds: [embed] });
   } catch (err) {
    client.errorMessages.generateErrorMessage(interaction, err);
   }

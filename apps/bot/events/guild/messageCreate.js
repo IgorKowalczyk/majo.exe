@@ -1,5 +1,5 @@
 import prismaClient from "@majoexe/database";
-import { fetchProfanity } from "@majoexe/util/settings";
+import { fetchProfanity } from "@majoexe/util/database";
 import Filter from "bad-words";
 import { EmbedBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle } from "discord.js";
 

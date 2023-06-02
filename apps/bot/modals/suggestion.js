@@ -1,4 +1,3 @@
-
 const timeout = new Map();
 import { EmbedBuilder } from "discord.js";
 import { formatDuration } from "@majoexe/util/functions";
@@ -7,6 +6,7 @@ import prismaClient from "@majoexe/database";
 export default {
  id: "suggestion",
  run: async (client, interaction, guildSettings) => {
+  await interaction.deferReply({ ephemeral: true });
   const suggestion = interaction.fields.getTextInputValue("suggestion");
   if (suggestion.length < 5 || suggestion.length > 500) {
    const embed = new EmbedBuilder()
@@ -23,7 +23,7 @@ export default {
      }),
     });
 
-   return interaction.reply({ ephemeral: true, embeds: [embed] });
+   return interaction.followUp({ ephemeral: true, embeds: [embed] });
   }
 
   const key = `${interaction.member?.user?.id}-suggest`;
@@ -46,7 +46,7 @@ export default {
      }),
     });
 
-   return interaction.reply({ ephemeral: true, embeds: [embed] });
+   return interaction.followUp({ ephemeral: true, embeds: [embed] });
   }
 
   timeout.set(key, { time: Date.now() + 60000 });
@@ -76,6 +76,6 @@ export default {
    },
   });
 
-  return interaction.reply({ ephemeral: true, embeds: [embed] });
- }
-}
+  return interaction.followUp({ ephemeral: true, embeds: [embed] });
+ },
+};

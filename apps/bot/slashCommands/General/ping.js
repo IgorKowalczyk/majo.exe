@@ -16,7 +16,7 @@ export default {
    const websocketPing = Math.floor(client.ws?.ping);
    const wait = new EmbedBuilder().setColor(guildSettings.embedColor || client.config.bot.defaultEmbedColor).setDescription("🏓 Pong!...");
    const date = performance.now();
-   interaction.reply({ embeds: [wait] }).then(async (msg) => {
+   interaction.followUp({ embeds: [wait] }).then(async (msg) => {
     const clientPing = performance.now() - date;
     const pingMessage = new EmbedBuilder()
      .addFields([

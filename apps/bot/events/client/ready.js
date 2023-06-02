@@ -1,7 +1,6 @@
 import { Logger } from "@majoexe/util/functions";
 import { PresenceUpdateStatus } from "discord.js";
 
-
 export async function ready(client) {
  const registerTime = performance.now();
  Logger("info", "Registering slash commands...");
@@ -13,7 +12,6 @@ export async function ready(client) {
 
  client.user.setPresence({
   activities: client.config.bot.presence.activities,
-  status: PresenceUpdateStatus[client.config.bot.presence.status] ?? PresenceUpdateStatus.Online
+  status: PresenceUpdateStatus[client.config.bot.presence.status] ?? PresenceUpdateStatus.Online,
  });
-
 }
