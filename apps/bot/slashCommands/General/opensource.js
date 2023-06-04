@@ -30,7 +30,7 @@ export default {
       size: 2048,
      }),
     })
-    .setColor(guildSettings.embedColor || client.config.bot.defaultEmbedColor)
+    .setColor(guildSettings?.embedColor || client.config.bot.defaultEmbedColor)
     .setTimestamp();
    const row = new ActionRowBuilder()
     .addComponents(

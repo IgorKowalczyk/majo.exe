@@ -22,7 +22,7 @@ export default {
       size: 2048,
      }),
     })
-    .setColor(guildSettings.embedColor || client.config.bot.defaultEmbedColor)
+    .setColor(guildSettings?.embedColor || client.config.bot.defaultEmbedColor)
     .setTimestamp()
     .setThumbnail(client.user?.displayAvatarURL({ dynamic: true, format: "png", size: 2048 }));
 
