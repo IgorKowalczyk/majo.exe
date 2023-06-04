@@ -191,6 +191,9 @@ importers:
 
   packages/database:
     dependencies:
+      '@majoexe/util':
+        specifier: '*'
+        version: link:../utils
       '@prisma/client':
         specifier: 4.15.0
         version: 4.15.0(prisma@4.15.0)

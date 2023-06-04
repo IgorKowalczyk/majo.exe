@@ -26,6 +26,7 @@ model User {
  accounts      Account[]
  sessions      Session[]
  GuildLogs     GuildLogs[]
+ GuildXp       GuildXp[]
 
  @@map(name: "users")
 }
@@ -88,6 +89,7 @@ model Guild {
  embedLastChanged DateTime?   @default(now()) @map(name: "embed_last_changed")
  lastUpdated      DateTime    @default(now()) @map(name: "last_updated")
  guildLogs        GuildLogs[]
+ GuildXp          GuildXp[]
 
  @@map(name: "guilds")
 }
@@ -103,4 +105,16 @@ model GuildLogs {
  user      User     @relation(fields: [authorId], references: [discordId], onDelete: Cascade)
 
  @@map(name: "guild_logs")
+}
+
+model GuildXp {
+ id        String   @id @default(cuid())
+ guildId   String
+ userId    String
+ xp        Int      @default(0)
+ createdAt DateTime @default(now()) @map(name: "created_at")
+ guild     Guild    @relation(fields: [guildId], references: [guildId], onDelete: Cascade)
+ user      User     @relation(fields: [userId], references: [discordId], onDelete: Cascade)
+
+ @@map(name: "guild_xp")
 }

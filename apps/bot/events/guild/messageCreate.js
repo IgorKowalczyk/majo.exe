@@ -87,12 +87,72 @@ export async function messageCreate(client, message) {
  if (!message.content) return;
  const content = message.content.slice(0, 250);
  const profanity = await fetchProfanity(message.guild.id);
- if (!profanity || profanity === 0) return;
- const isProfane = filter.isProfane(content);
+ if (profanity > 0) {
+  const isProfane = filter.isProfane(content);
 
- if ((profanity === 1 || profanity === 2) && !isProfane) return;
-
- if (isProfane && profanity === 1) {
-  return takeAction(client, message);
+  if (isProfane && profanity === 1) {
+   return takeAction(client, message);
+  }
  }
+
+ const random = Math.floor(Math.random() * 5) + 1;
+
+ const xp = await prismaClient.guildXp.findFirst({
+  where: {
+   guildId: message.guild.id,
+   userId: message.author.id
+  },
+ });
+
+ if (!xp) {
+  await prismaClient.guildXp.create({
+   data: {
+    guild: {
+     connectOrCreate: {
+      where: {
+       guildId: message.guild.id,
+      },
+      create: {
+       guildId: message.guild.id,
+      },
+     },
+    },
+    user: {
+     connectOrCreate: {
+      where: {
+       discordId: message.author.id,
+      },
+      create: {
+       discordId: message.author.id,
+       name: message.author.username,
+       global_name: message.author.username,
+       avatar:
+        message.author.displayAvatarURL({
+         dynamic: true,
+         format: "png",
+         size: 2048,
+        }) || null,
+       discriminator: message.author.discriminator,
+       public_flags: message.author.flags?.bitfield,
+       flags: message.author.flags?.bitfield,
+      },
+     },
+    },
+    xp: random,
+   },
+  });
+  return;
+ }
+
+ await prismaClient.guildXp.updateMany({
+  where: {
+   guildId: message.guild.id,
+   userId: message.author.id
+  },
+  data: {
+   xp: {
+    increment: random,
+   },
+  },
+ });
 }
