@@ -1,5 +1,5 @@
-import { getServer } from "@majoexe/util/functions";
 import { fetchLogs } from "@majoexe/util/database";
+import { getServer } from "@majoexe/util/functions";
 import { getSession } from "lib/session";
 import { NextResponse } from "next/server";
 

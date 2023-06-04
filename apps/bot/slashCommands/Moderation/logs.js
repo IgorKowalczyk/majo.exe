@@ -1,5 +1,5 @@
-import { ApplicationCommandType, ApplicationCommandOptionType, EmbedBuilder } from "discord.js";
 import { fetchLogs, countLogs } from "@majoexe/util/database";
+import { ApplicationCommandType, ApplicationCommandOptionType, EmbedBuilder } from "discord.js";
 
 export default {
  name: "logs",
@@ -25,7 +25,7 @@ export default {
     .setColor("#EF4444")
     .setTimestamp()
     .setTitle("❌ No logs found")
-    .setDescription(`> There are no logs found for this query or server.`)
+    .setDescription("> There are no logs found for this query or server.")
     .setFooter({
      text: `Requested by ${interaction.member?.user?.username}`,
      iconURL: interaction.member?.user?.displayAvatarURL({

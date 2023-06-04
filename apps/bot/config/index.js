@@ -1,5 +1,5 @@
-import { emojis } from "./emojis.js";
 import { ActivityType, PresenceUpdateStatus, OAuth2Scopes } from "discord.js";
+import { emojis } from "./emojis.js";
 
 export const config = {
  /*

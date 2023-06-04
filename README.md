@@ -37,6 +37,7 @@ However, if you want to host Majo.exe yourself see links below.
 
 - **[🤖 Bot setup tutorial](/apps/bot/README.md)**
 - **[🔩 Dashboard setup tutorial](/apps/dashboard/README.md)**
+- **[📝 Database setup tutorial](/packages/database/README.md)**
 
 ## 🗜️ Requirements
 

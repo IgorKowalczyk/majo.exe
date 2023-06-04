@@ -10,38 +10,37 @@
 ## 🤖 Self-Hosting
 
 1. Clone [this repository](https://github.com/igorkowalczyk/majo.exe) `git clone https://github.com/IgorKowalczyk/majo.exe.git`
-2. Grab a Discord Bot token and client secret on [Discord's developer portal](https://discord.com/developers/applications) [Tutorial](#-discord-credentials)
-3. Create new file named `.env` (in main directory). (Remember - the file is super secret, better to not share it!)
-4. In `.env` file set this values:
+2. Go to `/packages/database/` directory and follow [Database Setup](/packages/database/README.md) tutorial
+3. Grab a Discord Bot token and client secret on [Discord's developer portal](https://discord.com/developers/applications) [Tutorial](#-discord-credentials)
+4. Create new file named `.env` (in main directory)
+5. In `.env` file set this values:
    - `TOKEN` - Discord bot token [[Tutorial](#-discord-token)]
    - `SECRET` - Random string (min. length = 32 chars)
-   - `CLIENT_ID` - Discord bot ID
    - `CLIENT_SECRET` - Discord bot secret [[Tutorial](#-discord-secret)]
-   - `NEXTAUTH_URL` - Dashboard url (if you are not hosting dashboard - keep it empty)
-   - `MONGODB_URI` - MongoDB connection string
-5. Go to `/apps/bot/` directory
-6. Run `pnpm i` or `npm i` to install all dependencies,
-7. Fill `/config/index.js` with your values
-8. Run `pnpm run dev` or `pnpm run deploy` to start bot
+   - Database URLs:
+     - `DATABASE_URL` - Main database URL
+     - `DIRECT_URL` - Direct database URL (optional)
+     - `SHADOW_DATABASE_URL` - Shadow database URL (optional)
+6. Go to `/apps/bot/` directory
+7. Run `pnpm i` to install all dependencies,
+8. Fill `/config/index.js` and `/config/emojis.js` with your values
+9. Run `pnpm run dev` or `pnpm run deploy` to start bot
 
-> Note: See the example [`.env` file below](#example-env-file)!
+##### Example bot `.env` file
 
-##### Example `.env` file
+Remember - the file is super secret, better to not share it!
 
 ```
 TOKEN=YOUR_TOKEN_GOES_HERE
 SECRET=RANDOM_STRING
-CLIENT_ID=DISCORD_BOT_ID
 CLIENT_SECRET=DISCORD_BOT_SECRET
-NEXTAUTH_URL=DASHBOARD_URL
-MONGODB_URI=MONGODB_CONNECTION_STRING
 ```
 
 ---
 
 ## 🗜️ Requirements
 
-- `MongoDB 5` or higher
+- `PostgreSQL 13x` or higher
 - `Node.js 16x` or higher
 - `(Any)` Linux x64\*
 - `256MB` of RAM
@@ -69,16 +68,6 @@ MONGODB_URI=MONGODB_CONNECTION_STRING
 4. Paste client secret to `.env` - `CLIENT_SECRET=CLIENT_SECRET`
 
 > Tutorial written by: <a href="https://github.com/index1337">\_index1337</a>
-
-### 💾 MongoDB
-
-1. Go to <a href="https://www.mongodb.com/cloud/atlas">MongoDB Atlas</a>
-2. Create new cluster (free tier is enough)
-3. Go to "Database Access" tab and create new user
-4. Go to "Network Access" tab and add your IP address or set `0.0.0.0` to allow all connections
-5. Go to "Clusters" tab and click "Connect" button
-6. Select "Connect your application" and copy connection string
-7. Paste connection string to `.env` - `MONGODB_URI=MONGODB_CONNECTION_STRING`
 
 ## 📝 Contributors
 
