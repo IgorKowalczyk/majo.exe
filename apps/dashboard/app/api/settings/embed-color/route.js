@@ -131,6 +131,8 @@ export async function PUT(request) {
      type: "embed_color",
     },
    });
+
+   return new NextResponse(JSON.stringify({ message: "Embed color updated", code: 200 }), { status: 200 });
   }
 
   if (current.embedColor === "#5865F2") return new NextResponse(JSON.stringify({ error: "Embed color is already set to that", code: 400 }), { status: 200 });
