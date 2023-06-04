@@ -28,8 +28,29 @@ export async function POST(request) {
    await prismaClient.guild.create({
     data: {
      guildId: id,
+     embedColor: color,
+     embedLastChanged: new Date(),
     },
    });
+
+   await prismaClient.guildLogs.create({
+    data: {
+     guild: {
+      connect: {
+       guildId: id,
+      },
+     },
+     user: {
+      connect: {
+       id: session.sub,
+      },
+     },
+     content: `Changed global embed color to ${color}`,
+     type: "embed_color",
+    },
+   });
+
+   return new NextResponse(JSON.stringify({ message: "Embed color updated", code: 200 }), { status: 200 });
   }
 
   if (current.embedColor === color) return new NextResponse(JSON.stringify({ error: "Embed color is already set to that", code: 400 }), { status: 200 });
@@ -90,6 +111,24 @@ export async function PUT(request) {
    await prismaClient.guild.create({
     data: {
      guildId: id,
+     embedColor: "#5865F2",
+    },
+   });
+
+   await prismaClient.guildLogs.create({
+    data: {
+     guild: {
+      connect: {
+       guildId: id,
+      },
+     },
+     user: {
+      connect: {
+       id: session.sub,
+      },
+     },
+     content: "Changed global embed color to default",
+     type: "embed_color",
     },
    });
   }
