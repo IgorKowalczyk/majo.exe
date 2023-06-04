@@ -15,7 +15,7 @@
     "pm2": "pm2 start ecosystem.config.cjs --env production"
   },
   "dependencies": {
-    "@discordjs/rest": "1.7.0",
+    "@discordjs/rest": "1.7.1",
     "@majoexe/database": "workspace:*",
     "@majoexe/util": "workspace:*",
     "bad-words": "3.0.4",

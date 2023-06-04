@@ -31,8 +31,8 @@ importers:
   apps/bot:
     dependencies:
       '@discordjs/rest':
-        specifier: 1.7.0
-        version: 1.7.0
+        specifier: 1.7.1
+        version: 1.7.1
       '@majoexe/database':
         specifier: workspace:*
         version: link:../../packages/database
@@ -289,20 +289,6 @@ packages:
       discord-api-types: 0.37.43
     dev: false
 
-  /@discordjs/rest@1.7.0:
-    resolution: {integrity: sha512-r2HzmznRIo8IDGYBWqQfkEaGN1LrFfWQd3dSyC4tOpMU8nuVvFUEw6V/lwnG44jyOq+vgyDny2fxeUDMt9I4aQ==}
-    engines: {node: '>=16.9.0'}
-    dependencies:
-      '@discordjs/collection': 1.5.1
-      '@discordjs/util': 0.2.0
-      '@sapphire/async-queue': 1.5.0
-      '@sapphire/snowflake': 3.5.1
-      discord-api-types: 0.37.43
-      file-type: 18.4.0
-      tslib: 2.5.2
-      undici: 5.22.1
-    dev: false
-
   /@discordjs/rest@1.7.1:
     resolution: {integrity: sha512-Ofa9UqT0U45G/eX86cURQnX7gzOJLG2oC28VhIk/G6IliYgQF7jFByBJEykPSHE4MxPhqCleYvmsrtfKh1nYmQ==}
     engines: {node: '>=16.9.0'}
@@ -315,11 +301,6 @@ packages:
       file-type: 18.4.0
       tslib: 2.5.2
       undici: 5.22.1
-    dev: false
-
-  /@discordjs/util@0.2.0:
-    resolution: {integrity: sha512-/8qNbebFzLWKOOg+UV+RB8itp4SmU5jw0tBUD3ifElW6rYNOj1Ku5JaSW7lLl/WgjjxF01l/1uQPCzkwr110vg==}
-    engines: {node: '>=16.9.0'}
     dev: false
 
   /@discordjs/util@0.3.1:
