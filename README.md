@@ -41,7 +41,7 @@ However, if you want to host Majo.exe yourself see links below.
 
 ## 🗜️ Requirements
 
- - `MongoDB 5` or higher
+ - `PostgreSQL 13x` or higher
  - `Node.js 16x` or higher
  - `(Any)` Linux x64*
  - `256MB` of RAM
