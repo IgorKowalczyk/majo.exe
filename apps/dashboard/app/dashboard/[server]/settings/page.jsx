@@ -1,8 +1,7 @@
-import { Cog6ToothIcon, PaintBrushIcon } from "@heroicons/react/24/outline";
+import { PaintBrushIcon } from "@heroicons/react/24/outline";
 import prismaClient from "@majoexe/database";
 import { getServer } from "@majoexe/util/functions";
 import { getSession } from "lib/session";
-import Image from "next/image";
 import { redirect } from "next/navigation";
 import { ChangeEmbedColor } from "@/components/blocks/client/ChangeEmbedColor";
 
