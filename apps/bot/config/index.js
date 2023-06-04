@@ -1,5 +1,7 @@
 import { ActivityType, PresenceUpdateStatus, OAuth2Scopes } from "discord.js";
 import { emojis } from "./emojis.js";
+import dotenv from "dotenv";
+dotenv.config({ path: "../../.env" });
 
 export const config = {
  /*
@@ -7,7 +9,7 @@ export const config = {
   */
  dashboard: {
   enabled: true, // boolean. Is bot using dashboard
-  link: process.env.NEXTAUTH_URL, // string. Dashboard main url
+  link: process.env.NEXT_PUBLIC_URL, // string. Dashboard main url
  },
 
  bot: {

@@ -41,14 +41,31 @@ However, if you want to host Majo.exe yourself see links below.
 
 ## 🗜️ Requirements
 
- - `PostgreSQL 13x` or higher
- - `Node.js 16x` or higher
- - `(Any)` Linux x64*
- - `256MB` of RAM
- - `512MB/1GB` of hard drive space
+- `PostgreSQL 13x` or higher
+- `Node.js 16x` or higher
+- `(Any)` Linux x64\*
+- `256MB` of RAM
+- `512MB/1GB` of hard drive space
 
 > **Note**:
 > \*Debian based distros are recommended, bot can also run on Windows and MacOS but it's not recommended.
+
+## Global `.env` file
+
+| Variable            | Description                                      | Required (Bot)                                     | Required (Dashboard) |
+| ------------------- | ------------------------------------------------ | -------------------------------------------------- | -------------------- |
+| TOKEN               | Discord bot token                                | ✅                                                 | ✅                   |
+| SECRET              | Secret string (minimum 32 characters)            | ❌                                                 | ✅                   |
+| CLIENT_ID           | Discord client ID                                | ✅                                                 | ✅                   |
+| CLIENT_SECRET       | Discord client secret                            | ❌                                                 | ✅                   |
+| NEXTAUTH_URL        | NextAuth.js URL (e.g., http://localhost:3000)    | ❌                                                 | ✅                   |
+| NEXT_PUBLIC_URL     | Next.js public URL (e.g., http://localhost:3000) | ❌ (Note: This enables dashboard related commands) | ✅                   |
+| HOTJAR_ID           | [Hotjar](https://hotjar.com) ID                  | ❌                                                 | ❌                   |
+| DATABASE_URL        | Main database URL                                | ✅                                                 | ✅                   |
+| DIRECT_URL          | Non-pooling database URL                         | ❌                                                 | ❌                   |
+| SHADOW_DATABASE_URL | Shadow database URL\*                            | ❌                                                 | ❌                   |
+
+> **Note**: \*`SHADOW_DATABASE_URL` is used for prisma migrations. Prisma will try to create a new database and then apply migrations. If it fails, it will use `SHADOW_DATABASE_URL` instead.
 
 ## 📝 Contributors
 
@@ -81,7 +98,6 @@ When submitting a pull request:
 - Create a branch off of `master` and give it a meaningful name (e.g. `my-awesome-new-feature`).
 - Open a [pull request](https://github.com/igorkowalczyk/majo.exe/pulls) on [GitHub](https://github.com) and describe the feature or fix.
 
-
 ## 📋 License
 
 This project is licensed under the MIT. See the [LICENSE](https://github.com/igorkowalczyk/majo.exe/blob/master/license.md) file for details
@@ -89,5 +105,6 @@ This project is licensed under the MIT. See the [LICENSE](https://github.com/igo
 <details>
  <summary>The cake is a lie 🍰</summary>
 
- <a href="https://igorkowalczyk.dev"><img src="https://views.igorkowalczyk.vercel.app/api/badge/majo.exe?style=flat-square&color=333333&label=Repo+views" alt="Github repository views"></a>
+<a href="https://igorkowalczyk.dev"><img src="https://views.igorkowalczyk.vercel.app/api/badge/majo.exe?style=flat-square&color=333333&label=Repo+views" alt="Github repository views"></a>
+
 </details>

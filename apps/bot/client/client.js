@@ -1,18 +1,19 @@
+import dotenv from "dotenv";
+dotenv.config({ path: "../../.env" });
 import { createErrorEmbed } from "@majoexe/util/embeds";
 import { Logger } from "@majoexe/util/functions";
 import chalk from "chalk";
 import { Client, GatewayIntentBits, PermissionsBitField, Collection } from "discord.js";
-import dotenv from "dotenv";
 import { globby } from "globby";
 import { emojis } from "../config/emojis.js";
 import { config } from "../config/index.js";
-dotenv.config({ path: "../../.env" });
 
 Logger("info", "Starting Majo.exe Bot...");
 Logger("info", `Running version v${process.env.npm_package_version} on Node.js ${process.version} on ${process.platform} ${process.arch}`);
 
 Logger("warn", "This is a development version of Majo.exe. It may be unstable and may contain bugs. Use at your own risk!");
 Logger("warn", "Check out the source code at https://github.com/igorkowalczyk/majo.exe");
+Logger("info", `Dashboard is enabled at ${config.dashboard.link}`);
 
 const client = new Client({
  intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMembers, GatewayIntentBits.GuildModeration, GatewayIntentBits.GuildEmojisAndStickers, GatewayIntentBits.GuildIntegrations, GatewayIntentBits.GuildWebhooks, GatewayIntentBits.GuildInvites, GatewayIntentBits.GuildPresences, GatewayIntentBits.GuildMessages, GatewayIntentBits.MessageContent, GatewayIntentBits.GuildMessageReactions],
