@@ -62,8 +62,8 @@ export const emojis = {
    emoji: "🔧",
   },
   {
-   name: "economy",
-   emoji: "💰",
+   name: "levels",
+   emoji: "📈",
   },
   {
    name: "nsfw",
