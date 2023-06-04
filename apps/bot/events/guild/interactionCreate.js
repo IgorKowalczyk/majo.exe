@@ -77,6 +77,14 @@ export async function interactionCreate(client, interaction) {
    },
   });
 
+  if (!guildSettings) {
+   await prismaClient.guild.create({
+    data: {
+     guildId: interaction.guild?.id,
+    },
+   });
+  }
+
   client.slashCommands.get(interaction.commandName).run(client, interaction, guildSettings);
  } else if (interaction.isModalSubmit()) {
   const modal = client.modals.get(interaction.customId);
@@ -87,6 +95,14 @@ export async function interactionCreate(client, interaction) {
     guildId: interaction.guild?.id,
    },
   });
+
+  if (!guildSettings) {
+   await prismaClient.guild.create({
+    data: {
+     guildId: interaction.guild?.id,
+    },
+   });
+  }
 
   modal.run(client, interaction, guildSettings);
  }

@@ -24,6 +24,14 @@ export async function POST(request) {
    },
   });
 
+  if (!current) {
+   await prismaClient.guild.create({
+    data: {
+     guildId: id,
+    },
+   });
+  }
+
   if (current.embedColor === color) return new NextResponse(JSON.stringify({ error: "Embed color is already set to that", code: 400 }), { status: 200 });
   if (new Date().getTime() - current.embedLastChanged.getTime() < 10000) return new NextResponse(JSON.stringify({ error: "You can only change the embed color every 10 seconds", code: 400 }), { status: 200 });
   await prismaClient.guild.update({
@@ -71,6 +79,23 @@ export async function PUT(request) {
   if (!server) return new NextResponse(JSON.stringify({ error: "Server not found", code: 404 }), { status: 404 });
   if (server.error) return new NextResponse(JSON.stringify({ error: "Server not found", code: 404 }), { status: 404 });
   if (!server.bot) return new NextResponse(JSON.stringify({ error: "Bot is not in server", code: 404 }), { status: 404 });
+
+  const current = await prismaClient.guild.findUnique({
+   where: {
+    guildId: id,
+   },
+  });
+
+  if (!current) {
+   await prismaClient.guild.create({
+    data: {
+     guildId: id,
+    },
+   });
+  }
+
+  if (current.embedColor === "#5865F2") return new NextResponse(JSON.stringify({ error: "Embed color is already set to that", code: 400 }), { status: 200 });
+  if (new Date().getTime() - current.embedLastChanged.getTime() < 10000) return new NextResponse(JSON.stringify({ error: "You can only change the embed color every 10 seconds", code: 400 }), { status: 200 });
 
   await prismaClient.guild.update({
    where: {

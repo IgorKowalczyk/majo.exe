@@ -20,6 +20,14 @@ export default async function Settings({ params }) {
   },
  });
 
+ if (!guild) {
+  await prismaClient.guild.create({
+   data: {
+    guildId: serverDownload.id,
+   },
+  });
+ }
+
  return (
   <div className="flex w-full flex-col items-center bg-background-primary antialiased md:py-16 md:px-16 px-8 py-8">
    <h2 className="flex items-center justify-center gap-4 text-center text-3xl font-bold">
