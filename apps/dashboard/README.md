@@ -1,4 +1,4 @@
-![Header Dashboard](https://github.com/IgorKowalczyk/majo.exe/assets/49127376/e1fac3b3-a8ec-4af8-bc93-f5ccaacaa498)
+![Header Dashboard](https://github.com/IgorKowalczyk/majo.exe/assets/49127376/f3163dc8-159b-49ab-96f7-388d32bff2e0)
 
 <p align="center">
  <a href="https://majoexe.xyz/server"><img src="https://img.shields.io/discord/666599184844980224?color=%234552ef&logo=discord&label=Discord&style=flat&logoColor=fff" alt="Discord" /></a>
