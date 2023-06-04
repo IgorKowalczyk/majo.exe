@@ -5,7 +5,7 @@ import { EmbedBuilder } from "discord.js";
 
 export default {
  id: "suggestion",
- run: async (client, interaction, guildSettings) => {
+ run: async (client, interaction) => {
   await interaction.deferReply({ ephemeral: true });
   const suggestion = interaction.fields.getTextInputValue("suggestion");
   if (suggestion.length < 5 || suggestion.length > 500) {
