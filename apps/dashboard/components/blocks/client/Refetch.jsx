@@ -1,8 +1,8 @@
 "use client";
 
-import { SecondaryButton } from "@/components/buttons/Secondary";
 import { ArrowPathIcon } from "@heroicons/react/24/outline";
 import { useRouter } from "next/navigation";
+import { SecondaryButton } from "@/components/buttons/Secondary";
 
 export function Refetch() {
  const router = useRouter();

@@ -3,8 +3,8 @@ import prismaClient from "@majoexe/database";
 import { getServer } from "@majoexe/util/functions";
 import { getSession } from "lib/session";
 import { redirect } from "next/navigation";
-import { ChangeEmbedColor } from "@/components/blocks/client/ChangeEmbedColor";
 import { Block } from "@/components/blocks/Block";
+import { ChangeEmbedColor } from "@/components/blocks/client/ChangeEmbedColor";
 
 export default async function Settings({ params }) {
  const user = await getSession();

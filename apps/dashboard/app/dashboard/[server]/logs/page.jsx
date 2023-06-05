@@ -4,7 +4,6 @@ import { getServer } from "@majoexe/util/functions";
 import { getSession } from "lib/session";
 import { redirect } from "next/navigation";
 import Logs from "@/components/blocks/client/Logs";
-import { Block } from "@/components/blocks/Block";
 
 export default async function ServerLogs({ params }) {
  const user = await getSession();
