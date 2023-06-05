@@ -4,9 +4,7 @@
 
 - `/prisma/schema.prisma` contains database schema. It's used by [Prisma](https://www.prisma.io/) to generate database client.
 - `/prisma/migrations` contains database migrations. They are used to update database.
-- `/index.js` contains database client. It's used by Majo.exe to interact with database.
-- _[WIP]_ `/src/client.js` contains database client. It's used by Majo.exe to interact with database.
-- _[WIP]_ `/src/client.edge.js` contains database edge client. It's used by Majo.exe dashboard to interact with database.
+- `/src/client.js` contains database client. It's used by Majo.exe to interact with database. It also includes edge client for Prisma Data Proxy.
 
 ## 🗜️ Setup [preferred, Neon]
 

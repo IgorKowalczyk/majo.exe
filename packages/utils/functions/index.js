@@ -7,3 +7,4 @@ export * from "./getServer.js";
 export * from "./getServers.js";
 export * from "./isBotInServer.js";
 export * from "./logger.js";
+export * from "./percentageBar.js";

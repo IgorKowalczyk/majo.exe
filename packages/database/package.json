@@ -2,14 +2,15 @@
   "name": "@majoexe/database",
   "version": "6.0.0",
   "description": "Majo.exe main database schema/client/migrations package",
-  "exports": "./index.js",
+  "exports": "./src/client.js",
   "type": "module",
   "scripts": {
     "format": "prettier --write --cache --ignore-unknown --plugin=prettier-plugin-prisma . ",
     "format:check": "prettier --check --cache .",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
     "lint:fix": "eslint . --ext .js,.jsx,.ts,.tsx --fix",
-    "prisma:generate": "prisma generate",
+    "prisma:generate": "prisma generate --data-proxy",
+    "prisma:normal": "prisma generate",
     "prisma:migrate": "prisma migrate dev --preview-feature",
     "prisma:format": "prisma format",
     "prisma:push": "prisma db push"

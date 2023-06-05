@@ -4,6 +4,7 @@ import Filter from "bad-words";
 import { EmbedBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle } from "discord.js";
 
 const filter = new Filter();
+const XPTimeout = new Map();
 
 const takeAction = async (client, message) => {
  await message.delete();
@@ -95,13 +96,21 @@ export async function messageCreate(client, message) {
   }
  }
 
- const random = Math.floor(Math.random() * 5) + 1;
+ if (message.author.bot) return;
+ const xpKey = `${message.guild.id}-${message.author.id}`;
+
+ if (XPTimeout.get(xpKey) && XPTimeout.get(xpKey).cooldown > Date.now()) return;
+ const random = Math.floor(Math.random() * 60) + 1;
 
  const xp = await prismaClient.guildXp.findFirst({
   where: {
    guildId: message.guild.id,
-   userId: message.author.id
+   userId: message.author.id,
   },
+ });
+
+ XPTimeout.set(xpKey, {
+  cooldown: Date.now() + 60000,
  });
 
  if (!xp) {
@@ -147,7 +156,7 @@ export async function messageCreate(client, message) {
  await prismaClient.guildXp.updateMany({
   where: {
    guildId: message.guild.id,
-   userId: message.author.id
+   userId: message.author.id,
   },
   data: {
    xp: {
