@@ -39,15 +39,16 @@ export default {
 
    const xp = await checkXP(user.id, interaction.guild?.id);
    const level = Math.floor(0.1 * Math.sqrt(xp || 0));
-   const xpNeeded = Math.floor((level + 1) / 0.1 ** 2);
+   const xpNeeded = Math.ceil(Math.pow((level + 1) / 0.1, 2));
    const bar = percentageBar(xpNeeded, xp, 20);
    const embed = new EmbedBuilder()
     .setTitle(`📈 XP for ${user?.username}`)
     .setDescription(
      `
-     **XP:** \`${xp}\` (🔥 \`${xpNeeded - xp}\` XP until next level)
+     **XP:** \`${xp}\`
      **Level:** \`${level}\`
      ${codeBlock(bar)}
+     (\`${xpNeeded - xp}\` XP until next level 🔥)
      `
     )
     .setFooter({

@@ -153,6 +153,27 @@ export async function messageCreate(client, message) {
   return;
  }
 
+ const level = Math.floor(0.1 * Math.sqrt(xp.xp));
+ const xpAfter = xp.xp + random;
+ const nextLevel = Math.floor(0.1 * Math.sqrt(xpAfter));
+
+ if (level < nextLevel) {
+  const embed = new EmbedBuilder()
+   .setTitle("🎉 Level up!")
+   .setDescription(`Congratulations <@${message.author.id}>! You have leveled up to level **${nextLevel}**!`)
+   .setColor("#10B981")
+   .setTimestamp()
+   .setThumbnail(
+    message.author.displayAvatarURL({
+     dynamic: true,
+     format: "png",
+     size: 2048,
+    })
+   );
+
+  await message.channel.send({ embeds: [embed] });
+ }
+
  await prismaClient.guildXp.updateMany({
   where: {
    guildId: message.guild.id,
