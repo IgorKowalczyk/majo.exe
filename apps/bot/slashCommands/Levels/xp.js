@@ -8,7 +8,7 @@ export default {
  type: ApplicationCommandType.ChatInput,
  cooldown: 3000,
  dm_permission: false,
- usage: "/xp",
+ usage: "/xp [user]",
  options: [
   {
    name: "user",
