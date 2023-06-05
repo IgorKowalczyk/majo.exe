@@ -18,10 +18,10 @@ export function MenuDropdown({ user }) {
        <div
         className={clsx(
          {
-          "opacity-80 bg-button-secondary-hover": open,
-          "hover:opacity-80 hover:bg-button-secondary-hover": !open,
+          "opacity-80 bg-background-menu-button": open,
+          "hover:opacity-80": !open,
          },
-         "flex h-10 select-none items-center rounded bg-button-secondary px-4 py-2 duration-200  motion-reduce:transition-none"
+         "flex h-10 select-none items-center rounded border border-neutral-700 bg-background-menu-button px-4 py-2 duration-200  motion-reduce:transition-none"
         )}
        >
         <Image width="32" height="32" quality={100} className="!h-8 !w-8 rounded-full" src={user.image} loading="lazy" alt={`${user.name} Avatar`} />
@@ -39,7 +39,7 @@ export function MenuDropdown({ user }) {
      </Menu.Button>
     </div>
     <Transition as={Fragment} enter="transition ease-out duration-100" enterFrom="transform opacity-0 scale-95" enterTo="transform opacity-100 scale-100" leave="transition ease-in duration-75" leaveFrom="transform opacity-100 scale-100" leaveTo="transform opacity-0 scale-95">
-     <Menu.Items className="absolute right-0 mt-2 w-56 origin-top-right divide-y divide-gray-700 rounded-md bg-background-menu p-1 shadow-2xl">
+     <Menu.Items className="border border-neutral-800 absolute right-0 mt-2 w-56 origin-top-right divide-y divide-neutral-800 rounded-md bg-background-menu p-1 shadow-2xl">
       <div className="px-1 py-1 ">
        <Menu.Item>
         {({ active }) => (

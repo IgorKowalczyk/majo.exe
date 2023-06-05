@@ -4,6 +4,7 @@ import { getServer } from "@majoexe/util/functions";
 import { getSession } from "lib/session";
 import { redirect } from "next/navigation";
 import { ChangeEmbedColor } from "@/components/blocks/client/ChangeEmbedColor";
+import { Block } from "@/components/blocks/Block";
 
 export default async function Settings({ params }) {
  const user = await getSession();
@@ -30,11 +31,14 @@ export default async function Settings({ params }) {
 
  return (
   <div className="flex w-full flex-col items-center bg-background-primary antialiased md:py-16 md:px-16 px-8 py-8">
-   <h2 className="flex items-center justify-center gap-4 text-center text-3xl font-bold">
-    <PaintBrushIcon className="w-9 h-9" />
-    Embed Color
-   </h2>
-   <ChangeEmbedColor serverId={serverDownload.id} serverColor={guild?.embedColor || "#5865F2"} serverIcon={serverDownload.icon} />
+   <Block>
+    <h2 className="flex items-center justify-center gap-4 text-center text-3xl font-bold">
+     <PaintBrushIcon className="w-9 h-9" />
+     Embed Color
+    </h2>
+    <p className="text-center mb-4">Change the color of the embeds sent by the bot.</p>
+    <ChangeEmbedColor serverId={serverDownload.id} serverColor={guild?.embedColor || "#5865F2"} serverIcon={serverDownload.icon} />
+   </Block>
   </div>
  );
 }

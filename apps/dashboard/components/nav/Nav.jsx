@@ -11,7 +11,7 @@ import Link from "next/link";
 export async function Nav() {
  const session = await getSession();
  return (
-  <nav className="fixed z-[9999] flex w-full items-center bg-background-navbar/70 py-4 text-left shadow-lg backdrop-blur-[9px]">
+  <nav className="fixed z-[9999] flex w-full items-center bg-background-navbar/70 py-4 text-left shadow-lg backdrop-blur-[9px] border-b border-b-neutral-800">
    <Link href="/" className=" text-lg text-white">
     <div className="flex cursor-pointer items-center gap-2 px-4 text-xl duration-200 hover:opacity-90 motion-reduce:transition-none">
      <Image className="rounded-full" src={social.logo} alt="Majo.exe" width={36} height={36} />
@@ -20,10 +20,10 @@ export async function Nav() {
    </Link>
    <div className="ml-auto mr-4 ">
     {session ? (
-     <div className="flex items-center">
-      <SecondaryButton href="/dashboard">
+     <div className="flex items-center gap-2">
+      <Link href="/dashboard" className="flex items-center text-white/60 hover:text-white duration-200 motion-reduce:transition-none">
        <RectangleStackIcon className="mr-2 h-5 w-5 " aria-hidden="true" role="img" /> Dashboard
-      </SecondaryButton>
+      </Link>
       <MenuDropdown user={session} />
      </div>
     ) : (

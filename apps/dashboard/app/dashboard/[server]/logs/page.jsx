@@ -4,6 +4,7 @@ import { getServer } from "@majoexe/util/functions";
 import { getSession } from "lib/session";
 import { redirect } from "next/navigation";
 import Logs from "@/components/blocks/client/Logs";
+import { Block } from "@/components/blocks/Block";
 
 export default async function ServerLogs({ params }) {
  const user = await getSession();
@@ -38,7 +39,7 @@ export default async function ServerLogs({ params }) {
     <ListBulletIcon className="w-12 h-12" />
     Activity Logs
    </h1>
-   <div className="overflow-auto">{logs.length === 0 ? <div className="flex items-center justify-center gap-4 text-center text-5xl font-bold">No logs found</div> : <Logs initialItems={logs} id={serverDownload.id} />}</div>
+   <div className="overflow-auto">{logs.length === 0 ? <h3 className="text-center text-xl font-bold">No logs found!</h3> : <Logs initialItems={logs} id={serverDownload.id} />}</div>
   </div>
  );
 }

@@ -1,3 +1,4 @@
+import { Refetch } from "@/components/blocks/client/Refetch";
 import { PlusSmallIcon, RectangleStackIcon } from "@heroicons/react/24/outline";
 import { canAddBotToServer } from "@majoexe/util/functions";
 import { getServers } from "@majoexe/util/functions";
@@ -53,7 +54,15 @@ export default async function Dashboard() {
        </div>
       ))
      ) : (
-      <h3 className="text-center  text-xl font-bold">You don't have any servers!</h3>
+      <div className="flex flex-col items-center justify-center gap-4">
+       <h3 className="text-center text-xl font-bold">You don't have any servers!</h3>
+       <div className="flex flex-row items-center justify-start gap-2">
+        <PrimaryButton href={`/invite`}>
+         <PlusSmallIcon className="mr-2 h-5 w-5" aria-hidden="true" role="img" /> Add bot
+        </PrimaryButton>
+        <Refetch />
+       </div>
+      </div>
      )}
     </div>
    </div>

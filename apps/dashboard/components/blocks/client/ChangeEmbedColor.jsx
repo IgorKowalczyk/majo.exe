@@ -83,7 +83,7 @@ export function ChangeEmbedColor({ serverId, serverColor, serverIcon }) {
  };
 
  return (
-  <div className="flex flex-row items-center gap-4 mt-4 divide-x divide-gray-700">
+  <div className="flex flex-row items-center gap-4 divide-x divide-neutral-800">
    <HexColorPicker color={color} onChange={setColor} />
    <div>
     <div className="flex items-center gap-1 mt-4 ml-4">
