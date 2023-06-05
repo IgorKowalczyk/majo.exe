@@ -1,5 +1,5 @@
-import { ApplicationCommandType, ApplicationCommandOptionType, PermissionFlagsBits, EmbedBuilder } from "discord.js";
 import { resetXP } from "@majoexe/util/database";
+import { ApplicationCommandType, ApplicationCommandOptionType, PermissionFlagsBits, EmbedBuilder } from "discord.js";
 
 export default {
  name: "reset-xp",
@@ -25,7 +25,7 @@ export default {
      .setColor("#EF4444")
      .setTimestamp()
      .setTitle("❌ Error")
-     .setDescription(`> You can't reset the XP of a bot.\nNote: Bots don't gain XP.`)
+     .setDescription("> You can't reset the XP of a bot.\nNote: Bots don't gain XP.")
      .setFooter({
       text: `Requested by ${interaction.member?.user?.username}`,
       iconURL: interaction.member?.user?.displayAvatarURL({

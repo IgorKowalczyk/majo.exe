@@ -1,6 +1,6 @@
-import { ApplicationCommandType, ApplicationCommandOptionType, EmbedBuilder, ButtonBuilder, ActionRowBuilder, ButtonStyle, codeBlock } from "discord.js";
 import { checkXP } from "@majoexe/util/database";
 import { percentageBar } from "@majoexe/util/functions";
+import { ApplicationCommandType, ApplicationCommandOptionType, EmbedBuilder, ButtonBuilder, ActionRowBuilder, ButtonStyle, codeBlock } from "discord.js";
 
 export default {
  name: "xp",
@@ -25,7 +25,7 @@ export default {
      .setColor("#EF4444")
      .setTimestamp()
      .setTitle("❌ Error")
-     .setDescription(`> You can't check the XP of a bot.\nNote: Bots don't gain XP.`)
+     .setDescription("> You can't check the XP of a bot.\nNote: Bots don't gain XP.")
      .setFooter({
       text: `Requested by ${interaction.member?.user?.username}`,
       iconURL: interaction.member?.user?.displayAvatarURL({

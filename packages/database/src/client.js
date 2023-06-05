@@ -1,3 +1,5 @@
+/* eslint-disable global-require */
+
 import { PrismaClient } from "@prisma/client";
 import { Logger } from "./logger.js";
 

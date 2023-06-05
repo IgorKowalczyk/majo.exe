@@ -1,6 +1,6 @@
 import { ActivityType, PresenceUpdateStatus, OAuth2Scopes } from "discord.js";
-import { emojis } from "./emojis.js";
 import dotenv from "dotenv";
+import { emojis } from "./emojis.js";
 dotenv.config({ path: "../../.env" });
 
 export const config = {

@@ -1,5 +1,7 @@
+/* eslint-disable import/order */
 import dotenv from "dotenv";
 dotenv.config({ path: "../../.env" });
+/* eslint-enable import/order */
 import { createErrorEmbed } from "@majoexe/util/embeds";
 import { Logger } from "@majoexe/util/functions";
 import chalk from "chalk";

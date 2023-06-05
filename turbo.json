@@ -46,6 +46,6 @@
    "outputs": []
   }
  },
- "globalEnv": ["CLIENT_ID", "NEXTAUTH_URL", "HOTJAR_ID", "ENVIRONMENT_URL", "TOKEN", "NODE_ENV", "NEXT_PUBLIC_URL", "npm_package_version"],
+ "globalEnv": ["CLIENT_ID", "NEXTAUTH_URL", "HOTJAR_ID", "ENVIRONMENT_URL", "TOKEN", "NODE_ENV", "RUNTIME", "NEXT_PUBLIC_URL", "npm_package_version"],
  "globalDependencies": ["pnpm-lock.yaml", "pnpm-workspace.yaml", ".prettierignore", ".prettierrc"]
 }
