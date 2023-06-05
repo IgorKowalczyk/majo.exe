@@ -5,7 +5,7 @@ export default {
  description: "📝 Contact the Majo.exe team",
  type: ApplicationCommandType.ChatInput,
  cooldown: 3000,
- dmPermission: true,
+ dm_permission: true,
  usage: "/contact",
  run: async (client, interaction, guildSettings) => {
   try {

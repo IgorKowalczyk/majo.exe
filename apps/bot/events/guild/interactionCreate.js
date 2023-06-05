@@ -15,36 +15,6 @@ export async function interactionCreate(client, interaction) {
    await interaction.deferReply({ ephemeral: false });
   }
 
-  if (!interaction.inGuild() && client.slashCommands.get(interaction.commandName).guildOnly) {
-   const embed = new EmbedBuilder()
-    .setTitle("‼️ This command is guild only!")
-    .setDescription("This command can only be used in a guild! Please join a guild to use this command!")
-    .setColor("#EF4444")
-    .setTimestamp()
-    .setFooter({
-     text: `Requested by ${interaction.member?.user?.username}`,
-     iconURL: interaction.member?.user?.displayAvatarURL({
-      dynamic: true,
-      format: "png",
-     }),
-    });
-   return interaction.followUp({ ephemeral: true, embeds: [embed] });
-  } else if (interaction.inGuild() && client.slashCommands.get(interaction.commandName).dmOnly) {
-   const embed = new EmbedBuilder()
-    .setTitle("‼️ This command is DM only!")
-    .setDescription("This command can only be used in a DM! Please DM me to use this command!")
-    .setColor("#EF4444")
-    .setTimestamp()
-    .setFooter({
-     text: `Requested by ${interaction.member?.user?.username}`,
-     iconURL: interaction.member?.user?.displayAvatarURL({
-      dynamic: true,
-      format: "png",
-     }),
-    });
-   return interaction.followUp({ ephemeral: true, embeds: [embed] });
-  }
-
   if (!client.slashCommands.has(interaction.commandName)) return;
   const key = `${interaction.user.id}${interaction.commandName}`;
   if (client.slashCommands.get(interaction.commandName).cooldown) {

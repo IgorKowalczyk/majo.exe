@@ -7,7 +7,7 @@ export default {
  type: ApplicationCommandType.ChatInput,
  cooldown: 3000,
  usage: "/ping",
- dmPermission: true,
+ dm_permission: true,
  run: async (client, interaction, guildSettings) => {
   try {
    const dbTime = performance.now();

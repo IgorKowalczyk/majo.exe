@@ -5,7 +5,7 @@ export default {
  description: "🧭 Display the number of servers the Majo.exe is in",
  type: ApplicationCommandType.ChatInput,
  cooldown: 3000,
- dmPermission: true,
+ dm_permission: true,
  usage: "/servers",
  run: async (client, interaction, guildSettings) => {
   try {

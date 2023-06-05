@@ -7,7 +7,7 @@ export default {
  type: ApplicationCommandType.ChatInput,
  cooldown: 3000,
  usage: "/contact",
- dmPermission: true,
+ dm_permission: true,
  run: async (client, interaction, guildSettings) => {
   try {
    const response = await fetch("https://api.github.com/repos/igorkowalczyk/majo.exe/commits?per_page=1").then((res) => res.json());

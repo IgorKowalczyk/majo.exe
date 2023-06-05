@@ -6,7 +6,7 @@ export default {
  description: "📝 View the Majo.exe logs for this server",
  type: ApplicationCommandType.ChatInput,
  cooldown: 5000,
- dmPermission: true,
+ dm_permission: false,
  usage: "/logs [page]",
  options: [
   {

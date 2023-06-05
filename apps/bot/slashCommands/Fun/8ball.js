@@ -5,7 +5,7 @@ export default {
  description: "🎱 Ask the 8ball a question",
  type: ApplicationCommandType.ChatInput,
  cooldown: 3000,
- dmPermission: true,
+ dm_permission: true,
  usage: "/8ball <question>",
  options: [
   {

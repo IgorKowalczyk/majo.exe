@@ -7,7 +7,7 @@ export default {
  description: "📈 Check your current XP",
  type: ApplicationCommandType.ChatInput,
  cooldown: 3000,
- dmPermission: true,
+ dm_permission: false,
  usage: "/xp",
  options: [
   {

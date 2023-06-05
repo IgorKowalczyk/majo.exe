@@ -6,7 +6,7 @@ export default {
  description: "⌛ View Majo.exe bot uptime and past status",
  type: ApplicationCommandType.ChatInput,
  cooldown: 3000,
- dmPermission: true,
+ dm_permission: true,
  usage: "/uptime",
  run: async (client, interaction, guildSettings) => {
   try {

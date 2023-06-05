@@ -5,7 +5,7 @@ export default {
  description: "📝 Send a suggestion to the Majo.exe team",
  type: ApplicationCommandType.ChatInput,
  cooldown: 10000,
- dmPermission: false,
+ dm_permission: false,
  defer: false,
  usage: "/suggestion",
  run: async (client, interaction) => {

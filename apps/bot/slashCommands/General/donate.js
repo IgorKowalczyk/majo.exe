@@ -5,7 +5,7 @@ export default {
  description: "🪙 Help us develop Majo.exe by donating",
  type: ApplicationCommandType.ChatInput,
  cooldown: 3000,
- dmPermission: true,
+ dm_permission: true,
  usage: "/donate",
  run: async (client, interaction, guildSettings) => {
   try {

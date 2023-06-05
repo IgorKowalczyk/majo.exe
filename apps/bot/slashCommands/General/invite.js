@@ -5,7 +5,7 @@ export default {
  description: "🎉 Invite Majo.exe to your server!",
  type: ApplicationCommandType.ChatInput,
  cooldown: 3000,
- dmPermission: true,
+ dm_permission: true,
  usage: "/invite",
  run: async (client, interaction, guildSettings) => {
   try {

@@ -11,7 +11,7 @@ export default {
  description: "🎛️ Check Majo.exe's permissions in your server",
  type: ApplicationCommandType.ChatInput,
  cooldown: 5000,
- dmPermission: false,
+ dm_permission: false,
  usage: "/permissions",
  run: async (client, interaction, guildSettings) => {
   try {

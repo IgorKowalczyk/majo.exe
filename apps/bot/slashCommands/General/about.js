@@ -5,7 +5,7 @@ export default {
  description: "🏷️ Learn more about Majo.exe",
  type: ApplicationCommandType.ChatInput,
  cooldown: 3000,
- dmPermission: true,
+ dm_permission: true,
  usage: "/about",
  run: async (client, interaction, guildSettings) => {
   try {

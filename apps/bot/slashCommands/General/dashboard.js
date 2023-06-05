@@ -5,7 +5,7 @@ export default {
  description: "💻 Visit our dashboard",
  type: ApplicationCommandType.ChatInput,
  cooldown: 3000,
- dmPermission: true,
+ dm_permission: true,
  usage: "/dashboard",
  run: async (client, interaction, guildSettings) => {
   try {

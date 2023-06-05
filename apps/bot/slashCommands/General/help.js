@@ -6,7 +6,7 @@ export default {
  description: "❔ Display a list of all available commands",
  type: ApplicationCommandType.ChatInput,
  cooldown: 5000,
- dmPermission: true,
+ dm_permission: true,
  usage: "/help [command]",
  options: [
   {
@@ -69,7 +69,7 @@ export default {
       },
       {
        name: "DM Permission",
-       value: codeBlock(command.dmPermission ? "Yes" : "No"),
+       value: codeBlock(command.dm_permission ? "Yes" : "No"),
        inline: true,
       },
      ])

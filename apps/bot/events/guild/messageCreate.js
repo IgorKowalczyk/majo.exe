@@ -97,6 +97,7 @@ export async function messageCreate(client, message) {
  }
 
  if (message.author.bot) return;
+ if (message.channel.type === "DM") return;
  const xpKey = `${message.guild.id}-${message.author.id}`;
 
  if (XPTimeout.get(xpKey) && XPTimeout.get(xpKey).cooldown > Date.now()) return;
