@@ -15,7 +15,7 @@
     "prisma:push": "prisma db push"
   },
   "dependencies": {
-    "@majoexe/util": "*",
+    "@majoexe/util": "workspace:*",
     "@prisma/client": "4.15.0",
     "prisma": "4.15.0"
   },

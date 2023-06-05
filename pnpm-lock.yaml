@@ -192,7 +192,7 @@ importers:
   packages/database:
     dependencies:
       '@majoexe/util':
-        specifier: '*'
+        specifier: workspace:*
         version: link:../utils
       '@prisma/client':
         specifier: 4.15.0
@@ -1583,18 +1583,13 @@ packages:
     hasBin: true
     dependencies:
       cross-spawn: 7.0.3
-      dotenv: 16.0.3
+      dotenv: 16.1.4
       dotenv-expand: 10.0.0
       minimist: 1.2.8
     dev: false
 
   /dotenv-expand@10.0.0:
     resolution: {integrity: sha512-GopVGCpVS1UKH75VKHGuQFqS1Gusej0z4FyQkPdwjil2gNIv+LNsqBlboOzpJFZKVT95GkCyWJbBSdFEFUWI2A==}
-    engines: {node: '>=12'}
-    dev: false
-
-  /dotenv@16.0.3:
-    resolution: {integrity: sha512-7GO6HghkA5fYG9TYnNxi14/7K9f5occMlp3zXAuSxn7CKCxt9xbNWG7yF8hTCSUchlfWSe3uLmlPfigevRItzQ==}
     engines: {node: '>=12'}
     dev: false
 
