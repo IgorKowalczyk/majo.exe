@@ -1,6 +1,5 @@
 import { PrismaClient } from "@prisma/client";
-import { Logger } from "@majoexe/util/functions";
-
+import { Logger } from "./src/logger.js";
 const globalForPrisma = global;
 
 if (!globalForPrisma.prisma) {

@@ -191,12 +191,12 @@ importers:
 
   packages/database:
     dependencies:
-      '@majoexe/util':
-        specifier: workspace:*
-        version: link:../utils
       '@prisma/client':
         specifier: 4.15.0
         version: 4.15.0(prisma@4.15.0)
+      chalk:
+        specifier: 5.2.0
+        version: 5.2.0
       prisma:
         specifier: 4.15.0
         version: 4.15.0
