@@ -1,5 +1,6 @@
 import { RectangleStackIcon } from "@heroicons/react/24/outline";
 import { AvatarSkeleton, TextSkeleton, ButtonSkeleton } from "components/blocks/Skeletons";
+import { CodeCard } from "@/components/blocks/Block";
 
 export default function Loading() {
  return (
@@ -9,7 +10,9 @@ export default function Loading() {
      <RectangleStackIcon className="h-10 w-10" aria-hidden="true" role="img" />
      Dashboard
     </h1>
-    <h2 className="text-center  text-xl opacity-50">You can only add the bot to servers you have the "Manage Server" permission in.</h2>
+    <h2 className="text-center text-xl text-white/50">
+     You can only add the bot to servers you have the <CodeCard>Manage Server</CodeCard> permission in.
+    </h2>
     <div className="flex flex-col gap-4">
      {[...Array(10)].map((_, i) => (
       <div key={i} className="flex flex-row items-center justify-start gap-4">

@@ -18,18 +18,15 @@ export default async function Login() {
  if (user) return redirect("/");
 
  return (
-  <div className="flex h-screen w-full flex-col items-center justify-center gap-4 bg-cover md:bg-shapes ">
-   <div
-    className="
-     flex flex-col items-center gap-4 drop-shadow-[0_0_150px_rgba(0,124,240,0.5)]"
-   >
+  <div className="h-screen w-full absolute before:grayscale after:absolute after:inset-0 after:h-full after:w-full after:-z-10 after:top-20 after:opacity-30 custom-bg z-20 before:md:bg-[url('/assets/svg/grid.svg')] before:opacity-50 before:w-full before:h-full before:absolute before:z-10">
+   <div className="z-20 relative flex h-screen flex-col items-center justify-center gap-4 bg-[radial-gradient(circle,rgba(2,0,36,0)0,rgb(16,17,16,100%))]">
     <div className="mb-4 flex flex-row">
      <Image src="/assets/avatar.png" width={112} height={112} alt="Avatar" className="rounded-full w-28 h-28" quality={90} />
      <Dots />
-     <div className="flex h-28 w-28 items-center justify-center rounded-full bg-white/5 text-5xl text-[#939DB8]">?</div>
+     <div className="flex h-28 w-28 items-center justify-center rounded-full bg-white/5 text-5xl backdrop-blur-sm border border-white/20 text-[#939DB8]">?</div>
     </div>
 
-    <h1 className="text-center  text-6xl font-bold">Connect your account</h1>
+    <h1 className="text-center text-6xl font-bold">Connect your account</h1>
     <p className="my-1 text-center text-xl text-[#939DB8]">Authorize your Discord account to use all the Majo.exe features</p>
     <div className="flex flex-row gap-4">
      {Object.values(providers).map((provider) => (

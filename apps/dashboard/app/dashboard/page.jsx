@@ -8,6 +8,7 @@ import { getSession } from "lib/session";
 import Image from "next/image";
 import { redirect } from "next/navigation";
 import { Refetch } from "@/components/blocks/client/Refetch";
+import { CodeCard } from "@/components/blocks/Block";
 
 export async function getAllServers(session) {
  const servers = (await getServers(session.access_token)) || [];
@@ -32,7 +33,9 @@ export default async function Dashboard() {
      <RectangleStackIcon className="h-10 w-10" aria-hidden="true" role="img" />
      Dashboard
     </h1>
-    <h2 className="text-center  text-xl opacity-50">You can only add the bot to servers you have the "Manage Server" permission in.</h2>
+    <h2 className="text-center text-xl text-white/50">
+     You can only add the bot to servers you have the <CodeCard>Manage Server</CodeCard> permission in.
+    </h2>
     <div className="flex flex-col gap-4">
      {servers && servers.length > 0 ? (
       servers.map((server) => (
@@ -46,7 +49,7 @@ export default async function Dashboard() {
            <PlusSmallIcon className="mr-2 h-5 w-5" aria-hidden="true" role="img" /> Manage
           </PrimaryButton>
          ) : (
-          <SecondaryButton href={`/api/invite/${server.id}`} className="ml-auto">
+          <SecondaryButton href={`/api/invite/${server.id}`} className="ml-auto cursor-copy">
            <PlusSmallIcon className="mr-2 h-5 w-5" aria-hidden="true" role="img" /> Add bot
           </SecondaryButton>
          )}

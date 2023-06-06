@@ -7,3 +7,11 @@ export function Block({ children, ...props }) {
   </div>
  );
 }
+
+export function CodeCard({ children, ...props }) {
+ return (
+  <div {...props} className={clsx(props.className, "bg-background-secondary inline-block px-2 py-1 rounded-md border border-neutral-800")}>
+   {children}
+  </div>
+ );
+}

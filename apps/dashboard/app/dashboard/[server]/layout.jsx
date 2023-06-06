@@ -1,4 +1,4 @@
-import { SideNav } from "components/nav/SideNav";
+import { SideNav } from "@/components/nav/client/SideNav";
 
 export default async function Layout({ children, params }) {
  return (
