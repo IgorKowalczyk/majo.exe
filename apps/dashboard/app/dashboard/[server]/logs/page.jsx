@@ -38,7 +38,7 @@ export default async function ServerLogs({ params }) {
     <ListBulletIcon className="w-12 h-12" />
     Activity Logs
    </h1>
-   <div className="overflow-auto">{logs.length === 0 ? <h3 className="text-center text-xl font-bold">No logs found!</h3> : <Logs initialItems={logs} id={serverDownload.id} />}</div>
+   <div className="overflow-auto">{logs.length === 0 ? <h3 className="text-center text-xl mt-4 font-bold">No logs found!</h3> : <Logs initialItems={logs} id={serverDownload.id} />}</div>
   </div>
  );
 }
