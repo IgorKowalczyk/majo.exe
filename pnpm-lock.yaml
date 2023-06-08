@@ -104,8 +104,8 @@ importers:
         specifier: 1.0.1
         version: 1.0.1
       '@vercel/og':
-        specifier: 0.5.6
-        version: 0.5.6
+        specifier: 0.5.7
+        version: 0.5.7
       autoprefixer:
         specifier: 10.4.14
         version: 10.4.14(postcss@8.4.24)
@@ -886,12 +886,12 @@ packages:
     resolution: {integrity: sha512-Ux0c9qUfkcPqng3vrR0GTrlQdqNJ2JREn/2ydrVuKwM3RtMfF2mWX31Ijqo1opSjNAq6rK76PwtANw6kl6TAow==}
     dev: false
 
-  /@vercel/og@0.5.6:
-    resolution: {integrity: sha512-C7loD/Ryt+cXgZ93KVNOIa/r/WcPVPk1JflUODGUdngFwxOJab0eCdugMrwGR2Oq85g4TXXHMBZIC2Z0C9P1NQ==}
+  /@vercel/og@0.5.7:
+    resolution: {integrity: sha512-KdhPHiLodj2n0Z0yg9feF/onMPlrimhBvCRJOwTpOjvNxefBqM1VIJW5+Ou9mFSIa37Gg0DGBDAoSOJLH2FqxA==}
     engines: {node: '>=16'}
     dependencies:
       '@resvg/resvg-wasm': 2.4.1
-      satori: 0.9.1
+      satori: 0.10.1
       yoga-wasm-web: 0.3.3
     dev: false
 
@@ -1717,6 +1717,10 @@ packages:
   /escalade@3.1.1:
     resolution: {integrity: sha512-k0er2gUkLf8O0zKJiAhmkTnJlTvINGv7ygDNPbeIsX/TJjGJZHuh9B2UxbsaEkmlEo9MfhrSzmhIlhRlI2GXnw==}
     engines: {node: '>=6'}
+    dev: false
+
+  /escape-html@1.0.3:
+    resolution: {integrity: sha512-NiSupZ4OeuGwr68lGIeym/ksIZMJodUGOSCZ/FSnTxcrekbvqrgdUxlJOMpijaKZVjAJrWrGs/6Jy8OMuyj9ow==}
     dev: false
 
   /escape-string-regexp@4.0.0:
@@ -3973,8 +3977,8 @@ packages:
     resolution: {integrity: sha512-YZo3K82SD7Riyi0E1EQPojLz7kpepnSQI9IyPbHHg1XXXevb5dJI7tpyN2ADxGcQbHG7vcyRHk0cbwqcQriUtg==}
     dev: false
 
-  /satori@0.9.1:
-    resolution: {integrity: sha512-2ggMOiY8O8rIxQ6vywiw3LlBheWHbsOzu5hZdMXTDFKzE9sDHUOtJegGmGE+e9aRSO1ttttgXrcHVsHPKYU2GQ==}
+  /satori@0.10.1:
+    resolution: {integrity: sha512-F4bTCkDp931tLb7+UCNPBuSQwXhikrUkI4fBQo6fA8lF0Evqqgg3nDyUpRktQpR5Ry1DIiIVqLyEwkAms87ykg==}
     engines: {node: '>=16'}
     dependencies:
       '@shuding/opentype.js': 1.4.0-beta.0
@@ -3982,6 +3986,7 @@ packages:
       css-box-shadow: 1.0.0-3
       css-to-react-native: 3.2.0
       emoji-regex: 10.2.1
+      escape-html: 1.0.3
       linebreak: 1.1.0
       parse-css-color: 0.2.1
       postcss-value-parser: 4.2.0
