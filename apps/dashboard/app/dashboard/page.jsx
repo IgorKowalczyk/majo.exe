@@ -7,8 +7,8 @@ import { SecondaryButton } from "components/buttons/Secondary";
 import { getSession } from "lib/session";
 import Image from "next/image";
 import { redirect } from "next/navigation";
-import { Refetch } from "@/components/blocks/client/Refetch";
 import { CodeCard } from "@/components/blocks/Block";
+import { Refetch } from "@/components/blocks/client/Refetch";
 
 export async function getAllServers(session) {
  const servers = (await getServers(session.access_token)) || [];

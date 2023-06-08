@@ -3,6 +3,7 @@
 import { ArrowLeftIcon, ChartPieIcon, Cog8ToothIcon, ListBulletIcon, QueueListIcon, RectangleStackIcon } from "@heroicons/react/24/outline";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { PrimaryButton } from "@/components/buttons/Primary";
 
 export function SideNavLink({ href, children }) {
  const router = usePathname();
@@ -17,11 +18,11 @@ export function SideNavLink({ href, children }) {
 export function SideNav({ server }) {
  return (
   <aside className="fixed flex-col w-64 h-full px-4 py-8 z-[9998] flex left-0 items-center bg-background-navbar/70 border-r border-r-neutral-800">
-   <Link href="/dashboard" className="flex items-center gap-2 hover:bg-button-secondary duration-200 w-full px-4 py-2 mb-16 rounded">
-    <ArrowLeftIcon className="w-6 h-6 text-white cursor-pointer" /> Go back
-   </Link>
+   <PrimaryButton href="/dashboard" className="w-full mb-4">
+    <ArrowLeftIcon className="w-5 h-5 mr-2 text-white cursor-pointer" /> Go back
+   </PrimaryButton>
 
-   <div className="flex flex-col items-center justify-center w-full gap-2">
+   <div className="flex flex-col items-center justify-center w-full gap-2 pt-4 border-t border-t-neutral-800">
     <SideNavLink href={`/dashboard/${server}`}>
      <RectangleStackIcon className="w-6 h-6" />
      Overview

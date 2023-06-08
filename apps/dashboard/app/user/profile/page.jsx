@@ -1,10 +1,10 @@
 import { ArrowTopRightOnSquareIcon } from "@heroicons/react/24/outline";
 import { getFlags } from "@majoexe/util/functions";
 import { Emojis } from "components/decorations/emojis";
+import { getSession } from "lib/session";
 import Image from "next/image";
 import Link from "next/link";
 import { redirect } from "next/navigation";
-import { getSession } from "lib/session";
 import { Tooltip } from "@/components/blocks/client/Tooltip";
 
 export default async function Profile() {

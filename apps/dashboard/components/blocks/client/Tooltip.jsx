@@ -1,7 +1,7 @@
 "use client";
 
-import { animateFill } from "tippy.js";
 import Tippy from "@tippyjs/react";
+import { animateFill } from "tippy.js";
 
 export function Tooltip({ children, content, ...props }) {
  return (

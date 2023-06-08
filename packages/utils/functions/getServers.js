@@ -6,6 +6,7 @@
  * */
 export async function getServers(token) {
  const res = await fetch("https://discord.com/api/users/@me/guilds", {
+  next: { revalidate: 10 },
   headers: {
    Authorization: `Bearer ${token}`,
   },
