@@ -9,9 +9,7 @@ export async function isBotInServer(guildId) {
   headers: {
    Authorization: `Bot ${process.env.TOKEN}`,
   },
-
- }
- );
+ });
  if (res.ok) return true;
  return false;
 }
