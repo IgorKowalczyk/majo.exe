@@ -53,7 +53,7 @@ export default async function ServerLogs({ params }) {
        {xp.map((item, index) => (
         <Block key={index} className="flex flex-row duration-200 items-center py-2 justify-start gap-4">
          <span className="text-left">{index + 1}</span>
-         <div className="relative">{item.user?.avatar && <Image src={`https://cdn.discordapp.com/avatars/${item.user?.discordId}/${item.user?.avatar}.${item.user?.avatar.startsWith("a_") ? "gif" : "png"}`} alt={item.user?.username} quality={95} width={32} height={32} className="w-12 h-12 rounded-full" />}</div>
+         <div className="relative">{item.user?.avatar && <Image src={`https://cdn.discordapp.com/avatars/${item.user?.discordId}/${item.user?.avatar}.${item.user?.avatar.startsWith("a_") ? "gif" : "png"}`} alt={`${item.user?.name} avatar`} quality={95} width={32} height={32} className="w-12 h-12 rounded-full" />}</div>
          <Tooltip content={`Discord ID: ${item.user?.discordId}`}>
           <p className="font-bold text-left">
            {item.user?.name || item.user?.id}

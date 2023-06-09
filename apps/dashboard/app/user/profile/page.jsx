@@ -31,8 +31,18 @@ export default async function Profile() {
          </Link>
         </Tooltip>
         <div className="flex text-lg items-center font-bold ml-2">
-         <div className="text-white">{user.username}</div>
-         <div className="text-white/60">#{user.discriminator}</div>
+         {user.discriminator === "0" ? (
+          <>
+           {user.global_name && user.username && <Tooltip content={`@${user.username}`} />}
+           <div className="text-white">{user.global_name}</div>
+          </>
+         ) : (
+          <>
+           <div className="text-white">{user.username}</div>
+           <div className="text-white/60">#{user.discriminator}</div>
+          </>
+         )}
+
          {user.premium_type > 0 && <Tooltip content="Nitro">{Emojis["nitro"]}</Tooltip>}
 
          {getFlags(user.public_flags) &&

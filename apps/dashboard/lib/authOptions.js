@@ -11,11 +11,12 @@ const authOptions = {
    clientSecret: credentials.clientSecret,
    authorization: { params: { scope: "identify email guilds" } },
    profile(profile) {
+    console.log(profile);
     return {
      id: profile.id,
      discordId: profile.id,
      name: profile.username,
-     global_name: profile.username, // TODO: Switch to global_name from Discord API
+     global_name: profile.global_name,
      avatar: profile.avatar,
      discriminator: profile.discriminator,
      public_flags: profile.public_flags,
@@ -53,7 +54,7 @@ const authOptions = {
   async session({ token }) {
    return {
     ...token,
-    image: token.avatar ? `https://cdn.discordapp.com/avatars/${token.id}/${token.avatar}.${token.avatar.startsWith("a_") ? "gif" : "png"}?size=2048` : `https://cdn.discordapp.com/embed/avatars/${Number(token.discriminator) % 5}.png`,
+    image: token.avatar ? `https://cdn.discordapp.com/avatars/${token.id}/${token.avatar}.${token.avatar.startsWith("a_") ? "gif" : "png"}?size=2048` : token.discriminator !== "0" ? `https://cdn.discordapp.com/embed/avatars/${Number(token.discriminator) % 5}.png` : `https://cdn.discordapp.com/embed/avatars/${(token.id >> 22) % 6}.png`,
    };
   },
  },

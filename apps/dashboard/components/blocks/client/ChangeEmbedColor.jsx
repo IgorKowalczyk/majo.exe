@@ -4,8 +4,9 @@ import { ArrowPathIcon, CheckIcon, ExclamationCircleIcon, TrashIcon } from "@her
 import Image from "next/image";
 import { useState } from "react";
 import { HexColorPicker } from "react-colorful";
-import { PrimaryDiscordButton } from "@/components/buttons/server/Primary";
-import { SecondaryDiscordButton } from "@/components/buttons/server/Secondary";
+import { PrimaryButton } from "@/components/buttons/server/Primary";
+import { SecondaryButton } from "@/components/buttons/server/Secondary";
+import { meta, social } from "@config";
 
 export function ChangeEmbedColor({ serverId, serverColor, serverIcon }) {
  const [color, setColor] = useState(serverColor ?? "#5865F2");
@@ -87,15 +88,15 @@ export function ChangeEmbedColor({ serverId, serverColor, serverIcon }) {
    <HexColorPicker color={color} onChange={setColor} />
    <div>
     <div className="flex items-center gap-1 mt-4 ml-4">
-     {serverIcon ? <Image src={`https://cdn.discordapp.com/icons/${serverId}/${serverIcon}.${serverIcon.startsWith("a_") ? "gif" : "png"}`} alt={serverId} quality={95} width={64} height={64} className="w-10 h-10 rounded-full self-baseline" /> : <div className="w-10 h-10 rounded-full bg-button-secondary self-baseline" />}
+     <Image src={social.logo} alt={serverId} quality={95} width={64} height={64} className="w-10 h-10 rounded-full self-baseline" />
      <div className="flex flex-col">
       <div className="h-10 flex-row flex items-center ml-1">
-       <span className="font-bold">Majo.exe</span> <span className="bg-[#5c65f3] rounded px-1 py-[0.12rem] ml-1 text-white text-xs">BOT</span>
+       <span className="font-bold">{meta.title}</span> <span className="bg-[#5c65f3] rounded px-1 py-[0.12rem] ml-1 text-white text-xs">BOT</span>
        <span className="text-sm ml-2 text-gray-400">Today at 12:00 AM</span>
       </div>
       <div>
        <div
-        className="bg-background-secondary rounded shadow-lg p-4 mt-2 ml-1"
+        className="bg-[#2b2d31] rounded shadow-lg p-4 mt-2 ml-1"
         style={{
          "border-left": `4px solid ${color}`,
         }}
@@ -106,14 +107,14 @@ export function ChangeEmbedColor({ serverId, serverColor, serverIcon }) {
         <p>You can change this color by clicking on the color picker above.</p>
        </div>
        <div className="flex flex-row gap-2 my-2 ml-1">
-        <PrimaryDiscordButton onClick={handleSubmit}>
+        <PrimaryButton onClick={handleSubmit}>
          {buttonText === "Saving..." ? <ArrowPathIcon className="animate-spin h-5 w-5 mr-1 -ml-1" /> : <CheckIcon className="h-5 w-5 mr-1 -ml-1" />}
          {buttonText}
-        </PrimaryDiscordButton>
-        <SecondaryDiscordButton onClick={handleReset}>
+        </PrimaryButton>
+        <SecondaryButton onClick={handleReset}>
          {resetButtonText === "Resetting..." ? <ArrowPathIcon className="animate-spin h-5 w-5 mr-1 -ml-1" /> : <TrashIcon className="h-5 w-5 mr-1 -ml-1" />}
          {resetButtonText}
-        </SecondaryDiscordButton>
+        </SecondaryButton>
        </div>
        {error && (
         <p className="text-red-500 flex items-center gap-1">

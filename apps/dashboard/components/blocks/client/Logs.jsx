@@ -52,7 +52,7 @@ export default function Logs({ initialItems, id }) {
          })}
         >
          <div className="relative">
-          {item.user?.avatar && <Image src={`https://cdn.discordapp.com/avatars/${item.user?.discordId}/${item.user?.avatar}.${item.user?.avatar.startsWith("a_") ? "gif" : "png"}`} alt={item.user?.username} quality={95} width={32} height={32} className="w-12 h-12 rounded-full" />}
+          {item.user?.avatar && <Image src={`https://cdn.discordapp.com/avatars/${item.user?.discordId}/${item.user?.avatar}.${item.user?.avatar.startsWith("a_") ? "gif" : "png"}`} alt={`${item.user?.name} avatar`} quality={95} width={32} height={32} className="w-12 h-12 rounded-full" />}
           {item.type === "profanity" && <NoSymbolIcon className="h-5 w-5 min-w-[20px] min-h-[20px] opacity-80 absolute bottom-0 right-0 border border-white/10 bg-button-secondary/80 rounded-full p-1" />}
           {item.type === "embed_color" && <PaintBrushIcon className="h-5 w-5 min-w-[20px] min-h-[20px] opacity-80 absolute bottom-0 right-0 border border-white/10 bg-button-secondary/80 rounded-full p-1" />}
          </div>

@@ -29,7 +29,7 @@ const takeAction = async (client, message) => {
      create: {
       discordId: message.author.id,
       name: message.author.username,
-      global_name: message.author.username,
+      global_name: message.author.global_name,
       avatar:
        message.author.displayAvatarURL({
         dynamic: true,

@@ -67,7 +67,7 @@ export default function RootLayout({ children }) {
       <Nav />
       <main className="flex w-full flex-col items-center bg-background-primary antialiased md:px-16 px-0 py-16">
        <>{children}</>
-       <div className="fixed z-50 bottom-0 left-0 rounded-xl right-0 w-fit mx-auto mb-6 backdrop-blur-[9px] px-6 bg-background-navbar/70 border-neutral-800 border text-white text-center py-4">
+       <div className="fixed z-[99999] bottom-0 left-0 rounded-xl right-0 w-fit mx-auto mb-6 backdrop-blur-[9px] px-6 bg-background-navbar/70 border-neutral-800 border text-white text-center py-4">
         Note: The site is still in development. Please report any bugs or issues to the{" "}
         <Link href="/discord" target={"_blank"} className="text-button-primary hover:underline">
          support server.

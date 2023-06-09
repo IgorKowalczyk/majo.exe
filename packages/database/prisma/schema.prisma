@@ -13,7 +13,7 @@ model User {
  id            String      @id @default(cuid())
  discordId     String      @unique
  name          String
- global_name   String      @unique @map(name: "global_name")
+ global_name   String      @map(name: "global_name")
  avatar        String?
  discriminator String
  public_flags  BigInt      @map(name: "public_flags")
