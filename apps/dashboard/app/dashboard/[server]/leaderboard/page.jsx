@@ -1,8 +1,8 @@
 import prismaClient from "@majoexe/database";
 import { getServer } from "@majoexe/util/functions";
 import { getSession } from "lib/session";
-import { redirect } from "next/navigation";
 import Image from "next/image";
+import { redirect } from "next/navigation";
 import { Block } from "@/components/blocks/Block";
 
 export default async function ServerLogs({ params }) {
