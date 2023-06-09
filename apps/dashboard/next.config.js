@@ -8,6 +8,9 @@ const nextConfig = {
  pageExtensions: ["mdx", "md", "jsx", "js"],
  poweredByHeader: false,
  trailingSlash: false,
+ compiler: {
+  removeConsole: process.env.NODE_ENV === "production",
+ },
  images: {
   domains: [
    "github.githubassets.com", // GitHub assets
