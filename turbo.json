@@ -7,11 +7,11 @@
   },
   "build": {
    "dependsOn": ["^build", "prisma:generate"],
-   "outputs": ["dist/**", ".next/**"]
+   "outputs": ["dist/**", ".next/**", "!.next/cache/**"]
   },
   "deploy": {
    "dependsOn": ["lint", "format:check", "build"],
-   "outputs": ["dist/**", ".next/**"]
+   "outputs": ["dist/**", ".next/**", "!.next/cache/**"]
   },
   "lint": {
    "dependsOn": ["^lint"],
