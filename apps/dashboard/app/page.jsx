@@ -1,6 +1,6 @@
 import { ArrowRightIcon } from "@heroicons/react/24/outline";
-import { Invite } from "components/buttons/Invite";
-import { Login } from "components/buttons/Login";
+import { Invite } from "components/buttons/server/Invite";
+import { Login } from "components/buttons/server/Login";
 import Link from "next/link";
 
 export default async function Main() {

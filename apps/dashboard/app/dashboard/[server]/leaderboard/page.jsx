@@ -4,6 +4,7 @@ import { getSession } from "lib/session";
 import Image from "next/image";
 import { redirect } from "next/navigation";
 import { Block } from "@/components/blocks/Block";
+import { Tooltip } from "@/components/blocks/client/Tooltip";
 
 export default async function ServerLogs({ params }) {
  const user = await getSession();
@@ -53,10 +54,12 @@ export default async function ServerLogs({ params }) {
         <Block key={index} className="flex flex-row duration-200 items-center py-2 justify-start gap-4">
          <span className="text-left">{index + 1}</span>
          <div className="relative">{item.user?.avatar && <Image src={`https://cdn.discordapp.com/avatars/${item.user?.discordId}/${item.user?.avatar}.${item.user?.avatar.startsWith("a_") ? "gif" : "png"}`} alt={item.user?.username} quality={95} width={32} height={32} className="w-12 h-12 rounded-full" />}</div>
-         <p className="font-bold text-left">
-          {item.user?.name || item.user?.id}
-          <span className="opacity-70">#{item.user?.discriminator || "0000"}</span>
-         </p>
+         <Tooltip content={`Discord ID: ${item.user?.discordId}`}>
+          <p className="font-bold text-left">
+           {item.user?.name || item.user?.id}
+           <span className="opacity-70">#{item.user?.discriminator || "0000"}</span>
+          </p>
+         </Tooltip>
          <div className="ml-auto space-x-4">
           <span className="text-right">{item.xp}xp</span>
           <span className="text-right opacity-70">{Math.floor(0.1 * Math.sqrt(item.xp || 0))}</span>

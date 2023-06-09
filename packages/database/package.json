@@ -9,8 +9,7 @@
     "format:check": "prettier --check --cache .",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
     "lint:fix": "eslint . --ext .js,.jsx,.ts,.tsx --fix",
-    "prisma:generate": "prisma generate --data-proxy",
-    "prisma:normal": "prisma generate",
+    "prisma:generate": "prisma generate",
     "prisma:migrate": "prisma migrate dev --preview-feature",
     "prisma:format": "prisma format",
     "prisma:push": "prisma db push"

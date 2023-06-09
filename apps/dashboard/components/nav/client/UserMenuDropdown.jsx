@@ -8,7 +8,7 @@ import Link from "next/link";
 import { signOut } from "next-auth/react";
 import { Fragment } from "react";
 
-export function MenuDropdown({ user }) {
+export function UserMenuDropdown({ user }) {
  return (
   <>
    <Menu as="div" className="relative inline-block text-left">

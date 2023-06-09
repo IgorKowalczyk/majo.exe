@@ -5,8 +5,12 @@ on:
 
 jobs:
  check:
+  timeout-minutes: 15
   name: Format code
   runs-on: ubuntu-latest
+  env:
+   TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
+   TURBO_TEAM: ${{ vars.TURBO_TEAM }}
   strategy:
    fail-fast: false
    matrix:
@@ -15,6 +19,8 @@ jobs:
   steps:
    - name: 🧱 Checkout repository
      uses: actions/checkout@v3
+     with:
+      fetch-depth: 2
    - name: 🔩 Setup PNPM
      uses: pnpm/action-setup@v2
      with:

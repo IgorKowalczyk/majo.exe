@@ -1,7 +1,7 @@
 "use client";
 
 import { signIn } from "next-auth/react";
-import { PrimaryButton } from "../Primary";
+import { PrimaryButton } from "../server/Primary";
 
 export function LoginClient() {
  return (

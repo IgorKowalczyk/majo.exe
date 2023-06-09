@@ -2,7 +2,6 @@
 
 import { Menu, Transition } from "@headlessui/react";
 import { ChevronUpDownIcon } from "@heroicons/react/20/solid";
-import clsx from "clsx";
 import Image from "next/image";
 import Link from "next/link";
 import { useParams } from "next/navigation";
@@ -18,7 +17,7 @@ export function ServerDropdown() {
  const currentServer = servers?.servers?.find((server) => server.id === router.server);
 
  return (
-  <div className="flex items-center relative gap-2">
+  <div className="hidden items-center relative gap-2 lg:flex">
    <svg className="h-8 w-8 stroke-neutral-700" fill="none" height="24" shapeRendering="geometricPrecision" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1" viewBox="0 0 24 24" width="24">
     <path d="M16.88 3.549L7.12 20.451"></path>
    </svg>

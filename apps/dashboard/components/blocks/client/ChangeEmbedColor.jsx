@@ -4,8 +4,8 @@ import { ArrowPathIcon, CheckIcon, ExclamationCircleIcon, TrashIcon } from "@her
 import Image from "next/image";
 import { useState } from "react";
 import { HexColorPicker } from "react-colorful";
-import { PrimaryDiscordButton } from "@/components/buttons/Primary";
-import { SecondaryDiscordButton } from "@/components/buttons/Secondary";
+import { PrimaryDiscordButton } from "@/components/buttons/server/Primary";
+import { SecondaryDiscordButton } from "@/components/buttons/server/Secondary";
 
 export function ChangeEmbedColor({ serverId, serverColor, serverIcon }) {
  const [color, setColor] = useState(serverColor ?? "#5865F2");
