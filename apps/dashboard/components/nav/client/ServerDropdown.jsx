@@ -11,9 +11,9 @@ import { SWR } from "@/lib/swr";
 
 export function ServerDropdown() {
  const router = useParams();
- if (!router.server) return null;
  const [isOpen, setIsOpen] = useState(false);
  const { data: servers, isLoading } = SWR("/api/servers/fetch");
+ if (!router.server) return null;
  const currentServer = servers?.servers?.find((server) => server.id === router.server);
 
  return (
