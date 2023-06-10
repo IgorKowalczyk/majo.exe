@@ -3,5 +3,5 @@
 }
 
 .tippy-backdrop {
- @apply !bg-white !bg-opacity-[0.1];
+ @apply !bg-neutral-700 !bg-opacity-[0.7];
 }

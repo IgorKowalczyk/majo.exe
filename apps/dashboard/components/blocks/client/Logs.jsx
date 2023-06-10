@@ -26,6 +26,7 @@ export default function Logs({ initialItems, id }) {
      return;
     }
     const filteredData = data.filter((item) => !items.some((i) => i.id === item.id));
+    filteredData.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
     setPages((prev) => [...prev, filteredData]);
    } finally {
     fetching.current = false;

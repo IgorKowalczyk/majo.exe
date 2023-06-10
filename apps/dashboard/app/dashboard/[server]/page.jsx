@@ -2,6 +2,12 @@ import { getServer } from "@majoexe/util/functions";
 import { getSession } from "lib/session";
 import Image from "next/image";
 import { redirect } from "next/navigation";
+import { Header1 } from "@/components/blocks/Headers";
+
+export const metadata = {
+ title: "Server Overview",
+ description: "View the overview of your server.",
+};
 
 export default async function ServerOverview({ params }) {
  const user = await getSession();
@@ -14,10 +20,10 @@ export default async function ServerOverview({ params }) {
 
  return (
   <div className="flex min-h-screen flex-col justify-center gap-4">
-   <h1 className="flex items-center justify-center gap-4 text-center text-5xl font-bold">
+   <Header1>
     {serverDownload.icon ? <Image src={`https://cdn.discordapp.com/icons/${serverDownload.id}/${serverDownload.icon}.${serverDownload.icon.startsWith("a_") ? "gif" : "png"}`} alt={serverDownload.name} quality={95} width={64} height={64} className="w-16 h-16 rounded-full" /> : <div className="w-16 h-16 rounded-full bg-button-secondary" />}
     {serverDownload.name || "Unnamed server"}
-   </h1>
+   </Header1>
   </div>
  );
 }

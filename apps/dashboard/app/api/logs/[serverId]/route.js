@@ -17,5 +17,15 @@ export async function GET(request, { params }) {
 
  const logs = await fetchLogs(serverId, page);
 
+ logs.forEach((log) => {
+  log.createdAt = log.createdAt.toISOString();
+ });
+
+ /* eslint-disable func-names, space-before-function-paren */
+ BigInt.prototype.toJSON = function () {
+  return this.toString();
+ };
+ /* eslint-enable func-names, space-before-function-paren */
+
  return new NextResponse(JSON.stringify(logs), { status: 200 });
 }

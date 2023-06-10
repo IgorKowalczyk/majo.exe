@@ -4,6 +4,12 @@ import { getServer } from "@majoexe/util/functions";
 import { getSession } from "lib/session";
 import { redirect } from "next/navigation";
 import Logs from "@/components/blocks/client/Logs";
+import { Header1 } from "@/components/blocks/Headers";
+
+export const metadata = {
+ title: "Server Logs",
+ description: "View the logs of your server.",
+};
 
 export default async function ServerLogs({ params }) {
  const user = await getSession();
@@ -34,10 +40,10 @@ export default async function ServerLogs({ params }) {
 
  return (
   <div className="flex w-full flex-col items-center bg-background-primary antialiased md:py-16 md:px-16 px-8 py-8">
-   <h1 className="flex items-center justify-center gap-4 text-center text-5xl font-bold">
+   <Header1>
     <ListBulletIcon className="w-12 h-12" />
     Activity Logs
-   </h1>
+   </Header1>
    <div className="overflow-auto">{logs.length === 0 ? <h3 className="text-center text-xl mt-4 font-bold">No logs found!</h3> : <Logs initialItems={logs} id={serverDownload.id} />}</div>
   </div>
  );

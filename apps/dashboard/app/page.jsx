@@ -2,6 +2,7 @@ import { ArrowRightIcon } from "@heroicons/react/24/outline";
 import { Invite } from "components/buttons/server/Invite";
 import { Login } from "components/buttons/server/Login";
 import Link from "next/link";
+import { HeaderBig } from "@/components/blocks/Headers";
 
 export default async function Main() {
  return (
@@ -11,11 +12,10 @@ export default async function Main() {
      Introducing Majo.exe v6
      <ArrowRightIcon className="inline-block w-4 h-4 ml-2 group-hover:translate-x-1 transition-all duration-200" />
     </Link>
-    <h1 className="text-center text-6xl pt-4 font-extrabold text-white">
+    <HeaderBig>
      <p>The only one Discord Bot</p>
      <p>you will ever need.</p>
-    </h1>
-    <h1></h1>
+    </HeaderBig>
     <h2 className="max-w-[680px] text-center text-2xl text-white/70 px-4">Majo.exe will not only keep your server entertained but also assist you with moderation and many other things!</h2>
     <div className="mt-2 flex gap-4">
      <Login />

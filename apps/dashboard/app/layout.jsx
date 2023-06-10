@@ -10,9 +10,6 @@ import { VisibilityProvider } from "@/components/nav/client/VisibilityContext";
 import "styles/globals.css";
 import "styles/progress.css";
 import "styles/tippy.css";
-import "tippy.js/dist/backdrop.css";
-import "tippy.js/animations/shift-away.css";
-import "tippy.js/dist/tippy.css";
 
 const inter = Inter({ subsets: ["latin"] });
 

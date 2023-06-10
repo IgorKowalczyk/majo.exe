@@ -1,14 +1,14 @@
 "use client";
 
+import { meta, social } from "@config";
 import { ArrowPathIcon, CheckIcon, ExclamationCircleIcon, TrashIcon } from "@heroicons/react/24/outline";
 import Image from "next/image";
 import { useState } from "react";
 import { HexColorPicker } from "react-colorful";
 import { PrimaryButton } from "@/components/buttons/server/Primary";
 import { SecondaryButton } from "@/components/buttons/server/Secondary";
-import { meta, social } from "@config";
 
-export function ChangeEmbedColor({ serverId, serverColor, serverIcon }) {
+export function ChangeEmbedColor({ serverId, serverColor }) {
  const [color, setColor] = useState(serverColor ?? "#5865F2");
  const [buttonText, setButtonText] = useState("Save");
  const [resetButtonText, setResetButtonText] = useState("Reset");

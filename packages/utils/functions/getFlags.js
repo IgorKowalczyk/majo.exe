@@ -68,7 +68,7 @@ export const flagsArray = [
  * */
 export function getFlags(number) {
  return flagsArray.reduce((acc, flag) => {
-  if (number & flag.flags) acc.push(flag);
+  if (Number(number) & flag.flags) acc.push(flag);
   return acc;
  }, []);
 }

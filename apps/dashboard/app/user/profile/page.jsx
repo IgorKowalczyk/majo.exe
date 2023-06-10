@@ -6,6 +6,9 @@ import Image from "next/image";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import { Tooltip } from "@/components/blocks/client/Tooltip";
+import "tippy.js/dist/backdrop.css";
+import "tippy.js/animations/shift-away.css";
+import "tippy.js/dist/tippy.css";
 
 export default async function Profile() {
  const user = await getSession();
@@ -43,7 +46,7 @@ export default async function Profile() {
           </>
          )}
 
-         {user.premium_type > 0 && <Tooltip content="Nitro">{Emojis["nitro"]}</Tooltip>}
+         {user.nitro > 0 && <Tooltip content="Nitro">{Emojis["nitro"]}</Tooltip>}
 
          {getFlags(user.public_flags) &&
           getFlags(user.public_flags).map((flag, i) => {

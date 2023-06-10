@@ -15,7 +15,10 @@ export async function fetchLogs(guildId, page, count = 20) {
   take: count,
   skip: (page - 1) * count,
   orderBy: {
-   createdAt: "desc",
+   createdAt: "asc",
+  },
+  include: {
+   user: true,
   },
  });
 

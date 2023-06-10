@@ -1,3 +1,5 @@
+/* eslint-disable func-names, space-before-function-paren */
+
 import prismaClient from "@majoexe/database";
 import { PrismaAdapter } from "@next-auth/prisma-adapter";
 import { credentials } from "config";
@@ -11,7 +13,6 @@ const authOptions = {
    clientSecret: credentials.clientSecret,
    authorization: { params: { scope: "identify email guilds" } },
    profile(profile) {
-    console.log(profile);
     return {
      id: profile.id,
      discordId: profile.id,
@@ -35,26 +36,27 @@ const authOptions = {
  },
  secret: credentials.secret,
  session: {
-  strategy: "jwt",
+  strategy: "database",
   maxAge: 24 * 60 * 60, // 24 hours
+  updateAge: 60 * 30, // 30 minutes
  },
  callbacks: {
-  async jwt({ token, account, profile }) {
-   if (account) {
-    token = {
-     ...token,
-     ...account,
-     ...profile,
-    };
-    return token;
+  async session({ session, token, user }) {
+   BigInt.prototype.toJSON = function () {
+    return this.toString();
+   };
+   if (user.avatar) {
+    user.image = `https://cdn.discordapp.com/avatars/${user.discordId}/${user.avatar}.${user.avatar.startsWith("a_") ? "gif" : "png"}?size=2048`;
+   } else if (user.discriminator !== "0") {
+    user.image = `https://cdn.discordapp.com/embed/avatars/${Number(user.discriminator) % 5}.png`;
    } else {
-    return token;
+    user.image = `https://cdn.discordapp.com/embed/avatars/${(user.id >> 22) % 6}.png`;
    }
-  },
-  async session({ token }) {
+
    return {
+    ...session,
     ...token,
-    image: token.avatar ? `https://cdn.discordapp.com/avatars/${token.id}/${token.avatar}.${token.avatar.startsWith("a_") ? "gif" : "png"}?size=2048` : token.discriminator !== "0" ? `https://cdn.discordapp.com/embed/avatars/${Number(token.discriminator) % 5}.png` : `https://cdn.discordapp.com/embed/avatars/${(token.id >> 22) % 6}.png`,
+    ...user,
    };
   },
  },

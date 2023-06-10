@@ -11,7 +11,7 @@ generator client {
 
 model User {
  id            String      @id @default(cuid())
- discordId     String      @unique
+ discordId     String      @unique @map(name: "discord_id")
  name          String
  global_name   String      @map(name: "global_name")
  avatar        String?
@@ -25,27 +25,26 @@ model User {
  emailVerified DateTime?   @map(name: "email_verified")
  accounts      Account[]
  sessions      Session[]
- GuildLogs     GuildLogs[]
- GuildXp       GuildXp[]
+ guildLogs     GuildLogs[]
+ guildXp       GuildXp[]
 
  @@map(name: "users")
 }
 
 model Account {
- id                String   @id @default(cuid())
- userId            String
+ id                String  @id @default(cuid())
+ userId            String  @map("user_id")
  type              String
- provider          String   @unique
- providerAccountId String   @unique
- refresh_token     String?  @db.Text
- access_token      String?  @db.Text
+ provider          String
+ providerAccountId String  @map("provider_account_id")
+ refresh_token     String? @db.Text
+ access_token      String? @db.Text
  expires_at        Int?
  token_type        String?
  scope             String?
- id_token          String?  @db.Text
+ id_token          String? @db.Text
  session_state     String?
- createdAt         DateTime @default(now()) @map(name: "created_at")
- user              User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+ user              User    @relation(fields: [userId], references: [id], onDelete: Cascade)
 
  @@unique([provider, providerAccountId])
  @@map("accounts")
@@ -53,8 +52,8 @@ model Account {
 
 model Session {
  id           String   @id @default(cuid())
- sessionToken String   @unique
- userId       String
+ sessionToken String   @unique @map("session_token")
+ userId       String   @map("user_id")
  expires      DateTime
  createdAt    DateTime @default(now()) @map(name: "created_at")
  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
@@ -83,21 +82,21 @@ model Suggestions {
 
 model Guild {
  id               String      @id @default(cuid())
- guildId          String      @unique @map(name: "discord_id")
+ guildId          String      @unique @map(name: "guild_id")
  profanityLevel   Int         @default(0) @map(name: "profanity_level")
  embedColor       String      @default("#5865F2") @map(name: "embed_color")
  embedLastChanged DateTime?   @default(now()) @map(name: "embed_last_changed")
  lastUpdated      DateTime    @default(now()) @map(name: "last_updated")
  guildLogs        GuildLogs[]
- GuildXp          GuildXp[]
+ guildXp          GuildXp[]
 
  @@map(name: "guilds")
 }
 
 model GuildLogs {
  id        String   @id @default(cuid())
- guildId   String
- authorId  String
+ guildId   String   @map(name: "guild_id")
+ authorId  String   @map(name: "author_id")
  content   String
  type      String
  createdAt DateTime @default(now()) @map(name: "created_at")
@@ -109,8 +108,8 @@ model GuildLogs {
 
 model GuildXp {
  id        String   @id @default(cuid())
- guildId   String
- userId    String
+ guildId   String   @map(name: "guild_id")
+ userId    String   @map(name: "user_id")
  xp        Int      @default(0)
  createdAt DateTime @default(now()) @map(name: "created_at")
  guild     Guild    @relation(fields: [guildId], references: [guildId], onDelete: Cascade)
