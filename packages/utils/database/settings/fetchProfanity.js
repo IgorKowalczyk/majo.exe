@@ -5,11 +5,16 @@ import prismaClient from "@majoexe/database";
  * @returns { boolean } The profanity setting
  */
 export async function fetchProfanity(guildId) {
- const guild = await prismaClient.guild.findUnique({
-  where: {
-   guildId: guildId,
-  },
- });
+ try {
+  const guild = await prismaClient.guild.findUnique({
+   where: {
+    guildId: guildId,
+   },
+  });
 
- return guild?.profanityLevel;
+  return guild?.profanityLevel;
+ } catch (e) {
+  console.log(e);
+  throw error;
+ }
 }

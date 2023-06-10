@@ -6,14 +6,18 @@ import { isBotInServer } from "./isBotInServer.js";
  * @example getServer(id)
  * */
 export async function getServer(id) {
- const res = await fetch(`https://discord.com/api/guilds/${id}`, {
-  next: { revalidate: 10 },
-  headers: {
-   Authorization: `Bot ${process.env.TOKEN}`,
-  },
- });
- if (!res.ok) return { error: "Invalid server ID" };
- const json = await res.json();
- json.bot = await isBotInServer(id);
- return json;
+ try {
+  const res = await fetch(`https://discord.com/api/guilds/${id}`, {
+   next: { revalidate: 10 },
+   headers: {
+    Authorization: `Bot ${process.env.TOKEN}`,
+   },
+  });
+  if (!res.ok) return { error: "Invalid server ID" };
+  const json = await res.json();
+  json.bot = await isBotInServer(id);
+  return json;
+ } catch (e) {
+  return { error: "Invalid server ID" };
+ }
 }

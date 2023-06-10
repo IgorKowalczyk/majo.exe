@@ -2,18 +2,23 @@ import prismaClient from "@majoexe/database";
 
 /**
  * Check XP for user
- * @param { string } userId The id of the user
- * @param { string } guildId The id of the guild
- * @returns { number } The amount of XP
- * */
+ * @param {string} userId The id of the user
+ * @param {string} guildId The id of the guild
+ * @returns {number} The amount of XP
+ */
 export async function checkXP(userId, guildId) {
- const xp = await prismaClient.guildXp.findFirst({
-  where: {
-   guildId: guildId,
-   userId: userId,
-  },
- });
+ try {
+  const xp = await prismaClient.guildXp.findFirst({
+   where: {
+    guildId,
+    userId,
+   },
+  });
 
- if (!xp || !xp.xp) return 0;
- return xp.xp;
+  if (!xp) return 0;
+  return xp.xp || 0;
+ } catch (error) {
+  console.error("Failed to check XP:", error);
+  throw error;
+ }
 }

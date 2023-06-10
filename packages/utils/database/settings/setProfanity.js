@@ -7,14 +7,19 @@ import prismaClient from "@majoexe/database";
  * @returns { boolean } The profanity setting
  * */
 export async function setProfanity(guildId, profanityLevel) {
- await prismaClient.guild.update({
-  where: {
-   guildId: guildId,
-  },
-  data: {
-   profanityLevel: profanityLevel,
-  },
- });
+ try {
+  await prismaClient.guild.update({
+   where: {
+    guildId: guildId,
+   },
+   data: {
+    profanityLevel: profanityLevel,
+   },
+  });
 
- return true;
+  return true;
+ } catch (e) {
+  console.log("Failed to set profanity:", e);
+  throw error;
+ }
 }

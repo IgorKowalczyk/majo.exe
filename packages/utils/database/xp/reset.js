@@ -7,12 +7,17 @@ import prismaClient from "@majoexe/database";
  * @returns { boolean } If the XP was reset
  * */
 export async function resetXP(userId, guildId) {
- await prismaClient.guildXp.deleteMany({
-  where: {
-   guildId: guildId,
-   userId: userId,
-  },
- });
+ try {
+  await prismaClient.guildXp.deleteMany({
+   where: {
+    guildId: guildId,
+    userId: userId,
+   },
+  });
 
- return true;
+  return true;
+ } catch (e) {
+  console.log("Failed to reset XP:", e);
+  throw error;
+ }
 }

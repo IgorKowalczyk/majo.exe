@@ -8,21 +8,26 @@ import prismaClient from "@majoexe/database";
  * @returns { Array } The logs
  * */
 export async function fetchLogs(guildId, page, count = 20) {
- const logs = await prismaClient.guildLogs.findMany({
-  where: {
-   guildId: guildId,
-  },
-  take: count,
-  skip: (page - 1) * count,
-  orderBy: {
-   createdAt: "asc",
-  },
-  include: {
-   user: true,
-  },
- });
+ try {
+  const logs = await prismaClient.guildLogs.findMany({
+   where: {
+    guildId: guildId,
+   },
+   take: count,
+   skip: (page - 1) * count,
+   orderBy: {
+    createdAt: "asc",
+   },
+   include: {
+    user: true,
+   },
+  });
 
- return logs;
+  return logs;
+ } catch (e) {
+  console.log("Failed to fetch logs:", e);
+  throw error;
+ }
 }
 
 /**
@@ -31,11 +36,16 @@ export async function fetchLogs(guildId, page, count = 20) {
  * @returns { number } The amount of logs
  * */
 export async function countLogs(guildId) {
- const logs = await prismaClient.guildLogs.count({
-  where: {
-   guildId: guildId,
-  },
- });
+ try {
+  const logs = await prismaClient.guildLogs.count({
+   where: {
+    guildId: guildId,
+   },
+  });
 
- return logs;
+  return logs;
+ } catch (e) {
+  console.log("Failed to count logs:", e);
+  throw error;
+ }
 }
