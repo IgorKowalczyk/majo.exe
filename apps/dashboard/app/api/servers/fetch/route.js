@@ -1,3 +1,4 @@
+import prismaClient from "@majoexe/database";
 import { canAddBotToServer } from "@majoexe/util/functions";
 import { getServers } from "@majoexe/util/functions";
 import { isBotInServer } from "@majoexe/util/functions";
@@ -5,18 +6,34 @@ import { getSession } from "lib/session";
 import { NextResponse } from "next/server";
 
 export async function GET() {
- const session = await getSession();
- if (!session || !session.access_token)
-  return new NextResponse(
-   JSON.stringify({
-    error: "Unauthorized",
-   }),
-   {
-    status: 401,
-   }
-  );
  try {
-  const servers = (await getServers(session.access_token)) || [];
+  const session = await getSession();
+  if (!session) {
+   return new NextResponse(
+    JSON.stringify({
+     error: "Unauthorized",
+    }),
+    {
+     status: 401,
+    }
+   );
+  }
+  const user = await prismaClient.account.findFirst({
+   where: {
+    providerAccountId: session.discordId,
+   },
+  });
+  if (!user) {
+   return new NextResponse(
+    JSON.stringify({
+     error: "Unauthorized",
+    }),
+    {
+     status: 401,
+    }
+   );
+  }
+  const servers = (await getServers(user.access_token)) || [];
   const filteredServers = servers.length > 0 ? servers.filter((server) => canAddBotToServer(server.permissions)) : [];
   const promises = filteredServers.map(async (server) => {
    server.bot = await isBotInServer(server.id);

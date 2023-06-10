@@ -4,7 +4,7 @@ import { NextResponse } from "next/server";
 
 export async function GET(request, { params }) {
  const serverId = params.serverId;
- if (!serverId)
+ if (!serverId) {
   return new NextResponse(
    JSON.stringify({
     error: "Bad Request",
@@ -13,8 +13,9 @@ export async function GET(request, { params }) {
     status: 400,
    }
   );
+ }
  const session = await getSession();
- if (!session)
+ if (!session) {
   return new NextResponse(
    JSON.stringify({
     error: "Unauthorized",
@@ -23,9 +24,10 @@ export async function GET(request, { params }) {
     status: 401,
    }
   );
+ }
  try {
   const server = await getServer(serverId);
-  if (!server)
+  if (!server || server.error) {
    return new NextResponse(
     JSON.stringify({
      error: "Server not found",
@@ -34,15 +36,8 @@ export async function GET(request, { params }) {
      status: 404,
     }
    );
-  if (server.error)
-   return new NextResponse(
-    JSON.stringify({
-     error: "Server not found",
-    }),
-    {
-     status: 404,
-    }
-   );
+  }
+
   return new NextResponse(
    JSON.stringify({
     server,
