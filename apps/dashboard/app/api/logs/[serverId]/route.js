@@ -83,15 +83,12 @@ export async function GET(request, { params }) {
   };
   /* eslint-enable func-names, space-before-function-paren */
 
-  return new NextResponse(
-   JSON.stringify(logs),
-   {
-    status: 200,
-    headers: {
-     "server-timing": `response;dur=${Date.now() - start}`,
-    },
-   }
-  );
+  return new NextResponse(JSON.stringify(logs), {
+   status: 200,
+   headers: {
+    "server-timing": `response;dur=${Date.now() - start}`,
+   },
+  });
  } catch (err) {
   console.log(err);
   return new NextResponse(
