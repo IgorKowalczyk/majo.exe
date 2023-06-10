@@ -6,6 +6,7 @@ import { NextResponse } from "next/server";
 export async function POST(request) {
  try {
   const session = await getSession();
+  const start = Date.now();
   if (!session) {
    return new NextResponse(
     JSON.stringify({
@@ -13,6 +14,9 @@ export async function POST(request) {
     }),
     {
      status: 401,
+     headers: {
+      "server-timing": `response;dur=${Date.now() - start}`,
+     },
     }
    );
   }
@@ -28,6 +32,9 @@ export async function POST(request) {
     }),
     {
      status: 400,
+     headers: {
+      "server-timing": `response;dur=${Date.now() - start}`,
+     },
     }
    );
   }
@@ -41,6 +48,9 @@ export async function POST(request) {
     }),
     {
      status: 404,
+     headers: {
+      "server-timing": `response;dur=${Date.now() - start}`,
+     },
     }
    );
   }
@@ -53,6 +63,9 @@ export async function POST(request) {
     }),
     {
      status: 404,
+     headers: {
+      "server-timing": `response;dur=${Date.now() - start}`,
+     },
     }
    );
   }
@@ -65,6 +78,9 @@ export async function POST(request) {
     }),
     {
      status: 400,
+     headers: {
+      "server-timing": `response;dur=${Date.now() - start}`,
+     },
     }
    );
   }
@@ -108,6 +124,9 @@ export async function POST(request) {
     }),
     {
      status: 200,
+     headers: {
+      "server-timing": `response;dur=${Date.now() - start}`,
+     },
     }
    );
   }
@@ -120,6 +139,9 @@ export async function POST(request) {
     }),
     {
      status: 200,
+     headers: {
+      "server-timing": `response;dur=${Date.now() - start}`,
+     },
     }
    );
   }
@@ -132,6 +154,9 @@ export async function POST(request) {
     }),
     {
      status: 200,
+     headers: {
+      "server-timing": `response;dur=${Date.now() - start}`,
+     },
     }
    );
   }
@@ -170,6 +195,9 @@ export async function POST(request) {
    }),
    {
     status: 200,
+    headers: {
+     "server-timing": `response;dur=${Date.now() - start}`,
+    },
    }
   );
  } catch (err) {
@@ -193,6 +221,7 @@ export async function POST(request) {
 export async function PUT(request) {
  try {
   const session = await getSession();
+  const start = Date.now();
   if (!session) {
    return new NextResponse(
     JSON.stringify({
@@ -200,6 +229,9 @@ export async function PUT(request) {
     }),
     {
      status: 401,
+     headers: {
+      "server-timing": `response;dur=${Date.now() - start}`,
+     },
     }
    );
   }
@@ -215,6 +247,9 @@ export async function PUT(request) {
     }),
     {
      status: 400,
+     headers: {
+      "server-timing": `response;dur=${Date.now() - start}`,
+     },
     }
    );
   }
@@ -229,6 +264,9 @@ export async function PUT(request) {
     }),
     {
      status: 404,
+     headers: {
+      "server-timing": `response;dur=${Date.now() - start}`,
+     },
     }
    );
   }
@@ -241,6 +279,9 @@ export async function PUT(request) {
     }),
     {
      status: 404,
+     headers: {
+      "server-timing": `response;dur=${Date.now() - start}`,
+     },
     }
    );
   }
@@ -283,6 +324,9 @@ export async function PUT(request) {
     }),
     {
      status: 200,
+     headers: {
+      "server-timing": `response;dur=${Date.now() - start}`,
+     },
     }
    );
   }
@@ -295,6 +339,9 @@ export async function PUT(request) {
     }),
     {
      status: 200,
+     headers: {
+      "server-timing": `response;dur=${Date.now() - start}`,
+     },
     }
    );
   }
@@ -307,6 +354,9 @@ export async function PUT(request) {
     }),
     {
      status: 200,
+     headers: {
+      "server-timing": `response;dur=${Date.now() - start}`,
+     },
     }
    );
   }
@@ -344,6 +394,9 @@ export async function PUT(request) {
    }),
    {
     status: 200,
+    headers: {
+     "server-timing": `response;dur=${Date.now() - start}`,
+    },
    }
   );
  } catch (err) {

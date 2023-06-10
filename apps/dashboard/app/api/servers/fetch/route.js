@@ -8,6 +8,7 @@ import { NextResponse } from "next/server";
 export async function GET() {
  try {
   const session = await getSession();
+  const start = Date.now();
   if (!session) {
    return new NextResponse(
     JSON.stringify({
@@ -15,6 +16,9 @@ export async function GET() {
     }),
     {
      status: 401,
+     headers: {
+      "server-timing": `response;dur=${Date.now() - start}`,
+     },
     }
    );
   }
@@ -30,6 +34,9 @@ export async function GET() {
     }),
     {
      status: 401,
+     headers: {
+      "server-timing": `response;dur=${Date.now() - start}`,
+     },
     }
    );
   }
@@ -46,6 +53,9 @@ export async function GET() {
    }),
    {
     status: 200,
+    headers: {
+     "server-timing": `response;dur=${Date.now() - start}`,
+    },
    }
   );
  } catch (err) {

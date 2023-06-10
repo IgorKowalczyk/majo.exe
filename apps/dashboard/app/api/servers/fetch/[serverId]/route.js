@@ -4,6 +4,7 @@ import { NextResponse } from "next/server";
 
 export async function GET(request, { params }) {
  const serverId = params.serverId;
+ const start = Date.now();
  if (!serverId) {
   return new NextResponse(
    JSON.stringify({
@@ -11,6 +12,9 @@ export async function GET(request, { params }) {
    }),
    {
     status: 400,
+    headers: {
+     "server-timing": `response;dur=${Date.now() - start}`,
+    },
    }
   );
  }
@@ -22,6 +26,9 @@ export async function GET(request, { params }) {
    }),
    {
     status: 401,
+    headers: {
+     "server-timing": `response;dur=${Date.now() - start}`,
+    },
    }
   );
  }
@@ -34,6 +41,9 @@ export async function GET(request, { params }) {
     }),
     {
      status: 404,
+     headers: {
+      "server-timing": `response;dur=${Date.now() - start}`,
+     },
     }
    );
   }
@@ -44,6 +54,9 @@ export async function GET(request, { params }) {
    }),
    {
     status: 200,
+    headers: {
+     "server-timing": `response;dur=${Date.now() - start}`,
+    },
    }
   );
  } catch (err) {
