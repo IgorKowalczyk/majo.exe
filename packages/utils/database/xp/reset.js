@@ -18,6 +18,6 @@ export async function resetXP(userId, guildId) {
   return true;
  } catch (e) {
   console.log("Failed to reset XP:", e);
-  throw error;
+  throw e;
  }
 }

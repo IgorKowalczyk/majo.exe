@@ -20,6 +20,6 @@ export async function setProfanity(guildId, profanityLevel) {
   return true;
  } catch (e) {
   console.log("Failed to set profanity:", e);
-  throw error;
+  throw e;
  }
 }

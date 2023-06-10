@@ -15,6 +15,6 @@ export async function fetchProfanity(guildId) {
   return guild?.profanityLevel;
  } catch (e) {
   console.log(e);
-  throw error;
+  throw e;
  }
 }

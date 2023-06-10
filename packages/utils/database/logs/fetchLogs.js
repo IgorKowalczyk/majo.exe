@@ -26,7 +26,7 @@ export async function fetchLogs(guildId, page, count = 20) {
   return logs;
  } catch (e) {
   console.log("Failed to fetch logs:", e);
-  throw error;
+  throw e;
  }
 }
 
@@ -46,6 +46,6 @@ export async function countLogs(guildId) {
   return logs;
  } catch (e) {
   console.log("Failed to count logs:", e);
-  throw error;
+  throw e;
  }
 }
