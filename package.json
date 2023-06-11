@@ -11,9 +11,9 @@
     "lint:fix": "turbo run lint:fix --color",
     "format": "turbo run format --color",
     "format:check": "turbo run format:check --color",
-    "prisma:generate": "turbo run prisma:generate --color --filter=database",
+    "prisma:generate": "dotenv -- turbo run prisma:generate --color --filter=database",
     "prisma:migrate": "dotenv -- turbo run prisma:migrate --color --filter=database",
-    "prisma:format": "turbo run prisma:format --color --filter=database",
+    "prisma:format": "dotenv -- turbo run prisma:format --color --filter=database",
     "pm2": "turbo run pm2 --color"
   },
   "workspaces": [
