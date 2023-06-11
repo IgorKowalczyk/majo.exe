@@ -5,7 +5,8 @@
   "exports": {
     "./functions": "./functions/index.js",
     "./embeds": "./embeds/index.js",
-    "./database": "./database/index.js"
+    "./database": "./database/index.js",
+    "./advices": "./json/advices.json"
   },
   "type": "module",
   "scripts": {

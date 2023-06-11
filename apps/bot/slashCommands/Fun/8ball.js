@@ -1,4 +1,4 @@
-import { ApplicationCommandType, EmbedBuilder } from "discord.js";
+import { ApplicationCommandType, ApplicationCommandOptionType, EmbedBuilder } from "discord.js";
 
 export default {
  name: "8ball",
@@ -12,7 +12,7 @@ export default {
    name: "question",
    description: "Question to ask 8ball",
    required: true,
-   type: 3,
+   type: ApplicationCommandOptionType.String
   },
  ],
  run: async (client, interaction, guildSettings) => {
