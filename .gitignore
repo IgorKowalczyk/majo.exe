@@ -77,7 +77,6 @@ typings/
 .env*.local
 .env.save
 !packages/database/.env
-!apps/dashboard/.env
 
 # parcel-bundler cache (https://parceljs.org/)
 .cache
