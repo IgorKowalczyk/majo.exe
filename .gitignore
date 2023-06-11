@@ -76,6 +76,7 @@ typings/
 .env.test
 .env*.local
 .env.save
+!packages/database/.env
 
 # parcel-bundler cache (https://parceljs.org/)
 .cache
@@ -128,9 +129,6 @@ temp/
 
 # Sqlite files
 *.sqlite
-
-# Compressed repo
-majo.exe.zip
 
 # Certificates
 *.key
