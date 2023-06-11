@@ -14,7 +14,9 @@
    - `DATABASE_URL` - pooling database connection string
    - `DIRECT_URL` - non-pooling database connection string
    - `SHADOW_DATABASE_URL` - create new database and paste non-pooling database connection string
+
 - Note: Neon doesn't support creating databases, you have to create it manually. Prisma require shadow database to generate migrations.
+
 4. Run `pnpm install` to install dependencies.
 5. Run `pnpm prisma:migrate` to generate & apply initial migration.
 6. Run `pnpm prisma:generate` to generate database client.
