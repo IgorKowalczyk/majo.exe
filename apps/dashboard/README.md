@@ -13,7 +13,7 @@
 2. Go to `/packages/database/` directory and follow [Database Setup](/packages/database/README.md) tutorial
 3. Grab a Discord Bot token and client secret on [Discord's developer portal](https://discord.com/developers/applications) [Tutorial](#-discord-credentials)
 4. Add redirect URL to Discord's developer portal (https://your-website.com/api/auth/callback/discord)
-5. Create new file named `.env` (in main directory)
+5. Create new file or edit existing `.env` file in root directory of the project
 6. In `.env` file set this values:
    - `TOKEN` - Discord bot token [[Tutorial](/apps/bot/README.md#-discord-token)]
    - `SECRET` - Random string (min. length = 32 chars)
@@ -21,7 +21,7 @@
    - `NEXTAUTH_URL` - Your website URL (with protocol)
    - `NEXT_PUBLIC_URL` - Your website URL (with protocol)
    - `HOTJAR_ID` - Your Hotjar ID (optional)
-   - Database URLs:
+   - Database URLs [[Tutorial](/packages/database/README.md)]
      - `DATABASE_URL` - Main database URL
      - `DIRECT_URL` - Direct database URL (optional)
      - `SHADOW_DATABASE_URL` - Shadow database URL (optional)
@@ -37,10 +37,10 @@
 2. Grab a Discord Bot token and client secret on [Discord's developer portal](https://discord.com/developers/applications) [Tutorial](/apps/dashboard/README.md#-discord-credentials)
 3. Add redirect URL to Discord's developer portal (https://your-website.com/api/auth/callback/discord)
 4. Import this repository to Vercel (click button above)
-5. Set environment variables
+5. Set environment variables from your root `.env` file
 6. Click `Deploy` button
 
-##### Example dashboard `.env` file
+##### Example `.env` file
 
 Remember - the file is super secret, better to not share it!
 
@@ -50,10 +50,12 @@ SECRET=SECRET_STRING
 CLIENT_SECRET=DISCORD_BOT_SECRET
 NEXTAUTH_URL=YOUR_WEBSITE_URL
 NEXT_PUBLIC_URL=YOUR_WEBSITE_URL
-DATABASE_URL=DATABASE_URL
-DIRECT_URL=DIRECT_DATABASE_URL
-SHADOW_DATABASE_URL=SHADOW_DATABASE_URL
+
+# ... Database credentials
 ```
+
+> **Warning**:
+> This file should be in **root directory** of the project.
 
 ---
 

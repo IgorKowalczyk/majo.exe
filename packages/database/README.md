@@ -9,15 +9,15 @@
 ## 🗜️ Setup [preferred, Neon]
 
 1. Create new [Neon](https://neon.tech/) account and create new database.
-2. Copy database connection string and paste it to `.env` file `DATABASE_URL`
-3. Copy non-pooling database connection string and paste it to `.env` file `DIRECT_URL`
-4. Create new database and copy non-pooling database connection string and paste it to `.env` file `SHADOW_DATABASE_URL`
-
+2. Create new file or edit existing `.env` file in root directory of the project
+3. In `.env` file set this values:
+   - `DATABASE_URL` - pooling database connection string
+   - `DIRECT_URL` - non-pooling database connection string
+   - `SHADOW_DATABASE_URL` - create new database and paste non-pooling database connection string
 - Note: Neon doesn't support creating databases, you have to create it manually. Prisma require shadow database to generate migrations.
-
-5. Run `pnpm install` to install dependencies.
-6. Run `pnpm prisma:migrate` to generate & apply initial migration.
-7. Run `pnpm prisma:generate` to generate database client.
+4. Run `pnpm install` to install dependencies.
+5. Run `pnpm prisma:migrate` to generate & apply initial migration.
+6. Run `pnpm prisma:generate` to generate database client.
 
 ## 🐳 Setup [alternative, Docker]
 
@@ -25,17 +25,33 @@
 2. Pull the PostgreSQL Docker image for version 15 (`docker pull postgres:15`) or use existing one.
 3. Create a new container using the PostgreSQL image (`docker run --name majoexe -e POSTGRES_PASSWORD=postgres -p 5432:5432 -d postgres:15`)
 4. Run `pnpm install` to install dependencies.
-5. Paste this values to `.env` file:
+5. Create new file or edit existing `.env` file in root directory of the project
+6. In `.env` file set this values:
    - `DATABASE_URL=postgresql://postgres:postgres@localhost:5432/majoexe`
    - `DIRECT_URL=postgresql://postgres:postgres@localhost:5432/majoexe`
    - `SHADOW_DATABASE_URL=postgresql://postgres:postgres@localhost:5432/majoexe`
-6. Run `pnpm prisma:migrate` to generate & apply initial migration.
-7. Run `pnpm prisma:generate` to generate database client.
+7. Run `pnpm prisma:migrate` to generate & apply initial migration.
+8. Run `pnpm prisma:generate` to generate database client.
 
 ---
 
 > **Note**:
 > Majo.exe can also work with other databases like MongoDB and MySQL. You can find more information about it in [Prisma documentation](https://www.prisma.io/docs/concepts/database-connectors). If you want to use other database you have to change `DATABASE_URL` in `.env` file and change schema in `/prisma/schema.prisma` file.
+
+##### Example `.env` file
+
+Remember - the file is super secret, better to not share it!
+
+```
+DATABASE_URL=DATABASE_URL
+DIRECT_URL=DIRECT_DATABASE_URL
+SHADOW_DATABASE_URL=SHADOW_DATABASE_URL
+```
+
+> **Warning**:
+> This file should be in **root directory** of the project.
+
+---
 
 ## 📝 Contributors
 

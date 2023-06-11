@@ -12,15 +12,11 @@
 1. Clone [this repository](https://github.com/igorkowalczyk/majo.exe) `git clone https://github.com/IgorKowalczyk/majo.exe.git`
 2. Go to `/packages/database/` directory and follow [Database Setup](/packages/database/README.md) tutorial
 3. Grab a Discord Bot token and client secret on [Discord's developer portal](https://discord.com/developers/applications) [Tutorial](#-discord-credentials)
-4. Create new file named `.env` (in main directory)
+4. Create new file or edit existing `.env` file in root directory of the project
 5. In `.env` file set this values:
    - `TOKEN` - Discord bot token [[Tutorial](#-discord-token)]
    - `SECRET` - Random string (min. length = 32 chars)
    - `CLIENT_SECRET` - Discord bot secret [[Tutorial](#-discord-secret)]
-   - Database URLs:
-     - `DATABASE_URL` - Main database URL
-     - `DIRECT_URL` - Direct database URL (optional)
-     - `SHADOW_DATABASE_URL` - Shadow database URL (optional)
 6. Go to `/apps/bot/` directory
 7. Run `pnpm i` to install all dependencies,
 8. Fill `/config/index.js` and `/config/emojis.js` with your values
@@ -36,7 +32,7 @@
 6. Run `pm2 save` to save current processes
 7. Run `pm2 startup` to generate startup script
 
-##### Example bot `.env` file
+##### Example `.env` file
 
 Remember - the file is super secret, better to not share it!
 
@@ -44,7 +40,12 @@ Remember - the file is super secret, better to not share it!
 TOKEN=YOUR_TOKEN_GOES_HERE
 SECRET=RANDOM_STRING
 CLIENT_SECRET=DISCORD_BOT_SECRET
+
+# ... Database credentials
 ```
+
+> **Warning**:
+> This file should be in **root directory** of the project.
 
 ---
 

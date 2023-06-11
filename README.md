@@ -39,6 +39,9 @@ However, if you want to host Majo.exe yourself see links below.
 - **[🔩 Dashboard setup tutorial](/apps/dashboard/README.md)**
 - **[📝 Database setup tutorial](/packages/database/README.md)**
 
+> **Note**:
+> There is one global `.env` file for all projects. **Do not create `.env` file in `apps/bot`, `packages/database` or `apps/dashboard` folders!** __This can cause problems and potential security issues.__
+
 ## 🗜️ Requirements
 
 - `PostgreSQL 13x` or higher
