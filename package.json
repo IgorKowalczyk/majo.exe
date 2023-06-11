@@ -14,11 +14,7 @@
     "prisma:generate": "turbo run prisma:generate --color --filter=database",
     "prisma:migrate": "dotenv -- turbo run prisma:migrate --color --filter=database",
     "prisma:format": "turbo run prisma:format --color --filter=database",
-    "pm2": "turbo run pm2 --color",
-    "int": "prettier --write . --cache --ignore-unknown",
-    "int:check": "prettier --check .",
-    "int:lint": "eslint . --ext .ts,.tsx,.js,.jsx --fix",
-    "int:lint:check": "eslint . --ext .ts,.tsx,.js,.jsx --fix"
+    "pm2": "turbo run pm2 --color"
   },
   "workspaces": [
     "packages/*",

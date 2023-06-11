@@ -2,50 +2,43 @@
  "$schema": "https://turborepo.org/schema.json",
  "pipeline": {
   "dev": {
-   "dependsOn": ["^prisma:generate"],
+   "dependsOn": ["prisma:generate"],
    "outputs": []
   },
   "build": {
-   "dependsOn": ["^build", "prisma:generate"],
+   "dependsOn": ["lint", "prisma:generate"],
    "outputs": ["dist/**", ".next/**", "!.next/cache/**"]
   },
   "deploy": {
-   "dependsOn": ["lint", "format:check", "build"],
+   "dependsOn": ["build"],
    "outputs": ["dist/**", ".next/**", "!.next/cache/**"]
   },
   "lint": {
-   "dependsOn": ["^lint"],
+   "dependsOn": ["format"],
    "outputs": []
   },
   "lint:fix": {
-   "dependsOn": ["^lint:fix"],
    "outputs": []
   },
   "format": {
-   "dependsOn": ["^format"],
    "outputs": []
   },
   "format:check": {
-   "dependsOn": ["^format:check"],
    "outputs": []
   },
   "prisma:generate": {
-   "dependsOn": ["^prisma:generate"],
-   "cache": false,
    "outputs": ["prisma/schema.prisma"]
   },
   "prisma:migrate": {
-   "dependsOn": ["^prisma:migrate"],
    "outputs": ["prisma/migrations/**"]
   },
   "prisma:format": {
-   "outputs": []
+   "outputs": ["prisma/schema.prisma"]
   },
   "pm2": {
-   "dependsOn": ["^pm2"],
-   "outputs": []
+   "dependsOn": ["build"]
   }
  },
  "globalEnv": ["CLIENT_ID", "NEXTAUTH_URL", "HOTJAR_ID", "CLIENT_SECRET", "ENVIRONMENT_URL", "TOKEN", "NODE_ENV", "RUNTIME", "NEXT_PUBLIC_URL", "npm_package_version"],
- "globalDependencies": ["pnpm-lock.yaml", "pnpm-workspace.yaml", ".prettierignore", ".prettierrc"]
+ "globalDependencies": [".env", ".prettierignore", ".prettierrc"]
 }

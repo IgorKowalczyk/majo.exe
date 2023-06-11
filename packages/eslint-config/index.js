@@ -1,6 +1,11 @@
 module.exports = {
  root: true,
  extends: ["@igorkowalczyk/eslint-config", "turbo"],
+ settings: {
+  next: {
+   rootDir: ["apps/*/", "packages/*/"],
+  },
+ },
  rules: {
   "turbo/no-undeclared-env-vars": "warn",
  },
