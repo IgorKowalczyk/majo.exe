@@ -52,8 +52,8 @@ importers:
         specifier: 14.11.0
         version: 14.11.0
       dotenv:
-        specifier: 16.2.0
-        version: 16.2.0
+        specifier: 16.3.1
+        version: 16.3.1
       globby:
         specifier: 13.1.4
         version: 13.1.4
@@ -1730,8 +1730,8 @@ packages:
     engines: {node: '>=12'}
     dev: false
 
-  /dotenv@16.2.0:
-    resolution: {integrity: sha512-jcq2vR1DY1+QA+vH58RIrWLDZOifTGmyQJWzP9arDUbgZcySdzuBb1WvhWZzZtiXgfm+GW2pjBqStqlfpzq7wQ==}
+  /dotenv@16.3.1:
+    resolution: {integrity: sha512-IPzF4w4/Rd94bA9imS68tZBaYyBWSCE47V1RGuMrB94iyTOIEwRmVL2x/4An+6mETpLrKJ5hQkB8W4kFAadeIQ==}
     engines: {node: '>=12'}
     dev: false
 
