@@ -1,5 +1,7 @@
+import { ImportJSON } from "@majoexe/util/json";
 import { ApplicationCommandType, EmbedBuilder } from "discord.js";
-import advices from "@majoexe/util/advices" assert { type: "json" };
+
+const advices = await ImportJSON("advices");
 
 export default {
  name: "advice",

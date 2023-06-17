@@ -12,7 +12,7 @@ export default {
    name: "question",
    description: "Question to ask 8ball",
    required: true,
-   type: ApplicationCommandOptionType.String
+   type: ApplicationCommandOptionType.String,
   },
  ],
  run: async (client, interaction, guildSettings) => {

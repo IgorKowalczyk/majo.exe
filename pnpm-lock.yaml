@@ -70,6 +70,9 @@ importers:
       eslint:
         specifier: 8.43.0
         version: 8.43.0
+      eslint-plugin-json:
+        specifier: 3.1.0
+        version: 3.1.0
       nodemon:
         specifier: 2.0.22
         version: 2.0.22
@@ -2020,6 +2023,14 @@ packages:
       - eslint-import-resolver-webpack
       - supports-color
 
+  /eslint-plugin-json@3.1.0:
+    resolution: {integrity: sha512-MrlG2ynFEHe7wDGwbUuFPsaT2b1uhuEFhJ+W1f1u+1C2EkXmTYJp4B1aAdQQ8M+CC3t//N/oRKiIVw14L2HR1g==}
+    engines: {node: '>=12.0'}
+    dependencies:
+      lodash: 4.17.21
+      vscode-json-languageservice: 4.2.1
+    dev: true
+
   /eslint-plugin-jsx-a11y@6.7.1(eslint@8.43.0):
     resolution: {integrity: sha512-63Bog4iIethyo8smBklORknVjB0T2dwB8Mr/hIC+fBS0uyHdYYpzM/Ed+YC8VxTjlXHEWFOdmgwcDn1U2L9VCA==}
     engines: {node: '>=4.0'}
@@ -3007,6 +3018,10 @@ packages:
     hasBin: true
     dependencies:
       minimist: 1.2.8
+
+  /jsonc-parser@3.2.0:
+    resolution: {integrity: sha512-gfFQZrcTc8CnKXp6Y4/CBT3fTc0OVuDofpre4aEeEpSBPV5X5v4+Vmx+8snU7RLPrNHPKSgLxGo9YuQzz20o+w==}
+    dev: true
 
   /jsonfile@4.0.0:
     resolution: {integrity: sha512-m6F1R3z8jjlf2imQHS2Qez5sjKWQzbuuhuJ/FKYFRZvPE3PuHcSMVZzfsLhGVOkfd20obL5SWEBew5ShlquNxg==}
@@ -5092,6 +5107,32 @@ packages:
       acorn: 8.8.2
       acorn-walk: 8.2.0
     dev: false
+
+  /vscode-json-languageservice@4.2.1:
+    resolution: {integrity: sha512-xGmv9QIWs2H8obGbWg+sIPI/3/pFgj/5OWBhNzs00BkYQ9UaB2F6JJaGB/2/YOZJ3BvLXQTC4Q7muqU25QgAhA==}
+    dependencies:
+      jsonc-parser: 3.2.0
+      vscode-languageserver-textdocument: 1.0.8
+      vscode-languageserver-types: 3.17.3
+      vscode-nls: 5.2.0
+      vscode-uri: 3.0.7
+    dev: true
+
+  /vscode-languageserver-textdocument@1.0.8:
+    resolution: {integrity: sha512-1bonkGqQs5/fxGT5UchTgjGVnfysL0O8v1AYMBjqTbWQTFn721zaPGDYFkOKtfDgFiSgXM3KwaG3FMGfW4Ed9Q==}
+    dev: true
+
+  /vscode-languageserver-types@3.17.3:
+    resolution: {integrity: sha512-SYU4z1dL0PyIMd4Vj8YOqFvHu7Hz/enbWtpfnVbJHU4Nd1YNYx8u0ennumc6h48GQNeOLxmwySmnADouT/AuZA==}
+    dev: true
+
+  /vscode-nls@5.2.0:
+    resolution: {integrity: sha512-RAaHx7B14ZU04EU31pT+rKz2/zSl7xMsfIZuo8pd+KZO6PXtQmpevpq3vxvWNcrGbdmhM/rr5Uw5Mz+NBfhVng==}
+    dev: true
+
+  /vscode-uri@3.0.7:
+    resolution: {integrity: sha512-eOpPHogvorZRobNqJGhapa0JdwaxpjVvyBp0QIUMRMSf8ZAlqOdEquKuRmw9Qwu0qXtJIWqFtMkmvJjUZmMjVA==}
+    dev: true
 
   /web-streams-polyfill@3.2.1:
     resolution: {integrity: sha512-e0MO3wdXWKrLbL0DgGnUV7WHVuw9OUvL4hjgnPkIeEvESk74gAITi5G606JtZPp39cd8HA9VQzCIvA49LpPN5Q==}
