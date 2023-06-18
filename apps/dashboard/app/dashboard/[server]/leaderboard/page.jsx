@@ -5,6 +5,9 @@ import { redirect } from "next/navigation";
 import { Block } from "@/components/blocks/Block";
 import { Leaderboard } from "@/components/blocks/client/Leaderboard";
 import { Header1 } from "@/components/blocks/Headers";
+import "tippy.js/dist/backdrop.css";
+import "tippy.js/animations/shift-away.css";
+import "tippy.js/dist/tippy.css";
 
 export const metadata = {
  title: "Leaderboard",
