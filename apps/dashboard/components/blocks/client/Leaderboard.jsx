@@ -86,13 +86,13 @@ export function Leaderboard({ data }) {
   <>
    <div className="flex flex-col">
     <div className="flex items-center gap-4 flex-row">
-     <InputWithIcon icon={<MagnifyingGlassIcon className="w-5 h-5" />} placeholder="Search" onChange={(e) => setGlobalFilter(e.target.value)} />
+     <InputWithIcon icon={<MagnifyingGlassIcon className="w-5 h-5" />} placeholder="Search" onChange={(e) => setGlobalFilter(e.target.value)} className="h-10" />
      <select
       value={pageSize}
       onChange={(e) => {
        setPageSize(Number(e.target.value));
       }}
-      className="rounded-md border bg-transparent pl-2 py-2 pr-9 !ring-0 !ring-transparent border-neutral-800 text-white"
+      className="rounded-md border bg-transparent pl-2 py-2 pr-9 !ring-0 !ring-transparent border-neutral-800 text-white h-10"
      >
       {[10, 20, 30, 40, 50].map((pageSize) => (
        <option key={pageSize} value={pageSize} className="bg-neutral-800 text-white">
