@@ -55,7 +55,7 @@ export default async function ServerLeaderboard({ params }) {
    <div className="overflow-auto w-full max-w-2xl">
     {xp.length === 0 && <h3 className="text-center text-xl mt-4 font-bold">No users found!</h3>}
     {xp.length > 0 && (
-     <Block>
+     <Block className="mt-4">
       <Leaderboard data={data} />
      </Block>
     )}
