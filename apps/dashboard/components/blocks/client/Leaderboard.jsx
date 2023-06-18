@@ -92,7 +92,7 @@ export function Leaderboard({ data }) {
       onChange={(e) => {
        setPageSize(Number(e.target.value));
       }}
-      className="rounded-md border  bg-transparent px-2 py-1 pr-9 !ring-0 !ring-transparent border-neutral-800 text-white"
+      className="rounded-md border bg-transparent pl-2 py-2 pr-9 !ring-0 !ring-transparent border-neutral-800 text-white"
      >
       {[10, 20, 30, 40, 50].map((pageSize) => (
        <option key={pageSize} value={pageSize} className="bg-neutral-800 text-white">
