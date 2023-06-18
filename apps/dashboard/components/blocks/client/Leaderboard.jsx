@@ -85,7 +85,7 @@ export function Leaderboard({ data }) {
  return (
   <>
    <div className="flex flex-col">
-    <div className="flex items-center space-x-4 flex-row">
+    <div className="flex items-center gap-4 flex-row">
      <InputWithIcon icon={<MagnifyingGlassIcon className="w-5 h-5" />} placeholder="Search" onChange={(e) => setGlobalFilter(e.target.value)} />
      <select
       value={pageSize}
