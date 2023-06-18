@@ -1,4 +1,3 @@
-
 /**
  * Returns a string representing a percentage bar.
  * @param {number} full - The full value.

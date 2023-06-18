@@ -1,5 +1,5 @@
-import { readFileSync } from 'fs';
-import path from 'path';
+import { readFileSync } from "fs";
+import path from "path";
 
 /**
  * @param {string} name - The name of the json file to import
@@ -13,7 +13,7 @@ export function ImportJSON(name) {
  const currentModuleFileUrl = import.meta.url;
  const currentModuleFolderPath = path.dirname(new URL(currentModuleFileUrl).pathname);
  const filePath = path.join(currentModuleFolderPath, `${name}.json`);
- const fileContent = readFileSync(filePath, 'utf8');
+ const fileContent = readFileSync(filePath, "utf8");
 
  return JSON.parse(fileContent);
 }

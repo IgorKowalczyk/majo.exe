@@ -27,6 +27,7 @@
    "outputs": []
   },
   "prisma:generate": {
+   "cache": false,
    "outputs": ["prisma/schema.prisma"]
   },
   "prisma:migrate": {

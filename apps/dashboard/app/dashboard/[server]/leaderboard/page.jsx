@@ -1,10 +1,9 @@
 import prismaClient from "@majoexe/database";
 import { getServer } from "@majoexe/util/functions";
 import { getSession } from "lib/session";
-import Image from "next/image";
 import { redirect } from "next/navigation";
 import { Block } from "@/components/blocks/Block";
-import { Tooltip } from "@/components/blocks/client/Tooltip";
+import { Leaderboard } from "@/components/blocks/client/Leaderboard";
 import { Header1 } from "@/components/blocks/Headers";
 
 export const metadata = {
@@ -12,7 +11,7 @@ export const metadata = {
  description: "View the leaderboard for your server.",
 };
 
-export default async function ServerLogs({ params }) {
+export default async function ServerLeaderboard({ params }) {
  const user = await getSession();
  if (!user) return redirect("/auth/login");
  const { server } = params;
@@ -25,14 +24,21 @@ export default async function ServerLogs({ params }) {
   where: {
    guildId: serverDownload.id,
   },
-  take: 20,
-  skip: 0,
   orderBy: {
    xp: "desc",
   },
   include: {
    user: true,
   },
+ });
+
+ const data = xp.map((x, i) => {
+  return {
+   id: i + 1,
+   user: x.user,
+   xp: x.xp,
+   level: Math.floor(0.1 * Math.sqrt(x.xp || 0)),
+  };
  });
 
  return (
@@ -46,34 +52,9 @@ export default async function ServerLogs({ params }) {
    <div className="overflow-auto w-full max-w-2xl">
     {xp.length === 0 && <h3 className="text-center text-xl mt-4 font-bold">No users found!</h3>}
     {xp.length > 0 && (
-     <>
-      <div className="flex w-full text-neutral-400 px-6 mb-4 justify-between items-center gap-4">
-       <span className="text-left">#</span>
-       <span className="text-left">User</span>
-       <span className="ml-auto space-x-4">
-        <span className="text-right">XP</span>
-        <span className="text-right opacity-70">Level</span>
-       </span>
-      </div>
-      <div className="flex flex-col w-full">
-       {xp.map((item, index) => (
-        <Block key={index} className="flex flex-row duration-200 items-center py-2 justify-start gap-4">
-         <span className="text-left">{index + 1}</span>
-         <div className="relative">{item.user?.avatar && <Image src={`https://cdn.discordapp.com/avatars/${item.user?.discordId}/${item.user?.avatar}.${item.user?.avatar.startsWith("a_") ? "gif" : "png"}`} alt={`${item.user?.name} avatar`} quality={95} width={32} height={32} className="w-12 h-12 rounded-full" />}</div>
-         <Tooltip content={`Discord ID: ${item.user?.discordId}`}>
-          <p className="font-bold text-left">
-           {item.user?.name || item.user?.id}
-           <span className="opacity-70">#{item.user?.discriminator || "0000"}</span>
-          </p>
-         </Tooltip>
-         <div className="ml-auto space-x-4">
-          <span className="text-right">{item.xp}xp</span>
-          <span className="text-right opacity-70">{Math.floor(0.1 * Math.sqrt(item.xp || 0))}</span>
-         </div>
-        </Block>
-       ))}
-      </div>
-     </>
+     <Block>
+      <Leaderboard data={data} />
+     </Block>
     )}
    </div>
   </div>

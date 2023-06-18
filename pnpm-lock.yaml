@@ -154,6 +154,9 @@ importers:
       react-infinite-scroller:
         specifier: 1.2.6
         version: 1.2.6(react@18.2.0)
+      react-table:
+        specifier: 7.8.0
+        version: 7.8.0(react@18.2.0)
       react-twemoji:
         specifier: 0.5.0
         version: 0.5.0(react@18.2.0)
@@ -4148,6 +4151,14 @@ packages:
 
   /react-is@16.13.1:
     resolution: {integrity: sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==}
+
+  /react-table@7.8.0(react@18.2.0):
+    resolution: {integrity: sha512-hNaz4ygkZO4bESeFfnfOft73iBUj8K5oKi1EcSHPAibEydfsX2MyU6Z8KCr3mv3C9Kqqh71U+DhZkFvibbnPbA==}
+    peerDependencies:
+      react: ^16.8.3 || ^17.0.0-0 || ^18.0.0
+    dependencies:
+      react: 18.2.0
+    dev: false
 
   /react-twemoji@0.5.0(react@18.2.0):
     resolution: {integrity: sha512-xz3NLWTFCfWOmPd559jcFX4f976ORIPpL9SwdBQO5BZwIYD1U1vpbY2E6k2vwPCVH78s2m1GbG5jpHKGUPZ+gw==}
