@@ -4,13 +4,13 @@ import Link from "next/link";
 export function PrimaryButton({ children, ...props }) {
  if (props && props.href) {
   return (
-   <Link {...props} className={clsx(props.className, "flex cursor-pointer items-center rounded bg-button-primary disabled:bg-button-primary/50 disabled:hover:bg-button-primary-hover/50 px-4 py-2 leading-6 text-white duration-200 hover:bg-button-primary-hover motion-reduce:transition-none")}>
+   <Link {...props} className={clsx(props.className, "flex cursor-pointer items-center rounded bg-button-primary disabled:bg-button-primary/50 disabled:hover:bg-button-primary-hover/50 disabled:cursor-not-allowed px-4 py-2 leading-6 text-white duration-200 hover:bg-button-primary-hover motion-reduce:transition-none")}>
     {children}
    </Link>
   );
  } else {
   return (
-   <button {...props} className={clsx(props.className, "flex cursor-pointer items-center rounded bg-button-primary disabled:bg-button-primary/50 disabled:hover:bg-button-primary-hover/50 px-4 py-2 leading-6 text-white duration-200 hover:bg-button-primary-hover motion-reduce:transition-none")}>
+   <button {...props} className={clsx(props.className, "flex cursor-pointer items-center rounded bg-button-primary disabled:bg-button-primary/50 disabled:hover:bg-button-primary-hover/50 disabled:cursor-not-allowed px-4 py-2 leading-6 text-white duration-200 hover:bg-button-primary-hover motion-reduce:transition-none")}>
     {children}
    </button>
   );
