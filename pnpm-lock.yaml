@@ -55,8 +55,8 @@ importers:
         specifier: 16.3.1
         version: 16.3.1
       globby:
-        specifier: 13.1.4
-        version: 13.1.4
+        specifier: 13.2.0
+        version: 13.2.0
       mal-scraper:
         specifier: 2.12.1
         version: 2.12.1
@@ -119,8 +119,8 @@ importers:
         specifier: 1.2.1
         version: 1.2.1
       globby:
-        specifier: 13.1.4
-        version: 13.1.4
+        specifier: 13.2.0
+        version: 13.2.0
       mini-svg-data-uri:
         specifier: 1.4.4
         version: 1.4.4
@@ -1955,7 +1955,7 @@ packages:
       eslint-module-utils: 2.8.0(@typescript-eslint/parser@5.59.8)(eslint-import-resolver-node@0.3.7)(eslint-import-resolver-typescript@3.5.5)(eslint@8.43.0)
       eslint-plugin-import: 2.27.5(@typescript-eslint/parser@5.59.8)(eslint-import-resolver-typescript@3.5.5)(eslint@8.43.0)
       get-tsconfig: 4.6.0
-      globby: 13.1.4
+      globby: 13.2.0
       is-core-module: 2.12.1
       is-glob: 4.0.3
       synckit: 0.8.5
@@ -2577,8 +2577,8 @@ packages:
       merge2: 1.4.1
       slash: 3.0.0
 
-  /globby@13.1.4:
-    resolution: {integrity: sha512-iui/IiiW+QrJ1X1hKH5qwlMQyv34wJAYwH1vrf8b9kBA4sNiif3gKsMHa+BrdnOpEudWjpotfa7LrTzB1ERS/g==}
+  /globby@13.2.0:
+    resolution: {integrity: sha512-jWsQfayf13NvqKUIL3Ta+CIqMnvlaIDFveWE/dpOZ9+3AMEJozsxDvKA02zync9UuvOM8rOXzsD5GqKP4OnWPQ==}
     engines: {node: ^12.20.0 || ^14.13.1 || >=16.0.0}
     dependencies:
       dir-glob: 3.0.1
