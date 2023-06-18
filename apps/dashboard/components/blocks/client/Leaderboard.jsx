@@ -5,6 +5,8 @@ import { useMemo, useEffect } from "react";
 import { useTable, useSortBy, usePagination, useGlobalFilter } from "react-table";
 import { Tooltip } from "@/components/blocks/client/Tooltip";
 import { SecondaryButton } from "@/components/buttons/server/Secondary";
+import { InputWithIcon } from "@/components/buttons/server/Input";
+import { MagnifyingGlassIcon } from "@heroicons/react/24/outline";
 
 export function Leaderboard({ data }) {
  const columns = useMemo(
@@ -84,7 +86,7 @@ export function Leaderboard({ data }) {
   <>
    <div className="flex flex-col">
     <div className="flex items-center space-x-4">
-     <input value={globalFilter || ""} onChange={(e) => setGlobalFilter(e.target.value)} />
+     <InputWithIcon icon={<MagnifyingGlassIcon className="w-5 h-5" />} placeholder="Search" onChange={(e) => setGlobalFilter(e.target.value)} />
     </div>
 
     <table {...getTableProps()} className="min-w-full divide-y divide-neutral-800">
