@@ -85,8 +85,21 @@ export function Leaderboard({ data }) {
  return (
   <>
    <div className="flex flex-col">
-    <div className="flex items-center space-x-4">
+    <div className="flex items-center space-x-4 flex-row">
      <InputWithIcon icon={<MagnifyingGlassIcon className="w-5 h-5" />} placeholder="Search" onChange={(e) => setGlobalFilter(e.target.value)} />
+     <select
+      value={pageSize}
+      onChange={(e) => {
+       setPageSize(Number(e.target.value));
+      }}
+      className="rounded-md border  bg-transparent px-2 py-1 pr-9 !ring-0 !ring-transparent border-neutral-800 text-white"
+     >
+      {[10, 20, 30, 40, 50].map((pageSize) => (
+       <option key={pageSize} value={pageSize} className="bg-neutral-800 text-white">
+        Show {pageSize}
+       </option>
+      ))}
+     </select>
     </div>
 
     <table {...getTableProps()} className="min-w-full divide-y divide-neutral-800">
@@ -133,21 +146,6 @@ export function Leaderboard({ data }) {
       <SecondaryButton onClick={() => nextPage()} disabled={!canNextPage} className={"!w-fit"}>
        Next
       </SecondaryButton>
-      <div>
-       <select
-        value={pageSize}
-        onChange={(e) => {
-         setPageSize(Number(e.target.value));
-        }}
-        className="rounded-md border  bg-transparent px-2 py-1 pr-9 !ring-0 !ring-transparent border-neutral-800 text-white"
-       >
-        {[10, 20, 30, 40, 50].map((pageSize) => (
-         <option key={pageSize} value={pageSize} className="bg-neutral-800 text-white">
-          Show {pageSize}
-         </option>
-        ))}
-       </select>
-      </div>
      </div>
     </div>
    </div>
