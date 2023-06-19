@@ -7,6 +7,7 @@ import { Tooltip } from "@/components/blocks/client/Tooltip";
 import { SecondaryButton } from "@/components/buttons/server/Secondary";
 import { InputWithIcon } from "@/components/buttons/server/Input";
 import { MagnifyingGlassIcon } from "@heroicons/react/24/outline";
+import { Select } from "./Select";
 
 export function Leaderboard({ data }) {
  const columns = useMemo(
@@ -100,6 +101,7 @@ export function Leaderboard({ data }) {
        </option>
       ))}
      </select>
+     <Select options={[10, 20, 30, 40, 50]} value={pageSize} onChange={(e) => setPageSize(Number(e.target.value))} className="h-10" />
     </div>
 
     <table {...getTableProps()} className="min-w-full divide-y divide-neutral-800">
