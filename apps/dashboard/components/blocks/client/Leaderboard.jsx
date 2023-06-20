@@ -101,7 +101,6 @@ export function Leaderboard({ data }) {
        </option>
       ))}
      </select>
-     <Select options={[10, 20, 30, 40, 50]} value={pageSize} onChange={(e) => setPageSize(Number(e.target.value))} className="h-10" />
     </div>
 
     <table {...getTableProps()} className="min-w-full divide-y divide-neutral-800">
