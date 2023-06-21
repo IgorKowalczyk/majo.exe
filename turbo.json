@@ -6,7 +6,7 @@
    "outputs": []
   },
   "build": {
-   "dependsOn": ["lint", "prisma:generate"],
+   "dependsOn": ["^prisma:generate", "lint"],
    "outputs": ["dist/**", ".next/**", "!.next/cache/**"]
   },
   "deploy": {

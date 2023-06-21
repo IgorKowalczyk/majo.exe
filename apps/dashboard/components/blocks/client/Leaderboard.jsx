@@ -1,13 +1,12 @@
 "use client";
 
+import { MagnifyingGlassIcon } from "@heroicons/react/24/outline";
 import Image from "next/image";
 import { useMemo, useEffect } from "react";
 import { useTable, useSortBy, usePagination, useGlobalFilter } from "react-table";
 import { Tooltip } from "@/components/blocks/client/Tooltip";
-import { SecondaryButton } from "@/components/buttons/server/Secondary";
 import { InputWithIcon } from "@/components/buttons/server/Input";
-import { MagnifyingGlassIcon } from "@heroicons/react/24/outline";
-import { Select } from "./Select";
+import { SecondaryButton } from "@/components/buttons/server/Secondary";
 
 export function Leaderboard({ data }) {
  const columns = useMemo(
