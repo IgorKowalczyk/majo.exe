@@ -180,8 +180,8 @@ importers:
         specifier: 13.4.1
         version: 13.4.1
       '@prisma/nextjs-monorepo-workaround-plugin':
-        specifier: 4.15.0
-        version: 4.15.0
+        specifier: 4.16.0
+        version: 4.16.0
       eslint:
         specifier: 8.43.0
         version: 8.43.0
@@ -748,8 +748,8 @@ packages:
     requiresBuild: true
     dev: false
 
-  /@prisma/nextjs-monorepo-workaround-plugin@4.15.0:
-    resolution: {integrity: sha512-AVImaGnRBmxnxRGlrxT+9No+fgek0fji861jiTQq1rs4sjY/EysW956OCbBGxRWUnEIpLFDDjrqVrFVVUWr4mA==}
+  /@prisma/nextjs-monorepo-workaround-plugin@4.16.0:
+    resolution: {integrity: sha512-QW6LyrKygygUtwUDBWlLn3KWLGHhquRmZRU6crWKU2Mxh88irvx7jzXacUCqq0OZmjwLZm3laeTMUHaRE720Fw==}
     dev: true
 
   /@prisma/prisma-fmt-wasm@4.13.0-52.integration-mobc-upstream-d100a9299fcb9cffb064301998e9a94ce2722c49:
