@@ -15,9 +15,9 @@
     "prisma:push": "prisma db push"
   },
   "dependencies": {
-    "@prisma/client": "4.16.0",
+    "@prisma/client": "4.16.1",
     "chalk": "5.2.0",
-    "prisma": "4.16.0"
+    "prisma": "4.16.1"
   },
   "devDependencies": {
     "@igorkowalczyk/eslint-config": "1.4.0",
