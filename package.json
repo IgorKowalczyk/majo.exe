@@ -49,6 +49,6 @@
   "dependencies": {
     "dotenv-cli": "7.2.1",
     "pm2": "^5.3.0",
-    "turbo": "1.10.3"
+    "turbo": "1.10.6"
   }
 }
