@@ -51,6 +51,9 @@ importers:
       dotenv:
         specifier: 16.3.1
         version: 16.3.1
+      flip-text:
+        specifier: ^1.2.0
+        version: 1.2.0
       globby:
         specifier: 13.2.0
         version: 13.2.0
@@ -2360,6 +2363,11 @@ packages:
 
   /flatten-tailwindcss-theme@1.0.0:
     resolution: {integrity: sha512-7B795m0qzLF0yQYGkfGanO3NOisEI4EaVObnr3DBq7Qc8Ygq4yWGa0Gpx2rtb10NSgIcimUqu4Xaqh+0bkC87w==}
+    dev: false
+
+  /flip-text@1.2.0:
+    resolution: {integrity: sha512-6gZynclke4Cwl1VCUXDjryfqYZIIYwZnlYHOsUF5Btrax2+6VndQdsdwDiPyKE4Uv2qYFFxzM4XYPjF7DfdBhw==}
+    hasBin: true
     dev: false
 
   /follow-redirects@1.15.2(debug@4.3.4):

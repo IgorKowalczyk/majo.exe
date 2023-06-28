@@ -14,7 +14,7 @@ export const config = {
 
  bot: {
   permissions: "1539679190263", // string. Bot permissions. You can use https://discordapi.com/permissions.html to generate it
-  scopesNew: [OAuth2Scopes.ApplicationsCommands, OAuth2Scopes.Bot].join("%20"), // string. Bot scopes.
+  scopes: [OAuth2Scopes.ApplicationsCommands, OAuth2Scopes.Bot].join("%20"), // string. Bot scopes.
   maxInputLength: 250, // number. Max input length for commands
   defaultEmbedColor: "#5865F2", // string. Default embed color
   presence: {
