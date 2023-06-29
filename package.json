@@ -21,7 +21,7 @@
     "apps/*"
   ],
   "devDependencies": {
-    "@igorkowalczyk/eslint-config": "1.4.0",
+    "@igorkowalczyk/eslint-config": "1.4.1",
     "@igorkowalczyk/prettier-config": "1.4.1",
     "@majoexe/eslint-config": "workspace:*"
   },
