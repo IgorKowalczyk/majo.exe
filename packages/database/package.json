@@ -20,7 +20,7 @@
     "prisma": "4.16.1"
   },
   "devDependencies": {
-    "@igorkowalczyk/eslint-config": "1.4.1",
+    "@igorkowalczyk/eslint-config": "1.4.2",
     "eslint": "8.43.0",
     "eslint-config-turbo": "1.10.6",
     "prettier": "2.8.8",

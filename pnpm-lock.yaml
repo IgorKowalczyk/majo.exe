@@ -19,8 +19,8 @@ importers:
         version: 1.10.6
     devDependencies:
       '@igorkowalczyk/eslint-config':
-        specifier: 1.4.1
-        version: 1.4.1(eslint@8.43.0)(prettier@2.8.8)
+        specifier: 1.4.2
+        version: 1.4.2(eslint@8.43.0)(prettier@2.8.8)
       '@igorkowalczyk/prettier-config':
         specifier: 1.4.2
         version: 1.4.2(prettier@2.8.8)
@@ -214,8 +214,8 @@ importers:
         version: 4.16.1
     devDependencies:
       '@igorkowalczyk/eslint-config':
-        specifier: 1.4.1
-        version: 1.4.1(eslint@8.43.0)(prettier@2.8.8)
+        specifier: 1.4.2
+        version: 1.4.2(eslint@8.43.0)(prettier@2.8.8)
       eslint:
         specifier: 8.43.0
         version: 8.43.0
@@ -232,8 +232,8 @@ importers:
   packages/eslint-config:
     dependencies:
       '@igorkowalczyk/eslint-config':
-        specifier: 1.4.1
-        version: 1.4.1(eslint@8.43.0)(prettier@2.8.8)
+        specifier: 1.4.2
+        version: 1.4.2(eslint@8.43.0)(prettier@2.8.8)
       eslint:
         specifier: 8.43.0
         version: 8.43.0
@@ -420,8 +420,8 @@ packages:
   /@humanwhocodes/object-schema@1.2.1:
     resolution: {integrity: sha512-ZnQMnLV4e7hDlUvw8H+U8ASL02SS2Gn6+9Ac3wGGLIe7+je2AeAOxPY+izIPJDfFDb7eDjev0Us8MO1iFRN8hA==}
 
-  /@igorkowalczyk/eslint-config@1.4.1(eslint@8.43.0)(prettier@2.8.8):
-    resolution: {integrity: sha512-LtVpxNY0F9G9JO5iTzze5r3d5jYjYGiw5fkd/1gYAyD9+JPIETtOD3sfgLlQ118/u/OZP5gGRJRtr1DU6p1Svg==}
+  /@igorkowalczyk/eslint-config@1.4.2(eslint@8.43.0)(prettier@2.8.8):
+    resolution: {integrity: sha512-lYiBRdKCesNp/7l2BOtyYJ0NlUfq23nplZogVXjnu3NIHW3njjiGnwnCquSWB62Yp7bRlnkr1yVEAyBMmZ7MtQ==}
     peerDependencies:
       eslint: '>=7.0.0'
     dependencies:
