@@ -1,5 +1,4 @@
 import { ApplicationCommandType, ApplicationCommandOptionType, EmbedBuilder, codeBlock } from "discord.js";
-import { getInfoFromName } from "mal-scraper";
 
 export default {
  name: "anime",
@@ -36,7 +35,48 @@ export default {
     return interaction.followUp({ ephemeral: true, embeds: [embed] });
    }
 
-   const data = await getInfoFromName(query);
+
+   const request = await fetch(`https://kitsu.io/api/edge/anime?filter[text]=${query}&page%5Boffset%5D=0&page%5Blimit%5D=1`, {
+    method: "GET",
+    headers: {
+     'Content-Type': 'application/vnd.api+json',
+     'Accept': 'application/vnd.api+json'
+    }
+   });
+   if (!request || !request.ok) {
+    const embed = new EmbedBuilder()
+     .setColor("#EF4444")
+     .setTimestamp()
+     .setTitle("❌ Error")
+     .setDescription("> No results found.")
+     .setFooter({
+      text: `Requested by ${interaction.member?.user?.username}`,
+      iconURL: interaction.member?.user?.displayAvatarURL({
+       dynamic: true,
+       format: "png",
+       size: 2048,
+      }),
+     });
+    return interaction.followUp({ ephemeral: true, embeds: [embed] });
+   }
+   const json = await request.json();
+   if (!json || !json.data || json.data.length < 1) {
+    const embed = new EmbedBuilder()
+     .setColor("#EF4444")
+     .setTimestamp()
+     .setTitle("❌ Error")
+     .setDescription("> No results found.")
+     .setFooter({
+      text: `Requested by ${interaction.member?.user?.username}`,
+      iconURL: interaction.member?.user?.displayAvatarURL({
+       dynamic: true,
+       format: "png",
+       size: 2048,
+      }),
+     });
+    return interaction.followUp({ ephemeral: true, embeds: [embed] });
+   }
+   const data = json.data[0].attributes;
 
    if (!data) {
     const embed = new EmbedBuilder()
@@ -62,49 +102,48 @@ export default {
    const embed = new EmbedBuilder()
     .setColor(guildSettings?.embedColor || client.config.bot.defaultEmbedColor)
     .setTimestamp()
-    .setTitle(data.title)
-    .setURL(data.url)
+    .setTitle(data.canonicalTitle || query.splice(0, 20))
+    .setURL(`https://kitsu.io/anime/${data.slug}`)
     .setDescription(data.synopsis || "None!")
-    .setThumbnail(data.picture)
     .addFields([
      {
       name: `${client.botEmojis.flag_gb} English Title`,
-      value: codeBlock(data.englishTitle || "None!"),
+      value: codeBlock(data.titles?.en || "None!"),
       inline: false,
      },
      {
       name: `${client.botEmojis.flag_jp} Japanese Title`,
-      value: codeBlock(data.japaneseTitle || "None!"),
+      value: codeBlock(data.titles?.ja_jp || "None!"),
       inline: false,
      },
      {
       name: `${client.botEmojis.book} Type`,
-      value: codeBlock(data.type || "N/A!"),
+      value: codeBlock(data.showType || "N/A!"),
       inline: true,
      },
      {
       name: `${client.botEmojis.counting} Episodes`,
-      value: codeBlock(`${data.episodes || "N/A!"} episodes`),
+      value: codeBlock(`${data.episodeCount || "N/A!"} episodes (${data.episodeLength || "N/A!"} minutes each)`),
       inline: true,
      },
      {
       name: `${client.botEmojis.star} Score`,
-      value: codeBlock(data.score || "N/A!"),
+      value: codeBlock(`${data.averageRating || "N/A!"} (${data.favoritesCount} favorites)`),
       inline: true,
      },
      {
       name: `${client.botEmojis.star2} Rating`,
-      value: codeBlock(data.rating || "N/A!"),
+      value: codeBlock(`${data.ageRating || "N/A!"} ${"- " + data.ageRatingGuide || ""}`),
       inline: true,
      },
      {
       name: `${client.botEmojis.calendar_spillar} Aired`,
-      value: codeBlock(data.aired || "N/A!"),
+      value: codeBlock(`${data.startDate || "N/A!"} - ${data.endDate || "N/A!"}`),
       inline: true,
      },
      {
-      name: `${client.botEmojis.barchart} Scored by`,
-      value: codeBlock(data.scoreStats || "N/A!"),
+      name: `${client.botEmojis.barchart} Popularity`,
+      value: codeBlock(`${"#" + data.popularityRank + " (Most Popular Anime)" || "N/A!"}\n${"#" + data.ratingRank + " (Highest Rated Anime)" || "N/A!"}`),
       inline: false,
      },
     ])
@@ -116,6 +155,8 @@ export default {
       size: 2048,
      }),
     });
+
+   data.posterImage?.original ? embed.setThumbnail(data.posterImage?.original) : null;
 
    return interaction.followUp({ embeds: [embed] });
   } catch (err) {
