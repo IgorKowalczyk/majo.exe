@@ -19,7 +19,7 @@
     "@majoexe/database": "workspace:*",
     "@majoexe/util": "workspace:*",
     "bad-words": "3.0.4",
-    "chalk": "5.2.0",
+    "chalk": "5.3.0",
     "discord.js": "14.11.0",
     "dotenv": "16.3.1",
     "flip-text": "^1.2.0",
