@@ -6,34 +6,39 @@
 - `/prisma/migrations` contains database migrations. They are used to update database.
 - `/src/client.js` contains database client. It's used by Majo.exe to interact with database. It also includes edge client for Prisma Data Proxy.
 
-## 🗜️ Setup [preferred, Neon]
+## 🗜️ Setup [preferred]
 
 1. Create new [Neon](https://neon.tech/) account and create new database.
-2. Create new file or edit existing `.env` file in root directory of the project
-3. In `.env` file set this values:
+2. Create new [Upstash](https://upstash.com/) account and create new redis database.
+3. Create new file or edit existing `.env` file in root directory of the project
+4. In `.env` file set this values:
    - `DATABASE_URL` - pooling database connection string
    - `DIRECT_URL` - non-pooling database connection string
    - `SHADOW_DATABASE_URL` - create new database and paste non-pooling database connection string
+   - `REDIS_URL`- `ioredis` connection string (`rediss://[...]`) from Upstash
 
 - Note: Neon doesn't support creating databases, you have to create it manually. Prisma require shadow database to generate migrations.
 
-4. Run `pnpm install` to install dependencies.
-5. Run `pnpm prisma:migrate` to generate & apply initial migration.
-6. Run `pnpm prisma:generate` to generate database client.
+5. Run `pnpm install` to install dependencies.
+6. Run `pnpm prisma:migrate` to generate & apply initial migration.
+7. Run `pnpm prisma:generate` to generate database client.
 
 ## 🐳 Setup [alternative, Docker]
 
 1. Install Docker by following the instructions at https://docs.docker.com/get-docker/.
 2. Pull the PostgreSQL Docker image for version 15 (`docker pull postgres:15`) or use existing one.
 3. Create a new container using the PostgreSQL image (`docker run --name majoexe -e POSTGRES_PASSWORD=postgres -p 5432:5432 -d postgres:15`)
-4. Run `pnpm install` to install dependencies.
-5. Create new file or edit existing `.env` file in root directory of the project
-6. In `.env` file set this values:
+4. Pull the Redis Docker image (`docker pull redis`) or use existing one.
+5. Create a new container using the Redis image (`docker run --name redis -p 6379:6379 -d redis`)
+6. Run `pnpm install` to install dependencies.
+7. Create new file or edit existing `.env` file in root directory of the project
+8. In `.env` file set this values:
    - `DATABASE_URL=postgresql://postgres:postgres@localhost:5432/majoexe`
    - `DIRECT_URL=postgresql://postgres:postgres@localhost:5432/majoexe`
    - `SHADOW_DATABASE_URL=postgresql://postgres:postgres@localhost:5432/majoexe`
-7. Run `pnpm prisma:migrate` to generate & apply initial migration.
-8. Run `pnpm prisma:generate` to generate database client.
+   - `REDIS_URL=redis://localhost:6379`
+9. Run `pnpm prisma:migrate` to generate & apply initial migration.
+10. Run `pnpm prisma:generate` to generate database client.
 
 ---
 
@@ -48,6 +53,8 @@ Remember - the file is super secret, better to not share it!
 DATABASE_URL=DATABASE_URL
 DIRECT_URL=DIRECT_DATABASE_URL
 SHADOW_DATABASE_URL=SHADOW_DATABASE_URL
+
+REDIS_URL=REDIS_URL
 ```
 
 > **Warning**:

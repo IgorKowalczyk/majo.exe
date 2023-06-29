@@ -40,7 +40,7 @@ However, if you want to host Majo.exe yourself see links below.
 - **[📝 Database setup tutorial](/packages/database/README.md)**
 
 > **Note**:
-> There is one global `.env` file for all projects. **Do not create `.env` file in `apps/bot`, `packages/database` or `apps/dashboard` folders!** __This can cause problems and potential security issues.__
+> There is one global `.env` file for all projects. **Do not create `.env` file in `apps/bot`, `packages/database` or `apps/dashboard` folders!** **This can cause problems and potential security issues.**
 
 ## 🗜️ Requirements
 
@@ -55,20 +55,25 @@ However, if you want to host Majo.exe yourself see links below.
 
 ## Global `.env` file
 
-| Variable            | Description                                      | Required (Bot)                                     | Required (Dashboard) |
-| ------------------- | ------------------------------------------------ | -------------------------------------------------- | -------------------- |
-| TOKEN               | Discord bot token                                | ✅                                                 | ✅                   |
-| SECRET              | Secret string (minimum 32 characters)            | ❌                                                 | ✅                   |
-| CLIENT_ID           | Discord client ID                                | ✅                                                 | ✅                   |
-| CLIENT_SECRET       | Discord client secret                            | ❌                                                 | ✅                   |
-| NEXTAUTH_URL        | NextAuth.js URL (e.g., http://localhost:3000)    | ❌                                                 | ✅                   |
-| NEXT_PUBLIC_URL     | Next.js public URL (e.g., http://localhost:3000) | ❌ (Note: This enables dashboard related commands) | ✅                   |
-| HOTJAR_ID           | [Hotjar](https://hotjar.com) ID                  | ❌                                                 | ❌                   |
-| DATABASE_URL        | Main database URL                                | ✅                                                 | ✅                   |
-| DIRECT_URL          | Non-pooling database URL                         | ❌                                                 | ❌                   |
-| SHADOW_DATABASE_URL | Shadow database URL\*                            | ❌                                                 | ❌                   |
+| Variable            | Description                                      | Required (Bot) | Required (Dashboard) |
+| ------------------- | ------------------------------------------------ | -------------- | -------------------- |
+| TOKEN               | Discord bot token                                | ✅             | ✅                   |
+| SECRET              | Secret string (minimum 32 characters)            | ❌             | ✅                   |
+| CLIENT_ID           | Discord client ID                                | ✅             | ✅                   |
+| CLIENT_SECRET       | Discord client secret                            | ❌             | ✅                   |
+| NEXTAUTH_URL        | NextAuth.js URL (e.g., http://localhost:3000)    | ❌             | ✅                   |
+| NEXT_PUBLIC_URL     | Next.js public URL (e.g., http://localhost:3000) | ❌¹            | ✅                   |
+| HOTJAR_ID           | [Hotjar](https://hotjar.com) ID                  | ❌             | ❌                   |
+| DATABASE_URL        | Main database URL                                | ✅             | ✅                   |
+| DIRECT_URL          | Non-pooling database URL                         | ❌             | ❌                   |
+| SHADOW_DATABASE_URL | Shadow database URL²                             | ❌             | ❌                   |
+| REDIS_URL           | Redis URL³                                       | ❌             | ❌                   |
 
-> **Note**: \*`SHADOW_DATABASE_URL` is used for prisma migrations. Prisma will try to create a new database and then apply migrations. If it fails, it will use `SHADOW_DATABASE_URL` instead.
+> **Note**:
+
+1. `NEXT_PUBLIC_URL` is required only if you want to also include the dashboard.
+2. `SHADOW_DATABASE_URL` is used for prisma migrations. Prisma will try to create a new database and then apply migrations. If it fails, it will use `SHADOW_DATABASE_URL` instead.
+3. `REDIS_URL` enables caching. If you don't want to use caching, you can leave it empty.
 
 ## 📝 Contributors
 
