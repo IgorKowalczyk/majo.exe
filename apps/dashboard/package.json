@@ -69,7 +69,7 @@
   "devDependencies": {
     "@majoexe/eslint-config": "workspace:*",
     "@next/bundle-analyzer": "13.4.1",
-    "@prisma/nextjs-monorepo-workaround-plugin": "4.16.1",
+    "@prisma/nextjs-monorepo-workaround-plugin": "4.16.2",
     "eslint": "8.43.0",
     "eslint-config-next": "13.4.1",
     "prettier": "2.8.8",
