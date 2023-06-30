@@ -12,17 +12,6 @@ import { CodeCard } from "@/components/blocks/Block";
 import { Refetch } from "@/components/blocks/client/Refetch";
 import { Header1 } from "@/components/blocks/Headers";
 
-export async function getAllServers(token) {
- const servers = (await getServers(token)) || [];
- const filteredServers = servers.length > 0 ? servers.filter((server) => canAddBotToServer(server.permissions)) : [];
- const promises = filteredServers.map(async (server) => {
-  server.bot = await isBotInServer(server.id);
-  return server;
- });
-
- return await Promise.all(promises);
-}
-
 export default async function Dashboard() {
  const session = await getSession();
  if (!session) redirect("/auth/login");
@@ -32,7 +21,13 @@ export default async function Dashboard() {
   },
  });
  if (!user || !user.access_token) return redirect("/auth/login");
- const servers = await getAllServers(user.access_token);
+ const data = (await getServers(user.access_token)) || [];
+ const filteredServers = data.length > 0 ? data.filter((server) => canAddBotToServer(server.permissions)) : [];
+ const promises = filteredServers.map(async (server) => {
+  server.bot = await isBotInServer(server.id);
+  return server;
+ });
+ const servers = await Promise.all(promises);
 
  return (
   <div className="flex w-full flex-col items-center bg-background-primary antialiased md:py-16 md:px-16 px-8 py-8">

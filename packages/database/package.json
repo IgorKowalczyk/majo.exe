@@ -28,6 +28,9 @@
     "prettier": "2.8.8",
     "prettier-plugin-prisma": "4.13.0"
   },
+  "engines": {
+    "node": ">=16.0.0"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/igorkowalczyk/majo.exe.git",

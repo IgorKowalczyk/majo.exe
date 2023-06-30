@@ -1,7 +1,7 @@
 /* eslint-disable no-undef */
 module.exports = {
  root: true,
- extends: ["@igorkowalczyk/eslint-config"],
+ extends: ["@majoexe/eslint-config"],
  env: {
   node: true,
   browser: true,

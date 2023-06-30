@@ -35,13 +35,12 @@ export default {
     return interaction.followUp({ ephemeral: true, embeds: [embed] });
    }
 
-
    const request = await fetch(`https://kitsu.io/api/edge/anime?filter[text]=${query}&page%5Boffset%5D=0&page%5Blimit%5D=1`, {
     method: "GET",
     headers: {
-     'Content-Type': 'application/vnd.api+json',
-     'Accept': 'application/vnd.api+json'
-    }
+     "Content-Type": "application/vnd.api+json",
+     Accept: "application/vnd.api+json",
+    },
    });
    if (!request || !request.ok) {
     const embed = new EmbedBuilder()
