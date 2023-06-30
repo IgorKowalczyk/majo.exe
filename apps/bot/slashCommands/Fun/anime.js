@@ -1,3 +1,4 @@
+/* eslint-disable complexity */
 import { ApplicationCommandType, ApplicationCommandOptionType, EmbedBuilder, codeBlock } from "discord.js";
 
 export default {

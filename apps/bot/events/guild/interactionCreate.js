@@ -19,7 +19,7 @@ export async function interactionCreate(client, interaction) {
    if (!client.slashCommands.has(interaction.commandName)) return;
    const key = `${interaction.user.id}${interaction.commandName}`;
    if (client.slashCommands.get(interaction.commandName).cooldown) {
-    if (timeout.has(key) && timeout.get(key)?.time + client.slashCommands.get(interaction.commandName).cooldown > Date.now()) {
+    if (timeout.get(key) && timeout.get(key)?.time + client.slashCommands.get(interaction.commandName).cooldown > Date.now()) {
      const timeLeft = timeout.get(key)?.time + client.slashCommands.get(interaction.commandName).cooldown - Date.now();
      const embed = new EmbedBuilder()
       .setTitle("‼️ Slow down!")
@@ -37,7 +37,7 @@ export async function interactionCreate(client, interaction) {
     } else {
      timeout.set(key, { time: Date.now() });
      setTimeout(() => {
-      timeout.delete(key);
+      timeout instanceof Map ? timeout.delete(key) : timeout.del(key);
      }, client.slashCommands.get(interaction.commandName).cooldown);
     }
    }

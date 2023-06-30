@@ -2,7 +2,10 @@
   "name": "@majoexe/database",
   "version": "6.0.0",
   "description": "Majo.exe main database schema/client/migrations package",
-  "exports": "./src/client.js",
+  "exports": {
+   ".": "./src/client.js",
+   "./redis": "./src/redis.js"
+  },
   "type": "module",
   "scripts": {
     "format": "prettier --write --cache --ignore-unknown --plugin=prettier-plugin-prisma . ",

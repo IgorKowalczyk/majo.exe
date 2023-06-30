@@ -40,6 +40,6 @@
    "dependsOn": ["build"]
   }
  },
- "globalEnv": ["CLIENT_ID", "NEXTAUTH_URL", "HOTJAR_ID", "CLIENT_SECRET", "ENVIRONMENT_URL", "TOKEN", "NODE_ENV", "RUNTIME", "NEXT_PUBLIC_URL", "npm_package_version"],
+ "globalEnv": ["CLIENT_ID", "NEXTAUTH_URL", "HOTJAR_ID", "CLIENT_SECRET", "ENVIRONMENT_URL", "TOKEN", "REDIS_URL", "NODE_ENV", "RUNTIME", "NEXT_PUBLIC_URL", "npm_package_version"],
  "globalDependencies": [".env", ".prettierignore", ".prettierrc"]
 }
