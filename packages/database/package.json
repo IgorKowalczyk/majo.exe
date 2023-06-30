@@ -15,10 +15,10 @@
     "prisma:push": "prisma db push"
   },
   "dependencies": {
-    "@prisma/client": "4.16.1",
+    "@prisma/client": "4.16.2",
     "chalk": "5.3.0",
     "ioredis": "5.3.2",
-    "prisma": "4.16.1",
+    "prisma": "4.16.2",
     "prisma-redis-middleware": "4.8.0"
   },
   "devDependencies": {
