@@ -10,6 +10,7 @@ import { VisibilityProvider } from "@/components/nav/client/VisibilityContext";
 import "styles/globals.css";
 import "styles/progress.css";
 import "styles/tippy.css";
+import { TailwindIndicator } from "@/components/blocks/TailwindIndicator";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -71,6 +72,7 @@ export default function RootLayout({ children }) {
         </Link>
        </div>
       </main>
+      <TailwindIndicator />
      </VisibilityProvider>
      <Analytics />
     </body>
