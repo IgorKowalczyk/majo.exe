@@ -9,13 +9,13 @@
 ## 🗜️ Setup [preferred]
 
 1. Create new [Neon](https://neon.tech/) account and create new database.
-2. Create new [Upstash](https://upstash.com/) account and create new redis database.
+2. Create new [Redis Cloud](https://app.redislabs.com/) account and create new database
 3. Create new file or edit existing `.env` file in root directory of the project
 4. In `.env` file set this values:
    - `DATABASE_URL` - pooling database connection string
    - `DIRECT_URL` - non-pooling database connection string
    - `SHADOW_DATABASE_URL` - create new database and paste non-pooling database connection string
-   - `REDIS_URL`- `ioredis` connection string (`rediss://[...]`) from Upstash
+   - `REDIS_URL`- `ioredis` connection string (`redis://[...]`) from Redis Cloud
 
 - Note: Neon doesn't support creating databases, you have to create it manually. Prisma require shadow database to generate migrations.
 
