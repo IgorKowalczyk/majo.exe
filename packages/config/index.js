@@ -2,19 +2,26 @@ import dotenv from "dotenv";
 dotenv.config({ path: "../../.env" });
 
 export const config = {
+ global: {
+  permissions: "1539679190263", // string. Discord permissions. You can use https://discordapi.com/permissions.html to generate it
+  scopes: ["applications.commands", "bot"].join("%20"), // string. Discord OAUTH2 scopes.
+  defaultColor: "#5865F2", // string. Default color for embeds, social images etc
+ },
+
  /*
   Dashboard location: /apps/dashboard
-  */
+ */
  dashboard: {
   enabled: true, // boolean. Is bot using dashboard
   link: process.env.NEXT_PUBLIC_URL, // string. Dashboard main url
  },
 
+
+ /*
+  Bot location: /apps/bot
+ */
  bot: {
-  permissions: "1539679190263", // string. Bot permissions. You can use https://discordapi.com/permissions.html to generate it
-  scopes: ["applications.commands", "bot"].join("%20"), // string. Bot scopes.
   maxInputLength: 250, // number. Max input length for commands
-  defaultEmbedColor: "#5865F2", // string. Default embed color
   presence: {
    status: "online", // string. Bot status. Can be: online, dnd, idle, invisible, offline
    activities: [

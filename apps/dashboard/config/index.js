@@ -7,7 +7,6 @@ export const meta = {
  //url: "https://beta.majoexe.xyz",
  image: "/assets/og.png",
  url: process.env.NEXTAUTH_URL,
- theme_color: "#5865F2",
  locale: "en_US",
  type: "website",
 };

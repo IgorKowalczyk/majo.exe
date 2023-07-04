@@ -18,7 +18,7 @@ export default {
     .setTitle("🤌 My advice is:")
     .setDescription(`>>> **${parsed.advice}**`)
     .setTimestamp()
-    .setColor(guildSettings?.embedColor || client.config.bot.defaultEmbedColor)
+    .setColor(guildSettings?.embedColor || client.config.global.defaultColor)
     .setThumbnail(
      interaction.member?.user?.displayAvatarURL({
       dynamic: true,

@@ -5,6 +5,7 @@ import { getSession } from "lib/session";
 import { redirect } from "next/navigation";
 import { Block } from "@/components/blocks/Block";
 import { ChangeEmbedColor } from "@/components/blocks/client/ChangeEmbedColor";
+import { config } from "@majoexe/config";
 
 export default async function Settings({ params }) {
  const user = await getSession();
@@ -37,7 +38,7 @@ export default async function Settings({ params }) {
      Embed Color
     </h2>
     <p className="text-center mb-4">Change the color of the embeds sent by the bot.</p>
-    <ChangeEmbedColor serverId={serverDownload.id} serverColor={guild?.embedColor || "#5865F2"} serverIcon={serverDownload.icon} />
+    <ChangeEmbedColor serverId={serverDownload.id} serverColor={guild?.embedColor || config.global.defaultColor} serverIcon={serverDownload.icon} />
    </Block>
   </div>
  );

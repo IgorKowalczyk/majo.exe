@@ -20,7 +20,7 @@ export default {
    const words = permissions.map((permission) => convertCamelCaseToWords(permission));
 
    const embed = new EmbedBuilder()
-    .setColor(guildSettings?.embedColor || client.config.bot.defaultEmbedColor)
+    .setColor(guildSettings?.embedColor || client.config.global.defaultColor)
     .setTimestamp()
     .setTitle(`🎛️ Permissions in ${interaction.guild?.name}`)
     .setDescription(`> **${client.user?.username}** has the following permissions in this server:\n${codeBlock(words?.join("\n"))}`)

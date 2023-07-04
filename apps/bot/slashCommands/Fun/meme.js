@@ -34,7 +34,7 @@ export default {
    const embed = new EmbedBuilder()
     .setTitle(json[0].data.children[0].data.title)
     .setImage(json[0].data.children[0].data.url)
-    .setColor(guildSettings?.embedColor || client.config.bot.defaultEmbedColor)
+    .setColor(guildSettings?.embedColor || client.config.global.defaultColor)
     .setTimestamp()
     .setFooter({
      text: `Requested by ${interaction.member?.user?.username}`,

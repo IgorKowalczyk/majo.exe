@@ -10,7 +10,7 @@ export default {
  run: async (client, interaction, guildSettings) => {
   try {
    const allGuilds = client.guilds.cache;
-   const inviteLink = `https://discord.com/oauth2/authorize/?permissions=${client.config.bot.permissions}&scope=${client.config.bot.scopes}&client_id=${client.user?.id}`;
+   const inviteLink = `https://discord.com/oauth2/authorize/?permissions=${client.config.global.permissions}&scope=${client.config.global.scopes}&client_id=${client.user?.id}`;
    const embed = new EmbedBuilder() // Prettier
     .setTitle(`🧭 ${client.user?.username} is in ${allGuilds.size} servers!`)
     .setDescription(`If you want to invite Majo.exe to your server, you can do so by clicking [here](${inviteLink}).`)
@@ -22,7 +22,7 @@ export default {
       size: 2048,
      }),
     })
-    .setColor(guildSettings?.embedColor || client.config.bot.defaultEmbedColor)
+    .setColor(guildSettings?.embedColor || client.config.global.defaultColor)
     .setTimestamp()
     .setThumbnail(client.user?.displayAvatarURL({ dynamic: true, format: "png", size: 2048 }));
 

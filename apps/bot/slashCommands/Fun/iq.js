@@ -24,7 +24,7 @@ export default {
     .setTitle("🧠 IQ")
     .setDescription(`>>> **<@${user?.id}> has an IQ of ${iq}!**`)
     .setTimestamp()
-    .setColor(guildSettings?.embedColor || client.config.bot.defaultEmbedColor)
+    .setColor(guildSettings?.embedColor || client.config.global.defaultColor)
     .setThumbnail(
      user?.displayAvatarURL({
       dynamic: true,

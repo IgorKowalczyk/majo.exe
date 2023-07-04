@@ -43,7 +43,7 @@ export default {
   });
 
   const embed = new EmbedBuilder()
-   .setColor(guildSettings?.embedColor || client.config.bot.defaultEmbedColor)
+   .setColor(guildSettings?.embedColor || client.config.global.defaultColor)
    .setTimestamp()
    .setTitle(`📝 Logs (${count}/${Math.ceil((await countLogs(interaction.guildId)) / 20)})`)
    .setDescription(logsArray.join("\n"))

@@ -100,7 +100,7 @@ export default {
    }
 
    const embed = new EmbedBuilder()
-    .setColor(guildSettings?.embedColor || client.config.bot.defaultEmbedColor)
+    .setColor(guildSettings?.embedColor || client.config.global.defaultColor)
     .setTimestamp()
     .setTitle(data.canonicalTitle || query.splice(0, 20))
     .setURL(`https://kitsu.io/anime/${data.slug}`)

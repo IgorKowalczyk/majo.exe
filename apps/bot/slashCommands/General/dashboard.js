@@ -20,7 +20,7 @@ export default {
        size: 2048,
       }),
      })
-     .setColor(guildSettings?.embedColor || client.config.bot.defaultEmbedColor)
+     .setColor(guildSettings?.embedColor || client.config.global.defaultColor)
      .setTimestamp()
      .setTitle("💻 Dashboard");
     return interaction.followUp({ ephemeral: false, embeds: [embed] });
@@ -39,7 +39,7 @@ export default {
       size: 2048,
      }),
     })
-    .setColor(guildSettings?.embedColor || client.config.bot.defaultEmbedColor)
+    .setColor(guildSettings?.embedColor || client.config.global.defaultColor)
     .setTimestamp()
     .setTitle("💻 Dashboard");
 

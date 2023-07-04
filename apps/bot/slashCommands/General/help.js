@@ -25,7 +25,7 @@ export default {
     const command = client.slashCommands.get(query.toLowerCase()) || client.slashCommands.find((cmd) => cmd.aliases && cmd.aliases.includes(query.toLowerCase()));
     if (!command) {
      const embed = new EmbedBuilder()
-      .setColor(guildSettings?.embedColor || client.config.bot.defaultEmbedColor)
+      .setColor(guildSettings?.embedColor || client.config.global.defaultColor)
       .setTimestamp()
       .setTitle("❌ Command not found")
       .setDescription(`> The command \`${query}\` does not exist. Please check your spelling and try again.`)
@@ -73,7 +73,7 @@ export default {
        inline: true,
       },
      ])
-     .setColor(guildSettings?.embedColor || client.config.bot.defaultEmbedColor)
+     .setColor(guildSettings?.embedColor || client.config.global.defaultColor)
      .setTimestamp()
      .setFooter({
       text: `Requested by ${interaction.member?.user?.username}`,
@@ -89,7 +89,7 @@ export default {
     const embed = new EmbedBuilder()
      .setTitle(`${client.botEmojis.categories.find((cat) => cat.name === query.toLowerCase()).emoji} Available \`${query}\` commands \`(${commands.size})\``)
      .setDescription(`> ${commands.map((cmd) => `\`/${cmd.name}\``).join(", ")}`)
-     .setColor(guildSettings?.embedColor || client.config.bot.defaultEmbedColor)
+     .setColor(guildSettings?.embedColor || client.config.global.defaultColor)
      .setTimestamp()
      .setFooter({
       text: `Requested by ${interaction.member?.user?.username}`,
@@ -104,7 +104,7 @@ export default {
     const categories = [...new Set(client.slashCommands.map((cmd) => cmd.category))];
 
     // Why? Because I can. 🥫
-    const inviteLink = `https://discord.com/oauth2/authorize/?permissions=${client.config.bot.permissions}&scope=${client.config.bot.scopes}&client_id=${client.user?.id}`;
+    const inviteLink = `https://discord.com/oauth2/authorize/?permissions=${client.config.global.permissions}&scope=${client.config.global.scopes}&client_id=${client.user?.id}`;
 
     const embed = new EmbedBuilder()
      .setTitle("❔ Help")
@@ -116,7 +116,7 @@ export default {
        inline: true,
       }))
      )
-     .setColor(guildSettings?.embedColor || client.config.bot.defaultEmbedColor)
+     .setColor(guildSettings?.embedColor || client.config.global.defaultColor)
      .setTimestamp()
      .setThumbnail(client.user?.displayAvatarURL({ dynamic: true, format: "png", size: 2048 }))
      .setAuthor({

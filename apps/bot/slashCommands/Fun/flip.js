@@ -38,7 +38,7 @@ export default {
      .setTitle("🪙 Coin Flip")
      .setDescription(`>>> **You flipped a ${coin == 1 ? "heads" : "tails"}!**`)
      .setTimestamp()
-     .setColor(guildSettings?.embedColor || client.config.bot.defaultEmbedColor)
+     .setColor(guildSettings?.embedColor || client.config.global.defaultColor)
      .setThumbnail(
       interaction.member?.user?.displayAvatarURL({
        dynamic: true,
@@ -59,7 +59,7 @@ export default {
      .setTitle("🔁 Flipped Text")
      .setDescription(`>>> **${flipText(text)}**`)
      .setTimestamp()
-     .setColor(guildSettings?.embedColor || client.config.bot.defaultEmbedColor)
+     .setColor(guildSettings?.embedColor || client.config.global.defaultColor)
      .setThumbnail(
       interaction.member?.user?.displayAvatarURL({
        dynamic: true,
