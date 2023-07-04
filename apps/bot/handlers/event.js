@@ -1,5 +1,5 @@
+import { config } from "@majoexe/config";
 import { Logger } from "@majoexe/util/functions";
-import { config } from "../config/index.js";
 import { readdirSync } from "node:fs";
 
 export default async function loadEvents(client) {

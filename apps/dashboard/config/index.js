@@ -1,3 +1,5 @@
+/* Dashboard related config */
+
 export const meta = {
  title: "Majo.exe",
  author: "Igor Kowalczyk",
@@ -14,10 +16,6 @@ export const credentials = {
  clientId: process.env.CLIENT_ID,
  clientSecret: process.env.CLIENT_SECRET,
  secret: process.env.SECRET,
-};
-
-export const feautures = {
- smoothTransition: true,
 };
 
 export const social = {

@@ -6,11 +6,11 @@ import { Hotjar } from "components/blocks/Hotjar";
 import { Nav } from "components/nav/server/Nav";
 import { Inter } from "next/font/google";
 import Link from "next/link";
+import { TailwindIndicator } from "@/components/blocks/TailwindIndicator";
 import { VisibilityProvider } from "@/components/nav/client/VisibilityContext";
 import "styles/globals.css";
 import "styles/progress.css";
 import "styles/tippy.css";
-import { TailwindIndicator } from "@/components/blocks/TailwindIndicator";
 
 const inter = Inter({ subsets: ["latin"] });
 

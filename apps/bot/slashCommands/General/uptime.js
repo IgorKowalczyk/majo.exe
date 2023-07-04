@@ -1,5 +1,5 @@
+import { config } from "@majoexe/config";
 import { EmbedBuilder, time, ButtonBuilder, ActionRowBuilder, ApplicationCommandType, ButtonStyle } from "discord.js";
-import { config } from "../../config/index.js";
 
 export default {
  name: "uptime",

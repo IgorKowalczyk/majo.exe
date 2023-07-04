@@ -1,14 +1,11 @@
-/* eslint-disable import/order */
-import dotenv from "dotenv";
-dotenv.config({ path: "../../.env" });
-/* eslint-enable import/order */
+import { config } from "@majoexe/config";
 import { createErrorEmbed } from "@majoexe/util/embeds";
 import { Logger } from "@majoexe/util/functions";
 import chalk from "chalk";
 import { Client, GatewayIntentBits, PermissionsBitField, Collection } from "discord.js";
 import { globby } from "globby";
 import { emojis } from "../config/emojis.js";
-import { config } from "../config/index.js";
+import { botConfig } from "../config/index.js";
 
 Logger("info", "Starting Majo.exe Bot...");
 Logger("info", `Running version v${process.env.npm_package_version} on Node.js ${process.version} on ${process.platform} ${process.arch}`);
@@ -35,7 +32,10 @@ const modals = await globby(`${process.cwd()}/modals/**/*.js`);
 // Add custom properties to client
 client.slashCommands = new Collection();
 client.modals = new Collection();
-client.config = config;
+client.config = {
+ ...botConfig,
+ ...config,
+};
 client.botEmojis = emojis;
 client.errorMessages = {
  generateErrorMessage: (interaction, error) => {

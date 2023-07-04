@@ -15,6 +15,9 @@
   "eslint-config-turbo": "1.10.7",
   "prettier": "2.8.8"
  },
+ "engines": {
+   "node": ">=16.0.0"
+ },
  "repository": {
   "type": "git",
   "url": "git+https://github.com/igorkowalczyk/majo.exe.git",
@@ -35,5 +38,6 @@
  "bugs": {
   "url": "https://github.com/igorkowalczyk/majo.exe/issues"
  },
- "homepage": "https://github.com/igorkowalczyk/majo.exe#readme"
+ "homepage": "https://github.com/igorkowalczyk/majo.exe#readme",
+ "packageManager": "pnpm@8.6.6"
 }

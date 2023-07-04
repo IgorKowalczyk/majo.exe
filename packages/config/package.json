@@ -1,27 +1,20 @@
 {
-  "name": "@majoexe/util",
+  "name": "@majoexe/config",
   "version": "6.0.0",
-  "description": "Shared utility functions for Majo.exe",
+  "description": "Majo.exe shared config",
   "exports": {
-    "./functions": "./functions/index.js",
-    "./embeds": "./embeds/index.js",
-    "./database": "./database/index.js",
-    "./json": "./json/index.js"
+   ".": "./index.js"
   },
   "type": "module",
   "scripts": {
     "format": "prettier --write . --cache --ignore-unknown",
     "format:check": "prettier --check --cache .",
-    "lint": "eslint . --ext .js,.mjs,.ts",
-    "lint:fix": "eslint . --ext .js,.mjs,.ts --fix"
+    "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
+    "lint:fix": "eslint . --ext .js,.jsx,.ts,.tsx --fix"
   },
   "dependencies": {
-    "@majoexe/database": "workspace:*",
-    "chalk": "5.3.0",
-    "discord.js": "14.11.0"
-  },
-  "devDependencies": {
     "@majoexe/eslint-config": "workspace:*",
+    "dotenv": "16.3.1",
     "eslint": "8.44.0",
     "prettier": "2.8.8"
   },
@@ -31,13 +24,10 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/igorkowalczyk/majo.exe.git",
-    "directory": "packages/util"
+    "directory": "packages/config"
   },
   "keywords": [
-    "Majo.exe",
-    "util",
-    "shared",
-    "utility-functions"
+    "config"
   ],
   "author": "Igor Kowalczyk",
   "license": "MIT",

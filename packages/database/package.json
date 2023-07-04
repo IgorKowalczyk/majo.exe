@@ -25,7 +25,7 @@
     "prisma-redis-middleware": "4.8.0"
   },
   "devDependencies": {
-    "@igorkowalczyk/eslint-config": "1.4.2",
+    "@majoexe/eslint-config": "workspace:*",
     "eslint": "8.44.0",
     "eslint-config-turbo": "1.10.7",
     "prettier": "2.8.8",
@@ -52,5 +52,6 @@
   "bugs": {
     "url": "https://github.com/igorkowalczyk/majo.exe/issues"
   },
-  "homepage": "https://github.com/igorkowalczyk/majo.exe#readme"
+  "homepage": "https://github.com/igorkowalczyk/majo.exe#readme",
+  "packageManager": "pnpm@8.6.6"
 }
