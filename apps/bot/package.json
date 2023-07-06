@@ -23,7 +23,7 @@
     "discord.js": "14.11.0",
     "dotenv": "16.3.1",
     "flip-text": "1.2.0",
-    "globby": "13.2.1",
+    "globby": "13.2.2",
     "node-fetch": "3.3.1"
   },
   "devDependencies": {
