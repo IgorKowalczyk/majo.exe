@@ -28,7 +28,7 @@
     "@vercel/og": "0.5.8",
     "autoprefixer": "10.4.14",
     "clsx": "1.2.1",
-    "globby": "13.2.1",
+    "globby": "13.2.2",
     "mini-svg-data-uri": "1.4.4",
     "next": "13.4.1",
     "next-auth": "4.22.1",
