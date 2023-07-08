@@ -1,11 +1,11 @@
 import { PaintBrushIcon } from "@heroicons/react/24/outline";
 import prismaClient from "@majoexe/database";
+import { config } from "@majoexe/config";
 import { getServer } from "@majoexe/util/functions";
 import { getSession } from "lib/session";
 import { redirect } from "next/navigation";
 import { Block } from "@/components/blocks/Block";
 import { ChangeEmbedColor } from "@/components/blocks/client/ChangeEmbedColor";
-import { config } from "@majoexe/config";
 
 export default async function Settings({ params }) {
  const user = await getSession();

@@ -1,6 +1,3 @@
-/* eslint-disable camelcase */
-import prismaClient from "@majoexe/database";
-
 /**
  * @param {string} token The token of the user.
  * @returns {Promise<any>} The servers the user is in.

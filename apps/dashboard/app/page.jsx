@@ -1,4 +1,4 @@
-import { ArrowRightIcon, ArrowDownIcon } from "@heroicons/react/24/outline";
+import { ArrowRightIcon } from "@heroicons/react/24/outline";
 import { Invite } from "components/buttons/server/Invite";
 import { Login } from "components/buttons/server/Login";
 import Link from "next/link";
