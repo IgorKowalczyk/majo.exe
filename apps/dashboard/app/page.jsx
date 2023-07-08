@@ -12,7 +12,7 @@ export default async function Main() {
     <div className="absolute top-0 left-0 w-full z-10 h-full bg-[radial-gradient(circle,rgba(2,0,36,0)0,rgb(16,17,16,100%))]" />
     <div className="-mt-14 xl:w-4/5 md:w-[90%] z-20 relative flex lg:flex-row items-center flex-col">
      <div className="flex flex-col gap-4 justify-start lg:items-start lg:w-1/2 w-full items-center">
-      <Link href={"/invite"} className="text-center -mt-4 font-medium bg-background-menu-button/50 backdrop-blur flex flex-row items-center border group transition-all duration-200 hover:bg-background-menu-button/40 cursor-copy border-neutral-700 rounded-full px-6 py-1 w-fit">
+      <Link href={"/api/invite"} className="text-center -mt-4 font-medium bg-background-menu-button/50 backdrop-blur flex flex-row items-center border group transition-all duration-200 hover:bg-background-menu-button/40 cursor-copy border-neutral-700 rounded-full px-6 py-1 w-fit">
        Introducing Majo.exe v6
        <ArrowRightIcon className="inline-block w-4 h-4 ml-2 group-hover:translate-x-1 transition-all duration-200" />
       </Link>
@@ -25,11 +25,6 @@ export default async function Main() {
      </div>
      <div className="lg:flex hidden flex-col justify-center items-center w-1/2">
       <SplineBlock url="https://prod.spline.design/wibg6pm5xTPtuPq1/scene.splinecode" />
-     </div>
-     <div className="w-full absolute bottom-0 left-0 right-0 flex items-center justify-center z-20 mx-auto mt-10">
-      <Link href="#features" className="p-3 flex flex-col items-center justify-center backdrop-blur-md rounded-full border border-neutral-800 hover:bg-neutral-700/50 transition-all duration-200 cursor-pointer">
-       <ArrowDownIcon className="w-6 h-6" />
-      </Link>
      </div>
     </div>
    </div>

@@ -20,6 +20,7 @@ export default async function Dashboard() {
    providerAccountId: session.discordId,
   },
  });
+
  if (!user || !user.access_token) return redirect("/auth/login");
  const data = (await getServers(user.access_token)) || [];
  const filteredServers = data.length > 0 ? data.filter((server) => canAddBotToServer(server.permissions)) : [];
@@ -63,7 +64,7 @@ export default async function Dashboard() {
       <div className="flex flex-col items-center justify-center gap-4">
        <h3 className="text-center text-xl font-bold">You don't have any servers!</h3>
        <div className="flex flex-row items-center justify-start gap-2">
-        <PrimaryButton href={"/invite"}>
+        <PrimaryButton href={"/api/invite"}>
          <PlusSmallIcon className="mr-2 h-5 w-5" aria-hidden="true" role="img" /> Add bot
         </PrimaryButton>
         <Refetch />

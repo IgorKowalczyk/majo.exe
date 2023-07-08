@@ -32,7 +32,7 @@ Go to [this link](https://discord.com/oauth2/authorize/?permissions=4294967287&s
 
 ## 🖥️ Hosting
 
-We are hosting Majo.exe on our own servers. Majo.exe _will be_ online 24/7. [Invite Majo here!](https://beta.majoexe.xyz/invite)<br>
+We are hosting Majo.exe on our own servers. Majo.exe _will be_ online 24/7. [Invite Majo here!](https://beta.majoexe.xyz/api/invite)<br>
 However, if you want to host Majo.exe yourself see links below.
 
 - **[🤖 Bot setup tutorial](/apps/bot/README.md)**
