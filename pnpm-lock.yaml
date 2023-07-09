@@ -71,8 +71,8 @@ importers:
         specifier: 3.1.0
         version: 3.1.0
       nodemon:
-        specifier: 3.0.0
-        version: 3.0.0
+        specifier: 3.0.1
+        version: 3.0.1
       prettier:
         specifier: 2.8.8
         version: 2.8.8
@@ -3241,7 +3241,7 @@ packages:
     resolution: {integrity: sha512-zNy02qivjjRosswoYmPi8hIKJRr8MpQyeKT6qlcq/OnOgA3Rhoae+IYOqsM9V5+JnHWmxKnWOT2GxvtqdtOCXA==}
     engines: {node: '>=10'}
     dependencies:
-      semver: 7.5.1
+      semver: 7.5.4
     dev: false
 
   /node-addon-api@6.1.0:
@@ -3266,8 +3266,8 @@ packages:
     resolution: {integrity: sha512-QzsYKWhXTWx8h1kIvqfnC++o0pEmpRQA/aenALsL2F4pqNVr7YzcdMlDij5WBnwftRbJCNJL/O7zdKaxKPHqgQ==}
     dev: false
 
-  /nodemon@3.0.0:
-    resolution: {integrity: sha512-yU9NSp3n+DUSt3S2LmtXss+4kOsmC8ZLpXeGe5mKuLdqkoSRwmaplk2lo5cmve7TPw5MgMcd2cazL0KpUscoSQ==}
+  /nodemon@3.0.1:
+    resolution: {integrity: sha512-g9AZ7HmkhQkqXkRc20w+ZfQ73cHLbE8hnPbtaFbFtCumZsjyMhKk9LajQ07U5Ux28lvFjZ5X7HvWR1xzU8jHVw==}
     engines: {node: '>=10'}
     hasBin: true
     dependencies:
@@ -4240,7 +4240,6 @@ packages:
     hasBin: true
     dependencies:
       lru-cache: 6.0.0
-    dev: true
 
   /setprototypeof@1.2.0:
     resolution: {integrity: sha512-E5LDX7Wrp85Kil5bhZv46j8jOeboKq5JMmYM3gVGdGH8xFpPWXUMsNrlODCrkoxMEeNi/XZIwuRvY4XNwYMJpw==}
