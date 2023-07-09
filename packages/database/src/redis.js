@@ -11,5 +11,4 @@ if (process.env.REDIS_URL) {
  cache = new Set();
 }
 
-
 export default cache;

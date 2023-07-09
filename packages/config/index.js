@@ -16,7 +16,6 @@ export const config = {
   link: process.env.NEXT_PUBLIC_URL, // string. Dashboard main url
  },
 
-
  /*
   Bot location: /apps/bot
  */

@@ -1,8 +1,8 @@
+import { config } from "@majoexe/config";
 import prismaClient from "@majoexe/database";
 import { getServer } from "@majoexe/util/functions";
 import { getSession } from "lib/session";
 import { NextResponse } from "next/server";
-import { config } from "@majoexe/config";
 
 export async function POST(request) {
  try {
