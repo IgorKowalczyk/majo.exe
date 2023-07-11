@@ -54,7 +54,7 @@
     "@prisma/nextjs-monorepo-workaround-plugin": "4.16.2",
     "eslint": "8.44.0",
     "eslint-config-next": "13.4.1",
-    "prettier": "2.8.8",
+    "prettier": "3.0.0",
     "prettier-plugin-tailwindcss": "0.3.0"
   },
   "browserslist": [
