@@ -3,6 +3,7 @@
 import { PrismaClient } from "@prisma/client";
 import { createPrismaRedisCache } from "prisma-redis-middleware";
 import { Logger } from "./logger.js";
+import { config } from "@majoexe/config";
 import Redis from "./redis.js";
 
 const globalForPrisma = global;
@@ -28,7 +29,6 @@ if (process.env.RUNTIME === "edge") {
 
 if (process.env.NODE_ENV !== "production") {
  globalForPrisma.prisma = prisma;
- prisma.$use(logger);
 }
 
 const cache = createPrismaRedisCache({
@@ -46,21 +46,26 @@ const cache = createPrismaRedisCache({
  cacheTime: 30,
  excludeModels: ["Session", "Account"],
  onHit: (key) => {
-  if (process.env.NODE_ENV !== "production") {
+  if (config.debugger.displayCacheMessages) {
    Logger("info", `Cache hit for key ${key}`);
   }
  },
  onMiss: (key) => {
-  if (process.env.NODE_ENV !== "production") {
+  if (config.debugger.displayCacheMessages) {
    Logger("info", `Cache miss for key ${key}`);
   }
  },
  onError: (key) => {
-  if (process.env.NODE_ENV !== "production") {
+  if (config.debugger.displayCacheMessages) {
    Logger("info", `Cache error for key ${key}`);
   }
  },
 });
+
 prisma.$use(cache);
+
+if (config.debugger.displayDatabaseLogs) {
+ prisma.$use(logger);
+}
 
 export default prisma;

@@ -218,6 +218,9 @@ importers:
 
   packages/database:
     dependencies:
+      '@majoexe/config':
+        specifier: workspace:*
+        version: link:../config
       '@prisma/client':
         specifier: 5.0.0
         version: 5.0.0(prisma@5.0.0)
