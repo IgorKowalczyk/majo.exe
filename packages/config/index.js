@@ -36,6 +36,8 @@ export const config = {
   Debugger configuration. Set everything to true if you want console hell
  */
  debugger: {
+  displayDatabaseLogs: false, // boolean. Display database logs
+  displayCacheMessages: false, // boolean. Display cache messages
   displayEventList: false, // boolean. Display event list on startup
   displayCommandList: false, // boolean. Display command list on startup
   displayCommandUsage: false, // boolean. Display command usage on command run
