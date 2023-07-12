@@ -44,7 +44,7 @@ const cache = createPrismaRedisCache({
   options: { invalidation: { referencesTTL: 300 } },
  },
  cacheTime: 30,
- excludeModels: ["Session"],
+ excludeModels: ["Session", "Account"],
  onHit: (key) => {
   if (process.env.NODE_ENV !== "production") {
    Logger("info", `Cache hit for key ${key}`);
