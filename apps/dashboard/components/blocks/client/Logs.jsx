@@ -41,28 +41,28 @@ export default function Logs({ initialItems, id }) {
  }, [initialItems.length, pages.length]);
 
  return (
-  <div className="flex w-auto items-center flex-col gap-4">
-   <InfiniteScroll hasMore={hasMore} pageStart={0} loadMore={loadMore} loader={<TextSkeleton className="w-full mt-4 !h-20" />}>
+  <div className="flex w-auto flex-col items-center gap-4">
+   <InfiniteScroll hasMore={hasMore} pageStart={0} loadMore={loadMore} loader={<TextSkeleton className="mt-4 !h-20 w-full" />}>
     {items.map((item) => (
      <Disclosure key={item.id}>
       {({ open }) => (
        <>
         <Disclosure.Button
-         className={clsx("flex flex-row duration-200 items-center justify-start gap-4 py-4 w-full my-4 px-6 max-w-2xl rounded-md border border-neutral-800 bg-background-navbar", {
-          "rounded-b-none mb-0": open,
+         className={clsx("my-4 flex w-full max-w-2xl flex-row items-center justify-start gap-4 rounded-md border border-neutral-800 bg-background-navbar px-6 py-4 duration-200", {
+          "mb-0 rounded-b-none": open,
          })}
         >
          <div className="relative">
-          {item.user?.avatar && <Image src={`https://cdn.discordapp.com/avatars/${item.user?.discordId}/${item.user?.avatar}.${item.user?.avatar.startsWith("a_") ? "gif" : "png"}`} alt={`${item.user?.name} avatar`} quality={95} width={32} height={32} className="w-12 h-12 rounded-full" />}
-          {item.type === "profanity" && <NoSymbolIcon className="h-5 w-5 min-w-[20px] min-h-[20px] opacity-80 absolute bottom-0 right-0 border border-white/10 bg-button-secondary/80 rounded-full p-1" />}
-          {item.type === "embed_color" && <PaintBrushIcon className="h-5 w-5 min-w-[20px] min-h-[20px] opacity-80 absolute bottom-0 right-0 border border-white/10 bg-button-secondary/80 rounded-full p-1" />}
+          {item.user?.avatar && <Image src={`https://cdn.discordapp.com/avatars/${item.user?.discordId}/${item.user?.avatar}.${item.user?.avatar.startsWith("a_") ? "gif" : "png"}`} alt={`${item.user?.name} avatar`} quality={95} width={32} height={32} className="h-12 w-12 rounded-full" />}
+          {item.type === "profanity" && <NoSymbolIcon className="absolute bottom-0 right-0 h-5 min-h-[20px] w-5 min-w-[20px] rounded-full border border-white/10 bg-button-secondary/80 p-1 opacity-80" />}
+          {item.type === "embed_color" && <PaintBrushIcon className="absolute bottom-0 right-0 h-5 min-h-[20px] w-5 min-w-[20px] rounded-full border border-white/10 bg-button-secondary/80 p-1 opacity-80" />}
          </div>
          <div className="flex flex-col">
-          <p className="font-bold text-left">
+          <p className="text-left font-bold">
            {item.user?.name || item.user?.id}
            <span className="opacity-70">#{item.user?.discriminator || "0000"}</span> {item.content}
           </p>
-          <span className="opacity-70 text-left">{formatDate(item.createdAt)}</span>
+          <span className="text-left opacity-70">{formatDate(item.createdAt)}</span>
          </div>
          <ChevronDownIcon
           className={clsx(
@@ -75,7 +75,7 @@ export default function Logs({ initialItems, id }) {
         </Disclosure.Button>
 
         <Transition enter="transition duration-100 ease-out" enterFrom="transform scale-95 opacity-0" enterTo="transform scale-100 opacity-100" leave="transition duration-75 ease-out" leaveFrom="transform scale-100 opacity-100" leaveTo="transform scale-95 opacity-0">
-         <Disclosure.Panel className="py-4 w-full px-6 max-w-2xl rounded-md border border-neutral-800 border-t-0 rounded-t-none bg-background-navbar">
+         <Disclosure.Panel className="w-full max-w-2xl rounded-md rounded-t-none border border-t-0 border-neutral-800 bg-background-navbar px-6 py-4">
           {item.actionTaken && (
            <p>
             <span className="font-bold">Action taken:</span> None

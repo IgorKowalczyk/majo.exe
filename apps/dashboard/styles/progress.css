@@ -3,7 +3,7 @@
 }
 
 #nprogress .bar {
- @apply fixed top-0 left-0  z-[10000] h-[2px] w-full bg-accent-primary;
+ @apply fixed left-0 top-0  z-[10000] h-[2px] w-full bg-accent-primary;
 }
 
 #nprogress .spinner {
@@ -11,7 +11,7 @@
 }
 
 #nprogress .spinner-icon {
- @apply box-border h-6 w-6 animate-[spin_500ms_linear_infinite] rounded-[50%] border-[3px] border-solid border-transparent border-t-white border-l-white motion-reduce:transition-none;
+ @apply box-border h-6 w-6 animate-[spin_500ms_linear_infinite] rounded-[50%] border-[3px] border-solid border-transparent border-l-white border-t-white motion-reduce:transition-none;
 }
 
 .nprogress-custom-parent {

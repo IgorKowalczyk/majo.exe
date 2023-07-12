@@ -39,12 +39,12 @@ export default async function ServerLogs({ params }) {
  });
 
  return (
-  <div className="flex w-full flex-col items-center bg-background-primary antialiased md:py-16 md:px-16 px-8 py-8">
+  <div className="flex w-full flex-col items-center bg-background-primary px-8 py-8 antialiased md:px-16 md:py-16">
    <Header1>
-    <ListBulletIcon className="w-12 h-12" />
+    <ListBulletIcon className="h-12 w-12" />
     Activity Logs
    </Header1>
-   <div className="overflow-auto">{logs.length === 0 ? <h3 className="text-center text-xl mt-4 font-bold">No logs found!</h3> : <Logs initialItems={logs} id={serverDownload.id} />}</div>
+   <div className="overflow-auto">{logs.length === 0 ? <h3 className="mt-4 text-center text-xl font-bold">No logs found!</h3> : <Logs initialItems={logs} id={serverDownload.id} />}</div>
   </div>
  );
 }

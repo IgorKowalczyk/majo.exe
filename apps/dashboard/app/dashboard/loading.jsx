@@ -5,7 +5,7 @@ import { Header1 } from "@/components/blocks/Headers";
 
 export default function Loading() {
  return (
-  <div className="flex w-full flex-col items-center bg-background-primary antialiased md:py-16 md:px-16 px-8 py-8">
+  <div className="flex w-full flex-col items-center bg-background-primary px-8 py-8 antialiased md:px-16 md:py-16">
    <div className="flex flex-col justify-center gap-4">
     <Header1>
      <RectangleStackIcon className="h-10 w-10" aria-hidden="true" role="img" />

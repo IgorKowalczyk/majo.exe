@@ -8,8 +8,8 @@ export function SplineBlock({ url }) {
  return (
   <Suspense
    fallback={
-    <div className="flex flex-col justify-center items-center w-full h-full">
-     <ArrowPathIcon className="w-12 h-12 animate-spin" />
+    <div className="flex h-full w-full flex-col items-center justify-center">
+     <ArrowPathIcon className="h-12 w-12 animate-spin" />
     </div>
    }
   >

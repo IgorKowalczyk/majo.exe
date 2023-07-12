@@ -47,5 +47,5 @@ main > div {
 }
 
 canvas {
- @apply flex items-center ml-auto;
+ @apply ml-auto flex items-center;
 }

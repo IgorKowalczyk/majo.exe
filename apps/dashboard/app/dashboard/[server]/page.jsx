@@ -21,7 +21,7 @@ export default async function ServerOverview({ params }) {
  return (
   <div className="flex min-h-screen flex-col justify-center gap-4">
    <Header1>
-    {serverDownload.icon ? <Image src={`https://cdn.discordapp.com/icons/${serverDownload.id}/${serverDownload.icon}.${serverDownload.icon.startsWith("a_") ? "gif" : "png"}`} alt={serverDownload.name} quality={95} width={64} height={64} className="w-16 h-16 rounded-full" /> : <div className="w-16 h-16 rounded-full bg-button-secondary" />}
+    {serverDownload.icon ? <Image src={`https://cdn.discordapp.com/icons/${serverDownload.id}/${serverDownload.icon}.${serverDownload.icon.startsWith("a_") ? "gif" : "png"}`} alt={serverDownload.name} quality={95} width={64} height={64} className="h-16 w-16 rounded-full" /> : <div className="h-16 w-16 rounded-full bg-button-secondary" />}
     {serverDownload.name || "Unnamed server"}
    </Header1>
   </div>

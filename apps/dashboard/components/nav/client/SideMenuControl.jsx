@@ -12,8 +12,8 @@ export function SideMenuControl() {
  return (
   <>
    {params.server && (
-    <button className="ml-4 flex flex-row items-center gap-2 rounded-lg bg-elements p-2 text-text lg:hidden" onClick={toggleSideNav}>
-     {sideNavVisible ? <XMarkIcon className="w-6 h-6" /> : <Bars3BottomLeftIcon className="w-6 h-6" />}
+    <button className="bg-elements text-text ml-4 flex flex-row items-center gap-2 rounded-lg p-2 lg:hidden" onClick={toggleSideNav}>
+     {sideNavVisible ? <XMarkIcon className="h-6 w-6" /> : <Bars3BottomLeftIcon className="h-6 w-6" />}
     </button>
    )}
   </>

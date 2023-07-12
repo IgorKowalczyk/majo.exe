@@ -21,9 +21,9 @@ export function Leaderboard({ data }) {
     accessor: "user",
     Cell: ({ value }) => (
      <div className="flex items-center space-x-4">
-      <div className="relative">{value?.avatar && <Image src={`https://cdn.discordapp.com/avatars/${value?.discordId}/${value?.avatar}.${value?.avatar.startsWith("a_") ? "gif" : "png"}`} alt={`${value?.name} avatar`} quality={95} width={32} height={32} className="w-12 h-12 rounded-full" />}</div>
+      <div className="relative">{value?.avatar && <Image src={`https://cdn.discordapp.com/avatars/${value?.discordId}/${value?.avatar}.${value?.avatar.startsWith("a_") ? "gif" : "png"}`} alt={`${value?.name} avatar`} quality={95} width={32} height={32} className="h-12 w-12 rounded-full" />}</div>
       <Tooltip content={`Discord ID: ${value?.discordId}`}>
-       <p className="font-bold text-left">
+       <p className="text-left font-bold">
         {value?.name || value?.id}
         <span className="opacity-70">#{value?.discriminator || "0000"}</span>
        </p>
@@ -85,14 +85,14 @@ export function Leaderboard({ data }) {
  return (
   <>
    <div className="flex flex-col">
-    <div className="flex items-center gap-4 flex-row">
-     <InputWithIcon icon={<MagnifyingGlassIcon className="w-5 h-5" />} placeholder="Search" alue={globalFilter || ""} onChange={(e) => setGlobalFilter(e.target.value)} className="h-10" />
+    <div className="flex flex-row items-center gap-4">
+     <InputWithIcon icon={<MagnifyingGlassIcon className="h-5 w-5" />} placeholder="Search" alue={globalFilter || ""} onChange={(e) => setGlobalFilter(e.target.value)} className="h-10" />
      <select
       value={pageSize}
       onChange={(e) => {
        setPageSize(Number(e.target.value));
       }}
-      className="rounded-md border bg-transparent pl-2 py-2 pr-9 !ring-0 !ring-transparent border-neutral-800 text-white h-10"
+      className="h-10 rounded-md border border-neutral-800 bg-transparent py-2 pl-2 pr-9 text-white !ring-0 !ring-transparent"
      >
       {[10, 20, 30, 40, 50].map((pageSize) => (
        <option key={pageSize} value={pageSize} className="bg-neutral-800 text-white">
@@ -135,7 +135,7 @@ export function Leaderboard({ data }) {
     </table>
 
     {/* Pagination */}
-    <div className="mt-2 flex items-center justify-between border-t pt-2 text-gray-600 border-t-neutral-800">
+    <div className="mt-2 flex items-center justify-between border-t border-t-neutral-800 pt-2 text-gray-600">
      <SecondaryButton onClick={() => previousPage()} disabled={!canPreviousPage} className={"!w-fit"}>
       Previous
      </SecondaryButton>

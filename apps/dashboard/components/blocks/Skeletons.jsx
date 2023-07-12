@@ -21,7 +21,7 @@ export function EmbedSkeleton({ className }) {
 }
 
 export function AvatarSkeleton({ className }) {
- return <div className={clsx(className, "relative isolate w-16 h-16 overflow-hidden rounded-full border bg-neutral-500/40 border-neutral-900 before:absolute before:inset-0 before:-translate-x-full before:animate-[shimmer_1s_infinite] before:bg-gradient-to-r before:from-transparent before:via-white/10 before:to-transparent")} />;
+ return <div className={clsx(className, "relative isolate h-16 w-16 overflow-hidden rounded-full border border-neutral-900 bg-neutral-500/40 before:absolute before:inset-0 before:-translate-x-full before:animate-[shimmer_1s_infinite] before:bg-gradient-to-r before:from-transparent before:via-white/10 before:to-transparent")} />;
 }
 
 export function ButtonSkeleton({ className }) {
