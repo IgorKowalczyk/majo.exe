@@ -30,7 +30,7 @@
     "eslint": "8.44.0",
     "eslint-config-turbo": "1.10.7",
     "prettier": "3.0.0",
-    "prettier-plugin-prisma": "4.13.0"
+    "prettier-plugin-prisma": "4.17.0"
   },
   "engines": {
     "node": ">=16.0.0"

@@ -250,8 +250,8 @@ importers:
         specifier: 3.0.0
         version: 3.0.0
       prettier-plugin-prisma:
-        specifier: 4.13.0
-        version: 4.13.0(prettier@3.0.0)
+        specifier: 4.17.0
+        version: 4.17.0(prettier@3.0.0)
 
   packages/eslint-config:
     dependencies:
@@ -792,8 +792,8 @@ packages:
     resolution: {integrity: sha512-9iPBVd2Mz29QzJccyLJforZb/oWCLAS/5Ky6ZVtV5iST/kcDdCL+R+fllzNBltwywPrNwGorUx4C8Ps6WFZaiA==}
     dev: true
 
-  /@prisma/prisma-fmt-wasm@4.13.0-52.integration-mobc-upstream-d100a9299fcb9cffb064301998e9a94ce2722c49:
-    resolution: {integrity: sha512-12dZRXW36s3hRHLeD8c4S3o1ZZcnFt1NxhBrSlYepnMxatfkj5S8aIDP/G+zzUqucB//kGZZWNX3eUcmxMsEqw==}
+  /@prisma/prisma-fmt-wasm@4.17.0-16.27eb2449f178cd9fe1a4b892d732cc4795f75085:
+    resolution: {integrity: sha512-zYz3rFwPB82mVlHGknAPdnSY/a308dhPOblxQLcZgZTDRtDXOE1MgxoRAys+jekwR4/bm3+rZDPs1xsFMsPZig==}
     dev: true
 
   /@resvg/resvg-wasm@2.4.1:
@@ -3815,13 +3815,13 @@ packages:
       fast-diff: 1.3.0
     dev: false
 
-  /prettier-plugin-prisma@4.13.0(prettier@3.0.0):
-    resolution: {integrity: sha512-bnOWoQTVXM9VWBErPGE6rVgI8kCQts+DMQolg7Sj/Q0/oAlpDYOhce4ljQKf5BhJW061yrB3+CRVps6tNcUkQg==}
+  /prettier-plugin-prisma@4.17.0(prettier@3.0.0):
+    resolution: {integrity: sha512-tfBRdnsg2ZDNTxAu1BuoRL/63Ll9Mid74ujJJUFhHbW7z/5sDIfSMUZ5WGsKlpEbjTuRtIYLmxKwmGrDyD2rSw==}
     engines: {node: '>=14', npm: '>=8'}
     peerDependencies:
-      prettier: '>=2'
+      prettier: '>=2 || >=3'
     dependencies:
-      '@prisma/prisma-fmt-wasm': 4.13.0-52.integration-mobc-upstream-d100a9299fcb9cffb064301998e9a94ce2722c49
+      '@prisma/prisma-fmt-wasm': 4.17.0-16.27eb2449f178cd9fe1a4b892d732cc4795f75085
       prettier: 3.0.0
     dev: true
 
