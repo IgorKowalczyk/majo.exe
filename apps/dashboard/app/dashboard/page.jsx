@@ -31,7 +31,7 @@ export default async function Dashboard() {
  const servers = await Promise.all(promises);
 
  return (
-  <div className="flex w-full flex-col items-center bg-background-primary antialiased md:py-16 md:px-16 px-8 py-8">
+  <div className="flex w-full flex-col items-center bg-background-primary px-8 py-8 antialiased md:px-16 md:py-16">
    <div className="flex flex-col justify-center gap-4">
     <Header1>
      <RectangleStackIcon className="h-10 w-10" aria-hidden="true" role="img" />
@@ -44,7 +44,7 @@ export default async function Dashboard() {
      {servers && servers.length > 0 ? (
       servers.map((server) => (
        <div key={server.id} className="flex flex-row items-center justify-start gap-4">
-        {server.icon ? <Image src={`https://cdn.discordapp.com/icons/${server.id}/${server.icon}.${server.icon.startsWith("a_") ? "gif" : "png"}`} alt={server.name} quality={95} width={64} height={64} className="w-16 h-16 rounded-full" /> : <div className="w-16 h-16 rounded-full bg-button-secondary" />}
+        {server.icon ? <Image src={`https://cdn.discordapp.com/icons/${server.id}/${server.icon}.${server.icon.startsWith("a_") ? "gif" : "png"}`} alt={server.name} quality={95} width={64} height={64} className="h-16 w-16 rounded-full" /> : <div className="h-16 w-16 rounded-full bg-button-secondary" />}
         <h3 className="text-center  text-xl font-bold">{server.name}</h3>
 
         <>

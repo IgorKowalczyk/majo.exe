@@ -87,43 +87,43 @@ export function ChangeEmbedColor({ serverId, serverColor }) {
   <div className="flex flex-row items-center gap-4 divide-x divide-neutral-800">
    <HexColorPicker color={color} onChange={setColor} />
    <div>
-    <div className="flex items-center gap-1 mt-4 ml-4">
-     <Image src={social.logo} alt={serverId} quality={95} width={64} height={64} className="w-10 h-10 rounded-full self-baseline" />
+    <div className="ml-4 mt-4 flex items-center gap-1">
+     <Image src={social.logo} alt={serverId} quality={95} width={64} height={64} className="h-10 w-10 self-baseline rounded-full" />
      <div className="flex flex-col">
-      <div className="h-10 flex-row flex items-center ml-1">
-       <span className="font-bold">{meta.title}</span> <span className="bg-[#5c65f3] rounded px-1 py-[0.12rem] ml-1 text-white text-xs">BOT</span>
-       <span className="text-sm ml-2 text-gray-400">Today at 12:00 AM</span>
+      <div className="ml-1 flex h-10 flex-row items-center">
+       <span className="font-bold">{meta.title}</span> <span className="ml-1 rounded bg-[#5c65f3] px-1 py-[0.12rem] text-xs text-white">BOT</span>
+       <span className="ml-2 text-sm text-gray-400">Today at 12:00 AM</span>
       </div>
       <div>
        <div
-        className="bg-[#2b2d31] rounded shadow-lg p-4 mt-2 ml-1"
+        className="ml-1 mt-2 rounded bg-[#2b2d31] p-4 shadow-lg"
         style={{
          "border-left": `4px solid ${color}`,
         }}
        >
-        <p className="font-bold mb-2">Embed color changed to {color}</p>
+        <p className="mb-2 font-bold">Embed color changed to {color}</p>
 
         <p>This is an example of how your embed color will look like.</p>
         <p>You can change this color by clicking on the color picker above.</p>
        </div>
-       <div className="flex flex-row gap-2 my-2 ml-1">
+       <div className="my-2 ml-1 flex flex-row gap-2">
         <PrimaryButton onClick={handleSubmit}>
-         {buttonText === "Saving..." ? <ArrowPathIcon className="animate-spin h-5 w-5 mr-1 -ml-1" /> : <CheckIcon className="h-5 w-5 mr-1 -ml-1" />}
+         {buttonText === "Saving..." ? <ArrowPathIcon className="-ml-1 mr-1 h-5 w-5 animate-spin" /> : <CheckIcon className="-ml-1 mr-1 h-5 w-5" />}
          {buttonText}
         </PrimaryButton>
         <SecondaryButton onClick={handleReset}>
-         {resetButtonText === "Resetting..." ? <ArrowPathIcon className="animate-spin h-5 w-5 mr-1 -ml-1" /> : <TrashIcon className="h-5 w-5 mr-1 -ml-1" />}
+         {resetButtonText === "Resetting..." ? <ArrowPathIcon className="-ml-1 mr-1 h-5 w-5 animate-spin" /> : <TrashIcon className="-ml-1 mr-1 h-5 w-5" />}
          {resetButtonText}
         </SecondaryButton>
        </div>
        {error && (
-        <p className="text-red-500 flex items-center gap-1">
-         <ExclamationCircleIcon className="h-5 w-5 inline" /> {error}
+        <p className="flex items-center gap-1 text-red-500">
+         <ExclamationCircleIcon className="inline h-5 w-5" /> {error}
         </p>
        )}
        {success && (
-        <p className="text-green-500 flex items-center gap-1">
-         <CheckIcon className="h-5 w-5 inline" /> {success}
+        <p className="flex items-center gap-1 text-green-500">
+         <CheckIcon className="inline h-5 w-5" /> {success}
         </p>
        )}
       </div>

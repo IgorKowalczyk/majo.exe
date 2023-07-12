@@ -20,18 +20,18 @@ export default async function Login({ searchParams }) {
  if (user) return redirect("/");
 
  return (
-  <div className="h-screen w-full absolute before:grayscale after:absolute after:inset-0 after:h-full after:w-full after:-z-10 after:top-20 after:opacity-30 custom-bg z-20 before:md:bg-[url('/assets/svg/grid.svg')] before:opacity-50 before:w-full before:h-full before:absolute before:z-10">
-   <div className="z-20 relative flex h-screen flex-col items-center justify-center gap-4 bg-[radial-gradient(circle,rgba(2,0,36,0)0,rgb(16,17,16,100%))]">
+  <div className="custom-bg absolute z-20 h-screen w-full before:absolute before:z-10 before:h-full before:w-full before:opacity-50 before:grayscale after:absolute after:inset-0 after:top-20 after:-z-10 after:h-full after:w-full after:opacity-30 before:md:bg-[url('/assets/svg/grid.svg')]">
+   <div className="relative z-20 flex h-screen flex-col items-center justify-center gap-4 bg-[radial-gradient(circle,rgba(2,0,36,0)0,rgb(16,17,16,100%))]">
     <div className="mb-4 flex flex-row">
-     <Image src="/assets/avatar.png" width={112} height={112} alt="Avatar" className="rounded-full sm:w-28 sm:h-28 w-20 h-20" quality={90} />
+     <Image src="/assets/avatar.png" width={112} height={112} alt="Avatar" className="h-20 w-20 rounded-full sm:h-28 sm:w-28" quality={90} />
      {searchParams.error ? (
-      <div className="flex items-center justify-center mx-4">
+      <div className="mx-4 flex items-center justify-center">
        <XMarkIcon className="h-8 w-8 text-red-500 " />
       </div>
      ) : (
       <Dots />
      )}
-     <div className="flex sm:w-28 sm:h-28 w-20 h-20 items-center justify-center rounded-full bg-white/5 text-5xl backdrop-blur-sm border border-white/20 text-[#939DB8]">?</div>
+     <div className="flex h-20 w-20 items-center justify-center rounded-full border border-white/20 bg-white/5 text-5xl text-[#939DB8] backdrop-blur-sm sm:h-28 sm:w-28">?</div>
     </div>
 
     {searchParams.error ? (
@@ -45,7 +45,7 @@ export default async function Login({ searchParams }) {
       <p className="my-1 text-center text-xl text-[#939DB8]">Authorize your Discord account to use all the Majo.exe features</p>
      </>
     )}
-    <div className="flex sm:flex-row gap-4 flex-col">
+    <div className="flex flex-col gap-4 sm:flex-row">
      {Object.values(providers).map((provider) => (
       <ProviderLogin key={provider.name} provider={provider} />
      ))}
