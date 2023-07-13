@@ -1,6 +1,6 @@
+import { config } from "@majoexe/config";
 import Redis from "ioredis";
 import { Logger } from "./logger.js";
-import { config } from "@majoexe/config";
 
 let cache;
 

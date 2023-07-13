@@ -7,11 +7,11 @@
   "scripts": {
     "dev": "nodemon index.js",
     "deploy": "node index.js",
-    "format": "prettier --write . --cache --ignore-unknown",
-    "format:check": "prettier --check --cache .",
+    "pm2": "pm2 start ecosystem.config.cjs --env production",
+    "format": "prettier . --write --cache --ignore-unknown",
+    "format:check": "prettier . --check --cache",
     "lint": "eslint . --ext .js,.ts",
-    "lint:fix": "eslint . --ext .js,.ts --fix",
-    "pm2": "pm2 start ecosystem.config.cjs --env production"
+    "lint:fix": "eslint . --ext .js,.ts --fix"
   },
   "dependencies": {
     "@discordjs/rest": "1.7.1",

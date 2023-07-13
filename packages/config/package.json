@@ -7,8 +7,8 @@
   },
   "type": "module",
   "scripts": {
-    "format": "prettier --write . --cache --ignore-unknown",
-    "format:check": "prettier --check --cache .",
+    "format": "prettier . --write --cache --ignore-unknown",
+    "format:check": "prettier . --check --cache",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
     "lint:fix": "eslint . --ext .js,.jsx,.ts,.tsx --fix"
   },

@@ -1,9 +1,9 @@
 /* eslint-disable global-require */
 
+import { config } from "@majoexe/config";
 import { PrismaClient } from "@prisma/client";
 import { createPrismaRedisCache } from "prisma-redis-middleware";
 import { Logger } from "./logger.js";
-import { config } from "@majoexe/config";
 import Redis from "./redis.js";
 
 const globalForPrisma = global;

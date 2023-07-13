@@ -8,7 +8,7 @@
     "build": "next build",
     "deploy": "pnpm run build && pnpm run start",
     "format": "prettier --write . --cache --ignore-unknown --plugin=prettier-plugin-tailwindcss",
-    "format:check": "prettier --check --cache .",
+    "format:check": "prettier . --check --cache",
     "analyze": "ANALYZE=true next build",
     "lint": "next lint",
     "lint:fix": "next lint --fix"

@@ -8,14 +8,14 @@
   },
   "type": "module",
   "scripts": {
-    "format": "prettier --write --cache --ignore-unknown --plugin=prettier-plugin-prisma . ",
-    "format:check": "prettier --check --cache .",
-    "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
-    "lint:fix": "eslint . --ext .js,.jsx,.ts,.tsx --fix",
     "prisma:generate": "prisma generate",
     "prisma:migrate": "prisma migrate dev --preview-feature",
     "prisma:format": "prisma format",
-    "prisma:push": "prisma db push"
+    "prisma:push": "prisma db push",
+    "format": "prettier . --write --cache --ignore-unknown --plugin=prettier-plugin-prisma",
+    "format:check": "prettier . --check --cache",
+    "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
+    "lint:fix": "eslint . --ext .js,.jsx,.ts,.tsx --fix"
   },
   "dependencies": {
     "@majoexe/config": "workspace:*",
