@@ -36,27 +36,33 @@ const authOptions = {
  },
  secret: credentials.secret,
  session: {
-  strategy: "database",
-  maxAge: 24 * 60 * 60, // 24 hours
-  updateAge: 60 * 30, // 30 minutes
+  strategy: "jwt",
+  maxAge: 1 * 60 * 60, // 1 hour
  },
  callbacks: {
-  async session({ session, token, user }) {
-   BigInt.prototype.toJSON = function () {
-    return this.toString();
-   };
-   if (user.avatar) {
-    user.image = `https://cdn.discordapp.com/avatars/${user.discordId}/${user.avatar}.${user.avatar.startsWith("a_") ? "gif" : "png"}?size=2048`;
-   } else if (user.discriminator !== "0") {
-    user.image = `https://cdn.discordapp.com/embed/avatars/${Number(user.discriminator) % 5}.png`;
+  async jwt({ token, account, profile }) {
+   if (account) {
+    token = {
+     ...token,
+     ...account,
+     ...profile,
+    };
+    return token;
    } else {
-    user.image = `https://cdn.discordapp.com/embed/avatars/${(user.id >> 22) % 6}.png`;
+    return token;
+   }
+  },
+  async session({ token }) {
+   if (token.avatar) {
+    token.image = `https://cdn.discordapp.com/avatars/${token.id}/${token.avatar}.${token.avatar.startsWith("a_") ? "gif" : "png"}?size=2048`;
+   } else if (token.discriminator !== "0") {
+    token.image = `https://cdn.discordapp.com/embed/avatars/${Number(token.discriminator) % 5}.png`;
+   } else {
+    token.image = `https://cdn.discordapp.com/embed/avatars/${(token.id >> 22) % 6}.png`;
    }
 
    return {
-    ...session,
     ...token,
-    ...user,
    };
   },
  },

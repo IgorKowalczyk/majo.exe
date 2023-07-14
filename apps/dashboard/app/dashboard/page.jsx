@@ -14,15 +14,8 @@ import { Header1 } from "@/components/blocks/Headers";
 
 export default async function Dashboard() {
  const session = await getSession();
- if (!session) redirect("/auth/login");
- const user = await prismaClient.account.findFirst({
-  where: {
-   providerAccountId: session.discordId,
-  },
- });
-
- if (!user || !user.access_token) return redirect("/auth/login");
- const data = (await getServers(user.access_token)) || [];
+ if (!session || !session.access_token) redirect("/auth/login");
+ const data = (await getServers(session.access_token)) || [];
  const filteredServers = data.length > 0 ? data.filter((server) => canAddBotToServer(server.permissions)) : [];
  const promises = filteredServers.map(async (server) => {
   server.bot = await isBotInServer(server.id);
