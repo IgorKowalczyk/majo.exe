@@ -45,7 +45,7 @@ However, if you want to host Majo.exe yourself see links below.
 ## 🗜️ Requirements
 
 - `PostgreSQL 13x` or higher
-- `Node.js 16x` or higher
+- `Node.js 18x` or higher
 - `(Any)` Linux x64\*
 - `256MB` of RAM
 - `512MB/1GB` of hard drive space
