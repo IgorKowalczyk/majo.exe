@@ -6,6 +6,7 @@ import { Hotjar } from "components/blocks/Hotjar";
 import { Nav } from "components/nav/server/Nav";
 import { Inter } from "next/font/google";
 import Link from "next/link";
+import ProgressBar from "@/components/blocks/client/ProgressBar";
 import { TailwindIndicator } from "@/components/blocks/TailwindIndicator";
 import { VisibilityProvider } from "@/components/nav/client/VisibilityContext";
 import "styles/globals.css";
@@ -61,6 +62,7 @@ export default function RootLayout({ children }) {
    <html lang="en">
     <head>{process.env.HOTJAR_ID && <Hotjar id={process.env.HOTJAR_ID} />}</head>
     <body className={clsx("relative bg-background-primary text-white", inter.className)}>
+     <ProgressBar />
      <VisibilityProvider>
       <Nav />
       <main className="flex w-full flex-col items-center bg-background-primary px-0 py-16 antialiased md:px-16">

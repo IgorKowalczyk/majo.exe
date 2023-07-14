@@ -1,5 +1,4 @@
 import { PlusSmallIcon, RectangleStackIcon } from "@heroicons/react/24/outline";
-import prismaClient from "@majoexe/database";
 import { canAddBotToServer } from "@majoexe/util/functions";
 import { getServers } from "@majoexe/util/functions";
 import { isBotInServer } from "@majoexe/util/functions";

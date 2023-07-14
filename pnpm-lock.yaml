@@ -133,6 +133,9 @@ importers:
       next-auth:
         specifier: 4.22.1
         version: 4.22.1(next@13.4.1)(react-dom@18.2.0)(react@18.2.0)
+      next-nprogress-bar:
+        specifier: ^2.0.2
+        version: 2.0.2
       next-themes:
         specifier: 0.2.1
         version: 0.2.1(next@13.4.1)(react-dom@18.2.0)(react@18.2.0)
@@ -3172,6 +3175,12 @@ packages:
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
       uuid: 8.3.2
+    dev: false
+
+  /next-nprogress-bar@2.0.2:
+    resolution: {integrity: sha512-kM0PylW+952ZJDyHiy3lcJE6lo9XuHfT2yvC2G7lAtRX/2xvPXpGzfjxu0p0bbDsotyaxUooQSdbz2G1h5klAA==}
+    dependencies:
+      nprogress: 0.2.0
     dev: false
 
   /next-themes@0.2.1(next@13.4.1)(react-dom@18.2.0)(react@18.2.0):

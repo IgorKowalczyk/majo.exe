@@ -3,19 +3,7 @@
 }
 
 #nprogress .bar {
- @apply fixed left-0 top-0  z-[10000] h-[2px] w-full bg-accent-primary;
-}
-
-#nprogress .spinner {
- @apply fixed bottom-4 right-4 z-[9999] block animate-[fade_200ms_linear] rounded-lg bg-black/[40%] p-[10px] backdrop-blur-[5px] firefox:bg-gray-800 motion-reduce:animate-none motion-reduce:transition-none dark:bg-white/10 firefox:dark:bg-slate-800;
-}
-
-#nprogress .spinner-icon {
- @apply box-border h-6 w-6 animate-[spin_500ms_linear_infinite] rounded-[50%] border-[3px] border-solid border-transparent border-l-white border-t-white motion-reduce:transition-none;
-}
-
-.nprogress-custom-parent {
- @apply relative overflow-hidden;
+ @apply fixed left-0 top-0 !z-[99999] h-[4px] w-full;
 }
 
 .nprogress-custom-parent #nprogress .spinner,
