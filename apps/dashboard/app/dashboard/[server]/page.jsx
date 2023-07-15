@@ -1,11 +1,11 @@
 import { getServer, getGuildPreview } from "@majoexe/util/functions";
 import { getSession } from "lib/session";
 import Image from "next/image";
+import Link from "next/link";
 import { redirect } from "next/navigation";
-import { Header1, Header4, Header5 } from "@/components/blocks/Headers";
 import { Block } from "@/components/blocks/Block";
 import { Tooltip } from "@/components/blocks/client/Tooltip";
-import Link from "next/link";
+import { Header1, Header4, Header5 } from "@/components/blocks/Headers";
 import "tippy.js/dist/backdrop.css";
 import "tippy.js/animations/shift-away.css";
 import "tippy.js/dist/tippy.css";

@@ -1,4 +1,3 @@
-
 /* /guild */
 export * from "./guild/getGuildPreview.js";
 export * from "./guild/getServer.js";

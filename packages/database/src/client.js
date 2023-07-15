@@ -41,9 +41,10 @@ const cache = createPrismaRedisCache({
  storage: {
   // Prettier
   type: Redis instanceof Set ? "redis" : "memory",
-  options: { // Prettier
+  options: {
+   // Prettier
    client: Redis instanceof Set ? Redis : undefined,
-   invalidation: { referencesTTL: 300 }
+   invalidation: { referencesTTL: 300 },
   },
  },
  cacheTime: 30,
