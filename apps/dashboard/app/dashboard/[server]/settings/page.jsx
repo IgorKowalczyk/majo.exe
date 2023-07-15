@@ -31,7 +31,7 @@ export default async function Settings({ params }) {
  }
 
  return (
-  <div className="flex w-full flex-col items-center bg-background-primary px-8 py-8 antialiased md:px-16 md:py-16">
+  <>
    <Block>
     <h2 className="flex items-center justify-center gap-4 text-center text-3xl font-bold">
      <PaintBrushIcon className="h-9 w-9" />
@@ -40,6 +40,6 @@ export default async function Settings({ params }) {
     <p className="mb-4 text-center">Change the color of the embeds sent by the bot.</p>
     <ChangeEmbedColor serverId={serverDownload.id} serverColor={guild?.embedColor || config.global.defaultColor} serverIcon={serverDownload.icon} />
    </Block>
-  </div>
+  </>
  );
 }

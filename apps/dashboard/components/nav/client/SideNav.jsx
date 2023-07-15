@@ -28,7 +28,7 @@ export function SideNav({ server }) {
       hidden: !sideNavVisible,
       flex: sideNavVisible,
      },
-     "menu fixed left-0 z-[9998] h-full w-64 flex-col items-center border-r border-r-neutral-800 bg-background-navbar/70 px-4 py-8 backdrop-blur lg:!flex"
+     "menu fixed z-[9998] mt-16 hidden h-screen w-64 flex-none flex-col flex-nowrap overflow-y-auto overflow-x-hidden border-r-[1px] border-r-neutral-800 bg-background-navbar/70  px-4 py-8 shadow-lg backdrop-blur md:top-0 md:flex"
     )}
    >
     <PrimaryButton href="/dashboard" className="mb-4 w-full">
