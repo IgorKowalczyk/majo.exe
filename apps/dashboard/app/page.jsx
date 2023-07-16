@@ -10,7 +10,7 @@ export default async function Main() {
   <>
    <div className="relative z-20 flex min-h-screen w-full flex-col items-center justify-center before:absolute before:z-10  before:h-full before:w-full before:opacity-5 before:grayscale before:md:bg-grid-[#fff]">
     <div className="absolute left-0 top-0 z-10 h-full w-full bg-[radial-gradient(circle,rgba(2,0,36,0)0,rgb(16,17,16,100%))]" />
-    <div className="relative z-20 -mt-14 flex flex-col items-center md:w-[90%] lg:flex-row xl:w-4/5">
+    <div className="relative z-20 -mt-14 flex select-none flex-col items-center md:w-[90%] lg:flex-row xl:w-4/5">
      <div className="flex w-full flex-col items-center justify-start gap-4 lg:w-1/2 lg:items-start">
       <Link href={"/api/invite"} className="group -mt-4 flex w-fit cursor-copy flex-row items-center rounded-full border border-neutral-700 bg-background-menu-button/50 px-6 py-1 text-center font-medium backdrop-blur transition-all duration-200 hover:bg-background-menu-button/40">
        Introducing Majo.exe v6

@@ -39,7 +39,7 @@ const GlobeAnimation = () => {
  }));
 
  useEffect(() => {
-  let phi = -0.5;
+  let phi = 4.25;
   const globe = createGlobe(canvasRef.current, {
    devicePixelRatio: 2,
    width: 500 * 2,
@@ -52,10 +52,14 @@ const GlobeAnimation = () => {
    mapSamples: 16000,
    mapBrightness: 6,
    baseColor: [0.5, 0.5, 0.5],
-   markerColor: [0.1, 0.8, 1],
+   markerColor: [1, 1, 1],
    glowColor: [0.063, 0.067, 0.063],
    opacity: 0.95,
-   markers: [],
+   markers: [
+    // Prettier
+    { location: [52.22977, 21.01178], size: 0.06 },
+    { location: [50.11552, 8.68417], size: 0.04 },
+   ],
    onRender: (state) => {
     phi += 0.002;
     state.phi = phi + r.get();
@@ -99,7 +103,7 @@ const GlobeAnimation = () => {
      });
     }
    }}
-   style={{ width: 500, height: 500, maxWidth: "100%", aspectRatio: 1 }}
+   style={{ width: 500, height: 500, maxWidth: "100%", aspectRatio: 1, opacity: 0, transition: "opacity 1s ease" }}
   />
  );
 };
