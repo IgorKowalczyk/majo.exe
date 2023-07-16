@@ -59,7 +59,7 @@ export default async function ServerLeaderboard({ params }) {
     </svg>
     Leaderboard
    </Header1>
-   <div className="w-full max-w-2xl overflow-auto">
+   <div className="flex w-full max-w-2xl items-center overflow-auto">
     {xp.length === 0 && <h3 className="mt-4 text-center text-xl font-bold">No users found!</h3>}
     {xp.length > 0 && (
      <Block className="mt-4">
