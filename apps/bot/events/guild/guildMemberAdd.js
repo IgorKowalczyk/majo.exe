@@ -27,7 +27,7 @@ export async function guildMemberAdd(client, member) {
    data: {
     joins: {
      increment: 1,
-    }
+    },
    },
   });
  }

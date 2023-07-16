@@ -27,7 +27,7 @@ export async function guildMemberRemove(client, member) {
    data: {
     leaves: {
      increment: 1,
-    }
+    },
    },
   });
  }
