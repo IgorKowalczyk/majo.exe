@@ -31,7 +31,14 @@ export default async function ServerLeaderboard({ params }) {
    xp: "desc",
   },
   include: {
-   user: true,
+   user: {
+    select: {
+     discordId: true,
+     name: true,
+     avatar: true,
+     discriminator: true,
+    },
+   },
   },
  });
 

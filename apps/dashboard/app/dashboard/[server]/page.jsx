@@ -1,11 +1,13 @@
 import { getServer, getGuildPreview } from "@majoexe/util/functions";
 import { getSession } from "lib/session";
+import prismaClient from "@majoexe/database";
 import Image from "next/image";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import { Block } from "@/components/blocks/Block";
 import { Tooltip } from "@/components/blocks/client/Tooltip";
 import { Header1, Header4, Header5 } from "@/components/blocks/Headers";
+import { Leaderboard } from "@/components/blocks/client/Leaderboard";
 import "tippy.js/dist/backdrop.css";
 import "tippy.js/animations/shift-away.css";
 import "tippy.js/dist/tippy.css";
@@ -24,6 +26,37 @@ export default async function ServerOverview({ params }) {
  if (serverDownload.code === 10004) return redirect("/dashboard");
  if (!serverDownload.bot) return redirect("/dashboard");
  const guildPreview = await getGuildPreview(serverDownload.id);
+
+ const xp = await prismaClient.guildXp.findMany({
+  where: {
+   guildId: serverDownload.id,
+  },
+  orderBy: {
+   xp: "desc",
+  },
+  take: 5,
+  include: {
+   user: {
+    select: {
+     discordId: true,
+     name: true,
+     avatar: true,
+     discriminator: true,
+    },
+   },
+  },
+ });
+
+ console.log(xp);
+
+ const data = xp.map((x, i) => {
+  return {
+   id: i + 1,
+   user: x.user,
+   xp: x.xp,
+   level: Math.floor(0.1 * Math.sqrt(x.xp || 0)),
+  };
+ });
 
  return (
   <>
@@ -52,6 +85,7 @@ export default async function ServerOverview({ params }) {
    <div className="mt-6 flex items-start gap-6">
     <Block className="flex flex-col justify-start [flex:3_1_0] ">
      <Header4 className="mb-4 !items-start !justify-normal opacity-80">Leaderboard</Header4>
+     {data.length > 0 ? <Leaderboard data={data} showSearch={false} showControls={false} /> : <span className="opacity-50">No users found. Maybe you should try talking in chat?</span>}
     </Block>
     <div className="flex flex-col justify-start gap-6 [flex:2_1_0%]">
      <Block>
