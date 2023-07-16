@@ -49,7 +49,7 @@ const GlobeAnimation = () => {
    dark: 1,
    diffuse: 1.2,
    scale: 1,
-   mapSamples: 16000,
+   mapSamples: 13000,
    mapBrightness: 6,
    baseColor: [0.5, 0.5, 0.5],
    markerColor: [1, 1, 1],
