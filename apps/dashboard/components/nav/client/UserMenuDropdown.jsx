@@ -18,7 +18,7 @@ export function UserMenuDropdown({ user }) {
        <div
         className={clsx(
          {
-          "bg-background-menu-button opacity-80": open,
+          "opacity-80": open,
           "hover:opacity-80": !open,
          },
          "flex h-10 select-none items-center rounded border border-neutral-700 bg-background-menu-button px-4 py-2 duration-200  motion-reduce:transition-none"
