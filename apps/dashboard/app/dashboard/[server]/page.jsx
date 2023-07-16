@@ -47,8 +47,6 @@ export default async function ServerOverview({ params }) {
   },
  });
 
- console.log(xp);
-
  const data = xp.map((x, i) => {
   return {
    id: i + 1,
