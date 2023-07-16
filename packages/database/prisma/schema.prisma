@@ -81,14 +81,16 @@ model Suggestions {
 }
 
 model Guild {
- id               String      @id @default(cuid())
- guildId          String      @unique @map(name: "guild_id")
- profanityLevel   Int         @default(0) @map(name: "profanity_level")
- embedColor       String      @default("#5865F2") @map(name: "embed_color")
- embedLastChanged DateTime?   @default(now()) @map(name: "embed_last_changed")
- lastUpdated      DateTime    @default(now()) @map(name: "last_updated")
+ id               String       @id @default(cuid())
+ guildId          String       @unique @map(name: "guild_id")
+ profanityLevel   Int          @default(0) @map(name: "profanity_level")
+ embedColor       String       @default("#5865F2") @map(name: "embed_color")
+ embedLastChanged DateTime?    @default(now()) @map(name: "embed_last_changed")
+ lastUpdated      DateTime     @default(now()) @map(name: "last_updated")
  guildLogs        GuildLogs[]
  guildXp          GuildXp[]
+ GuildJoin        GuildJoin[]
+ GuildLeave       GuildLeave[]
 
  @@map(name: "guilds")
 }
@@ -116,4 +118,24 @@ model GuildXp {
  user      User     @relation(fields: [userId], references: [discordId], onDelete: Cascade)
 
  @@map(name: "guild_xp")
+}
+
+model GuildJoin {
+ id      String   @id @default(cuid())
+ guildId String   @map(name: "guild_id")
+ date    DateTime @default(now())
+ joins   Int      @default(0)
+ guild   Guild    @relation(fields: [guildId], references: [guildId], onDelete: Cascade)
+
+ @@map(name: "guild_joins")
+}
+
+model GuildLeave {
+ id      String   @id @default(cuid())
+ guildId String   @map(name: "guild_id")
+ date    DateTime @default(now())
+ leaves  Int      @default(0)
+ guild   Guild    @relation(fields: [guildId], references: [guildId], onDelete: Cascade)
+
+ @@map(name: "guild_leaves")
 }

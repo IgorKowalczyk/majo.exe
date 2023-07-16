@@ -1,13 +1,13 @@
+import prismaClient from "@majoexe/database";
 import { getServer, getGuildPreview } from "@majoexe/util/functions";
 import { getSession } from "lib/session";
-import prismaClient from "@majoexe/database";
 import Image from "next/image";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import { Block } from "@/components/blocks/Block";
+import { Leaderboard } from "@/components/blocks/client/Leaderboard";
 import { Tooltip } from "@/components/blocks/client/Tooltip";
 import { Header1, Header4, Header5 } from "@/components/blocks/Headers";
-import { Leaderboard } from "@/components/blocks/client/Leaderboard";
 import "tippy.js/dist/backdrop.css";
 import "tippy.js/animations/shift-away.css";
 import "tippy.js/dist/tippy.css";
