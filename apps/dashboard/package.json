@@ -26,7 +26,7 @@
     "@vercel/analytics": "1.0.1",
     "@vercel/og": "0.5.8",
     "autoprefixer": "10.4.14",
-    "clsx": "1.2.1",
+    "clsx": "2.0.0",
     "cobe": "0.6.3",
     "globby": "13.2.2",
     "mini-svg-data-uri": "1.4.4",
