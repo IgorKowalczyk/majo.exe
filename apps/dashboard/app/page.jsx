@@ -2,7 +2,7 @@ import { ArrowRightIcon } from "@heroicons/react/24/outline";
 import { Invite } from "components/buttons/server/Invite";
 import { Login } from "components/buttons/server/Login";
 import Link from "next/link";
-import { SplineBlock } from "@/components/blocks/client/Spline";
+import GlobeClient from "@/components/blocks/client/Globe";
 import { Header1 } from "@/components/blocks/Headers";
 
 export default async function Main() {
@@ -23,8 +23,8 @@ export default async function Main() {
        <Invite />
       </div>
      </div>
-     <div className="hidden w-1/2 flex-col items-center justify-center lg:flex">
-      <SplineBlock url="https://prod.spline.design/wibg6pm5xTPtuPq1/scene.splinecode" />
+     <div className="hidden min-h-[500px] w-1/2 flex-col items-center justify-center lg:flex ">
+      <GlobeClient />
      </div>
     </div>
    </div>
