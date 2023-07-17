@@ -7,17 +7,20 @@
 - `/src/client.js` contains database client. It's used by Majo.exe to interact with database. It also includes edge client for Prisma Data Proxy.
 
 ## 🗜️ PostgreSQL
+
 ### 🐘 Neon.tech
+
 1. Create new [Neon](https://neon.tech/) account and create new PostgreSQL database.
-3. Create new file or edit existing `.env` file in root directory of the project
-4. In `.env` file set this values:
+2. Create new file or edit existing `.env` file in root directory of the project
+3. In `.env` file set this values:
    - `DATABASE_URL` - pooling database connection string
    - `DIRECT_URL` - non-pooling database connection string
-5. Run `pnpm install` to install dependencies.
-6. Run `pnpm prisma:migrate` to generate & apply initial migration.
-7. Run `pnpm prisma:generate` to generate database client.
+4. Run `pnpm install` to install dependencies.
+5. Run `pnpm prisma:migrate` to generate & apply initial migration.
+6. Run `pnpm prisma:generate` to generate database client.
 
 ### 🐳 Local PostgreSQL (Docker)
+
 1. Install Docker by following the instructions at https://docs.docker.com/get-docker/.
 2. Pull the PostgreSQL Docker image for version 15 (`docker pull postgres:15`) or use existing one.
 3. Create a new container using the PostgreSQL image (`docker run --name majoexe -e POSTGRES_PASSWORD=postgres -p 5432:5432 -d postgres:15`)
@@ -35,7 +38,9 @@
 ---
 
 ## ⌛ Caching [optional]
+
 ### ☁ Redis Cloud
+
 1. Create new [Redis Cloud](https://app.redislabs.com/) account and create new Redis database.
 2. Create new file or edit existing `.env` file in root directory of the project
 3. In `.env` file set this values:
@@ -43,6 +48,7 @@
 4. That's it! Majo.exe will automatically cache data in Redis Cloud.
 
 ### 🐳 Local Redis (Docker)
+
 1. Install Docker by following the instructions at https://docs.docker.com/get-docker/.
 2. Pull the Redis Docker image (`docker pull redis`) or use existing one.
 3. Create a new container using the Redis image (`docker run --name redis -p 6379:6379 -d redis`)
@@ -52,7 +58,7 @@
 6. That's it! Majo.exe will automatically cache data in Redis.
 
 > **Note**:
-> If you do not set `REDIS_URL` in `.env` file Majo.exe will use memory cache instead of Redis. Memory cache is not persistent and will be cleared after restarting Majo.exe. Memory cache will consume more resources than Redis cache. 
+> If you do not set `REDIS_URL` in `.env` file Majo.exe will use memory cache instead of Redis. Memory cache is not persistent and will be cleared after restarting Majo.exe. Memory cache will consume more resources than Redis cache.
 
 ---
 
