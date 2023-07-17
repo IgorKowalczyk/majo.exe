@@ -66,14 +66,12 @@ However, if you want to host Majo.exe yourself see links below.
 | HOTJAR_ID           | [Hotjar](https://hotjar.com) ID                  | ❌             | ❌                   |
 | DATABASE_URL        | Main database URL                                | ✅             | ✅                   |
 | DIRECT_URL          | Non-pooling database URL                         | ❌             | ❌                   |
-| SHADOW_DATABASE_URL | Shadow database URL²                             | ❌             | ❌                   |
-| REDIS_URL           | Redis URL³                                       | ❌             | ❌                   |
+| REDIS_URL           | Redis URL²                                       | ❌             | ❌                   |
 
 > **Note**:
 
 1. `NEXT_PUBLIC_URL` is required only if you want to also include the dashboard.
-2. `SHADOW_DATABASE_URL` is used for prisma migrations. Prisma will try to create a new database and then apply migrations. If it fails, it will use `SHADOW_DATABASE_URL` instead.
-3. `REDIS_URL` enables caching. If you don't want to use caching, you can leave it empty.
+2. `REDIS_URL` enables caching. If you don't want to use Redis caching, leave this variable empty. Majo.exe will use Memory caching instead.
 
 ## 📝 Contributors
 

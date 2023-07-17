@@ -24,7 +24,6 @@
    - Database URLs [[Tutorial](/packages/database/README.md)]
      - `DATABASE_URL` - Main database URL
      - `DIRECT_URL` - Direct database URL (optional)
-     - `SHADOW_DATABASE_URL` - Shadow database URL (optional)
 7. Go to `/apps/dashboard/` directory
 8. Run `pnpm i` to install all dependencies
 9. Run `pnpm run dev` or `pnpm run deploy` to start dashboard
