@@ -259,8 +259,8 @@ importers:
         specifier: 3.0.0
         version: 3.0.0
       prettier-plugin-prisma:
-        specifier: 4.17.0
-        version: 4.17.0(prettier@3.0.0)
+        specifier: 5.0.0
+        version: 5.0.0(prettier@3.0.0)
 
   packages/eslint-config:
     dependencies:
@@ -2322,8 +2322,8 @@ packages:
     resolution: {integrity: sha512-9iPBVd2Mz29QzJccyLJforZb/oWCLAS/5Ky6ZVtV5iST/kcDdCL+R+fllzNBltwywPrNwGorUx4C8Ps6WFZaiA==}
     dev: true
 
-  /@prisma/prisma-fmt-wasm@4.17.0-16.27eb2449f178cd9fe1a4b892d732cc4795f75085:
-    resolution: {integrity: sha512-zYz3rFwPB82mVlHGknAPdnSY/a308dhPOblxQLcZgZTDRtDXOE1MgxoRAys+jekwR4/bm3+rZDPs1xsFMsPZig==}
+  /@prisma/prisma-schema-wasm@4.17.0-26.6b0aef69b7cdfc787f822ecd7cdc76d5f1991584:
+    resolution: {integrity: sha512-JFdsnSgBPN8reDTLOI9Vh/6ccCb2aD1LbY/LWQnkcIgNo6IdpzvuM+qRVbBuA6IZP2SdqQI8Lu6RL2P8EFBQUA==}
     dev: true
 
   /@react-native-community/cli-clean@11.3.5:
@@ -7198,13 +7198,13 @@ packages:
       fast-diff: 1.3.0
     dev: false
 
-  /prettier-plugin-prisma@4.17.0(prettier@3.0.0):
-    resolution: {integrity: sha512-tfBRdnsg2ZDNTxAu1BuoRL/63Ll9Mid74ujJJUFhHbW7z/5sDIfSMUZ5WGsKlpEbjTuRtIYLmxKwmGrDyD2rSw==}
+  /prettier-plugin-prisma@5.0.0(prettier@3.0.0):
+    resolution: {integrity: sha512-jTJV04D9+yF7ziOOMs7CJe4ijgAH7DEGjt0SAWAToGNRy1H6BEhvcKA2UQH6gC6KVW5zeeOSAvsoiDDTt9oKXg==}
     engines: {node: '>=14', npm: '>=8'}
     peerDependencies:
       prettier: '>=2 || >=3'
     dependencies:
-      '@prisma/prisma-fmt-wasm': 4.17.0-16.27eb2449f178cd9fe1a4b892d732cc4795f75085
+      '@prisma/prisma-schema-wasm': 4.17.0-26.6b0aef69b7cdfc787f822ecd7cdc76d5f1991584
       prettier: 3.0.0
     dev: true
 
