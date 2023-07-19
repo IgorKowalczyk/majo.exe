@@ -28,7 +28,7 @@
   "devDependencies": {
     "@majoexe/eslint-config": "workspace:*",
     "eslint": "8.45.0",
-    "eslint-config-turbo": "1.10.8",
+    "eslint-config-turbo": "1.10.9",
     "prettier": "3.0.0",
     "prettier-plugin-prisma": "5.0.0"
   },
