@@ -1,43 +1,43 @@
 {
- "name": "@majoexe/eslint-config",
- "version": "6.0.0",
- "description": "Majo.exe shared eslint config, based on @igorkowalczyk/eslint-config",
- "exports": "./index.js",
- "scripts": {
-  "format": "prettier . --write --cache --ignore-unknown",
-  "format:check": "prettier . --check --cache",
-  "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
-  "lint:fix": "eslint . --ext .js,.jsx,.ts,.tsx --fix"
- },
- "dependencies": {
-  "@igorkowalczyk/eslint-config": "1.5.3",
-  "eslint": "8.45.0",
-  "eslint-config-turbo": "1.10.12",
-  "prettier": "3.0.0"
- },
- "engines": {
-  "node": ">=18.0.0"
- },
- "repository": {
-  "type": "git",
-  "url": "git+https://github.com/igorkowalczyk/majo.exe.git",
-  "directory": "packages/eslint-config"
- },
- "keywords": [
-  "eslint",
-  "eslint-config",
-  "styleguide",
-  "style",
-  "guide",
-  "lint",
-  "linting",
-  "code-quality"
- ],
- "author": "Igor Kowalczyk",
- "license": "MIT",
- "bugs": {
-  "url": "https://github.com/igorkowalczyk/majo.exe/issues"
- },
- "homepage": "https://github.com/igorkowalczyk/majo.exe#readme",
- "packageManager": "pnpm@8.6.10"
+  "name": "@majoexe/eslint-config",
+  "version": "6.0.0",
+  "description": "Majo.exe shared eslint config, based on @igorkowalczyk/eslint-config",
+  "exports": "./index.js",
+  "scripts": {
+    "format": "prettier . --write --cache --ignore-unknown",
+    "format:check": "prettier . --check --cache",
+    "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
+    "lint:fix": "eslint . --ext .js,.jsx,.ts,.tsx --fix"
+  },
+  "dependencies": {
+    "@igorkowalczyk/eslint-config": "1.5.3",
+    "eslint": "8.45.0",
+    "eslint-config-turbo": "1.10.12",
+    "prettier": "3.0.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/igorkowalczyk/majo.exe.git",
+    "directory": "packages/eslint-config"
+  },
+  "keywords": [
+    "eslint",
+    "eslint-config",
+    "styleguide",
+    "style",
+    "guide",
+    "lint",
+    "linting",
+    "code-quality"
+  ],
+  "author": "Igor Kowalczyk",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/igorkowalczyk/majo.exe/issues"
+  },
+  "homepage": "https://github.com/igorkowalczyk/majo.exe#readme",
+  "packageManager": "pnpm@8.6.7"
 }

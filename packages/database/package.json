@@ -3,8 +3,8 @@
   "version": "6.0.0",
   "description": "Majo.exe main database schema/client/migrations package",
   "exports": {
-   ".": "./src/client.js",
-   "./redis": "./src/redis.js"
+    ".": "./src/client.js",
+    "./redis": "./src/redis.js"
   },
   "type": "module",
   "scripts": {

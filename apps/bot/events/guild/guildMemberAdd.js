@@ -6,7 +6,7 @@ export async function guildMemberAdd(client, member) {
   where: {
    guildId: member.guild.id,
    date: {
-    gte: new Date(new Date().getFullYear(), new Date().getMonth(), 1),
+    gte: new Date(new Date().getFullYear(), new Date().getMonth(), new Date().getDate()),
    },
   },
  });
