@@ -23,7 +23,7 @@
   "dependencies": {
     "dotenv-cli": "7.2.1",
     "pm2": "5.3.0",
-    "turbo": "1.10.7"
+    "turbo": "1.10.12"
   },
   "devDependencies": {
     "@igorkowalczyk/prettier-config": "1.5.3",

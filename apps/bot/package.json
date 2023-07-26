@@ -15,16 +15,16 @@
   },
   "dependencies": {
     "@discordjs/rest": "1.7.1",
+    "@majoexe/config": "workspace:*",
     "@majoexe/database": "workspace:*",
     "@majoexe/util": "workspace:*",
-    "@majoexe/config": "workspace:*",
     "bad-words": "3.0.4",
     "chalk": "5.3.0",
     "discord.js": "14.11.0",
     "dotenv": "16.3.1",
     "flip-text": "1.2.0",
     "globby": "13.2.2",
-    "node-fetch": "3.3.1"
+    "node-fetch": "3.3.2"
   },
   "devDependencies": {
     "@majoexe/eslint-config": "workspace:*",
