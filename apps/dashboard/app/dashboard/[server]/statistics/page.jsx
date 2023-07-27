@@ -88,7 +88,9 @@ export default async function Statistics({ params }) {
 
  return (
   <>
+   {/*
    <ServerStatsChart guildJoin={guildJoin} guildLeave={guildLeave} />
+   */}
   </>
  );
 }
