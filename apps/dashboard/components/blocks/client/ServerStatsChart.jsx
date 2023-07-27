@@ -16,13 +16,17 @@ export function ServerStatsChart({ guildJoin, guildLeave }) {
     <Header4 className="mb-4 !items-start !justify-normal opacity-80">
      Members Joined <span className="text-accent-primary">(+{sumArray(guildJoin, "Joins")})</span>
     </Header4>
+    {/*
     <AreaChart className="mt-10 h-80" data={guildJoin} index="date" categories={["Joins"]} yAxisWidth={50} valueFormatter={numberFormatter} curveType="monotone" />
+    */}
    </Block>
    <Block>
     <Header4 className="mb-4 !items-start !justify-normal opacity-80">
      Members Left <span className="text-accent-primary">(-{sumArray(guildLeave, "Leaves")})</span>
     </Header4>
+    {/*
     <AreaChart className="mt-10 h-80" data={guildLeave} index="date" categories={["Leaves"]} yAxisWidth={50} valueFormatter={numberFormatter} curveType="monotone" />
+    */}
    </Block>
   </div>
  );
