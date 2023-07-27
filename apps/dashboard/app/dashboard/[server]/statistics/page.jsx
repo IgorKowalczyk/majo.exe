@@ -2,7 +2,7 @@ import prismaClient from "@majoexe/database";
 import { getServer } from "@majoexe/util/functions";
 import { getSession } from "lib/session";
 import { redirect } from "next/navigation";
-import { ServerStatsChart } from "../../../../components/blocks/client/ServerStatsChart";
+import { ServerStatsChart } from "@/components/blocks/client/ServerStatsChart";
 
 export default async function Statistics({ params }) {
  const user = await getSession();
@@ -99,9 +99,7 @@ export default async function Statistics({ params }) {
 
  return (
   <>
-   {/*
    <ServerStatsChart guildJoin={guildJoin} guildLeave={guildLeave} />
-   */}
   </>
  );
 }
