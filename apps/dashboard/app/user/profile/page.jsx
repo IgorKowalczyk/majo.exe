@@ -6,9 +6,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import { Tooltip } from "@/components/blocks/client/Tooltip";
-import "tippy.js/dist/backdrop.css";
-import "tippy.js/animations/shift-away.css";
-import "tippy.js/dist/tippy.css";
 
 export default async function Profile() {
  const user = await getSession();

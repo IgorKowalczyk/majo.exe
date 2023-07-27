@@ -22,11 +22,11 @@ export function Leaderboard({ data, showControls = true, showSearch = true }) {
     Cell: ({ value }) => (
      <div className="flex items-center space-x-4">
       <div className="relative">{value?.avatar && <Image src={`https://cdn.discordapp.com/avatars/${value?.discordId}/${value?.avatar}.${value?.avatar.startsWith("a_") ? "gif" : "png"}`} alt={`${value?.name} avatar`} quality={95} width={32} height={32} className="h-12 w-12 rounded-full" />}</div>
-      <Tooltip content={`Discord ID: ${value?.discordId}`}>
-       <p className="text-left font-bold">
+      <Tooltip content={`Discord ID: ${value?.discordId || "Unknown"}`}>
+       <span className="text-left font-bold">
         {value?.name || value?.id}
         <span className="opacity-70">#{value?.discriminator || "0000"}</span>
-       </p>
+       </span>
       </Tooltip>
      </div>
     ),

@@ -47,54 +47,40 @@ export default async function Statistics({ params }) {
  const guildJoinMap = new Map();
  const guildLeaveMap = new Map();
 
- for (const guildJoinData of guild.GuildJoin || []) {
-  const date = guildJoinData.date;
-  guildJoinMap.set(date, guildJoinData.joins);
- }
+ const parseDate = (dateString) => {
+  const date = new Date(dateString);
+  return isNaN(date) ? null : date.toISOString().split("T")[0];
+ };
 
- for (const guildLeaveData of guild.GuildLeave || []) {
-  const date = guildLeaveData.date;
-  guildLeaveMap.set(date, guildLeaveData.leaves);
- }
+ guild.GuildJoin.forEach((guildJoinData) => {
+  const dateFormatted = parseDate(guildJoinData.date);
+  if (dateFormatted !== null) {
+   guildJoinMap.set(dateFormatted, (guildJoinMap.get(dateFormatted) || 0) + guildJoinData.joins);
+  }
+ });
+
+ guild.GuildLeave.forEach((guildLeaveData) => {
+  const dateFormatted = parseDate(guildLeaveData.date);
+  if (dateFormatted !== null) {
+   guildLeaveMap.set(dateFormatted, (guildLeaveMap.get(dateFormatted) || 0) + guildLeaveData.leaves);
+  }
+ });
 
  const currentDate = new Date();
  const pastDays = 30;
-
- let guildJoin = [];
- let guildLeave = [];
+ const guildJoin = [];
+ const guildLeave = [];
 
  for (let i = 0; i < pastDays; i++) {
-  const date = currentDate.getDate() - i;
-  const joins = guildJoinMap.get(date) || 0;
-  const leaves = guildLeaveMap.get(date) || 0;
+  const date = new Date(currentDate);
+  date.setDate(currentDate.getDate() - i);
+  const dateFormatted = parseDate(date.toISOString().split("T")[0]);
 
-  guildJoin.push({
-   date,
-   Joins: joins,
-  });
+  const joins = guildJoinMap.get(dateFormatted) || 0;
+  const leaves = guildLeaveMap.get(dateFormatted) || 0;
 
-  guildLeave.push({
-   date,
-   Leaves: leaves,
-  });
- }
-
- if (guildJoinMap.size === 0) {
-  guildJoin = [
-   {
-    date: currentDate.getDate(),
-    Joins: 0,
-   },
-  ];
- }
-
- if (guildLeaveMap.size === 0) {
-  guildLeave = [
-   {
-    date: currentDate.getDate(),
-    Leaves: 0,
-   },
-  ];
+  guildJoin.unshift({ date: dateFormatted, Joins: joins });
+  guildLeave.unshift({ date: dateFormatted, Leaves: leaves });
  }
 
  return (

@@ -8,9 +8,6 @@ import { Block } from "@/components/blocks/Block";
 import { Leaderboard } from "@/components/blocks/client/Leaderboard";
 import { Tooltip } from "@/components/blocks/client/Tooltip";
 import { Header1, Header4, Header5 } from "@/components/blocks/Headers";
-import "tippy.js/dist/backdrop.css";
-import "tippy.js/animations/shift-away.css";
-import "tippy.js/dist/tippy.css";
 
 export const metadata = {
  title: "Server Overview",
@@ -101,8 +98,10 @@ export default async function ServerOverview({ params }) {
        <div className="flex flex-row flex-wrap gap-4">
         {guildPreview.emojis.map((emoji) => (
          <Link key={emoji.id + emoji.name} className="flex flex-col items-center justify-center gap-2" href={`https://cdn.discordapp.com/emojis/${emoji.id}.${emoji.animated ? "gif" : "png"}`} target="_blank" rel="noreferrer noopener">
-          <Tooltip content={emoji.name}>
-           <Image src={`https://cdn.discordapp.com/emojis/${emoji.id}.${emoji.animated ? "gif" : "png"}`} alt={emoji.name} quality={95} width={32} height={32} className="h-8 w-8" />
+          <Tooltip content={emoji.name || "Unnamed emoji"}>
+           <>
+            <Image src={`https://cdn.discordapp.com/emojis/${emoji.id}.${emoji.animated ? "gif" : "png"}`} alt={emoji.name} quality={95} width={32} height={32} className="h-8 w-8" />
+           </>
           </Tooltip>
          </Link>
         ))}
@@ -121,8 +120,10 @@ export default async function ServerOverview({ params }) {
        <div className="flex flex-row flex-wrap gap-4">
         {guildPreview.stickers.map((sticker) => (
          <Link key={sticker.id + sticker.name} className="flex flex-col items-center justify-center gap-2" href={`https://cdn.discordapp.com/stickers/${sticker.id}.${sticker.format_type === 1 ? "png" : sticker.format_type === 2 ? "apng" : sticker.format_type === 3 ? "lottie" : "gif"}`} target="_blank" rel="noreferrer noopener">
-          <Tooltip content={sticker.name}>
-           <Image unoptimized src={`https://cdn.discordapp.com/stickers/${sticker.id}.${sticker.format_type === 1 ? "png" : sticker.format_type === 2 ? "apng" : sticker.format_type === 3 ? "lottie" : "gif"}`} alt={sticker.name} quality={95} width={95} height={95} className="h-24 w-24" />
+          <Tooltip content={sticker.name || "Unnamed sticker"}>
+           <>
+            <Image unoptimized src={`https://cdn.discordapp.com/stickers/${sticker.id}.${sticker.format_type === 1 ? "png" : sticker.format_type === 2 ? "apng" : sticker.format_type === 3 ? "lottie" : "gif"}`} alt={sticker.name} quality={95} width={95} height={95} className="h-24 w-24" />
+           </>
           </Tooltip>
          </Link>
         ))}
