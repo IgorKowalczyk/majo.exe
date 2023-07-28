@@ -19,8 +19,8 @@ importers:
         version: 1.10.12
     devDependencies:
       '@igorkowalczyk/prettier-config':
-        specifier: 1.5.3
-        version: 1.5.3(prettier@3.0.0)
+        specifier: 1.5.4
+        version: 1.5.4(prettier@3.0.0)
       '@majoexe/eslint-config':
         specifier: workspace:*
         version: link:packages/eslint-config
@@ -1929,8 +1929,8 @@ packages:
       tailwindcss: 3.3.3
     dev: false
 
-  /@igorkowalczyk/prettier-config@1.5.3(prettier@3.0.0):
-    resolution: {integrity: sha512-McaL1pV41A03rKSyc9wZUOxW9xUrDFwu8zfXQBF41xYf7CFmlP0q2vIQJgzhrKimDXl1i7452YAxtJwvKB5FAg==}
+  /@igorkowalczyk/prettier-config@1.5.4(prettier@3.0.0):
+    resolution: {integrity: sha512-TDx4Pxe846sEDt6kCY2aF4aSCq2PbUZo/2LHUf6spaqJKFJ0I7BODtm5+CXd5UvydZv5YQU8uUh18PMk+xSBig==}
     peerDependencies:
       prettier: '>=2.0.0'
     dependencies:
@@ -5760,6 +5760,7 @@ packages:
 
   /json-stringify-safe@5.0.1:
     resolution: {integrity: sha512-ZClg6AaYvamvYEE82d3Iyd3vSSIjQ+odgjaTzRuO3s7toCdFKczob2i0zCh7JE8kWn17yvAWhUVxvqGwUalsRA==}
+    requiresBuild: true
     dev: false
     optional: true
 
@@ -6968,6 +6969,7 @@ packages:
   /pidusage@2.0.21:
     resolution: {integrity: sha512-cv3xAQos+pugVX+BfXpHsbyz/dLzX+lr44zNMsYiGxUw+kV5sgQCIcLd1z+0vq+KyC7dJ+/ts2PsfgWfSC3WXA==}
     engines: {node: '>=8'}
+    requiresBuild: true
     dependencies:
       safe-buffer: 5.2.1
     dev: false
@@ -8536,6 +8538,7 @@ packages:
     engines: {node: '>=8.0.0'}
     os: [darwin, linux, win32, freebsd, openbsd, netbsd, sunos, android]
     hasBin: true
+    requiresBuild: true
     dev: false
     optional: true
 
@@ -8856,6 +8859,7 @@ packages:
 
   /tx2@1.0.5:
     resolution: {integrity: sha512-sJ24w0y03Md/bxzK4FU8J8JveYYUbSs2FViLJ2D/8bytSiyPRbuE3DyL/9UKYXTZlV3yXq0L8GLlhobTnekCVg==}
+    requiresBuild: true
     dependencies:
       json-stringify-safe: 5.0.1
     dev: false
