@@ -57,8 +57,9 @@
     "@majoexe/eslint-config": "workspace:*",
     "@next/bundle-analyzer": "13.4.12",
     "@prisma/nextjs-monorepo-workaround-plugin": "5.0.0",
-    "eslint": "8.45.0",
+    "eslint": "8.46.0",
     "eslint-config-next": "13.4.12",
+    "eslint-plugin-import": "2.28.0",
     "prettier": "3.0.0",
     "prettier-plugin-tailwindcss": "0.4.1"
   },
