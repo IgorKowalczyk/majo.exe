@@ -14,7 +14,7 @@
     "lint:fix": "eslint . --ext .js,.ts --fix"
   },
   "dependencies": {
-    "@discordjs/rest": "1.7.1",
+    "@discordjs/rest": "2.0.0",
     "@majoexe/config": "workspace:*",
     "@majoexe/database": "workspace:*",
     "@majoexe/util": "workspace:*",
