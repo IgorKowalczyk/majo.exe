@@ -55,7 +55,7 @@ export default async function Settings({ params }) {
      Everyone with the roles that have the <code>MANAGE_GUILD</code> or <code>ADMINISTRATOR</code> permission can access the dashboard.
     </p>
 
-    <div className="flex items-center justify-start gap-2">
+    <div className="flex flex-wrap items-center justify-start gap-2">
      {serverDownload.roles.map((role) => {
       if (getPermissionNames(role.permissions).includes("MANAGE_GUILD") || getPermissionNames(role.permissions).includes("ADMINISTRATOR")) {
        return (
