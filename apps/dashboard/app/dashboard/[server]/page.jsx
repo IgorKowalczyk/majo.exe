@@ -77,12 +77,12 @@ export default async function ServerOverview({ params }) {
     <span className="ml-auto">Powered by Majo.exe</span>
    </Block>
 
-   <div className="mt-6 flex items-start gap-6">
+   <div className="mt-6 block gap-6 lg:flex lg:items-start">
     <Block className="flex flex-col justify-start [flex:3_1_0] ">
      <Header4 className="mb-4 !items-start !justify-normal opacity-80">Leaderboard</Header4>
      {data.length > 0 ? <Leaderboard data={data} showSearch={false} showControls={false} /> : <span className="opacity-50">No users found. Maybe you should try talking in chat?</span>}
     </Block>
-    <div className="flex flex-col justify-start gap-6 [flex:2_1_0%]">
+    <div className="mt-6 flex flex-col justify-start gap-6 [flex:2_1_0%] lg:mt-0">
      <Block>
       <Header4 className="!items-start !justify-normal opacity-80">
        Language
@@ -92,9 +92,9 @@ export default async function ServerOverview({ params }) {
      <Block>
       <Header4 className="mb-4 !items-start !justify-normal opacity-80">
        Emojis
-       <span className="ml-auto font-medium opacity-60">{guildPreview.emojis.length || "0"}</span>
+       <span className="ml-auto font-medium opacity-60">{guildPreview.emojis?.length || "0"}</span>
       </Header4>
-      {guildPreview.emojis.length > 0 ? (
+      {guildPreview.emojis && guildPreview.emojis.length > 0 ? (
        <div className="flex flex-row flex-wrap gap-4">
         {guildPreview.emojis.map((emoji) => (
          <Link key={emoji.id + emoji.name} className="flex flex-col items-center justify-center gap-2" href={`https://cdn.discordapp.com/emojis/${emoji.id}.${emoji.animated ? "gif" : "png"}`} target="_blank" rel="noreferrer noopener">
@@ -114,9 +114,9 @@ export default async function ServerOverview({ params }) {
      <Block>
       <Header4 className="mb-4 !items-start !justify-normal opacity-80">
        Stickers
-       <span className="ml-auto font-medium opacity-60">{guildPreview.stickers.length || "0"}</span>
+       <span className="ml-auto font-medium opacity-60">{guildPreview.stickers?.length || "0"}</span>
       </Header4>
-      {guildPreview.stickers.length > 0 ? (
+      {guildPreview.stickers && guildPreview.stickers.length > 0 ? (
        <div className="flex flex-row flex-wrap gap-4">
         {guildPreview.stickers.map((sticker) => (
          <Link key={sticker.id + sticker.name} className="flex flex-col items-center justify-center gap-2" href={`https://cdn.discordapp.com/stickers/${sticker.id}.${sticker.format_type === 1 ? "png" : sticker.format_type === 2 ? "apng" : sticker.format_type === 3 ? "lottie" : "gif"}`} target="_blank" rel="noreferrer noopener">
