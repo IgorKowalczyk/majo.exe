@@ -128,7 +128,7 @@ importers:
         specifier: 13.2.2
         version: 13.2.2
       js-file-download:
-        specifier: ^0.4.12
+        specifier: 0.4.12
         version: 0.4.12
       json-2-csv:
         specifier: 4.1.0

@@ -30,7 +30,7 @@
     "clsx": "2.0.0",
     "cobe": "0.6.3",
     "globby": "13.2.2",
-    "js-file-download": "^0.4.12",
+    "js-file-download": "0.4.12",
     "json-2-csv": "4.1.0",
     "mini-svg-data-uri": "1.4.4",
     "next": "13.4.12",
