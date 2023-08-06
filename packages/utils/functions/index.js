@@ -1,4 +1,5 @@
 /* /guild */
+export * from "./guild/getGuildMember.js";
 export * from "./guild/getGuildPreview.js";
 export * from "./guild/getServer.js";
 export * from "./guild/getServers.js";

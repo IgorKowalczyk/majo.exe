@@ -1,17 +1,17 @@
 import prismaClient from "@majoexe/database";
-import { getServer } from "@majoexe/util/functions";
+import { getGuildMember, getServer } from "@majoexe/util/functions";
 import { getSession } from "lib/session";
 import { redirect } from "next/navigation";
 import { ServerStatsChart } from "@/components/blocks/client/ServerStatsChart";
 
 export default async function Statistics({ params }) {
- const user = await getSession();
- if (!user) return redirect("/auth/login");
+ const session = await getSession();
+ if (!session || !session.access_token) redirect("/auth/login");
  const { server } = params;
  const serverDownload = await getServer(server);
- if (!serverDownload) return redirect("/dashboard");
- if (serverDownload.code === 10004) return redirect("/dashboard");
- if (!serverDownload.bot) return redirect("/dashboard");
+ if (!serverDownload || serverDownload.code === 10004 || !serverDownload.bot) return redirect("/dashboard");
+ const serverMember = await getGuildMember(serverDownload.id, session.access_token);
+ if (!serverMember || !serverMember.permissions_names || !serverMember.permissions_names.includes("MANAGE_GUILD") || !serverMember.permissions_names.includes("ADMINISTRATOR")) return redirect("/dashboard");
 
  const guild = await prismaClient.guild.findFirst({
   where: {

@@ -1,5 +1,6 @@
+/* eslint-disable complexity */
 import prismaClient from "@majoexe/database";
-import { getServer, getGuildPreview } from "@majoexe/util/functions";
+import { getServer, getGuildPreview, getGuildMember } from "@majoexe/util/functions";
 import { getSession } from "lib/session";
 import Image from "next/image";
 import Link from "next/link";
@@ -15,13 +16,13 @@ export const metadata = {
 };
 
 export default async function ServerOverview({ params }) {
- const user = await getSession();
- if (!user) return redirect("/auth/login");
+ const session = await getSession();
+ if (!session || !session.access_token) redirect("/auth/login");
  const { server } = params;
  const serverDownload = await getServer(server);
- if (!serverDownload) return redirect("/dashboard");
- if (serverDownload.code === 10004) return redirect("/dashboard");
- if (!serverDownload.bot) return redirect("/dashboard");
+ if (!serverDownload || serverDownload.code === 10004 || !serverDownload.bot) return redirect("/dashboard");
+ const serverMember = await getGuildMember(serverDownload.id, session.access_token);
+ if (!serverMember || !serverMember.permissions_names || !serverMember.permissions_names.includes("MANAGE_GUILD") || !serverMember.permissions_names.includes("ADMINISTRATOR")) return redirect("/dashboard");
  const guildPreview = await getGuildPreview(serverDownload.id);
 
  const xp = await prismaClient.guildXp.findMany({
@@ -57,9 +58,9 @@ export default async function ServerOverview({ params }) {
   <>
    <Header1 className={"mb-4 !justify-normal"}>
     {guildPreview.icon ? <Image src={`https://cdn.discordapp.com/icons/${guildPreview.id}/${guildPreview.icon}.${guildPreview.icon.startsWith("a_") ? "gif" : "png"}`} alt={guildPreview.name} quality={95} width={64} height={64} className="h-16 w-16 rounded-full" /> : <div className="h-16 w-16 rounded-full bg-button-secondary" />}
-    <div className="ml-4 flex flex-col !justify-start text-left">
+    <div className="ml-4 flex flex-col justify-start text-left">
      {guildPreview.name || "Unnamed server"}
-     <Header5 className="mt-2 opacity-60">{guildPreview.description || "This server has no description, maybe you should add one?"}</Header5>
+     <Header5 className="mt-2 justify-start text-left opacity-60">{guildPreview.description || "This server has no description, maybe you should add one?"}</Header5>
     </div>
    </Header1>
 

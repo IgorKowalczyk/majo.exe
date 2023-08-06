@@ -1,3 +1,6 @@
+import { config } from "@majoexe/config";
+import { getPermissionNames } from "../user/checkPermissions";
+
 /**
  * @param {string} token The token of the user.
  * @returns {Promise<any>} The servers the user is in.
@@ -6,14 +9,18 @@
  * */
 export async function getServers(token) {
  try {
-  const res = await fetch("https://discord.com/api/users/@me/guilds", {
+  const res = await fetch(`https://discord.com/api/v${config.global.apiVersion}/users/@me/guilds`, {
    next: { revalidate: 10 },
    headers: {
     Authorization: `Bearer ${token}`,
    },
   });
-  if (res.ok) return await res.json();
-  return { error: "Invalid token" };
+  if (!res.ok) return { error: "Invalid token" };
+  const json = await res.json();
+  for (const server of json) {
+   server.permissions_names = getPermissionNames(server.permissions) || [];
+  }
+  return json;
  } catch (e) {
   return { error: "Invalid token" };
  }

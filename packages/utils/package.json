@@ -17,6 +17,7 @@
   },
   "dependencies": {
     "@majoexe/database": "workspace:*",
+    "@majoexe/config": "workspace:*",
     "chalk": "5.3.0",
     "discord.js": "14.12.1"
   },

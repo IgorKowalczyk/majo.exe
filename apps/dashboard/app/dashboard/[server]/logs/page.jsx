@@ -1,6 +1,6 @@
 import { ListBulletIcon } from "@heroicons/react/24/outline";
 import prismaClient from "@majoexe/database";
-import { getServer } from "@majoexe/util/functions";
+import { getGuildMember, getServer } from "@majoexe/util/functions";
 import { getSession } from "lib/session";
 import { redirect } from "next/navigation";
 import Logs from "@/components/blocks/client/Logs";
@@ -12,13 +12,13 @@ export const metadata = {
 };
 
 export default async function ServerLogs({ params }) {
- const user = await getSession();
- if (!user) return redirect("/auth/login");
+ const session = await getSession();
+ if (!session || !session.access_token) redirect("/auth/login");
  const { server } = params;
  const serverDownload = await getServer(server);
- if (!serverDownload) return redirect("/dashboard");
- if (serverDownload.code === 10004) return redirect("/dashboard");
- if (!serverDownload.bot) return redirect("/dashboard");
+ if (!serverDownload || serverDownload.code === 10004 || !serverDownload.bot) return redirect("/dashboard");
+ const serverMember = await getGuildMember(serverDownload.id, session.access_token);
+ if (!serverMember || !serverMember.permissions_names || !serverMember.permissions_names.includes("MANAGE_GUILD") || !serverMember.permissions_names.includes("ADMINISTRATOR")) return redirect("/dashboard");
 
  const logs = await prismaClient.guildLogs.findMany({
   where: {
@@ -44,7 +44,7 @@ export default async function ServerLogs({ params }) {
     <ListBulletIcon className="h-12 w-12" />
     Activity Logs
    </Header1>
-   <div className="overflow-auto">{logs.length === 0 ? <h3 className="mt-4 text-center text-xl font-bold">No logs found!</h3> : <Logs initialItems={logs} id={serverDownload.id} />}</div>
+   <div className="overflow-auto">{logs.length === 0 ? <h3 className="mt-4 text-xl font-bold">No logs found!</h3> : <Logs initialItems={logs} id={serverDownload.id} />}</div>
   </>
  );
 }

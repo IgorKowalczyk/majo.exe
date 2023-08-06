@@ -1,4 +1,3 @@
-import { canAddBotToServer } from "@majoexe/util/functions";
 import { getServers } from "@majoexe/util/functions";
 import { isBotInServer } from "@majoexe/util/functions";
 import { getSession } from "lib/session";
@@ -22,16 +21,36 @@ export async function GET() {
     }
    );
   }
-  const servers = (await getServers(session.access_token)) || [];
-  const filteredServers = servers.length > 0 ? servers.filter((server) => canAddBotToServer(server.permissions)) : [];
-  const promises = filteredServers.map(async (server) => {
-   server.bot = await isBotInServer(server.id);
-   return server;
-  });
+
+  const data = (await getServers(session.access_token)) || [];
+  if (data.error) {
+   return new NextResponse(
+    JSON.stringify({
+     error: "Unauthorized",
+    }),
+    {
+     status: 401,
+     headers: {
+      "server-timing": `response;dur=${Date.now() - start}`,
+     },
+    }
+   );
+  }
+  const servers =
+   (await Promise.all(
+    data
+     .filter((server) => server.permissions_names.includes("MANAGE_GUILD") || server.permissions_names.includes("ADMINISTRATOR"))
+     .map(async (server) => {
+      server.bot = await isBotInServer(server.id);
+      return server;
+     })
+   )) || [];
+
+  servers.sort((a, b) => (a.bot && !b.bot ? -1 : !a.bot && b.bot ? 1 : 0));
 
   return new NextResponse(
    JSON.stringify({
-    servers: await Promise.all(promises),
+    servers: servers || [],
    }),
    {
     status: 200,

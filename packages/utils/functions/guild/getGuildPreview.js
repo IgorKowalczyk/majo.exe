@@ -1,3 +1,5 @@
+import { config } from "@majoexe/config";
+
 /**
  * @param {string} id The id of the server.
  * @returns {Promise<any>} The preview of the server.
@@ -5,7 +7,7 @@
  * */
 export async function getGuildPreview(id) {
  try {
-  const res = await fetch(`https://discord.com/api/guilds/${id}/preview`, {
+  const res = await fetch(`https://discord.com/api/v${config.global.apiVersion}/guilds/${id}/preview`, {
    next: { revalidate: 10 },
    headers: {
     Authorization: `Bot ${process.env.TOKEN}`,

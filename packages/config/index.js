@@ -6,6 +6,7 @@ export const config = {
   permissions: "1539679190263", // string. Discord permissions. You can use https://discordapi.com/permissions.html to generate it
   scopes: ["applications.commands", "bot"].join("%20"), // string. Discord OAUTH2 scopes.
   defaultColor: "#5865F2", // string. Default color for embeds, social images etc
+  apiVersion: 10, // number. Discord API version
  },
 
  /*

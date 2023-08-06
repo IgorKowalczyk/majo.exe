@@ -1,5 +1,4 @@
 import { PlusSmallIcon, RectangleStackIcon } from "@heroicons/react/24/outline";
-import { canAddBotToServer } from "@majoexe/util/functions";
 import { getServers } from "@majoexe/util/functions";
 import { isBotInServer } from "@majoexe/util/functions";
 import clsx from "clsx";
@@ -17,18 +16,18 @@ export default async function Dashboard() {
  const session = await getSession();
  if (!session || !session.access_token) redirect("/auth/login");
  const data = (await getServers(session.access_token)) || [];
- const filteredServers = data.length > 0 ? data.filter((server) => canAddBotToServer(server.permissions)) : [];
- const promises = filteredServers.map(async (server) => {
-  server.bot = await isBotInServer(server.id);
-  return server;
- });
- const servers = await Promise.all(promises);
+ if (data.error) return redirect("/auth/login");
+ const servers =
+  (await Promise.all(
+   data
+    .filter((server) => server.permissions_names.includes("MANAGE_GUILD") || server.permissions_names.includes("ADMINISTRATOR"))
+    .map(async (server) => {
+     server.bot = await isBotInServer(server.id);
+     return server;
+    })
+  )) || [];
 
- servers.sort((a, b) => {
-  if (a.bot && !b.bot) return -1;
-  if (!a.bot && b.bot) return 1;
-  return 0;
- });
+ servers.sort((a, b) => (a.bot && !b.bot ? -1 : !a.bot && b.bot ? 1 : 0));
 
  return (
   <div className="flex w-full flex-col items-center bg-background-primary px-8 pb-8 pt-16 antialiased md:px-16 md:py-16">
