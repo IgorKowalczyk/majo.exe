@@ -1,5 +1,6 @@
 import prismaClient from "@majoexe/database";
 import { getGuildMember, getServer } from "@majoexe/util/functions";
+import { json2csv } from "json-2-csv";
 import { getSession } from "lib/session";
 import { redirect } from "next/navigation";
 import { ServerStatsChart } from "@/components/blocks/client/ServerStatsChart";
@@ -83,9 +84,12 @@ export default async function Statistics({ params }) {
   guildLeave.unshift({ date: dateFormatted, Leaves: leaves });
  }
 
+ const guildJoinCSV = await json2csv(guildJoin);
+ const guildLeaveCSV = await json2csv(guildLeave);
+
  return (
   <>
-   <ServerStatsChart guildJoin={guildJoin} guildLeave={guildLeave} />
+   <ServerStatsChart guildJoin={guildJoin} guildLeave={guildLeave} guildJoinCSV={guildJoinCSV} guildLeaveCSV={guildLeaveCSV} />
   </>
  );
 }

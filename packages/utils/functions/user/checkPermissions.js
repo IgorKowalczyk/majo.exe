@@ -54,7 +54,7 @@ export function getPermissionNames(permissionNumber) {
 
  const permissionNames = [];
  for (const permission in permissionsData) {
-  if (permissionsData.hasOwnProperty(permission)) {
+  if (Object.prototype.hasOwnProperty.call(permissionsData, permission)) {
    const permissionValue = permissionsData[permission];
    if ((permissionNumber & permissionValue) === permissionValue) {
     permissionNames.push(permission);

@@ -1,5 +1,5 @@
-import { isBotInServer } from "./isBotInServer.js";
 import { config } from "@majoexe/config";
+import { isBotInServer } from "./isBotInServer.js";
 
 /**
  * @param {string} id The id of the server.
