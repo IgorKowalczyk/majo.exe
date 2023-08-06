@@ -56,16 +56,19 @@ export default async function Settings({ params }) {
     </p>
 
     <div className="flex items-center justify-start gap-2">
-     { serverDownload.roles.map((role) => {
+     {serverDownload.roles.map((role) => {
       if (getPermissionNames(role.permissions).includes("MANAGE_GUILD") || getPermissionNames(role.permissions).includes("ADMINISTRATOR")) {
        return (
-        <div key={role.id} className="border-neutral-700 border rounded-full px-2 py-1 flex items-center justify-start gap-2">
-         <div className="h-4 w-4 rounded-full" style={{
+        <div key={role.id} className="flex items-center justify-start gap-2 rounded-full border border-neutral-700 px-2 py-1">
+         <div
+          className="h-4 w-4 rounded-full"
+          style={{
            backgroundColor: role.color ? `#${role.color.toString(16)}` : "#000000",
-          }} />
+          }}
+         />
          <p className="text-neutral-100">{role.name}</p>
         </div>
-       )
+       );
       }
      })}
     </div>

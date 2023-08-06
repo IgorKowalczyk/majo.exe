@@ -1,5 +1,5 @@
-import { twMerge } from "tailwind-merge";
 import Link from "next/link";
+import { twMerge } from "tailwind-merge";
 
 export function SecondaryButton({ children, ...props }) {
  if (props && props.href) {
