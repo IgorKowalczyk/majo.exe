@@ -4,7 +4,7 @@ import prismaClient from "@majoexe/database";
 import { getGuildMember, getPermissionNames, getServer } from "@majoexe/util/functions";
 import { getSession } from "lib/session";
 import { redirect } from "next/navigation";
-import { Block, CodeCard } from "@/components/blocks/Block";
+import { Block } from "@/components/blocks/Block";
 import { ChangeEmbedColor } from "@/components/blocks/client/ChangeEmbedColor";
 import { Header1 } from "@/components/blocks/Headers";
 
@@ -52,7 +52,7 @@ export default async function Settings({ params }) {
      Dashboard Access
     </h2>
     <p className="mb-4 text-left">
-     Everyone with the <CodeCard>MANAGE_GUILD</CodeCard> permission can access the dashboard.
+     Everyone with the roles that have the <code>MANAGE_GUILD</code> or <code>ADMINISTRATOR</code> permission can access the dashboard.
     </p>
 
     <div className="flex items-center justify-start gap-2">

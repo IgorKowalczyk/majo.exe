@@ -1,6 +1,5 @@
 import { RectangleStackIcon } from "@heroicons/react/24/outline";
 import { AvatarSkeleton, TextSkeleton, ButtonSkeleton } from "components/blocks/Skeletons";
-import { CodeCard } from "@/components/blocks/Block";
 import { Header1 } from "@/components/blocks/Headers";
 
 export default function Loading() {
@@ -12,7 +11,7 @@ export default function Loading() {
      Dashboard
     </Header1>
     <h2 className="text-center text-xl text-white/50">
-     You can only add the bot to servers you have the <CodeCard>Manage Server</CodeCard> permission in.
+     You can only add the bot to servers you have the <code>Manage Server</code> permission in.
     </h2>
     <div className="flex flex-col gap-4">
      {[...Array(10)].map((_, i) => (

@@ -49,3 +49,7 @@ main > div {
 canvas {
  @apply ml-auto flex items-center;
 }
+
+code {
+@apply inline-block rounded-md border border-neutral-800 bg-background-secondary px-2 py-1;
+}

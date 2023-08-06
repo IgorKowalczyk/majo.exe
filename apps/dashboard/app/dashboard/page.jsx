@@ -8,7 +8,6 @@ import { getSession } from "lib/session";
 import Image from "next/image";
 import Link from "next/link";
 import { redirect } from "next/navigation";
-import { CodeCard } from "@/components/blocks/Block";
 import { Refetch } from "@/components/blocks/client/Refetch";
 import { Header1 } from "@/components/blocks/Headers";
 
@@ -37,7 +36,7 @@ export default async function Dashboard() {
      Dashboard
     </Header1>
     <h2 className="text-center text-xl text-white/50">
-     You can only add the bot to servers you have the <CodeCard>Manage Server</CodeCard> permission in.
+     You can only add the bot to servers you have the <code>Manage Server</code> permission in.
     </h2>
     <div className="flex flex-row flex-wrap justify-center gap-4 sm:flex-col">
      {servers && servers.length > 0 ? (
