@@ -1,6 +1,6 @@
 import { meta } from "@config";
 import { Analytics } from "@vercel/analytics/react";
-import clsx from "clsx";
+import { twMerge } from "tailwind-merge";
 import { Session } from "components/blocks/client/Session";
 import { Hotjar } from "components/blocks/Hotjar";
 import { Nav } from "components/nav/server/Nav";
@@ -61,7 +61,7 @@ export default function RootLayout({ children }) {
   <Session>
    <html lang="en">
     <head>{process.env.HOTJAR_ID && <Hotjar id={process.env.HOTJAR_ID} />}</head>
-    <body className={clsx("bg-background-primary text-white antialiased", inter.className)}>
+    <body className={twMerge("bg-background-primary text-white antialiased", inter.className)}>
      <ProgressBar />
      <VisibilityProvider>
       <Nav />
