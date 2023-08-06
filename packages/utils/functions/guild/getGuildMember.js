@@ -1,4 +1,4 @@
-import { getServers } from "./getServers";
+import { getServers } from "./getServers.js";
 
 /**
  * @param {string} guildId The id of the server.

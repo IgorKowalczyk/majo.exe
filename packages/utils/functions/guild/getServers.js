@@ -1,5 +1,5 @@
 import { config } from "@majoexe/config";
-import { getPermissionNames } from "../user/checkPermissions";
+import { getPermissionNames } from "../user/checkPermissions.js";
 
 /**
  * @param {string} token The token of the user.
