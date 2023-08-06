@@ -55,18 +55,18 @@ However, if you want to host Majo.exe yourself see links below.
 
 ## Global `.env` file
 
-| Variable            | Description                                      | Required (Bot) | Required (Dashboard) |
-| ------------------- | ------------------------------------------------ | -------------- | -------------------- |
-| TOKEN               | Discord bot token                                | ✅             | ✅                   |
-| SECRET              | Secret string (minimum 32 characters)            | ❌             | ✅                   |
-| CLIENT_ID           | Discord client ID                                | ✅             | ✅                   |
-| CLIENT_SECRET       | Discord client secret                            | ❌             | ✅                   |
-| NEXTAUTH_URL        | NextAuth.js URL (e.g., http://localhost:3000)    | ❌             | ✅                   |
-| NEXT_PUBLIC_URL     | Next.js public URL (e.g., http://localhost:3000) | ❌¹            | ✅                   |
-| HOTJAR_ID           | [Hotjar](https://hotjar.com) ID                  | ❌             | ❌                   |
-| DATABASE_URL        | Main database URL                                | ✅             | ✅                   |
-| DIRECT_URL          | Non-pooling database URL                         | ❌             | ❌                   |
-| REDIS_URL           | Redis URL²                                       | ❌             | ❌                   |
+| Variable        | Description                                      | Required (Bot) | Required (Dashboard) |
+| --------------- | ------------------------------------------------ | -------------- | -------------------- |
+| TOKEN           | Discord bot token                                | ✅             | ✅                   |
+| SECRET          | Secret string (minimum 32 characters)            | ❌             | ✅                   |
+| CLIENT_ID       | Discord client ID                                | ✅             | ✅                   |
+| CLIENT_SECRET   | Discord client secret                            | ❌             | ✅                   |
+| NEXTAUTH_URL    | NextAuth.js URL (e.g., http://localhost:3000)    | ❌             | ✅                   |
+| NEXT_PUBLIC_URL | Next.js public URL (e.g., http://localhost:3000) | ❌¹            | ✅                   |
+| HOTJAR_ID       | [Hotjar](https://hotjar.com) ID                  | ❌             | ❌                   |
+| DATABASE_URL    | Main database URL                                | ✅             | ✅                   |
+| DIRECT_URL      | Non-pooling database URL                         | ❌             | ❌                   |
+| REDIS_URL       | Redis URL²                                       | ❌             | ❌                   |
 
 > **Note**:
 
