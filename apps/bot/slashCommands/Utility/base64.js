@@ -38,17 +38,36 @@ export default {
   },
  ],
  run: async (client, interaction, guildSettings) => {
-  const type = interaction.options.getSubcommand();
+  try {
+   const type = interaction.options.getSubcommand();
 
-  if (type === "encode") {
-   const text = interaction.options.getString("text");
+   if (type === "encode") {
+    const text = interaction.options.getString("text");
 
-   if (text.length > 500) {
+    if (text.length > 500) {
+     const embed = new EmbedBuilder()
+      .setColor("#EF4444")
+      .setTimestamp()
+      .setTitle("❌ Invalid text")
+      .setDescription("> The text you provided is too long")
+      .setFooter({
+       text: `Requested by ${interaction.member?.user?.username}`,
+       iconURL: interaction.member?.user?.displayAvatarURL({
+        dynamic: true,
+        format: "png",
+        size: 2048,
+       }),
+      });
+     return interaction.followUp({ ephemeral: true, embeds: [embed] });
+    }
+
+    const encoded = Buffer.from(text).toString("base64");
+
     const embed = new EmbedBuilder()
-     .setColor("#EF4444")
+     .setColor(guildSettings?.embedColor || client.config.global.defaultColor)
      .setTimestamp()
-     .setTitle("❌ Invalid text")
-     .setDescription("> The text you provided is too long")
+     .setTitle("🗃️ Encode Base64")
+     .setDescription(`> \`${encoded}\``)
      .setFooter({
       text: `Requested by ${interaction.member?.user?.username}`,
       iconURL: interaction.member?.user?.displayAvatarURL({
@@ -57,35 +76,35 @@ export default {
        size: 2048,
       }),
      });
+
     return interaction.followUp({ ephemeral: true, embeds: [embed] });
-   }
+   } else if (type === "decode") {
+    const text = interaction.options.getString("text");
 
-   const encoded = Buffer.from(text).toString("base64");
+    if (text.length > 500) {
+     const embed = new EmbedBuilder()
+      .setColor("#EF4444")
+      .setTimestamp()
+      .setTitle("❌ Invalid text")
+      .setDescription("> The text you provided is too long")
+      .setFooter({
+       text: `Requested by ${interaction.member?.user?.username}`,
+       iconURL: interaction.member?.user?.displayAvatarURL({
+        dynamic: true,
+        format: "png",
+        size: 2048,
+       }),
+      });
+     return interaction.followUp({ ephemeral: true, embeds: [embed] });
+    }
 
-   const embed = new EmbedBuilder()
-    .setColor(guildSettings?.embedColor || client.config.global.defaultColor)
-    .setTimestamp()
-    .setTitle("🗃️ Encode Base64")
-    .setDescription(`> \`${encoded}\``)
-    .setFooter({
-     text: `Requested by ${interaction.member?.user?.username}`,
-     iconURL: interaction.member?.user?.displayAvatarURL({
-      dynamic: true,
-      format: "png",
-      size: 2048,
-     }),
-    });
+    const decoded = Buffer.from(text, "base64").toString("utf-8");
 
-   return interaction.followUp({ ephemeral: true, embeds: [embed] });
-  } else if (type === "decode") {
-   const text = interaction.options.getString("text");
-
-   if (text.length > 500) {
     const embed = new EmbedBuilder()
-     .setColor("#EF4444")
+     .setColor(guildSettings?.embedColor || client.config.global.defaultColor)
      .setTimestamp()
-     .setTitle("❌ Invalid text")
-     .setDescription("> The text you provided is too long")
+     .setTitle("🗃️ Decode Base64")
+     .setDescription(`> \`${decoded}\``)
      .setFooter({
       text: `Requested by ${interaction.member?.user?.username}`,
       iconURL: interaction.member?.user?.displayAvatarURL({
@@ -94,26 +113,11 @@ export default {
        size: 2048,
       }),
      });
+
     return interaction.followUp({ ephemeral: true, embeds: [embed] });
    }
-
-   const decoded = Buffer.from(text, "base64").toString("utf-8");
-
-   const embed = new EmbedBuilder()
-    .setColor(guildSettings?.embedColor || client.config.global.defaultColor)
-    .setTimestamp()
-    .setTitle("🗃️ Decode Base64")
-    .setDescription(`> \`${decoded}\``)
-    .setFooter({
-     text: `Requested by ${interaction.member?.user?.username}`,
-     iconURL: interaction.member?.user?.displayAvatarURL({
-      dynamic: true,
-      format: "png",
-      size: 2048,
-     }),
-    });
-
-   return interaction.followUp({ ephemeral: true, embeds: [embed] });
+  } catch (err) {
+   client.errorMessages.generateErrorMessage(interaction, err);
   }
  },
 };
