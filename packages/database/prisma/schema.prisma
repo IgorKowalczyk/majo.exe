@@ -9,23 +9,24 @@ generator client {
 }
 
 model User {
- id            String      @id @default(cuid())
- discordId     String      @unique @map(name: "discord_id")
+ id            String       @id @default(cuid())
+ discordId     String       @unique @map(name: "discord_id")
  name          String
- global_name   String      @map(name: "global_name")
- avatar        String?
+ global_name   String       @map(name: "global_name")
  discriminator String
- public_flags  BigInt      @map(name: "public_flags")
- flags         BigInt
+ avatar        String?
+ public_flags  BigInt?      @map(name: "public_flags")
+ flags         BigInt?
  locale        String?
  nitro         Int?
  verified      Boolean?
- email         String?     @unique
- emailVerified DateTime?   @map(name: "email_verified")
+ email         String?      @unique
+ emailVerified DateTime?    @map(name: "email_verified")
  accounts      Account[]
  sessions      Session[]
  guildLogs     GuildLogs[]
  guildXp       GuildXp[]
+ Reputation    Reputation[]
 
  @@map(name: "users")
 }
@@ -90,6 +91,7 @@ model Guild {
  guildXp          GuildXp[]
  GuildJoin        GuildJoin[]
  GuildLeave       GuildLeave[]
+ Reputation       Reputation[]
 
  @@map(name: "guilds")
 }
@@ -117,6 +119,18 @@ model GuildXp {
  user      User     @relation(fields: [userId], references: [discordId], onDelete: Cascade)
 
  @@map(name: "guild_xp")
+}
+
+model Reputation {
+ id         String   @id @default(cuid())
+ guildId    String   @map(name: "guild_id")
+ userId     String   @map(name: "user_id")
+ reputation Int      @default(0)
+ createdAt  DateTime @default(now()) @map(name: "created_at")
+ guild      Guild    @relation(fields: [guildId], references: [guildId], onDelete: Cascade)
+ user       User     @relation(fields: [userId], references: [discordId], onDelete: Cascade)
+
+ @@map(name: "reputation")
 }
 
 model GuildJoin {

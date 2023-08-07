@@ -104,8 +104,13 @@ export async function POST(request) {
    await prismaClient.guildLogs.create({
     data: {
      guild: {
-      connect: {
-       guildId: id,
+      connectOrCreate: {
+       where: {
+        guildId: id,
+       },
+       create: {
+        guildId: id,
+       },
       },
      },
      user: {
@@ -175,8 +180,13 @@ export async function POST(request) {
   await prismaClient.guildLogs.create({
    data: {
     guild: {
-     connect: {
-      guildId: id,
+     connectOrCreate: {
+      where: {
+       guildId: id,
+      },
+      create: {
+       guildId: id,
+      },
      },
     },
     user: {

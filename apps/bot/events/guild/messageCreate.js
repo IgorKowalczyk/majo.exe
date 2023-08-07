@@ -30,15 +30,8 @@ const takeAction = async (client, message) => {
       discordId: message.author.id,
       name: message.author.username,
       global_name: message.author.global_name,
-      avatar:
-       message.author.displayAvatarURL({
-        dynamic: true,
-        format: "png",
-        size: 2048,
-       }) || null,
+      avatar: message.author.avatar || null,
       discriminator: message.author.discriminator,
-      public_flags: message.author.flags?.bitfield,
-      flags: message.author.flags?.bitfield,
      },
     },
    },
@@ -136,15 +129,8 @@ export async function messageCreate(client, message) {
        discordId: message.author.id,
        name: message.author.username,
        global_name: message.author.username,
-       avatar:
-        message.author.displayAvatarURL({
-         dynamic: true,
-         format: "png",
-         size: 2048,
-        }) || null,
+       avatar: message.author.avatar || null,
        discriminator: message.author.discriminator,
-       public_flags: message.author.flags?.bitfield,
-       flags: message.author.flags?.bitfield,
       },
      },
     },

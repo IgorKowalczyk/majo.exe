@@ -1,6 +1,6 @@
 import prismaClient from "@majoexe/database";
-import { formatDuration } from "@majoexe/util/functions";
-import { Logger } from "@majoexe/util/functions";
+import { createUser } from "@majoexe/util/database";
+import { formatDuration, Logger } from "@majoexe/util/functions";
 import { EmbedBuilder } from "discord.js";
 const timeout = new Map();
 
@@ -56,11 +56,22 @@ export async function interactionCreate(client, interaction) {
     });
    }
 
+   const user = await prismaClient.user.findFirst({
+    where: {
+     discordId: interaction.user.id,
+    },
+   });
+
+   if (!user) {
+    await createUser(interaction.user);
+   }
+
    client.slashCommands.get(interaction.commandName).run(client, interaction, guildSettings);
   } else if (interaction.isModalSubmit()) {
    const modal = client.modals.get(interaction.customId);
    if (!modal) return;
    client.config.debugger.displayModalUsage && Logger("info", `Modal used: ${interaction.customId} by ${interaction.user.tag} (${interaction.user.id})`);
+
    const guildSettings = await prismaClient.guild.findFirst({
     where: {
      guildId: interaction.guild?.id,
@@ -73,6 +84,16 @@ export async function interactionCreate(client, interaction) {
       guildId: interaction.guild?.id,
      },
     });
+   }
+
+   const user = await prismaClient.user.findFirst({
+    where: {
+     discordId: interaction.user.id,
+    },
+   });
+
+   if (!user) {
+    await createUser(interaction.user);
    }
 
    modal.run(client, interaction, guildSettings);
