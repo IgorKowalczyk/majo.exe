@@ -26,7 +26,6 @@
     "figlet": "1.6.0",
     "flip-text": "1.2.0",
     "globby": "13.2.2",
-    "hastebin": "0.2.1",
     "node-fetch": "3.3.2"
   },
   "devDependencies": {

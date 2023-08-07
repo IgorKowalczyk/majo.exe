@@ -1,6 +1,5 @@
-import { ApplicationCommandType, ApplicationCommandOptionType, EmbedBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle } from "discord.js";
+import { ApplicationCommandType, ApplicationCommandOptionType, EmbedBuilder, AttachmentBuilder } from "discord.js";
 import figlet from "figlet";
-import { createPaste } from "hastebin";
 
 export default {
  name: "ascii",
@@ -56,33 +55,22 @@ export default {
      return interaction.followUp({ ephemeral: true, embeds: [embed] });
     }
 
-    createPaste(
-     data,
-     {
-      raw: true,
-      contentType: "text/plain",
-      server: "https://haste.zneix.eu/",
-     },
-     {}
-    ).then((paste) => {
-     const embed = new EmbedBuilder()
-      .setColor(guildSettings?.embedColor || client.config.global.defaultColor)
-      .setTimestamp()
-      .setTitle(`${client.botEmojis.success} Your ascii code has been successfully generated!`)
-      .setDescription(`> ${client.botEmojis.link} Link to ascii code paste: ${paste}`)
-      .setFooter({
-       text: `Requested by ${interaction.member?.user?.username}`,
-       iconURL: interaction.member?.user?.displayAvatarURL({
-        dynamic: true,
-        format: "png",
-        size: 2048,
-       }),
-      });
+    const embed = new EmbedBuilder()
+     .setColor(guildSettings?.embedColor || client.config.global.defaultColor)
+     .setTimestamp()
+     .setTitle(`${client.botEmojis.success} Your ascii code has been successfully generated!`)
+     .setFooter({
+      text: `Requested by ${interaction.member?.user?.username}`,
+      iconURL: interaction.member?.user?.displayAvatarURL({
+       dynamic: true,
+       format: "png",
+       size: 2048,
+      }),
+     });
 
-     const row = new ActionRowBuilder().addComponents(new ButtonBuilder().setStyle(ButtonStyle.Link).setLabel("View ascii code").setURL(paste));
+    const attached = new AttachmentBuilder().setName("ascii.txt").setFile(Buffer.from(data));
 
-     return interaction.followUp({ ephemeral: false, embeds: [embed], components: [row] });
-    });
+    return interaction.followUp({ ephemeral: false, embeds: [embed], files: [attached] });
    });
   } catch (err) {
    client.errorMessages.generateErrorMessage(interaction, err);
