@@ -13,7 +13,7 @@ export default {
  options: [
   {
    name: "get",
-   description: "The user you want to get the reputation of",
+   description: "👍 The user you want to get the reputation of",
    type: ApplicationCommandOptionType.Subcommand,
    options: [
     {
@@ -26,7 +26,7 @@ export default {
   },
   {
    name: "give",
-   description: "Give reputation to a user",
+   description: "➕ Give reputation to a user",
    type: ApplicationCommandOptionType.Subcommand,
    options: [
     {
@@ -39,7 +39,7 @@ export default {
   },
   {
    name: "take",
-   description: "Take reputation from a user",
+   description: "➖ Take reputation from a user",
    type: ApplicationCommandOptionType.Subcommand,
    options: [
     {
@@ -52,7 +52,7 @@ export default {
   },
   {
    name: "set",
-   description: "Set the reputation of a user",
+   description: "👍 Set the reputation of a user",
    type: ApplicationCommandOptionType.Subcommand,
    default_member_permissions: [PermissionFlagsBits.Administrator],
    options: [
