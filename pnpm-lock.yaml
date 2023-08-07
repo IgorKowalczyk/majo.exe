@@ -45,6 +45,9 @@ importers:
       chalk:
         specifier: 5.3.0
         version: 5.3.0
+      coloras:
+        specifier: ^2.0.2
+        version: 2.0.2
       discord.js:
         specifier: 14.12.1
         version: 14.12.1
@@ -3742,6 +3745,13 @@ packages:
     dependencies:
       color-convert: 2.0.1
       color-string: 1.9.1
+    dev: false
+
+  /coloras@2.0.2:
+    resolution: {integrity: sha512-X2oRaJF+urTqsAtwxGyIs1wtble93u12l2fL3H9pcd2lhuh5GL2Npj5gQ/rs6NlrLlixvV2I0WwMc24gDc2g0g==}
+    hasBin: true
+    dependencies:
+      prompts: 2.4.2
     dev: false
 
   /colorette@1.4.0:

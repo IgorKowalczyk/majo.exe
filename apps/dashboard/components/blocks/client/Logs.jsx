@@ -75,7 +75,7 @@ export default function Logs({ initialItems, id }) {
         </Disclosure.Button>
 
         <Transition enter="transition duration-100 ease-out" enterFrom="transform scale-95 opacity-0" enterTo="transform scale-100 opacity-100" leave="transition duration-75 ease-out" leaveFrom="transform scale-100 opacity-100" leaveTo="transform scale-95 opacity-0">
-         <Disclosure.Panel className="w-full max-w-2xl rounded-md rounded-t-none border border-t-0 border-neutral-800 bg-background-navbar px-6 py-4">
+         <Disclosure.Panel className="w-full rounded-md rounded-t-none border border-t-0 border-neutral-800 bg-background-navbar px-6 py-4">
           {item.actionTaken && (
            <p>
             <span className="font-bold">Action taken:</span> None

@@ -11,7 +11,7 @@ export default function Loading() {
     </svg>
     Leaderboard
    </Header1>
-   <div className="mx-auto flex w-full max-w-2xl items-center justify-center overflow-auto">
+   <div className="mx-auto flex w-full max-w-2xl items-center justify-start overflow-auto">
     <Block className="mt-4 w-full">
      <EmbedSkeleton />
     </Block>
