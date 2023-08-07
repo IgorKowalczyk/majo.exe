@@ -15,7 +15,7 @@ export default async function Dashboard() {
  const session = await getSession();
  if (!session || !session.access_token) redirect("/auth/login");
  const data = (await getServers(session.access_token)) || [];
- if (data.error) return redirect("/auth/login");
+ if (data.error) return redirect("/auth/error?We%20were%20unable%20to%20get%20a%20list%20of%20your%20servers,%20if%20the%20problem%20persists%20log%20out%20and%20log%20back%20in.");
  const servers =
   (await Promise.all(
    data

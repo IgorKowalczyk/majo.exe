@@ -16,9 +16,16 @@ export default async function ServerLogs({ params }) {
  if (!session || !session.access_token) redirect("/auth/login");
  const { server } = params;
  const serverDownload = await getServer(server);
- if (!serverDownload || serverDownload.code === 10004 || !serverDownload.bot) return redirect("/dashboard");
+ if (!serverDownload || serverDownload.code === 10004 || !serverDownload.bot) return redirect("/auth/error?error=It%20looks%20like%20the%20server%20you%20are%20trying%20to%20display%20does%20not%20exist");
  const serverMember = await getGuildMember(serverDownload.id, session.access_token);
- if (!serverMember || !serverMember.permissions_names || !serverMember.permissions_names.includes("MANAGE_GUILD") || !serverMember.permissions_names.includes("ADMINISTRATOR")) return redirect("/dashboard");
+ if (
+  // prettier
+  !serverMember ||
+  !serverMember.permissions_names ||
+  !serverMember.permissions_names.includes("MANAGE_GUILD") ||
+  !serverMember.permissions_names.includes("ADMINISTRATOR")
+ )
+  return redirect("/auth/error?error=It%20looks%20like%20you%20do%20not%20have%20permission%20to%20access%20this%20page.");
 
  const logs = await prismaClient.guildLogs.findMany({
   where: {
