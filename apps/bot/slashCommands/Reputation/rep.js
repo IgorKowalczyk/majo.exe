@@ -1,5 +1,7 @@
 import { checkReputation, giveReputation, takeReputation, setReputation } from "@majoexe/util/database";
+import { formatDuration } from "@majoexe/util/functions";
 import { ApplicationCommandType, ApplicationCommandOptionType, EmbedBuilder, PermissionFlagsBits } from "discord.js";
+const timeout = new Map();
 
 export default {
  name: "rep",
@@ -112,7 +114,25 @@ export default {
      return interaction.followUp({ ephemeral: true, embeds: [embed] });
     }
 
+    if (timeout.has(`${interaction.member?.user?.id}-${user.id}`)) {
+     const embed = new EmbedBuilder()
+      .setColor("#EF4444")
+      .setTimestamp()
+      .setDescription(`❌ You can't give reputation to <@${user.id}> for another \`${formatDuration(timeout.get(`${interaction.member?.user?.id}-${user.id}`) - Date.now())}\``)
+      .setFooter({
+       text: `Requested by ${interaction.member?.user?.username}`,
+       iconURL: interaction.member?.user?.displayAvatarURL({
+        dynamic: true,
+        format: "png",
+        size: 2048,
+       }),
+      });
+     return interaction.followUp({ ephemeral: true, embeds: [embed] });
+    }
+
     const rep = await giveReputation(user, interaction.guild);
+
+    timeout.set(`${interaction.member?.user?.id}-${user.id}`, Date.now() + 86400000);
 
     const embed = new EmbedBuilder()
      .setColor(guildSettings?.embedColor || client.config.global.defaultColor)
@@ -148,7 +168,25 @@ export default {
      return interaction.followUp({ ephemeral: true, embeds: [embed] });
     }
 
+    if (timeout.has(`${interaction.member?.user?.id}-${user.id}`)) {
+     const embed = new EmbedBuilder()
+      .setColor("#EF4444")
+      .setTimestamp()
+      .setDescription(`❌ You can't take reputation from <@${user.id}> for another \`${formatDuration(timeout.get(`${interaction.member?.user?.id}-${user.id}`) - Date.now())}\``)
+      .setFooter({
+       text: `Requested by ${interaction.member?.user?.username}`,
+       iconURL: interaction.member?.user?.displayAvatarURL({
+        dynamic: true,
+        format: "png",
+        size: 2048,
+       }),
+      });
+     return interaction.followUp({ ephemeral: true, embeds: [embed] });
+    }
+
     const rep = await takeReputation(user, interaction.guild);
+
+    timeout.set(`${interaction.member?.user?.id}-${user.id}`, Date.now() + 86400000);
 
     const embed = new EmbedBuilder()
      .setColor(guildSettings?.embedColor || client.config.global.defaultColor)
@@ -217,7 +255,6 @@ export default {
       });
      return interaction.followUp({ ephemeral: true, embeds: [embed] });
     }
-
     const rep = await setReputation(user, interaction.guild, amount);
 
     const embed = new EmbedBuilder()
