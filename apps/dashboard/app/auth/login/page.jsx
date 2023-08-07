@@ -20,7 +20,7 @@ export default async function Login({ searchParams }) {
  if (user) return redirect("/");
 
  return (
-  <div className="relative z-20 flex min-h-screen w-full flex-col items-center justify-center gap-4 before:absolute before:z-10  before:h-full before:w-full before:opacity-5 before:grayscale before:md:bg-grid-[#fff]">
+  <div className="relative z-20 flex min-h-screen w-full flex-col items-center justify-center gap-4 px-3 before:absolute before:z-10  before:h-full before:w-full before:opacity-5 before:grayscale before:md:bg-grid-[#fff]">
    <div className="absolute left-0 top-0 z-10 h-full w-full bg-[radial-gradient(circle,rgba(2,0,36,0)0,rgb(16,17,16,100%))]" />
    <div className="z-30 mb-2 flex flex-row">
     <Image src="/assets/avatar.png" width={112} height={112} alt="Avatar" className="h-20 w-20 rounded-full sm:h-28 sm:w-28" quality={90} />
@@ -37,12 +37,12 @@ export default async function Login({ searchParams }) {
    <div className="z-30">
     {searchParams.error ? (
      <>
-      <Header1>Something went wrong!</Header1>
+      <Header1 className={"justify-center"}>Something went wrong!</Header1>
       <p className="my-1 mt-2 text-center text-xl text-[#939DB8]">Something went wrong while trying to connect your Discord account!</p>
      </>
     ) : (
      <>
-      <Header1>Connect your account</Header1>
+      <Header1 className={"justify-center"}>Connect your account</Header1>
       <p className="my-1 mt-2 text-center text-xl text-[#939DB8]">Authorize your Discord account to use all the Majo.exe features</p>
      </>
     )}
