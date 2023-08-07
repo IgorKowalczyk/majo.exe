@@ -122,7 +122,15 @@ export default {
      embed.setDescription(">>> " + json.motd.raw[0].replace(/§[0-9A-FK-OR]/gi, "").replaceAll("`", ""));
     }
 
-    embed.addFields(fields);
+    if (fields.length < 1) {
+     fields.push({
+      name: "No info",
+      value: "> No info",
+      inline: true,
+     });
+    } else {
+     embed.addFields(fields);
+    }
 
     return interaction.followUp({ embeds: [embed] });
    } else {
@@ -206,7 +214,15 @@ export default {
      });
     }
 
-    embed.addFields(fields);
+    if (fields.length < 1) {
+     fields.push({
+      name: "No info",
+      value: "> No info",
+      inline: true,
+     });
+    } else {
+     embed.addFields(fields);
+    }
 
     return interaction.followUp({ embeds: [embed] });
    }
