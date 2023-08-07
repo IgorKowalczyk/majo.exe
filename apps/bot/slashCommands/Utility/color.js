@@ -16,7 +16,7 @@ export default {
    type: ApplicationCommandOptionType.String,
   },
  ],
- run: async (client, interaction, guildSettings) => {
+ run: async (client, interaction) => {
   try {
    const color = interaction.options.getString("color");
    let random;

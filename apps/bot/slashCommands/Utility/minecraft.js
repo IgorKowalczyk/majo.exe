@@ -1,3 +1,4 @@
+/* eslint-disable complexity */
 import { ApplicationCommandType, ApplicationCommandOptionType, EmbedBuilder } from "discord.js";
 import fetch from "node-fetch";
 
