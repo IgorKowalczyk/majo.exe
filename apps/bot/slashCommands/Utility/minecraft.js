@@ -1,4 +1,3 @@
-import { fetchLogs, countLogs } from "@majoexe/util/database";
 import { ApplicationCommandType, ApplicationCommandOptionType, EmbedBuilder } from "discord.js";
 import fetch from "node-fetch";
 
