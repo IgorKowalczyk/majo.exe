@@ -84,10 +84,10 @@ export function ChangeEmbedColor({ serverId, serverColor }) {
  };
 
  return (
-  <div className="flex flex-row items-center gap-4 divide-x divide-neutral-800">
+  <div className="flex flex-col items-center gap-4 sm:flex-row sm:divide-x sm:divide-neutral-800">
    <HexColorPicker color={color} onChange={setColor} />
    <div>
-    <div className="ml-4 mt-4 flex items-center gap-1">
+    <div className="mt-4 flex items-center gap-1 sm:ml-4">
      <Image src={social.logo} alt={serverId} quality={95} width={64} height={64} className="h-10 w-10 self-baseline rounded-full" />
      <div className="flex flex-col">
       <div className="ml-1 flex h-10 flex-row items-center">

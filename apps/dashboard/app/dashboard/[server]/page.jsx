@@ -65,7 +65,7 @@ export default async function ServerOverview({ params }) {
    </Header1>
 
    <Block className="!mt-4 flex w-full flex-row">
-    <div className="flex flex-row items-center gap-4">
+    <div className="flex flex-col items-center justify-center gap-4 sm:w-full sm:flex-row sm:justify-start">
      <div className="flex items-center">
       <div className="mr-2 h-3 w-3 rounded-full bg-[#81848f]" />
       {guildPreview.approximate_member_count || "0"} members
@@ -75,7 +75,7 @@ export default async function ServerOverview({ params }) {
       {guildPreview.approximate_presence_count || "0"} online
      </div>
     </div>
-    <span className="ml-auto">Powered by Majo.exe</span>
+    <span className="mx-auto sm:ml-auto">Powered by Majo.exe</span>
    </Block>
 
    <div className="mt-6 block gap-6 lg:flex lg:items-start">
