@@ -66,8 +66,8 @@ export const emojis = {
    emoji: "📈",
   },
   {
-   name: "nsfw",
-   emoji: "🔞",
+   name: "reputation",
+   emoji: "👍",
   },
   {
    name: "image",
