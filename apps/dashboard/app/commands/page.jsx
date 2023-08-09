@@ -4,7 +4,25 @@ import { ClientDisclosure } from "@/components/blocks/client/Disclosure";
 import { Header1 } from "@/components/blocks/Headers";
 
 export default async function Commands() {
- const commands = await getSlashCommands();
+ let commands = await getSlashCommands();
+
+ let subCommands = [];
+ commands.map((command) => {
+  command.options = command.options?.map((option) => {
+   if (option.type === 1) {
+    subCommands.push({
+     ...option,
+     name: command.name + " " + option.name,
+    });
+   }
+   return option;
+  });
+  return command;
+ });
+
+ commands = commands.filter((command) => !command.options?.some((option) => option.type === 1));
+
+ commands = [...commands, ...subCommands];
 
  return (
   <div className="flex w-full flex-col items-center bg-background-primary px-8 pb-8 pt-16 antialiased md:px-16 md:py-16">
@@ -22,7 +40,14 @@ export default async function Commands() {
      key={command.name}
      buttonElements={
       <>
-       <h3 className="text-center  text-xl font-bold">/{command.name}</h3>
+       <h3 className="flex items-center gap-2 text-center text-xl font-bold">
+        /{command.name}{" "}
+        {command.options && (
+         <span className="text-sm text-white/50">
+          ({command.options.length} argument{command.options.length === 1 ? "" : "s"})
+         </span>
+        )}
+       </h3>
       </>
      }
     >

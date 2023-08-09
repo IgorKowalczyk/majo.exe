@@ -46,6 +46,8 @@ client.errorMessages = {
 };
 client.debugger = Logger;
 
+client.additionalSlashCommands = 0;
+
 client.performance = (time) => {
  const run = Math.floor(performance.now() - time);
  return run > 500 ? chalk.underline.red(`${run}ms`) : chalk.underline(`${run}ms`);
@@ -85,6 +87,12 @@ for (const value of slashCommands) {
   default_permission: file.default.default_permission ? file.default.default_permission : null,
   default_member_permissions: file.default.default_member_permissions ? PermissionsBitField.resolve(file.default.default_member_permissions).toString() : null,
  });
+ file.default.options && file.default.options.map((option) => {
+  if(option.type === 1) {
+   config.debugger.displayCommandList && Logger("info", `Loaded slash subcommand ${option.name} from ${value.replace(process.cwd(), "")}`);
+   client.additionalSlashCommands++;
+  }
+ });
  config.debugger.displayCommandList && Logger("info", `Loaded slash command ${file.default.name} from ${value.replace(process.cwd(), "")}`);
 }
 
@@ -111,6 +119,6 @@ for (const value of modals) {
 }
 
 Logger("event", `Loaded ${client.modals.size} modals from /modals in ${client.performance(modalLoadTime)}`);
-Logger("event", `Loaded ${client.slashCommands.size} slash commands from /slashCommands in ${client.performance(loadTime)}`);
+Logger("event", `Loaded ${client.slashCommands.size + client.additionalSlashCommands} slash commands from /slashCommands in ${client.performance(loadTime)}`);
 
 export default client;
