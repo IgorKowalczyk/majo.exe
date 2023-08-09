@@ -20,7 +20,14 @@ export async function Nav() {
      <h1 className=" hidden font-bold sm:block">{meta.title}</h1>
     </div>
    </Link>
-   <ServerDropdown />
+   {session && <ServerDropdown />}
+   <>
+    <div className="mx-4 h-6 w-1 border-l-2 border-l-neutral-700" />
+
+    <Link href="/commands" className="items-center text-white/60 duration-200 hover:text-white motion-reduce:transition-none md:flex">
+     <RectangleStackIcon className="mr-2 h-5 w-5 " aria-hidden="true" role="img" /> Commands
+    </Link>
+   </>
    <div className="ml-auto mr-4 ">
     {session ? (
      <div className="flex items-center gap-2">

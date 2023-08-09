@@ -15,3 +15,6 @@ export * from "./util/formatDate.js";
 export * from "./util/formatDuration.js";
 export * from "./util/logger.js";
 export * from "./util/percentageBar.js";
+
+/* /bot */
+export * from "./bot/getSlashCommands.js";
