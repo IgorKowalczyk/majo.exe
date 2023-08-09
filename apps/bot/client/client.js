@@ -87,12 +87,13 @@ for (const value of slashCommands) {
   default_permission: file.default.default_permission ? file.default.default_permission : null,
   default_member_permissions: file.default.default_member_permissions ? PermissionsBitField.resolve(file.default.default_member_permissions).toString() : null,
  });
- file.default.options && file.default.options.map((option) => {
-  if(option.type === 1) {
-   config.debugger.displayCommandList && Logger("info", `Loaded slash subcommand ${option.name} from ${value.replace(process.cwd(), "")}`);
-   client.additionalSlashCommands++;
-  }
- });
+ file.default.options &&
+  file.default.options.map((option) => {
+   if (option.type === 1) {
+    config.debugger.displayCommandList && Logger("info", `Loaded slash subcommand ${option.name} from ${value.replace(process.cwd(), "")}`);
+    client.additionalSlashCommands++;
+   }
+  });
  config.debugger.displayCommandList && Logger("info", `Loaded slash command ${file.default.name} from ${value.replace(process.cwd(), "")}`);
 }
 

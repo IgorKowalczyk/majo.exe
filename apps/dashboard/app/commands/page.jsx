@@ -6,7 +6,7 @@ import { Header1 } from "@/components/blocks/Headers";
 export const metadata = {
  title: "Commands",
  description: "A list of all the commands available for Majo.exe.",
-}
+};
 
 export default async function Commands() {
  let commands = await getSlashCommands();
