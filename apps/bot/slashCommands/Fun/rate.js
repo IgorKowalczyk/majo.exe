@@ -12,6 +12,7 @@ export default {
    name: "thing",
    description: "Thing to rate",
    type: ApplicationCommandOptionType.String,
+   max_length: 256,
    required: true,
   },
  ],

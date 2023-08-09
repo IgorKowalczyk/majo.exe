@@ -44,7 +44,7 @@ const takeAction = async (client, message) => {
   .setTitle("‼️ Bad word detected")
   .setDescription(
    `
-  <@${message.author.id}> message has been deleted for using a bad word.
+  ${message.author} message has been deleted for using a bad word.
 
   **Message ID**: \`${message.id}\`
   **User ID**: \`${message.author.id}\`
@@ -147,7 +147,7 @@ export async function messageCreate(client, message) {
  if (level < nextLevel) {
   const embed = new EmbedBuilder()
    .setTitle("🎉 Level up!")
-   .setDescription(`Congratulations <@${message.author.id}>! You have leveled up to level **${nextLevel}**!`)
+   .setDescription(`Congratulations ${message.author}! You have leveled up to level **${nextLevel}**!`)
    .setColor("#10B981")
    .setTimestamp()
    .setThumbnail(

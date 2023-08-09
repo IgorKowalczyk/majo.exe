@@ -22,7 +22,7 @@ export default {
 
    const embed = new EmbedBuilder()
     .setTitle("🧠 IQ")
-    .setDescription(`>>> **<@${user?.id}> has an IQ of ${iq}!**`)
+    .setDescription(`>>> **${user} has an IQ of ${iq}!**`)
     .setTimestamp()
     .setColor(guildSettings?.embedColor || client.config.global.defaultColor)
     .setThumbnail(

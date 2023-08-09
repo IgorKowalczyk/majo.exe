@@ -92,6 +92,7 @@ model Guild {
  GuildJoin        GuildJoin[]
  GuildLeave       GuildLeave[]
  Reputation       Reputation[]
+ Giveaway         Giveaways[]
 
  @@map(name: "guilds")
 }
@@ -151,4 +152,13 @@ model GuildLeave {
  guild   Guild    @relation(fields: [guildId], references: [guildId], onDelete: Cascade)
 
  @@map(name: "guild_leaves")
+}
+
+model Giveaways {
+ id        Int      @id @default(autoincrement())
+ guildId   String   @map(name: "guild_id")
+ messageId String   @unique @map(name: "message_id")
+ data      Json
+ createdAt DateTime @default(now()) @map(name: "created_at")
+ guild     Guild    @relation(fields: [guildId], references: [guildId], onDelete: Cascade)
 }

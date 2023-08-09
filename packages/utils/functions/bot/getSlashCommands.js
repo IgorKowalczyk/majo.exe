@@ -19,4 +19,3 @@ export async function getSlashCommands() {
   return { error: "Invalid token" };
  }
 }
- 

@@ -14,28 +14,12 @@ export default {
    description: "The text to convert",
    required: true,
    type: ApplicationCommandOptionType.String,
+   max_length: 500,
   },
  ],
  run: async (client, interaction, guildSettings) => {
   try {
    const text = interaction.options.getString("text");
-
-   if (text.length > 500) {
-    const embed = new EmbedBuilder()
-     .setColor("#EF4444")
-     .setTimestamp()
-     .setTitle("❌ Invalid text")
-     .setDescription("> The text you provided is too long")
-     .setFooter({
-      text: `Requested by ${interaction.member?.user?.username}`,
-      iconURL: interaction.member?.user?.displayAvatarURL({
-       dynamic: true,
-       format: "png",
-       size: 2048,
-      }),
-     });
-    return interaction.followUp({ ephemeral: true, embeds: [embed] });
-   }
 
    figlet(text, (err, data) => {
     if (err) {

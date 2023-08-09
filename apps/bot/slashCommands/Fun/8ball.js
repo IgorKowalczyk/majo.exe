@@ -13,39 +13,13 @@ export default {
    description: "Question to ask 8ball",
    required: true,
    type: ApplicationCommandOptionType.String,
+   max_length: 100,
   },
  ],
  run: async (client, interaction, guildSettings) => {
   try {
    const args = interaction.options.getString("question");
-   if (!args) {
-    const embed = new EmbedBuilder()
-     .setDescription("Please provide a question!")
-     .setColor(guildSettings?.embedColor || client.config.global.defaultColor)
-     .setTimestamp()
-     .setFooter({
-      text: `Requested by ${interaction.member?.user?.username}`,
-      iconURL: interaction.member?.user?.displayAvatarURL({
-       dynamic: true,
-       format: "png",
-      }),
-     });
-    return interaction.followUp({ ephemeral: true, embeds: [embed] });
-   }
-   if (args.toString().length > client.config.maxInputLength) {
-    const embed = new EmbedBuilder()
-     .setDescription(`Please provide a question that is less than ${client.config.maxInputLength} characters!`)
-     .setColor(guildSettings?.embedColor || client.config.global.defaultColor)
-     .setTimestamp()
-     .setFooter({
-      text: `Requested by ${interaction.member?.user?.username}`,
-      iconURL: interaction.member?.user?.displayAvatarURL({
-       dynamic: true,
-       format: "png",
-      }),
-     });
-    return interaction.followUp({ ephemeral: true, embeds: [embed] });
-   }
+
    const images = [
     ["Yes.", "https://c.tenor.com/TFhmPga4xEwAAAAC/magic8ball-yes.gif"],
     ["It is certain", "https://c.tenor.com/eyI116E3kWYAAAAC/yoda-8ball.gif"],

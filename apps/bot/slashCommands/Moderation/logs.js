@@ -13,6 +13,8 @@ export default {
    name: "page",
    description: "The page number to view",
    type: ApplicationCommandOptionType.Integer,
+   min_value: 1,
+   max_value: 5000,
    required: false,
   },
  ],

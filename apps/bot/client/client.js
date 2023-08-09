@@ -6,6 +6,7 @@ import { Client, GatewayIntentBits, PermissionsBitField, Collection } from "disc
 import { globby } from "globby";
 import { emojis } from "../config/emojis.js";
 import { botConfig } from "../config/index.js";
+import giveaway from "../util/giveaway/core.js";
 
 Logger("info", "Starting Majo.exe Bot...");
 Logger("info", `Running version v${process.env.npm_package_version} on Node.js ${process.version} on ${process.platform} ${process.arch}`);
@@ -37,6 +38,7 @@ client.config = {
  ...config,
 };
 client.botEmojis = emojis;
+client.giveawaysManager = giveaway(client);
 client.errorMessages = {
  generateErrorMessage: (interaction, error) => {
   Logger("error", error?.toString() ?? "Unknown error occured");

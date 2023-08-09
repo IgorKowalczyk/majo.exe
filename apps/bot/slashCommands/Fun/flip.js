@@ -26,6 +26,7 @@ export default {
      description: "Text to flip",
      required: true,
      type: ApplicationCommandOptionType.String,
+     max_length: 100,
     },
    ],
   },

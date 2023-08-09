@@ -13,6 +13,7 @@ export default {
    name: "query",
    description: "The full name of command or category",
    type: ApplicationCommandOptionType.String,
+   max_length: 256,
    required: false,
   },
  ],

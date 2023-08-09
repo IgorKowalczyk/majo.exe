@@ -84,7 +84,13 @@ export default {
      .setColor(guildSettings?.embedColor || client.config.global.defaultColor)
      .setTimestamp()
      .setTitle("👍 Reputation")
-     .setDescription(`> <@${user.id}> has ${rep} reputation points`)
+     .setDescription(`> ${user} has \`${rep}\` reputation points`)
+     .setThumbnail(
+      user?.displayAvatarURL({
+       dynamic: true,
+       format: "png",
+      })
+     )
      .setFooter({
       text: `Requested by ${interaction.member?.user?.username}`,
       iconURL: interaction.member?.user?.displayAvatarURL({
@@ -118,7 +124,7 @@ export default {
      const embed = new EmbedBuilder()
       .setColor("#EF4444")
       .setTimestamp()
-      .setDescription(`❌ You can't give reputation to <@${user.id}> for another \`${formatDuration(timeout.get(`${interaction.member?.user?.id}-${user.id}`) - Date.now())}\``)
+      .setDescription(`❌ You can't give reputation to ${user} for another \`${formatDuration(timeout.get(`${interaction.member?.user?.id}-${user.id}`) - Date.now())}\``)
       .setFooter({
        text: `Requested by ${interaction.member?.user?.username}`,
        iconURL: interaction.member?.user?.displayAvatarURL({
@@ -138,7 +144,13 @@ export default {
      .setColor(guildSettings?.embedColor || client.config.global.defaultColor)
      .setTimestamp()
      .setTitle("👍 Reputation")
-     .setDescription(`> Successfully gave <@${user.id}> 1 reputation point. They now have ${rep} reputation points`)
+     .setDescription(`> Successfully gave ${user} \`1\` reputation point. They now have *\`${rep}\` reputation points`)
+     .setThumbnail(
+      user?.displayAvatarURL({
+       dynamic: true,
+       format: "png",
+      })
+     )
      .setFooter({
       text: `Requested by ${interaction.member?.user?.username}`,
       iconURL: interaction.member?.user?.displayAvatarURL({
@@ -172,7 +184,7 @@ export default {
      const embed = new EmbedBuilder()
       .setColor("#EF4444")
       .setTimestamp()
-      .setDescription(`❌ You can't take reputation from <@${user.id}> for another \`${formatDuration(timeout.get(`${interaction.member?.user?.id}-${user.id}`) - Date.now())}\``)
+      .setDescription(`❌ You can't take reputation from ${user} for another \`${formatDuration(timeout.get(`${interaction.member?.user?.id}-${user.id}`) - Date.now())}\``)
       .setFooter({
        text: `Requested by ${interaction.member?.user?.username}`,
        iconURL: interaction.member?.user?.displayAvatarURL({
@@ -192,7 +204,13 @@ export default {
      .setColor(guildSettings?.embedColor || client.config.global.defaultColor)
      .setTimestamp()
      .setTitle("👍 Reputation")
-     .setDescription(`> Successfully took 1 reputation point from <@${user.id}>. They now have ${rep} reputation points`)
+     .setDescription(`> Successfully took \`1\` reputation point from ${user}. They now have \`${rep}\` reputation points`)
+     .setThumbnail(
+      user?.displayAvatarURL({
+       dynamic: true,
+       format: "png",
+      })
+     )
      .setFooter({
       text: `Requested by ${interaction.member?.user?.username}`,
       iconURL: interaction.member?.user?.displayAvatarURL({
@@ -261,7 +279,13 @@ export default {
      .setColor(guildSettings?.embedColor || client.config.global.defaultColor)
      .setTimestamp()
      .setTitle("👍 Reputation")
-     .setDescription(`> Successfully set <@${user.id}>'s reputation to ${rep} reputation points`)
+     .setDescription(`> Successfully set ${user} reputation to \`${rep}\` points`)
+     .setThumbnail(
+      user?.displayAvatarURL({
+       dynamic: true,
+       format: "png",
+      })
+     )
      .setFooter({
       text: `Requested by ${interaction.member?.user?.username}`,
       iconURL: interaction.member?.user?.displayAvatarURL({

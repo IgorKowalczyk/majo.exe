@@ -14,27 +14,12 @@ export default {
    description: "Anime name",
    required: true,
    type: ApplicationCommandOptionType.String,
+   max_length: 256,
   },
  ],
  run: async (client, interaction, guildSettings) => {
   try {
    const query = interaction.options.getString("query");
-   if (!query) {
-    const embed = new EmbedBuilder()
-     .setColor("#EF4444")
-     .setTimestamp()
-     .setTitle("❌ Error")
-     .setDescription("> You need to provide a query to search for.")
-     .setFooter({
-      text: `Requested by ${interaction.member?.user?.username}`,
-      iconURL: interaction.member?.user?.displayAvatarURL({
-       dynamic: true,
-       format: "png",
-       size: 2048,
-      }),
-     });
-    return interaction.followUp({ ephemeral: true, embeds: [embed] });
-   }
 
    const request = await fetch(`https://kitsu.io/api/edge/anime?filter[text]=${query}&page%5Boffset%5D=0&page%5Blimit%5D=1`, {
     method: "GET",
@@ -43,6 +28,7 @@ export default {
      Accept: "application/vnd.api+json",
     },
    });
+
    if (!request || !request.ok) {
     const embed = new EmbedBuilder()
      .setColor("#EF4444")

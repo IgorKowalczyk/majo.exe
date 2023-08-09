@@ -19,6 +19,7 @@ export default {
      description: "The text to encode",
      required: true,
      type: ApplicationCommandOptionType.String,
+     max_length: 500,
     },
    ],
   },
@@ -33,6 +34,7 @@ export default {
      description: "The text to decode",
      required: true,
      type: ApplicationCommandOptionType.String,
+     max_length: 500,
     },
    ],
   },
@@ -43,24 +45,6 @@ export default {
 
    if (type === "encode") {
     const text = interaction.options.getString("text");
-
-    if (text.length > 500) {
-     const embed = new EmbedBuilder()
-      .setColor("#EF4444")
-      .setTimestamp()
-      .setTitle("❌ Invalid text")
-      .setDescription("> The text you provided is too long")
-      .setFooter({
-       text: `Requested by ${interaction.member?.user?.username}`,
-       iconURL: interaction.member?.user?.displayAvatarURL({
-        dynamic: true,
-        format: "png",
-        size: 2048,
-       }),
-      });
-     return interaction.followUp({ ephemeral: true, embeds: [embed] });
-    }
-
     const encoded = Buffer.from(text).toString("base64");
 
     const embed = new EmbedBuilder()
@@ -80,24 +64,6 @@ export default {
     return interaction.followUp({ ephemeral: true, embeds: [embed] });
    } else if (type === "decode") {
     const text = interaction.options.getString("text");
-
-    if (text.length > 500) {
-     const embed = new EmbedBuilder()
-      .setColor("#EF4444")
-      .setTimestamp()
-      .setTitle("❌ Invalid text")
-      .setDescription("> The text you provided is too long")
-      .setFooter({
-       text: `Requested by ${interaction.member?.user?.username}`,
-       iconURL: interaction.member?.user?.displayAvatarURL({
-        dynamic: true,
-        format: "png",
-        size: 2048,
-       }),
-      });
-     return interaction.followUp({ ephemeral: true, embeds: [embed] });
-    }
-
     const decoded = Buffer.from(text, "base64").toString("utf-8");
 
     const embed = new EmbedBuilder()

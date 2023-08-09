@@ -14,6 +14,7 @@ export default {
    description: "The color to get info about",
    required: false,
    type: ApplicationCommandOptionType.String,
+   max_length: 7,
   },
  ],
  run: async (client, interaction) => {
@@ -40,7 +41,6 @@ export default {
    }
 
    const value = random ? null : color;
-
    const colorInfo = new Color(value);
 
    const embed = new EmbedBuilder()
