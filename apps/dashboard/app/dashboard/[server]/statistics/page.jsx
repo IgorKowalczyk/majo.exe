@@ -52,6 +52,14 @@ export default async function Statistics({ params }) {
   },
  });
 
+ if (!guild) {
+  await prismaClient.guild.create({
+   data: {
+    guildId: serverDownload.id,
+   },
+  });
+ }
+
  const guildJoinMap = new Map();
  const guildLeaveMap = new Map();
 
