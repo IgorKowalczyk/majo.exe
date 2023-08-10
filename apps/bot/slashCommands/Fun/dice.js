@@ -15,7 +15,7 @@ export default {
     .setTitle("🎲 Dice")
     .setDescription(`>>> **You rolled a ${dice}!**`)
     .setTimestamp()
-    .setColor(guildSettings?.embedColor || client.config.global.defaultColor)
+    .setColor(guildSettings?.embedColor || client.config.defaultColor)
     .setThumbnail(
      interaction.member?.user?.displayAvatarURL({
       dynamic: true,

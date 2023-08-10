@@ -40,9 +40,9 @@ export default {
     }
 
     const embed = new EmbedBuilder()
-     .setColor(guildSettings?.embedColor || client.config.global.defaultColor)
+     .setColor(guildSettings?.embedColor || client.config.defaultColor)
      .setTimestamp()
-     .setTitle(`${client.botEmojis.success} Your ascii code has been successfully generated!`)
+     .setTitle(`${client.config.emojis.success} Your ascii code has been successfully generated!`)
      .setFooter({
       text: `Requested by ${interaction.member?.user?.username}`,
       iconURL: interaction.member?.user?.displayAvatarURL({

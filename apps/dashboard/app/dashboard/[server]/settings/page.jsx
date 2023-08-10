@@ -1,5 +1,5 @@
 import { Cog6ToothIcon, PaintBrushIcon, ShieldCheckIcon } from "@heroicons/react/24/outline";
-import { config } from "@majoexe/config";
+import { globalConfig } from "@majoexe/config";
 import prismaClient from "@majoexe/database";
 import { getGuildMember, getPermissionNames, getServer } from "@majoexe/util/functions";
 import { getSession } from "lib/session";
@@ -50,7 +50,7 @@ export default async function Settings({ params }) {
      Default Embed Color
     </h2>
     <p className="mb-4 text-left">Change the color of the embeds sent by the bot. This will not affect embeds sent by other bots.</p>
-    <ChangeEmbedColor serverId={serverDownload.id} serverColor={guild?.embedColor || config.global.defaultColor} serverIcon={serverDownload.icon} />
+    <ChangeEmbedColor serverId={serverDownload.id} serverColor={guild?.embedColor || globalConfig.defaultColor} serverIcon={serverDownload.icon} />
    </Block>
 
    <Block className="mt-4">

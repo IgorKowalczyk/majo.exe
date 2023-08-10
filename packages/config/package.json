@@ -1,9 +1,13 @@
 {
   "name": "@majoexe/config",
   "version": "6.0.0",
-  "description": "Majo.exe shared config",
+  "description": "Majo.exe shared config for all packages and projects",
   "exports": {
-    ".": "./index.js"
+    ".": "./index.js",
+    "./bot": "./configs/bot.js",
+    "./dashboard": "./configs/dashboard.js",
+    "./debugger": "./configs/debugger.js",
+    "./global": "./configs/global.js"
   },
   "type": "module",
   "scripts": {
@@ -13,12 +17,13 @@
     "lint:fix": "eslint . --ext .js,.jsx,.ts,.tsx --fix"
   },
   "dependencies": {
+    "discord-api-types": "0.37.52",
     "dotenv": "16.3.1"
   },
   "devDependencies": {
+    "@majoexe/eslint-config": "workspace:*",
     "eslint": "8.46.0",
-    "prettier": "3.0.1",
-    "@majoexe/eslint-config": "workspace:*"
+    "prettier": "3.0.1"
   },
   "engines": {
     "node": ">=18.0.0"

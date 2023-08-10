@@ -1,4 +1,4 @@
-import { config } from "@majoexe/config";
+import { globalConfig } from "@majoexe/config";
 
 /**
  * Get all slash commands from the bot.
@@ -7,7 +7,7 @@ import { config } from "@majoexe/config";
  * */
 export async function getSlashCommands() {
  try {
-  const commands = await fetch(`https://discord.com/api/v${config.global.apiVersion}/applications/${process.env.CLIENT_ID}/commands`, {
+  const commands = await fetch(`https://discord.com/api/v${globalConfig.apiVersion}/applications/${process.env.CLIENT_ID}/commands`, {
    next: { revalidate: 10 },
    headers: {
     Authorization: `Bot ${process.env.TOKEN}`,

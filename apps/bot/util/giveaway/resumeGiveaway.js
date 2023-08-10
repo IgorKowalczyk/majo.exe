@@ -66,7 +66,7 @@ export async function ResumeGiveaway(client, interaction, color) {
   }
 
   const embed = new EmbedBuilder()
-   .setDescription(`${client.botEmojis.sparkles} | Success! Giveaway \`${query}\` resumed!`)
+   .setDescription(`${client.config.emojis.sparkles} | Success! Giveaway \`${query}\` resumed!`)
    .setColor(color)
    .setFooter({
     text: `Requested by ${interaction.user.username}`,

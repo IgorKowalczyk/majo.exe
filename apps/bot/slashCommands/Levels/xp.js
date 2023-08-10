@@ -59,7 +59,7 @@ export default {
      }),
     })
     .setThumbnail(user.displayAvatarURL({ dynamic: true, format: "png", size: 2048 }))
-    .setColor(guildSettings?.embedColor || client.config.global.defaultColor)
+    .setColor(guildSettings?.embedColor || client.config.defaultColor)
     .setTimestamp();
 
    if (client.config.dashboard.enabled && client.config.dashboard.link) {

@@ -27,7 +27,7 @@ export default {
       size: 2048,
      }),
     })
-    .setColor(guildSettings?.embedColor || client.config.global.defaultColor)
+    .setColor(guildSettings?.embedColor || client.config.defaultColor)
     .setTimestamp()
     .setTimestamp();
    return interaction.followUp({ ephemeral: false, embeds: [embed] });

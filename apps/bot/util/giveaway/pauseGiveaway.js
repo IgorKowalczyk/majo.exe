@@ -66,7 +66,7 @@ export async function PauseGiveaway(client, interaction, color) {
   }
 
   const embed = new EmbedBuilder()
-   .setDescription(`${client.botEmojis.sparkles} | Success! Giveaway \`${query}\` paused!`)
+   .setDescription(`${client.config.emojis.sparkles} | Success! Giveaway \`${query}\` paused!`)
    .setColor(color)
    .setFooter({
     text: `Requested by ${interaction.user.username}`,

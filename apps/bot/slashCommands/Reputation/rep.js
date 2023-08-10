@@ -81,7 +81,7 @@ export default {
     const rep = await checkReputation(user.id, interaction.guild.id);
 
     const embed = new EmbedBuilder()
-     .setColor(guildSettings?.embedColor || client.config.global.defaultColor)
+     .setColor(guildSettings?.embedColor || client.config.defaultColor)
      .setTimestamp()
      .setTitle("👍 Reputation")
      .setDescription(`> ${user} has \`${rep}\` reputation points`)
@@ -141,7 +141,7 @@ export default {
     timeout.set(`${interaction.member?.user?.id}-${user.id}`, Date.now() + 86400000);
 
     const embed = new EmbedBuilder()
-     .setColor(guildSettings?.embedColor || client.config.global.defaultColor)
+     .setColor(guildSettings?.embedColor || client.config.defaultColor)
      .setTimestamp()
      .setTitle("👍 Reputation")
      .setDescription(`> Successfully gave ${user} \`1\` reputation point. They now have *\`${rep}\` reputation points`)
@@ -201,7 +201,7 @@ export default {
     timeout.set(`${interaction.member?.user?.id}-${user.id}`, Date.now() + 86400000);
 
     const embed = new EmbedBuilder()
-     .setColor(guildSettings?.embedColor || client.config.global.defaultColor)
+     .setColor(guildSettings?.embedColor || client.config.defaultColor)
      .setTimestamp()
      .setTitle("👍 Reputation")
      .setDescription(`> Successfully took \`1\` reputation point from ${user}. They now have \`${rep}\` reputation points`)
@@ -276,7 +276,7 @@ export default {
     const rep = await setReputation(user, interaction.guild, amount);
 
     const embed = new EmbedBuilder()
-     .setColor(guildSettings?.embedColor || client.config.global.defaultColor)
+     .setColor(guildSettings?.embedColor || client.config.defaultColor)
      .setTimestamp()
      .setTitle("👍 Reputation")
      .setDescription(`> Successfully set ${user} reputation to \`${rep}\` points`)

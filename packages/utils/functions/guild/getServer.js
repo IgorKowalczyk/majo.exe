@@ -1,4 +1,4 @@
-import { config } from "@majoexe/config";
+import { globalConfig } from "@majoexe/config";
 import { isBotInServer } from "./isBotInServer.js";
 
 /**
@@ -8,7 +8,7 @@ import { isBotInServer } from "./isBotInServer.js";
  * */
 export async function getServer(id) {
  try {
-  const res = await fetch(`https://discord.com/api/v${config.global.apiVersion}/guilds/${id}`, {
+  const res = await fetch(`https://discord.com/api/v${globalConfig.apiVersion}/guilds/${id}`, {
    next: { revalidate: 10 },
    headers: {
     Authorization: `Bot ${process.env.TOKEN}`,

@@ -34,7 +34,7 @@ export default {
     .setTitle("😂 Joke")
     .setDescription(`>>> **${json.setup}**\n\n${json.punchline}`)
     .setTimestamp()
-    .setColor(guildSettings?.embedColor || client.config.global.defaultColor)
+    .setColor(guildSettings?.embedColor || client.config.defaultColor)
     .setThumbnail(
      interaction.member?.user?.displayAvatarURL({
       dynamic: true,

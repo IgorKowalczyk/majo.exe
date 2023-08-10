@@ -1,6 +1,6 @@
 import prismaClient from "@majoexe/database";
 import { createUser } from "@majoexe/util/database";
-import { formatDuration, Logger } from "@majoexe/util/functions";
+import { formatDuration } from "@majoexe/util/functions";
 import { EmbedBuilder } from "discord.js";
 const timeout = new Map();
 
@@ -10,7 +10,7 @@ export async function interactionCreate(client, interaction) {
    await interaction?.guild?.members?.fetch(interaction?.member?.user?.id);
   }
   if (interaction.isCommand()) {
-   client.config.debugger.displayCommandUsage && Logger("info", `Command used: ${interaction.commandName} by ${interaction.user.tag} (${interaction.user.id})`);
+   client.config.displayCommandUsage && client.debugger("info", `Command used: ${interaction.commandName} by ${interaction.user.tag} (${interaction.user.id})`);
    const shouldDefer = client.slashCommands.get(interaction.commandName).defer ?? true;
    if (shouldDefer) {
     await interaction.deferReply({ ephemeral: false });
@@ -70,7 +70,7 @@ export async function interactionCreate(client, interaction) {
   } else if (interaction.isModalSubmit()) {
    const modal = client.modals.get(interaction.customId);
    if (!modal) return;
-   client.config.debugger.displayModalUsage && Logger("info", `Modal used: ${interaction.customId} by ${interaction.user.tag} (${interaction.user.id})`);
+   client.config.displayModalUsage && client.debugger("info", `Modal used: ${interaction.customId} by ${interaction.user.tag} (${interaction.user.id})`);
 
    const guildSettings = await prismaClient.guild.findFirst({
     where: {
@@ -99,6 +99,6 @@ export async function interactionCreate(client, interaction) {
    modal.run(client, interaction, guildSettings);
   }
  } catch (err) {
-  Logger("error", err);
+  client.debugger("error", err);
  }
 }

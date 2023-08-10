@@ -46,7 +46,7 @@ export default {
     .setDescription(`>>> **Q:** ${args} \n**A:** ${parsed[random][0]}`)
     .setImage(parsed[random][1])
     .setTimestamp()
-    .setColor(guildSettings?.embedColor || client.config.global.defaultColor)
+    .setColor(guildSettings?.embedColor || client.config.defaultColor)
     .setFooter({
      text: `Requested by ${interaction.member?.user?.username}`,
      iconURL: interaction.member?.user?.displayAvatarURL({

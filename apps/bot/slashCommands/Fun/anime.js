@@ -86,49 +86,49 @@ export default {
    }
 
    const embed = new EmbedBuilder()
-    .setColor(guildSettings?.embedColor || client.config.global.defaultColor)
+    .setColor(guildSettings?.embedColor || client.config.defaultColor)
     .setTimestamp()
     .setTitle(data.canonicalTitle || query.splice(0, 20))
     .setURL(`https://kitsu.io/anime/${data.slug}`)
     .setDescription(data.synopsis || "None!")
     .addFields([
      {
-      name: `${client.botEmojis.flag_gb} English Title`,
+      name: `${client.config.emojis.flag_gb} English Title`,
       value: codeBlock(data.titles?.en || "None!"),
       inline: false,
      },
      {
-      name: `${client.botEmojis.flag_jp} Japanese Title`,
+      name: `${client.config.emojis.flag_jp} Japanese Title`,
       value: codeBlock(data.titles?.ja_jp || "None!"),
       inline: false,
      },
      {
-      name: `${client.botEmojis.book} Type`,
+      name: `${client.config.emojis.book} Type`,
       value: codeBlock(data.showType || "N/A!"),
       inline: true,
      },
      {
-      name: `${client.botEmojis.counting} Episodes`,
+      name: `${client.config.emojis.counting} Episodes`,
       value: codeBlock(`${data.episodeCount || "N/A!"} episodes (${data.episodeLength || "N/A!"} minutes each)`),
       inline: true,
      },
      {
-      name: `${client.botEmojis.star} Score`,
+      name: `${client.config.emojis.star} Score`,
       value: codeBlock(`${data.averageRating || "N/A!"} (${data.favoritesCount} favorites)`),
       inline: true,
      },
      {
-      name: `${client.botEmojis.star2} Rating`,
+      name: `${client.config.emojis.star2} Rating`,
       value: codeBlock(`${data.ageRating || "N/A!"} ${"- " + data.ageRatingGuide || ""}`),
       inline: true,
      },
      {
-      name: `${client.botEmojis.calendar_spillar} Aired`,
+      name: `${client.config.emojis.calendar_spillar} Aired`,
       value: codeBlock(`${data.startDate || "N/A!"} - ${data.endDate || "N/A!"}`),
       inline: true,
      },
      {
-      name: `${client.botEmojis.barchart} Popularity`,
+      name: `${client.config.emojis.barchart} Popularity`,
       value: codeBlock(`${"#" + data.popularityRank + " (Most Popular Anime)" || "N/A!"}\n${"#" + data.ratingRank + " (Highest Rated Anime)" || "N/A!"}`),
       inline: false,
      },

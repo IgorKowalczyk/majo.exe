@@ -1,19 +1,18 @@
-import { config } from "@majoexe/config";
+import { globalConfig, botConfig, debuggerConfig, dashboardConfig } from "@majoexe/config";
 import { createErrorEmbed } from "@majoexe/util/embeds";
 import { Logger } from "@majoexe/util/functions";
 import chalk from "chalk";
 import { Client, GatewayIntentBits, PermissionsBitField, Collection } from "discord.js";
 import { globby } from "globby";
-import { emojis } from "../config/emojis.js";
-import { botConfig } from "../config/index.js";
 import giveaway from "../util/giveaway/core.js";
 
 Logger("info", "Starting Majo.exe Bot...");
 Logger("info", `Running version v${process.env.npm_package_version} on Node.js ${process.version} on ${process.platform} ${process.arch}`);
+Logger("info", "Check out the source code at https://github.com/igorkowalczyk/majo.exe! Don't forget to star the repository, it helps a lot!");
 
-Logger("warn", "This is a development version of Majo.exe. It may be unstable and may contain bugs. Use at your own risk!");
-Logger("warn", "Check out the source code at https://github.com/igorkowalczyk/majo.exe");
-Logger("info", `Dashboard is enabled at ${config.dashboard.link}`);
+if (process.env.NODE_ENV !== "production") {
+ Logger("warn", "This is a development version of Majo.exe. It may be unstable and may contain bugs. Use at your own risk!");
+}
 
 const client = new Client({
  intents: [
@@ -47,9 +46,11 @@ client.slashCommands = new Collection();
 client.modals = new Collection();
 client.config = {
  ...botConfig,
- ...config,
+ ...globalConfig,
+ ...debuggerConfig,
+ // Deprecated, to be replaced!
+ dashboard: dashboardConfig,
 };
-client.botEmojis = emojis;
 client.giveawaysManager = giveaway(client);
 client.errorMessages = {
  generateErrorMessage: (interaction, error) => {
@@ -104,11 +105,11 @@ for (const value of slashCommands) {
  file.default.options &&
   file.default.options.map((option) => {
    if (option.type === 1) {
-    config.debugger.displayCommandList && Logger("info", `Loaded slash subcommand ${option.name} from ${value.replace(process.cwd(), "")}`);
+    debuggerConfig.displayCommandList && Logger("info", `Loaded slash subcommand ${option.name} from ${value.replace(process.cwd(), "")}`);
     client.additionalSlashCommands++;
    }
   });
- config.debugger.displayCommandList && Logger("info", `Loaded slash command ${file.default.name} from ${value.replace(process.cwd(), "")}`);
+ debuggerConfig.displayCommandList && Logger("info", `Loaded slash command ${file.default.name} from ${value.replace(process.cwd(), "")}`);
 }
 
 for (const value of modals) {
@@ -130,7 +131,7 @@ for (const value of modals) {
  client.modals.set(file.default.id, {
   ...file.default,
  });
- config.debugger.displayModalList && Logger("info", `Loaded modal ${file.default.id} from ${value.replace(process.cwd(), "")}`);
+ debuggerConfig.displayModalList && Logger("info", `Loaded modal ${file.default.id} from ${value.replace(process.cwd(), "")}`);
 }
 
 Logger("event", `Loaded ${client.modals.size} modals from /modals in ${client.performance(modalLoadTime)}`);

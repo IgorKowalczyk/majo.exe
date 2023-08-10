@@ -1,6 +1,5 @@
 import prismaClient from "@majoexe/database";
 import { GiveawaysManager } from "discord-giveaways";
-import { emojis } from "../../config/emojis.js";
 
 export default function giveaway(client) {
  const Giveaways = class extends GiveawaysManager {
@@ -47,7 +46,7 @@ export default function giveaway(client) {
   default: {
    botsCanWin: false,
    // exemptPermissions: ["MANAGE_MESSAGES", "ADMINISTRATOR"],
-   reaction: emojis.giveaway,
+   reaction: client.config.emojis.giveaway,
   },
  });
  return manager;

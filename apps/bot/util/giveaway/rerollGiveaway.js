@@ -66,7 +66,7 @@ export async function RerollGiveaway(client, interaction, color) {
   }
 
   const embed = new EmbedBuilder()
-   .setDescription(`${client.botEmojis.sparkles} | Success! Giveaway \`${query}\` rerolled!`)
+   .setDescription(`${client.config.emojis.sparkles} | Success! Giveaway \`${query}\` rerolled!`)
    .setColor(color)
    .setFooter({
     text: `Requested by ${interaction.user.username}`,

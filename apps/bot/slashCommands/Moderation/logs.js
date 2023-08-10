@@ -40,12 +40,12 @@ export default {
   }
 
   const logsArray = logs.slice(0, 20).map((log) => {
-   const emoji = client.botEmojis.logs.find((l) => l.type === log.type)?.emoji || "❔";
+   const emoji = client.config.emojis.logs.find((l) => l.type === log.type)?.emoji || "❔";
    return `**${emoji} <@${log.authorId}>**: ${log.content}`;
   });
 
   const embed = new EmbedBuilder()
-   .setColor(guildSettings?.embedColor || client.config.global.defaultColor)
+   .setColor(guildSettings?.embedColor || client.config.defaultColor)
    .setTimestamp()
    .setTitle(`📝 Logs (${count}/${Math.ceil((await countLogs(interaction.guildId)) / 20)})`)
    .setDescription(logsArray.join("\n"))

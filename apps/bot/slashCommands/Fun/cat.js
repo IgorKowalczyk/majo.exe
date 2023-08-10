@@ -32,7 +32,7 @@ export default {
    const embed = new EmbedBuilder()
     .setTitle("🐱 Meow!")
     .setImage(json[0].url)
-    .setColor(guildSettings?.embedColor || client.config.global.defaultColor)
+    .setColor(guildSettings?.embedColor || client.config.defaultColor)
     .setTimestamp()
     .setFooter({
      text: `Requested by ${interaction.member?.user?.username}`,

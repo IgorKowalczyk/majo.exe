@@ -1,4 +1,3 @@
-import { config } from "@majoexe/config";
 import { EmbedBuilder, time, ButtonBuilder, ActionRowBuilder, ApplicationCommandType, ButtonStyle } from "discord.js";
 
 export default {
@@ -11,6 +10,7 @@ export default {
  run: async (client, interaction, guildSettings) => {
   try {
    const embed = new EmbedBuilder()
+    .setTitle("📈 Majo.exe uptime")
     .setDescription(
      `
      **🚀 Date launched**: ${time(client.readyAt)}
@@ -19,7 +19,7 @@ export default {
      `
     )
     .setTimestamp()
-    .setColor(guildSettings?.embedColor || client.config.global.defaultColor)
+    .setColor(guildSettings?.embedColor || client.config.defaultColor)
     .setFooter({
      text: `Requested by ${interaction.member?.user?.username}`,
      iconURL: interaction.member.user.displayAvatarURL({
@@ -28,8 +28,9 @@ export default {
       size: 2048,
      }),
     });
-   if (config.dashboard.enabled && config.dashboard.link) {
-    const contactButton = new ButtonBuilder().setLabel("Status page").setStyle(ButtonStyle.Link).setURL(`${config.dashboard.link}/status`);
+
+   if (client.config.dashboard.enabled && client.config.dashboard.link) {
+    const contactButton = new ButtonBuilder().setLabel("Status page").setStyle(ButtonStyle.Link).setURL(`${client.config.dashboard.link}/status`);
     const action = new ActionRowBuilder().addComponents(contactButton);
     return interaction.followUp({ ephemeral: false, embeds: [embed], components: [action] });
    } else {

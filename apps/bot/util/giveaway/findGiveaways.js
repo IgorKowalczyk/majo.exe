@@ -56,7 +56,7 @@ export async function FindGiveaways(client, interaction, color, type) {
    .setDescription(
     `>>> ${
      list.length > 0 // prettier
-      ? list.map((g) => `**${g.data?.prize ? g.data?.prize.replace(`${client.botEmojis.giveaway} Giveaway: `, "").replace(`${client.botEmojis.giveaway} Drop: `, "") : "No prize"}**: Winners: \`${g.data?.winnerCount || 1}\`${g.data?.ended ? "" : `, Ends <t:${Math.floor(g.data?.endAt / 1000)}:R>` || "No end date"}, https://discord.com/channels/${g.guildId}/${g.data?.channelId}/${g.messageId}`).join("\n")
+      ? list.map((g) => `**${g.data?.prize ? g.data?.prize.replace(`${client.config.emojis.giveaway} Giveaway: `, "").replace(`${client.config.emojis.giveaway} Drop: `, "") : "No prize"}**: Winners: \`${g.data?.winnerCount || 1}\`${g.data?.ended ? "" : `, Ends <t:${Math.floor(g.data?.endAt / 1000)}:R>` || "No end date"}, https://discord.com/channels/${g.guildId}/${g.data?.channelId}/${g.messageId}`).join("\n")
       : "No giveaways found for this type!"
     }`
    )

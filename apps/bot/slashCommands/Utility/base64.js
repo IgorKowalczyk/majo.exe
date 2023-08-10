@@ -48,7 +48,7 @@ export default {
     const encoded = Buffer.from(text).toString("base64");
 
     const embed = new EmbedBuilder()
-     .setColor(guildSettings?.embedColor || client.config.global.defaultColor)
+     .setColor(guildSettings?.embedColor || client.config.defaultColor)
      .setTimestamp()
      .setTitle("🗃️ Encode Base64")
      .setDescription(`> \`${encoded}\``)
@@ -67,7 +67,7 @@ export default {
     const decoded = Buffer.from(text, "base64").toString("utf-8");
 
     const embed = new EmbedBuilder()
-     .setColor(guildSettings?.embedColor || client.config.global.defaultColor)
+     .setColor(guildSettings?.embedColor || client.config.defaultColor)
      .setTimestamp()
      .setTitle("🗃️ Decode Base64")
      .setDescription(`> \`${decoded}\``)

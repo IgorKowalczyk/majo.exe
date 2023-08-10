@@ -242,6 +242,9 @@ importers:
 
   packages/config:
     dependencies:
+      discord-api-types:
+        specifier: 0.37.52
+        version: 0.37.52
       dotenv:
         specifier: 16.3.1
         version: 16.3.1
@@ -1786,7 +1789,7 @@ packages:
       '@discordjs/formatters': 0.3.1
       '@discordjs/util': 1.0.0
       '@sapphire/shapeshift': 3.9.2
-      discord-api-types: 0.37.50
+      discord-api-types: 0.37.52
       fast-deep-equal: 3.1.3
       ts-mixer: 6.0.3
       tslib: 2.6.1
@@ -1801,7 +1804,7 @@ packages:
     resolution: {integrity: sha512-M7X4IGiSeh4znwcRGcs+49B5tBkNDn4k5bmhxJDAUhRxRHTiFAOTVUNQ6yAKySu5jZTnCbSvTYHW3w0rAzV1MA==}
     engines: {node: '>=16.9.0'}
     dependencies:
-      discord-api-types: 0.37.50
+      discord-api-types: 0.37.52
     dev: false
 
   /@discordjs/rest@2.0.0:
@@ -1834,7 +1837,7 @@ packages:
       '@sapphire/async-queue': 1.5.0
       '@types/ws': 8.5.5
       '@vladfrangu/async_event_emitter': 2.2.2
-      discord-api-types: 0.37.50
+      discord-api-types: 0.37.52
       tslib: 2.6.1
       ws: 8.13.0
     transitivePeerDependencies:
@@ -4186,6 +4189,10 @@ packages:
 
   /discord-api-types@0.37.50:
     resolution: {integrity: sha512-X4CDiMnDbA3s3RaUXWXmgAIbY1uxab3fqe3qwzg5XutR3wjqi7M3IkgQbsIBzpqBN2YWr/Qdv7JrFRqSgb4TFg==}
+    dev: false
+
+  /discord-api-types@0.37.52:
+    resolution: {integrity: sha512-TP99aMgY6rHuDIy056GDm1j2nGOcaLbFpjVbvAmv6N6vhkjHNqHXCHVqKtGisaQ8D15slbxTHNl/SSkPdx2syg==}
     dev: false
 
   /discord-giveaways@6.0.1(discord.js@14.12.1):

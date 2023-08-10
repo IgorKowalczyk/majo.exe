@@ -14,7 +14,7 @@ export default {
    await prismaClient.user.findUnique({ where: { id: "1" } });
    const dbTiming = performance.now() - dbTime;
    const websocketPing = Math.floor(client.ws?.ping);
-   const wait = new EmbedBuilder().setColor(guildSettings?.embedColor || client.config.global.defaultColor).setDescription("🏓 Pong!...");
+   const wait = new EmbedBuilder().setColor(guildSettings?.embedColor || client.config.defaultColor).setDescription("🏓 Pong!...");
    const date = performance.now();
    interaction.followUp({ embeds: [wait] }).then(async (msg) => {
     const clientPing = performance.now() - date;
@@ -44,7 +44,7 @@ export default {
        size: 2048,
       }),
      })
-     .setColor(guildSettings?.embedColor || client.config.global.defaultColor)
+     .setColor(guildSettings?.embedColor || client.config.defaultColor)
      .setTimestamp()
      .setTitle("🏓 Pong!");
     msg.edit({ ephemeral: false, embeds: [pingMessage] });

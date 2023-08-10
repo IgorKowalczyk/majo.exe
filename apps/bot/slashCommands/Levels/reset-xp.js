@@ -39,7 +39,7 @@ export default {
 
    await resetXP(user.id, interaction.guild?.id);
    const embed = new EmbedBuilder()
-    .setColor(guildSettings?.embedColor || client.config.global.defaultColor)
+    .setColor(guildSettings?.embedColor || client.config.defaultColor)
     .setTimestamp()
     .setTitle("✅ Success")
     .setDescription(`> Successfully reset the XP of ${user}`)

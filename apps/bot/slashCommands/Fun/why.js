@@ -18,7 +18,7 @@ export default {
     .setTitle("🤔 Why?")
     .setDescription(`> **${parsed}**\n\n*Some questions can be outdated or not make sense!\n Don't take them seriously!*`)
     .setTimestamp()
-    .setColor(guildSettings?.embedColor || client.config.global.defaultColor)
+    .setColor(guildSettings?.embedColor || client.config.defaultColor)
     .setThumbnail(
      interaction.member?.user?.displayAvatarURL({
       dynamic: true,

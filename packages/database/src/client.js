@@ -1,6 +1,6 @@
 /* eslint-disable global-require */
 
-import { config } from "@majoexe/config";
+import { debuggerConfig } from "@majoexe/config";
 import { PrismaClient } from "@prisma/client";
 import { createPrismaRedisCache } from "prisma-redis-middleware";
 import { Logger } from "./logger.js";
@@ -50,17 +50,17 @@ const cache = createPrismaRedisCache({
  cacheTime: 30,
  excludeModels: ["Session", "Account"],
  onHit: (key) => {
-  if (config.debugger.displayCacheMessages) {
+  if (debuggerConfig.displayCacheMessages) {
    Logger("info", `Cache hit for key ${key}`);
   }
  },
  onMiss: (key) => {
-  if (config.debugger.displayCacheMessages) {
+  if (debuggerConfig.displayCacheMessages) {
    Logger("info", `Cache miss for key ${key}`);
   }
  },
  onError: (key) => {
-  if (config.debugger.displayCacheMessages) {
+  if (debuggerConfig.displayCacheMessages) {
    Logger("info", `Cache error for key ${key}`);
   }
  },
@@ -68,7 +68,7 @@ const cache = createPrismaRedisCache({
 
 prisma.$use(cache);
 
-if (config.debugger.displayDatabaseLogs) {
+if (debuggerConfig.displayDatabaseLogs) {
  prisma.$use(logger);
 }
 

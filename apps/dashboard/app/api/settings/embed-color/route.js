@@ -1,4 +1,4 @@
-import { config } from "@majoexe/config";
+import { globalConfig } from "@majoexe/config";
 import prismaClient from "@majoexe/database";
 import { getServer } from "@majoexe/util/functions";
 import { getSession } from "lib/session";
@@ -307,7 +307,7 @@ export async function PUT(request) {
    await prismaClient.guild.create({
     data: {
      guildId: id,
-     embedColor: config.global.defaultColor,
+     embedColor: globalConfig.defaultColor,
     },
    });
 
@@ -342,7 +342,7 @@ export async function PUT(request) {
    );
   }
 
-  if (current.embedColor === config.global.defaultColor) {
+  if (current.embedColor === globalConfig.defaultColor) {
    return new NextResponse(
     JSON.stringify({
      error: "Embed color is already set to that",
@@ -377,7 +377,7 @@ export async function PUT(request) {
     guildId: id,
    },
    data: {
-    embedColor: config.global.defaultColor,
+    embedColor: globalConfig.defaultColor,
     embedLastChanged: new Date(),
    },
   });

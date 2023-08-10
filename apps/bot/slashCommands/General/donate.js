@@ -20,7 +20,7 @@ export default {
        size: 2048,
       }),
      })
-     .setColor(guildSettings?.embedColor || client.config.global.defaultColor)
+     .setColor(guildSettings?.embedColor || client.config.defaultColor)
      .setTimestamp()
      .setTitle("🪙 Donate to Majo.exe");
     return interaction.followUp({ ephemeral: false, embeds: [embed] });
@@ -43,7 +43,7 @@ export default {
       size: 2048,
      }),
     })
-    .setColor(guildSettings?.embedColor || client.config.global.defaultColor)
+    .setColor(guildSettings?.embedColor || client.config.defaultColor)
     .setTimestamp()
     .setTitle("🪙 Donate to Majo.exe");
 

@@ -66,7 +66,7 @@ export async function EndGiveaway(client, interaction, color) {
   }
 
   const embed = new EmbedBuilder()
-   .setDescription(`${client.botEmojis.sparkles} | Success! Giveaway \`${query}\` ended!`)
+   .setDescription(`${client.config.emojis.sparkles} | Success! Giveaway \`${query}\` ended!`)
    .setColor(color)
    .setFooter({
     text: `Requested by ${interaction.user.username}`,

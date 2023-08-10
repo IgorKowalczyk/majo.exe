@@ -174,19 +174,19 @@ export default {
   try {
    const type = interaction.options.getSubcommand();
    if (type === "start") {
-    await StartGiveaway(client, interaction, guildSettings?.embedColor || client.config.global.defaultColor);
+    await StartGiveaway(client, interaction, guildSettings?.embedColor || client.config.defaultColor);
    } else if (type === "drop") {
-    await StartDropGiveaway(client, interaction, guildSettings?.embedColor || client.config.global.defaultColor);
+    await StartDropGiveaway(client, interaction, guildSettings?.embedColor || client.config.defaultColor);
    } else if (type === "end") {
-    await EndGiveaway(client, interaction, guildSettings?.embedColor || client.config.global.defaultColor);
+    await EndGiveaway(client, interaction, guildSettings?.embedColor || client.config.defaultColor);
    } else if (type === "pause") {
-    await PauseGiveaway(client, interaction, guildSettings?.embedColor || client.config.global.defaultColor);
+    await PauseGiveaway(client, interaction, guildSettings?.embedColor || client.config.defaultColor);
    } else if (type === "resume") {
-    await ResumeGiveaway(client, interaction, guildSettings?.embedColor || client.config.global.defaultColor);
+    await ResumeGiveaway(client, interaction, guildSettings?.embedColor || client.config.defaultColor);
    } else if (type === "reroll") {
-    await RerollGiveaway(client, interaction, guildSettings?.embedColor || client.config.global.defaultColor);
+    await RerollGiveaway(client, interaction, guildSettings?.embedColor || client.config.defaultColor);
    } else if (type === "all" || type === "running" || type === "ended") {
-    await FindGiveaways(client, interaction, guildSettings?.embedColor || client.config.global.defaultColor, type);
+    await FindGiveaways(client, interaction, guildSettings?.embedColor || client.config.defaultColor, type);
    }
   } catch (err) {
    client.errorMessages.generateErrorMessage(interaction, err);

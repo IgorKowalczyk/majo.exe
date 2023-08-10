@@ -44,7 +44,7 @@ export default {
    const colorInfo = new Color(value);
 
    const embed = new EmbedBuilder()
-    .setTitle(random ? `${client.botEmojis.color} Random Color` : `${client.botEmojis.color} Color: ${colorInfo.toHex()}`)
+    .setTitle(random ? `${client.config.emojis.color} Random Color` : `${client.config.emojis.color} Color: ${colorInfo.toHex()}`)
 
     .addFields([
      {

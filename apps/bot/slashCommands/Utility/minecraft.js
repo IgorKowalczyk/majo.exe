@@ -84,7 +84,7 @@ export default {
     }
 
     const embed = new EmbedBuilder()
-     .setColor(guildSettings?.embedColor || client.config.global.defaultColor)
+     .setColor(guildSettings?.embedColor || client.config.defaultColor)
      .setTimestamp()
      .setAuthor({ name: `${serverIp} (Bedrock)`, iconURL: `https://api.mcsrvstat.us/icon/${serverIp}` })
      .setThumbnail(`https://api.mcsrvstat.us/icon/${serverIp}`)
@@ -99,21 +99,21 @@ export default {
     const fields = [];
     if (json.online.toString().length > 1) {
      fields.push({
-      name: `${json.online ? client.botEmojis.status_online : client.botEmojis.status_dnd} ${json.online ? "Online" : "Offline"}`,
+      name: `${json.online ? client.config.emojis.status_online : client.config.emojis.status_dnd} ${json.online ? "Online" : "Offline"}`,
       value: `> \`${json.online ? "Online" : "Offline"}\``,
       inline: true,
      });
     }
     if (json.players && json.players.max && json.players.online) {
      fields.push({
-      name: `${client.botEmojis.member} Players`,
+      name: `${client.config.emojis.member} Players`,
       value: `> \`${json.players.online}/${json.players.max}\``,
       inline: true,
      });
     }
     if (json.version) {
      fields.push({
-      name: `${client.botEmojis.stage_channel} Version(s)`,
+      name: `${client.config.emojis.stage_channel} Version(s)`,
       value: `> \`${json.version}\``,
       inline: true,
      });
@@ -172,7 +172,7 @@ export default {
     }
 
     const embed = new EmbedBuilder()
-     .setColor(guildSettings?.embedColor || client.config.global.defaultColor)
+     .setColor(guildSettings?.embedColor || client.config.defaultColor)
      .setTimestamp()
      .setAuthor({ name: `${serverIp} (Java)`, iconURL: `https://api.mcsrvstat.us/icon/${serverIp.replace(":", "/")}` })
      .setThumbnail(`https://api.mcsrvstat.us/icon/${serverIp.replace(":", "/")}`)
@@ -192,7 +192,7 @@ export default {
 
     if (json.players && json.players.max && json.players.online) {
      fields.push({
-      name: `${client.botEmojis.member} Players`,
+      name: `${client.config.emojis.member} Players`,
       value: `> \`${json.players.online}/${json.players.max}\``,
       inline: true,
      });
@@ -200,7 +200,7 @@ export default {
 
     if (json.latency) {
      fields.push({
-      name: `${client.botEmojis.status_online} Latency`,
+      name: `${client.config.emojis.status_online} Latency`,
       value: `> \`${json.latency}\``,
       inline: true,
      });
@@ -208,7 +208,7 @@ export default {
 
     if (json.version && json.version.name) {
      fields.push({
-      name: `${client.botEmojis.stage_channel} Version(s)`,
+      name: `${client.config.emojis.stage_channel} Version(s)`,
       value: `> \`${json.version.name}\``,
       inline: true,
      });

@@ -1,4 +1,24 @@
-export const emojis = {
+import { ActivityType, PresenceUpdateStatus } from "discord-api-types/v10";
+
+const config = {};
+
+config.presence = {
+ status: PresenceUpdateStatus.Online, // PresenceUpdateStatus. Can be: "Online", "Idle", "DoNotDisturb", "Invisible" or "Offline" (Invisible and Offline are the same)
+ activities: [
+  {
+   name: "?", // string. Activity name [not required when using custom type (4) // It is still required by Discord.js, waiting for a fix]
+   state: "🔥 Type /help to get started!", // string. Activity state [required when using custom type (4)]
+   type: ActivityType.Custom, // ActivityType. Activity type. Can be: 0 (PLAYING), 1 (STREAMING), 2 (LISTENING), 3 (WATCHING), 4 (CUSTOM)
+  },
+  /* Example: Using type 3 (WATCHING) with custom name
+    {
+     name: "the world burn", // string
+     type: ActivityType.Watching, // ActivityType
+    */
+ ],
+};
+
+config.emojis = {
  // You must upload the emojis to the server when the bot is!
  success: "<:majo_yes:963333541112987668>", // https://cdn.discordapp.com/emojis/963333541112987668.png
  error: "<:majo_no:963333541226217472>", // https://cdn.discordapp.com/emojis/963333541226217472.png
@@ -196,3 +216,34 @@ export const emojis = {
  wave: "👋",
  color: "🎨",
 };
+
+/*
+  Donation links
+ */
+config.donate = {
+ enabled: true, // boolean. Display donations command
+ links: [
+  {
+   name: "Patreon",
+   url: "https://www.patreon.com/igorkowalczyk",
+   icon: config.emojis.patreon_logo,
+  },
+  {
+   name: "Ko-Fi",
+   url: "https://ko-fi.com/igorkowalczyk",
+   icon: config.emojis.kofi_logo,
+  },
+  {
+   name: "Buy Me a Coffee",
+   url: "https://buymeacoffee.com/majonezexe",
+   icon: config.emojis.buymeacoffee_logo,
+  },
+  {
+   name: "Open Collective",
+   url: "https://opencollective.com/igorkowalczyk",
+   icon: config.emojis.open_collective_logo,
+  },
+ ],
+};
+
+export const botConfig = config;

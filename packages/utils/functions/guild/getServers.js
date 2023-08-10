@@ -1,4 +1,4 @@
-import { config } from "@majoexe/config";
+import { globalConfig } from "@majoexe/config";
 import { getPermissionNames } from "../user/checkPermissions.js";
 
 /**
@@ -9,7 +9,7 @@ import { getPermissionNames } from "../user/checkPermissions.js";
  * */
 export async function getServers(token) {
  try {
-  const res = await fetch(`https://discord.com/api/v${config.global.apiVersion}/users/@me/guilds`, {
+  const res = await fetch(`https://discord.com/api/v${globalConfig.apiVersion}/users/@me/guilds`, {
    next: { revalidate: 10 },
    headers: {
     Authorization: `Bearer ${token}`,
