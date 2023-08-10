@@ -5,7 +5,7 @@ import { emojis } from "../../config/emojis.js";
 export default function giveaway(client) {
  const Giveaways = class extends GiveawaysManager {
   async getAllGiveaways() {
-   return prismaClient.giveaways.findMany();
+   return await prismaClient.giveaways.findMany();
   }
 
   async saveGiveaway(messageId, giveawayData) {

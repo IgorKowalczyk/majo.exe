@@ -1,4 +1,9 @@
 import { ApplicationCommandType, ApplicationCommandOptionType, ChannelType } from "discord.js";
+import { EndGiveaway } from "../../util/giveaway/endGiveaway.js";
+import { FindGiveaways } from "../../util/giveaway/findGiveaways.js";
+import { PauseGiveaway } from "../../util/giveaway/pauseGiveaway.js";
+import { RerollGiveaway } from "../../util/giveaway/rerollGiveaway.js";
+import { ResumeGiveaway } from "../../util/giveaway/resumeGiveaway.js";
 import { StartDropGiveaway, StartGiveaway } from "../../util/giveaway/startGiveaway.js";
 
 export default {
@@ -82,11 +87,11 @@ export default {
    name: "end",
    description: "🎉 End a giveaway",
    type: ApplicationCommandOptionType.Subcommand,
-   usage: "/giveaway end <giveaway id/giveaway prize>",
+   usage: "/giveaway end <giveaway id>",
    options: [
     {
-     name: "id-prize",
-     description: "Giveaway ID or Giveaway Prize",
+     name: "query",
+     description: "Giveaway ID (Message ID)",
      type: ApplicationCommandOptionType.String,
      required: true,
      max_length: 100,
@@ -97,11 +102,11 @@ export default {
    name: "pause",
    description: "🎉 Pause a giveaway",
    type: ApplicationCommandOptionType.Subcommand,
-   usage: "/giveaway pause <giveaway id/giveaway prize>",
+   usage: "/giveaway pause <giveaway id>",
    options: [
     {
-     name: "id-prize",
-     description: "Giveaway ID or Giveaway Prize",
+     name: "query",
+     description: "Giveaway ID (Message ID)",
      type: ApplicationCommandOptionType.String,
      required: true,
      max_length: 100,
@@ -112,11 +117,11 @@ export default {
    name: "resume",
    description: "🎉 Resume a giveaway",
    type: ApplicationCommandOptionType.Subcommand,
-   usage: "/giveaway resume <giveaway id/giveaway prize>",
+   usage: "/giveaway resume <giveaway id>",
    options: [
     {
-     name: "id-prize",
-     description: "Giveaway ID or Giveaway Prize",
+     name: "query",
+     description: "Giveaway ID (Message ID)",
      type: ApplicationCommandOptionType.String,
      required: true,
      max_length: 100,
@@ -124,14 +129,40 @@ export default {
    ],
   },
   {
+   name: "list",
+   description: "🎉 Get list of all giveaways",
+   type: ApplicationCommandOptionType.SubcommandGroup,
+   usage: "/giveaway list",
+   options: [
+    {
+     name: "all",
+     description: "🎉 Get list of all giveaways",
+     type: ApplicationCommandOptionType.Subcommand,
+     usage: "/giveaway list all",
+    },
+    {
+     name: "running",
+     description: "🎉 Get list of all running giveaways",
+     type: ApplicationCommandOptionType.Subcommand,
+     usage: "/giveaway list running",
+    },
+    {
+     name: "ended",
+     description: "🎉 Get list of all ended giveaways",
+     type: ApplicationCommandOptionType.Subcommand,
+     usage: "/giveaway list ended",
+    },
+   ],
+  },
+  {
    name: "reroll",
    description: "🎉 Reroll a giveaway",
    type: ApplicationCommandOptionType.Subcommand,
-   usage: "/giveaway reroll <giveaway id/giveaway prize>",
+   usage: "/giveaway reroll <giveaway id>",
    options: [
     {
-     name: "id-prize",
-     description: "Giveaway ID or Giveaway Prize",
+     name: "query",
+     description: "Giveaway ID (Message ID)",
      type: ApplicationCommandOptionType.String,
      required: true,
      max_length: 100,
@@ -146,6 +177,16 @@ export default {
     await StartGiveaway(client, interaction, guildSettings?.embedColor || client.config.global.defaultColor);
    } else if (type === "drop") {
     await StartDropGiveaway(client, interaction, guildSettings?.embedColor || client.config.global.defaultColor);
+   } else if (type === "end") {
+    await EndGiveaway(client, interaction, guildSettings?.embedColor || client.config.global.defaultColor);
+   } else if (type === "pause") {
+    await PauseGiveaway(client, interaction, guildSettings?.embedColor || client.config.global.defaultColor);
+   } else if (type === "resume") {
+    await ResumeGiveaway(client, interaction, guildSettings?.embedColor || client.config.global.defaultColor);
+   } else if (type === "reroll") {
+    await RerollGiveaway(client, interaction, guildSettings?.embedColor || client.config.global.defaultColor);
+   } else if (type === "all" || type === "running" || type === "ended") {
+    await FindGiveaways(client, interaction, guildSettings?.embedColor || client.config.global.defaultColor, type);
    }
   } catch (err) {
    client.errorMessages.generateErrorMessage(interaction, err);

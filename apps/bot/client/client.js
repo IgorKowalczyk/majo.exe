@@ -16,13 +16,25 @@ Logger("warn", "Check out the source code at https://github.com/igorkowalczyk/ma
 Logger("info", `Dashboard is enabled at ${config.dashboard.link}`);
 
 const client = new Client({
- intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMembers, GatewayIntentBits.GuildModeration, GatewayIntentBits.GuildEmojisAndStickers, GatewayIntentBits.GuildIntegrations, GatewayIntentBits.GuildWebhooks, GatewayIntentBits.GuildInvites, GatewayIntentBits.GuildPresences, GatewayIntentBits.GuildMessages, GatewayIntentBits.MessageContent, GatewayIntentBits.GuildMessageReactions],
+ intents: [
+  // Prettier
+  GatewayIntentBits.Guilds,
+  GatewayIntentBits.GuildModeration,
+  GatewayIntentBits.GuildMembers,
+  GatewayIntentBits.GuildModeration,
+  GatewayIntentBits.GuildEmojisAndStickers,
+  GatewayIntentBits.GuildInvites,
+  GatewayIntentBits.GuildPresences,
+  GatewayIntentBits.GuildMessages,
+  GatewayIntentBits.MessageContent,
+  GatewayIntentBits.GuildMessageReactions,
+ ],
 });
 
 try {
  client.login(process.env.TOKEN);
 } catch (error) {
- console.log(error);
+ console.log(Logger("error", error));
 }
 
 const loadTime = performance.now();
