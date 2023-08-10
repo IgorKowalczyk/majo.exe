@@ -64,7 +64,7 @@
     "eslint-config-next": "13.4.12",
     "eslint-plugin-import": "2.28.0",
     "prettier": "3.0.1",
-    "prettier-plugin-tailwindcss": "0.4.1"
+    "prettier-plugin-tailwindcss": "0.5.1"
   },
   "browserslist": [
     ">0.3%",
