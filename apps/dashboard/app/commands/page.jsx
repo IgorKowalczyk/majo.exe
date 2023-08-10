@@ -19,13 +19,22 @@ export default async function Commands() {
      ...option,
      name: command.name + " " + option.name,
     });
+   } else if (option.type === 2) {
+    option.options = option.options?.map((subOptions) => {
+     if (subOptions.type === 1) {
+      subCommands.push({
+       ...subOptions,
+       name: command.name + " " + option.name + " " + subOptions.name,
+      });
+     }
+    });
    }
    return option;
   });
   return command;
  });
 
- commands = commands.filter((command) => !command.options?.some((option) => option.type === 1));
+ commands = commands.filter((command) => !command.options?.some((option) => option.type === 1 || option.type === 2));
 
  commands = [...commands, ...subCommands];
 
