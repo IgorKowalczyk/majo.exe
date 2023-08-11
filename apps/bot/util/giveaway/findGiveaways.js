@@ -16,20 +16,13 @@ export async function FindGiveaways(client, interaction, color, type) {
    },
   });
 
-  let list = [];
-
-  giveaways.map((giveaway) => {
+  let list = giveaways.filter((giveaway) => {
    if (type === "ended") {
-    if (giveaway.data?.ended) {
-     list.push(giveaway);
-    }
+    return giveaway.data?.ended;
    } else if (type === "running") {
-    if (!giveaway.data?.ended) {
-     list.push(giveaway);
-    }
-   } else {
-    list.push(giveaway);
+    return !giveaway.data?.ended;
    }
+   return true;
   });
 
   if (!giveaways) {
