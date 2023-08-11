@@ -299,8 +299,8 @@ importers:
   packages/eslint-config:
     dependencies:
       '@igorkowalczyk/eslint-config':
-        specifier: 1.5.4
-        version: 1.5.4(eslint@8.47.0)(prettier@3.0.1)
+        specifier: 1.5.5
+        version: 1.5.5(eslint@8.47.0)(prettier@3.0.1)
       eslint:
         specifier: 8.47.0
         version: 8.47.0
@@ -1934,10 +1934,10 @@ packages:
   /@humanwhocodes/object-schema@1.2.1:
     resolution: {integrity: sha512-ZnQMnLV4e7hDlUvw8H+U8ASL02SS2Gn6+9Ac3wGGLIe7+je2AeAOxPY+izIPJDfFDb7eDjev0Us8MO1iFRN8hA==}
 
-  /@igorkowalczyk/eslint-config@1.5.4(eslint@8.47.0)(prettier@3.0.1):
-    resolution: {integrity: sha512-CzQRZVtx3tk6gkWrA2zcUQcWNY5Rh1LoMe5hiSaR8NIFtxEFy76PJ2+f3OWu4BnfCQBx6p3AX+9xil0EJCYAfA==}
+  /@igorkowalczyk/eslint-config@1.5.5(eslint@8.47.0)(prettier@3.0.1):
+    resolution: {integrity: sha512-S1r7d3gjBP0MmXZGs2P86CiNCUYpN2Cdatr+Xf6kPAg+Ff1PbgNBSo0/wD9v957wvuuMPHf2pRGbpRPs5FdCOA==}
     peerDependencies:
-      eslint: '>=7.0.0'
+      eslint: '>=8.0.0'
     dependencies:
       eslint: 8.47.0
       eslint-plugin-import: 2.28.0(@typescript-eslint/parser@5.62.0)(eslint-import-resolver-typescript@3.5.5)(eslint@8.47.0)
@@ -4499,7 +4499,7 @@ packages:
     dependencies:
       debug: 3.2.7(supports-color@5.5.0)
       is-core-module: 2.12.1
-      resolve: 1.22.2
+      resolve: 1.22.3
     transitivePeerDependencies:
       - supports-color
 
@@ -7213,7 +7213,7 @@ packages:
       postcss: 8.4.26
       postcss-value-parser: 4.2.0
       read-cache: 1.0.0
-      resolve: 1.22.2
+      resolve: 1.22.3
     dev: false
 
   /postcss-js@4.0.1(postcss@8.4.26):
@@ -8048,6 +8048,7 @@ packages:
       is-core-module: 2.12.1
       path-parse: 1.0.7
       supports-preserve-symlinks-flag: 1.0.0
+    dev: false
 
   /resolve@1.22.3:
     resolution: {integrity: sha512-P8ur/gp/AmbEzjr729bZnLjXK5Z+4P0zhIJgBgzqRih7hL7BOukHGtSTA3ACMY467GRFz3duQsi0bDZdR7DKdw==}
