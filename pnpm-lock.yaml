@@ -101,8 +101,8 @@ importers:
         specifier: 2.0.18
         version: 2.0.18(react@18.2.0)
       '@igorkowalczyk/is-browser':
-        specifier: 5.0.0
-        version: 5.0.0(tailwindcss@3.3.3)
+        specifier: 5.0.1
+        version: 5.0.1(tailwindcss@3.3.3)
       '@majoexe/config':
         specifier: workspace:*
         version: link:../../packages/config
@@ -1952,8 +1952,8 @@ packages:
       - supports-color
     dev: false
 
-  /@igorkowalczyk/is-browser@5.0.0(tailwindcss@3.3.3):
-    resolution: {integrity: sha512-QRf/z4Jd+MO0coL4Rs39OFBe4H3dMQ01HqtIKmPqde6wX+ycGBKfpDd2Qgu2b+y/bFgiBhrUEAi05wqUBkmJcQ==}
+  /@igorkowalczyk/is-browser@5.0.1(tailwindcss@3.3.3):
+    resolution: {integrity: sha512-f9xiKC6boHQzhqpqH0xmpJuN+P+2CKuytQgo+x0rDn633INkDxITJOUcIUFnuMzfjlCGJTSd6FsEZ6fauJfD9Q==}
     engines: {node: '>=16'}
     peerDependencies:
       tailwindcss: '>=3.0.0'
