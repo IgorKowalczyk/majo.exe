@@ -16,10 +16,6 @@
     "prisma:format": "dotenv -- turbo run prisma:format --color --filter=database",
     "pm2": "turbo run pm2 --color"
   },
-  "workspaces": [
-    "packages/*",
-    "apps/*"
-  ],
   "dependencies": {
     "dotenv-cli": "7.2.1",
     "pm2": "5.3.0",
