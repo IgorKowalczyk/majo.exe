@@ -4,7 +4,7 @@
   "paths": {
    "@/*": ["./*"],
    "@config/*": ["./config/*"],
-   "@slashCommands/*": ["./slashCommands/*"]
+   "@slashCommands/*": ["commands/*"]
   }
  }
 }

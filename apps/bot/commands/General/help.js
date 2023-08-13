@@ -21,7 +21,7 @@ export default {
  run: async (client, interaction, guildSettings) => {
   try {
    const query = interaction.options.getString("query");
-   const isCategory = client.slashCommands.map((cmd) => cmd.category.toLowerCase()).includes(query.toLowerCase());
+   const isCategory = client.slashCommands.map((cmd) => cmd.category?.toLowerCase()).includes(query?.toLowerCase());
    if (query && !isCategory) {
     const command = client.slashCommands.get(query.toLowerCase()) || client.slashCommands.find((cmd) => cmd.aliases && cmd.aliases.includes(query.toLowerCase()));
     if (!command) {

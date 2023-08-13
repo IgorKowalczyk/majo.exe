@@ -36,7 +36,7 @@ try {
 }
 
 const loadTime = performance.now();
-const slashCommands = await globby(`${process.cwd()}/slashCommands/**/*.js`);
+const slashCommands = await globby(`${process.cwd()}/commands/**/*.js`);
 const modalLoadTime = performance.now();
 const modals = await globby(`${process.cwd()}/modals/**/*.js`);
 
@@ -148,6 +148,6 @@ for (const value of modals) {
 }
 
 Logger("event", `Loaded ${client.modals.size} modals from /modals in ${client.performance(modalLoadTime)}`);
-Logger("event", `Loaded ${client.slashCommands.size + client.additionalSlashCommands} slash commands from /slashCommands in ${client.performance(loadTime)}`);
+Logger("event", `Loaded ${client.slashCommands.size + client.additionalSlashCommands} slash commands from /commands in ${client.performance(loadTime)}`);
 
 export default client;
