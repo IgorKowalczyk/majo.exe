@@ -9,6 +9,9 @@ export async function interactionCreate(client, interaction) {
   if (!interaction.user) {
    await interaction?.guild?.members?.fetch(interaction?.member?.user?.id);
   }
+  
+  if(!interaction.guild || !interaction.guild.available) return;
+
   if (interaction.isCommand()) {
    client.config.displayCommandUsage && client.debugger("info", `Command used: ${interaction.commandName} by ${interaction.user.tag} (${interaction.user.id})`);
    const shouldDefer = client.slashCommands.get(interaction.commandName).defer ?? true;
