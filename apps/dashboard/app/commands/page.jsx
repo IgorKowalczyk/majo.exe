@@ -52,6 +52,11 @@ export default async function Commands() {
    {commands.map((command) => (
     <ClientDisclosure
      key={command.name}
+     buttonIcon={
+      <svg className="fill-neutral-500" width="24" height="24" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+       <path fill-rule="evenodd" clip-rule="evenodd" d="M3.11111 0C1.39289 0 0 1.39289 0 3.11111V24.8889C0 26.6072 1.39289 28 3.11111 28H24.8889C26.6072 28 28 26.6072 28 24.8889V3.11111C28 1.39289 26.6072 0 24.8889 0H3.11111ZM21.6214 8.42207L19.4216 6.22219L6.22222 19.4216L8.4221 21.6214L21.6214 8.42207Z"></path>
+      </svg>
+     }
      buttonElements={
       <>
        <h3 className="flex items-center gap-2 text-center text-xl font-bold">

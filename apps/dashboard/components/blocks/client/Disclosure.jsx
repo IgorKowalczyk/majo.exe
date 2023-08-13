@@ -4,7 +4,7 @@ import { Disclosure, Transition } from "@headlessui/react";
 import { ChevronDownIcon } from "@heroicons/react/24/outline";
 import clsx from "clsx";
 
-export function ClientDisclosure({ buttonElements, children, ...props }) {
+export function ClientDisclosure({ buttonElements, buttonIcon, children, ...props }) {
  return (
   <Disclosure {...props} className="w-full">
    {({ open }) => (
@@ -14,12 +14,24 @@ export function ClientDisclosure({ buttonElements, children, ...props }) {
        "mb-0 rounded-b-none": open,
       })}
      >
+      {buttonIcon && (
+       <div
+        className={clsx(
+         {
+          "[&>*]:fill-accent-primary": open,
+         },
+         "[&>*]:duration-200 [&>*]:motion-reduce:transition-none"
+        )}
+       >
+        {buttonIcon}
+       </div>
+      )}
       {buttonElements}
 
       <ChevronDownIcon
        className={clsx(
         {
-         "rotate-180": open,
+         "rotate-180 stroke-accent-primary": open,
         },
         "ml-auto h-4 w-4 duration-200 motion-reduce:transition-none"
        )}
