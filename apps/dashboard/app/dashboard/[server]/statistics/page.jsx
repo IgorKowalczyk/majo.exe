@@ -49,6 +49,17 @@ export default async function Statistics({ params }) {
      leaves: true,
     },
    },
+   GuildMessage: {
+    where: {
+     date: {
+      gte: new Date(new Date().setMonth(new Date().getMonth() - 1)),
+     },
+    },
+    select: {
+     date: true,
+     messages: true,
+    },
+   },
   },
  });
 
@@ -62,6 +73,7 @@ export default async function Statistics({ params }) {
 
  const guildJoinMap = new Map();
  const guildLeaveMap = new Map();
+ const guildMessageMap = new Map();
 
  const parseDate = (dateString) => {
   const date = new Date(dateString);
@@ -82,10 +94,18 @@ export default async function Statistics({ params }) {
   }
  });
 
+ guild.GuildMessage.forEach((guildMessageData) => {
+  const dateFormatted = parseDate(guildMessageData.date);
+  if (dateFormatted !== null) {
+   guildMessageMap.set(dateFormatted, (guildMessageMap.get(dateFormatted) || 0) + guildMessageData.messages);
+  }
+ });
+
  const currentDate = new Date();
  const pastDays = 30;
  const guildJoin = [];
  const guildLeave = [];
+ const guildMessage = [];
 
  for (let i = 0; i < pastDays; i++) {
   const date = new Date(currentDate);
@@ -94,17 +114,20 @@ export default async function Statistics({ params }) {
 
   const joins = guildJoinMap.get(dateFormatted) || 0;
   const leaves = guildLeaveMap.get(dateFormatted) || 0;
+  const messages = guildMessageMap.get(dateFormatted) || 0;
 
   guildJoin.unshift({ date: dateFormatted, Joins: joins });
   guildLeave.unshift({ date: dateFormatted, Leaves: leaves });
+  guildMessage.unshift({ date: dateFormatted, Messages: messages });
  }
 
  const guildJoinCSV = await json2csv(guildJoin);
  const guildLeaveCSV = await json2csv(guildLeave);
+ const guildMessageCSV = await json2csv(guildMessage);
 
  return (
   <>
-   <ServerStatsChart guildJoin={guildJoin} guildLeave={guildLeave} guildJoinCSV={guildJoinCSV} guildLeaveCSV={guildLeaveCSV} />
+   <ServerStatsChart guildJoin={guildJoin} guildLeave={guildLeave} guildJoinCSV={guildJoinCSV} guildLeaveCSV={guildLeaveCSV} guildMessage={guildMessage} guildMessageCSV={guildMessageCSV} />
   </>
  );
 }

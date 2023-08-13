@@ -1,10 +1,13 @@
 import prismaClient from "@majoexe/database";
-import { fetchProfanity } from "@majoexe/util/database";
-import Filter from "bad-words";
-import { EmbedBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle } from "discord.js";
+//import { fetchProfanity } from "@majoexe/util/database";
+//import Filter from "bad-words";
+import { EmbedBuilder } from "discord.js";
+// import { EmbedBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle } from "discord.js";
 
-const filter = new Filter();
 const XPTimeout = new Map();
+
+/*
+const filter = new Filter();
 
 const takeAction = async (client, message) => {
  await message.delete();
@@ -76,21 +79,42 @@ const takeAction = async (client, message) => {
 
  await message.channel.send({ embeds: [embed] });
 };
+*/
 
 export async function messageCreate(client, message) {
- if (!message.content) return;
- const content = message.content.slice(0, 250);
- const profanity = await fetchProfanity(message.guild.id);
- if (profanity > 0) {
-  const isProfane = filter.isProfane(content);
-
-  if (isProfane && profanity === 1) {
-   return takeAction(client, message);
-  }
- }
-
  if (message.author.bot) return;
  if (message.channel.type === "DM") return;
+
+ const messages = await prismaClient.guildMessage.findFirst({
+  where: {
+   guildId: message.guild.id,
+   date: {
+    gte: new Date(new Date().getFullYear(), new Date().getMonth(), new Date().getDate()),
+   },
+  },
+ });
+
+ if (!messages) {
+  await prismaClient.guildMessage.create({
+   data: {
+    guildId: message.guild.id,
+    date: new Date(),
+    messages: 1,
+   },
+  });
+ } else {
+  await prismaClient.guildMessage.update({
+   where: {
+    id: messages.id,
+   },
+   data: {
+    messages: {
+     increment: 1,
+    },
+   },
+  });
+ }
+
  const xpKey = `${message.guild.id}-${message.author.id}`;
 
  if (XPTimeout.get(xpKey) && XPTimeout.get(xpKey).cooldown > Date.now()) return;
