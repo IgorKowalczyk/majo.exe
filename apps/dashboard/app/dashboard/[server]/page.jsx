@@ -114,7 +114,7 @@ export default async function ServerOverview({ params }) {
      <Block>
       <Header4 className="mb-4 !items-start !justify-normal opacity-80">
        Emojis
-       <span className="ml-auto font-medium opacity-60">{guildPreview.emojis?.length || "0"}</span>
+       <span className="ml-auto font-medium opacity-60">{guildPreview.emojis.length || "0"}</span>
       </Header4>
       {guildPreview.emojis && guildPreview.emojis.length > 0 ? (
        <div className="flex flex-row flex-wrap gap-4">
@@ -136,7 +136,7 @@ export default async function ServerOverview({ params }) {
      <Block>
       <Header4 className="mb-4 !items-start !justify-normal opacity-80">
        Stickers
-       <span className="ml-auto font-medium opacity-60">{guildPreview.stickers?.length || "0"}</span>
+       <span className="ml-auto font-medium opacity-60">{guildPreview.stickers.length || "0"}</span>
       </Header4>
       {guildPreview.stickers && guildPreview.stickers.length > 0 ? (
        <div className="flex flex-row flex-wrap gap-4">

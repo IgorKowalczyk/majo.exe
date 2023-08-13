@@ -10,7 +10,7 @@ export default {
  run: async (client, interaction, guildSettings) => {
   try {
    const embed = new EmbedBuilder() // Prettier
-    .setTitle(`🤖 About ${client.user?.username}`)
+    .setTitle(`🤖 About ${client.user.username}`)
     .setDescription(
      `
      Majo.exe is a Discord bot that is made for fun and moderation.  ${client.config.dashboard.enabled && client.config.dashboard.link ? `It is made by [Majo.exe Team](${client.config.dashboard.link}/team) and is open source.` : ""}
@@ -20,8 +20,8 @@ export default {
      `
     )
     .setFooter({
-     text: `Requested by ${interaction.member?.user?.username}`,
-     iconURL: interaction.member?.user?.displayAvatarURL({
+     text: `Requested by ${interaction.member.user.username}`,
+     iconURL: interaction.member.user.displayAvatarURL({
       dynamic: true,
       format: "png",
       size: 2048,

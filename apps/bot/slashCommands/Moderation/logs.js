@@ -37,8 +37,8 @@ export default {
    .setTitle(`📝 Logs (${count}/${Math.ceil((await countLogs(interaction.guildId)) / 20)})`)
    .setDescription(logsArray.join("\n"))
    .setFooter({
-    text: `Requested by ${interaction.member?.user?.username}`,
-    iconURL: interaction.member?.user?.displayAvatarURL({
+    text: `Requested by ${interaction.member.user.username}`,
+    iconURL: interaction.member.user.displayAvatarURL({
      dynamic: true,
      format: "png",
      size: 2048,

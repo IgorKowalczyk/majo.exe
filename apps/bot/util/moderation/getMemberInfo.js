@@ -39,8 +39,8 @@ export async function getMemberInfo(client, interaction, color) {
    .setThumbnail(user.user.displayAvatarURL({ dynamic: true, format: "png", size: 2048 }))
    .setTitle(`${user.user.username} ${user.user.bot ? client.config.emojis.bot_badge_part_1 + client.config.emojis.bot_badge_part_2 : ""}`)
    .setFooter({
-    text: `Requested by ${interaction.member?.user?.username}`,
-    iconURL: interaction.member?.user?.displayAvatarURL({
+    text: `Requested by ${interaction.member.user.username}`,
+    iconURL: interaction.member.user.displayAvatarURL({
      dynamic: true,
      format: "png",
      size: 2048,

@@ -41,8 +41,8 @@ export async function kickMember(client, interaction, color) {
    .setTitle("🔨 Member kicked")
    .setDescription(`> **${user}** has been kicked from the server\n> **Reason:** ${reason}`)
    .setFooter({
-    text: `Kicked by ${interaction.member?.user?.username}`,
-    iconURL: interaction.member?.user?.displayAvatarURL({
+    text: `Kicked by ${interaction.member.user.username}`,
+    iconURL: interaction.member.user.displayAvatarURL({
      dynamic: true,
      format: "png",
      size: 2048,

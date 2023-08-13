@@ -21,7 +21,7 @@ export default {
  run: async (client, interaction, guildSettings) => {
   try {
    const query = interaction.options.getString("query");
-   const isCategory = client.slashCommands.map((cmd) => cmd.category?.toLowerCase()).includes(query?.toLowerCase());
+   const isCategory = client.slashCommands.map((cmd) => cmd.category.toLowerCase()).includes(query.toLowerCase());
    if (query && !isCategory) {
     const command = client.slashCommands.get(query.toLowerCase()) || client.slashCommands.find((cmd) => cmd.aliases && cmd.aliases.includes(query.toLowerCase()));
     if (!command) {
@@ -64,7 +64,7 @@ export default {
      .setColor(guildSettings?.embedColor || client.config.defaultColor)
      .setTimestamp()
      .setFooter({
-      text: `Requested by ${interaction.member?.user?.username}`,
+      text: `Requested by ${interaction.member.user.username}`,
       iconURL: interaction.member.user.displayAvatarURL({
        dynamic: true,
        format: "png",
@@ -80,7 +80,7 @@ export default {
      .setColor(guildSettings?.embedColor || client.config.defaultColor)
      .setTimestamp()
      .setFooter({
-      text: `Requested by ${interaction.member?.user?.username}`,
+      text: `Requested by ${interaction.member.user.username}`,
       iconURL: interaction.member.user.displayAvatarURL({
        dynamic: true,
        format: "png",
@@ -92,7 +92,7 @@ export default {
     const categories = [...new Set(client.slashCommands.map((cmd) => cmd.category))];
 
     // Why? Because I can. 🥫
-    const inviteLink = `https://discord.com/oauth2/authorize/?permissions=${client.config.permissions}&scope=${client.config.scopes}&client_id=${client.user?.id}`;
+    const inviteLink = `https://discord.com/oauth2/authorize/?permissions=${client.config.permissions}&scope=${client.config.scopes}&client_id=${client.user.id}`;
 
     const embed = new EmbedBuilder()
      .setTitle("❔ Help")
@@ -108,13 +108,13 @@ export default {
      )
      .setColor(guildSettings?.embedColor || client.config.defaultColor)
      .setTimestamp()
-     .setThumbnail(client.user?.displayAvatarURL({ dynamic: true, format: "png", size: 2048 }))
+     .setThumbnail(client.user.displayAvatarURL({ dynamic: true, format: "png", size: 2048 }))
      .setAuthor({
-      name: `${client.user?.username} Help`,
-      iconURL: client.user?.displayAvatarURL({ dynamic: true, format: "png", size: 2048 }),
+      name: `${client.user.username} Help`,
+      iconURL: client.user.displayAvatarURL({ dynamic: true, format: "png", size: 2048 }),
      })
      .setFooter({
-      text: `Requested by ${interaction.member?.user?.username}`,
+      text: `Requested by ${interaction.member.user.username}`,
       iconURL: interaction.member.user.displayAvatarURL({
        dynamic: true,
        format: "png",

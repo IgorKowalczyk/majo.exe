@@ -66,8 +66,8 @@ client.errorMessages = {
  createSlashError: (interaction, description, title) => {
   const embed = createErrorEmbed(description, title);
   embed.setFooter({
-   text: `Requested by ${interaction.member?.user?.username}`,
-   iconURL: interaction.member?.user?.displayAvatarURL({ dynamic: true }),
+   text: `Requested by ${interaction.member.user.username}`,
+   iconURL: interaction.member.user.displayAvatarURL({ dynamic: true }),
   });
 
   return interaction.followUp({ embeds: [embed], ephemeral: true });

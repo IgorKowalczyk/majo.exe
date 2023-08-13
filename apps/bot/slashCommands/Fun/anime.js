@@ -45,8 +45,8 @@ export default {
      .setTitle("❌ Error")
      .setDescription("> No results found.")
      .setFooter({
-      text: `Requested by ${interaction.member?.user?.username}`,
-      iconURL: interaction.member?.user?.displayAvatarURL({
+      text: `Requested by ${interaction.member.user.username}`,
+      iconURL: interaction.member.user.displayAvatarURL({
        dynamic: true,
        format: "png",
        size: 2048,
@@ -108,15 +108,15 @@ export default {
      },
     ])
     .setFooter({
-     text: `Requested by ${interaction.member?.user?.username}`,
-     iconURL: interaction.member?.user?.displayAvatarURL({
+     text: `Requested by ${interaction.member.user.username}`,
+     iconURL: interaction.member.user.displayAvatarURL({
       dynamic: true,
       format: "png",
       size: 2048,
      }),
     });
 
-   data.posterImage?.original ? embed.setThumbnail(data.posterImage?.original) : null;
+   data.posterImage?.original ? embed.setThumbnail(data.posterImage.original) : null;
 
    return interaction.followUp({ embeds: [embed] });
   } catch (err) {

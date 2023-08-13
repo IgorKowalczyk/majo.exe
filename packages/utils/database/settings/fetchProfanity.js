@@ -11,8 +11,12 @@ export async function fetchProfanity(guildId) {
     guildId: guildId,
    },
   });
+  
+  if (!guild) {
+   return false;
+  }
 
-  return guild?.profanityLevel;
+  return guild.profanityLevel;
  } catch (e) {
   console.log(e);
   throw e;

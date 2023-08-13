@@ -23,14 +23,14 @@ export default {
     .setTimestamp()
     .setColor(guildSettings?.embedColor || client.config.defaultColor)
     .setThumbnail(
-     interaction.member?.user?.displayAvatarURL({
+     interaction.member.user.displayAvatarURL({
       dynamic: true,
       format: "png",
      })
     )
     .setFooter({
-     text: `Requested by ${interaction.member?.user?.username}`,
-     iconURL: interaction.member?.user?.displayAvatarURL({
+     text: `Requested by ${interaction.member.user.username}`,
+     iconURL: interaction.member.user.displayAvatarURL({
       dynamic: true,
       format: "png",
      }),

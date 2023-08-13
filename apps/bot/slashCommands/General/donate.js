@@ -13,7 +13,7 @@ export default {
     const embed = new EmbedBuilder()
      .setDescription("Currently, we do not accept any donation methods! Try again later")
      .setFooter({
-      text: `Requested by ${interaction.member?.user?.username}`,
+      text: `Requested by ${interaction.member.user.username}`,
       iconURL: interaction.member.user.displayAvatarURL({
        dynamic: true,
        format: "png",
@@ -36,8 +36,8 @@ export default {
      })
     )
     .setFooter({
-     text: `Requested by ${interaction.member?.user?.username}`,
-     iconURL: interaction.member?.user?.displayAvatarURL({
+     text: `Requested by ${interaction.member.user.username}`,
+     iconURL: interaction.member.user.displayAvatarURL({
       dynamic: true,
       format: "png",
       size: 2048,

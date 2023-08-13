@@ -50,8 +50,8 @@ export async function StartGiveaway(client, interaction, color) {
    .setTitle(`${client.config.emojis.success} Success!`)
    .setDescription("> :tada: Giveaway created in " + `${channel}` + "!")
    .setFooter({
-    text: `Requested by ${interaction.member?.user?.username}`,
-    iconURL: interaction.member?.user?.displayAvatarURL({
+    text: `Requested by ${interaction.member.user.username}`,
+    iconURL: interaction.member.user.displayAvatarURL({
      dynamic: true,
      format: "png",
      size: 2048,

@@ -31,8 +31,8 @@ export default {
      .setTimestamp()
      .setTitle(`${client.config.emojis.success} Your ascii code has been successfully generated!`)
      .setFooter({
-      text: `Requested by ${interaction.member?.user?.username}`,
-      iconURL: interaction.member?.user?.displayAvatarURL({
+      text: `Requested by ${interaction.member.user.username}`,
+      iconURL: interaction.member.user.displayAvatarURL({
        dynamic: true,
        format: "png",
        size: 2048,

@@ -19,17 +19,17 @@ export default {
  ],
  run: async (client, interaction, guildSettings) => {
   try {
-   const user = interaction.options.getUser("user") || interaction.member?.user;
+   const user = interaction.options.getUser("user") || interaction.member.user;
    if (user.bot) {
     return client.errorMessages.createSlashError(interaction, "❌ You can't check the XP of a bot.\nNote: Bots don't gain XP.");
    }
 
-   const xp = await checkXP(user.id, interaction.guild?.id);
+   const xp = await checkXP(user.id, interaction.guild.id);
    const level = Math.floor(0.1 * Math.sqrt(xp || 0));
    const xpNeeded = Math.ceil(Math.pow((level + 1) / 0.1, 2));
    const bar = percentageBar(xpNeeded, xp, 20);
    const embed = new EmbedBuilder()
-    .setTitle(`📈 XP for ${user?.username}`)
+    .setTitle(`📈 XP for ${user}`)
     .setDescription(
      `
      **XP:** \`${xp}\`
@@ -39,8 +39,8 @@ export default {
      `
     )
     .setFooter({
-     text: `Requested by ${interaction.member?.user?.username}`,
-     iconURL: interaction.member?.user?.displayAvatarURL({
+     text: `Requested by ${interaction.member.user.username}`,
+     iconURL: interaction.member.user.displayAvatarURL({
       dynamic: true,
       format: "png",
      }),
@@ -51,7 +51,7 @@ export default {
 
    if (client.config.dashboard.enabled && client.config.dashboard.link) {
     embed.setImage(`${client.config.dashboard.link}/api/level/image/${user.id}`);
-    const contactButton = new ButtonBuilder().setLabel("View Leaderboard").setStyle(ButtonStyle.Link).setURL(`${client.config.dashboard.link}/dashboard/${interaction.guild?.id}/leaderboard`);
+    const contactButton = new ButtonBuilder().setLabel("View Leaderboard").setStyle(ButtonStyle.Link).setURL(`${client.config.dashboard.link}/dashboard/${interaction.guild.id}/leaderboard`);
     const action = new ActionRowBuilder().addComponents(contactButton);
     return interaction.followUp({ ephemeral: false, embeds: [embed], components: [action] });
    } else {

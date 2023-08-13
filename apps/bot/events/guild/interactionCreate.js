@@ -6,32 +6,30 @@ const timeout = new Map();
 
 export async function interactionCreate(client, interaction) {
  try {
+  if (!interaction.guild || !interaction.guild.available) return;
+
   if (!interaction.user) {
-   await interaction?.guild?.members?.fetch(interaction?.member?.user?.id);
+   await interaction.guild.members.fetch(interaction.member.user.id);
   }
-  
-  if(!interaction.guild || !interaction.guild.available) return;
 
   if (interaction.isCommand()) {
    client.config.displayCommandUsage && client.debugger("info", `Command used: ${interaction.commandName} by ${interaction.user.tag} (${interaction.user.id})`);
    const shouldDefer = client.slashCommands.get(interaction.commandName).defer ?? true;
-   if (shouldDefer) {
-    await interaction.deferReply({ ephemeral: false });
-   }
+   if (shouldDefer) await interaction.deferReply({ ephemeral: false });
 
    if (!client.slashCommands.has(interaction.commandName)) return;
    const key = `${interaction.user.id}${interaction.commandName}`;
    if (client.slashCommands.get(interaction.commandName).cooldown) {
-    if (timeout.get(key) && timeout.get(key)?.time + client.slashCommands.get(interaction.commandName).cooldown > Date.now()) {
-     const timeLeft = timeout.get(key)?.time + client.slashCommands.get(interaction.commandName).cooldown - Date.now();
+    if (timeout.get(key) && timeout.get(key).time + client.slashCommands.get(interaction.commandName).cooldown > Date.now()) {
+     const timeLeft = timeout.get(key).time + client.slashCommands.get(interaction.commandName).cooldown - Date.now();
      const embed = new EmbedBuilder()
       .setTitle("‼️ Slow down!")
       .setDescription(`You are on cooldown! Please wait \`${formatDuration(timeLeft)}\` before using this command again!`)
       .setColor("#EF4444")
       .setTimestamp()
       .setFooter({
-       text: `Requested by ${interaction.member?.user?.username}`,
-       iconURL: interaction.member?.user?.displayAvatarURL({
+       text: `Requested by ${interaction.member.user.username}`,
+       iconURL: interaction.member.user.displayAvatarURL({
         dynamic: true,
         format: "png",
        }),
@@ -47,14 +45,14 @@ export async function interactionCreate(client, interaction) {
 
    const guildSettings = await prismaClient.guild.findFirst({
     where: {
-     guildId: interaction.guild?.id,
+     guildId: interaction.guild.id,
     },
    });
 
    if (!guildSettings) {
     await prismaClient.guild.create({
      data: {
-      guildId: interaction.guild?.id,
+      guildId: interaction.guild.id,
      },
     });
    }
@@ -65,11 +63,13 @@ export async function interactionCreate(client, interaction) {
     },
    });
 
-   if (!user) {
-    await createUser(interaction.user);
-   }
+   if (!user) await createUser(interaction.user);
 
    client.slashCommands.get(interaction.commandName).run(client, interaction, guildSettings);
+
+   /* ----------------- */
+   /*       MODAL       */
+   /* ----------------- */
   } else if (interaction.isModalSubmit()) {
    const modal = client.modals.get(interaction.customId);
    if (!modal) return;
@@ -77,14 +77,14 @@ export async function interactionCreate(client, interaction) {
 
    const guildSettings = await prismaClient.guild.findFirst({
     where: {
-     guildId: interaction.guild?.id,
+     guildId: interaction.guild.id,
     },
    });
 
    if (!guildSettings) {
     await prismaClient.guild.create({
      data: {
-      guildId: interaction.guild?.id,
+      guildId: interaction.guild.id,
      },
     });
    }

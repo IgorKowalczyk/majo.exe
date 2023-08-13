@@ -17,7 +17,7 @@ export default {
  ],
  run: async (client, interaction, guildSettings) => {
   try {
-   const user = interaction.options.getUser("user") || interaction.member?.user;
+   const user = interaction.options.getUser("user") || interaction.member.user;
    const iq = Math.floor(Math.random() * 200) + 1;
 
    const embed = new EmbedBuilder()
@@ -26,14 +26,14 @@ export default {
     .setTimestamp()
     .setColor(guildSettings?.embedColor || client.config.defaultColor)
     .setThumbnail(
-     user?.displayAvatarURL({
+     user.displayAvatarURL({
       dynamic: true,
       format: "png",
      })
     )
     .setFooter({
-     text: `Requested by ${interaction.member?.user?.username}`,
-     iconURL: interaction.member?.user?.displayAvatarURL({
+     text: `Requested by ${interaction.member.user.username}`,
+     iconURL: interaction.member.user.displayAvatarURL({
       dynamic: true,
       format: "png",
      }),

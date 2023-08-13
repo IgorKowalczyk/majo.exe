@@ -48,8 +48,8 @@ export async function getUserAvatar(client, interaction, color) {
    .setTitle(`${user.user.username} ${serverAvatar ? "server" : ""} avatar`)
    .setImage(avatar)
    .setFooter({
-    text: `Requested by ${interaction.member?.user?.username}`,
-    iconURL: interaction.member?.user?.displayAvatarURL({
+    text: `Requested by ${interaction.member.user.username}`,
+    iconURL: interaction.member.user.displayAvatarURL({
      dynamic: true,
      format: "png",
      size: 2048,
@@ -124,8 +124,8 @@ export async function getUserBanner(client, interaction, color) {
    .setTitle(`${user.user.username} ${serverBanner ? "server" : ""} banner`)
    .setImage(banner)
    .setFooter({
-    text: `Requested by ${interaction.member?.user?.username}`,
-    iconURL: interaction.user?.user?.displayAvatarURL({
+    text: `Requested by ${interaction.member.user.username}`,
+    iconURL: interaction.user.user.displayAvatarURL({
      dynamic: true,
      format: "png",
      size: 2048,

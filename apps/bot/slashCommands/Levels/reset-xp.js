@@ -24,16 +24,16 @@ export default {
     return client.errorMessages.createSlashError(interaction, "❌ You can't reset the XP of a bot.\nNote: Bots don't gain XP.");
    }
 
-   await resetXP(user.id, interaction.guild?.id);
+   await resetXP(user.id, interaction.guild.id);
    const embed = new EmbedBuilder()
-    .setColor(guildSettings?.embedColor || client.config.defaultColor)
+    .setColor(guildSettings.embedColor || client.config.defaultColor)
     .setTimestamp()
     .setTitle("✅ Success")
     .setDescription(`> Successfully reset the XP of ${user}`)
     .setThumbnail(user.displayAvatarURL({ dynamic: true, format: "png", size: 2048 }))
     .setFooter({
-     text: `Requested by ${interaction.member?.user?.username}`,
-     iconURL: interaction.member?.user?.displayAvatarURL({
+     text: `Requested by ${interaction.member.user.username}`,
+     iconURL: interaction.member.user.displayAvatarURL({
       dynamic: true,
       format: "png",
       size: 2048,

@@ -13,7 +13,7 @@ export default {
    const dbTime = performance.now();
    await prismaClient.user.findUnique({ where: { id: "1" } });
    const dbTiming = performance.now() - dbTime;
-   const websocketPing = Math.floor(client.ws?.ping);
+   const websocketPing = Math.floor(client.ws.ping);
    const wait = new EmbedBuilder().setColor(guildSettings?.embedColor || client.config.defaultColor).setDescription("🏓 Pong!...");
    const date = performance.now();
    interaction.followUp({ embeds: [wait] }).then(async (msg) => {
@@ -37,8 +37,8 @@ export default {
       },
      ])
      .setFooter({
-      text: `Requested by ${interaction.member?.user?.username}`,
-      iconURL: interaction.member?.user?.displayAvatarURL({
+      text: `Requested by ${interaction.member.user.username}`,
+      iconURL: interaction.member.user.displayAvatarURL({
        dynamic: true,
        format: "png",
        size: 2048,

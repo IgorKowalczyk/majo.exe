@@ -15,19 +15,19 @@ export default {
  usage: "/permissions",
  run: async (client, interaction, guildSettings) => {
   try {
-   const clientMember = interaction.guild?.members.cache.get(client.user?.id);
-   const permissions = clientMember?.permissions.toArray();
-   const words = permissions.map((permission) => convertCamelCaseToWords(permission));
+   const clientMember = interaction.guild.members.cache.get(client.user.id);
+   const permissions = clientMember.permissions.toArray();
+   const permissionsText = permissions.map((permission) => convertCamelCaseToWords(permission));
 
    const embed = new EmbedBuilder()
-    .setColor(guildSettings?.embedColor || client.config.defaultColor)
+    .setColor(guildSettings.embedColor || client.config.defaultColor)
     .setTimestamp()
-    .setTitle(`🎛️ Permissions in ${interaction.guild?.name}`)
-    .setDescription(`> **${client.user?.username}** has the following permissions in this server:\n${codeBlock(words?.join("\n"))}`)
+    .setTitle(`🎛️ Permissions in ${interaction.guild.name}`)
+    .setDescription(`> **${client.user.username}** has the following permissions in this server:\n${codeBlock(permissionsText.join("\n"))}`)
     .setTimestamp()
     .setFooter({
-     text: `Requested by ${interaction.member?.user?.username}`,
-     iconURL: interaction.member?.user?.displayAvatarURL({
+     text: `Requested by ${interaction.member.user.username}`,
+     iconURL: interaction.member.user.displayAvatarURL({
       dynamic: true,
       format: "png",
       size: 2048,

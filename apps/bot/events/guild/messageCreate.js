@@ -61,7 +61,7 @@ const takeAction = async (client, message) => {
    })
   )
   .setFooter({
-   iconURL: client.user?.displayAvatarURL({
+   iconURL: client.user.displayAvatarURL({
     dynamic: true,
     format: "png",
     size: 2048,

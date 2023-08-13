@@ -15,8 +15,8 @@ export default {
     .setColor("#EF4444")
     .setTimestamp()
     .setFooter({
-     text: `Suggested by ${interaction.member?.user?.username}`,
-     iconURL: interaction.member?.user?.displayAvatarURL({
+     text: `Suggested by ${interaction.member.user.username}`,
+     iconURL: interaction.member.user.displayAvatarURL({
       dynamic: true,
       format: "png",
       size: 2048,
@@ -26,7 +26,7 @@ export default {
    return interaction.followUp({ ephemeral: true, embeds: [embed] });
   }
 
-  const key = `${interaction.member?.user?.id}-suggest`;
+  const key = `${interaction.member.user.id}-suggest`;
 
   if (timeout.has(key) && timeout.get(key).time > Date.now()) {
    const time = timeout.get(key).time;
@@ -38,8 +38,8 @@ export default {
     .setColor("#EF4444")
     .setTimestamp()
     .setFooter({
-     text: `Suggested by ${interaction.member?.user?.username}`,
-     iconURL: interaction.member?.user?.displayAvatarURL({
+     text: `Suggested by ${interaction.member.user.username}`,
+     iconURL: interaction.member.user.displayAvatarURL({
       dynamic: true,
       format: "png",
       size: 2048,
@@ -60,8 +60,8 @@ export default {
    .setColor("#3B82F6")
    .setTimestamp()
    .setFooter({
-    text: `Suggested by ${interaction.member?.user?.username}`,
-    iconURL: interaction.member?.user?.displayAvatarURL({
+    text: `Suggested by ${interaction.member.user.username}`,
+    iconURL: interaction.member.user.displayAvatarURL({
      dynamic: true,
      format: "png",
      size: 2048,
@@ -71,8 +71,8 @@ export default {
   await prismaClient.suggestions.create({
    data: {
     message: suggestion,
-    userId: interaction.member?.user?.id,
-    guildId: interaction.guild?.id,
+    userId: interaction.member.user.id,
+    guildId: interaction.guild.id,
    },
   });
 

@@ -17,10 +17,11 @@ export async function FindGiveaways(client, interaction, color, type) {
   });
 
   let list = giveaways.filter((giveaway) => {
+   if (!giveaway.data) return false;
    if (type === "ended") {
-    return giveaway.data?.ended;
+    return giveaway.data.ended;
    } else if (type === "running") {
-    return !giveaway.data?.ended;
+    return !giveaway.data.ended;
    }
    return true;
   });
@@ -36,13 +37,13 @@ export async function FindGiveaways(client, interaction, color, type) {
    .setDescription(
     `>>> ${
      list.length > 0 // prettier
-      ? list.map((g) => `**${g.data?.prize ? g.data?.prize.replace(`${client.config.emojis.giveaway} Giveaway: `, "").replace(`${client.config.emojis.giveaway} Drop: `, "") : "No prize"}**: Winners: \`${g.data?.winnerCount || 1}\`${g.data?.ended ? "" : `, Ends <t:${Math.floor(g.data?.endAt / 1000)}:R>` || "No end date"}, https://discord.com/channels/${g.guildId}/${g.data?.channelId}/${g.messageId}`).join("\n")
+      ? list.map((g) => `**${g.data.prize ? g.data.prize.replace(`${client.config.emojis.giveaway} Giveaway: `, "").replace(`${client.config.emojis.giveaway} Drop: `, "") : "No prize"}**: Winners: \`${g.data.winnerCount || 1}\`${g.data.ended ? "" : `, Ends <t:${Math.floor(g.data.endAt / 1000)}:R>` || "No end date"}, https://discord.com/channels/${g.guildId}/${g.data.channelId}/${g.messageId}`).join("\n")
       : "No giveaways found for this type!"
     }`
    )
    .setFooter({
-    text: `Requested by ${interaction.member?.user?.username}`,
-    iconURL: interaction.member?.user?.displayAvatarURL({
+    text: `Requested by ${interaction.member.user.username}`,
+    iconURL: interaction.member.user.displayAvatarURL({
      dynamic: true,
      format: "png",
      size: 2048,

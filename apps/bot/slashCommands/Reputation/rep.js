@@ -86,14 +86,14 @@ export default {
      .setTitle("👍 Reputation")
      .setDescription(`> ${user} has \`${rep}\` reputation points`)
      .setThumbnail(
-      user?.displayAvatarURL({
+      user.displayAvatarURL({
        dynamic: true,
        format: "png",
       })
      )
      .setFooter({
-      text: `Requested by ${interaction.member?.user?.username}`,
-      iconURL: interaction.member?.user?.displayAvatarURL({
+      text: `Requested by ${interaction.member.user.username}`,
+      iconURL: interaction.member.user.displayAvatarURL({
        dynamic: true,
        format: "png",
        size: 2048,
@@ -104,17 +104,17 @@ export default {
    } else if (type === "give") {
     const user = interaction.options.getUser("user");
 
-    if (user.id === interaction.member?.user?.id) {
+    if (user.id === interaction.member.user.id) {
      return client.errorMessages.createSlashError(interaction, "❌ You can't give reputation to yourself");
     }
 
-    if (timeout.has(`${interaction.member?.user?.id}-${user.id}`)) {
+    if (timeout.has(`${interaction.member.user.id}-${user.id}`)) {
      return client.errorMessages.createSlashError(interaction, `❌ You can't give reputation to ${user} for another \`${formatDuration(timeout.get(`${interaction.member?.user?.id}-${user.id}`) - Date.now())}\``);
     }
 
     const rep = await giveReputation(user, interaction.guild);
 
-    timeout.set(`${interaction.member?.user?.id}-${user.id}`, Date.now() + 86400000);
+    timeout.set(`${interaction.member.user.id}-${user.id}`, Date.now() + 86400000);
 
     const embed = new EmbedBuilder()
      .setColor(guildSettings?.embedColor || client.config.defaultColor)
@@ -122,14 +122,14 @@ export default {
      .setTitle("👍 Reputation")
      .setDescription(`> Successfully gave ${user} \`1\` reputation point. They now have *\`${rep}\` reputation points`)
      .setThumbnail(
-      user?.displayAvatarURL({
+      user.displayAvatarURL({
        dynamic: true,
        format: "png",
       })
      )
      .setFooter({
-      text: `Requested by ${interaction.member?.user?.username}`,
-      iconURL: interaction.member?.user?.displayAvatarURL({
+      text: `Requested by ${interaction.member.user.username}`,
+      iconURL: interaction.member.user.displayAvatarURL({
        dynamic: true,
        format: "png",
        size: 2048,
@@ -140,17 +140,17 @@ export default {
    } else if (type === "take") {
     const user = interaction.options.getUser("user");
 
-    if (user.id === interaction.member?.user?.id) {
+    if (user.id === interaction.member.user.id) {
      return client.errorMessages.createSlashError(interaction, "❌ You can't take reputation from yourself");
     }
 
-    if (timeout.has(`${interaction.member?.user?.id}-${user.id}`)) {
+    if (timeout.has(`${interaction.member.user.id}-${user.id}`)) {
      return client.errorMessages.createSlashError(interaction, `❌ You can't take reputation from ${user} for another \`${formatDuration(timeout.get(`${interaction.member?.user?.id}-${user.id}`) - Date.now())}\``);
     }
 
     const rep = await takeReputation(user, interaction.guild);
 
-    timeout.set(`${interaction.member?.user?.id}-${user.id}`, Date.now() + 86400000);
+    timeout.set(`${interaction.member.user.id}-${user.id}`, Date.now() + 86400000);
 
     const embed = new EmbedBuilder()
      .setColor(guildSettings?.embedColor || client.config.defaultColor)
@@ -158,14 +158,14 @@ export default {
      .setTitle("👍 Reputation")
      .setDescription(`> Successfully took \`1\` reputation point from ${user}. They now have \`${rep}\` reputation points`)
      .setThumbnail(
-      user?.displayAvatarURL({
+      user.displayAvatarURL({
        dynamic: true,
        format: "png",
       })
      )
      .setFooter({
-      text: `Requested by ${interaction.member?.user?.username}`,
-      iconURL: interaction.member?.user?.displayAvatarURL({
+      text: `Requested by ${interaction.member.user.username}`,
+      iconURL: interaction.member.user.displayAvatarURL({
        dynamic: true,
        format: "png",
        size: 2048,
@@ -177,7 +177,7 @@ export default {
     const user = interaction.options.getUser("user");
     const amount = interaction.options.getInteger("amount");
 
-    if (!interaction.member?.permissions.has(PermissionFlagsBits.Administrator)) {
+    if (!interaction.member.permissions.has(PermissionFlagsBits.Administrator)) {
      return client.errorMessages.createSlashError(interaction, "❌ You don't have `Administrator` permissions to use this command");
     }
 
@@ -197,14 +197,14 @@ export default {
      .setTitle("👍 Reputation")
      .setDescription(`> Successfully set ${user} reputation to \`${rep}\` points`)
      .setThumbnail(
-      user?.displayAvatarURL({
+      user.displayAvatarURL({
        dynamic: true,
        format: "png",
       })
      )
      .setFooter({
-      text: `Requested by ${interaction.member?.user?.username}`,
-      iconURL: interaction.member?.user?.displayAvatarURL({
+      text: `Requested by ${interaction.member.user.username}`,
+      iconURL: interaction.member.user.displayAvatarURL({
        dynamic: true,
        format: "png",
        size: 2048,
