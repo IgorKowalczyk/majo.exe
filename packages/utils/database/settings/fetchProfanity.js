@@ -11,7 +11,7 @@ export async function fetchProfanity(guildId) {
     guildId: guildId,
    },
   });
-  
+
   if (!guild) {
    return false;
   }
