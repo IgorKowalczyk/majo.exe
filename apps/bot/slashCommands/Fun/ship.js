@@ -68,7 +68,7 @@ export default {
 
    interaction.followUp({ embeds: [embed] });
   } catch (err) {
-   client.errorMessages.generateErrorMessage(interaction, err);
+   client.errorMessages.internalError(interaction, err);
   }
  },
 };

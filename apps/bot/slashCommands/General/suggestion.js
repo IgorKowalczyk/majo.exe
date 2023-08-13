@@ -16,7 +16,7 @@ export default {
    modal.addComponents(action);
    await interaction.showModal(modal);
   } catch (err) {
-   client.errorMessages.generateErrorMessage(interaction, err);
+   client.errorMessages.internalError(interaction, err);
   }
  },
 };

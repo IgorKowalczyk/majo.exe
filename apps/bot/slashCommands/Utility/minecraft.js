@@ -29,58 +29,19 @@ export default {
    const bedrock = interaction.options.getBoolean("bedrock") || false;
 
    if (!/^([a-z0-9]+(-[a-z0-9]+)*\.)+[a-z]{2,}(:?[0-9]*)$/gim.test(serverIp)) {
-    const embed = new EmbedBuilder()
-     .setColor("#EF4444")
-     .setTimestamp()
-     .setTitle("❌ Invalid server IP")
-     .setDescription("> The server IP you provided is invalid")
-     .setFooter({
-      text: `Requested by ${interaction.member?.user?.username}`,
-      iconURL: interaction.member?.user?.displayAvatarURL({
-       dynamic: true,
-       format: "png",
-       size: 2048,
-      }),
-     });
-    return interaction.followUp({ ephemeral: true, embeds: [embed] });
+    return client.errorMessages.createSlashError(interaction, "❌ The server IP you provided is invalid");
    }
 
    if (bedrock) {
     const request = await fetch(`https://api.mcsrvstat.us/bedrock/2/${serverIp}`);
     if (!request.ok) {
-     const embed = new EmbedBuilder()
-      .setColor("#EF4444")
-      .setTimestamp()
-      .setTitle("❌ We couldn't get the server info")
-      .setDescription("> We couldn't get the server info, please try again later")
-      .setFooter({
-       text: `Requested by ${interaction.member?.user?.username}`,
-       iconURL: interaction.member?.user?.displayAvatarURL({
-        dynamic: true,
-        format: "png",
-        size: 2048,
-       }),
-      });
-     return interaction.followUp({ ephemeral: true, embeds: [embed] });
+     return client.errorMessages.createSlashError(interaction, "❌ We couldn't get the server info, please try again later");
     }
 
     const json = await request.json();
 
     if (json.ip == "127.0.0.1" || !json.ip) {
-     const embed = new EmbedBuilder()
-      .setColor("#EF4444")
-      .setTimestamp()
-      .setTitle("❌ We couldn't get the server info")
-      .setDescription("> We couldn't get the server info, please try again later")
-      .setFooter({
-       text: `Requested by ${interaction.member?.user?.username}`,
-       iconURL: interaction.member?.user?.displayAvatarURL({
-        dynamic: true,
-        format: "png",
-        size: 2048,
-       }),
-      });
-     return interaction.followUp({ ephemeral: true, embeds: [embed] });
+     return client.errorMessages.createSlashError(interaction, "❌ We couldn't get the server info, please try again later");
     }
 
     const embed = new EmbedBuilder()
@@ -136,39 +97,13 @@ export default {
    } else {
     const request = await fetch(`https://api.mcsrvstat.us/2/${serverIp}`);
     if (!request.ok) {
-     const embed = new EmbedBuilder()
-      .setColor("#EF4444")
-      .setTimestamp()
-      .setTitle("❌ We couldn't get the server info")
-      .setDescription("> We couldn't get the server info, please try again later")
-      .setFooter({
-       text: `Requested by ${interaction.member?.user?.username}`,
-       iconURL: interaction.member?.user?.displayAvatarURL({
-        dynamic: true,
-        format: "png",
-        size: 2048,
-       }),
-      });
-     return interaction.followUp({ ephemeral: true, embeds: [embed] });
+     return client.errorMessages.createSlashError(interaction, "❌ We couldn't get the server info, please try again later");
     }
 
     const json = await request.json();
 
     if (json.error) {
-     const embed = new EmbedBuilder()
-      .setColor("#EF4444")
-      .setTimestamp()
-      .setTitle("❌ We couldn't get the server info")
-      .setDescription("> We couldn't get the server info, please try again later")
-      .setFooter({
-       text: `Requested by ${interaction.member?.user?.username}`,
-       iconURL: interaction.member?.user?.displayAvatarURL({
-        dynamic: true,
-        format: "png",
-        size: 2048,
-       }),
-      });
-     return interaction.followUp({ ephemeral: true, embeds: [embed] });
+     return client.errorMessages.createSlashError(interaction, "❌ We couldn't get the server info, please try again later");
     }
 
     const embed = new EmbedBuilder()
@@ -227,7 +162,7 @@ export default {
     return interaction.followUp({ embeds: [embed] });
    }
   } catch (err) {
-   client.errorMessages.generateErrorMessage(interaction, err);
+   client.errorMessages.internalError(interaction, err);
   }
  },
 };

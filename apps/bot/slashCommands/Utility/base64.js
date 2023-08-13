@@ -83,7 +83,7 @@ export default {
     return interaction.followUp({ ephemeral: true, embeds: [embed] });
    }
   } catch (err) {
-   client.errorMessages.generateErrorMessage(interaction, err);
+   client.errorMessages.internalError(interaction, err);
   }
  },
 };

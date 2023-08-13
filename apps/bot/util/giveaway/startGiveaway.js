@@ -12,34 +12,38 @@ export async function StartGiveaway(client, interaction, color) {
   await interaction.deferReply({ ephemeral: true });
   const channel = interaction.options.getChannel("channel");
 
-  await client.giveawaysManager.start(channel, {
-   duration: ms(interaction.options.getString("time")),
-   guildId: interaction.guild.id,
-   winnerCount: parseInt(interaction.options.getInteger("winners")),
-   prize: `${client.config.emojis.giveaway} Giveaway: ${interaction.options.getString("prize")}`,
-   hostedBy: interaction.user,
-   thumbnail: client.user.displayAvatarURL(),
-   embedColor: parseInt(color.replace("#", ""), 16),
-   embedColorEnd: parseInt(color.replace("#", ""), 16),
-   messages: {
-    giveaway: null,
-    giveawayEnded: null,
-    inviteToParticipate: `> **React with ${client.config.emojis.giveaway} to participate!**`,
-    winMessage: {
-     replyToGiveaway: true,
-     embed: new EmbedBuilder() // Prettier
-      .setColor(color)
-      .setTimestamp()
-      .setDescription(`>>> **Congratulations {winners}!**\n**You won: \`${interaction.options.getString("prize")}\`**\n\n[${client.config.emojis.link} Link to giveaway]({this.messageURL})`),
+  try {
+   await client.giveawaysManager.start(channel, {
+    duration: ms(interaction.options.getString("time")),
+    guildId: interaction.guild.id,
+    winnerCount: parseInt(interaction.options.getInteger("winners")),
+    prize: `${client.config.emojis.giveaway} Giveaway: ${interaction.options.getString("prize")}`,
+    hostedBy: interaction.user,
+    thumbnail: client.user.displayAvatarURL(),
+    embedColor: parseInt(color.replace("#", ""), 16),
+    embedColorEnd: parseInt(color.replace("#", ""), 16),
+    messages: {
+     giveaway: null,
+     giveawayEnded: null,
+     inviteToParticipate: `> **React with ${client.config.emojis.giveaway} to participate!**`,
+     winMessage: {
+      replyToGiveaway: true,
+      embed: new EmbedBuilder() // Prettier
+       .setColor(color)
+       .setTimestamp()
+       .setDescription(`>>> **Congratulations {winners}!**\n**You won: \`${interaction.options.getString("prize")}\`**\n\n[${client.config.emojis.link} Link to giveaway]({this.messageURL})`),
+     },
+     embedFooter: { text: "{this.winnerCount} winner(s)", iconURL: client.user.displayAvatarURL() },
+     noWinner: `> **${client.config.emojis.error} Giveaway cancelled, no valid participations!**\n`,
+     drawing: `\n• ${client.config.emojis.stopwatch} Drawing winner {timestamp}`,
+     hostedBy: `• ${client.config.emojis.member} Hosted by ${interaction.user}`,
+     winners: "Winner(s): ",
+     endedAt: "Ended at",
     },
-    embedFooter: { text: "{this.winnerCount} winner(s)", iconURL: client.user.displayAvatarURL() },
-    noWinner: `> **${client.config.emojis.error} Giveaway cancelled, no valid participations!**\n`,
-    drawing: `\n• ${client.config.emojis.stopwatch} Drawing winner {timestamp}`,
-    hostedBy: `• ${client.config.emojis.member} Hosted by ${interaction.user}`,
-    winners: "Winner(s): ",
-    endedAt: "Ended at",
-   },
-  });
+   });
+  } catch (err) {
+   return client.errorMessages.createSlashError(interaction, "❌ Something went wrong while creating the giveaway!");
+  }
 
   const success = new EmbedBuilder() // prettier
    .setColor(color)
@@ -57,7 +61,7 @@ export async function StartGiveaway(client, interaction, color) {
 
   await interaction.followUp({ embeds: [success], ephermal: true });
  } catch (err) {
-  client.errorMessages.generateErrorMessage(interaction, err);
+  client.errorMessages.internalError(interaction, err);
  }
 }
 
@@ -102,20 +106,7 @@ export async function StartDropGiveaway(client, interaction, color) {
     },
    });
   } catch (err) {
-   const embed = new EmbedBuilder()
-    .setColor("#EF4444")
-    .setTimestamp()
-    .setTitle("❌ Error")
-    .setDescription(`> ${err}`)
-    .setFooter({
-     text: `Requested by ${interaction.member?.user?.username}`,
-     iconURL: interaction.member?.user?.displayAvatarURL({
-      dynamic: true,
-      format: "png",
-      size: 2048,
-     }),
-    });
-   return interaction.followUp({ ephemeral: true, embeds: [embed] });
+   return client.errorMessages.createSlashError(interaction, "❌ Something went wrong while creating the giveaway!");
   }
 
   const success = new EmbedBuilder() // Prettier
@@ -132,6 +123,6 @@ export async function StartDropGiveaway(client, interaction, color) {
    });
   await interaction.followUp({ embeds: [success], ephermal: true });
  } catch (err) {
-  client.errorMessages.generateErrorMessage(interaction, err);
+  client.errorMessages.internalError(interaction, err);
  }
 }

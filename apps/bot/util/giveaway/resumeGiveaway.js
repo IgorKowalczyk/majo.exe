@@ -13,56 +13,17 @@ export async function ResumeGiveaway(client, interaction, color) {
   const giveaway = client.giveawaysManager.giveaways.find((g) => g.messageId === query && g.guildId === interaction.guild.id);
 
   if (!giveaway) {
-   const embed = new EmbedBuilder()
-    .setColor("#EF4444")
-    .setTimestamp()
-    .setTitle("❌ Error")
-    .setDescription(`> No giveaway found for \`${query}\`!`)
-    .setFooter({
-     text: `Requested by ${interaction.member?.user?.username}`,
-     iconURL: interaction.member?.user?.displayAvatarURL({
-      dynamic: true,
-      format: "png",
-      size: 2048,
-     }),
-    });
-   return interaction.followUp({ ephemeral: true, embeds: [embed] });
+   return client.errorMessages.createSlashError(interaction, `❌ No giveaway found for \`${query}\`!`);
   }
 
   if (giveaway.ended) {
-   const embed = new EmbedBuilder()
-    .setColor("#EF4444")
-    .setTimestamp()
-    .setTitle("❌ Error")
-    .setDescription(`> Giveaway \`${query}\` has already ended!`)
-    .setFooter({
-     text: `Requested by ${interaction.member?.user?.username}`,
-     iconURL: interaction.member?.user?.displayAvatarURL({
-      dynamic: true,
-      format: "png",
-      size: 2048,
-     }),
-    });
-   return interaction.followUp({ ephemeral: true, embeds: [embed] });
+   return client.errorMessages.createSlashError(interaction, `❌ Giveaway \`${query}\` has already ended!`);
   }
 
   try {
    await client.giveawaysManager.unpause(giveaway.messageId);
   } catch (err) {
-   const embed = new EmbedBuilder()
-    .setColor("#EF4444")
-    .setTimestamp()
-    .setTitle("❌ Error")
-    .setDescription(`> ${err}`)
-    .setFooter({
-     text: `Requested by ${interaction.member?.user?.username}`,
-     iconURL: interaction.member?.user?.displayAvatarURL({
-      dynamic: true,
-      format: "png",
-      size: 2048,
-     }),
-    });
-   return interaction.followUp({ ephemeral: true, embeds: [embed] });
+   return client.errorMessages.createSlashError(interaction, "❌ Something went wrong while resuming the giveaway!");
   }
 
   const embed = new EmbedBuilder()
@@ -78,6 +39,6 @@ export async function ResumeGiveaway(client, interaction, color) {
    });
   return interaction.followUp({ embeds: [embed], ephemeral: true });
  } catch (err) {
-  client.errorMessages.generateErrorMessage(interaction, err);
+  client.errorMessages.internalError(interaction, err);
  }
 }

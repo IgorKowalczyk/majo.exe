@@ -26,20 +26,7 @@ export async function FindGiveaways(client, interaction, color, type) {
   });
 
   if (!giveaways) {
-   const embed = new EmbedBuilder()
-    .setColor("#EF4444")
-    .setTimestamp()
-    .setTitle("❌ Error")
-    .setDescription("> No giveaways found!")
-    .setFooter({
-     text: `Requested by ${interaction.member?.user?.username}`,
-     iconURL: interaction.member?.user?.displayAvatarURL({
-      dynamic: true,
-      format: "png",
-      size: 2048,
-     }),
-    });
-   return interaction.followUp({ ephemeral: true, embeds: [embed] });
+   return client.errorMessages.createSlashError(interaction, "❌ No giveaways found!");
   }
 
   const embed = new EmbedBuilder()
@@ -63,23 +50,6 @@ export async function FindGiveaways(client, interaction, color, type) {
    });
   return interaction.followUp({ ephemeral: true, embeds: [embed] });
  } catch (err) {
-  return interaction.followUp({
-   ephemeral: true,
-   embeds: [
-    new EmbedBuilder()
-     .setColor("#EF4444")
-     .setTimestamp()
-     .setTitle("❌ Error")
-     .setDescription(`> ${err}`)
-     .setFooter({
-      text: `Requested by ${interaction.member?.user?.username}`,
-      iconURL: interaction.member?.user?.displayAvatarURL({
-       dynamic: true,
-       format: "png",
-       size: 2048,
-      }),
-     }),
-   ],
-  });
+  client.errorMessages.internalError(interaction, err);
  }
 }

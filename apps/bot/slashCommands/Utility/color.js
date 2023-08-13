@@ -24,20 +24,7 @@ export default {
    !color ? (random = true) : (random = false);
 
    if (!random && !isColor(color).color) {
-    const embed = new EmbedBuilder()
-     .setColor("#EF4444")
-     .setTimestamp()
-     .setTitle("❌ Invalid color")
-     .setDescription("> The color you provided is invalid")
-     .setFooter({
-      text: `Requested by ${interaction.member?.user?.username}`,
-      iconURL: interaction.member?.user?.displayAvatarURL({
-       dynamic: true,
-       format: "png",
-       size: 2048,
-      }),
-     });
-    return interaction.followUp({ ephemeral: true, embeds: [embed] });
+    return client.errorMessages.createSlashError(interaction, "❌ The color you provided is invalid. The color must be in hex format. Example: `#FF0000`");
    }
 
    const value = random ? null : color;
@@ -87,7 +74,7 @@ export default {
 
    return interaction.followUp({ ephemeral: true, embeds: [embed] });
   } catch (err) {
-   client.errorMessages.generateErrorMessage(interaction, err);
+   client.errorMessages.internalError(interaction, err);
   }
  },
 };

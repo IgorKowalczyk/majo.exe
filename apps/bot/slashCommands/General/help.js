@@ -25,20 +25,7 @@ export default {
    if (query && !isCategory) {
     const command = client.slashCommands.get(query.toLowerCase()) || client.slashCommands.find((cmd) => cmd.aliases && cmd.aliases.includes(query.toLowerCase()));
     if (!command) {
-     const embed = new EmbedBuilder()
-      .setColor(guildSettings?.embedColor || client.config.defaultColor)
-      .setTimestamp()
-      .setTitle("❌ Command not found")
-      .setDescription(`> The command \`${query}\` does not exist. Please check your spelling and try again.`)
-      .setFooter({
-       text: `Requested by ${interaction.member?.user?.username}`,
-       iconURL: interaction.member?.user?.displayAvatarURL({
-        dynamic: true,
-        format: "png",
-        size: 2048,
-       }),
-      });
-     return interaction.followUp({ ephemeral: true, embeds: [embed] });
+     return client.errorMessages.createSlashError(interaction, `❌ The command \`${query}\` does not exist. Please check your spelling and try again.`);
     }
 
     const embed = new EmbedBuilder()
@@ -137,7 +124,7 @@ export default {
     return interaction.followUp({ ephemeral: false, embeds: [embed] });
    }
   } catch (err) {
-   client.errorMessages.generateErrorMessage(interaction, err);
+   client.errorMessages.internalError(interaction, err);
   }
  },
 };

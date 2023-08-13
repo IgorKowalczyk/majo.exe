@@ -14,20 +14,7 @@ export default {
    const json = await joke.json();
 
    if (!json || !json.setup || !json.punchline) {
-    const embed = new EmbedBuilder()
-     .setColor("#EF4444")
-     .setTimestamp()
-     .setTitle("❌ Error")
-     .setDescription("> No results found.")
-     .setFooter({
-      text: `Requested by ${interaction.member?.user?.username}`,
-      iconURL: interaction.member?.user?.displayAvatarURL({
-       dynamic: true,
-       format: "png",
-       size: 2048,
-      }),
-     });
-    return interaction.followUp({ ephemeral: true, embeds: [embed] });
+    return client.errorMessages.createSlashError(interaction, "❌ No results found.");
    }
 
    const embed = new EmbedBuilder()
@@ -50,7 +37,7 @@ export default {
     });
    return interaction.followUp({ embeds: [embed] });
   } catch (err) {
-   client.errorMessages.generateErrorMessage(interaction, err);
+   client.errorMessages.internalError(interaction, err);
   }
  },
 };

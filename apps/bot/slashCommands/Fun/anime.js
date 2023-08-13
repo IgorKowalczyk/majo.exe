@@ -30,37 +30,11 @@ export default {
    });
 
    if (!request || !request.ok) {
-    const embed = new EmbedBuilder()
-     .setColor("#EF4444")
-     .setTimestamp()
-     .setTitle("❌ Error")
-     .setDescription("> No results found.")
-     .setFooter({
-      text: `Requested by ${interaction.member?.user?.username}`,
-      iconURL: interaction.member?.user?.displayAvatarURL({
-       dynamic: true,
-       format: "png",
-       size: 2048,
-      }),
-     });
-    return interaction.followUp({ ephemeral: true, embeds: [embed] });
+    return client.errorMessages.createSlashError(interaction, "❌ No results found.");
    }
    const json = await request.json();
    if (!json || !json.data || json.data.length < 1) {
-    const embed = new EmbedBuilder()
-     .setColor("#EF4444")
-     .setTimestamp()
-     .setTitle("❌ Error")
-     .setDescription("> No results found.")
-     .setFooter({
-      text: `Requested by ${interaction.member?.user?.username}`,
-      iconURL: interaction.member?.user?.displayAvatarURL({
-       dynamic: true,
-       format: "png",
-       size: 2048,
-      }),
-     });
-    return interaction.followUp({ ephemeral: true, embeds: [embed] });
+    return client.errorMessages.createSlashError(interaction, "❌ No results found.");
    }
    const data = json.data[0].attributes;
 
@@ -146,7 +120,7 @@ export default {
 
    return interaction.followUp({ embeds: [embed] });
   } catch (err) {
-   client.errorMessages.generateErrorMessage(interaction, err);
+   client.errorMessages.internalError(interaction, err);
   }
  },
 };

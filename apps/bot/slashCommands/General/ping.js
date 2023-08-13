@@ -50,7 +50,7 @@ export default {
     msg.edit({ ephemeral: false, embeds: [pingMessage] });
    });
   } catch (err) {
-   client.errorMessages.generateErrorMessage(interaction, err);
+   client.errorMessages.internalError(interaction, err);
   }
  },
 };

@@ -53,9 +53,23 @@ client.config = {
 };
 client.giveawaysManager = giveaway(client);
 client.errorMessages = {
- generateErrorMessage: (interaction, error) => {
+ internalError: (interaction, error) => {
   Logger("error", error?.toString() ?? "Unknown error occured");
-  const embed = createErrorEmbed(interaction);
+  const embed = createErrorEmbed("An error occured while executing this command. Please try again later.", "Unknown error occured");
+  return interaction.followUp({ embeds: [embed], ephemeral: true });
+ },
+ /**
+  * @param {interaction} interaction
+  * @param {string} title
+  * @param {string} description
+  * */
+ createSlashError: (interaction, description, title) => {
+  const embed = createErrorEmbed(description, title);
+  embed.setFooter({
+   text: `Requested by ${interaction.member?.user?.username}`,
+   iconURL: interaction.member?.user?.displayAvatarURL({ dynamic: true }),
+  });
+
   return interaction.followUp({ embeds: [embed], ephemeral: true });
  },
 };

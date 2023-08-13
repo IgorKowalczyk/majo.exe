@@ -105,35 +105,11 @@ export default {
     const user = interaction.options.getUser("user");
 
     if (user.id === interaction.member?.user?.id) {
-     const embed = new EmbedBuilder()
-      .setColor("#EF4444")
-      .setTimestamp()
-      .setDescription("❌ You can't give reputation to yourself")
-      .setFooter({
-       text: `Requested by ${interaction.member?.user?.username}`,
-       iconURL: interaction.member?.user?.displayAvatarURL({
-        dynamic: true,
-        format: "png",
-        size: 2048,
-       }),
-      });
-     return interaction.followUp({ ephemeral: true, embeds: [embed] });
+     return client.errorMessages.createSlashError(interaction, "❌ You can't give reputation to yourself");
     }
 
     if (timeout.has(`${interaction.member?.user?.id}-${user.id}`)) {
-     const embed = new EmbedBuilder()
-      .setColor("#EF4444")
-      .setTimestamp()
-      .setDescription(`❌ You can't give reputation to ${user} for another \`${formatDuration(timeout.get(`${interaction.member?.user?.id}-${user.id}`) - Date.now())}\``)
-      .setFooter({
-       text: `Requested by ${interaction.member?.user?.username}`,
-       iconURL: interaction.member?.user?.displayAvatarURL({
-        dynamic: true,
-        format: "png",
-        size: 2048,
-       }),
-      });
-     return interaction.followUp({ ephemeral: true, embeds: [embed] });
+     return client.errorMessages.createSlashError(interaction, `❌ You can't give reputation to ${user} for another \`${formatDuration(timeout.get(`${interaction.member?.user?.id}-${user.id}`) - Date.now())}\``);
     }
 
     const rep = await giveReputation(user, interaction.guild);
@@ -165,35 +141,11 @@ export default {
     const user = interaction.options.getUser("user");
 
     if (user.id === interaction.member?.user?.id) {
-     const embed = new EmbedBuilder()
-      .setColor("#EF4444")
-      .setTimestamp()
-      .setDescription("❌ You can't take reputation from yourself")
-      .setFooter({
-       text: `Requested by ${interaction.member?.user?.username}`,
-       iconURL: interaction.member?.user?.displayAvatarURL({
-        dynamic: true,
-        format: "png",
-        size: 2048,
-       }),
-      });
-     return interaction.followUp({ ephemeral: true, embeds: [embed] });
+     return client.errorMessages.createSlashError(interaction, "❌ You can't take reputation from yourself");
     }
 
     if (timeout.has(`${interaction.member?.user?.id}-${user.id}`)) {
-     const embed = new EmbedBuilder()
-      .setColor("#EF4444")
-      .setTimestamp()
-      .setDescription(`❌ You can't take reputation from ${user} for another \`${formatDuration(timeout.get(`${interaction.member?.user?.id}-${user.id}`) - Date.now())}\``)
-      .setFooter({
-       text: `Requested by ${interaction.member?.user?.username}`,
-       iconURL: interaction.member?.user?.displayAvatarURL({
-        dynamic: true,
-        format: "png",
-        size: 2048,
-       }),
-      });
-     return interaction.followUp({ ephemeral: true, embeds: [embed] });
+     return client.errorMessages.createSlashError(interaction, `❌ You can't take reputation from ${user} for another \`${formatDuration(timeout.get(`${interaction.member?.user?.id}-${user.id}`) - Date.now())}\``);
     }
 
     const rep = await takeReputation(user, interaction.guild);
@@ -226,52 +178,16 @@ export default {
     const amount = interaction.options.getInteger("amount");
 
     if (!interaction.member?.permissions.has(PermissionFlagsBits.Administrator)) {
-     const embed = new EmbedBuilder()
-      .setColor("#EF4444")
-      .setTimestamp()
-      .setDescription("❌ You don't have permission to use this command")
-      .setFooter({
-       text: `Requested by ${interaction.member?.user?.username}`,
-       iconURL: interaction.member?.user?.displayAvatarURL({
-        dynamic: true,
-        format: "png",
-        size: 2048,
-       }),
-      });
-     return interaction.followUp({ ephemeral: true, embeds: [embed] });
+     return client.errorMessages.createSlashError(interaction, "❌ You don't have `Administrator` permissions to use this command");
     }
 
     if (amount < 0) {
-     const embed = new EmbedBuilder()
-      .setColor("#EF4444")
-      .setTimestamp()
-      .setDescription("❌ You can't set a user's reputation to a negative number")
-      .setFooter({
-       text: `Requested by ${interaction.member?.user?.username}`,
-       iconURL: interaction.member?.user?.displayAvatarURL({
-        dynamic: true,
-        format: "png",
-        size: 2048,
-       }),
-      });
-     return interaction.followUp({ ephemeral: true, embeds: [embed] });
+     return client.errorMessages.createSlashError(interaction, "❌ You can't set a user's reputation to a negative number");
     }
 
     // 32-bit integer limit
     if (amount >= 2147483647) {
-     const embed = new EmbedBuilder()
-      .setColor("#EF4444")
-      .setTimestamp()
-      .setDescription("❌ You can't set a user's reputation to a number that is too large")
-      .setFooter({
-       text: `Requested by ${interaction.member?.user?.username}`,
-       iconURL: interaction.member?.user?.displayAvatarURL({
-        dynamic: true,
-        format: "png",
-        size: 2048,
-       }),
-      });
-     return interaction.followUp({ ephemeral: true, embeds: [embed] });
+     return client.errorMessages.createSlashError(interaction, "❌ You can't set a user's reputation to a number that is too large");
     }
     const rep = await setReputation(user, interaction.guild, amount);
 
@@ -298,7 +214,7 @@ export default {
     return interaction.followUp({ embeds: [embed] });
    }
   } catch (err) {
-   client.errorMessages.generateErrorMessage(interaction, err);
+   client.errorMessages.internalError(interaction, err);
   }
  },
 };

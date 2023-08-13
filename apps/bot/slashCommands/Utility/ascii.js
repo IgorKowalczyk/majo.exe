@@ -23,20 +23,7 @@ export default {
 
    figlet(text, (err, data) => {
     if (err) {
-     const embed = new EmbedBuilder()
-      .setColor("#EF4444")
-      .setTimestamp()
-      .setTitle("❌ Something went wrong")
-      .setDescription("> An error occurred while converting the text to ASCII")
-      .setFooter({
-       text: `Requested by ${interaction.member?.user?.username}`,
-       iconURL: interaction.member?.user?.displayAvatarURL({
-        dynamic: true,
-        format: "png",
-        size: 2048,
-       }),
-      });
-     return interaction.followUp({ ephemeral: true, embeds: [embed] });
+     return client.errorMessages.createSlashError(interaction, "❌ An error occurred while converting the text to ASCII");
     }
 
     const embed = new EmbedBuilder()
@@ -53,11 +40,10 @@ export default {
      });
 
     const attached = new AttachmentBuilder().setName("ascii.txt").setFile(Buffer.from(data));
-
     return interaction.followUp({ ephemeral: false, embeds: [embed], files: [attached] });
    });
   } catch (err) {
-   client.errorMessages.generateErrorMessage(interaction, err);
+   client.errorMessages.internalError(interaction, err);
   }
  },
 };

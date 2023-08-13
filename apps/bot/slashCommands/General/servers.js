@@ -38,7 +38,7 @@ export default {
 
    return interaction.followUp({ ephemeral: false, embeds: [embed], components: [action] });
   } catch (err) {
-   client.errorMessages.generateErrorMessage(interaction, err);
+   client.errorMessages.internalError(interaction, err);
   }
  },
 };

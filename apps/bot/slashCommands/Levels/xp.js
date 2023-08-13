@@ -21,20 +21,7 @@ export default {
   try {
    const user = interaction.options.getUser("user") || interaction.member?.user;
    if (user.bot) {
-    const embed = new EmbedBuilder()
-     .setColor("#EF4444")
-     .setTimestamp()
-     .setTitle("❌ Error")
-     .setDescription("> You can't check the XP of a bot.\nNote: Bots don't gain XP.")
-     .setFooter({
-      text: `Requested by ${interaction.member?.user?.username}`,
-      iconURL: interaction.member?.user?.displayAvatarURL({
-       dynamic: true,
-       format: "png",
-       size: 2048,
-      }),
-     });
-    return interaction.followUp({ ephemeral: true, embeds: [embed] });
+    return client.errorMessages.createSlashError(interaction, "❌ You can't check the XP of a bot.\nNote: Bots don't gain XP.");
    }
 
    const xp = await checkXP(user.id, interaction.guild?.id);
@@ -71,7 +58,7 @@ export default {
     return interaction.followUp({ ephemeral: false, embeds: [embed] });
    }
   } catch (err) {
-   client.errorMessages.generateErrorMessage(interaction, err);
+   client.errorMessages.internalError(interaction, err);
   }
  },
 };

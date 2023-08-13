@@ -23,20 +23,7 @@ export default {
   const logs = await fetchLogs(interaction.guildId, count);
 
   if (!logs || logs.length < 1) {
-   const embed = new EmbedBuilder()
-    .setColor("#EF4444")
-    .setTimestamp()
-    .setTitle("❌ No logs found")
-    .setDescription("> There are no logs found for this query or server.")
-    .setFooter({
-     text: `Requested by ${interaction.member?.user?.username}`,
-     iconURL: interaction.member?.user?.displayAvatarURL({
-      dynamic: true,
-      format: "png",
-      size: 2048,
-     }),
-    });
-   return interaction.followUp({ ephemeral: true, embeds: [embed] });
+   return client.errorMessages.createSlashError(interaction, "❌ There are no logs found for this query or server");
   }
 
   const logsArray = logs.slice(0, 20).map((log) => {

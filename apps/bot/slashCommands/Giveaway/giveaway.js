@@ -189,7 +189,7 @@ export default {
     await FindGiveaways(client, interaction, guildSettings?.embedColor || client.config.defaultColor, type);
    }
   } catch (err) {
-   client.errorMessages.generateErrorMessage(interaction, err);
+   client.errorMessages.internalError(interaction, err);
   }
  },
 };
