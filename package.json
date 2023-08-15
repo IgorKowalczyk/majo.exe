@@ -13,12 +13,10 @@
     "format:check": "turbo run format:check --color",
     "prisma:generate": "dotenv -- turbo run prisma:generate --color --filter=database",
     "prisma:migrate": "dotenv -- turbo run prisma:migrate --color --filter=database",
-    "prisma:format": "dotenv -- turbo run prisma:format --color --filter=database",
-    "pm2": "turbo run pm2 --color"
+    "prisma:format": "dotenv -- turbo run prisma:format --color --filter=database"
   },
   "dependencies": {
     "dotenv-cli": "7.2.1",
-    "pm2": "5.3.0",
     "turbo": "1.10.12"
   },
   "devDependencies": {

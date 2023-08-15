@@ -22,16 +22,6 @@
 8. Fill `/config/index.js` and `/config/emojis.js` with your values
 9. Run `pnpm run dev` or `pnpm run deploy` to start bot
 
-### 📦 Hosting with `PM2`
-
-1. Install `pm2` globally: `pnpm install pm2 -g`
-2. Clone this repository and run `pnpm i`
-3. Follow [Database Setup](/packages/database/README.md) tutorial
-4. Follow [Bot Setup](#-self-hosting) tutorial
-5. Run `pnpm pm2` or `pm2 start ecosystem.config.cjs` to start bot
-6. Run `pm2 save` to save current processes
-7. Run `pm2 startup` to generate startup script
-
 ##### Example `.env` file
 
 Remember - the file is super secret, better to not share it!
