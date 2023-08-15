@@ -17,11 +17,11 @@ find . -type f -name 'pnpm-lock.yaml' -exec rm -rf {} +
 find . -type f -name 'pnpm-workspace.yaml' -exec rm -rf {} +
 
 # Install all dependencies
-/usr/local/bin/npm install;
+/usr/local/bin/npm install
 
 # Generate prisma client
 cd "$HOME/packages/database"
-/usr/local/bin/npm run prisma:generate;
+/usr/local/bin/npx prisma generate
 
 # Exit
 cd "$HOME"
