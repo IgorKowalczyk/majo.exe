@@ -7,6 +7,9 @@ cd "$HOME"
 # Find and replace "workspace:*" with "6.0.0" in package.json files (pnpm does not support workspace:*)
 find . -type f -name 'package.json' -not -path './node_modules/*' -exec sed -i 's/"workspace:\*"/"6.0.0"/g' {} +
 
+# Find and remove packageManager: "pnpm@ANYTHING" from package.json
+find . -type f -name 'package.json' -not -path './node_modules/*' -exec sed -i 's/"packageManager": "pnpm@[^"]*",//g' {} +
+
 # Remove all node_modules folders (clean up)
 find . -type d -name 'node_modules' -exec rm -rf {} +
 
