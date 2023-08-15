@@ -9,6 +9,8 @@ export default {
  name: "member",
  description: "👋 Modify user on this server",
  type: ApplicationCommandType.ChatInput,
+ cooldown: 5000,
+ dm_permission: false,
  usage: "/member <subcommand>",
  options: [
   {
