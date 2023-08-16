@@ -19,32 +19,36 @@ export default {
   },
  ],
  run: async (client, interaction, guildSettings) => {
-  const count = interaction.options.getInteger("page") || 1;
-  const logs = await fetchLogs(interaction.guildId, count);
+  try {
+   const count = interaction.options.getInteger("page") || 1;
+   const logs = await fetchLogs(interaction.guildId, count);
 
-  if (!logs || logs.length < 1) {
-   return client.errorMessages.createSlashError(interaction, "❌ There are no logs found for this query or server");
-  }
+   if (!logs || logs.length < 1) {
+    return client.errorMessages.createSlashError(interaction, "❌ There are no logs found for this query or server");
+   }
 
-  const logsArray = logs.slice(0, 20).map((log) => {
-   const emoji = client.config.emojis.logs.find((l) => l.type === log.type)?.emoji || "❔";
-   return `**${emoji} <@${log.authorId}>**: ${log.content}`;
-  });
-
-  const embed = new EmbedBuilder()
-   .setColor(guildSettings?.embedColor || client.config.defaultColor)
-   .setTimestamp()
-   .setTitle(`📝 Logs (${count}/${Math.ceil((await countLogs(interaction.guildId)) / 20)})`)
-   .setDescription(logsArray.join("\n"))
-   .setFooter({
-    text: `Requested by ${interaction.member.user.username}`,
-    iconURL: interaction.member.user.displayAvatarURL({
-     dynamic: true,
-     format: "png",
-     size: 2048,
-    }),
+   const logsArray = logs.slice(0, 20).map((log) => {
+    const emoji = client.config.emojis.logs.find((l) => l.type === log.type)?.emoji || "❔";
+    return `**${emoji} <@${log.authorId}>**: ${log.content}`;
    });
 
-  return interaction.followUp({ ephemeral: false, embeds: [embed] });
+   const embed = new EmbedBuilder()
+    .setColor(guildSettings?.embedColor || client.config.defaultColor)
+    .setTimestamp()
+    .setTitle(`📝 Logs (${count}/${Math.ceil((await countLogs(interaction.guildId)) / 20)})`)
+    .setDescription(logsArray.join("\n"))
+    .setFooter({
+     text: `Requested by ${interaction.member.user.username}`,
+     iconURL: interaction.member.user.displayAvatarURL({
+      dynamic: true,
+      format: "png",
+      size: 2048,
+     }),
+    });
+
+   return interaction.followUp({ ephemeral: false, embeds: [embed] });
+  } catch (err) {
+   client.errorMessages.internalError(interaction, err);
+  }
  },
 };

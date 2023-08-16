@@ -7,6 +7,7 @@ module.exports = {
  },
  rules: {
   "turbo/no-undeclared-env-vars": "warn",
+  "no-lonely-if": "error",
  },
  env: {
   node: true,

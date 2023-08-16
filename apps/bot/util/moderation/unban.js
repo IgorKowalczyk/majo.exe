@@ -33,7 +33,7 @@ export async function unBanMember(client, interaction, color) {
     }),
    });
 
-  interaction.followUp({ embeds: [embed] });
+  return interaction.followUp({ embeds: [embed] });
  } catch (err) {
   console.log(err);
   client.errorMessages.internalError(interaction, err);
