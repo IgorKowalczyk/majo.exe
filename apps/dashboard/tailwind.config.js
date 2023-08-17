@@ -1,10 +1,9 @@
 const svgToDataUri = require("mini-svg-data-uri");
 const plugin = require("tailwindcss/plugin");
 
-module.exports = {
- darkMode: "class",
- content: ["./pages/**/*.{js,ts,jsx,tsx}", "./app/**/*.{js,ts,jsx,tsx}", "./components/**/*.{js,ts,jsx,tsx}", "./config.js"],
- theme: {
+export const darkMode = "class";
+export const content = ["./pages/**/*.{js,ts,jsx,tsx}", "./app/**/*.{js,ts,jsx,tsx}", "./components/**/*.{js,ts,jsx,tsx}", "./config.js"];
+export const theme = {
   transparent: "transparent",
   current: "currentColor",
   extend: {
@@ -50,8 +49,8 @@ module.exports = {
     },
    },
   },
- },
- plugins: [
+ };
+export const plugins = [
   plugin(({ matchUtilities }) => {
    matchUtilities({
     "bg-grid": (value) => ({
@@ -65,5 +64,5 @@ module.exports = {
   require("@headlessui/tailwindcss"),
   require("@igorkowalczyk/is-browser"),
   /* eslint-enable global-require */
- ],
-};
+ ];
+

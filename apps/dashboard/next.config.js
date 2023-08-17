@@ -79,10 +79,10 @@ const nextConfig = {
  },
 };
 
-module.exports = () => {
+export default () => {
  const plugins = [withBundleAnalyzer];
  const config = plugins.reduce((acc, next) => next(acc), {
   ...nextConfig,
  });
  return config;
-};
+}

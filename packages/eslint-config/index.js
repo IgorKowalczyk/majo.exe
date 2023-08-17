@@ -1,22 +1,20 @@
-module.exports = {
- extends: ["@igorkowalczyk/eslint-config", "turbo"],
- settings: {
+export const extends = ["@igorkowalczyk/eslint-config", "turbo"];
+export const settings = {
   next: {
    rootDir: ["apps/*/", "packages/*/"],
   },
- },
- rules: {
+ };
+export const rules = {
   "turbo/no-undeclared-env-vars": "warn",
   "no-lonely-if": "error",
- },
- env: {
+ };
+export const env = {
   node: true,
   es2020: true,
   browser: true,
   es6: true,
- },
- parserOptions: {
+ };
+export const parserOptions = {
   sourceType: "module",
   ecmaVersion: "latest",
- },
-};
+ };
