@@ -14,7 +14,7 @@
     "lint:fix": "next lint --fix"
   },
   "dependencies": {
-    "@headlessui/react": "1.7.16",
+    "@headlessui/react": "1.7.17",
     "@headlessui/tailwindcss": "0.2.0",
     "@heroicons/react": "2.0.18",
     "@igorkowalczyk/is-browser": "5.0.1",
