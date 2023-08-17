@@ -26,7 +26,7 @@ function calculateProgress(currentXp, requiredXp) {
  * @returns {Buffer} The buffer of the image
  **/
 export async function createXPCard(user, xp, color) {
- const avatar = await loadImage(user.displayAvatarURL({ format: "png", size: 128 }));
+ const avatar = await loadImage(user.avatar);
  const canvas = createCanvas(934, 282);
  const ctx = canvas.getContext("2d");
 

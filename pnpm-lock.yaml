@@ -36,9 +36,6 @@ importers:
       '@majoexe/util':
         specifier: workspace:*
         version: link:../../packages/utils
-      '@napi-rs/canvas':
-        specifier: 0.1.43
-        version: 0.1.43
       chalk:
         specifier: 5.3.0
         version: 5.3.0
@@ -319,6 +316,9 @@ importers:
       '@majoexe/database':
         specifier: workspace:*
         version: link:../database
+      '@napi-rs/canvas':
+        specifier: 0.1.43
+        version: 0.1.43
       chalk:
         specifier: 5.3.0
         version: 5.3.0

@@ -1,6 +1,5 @@
-import { checkXP } from "@majoexe/util/database";
+import { checkXP, createXPCard } from "@majoexe/util/database";
 import { ApplicationCommandType, ApplicationCommandOptionType, AttachmentBuilder, EmbedBuilder, ButtonBuilder, ActionRowBuilder, ButtonStyle } from "discord.js";
-import { createXPCard } from "../../util/images/xpCard.js";
 
 export default {
  name: "xp",
@@ -26,6 +25,12 @@ export default {
    const xp = await checkXP(user.id, interaction.guild.id);
    const level = Math.floor(0.1 * Math.sqrt(xp || 0));
    const xpNeeded = Math.ceil(Math.pow((level + 1) / 0.1, 2));
+
+   user.avatar = user.displayAvatarURL({
+    dynamic: false,
+    format: "png",
+    size: 128,
+   });
 
    const rank = await createXPCard(user, { xp, level, xpNeeded }, guildSettings?.embedColor || client.config.defaultColor);
 
