@@ -1,5 +1,6 @@
-import { checkXP, createXPCard } from "@majoexe/util/database";
+import { checkXP } from "@majoexe/util/database";
 import { ApplicationCommandType, ApplicationCommandOptionType, AttachmentBuilder, EmbedBuilder, ButtonBuilder, ActionRowBuilder, ButtonStyle } from "discord.js";
+import { createXPCard } from "../../util/images/createXPCard.js";
 
 export default {
  name: "xp",

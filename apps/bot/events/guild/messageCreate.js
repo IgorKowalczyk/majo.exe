@@ -1,5 +1,5 @@
 import prismaClient from "@majoexe/database";
-import { createXPCard } from "@majoexe/util/database";
+import { createXPCard } from "../../util/images/createXPCard.js";
 import { EmbedBuilder, AttachmentBuilder } from "discord.js";
 
 const XPTimeout = new Map();
