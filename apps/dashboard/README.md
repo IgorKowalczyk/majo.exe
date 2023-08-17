@@ -67,7 +67,6 @@ NEXT_PUBLIC_URL=YOUR_WEBSITE_URL
 - `512MB/1GB` of hard drive space
 
 > [!NOTE]
->
 > 1: Debian based distros are recommended, Dashboard can also run on Windows and MacOS but it's not recommended.
 
 ## 📝 Contributors
