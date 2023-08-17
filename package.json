@@ -16,7 +16,7 @@
     "prisma:format": "dotenv -- turbo run prisma:format --color --filter=database"
   },
   "dependencies": {
-    "dotenv-cli": "7.2.1",
+    "dotenv-cli": "7.3.0",
     "turbo": "1.10.12"
   },
   "devDependencies": {
