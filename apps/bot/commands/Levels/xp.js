@@ -1,6 +1,6 @@
 import { checkXP } from "@majoexe/util/database";
-import { percentageBar } from "@majoexe/util/functions";
-import { ApplicationCommandType, ApplicationCommandOptionType, EmbedBuilder, ButtonBuilder, ActionRowBuilder, ButtonStyle, codeBlock } from "discord.js";
+import { ApplicationCommandType, ApplicationCommandOptionType, AttachmentBuilder, EmbedBuilder, ButtonBuilder, ActionRowBuilder, ButtonStyle } from "discord.js";
+import { createXPCard } from "../../util/images/xpCard.js";
 
 export default {
  name: "xp",
@@ -23,21 +23,18 @@ export default {
    if (user.bot) {
     return client.errorMessages.createSlashError(interaction, "❌ You can't check the XP of a bot.\nNote: Bots don't gain XP.");
    }
-
    const xp = await checkXP(user.id, interaction.guild.id);
    const level = Math.floor(0.1 * Math.sqrt(xp || 0));
    const xpNeeded = Math.ceil(Math.pow((level + 1) / 0.1, 2));
-   const bar = percentageBar(xpNeeded, xp, 20);
+
+   const rank = await createXPCard(user, { xp, level, xpNeeded }, guildSettings?.embedColor || client.config.defaultColor);
+
+   const attachment = new AttachmentBuilder(rank, {
+    name: "rank.png",
+   });
+
    const embed = new EmbedBuilder()
-    .setTitle(`📈 XP for ${user}`)
-    .setDescription(
-     `
-     **XP:** \`${xp}\`
-     **Level:** \`${level}\`
-     ${codeBlock(bar)}
-     (\`${xpNeeded - xp}\` XP until next level 🔥)
-     `
-    )
+    .setTitle(`📈 XP for ${user.globalName || user.username}`)
     .setFooter({
      text: `Requested by ${interaction.member.user.username}`,
      iconURL: interaction.member.user.displayAvatarURL({
@@ -45,8 +42,8 @@ export default {
       format: "png",
      }),
     })
-    .setThumbnail(user.displayAvatarURL({ dynamic: true, format: "png", size: 2048 }))
     .setColor(guildSettings?.embedColor || client.config.defaultColor)
+    .setImage("attachment://rank.png")
     .setTimestamp();
 
    if (client.config.dashboard.enabled && client.config.dashboard.link) {
@@ -55,9 +52,10 @@ export default {
     const action = new ActionRowBuilder().addComponents(contactButton);
     return interaction.followUp({ ephemeral: false, embeds: [embed], components: [action] });
    } else {
-    return interaction.followUp({ ephemeral: false, embeds: [embed] });
+    return interaction.followUp({ ephemeral: false, embeds: [embed], files: [attachment] });
    }
   } catch (err) {
+   console.log(err);
    client.errorMessages.internalError(interaction, err);
   }
  },

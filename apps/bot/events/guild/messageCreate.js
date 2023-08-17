@@ -1,7 +1,8 @@
+import { createXPCard } from "../../util/images/xpCard.js";
 import prismaClient from "@majoexe/database";
 //import { fetchProfanity } from "@majoexe/util/database";
 //import Filter from "bad-words";
-import { EmbedBuilder } from "discord.js";
+import { EmbedBuilder, AttachmentBuilder } from "discord.js";
 // import { EmbedBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle } from "discord.js";
 
 const XPTimeout = new Map();
@@ -169,20 +170,20 @@ export async function messageCreate(client, message) {
  const nextLevel = Math.floor(0.1 * Math.sqrt(xpAfter));
 
  if (level < nextLevel) {
+  const rank = await createXPCard(message.author, { xp: xpAfter, level: nextLevel, xpNeeded: Math.ceil(Math.pow((nextLevel + 1) / 0.1, 2)) }, "#10B981");
+
+  const attachment = new AttachmentBuilder(rank, {
+   name: "rank.png",
+  });
+
   const embed = new EmbedBuilder()
    .setTitle("🎉 Level up!")
    .setDescription(`Congratulations ${message.author}! You have leveled up to level **${nextLevel}**!`)
    .setColor("#10B981")
    .setTimestamp()
-   .setThumbnail(
-    message.author.displayAvatarURL({
-     dynamic: true,
-     format: "png",
-     size: 2048,
-    })
-   );
+   .setImage("attachment://rank.png")
 
-  await message.channel.send({ embeds: [embed] });
+  await message.channel.send({ embeds: [embed], files: [attachment] });
  }
 
  await prismaClient.guildXp.updateMany({

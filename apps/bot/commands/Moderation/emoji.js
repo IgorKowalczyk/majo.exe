@@ -1,5 +1,5 @@
 /* eslint-disable complexity */
-import { ApplicationCommandType, ApplicationCommandOptionType, EmbedBuilder, PermissionsBitField } from "discord.js";
+import { ApplicationCommandType, ApplicationCommandOptionType, EmbedBuilder, PermissionsBitField, codeBlock } from "discord.js";
 import isURL from "validator/lib/isURL.js";
 
 export default {
@@ -125,12 +125,12 @@ export default {
       .setFields([
        {
         name: `${client.config.emojis.edit} Emoji name`,
-        value: `\`\`\`${emoji.name}\`\`\``,
+        value: codeBlock(emoji.name),
         inline: true,
        },
        {
         name: `${client.config.emojis.screw_that} Emoji ID`,
-        value: `\`\`\`${emoji.id}\`\`\``,
+        value: codeBlock(emoji.id),
         inline: true,
        },
        {
@@ -194,12 +194,12 @@ export default {
      .setFields([
       {
        name: `${client.config.emojis.edit} Emoji name`,
-       value: `\`\`\`${emojiToDelete.name}\`\`\``,
+       value: codeBlock(emojiToDelete.name),
        inline: true,
       },
       {
        name: `${client.config.emojis.screw_that} Emoji ID`,
-       value: `\`\`\`${emojiToDelete.id}\`\`\``,
+       value: codeBlock(emojiToDelete.id),
        inline: true,
       },
       {
@@ -245,17 +245,17 @@ export default {
      .setFields([
       {
        name: `${client.config.emojis.edit} Emoji name`,
-       value: `\`\`\`${emojiToGet.name}\`\`\``,
+       value: codeBlock(emojiToGet.name),
        inline: true,
       },
       {
        name: `${client.config.emojis.screw_that} Emoji ID`,
-       value: `\`\`\`${emojiToGet.id}\`\`\``,
+       value: codeBlock(emojiToGet.id),
        inline: true,
       },
       {
        name: `${client.config.emojis.question} Animated`,
-       value: `\`\`\`${emojiToGet.animated ? "Yes" : "No"}\`\`\``,
+       value: codeBlock(emojiToGet.animated ? "Yes" : "No"),
        inline: true,
       },
       {
@@ -297,17 +297,17 @@ export default {
      .setFields([
       {
        name: "Total Emojis",
-       value: `\`\`\`${interaction.guild.emojis.cache.size}\`\`\``,
+       value: codeBlock(interaction.guild.emojis.cache.size),
        inline: true,
       },
       {
        name: "Animated Emojis",
-       value: `\`\`\`${interaction.guild.emojis.cache.filter((emoji) => emoji.animated).size}\`\`\``,
+       value: codeBlock(interaction.guild.emojis.cache.filter((emoji) => emoji.animated).size),
        inline: true,
       },
       {
        name: "Static Emojis",
-       value: `\`\`\`${interaction.guild.emojis.cache.filter((emoji) => !emoji.animated).size}\`\`\``,
+       value: codeBlock(interaction.guild.emojis.cache.filter((emoji) => !emoji.animated).size),
        inline: true,
       },
      ])
