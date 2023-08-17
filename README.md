@@ -69,7 +69,8 @@ However, if you want to host Majo.exe yourself see links below.
 | REDIS_URL       | Redis URL²                                       | ❌             | ❌                   |
 
 > [!NOTE]
-> 1: `NEXT_PUBLIC_URL` is required only if you want to also include the dashboard. 2. `REDIS_URL` enables caching. If you don't want to use Redis caching, leave this variable empty. Majo.exe will use Memory caching instead.
+> 1: `NEXT_PUBLIC_URL` is required only if you want to also include the dashboard.
+> 2: `REDIS_URL` enables caching. If you don't want to use Redis caching, leave this variable empty. Majo.exe will use Memory caching instead.
 
 ## 📝 Contributors
 
