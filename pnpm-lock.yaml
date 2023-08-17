@@ -39,9 +39,6 @@ importers:
       '@napi-rs/canvas':
         specifier: 0.1.43
         version: 0.1.43
-      bad-words:
-        specifier: 3.0.4
-        version: 3.0.4
       chalk:
         specifier: 5.3.0
         version: 5.3.0
@@ -3368,17 +3365,6 @@ packages:
       '@babel/plugin-transform-spread': 7.22.5(@babel/core@7.22.9)
       '@babel/plugin-transform-template-literals': 7.22.5(@babel/core@7.22.9)
       babel-plugin-syntax-trailing-function-commas: 7.0.0-beta.0
-    dev: false
-
-  /bad-words@3.0.4:
-    resolution: {integrity: sha512-v/Q9uRPH4+yzDVLL4vR1+S9KoFgOEUl5s4axd6NIAq8SV2mradgi4E8lma/Y0cw1ltVdvyegCQQKffCPRCp8fg==}
-    engines: {node: '>=8.0.0'}
-    dependencies:
-      badwords-list: 1.0.0
-    dev: false
-
-  /badwords-list@1.0.0:
-    resolution: {integrity: sha512-oWhaSG67e+HQj3OGHQt2ucP+vAPm1wTbdp2aDHeuh4xlGXBdWwzZ//pfu6swf5gZ8iX0b7JgmSo8BhgybbqszA==}
     dev: false
 
   /balanced-match@1.0.2:
