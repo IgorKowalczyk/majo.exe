@@ -4,18 +4,16 @@ const config = {};
 
 config.presence = {
  status: PresenceUpdateStatus.Online, // PresenceUpdateStatus. Can be: "Online", "Idle", "DoNotDisturb", "Invisible" or "Offline" (Invisible and Offline are the same)
- activities: [
-  {
-   name: "?", // string. Activity name [not required when using custom type (4) // It is still required by Discord.js, waiting for a fix]
-   state: "🔥 Type /help to get started!", // string. Activity state [required when using custom type (4)]
-   type: ActivityType.Custom, // ActivityType. Activity type. Can be: 0 (PLAYING), 1 (STREAMING), 2 (LISTENING), 3 (WATCHING), 4 (CUSTOM)
-  },
-  /* Example: Using type 3 (WATCHING) with custom name
-    {
-     name: "the world burn", // string
-     type: ActivityType.Watching, // ActivityType
-    */
- ],
+ activity: {
+  // name: "?", // string. Activity name [not required when using custom type (4)
+  state: "🔥 Type /help to get started!", // string. Activity state [required when using custom type (4)]
+  type: ActivityType.Custom, // ActivityType. Activity type. Can be: "Playing", "Streaming", "Listening", "Watching", "Custom"
+
+  /* Example: Using type 3 (Watching) with custom name
+   name: "the world burn", // Note: Name is required when not using custom type (4)!
+   type: ActivityType.Watching,
+  */
+ },
 };
 
 config.emojis = {
