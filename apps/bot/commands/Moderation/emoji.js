@@ -23,8 +23,8 @@ export default {
      type: ApplicationCommandOptionType.String,
     },
     {
-     name: "emoji_url",
-     description: "The URL of the emoji",
+     name: "emoji",
+     description: "The URL, ID or custom emoji to create",
      required: true,
      type: ApplicationCommandOptionType.String,
     },
@@ -59,26 +59,6 @@ export default {
    ],
   },
   {
-   name: "steal",
-   description: "🎨 Steal an emoji from another server",
-   type: ApplicationCommandOptionType.Subcommand,
-   usage: "/emoji steal <emoji name> <emoji>",
-   options: [
-    {
-     name: "new_name",
-     description: "The name of the emoji",
-     required: true,
-     type: ApplicationCommandOptionType.String,
-    },
-    {
-     name: "emoji",
-     description: "The emoji to steal",
-     required: true,
-     type: ApplicationCommandOptionType.String,
-    },
-   ],
-  },
-  {
    name: "list",
    description: "🎨 List all emojis on this server",
    type: ApplicationCommandOptionType.Subcommand,
@@ -98,7 +78,11 @@ export default {
     }
 
     const emojiName = interaction.options.getString("emoji_name");
-    const emojiURL = interaction.options.getString("emoji_url");
+    const emojiURL = interaction.options.getString("emoji");
+
+    if (interaction.guild.emojis.cache.find((semoji) => semoji.name.toLowerCase() === emojiName.toLowerCase())) {
+     return client.errorMessages.createSlashError(interaction, "❌ An emoji with that name already exists!");
+    }
 
     if (emojiName.length > 32) {
      return client.errorMessages.createSlashError(interaction, "❌ Emoji name must be less than 32 characters!");
@@ -108,13 +92,23 @@ export default {
      return client.errorMessages.createSlashError(interaction, "❌ Emoji name must be more than 2 characters!");
     }
 
-    if (!isURL(emojiURL)) {
-     return client.errorMessages.createSlashError(interaction, "❌ Invalid emoji URL!");
+    let emojiToCreate;
+
+    if (isURL(emojiURL)) {
+     emojiToCreate = emojiURL;
+    } else if ((emojiURL.startsWith("<:") || emojiURL.startsWith("<a:")) && emojiURL.endsWith(">")) {
+     const animated = emojiURL.startsWith("<a:");
+     const emojiId = emojiURL.split(":")[2].replace(">", "");
+     emojiToCreate = `https://cdn.discordapp.com/emojis/${emojiId}.${animated ? "gif" : "png"}`;
+    } else if (!isNaN(emojiURL)) {
+     emojiToCreate = `https://cdn.discordapp.com/emojis/${emojiURL}.png`;
+    } else {
+     return client.errorMessages.createSlashError(interaction, "❌ Invalid emoji URL/ID!");
     }
 
     try {
      const emoji = await interaction.guild.emojis.create({
-      attachment: emojiURL,
+      attachment: emojiToCreate,
       name: emojiName,
      });
 
@@ -287,8 +281,6 @@ export default {
    } catch (err) {
     client.errorMessages.internalError(interaction, err);
    }
-  } else if (subcommand === "steal") {
-   return client.errorMessages.createSlashError(interaction, "❌ This command is not available yet!");
   } else if (subcommand === "list") {
    try {
     const embed = new EmbedBuilder()

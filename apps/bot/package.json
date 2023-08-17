@@ -13,7 +13,7 @@
     "lint:fix": "eslint . --ext .js,.ts --fix"
   },
   "dependencies": {
-    "@discordjs/rest": "2.0.0",
+    "@discordjs/rest": "2.0.1",
     "@majoexe/config": "workspace:*",
     "@majoexe/database": "workspace:*",
     "@majoexe/util": "workspace:*",
@@ -21,7 +21,7 @@
     "chalk": "5.3.0",
     "coloras": "2.0.2",
     "discord-giveaways": "6.0.1",
-    "discord.js": "14.12.1",
+    "discord.js": "14.13.0",
     "dotenv": "16.3.1",
     "figlet": "1.6.0",
     "flip-text": "1.2.0",
