@@ -98,7 +98,7 @@ export default {
      emojiToCreate = emojiURL;
     } else if ((emojiURL.startsWith("<:") || emojiURL.startsWith("<a:")) && emojiURL.endsWith(">")) {
      const animated = emojiURL.startsWith("<a:");
-     const emojiId = emojiURL.split(":")[2].replace(">", "");
+     const emojiId = emojiURL.split(":")[2].replaceAll(">", "");
      emojiToCreate = `https://cdn.discordapp.com/emojis/${emojiId}.${animated ? "gif" : "png"}`;
     } else if (!isNaN(emojiURL)) {
      emojiToCreate = `https://cdn.discordapp.com/emojis/${emojiURL}.png`;
