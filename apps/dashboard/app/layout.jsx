@@ -16,6 +16,7 @@ import "styles/tippy.css";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
+ metadataBase: new URL(meta.url),
  title: {
   default: meta.title,
   template: `%s | ${meta.title}`,

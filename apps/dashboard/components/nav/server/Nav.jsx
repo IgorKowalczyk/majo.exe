@@ -11,6 +11,7 @@ import { SideMenuControl } from "../client/SideMenuControl";
 
 export async function Nav() {
  const session = await getSession();
+
  return (
   <nav className="fixed z-[9999] flex w-full items-center border-b border-b-neutral-800 bg-background-navbar/70 py-4 text-left shadow-lg backdrop-blur-[9px]">
    <SideMenuControl />

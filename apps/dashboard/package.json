@@ -33,7 +33,7 @@
     "js-file-download": "0.4.12",
     "json-2-csv": "4.1.0",
     "mini-svg-data-uri": "1.4.4",
-    "next": "13.4.12",
+    "next": "13.4.17",
     "next-auth": "4.23.1",
     "next-nprogress-bar": "2.1.2",
     "next-themes": "0.2.1",
@@ -58,10 +58,10 @@
   },
   "devDependencies": {
     "@majoexe/eslint-config": "workspace:*",
-    "@next/bundle-analyzer": "13.4.12",
+    "@next/bundle-analyzer": "13.4.17",
     "@prisma/nextjs-monorepo-workaround-plugin": "5.1.1",
     "eslint": "8.47.0",
-    "eslint-config-next": "13.4.12",
+    "eslint-config-next": "13.4.17",
     "eslint-plugin-import": "2.28.0",
     "prettier": "3.0.2",
     "prettier-plugin-tailwindcss": "0.5.3"
