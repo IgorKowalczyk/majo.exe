@@ -53,7 +53,7 @@ NEXT_PUBLIC_URL=YOUR_WEBSITE_URL
 # ... Database credentials
 ```
 
-> **Warning**:
+> [!WARNING]
 > This file should be in **root directory** of the project.
 
 ---
@@ -62,12 +62,12 @@ NEXT_PUBLIC_URL=YOUR_WEBSITE_URL
 
 - `PostgreSQL 13x` or higher
 - `Node.js 16x` or higher
-- `(Any)` Linux x64\*
+- `(Any)` Linux x64¹
 - `256MB` of RAM
 - `512MB/1GB` of hard drive space
 
-> **Note**:
-> \*Debian based distros are recommended, Dashboard can also run on Windows and MacOS but it's not recommended.
+> [!NOTE]
+> 1: Debian based distros are recommended, Dashboard can also run on Windows and MacOS but it's not recommended.
 
 ## 📝 Contributors
 

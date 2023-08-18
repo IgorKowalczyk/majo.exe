@@ -39,19 +39,19 @@ However, if you want to host Majo.exe yourself see links below.
 - **[🔩 Dashboard setup tutorial](/apps/dashboard/README.md)**
 - **[📝 Database setup tutorial](/packages/database/README.md)**
 
-> **Note**:
+> [!WARNING]
 > There is one global `.env` file for all projects. **Do not create `.env` file in `apps/bot`, `packages/database` or `apps/dashboard` folders!** **This can cause problems and potential security issues.**
 
 ## 🗜️ Requirements
 
 - `PostgreSQL 13x` or higher
 - `Node.js 18x` or higher
-- `(Any)` Linux x64\*
+- `(Any)` Linux x64¹
 - `256MB` of RAM
 - `512MB/1GB` of hard drive space
 
-> **Note**:
-> \*Debian based distros are recommended, bot can also run on Windows and MacOS but it's not recommended.
+> [!NOTE]
+> 1: Debian based distros are recommended, bot can also run on Windows and MacOS but it's not recommended.
 
 ## Global `.env` file
 
@@ -68,10 +68,9 @@ However, if you want to host Majo.exe yourself see links below.
 | DIRECT_URL      | Non-pooling database URL                         | ❌             | ❌                   |
 | REDIS_URL       | Redis URL²                                       | ❌             | ❌                   |
 
-> **Note**:
-
-1. `NEXT_PUBLIC_URL` is required only if you want to also include the dashboard.
-2. `REDIS_URL` enables caching. If you don't want to use Redis caching, leave this variable empty. Majo.exe will use Memory caching instead.
+> [!NOTE]
+> 1: `NEXT_PUBLIC_URL` is required only if you want to also include the dashboard.
+> 2: `REDIS_URL` enables caching. If you don't want to use Redis caching, leave this variable empty. Majo.exe will use Memory caching instead.
 
 ## 📝 Contributors
 

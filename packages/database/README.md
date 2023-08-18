@@ -6,6 +6,9 @@
 - `/prisma/migrations` contains database migrations. They are used to update database.
 - `/src/client.js` contains database client. It's used by Majo.exe to interact with database. It also includes edge client for Prisma Data Proxy.
 
+> [!IMPORTANT]
+> Never share your `.env` file with anyone. It contains sensitive data like database credentials, tokens and secrets. Leakage of this data can cause serious security issues.
+
 ## 🗜️ PostgreSQL
 
 ### 🐘 Neon.tech
@@ -32,7 +35,7 @@
 7. Run `pnpm prisma:migrate` to generate & apply initial migration.
 8. Run `pnpm prisma:generate` to generate database client.
 
-> **Note**:
+> [!NOTE]
 > Majo.exe can also work with other databases like MongoDB and MySQL. You can find more information about it in [Prisma documentation](https://www.prisma.io/docs/concepts/database-connectors). If you want to use other database you have to change `DATABASE_URL` in `.env` file and change schema in `/prisma/schema.prisma` file.
 
 ---
@@ -57,7 +60,7 @@
    - `REDIS_URL`- `ioredis` connection string (`redis://localhost:6379`)
 6. That's it! Majo.exe will automatically cache data in Redis.
 
-> **Note**:
+> [!NOTE]
 > If you do not set `REDIS_URL` in `.env` file Majo.exe will use memory cache instead of Redis. Memory cache is not persistent and will be cleared after restarting Majo.exe. Memory cache will consume more resources than Redis cache.
 
 ---
@@ -73,7 +76,7 @@ DIRECT_URL=DIRECT_DATABASE_URL
 REDIS_URL=REDIS_URL
 ```
 
-> **Warning**:
+> [!WARNING]
 > This file should be in **root directory** of the project.
 
 ---

@@ -34,7 +34,7 @@ CLIENT_SECRET=DISCORD_BOT_SECRET
 # ... Database credentials
 ```
 
-> **Warning**:
+> [!WARNING]
 > This file should be in **root directory** of the project.
 
 ---
@@ -43,12 +43,12 @@ CLIENT_SECRET=DISCORD_BOT_SECRET
 
 - `PostgreSQL 13x` or higher
 - `Node.js 16x` or higher
-- `(Any)` Linux x64\*
+- `(Any)` Linux x64¹
 - `256MB` of RAM
 - `512MB/1GB` of hard drive space
 
-> **Note**:
-> \*Debian based distros are recommended, bot can also run on Windows and MacOS but it's not recommended.
+> [!NOTE]
+> 1: Debian based distros are recommended, bot can also run on Windows and MacOS but it's not recommended.
 
 ## 🔓 Tokens tutorials
 
