@@ -52,9 +52,7 @@ export default {
      .setFooter({
       text: `Requested by ${interaction.member.user.username}`,
       iconURL: interaction.member.user.displayAvatarURL({
-       dynamic: true,
-       format: "png",
-       size: 2048,
+       size: 256,
       }),
      });
     const fields = [];
@@ -114,9 +112,7 @@ export default {
      .setFooter({
       text: `Requested by ${interaction.member.user.username}`,
       iconURL: interaction.member.user.displayAvatarURL({
-       dynamic: true,
-       format: "png",
-       size: 2048,
+       size: 256,
       }),
      });
 

@@ -40,18 +40,10 @@ export default {
      .setDescription(`>>> **You flipped a ${coin == 1 ? "heads" : "tails"}!**`)
      .setTimestamp()
      .setColor(guildSettings?.embedColor || client.config.defaultColor)
-     .setThumbnail(
-      interaction.member.user.displayAvatarURL({
-       dynamic: true,
-       format: "png",
-      })
-     )
+     .setThumbnail(interaction.member.user.displayAvatarURL({ size: 256 }))
      .setFooter({
       text: `Requested by ${interaction.member.user.username}`,
-      iconURL: interaction.member.user.displayAvatarURL({
-       dynamic: true,
-       format: "png",
-      }),
+      iconURL: interaction.member.user.displayAvatarURL({ size: 256 }),
      });
     return interaction.followUp({ embeds: [embed] });
    } else if (interaction.options.getSubcommand() == "text") {
@@ -61,18 +53,10 @@ export default {
      .setDescription(`>>> **${flipText(text)}**`)
      .setTimestamp()
      .setColor(guildSettings?.embedColor || client.config.defaultColor)
-     .setThumbnail(
-      interaction.member.user.displayAvatarURL({
-       dynamic: true,
-       format: "png",
-      })
-     )
+     .setThumbnail(interaction.member.user.displayAvatarURL({ size: 256 }))
      .setFooter({
       text: `Requested by ${interaction.member.user.username}`,
-      iconURL: interaction.member.user.displayAvatarURL({
-       dynamic: true,
-       format: "png",
-      }),
+      iconURL: interaction.member.user.displayAvatarURL({ size: 256 }),
      });
     return interaction.followUp({ embeds: [embed] });
    }

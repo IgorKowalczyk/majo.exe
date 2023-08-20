@@ -29,15 +29,12 @@ export async function getUserAvatar(client, interaction, color) {
     avatar = `https://cdn.discordapp.com/guilds/${interaction.guild.id}/users/${user.id}/avatars/${data.avatar}${ext}`;
    } else {
     avatar = user.user.displayAvatarURL({
-     dynamic: true,
-     format: "png",
      size: 4096,
     });
    }
   } else {
    avatar = user.user.displayAvatarURL({
-    dynamic: true,
-    format: "gif",
+    extension: "gif",
     size: 4096,
    });
   }
@@ -50,9 +47,7 @@ export async function getUserAvatar(client, interaction, color) {
    .setFooter({
     text: `Requested by ${interaction.member.user.username}`,
     iconURL: interaction.member.user.displayAvatarURL({
-     dynamic: true,
-     format: "png",
-     size: 2048,
+     size: 256,
     }),
    });
 
@@ -126,9 +121,7 @@ export async function getUserBanner(client, interaction, color) {
    .setFooter({
     text: `Requested by ${interaction.member.user.username}`,
     iconURL: interaction.user.user.displayAvatarURL({
-     dynamic: true,
-     format: "png",
-     size: 2048,
+     size: 256,
     }),
    });
 

@@ -29,7 +29,7 @@ export default {
 
    user.avatar = user.displayAvatarURL({
     dynamic: false,
-    format: "png",
+
     size: 128,
    });
 
@@ -43,10 +43,7 @@ export default {
     .setTitle(`📈 XP for ${user.globalName || user.username}`)
     .setFooter({
      text: `Requested by ${interaction.member.user.username}`,
-     iconURL: interaction.member.user.displayAvatarURL({
-      dynamic: true,
-      format: "png",
-     }),
+     iconURL: interaction.member.user.displayAvatarURL({ size: 256 }),
     })
     .setColor(guildSettings?.embedColor || client.config.defaultColor)
     .setImage("attachment://rank.png")

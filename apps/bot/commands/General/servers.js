@@ -17,14 +17,12 @@ export default {
     .setFooter({
      text: `Requested by ${interaction.member.user.username}`,
      iconURL: interaction.member.user.displayAvatarURL({
-      dynamic: true,
-      format: "png",
-      size: 2048,
+      size: 256,
      }),
     })
     .setColor(guildSettings?.embedColor || client.config.defaultColor)
     .setTimestamp()
-    .setThumbnail(client.user.displayAvatarURL({ dynamic: true, format: "png", size: 2048 }));
+    .setThumbnail(client.user.displayAvatarURL({ size: 256 }));
 
    const inviteButton = new ButtonBuilder().setLabel("Invite").setStyle(ButtonStyle.Link).setURL(inviteLink);
 

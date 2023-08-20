@@ -66,9 +66,7 @@ export default {
      .setFooter({
       text: `Requested by ${interaction.member.user.username}`,
       iconURL: interaction.member.user.displayAvatarURL({
-       dynamic: true,
-       format: "png",
-       size: 2048,
+       size: 256,
       }),
      });
     return interaction.followUp({ ephemeral: false, embeds: [embed] });
@@ -82,9 +80,7 @@ export default {
      .setFooter({
       text: `Requested by ${interaction.member.user.username}`,
       iconURL: interaction.member.user.displayAvatarURL({
-       dynamic: true,
-       format: "png",
-       size: 2048,
+       size: 256,
       }),
      });
     return interaction.followUp({ ephemeral: false, embeds: [embed] });
@@ -108,17 +104,15 @@ export default {
      )
      .setColor(guildSettings?.embedColor || client.config.defaultColor)
      .setTimestamp()
-     .setThumbnail(client.user.displayAvatarURL({ dynamic: true, format: "png", size: 2048 }))
+     .setThumbnail(client.user.displayAvatarURL({ size: 256 }))
      .setAuthor({
       name: `${client.user.username} Help`,
-      iconURL: client.user.displayAvatarURL({ dynamic: true, format: "png", size: 2048 }),
+      iconURL: client.user.displayAvatarURL({ size: 256 }),
      })
      .setFooter({
       text: `Requested by ${interaction.member.user.username}`,
       iconURL: interaction.member.user.displayAvatarURL({
-       dynamic: true,
-       format: "png",
-       size: 2048,
+       size: 256,
       }),
      });
     return interaction.followUp({ ephemeral: false, embeds: [embed] });

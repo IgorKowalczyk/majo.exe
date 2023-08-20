@@ -43,9 +43,7 @@ export async function kickMember(client, interaction, color) {
    .setFooter({
     text: `Kicked by ${interaction.member.user.username}`,
     iconURL: interaction.member.user.displayAvatarURL({
-     dynamic: true,
-     format: "png",
-     size: 2048,
+     size: 256,
     }),
    });
 

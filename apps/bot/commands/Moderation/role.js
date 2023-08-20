@@ -202,18 +202,14 @@ export default {
     .setAuthor({
      name: role.name,
      iconURL: interaction.guild.iconURL({
-      dynamic: true,
-      format: "png",
-      size: 2048,
+      size: 256,
      }),
     })
     .setColor(role.color || guildSettings?.embedColor || client.config.defaultColor)
     .setFooter({
      text: `Requested by ${interaction.user.username}`,
      iconURL: interaction.user.displayAvatarURL({
-      dynamic: true,
-      format: "png",
-      size: 2048,
+      size: 256,
      }),
     })
 

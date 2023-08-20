@@ -52,9 +52,7 @@ export async function StartGiveaway(client, interaction, color) {
    .setFooter({
     text: `Requested by ${interaction.member.user.username}`,
     iconURL: interaction.member.user.displayAvatarURL({
-     dynamic: true,
-     format: "png",
-     size: 2048,
+     size: 256,
     }),
    })
    .setTimestamp();
@@ -116,9 +114,7 @@ export async function StartDropGiveaway(client, interaction, color) {
    .setFooter({
     text: "Requested by " + `${interaction.user.username}`,
     iconURL: interaction.user.displayAvatarURL({
-     dynamic: true,
-     format: "png",
-     size: 2048,
+     size: 256,
     }),
    });
   await interaction.followUp({ embeds: [success], ephermal: true });

@@ -32,9 +32,7 @@ export async function EndGiveaway(client, interaction, color) {
    .setFooter({
     text: `Requested by ${interaction.user.username}`,
     iconURL: interaction.user.displayAvatarURL({
-     dynamic: true,
-     format: "png",
-     size: 2048,
+     size: 256,
     }),
    });
   return interaction.followUp({ embeds: [embed], ephemeral: true });

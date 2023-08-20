@@ -16,18 +16,10 @@ export default {
     .setDescription(`>>> **You rolled a ${dice}!**`)
     .setTimestamp()
     .setColor(guildSettings?.embedColor || client.config.defaultColor)
-    .setThumbnail(
-     interaction.member.user.displayAvatarURL({
-      dynamic: true,
-      format: "png",
-     })
-    )
+    .setThumbnail(interaction.member.user.displayAvatarURL({ size: 256 }))
     .setFooter({
      text: `Requested by ${interaction.member.user.username}`,
-     iconURL: interaction.member.user.displayAvatarURL({
-      dynamic: true,
-      format: "png",
-     }),
+     iconURL: interaction.member.user.displayAvatarURL({ size: 256 }),
     });
    return interaction.followUp({ embeds: [embed] });
   } catch (err) {

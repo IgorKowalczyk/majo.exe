@@ -92,7 +92,7 @@ export async function messageCreate(client, message) {
  const nextLevel = Math.floor(0.1 * Math.sqrt(xpAfter));
 
  if (level < nextLevel) {
-  message.author.avatar = message.author.displayAvatarURL({ dynamic: false, format: "png", size: 128 });
+  message.author.avatar = message.author.displayAvatarURL({ dynamic: false, size: 128 });
   const rank = await createXPCard(message.author, { xp: xpAfter, level: nextLevel, xpNeeded: Math.ceil(Math.pow((nextLevel + 1) / 0.1, 2)) }, "#10B981");
 
   const attachment = new AttachmentBuilder(rank, {
