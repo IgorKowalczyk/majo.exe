@@ -1,5 +1,7 @@
+import { invertColor } from "@majoexe/util/images";
+import { createCanvas } from "@napi-rs/canvas";
 import { Color, isColor } from "coloras";
-import { ApplicationCommandType, ApplicationCommandOptionType, EmbedBuilder } from "discord.js";
+import { ApplicationCommandType, ApplicationCommandOptionType, AttachmentBuilder, EmbedBuilder } from "discord.js";
 
 export default {
  name: "color",
@@ -19,9 +21,13 @@ export default {
  ],
  run: async (client, interaction) => {
   try {
-   const color = interaction.options.getString("color");
+   let color = interaction.options.getString("color");
    let random;
    !color ? (random = true) : (random = false);
+
+   if (!random && !color.startsWith("#")) {
+    color = `#${color}`;
+   }
 
    if (!random && !isColor(color).color) {
     return client.errorMessages.createSlashError(interaction, "❌ The color you provided is invalid. The color must be in hex format. Example: `#FF0000`");
@@ -29,14 +35,31 @@ export default {
 
    const value = random ? null : color;
    const colorInfo = new Color(value);
+   const hex = colorInfo.toHex();
+
+   const canvas = createCanvas(1024, 1024);
+   const ctx = canvas.getContext("2d");
+   ctx.beginPath();
+   ctx.fillStyle = hex;
+   ctx.fillRect(0, 0, canvas.width, canvas.height);
+   ctx.closePath();
+
+   const ic = invertColor(hex);
+   ctx.font = "bold 132px Quicksand";
+   ctx.fillStyle = ic;
+   ctx.fillText(hex.toUpperCase(), canvas.width / 2 - ctx.measureText(hex.toUpperCase()).width / 2, canvas.height / 2 + 50);
+
+   const file = new AttachmentBuilder(canvas.toBuffer("image/png"), {
+    name: "color.png",
+   });
 
    const embed = new EmbedBuilder()
-    .setTitle(random ? `${client.config.emojis.color} Random Color` : `${client.config.emojis.color} Color: ${colorInfo.toHex()}`)
+    .setTitle(random ? `${client.config.emojis.color} Random Color` : `${client.config.emojis.color} Color: ${hex}`)
 
     .addFields([
      {
       name: "HEX",
-      value: `> \`${colorInfo.toHex()}\``,
+      value: `> \`${hex}\``,
       inline: true,
      },
      {
@@ -60,7 +83,7 @@ export default {
       inline: true,
      },
     ])
-    .setImage(colorInfo.imageUrl)
+    .setImage("attachment://color.png")
     .setColor(colorInfo.toHex())
     .setTimestamp()
     .setFooter({
@@ -70,7 +93,7 @@ export default {
      }),
     });
 
-   return interaction.followUp({ ephemeral: true, embeds: [embed] });
+   return interaction.followUp({ ephemeral: true, embeds: [embed], files: [file] });
   } catch (err) {
    client.errorMessages.internalError(interaction, err);
   }

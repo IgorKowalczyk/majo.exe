@@ -47,8 +47,8 @@ However, if you want to host Majo.exe yourself see links below.
 - `PostgreSQL 13x` or higher
 - `Node.js 18x` or higher
 - `(Any)` Linux x64¹
-- `256MB` of RAM
-- `512MB/1GB` of hard drive space
+- `512MB` of RAM (minimum)
+- `2.5GB` of hard drive space (minimum)
 
 > [!NOTE]
 > 1: Debian based distros are recommended, bot can also run on Windows and MacOS but it's not recommended.

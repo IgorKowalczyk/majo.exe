@@ -6,7 +6,8 @@
     "./functions": "./functions/index.js",
     "./embeds": "./embeds/index.js",
     "./database": "./database/index.js",
-    "./json": "./json/index.js"
+    "./json": "./json/index.js",
+    "./images": "./images/index.js"
   },
   "type": "module",
   "scripts": {

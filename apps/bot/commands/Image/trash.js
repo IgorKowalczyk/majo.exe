@@ -1,24 +1,23 @@
 import { loadImage, createCanvas } from "@napi-rs/canvas";
 import { ApplicationCommandType, ApplicationCommandOptionType, AttachmentBuilder, EmbedBuilder } from "discord.js";
-import GIFEncoder from "gifencoder";
 
 export default {
- name: "trigger",
- description: "😠 Generate a triggered gif from an image",
+ name: "trash",
+ description: "🗑️ Put someone or something in the trash",
  type: ApplicationCommandType.ChatInput,
  cooldown: 5000,
  dm_permission: false,
- usage: "/trigger [user/attachment]",
+ usage: "/trash [user/attachment]",
  options: [
   {
    name: "attachment",
-   description: "Attachment to trigger",
+   description: "Attachment to trash",
    type: ApplicationCommandOptionType.Attachment,
    required: false,
   },
   {
    name: "user",
-   description: "User to trigger",
+   description: "User to put in trash",
    type: ApplicationCommandOptionType.User,
    required: false,
   },
@@ -43,46 +42,21 @@ export default {
    }
 
    const targetImage = await loadImage(image.split("?")[0]);
-   const background = await loadImage("./util/images/files/triggered.png");
+   const background = await loadImage("./util/images/files/trash.png");
 
-   const gif = new GIFEncoder(256, 310);
-
-   gif.start();
-   gif.setRepeat(0);
-   gif.setDelay(15);
-
-   const canvas = createCanvas(256, 310);
+   const canvas = createCanvas(background.width, background.height);
    const context = canvas.getContext("2d");
 
-   const BR = 30;
-   const LR = 20;
+   context.drawImage(background, 0, 0);
+   context.drawImage(targetImage, 309, 0, 309, 309);
 
-   for (let index = 0; index < 9; index++) {
-    context.clearRect(0, 0, 256, 310);
-
-    const targetImageOffsetX = Math.floor(Math.random() * BR) - BR;
-    const targetImageOffsetY = Math.floor(Math.random() * BR) - BR;
-    context.drawImage(targetImage, targetImageOffsetX, targetImageOffsetY, 256 + BR, 310 - 54 + BR);
-
-    context.fillStyle = "#FF000033";
-    context.fillRect(0, 0, 256, 310);
-
-    const backgroundOffsetX = Math.floor(Math.random() * LR) - LR;
-    const backgroundOffsetY = 310 - 54 + Math.floor(Math.random() * LR) - LR;
-    context.drawImage(background, backgroundOffsetX, backgroundOffsetY, 256 + LR, 54 + LR);
-
-    gif.addFrame(context);
-   }
-
-   gif.finish();
-
-   const file = new AttachmentBuilder(gif.out.getData(), {
-    name: "triggered.gif",
+   const file = new AttachmentBuilder(canvas.toBuffer("image/png"), {
+    name: "trash.png",
    });
 
    const embed = new EmbedBuilder()
-    .setTitle("😠 Triggered")
-    .setImage("attachment://triggered.gif")
+    .setTitle("🗑️ Trash")
+    .setImage("attachment://trash.png")
     .setColor(guildSettings?.embedColor || client.config.defaultColor)
     .setTimestamp()
     .setFooter({
