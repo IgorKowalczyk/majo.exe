@@ -38,16 +38,16 @@ export default {
    const hex = colorInfo.toHex();
 
    const canvas = createCanvas(1024, 1024);
-   const ctx = canvas.getContext("2d");
-   ctx.beginPath();
-   ctx.fillStyle = hex;
-   ctx.fillRect(0, 0, canvas.width, canvas.height);
-   ctx.closePath();
+   const context = canvas.getContext("2d");
+   context.beginPath();
+   context.fillStyle = hex;
+   context.fillRect(0, 0, canvas.width, canvas.height);
+   context.closePath();
 
    const ic = invertColor(hex);
-   ctx.font = "bold 132px Quicksand";
-   ctx.fillStyle = ic;
-   ctx.fillText(hex.toUpperCase(), canvas.width / 2 - ctx.measureText(hex.toUpperCase()).width / 2, canvas.height / 2 + 50);
+   context.font = "bold 132px Quicksand";
+   context.fillStyle = ic;
+   context.fillText(hex.toUpperCase(), canvas.width / 2 - context.measureText(hex.toUpperCase()).width / 2, canvas.height / 2 + 50);
 
    const file = new AttachmentBuilder(canvas.toBuffer("image/png"), {
     name: "color.png",

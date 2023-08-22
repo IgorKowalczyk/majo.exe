@@ -28,57 +28,57 @@ function calculateProgress(currentXp, requiredXp) {
 export async function createXPCard(user, xp, color) {
  const avatar = await loadImage(user.avatar);
  const canvas = createCanvas(934, 282);
- const ctx = canvas.getContext("2d");
+ const context = canvas.getContext("2d");
 
- ctx.globalAlpha = 1;
+ context.globalAlpha = 1;
 
  const name = user.globalName.length > 20 ? user.globalName.substring(0, 20) + "..." : user.globalName;
 
- ctx.font = "bold 36px Quicksand";
- ctx.fillStyle = "#ffffff";
- ctx.textAlign = "start";
- ctx.fillText(name, 257 + 15, 125);
+ context.font = "bold 36px Quicksand";
+ context.fillStyle = "#ffffff";
+ context.textAlign = "start";
+ context.fillText(name, 257 + 15, 125);
 
- ctx.font = "30px Quicksand";
- ctx.fillStyle = "rgba(255, 255, 255, 0.4)";
- ctx.fillText(`@${user.username}`, 257 + 15, 164);
+ context.font = "30px Quicksand";
+ context.fillStyle = "rgba(255, 255, 255, 0.4)";
+ context.fillText(`@${user.username}`, 257 + 15, 164);
 
  const levelText = `Level: ${formatNumber(parseInt(xp.level))}`;
- ctx.font = "bold 36px Quicksand";
- ctx.fillStyle = "#FFFFFF";
- ctx.fillText(levelText, canvas.width - ctx.measureText(levelText).width - 43, 82);
+ context.font = "bold 36px Quicksand";
+ context.fillStyle = "#FFFFFF";
+ context.fillText(levelText, canvas.width - context.measureText(levelText).width - 43, 82);
 
  const xpText = `XP: ${formatNumber(xp.xp)}`;
- ctx.font = "30px Quicksand";
- ctx.fillText("/ " + formatNumber(xp.xpNeeded), 670 + ctx.measureText(xpText).width + 15, 164);
- ctx.fillText(xpText, 670, 164);
+ context.font = "30px Quicksand";
+ context.fillText("/ " + formatNumber(xp.xpNeeded), 670 + context.measureText(xpText).width + 15, 164);
+ context.fillText(xpText, 670, 164);
 
  const progress = calculateProgress(xp.xp, xp.xpNeeded);
 
  // Draw progress bar
- ctx.beginPath();
- ctx.fillStyle = "#484b4E";
- ctx.arc(257 + 18.5, 147.5 + 18.5 + 36.25, 18.5, 1.5 * Math.PI, 0.5 * Math.PI, true);
- ctx.fill();
- ctx.fillRect(257 + 18.5, 147.5 + 36.25, 615 - 18.5, 37.5);
- ctx.arc(257 + 615, 147.5 + 18.5 + 36.25, 18.75, 1.5 * Math.PI, 0.5 * Math.PI, false);
- ctx.fill();
+ context.beginPath();
+ context.fillStyle = "#484b4E";
+ context.arc(257 + 18.5, 147.5 + 18.5 + 36.25, 18.5, 1.5 * Math.PI, 0.5 * Math.PI, true);
+ context.fill();
+ context.fillRect(257 + 18.5, 147.5 + 36.25, 615 - 18.5, 37.5);
+ context.arc(257 + 615, 147.5 + 18.5 + 36.25, 18.75, 1.5 * Math.PI, 0.5 * Math.PI, false);
+ context.fill();
 
  // Draw progress bar
- ctx.beginPath();
- ctx.fillStyle = color;
- ctx.arc(257 + 18.5, 147.5 + 18.5 + 36.25, 18.5, 1.5 * Math.PI, 0.5 * Math.PI, true);
- ctx.fill();
- ctx.fillRect(257 + 18.5, 147.5 + 36.25, progress, 37.5);
- ctx.arc(257 + 18.5 + progress, 147.5 + 18.5 + 36.25, 18.75, 1.5 * Math.PI, 0.5 * Math.PI, false);
- ctx.fill();
+ context.beginPath();
+ context.fillStyle = color;
+ context.arc(257 + 18.5, 147.5 + 18.5 + 36.25, 18.5, 1.5 * Math.PI, 0.5 * Math.PI, true);
+ context.fill();
+ context.fillRect(257 + 18.5, 147.5 + 36.25, progress, 37.5);
+ context.arc(257 + 18.5 + progress, 147.5 + 18.5 + 36.25, 18.75, 1.5 * Math.PI, 0.5 * Math.PI, false);
+ context.fill();
 
  // Draw avatar
- ctx.beginPath();
- ctx.arc(125 + 10, 125 + 20, 100, 0, Math.PI * 2, true);
- ctx.closePath();
- ctx.clip();
- ctx.drawImage(avatar, 35, 45, 180 + 20, 180 + 20);
+ context.beginPath();
+ context.arc(125 + 10, 125 + 20, 100, 0, Math.PI * 2, true);
+ context.closePath();
+ context.clip();
+ context.drawImage(avatar, 35, 45, 180 + 20, 180 + 20);
 
  return canvas.toBuffer("image/png");
 }

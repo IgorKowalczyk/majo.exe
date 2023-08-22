@@ -10,9 +10,9 @@ export default function GlobeClient() {
  useEffect(() => {
   try {
    const canvas = window.document.createElement("canvas");
-   const ctx = canvas.getContext("webgl") || canvas.getContext("experimental-webgl");
+   const context = canvas.getContext("webgl") || canvas.getContext("experimental-webgl");
    console.log("WebGL supported, showing globe animation...");
-   ctx.getSupportedExtensions();
+   context.getSupportedExtensions();
   } catch (e) {
    setWebglSupported(false);
    console.log("WebGL not supported, hiding globe animation...");
