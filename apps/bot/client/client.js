@@ -5,6 +5,7 @@ import chalk from "chalk";
 import { Client, GatewayIntentBits, PermissionsBitField, Collection } from "discord.js";
 import { globby } from "globby";
 import giveaway from "../util/giveaway/core.js";
+import { loadFonts } from "../util/images/fonts/loadFonts.js";
 
 Logger("info", "Starting Majo.exe Bot...");
 Logger("info", `Running version v${process.env.npm_package_version} on Node.js ${process.version} on ${process.platform} ${process.arch}`);
@@ -149,5 +150,5 @@ for (const value of modals) {
 
 Logger("event", `Loaded ${client.modals.size} modals from /modals in ${client.performance(modalLoadTime)}`);
 Logger("event", `Loaded ${client.slashCommands.size + client.additionalSlashCommands} slash commands from /commands in ${client.performance(loadTime)}`);
-
+loadFonts();
 export default client;
