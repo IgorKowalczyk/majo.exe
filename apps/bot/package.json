@@ -17,7 +17,7 @@
     "@majoexe/config": "workspace:*",
     "@majoexe/database": "workspace:*",
     "@majoexe/util": "workspace:*",
-    "@napi-rs/canvas": "0.1.43",
+    "@napi-rs/canvas": "0.1.44",
     "chalk": "5.3.0",
     "coloras": "2.0.2",
     "decode-gif": "1.0.1",
