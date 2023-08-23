@@ -1,6 +1,6 @@
 import { loadImage, createCanvas } from "@napi-rs/canvas";
 import { ApplicationCommandType, ApplicationCommandOptionType, AttachmentBuilder, EmbedBuilder } from "discord.js";
-import GIFEncoder from "gifencoder";
+import GIFEncoder from "gif-encoder-2";
 
 export default {
  name: "trigger",
@@ -45,7 +45,9 @@ export default {
    const targetImage = await loadImage(image.split("?")[0]);
    const background = await loadImage("./util/images/files/triggered.png");
 
-   const gif = new GIFEncoder(256, 310);
+   // get buffer from background
+
+   const gif = new GIFEncoder(256, 310, "neuquant", true);
 
    gif.start();
    gif.setRepeat(0);
