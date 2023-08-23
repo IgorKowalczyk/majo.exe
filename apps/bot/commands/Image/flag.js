@@ -13,18 +13,18 @@ export default {
  options: [
   {
    name: "japan",
-   description: "🇯🇵 Put Japan flag on image",
+   description: "🇯🇵 Put Japanese flag on image",
    type: ApplicationCommandOptionType.Subcommand,
    options: [
     {
      name: "attachment",
-     description: "Attachment to put Japan flag",
+     description: "Attachment to put Japanese flag",
      type: ApplicationCommandOptionType.Attachment,
      required: false,
     },
     {
      name: "user",
-     description: "User to put Japan flag",
+     description: "User to put Japanese flag",
      type: ApplicationCommandOptionType.User,
      required: false,
     },
