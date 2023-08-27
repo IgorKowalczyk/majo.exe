@@ -4,7 +4,7 @@ import { globby } from "globby";
 
 export async function loadFonts() {
  const time = Date.now();
- const fonts = await globby("./util/images/fonts/*.ttf");
+ const fonts = await globby("./util/images/fonts/files/*.ttf");
  for (const font of fonts) {
   GlobalFonts.registerFromPath(font, font.split("/").pop().replace(".ttf", ""));
  }
