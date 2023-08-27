@@ -1,7 +1,6 @@
 import prismaClient from "@majoexe/database";
 
 export async function guildMemberAdd(client, member) {
- 
  if (!member || !member.user || !member.guild) return;
  const joins = await prismaClient.guildJoin.findFirst({
   where: {

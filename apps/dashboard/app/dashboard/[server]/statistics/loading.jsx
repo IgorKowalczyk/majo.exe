@@ -18,6 +18,13 @@ export default function Loading() {
     </Header4>
     <GraphSkeleton className="mt-10 h-80" />
    </Block>
+   <Block>
+    <Header4 className="mb-4 !items-start !justify-normal opacity-80">
+     <span className="opacity-80">Messages Sent</span>
+     <span className="text-accent-primary">(Loading...)</span>
+    </Header4>
+    <GraphSkeleton className="mt-10 h-80" />
+   </Block>
   </div>
  );
 }

@@ -1,3 +1,4 @@
+/* eslint-disable complexity */
 import prismaClient from "@majoexe/database";
 import { createUser } from "@majoexe/util/database";
 import { formatDuration } from "@majoexe/util/functions";

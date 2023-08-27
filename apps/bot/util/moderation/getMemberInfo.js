@@ -53,7 +53,7 @@ export async function getMemberInfo(client, interaction, color) {
    },
    {
     name: `${client.config.emojis.role} Username`,
-    value: `> \`${user.user.username} ${usr.user.globalName ? `(@${user.user.globalName})` : ""}\``,
+    value: `> \`${user.user.username} ${user.user.globalName ? `(@${user.user.globalName})` : ""}\``,
     inline: true,
    },
    {

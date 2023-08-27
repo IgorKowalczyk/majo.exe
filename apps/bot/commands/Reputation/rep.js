@@ -1,3 +1,4 @@
+/* eslint-disable complexity */
 import { checkReputation, giveReputation, takeReputation, setReputation } from "@majoexe/util/database";
 import { formatDuration } from "@majoexe/util/functions";
 import { ApplicationCommandType, ApplicationCommandOptionType, EmbedBuilder, PermissionFlagsBits } from "discord.js";

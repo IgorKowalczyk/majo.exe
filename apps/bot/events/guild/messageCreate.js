@@ -20,10 +20,10 @@ export async function messageCreate(client, message) {
  if (!messages) {
   await prismaClient.guildMessage.create({
    data: {
-        guild: {
+    guild: {
      connectOrCreate: {
-      where: { guildId: member.guild.id },
-      create: { guildId: member.guild.id },
+      where: { guildId: message.guild.id },
+      create: { guildId: message.guild.id },
      },
     },
     date: new Date(),
@@ -62,7 +62,7 @@ export async function messageCreate(client, message) {
  if (!xp) {
   await prismaClient.guildXp.create({
    data: {
-        guild: {
+    guild: {
      connectOrCreate: {
       where: { guildId: message.guild.id },
       create: { guildId: message.guild.id },

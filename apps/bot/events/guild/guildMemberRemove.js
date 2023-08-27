@@ -2,7 +2,7 @@ import prismaClient from "@majoexe/database";
 
 export async function guildMemberRemove(client, member) {
  if (!member || !member.user || !member.guild) return;
- 
+
  const leaves = await prismaClient.GuildLeave.findFirst({
   where: {
    guildId: member.guild.id,

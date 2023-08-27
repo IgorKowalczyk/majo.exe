@@ -6,8 +6,8 @@ import { Client, GatewayIntentBits, PermissionsBitField, Collection } from "disc
 import { globby } from "globby";
 import giveaway from "../util/giveaway/core.js";
 import { loadFonts } from "../util/images/fonts/loadFonts.js";
-import { fileURLToPath } from "url";
 import { dirname } from "path";
+import { fileURLToPath } from "url";
 
 const cwd = dirname(fileURLToPath(import.meta.url)).replace("/client", "");
 Logger("info", `Current working directory: ${cwd}`);
