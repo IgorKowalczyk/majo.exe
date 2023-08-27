@@ -9,9 +9,9 @@ export default function Loading() {
     <ListBulletIcon className="h-12 w-12" />
     Activity Logs
    </Header1>
-   <div className="overflow-auto">
+   <div className="gap-4 overflow-auto">
     {[...Array(5)].map((_, i) => (
-     <TextSkeleton className={"!h-20 w-full flex-row items-center justify-start"} key={i} />
+     <TextSkeleton className={"!h-20 !w-full flex-row items-center justify-start"} key={i} />
     ))}
    </div>
   </>
