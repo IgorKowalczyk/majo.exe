@@ -6,6 +6,12 @@ import { Client, GatewayIntentBits, PermissionsBitField, Collection } from "disc
 import { globby } from "globby";
 import giveaway from "../util/giveaway/core.js";
 import { loadFonts } from "../util/images/fonts/loadFonts.js";
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
+
+const cwd = dirname(fileURLToPath(import.meta.url)).replace("/client", "");
+Logger("info", `Current working directory: ${cwd}`);
+process.chdir(cwd);
 
 Logger("info", "Starting Majo.exe Bot...");
 Logger("info", `Running version v${process.env.npm_package_version} on Node.js ${process.version} on ${process.platform} ${process.arch}`);
