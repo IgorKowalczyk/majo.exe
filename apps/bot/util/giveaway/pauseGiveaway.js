@@ -30,7 +30,7 @@ export async function PauseGiveaway(client, interaction, color) {
    .setDescription(`${client.config.emojis.sparkles} | Success! Giveaway \`${query}\` paused!`)
    .setColor(color)
    .setFooter({
-    text: `Requested by ${interaction.user.username}`,
+    text: `Requested by ${interaction.member.user.globalName || interaction.member.user.username}`,
     iconURL: interaction.user.displayAvatarURL({
      size: 256,
     }),

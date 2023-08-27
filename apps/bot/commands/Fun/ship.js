@@ -38,12 +38,12 @@ export default {
    const ship = Math.floor(Math.random() * 100) + 1;
 
    const embed = new EmbedBuilder()
-    .setTitle(`❤️ Shipping ${first.username} and ${second.username}`)
+    .setTitle(`❤️ Shipping ${first.globalName || first.username} and ${second.globalName || second.username}`)
     .setDescription(` **${ship > 50 ? "🔥 They are born for each other!" : "❄️ This isn't a match"}**\n\n${percentageBar(100, ship, 20)}`)
     .setTimestamp()
     .setColor(guildSettings?.embedColor || client.config.defaultColor)
     .setFooter({
-     text: `Requested by ${interaction.member.user.username}`,
+     text: `Requested by ${interaction.member.user.globalName || interaction.member.user.username}`,
      iconURL: interaction.member.user.displayAvatarURL({
       size: 256,
      }),

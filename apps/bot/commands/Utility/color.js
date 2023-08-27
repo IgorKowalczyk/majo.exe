@@ -87,7 +87,7 @@ export default {
     .setColor(colorInfo.toHex())
     .setTimestamp()
     .setFooter({
-     text: `Requested by ${interaction.member.user.username}`,
+     text: `Requested by ${interaction.member.user.globalName || interaction.member.user.username}`,
      iconURL: interaction.member.user.displayAvatarURL({
       size: 256,
      }),

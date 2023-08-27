@@ -40,7 +40,7 @@ export default {
   try {
    const attachment = interaction.options.getAttachment("attachment");
    const user = interaction.options.getUser("user") || interaction.member.user;
-   const username = interaction.options.getString("username") || user.username;
+   const username = interaction.options.getString("username") || user.globalName || user.username;
    const comment = interaction.options.getString("comment");
    let image;
 
@@ -105,7 +105,7 @@ export default {
     .setColor(guildSettings?.embedColor || client.config.defaultColor)
     .setTimestamp()
     .setFooter({
-     text: `Requested by ${interaction.member.user.username}`,
+     text: `Requested by ${interaction.member.user.globalName || interaction.member.user.username}`,
      iconURL: interaction.member.user.displayAvatarURL({
       size: 256,
      }),

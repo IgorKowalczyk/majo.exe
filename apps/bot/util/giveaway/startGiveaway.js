@@ -50,7 +50,7 @@ export async function StartGiveaway(client, interaction, color) {
    .setTitle(`${client.config.emojis.success} Success!`)
    .setDescription("> :tada: Giveaway created in " + `${channel}` + "!")
    .setFooter({
-    text: `Requested by ${interaction.member.user.username}`,
+    text: `Requested by ${interaction.member.user.globalName || interaction.member.user.username}`,
     iconURL: interaction.member.user.displayAvatarURL({
      size: 256,
     }),
@@ -112,7 +112,7 @@ export async function StartDropGiveaway(client, interaction, color) {
    .setTitle(`${client.config.emojis.success} Success!`)
    .setDescription("> :tada: Drop giveaway created in " + `${channel}` + "!")
    .setFooter({
-    text: "Requested by " + `${interaction.user.username}`,
+    text: `Requested by ${interaction.member.user.globalName || interaction.member.user.username}`,
     iconURL: interaction.user.displayAvatarURL({
      size: 256,
     }),

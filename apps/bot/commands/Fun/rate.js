@@ -37,7 +37,7 @@ export default {
     .setColor(color)
     .setThumbnail(interaction.member.user.displayAvatarURL({ size: 256 }))
     .setFooter({
-     text: `Requested by ${interaction.member.user.username}`,
+     text: `Requested by ${interaction.member.user.globalName || interaction.member.user.username}`,
      iconURL: interaction.member.user.displayAvatarURL({ size: 256 }),
     });
    return interaction.followUp({ embeds: [embed] });

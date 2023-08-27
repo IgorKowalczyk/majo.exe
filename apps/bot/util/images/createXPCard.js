@@ -41,7 +41,7 @@ export async function createXPCard(user, xp, color) {
 
  context.font = "30px Quicksand";
  context.fillStyle = "rgba(255, 255, 255, 0.4)";
- context.fillText(`@${user.username}`, 257 + 15, 164);
+ context.fillText(`@${user.globalName || user.username}`, 257 + 15, 164);
 
  const levelText = `Level: ${formatNumber(parseInt(xp.level))}`;
  context.font = "bold 36px Quicksand";

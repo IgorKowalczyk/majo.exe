@@ -23,10 +23,10 @@ export default {
     .setColor(guildSettings.embedColor || client.config.defaultColor)
     .setTimestamp()
     .setTitle(`🎛️ Permissions in ${interaction.guild.name}`)
-    .setDescription(`> **${client.user.username}** has the following permissions in this server:\n${codeBlock(permissionsText.join("\n"))}`)
+    .setDescription(`> **${client.user}** has the following permissions in this server:\n${codeBlock(permissionsText.join("\n"))}`)
     .setTimestamp()
     .setFooter({
-     text: `Requested by ${interaction.member.user.username}`,
+     text: `Requested by ${interaction.member.user.globalName || interaction.member.user.username}`,
      iconURL: interaction.member.user.displayAvatarURL({
       size: 256,
      }),

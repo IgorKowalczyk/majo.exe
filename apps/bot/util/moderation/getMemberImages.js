@@ -42,10 +42,10 @@ export async function getUserAvatar(client, interaction, color) {
   const embed = new EmbedBuilder()
    .setColor(color)
    .setTimestamp()
-   .setTitle(`${user.user.username} ${serverAvatar ? "server" : ""} avatar`)
+   .setTitle(`${user.user.globalName || user.user.username} ${serverAvatar ? "server" : ""} avatar`)
    .setImage(avatar)
    .setFooter({
-    text: `Requested by ${interaction.member.user.username}`,
+    text: `Requested by ${interaction.member.user.globalName || interaction.member.user.username}`,
     iconURL: interaction.member.user.displayAvatarURL({
      size: 256,
     }),
@@ -116,10 +116,10 @@ export async function getUserBanner(client, interaction, color) {
   const embed = new EmbedBuilder()
    .setColor(color)
    .setTimestamp()
-   .setTitle(`${user.user.username} ${serverBanner ? "server" : ""} banner`)
+   .setTitle(`${user.user.globalName || user.user.username} ${serverBanner ? "server" : ""} banner`)
    .setImage(banner)
    .setFooter({
-    text: `Requested by ${interaction.member.user.username}`,
+    text: `Requested by ${interaction.member.user.globalName || interaction.member.user.username}`,
     iconURL: interaction.user.user.displayAvatarURL({
      size: 256,
     }),

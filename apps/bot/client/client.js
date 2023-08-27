@@ -27,10 +27,7 @@ const client = new Client({
   GatewayIntentBits.Guilds,
   GatewayIntentBits.GuildModeration,
   GatewayIntentBits.GuildMembers,
-  GatewayIntentBits.GuildModeration,
   GatewayIntentBits.GuildEmojisAndStickers,
-  GatewayIntentBits.GuildInvites,
-  GatewayIntentBits.GuildPresences,
   GatewayIntentBits.GuildMessageReactions,
  ],
 });
@@ -65,7 +62,7 @@ client.errorMessages = {
  createSlashError: (interaction, description, title) => {
   const embed = createErrorEmbed(description, title);
   embed.setFooter({
-   text: `Requested by ${interaction.member.user.username}`,
+   text: `Requested by ${interaction.member.user.globalName || interaction.member.user.username}`,
    iconURL: interaction.member.user.displayAvatarURL({ dynamic: true }),
   });
 

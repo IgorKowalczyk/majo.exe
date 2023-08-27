@@ -25,7 +25,7 @@ export async function unBanMember(client, interaction, color) {
    .setTitle("🔨 Member unbanned")
    .setDescription(`> **${user}** has been unbanned from the server\n> **Reason:** ${reason}`)
    .setFooter({
-    text: `Unbanned by ${interaction.member.user.username}`,
+    text: `Unbanned by ${interaction.member.user.globalName || interaction.member.user.username}`,
     iconURL: interaction.member.user.displayAvatarURL({
      size: 256,
     }),

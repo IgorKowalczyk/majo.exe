@@ -53,7 +53,7 @@ export default {
      .setTitle("🗃️ Encode Base64")
      .setDescription(`> \`${encoded}\``)
      .setFooter({
-      text: `Requested by ${interaction.member.user.username}`,
+      text: `Requested by ${interaction.member.user.globalName || interaction.member.user.username}`,
       iconURL: interaction.member.user.displayAvatarURL({
        size: 256,
       }),
@@ -70,7 +70,7 @@ export default {
      .setTitle("🗃️ Decode Base64")
      .setDescription(`> \`${decoded}\``)
      .setFooter({
-      text: `Requested by ${interaction.member.user.username}`,
+      text: `Requested by ${interaction.member.user.globalName || interaction.member.user.username}`,
       iconURL: interaction.member.user.displayAvatarURL({
        size: 256,
       }),

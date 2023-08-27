@@ -13,7 +13,7 @@ export default {
     const embed = new EmbedBuilder()
      .setDescription("Our dashboard (and the contact page itself) is not working at the moment, please try again later!")
      .setFooter({
-      text: `Requested by ${interaction.member.user.username}`,
+      text: `Requested by ${interaction.member.user.globalName || interaction.member.user.username}`,
       iconURL: interaction.member.user.displayAvatarURL({
        size: 256,
       }),
@@ -30,7 +30,7 @@ export default {
    const embed = new EmbedBuilder()
     .setDescription("Click the button below to contact the Majo.exe team!")
     .setFooter({
-     text: `Requested by ${interaction.member.user.username}`,
+     text: `Requested by ${interaction.member.user.globalName || interaction.member.user.username}`,
      iconURL: interaction.member.user.displayAvatarURL({
       size: 256,
      }),

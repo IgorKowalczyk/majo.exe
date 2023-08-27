@@ -37,9 +37,9 @@ export async function getMemberInfo(client, interaction, color) {
    .setColor(color)
    .setTimestamp()
    .setThumbnail(user.user.displayAvatarURL({ size: 256 }))
-   .setTitle(`${user.user.username} ${user.user.bot ? client.config.emojis.bot_badge_part_1 + client.config.emojis.bot_badge_part_2 : ""}`)
+   .setTitle(`${user.user.globalName || user.user.username} ${user.user.bot ? client.config.emojis.bot_badge_part_1 + client.config.emojis.bot_badge_part_2 : ""}`)
    .setFooter({
-    text: `Requested by ${interaction.member.user.username}`,
+    text: `Requested by ${interaction.member.user.globalName || interaction.member.user.username}`,
     iconURL: interaction.member.user.displayAvatarURL({
      size: 256,
     }),
@@ -53,7 +53,7 @@ export async function getMemberInfo(client, interaction, color) {
    },
    {
     name: `${client.config.emojis.role} Username`,
-    value: `> \`${user.user.username}\``,
+    value: `> \`${user.user.username} ${usr.user.globalName ? `(@${user.user.globalName})` : ""}\``,
     inline: true,
    },
    {

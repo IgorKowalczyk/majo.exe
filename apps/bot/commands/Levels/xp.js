@@ -42,7 +42,7 @@ export default {
    const embed = new EmbedBuilder()
     .setTitle(`📈 XP for ${user.globalName || user.username}`)
     .setFooter({
-     text: `Requested by ${interaction.member.user.username}`,
+     text: `Requested by ${interaction.member.user.globalName || interaction.member.user.username}`,
      iconURL: interaction.member.user.displayAvatarURL({ size: 256 }),
     })
     .setColor(guildSettings?.embedColor || client.config.defaultColor)

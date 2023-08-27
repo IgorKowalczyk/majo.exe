@@ -15,7 +15,7 @@ export default {
     .setColor("#EF4444")
     .setTimestamp()
     .setFooter({
-     text: `Suggested by ${interaction.member.user.username}`,
+     text: `Suggested by ${interaction.member.user.globalName || interaction.member.user.username}`,
      iconURL: interaction.member.user.displayAvatarURL({
       size: 256,
      }),
@@ -36,7 +36,7 @@ export default {
     .setColor("#EF4444")
     .setTimestamp()
     .setFooter({
-     text: `Suggested by ${interaction.member.user.username}`,
+     text: `Suggested by ${interaction.member.user.globalName || interaction.member.user.username}`,
      iconURL: interaction.member.user.displayAvatarURL({
       size: 256,
      }),
@@ -56,7 +56,7 @@ export default {
    .setColor("#3B82F6")
    .setTimestamp()
    .setFooter({
-    text: `Suggested by ${interaction.member.user.username}`,
+    text: `Suggested by ${interaction.member.user.globalName || interaction.member.user.username}`,
     iconURL: interaction.member.user.displayAvatarURL({
      size: 256,
     }),
@@ -66,7 +66,12 @@ export default {
    data: {
     message: suggestion,
     userId: interaction.member.user.id,
-    guildId: interaction.guild.id,
+        guild: {
+     connectOrCreate: {
+      where: { guildId: interaction.guild.id },
+      create: { guildId: interaction.guild.id },
+     },
+    },
    },
   });
 

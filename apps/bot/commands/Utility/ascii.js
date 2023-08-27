@@ -31,7 +31,7 @@ export default {
      .setTimestamp()
      .setTitle(`${client.config.emojis.success} Your ascii code has been successfully generated!`)
      .setFooter({
-      text: `Requested by ${interaction.member.user.username}`,
+      text: `Requested by ${interaction.member.user.globalName || interaction.member.user.username}`,
       iconURL: interaction.member.user.displayAvatarURL({
        size: 256,
       }),

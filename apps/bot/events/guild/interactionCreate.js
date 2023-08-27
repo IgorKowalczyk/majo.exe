@@ -8,9 +8,7 @@ export async function interactionCreate(client, interaction) {
  try {
   if (!interaction.guild || !interaction.guild.available) return;
 
-  if (!interaction.user) {
-   await interaction.guild.members.fetch(interaction.member.user.id);
-  }
+  if (!interaction.user) await interaction.guild.members.fetch(interaction.member.user.id);
 
   if (interaction.isCommand()) {
    client.config.displayCommandUsage && client.debugger("info", `Command used: ${interaction.commandName} by ${interaction.user.tag} (${interaction.user.id})`);
@@ -28,7 +26,7 @@ export async function interactionCreate(client, interaction) {
       .setColor("#EF4444")
       .setTimestamp()
       .setFooter({
-       text: `Requested by ${interaction.member.user.username}`,
+       text: `Requested by ${interaction.member.user.globalName || interaction.member.user.username}`,
        iconURL: interaction.member.user.displayAvatarURL({ size: 256 }),
       });
      return interaction.followUp({ ephemeral: true, embeds: [embed] });

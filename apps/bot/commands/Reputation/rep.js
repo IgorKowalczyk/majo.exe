@@ -87,7 +87,7 @@ export default {
      .setDescription(`> ${user} has \`${rep}\` reputation points`)
      .setThumbnail(user.displayAvatarURL({ size: 256 }))
      .setFooter({
-      text: `Requested by ${interaction.member.user.username}`,
+      text: `Requested by ${interaction.member.user.globalName || interaction.member.user.username}`,
       iconURL: interaction.member.user.displayAvatarURL({
        size: 256,
       }),
@@ -116,7 +116,7 @@ export default {
      .setDescription(`> Successfully gave ${user} \`1\` reputation point. They now have *\`${rep}\` reputation points`)
      .setThumbnail(user.displayAvatarURL({ size: 256 }))
      .setFooter({
-      text: `Requested by ${interaction.member.user.username}`,
+      text: `Requested by ${interaction.member.user.globalName || interaction.member.user.username}`,
       iconURL: interaction.member.user.displayAvatarURL({
        size: 256,
       }),
@@ -145,7 +145,7 @@ export default {
      .setDescription(`> Successfully took \`1\` reputation point from ${user}. They now have \`${rep}\` reputation points`)
      .setThumbnail(user.displayAvatarURL({ size: 256 }))
      .setFooter({
-      text: `Requested by ${interaction.member.user.username}`,
+      text: `Requested by ${interaction.member.user.globalName || interaction.member.user.username}`,
       iconURL: interaction.member.user.displayAvatarURL({
        size: 256,
       }),
@@ -177,7 +177,7 @@ export default {
      .setDescription(`> Successfully set ${user} reputation to \`${rep}\` points`)
      .setThumbnail(user.displayAvatarURL({ size: 256 }))
      .setFooter({
-      text: `Requested by ${interaction.member.user.username}`,
+      text: `Requested by ${interaction.member.user.globalName || interaction.member.user.username}`,
       iconURL: interaction.member.user.displayAvatarURL({
        size: 256,
       }),
