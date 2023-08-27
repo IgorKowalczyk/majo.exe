@@ -31,7 +31,6 @@ const client = new Client({
   GatewayIntentBits.GuildEmojisAndStickers,
   GatewayIntentBits.GuildInvites,
   GatewayIntentBits.GuildPresences,
-  GatewayIntentBits.GuildMessages,
   GatewayIntentBits.GuildMessageReactions,
  ],
 });
