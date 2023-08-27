@@ -36,12 +36,6 @@ const client = new Client({
  ],
 });
 
-try {
- client.login(process.env.TOKEN);
-} catch (error) {
- console.log(Logger("error", error));
-}
-
 const loadTime = performance.now();
 const slashCommands = await globby(`${process.cwd()}/commands/**/*.js`);
 const modalLoadTime = performance.now();
@@ -157,4 +151,11 @@ for (const value of modals) {
 Logger("event", `Loaded ${client.modals.size} modals from /modals in ${client.performance(modalLoadTime)}`);
 Logger("event", `Loaded ${client.slashCommands.size + client.additionalSlashCommands} slash commands from /commands in ${client.performance(loadTime)}`);
 loadFonts();
+
+try {
+ client.login(process.env.TOKEN);
+} catch (error) {
+ console.log(Logger("error", error));
+}
+
 export default client;
