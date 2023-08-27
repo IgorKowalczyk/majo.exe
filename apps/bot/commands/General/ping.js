@@ -14,23 +14,19 @@ export default {
    await prismaClient.user.findUnique({ where: { id: "1" } });
    const dbTiming = performance.now() - dbTime;
 
-   const websocketPing = client.ws.ping;
-
    const waitEmbed = new EmbedBuilder().setColor(guildSettings?.embedColor || client.config.defaultColor).setDescription("🏓 Pong!...");
-   const date = performance.now();
    const message = await interaction.followUp({ embeds: [waitEmbed] });
-   const clientPing = performance.now() - date;
 
    const pingMessage = new EmbedBuilder()
     .addFields([
      {
       name: "Host Latency",
-      value: codeBlock(`${Math.floor(websocketPing)}ms`),
+      value: codeBlock(`${Math.floor(client.ws.ping)}ms`),
       inline: true,
      },
      {
       name: "Client Latency",
-      value: codeBlock(`${Math.floor(clientPing)}ms`),
+      value: codeBlock(`${Math.floor(message.createdTimestamp - interaction.createdTimestamp)}ms`),
       inline: true,
      },
      {

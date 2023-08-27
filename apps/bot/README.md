@@ -1,4 +1,4 @@
-![Header Dashboard](https://github.com/IgorKowalczyk/majo.exe/assets/49127376/f3163dc8-159b-49ab-96f7-388d32bff2e0)
+![Header Bot](https://user-images.githubusercontent.com/49127376/236699649-bea10af2-7783-4fa3-9f90-29e172f8f53b.png)
 
 <p align="center">
  <a href="https://majoexe.xyz/server"><img src="https://img.shields.io/discord/666599184844980224?color=%234552ef&logo=discord&label=Discord&style=flat&logoColor=fff" alt="Discord" /></a>
@@ -9,35 +9,18 @@
 
 ## 🤖 Self-Hosting
 
-1. Clone [this repository]
+1. Clone [this repository](https://github.com/igorkowalczyk/majo.exe) `git clone https://github.com/IgorKowalczyk/majo.exe.git`
 2. Go to `/packages/database/` directory and follow [Database Setup](/packages/database/README.md) tutorial
 3. Grab a Discord Bot token and client secret on [Discord's developer portal](https://discord.com/developers/applications) [Tutorial](#-discord-credentials)
-4. Add redirect URL to Discord's developer portal (https://your-website.com/api/auth/callback/discord)
-5. Create new file or edit existing `.env` file in root directory of the project
-6. In `.env` file set this values:
-   - `TOKEN` - Discord bot token [[Tutorial](/apps/bot/README.md#-discord-token)]
+4. Create new file or edit existing `.env` file in root directory of the project
+5. In `.env` file set this values:
+   - `TOKEN` - Discord bot token [[Tutorial](#-discord-token)]
    - `SECRET` - Random string (min. length = 32 chars)
-   - `CLIENT_SECRET` - Discord bot secret [[Tutorial](/apps/bot/README.md#-discord-secret)]
-   - `NEXTAUTH_URL` - Your website URL (with protocol)
-   - `NEXT_PUBLIC_URL` - Your website URL (with protocol)
-   - `HOTJAR_ID` - Your Hotjar ID (optional)
-   - Database URLs [[Tutorial](/packages/database/README.md)]
-     - `DATABASE_URL` - Main database URL
-     - `DIRECT_URL` - Direct database URL (optional)
-7. Go to `/apps/dashboard/` directory
-8. Run `pnpm i` to install all dependencies
-9. Run `pnpm run dev` or `pnpm run deploy` to start dashboard
-
-## ▲ Vercel Deploy
-
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2FIgorKowalczyk%2Fmajo.exe&env=TOKEN,SECRET,CLIENT_ID,CLIENT_SECRET,NEXTAUTH_URL,DATABASE_URL,DIRECT_URL,SHADOW_DATABASE_URL,NEXT_PUBLIC_URL&envDescription=Tokens%20needed%20for%20Dashboard&envLink=https%3A%2F%2Fgithub.com%2Figorkowalczyk%2Fmajo.exe&project-name=majo-exe&repository-name=majo-exe&demo-title=Majo.exe%20-%20Dashboard&demo-description=Majo.exe%20Dashboard%20-%20Next.js%20application%20for%20managing%20Majo.exe%20Discord%20bot.&demo-url=https%3A%2F%2Fbeta.majoexe.xyz&demo-image=https%3A%2F%2Fgithub.com%2FIgorKowalczyk%2Fmajo.exe%2Fassets%2F49127376%2F02d4d63d-2cea-44f2-88b6-7e645dc272ea)
-
-1. Go to `/packages/database/` directory and follow [Database Setup](/packages/database/README.md) tutorial
-2. Grab a Discord Bot token and client secret on [Discord's developer portal](https://discord.com/developers/applications) [Tutorial](/apps/dashboard/README.md#-discord-credentials)
-3. Add redirect URL to Discord's developer portal (https://your-website.com/api/auth/callback/discord)
-4. Import this repository to Vercel (click button above)
-5. Set environment variables from your root `.env` file
-6. Click `Deploy` button
+   - `CLIENT_SECRET` - Discord bot secret [[Tutorial](#-discord-secret)]
+6. Go to `/apps/bot/` directory
+7. Run `pnpm i` to install all dependencies,
+8. Fill `/config/index.js` and `/config/emojis.js` with your values
+9. Run `pnpm run dev` or `pnpm run deploy` to start bot
 
 ##### Example `.env` file
 
@@ -47,8 +30,6 @@ Remember - the file is super secret, better to not share it!
 TOKEN=DISCORD_BOT_TOKEN
 SECRET=SECRET_STRING
 CLIENT_SECRET=DISCORD_BOT_SECRET
-NEXTAUTH_URL=YOUR_WEBSITE_URL
-NEXT_PUBLIC_URL=YOUR_WEBSITE_URL
 
 # ... Database credentials
 ```
@@ -68,6 +49,26 @@ NEXT_PUBLIC_URL=YOUR_WEBSITE_URL
 
 > [!NOTE]
 > 1: Debian based distros are recommended, Dashboard can also run on Windows and MacOS but it's not recommended.
+
+## 🔓 Tokens tutorials
+
+### 🔏 Discord Token
+
+1. Go to <a href="https://discordapp.com/developers/applications)">Discord Developer Portal</a>
+2. At the top right of the screen, click "New application" and assign it a name. Next in the left part of the screen on the navigation bar, find "Bot" then click it and find button named "Add Bot"
+3. After confirming the bot creation, click the "Copy token" button
+4. Paste your token in `.env` file - `TOKEN=BOT_TOKEN`
+
+> Tutorial written by: <a href="https://github.com/index1337">\_index1337</a>
+
+### 🔓 Discord Bot Secret
+
+1. Go to <a href="https://discordapp.com/developers/applications)">Discord Developer Portal</a>
+2. In the left part of the screen on the bar, find "OAuth2" then click it
+3. Find section named "Client Secret", under the bot secret click "Copy" button
+4. Paste client secret to `.env` - `CLIENT_SECRET=CLIENT_SECRET`
+
+> Tutorial written by: <a href="https://github.com/index1337">\_index1337</a>
 
 ## 📝 Contributors
 
