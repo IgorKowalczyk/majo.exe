@@ -74,7 +74,7 @@ export default {
      },
      {
       name: `${client.config.emojis.cpu_icon} CPU Usage`,
-      value: codeBlock(`Cores: ${cpu.cores} (${cpu.physicalCores} physical)\nModel: ${cpu.manufacturer} ${cpu.brand}\nSpeed: ${cpu.speed}GHz\nLoad: ${Math.floor(load.currentLoad)}% (${Math.floor(load.currentLoadUser)}% user, ${Math.floor(load.currentLoadSystem)}% system, ${Math.floor(load.avgLoad)}% average)`),
+      value: codeBlock(`Cores: ${cpu.cores} (${cpu.physicalCores} physical)\nModel: ${cpu.manufacturer} ${cpu.brand}\n${cpu.speed > 0 ? `Speed: ${cpu.speed}GHz\n` : ""}Load: ${Math.floor(load.currentLoad)}% (${Math.floor(load.currentLoadUser)}% user, ${Math.floor(load.currentLoadSystem)}% system, ${Math.floor(load.avgLoad)}% average)`),
       inline: false,
      },
 
