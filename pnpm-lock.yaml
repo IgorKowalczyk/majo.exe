@@ -78,6 +78,9 @@ importers:
       qrcode:
         specifier: 1.5.3
         version: 1.5.3
+      systeminformation:
+        specifier: 5.21.0
+        version: 5.21.0
       validator:
         specifier: 13.11.0
         version: 13.11.0
@@ -8190,6 +8193,13 @@ packages:
     dependencies:
       '@pkgr/utils': 2.4.2
       tslib: 2.6.1
+
+  /systeminformation@5.21.0:
+    resolution: {integrity: sha512-wjjDNDejzmM+ezWZ+iG2r10eOVBLDG75NnBVlzEAponUoDW+aCF2xdXi7DQbaqEXNysBnEIIlurGVhPn+ZEIHA==}
+    engines: {node: '>=8.0.0'}
+    os: [darwin, linux, win32, freebsd, openbsd, netbsd, sunos, android]
+    hasBin: true
+    dev: false
 
   /tailwind-gradient-mask-image@1.0.0:
     resolution: {integrity: sha512-eZJhn6wHZ0Irfpq5sm0ErewH6IC82gqjfVsDQ7MYrJcfTgepOoTI6EryLppNPoZds4EeD6/H0WrysT8HE90H5g==}
