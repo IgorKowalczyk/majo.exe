@@ -1,5 +1,5 @@
 import prismaClient from "@majoexe/database";
-import { ApplicationCommandType, EmbedBuilder, codeBlock } from "discord.js";
+import { ApplicationCommandType, EmbedBuilder, codeBlock, Status } from "discord.js";
 
 export default {
  name: "ping",
@@ -21,7 +21,7 @@ export default {
     .addFields([
      {
       name: "Host Latency",
-      value: codeBlock("yaml", `${Math.floor(client.ws.ping)}ms`),
+      value: codeBlock("yaml", client.ws.ping > 0 ? `${Math.floor(client.ws.ping)}ms` : "Calculating..."),
       inline: true,
      },
      {
@@ -32,6 +32,16 @@ export default {
      {
       name: "Database Latency",
       value: codeBlock("yaml", `${Math.floor(dbTiming)}ms`),
+      inline: true,
+     },
+     {
+      name: "Websocket Status",
+      value: codeBlock("yaml", `${Status[client.ws.status]}`),
+      inline: true,
+     },
+     {
+      name: "Shards",
+      value: codeBlock("yaml", `${client.ws.shards.size}`),
       inline: true,
      },
     ])

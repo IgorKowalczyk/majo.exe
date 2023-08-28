@@ -69,7 +69,7 @@ export default {
      },
      {
       name: `${client.config.emojis.ping} Ping`,
-      value: codeBlock("yaml", `Client: ${Math.floor(messageCreate.createdTimestamp - interaction.createdTimestamp)}ms\nHost: ${Math.floor(client.ws.ping)}ms\nDatabase: ${Math.floor(dbTiming)}ms`),
+      value: codeBlock("yaml", `Client: ${Math.floor(messageCreate.createdTimestamp - interaction.createdTimestamp)}ms\nHost: ${Math.floor(client.ws.ping) > 0 ? `${Math.floor(client.ws.ping)}ms` : "Calculating..."}\nDatabase: ${Math.floor(dbTiming)}ms`),
       inline: false,
      },
      {

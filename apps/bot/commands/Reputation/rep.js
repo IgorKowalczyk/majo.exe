@@ -102,6 +102,10 @@ export default {
      return client.errorMessages.createSlashError(interaction, "❌ You can't give reputation to yourself");
     }
 
+    if (user.bot) {
+     return client.errorMessages.createSlashError(interaction, "❌ You can't give reputation to a bot");
+    }
+
     if (timeout.has(`${interaction.member.user.id}-${user.id}`)) {
      return client.errorMessages.createSlashError(interaction, `❌ You can't give reputation to ${user} for another \`${formatDuration(timeout.get(`${interaction.member?.user?.id}-${user.id}`) - Date.now())}\``);
     }
@@ -129,6 +133,10 @@ export default {
 
     if (user.id === interaction.member.user.id) {
      return client.errorMessages.createSlashError(interaction, "❌ You can't take reputation from yourself");
+    }
+
+    if (user.bot) {
+     return client.errorMessages.createSlashError(interaction, "❌ You can't take reputation from a bot");
     }
 
     if (timeout.has(`${interaction.member.user.id}-${user.id}`)) {
@@ -169,6 +177,11 @@ export default {
     if (amount >= 2147483647) {
      return client.errorMessages.createSlashError(interaction, "❌ You can't set a user's reputation to a number that is too large");
     }
+
+    if (user.bot) {
+     return client.errorMessages.createSlashError(interaction, "❌ You can't set a bot's reputation");
+    }
+
     const rep = await setReputation(user, interaction.guild, amount);
 
     const embed = new EmbedBuilder()
