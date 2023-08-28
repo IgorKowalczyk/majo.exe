@@ -1,9 +1,9 @@
 /* eslint-disable complexity */
 import prismaClient from "@majoexe/database";
+import { cacheGet, cacheSet } from "@majoexe/database/redis";
 import { createUser } from "@majoexe/util/database";
 import { formatDuration } from "@majoexe/util/functions";
 import { EmbedBuilder } from "discord.js";
-const timeout = new Map();
 
 export async function interactionCreate(client, interaction) {
  try {
@@ -17,10 +17,12 @@ export async function interactionCreate(client, interaction) {
    if (shouldDefer) await interaction.deferReply({ ephemeral: false });
 
    if (!client.slashCommands.has(interaction.commandName)) return;
-   const key = `${interaction.user.id}${interaction.commandName}`;
-   if (client.slashCommands.get(interaction.commandName).cooldown) {
-    if (timeout.get(key) && timeout.get(key).time + client.slashCommands.get(interaction.commandName).cooldown > Date.now()) {
-     const timeLeft = timeout.get(key).time + client.slashCommands.get(interaction.commandName).cooldown - Date.now();
+   const key = `timeout-${interaction.user.id}-${interaction.commandName}`;
+   const cooldown = client.slashCommands.get(interaction.commandName).cooldown;
+   if (cooldown) {
+    const time = JSON.parse(await cacheGet(key));
+    if (time && time.time + cooldown > Date.now()) {
+     const timeLeft = time.time + cooldown - Date.now();
      const embed = new EmbedBuilder()
       .setTitle("‼️ Slow down!")
       .setDescription(`You are on cooldown! Please wait \`${formatDuration(timeLeft)}\` before using this command again!`)
@@ -32,10 +34,7 @@ export async function interactionCreate(client, interaction) {
       });
      return interaction.followUp({ ephemeral: true, embeds: [embed] });
     } else {
-     timeout.set(key, { time: Date.now() });
-     setTimeout(() => {
-      timeout instanceof Map ? timeout.delete(key) : timeout.del(key);
-     }, client.slashCommands.get(interaction.commandName).cooldown);
+     await cacheSet(key, { userId: interaction.user.id, time: Date.now() }, cooldown);
     }
    }
 
@@ -98,6 +97,7 @@ export async function interactionCreate(client, interaction) {
    modal.run(client, interaction, guildSettings);
   }
  } catch (err) {
+  console.error(err);
   client.debugger("error", err);
  }
 }
