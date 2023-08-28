@@ -23,7 +23,7 @@ export default {
 
    const driveFields = drive.map((d) => ({
     name: `${client.config.emojis.drive_icon} ${d.name}`,
-    value: codeBlock(`Type: ${d.type}\nSize: ${Math.floor(d.size / 1024 / 1024 / 1024)}GB`),
+    value: codeBlock("yaml", `Type: ${d.type}\nSize: ${Math.floor(d.size / 1024 / 1024 / 1024)}GB`),
     inline: true,
    }));
 
@@ -59,22 +59,22 @@ export default {
      },
      {
       name: `${client.config.emojis.optical_disk} Operating System`,
-      value: codeBlock(`${os.distro} (${os.kernel} ${os.arch})`),
+      value: codeBlock("yaml", `${os.distro} (${os.kernel} ${os.arch})`),
       inline: false,
      },
      {
       name: `${client.config.emojis.package} Tools`,
-      value: codeBlock(`Node.js: ${process.version}\nDiscord.js: ${version}`),
+      value: codeBlock("yaml", `Node.js: ${process.version}\nDiscord.js: ${version}`),
       inline: false,
      },
      {
       name: `${client.config.emojis.ping} Ping`,
-      value: codeBlock(`Client: ${Math.floor(messageCreate.createdTimestamp - interaction.createdTimestamp)}ms\nHost: ${Math.floor(client.ws.ping)}ms\nDatabase: ${Math.floor(dbTiming)}ms`),
+      value: codeBlock("yaml", `Client: ${Math.floor(messageCreate.createdTimestamp - interaction.createdTimestamp)}ms\nHost: ${Math.floor(client.ws.ping)}ms\nDatabase: ${Math.floor(dbTiming)}ms`),
       inline: false,
      },
      {
       name: `${client.config.emojis.cpu_icon} CPU Usage`,
-      value: codeBlock(`Cores: ${cpu.cores} (${cpu.physicalCores} physical)\nModel: ${cpu.manufacturer} ${cpu.brand}\n${cpu.speed > 0 ? `Speed: ${cpu.speed}GHz\n` : ""}Load: ${Math.floor(load.currentLoad)}% (${Math.floor(load.currentLoadUser)}% user, ${Math.floor(load.currentLoadSystem)}% system, ${Math.floor(load.avgLoad)}% average)`),
+      value: codeBlock("yaml", `Cores: ${cpu.cores} (${cpu.physicalCores} physical)\nModel: ${cpu.manufacturer} ${cpu.brand}\n${cpu.speed > 0 ? `Speed: ${cpu.speed}GHz\n` : ""}Load: ${Math.floor(load.currentLoad)}% (${Math.floor(load.currentLoadUser)}% user, ${Math.floor(load.currentLoadSystem)}% system, ${Math.floor(load.avgLoad)}% average)`),
       inline: false,
      },
 
@@ -82,7 +82,7 @@ export default {
 
      {
       name: `${client.config.emojis.ram_icon} RAM Usage`,
-      value: codeBlock(`Total: ${Math.floor(memory.total / 1024 / 1024 / 1024)}GB\nUsed: ${Math.floor(memory.used / 1024 / 1024 / 1024)}GB (${Math.floor((memory.used / memory.total) * 100)}%)\nFree: ${Math.floor(memory.free / 1024 / 1024 / 1024)}GB (${Math.floor((memory.free / memory.total) * 100)}%)\nProcess: ${Math.floor(process.memoryUsage().heapUsed / 1024 / 1024)}MB`),
+      value: codeBlock("yaml", `Total: ${Math.floor(memory.total / 1024 / 1024 / 1024)}GB\nUsed: ${Math.floor(memory.used / 1024 / 1024 / 1024)}GB (${Math.floor((memory.used / memory.total) * 100)}%)\nFree: ${Math.floor(memory.free / 1024 / 1024 / 1024)}GB (${Math.floor((memory.free / memory.total) * 100)}%)\nProcess: ${Math.floor(process.memoryUsage().heapUsed / 1024 / 1024)}MB`),
       inline: false,
      },
      {

@@ -21,17 +21,17 @@ export default {
     .addFields([
      {
       name: "Host Latency",
-      value: codeBlock(`${Math.floor(client.ws.ping)}ms`),
+      value: codeBlock("yaml", `${Math.floor(client.ws.ping)}ms`),
       inline: true,
      },
      {
       name: "Client Latency",
-      value: codeBlock(`${Math.floor(message.createdTimestamp - interaction.createdTimestamp)}ms`),
+      value: codeBlock("yaml", `${Math.floor(message.createdTimestamp - interaction.createdTimestamp)}ms`),
       inline: true,
      },
      {
       name: "Database Latency",
-      value: codeBlock(`${Math.floor(dbTiming)}ms`),
+      value: codeBlock("yaml", `${Math.floor(dbTiming)}ms`),
       inline: true,
      },
     ])
