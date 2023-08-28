@@ -82,7 +82,7 @@ export default {
 
      {
       name: `${client.config.emojis.ram_icon} RAM Usage`,
-      value: codeBlock(`Total: ${Math.floor(memory.total / 1024 / 1024 / 1024)}GB\nUsed: ${Math.floor(memory.used / 1024 / 1024 / 1024)}GB (${Math.floor((memory.used / memory.total) * 100)}%)\nFree: ${Math.floor(memory.free / 1024 / 1024 / 1024)}GB (${Math.floor((memory.free / memory.total) * 100)}%)`),
+      value: codeBlock(`Total: ${Math.floor(memory.total / 1024 / 1024 / 1024)}GB\nUsed: ${Math.floor(memory.used / 1024 / 1024 / 1024)}GB (${Math.floor((memory.used / memory.total) * 100)}%)\nFree: ${Math.floor(memory.free / 1024 / 1024 / 1024)}GB (${Math.floor((memory.free / memory.total) * 100)}%)\nProcess: ${Math.floor(process.memoryUsage().heapUsed / 1024 / 1024)}MB`),
       inline: false,
      },
      {
