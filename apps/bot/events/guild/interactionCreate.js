@@ -97,7 +97,6 @@ export async function interactionCreate(client, interaction) {
    modal.run(client, interaction, guildSettings);
   }
  } catch (err) {
-  console.error(err);
   client.debugger("error", err);
  }
 }
