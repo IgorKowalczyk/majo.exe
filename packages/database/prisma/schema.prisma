@@ -81,19 +81,22 @@ model Suggestions {
 }
 
 model Guild {
- id               String         @id @default(cuid())
- guildId          String         @unique @map(name: "guild_id")
- profanityLevel   Int            @default(0) @map(name: "profanity_level")
- embedColor       String         @default("#5865F2") @map(name: "embed_color")
- embedLastChanged DateTime?      @default(now()) @map(name: "embed_last_changed")
- lastUpdated      DateTime       @default(now()) @map(name: "last_updated")
- guildLogs        GuildLogs[]
- guildXp          GuildXp[]
- GuildJoin        GuildJoin[]
- GuildLeave       GuildLeave[]
- Reputation       Reputation[]
- Giveaway         Giveaways[]
- GuildMessage     GuildMessage[]
+ id                                String         @id @default(cuid())
+ guildId                           String         @unique @map(name: "guild_id")
+ enableXP                          Boolean        @default(true) @map(name: "enable_xp")
+ enableXPLastChanged               DateTime       @default(now()) @map(name: "enable_xp_last_changed")
+ enableXPLevelUpMessage            Boolean        @default(true) @map(name: "sent_level_messages")
+ enableXPLevelUpMessageLastChanged DateTime       @default(now()) @map(name: "sent_level_messages_last_changed")
+ embedColor                        String         @default("#5865F2") @map(name: "embed_color")
+ embedLastChanged                  DateTime       @default(now()) @map(name: "embed_last_changed")
+ lastUpdated                       DateTime       @default(now()) @map(name: "last_updated")
+ guildLogs                         GuildLogs[]
+ guildXp                           GuildXp[]
+ GuildJoin                         GuildJoin[]
+ GuildLeave                        GuildLeave[]
+ Reputation                        Reputation[]
+ Giveaway                          Giveaways[]
+ GuildMessage                      GuildMessage[]
 
  @@map(name: "guilds")
 }

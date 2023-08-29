@@ -1,5 +1,5 @@
 // Settings
-export * from "./settings/fetchProfanity.js";
+export * from "./settings/XPSettings.js";
 
 // Logs
 export * from "./logs/fetchLogs.js";

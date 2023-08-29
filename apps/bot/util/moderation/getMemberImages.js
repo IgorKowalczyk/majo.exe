@@ -120,7 +120,7 @@ export async function getUserBanner(client, interaction, color) {
    .setImage(banner)
    .setFooter({
     text: `Requested by ${interaction.member.user.globalName || interaction.member.user.username}`,
-    iconURL: interaction.user.user.displayAvatarURL({
+    iconURL: interaction.member.user.displayAvatarURL({
      size: 256,
     }),
    });

@@ -1,4 +1,4 @@
-import { checkXP } from "@majoexe/util/database";
+import { checkXP, fetchXPSettings } from "@majoexe/util/database";
 import { ApplicationCommandType, ApplicationCommandOptionType, AttachmentBuilder, EmbedBuilder, ButtonBuilder, ActionRowBuilder, ButtonStyle } from "discord.js";
 import { createXPCard } from "../../util/images/createXPCard.js";
 
@@ -19,6 +19,10 @@ export default {
  ],
  run: async (client, interaction, guildSettings) => {
   try {
+   const xpSettings = await fetchXPSettings(interaction.guild.id);
+   if (!xpSettings || !xpSettings.enableXP) {
+    return client.errorMessages.createSlashError(interaction, "❌ XP is disabled in this server.");
+   }
    const user = interaction.options.getUser("user") || interaction.member.user;
    if (user.bot) {
     return client.errorMessages.createSlashError(interaction, "❌ You can't check the XP of a bot.\nNote: Bots don't gain XP.");

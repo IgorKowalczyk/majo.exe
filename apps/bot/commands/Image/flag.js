@@ -120,6 +120,9 @@ export default {
     }
     image = attachment.proxyURL;
    } else {
+    if (!user.displayAvatarURL({ size: 2048, extension: "png", forceStatic: true })) {
+     return client.errorMessages.createSlashError(interaction, "❌ The user must have an avatar.");
+    }
     image = user.displayAvatarURL({
      size: 2048,
      extension: "png",

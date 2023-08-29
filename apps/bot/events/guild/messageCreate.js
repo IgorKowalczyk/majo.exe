@@ -1,5 +1,6 @@
 import prismaClient from "@majoexe/database";
 import { cacheGet, cacheSet } from "@majoexe/database/redis";
+import { fetchXPSettings } from "@majoexe/util/database";
 import { EmbedBuilder, AttachmentBuilder } from "discord.js";
 import { createXPCard } from "../../util/images/createXPCard.js";
 
@@ -41,6 +42,10 @@ export async function messageCreate(client, message) {
    },
   });
  }
+
+ const settings = await fetchXPSettings(message.guild.id);
+
+ if (!settings || !settings.enableXP) return;
 
  const key = `${message.guild.id}-${message.author.id}`;
  const time = JSON.parse(await cacheGet(key));
@@ -86,6 +91,8 @@ export async function messageCreate(client, message) {
   });
   return;
  }
+
+ if (!settings.enableXPLevelUpMessage) return;
 
  const level = Math.floor(0.1 * Math.sqrt(xp.xp));
  const xpAfter = xp.xp + random;

@@ -1,4 +1,5 @@
 import prismaClient from "@majoexe/database";
+import { fetchXPSettings } from "@majoexe/util/database";
 import { ApplicationCommandType, EmbedBuilder, ButtonBuilder, ActionRowBuilder, ButtonStyle } from "discord.js";
 
 export default {
@@ -9,6 +10,11 @@ export default {
  dm_permission: false,
  run: async (client, interaction, guildSettings) => {
   try {
+   const xpSettings = await fetchXPSettings(interaction.guild.id);
+   if (!xpSettings || !xpSettings.enableXP) {
+    return client.errorMessages.createSlashError(interaction, "❌ XP is disabled in this server.");
+   }
+
    const xp = await prismaClient.guildXp.findMany({
     where: {
      guildId: interaction.guild.id,

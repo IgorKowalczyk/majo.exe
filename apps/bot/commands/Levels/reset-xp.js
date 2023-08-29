@@ -1,4 +1,4 @@
-import { resetXP } from "@majoexe/util/database";
+import { resetXP, fetchXPSettings } from "@majoexe/util/database";
 import { ApplicationCommandType, ApplicationCommandOptionType, PermissionFlagsBits, EmbedBuilder } from "discord.js";
 
 export default {
@@ -19,6 +19,10 @@ export default {
  default_member_permissions: [PermissionFlagsBits.Administrator],
  run: async (client, interaction, guildSettings) => {
   try {
+   const xpSettings = await fetchXPSettings(interaction.guild.id);
+   if (!xpSettings || !xpSettings.enableXP) {
+    return client.errorMessages.createSlashError(interaction, "❌ XP is disabled in this server.");
+   }
    const user = interaction.options.getUser("user");
    if (user.bot) {
     return client.errorMessages.createSlashError(interaction, "❌ You can't reset the XP of a bot.\nNote: Bots don't gain XP.");
