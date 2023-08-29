@@ -1,7 +1,7 @@
 import prismaClient from "@majoexe/database";
 import { cacheGet, cacheSet } from "@majoexe/database/redis";
 import { fetchXPSettings } from "@majoexe/util/database";
-import { EmbedBuilder, AttachmentBuilder } from "discord.js";
+import { EmbedBuilder, AttachmentBuilder, PermissionsBitField } from "discord.js";
 import { createXPCard } from "../../util/images/createXPCard.js";
 
 export async function messageCreate(client, message) {
@@ -99,6 +99,9 @@ export async function messageCreate(client, message) {
  const nextLevel = Math.floor(0.1 * Math.sqrt(xpAfter));
 
  if (level < nextLevel) {
+  const permissions = message.channel.permissionsFor(message.guild.members.me);
+  if (!permissions.has(PermissionsBitField.Flags.SendMessages) || !permissions.has(PermissionsBitField.Flags.EmbedLinks) || !permissions.has(PermissionsBitField.Flags.AttachFiles)) return;
+
   message.author.avatar = message.author.displayAvatarURL({ dynamic: false, size: 128 });
   const rank = await createXPCard(message.author, { xp: xpAfter, level: nextLevel, xpNeeded: Math.ceil(Math.pow((nextLevel + 1) / 0.1, 2)) }, "#10B981");
 

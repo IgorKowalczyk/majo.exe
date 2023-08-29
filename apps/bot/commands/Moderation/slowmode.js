@@ -27,11 +27,11 @@ export default {
     return client.errorMessages.createSlashError(interaction, "❌ Invalid time provided");
    }
 
-   if (!channel.permissionsFor(interaction.guild.members.me).has(PermissionsBitField.ManageChannels)) {
+   if (!channel.permissionsFor(interaction.guild.members.me).has(PermissionsBitField.Flags.ManageChannels)) {
     return client.errorMessages.createSlashError(interaction, "❌ I don't have permission to manage channels");
    }
 
-   if (!channel.permissionsFor(interaction.member).has(PermissionsBitField.ManageChannels)) {
+   if (!channel.permissionsFor(interaction.member).has(PermissionsBitField.Flags.ManageChannels)) {
     return client.errorMessages.createSlashError(interaction, "❌ You don't have permission to manage channels");
    }
 
