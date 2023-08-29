@@ -1,4 +1,4 @@
-import { ApplicationCommandType, ApplicationCommandOptionType, PermissionsBitField, EmbedBuilder } from "discord.js";
+import { ApplicationCommandType, ApplicationCommandOptionType, PermissionsBitField, EmbedBuilder, PermissionFlagsBits } from "discord.js";
 import ms from "ms";
 
 export default {
@@ -8,6 +8,7 @@ export default {
  cooldown: 5000,
  dm_permission: false,
  usage: "/slowmode <time>",
+ default_member_permissions: [PermissionFlagsBits.ManageChannels],
  options: [
   {
    name: "time",

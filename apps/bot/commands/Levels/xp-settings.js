@@ -9,11 +9,13 @@ export default {
  cooldown: 3000,
  dm_permission: false,
  usage: "/xp-settings <subcommand>",
+ default_member_permissions: [PermissionFlagsBits.Administrator],
  options: [
   {
    name: "change",
    description: "📈 Change the XP settings of current server",
    type: ApplicationCommandOptionType.Subcommand,
+   usage: "/xp-settings change <action> <type>",
    default_member_permissions: [PermissionFlagsBits.Administrator],
    options: [
     {
@@ -54,10 +56,10 @@ export default {
    name: "view",
    description: "📈 View the XP settings of current server",
    type: ApplicationCommandOptionType.Subcommand,
+   usage: "/xp-settings view",
    default_member_permissions: [PermissionFlagsBits.Administrator],
   },
  ],
- default_member_permissions: [PermissionFlagsBits.Administrator],
  run: async (client, interaction, guildSettings) => {
   const subcommand = interaction.options.getSubcommand();
 

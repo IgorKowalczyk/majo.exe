@@ -1,5 +1,5 @@
 /* eslint-disable complexity */
-import { ApplicationCommandType, ApplicationCommandOptionType, EmbedBuilder, PermissionsBitField, codeBlock } from "discord.js";
+import { ApplicationCommandType, ApplicationCommandOptionType, EmbedBuilder, PermissionsBitField, codeBlock, PermissionFlagsBits } from "discord.js";
 import isURL from "validator/lib/isURL.js";
 
 export default {
@@ -15,6 +15,7 @@ export default {
    description: "🎨 Create an emoji on this server",
    type: ApplicationCommandOptionType.Subcommand,
    usage: "/emoji create <emoji name> <emoji url>",
+   default_member_permissions: [PermissionFlagsBits.ManageGuildExpressions],
    options: [
     {
      name: "emoji_name",
@@ -35,6 +36,7 @@ export default {
    description: "🎨 Delete an emoji from this server",
    type: ApplicationCommandOptionType.Subcommand,
    usage: "/emoji delete <emoji>",
+   default_member_permissions: [PermissionFlagsBits.ManageGuildExpressions],
    options: [
     {
      name: "emoji",

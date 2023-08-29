@@ -8,6 +8,7 @@ export default {
  cooldown: 3000,
  dm_permission: false,
  usage: "/reset <user>",
+ default_member_permissions: [PermissionFlagsBits.Administrator],
  options: [
   {
    name: "user",
@@ -16,7 +17,6 @@ export default {
    required: true,
   },
  ],
- default_member_permissions: [PermissionFlagsBits.Administrator],
  run: async (client, interaction, guildSettings) => {
   try {
    const xpSettings = await fetchXPSettings(interaction.guild.id);
