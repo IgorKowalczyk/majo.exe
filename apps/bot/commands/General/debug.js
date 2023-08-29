@@ -1,5 +1,5 @@
 import prismaClient from "@majoexe/database";
-import { EmbedBuilder, time, codeBlock, ApplicationCommandType, version } from "discord.js";
+import { EmbedBuilder, codeBlock, ApplicationCommandType, version } from "discord.js";
 import { cpu as cpuInfo, mem, diskLayout, osInfo, currentLoad } from "systeminformation";
 
 export default {
@@ -82,8 +82,8 @@ export default {
       inline: false,
      },
      {
-      name: `💡 Did you know about this?`,
-      value: `>>> **The stats above are due to our wonderful hosting - [TrestHost](https://dash.tresthost.me/register?ref=majonez.exe)**. Register now and try their __VPS, Node.js, Go, Java and Python hosting!__`,
+      name: "💡 Did you know about this?",
+      value: ">>> **The stats above are due to our wonderful hosting - [TrestHost](https://dash.tresthost.me/register?ref=majonez.exe)**. Register now and try their __VPS, Node.js, Go, Java and Python hosting!__",
      },
     ])
     .setImage("https://media.discordapp.net/attachments/905722570286960650/1146160796351610910/20230814_061107_0000-1.png?width=1200&height=406")

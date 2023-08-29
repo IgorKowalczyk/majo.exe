@@ -1,10 +1,10 @@
 import { ApplicationCommandType, ApplicationCommandOptionType, PermissionFlagsBits } from "discord.js";
 import { banMember } from "../../util/moderation/ban.js";
+import { changememberNickname } from "../../util/moderation/changeMemberNickname.js";
 import { getUserAvatar, getUserBanner } from "../../util/moderation/getMemberImages.js";
 import { getMemberInfo } from "../../util/moderation/getMemberInfo.js";
 import { kickMember } from "../../util/moderation/kick.js";
 import { unBanMember } from "../../util/moderation/unban.js";
-import { changememberNickname } from "../../util/moderation/changeMemberNickname.js";
 
 export default {
  name: "member",

@@ -1,6 +1,6 @@
 /* eslint-disable complexity */
 import { setXPLevelUpMessageSettings, setXPSettings, fetchXPSettings } from "@majoexe/util/database";
-import { ApplicationCommandType, ApplicationCommandOptionType, PermissionFlagsBits, EmbedBuilder, time } from "discord.js";
+import { ApplicationCommandType, ApplicationCommandOptionType, PermissionsBitField, PermissionFlagsBits, EmbedBuilder, time } from "discord.js";
 
 export default {
  name: "xp-settings",
