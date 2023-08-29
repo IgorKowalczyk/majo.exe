@@ -1,3 +1,6 @@
+import prismaClient from "@majoexe/database";
+import { ApplicationCommandType, EmbedBuilder, ButtonBuilder, ActionRowBuilder, ButtonStyle } from "discord.js";
+
 export default {
  name: "leaderboard",
  description: "📈 Check 10 top users with most XP points",
