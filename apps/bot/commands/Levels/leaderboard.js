@@ -55,6 +55,7 @@ export default {
     return interaction.followUp({ ephemeral: false, embeds: [embed] });
    }
   } catch (err) {
+   console.log(err);
    client.errorMessages.internalError(interaction, err);
   }
  },
