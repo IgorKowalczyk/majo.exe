@@ -34,11 +34,7 @@ export default {
    const embed = new EmbedBuilder()
     .setTitle(`${client.config.emojis.page} Generic Information`)
     .setColor(guildSettings?.embedColor || client.config.defaultColor)
-    .setThumbnail(
-     client.user.displayAvatarURL({
-      size: 256,
-     })
-    )
+
     .setDescription(`>>> **Bot created with ${client.config.emojis.heart} by [Majonez.exe#2495](https://discord.com/users/544164729354977282) in Poland 🇵🇱**`)
 
     .setFields([
@@ -86,11 +82,11 @@ export default {
       inline: false,
      },
      {
-      name: `${client.config.emojis.uptime} Date launched`,
-      value: `>>> ${time(client.readyAt)} (${time(client.readyAt, "R")})`,
-      inline: true,
+      name: `💡 Did you know about this?`,
+      value: `>>> **The stats above are due to our wonderful hosting - [TrestHost](https://dash.tresthost.me/register?ref=majonez.exe)**. Register now and try their __VPS, Node.js, Go, Java and Python hosting!__`,
      },
     ])
+    .setImage("https://media.discordapp.net/attachments/905722570286960650/1146160796351610910/20230814_061107_0000-1.png?width=1200&height=406")
     .setFooter({
      text: `Requested by ${interaction.member.user.globalName || interaction.member.user.username}`,
      iconURL: interaction.member.user.displayAvatarURL({
