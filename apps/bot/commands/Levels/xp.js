@@ -29,7 +29,6 @@ export default {
 
    user.avatar = user.displayAvatarURL({
     dynamic: false,
-
     size: 128,
    });
 
@@ -50,7 +49,6 @@ export default {
     .setTimestamp();
 
    if (client.config.dashboard.enabled && client.config.dashboard.link) {
-    embed.setImage(`${client.config.dashboard.link}/api/level/image/${user.id}`);
     const contactButton = new ButtonBuilder().setLabel("View Leaderboard").setStyle(ButtonStyle.Link).setURL(`${client.config.dashboard.link}/dashboard/${interaction.guild.id}/leaderboard`);
     const action = new ActionRowBuilder().addComponents(contactButton);
     return interaction.followUp({ ephemeral: false, embeds: [embed], components: [action] });

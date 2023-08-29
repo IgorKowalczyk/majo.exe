@@ -1,8 +1,8 @@
 /* eslint-disable complexity */
+import { cacheGet, cacheSet } from "@majoexe/database/redis";
 import { checkReputation, giveReputation, takeReputation, setReputation } from "@majoexe/util/database";
 import { formatDuration } from "@majoexe/util/functions";
 import { ApplicationCommandType, ApplicationCommandOptionType, EmbedBuilder, PermissionFlagsBits } from "discord.js";
-const timeout = new Map();
 
 export default {
  name: "rep",
@@ -106,19 +106,22 @@ export default {
      return client.errorMessages.createSlashError(interaction, "❌ You can't give reputation to a bot");
     }
 
-    if (timeout.has(`${interaction.member.user.id}-${user.id}`)) {
-     return client.errorMessages.createSlashError(interaction, `❌ You can't give reputation to ${user} for another \`${formatDuration(timeout.get(`${interaction.member?.user?.id}-${user.id}`) - Date.now())}\``);
+    const key = `${interaction.member.user.id}-${user.id}`;
+    const time = JSON.parse(await cacheGet(key));
+
+    if (time && time.time + 86400000 > Date.now()) {
+     const timeLeft = time.time + 86400000 - Date.now();
+     return client.errorMessages.createSlashError(interaction, `❌ You can't give reputation to ${user} for another \`${formatDuration(timeLeft)}\``);
     }
 
     const rep = await giveReputation(user, interaction.guild);
-
-    timeout.set(`${interaction.member.user.id}-${user.id}`, Date.now() + 86400000);
+    await cacheSet(key, { userId: interaction.user.id, time: Date.now() }, 86400000);
 
     const embed = new EmbedBuilder()
      .setColor(guildSettings?.embedColor || client.config.defaultColor)
      .setTimestamp()
      .setTitle("👍 Reputation")
-     .setDescription(`> Successfully gave ${user} \`1\` reputation point. They now have *\`${rep}\` reputation points`)
+     .setDescription(`> Successfully gave ${user} \`1\` reputation point. They now have *\`${rep}\`* reputation points`)
      .setThumbnail(user.displayAvatarURL({ size: 256 }))
      .setFooter({
       text: `Requested by ${interaction.member.user.globalName || interaction.member.user.username}`,
@@ -139,13 +142,17 @@ export default {
      return client.errorMessages.createSlashError(interaction, "❌ You can't take reputation from a bot");
     }
 
-    if (timeout.has(`${interaction.member.user.id}-${user.id}`)) {
-     return client.errorMessages.createSlashError(interaction, `❌ You can't take reputation from ${user} for another \`${formatDuration(timeout.get(`${interaction.member?.user?.id}-${user.id}`) - Date.now())}\``);
+    const key = `${interaction.member.user.id}-${user.id}`;
+    const time = JSON.parse(await cacheGet(key));
+
+    if (time && time.time + 86400000 > Date.now()) {
+     const timeLeft = time.time + 86400000 - Date.now();
+     return client.errorMessages.createSlashError(interaction, `❌ You can't take reputation from ${user} for another \`${formatDuration(timeLeft)}\``);
     }
 
     const rep = await takeReputation(user, interaction.guild);
 
-    timeout.set(`${interaction.member.user.id}-${user.id}`, Date.now() + 86400000);
+    await cacheSet(key, { userId: interaction.user.id, time: Date.now() }, 86400000);
 
     const embed = new EmbedBuilder()
      .setColor(guildSettings?.embedColor || client.config.defaultColor)

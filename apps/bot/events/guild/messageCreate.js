@@ -1,8 +1,7 @@
 import prismaClient from "@majoexe/database";
+import { cacheGet, cacheSet } from "@majoexe/database/redis";
 import { EmbedBuilder, AttachmentBuilder } from "discord.js";
 import { createXPCard } from "../../util/images/createXPCard.js";
-
-const XPTimeout = new Map();
 
 export async function messageCreate(client, message) {
  if (message.author.bot) return;
@@ -43,9 +42,11 @@ export async function messageCreate(client, message) {
   });
  }
 
- const xpKey = `${message.guild.id}-${message.author.id}`;
+ const key = `${message.guild.id}-${message.author.id}`;
+ const time = JSON.parse(await cacheGet(key));
+ const cooldown = 60000;
 
- if (XPTimeout.get(xpKey) && XPTimeout.get(xpKey).cooldown > Date.now()) return;
+ if (time && time.time + cooldown > Date.now()) return;
  const random = Math.floor(Math.random() * 60) + 1;
 
  const xp = await prismaClient.guildXp.findFirst({
@@ -55,9 +56,7 @@ export async function messageCreate(client, message) {
   },
  });
 
- XPTimeout.set(xpKey, {
-  cooldown: Date.now() + 60000,
- });
+ await cacheSet(key, { time: Date.now() }, cooldown);
 
  if (!xp) {
   await prismaClient.guildXp.create({
