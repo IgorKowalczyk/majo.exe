@@ -1,6 +1,3 @@
-import prismaClient from "@majoexe/database";
-import { ApplicationCommandType, EmbedBuilder, ButtonBuilder, ActionRowBuilder, ButtonStyle } from "discord.js";
-
 export default {
  name: "leaderboard",
  description: "📈 Check 10 top users with most XP points",
@@ -36,7 +33,7 @@ export default {
     .setTimestamp()
     .setDescription(
      `${
-      xp.length < 0
+      xp.length === 0 || !xp
        ? "❌ 0 users found"
        : xp
           .map((user, index) => {
