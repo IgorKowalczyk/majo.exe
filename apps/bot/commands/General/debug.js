@@ -1,4 +1,5 @@
 import prismaClient from "@majoexe/database";
+import { formatNumber } from "@majoexe/util/functions";
 import { EmbedBuilder, codeBlock, ApplicationCommandType, version } from "discord.js";
 import { cpu as cpuInfo, mem, diskLayout, osInfo, currentLoad } from "systeminformation";
 
@@ -40,17 +41,17 @@ export default {
     .setFields([
      {
       name: `${client.config.emojis.discord_logo} Guild Count`,
-      value: `>>> \`${client.guilds.cache.size} guilds\``,
+      value: `>>> \`${formatNumber(client.guilds.cache.size)} guilds\``,
       inline: true,
      },
      {
       name: `${client.config.emojis.member} Users Count`,
-      value: `>>> \`${client.guilds.cache.reduce((a, g) => a + g.memberCount, 0)} members\``,
+      value: `>>> \`${formatNumber(client.guilds.cache.reduce((a, g) => a + g.memberCount, 0))} members\``,
       inline: true,
      },
      {
       name: `${client.config.emojis.channel} Channels Count`,
-      value: `>>> \`${client.channels.cache.size} channels\``,
+      value: `>>> \`${formatNumber(client.channels.cache.size)} channels\``,
       inline: true,
      },
      {
