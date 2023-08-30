@@ -60,8 +60,8 @@ NEXT_PUBLIC_URL=YOUR_WEBSITE_URL
 
 ## 🗜️ Requirements
 
-- `PostgreSQL 13x` or higher
-- `Node.js 16x` or higher
+- `PostgreSQL 14x` or higher
+- `Node.js 18x` or higher
 - `(Any)` Linux x64¹
 - `512MB` of RAM (minimum)
 - `2.5GB` of hard drive space (minimum)

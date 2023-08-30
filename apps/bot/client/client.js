@@ -9,6 +9,11 @@ import { loadFonts } from "../util/images/fonts/loadFonts.js";
 import { dirname } from "path";
 import { fileURLToPath } from "url";
 
+if (process.versions.node.split(".")[0] < 18) {
+ Logger("error", "Node version is below 18, please update your node version to 18 or above.");
+ process.exit(1);
+}
+
 const cwd = dirname(fileURLToPath(import.meta.url)).replace("/client", "");
 Logger("info", `Current working directory: ${cwd}`);
 process.chdir(cwd);

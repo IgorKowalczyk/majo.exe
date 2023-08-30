@@ -1,7 +1,7 @@
 {
   "name": "@majoexe/bot",
   "version": "6.0.0",
-  "description": "Majo.exe have almost everything - Fun, Memes, Images, Giveaway Moderation, Anime, NSFW and eveb more!. Majo.exe serve over 150 commands!",
+  "description": "Majo.exe have almost everything - Fun, Memes, Images, Giveaway Moderation, Anime and even more!. Majo.exe serve over 150 commands!",
   "exports": null,
   "type": "module",
   "scripts": {
@@ -40,6 +40,9 @@
     "eslint-plugin-json": "3.1.0",
     "nodemon": "3.0.1",
     "prettier": "3.0.3"
+  },
+  "engines": {
+    "node": ">=18.0.0"
   },
   "repository": {
     "type": "git",
