@@ -3,8 +3,9 @@
 ## 📝 Description
 
 - `/prisma/schema.prisma` contains database schema. It's used by [Prisma](https://www.prisma.io/) to generate database client.
-- `/prisma/migrations` contains database migrations. They are used to update database.
+- `/prisma/migrations` contains database migrations. They are used to update database. Do not edit them manually.
 - `/src/client.js` contains database client. It's used by Majo.exe to interact with database. It also includes edge client for Prisma Data Proxy.
+- `/src/redis.js` contains Redis client. It's used by Majo.exe to cache queries and data. It supports Redis and memory cache depending on configuration. It also includes functions to add, remove and get data from cache.
 
 > [!IMPORTANT]
 > Never share your `.env` file with anyone. It contains sensitive data like database credentials, tokens and secrets. Leakage of this data can cause serious security issues.
