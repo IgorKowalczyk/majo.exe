@@ -8,8 +8,7 @@
 </p>
 
 > [!IMPORTANT]
-> You're currently on the <code>rebuild</code> branch. The code you find here may not work or contain a lot of bugs. Do not use it in production!
->
+> You're currently on the <code>rebuild</code> branch. The code you find here may not work or contain a lot of bugs. Do not use it in production!  
 > [⚠️ Go to stable branch ⚠️](https://github.com/IgorKowalczyk/majo.exe/tree/master)
 
 ## ✨ Features
