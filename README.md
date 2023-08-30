@@ -13,11 +13,11 @@
 
 ## ✨ Features
 
-- ⚙️ Fully customizable
-- 🌆 Build-in Dashboard
-- 📝 Easy Config
-- 💯 150+ Commands
-- 📚 Easy Hosting
+- ⚙️ **Fully Customizable:** Tailor Majo.exe to your preferences with comprehensive customization options.
+- 🌆 **Built-in Dashboard:** Manage your Majo.exe settings effortlessly through our intuitive dashboard.
+- 📝 **Easy Configuration:** Streamlined configuration process that makes setting up a breeze.
+- 💯 **150+ Commands:** Access over 150 versatile commands to enrich your server's experience.
+- 📚 **Easy Hosting:** Effortlessly host Majo.exe on your servers and keep it online 24/7.
 
 ## 🔗 Invite
 
@@ -27,7 +27,7 @@ Go to [this link](https://discord.com/oauth2/authorize/?permissions=4294967287&s
 
 ## 🖥️ Hosting
 
-We are hosting Majo.exe on our own servers. Majo.exe _will be_ online 24/7. [Invite Majo here!](https://beta.majoexe.xyz/api/invite)  
+We are hosting Majo.exe on our own servers. Majo.exe will be online 24/7. [Invite Majo here!](https://beta.majoexe.xyz/api/invite)  
 However, if you want to host Majo.exe yourself see links below.
 
 - **[🤖 Bot setup tutorial](/apps/bot/README.md)**
@@ -37,7 +37,9 @@ However, if you want to host Majo.exe yourself see links below.
 > [!WARNING]
 > There is one global `.env` file for all projects. **Do not create `.env` file in `apps/bot`, `packages/database` or `apps/dashboard` folders!** **This can cause problems and potential security issues.**
 
-## 🗜️ Requirements
+## ⚙️ System Requirements
+
+Ensure your setup meets these prerequisites before setting up Majo.exe:
 
 - `PostgreSQL 14x` or higher
 - `Node.js 18x` or higher
@@ -96,7 +98,7 @@ We will review your pull request as soon as possible. We might suggest some chan
 
 When submitting a pull request:
 
-- Clone the repo.
+- Clone the repository (`git clone https://github.com/igorkowalczyk/majo.exe`)
 - Create a branch off of `master` and give it a meaningful name (e.g. `my-awesome-new-feature`).
 - Open a [pull request](https://github.com/igorkowalczyk/majo.exe/pulls) on [GitHub](https://github.com) and describe the feature or fix.
 

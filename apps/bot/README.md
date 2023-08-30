@@ -39,7 +39,9 @@ CLIENT_SECRET=DISCORD_BOT_SECRET
 
 ---
 
-## 🗜️ Requirements
+## ⚙️ System Requirements
+
+Ensure your setup meets these prerequisites before setting up Majo.exe:
 
 - `PostgreSQL 14x` or higher
 - `Node.js 18x` or higher

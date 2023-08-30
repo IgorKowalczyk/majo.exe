@@ -58,7 +58,9 @@ NEXT_PUBLIC_URL=YOUR_WEBSITE_URL
 
 ---
 
-## 🗜️ Requirements
+## ⚙️ System Requirements
+
+Ensure your setup meets these prerequisites before setting up Majo.exe:
 
 - `PostgreSQL 14x` or higher
 - `Node.js 18x` or higher
