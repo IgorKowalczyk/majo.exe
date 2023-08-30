@@ -1,13 +1,4 @@
-<h3 align="center">You're currently on the <code>rebuild</code> branch. The code you find here may not work or contain a lot of bugs. Do not use it in production!</h3>
-<h3 align="center">Planned release date: Q3/Q4 2023</h3>
-
-<h3 align="center">⚠️ <a href="https://github.com/IgorKowalczyk/majo.exe/tree/master"/>Go to stable branch ⚠️</h3>
-
----
-
-<br/>
-
-![Header](https://user-images.githubusercontent.com/49127376/208478832-74eee443-c0fb-4691-beb6-adee42d063e3.png)
+![Header](https://github.com/IgorKowalczyk/majo.exe/assets/49127376/8fd53e0b-1902-460c-9d6c-7d42ea84f8bb)
 
 <p align="center">
  <a href="https://majoexe.xyz/server"><img src="https://img.shields.io/discord/666599184844980224?color=%234552ef&logo=discord&label=Discord&style=flat&logoColor=fff" alt="Discord" /></a>
@@ -15,6 +6,11 @@
  <a href="https://majoexe.xyz/"><img src="https://img.shields.io/github/actions/workflow/status/igorkowalczyk/majo.exe/codeql-analysis.yml?branch=rebuild&style=flat&label=CodeQL&logo=github&color=%234552ef" alt="CodeQL Checks" /></a>
  <a href="https://majoexe.xyz"><img src="https://img.shields.io/github/license/igorkowalczyk/majo.exe?style=flat&;logo=github&label=License&color=%234552ef" alt="GitHub License" /></a>
 </p>
+
+> ![IMPORTANT]
+> You're currently on the <code>rebuild</code> branch. The code you find here may not work or contain a lot of bugs. Do not use it in production!
+>
+> [⚠️ Go to stable branch ⚠️](https://github.com/IgorKowalczyk/majo.exe/tree/master)
 
 ## ✨ Features
 

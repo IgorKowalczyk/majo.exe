@@ -1,4 +1,4 @@
-![Header Bot](https://user-images.githubusercontent.com/49127376/236699649-bea10af2-7783-4fa3-9f90-29e172f8f53b.png)
+![Header - Bot](https://github.com/IgorKowalczyk/majo.exe/assets/49127376/9a34b389-e710-435e-9514-1f4c5f733d74)
 
 <p align="center">
  <a href="https://majoexe.xyz/server"><img src="https://img.shields.io/discord/666599184844980224?color=%234552ef&logo=discord&label=Discord&style=flat&logoColor=fff" alt="Discord" /></a>
