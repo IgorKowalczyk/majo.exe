@@ -39,7 +39,7 @@ export async function GET() {
   const servers =
    (await Promise.all(
     data
-     .filter((server) => server.permissions_names.includes("MANAGE_GUILD") || server.permissions_names.includes("ADMINISTRATOR"))
+     .filter((server) => server.permissions_names.includes("ManageGuild") || server.permissions_names.includes("Administrator"))
      .map(async (server) => {
       server.bot = await isBotInServer(server.id);
       return server;

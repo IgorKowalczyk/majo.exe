@@ -19,8 +19,8 @@ export default async function Settings({ params }) {
   // prettier
   !serverMember ||
   !serverMember.permissions_names ||
-  !serverMember.permissions_names.includes("MANAGE_GUILD") ||
-  !serverMember.permissions_names.includes("ADMINISTRATOR")
+  !serverMember.permissions_names.includes("ManageGuild") ||
+  !serverMember.permissions_names.includes("Administrator")
  )
   return redirect("/auth/error?error=It%20looks%20like%20you%20do%20not%20have%20permission%20to%20access%20this%20page.");
 
@@ -64,7 +64,7 @@ export default async function Settings({ params }) {
 
     <div className="flex flex-wrap items-center justify-start gap-2">
      {serverDownload.roles.map((role) => {
-      if (getPermissionNames(role.permissions).includes("MANAGE_GUILD") || getPermissionNames(role.permissions).includes("ADMINISTRATOR")) {
+      if (getPermissionNames(role.permissions).includes("ManageGuild") || getPermissionNames(role.permissions).includes("Administrator")) {
        return (
         <div key={role.id} className="flex items-center justify-start gap-2 rounded-full border border-neutral-700 px-2 py-1">
          <div

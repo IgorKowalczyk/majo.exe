@@ -18,7 +18,7 @@ export async function getServers(token) {
   if (!res.ok) return { error: "Invalid token" };
   const json = await res.json();
   for (const server of json) {
-   server.permissions_names = getPermissionNames(server.permissions) || [];
+   server.permissions_names = getPermissionNames(BigInt(server.permissions || 0)) || [];
   }
   return json;
  } catch (e) {

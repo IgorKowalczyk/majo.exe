@@ -67,7 +67,7 @@ export async function GET(request, { params }) {
 
   const serverMember = await getGuildMember(server.id, session.access_token);
 
-  if (!serverMember || !serverMember.permissions_names || !serverMember.permissions_names.includes("MANAGE_GUILD") || !serverMember.permissions_names.includes("ADMINISTRATOR")) {
+  if (!serverMember || !serverMember.permissions_names || !serverMember.permissions_names.includes("ManageGuild") || !serverMember.permissions_names.includes("Administrator")) {
    return new NextResponse(
     JSON.stringify({
      error: "Unauthorized",

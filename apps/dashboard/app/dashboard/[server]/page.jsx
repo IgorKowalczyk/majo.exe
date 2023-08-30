@@ -26,8 +26,8 @@ export default async function ServerOverview({ params }) {
   // prettier
   !serverMember ||
   !serverMember.permissions_names ||
-  !serverMember.permissions_names.includes("MANAGE_GUILD") ||
-  !serverMember.permissions_names.includes("ADMINISTRATOR")
+  !serverMember.permissions_names.includes("ManageGuild") ||
+  !serverMember.permissions_names.includes("Administrator")
  )
   return redirect("/auth/error?error=It%20looks%20like%20you%20do%20not%20have%20permission%20to%20access%20this%20page.");
  const guildPreview = await getGuildPreview(serverDownload.id);

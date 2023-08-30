@@ -68,12 +68,14 @@ export default function RootLayout({ children }) {
       <Nav />
       <main className="flex min-h-screen flex-row flex-wrap">
        <div className="mt-8">{children}</div>
+       {/*
        <div className="fixed bottom-0 left-0 right-0 z-[99999] mx-auto mb-6 hidden w-fit rounded-xl border border-neutral-800 bg-background-navbar/70 px-6 py-4 text-center text-white backdrop-blur-[9px] md:block">
         Note: The site is still in development. Please report any bugs or issues to the{" "}
         <Link href="/discord" target={"_blank"} className="text-button-primary hover:underline">
          support server.
         </Link>
        </div>
+       */}
       </main>
       <TailwindIndicator />
      </VisibilityProvider>
