@@ -47,7 +47,7 @@ export default {
        : xp
           .map((user, index) => {
            const place = index + 1;
-           const emoji = place === 1 ? "🥇" : place === 2 ? "🥈" : place === 3 ? "🥉" : place;
+           const emoji = place === 1 ? "🥇" : place === 2 ? "🥈" : place === 3 ? "🥉" : ` ${place} `;
            return `**[${emoji}]** <@${user.userId}> - \`${user.xp}xp\``;
           })
           .join("\n")
