@@ -23,7 +23,7 @@
 
 Go to [this link](https://discord.com/oauth2/authorize/?permissions=4294967287&scope=bot%20applications.commands&client_id=949342410150924319) and add the bot (this requires `MANAGE_GUILD` permission) to your server.
 
-> - [Or to make it easier, visit our website](https://beta.majoexe.xyz/)
+[Or to make it easier, visit our website](https://beta.majoexe.xyz/)
 
 ## 🖥️ Hosting
 
