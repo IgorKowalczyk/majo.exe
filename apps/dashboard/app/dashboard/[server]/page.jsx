@@ -97,7 +97,7 @@ export default async function ServerOverview({ params }) {
       {guildPreview.approximate_presence_count || "0"} online
      </div>
     </div>
-    <SecondaryButton href={`#`} className={"mx-auto !block sm:ml-auto"}>
+    <SecondaryButton href={"#"} className={"mx-auto !block sm:ml-auto"}>
      Public stats
     </SecondaryButton>
    </Block>
