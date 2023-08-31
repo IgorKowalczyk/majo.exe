@@ -6,8 +6,12 @@ import { createPrismaRedisCache } from "prisma-redis-middleware";
 import { Logger } from "./logger.js";
 import Redis from "./redis.js";
 
-const globalForPrisma = global;
-let prisma;
+const prismaClientSingleton = () => {
+ return new PrismaClient();
+};
+
+const globalForPrisma = globalThis;
+const prisma = globalForPrisma.prisma || prismaClientSingleton();
 
 const logger = (params, next) => {
  const before = Date.now();
@@ -17,19 +21,7 @@ const logger = (params, next) => {
  return result;
 };
 
-if (process.env.RUNTIME === "edge") {
- const { PrismaClient } = require("@prisma/client/edge.js");
- prisma = new PrismaClient();
-} else {
- if (!globalForPrisma.prisma) {
-  globalForPrisma.prisma = new PrismaClient();
- }
- prisma = globalForPrisma.prisma;
-}
-
-if (process.env.NODE_ENV !== "production") {
- globalForPrisma.prisma = prisma;
-}
+if (debuggerConfig.displayDatabaseLogs) prisma.$use(logger);
 
 const cache = createPrismaRedisCache({
  models: [
@@ -68,8 +60,6 @@ const cache = createPrismaRedisCache({
 
 prisma.$use(cache);
 
-if (debuggerConfig.displayDatabaseLogs) {
- prisma.$use(logger);
-}
-
 export default prisma;
+
+if (process.env.NODE_ENV !== "production") globalForPrisma.prisma = prisma;

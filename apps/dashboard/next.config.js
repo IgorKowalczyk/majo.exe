@@ -21,18 +21,7 @@ const nextConfig = {
  webpack: (config, { isServer }) => {
   if (isServer) {
    config.plugins = [...config.plugins, new PrismaPlugin()];
-  } else {
-   config.resolve = {
-    ...config.resolve,
-    fallback: {
-     net: false,
-     dns: false,
-     tls: false,
-     assert: false,
-    },
-   };
   }
-
   return config;
  },
  async redirects() {

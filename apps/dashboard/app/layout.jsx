@@ -4,7 +4,6 @@ import { Session } from "components/blocks/client/Session";
 import { Hotjar } from "components/blocks/Hotjar";
 import { Nav } from "components/nav/server/Nav";
 import { Inter } from "next/font/google";
-import Link from "next/link";
 import { twMerge } from "tailwind-merge";
 import ProgressBar from "@/components/blocks/client/ProgressBar";
 import { TailwindIndicator } from "@/components/blocks/TailwindIndicator";

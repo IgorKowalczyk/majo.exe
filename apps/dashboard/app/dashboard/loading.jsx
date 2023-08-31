@@ -15,14 +15,14 @@ export default function Loading() {
     </h2>
     <div className="flex flex-row flex-wrap justify-center gap-4 sm:flex-col">
      {[...Array(10)].map((_, i) => (
-      <>
-       <div key={i} className="hidden flex-row items-center justify-start gap-4 sm:flex">
+      <div key={i}>
+       <div className="hidden flex-row items-center justify-start gap-4 sm:flex">
         <AvatarSkeleton />
         <TextSkeleton className={"!h-7"} />
         <ButtonSkeleton className={"ml-auto"} />
        </div>
        <AvatarSkeleton className="!h-24 !w-24 !rounded-md sm:hidden" />
-      </>
+      </div>
      ))}
     </div>
    </div>
