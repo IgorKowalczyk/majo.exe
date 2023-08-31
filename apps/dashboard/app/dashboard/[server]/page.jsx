@@ -9,6 +9,7 @@ import { Block } from "@/components/blocks/Block";
 import { Leaderboard } from "@/components/blocks/client/Leaderboard";
 import { Tooltip } from "@/components/blocks/client/Tooltip";
 import { Header1, Header4, Header5 } from "@/components/blocks/Headers";
+import { SecondaryButton } from "@/components/buttons/server/Secondary";
 
 export const metadata = {
  title: "Server Overview",
@@ -96,7 +97,9 @@ export default async function ServerOverview({ params }) {
       {guildPreview.approximate_presence_count || "0"} online
      </div>
     </div>
-    <span className="mx-auto sm:ml-auto">Powered by Majo.exe</span>
+    <SecondaryButton href={`#`} className={"mx-auto !block sm:ml-auto"}>
+     Public stats
+    </SecondaryButton>
    </Block>
 
    <div className="mt-6 block gap-6 lg:flex lg:items-start">

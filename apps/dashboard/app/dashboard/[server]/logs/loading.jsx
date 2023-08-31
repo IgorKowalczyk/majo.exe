@@ -11,7 +11,7 @@ export default function Loading() {
    </Header1>
    <div className="gap-4 overflow-auto">
     {[...Array(5)].map((_, i) => (
-     <TextSkeleton className={"!h-20 !w-full flex-row items-center justify-start"} key={i} />
+     <TextSkeleton className={"my-4 !h-20 !w-full flex-row items-center justify-start"} key={i} />
     ))}
    </div>
   </>

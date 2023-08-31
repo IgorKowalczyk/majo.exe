@@ -5,6 +5,7 @@ import { getSession } from "lib/session";
 import { redirect } from "next/navigation";
 import Logs from "@/components/blocks/client/Logs";
 import { Header1 } from "@/components/blocks/Headers";
+import { Block } from "@/components/blocks/Block";
 
 export const metadata = {
  title: "Server Logs",
@@ -56,7 +57,11 @@ export default async function ServerLogs({ params }) {
  });
 
  logs.forEach((log) => {
-  log.createdAt = log.createdAt.toISOString();
+  if (log.createdAt instanceof Date) {
+   log.createdAt = log.createdAt.toISOString();
+  } else {
+   log.createdAt = new Date().toISOString();
+  }
  });
 
  return (
@@ -65,7 +70,15 @@ export default async function ServerLogs({ params }) {
     <ListBulletIcon className="h-12 w-12" />
     Activity Logs
    </Header1>
-   <div className="overflow-auto">{logs.length === 0 ? <h3 className="mt-4 text-xl font-bold">No logs found!</h3> : <Logs initialItems={logs} id={serverDownload.id} />}</div>
+   <div className="overflow-auto">
+    {logs.length === 0 ? (
+     <Block>
+      <h3 className="text-xl font-bold">No logs found!</h3>
+     </Block>
+    ) : (
+     <Logs initialItems={logs} id={serverDownload.id} />
+    )}
+   </div>
   </>
  );
 }

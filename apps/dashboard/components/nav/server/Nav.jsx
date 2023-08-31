@@ -6,7 +6,7 @@ import { UserMenuDropdown } from "components/nav/client/UserMenuDropdown";
 import { getSession } from "lib/session";
 import Image from "next/image";
 import Link from "next/link";
-import { ServerDropdown } from "../client/ServerDropdown";
+//import { ServerDropdown } from "../client/ServerDropdown";
 import { SideMenuControl } from "../client/SideMenuControl";
 
 export async function Nav() {
@@ -21,7 +21,9 @@ export async function Nav() {
      <h1 className=" hidden font-bold sm:block">{meta.title}</h1>
     </div>
    </Link>
+   {/*
    {session && <ServerDropdown />}
+   */}
    <>
     <div className="mx-4 h-6 w-1 border-l-2 border-l-neutral-700" />
 

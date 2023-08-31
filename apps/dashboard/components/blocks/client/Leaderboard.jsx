@@ -82,7 +82,7 @@ export function Leaderboard({ data, showControls = true, showSearch = true }) {
 
  return (
   <>
-   <div className="flex flex-col">
+   <div className="flex w-full flex-col">
     <div className="flex flex-row items-center gap-4">
      {showSearch && <InputWithIcon icon={<MagnifyingGlassIcon className="h-5 w-5" />} placeholder="Search" value={globalFilter || ""} onChange={(e) => setGlobalFilter(e.target.value)} className="h-10" />}
      {showControls && (

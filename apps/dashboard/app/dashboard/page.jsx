@@ -44,8 +44,7 @@ export default async function Dashboard() {
        <>
         <div key={server.id} className="hidden flex-row items-center justify-start gap-4 sm:flex">
          {server.icon ? <Image src={`https://cdn.discordapp.com/icons/${server.id}/${server.icon}.${server.icon.startsWith("a_") ? "gif" : "png"}`} alt={server.name} quality={95} width={64} height={64} className="h-16 w-16 rounded-full" /> : <div className="h-16 w-16 rounded-full bg-button-secondary" />}
-         <h3 className="text-center  text-xl font-bold">{server.name}</h3>
-
+         <h3 className="text-center text-xl font-bold">{server.name}</h3>
          <>
           {server.bot ? (
            <PrimaryButton href={`/dashboard/${server.id}`} className="ml-auto">

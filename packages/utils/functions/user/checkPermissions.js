@@ -11,7 +11,7 @@ export function getPermissionNames(permissionNumber) {
  for (const permission in PermissionFlagsBits) {
   if (Object.prototype.hasOwnProperty.call(PermissionFlagsBits, permission)) {
    const permissionValue = PermissionFlagsBits[permission];
-   if ((permissionNumber & permissionValue) === permissionValue) {
+   if ((BigInt(permissionNumber) & permissionValue) === permissionValue) {
     permissionNames.push(permission);
    }
   }

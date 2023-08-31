@@ -42,7 +42,7 @@ export default function Logs({ initialItems, id }) {
 
  return (
   <div className="block">
-   <InfiniteScroll hasMore={hasMore} pageStart={0} loadMore={loadMore} loader={<TextSkeleton className="mt-4 !h-20 w-full" />}>
+   <InfiniteScroll hasMore={hasMore} pageStart={0} loadMore={loadMore} loader={<TextSkeleton className="my-4 !h-20 !w-full" />}>
     {items.map((item) => (
      <Disclosure key={item.id}>
       {({ open }) => (
