@@ -1,4 +1,5 @@
 /* eslint-disable complexity */
+import { ArrowTopRightOnSquareIcon } from "@heroicons/react/24/outline";
 import prismaClient from "@majoexe/database";
 import { getServer, getGuildPreview, getGuildMember } from "@majoexe/util/functions";
 import { getSession } from "lib/session";
@@ -97,8 +98,9 @@ export default async function ServerOverview({ params }) {
       {guildPreview.approximate_presence_count || "0"} online
      </div>
     </div>
-    <SecondaryButton href={"#"} className={"mx-auto !block sm:ml-auto"}>
-     Public stats
+    <SecondaryButton href={"#"} className={"mx-auto !flex flex-row whitespace-nowrap sm:ml-auto"}>
+     <ArrowTopRightOnSquareIcon className="mr-2 h-5 w-5" aria-hidden="true" role="img" />
+     Server page
     </SecondaryButton>
    </Block>
 

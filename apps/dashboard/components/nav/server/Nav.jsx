@@ -27,7 +27,7 @@ export async function Nav() {
    <>
     <div className="mx-4 h-6 w-1 border-l-2 border-l-neutral-700" />
 
-    <Link href="/commands" className="items-center text-white/60 duration-200 hover:text-white motion-reduce:transition-none md:flex">
+    <Link href="/commands" className="flex items-center text-white/60 duration-200 hover:text-white motion-reduce:transition-none">
      <RectangleStackIcon className="mr-2 h-5 w-5 " aria-hidden="true" role="img" /> Commands
     </Link>
    </>
