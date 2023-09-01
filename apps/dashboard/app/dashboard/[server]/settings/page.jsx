@@ -92,7 +92,7 @@ export default async function Settings({ params }) {
     <div className="flex items-center justify-start gap-2 font-bold">
      Enable public dashboard overview
      <span className="ml-auto">
-      <EnablePublicDashboard enabled={serverDownload.publicPage} serverId={serverDownload.id} />
+      <EnablePublicDashboard enabled={Boolean(guild.publicPage)} serverId={serverDownload.id} />
      </span>
     </div>
    </Block>

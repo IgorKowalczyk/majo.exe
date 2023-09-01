@@ -1,11 +1,16 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Switch from "./Switch";
 
 export function EnablePublicDashboard({ enabled, serverId }) {
+ console.log(enabled);
  const [isEnabled, setIsEnabled] = useState(enabled);
  const [disabled, setDisabled] = useState(false);
+
+ useEffect(() => {
+  setIsEnabled(enabled);
+ }, [enabled]);
 
  const toggle = async () => {
   setDisabled(true);
@@ -20,17 +25,19 @@ export function EnablePublicDashboard({ enabled, serverId }) {
     enabled: !isEnabled,
    }),
   });
+
   if (!res.ok) {
-   setIsEnabled(isEnabled);
    setDisabled(false);
+   setIsEnabled(isEnabled);
   }
+
   const json = await res.json();
 
-  if (json.status === 200) {
+  if (json.code === 200) {
    setDisabled(false);
   } else {
-   setIsEnabled(isEnabled);
    setDisabled(false);
+   setIsEnabled(isEnabled);
   }
  };
 

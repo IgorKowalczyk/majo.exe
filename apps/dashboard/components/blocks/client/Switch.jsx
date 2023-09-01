@@ -3,12 +3,11 @@
 import { Switch as HeadlessSwitch } from "@headlessui/react";
 import clsx from "clsx";
 
-export default function Switch({ enabled, onChange, disabled = false }) {
+export default function Switch({ enabled = false, onChange, disabled = false }) {
  return (
   <HeadlessSwitch
    checked={enabled}
    onChange={() => onChange()}
-   disabled={disabled}
    className={clsx(
     {
      "border-accent-primary bg-accent-primary": enabled,
@@ -23,7 +22,7 @@ export default function Switch({ enabled, onChange, disabled = false }) {
     aria-hidden="true"
     className={clsx(
      {
-      "translate-x-[25px] bg-gray-700": enabled,
+      "translate-x-[25px] bg-white": enabled,
       "translate-x-[5px]": !enabled,
       "!bg-white": disabled,
      },

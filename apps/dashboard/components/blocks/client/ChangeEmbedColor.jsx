@@ -98,7 +98,7 @@ export function ChangeEmbedColor({ serverId, serverColor }) {
        <div
         className="ml-1 mt-2 rounded bg-[#2b2d31] p-4 shadow-lg"
         style={{
-         "border-left": `4px solid ${color}`,
+         borderLeft: `4px solid ${color}`,
         }}
        >
         <p className="mb-2 font-bold">Embed color changed to {color}</p>
