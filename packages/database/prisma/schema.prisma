@@ -89,7 +89,10 @@ model Guild {
  enableXPLevelUpMessageLastChanged DateTime       @default(now()) @map(name: "sent_level_messages_last_changed")
  embedColor                        String         @default("#5865F2") @map(name: "embed_color")
  embedLastChanged                  DateTime       @default(now()) @map(name: "embed_last_changed")
- lastUpdated                       DateTime       @default(now()) @map(name: "last_updated")
+ lastUpdated                       DateTime       @default(now()) @updatedAt @map(name: "last_updated")
+ publicPage                        Boolean        @default(false) @map(name: "public_page")
+ publicPageLastChanged             DateTime       @default(now()) @map(name: "public_page_last_changed")
+ vanity                            String?        @unique
  guildLogs                         GuildLogs[]
  guildXp                           GuildXp[]
  GuildJoin                         GuildJoin[]

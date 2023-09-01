@@ -1,8 +1,6 @@
 /* eslint-disable complexity */
-import { ArrowTopRightOnSquareIcon } from "@heroicons/react/24/outline";
 import prismaClient from "@majoexe/database";
-import { getServer, getGuildPreview, getGuildMember } from "@majoexe/util/functions";
-import { getSession } from "lib/session";
+import { getServer, getGuildPreview } from "@majoexe/util/functions";
 import Image from "next/image";
 import Link from "next/link";
 import { redirect } from "next/navigation";
@@ -10,7 +8,6 @@ import { Block } from "@/components/blocks/Block";
 import { Leaderboard } from "@/components/blocks/client/Leaderboard";
 import { Tooltip } from "@/components/blocks/client/Tooltip";
 import { Header1, Header4, Header5 } from "@/components/blocks/Headers";
-import { SecondaryButton } from "@/components/buttons/server/Secondary";
 
 export const metadata = {
  title: "Server Overview",
@@ -18,20 +15,25 @@ export const metadata = {
 };
 
 export default async function ServerOverview({ params }) {
- const session = await getSession();
- if (!session || !session.access_token) redirect("/auth/login");
  const { server } = params;
- const serverDownload = await getServer(server);
+ const guildId = await prismaClient.guild.findFirst({
+  where: {
+   OR: [
+    {
+     guildId: server,
+    },
+    {
+     vanity: server,
+    },
+   ],
+  },
+  select: {
+   guildId: true,
+  },
+ });
+ if (!guildId || !guildId.guildId || !guildId.publicPage) return redirect("/auth/error?error=It%20looks%20like%20the%20server%20you%20are%20trying%20to%20display%20does%20not%20exist");
+ const serverDownload = await getServer(guildId.guildId);
  if (!serverDownload || serverDownload.code === 10004 || !serverDownload.bot) return redirect("/auth/error?error=It%20looks%20like%20the%20server%20you%20are%20trying%20to%20display%20does%20not%20exist");
- const serverMember = await getGuildMember(serverDownload.id, session.access_token);
- if (
-  // prettier
-  !serverMember ||
-  !serverMember.permissions_names ||
-  !serverMember.permissions_names.includes("ManageGuild") ||
-  !serverMember.permissions_names.includes("Administrator")
- )
-  return redirect("/auth/error?error=It%20looks%20like%20you%20do%20not%20have%20permission%20to%20access%20this%20page.");
  const guildPreview = await getGuildPreview(serverDownload.id);
 
  const guild = await prismaClient.guild.findFirst({
@@ -97,11 +99,8 @@ export default async function ServerOverview({ params }) {
       <div className="mr-2 h-3 w-3 rounded-full bg-[#22a55b]" />
       {guildPreview.approximate_presence_count || "0"} online
      </div>
+     <span className="ml-auto whitespace-nowrap">Powered by Majo.exe</span>
     </div>
-    <SecondaryButton href={`/public/${guildPreview.id}`} className={"mx-auto !flex flex-row whitespace-nowrap sm:ml-auto"}>
-     <ArrowTopRightOnSquareIcon className="mr-2 h-5 w-5" aria-hidden="true" role="img" />
-     Server page
-    </SecondaryButton>
    </Block>
 
    <div className="mt-6 block gap-6 lg:flex lg:items-start">

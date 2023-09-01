@@ -1,4 +1,4 @@
-import { Cog6ToothIcon, PaintBrushIcon, ShieldCheckIcon } from "@heroicons/react/24/outline";
+import { Cog6ToothIcon, PaintBrushIcon, ShieldCheckIcon, UsersIcon } from "@heroicons/react/24/outline";
 import { globalConfig } from "@majoexe/config";
 import prismaClient from "@majoexe/database";
 import { getGuildMember, getPermissionNames, getServer } from "@majoexe/util/functions";
@@ -6,6 +6,7 @@ import { getSession } from "lib/session";
 import { redirect } from "next/navigation";
 import { Block } from "@/components/blocks/Block";
 import { ChangeEmbedColor } from "@/components/blocks/client/ChangeEmbedColor";
+import { EnablePublicDashboard } from "@/components/blocks/client/EnablePublicDashboard";
 import { Header1 } from "@/components/blocks/Headers";
 
 export default async function Settings({ params }) {
@@ -78,6 +79,21 @@ export default async function Settings({ params }) {
        );
       }
      })}
+    </div>
+   </Block>
+   <Block className="mt-4">
+    <h2 className="flex items-center justify-start gap-2 text-left text-xl font-bold">
+     <UsersIcon className="h-5 w-5" />
+     Public Dashboard
+    </h2>
+    <p className="mb-4 text-left">
+     Everyone with the link can view public dashboard overview. This is useful for communities that want to show off their server. <span className="font-bold">The dashboard overview do not include any sensitive information.</span>
+    </p>
+    <div className="flex items-center justify-start gap-2 font-bold">
+     Enable public dashboard overview
+     <span className="ml-auto">
+      <EnablePublicDashboard enabled={serverDownload.publicPage} serverId={serverDownload.id} />
+     </span>
     </div>
    </Block>
   </>
