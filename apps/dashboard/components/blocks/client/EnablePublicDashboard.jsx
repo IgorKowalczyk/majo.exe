@@ -1,16 +1,24 @@
 "use client";
 
+import { ExclamationCircleIcon } from "@heroicons/react/24/outline";
+import clsx from "clsx";
 import { useEffect, useState } from "react";
 import Switch from "./Switch";
+import { Input } from "@/components/buttons/server/Input";
 
-export function EnablePublicDashboard({ enabled, serverId }) {
- console.log(enabled);
+export function EnablePublicDashboard({ enabled, serverId, vanityURL }) {
  const [isEnabled, setIsEnabled] = useState(enabled);
  const [disabled, setDisabled] = useState(false);
+ const [vanity, setVanity] = useState(vanityURL);
+ const [vanityError, setVanityError] = useState(false);
 
  useEffect(() => {
   setIsEnabled(enabled);
  }, [enabled]);
+
+ useEffect(() => {
+  setVanity(vanity);
+ }, [vanity]);
 
  const toggle = async () => {
   setDisabled(true);
@@ -41,5 +49,66 @@ export function EnablePublicDashboard({ enabled, serverId }) {
   }
  };
 
- return <Switch enabled={isEnabled} onChange={toggle} disabled={disabled} />;
+ const changeVanityText = async (e) => {
+  setVanity(e.target.value);
+  if (e.target.value.length > 0) {
+   if (!e.target.value.match(/^[a-zA-Z0-9]+$/)) {
+    setVanityError("Vanity URL can only contain letters and numbers.");
+   } else {
+    setVanityError(false);
+   }
+  }
+  if (e.target.value.length > 20) {
+   setVanityError("Vanity URL can only be 20 characters long.");
+  }
+  if (e.target.value.length === 0) {
+   setVanityError(false);
+  }
+ };
+
+ return (
+  <div className="flex flex-col items-start justify-start gap-4">
+   <div className="mx-auto flex flex-col items-center justify-start gap-2 font-bold md:mx-0 md:flex-row">
+    Enable public dashboard overview:
+    <Switch enabled={isEnabled} onChange={toggle} disabled={disabled} />
+   </div>
+   <div className="mx-auto flex flex-col items-center justify-start gap-2 font-bold md:mx-0 md:flex-row">
+    Set server vanity URL:
+    <div className="group flex flex-row-reverse items-center justify-start gap-0">
+     <Input
+      type="text"
+      value={vanity}
+      onChange={(e) => changeVanityText(e)}
+      disabled={disabled}
+      placeholder={"Vanity URL"}
+      className={clsx(
+       {
+        "!border-red-400 focus:!border-red-400": vanityError,
+       },
+
+       "peer !w-fit rounded-l-none border-l-0 !pl-1 font-normal focus:!border-l-0"
+      )}
+      name="vanity"
+     />
+     <div
+      className={clsx(
+       {
+        "!border-red-400 focus:!border-red-400": vanityError,
+        "border-neutral-800 peer-focus:!border-button-primary": !vanityError,
+       },
+       "select-none rounded-md rounded-r-none border border-r-0 border-r-transparent bg-transparent py-2 pl-3 font-normal text-white/60 shadow-sm outline-none !ring-0 duration-200 "
+      )}
+     >
+      {process.env.NEXT_PUBLIC_URL}/server/
+     </div>
+    </div>
+   </div>
+   {vanityError && (
+    <p className="flex items-center text-red-400">
+     <ExclamationCircleIcon className="mr-2 h-5 w-5" />
+     {vanityError}
+    </p>
+   )}
+  </div>
+ );
 }

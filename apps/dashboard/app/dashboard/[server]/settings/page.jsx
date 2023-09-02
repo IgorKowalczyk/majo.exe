@@ -1,4 +1,4 @@
-import { Cog6ToothIcon, PaintBrushIcon, ShieldCheckIcon, UsersIcon } from "@heroicons/react/24/outline";
+import { CheckIcon, Cog6ToothIcon, InformationCircleIcon, PaintBrushIcon, ShieldCheckIcon, UsersIcon, XMarkIcon } from "@heroicons/react/24/outline";
 import { globalConfig } from "@majoexe/config";
 import prismaClient from "@majoexe/database";
 import { getGuildMember, getPermissionNames, getServer } from "@majoexe/util/functions";
@@ -46,8 +46,8 @@ export default async function Settings({ params }) {
     Settings
    </Header1>
    <Block>
-    <h2 className="flex items-center justify-start gap-2 text-left text-xl font-bold">
-     <PaintBrushIcon className="h-5 w-5" />
+    <h2 className="mb-1 flex items-center justify-start gap-2 text-left text-2xl font-bold">
+     <PaintBrushIcon className="h-6 w-6" />
      Default Embed Color
     </h2>
     <p className="mb-4 text-left">Change the color of the embeds sent by the bot. This will not affect embeds sent by other bots.</p>
@@ -55,8 +55,8 @@ export default async function Settings({ params }) {
    </Block>
 
    <Block className="mt-4">
-    <h2 className="flex items-center justify-start gap-2 text-left text-xl font-bold">
-     <ShieldCheckIcon className="h-5 w-5" />
+    <h2 className="mb-1 flex items-center justify-start gap-2 text-left text-2xl font-bold">
+     <ShieldCheckIcon className="h-6 w-6" />
      Dashboard Access
     </h2>
     <p className="mb-4 text-left">
@@ -82,18 +82,49 @@ export default async function Settings({ params }) {
     </div>
    </Block>
    <Block className="mt-4">
-    <h2 className="flex items-center justify-start gap-2 text-left text-xl font-bold">
-     <UsersIcon className="h-5 w-5" />
+    <h2 className="mb-1 flex items-center justify-start gap-2 text-left text-2xl font-bold">
+     <UsersIcon className="h-6 w-6" />
      Public Dashboard
     </h2>
     <p className="mb-4 text-left">
      Everyone with the link can view public dashboard overview. This is useful for communities that want to show off their server. <span className="font-bold">The dashboard overview do not include any sensitive information.</span>
     </p>
-    <div className="flex items-center justify-start gap-2 font-bold">
-     Enable public dashboard overview
-     <span className="ml-auto">
-      <EnablePublicDashboard enabled={Boolean(guild.publicPage)} serverId={serverDownload.id} />
+
+    <div className="mb-4 grid grid-cols-1 gap-4 lg:grid-cols-2">
+     <Block className="flex flex-col items-start justify-start gap-2">
+      <h3 className="flex items-center text-left text-xl font-bold">
+       <CheckIcon className="mr-2 h-6 w-6 rounded-md border border-green-400 stroke-green-400 p-1" />
+       Things that are shown:
+      </h3>
+      <ul className="list-inside list-disc">
+       <li>Server name and description</li>
+       <li>Server member count</li>
+       <li>Leaderboard</li>
+       <li>Server emojis and stickers</li>
+      </ul>
+     </Block>
+     <Block className="flex flex-col items-start justify-start gap-2">
+      <h3 className="flex items-center text-left text-xl font-bold">
+       <XMarkIcon className="mr-2 h-6 w-6 rounded-md border border-red-400 stroke-red-400 p-1" />
+       Things that are not shown:
+      </h3>
+      <ul className="list-inside list-disc">
+       <li>Server statistics</li>
+       <li>Server settings</li>
+       <li>Server moderation</li>
+       <li>Server logs</li>
+      </ul>
+     </Block>
+    </div>
+
+    <EnablePublicDashboard enabled={Boolean(guild.publicPage)} serverId={serverDownload.id} vanityURL={guild.vanity || guild.guildId} />
+
+    <div className="mt-4 flex flex-row items-start whitespace-nowrap rounded-md border border-accent-primary bg-accent-primary/10 p-4">
+     <span className="mr-1 flex flex-row items-center whitespace-nowrap font-bold">
+      <InformationCircleIcon className="mr-1 h-5 w-5 stroke-accent-primary" />
+      Note:
      </span>
+     <span className="whitespace-normal">The public dashboard will be visible to everyone with the link!</span>
     </div>
    </Block>
   </>
