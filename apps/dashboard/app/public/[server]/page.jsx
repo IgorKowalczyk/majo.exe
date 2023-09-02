@@ -10,13 +10,13 @@ import { Tooltip } from "@/components/blocks/client/Tooltip";
 import { Header1, Header4, Header5 } from "@/components/blocks/Headers";
 
 export const metadata = {
- title: "Server Overview",
+ title: "Public Server Overview",
  description: "View the overview of your server.",
 };
 
 export default async function ServerOverview({ params }) {
  const { server } = params;
- const guildId = await prismaClient.guild.findFirst({
+ const guild = await prismaClient.guild.findFirst({
   where: {
    OR: [
     {
@@ -27,28 +27,11 @@ export default async function ServerOverview({ params }) {
     },
    ],
   },
-  select: {
-   guildId: true,
-  },
  });
- if (!guildId || !guildId.guildId || !guildId.publicPage) return redirect("/auth/error?error=It%20looks%20like%20the%20server%20you%20are%20trying%20to%20display%20does%20not%20exist");
- const serverDownload = await getServer(guildId.guildId);
+ if (!guild || !guild.guildId || !guild.publicPage) return redirect("/auth/error?error=It%20looks%20like%20the%20server%20you%20are%20trying%20to%20display%20does%20not%20exist");
+ const serverDownload = await getServer(guild.guildId);
  if (!serverDownload || serverDownload.code === 10004 || !serverDownload.bot) return redirect("/auth/error?error=It%20looks%20like%20the%20server%20you%20are%20trying%20to%20display%20does%20not%20exist");
  const guildPreview = await getGuildPreview(serverDownload.id);
-
- const guild = await prismaClient.guild.findFirst({
-  where: {
-   guildId: serverDownload.id,
-  },
- });
-
- if (!guild) {
-  await prismaClient.guild.create({
-   data: {
-    guildId: serverDownload.id,
-   },
-  });
- }
 
  const xp = await prismaClient.guildXp.findMany({
   where: {
