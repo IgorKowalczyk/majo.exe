@@ -87,9 +87,9 @@ export function EnablePublicDashboard({ enabled, serverId, vanityURL }) {
    setButtonText("Update vanity");
    try {
     const json = await res.json();
-    setVanityError(json.message);
+    return setVanityError(json.message);
    } catch (e) {
-    setVanityError("Something went wrong.");
+    return setVanityError("Something went wrong.");
    }
   }
 
@@ -100,9 +100,10 @@ export function EnablePublicDashboard({ enabled, serverId, vanityURL }) {
    setTimeout(() => {
     setButtonText("Update vanity");
    }, 5000);
+   return;
   } else {
    setButtonText("Update vanity");
-   setVanityError("Something went wrong.");
+   return setVanityError("Something went wrong.");
   }
  };
 
