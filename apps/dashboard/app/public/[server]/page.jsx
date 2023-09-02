@@ -40,7 +40,7 @@ export default async function ServerOverview({ params }) {
   orderBy: {
    xp: "desc",
   },
-  take: 5,
+  take: 20,
   include: {
    user: {
     select: {
