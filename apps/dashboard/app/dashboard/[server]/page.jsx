@@ -98,8 +98,8 @@ export default async function ServerOverview({ params }) {
       {guildPreview.approximate_presence_count || "0"} online
      </div>
     </div>
-    {serverDownload.publicPage ? (
-     <SecondaryButton href={`/public/${guildPreview.vanity || serverDownload.id}`} className={"mx-auto !flex flex-row whitespace-nowrap sm:ml-auto"}>
+    {guild.publicPage ? (
+     <SecondaryButton href={`/public/${guild.vanity || serverDownload.id}`} className={"mx-auto !flex flex-row whitespace-nowrap sm:ml-auto"}>
       <ArrowTopRightOnSquareIcon className="mr-2 h-5 w-5" aria-hidden="true" role="img" />
       Server page
      </SecondaryButton>
