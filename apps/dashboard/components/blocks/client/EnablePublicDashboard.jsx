@@ -85,7 +85,12 @@ export function EnablePublicDashboard({ enabled, serverId, vanityURL }) {
 
   if (!res.ok) {
    setButtonText("Update vanity");
-   setVanityError("Something went wrong.");
+   try {
+    const json = await res.json();
+    setVanityError(json.message);
+   } catch (e) {
+    setVanityError("Something went wrong.");
+   }
   }
 
   const json = await res.json();

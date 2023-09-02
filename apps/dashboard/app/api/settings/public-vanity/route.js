@@ -29,7 +29,7 @@ export async function POST(request) {
   if (!id || typeof id !== "string" || typeof vanity !== "string") {
    return new NextResponse(
     JSON.stringify({
-     error: "Bad Request. Missing id and vanity or invalid types",
+     error: "Missing id, vanity or invalid types provided",
      code: 400,
     }),
     {
@@ -44,7 +44,7 @@ export async function POST(request) {
   if (!vanity.match(/^[a-zA-Z0-9]+$/)) {
    return new NextResponse(
     JSON.stringify({
-     error: "Bad Request. Vanity must be alphanumeric",
+     error: "Vanity must be alphanumeric",
      code: 400,
     }),
     {
@@ -59,7 +59,7 @@ export async function POST(request) {
   if (vanity.length > 20) {
    return new NextResponse(
     JSON.stringify({
-     error: "Bad Request. Vanity must be less than 20 characters",
+     error: "Vanity must be less than 20 characters",
      code: 400,
     }),
     {
@@ -113,6 +113,27 @@ export async function POST(request) {
     }),
     {
      status: 401,
+     headers: {
+      "server-timing": `response;dur=${Date.now() - start}`,
+     },
+    }
+   );
+  }
+
+  const checkVanity = await prismaClient.guild.findFirst({
+   where: {
+    vanity: vanity,
+   },
+  });
+
+  if (checkVanity) {
+   return new NextResponse(
+    JSON.stringify({
+     error: "Vanity already taken",
+     code: 400,
+    }),
+    {
+     status: 400,
      headers: {
       "server-timing": `response;dur=${Date.now() - start}`,
      },
