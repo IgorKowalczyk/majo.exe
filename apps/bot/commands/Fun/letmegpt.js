@@ -1,7 +1,7 @@
 import { ApplicationCommandType, ApplicationCommandOptionType, EmbedBuilder, ButtonBuilder, ButtonStyle, ActionRowBuilder } from "discord.js";
 
 export default {
- name: "lmgtfy",
+ name: "letmegpt",
  description: "🔍 Let me GPT that for you",
  type: ApplicationCommandType.ChatInput,
  cooldown: 3000,
