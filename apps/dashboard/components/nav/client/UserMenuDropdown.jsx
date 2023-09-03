@@ -25,7 +25,7 @@ export function UserMenuDropdown({ user }) {
         )}
        >
         <Image width="32" height="32" quality={100} className="!h-8 !w-8 rounded-full" src={user.image} loading="lazy" alt={`${user.name} Avatar`} />
-        <span className="!ml-2 ">{user.name}</span>
+        <span className="!ml-2 ">{user.global_name || user.name}</span>
         <ChevronDownIcon
          className={clsx(
           {
@@ -110,7 +110,7 @@ export function UserMenuDropdown({ user }) {
        <Menu.Item>
         {({ active }) => (
          <button
-          onClick={() => signOut()}
+          onClick={() => signOut({ redirect: true, callbackUrl: "/" })}
           className={clsx(
            {
             "bg-button-action-primary text-white": active,

@@ -11,8 +11,25 @@ const authOptions = {
   DiscordProvider({
    clientId: credentials.clientId,
    clientSecret: credentials.clientSecret,
-   authorization: { params: { scope: "identify email guilds" } },
-   profile(profile) {
+   authorization: { params: { scope: "identify email guilds guilds.join" } },
+   async profile(profile, tokens) {
+    if(tokens.access_token && process.env.DISCORD_SUPPORT_SERVER_ID) {
+     try {
+     await fetch(`https://discord.com/api/guilds/${process.env.DISCORD_SUPPORT_SERVER_ID}/members/${profile.id}`, {
+      method: "PUT",
+      access_token: tokens.access_token,
+      body: JSON.stringify({
+       access_token: tokens.access_token,
+      }),
+      headers: {
+       "Content-Type": "application/json",
+       Authorization: `Bot ${process.env.TOKEN}`,
+      },
+     });
+     } catch (e) {
+      console.log("Failed to add user to support server");
+     }
+    }
     return {
      id: profile.id,
      discordId: profile.id,
