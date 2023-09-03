@@ -79,6 +79,8 @@ export default {
     const $ = load(text);
 
     const images = [];
+
+    // eslint-disable-next-line quotes
     $('img[name="comic2"]').each((index, element) => {
      const imageUrl = $(element).attr("src");
      if (imageUrl) images.push(imageUrl);
