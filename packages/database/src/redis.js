@@ -52,7 +52,6 @@ export async function cacheGet(key) {
   return get ? JSON.parse(JSON.stringify(get)) : null;
  } else {
   const get = await cache.get(key);
-  console.log(get);
   return get ? get : JSON.stringify({});
  }
 }
