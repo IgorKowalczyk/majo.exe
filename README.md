@@ -52,22 +52,24 @@ Ensure your setup meets these prerequisites before setting up Majo.exe:
 
 ## Global `.env` file
 
-| Variable        | Description                                      | Required (Bot) | Required (Dashboard) |
-| --------------- | ------------------------------------------------ | -------------- | -------------------- |
-| TOKEN           | Discord bot token                                | ✅             | ✅                   |
-| SECRET          | Secret string (minimum 32 characters)            | ❌             | ✅                   |
-| CLIENT_ID       | Discord client ID                                | ✅             | ✅                   |
-| CLIENT_SECRET   | Discord client secret                            | ❌             | ✅                   |
-| NEXTAUTH_URL    | NextAuth.js URL (e.g., http://localhost:3000)    | ❌             | ✅                   |
-| NEXT_PUBLIC_URL | Next.js public URL (e.g., http://localhost:3000) | ❌¹            | ✅                   |
-| HOTJAR_ID       | [Hotjar](https://hotjar.com) ID                  | ❌             | ❌                   |
-| DATABASE_URL    | Main database URL                                | ✅             | ✅                   |
-| DIRECT_URL      | Non-pooling database URL                         | ❌             | ❌                   |
-| REDIS_URL       | Redis URL²                                       | ❌             | ❌                   |
+| Variable                    | Description                                      | Required (Bot) | Required (Dashboard) |
+| --------------------------- | ------------------------------------------------ | -------------- | -------------------- |
+| `TOKEN`                     | Discord bot token                                | ✅             | ✅                   |
+| `CLIENT_ID`                 | Discord client ID                                | ✅             | ✅                   |
+| `DATABASE_URL`              | Main database URL                                | ✅             | ✅                   |
+| `SECRET`                    | Secret string (minimum 32 characters)            | ❌             | ✅                   |
+| `CLIENT_SECRET`             | Discord client secret                            | ❌             | ✅                   |
+| `NEXTAUTH_URL`              | NextAuth.js URL (e.g., http://localhost:3000)    | ❌             | ✅                   |
+| `NEXT_PUBLIC_URL`           | Next.js public URL (e.g., http://localhost:3000) | ❌¹            | ✅                   |
+| `HOTJAR_ID`                 | [Hotjar](https://hotjar.com) ID                  | ❌             | ❌                   |
+| `DIRECT_URL`                | Non-pooling database URL                         | ❌             | ❌                   |
+| `REDIS_URL`                 | Redis URL²                                       | ❌             | ❌                   |
+| `DISCORD_SUPPORT_SERVER_ID` | Discord support server ID                        | ❌             | ❌³                  |
 
 > [!NOTE]
 > 1: `NEXT_PUBLIC_URL` is required only if you want to also include the dashboard.
 > 2: `REDIS_URL` enables caching. If you don't want to use Redis caching, leave this variable empty. Majo.exe will use Memory caching instead.
+> 3: `DISCORD_SUPPORT_SERVER_ID` is required only if you want to automatically add users to support server when they login to dashboard.
 
 ## 📝 Contributors
 
