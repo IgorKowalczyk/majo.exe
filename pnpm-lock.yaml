@@ -27,6 +27,9 @@ importers:
       '@discordjs/rest':
         specifier: 2.0.1
         version: 2.0.1
+      '@iamtraction/google-translate':
+        specifier: 2.0.1
+        version: 2.0.1
       '@majoexe/config':
         specifier: workspace:*
         version: link:../../packages/config
@@ -1959,6 +1962,13 @@ packages:
 
   /@humanwhocodes/object-schema@1.2.1:
     resolution: {integrity: sha512-ZnQMnLV4e7hDlUvw8H+U8ASL02SS2Gn6+9Ac3wGGLIe7+je2AeAOxPY+izIPJDfFDb7eDjev0Us8MO1iFRN8hA==}
+
+  /@iamtraction/google-translate@2.0.1:
+    resolution: {integrity: sha512-kOTkt23zflxpgxLIe9tLvDU8IvNscXYbgMSXydNkZGWDtJ75YJiU3v7EBz+t7h/gSiY7sT5r4dlFkMrHCl+N6A==}
+    engines: {node: '>=16.0.0'}
+    dependencies:
+      undici: 5.22.1
+    dev: false
 
   /@igorkowalczyk/eslint-config@1.5.5(eslint@8.48.0)(prettier@3.0.3):
     resolution: {integrity: sha512-S1r7d3gjBP0MmXZGs2P86CiNCUYpN2Cdatr+Xf6kPAg+Ff1PbgNBSo0/wD9v957wvuuMPHf2pRGbpRPs5FdCOA==}
