@@ -83,16 +83,6 @@ export function EnablePublicDashboard({ enabled, serverId, vanityURL }) {
    }),
   });
 
-  if (!res.ok) {
-   setButtonText("Update vanity");
-   try {
-    const json = await res.json();
-    return setVanityError(json.message);
-   } catch (e) {
-    return setVanityError("Something went wrong.");
-   }
-  }
-
   const json = await res.json();
 
   if (json.code === 200) {
@@ -128,7 +118,7 @@ export function EnablePublicDashboard({ enabled, serverId, vanityURL }) {
          "!border-red-400 focus:!border-red-400": vanityError,
         },
 
-        "peer !w-fit rounded-l-none border-l-0 !pl-1 font-normal focus:!border-l-0"
+        "peer !w-fit rounded-l-none border-l-0 !pl-0 font-normal focus:!border-l-0"
        )}
        name="vanity"
       />
