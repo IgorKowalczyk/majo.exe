@@ -93,7 +93,7 @@ export function EnablePublicDashboard({ enabled, serverId, vanityURL }) {
    return;
   } else {
    setButtonText("Update vanity");
-   return setVanityError("Something went wrong.");
+   return setVanityError(json.message || "Something went wrong.");
   }
  };
 

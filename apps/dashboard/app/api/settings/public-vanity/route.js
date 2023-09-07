@@ -11,7 +11,7 @@ export async function POST(request) {
   if (!session || !session.access_token) {
    return new NextResponse(
     JSON.stringify({
-     error: "Unauthorized",
+     message: "Unauthorized",
     }),
     {
      status: 401,
@@ -29,7 +29,7 @@ export async function POST(request) {
   if (!id || typeof id !== "string" || typeof vanity !== "string") {
    return new NextResponse(
     JSON.stringify({
-     error: "Missing id, vanity or invalid types provided",
+     message: "Missing id, vanity or invalid types provided",
      code: 400,
     }),
     {
@@ -44,7 +44,7 @@ export async function POST(request) {
   if (!vanity.match(/^[a-zA-Z0-9]+$/)) {
    return new NextResponse(
     JSON.stringify({
-     error: "Vanity must be alphanumeric",
+     message: "Vanity must be alphanumeric",
      code: 400,
     }),
     {
@@ -59,7 +59,7 @@ export async function POST(request) {
   if (vanity.length > 20) {
    return new NextResponse(
     JSON.stringify({
-     error: "Vanity must be less than 20 characters",
+     message: "Vanity must be less than 20 characters",
      code: 400,
     }),
     {
@@ -73,10 +73,10 @@ export async function POST(request) {
 
   const server = await getServer(id);
 
-  if (!server || server.error) {
+  if (!server || server.message) {
    return new NextResponse(
     JSON.stringify({
-     error: "Server not found",
+     message: "Server not found",
      code: 404,
     }),
     {
@@ -91,7 +91,7 @@ export async function POST(request) {
   if (!server.bot) {
    return new NextResponse(
     JSON.stringify({
-     error: "Bot is not in server",
+     message: "Bot is not in server",
      code: 404,
     }),
     {
@@ -108,7 +108,7 @@ export async function POST(request) {
   if (!serverMember || !serverMember.permissions_names || !serverMember.permissions_names.includes("ManageGuild") || !serverMember.permissions_names.includes("Administrator")) {
    return new NextResponse(
     JSON.stringify({
-     error: "Unauthorized",
+     message: "Unauthorized",
      code: 401,
     }),
     {
@@ -129,7 +129,7 @@ export async function POST(request) {
   if (checkVanity) {
    return new NextResponse(
     JSON.stringify({
-     error: "Vanity already taken",
+     message: "Vanity already taken",
      code: 400,
     }),
     {
@@ -238,7 +238,7 @@ export async function POST(request) {
   console.log(err);
   return new NextResponse(
    JSON.stringify({
-    error: "Internal Server Error",
+    message: "Internal Server Error",
     code: 500,
    }),
    {
