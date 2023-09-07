@@ -9,10 +9,42 @@ import { Leaderboard } from "@/components/blocks/client/Leaderboard";
 import { Tooltip } from "@/components/blocks/client/Tooltip";
 import { Header1, Header4, Header5 } from "@/components/blocks/Headers";
 
-export const metadata = {
- title: "Public Server Overview",
- description: "View the overview of your server.",
-};
+export async function generateMetadata({ params }) {
+ const { server } = params;
+ const guild = await prismaClient.guild.findFirst({
+  where: {
+   OR: [
+    {
+     guildId: server,
+    },
+    {
+     vanity: server,
+    },
+   ],
+  },
+ });
+
+ if (!guild || !guild.guildId || !guild.publicPage)
+  return {
+   title: "Public Server Overview",
+   description: "View the overview of your server.",
+  };
+
+ const serverDownload = await getServer(guild.guildId);
+
+ if (!serverDownload || serverDownload.code === 10004 || !serverDownload.bot)
+  return {
+   title: "Public Server Overview",
+   description: "View the overview of your server.",
+  };
+
+ const guildPreview = await getGuildPreview(serverDownload.id);
+
+ return {
+  title: `${guildPreview.name || "Unnamed server"}`,
+  description: guildPreview.description || "View the overview of your server.",
+ };
+}
 
 export default async function ServerOverview({ params }) {
  const { server } = params;
