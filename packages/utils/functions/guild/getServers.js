@@ -3,7 +3,7 @@ import { getPermissionNames } from "../user/checkPermissions.js";
 
 /**
  * @param {string} token The token of the user.
- * @returns {Promise<any>} The servers the user is in.
+ * @returns {Promise<object[]> | object} The servers the user is in.
  * @example getServers("token")
  * @example getServers("token").then((res) => console.log(res))
  * */

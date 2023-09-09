@@ -3,9 +3,9 @@ import { loadImage, createCanvas } from "@napi-rs/canvas";
 
 /**
  *
- * @param {*} currentXp Number of current xp
- * @param {*} requiredXp Number of required xp
- * @returns number
+ * @param {number} currentXp Number of current xp
+ * @param {number} requiredXp Number of required xp
+ * @returns {number} The progress
  */
 function calculateProgress(currentXp, requiredXp) {
  if (requiredXp <= 0) return 1;
@@ -20,9 +20,9 @@ function calculateProgress(currentXp, requiredXp) {
 }
 
 /**
- * @param {user} user The user object
- * @param {xp} xp The xp object
- * @param {color} color The color of the progress bar
+ * @param {object} user The user object
+ * @param {object} xp The xp object
+ * @param {string} color The color of the progress bar
  * @returns {Buffer} The buffer of the image
  **/
 export async function createXPCard(user, xp, color) {

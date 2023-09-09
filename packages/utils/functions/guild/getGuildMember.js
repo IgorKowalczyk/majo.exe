@@ -3,7 +3,7 @@ import { getServers } from "./getServers.js";
 /**
  * @param {string} guildId The id of the server.
  * @param {string} token The token of the user.
- * @returns {Promise<any>} The member of the server including permissions.
+ * @returns {Promise<object>} The member of the server including permissions.
  * @example getGuildMember(guildId, userId)
  * */
 export async function getGuildMember(guildId, token) {

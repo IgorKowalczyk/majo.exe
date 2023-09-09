@@ -5,7 +5,7 @@ import prismaClient from "@majoexe/database";
  * @param { string } guildId The id of the guild
  * @param { number } page The page of the logs
  * @param { number } count The amount of logs to fetch
- * @returns { Array } The logs
+ * @returns { object[] } The logs
  * */
 export async function fetchLogs(guildId, page, count = 20) {
  try {

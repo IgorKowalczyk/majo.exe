@@ -1,9 +1,9 @@
 import { EmbedBuilder } from "discord.js";
 
 /**
- * @param client Discord Client
- * @param interaction Discord Interaction
- * @param color Embed color
+ * @param {object} client Discord Client
+ * @param {object} interaction Discord Interaction
+ * @param {string} color Embed color
  * @returns {Promise<void>}
  * */
 export async function EndGiveaway(client, interaction, color) {

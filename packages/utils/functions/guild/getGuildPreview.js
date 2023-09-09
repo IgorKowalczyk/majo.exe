@@ -2,7 +2,7 @@ import { globalConfig } from "@majoexe/config";
 
 /**
  * @param {string} id The id of the server.
- * @returns {Promise<any>} The preview of the server.
+ * @returns {Promise<object>} The preview of the server.
  * @example getGuildPreview(id)
  * */
 export async function getGuildPreview(id) {

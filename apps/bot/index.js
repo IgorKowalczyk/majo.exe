@@ -1,5 +1,5 @@
 import client from "./client/client.js";
-import loadEvents from "./handlers/event.js";
+import loadEvents from "./util/loaders/loadEvents.js";
 
 loadEvents(client);
 

@@ -63,7 +63,7 @@ export const flagsArray = [
 
 /**
  * @param {number} number The number to get the flags from.
- * @returns {Array} The flags
+ * @returns {object[]} The flags.
  * @example const flags = getFlags(4194304)
  * */
 export function getFlags(number) {

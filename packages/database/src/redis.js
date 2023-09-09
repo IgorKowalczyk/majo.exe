@@ -41,7 +41,7 @@ export async function cacheSet(key, value, ttl = 60) {
 /**
  * Get a key from the cache
  * @param {string} key
- * @returns {string}
+ * @returns {Promise<string>}
  * */
 export async function cacheGet(key) {
  if (debuggerConfig.displayCacheMessages) {

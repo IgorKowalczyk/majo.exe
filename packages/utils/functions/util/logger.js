@@ -21,3 +21,5 @@ const longest = types.reduce((long, str) => Math.max(long, str.length), 0);
 export function Logger(type, ...args) {
  console.log(chalk[colors[type] || "white"](type + " ".repeat(longest - type.length)) + chalk.white(" - " + args.join(" ")));
 }
+
+export { chalk };

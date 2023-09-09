@@ -1,7 +1,7 @@
 import prismaClient from "@majoexe/database";
 /**
  * Fetch XP setting for Guild
- * @param { string } guild The id of the guild
+ * @param { string } guildId The id of the guild
  * @returns { boolean } The XP setting
  */
 export async function fetchXPSettings(guildId) {

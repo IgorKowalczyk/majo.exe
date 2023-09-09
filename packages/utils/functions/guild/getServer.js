@@ -3,7 +3,7 @@ import { isBotInServer } from "./isBotInServer.js";
 
 /**
  * @param {string} id The id of the server.
- * @returns {Promise<any>} The id of the server.
+ * @returns {Promise<object>} The server object.
  * @example getServer(id)
  * */
 export async function getServer(id) {
