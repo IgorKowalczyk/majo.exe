@@ -38,14 +38,11 @@ const client = new Client({
  ],
 });
 
-const loadTime = performance.now();
-const slashCommands = await globby(`${process.cwd()}/commands/**/*.js`);
-const modalLoadTime = performance.now();
-const modals = await globby(`${process.cwd()}/modals/**/*.js`);
-
 // Add custom properties to client
 client.slashCommands = new Collection();
 client.modals = new Collection();
+client.additionalSlashCommands = 0;
+
 client.config = {
  ...botConfig,
  ...globalConfig,
@@ -53,18 +50,15 @@ client.config = {
  // Deprecated, to be replaced!
  dashboard: dashboardConfig,
 };
+
 client.giveawaysManager = giveaway(client);
+
 client.errorMessages = {
  internalError: (interaction, error) => {
   Logger("error", error?.toString() ?? "Unknown error occured");
   const embed = createErrorEmbed("An error occured while executing this command. Please try again later.", "Unknown error occured");
   return interaction.followUp({ embeds: [embed], ephemeral: true });
  },
- /**
-  * @param {interaction} interaction
-  * @param {string} title
-  * @param {string} description
-  * */
  createSlashError: (interaction, description, title) => {
   const embed = createErrorEmbed(description, title);
   embed.setFooter({
@@ -75,91 +69,95 @@ client.errorMessages = {
   return interaction.followUp({ embeds: [embed], ephemeral: true });
  },
 };
+
 client.debugger = Logger;
-
-client.additionalSlashCommands = 0;
-
 client.performance = (time) => {
  const run = Math.floor(performance.now() - time);
  return run > 500 ? chalk.underline.red(`${run}ms`) : chalk.underline(`${run}ms`);
 };
 
+const loadTime = performance.now();
+const slashCommands = await globby(`${process.cwd()}/commands/**/*.js`);
 for (const value of slashCommands) {
- const file = await import(value);
- const category = value.split("/")[value.split("/").length - 2];
- if (!file.default) {
-  Logger("error", `Slash command ${value} doesn't have a default export!`);
-  continue;
- }
- if (!file.default.name) {
-  Logger("error", `Slash command ${value} doesn't have a name!`);
-  continue;
- }
+ try {
+  const file = await import(value);
 
- if (!file.default.description) {
-  Logger("error", `Slash command ${value} doesn't have a description!`);
-  continue;
- }
+  const { default: slashCommand } = file;
 
- if (!file.default.type) {
-  Logger("error", `Slash command ${value} doesn't have a type!`);
-  continue;
- }
+  if (!slashCommand) {
+   Logger("error", `Slash command ${value} doesn't have a default export!`);
+   continue;
+  }
 
- if (!file.default.run) {
-  Logger("error", `Slash command ${value} doesn't have a run function!`);
-  continue;
- }
+  const { name, description, type, run, options, default_member_permissions } = slashCommand;
 
- client.slashCommands.set(file.default.name, {
-  ...file.default,
-  category: category,
-  options: file.default.options ? file.default.options : null,
-  default_permission: file.default.default_permission ? file.default.default_permission : null,
-  default_member_permissions: file.default.default_member_permissions ? PermissionsBitField.resolve(file.default.default_member_permissions).toString() : null,
- });
- file.default.options &&
-  file.default.options.map((option) => {
-   if (option.type === 1) {
-    debuggerConfig.displayCommandList && Logger("info", `Loaded slash subcommand ${option.name} from ${value.replace(process.cwd(), "")}`);
-    client.additionalSlashCommands++;
-   }
-  });
- debuggerConfig.displayCommandList && Logger("info", `Loaded slash command ${file.default.name} from ${value.replace(process.cwd(), "")}`);
+  if (!name || !description || !type || !run) {
+   Logger("error", `Slash command ${value} is missing required properties!`);
+   continue;
+  }
+
+  const category = value.split("/")[value.split("/").length - 2];
+
+  const commandData = {
+   ...slashCommand,
+   category,
+   options: options || null,
+   /* eslint-disable-next-line camelcase */
+   default_member_permissions: default_member_permissions ? PermissionsBitField.resolve(default_member_permissions).toString() : null,
+  };
+
+  client.slashCommands.set(name, commandData);
+
+  if (options) {
+   options.forEach((option) => {
+    if (option.type === 1) {
+     debuggerConfig.displayCommandList && Logger("info", `Loaded slash subcommand ${option.name} from ${value.replace(process.cwd(), "")}`);
+     client.additionalSlashCommands++;
+    }
+   });
+  }
+
+  debuggerConfig.displayCommandList && Logger("info", `Loaded slash command ${name} from ${value.replace(process.cwd(), "")}`);
+ } catch (error) {
+  Logger("error", `Error loading slash command ${value}: ${error.message}`);
+ }
 }
-
-for (const value of modals) {
- const file = await import(value);
- if (!file.default) {
-  Logger("error", `Modal ${value} doesn't have a default export!`);
-  continue;
- }
- if (!file.default.id) {
-  Logger("error", `Modal ${value} doesn't have a id!`);
-  continue;
- }
-
- if (!file.default.run) {
-  Logger("error", `Modal ${value} doesn't have a run function!`);
-  continue;
- }
-
- client.modals.set(file.default.id, {
-  ...file.default,
- });
- debuggerConfig.displayModalList && Logger("info", `Loaded modal ${file.default.id} from ${value.replace(process.cwd(), "")}`);
-}
-
-Logger("event", `Loaded ${client.modals.size} modals from /modals in ${client.performance(modalLoadTime)}`);
 Logger("event", `Loaded ${client.slashCommands.size + client.additionalSlashCommands} slash commands from /commands in ${client.performance(loadTime)}`);
+
+const modalLoadTime = performance.now();
+const modals = await globby(`${process.cwd()}/modals/**/*.js`);
+for (const value of modals) {
+ try {
+  const file = await import(value);
+  const { default: modal } = file;
+
+  if (!modal) {
+   Logger("error", `Modal ${value} doesn't have a default export!`);
+   continue;
+  }
+
+  const { id, run } = modal;
+
+  if (!id || !run) {
+   Logger("error", `Modal ${value} is missing required properties!`);
+   continue;
+  }
+
+  client.modals.set(id, modal);
+
+  if (debuggerConfig.displayModalList) {
+   Logger("info", `Loaded modal ${id} from ${value.replace(process.cwd(), "")}`);
+  }
+ } catch (error) {
+  Logger("error", `Error loading modal ${value}: ${error.message}`);
+ }
+}
+Logger("event", `Loaded ${client.modals.size} modals from /modals in ${client.performance(modalLoadTime)}`);
+
 await loadFonts();
 
 Logger("info", "Logging in...");
 
-try {
- client.login(process.env.TOKEN);
-} catch (error) {
- console.log(Logger("error", error));
-}
+client.login(process.env.TOKEN);
 
 export default client;
