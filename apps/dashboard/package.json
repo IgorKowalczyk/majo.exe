@@ -60,7 +60,7 @@
     "@majoexe/eslint-config": "workspace:*",
     "@next/bundle-analyzer": "13.4.19",
     "@prisma/nextjs-monorepo-workaround-plugin": "5.2.0",
-    "eslint": "8.48.0",
+    "eslint": "8.49.0",
     "eslint-config-next": "13.4.19",
     "prettier": "3.0.3",
     "prettier-plugin-tailwindcss": "0.5.4"
