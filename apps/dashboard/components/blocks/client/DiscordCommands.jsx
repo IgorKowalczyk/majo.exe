@@ -1,9 +1,9 @@
 "use client";
 
-import { XCircleIcon } from "@heroicons/react/24/outline";
+import { MagnifyingGlassIcon, XCircleIcon } from "@heroicons/react/24/outline";
 import { useState } from "react";
 import { ClientDisclosure } from "@/components/blocks/client/Disclosure";
-import { Input } from "@/components/blocks/Input";
+import { InputWithIcon } from "@/components/blocks/Input";
 
 export function DiscordCommands({ commands }) {
  const [search, setSearch] = useState("");
@@ -12,7 +12,7 @@ export function DiscordCommands({ commands }) {
 
  return (
   <>
-   <Input placeholder="Search commands..." value={search} onChange={(e) => setSearch(e.target.value)} />
+   <InputWithIcon placeholder="Search commands..." value={search} onChange={(e) => setSearch(e.target.value)} icon={<MagnifyingGlassIcon className="h-5 w-5 text-white/50" aria-hidden="true" role="img" />} />
    {filteredCommands.length === 0 ? (
     <div className="mt-8 flex flex-col items-center justify-center gap-2">
      <h3 className="flex items-center text-center text-xl font-bold">
