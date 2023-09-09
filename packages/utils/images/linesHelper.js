@@ -1,4 +1,3 @@
-
 /**
  * @param {CanvasRenderingContext2D} context The canvas context
  * @param {string} text The text to split

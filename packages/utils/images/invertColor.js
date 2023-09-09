@@ -1,4 +1,3 @@
-
 /**
  * Invert a hex color
  * @param {string} hex The hex color to invert
