@@ -51,6 +51,7 @@ export default {
      text: `Requested by ${interaction.member.user.globalName || interaction.member.user.username}`,
      iconURL: interaction.member.user.displayAvatarURL({ size: 256 }),
     });
+
    return interaction.followUp({ embeds: [embed] });
   } catch (err) {
    client.errorMessages.internalError(interaction, err);

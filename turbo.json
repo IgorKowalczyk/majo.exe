@@ -7,14 +7,14 @@
   },
   "build": {
    "dependsOn": ["^prisma:generate", "lint"],
-   "outputs": ["dist/**", ".next/**", "!.next/cache/**"]
+   "outputs": [".next/**", "!.next/cache/**"]
   },
   "deploy": {
-   "dependsOn": ["build"],
-   "outputs": ["dist/**", ".next/**", "!.next/cache/**"]
+   "dependsOn": ["^build"],
+   "outputs": [".next/**", "!.next/cache/**"]
   },
   "lint": {
-   "dependsOn": ["format:check"],
+   "dependsOn": ["^format:check"],
    "outputs": []
   },
   "lint:fix": {
@@ -38,5 +38,5 @@
   }
  },
  "globalEnv": ["CLIENT_ID", "NEXTAUTH_URL", "DISCORD_SUPPORT_SERVER_ID", "HOTJAR_ID", "CLIENT_SECRET", "ENVIRONMENT_URL", "TOKEN", "REDIS_URL", "NODE_ENV", "RUNTIME", "NEXT_PUBLIC_URL", "npm_package_version"],
- "globalDependencies": [".env", ".prettierignore", ".prettierrc"]
+ "globalDependencies": [".env", ".prettierignore", "prettier.config.mjs", "eslint.config.js"]
 }

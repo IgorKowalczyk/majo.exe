@@ -1,17 +1,8 @@
 module.exports = {
  extends: ["@igorkowalczyk/eslint-config", "turbo"],
- settings: {
-  next: {
-   rootDir: ["apps/*/", "packages/*/"],
-  },
- },
- rules: {
-  "turbo/no-undeclared-env-vars": "warn",
-  "no-lonely-if": "error",
- },
  env: {
   node: true,
-  es2020: true,
+  es2021: true,
   browser: true,
   es6: true,
  },
