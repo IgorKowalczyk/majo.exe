@@ -100,8 +100,8 @@ importers:
         specifier: 1.5.3
         version: 1.5.3
       systeminformation:
-        specifier: 5.21.5
-        version: 5.21.5
+        specifier: 5.21.6
+        version: 5.21.6
       validator:
         specifier: 13.11.0
         version: 13.11.0
@@ -8281,8 +8281,8 @@ packages:
       '@pkgr/utils': 2.4.2
       tslib: 2.6.1
 
-  /systeminformation@5.21.5:
-    resolution: {integrity: sha512-W1bvYcSM6hVIEqFmjAWTtfX+Qq1Mc3sEZq4AxjtkNya01WbcleahsCzM2/eAey+no+XxPk6a0/7RnCLX6/BmOQ==}
+  /systeminformation@5.21.6:
+    resolution: {integrity: sha512-wMf5w8ZtNCHhkSNVD/aEbg/5V4ke7XuCqTn+d9GcfZIce8VbeYtb8sQCz/L9LcK3O2QRPHxqWJnKyaAvGfsn2Q==}
     engines: {node: '>=8.0.0'}
     os: [darwin, linux, win32, freebsd, openbsd, netbsd, sunos, android]
     hasBin: true
