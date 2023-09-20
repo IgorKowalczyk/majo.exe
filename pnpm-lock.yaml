@@ -143,8 +143,8 @@ importers:
         specifier: 1.0.2
         version: 1.0.2
       '@vercel/og':
-        specifier: 0.5.14
-        version: 0.5.14
+        specifier: 0.5.15
+        version: 0.5.15
       autoprefixer:
         specifier: 10.4.15
         version: 10.4.15(postcss@8.4.30)
@@ -3004,8 +3004,8 @@ packages:
     resolution: {integrity: sha512-BZFxVrv24VbNNl5xMxqUojQIegEeXMI6rX3rg1uVLYUEXsuKNBSAEQf4BWEcjQDp/8aYJOj6m8V4PUA3x/cxgg==}
     dev: false
 
-  /@vercel/og@0.5.14:
-    resolution: {integrity: sha512-2UOkXYgzorv4g2EZdRdy3b343DQC7WJyBq0T0MMf63UH8YUmbOCir7ULB0kgonrUoiL9qIq+E8eeSmHDLYHAdQ==}
+  /@vercel/og@0.5.15:
+    resolution: {integrity: sha512-8LrEb/3C7R2TqRA9qTde+eoeOCCQZfElqCNiSi3qqnKSczv2V91Wa1Nt3Gy6qqLDeny8aFQxcB/OCZEWNubaqw==}
     engines: {node: '>=16'}
     dependencies:
       '@resvg/resvg-wasm': 2.4.1
