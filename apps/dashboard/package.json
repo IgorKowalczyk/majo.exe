@@ -50,7 +50,7 @@
     "recharts": "2.8.0",
     "server-only": "0.0.1",
     "sharp": "0.32.6",
-    "swr": "2.2.2",
+    "swr": "2.2.3",
     "tailwind-gradient-mask-image": "1.0.0",
     "tailwind-merge": "1.14.0",
     "tailwindcss": "3.3.3",
