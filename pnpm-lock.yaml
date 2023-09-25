@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       '@igorkowalczyk/eslint-config':
-        specifier: 1.5.5
-        version: 1.5.5(eslint@8.50.0)(prettier@3.0.3)
+        specifier: 1.5.6
+        version: 1.5.6(eslint@8.50.0)(prettier@3.0.3)
       dotenv-cli:
         specifier: 7.3.0
         version: 7.3.0
@@ -286,8 +286,8 @@ importers:
   packages/eslint-config:
     dependencies:
       '@igorkowalczyk/eslint-config':
-        specifier: 1.5.5
-        version: 1.5.5(eslint@8.50.0)(prettier@3.0.3)
+        specifier: 1.5.6
+        version: 1.5.6(eslint@8.50.0)(prettier@3.0.3)
       eslint-plugin-import:
         specifier: 2.28.1
         version: 2.28.1(@typescript-eslint/parser@5.62.0)(eslint-import-resolver-typescript@3.5.5)(eslint@8.50.0)
@@ -1932,13 +1932,13 @@ packages:
       undici: 5.22.1
     dev: false
 
-  /@igorkowalczyk/eslint-config@1.5.5(eslint@8.50.0)(prettier@3.0.3):
-    resolution: {integrity: sha512-S1r7d3gjBP0MmXZGs2P86CiNCUYpN2Cdatr+Xf6kPAg+Ff1PbgNBSo0/wD9v957wvuuMPHf2pRGbpRPs5FdCOA==}
+  /@igorkowalczyk/eslint-config@1.5.6(eslint@8.50.0)(prettier@3.0.3):
+    resolution: {integrity: sha512-2hHz/2dZ54CCPGsWQSgYSVNpAlqzNLL2ZV2nCGZ/iCriIb9wa3i/9iWvbfJBc6blW6O7Ysn3uE7v6LlXrlkv6w==}
     peerDependencies:
       eslint: '>=8.0.0'
     dependencies:
       eslint: 8.50.0
-      eslint-plugin-import: 2.28.0(eslint@8.50.0)
+      eslint-plugin-import: 2.28.1(@typescript-eslint/parser@5.62.0)(eslint-import-resolver-typescript@3.5.5)(eslint@8.50.0)
       eslint-plugin-prettier: 5.0.0(eslint@8.50.0)(prettier@3.0.3)
     transitivePeerDependencies:
       - '@types/eslint'
@@ -4492,41 +4492,6 @@ packages:
       eslint-import-resolver-typescript: 3.5.5(@typescript-eslint/parser@5.62.0)(eslint-import-resolver-node@0.3.7)(eslint-plugin-import@2.28.1)(eslint@8.50.0)
     transitivePeerDependencies:
       - supports-color
-
-  /eslint-plugin-import@2.28.0(eslint@8.50.0):
-    resolution: {integrity: sha512-B8s/n+ZluN7sxj9eUf7/pRFERX0r5bnFA2dCaLHy2ZeaQEAz0k+ZZkFWRFHJAqxfxQDx6KLv9LeIki7cFdwW+Q==}
-    engines: {node: '>=4'}
-    peerDependencies:
-      '@typescript-eslint/parser': '*'
-      eslint: ^2 || ^3 || ^4 || ^5 || ^6 || ^7.2.0 || ^8
-    peerDependenciesMeta:
-      '@typescript-eslint/parser':
-        optional: true
-    dependencies:
-      array-includes: 3.1.6
-      array.prototype.findlastindex: 1.2.2
-      array.prototype.flat: 1.3.1
-      array.prototype.flatmap: 1.3.1
-      debug: 3.2.7(supports-color@5.5.0)
-      doctrine: 2.1.0
-      eslint: 8.50.0
-      eslint-import-resolver-node: 0.3.7
-      eslint-module-utils: 2.8.0(@typescript-eslint/parser@5.62.0)(eslint-import-resolver-node@0.3.7)(eslint-import-resolver-typescript@3.5.5)(eslint@8.50.0)
-      has: 1.0.3
-      is-core-module: 2.13.0
-      is-glob: 4.0.3
-      minimatch: 3.1.2
-      object.fromentries: 2.0.6
-      object.groupby: 1.0.0
-      object.values: 1.1.6
-      resolve: 1.22.3
-      semver: 6.3.1
-      tsconfig-paths: 3.14.2
-    transitivePeerDependencies:
-      - eslint-import-resolver-typescript
-      - eslint-import-resolver-webpack
-      - supports-color
-    dev: false
 
   /eslint-plugin-import@2.28.1(@typescript-eslint/parser@5.62.0)(eslint-import-resolver-typescript@3.5.5)(eslint@8.50.0):
     resolution: {integrity: sha512-9I9hFlITvOV55alzoKBI+K9q74kv0iKMeY6av5+umsNwayt59fz692daGyjR+oStBQgx6nwR9rXldDev3Clw+A==}
