@@ -17,7 +17,7 @@
     "lint:fix": "eslint . --fix"
   },
   "dependencies": {
-    "@igorkowalczyk/eslint-config": "1.5.5",
+    "@igorkowalczyk/eslint-config": "1.5.6",
     "eslint-plugin-import": "2.28.1",
     "eslint-plugin-prettier": "5.0.0",
     "eslint-plugin-turbo": "1.10.14",
