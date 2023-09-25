@@ -66,10 +66,12 @@ Ensure your setup meets these prerequisites before setting up Majo.exe:
 | `REDIS_URL`                 | Redis URL²                                       | ❌             | ❌                   |
 | `DISCORD_SUPPORT_SERVER_ID` | Discord support server ID                        | ❌             | ❌³                  |
 
+<!-- prettier-ignore-start -->
 > [!NOTE]
 > 1: `NEXT_PUBLIC_URL` is required only if you want to also include the dashboard.  
 > 2: `REDIS_URL` enables caching. If you don't want to use Redis caching, leave this variable empty. Majo.exe will use Memory caching instead.  
-> 3: `DISCORD_SUPPORT_SERVER_ID` is required only if you want to automatically add users to support server when they login to dashboard.  
+> 3: `DISCORD_SUPPORT_SERVER_ID` is required only if you want to automatically add users to support server when they login to dashboard.
+<!-- prettier-ignore-end -->
 
 ## 📝 Contributors
 
