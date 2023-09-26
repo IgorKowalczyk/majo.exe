@@ -203,8 +203,8 @@ importers:
         specifier: 1.2.6
         version: 1.2.6(react@18.2.0)
       react-spring:
-        specifier: 9.7.2
-        version: 9.7.2(@react-three/fiber@8.13.6)(konva@9.2.0)(react-dom@18.2.0)(react-konva@18.2.10)(react-native@0.72.3)(react-zdog@1.2.0)(react@18.2.0)(three@0.154.0)(zdog@1.1.3)
+        specifier: 9.7.3
+        version: 9.7.3(@react-three/fiber@8.13.6)(konva@9.2.0)(react-dom@18.2.0)(react-konva@18.2.10)(react-native@0.72.3)(react-zdog@1.2.0)(react@18.2.0)(three@0.154.0)(zdog@1.1.3)
       react-table:
         specifier: 7.8.0
         version: 7.8.0(react@18.2.0)
@@ -7414,8 +7414,8 @@ packages:
       react-transition-group: 2.9.0(react-dom@18.2.0)(react@18.2.0)
     dev: false
 
-  /react-spring@9.7.2(@react-three/fiber@8.13.6)(konva@9.2.0)(react-dom@18.2.0)(react-konva@18.2.10)(react-native@0.72.3)(react-zdog@1.2.0)(react@18.2.0)(three@0.154.0)(zdog@1.1.3):
-    resolution: {integrity: sha512-cckALtj79yiaJiAOUNAhtZbdqjvv1bdn/FpobgkckIChc8l6vu0E53WQ+zWru60gINI3JT+oRJSIn2hUVlOvlQ==}
+  /react-spring@9.7.3(@react-three/fiber@8.13.6)(konva@9.2.0)(react-dom@18.2.0)(react-konva@18.2.10)(react-native@0.72.3)(react-zdog@1.2.0)(react@18.2.0)(three@0.154.0)(zdog@1.1.3):
+    resolution: {integrity: sha512-oTxDpFV5gzq7jQX6+bU0SVq+vX8VnuuT5c8Zwn6CpDErOPvCmV+DRkPiEBtaL3Ozgzwiy5yFx83N0h303j/r3A==}
     peerDependencies:
       react: ^16.8.0 || ^17.0.0 || ^18.0.0
       react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0
