@@ -20,7 +20,7 @@ export default async function Main() {
         <ArrowRightIcon className="ml-2 inline-block h-4 w-4 transition-all duration-200 group-hover:translate-x-1" />
        </span>
       </Link>
-      <Header1 className={"text-fill-transparent mb-0 justify-center bg-gradient-to-b from-white to-neutral-400 box-decoration-clone bg-clip-text text-center !font-black sm:mb-4 lg:!justify-start lg:text-start"}>The only one Discord Bot</Header1>
+      <Header1 className={"text-fill-transparent mb-0	justify-center bg-gradient-to-b from-white to-neutral-400 box-decoration-clone bg-clip-text text-center !font-black !leading-tight lg:!justify-start lg:text-start"}>The only one Discord Bot</Header1>
       <h2 className="max-w-[680px] text-center text-2xl text-white/70 lg:text-left">Majo.exe will not only keep your server entertained but also assist you with moderation and many other things!</h2>
       <div className="mt-2 flex flex-col gap-4 sm:flex-row">
        <Login />
