@@ -126,7 +126,7 @@ export function EnablePublicDashboard({ enabled, serverId, vanityURL }) {
        className={clsx(
         {
          "!border-red-400 focus:!border-red-400": vanityError,
-         "border-neutral-800 peer-focus:!border-button-primary": !vanityError,
+         "peer-focus:!border-button-primary border-neutral-800": !vanityError,
         },
         "select-none rounded-md rounded-r-none border border-r-0 border-r-transparent bg-transparent py-2 pl-3 font-normal text-white/60 shadow-sm outline-none !ring-0 duration-200 "
        )}

@@ -12,7 +12,7 @@ export function SideNavLink({ href, children }) {
  const router = usePathname();
  const isSelected = (path) => router === path;
  return (
-  <Link href={href} className={`${isSelected(href) ? "bg-button-primary/20 before:!h-[29px]" : "hover:bg-button-primary/20"} flex h-[45px] w-full items-center gap-2 rounded py-2 pr-4 duration-200 before:h-0 before:rounded-r-md before:border-l-4 before:border-button-primary before:duration-200 hover:bg-button-primary/20 hover:before:h-[29px]`}>
+  <Link href={href} className={`${isSelected(href) ? "bg-button-primary/20 before:!h-[29px]" : "hover:bg-button-primary/20"} before:border-button-primary hover:bg-button-primary/20 flex h-[45px] w-full items-center gap-2 rounded py-2 pr-4 duration-200 before:h-0 before:rounded-r-md before:border-l-4 before:duration-200 hover:before:h-[29px]`}>
    {children}
   </Link>
  );
@@ -28,7 +28,7 @@ export function SideNav({ server }) {
       hidden: !sideNavVisible,
       flex: sideNavVisible,
      },
-     "menu fixed z-[9998] mt-8 h-screen w-64 flex-none flex-col flex-nowrap overflow-y-auto overflow-x-hidden border-r-[1px] border-r-neutral-800 bg-background-navbar/70 px-4  py-8 shadow-lg backdrop-blur md:top-0 md:mt-16 md:flex"
+     "menu border-r-px bg-background-navbar/70 fixed z-[9998] mt-8 h-screen w-64 flex-none flex-col flex-nowrap overflow-y-auto overflow-x-hidden border-r-neutral-800 px-4  py-8 shadow-lg backdrop-blur md:top-0 md:mt-16 md:flex"
     )}
    >
     <PrimaryButton href="/dashboard" className="mb-4 w-full">

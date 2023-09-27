@@ -2,8 +2,8 @@ import { PlusSmallIcon, RectangleStackIcon } from "@heroicons/react/24/outline";
 import { getServers } from "@majoexe/util/functions";
 import { isBotInServer } from "@majoexe/util/functions";
 import clsx from "clsx";
-import { PrimaryButton } from "components/buttons/server/Primary";
-import { SecondaryButton } from "components/buttons/server/Secondary";
+import { PrimaryButton } from "@/components/buttons/server/Primary";
+import { SecondaryButton } from "@/components/buttons/server/Secondary";
 import { getSession } from "lib/session";
 import Image from "next/image";
 import Link from "next/link";
@@ -29,7 +29,7 @@ export default async function Dashboard() {
  servers.sort((a, b) => (a.bot && !b.bot ? -1 : !a.bot && b.bot ? 1 : 0));
 
  return (
-  <div className="flex w-full flex-col items-center bg-background-primary px-8 pb-8 pt-16 antialiased md:px-16 md:py-16">
+  <div className="bg-background-primary flex w-full flex-col items-center px-8 pb-8 pt-16 antialiased md:px-16 md:py-16">
    <div className="flex flex-col justify-center gap-4">
     <Header1 className={"justify-center"}>
      <RectangleStackIcon className="h-10 w-10" aria-hidden="true" role="img" />
@@ -43,7 +43,7 @@ export default async function Dashboard() {
       servers.map((server) => (
        <>
         <div key={server.id} className="hidden flex-row items-center justify-start gap-4 sm:flex">
-         {server.icon ? <Image src={`https://cdn.discordapp.com/icons/${server.id}/${server.icon}.${server.icon.startsWith("a_") ? "gif" : "png"}`} alt={server.name} quality={95} width={64} height={64} className="h-16 w-16 rounded-full" /> : <div className="h-16 w-16 rounded-full bg-button-secondary" />}
+         {server.icon ? <Image src={`https://cdn.discordapp.com/icons/${server.id}/${server.icon}.${server.icon.startsWith("a_") ? "gif" : "png"}`} alt={server.name} quality={95} width={64} height={64} className="h-16 w-16 rounded-full" /> : <div className="bg-button-secondary h-16 w-16 rounded-full" />}
          <h3 className="text-center text-xl font-bold">{server.name}</h3>
          <>
           {server.bot ? (
@@ -79,7 +79,7 @@ export default async function Dashboard() {
              {
               "opacity-20": !server.bot,
              },
-             "h-24 w-24 rounded-md bg-button-secondary"
+             "bg-button-secondary h-24 w-24 rounded-md"
             )}
            />
           )}

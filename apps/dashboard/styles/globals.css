@@ -51,5 +51,10 @@ canvas {
 }
 
 code {
- @apply inline-block rounded-md border border-neutral-800 bg-background-secondary px-2 py-1;
+ @apply bg-background-secondary inline-block rounded-md border border-neutral-800 px-2 py-1;
+}
+.from-black-10\/50 {
+ --tw-gradient-from: rgba(0, 0, 0, 0.5) var(--tw-gradient-from-position);
+ --tw-gradient-to: transparent var(--tw-gradient-to-position);
+ --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
 }

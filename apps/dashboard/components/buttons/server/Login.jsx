@@ -1,5 +1,5 @@
 import { ArrowUturnRightIcon } from "@heroicons/react/24/outline";
-import { LoginClient } from "components/buttons/client/Login";
+import { ProviderLogin } from "@/components/buttons/client/Provider";
 import { getSession } from "lib/session";
 import { PrimaryButton } from "./Primary";
 
@@ -7,7 +7,7 @@ export async function Login() {
  const session = await getSession();
 
  if (!session) {
-  return <LoginClient />;
+  return <ProviderLogin provider={{ id: "discord", name: "Discord" }} />;
  }
 
  return (

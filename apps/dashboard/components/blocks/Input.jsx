@@ -1,15 +1,15 @@
 import clsx from "clsx";
 
 export function Input({ placeholder, type, name, value, onChange, className }) {
- return <input type={type} name={name} value={value} onChange={onChange} className={clsx("w-full rounded-md border border-neutral-800 bg-transparent px-3 py-2 shadow-sm outline-none !ring-0 duration-200 focus:!border-accent-primary", className)} placeholder={placeholder} />;
+ return <input type={type} name={name} value={value} onChange={onChange} className={clsx("focus:!border-accent-primary w-full rounded-md border border-neutral-800 bg-transparent px-3 py-2 shadow-sm outline-none !ring-0 duration-200", className)} placeholder={placeholder} />;
 }
 
 export function Textarea({ placeholder, name, value, onChange, className }) {
- return <textarea name={name} value={value} onChange={onChange} className={clsx("w-full rounded-md border border-neutral-800 bg-transparent px-3 py-2 shadow-sm outline-none !ring-0 duration-200 focus:!border-accent-primary", className)} placeholder={placeholder} />;
+ return <textarea name={name} value={value} onChange={onChange} className={clsx("focus:!border-accent-primary w-full rounded-md border border-neutral-800 bg-transparent px-3 py-2 shadow-sm outline-none !ring-0 duration-200", className)} placeholder={placeholder} />;
 }
 
 export function Checkbox({ name, value, onChange, className, checked }) {
- return <input type="checkbox" name={name} value={value} onChange={onChange} checked={checked} className={clsx("cursor-pointer rounded-md border border-neutral-800 bg-transparent p-1 shadow-sm outline-none !ring-0 duration-200 checked:bg-accent-primary checked:hover:bg-accent-primary focus:!border-accent-primary focus:outline-accent-primary focus:ring-accent-primary focus:checked:bg-accent-primary", className)} />;
+ return <input type="checkbox" name={name} value={value} onChange={onChange} checked={checked} className={clsx("checked:bg-accent-primary checked:hover:bg-accent-primary focus:!border-accent-primary focus:outline-accent-primary focus:ring-accent-primary focus:checked:bg-accent-primary cursor-pointer rounded-md border border-neutral-800 bg-transparent p-1 shadow-sm outline-none !ring-0 duration-200", className)} />;
 }
 
 export function InputWithIcon({ icon, text, required, placeholder, className, readOnly = false, ...props }) {

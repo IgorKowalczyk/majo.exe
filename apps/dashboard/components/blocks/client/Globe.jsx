@@ -15,13 +15,14 @@ export default function GlobeClient() {
    context.getSupportedExtensions();
   } catch (e) {
    setWebglSupported(false);
-   console.log("WebGL not supported, hiding globe animation...");
    return;
   }
  }, []);
 
  return webglSupported && <GlobeAnimation />;
 }
+
+const convertColor = (array) => array.map((value) => value / 255);
 
 const GlobeAnimation = () => {
  const canvasRef = useRef();
@@ -45,20 +46,25 @@ const GlobeAnimation = () => {
    width: 500 * 2,
    height: 500 * 2,
    phi,
-   theta: 0.15,
+   theta: 0.35,
    dark: 1,
-   diffuse: 1.2,
+   diffuse: 2.5,
    scale: 1,
-   mapSamples: 13000,
+   mapSamples: 10000,
    mapBrightness: 6,
-   baseColor: [0.5, 0.5, 0.5],
-   markerColor: [1, 1, 1],
-   glowColor: [0.063, 0.067, 0.063],
-   opacity: 0.95,
+   baseColor: convertColor([127, 127, 127]),
+   markerColor: convertColor([230, 230, 230]),
+   glowColor: convertColor([16, 15, 16]),
+   opacity: 1,
    markers: [
     // Prettier
     { location: [52.22977, 21.01178], size: 0.06 },
     { location: [50.11552, 8.68417], size: 0.04 },
+    { location: [37.77493, -122.41942], size: 0.04 },
+    { location: [40.05832, -74.40566], size: 0.04 },
+    { location: [39.96118, -82.99879], size: 0.04 },
+    { location: [-33.865143, 151.2099], size: 0.04 },
+    { location: [35.6895, 139.69171], size: 0.04 },
    ],
    onRender: (state) => {
     phi += 0.002;

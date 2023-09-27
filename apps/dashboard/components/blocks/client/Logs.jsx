@@ -48,14 +48,14 @@ export default function Logs({ initialItems, id }) {
       {({ open }) => (
        <>
         <Disclosure.Button
-         className={clsx("my-4 flex w-full flex-row items-center justify-start gap-4 rounded-md border border-neutral-800 bg-background-navbar px-6 py-4 duration-200", {
+         className={clsx("bg-background-navbar my-4 flex w-full flex-row items-center justify-start gap-4 rounded-md border border-neutral-800 px-6 py-4 duration-200", {
           "mb-0 rounded-b-none": open,
          })}
         >
          <div className="relative">
           {item.user?.avatar && <Image src={`https://cdn.discordapp.com/avatars/${item.user?.discordId}/${item.user?.avatar}.${item.user?.avatar.startsWith("a_") ? "gif" : "png"}`} alt={`${item.user?.name} avatar`} quality={95} width={32} height={32} className="h-12 w-12 rounded-full" />}
-          {item.type === "profanity" && <NoSymbolIcon className="absolute bottom-0 right-0 h-5 min-h-[20px] w-5 min-w-[20px] rounded-full border border-white/10 bg-button-secondary/80 p-1 opacity-80" />}
-          {item.type === "embed_color" && <PaintBrushIcon className="absolute bottom-0 right-0 h-5 min-h-[20px] w-5 min-w-[20px] rounded-full border border-white/10 bg-button-secondary/80 p-1 opacity-80" />}
+          {item.type === "profanity" && <NoSymbolIcon className="bg-button-secondary/80 absolute bottom-0 right-0 h-5 min-h-[20px] w-5 min-w-[20px] rounded-full border border-white/10 p-1 opacity-80" />}
+          {item.type === "embed_color" && <PaintBrushIcon className="bg-button-secondary/80 absolute bottom-0 right-0 h-5 min-h-[20px] w-5 min-w-[20px] rounded-full border border-white/10 p-1 opacity-80" />}
          </div>
          <div className="flex flex-col">
           <p className="text-left font-bold">
@@ -75,7 +75,7 @@ export default function Logs({ initialItems, id }) {
         </Disclosure.Button>
 
         <Transition enter="transition duration-100 ease-out" enterFrom="transform scale-95 opacity-0" enterTo="transform scale-100 opacity-100" leave="transition duration-75 ease-out" leaveFrom="transform scale-100 opacity-100" leaveTo="transform scale-95 opacity-0">
-         <Disclosure.Panel className="w-full rounded-md rounded-t-none border border-t-0 border-neutral-800 bg-background-navbar px-6 py-4">
+         <Disclosure.Panel className="bg-background-navbar w-full rounded-md rounded-t-none border border-t-0 border-neutral-800 px-6 py-4">
           {item.actionTaken && (
            <p>
             <span className="font-bold">Action taken:</span> None

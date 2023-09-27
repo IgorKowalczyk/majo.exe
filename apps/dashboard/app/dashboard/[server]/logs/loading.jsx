@@ -1,5 +1,5 @@
 import { ListBulletIcon } from "@heroicons/react/24/outline";
-import { TextSkeleton } from "components/blocks/Skeletons";
+import { TextSkeleton } from "@/components/blocks/Skeletons";
 import { Header1 } from "@/components/blocks/Headers";
 
 export default function Loading() {

@@ -80,7 +80,7 @@ export default async function ServerOverview({ params }) {
  return (
   <>
    <Header1 className={"mb-4 !justify-normal"}>
-    {guildPreview.icon ? <Image src={`https://cdn.discordapp.com/icons/${guildPreview.id}/${guildPreview.icon}.${guildPreview.icon.startsWith("a_") ? "gif" : "png"}`} alt={guildPreview.name} quality={95} width={64} height={64} className="h-16 w-16 rounded-full" /> : <div className="h-16 w-16 rounded-full bg-button-secondary" />}
+    {guildPreview.icon ? <Image src={`https://cdn.discordapp.com/icons/${guildPreview.id}/${guildPreview.icon}.${guildPreview.icon.startsWith("a_") ? "gif" : "png"}`} alt={guildPreview.name} quality={95} width={64} height={64} className="h-16 w-16 rounded-full" /> : <div className="bg-button-secondary h-16 w-16 rounded-full" />}
     <div className="ml-4 flex flex-col justify-start text-left">
      {guildPreview.name || "Unnamed server"}
      <Header5 className="mt-2 justify-start text-left opacity-60">{guildPreview.description || "This server has no description, maybe you should add one?"}</Header5>

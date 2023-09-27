@@ -40,7 +40,7 @@ export default async function Commands() {
  commands = [...commands, ...subCommands];
 
  return (
-  <div className="flex w-full flex-col items-center bg-background-primary px-8 pb-8 pt-16 antialiased md:px-16 md:py-16">
+  <div className="bg-background-primary flex w-full flex-col items-center px-8 pb-8 pt-16 antialiased md:px-16 md:py-16">
    <div className="flex flex-col justify-center gap-4">
     <Header1 className={"mb-0 justify-center"}>
      <CommandLineIcon className="h-10 w-10" aria-hidden="true" role="img" />

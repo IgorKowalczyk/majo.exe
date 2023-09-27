@@ -22,7 +22,7 @@ export function ServerStatsChart({ guildJoin, guildLeave, guildJoinCSV, guildLea
      <span className="opacity-80">Members Joined</span> <span className="text-accent-primary">(+{sumArray(guildJoin, "Joins")})</span>
      <Menu as="div" className="relative ml-auto inline-block text-left">
       <div>
-       <Menu.Button className="ml-4 flex cursor-pointer items-center gap-3 text-normal font-normal duration-200 motion-reduce:transition-none">
+       <Menu.Button className="text-normal ml-4 flex cursor-pointer items-center gap-3 font-normal duration-200 motion-reduce:transition-none">
         {({ open }) => (
          <div
           className={clsx(
@@ -30,11 +30,11 @@ export function ServerStatsChart({ guildJoin, guildLeave, guildJoinCSV, guildLea
             "opacity-80": open,
             "hover:opacity-80": !open,
            },
-           "flex h-10 select-none items-center rounded border border-neutral-700 bg-background-menu-button px-4 py-2 duration-200  motion-reduce:transition-none"
+           "bg-background-menu-button flex h-10 select-none items-center rounded border border-neutral-700 px-4 py-2 duration-200  motion-reduce:transition-none"
           )}
          >
           <ArrowDownTrayIcon className="h-4 w-4" aria-hidden="true" role="img" />
-          <span className="!ml-2 text-normal font-normal">Export</span>
+          <span className="text-normal !ml-2 font-normal">Export</span>
           <ChevronDownIcon
            className={clsx(
             {
@@ -48,7 +48,7 @@ export function ServerStatsChart({ guildJoin, guildLeave, guildJoinCSV, guildLea
        </Menu.Button>
       </div>
       <Transition as={Fragment} enter="transition ease-out duration-100" enterFrom="transform opacity-0 scale-95" enterTo="transform opacity-100 scale-100" leave="transition ease-in duration-75" leaveFrom="transform opacity-100 scale-100" leaveTo="transform opacity-0 scale-95">
-       <Menu.Items className="absolute right-0 z-50 mt-2 w-56 origin-top-right divide-y divide-neutral-800 rounded-md border border-neutral-800 bg-background-menu p-1 shadow-2xl">
+       <Menu.Items className="bg-background-menu absolute right-0 z-50 mt-2 w-56 origin-top-right divide-y divide-neutral-800 rounded-md border border-neutral-800 p-1 shadow-2xl">
         <div className="px-1 py-1 ">
          <Menu.Item>
           {({ active }) => (
@@ -94,7 +94,7 @@ export function ServerStatsChart({ guildJoin, guildLeave, guildJoinCSV, guildLea
      <span className="opacity-80">Members Left</span> <span className="text-accent-primary">(+{sumArray(guildLeave, "Leaves")})</span>
      <Menu as="div" className="relative ml-auto inline-block text-left">
       <div>
-       <Menu.Button className="ml-4 flex cursor-pointer items-center gap-3 text-normal font-normal duration-200 motion-reduce:transition-none">
+       <Menu.Button className="text-normal ml-4 flex cursor-pointer items-center gap-3 font-normal duration-200 motion-reduce:transition-none">
         {({ open }) => (
          <div
           className={clsx(
@@ -102,11 +102,11 @@ export function ServerStatsChart({ guildJoin, guildLeave, guildJoinCSV, guildLea
             "opacity-80": open,
             "hover:opacity-80": !open,
            },
-           "flex h-10 select-none items-center rounded border border-neutral-700 bg-background-menu-button px-4 py-2 duration-200  motion-reduce:transition-none"
+           "bg-background-menu-button flex h-10 select-none items-center rounded border border-neutral-700 px-4 py-2 duration-200  motion-reduce:transition-none"
           )}
          >
           <ArrowDownTrayIcon className="h-4 w-4" aria-hidden="true" role="img" />
-          <span className="!ml-2 text-normal font-normal">Export</span>
+          <span className="text-normal !ml-2 font-normal">Export</span>
           <ChevronDownIcon
            className={clsx(
             {
@@ -120,7 +120,7 @@ export function ServerStatsChart({ guildJoin, guildLeave, guildJoinCSV, guildLea
        </Menu.Button>
       </div>
       <Transition as={Fragment} enter="transition ease-out duration-100" enterFrom="transform opacity-0 scale-95" enterTo="transform opacity-100 scale-100" leave="transition ease-in duration-75" leaveFrom="transform opacity-100 scale-100" leaveTo="transform opacity-0 scale-95">
-       <Menu.Items className="absolute right-0 z-50 mt-2 w-56 origin-top-right divide-y divide-neutral-800 rounded-md border border-neutral-800 bg-background-menu p-1 shadow-2xl">
+       <Menu.Items className="bg-background-menu absolute right-0 z-50 mt-2 w-56 origin-top-right divide-y divide-neutral-800 rounded-md border border-neutral-800 p-1 shadow-2xl">
         <div className="px-1 py-1 ">
          <Menu.Item>
           {({ active }) => (
@@ -167,7 +167,7 @@ export function ServerStatsChart({ guildJoin, guildLeave, guildJoinCSV, guildLea
      <span className="opacity-80">Messages Sent</span> <span className="text-accent-primary">(+{sumArray(guildMessage, "Messages")})</span>
      <Menu as="div" className="relative ml-auto inline-block text-left">
       <div>
-       <Menu.Button className="ml-4 flex cursor-pointer items-center gap-3 text-normal font-normal duration-200 motion-reduce:transition-none">
+       <Menu.Button className="text-normal ml-4 flex cursor-pointer items-center gap-3 font-normal duration-200 motion-reduce:transition-none">
         {({ open }) => (
          <div
           className={clsx(
@@ -175,11 +175,11 @@ export function ServerStatsChart({ guildJoin, guildLeave, guildJoinCSV, guildLea
             "opacity-80": open,
             "hover:opacity-80": !open,
            },
-           "flex h-10 select-none items-center rounded border border-neutral-700 bg-background-menu-button px-4 py-2 duration-200  motion-reduce:transition-none"
+           "bg-background-menu-button flex h-10 select-none items-center rounded border border-neutral-700 px-4 py-2 duration-200  motion-reduce:transition-none"
           )}
          >
           <ArrowDownTrayIcon className="h-4 w-4" aria-hidden="true" role="img" />
-          <span className="!ml-2 text-normal font-normal">Export</span>
+          <span className="text-normal !ml-2 font-normal">Export</span>
           <ChevronDownIcon
            className={clsx(
             {
@@ -193,7 +193,7 @@ export function ServerStatsChart({ guildJoin, guildLeave, guildJoinCSV, guildLea
        </Menu.Button>
       </div>
       <Transition as={Fragment} enter="transition ease-out duration-100" enterFrom="transform opacity-0 scale-95" enterTo="transform opacity-100 scale-100" leave="transition ease-in duration-75" leaveFrom="transform opacity-100 scale-100" leaveTo="transform opacity-0 scale-95">
-       <Menu.Items className="absolute right-0 z-50 mt-2 w-56 origin-top-right divide-y divide-neutral-800 rounded-md border border-neutral-800 bg-background-menu p-1 shadow-2xl">
+       <Menu.Items className="bg-background-menu absolute right-0 z-50 mt-2 w-56 origin-top-right divide-y divide-neutral-800 rounded-md border border-neutral-800 p-1 shadow-2xl">
         <div className="px-1 py-1 ">
          <Menu.Item>
           {({ active }) => (

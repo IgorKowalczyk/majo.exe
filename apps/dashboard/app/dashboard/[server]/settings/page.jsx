@@ -119,9 +119,9 @@ export default async function Settings({ params }) {
 
     <EnablePublicDashboard enabled={Boolean(guild.publicPage)} serverId={serverDownload.id} vanityURL={guild.vanity || guild.guildId} />
 
-    <div className="mt-4 flex flex-row items-start whitespace-nowrap rounded-md border border-accent-primary bg-accent-primary/10 p-4">
+    <div className="border-accent-primary bg-accent-primary/10 mt-4 flex flex-row items-start whitespace-nowrap rounded-md border p-4">
      <span className="mr-1 flex flex-row items-center whitespace-nowrap font-bold">
-      <InformationCircleIcon className="mr-1 h-5 w-5 stroke-accent-primary" />
+      <InformationCircleIcon className="stroke-accent-primary mr-1 h-5 w-5" />
       Note:
      </span>
      <span className="whitespace-normal">The public dashboard will be visible to everyone with the link!</span>

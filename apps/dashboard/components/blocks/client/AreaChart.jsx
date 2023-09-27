@@ -75,7 +75,7 @@ export default function AreaChart({ data = [], categories = [], index, stack = f
 const ChartTooltip = ({ active, payload, label, categoryColors, valueFormatter }) => {
  if (active && payload && categoryColors) {
   return (
-   <div className="rounded-lg border border-neutral-800 bg-background-secondary text-white shadow-lg">
+   <div className="bg-background-secondary rounded-lg border border-neutral-800 text-white shadow-lg">
     <div className="border-b border-neutral-800 px-4 py-2">
      <p className="font-medium text-white">{label}</p>
     </div>
@@ -83,7 +83,7 @@ const ChartTooltip = ({ active, payload, label, categoryColors, valueFormatter }
      {payload.map(({ value, name }, idx) => (
       <div key={`id-${idx}`} className="flex items-center justify-between space-x-2">
        <div className="flex items-center space-x-2">
-        {categoryColors[idx + "e"] ? <span className="h-4 w-4 shrink-0 rounded-full border border-neutral-800 shadow-md" style={{ backgroundColor: categoryColors[idx] }} /> : <span className="h-4 w-4 shrink-0 rounded-full border border-neutral-800 bg-accent-primary shadow-md" />}
+        {categoryColors[idx + "e"] ? <span className="h-4 w-4 shrink-0 rounded-full border border-neutral-800 shadow-md" style={{ backgroundColor: categoryColors[idx] }} /> : <span className="bg-accent-primary h-4 w-4 shrink-0 rounded-full border border-neutral-800 shadow-md" />}
         <p className="whitespace-nowrap text-right text-white">{name}</p>
        </div>
        <p className="whitespace-nowrap text-right font-medium tabular-nums text-white">{valueFormatter(value)}</p>

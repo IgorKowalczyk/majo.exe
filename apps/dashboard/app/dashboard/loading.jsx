@@ -1,10 +1,10 @@
 import { RectangleStackIcon } from "@heroicons/react/24/outline";
-import { AvatarSkeleton, TextSkeleton, ButtonSkeleton } from "components/blocks/Skeletons";
+import { AvatarSkeleton, TextSkeleton, ButtonSkeleton } from "@/components/blocks/Skeletons";
 import { Header1 } from "@/components/blocks/Headers";
 
 export default function Loading() {
  return (
-  <div className="flex w-full flex-col items-center bg-background-primary px-8 pb-8 pt-16 antialiased md:px-16 md:py-16">
+  <div className="bg-background-primary flex w-full flex-col items-center px-8 pb-8 pt-16 antialiased md:px-16 md:py-16">
    <div className="flex flex-col justify-center gap-4">
     <Header1 className={"justify-center"}>
      <RectangleStackIcon className="h-10 w-10" aria-hidden="true" role="img" />

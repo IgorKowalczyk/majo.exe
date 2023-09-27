@@ -6,7 +6,7 @@ export default function Loading() {
  return (
   <>
    <Header1 className={"mb-4 !justify-normal"}>
-    <div className="h-16 w-16 rounded-full bg-button-secondary" />
+    <div className="bg-button-secondary h-16 w-16 rounded-full" />
     <div className="ml-4 flex flex-col !justify-start text-left">
      <TextSkeleton className="w-32" />
      <Header5 className="mt-2 opacity-60">
