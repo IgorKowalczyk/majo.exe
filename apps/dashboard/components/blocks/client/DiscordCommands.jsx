@@ -35,29 +35,20 @@ export function DiscordCommands({ commands }) {
         <>
          <h3 className="flex items-center gap-2 text-center text-xl font-bold">
           /{command.name}{" "}
-          {command.options && (
-           <span className="text-sm text-white/50">
-            ({command.options.length} argument{command.options.length === 1 ? "" : "s"})
-           </span>
-          )}
+          {command.options &&
+           command.options.map((option) => (
+            <span key={option.name} className="ml-2">
+             <code className="cursor-pointer" title={`${option.description} ${option.required ? "(required)" : "(optional)"}`}>
+              {option.name}
+              {option.required ? <span className="text-red-400">*</span> : ""}
+             </code>
+            </span>
+           ))}
          </h3>
         </>
        }
       >
        <p>{command.description}</p>
-       {command.options && (
-        <div className="mt-2 border-t border-t-neutral-800 pt-2">
-         /{command.name}
-         {command.options.map((option) => (
-          <span key={option.name} className="ml-2">
-           <code className="cursor-pointer" title={`${option.description} ${option.required ? "(required)" : "(optional)"}`}>
-            {option.name}
-            {option.required ? <span className="text-red-400">*</span> : ""}
-           </code>
-          </span>
-         ))}
-        </div>
-       )}
       </ClientDisclosure>
      ))}
     </>
