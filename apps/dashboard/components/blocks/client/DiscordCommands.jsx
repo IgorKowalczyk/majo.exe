@@ -15,7 +15,7 @@ export function DiscordCommands({ commands }) {
    <InputWithIcon placeholder="Search commands..." value={search} onChange={(e) => setSearch(e.target.value)} icon={<MagnifyingGlassIcon className="h-5 w-5 text-white/50" aria-hidden="true" role="img" />} />
    {filteredCommands.length === 0 ? (
     <div className="mt-8 flex flex-col items-center justify-center gap-2">
-     <h3 className="flex items-center text-center">
+     <h3 className="flex items-center text-center text-xl font-bold">
       <XCircleIcon className="mr-2 h-6 w-6 text-red-400" aria-hidden="true" role="img" />
       No commands found.
      </h3>
@@ -33,7 +33,7 @@ export function DiscordCommands({ commands }) {
        }
        buttonElements={
         <>
-         <h3 className="flex items-center gap-2 text-center text-xl font-bold">
+         <h3 className="flex items-center gap-2 text-center">
           /{command.name}{" "}
           {command.options &&
            command.options.map((option) => (
