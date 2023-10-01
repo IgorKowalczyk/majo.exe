@@ -1,12 +1,12 @@
 import { meta, social } from "@config";
 import { RectangleStackIcon } from "@heroicons/react/24/outline";
-import { ProviderLogin } from "@/components/buttons/client/Provider";
-import { Invite } from "@/components/buttons/server/Invite";
-import { UserMenuDropdown } from "@/components/nav/client/UserMenuDropdown";
 import { getSession } from "lib/session";
 import Image from "next/image";
 import Link from "next/link";
+import { ProviderLogin } from "@/components/buttons/client/Provider";
+import { Invite } from "@/components/buttons/server/Invite";
 import { SideMenuControl } from "@/components/nav/client/SideMenuControl";
+import { UserMenuDropdown } from "@/components/nav/client/UserMenuDropdown";
 
 export async function Nav() {
  const session = await getSession();
@@ -14,20 +14,20 @@ export async function Nav() {
  return (
   <nav className="bg-background-navbar/70 fixed z-[9999] flex w-full items-center border-b border-b-neutral-800 py-4 text-left shadow-lg backdrop-blur-[9px]">
    <SideMenuControl />
-   <div className="mx-auto flex items-center xl:w-4/5">
+   <div className="mx-auto flex w-full items-center xl:w-4/5">
     <Link href="/" className="text-lg text-white">
      <div className="flex cursor-pointer items-center gap-2 pl-4 pr-2 text-xl duration-200 hover:opacity-90 motion-reduce:transition-none">
       <Image className="h-9 min-h-[2.25rem] w-9 min-w-[2.25rem] rounded-full" src={social.logo} alt="Majo.exe" width={36} height={36} />
       <h1 className=" hidden font-bold sm:block">{meta.title}</h1>
      </div>
     </Link>
-    <>
+    <div className="hidden md:flex">
      <div className="mx-4 h-6 w-1 border-l-2 border-l-neutral-700" />
 
      <Link href="/commands" className="flex items-center text-white/60 duration-200 hover:text-white motion-reduce:transition-none">
       <RectangleStackIcon className="mr-2 h-5 w-5 " aria-hidden="true" role="img" /> Commands
      </Link>
-    </>
+    </div>
     <div className="ml-auto mr-4 ">
      {session ? (
       <div className="flex items-center gap-2">

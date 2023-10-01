@@ -1,11 +1,12 @@
 import { ArrowRightIcon } from "@heroicons/react/24/outline";
-import { Invite } from "@/components/buttons/server/Invite";
-import { Login } from "@/components/buttons/server/Login";
+import Image from "next/image";
 import Link from "next/link";
+import ray from "public/assets/ray.png";
+import Balancer from "react-wrap-balancer";
 import GlobeClient from "@/components/blocks/client/Globe";
 import { Header1 } from "@/components/blocks/Headers";
-import Image from "next/image";
-import ray from "public/assets/ray.png";
+import { Invite } from "@/components/buttons/server/Invite";
+import { Login } from "@/components/buttons/server/Login";
 
 export default async function Main() {
  return (
@@ -20,8 +21,13 @@ export default async function Main() {
         <ArrowRightIcon className="ml-2 inline-block h-4 w-4 transition-all duration-200 group-hover:translate-x-1" />
        </span>
       </Link>
-      <Header1 className={"text-fill-transparent mb-0	justify-center bg-gradient-to-b from-white to-neutral-400 box-decoration-clone bg-clip-text text-center !font-black !leading-tight lg:!justify-start lg:text-start"}>The only one Discord Bot</Header1>
-      <h2 className="max-w-[680px] text-center text-2xl text-white/70 lg:text-left">Majo.exe will not only keep your server entertained but also assist you with moderation and many other things!</h2>
+      <Header1 className={"text-fill-transparent mb-0	justify-center bg-gradient-to-b from-white to-neutral-400 box-decoration-clone bg-clip-text text-center !font-black !leading-tight lg:!justify-start lg:text-start"}>
+       <Balancer>The only one Discord Bot</Balancer>
+      </Header1>
+
+      <h2 className="max-w-[680px] text-center text-2xl text-white/70 lg:text-left">
+       <Balancer>Majo.exe will not only keep your server entertained but also assist you with moderation and many other things!</Balancer>
+      </h2>
       <div className="mt-2 flex flex-col gap-4 sm:flex-row">
        <Login />
        <Invite />
@@ -31,7 +37,7 @@ export default async function Main() {
       <GlobeClient />
      </div>
     </div>
-    <Image width={1000} height={1000} className="pointer-events-none absolute -top-20 left-0 right-0 z-0 mx-auto hidden h-full w-full select-none lg:block" unoptimized={true} src={ray} loading={"eager"} placeholder="blur" />
+    <Image alt="Background" width={1000} height={1000} className="pointer-events-none absolute -top-20 left-0 right-0 z-0 mx-auto hidden h-full w-full select-none lg:block" unoptimized={true} src={ray} loading={"eager"} placeholder="blur" />
    </div>
    <hr className="m-[0_auto] mb-8 h-px w-full border-none bg-[linear-gradient(to_right,transparent,rgba(255,255,255,0.1)_50%,transparent)] px-8 duration-300 motion-reduce:transition-none" />
   </>

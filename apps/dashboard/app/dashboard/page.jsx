@@ -2,14 +2,14 @@ import { PlusSmallIcon, RectangleStackIcon } from "@heroicons/react/24/outline";
 import { getServers } from "@majoexe/util/functions";
 import { isBotInServer } from "@majoexe/util/functions";
 import clsx from "clsx";
-import { PrimaryButton } from "@/components/buttons/server/Primary";
-import { SecondaryButton } from "@/components/buttons/server/Secondary";
 import { getSession } from "lib/session";
 import Image from "next/image";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import { Refetch } from "@/components/blocks/client/Refetch";
 import { Header1 } from "@/components/blocks/Headers";
+import { PrimaryButton } from "@/components/buttons/server/Primary";
+import { SecondaryButton } from "@/components/buttons/server/Secondary";
 
 export default async function Dashboard() {
  const session = await getSession();

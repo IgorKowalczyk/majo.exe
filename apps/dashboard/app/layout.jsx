@@ -1,13 +1,13 @@
 import { meta } from "@config";
 import { Analytics } from "@vercel/analytics/react";
-import { Session } from "@/components/blocks/client/Session";
-import { Hotjar } from "@/components/blocks/Hotjar";
-import { Nav } from "@/components/nav/server/Nav";
 import { Inter } from "next/font/google";
 import { twMerge } from "tailwind-merge";
 import ProgressBar from "@/components/blocks/client/ProgressBar";
+import { Session } from "@/components/blocks/client/Session";
+import { Hotjar } from "@/components/blocks/Hotjar";
 import { TailwindIndicator } from "@/components/blocks/TailwindIndicator";
 import { VisibilityProvider } from "@/components/nav/client/VisibilityContext";
+import { Nav } from "@/components/nav/server/Nav";
 import "styles/globals.css";
 import "styles/progress.css";
 import "styles/tippy.css";
