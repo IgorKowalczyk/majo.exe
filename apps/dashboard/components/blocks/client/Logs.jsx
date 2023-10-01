@@ -1,7 +1,7 @@
 "use client";
 
 import { Disclosure, Transition } from "@headlessui/react";
-import { NoSymbolIcon, ChevronDownIcon, PaintBrushIcon } from "@heroicons/react/24/outline";
+import { NoSymbolIcon, ChevronDownIcon, PaintBrushIcon, LinkIcon, UsersIcon } from "@heroicons/react/24/outline";
 import { formatDate } from "@majoexe/util/functions";
 import clsx from "clsx";
 import Image from "next/image";
@@ -53,14 +53,16 @@ export default function Logs({ initialItems, id }) {
          })}
         >
          <div className="relative">
-          {item.user?.avatar && <Image src={`https://cdn.discordapp.com/avatars/${item.user?.discordId}/${item.user?.avatar}.${item.user?.avatar.startsWith("a_") ? "gif" : "png"}`} alt={`${item.user?.name} avatar`} quality={95} width={32} height={32} className="h-12 w-12 rounded-full" />}
+          {item.user?.avatar && <Image src={`https://cdn.discordapp.com/avatars/${item.user?.discordId}/${item.user?.avatar}.${item.user?.avatar.startsWith("a_") ? "gif" : "png"}`} alt={`${item.user?.name} avatar`} quality={95} width={32} height={32} className="h-12 min-h-[48px] w-12 min-w-[48px] rounded-full" />}
           {item.type === "profanity" && <NoSymbolIcon className="bg-button-secondary/80 absolute bottom-0 right-0 h-5 min-h-[20px] w-5 min-w-[20px] rounded-full border border-white/10 p-1 opacity-80" />}
           {item.type === "embed_color" && <PaintBrushIcon className="bg-button-secondary/80 absolute bottom-0 right-0 h-5 min-h-[20px] w-5 min-w-[20px] rounded-full border border-white/10 p-1 opacity-80" />}
+          {item.type === "public_dashboard" && <UsersIcon className="bg-button-secondary/80 absolute bottom-0 right-0 h-5 min-h-[20px] w-5 min-w-[20px] rounded-full border border-white/10 p-1 opacity-80" />}
+          {item.type === "vanity" && <LinkIcon className="bg-button-secondary/80 absolute bottom-0 right-0 h-5 min-h-[20px] w-5 min-w-[20px] rounded-full border border-white/10 p-1 opacity-80" />}
          </div>
          <div className="flex flex-col">
           <p className="text-left font-bold">
-           {item.user?.name || item.user?.id}
-           <span className="opacity-70">#{item.user?.discriminator || "0000"}</span> {item.content}
+           {item.user?.global_name || item.user?.username}
+           {item.user?.discriminator !== "0" && <span className="opacity-70">#{item.user?.discriminator || "0000"}</span>}: {item.content}
           </p>
           <span className="text-left opacity-70">{formatDate(item.createdAt)}</span>
          </div>
@@ -69,7 +71,7 @@ export default function Logs({ initialItems, id }) {
            {
             "rotate-180": open,
            },
-           "ml-auto h-4 w-4 duration-200 motion-reduce:transition-none"
+           "ml-auto h-4 min-h-[14px] w-4 min-w-[14px] duration-200 motion-reduce:transition-none"
           )}
          />
         </Disclosure.Button>
@@ -88,8 +90,8 @@ export default function Logs({ initialItems, id }) {
            <span className="font-bold">Date:</span> {item.createdAt}
           </p>
           <p>
-           <span className="font-bold">User:</span> {item.user?.name || item.user?.id}
-           <span className="opacity-70">#{item.user?.discriminator || "0000"}</span> (ID: {item.user?.discordId || item.user?.id})
+           <span className="font-bold">User:</span> {item.user?.global_name || item.user?.username}
+           {item.user?.discriminator !== "0" && <span className="opacity-70">#{item.user?.discriminator || "0000"}</span>} (ID: {item.user?.discordId || item.user?.id})
           </p>
          </Disclosure.Panel>
         </Transition>

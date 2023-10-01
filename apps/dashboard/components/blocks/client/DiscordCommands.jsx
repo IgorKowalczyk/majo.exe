@@ -16,7 +16,7 @@ export function DiscordCommands({ commands }) {
    {filteredCommands.length === 0 ? (
     <div className="mt-8 flex flex-col items-center justify-center gap-2">
      <h3 className="flex items-center text-center text-xl font-bold">
-      <XCircleIcon className="mr-2 h-6 w-6 text-red-400" aria-hidden="true" role="img" />
+      <XCircleIcon className="mr-2 h-6 min-h-[24px] w-6 min-w-[24px] text-red-400" aria-hidden="true" role="img" />
       No commands found.
      </h3>
      <p className="text-center text-white/50">Try searching for something else.</p>

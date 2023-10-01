@@ -47,7 +47,7 @@ export default async function Settings({ params }) {
    </Header1>
    <Block>
     <h2 className="mb-1 flex items-center justify-start gap-2 text-left text-2xl font-bold">
-     <PaintBrushIcon className="h-6 w-6" />
+     <PaintBrushIcon className="h-6 min-h-[24px] w-6 min-w-[24px]" />
      Default Embed Color
     </h2>
     <p className="mb-4 text-left">Change the color of the embeds sent by the bot. This will not affect embeds sent by other bots.</p>
@@ -56,7 +56,7 @@ export default async function Settings({ params }) {
 
    <Block className="mt-4">
     <h2 className="mb-1 flex items-center justify-start gap-2 text-left text-2xl font-bold">
-     <ShieldCheckIcon className="h-6 w-6" />
+     <ShieldCheckIcon className="h-6 min-h-[24px] w-6 min-w-[24px]" />
      Dashboard Access
     </h2>
     <p className="mb-4 text-left">
@@ -69,7 +69,7 @@ export default async function Settings({ params }) {
        return (
         <div key={role.id} className="flex items-center justify-start gap-2 rounded-full border border-neutral-700 px-2 py-1">
          <div
-          className="h-4 w-4 rounded-full"
+          className="h-4 min-h-[14px] w-4 min-w-[14px] rounded-full"
           style={{
            backgroundColor: role.color ? `#${role.color.toString(16)}` : "#000000",
           }}
@@ -83,7 +83,7 @@ export default async function Settings({ params }) {
    </Block>
    <Block className="mt-4">
     <h2 className="mb-1 flex items-center justify-start gap-2 text-left text-2xl font-bold">
-     <UsersIcon className="h-6 w-6" />
+     <UsersIcon className="h-6 min-h-[24px] w-6 min-w-[24px]" />
      Public Dashboard
     </h2>
     <p className="mb-4 text-left">
@@ -93,7 +93,7 @@ export default async function Settings({ params }) {
     <div className="mb-4 grid grid-cols-1 gap-4 lg:grid-cols-2">
      <Block className="flex flex-col items-start justify-start gap-2">
       <h3 className="flex items-center text-left text-xl font-bold">
-       <CheckIcon className="mr-2 h-6 w-6 rounded-md border border-green-400 stroke-green-400 p-1" />
+       <CheckIcon className="mr-2 h-6 min-h-[24px] w-6 min-w-[24px] rounded-md border border-green-400 stroke-green-400 p-1" />
        Things that are shown:
       </h3>
       <ul className="list-inside list-disc">
@@ -105,7 +105,7 @@ export default async function Settings({ params }) {
      </Block>
      <Block className="flex flex-col items-start justify-start gap-2">
       <h3 className="flex items-center text-left text-xl font-bold">
-       <XMarkIcon className="mr-2 h-6 w-6 rounded-md border border-red-400 stroke-red-400 p-1" />
+       <XMarkIcon className="mr-2 h-6 min-h-[24px] w-6 min-w-[24px] rounded-md border border-red-400 stroke-red-400 p-1" />
        Things that are not shown:
       </h3>
       <ul className="list-inside list-disc">

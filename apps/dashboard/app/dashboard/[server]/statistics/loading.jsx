@@ -6,20 +6,20 @@ export default function Loading() {
  return (
   <div className="flex flex-col gap-6">
    <Block>
-    <Header4 className="mb-4 !items-start !justify-normal">
+    <Header4 className="mb-4 flex-col !justify-normal whitespace-nowrap sm:flex-row">
      <span className="opacity-80">Members Joined</span> <span className="text-accent-primary">(Loading...)</span>
     </Header4>
     <GraphSkeleton className="mt-10 h-80" />
    </Block>
    <Block>
-    <Header4 className="mb-4 !items-start !justify-normal opacity-80">
+    <Header4 className="mb-4 flex-col !justify-normal whitespace-nowrap sm:flex-row">
      <span className="opacity-80">Members Left</span>
      <span className="text-accent-primary">(Loading...)</span>
     </Header4>
     <GraphSkeleton className="mt-10 h-80" />
    </Block>
    <Block>
-    <Header4 className="mb-4 !items-start !justify-normal opacity-80">
+    <Header4 className="mb-4 flex-col !justify-normal whitespace-nowrap sm:flex-row">
      <span className="opacity-80">Messages Sent</span>
      <span className="text-accent-primary">(Loading...)</span>
     </Header4>

@@ -57,7 +57,7 @@ export default async function Profile() {
        </div>
        <div className="mb-[-14px] hidden w-full items-end justify-end font-semibold md:flex">
         <Link href={`https://discord.com/users/${user.id}`} target="_blank" className="bg-button-primary hover:bg-button-primary-hover flex h-[40px] cursor-pointer items-center rounded px-4 py-0  font-normal text-white duration-200 motion-reduce:transition-none">
-         <ArrowTopRightOnSquareIcon className="mr-2 h-4 w-4" aria-hidden="true" role="img" /> See global profile
+         <ArrowTopRightOnSquareIcon className="mr-2 h-4 min-h-[14px] w-4 min-w-[14px]" aria-hidden="true" role="img" /> See global profile
         </Link>
        </div>
       </div>

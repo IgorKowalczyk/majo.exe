@@ -4,7 +4,7 @@ import { getSession } from "lib/session";
 import { redirect } from "next/navigation";
 import { Block } from "@/components/blocks/Block";
 import { Leaderboard } from "@/components/blocks/client/Leaderboard";
-import { Header1 } from "@/components/blocks/Headers";
+import { Header1, Header5 } from "@/components/blocks/Headers";
 import "tippy.js/dist/backdrop.css";
 import "tippy.js/animations/shift-away.css";
 import "tippy.js/dist/tippy.css";
@@ -72,6 +72,8 @@ export default async function ServerLeaderboard({ params }) {
   };
  });
 
+ const currentUser = xp.findIndex((x) => x.user.discordId === session.id) + 1;
+
  return (
   <>
    <Header1>
@@ -80,6 +82,16 @@ export default async function ServerLeaderboard({ params }) {
     </svg>
     Leaderboard
    </Header1>
+   <Header5 className="mb-4 mt-2 justify-start text-left">
+    <span>
+     There are {xp.length} users in the leaderboard right now.{" "}
+     {currentUser && currentUser > 0 && (
+      <span>
+       You are currently <span className="text-accent-primary">#{currentUser}</span> in the leaderboard.
+      </span>
+     )}
+    </span>
+   </Header5>
    <Block className="flex w-full overflow-auto">
     {xp.length === 0 && <h3 className="text-left text-xl font-bold">No users found!</h3>}
     {xp.length > 0 && (

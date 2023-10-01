@@ -25,6 +25,14 @@ html {
  scrollbar-width: none;
 }
 
+.show-scrollbar::-webkit-scrollbar {
+ @apply block;
+}
+
+.show-scrollbar {
+ scrollbar-width: inherit;
+}
+
 ::-webkit-scrollbar {
  @apply w-[10px];
 }
@@ -53,6 +61,7 @@ canvas {
 code {
  @apply bg-background-secondary inline-block rounded-md border border-neutral-800 px-2 py-1;
 }
+
 .from-black-10\/50 {
  --tw-gradient-from: rgba(0, 0, 0, 0.5) var(--tw-gradient-from-position);
  --tw-gradient-to: transparent var(--tw-gradient-to-position);

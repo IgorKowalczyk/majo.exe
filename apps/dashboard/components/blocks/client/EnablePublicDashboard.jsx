@@ -99,11 +99,11 @@ export function EnablePublicDashboard({ enabled, serverId, vanityURL }) {
 
  return (
   <div className="flex flex-col items-start justify-start gap-4">
-   <div className="mx-auto flex flex-col items-center justify-start gap-2 font-bold md:mx-0 md:flex-row">
+   <div className="mx-auto flex flex-col items-center justify-center gap-2 text-center font-bold md:mx-0 md:flex-row md:justify-start md:text-left">
     Enable public dashboard overview:
     <Switch enabled={isEnabled} onChange={toggle} disabled={disabled} />
    </div>
-   <div className="mx-auto flex flex-col items-center justify-start gap-2 font-bold md:mx-0 md:flex-row">
+   <div className="mx-auto flex flex-col items-center justify-start gap-2 text-center font-bold md:mx-0 md:flex-row md:text-left">
     Set server vanity URL:
     <div className="flex flex-col items-center justify-start gap-2 md:flex-row">
      <div className="group flex flex-row-reverse items-center justify-start gap-0">
@@ -118,7 +118,7 @@ export function EnablePublicDashboard({ enabled, serverId, vanityURL }) {
          "!border-red-400 focus:!border-red-400": vanityError,
         },
 
-        "peer !w-fit rounded-l-none border-l-0 !pl-0 font-normal focus:!border-l-0"
+        "peer !w-fit font-normal sm:rounded-l-none sm:border-l-0 sm:!pl-0 focus:sm:!border-l-0"
        )}
        name="vanity"
       />
@@ -128,7 +128,7 @@ export function EnablePublicDashboard({ enabled, serverId, vanityURL }) {
          "!border-red-400 focus:!border-red-400": vanityError,
          "peer-focus:!border-button-primary border-neutral-800": !vanityError,
         },
-        "select-none rounded-md rounded-r-none border border-r-0 border-r-transparent bg-transparent py-2 pl-3 font-normal text-white/60 shadow-sm outline-none !ring-0 duration-200 "
+        "hidden select-none rounded-md rounded-r-none border border-r-0 border-r-transparent bg-transparent py-2 pl-3 font-normal text-white/60 shadow-sm outline-none !ring-0 duration-200 sm:block "
        )}
       >
        {process.env.NEXT_PUBLIC_URL}/server/

@@ -18,9 +18,11 @@ export function ServerStatsChart({ guildJoin, guildLeave, guildJoinCSV, guildLea
  return (
   <div className="flex flex-col gap-6">
    <Block>
-    <Header4 className="mb-4 !items-start !justify-normal">
-     <span className="opacity-80">Members Joined</span> <span className="text-accent-primary">(+{sumArray(guildJoin, "Joins")})</span>
-     <Menu as="div" className="relative ml-auto inline-block text-left">
+    <Header4 className="mb-4 flex-col !justify-normal whitespace-nowrap sm:flex-row">
+     <span>
+      <span className="opacity-80">Members Joined</span> <span className="text-accent-primary">(+{sumArray(guildJoin, "Joins")})</span>
+     </span>
+     <Menu as="div" className="relative mx-auto inline-block text-left sm:ml-auto sm:mr-0">
       <div>
        <Menu.Button className="text-normal ml-4 flex cursor-pointer items-center gap-3 font-normal duration-200 motion-reduce:transition-none">
         {({ open }) => (
@@ -33,14 +35,14 @@ export function ServerStatsChart({ guildJoin, guildLeave, guildJoinCSV, guildLea
            "bg-background-menu-button flex h-10 select-none items-center rounded border border-neutral-700 px-4 py-2 duration-200  motion-reduce:transition-none"
           )}
          >
-          <ArrowDownTrayIcon className="h-4 w-4" aria-hidden="true" role="img" />
+          <ArrowDownTrayIcon className="h-4 min-h-[14px] w-4 min-w-[14px]" aria-hidden="true" role="img" />
           <span className="text-normal !ml-2 font-normal">Export</span>
           <ChevronDownIcon
            className={clsx(
             {
              "rotate-180": open,
             },
-            "ml-2 h-4 w-4 duration-200 motion-reduce:transition-none"
+            "ml-2 h-4 min-h-[14px] w-4 min-w-[14px] duration-200 motion-reduce:transition-none"
            )}
           />
          </div>
@@ -90,9 +92,11 @@ export function ServerStatsChart({ guildJoin, guildLeave, guildJoinCSV, guildLea
     <AreaChart className="mt-10 h-80" data={guildJoin} index="date" categories={["Joins"]} yAxisWidth={50} valueFormatter={numberFormatter} curveType="monotone" csvData={guildJoinCSV} />
    </Block>
    <Block>
-    <Header4 className="mb-4 !items-start !justify-normal">
-     <span className="opacity-80">Members Left</span> <span className="text-accent-primary">(+{sumArray(guildLeave, "Leaves")})</span>
-     <Menu as="div" className="relative ml-auto inline-block text-left">
+    <Header4 className="mb-4 flex-col !justify-normal whitespace-nowrap sm:flex-row">
+     <span>
+      <span className="opacity-80">Members Left</span> <span className="text-accent-primary">(+{sumArray(guildLeave, "Leaves")})</span>
+     </span>
+     <Menu as="div" className="relative mx-auto inline-block text-left sm:ml-auto sm:mr-0">
       <div>
        <Menu.Button className="text-normal ml-4 flex cursor-pointer items-center gap-3 font-normal duration-200 motion-reduce:transition-none">
         {({ open }) => (
@@ -105,14 +109,14 @@ export function ServerStatsChart({ guildJoin, guildLeave, guildJoinCSV, guildLea
            "bg-background-menu-button flex h-10 select-none items-center rounded border border-neutral-700 px-4 py-2 duration-200  motion-reduce:transition-none"
           )}
          >
-          <ArrowDownTrayIcon className="h-4 w-4" aria-hidden="true" role="img" />
+          <ArrowDownTrayIcon className="h-4 min-h-[14px] w-4 min-w-[14px]" aria-hidden="true" role="img" />
           <span className="text-normal !ml-2 font-normal">Export</span>
           <ChevronDownIcon
            className={clsx(
             {
              "rotate-180": open,
             },
-            "ml-2 h-4 w-4 duration-200 motion-reduce:transition-none"
+            "ml-2 h-4 min-h-[14px] w-4 min-w-[14px] duration-200 motion-reduce:transition-none"
            )}
           />
          </div>
@@ -163,9 +167,11 @@ export function ServerStatsChart({ guildJoin, guildLeave, guildJoinCSV, guildLea
    </Block>
 
    <Block>
-    <Header4 className="mb-4 !items-start !justify-normal">
-     <span className="opacity-80">Messages Sent</span> <span className="text-accent-primary">(+{sumArray(guildMessage, "Messages")})</span>
-     <Menu as="div" className="relative ml-auto inline-block text-left">
+    <Header4 className="mb-4 flex-col !justify-normal whitespace-nowrap sm:flex-row">
+     <span>
+      <span className="opacity-80">Messages Sent</span> <span className="text-accent-primary">(+{sumArray(guildMessage, "Messages")})</span>
+     </span>
+     <Menu as="div" className="relative mx-auto inline-block text-left sm:ml-auto sm:mr-0">
       <div>
        <Menu.Button className="text-normal ml-4 flex cursor-pointer items-center gap-3 font-normal duration-200 motion-reduce:transition-none">
         {({ open }) => (
@@ -178,14 +184,14 @@ export function ServerStatsChart({ guildJoin, guildLeave, guildJoinCSV, guildLea
            "bg-background-menu-button flex h-10 select-none items-center rounded border border-neutral-700 px-4 py-2 duration-200  motion-reduce:transition-none"
           )}
          >
-          <ArrowDownTrayIcon className="h-4 w-4" aria-hidden="true" role="img" />
+          <ArrowDownTrayIcon className="h-4 min-h-[14px] w-4 min-w-[14px]" aria-hidden="true" role="img" />
           <span className="text-normal !ml-2 font-normal">Export</span>
           <ChevronDownIcon
            className={clsx(
             {
              "rotate-180": open,
             },
-            "ml-2 h-4 w-4 duration-200 motion-reduce:transition-none"
+            "ml-2 h-4 min-h-[14px] w-4 min-w-[14px] duration-200 motion-reduce:transition-none"
            )}
           />
          </div>

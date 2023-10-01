@@ -28,7 +28,7 @@ export function SideNav({ server }) {
       hidden: !sideNavVisible,
       flex: sideNavVisible,
      },
-     "menu border-r-px bg-background-navbar/70 fixed z-[9998] mt-8 h-screen w-64 flex-none flex-col flex-nowrap overflow-y-auto overflow-x-hidden border-r-neutral-800 px-4  py-8 shadow-lg backdrop-blur md:top-0 md:mt-16 md:flex"
+     "menu bg-background-navbar/70 fixed z-[9998] mt-8 h-screen w-64 flex-none flex-col flex-nowrap overflow-y-auto overflow-x-hidden border-r border-r-neutral-800 px-4  py-8 shadow-lg backdrop-blur md:top-0 md:mt-16 md:flex"
     )}
    >
     <PrimaryButton href="/dashboard" className="mb-4 w-full">
@@ -37,23 +37,23 @@ export function SideNav({ server }) {
 
     <div className="flex w-full flex-col items-center justify-center gap-2 border-t border-t-neutral-800 pt-4">
      <SideNavLink href={`/dashboard/${server}`}>
-      <RectangleStackIcon className="h-6 w-6" />
+      <RectangleStackIcon className="h-6 min-h-[24px] w-6 min-w-[24px]" />
       Overview
      </SideNavLink>
      <SideNavLink href={`/dashboard/${server}/statistics`}>
-      <ChartPieIcon className="h-6 w-6" />
+      <ChartPieIcon className="h-6 min-h-[24px] w-6 min-w-[24px]" />
       Statistics
      </SideNavLink>
      <SideNavLink href={`/dashboard/${server}/leaderboard`}>
-      <QueueListIcon className="h-6 w-6" />
+      <QueueListIcon className="h-6 min-h-[24px] w-6 min-w-[24px]" />
       Leaderboard
      </SideNavLink>
      <SideNavLink href={`/dashboard/${server}/logs`}>
-      <ListBulletIcon className="h-6 w-6" />
+      <ListBulletIcon className="h-6 min-h-[24px] w-6 min-w-[24px]" />
       Logs
      </SideNavLink>
      <SideNavLink href={`/dashboard/${server}/settings`}>
-      <Cog8ToothIcon className="h-6 w-6" />
+      <Cog8ToothIcon className="h-6 min-h-[24px] w-6 min-w-[24px]" />
       Settings
      </SideNavLink>
     </div>

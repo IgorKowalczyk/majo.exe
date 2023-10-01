@@ -31,7 +31,7 @@ export function UserMenuDropdown({ user }) {
           {
            "rotate-180": open,
           },
-          "ml-2 h-4 w-4 duration-200 motion-reduce:transition-none"
+          "ml-2 h-4 min-h-[14px] w-4 min-w-[14px] duration-200 motion-reduce:transition-none"
          )}
         />
        </div>

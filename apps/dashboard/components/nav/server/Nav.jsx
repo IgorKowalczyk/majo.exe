@@ -1,5 +1,6 @@
 import { meta, social } from "@config";
 import { RectangleStackIcon } from "@heroicons/react/24/outline";
+import clsx from "clsx";
 import { getSession } from "lib/session";
 import Image from "next/image";
 import Link from "next/link";
@@ -8,13 +9,21 @@ import { Invite } from "@/components/buttons/server/Invite";
 import { SideMenuControl } from "@/components/nav/client/SideMenuControl";
 import { UserMenuDropdown } from "@/components/nav/client/UserMenuDropdown";
 
-export async function Nav() {
+export async function Nav({ theme }) {
  const session = await getSession();
 
  return (
   <nav className="bg-background-navbar/70 fixed z-[9999] flex w-full items-center border-b border-b-neutral-800 py-4 text-left shadow-lg backdrop-blur-[9px]">
    <SideMenuControl />
-   <div className="mx-auto flex w-full items-center xl:w-4/5">
+   <div
+    className={clsx(
+     {
+      "xl:w-4/5": theme === "compact",
+      "w-full": !theme || theme === "full",
+     },
+     "mx-auto flex items-center"
+    )}
+   >
     <Link href="/" className="text-lg text-white">
      <div className="flex cursor-pointer items-center gap-2 pl-4 pr-2 text-xl duration-200 hover:opacity-90 motion-reduce:transition-none">
       <Image className="h-9 min-h-[2.25rem] w-9 min-w-[2.25rem] rounded-full" src={social.logo} alt="Majo.exe" width={36} height={36} />
