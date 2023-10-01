@@ -33,7 +33,7 @@ export function DiscordCommands({ commands }) {
        }
        buttonElements={
         <>
-         <h3 className="flex items-center gap-2 text-center">
+         <h3 className="hide-scrollbar flex items-center gap-2 overflow-scroll whitespace-nowrap text-center">
           /{command.name}{" "}
           {command.options &&
            command.options.map((option) => (
