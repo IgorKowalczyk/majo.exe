@@ -3,16 +3,16 @@ import { ApplicationCommandType, ApplicationCommandOptionType, AttachmentBuilder
 import { createXPCard } from "../../util/images/createXPCard.js";
 
 export default {
- name: "xp",
- description: "📈 Check your current XP",
+ name: "rank",
+ description: "📈 Check your current level and XP",
  type: ApplicationCommandType.ChatInput,
  cooldown: 3000,
  dm_permission: false,
- usage: "/xp [user]",
+ usage: "/rank [user]",
  options: [
   {
    name: "user",
-   description: "The user you want to check the XP of",
+   description: "The user you want to check the level and XP of",
    type: ApplicationCommandOptionType.User,
    required: false,
   },
@@ -21,11 +21,11 @@ export default {
   try {
    const xpSettings = await fetchXPSettings(interaction.guild.id);
    if (!xpSettings || !xpSettings.enableXP) {
-    return client.errorMessages.createSlashError(interaction, "❌ XP is disabled in this server.");
+    return client.errorMessages.createSlashError(interaction, "❌ Leveling is disabled in this server.");
    }
    const user = interaction.options.getUser("user") || interaction.member.user;
    if (user.bot) {
-    return client.errorMessages.createSlashError(interaction, "❌ You can't check the XP of a bot.\nNote: Bots don't gain XP.");
+    return client.errorMessages.createSlashError(interaction, "❌ You can't check the level and XP of a bot. Note: Bots don't gain XP.");
    }
    const xp = await checkXP(user.id, interaction.guild.id);
    const level = Math.floor(0.1 * Math.sqrt(xp || 0));
@@ -43,7 +43,7 @@ export default {
    });
 
    const embed = new EmbedBuilder()
-    .setTitle(`📈 XP for ${user.globalName || user.username}`)
+    .setTitle(`📈 ${user.globalName || user.username} level`)
     .setFooter({
      text: `Requested by ${interaction.member.user.globalName || interaction.member.user.username}`,
      iconURL: interaction.member.user.displayAvatarURL({ size: 256 }),
