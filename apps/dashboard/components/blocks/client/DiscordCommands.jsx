@@ -4,6 +4,7 @@ import { MagnifyingGlassIcon, XCircleIcon } from "@heroicons/react/24/outline";
 import { useState } from "react";
 import { ClientDisclosure } from "@/components/blocks/client/Disclosure";
 import { InputWithIcon } from "@/components/blocks/Input";
+import { Tooltip } from "./Tooltip";
 
 export function DiscordCommands({ commands }) {
  const [search, setSearch] = useState("");
@@ -38,10 +39,12 @@ export function DiscordCommands({ commands }) {
           {command.options &&
            command.options.map((option) => (
             <span key={option.name} className="ml-2">
-             <code className="cursor-pointer" title={`${option.description} ${option.required ? "(required)" : "(optional)"}`}>
-              {option.name}
-              {option.required ? <span className="text-red-400">*</span> : ""}
-             </code>
+             <Tooltip content={`${option.description} ${option.required ? "(required)" : "(optional)"}`}>
+              <code className="cursor-pointer">
+               {option.name}
+               {option.required ? <span className="text-red-400">*</span> : ""}
+              </code>
+             </Tooltip>
             </span>
            ))}
          </h3>

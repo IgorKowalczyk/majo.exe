@@ -56,6 +56,7 @@ export default async function ServerLeaderboard({ params }) {
     select: {
      discordId: true,
      name: true,
+     global_name: true,
      avatar: true,
      discriminator: true,
     },

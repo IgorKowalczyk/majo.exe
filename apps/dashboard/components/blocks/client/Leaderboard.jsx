@@ -24,7 +24,7 @@ export function Leaderboard({ data, showControls = true, showSearch = true }) {
       <div className="relative">{value?.avatar && <Image src={`https://cdn.discordapp.com/avatars/${value?.discordId}/${value?.avatar}.${value?.avatar.startsWith("a_") ? "gif" : "png"}`} alt={`${value?.name} avatar`} quality={95} width={32} height={32} className="h-12 min-h-[48px] w-12 min-w-[48px] rounded-full" />}</div>
       <Tooltip content={`Discord ID: ${value?.discordId || "Unknown"}`}>
        <span className="text-left font-bold">
-        {value?.global_name || value?.username}
+        {value?.global_name || value?.name}
         {value?.discriminator !== "0" && <span className="opacity-70">#{value?.discriminator || "0000"}</span>}
        </span>
       </Tooltip>
