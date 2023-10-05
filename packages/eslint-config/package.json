@@ -20,7 +20,7 @@
     "@igorkowalczyk/eslint-config": "1.5.6",
     "eslint-plugin-import": "2.28.1",
     "eslint-plugin-prettier": "5.0.0",
-    "eslint-plugin-turbo": "1.10.14",
+    "eslint-plugin-turbo": "1.10.15",
     "globals": "13.22.0"
   },
   "engines": {
