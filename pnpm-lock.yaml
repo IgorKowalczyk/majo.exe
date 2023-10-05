@@ -100,8 +100,8 @@ importers:
         specifier: 1.5.3
         version: 1.5.3
       systeminformation:
-        specifier: 5.21.10
-        version: 5.21.10
+        specifier: 5.21.11
+        version: 5.21.11
       validator:
         specifier: 13.11.0
         version: 13.11.0
@@ -8331,8 +8331,8 @@ packages:
       tslib: 2.6.2
     dev: false
 
-  /systeminformation@5.21.10:
-    resolution: {integrity: sha512-AUPgLI70zycKM4QhPLj4fPVCx06HLlMKR7deJxkdLpSgnT6VDxP0kXUusrgbI/f8XScf9IMufFPeJ9FGHHeaIg==}
+  /systeminformation@5.21.11:
+    resolution: {integrity: sha512-dIJEGoP5W7k4JJGje/b+inJrOL5hV9LPsUi5ndBvJydI80CVEcu2DZYgt6prdRErDi2SA4SqYd/WMR4b+u34mA==}
     engines: {node: '>=8.0.0'}
     os: [darwin, linux, win32, freebsd, openbsd, netbsd, sunos, android]
     hasBin: true
