@@ -140,8 +140,8 @@ importers:
         specifier: 4.2.6
         version: 4.2.6(react-dom@18.2.0)(react@18.2.0)
       '@vercel/analytics':
-        specifier: 1.0.2
-        version: 1.0.2
+        specifier: 1.1.0
+        version: 1.1.0
       '@vercel/og':
         specifier: 0.5.17
         version: 0.5.17
@@ -2994,8 +2994,10 @@ packages:
       '@typescript-eslint/types': 6.7.4
       eslint-visitor-keys: 3.4.3
 
-  /@vercel/analytics@1.0.2:
-    resolution: {integrity: sha512-BZFxVrv24VbNNl5xMxqUojQIegEeXMI6rX3rg1uVLYUEXsuKNBSAEQf4BWEcjQDp/8aYJOj6m8V4PUA3x/cxgg==}
+  /@vercel/analytics@1.1.0:
+    resolution: {integrity: sha512-k5ePYZPxitxxD1eJenPUUuH3qK+EtaA9OVD3oO0BRbyT/LarmZF0qdkptRSidip1arQxsTEIWvHbTuj1oksl+Q==}
+    dependencies:
+      server-only: 0.0.1
     dev: false
 
   /@vercel/og@0.5.17:
