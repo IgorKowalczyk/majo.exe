@@ -43,8 +43,8 @@ const GlobeAnimation = () => {
   let phi = 4.25;
   const globe = createGlobe(canvasRef.current, {
    devicePixelRatio: 2,
-   width: 500 * 2,
-   height: 500 * 2,
+   width: 750 * 2,
+   height: 750 * 2,
    phi,
    theta: 0.35,
    dark: 1,
@@ -109,7 +109,7 @@ const GlobeAnimation = () => {
      });
     }
    }}
-   style={{ width: 500, height: 500, maxWidth: "100%", aspectRatio: 1, opacity: 0, transition: "opacity 1s ease" }}
+   style={{ width: 750, height: 750, maxWidth: "100%", aspectRatio: 1, opacity: 0, transition: "opacity 1s ease", margin: 0 }}
   />
  );
 };
