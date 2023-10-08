@@ -64,7 +64,7 @@ export default function RootLayout({ children }) {
     <body className={twMerge("bg-background-primary text-white antialiased", inter.className)}>
      <ProgressBar />
      <VisibilityProvider>
-      <Nav theme={"compact"} />
+      <Nav theme={"full"} />
       <main className="flex min-h-screen flex-row flex-wrap">
        <div className="mt-8">{children}</div>
 

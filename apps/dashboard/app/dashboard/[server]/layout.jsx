@@ -1,4 +1,25 @@
 import { SideNav } from "@/components/nav/client/SideNav";
+import { meta } from "@config";
+
+export async function generateMetadata({ params }) {
+ const { server } = params;
+
+ return {
+  openGraph: {
+   title: meta.title,
+   description: meta.description,
+   url: meta.url,
+   siteName: meta.title,
+   images: [
+    {
+     url: `${meta.url}/api/og/${server}`,
+     width: 1200,
+     height: 630,
+    },
+   ],
+  },
+ };
+}
 
 export default async function Layout({ children, params }) {
  return (
