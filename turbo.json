@@ -30,6 +30,9 @@
    "cache": false,
    "outputs": ["prisma/schema.prisma"]
   },
+  "prisma:seed": {
+   "cache": false
+  },
   "prisma:migrate": {
    "outputs": ["prisma/migrations/**"]
   },
