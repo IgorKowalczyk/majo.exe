@@ -65,6 +65,6 @@ for (const value of slashCommands) {
 console.log(`-  Seeding ${commandsData.length} commands...`);
 await prismaClient.$transaction(commandsData.map((x) => prismaClient.commands.upsert(x)));
 
-console.log(`🌱 Seeded database in ${performance.now() - time}ms!`);
+console.log(`🌱 Seeded database in ${(performance.now() - time) / 1000}s`);
 
 process.exit(0);

@@ -12,7 +12,7 @@
   },
   "scripts": {
     "prisma:seed": "node ./src/seed.js",
-    "prisma:generate": "prisma generate",
+    "prisma:generate": "prisma generate && pnpm run prisma:seed",
     "prisma:migrate": "prisma migrate dev",
     "prisma:format": "prisma format",
     "prisma:push": "prisma db push",
