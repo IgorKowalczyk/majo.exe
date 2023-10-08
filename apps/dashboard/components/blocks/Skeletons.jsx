@@ -8,8 +8,8 @@ export function GraphSkeleton({ className }) {
  );
 }
 
-export function TextSkeleton({ className }) {
- return <div className={twMerge(className, "min-w-[24px]4 relative isolate h-6 min-h-[24px] w-6 overflow-hidden rounded-md border border-neutral-900 bg-neutral-500/40  before:absolute before:inset-0 before:-translate-x-full before:animate-[shimmer_1s_infinite] before:bg-gradient-to-r before:from-transparent before:via-white/10 before:to-transparent")} />;
+export function TextSkeleton({ className, ...otherProps }) {
+ return <div className={twMerge(className, "min-w-[24px]4 relative isolate h-6 min-h-[24px] w-6 overflow-hidden rounded-md border border-neutral-900 bg-neutral-500/40  before:absolute before:inset-0 before:-translate-x-full before:animate-[shimmer_1s_infinite] before:bg-gradient-to-r before:from-transparent before:via-white/10 before:to-transparent")} {...otherProps} />;
 }
 
 export function InputSkeleton({ className }) {

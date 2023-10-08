@@ -1,29 +1,101 @@
 "use client";
-
-import { MagnifyingGlassIcon, XCircleIcon } from "@heroicons/react/24/outline";
-import { useState } from "react";
+import { ArrowPathIcon, CheckIcon, MagnifyingGlassIcon, XCircleIcon, XMarkIcon } from "@heroicons/react/24/outline";
+import { useEffect, useRef, useState, useMemo } from "react";
 import { Tooltip } from "./Tooltip";
 import { ClientDisclosure } from "@/components/blocks/client/Disclosure";
 import { InputWithIcon } from "@/components/blocks/Input";
+import clsx from "clsx";
+import { GraphSkeleton, InputSkeleton, TextSkeleton } from "../Skeletons";
 
-export function DiscordCommands({ commands }) {
+export function DiscordCommands({ commands, categories }) {
+ const [filteredCategories, setFilteredCategories] = useState([]);
  const [search, setSearch] = useState("");
+ const [mounted, setMounted] = useState(false);
 
- const filteredCommands = commands.filter((command) => command.name.toLowerCase().includes(search.toLowerCase()));
+ const filteredCommands = useMemo(() => {
+  return commands.filter((command) => command.name.toLowerCase().includes(search.toLowerCase() || "") && filteredCategories?.some((category) => category.name === command.categoryName));
+ }, [search, commands, filteredCategories]);
+
+ useEffect(() => {
+  if (filteredCategories === categories) {
+   return;
+  }
+
+  setFilteredCategories(categories);
+ }, [categories]);
+
+ useEffect(() => {
+  setMounted(true);
+ }, []);
+
+ if (!mounted) {
+  return (
+   <>
+    <InputSkeleton className="w-full !max-w-none" />
+
+    <div className="mt-8 flex flex-wrap gap-2">
+     {Array.from({ length: 8 }).map((_, i) => (
+      <TextSkeleton
+       key={i}
+       className="!h-[42px]"
+       style={{
+        width: `${Math.floor(Math.random() * (150 - 64 + 1) + 64)}px !important`,
+       }}
+      />
+     ))}
+    </div>
+
+    <div className="mt-8 flex flex-col items-center justify-center gap-2">
+     <h3 className="flex items-center text-center text-xl font-bold">
+      <ArrowPathIcon className="mr-2 h-6 min-h-[24px] w-6 min-w-[24px] animate-spin" aria-hidden="true" role="img" />
+      Loading commands...
+     </h3>
+     <p className="text-center text-white/50">This may take a few seconds.</p>
+    </div>
+   </>
+  );
+ }
 
  return (
   <>
    <InputWithIcon placeholder="Search commands..." value={search} onChange={(e) => setSearch(e.target.value)} icon={<MagnifyingGlassIcon className="h-5 w-5 text-white/50" aria-hidden="true" role="img" />} />
+   <div className="mt-8 flex flex-wrap gap-2">
+    {categories.map((category) => (
+     <div
+      key={category.name}
+      className={clsx(
+       {
+        "bg-background-secondary": filteredCategories?.includes(category),
+        "opacity-50": !filteredCategories?.includes(category),
+       },
+       "flex cursor-pointer items-center gap-2 rounded-lg border border-neutral-800 px-4 py-2"
+      )}
+      onClick={() => {
+       if (filteredCategories.includes(category)) {
+        setFilteredCategories(filteredCategories?.filter((c) => c !== category));
+       } else {
+        setFilteredCategories([...filteredCategories, category]);
+       }
+      }}
+     >
+      {filteredCategories?.includes(category) ? <CheckIcon className="text-accent-primary h-5 w-5" aria-hidden="true" role="img" /> : <XMarkIcon className="h-5 w-5 text-red-400/50" aria-hidden="true" role="img" />}
+      {category.name}
+     </div>
+    ))}
+   </div>
    {filteredCommands.length === 0 ? (
     <div className="mt-8 flex flex-col items-center justify-center gap-2">
      <h3 className="flex items-center text-center text-xl font-bold">
       <XCircleIcon className="mr-2 h-6 min-h-[24px] w-6 min-w-[24px] text-red-400" aria-hidden="true" role="img" />
       No commands found.
      </h3>
-     <p className="text-center text-white/50">Try searching for something else.</p>
+     <p className="text-center text-white/50">Try searching for something else or change the categories.</p>
     </div>
    ) : (
     <>
+     <h3 className="mt-8 text-center text-xl font-bold">
+      Commands <span className="text-accent-primary">({filteredCommands.length})</span>
+     </h3>
      {filteredCommands.map((command) => (
       <ClientDisclosure
        key={command.name}
