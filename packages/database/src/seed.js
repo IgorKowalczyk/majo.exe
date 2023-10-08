@@ -12,7 +12,6 @@ const categories = await globby("../../apps/bot/commands/*", { onlyDirectories: 
 for (const value of categories) {
  const category = value.split("/")[value.split("/").length - 1];
 
- console.log(`Found ${category}...`);
  categoriesData.push({
   where: { name: category },
   update: { name: category },
@@ -22,7 +21,7 @@ for (const value of categories) {
  });
 }
 
-console.log("Seeding categories...");
+console.log(`Seeding ${categoriesData.length} categories...`);
 await prismaClient.$transaction(categoriesData.map((x) => prismaClient.commandCategories.upsert(x)));
 
 const slashCommands = await globby("../../apps/bot/commands/**/*.js");
@@ -36,8 +35,6 @@ for (const value of slashCommands) {
  if (!name || !description || !type || !run) continue;
 
  const category = value.split("/")[value.split("/").length - 2];
-
- console.log(`Found command ${name}...`);
 
  commandsData.push({
   update: {
@@ -64,7 +61,7 @@ for (const value of slashCommands) {
  });
 }
 
-console.log("Seeding commands... (this may take a while)");
+console.log(`Seeding ${commandsData.length} commands...`);
 await prismaClient.$transaction(commandsData.map((x) => prismaClient.commands.upsert(x)));
 
 console.log("Seeded database!");
