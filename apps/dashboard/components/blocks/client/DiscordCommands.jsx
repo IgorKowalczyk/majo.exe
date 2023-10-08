@@ -95,7 +95,6 @@ export function DiscordCommands({ commands, categories }) {
     <>
      {filteredCategories
       .sort((a, b) => a.name.localeCompare(b.name))
-      // remove if there is search but no commands
       .filter((category) => filteredCommands.some((command) => command.categoryName === category.name))
       .map((category) => (
        <div key={category.name} className="mt-8">
