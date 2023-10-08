@@ -27,7 +27,7 @@ export default async function Statistics({ params }) {
   },
   select: {
    guildId: true,
-   GuildJoin: {
+   guildJoin: {
     where: {
      date: {
       gte: new Date(new Date().setMonth(new Date().getMonth() - 1)),
@@ -38,7 +38,7 @@ export default async function Statistics({ params }) {
      joins: true,
     },
    },
-   GuildLeave: {
+   guildLeave: {
     where: {
      date: {
       gte: new Date(new Date().setMonth(new Date().getMonth() - 1)),
@@ -80,14 +80,14 @@ export default async function Statistics({ params }) {
   return isNaN(date) ? null : date.toISOString().split("T")[0];
  };
 
- guild.GuildJoin.forEach((guildJoinData) => {
+ guild.guildJoin.forEach((guildJoinData) => {
   const dateFormatted = parseDate(guildJoinData.date);
   if (dateFormatted !== null) {
    guildJoinMap.set(dateFormatted, (guildJoinMap.get(dateFormatted) || 0) + guildJoinData.joins);
   }
  });
 
- guild.GuildLeave.forEach((guildLeaveData) => {
+ guild.guildLeave.forEach((guildLeaveData) => {
   const dateFormatted = parseDate(guildLeaveData.date);
   if (dateFormatted !== null) {
    guildLeaveMap.set(dateFormatted, (guildLeaveMap.get(dateFormatted) || 0) + guildLeaveData.leaves);

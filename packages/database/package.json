@@ -1,54 +1,59 @@
 {
- "name": "@majoexe/database",
- "version": "6.0.0",
- "description": "Majo.exe main database schema/client/migrations package",
- "exports": {
-  ".": "./src/client.js",
-  "./redis": "./src/redis.js"
- },
- "type": "module",
- "scripts": {
-  "prisma:generate": "prisma generate",
-  "prisma:migrate": "prisma migrate dev --preview-feature",
-  "prisma:format": "prisma format",
-  "prisma:push": "prisma db push",
-  "format": "prettier . --write --cache --ignore-unknown --plugin=prettier-plugin-prisma",
-  "format:check": "prettier . --check --cache",
-  "lint": "eslint .",
-  "lint:fix": "eslint . --fix"
- },
- "dependencies": {
-  "@majoexe/config": "workspace:*",
-  "@prisma/client": "5.4.1",
-  "chalk": "5.3.0",
-  "ioredis": "5.3.2",
-  "prisma": "5.4.1",
-  "prisma-redis-middleware": "4.8.0"
- },
- "devDependencies": {
-  "prettier-plugin-prisma": "5.0.0"
- },
- "engines": {
-  "node": ">=18.0.0"
- },
- "repository": {
-  "type": "git",
-  "url": "git+https://github.com/igorkowalczyk/majo.exe.git",
-  "directory": "packages/database"
- },
- "keywords": [
-  "prisma",
-  "database",
-  "orm",
-  "sql",
-  "postgresql",
-  "mysql"
- ],
- "author": "Igor Kowalczyk",
- "license": "MIT",
- "bugs": {
-  "url": "https://github.com/igorkowalczyk/majo.exe/issues"
- },
- "homepage": "https://github.com/igorkowalczyk/majo.exe#readme",
- "packageManager": "pnpm@8.8.0"
+  "name": "@majoexe/database",
+  "version": "6.0.0",
+  "description": "Majo.exe main database schema/client/migrations package",
+  "exports": {
+    ".": "./src/client.js",
+    "./redis": "./src/redis.js"
+  },
+  "type": "module",
+  "prisma": {
+    "seed": "node ./src/seed.js"
+  },
+  "scripts": {
+    "prisma:seed": "prisma db seed",
+    "prisma:generate": "prisma generate",
+    "prisma:migrate": "prisma migrate dev",
+    "prisma:format": "prisma format",
+    "prisma:push": "prisma db push",
+    "format": "prettier . --write --cache --ignore-unknown --plugin=prettier-plugin-prisma",
+    "format:check": "prettier . --check --cache",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix"
+  },
+  "dependencies": {
+    "@majoexe/config": "workspace:*",
+    "@prisma/client": "5.4.1",
+    "chalk": "5.3.0",
+    "globby": "13.2.2",
+    "ioredis": "5.3.2",
+    "prisma": "5.4.1",
+    "prisma-redis-middleware": "4.8.0"
+  },
+  "devDependencies": {
+    "prettier-plugin-prisma": "5.0.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/igorkowalczyk/majo.exe.git",
+    "directory": "packages/database"
+  },
+  "keywords": [
+    "prisma",
+    "database",
+    "orm",
+    "sql",
+    "postgresql",
+    "mysql"
+  ],
+  "author": "Igor Kowalczyk",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/igorkowalczyk/majo.exe/issues"
+  },
+  "homepage": "https://github.com/igorkowalczyk/majo.exe#readme",
+  "packageManager": "pnpm@8.8.0"
 }

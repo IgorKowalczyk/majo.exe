@@ -8,6 +8,7 @@ generator client {
  provider = "prisma-client-js"
 }
 
+// User model
 model User {
  id            String       @id @default(cuid())
  discordId     String       @unique @map(name: "discord_id")
@@ -31,6 +32,7 @@ model User {
  @@map(name: "users")
 }
 
+// User accounts (not used)
 model Account {
  id                String  @id @default(cuid())
  userId            String  @map("user_id")
@@ -50,6 +52,7 @@ model Account {
  @@map("accounts")
 }
 
+// User sessions in dashboard
 model Session {
  id           String   @id @default(cuid())
  sessionToken String   @unique @map("session_token")
@@ -61,6 +64,7 @@ model Session {
  @@map(name: "sessions")
 }
 
+// Verification tokens (not used)
 model VerificationToken {
  identifier String
  token      String   @unique
@@ -70,6 +74,7 @@ model VerificationToken {
  @@map(name: "verification_tokens")
 }
 
+// Bot suggestions submitted by users
 model Suggestions {
  id        String   @id @default(cuid())
  userId    String
@@ -80,30 +85,77 @@ model Suggestions {
  @@map(name: "suggestions")
 }
 
+// Categories for slash commands
+model CommandCategories {
+ name                    String                    @id
+ commands                Commands[]
+ guildDisabledCategories GuildDisabledCategories[]
+}
+
+// Slash commands
+model Commands {
+ name                  String                  @id
+ description           String
+ options               Json[]                  @default([])
+ categoryName          String                  @map(name: "category_name")
+ category              CommandCategories       @relation(fields: [categoryName], references: [name], onDelete: Cascade)
+ guildDisabledCommands GuildDisabledCommands[]
+
+ @@map(name: "commands")
+}
+
+// Discord guilds
 model Guild {
- id                                String         @id @default(cuid())
- guildId                           String         @unique @map(name: "guild_id")
- enableXP                          Boolean        @default(true) @map(name: "enable_xp")
- enableXPLastChanged               DateTime       @default(now()) @map(name: "enable_xp_last_changed")
- enableXPLevelUpMessage            Boolean        @default(true) @map(name: "sent_level_messages")
- enableXPLevelUpMessageLastChanged DateTime       @default(now()) @map(name: "sent_level_messages_last_changed")
- embedColor                        String         @default("#5865F2") @map(name: "embed_color")
- embedLastChanged                  DateTime       @default(now()) @map(name: "embed_last_changed")
- lastUpdated                       DateTime       @default(now()) @updatedAt @map(name: "last_updated")
- publicPage                        Boolean        @default(false) @map(name: "public_page")
- publicPageLastChanged             DateTime       @default(now()) @map(name: "public_page_last_changed")
- vanity                            String?        @unique
+ id                                String                    @id @default(cuid())
+ guildId                           String                    @unique @map(name: "guild_id")
+ enableXP                          Boolean                   @default(true) @map(name: "enable_xp")
+ enableXPLastChanged               DateTime                  @default(now()) @map(name: "enable_xp_last_changed")
+ enableXPLevelUpMessage            Boolean                   @default(true) @map(name: "sent_level_messages")
+ enableXPLevelUpMessageLastChanged DateTime                  @default(now()) @map(name: "sent_level_messages_last_changed")
+ embedColor                        String                    @default("#5865F2") @map(name: "embed_color")
+ embedLastChanged                  DateTime                  @default(now()) @map(name: "embed_last_changed")
+ lastUpdated                       DateTime                  @default(now()) @updatedAt @map(name: "last_updated")
+ publicPage                        Boolean                   @default(false) @map(name: "public_page")
+ publicPageLastChanged             DateTime                  @default(now()) @map(name: "public_page_last_changed")
+ vanity                            String?                   @unique
  guildLogs                         GuildLogs[]
  guildXp                           GuildXp[]
- GuildJoin                         GuildJoin[]
- GuildLeave                        GuildLeave[]
- Reputation                        Reputation[]
- Giveaway                          Giveaways[]
- GuildMessage                      GuildMessage[]
+ guildJoin                         GuildJoin[]
+ guildLeave                        GuildLeave[]
+ reputation                        Reputation[]
+ giveaway                          Giveaways[]
+ guildMessage                      GuildMessage[]
+ guildDisabledCommands             GuildDisabledCommands[]
+ guildDisabledCategories           GuildDisabledCategories[]
 
  @@map(name: "guilds")
 }
 
+// Guild disabled slash commands
+model GuildDisabledCommands {
+ id          String   @id @default(cuid())
+ guildId     String   @map(name: "guild_id")
+ commandName String   @map(name: "command_id")
+ command     Commands @relation(fields: [commandName], references: [name], onDelete: Cascade)
+ createdAt   DateTime @default(now()) @map(name: "created_at")
+ guild       Guild    @relation(fields: [guildId], references: [guildId], onDelete: Cascade)
+
+ @@map(name: "guild_disabled_commands")
+}
+
+// Guild disabled slash commands categories 
+model GuildDisabledCategories {
+ id           String            @id @default(cuid())
+ guildId      String            @map(name: "guild_id")
+ categoryName String            @map(name: "category_name")
+ category     CommandCategories @relation(fields: [categoryName], references: [name], onDelete: Cascade)
+ createdAt    DateTime          @default(now()) @map(name: "created_at")
+ guild        Guild             @relation(fields: [guildId], references: [guildId], onDelete: Cascade)
+
+ @@map(name: "guild_disabled_categories")
+}
+
+// Guild security/audit logs
 model GuildLogs {
  id        String   @id @default(cuid())
  guildId   String   @map(name: "guild_id")
@@ -117,6 +169,7 @@ model GuildLogs {
  @@map(name: "guild_logs")
 }
 
+// Guild members xp
 model GuildXp {
  id        String   @id @default(cuid())
  guildId   String   @map(name: "guild_id")
@@ -129,6 +182,7 @@ model GuildXp {
  @@map(name: "guild_xp")
 }
 
+// Guild members reputation
 model Reputation {
  id         String   @id @default(cuid())
  guildId    String   @map(name: "guild_id")
@@ -141,6 +195,7 @@ model Reputation {
  @@map(name: "reputation")
 }
 
+// Guild members joined
 model GuildJoin {
  id      String   @id @default(cuid())
  guildId String   @map(name: "guild_id")
@@ -151,6 +206,7 @@ model GuildJoin {
  @@map(name: "guild_joins")
 }
 
+// Guild members leaves count
 model GuildLeave {
  id      String   @id @default(cuid())
  guildId String   @map(name: "guild_id")
@@ -161,6 +217,7 @@ model GuildLeave {
  @@map(name: "guild_leaves")
 }
 
+// Guild messages count
 model GuildMessage {
  id       String   @id @default(cuid())
  guildId  String   @map(name: "guild_id")
@@ -169,6 +226,7 @@ model GuildMessage {
  guild    Guild    @relation(fields: [guildId], references: [guildId], onDelete: Cascade)
 }
 
+// Guild giveaways
 model Giveaways {
  id        Int      @id @default(autoincrement())
  guildId   String   @map(name: "guild_id")

@@ -3,7 +3,7 @@ import prismaClient from "@majoexe/database";
 export async function guildMemberRemove(client, member) {
  if (!member || !member.user || !member.guild) return;
 
- const leaves = await prismaClient.GuildLeave.findFirst({
+ const leaves = await prismaClient.guildLeave.findFirst({
   where: {
    guildId: member.guild.id,
    date: {
@@ -13,7 +13,7 @@ export async function guildMemberRemove(client, member) {
  });
 
  if (!leaves) {
-  await prismaClient.GuildLeave.create({
+  await prismaClient.guildLeave.create({
    data: {
     guild: {
      connectOrCreate: {
@@ -26,7 +26,7 @@ export async function guildMemberRemove(client, member) {
    },
   });
  } else {
-  await prismaClient.GuildLeave.update({
+  await prismaClient.guildLeave.update({
    where: {
     id: leaves.id,
    },
