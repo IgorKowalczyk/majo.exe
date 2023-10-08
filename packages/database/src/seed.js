@@ -1,10 +1,11 @@
 import { globby } from "globby";
 import prismaClient from "./client.js";
+import { Logger } from "./logger.js";
 
 /* Yeah... I know, the code is a mess, but it works. When it doesn't message me on Discord: @majonezexe */
 /* Im too tired to make it look and work better, so I'll just leave it like this for now. */
 
-console.log("🌱 Seeding database...");
+Logger("event", "Seeding database...");
 const time = performance.now();
 const commandsData = [];
 const categoriesData = [];
@@ -22,7 +23,7 @@ for (const value of categories) {
  });
 }
 
-console.log(`-  Seeding ${categoriesData.length} categories...`);
+Logger("event", `Seeding ${categoriesData.length} categories...`);
 await prismaClient.$transaction(categoriesData.map((x) => prismaClient.commandCategories.upsert(x)));
 
 const slashCommands = await globby("../../apps/bot/commands/**/*.js");
@@ -62,9 +63,9 @@ for (const value of slashCommands) {
  });
 }
 
-console.log(`-  Seeding ${commandsData.length} commands...`);
+Logger("event", `Seeding ${commandsData.length} commands...`);
 await prismaClient.$transaction(commandsData.map((x) => prismaClient.commands.upsert(x)));
 
-console.log(`🌱 Seeded database in ${(performance.now() - time) / 1000}s`);
+Logger("ready", `Seeded database in ${Math.floor((performance.now() - time) / 1000)}s`);
 
 process.exit(0);
