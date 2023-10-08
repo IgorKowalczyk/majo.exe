@@ -11,7 +11,7 @@
     "seed": "node ./src/seed.js"
   },
   "scripts": {
-    "prisma:seed": "pnpm dlx prisma db seed",
+    "prisma:seed": "node ./src/seed.js",
     "prisma:generate": "prisma generate",
     "prisma:migrate": "prisma migrate dev",
     "prisma:format": "prisma format",
