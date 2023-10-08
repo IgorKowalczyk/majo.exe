@@ -14,7 +14,8 @@
     "format:check": "turbo run format:check --color",
     "prisma:generate": "dotenv -- turbo run prisma:generate --color --filter=database",
     "prisma:migrate": "dotenv -- turbo run prisma:migrate --color --filter=database",
-    "prisma:format": "dotenv -- turbo run prisma:format --color --filter=database"
+    "prisma:format": "dotenv -- turbo run prisma:format --color --filter=database",
+    "prisma:seed": "dotenv -- turbo run prisma:seed --color --filter=database"
   },
   "dependencies": {
     "@igorkowalczyk/eslint-config": "1.5.6",
