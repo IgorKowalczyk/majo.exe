@@ -12,7 +12,7 @@
   },
   "scripts": {
     "prisma:seed": "prisma db seed",
-    "prisma:generate": "prisma generate",
+    "prisma:generate": "prisma generate && prisma db seed",
     "prisma:migrate": "prisma migrate dev",
     "prisma:format": "prisma format",
     "prisma:push": "prisma db push",
