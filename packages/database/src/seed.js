@@ -7,7 +7,7 @@ import prismaClient from "./client.js";
 console.log("Seeding database...");
 const commandsData = [];
 const categoriesData = [];
-const categories = await globby(`../../apps/bot/commands/*`, { onlyDirectories: true });
+const categories = await globby("../../apps/bot/commands/*", { onlyDirectories: true });
 
 for (const value of categories) {
  const category = value.split("/")[value.split("/").length - 1];
@@ -25,10 +25,10 @@ for (const value of categories) {
 console.log("Seeding categories...");
 await prismaClient.$transaction(categoriesData.map((x) => prismaClient.commandCategories.upsert(x)));
 
-const slashCommands = await globby(`../../apps/bot/commands/**/*.js`);
+const slashCommands = await globby("../../apps/bot/commands/**/*.js");
 
 for (const value of slashCommands) {
- const file = await import(`../` + value);
+ const file = await import("../" + value);
  const { default: slashCommand } = file;
 
  if (!slashCommand) continue;
