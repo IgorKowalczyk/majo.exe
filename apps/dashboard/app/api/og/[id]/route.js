@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import { redirect } from "next/navigation";
 import { ImageResponse } from "next/server";
 
@@ -47,7 +48,7 @@ export async function GET(request, { params }) {
      backgroundImage: "url(\"data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' width='32' height='32' fill='none' stroke='rgb(255,255,255,0.05)'%3e%3cpath d='M0 .5H31.5V32'/%3e%3c/svg%3e\")",
     }}
    >
-    <img src={data.icon} style={{ width: "125px", height: "125px", marginBottom: "20px", borderRadius: "50%", boxShadow: "0px 0px 277px 3px #101110" }} />
+    <img src={data.icon} alt="avatar" style={{ width: "125px", height: "125px", marginBottom: "20px", borderRadius: "50%", boxShadow: "0px 0px 277px 3px #101110" }} />
     <div
      style={{
       backgroundImage: "linear-gradient(to bottom, rgb(255, 255, 255), rgb(163, 163, 163))",
