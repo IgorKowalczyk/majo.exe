@@ -2,9 +2,9 @@
 
 import { MagnifyingGlassIcon, XCircleIcon } from "@heroicons/react/24/outline";
 import { useState } from "react";
+import { Tooltip } from "./Tooltip";
 import { ClientDisclosure } from "@/components/blocks/client/Disclosure";
 import { InputWithIcon } from "@/components/blocks/Input";
-import { Tooltip } from "./Tooltip";
 
 export function DiscordCommands({ commands }) {
  const [search, setSearch] = useState("");

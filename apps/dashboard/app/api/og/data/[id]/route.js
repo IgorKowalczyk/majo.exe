@@ -1,6 +1,6 @@
-import { NextResponse } from "next/server";
 import prismaClient from "@majoexe/database";
 import { getServer } from "@majoexe/util/functions";
+import { NextResponse } from "next/server";
 
 export async function GET(request, { params }) {
  const id = params.id;

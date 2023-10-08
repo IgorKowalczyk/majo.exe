@@ -1,4 +1,5 @@
 /* eslint-disable complexity */
+import { meta } from "@config";
 import prismaClient from "@majoexe/database";
 import { getServer, getGuildPreview } from "@majoexe/util/functions";
 import Image from "next/image";

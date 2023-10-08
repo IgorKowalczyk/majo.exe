@@ -3,7 +3,7 @@ import { ImageResponse } from "next/server";
 
 export const runtime = "edge";
 
-export const alt = "Majo.exe - The only one Discord Bot"
+export const alt = "Majo.exe - The only one Discord Bot";
 
 export const size = {
  width: 1200,
@@ -17,15 +17,14 @@ const shortenText = (text, maxLen = 24) => {
   text = text.substr(0, maxLen) + "...";
  }
  return text;
-}
-
+};
 
 export async function GET(request, { params }) {
  const id = params.id;
- if(!id) return redirect("/opengraph-image");
+ if (!id) return redirect("/opengraph-image");
 
  const data = await fetch(`${process.env.NEXTAUTH_URL}/api/og/data/${id}`).then((res) => res.json());
- if(data.error || !data.name || !data.icon) return redirect("/opengraph-image");
+ if (data.error || !data.name || !data.icon) return redirect("/opengraph-image");
 
  const fontBold = await fetch(new URL("/public/fonts/bold.ttf", import.meta.url)).then((res) => res.arrayBuffer());
  const fontRegular = await fetch(new URL("/public/fonts/regular.ttf", import.meta.url)).then((res) => res.arrayBuffer());
@@ -48,14 +47,18 @@ export async function GET(request, { params }) {
      backgroundImage: "url(\"data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' width='32' height='32' fill='none' stroke='rgb(255,255,255,0.05)'%3e%3cpath d='M0 .5H31.5V32'/%3e%3c/svg%3e\")",
     }}
    >
-    <img src={data.icon} style={{ width: "125px", height: "125px", 
-    marginBottom: '20px', borderRadius: "50%", boxShadow: "0px 0px 277px 3px #101110" }} />
-    <div style={{ 
-     backgroundImage: 'linear-gradient(to bottom, rgb(255, 255, 255), rgb(163, 163, 163))',
-      backgroundClip: 'text',
-      '-webkit-background-clip': 'text',
-      color: 'transparent',
-      fontFamily: "PoppinsBold" }}>{shortenText(data.name)}</div>
+    <img src={data.icon} style={{ width: "125px", height: "125px", marginBottom: "20px", borderRadius: "50%", boxShadow: "0px 0px 277px 3px #101110" }} />
+    <div
+     style={{
+      backgroundImage: "linear-gradient(to bottom, rgb(255, 255, 255), rgb(163, 163, 163))",
+      backgroundClip: "text",
+      "-webkit-background-clip": "text",
+      color: "transparent",
+      fontFamily: "PoppinsBold",
+     }}
+    >
+     {shortenText(data.name)}
+    </div>
     <div
      style={{
       color: "rgba(255, 255, 255, 0.5)",
@@ -66,7 +69,7 @@ export async function GET(request, { params }) {
       marginTop: "15px",
      }}
     >
-    {shortenText(data.description || "This server has no description", 100)}
+     {shortenText(data.description || "This server has no description", 100)}
     </div>
    </div>
   ),

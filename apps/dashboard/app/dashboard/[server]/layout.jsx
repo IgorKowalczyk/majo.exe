@@ -1,5 +1,5 @@
-import { SideNav } from "@/components/nav/client/SideNav";
 import { meta } from "@config";
+import { SideNav } from "@/components/nav/client/SideNav";
 
 export async function generateMetadata({ params }) {
  const { server } = params;
