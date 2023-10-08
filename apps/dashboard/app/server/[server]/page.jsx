@@ -44,6 +44,19 @@ export async function generateMetadata({ params }) {
  return {
   title: `${guildPreview.name || "Unnamed server"}`,
   description: guildPreview.description || "View the overview of your server.",
+  openGraph: {
+   title: `${guildPreview.name || "Unnamed server"}`,
+   description: guildPreview.description || "View the overview of your server.",
+   url: meta.url,
+   siteName: meta.title,
+   images: [
+    {
+     url: `${meta.url}/api/og/${server}`,
+     width: 1200,
+     height: 630,
+    },
+   ],
+  },
  };
 }
 
