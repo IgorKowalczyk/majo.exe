@@ -50,5 +50,5 @@
     "bot",
     "discord-bot"
   ],
-  "packageManager": "pnpm@8.8.0"
+  "packageManager": "pnpm@8.9.0"
 }
