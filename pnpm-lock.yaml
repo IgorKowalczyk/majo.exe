@@ -99,6 +99,9 @@ importers:
       qrcode:
         specifier: 1.5.3
         version: 1.5.3
+      sharp:
+        specifier: 0.32.6
+        version: 0.32.6
       systeminformation:
         specifier: 5.21.11
         version: 5.21.11

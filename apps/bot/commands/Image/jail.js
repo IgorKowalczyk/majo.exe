@@ -29,7 +29,7 @@ export default {
    let image;
 
    if (attachment) {
-    if (!attachment.proxyURL.endsWith(".png") && !attachment.proxyURL.endsWith(".jpg") && !attachment.proxyURL.endsWith(".jpeg")) {
+    if (attachment.contentType !== "image/png" && attachment.contentType !== "image/jpg" && attachment.contentType !== "image/jpeg") {
      return client.errorMessages.createSlashError(interaction, "❌ The attachment must be a png, jpg, or jpeg file.");
     }
     image = attachment.proxyURL;
@@ -68,6 +68,10 @@ export default {
       size: 256,
      }),
     });
+
+   if (attachment && (attachment.width > 350 || attachment.height > 350)) {
+    embed.setDescription(`> ⚠️ Your attachment was resized to 350x350px because it was too big!`);
+   }
 
    return interaction.followUp({ embeds: [embed], files: [file] });
   } catch (err) {
