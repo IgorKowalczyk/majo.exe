@@ -1,11 +1,11 @@
 "use client";
 import { ArrowPathIcon, CheckIcon, MagnifyingGlassIcon, XCircleIcon, XMarkIcon } from "@heroicons/react/24/outline";
-import { useEffect, useRef, useState, useMemo } from "react";
+import clsx from "clsx";
+import { useEffect, useState, useMemo } from "react";
+import { InputSkeleton, TextSkeleton } from "../Skeletons";
 import { Tooltip } from "./Tooltip";
 import { ClientDisclosure } from "@/components/blocks/client/Disclosure";
 import { InputWithIcon } from "@/components/blocks/Input";
-import clsx from "clsx";
-import { GraphSkeleton, InputSkeleton, TextSkeleton } from "../Skeletons";
 
 export function DiscordCommands({ commands, categories }) {
  const [filteredCategories, setFilteredCategories] = useState([]);
@@ -22,7 +22,7 @@ export function DiscordCommands({ commands, categories }) {
   }
 
   setFilteredCategories(categories);
- }, [categories]);
+ }, [categories, filteredCategories]);
 
  useEffect(() => {
   setMounted(true);

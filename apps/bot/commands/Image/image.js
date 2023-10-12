@@ -1,6 +1,7 @@
-import sharp from "sharp";
+/* eslint-disable complexity */
 import { isColor } from "coloras";
 import { ApplicationCommandType, ApplicationCommandOptionType, AttachmentBuilder, EmbedBuilder } from "discord.js";
+import sharp from "sharp";
 
 export default {
  name: "image",
@@ -266,7 +267,7 @@ export default {
     });
 
    if (attachment && (attachment.width > 510 || attachment.height > 510)) {
-    embed.setDescription(`> ⚠️ Your attachment was resized to 510x510px because it was too big!`);
+    embed.setDescription("> ⚠️ Your attachment was resized to 510x510px because it was too big!");
    }
    return interaction.followUp({ embeds: [embed], files: [attachmentBuilder] });
   } catch (err) {

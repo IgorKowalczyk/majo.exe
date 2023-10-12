@@ -98,7 +98,7 @@ export default {
     });
 
    if (attachment && (attachment.width > 256 || attachment.height > 310)) {
-    embed.setDescription(`> ⚠️ Your attachment was resized to 256x310 pixels because it was too big!`);
+    embed.setDescription("> ⚠️ Your attachment was resized to 256x310 pixels because it was too big!");
    }
 
    return interaction.followUp({ embeds: [embed], files: [file] });

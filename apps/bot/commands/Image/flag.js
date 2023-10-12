@@ -176,7 +176,7 @@ export default {
     });
 
    if (attachment && (attachment.width > 512 || attachment.height > 512)) {
-    embed.setDescription(`⚠️ Your attachment was resized to 510x510px because it was too big.`);
+    embed.setDescription("⚠️ Your attachment was resized to 510x510px because it was too big.");
    }
 
    return interaction.followUp({ embeds: [embed], files: [file] });

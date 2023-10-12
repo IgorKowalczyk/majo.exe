@@ -67,7 +67,6 @@ export default function RootLayout({ children }) {
       <Nav theme={"full"} />
       <main className="flex min-h-screen flex-row flex-wrap">
        <div className="mt-8">{children}</div>
-
        {/*
        <div className="fixed bottom-0 left-0 right-0 z-[99999] mx-auto mb-6 hidden w-fit rounded-xl border border-neutral-800 bg-background-navbar/70 px-6 py-4 text-center text-white backdrop-blur-[9px] md:block">
         This website uses cookies to enhance the user experience. By using this website, you agree to the use of cookies.

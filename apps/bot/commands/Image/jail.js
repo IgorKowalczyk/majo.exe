@@ -70,7 +70,7 @@ export default {
     });
 
    if (attachment && (attachment.width > 350 || attachment.height > 350)) {
-    embed.setDescription(`> ⚠️ Your attachment was resized to 350x350px because it was too big!`);
+    embed.setDescription("> ⚠️ Your attachment was resized to 350x350px because it was too big!");
    }
 
    return interaction.followUp({ embeds: [embed], files: [file] });

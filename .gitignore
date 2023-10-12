@@ -72,3 +72,4 @@ temp/
 # Turborepo
 .turbo
 
+.vercel

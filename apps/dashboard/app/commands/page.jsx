@@ -1,9 +1,8 @@
 import { CommandLineIcon } from "@heroicons/react/24/outline";
-import { getSlashCommands } from "@majoexe/util/functions";
+import prismaClient from "@majoexe/database";
 import { Block } from "@/components/blocks/Block";
 import { DiscordCommands } from "@/components/blocks/client/DiscordCommands";
 import { Header1 } from "@/components/blocks/Headers";
-import prismaClient from "@majoexe/database";
 
 export const metadata = {
  title: "Commands",
