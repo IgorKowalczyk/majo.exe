@@ -7,7 +7,7 @@
  * console.log(duration);
  * // => "1d"
  */
-export function formatDuration(durationInMs) {
+export function formatDuration(durationInMs, showMilliseconds = true) {
  const ms = durationInMs % 1000;
  const totalSeconds = Math.floor(durationInMs / 1000);
  const seconds = totalSeconds % 60;
@@ -27,7 +27,7 @@ export function formatDuration(durationInMs) {
  if (seconds > 0) {
   parts.push(`${seconds}s`);
  }
- if (ms > 0) {
+ if (ms > 0 && showMilliseconds) {
   parts.push(`${ms}ms`);
  }
 

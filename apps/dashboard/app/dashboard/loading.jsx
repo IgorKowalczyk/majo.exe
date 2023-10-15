@@ -18,7 +18,7 @@ export default function Loading() {
       <div key={i}>
        <div className="hidden flex-row items-center justify-start gap-4 sm:flex">
         <AvatarSkeleton />
-        <TextSkeleton className={"!h-7"} />
+        <TextSkeleton className={"!h-7 w-full"} />
         <ButtonSkeleton className={"ml-auto"} />
        </div>
        <AvatarSkeleton className="!h-24 !w-24 !rounded-md sm:hidden" />

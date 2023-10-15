@@ -49,7 +49,7 @@ export default async function Statistics({ params }) {
      leaves: true,
     },
    },
-   GuildMessage: {
+   guildMessage: {
     where: {
      date: {
       gte: new Date(new Date().setMonth(new Date().getMonth() - 1)),
@@ -94,7 +94,7 @@ export default async function Statistics({ params }) {
   }
  });
 
- guild.GuildMessage.forEach((guildMessageData) => {
+ guild.guildMessage.forEach((guildMessageData) => {
   const dateFormatted = parseDate(guildMessageData.date);
   if (dateFormatted !== null) {
    guildMessageMap.set(dateFormatted, (guildMessageMap.get(dateFormatted) || 0) + guildMessageData.messages);

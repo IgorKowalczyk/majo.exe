@@ -1,17 +1,21 @@
 "use client";
 
 import { Disclosure, Transition } from "@headlessui/react";
-import { NoSymbolIcon, ChevronDownIcon, PaintBrushIcon, LinkIcon, UsersIcon } from "@heroicons/react/24/outline";
+import { NoSymbolIcon, ChevronDownIcon, PaintBrushIcon, MagnifyingGlassIcon, LinkIcon, UsersIcon, BarsArrowDownIcon, BarsArrowUpIcon } from "@heroicons/react/24/outline";
 import { formatDate } from "@majoexe/util/functions";
 import clsx from "clsx";
 import Image from "next/image";
-import { useRef, useState, useEffect } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import InfiniteScroll from "react-infinite-scroller";
-import { TextSkeleton } from "../Skeletons";
+import { GraphSkeleton } from "../Skeletons";
+import { Tooltip } from "./Tooltip";
+import { InputWithIcon } from "@/components/buttons/server/Input";
 
 export default function Logs({ initialItems, id }) {
  const fetching = useRef(false);
  const [pages, setPages] = useState([initialItems]);
+ const [sortDescending, setSortDescending] = useState(true);
+ const [searchQuery, setSearchQuery] = useState("");
  const items = pages.flatMap((page) => page);
  const [hasMore, setHasMore] = useState(true);
 
@@ -40,10 +44,30 @@ export default function Logs({ initialItems, id }) {
   }
  }, [initialItems.length, pages.length]);
 
+ const filteredItems = items.filter((item) => item.content.toLowerCase().includes(searchQuery.toLowerCase()));
+
+ const sortedFilteredItems = [...filteredItems];
+
+ sortedFilteredItems.sort((a, b) => {
+  if (sortDescending) {
+   return new Date(b.createdAt) - new Date(a.createdAt);
+  } else {
+   return new Date(a.createdAt) - new Date(b.createdAt);
+  }
+ });
+
  return (
   <div className="block">
-   <InfiniteScroll hasMore={hasMore} pageStart={0} loadMore={loadMore} loader={<TextSkeleton className="my-4 !h-20 !w-full" />}>
-    {items.map((item) => (
+   <div className="mb-4 flex items-center justify-center gap-2">
+    <InputWithIcon placeholder="Search..." value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} icon={<MagnifyingGlassIcon className="h-5 w-5 text-white/50" aria-hidden="true" role="img" />} />
+    <Tooltip content={sortDescending ? "Sort ascending" : "Sort descending"}>
+     <span onClick={() => setSortDescending(!sortDescending)} className="hover:border-button-primary flex h-[41.6px] cursor-pointer items-center justify-center rounded-md border border-neutral-800 px-3 py-2 text-white duration-200">
+      {sortDescending ? <BarsArrowDownIcon className="h-5 min-h-[1.25rem] w-5 min-w-[1.25rem]" /> : <BarsArrowUpIcon className="h-5 min-h-[1.25rem] w-5 min-w-[1.25rem]" />}
+     </span>
+    </Tooltip>
+   </div>
+   <InfiniteScroll hasMore={hasMore} pageStart={0} loadMore={loadMore} loader={<GraphSkeleton className={"bg-background-secondary my-4 !h-20 !border-neutral-800"} />}>
+    {sortedFilteredItems.map((item) => (
      <Disclosure key={item.id}>
       {({ open }) => (
        <>
@@ -54,10 +78,10 @@ export default function Logs({ initialItems, id }) {
         >
          <div className="relative">
           {item.user?.avatar && <Image src={`https://cdn.discordapp.com/avatars/${item.user?.discordId}/${item.user?.avatar}.${item.user?.avatar.startsWith("a_") ? "gif" : "png"}`} alt={`${item.user?.name} avatar`} quality={95} width={32} height={32} className="h-12 min-h-[48px] w-12 min-w-[48px] rounded-full" />}
-          {item.type === "profanity" && <NoSymbolIcon className="bg-button-secondary/80 absolute bottom-0 right-0 h-5 min-h-[20px] w-5 min-w-[20px] rounded-full border border-white/10 p-1 opacity-80" />}
-          {item.type === "embed_color" && <PaintBrushIcon className="bg-button-secondary/80 absolute bottom-0 right-0 h-5 min-h-[20px] w-5 min-w-[20px] rounded-full border border-white/10 p-1 opacity-80" />}
-          {item.type === "public_dashboard" && <UsersIcon className="bg-button-secondary/80 absolute bottom-0 right-0 h-5 min-h-[20px] w-5 min-w-[20px] rounded-full border border-white/10 p-1 opacity-80" />}
-          {item.type === "vanity" && <LinkIcon className="bg-button-secondary/80 absolute bottom-0 right-0 h-5 min-h-[20px] w-5 min-w-[20px] rounded-full border border-white/10 p-1 opacity-80" />}
+          {item.type === "profanity" && <NoSymbolIcon className="bg-button-secondary/80 absolute bottom-0 right-0 h-5 min-h-[20px] w-5 min-w-[20px] rounded-full border border-white/10 p-1 text-red-400 opacity-80" />}
+          {item.type === "embed_color" && <PaintBrushIcon className="bg-button-secondary/80 text-button-primary absolute bottom-0 right-0 h-5 min-h-[20px] w-5 min-w-[20px] rounded-full border border-white/10 p-1 opacity-80" />}
+          {item.type === "public_dashboard" && <UsersIcon className="bg-button-secondary/80 absolute bottom-0 right-0 h-5 min-h-[20px] w-5 min-w-[20px] rounded-full border border-white/10 p-1 text-green-400 opacity-80" />}
+          {item.type === "vanity" && <LinkIcon className="bg-button-secondary/80 text-button-primary absolute bottom-0 right-0 h-5 min-h-[20px] w-5 min-w-[20px] rounded-full border border-white/10 p-1 opacity-80" />}
          </div>
          <div className="flex flex-col">
           <p className="text-left font-bold">

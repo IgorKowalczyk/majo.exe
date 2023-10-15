@@ -1,6 +1,6 @@
 import { ListBulletIcon } from "@heroicons/react/24/outline";
 import { Header1 } from "@/components/blocks/Headers";
-import { TextSkeleton } from "@/components/blocks/Skeletons";
+import { GraphSkeleton, InputSkeleton } from "@/components/blocks/Skeletons";
 
 export default function Loading() {
  return (
@@ -11,7 +11,7 @@ export default function Loading() {
    </Header1>
    <div className="gap-4 overflow-auto">
     {[...Array(5)].map((_, i) => (
-     <TextSkeleton className={"my-4 !h-20 !w-full flex-row items-center justify-start"} key={i} />
+     <GraphSkeleton className={"bg-background-secondary my-2 !h-20 !border-neutral-800"} key={i} />
     ))}
    </div>
   </>
