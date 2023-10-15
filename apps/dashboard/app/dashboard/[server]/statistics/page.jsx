@@ -4,6 +4,8 @@ import { json2csv } from "json-2-csv";
 import { getSession } from "lib/session";
 import { redirect } from "next/navigation";
 import { ServerStatsChart } from "@/components/blocks/client/ServerStatsChart";
+import { GraphCard } from "@/components/blocks/Card";
+import { ArrowTrendingDownIcon, ArrowTrendingUpIcon, ChatBubbleLeftRightIcon, MinusIcon, UserMinusIcon, UserPlusIcon, UsersIcon } from "@heroicons/react/24/outline";
 
 export default async function Statistics({ params }) {
  const session = await getSession();
@@ -125,8 +127,49 @@ export default async function Statistics({ params }) {
  const guildLeaveCSV = await json2csv(guildLeave);
  const guildMessageCSV = await json2csv(guildMessage);
 
+ function sumArray(array, metric) {
+  return array.reduce((accumulator, currentValue) => accumulator + currentValue[metric], 0);
+ }
+
+ const newMembers = sumArray(guildJoin, "Joins") - sumArray(guildLeave, "Leaves");
+ const membersLeft = sumArray(guildLeave, "Leaves");
+ const newMessages = sumArray(guildMessage, "Messages");
+
  return (
   <>
+   <div className="mb-4 grid grid-cols-1 md:grid-cols-1 gap-0 lg:grid-cols-2 xl:grid-cols-3 md:gap-4">
+    <GraphCard
+     key="1"
+     data={{
+      icon: <UserPlusIcon className="h-8 w-8" />,
+      title: "New Members",
+      description: "The amount of new members that joined your server.",
+      value: newMembers,
+      graph: newMembers === 0 ? <MinusIcon className="h-5 min-h-[1.25rem] w-5 min-w-[1.25rem]" /> : newMembers < 0 ? <ArrowTrendingDownIcon className="h-5 min-h-[1.25rem] w-5 min-w-[1.25rem]" /> : <ArrowTrendingUpIcon className="h-5 min-h-[1.25rem] w-5 min-w-[1.25rem]" />,
+     }}
+    />
+    <GraphCard
+     key="2"
+     data={{
+      icon: <UserMinusIcon className="h-8 w-8" />,
+      title: "Members Left",
+      description: "The amount of members that left your server.",
+      value: membersLeft,
+      graph: membersLeft === 0 ? <MinusIcon className="h-5 min-h-[1.25rem] w-5 min-w-[1.25rem]" /> : membersLeft < 0 ? <ArrowTrendingDownIcon className="h-5 min-h-[1.25rem] w-5 min-w-[1.25rem]" /> : <ArrowTrendingUpIcon className="h-5 min-h-[1.25rem] w-5 min-w-[1.25rem]" />,
+     }}
+    />
+    <GraphCard
+     key="2"
+     className={"col-span-1 lg:col-span-2 lg:mt-0 xl:mt-4 xl:col-span-1"}
+     data={{
+      icon: <ChatBubbleLeftRightIcon className="h-8 w-8" />,
+      title: "New Messages",
+      description: "The amount of new messages that were sent in your server.",
+      value: newMessages,
+      graph: newMessages === 0 ? <MinusIcon className="h-5 min-h-[1.25rem] w-5 min-w-[1.25rem]" /> : newMessages < 0 ? <ArrowTrendingDownIcon className="h-5 min-h-[1.25rem] w-5 min-w-[1.25rem]" /> : <ArrowTrendingUpIcon className="h-5 min-h-[1.25rem] w-5 min-w-[1.25rem]" />,
+     }}
+    />
+   </div>
    <ServerStatsChart guildJoin={guildJoin} guildLeave={guildLeave} guildJoinCSV={guildJoinCSV} guildLeaveCSV={guildLeaveCSV} guildMessage={guildMessage} guildMessageCSV={guildMessageCSV} />
   </>
  );

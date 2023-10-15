@@ -24,7 +24,7 @@ export default function AreaChart({ data = [], categories = [], index, stack = f
       {showGridLines ? <CartesianGrid className="stroke-gray-600 stroke-1" strokeDasharray="3 3" horizontal={true} vertical={false} /> : null}
       <XAxis hide={!showXAxis} dataKey={index} tick={{ transform: "translate(0, 6)" }} ticks={startEndOnly ? [data[0][index], data[data.length - 1][index]] : undefined} fill="" stroke="" className="fill-gray-600" interval="preserveStartEnd" tickLine={false} axisLine={false} padding={{ left: 10, right: 10 }} minTickGap={5} />
       <YAxis width={yAxisWidth} hide={!showYAxis} axisLine={false} tickLine={false} type="number" domain={yAxisDomain} tick={{ transform: "translate(-3, 0)" }} fill="" stroke="" className="fill-gray-600" tickFormatter={valueFormatter} allowDecimals={allowDecimals} />
-      {showTooltip ? <Tooltip wrapperStyle={{ outline: "none" }} isAnimationActive={false} cursor={{ stroke: "#d1d5db", strokeWidth: 1 }} content={({ active, payload, label }) => <ChartTooltip active={active} payload={payload} label={label} categoryColors={categoryColors} valueFormatter={valueFormatter} />} position={{ y: 0 }} /> : null}
+      {showTooltip ? <Tooltip wrapperStyle={{ outline: "none" }} isAnimationActive={false} cursor={{ stroke: "#5865F2", strokeWidth: 1 }} content={({ active, payload, label }) => <ChartTooltip active={active} payload={payload} label={label} categoryColors={categoryColors} valueFormatter={valueFormatter} />} position={{ y: "auto" }} /> : null}
       {categories.map((category) => {
        return (
         <defs key={category}>
