@@ -40,7 +40,6 @@ export async function setReputation(user, guild, amount) {
         global_name: user.globalName || user.username,
         avatar: user.avatar,
         discriminator: user.discriminator,
-        verified: user.verified,
        },
       },
      },

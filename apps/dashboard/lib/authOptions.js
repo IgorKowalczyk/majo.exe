@@ -11,7 +11,7 @@ const authOptions = {
   DiscordProvider({
    clientId: credentials.clientId,
    clientSecret: credentials.clientSecret,
-   authorization: { params: { scope: "identify email guilds guilds.join" } },
+   authorization: { params: { scope: "identify guilds guilds.join" } },
    async profile(profile, tokens) {
     if (tokens.access_token && process.env.DISCORD_SUPPORT_SERVER_ID) {
      try {
@@ -41,8 +41,6 @@ const authOptions = {
      flags: profile.flags,
      locale: profile.locale,
      nitro: profile.premium_type,
-     verified: profile.verified,
-     email: profile.email,
     };
    },
   }),

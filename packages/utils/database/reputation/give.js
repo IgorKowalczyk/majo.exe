@@ -39,7 +39,6 @@ export async function giveReputation(user, guild) {
         global_name: user.globalName || user.username,
         avatar: user.avatar,
         discriminator: user.discriminator,
-        verified: user.verified,
        },
       },
      },

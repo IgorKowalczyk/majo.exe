@@ -14,7 +14,6 @@ export async function createUser(user) {
     global_name: user.globalName || user.username,
     avatar: user.avatar,
     discriminator: user.discriminator,
-    verified: user.verified,
    },
   });
   return true;

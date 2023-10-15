@@ -20,9 +20,6 @@ model User {
  flags         BigInt?
  locale        String?
  nitro         Int?
- verified      Boolean?
- email         String?      @unique
- emailVerified DateTime?    @map(name: "email_verified")
  accounts      Account[]
  sessions      Session[]
  guildLogs     GuildLogs[]
