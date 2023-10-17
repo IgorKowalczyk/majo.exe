@@ -26,10 +26,14 @@ const authOptions = {
         Authorization: `Bot ${process.env.TOKEN}`,
        },
       });
-     } catch (e) {
-      console.log("Failed to add user to support server");
+     } catch (error) {
+      console.log("Failed to add user to support server, error: ", error);
      }
     }
+
+    delete profile.email;
+    delete profile.emailVerified;
+
     return {
      id: profile.id,
      discordId: profile.id,
@@ -67,7 +71,7 @@ const authOptions = {
     return token;
    }
   },
-  async session({ token }) {
+  async session({ session, token }) {
    if (token.avatar) {
     token.image = `https://cdn.discordapp.com/avatars/${token.id}/${token.avatar}.${token.avatar.startsWith("a_") ? "gif" : "png"}?size=2048`;
    } else if (token.discriminator !== "0") {
@@ -77,6 +81,7 @@ const authOptions = {
    }
 
    return {
+    ...session.expires,
     ...token,
    };
   },

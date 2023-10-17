@@ -32,28 +32,28 @@ export function SideNav({ server }) {
     )}
    >
     <PrimaryButton href="/dashboard" className="mb-4 w-full">
-     <ArrowLeftIcon className="mr-2 h-5 w-5 cursor-pointer text-white" /> Go back
+     <ArrowLeftIcon className="min-h-5 min-w-5 mr-2 h-5 w-5 cursor-pointer text-white" /> Go back
     </PrimaryButton>
 
     <div className="flex w-full flex-col items-center justify-center gap-2 border-t border-t-neutral-800 pt-4">
      <SideNavLink href={`/dashboard/${server}`}>
-      <RectangleStackIcon className="h-6 min-h-[24px] w-6 min-w-[24px]" />
+      <RectangleStackIcon className="min-h-6 min-w-6 h-6 w-6" />
       Overview
      </SideNavLink>
      <SideNavLink href={`/dashboard/${server}/statistics`}>
-      <ChartPieIcon className="h-6 min-h-[24px] w-6 min-w-[24px]" />
+      <ChartPieIcon className="min-h-6 min-w-6 h-6 w-6" />
       Statistics
      </SideNavLink>
      <SideNavLink href={`/dashboard/${server}/leaderboard`}>
-      <QueueListIcon className="h-6 min-h-[24px] w-6 min-w-[24px]" />
+      <QueueListIcon className="min-h-6 min-w-6 h-6 w-6" />
       Leaderboard
      </SideNavLink>
      <SideNavLink href={`/dashboard/${server}/logs`}>
-      <ListBulletIcon className="h-6 min-h-[24px] w-6 min-w-[24px]" />
+      <ListBulletIcon className="min-h-6 min-w-6 h-6 w-6" />
       Logs
      </SideNavLink>
      <SideNavLink href={`/dashboard/${server}/settings`}>
-      <Cog8ToothIcon className="h-6 min-h-[24px] w-6 min-w-[24px]" />
+      <Cog8ToothIcon className="min-h-6 min-w-6 h-6 w-6" />
       Settings
      </SideNavLink>
     </div>

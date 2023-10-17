@@ -1,6 +1,6 @@
 import { Block } from "@/components/blocks/Block";
 import { Header1 } from "@/components/blocks/Headers";
-import { EmbedSkeleton } from "@/components/blocks/Skeletons";
+import { EmbedSkeleton, TextSkeleton } from "@/components/blocks/Skeletons";
 
 export default function Loading() {
  return (
@@ -11,6 +11,7 @@ export default function Loading() {
     </svg>
     Leaderboard
    </Header1>
+   <TextSkeleton className="mb-4 mt-2 w-32 justify-start" />
    <div className="mx-auto flex w-full items-center justify-start overflow-auto">
     <Block className="mt-4 w-full">
      <EmbedSkeleton />

@@ -10,7 +10,7 @@ import Balancer from "react-wrap-balancer";
 import { Block } from "@/components/blocks/Block";
 import { Leaderboard } from "@/components/blocks/client/Leaderboard";
 import { Tooltip } from "@/components/blocks/client/Tooltip";
-import { Header1, Header4, Header5 } from "@/components/blocks/Headers";
+import { Header4, Header5 } from "@/components/blocks/Headers";
 import { SecondaryButton } from "@/components/buttons/server/Secondary";
 
 export const metadata = {
@@ -80,15 +80,15 @@ export default async function ServerOverview({ params }) {
 
  return (
   <>
-   <Header1 className={"mb-4 flex flex-col !justify-normal sm:flex-row"}>
+   <div className="mb-4 flex flex-col items-center justify-normal gap-4 text-3xl font-bold sm:flex-row md:text-4xl">
     {guildPreview.icon ? <Image src={`https://cdn.discordapp.com/icons/${guildPreview.id}/${guildPreview.icon}.${guildPreview.icon.startsWith("a_") ? "gif" : "png"}`} alt={guildPreview.name} quality={95} width={64} height={64} className="h-16 w-16 rounded-full" /> : <div className="bg-button-secondary h-16 w-16 rounded-full" />}
-    <div className="ml-4 flex flex-col justify-start text-center sm:text-left">
+    <div className="ml-4 flex flex-col text-center sm:text-left">
      {guildPreview.name || "Unnamed server"}
-     <Header5 className="mt-2 justify-start text-center opacity-60 sm:text-left">
+     <Header5 className="mt-2 text-center opacity-60 sm:text-left">
       <Balancer>{guildPreview.description || "This server has no description, maybe you should add one?"}</Balancer>
      </Header5>
     </div>
-   </Header1>
+   </div>
 
    <Block className="!mt-4 flex w-full flex-col gap-4 !p-4 sm:flex-row sm:gap-0">
     <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
@@ -103,7 +103,7 @@ export default async function ServerOverview({ params }) {
     </div>
     {guild.publicPage ? (
      <SecondaryButton href={`/server/${guild.vanity || serverDownload.id}`} className={"mx-auto !flex flex-row whitespace-nowrap  sm:ml-auto sm:mr-0"}>
-      <ArrowTopRightOnSquareIcon className="mr-2 h-5 w-5" aria-hidden="true" role="img" />
+      <ArrowTopRightOnSquareIcon className="min-h-5 min-w-5 mr-2 h-5 w-5" aria-hidden="true" role="img" />
       Server page
      </SecondaryButton>
     ) : (
@@ -134,7 +134,7 @@ export default async function ServerOverview({ params }) {
          <Link key={emoji.id + emoji.name} className="flex flex-col items-center justify-center gap-2" href={`https://cdn.discordapp.com/emojis/${emoji.id}.${emoji.animated ? "gif" : "png"}`} target="_blank" rel="noreferrer noopener">
           <Tooltip content={emoji.name || "Unnamed emoji"}>
            <>
-            <Image src={`https://cdn.discordapp.com/emojis/${emoji.id}.${emoji.animated ? "gif" : "png"}`} alt={emoji.name} quality={95} width={32} height={32} className="h-8 w-8" />
+            <Image src={`https://cdn.discordapp.com/emojis/${emoji.id}.${emoji.animated ? "gif" : "png"}`} alt={emoji.name} quality={95} width={32} height={32} className="min-h-8 min-w-8 h-8 w-8" />
            </>
           </Tooltip>
          </Link>

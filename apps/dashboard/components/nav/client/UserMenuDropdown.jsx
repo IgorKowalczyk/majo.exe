@@ -31,7 +31,7 @@ export function UserMenuDropdown({ user }) {
           {
            "rotate-180": open,
           },
-          "ml-2 h-4 min-h-[14px] w-4 min-w-[14px] duration-200 motion-reduce:transition-none"
+          "min-h-4 min-w-4 ml-2 h-4 w-4 duration-200 motion-reduce:transition-none"
          )}
         />
        </div>
@@ -53,7 +53,7 @@ export function UserMenuDropdown({ user }) {
            "group my-1 flex w-full items-center rounded-md px-2 py-2 text-sm duration-200 motion-reduce:transition-none"
           )}
          >
-          <RectangleStackIcon className="mr-2 h-5 w-5 " aria-hidden="true" role="img" /> Dashboard
+          <RectangleStackIcon className="min-h-5 min-w-5 mr-2 h-5 w-5 " aria-hidden="true" role="img" /> Dashboard
          </Link>
         )}
        </Menu.Item>
@@ -69,7 +69,7 @@ export function UserMenuDropdown({ user }) {
            "group my-1 flex w-full items-center rounded-md px-2 py-2 text-sm duration-200 motion-reduce:transition-none"
           )}
          >
-          <UserIcon className="mr-2 h-5 w-5 " aria-hidden="true" role="img" /> Profile
+          <UserIcon className="min-h-5 min-w-5 mr-2 h-5 w-5 " aria-hidden="true" role="img" /> Profile
          </Link>
         )}
        </Menu.Item>
@@ -85,7 +85,7 @@ export function UserMenuDropdown({ user }) {
            "group my-1 flex w-full items-center rounded-md px-2 py-2 text-sm duration-200 motion-reduce:transition-none"
           )}
          >
-          <Cog8ToothIcon className="mr-2 h-5 w-5 " aria-hidden="true" role="img" /> Settings
+          <Cog8ToothIcon className="min-h-5 min-w-5 mr-2 h-5 w-5 " aria-hidden="true" role="img" /> Settings
          </Link>
         )}
        </Menu.Item>
@@ -103,7 +103,7 @@ export function UserMenuDropdown({ user }) {
            "group my-1 flex w-full items-center rounded-md px-2 py-2 text-sm duration-200 motion-reduce:transition-none"
           )}
          >
-          <QuestionMarkCircleIcon className="mr-2 h-5 w-5 " aria-hidden="true" role="img" /> Support
+          <QuestionMarkCircleIcon className="min-h-5 min-w-5 mr-2 h-5 w-5 " aria-hidden="true" role="img" /> Support
          </Link>
         )}
        </Menu.Item>
@@ -119,7 +119,7 @@ export function UserMenuDropdown({ user }) {
            "group my-1 flex w-full items-center rounded-md px-2 py-2 text-sm duration-200 motion-reduce:transition-none"
           )}
          >
-          <ArrowRightOnRectangleIcon className="mr-2 h-5 w-5" aria-hidden="true" role="img" /> Logout
+          <ArrowRightOnRectangleIcon className="min-h-5 min-w-5 mr-2 h-5 w-5" aria-hidden="true" role="img" /> Logout
          </button>
         )}
        </Menu.Item>

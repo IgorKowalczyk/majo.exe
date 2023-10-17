@@ -1,19 +1,19 @@
 import { Block } from "@/components/blocks/Block";
-import { Header1, Header4, Header5 } from "@/components/blocks/Headers";
+import { Header4, Header5 } from "@/components/blocks/Headers";
 import { EmbedSkeleton, TextSkeleton } from "@/components/blocks/Skeletons";
 
 export default function Loading() {
  return (
   <>
-   <Header1 className={"mb-4 flex flex-col !justify-normal sm:flex-row"}>
+   <div className="mb-4 flex flex-col items-center justify-normal gap-4 text-3xl font-bold sm:flex-row md:text-4xl">
     <div className="bg-button-secondary h-16 w-16 rounded-full" />
-    <div className="ml-4 flex flex-col justify-start text-center sm:text-left">
+    <div className="ml-4 flex flex-col text-center sm:text-left">
      <TextSkeleton className="w-32" />
-     <Header5 className="mt-2 justify-start text-center opacity-60 sm:text-left">
+     <Header5 className="mt-2 text-center opacity-60 sm:text-left">
       <TextSkeleton className="w-32" />
      </Header5>
     </div>
-   </Header1>
+   </div>
 
    <Block className="!mt-4 flex w-full flex-col gap-4 !p-4 sm:flex-row sm:gap-0">
     <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">

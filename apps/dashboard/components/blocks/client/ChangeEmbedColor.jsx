@@ -108,22 +108,22 @@ export function ChangeEmbedColor({ serverId, serverColor }) {
        </div>
        <div className="my-2 ml-1 flex flex-row gap-2">
         <PrimaryButton onClick={handleSubmit}>
-         {buttonText === "Saving..." ? <ArrowPathIcon className="-ml-1 mr-1 h-5 w-5 animate-spin" /> : <CheckIcon className="-ml-1 mr-1 h-5 w-5" />}
+         {buttonText === "Saving..." ? <ArrowPathIcon className="min-h-5 min-w-5 -ml-1 mr-1 h-5 w-5 animate-spin" /> : <CheckIcon className="min-h-5 min-w-5 -ml-1 mr-1 h-5 w-5" />}
          {buttonText}
         </PrimaryButton>
         <SecondaryButton onClick={handleReset}>
-         {resetButtonText === "Resetting..." ? <ArrowPathIcon className="-ml-1 mr-1 h-5 w-5 animate-spin" /> : <TrashIcon className="-ml-1 mr-1 h-5 w-5" />}
+         {resetButtonText === "Resetting..." ? <ArrowPathIcon className="min-h-5 min-w-5 -ml-1 mr-1 h-5 w-5 animate-spin" /> : <TrashIcon className="min-h-5 min-w-5 -ml-1 mr-1 h-5 w-5" />}
          {resetButtonText}
         </SecondaryButton>
        </div>
        {error && (
         <p className="flex items-center gap-1 text-red-500">
-         <ExclamationCircleIcon className="inline h-5 w-5" /> {error}
+         <ExclamationCircleIcon className="min-h-5 min-w-5 inline h-5 w-5" /> {error}
         </p>
        )}
        {success && (
         <p className="flex items-center gap-1 text-green-500">
-         <CheckIcon className="inline h-5 w-5" /> {success}
+         <CheckIcon className="min-h-5 min-w-5 inline h-5 w-5" /> {success}
         </p>
        )}
       </div>

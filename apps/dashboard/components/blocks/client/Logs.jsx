@@ -62,7 +62,7 @@ export default function Logs({ initialItems, id }) {
     <InputWithIcon placeholder="Search..." value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} icon={<MagnifyingGlassIcon className="h-5 w-5 text-white/50" aria-hidden="true" role="img" />} />
     <Tooltip content={sortDescending ? "Sort ascending" : "Sort descending"}>
      <span onClick={() => setSortDescending(!sortDescending)} className="hover:border-button-primary flex h-[41.6px] cursor-pointer items-center justify-center rounded-md border border-neutral-800 px-3 py-2 text-white duration-200">
-      {sortDescending ? <BarsArrowDownIcon className="h-5 min-h-[1.25rem] w-5 min-w-[1.25rem]" /> : <BarsArrowUpIcon className="h-5 min-h-[1.25rem] w-5 min-w-[1.25rem]" />}
+      {sortDescending ? <BarsArrowDownIcon className="min-h-5 min-w-5 h-5 w-5" /> : <BarsArrowUpIcon className="min-h-5 min-w-5 h-5 w-5" />}
      </span>
     </Tooltip>
    </div>
@@ -77,11 +77,11 @@ export default function Logs({ initialItems, id }) {
          })}
         >
          <div className="relative">
-          {item.user?.avatar && <Image src={`https://cdn.discordapp.com/avatars/${item.user?.discordId}/${item.user?.avatar}.${item.user?.avatar.startsWith("a_") ? "gif" : "png"}`} alt={`${item.user?.name} avatar`} quality={95} width={32} height={32} className="h-12 min-h-[48px] w-12 min-w-[48px] rounded-full" />}
-          {item.type === "profanity" && <NoSymbolIcon className="bg-button-secondary/80 absolute bottom-0 right-0 h-5 min-h-[20px] w-5 min-w-[20px] rounded-full border border-white/10 p-1 text-red-400 opacity-80" />}
-          {item.type === "embed_color" && <PaintBrushIcon className="bg-button-secondary/80 text-button-primary absolute bottom-0 right-0 h-5 min-h-[20px] w-5 min-w-[20px] rounded-full border border-white/10 p-1 opacity-80" />}
-          {item.type === "public_dashboard" && <UsersIcon className="bg-button-secondary/80 absolute bottom-0 right-0 h-5 min-h-[20px] w-5 min-w-[20px] rounded-full border border-white/10 p-1 text-green-400 opacity-80" />}
-          {item.type === "vanity" && <LinkIcon className="bg-button-secondary/80 text-button-primary absolute bottom-0 right-0 h-5 min-h-[20px] w-5 min-w-[20px] rounded-full border border-white/10 p-1 opacity-80" />}
+          {item.user?.avatar && <Image src={`https://cdn.discordapp.com/avatars/${item.user?.discordId}/${item.user?.avatar}.${item.user?.avatar.startsWith("a_") ? "gif" : "png"}`} alt={`${item.user?.name} avatar`} quality={95} width={32} height={32} className="min-h-12 min-w-12 h-12 w-12 rounded-full" />}
+          {item.type === "profanity" && <NoSymbolIcon className="bg-button-secondary/80 min-h-5 min-w-5 absolute bottom-0 right-0 h-5 w-5 rounded-full border border-white/10 p-1 text-red-400 opacity-80" />}
+          {item.type === "embed_color" && <PaintBrushIcon className="bg-button-secondary/80 text-button-primary min-h-5 min-w-5 absolute bottom-0 right-0 h-5 w-5 rounded-full border border-white/10 p-1 opacity-80" />}
+          {item.type === "public_dashboard" && <UsersIcon className="bg-button-secondary/80 min-h-5 min-w-5 absolute bottom-0 right-0 h-5 w-5 rounded-full border border-white/10 p-1 text-green-400 opacity-80" />}
+          {item.type === "vanity" && <LinkIcon className="bg-button-secondary/80 text-button-primary min-h-5 min-w-5 absolute bottom-0 right-0 h-5 w-5 rounded-full border border-white/10 p-1 opacity-80" />}
          </div>
          <div className="flex flex-col">
           <p className="text-left font-bold">
@@ -95,7 +95,7 @@ export default function Logs({ initialItems, id }) {
            {
             "rotate-180": open,
            },
-           "ml-auto h-4 min-h-[14px] w-4 min-w-[14px] duration-200 motion-reduce:transition-none"
+           "min-h-4 min-w-4 ml-auto h-4 w-4 duration-200 motion-reduce:transition-none"
           )}
          />
         </Disclosure.Button>

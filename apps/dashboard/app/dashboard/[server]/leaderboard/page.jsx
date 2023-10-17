@@ -83,7 +83,7 @@ export default async function ServerLeaderboard({ params }) {
     </svg>
     Leaderboard
    </Header1>
-   <Header5 className="mb-4 mt-2 justify-start text-left">
+   <Header5 className="mb-4 mt-2 !justify-start !text-left">
     <span>
      There are {xp.length} users in the leaderboard right now.{" "}
      {currentUser && currentUser > 0 && (

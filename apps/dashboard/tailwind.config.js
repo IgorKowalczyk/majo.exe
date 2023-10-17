@@ -8,6 +8,12 @@ module.exports = {
   transparent: "transparent",
   current: "currentColor",
   extend: {
+   minHeight: (theme) => ({
+    ...theme("spacing"),
+   }),
+   minWidth: (theme) => ({
+    ...theme("spacing"),
+   }),
    colors: {
     "background-primary": "#101110",
     "background-secondary": "#161617",

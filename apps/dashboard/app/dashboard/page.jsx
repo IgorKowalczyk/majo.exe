@@ -14,6 +14,7 @@ import { SecondaryButton } from "@/components/buttons/server/Secondary";
 export default async function Dashboard() {
  const session = await getSession();
  if (!session || !session.access_token) redirect("/auth/login");
+
  const data = (await getServers(session.access_token)) || [];
  if (data.error) return redirect("/auth/error?error=We%20were%20unable%20to%20get%20a%20list%20of%20your%20servers,%20if%20the%20problem%20persists%20log%20out%20and%20log%20back%20in.");
  const servers =
@@ -31,7 +32,7 @@ export default async function Dashboard() {
  return (
   <div className="bg-background-primary flex w-full flex-col items-center px-8 pb-8 pt-16 antialiased md:px-16 md:py-16">
    <div className="flex flex-col justify-center gap-4">
-    <Header1 className={"justify-center"}>
+    <Header1 className={"!justify-center"}>
      <RectangleStackIcon className="h-10 w-10" aria-hidden="true" role="img" />
      Dashboard
     </Header1>
@@ -41,18 +42,18 @@ export default async function Dashboard() {
     <div className="flex flex-row flex-wrap justify-center gap-4 sm:flex-col">
      {servers && servers.length > 0 ? (
       servers.map((server) => (
-       <>
-        <div key={server.id} className="hidden flex-row items-center justify-start gap-4 sm:flex">
+       <div key={server.id}>
+        <div className="hidden flex-row items-center justify-start gap-4 sm:flex">
          {server.icon ? <Image src={`https://cdn.discordapp.com/icons/${server.id}/${server.icon}.${server.icon.startsWith("a_") ? "gif" : "png"}`} alt={server.name} quality={95} width={64} height={64} className="h-16 w-16 rounded-full" /> : <div className="bg-button-secondary h-16 w-16 rounded-full" />}
          <h3 className="text-center text-xl font-bold">{server.name}</h3>
          <>
           {server.bot ? (
            <PrimaryButton href={`/dashboard/${server.id}`} className="ml-auto">
-            <PlusSmallIcon className="mr-2 h-5 w-5" aria-hidden="true" role="img" /> Manage
+            <PlusSmallIcon className="min-h-5 min-w-5 mr-2 h-5 w-5" aria-hidden="true" role="img" /> Manage
            </PrimaryButton>
           ) : (
            <SecondaryButton href={`/api/invite/${server.id}`} className="ml-auto cursor-copy">
-            <PlusSmallIcon className="mr-2 h-5 w-5" aria-hidden="true" role="img" /> Add bot
+            <PlusSmallIcon className="min-h-5 min-w-5 mr-2 h-5 w-5" aria-hidden="true" role="img" /> Add bot
            </SecondaryButton>
           )}
          </>
@@ -85,14 +86,14 @@ export default async function Dashboard() {
           )}
          </Link>
         </div>
-       </>
+       </div>
       ))
      ) : (
       <div className="flex flex-col items-center justify-center gap-4">
        <h3 className="text-center text-xl font-bold">You don't have any servers!</h3>
        <div className="flex flex-row items-center justify-start gap-2">
         <PrimaryButton href={"/api/invite"}>
-         <PlusSmallIcon className="mr-2 h-5 w-5" aria-hidden="true" role="img" /> Add bot
+         <PlusSmallIcon className="min-h-5 min-w-5 mr-2 h-5 w-5" aria-hidden="true" role="img" /> Add bot
         </PrimaryButton>
         <Refetch />
        </div>

@@ -12,7 +12,7 @@ export async function Login() {
 
  return (
   <PrimaryButton href="/dashboard">
-   <ArrowUturnRightIcon className="mr-2 h-5 w-5" aria-hidden="true" role="img" /> Go to dashboard
+   <ArrowUturnRightIcon className="min-h-5 min-w-5 mr-2 h-5 w-5" aria-hidden="true" role="img" /> Go to dashboard
   </PrimaryButton>
  );
 }

@@ -26,7 +26,7 @@ export default async function Login({ searchParams }) {
     <Image src="/assets/avatar.png" width={112} height={112} alt="Avatar" className="h-20 w-20 rounded-full sm:h-28 sm:w-28" quality={90} />
     {searchParams.error ? (
      <div className="mx-4 flex items-center justify-center">
-      <XMarkIcon className="h-8 w-8 text-red-500 " />
+      <XMarkIcon className="min-h-8 min-w-8 h-8 w-8 text-red-500 " />
      </div>
     ) : (
      <Dots />
@@ -37,12 +37,12 @@ export default async function Login({ searchParams }) {
    <div className="z-30">
     {searchParams.error ? (
      <>
-      <Header1 className={"justify-center"}>Something went wrong!</Header1>
+      <Header1 className={"!justify-center"}>Something went wrong!</Header1>
       <p className="my-1 mt-2 text-center text-xl text-[#939DB8]">Something went wrong while trying to connect your Discord account!</p>
      </>
     ) : (
      <>
-      <Header1 className={"justify-center"}>Connect your account</Header1>
+      <Header1 className={"!justify-center"}>Connect your account</Header1>
       <p className="my-1 mt-2 text-center text-xl text-[#939DB8]">Authorize your Discord account to use all the Majo.exe features</p>
      </>
     )}
@@ -53,7 +53,7 @@ export default async function Login({ searchParams }) {
     ))}
     <Link href="/" className="bg-button-secondary hover:bg-button-secondary-hover flex cursor-pointer items-center rounded px-4  py-2 leading-6 text-white duration-200 motion-reduce:transition-none">
      <>
-      <ArrowUturnLeftIcon className="mr-2 h-5 w-5" aria-hidden="true" role="img" />
+      <ArrowUturnLeftIcon className="min-h-5 min-w-5 mr-2 h-5 w-5" aria-hidden="true" role="img" />
       Go back
      </>
     </Link>

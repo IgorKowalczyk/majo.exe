@@ -1,11 +1,13 @@
+/* eslint-disable complexity */
+
+import { ArrowTrendingDownIcon, ArrowTrendingUpIcon, ChatBubbleLeftRightIcon, MinusIcon, UserMinusIcon, UserPlusIcon } from "@heroicons/react/24/outline";
 import prismaClient from "@majoexe/database";
 import { getGuildMember, getServer } from "@majoexe/util/functions";
 import { json2csv } from "json-2-csv";
 import { getSession } from "lib/session";
 import { redirect } from "next/navigation";
-import { ServerStatsChart } from "@/components/blocks/client/ServerStatsChart";
 import { GraphCard } from "@/components/blocks/Card";
-import { ArrowTrendingDownIcon, ArrowTrendingUpIcon, ChatBubbleLeftRightIcon, MinusIcon, UserMinusIcon, UserPlusIcon, UsersIcon } from "@heroicons/react/24/outline";
+import { ServerStatsChart } from "@/components/blocks/client/ServerStatsChart";
 
 export default async function Statistics({ params }) {
  const session = await getSession();
@@ -137,36 +139,36 @@ export default async function Statistics({ params }) {
 
  return (
   <>
-   <div className="mb-4 grid grid-cols-1 md:grid-cols-1 gap-0 lg:grid-cols-2 xl:grid-cols-3 md:gap-4">
+   <div className="mb-4 grid grid-cols-1 gap-0 md:grid-cols-1 md:gap-4 lg:grid-cols-2 xl:grid-cols-3">
     <GraphCard
      key="1"
      data={{
-      icon: <UserPlusIcon className="h-8 w-8" />,
+      icon: <UserPlusIcon className="min-h-8 min-w-8 h-8 w-8" />,
       title: "New Members",
       description: "The amount of new members that joined your server.",
       value: newMembers,
-      graph: newMembers === 0 ? <MinusIcon className="h-5 min-h-[1.25rem] w-5 min-w-[1.25rem]" /> : newMembers < 0 ? <ArrowTrendingDownIcon className="h-5 min-h-[1.25rem] w-5 min-w-[1.25rem]" /> : <ArrowTrendingUpIcon className="h-5 min-h-[1.25rem] w-5 min-w-[1.25rem]" />,
+      graph: newMembers === 0 ? <MinusIcon className="min-h-5 min-w-5 h-5 w-5" /> : newMembers < 0 ? <ArrowTrendingDownIcon className="min-h-5 min-w-5 h-5 w-5" /> : <ArrowTrendingUpIcon className="min-h-5 min-w-5 h-5 w-5" />,
      }}
     />
     <GraphCard
      key="2"
      data={{
-      icon: <UserMinusIcon className="h-8 w-8" />,
+      icon: <UserMinusIcon className="min-h-8 min-w-8 h-8 w-8" />,
       title: "Members Left",
       description: "The amount of members that left your server.",
       value: membersLeft,
-      graph: membersLeft === 0 ? <MinusIcon className="h-5 min-h-[1.25rem] w-5 min-w-[1.25rem]" /> : membersLeft < 0 ? <ArrowTrendingDownIcon className="h-5 min-h-[1.25rem] w-5 min-w-[1.25rem]" /> : <ArrowTrendingUpIcon className="h-5 min-h-[1.25rem] w-5 min-w-[1.25rem]" />,
+      graph: membersLeft === 0 ? <MinusIcon className="min-h-5 min-w-5 h-5 w-5" /> : membersLeft < 0 ? <ArrowTrendingDownIcon className="min-h-5 min-w-5 h-5 w-5" /> : <ArrowTrendingUpIcon className="min-h-5 min-w-5 h-5 w-5" />,
      }}
     />
     <GraphCard
      key="2"
-     className={"col-span-1 lg:col-span-2 lg:mt-0 xl:mt-4 xl:col-span-1"}
+     className={"col-span-1 lg:col-span-2 lg:mt-0 xl:col-span-1 xl:mt-4"}
      data={{
-      icon: <ChatBubbleLeftRightIcon className="h-8 w-8" />,
+      icon: <ChatBubbleLeftRightIcon className="min-h-8 min-w-8 h-8 w-8" />,
       title: "New Messages",
       description: "The amount of new messages that were sent in your server.",
       value: newMessages,
-      graph: newMessages === 0 ? <MinusIcon className="h-5 min-h-[1.25rem] w-5 min-w-[1.25rem]" /> : newMessages < 0 ? <ArrowTrendingDownIcon className="h-5 min-h-[1.25rem] w-5 min-w-[1.25rem]" /> : <ArrowTrendingUpIcon className="h-5 min-h-[1.25rem] w-5 min-w-[1.25rem]" />,
+      graph: newMessages === 0 ? <MinusIcon className="min-h-5 min-w-5 h-5 w-5" /> : newMessages < 0 ? <ArrowTrendingDownIcon className="min-h-5 min-w-5 h-5 w-5" /> : <ArrowTrendingUpIcon className="min-h-5 min-w-5 h-5 w-5" />,
      }}
     />
    </div>

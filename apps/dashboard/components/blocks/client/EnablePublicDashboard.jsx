@@ -135,13 +135,13 @@ export function EnablePublicDashboard({ enabled, serverId, vanityURL }) {
       </div>
      </div>
      <PrimaryButton onClick={(e) => updateVanity(e)} disabled={disabled || vanityError} className="mx-auto font-normal md:mx-0">
-      {buttonText === "Updating..." ? <ArrowPathIcon className="mr-2 h-5 w-5 animate-spin" /> : <CheckIcon className="mr-2 h-5 w-5" />} {buttonText}
+      {buttonText === "Updating..." ? <ArrowPathIcon className="min-h-5 min-w-5 mr-2 h-5 w-5 animate-spin" /> : <CheckIcon className="min-h-5 min-w-5 mr-2 h-5 w-5" />} {buttonText}
      </PrimaryButton>
     </div>
    </div>
    {vanityError && (
     <p className="flex items-center text-red-400">
-     <ExclamationCircleIcon className="mr-2 h-5 w-5" />
+     <ExclamationCircleIcon className="min-h-5 min-w-5 mr-2 h-5 w-5" />
      {vanityError}
     </p>
    )}

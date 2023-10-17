@@ -13,7 +13,7 @@ export function SideMenuControl() {
   <>
    {params.server && (
     <button className="bg-elements text-text ml-4 flex flex-row items-center gap-2 rounded-lg p-2 lg:hidden" onClick={toggleSideNav}>
-     {sideNavVisible ? <XMarkIcon className="h-6 min-h-[24px] w-6 min-w-[24px]" /> : <Bars3BottomLeftIcon className="h-6 min-h-[24px] w-6 min-w-[24px]" />}
+     {sideNavVisible ? <XMarkIcon className="min-h-6 min-w-6 h-6 w-6" /> : <Bars3BottomLeftIcon className="min-h-6 min-w-6 h-6 w-6" />}
     </button>
    )}
   </>

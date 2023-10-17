@@ -12,7 +12,7 @@ export default async function Profile() {
  if (!user) return redirect("/auth/login");
 
  return (
-  <div className="bg-background-primary flex w-full flex-col items-center px-8 py-8 antialiased md:px-16 md:py-16">
+  <div className="bg-background-primary flex w-full flex-col items-center px-8 pb-8 pt-16 antialiased md:px-16 md:py-16">
    <div className="flex flex-col justify-center gap-4">
     <div className="bg-background-navbar relative overflow-hidden rounded-lg border border-neutral-800 md:w-full">
      <>
@@ -23,7 +23,7 @@ export default async function Profile() {
         backgroundImage: `url(${user.banner})`,
        }}
       />
-      <div className="bg-background-navbar flex h-[72px]  w-auto flex-row justify-between gap-6 p-12">
+      <div className="bg-background-navbar flex h-[72px] w-auto flex-row justify-between gap-6 p-12">
        <div className="ml-[-16px] mt-[-20px] box-content flex items-center rounded-full">
         <Tooltip content="Click to see full size">
          <Link href={`${user.image}?size=2048`} target="_blank" className="h-24 w-24">
@@ -57,7 +57,7 @@ export default async function Profile() {
        </div>
        <div className="mb-[-14px] hidden w-full items-end justify-end font-semibold md:flex">
         <Link href={`https://discord.com/users/${user.id}`} target="_blank" className="bg-button-primary hover:bg-button-primary-hover flex h-[40px] cursor-pointer items-center rounded px-4 py-0  font-normal text-white duration-200 motion-reduce:transition-none">
-         <ArrowTopRightOnSquareIcon className="mr-2 h-4 min-h-[14px] w-4 min-w-[14px]" aria-hidden="true" role="img" /> See global profile
+         <ArrowTopRightOnSquareIcon className="min-h-4 min-w-4 mr-2 h-4 w-4" aria-hidden="true" role="img" /> See global profile
         </Link>
        </div>
       </div>

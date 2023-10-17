@@ -47,7 +47,7 @@ export function DiscordCommands({ commands, categories }) {
 
     <div className="mt-8 flex flex-col items-center justify-center gap-2">
      <h3 className="flex items-center text-center text-xl font-bold">
-      <ArrowPathIcon className="mr-2 h-6 min-h-[24px] w-6 min-w-[24px] animate-spin" aria-hidden="true" role="img" />
+      <ArrowPathIcon className="min-h-6 min-w-6 mr-2 h-6 w-6 animate-spin" aria-hidden="true" role="img" />
       Loading commands...
      </h3>
      <p className="text-center text-white/50">This may take a few seconds.</p>
@@ -58,7 +58,7 @@ export function DiscordCommands({ commands, categories }) {
 
  return (
   <>
-   <InputWithIcon placeholder="Search commands..." value={search} onChange={(e) => setSearch(e.target.value)} icon={<MagnifyingGlassIcon className="h-5 w-5 text-white/50" aria-hidden="true" role="img" />} />
+   <InputWithIcon placeholder="Search commands..." value={search} onChange={(e) => setSearch(e.target.value)} icon={<MagnifyingGlassIcon className="min-h-5 min-w-5 h-5 w-5 text-white/50" aria-hidden="true" role="img" />} />
    <div className="mt-8 flex flex-wrap gap-2">
     {categories.map((category) => (
      <div
@@ -78,7 +78,7 @@ export function DiscordCommands({ commands, categories }) {
        }
       }}
      >
-      {filteredCategories?.includes(category) ? <CheckIcon className="text-accent-primary h-5 w-5" aria-hidden="true" role="img" /> : <XMarkIcon className="h-5 w-5 text-red-400/50" aria-hidden="true" role="img" />}
+      {filteredCategories?.includes(category) ? <CheckIcon className="text-accent-primary min-h-5 min-w-5 h-5 w-5" aria-hidden="true" role="img" /> : <XMarkIcon className="min-h-5 min-w-5 h-5 w-5 text-red-400/50" aria-hidden="true" role="img" />}
       {category.name}
      </div>
     ))}
@@ -86,7 +86,7 @@ export function DiscordCommands({ commands, categories }) {
    {filteredCommands.length === 0 ? (
     <div className="mt-8 flex flex-col items-center justify-center gap-2">
      <h3 className="flex items-center text-center text-xl font-bold">
-      <XCircleIcon className="mr-2 h-6 min-h-[24px] w-6 min-w-[24px] text-red-400" aria-hidden="true" role="img" />
+      <XCircleIcon className="min-h-6 min-w-6 mr-2 h-6 w-6 text-red-400" aria-hidden="true" role="img" />
       No commands found.
      </h3>
      <p className="text-center text-white/50">Try searching for something else or change the categories.</p>

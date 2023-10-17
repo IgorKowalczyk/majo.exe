@@ -45,14 +45,14 @@ function GenerateComponent({ title, data, csvData, valueName, fileName, categori
           "bg-background-menu-button flex h-10 select-none items-center rounded border border-neutral-700 px-4 py-2 duration-200  motion-reduce:transition-none"
          )}
         >
-         <ArrowDownTrayIcon className="h-4 min-h-[14px] w-4 min-w-[14px]" aria-hidden="true" role="img" />
+         <ArrowDownTrayIcon className="min-h-4 min-w-4 h-4 w-4" aria-hidden="true" role="img" />
          <span className="text-normal !ml-2 font-normal">Export</span>
          <ChevronDownIcon
           className={clsx(
            {
             "rotate-180": open,
            },
-           "ml-2 h-4 min-h-[14px] w-4 min-w-[14px] duration-200 motion-reduce:transition-none"
+           "min-h-4 min-w-4 ml-2 h-4 w-4 duration-200 motion-reduce:transition-none"
           )}
          />
         </div>
@@ -74,7 +74,7 @@ function GenerateComponent({ title, data, csvData, valueName, fileName, categori
             "group my-1 flex w-full cursor-pointer items-center rounded-md px-2 py-2 text-sm font-normal duration-200 motion-reduce:transition-none"
            )}
           >
-           <DocumentArrowDownIcon className="mr-2 h-5 w-5 " aria-hidden="true" role="img" /> Export as CSV
+           <DocumentArrowDownIcon className="min-h-5 min-w-5 mr-2 h-5 w-5 " aria-hidden="true" role="img" /> Export as CSV
           </p>
          )}
         </Menu.Item>
@@ -90,7 +90,7 @@ function GenerateComponent({ title, data, csvData, valueName, fileName, categori
             "group my-1 flex w-full cursor-pointer items-center rounded-md px-2 py-2 text-sm font-normal duration-200 motion-reduce:transition-none"
            )}
           >
-           <DocumentArrowDownIcon className="mr-2 h-5 w-5 " aria-hidden="true" role="img" /> Export as JSON
+           <DocumentArrowDownIcon className="min-h-5 min-w-5 mr-2 h-5 w-5 " aria-hidden="true" role="img" /> Export as JSON
           </p>
          )}
         </Menu.Item>

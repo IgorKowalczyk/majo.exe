@@ -22,7 +22,7 @@ export function Refetch() {
      {
       "animate-spin": rotating,
      },
-     "mr-2 h-5 w-5"
+     "min-h-5 min-w-5 mr-2 h-5 w-5"
     )}
     aria-hidden="true"
     role="img"
