@@ -35,6 +35,21 @@ export default {
      channelTypes: [ChannelType.GuildText, ChannelType.GuildCategory],
      required: false,
     },
+    {
+     name: "timeout",
+     description: "The timeout for the anti-invite system",
+     type: ApplicationCommandOptionType.Integer,
+     required: false,
+     maxValue: 120,
+     minValue: 5,
+    },
+    {
+     name: "log-channel",
+     description: "The log channel for the anti-invite system",
+     type: ApplicationCommandOptionType.Channel,
+     channelTypes: [ChannelType.GuildText],
+     required: false,
+    }
    ],
   },
  ],
@@ -47,6 +62,8 @@ export default {
     const enable = interaction.options.getBoolean("enable");
     const exemptRoles = interaction.options.getRole("exempt-roles");
     const exemptChannels = interaction.options.getChannel("exempt-channels");
+    const timeout = interaction.options.getInteger("timeout");
+    const logChannel = interaction.options.getChannel("log-channel");
     const rules = await fetchAutoModRules(interaction.guild.id);
 
     let createdRule = rules.find((rule) => rule.ruleType === "invite");
@@ -118,7 +135,8 @@ export default {
 
       return interaction.followUp({ embeds: [embed] });
      } else if (!createdRule) {
-      const rule = await interaction.guild.autoModerationRules.create({
+
+      const ruleToCreate = {
        name: "Disallow invites [Majo.exe]",
        creatorId: client.id,
        enabled: true,
@@ -134,13 +152,33 @@ export default {
          type: AutoModerationActionType.BlockMessage,
          metadata: {
           channel: interaction.channel,
-          durationSeconds: 10,
           customMessage: "Message blocked due to containing an invite link. Rule added by Majo.exe",
          },
         },
        ],
        reason: `Requested by ${interaction.member.user.globalName || interaction.member.user.username}`,
-      });
+      }
+
+      if (timeout) {
+       ruleToCreate.actions.push({
+        type: AutoModerationActionType.Timeout,
+        metadata: {
+         durationSeconds: timeout,
+        },
+       });
+      }
+
+      if (logChannel) {
+       ruleToCreate.actions.push({
+        type: AutoModerationActionType.SendAlertMessage,
+        metadata: {
+         channel: logChannel,
+         message: "Message blocked due to containing an invite link. Rule added by Majo.exe",
+        },
+       });
+      }
+
+      const rule = await interaction.guild.autoModerationRules.create(ruleToCreate);
 
       await createAutoModRule(interaction.guild.id, rule.id, "invite", true);
 
@@ -163,6 +201,16 @@ export default {
         {
          name: "📛 Rule action(s)",
          value: "`Block message`",
+         inline: true,
+        },
+        {
+         name: "⏱️ Rule timeout",
+         value: timeout ? `\`${timeout} seconds\`` : "None",
+         inline: true,
+        },
+        {
+         name: "📝 Rule log channel",
+         value: logChannel ? `<#${logChannel.id}>` : "None",
          inline: true,
         },
         {
