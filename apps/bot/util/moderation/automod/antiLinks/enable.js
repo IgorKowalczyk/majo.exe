@@ -116,7 +116,7 @@ export async function enableAntiLink(client, interaction, exemptRoles, exemptCha
 
   const rule = await interaction.guild.autoModerationRules.create(ruleToCreate);
 
-  await createAutoModRule(interaction.guild.id, rule.id, "invite", true);
+  await createAutoModRule(interaction.guild.id, rule.id, "anti-link", true);
 
   const embed = new EmbedBuilder()
    .setColor(guildSettings?.embedColor || client.config.defaultColor)

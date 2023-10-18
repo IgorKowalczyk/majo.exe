@@ -13,7 +13,7 @@ export default {
  type: ApplicationCommandType.ChatInput,
  cooldown: 5000,
  dm_permission: false,
- usage: "/automod <command>",
+ usage: "/automod <subcommand>",
  options: [
   {
    name: "anti-invite",
@@ -97,6 +97,55 @@ export default {
     },
    ],
   },
+  {
+   name: "anti-mention",
+   description: "🔗 Enable/Disable the anti-mention system",
+   type: ApplicationCommandOptionType.Subcommand,
+   options: [
+    {
+     name: "enable",
+     description: "Enable the anti-mention system",
+     type: ApplicationCommandOptionType.Boolean,
+     required: true,
+    },
+    {
+     name: "limit",
+     description: "The limit for the anti-mention system",
+     type: ApplicationCommandOptionType.Integer,
+     required: false,
+     minValue: 1,
+     maxValue: 50,
+    },
+    {
+     name: "exempt-roles",
+     description: "Exempt roles from the anti-mention system",
+     type: ApplicationCommandOptionType.Role,
+     required: false,
+    },
+    {
+     name: "exempt-channels",
+     description: "Exempt channels from the anti-mention system",
+     type: ApplicationCommandOptionType.Channel,
+     channelTypes: [ChannelType.GuildText, ChannelType.GuildCategory],
+     required: false,
+    },
+    {
+     name: "timeout",
+     description: "The timeout for the anti-mention system",
+     type: ApplicationCommandOptionType.Integer,
+     required: false,
+     maxValue: 120,
+     minValue: 5,
+    },
+    {
+     name: "log-channel",
+     description: "The log channel for the anti-mention system",
+     type: ApplicationCommandOptionType.Channel,
+     channelTypes: [ChannelType.GuildText],
+     required: false,
+    },
+   ],
+  }
  ],
  permissions: [PermissionsBitField.Administrator],
  run: async (client, interaction, guildSettings) => {
@@ -109,7 +158,7 @@ export default {
     const exemptChannels = interaction.options.getChannel("exempt-channels");
     const timeout = interaction.options.getInteger("timeout");
     const logChannel = interaction.options.getChannel("log-channel");
-    const createdRule = await syncAutoModRule(interaction, "invite");
+    const createdRule = await syncAutoModRule(interaction, "anti-invite");
 
     if (enable) {
      await enableAntiInvite(client, interaction, exemptRoles, exemptChannels, timeout, logChannel, createdRule, guildSettings);
@@ -129,9 +178,10 @@ export default {
     } else {
      await disableAntiLink(client, interaction, createdRule, guildSettings);
     }
+   } else if (subcommand === "anti-mention") {
+    return client.errorMessages.createSlashError(interaction, "❌ This feature is not yet implemented.");
    }
   } catch (err) {
-   console.log(err);
    client.errorMessages.internalError(interaction, err);
   }
  },
