@@ -11,7 +11,7 @@ export default {
  options: [
   {
    name: "xkcd",
-   description: "Check out the latest xkcd comic",
+   description: "💬 Check out the latest xkcd comic",
    type: ApplicationCommandOptionType.Subcommand,
    options: [
     {
@@ -24,7 +24,7 @@ export default {
   },
   {
    name: "phd",
-   description: "Check out the latest phd comic",
+   description: "💬 Check out the latest phd comic",
    type: ApplicationCommandOptionType.Subcommand,
    options: [
     {
@@ -37,7 +37,7 @@ export default {
   },
   {
    name: "garfield",
-   description: "Check out the latest garfield comic",
+   description: "💬 Check out the latest garfield comic",
    type: ApplicationCommandOptionType.Subcommand,
   },
  ],
