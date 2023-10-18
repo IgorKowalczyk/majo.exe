@@ -87,7 +87,7 @@ export default {
       value: ">>> **The stats above are due to our wonderful hosting - [TrestHost](https://dash.tresthost.me/register?ref=majonez.exe)**. Register now and try their __VPS, Node.js, Go, Java and Python hosting!__",
      },
     ])
-    .setImage("https://media.discordapp.net/attachments/905722570286960650/1146160796351610910/20230814_061107_0000-1.png?width=1200&height=406")
+    .setImage("https://repository-images.githubusercontent.com/678773099/96116fa6-00e7-456d-a05d-d72feeb217a3")
     .setFooter({
      text: `Requested by ${interaction.member.user.globalName || interaction.member.user.username}`,
      iconURL: interaction.member.user.displayAvatarURL({
