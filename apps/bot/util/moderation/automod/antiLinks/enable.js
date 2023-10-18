@@ -116,7 +116,7 @@ export async function enableAntiLink(client, interaction, exemptRoles, exemptCha
 
   const rule = await interaction.guild.autoModerationRules.create(ruleToCreate);
 
-  await createAutoModRule(interaction.guild.id, rule.id, "invite", true);
+  await createAutoModRule(interaction.guild.id, rule.id, "anti-link", true);
 
   const embed = new EmbedBuilder()
    .setColor(guildSettings?.embedColor || client.config.defaultColor)
@@ -135,18 +135,18 @@ export async function enableAntiLink(client, interaction, exemptRoles, exemptCha
      inline: true,
     },
     {
-     name: "📛 Rule action(s)",
+     name: `📛 Rule action${timeout || logChannel ? "s" : ""}`,
      value: `\`Block message\`${timeout ? `, Timeout for \`${timeout}\` seconds` : ""}${logChannel ? `, Send alert message in <#${logChannel.id}>` : ""}`,
      inline: true,
     },
     {
      name: "⏱️ Rule timeout",
-     value: timeout ? `\`${timeout} seconds\`` : "None",
+     value: timeout ? `\`${timeout} seconds\`` : "`None`",
      inline: true,
     },
     {
      name: "📝 Rule log channel",
-     value: logChannel ? `<#${logChannel.id}>` : "None",
+     value: logChannel ? `<#${logChannel.id}>` : "`None`",
      inline: true,
     },
     {
@@ -156,12 +156,12 @@ export async function enableAntiLink(client, interaction, exemptRoles, exemptCha
     },
     {
      name: "🔗 Rule exempt channels",
-     value: exemptChannels ? (exemptChannels.type === ChannelType.GuildCategory ? `All channels in the category \`${exemptChannels.name}\`` : `<#${exemptChannels.id}>`) : "None",
+     value: exemptChannels ? (exemptChannels.type === ChannelType.GuildCategory ? `All channels in the category \`${exemptChannels.name}\`` : `<#${exemptChannels.id}>`) : "`None`",
      inline: true,
     },
     {
      name: "🔗 Rule exempt roles",
-     value: exemptRoles ? `<@&${exemptRoles.id}>` : "None",
+     value: exemptRoles ? `<@&${exemptRoles.id}>` : "`None`",
      inline: true,
     },
    ])
