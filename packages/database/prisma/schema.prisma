@@ -126,6 +126,7 @@ model Guild {
  guildMessage                      GuildMessage[]
  guildDisabledCommands             GuildDisabledCommands[]
  guildDisabledCategories           GuildDisabledCategories[]
+ autoMod                           AutoMod[]
 
  @@map(name: "guilds")
 }
@@ -233,4 +234,17 @@ model Giveaways {
  data      Json
  createdAt DateTime @default(now()) @map(name: "created_at")
  guild     Guild    @relation(fields: [guildId], references: [guildId], onDelete: Cascade)
+}
+
+// Guild automod rules
+model AutoMod {
+ id        String   @id @default(cuid())
+ guildId   String   @map(name: "guild_id")
+ ruleId    String   @unique @map(name: "rule_id")
+ ruleType  String   @map(name: "rule_type")
+ enabled   Boolean  @default(false)
+ createdAt DateTime @default(now()) @map(name: "created_at")
+ guild     Guild    @relation(fields: [guildId], references: [guildId], onDelete: Cascade)
+
+ @@map(name: "auto_mod")
 }

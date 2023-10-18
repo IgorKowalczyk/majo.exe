@@ -4,6 +4,13 @@ export * from "./settings/XPSettings.js";
 // Logs
 export * from "./logs/fetchLogs.js";
 
+// Moderation
+export * from "./moderation/createAutoModRule.js";
+export * from "./moderation/deleteAutoModRule.js";
+export * from "./moderation/disableAutoModRule.js";
+export * from "./moderation/enableAutoModRule.js";
+export * from "./moderation/fetchAutoModRules.js";
+
 // XP
 export * from "./xp/check.js";
 export * from "./xp/reset.js";
