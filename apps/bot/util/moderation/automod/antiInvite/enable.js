@@ -1,3 +1,5 @@
+/* eslint-disable complexity */
+
 import { enableAutoModRule, createAutoModRule } from "@majoexe/util/database";
 import { ChannelType, AutoModerationRuleEventType, AutoModerationActionType, AutoModerationRuleTriggerType, EmbedBuilder, PermissionsBitField, codeBlock } from "discord.js";
 
@@ -28,11 +30,11 @@ export async function enableAntiInvite(client, interaction, exemptRoles, exemptC
       value: "`Message send`",
       inline: true,
      },
-    {
-     name: "📛 Rule action(s)",
-     value: `\`Block message\`${timeout ? `, Timeout for \`${timeout}\` seconds` : ""}${logChannel ? `, Send alert message in <#${logChannel.id}>` : ""}`,
-     inline: true,
-    },
+     {
+      name: "📛 Rule action(s)",
+      value: `\`Block message\`${timeout ? `, Timeout for \`${timeout}\` seconds` : ""}${logChannel ? `, Send alert message in <#${logChannel.id}>` : ""}`,
+      inline: true,
+     },
      {
       name: "🔑 Rule trigger",
       value: codeBlock("All Discord invite links"),

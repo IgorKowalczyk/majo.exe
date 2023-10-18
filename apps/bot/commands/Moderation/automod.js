@@ -2,10 +2,10 @@
 
 import { syncAutoModRule } from "@majoexe/util/database";
 import { ApplicationCommandType, ChannelType, ApplicationCommandOptionType, PermissionsBitField } from "discord.js";
-import { enableAntiInvite } from "../../util/moderation/automod/antiInvite/enable.js";
 import { disableAntiInvite } from "../../util/moderation/automod/antiInvite/disable.js";
-import { enableAntiLink } from "../../util/moderation/automod/antiLinks/enable.js";
+import { enableAntiInvite } from "../../util/moderation/automod/antiInvite/enable.js";
 import { disableAntiLink } from "../../util/moderation/automod/antiLinks/disable.js";
+import { enableAntiLink } from "../../util/moderation/automod/antiLinks/enable.js";
 
 export default {
  name: "automod",

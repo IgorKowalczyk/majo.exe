@@ -1,7 +1,7 @@
-import { fetchAutoModRules } from "./fetchAutoModRules.js";
-import { enableAutoModRule } from "./enableAutoModRule.js";
-import { disableAutoModRule } from "./disableAutoModRule.js";
 import { deleteAutoModRule } from "./deleteAutoModRule.js";
+import { disableAutoModRule } from "./disableAutoModRule.js";
+import { enableAutoModRule } from "./enableAutoModRule.js";
+import { fetchAutoModRules } from "./fetchAutoModRules.js";
 
 /**
  * Syncs an automod rule with the database

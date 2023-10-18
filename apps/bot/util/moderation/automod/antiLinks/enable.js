@@ -1,3 +1,5 @@
+/* eslint-disable complexity */
+
 import { enableAutoModRule, createAutoModRule } from "@majoexe/util/database";
 import { ChannelType, AutoModerationRuleEventType, AutoModerationActionType, AutoModerationRuleTriggerType, EmbedBuilder, PermissionsBitField, codeBlock } from "discord.js";
 
