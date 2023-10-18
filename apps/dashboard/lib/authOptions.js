@@ -31,6 +31,35 @@ const authOptions = {
      }
     }
 
+    const user = await prismaClient.user.findUnique({
+     where: {
+      discordId: profile.id,
+     },
+     select: {
+      id: true,
+      discordId: true,
+      accounts: true,
+     },
+    });
+
+    if (user && (!user.accounts || user.accounts.length === 0)) {
+     await prismaClient.account.create({
+      data: {
+       userId: user.id,
+       type: "oauth",
+       provider: "discord",
+       providerAccountId: profile.id,
+       access_token: tokens.access_token,
+       refresh_token: tokens.refresh_token,
+       expires_at: tokens.expires_at,
+       token_type: tokens.token_type,
+       scope: tokens.scope,
+       id_token: tokens.id_token,
+       session_state: tokens.session_state,
+      },
+     });
+    }
+
     delete profile.email;
     delete profile.emailVerified;
 

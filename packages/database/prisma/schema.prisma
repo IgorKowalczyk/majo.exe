@@ -31,7 +31,7 @@ model User {
  @@map(name: "users")
 }
 
-// User accounts (not used)
+// User accounts
 model Account {
  id                String  @id @default(cuid())
  userId            String  @map("user_id")
