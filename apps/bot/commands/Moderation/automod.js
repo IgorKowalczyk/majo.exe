@@ -9,7 +9,7 @@ import { enableAntiLink } from "../../util/moderation/automod/antiLinks/enable.j
 
 export default {
  name: "automod",
- description: "Configure Automoderation for your server",
+ description: "🤖 Configure Automoderation for your server",
  type: ApplicationCommandType.ChatInput,
  cooldown: 5000,
  dm_permission: false,
@@ -17,7 +17,7 @@ export default {
  options: [
   {
    name: "anti-invite",
-   description: "Enable/Disable the anti-invite system",
+   description: "🔗 Enable/Disable the anti-invite system",
    type: ApplicationCommandOptionType.Subcommand,
    options: [
     {
@@ -58,7 +58,7 @@ export default {
   },
   {
    name: "anti-link",
-   description: "Enable/Disable the anti-link system",
+   description: "🔗 Enable/Disable the anti-link system",
    type: ApplicationCommandOptionType.Subcommand,
    options: [
     {
