@@ -49,7 +49,7 @@ export default {
      type: ApplicationCommandOptionType.Channel,
      channelTypes: [ChannelType.GuildText],
      required: false,
-    }
+    },
    ],
   },
  ],
@@ -135,7 +135,6 @@ export default {
 
       return interaction.followUp({ embeds: [embed] });
      } else if (!createdRule) {
-
       const ruleToCreate = {
        name: "Disallow invites [Majo.exe]",
        creatorId: client.id,
@@ -157,7 +156,7 @@ export default {
         },
        ],
        reason: `Requested by ${interaction.member.user.globalName || interaction.member.user.username}`,
-      }
+      };
 
       if (timeout) {
        ruleToCreate.actions.push({
