@@ -1,7 +1,11 @@
 /* eslint-disable complexity */
 
-import { fetchAutoModRules, deleteAutoModRule, createAutoModRule, enableAutoModRule, disableAutoModRule } from "@majoexe/util/database";
-import { ApplicationCommandType, ChannelType, ApplicationCommandOptionType, AutoModerationRuleEventType, AutoModerationActionType, AutoModerationRuleTriggerType, EmbedBuilder, PermissionsBitField, codeBlock } from "discord.js";
+import { syncAutoModRule } from "@majoexe/util/database";
+import { ApplicationCommandType, ChannelType, ApplicationCommandOptionType, PermissionsBitField } from "discord.js";
+import { enableAntiInvite } from "../../util/moderation/automod/antiInvite/enable.js";
+import { disableAntiInvite } from "../../util/moderation/automod/antiInvite/disable.js";
+import { enableAntiLink } from "../../util/moderation/automod/antiLinks/enable.js";
+import { disableAntiLink } from "../../util/moderation/automod/antiLinks/disable.js";
 
 export default {
  name: "automod",
@@ -52,6 +56,47 @@ export default {
     },
    ],
   },
+  {
+   name: "anti-link",
+   description: "Enable/Disable the anti-link system",
+   type: ApplicationCommandOptionType.Subcommand,
+   options: [
+    {
+     name: "enable",
+     description: "Enable the anti-link system",
+     type: ApplicationCommandOptionType.Boolean,
+     required: true,
+    },
+    {
+     name: "exempt-roles",
+     description: "Exempt roles from the anti-link system",
+     type: ApplicationCommandOptionType.Role,
+     required: false,
+    },
+    {
+     name: "exempt-channels",
+     description: "Exempt channels from the anti-link system",
+     type: ApplicationCommandOptionType.Channel,
+     channelTypes: [ChannelType.GuildText, ChannelType.GuildCategory],
+     required: false,
+    },
+    {
+     name: "timeout",
+     description: "The timeout for the anti-link system",
+     type: ApplicationCommandOptionType.Integer,
+     required: false,
+     maxValue: 120,
+     minValue: 5,
+    },
+    {
+     name: "log-channel",
+     description: "The log channel for the anti-link system",
+     type: ApplicationCommandOptionType.Channel,
+     channelTypes: [ChannelType.GuildText],
+     required: false,
+    },
+   ],
+  },
  ],
  permissions: [PermissionsBitField.Administrator],
  run: async (client, interaction, guildSettings) => {
@@ -64,229 +109,25 @@ export default {
     const exemptChannels = interaction.options.getChannel("exempt-channels");
     const timeout = interaction.options.getInteger("timeout");
     const logChannel = interaction.options.getChannel("log-channel");
-    const rules = await fetchAutoModRules(interaction.guild.id);
-
-    let createdRule = rules.find((rule) => rule.ruleType === "invite");
-
-    if (createdRule) {
-     try {
-      const existingRule = await interaction.guild.autoModerationRules.fetch({ autoModerationRule: createdRule.ruleId, cache: false, force: true });
-      if (!existingRule) {
-       await deleteAutoModRule(interaction.guild.id, createdRule.ruleId);
-       createdRule = null;
-      } else if (createdRule.enabled !== existingRule.enabled) {
-       existingRule.enabled ? await enableAutoModRule(interaction.guild.id, createdRule.ruleId) : await disableAutoModRule(interaction.guild.id, createdRule.ruleId);
-       createdRule.enabled = existingRule.enabled;
-      }
-     } catch (err) {
-      await deleteAutoModRule(interaction.guild.id, createdRule.ruleId);
-      createdRule = null;
-     }
-    }
+    const createdRule = await syncAutoModRule(interaction, "invite");
 
     if (enable) {
-     if (createdRule && createdRule.enabled) {
-      return client.errorMessages.createSlashError(interaction, "❌ The anti-invite system is already `enabled`");
-     } else if (createdRule && !createdRule.enabled) {
-      await interaction.guild.autoModerationRules.edit(createdRule.ruleId, {
-       enabled: true,
-      });
-
-      await enableAutoModRule(interaction.guild.id, createdRule.ruleId);
-
-      const embed = new EmbedBuilder()
-       .setColor(guildSettings?.embedColor || client.config.defaultColor)
-       .setTimestamp()
-       .setTitle("✅ Successfully `enabled` the anti-invite system again")
-       .setDescription("The anti-invite system has been `enabled`. All Discord invites will now be blocked.")
-       .setFields([
-        {
-         name: "🔒 Rule name",
-         value: "`Disallow invites`",
-         inline: true,
-        },
-        {
-         name: "📨 Rule event",
-         value: "`Message send`",
-         inline: true,
-        },
-        {
-         name: "📛 Rule action(s)",
-         value: "`Block message`",
-         inline: true,
-        },
-        {
-         name: "🔑 Rule trigger",
-         value: codeBlock("All Discord invite links"),
-         inline: false,
-        },
-       ])
-       .setFooter({
-        text: `Requested by ${interaction.member.user.globalName || interaction.member.user.username}`,
-        iconURL: interaction.user.displayAvatarURL({
-         size: 256,
-        }),
-       })
-       .setThumbnail(
-        interaction.guild.iconURL({
-         size: 256,
-        })
-       );
-
-      return interaction.followUp({ embeds: [embed] });
-     } else if (!createdRule) {
-      const ruleToCreate = {
-       name: "Disallow invites [Majo.exe]",
-       creatorId: client.id,
-       enabled: true,
-       eventType: AutoModerationRuleEventType.MessageSend,
-       triggerType: AutoModerationRuleTriggerType.Keyword,
-       exemptChannels: exemptChannels ? [exemptChannels.id] : [],
-       exemptRoles: exemptRoles ? [exemptRoles.id] : [],
-       triggerMetadata: {
-        regexPatterns: ["(?:https?://)?(?:www.|ptb.|canary.)?(?:discord(?:app)?.(?:(?:com|gg)/(?:invite|servers)/[a-z0-9-_]+)|discord.gg/[a-z0-9-_]+)"],
-       },
-       actions: [
-        {
-         type: AutoModerationActionType.BlockMessage,
-         metadata: {
-          channel: interaction.channel,
-          customMessage: "Message blocked due to containing an invite link. Rule added by Majo.exe",
-         },
-        },
-       ],
-       reason: `Requested by ${interaction.member.user.globalName || interaction.member.user.username}`,
-      };
-
-      if (timeout) {
-       ruleToCreate.actions.push({
-        type: AutoModerationActionType.Timeout,
-        metadata: {
-         durationSeconds: timeout,
-        },
-       });
-      }
-
-      if (logChannel) {
-       if (!logChannel.permissionsFor(interaction.guild.members.me).has(PermissionsBitField.Flags.ViewChannel)) {
-        return client.errorMessages.createSlashError(interaction, `❌ I don't have permission to view <#${logChannel.id}> channel`);
-       }
-
-       if (!logChannel.permissionsFor(interaction.guild.members.me).has(PermissionsBitField.Flags.SendMessages)) {
-        return client.errorMessages.createSlashError(interaction, `❌ I don't have permission to send messages in <#${logChannel.id}> channel`);
-       }
-
-       if (!logChannel.permissionsFor(interaction.member).has(PermissionsBitField.Flags.ViewChannel)) {
-        return client.errorMessages.createSlashError(interaction, `❌ You don't have permission to view <#${logChannel.id}> channel`);
-       }
-
-       if (!logChannel.permissionsFor(interaction.member).has(PermissionsBitField.Flags.SendMessages)) {
-        return client.errorMessages.createSlashError(interaction, `❌ You don't have permission to send messages in <#${logChannel.id}> channel`);
-       }
-
-       ruleToCreate.actions.push({
-        type: AutoModerationActionType.SendAlertMessage,
-        metadata: {
-         channel: logChannel,
-         message: "Message blocked due to containing an invite link. Rule added by Majo.exe",
-        },
-       });
-      }
-
-      const rule = await interaction.guild.autoModerationRules.create(ruleToCreate);
-
-      await createAutoModRule(interaction.guild.id, rule.id, "invite", true);
-
-      const embed = new EmbedBuilder()
-       .setColor(guildSettings?.embedColor || client.config.defaultColor)
-       .setTimestamp()
-       .setTitle("✅ Successfully `enabled` the anti-invite system")
-       .setDescription("The anti-invite system has been `enabled`. All Discord invites will now be blocked.")
-       .setFields([
-        {
-         name: "🔒 Rule name",
-         value: "`Disallow invites`",
-         inline: true,
-        },
-        {
-         name: "📨 Rule event",
-         value: "`Message send`",
-         inline: true,
-        },
-        {
-         name: "📛 Rule action(s)",
-         value: "`Block message`",
-         inline: true,
-        },
-        {
-         name: "⏱️ Rule timeout",
-         value: timeout ? `\`${timeout} seconds\`` : "None",
-         inline: true,
-        },
-        {
-         name: "📝 Rule log channel",
-         value: logChannel ? `<#${logChannel.id}>` : "None",
-         inline: true,
-        },
-        {
-         name: "🔑 Rule trigger",
-         value: codeBlock("All Discord invite links"),
-         inline: false,
-        },
-        {
-         name: "🔗 Rule exempt channels",
-         value: exemptChannels ? (exemptChannels.type === ChannelType.GuildCategory ? `All channels in the category \`${exemptChannels.name}\`` : `<#${exemptChannels.id}>`) : "None",
-         inline: true,
-        },
-        {
-         name: "🔗 Rule exempt roles",
-         value: exemptRoles ? `<@&${exemptRoles.id}>` : "None",
-         inline: true,
-        },
-       ])
-       .setFooter({
-        text: `Requested by ${interaction.member.user.globalName || interaction.member.user.username}`,
-        iconURL: interaction.user.displayAvatarURL({
-         size: 256,
-        }),
-       })
-       .setThumbnail(
-        interaction.guild.iconURL({
-         size: 256,
-        })
-       );
-
-      return interaction.followUp({ embeds: [embed] });
-     }
+     await enableAntiInvite(client, interaction, exemptRoles, exemptChannels, timeout, logChannel, createdRule, guildSettings);
     } else {
-     if (!createdRule || (createdRule && !createdRule.enabled)) {
-      return client.errorMessages.createSlashError(interaction, "❌ The anti-invite system is already `disabled`");
-     }
+     await disableAntiInvite(client, interaction, createdRule, guildSettings);
+    }
+   } else if (subcommand === "anti-link") {
+    const enable = interaction.options.getBoolean("enable");
+    const exemptRoles = interaction.options.getRole("exempt-roles");
+    const exemptChannels = interaction.options.getChannel("exempt-channels");
+    const timeout = interaction.options.getInteger("timeout");
+    const logChannel = interaction.options.getChannel("log-channel");
+    const createdRule = await syncAutoModRule(interaction, "anti-link");
 
-     await interaction.guild.autoModerationRules.edit(createdRule.ruleId, {
-      enabled: false,
-     });
-
-     await disableAutoModRule(interaction.guild.id, createdRule.ruleId);
-
-     const embed = new EmbedBuilder()
-      .setColor(guildSettings?.embedColor || client.config.defaultColor)
-      .setTimestamp()
-      .setTitle("⛔ Successfully `disabled` the anti-invite system")
-      .setDescription("The anti-invite system has been `disabled`. All Discord invites will no longer be blocked.")
-      .setFooter({
-       text: `Requested by ${interaction.member.user.globalName || interaction.member.user.username}`,
-       iconURL: interaction.user.displayAvatarURL({
-        size: 256,
-       }),
-      })
-      .setThumbnail(
-       interaction.guild.iconURL({
-        size: 256,
-       })
-      );
-
-     return interaction.followUp({ embeds: [embed] });
+    if (enable) {
+     await enableAntiLink(client, interaction, exemptRoles, exemptChannels, timeout, logChannel, createdRule, guildSettings);
+    } else {
+     await disableAntiLink(client, interaction, createdRule, guildSettings);
     }
    }
   } catch (err) {

@@ -10,6 +10,7 @@ export * from "./moderation/deleteAutoModRule.js";
 export * from "./moderation/disableAutoModRule.js";
 export * from "./moderation/enableAutoModRule.js";
 export * from "./moderation/fetchAutoModRules.js";
+export * from "./moderation/syncAutoModRule.js";
 
 // XP
 export * from "./xp/check.js";
