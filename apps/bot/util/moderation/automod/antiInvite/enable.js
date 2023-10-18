@@ -135,18 +135,18 @@ export async function enableAntiInvite(client, interaction, exemptRoles, exemptC
      inline: true,
     },
     {
-     name: "📛 Rule action(s)",
-     value: "`Block message`",
+     name: `📛 Rule action${timeout || logChannel ? "s" : ""}`,
+     value: `\`Block message\`${timeout ? `, Timeout for \`${timeout}\` seconds` : ""}${logChannel ? `, Send alert message in <#${logChannel.id}>` : ""}`,
      inline: true,
     },
     {
      name: "⏱️ Rule timeout",
-     value: timeout ? `\`${timeout} seconds\`` : "None",
+     value: timeout ? `\`${timeout} seconds\`` : "`None`",
      inline: true,
     },
     {
      name: "📝 Rule log channel",
-     value: logChannel ? `<#${logChannel.id}>` : "None",
+     value: logChannel ? `<#${logChannel.id}>` : "`None`",
      inline: true,
     },
     {
@@ -156,12 +156,12 @@ export async function enableAntiInvite(client, interaction, exemptRoles, exemptC
     },
     {
      name: "🔗 Rule exempt channels",
-     value: exemptChannels ? (exemptChannels.type === ChannelType.GuildCategory ? `All channels in the category \`${exemptChannels.name}\`` : `<#${exemptChannels.id}>`) : "None",
+     value: exemptChannels ? (exemptChannels.type === ChannelType.GuildCategory ? `All channels in the category \`${exemptChannels.name}\`` : `<#${exemptChannels.id}>`) : "`None`",
      inline: true,
     },
     {
      name: "🔗 Rule exempt roles",
-     value: exemptRoles ? `<@&${exemptRoles.id}>` : "None",
+     value: exemptRoles ? `<@&${exemptRoles.id}>` : "`None`",
      inline: true,
     },
    ])
