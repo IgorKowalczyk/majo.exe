@@ -6,6 +6,8 @@ import { disableAntiInvite } from "../../util/moderation/automod/antiInvite/disa
 import { enableAntiInvite } from "../../util/moderation/automod/antiInvite/enable.js";
 import { disableAntiLink } from "../../util/moderation/automod/antiLinks/disable.js";
 import { enableAntiLink } from "../../util/moderation/automod/antiLinks/enable.js";
+import { disableAntiMention } from "../../util/moderation/automod/antiMention/disable.js";
+import { enableAntiMention } from "../../util/moderation/automod/antiMention/enable.js";
 
 export default {
  name: "automod",
@@ -234,7 +236,19 @@ export default {
      await disableAntiLink(client, interaction, createdRule, guildSettings);
     }
    } else if (subcommand === "anti-mention") {
-    return client.errorMessages.createSlashError(interaction, "❌ This feature is not yet implemented.");
+    const enable = interaction.options.getBoolean("enable");
+    const limit = interaction.options.getInteger("limit") || 5;
+    const exemptRoles = interaction.options.getRole("exempt-roles");
+    const exemptChannels = interaction.options.getChannel("exempt-channels");
+    const timeout = interaction.options.getInteger("timeout");
+    const logChannel = interaction.options.getChannel("log-channel");
+    const createdRule = await syncAutoModRule(interaction, "anti-mention");
+
+    if (enable) {
+     await enableAntiMention(client, interaction, limit, exemptRoles, exemptChannels, timeout, logChannel, createdRule, guildSettings);
+    } else {
+     await disableAntiMention(client, interaction, createdRule, guildSettings);
+    }
    }
   } catch (err) {
    client.errorMessages.internalError(interaction, err);
