@@ -25,131 +25,149 @@ export default {
   {
    name: "anti-invite",
    description: "🔗 Enable/Disable the anti-invite system",
-   type: ApplicationCommandOptionType.Subcommand,
+   type: ApplicationCommandOptionType.SubcommandGroup,
    options: [
     {
      name: "enable",
-     description: "Enable the anti-invite system",
-     type: ApplicationCommandOptionType.Boolean,
-     required: true,
+     description: "🔗 Enable the anti-invite system",
+     type: ApplicationCommandOptionType.Subcommand,
+     options: [
+      {
+       name: "exempt-roles",
+       description: "Exempt roles from the anti-invite system",
+       type: ApplicationCommandOptionType.Role,
+       required: false,
+      },
+      {
+       name: "exempt-channels",
+       description: "Exempt channels from the anti-invite system",
+       type: ApplicationCommandOptionType.Channel,
+       channelTypes: [ChannelType.GuildText, ChannelType.GuildCategory],
+       required: false,
+      },
+      {
+       name: "timeout",
+       description: "The timeout for the anti-invite system",
+       type: ApplicationCommandOptionType.Integer,
+       required: false,
+       maxValue: 120,
+       minValue: 5,
+      },
+      {
+       name: "log-channel",
+       description: "The log channel for the anti-invite system",
+       type: ApplicationCommandOptionType.Channel,
+       channelTypes: [ChannelType.GuildText],
+       required: false,
+      },
+     ],
     },
     {
-     name: "exempt-roles",
-     description: "Exempt roles from the anti-invite system",
-     type: ApplicationCommandOptionType.Role,
-     required: false,
-    },
-    {
-     name: "exempt-channels",
-     description: "Exempt channels from the anti-invite system",
-     type: ApplicationCommandOptionType.Channel,
-     channelTypes: [ChannelType.GuildText, ChannelType.GuildCategory],
-     required: false,
-    },
-    {
-     name: "timeout",
-     description: "The timeout for the anti-invite system",
-     type: ApplicationCommandOptionType.Integer,
-     required: false,
-     maxValue: 120,
-     minValue: 5,
-    },
-    {
-     name: "log-channel",
-     description: "The log channel for the anti-invite system",
-     type: ApplicationCommandOptionType.Channel,
-     channelTypes: [ChannelType.GuildText],
-     required: false,
+     name: "disable",
+     description: "🔗 Disable the anti-invite system",
+     type: ApplicationCommandOptionType.Subcommand,
     },
    ],
   },
   {
    name: "anti-link",
    description: "🔗 Enable/Disable the anti-link system",
-   type: ApplicationCommandOptionType.Subcommand,
+   type: ApplicationCommandOptionType.SubcommandGroup,
    options: [
     {
      name: "enable",
-     description: "Enable the anti-link system",
-     type: ApplicationCommandOptionType.Boolean,
-     required: true,
+     description: "🔗 Enable the anti-link system",
+     type: ApplicationCommandOptionType.Subcommand,
+     options: [
+      {
+       name: "exempt-roles",
+       description: "Exempt roles from the anti-link system",
+       type: ApplicationCommandOptionType.Role,
+       required: false,
+      },
+      {
+       name: "exempt-channels",
+       description: "Exempt channels from the anti-link system",
+       type: ApplicationCommandOptionType.Channel,
+       channelTypes: [ChannelType.GuildText, ChannelType.GuildCategory],
+       required: false,
+      },
+      {
+       name: "timeout",
+       description: "The timeout for the anti-link system",
+       type: ApplicationCommandOptionType.Integer,
+       required: false,
+       maxValue: 120,
+       minValue: 5,
+      },
+      {
+       name: "log-channel",
+       description: "The log channel for the anti-link system",
+       type: ApplicationCommandOptionType.Channel,
+       channelTypes: [ChannelType.GuildText],
+       required: false,
+      },
+     ],
     },
     {
-     name: "exempt-roles",
-     description: "Exempt roles from the anti-link system",
-     type: ApplicationCommandOptionType.Role,
-     required: false,
-    },
-    {
-     name: "exempt-channels",
-     description: "Exempt channels from the anti-link system",
-     type: ApplicationCommandOptionType.Channel,
-     channelTypes: [ChannelType.GuildText, ChannelType.GuildCategory],
-     required: false,
-    },
-    {
-     name: "timeout",
-     description: "The timeout for the anti-link system",
-     type: ApplicationCommandOptionType.Integer,
-     required: false,
-     maxValue: 120,
-     minValue: 5,
-    },
-    {
-     name: "log-channel",
-     description: "The log channel for the anti-link system",
-     type: ApplicationCommandOptionType.Channel,
-     channelTypes: [ChannelType.GuildText],
-     required: false,
+     name: "disable",
+     description: "🔗 Disable the anti-link system",
+     type: ApplicationCommandOptionType.Subcommand,
     },
    ],
   },
   {
    name: "anti-mention",
-   description: "🔗 Enable/Disable the anti-mention system",
-   type: ApplicationCommandOptionType.Subcommand,
+   description: "💭 Enable/Disable the anti-mention system",
+   type: ApplicationCommandOptionType.SubcommandGroup,
    options: [
     {
      name: "enable",
-     description: "Enable the anti-mention system",
-     type: ApplicationCommandOptionType.Boolean,
-     required: true,
+     description: "💭 Enable the anti-mention system",
+     type: ApplicationCommandOptionType.Subcommand,
+     options: [
+      {
+       name: "limit",
+       description: "The limit for the anti-mention system",
+       type: ApplicationCommandOptionType.Integer,
+       required: false,
+       minValue: 1,
+       maxValue: 50,
+      },
+      {
+       name: "exempt-roles",
+       description: "Exempt roles from the anti-mention system",
+       type: ApplicationCommandOptionType.Role,
+       required: false,
+      },
+      {
+       name: "exempt-channels",
+       description: "Exempt channels from the anti-mention system",
+       type: ApplicationCommandOptionType.Channel,
+       channelTypes: [ChannelType.GuildText, ChannelType.GuildCategory],
+       required: false,
+      },
+      {
+       name: "timeout",
+       description: "The timeout for the anti-mention system",
+       type: ApplicationCommandOptionType.Integer,
+       required: false,
+       maxValue: 120,
+       minValue: 5,
+      },
+      {
+       name: "log-channel",
+       description: "The log channel for the anti-mention system",
+       type: ApplicationCommandOptionType.Channel,
+       channelTypes: [ChannelType.GuildText],
+       required: false,
+      },
+     ],
     },
     {
-     name: "limit",
-     description: "The limit for the anti-mention system",
-     type: ApplicationCommandOptionType.Integer,
-     required: false,
-     minValue: 1,
-     maxValue: 50,
-    },
-    {
-     name: "exempt-roles",
-     description: "Exempt roles from the anti-mention system",
-     type: ApplicationCommandOptionType.Role,
-     required: false,
-    },
-    {
-     name: "exempt-channels",
-     description: "Exempt channels from the anti-mention system",
-     type: ApplicationCommandOptionType.Channel,
-     channelTypes: [ChannelType.GuildText, ChannelType.GuildCategory],
-     required: false,
-    },
-    {
-     name: "timeout",
-     description: "The timeout for the anti-mention system",
-     type: ApplicationCommandOptionType.Integer,
-     required: false,
-     maxValue: 120,
-     minValue: 5,
-    },
-    {
-     name: "log-channel",
-     description: "The log channel for the anti-mention system",
-     type: ApplicationCommandOptionType.Channel,
-     channelTypes: [ChannelType.GuildText],
-     required: false,
+     name: "disable",
+     description: "💭 Disable the anti-mention system",
+     type: ApplicationCommandOptionType.Subcommand,
     },
    ],
   },
@@ -157,6 +175,7 @@ export default {
  permissions: [PermissionsBitField.Administrator],
  run: async (client, interaction, guildSettings) => {
   try {
+   const command = interaction.options.getSubcommandGroup();
    const subcommand = interaction.options.getSubcommand();
 
    if (subcommand === "settings") {
@@ -209,34 +228,31 @@ export default {
      });
 
     return interaction.followUp({ embeds: [embed] });
-   } else if (subcommand === "anti-invite") {
-    const enable = interaction.options.getBoolean("enable");
+   } else if (command === "anti-invite") {
     const exemptRoles = interaction.options.getRole("exempt-roles");
     const exemptChannels = interaction.options.getChannel("exempt-channels");
     const timeout = interaction.options.getInteger("timeout");
     const logChannel = interaction.options.getChannel("log-channel");
     const createdRule = await syncAutoModRule(interaction, "anti-invite");
 
-    if (enable) {
+    if (subcommand === "enable") {
      await enableAntiInvite(client, interaction, exemptRoles, exemptChannels, timeout, logChannel, createdRule, guildSettings);
     } else {
      await disableAntiInvite(client, interaction, createdRule, guildSettings);
     }
-   } else if (subcommand === "anti-link") {
-    const enable = interaction.options.getBoolean("enable");
+   } else if (command === "anti-link") {
     const exemptRoles = interaction.options.getRole("exempt-roles");
     const exemptChannels = interaction.options.getChannel("exempt-channels");
     const timeout = interaction.options.getInteger("timeout");
     const logChannel = interaction.options.getChannel("log-channel");
     const createdRule = await syncAutoModRule(interaction, "anti-link");
 
-    if (enable) {
+    if (subcommand === "enable") {
      await enableAntiLink(client, interaction, exemptRoles, exemptChannels, timeout, logChannel, createdRule, guildSettings);
     } else {
      await disableAntiLink(client, interaction, createdRule, guildSettings);
     }
-   } else if (subcommand === "anti-mention") {
-    const enable = interaction.options.getBoolean("enable");
+   } else if (command === "anti-mention") {
     const limit = interaction.options.getInteger("limit") || 5;
     const exemptRoles = interaction.options.getRole("exempt-roles");
     const exemptChannels = interaction.options.getChannel("exempt-channels");
@@ -244,7 +260,7 @@ export default {
     const logChannel = interaction.options.getChannel("log-channel");
     const createdRule = await syncAutoModRule(interaction, "anti-mention");
 
-    if (enable) {
+    if (subcommand === "enable") {
      await enableAntiMention(client, interaction, limit, exemptRoles, exemptChannels, timeout, logChannel, createdRule, guildSettings);
     } else {
      await disableAntiMention(client, interaction, createdRule, guildSettings);
