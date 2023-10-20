@@ -3,16 +3,16 @@
 import { enableAutoModRule, createAutoModRule } from "@majoexe/util/database";
 import { ChannelType, AutoModerationRuleEventType, AutoModerationActionType, AutoModerationRuleTriggerType, EmbedBuilder, PermissionsBitField, codeBlock } from "discord.js";
 
-export async function enableAntiLink(client, interaction, exemptRoles, exemptChannels, timeout, logChannel, createdRule, guildSettings) {
+export async function enableAntiSpam(client, interaction, exemptRoles, exemptChannels, logChannel, createdRule, guildSettings) {
  const existingRules = await interaction.guild.autoModerationRules.fetch({ cache: false });
- const conflictingRules = existingRules.filter((rule) => rule.triggerType === AutoModerationRuleTriggerType.Keyword);
- if (conflictingRules.size === 6) {
-  return client.errorMessages.createSlashError(interaction, "❌ You can only have 6 keyword rules enabled at once. Please disable one of the existing keyword rules before enabling this one.");
+ const conflictingRule = existingRules.filter((rule) => rule.triggerType === AutoModerationRuleTriggerType.Spam).first();
+ if (conflictingRule) {
+  await conflictingRule.delete("New anti-spam rule created");
  }
 
  if (createdRule) {
   if (createdRule.enabled) {
-   return client.errorMessages.createSlashError(interaction, "❌ The anti-link system is already `enabled`");
+   return client.errorMessages.createSlashError(interaction, "❌ The anti-spam system is already `enabled`");
   } else if (!createdRule.enabled) {
    await interaction.guild.autoModerationRules.edit(createdRule.ruleId, {
     enabled: true,
@@ -23,8 +23,8 @@ export async function enableAntiLink(client, interaction, exemptRoles, exemptCha
    const embed = new EmbedBuilder()
     .setColor(guildSettings?.embedColor || client.config.defaultColor)
     .setTimestamp()
-    .setTitle("✅ Successfully `enabled` the anti-link system again")
-    .setDescription("The anti-link system has been `enabled`. All links will now be blocked.")
+    .setTitle("✅ Successfully `enabled` the anti-spam system again")
+    .setDescription("The anti-spam system has been `enabled`. Generic spam will now be blocked.")
     .setFooter({
      text: `Requested by ${interaction.member.user.globalName || interaction.member.user.username}`,
      iconURL: interaction.user.displayAvatarURL({
@@ -41,36 +41,24 @@ export async function enableAntiLink(client, interaction, exemptRoles, exemptCha
   }
  } else {
   const ruleToCreate = {
-   name: "Disallow links [Majo.exe]",
+   name: "Anti-spam [Majo.exe]",
    creatorId: client.id,
    enabled: true,
    eventType: AutoModerationRuleEventType.MessageSend,
-   triggerType: AutoModerationRuleTriggerType.Keyword,
+   triggerType: AutoModerationRuleTriggerType.Spam,
    exemptChannels: exemptChannels ? [exemptChannels.id] : [],
    exemptRoles: exemptRoles ? [exemptRoles.id] : [],
-   triggerMetadata: {
-    regexPatterns: ["(https?://)?([\\da-z.-]+)\\.([a-z.]{2,6})[/\\w .-]*/?"],
-   },
    actions: [
     {
      type: AutoModerationActionType.BlockMessage,
      metadata: {
       channel: interaction.channel,
-      customMessage: "Message blocked due to containing an link. Rule added by Majo.exe",
+      customMessage: "Message blocked due to detected spam. Rule added by Majo.exe",
      },
     },
    ],
    reason: `Requested by ${interaction.member.user.globalName || interaction.member.user.username}`,
   };
-
-  if (timeout) {
-   ruleToCreate.actions.push({
-    type: AutoModerationActionType.Timeout,
-    metadata: {
-     durationSeconds: timeout,
-    },
-   });
-  }
 
   if (logChannel) {
    if (!logChannel.permissionsFor(interaction.guild.members.me).has(PermissionsBitField.Flags.ViewChannel)) {
@@ -93,24 +81,24 @@ export async function enableAntiLink(client, interaction, exemptRoles, exemptCha
     type: AutoModerationActionType.SendAlertMessage,
     metadata: {
      channel: logChannel,
-     message: "Message blocked due to containing an link. Rule added by Majo.exe",
+     message: "Message blocked due to detected spam. Rule added by Majo.exe",
     },
    });
   }
 
   const rule = await interaction.guild.autoModerationRules.create(ruleToCreate);
 
-  await createAutoModRule(interaction.guild.id, rule.id, "anti-link", true);
+  await createAutoModRule(interaction.guild.id, rule.id, "anti-spam", true);
 
   const embed = new EmbedBuilder()
    .setColor(guildSettings?.embedColor || client.config.defaultColor)
    .setTimestamp()
-   .setTitle("✅ Successfully `enabled` the anti-link system")
-   .setDescription("The anti-link system has been `enabled`. All links will now be blocked.")
+   .setTitle("✅ Successfully `enabled` the anti-spam system")
+   .setDescription("The anti-spam system has been `enabled`. Generic spam will now be blocked.")
    .setFields([
     {
      name: "🔒 Rule name",
-     value: "`Disallow links`",
+     value: "`Anti-spam`",
      inline: true,
     },
     {
@@ -119,13 +107,8 @@ export async function enableAntiLink(client, interaction, exemptRoles, exemptCha
      inline: true,
     },
     {
-     name: `📛 Rule action${timeout || logChannel ? "s" : ""}`,
-     value: `\`Block message\`${timeout ? `, Timeout for \`${timeout}\` seconds` : ""}${logChannel ? `, Send alert message in <#${logChannel.id}>` : ""}`,
-     inline: true,
-    },
-    {
-     name: "⏱️ Rule timeout",
-     value: timeout ? `\`${timeout} seconds\`` : "`None`",
+     name: `📛 Rule action${logChannel ? "s" : ""}`,
+     value: `\`Block message\`${logChannel ? `, Send alert message in <#${logChannel.id}>` : ""}`,
      inline: true,
     },
     {
@@ -135,7 +118,7 @@ export async function enableAntiLink(client, interaction, exemptRoles, exemptCha
     },
     {
      name: "🔑 Rule trigger",
-     value: codeBlock("All links"),
+     value: codeBlock("Generic spam"),
      inline: false,
     },
     {

@@ -3,7 +3,7 @@ import prismaClient from "@majoexe/database";
 /**
  * Create a user in the database
  * @param {string} user The user object to create
- * @returns {boolean} If the user was created
+ * @returns {Promise<boolean>} Whether the user was created
  */
 export async function createUser(user) {
  try {

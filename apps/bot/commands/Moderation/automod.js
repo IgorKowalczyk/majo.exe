@@ -1,13 +1,8 @@
 /* eslint-disable complexity */
 
 import { fetchAutoModRules, syncAutoModRule } from "@majoexe/util/database";
-import { ApplicationCommandType, ChannelType, ApplicationCommandOptionType, PermissionsBitField, EmbedBuilder, codeBlock } from "discord.js";
-import { disableAntiInvite } from "../../util/moderation/automod/antiInvite/disable.js";
-import { enableAntiInvite } from "../../util/moderation/automod/antiInvite/enable.js";
-import { disableAntiLink } from "../../util/moderation/automod/antiLinks/disable.js";
-import { enableAntiLink } from "../../util/moderation/automod/antiLinks/enable.js";
-import { disableAntiMention } from "../../util/moderation/automod/antiMention/disable.js";
-import { enableAntiMention } from "../../util/moderation/automod/antiMention/enable.js";
+import { ApplicationCommandType, ChannelType, ApplicationCommandOptionType, PermissionsBitField, EmbedBuilder, codeBlock, PermissionFlagsBits } from "discord.js";
+import { disableAntiInvite, enableAntiInvite, disableAntiLink, enableAntiLink, disableAntiMention, enableAntiMention, disableAntiSpam, enableAntiSpam } from "../../util/moderation/automod/index.js";
 
 export default {
  name: "automod",
@@ -171,10 +166,57 @@ export default {
     },
    ],
   },
+  {
+   name: "anti-spam",
+   description: "📨 Enable/Disable the anti-spam system",
+   type: ApplicationCommandOptionType.SubcommandGroup,
+   options: [
+    {
+     name: "enable",
+     description: "📨 Enable the anti-spam system",
+     type: ApplicationCommandOptionType.Subcommand,
+     options: [
+      {
+       name: "exempt-roles",
+       description: "Exempt roles from the anti-spam system",
+       type: ApplicationCommandOptionType.Role,
+       required: false,
+      },
+      {
+       name: "exempt-channels",
+       description: "Exempt channels from the anti-spam system",
+       type: ApplicationCommandOptionType.Channel,
+       channelTypes: [ChannelType.GuildText, ChannelType.GuildCategory],
+       required: false,
+      },
+      {
+       name: "log-channel",
+       description: "The log channel for the anti-spam system",
+       type: ApplicationCommandOptionType.Channel,
+       channelTypes: [ChannelType.GuildText],
+       required: false,
+      },
+     ],
+    },
+    {
+     name: "disable",
+     description: "📨 Disable the anti-spam system",
+     type: ApplicationCommandOptionType.Subcommand,
+    },
+   ],
+  },
  ],
- permissions: [PermissionsBitField.Administrator],
+ permissions: [PermissionFlagsBits.ManageGuild],
  run: async (client, interaction, guildSettings) => {
   try {
+   if (!interaction.member.permissions.has(PermissionsBitField.Flags.ManageGuild)) {
+    return client.errorMessages.createSlashError(interaction, "❌ You don't have permission to use this command. You need `Manage Server` permission");
+   }
+
+   if (!interaction.guild.members.me.permissions.has(PermissionsBitField.Flags.ManageGuild)) {
+    return client.errorMessages.createSlashError(interaction, "❌ I don't have permission to change Automoderation settings. Please give me `Manage Server` permission");
+   }
+
    const command = interaction.options.getSubcommandGroup();
    const subcommand = interaction.options.getSubcommand();
 
@@ -264,6 +306,17 @@ export default {
      await enableAntiMention(client, interaction, limit, exemptRoles, exemptChannels, timeout, logChannel, createdRule, guildSettings);
     } else {
      await disableAntiMention(client, interaction, createdRule, guildSettings);
+    }
+   } else if (command === "anti-spam") {
+    const exemptRoles = interaction.options.getRole("exempt-roles");
+    const exemptChannels = interaction.options.getChannel("exempt-channels");
+    const logChannel = interaction.options.getChannel("log-channel");
+    const createdRule = await syncAutoModRule(interaction, "anti-spam");
+
+    if (subcommand === "enable") {
+     await enableAntiSpam(client, interaction, exemptRoles, exemptChannels, logChannel, createdRule, guildSettings);
+    } else {
+     await disableAntiSpam(client, interaction, createdRule, guildSettings);
     }
    }
   } catch (err) {

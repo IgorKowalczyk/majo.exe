@@ -2,7 +2,7 @@ import prismaClient from "@majoexe/database";
 /**
  * Fetch XP setting for Guild
  * @param { string } guildId The id of the guild
- * @returns { boolean } The XP setting
+ * @returns { Promise<{ enableXP: boolean, enableXPLastChanged: Date, enableXPLevelUpMessage: boolean, enableXPLevelUpMessageLastChanged: Date }> } The XP setting
  */
 export async function fetchXPSettings(guildId) {
  try {

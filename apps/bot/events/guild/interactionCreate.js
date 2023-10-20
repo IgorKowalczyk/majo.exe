@@ -8,7 +8,6 @@ import { EmbedBuilder } from "discord.js";
 export async function interactionCreate(client, interaction) {
  try {
   if (!interaction.guild || !interaction.guild.available) return;
-
   if (!interaction.user) await interaction.guild.members.fetch(interaction.member.user.id);
 
   if (interaction.isCommand()) {
@@ -61,10 +60,6 @@ export async function interactionCreate(client, interaction) {
    if (!user) await createUser(interaction.user);
 
    client.slashCommands.get(interaction.commandName).run(client, interaction, guildSettings);
-
-   /* ----------------- */
-   /*       MODAL       */
-   /* ----------------- */
   } else if (interaction.isModalSubmit()) {
    const modal = client.modals.get(interaction.customId);
    if (!modal) return;

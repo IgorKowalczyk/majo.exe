@@ -4,6 +4,12 @@ import { enableAutoModRule, createAutoModRule } from "@majoexe/util/database";
 import { ChannelType, AutoModerationRuleEventType, AutoModerationActionType, AutoModerationRuleTriggerType, EmbedBuilder, PermissionsBitField, codeBlock } from "discord.js";
 
 export async function enableAntiMention(client, interaction, limit, exemptRoles, exemptChannels, timeout, logChannel, createdRule, guildSettings) {
+ const existingRules = await interaction.guild.autoModerationRules.fetch({ cache: false });
+ const conflictingRule = existingRules.filter((rule) => rule.triggerType === AutoModerationRuleTriggerType.MentionSpam).first();
+ if (conflictingRule) {
+  await conflictingRule.delete("New anti-mention rule created");
+ }
+
  if (createdRule) {
   if (createdRule.enabled) {
    return client.errorMessages.createSlashError(interaction, "❌ The anti-mention system is already `enabled`");
@@ -19,28 +25,6 @@ export async function enableAntiMention(client, interaction, limit, exemptRoles,
     .setTimestamp()
     .setTitle("✅ Successfully `enabled` the anti-mention system again")
     .setDescription("The anti-mention system has been `enabled`. Mention spam will now be blocked.")
-    .setFields([
-     {
-      name: "🔒 Rule name",
-      value: "`Mention spam over the limit`",
-      inline: true,
-     },
-     {
-      name: "📨 Rule event",
-      value: "`Message send`",
-      inline: true,
-     },
-     {
-      name: "📛 Rule action(s)",
-      value: "`Block message`",
-      inline: true,
-     },
-     {
-      name: "🔑 Rule trigger",
-      value: codeBlock("All mentions over the limit"),
-      inline: false,
-     },
-    ])
     .setFooter({
      text: `Requested by ${interaction.member.user.globalName || interaction.member.user.username}`,
      iconURL: interaction.user.displayAvatarURL({

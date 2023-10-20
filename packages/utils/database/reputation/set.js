@@ -5,7 +5,7 @@ import prismaClient from "@majoexe/database";
  * @param {string} user The user to set reputation for
  * @param {string} guild The guild to set reputation in
  * @param {number} amount The amount of reputation to set
- * @returns {number} The amount of reputation
+ * @returns {Promise<number>} The reputation
  */
 export async function setReputation(user, guild, amount) {
  try {

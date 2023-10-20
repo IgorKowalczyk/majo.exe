@@ -4,6 +4,12 @@ import { enableAutoModRule, createAutoModRule } from "@majoexe/util/database";
 import { ChannelType, AutoModerationRuleEventType, AutoModerationActionType, AutoModerationRuleTriggerType, EmbedBuilder, PermissionsBitField, codeBlock } from "discord.js";
 
 export async function enableAntiInvite(client, interaction, exemptRoles, exemptChannels, timeout, logChannel, createdRule, guildSettings) {
+ const existingRules = await interaction.guild.autoModerationRules.fetch({ cache: false });
+ const conflictingRules = existingRules.filter((rule) => rule.triggerType === AutoModerationRuleTriggerType.Keyword);
+ if (conflictingRules.size === 6) {
+  return client.errorMessages.createSlashError(interaction, "❌ You can only have 6 keyword rules enabled at once. Please disable one of the existing keyword rules before enabling this one.");
+ }
+
  if (createdRule) {
   if (createdRule.enabled) {
    return client.errorMessages.createSlashError(interaction, "❌ The anti-invite system is already `enabled`");
@@ -19,28 +25,6 @@ export async function enableAntiInvite(client, interaction, exemptRoles, exemptC
     .setTimestamp()
     .setTitle("✅ Successfully `enabled` the anti-invite system again")
     .setDescription("The anti-invite system has been `enabled`. All Discord invites will now be blocked.")
-    .setFields([
-     {
-      name: "🔒 Rule name",
-      value: "`Disallow invites`",
-      inline: true,
-     },
-     {
-      name: "📨 Rule event",
-      value: "`Message send`",
-      inline: true,
-     },
-     {
-      name: "📛 Rule action(s)",
-      value: `\`Block message\`${timeout ? `, Timeout for \`${timeout}\` seconds` : ""}${logChannel ? `, Send alert message in <#${logChannel.id}>` : ""}`,
-      inline: true,
-     },
-     {
-      name: "🔑 Rule trigger",
-      value: codeBlock("All Discord invite links"),
-      inline: false,
-     },
-    ])
     .setFooter({
      text: `Requested by ${interaction.member.user.globalName || interaction.member.user.username}`,
      iconURL: interaction.user.displayAvatarURL({

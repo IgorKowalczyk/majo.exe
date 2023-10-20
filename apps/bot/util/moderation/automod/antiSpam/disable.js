@@ -1,9 +1,9 @@
 import { disableAutoModRule } from "@majoexe/util/database";
 import { EmbedBuilder } from "discord.js";
 
-export async function disableAntiMention(client, interaction, createdRule, guildSettings) {
+export async function disableAntiSpam(client, interaction, createdRule, guildSettings) {
  if (!createdRule || (createdRule && !createdRule.enabled)) {
-  return client.errorMessages.createSlashError(interaction, "❌ The anti-mention system is already `disabled`");
+  return client.errorMessages.createSlashError(interaction, "❌ The anti-spam system is already `disabled`");
  }
 
  await interaction.guild.autoModerationRules.edit(createdRule.ruleId, {
@@ -15,8 +15,8 @@ export async function disableAntiMention(client, interaction, createdRule, guild
  const embed = new EmbedBuilder()
   .setColor(guildSettings?.embedColor || client.config.defaultColor)
   .setTimestamp()
-  .setTitle("⛔ Successfully `disabled` the anti-mention system")
-  .setDescription("The anti-mention system has been `disabled`. Mention spam will no longer be blocked.")
+  .setTitle("⛔ Successfully `disabled` the anti-spam system")
+  .setDescription("The anti-spam system has been `disabled`. Generic spam will no longer be blocked.")
   .setFooter({
    text: `Requested by ${interaction.member.user.globalName || interaction.member.user.username}`,
    iconURL: interaction.user.displayAvatarURL({

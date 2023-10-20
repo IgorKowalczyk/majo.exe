@@ -16,7 +16,7 @@ export async function disableAntiLink(client, interaction, createdRule, guildSet
   .setColor(guildSettings?.embedColor || client.config.defaultColor)
   .setTimestamp()
   .setTitle("⛔ Successfully `disabled` the anti-link system")
-  .setDescription("The anti-link system has been `disabled`. All Discord invites will no longer be blocked.")
+  .setDescription("The anti-link system has been `disabled`. All links will no longer be blocked.")
   .setFooter({
    text: `Requested by ${interaction.member.user.globalName || interaction.member.user.username}`,
    iconURL: interaction.user.displayAvatarURL({

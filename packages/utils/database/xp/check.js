@@ -4,7 +4,7 @@ import prismaClient from "@majoexe/database";
  * Check XP for user
  * @param {string} userId The id of the user
  * @param {string} guildId The id of the guild
- * @returns {number} The amount of XP
+ * @returns {Promise<number>} The XP
  */
 export async function checkXP(userId, guildId) {
  try {
