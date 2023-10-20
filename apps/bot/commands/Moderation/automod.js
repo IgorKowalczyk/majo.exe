@@ -234,6 +234,7 @@ export default {
     const antiInviteRule = allRules.find((rule) => rule.ruleType === "anti-invite");
     const antiLinkRule = allRules.find((rule) => rule.ruleType === "anti-link");
     const antiMentionRule = allRules.find((rule) => rule.ruleType === "anti-mention");
+    const antiSpamRule = allRules.find((rule) => rule.ruleType === "anti-spam");
 
     const embed = new EmbedBuilder()
      .setColor(guildSettings?.embedColor || client.config.defaultColor)
@@ -254,6 +255,11 @@ export default {
       {
        name: "🔗 Anti-mention system",
        value: codeBlock(antiMentionRule?.enabled ? "✅ Enabled" : "❌ Disabled"),
+       inline: false,
+      },
+      {
+       name: "🔗 Anti-spam system",
+       value: codeBlock(antiSpamRule?.enabled ? "✅ Enabled" : "❌ Disabled"),
        inline: false,
       },
      ])
