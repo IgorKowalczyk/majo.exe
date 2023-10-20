@@ -21,10 +21,10 @@
     "@igorkowalczyk/eslint-config": "1.5.6",
     "dotenv-cli": "7.3.0",
     "eslint": "8.51.0",
-    "eslint-config-turbo": "1.10.15",
+    "eslint-config-turbo": "1.10.16",
     "eslint-plugin-import": "2.28.1",
     "prettier": "3.0.3",
-    "turbo": "1.10.15"
+    "turbo": "1.10.16"
   },
   "devDependencies": {
     "@igorkowalczyk/prettier-config": "1.5.6",
