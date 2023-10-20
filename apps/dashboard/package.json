@@ -32,7 +32,7 @@
     "js-file-download": "0.4.12",
     "json-2-csv": "4.1.0",
     "mini-svg-data-uri": "1.4.4",
-    "next": "13.5.3",
+    "next": "13.5.6",
     "next-auth": "4.24.3",
     "next-nprogress-bar": "2.1.2",
     "next-themes": "0.2.1",
@@ -57,9 +57,9 @@
     "tailwindcss-text-fill": "0.2.0"
   },
   "devDependencies": {
-    "@next/bundle-analyzer": "13.5.3",
+    "@next/bundle-analyzer": "13.5.6",
     "@prisma/nextjs-monorepo-workaround-plugin": "5.4.2",
-    "eslint-config-next": "13.5.3",
+    "eslint-config-next": "13.5.6",
     "prettier-plugin-tailwindcss": "0.5.6"
   },
   "engines": {
