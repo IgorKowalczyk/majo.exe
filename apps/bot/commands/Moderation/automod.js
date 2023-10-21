@@ -205,6 +205,63 @@ export default {
     },
    ],
   },
+  {
+   name: "anti-bad-words",
+   description: "🤬 Enable/Disable the anti-bad-words system",
+   type: ApplicationCommandOptionType.SubcommandGroup,
+   options: [
+    {
+     name: "enable",
+     description: "🤬 Enable the anti-bad-words system",
+     type: ApplicationCommandOptionType.Subcommand,
+     options: [
+      {
+       name: "exempt-roles",
+       description: "Exempt roles from the anti-bad-words system",
+       type: ApplicationCommandOptionType.Role,
+       required: false,
+      },
+      {
+       name: "exempt-channels",
+       description: "Exempt channels from the anti-bad-words system",
+       type: ApplicationCommandOptionType.Channel,
+       channelTypes: [ChannelType.GuildText, ChannelType.GuildCategory],
+       required: false,
+      },
+      {
+       name: "log-channel",
+       description: "The log channel for the anti-bad-words system",
+       type: ApplicationCommandOptionType.Channel,
+       channelTypes: [ChannelType.GuildText],
+       required: false,
+      },
+      {
+       name: "profanity",
+       description: "Enable/Disable the profanity filter",
+       type: ApplicationCommandOptionType.Boolean,
+       required: false,
+      },
+      {
+       name: "sexual-content",
+       description: "Enable/Disable the sexual content filter",
+       type: ApplicationCommandOptionType.Boolean,
+       required: false,
+      },
+      {
+       name: "slurs",
+       description: "Enable/Disable the slurs filter",
+       type: ApplicationCommandOptionType.Boolean,
+       required: false,
+      },
+     ],
+    },
+    {
+     name: "disable",
+     description: "🤬 Disable the anti-bad-words system",
+     type: ApplicationCommandOptionType.Subcommand,
+    },
+   ],
+  },
  ],
  permissions: [PermissionFlagsBits.ManageGuild],
  run: async (client, interaction, guildSettings) => {
@@ -324,6 +381,20 @@ export default {
     } else {
      await disableAntiSpam(client, interaction, createdRule, guildSettings);
     }
+   } else if (command === "anti-bad-words") {
+    const exemptRoles = interaction.options.getRole("exempt-roles");
+    const exemptChannels = interaction.options.getChannel("exempt-channels");
+    const logChannel = interaction.options.getChannel("log-channel");
+    const profanity = interaction.options.getBoolean("profanity") || true;
+    const sexualContent = interaction.options.getBoolean("sexual-content") || true;
+    const slurs = interaction.options.getBoolean("slurs") || true;
+    const createdRule = await syncAutoModRule(interaction, "anti-bad-words");
+
+    if (!profanity && !sexualContent && !slurs) {
+     return client.errorMessages.createSlashError(interaction, "❌ You need to enable at least one filter!");
+    }
+
+    return client.errorMessages.createSlashError(interaction, "❌ This feature is not available yet! Please wait for the next update!");
    }
   } catch (err) {
    client.errorMessages.internalError(interaction, err);
