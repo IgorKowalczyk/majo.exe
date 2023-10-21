@@ -32,8 +32,9 @@ export default async function loadCommands(client) {
     ...slashCommand,
     category,
     options: options || [],
-    default_member_permissions: default_member_permissions ? PermissionsBitField.resolve(default_member_permissions).toString() : 0,
    };
+
+   if(default_member_permissions) commandData.default_member_permissions = PermissionsBitField.resolve(default_member_permissions).toString();
 
    client.slashCommands.set(name, commandData);
 
