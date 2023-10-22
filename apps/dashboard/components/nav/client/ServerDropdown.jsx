@@ -26,14 +26,14 @@ export function ServerDropdown() {
     {({ open }) => (
      <>
       <Menu.Button className="flex cursor-pointer items-center gap-3 duration-200 motion-reduce:transition-none" onClick={() => setIsOpen(!isOpen)}>
-       <div className="flex h-10 select-none items-center py-2 duration-200  motion-reduce:transition-none">
+       <div className="flex h-10 select-none items-center py-2 duration-200 motion-reduce:transition-none">
         {currentServer?.icon ? <Image width="32" height="32" quality={100} className="!h-8 !w-8 rounded-full" src={`https://cdn.discordapp.com/icons/${currentServer.id}/${currentServer.icon}.png`} loading="lazy" alt={`${currentServer.name} Icon`} /> : isLoading ? <div className="min-h-8 min-w-8 h-8 w-8 animate-pulse rounded-full bg-neutral-700"></div> : <div className="min-h-8 min-w-8 h-8 w-8 rounded-full bg-neutral-700"></div>}
         <span className="!ml-2 ">{isLoading ? "Loading..." : servers?.servers?.find((server) => server.id === router.server)?.name || "Unknown Server"}</span>
         <ChevronUpDownIcon className="min-h-4 min-w-4 ml-2 h-4 w-4 duration-200 motion-reduce:transition-none" />
        </div>
       </Menu.Button>
       <Transition show={open} as={Fragment} enter="transition ease-out duration-200" enterFrom="opacity-0 translate-y-1" enterTo="opacity-100 translate-y-0" leave="transition ease-in duration-150" leaveFrom="opacity-100 translate-y-0" leaveTo="opacity-0 translate-y-1">
-       <Menu.Items className="bg-background-menu fixed left-0 top-16 z-10 mt-3 w-screen max-w-sm origin-top-left translate-x-1/2 transform rounded border  border-neutral-800 px-5 py-6">
+       <Menu.Items className="bg-background-menu fixed left-0 top-16 z-10 mt-3 w-screen max-w-sm origin-top-left translate-x-1/2 transform rounded border border-neutral-800 px-5 py-6">
         <p className="mb-4 pl-4 text-neutral-400">Select a server: </p>
         {isLoading ? (
          <>

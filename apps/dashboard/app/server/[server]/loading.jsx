@@ -24,7 +24,7 @@ export default function Loading() {
       <div className="mr-2 h-3 w-3 rounded-full bg-[#22a55b]" />0 online
      </div>
     </div>
-    <span className="mx-auto  whitespace-nowrap sm:ml-auto sm:mr-0">Powered by Majo.exe</span>
+    <span className="mx-auto whitespace-nowrap sm:ml-auto sm:mr-0">Powered by Majo.exe</span>
    </Block>
 
    <div className="mt-6 block gap-6 lg:flex lg:items-start">

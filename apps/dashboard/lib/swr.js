@@ -1,6 +1,6 @@
 import useSWR from "swr";
 
-/**  Create SWR handler
+/** Create SWR handler
  * @param { string } url The url to fetch
  * @returns { JSON } The response from the url
  */

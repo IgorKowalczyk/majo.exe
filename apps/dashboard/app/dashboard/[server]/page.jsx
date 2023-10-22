@@ -102,7 +102,7 @@ export default async function ServerOverview({ params }) {
      </div>
     </div>
     {guild.publicPage ? (
-     <SecondaryButton href={`/server/${guild.vanity || serverDownload.id}`} className={"mx-auto !flex flex-row whitespace-nowrap  sm:ml-auto sm:mr-0"}>
+     <SecondaryButton href={`/server/${guild.vanity || serverDownload.id}`} className={"mx-auto !flex flex-row whitespace-nowrap sm:ml-auto sm:mr-0"}>
       <ArrowTopRightOnSquareIcon className="min-h-5 min-w-5 mr-2 h-5 w-5" aria-hidden="true" role="img" />
       Server page
      </SecondaryButton>

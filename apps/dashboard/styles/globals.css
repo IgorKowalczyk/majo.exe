@@ -4,7 +4,7 @@
 
 html,
 body {
- @apply m-0 scroll-smooth p-0  antialiased transition-[background-color] duration-300 motion-reduce:transition-none;
+ @apply m-0 scroll-smooth p-0 antialiased transition-[background-color] duration-300 motion-reduce:transition-none;
 }
 
 html {

@@ -6,7 +6,7 @@ import "styles/glitch.css";
 
 export default function NotFound() {
  return (
-  <div className="before:md:bg-grid-[#fff] relative z-20 flex min-h-screen w-full flex-col items-center justify-center gap-4 before:absolute  before:z-10 before:h-full before:w-full before:opacity-5 before:grayscale">
+  <div className="before:md:bg-grid-[#fff] relative z-20 flex min-h-screen w-full flex-col items-center justify-center gap-4 before:absolute before:z-10 before:h-full before:w-full before:opacity-5 before:grayscale">
    <div className="absolute left-0 top-0 z-10 h-full w-full bg-[radial-gradient(circle,rgba(2,0,36,0)0,rgb(16,17,16,100%))]" />
    <div className="z-30 flex flex-col items-center justify-center gap-4">
     <HeaderBig title="404!" className={"glitch relative"}>

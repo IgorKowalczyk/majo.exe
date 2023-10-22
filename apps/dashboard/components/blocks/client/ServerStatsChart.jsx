@@ -42,7 +42,7 @@ function GenerateComponent({ title, data, csvData, valueName, fileName, categori
            "opacity-80": open,
            "hover:opacity-80": !open,
           },
-          "bg-background-menu-button flex h-10 select-none items-center rounded border border-neutral-700 px-4 py-2 duration-200  motion-reduce:transition-none"
+          "bg-background-menu-button flex h-10 select-none items-center rounded border border-neutral-700 px-4 py-2 duration-200 motion-reduce:transition-none"
          )}
         >
          <ArrowDownTrayIcon className="min-h-4 min-w-4 h-4 w-4" aria-hidden="true" role="img" />

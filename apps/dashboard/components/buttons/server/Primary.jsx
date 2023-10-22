@@ -20,7 +20,7 @@ export function PrimaryButton({ children, ...props }) {
 export function PrimaryDiscordButton({ children, ...props }) {
  if (props && props.href) {
   return (
-   <Link {...props} className={twMerge(props.className, "flex cursor-pointer items-center rounded bg-[#5964f2] px-4 py-1 leading-6  text-white duration-200 hover:bg-[#4753c5] disabled:cursor-not-allowed disabled:bg-[#5964f2]/50 disabled:hover:bg-[#4753c5] motion-reduce:transition-none")}>
+   <Link {...props} className={twMerge(props.className, "flex cursor-pointer items-center rounded bg-[#5964f2] px-4 py-1 leading-6 text-white duration-200 hover:bg-[#4753c5] disabled:cursor-not-allowed disabled:bg-[#5964f2]/50 disabled:hover:bg-[#4753c5] motion-reduce:transition-none")}>
     {children}
    </Link>
   );

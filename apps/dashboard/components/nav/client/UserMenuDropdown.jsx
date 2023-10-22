@@ -21,7 +21,7 @@ export function UserMenuDropdown({ user }) {
           "opacity-80": open,
           "hover:opacity-80": !open,
          },
-         "bg-background-menu-button flex h-10 select-none items-center rounded border border-neutral-700 px-4 py-2 duration-200  motion-reduce:transition-none"
+         "bg-background-menu-button flex h-10 select-none items-center rounded border border-neutral-700 px-4 py-2 duration-200 motion-reduce:transition-none"
         )}
        >
         <Image width="32" height="32" quality={100} className="!h-8 !w-8 rounded-full" src={user.image} loading="lazy" alt={`${user.name} Avatar`} />
