@@ -34,7 +34,6 @@ export async function getUserAvatar(client, interaction, color) {
    }
   } else {
    avatar = user.user.displayAvatarURL({
-    extension: "gif",
     size: 4096,
    });
   }
