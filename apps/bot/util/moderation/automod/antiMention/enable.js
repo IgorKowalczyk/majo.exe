@@ -6,39 +6,35 @@ import { ChannelType, AutoModerationRuleEventType, AutoModerationActionType, Aut
 export async function enableAntiMention(client, interaction, limit, exemptRoles, exemptChannels, timeout, logChannel, createdRule, guildSettings) {
  const existingRules = await interaction.guild.autoModerationRules.fetch({ cache: false });
  const conflictingRule = existingRules.filter((rule) => rule.triggerType === AutoModerationRuleTriggerType.MentionSpam).first();
- if (conflictingRule) {
-  await conflictingRule.delete("New anti-mention rule created");
- }
+ if (conflictingRule) await conflictingRule.delete("New anti-mention rule created");
 
  if (createdRule) {
-  if (createdRule.enabled) {
-   return client.errorMessages.createSlashError(interaction, "❌ The anti-mention system is already `enabled`");
-  } else if (!createdRule.enabled) {
-   await interaction.guild.autoModerationRules.edit(createdRule.ruleId, {
-    enabled: true,
-   });
+  if (createdRule.enabled) return client.errorMessages.createSlashError(interaction, "❌ The anti-mention system is already `enabled`");
 
-   await enableAutoModRule(interaction.guild.id, createdRule.ruleId);
+  await interaction.guild.autoModerationRules.edit(createdRule.ruleId, {
+   enabled: true,
+  });
 
-   const embed = new EmbedBuilder()
-    .setColor(guildSettings?.embedColor || client.config.defaultColor)
-    .setTimestamp()
-    .setTitle("✅ Successfully `enabled` the anti-mention system again")
-    .setDescription("The anti-mention system has been `enabled`. Mention spam will now be blocked.")
-    .setFooter({
-     text: `Requested by ${interaction.member.user.globalName || interaction.member.user.username}`,
-     iconURL: interaction.user.displayAvatarURL({
-      size: 256,
-     }),
+  await enableAutoModRule(interaction.guild.id, createdRule.ruleId);
+
+  const embed = new EmbedBuilder()
+   .setColor(guildSettings?.embedColor || client.config.defaultColor)
+   .setTimestamp()
+   .setTitle("✅ Successfully `enabled` the anti-mention system again")
+   .setDescription("The anti-mention system has been `enabled`. Mention spam will now be blocked.")
+   .setFooter({
+    text: `Requested by ${interaction.member.user.globalName || interaction.member.user.username}`,
+    iconURL: interaction.user.displayAvatarURL({
+     size: 256,
+    }),
+   })
+   .setThumbnail(
+    interaction.guild.iconURL({
+     size: 256,
     })
-    .setThumbnail(
-     interaction.guild.iconURL({
-      size: 256,
-     })
-    );
+   );
 
-   return interaction.followUp({ embeds: [embed] });
-  }
+  return interaction.followUp({ embeds: [embed] });
  } else {
   const ruleToCreate = {
    name: "Disallow mention spam [Majo.exe]",

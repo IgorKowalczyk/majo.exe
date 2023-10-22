@@ -2,6 +2,8 @@
 
 import { fetchAutoModRules, syncAutoModRule } from "@majoexe/util/database";
 import { ApplicationCommandType, ChannelType, ApplicationCommandOptionType, PermissionsBitField, EmbedBuilder, codeBlock, PermissionFlagsBits } from "discord.js";
+import { disableAntiBadWords } from "../../util/moderation/automod/antiBadWords/disable.js";
+import { enableAntiBadWords } from "../../util/moderation/automod/antiBadWords/enable.js";
 import { disableAntiInvite, enableAntiInvite, disableAntiLink, enableAntiLink, disableAntiMention, enableAntiMention, disableAntiSpam, enableAntiSpam } from "../../util/moderation/automod/index.js";
 
 export default {
@@ -292,6 +294,7 @@ export default {
     const antiLinkRule = allRules.find((rule) => rule.ruleType === "anti-link");
     const antiMentionRule = allRules.find((rule) => rule.ruleType === "anti-mention");
     const antiSpamRule = allRules.find((rule) => rule.ruleType === "anti-spam");
+    const antiBadWordsRule = allRules.find((rule) => rule.ruleType === "anti-bad-words");
 
     const embed = new EmbedBuilder()
      .setColor(guildSettings?.embedColor || client.config.defaultColor)
@@ -310,13 +313,18 @@ export default {
        inline: false,
       },
       {
-       name: "🔗 Anti-mention system",
+       name: "💭 Anti-mention system",
        value: codeBlock(antiMentionRule?.enabled ? "✅ Enabled" : "❌ Disabled"),
        inline: false,
       },
       {
-       name: "🔗 Anti-spam system",
+       name: "📨 Anti-spam system",
        value: codeBlock(antiSpamRule?.enabled ? "✅ Enabled" : "❌ Disabled"),
+       inline: false,
+      },
+      {
+       name: "🤬 Anti-bad-words system",
+       value: codeBlock(antiBadWordsRule?.enabled ? "✅ Enabled" : "❌ Disabled"),
        inline: false,
       },
      ])
@@ -385,16 +393,17 @@ export default {
     const exemptRoles = interaction.options.getRole("exempt-roles");
     const exemptChannels = interaction.options.getChannel("exempt-channels");
     const logChannel = interaction.options.getChannel("log-channel");
-    const profanity = interaction.options.getBoolean("profanity") || true;
-    const sexualContent = interaction.options.getBoolean("sexual-content") || true;
-    const slurs = interaction.options.getBoolean("slurs") || true;
+    const profanity = interaction.options.getBoolean("profanity") ?? true;
+    const sexualContent = interaction.options.getBoolean("sexual-content") ?? true;
+    const slurs = interaction.options.getBoolean("slurs") ?? true;
     const createdRule = await syncAutoModRule(interaction, "anti-bad-words");
 
-    if (!profanity && !sexualContent && !slurs) {
-     return client.errorMessages.createSlashError(interaction, "❌ You need to enable at least one filter!");
+    if (subcommand === "enable") {
+     if (!profanity && !sexualContent && !slurs) return client.errorMessages.createSlashError(interaction, "❌ You need to enable at least one filter!");
+     await enableAntiBadWords(client, interaction, exemptRoles, exemptChannels, logChannel, profanity, sexualContent, slurs, createdRule, guildSettings);
+    } else {
+     await disableAntiBadWords(client, interaction, createdRule, guildSettings);
     }
-
-    return client.errorMessages.createSlashError(interaction, "❌ This feature is not available yet! Please wait for the next update!");
    }
   } catch (err) {
    client.errorMessages.internalError(interaction, err);

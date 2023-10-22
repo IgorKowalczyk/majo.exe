@@ -1,15 +1,15 @@
 /* eslint-disable complexity */
 
 import { enableAutoModRule, createAutoModRule } from "@majoexe/util/database";
-import { ChannelType, AutoModerationRuleEventType, AutoModerationActionType, AutoModerationRuleTriggerType, EmbedBuilder, PermissionsBitField, codeBlock } from "discord.js";
+import { ChannelType, AutoModerationRuleEventType, AutoModerationRuleKeywordPresetType, AutoModerationActionType, AutoModerationRuleTriggerType, EmbedBuilder, PermissionsBitField, codeBlock } from "discord.js";
 
-export async function enableAntiInvite(client, interaction, exemptRoles, exemptChannels, timeout, logChannel, createdRule, guildSettings) {
+export async function enableAntiBadWords(client, interaction, exemptRoles, exemptChannels, logChannel, profanity, sexualContent, slurs, createdRule, guildSettings) {
  const existingRules = await interaction.guild.autoModerationRules.fetch({ cache: false });
- const conflictingRules = existingRules.filter((rule) => rule.triggerType === AutoModerationRuleTriggerType.Keyword);
- if (conflictingRules.size === 6) return client.errorMessages.createSlashError(interaction, "❌ You can only have 6 keyword rules enabled at once. Please disable one of the existing keyword rules before enabling this one.");
+ const conflictingRule = existingRules.filter((rule) => rule.triggerType === AutoModerationRuleTriggerType.KeywordPreset).first();
+ if (conflictingRule) await conflictingRule.delete("New anti-bad-words rule created");
 
  if (createdRule) {
-  if (createdRule.enabled) return client.errorMessages.createSlashError(interaction, "❌ The anti-invite system is already `enabled`");
+  if (createdRule.enabled) return client.errorMessages.createSlashError(interaction, "❌ The anti-bad-words system is already `enabled`");
 
   await interaction.guild.autoModerationRules.edit(createdRule.ruleId, {
    enabled: true,
@@ -20,8 +20,8 @@ export async function enableAntiInvite(client, interaction, exemptRoles, exemptC
   const embed = new EmbedBuilder()
    .setColor(guildSettings?.embedColor || client.config.defaultColor)
    .setTimestamp()
-   .setTitle("✅ Successfully `enabled` the anti-invite system again")
-   .setDescription("The anti-invite system has been `enabled`. All Discord invites will now be blocked.")
+   .setTitle("✅ Successfully `enabled` the anti-bad-words system again")
+   .setDescription("The anti-bad-words system has been `enabled`. Common bad words will now be blocked.")
    .setFooter({
     text: `Requested by ${interaction.member.user.globalName || interaction.member.user.username}`,
     iconURL: interaction.user.displayAvatarURL({
@@ -37,36 +37,31 @@ export async function enableAntiInvite(client, interaction, exemptRoles, exemptC
   return interaction.followUp({ embeds: [embed] });
  } else {
   const ruleToCreate = {
-   name: "Disallow invites [Majo.exe]",
+   name: "Anti bad words [Majo.exe]",
    creatorId: client.id,
    enabled: true,
    eventType: AutoModerationRuleEventType.MessageSend,
-   triggerType: AutoModerationRuleTriggerType.Keyword,
+   triggerType: AutoModerationRuleTriggerType.KeywordPreset,
    exemptChannels: exemptChannels ? [exemptChannels.id] : [],
    exemptRoles: exemptRoles ? [exemptRoles.id] : [],
    triggerMetadata: {
-    regexPatterns: ["(?:https?://)?(?:www.|ptb.|canary.)?(?:discord(?:app)?.(?:(?:com|gg)/(?:invite|servers)/[a-z0-9-_]+)|discord.gg/[a-z0-9-_]+)"],
+    presets: [],
    },
    actions: [
     {
      type: AutoModerationActionType.BlockMessage,
      metadata: {
       channel: interaction.channel,
-      customMessage: "Message blocked due to containing an invite link. Rule added by Majo.exe",
+      customMessage: "Message blocked due to containing a bad word. Rule added by Majo.exe",
      },
     },
    ],
    reason: `Requested by ${interaction.member.user.globalName || interaction.member.user.username}`,
   };
 
-  if (timeout) {
-   ruleToCreate.actions.push({
-    type: AutoModerationActionType.Timeout,
-    metadata: {
-     durationSeconds: timeout,
-    },
-   });
-  }
+  if (profanity) ruleToCreate.triggerMetadata.presets.push(AutoModerationRuleKeywordPresetType.Profanity);
+  if (sexualContent) ruleToCreate.triggerMetadata.presets.push(AutoModerationRuleKeywordPresetType.SexualContent);
+  if (slurs) ruleToCreate.triggerMetadata.presets.push(AutoModerationRuleKeywordPresetType.Slurs);
 
   if (logChannel) {
    if (!logChannel.permissionsFor(interaction.guild.members.me).has(PermissionsBitField.Flags.ViewChannel)) {
@@ -89,24 +84,24 @@ export async function enableAntiInvite(client, interaction, exemptRoles, exemptC
     type: AutoModerationActionType.SendAlertMessage,
     metadata: {
      channel: logChannel,
-     message: "Message blocked due to containing an invite link. Rule added by Majo.exe",
+     message: "Message blocked due to containing a bad word. Rule added by Majo.exe",
     },
    });
   }
 
   const rule = await interaction.guild.autoModerationRules.create(ruleToCreate);
 
-  await createAutoModRule(interaction.guild.id, rule.id, "anti-invite", true);
+  await createAutoModRule(interaction.guild.id, rule.id, "anti-bad-words", true);
 
   const embed = new EmbedBuilder()
    .setColor(guildSettings?.embedColor || client.config.defaultColor)
    .setTimestamp()
-   .setTitle("✅ Successfully `enabled` the anti-invite system")
-   .setDescription("The anti-invite system has been `enabled`. All Discord invites will now be blocked.")
+   .setTitle("✅ Successfully `enabled` the anti-bad-words system")
+   .setDescription("The anti-bad-words system has been `enabled`. Common bad words will now be blocked.")
    .setFields([
     {
      name: "🔒 Rule name",
-     value: "`Disallow invites`",
+     value: "`Anti bad words`",
      inline: true,
     },
     {
@@ -115,13 +110,8 @@ export async function enableAntiInvite(client, interaction, exemptRoles, exemptC
      inline: true,
     },
     {
-     name: `📛 Rule action${timeout || logChannel ? "s" : ""}`,
-     value: `\`Block message\`${timeout ? `, Timeout for \`${timeout}\` seconds` : ""}${logChannel ? `, Send alert message in <#${logChannel.id}>` : ""}`,
-     inline: true,
-    },
-    {
-     name: "⏱️ Rule timeout",
-     value: timeout ? `\`${timeout} seconds\`` : "`None`",
+     name: `📛 Rule action${logChannel ? "s" : ""}`,
+     value: `\`Block message\`${logChannel ? `, Send alert message in <#${logChannel.id}>` : ""}`,
      inline: true,
     },
     {
@@ -131,7 +121,7 @@ export async function enableAntiInvite(client, interaction, exemptRoles, exemptC
     },
     {
      name: "🔑 Rule trigger",
-     value: codeBlock("All Discord invite links"),
+     value: codeBlock("Common bad words"),
      inline: false,
     },
     {

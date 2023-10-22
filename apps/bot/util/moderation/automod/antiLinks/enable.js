@@ -6,39 +6,35 @@ import { ChannelType, AutoModerationRuleEventType, AutoModerationActionType, Aut
 export async function enableAntiLink(client, interaction, exemptRoles, exemptChannels, timeout, logChannel, createdRule, guildSettings) {
  const existingRules = await interaction.guild.autoModerationRules.fetch({ cache: false });
  const conflictingRules = existingRules.filter((rule) => rule.triggerType === AutoModerationRuleTriggerType.Keyword);
- if (conflictingRules.size === 6) {
-  return client.errorMessages.createSlashError(interaction, "❌ You can only have 6 keyword rules enabled at once. Please disable one of the existing keyword rules before enabling this one.");
- }
+ if (conflictingRules.size === 6) return client.errorMessages.createSlashError(interaction, "❌ You can only have 6 keyword rules enabled at once. Please disable one of the existing keyword rules before enabling this one.");
 
  if (createdRule) {
-  if (createdRule.enabled) {
-   return client.errorMessages.createSlashError(interaction, "❌ The anti-link system is already `enabled`");
-  } else if (!createdRule.enabled) {
-   await interaction.guild.autoModerationRules.edit(createdRule.ruleId, {
-    enabled: true,
-   });
+  if (createdRule.enabled) return client.errorMessages.createSlashError(interaction, "❌ The anti-link system is already `enabled`");
 
-   await enableAutoModRule(interaction.guild.id, createdRule.ruleId);
+  await interaction.guild.autoModerationRules.edit(createdRule.ruleId, {
+   enabled: true,
+  });
 
-   const embed = new EmbedBuilder()
-    .setColor(guildSettings?.embedColor || client.config.defaultColor)
-    .setTimestamp()
-    .setTitle("✅ Successfully `enabled` the anti-link system again")
-    .setDescription("The anti-link system has been `enabled`. All links will now be blocked.")
-    .setFooter({
-     text: `Requested by ${interaction.member.user.globalName || interaction.member.user.username}`,
-     iconURL: interaction.user.displayAvatarURL({
-      size: 256,
-     }),
+  await enableAutoModRule(interaction.guild.id, createdRule.ruleId);
+
+  const embed = new EmbedBuilder()
+   .setColor(guildSettings?.embedColor || client.config.defaultColor)
+   .setTimestamp()
+   .setTitle("✅ Successfully `enabled` the anti-link system again")
+   .setDescription("The anti-link system has been `enabled`. All links will now be blocked.")
+   .setFooter({
+    text: `Requested by ${interaction.member.user.globalName || interaction.member.user.username}`,
+    iconURL: interaction.user.displayAvatarURL({
+     size: 256,
+    }),
+   })
+   .setThumbnail(
+    interaction.guild.iconURL({
+     size: 256,
     })
-    .setThumbnail(
-     interaction.guild.iconURL({
-      size: 256,
-     })
-    );
+   );
 
-   return interaction.followUp({ embeds: [embed] });
-  }
+  return interaction.followUp({ embeds: [embed] });
  } else {
   const ruleToCreate = {
    name: "Disallow links [Majo.exe]",
