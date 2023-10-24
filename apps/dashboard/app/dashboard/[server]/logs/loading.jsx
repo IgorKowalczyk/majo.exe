@@ -11,7 +11,7 @@ export default function Loading() {
    </Header1>
    <div className="gap-4 overflow-auto">
     {[...Array(5)].map((_, i) => (
-     <GraphSkeleton className={"bg-background-secondary my-2 !h-20 !border-neutral-800"} key={i} />
+     <GraphSkeleton className={"my-2 !h-20"} key={i} />
     ))}
    </div>
   </>
