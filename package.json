@@ -27,7 +27,7 @@
     "turbo": "1.10.16"
   },
   "devDependencies": {
-    "@igorkowalczyk/prettier-config": "1.5.6",
+    "@igorkowalczyk/prettier-config": "2.0.2",
     "@majoexe/eslint-config": "workspace:*"
   },
   "engines": {
