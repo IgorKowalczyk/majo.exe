@@ -99,7 +99,7 @@ function GenerateComponent({ title, data, csvData, valueName, fileName, categori
      </Transition>
     </Menu>
    </Header4>
-   <AreaChart className="mt-10 h-80" data={data} index="date" categories={categories} yAxisWidth={50} valueFormatter={numberFormatter} curveType="monotone" csvData={csvData} />
+   <AreaChart className="mt-10 h-80" data={data} index="date" categories={categories} yAxisWidth={50} valueFormatter={numberFormatter} csvData={csvData} />
   </Block>
  );
 }

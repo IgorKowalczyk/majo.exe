@@ -1,12 +1,5 @@
 import { CheckIcon, Cog6ToothIcon, InformationCircleIcon, PaintBrushIcon, ShieldCheckIcon, UsersIcon, XMarkIcon } from "@heroicons/react/24/outline";
-import { globalConfig } from "@majoexe/config";
-import prismaClient from "@majoexe/database";
-import { getGuildMember, getPermissionNames, getServer } from "@majoexe/util/functions";
-import { getSession } from "lib/session";
-import { redirect } from "next/navigation";
 import { Block } from "@/components/blocks/Block";
-import { ChangeEmbedColor } from "@/components/blocks/client/ChangeEmbedColor";
-import { EnablePublicDashboard } from "@/components/blocks/client/EnablePublicDashboard";
 import { Header1 } from "@/components/blocks/Headers";
 import { GraphSkeleton, InputSkeleton, TextSkeleton } from "@/components/blocks/Skeletons";
 

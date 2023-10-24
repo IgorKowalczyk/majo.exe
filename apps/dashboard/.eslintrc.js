@@ -14,5 +14,8 @@ module.exports = {
  parserOptions: {
   sourceType: "module",
   ecmaVersion: "latest",
+  babelOptions: {
+   presets: [require.resolve("next/babel")],
+  },
  },
 };
