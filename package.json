@@ -18,17 +18,15 @@
     "prisma:seed": "dotenv -- turbo run prisma:seed --color --filter=database"
   },
   "dependencies": {
-    "@igorkowalczyk/eslint-config": "1.5.6",
     "dotenv-cli": "7.3.0",
-    "eslint": "8.52.0",
-    "eslint-config-turbo": "1.10.16",
-    "eslint-plugin-import": "2.29.0",
-    "prettier": "3.0.3",
     "turbo": "1.10.16"
   },
   "devDependencies": {
-    "@igorkowalczyk/prettier-config": "1.5.6",
-    "@majoexe/eslint-config": "workspace:*"
+    "@igorkowalczyk/eslint-config": "2.0.2",
+    "@igorkowalczyk/prettier-config": "2.0.2",
+    "eslint": "8.52.0",
+    "eslint-plugin-turbo": "1.10.16",
+    "prettier": "3.0.3"
   },
   "engines": {
     "node": ">=18.0.0"

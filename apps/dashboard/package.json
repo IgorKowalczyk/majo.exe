@@ -60,6 +60,7 @@
     "@next/bundle-analyzer": "13.5.6",
     "@prisma/nextjs-monorepo-workaround-plugin": "5.4.2",
     "eslint-config-next": "13.5.6",
+    "eslint-plugin-import": "2.28.1",
     "prettier-plugin-tailwindcss": "0.5.6"
   },
   "engines": {
