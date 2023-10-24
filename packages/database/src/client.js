@@ -1,13 +1,20 @@
 /* eslint-disable global-require */
-
 import { debuggerConfig } from "@majoexe/config";
+import { Pool, neonConfig } from "@neondatabase/serverless";
+import { PrismaNeon } from "@prisma/adapter-neon";
 import { PrismaClient } from "@prisma/client";
 import { createPrismaRedisCache } from "prisma-redis-middleware";
+import ws from "ws";
 import { Logger } from "./logger.js";
 import Redis from "./redis.js";
 
+neonConfig.webSocketConstructor = ws;
+const connectionString = `${process.env.DATABASE_URL}`;
+
 const prismaClientSingleton = () => {
- return new PrismaClient();
+ const pool = new Pool({ connectionString });
+ const adapter = new PrismaNeon(pool);
+ return new PrismaClient({ adapter });
 };
 
 const globalForPrisma = globalThis;
