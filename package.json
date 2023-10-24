@@ -18,7 +18,7 @@
     "prisma:seed": "dotenv -- turbo run prisma:seed --color --filter=database"
   },
   "dependencies": {
-    "@igorkowalczyk/eslint-config": "1.5.6",
+    "@igorkowalczyk/eslint-config": "2.0.2",
     "dotenv-cli": "7.3.0",
     "eslint": "8.52.0",
     "eslint-config-turbo": "1.10.16",
