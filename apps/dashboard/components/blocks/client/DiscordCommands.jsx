@@ -22,7 +22,8 @@ export function DiscordCommands({ commands, categories }) {
   }
 
   setFilteredCategories(categories);
- }, [categories, filteredCategories]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+ }, [categories]);
 
  useEffect(() => {
   setMounted(true);
