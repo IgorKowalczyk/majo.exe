@@ -72,16 +72,16 @@ export async function POST(request) {
    );
   }
 
-  const existingCategory = await prismaClient.commandCategories.findFirst({
+  const existingCommand = await prismaClient.commands.findFirst({
    where: {
     name: name,
    },
   });
 
-  if (!existingCategory) {
+  if (!existingCommand) {
    return new NextResponse(
     JSON.stringify({
-     error: "Category not found",
+     error: "Command not found",
      code: 404,
     }),
     {
@@ -142,10 +142,32 @@ export async function POST(request) {
    );
   }
 
-  const alreadyDisabled = await prismaClient.guildDisabledCategories.findFirst({
+  const disabledCategory = await prismaClient.guildDisabledCategories.findFirst({
    where: {
     guildId: server.id,
-    categoryName: existingCategory.name,
+    categoryName: existingCommand.category,
+   },
+  });
+
+  if (disabledCategory) {
+   return new NextResponse(
+    JSON.stringify({
+     error: "Category is disabled",
+     code: 403,
+    }),
+    {
+     status: 403,
+     headers: {
+      "server-timing": `response;dur=${Date.now() - start}`,
+     },
+    }
+   );
+  }
+
+  const alreadyDisabled = await prismaClient.guildDisabledCommands.findFirst({
+   where: {
+    guildId: server.id,
+    commandName: existingCommand.name,
    },
   });
 
@@ -153,7 +175,7 @@ export async function POST(request) {
    if (enabled) {
     return new NextResponse(
      JSON.stringify({
-      message: "Category is already enabled, no action taken",
+      message: "Command is already enabled, no action taken",
       code: 200,
      }),
      {
@@ -164,16 +186,16 @@ export async function POST(request) {
      }
     );
    } else {
-    await prismaClient.guildDisabledCategories.create({
+    await prismaClient.guildDisabledCommands.create({
      data: {
       guildId: server.id,
-      categoryName: existingCategory.name,
+      commandName: existingCommand.name,
      },
     });
 
     return new NextResponse(
      JSON.stringify({
-      message: "Category disabled",
+      message: "Command disabled",
       code: 200,
      }),
      {
@@ -186,7 +208,7 @@ export async function POST(request) {
    }
   } else {
    if (enabled) {
-    await prismaClient.guildDisabledCategories.delete({
+    await prismaClient.guildDisabledCommands.delete({
      where: {
       id: alreadyDisabled.id,
      },
@@ -194,7 +216,7 @@ export async function POST(request) {
 
     return new NextResponse(
      JSON.stringify({
-      message: "Category enabled",
+      message: "Command enabled",
       code: 200,
      }),
      {
@@ -207,7 +229,7 @@ export async function POST(request) {
    } else {
     return new NextResponse(
      JSON.stringify({
-      message: "Category is already disabled, no action taken",
+      message: "Command is already disabled, no action taken",
       code: 200,
      }),
      {

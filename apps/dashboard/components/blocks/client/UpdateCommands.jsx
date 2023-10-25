@@ -5,21 +5,21 @@ import { useState } from "react";
 import Switch from "./Switch";
 import { Tooltip } from "./Tooltip";
 
-export function UpdateCategories({ serverId, categoryName, categoryEnabled }) {
- const [enabled, setEnabled] = useState(categoryEnabled);
+export function UpdateCommands({ serverId, commandName, commandEnabled }) {
+ const [enabled, setEnabled] = useState(commandEnabled);
  const [loading, setLoading] = useState(false);
  const router = useRouter();
 
- const updateCategory = async () => {
+ const updateCommand = async () => {
   setLoading(true);
-  const res = await fetch("/api/settings/categories", {
+  const res = await fetch("/api/settings/commands", {
    method: "POST",
    headers: {
     "Content-Type": "application/json",
    },
    body: JSON.stringify({
     id: serverId,
-    name: categoryName,
+    name: commandName,
     enabled: !enabled,
    }),
   });
@@ -40,9 +40,9 @@ export function UpdateCategories({ serverId, categoryName, categoryEnabled }) {
  };
 
  return (
-  <Tooltip content={enabled ? "Disable category" : loading ? "Changing status..." : "Enable category"}>
+  <Tooltip content={enabled ? "Disable command" : loading ? "Changing status..." : "Enable command"}>
    <span>
-    <Switch enabled={enabled} disabled={loading} onChange={() => updateCategory()} />
+    <Switch enabled={enabled} disabled={loading} onChange={() => updateCommand()} />
    </span>
   </Tooltip>
  );

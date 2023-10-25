@@ -1,11 +1,13 @@
-import { CubeIcon, SquaresPlusIcon } from "@heroicons/react/24/outline";
+import { CubeIcon, CubeTransparentIcon, SquaresPlusIcon, InformationCircleIcon } from "@heroicons/react/24/outline";
 import { botConfig } from "@majoexe/config";
 import prismaClient from "@majoexe/database";
 import { getGuildMember, getServer } from "@majoexe/util/functions";
+import clsx from "clsx";
 import { getSession } from "lib/session";
 import { redirect } from "next/navigation";
 import { Block } from "@/components/blocks/Block";
 import { UpdateCategories } from "@/components/blocks/client/UpdateCategories";
+import { UpdateCommands } from "@/components/blocks/client/UpdateCommands";
 import { Header1, Header2, Header3 } from "@/components/blocks/Headers";
 
 export default async function Settings({ params }) {
@@ -30,6 +32,7 @@ export default async function Settings({ params }) {
   },
   include: {
    guildDisabledCategories: true,
+   guildDisabledCommands: true,
   },
  });
 
@@ -41,12 +44,16 @@ export default async function Settings({ params }) {
   });
  }
 
+ console.log(guild.guildDisabledCommands);
+
  const categories = await prismaClient.commandCategories.findMany({
   select: {
    name: true,
    commands: {
     select: {
      name: true,
+     description: true,
+     categoryName: true,
     },
    },
   },
@@ -84,6 +91,52 @@ export default async function Settings({ params }) {
       </Block>
      ))}
     </div>
+   </Block>
+
+   <Block className="mt-4">
+    <Header2>
+     <CubeTransparentIcon className="min-h-8 min-w-8 h-8 w-8" />
+     Commands
+    </Header2>
+    <p className="mb-4 mt-2 text-left">Enable or disable commands.</p>
+
+    {categories.map((category) => (
+     <div key={category.name}>
+      <Header3 className="mb-4 mt-8">
+       {botConfig.emojis.categories.find((cat) => cat.name === category.name.toLowerCase()).emoji} {category.name} ({category.commands.length} commands)
+      </Header3>
+
+      {guild.guildDisabledCategories.some((cat) => cat.categoryName === category.name) && (
+       <div className="border-accent-primary bg-accent-primary/10 my-4 flex flex-row items-start whitespace-nowrap rounded-md border p-4">
+        <span className="mr-1 flex flex-row items-center whitespace-nowrap font-bold">
+         <InformationCircleIcon className="stroke-accent-primary min-w-5 min-h-5 mr-1 h-5 w-5" />
+         Note:
+        </span>
+        <span className="whitespace-normal">You have to enable this category to change status of individual commands in it!</span>
+       </div>
+      )}
+      <div
+       className={clsx(
+        {
+         "pointer-events-none cursor-not-allowed opacity-30": guild.guildDisabledCategories.some((cat) => cat.categoryName === category.name),
+        },
+        "flex flex-wrap items-stretch justify-start gap-8"
+       )}
+      >
+       {category.commands.map((command) => (
+        <Block className="min-w-48" key={command.name}>
+         <Header3 className="mb-4">
+          /{command.name}
+          <span className="ml-auto mr-0">
+           <UpdateCommands serverId={serverDownload.id} commandName={command.name} commandEnabled={!guild.guildDisabledCommands.some((com) => com.commandName.toLowerCase() === command.name.toLowerCase())} />
+          </span>
+         </Header3>
+         <p className="mb-4 mt-2 text-left">{command.description}</p>
+        </Block>
+       ))}
+      </div>
+     </div>
+    ))}
    </Block>
   </>
  );

@@ -33,7 +33,9 @@ if (debuggerConfig.displayDatabaseLogs) prisma.$use(logger);
 const cache = createPrismaRedisCache({
  models: [
   { model: "User", excludeMethods: ["findMany"] },
-  { model: "Guild", excludeMethods: ["findMany"] },
+  { model: "Guild", excludeMethods: ["findMany"], invalidateRelated: ["GuildDisabledCommands", "GuildDisabledCategories"] },
+  { model: "GuildDisabledCommands", excludeMethods: ["findMany"], invalidateRelated: ["Guild"] },
+  { model: "GuildDisabledCategories", excludeMethods: ["findMany"], invalidateRelated: ["Guild"] },
   { model: "GuildLogs", cacheTime: 15 },
   { model: "GuildXp", cacheTime: 15 },
  ],
