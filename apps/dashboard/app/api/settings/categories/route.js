@@ -171,6 +171,28 @@ export async function POST(request) {
      },
     });
 
+    await prismaClient.guildLogs.create({
+     data: {
+      guild: {
+       connectOrCreate: {
+        where: {
+         guildId: id,
+        },
+        create: {
+         guildId: id,
+        },
+       },
+      },
+      user: {
+       connect: {
+        id: session.sub,
+       },
+      },
+      content: `Disabled category ${existingCategory.name}`,
+      type: "category_change",
+     },
+    });
+
     return new NextResponse(
      JSON.stringify({
       message: "Category disabled",
@@ -189,6 +211,28 @@ export async function POST(request) {
     await prismaClient.guildDisabledCategories.delete({
      where: {
       id: alreadyDisabled.id,
+     },
+    });
+
+    await prismaClient.guildLogs.create({
+     data: {
+      guild: {
+       connectOrCreate: {
+        where: {
+         guildId: id,
+        },
+        create: {
+         guildId: id,
+        },
+       },
+      },
+      user: {
+       connect: {
+        id: session.sub,
+       },
+      },
+      content: `Enabled category ${existingCategory.name}`,
+      type: "category_change",
      },
     });
 

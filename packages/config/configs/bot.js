@@ -115,6 +115,22 @@ config.emojis = {
    type: "embed_color",
    emoji: "🎨",
   },
+  {
+   type: "command_change",
+   emoji: "<:slash_commands:963333541565968384>",
+  },
+  {
+   type: "category_change",
+   emoji: "📂",
+  },
+  {
+   type: "public_dashboard",
+   emoji: "🔗",
+  },
+  {
+   type: "vanity",
+   emoji: "🔗",
+  },
  ],
 
  // Utility emojis

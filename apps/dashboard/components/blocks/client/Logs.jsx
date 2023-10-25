@@ -1,7 +1,7 @@
 "use client";
 
 import { Disclosure, Transition } from "@headlessui/react";
-import { NoSymbolIcon, ChevronDownIcon, PaintBrushIcon, MagnifyingGlassIcon, LinkIcon, UsersIcon, BarsArrowDownIcon, BarsArrowUpIcon } from "@heroicons/react/24/outline";
+import { NoSymbolIcon, ChevronDownIcon, PaintBrushIcon, MagnifyingGlassIcon, LinkIcon, UsersIcon, BarsArrowDownIcon, BarsArrowUpIcon, CubeTransparentIcon, CubeIcon } from "@heroicons/react/24/outline";
 import { formatDate } from "@majoexe/util/functions";
 import clsx from "clsx";
 import React, { useState, useRef, useEffect } from "react";
@@ -80,6 +80,8 @@ export default function Logs({ initialItems, id }) {
           {item.user?.avatar && <Image src={`https://cdn.discordapp.com/avatars/${item.user?.discordId}/${item.user?.avatar}.${item.user?.avatar.startsWith("a_") ? "gif" : "png"}`} alt={`${item.user?.name} avatar`} quality={95} width={32} height={32} className="min-h-12 min-w-12 h-12 w-12 rounded-full" />}
           {item.type === "profanity" && <NoSymbolIcon className="bg-button-secondary/80 min-h-5 min-w-5 absolute bottom-0 right-0 h-5 w-5 rounded-full border border-white/10 p-1 text-red-400 opacity-80" />}
           {item.type === "embed_color" && <PaintBrushIcon className="bg-button-secondary/80 text-button-primary min-h-5 min-w-5 absolute bottom-0 right-0 h-5 w-5 rounded-full border border-white/10 p-1 opacity-80" />}
+          {item.type === "command_change" && <CubeTransparentIcon className="bg-button-secondary/80 text-button-primary min-h-5 min-w-5 absolute bottom-0 right-0 h-5 w-5 rounded-full border border-white/10 p-1 opacity-80" />}
+          {item.type === "category_change" && <CubeIcon className="bg-button-secondary/80 text-button-primary min-h-5 min-w-5 absolute bottom-0 right-0 h-5 w-5 rounded-full border border-white/10 p-1 opacity-80" />}
           {item.type === "public_dashboard" && <UsersIcon className="bg-button-secondary/80 min-h-5 min-w-5 absolute bottom-0 right-0 h-5 w-5 rounded-full border border-white/10 p-1 text-green-400 opacity-80" />}
           {item.type === "vanity" && <LinkIcon className="bg-button-secondary/80 text-button-primary min-h-5 min-w-5 absolute bottom-0 right-0 h-5 w-5 rounded-full border border-white/10 p-1 opacity-80" />}
          </div>

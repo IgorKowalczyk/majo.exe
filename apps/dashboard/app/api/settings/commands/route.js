@@ -193,6 +193,28 @@ export async function POST(request) {
      },
     });
 
+    await prismaClient.guildLogs.create({
+     data: {
+      guild: {
+       connectOrCreate: {
+        where: {
+         guildId: id,
+        },
+        create: {
+         guildId: id,
+        },
+       },
+      },
+      user: {
+       connect: {
+        id: session.sub,
+       },
+      },
+      content: `Disabled command ${existingCommand.name}`,
+      type: "command_change",
+     },
+    });
+
     return new NextResponse(
      JSON.stringify({
       message: "Command disabled",
@@ -211,6 +233,28 @@ export async function POST(request) {
     await prismaClient.guildDisabledCommands.delete({
      where: {
       id: alreadyDisabled.id,
+     },
+    });
+
+    await prismaClient.guildLogs.create({
+     data: {
+      guild: {
+       connectOrCreate: {
+        where: {
+         guildId: id,
+        },
+        create: {
+         guildId: id,
+        },
+       },
+      },
+      user: {
+       connect: {
+        id: session.sub,
+       },
+      },
+      content: `Enabled command ${existingCommand.name}`,
+      type: "command_change",
      },
     });
 
