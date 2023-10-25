@@ -1,6 +1,6 @@
 "use client";
 
-import { ArrowLeftIcon, ChartPieIcon, Cog8ToothIcon, ListBulletIcon, QueueListIcon, RectangleStackIcon } from "@heroicons/react/24/outline";
+import { ArrowLeftIcon, ChartPieIcon, Cog8ToothIcon, ListBulletIcon, RectangleStackIcon, SquaresPlusIcon, StarIcon } from "@heroicons/react/24/outline";
 import clsx from "clsx";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -45,8 +45,12 @@ export function SideNav({ server }) {
       Statistics
      </SideNavLink>
      <SideNavLink href={`/dashboard/${server}/leaderboard`}>
-      <QueueListIcon className="min-h-6 min-w-6 h-6 w-6" />
+      <StarIcon className="min-h-6 min-w-6 h-6 w-6" />
       Leaderboard
+     </SideNavLink>
+     <SideNavLink href={`/dashboard/${server}/modules`}>
+      <SquaresPlusIcon className="min-h-6 min-w-6 h-6 w-6" />
+      Modules
      </SideNavLink>
      <SideNavLink href={`/dashboard/${server}/logs`}>
       <ListBulletIcon className="min-h-6 min-w-6 h-6 w-6" />
