@@ -3,10 +3,10 @@
 import { Menu, Transition } from "@headlessui/react";
 import { RectangleStackIcon, Cog8ToothIcon, UserIcon, ArrowRightOnRectangleIcon, QuestionMarkCircleIcon, ChevronDownIcon } from "@heroicons/react/24/outline";
 import clsx from "clsx";
-import Image from "next/image";
 import Link from "next/link";
 import { signOut } from "next-auth/react";
 import { Fragment } from "react";
+import Image from "@/components/blocks/client/Image";
 
 export function UserMenuDropdown({ user }) {
  return (

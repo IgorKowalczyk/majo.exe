@@ -2,11 +2,11 @@
 import { meta } from "@config";
 import prismaClient from "@majoexe/database";
 import { getServer, getGuildPreview } from "@majoexe/util/functions";
-import Image from "next/image";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import Balancer from "react-wrap-balancer";
 import { Block } from "@/components/blocks/Block";
+import Image from "@/components/blocks/client/Image";
 import { Leaderboard } from "@/components/blocks/client/Leaderboard";
 import { Tooltip } from "@/components/blocks/client/Tooltip";
 import { Header1, Header4, Header5 } from "@/components/blocks/Headers";

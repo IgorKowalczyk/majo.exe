@@ -1,9 +1,9 @@
 import { ArrowRightIcon } from "@heroicons/react/24/outline";
-import Image from "next/image";
 import Link from "next/link";
 import ray from "public/assets/ray.png";
 import Balancer from "react-wrap-balancer";
 import GlobeClient from "@/components/blocks/client/Globe";
+import Image from "@/components/blocks/client/Image";
 import { Header1 } from "@/components/blocks/Headers";
 import { Invite } from "@/components/buttons/server/Invite";
 import { Login } from "@/components/buttons/server/Login";

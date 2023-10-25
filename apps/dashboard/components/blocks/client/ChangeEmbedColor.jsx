@@ -2,9 +2,9 @@
 
 import { meta, social } from "@config";
 import { ArrowPathIcon, CheckIcon, ExclamationCircleIcon, TrashIcon } from "@heroicons/react/24/outline";
-import Image from "next/image";
 import { useState } from "react";
 import { HexColorPicker } from "react-colorful";
+import Image from "@/components/blocks/client/Image";
 import { PrimaryButton } from "@/components/buttons/server/Primary";
 import { SecondaryButton } from "@/components/buttons/server/Secondary";
 

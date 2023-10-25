@@ -2,11 +2,11 @@
 
 import { Menu, Transition } from "@headlessui/react";
 import { ChevronUpDownIcon } from "@heroicons/react/20/solid";
-import Image from "next/image";
 import Link from "next/link";
 import { useParams } from "next/navigation";
 import { Fragment } from "react";
 import { useState } from "react";
+import Image from "@/components/blocks/client/Image";
 import { SWR } from "@/lib/swr";
 
 export function ServerDropdown() {

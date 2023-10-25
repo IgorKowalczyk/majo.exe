@@ -1,9 +1,9 @@
 import { ArrowTopRightOnSquareIcon } from "@heroicons/react/24/outline";
 import { getFlags } from "@majoexe/util/functions";
 import { getSession } from "lib/session";
-import Image from "next/image";
 import Link from "next/link";
 import { redirect } from "next/navigation";
+import Image from "@/components/blocks/client/Image";
 import { Tooltip } from "@/components/blocks/client/Tooltip";
 import { Emojis } from "@/components/decorations/emojis";
 
