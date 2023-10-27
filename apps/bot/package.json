@@ -34,7 +34,7 @@
     "node-fetch": "3.3.2",
     "qrcode": "1.5.3",
     "sharp": "0.32.6",
-    "systeminformation": "5.21.14",
+    "systeminformation": "5.21.15",
     "validator": "13.11.0"
   },
   "devDependencies": {
