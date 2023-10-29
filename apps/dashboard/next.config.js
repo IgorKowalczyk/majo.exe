@@ -1,7 +1,7 @@
-const { PrismaPlugin } = require("@prisma/nextjs-monorepo-workaround-plugin");
 const withBundleAnalyzer = require("@next/bundle-analyzer")({
  enabled: process.env.ANALYZE === "true",
 });
+const { PrismaPlugin } = require("@prisma/nextjs-monorepo-workaround-plugin");
 
 const nextConfig = {
  reactStrictMode: true,
@@ -12,10 +12,32 @@ const nextConfig = {
   removeConsole: process.env.NODE_ENV === "production",
  },
  images: {
-  domains: [
-   "github.githubassets.com", // GitHub assets
-   "cdn.discordapp.com", // Discord
-   "media.discordapp.net", // Discord
+  remotePatterns: [
+   {
+    protocol: "https",
+    hostname: "cdn.discordapp.com",
+    pathname: "/avatars/**",
+   },
+   {
+    protocol: "https",
+    hostname: "cdn.discordapp.com",
+    pathname: "/banners/**",
+   },
+   {
+    protocol: "https",
+    hostname: "cdn.discordapp.com",
+    pathname: "/icons/*",
+   },
+   {
+    protocol: "https",
+    hostname: "cdn.discordapp.com",
+    pathname: "/emojis/**",
+   },
+   {
+    protocol: "https",
+    hostname: "media.discordapp.net",
+    pathname: "/attachments/**",
+   },
   ],
  },
  webpack: (config, { isServer }) => {

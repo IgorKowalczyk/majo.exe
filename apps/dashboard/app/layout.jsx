@@ -1,4 +1,4 @@
-import { meta } from "@config";
+import { dashboardConfig } from "@majoexe/config";
 import { Analytics } from "@vercel/analytics/react";
 import { Inter } from "next/font/google";
 import { twMerge } from "tailwind-merge";
@@ -7,33 +7,33 @@ import { Session } from "@/components/blocks/client/Session";
 import { Hotjar } from "@/components/blocks/Hotjar";
 import { TailwindIndicator } from "@/components/blocks/TailwindIndicator";
 import { VisibilityProvider } from "@/components/nav/client/VisibilityContext";
-import { Nav } from "@/components/nav/server/Nav";
 import "styles/globals.css";
 import "styles/progress.css";
 import "styles/tippy.css";
+import { Nav } from "@/components/nav/server/Nav";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
- metadataBase: new URL(meta.url),
+ metadataBase: new URL(dashboardConfig.url),
  title: {
-  default: meta.title,
-  template: `%s | ${meta.title}`,
+  default: dashboardConfig.title,
+  template: `%s | ${dashboardConfig.title}`,
  },
- description: meta.description,
+ description: dashboardConfig.description,
  openGraph: {
-  title: meta.title,
-  description: meta.description,
-  url: meta.url,
-  siteName: meta.title,
+  title: dashboardConfig.title,
+  description: dashboardConfig.description,
+  url: dashboardConfig.url,
+  siteName: dashboardConfig.title,
   images: [
    {
-    url: meta.url + meta.image,
+    url: dashboardConfig.image,
     width: 1200,
     height: 630,
    },
   ],
-  locale: meta.locale,
+  locale: "en_US",
   type: "website",
  },
  robots: {
@@ -48,7 +48,7 @@ export const metadata = {
   },
  },
  twitter: {
-  title: meta.title,
+  title: dashboardConfig.title,
   card: "summary_large_image",
  },
  icons: {

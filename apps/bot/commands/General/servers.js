@@ -26,8 +26,8 @@ export default {
 
    const inviteButton = new ButtonBuilder().setLabel("Invite").setStyle(ButtonStyle.Link).setURL(inviteLink);
 
-   if (client.config.dashboard.enabled && client.config.dashboard.link) {
-    const contactButton = new ButtonBuilder().setLabel("Dashboard").setStyle(ButtonStyle.Link).setURL(client.config.dashboard.link);
+   if (client.config.dashboard.enabled && client.config.dashboard.url) {
+    const contactButton = new ButtonBuilder().setLabel("Dashboard").setStyle(ButtonStyle.Link).setURL(client.config.dashboard.url);
     const action = new ActionRowBuilder().addComponents(inviteButton, contactButton);
     return interaction.followUp({ ephemeral: false, embeds: [embed], components: [action] });
    }

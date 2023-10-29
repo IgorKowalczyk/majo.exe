@@ -1,7 +1,7 @@
 "use client";
 
-import { meta, social } from "@config";
 import { ArrowPathIcon, CheckIcon, ExclamationCircleIcon, TrashIcon } from "@heroicons/react/24/outline";
+import { dashboardConfig } from "@majoexe/config";
 import { useState } from "react";
 import { HexColorPicker } from "react-colorful";
 import Image from "@/components/blocks/client/Image";
@@ -88,10 +88,10 @@ export function ChangeEmbedColor({ serverId, serverColor }) {
    <HexColorPicker color={color} onChange={setColor} />
    <div>
     <div className="mt-4 flex items-center gap-1 sm:ml-4">
-     <Image src={social.logo} alt={serverId} quality={95} width={64} height={64} className="h-10 w-10 self-baseline rounded-full" />
+     <Image src={dashboardConfig.logo} alt={serverId} quality={95} width={64} height={64} className="h-10 w-10 self-baseline rounded-full" />
      <div className="flex flex-col">
       <div className="ml-1 flex h-10 flex-row items-center">
-       <span className="font-bold">{meta.title}</span> <span className="ml-1 rounded bg-[#5c65f3] px-1 py-[0.12rem] text-xs text-white">BOT</span>
+       <span className="font-bold">{dashboardConfig.title}</span> <span className="ml-1 rounded bg-[#5c65f3] px-1 py-[0.12rem] text-xs text-white">BOT</span>
        <span className="ml-2 text-sm text-gray-400">Today at 12:00 AM</span>
       </div>
       <div>

@@ -2,8 +2,7 @@
  "compilerOptions": {
   "baseUrl": ".",
   "paths": {
-   "@/*": ["./*"],
-   "@config": ["./config/index.js"]
+   "@/*": ["./*"]
   }
  },
  "exclude": ["node_modules"]

@@ -9,7 +9,7 @@ export default {
  usage: "/contact",
  run: async (client, interaction, guildSettings) => {
   try {
-   if (!client.config.dashboard.enabled || !client.config.dashboard.link) {
+   if (!client.config.dashboard.enabled || !client.config.dashboard.url) {
     const embed = new EmbedBuilder()
      .setDescription("Our dashboard (and the contact page itself) is not working at the moment, please try again later!")
      .setFooter({
@@ -24,7 +24,7 @@ export default {
     return interaction.followUp({ ephemeral: false, embeds: [embed] });
    }
 
-   const contactButton = new ButtonBuilder().setLabel("Contact").setStyle(ButtonStyle.Link).setURL(`${client.config.dashboard.link}/contact`);
+   const contactButton = new ButtonBuilder().setLabel("Contact").setStyle(ButtonStyle.Link).setURL(`${client.config.dashboard.url}/contact`);
    const action = new ActionRowBuilder().addComponents(contactButton);
 
    const embed = new EmbedBuilder()

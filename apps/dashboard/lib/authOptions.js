@@ -2,15 +2,14 @@
 
 import prismaClient from "@majoexe/database";
 import { PrismaAdapter } from "@next-auth/prisma-adapter";
-import { credentials } from "config";
 import DiscordProvider from "next-auth/providers/discord";
 
 const authOptions = {
  adapter: PrismaAdapter(prismaClient),
  providers: [
   DiscordProvider({
-   clientId: credentials.clientId,
-   clientSecret: credentials.clientSecret,
+   clientId: process.env.CLIENT_ID,
+   clientSecret: process.env.CLIENT_SECRET,
    authorization: { params: { scope: "identify guilds guilds.join" } },
    async profile(profile, tokens) {
     if (tokens.access_token && process.env.DISCORD_SUPPORT_SERVER_ID) {
@@ -82,7 +81,7 @@ const authOptions = {
   signIn: "/auth/login",
   signOut: "/auth/signout",
  },
- secret: credentials.secret,
+ secret: process.env.SECRET,
  session: {
   strategy: "jwt",
   maxAge: 1 * 60 * 60, // 1 hour
