@@ -57,6 +57,11 @@ const nextConfig = {
     destination: "https://discord.gg/sgt4QEyDxK",
     permanent: true,
    },
+   {
+    source: "/server",
+    destination: "https://discord.gg/sgt4QEyDxK",
+    permanent: true,
+   },
   ];
  },
  async headers() {
