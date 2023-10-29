@@ -9,7 +9,7 @@ export async function POST(request) {
   const start = Date.now();
 
   if (!session || !session.access_token) {
-   return new NextResponse.json(
+   return NextResponse.json(
     {
      error: "Unauthorized",
     },
@@ -25,7 +25,7 @@ export async function POST(request) {
   const { id, enabled } = await request.clone().json();
 
   if (!id || typeof id !== "string" || typeof enabled !== "boolean") {
-   return new NextResponse.json(
+   return NextResponse.json(
     {
      error: "Bad Request. Missing id and enabled or invalid types",
      code: 400,
@@ -42,7 +42,7 @@ export async function POST(request) {
   const server = await getServer(id);
 
   if (!server || server.error) {
-   return new NextResponse.json(
+   return NextResponse.json(
     {
      error: "Server not found",
      code: 404,
@@ -57,7 +57,7 @@ export async function POST(request) {
   }
 
   if (!server.bot) {
-   return new NextResponse.json(
+   return NextResponse.json(
     {
      error: "Bot is not in server",
      code: 404,
@@ -74,7 +74,7 @@ export async function POST(request) {
   const serverMember = await getGuildMember(server.id, session.access_token);
 
   if (!serverMember || !serverMember.permissions_names || !serverMember.permissions_names.includes("ManageGuild") || !serverMember.permissions_names.includes("Administrator")) {
-   return new NextResponse.json(
+   return NextResponse.json(
     {
      error: "Unauthorized",
      code: 401,
@@ -125,7 +125,7 @@ export async function POST(request) {
     },
    });
 
-   return new NextResponse.json(
+   return NextResponse.json(
     {
      message: `Public dashboard ${enabled ? "enabled" : "disabled"}`,
      code: 200,
@@ -171,7 +171,7 @@ export async function POST(request) {
    },
   });
 
-  return new NextResponse.json(
+  return NextResponse.json(
    {
     message: `Public dashboard ${enabled ? "enabled" : "disabled"}`,
     code: 200,
@@ -184,7 +184,7 @@ export async function POST(request) {
    }
   );
  } catch (err) {
-  return new NextResponse.json(
+  return NextResponse.json(
    {
     error: "Internal Server Error",
     code: 500,

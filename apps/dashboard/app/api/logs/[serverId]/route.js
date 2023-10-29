@@ -11,7 +11,7 @@ export async function GET(request, { params }) {
   const start = Date.now();
 
   if (!serverId) {
-   return new NextResponse.json(
+   return NextResponse.json(
     {
      error: "Bad Request",
     },
@@ -27,7 +27,7 @@ export async function GET(request, { params }) {
   const session = await getSession();
 
   if (!session || !session.access_token) {
-   return new NextResponse.json(
+   return NextResponse.json(
     {
      error: "Unauthorized",
     },
@@ -43,7 +43,7 @@ export async function GET(request, { params }) {
   const server = await getServer(serverId);
 
   if (!server || server.error) {
-   return new NextResponse.json(
+   return NextResponse.json(
     {
      error: "Server not found",
      code: 404,
@@ -58,7 +58,7 @@ export async function GET(request, { params }) {
   }
 
   if (!server.bot) {
-   return new NextResponse.json(
+   return NextResponse.json(
     {
      error: "Bot is not in server",
      code: 404,
@@ -75,7 +75,7 @@ export async function GET(request, { params }) {
   const serverMember = await getGuildMember(server.id, session.access_token);
 
   if (!serverMember || !serverMember.permissions_names || !serverMember.permissions_names.includes("ManageGuild") || !serverMember.permissions_names.includes("Administrator")) {
-   return new NextResponse.json(
+   return NextResponse.json(
     {
      error: "Unauthorized",
      code: 401,
@@ -92,7 +92,7 @@ export async function GET(request, { params }) {
   const logs = await fetchLogs(serverId, page);
 
   logs.forEach((log) => {
-   log.createdAt = log.createdAt.toISOString();
+   log.createdAt = new Date(log.createdAt).toISOString() || null;
   });
 
   /* eslint-disable func-names, space-before-function-paren */
@@ -101,20 +101,15 @@ export async function GET(request, { params }) {
   };
   /* eslint-enable func-names, space-before-function-paren */
 
-  return new NextResponse.json(
-   {
-    logs,
+  return NextResponse.json(logs, {
+   status: 200,
+   headers: {
+    "server-timing": `response;dur=${Date.now() - start}`,
    },
-   {
-    status: 200,
-    headers: {
-     "server-timing": `response;dur=${Date.now() - start}`,
-    },
-   }
-  );
+  });
  } catch (err) {
   console.log(err);
-  return new NextResponse.json(
+  return NextResponse.json(
    {
     error: "Internal Server Error",
    },
