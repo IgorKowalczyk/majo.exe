@@ -10,10 +10,10 @@ export async function POST(request) {
   const start = Date.now();
 
   if (!session || !session.access_token) {
-   return new NextResponse(
-    JSON.stringify({
+   return new NextResponse.json(
+    {
      error: "Unauthorized",
-    }),
+    },
     {
      status: 401,
      headers: {
@@ -23,16 +23,14 @@ export async function POST(request) {
    );
   }
 
-  const cloned = await request.clone();
-  const body = await cloned.json();
-  const { id, name, enabled } = body;
+  const { id, name, enabled } = await request.clone().json();
 
   if (!id || !name || Boolean(enabled) === undefined) {
-   return new NextResponse(
-    JSON.stringify({
+   return new NextResponse.json(
+    {
      error: "Bad Request",
      code: 400,
-    }),
+    },
     {
      status: 400,
      headers: {
@@ -43,11 +41,11 @@ export async function POST(request) {
   }
 
   if (typeof enabled !== "boolean" || typeof name !== "string" || typeof id !== "string") {
-   return new NextResponse(
-    JSON.stringify({
+   return new NextResponse.json(
+    {
      error: "Bad Request",
      code: 400,
-    }),
+    },
     {
      status: 400,
      headers: {
@@ -58,11 +56,11 @@ export async function POST(request) {
   }
 
   if (name.length > 20) {
-   return new NextResponse(
-    JSON.stringify({
+   return new NextResponse.json(
+    {
      error: "Bad Request",
      code: 400,
-    }),
+    },
     {
      status: 400,
      headers: {
@@ -79,11 +77,11 @@ export async function POST(request) {
   });
 
   if (!existingCategory) {
-   return new NextResponse(
-    JSON.stringify({
+   return new NextResponse.json(
+    {
      error: "Category not found",
      code: 404,
-    }),
+    },
     {
      status: 404,
      headers: {
@@ -96,11 +94,11 @@ export async function POST(request) {
   const server = await getServer(id);
 
   if (!server || server.error) {
-   return new NextResponse(
-    JSON.stringify({
+   return new NextResponse.json(
+    {
      error: "Server not found",
      code: 404,
-    }),
+    },
     {
      status: 404,
      headers: {
@@ -111,11 +109,11 @@ export async function POST(request) {
   }
 
   if (!server.bot) {
-   return new NextResponse(
-    JSON.stringify({
+   return new NextResponse.json(
+    {
      error: "Bot is not in server",
      code: 404,
-    }),
+    },
     {
      status: 404,
      headers: {
@@ -128,11 +126,11 @@ export async function POST(request) {
   const serverMember = await getGuildMember(server.id, session.access_token);
 
   if (!serverMember || !serverMember.permissions_names || !serverMember.permissions_names.includes("ManageGuild") || !serverMember.permissions_names.includes("Administrator")) {
-   return new NextResponse(
-    JSON.stringify({
+   return new NextResponse.json(
+    {
      error: "Unauthorized",
      code: 401,
-    }),
+    },
     {
      status: 401,
      headers: {
@@ -152,10 +150,10 @@ export async function POST(request) {
   if (!alreadyDisabled) {
    if (enabled) {
     return new NextResponse(
-     JSON.stringify({
+     {
       message: "Category is already enabled, no action taken",
       code: 200,
-     }),
+     },
      {
       status: 200,
       headers: {
@@ -193,11 +191,11 @@ export async function POST(request) {
      },
     });
 
-    return new NextResponse(
-     JSON.stringify({
+    return new NextResponse.json(
+     {
       message: "Category disabled",
       code: 200,
-     }),
+     },
      {
       status: 200,
       headers: {
@@ -236,11 +234,11 @@ export async function POST(request) {
      },
     });
 
-    return new NextResponse(
-     JSON.stringify({
+    return new NextResponse.json(
+     {
       message: "Category enabled",
       code: 200,
-     }),
+     },
      {
       status: 200,
       headers: {
@@ -249,11 +247,11 @@ export async function POST(request) {
      }
     );
    } else {
-    return new NextResponse(
-     JSON.stringify({
+    return new NextResponse.json(
+     {
       message: "Category is already disabled, no action taken",
       code: 200,
-     }),
+     },
      {
       status: 200,
       headers: {
@@ -264,12 +262,11 @@ export async function POST(request) {
    }
   }
  } catch (err) {
-  console.log(err);
-  return new NextResponse(
-   JSON.stringify({
+  return new NextResponse.json(
+   {
     error: "Internal Server Error",
     code: 500,
-   }),
+   },
    {
     status: 500,
    }

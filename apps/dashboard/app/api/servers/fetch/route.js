@@ -9,10 +9,10 @@ export async function GET() {
   const start = Date.now();
 
   if (!session || !session.access_token) {
-   return new NextResponse(
-    JSON.stringify({
+   return new NextResponse.json(
+    {
      error: "Unauthorized",
-    }),
+    },
     {
      status: 401,
      headers: {
@@ -24,10 +24,10 @@ export async function GET() {
 
   const data = (await getServers(session.access_token)) || [];
   if (data.error) {
-   return new NextResponse(
-    JSON.stringify({
+   return new NextResponse.json(
+    {
      error: "Unauthorized",
-    }),
+    },
     {
      status: 401,
      headers: {
@@ -48,10 +48,10 @@ export async function GET() {
 
   servers.sort((a, b) => (a.bot && !b.bot ? -1 : !a.bot && b.bot ? 1 : 0));
 
-  return new NextResponse(
-   JSON.stringify({
+  return new NextResponse.json(
+   {
     servers: servers || [],
-   }),
+   },
    {
     status: 200,
     headers: {
@@ -60,11 +60,10 @@ export async function GET() {
    }
   );
  } catch (err) {
-  console.log(err);
-  return new NextResponse(
-   JSON.stringify({
+  return new NextResponse.json(
+   {
     error: "Internal Server Error",
-   }),
+   },
    {
     status: 500,
    }
