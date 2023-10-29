@@ -10,10 +10,10 @@ export async function POST(request) {
   const start = Date.now();
 
   if (!session || !session.access_token) {
-   return new NextResponse(
-    JSON.stringify({
+   return new NextResponse.json(
+    {
      error: "Unauthorized",
-    }),
+    },
     {
      status: 401,
      headers: {
@@ -27,11 +27,11 @@ export async function POST(request) {
   const body = await cloned.json();
   const { id, color } = body;
   if (!id || !color) {
-   return new NextResponse(
-    JSON.stringify({
+   return new NextResponse.json(
+    {
      error: "Bad Request",
      code: 400,
-    }),
+    },
     {
      status: 400,
      headers: {
@@ -44,11 +44,11 @@ export async function POST(request) {
   const server = await getServer(id);
 
   if (!server || server.error) {
-   return new NextResponse(
-    JSON.stringify({
+   return new NextResponse.json(
+    {
      error: "Server not found",
      code: 404,
-    }),
+    },
     {
      status: 404,
      headers: {
@@ -59,11 +59,11 @@ export async function POST(request) {
   }
 
   if (!server.bot) {
-   return new NextResponse(
-    JSON.stringify({
+   return new NextResponse.json(
+    {
      error: "Bot is not in server",
      code: 404,
-    }),
+    },
     {
      status: 404,
      headers: {
@@ -76,11 +76,11 @@ export async function POST(request) {
   const serverMember = await getGuildMember(server.id, session.access_token);
 
   if (!serverMember || !serverMember.permissions_names || !serverMember.permissions_names.includes("ManageGuild") || !serverMember.permissions_names.includes("Administrator")) {
-   return new NextResponse(
-    JSON.stringify({
+   return new NextResponse.json(
+    {
      error: "Unauthorized",
      code: 401,
-    }),
+    },
     {
      status: 401,
      headers: {
@@ -91,11 +91,11 @@ export async function POST(request) {
   }
 
   if (!/^#[0-9A-F]{6}$/i.test(color)) {
-   return new NextResponse(
-    JSON.stringify({
+   return new NextResponse.json(
+    {
      error: "Invalid color",
      code: 400,
-    }),
+    },
     {
      status: 400,
      headers: {
@@ -142,11 +142,11 @@ export async function POST(request) {
     },
    });
 
-   return new NextResponse(
-    JSON.stringify({
+   return new NextResponse.json(
+    {
      message: "Embed color updated",
      code: 200,
-    }),
+    },
     {
      status: 200,
      headers: {
@@ -157,11 +157,11 @@ export async function POST(request) {
   }
 
   if (current.embedColor === color) {
-   return new NextResponse(
-    JSON.stringify({
+   return new NextResponse.json(
+    {
      error: "Embed color is already set to that",
      code: 400,
-    }),
+    },
     {
      status: 200,
      headers: {
@@ -172,11 +172,11 @@ export async function POST(request) {
   }
 
   if (new Date().getTime() - current.embedLastChanged.getTime() < 10000) {
-   return new NextResponse(
-    JSON.stringify({
+   return new NextResponse.json(
+    {
      error: "You can only change the embed color every 10 seconds",
      code: 400,
-    }),
+    },
     {
      status: 200,
      headers: {
@@ -218,11 +218,11 @@ export async function POST(request) {
    },
   });
 
-  return new NextResponse(
-   JSON.stringify({
+  return new NextResponse.json(
+   {
     message: "Embed color updated",
     code: 200,
-   }),
+   },
    {
     status: 200,
     headers: {
@@ -231,12 +231,11 @@ export async function POST(request) {
    }
   );
  } catch (err) {
-  console.log(err);
-  return new NextResponse(
-   JSON.stringify({
+  return new NextResponse.json(
+   {
     error: "Internal Server Error",
     code: 500,
-   }),
+   },
    {
     status: 500,
    }
@@ -254,10 +253,10 @@ export async function PUT(request) {
   const start = Date.now();
 
   if (!session || !session.access_token) {
-   return new NextResponse(
-    JSON.stringify({
+   return new NextResponse.json(
+    {
      error: "Unauthorized",
-    }),
+    },
     {
      status: 401,
      headers: {
@@ -266,16 +265,14 @@ export async function PUT(request) {
     }
    );
   }
-  const cloned = await request.clone();
-  const body = await cloned.json();
-  const { id } = body;
+  const { id } = await request.clone().json();
 
   if (!id) {
-   return new NextResponse(
-    JSON.stringify({
+   return new NextResponse.json(
+    {
      error: "Bad Request",
      code: 400,
-    }),
+    },
     {
      status: 400,
      headers: {
@@ -288,11 +285,11 @@ export async function PUT(request) {
   const server = await getServer(id);
 
   if (!server || server.error) {
-   return new NextResponse(
-    JSON.stringify({
+   return new NextResponse.json(
+    {
      error: "Server not found",
      code: 404,
-    }),
+    },
     {
      status: 404,
      headers: {
@@ -303,11 +300,11 @@ export async function PUT(request) {
   }
 
   if (!server.bot) {
-   return new NextResponse(
-    JSON.stringify({
+   return new NextResponse.json(
+    {
      error: "Bot is not in server",
      code: 404,
-    }),
+    },
     {
      status: 404,
      headers: {
@@ -320,11 +317,11 @@ export async function PUT(request) {
   const serverMember = await getGuildMember(server.id, session.access_token);
 
   if (!serverMember || !serverMember.permissions_names || !serverMember.permissions_names.includes("ManageGuild") || !serverMember.permissions_names.includes("Administrator")) {
-   return new NextResponse(
-    JSON.stringify({
+   return new NextResponse.json(
+    {
      error: "Unauthorized",
      code: 401,
-    }),
+    },
     {
      status: 401,
      headers: {
@@ -365,11 +362,11 @@ export async function PUT(request) {
     },
    });
 
-   return new NextResponse(
-    JSON.stringify({
+   return new NextResponse.json(
+    {
      message: "Embed color updated",
      code: 200,
-    }),
+    },
     {
      status: 200,
      headers: {
@@ -380,11 +377,11 @@ export async function PUT(request) {
   }
 
   if (current.embedColor === globalConfig.defaultColor) {
-   return new NextResponse(
-    JSON.stringify({
+   return new NextResponse.json(
+    {
      error: "Embed color is already set to that",
      code: 400,
-    }),
+    },
     {
      status: 200,
      headers: {
@@ -395,11 +392,11 @@ export async function PUT(request) {
   }
 
   if (new Date().getTime() - current.embedLastChanged.getTime() < 10000) {
-   return new NextResponse(
-    JSON.stringify({
+   return new NextResponse.json(
+    {
      error: "You can only change the embed color every 10 seconds",
      code: 400,
-    }),
+    },
     {
      status: 200,
      headers: {
@@ -435,11 +432,11 @@ export async function PUT(request) {
     type: "embed_color",
    },
   });
-  return new NextResponse(
-   JSON.stringify({
+  return new NextResponse.json(
+   {
     message: "Embed color updated",
     code: 200,
-   }),
+   },
    {
     status: 200,
     headers: {
@@ -448,12 +445,11 @@ export async function PUT(request) {
    }
   );
  } catch (err) {
-  console.log(err);
-  return new NextResponse(
-   JSON.stringify({
+  return new NextResponse.json(
+   {
     error: "Internal Server Error",
     code: 500,
-   }),
+   },
    {
     status: 500,
    }
