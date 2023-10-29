@@ -221,8 +221,8 @@ importers:
         specifier: 2.2.4
         version: 2.2.4(react@18.2.0)
       tailwind-gradient-mask-image:
-        specifier: 1.0.0
-        version: 1.0.0
+        specifier: 1.1.0
+        version: 1.1.0
       tailwind-merge:
         specifier: 1.14.0
         version: 1.14.0
@@ -8431,8 +8431,8 @@ packages:
     hasBin: true
     dev: false
 
-  /tailwind-gradient-mask-image@1.0.0:
-    resolution: {integrity: sha512-eZJhn6wHZ0Irfpq5sm0ErewH6IC82gqjfVsDQ7MYrJcfTgepOoTI6EryLppNPoZds4EeD6/H0WrysT8HE90H5g==}
+  /tailwind-gradient-mask-image@1.1.0:
+    resolution: {integrity: sha512-sUhik6Srts8XvSpCFEelxF0hRud+eQI1TYgVH2sREtAavP+wEVE65JQCiDj/XBoTwCo+ElVAVNljjpfm2mCkKw==}
     dev: false
 
   /tailwind-merge@1.14.0:
