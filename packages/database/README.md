@@ -23,7 +23,7 @@
 
 1. Create new [Neon](https://neon.tech/) account and create new PostgreSQL database.
 2. Create new file or edit existing `.env` file in root directory of the project
-3. In `.env` file set this values:
+3. In `.env` file set these values:
    - `DATABASE_URL` - pooling database connection string
    - `DIRECT_URL` - non-pooling database connection string
 4. Run `pnpm install` to install dependencies.
@@ -64,7 +64,7 @@
 2. Pull the Redis Docker image (`docker pull redis`) or use existing one.
 3. Create a new container using the Redis image (`docker run --name redis -p 6379:6379 -d redis`)
 4. Create new file or edit existing `.env` file in root directory of the project
-5. In `.env` file set this values:
+5. In `.env` file set these values:
    - `REDIS_URL`- `ioredis` connection string (`redis://localhost:6379`)
 6. That's it! Majo.exe will automatically cache data in Redis.
 
@@ -111,7 +111,7 @@ REDIS_URL=REDIS_URL
 ## ⁉️ Issues
 
 If you have any issues with the bot please create [new issue here](https://github.com/igorkowalczyk/majo.exe/issues).
-When creating new issue please provide as much information as possible. If you can, please provide logs from console.
+When creating a new issue please provide as much information as possible. If you can, please provide logs from console.
 
 ## 📥 Pull Requests
 
