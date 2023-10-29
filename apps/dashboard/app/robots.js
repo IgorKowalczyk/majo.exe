@@ -1,4 +1,4 @@
-import { meta } from "@config";
+import { dashboardConfig } from "@majoexe/config";
 
 export default function robots() {
  return {
@@ -7,7 +7,7 @@ export default function robots() {
     userAgent: "*",
    },
   ],
-  sitemap: `${meta.url}/sitemap.xml`,
-  host: meta.url,
+  sitemap: `${dashboardConfig.url}/sitemap.xml`,
+  host: dashboardConfig.url,
  };
 }

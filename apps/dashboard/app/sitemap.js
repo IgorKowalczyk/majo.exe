@@ -1,8 +1,8 @@
-import { meta } from "@config";
+import { dashboardConfig } from "@majoexe/config";
 
 export default async function sitemap() {
  const routes = ["", "/commands", "/auth/login"].map((route) => ({
-  url: `${meta.url}${route}`,
+  url: `${dashboardConfig.url}${route}`,
   lastModified: new Date().toISOString().split("T")[0],
  }));
 

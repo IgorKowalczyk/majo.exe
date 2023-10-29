@@ -5,7 +5,7 @@ import { NextResponse } from "next/server";
 export async function GET(request, { params }) {
  const id = params.id;
  if (!id) {
-  return new NextResponse.json(
+  return NextResponse.json(
    {
     error: "Invalid ID",
    },
@@ -20,7 +20,7 @@ export async function GET(request, { params }) {
 
  const server = await getServer(id);
  if (server.error || !server.bot) {
-  return new NextResponse.json(
+  return NextResponse.json(
    {
     error: "Invalid ID",
    },
@@ -40,7 +40,7 @@ export async function GET(request, { params }) {
  });
 
  if (!guild || !guild.guildId || !guild.publicPage) {
-  return new NextResponse.json(
+  return NextResponse.json(
    {
     error: "Invalid ID",
    },
@@ -53,7 +53,7 @@ export async function GET(request, { params }) {
   );
  }
 
- return new NextResponse.json(
+ return NextResponse.json(
   {
    name: server.name,
    description: server.description,

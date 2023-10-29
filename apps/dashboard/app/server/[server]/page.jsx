@@ -1,5 +1,5 @@
 /* eslint-disable complexity */
-import { meta } from "@config";
+import { dashboardConfig } from "@majoexe/config";
 import prismaClient from "@majoexe/database";
 import { getServer, getGuildPreview } from "@majoexe/util/functions";
 import Link from "next/link";
@@ -48,11 +48,11 @@ export async function generateMetadata({ params }) {
   openGraph: {
    title: `${guildPreview.name || "Unnamed server"}`,
    description: guildPreview.description || "View the overview of your server.",
-   url: meta.url,
-   siteName: meta.title,
+   url: dashboardConfig.url,
+   siteName: dashboardConfig.title,
    images: [
     {
-     url: `${meta.url}/api/og/${server}`,
+     url: `${dashboardConfig.url}/api/og/${server}`,
      width: 1200,
      height: 630,
     },

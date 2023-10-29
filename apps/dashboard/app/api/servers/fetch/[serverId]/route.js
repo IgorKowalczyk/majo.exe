@@ -7,7 +7,7 @@ export async function GET(request, { params }) {
  const start = Date.now();
 
  if (!serverId) {
-  return new NextResponse.json(
+  return NextResponse.json(
    {
     error: "Bad Request",
    },
@@ -22,7 +22,7 @@ export async function GET(request, { params }) {
  const session = await getSession();
 
  if (!session || !session.access_token) {
-  return new NextResponse.json(
+  return NextResponse.json(
    {
     error: "Unauthorized",
    },
@@ -38,7 +38,7 @@ export async function GET(request, { params }) {
   const server = await getServer(serverId);
 
   if (!server || server.error) {
-   return new NextResponse.json(
+   return NextResponse.json(
     {
      error: "Server not found",
     },
@@ -52,7 +52,7 @@ export async function GET(request, { params }) {
   }
 
   if (!server.bot) {
-   return new NextResponse.json(
+   return NextResponse.json(
     {
      error: "Unauthorized",
     },
@@ -68,7 +68,7 @@ export async function GET(request, { params }) {
   const serverMember = await getGuildMember(server.id, session.access_token);
 
   if (!serverMember || !serverMember.permissions_names || !serverMember.permissions_names.includes("ManageGuild") || !serverMember.permissions_names.includes("Administrator")) {
-   return new NextResponse.json(
+   return NextResponse.json(
     {
      error: "Unauthorized",
      code: 401,
@@ -82,7 +82,7 @@ export async function GET(request, { params }) {
    );
   }
 
-  return new NextResponse.json(
+  return NextResponse.json(
    {
     server,
    },
@@ -94,7 +94,7 @@ export async function GET(request, { params }) {
    }
   );
  } catch (err) {
-  return new NextResponse.json(
+  return NextResponse.json(
    {
     error: "Internal Server Error",
    },

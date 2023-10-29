@@ -9,7 +9,7 @@ export async function GET() {
   const start = Date.now();
 
   if (!session || !session.access_token) {
-   return new NextResponse.json(
+   return NextResponse.json(
     {
      error: "Unauthorized",
     },
@@ -24,7 +24,7 @@ export async function GET() {
 
   const data = (await getServers(session.access_token)) || [];
   if (data.error) {
-   return new NextResponse.json(
+   return NextResponse.json(
     {
      error: "Unauthorized",
     },
@@ -48,7 +48,7 @@ export async function GET() {
 
   servers.sort((a, b) => (a.bot && !b.bot ? -1 : !a.bot && b.bot ? 1 : 0));
 
-  return new NextResponse.json(
+  return NextResponse.json(
    {
     servers: servers || [],
    },
@@ -60,7 +60,7 @@ export async function GET() {
    }
   );
  } catch (err) {
-  return new NextResponse.json(
+  return NextResponse.json(
    {
     error: "Internal Server Error",
    },

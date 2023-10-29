@@ -1,5 +1,5 @@
-import { meta, social } from "@config";
 import { RectangleStackIcon } from "@heroicons/react/24/outline";
+import { dashboardConfig } from "@majoexe/config";
 import clsx from "clsx";
 import { getSession } from "lib/session";
 import Link from "next/link";
@@ -26,8 +26,8 @@ export async function Nav({ theme }) {
    >
     <Link href="/" className="text-lg text-white">
      <div className="flex cursor-pointer items-center gap-2 pl-4 pr-2 text-xl duration-200 hover:opacity-90 motion-reduce:transition-none">
-      <Image className="min-h-9 min-w-9 h-9 w-9 rounded-full" src={social.logo} alt="Majo.exe" width={36} height={36} />
-      <h1 className=" hidden font-bold sm:block">{meta.title}</h1>
+      <Image className="min-h-9 min-w-9 h-9 w-9 rounded-full" src={dashboardConfig.logo} alt="Majo.exe" width={36} height={36} />
+      <h1 className=" hidden font-bold sm:block">{dashboardConfig.title}</h1>
      </div>
     </Link>
     <div className="hidden md:flex">

@@ -28,12 +28,6 @@ module.exports = {
     "button-action-primary": "#ea4d4d",
     "button-action-hover": "#ff5f5f",
    },
-   backgroundImage: {
-    shapes: "url('/assets/svg/background.svg')",
-   },
-   fontSize: {
-    normal: ["1.1rem", "1.45rem"],
-   },
    keyframes: {
     shimmer: {
      "100%": {
