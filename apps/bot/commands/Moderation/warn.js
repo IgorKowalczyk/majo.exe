@@ -1,8 +1,11 @@
+/* eslint-disable complexity */
+
+import prismaClient from "@majoexe/database";
 import { ApplicationCommandType, ApplicationCommandOptionType, PermissionsBitField, EmbedBuilder, codeBlock, PermissionFlagsBits } from "discord.js";
 
 export default {
  name: "warn",
- description: "🤖 Add/remove/modify warnings for a user",
+ description: "⚠️ Add/remove/modify warnings for a user",
  type: ApplicationCommandType.ChatInput,
  cooldown: 5000,
  dm_permission: false,
@@ -10,7 +13,7 @@ export default {
  options: [
   {
    name: "add",
-   description: "Add a warning to a user",
+   description: "⚠️ Add a warning to a user",
    type: ApplicationCommandOptionType.Subcommand,
    options: [
     {
@@ -29,7 +32,7 @@ export default {
   },
   {
    name: "remove",
-   description: "Remove a warning from a user",
+   description: "⚠️ Remove a warning from a user",
    type: ApplicationCommandOptionType.Subcommand,
    options: [
     {
@@ -41,14 +44,14 @@ export default {
     {
      name: "id",
      description: "The ID of the warning to remove",
-     type: ApplicationCommandOptionType.String,
+     type: ApplicationCommandOptionType.Integer,
      required: true,
     },
    ],
   },
   {
    name: "list",
-   description: "List the warnings of a user",
+   description: "⚠️ List the warnings of a user",
    type: ApplicationCommandOptionType.Subcommand,
    options: [
     {
@@ -61,7 +64,7 @@ export default {
   },
   {
    name: "clear",
-   description: "Clear the warnings of a user",
+   description: "⚠️ Clear the warnings of a user",
    type: ApplicationCommandOptionType.Subcommand,
    options: [
     {
@@ -84,10 +87,168 @@ export default {
     return client.errorMessages.createSlashError(interaction, "❌ I don't have permission to change Automoderation settings. Please give me `Manage Server` permission");
    }
 
-   const command = interaction.options.getSubcommandGroup();
-   const subcommand = interaction.options.getSubcommand();
+   const command = interaction.options.getSubcommand();
 
-   return client.errorMessages.createSlashError(interaction, `❌ This command is not yet implemented! Please wait for the next update`);
+   if (command === "add") {
+    const user = interaction.options.getUser("user");
+    const reason = interaction.options.getString("reason");
+
+    if (!user) {
+     return client.errorMessages.createSlashError(interaction, "❌ You need to provide a user to warn!");
+    }
+
+    if (!reason) {
+     return client.errorMessages.createSlashError(interaction, "❌ You need to provide a reason for the warning!");
+    }
+
+    const warning = await prismaClient.guildWarns.findMany({
+     where: {
+      guildId: interaction.guild.id,
+      user: {
+       discordId: user.id,
+      },
+     },
+    });
+
+    const warnNumber = warning.length + 1;
+
+    await prismaClient.guildWarns.create({
+     data: {
+      guild: {
+       connectOrCreate: {
+        where: {
+         guildId: interaction.guild.id,
+        },
+        create: {
+         guildId: interaction.guild.id,
+        },
+       },
+      },
+      user: {
+       connectOrCreate: {
+        where: {
+         discordId: user.id,
+        },
+        create: {
+         discordId: user.id,
+         name: user.username,
+         global_name: user.global_name || user.username,
+         discriminator: user.discriminator,
+        },
+       },
+      },
+      message: reason,
+      createdById: interaction.member.user.id,
+     },
+    });
+
+    const embed = new EmbedBuilder()
+     .setTitle(`**✅ Successfully warned ${user.global_name || user.username}** / \`#${warnNumber}\``)
+     .setDescription(`**Reason:**\n${codeBlock(reason)}\n**Note:** You can remove this warning with \`/warn remove ${user.id} ${warnNumber}\``)
+     .setColor(guildSettings?.embedColor || client.config.defaultColor)
+     .setTimestamp();
+
+    await interaction.followUp({ embeds: [embed] });
+   } else if (command === "remove") {
+    const user = interaction.options.getUser("user");
+    const id = interaction.options.getInteger("id");
+
+    if (!user) {
+     return client.errorMessages.createSlashError(interaction, "❌ You need to provide a user to remove the warning from!");
+    }
+
+    if (!id) {
+     return client.errorMessages.createSlashError(interaction, "❌ You need to provide the ID of the warning to remove!");
+    }
+
+    const warning = await prismaClient.guildWarns.findFirst({
+     where: {
+      guildId: interaction.guild.id,
+      id: id,
+     },
+    });
+
+    if (!warning) {
+     return client.errorMessages.createSlashError(interaction, "❌ I couldn't find a warning with that ID!");
+    }
+
+    await prismaClient.guildWarns.delete({
+     where: {
+      id: id,
+     },
+    });
+
+    const embed = new EmbedBuilder()
+     .setTitle("✅ Successfully removed warning")
+     .setDescription(`Removed warning \`#${id}\` from ${user}`)
+     .setColor(guildSettings?.embedColor || client.config.defaultColor)
+     .setTimestamp();
+
+    await interaction.followUp({ embeds: [embed] });
+   } else if (command === "list") {
+    const user = interaction.options.getUser("user");
+
+    if (!user) {
+     return client.errorMessages.createSlashError(interaction, "❌ You need to provide a user to list the warnings of!");
+    }
+
+    const warnings = await prismaClient.guildWarns.findMany({
+     where: {
+      guildId: interaction.guild.id,
+      user: {
+       discordId: user.id,
+      },
+     },
+    });
+
+    if (!warnings || warnings.length === 0) {
+     return client.errorMessages.createSlashError(interaction, "❌ I couldn't find any warnings for that user!");
+    }
+
+    const embed = new EmbedBuilder()
+     .setTitle(`🤖 Warnings for ${user.global_name || user.username} (${warnings.length})`)
+     .setDescription(warnings.map((warning) => `- \`#${warning.id}\` - ${warning.message} (<@${warning.createdById}> / <t:${Math.floor(warning.createdAt.getTime() / 1000)}:R>)`).join("\n"))
+     .setColor(guildSettings?.embedColor || client.config.defaultColor)
+     .setTimestamp();
+
+    await interaction.followUp({ embeds: [embed] });
+   } else if (command === "clear") {
+    const user = interaction.options.getUser("user");
+
+    if (!user) {
+     return client.errorMessages.createSlashError(interaction, "❌ You need to provide a user to clear the warnings of!");
+    }
+
+    const warnings = await prismaClient.guildWarns.findMany({
+     where: {
+      guildId: interaction.guild.id,
+      user: {
+       discordId: user.id,
+      },
+     },
+    });
+
+    if (!warnings || warnings.length === 0) {
+     return client.errorMessages.createSlashError(interaction, "❌ I couldn't find any warnings for that user!");
+    }
+
+    await prismaClient.guildWarns.deleteMany({
+     where: {
+      guildId: interaction.guild.id,
+      user: {
+       discordId: user.id,
+      },
+     },
+    });
+
+    const embed = new EmbedBuilder()
+     .setTitle(`✅ Successfully cleared all warnings from ${user.global_name || user.username}`)
+     .setDescription(`> \`${warnings.length}\` warnings have been cleared from ${user}`)
+     .setColor(guildSettings?.embedColor || client.config.defaultColor)
+     .setTimestamp();
+
+    await interaction.followUp({ embeds: [embed] });
+   }
   } catch (err) {
    client.errorMessages.internalError(interaction, err);
   }
