@@ -9,7 +9,8 @@ const upsertCategoriesAndCommands = async (categoriesData, commandsData) => {
 
 const categoriesData = [];
 const categories = await globby("../../apps/bot/commands/*", { onlyDirectories: true });
-for (const category of categories) {
+const categoryNames = categories.map((x) => x.split("/")[x.split("/").length - 1]);
+for (const category of categoryNames) {
  categoriesData.push({
   where: { name: category },
   update: { name: category },
