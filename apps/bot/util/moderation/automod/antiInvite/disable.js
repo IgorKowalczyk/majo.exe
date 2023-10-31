@@ -1,7 +1,9 @@
-import { disableAutoModRule } from "@majoexe/util/database";
+import { disableAutoModRule, syncAutoModRule } from "@majoexe/util/database";
 import { EmbedBuilder } from "discord.js";
 
-export async function disableAntiInvite(client, interaction, createdRule, guildSettings) {
+export async function disableAntiInvite(client, interaction, guildSettings) {
+ const createdRule = await syncAutoModRule(interaction, "anti-invite");
+
  if (!createdRule || (createdRule && !createdRule.enabled)) {
   return client.errorMessages.createSlashError(interaction, "❌ The anti-invite system is already `disabled`");
  }

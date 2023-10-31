@@ -1,7 +1,9 @@
-import { disableAutoModRule } from "@majoexe/util/database";
+import { disableAutoModRule, syncAutoModRule } from "@majoexe/util/database";
 import { EmbedBuilder } from "discord.js";
 
-export async function disableAntiBadWords(client, interaction, createdRule, guildSettings) {
+export async function disableAntiBadWords(client, interaction, guildSettings) {
+ const createdRule = await syncAutoModRule(interaction, "anti-bad-words");
+
  if (!createdRule || (createdRule && !createdRule.enabled)) {
   return client.errorMessages.createSlashError(interaction, "❌ The anti-bad-words system is already `disabled`");
  }

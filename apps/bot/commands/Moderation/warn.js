@@ -1,6 +1,6 @@
 /* eslint-disable complexity */
 
-import prismaClient from "@majoexe/database";
+import { clearWarns, listWarnings, warnUser, removeWarning } from "@majoexe/util/database";
 import { ApplicationCommandType, ApplicationCommandOptionType, PermissionsBitField, EmbedBuilder, codeBlock, PermissionFlagsBits } from "discord.js";
 
 export default {
@@ -101,51 +101,8 @@ export default {
      return client.errorMessages.createSlashError(interaction, "❌ You need to provide a reason for the warning!");
     }
 
-    const warning = await prismaClient.guildWarns.findMany({
-     where: {
-      guildId: interaction.guild.id,
-      user: {
-       discordId: user.id,
-      },
-     },
-     take: 1,
-     orderBy: {
-      warnId: "desc",
-     },
-    });
-
-    const warnNumber = warning.length === 0 ? 1 : warning[0].warnId + 1;
-
-    await prismaClient.guildWarns.create({
-     data: {
-      guild: {
-       connectOrCreate: {
-        where: {
-         guildId: interaction.guild.id,
-        },
-        create: {
-         guildId: interaction.guild.id,
-        },
-       },
-      },
-      user: {
-       connectOrCreate: {
-        where: {
-         discordId: user.id,
-        },
-        create: {
-         discordId: user.id,
-         name: user.username,
-         global_name: user.global_name || user.username,
-         discriminator: user.discriminator,
-        },
-       },
-      },
-      warnId: warnNumber,
-      message: reason,
-      createdById: interaction.member.user.id,
-     },
-    });
+    const addedWarning = await warnUser(interaction.guild.id, user, reason, interaction.member.user.id);
+    const warnNumber = addedWarning.warnId;
 
     const embed = new EmbedBuilder()
      .setTitle(`**✅ Successfully warned ${user.global_name || user.username}** / \`#${warnNumber}\``)
@@ -172,29 +129,15 @@ export default {
      return client.errorMessages.createSlashError(interaction, "❌ You need to provide the ID of the warning to remove!");
     }
 
-    const warning = await prismaClient.guildWarns.findFirst({
-     where: {
-      guildId: interaction.guild.id,
-      user: {
-       discordId: user.id,
-      },
-      warnId: id,
-     },
-    });
+    const removedWarning = await removeWarning(interaction.guild.id, user.id, id);
 
-    if (!warning) {
+    if (!removedWarning) {
      return client.errorMessages.createSlashError(interaction, "❌ I couldn't find a warning with that ID!");
     }
 
-    await prismaClient.guildWarns.delete({
-     where: {
-      id: warning.id,
-     },
-    });
-
     const embed = new EmbedBuilder()
      .setTitle("✅ Successfully removed warning")
-     .setDescription(`Removed warning \`#${warning.warnId}\` from ${user}`)
+     .setDescription(`Removed warning \`#${removedWarning.warnId}\` from ${user}`)
      .setColor(guildSettings?.embedColor || client.config.defaultColor)
      .setTimestamp()
      .setFooter({
@@ -212,14 +155,7 @@ export default {
      return client.errorMessages.createSlashError(interaction, "❌ You need to provide a user to list the warnings of!");
     }
 
-    const warnings = await prismaClient.guildWarns.findMany({
-     where: {
-      guildId: interaction.guild.id,
-      user: {
-       discordId: user.id,
-      },
-     },
-    });
+    const warnings = await listWarnings(interaction.guild.id, user.id);
 
     if (!warnings || warnings.length === 0) {
      return client.errorMessages.createSlashError(interaction, "❌ I couldn't find any warnings for that user!");
@@ -245,31 +181,11 @@ export default {
      return client.errorMessages.createSlashError(interaction, "❌ You need to provide a user to clear the warnings of!");
     }
 
-    const warnings = await prismaClient.guildWarns.findMany({
-     where: {
-      guildId: interaction.guild.id,
-      user: {
-       discordId: user.id,
-      },
-     },
-    });
-
-    if (!warnings || warnings.length === 0) {
-     return client.errorMessages.createSlashError(interaction, "❌ I couldn't find any warnings for that user!");
-    }
-
-    await prismaClient.guildWarns.deleteMany({
-     where: {
-      guildId: interaction.guild.id,
-      user: {
-       discordId: user.id,
-      },
-     },
-    });
+    const count = await clearWarns(user.id, interaction.guild.id);
 
     const embed = new EmbedBuilder()
      .setTitle(`✅ Successfully cleared all warnings from ${user.global_name || user.username}`)
-     .setDescription(`> \`${warnings.length}\` warnings have been cleared from ${user}`)
+     .setDescription(`> \`${count || 0}\` warnings have been cleared from ${user}`)
      .setColor(guildSettings?.embedColor || client.config.defaultColor)
      .setTimestamp()
      .setFooter({

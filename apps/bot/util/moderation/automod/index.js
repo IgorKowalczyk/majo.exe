@@ -1,3 +1,7 @@
+// AntiBadWords
+export * from "./antiBadWords/disable.js";
+export * from "./antiBadWords/enable.js";
+
 // AntiInvite
 export * from "./antiInvite/disable.js";
 export * from "./antiInvite/enable.js";
@@ -13,3 +17,6 @@ export * from "./antiMention/enable.js";
 // AntiSpam
 export * from "./antiSpam/disable.js";
 export * from "./antiSpam/enable.js";
+
+// Settings
+export * from "./settings/index.js";

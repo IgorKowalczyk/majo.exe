@@ -1,9 +1,20 @@
 /* eslint-disable complexity */
 
-import { enableAutoModRule, createAutoModRule } from "@majoexe/util/database";
+import { enableAutoModRule, createAutoModRule, syncAutoModRule } from "@majoexe/util/database";
 import { ChannelType, AutoModerationRuleEventType, AutoModerationRuleKeywordPresetType, AutoModerationActionType, AutoModerationRuleTriggerType, EmbedBuilder, PermissionsBitField, codeBlock } from "discord.js";
 
-export async function enableAntiBadWords(client, interaction, exemptRoles, exemptChannels, logChannel, profanity, sexualContent, slurs, createdRule, guildSettings) {
+export async function enableAntiBadWords(client, interaction, guildSettings) {
+ const createdRule = await syncAutoModRule(interaction, "anti-bad-words");
+
+ const exemptRoles = interaction.options.getRole("exempt-roles");
+ const exemptChannels = interaction.options.getChannel("exempt-channels");
+ const logChannel = interaction.options.getChannel("log-channel");
+ const profanity = interaction.options.getBoolean("profanity") ?? true;
+ const sexualContent = interaction.options.getBoolean("sexual-content") ?? true;
+ const slurs = interaction.options.getBoolean("slurs") ?? true;
+
+ if (!profanity && !sexualContent && !slurs) return client.errorMessages.createSlashError(interaction, "❌ You need to enable at least one filter!");
+
  const existingRules = await interaction.guild.autoModerationRules.fetch({ cache: false });
  const conflictingRule = existingRules.filter((rule) => rule.triggerType === AutoModerationRuleTriggerType.KeywordPreset).first();
  if (conflictingRule) await conflictingRule.delete("New anti-bad-words rule created");

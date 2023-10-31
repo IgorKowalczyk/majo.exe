@@ -5,9 +5,11 @@ import { fetchAutoModRules } from "./fetchAutoModRules.js";
 
 /**
  * Syncs an automod rule with the database
+ *
  * @param {string} interaction The discord interaction
  * @param {string} ruleType The type of the rule
  * @returns {Promise<>} The automod rule
+ * @throws {Error} Will throw an error if the sync of the automod rule fails.
  */
 export async function syncAutoModRule(interaction, ruleType) {
  const rules = await fetchAutoModRules(interaction.guild.id);

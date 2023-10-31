@@ -4,13 +4,19 @@ export * from "./settings/XPSettings.js";
 // Logs
 export * from "./logs/fetchLogs.js";
 
-// Moderation
-export * from "./moderation/createAutoModRule.js";
-export * from "./moderation/deleteAutoModRule.js";
-export * from "./moderation/disableAutoModRule.js";
-export * from "./moderation/enableAutoModRule.js";
-export * from "./moderation/fetchAutoModRules.js";
-export * from "./moderation/syncAutoModRule.js";
+// AutoMod
+export * from "./moderation/automod/createAutoModRule.js";
+export * from "./moderation/automod/deleteAutoModRule.js";
+export * from "./moderation/automod/disableAutoModRule.js";
+export * from "./moderation/automod/enableAutoModRule.js";
+export * from "./moderation/automod/fetchAutoModRules.js";
+export * from "./moderation/automod/syncAutoModRule.js";
+
+// Warnings
+export * from "./moderation/warn/add.js";
+export * from "./moderation/warn/clear.js";
+export * from "./moderation/warn/list.js";
+export * from "./moderation/warn/remove.js";
 
 // XP
 export * from "./xp/check.js";

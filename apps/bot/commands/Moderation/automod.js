@@ -1,10 +1,5 @@
-/* eslint-disable complexity */
-
-import { fetchAutoModRules, syncAutoModRule } from "@majoexe/util/database";
-import { ApplicationCommandType, ChannelType, ApplicationCommandOptionType, PermissionsBitField, EmbedBuilder, codeBlock, PermissionFlagsBits } from "discord.js";
-import { disableAntiBadWords } from "../../util/moderation/automod/antiBadWords/disable.js";
-import { enableAntiBadWords } from "../../util/moderation/automod/antiBadWords/enable.js";
-import { disableAntiInvite, enableAntiInvite, disableAntiLink, enableAntiLink, disableAntiMention, enableAntiMention, disableAntiSpam, enableAntiSpam } from "../../util/moderation/automod/index.js";
+import { ApplicationCommandType, ChannelType, ApplicationCommandOptionType, PermissionsBitField, PermissionFlagsBits } from "discord.js";
+import { autoModSettings, disableAntiBadWords, enableAntiBadWords, disableAntiInvite, enableAntiInvite, disableAntiLink, enableAntiLink, disableAntiMention, enableAntiMention, disableAntiSpam, enableAntiSpam } from "../../util/moderation/automod/index.js";
 
 export default {
  name: "automod",
@@ -280,130 +275,17 @@ export default {
    const subcommand = interaction.options.getSubcommand();
 
    if (subcommand === "settings") {
-    let allRules = await fetchAutoModRules(interaction.guild.id);
-
-    allRules.forEach(async (rule) => {
-     try {
-      allRules[allRules.indexOf(rule)] = await syncAutoModRule(interaction, rule.ruleType);
-     } catch (err) {
-      await client.errorMessages.createSlashError(interaction, `❌ Failed to sync rule \`${rule.ruleId}\``);
-     }
-    });
-
-    const antiInviteRule = allRules.find((rule) => rule.ruleType === "anti-invite");
-    const antiLinkRule = allRules.find((rule) => rule.ruleType === "anti-link");
-    const antiMentionRule = allRules.find((rule) => rule.ruleType === "anti-mention");
-    const antiSpamRule = allRules.find((rule) => rule.ruleType === "anti-spam");
-    const antiBadWordsRule = allRules.find((rule) => rule.ruleType === "anti-bad-words");
-
-    const embed = new EmbedBuilder()
-     .setColor(guildSettings?.embedColor || client.config.defaultColor)
-     .setTimestamp()
-     .setTitle("🤖 Automoderation settings")
-     .setDescription("> You can `enable`/`disable` automoderation systems using `/automod <subcommand>`")
-     .setFields([
-      {
-       name: "🔗 Anti-invite system",
-       value: codeBlock(antiInviteRule?.enabled ? "✅ Enabled" : "❌ Disabled"),
-       inline: false,
-      },
-      {
-       name: "🔗 Anti-link system",
-       value: codeBlock(antiLinkRule?.enabled ? "✅ Enabled" : "❌ Disabled"),
-       inline: false,
-      },
-      {
-       name: "💭 Anti-mention system",
-       value: codeBlock(antiMentionRule?.enabled ? "✅ Enabled" : "❌ Disabled"),
-       inline: false,
-      },
-      {
-       name: "📨 Anti-spam system",
-       value: codeBlock(antiSpamRule?.enabled ? "✅ Enabled" : "❌ Disabled"),
-       inline: false,
-      },
-      {
-       name: "🤬 Anti-bad-words system",
-       value: codeBlock(antiBadWordsRule?.enabled ? "✅ Enabled" : "❌ Disabled"),
-       inline: false,
-      },
-     ])
-     .setThumbnail(
-      interaction.guild.iconURL({
-       size: 256,
-      })
-     )
-     .setFooter({
-      text: `Requested by ${interaction.member.user.globalName || interaction.member.user.username}`,
-      iconURL: interaction.user.displayAvatarURL({
-       size: 256,
-      }),
-     });
-
-    return interaction.followUp({ embeds: [embed] });
+    await autoModSettings(client, interaction, guildSettings);
    } else if (command === "anti-invite") {
-    const exemptRoles = interaction.options.getRole("exempt-roles");
-    const exemptChannels = interaction.options.getChannel("exempt-channels");
-    const timeout = interaction.options.getInteger("timeout");
-    const logChannel = interaction.options.getChannel("log-channel");
-    const createdRule = await syncAutoModRule(interaction, "anti-invite");
-
-    if (subcommand === "enable") {
-     await enableAntiInvite(client, interaction, exemptRoles, exemptChannels, timeout, logChannel, createdRule, guildSettings);
-    } else {
-     await disableAntiInvite(client, interaction, createdRule, guildSettings);
-    }
+    subcommand === "enable" ? await enableAntiInvite(client, interaction, guildSettings) : await disableAntiInvite(client, interaction, guildSettings);
    } else if (command === "anti-link") {
-    const exemptRoles = interaction.options.getRole("exempt-roles");
-    const exemptChannels = interaction.options.getChannel("exempt-channels");
-    const timeout = interaction.options.getInteger("timeout");
-    const logChannel = interaction.options.getChannel("log-channel");
-    const createdRule = await syncAutoModRule(interaction, "anti-link");
-
-    if (subcommand === "enable") {
-     await enableAntiLink(client, interaction, exemptRoles, exemptChannels, timeout, logChannel, createdRule, guildSettings);
-    } else {
-     await disableAntiLink(client, interaction, createdRule, guildSettings);
-    }
+    subcommand === "enable" ? await enableAntiLink(client, interaction, guildSettings) : await disableAntiLink(client, interaction, guildSettings);
    } else if (command === "anti-mention") {
-    const limit = interaction.options.getInteger("limit") || 5;
-    const exemptRoles = interaction.options.getRole("exempt-roles");
-    const exemptChannels = interaction.options.getChannel("exempt-channels");
-    const timeout = interaction.options.getInteger("timeout");
-    const logChannel = interaction.options.getChannel("log-channel");
-    const createdRule = await syncAutoModRule(interaction, "anti-mention");
-
-    if (subcommand === "enable") {
-     await enableAntiMention(client, interaction, limit, exemptRoles, exemptChannels, timeout, logChannel, createdRule, guildSettings);
-    } else {
-     await disableAntiMention(client, interaction, createdRule, guildSettings);
-    }
+    subcommand === "enable" ? await enableAntiMention(client, interaction, guildSettings) : await disableAntiMention(client, interaction, guildSettings);
    } else if (command === "anti-spam") {
-    const exemptRoles = interaction.options.getRole("exempt-roles");
-    const exemptChannels = interaction.options.getChannel("exempt-channels");
-    const logChannel = interaction.options.getChannel("log-channel");
-    const createdRule = await syncAutoModRule(interaction, "anti-spam");
-
-    if (subcommand === "enable") {
-     await enableAntiSpam(client, interaction, exemptRoles, exemptChannels, logChannel, createdRule, guildSettings);
-    } else {
-     await disableAntiSpam(client, interaction, createdRule, guildSettings);
-    }
+    subcommand === "enable" ? await enableAntiSpam(client, interaction, guildSettings) : await disableAntiSpam(client, interaction, guildSettings);
    } else if (command === "anti-bad-words") {
-    const exemptRoles = interaction.options.getRole("exempt-roles");
-    const exemptChannels = interaction.options.getChannel("exempt-channels");
-    const logChannel = interaction.options.getChannel("log-channel");
-    const profanity = interaction.options.getBoolean("profanity") ?? true;
-    const sexualContent = interaction.options.getBoolean("sexual-content") ?? true;
-    const slurs = interaction.options.getBoolean("slurs") ?? true;
-    const createdRule = await syncAutoModRule(interaction, "anti-bad-words");
-
-    if (subcommand === "enable") {
-     if (!profanity && !sexualContent && !slurs) return client.errorMessages.createSlashError(interaction, "❌ You need to enable at least one filter!");
-     await enableAntiBadWords(client, interaction, exemptRoles, exemptChannels, logChannel, profanity, sexualContent, slurs, createdRule, guildSettings);
-    } else {
-     await disableAntiBadWords(client, interaction, createdRule, guildSettings);
-    }
+    subcommand === "enable" ? await enableAntiBadWords(client, interaction, guildSettings) : await disableAntiBadWords(client, interaction, guildSettings);
    }
   } catch (err) {
    client.errorMessages.internalError(interaction, err);

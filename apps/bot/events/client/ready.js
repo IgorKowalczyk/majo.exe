@@ -6,8 +6,8 @@ export async function ready(client) {
  const commands = await client.application.commands.set(client.slashCommands).catch((err) => {
   client.debugger("error", err);
  });
- client.debugger("event", `Successfully registered ${commands.size} slash commands (+${client.additionalSlashCommands} subcommands) in ${client.performance(registerTime)}`);
- client.debugger("ready", `Logged in as ${client.user.tag}, id: ${client.user.id}`);
+ client.debugger("event", `Successfully registered ${commands.size + client.additionalSlashCommands} slash commands (with ${client.additionalSlashCommands} subcommands) in ${client.performance(registerTime)}`);
+ client.debugger("ready", `Logged in as ${client.user.tag}, ID: ${client.user.id}`);
 
  client.user.setActivity(client.config.presence.activity.type === ActivityType.Custom ? client.config.presence.activity.state : client.config.presence.activity.name, {
   type: client.config.presence.activity.type,

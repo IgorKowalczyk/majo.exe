@@ -1,7 +1,9 @@
-import { disableAutoModRule } from "@majoexe/util/database";
+import { disableAutoModRule, syncAutoModRule } from "@majoexe/util/database";
 import { EmbedBuilder } from "discord.js";
 
-export async function disableAntiMention(client, interaction, createdRule, guildSettings) {
+export async function disableAntiMention(client, interaction, guildSettings) {
+ const createdRule = await syncAutoModRule(interaction, "anti-mention");
+
  if (!createdRule || (createdRule && !createdRule.enabled)) {
   return client.errorMessages.createSlashError(interaction, "❌ The anti-mention system is already `disabled`");
  }

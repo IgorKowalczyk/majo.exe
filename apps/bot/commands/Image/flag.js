@@ -109,6 +109,13 @@ export default {
  ],
  run: async (client, interaction, guildSettings) => {
   try {
+   const countryFlags = {
+    japan: "🇯🇵",
+    america: "🇺🇸",
+    russia: "🇷🇺",
+    germany: "🇩🇪",
+    poland: "🇵🇱",
+   };
    const subcommand = interaction.options.getSubcommand();
    const attachment = interaction.options.getAttachment("attachment");
    const user = interaction.options.getUser("user") || interaction.member.user;
@@ -164,7 +171,7 @@ export default {
    });
 
    const embed = new EmbedBuilder()
-    .setTitle(`🏳️ ${subcommand.charAt(0).toUpperCase() + subcommand.slice(1)}`)
+    .setTitle(`${countryFlags[subcommand]} ${subcommand.charAt(0).toUpperCase() + subcommand.slice(1)}`)
     .setImage("attachment://flag.gif")
     .setColor(guildSettings?.embedColor || client.config.defaultColor)
     .setTimestamp()

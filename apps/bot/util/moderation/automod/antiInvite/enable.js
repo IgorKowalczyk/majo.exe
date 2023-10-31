@@ -1,9 +1,16 @@
 /* eslint-disable complexity */
 
-import { enableAutoModRule, createAutoModRule } from "@majoexe/util/database";
+import { enableAutoModRule, createAutoModRule, syncAutoModRule } from "@majoexe/util/database";
 import { ChannelType, AutoModerationRuleEventType, AutoModerationActionType, AutoModerationRuleTriggerType, EmbedBuilder, PermissionsBitField, codeBlock } from "discord.js";
 
-export async function enableAntiInvite(client, interaction, exemptRoles, exemptChannels, timeout, logChannel, createdRule, guildSettings) {
+export async function enableAntiInvite(client, interaction, guildSettings) {
+ const createdRule = await syncAutoModRule(interaction, "anti-invite");
+
+ const exemptRoles = interaction.options.getRole("exempt-roles");
+ const exemptChannels = interaction.options.getChannel("exempt-channels");
+ const timeout = interaction.options.getInteger("timeout");
+ const logChannel = interaction.options.getChannel("log-channel");
+
  const existingRules = await interaction.guild.autoModerationRules.fetch({ cache: false });
  const conflictingRules = existingRules.filter((rule) => rule.triggerType === AutoModerationRuleTriggerType.Keyword);
  if (conflictingRules.size === 6) return client.errorMessages.createSlashError(interaction, "❌ You can only have 6 keyword rules enabled at once. Please disable one of the existing keyword rules before enabling this one.");

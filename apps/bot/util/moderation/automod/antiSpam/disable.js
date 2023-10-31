@@ -1,7 +1,9 @@
-import { disableAutoModRule } from "@majoexe/util/database";
+import { disableAutoModRule, syncAutoModRule } from "@majoexe/util/database";
 import { EmbedBuilder } from "discord.js";
 
-export async function disableAntiSpam(client, interaction, createdRule, guildSettings) {
+export async function disableAntiSpam(client, interaction, guildSettings) {
+ const createdRule = await syncAutoModRule(interaction, "anti-spam");
+
  if (!createdRule || (createdRule && !createdRule.enabled)) {
   return client.errorMessages.createSlashError(interaction, "❌ The anti-spam system is already `disabled`");
  }
