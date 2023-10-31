@@ -16,27 +16,13 @@ const nextConfig = {
    {
     protocol: "https",
     hostname: "cdn.discordapp.com",
-    pathname: "/avatars/**",
+    pathname: "**",
    },
    {
     protocol: "https",
-    hostname: "cdn.discordapp.com",
-    pathname: "/banners/**",
-   },
-   {
-    protocol: "https",
-    hostname: "cdn.discordapp.com",
-    pathname: "/icons/*",
-   },
-   {
-    protocol: "https",
-    hostname: "cdn.discordapp.com",
-    pathname: "/emojis/**",
-   },
-   {
-    protocol: "https",
+    port: "",
     hostname: "media.discordapp.net",
-    pathname: "/attachments/**",
+    pathname: "**",
    },
   ],
  },

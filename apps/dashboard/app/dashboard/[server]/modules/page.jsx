@@ -44,8 +44,6 @@ export default async function Settings({ params }) {
   });
  }
 
- console.log(guild.guildDisabledCommands);
-
  const categories = await prismaClient.commandCategories.findMany({
   select: {
    name: true,
@@ -76,7 +74,7 @@ export default async function Settings({ params }) {
      {categories.map((category) => (
       <Block className="min-w-48" key={category.name}>
        <Header3 className="mb-4">
-        {botConfig.emojis.categories.find((cat) => cat.name === category.name.toLowerCase()).emoji} {category.name}
+        {botConfig.emojis.categories.find((cat) => cat.name === category.name.toLowerCase())?.emoji || "❔"} {category.name}
         <span className="ml-auto mr-0">
          <UpdateCategories serverId={serverDownload.id} categoryName={category.name} categoryEnabled={!guild.guildDisabledCategories.some((cat) => cat.categoryName === category.name)} />
         </span>
@@ -103,7 +101,7 @@ export default async function Settings({ params }) {
     {categories.map((category) => (
      <div key={category.name}>
       <Header3 className="mb-4 mt-8">
-       {botConfig.emojis.categories.find((cat) => cat.name === category.name.toLowerCase()).emoji} {category.name} ({category.commands.length} commands)
+       {botConfig.emojis.categories.find((cat) => cat.name === category.name.toLowerCase())?.emoji || "❔"} {category.name} ({category.commands.length} commands)
       </Header3>
 
       {guild.guildDisabledCategories.some((cat) => cat.categoryName === category.name) && (
