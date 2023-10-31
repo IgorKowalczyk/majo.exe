@@ -28,7 +28,7 @@ export default {
     inline: true,
    }));
 
-   const wait = new EmbedBuilder().setColor(guildSettings?.embedColor || client.config.defaultColor).setDescription(`${client.config.emojis.loading} | I'm collecting info about myself. Please wait...`);
+   const wait = new EmbedBuilder().setColor(guildSettings?.embedColor || client.config.defaultColor).setDescription(`${client.config.emojis.loading} | Collecting data...`);
 
    const messageCreate = await interaction.followUp({ embeds: [wait] });
 
