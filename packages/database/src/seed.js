@@ -2,18 +2,14 @@ import { globby } from "globby";
 import prismaClient from "./client.js";
 import { Logger } from "./logger.js";
 
-/* Yeah... I know, the code is a mess, but it works. When it doesn't message me on Discord: @majonezexe */
-/* Im too tired to make it look and work better, so I'll just leave it like this for now. */
+const upsertCategoriesAndCommands = async (categoriesData, commandsData) => {
+ Logger("event", `Upserting ${categoriesData.length} categories and ${commandsData.length} commands...`);
+ await prismaClient.$transaction([...categoriesData.map((x) => prismaClient.commandCategories.upsert(x)), ...commandsData.map((x) => prismaClient.commands.upsert(x))]);
+};
 
-Logger("event", "Seeding database...");
-const time = performance.now();
-const commandsData = [];
 const categoriesData = [];
 const categories = await globby("../../apps/bot/commands/*", { onlyDirectories: true });
-
-for (const value of categories) {
- const category = value.split("/")[value.split("/").length - 1];
-
+for (const category of categories) {
  categoriesData.push({
   where: { name: category },
   update: { name: category },
@@ -23,22 +19,20 @@ for (const value of categories) {
  });
 }
 
-Logger("event", `Seeding ${categoriesData.length} categories...`);
-await prismaClient.$transaction(categoriesData.map((x) => prismaClient.commandCategories.upsert(x)));
-
 const slashCommands = await globby("../../apps/bot/commands/**/*.js");
+const commandsData = [];
+for (const slashCommand of slashCommands) {
+ const file = await import("../" + slashCommand);
+ const { default: command } = file;
 
-for (const value of slashCommands) {
- const file = await import("../" + value);
- const { default: slashCommand } = file;
-
- if (!slashCommand) continue;
- const { name, description, type, run, options } = slashCommand;
+ if (!command) continue;
+ const { name, description, type, run, options } = command;
  if (!name || !description || !type || !run) continue;
 
- const category = value.split("/")[value.split("/").length - 2];
+ const category = slashCommand.split("/")[slashCommand.split("/").length - 2];
 
  commandsData.push({
+  where: { name },
   update: {
    name,
    description,
@@ -49,7 +43,6 @@ for (const value of slashCommands) {
     },
    },
   },
-  where: { name },
   create: {
    name,
    description,
@@ -63,9 +56,10 @@ for (const value of slashCommands) {
  });
 }
 
-Logger("event", `Seeding ${commandsData.length} commands...`);
-await prismaClient.$transaction(commandsData.map((x) => prismaClient.commands.upsert(x)));
+const time = performance.now();
+await upsertCategoriesAndCommands(categoriesData, commandsData);
 
-Logger("ready", `Seeded database in ${Math.floor((performance.now() - time) / 1000)}s`);
+const perf = Math.floor((performance.now() - time) / 1000);
+Logger("ready", `Seeded database in ${perf}s`);
 
 process.exit(0);
