@@ -93,7 +93,7 @@ export default async function ServerLeaderboard({ params }) {
     </span>
    </Header5>
    <Block className="flex w-full overflow-auto">
-    {xp.length === 0 && <h3 className="text-left text-xl font-bold">No users found!</h3>}
+    {xp.length === 0 && <h3 className="text-left text-xl font-bold">Sadly, there are no users in the leaderboard right now!</h3>}
     {xp.length > 0 && (
      <div className="mt-4 w-full">
       <Leaderboard data={data} />

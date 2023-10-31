@@ -74,7 +74,7 @@ export default async function ServerLogs({ params }) {
     Here you can view all users warns issued by users with the <code>Manage Server</code> permission. View selected users profile to view and manage their warns.
    </Header5>
    <Block className="flex w-full overflow-auto">
-    {warns.length === 0 && <h3 className="text-left text-xl font-bold">No warns found!</h3>}
+    {warns.length === 0 && <h3 className="text-left text-xl font-bold">Hooray! No warns have been issued yet.</h3>}
     {warns.length > 0 && (
      <div className="mt-4 w-full">
       <Warns data={warns} />
