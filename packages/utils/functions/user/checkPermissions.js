@@ -1,8 +1,10 @@
 import { PermissionFlagsBits } from "discord-api-types/v10";
 
 /**
- * @param {bigint} permissionNumber The permission number.
- * @returns {string[]} The permission names.
+ * Get the permission names from a permission number.
+ *
+ * @param {bigint} permissionNumber - The permission number.
+ * @returns {string[]} - The permission names.
  * @example getPermissionNames(8n)
  */
 export function getPermissionNames(permissionNumber) {

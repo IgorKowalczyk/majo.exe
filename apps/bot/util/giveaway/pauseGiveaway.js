@@ -1,10 +1,13 @@
 import { EmbedBuilder } from "discord.js";
 
 /**
- * @param {object} client Discord Client
- * @param {object} interaction Discord Interaction
- * @param {object} color Embed color
- * @returns {Promise<void>}
+ * Pause a giveaway.
+ *
+ * @param {object} client - Discord Client
+ * @param {object} interaction - Discord Interaction
+ * @param {object} color - Embed color
+ * @returns {Promise<void>} Promise that resolves when the giveaway is paused
+ * @throws {Error} Error that is thrown if the giveaway could not be paused
  * */
 export async function PauseGiveaway(client, interaction, color) {
  try {

@@ -1,7 +1,8 @@
 /**
  * Invert a hex color
- * @param {string} hex The hex color to invert
- * @returns {string} The inverted hex color
+ *
+ * @param {string} hex - The hex color to invert
+ * @returns {string} - The inverted hex color
  **/
 export function invertColor(hex) {
  hex = hex.replace("#", "");

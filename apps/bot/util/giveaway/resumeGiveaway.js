@@ -1,10 +1,13 @@
 import { EmbedBuilder } from "discord.js";
 
 /**
- * @param {object} client Discord Client
- * @param {object} interaction Discord Interaction
- * @param {string} color Embed color
- * @returns {Promise<void>}
+ * Resume a giveaway.
+ *
+ * @param {object} client - Discord Client
+ * @param {object} interaction - Discord Interaction
+ * @param {string} color - Embed color
+ * @returns {Promise<void>} Promise that resolves when the giveaway is resumed
+ * @throws {Error} Error that is thrown if the giveaway could not be resumed
  * */
 export async function ResumeGiveaway(client, interaction, color) {
  try {

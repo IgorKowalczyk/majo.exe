@@ -2,10 +2,13 @@ import prismaClient from "@majoexe/database";
 import { EmbedBuilder } from "discord.js";
 
 /**
- * @param {object} client Discord Client
- * @param {object} interaction Discord Interaction
- * @param {string} color Embed color
- * @returns {Promise<void>}
+ * Find giveaways in a guild.
+ *
+ * @param {object} client - Discord Client
+ * @param {object} interaction - Discord Interaction
+ * @param {string} color - Embed color
+ * @returns {Promise<void>} Promise that resolves when the giveaways are found
+ * @throws {Error} Error that is thrown if the giveaways could not be found
  * */
 export async function FindGiveaways(client, interaction, color, type) {
  try {

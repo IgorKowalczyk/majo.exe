@@ -1,6 +1,13 @@
 import prismaClient from "@majoexe/database";
 import { GiveawaysManager } from "discord-giveaways";
 
+/**
+ * Creates a new giveaway manager.
+ *
+ * @param {object} client - The Discord client.
+ * @returns {GiveawaysManager} The giveaway manager.
+ */
+
 export default function giveaway(client) {
  const Giveaways = class extends GiveawaysManager {
   async getAllGiveaways() {

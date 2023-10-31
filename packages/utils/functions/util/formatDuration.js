@@ -1,7 +1,8 @@
 /**
  * Formats a duration in milliseconds to a human readable string.
- * @param {number} durationInMs The duration in milliseconds.
- * @returns {string} The formatted duration.
+ *
+ * @param {number} durationInMs - The duration in milliseconds.
+ * @returns {string} - The formatted duration.
  * @example
  * const duration = formatDuration(1000 * 60 * 60 * 24);
  * console.log(duration);

@@ -2,8 +2,11 @@ import { globalConfig } from "@majoexe/config";
 import { getPermissionNames } from "../user/checkPermissions.js";
 
 /**
- * @param {string} token The token of the user.
- * @returns {Promise<object[]> | object} The servers the user is in.
+ * Get all servers the user is in.
+ *
+ * @param {string} token - The token of the user.
+ * @returns {Promise<object[]> | object} - The servers the user is in.
+ * @throws {Error} - Throws an error if the operation fails.
  * @example getServers("token")
  * @example getServers("token").then((res) => console.log(res))
  * */

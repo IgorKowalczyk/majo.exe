@@ -1,17 +1,24 @@
 import prismaClient from "@majoexe/database";
 
 /**
- * Set Reputation for user
- * @param {string} user The user to set reputation for
- * @param {string} guild The guild to set reputation in
- * @param {number} amount The amount of reputation to set
- * @returns {Promise<number>} The reputation
+ * Sets the reputation of a user in a guild.
+ *
+ * @param {Object} user - The user object containing user details.
+ * @param {string} user.id - The ID of the user.
+ * @param {string} user.username - The username of the user.
+ * @param {string} [user.globalName] - The global name of the user.
+ * @param {string} user.discriminator - The discriminator of the user.
+ * @param {string} user.avatar - The avatar of the user.
+ * @param {Object} guildId - The ID of the guild.
+ * @param {number} amount - The amount of reputation to set.
+ * @returns {Promise<number>} - Returns the set amount of reputation for the user in the guild.
+ * @throws {Error} - Throws an error if the operation fails.
  */
-export async function setReputation(user, guild, amount) {
+export async function setReputation(user, guildId, amount) {
  try {
   const rep = await prismaClient.reputation.findFirst({
    where: {
-    guildId: guild.id,
+    guildId: guildId,
     userId: user.id,
    },
   });
@@ -22,10 +29,10 @@ export async function setReputation(user, guild, amount) {
      guild: {
       connectOrCreate: {
        where: {
-        guildId: guild.id,
+        guildId: guildId,
        },
        create: {
-        guildId: guild.id,
+        guildId: guildId,
        },
       },
      },

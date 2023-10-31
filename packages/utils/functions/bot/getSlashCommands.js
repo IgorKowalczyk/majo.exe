@@ -2,7 +2,9 @@ import { globalConfig } from "@majoexe/config";
 
 /**
  * Get all slash commands from the bot.
- * @returns {Promise<object[]> | object} The slash commands.
+ *
+ * @returns {Promise<object[]> | object} - The slash commands from the bot.
+ * @throws {Error} - Throws an error if the operation fails.
  * @example getSlashCommands()
  * */
 export async function getSlashCommands() {

@@ -1,5 +1,6 @@
 /**
  * Get the avatar of a user.
+ *
  * @param {object} user The user object.
  * @param {number} size The size of the avatar.
  * @returns {string}

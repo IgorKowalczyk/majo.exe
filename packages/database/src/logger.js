@@ -13,9 +13,9 @@ const types = ["info", "event", "error", "warn", "ready"];
 const longest = types.reduce((long, str) => Math.max(long, str.length), 0);
 
 /**
- * @param {string} type The type of the log
- * @param {...any} args The arguments to log
- * @returns {string} The colored log message
+ * @param {"info" | "event" | "error" | "warn" | "ready"} type - The type of log
+ * @param {...any} args - The arguments to log
+ * @returns {string} - The colored log message
  * @example Logger("info", "Hello world!")
  */
 export function Logger(type, ...args) {

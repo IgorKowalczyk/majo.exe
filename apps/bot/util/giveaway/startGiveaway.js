@@ -2,10 +2,13 @@ import { EmbedBuilder } from "discord.js";
 import ms from "ms";
 
 /**
- * @param {object} client Discord Client
- * @param {object} interaction Discord Interaction
- * @param {string} color Embed color
- * @returns {Promise<void>}
+ * Start a giveaway.
+ *
+ * @param {object} client - Discord Client
+ * @param {object} interaction - Discord Interaction
+ * @param {string} color - Embed color
+ * @returns {Promise<void>} Promise that resolves when the giveaway is started
+ * @throws {Error} Error that is thrown if the giveaway could not be started
  * */
 export async function StartGiveaway(client, interaction, color) {
  try {

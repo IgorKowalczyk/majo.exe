@@ -1,12 +1,14 @@
 import prismaClient from "@majoexe/database";
 import { cacheGet, cacheSet } from "@majoexe/database/redis";
 import { fetchXPSettings } from "@majoexe/util/database";
-import { EmbedBuilder, AttachmentBuilder, PermissionsBitField } from "discord.js";
+import { EmbedBuilder, AttachmentBuilder, PermissionsBitField, ChannelType } from "discord.js";
 import { createXPCard } from "../../util/images/createXPCard.js";
 
 export async function messageCreate(client, message) {
  if (message.author.bot) return;
- if (message.channel.type === "DM") return;
+
+ // Only count messages in guild text channels
+ if (message.channel.type !== ChannelType.GuildText && message.channel.type !== ChannelType.GuildForum && message.channel.type !== ChannelType.GuildAnnouncement) return;
 
  const messages = await prismaClient.guildMessage.findFirst({
   where: {
