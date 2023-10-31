@@ -108,9 +108,13 @@ export default {
        discordId: user.id,
       },
      },
+     take: 1,
+     orderBy: {
+      warnId: "desc",
+     },
     });
 
-    const warnNumber = warning.length + 1;
+    const warnNumber = warning.length === 0 ? 1 : warning[0].warnId + 1;
 
     await prismaClient.guildWarns.create({
      data: {
@@ -137,6 +141,7 @@ export default {
         },
        },
       },
+      warnId: warnNumber,
       message: reason,
       createdById: interaction.member.user.id,
      },
@@ -146,7 +151,13 @@ export default {
      .setTitle(`**✅ Successfully warned ${user.global_name || user.username}** / \`#${warnNumber}\``)
      .setDescription(`**Reason:**\n${codeBlock(reason)}\n**Note:** You can remove this warning with \`/warn remove ${user.id} ${warnNumber}\``)
      .setColor(guildSettings?.embedColor || client.config.defaultColor)
-     .setTimestamp();
+     .setTimestamp()
+     .setFooter({
+      text: `Requested by ${interaction.member.user.globalName || interaction.member.user.username}`,
+      iconURL: interaction.member.user.displayAvatarURL({
+       size: 256,
+      }),
+     });
 
     await interaction.followUp({ embeds: [embed] });
    } else if (command === "remove") {
@@ -164,7 +175,10 @@ export default {
     const warning = await prismaClient.guildWarns.findFirst({
      where: {
       guildId: interaction.guild.id,
-      id: id,
+      user: {
+       discordId: user.id,
+      },
+      warnId: id,
      },
     });
 
@@ -174,15 +188,21 @@ export default {
 
     await prismaClient.guildWarns.delete({
      where: {
-      id: id,
+      id: warning.id,
      },
     });
 
     const embed = new EmbedBuilder()
      .setTitle("✅ Successfully removed warning")
-     .setDescription(`Removed warning \`#${id}\` from ${user}`)
+     .setDescription(`Removed warning \`#${warning.warnId}\` from ${user}`)
      .setColor(guildSettings?.embedColor || client.config.defaultColor)
-     .setTimestamp();
+     .setTimestamp()
+     .setFooter({
+      text: `Requested by ${interaction.member.user.globalName || interaction.member.user.username}`,
+      iconURL: interaction.member.user.displayAvatarURL({
+       size: 256,
+      }),
+     });
 
     await interaction.followUp({ embeds: [embed] });
    } else if (command === "list") {
@@ -207,9 +227,15 @@ export default {
 
     const embed = new EmbedBuilder()
      .setTitle(`🤖 Warnings for ${user.global_name || user.username} (${warnings.length})`)
-     .setDescription(warnings.map((warning) => `- \`#${warning.id}\` - ${warning.message} (<@${warning.createdById}> / <t:${Math.floor(warning.createdAt.getTime() / 1000)}:R>)`).join("\n"))
+     .setDescription(warnings.map((warning) => `- \`#${warning.warnId}\` - ${warning.message} (by <@${warning.createdById}> / <t:${Math.floor(warning.createdAt.getTime() / 1000)}:R>)`).join("\n"))
      .setColor(guildSettings?.embedColor || client.config.defaultColor)
-     .setTimestamp();
+     .setTimestamp()
+     .setFooter({
+      text: `Requested by ${interaction.member.user.globalName || interaction.member.user.username}`,
+      iconURL: interaction.member.user.displayAvatarURL({
+       size: 256,
+      }),
+     });
 
     await interaction.followUp({ embeds: [embed] });
    } else if (command === "clear") {
@@ -245,7 +271,13 @@ export default {
      .setTitle(`✅ Successfully cleared all warnings from ${user.global_name || user.username}`)
      .setDescription(`> \`${warnings.length}\` warnings have been cleared from ${user}`)
      .setColor(guildSettings?.embedColor || client.config.defaultColor)
-     .setTimestamp();
+     .setTimestamp()
+     .setFooter({
+      text: `Requested by ${interaction.member.user.globalName || interaction.member.user.username}`,
+      iconURL: interaction.member.user.displayAvatarURL({
+       size: 256,
+      }),
+     });
 
     await interaction.followUp({ embeds: [embed] });
    }

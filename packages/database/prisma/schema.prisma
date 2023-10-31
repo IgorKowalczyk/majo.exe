@@ -255,7 +255,8 @@ model AutoMod {
 }
 
 model GuildWarns {
- id          Int      @id @default(autoincrement())
+ id          String   @id @default(cuid())
+ warnId      Int      @map(name: "warn_id")
  guildId     String   @map(name: "guild_id")
  userId      String   @map(name: "user_id")
  createdById String   @default("0") @map(name: "created_by_id")
