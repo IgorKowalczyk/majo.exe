@@ -8,9 +8,9 @@ export default function Loading() {
   <>
    <Header1>
     <ExclamationTriangleIcon className="min-h-12 min-w-12 h-12 w-12" />
-    Warns
+    Warns <span className="text-accent-primary">(Loading...) </span>
    </Header1>
-   <TextSkeleton className="mb-4 mt-2 w-32 justify-start" />
+   <TextSkeleton className="mb-4 mt-2 w-64 justify-start" />
    <div className="mx-auto flex w-full items-center justify-start overflow-auto">
     <Block className="mt-4 w-full">
      <EmbedSkeleton />

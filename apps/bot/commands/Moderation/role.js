@@ -5,7 +5,7 @@ export default {
  name: "role",
  description: "🧩 Add/Remove role from user",
  type: ApplicationCommandType.ChatInput,
- cooldown: 5000,
+ cooldown: 2000,
  dm_permission: false,
  usage: "/role add <role> <user> | /role remove <role> <user> | /role info <role>",
  options: [

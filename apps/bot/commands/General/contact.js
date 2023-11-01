@@ -11,7 +11,8 @@ export default {
   try {
    if (!client.config.dashboard.enabled || !client.config.dashboard.url) {
     const embed = new EmbedBuilder()
-     .setDescription("Our dashboard (and the contact page itself) is not working at the moment, please try again later!")
+     .setTitle("😢 We are sorry!")
+     .setDescription("Apologies for the inconvenience, but our dashboard and contact page are currently experiencing technical difficulties. We kindly ask you to try again later.")
      .setFooter({
       text: `Requested by ${interaction.member.user.globalName || interaction.member.user.username}`,
       iconURL: interaction.member.user.displayAvatarURL({
@@ -24,11 +25,24 @@ export default {
     return interaction.followUp({ ephemeral: false, embeds: [embed] });
    }
 
-   const contactButton = new ButtonBuilder().setLabel("Contact").setStyle(ButtonStyle.Link).setURL(`${client.config.dashboard.url}/contact`);
-   const action = new ActionRowBuilder().addComponents(contactButton);
+   const action = new ActionRowBuilder() // prettier
+    .addComponents(
+     new ButtonBuilder() // prettier
+      .setLabel("Contact")
+      .setStyle(ButtonStyle.Link)
+      .setURL(`${client.config.dashboard.url}/contact`),
+     new ButtonBuilder() // prettier
+      .setLabel("Commands")
+      .setStyle(ButtonStyle.Link)
+      .setURL(`${client.config.dashboard.url}/commands`),
+     new ButtonBuilder() // prettier
+      .setLabel("Support")
+      .setStyle(ButtonStyle.Link)
+      .setURL(`${client.config.dashboard.url}/support`)
+    );
 
    const embed = new EmbedBuilder()
-    .setDescription("Click the button below to contact the Majo.exe team!")
+    .setDescription(`Click the button below or [click here](${client.config.dashboard.url}/contact) to contact the Majo.exe team.\n\n>>> **Useful links:**\n- [View all Majo.exe commands](${client.config.dashboard.url}/commands)\n- [Majo.exe support server](${client.config.dashboard.url}/support)`)
     .setFooter({
      text: `Requested by ${interaction.member.user.globalName || interaction.member.user.username}`,
      iconURL: interaction.member.user.displayAvatarURL({

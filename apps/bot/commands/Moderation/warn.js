@@ -7,7 +7,7 @@ export default {
  name: "warn",
  description: "⚠️ Add/remove/modify warnings for a user",
  type: ApplicationCommandType.ChatInput,
- cooldown: 5000,
+ cooldown: 2000,
  dm_permission: false,
  usage: "/warn <subcommand>",
  options: [

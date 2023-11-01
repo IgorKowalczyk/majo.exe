@@ -5,7 +5,7 @@ export default {
  name: "slowmode",
  description: "🕐 Set the slowmode for a channel",
  type: ApplicationCommandType.ChatInput,
- cooldown: 5000,
+ cooldown: 2000,
  dm_permission: false,
  usage: "/slowmode <time>",
  default_member_permissions: [PermissionFlagsBits.ManageChannels],
