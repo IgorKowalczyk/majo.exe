@@ -42,7 +42,7 @@ export default async function Settings({ params }) {
  return (
   <>
    <Header1>
-    <Cog6ToothIcon className="h-12 w-12" />
+    <Cog6ToothIcon className="min-h-12 min-w-12 h-12 w-12" />
     Settings
    </Header1>
    <Block>

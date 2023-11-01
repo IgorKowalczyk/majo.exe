@@ -66,7 +66,7 @@ export default async function ServerLogs({ params }) {
  return (
   <>
    <Header1>
-    <ExclamationTriangleIcon className="h-12 w-12" />
+    <ExclamationTriangleIcon className="min-h-12 min-w-12 h-12 w-12" />
     Warns <span className="text-accent-primary">({warns.length})</span>
    </Header1>
    <Header5 className="mb-4 !block !justify-start gap-1 !text-left">
