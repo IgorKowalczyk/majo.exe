@@ -1,10 +1,17 @@
 import prismaClient from "@majoexe/database";
 
 /**
- * Give Reputation to user
- * @param {string} user The user to give reputation to
- * @param {string} guild The guild to give reputation in
- * @returns {Promise<number>} The reputation
+ * Gives reputation to a user in a guild.
+ *
+ * @param {Object} user - The user object containing user details.
+ * @param {string} user.id - The ID of the user.
+ * @param {string} user.username - The username of the user.
+ * @param {string} [user.globalName] - The global name of the user.
+ * @param {string} user.discriminator - The discriminator of the user.
+ * @param {string} user.avatar - The avatar of the user.
+ * @param {Object} guild - The guild object containing guild details.
+ * @returns {Promise<number>} - Returns the updated reputation of the user in the guild.
+ * @throws {Error} - Throws an error if the operation fails.
  */
 export async function giveReputation(user, guild) {
  try {

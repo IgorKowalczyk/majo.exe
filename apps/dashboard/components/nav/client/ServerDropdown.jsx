@@ -39,7 +39,7 @@ export function ServerDropdown() {
          <>
           {Array.from(Array(5).keys()).map((i) => (
            <div key={i} className="fle animate-pulse items-center gap-2 space-x-4">
-            <div className="h-12 w-12 rounded-full bg-neutral-700" />
+            <div className="min-h-12 min-w-12 h-12 w-12 rounded-full bg-neutral-700" />
             <div className="flex-1 space-y-4 py-1">
              <div className="h-4 w-3/4 rounded bg-neutral-700" />
             </div>
@@ -53,7 +53,7 @@ export function ServerDropdown() {
            .map((server) => (
             <Menu.Item key={server.id}>
              <Link className="flex w-full items-center gap-2 rounded border border-transparent px-2 py-1 hover:border-neutral-800 hover:bg-neutral-800/50" href={`/dashboard/${server.id}`} onClick={() => setIsOpen(!isOpen)}>
-              {server.icon ? <Image src={`https://cdn.discordapp.com/icons/${server.id}/${server.icon}.${server.icon.startsWith("a_") ? "gif" : "png"}`} alt={server.name} quality={95} width={48} height={48} className="h-12 w-12 rounded-full" /> : <div className="bg-button-secondary h-12 w-12 rounded-full" />}
+              {server.icon ? <Image src={`https://cdn.discordapp.com/icons/${server.id}/${server.icon}.${server.icon.startsWith("a_") ? "gif" : "png"}`} alt={server.name} quality={95} width={48} height={48} className="min-h-12 min-w-12 h-12 w-12 rounded-full" /> : <div className="bg-button-secondary min-h-12 min-w-12 h-12 w-12 rounded-full" />}
               <span className="!ml-2 ">{server.name}</span>
              </Link>
             </Menu.Item>

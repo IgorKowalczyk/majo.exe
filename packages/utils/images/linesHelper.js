@@ -1,8 +1,10 @@
 /**
- * @param {CanvasRenderingContext2D} context The canvas context
- * @param {string} text The text to split
- * @param {number} maxWidth The max width of the text before a line break
- * @returns {string[]}
+ * Get the lines of a text
+ *
+ * @param {CanvasRenderingContext2D} context - The canvas context
+ * @param {string} text - The text to split
+ * @param {number} maxWidth - The max width of the text before a line break
+ * @returns {string[]} - The lines of the text
  * */
 export function getLines(context, text, maxWidth) {
  const lines = [];

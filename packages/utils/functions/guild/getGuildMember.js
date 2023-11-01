@@ -1,9 +1,12 @@
 import { getServers } from "./getServers.js";
 
 /**
- * @param {string} guildId The id of the server.
- * @param {string} token The token of the user.
- * @returns {Promise<object>} The member of the server including permissions.
+ * Get a member of a server.
+ *
+ * @param {string} guildId - The id of the server.
+ * @param {string} token - The token of the user.
+ * @returns {Promise<object>} - The member of the server including permissions.
+ * @throws {Error} - Throws an error if the operation fails.
  * @example getGuildMember(guildId, userId)
  * */
 export async function getGuildMember(guildId, token) {

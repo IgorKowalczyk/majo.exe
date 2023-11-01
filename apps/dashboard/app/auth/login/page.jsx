@@ -37,12 +37,12 @@ export default async function Login({ searchParams }) {
    <div className="z-30">
     {searchParams.error ? (
      <>
-      <Header1 className={"!justify-center"}>Something went wrong!</Header1>
+      <Header1 className={"!justify-center text-center"}>Something went wrong!</Header1>
       <p className="my-1 mt-2 text-center text-xl text-[#939DB8]">Something went wrong while trying to connect your Discord account!</p>
      </>
     ) : (
      <>
-      <Header1 className={"!justify-center"}>Connect your account</Header1>
+      <Header1 className={"!justify-center text-center"}>Connect your account</Header1>
       <p className="my-1 mt-2 text-center text-xl text-[#939DB8]">Authorize your Discord account to use all the Majo.exe features</p>
      </>
     )}

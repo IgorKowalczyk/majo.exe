@@ -2,8 +2,11 @@ import { globalConfig } from "@majoexe/config";
 import { isBotInServer } from "./isBotInServer.js";
 
 /**
- * @param {string} id The id of the server.
- * @returns {Promise<object>} The server object.
+ * Get a server from Discord.
+ *
+ * @param {string} id - The id of the server.
+ * @returns {Promise<object>} - The server object.
+ * @throws {Error} Throws an error if the operation fails.
  * @example getServer(id)
  * */
 export async function getServer(id) {

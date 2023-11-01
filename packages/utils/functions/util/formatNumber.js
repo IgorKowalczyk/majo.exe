@@ -1,7 +1,8 @@
 /**
  * Format number to a readable format
- * @param {number} num
- * @returns {string}
+ *
+ * @param {number} num - The number to format.
+ * @returns {string} - The formatted number.
  * @example
  * const number = formatNumber(1000);
  * console.log(number);

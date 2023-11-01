@@ -42,10 +42,6 @@ config.emojis = {
  emoji_bar_2: "<:bar_01:963333479322517534>", // https://cdn.discordapp.com/emojis/963333479322517534.png
  bot_badge_part_1: "<:bot_badge_02:963333478982754375>", // https://cdn.discordapp.com/emojis/963333478982754375.png
  bot_badge_part_2: "<:bot_badge_01:963333479301545984>", // https://cdn.discordapp.com/emojis/963333479301545984.png
- open_collective_logo: "<:open_collective:963333541284945930>", // https://cdn.discordapp.com/emojis/963333541284945930.png
- patreon_logo: "<:patreon:963333541490466816>", // https://cdn.discordapp.com/emojis/963333541490466816.png
- kofi_logo: "<:ko_fi:963333541142351903>", // https://cdn.discordapp.com/emojis/963333541142351903.png
- buymeacoffee_logo: "<:buy_me_a_coffe:963333480048128030>", // https://cdn.discordapp.com/emojis/963333480048128030.png
  pikachu: "<:pikachu:963333541507264512>", // https://cdn.discordapp.com/emojis/963333541507264512.png
  loading: "<a:discord_loading:963333542065090630>", // https://cdn.discordapp.com/emojis/963333542065090630.gif
  hypesquad: "<:hypesquad:963333540962009168>", // https://cdn.discordapp.com/emojis/963333540962009168.png
@@ -238,24 +234,9 @@ config.donate = {
  enabled: true, // boolean. Display donations command
  links: [
   {
-   name: "Patreon",
-   url: "https://www.patreon.com/igorkowalczyk",
-   icon: config.emojis.patreon_logo,
-  },
-  {
-   name: "Ko-Fi",
-   url: "https://ko-fi.com/igorkowalczyk",
-   icon: config.emojis.kofi_logo,
-  },
-  {
-   name: "Buy Me a Coffee",
-   url: "https://buymeacoffee.com/majonezexe",
-   icon: config.emojis.buymeacoffee_logo,
-  },
-  {
-   name: "Open Collective",
-   url: "https://opencollective.com/igorkowalczyk",
-   icon: config.emojis.open_collective_logo,
+   name: "Github Sponsors",
+   url: "https://github.com/sponsors/igorkowalczyk",
+   icon: "🔗",
   },
  ],
 };

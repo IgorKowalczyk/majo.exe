@@ -7,7 +7,7 @@ import prismaClient from "@majoexe/database";
  * @param {Object} user - The user to be warned.
  * @param {string} user.id - The ID of the user.
  * @param {string} user.username - The username of the user.
- * @param {string} [user.global_name] - The global name of the user.
+ * @param {string} [user.globalName] - The global name of the user.
  * @param {string} user.discriminator - The discriminator of the user.
  * @param {string} reason - The reason for the warning.
  * @param {string} warnedBy - The ID of the user who issued the warning.
@@ -51,7 +51,7 @@ export async function warnUser(guildId, user, reason, warnedBy) {
       create: {
        discordId: user.id,
        name: user.username,
-       global_name: user.global_name || user.username,
+       global_name: user.globalName || user.username,
        discriminator: user.discriminator,
       },
      },

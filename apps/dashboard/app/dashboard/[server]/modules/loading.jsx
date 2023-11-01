@@ -7,7 +7,7 @@ export default async function Loading() {
  return (
   <>
    <Header1>
-    <SquaresPlusIcon className="min-h-12 min-w-12 h-12 w-12" />
+    <SquaresPlusIcon className="min-h-12 min-w-12 min-h-12 min-w-12 h-12 w-12" />
     Modules
    </Header1>
    <Block>

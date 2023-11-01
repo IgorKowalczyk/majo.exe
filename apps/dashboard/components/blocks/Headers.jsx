@@ -10,7 +10,7 @@ export function HeaderBig({ children, className, ...props }) {
 
 export function Header1({ children, className, ...props }) {
  return (
-  <h1 className={twMerge(className, "mb-2 flex items-center justify-start gap-4 text-left text-3xl font-bold md:mb-4 md:text-4xl")} {...props}>
+  <h1 className={twMerge(className, "mb-2 flex items-center justify-start gap-4 text-3xl font-bold md:mb-4 md:text-4xl")} {...props}>
    {children}
   </h1>
  );
@@ -42,7 +42,7 @@ export function Header4({ children, className, ...props }) {
 
 export function Header5({ children, className, ...props }) {
  return (
-  <h5 className={twMerge(className, "flex items-center gap-4 text-center text-base font-bold md:text-lg")} {...props}>
+  <h5 className={twMerge(className, "flex items-center gap-4 text-center text-base font-medium md:text-lg")} {...props}>
    {children}
   </h5>
  );

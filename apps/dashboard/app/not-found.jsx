@@ -12,7 +12,7 @@ export default function NotFound() {
     <HeaderBig title="404!" className={"glitch relative"}>
      404!
     </HeaderBig>
-    <Header1 className={"!justify-center"}>Sorry, page not found!</Header1>
+    <Header1 className={"!justify-center text-center"}>Sorry, page not found!</Header1>
     <h2 className="text-center text-xl opacity-50">We're sorry we can't find the page you're looking for.</h2>
     <div className="flex gap-4">
      <PrimaryButton href="/">

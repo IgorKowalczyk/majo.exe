@@ -1,9 +1,10 @@
 /**
  * Returns a string representing a percentage bar.
+ *
  * @param {number} full - The full value.
  * @param {number} curr - The current value.
  * @param {number} [numBars=25] - The number of bars to display.
- * @returns {string} The percentage bar.
+ * @returns {string} - The percentage bar.
  * @example
  * const bar = percentageBar(100, 50);
  * console.log(bar);

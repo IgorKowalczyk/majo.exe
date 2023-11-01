@@ -2,6 +2,13 @@
 import { PermissionsBitField, Collection } from "discord.js";
 import { globby } from "globby";
 
+/**
+ * Loads all slash commands from the /commands folder
+ *
+ * @param {object} client - The Discord client
+ * @returns {Promise<void>} Promise that resolves when all slash commands are loaded
+ * @throws {Error} Error that is thrown if a slash command could not be loaded
+ */
 export default async function loadCommands(client) {
  client.slashCommands = new Collection();
  client.additionalSlashCommands = 0;

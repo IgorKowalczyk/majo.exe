@@ -1,8 +1,11 @@
 import prismaClient from "@majoexe/database";
+
 /**
- * Fetch XP setting for Guild
- * @param { string } guildId The id of the guild
- * @returns { Promise<{ enableXP: boolean, enableXPLastChanged: Date, enableXPLevelUpMessage: boolean, enableXPLevelUpMessageLastChanged: Date }> } The XP setting
+ * Fetches the XP settings for a guild. If the guild does not exist, it will be created.
+ *
+ * @param {string} guildId - The ID of the guild.
+ * @returns {Promise<{enableXP: boolean, enableXPLastChanged: Date, enableXPLevelUpMessage: boolean, enableXPLevelUpMessageLastChanged: Date}>} - The XP settings of the guild.
+ * @throws {Error} - Throws an error if the operation fails.
  */
 export async function fetchXPSettings(guildId) {
  try {
@@ -40,11 +43,13 @@ export async function fetchXPSettings(guildId) {
 }
 
 /**
- * Enable/Disable XP for Guild
- * @param { string } guildId The id of the guild
- * @param { boolean } enableXP The XP setting
- * @returns { boolean } The XP setting
- * */
+ * Enables or disables XP for a guild.
+ *
+ * @param {string} guildId - The ID of the guild.
+ * @param {boolean} enableXP - The new XP setting.
+ * @returns {Promise<boolean>} - Returns true if the operation is successful.
+ * @throws {Error} - Throws an error if the operation fails.
+ */
 export async function setXPSettings(guildId, enableXP) {
  try {
   await prismaClient.guild.update({
@@ -65,11 +70,13 @@ export async function setXPSettings(guildId, enableXP) {
 }
 
 /**
- * Enable/Disable XP Level Up Message for Guild
- * @param { string } guildId The id of the guild
- * @param { boolean } enableXPLevelUpMessage The XP Level Up Message setting
- * @returns { boolean } The XP Level Up Message setting
- * */
+ * Enables or disables the XP level up message for a guild.
+ *
+ * @param {string} guildId - The ID of the guild.
+ * @param {boolean} enableXPLevelUpMessage - The new XP level up message setting.
+ * @returns {Promise<boolean>} - Returns true if the operation is successful.
+ * @throws {Error} - Throws an error if the operation fails.
+ */
 export async function setXPLevelUpMessageSettings(guildId, enableXPLevelUpMessage) {
  try {
   await prismaClient.guild.update({

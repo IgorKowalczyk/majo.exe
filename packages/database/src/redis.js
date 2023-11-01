@@ -16,10 +16,11 @@ export default cache;
 
 /**
  * Set a key in the cache
- * @param {string} key
- * @param {string} value
- * @param {number} ttl
- * @returns {void}
+ *
+ * @param {string} key - The key to set
+ * @param {string} value - The value to set
+ * @param {number} ttl - The TTL (Time To Live) of the key in seconds
+ * @returns {Promise<void>} - Promise that resolves when the key is set
  * */
 export async function cacheSet(key, value, ttl = 60) {
  if (debuggerConfig.displayCacheMessages) {
@@ -40,8 +41,9 @@ export async function cacheSet(key, value, ttl = 60) {
 
 /**
  * Get a key from the cache
- * @param {string} key
- * @returns {Promise<string>}
+ *
+ * @param {string} key - The key to get
+ * @returns {Promise<string>} - Promise that resolves with the value of the key
  * */
 export async function cacheGet(key) {
  if (debuggerConfig.displayCacheMessages) {
@@ -58,16 +60,17 @@ export async function cacheGet(key) {
 
 /**
  * Delete a key from the cache
- * @param {string} key
- * @returns {void}
+ *
+ * @param {string} key - The key to delete
+ * @returns {Promise<void>} - Promise that resolves when the key is deleted
  * */
-export function cacheDel(key) {
+export async function cacheDel(key) {
  if (debuggerConfig.displayCacheMessages) {
   Logger("info", `Deleting key ${key}`);
  }
  if (process.env.REDIS_URL) {
-  cache.del(key);
+  await cache.del(key);
  } else {
-  cache.delete(key);
+  await cache.delete(key);
  }
 }

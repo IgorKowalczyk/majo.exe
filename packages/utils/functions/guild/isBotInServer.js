@@ -2,8 +2,10 @@ import { globalConfig } from "@majoexe/config";
 
 /**
  * Checks if the bot is in a server
- * @param {string} guildId The guild ID.
- * @returns {Promise<boolean>} Whether the bot is in the server.
+ *
+ * @param {string} guildId - The guild ID.
+ * @returns {Promise<boolean>} - Whether the bot is in the server.
+ * @throws {Error} - Throws an error if the operation fails.
  * */
 export async function isBotInServer(guildId) {
  try {
