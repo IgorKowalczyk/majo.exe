@@ -7,7 +7,7 @@ export default function Loading() {
   <>
    <div className="mb-4 flex flex-col items-center justify-normal gap-4 text-3xl font-bold sm:flex-row md:text-4xl">
     <div className="bg-button-secondary h-16 w-16 rounded-full" />
-    <div className="ml-4 flex flex-col text-center sm:text-left">
+    <div className="flex flex-col text-center sm:ml-4 sm:text-left">
      <TextSkeleton className="w-32" />
      <Header5 className="mt-2 text-center opacity-60 sm:text-left">
       <TextSkeleton className="w-32" />

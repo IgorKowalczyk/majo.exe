@@ -79,7 +79,7 @@ export default async function ServerLeaderboard({ params }) {
  return (
   <>
    <Header1>
-    <StarIcon className="h-12 w-12" />
+    <StarIcon className="min-h-12 min-w-12 h-12 w-12" />
     Leaderboard
    </Header1>
    <Header5 className="mb-4 mt-2 !justify-start !text-left">

@@ -7,7 +7,7 @@ export default function Loading() {
  return (
   <>
    <Header1>
-    <ExclamationTriangleIcon className="h-12 w-12" />
+    <ExclamationTriangleIcon className="min-h-12 min-w-12 h-12 w-12" />
     Warns
    </Header1>
    <TextSkeleton className="mb-4 mt-2 w-32 justify-start" />

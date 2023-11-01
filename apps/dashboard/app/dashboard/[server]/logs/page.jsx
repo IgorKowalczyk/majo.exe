@@ -67,7 +67,7 @@ export default async function ServerLogs({ params }) {
  return (
   <>
    <Header1>
-    <ListBulletIcon className="h-12 w-12" />
+    <ListBulletIcon className="min-h-12 min-w-12 h-12 w-12" />
     Activity Logs
    </Header1>
    <div className="overflow-auto">

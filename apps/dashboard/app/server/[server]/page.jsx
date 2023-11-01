@@ -114,7 +114,7 @@ export default async function ServerOverview({ params }) {
   <>
    <Header1 className={"mb-4 flex flex-col !justify-normal sm:flex-row"}>
     {guildPreview.icon ? <Image src={`https://cdn.discordapp.com/icons/${guildPreview.id}/${guildPreview.icon}.${guildPreview.icon.startsWith("a_") ? "gif" : "png"}`} alt={guildPreview.name} quality={95} width={64} height={64} className="h-16 w-16 rounded-full" /> : <div className="bg-button-secondary h-16 w-16 rounded-full" />}
-    <div className="ml-4 flex flex-col justify-start text-center sm:text-left">
+    <div className="flex flex-col justify-start text-center sm:ml-4 sm:text-left">
      {guildPreview.name || "Unnamed server"}
      <Header5 className="mt-2 justify-start text-center opacity-60 sm:text-left">
       <Balancer>{guildPreview.description || "This server has no description, maybe you should add one?"}</Balancer>
