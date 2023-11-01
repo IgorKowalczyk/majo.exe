@@ -81,7 +81,7 @@ export default async function ServerOverview({ params }) {
  return (
   <>
    <div className="mb-4 flex flex-col items-center justify-normal gap-4 text-3xl font-bold sm:flex-row md:text-4xl">
-    {guildPreview.icon ? <Image src={`https://cdn.discordapp.com/icons/${guildPreview.id}/${guildPreview.icon}.${guildPreview.icon.startsWith("a_") ? "gif" : "png"}`} alt={guildPreview.name} quality={95} width={64} height={64} className="h-16 w-16 rounded-full" /> : <div className="bg-button-secondary h-16 w-16 rounded-full" />}
+    {guildPreview.icon ? <Image src={`https://cdn.discordapp.com/icons/${guildPreview.id}/${guildPreview.icon}.${guildPreview.icon.startsWith("a_") ? "gif" : "png"}`} alt={guildPreview.name} quality={95} width={64} height={64} className="min-h-16 min-w-16 h-16 w-16 rounded-full" /> : <div className="bg-button-secondary min-h-16 min-w-16 h-16 w-16 rounded-full" />}
     <div className="flex flex-col text-center sm:ml-4 sm:text-left">
      {guildPreview.name || "Unnamed server"}
      <Header5 className="mt-2 text-center opacity-60 sm:text-left">
@@ -93,11 +93,11 @@ export default async function ServerOverview({ params }) {
    <Block className="!mt-4 flex w-full flex-col gap-4 !p-4 sm:flex-row sm:gap-0">
     <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
      <div className="flex items-center">
-      <div className="mr-2 h-3 w-3 rounded-full bg-[#81848f]" />
+      <div className="min-h-3 min-w-3 mr-2 h-3 w-3 rounded-full bg-[#81848f]" />
       {guildPreview.approximate_member_count || "0"} members
      </div>
      <div className="flex items-center">
-      <div className="mr-2 h-3 w-3 rounded-full bg-[#22a55b]" />
+      <div className="min-h-3 min-w-3 mr-2 h-3 w-3 rounded-full bg-[#22a55b]" />
       {guildPreview.approximate_presence_count || "0"} online
      </div>
     </div>

@@ -6,7 +6,7 @@ export default function Loading() {
  return (
   <>
    <Header1 className={"mb-4 flex flex-col !justify-normal sm:flex-row"}>
-    <div className="bg-button-secondary h-16 w-16 rounded-full" />
+    <div className="bg-button-secondary min-h-16 min-w-16 h-16 w-16 rounded-full" />
     <div className="flex flex-col justify-start text-center sm:ml-4 sm:text-left">
      <TextSkeleton className="w-32" />
      <Header5 className="mt-2 justify-start text-center opacity-60 sm:text-left">
@@ -18,10 +18,10 @@ export default function Loading() {
    <Block className="!mt-4 flex w-full flex-col gap-4 !p-4 sm:flex-row sm:gap-0">
     <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
      <div className="flex items-center">
-      <div className="mr-2 h-3 w-3 rounded-full bg-[#81848f]" />0 members
+      <div className="min-h-3 min-w-3 mr-2 h-3 w-3 rounded-full bg-[#81848f]" />0 members
      </div>
      <div className="flex items-center">
-      <div className="mr-2 h-3 w-3 rounded-full bg-[#22a55b]" />0 online
+      <div className="min-h-3 min-w-3 mr-2 h-3 w-3 rounded-full bg-[#22a55b]" />0 online
      </div>
     </div>
     <span className="mx-auto whitespace-nowrap sm:ml-auto sm:mr-0">Powered by Majo.exe</span>

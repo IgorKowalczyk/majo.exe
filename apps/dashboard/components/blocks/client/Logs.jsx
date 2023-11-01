@@ -59,7 +59,7 @@ export default function Logs({ initialItems, id }) {
  return (
   <div className="block">
    <div className="mb-4 flex items-center justify-center gap-2">
-    <InputWithIcon placeholder="Search..." value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} icon={<MagnifyingGlassIcon className="h-5 w-5 text-white/50" aria-hidden="true" role="img" />} />
+    <InputWithIcon placeholder="Search..." value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} icon={<MagnifyingGlassIcon className="min-h-5 min-w-5 h-5 w-5 text-white/50" aria-hidden="true" role="img" />} />
     <Tooltip content={sortDescending ? "Sort ascending" : "Sort descending"}>
      <span onClick={() => setSortDescending(!sortDescending)} className="hover:border-button-primary flex h-[41.6px] cursor-pointer items-center justify-center rounded-md border border-neutral-800 px-3 py-2 text-white duration-200">
       {sortDescending ? <BarsArrowDownIcon className="min-h-5 min-w-5 h-5 w-5" /> : <BarsArrowUpIcon className="min-h-5 min-w-5 h-5 w-5" />}
