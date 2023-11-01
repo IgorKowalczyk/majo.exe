@@ -46,6 +46,8 @@ client.config = {
  dashboard: dashboardConfig,
 };
 
+client.commandsRan = 0;
+
 client.giveawaysManager = giveaway(client);
 
 client.errorMessages = {

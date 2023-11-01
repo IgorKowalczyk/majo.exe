@@ -1,11 +1,49 @@
+/* eslint-disable complexity */
+
 import prismaClient from "@majoexe/database";
 import { cacheGet, cacheSet } from "@majoexe/database/redis";
 import { fetchXPSettings } from "@majoexe/util/database";
-import { EmbedBuilder, AttachmentBuilder, PermissionsBitField, ChannelType } from "discord.js";
+import { EmbedBuilder, AttachmentBuilder, PermissionsBitField, ButtonBuilder, ChannelType, ActionRowBuilder, ButtonStyle } from "discord.js";
 import { createXPCard } from "../../util/images/createXPCard.js";
 
 export async function messageCreate(client, message) {
  if (message.author.bot) return;
+
+ if (message.mentions.users.has(client.user.id)) {
+  const embed = new EmbedBuilder()
+   .setTitle("👋 Hello!")
+   .setDescription(
+    `Hello ${message.author}! I'm ${client.user.username}, a multi-purpose Discord bot created for **Memes, Image editing, Giveaway, Moderation, Anime and even more!** 🎉
+
+   **You can find the list of all my commands by typing \`/help\`** ${client.config.dashboard.enabled && client.config.dashboard.url ? `or by visiting [my dashboard](${client.config.dashboard.url}/commands)` : ""}.
+
+   ${client.config.dashboard.enabled && client.config.dashboard.url ? `**If you want to invite me to your server, you can do so by clicking [here](${client.config.dashboard.url})**` : ""}`
+   )
+   .setColor(client.config.defaultColor)
+   .setTimestamp()
+   .setFooter({
+    text: `Requested by ${message.author.globalName || message.author.username}`,
+    iconURL: message.author.displayAvatarURL({ size: 256 }),
+   });
+
+  if (client.config.dashboard.enabled && client.config.dashboard.url) {
+   const action = new ActionRowBuilder() // prettier
+    .addComponents(
+     new ButtonBuilder() // prettier
+      .setLabel("Dashboard")
+      .setStyle(ButtonStyle.Link)
+      .setURL(client.config.dashboard.url),
+     new ButtonBuilder() // prettier
+      .setLabel("Invite")
+      .setStyle(ButtonStyle.Link)
+      .setURL(`${client.config.dashboard.url}/invite`)
+    );
+
+   return message.reply({ embeds: [embed], allowedMentions: { repliedUser: false }, components: [action] });
+  } else {
+   return message.reply({ embeds: [embed], allowedMentions: { repliedUser: false } });
+  }
+ }
 
  // Only count messages in guild text channels
  if (message.channel.type !== ChannelType.GuildText && message.channel.type !== ChannelType.GuildForum && message.channel.type !== ChannelType.GuildAnnouncement) return;

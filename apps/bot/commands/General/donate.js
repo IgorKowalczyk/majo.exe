@@ -25,14 +25,7 @@ export default {
    }
 
    const embed = new EmbedBuilder()
-    .addFields(
-     client.config.donate.links.map((link) => {
-      return {
-       name: `${link.icon} ${link.name}`,
-       value: link.url,
-      };
-     })
-    )
+    .setDescription("> **You can donate to Majo.exe by using the following methods:**\n" + client.config.donate.links.map((link) => `- [${link.icon} ${link.name}](${link.url})`).join("\n"))
     .setFooter({
      text: `Requested by ${interaction.member.user.globalName || interaction.member.user.username}`,
      iconURL: interaction.member.user.displayAvatarURL({

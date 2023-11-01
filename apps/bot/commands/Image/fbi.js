@@ -37,7 +37,7 @@ export default {
    });
 
    const embed = new EmbedBuilder()
-    .setTitle("🚨 Why FBI is here?")
+    .setTitle("🚨 Why is the FBI here?")
     .setImage("attachment://why-fbi-here.png")
     .setColor(guildSettings?.embedColor || client.config.defaultColor)
     .setTimestamp()

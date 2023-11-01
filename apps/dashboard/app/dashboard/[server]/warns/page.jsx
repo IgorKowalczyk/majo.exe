@@ -8,8 +8,8 @@ import { Warns } from "@/components/blocks/client/Warns";
 import { Header1, Header5 } from "@/components/blocks/Headers";
 
 export const metadata = {
- title: "Server Logs",
- description: "View the logs of your server.",
+ title: "Server warns",
+ description: "View the warn logs of your server.",
 };
 
 export default async function ServerLogs({ params }) {
@@ -46,8 +46,6 @@ export default async function ServerLogs({ params }) {
   where: {
    guildId: serverDownload.id,
   },
-  take: 20,
-  skip: 0,
   orderBy: {
    createdAt: "desc",
   },
@@ -62,15 +60,16 @@ export default async function ServerLogs({ params }) {
   } else {
    warn.createdAt = new Date().toISOString();
   }
+  warn.link = warn.user.discordId;
  });
 
  return (
   <>
    <Header1>
     <ExclamationTriangleIcon className="h-12 w-12" />
-    Warns
+    Warns <span className="text-accent-primary">({warns.length})</span>
    </Header1>
-   <Header5 className="mb-4 mt-2 !block !justify-start gap-1 !text-left">
+   <Header5 className="mb-4 !block !justify-start gap-1 !text-left">
     Here you can view all users warns issued by users with the <code>Manage Server</code> permission. View selected users profile to view and manage their warns.
    </Header5>
    <Block className="flex w-full overflow-auto">

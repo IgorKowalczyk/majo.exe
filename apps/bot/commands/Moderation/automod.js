@@ -5,7 +5,7 @@ export default {
  name: "automod",
  description: "🤖 Configure Automoderation for your server",
  type: ApplicationCommandType.ChatInput,
- cooldown: 5000,
+ cooldown: 4000,
  dm_permission: false,
  usage: "/automod <subcommand>",
  options: [

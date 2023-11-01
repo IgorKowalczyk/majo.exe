@@ -7,6 +7,7 @@ import { EmbedBuilder, PermissionsBitField } from "discord.js";
 
 export async function interactionCreate(client, interaction) {
  try {
+  client.commandsRan++;
   if (!interaction.guild || !interaction.guild.available) return;
   if (!interaction.user) await interaction.guild.members.fetch(interaction.member.user.id);
 

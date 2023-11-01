@@ -10,7 +10,7 @@ export default function Loading() {
     <div className="ml-4 flex flex-col text-center sm:text-left">
      <TextSkeleton className="w-32" />
      <Header5 className="mt-2 text-center opacity-60 sm:text-left">
-      <TextSkeleton className="w-32" />
+      <TextSkeleton className="w-64" />
      </Header5>
     </div>
    </div>

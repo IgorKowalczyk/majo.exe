@@ -12,10 +12,10 @@ export default {
    const embed = new EmbedBuilder()
     .setTitle("📈 Majo.exe uptime")
     .setDescription(
-     `
-     **🚀 Date launched**: ${time(client.readyAt)}
-
-     **⏱️ Started**: ${time(client.readyAt, "R")}
+     `**🚀 Date launched**: ${time(client.readyAt)}
+     **⏱️ Started:** ${time(client.readyAt, "R")}
+     
+     **✨ Did you know?** From the time Majo.exe was launched it served \`${client.commandsRan}\` commands!
      `
     )
     .setTimestamp()

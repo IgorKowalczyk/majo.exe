@@ -76,13 +76,14 @@ Ensure your setup meets these prerequisites before setting up Majo.exe:
 
 ## 📝 Contributors
 
-- [@binary-blazer](https://github.com/binary-blazer) (Hosting support)
-- [@r-kjha](https://github.com/r-kjha) (Emoji config support, Bug fixes, New features, Testing)
-- [@Joao-Victor-Liporini](https://github.com/Joao-Victor-Liporini) (Bug fixes, Command handler improvements, Testing, New features)
-- [@krzesl0](https://github.com/krzesl0) (New Features, Bug fixes, Testing)
-- [@\_index1337](https://github.com/index1337) (Readme tutorials)
-- [@Wafelowski](https://github.com/HeavyWolfPL) (Translation improvements)
-- [@Sakshyam6966](https://github.com/Sakshyam6966) (New Features, Bug fixes, Testing)
+- [**@binary-blazer**](https://github.com/binary-blazer) - Hosting support
+- [**@r-kjha**](https://github.com/r-kjha) - Emoji config support, Bug fixes, New features, Testing
+- [**@Joao-Victor-Liporini**](https://github.com/Joao-Victor-Liporini) - Bug fixes, Command handler improvements, Testing, New features
+- [**@evandev**](https://github.com/xefew) - Bug fixes, Testing
+- [**@krzesl0**](https://github.com/krzesl0) - New Features, Bug fixes, Testing
+- [**@\_index1337**](https://github.com/index1337) - Readme tutorials
+- [**@Wafelowski**](https://github.com/HeavyWolfPL) - Translation improvements
+- [**@Sakshyam6966**](https://github.com/Sakshyam6966) - New Features, Bug fixes, Testing
 
 ## 💝 Sponsors
 

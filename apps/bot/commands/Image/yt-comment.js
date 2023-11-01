@@ -40,7 +40,7 @@ export default {
   try {
    const attachment = interaction.options.getAttachment("attachment");
    const user = interaction.options.getUser("user") || interaction.member.user;
-   const username = interaction.options.getString("username") || user.globalName || user.username;
+   const username = interaction.options.getString("username") || user.username || user.globalName;
    const comment = interaction.options.getString("comment");
    let image;
 
@@ -83,7 +83,7 @@ export default {
 
    context.translate(105, 10);
 
-   context.font = "bold 20px Arial";
+   context.font = "semibold 19px Arial";
    context.fillStyle = "#f1f1f1";
 
    const usernameWidth = context.measureText(`@${username}`).width;

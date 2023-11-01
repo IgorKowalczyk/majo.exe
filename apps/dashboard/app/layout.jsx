@@ -1,6 +1,6 @@
 import { dashboardConfig } from "@majoexe/config";
 import { Analytics } from "@vercel/analytics/react";
-import { Inter } from "next/font/google";
+import { GeistSans } from "geist/font";
 import { twMerge } from "tailwind-merge";
 import ProgressBar from "@/components/blocks/client/ProgressBar";
 import { Session } from "@/components/blocks/client/Session";
@@ -11,8 +11,9 @@ import "styles/globals.css";
 import "styles/progress.css";
 import "styles/tippy.css";
 import { Nav } from "@/components/nav/server/Nav";
+//import { Inter } from "next/font/google";
 
-const inter = Inter({ subsets: ["latin"] });
+//const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
  metadataBase: new URL(dashboardConfig.url),
@@ -61,7 +62,7 @@ export default function RootLayout({ children }) {
   <Session>
    <html lang="en">
     <head>{process.env.HOTJAR_ID && <Hotjar id={process.env.HOTJAR_ID} />}</head>
-    <body className={twMerge("bg-background-primary text-white antialiased", inter.className)}>
+    <body className={twMerge("bg-background-primary text-white antialiased", GeistSans.className)}>
      <ProgressBar />
      <VisibilityProvider>
       <Nav theme={"full"} />
