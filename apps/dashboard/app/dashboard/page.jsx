@@ -33,7 +33,7 @@ export default async function Dashboard() {
   <div className="bg-background-primary flex w-full flex-col items-center px-8 pb-8 pt-16 antialiased md:px-16 md:py-16">
    <div className="flex flex-col justify-center gap-4">
     <Header1 className={"!justify-center"}>
-     <RectangleStackIcon className="h-10 w-10" aria-hidden="true" role="img" />
+     <RectangleStackIcon className="min-h-10 min-w-10 h-10 w-10" aria-hidden="true" role="img" />
      Dashboard
     </Header1>
     <h2 className="text-center text-xl text-white/50">
@@ -44,7 +44,7 @@ export default async function Dashboard() {
       servers.map((server) => (
        <div key={server.id}>
         <div className="hidden flex-row items-center justify-start gap-4 sm:flex">
-         {server.icon ? <Image src={`https://cdn.discordapp.com/icons/${server.id}/${server.icon}.${server.icon.startsWith("a_") ? "gif" : "png"}`} alt={server.name} quality={95} width={64} height={64} className="h-16 w-16 rounded-full" /> : <div className="bg-button-secondary h-16 w-16 rounded-full" />}
+         {server.icon ? <Image src={`https://cdn.discordapp.com/icons/${server.id}/${server.icon}.${server.icon.startsWith("a_") ? "gif" : "png"}`} alt={server.name} quality={95} width={64} height={64} className="min-h-16 min-w-16 h-16 w-16 rounded-full" /> : <div className="bg-button-secondary min-h-16 min-w-16 h-16 w-16 rounded-full" />}
          <h3 className="text-center text-xl font-bold">{server.name}</h3>
          <>
           {server.bot ? (
@@ -71,7 +71,7 @@ export default async function Dashboard() {
              {
               "opacity-20": !server.bot,
              },
-             "h-24 w-24 rounded-md"
+             "min-w-24 min-h-24 h-24 w-24 rounded-md"
             )}
            />
           ) : (
@@ -80,7 +80,7 @@ export default async function Dashboard() {
              {
               "opacity-20": !server.bot,
              },
-             "bg-button-secondary h-24 w-24 rounded-md"
+             "bg-button-secondary min-w-24 min-h-24 h-24 w-24 rounded-md"
             )}
            />
           )}
