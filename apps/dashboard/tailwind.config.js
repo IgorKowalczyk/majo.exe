@@ -1,9 +1,17 @@
-const svgToDataUri = require("mini-svg-data-uri");
-const plugin = require("tailwindcss/plugin");
+import tailwindHeadlessui from "@headlessui/tailwindcss";
+import tailwindIsBrowser from "@igorkowalczyk/is-browser";
+import svgToDataUri from "mini-svg-data-uri";
+import tailwindGradientMaskImage from "tailwind-gradient-mask-image";
+import plugin from "tailwindcss/plugin";
+import tailwindTextFill from "tailwindcss-text-fill";
 
-module.exports = {
+const tailwindConfig = {
  darkMode: "class",
- content: ["./pages/**/*.{js,ts,jsx,tsx}", "./app/**/*.{js,ts,jsx,tsx}", "./components/**/*.{js,ts,jsx,tsx}", "./config.js"],
+ content: [
+  // prettier
+  "./app/**/*.{js,ts,jsx,tsx}",
+  "./components/**/*.{js,ts,jsx,tsx}",
+ ],
  theme: {
   transparent: "transparent",
   current: "currentColor",
@@ -59,11 +67,11 @@ module.exports = {
     }),
    });
   }),
-  /* eslint-disable global-require */
-  require("tailwindcss-text-fill"),
-  require("tailwind-gradient-mask-image"),
-  require("@headlessui/tailwindcss"),
-  require("@igorkowalczyk/is-browser"),
-  /* eslint-enable global-require */
+  tailwindTextFill,
+  tailwindGradientMaskImage,
+  tailwindHeadlessui,
+  tailwindIsBrowser,
  ],
 };
+
+export default tailwindConfig;
