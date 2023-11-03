@@ -1,5 +1,4 @@
 import tailwindHeadlessui from "@headlessui/tailwindcss";
-import tailwindIsBrowser from "@igorkowalczyk/is-browser";
 import svgToDataUri from "mini-svg-data-uri";
 import tailwindGradientMaskImage from "tailwind-gradient-mask-image";
 import plugin from "tailwindcss/plugin";
@@ -13,8 +12,6 @@ const tailwindConfig = {
   "./components/**/*.{js,ts,jsx,tsx}",
  ],
  theme: {
-  transparent: "transparent",
-  current: "currentColor",
   extend: {
    minHeight: (theme) => ({
     ...theme("spacing"),
@@ -42,20 +39,6 @@ const tailwindConfig = {
       transform: "translateX(100%)",
      },
     },
-    loader: {
-     "0%": {
-      height: "0.5rem",
-      opacity: 0.2,
-     },
-     "50%": {
-      height: "1rem",
-      opacity: 1,
-     },
-     "100%": {
-      height: "0.5rem",
-      opacity: 0.2,
-     },
-    },
    },
   },
  },
@@ -70,7 +53,6 @@ const tailwindConfig = {
   tailwindTextFill,
   tailwindGradientMaskImage,
   tailwindHeadlessui,
-  tailwindIsBrowser,
  ],
 };
 

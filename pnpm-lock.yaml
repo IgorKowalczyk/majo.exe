@@ -118,9 +118,6 @@ importers:
       '@heroicons/react':
         specifier: 2.0.18
         version: 2.0.18(react@18.2.0)
-      '@igorkowalczyk/is-browser':
-        specifier: 5.0.2
-        version: 5.0.2(tailwindcss@3.3.5)
       '@majoexe/config':
         specifier: workspace:*
         version: link:../../packages/config
@@ -1945,15 +1942,6 @@ packages:
       - prettier
       - supports-color
     dev: true
-
-  /@igorkowalczyk/is-browser@5.0.2(tailwindcss@3.3.5):
-    resolution: {integrity: sha512-ETJp+hw0YI5A4WmdXZLXT2hU7OmhbT+j3Jk3S7Mm6v0HlV/rnDvNLCGvNoOpdQFdBcsLbRXBFibgxdzaMbJkjw==}
-    engines: {node: '>=16'}
-    peerDependencies:
-      tailwindcss: '>=3.0.0'
-    dependencies:
-      tailwindcss: 3.3.5
-    dev: false
 
   /@igorkowalczyk/prettier-config@2.0.3(prettier@3.0.3):
     resolution: {integrity: sha512-WIGJG2XcPQD5EzF5R16/t/NUhk+59iDZoOfpUnM0jllBm3bFU/aT4LIIbXmwrNDvTSMh+p8I+CYPb+dlWD4MmQ==}
