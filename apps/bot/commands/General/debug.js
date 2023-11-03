@@ -36,7 +36,7 @@ export default {
     .setTitle(`${client.config.emojis.page} Generic Information`)
     .setColor(guildSettings?.embedColor || client.config.defaultColor)
 
-    .setDescription(`>>> **Bot created with ${client.config.emojis.heart} by [Majonez.exe#2495](https://discord.com/users/544164729354977282) in Poland 🇵🇱**`)
+    .setDescription(`>>> **Bot created with ${client.config.emojis.heart} by [@majonez.exe](https://discord.com/users/544164729354977282) in Poland 🇵🇱**`)
 
     .setFields([
      {
