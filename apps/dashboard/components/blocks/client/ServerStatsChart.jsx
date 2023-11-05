@@ -34,7 +34,7 @@ function GenerateComponent({ title, data, csvData, valueName, fileName, categori
     </span>
     <Menu as="div" className="relative mx-auto inline-block text-left sm:ml-auto sm:mr-0">
      <div>
-      <Menu.Button className="font-normal ml-4 flex cursor-pointer items-center gap-3 font-normal duration-200 motion-reduce:transition-none">
+      <Menu.Button className="text-base ml-4 flex cursor-pointer items-center gap-3 font-normal duration-200 motion-reduce:transition-none">
        {({ open }) => (
         <div
          className={clsx(
@@ -46,7 +46,7 @@ function GenerateComponent({ title, data, csvData, valueName, fileName, categori
          )}
         >
          <ArrowDownTrayIcon className="min-h-4 min-w-4 h-4 w-4" aria-hidden="true" role="img" />
-         <span className="font-normal !ml-2 font-normal">Export</span>
+         <span className="text-base !ml-2 font-normal">Export</span>
          <ChevronDownIcon
           className={clsx(
            {
