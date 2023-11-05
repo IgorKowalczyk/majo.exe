@@ -62,7 +62,7 @@ export default {
     .setTimestamp()
     .setTitle(data.canonicalTitle || query.splice(0, 20))
     .setURL(`https://kitsu.io/anime/${data.slug}`)
-    .setDescription(data.synopsis || "None!")
+    .setDescription(data.synopsis ? (data.synopsis.length > 1024 ? data.synopsis.slice(0, 1021) + "..." : data.synopsis) : "No description!")
     .addFields([
      {
       name: `${client.config.emojis.flag_gb} English Title`,
@@ -80,28 +80,28 @@ export default {
       inline: true,
      },
      {
-      name: `${client.config.emojis.counting} Episodes`,
-      value: codeBlock(`${data.episodeCount || "N/A!"} episodes (${data.episodeLength || "N/A!"} minutes each)`),
-      inline: true,
-     },
-     {
       name: `${client.config.emojis.star} Score`,
       value: codeBlock(`${data.averageRating || "N/A!"} (${data.favoritesCount} favorites)`),
       inline: true,
      },
      {
+      name: `${client.config.emojis.counting} Episodes`,
+      value: codeBlock(`${data.episodeCount || "N/A!"} episodes (${data.episodeLength || "N/A!"} minutes each)`),
+      inline: false,
+     },
+     {
       name: `${client.config.emojis.star2} Rating`,
       value: codeBlock(`${data.ageRating || "N/A!"} ${"- " + data.ageRatingGuide || ""}`),
-      inline: true,
+      inline: false,
      },
      {
       name: `${client.config.emojis.calendar_spillar} Aired`,
       value: codeBlock(`${data.startDate || "N/A!"} - ${data.endDate || "N/A!"}`),
-      inline: true,
+      inline: false,
      },
      {
       name: `${client.config.emojis.barchart} Popularity`,
-      value: codeBlock(`${"#" + data.popularityRank + " (Most Popular Anime)" || "N/A!"}\n${"#" + data.ratingRank + " (Highest Rated Anime)" || "N/A!"}`),
+      value: codeBlock(`#${data.popularityRank || "N/A!"} (Most Popular Anime)\n#${data.ratingRank || "N/A!"} (Highest Rated Anime)`),
       inline: false,
      },
     ])
