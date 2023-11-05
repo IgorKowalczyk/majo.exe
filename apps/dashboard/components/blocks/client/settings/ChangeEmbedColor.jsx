@@ -91,7 +91,10 @@ export function ChangeEmbedColor({ serverId, serverColor }) {
      <Image src={dashboardConfig.logo} alt={serverId} quality={95} width={64} height={64} className="min-h-10 min-w-10 h-10 w-10 self-baseline rounded-full" />
      <div className="flex flex-col">
       <div className="ml-1 flex h-10 flex-row items-center">
-       <span className="font-bold">{dashboardConfig.title}</span> <span className="ml-1 rounded bg-[#5c65f3] px-1 py-[0.12rem] text-xs text-white">BOT</span>
+       <span className="font-bold">{dashboardConfig.title}</span>{" "}
+       <span className="ml-1 flex items-center gap-1 rounded bg-[#5c65f3] px-1 py-[0.12rem] text-xs text-white">
+        <CheckIcon className="min-h-4 min-w-4 h-4 w-4 stroke-2" aria-hidden="true" role="img" /> <span className="-mb-px">BOT</span>
+       </span>
        <span className="ml-2 text-sm text-gray-400">Today at 12:00 AM</span>
       </div>
       <div>
