@@ -11,7 +11,7 @@ const nextConfig = {
  trailingSlash: false,
  compiler: {
   removeConsole: {
-   exclude: ["error"],
+   exclude: ["error, warn"],
   },
  },
  images: {

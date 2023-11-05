@@ -1,14 +1,34 @@
-import { ArrowRightIcon } from "@heroicons/react/24/outline";
+import { ArrowRightIcon, ArrowTrendingUpIcon, CheckIcon } from "@heroicons/react/24/outline";
+import { dashboardConfig } from "@majoexe/config";
+import prismaClient from "@majoexe/database";
+import { formatNumber } from "@majoexe/util/functions";
 import Link from "next/link";
 import ray from "public/assets/ray.png";
 import Balancer from "react-wrap-balancer";
 import GlobeClient from "@/components/blocks/client/Globe";
 import Image from "@/components/blocks/client/shared/Image";
-import { Header1 } from "@/components/blocks/Headers";
+import { GradientHeader, Header1 } from "@/components/blocks/Headers";
+import { Typing } from "@/components/blocks/Loaders";
 import { Invite } from "@/components/buttons/server/Invite";
 import { Login } from "@/components/buttons/server/Login";
 
 export default async function Main() {
+ const allCommands = await prismaClient.commands.findMany({
+  select: {
+   name: true,
+   options: true,
+  },
+ });
+
+ let commandsCount = 0;
+
+ allCommands.map((command) => {
+  command.options?.map((option) => {
+   if (option.type === 1 || option.type === 2) commandsCount++;
+  });
+  commandsCount++;
+ });
+
  return (
   <>
    <div className="before:md:bg-grid-[#fff] relative z-20 flex min-h-screen w-full items-center justify-center before:absolute before:z-10 before:h-full before:w-full before:opacity-5 before:grayscale">
@@ -16,7 +36,7 @@ export default async function Main() {
     <div className="relative z-20 -mt-8 flex w-full select-none flex-col items-center justify-center gap-4 px-3 md:w-[90%]">
      <Link href={"/api/invite"} className="before:w-wit min-h-8 before:min-h-8 group relative -mt-4 flex h-8 cursor-pointer items-center justify-center rounded-full bg-gradient-to-tr from-neutral-700/80 via-neutral-700/80 to-[#111012]/80 p-px text-center text-lg font-normal text-neutral-300 duration-200 before:absolute before:inset-0 before:h-8 before:rounded-full before:bg-gradient-to-tr before:from-neutral-700 before:via-neutral-500 before:to-[#111012] before:opacity-0 before:duration-200 hover:before:opacity-100">
       <span className="from-black-10/50 relative mt-px flex h-full w-full items-center rounded-full bg-gradient-to-tr to-[#111012] px-6">
-       Introducing Majo.exe v6
+       Introducing Majo.exe
        <ArrowRightIcon className="min-h-4 min-w-4 ml-2 inline-block h-4 w-4 transition-all duration-200 group-hover:translate-x-1" />
       </span>
      </Link>
@@ -35,10 +55,120 @@ export default async function Main() {
      <div className="absolute inset-0 z-[-10] m-auto mt-[100px] h-[580px] w-[580px] rounded-full bg-[#ddd] opacity-5 blur-3xl" />
     </div>
    </div>
-   <div className="bg-background-primary relative z-[600] min-h-screen">
+   <div className="bg-background-primary relative z-[600]">
     <hr className="m-[0_auto] mb-8 h-px w-full border-none bg-[linear-gradient(to_right,transparent,rgba(255,255,255,0.1)_50%,transparent)] px-8 duration-300 motion-reduce:transition-none" />
-    <div className="cont">
-     <div className="blob" />
+
+    <div className="mx-auto pb-10 md:px-8 lg:px-16 xl:w-4/5">
+     <div className="mx-auto flex flex-col justify-around gap-4 md:flex-row">
+      <div className="flex flex-col items-center justify-center gap-4">
+       <GradientHeader>{formatNumber(100)}+ servers</GradientHeader>
+      </div>
+      <div className="flex flex-col items-center justify-center gap-4">
+       <GradientHeader>{formatNumber(commandsCount)}+ commands</GradientHeader>
+      </div>
+
+      <div className="flex flex-col items-center justify-center gap-4">
+       <GradientHeader>{formatNumber(100000)}+ users</GradientHeader>
+      </div>
+     </div>
+
+     <p className="my-6 w-full text-center text-white/70">...and counting!</p>
+
+     <div className="mx-auto flex w-full flex-col gap-4 px-4 md:grid md:grid-cols-2 lg:grid-cols-3">
+      <div className={"bg-background-secondary row-span-1 overflow-hidden rounded-xl border border-neutral-800 p-4 duration-200 hover:bg-neutral-800/50"}>
+       <GradientHeader>Image manipulation? We got you!</GradientHeader>
+       <p className="mt-2 max-w-[680px] text-white/70">Want to edit an image? Or maybe you want to make a meme?</p>
+       <div className="mt-3">
+        <div className="flex flex-row items-center gap-1">
+         <div className="ml-5 h-3 w-7 rounded-tl-md border-l-2 border-t-2 border-[#4e5058]" />
+         <Image src={dashboardConfig.logo} alt="User avatar" quality={95} width={16} height={16} className="min-h-5 min-w-5 h-5 w-5 self-baseline rounded-full" />
+         <span className="text-xs">
+          <span className="font-bold">Majonez.exe</span> used <span className="text-accent-primary font-bold">/ai</span>
+         </span>
+        </div>
+        <div className="flex items-center gap-1">
+         <Image src={dashboardConfig.logo} alt={`${dashboardConfig.title} avatar`} quality={95} width={64} height={64} className="min-h-10 min-w-10 h-10 w-10 self-baseline rounded-full" />
+         <div className="flex flex-col">
+          <div className="ml-2 flex h-10 flex-row items-center">
+           <span className="font-bold">{dashboardConfig.title}</span>{" "}
+           <span className="ml-1 flex items-center gap-1 rounded bg-[#5c65f3] px-1 py-[0.12rem] text-xs text-white">
+            <CheckIcon className="min-h-4 min-w-4 h-4 w-4 stroke-2" aria-hidden="true" role="img" /> <span className="-mb-px">BOT</span>
+           </span>
+           <span className="ml-2 text-sm text-gray-400">Today at 12:00 AM</span>
+          </div>
+          <span className="ml-2 flex items-center gap-2 text-gray-400">
+           Generating image <Typing />
+          </span>
+         </div>
+        </div>
+       </div>
+      </div>
+      <div className={"bg-background-secondary row-span-1 overflow-hidden rounded-xl border border-neutral-800 p-4 duration-200 hover:bg-neutral-800/50"}>
+       <GradientHeader>Leveling?</GradientHeader>
+       <p className="mt-2 max-w-[680px] text-white/70">Majo.exe has a leveling system that will keep your members active and entertained.</p>
+       <div className="mt-6 flex flex-row items-center gap-1">
+        <Image src={dashboardConfig.logo} alt="User avatar" quality={95} width={64} height={64} className="min-h-10 min-w-10 h-10 w-10 self-baseline rounded-full" />
+        <span className="ml-2">
+         <span className="font-bold">Majonez.exe</span> leveled up to <span className="text-accent-primary font-bold">level 2</span> 🔥
+         <span className="relative mt-2 block h-2 w-full rounded-full bg-[#2b2d31]">
+          <span className="bg-accent-primary absolute inset-0 h-2 rounded-full" style={{ width: `${Math.floor(Math.random() * 80) + 5}%` }} />
+         </span>
+        </span>
+       </div>
+      </div>
+      <div className={"bg-background-secondary relative col-span-2 row-span-2 overflow-hidden rounded-xl border border-neutral-800 px-8 py-6 duration-200 hover:bg-neutral-800/50 lg:col-span-1"}>
+       <GradientHeader>Moderation? We have it!</GradientHeader>
+       <div className="absolute inset-0 z-0 m-auto mt-[100px] h-[580px] w-[580px] rounded-full bg-[#ddd] opacity-5 blur-3xl" />
+       <p className="mt-2 max-w-[680px] text-white/70">
+        <Balancer>Someones breaking the rules? You can easily enable Auto-Moderation and Majo.exe will take care of the rest!</Balancer>
+       </p>
+      </div>
+      <div className={"bg-background-secondary relative col-span-2 row-span-2 overflow-hidden rounded-xl border border-neutral-800 duration-200 hover:bg-neutral-800/50"}>
+       <div className="relative z-50">
+        <div className="px-8 py-6">
+         <Header1 className={"text-fill-transparent mb-0 bg-gradient-to-b from-white	to-neutral-400 box-decoration-clone bg-clip-text !text-left !font-black"}>Know more about your server</Header1>
+         <p className="max-w-[680px] text-white/70">
+          <Balancer>With Majo.exe you can get to know your server better with the help of the dashboard. You can see the most active members, the most used channels and activity graphs!</Balancer>
+         </p>
+        </div>
+
+        <div className="flex flex-col items-center justify-center gap-4 px-8 py-6 md:flex-row">
+         <p className="text-accent-primary border-accent-primary/50 bg-accent-primary/20 hover:bg-accent-primary/30 flex cursor-pointer gap-1 rounded-full border px-2 py-1 text-sm font-bold duration-200">
+          +{Math.floor(Math.random() * 5 + 15)} users today
+          <ArrowTrendingUpIcon className="min-h-5 min-w-5 h-5 w-5 stroke-2" />
+         </p>
+
+         <p className="text-accent-primary border-accent-primary/50 bg-accent-primary/20 hover:bg-accent-primary/30 flex cursor-pointer gap-1 rounded-full border px-2 py-1 text-sm font-bold duration-200">
+          +{Math.floor(Math.random() * 500 + 100)} messages today
+          <ArrowTrendingUpIcon className="min-h-5 min-w-5 h-5 w-5 stroke-2" />
+         </p>
+
+         <p className="text-accent-primary border-accent-primary/50 bg-accent-primary/20 hover:bg-accent-primary/30 flex cursor-pointer gap-1 rounded-full border px-2 py-1 text-sm font-bold duration-200">
+          +{Math.floor(Math.random() * 100)}% increase in activity
+          <ArrowTrendingUpIcon className="min-h-5 min-w-5 h-5 w-5 stroke-2" />
+         </p>
+        </div>
+
+        <svg viewBox="0 0 512 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+         <g id="Frame" clipPath="url(#chart-clip)">
+          <path d="M0 119.141C5.632 118.328 16.896 116.991 28.16 115.076C39.424 113.162 45.056 110.603 56.32 109.569C67.584 108.535 73.216 111.017 84.48 109.907C95.744 108.798 101.376 105.376 112.64 104.021C123.904 102.666 129.536 105.474 140.8 103.131C152.064 100.787 157.696 93.9799 168.96 92.3035C180.224 90.628 185.856 95.9134 197.12 94.7504C208.384 93.5865 214.016 89.5922 225.28 86.4866C236.544 83.3811 242.176 82.357 253.44 79.2217C264.704 76.0863 270.336 70.9047 281.6 70.8081C292.864 70.7125 298.496 79.698 309.76 78.7399C321.024 77.7817 326.656 72.4313 337.92 66.0162C349.184 59.6012 354.816 48.3726 366.08 46.6665C377.344 44.9603 382.976 58.2199 394.24 57.4845C405.504 56.7501 411.136 50.4054 422.4 42.9925C433.664 35.5796 439.296 22.542 450.56 20.418C461.824 18.2941 467.456 31.6818 478.72 32.3747C489.984 33.0686 506.368 22.9011 512 21.203V120H0V119.141Z" fill="#5865F2" fillOpacity="0.1" />
+          <path d="M-10 121.5C-4.368 120.687 16.896 116.991 28.16 115.076C39.424 113.162 45.056 110.603 56.32 109.569C67.584 108.535 73.216 111.017 84.48 109.907C95.744 108.798 101.376 105.376 112.64 104.021C123.904 102.666 129.536 105.474 140.8 103.131C152.064 100.787 157.696 93.9799 168.96 92.3035C180.224 90.628 185.856 95.9134 197.12 94.7504C208.384 93.5865 214.016 89.5922 225.28 86.4866C236.544 83.3811 242.176 82.357 253.44 79.2217C264.704 76.0863 270.336 70.9047 281.6 70.8081C292.864 70.7125 298.496 79.698 309.76 78.7399C321.024 77.7817 326.656 72.4313 337.92 66.0162C349.184 59.6012 354.816 48.3726 366.08 46.6665C377.344 44.9603 382.976 58.2199 394.24 57.4845C405.504 56.7501 411.136 50.4054 422.4 42.9925C433.664 35.5796 439.296 22.542 450.56 20.418C461.824 18.2941 467.456 31.6818 478.72 32.3747C489.984 33.0686 509.568 22.1161 515.2 20.418" stroke="#5865F2" strokeWidth="2" />
+         </g>
+         <defs>
+          <clipPath id="chart-clip">
+           <rect width="512" height="120" fill="white" />
+          </clipPath>
+         </defs>
+        </svg>
+       </div>
+
+       <div className="absolute inset-0 z-10 m-auto mt-[100px] h-[980px] w-[980px] rounded-full bg-[#ddd] opacity-5 blur-3xl" />
+      </div>
+      <div className={"bg-background-secondary row-span-1 overflow-hidden rounded-xl border border-neutral-800 p-4 duration-200 hover:bg-neutral-800/50"}>
+       <GradientHeader>Giveaways? Why not?</GradientHeader>
+       <p className="mt-2 max-w-[680px] text-white/70">Want to host a giveaway or a drop? Majo.exe caan help you with that! You can easily create and moderate giveaways with few simple commands!</p>
+      </div>
+     </div>
     </div>
    </div>
   </>

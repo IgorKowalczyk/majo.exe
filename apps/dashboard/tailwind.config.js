@@ -43,6 +43,34 @@ const tailwindConfig = {
       transform: "translateX(100%)",
      },
     },
+
+    loader: {
+     "0%": {
+      height: "0.5rem",
+      opacity: 0.2,
+     },
+     "50%": {
+      height: "1rem",
+      opacity: 1,
+     },
+     "100%": {
+      height: "0.5rem",
+      opacity: 0.2,
+     },
+    },
+
+    // blink-182
+    blinking: {
+     "0%": {
+      opacity: 0.2,
+     },
+     "50%": {
+      opacity: 1,
+     },
+     "100%": {
+      opacity: 0.2,
+     },
+    },
    },
   },
  },
