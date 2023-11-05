@@ -24,7 +24,7 @@
   "devDependencies": {
     "@igorkowalczyk/eslint-config": "2.0.3",
     "@igorkowalczyk/prettier-config": "2.0.3",
-    "eslint": "8.52.0",
+    "eslint": "8.53.0",
     "eslint-plugin-turbo": "1.10.16",
     "prettier": "3.0.3"
   },
