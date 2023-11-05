@@ -120,7 +120,7 @@ export default async function Main() {
        <GradientHeader>Moderation? We have it!</GradientHeader>
        <div className="absolute inset-0 z-0 m-auto mt-[100px] h-[580px] w-[580px] rounded-full bg-[#ddd] opacity-5 blur-3xl" />
        <p className="mt-2 max-w-[680px] text-white/70">
-        <Balancer>Someones breaking the rules? You can easily enable Auto-Moderation and Majo.exe will take care of the rest!</Balancer>
+        <Balancer>Someone's breaking the rules? You can easily enable Auto-Moderation and Majo.exe will take care of the rest!</Balancer>
        </p>
       </div>
       <div className={"bg-background-secondary relative col-span-2 row-span-2 overflow-hidden rounded-xl border border-neutral-800 duration-200 hover:bg-neutral-800/50"}>

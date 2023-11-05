@@ -12,7 +12,7 @@ export default {
    const embed = new EmbedBuilder() // Prettier
     .setTitle(`🤖 About ${client.user.username}`)
     .setDescription(
-     `Majo.exe is a Discord bot made for **Memes, Image editing, Giveaway, Moderation, Anime and even more!** 🎉
+     `Majo.exe is a Discord bot made for **Memes, Image editing, Giveaways, Moderation, Anime and even more!** 🎉
      
      It is made by the awesome [Majo.exe Team & Contributors](https://github.com/IgorKowalczyk/majo.exe#-contributors) and is **completly open source and free**.
      

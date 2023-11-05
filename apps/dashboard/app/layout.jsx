@@ -84,7 +84,7 @@ export default function RootLayout({ children }) {
            </Link>
           </div>
 
-          <p className="mt-3 text-neutral-300">🔥 Bot for almost everything - Memes, Image editing, Giveaway, Moderation, Anime and even more!</p>
+          <p className="mt-3 text-neutral-300">🔥 Bot for almost everything - Memes, Image editing, Giveaways, Moderation, Anime and even more!</p>
           <br />
          </div>
 

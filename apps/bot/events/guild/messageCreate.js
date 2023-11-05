@@ -13,7 +13,7 @@ export async function messageCreate(client, message) {
   const embed = new EmbedBuilder()
    .setTitle("👋 Hello!")
    .setDescription(
-    `Hello ${message.author}! I'm ${client.user.username}, a multi-purpose Discord bot created for **Memes, Image editing, Giveaway, Moderation, Anime and even more!** 🎉
+    `Hello ${message.author}! I'm ${client.user.username}, a multi-purpose Discord bot created for **Memes, Image editing, Giveaways, Moderation, Anime and even more!** 🎉
 
    **You can find the list of all my commands by typing \`/help\`** ${client.config.dashboard.enabled && client.config.dashboard.url ? `or by visiting [my dashboard](${client.config.dashboard.url}/commands)` : ""}.
 
