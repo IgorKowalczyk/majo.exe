@@ -12,7 +12,7 @@ export default async function Profile() {
  if (!user) return redirect("/auth/login");
 
  return (
-  <div className="bg-background-primary flex w-full flex-col items-center px-8 pb-8 pt-16 antialiased md:px-16 md:py-16">
+  <div className="flex w-full flex-col items-center px-8 pb-8 pt-16 antialiased md:px-16 md:py-16">
    <div className="flex flex-col justify-center gap-4">
     <div className="bg-background-navbar relative overflow-hidden rounded-lg border border-neutral-800 md:w-full">
      <>

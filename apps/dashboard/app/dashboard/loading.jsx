@@ -4,7 +4,7 @@ import { AvatarSkeleton, TextSkeleton, ButtonSkeleton } from "@/components/block
 
 export default function Loading() {
  return (
-  <div className="bg-background-primary flex w-full flex-col items-center px-8 pb-8 pt-16 antialiased md:px-16 md:py-16">
+  <div className="flex w-full flex-col items-center px-8 pb-8 pt-16 antialiased md:px-16 md:py-16">
    <div className="flex flex-col justify-center gap-4">
     <Header1 className={"!justify-center"}>
      <RectangleStackIcon className="h-10 w-10" aria-hidden="true" role="img" />

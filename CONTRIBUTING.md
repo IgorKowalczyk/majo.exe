@@ -136,15 +136,15 @@ We know that waiting for your pull request to be accepted can be stressful. **Pl
 
 Want to contribute to Majo.exe but don't know where to start? **Join our community!** We have created a welcoming community that encourages collaboration and supports new contributors. **We are excited to have you on board!** 🙌
 
-[We created a Discord server for the Majo.exe community.](https://beta.majoexe.xyz/discord) **Join the server to connect with fellow contributors and get support from the project maintainers.** We look forward to collaborating with you! 🚀👾🙌
+[We created a Discord server for the Majo.exe community.](https://majoexe.xyz/discord) **Join the server to connect with fellow contributors and get support from the project maintainers.** We look forward to collaborating with you! 🚀👾🙌
 
-[![Join the Discord server](https://invidget.switchblade.xyz/sgt4QEyDxK)](https://beta.majoexe.xyz/discord)
+[![Join the Discord server](https://invidget.switchblade.xyz/sgt4QEyDxK)](https://majoexe.xyz/discord)
 
 ### Share Your Feedback 📣
 
 We want to hear from you! **Your feedback is vital for the project's development and success.** If you have any questions, suggestions, or concerns, please feel free to contact the project maintainers. We are always happy to help! 🙌
 
-You can contact the project maintainers by [joining the Discord server](https://beta.majoexe.xyz/discord) or [opening an issue](https://github.com/igorkowalczyk/majo.exe/issues/new/choose) on GitHub.
+You can contact the project maintainers by [joining the Discord server](https://majoexe.xyz/discord) or [opening an issue](https://github.com/igorkowalczyk/majo.exe/issues/new/choose) on GitHub.
 
 [![Create a new issue on GitHub](https://github.com/IgorKowalczyk/majo.exe/assets/49127376/15422f9b-c7cc-48ef-a047-6a81c0e6c6e9)](https://github.com/igorkowalczyk/majo.exe/issues/new/choose)
 

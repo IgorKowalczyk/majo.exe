@@ -1,9 +1,12 @@
 import { dashboardHeaders, dashboardRedirects } from "@majoexe/config";
+import createMdx from "@next/mdx";
 import { PrismaPlugin } from "@prisma/nextjs-monorepo-workaround-plugin";
+
+const withMDX = createMdx();
 
 const nextConfig = {
  reactStrictMode: true,
- pageExtensions: ["mdx", "md", "jsx", "js"],
+ pageExtensions: ["mdx", "jsx", "js"],
  poweredByHeader: false,
  trailingSlash: false,
  compiler: {
@@ -44,4 +47,4 @@ const nextConfig = {
  },
 };
 
-export default nextConfig;
+export default withMDX(nextConfig);

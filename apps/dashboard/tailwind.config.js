@@ -1,4 +1,5 @@
 import tailwindHeadlessui from "@headlessui/tailwindcss";
+import tailwindTypography from "@tailwindcss/typography";
 import svgToDataUri from "mini-svg-data-uri";
 import tailwindGradientMaskImage from "tailwind-gradient-mask-image";
 import plugin from "tailwindcss/plugin";
@@ -33,6 +34,9 @@ const tailwindConfig = {
     "button-action-primary": "#ea4d4d",
     "button-action-hover": "#ff5f5f",
    },
+   backgroundImage: {
+    "main-gradient": "linear-gradient(180deg, #101110 calc(100% - 400px), #161617 100%);",
+   },
    keyframes: {
     shimmer: {
      "100%": {
@@ -53,6 +57,7 @@ const tailwindConfig = {
   tailwindTextFill,
   tailwindGradientMaskImage,
   tailwindHeadlessui,
+  tailwindTypography,
  ],
 };
 

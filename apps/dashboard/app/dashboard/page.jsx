@@ -30,7 +30,7 @@ export default async function Dashboard() {
  servers.sort((a, b) => (a.bot && !b.bot ? -1 : !a.bot && b.bot ? 1 : 0));
 
  return (
-  <div className="bg-background-primary flex w-full flex-col items-center px-8 pb-8 pt-16 antialiased md:px-16 md:py-16">
+  <div className="flex w-full flex-col items-center px-8 pb-8 pt-16 antialiased md:px-16 md:py-16">
    <div className="flex flex-col justify-center gap-4">
     <Header1 className={"!justify-center"}>
      <RectangleStackIcon className="min-h-10 min-w-10 h-10 w-10" aria-hidden="true" role="img" />
