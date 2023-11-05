@@ -31,19 +31,19 @@ export default {
    ],
   },
   {
-   name: "america",
-   description: "🇺🇸 Put American flag on image",
+   name: "usa",
+   description: "🇺🇸 Put USA flag on image",
    type: ApplicationCommandOptionType.Subcommand,
    options: [
     {
      name: "attachment",
-     description: "Attachment to put American flag",
+     description: "Attachment to put USA flag",
      type: ApplicationCommandOptionType.Attachment,
      required: false,
     },
     {
      name: "user",
-     description: "User to put American flag",
+     description: "User to put USA flag",
      type: ApplicationCommandOptionType.User,
      required: false,
     },
@@ -111,7 +111,7 @@ export default {
   try {
    const countryFlags = {
     japan: "🇯🇵",
-    america: "🇺🇸",
+    usa: "🇺🇸",
     russia: "🇷🇺",
     germany: "🇩🇪",
     poland: "🇵🇱",
