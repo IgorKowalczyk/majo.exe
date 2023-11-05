@@ -6,7 +6,7 @@ import clsx from "clsx";
 import Link from "next/link";
 import { signOut } from "next-auth/react";
 import { Fragment } from "react";
-import Image from "@/components/blocks/client/Image";
+import Image from "@/components/blocks/client/shared/Image";
 
 export function UserMenuDropdown({ user }) {
  return (

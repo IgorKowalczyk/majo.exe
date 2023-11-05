@@ -6,9 +6,9 @@ import { formatDate } from "@majoexe/util/functions";
 import clsx from "clsx";
 import React, { useState, useRef, useEffect } from "react";
 import InfiniteScroll from "react-infinite-scroller";
-import { GraphSkeleton } from "../Skeletons";
-import { Tooltip } from "./Tooltip";
-import Image from "@/components/blocks/client/Image";
+import { GraphSkeleton } from "../../Skeletons";
+import { Tooltip } from "../shared/Tooltip";
+import Image from "@/components/blocks/client/shared/Image";
 import { InputWithIcon } from "@/components/buttons/server/Input";
 
 export default function Logs({ initialItems, id }) {

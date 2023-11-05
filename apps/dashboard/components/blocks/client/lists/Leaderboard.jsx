@@ -3,8 +3,8 @@
 import { MagnifyingGlassIcon } from "@heroicons/react/24/outline";
 import { useMemo, useEffect } from "react";
 import { useTable, useSortBy, usePagination, useGlobalFilter } from "react-table";
-import Image from "@/components/blocks/client/Image";
-import { Tooltip } from "@/components/blocks/client/Tooltip";
+import Image from "@/components/blocks/client/shared/Image";
+import { Tooltip } from "@/components/blocks/client/shared/Tooltip";
 import { InputWithIcon } from "@/components/buttons/server/Input";
 import { SecondaryButton } from "@/components/buttons/server/Secondary";
 

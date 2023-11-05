@@ -2,8 +2,8 @@
 
 import { useRouter } from "next/navigation";
 import { useState } from "react";
-import Switch from "./Switch";
-import { Tooltip } from "./Tooltip";
+import Switch from "../shared/Switch";
+import { Tooltip } from "../shared/Tooltip";
 
 export function UpdateCommands({ serverId, commandName, commandEnabled }) {
  const [enabled, setEnabled] = useState(commandEnabled);

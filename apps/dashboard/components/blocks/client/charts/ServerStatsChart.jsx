@@ -6,7 +6,7 @@ import clsx from "clsx";
 import fileDl from "js-file-download";
 import { Fragment } from "react";
 import { Block } from "@/components/blocks/Block";
-import AreaChart from "@/components/blocks/client/AreaChart";
+import AreaChart from "@/components/blocks/client/shared/AreaChart";
 import { Header4 } from "@/components/blocks/Headers";
 
 export function ServerStatsChart({ guildJoin, guildLeave, guildJoinCSV, guildLeaveCSV, guildMessage, guildMessageCSV }) {
@@ -34,7 +34,7 @@ function GenerateComponent({ title, data, csvData, valueName, fileName, categori
     </span>
     <Menu as="div" className="relative mx-auto inline-block text-left sm:ml-auto sm:mr-0">
      <div>
-      <Menu.Button className="text-base ml-4 flex cursor-pointer items-center gap-3 font-normal duration-200 motion-reduce:transition-none">
+      <Menu.Button className="ml-4 flex cursor-pointer items-center gap-3 text-base font-normal duration-200 motion-reduce:transition-none">
        {({ open }) => (
         <div
          className={clsx(
@@ -46,7 +46,7 @@ function GenerateComponent({ title, data, csvData, valueName, fileName, categori
          )}
         >
          <ArrowDownTrayIcon className="min-h-4 min-w-4 h-4 w-4" aria-hidden="true" role="img" />
-         <span className="text-base !ml-2 font-normal">Export</span>
+         <span className="!ml-2 text-base font-normal">Export</span>
          <ChevronDownIcon
           className={clsx(
            {

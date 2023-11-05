@@ -3,8 +3,8 @@ import { getFlags } from "@majoexe/util/functions";
 import { getSession } from "lib/session";
 import Link from "next/link";
 import { redirect } from "next/navigation";
-import Image from "@/components/blocks/client/Image";
-import { Tooltip } from "@/components/blocks/client/Tooltip";
+import Image from "@/components/blocks/client/shared/Image";
+import { Tooltip } from "@/components/blocks/client/shared/Tooltip";
 import { Emojis } from "@/components/decorations/emojis";
 
 export default async function Profile() {

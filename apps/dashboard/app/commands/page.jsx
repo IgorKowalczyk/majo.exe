@@ -1,7 +1,7 @@
 import { CommandLineIcon } from "@heroicons/react/24/outline";
 import prismaClient from "@majoexe/database";
 import { Block } from "@/components/blocks/Block";
-import { DiscordCommands } from "@/components/blocks/client/DiscordCommands";
+import { DiscordCommands } from "@/components/blocks/client/commandModules/DiscordCommands";
 import { Header1 } from "@/components/blocks/Headers";
 
 export const metadata = {

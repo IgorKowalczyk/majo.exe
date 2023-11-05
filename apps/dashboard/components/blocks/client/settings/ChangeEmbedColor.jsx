@@ -4,7 +4,7 @@ import { ArrowPathIcon, CheckIcon, ExclamationCircleIcon, TrashIcon } from "@her
 import { dashboardConfig } from "@majoexe/config";
 import { useState } from "react";
 import { HexColorPicker } from "react-colorful";
-import Image from "@/components/blocks/client/Image";
+import Image from "@/components/blocks/client/shared/Image";
 import { PrimaryButton } from "@/components/buttons/server/Primary";
 import { SecondaryButton } from "@/components/buttons/server/Secondary";
 

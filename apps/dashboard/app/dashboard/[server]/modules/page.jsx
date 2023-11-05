@@ -6,8 +6,8 @@ import clsx from "clsx";
 import { getSession } from "lib/session";
 import { redirect } from "next/navigation";
 import { Block } from "@/components/blocks/Block";
-import { UpdateCategories } from "@/components/blocks/client/UpdateCategories";
-import { UpdateCommands } from "@/components/blocks/client/UpdateCommands";
+import { UpdateCategories } from "@/components/blocks/client/commandModules/UpdateCategories";
+import { UpdateCommands } from "@/components/blocks/client/commandModules/UpdateCommands";
 import { Header1, Header2, Header3 } from "@/components/blocks/Headers";
 
 export default async function Settings({ params }) {

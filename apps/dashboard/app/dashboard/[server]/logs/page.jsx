@@ -4,7 +4,7 @@ import { getGuildMember, getServer } from "@majoexe/util/functions";
 import { getSession } from "lib/session";
 import { redirect } from "next/navigation";
 import { Block } from "@/components/blocks/Block";
-import Logs from "@/components/blocks/client/Logs";
+import Logs from "@/components/blocks/client/lists/Logs";
 import { Header1 } from "@/components/blocks/Headers";
 
 export const metadata = {

@@ -5,8 +5,8 @@ import { getGuildMember, getPermissionNames, getServer } from "@majoexe/util/fun
 import { getSession } from "lib/session";
 import { redirect } from "next/navigation";
 import { Block } from "@/components/blocks/Block";
-import { ChangeEmbedColor } from "@/components/blocks/client/ChangeEmbedColor";
-import { EnablePublicDashboard } from "@/components/blocks/client/EnablePublicDashboard";
+import { ChangeEmbedColor } from "@/components/blocks/client/settings/ChangeEmbedColor";
+import { EnablePublicDashboard } from "@/components/blocks/client/settings/EnablePublicDashboard";
 import { Header1 } from "@/components/blocks/Headers";
 
 export default async function Settings({ params }) {

@@ -4,7 +4,7 @@ import { getSession } from "lib/session";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import { getProviders } from "next-auth/react";
-import Image from "@/components/blocks/client/Image";
+import Image from "@/components/blocks/client/shared/Image";
 import { Header1 } from "@/components/blocks/Headers";
 import { Dots } from "@/components/blocks/Loaders";
 import { ProviderLogin } from "@/components/buttons/client/Provider";

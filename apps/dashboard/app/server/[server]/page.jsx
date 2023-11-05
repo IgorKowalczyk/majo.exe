@@ -6,9 +6,9 @@ import Link from "next/link";
 import { redirect } from "next/navigation";
 import Balancer from "react-wrap-balancer";
 import { Block } from "@/components/blocks/Block";
-import Image from "@/components/blocks/client/Image";
-import { Leaderboard } from "@/components/blocks/client/Leaderboard";
-import { Tooltip } from "@/components/blocks/client/Tooltip";
+import { Leaderboard } from "@/components/blocks/client/lists/Leaderboard";
+import Image from "@/components/blocks/client/shared/Image";
+import { Tooltip } from "@/components/blocks/client/shared/Tooltip";
 import { Header1, Header4, Header5 } from "@/components/blocks/Headers";
 
 export async function generateMetadata({ params }) {

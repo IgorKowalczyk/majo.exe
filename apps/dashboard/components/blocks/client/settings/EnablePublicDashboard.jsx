@@ -3,7 +3,7 @@
 import { ArrowPathIcon, CheckIcon, ExclamationCircleIcon } from "@heroicons/react/24/outline";
 import clsx from "clsx";
 import { useEffect, useState } from "react";
-import Switch from "./Switch";
+import Switch from "../shared/Switch";
 import { Input } from "@/components/buttons/server/Input";
 import { PrimaryButton } from "@/components/buttons/server/Primary";
 

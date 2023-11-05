@@ -4,7 +4,7 @@ import { getGuildMember, getServer } from "@majoexe/util/functions";
 import { getSession } from "lib/session";
 import { redirect } from "next/navigation";
 import { Block } from "@/components/blocks/Block";
-import { Leaderboard } from "@/components/blocks/client/Leaderboard";
+import { Leaderboard } from "@/components/blocks/client/lists/Leaderboard";
 import { Header1, Header5 } from "@/components/blocks/Headers";
 import "tippy.js/dist/backdrop.css";
 import "tippy.js/animations/shift-away.css";

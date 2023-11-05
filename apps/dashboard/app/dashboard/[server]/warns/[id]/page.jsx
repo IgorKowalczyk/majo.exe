@@ -5,8 +5,8 @@ import { getSession } from "lib/session";
 import { redirect } from "next/navigation";
 import Balancer from "react-wrap-balancer";
 import { Block } from "@/components/blocks/Block";
-import Image from "@/components/blocks/client/Image";
-import { ManageWarns } from "@/components/blocks/client/Warns";
+import Image from "@/components/blocks/client/shared/Image";
+import { ManageWarns } from "@/components/blocks/client/lists/Warns";
 import { Header5 } from "@/components/blocks/Headers";
 import { SecondaryButton } from "@/components/buttons/server/Secondary";
 

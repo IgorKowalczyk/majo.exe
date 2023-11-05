@@ -3,7 +3,7 @@ import { dashboardConfig } from "@majoexe/config";
 import clsx from "clsx";
 import { getSession } from "lib/session";
 import Link from "next/link";
-import Image from "@/components/blocks/client/Image";
+import Image from "@/components/blocks/client/shared/Image";
 import { ProviderLogin } from "@/components/buttons/client/Provider";
 import { Invite } from "@/components/buttons/server/Invite";
 import { SideMenuControl } from "@/components/nav/client/SideMenuControl";
