@@ -78,8 +78,8 @@ export default function RootLayout({ children }) {
           <div className="flex items-center space-x-5">
            <Link href="/">
             <p className="flex cursor-pointer items-center text-2xl font-semibold">
-             <Image className="min-h-9 min-w-9 mr-2 h-9 w-9 rounded-full" src={dashboardConfig.logo} alt="Majo.exe" width={36} height={36} />
-             Majo.exe
+             <Image className="min-h-9 min-w-9 mr-2 h-9 w-9 rounded-full" src={dashboardConfig.logo} alt={`${dashboardConfig.title} logo`} width={36} height={36} />
+             {dashboardConfig.title}
             </p>
            </Link>
           </div>

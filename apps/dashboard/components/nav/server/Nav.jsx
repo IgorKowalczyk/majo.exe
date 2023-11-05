@@ -26,8 +26,8 @@ export async function Nav({ theme }) {
    >
     <Link href="/" className="text-lg text-white">
      <div className="flex cursor-pointer items-center gap-2 pl-4 pr-2 text-xl duration-200 hover:opacity-90 motion-reduce:transition-none">
-      <Image className="min-h-9 min-w-9 h-9 w-9 rounded-full" src={dashboardConfig.logo} alt="Majo.exe" width={36} height={36} />
-      <h1 className=" hidden font-bold sm:block">{dashboardConfig.title}</h1>
+      <Image className="min-h-9 min-w-9 h-9 w-9 rounded-full" src={dashboardConfig.logo} alt={`${dashboardConfig.title} logo`} width={36} height={36} />
+      <h1 className="hidden font-bold sm:block">{dashboardConfig.title}</h1>
      </div>
     </Link>
     <div className="hidden md:flex">
