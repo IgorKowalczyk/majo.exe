@@ -5,7 +5,7 @@ import GIFEncoder from "gif-encoder-2";
 
 export default {
  name: "flag",
- description: "🏳️ Put country flag on image",
+ description: "🏳️ Put a country flag on image",
  type: ApplicationCommandType.ChatInput,
  cooldown: 5000,
  dm_permission: false,
@@ -13,7 +13,7 @@ export default {
  options: [
   {
    name: "japan",
-   description: "🇯🇵 Put Japanese flag on image",
+   description: "🇯🇵 Put a Japanese flag on image",
    type: ApplicationCommandOptionType.Subcommand,
    options: [
     {
@@ -32,7 +32,7 @@ export default {
   },
   {
    name: "usa",
-   description: "🇺🇸 Put USA flag on image",
+   description: "🇺🇸 Put a USA flag on image",
    type: ApplicationCommandOptionType.Subcommand,
    options: [
     {
@@ -51,7 +51,7 @@ export default {
   },
   {
    name: "russia",
-   description: "🇷🇺 Put Russian flag on image",
+   description: "🇷🇺 Put a Russian flag on image",
    type: ApplicationCommandOptionType.Subcommand,
    options: [
     {
@@ -70,7 +70,7 @@ export default {
   },
   {
    name: "germany",
-   description: "🇩🇪 Put German flag on image",
+   description: "🇩🇪 Put a German flag on image",
    type: ApplicationCommandOptionType.Subcommand,
    options: [
     {
@@ -89,7 +89,7 @@ export default {
   },
   {
    name: "poland",
-   description: "🇵🇱 Put Polish flag on image",
+   description: "🇵🇱 Put a Polish flag on image",
    type: ApplicationCommandOptionType.Subcommand,
    options: [
     {
