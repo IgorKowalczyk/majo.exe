@@ -9,7 +9,7 @@ import { createXPCard } from "../../util/images/createXPCard.js";
 export async function messageCreate(client, message) {
  if (message.author.bot) return;
 
- if (message.mentions.users.has(client.user.id)) {
+ if (message.mentions.users.has(client.user.id) && (!message.reference || !message.reference.messageId)) {
   const embed = new EmbedBuilder()
    .setTitle("👋 Hello!")
    .setDescription(
