@@ -30,7 +30,7 @@ export function HomepageLevelUp({ logo }) {
 }
 
 export function AddReaction({ reaction, countL = 1 }) {
- const [clicked, setClicked] = useState(false);
+ const [clicked, setClicked] = useState(true);
  const [count, setCount] = useState(countL);
 
  const setIt = () => {
