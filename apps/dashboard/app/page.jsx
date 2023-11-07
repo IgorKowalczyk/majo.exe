@@ -1,11 +1,14 @@
-import { ArrowRightIcon, ArrowTrendingUpIcon, CheckIcon } from "@heroicons/react/24/outline";
-import { dashboardConfig } from "@majoexe/config";
+import { ArrowRightIcon, ArrowTrendingUpIcon, CheckIcon, ChevronDownIcon } from "@heroicons/react/24/outline";
+import { dashboardConfig, globalConfig } from "@majoexe/config";
 import prismaClient from "@majoexe/database";
 import { formatNumber } from "@majoexe/util/functions";
 import Link from "next/link";
+import avatar01 from "public/assets/avatars/01.webp";
 import ray from "public/assets/ray.png";
+import tada from "public/assets/tada.svg";
 import Balancer from "react-wrap-balancer";
 import GlobeClient from "@/components/blocks/client/Globe";
+import { AddReaction, HomepageLevelUp } from "@/components/blocks/client/Interactions";
 import Image from "@/components/blocks/client/shared/Image";
 import { GradientHeader, Header1 } from "@/components/blocks/Headers";
 import { Typing } from "@/components/blocks/Loaders";
@@ -97,7 +100,10 @@ export default async function Main() {
            <span className="ml-2 text-sm text-gray-400">Today at 12:00 AM</span>
           </div>
           <span className="ml-2 flex items-center gap-2 text-gray-400">
-           Generating image <Typing />
+           Generating image
+           <Link href={"/assets/avatars/cheese.jpeg"} target="_blank" rel="noopener noreferrer">
+            <Typing />
+           </Link>
           </span>
          </div>
         </div>
@@ -106,22 +112,35 @@ export default async function Main() {
       <div className={"bg-background-secondary row-span-1 overflow-hidden rounded-xl border border-neutral-800 p-4 duration-200 hover:bg-neutral-800/50"}>
        <GradientHeader>Leveling?</GradientHeader>
        <p className="mt-2 max-w-[680px] text-white/70">Majo.exe has a leveling system that will keep your members active and entertained.</p>
-       <div className="mt-6 flex flex-row items-center gap-1">
-        <Image src={dashboardConfig.logo} alt="User avatar" quality={95} width={64} height={64} className="min-h-10 min-w-10 h-10 w-10 self-baseline rounded-full" />
-        <span className="ml-2">
-         <span className="font-bold">Majonez.exe</span> leveled up to <span className="text-accent-primary font-bold">level 2</span> 🔥
-         <span className="relative mt-2 block h-2 w-full rounded-full bg-[#2b2d31]">
-          <span className="bg-accent-primary absolute inset-0 h-2 rounded-full" style={{ width: `${Math.floor(Math.random() * 80) + 5}%` }} />
-         </span>
-        </span>
-       </div>
+       <HomepageLevelUp logo={dashboardConfig.logo} />
       </div>
       <div className={"bg-background-secondary relative col-span-2 row-span-2 overflow-hidden rounded-xl border border-neutral-800 px-8 py-6 duration-200 hover:bg-neutral-800/50 lg:col-span-1"}>
        <GradientHeader>Moderation? We have it!</GradientHeader>
        <div className="absolute inset-0 z-0 m-auto mt-[100px] h-[580px] w-[580px] rounded-full bg-[#ddd] opacity-5 blur-3xl" />
-       <p className="mt-2 max-w-[680px] text-white/70">
-        <Balancer>Someone's breaking the rules? You can easily enable Auto-Moderation and Majo.exe will take care of the rest!</Balancer>
-       </p>
+       <div className="relative z-10">
+        <p className="mt-2 max-w-[680px] text-white/70">
+         <Balancer>Someone's breaking the rules? You can easily enable Auto-Moderation and Majo.exe will take care of the rest!</Balancer>
+        </p>
+        <div className="mt-3 flex flex-row items-center gap-1">
+         <Image src={dashboardConfig.logo} alt="User avatar" quality={95} width={64} height={64} className="min-h-10 min-w-10 h-10 w-10 self-baseline rounded-full" />
+         <span className="ml-2">
+          <span className="font-bold">Majonez.exe</span> banned <span className="text-accent-primary font-bold">John Doe</span> 🔨
+         </span>
+        </div>
+        <div className="mt-3 flex flex-row items-center gap-1">
+         <Image src={avatar01} alt="User avatar" quality={95} width={64} height={64} className="min-h-10 min-w-10 h-10 w-10 self-baseline rounded-full" />
+         <span className="ml-2">
+          <span className="font-bold">Jonas</span> enabled <span className="text-accent-primary font-bold">Auto-Moderation</span> ⚙️
+         </span>
+        </div>
+
+        <div className="mt-3 flex flex-row items-center gap-1">
+         <div className="min-h-10 min-w-10 bg-button-secondary h-10 w-10 self-baseline rounded-full" />
+         <span className="ml-2 flex items-center gap-2 text-gray-400">
+          Listening for other events <Typing />
+         </span>
+        </div>
+       </div>
       </div>
       <div className={"bg-background-secondary relative col-span-2 row-span-2 overflow-hidden rounded-xl border border-neutral-800 duration-200 hover:bg-neutral-800/50"}>
        <div className="relative z-50">
@@ -167,6 +186,34 @@ export default async function Main() {
       <div className={"bg-background-secondary row-span-1 overflow-hidden rounded-xl border border-neutral-800 p-4 duration-200 hover:bg-neutral-800/50"}>
        <GradientHeader>Giveaways? Why not?</GradientHeader>
        <p className="mt-2 max-w-[680px] text-white/70">Want to host a giveaway or a drop? Majo.exe caan help you with that! You can easily create and moderate giveaways with few simple commands!</p>
+       <div className="my-6 flex items-center gap-1">
+        <Image src={dashboardConfig.logo} alt={`${dashboardConfig.title} avatar`} quality={95} width={64} height={64} className="min-h-10 min-w-10 h-10 w-10 self-baseline rounded-full" />
+        <div className="flex flex-col">
+         <div className="ml-2 flex flex-row items-center">
+          <span className="font-bold">{dashboardConfig.title}</span>{" "}
+          <span className="ml-1 flex items-center gap-1 rounded bg-[#5c65f3] px-1 py-[0.12rem] text-xs text-white">
+           <CheckIcon className="min-h-4 min-w-4 h-4 w-4 stroke-2" aria-hidden="true" role="img" /> <span className="-mb-px">BOT</span>
+          </span>
+          <span className="ml-2 text-sm text-gray-400">Today at 12:00 AM</span>
+         </div>
+         <div
+          className="ml-1 mt-2 rounded bg-[#2b2d31] p-4 shadow-lg"
+          style={{
+           borderLeft: `4px solid ${globalConfig.defaultColor}`,
+          }}
+         >
+          <div className="flex flex-row gap-8">
+           <div>
+            <span className="font-bold">🎉 New giveaway!</span>
+            <span className="mt-1 block text-sm text-gray-400">React with 🎉 to participate!</span>
+           </div>
+
+           <Image src={tada} alt={"Giveaway emoji"} quality={95} width={64} height={64} className="min-h-16 min-w-16 h-16 w-16" />
+          </div>
+         </div>
+         <AddReaction reaction={tada} />
+        </div>
+       </div>
       </div>
      </div>
     </div>
