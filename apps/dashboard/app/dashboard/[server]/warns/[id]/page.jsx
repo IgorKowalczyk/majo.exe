@@ -71,19 +71,15 @@ export default async function ServerLogs({ params }) {
   return redirect("/auth/error?error=It%20looks%20like%20the%20user%20you%20are%20trying%20to%20display%20does%20not%20exist");
  }
 
- const guild = await prismaClient.guild.findFirst({
+ await prismaClient.guild.upsert({
   where: {
    guildId: serverDownload.id,
   },
+  update: {},
+  create: {
+   guildId: serverDownload.id,
+  },
  });
-
- if (!guild) {
-  await prismaClient.guild.create({
-   data: {
-    guildId: serverDownload.id,
-   },
-  });
- }
 
  const warns = await prismaClient.guildWarns.findMany({
   where: {

@@ -28,19 +28,15 @@ export default async function ServerLogs({ params }) {
  )
   return redirect("/auth/error?error=It%20looks%20like%20you%20do%20not%20have%20permission%20to%20access%20this%20page.");
 
- const guild = await prismaClient.guild.findFirst({
+ await prismaClient.guild.upsert({
   where: {
    guildId: serverDownload.id,
   },
+  update: {},
+  create: {
+   guildId: serverDownload.id,
+  },
  });
-
- if (!guild) {
-  await prismaClient.guild.create({
-   data: {
-    guildId: serverDownload.id,
-   },
-  });
- }
 
  const logs = await prismaClient.guildLogs.findMany({
   where: {
@@ -52,9 +48,19 @@ export default async function ServerLogs({ params }) {
    createdAt: "desc",
   },
   include: {
-   user: true,
+   user: {
+    select: {
+     discordId: true,
+     name: true,
+     global_name: true,
+     avatar: true,
+     discriminator: true,
+    },
+   },
   },
  });
+
+ console.log(logs);
 
  logs.forEach((log) => {
   if (log.createdAt instanceof Date) {

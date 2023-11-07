@@ -31,19 +31,15 @@ export default async function ServerLeaderboard({ params }) {
  )
   return redirect("/auth/error?error=It%20looks%20like%20you%20do%20not%20have%20permission%20to%20access%20this%20page.");
 
- const guild = await prismaClient.guild.findFirst({
+ await prismaClient.guild.upsert({
   where: {
    guildId: serverDownload.id,
   },
+  update: {},
+  create: {
+   guildId: serverDownload.id,
+  },
  });
-
- if (!guild) {
-  await prismaClient.guild.create({
-   data: {
-    guildId: serverDownload.id,
-   },
-  });
- }
 
  const xp = await prismaClient.guildXp.findMany({
   where: {
