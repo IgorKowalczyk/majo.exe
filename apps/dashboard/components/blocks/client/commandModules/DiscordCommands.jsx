@@ -4,7 +4,6 @@ import clsx from "clsx";
 import { useEffect, useState, useMemo } from "react";
 import { InputSkeleton, TextSkeleton } from "../../Skeletons";
 import { Tooltip } from "../shared/Tooltip";
-import { ClientDisclosure } from "@/components/blocks/client/shared/Disclosure";
 import { InputWithIcon } from "@/components/blocks/Input";
 
 export function DiscordCommands({ commands, categories }) {
@@ -105,20 +104,23 @@ export function DiscordCommands({ commands, categories }) {
         {filteredCommands
          .filter((command) => command.categoryName === category.name)
          .map((command) => (
-          <ClientDisclosure
-           key={command.name}
-           buttonIcon={
-            <svg className="fill-neutral-500" width="24" height="24" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
-             <path fill-rule="evenodd" clip-rule="evenodd" d="M3.11111 0C1.39289 0 0 1.39289 0 3.11111V24.8889C0 26.6072 1.39289 28 3.11111 28H24.8889C26.6072 28 28 26.6072 28 24.8889V3.11111C28 1.39289 26.6072 0 24.8889 0H3.11111ZM21.6214 8.42207L19.4216 6.22219L6.22222 19.4216L8.4221 21.6214L21.6214 8.42207Z"></path>
-            </svg>
-           }
-           buttonElements={
-            <>
-             <h3 className="hide-scrollbar flex items-center gap-2 overflow-scroll whitespace-nowrap text-center">
+          <div key={command.name} className="bg-background-navbar my-4 w-full rounded-md border border-neutral-800 px-6 py-4">
+           <h3 className="hide-scrollbar overflow-scroll whitespace-nowrap text-center">
+            <div className="flex flex-col items-start gap-2">
+             <div className="flex items-center font-bold">
               /{command.name}{" "}
               {command.options &&
                command.options.map((option) => (
-                <span key={option.name} className="ml-2">
+                <span
+                 key={option.name}
+                 className={clsx(
+                  {
+                   "!font-normal opacity-70": !option.required,
+                   "opacity-100": option.required,
+                  },
+                  "ml-2 [line-height:normal]"
+                 )}
+                >
                  <Tooltip content={`${option.description} ${option.required ? "(required)" : "(optional)"}`}>
                   <code className="cursor-pointer">
                    {option.name}
@@ -127,12 +129,11 @@ export function DiscordCommands({ commands, categories }) {
                  </Tooltip>
                 </span>
                ))}
-             </h3>
-            </>
-           }
-          >
-           <p>{command.description}</p>
-          </ClientDisclosure>
+             </div>
+             <p className="opacity-70">{command.description}</p>
+            </div>
+           </h3>
+          </div>
          ))}
        </div>
       ))}
