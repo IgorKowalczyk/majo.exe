@@ -29,7 +29,7 @@ export function HomepageLevelUp({ logo }) {
  );
 }
 
-export function AddReaction({ reaction, countL = 1 }) {
+export function AddReaction({ reaction, countL = 2 }) {
  const [clicked, setClicked] = useState(true);
  const [count, setCount] = useState(countL);
 
