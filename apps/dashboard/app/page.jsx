@@ -1,4 +1,4 @@
-import { ArrowRightIcon, ArrowTrendingUpIcon, CheckIcon, ChevronDownIcon } from "@heroicons/react/24/outline";
+import { ArrowRightIcon, ArrowTrendingUpIcon, CheckIcon } from "@heroicons/react/24/outline";
 import { dashboardConfig, globalConfig } from "@majoexe/config";
 import prismaClient from "@majoexe/database";
 import { formatNumber } from "@majoexe/util/functions";
