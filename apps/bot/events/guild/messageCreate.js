@@ -48,11 +48,13 @@ export async function messageCreate(client, message) {
  // Only count messages in guild text channels
  if (message.channel.type !== ChannelType.GuildText && message.channel.type !== ChannelType.GuildForum && message.channel.type !== ChannelType.GuildAnnouncement) return;
 
+ const date = new Date();
+
  const messages = await prismaClient.guildMessage.findFirst({
   where: {
    guildId: message.guild.id,
    date: {
-    gte: new Date(new Date().getFullYear(), new Date().getMonth(), new Date().getDate()),
+    gte: new Date(date.getFullYear(), date.getMonth(), date.getDate()),
    },
   },
  });

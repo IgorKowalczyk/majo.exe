@@ -14,8 +14,17 @@ import prismaClient from "@majoexe/database";
  */
 export async function createUser(user) {
  try {
-  await prismaClient.user.create({
-   data: {
+  const createdUser = await prismaClient.user.upsert({
+   where: {
+    discordId: user.id,
+   },
+   update: {
+    name: user.username,
+    global_name: user.globalName || user.username,
+    avatar: user.avatar,
+    discriminator: user.discriminator,
+   },
+   create: {
     discordId: user.id,
     name: user.username,
     global_name: user.globalName || user.username,
@@ -23,7 +32,7 @@ export async function createUser(user) {
     discriminator: user.discriminator,
    },
   });
-  return true;
+  return createdUser;
  } catch (e) {
   console.log("Failed to create user:", e);
   throw e;
