@@ -53,9 +53,13 @@ export default {
     .setTimestamp();
 
    if (client.config.dashboard.enabled && client.config.dashboard.url) {
-    const contactButton = new ButtonBuilder().setLabel("View Leaderboard").setStyle(ButtonStyle.Link).setURL(`${client.config.dashboard.url}/dashboard/${interaction.guild.id}/leaderboard`);
-    const action = new ActionRowBuilder().addComponents(contactButton);
-    return interaction.followUp({ ephemeral: false, embeds: [embed], components: [action] });
+    const action = new ActionRowBuilder().addComponents(
+     new ButtonBuilder() // Prettier
+      .setLabel("View Leaderboard")
+      .setStyle(ButtonStyle.Link)
+      .setURL(`${client.config.dashboard.url}/dashboard/${interaction.guild.id}/leaderboard`)
+    );
+    return interaction.followUp({ ephemeral: false, embeds: [embed], components: [action], files: [attachment] });
    } else {
     return interaction.followUp({ ephemeral: false, embeds: [embed], files: [attachment] });
    }
