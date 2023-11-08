@@ -196,9 +196,6 @@ importers:
       react-dom:
         specifier: 18.2.0
         version: 18.2.0(react@18.2.0)
-      react-hot-toast:
-        specifier: 2.4.1
-        version: 2.4.1(csstype@3.1.2)(react-dom@18.2.0)(react@18.2.0)
       react-infinite-scroller:
         specifier: 1.2.6
         version: 1.2.6(react@18.2.0)
@@ -223,6 +220,9 @@ importers:
       sharp:
         specifier: 0.32.6
         version: 0.32.6
+      sonner:
+        specifier: 1.2.0
+        version: 1.2.0(react-dom@18.2.0)(react@18.2.0)
       swr:
         specifier: 2.2.4
         version: 2.2.4(react@18.2.0)
@@ -5590,14 +5590,6 @@ packages:
       slash: 4.0.0
     dev: false
 
-  /goober@2.1.13(csstype@3.1.2):
-    resolution: {integrity: sha512-jFj3BQeleOoy7t93E9rZ2de+ScC4lQICLwiAQmKMg9F6roKGaLSHoCDYKkWlSafg138jejvq/mTdvmnwDQgqoQ==}
-    peerDependencies:
-      csstype: ^3.0.10
-    dependencies:
-      csstype: 3.1.2
-    dev: false
-
   /gopd@1.0.1:
     resolution: {integrity: sha512-d65bNlIadxvpb/A2abVdlqKqV563juRnZ1Wtk6s1sIR8uNsXR70xqIzVqxVf1eTqDunwT2MkczEeaezCKTZhwA==}
     dependencies:
@@ -8340,20 +8332,6 @@ packages:
       scheduler: 0.23.0
     dev: false
 
-  /react-hot-toast@2.4.1(csstype@3.1.2)(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-j8z+cQbWIM5LY37pR6uZR6D4LfseplqnuAO4co4u8917hBUvXlEqyP1ZzqVLcqoyUesZZv/ImreoCeHVDpE5pQ==}
-    engines: {node: '>=10'}
-    peerDependencies:
-      react: '>=16'
-      react-dom: '>=16'
-    dependencies:
-      goober: 2.1.13(csstype@3.1.2)
-      react: 18.2.0
-      react-dom: 18.2.0(react@18.2.0)
-    transitivePeerDependencies:
-      - csstype
-    dev: false
-
   /react-infinite-scroller@1.2.6(react@18.2.0):
     resolution: {integrity: sha512-mGdMyOD00YArJ1S1F3TVU9y4fGSfVVl6p5gh/Vt4u99CJOptfVu/q5V/Wlle72TMgYlBwIhbxK5wF0C/R33PXQ==}
     peerDependencies:
@@ -9112,6 +9090,16 @@ packages:
       ansi-styles: 3.2.1
       astral-regex: 1.0.0
       is-fullwidth-code-point: 2.0.0
+    dev: false
+
+  /sonner@1.2.0(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-4bIPKrhF+Z4yEC4EZvNBswcVzMrUhztOQXqyIoiZqiqN1TT39FeK+TgRsQidvvztnYgOn4+S3LdAsri61c7ATA==}
+    peerDependencies:
+      react: ^18.0.0
+      react-dom: ^18.0.0
+    dependencies:
+      react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
     dev: false
 
   /source-map-js@1.0.2:

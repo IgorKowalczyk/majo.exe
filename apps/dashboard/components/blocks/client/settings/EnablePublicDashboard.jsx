@@ -2,7 +2,8 @@
 
 import { ArrowPathIcon, CheckIcon, ExclamationCircleIcon } from "@heroicons/react/24/outline";
 import clsx from "clsx";
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import { toast } from "sonner";
 import Switch from "../shared/Switch";
 import { Input } from "@/components/buttons/server/Input";
 import { PrimaryButton } from "@/components/buttons/server/Primary";
@@ -14,17 +15,11 @@ export function EnablePublicDashboard({ enabled, serverId, vanityURL }) {
  const [vanityError, setVanityError] = useState(false);
  const [buttonText, setButtonText] = useState("Update vanity");
 
- useEffect(() => {
-  setIsEnabled(enabled);
- }, [enabled]);
-
- useEffect(() => {
-  setVanity(vanity);
- }, [vanity]);
-
  const toggle = async () => {
   setDisabled(true);
   setIsEnabled(!isEnabled);
+  const loading = toast.loading(`Turning ${!isEnabled ? "on" : "off"} public dashboard...`);
+
   const res = await fetch("/api/settings/public-dashboard", {
    method: "POST",
    headers: {
@@ -36,18 +31,33 @@ export function EnablePublicDashboard({ enabled, serverId, vanityURL }) {
    }),
   });
 
+  setDisabled(false);
+
   if (!res.ok) {
-   setDisabled(false);
    setIsEnabled(isEnabled);
+   try {
+    const json = await res.json();
+    return toast.error(json.error ?? "Something went wrong", {
+     id: loading,
+    });
+   } catch (e) {
+    return toast.error("Something went wrong", {
+     id: loading,
+    });
+   }
   }
 
   const json = await res.json();
 
   if (json.code === 200) {
-   setDisabled(false);
+   return toast.success(json.message ?? "Public dashboard enabled!", {
+    id: loading,
+   });
   } else {
-   setDisabled(false);
    setIsEnabled(isEnabled);
+   return toast.error(json.error ?? "Something went wrong", {
+    id: loading,
+   });
   }
  };
 
@@ -72,6 +82,8 @@ export function EnablePublicDashboard({ enabled, serverId, vanityURL }) {
   e.preventDefault();
   setButtonText("Updating...");
   setVanityError("");
+
+  const loading = toast.loading("Updating vanity...");
   const res = await fetch("/api/settings/public-vanity", {
    method: "POST",
    headers: {
@@ -83,17 +95,31 @@ export function EnablePublicDashboard({ enabled, serverId, vanityURL }) {
    }),
   });
 
+  setButtonText("Update vanity");
+
+  if (!res.ok) {
+   try {
+    const json = await res.json();
+    return toast.error(json.error ?? "Something went wrong", {
+     id: loading,
+    });
+   } catch (e) {
+    return toast.error("Something went wrong", {
+     id: loading,
+    });
+   }
+  }
+
   const json = await res.json();
 
   if (json.code === 200) {
-   setButtonText("Updated!");
-   setTimeout(() => {
-    setButtonText("Update vanity");
-   }, 5000);
-   return;
+   return toast.success(json.message ?? "Vanity URL updated!", {
+    id: loading,
+   });
   } else {
-   setButtonText("Update vanity");
-   return setVanityError(json.message || "Something went wrong.");
+   return toast.error(json.error ?? "Something went wrong", {
+    id: loading,
+   });
   }
  };
 

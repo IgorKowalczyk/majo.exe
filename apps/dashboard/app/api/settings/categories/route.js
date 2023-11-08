@@ -12,7 +12,7 @@ export async function POST(request) {
   if (!session || !session.access_token) {
    return NextResponse.json(
     {
-     error: "Unauthorized",
+     error: "Unauthorized - you need to log in first",
     },
     {
      status: 401,
@@ -28,7 +28,7 @@ export async function POST(request) {
   if (!id || !name || Boolean(enabled) === undefined) {
    return NextResponse.json(
     {
-     error: "Bad Request",
+     error: "Bad Request - incomplete data",
      code: 400,
     },
     {
@@ -43,7 +43,7 @@ export async function POST(request) {
   if (typeof enabled !== "boolean" || typeof name !== "string" || typeof id !== "string") {
    return NextResponse.json(
     {
-     error: "Bad Request",
+     error: "Bad Request - incomplete data",
      code: 400,
     },
     {
@@ -58,7 +58,7 @@ export async function POST(request) {
   if (name.length > 20) {
    return NextResponse.json(
     {
-     error: "Bad Request",
+     error: "Bad Request - incomplete data",
      code: 400,
     },
     {
@@ -96,7 +96,7 @@ export async function POST(request) {
   if (!server || server.error) {
    return NextResponse.json(
     {
-     error: "Server not found",
+     error: "Unable to find this server",
      code: 404,
     },
     {
@@ -111,7 +111,7 @@ export async function POST(request) {
   if (!server.bot) {
    return NextResponse.json(
     {
-     error: "Bot is not in server",
+     error: "Bot is unable to find this server",
      code: 404,
     },
     {
@@ -128,7 +128,7 @@ export async function POST(request) {
   if (!serverMember || !serverMember.permissions_names || !serverMember.permissions_names.includes("ManageGuild") || !serverMember.permissions_names.includes("Administrator")) {
    return NextResponse.json(
     {
-     error: "Unauthorized",
+     error: "Unauthorized - you need to log in first",
      code: 401,
     },
     {

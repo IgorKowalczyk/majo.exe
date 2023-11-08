@@ -5,6 +5,7 @@ import { formatDate } from "@majoexe/util/functions";
 import { useRouter } from "next/navigation";
 import { useMemo, useEffect, useState } from "react";
 import { useTable, useSortBy, usePagination, useGlobalFilter } from "react-table";
+import { toast } from "sonner";
 import { AvatarSkeleton, TextSkeleton } from "../../Skeletons";
 import Image from "@/components/blocks/client/shared/Image";
 import { Tooltip } from "@/components/blocks/client/shared/Tooltip";
@@ -177,6 +178,7 @@ export function ManageWarns({ data, guildId, showControls = true, showSearch = t
 
  const removeWarn = async (warnId) => {
   setLoadingWarns((old) => [...old, warnId]);
+  const loading = toast.loading(`Deleting warn #${warnId}...`);
 
   const res = await fetch(`/api/warns/${guildId}/${warnId}`, {
    method: "DELETE",
@@ -185,9 +187,15 @@ export function ManageWarns({ data, guildId, showControls = true, showSearch = t
   setLoadingWarns((old) => old.filter((warn) => warn !== warnId));
 
   if (res.status === 200) {
+   toast.success(`Deleted warn #${warnId}!`, {
+    id: loading,
+   });
    setDeletedWarns((old) => [...old, warnId]);
    return router.refresh();
   } else {
+   toast.error(`Failed to delete warn #${warnId}!`, {
+    id: loading,
+   });
    return;
   }
  };

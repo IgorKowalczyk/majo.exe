@@ -11,7 +11,7 @@ export async function POST(request) {
   if (!session || !session.access_token) {
    return NextResponse.json(
     {
-     message: "Unauthorized",
+     error: "Unauthorized - you need to log in first",
     },
     {
      status: 401,
@@ -27,7 +27,7 @@ export async function POST(request) {
   if (!id || typeof id !== "string" || typeof vanity !== "string") {
    return NextResponse.json(
     {
-     message: "Missing id, vanity or invalid types provided",
+     error: "Missing id, vanity or invalid types provided",
      code: 400,
     },
     {
@@ -42,7 +42,7 @@ export async function POST(request) {
   if (!vanity.match(/^[a-zA-Z0-9]+$/)) {
    return NextResponse.json(
     {
-     message: "Vanity must be alphanumeric",
+     error: "Vanity must be alphanumeric",
      code: 400,
     },
     {
@@ -57,7 +57,7 @@ export async function POST(request) {
   if (vanity.length > 20) {
    return NextResponse.json(
     {
-     message: "Vanity must be less than 20 characters",
+     error: "Vanity must be less than 20 characters",
      code: 400,
     },
     {
@@ -74,7 +74,7 @@ export async function POST(request) {
   if (!server || server.message) {
    return NextResponse.json(
     {
-     message: "Server not found",
+     error: "Unable to find this server",
      code: 404,
     },
     {
@@ -89,7 +89,7 @@ export async function POST(request) {
   if (!server.bot) {
    return NextResponse.json(
     {
-     message: "Bot is not in server",
+     error: "Bot is unable to find this server",
      code: 404,
     },
     {
@@ -106,7 +106,7 @@ export async function POST(request) {
   if (!serverMember || !serverMember.permissions_names || !serverMember.permissions_names.includes("ManageGuild") || !serverMember.permissions_names.includes("Administrator")) {
    return NextResponse.json(
     {
-     message: "Unauthorized",
+     error: "Unauthorized - you need to log in first",
      code: 401,
     },
     {
@@ -124,10 +124,10 @@ export async function POST(request) {
    },
   });
 
-  if (checkVanity) {
+  if (checkVanity && checkVanity.guildId !== id) {
    return NextResponse.json(
     {
-     message: "Vanity already taken",
+     error: "Vanity already taken",
      code: 400,
     },
     {
@@ -235,7 +235,7 @@ export async function POST(request) {
  } catch (err) {
   return NextResponse.json(
    {
-    message: "Internal Server Error",
+    error: "Internal Server Error",
     code: 500,
    },
    {

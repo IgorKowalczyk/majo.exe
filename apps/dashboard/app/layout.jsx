@@ -1,7 +1,9 @@
+import { ArrowPathIcon } from "@heroicons/react/24/outline";
 import { dashboardConfig } from "@majoexe/config";
 import { Analytics } from "@vercel/analytics/react";
 import { GeistSans } from "geist/font";
 import Link from "next/link";
+import { Toaster } from "sonner";
 import { twMerge } from "tailwind-merge";
 import Image from "@/components/blocks/client/shared/Image";
 import ProgressBar from "@/components/blocks/client/shared/ProgressBar";
@@ -9,10 +11,10 @@ import { Session } from "@/components/blocks/client/shared/Session";
 import { Hotjar } from "@/components/blocks/Hotjar";
 import { TailwindIndicator } from "@/components/blocks/TailwindIndicator";
 import { VisibilityProvider } from "@/components/nav/client/VisibilityContext";
+import { Nav } from "@/components/nav/server/Nav";
 import "styles/globals.css";
 import "styles/progress.css";
 import "styles/tippy.css";
-import { Nav } from "@/components/nav/server/Nav";
 //import { Inter } from "next/font/google";
 
 //const inter = Inter({ subsets: ["latin"] });
@@ -120,9 +122,17 @@ export default function RootLayout({ children }) {
         </div>
        </div>
       </footer>
+      <Toaster // prettier
+       richColors={true}
+       theme="dark"
+       closeButton={true}
+       visibleToasts={4}
+       loadingIcon={<ArrowPathIcon className="h-5 w-5 animate-spin text-white" />}
+       expand={false}
+      />
       <TailwindIndicator />
+      <Analytics />
      </VisibilityProvider>
-     <Analytics />
     </body>
    </html>
   </Session>

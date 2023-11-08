@@ -32,7 +32,7 @@ export default async function Loading() {
      {Array.from({ length: 8 }).map((_, i) => (
       <TextSkeleton
        key={i}
-       className="!h-[42px]"
+       className="!h-[42px] min-w-[150px]"
        style={{
         width: `${Math.floor(Math.random() * (150 - 64 + 1) + 64)}px !important`,
        }}

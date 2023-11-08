@@ -4,13 +4,13 @@ import { EmbedSkeleton, TextSkeleton } from "@/components/blocks/Skeletons";
 
 export default function Loading() {
  return (
-  <>
-   <Header1 className={"mb-4 flex flex-col !justify-normal sm:flex-row"}>
-    <div className="bg-button-secondary min-h-16 min-w-16 h-16 w-16 rounded-full" />
-    <div className="flex flex-col justify-start text-center sm:ml-4 sm:text-left">
+  <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+   <Header1 className={"!mb-6 flex flex-col !justify-normal"}>
+    <div className="bg-button-secondary min-h-24 min-w-24 h-24 w-24 rounded-full" />
+    <div className="flex flex-col items-center justify-center text-center sm:ml-4">
      <TextSkeleton className="w-32" />
-     <Header5 className="mt-2 justify-start text-center opacity-60 sm:text-left">
-      <TextSkeleton className="w-32" />
+     <Header5 className="mt-2 text-center opacity-60">
+      <TextSkeleton className="w-64" />
      </Header5>
     </div>
    </Header1>
@@ -54,6 +54,6 @@ export default function Loading() {
      </Block>
     </div>
    </div>
-  </>
+  </div>
  );
 }

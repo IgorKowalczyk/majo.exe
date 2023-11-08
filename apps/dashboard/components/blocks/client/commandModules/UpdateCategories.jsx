@@ -2,6 +2,7 @@
 
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import { toast } from "sonner";
 import Switch from "../shared/Switch";
 import { Tooltip } from "../shared/Tooltip";
 
@@ -12,6 +13,8 @@ export function UpdateCategories({ serverId, categoryName, categoryEnabled }) {
 
  const updateCategory = async () => {
   setLoading(true);
+  const loading = toast.loading(`${!enabled ? "Enabling" : "Disabling"} category ${categoryName}...`);
+
   const res = await fetch("/api/settings/categories", {
    method: "POST",
    headers: {
@@ -23,18 +26,28 @@ export function UpdateCategories({ serverId, categoryName, categoryEnabled }) {
     enabled: !enabled,
    }),
   });
+
+  setLoading(false);
+
   if (!res.ok) {
-   setLoading(false);
+   toast.error(`Failed to ${!enabled ? "enable" : "disable"} category ${categoryName}!`, {
+    id: loading,
+   });
    return router.refresh();
   }
+
   const json = await res.json();
 
   if (json.code === 200) {
    setEnabled(!enabled);
-   setLoading(false);
+   toast.success(`Category ${categoryName} ${!enabled ? "enabled" : "disabled"}!`, {
+    id: loading,
+   });
    return router.refresh();
   } else {
-   setLoading(false);
+   toast.error(`Failed to ${!enabled ? "enable" : "disable"} category ${categoryName}!`, {
+    id: loading,
+   });
    return router.refresh();
   }
  };

@@ -23,6 +23,11 @@ export const dashboardRedirects = [
   destination: "https://discord.gg/sgt4QEyDxK",
   permanent: true,
  },
+ {
+  source: "/status",
+  destination: "https://status.majoexe.xyz",
+  permanent: true,
+ },
 ];
 
 // Dashboard headers

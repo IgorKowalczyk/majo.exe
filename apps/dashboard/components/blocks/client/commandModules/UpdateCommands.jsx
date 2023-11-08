@@ -2,6 +2,7 @@
 
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import { toast } from "sonner";
 import Switch from "../shared/Switch";
 import { Tooltip } from "../shared/Tooltip";
 
@@ -12,6 +13,8 @@ export function UpdateCommands({ serverId, commandName, commandEnabled }) {
 
  const updateCommand = async () => {
   setLoading(true);
+  const loading = toast.loading(`${!enabled ? "Enabling" : "Disabling"} command ${commandName}...`);
+
   const res = await fetch("/api/settings/commands", {
    method: "POST",
    headers: {
@@ -23,18 +26,28 @@ export function UpdateCommands({ serverId, commandName, commandEnabled }) {
     enabled: !enabled,
    }),
   });
+
+  setLoading(false);
+
   if (!res.ok) {
-   setLoading(false);
+   toast.error(`Failed to ${!enabled ? "enable" : "disable"} /${commandName}!`, {
+    id: loading,
+   });
    return router.refresh();
   }
+
   const json = await res.json();
 
   if (json.code === 200) {
    setEnabled(!enabled);
-   setLoading(false);
+   toast.success(`Command /${commandName} ${!enabled ? "enabled" : "disabled"}!`, {
+    id: loading,
+   });
    return router.refresh();
   } else {
-   setLoading(false);
+   toast.error(`Failed to ${!enabled ? "enable" : "disable"} /${commandName}!`, {
+    id: loading,
+   });
    return router.refresh();
   }
  };

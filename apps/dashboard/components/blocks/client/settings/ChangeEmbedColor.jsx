@@ -1,9 +1,10 @@
 "use client";
 
-import { ArrowPathIcon, CheckIcon, ExclamationCircleIcon, TrashIcon } from "@heroicons/react/24/outline";
+import { ArrowPathIcon, CheckIcon, TrashIcon } from "@heroicons/react/24/outline";
 import { dashboardConfig } from "@majoexe/config";
 import { useState } from "react";
 import { HexColorPicker } from "react-colorful";
+import { toast } from "sonner";
 import Image from "@/components/blocks/client/shared/Image";
 import { PrimaryButton } from "@/components/buttons/server/Primary";
 import { SecondaryButton } from "@/components/buttons/server/Secondary";
@@ -12,13 +13,11 @@ export function ChangeEmbedColor({ serverId, serverColor }) {
  const [color, setColor] = useState(serverColor ?? "#5865F2");
  const [buttonText, setButtonText] = useState("Save");
  const [resetButtonText, setResetButtonText] = useState("Reset");
- const [error, setError] = useState("");
- const [success, setSuccess] = useState("");
 
  const handleSubmit = async () => {
   setButtonText("Saving...");
-  setError("");
-  setSuccess("");
+  const loading = toast.loading("Saving...");
+
   const res = await fetch("/api/settings/embed-color", {
    method: "POST",
    headers: {
@@ -29,30 +28,39 @@ export function ChangeEmbedColor({ serverId, serverColor }) {
     id: serverId,
    }),
   });
+
+  setButtonText("Save");
+
   if (!res.ok) {
-   setError("Something went wrong");
-   return setButtonText("Save");
+   try {
+    const json = await res.json();
+    return toast.error(json.message ?? "Something went wrong", {
+     id: loading,
+    });
+   } catch (e) {
+    return toast.error("Something went wrong", {
+     id: loading,
+    });
+   }
   }
+
   const json = await res.json();
+
   if (json.code === 200) {
-   setSuccess(json.message);
-   setTimeout(() => {
-    setSuccess("");
-   }, 3000);
-   return setButtonText("Save");
+   return toast.success(json.message ?? "Embed color changed!", {
+    id: loading,
+   });
   } else {
-   setError(json.error);
-   setTimeout(() => {
-    setError("");
-   }, 3000);
-   return setButtonText("Save");
+   return toast.error(json.error ?? "Something went wrong", {
+    id: loading,
+   });
   }
  };
 
  const handleReset = async () => {
   setResetButtonText("Resetting...");
-  setError("");
-  setSuccess("");
+  const loading = toast.loading("Resetting...");
+
   const res = await fetch("/api/settings/embed-color", {
    method: "PUT",
    headers: {
@@ -62,24 +70,33 @@ export function ChangeEmbedColor({ serverId, serverColor }) {
     id: serverId,
    }),
   });
+
+  setResetButtonText("Reset");
+
   if (!res.ok) {
-   setError("Something went wrong");
-   return setResetButtonText("Reset");
+   try {
+    const json = await res.json();
+    return toast.error(json.error ?? "Something went wrong", {
+     id: loading,
+    });
+   } catch (e) {
+    return toast.error("Something went wrong", {
+     id: loading,
+    });
+   }
   }
+
   const json = await res.json();
+
   if (json.code === 200) {
-   setSuccess(json.message);
-   setTimeout(() => {
-    setSuccess("");
-   }, 3000);
    setColor("#5865F2");
-   return setResetButtonText("Reset");
+   return toast.success(json.message, {
+    id: loading,
+   });
   } else {
-   setError(json.error);
-   setTimeout(() => {
-    setError("");
-   }, 3000);
-   return setResetButtonText("Reset");
+   return toast.error(json.error ?? "Something went wrong", {
+    id: loading,
+   });
   }
  };
 
@@ -119,16 +136,6 @@ export function ChangeEmbedColor({ serverId, serverColor }) {
          {resetButtonText}
         </SecondaryButton>
        </div>
-       {error && (
-        <p className="flex items-center gap-1 text-red-500">
-         <ExclamationCircleIcon className="min-h-5 min-w-5 inline h-5 w-5" /> {error}
-        </p>
-       )}
-       {success && (
-        <p className="flex items-center gap-1 text-green-500">
-         <CheckIcon className="min-h-5 min-w-5 inline h-5 w-5" /> {success}
-        </p>
-       )}
       </div>
      </div>
     </div>

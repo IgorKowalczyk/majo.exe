@@ -2,6 +2,7 @@
 
 import clsx from "clsx";
 import { useState } from "react";
+import { toast } from "sonner";
 import Image from "@/components/blocks/client/shared/Image";
 
 export function HomepageLevelUp({ logo }) {
@@ -9,6 +10,9 @@ export function HomepageLevelUp({ logo }) {
  const [xp, setXp] = useState(46);
 
  const setIt = () => {
+  toast.success("You leveled up!", {
+   icon: <span className="text-lg">🔥</span>,
+  });
   setLevel(Math.floor(Math.random() * 9 + 1));
   setXp(Math.floor(Math.random() * 80) + 5);
  };
@@ -34,6 +38,9 @@ export function AddReaction({ reaction, countL = 2 }) {
  const [count, setCount] = useState(countL);
 
  const setIt = () => {
+  toast.success(clicked ? "Joined the giveaway!" : "Left the giveaway!", {
+   icon: <Image src={reaction} alt="Reaction emoji" quality={95} width={16} height={16} className="min-h-4 min-w-4 h-4 w-4" />,
+  });
   setClicked(!clicked);
   setCount(clicked ? count - 1 : count + 1);
  };

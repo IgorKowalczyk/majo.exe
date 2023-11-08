@@ -24,7 +24,7 @@ export default async function Loading() {
        style={{
         width: `${Math.floor(Math.random() * (500 - 200 + 1) + 200)}px !important`,
        }}
-       className="!h-44 !max-w-none"
+       className="!h-44 !min-w-[400px] !max-w-none"
       />
      ))}
     </div>
@@ -45,7 +45,7 @@ export default async function Loading() {
        style={{
         width: `${Math.floor(Math.random() * (500 - 200 + 1) + 200)}px !important`,
        }}
-       className="!h-44 !max-w-none"
+       className="!h-44 !min-w-[400px] !max-w-none"
       />
      ))}
     </div>

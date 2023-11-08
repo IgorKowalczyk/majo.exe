@@ -11,7 +11,7 @@ export async function GET() {
   if (!session || !session.access_token) {
    return NextResponse.json(
     {
-     error: "Unauthorized",
+     error: "Unauthorized - you need to log in first",
     },
     {
      status: 401,
@@ -26,7 +26,7 @@ export async function GET() {
   if (data.error) {
    return NextResponse.json(
     {
-     error: "Unauthorized",
+     error: "Unauthorized - you need to log in first",
     },
     {
      status: 401,
