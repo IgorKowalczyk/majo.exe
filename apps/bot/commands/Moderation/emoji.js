@@ -280,7 +280,7 @@ export default {
   } else if (subcommand === "list") {
    try {
     const embed = new EmbedBuilder()
-     .setColor("#5865F2")
+     .setColor(guildSettings?.embedColor || client.config.defaultColor)
      .setTitle(`${client.config.emojis.success} Emojis on this server`)
      .setFields([
       {

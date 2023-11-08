@@ -11,6 +11,7 @@ export * from "./user/getAvatar.js";
 export * from "./user/getFlags.js";
 
 /* /util */
+export * from "./util/adjustColor.js";
 export * from "./util/formatDate.js";
 export * from "./util/formatDuration.js";
 export * from "./util/formatNumber.js";

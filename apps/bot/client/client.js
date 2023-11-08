@@ -1,4 +1,4 @@
-import { globalConfig, botConfig, debuggerConfig, dashboardConfig } from "@majoexe/config";
+import { globalConfig, botConfig, debuggerConfig, dashboardConfig, globalPermissions } from "@majoexe/config";
 import { createErrorEmbed } from "@majoexe/util/embeds";
 import { Logger, chalk } from "@majoexe/util/functions";
 import { Client, GatewayIntentBits } from "discord.js";
@@ -38,8 +38,11 @@ const client = new Client({
  ],
 });
 
+console.log(globalConfig);
+
 client.config = {
  ...botConfig,
+ ...globalPermissions,
  ...globalConfig,
  ...debuggerConfig,
  // Deprecated, to be replaced!

@@ -1,5 +1,6 @@
 "use client";
 
+import { globalConfig } from "@majoexe/config";
 import { Area, CartesianGrid, AreaChart as ReChartsAreaChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
 import { twMerge } from "tailwind-merge";
 
@@ -18,7 +19,7 @@ export default function AreaChart({ data = [], categories = [], index, valueForm
       <CartesianGrid className="stroke-gray-600 stroke-1" strokeDasharray="3 3" horizontal={true} vertical={false} />
       <XAxis hide={!showXAxis} dataKey={index} tick={{ transform: "translate(0, 6)" }} ticks={startEndOnly ? [data[0][index], data[data.length - 1][index]] : undefined} fill="" stroke="" className="fill-gray-600" interval="preserveStartEnd" tickLine={false} axisLine={false} padding={{ left: 10, right: 10 }} minTickGap={5} />
       <YAxis width={yAxisWidth} hide={!showYAxis} axisLine={false} tickLine={false} type="number" domain={yAxisDomain} tick={{ transform: "translate(-3, 0)" }} fill="" stroke="" className="fill-gray-600" tickFormatter={valueFormatter} allowDecimals={allowDecimals} />
-      <Tooltip wrapperStyle={{ outline: "none" }} isAnimationActive={true} animationDuration={500} cursor={{ stroke: "#5865F2", strokeWidth: 1 }} content={({ active, payload, label }) => <ChartTooltip active={active} payload={payload} label={label} categoryColors={categoryColors} valueFormatter={valueFormatter} />} position={{ y: "auto" }} />
+      <Tooltip wrapperStyle={{ outline: "none" }} isAnimationActive={true} animationDuration={500} cursor={{ stroke: globalConfig.defaultColor, strokeWidth: 1 }} content={({ active, payload, label }) => <ChartTooltip active={active} payload={payload} label={label} categoryColors={categoryColors} valueFormatter={valueFormatter} />} position={{ y: "auto" }} />
       {categories.map((category) => (
        <defs key={category}>
         <linearGradient className="text-accent-primary" id={category.replace(/ /g, "-")} x1="0" y1="0" x2="0" y2="1">

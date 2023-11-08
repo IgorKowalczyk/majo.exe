@@ -1,8 +1,12 @@
 import { dashboardHeaders, dashboardRedirects } from "@majoexe/config";
 import createMdx from "@next/mdx";
 import { PrismaPlugin } from "@prisma/nextjs-monorepo-workaround-plugin";
+import withBundleAnalyzer from "@next/bundle-analyzer";
 
 const withMDX = createMdx();
+const withBundle = withBundleAnalyzer({
+ enabled: process.env.ANALYZE === "true",
+});
 
 const nextConfig = {
  reactStrictMode: true,
@@ -47,4 +51,12 @@ const nextConfig = {
  },
 };
 
-export default withMDX(nextConfig);
+const createConfig = () => {
+ const plugins = [withMDX, withBundle];
+ const config = plugins.reduce((acc, next) => next(acc), {
+  ...nextConfig,
+ });
+ return config;
+};
+
+export default createConfig;

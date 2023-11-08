@@ -13,6 +13,10 @@
    "dependsOn": ["^build"],
    "outputs": [".next/**", "!.next/cache/**"]
   },
+  "analyze": {
+   "dependsOn": ["^build"],
+   "outputs": [".next/**", "!.next/cache/**"]
+  },
   "lint": {
    "dependsOn": ["^format:check"],
    "outputs": []

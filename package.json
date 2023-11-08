@@ -8,6 +8,7 @@
     "dev": "dotenv -- turbo run dev --color",
     "build": "dotenv -- turbo run build --color",
     "deploy": "dotenv -- turbo run deploy --color",
+    "analyze": "dotenv -- turbo run analyze --color",
     "lint": "turbo run lint --color",
     "lint:fix": "turbo run lint:fix --color",
     "format": "turbo run format --color",

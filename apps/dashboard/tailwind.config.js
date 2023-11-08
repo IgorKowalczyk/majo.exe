@@ -4,6 +4,8 @@ import svgToDataUri from "mini-svg-data-uri";
 import tailwindGradientMaskImage from "tailwind-gradient-mask-image";
 import plugin from "tailwindcss/plugin";
 import tailwindTextFill from "tailwindcss-text-fill";
+import { globalConfig } from "@majoexe/config";
+import { adjustColor } from "@majoexe/util/functions";
 
 const tailwindConfig = {
  darkMode: "class",
@@ -26,13 +28,13 @@ const tailwindConfig = {
     "background-navbar": "#161617",
     "background-menu": "#161617",
     "background-menu-button": "#212120",
-    "accent-primary": "#5865F2",
-    "button-primary": "#5865F2",
-    "button-primary-hover": "#4753c5",
+    "accent-primary": globalConfig.defaultColor,
+    "button-primary": globalConfig.defaultColor,
+    "button-primary-hover": adjustColor(globalConfig.defaultColor, 20, "darken"),
     "button-secondary": "#4e5058",
-    "button-secondary-hover": "#6c6f79",
+    "button-secondary-hover": adjustColor("#4e5058", 20, "lighten"),
     "button-action-primary": "#ea4d4d",
-    "button-action-hover": "#ff5f5f",
+    "button-action-hover": adjustColor("#ea4d4d", 20, "darken"),
    },
    backgroundImage: {
     "main-gradient": "linear-gradient(180deg, #101110 calc(100% - 400px), #161617 100%);",

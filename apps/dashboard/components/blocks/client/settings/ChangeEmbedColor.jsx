@@ -1,7 +1,7 @@
 "use client";
 
 import { ArrowPathIcon, CheckIcon, TrashIcon } from "@heroicons/react/24/outline";
-import { dashboardConfig } from "@majoexe/config";
+import { dashboardConfig, globalConfig } from "@majoexe/config";
 import { useState } from "react";
 import { HexColorPicker } from "react-colorful";
 import { toast } from "sonner";
@@ -10,7 +10,7 @@ import { PrimaryButton } from "@/components/buttons/server/Primary";
 import { SecondaryButton } from "@/components/buttons/server/Secondary";
 
 export function ChangeEmbedColor({ serverId, serverColor }) {
- const [color, setColor] = useState(serverColor ?? "#5865F2");
+ const [color, setColor] = useState(serverColor ?? globalConfig.defaultColor);
  const [buttonText, setButtonText] = useState("Save");
  const [resetButtonText, setResetButtonText] = useState("Reset");
 
@@ -89,7 +89,7 @@ export function ChangeEmbedColor({ serverId, serverColor }) {
   const json = await res.json();
 
   if (json.code === 200) {
-   setColor("#5865F2");
+   setColor(globalConfig.defaultColor);
    return toast.success(json.message, {
     id: loading,
    });
@@ -112,7 +112,7 @@ export function ChangeEmbedColor({ serverId, serverColor }) {
        <span className="ml-1 flex items-center gap-1 rounded bg-[#5c65f3] px-1 py-[0.12rem] text-xs text-white">
         <CheckIcon className="min-h-4 min-w-4 h-4 w-4 stroke-2" aria-hidden="true" role="img" /> <span className="-mb-px">BOT</span>
        </span>
-       <span className="ml-2 text-sm text-gray-400">Today at 12:00 AM</span>
+       <span className="ml-2 text-sm text-gray-400">Today at 4:20 PM</span>
       </div>
       <div>
        <div

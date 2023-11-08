@@ -7,7 +7,8 @@
   "./bot": "./configs/bot.js",
   "./dashboard": "./configs/dashboard.js",
   "./debugger": "./configs/debugger.js",
-  "./global": "./configs/global.js"
+  "./global": "./configs/global.js",
+  "./permissions": "./configs/permissions.js"
  },
  "type": "module",
  "scripts": {
