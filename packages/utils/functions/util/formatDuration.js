@@ -16,9 +16,13 @@ export function formatDuration(durationInMs, showMilliseconds = true) {
  const minutes = totalMinutes % 60;
  const totalHours = Math.floor(totalMinutes / 60);
  const hours = totalHours % 24;
+ const totalDays = Math.floor(totalHours / 24);
 
  const parts = [];
 
+ if (totalDays > 0) {
+  parts.push(`${totalDays}d`);
+ }
  if (hours > 0) {
   parts.push(`${hours}h`);
  }

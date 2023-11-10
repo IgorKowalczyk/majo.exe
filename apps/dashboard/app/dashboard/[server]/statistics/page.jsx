@@ -125,9 +125,9 @@ export default async function Statistics({ params }) {
   guildMessage.unshift({ date: dateFormatted, Messages: messages });
  }
 
- const guildJoinCSV = await json2csv(guildJoin);
- const guildLeaveCSV = await json2csv(guildLeave);
- const guildMessageCSV = await json2csv(guildMessage);
+ const guildJoinCSV = json2csv(guildJoin);
+ const guildLeaveCSV = json2csv(guildLeave);
+ const guildMessageCSV = json2csv(guildMessage);
 
  function sumArray(array, metric) {
   return array.reduce((accumulator, currentValue) => accumulator + currentValue[metric], 0);

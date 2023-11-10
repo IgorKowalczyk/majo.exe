@@ -43,36 +43,35 @@ export default async function ServerOverview({ params }) {
   create: {
    guildId: serverDownload.id,
   },
- });
-
- const xp = await prismaClient.guildXp.findMany({
-  where: {
-   guildId: serverDownload.id,
-  },
-  orderBy: {
-   xp: "desc",
-  },
-  take: 5,
   include: {
-   user: {
-    select: {
-     discordId: true,
-     name: true,
-     avatar: true,
-     discriminator: true,
+   guildXp: {
+    orderBy: {
+     xp: "desc",
+    },
+    take: 5,
+    include: {
+     user: {
+      select: {
+       discordId: true,
+       name: true,
+       avatar: true,
+       discriminator: true,
+      },
+     },
     },
    },
   },
  });
 
- const data = xp.map((x, i) => {
-  return {
-   id: i + 1,
-   user: x.user,
-   xp: x.xp,
-   level: Math.floor(0.1 * Math.sqrt(x.xp || 0)),
-  };
- });
+ const data =
+  guild.guildXp?.map((x, i) => {
+   return {
+    id: i + 1,
+    user: x.user,
+    xp: x.xp,
+    level: Math.floor(0.1 * Math.sqrt(x.xp || 0)),
+   };
+  }) || [];
 
  return (
   <>

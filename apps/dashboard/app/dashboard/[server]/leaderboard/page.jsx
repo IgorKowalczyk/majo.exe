@@ -31,7 +31,7 @@ export default async function ServerLeaderboard({ params }) {
  )
   return redirect("/auth/error?error=It%20looks%20like%20you%20do%20not%20have%20permission%20to%20access%20this%20page.");
 
- await prismaClient.guild.upsert({
+ const guild = await prismaClient.guild.upsert({
   where: {
    guildId: serverDownload.id,
   },
@@ -39,29 +39,26 @@ export default async function ServerLeaderboard({ params }) {
   create: {
    guildId: serverDownload.id,
   },
- });
-
- const xp = await prismaClient.guildXp.findMany({
-  where: {
-   guildId: serverDownload.id,
-  },
-  orderBy: {
-   xp: "desc",
-  },
   include: {
-   user: {
-    select: {
-     discordId: true,
-     name: true,
-     global_name: true,
-     avatar: true,
-     discriminator: true,
+   guildXp: {
+    orderBy: {
+     xp: "desc",
+    },
+    include: {
+     user: {
+      select: {
+       discordId: true,
+       name: true,
+       avatar: true,
+       discriminator: true,
+      },
+     },
     },
    },
   },
  });
 
- const data = xp.map((x, i) => {
+ const data = guild.guildXp.map((x, i) => {
   return {
    id: i + 1,
    user: x.user,
@@ -70,7 +67,7 @@ export default async function ServerLeaderboard({ params }) {
   };
  });
 
- const currentUser = xp.findIndex((x) => x.user.discordId === session.id) + 1;
+ const currentUser = guild.guildXp.findIndex((x) => x.user.discordId === session.id) + 1;
 
  return (
   <>
@@ -80,7 +77,7 @@ export default async function ServerLeaderboard({ params }) {
    </Header1>
    <Header5 className="mb-4 mt-2 !justify-start !text-left">
     <span>
-     There are {xp.length} users in the leaderboard right now.{" "}
+     There are {data.length} users in the leaderboard right now.{" "}
      {currentUser && currentUser > 0 && (
       <span>
        You are currently <span className="text-accent-primary">#{currentUser}</span> in the leaderboard.
@@ -89,8 +86,8 @@ export default async function ServerLeaderboard({ params }) {
     </span>
    </Header5>
    <Block className="flex w-full overflow-auto">
-    {xp.length === 0 && <h3 className="text-left text-xl font-bold">Sadly, there are no users in the leaderboard right now!</h3>}
-    {xp.length > 0 && (
+    {data.length === 0 && <h3 className="text-left text-xl font-bold">Sadly, there are no users in the leaderboard right now!</h3>}
+    {data.length > 0 && (
      <div className="mt-4 w-full">
       <Leaderboard data={data} />
      </div>

@@ -71,7 +71,7 @@ export default async function ServerLogs({ params }) {
   return redirect("/auth/error?error=It%20looks%20like%20the%20user%20you%20are%20trying%20to%20display%20does%20not%20exist");
  }
 
- await prismaClient.guild.upsert({
+ const guild = await prismaClient.guild.upsert({
   where: {
    guildId: serverDownload.id,
   },
@@ -79,29 +79,28 @@ export default async function ServerLogs({ params }) {
   create: {
    guildId: serverDownload.id,
   },
- });
-
- const warns = await prismaClient.guildWarns.findMany({
-  where: {
-   guildId: serverDownload.id,
-   userId: id,
-  },
-  orderBy: {
-   createdAt: "desc",
-  },
   include: {
-   user: true,
+   guildWarns: {
+    orderBy: {
+     createdAt: "desc",
+    },
+    include: {
+     user: {
+      select: {
+       discordId: true,
+       name: true,
+       avatar: true,
+       discriminator: true,
+      },
+     },
+    },
+   },
   },
  });
 
- warns.forEach(async (warn) => {
-  if (warn.createdAt instanceof Date) {
-   warn.createdAt = warn.createdAt.toISOString();
-  } else {
-   warn.createdAt = new Date().toISOString();
-  }
+ guild.guildWarns.forEach(async (warn) => {
+  warn.createdAt instanceof Date ? (warn.createdAt = warn.createdAt.toISOString()) : (warn.createdAt = new Date().toISOString());
   warn.loading = false;
-
   warn.addedBy = await prismaClient.user.findFirst({
    where: {
     discordId: warn.createdById,
@@ -115,10 +114,10 @@ export default async function ServerLogs({ params }) {
     {user.avatar ? <Image src={`https://cdn.discordapp.com/avatars/${user.discordId}/${user.avatar}.${user.avatar.startsWith("a_") ? "gif" : "png"}`} alt={`${user.global_name || user.name} avatar`} quality={95} width={96} height={96} className="min-h-24 min-w-24 h-24 w-24 rounded-full" /> : <div className="bg-button-secondary min-h-24 min-w-24 h-24 w-24 rounded-full" />}
     <div className="ml-4 flex flex-col text-center sm:text-left">
      <span>
-      {user.global_name || user.name} warns <span className="text-accent-primary">({warns.length})</span>
+      {user.global_name || user.name} warns <span className="text-accent-primary">({guild.guildWarns.length})</span>
      </span>
      <Header5 className="mt-2 text-center opacity-60 sm:text-left">
-      <Balancer>This user has {warns.length} warns. Here you can view all of them and manage them.</Balancer>
+      <Balancer>This user has {guild.guildWarns.length} warns. Here you can view all of them and manage them.</Balancer>
      </Header5>
     </div>
     <span className="ml-auto mr-0 text-base font-normal">
@@ -130,10 +129,10 @@ export default async function ServerLogs({ params }) {
    </div>
 
    <Block className="flex w-full overflow-auto">
-    {warns.length === 0 && <h3 className="text-left text-xl font-bold">Hooray! No warns have been issued yet.</h3>}
-    {warns.length > 0 && (
+    {guild.guildWarns.length === 0 && <h3 className="text-left text-xl font-bold">Hooray! No warns have been issued yet.</h3>}
+    {guild.guildWarns.length > 0 && (
      <div className="mt-4 w-full">
-      <ManageWarns data={warns} guildId={serverDownload.id} />
+      <ManageWarns data={guild.guildWarns} guildId={serverDownload.id} />
      </div>
     )}
    </Block>

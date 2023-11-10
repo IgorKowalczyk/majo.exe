@@ -13,11 +13,7 @@ const nextConfig = {
  pageExtensions: ["mdx", "jsx", "js"],
  poweredByHeader: false,
  trailingSlash: false,
- compiler: {
-  removeConsole: {
-   exclude: ["error, warn"],
-  },
- },
+
  images: {
   remotePatterns: [
    {

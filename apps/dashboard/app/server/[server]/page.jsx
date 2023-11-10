@@ -75,6 +75,7 @@ export default async function ServerOverview({ params }) {
    ],
   },
  });
+
  if (!guild || !guild.guildId || !guild.publicPage) return redirect("/auth/error?error=It%20looks%20like%20the%20server%20you%20are%20trying%20to%20display%20does%20not%20exist");
  const serverDownload = await getServer(guild.guildId);
  if (!serverDownload || serverDownload.code === 10004 || !serverDownload.bot) return redirect("/auth/error?error=It%20looks%20like%20the%20server%20you%20are%20trying%20to%20display%20does%20not%20exist");

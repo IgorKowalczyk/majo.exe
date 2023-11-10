@@ -28,7 +28,7 @@ export default async function ServerLogs({ params }) {
  )
   return redirect("/auth/error?error=It%20looks%20like%20you%20do%20not%20have%20permission%20to%20access%20this%20page.");
 
- await prismaClient.guild.upsert({
+ const guild = await prismaClient.guild.upsert({
   where: {
    guildId: serverDownload.id,
   },
@@ -36,43 +36,51 @@ export default async function ServerLogs({ params }) {
   create: {
    guildId: serverDownload.id,
   },
- });
-
- const warns = await prismaClient.guildWarns.findMany({
-  where: {
-   guildId: serverDownload.id,
-  },
-  orderBy: {
-   createdAt: "desc",
-  },
   include: {
-   user: true,
+   guildWarns: {
+    orderBy: {
+     createdAt: "desc",
+    },
+    include: {
+     user: {
+      select: {
+       discordId: true,
+       name: true,
+       avatar: true,
+       discriminator: true,
+      },
+     },
+    },
+   },
   },
  });
 
- warns.forEach((warn) => {
-  if (warn.createdAt instanceof Date) {
-   warn.createdAt = warn.createdAt.toISOString();
-  } else {
-   warn.createdAt = new Date().toISOString();
-  }
-  warn.link = warn.user.discordId;
- });
+ const data =
+  guild.guildWarns?.map((warn) => {
+   if (warn.createdAt instanceof Date) {
+    warn.createdAt = warn.createdAt.toISOString();
+   } else {
+    warn.createdAt = new Date().toISOString();
+   }
+   warn.link = warn.user.discordId;
+
+   return warn;
+  }) || [];
 
  return (
   <>
    <Header1>
     <ExclamationTriangleIcon className="min-h-12 min-w-12 h-12 w-12" />
-    Warns <span className="text-accent-primary">({warns.length})</span>
+    Warns <span className="text-accent-primary">({data.length})</span>
    </Header1>
    <Header5 className="mb-4 !block !justify-start gap-1 !text-left">
     Here you can view all users warns issued by users with the <code>Manage Server</code> permission. View selected users profile to view and manage their warns.
    </Header5>
    <Block className="flex w-full overflow-auto">
-    {warns.length === 0 && <h3 className="text-left text-xl font-bold">Hooray! No warns have been issued yet.</h3>}
-    {warns.length > 0 && (
+    {data.length === 0 && <h3 className="text-left text-xl font-bold">Hooray! No warns have been issued yet.</h3>}
+    {data.length > 0 && (
      <div className="mt-4 w-full">
-      <Warns data={warns} />
+      <Warns data={data} />
      </div>
     )}
    </Block>

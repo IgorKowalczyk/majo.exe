@@ -131,7 +131,7 @@ model Guild {
  guildDisabledCommands              GuildDisabledCommands[]
  guildDisabledCategories            GuildDisabledCategories[]
  autoMod                            AutoMod[]
- GuildWarns                         GuildWarns[]
+ guildWarns                         GuildWarns[]
 
  @@map(name: "guilds")
 }
