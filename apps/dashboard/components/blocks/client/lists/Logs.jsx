@@ -2,7 +2,7 @@
 
 import { Disclosure, Transition } from "@headlessui/react";
 import { NoSymbolIcon, ChevronDownIcon, PaintBrushIcon, MagnifyingGlassIcon, LinkIcon, UsersIcon, BarsArrowDownIcon, BarsArrowUpIcon, CubeTransparentIcon, CubeIcon } from "@heroicons/react/24/outline";
-import { formatDate } from "@majoexe/util/functions";
+import { formatDate, formatDuration } from "@majoexe/util/functions";
 import clsx from "clsx";
 import React, { useState, useRef, useEffect } from "react";
 import InfiniteScroll from "react-infinite-scroller";
@@ -90,7 +90,9 @@ export default function Logs({ initialItems, id }) {
            {item.user?.global_name || item.user?.username}
            {item.user?.discriminator !== "0" && <span className="opacity-70">#{item.user?.discriminator || "0000"}</span>}: {item.content}
           </p>
-          <span className="text-left opacity-70">{formatDate(item.createdAt)}</span>
+          <span className="text-left opacity-70">
+           {formatDate(item.createdAt)} ({formatDuration(new Date().getTime() - new Date(item.createdAt).getTime())} ago)
+          </span>
          </div>
          <ChevronDownIcon
           className={clsx(

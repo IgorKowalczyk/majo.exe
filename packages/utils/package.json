@@ -1,47 +1,48 @@
 {
- "name": "@majoexe/util",
- "version": "6.0.0",
- "description": "Shared utility functions for Majo.exe",
- "exports": {
-  "./functions": "./functions/index.js",
-  "./embeds": "./embeds/index.js",
-  "./database": "./database/index.js",
-  "./json": "./json/index.js",
-  "./images": "./images/index.js"
- },
- "type": "module",
- "scripts": {
-  "format": "prettier . --write --cache --ignore-unknown",
-  "format:check": "prettier . --check --cache",
-  "lint": "eslint .",
-  "lint:fix": "eslint . --fix"
- },
- "dependencies": {
-  "@majoexe/config": "workspace:*",
-  "@majoexe/database": "workspace:*",
-  "chalk": "5.3.0",
-  "discord-api-types": "0.37.63",
-  "discord.js": "14.13.0"
- },
- "engines": {
-  "node": ">=18.0.0"
- },
- "repository": {
-  "type": "git",
-  "url": "git+https://github.com/igorkowalczyk/majo.exe.git",
-  "directory": "packages/util"
- },
- "keywords": [
-  "Majo.exe",
-  "util",
-  "shared",
-  "utility-functions"
- ],
- "author": "Igor Kowalczyk",
- "license": "MIT",
- "bugs": {
-  "url": "https://github.com/igorkowalczyk/majo.exe/issues"
- },
- "homepage": "https://github.com/igorkowalczyk/majo.exe#readme",
- "packageManager": "pnpm@8.10.2"
+  "name": "@majoexe/util",
+  "version": "6.0.0",
+  "description": "Shared utility functions for Majo.exe",
+  "exports": {
+    "./functions": "./functions/index.js",
+    "./embeds": "./embeds/index.js",
+    "./database": "./database/index.js",
+    "./json": "./json/index.js",
+    "./images": "./images/index.js"
+  },
+  "type": "module",
+  "scripts": {
+    "format": "prettier . --write --cache --ignore-unknown",
+    "format:check": "prettier . --check --cache",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix"
+  },
+  "dependencies": {
+    "@majoexe/config": "workspace:*",
+    "@majoexe/database": "workspace:*",
+    "chalk": "5.3.0",
+    "discord-api-types": "0.37.63",
+    "discord.js": "14.13.0",
+    "ms": "2.1.3"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/igorkowalczyk/majo.exe.git",
+    "directory": "packages/util"
+  },
+  "keywords": [
+    "Majo.exe",
+    "util",
+    "shared",
+    "utility-functions"
+  ],
+  "author": "Igor Kowalczyk",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/igorkowalczyk/majo.exe/issues"
+  },
+  "homepage": "https://github.com/igorkowalczyk/majo.exe#readme",
+  "packageManager": "pnpm@8.10.2"
 }

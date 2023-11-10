@@ -38,8 +38,6 @@ const client = new Client({
  ],
 });
 
-console.log(globalConfig);
-
 client.config = {
  ...botConfig,
  ...globalPermissions,

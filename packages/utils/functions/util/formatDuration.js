@@ -1,3 +1,5 @@
+import ms from "ms";
+
 /**
  * Formats a duration in milliseconds to a human readable string.
  *
@@ -8,33 +10,8 @@
  * console.log(duration);
  * // => "1d"
  */
-export function formatDuration(durationInMs, showMilliseconds = true) {
- const ms = durationInMs % 1000;
- const totalSeconds = Math.floor(durationInMs / 1000);
- const seconds = totalSeconds % 60;
- const totalMinutes = Math.floor(totalSeconds / 60);
- const minutes = totalMinutes % 60;
- const totalHours = Math.floor(totalMinutes / 60);
- const hours = totalHours % 24;
- const totalDays = Math.floor(totalHours / 24);
-
- const parts = [];
-
- if (totalDays > 0) {
-  parts.push(`${totalDays}d`);
- }
- if (hours > 0) {
-  parts.push(`${hours}h`);
- }
- if (minutes > 0) {
-  parts.push(`${minutes}m`);
- }
- if (seconds > 0) {
-  parts.push(`${seconds}s`);
- }
- if (ms > 0 && showMilliseconds) {
-  parts.push(`${ms}ms`);
- }
-
- return parts.join(" ");
+export function formatDuration(durationInMs) {
+ return ms(durationInMs, {
+  long: true,
+ });
 }

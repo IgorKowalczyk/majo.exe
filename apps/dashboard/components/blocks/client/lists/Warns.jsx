@@ -1,7 +1,7 @@
 "use client";
 
 import { ArrowPathIcon, CheckIcon, LinkIcon, MagnifyingGlassIcon, TrashIcon } from "@heroicons/react/24/outline";
-import { formatDate } from "@majoexe/util/functions";
+import { formatDate, formatDuration } from "@majoexe/util/functions";
 import { useRouter } from "next/navigation";
 import { useMemo, useEffect, useState } from "react";
 import { useTable, useSortBy, usePagination, useGlobalFilter } from "react-table";
@@ -44,7 +44,7 @@ export function Warns({ data, showControls = true, showSearch = true }) {
    {
     Header: "Date",
     accessor: "createdAt",
-    Cell: ({ value }) => formatDate(value),
+    Cell: ({ value }) => <>{formatDuration(Date.now() - new Date(value).getTime())} ago</>,
    },
    {
     Header: "Actions",
@@ -239,7 +239,7 @@ export function ManageWarns({ data, guildId, showControls = true, showSearch = t
    {
     Header: "Date",
     accessor: "createdAt",
-    Cell: ({ value }) => formatDate(value),
+    Cell: ({ value }) => <>{formatDuration(Date.now() - new Date(value).getTime())} ago</>,
    },
    {
     Header: "Actions",
