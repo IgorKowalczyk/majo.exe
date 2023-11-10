@@ -1,7 +1,7 @@
 "use client";
 
 import { ArrowPathIcon, CheckIcon, LinkIcon, MagnifyingGlassIcon, TrashIcon } from "@heroicons/react/24/outline";
-import { formatDate, formatDuration } from "@majoexe/util/functions";
+import { formatDuration } from "@majoexe/util/functions";
 import { useRouter } from "next/navigation";
 import { useMemo, useEffect, useState } from "react";
 import { useTable, useSortBy, usePagination, useGlobalFilter } from "react-table";
