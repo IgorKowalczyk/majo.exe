@@ -40,13 +40,7 @@ export default async function Loading() {
     <InputSkeleton className="mb-4 !w-1/2" />
     <div className="flex flex-wrap items-stretch justify-start gap-8">
      {Array.from({ length: 8 }).map((_, i) => (
-      <TextSkeleton
-       key={i}
-       style={{
-        width: `${Math.floor(Math.random() * (500 - 200 + 1) + 200)}px !important`,
-       }}
-       className="!h-44 !min-w-[400px] !max-w-none"
-      />
+      <TextSkeleton key={i} className="!h-44 !w-full" />
      ))}
     </div>
    </Block>
