@@ -1,7 +1,9 @@
-import { CheckIcon, Cog6ToothIcon, InformationCircleIcon, PaintBrushIcon, ShieldCheckIcon, UsersIcon, XMarkIcon } from "@heroicons/react/24/outline";
+import { ArrowDownTrayIcon, CheckIcon, Cog6ToothIcon, ExclamationTriangleIcon, FolderArrowDownIcon, InformationCircleIcon, PaintBrushIcon, ShieldCheckIcon, TrashIcon, UsersIcon, XMarkIcon } from "@heroicons/react/24/outline";
 import { Block } from "@/components/blocks/Block";
 import { Header1 } from "@/components/blocks/Headers";
 import { GraphSkeleton, InputSkeleton, TextSkeleton } from "@/components/blocks/Skeletons";
+import { PrimaryButton } from "@/components/buttons/server/Primary";
+import { RedButton } from "@/components/buttons/server/Red";
 
 export default async function Loading() {
  return (
@@ -87,6 +89,29 @@ export default async function Loading() {
      <span className="whitespace-normal">The public dashboard will be visible to everyone with the link!</span>
     </div>
    </Block>
+   <Block className="mt-4">
+    <h2 className="mb-1 flex items-center justify-start gap-2 text-left text-2xl font-semibold">
+     <ArrowDownTrayIcon className="min-h-6 min-w-6 inline-block h-6 w-6 stroke-2" aria-hidden="true" role="img" />
+     Download data
+    </h2>
+    <p className="mt-2 leading-none text-white/70">
+     Download all server data in a <code>.json</code> file. This includes logs, settings, moderation and more.
+    </p>
+    <PrimaryButton className="mt-4 w-fit" disabled={true}>
+     <FolderArrowDownIcon className="mr-2 inline-block h-5 w-5 " aria-hidden="true" role="img" />
+     Download data
+    </PrimaryButton>
+   </Block>
+   <div className="bg-background-navbar relative mt-4 overflow-hidden rounded-lg border border-red-400/50 p-4 md:w-full">
+    <h2 className="mb-1 flex items-center justify-start gap-2 text-left text-2xl font-semibold text-red-400">
+     <ExclamationTriangleIcon className="min-h-6 min-w-6 inline-block h-6 w-6 stroke-2" aria-hidden="true" role="img" />
+     Delete server data
+    </h2>
+    <p className="mt-2 text-white/70">If you want to delete all data related to this server, you can do so by clicking the button below. This action is irreversible.</p>
+    <RedButton className="mt-4" disabled={true}>
+     <TrashIcon className="mr-2 inline-block h-5 w-5" aria-hidden="true" role="img" /> Delete server data
+    </RedButton>
+   </div>
   </>
  );
 }
