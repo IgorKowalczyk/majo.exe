@@ -38,7 +38,7 @@ export function AddReaction({ reaction, countL = 2 }) {
  const [count, setCount] = useState(countL);
 
  const setIt = () => {
-  toast.success(clicked ? "Joined the giveaway!" : "Left the giveaway!", {
+  toast(!clicked ? "Joined the giveaway!" : "Left the giveaway!", {
    icon: <Image src={reaction} alt="Reaction emoji" quality={95} width={16} height={16} className="min-h-4 min-w-4 h-4 w-4" />,
   });
   setClicked(!clicked);

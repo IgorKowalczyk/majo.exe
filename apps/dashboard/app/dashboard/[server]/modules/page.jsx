@@ -8,6 +8,7 @@ import { redirect } from "next/navigation";
 import { Block } from "@/components/blocks/Block";
 import { UpdateCategories } from "@/components/blocks/client/commandModules/UpdateCategories";
 import { UpdateCommands } from "@/components/blocks/client/commandModules/UpdateCommands";
+import { Tooltip } from "@/components/blocks/client/shared/Tooltip";
 import { Header1, Header2, Header3 } from "@/components/blocks/Headers";
 
 export default async function Settings({ params }) {
@@ -47,6 +48,7 @@ export default async function Settings({ params }) {
     select: {
      name: true,
      description: true,
+     options: true,
      categoryName: true,
     },
    },
@@ -69,12 +71,12 @@ export default async function Settings({ params }) {
     <div className="flex flex-wrap items-stretch justify-start gap-8">
      {categories.map((category) => (
       <Block className="min-w-48" key={category.name}>
-       <Header3 className="mb-4">
+       <p className="mb-4 flex items-center gap-4 text-center text-xl font-bold ">
         {botConfig.emojis.categories.find((cat) => cat.name === category.name.toLowerCase())?.emoji || "❔"} {category.name}
         <span className="ml-auto mr-0">
          <UpdateCategories serverId={serverDownload.id} categoryName={category.name} categoryEnabled={!guild.guildDisabledCategories.some((cat) => cat.categoryName === category.name)} />
         </span>
-       </Header3>
+       </p>
        {category.commands.slice(0, 6).map((command) => (
         <code className="ml-2" key={command.name}>
          /{command.name}
@@ -114,19 +116,50 @@ export default async function Settings({ params }) {
         {
          "pointer-events-none cursor-not-allowed opacity-30": guild.guildDisabledCategories.some((cat) => cat.categoryName === category.name),
         },
-        "flex flex-wrap items-stretch justify-start gap-8"
+        "flex flex-col items-stretch justify-start"
        )}
       >
        {category.commands.map((command) => (
-        <Block className="min-w-48" key={command.name}>
-         <Header3 className="mb-4">
-          /{command.name}
-          <span className="ml-auto mr-0">
+        <div key={command.name} className="bg-background-navbar my-2 w-full rounded-md border border-neutral-800 px-6 py-4">
+         <h3 className="hide-scrollbar overflow-scroll whitespace-nowrap text-center">
+          <div className="flex flex-row items-center justify-between">
+           <div
+            className={clsx(
+             {
+              "cursor-not-allowed opacity-70": guild.guildDisabledCommands.some((com) => com.commandName.toLowerCase() === command.name.toLowerCase()),
+             },
+             "flex flex-col items-start gap-2"
+            )}
+           >
+            <div className="flex items-center font-bold">
+             /{command.name}{" "}
+             {command.options &&
+              command.options.map((option) => (
+               <span
+                key={option.name}
+                className={clsx(
+                 {
+                  "!font-normal opacity-70": !option.required,
+                  "opacity-100": option.required,
+                 },
+                 "ml-2 [line-height:normal]"
+                )}
+               >
+                <Tooltip content={`${option.description} ${option.required ? "(required)" : "(optional)"}`}>
+                 <code className="cursor-pointer">
+                  {option.name}
+                  {option.required ? <span className="text-red-400">*</span> : ""}
+                 </code>
+                </Tooltip>
+               </span>
+              ))}
+            </div>
+            <p className="opacity-70">{command.description}</p>
+           </div>
            <UpdateCommands serverId={serverDownload.id} commandName={command.name} commandEnabled={!guild.guildDisabledCommands.some((com) => com.commandName.toLowerCase() === command.name.toLowerCase())} />
-          </span>
-         </Header3>
-         <p className="mb-4 mt-2 text-left">{command.description}</p>
-        </Block>
+          </div>
+         </h3>
+        </div>
        ))}
       </div>
      </div>
