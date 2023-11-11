@@ -1,10 +1,12 @@
-import { ArrowTopRightOnSquareIcon } from "@heroicons/react/24/outline";
+import { ArrowDownTrayIcon, ArrowTopRightOnSquareIcon, ExclamationTriangleIcon, FolderArrowDownIcon } from "@heroicons/react/24/outline";
 import { getFlags } from "@majoexe/util/functions";
 import { getSession } from "lib/session";
 import Link from "next/link";
 import { redirect } from "next/navigation";
+import DeleteAccount from "@/components/blocks/client/settings/DeleteUserData";
 import Image from "@/components/blocks/client/shared/Image";
 import { Tooltip } from "@/components/blocks/client/shared/Tooltip";
+import { PrimaryButton } from "@/components/buttons/server/Primary";
 import { Emojis } from "@/components/decorations/emojis";
 
 export default async function Profile() {
@@ -63,6 +65,29 @@ export default async function Profile() {
       </div>
       <div className="bg-background-menu-button/70 m-[8px_16px_16px] rounded-lg border border-neutral-800 p-4">Note: By default your banner and accent color are taken from Discord</div>
      </>
+    </div>
+
+    <div className="bg-background-navbar relative overflow-hidden rounded-lg border border-neutral-800 p-4 md:w-full">
+     <p className="text-xl font-semibold text-white">
+      <ArrowDownTrayIcon className="mr-2 inline-block h-5 w-5 stroke-2" aria-hidden="true" role="img" />
+      Download data
+     </p>
+     <p className="mt-2 leading-none text-white/70">
+      Download all your data in a <code>.json</code> file. This includes your profile, data associated with your server, and more.
+     </p>
+     <PrimaryButton className="mt-4 w-fit" href="/api/user/download" target="_blank">
+      <FolderArrowDownIcon className="mr-2 inline-block h-5 w-5 " aria-hidden="true" role="img" />
+      Download data
+     </PrimaryButton>
+    </div>
+
+    <div className="bg-background-navbar relative overflow-hidden rounded-lg border border-red-400/50 p-4 md:w-full">
+     <p className="text-xl font-semibold text-red-400">
+      <ExclamationTriangleIcon className="mr-2 inline-block h-5 w-5 stroke-2" aria-hidden="true" role="img" />
+      Delete account
+     </p>
+     <p className="mt-2 text-white/70">If you want to delete all your data and your account, click the button below. This action is irreversible.</p>
+     <DeleteAccount userId={user.id} />
     </div>
    </div>
   </div>

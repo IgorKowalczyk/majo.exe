@@ -1,7 +1,7 @@
 "use client";
 
 import { Menu, Transition } from "@headlessui/react";
-import { RectangleStackIcon, Cog8ToothIcon, UserIcon, ArrowRightOnRectangleIcon, QuestionMarkCircleIcon, ChevronDownIcon } from "@heroicons/react/24/outline";
+import { RectangleStackIcon, UserIcon, ArrowRightOnRectangleIcon, QuestionMarkCircleIcon, ChevronDownIcon } from "@heroicons/react/24/outline";
 import clsx from "clsx";
 import Link from "next/link";
 import { signOut } from "next-auth/react";
@@ -70,22 +70,6 @@ export function UserMenuDropdown({ user }) {
           )}
          >
           <UserIcon className="min-h-5 min-w-5 mr-2 h-5 w-5 " aria-hidden="true" role="img" /> Profile
-         </Link>
-        )}
-       </Menu.Item>
-       <Menu.Item>
-        {({ active }) => (
-         <Link
-          href="/user/settings"
-          className={clsx(
-           {
-            "bg-button-primary text-white": active,
-            "text-gray-400": !active,
-           },
-           "group my-1 flex w-full items-center rounded-md px-2 py-2 text-sm duration-200 motion-reduce:transition-none"
-          )}
-         >
-          <Cog8ToothIcon className="min-h-5 min-w-5 mr-2 h-5 w-5 " aria-hidden="true" role="img" /> Settings
          </Link>
         )}
        </Menu.Item>
