@@ -30,6 +30,7 @@ export default {
     })
     .setColor(guildSettings?.embedColor || client.config.defaultColor)
     .setTimestamp();
+
    const row = new ActionRowBuilder()
     .addComponents(
      new ButtonBuilder() // Prettier

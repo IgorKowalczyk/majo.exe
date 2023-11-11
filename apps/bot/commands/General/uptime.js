@@ -28,8 +28,12 @@ export default {
     });
 
    if (client.config.dashboard.enabled && client.config.dashboard.url) {
-    const contactButton = new ButtonBuilder().setLabel("Status page").setStyle(ButtonStyle.Link).setURL(`${client.config.dashboard.url}/status`);
-    const action = new ActionRowBuilder().addComponents(contactButton);
+    const action = new ActionRowBuilder().addComponents(
+     new ButtonBuilder() // prettier
+      .setLabel("Status page")
+      .setStyle(ButtonStyle.Link)
+      .setURL(`${client.config.dashboard.url}/status`)
+    );
     return interaction.followUp({ ephemeral: false, embeds: [embed], components: [action] });
    } else {
     return interaction.followUp({ ephemeral: false, embeds: [embed] });

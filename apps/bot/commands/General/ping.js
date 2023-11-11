@@ -18,6 +18,9 @@ export default {
    const message = await interaction.followUp({ embeds: [waitEmbed] });
 
    const pingMessage = new EmbedBuilder()
+    .setColor(guildSettings?.embedColor || client.config.defaultColor)
+    .setTimestamp()
+    .setTitle("🏓 Pong!")
     .addFields([
      {
       name: "Host Latency",
@@ -49,16 +52,12 @@ export default {
       value: ">>> **The stats above are due to our wonderful hosting - [TrestHost](https://dash.tresthost.me/register?ref=majonez.exe)**. Register now and try their __VPS, Node.js, Go, Java and Python hosting!__",
      },
     ])
-    // .setImage("https://repository-images.githubusercontent.com/678773099/96116fa6-00e7-456d-a05d-d72feeb217a3")
     .setFooter({
      text: `Requested by ${interaction.member.user.globalName || interaction.member.user.username}`,
      iconURL: interaction.member.user.displayAvatarURL({
       size: 256,
      }),
-    })
-    .setColor(guildSettings?.embedColor || client.config.defaultColor)
-    .setTimestamp()
-    .setTitle("🏓 Pong!");
+    });
    await message.edit({ ephemeral: false, embeds: [pingMessage] });
   } catch (err) {
    client.errorMessages.internalError(interaction, err);

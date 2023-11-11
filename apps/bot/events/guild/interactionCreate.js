@@ -111,7 +111,7 @@ export async function interactionCreate(client, interaction) {
 
    await createUser(interaction.user);
 
-   modal.run(client, interaction, guildSettings);
+   await modal.run(client, interaction, guildSettings);
   } else if (interaction.isAutocomplete()) {
    const command = client.slashCommands.get(interaction.commandName);
    if (!command) return;

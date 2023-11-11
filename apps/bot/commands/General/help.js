@@ -1,5 +1,5 @@
 import { formatDuration } from "@majoexe/util/functions";
-import { ApplicationCommandType, ApplicationCommandOptionType, EmbedBuilder, codeBlock } from "discord.js";
+import { ApplicationCommandType, ApplicationCommandOptionType, EmbedBuilder, codeBlock, ActionRowBuilder, ButtonBuilder, ButtonStyle, StringSelectMenuBuilder, ComponentType } from "discord.js";
 
 export default {
  name: "help",
@@ -27,16 +27,40 @@ export default {
  },
  run: async (client, interaction, guildSettings) => {
   try {
+   const globalActionRow = [];
+   const inviteLink = `https://discord.com/oauth2/authorize/?permissions=${client.config.permissions}&scope=${client.config.scopes}&client_id=${client.user.id}`;
+
+   if (client.config.dashboard.enabled && client.config.dashboard.url) {
+    const buttonRow = new ActionRowBuilder().addComponents(
+     new ButtonBuilder() // prettier
+      .setStyle(ButtonStyle.Link)
+      .setLabel("Dashboard")
+      .setURL(client.config.dashboard.url),
+     new ButtonBuilder() // prettier
+      .setStyle(ButtonStyle.Link)
+      .setLabel("Invite")
+      .setURL(inviteLink),
+     new ButtonBuilder() // prettier
+      .setStyle(ButtonStyle.Link)
+      .setLabel("All Commands")
+      .setURL(`${client.config.dashboard.url}/commands`)
+    );
+    globalActionRow.push(buttonRow);
+   }
+
    const query = interaction.options.getString("query");
    const isCategory = client.slashCommands.map((cmd) => cmd.category?.toLowerCase()).includes(query?.toLowerCase());
+
    if (query && !isCategory) {
+    // If the query is a command, display the command's help menu.
     const command = client.slashCommands.get(query.toLowerCase());
+
     if (!command) {
      return client.errorMessages.createSlashError(interaction, `❌ The command \`${query}\` does not exist. Please check your spelling and try again.`);
     }
 
     const embed = new EmbedBuilder()
-     .setTitle(`❔ Help for ${command.name}`)
+     .setTitle(`❔ Help for /${command.name}`)
      .addFields([
       {
        name: "Name",
@@ -76,8 +100,10 @@ export default {
        size: 256,
       }),
      });
-    return interaction.followUp({ ephemeral: false, embeds: [embed] });
+
+    return interaction.followUp({ ephemeral: false, embeds: [embed], components: globalActionRow });
    } else if (query && isCategory) {
+    // If the query is a category, display all commands in that category.
     const commands = client.slashCommands.filter((cmd) => cmd.category.toLowerCase() === query.toLowerCase());
     const embed = new EmbedBuilder()
      .setTitle(`${client.config.emojis.categories.find((cat) => cat.name === query.toLowerCase()).emoji} Available \`${query}\` commands \`(${commands.size})\``)
@@ -90,12 +116,10 @@ export default {
        size: 256,
       }),
      });
-    return interaction.followUp({ ephemeral: false, embeds: [embed] });
+    return interaction.followUp({ ephemeral: false, embeds: [embed], components: globalActionRow });
    } else {
+    // If there is no query, display the main help menu.
     const categories = [...new Set(client.slashCommands.map((cmd) => cmd.category))];
-
-    // Why? Because I can. 🥫
-    const inviteLink = `https://discord.com/oauth2/authorize/?permissions=${client.config.permissions}&scope=${client.config.scopes}&client_id=${client.user.id}`;
 
     const embed = new EmbedBuilder()
      .setTitle("❔ Help")
@@ -122,7 +146,59 @@ export default {
        size: 256,
       }),
      });
-    return interaction.followUp({ ephemeral: false, embeds: [embed] });
+
+    const select = new StringSelectMenuBuilder() // prettier
+     .setCustomId("help_select")
+     .setPlaceholder("Select a category")
+     .addOptions(
+      categories.map((category) => ({
+       label: `${client.config.emojis.categories.find((cat) => cat.name === category.toLowerCase()).emoji} ${category}`,
+       description: `View all ${client.slashCommands.filter((cmd) => cmd.category.toLowerCase() === category.toLowerCase()).size} commands`,
+       value: category.toLowerCase(),
+      }))
+     );
+
+    const selectRow = new ActionRowBuilder().addComponents(select);
+    const actionRow = [selectRow, ...globalActionRow];
+
+    const response = await interaction.followUp({ ephemeral: false, embeds: [embed], components: actionRow });
+
+    const collector = response.createMessageComponentCollector({
+     componentType: ComponentType.StringSelect,
+     filter: (i) => i.user.id === interaction.user.id,
+     time: 3 * 60 * 1000, // 30 seconds
+    });
+
+    collector.on("collect", async (i) => {
+     const category = i.values[0];
+     const commands = client.slashCommands.filter((cmd) => cmd.category.toLowerCase() === category.toLowerCase());
+     const embed = new EmbedBuilder()
+      .setTitle(`${client.config.emojis.categories.find((cat) => cat.name === category.toLowerCase()).emoji} Available \`${category}\` commands \`(${commands.size})\``)
+      .setDescription(`> ${commands.map((cmd) => `\`/${cmd.name}\``).join(", ")}`)
+      .setColor(guildSettings?.embedColor || client.config.defaultColor)
+      .setTimestamp()
+      .setFooter({
+       text: `Requested by ${interaction.member.user.globalName || interaction.member.user.username}`,
+       iconURL: interaction.member.user.displayAvatarURL({
+        size: 256,
+       }),
+      });
+     try {
+      await i.update({ embeds: [embed], components: actionRow });
+     } catch (err) {
+      return;
+     }
+    });
+
+    collector.on("end", async () => {
+     try {
+      await interaction.editReply({ embeds: [embed], components: globalActionRow });
+     } catch (err) {
+      return;
+     }
+    });
+
+    return;
    }
   } catch (err) {
    client.errorMessages.internalError(interaction, err);

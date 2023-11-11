@@ -26,11 +26,23 @@ export default {
     .setTimestamp()
     .setThumbnail(client.user.displayAvatarURL({ size: 256 }));
 
-   const inviteButton = new ButtonBuilder().setLabel("Invite").setStyle(ButtonStyle.Link).setURL(inviteLink);
+   const inviteButton = new ButtonBuilder() // prettier
+    .setLabel("Invite")
+    .setStyle(ButtonStyle.Link)
+    .setURL(inviteLink);
 
    if (client.config.dashboard.enabled && client.config.dashboard.url) {
-    const contactButton = new ButtonBuilder().setLabel("Dashboard").setStyle(ButtonStyle.Link).setURL(client.config.dashboard.url);
-    const action = new ActionRowBuilder().addComponents(inviteButton, contactButton);
+    const contactButton = new ButtonBuilder() // prettier
+     .setLabel("Dashboard")
+     .setStyle(ButtonStyle.Link)
+     .setURL(client.config.dashboard.url);
+
+    const action = new ActionRowBuilder() // prettier
+     .addComponents(
+      // prettier
+      inviteButton,
+      contactButton
+     );
     return interaction.followUp({ ephemeral: false, embeds: [embed], components: [action] });
    }
 
