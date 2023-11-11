@@ -1,7 +1,7 @@
 import { dashboardHeaders, dashboardRedirects } from "@majoexe/config";
+import withBundleAnalyzer from "@next/bundle-analyzer";
 import createMdx from "@next/mdx";
 import { PrismaPlugin } from "@prisma/nextjs-monorepo-workaround-plugin";
-import withBundleAnalyzer from "@next/bundle-analyzer";
 
 const withMDX = createMdx();
 const withBundle = withBundleAnalyzer({
