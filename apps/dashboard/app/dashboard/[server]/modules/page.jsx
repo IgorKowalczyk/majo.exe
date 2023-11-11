@@ -120,7 +120,7 @@ export default async function Settings({ params }) {
        )}
       >
        {category.commands.map((command) => (
-        <div key={command.name} className="bg-background-navbar hide-scrollbar overflow-scroll my-2 w-full rounded-md border border-neutral-800 px-6 py-4">
+        <div key={command.name} className="bg-background-navbar hide-scrollbar my-2 w-full overflow-scroll rounded-md border border-neutral-800 px-6 py-4">
          <h3 className="hide-scrollbar overflow-scroll whitespace-nowrap text-center">
           <div className="flex flex-row items-center justify-between">
            <div
