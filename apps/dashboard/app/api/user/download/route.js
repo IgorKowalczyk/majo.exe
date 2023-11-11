@@ -104,7 +104,7 @@ export async function GET() {
   return new Response(JSON.stringify(user), {
    headers: {
     "Content-Type": "application/json",
-    "Content-Disposition": "attachment; filename=user.json",
+    "Content-Disposition": `attachment; filename="user-${user.discordId}.json"`,
     "server-timing": `response;dur=${Date.now() - start}`,
    },
   });

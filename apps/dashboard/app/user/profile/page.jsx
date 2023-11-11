@@ -73,7 +73,7 @@ export default async function Profile() {
       Download data
      </p>
      <p className="mt-2 leading-none text-white/70">
-      Download all your data in a <code>.json</code> file. This includes your profile, data associated with your server, and more.
+      Download all your data in a <code>.json</code> file. This includes your profile, data from all servers you are in and more.
      </p>
      <PrimaryButton className="mt-4 w-fit" href="/api/user/download" target="_blank">
       <FolderArrowDownIcon className="mr-2 inline-block h-5 w-5 " aria-hidden="true" role="img" />

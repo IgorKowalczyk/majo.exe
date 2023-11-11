@@ -17,7 +17,7 @@ export default function DeleteServerData({ serverId }) {
   setLoading(true);
   const loading = toast.loading("Deleting server data...");
 
-  const res = await fetch("/api/settings/delete-server-data", {
+  const res = await fetch("/api/settings/delete-data", {
    method: "POST",
    headers: {
     "Content-Type": "application/json",

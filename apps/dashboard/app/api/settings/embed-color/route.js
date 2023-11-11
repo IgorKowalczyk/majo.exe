@@ -23,9 +23,8 @@ export async function POST(request) {
    );
   }
 
-  const cloned = await request.clone();
-  const body = await cloned.json();
-  const { id, color } = body;
+  const { id, color } = await request.clone().json();
+
   if (!id || !color) {
    return NextResponse.json(
     {
