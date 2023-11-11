@@ -12,18 +12,25 @@ export default {
   {
    name: "query",
    description: "The full name of command or category",
+   autocomplete: true,
    type: ApplicationCommandOptionType.String,
    max_length: 256,
    required: false,
   },
  ],
-
+ autocomplete: async (client, interaction) => {
+  const focusedOption = interaction.options.getFocused(true);
+  if (focusedOption.name === "query") {
+   const commands = focusedOption.value ? Array.from(interaction.client.slashCommands.filter((cmd) => cmd.name.toLowerCase().includes(focusedOption.value.toLowerCase())).values()) : Array.from(interaction.client.slashCommands.values());
+   await interaction.respond(commands.slice(0, 25).map((choice) => ({ name: `/${choice.name} - ${choice.description}`, value: choice.name })));
+  }
+ },
  run: async (client, interaction, guildSettings) => {
   try {
    const query = interaction.options.getString("query");
    const isCategory = client.slashCommands.map((cmd) => cmd.category?.toLowerCase()).includes(query?.toLowerCase());
    if (query && !isCategory) {
-    const command = client.slashCommands.get(query.toLowerCase()) || client.slashCommands.find((cmd) => cmd.aliases && cmd.aliases.includes(query.toLowerCase()));
+    const command = client.slashCommands.get(query.toLowerCase());
     if (!command) {
      return client.errorMessages.createSlashError(interaction, `❌ The command \`${query}\` does not exist. Please check your spelling and try again.`);
     }

@@ -12,7 +12,7 @@ export async function interactionCreate(client, interaction) {
   if (!interaction.guild || !interaction.guild.available) return;
   if (!interaction.user) await interaction.guild.members.fetch(interaction.member.user.id);
 
-  if (interaction.isCommand()) {
+  if (interaction.isChatInputCommand()) {
    const command = client.slashCommands.get(interaction.commandName);
    if (!command) return;
 
@@ -112,6 +112,10 @@ export async function interactionCreate(client, interaction) {
    await createUser(interaction.user);
 
    modal.run(client, interaction, guildSettings);
+  } else if (interaction.isAutocomplete()) {
+   const command = client.slashCommands.get(interaction.commandName);
+   if (!command) return;
+   if (command.autocomplete && typeof command.autocomplete === "function") await command.autocomplete(client, interaction);
   }
  } catch (err) {
   client.debugger("error", err);
