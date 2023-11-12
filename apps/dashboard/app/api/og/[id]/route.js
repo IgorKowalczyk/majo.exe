@@ -1,5 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
-import { shortenText } from "@majoexe/util/functions/util/shortenText";
+import { shortenText } from "@majoexe/util/functions/util/shortenText.js";
 import { redirect } from "next/navigation";
 import { ImageResponse } from "next/og";
 
