@@ -12,14 +12,14 @@ import { Header4 } from "@/components/blocks/Headers";
 export function ServerStatsChart({ guildJoin, guildLeave, guildJoinCSV, guildLeaveCSV, guildMessage, guildMessageCSV }) {
  return (
   <div className="flex flex-col gap-6">
-   <GenerateComponent title="New Members" data={guildJoin} csvData={guildJoinCSV} valueName="Joins" fileName="guild-joins" categories={["Joins"]} />
-   <GenerateComponent title="Members Left" data={guildLeave} csvData={guildLeaveCSV} valueName="Leaves" fileName="guild-leaves" categories={["Leaves"]} />
-   <GenerateComponent title="Messages Sent" data={guildMessage} csvData={guildMessageCSV} valueName="Messages" fileName="guild-messages" categories={["Messages"]} />
+   <GenerateComponent title="New Members" data={guildJoin} CSVData={guildJoinCSV} valueName="Joins" fileName="guild-joins" categories={["Joins"]} />
+   <GenerateComponent title="Members Left" data={guildLeave} CSVData={guildLeaveCSV} valueName="Leaves" fileName="guild-leaves" categories={["Leaves"]} />
+   <GenerateComponent title="Messages Sent" data={guildMessage} CSVData={guildMessageCSV} valueName="Messages" fileName="guild-messages" categories={["Messages"]} />
   </div>
  );
 }
 
-function GenerateComponent({ title, data, csvData, valueName, fileName, categories }) {
+function GenerateComponent({ title, data, CSVData, valueName, fileName, categories }) {
  const numberFormatter = (value) => Intl.NumberFormat("us").format(value).toString();
 
  function sumArray(array, metric) {
@@ -65,7 +65,7 @@ function GenerateComponent({ title, data, csvData, valueName, fileName, categori
         <Menu.Item>
          {({ active }) => (
           <p
-           onClick={() => fileDl(csvData, `${fileName}.csv`)}
+           onClick={() => fileDl(CSVData, `${fileName}.csv`)}
            className={clsx(
             {
              "bg-button-primary text-white": active,
@@ -99,7 +99,7 @@ function GenerateComponent({ title, data, csvData, valueName, fileName, categori
      </Transition>
     </Menu>
    </Header4>
-   <AreaChart className="mt-10 h-80" data={data} index="date" categories={categories} yAxisWidth={50} valueFormatter={numberFormatter} csvData={csvData} />
+   <AreaChart className="mt-10 h-80" data={data} index="date" categories={categories} yAxisWidth={50} valueFormatter={numberFormatter} CSVData={CSVData} />
   </Block>
  );
 }
