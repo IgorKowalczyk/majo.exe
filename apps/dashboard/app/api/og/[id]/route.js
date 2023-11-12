@@ -1,4 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
+import { shortenText } from "@majoexe/util/functions";
 import { redirect } from "next/navigation";
 import { ImageResponse } from "next/og";
 
@@ -12,13 +13,6 @@ export const size = {
 };
 
 export const contentType = "image/png";
-
-const shortenText = (text, maxLen = 24) => {
- if (text.length > maxLen) {
-  text = text.substr(0, maxLen) + "...";
- }
- return text;
-};
 
 export async function GET(request, { params }) {
  const id = params.id;

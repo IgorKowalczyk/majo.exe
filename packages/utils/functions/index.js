@@ -17,6 +17,7 @@ export * from "./util/formatDuration.js";
 export * from "./util/formatNumber.js";
 export * from "./util/logger.js";
 export * from "./util/percentageBar.js";
+export * from "./util/shortenText.js";
 
 /* /bot */
 export * from "./bot/getSlashCommands.js";

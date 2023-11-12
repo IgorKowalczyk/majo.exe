@@ -56,23 +56,26 @@ Ensure your setup meets these prerequisites before setting up Majo.exe:
 | --------------------------- | ------------------------------------------------ | -------------- | -------------------- |
 | `TOKEN`                     | Discord bot token                                | ✅             | ✅                   |
 | `CLIENT_ID`                 | Discord client ID                                | ✅             | ✅                   |
-| `DATABASE_URL`              | Main database URL                                | ✅             | ✅                   |
-| `SECRET`                    | Secret string (minimum 32 characters)            | ❌             | ✅                   |
 | `CLIENT_SECRET`             | Discord client secret                            | ❌             | ✅                   |
+| `DATABASE_URL`              | Main database connection string                  | ✅             | ✅                   |
+| `DIRECT_URL`                | Non-pooling database connection string           | ❌             | ❌                   |
+| `REDIS_URL`¹                | Redis Cache connection string                    | ❌             | ❌                   |
+| `SECRET`                    | Secret string (minimum 32 characters)            | ❌             | ✅                   |
 | `NEXTAUTH_URL`              | NextAuth.js URL (e.g., http://localhost:3000)    | ❌             | ✅                   |
-| `NEXT_PUBLIC_URL`           | Next.js public URL (e.g., http://localhost:3000) | ❌¹            | ✅                   |
+| `NEXT_PUBLIC_URL`           | Next.js public URL (e.g., http://localhost:3000) | ❌²            | ✅                   |
 | `HOTJAR_ID`                 | [Hotjar](https://hotjar.com) ID                  | ❌             | ❌                   |
-| `DIRECT_URL`                | Non-pooling database URL                         | ❌             | ❌                   |
-| `REDIS_URL`²                | Redis URL                                        | ❌             | ❌                   |
 | `DISCORD_SUPPORT_SERVER_ID` | Discord support server ID                        | ❌             | ❌³                  |
 | `TOPGG_API_KEY`             | [top.gg](https://top.gg) API key                 | ❌             | ❌⁴                  |
+| `AI_DOMAIN`⁵                | Majo.exe AI domain (without trailing slash)      | ❌             | ❌                   |
+| `AI_TOKEN`⁵                 | Majo.exe Artificial Intelligence token           | ❌             | ❌                   |
 
 <!-- prettier-ignore-start -->
 > [!NOTE]
-> 1: `NEXT_PUBLIC_URL` is required only if you want to also include the dashboard.  
-> 2: `REDIS_URL` enables caching. If you don't want to use Redis caching, leave this variable empty. Majo.exe will use Memory caching instead.  
+> 1: `REDIS_URL` enables caching. If you don't want to use Redis caching, leave this variable empty. Majo.exe will use Memory caching instead.  
+> 2: `NEXT_PUBLIC_URL` is required only if you want to also include the dashboard.  
 > 3: `DISCORD_SUPPORT_SERVER_ID` is required only if you want to automatically add users to your own Discord server when they log in to the dashboard. Please note that the bot needs `Manage Server` permission in the server!
 > 4: `TOPGG_API_KEY` is required only if you want to automatically post server count to [top.gg](https://top.gg).
+> 5: `AI_TOKEN` and `AI_DOMAIN` are required only if you want to use Majo.exe Artificial Intelligence. This feature is still in beta and is not documented yet.
 
 <!-- prettier-ignore-end -->
 
