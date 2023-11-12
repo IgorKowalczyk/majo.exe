@@ -10,7 +10,7 @@ export function HomepageLevelUp({ logo }) {
  const [xp, setXp] = useState(46);
 
  const setIt = () => {
-  toast.success("You leveled up!", {
+  toast("You leveled up!", {
    icon: <span className="text-lg">🔥</span>,
   });
   setLevel(Math.floor(Math.random() * 9 + 1));

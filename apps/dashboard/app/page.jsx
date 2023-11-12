@@ -143,7 +143,7 @@ export default async function Main() {
        </div>
       </div>
       <div className={"bg-background-secondary relative col-span-2 row-span-2 overflow-hidden rounded-xl border border-neutral-800 duration-200 hover:bg-neutral-800/50"}>
-       <div className="relative z-50">
+       <div className="relative z-50 h-full">
         <div className="px-8 py-6">
          <Header1 className={"text-fill-transparent mb-0 bg-gradient-to-b from-white	to-neutral-400 box-decoration-clone bg-clip-text !text-left !font-black"}>Know more about your server</Header1>
          <p className="max-w-[680px] text-white/70">
@@ -151,39 +151,38 @@ export default async function Main() {
          </p>
         </div>
 
-        <div className="flex flex-col items-center justify-center gap-4 px-8 py-6 md:flex-row">
-         <p className="text-accent-primary border-accent-primary/50 bg-accent-primary/20 hover:bg-accent-primary/30 flex cursor-pointer gap-1 rounded-full border px-2 py-1 text-sm font-bold duration-200">
-          +{Math.floor(Math.random() * 5 + 15)} users today
+        <div className="z-50 flex flex-col items-center justify-center gap-4 px-8 py-6 md:flex-row">
+         <p className="text-accent-primary border-accent-primary/50 bg-accent-primary/20 hover:bg-accent-primary/30 flex cursor-pointer gap-1 rounded-full border px-2 py-1 text-sm font-bold backdrop-blur-md duration-200">
+          +{Math.floor(Math.random() * 10 + 15)} users today
           <ArrowTrendingUpIcon className="min-h-5 min-w-5 h-5 w-5 stroke-2" />
          </p>
 
-         <p className="text-accent-primary border-accent-primary/50 bg-accent-primary/20 hover:bg-accent-primary/30 flex cursor-pointer gap-1 rounded-full border px-2 py-1 text-sm font-bold duration-200">
+         <p className="text-accent-primary border-accent-primary/50 bg-accent-primary/20 hover:bg-accent-primary/30 flex cursor-pointer gap-1 rounded-full border px-2 py-1 text-sm font-bold backdrop-blur-md duration-200">
           +{Math.floor(Math.random() * 500 + 100)} messages today
           <ArrowTrendingUpIcon className="min-h-5 min-w-5 h-5 w-5 stroke-2" />
          </p>
 
-         <p className="text-accent-primary border-accent-primary/50 bg-accent-primary/20 hover:bg-accent-primary/30 flex cursor-pointer gap-1 rounded-full border px-2 py-1 text-sm font-bold duration-200">
-          +{Math.floor(Math.random() * 100)}% increase in activity
+         <p className="text-accent-primary border-accent-primary/50 bg-accent-primary/20 hover:bg-accent-primary/30 flex cursor-pointer gap-1 rounded-full border px-2 py-1 text-sm font-bold backdrop-blur-md duration-200">
+          +{Math.floor(Math.random() * 80 + 5)}% increase in activity
           <ArrowTrendingUpIcon className="min-h-5 min-w-5 h-5 w-5 stroke-2" />
          </p>
         </div>
-
-        <svg viewBox="0 0 512 120" fill="none" xmlns="http://www.w3.org/2000/svg">
-         <g id="Frame" clipPath="url(#chart-clip)">
-          <path d="M0 119.141C5.632 118.328 16.896 116.991 28.16 115.076C39.424 113.162 45.056 110.603 56.32 109.569C67.584 108.535 73.216 111.017 84.48 109.907C95.744 108.798 101.376 105.376 112.64 104.021C123.904 102.666 129.536 105.474 140.8 103.131C152.064 100.787 157.696 93.9799 168.96 92.3035C180.224 90.628 185.856 95.9134 197.12 94.7504C208.384 93.5865 214.016 89.5922 225.28 86.4866C236.544 83.3811 242.176 82.357 253.44 79.2217C264.704 76.0863 270.336 70.9047 281.6 70.8081C292.864 70.7125 298.496 79.698 309.76 78.7399C321.024 77.7817 326.656 72.4313 337.92 66.0162C349.184 59.6012 354.816 48.3726 366.08 46.6665C377.344 44.9603 382.976 58.2199 394.24 57.4845C405.504 56.7501 411.136 50.4054 422.4 42.9925C433.664 35.5796 439.296 22.542 450.56 20.418C461.824 18.2941 467.456 31.6818 478.72 32.3747C489.984 33.0686 506.368 22.9011 512 21.203V120H0V119.141Z" fill={globalConfig.defaultColor} fillOpacity="0.1" />
-          <path d="M-10 121.5C-4.368 120.687 16.896 116.991 28.16 115.076C39.424 113.162 45.056 110.603 56.32 109.569C67.584 108.535 73.216 111.017 84.48 109.907C95.744 108.798 101.376 105.376 112.64 104.021C123.904 102.666 129.536 105.474 140.8 103.131C152.064 100.787 157.696 93.9799 168.96 92.3035C180.224 90.628 185.856 95.9134 197.12 94.7504C208.384 93.5865 214.016 89.5922 225.28 86.4866C236.544 83.3811 242.176 82.357 253.44 79.2217C264.704 76.0863 270.336 70.9047 281.6 70.8081C292.864 70.7125 298.496 79.698 309.76 78.7399C321.024 77.7817 326.656 72.4313 337.92 66.0162C349.184 59.6012 354.816 48.3726 366.08 46.6665C377.344 44.9603 382.976 58.2199 394.24 57.4845C405.504 56.7501 411.136 50.4054 422.4 42.9925C433.664 35.5796 439.296 22.542 450.56 20.418C461.824 18.2941 467.456 31.6818 478.72 32.3747C489.984 33.0686 509.568 22.1161 515.2 20.418" stroke={globalConfig.defaultColor} strokeWidth="2" />
-         </g>
-         <defs>
-          <clipPath id="chart-clip">
-           <rect width="512" height="120" fill="white" />
-          </clipPath>
-         </defs>
-        </svg>
        </div>
+       <svg viewBox="0 0 512 120" fill="none" xmlns="http://www.w3.org/2000/svg" className="absolute bottom-0 left-0 right-0">
+        <g id="Frame" clipPath="url(#chart-clip)">
+         <path d="M0 119.141C5.632 118.328 16.896 116.991 28.16 115.076C39.424 113.162 45.056 110.603 56.32 109.569C67.584 108.535 73.216 111.017 84.48 109.907C95.744 108.798 101.376 105.376 112.64 104.021C123.904 102.666 129.536 105.474 140.8 103.131C152.064 100.787 157.696 93.9799 168.96 92.3035C180.224 90.628 185.856 95.9134 197.12 94.7504C208.384 93.5865 214.016 89.5922 225.28 86.4866C236.544 83.3811 242.176 82.357 253.44 79.2217C264.704 76.0863 270.336 70.9047 281.6 70.8081C292.864 70.7125 298.496 79.698 309.76 78.7399C321.024 77.7817 326.656 72.4313 337.92 66.0162C349.184 59.6012 354.816 48.3726 366.08 46.6665C377.344 44.9603 382.976 58.2199 394.24 57.4845C405.504 56.7501 411.136 50.4054 422.4 42.9925C433.664 35.5796 439.296 22.542 450.56 20.418C461.824 18.2941 467.456 31.6818 478.72 32.3747C489.984 33.0686 506.368 22.9011 512 21.203V120H0V119.141Z" fill={globalConfig.defaultColor} fillOpacity="0.1" />
+         <path d="M-10 121.5C-4.368 120.687 16.896 116.991 28.16 115.076C39.424 113.162 45.056 110.603 56.32 109.569C67.584 108.535 73.216 111.017 84.48 109.907C95.744 108.798 101.376 105.376 112.64 104.021C123.904 102.666 129.536 105.474 140.8 103.131C152.064 100.787 157.696 93.9799 168.96 92.3035C180.224 90.628 185.856 95.9134 197.12 94.7504C208.384 93.5865 214.016 89.5922 225.28 86.4866C236.544 83.3811 242.176 82.357 253.44 79.2217C264.704 76.0863 270.336 70.9047 281.6 70.8081C292.864 70.7125 298.496 79.698 309.76 78.7399C321.024 77.7817 326.656 72.4313 337.92 66.0162C349.184 59.6012 354.816 48.3726 366.08 46.6665C377.344 44.9603 382.976 58.2199 394.24 57.4845C405.504 56.7501 411.136 50.4054 422.4 42.9925C433.664 35.5796 439.296 22.542 450.56 20.418C461.824 18.2941 467.456 31.6818 478.72 32.3747C489.984 33.0686 509.568 22.1161 515.2 20.418" stroke={globalConfig.defaultColor} strokeWidth="2" />
+        </g>
+        <defs>
+         <clipPath id="chart-clip">
+          <rect width="512" height="120" fill="white" />
+         </clipPath>
+        </defs>
+       </svg>
 
        <div className="absolute inset-0 z-10 m-auto mt-[100px] h-[980px] w-[980px] rounded-full bg-[#ddd] opacity-5 blur-3xl" />
       </div>
-      <div className={"bg-background-secondary row-span-1 overflow-hidden rounded-xl border border-neutral-800 p-4 duration-200 hover:bg-neutral-800/50"}>
+      <div className={"bg-background-secondary relative col-span-2 row-span-1 overflow-hidden rounded-xl border border-neutral-800 px-8 py-6 duration-200 hover:bg-neutral-800/50 lg:col-span-1"}>
        <GradientHeader>Giveaways? Why not?</GradientHeader>
        <p className="mt-2 max-w-[680px] text-white/70">Want to host a giveaway or a drop? Majo.exe caan help you with that! You can easily create and moderate giveaways with few simple commands!</p>
        <div className="my-6 flex items-center gap-1">
