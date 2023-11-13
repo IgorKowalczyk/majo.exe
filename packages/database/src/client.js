@@ -12,9 +12,15 @@ neonConfig.webSocketConstructor = ws;
 const connectionString = `${process.env.DATABASE_URL}`;
 
 const prismaClientSingleton = () => {
- const pool = new Pool({ connectionString });
- const adapter = new PrismaNeon(pool);
- return new PrismaClient({ adapter });
+ if (process.env.DATABASE_URL.includes("neon.tech")) {
+  Logger("info", "Neon Database URL found, setting up Neon Database...");
+  const pool = new Pool({ connectionString });
+  const adapter = new PrismaNeon(pool);
+  return new PrismaClient({ adapter });
+ } else {
+  Logger("info", "No Neon Database URL found, setting up Prisma...");
+  return new PrismaClient();
+ }
 };
 
 const globalForPrisma = globalThis;
