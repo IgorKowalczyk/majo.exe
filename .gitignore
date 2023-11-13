@@ -22,13 +22,6 @@ coverage
 # Dependency directories and files
 node_modules/
 jspm_packages/
-package-lock.json
-
-# TypeScript v1 declaration files
-typings/
-
-# TypeScript cache
-*.tsbuildinfo
 
 # Optional npm cache directory
 .npm
@@ -43,33 +36,22 @@ typings/
 *.tgz
 *.zip
 
-
 # dotenv environment variables file
 .env*
+!.env.example
 !packages/database/.env
-
-# Next.js build output
-.next
 
 # Stores VSCode versions used for testing VSCode extensions
 .vscode-test
 .vscode
 
-# Temporary folders / files
-*.swp
-*.save
-tmp/
-temp/
+# Next.js build output
+.next
 
 # Certificates
 *.key
 *.cert
 
-# Auto-generated files
-.breakpoints
-!majo
-
-# Turborepo
+# Turborepo & Vercel
 .turbo
-
 .vercel
