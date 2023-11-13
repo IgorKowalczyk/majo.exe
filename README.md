@@ -54,24 +54,24 @@ Ensure your setup meets these prerequisites before setting up Majo.exe:
 
 | Variable                    | Description                                      | Required (Bot) | Required (Dashboard) |
 | --------------------------- | ------------------------------------------------ | -------------- | -------------------- |
-| `TOKEN`                     | Discord bot token                                | ✅             | ✅                   |
-| `CLIENT_ID`                 | Discord client ID                                | ✅             | ✅                   |
-| `CLIENT_SECRET`             | Discord client secret                            | ❌             | ✅                   |
-| `DATABASE_URL`              | Main database connection string                  | ✅             | ✅                   |
-| `DIRECT_URL`                | Non-pooling database connection string           | ❌             | ❌                   |
-| `REDIS_URL`¹                | Redis Cache connection string                    | ❌             | ❌                   |
-| `SECRET`                    | Secret string (minimum 32 characters)            | ❌             | ✅                   |
-| `NEXTAUTH_URL`              | NextAuth.js URL (e.g., http://localhost:3000)    | ❌             | ✅                   |
-| `NEXT_PUBLIC_URL`           | Next.js public URL (e.g., http://localhost:3000) | ❌²            | ✅                   |
-| `HOTJAR_ID`                 | [Hotjar](https://hotjar.com) ID                  | ❌             | ❌                   |
-| `DISCORD_SUPPORT_SERVER_ID` | Discord support server ID                        | ❌             | ❌³                  |
-| `TOPGG_API_KEY`             | [top.gg](https://top.gg) API key                 | ❌             | ❌⁴                  |
+| `TOKEN`                     | Discord bot token                                | `✅ Yes`       | `✅ Yes`             |
+| `CLIENT_ID`                 | Discord client ID                                | `✅ Yes`       | `✅ Yes`             |
+| `CLIENT_SECRET`             | Discord client secret                            | `❌ No`        | `✅ Yes`             |
+| `DATABASE_URL`              | Main database connection string                  | `✅ Yes`       | `✅ Yes`             |
+| `DIRECT_URL`                | Non-pooling database connection string           | `❌ No`        | `❌ No`              |
+| `REDIS_URL`¹                | Redis Cache connection string                    | `❌ No`        | `❌ No`              |
+| `SECRET`                    | Secret string (minimum 32 characters)            | `❌ No`        | `✅ Yes`             |
+| `NEXTAUTH_URL`              | NextAuth.js URL (e.g., http://localhost:3000)    | `❌ No`        | `✅ Yes`             |
+| `NEXT_PUBLIC_URL`           | Next.js public URL (e.g., http://localhost:3000) | `❌ No`²       | `✅ Yes`             |
+| `HOTJAR_ID`                 | [Hotjar](https://hotjar.com) ID                  | `❌ No`        | `❌ No`              |
+| `DISCORD_SUPPORT_SERVER_ID` | Discord support server ID                        | `❌ No`        | `❌ No`³             |
+| `TOPGG_API_KEY`             | [top.gg](https://top.gg) API key                 | `❌ No`        | `❌ No`⁴             |
 
 <!-- prettier-ignore-start -->
 > [!NOTE]
 > 1: `REDIS_URL` enables caching. If you don't want to use Redis caching, leave this variable empty. Majo.exe will use Memory caching instead.  
 > 2: `NEXT_PUBLIC_URL` is required only if you want to also include the dashboard.  
-> 3: `DISCORD_SUPPORT_SERVER_ID` is required only if you want to automatically add users to your own Discord server when they log in to the dashboard. Please note that the bot needs `Manage Server` permission in the server!
+> 3: `DISCORD_SUPPORT_SERVER_ID` is required only if you want to automatically add users to your own Discord server when they log in to the dashboard. Please note that the bot needs `Manage Server` permission in the server!\
 > 4: `TOPGG_API_KEY` is required only if you want to automatically post server count to [top.gg](https://top.gg).
 
 <!-- prettier-ignore-end -->
