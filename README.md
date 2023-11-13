@@ -66,8 +66,6 @@ Ensure your setup meets these prerequisites before setting up Majo.exe:
 | `HOTJAR_ID`                 | [Hotjar](https://hotjar.com) ID                  | ❌             | ❌                   |
 | `DISCORD_SUPPORT_SERVER_ID` | Discord support server ID                        | ❌             | ❌³                  |
 | `TOPGG_API_KEY`             | [top.gg](https://top.gg) API key                 | ❌             | ❌⁴                  |
-| `AI_DOMAIN`⁵                | Majo.exe AI domain (without trailing slash)      | ❌             | ❌                   |
-| `AI_TOKEN`⁵                 | Majo.exe Artificial Intelligence token           | ❌             | ❌                   |
 
 <!-- prettier-ignore-start -->
 > [!NOTE]
@@ -75,7 +73,6 @@ Ensure your setup meets these prerequisites before setting up Majo.exe:
 > 2: `NEXT_PUBLIC_URL` is required only if you want to also include the dashboard.  
 > 3: `DISCORD_SUPPORT_SERVER_ID` is required only if you want to automatically add users to your own Discord server when they log in to the dashboard. Please note that the bot needs `Manage Server` permission in the server!
 > 4: `TOPGG_API_KEY` is required only if you want to automatically post server count to [top.gg](https://top.gg).
-> 5: `AI_TOKEN` and `AI_DOMAIN` are required only if you want to use Majo.exe Artificial Intelligence. This feature is still in beta and is not documented yet.
 
 <!-- prettier-ignore-end -->
 
