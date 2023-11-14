@@ -3,10 +3,16 @@ import { PresenceUpdateStatus, ActivityType } from "discord.js";
 export async function ready(client) {
  const registerTime = performance.now();
  client.debugger("info", "Registering slash commands...");
- const commands = await client.application.commands.set(client.slashCommands).catch((err) => {
-  client.debugger("error", err);
- });
- client.debugger("event", `Successfully registered ${commands.size + client.additionalSlashCommands} slash commands (with ${client.additionalSlashCommands} subcommands) in ${client.performance(registerTime)}`);
+ client.application.commands
+  .set(client.slashCommands)
+  .catch((err) => {
+   client.debugger("error", err);
+  })
+  .then((commands) => {
+   const percentage = Math.round((commands.size / client.slashCommands.size) * 100);
+   client.debugger("ready", `Successfully registered ${commands.size + client.additionalSlashCommands} (${percentage}%) slash commands (with ${client.additionalSlashCommands} subcommands) in ${client.performance(registerTime)}`);
+  });
+
  client.debugger("ready", `Logged in as ${client.user.tag}, ID: ${client.user.id}`);
 
  if (process.env.TOPGG_API_KEY) {
@@ -34,8 +40,10 @@ export async function ready(client) {
    client.debugger("error", "Failed to post stats to top.gg!");
   }
  }
+
  client.user.setActivity(client.config.presence.activity.type === ActivityType.Custom ? client.config.presence.activity.state : client.config.presence.activity.name, {
   type: client.config.presence.activity.type,
  });
+
  client.user.setStatus(client.config.presence.status ?? PresenceUpdateStatus.Online);
 }
