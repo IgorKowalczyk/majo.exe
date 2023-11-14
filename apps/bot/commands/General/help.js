@@ -30,12 +30,12 @@ export default {
    const globalActionRow = [];
    const inviteLink = `https://discord.com/oauth2/authorize/?permissions=${client.config.permissions}&scope=${client.config.scopes}&client_id=${client.user.id}`;
 
-   if (client.config.dashboard.enabled && client.config.dashboard.url) {
+   if (client.config.url) {
     const buttonRow = new ActionRowBuilder().addComponents(
      new ButtonBuilder() // prettier
       .setStyle(ButtonStyle.Link)
       .setLabel("Dashboard")
-      .setURL(client.config.dashboard.url),
+      .setURL(client.config.url),
      new ButtonBuilder() // prettier
       .setStyle(ButtonStyle.Link)
       .setLabel("Invite")
@@ -43,7 +43,7 @@ export default {
      new ButtonBuilder() // prettier
       .setStyle(ButtonStyle.Link)
       .setLabel("All Commands")
-      .setURL(`${client.config.dashboard.url}/commands`)
+      .setURL(`${client.config.url}/commands`)
     );
     globalActionRow.push(buttonRow);
    }

@@ -18,7 +18,7 @@ export default {
      
      **You can find the source code [on Github](https://github.com/igorkowalczyk/majo.exe).** If you want to help us with our journey and you know how to code, you can contribute to the project by forking the repository and making a pull request. **We really appreciate it!** ❤️‍🔥
 
-     ${client.config.dashboard.enabled && client.config.dashboard.url ? `**If you want to invite Majo.exe to your server, you can do so by clicking [here](${client.config.dashboard.url})**` : ""}
+     ${client.config.url ? `**If you want to invite Majo.exe to your server, you can do so by clicking [here](${client.config.url})**` : ""}
      `
     )
     .setFooter({
@@ -30,17 +30,17 @@ export default {
     .setColor(guildSettings?.embedColor || client.config.defaultColor)
     .setTimestamp();
 
-   if (client.config.dashboard.enabled && client.config.dashboard.url) {
+   if (client.config.url) {
     const action = new ActionRowBuilder() // prettier
      .addComponents(
       new ButtonBuilder() // prettier
        .setLabel("Dashboard")
        .setStyle(ButtonStyle.Link)
-       .setURL(client.config.dashboard.url),
+       .setURL(client.config.url),
       new ButtonBuilder() // prettier
        .setLabel("Invite")
        .setStyle(ButtonStyle.Link)
-       .setURL(`${client.config.dashboard.url}/invite`)
+       .setURL(`${client.config.url}/invite`)
      );
 
     return interaction.followUp({ ephemeral: false, embeds: [embed], components: [action] });

@@ -27,12 +27,12 @@ export default {
      }),
     });
 
-   if (client.config.dashboard.enabled && client.config.dashboard.url) {
+   if (client.config.url) {
     const action = new ActionRowBuilder().addComponents(
      new ButtonBuilder() // prettier
       .setLabel("Status page")
       .setStyle(ButtonStyle.Link)
-      .setURL(`${client.config.dashboard.url}/status`)
+      .setURL(`${client.config.url}/status`)
     );
     return interaction.followUp({ ephemeral: false, embeds: [embed], components: [action] });
    } else {

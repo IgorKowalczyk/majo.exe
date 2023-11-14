@@ -31,11 +31,11 @@ export default {
     .setStyle(ButtonStyle.Link)
     .setURL(inviteLink);
 
-   if (client.config.dashboard.enabled && client.config.dashboard.url) {
+   if (client.config.url) {
     const contactButton = new ButtonBuilder() // prettier
      .setLabel("Dashboard")
      .setStyle(ButtonStyle.Link)
-     .setURL(client.config.dashboard.url);
+     .setURL(client.config.url);
 
     const action = new ActionRowBuilder() // prettier
      .addComponents(

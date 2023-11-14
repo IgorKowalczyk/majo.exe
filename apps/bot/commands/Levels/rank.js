@@ -52,12 +52,12 @@ export default {
     .setImage("attachment://rank.png")
     .setTimestamp();
 
-   if (client.config.dashboard.enabled && client.config.dashboard.url) {
+   if (client.config.url) {
     const action = new ActionRowBuilder().addComponents(
      new ButtonBuilder() // Prettier
       .setLabel("View Leaderboard")
       .setStyle(ButtonStyle.Link)
-      .setURL(`${client.config.dashboard.url}/dashboard/${interaction.guild.id}/leaderboard`)
+      .setURL(`${client.config.url}/dashboard/${interaction.guild.id}/leaderboard`)
     );
     return interaction.followUp({ ephemeral: false, embeds: [embed], components: [action], files: [attachment] });
    } else {

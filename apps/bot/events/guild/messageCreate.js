@@ -15,9 +15,9 @@ export async function messageCreate(client, message) {
    .setDescription(
     `Hello ${message.author}! I'm ${client.user.username}, a multi-purpose Discord bot created for **Memes, Image editing, Giveaways, Moderation, Anime and even more!** 🎉
 
-   **You can find the list of all my commands by typing \`/help\`** ${client.config.dashboard.enabled && client.config.dashboard.url ? `or by visiting [my dashboard](${client.config.dashboard.url}/commands)` : ""}.
+   **You can find the list of all my commands by typing \`/help\`** ${client.config.url ? `or by visiting [my dashboard](${client.config.url}/commands)` : ""}.
 
-   ${client.config.dashboard.enabled && client.config.dashboard.url ? `**If you want to invite me to your server, you can do so by clicking [here](${client.config.dashboard.url})**` : ""}`
+   ${client.config.url ? `**If you want to invite me to your server, you can do so by clicking [here](${client.config.url})**` : ""}`
    )
    .setColor(client.config.defaultColor)
    .setTimestamp()
@@ -26,17 +26,17 @@ export async function messageCreate(client, message) {
     iconURL: message.author.displayAvatarURL({ size: 256 }),
    });
 
-  if (client.config.dashboard.enabled && client.config.dashboard.url) {
+  if (client.config.url) {
    const action = new ActionRowBuilder() // prettier
     .addComponents(
      new ButtonBuilder() // prettier
       .setLabel("Dashboard")
       .setStyle(ButtonStyle.Link)
-      .setURL(client.config.dashboard.url),
+      .setURL(client.config.url),
      new ButtonBuilder() // prettier
       .setLabel("Invite")
       .setStyle(ButtonStyle.Link)
-      .setURL(`${client.config.dashboard.url}/invite`)
+      .setURL(`${client.config.url}/invite`)
     );
 
    return message.reply({ embeds: [embed], allowedMentions: { repliedUser: false }, components: [action] });

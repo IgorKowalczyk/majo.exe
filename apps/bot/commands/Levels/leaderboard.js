@@ -1,6 +1,6 @@
 import prismaClient from "@majoexe/database";
 import { fetchXPSettings } from "@majoexe/util/database";
-import { ApplicationCommandType, EmbedBuilder, ButtonBuilder, ActionRowBuilder, ButtonStyle } from "discord.js";
+import { ApplicationCommandType, EmbedBuilder, ButtonBuilder, ActionRowBuilder, ButtonStyle, PermissionsBitField } from "discord.js";
 
 export default {
  name: "leaderboard",
@@ -53,13 +53,30 @@ export default {
           .join("\n")
      }`
     );
-   if (client.config.dashboard.enabled && client.config.dashboard.url) {
-    const contactButton = new ButtonBuilder().setLabel("View Leaderboard").setStyle(ButtonStyle.Link).setURL(`${client.config.dashboard.url}/dashboard/${interaction.guild.id}/leaderboard`);
-    const action = new ActionRowBuilder().addComponents(contactButton);
-    return interaction.followUp({ ephemeral: false, embeds: [embed], components: [action] });
-   } else {
-    return interaction.followUp({ ephemeral: false, embeds: [embed] });
+
+   const components = [];
+
+   if (client.config.url) {
+    if (interaction.member.permissions.has(PermissionsBitField.Flags.Administrator) || interaction.member.permissions.has(PermissionsBitField.Flags.ManageGuild)) {
+     components.push(
+      new ButtonBuilder() // Prettier
+       .setLabel("View Leaderboard")
+       .setStyle(ButtonStyle.Link)
+       .setURL(`${client.config.url}/dashboard/${interaction.guild.id}/leaderboard`)
+     );
+    } else if (guildSettings.publicPage) {
+     components.push(
+      new ButtonBuilder() // Prettier
+       .setLabel("View Leaderboard")
+       .setStyle(ButtonStyle.Link)
+       .setURL(`${client.config.url}/server/${guildSettings.vanity || interaction.guild.id}/`)
+     );
+    }
    }
+
+   const row = new ActionRowBuilder().addComponents(components);
+
+   return interaction.followUp({ ephemeral: false, embeds: [embed], components: [row || null] });
   } catch (err) {
    console.log(err);
    client.errorMessages.internalError(interaction, err);

@@ -4,9 +4,9 @@ import { Logger, chalk } from "@majoexe/util/functions";
 import { Client, GatewayIntentBits } from "discord.js";
 import giveaway from "../util/giveaway/core.js";
 import loadCommands from "../util/loaders/loadCommands.js";
+import loadEvents from "../util/loaders/loadEvents.js";
 import loadFonts from "../util/loaders/loadFonts.js";
 import loadModals from "../util/loaders/loadModals.js";
-import loadEvents from "../util/loaders/loadEvents.js";
 import { dirname } from "path";
 import { fileURLToPath } from "url";
 
@@ -36,8 +36,7 @@ client.config = {
  ...globalPermissions,
  ...globalConfig,
  ...debuggerConfig,
- /* Deprecated - Will be removed in the future */
- dashboard: dashboardConfig,
+ ...dashboardConfig,
 };
 
 client.commandsRan = 0;
