@@ -53,6 +53,7 @@ export default async function ServerOverview({ params }) {
      user: {
       select: {
        discordId: true,
+       global_name: true,
        name: true,
        avatar: true,
        discriminator: true,

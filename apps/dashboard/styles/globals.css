@@ -22,7 +22,7 @@ html {
 }
 
 ::-webkit-scrollbar-track {
- @apply rounded-xl bg-background-primary;
+ @apply bg-background-primary rounded-xl;
 }
 
 ::-webkit-scrollbar-thumb {

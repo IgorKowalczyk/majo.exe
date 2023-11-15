@@ -9,7 +9,7 @@ export default async function Loading() {
  return (
   <>
    <Header1>
-    <Cog6ToothIcon className="min-h-12 min-w-12 h-12 w-12" />
+    <Cog6ToothIcon className="min-h-9 min-w-9 h-9 w-9" />
     Settings
    </Header1>
    <Block>

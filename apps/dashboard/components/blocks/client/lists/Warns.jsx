@@ -50,7 +50,7 @@ export function Warns({ data, showControls = true, showSearch = true }) {
     Header: "Actions",
     accessor: "link",
     Cell: ({ value }) => (
-     <SecondaryButton className="w-fit" href={`warns/${value}`}>
+     <SecondaryButton className="w-fit" href={`user/${value}#warns`}>
       <LinkIcon className="min-h-5 min-w-5 -ml-1 mr-2 h-5 w-5" />
       View
      </SecondaryButton>

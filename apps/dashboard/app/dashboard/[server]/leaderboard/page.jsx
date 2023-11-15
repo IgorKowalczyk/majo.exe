@@ -1,4 +1,4 @@
-import { StarIcon } from "@heroicons/react/24/outline";
+import { SparklesIcon } from "@heroicons/react/24/outline";
 import prismaClient from "@majoexe/database";
 import { getGuildMember, getServer } from "@majoexe/util/functions";
 import { getSession } from "lib/session";
@@ -48,6 +48,7 @@ export default async function ServerLeaderboard({ params }) {
      user: {
       select: {
        discordId: true,
+       global_name: true,
        name: true,
        avatar: true,
        discriminator: true,
@@ -72,7 +73,7 @@ export default async function ServerLeaderboard({ params }) {
  return (
   <>
    <Header1>
-    <StarIcon className="min-h-12 min-w-12 h-12 w-12" />
+    <SparklesIcon className="min-h-9 min-w-9 h-9 w-9" />
     Leaderboard
    </Header1>
    <Header5 className="mb-4 mt-2 !justify-start !text-left">
