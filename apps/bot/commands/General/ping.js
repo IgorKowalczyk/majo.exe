@@ -16,6 +16,7 @@ export default {
 
    const waitEmbed = new EmbedBuilder().setColor(guildSettings?.embedColor || client.config.defaultColor).setDescription("🏓 Pong!...");
    const message = await interaction.followUp({ embeds: [waitEmbed] });
+   const thisServerShard = client.ws.shards.get(interaction.guild.shardId);
 
    const pingMessage = new EmbedBuilder()
     .setColor(guildSettings?.embedColor || client.config.defaultColor)
@@ -38,13 +39,13 @@ export default {
       inline: true,
      },
      {
-      name: "Websocket Status",
-      value: codeBlock("yaml", `${Status[client.ws.status]}`),
+      name: "Websocket",
+      value: codeBlock("yaml", `${Status[thisServerShard.status]}`),
       inline: true,
      },
      {
-      name: "Shards",
-      value: codeBlock("yaml", `${client.ws.shards.size}`),
+      name: "Shard",
+      value: codeBlock("yaml", `${thisServerShard.id}/${client.ws.shards.size} (${thisServerShard.ping > 0 ? `${Math.floor(thisServerShard.ping)}ms` : "Calculating..."})`),
       inline: true,
      },
      {
