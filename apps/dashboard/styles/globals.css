@@ -13,8 +13,28 @@ html {
 
 * {
  @apply box-border;
- scrollbar-color: #08152b transparent;
+ scrollbar-color: #262626 transparent;
  scrollbar-width: thin;
+}
+
+::-webkit-scrollbar {
+ @apply w-[10px];
+}
+
+::-webkit-scrollbar-track {
+ @apply rounded-xl bg-background-primary;
+}
+
+::-webkit-scrollbar-thumb {
+ @apply rounded-xl bg-neutral-700;
+}
+
+::-webkit-scrollbar-thumb:hover {
+ @apply bg-neutral-600;
+}
+
+::-webkit-scrollbar-thumb:active {
+ @apply bg-neutral-500;
 }
 
 .hide-scrollbar::-webkit-scrollbar {
@@ -31,10 +51,6 @@ html {
 
 .show-scrollbar {
  scrollbar-width: inherit;
-}
-
-::-webkit-scrollbar {
- @apply w-[10px];
 }
 
 ::selection {
