@@ -1,4 +1,4 @@
-import { ApplicationCommandType, EmbedBuilder, codeBlock } from "discord.js";
+import { ApplicationCommandType, EmbedBuilder, PermissionsBitField, codeBlock } from "discord.js";
 
 function convertCamelCaseToWords(text) {
  return text.replace(/([A-Z])/g, " $1").replace(/^./, (str) => {
@@ -16,14 +16,20 @@ export default {
  run: async (client, interaction, guildSettings) => {
   try {
    const clientMember = interaction.guild.members.cache.get(client.user.id);
-   const permissions = clientMember.permissions.toArray();
-   const permissionsText = permissions.map((permission) => convertCamelCaseToWords(permission));
+   const requiredPermissions = new PermissionsBitField(client.config.permissions);
+
+   const permissionsText = requiredPermissions.toArray().map((permission) => {
+    const hasPermission = clientMember.permissions.has(permission);
+    const permissionName = convertCamelCaseToWords(permission.replace(/_/g, " "));
+
+    return `${hasPermission ? "✅" : "❌"} ${permissionName}`;
+   });
 
    const embed = new EmbedBuilder()
     .setColor(guildSettings.embedColor || client.config.defaultColor)
     .setTimestamp()
     .setTitle(`🎛️ Permissions in ${interaction.guild.name}`)
-    .setDescription(`> **${client.user}** has the following permissions in this server:\n${codeBlock(permissionsText.join("\n"))}`)
+    .setDescription(`> To work properly, ${client.user} needs **all** of the following permissions:\n${codeBlock(permissionsText.join("\n"))}`)
     .setTimestamp()
     .setFooter({
      text: `Requested by ${interaction.member.user.globalName || interaction.member.user.username}`,
