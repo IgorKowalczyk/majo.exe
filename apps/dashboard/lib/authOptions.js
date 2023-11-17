@@ -30,13 +30,34 @@ const authOptions = {
      }
     }
 
-    const user = await prismaClient.user.findUnique({
+    const user = await prismaClient.user.upsert({
      where: {
       discordId: profile.id,
      },
-     select: {
-      id: true,
-      discordId: true,
+     update: {
+      name: profile.username,
+      global_name: profile.global_name || profile.username,
+      avatar: profile.avatar,
+      discriminator: profile.discriminator ?? "0",
+      public_flags: profile.public_flags,
+      flags: profile.flags,
+      locale: profile.locale,
+      nitro: profile.premium_type,
+      lastLogin: new Date(),
+     },
+     create: {
+      discordId: profile.id,
+      name: profile.username,
+      global_name: profile.global_name || profile.username,
+      avatar: profile.avatar,
+      discriminator: profile.discriminator ?? "0",
+      public_flags: profile.public_flags,
+      flags: profile.flags,
+      locale: profile.locale,
+      nitro: profile.premium_type,
+      lastLogin: new Date(),
+     },
+     include: {
       accounts: true,
      },
     });
@@ -59,16 +80,13 @@ const authOptions = {
      });
     }
 
-    delete profile.email;
-    delete profile.emailVerified;
-
     return {
      id: profile.id,
      discordId: profile.id,
      name: profile.username,
      global_name: profile.global_name || profile.username,
      avatar: profile.avatar,
-     discriminator: profile.discriminator !== "0" ? profile.discriminator : "0",
+     discriminator: profile.discriminator ?? "0",
      public_flags: profile.public_flags,
      flags: profile.flags,
      locale: profile.locale,

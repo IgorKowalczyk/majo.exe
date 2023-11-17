@@ -23,6 +23,7 @@ model User {
  nitro         Int?
  email         String?
  emailVerified DateTime?    @map(name: "email_verified")
+ lastLogin     DateTime?    @map(name: "last_login")
  accounts      Account[]
  sessions      Session[]
  guildLogs     GuildLogs[]
