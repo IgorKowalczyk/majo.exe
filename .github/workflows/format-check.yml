@@ -1,26 +1,35 @@
 name: Prettier check
 
-on:
- push:
-  branches: [master]
- pull_request:
-  branches: [master]
+on: [push, pull_request]
 
 jobs:
- format:
-  name: ✨ Prettier
+ check:
+  timeout-minutes: 15
+  name: Format check
   runs-on: ubuntu-latest
+  env:
+   TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
+   TURBO_TEAM: ${{ vars.TURBO_TEAM }}
   strategy:
+   fail-fast: false
    matrix:
-    node-version: [16.x]
+    language: ["javascript"]
+    node: ["18.x"]
   steps:
-   - uses: actions/checkout@v2
+   - name: 🧱 Checkout repository
+     uses: actions/checkout@v4
      with:
-      ref: ${{ github.head_ref }}
-   - uses: actions/setup-node@v1
+      fetch-depth: 2
+   - name: 🔩 Setup PNPM
+     uses: pnpm/action-setup@v2
      with:
-      node-version: "16.x"
-   - name: 🧱 Prettier format check
-     run: |
-      npm i prettier -f
-      npm run format:check
+      version: latest
+   - name: 🔩 Setup Node ${{ matrix.node }}
+     uses: actions/setup-node@v4
+     with:
+      node-version: ${{ matrix.node }}
+      cache: "pnpm"
+   - name: 🚀 Install dependencies
+     run: pnpm install
+   - name: 🚀 Check formatting
+     run: "pnpm run format:check"

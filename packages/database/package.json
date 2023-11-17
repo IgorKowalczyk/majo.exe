@@ -1,0 +1,62 @@
+{
+  "name": "@majoexe/database",
+  "version": "6.0.0",
+  "description": "Majo.exe main database schema/client/migrations package",
+  "exports": {
+    ".": "./src/client.js",
+    "./redis": "./src/redis.js"
+  },
+  "type": "module",
+  "prisma": {
+    "seed": "node ./src/seed.js"
+  },
+  "scripts": {
+    "prisma:seed": "node ./src/seed.js",
+    "prisma:generate": "prisma generate && pnpm run prisma:seed",
+    "prisma:migrate": "prisma migrate dev",
+    "prisma:format": "prisma format",
+    "prisma:push": "prisma db push",
+    "format": "prettier . --write --cache --ignore-unknown --plugin=prettier-plugin-prisma",
+    "format:check": "prettier . --check --cache",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix"
+  },
+  "dependencies": {
+    "@majoexe/config": "workspace:*",
+    "@neondatabase/serverless": "0.6.0",
+    "@prisma/adapter-neon": "5.6.0",
+    "@prisma/client": "5.6.0",
+    "chalk": "5.3.0",
+    "globby": "14.0.0",
+    "ioredis": "5.3.2",
+    "prisma": "5.6.0",
+    "prisma-redis-middleware": "4.8.0",
+    "ws": "^8.14.2"
+  },
+  "devDependencies": {
+    "prettier-plugin-prisma": "5.0.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/igorkowalczyk/majo.exe.git",
+    "directory": "packages/database"
+  },
+  "keywords": [
+    "prisma",
+    "database",
+    "orm",
+    "sql",
+    "postgresql",
+    "mysql"
+  ],
+  "author": "Igor Kowalczyk",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/igorkowalczyk/majo.exe/issues"
+  },
+  "homepage": "https://github.com/igorkowalczyk/majo.exe#readme",
+  "packageManager": "pnpm@8.10.5"
+}

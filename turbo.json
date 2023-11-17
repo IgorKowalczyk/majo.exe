@@ -1,0 +1,49 @@
+{
+ "$schema": "https://turborepo.org/schema.json",
+ "pipeline": {
+  "dev": {
+   "dependsOn": ["prisma:generate"],
+   "outputs": []
+  },
+  "build": {
+   "dependsOn": ["^prisma:generate", "lint"],
+   "outputs": [".next/**", "!.next/cache/**"]
+  },
+  "deploy": {
+   "dependsOn": ["^build"],
+   "outputs": [".next/**", "!.next/cache/**"]
+  },
+  "analyze": {
+   "dependsOn": ["^build"],
+   "outputs": [".next/**", "!.next/cache/**"]
+  },
+  "lint": {
+   "dependsOn": ["^format:check"],
+   "outputs": []
+  },
+  "lint:fix": {
+   "outputs": []
+  },
+  "format": {
+   "outputs": []
+  },
+  "format:check": {
+   "outputs": []
+  },
+  "prisma:generate": {
+   "cache": false,
+   "outputs": ["prisma/schema.prisma"]
+  },
+  "prisma:seed": {
+   "cache": false
+  },
+  "prisma:migrate": {
+   "outputs": ["prisma/migrations/**"]
+  },
+  "prisma:format": {
+   "outputs": ["prisma/schema.prisma"]
+  }
+ },
+ "globalEnv": ["CLIENT_ID", "NEXTAUTH_URL", "DATABASE_URL", "AI_TOKEN", "AI_DOMAIN", "DISCORD_SUPPORT_SERVER_ID", "TOPGG_API_KEY", "HOTJAR_ID", "CLIENT_SECRET", "ENVIRONMENT_URL", "TOKEN", "REDIS_URL", "NODE_ENV", "RUNTIME", "NEXT_PUBLIC_URL", "npm_package_version"],
+ "globalDependencies": [".env", ".prettierignore", "prettier.config.mjs", "eslint.config.js"]
+}

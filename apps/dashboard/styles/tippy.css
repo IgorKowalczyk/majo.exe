@@ -1,0 +1,7 @@
+[data-theme~="translucent"] {
+ @apply backdrop-blur-[5px] motion-reduce:transition-none;
+}
+
+.tippy-backdrop {
+ @apply !bg-neutral-700 !bg-opacity-[0.7];
+}

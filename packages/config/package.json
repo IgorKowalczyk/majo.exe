@@ -1,0 +1,42 @@
+{
+ "name": "@majoexe/config",
+ "version": "6.0.0",
+ "description": "Majo.exe shared config for all packages and projects",
+ "exports": {
+  ".": "./index.js",
+  "./bot": "./configs/bot.js",
+  "./dashboard": "./configs/dashboard.js",
+  "./debugger": "./configs/debugger.js",
+  "./global": "./configs/global.js",
+  "./permissions": "./configs/permissions.js"
+ },
+ "type": "module",
+ "scripts": {
+  "format": "prettier . --write --cache --ignore-unknown",
+  "format:check": "prettier . --check --cache",
+  "lint": "eslint .",
+  "lint:fix": "eslint . --fix"
+ },
+ "dependencies": {
+  "discord-api-types": "0.37.63",
+  "dotenv": "16.3.1"
+ },
+ "engines": {
+  "node": ">=18.0.0"
+ },
+ "repository": {
+  "type": "git",
+  "url": "git+https://github.com/igorkowalczyk/majo.exe.git",
+  "directory": "packages/config"
+ },
+ "keywords": [
+  "config"
+ ],
+ "author": "Igor Kowalczyk",
+ "license": "MIT",
+ "bugs": {
+  "url": "https://github.com/igorkowalczyk/majo.exe/issues"
+ },
+ "homepage": "https://github.com/igorkowalczyk/majo.exe#readme",
+ "packageManager": "pnpm@8.10.5"
+}

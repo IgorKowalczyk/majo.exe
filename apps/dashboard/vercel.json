@@ -1,0 +1,12 @@
+{
+ "framework": "nextjs",
+ "github": {
+  "silent": true
+ },
+ "crons": [
+  {
+   "path": "/api/cron/cleanup",
+   "schedule": "0 0 * * *"
+  }
+ ]
+}

@@ -1,2 +1,0 @@
-run = "while true; do npm run majo:web; sleep 0; done"
-language = "nodejs"
