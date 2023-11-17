@@ -106,7 +106,7 @@ export default async function ServerLogs({ params }) {
   return redirect("/auth/error?error=It%20looks%20like%20the%20user%20you%20are%20trying%20to%20display%20does%20not%20exist");
  }
 
- const guild = await prismaClient.guild.upsert({
+ await prismaClient.guild.upsert({
   where: {
    guildId: serverDownload.id,
   },

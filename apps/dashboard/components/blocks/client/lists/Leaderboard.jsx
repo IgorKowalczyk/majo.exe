@@ -43,6 +43,7 @@ export function Leaderboard({ data, showControls = true, showSearch = true }) {
     accessor: "level",
    },
   ],
+  /* eslint-disable-next-line react-hooks/exhaustive-deps */
   []
  );
 
