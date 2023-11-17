@@ -1,7 +1,7 @@
 /* eslint-disable no-undef */
 import { chromium } from "playwright";
-const endpoints = ["/", "/auth/login"];
 
+const endpoints = ["/", "/commands", "/auth/login", "/legal/privacy-policy", "/legal/terms-of-service"];
 const user = "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36 Checkly/portfolio_check";
 const defaultURL = process.env.ENVIRONMENT_URL || "https://majoexe.xyz";
 
