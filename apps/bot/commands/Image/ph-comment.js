@@ -3,7 +3,7 @@ import { ApplicationCommandType, ApplicationCommandOptionType, AttachmentBuilder
 
 export default {
  name: "ph-comment",
- description: "🔞 Generate a Pornhub comment image",
+ description: "🔞 Generate a PH comment image",
  type: ApplicationCommandType.ChatInput,
  cooldown: 5000,
  dm_permission: false,
