@@ -211,7 +211,7 @@ export default async function ServerLogs({ params }) {
     </h2>
     <p className="mb-4 text-left opacity-70">You can view all warns given to this user in this server. You can also manage them by deleting them.</p>
     {user.guildWarns.length === 0 ? (
-     <p className="mb-4 flex items-center justify-start gap-2 text-left">
+     <p className="mb-4 flex text-red-400 items-center justify-start gap-2 text-left">
       <ExclamationCircleIcon className="min-h-5 min-w-5 h-5 w-5" />
       This user has no warns in this server.
      </p>

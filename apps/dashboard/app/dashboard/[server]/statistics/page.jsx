@@ -141,7 +141,7 @@ export default async function Statistics({ params }) {
   <>
    <div className="mb-4 grid grid-cols-1 gap-0 md:grid-cols-1 md:gap-4 lg:grid-cols-2 xl:grid-cols-3">
     <GraphCard
-     key="1"
+     className={"mt-0"}
      data={{
       icon: <UserPlusIcon className="min-h-8 min-w-8 h-8 w-8" />,
       title: "New Members",
@@ -151,7 +151,7 @@ export default async function Statistics({ params }) {
      }}
     />
     <GraphCard
-     key="2"
+     className={"mt-0"}
      data={{
       icon: <UserMinusIcon className="min-h-8 min-w-8 h-8 w-8" />,
       title: "Members Left",
@@ -161,12 +161,11 @@ export default async function Statistics({ params }) {
      }}
     />
     <GraphCard
-     key="2"
-     className={"col-span-1 lg:col-span-2 lg:mt-0 xl:col-span-1 xl:mt-4"}
+     className={"col-span-1 lg:col-span-2 xl:col-span-1 mt-0"}
      data={{
       icon: <ChatBubbleLeftRightIcon className="min-h-8 min-w-8 h-8 w-8" />,
       title: "New Messages",
-      description: "The amount of new messages that were sent in your server.",
+      description: "The amount of messages that were sent in your server.",
       value: newMessages,
       graph: newMessages === 0 ? <MinusIcon className="min-h-5 min-w-5 h-5 w-5" /> : newMessages < 0 ? <ArrowTrendingDownIcon className="min-h-5 min-w-5 h-5 w-5" /> : <ArrowTrendingUpIcon className="min-h-5 min-w-5 h-5 w-5" />,
      }}

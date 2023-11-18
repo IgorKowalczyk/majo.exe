@@ -1,6 +1,7 @@
 "use client";
 
 import { MagnifyingGlassIcon } from "@heroicons/react/24/outline";
+import { formatNumber } from "@majoexe/util/functions";
 import Link from "next/link";
 import { useMemo, useEffect } from "react";
 import { useTable, useSortBy, usePagination, useGlobalFilter } from "react-table";
@@ -37,6 +38,11 @@ export function Leaderboard({ data, showControls = true, showSearch = true }) {
    {
     Header: "XP",
     accessor: "xp",
+    Cell: ({ value }) => (
+     <Tooltip content={value}>
+      <span className="cursor-help">{formatNumber(value)}</span>
+     </Tooltip>
+    ),
    },
    {
     Header: "Level",

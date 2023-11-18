@@ -1,12 +1,16 @@
 "use client";
 
-import { ArrowLeftIcon, ChartPieIcon, Cog8ToothIcon, ExclamationTriangleIcon, ListBulletIcon, RectangleStackIcon, SparklesIcon, SquaresPlusIcon } from "@heroicons/react/24/outline";
+import { ArrowLeftIcon, ArrowTrendingUpIcon, ChatBubbleBottomCenterTextIcon, Cog8ToothIcon, ExclamationTriangleIcon, ListBulletIcon, RectangleStackIcon, SparklesIcon, SquaresPlusIcon } from "@heroicons/react/24/outline";
 import clsx from "clsx";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useContext } from "react";
 import { VisibilityContext } from "./VisibilityContext";
 import { PrimaryButton } from "@/components/buttons/server/Primary";
+
+export function NavBadge({ children }) {
+ return <div className="bg-button-primary rounded-md px-1 pb-0 uppercase -mt-3 text-xs py-px">{children}</div>;
+}
 
 export function SideNavLink({ href, children }) {
  const router = usePathname();
@@ -28,30 +32,32 @@ export function SideNav({ server }) {
       hidden: !sideNavVisible,
       flex: sideNavVisible,
      },
-     "menu bg-background-navbar/70 fixed z-[9998] mt-8 h-screen w-64 flex-none flex-col flex-nowrap overflow-y-auto overflow-x-hidden border-r border-r-neutral-800 px-4 py-8 shadow-lg backdrop-blur md:top-0 md:mt-16 md:flex"
+     "menu bg-background-navbar/70 fixed z-[9998] mt-8 h-screen w-64 flex-none flex-col flex-nowrap overflow-y-auto overflow-x-hidden border-r border-r-neutral-800 py-8 shadow-lg backdrop-blur md:top-0 md:mt-16 md:flex"
     )}
    >
-    <PrimaryButton href="/dashboard" className="mb-4 w-full">
-     <ArrowLeftIcon className="min-h-5 min-w-5 mr-2 h-5 w-5 cursor-pointer text-white" /> Go back
-    </PrimaryButton>
+    <div className="px-4">
+     <PrimaryButton href="/dashboard" className="mb-4 w-full">
+      <ArrowLeftIcon className="min-h-5 min-w-5 mr-2 h-5 w-5 cursor-pointer text-white" /> Go back
+     </PrimaryButton>
+    </div>
 
-    <div className="flex w-full flex-col items-center justify-center gap-2 border-t border-t-neutral-800 pt-4">
+    <div className="flex w-full flex-col items-center px-4 justify-center gap-2 border-t border-t-neutral-800 pt-4">
      <SideNavLink href={`/dashboard/${server}`}>
       <RectangleStackIcon className="min-h-6 min-w-6 h-6 w-6" />
       Overview
      </SideNavLink>
      <SideNavLink href={`/dashboard/${server}/statistics`}>
-      <ChartPieIcon className="min-h-6 min-w-6 h-6 w-6" />
+      <ArrowTrendingUpIcon className="min-h-6 min-w-6 h-6 w-6" />
       Statistics
      </SideNavLink>
      <SideNavLink href={`/dashboard/${server}/leaderboard`}>
       <SparklesIcon className="min-h-6 min-w-6 h-6 w-6" />
       Leaderboard
      </SideNavLink>
-     <SideNavLink href={`/dashboard/${server}/modules`}>
-      <SquaresPlusIcon className="min-h-6 min-w-6 h-6 w-6" />
-      Modules
-     </SideNavLink>
+    </div>
+
+    <div className="mt-2 border-t border-white/20 px-5 py-2 text-text opacity-40">Moderation</div>
+    <div className="flex px-4 w-full flex-col items-center justify-center gap-2">
      <SideNavLink href={`/dashboard/${server}/warns`}>
       <ExclamationTriangleIcon className="min-h-6 min-w-6 h-6 w-6" />
       Warns
@@ -59,6 +65,17 @@ export function SideNav({ server }) {
      <SideNavLink href={`/dashboard/${server}/logs`}>
       <ListBulletIcon className="min-h-6 min-w-6 h-6 w-6" />
       Logs
+     </SideNavLink>
+    </div>
+    <div className="mt-2 border-t border-white/20 px-5 py-2 text-text opacity-40">Management</div>
+    <div className="flex px-4 w-full flex-col items-center justify-center gap-2">
+     <SideNavLink href={`/dashboard/${server}/modules`}>
+      <SquaresPlusIcon className="min-h-6 min-w-6 h-6 w-6" />
+      Modules
+     </SideNavLink>
+     <SideNavLink href={`/dashboard/${server}/automod`}>
+      <ChatBubbleBottomCenterTextIcon className="min-h-6 min-w-6 h-6 w-6" />
+      Automod<NavBadge>beta</NavBadge>
      </SideNavLink>
      <SideNavLink href={`/dashboard/${server}/settings`}>
       <Cog8ToothIcon className="min-h-6 min-w-6 h-6 w-6" />

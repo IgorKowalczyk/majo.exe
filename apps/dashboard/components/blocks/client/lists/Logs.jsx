@@ -67,8 +67,8 @@ export default function Logs({ initialItems, id }) {
     </Tooltip>
    </div>
    <InfiniteScroll hasMore={hasMore} pageStart={0} loadMore={loadMore} loader={<GraphSkeleton className={"my-4 !h-20"} />}>
-    {sortedFilteredItems.map((item) => (
-     <Disclosure key={item.id}>
+    {sortedFilteredItems.map((item, index) => (
+     <Disclosure key={index}>
       {({ open }) => (
        <>
         <Disclosure.Button
