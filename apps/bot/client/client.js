@@ -17,7 +17,6 @@ process.chdir(cwd);
 Logger("info", "Starting Majo.exe Bot...");
 Logger("info", `Running version v${process.env.npm_package_version} on Node.js ${process.version} on ${process.platform} ${process.arch}`);
 Logger("info", "Check out the source code at https://github.com/igorkowalczyk/majo.exe! Don't forget to star the repository, it helps a lot!");
-Logger("warn", "This is a development version of Majo.exe. It may be unstable and may contain bugs. Use at your own risk!");
 
 const client = new Client({
  intents: [
