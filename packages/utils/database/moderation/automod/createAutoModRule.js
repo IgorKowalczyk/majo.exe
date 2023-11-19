@@ -10,14 +10,13 @@ import prismaClient from "@majoexe/database";
  * @returns {Promise<void>} Promise that resolves when the rule is created
  * @throws {Error} Error that is thrown if the rule could not be created
  */
-export async function createAutoModRule(guildId, ruleId, ruleType, enabled) {
+export async function createAutoModRule(guildId, ruleId, ruleType) {
  try {
   await prismaClient.autoMod.create({
    data: {
     guildId,
     ruleId,
     ruleType,
-    enabled,
    },
   });
  } catch (error) {

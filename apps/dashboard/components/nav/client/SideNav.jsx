@@ -9,7 +9,7 @@ import { VisibilityContext } from "./VisibilityContext";
 import { PrimaryButton } from "@/components/buttons/server/Primary";
 
 export function NavBadge({ children }) {
- return <div className="bg-button-primary rounded-md px-1 pb-0 uppercase -mt-3 text-xs py-px">{children}</div>;
+ return <div className="bg-button-primary -mt-3 rounded-md px-1 py-px pb-0 text-xs uppercase">{children}</div>;
 }
 
 export function SideNavLink({ href, children }) {
@@ -41,7 +41,7 @@ export function SideNav({ server }) {
      </PrimaryButton>
     </div>
 
-    <div className="flex w-full flex-col items-center px-4 justify-center gap-2 border-t border-t-neutral-800 pt-4">
+    <div className="flex w-full flex-col items-center justify-center gap-2 border-t border-t-neutral-800 px-4 pt-4">
      <SideNavLink href={`/dashboard/${server}`}>
       <RectangleStackIcon className="min-h-6 min-w-6 h-6 w-6" />
       Overview
@@ -56,8 +56,8 @@ export function SideNav({ server }) {
      </SideNavLink>
     </div>
 
-    <div className="mt-2 border-t border-white/20 px-5 py-2 text-text opacity-40">Moderation</div>
-    <div className="flex px-4 w-full flex-col items-center justify-center gap-2">
+    <div className="text-text mt-2 border-t border-white/20 px-5 py-2 opacity-40">Moderation</div>
+    <div className="flex w-full flex-col items-center justify-center gap-2 px-4">
      <SideNavLink href={`/dashboard/${server}/warns`}>
       <ExclamationTriangleIcon className="min-h-6 min-w-6 h-6 w-6" />
       Warns
@@ -67,8 +67,8 @@ export function SideNav({ server }) {
       Logs
      </SideNavLink>
     </div>
-    <div className="mt-2 border-t border-white/20 px-5 py-2 text-text opacity-40">Management</div>
-    <div className="flex px-4 w-full flex-col items-center justify-center gap-2">
+    <div className="text-text mt-2 border-t border-white/20 px-5 py-2 opacity-40">Management</div>
+    <div className="flex w-full flex-col items-center justify-center gap-2 px-4">
      <SideNavLink href={`/dashboard/${server}/modules`}>
       <SquaresPlusIcon className="min-h-6 min-w-6 h-6 w-6" />
       Modules

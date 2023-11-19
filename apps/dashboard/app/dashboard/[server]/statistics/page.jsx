@@ -161,7 +161,7 @@ export default async function Statistics({ params }) {
      }}
     />
     <GraphCard
-     className={"col-span-1 lg:col-span-2 xl:col-span-1 mt-0"}
+     className={"col-span-1 mt-0 lg:col-span-2 xl:col-span-1"}
      data={{
       icon: <ChatBubbleLeftRightIcon className="min-h-8 min-w-8 h-8 w-8" />,
       title: "New Messages",

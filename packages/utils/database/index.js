@@ -7,8 +7,6 @@ export * from "./logs/fetchLogs.js";
 // AutoMod
 export * from "./moderation/automod/createAutoModRule.js";
 export * from "./moderation/automod/deleteAutoModRule.js";
-export * from "./moderation/automod/disableAutoModRule.js";
-export * from "./moderation/automod/enableAutoModRule.js";
 export * from "./moderation/automod/fetchAutoModRules.js";
 export * from "./moderation/automod/syncAutoModRule.js";
 

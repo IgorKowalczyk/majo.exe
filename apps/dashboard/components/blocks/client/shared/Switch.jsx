@@ -10,7 +10,7 @@ export default function Switch({ enabled = false, onChange, disabled = false }) 
    onChange={() => onChange()}
    className={clsx(
     {
-     "border-accent-primary bg-accent-primary": enabled,
+     "!border-accent-primary bg-accent-primary": enabled,
      "border-neutral-700 bg-transparent": !enabled,
      "!cursor-not-allowed !opacity-50": disabled,
     },

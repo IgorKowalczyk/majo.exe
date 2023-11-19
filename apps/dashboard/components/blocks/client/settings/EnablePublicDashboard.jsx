@@ -129,9 +129,9 @@ export function EnablePublicDashboard({ enabled, serverId, vanityURL }) {
     Enable public dashboard overview:
     <Switch enabled={isEnabled} onChange={toggle} disabled={disabled} />
    </div>
-   <div className="mx-auto flex flex-col items-center justify-start gap-2 text-center font-bold md:mx-0 md:flex-row md:text-left">
+   <div className="mx-auto flex flex-col flex-wrap items-center justify-center gap-2 font-bold md:mx-0 md:flex-row md:justify-start">
     Set server vanity URL:
-    <div className="flex flex-col items-center justify-start gap-2 md:flex-row">
+    <div className="flex flex-col flex-wrap items-center justify-start gap-2 md:flex-row">
      <div className="group flex flex-row-reverse items-center justify-start gap-0">
       <Input
        type="text"
@@ -160,7 +160,7 @@ export function EnablePublicDashboard({ enabled, serverId, vanityURL }) {
        {process.env.NEXT_PUBLIC_URL}/server/
       </div>
      </div>
-     <PrimaryButton onClick={(e) => updateVanity(e)} disabled={disabled || vanityError} className="mx-auto font-normal md:mx-0">
+     <PrimaryButton onClick={(e) => updateVanity(e)} disabled={disabled || vanityError || vanity.length === 0 || buttonText === "Updating..."} className="mx-auto font-normal md:mx-0">
       {buttonText === "Updating..." ? <ArrowPathIcon className="min-h-5 min-w-5 mr-2 h-5 w-5 animate-spin" /> : <CheckIcon className="min-h-5 min-w-5 mr-2 h-5 w-5" />} {buttonText}
      </PrimaryButton>
     </div>

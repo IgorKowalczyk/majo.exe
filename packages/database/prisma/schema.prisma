@@ -248,7 +248,6 @@ model AutoMod {
  guildId   String   @map(name: "guild_id")
  ruleId    String   @unique @map(name: "rule_id")
  ruleType  String   @map(name: "rule_type")
- enabled   Boolean  @default(false)
  createdAt DateTime @default(now()) @map(name: "created_at")
  guild     Guild    @relation(fields: [guildId], references: [guildId], onDelete: Cascade)
 

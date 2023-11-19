@@ -103,7 +103,7 @@ export default async function Settings({ params }) {
       </Header3>
 
       {guild.guildDisabledCategories.some((cat) => cat.categoryName === category.name) && (
-       <div className="border-accent-primary bg-accent-primary/10 my-4 flex flex-row items-start whitespace-nowrap rounded-md border p-4">
+       <div className="border-accent-primary bg-accent-primary/10 my-4 flex flex-row flex-wrap items-start whitespace-nowrap rounded-md border p-4">
         <span className="mr-1 flex flex-row items-center whitespace-nowrap font-bold">
          <InformationCircleIcon className="stroke-accent-primary min-w-5 min-h-5 mr-1 h-5 w-5" />
          Note:

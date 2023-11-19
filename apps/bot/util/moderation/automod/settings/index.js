@@ -1,22 +1,12 @@
-import { fetchAutoModRules, syncAutoModRule } from "@majoexe/util/database";
+import { syncAutoModRule } from "@majoexe/util/database";
 import { EmbedBuilder, codeBlock } from "discord.js";
 
 export async function autoModSettings(client, interaction, guildSettings) {
- let allRules = await fetchAutoModRules(interaction.guild.id);
-
- allRules.forEach(async (rule) => {
-  try {
-   allRules[allRules.indexOf(rule)] = await syncAutoModRule(interaction, rule.ruleType);
-  } catch (err) {
-   await client.errorMessages.createSlashError(interaction, `❌ Failed to sync rule \`${rule.ruleId}\``);
-  }
- });
-
- const antiInviteRule = allRules.find((rule) => rule.ruleType === "anti-invite");
- const antiLinkRule = allRules.find((rule) => rule.ruleType === "anti-link");
- const antiMentionRule = allRules.find((rule) => rule.ruleType === "anti-mention");
- const antiSpamRule = allRules.find((rule) => rule.ruleType === "anti-spam");
- const antiBadWordsRule = allRules.find((rule) => rule.ruleType === "anti-bad-words");
+ const antiInviteRule = (await syncAutoModRule(interaction.guild.id, "anti-invite")) || false;
+ const antiLinkRule = (await syncAutoModRule(interaction.guild.id, "anti-link")) || false;
+ const antiMentionRule = (await syncAutoModRule(interaction.guild.id, "anti-mention")) || false;
+ const antiSpamRule = (await syncAutoModRule(interaction.guild.id, "anti-spam")) || false;
+ const antiBadWordsRule = (await syncAutoModRule(interaction.guild.id, "anti-bad-words")) || false;
 
  const embed = new EmbedBuilder()
   .setColor(guildSettings?.embedColor || client.config.defaultColor)
@@ -26,27 +16,27 @@ export async function autoModSettings(client, interaction, guildSettings) {
   .setFields([
    {
     name: "🔗 Anti-invite system",
-    value: codeBlock(antiInviteRule?.enabled ? "✅ Enabled" : "❌ Disabled"),
+    value: codeBlock(antiInviteRule ? "✅ Enabled" : "❌ Disabled"),
     inline: false,
    },
    {
     name: "🔗 Anti-link system",
-    value: codeBlock(antiLinkRule?.enabled ? "✅ Enabled" : "❌ Disabled"),
+    value: codeBlock(antiLinkRule ? "✅ Enabled" : "❌ Disabled"),
     inline: false,
    },
    {
     name: "💭 Anti-mention system",
-    value: codeBlock(antiMentionRule?.enabled ? "✅ Enabled" : "❌ Disabled"),
+    value: codeBlock(antiMentionRule ? "✅ Enabled" : "❌ Disabled"),
     inline: false,
    },
    {
     name: "📨 Anti-spam system",
-    value: codeBlock(antiSpamRule?.enabled ? "✅ Enabled" : "❌ Disabled"),
+    value: codeBlock(antiSpamRule ? "✅ Enabled" : "❌ Disabled"),
     inline: false,
    },
    {
     name: "🤬 Anti-bad-words system",
-    value: codeBlock(antiBadWordsRule?.enabled ? "✅ Enabled" : "❌ Disabled"),
+    value: codeBlock(antiBadWordsRule ? "✅ Enabled" : "❌ Disabled"),
     inline: false,
    },
   ])
