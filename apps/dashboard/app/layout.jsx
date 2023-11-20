@@ -118,6 +118,7 @@ export default function RootLayout({ children }) {
          </div>
         </div>
         <div className="mt-5 flex text-center text-neutral-300">
+         {/* YOU ARE NOT ALLOWED TO REMOVE, HIDE OR MODIFY THIS LINE! */}
          <p className="text-sm font-semibold opacity-80">Copyright &copy; 2020 - {new Date().getFullYear()} Igor Kowalczyk, All rights reserved.</p>
         </div>
        </div>
