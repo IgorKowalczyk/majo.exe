@@ -50,8 +50,8 @@ Ensure your setup meets these prerequisites before setting up Majo.exe:
 - `PostgreSQL 14x` or higher
 - `Node.js 18x` or higher
 - `(Any)` Linux x64¹
-- `512MB` of RAM (minimum)
-- `3GB` of hard drive space (minimum)
+- `~512MB` of RAM (minimum)
+- `~3GB` of hard drive space (minimum)
 
 > [!NOTE]
 > 1: Debian based distros are recommended, Dashboard can also run on Windows and MacOS but it's not recommended.
