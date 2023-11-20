@@ -20,6 +20,9 @@
 
 ## 🗜️ PostgreSQL
 
+> [!NOTE]
+> Before you start, make sure that you ran `pnpm install` command in root directory of the project.
+
 ### 🐘 Neon.tech
 
 1. Create new [Neon](https://neon.tech/) account and create new PostgreSQL database.
@@ -74,9 +77,7 @@
 
 ---
 
-##### Example `.env` file
-
-Remember - the file is super secret, better to not share it!
+## 🔒 Example `.env` file
 
 ```
 DATABASE_URL=DATABASE_URL
@@ -86,7 +87,7 @@ REDIS_URL=REDIS_URL
 ```
 
 > [!WARNING]
-> This file should be in **root directory** of the project.
+> This file should be in **root directory** of the project. This file is **super secret**, better to not share it!
 
 ---
 

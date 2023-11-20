@@ -9,7 +9,7 @@
 
 ## 🤖 Self-Hosting
 
-1. Clone [this repository]
+1. Clone [this repository](https://github.com/igorkowalczyk/majo.exe) `git clone https://github.com/iigorkowalczyk/majo.exe.git`
 2. Go to `/packages/database/` directory and follow [Database Setup](/packages/database/README.md) tutorial
 3. Grab a Discord Bot token and client secret on [Discord's developer portal](https://discord.com/developers/applications) [Tutorial](#-discord-credentials)
 4. Add redirect URL to Discord's developer portal (https://your-website.com/api/auth/callback/discord)
@@ -24,24 +24,30 @@
    - Database URLs [[Tutorial](/packages/database/README.md)]
      - `DATABASE_URL` - Main database URL
      - `DIRECT_URL` - Direct database URL (optional)
-7. Go to `/apps/dashboard/` directory
-8. Run `pnpm i` to install all dependencies
-9. Run `pnpm run dev` or `pnpm run deploy` to start dashboard
+7. Run `pnpm i` to install all dependencies
+8. Go to `/packages/config/` directory and change values in `/configs/dashboard.js` to your values
+9. Go back to main directory and run `pnpm run dev --filter=dashboard` or `pnpm run deploy --filter=dashboard` to start dashboard
+10. That's it! You can now visit your dashboard for the first time!
 
 ## ▲ Vercel Deploy
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2FIgorKowalczyk%2Fmajo.exe&env=TOKEN,SECRET,CLIENT_ID,CLIENT_SECRET,NEXTAUTH_URL,DATABASE_URL,DIRECT_URL,SHADOW_DATABASE_URL,NEXT_PUBLIC_URL&envDescription=Tokens%20needed%20for%20Dashboard&envLink=https%3A%2F%2Fgithub.com%2Figorkowalczyk%2Fmajo.exe&project-name=majo-exe&repository-name=majo-exe&demo-title=Majo.exe%20-%20Dashboard&demo-description=Majo.exe%20Dashboard%20-%20Next.js%20application%20for%20managing%20Majo.exe%20Discord%20bot.&demo-url=https%3A%2F%2Fmajoexe.xyz&demo-image=https%3A%2F%2Fgithub.com%2FIgorKowalczyk%2Fmajo.exe%2Fassets%2F49127376%2F02d4d63d-2cea-44f2-88b6-7e645dc272ea)
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2FIgorKowalczyk%2Fmajo.exe&env=TOKEN,SECRET,CLIENT_ID,CLIENT_SECRET,NEXTAUTH_URL,DATABASE_URL,DIRECT_URL,NEXT_PUBLIC_URL&envDescription=Tokens%20needed%20for%20Dashboard&envLink=https%3A%2F%2Fgithub.com%2Figorkowalczyk%2Fmajo.exe&project-name=majo-exe&repository-name=majo-exe&demo-title=Majo.exe%20-%20Dashboard&demo-description=Majo.exe%20Dashboard%20-%20Next.js%20application%20for%20managing%20Majo.exe%20Discord%20bot.&demo-url=https%3A%2F%2Fmajoexe.xyz&demo-image=https%3A%2F%2Fgithub.com%2FIgorKowalczyk%2Fmajo.exe%2Fassets%2F49127376%2F02d4d63d-2cea-44f2-88b6-7e645dc272ea)
 
-1. Go to `/packages/database/` directory and follow [Database Setup](/packages/database/README.md) tutorial
-2. Grab a Discord Bot token and client secret on [Discord's developer portal](https://discord.com/developers/applications) [Tutorial](/apps/dashboard/README.md#-discord-credentials)
-3. Add redirect URL to Discord's developer portal (https://your-website.com/api/auth/callback/discord)
-4. Import this repository to Vercel (click button above)
-5. Set environment variables from your root `.env` file
-6. Click `Deploy` button
+1. Click `Deploy with Vercel` button above and follow instructions
+2. Go to `/packages/database/` directory and follow [Database Setup](/packages/database/README.md) tutorial
+3. Grab a Discord Bot token and client secret on [Discord's developer portal](https://discord.com/developers/applications) [Tutorial](/apps/dashboard/README.md#-discord-credentials)
+4. Add redirect URL to Discord's developer portal (https://your-project.vercel.app/api/auth/callback/discord)
+5. In your forked repository go to /packages/config/ directory and change values in /configs/dashboard.js to your values
+6. Import this repository to Vercel (click button above)
+7. Set environment variables from your root `.env` file in Vercel dashboard
+8. Set Root Directory in Vercel dashboard to `/apps/dashboard/` (Also include files from outside the root directory)
+9. Click `Deploy` button
+10. That's it! You can now visit your dashboard for the first time!
 
-##### Example `.env` file
+> [!NOTE]
+> Your Deploy URL for Vercel will be `https://project-name.vercel.app/`, but you can add your own domain in Vercel dashboard. Don't forget to add it to Discord's developer portal.
 
-Remember - the file is super secret, better to not share it!
+## 🔒 Example `.env` file
 
 ```
 TOKEN=DISCORD_BOT_TOKEN
@@ -54,7 +60,7 @@ NEXT_PUBLIC_URL=YOUR_WEBSITE_URL
 ```
 
 > [!WARNING]
-> This file should be in **root directory** of the project.
+> This file should be in **root directory** of the project. This file is **super secret**, better to not share it!
 
 ---
 

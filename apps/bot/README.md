@@ -17,14 +17,18 @@
    - `TOKEN` - Discord bot token [[Tutorial](#-discord-token)]
    - `SECRET` - Random string (min. length = 32 chars)
    - `CLIENT_SECRET` - Discord bot secret [[Tutorial](#-discord-secret)]
-6. Go to `/apps/bot/` directory
-7. Run `pnpm i` to install all dependencies,
-8. Fill `/config/index.js` and `/config/emojis.js` with your values
-9. Run `pnpm run dev` or `pnpm run deploy` to start bot
+   - Database URLs [[Tutorial](/packages/database/README.md)]
+     - `DATABASE_URL` - Main database URL
+     - `DIRECT_URL` - Direct database URL (optional)
+6. Run `pnpm i` to install all dependencies
+7. Go to `/packages/config/` directory and change values in `/configs/bot.js` to your values
+8. Go back to main directory and run `pnpm run dev --filter=bot` or `pnpm run deploy --filter=bot` to start bot
+9. That's it! You can now invite your bot to your server and use it!
 
-##### Example `.env` file
+> [!NOTE]
+> If you want to host Majo.exe 24/7, you can use [TrestHost](https://dash.tresthost.me/register?ref=majonez.exe) or [Terohost](https://my.terohost.com/aff.php?aff=17) hosting services. They are cheap and reliable.
 
-Remember - the file is super secret, better to not share it!
+## 🔒 Example `.env` file
 
 ```
 TOKEN=DISCORD_BOT_TOKEN
@@ -35,7 +39,7 @@ CLIENT_SECRET=DISCORD_BOT_SECRET
 ```
 
 > [!WARNING]
-> This file should be in **root directory** of the project.
+> This file should be in **root directory** of the project. This file is **super secret**, better to not share it!
 
 ---
 

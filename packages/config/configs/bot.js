@@ -16,6 +16,23 @@ config.presence = {
  },
 };
 
+/*
+  Donation links
+ */
+config.donate = {
+ enabled: true, // boolean. Display donations command
+ links: [
+  {
+   name: "Github Sponsors",
+   url: "https://github.com/sponsors/igorkowalczyk",
+   icon: "🔗",
+  },
+ ],
+};
+
+/*
+  Bot emojis
+ */
 config.emojis = {
  // You must upload the emojis to the server when the bot is!
  success: "<:majo_yes:963333541112987668>", // https://cdn.discordapp.com/emojis/963333541112987668.png
@@ -225,20 +242,6 @@ config.emojis = {
  jigsaw: "🧩",
  wave: "👋",
  color: "🎨",
-};
-
-/*
-  Donation links
- */
-config.donate = {
- enabled: true, // boolean. Display donations command
- links: [
-  {
-   name: "Github Sponsors",
-   url: "https://github.com/sponsors/igorkowalczyk",
-   icon: "🔗",
-  },
- ],
 };
 
 export const botConfig = config;

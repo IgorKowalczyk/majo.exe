@@ -26,6 +26,8 @@ Go to [this link](https://discord.com/oauth2/authorize/?permissions=4294967287&s
 We are hosting Majo.exe on our own servers. Majo.exe will be online 24/7. [Invite Majo here!](https://majoexe.xyz/api/invite)  
 However, if you want to host Majo.exe yourself see links below.
 
+### 📝Tutorials
+
 - **[🤖 Bot setup tutorial](/apps/bot/README.md)**
 - **[🔩 Dashboard setup tutorial](/apps/dashboard/README.md)**
 - **[📝 Database setup tutorial](/packages/database/README.md)**
@@ -46,7 +48,7 @@ Ensure your setup meets these prerequisites before setting up Majo.exe:
 > [!NOTE]
 > 1: Debian based distros are recommended, bot can also run on Windows and MacOS but it's not recommended.
 
-## Global `.env` file
+## 🔒 Global `.env` file
 
 | Variable                    | Description                                      | Required (Bot) | Required (Dashboard) |
 | --------------------------- | ------------------------------------------------ | -------------- | -------------------- |
