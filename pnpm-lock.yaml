@@ -224,8 +224,8 @@ importers:
         specifier: 0.32.6
         version: 0.32.6
       sonner:
-        specifier: 1.2.0
-        version: 1.2.0(react-dom@18.2.0)(react@18.2.0)
+        specifier: 1.2.1
+        version: 1.2.1(react-dom@18.2.0)(react@18.2.0)
       swr:
         specifier: 2.2.4
         version: 2.2.4(react@18.2.0)
@@ -9100,8 +9100,8 @@ packages:
       is-fullwidth-code-point: 2.0.0
     dev: false
 
-  /sonner@1.2.0(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-4bIPKrhF+Z4yEC4EZvNBswcVzMrUhztOQXqyIoiZqiqN1TT39FeK+TgRsQidvvztnYgOn4+S3LdAsri61c7ATA==}
+  /sonner@1.2.1(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-YTW7SCURez/+jTUkgIIIbsbcz6YRVTO4hs5QGlPygEVDUs/pK6Yn52OADpzucF4aDWVZuY6zo9L5GIvAfBqqOw==}
     peerDependencies:
       react: ^18.0.0
       react-dom: ^18.0.0
