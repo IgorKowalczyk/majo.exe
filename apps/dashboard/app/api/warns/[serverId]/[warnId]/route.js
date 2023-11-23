@@ -17,7 +17,9 @@ export async function DELETE(request, { params }) {
     {
      status: 400,
      headers: {
-      "server-timing": `response;dur=${Date.now() - start}`,
+      ...(process.env.NODE_ENV !== "production" && {
+       "Server-Timing": `response;dur=${Date.now() - start}ms`,
+      }),
      },
     }
    );
@@ -33,7 +35,9 @@ export async function DELETE(request, { params }) {
     {
      status: 401,
      headers: {
-      "server-timing": `response;dur=${Date.now() - start}`,
+      ...(process.env.NODE_ENV !== "production" && {
+       "Server-Timing": `response;dur=${Date.now() - start}ms`,
+      }),
      },
     }
    );
@@ -50,7 +54,9 @@ export async function DELETE(request, { params }) {
     {
      status: 404,
      headers: {
-      "server-timing": `response;dur=${Date.now() - start}`,
+      ...(process.env.NODE_ENV !== "production" && {
+       "Server-Timing": `response;dur=${Date.now() - start}ms`,
+      }),
      },
     }
    );
@@ -65,7 +71,9 @@ export async function DELETE(request, { params }) {
     {
      status: 404,
      headers: {
-      "server-timing": `response;dur=${Date.now() - start}`,
+      ...(process.env.NODE_ENV !== "production" && {
+       "Server-Timing": `response;dur=${Date.now() - start}ms`,
+      }),
      },
     }
    );
@@ -82,7 +90,9 @@ export async function DELETE(request, { params }) {
     {
      status: 401,
      headers: {
-      "server-timing": `response;dur=${Date.now() - start}`,
+      ...(process.env.NODE_ENV !== "production" && {
+       "Server-Timing": `response;dur=${Date.now() - start}ms`,
+      }),
      },
     }
    );
@@ -104,7 +114,9 @@ export async function DELETE(request, { params }) {
     {
      status: 404,
      headers: {
-      "server-timing": `response;dur=${Date.now() - start}`,
+      ...(process.env.NODE_ENV !== "production" && {
+       "Server-Timing": `response;dur=${Date.now() - start}ms`,
+      }),
      },
     }
    );
@@ -123,7 +135,9 @@ export async function DELETE(request, { params }) {
    {
     status: 200,
     headers: {
-     "server-timing": `response;dur=${Date.now() - start}`,
+     ...(process.env.NODE_ENV !== "production" && {
+      "Server-Timing": `response;dur=${Date.now() - start}ms`,
+     }),
     },
    }
   );

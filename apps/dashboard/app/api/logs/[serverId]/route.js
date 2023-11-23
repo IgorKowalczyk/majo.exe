@@ -18,7 +18,9 @@ export async function GET(request, { params }) {
     {
      status: 400,
      headers: {
-      "server-timing": `response;dur=${Date.now() - start}`,
+      ...(process.env.NODE_ENV !== "production" && {
+       "Server-Timing": `response;dur=${Date.now() - start}ms`,
+      }),
      },
     }
    );
@@ -34,7 +36,9 @@ export async function GET(request, { params }) {
     {
      status: 401,
      headers: {
-      "server-timing": `response;dur=${Date.now() - start}`,
+      ...(process.env.NODE_ENV !== "production" && {
+       "Server-Timing": `response;dur=${Date.now() - start}ms`,
+      }),
      },
     }
    );
@@ -51,7 +55,9 @@ export async function GET(request, { params }) {
     {
      status: 404,
      headers: {
-      "server-timing": `response;dur=${Date.now() - start}`,
+      ...(process.env.NODE_ENV !== "production" && {
+       "Server-Timing": `response;dur=${Date.now() - start}ms`,
+      }),
      },
     }
    );
@@ -66,7 +72,9 @@ export async function GET(request, { params }) {
     {
      status: 404,
      headers: {
-      "server-timing": `response;dur=${Date.now() - start}`,
+      ...(process.env.NODE_ENV !== "production" && {
+       "Server-Timing": `response;dur=${Date.now() - start}ms`,
+      }),
      },
     }
    );
@@ -83,7 +91,9 @@ export async function GET(request, { params }) {
     {
      status: 401,
      headers: {
-      "server-timing": `response;dur=${Date.now() - start}`,
+      ...(process.env.NODE_ENV !== "production" && {
+       "Server-Timing": `response;dur=${Date.now() - start}ms`,
+      }),
      },
     }
    );
@@ -104,7 +114,9 @@ export async function GET(request, { params }) {
   return NextResponse.json(logs, {
    status: 200,
    headers: {
-    "server-timing": `response;dur=${Date.now() - start}`,
+    ...(process.env.NODE_ENV !== "production" && {
+     "Server-Timing": `response;dur=${Date.now() - start}ms`,
+    }),
    },
   });
  } catch (err) {

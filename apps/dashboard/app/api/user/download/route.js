@@ -15,7 +15,9 @@ export async function GET() {
     {
      status: 401,
      headers: {
-      "server-timing": `response;dur=${Date.now() - start}`,
+      ...(process.env.NODE_ENV !== "production" && {
+       "Server-Timing": `response;dur=${Date.now() - start}ms`,
+      }),
      },
     }
    );
@@ -89,7 +91,9 @@ export async function GET() {
     {
      status: 404,
      headers: {
-      "server-timing": `response;dur=${Date.now() - start}`,
+      ...(process.env.NODE_ENV !== "production" && {
+       "Server-Timing": `response;dur=${Date.now() - start}ms`,
+      }),
      },
     }
    );
@@ -105,7 +109,9 @@ export async function GET() {
    headers: {
     "Content-Type": "application/json",
     "Content-Disposition": `attachment; filename="user-${user.discordId}.json"`,
-    "server-timing": `response;dur=${Date.now() - start}`,
+    ...(process.env.NODE_ENV !== "production" && {
+     "Server-Timing": `response;dur=${Date.now() - start}ms`,
+    }),
    },
   });
  } catch (err) {

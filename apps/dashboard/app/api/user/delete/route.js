@@ -15,7 +15,9 @@ export async function POST() {
     {
      status: 401,
      headers: {
-      "server-timing": `response;dur=${Date.now() - start}`,
+      ...(process.env.NODE_ENV !== "production" && {
+       "Server-Timing": `response;dur=${Date.now() - start}ms`,
+      }),
      },
     }
    );
@@ -36,7 +38,9 @@ export async function POST() {
     {
      status: 404,
      headers: {
-      "server-timing": `response;dur=${Date.now() - start}`,
+      ...(process.env.NODE_ENV !== "production" && {
+       "Server-Timing": `response;dur=${Date.now() - start}ms`,
+      }),
      },
     }
    );
@@ -56,7 +60,9 @@ export async function POST() {
    {
     status: 200,
     headers: {
-     "server-timing": `response;dur=${Date.now() - start}`,
+     ...(process.env.NODE_ENV !== "production" && {
+      "Server-Timing": `response;dur=${Date.now() - start}ms`,
+     }),
     },
    }
   );

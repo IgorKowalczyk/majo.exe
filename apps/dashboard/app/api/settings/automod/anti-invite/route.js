@@ -21,7 +21,9 @@ export async function POST(request) {
     {
      status: 401,
      headers: {
-      "server-timing": `response;dur=${Date.now() - start}`,
+      ...(process.env.NODE_ENV !== "production" && {
+       "Server-Timing": `response;dur=${Date.now() - start}ms`,
+      }),
      },
     }
    );
@@ -65,7 +67,9 @@ export async function POST(request) {
     {
      status: 400,
      headers: {
-      "server-timing": `response;dur=${Date.now() - start}`,
+      ...(process.env.NODE_ENV !== "production" && {
+       "Server-Timing": `response;dur=${Date.now() - start}ms`,
+      }),
      },
     }
    );
@@ -82,7 +86,9 @@ export async function POST(request) {
     {
      status: 404,
      headers: {
-      "server-timing": `response;dur=${Date.now() - start}`,
+      ...(process.env.NODE_ENV !== "production" && {
+       "Server-Timing": `response;dur=${Date.now() - start}ms`,
+      }),
      },
     }
    );
@@ -97,7 +103,9 @@ export async function POST(request) {
     {
      status: 404,
      headers: {
-      "server-timing": `response;dur=${Date.now() - start}`,
+      ...(process.env.NODE_ENV !== "production" && {
+       "Server-Timing": `response;dur=${Date.now() - start}ms`,
+      }),
      },
     }
    );
@@ -114,7 +122,9 @@ export async function POST(request) {
     {
      status: 401,
      headers: {
-      "server-timing": `response;dur=${Date.now() - start}`,
+      ...(process.env.NODE_ENV !== "production" && {
+       "Server-Timing": `response;dur=${Date.now() - start}ms`,
+      }),
      },
     }
    );
@@ -182,7 +192,9 @@ export async function POST(request) {
     {
      status: 400,
      headers: {
-      "server-timing": `response;dur=${Date.now() - start}`,
+      ...(process.env.NODE_ENV !== "production" && {
+       "Server-Timing": `response;dur=${Date.now() - start}ms`,
+      }),
      },
     }
    );
@@ -197,7 +209,9 @@ export async function POST(request) {
     {
      status: 400,
      headers: {
-      "server-timing": `response;dur=${Date.now() - start}`,
+      ...(process.env.NODE_ENV !== "production" && {
+       "Server-Timing": `response;dur=${Date.now() - start}ms`,
+      }),
      },
     }
    );
@@ -213,7 +227,9 @@ export async function POST(request) {
      {
       status: 404,
       headers: {
-       "server-timing": `response;dur=${Date.now() - start}`,
+       ...(process.env.NODE_ENV !== "production" && {
+        "Server-Timing": `response;dur=${Date.now() - start}ms`,
+       }),
       },
      }
     );
@@ -230,7 +246,9 @@ export async function POST(request) {
      {
       status: 404,
       headers: {
-       "server-timing": `response;dur=${Date.now() - start}`,
+       ...(process.env.NODE_ENV !== "production" && {
+        "Server-Timing": `response;dur=${Date.now() - start}ms`,
+       }),
       },
      }
     );
@@ -249,7 +267,9 @@ export async function POST(request) {
      {
       status: 400,
       headers: {
-       "server-timing": `response;dur=${Date.now() - start}`,
+       ...(process.env.NODE_ENV !== "production" && {
+        "Server-Timing": `response;dur=${Date.now() - start}ms`,
+       }),
       },
      }
     );
@@ -270,7 +290,9 @@ export async function POST(request) {
      {
       status: 400,
       headers: {
-       "server-timing": `response;dur=${Date.now() - start}`,
+       ...(process.env.NODE_ENV !== "production" && {
+        "Server-Timing": `response;dur=${Date.now() - start}ms`,
+       }),
       },
      }
     );
@@ -285,7 +307,9 @@ export async function POST(request) {
      {
       status: 400,
       headers: {
-       "server-timing": `response;dur=${Date.now() - start}`,
+       ...(process.env.NODE_ENV !== "production" && {
+        "Server-Timing": `response;dur=${Date.now() - start}ms`,
+       }),
       },
      }
     );
@@ -298,7 +322,9 @@ export async function POST(request) {
      {
       status: 400,
       headers: {
-       "server-timing": `response;dur=${Date.now() - start}`,
+       ...(process.env.NODE_ENV !== "production" && {
+        "Server-Timing": `response;dur=${Date.now() - start}ms`,
+       }),
       },
      }
     );
@@ -319,7 +345,9 @@ export async function POST(request) {
      {
       status: 400,
       headers: {
-       "server-timing": `response;dur=${Date.now() - start}`,
+       ...(process.env.NODE_ENV !== "production" && {
+        "Server-Timing": `response;dur=${Date.now() - start}ms`,
+       }),
       },
      }
     );
@@ -334,7 +362,9 @@ export async function POST(request) {
      {
       status: 404,
       headers: {
-       "server-timing": `response;dur=${Date.now() - start}`,
+       ...(process.env.NODE_ENV !== "production" && {
+        "Server-Timing": `response;dur=${Date.now() - start}ms`,
+       }),
       },
      }
     );
@@ -350,7 +380,9 @@ export async function POST(request) {
     {
      status: 400,
      headers: {
-      "server-timing": `response;dur=${Date.now() - start}`,
+      ...(process.env.NODE_ENV !== "production" && {
+       "Server-Timing": `response;dur=${Date.now() - start}ms`,
+      }),
      },
     }
    );
@@ -375,7 +407,9 @@ export async function POST(request) {
     {
      status: 500,
      headers: {
-      "server-timing": `response;dur=${Date.now() - start}`,
+      ...(process.env.NODE_ENV !== "production" && {
+       "Server-Timing": `response;dur=${Date.now() - start}ms`,
+      }),
      },
     }
    );
@@ -393,7 +427,9 @@ export async function POST(request) {
     {
      status: 400,
      headers: {
-      "server-timing": `response;dur=${Date.now() - start}`,
+      ...(process.env.NODE_ENV !== "production" && {
+       "Server-Timing": `response;dur=${Date.now() - start}ms`,
+      }),
      },
     }
    );
@@ -428,7 +464,9 @@ export async function POST(request) {
      {
       status: 500,
       headers: {
-       "server-timing": `response;dur=${Date.now() - start}`,
+       ...(process.env.NODE_ENV !== "production" && {
+        "Server-Timing": `response;dur=${Date.now() - start}ms`,
+       }),
       },
      }
     );
@@ -477,7 +515,9 @@ export async function POST(request) {
      {
       status: 500,
       headers: {
-       "server-timing": `response;dur=${Date.now() - start}`,
+       ...(process.env.NODE_ENV !== "production" && {
+        "Server-Timing": `response;dur=${Date.now() - start}ms`,
+       }),
       },
      }
     );
@@ -506,7 +546,9 @@ export async function POST(request) {
    {
     status: 200,
     headers: {
-     "server-timing": `response;dur=${Date.now() - start}`,
+     ...(process.env.NODE_ENV !== "production" && {
+      "Server-Timing": `response;dur=${Date.now() - start}ms`,
+     }),
     },
    }
   );
