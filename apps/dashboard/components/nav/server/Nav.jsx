@@ -13,7 +13,7 @@ export async function Nav({ theme }) {
  const session = await getSession();
 
  return (
-  <nav className="bg-background-navbar/70 fixed z-[9999] flex w-full items-center border-b border-b-neutral-800 py-4 text-left shadow-lg backdrop-blur-[9px]">
+  <nav className="bg-background-navbar fixed z-[9999] flex w-full items-center border-b border-b-neutral-800 py-4 text-left shadow-lg md:bg-opacity-70 md:backdrop-blur-[9px]">
    <SideMenuControl />
    <div
     className={clsx(

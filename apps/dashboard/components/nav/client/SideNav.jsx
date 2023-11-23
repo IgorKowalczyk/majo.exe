@@ -23,16 +23,18 @@ export function SideNavLink({ href, children }) {
 }
 
 export function SideNav({ server }) {
- const { sideNavVisible } = useContext(VisibilityContext);
+ const { sideNavVisible, toggleSideNav } = useContext(VisibilityContext);
+
  return (
   <>
+   {sideNavVisible && <div className="fixed inset-0 z-[1000] h-full w-full bg-black/50 duration-200" onClick={() => sideNavVisible && toggleSideNav()} />}
    <aside
     className={clsx(
      {
       hidden: !sideNavVisible,
       flex: sideNavVisible,
      },
-     "menu bg-background-navbar/70 fixed z-[9998] mt-8 h-screen w-64 flex-none flex-col flex-nowrap overflow-y-auto overflow-x-hidden border-r border-r-neutral-800 py-8 shadow-lg backdrop-blur md:top-0 md:mt-16 md:flex"
+     "menu bg-background-navbar fixed z-[9998] mt-8 h-screen w-64 flex-none flex-col flex-nowrap overflow-y-auto overflow-x-hidden border-r border-r-neutral-800 py-8 pb-32 shadow-lg md:top-0 md:mt-16 md:flex"
     )}
    >
     <div className="px-4">
