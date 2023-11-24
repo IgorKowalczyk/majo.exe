@@ -119,7 +119,7 @@ export default {
     }
 
     const rep = await giveReputation(user, interaction.guild);
-    await cacheSet(key, { userId: interaction.user.id, time: Date.now() }, 86400000);
+    await cacheSet(key, { userId: interaction.member.user.id, time: Date.now() }, 86400000);
 
     const embed = new EmbedBuilder()
      .setColor(guildSettings?.embedColor || client.config.defaultColor)
@@ -156,7 +156,7 @@ export default {
 
     const rep = await takeReputation(user, interaction.guild);
 
-    await cacheSet(key, { userId: interaction.user.id, time: Date.now() }, 86400000);
+    await cacheSet(key, { userId: interaction.member.user.id, time: Date.now() }, 86400000);
 
     const embed = new EmbedBuilder()
      .setColor(guildSettings?.embedColor || client.config.defaultColor)

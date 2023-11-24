@@ -19,7 +19,7 @@ export async function disableAntiMention(client, interaction, guildSettings) {
   .setDescription("The anti-mention system has been `disabled`. Mention spam will no longer be blocked.")
   .setFooter({
    text: `Requested by ${interaction.member.user.globalName || interaction.member.user.username}`,
-   iconURL: interaction.user.displayAvatarURL({
+   iconURL: interaction.member.user.displayAvatarURL({
     size: 256,
    }),
   })

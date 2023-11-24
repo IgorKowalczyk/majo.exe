@@ -19,7 +19,7 @@ export async function disableAntiLink(client, interaction, guildSettings) {
   .setDescription("The anti-link system has been `disabled`. All links will no longer be blocked.")
   .setFooter({
    text: `Requested by ${interaction.member.user.globalName || interaction.member.user.username}`,
-   iconURL: interaction.user.displayAvatarURL({
+   iconURL: interaction.member.user.displayAvatarURL({
     size: 256,
    }),
   })

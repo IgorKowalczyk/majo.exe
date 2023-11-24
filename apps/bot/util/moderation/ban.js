@@ -17,7 +17,7 @@ export async function banMember(client, interaction, color) {
    return client.errorMessages.createSlashError(interaction, "❌ I need `BAN_MEMBERS` permission to ban members");
   }
 
-  if (user.id === interaction.user.id) {
+  if (user.id === interaction.member.user.id) {
    return client.errorMessages.createSlashError(interaction, "❌ You can't ban yourself, try banning someone else");
   }
 

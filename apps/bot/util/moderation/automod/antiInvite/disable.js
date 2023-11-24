@@ -19,7 +19,7 @@ export async function disableAntiInvite(client, interaction, guildSettings) {
   .setDescription("The anti-invite system has been `disabled`. All Discord invites will no longer be blocked.")
   .setFooter({
    text: `Requested by ${interaction.member.user.globalName || interaction.member.user.username}`,
-   iconURL: interaction.user.displayAvatarURL({
+   iconURL: interaction.member.user.displayAvatarURL({
     size: 256,
    }),
   })

@@ -47,7 +47,7 @@ export async function autoModSettings(client, interaction, guildSettings) {
   )
   .setFooter({
    text: `Requested by ${interaction.member.user.globalName || interaction.member.user.username}`,
-   iconURL: interaction.user.displayAvatarURL({
+   iconURL: interaction.member.user.displayAvatarURL({
     size: 256,
    }),
   });

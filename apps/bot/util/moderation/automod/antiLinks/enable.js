@@ -29,7 +29,7 @@ export async function enableAntiLink(client, interaction, guildSettings) {
    .setDescription("The anti-link system has been `enabled`. All links will now be blocked.")
    .setFooter({
     text: `Requested by ${interaction.member.user.globalName || interaction.member.user.username}`,
-    iconURL: interaction.user.displayAvatarURL({
+    iconURL: interaction.member.user.displayAvatarURL({
      size: 256,
     }),
    })
@@ -152,7 +152,7 @@ export async function enableAntiLink(client, interaction, guildSettings) {
    ])
    .setFooter({
     text: `Requested by ${interaction.member.user.globalName || interaction.member.user.username}`,
-    iconURL: interaction.user.displayAvatarURL({
+    iconURL: interaction.member.user.displayAvatarURL({
      size: 256,
     }),
    })

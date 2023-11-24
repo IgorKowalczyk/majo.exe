@@ -33,7 +33,7 @@ export async function enableAntiBadWords(client, interaction, guildSettings) {
    .setDescription("The anti-bad-words system has been `enabled`. Common bad words will now be blocked.")
    .setFooter({
     text: `Requested by ${interaction.member.user.globalName || interaction.member.user.username}`,
-    iconURL: interaction.user.displayAvatarURL({
+    iconURL: interaction.member.user.displayAvatarURL({
      size: 256,
     }),
    })
@@ -146,7 +146,7 @@ export async function enableAntiBadWords(client, interaction, guildSettings) {
    ])
    .setFooter({
     text: `Requested by ${interaction.member.user.globalName || interaction.member.user.username}`,
-    iconURL: interaction.user.displayAvatarURL({
+    iconURL: interaction.member.user.displayAvatarURL({
      size: 256,
     }),
    })

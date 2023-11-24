@@ -10,18 +10,18 @@ export async function interactionCreate(client, interaction) {
  try {
   client.commandsRan++;
   if (!interaction.guild || !interaction.guild.available) return;
-  if (!interaction.user) await interaction.guild.members.fetch(interaction.member.user.id);
+  if (!interaction.member.user) await interaction.guild.members.fetch(interaction.member.user.id);
 
   if (interaction.isChatInputCommand()) {
    const command = client.slashCommands.get(interaction.commandName);
    if (!command) return;
 
-   client.config.displayCommandUsage && client.debugger("info", `Command used: ${interaction.commandName} by ${interaction.user.tag} (${interaction.user.id})`);
+   client.config.displayCommandUsage && client.debugger("info", `Command used: ${interaction.commandName} by ${interaction.member.user.username} (${interaction.member.user.id})`);
 
    const shouldDefer = command.defer ?? true;
    if (shouldDefer) await interaction.deferReply({ ephemeral: false });
 
-   const key = `timeout-${interaction.user.id}-${interaction.commandName}`;
+   const key = `timeout-${interaction.member.user.id}-${interaction.commandName}`;
    const cooldown = command.cooldown;
    if (cooldown) {
     const time = JSON.parse(await cacheGet(key));
@@ -38,7 +38,7 @@ export async function interactionCreate(client, interaction) {
       });
      return interaction.followUp({ ephemeral: true, embeds: [embed] });
     } else {
-     await cacheSet(key, { userId: interaction.user.id, time: Date.now() }, cooldown);
+     await cacheSet(key, { userId: interaction.member.user.id, time: Date.now() }, cooldown);
     }
    }
 
@@ -90,14 +90,14 @@ export async function interactionCreate(client, interaction) {
     return interaction.followUp({ ephemeral: true, embeds: [embed] });
    }
 
-   await createUser(interaction.user);
+   await createUser(interaction.member.user);
 
    client.slashCommands.get(interaction.commandName).run(client, interaction, guildSettings);
   } else if (interaction.isModalSubmit()) {
    const modal = client.modals.get(interaction.customId);
    if (!modal) return;
 
-   client.config.displayModalUsage && client.debugger("info", `Modal used: ${interaction.customId} by ${interaction.user.tag} (${interaction.user.id})`);
+   client.config.displayModalUsage && client.debugger("info", `Modal used: ${interaction.customId} by ${interaction.member.user.username} (${interaction.member.user.id})`);
 
    const guildSettings = await prismaClient.guild.upsert({
     where: {
@@ -109,7 +109,7 @@ export async function interactionCreate(client, interaction) {
     },
    });
 
-   await createUser(interaction.user);
+   await createUser(interaction.member.user);
 
    await modal.run(client, interaction, guildSettings);
   } else if (interaction.isAutocomplete()) {

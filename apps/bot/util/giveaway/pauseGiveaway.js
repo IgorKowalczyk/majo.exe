@@ -34,7 +34,7 @@ export async function PauseGiveaway(client, interaction, color) {
    .setColor(color)
    .setFooter({
     text: `Requested by ${interaction.member.user.globalName || interaction.member.user.username}`,
-    iconURL: interaction.user.displayAvatarURL({
+    iconURL: interaction.member.user.displayAvatarURL({
      size: 256,
     }),
    });

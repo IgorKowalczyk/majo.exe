@@ -21,7 +21,7 @@ export async function StartGiveaway(client, interaction, color) {
     guildId: interaction.guild.id,
     winnerCount: parseInt(interaction.options.getInteger("winners")),
     prize: `${client.config.emojis.giveaway} Giveaway: ${interaction.options.getString("prize")}`,
-    hostedBy: interaction.user,
+    hostedBy: interaction.member.user,
     thumbnail: client.user.displayAvatarURL(),
     embedColor: parseInt(color.replace("#", ""), 16),
     embedColorEnd: parseInt(color.replace("#", ""), 16),
@@ -39,7 +39,7 @@ export async function StartGiveaway(client, interaction, color) {
      embedFooter: { text: "{this.winnerCount} winner(s)", iconURL: client.user.displayAvatarURL() },
      noWinner: `> **${client.config.emojis.error} Giveaway cancelled, no valid participations!**\n`,
      drawing: `\n• ${client.config.emojis.stopwatch} Drawing winner {timestamp}`,
-     hostedBy: `• ${client.config.emojis.member} Hosted by ${interaction.user}`,
+     hostedBy: `• ${client.config.emojis.member} Hosted by ${interaction.member.user}`,
      winners: "Winner(s): ",
      endedAt: "Ended at",
     },
@@ -82,7 +82,7 @@ export async function StartDropGiveaway(client, interaction, color) {
     isDrop: true,
     winnerCount: parseInt(interaction.options.getInteger("winners")),
     prize: `${client.config.emojis.giveaway} Drop: ${interaction.options.getString("prize")}`,
-    hostedBy: interaction.user,
+    hostedBy: interaction.member.user,
     thumbnail: client.user.displayAvatarURL(),
     embedColor: parseInt(color.replace("#", ""), 16),
     embedColorEnd: parseInt(color.replace("#", ""), 16),
@@ -101,7 +101,7 @@ export async function StartDropGiveaway(client, interaction, color) {
      dropMessage: `> **Be the first to react with ${client.config.emojis.giveaway}!**`,
      embedFooter: { text: "{this.winnerCount} winner(s)", iconURL: client.user.displayAvatarURL() },
      noWinner: `> **${client.config.emojis.error} Giveaway cancelled, no valid participations!**\n`,
-     hostedBy: `• ${client.config.emojis.member} Hosted by ${interaction.user}`,
+     hostedBy: `• ${client.config.emojis.member} Hosted by ${interaction.member.user}`,
      drawing: `\n• ${client.config.emojis.stopwatch} Drawing winner {timestamp}`,
      winners: "> Winner(s): ",
     },
@@ -116,7 +116,7 @@ export async function StartDropGiveaway(client, interaction, color) {
    .setDescription("> :tada: Drop giveaway created in " + `${channel}` + "!")
    .setFooter({
     text: `Requested by ${interaction.member.user.globalName || interaction.member.user.username}`,
-    iconURL: interaction.user.displayAvatarURL({
+    iconURL: interaction.member.user.displayAvatarURL({
      size: 256,
     }),
    });

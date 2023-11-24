@@ -165,7 +165,7 @@ export default {
 
     const collector = response.createMessageComponentCollector({
      componentType: ComponentType.StringSelect,
-     filter: (i) => i.user.id === interaction.user.id,
+     filter: (i) => i.user.id === interaction.member.user.id,
      time: 3 * 60 * 1000, // 30 seconds
     });
 

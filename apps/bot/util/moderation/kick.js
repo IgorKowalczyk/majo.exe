@@ -17,7 +17,7 @@ export async function kickMember(client, interaction, color) {
    return client.errorMessages.createSlashError(interaction, "❌ I need `KICK_MEMBERS` permission to kick members");
   }
 
-  if (user.id === interaction.user.id) {
+  if (user.id === interaction.member.user.id) {
    return client.errorMessages.createSlashError(interaction, "❌ You can't kick yourself");
   }
 

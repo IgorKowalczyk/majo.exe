@@ -19,7 +19,7 @@ export async function disableAntiBadWords(client, interaction, guildSettings) {
   .setDescription("The anti-bad-words system has been `disabled`. Generic spam will no longer be blocked.")
   .setFooter({
    text: `Requested by ${interaction.member.user.globalName || interaction.member.user.username}`,
-   iconURL: interaction.user.displayAvatarURL({
+   iconURL: interaction.member.user.displayAvatarURL({
     size: 256,
    }),
   })
