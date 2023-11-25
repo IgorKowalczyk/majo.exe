@@ -1,5 +1,5 @@
 import { fetchLogs, countLogs } from "@majoexe/util/database";
-import { ApplicationCommandType, ApplicationCommandOptionType, EmbedBuilder } from "discord.js";
+import { ApplicationCommandType, ApplicationCommandOptionType, PermissionFlagsBits, EmbedBuilder } from "discord.js";
 
 export default {
  name: "logs",
@@ -8,6 +8,7 @@ export default {
  cooldown: 5000,
  dm_permission: false,
  usage: "/logs [page]",
+ default_member_permissions: [PermissionFlagsBits.ManageGuild],
  options: [
   {
    name: "page",
