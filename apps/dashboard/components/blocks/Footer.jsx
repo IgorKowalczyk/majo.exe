@@ -5,6 +5,8 @@ import clsx from "clsx";
 import Link from "next/link";
 import { useSelectedLayoutSegment, usePathname } from "next/navigation";
 import Image from "@/components/blocks/client/shared/Image";
+import { PrimaryButton } from "../buttons/server/Primary";
+import { SparklesIcon } from "@heroicons/react/24/solid";
 
 export function Footer() {
  const segment = useSelectedLayoutSegment();
@@ -32,7 +34,31 @@ export function Footer() {
        </Link>
       </div>
 
-      <p className="mt-3 text-neutral-300">🔥 Bot for almost everything - Memes, Image editing, Giveaways, Moderation, Anime and even more!</p>
+      {/* ================== DO NOT REMOVE ================== */}
+      {/* YOU ARE NOT ALLOWED TO REMOVE, HIDE OR MODIFY THIS TEXT!
+         This project is licensed under the MIT License!   */}
+      {/* =================================================== */}
+      {!process.env.PUBLIC_IS_HOSTED_BY_CREATOR ? (
+       <div className="mt-3 text-neutral-300">
+        <Link target="_blank" href="https://majoexe.xyz" className="text-accent-primary font-semibold hover:opacity-80">
+         🔥 Powered by Majo.exe!
+        </Link>
+        <div className="mt-2">
+         This is a public instance of Majo.exe - a free and open-source Discord bot. You can invite it to your server by clicking on the button below or{" "}
+         <Link href="https://majoexe.xyz/invite" className="font-semibold text-neutral-200 hover:underline">
+          by clicking here
+         </Link>
+         .
+         <PrimaryButton className="mt-3 w-fit" href="https://majoexe.xyz/invite">
+          <SparklesIcon className="mr-2 h-5 w-5" />
+          Invite original Majo.exe
+         </PrimaryButton>
+        </div>
+       </div>
+      ) : (
+       <p className="mt-3 text-neutral-300">🔥 Bot for almost everything - Memes, Image editing, Giveaways, Moderation, Anime and even more!</p>
+      )}
+      {/* =================================================== */}
       <br />
      </div>
 
@@ -64,8 +90,18 @@ export function Footer() {
      </div>
     </div>
     <div className="mt-5 flex text-center text-neutral-300">
-     {/* YOU ARE NOT ALLOWED TO REMOVE, HIDE OR MODIFY THIS LINE! */}
-     <p className="text-sm font-semibold opacity-80">Copyright &copy; 2020 - {new Date().getFullYear()} Igor Kowalczyk, All rights reserved.</p>
+     {/* ================== DO NOT REMOVE ================== */}
+     {/* YOU ARE NOT ALLOWED TO REMOVE, HIDE OR MODIFY THIS TEXT!
+         This project is licensed under the MIT License!   */}
+     {/* =================================================== */}
+     <p className="text-sm font-semibold opacity-80">
+      Copyright &copy; 2020 - {new Date().getFullYear()}{" "}
+      <Link className="hover:opacity-80" href="https://igorkowalczyk.dev">
+       Igor Kowalczyk
+      </Link>
+      , All rights reserved.
+     </p>
+     {/* =================================================== */}
     </div>
    </div>
   </footer>
