@@ -36,9 +36,12 @@ export default {
    const from = interaction.options.getString("from") || "auto";
 
    const response = await translate(text, { from, to });
+
+   if (!response.text) return client.errorMessages.createSlashError(interaction, "❌ We couldn't translate the text, please try again later");
+
    const embed = new EmbedBuilder()
     .setTitle(`🈯 Translated Text (from \`${response.from.language.iso}\` to \`${to}\`)`)
-    .setDescription(`>>> **${response.text}**${response.from.text.value ? `\n\nDid you mean: \`${from.text.value}\`` : ""}`)
+    .setDescription(`>>> **${response.text.length > 2000 ? `${response.text.slice(0, 2000)}...` : response.text}**${response.from?.text?.value ? `\n\nDid you mean: \`${response.from.text.value}\`` : ""}`)
     .setTimestamp()
     .setColor(guildSettings?.embedColor || client.config.defaultColor)
     .setFooter({
