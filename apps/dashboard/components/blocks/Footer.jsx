@@ -1,12 +1,12 @@
 "use client";
 
+import { SparklesIcon } from "@heroicons/react/24/solid";
 import { dashboardConfig } from "@majoexe/config";
 import clsx from "clsx";
 import Link from "next/link";
 import { useSelectedLayoutSegment, usePathname } from "next/navigation";
-import Image from "@/components/blocks/client/shared/Image";
 import { PrimaryButton } from "../buttons/server/Primary";
-import { SparklesIcon } from "@heroicons/react/24/solid";
+import Image from "@/components/blocks/client/shared/Image";
 
 export function Footer() {
  const segment = useSelectedLayoutSegment();
