@@ -18,6 +18,11 @@ export const dashboardRedirects = [
   permanent: true,
  },
  {
+  source: "/invite",
+  destination: "/api/invite",
+  permanent: true,
+ },
+ {
   source: "/server",
   destination: "/discord",
   permanent: true,
