@@ -35,12 +35,16 @@ export default {
    const to = interaction.options.getString("to") || "en";
    const from = interaction.options.getString("from") || "auto";
 
-   const response = await translate(text, { from, to });
+   const languageValues = Object.values(translate.languages).filter((language) => typeof language === "string");
 
+   if (!translate.languages.isSupported(to)) return client.errorMessages.createSlashError(interaction, `Please use one of the following languages: \`${languageValues.join("`, `")}\``, `Language \`${to}\` is not supported!`);
+   if (!translate.languages.isSupported(from)) return client.errorMessages.createSlashError(interaction, `Please use one of the following languages: \`${languageValues.join("`, `")}\``, `Language \`${from}\` is not supported!`);
+
+   const response = await translate(text, { from, to });
    if (!response.text) return client.errorMessages.createSlashError(interaction, "❌ We couldn't translate the text, please try again later");
 
    const embed = new EmbedBuilder()
-    .setTitle(`🈯 Translated Text (from \`${response.from.language.iso}\` to \`${to}\`)`)
+    .setTitle(`🈯 Translated Text (from \`${response.from.language.iso}\` to \`${translate.languages.getISOCode(to)}\`)`)
     .setDescription(`>>> **${response.text.length > 2000 ? `${response.text.slice(0, 2000)}...` : response.text}**${response.from?.text?.value ? `\n\nDid you mean: \`${response.from.text.value}\`` : ""}`)
     .setTimestamp()
     .setColor(guildSettings?.embedColor || client.config.defaultColor)
