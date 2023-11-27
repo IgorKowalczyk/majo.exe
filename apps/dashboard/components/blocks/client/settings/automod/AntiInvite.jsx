@@ -16,6 +16,7 @@ export function AntiInvite({ serverId, enabled, existingActions, existingExemptR
  const [isEnabled, setIsEnabled] = useState(enabled ?? false);
  const [loading, setLoading] = useState(false);
  const [actions, setActions] = useState(existingActions || []);
+
  const [exemptRoles, setExemptRoles] = useState(existingExemptRoles || []);
  const [exemptChannels, setExemptChannels] = useState(existingExemptChannels || []);
 
@@ -173,7 +174,7 @@ export function AntiInvite({ serverId, enabled, existingActions, existingExemptR
        </span>
       </Tooltip>
       <ChannelsSelect // prettier
-       allChannels={[{ id: 1, name: "Disable logging" }, ...allChannels]}
+       allChannels={[{ id: "1", name: "Disabled", type: 0 }, ...allChannels]}
        exemptChannels={actions.find((action) => action.type === 2)?.metadata?.channel_id || 1}
        setExemptChannels={(value) => setActions(actions.map((action) => (action.type === 2 ? { ...action, metadata: { channel_id: value } } : action)))}
        multiple={false}

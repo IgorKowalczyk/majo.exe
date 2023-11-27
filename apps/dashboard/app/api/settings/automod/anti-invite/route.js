@@ -3,7 +3,7 @@
 import { globalConfig } from "@majoexe/config";
 import prismaClient from "@majoexe/database";
 import { syncAutoModRule } from "@majoexe/util/database";
-import { getServer, getGuildMember } from "@majoexe/util/functions";
+import { getServer, getGuildMember, getPermissionNames } from "@majoexe/util/functions";
 import { AutoModerationRuleTriggerType, AutoModerationRuleEventType, AutoModerationActionType, ChannelType } from "discord-api-types/v10";
 import { getSession } from "lib/session";
 import { NextResponse } from "next/server";
@@ -179,6 +179,8 @@ export async function POST(request) {
     return {
      id: channel.id,
      name: channel.name,
+     type: channel.type,
+     permissions: channel.permission_overwrites,
     };
    })
    .filter(Boolean);
@@ -245,6 +247,23 @@ export async function POST(request) {
      },
      {
       status: 404,
+      headers: {
+       ...(process.env.NODE_ENV !== "production" && {
+        "Server-Timing": `response;dur=${Date.now() - start}ms`,
+       }),
+      },
+     }
+    );
+   }
+
+   if (allChannels.find((c) => c.id === channel).type !== ChannelType.GuildText) {
+    return NextResponse.json(
+     {
+      error: `Channel #${allChannels.find((c) => c.id === channel)?.name || channel} is not a text channel`,
+      code: 400,
+     },
+     {
+      status: 400,
       headers: {
        ...(process.env.NODE_ENV !== "production" && {
         "Server-Timing": `response;dur=${Date.now() - start}ms`,
@@ -353,21 +372,71 @@ export async function POST(request) {
     );
    }
 
-   if (!alert.metadata.channel || !allChannels.find((c) => c.id === alert.metadata.channel) || allChannels.find((c) => c.id === alert.metadata.channel).type !== ChannelType.GuildText) {
-    return NextResponse.json(
-     {
-      error: "Cannot find the alert channel",
-      code: 404,
-     },
-     {
-      status: 404,
-      headers: {
-       ...(process.env.NODE_ENV !== "production" && {
-        "Server-Timing": `response;dur=${Date.now() - start}ms`,
-       }),
+   if (alert.metadata.channel_id !== "1") {
+    if (!alert.metadata.channel_id || !allChannels.find((c) => c.id === alert.metadata.channel_id) || allChannels.find((c) => c.id === alert.metadata.channel_id).type !== ChannelType.GuildText) {
+     return NextResponse.json(
+      {
+       error: "Cannot find the alert channel",
+       code: 404,
       },
-     }
-    );
+      {
+       status: 404,
+       headers: {
+        ...(process.env.NODE_ENV !== "production" && {
+         "Server-Timing": `response;dur=${Date.now() - start}ms`,
+        }),
+       },
+      }
+     );
+    }
+
+    const getChannelPermissionsAPI = await fetch(`https://discord.com/api/v${globalConfig.apiVersion}/channels/${alert.metadata.channel_id}`, {
+     method: "GET",
+     headers: {
+      Authorization: `Bot ${process.env.TOKEN}`,
+     },
+    });
+
+    if (!getChannelPermissionsAPI.ok) {
+     return NextResponse.json(
+      {
+       error: "Unable to find the alert channel",
+       code: 404,
+      },
+      {
+       status: 404,
+       headers: {
+        ...(process.env.NODE_ENV !== "production" && {
+         "Server-Timing": `response;dur=${Date.now() - start}ms`,
+        }),
+       },
+      }
+     );
+    }
+
+    const getChannelPermissions = await getChannelPermissionsAPI.json();
+    const parsedActionPermissions = getPermissionNames(getChannelPermissions.permissions || 0n);
+
+    if (!parsedActionPermissions.includes("VIEW_CHANNEL") || !parsedActionPermissions.includes("SEND_MESSAGES")) {
+     return NextResponse.json(
+      {
+       error: "The bot must have 'View Channel' and 'Send Messages' permissions in the alert channel",
+       code: 400,
+      },
+      {
+       status: 400,
+       headers: {
+        ...(process.env.NODE_ENV !== "production" && {
+         "Server-Timing": `response;dur=${Date.now() - start}ms`,
+        }),
+       },
+      }
+     );
+    }
+   } else {
+    const indexToDelete = data.actions.findIndex((a) => a.type === AutoModerationActionType.SendAlertMessage);
+    if (indexToDelete !== -1) data.actions.splice(indexToDelete, 1);
+    alert = null;
    }
   }
 

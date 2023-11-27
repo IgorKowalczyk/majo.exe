@@ -6,6 +6,7 @@ import clsx from "clsx";
 import { Fragment } from "react";
 
 export function ChannelsSelect({ allChannels, exemptChannels, setExemptChannels, multiple = true }) {
+ console.log(exemptChannels);
  return (
   <div>
    {allChannels && allChannels.length > 0 ? (
