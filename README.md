@@ -103,7 +103,7 @@ Ensure your setup meets these prerequisites before setting up Majo.exe:
 1. 📜 **Attribution:**
 
    - **You are not allowed to claim authorship** or affiliation with the Majo.exe team.
-   - **Proper credit must be given** to the original author when hosting the bot.
+   - **Proper credit must be given** to the original author when hosting the project.
    - **You are not allowed to use the Majo.exe name or logo** in any way that implies affiliation with the Majo.exe team.
 
 2. 💻 **Hosting Rights:**
@@ -113,8 +113,9 @@ Ensure your setup meets these prerequisites before setting up Majo.exe:
 3. 🚧 **Modifications:**
 
    - The footer in the Dashboard, such as "Powered by Majo.exe," **must not be modified or removed**.
-   - The bot's source code **must not be modified in any way that would remove or alter the original attribution**.
-   - **The license must be included with any public distribution** of the bot's source code.
+   - The `/about` command **must not be modified or removed**. This command contains information about the project and its authors.
+   - The project's source code **must not be modified in any way that would remove or alter the original attribution**.
+   - **The license must be included with any public distribution** of the project or its modified source code.
 
 4. 📦 **Distribution:**
 
