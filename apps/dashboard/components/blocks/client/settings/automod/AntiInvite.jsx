@@ -16,7 +16,6 @@ export function AntiInvite({ serverId, enabled, existingActions, existingExemptR
  const [isEnabled, setIsEnabled] = useState(enabled ?? false);
  const [loading, setLoading] = useState(false);
  const [actions, setActions] = useState(existingActions || []);
-
  const [exemptRoles, setExemptRoles] = useState(existingExemptRoles || []);
  const [exemptChannels, setExemptChannels] = useState(existingExemptChannels || []);
 
