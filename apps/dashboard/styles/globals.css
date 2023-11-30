@@ -70,6 +70,14 @@ html {
  @apply absolute;
 }
 
+[data-theme~="translucent"] {
+ @apply backdrop-blur-[5px] motion-reduce:transition-none;
+}
+
+.tippy-backdrop {
+ @apply !bg-neutral-700 !bg-opacity-[0.7];
+}
+
 img.twemoji {
  @apply relative top-[-0.1rem] inline-block h-[1em] w-[1em] align-middle;
 }
