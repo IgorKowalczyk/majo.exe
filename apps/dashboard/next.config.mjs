@@ -10,7 +10,7 @@ const withBundle = withBundleAnalyzer({
 
 const nextConfig = {
  reactStrictMode: true,
- pageExtensions: ["mdx"],
+ pageExtensions: ["mdx", "jsx", "js"],
  poweredByHeader: false,
  trailingSlash: false,
  images: {
