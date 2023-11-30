@@ -1,9 +1,13 @@
 function normalize(text) {
  if (typeof text !== "string") return "";
  return text
+  .trim()
   .toLowerCase()
-  .replace(/[^a-z0-9]+/g, "-")
-  .replace(/(^-|-$)+/g, "");
+  .replace(/[^a-z0-9]+/g, "-") // Replace all non-word chars with -
+  .replace(/\s+/g, "-") // Replace spaces with -
+  .replace(/&/g, "-and-") // Replace & with 'and'
+  .replace(/[^\w\-]+/g, "") // Remove all non-word characters except for -
+  .replace(/\-\-+/g, "-"); // Replace multiple - with single -
 }
 
 export function useMDXComponents(components) {
