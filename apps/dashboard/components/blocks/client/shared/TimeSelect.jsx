@@ -55,7 +55,7 @@ export function TimeSelect({ selectedChoice, setSelectedChoice }) {
        <ChevronUpDownIcon className="h-5 w-5 text-gray-400" aria-hidden="true" />
       </span>
      </Listbox.Button>
-     <Transition as={Fragment} leave="transition ease-in duration-100" leaveFrom="opacity-100" leaveTo="opacity-0">
+     <Transition as={Fragment} enter="transition duration-200 ease-out" enterFrom="transform scale-95 opacity-0" enterTo="transform scale-100 opacity-100" leave="transition duration-200 ease-out" leaveFrom="transform scale-100 opacity-100" leaveTo="transform scale-95 opacity-0" className={"relative z-[100]"}>
       <Listbox.Options className="bg-background-primary absolute z-[545] mt-1 max-h-60 w-fit overflow-auto rounded-md border border-neutral-800 py-1 text-base shadow-lg sm:text-sm">
        {choices.map((choice, index) => (
         <Listbox.Option key={index} className={({ active }) => `relative mx-2 my-1 cursor-pointer select-none rounded-md py-2 pl-10 pr-4 font-normal duration-200 ${active ? "bg-accent-primary text-white" : "text-white/70"}`} value={choice.time}>
