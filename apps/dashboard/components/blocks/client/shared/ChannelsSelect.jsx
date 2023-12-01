@@ -32,9 +32,9 @@ export function ChannelsSelect({ allChannels, exemptChannels, setExemptChannels,
      <Transition as={Fragment} enter="transition duration-200 ease-out" enterFrom="transform scale-95 opacity-0" enterTo="transform scale-100 opacity-100" leave="transition duration-200 ease-out" leaveFrom="transform scale-100 opacity-100" leaveTo="transform scale-95 opacity-0">
       <Listbox.Options className="bg-background-secondary absolute z-[545] mt-1 max-h-60 w-fit overflow-auto rounded-xl border border-neutral-800 py-1 text-base shadow-lg sm:text-sm">
        {allChannels.map((channel, index) => (
-        <Listbox.Option key={index} className="ui-active:bg-accent-primary ui-active:text-white relative mx-2 my-1 cursor-pointer select-none rounded-md py-2 pl-10 pr-4 font-normal text-white/70 duration-200" value={channel.id}>
+        <Listbox.Option key={index} className="ui-active:bg-accent-primary ui-active:text-white relative mx-2 my-1 cursor-pointer select-none rounded-md py-2 pr-10 pl-4 font-normal text-white/70 duration-200" value={channel.id}>
          <div className="flex items-center gap-1 truncate">{channel.name}</div>
-         <span className="ui-selected:!opacity-100 ui-not-selected:opacity-0 ui-active:opacity-100 ui-not-active:opacity-0 absolute inset-y-0 left-0 flex items-center pl-3 text-white duration-200">
+         <span className="ui-selected:!opacity-100 ui-not-selected:opacity-0 ui-active:opacity-100 ui-not-active:opacity-0 absolute inset-y-0 right-0 flex items-center pr-3 text-white duration-200">
           <CheckIcon className="h-5 w-5" aria-hidden="true" />
          </span>
         </Listbox.Option>
