@@ -77,11 +77,11 @@ export default function Logs({ initialItems, id }) {
          {item.type && (
           <>
            {item.type === "profanity" && <NoSymbolIcon className="min-h-6 min-w-6 h-6 w-6 text-red-400" />}
-           {item.type === "embed_color" && <PaintBrushIcon className="text-white/60 ui-open:text-accent-primary duration-200 min-h-6 min-w-6 h-6 w-6" />}
-           {item.type === "command_change" && <CubeTransparentIcon className="text-white/60 ui-open:text-accent-primary duration-200 min-h-6 min-w-6 h-6 w-6" />}
-           {item.type === "category_change" && <CubeIcon className="text-white/60 ui-open:text-accent-primary duration-200 min-h-6 min-w-6 h-6 w-6" />}
-           {item.type === "public_dashboard" && <UsersIcon className="text-white/60 ui-open:text-accent-primary duration-200 min-h-6 min-w-6 h-6 w-6" />}
-           {item.type === "vanity" && <LinkIcon className="text-white/60 ui-open:text-accent-primary duration-200 min-h-6 min-w-6 h-6 w-6" />}
+           {item.type === "embed_color" && <PaintBrushIcon className="ui-open:text-accent-primary min-h-6 min-w-6 h-6 w-6 text-white/60 duration-200" />}
+           {item.type === "command_change" && <CubeTransparentIcon className="ui-open:text-accent-primary min-h-6 min-w-6 h-6 w-6 text-white/60 duration-200" />}
+           {item.type === "category_change" && <CubeIcon className="ui-open:text-accent-primary min-h-6 min-w-6 h-6 w-6 text-white/60 duration-200" />}
+           {item.type === "public_dashboard" && <UsersIcon className="ui-open:text-accent-primary min-h-6 min-w-6 h-6 w-6 text-white/60 duration-200" />}
+           {item.type === "vanity" && <LinkIcon className="ui-open:text-accent-primary min-h-6 min-w-6 h-6 w-6 text-white/60 duration-200" />}
           </>
          )}
          {item.user?.avatar && <Image src={`https://cdn.discordapp.com/avatars/${item.user?.discordId}/${item.user?.avatar}.${item.user?.avatar.startsWith("a_") ? "gif" : "png"}`} alt={`${item.user?.name} avatar`} quality={95} width={32} height={32} className="min-h-12 min-w-12 h-12 w-12 rounded-full" />}
@@ -111,7 +111,7 @@ export default function Logs({ initialItems, id }) {
       </p>
       <p>
        <span className="font-bold">User:</span>{" "}
-       <Link href={`/dashboard/${id}/user/${item.user?.discordId}`} className={"hover:text-button-primary opacity-70 hover:opacity-100 duration-200"}>
+       <Link href={`/dashboard/${id}/user/${item.user?.discordId}`} className={"hover:text-button-primary opacity-70 duration-200 hover:opacity-100"}>
         {item.user?.global_name || item.user?.username}
         {item.user?.discriminator !== "0" && <span className="opacity-70">#{item.user?.discriminator || "0000"}</span>} (ID: {item.user?.discordId || item.user?.id})
        </Link>
