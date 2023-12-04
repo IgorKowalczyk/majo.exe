@@ -111,7 +111,7 @@ importers:
         version: 1.7.17(react-dom@18.2.0)(react@18.2.0)
       '@headlessui/tailwindcss':
         specifier: 0.2.0
-        version: 0.2.0(tailwindcss@3.3.5)
+        version: 0.2.0(tailwindcss@3.3.6)
       '@heroicons/react':
         specifier: 2.0.18
         version: 2.0.18(react@18.2.0)
@@ -236,11 +236,11 @@ importers:
         specifier: 2.1.0
         version: 2.1.0
       tailwindcss:
-        specifier: 3.3.5
-        version: 3.3.5
+        specifier: 3.3.6
+        version: 3.3.6
       tailwindcss-text-fill:
         specifier: 0.2.0
-        version: 0.2.0(tailwindcss@3.3.5)
+        version: 0.2.0(tailwindcss@3.3.6)
     devDependencies:
       '@next/bundle-analyzer':
         specifier: 14.0.3
@@ -250,7 +250,7 @@ importers:
         version: 5.6.0
       '@tailwindcss/typography':
         specifier: 0.5.10
-        version: 0.5.10(tailwindcss@3.3.5)
+        version: 0.5.10(tailwindcss@3.3.6)
       eslint-config-next:
         specifier: 14.0.3
         version: 14.0.3(eslint@8.55.0)(typescript@5.2.2)
@@ -1918,13 +1918,13 @@ packages:
       react-dom: 18.2.0(react@18.2.0)
     dev: false
 
-  /@headlessui/tailwindcss@0.2.0(tailwindcss@3.3.5):
+  /@headlessui/tailwindcss@0.2.0(tailwindcss@3.3.6):
     resolution: {integrity: sha512-fpL830Fln1SykOCboExsWr3JIVeQKieLJ3XytLe/tt1A0XzqUthOftDmjcCYLW62w7mQI7wXcoPXr3tZ9QfGxw==}
     engines: {node: '>=10'}
     peerDependencies:
       tailwindcss: ^3.0
     dependencies:
-      tailwindcss: 3.3.5
+      tailwindcss: 3.3.6
     dev: false
 
   /@heroicons/react@2.0.18(react@18.2.0):
@@ -3102,7 +3102,7 @@ packages:
       tslib: 2.6.2
     dev: false
 
-  /@tailwindcss/typography@0.5.10(tailwindcss@3.3.5):
+  /@tailwindcss/typography@0.5.10(tailwindcss@3.3.6):
     resolution: {integrity: sha512-Pe8BuPJQJd3FfRnm6H0ulKIGoMEQS+Vq01R6M5aCrFB/ccR/shT+0kXLjouGC1gFLm9hopTFN+DMP0pfwRWzPw==}
     peerDependencies:
       tailwindcss: '>=3.0.0 || insiders'
@@ -3111,7 +3111,7 @@ packages:
       lodash.isplainobject: 4.0.6
       lodash.merge: 4.6.2
       postcss-selector-parser: 6.0.10
-      tailwindcss: 3.3.5
+      tailwindcss: 3.3.6
     dev: true
 
   /@tippyjs/react@4.2.6(react-dom@18.2.0)(react@18.2.0):
@@ -9494,17 +9494,17 @@ packages:
       '@babel/runtime': 7.23.5
     dev: false
 
-  /tailwindcss-text-fill@0.2.0(tailwindcss@3.3.5):
+  /tailwindcss-text-fill@0.2.0(tailwindcss@3.3.6):
     resolution: {integrity: sha512-3lo6a/9jXSx4+24onFv7xnHO/1DZCk6qM+LoCsEUxn79sAeoc/ts74LSH0vRhLvWe4Yn+YglFfT+lxDv6wn2sQ==}
     peerDependencies:
       tailwindcss: '>=2.0.0'
     dependencies:
       flatten-tailwindcss-theme: 1.0.0
-      tailwindcss: 3.3.5
+      tailwindcss: 3.3.6
     dev: false
 
-  /tailwindcss@3.3.5:
-    resolution: {integrity: sha512-5SEZU4J7pxZgSkv7FP1zY8i2TIAOooNZ1e/OGtxIEv6GltpoiXUqWvLy89+a10qYTB1N5Ifkuw9lqQkN9sscvA==}
+  /tailwindcss@3.3.6:
+    resolution: {integrity: sha512-AKjF7qbbLvLaPieoKeTjG1+FyNZT6KaJMJPFeQyLfIp7l82ggH1fbHJSsYIvnbTFQOlkh+gBYpyby5GT1LIdLw==}
     engines: {node: '>=14.0.0'}
     hasBin: true
     dependencies:
