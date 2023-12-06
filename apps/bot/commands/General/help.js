@@ -170,6 +170,7 @@ export default {
     });
 
     collector.on("collect", async (i) => {
+     /* eslint-disable-next-line prefer-destructuring */
      const category = i.values[0];
      const commands = client.slashCommands.filter((cmd) => cmd.category.toLowerCase() === category.toLowerCase());
      const embed = new EmbedBuilder()

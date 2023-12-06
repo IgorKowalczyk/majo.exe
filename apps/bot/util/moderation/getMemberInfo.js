@@ -26,7 +26,7 @@ export async function getMemberInfo(client, interaction, color) {
 
   const userFlags = [];
   user.user.flags.toArray().map((flag) => {
-   flags[flag.toString()] ? userFlags.push(flags[flag.toString()]) : null;
+   return flags[flag.toString()] ? userFlags.push(flags[flag.toString()]) : null;
   });
 
   if (userFlags.length === 0) {
