@@ -12,8 +12,8 @@ export async function resetXP(userId, guildId) {
  try {
   await prismaClient.guildXp.deleteMany({
    where: {
-    guildId: guildId,
-    userId: userId,
+    guildId,
+    userId,
    },
   });
 

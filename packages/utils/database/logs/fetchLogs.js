@@ -13,7 +13,7 @@ export async function fetchLogs(guildId, page, count = 20) {
  try {
   const logs = await prismaClient.guildLogs.findMany({
    where: {
-    guildId: guildId,
+    guildId,
    },
    take: count,
    skip: (page - 1) * count,
@@ -43,7 +43,7 @@ export async function countLogs(guildId) {
  try {
   const logs = await prismaClient.guildLogs.count({
    where: {
-    guildId: guildId,
+    guildId,
    },
   });
 

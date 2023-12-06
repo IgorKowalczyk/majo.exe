@@ -18,7 +18,7 @@ export async function setReputation(user, guildId, amount) {
  try {
   const rep = await prismaClient.reputation.findFirst({
    where: {
-    guildId: guildId,
+    guildId,
     userId: user.id,
    },
   });
@@ -29,10 +29,10 @@ export async function setReputation(user, guildId, amount) {
      guild: {
       connectOrCreate: {
        where: {
-        guildId: guildId,
+        guildId,
        },
        create: {
-        guildId: guildId,
+        guildId,
        },
       },
      },

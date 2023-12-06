@@ -12,7 +12,7 @@ import { fetchAutoModRules } from "./fetchAutoModRules.js";
  */
 export async function syncAutoModRule(guildId, ruleType) {
  const rules = await fetchAutoModRules(guildId);
- let createdRule = rules.find((rule) => rule.ruleType === ruleType);
+ const createdRule = rules.find((rule) => rule.ruleType === ruleType);
 
  if (createdRule) {
   try {

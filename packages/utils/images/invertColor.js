@@ -16,7 +16,7 @@ export function invertColor(hex) {
 
  const pad = (txt, length) => {
   length = length || 2;
-  let arr = [length].join("0");
+  const arr = [length].join("0");
   return (arr + txt).slice(-length);
  };
 

@@ -11,14 +11,14 @@ export async function fetchXPSettings(guildId) {
  try {
   const guild = await prismaClient.guild.findUnique({
    where: {
-    guildId: guildId,
+    guildId,
    },
   });
 
   if (!guild) {
    await prismaClient.guild.create({
     data: {
-     guildId: guildId,
+     guildId,
     },
    });
 
@@ -54,10 +54,10 @@ export async function setXPSettings(guildId, enableXP) {
  try {
   await prismaClient.guild.update({
    where: {
-    guildId: guildId,
+    guildId,
    },
    data: {
-    enableXP: enableXP,
+    enableXP,
     enableXPLastChanged: new Date(),
    },
   });
@@ -81,10 +81,10 @@ export async function setXPLevelUpMessageSettings(guildId, enableXPLevelUpMessag
  try {
   await prismaClient.guild.update({
    where: {
-    guildId: guildId,
+    guildId,
    },
    data: {
-    enableXPLevelUpMessage: enableXPLevelUpMessage,
+    enableXPLevelUpMessage,
     enableXPLevelUpMessageLastChanged: new Date(),
    },
   });

@@ -13,11 +13,11 @@ export async function removeWarning(guildId, userId, warnId) {
  try {
   const warning = await prismaClient.guildWarns.findFirst({
    where: {
-    guildId: guildId,
+    guildId,
     user: {
      discordId: userId,
     },
-    warnId: warnId,
+    warnId,
    },
   });
 

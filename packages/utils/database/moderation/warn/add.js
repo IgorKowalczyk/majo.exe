@@ -18,7 +18,7 @@ export async function warnUser(guildId, user, reason, warnedBy) {
  try {
   const warning = await prismaClient.guildWarns.findMany({
    where: {
-    guildId: guildId,
+    guildId,
     user: {
      discordId: user.id,
     },
@@ -36,10 +36,10 @@ export async function warnUser(guildId, user, reason, warnedBy) {
     guild: {
      connectOrCreate: {
       where: {
-       guildId: guildId,
+       guildId,
       },
       create: {
-       guildId: guildId,
+       guildId,
       },
      },
     },

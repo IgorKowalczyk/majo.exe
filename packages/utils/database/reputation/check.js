@@ -13,7 +13,7 @@ export async function checkReputation(userId, guildId) {
   const rep = await prismaClient.reputation.findFirst({
    where: {
     guildId,
-    userId: userId,
+    userId,
    },
   });
 

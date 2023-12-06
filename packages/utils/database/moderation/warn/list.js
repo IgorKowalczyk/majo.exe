@@ -12,7 +12,7 @@ export async function listWarnings(guildId, userId) {
  try {
   const warnings = await prismaClient.guildWarns.findMany({
    where: {
-    guildId: guildId,
+    guildId,
     user: {
      discordId: userId,
     },
