@@ -221,7 +221,7 @@ export default {
    if (!fetchImage.ok) return client.errorMessages.createSlashError(interaction, "❌ The image could not be fetched.");
    const buffer = await fetchImage.arrayBuffer();
 
-   let output = sharp(buffer).resize(510, 510, {
+   const output = sharp(buffer).resize(510, 510, {
     withoutEnlargement: true,
     fit: "fill",
    });

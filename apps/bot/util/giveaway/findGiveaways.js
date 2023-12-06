@@ -19,7 +19,7 @@ export async function FindGiveaways(client, interaction, color, type) {
    },
   });
 
-  let list = giveaways.filter((giveaway) => {
+  const list = giveaways.filter((giveaway) => {
    if (!giveaway.data) return false;
    if (type === "ended") {
     return giveaway.data.ended;

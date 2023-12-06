@@ -1,5 +1,5 @@
-import { globby } from "globby";
 import { basename } from "node:path";
+import { globby } from "globby";
 
 /**
  * Loads all events from the /events folder

@@ -117,7 +117,7 @@ export default {
    }
 
    await user.roles.add(role, {
-    reason: reason,
+    reason,
    });
 
    const embed = new EmbedBuilder()
@@ -178,7 +178,7 @@ export default {
    }
 
    await user.roles.remove(role, {
-    reason: reason,
+    reason,
    });
 
    const embed = new EmbedBuilder()

@@ -22,7 +22,7 @@ export async function interactionCreate(client, interaction) {
    if (shouldDefer) await interaction.deferReply({ ephemeral: false });
 
    const key = `timeout-${interaction.member.user.id}-${interaction.commandName}`;
-   const cooldown = command.cooldown;
+   const { cooldown } = command;
    if (cooldown) {
     const time = JSON.parse(await cacheGet(key));
     if (time && time.time + cooldown > Date.now()) {

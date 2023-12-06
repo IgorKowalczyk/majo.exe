@@ -17,7 +17,7 @@ export async function unBanMember(client, interaction, color) {
    return client.errorMessages.createSlashError(interaction, "❌ I need `BAN_MEMBERS` permission to unban members");
   }
 
-  await interaction.guild.members.unban(user, { reason: reason });
+  await interaction.guild.members.unban(user, { reason });
 
   const embed = new EmbedBuilder()
    .setColor(color)

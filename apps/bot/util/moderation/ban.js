@@ -33,7 +33,7 @@ export async function banMember(client, interaction, color) {
    return client.errorMessages.createSlashError(interaction, "❌ This user has higher or equal roles than me, try banning someone else");
   }
 
-  await interaction.guild.members.ban(user, { reason: reason });
+  await interaction.guild.members.ban(user, { reason });
 
   const embed = new EmbedBuilder()
    .setColor(color)

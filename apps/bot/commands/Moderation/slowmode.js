@@ -20,7 +20,7 @@ export default {
  run: async (client, interaction, guildSettings) => {
   try {
    const time = interaction.options.getString("time");
-   const channel = interaction.channel;
+   const { channel } = interaction;
    const timeInMs = ms(time);
 
    if (!timeInMs) {

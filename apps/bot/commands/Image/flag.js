@@ -152,7 +152,7 @@ export default {
    context.quality = "fast";
    context.patternQuality = "fast";
 
-   const frames = decodeGif(background.src).frames;
+   const { frames } = decodeGif(background.src);
 
    for (let i = 0; i < frames.length; i++) {
     context.globalAlpha = 1;

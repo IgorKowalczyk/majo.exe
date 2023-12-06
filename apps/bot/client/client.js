@@ -1,3 +1,5 @@
+import { dirname } from "path";
+import { fileURLToPath } from "url";
 import { globalConfig, botConfig, debuggerConfig, dashboardConfig, globalPermissions } from "@majoexe/config";
 import { createErrorEmbed } from "@majoexe/util/embeds";
 import { Logger, chalk } from "@majoexe/util/functions";
@@ -7,8 +9,6 @@ import loadCommands from "../util/loaders/loadCommands.js";
 import loadEvents from "../util/loaders/loadEvents.js";
 import loadFonts from "../util/loaders/loadFonts.js";
 import loadModals from "../util/loaders/loadModals.js";
-import { dirname } from "path";
-import { fileURLToPath } from "url";
 
 const cwd = dirname(fileURLToPath(import.meta.url)).replace("/client", "");
 Logger("info", `Current working directory: ${cwd}`);

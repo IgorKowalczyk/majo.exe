@@ -65,7 +65,6 @@
     "@prisma/nextjs-monorepo-workaround-plugin": "5.7.0",
     "@tailwindcss/typography": "0.5.10",
     "eslint-config-next": "14.0.3",
-    "eslint-plugin-import": "2.28.1",
     "prettier-plugin-tailwindcss": "0.5.9"
   },
   "engines": {

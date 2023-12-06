@@ -1,5 +1,4 @@
 import { load } from "cheerio";
-
 import { ApplicationCommandType, EmbedBuilder, ApplicationCommandOptionType } from "discord.js";
 
 export default {

@@ -27,7 +27,7 @@ export default {
   const key = `${interaction.member.user.id}-suggest`;
 
   if (timeout.has(key) && timeout.get(key).time > Date.now()) {
-   const time = timeout.get(key).time;
+   const { time } = timeout.get(key);
    const duration = formatDuration(time - Date.now());
 
    const embed = new EmbedBuilder()
