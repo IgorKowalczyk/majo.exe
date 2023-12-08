@@ -5,11 +5,11 @@ import clsx from "clsx";
 import { getSession } from "lib/session";
 import Link from "next/link";
 import { redirect } from "next/navigation";
-import Image from "@/components/blocks/client/shared/Image";
-import { Refetch } from "@/components/blocks/client/shared/Refetch";
-import { Header1 } from "@/components/blocks/Headers";
-import { PrimaryButton } from "@/components/blocks/Primary";
-import { SecondaryButton } from "@/components/blocks/Secondary";
+import Image from "@/components/client/shared/Image";
+import { Refetch } from "@/components/client/shared/Refetch";
+import { Header1 } from "@/components/Headers";
+import { PrimaryButton } from "@/components/Primary";
+import { SecondaryButton } from "@/components/Secondary";
 
 export default async function Dashboard() {
  const session = await getSession();

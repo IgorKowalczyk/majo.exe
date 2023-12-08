@@ -4,12 +4,12 @@ import prismaClient from "@majoexe/database";
 import { getGuildMember, getPermissionNames, getServer } from "@majoexe/util/functions";
 import { getSession } from "lib/session";
 import { redirect } from "next/navigation";
-import { Block } from "@/components/blocks/Block";
-import { ChangeEmbedColor } from "@/components/blocks/client/settings/ChangeEmbedColor";
-import DeleteServerData from "@/components/blocks/client/settings/DeleteServerData";
-import { EnablePublicDashboard } from "@/components/blocks/client/settings/EnablePublicDashboard";
-import { Header1 } from "@/components/blocks/Headers";
-import { PrimaryButton } from "@/components/blocks/Primary";
+import { Block } from "@/components/Block";
+import { ChangeEmbedColor } from "@/components/client/settings/ChangeEmbedColor";
+import DeleteServerData from "@/components/client/settings/DeleteServerData";
+import { EnablePublicDashboard } from "@/components/client/settings/EnablePublicDashboard";
+import { Header1 } from "@/components/Headers";
+import { PrimaryButton } from "@/components/Primary";
 
 export default async function Settings({ params }) {
  const session = await getSession();

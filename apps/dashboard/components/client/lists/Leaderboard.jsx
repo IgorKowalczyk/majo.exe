@@ -3,9 +3,9 @@
 import { formatNumber } from "@majoexe/util/functions";
 import Link from "next/link";
 import { useMemo } from "react";
-import Image from "@/components/blocks/client/shared/Image";
-import { Table } from "@/components/blocks/client/shared/Table";
-import { Tooltip } from "@/components/blocks/client/shared/Tooltip";
+import Image from "@/components/client/shared/Image";
+import { Table } from "@/components/client/shared/Table";
+import { Tooltip } from "@/components/client/shared/Tooltip";
 
 export function Leaderboard({ data = [], showControls = true, showSearch = true }) {
  const columns = useMemo(

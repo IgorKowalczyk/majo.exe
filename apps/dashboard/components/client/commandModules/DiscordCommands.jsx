@@ -2,9 +2,9 @@
 import { ArrowPathIcon, CheckIcon, MagnifyingGlassIcon, XCircleIcon, XMarkIcon } from "@heroicons/react/24/outline";
 import clsx from "clsx";
 import { useEffect, useState, useMemo } from "react";
-import { Tooltip } from "@/components/blocks/client/shared/Tooltip";
-import { InputWithIcon } from "@/components/blocks/Input";
-import { InputSkeleton, TextSkeleton } from "@/components/blocks/Skeletons";
+import { Tooltip } from "@/components/client/shared/Tooltip";
+import { InputWithIcon } from "@/components/Input";
+import { InputSkeleton, TextSkeleton } from "@/components/Skeletons";
 
 export function DiscordCommands({ commands, categories }) {
  const [filteredCategories, setFilteredCategories] = useState([]);

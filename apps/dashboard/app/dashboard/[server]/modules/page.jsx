@@ -5,11 +5,11 @@ import { getGuildMember, getServer } from "@majoexe/util/functions";
 import clsx from "clsx";
 import { getSession } from "lib/session";
 import { redirect } from "next/navigation";
-import { Block } from "@/components/blocks/Block";
-import { UpdateCategories } from "@/components/blocks/client/commandModules/UpdateCategories";
-import { UpdateCommands } from "@/components/blocks/client/commandModules/UpdateCommands";
-import { Tooltip } from "@/components/blocks/client/shared/Tooltip";
-import { Header1, Header2, Header3 } from "@/components/blocks/Headers";
+import { Block } from "@/components/Block";
+import { UpdateCategories } from "@/components/client/commandModules/UpdateCategories";
+import { UpdateCommands } from "@/components/client/commandModules/UpdateCommands";
+import { Tooltip } from "@/components/client/shared/Tooltip";
+import { Header1, Header2, Header3 } from "@/components/Headers";
 
 export default async function Settings({ params }) {
  const session = await getSession();

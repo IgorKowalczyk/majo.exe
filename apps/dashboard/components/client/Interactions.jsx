@@ -3,7 +3,7 @@
 import clsx from "clsx";
 import { useState } from "react";
 import { toast } from "sonner";
-import Image from "@/components/blocks/client/shared/Image";
+import Image from "@/components/client/shared/Image";
 
 export function HomepageLevelUp({ logo }) {
  const [level, setLevel] = useState(2);

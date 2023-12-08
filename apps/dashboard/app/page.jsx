@@ -7,13 +7,13 @@ import avatar01 from "public/assets/avatars/01.webp";
 import ray from "public/assets/ray.png";
 import tada from "public/assets/tada.svg";
 import Balancer from "react-wrap-balancer";
-import GlobeClient from "@/components/blocks/client/Globe";
-import { AddReaction, HomepageLevelUp } from "@/components/blocks/client/Interactions";
-import Image from "@/components/blocks/client/shared/Image";
-import { GradientHeader, Header1 } from "@/components/blocks/Headers";
-import { Invite } from "@/components/blocks/Invite";
-import { Typing } from "@/components/blocks/Loaders";
-import { Login } from "@/components/blocks/Login";
+import GlobeClient from "@/components/client/Globe";
+import { AddReaction, HomepageLevelUp } from "@/components/client/Interactions";
+import Image from "@/components/client/shared/Image";
+import { GradientHeader, Header1 } from "@/components/Headers";
+import { Invite } from "@/components/Invite";
+import { Typing } from "@/components/Loaders";
+import { Login } from "@/components/Login";
 
 export default async function Main() {
  const allCommands = await prismaClient.commands.findMany({

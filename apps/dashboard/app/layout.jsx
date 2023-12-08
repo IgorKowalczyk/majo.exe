@@ -5,13 +5,13 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 import { GeistSans } from "geist/font/sans";
 import { Toaster } from "sonner";
 import { twMerge } from "tailwind-merge";
-import ProgressBar from "@/components/blocks/client/shared/ProgressBar";
-import { Session } from "@/components/blocks/client/shared/Session";
-import { Footer } from "@/components/blocks/Footer";
-import { Hotjar } from "@/components/blocks/Hotjar";
-import { TailwindIndicator } from "@/components/blocks/TailwindIndicator";
+import ProgressBar from "@/components/client/shared/ProgressBar";
+import { Session } from "@/components/client/shared/Session";
+import { Footer } from "@/components/Footer";
+import { Hotjar } from "@/components/Hotjar";
 import { VisibilityProvider } from "@/components/nav/client/VisibilityContext";
 import { Nav } from "@/components/nav/server/Nav";
+import { TailwindIndicator } from "@/components/TailwindIndicator";
 import "styles/globals.css";
 //import { Inter } from "next/font/google";
 

@@ -5,11 +5,11 @@ import { getServer, getGuildPreview } from "@majoexe/util/functions";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import Balancer from "react-wrap-balancer";
-import { Block } from "@/components/blocks/Block";
-import { Leaderboard } from "@/components/blocks/client/lists/Leaderboard";
-import Image from "@/components/blocks/client/shared/Image";
-import { Tooltip } from "@/components/blocks/client/shared/Tooltip";
-import { Header1, Header4, Header5 } from "@/components/blocks/Headers";
+import { Block } from "@/components/Block";
+import { Leaderboard } from "@/components/client/lists/Leaderboard";
+import Image from "@/components/client/shared/Image";
+import { Tooltip } from "@/components/client/shared/Tooltip";
+import { Header1, Header4, Header5 } from "@/components/Headers";
 
 export async function generateMetadata({ params }) {
  const { server } = params;

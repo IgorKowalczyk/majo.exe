@@ -4,10 +4,10 @@ import { getSession } from "lib/session";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import { getProviders } from "next-auth/react";
-import Image from "@/components/blocks/client/shared/Image";
-import { Header1 } from "@/components/blocks/Headers";
-import { Dots } from "@/components/blocks/Loaders";
-import { ProviderLogin } from "@/components/blocks/Provider";
+import Image from "@/components/client/shared/Image";
+import { Header1 } from "@/components/Headers";
+import { Dots } from "@/components/Loaders";
+import { ProviderLogin } from "@/components/Provider";
 
 export const metadata = {
  title: "Login",

@@ -6,11 +6,11 @@ import { formatNumber, getFlags, getGuildMember, getServer } from "@majoexe/util
 import { getSession } from "lib/session";
 import Link from "next/link";
 import { redirect } from "next/navigation";
-import { Block } from "@/components/blocks/Block";
-import { ManageWarns } from "@/components/blocks/client/lists/Warns";
-import Image from "@/components/blocks/client/shared/Image";
-import { Tooltip } from "@/components/blocks/client/shared/Tooltip";
-import { Emojis } from "@/components/blocks/emojis";
+import { Block } from "@/components/Block";
+import { ManageWarns } from "@/components/client/lists/Warns";
+import Image from "@/components/client/shared/Image";
+import { Tooltip } from "@/components/client/shared/Tooltip";
+import { Emojis } from "@/components/emojis";
 
 export async function generateMetadata({ params }) {
  const { id, server } = params;

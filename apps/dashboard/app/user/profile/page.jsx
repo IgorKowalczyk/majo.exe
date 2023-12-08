@@ -3,11 +3,11 @@ import { getFlags } from "@majoexe/util/functions";
 import { getSession } from "lib/session";
 import Link from "next/link";
 import { redirect } from "next/navigation";
-import DeleteAccount from "@/components/blocks/client/settings/DeleteUserData";
-import Image from "@/components/blocks/client/shared/Image";
-import { Tooltip } from "@/components/blocks/client/shared/Tooltip";
-import { Emojis } from "@/components/blocks/emojis";
-import { PrimaryButton } from "@/components/blocks/Primary";
+import DeleteAccount from "@/components/client/settings/DeleteUserData";
+import Image from "@/components/client/shared/Image";
+import { Tooltip } from "@/components/client/shared/Tooltip";
+import { Emojis } from "@/components/emojis";
+import { PrimaryButton } from "@/components/Primary";
 
 export default async function Profile() {
  const user = await getSession();

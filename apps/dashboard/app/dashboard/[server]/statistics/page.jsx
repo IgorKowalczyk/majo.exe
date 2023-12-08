@@ -6,8 +6,8 @@ import { getGuildMember, getServer } from "@majoexe/util/functions";
 import { json2csv } from "json-2-csv";
 import { getSession } from "lib/session";
 import { redirect } from "next/navigation";
-import { GraphCard } from "@/components/blocks/Card";
-import { ServerStatsChart } from "@/components/blocks/client/charts/ServerStatsChart";
+import { GraphCard } from "@/components/Card";
+import { ServerStatsChart } from "@/components/client/charts/ServerStatsChart";
 
 export default async function Statistics({ params }) {
  const session = await getSession();

@@ -5,10 +5,10 @@ import { dashboardConfig, globalConfig } from "@majoexe/config";
 import { useState } from "react";
 import { HexColorPicker } from "react-colorful";
 import { toast } from "sonner";
-import Image from "@/components/blocks/client/shared/Image";
-import { Input } from "@/components/blocks/Input";
-import { PrimaryButton } from "@/components/blocks/Primary";
-import { SecondaryButton } from "@/components/blocks/Secondary";
+import Image from "@/components/client/shared/Image";
+import { Input } from "@/components/Input";
+import { PrimaryButton } from "@/components/Primary";
+import { SecondaryButton } from "@/components/Secondary";
 
 export function ChangeEmbedColor({ serverId, serverColor }) {
  const [color, setColor] = useState(serverColor ?? globalConfig.defaultColor);

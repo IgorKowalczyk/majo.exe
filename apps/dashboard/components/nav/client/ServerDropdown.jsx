@@ -6,7 +6,7 @@ import Link from "next/link";
 import { useParams } from "next/navigation";
 import { Fragment } from "react";
 import { useState } from "react";
-import Image from "@/components/blocks/client/shared/Image";
+import Image from "@/components/client/shared/Image";
 import { SWR } from "@/lib/swr";
 
 export function ServerDropdown() {

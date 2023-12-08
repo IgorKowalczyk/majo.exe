@@ -3,11 +3,11 @@ import { dashboardConfig } from "@majoexe/config";
 import clsx from "clsx";
 import { getSession } from "lib/session";
 import Link from "next/link";
-import Image from "@/components/blocks/client/shared/Image";
-import { Invite } from "@/components/blocks/Invite";
-import { ProviderLogin } from "@/components/blocks/Provider";
+import Image from "@/components/client/shared/Image";
+import { Invite } from "@/components/Invite";
 import { SideMenuControl } from "@/components/nav/client/SideMenuControl";
 import { UserMenuDropdown } from "@/components/nav/client/UserMenuDropdown";
+import { ProviderLogin } from "@/components/Provider";
 
 export async function Nav({ theme }) {
  const session = await getSession();

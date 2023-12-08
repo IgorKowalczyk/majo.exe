@@ -1,6 +1,6 @@
-import { Block } from "@/components/blocks/Block";
-import { Header4, Header5 } from "@/components/blocks/Headers";
-import { EmbedSkeleton, TextSkeleton } from "@/components/blocks/Skeletons";
+import { Block } from "@/components/Block";
+import { Header4, Header5 } from "@/components/Headers";
+import { EmbedSkeleton, TextSkeleton } from "@/components/Skeletons";
 
 export default function Loading() {
  return (

@@ -4,13 +4,13 @@ import { ClockIcon, HashtagIcon, UserGroupIcon, ChatBubbleBottomCenterIcon, Info
 import clsx from "clsx";
 import { useState } from "react";
 import { toast } from "sonner";
-import { Block } from "@/components/blocks/Block";
-import { ChannelsSelect } from "@/components/blocks/client/shared/ChannelsSelect";
-import { RolesSelect } from "@/components/blocks/client/shared/RolesSelect";
-import Switch from "@/components/blocks/client/shared/Switch";
-import { TimeSelect } from "@/components/blocks/client/shared/TimeSelect";
-import { Tooltip } from "@/components/blocks/client/shared/Tooltip";
-import { PrimaryButton } from "@/components/blocks/Primary";
+import { Block } from "@/components/Block";
+import { ChannelsSelect } from "@/components/client/shared/ChannelsSelect";
+import { RolesSelect } from "@/components/client/shared/RolesSelect";
+import Switch from "@/components/client/shared/Switch";
+import { TimeSelect } from "@/components/client/shared/TimeSelect";
+import { Tooltip } from "@/components/client/shared/Tooltip";
+import { PrimaryButton } from "@/components/Primary";
 
 export function AntiInvite({ serverId, enabled, existingActions, existingExemptRoles, existingExemptChannels, allRoles, allChannels }) {
  const [isEnabled, setIsEnabled] = useState(enabled ?? false);

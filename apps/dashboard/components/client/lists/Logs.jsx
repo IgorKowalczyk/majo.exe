@@ -7,10 +7,10 @@ import Link from "next/link";
 import React, { useState, useRef, useEffect } from "react";
 import InfiniteScroll from "react-infinite-scroller";
 import { Disclosure } from "../shared/Disclosure";
-import Image from "@/components/blocks/client/shared/Image";
-import { Tooltip } from "@/components/blocks/client/shared/Tooltip";
-import { InputWithIcon } from "@/components/blocks/Input";
-import { GraphSkeleton } from "@/components/blocks/Skeletons";
+import Image from "@/components/client/shared/Image";
+import { Tooltip } from "@/components/client/shared/Tooltip";
+import { InputWithIcon } from "@/components/Input";
+import { GraphSkeleton } from "@/components/Skeletons";
 
 export default function Logs({ initialItems, id }) {
  const fetching = useRef(false);

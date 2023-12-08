@@ -1,6 +1,6 @@
 import { RectangleStackIcon } from "@heroicons/react/24/outline";
-import { Header1 } from "@/components/blocks/Headers";
-import { AvatarSkeleton, TextSkeleton, ButtonSkeleton } from "@/components/blocks/Skeletons";
+import { Header1 } from "@/components/Headers";
+import { AvatarSkeleton, TextSkeleton, ButtonSkeleton } from "@/components/Skeletons";
 
 export default function Loading() {
  return (

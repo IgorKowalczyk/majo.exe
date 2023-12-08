@@ -4,9 +4,9 @@ import { Menu, Transition } from "@headlessui/react";
 import { ArrowDownTrayIcon, ChevronDownIcon, DocumentArrowDownIcon } from "@heroicons/react/24/outline";
 import fileDl from "js-file-download";
 import { Fragment } from "react";
-import { Block } from "@/components/blocks/Block";
-import AreaChart from "@/components/blocks/client/shared/AreaChart";
-import { Header4 } from "@/components/blocks/Headers";
+import { Block } from "@/components/Block";
+import AreaChart from "@/components/client/shared/AreaChart";
+import { Header4 } from "@/components/Headers";
 
 export function ServerStatsChart({ guildJoin, guildLeave, guildJoinCSV, guildLeaveCSV, guildMessage, guildMessageCSV }) {
  return (

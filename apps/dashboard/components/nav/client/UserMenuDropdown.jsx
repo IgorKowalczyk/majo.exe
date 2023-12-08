@@ -5,7 +5,7 @@ import { RectangleStackIcon, UserIcon, ArrowRightOnRectangleIcon, QuestionMarkCi
 import Link from "next/link";
 import { signOut } from "next-auth/react";
 import { Fragment } from "react";
-import Image from "@/components/blocks/client/shared/Image";
+import Image from "@/components/client/shared/Image";
 
 export function UserMenuDropdown({ user }) {
  return (

@@ -1,7 +1,7 @@
 import { SquaresPlusIcon, CubeIcon, CubeTransparentIcon } from "@heroicons/react/24/outline";
-import { Block } from "@/components/blocks/Block";
-import { Header1, Header2 } from "@/components/blocks/Headers";
-import { InputSkeleton, TextSkeleton } from "@/components/blocks/Skeletons";
+import { Block } from "@/components/Block";
+import { Header1, Header2 } from "@/components/Headers";
+import { InputSkeleton, TextSkeleton } from "@/components/Skeletons";
 
 export default async function Loading() {
  return (

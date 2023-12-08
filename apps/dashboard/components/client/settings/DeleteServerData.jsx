@@ -5,8 +5,8 @@ import { TrashIcon, ExclamationTriangleIcon, XMarkIcon, ArrowPathIcon } from "@h
 import { useRouter } from "next/navigation";
 import { Fragment, useState } from "react";
 import { toast } from "sonner";
-import { RedButton } from "@/components/blocks/Red";
-import { SecondaryButton } from "@/components/blocks/Secondary";
+import { RedButton } from "@/components/Red";
+import { SecondaryButton } from "@/components/Secondary";
 
 export default function DeleteServerData({ serverId }) {
  const [isOpen, setIsOpen] = useState(false);

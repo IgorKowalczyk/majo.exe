@@ -1,7 +1,7 @@
 import { QuestionMarkCircleIcon, ArrowLeftIcon } from "@heroicons/react/24/outline";
-import { Header1, HeaderBig } from "@/components/blocks/Headers";
-import { PrimaryButton } from "@/components/blocks/Primary";
-import { SecondaryButton } from "@/components/blocks/Secondary";
+import { Header1, HeaderBig } from "@/components/Headers";
+import { PrimaryButton } from "@/components/Primary";
+import { SecondaryButton } from "@/components/Secondary";
 import "styles/glitch.css";
 
 export default function NotFound() {

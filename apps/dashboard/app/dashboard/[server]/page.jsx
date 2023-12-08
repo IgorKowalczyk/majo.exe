@@ -6,12 +6,12 @@ import { getSession } from "lib/session";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import Balancer from "react-wrap-balancer";
-import { Block } from "@/components/blocks/Block";
-import { Leaderboard } from "@/components/blocks/client/lists/Leaderboard";
-import Image from "@/components/blocks/client/shared/Image";
-import { Tooltip } from "@/components/blocks/client/shared/Tooltip";
-import { Header4, Header5 } from "@/components/blocks/Headers";
-import { SecondaryButton } from "@/components/blocks/Secondary";
+import { Block } from "@/components/Block";
+import { Leaderboard } from "@/components/client/lists/Leaderboard";
+import Image from "@/components/client/shared/Image";
+import { Tooltip } from "@/components/client/shared/Tooltip";
+import { Header4, Header5 } from "@/components/Headers";
+import { SecondaryButton } from "@/components/Secondary";
 
 export const metadata = {
  title: "Server Overview",

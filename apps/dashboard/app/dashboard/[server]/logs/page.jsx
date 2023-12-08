@@ -3,9 +3,9 @@ import prismaClient from "@majoexe/database";
 import { getGuildMember, getServer } from "@majoexe/util/functions";
 import { getSession } from "lib/session";
 import { redirect } from "next/navigation";
-import { Block } from "@/components/blocks/Block";
-import Logs from "@/components/blocks/client/lists/Logs";
-import { Header1 } from "@/components/blocks/Headers";
+import { Block } from "@/components/Block";
+import Logs from "@/components/client/lists/Logs";
+import { Header1 } from "@/components/Headers";
 
 export const metadata = {
  title: "Server Logs",

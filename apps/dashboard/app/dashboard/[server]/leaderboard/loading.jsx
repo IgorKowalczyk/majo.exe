@@ -1,7 +1,7 @@
 import { SparklesIcon } from "@heroicons/react/24/outline";
-import { Block } from "@/components/blocks/Block";
-import { Header1 } from "@/components/blocks/Headers";
-import { EmbedSkeleton, TextSkeleton } from "@/components/blocks/Skeletons";
+import { Block } from "@/components/Block";
+import { Header1 } from "@/components/Headers";
+import { EmbedSkeleton, TextSkeleton } from "@/components/Skeletons";
 
 export default function Loading() {
  return (

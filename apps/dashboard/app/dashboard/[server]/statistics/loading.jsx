@@ -1,8 +1,8 @@
 import { ArrowPathIcon, UserMinusIcon, ChatBubbleLeftRightIcon, UserPlusIcon } from "@heroicons/react/24/outline";
-import { Block } from "@/components/blocks/Block";
-import { GraphCard } from "@/components/blocks/Card";
-import { Header4 } from "@/components/blocks/Headers";
-import { GraphSkeleton } from "@/components/blocks/Skeletons";
+import { Block } from "@/components/Block";
+import { GraphCard } from "@/components/Card";
+import { Header4 } from "@/components/Headers";
+import { GraphSkeleton } from "@/components/Skeletons";
 
 export default function Loading() {
  return (

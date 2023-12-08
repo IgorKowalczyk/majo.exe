@@ -1,6 +1,6 @@
 import { ArrowUturnLeftIcon, ExclamationTriangleIcon } from "@heroicons/react/24/outline";
 import Link from "next/link";
-import { Header1 } from "@/components/blocks/Headers";
+import { Header1 } from "@/components/Headers";
 
 export const metadata = {
  title: "Error",

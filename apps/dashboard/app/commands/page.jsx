@@ -1,10 +1,10 @@
 import { dashboardConfig } from "@majoexe/config";
 import prismaClient from "@majoexe/database";
 import Balancer from "react-wrap-balancer";
-import { Block } from "@/components/blocks/Block";
-import { DiscordCommands } from "@/components/blocks/client/commandModules/DiscordCommands";
-import Image from "@/components/blocks/client/shared/Image";
-import { Header1 } from "@/components/blocks/Headers";
+import { Block } from "@/components/Block";
+import { DiscordCommands } from "@/components/client/commandModules/DiscordCommands";
+import Image from "@/components/client/shared/Image";
+import { Header1 } from "@/components/Headers";
 
 export const metadata = {
  title: "Commands",
