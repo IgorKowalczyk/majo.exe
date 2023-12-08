@@ -5,8 +5,8 @@ import { dashboardConfig } from "@majoexe/config";
 import clsx from "clsx";
 import Link from "next/link";
 import { useSelectedLayoutSegment, usePathname } from "next/navigation";
-import { PrimaryButton } from "../buttons/server/Primary";
 import Image from "@/components/blocks/client/shared/Image";
+import { PrimaryButton } from "@/components/blocks/Primary";
 
 export function Footer() {
  const segment = useSelectedLayoutSegment();

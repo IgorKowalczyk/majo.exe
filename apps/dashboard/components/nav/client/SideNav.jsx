@@ -6,7 +6,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useContext } from "react";
 import { VisibilityContext } from "./VisibilityContext";
-import { PrimaryButton } from "@/components/buttons/server/Primary";
+import { PrimaryButton } from "@/components/blocks/Primary";
 
 export function NavBadge({ children }) {
  return <div className="bg-button-primary -mt-3 rounded-md px-1 py-px pb-0 text-xs uppercase">{children}</div>;

@@ -10,7 +10,7 @@ import { Block } from "@/components/blocks/Block";
 import { ManageWarns } from "@/components/blocks/client/lists/Warns";
 import Image from "@/components/blocks/client/shared/Image";
 import { Tooltip } from "@/components/blocks/client/shared/Tooltip";
-import { Emojis } from "@/components/decorations/emojis";
+import { Emojis } from "@/components/blocks/emojis";
 
 export async function generateMetadata({ params }) {
  const { id, server } = params;

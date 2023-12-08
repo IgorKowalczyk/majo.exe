@@ -3,8 +3,8 @@
 import { MagnifyingGlassIcon } from "@heroicons/react/24/outline";
 import { useEffect } from "react";
 import { useTable, useSortBy, usePagination, useGlobalFilter } from "react-table";
-import { InputWithIcon } from "@/components/buttons/server/Input";
-import { SecondaryButton } from "@/components/buttons/server/Secondary";
+import { InputWithIcon } from "@/components/blocks/Input";
+import { SecondaryButton } from "@/components/blocks/Secondary";
 
 export function Table({
  columns,

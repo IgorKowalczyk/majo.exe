@@ -6,8 +6,8 @@ import { redirect } from "next/navigation";
 import DeleteAccount from "@/components/blocks/client/settings/DeleteUserData";
 import Image from "@/components/blocks/client/shared/Image";
 import { Tooltip } from "@/components/blocks/client/shared/Tooltip";
-import { PrimaryButton } from "@/components/buttons/server/Primary";
-import { Emojis } from "@/components/decorations/emojis";
+import { Emojis } from "@/components/blocks/emojis";
+import { PrimaryButton } from "@/components/blocks/Primary";
 
 export default async function Profile() {
  const user = await getSession();

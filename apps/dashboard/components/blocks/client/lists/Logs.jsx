@@ -6,11 +6,11 @@ import { formatDate, formatDuration } from "@majoexe/util/functions";
 import Link from "next/link";
 import React, { useState, useRef, useEffect } from "react";
 import InfiniteScroll from "react-infinite-scroller";
-import { GraphSkeleton } from "../../Skeletons";
 import { Disclosure } from "../shared/Disclosure";
-import { Tooltip } from "../shared/Tooltip";
 import Image from "@/components/blocks/client/shared/Image";
-import { InputWithIcon } from "@/components/buttons/server/Input";
+import { Tooltip } from "@/components/blocks/client/shared/Tooltip";
+import { InputWithIcon } from "@/components/blocks/Input";
+import { GraphSkeleton } from "@/components/blocks/Skeletons";
 
 export default function Logs({ initialItems, id }) {
  const fetching = useRef(false);

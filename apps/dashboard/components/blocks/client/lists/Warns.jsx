@@ -5,12 +5,12 @@ import { formatDuration } from "@majoexe/util/functions";
 import { useRouter } from "next/navigation";
 import { useMemo, useState } from "react";
 import { toast } from "sonner";
-import { AvatarSkeleton, TextSkeleton } from "../../Skeletons";
 import Image from "@/components/blocks/client/shared/Image";
 import { Table } from "@/components/blocks/client/shared/Table";
 import { Tooltip } from "@/components/blocks/client/shared/Tooltip";
-import { RedButton } from "@/components/buttons/server/Red";
-import { SecondaryButton } from "@/components/buttons/server/Secondary";
+import { RedButton } from "@/components/blocks/Red";
+import { SecondaryButton } from "@/components/blocks/Secondary";
+import { AvatarSkeleton, TextSkeleton } from "@/components/blocks/Skeletons";
 
 export function Warns({ data, showControls = true, showSearch = true }) {
  const columns = useMemo(

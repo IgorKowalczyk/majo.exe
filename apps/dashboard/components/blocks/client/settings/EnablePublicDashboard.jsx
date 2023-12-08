@@ -4,9 +4,9 @@ import { ArrowPathIcon, CheckIcon, ExclamationCircleIcon } from "@heroicons/reac
 import clsx from "clsx";
 import { useState } from "react";
 import { toast } from "sonner";
-import Switch from "../shared/Switch";
-import { Input } from "@/components/buttons/server/Input";
-import { PrimaryButton } from "@/components/buttons/server/Primary";
+import Switch from "@/components/blocks/client/shared/Switch";
+import { Input } from "@/components/blocks/Input";
+import { PrimaryButton } from "@/components/blocks/Primary";
 
 export function EnablePublicDashboard({ enabled, serverId, vanityURL }) {
  const [isEnabled, setIsEnabled] = useState(enabled);

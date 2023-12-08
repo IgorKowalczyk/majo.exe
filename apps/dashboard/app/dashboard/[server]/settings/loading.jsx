@@ -1,9 +1,9 @@
 import { ArrowDownTrayIcon, CheckIcon, Cog6ToothIcon, ExclamationTriangleIcon, FolderArrowDownIcon, InformationCircleIcon, PaintBrushIcon, ShieldCheckIcon, TrashIcon, UsersIcon, XMarkIcon } from "@heroicons/react/24/outline";
 import { Block } from "@/components/blocks/Block";
 import { Header1 } from "@/components/blocks/Headers";
+import { PrimaryButton } from "@/components/blocks/Primary";
+import { RedButton } from "@/components/blocks/Red";
 import { GraphSkeleton, InputSkeleton, TextSkeleton } from "@/components/blocks/Skeletons";
-import { PrimaryButton } from "@/components/buttons/server/Primary";
-import { RedButton } from "@/components/buttons/server/Red";
 
 export default async function Loading() {
  return (

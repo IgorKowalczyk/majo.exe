@@ -4,8 +4,8 @@ import clsx from "clsx";
 import { getSession } from "lib/session";
 import Link from "next/link";
 import Image from "@/components/blocks/client/shared/Image";
-import { ProviderLogin } from "@/components/buttons/client/Provider";
-import { Invite } from "@/components/buttons/server/Invite";
+import { Invite } from "@/components/blocks/Invite";
+import { ProviderLogin } from "@/components/blocks/Provider";
 import { SideMenuControl } from "@/components/nav/client/SideMenuControl";
 import { UserMenuDropdown } from "@/components/nav/client/UserMenuDropdown";
 

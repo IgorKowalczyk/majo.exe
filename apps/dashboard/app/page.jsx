@@ -11,9 +11,9 @@ import GlobeClient from "@/components/blocks/client/Globe";
 import { AddReaction, HomepageLevelUp } from "@/components/blocks/client/Interactions";
 import Image from "@/components/blocks/client/shared/Image";
 import { GradientHeader, Header1 } from "@/components/blocks/Headers";
+import { Invite } from "@/components/blocks/Invite";
 import { Typing } from "@/components/blocks/Loaders";
-import { Invite } from "@/components/buttons/server/Invite";
-import { Login } from "@/components/buttons/server/Login";
+import { Login } from "@/components/blocks/Login";
 
 export default async function Main() {
  const allCommands = await prismaClient.commands.findMany({

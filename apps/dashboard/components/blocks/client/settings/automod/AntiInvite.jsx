@@ -10,7 +10,7 @@ import { RolesSelect } from "@/components/blocks/client/shared/RolesSelect";
 import Switch from "@/components/blocks/client/shared/Switch";
 import { TimeSelect } from "@/components/blocks/client/shared/TimeSelect";
 import { Tooltip } from "@/components/blocks/client/shared/Tooltip";
-import { PrimaryButton } from "@/components/buttons/server/Primary";
+import { PrimaryButton } from "@/components/blocks/Primary";
 
 export function AntiInvite({ serverId, enabled, existingActions, existingExemptRoles, existingExemptChannels, allRoles, allChannels }) {
  const [isEnabled, setIsEnabled] = useState(enabled ?? false);

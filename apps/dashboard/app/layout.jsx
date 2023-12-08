@@ -1,6 +1,7 @@
 import { ArrowPathIcon } from "@heroicons/react/24/outline";
 import { dashboardConfig } from "@majoexe/config";
 import { Analytics } from "@vercel/analytics/react";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import { GeistSans } from "geist/font/sans";
 import { Toaster } from "sonner";
 import { twMerge } from "tailwind-merge";
@@ -79,8 +80,9 @@ export default function RootLayout({ children }) {
        loadingIcon={<ArrowPathIcon className="h-5 w-5 animate-spin text-white" />}
        expand={false}
       />
-      <TailwindIndicator />
+      <SpeedInsights />
       <Analytics />
+      <TailwindIndicator />
      </VisibilityProvider>
     </body>
    </html>

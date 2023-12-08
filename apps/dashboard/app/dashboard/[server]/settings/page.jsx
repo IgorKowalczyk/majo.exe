@@ -9,7 +9,7 @@ import { ChangeEmbedColor } from "@/components/blocks/client/settings/ChangeEmbe
 import DeleteServerData from "@/components/blocks/client/settings/DeleteServerData";
 import { EnablePublicDashboard } from "@/components/blocks/client/settings/EnablePublicDashboard";
 import { Header1 } from "@/components/blocks/Headers";
-import { PrimaryButton } from "@/components/buttons/server/Primary";
+import { PrimaryButton } from "@/components/blocks/Primary";
 
 export default async function Settings({ params }) {
  const session = await getSession();

@@ -1,7 +1,7 @@
 "use client";
 
 import { signIn } from "next-auth/react";
-import { PrimaryButton } from "../server/Primary";
+import { PrimaryButton } from "@/components/blocks/Primary";
 
 export const ProvidersLogos = {
  discord: (

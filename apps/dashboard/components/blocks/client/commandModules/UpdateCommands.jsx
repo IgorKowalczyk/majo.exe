@@ -3,8 +3,8 @@
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { toast } from "sonner";
-import Switch from "../shared/Switch";
-import { Tooltip } from "../shared/Tooltip";
+import Switch from "@/components/blocks/client/shared/Switch";
+import { Tooltip } from "@/components/blocks/client/shared/Tooltip";
 
 export function UpdateCommands({ serverId, commandName, commandEnabled }) {
  const [enabled, setEnabled] = useState(commandEnabled);

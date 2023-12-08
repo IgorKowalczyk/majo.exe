@@ -8,8 +8,8 @@ import { redirect } from "next/navigation";
 import Image from "@/components/blocks/client/shared/Image";
 import { Refetch } from "@/components/blocks/client/shared/Refetch";
 import { Header1 } from "@/components/blocks/Headers";
-import { PrimaryButton } from "@/components/buttons/server/Primary";
-import { SecondaryButton } from "@/components/buttons/server/Secondary";
+import { PrimaryButton } from "@/components/blocks/Primary";
+import { SecondaryButton } from "@/components/blocks/Secondary";
 
 export default async function Dashboard() {
  const session = await getSession();

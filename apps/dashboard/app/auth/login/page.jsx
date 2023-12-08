@@ -7,7 +7,7 @@ import { getProviders } from "next-auth/react";
 import Image from "@/components/blocks/client/shared/Image";
 import { Header1 } from "@/components/blocks/Headers";
 import { Dots } from "@/components/blocks/Loaders";
-import { ProviderLogin } from "@/components/buttons/client/Provider";
+import { ProviderLogin } from "@/components/blocks/Provider";
 
 export const metadata = {
  title: "Login",

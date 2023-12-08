@@ -6,9 +6,9 @@ import { useState } from "react";
 import { HexColorPicker } from "react-colorful";
 import { toast } from "sonner";
 import Image from "@/components/blocks/client/shared/Image";
-import { Input } from "@/components/buttons/server/Input";
-import { PrimaryButton } from "@/components/buttons/server/Primary";
-import { SecondaryButton } from "@/components/buttons/server/Secondary";
+import { Input } from "@/components/blocks/Input";
+import { PrimaryButton } from "@/components/blocks/Primary";
+import { SecondaryButton } from "@/components/blocks/Secondary";
 
 export function ChangeEmbedColor({ serverId, serverColor }) {
  const [color, setColor] = useState(serverColor ?? globalConfig.defaultColor);

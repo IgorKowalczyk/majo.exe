@@ -11,7 +11,7 @@ import { Leaderboard } from "@/components/blocks/client/lists/Leaderboard";
 import Image from "@/components/blocks/client/shared/Image";
 import { Tooltip } from "@/components/blocks/client/shared/Tooltip";
 import { Header4, Header5 } from "@/components/blocks/Headers";
-import { SecondaryButton } from "@/components/buttons/server/Secondary";
+import { SecondaryButton } from "@/components/blocks/Secondary";
 
 export const metadata = {
  title: "Server Overview",
