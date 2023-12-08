@@ -2,7 +2,7 @@ import { ArrowUturnRightIcon } from "@heroicons/react/24/outline";
 import { getSession } from "lib/session";
 import Link from "next/link";
 import { twMerge } from "tailwind-merge";
-import { ProviderLogin } from "@/components/Provider";
+import { ProviderLogin } from "@/components/client/ProviderLogin";
 
 export function ButtonPrimary({ children, type = "default", ...props }) {
  if (type === "default") {

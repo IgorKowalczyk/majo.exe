@@ -1,13 +1,13 @@
-import { RectangleStackIcon } from "@heroicons/react/24/outline";
+import { RectangleStackIcon, UserPlusIcon } from "@heroicons/react/24/outline";
 import { dashboardConfig } from "@majoexe/config";
 import clsx from "clsx";
 import { getSession } from "lib/session";
 import Link from "next/link";
+import { ButtonSecondary } from "@/components/Buttons";
+import { ProviderLogin } from "@/components/client/ProviderLogin";
 import Image from "@/components/client/shared/Image";
-import { Invite } from "@/components/Invite";
 import { SideMenuControl } from "@/components/nav/client/SideMenuControl";
 import { UserMenuDropdown } from "@/components/nav/client/UserMenuDropdown";
-import { ProviderLogin } from "@/components/Provider";
 
 export async function Nav({ theme }) {
  const session = await getSession();
@@ -51,7 +51,10 @@ export async function Nav({ theme }) {
      ) : (
       <div className="flex items-center justify-center gap-2">
        <div className="hidden md:block">
-        <Invite />
+        <ButtonSecondary href="/api/invite">
+         <UserPlusIcon className="min-h-5 min-w-5 mr-2 h-5 w-5" aria-hidden="true" role="img" />
+         Add to your server
+        </ButtonSecondary>
        </div>
        <ProviderLogin provider={{ id: "discord", name: "Discord" }} />
       </div>

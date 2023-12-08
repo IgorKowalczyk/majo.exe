@@ -1,4 +1,4 @@
-import { ArrowRightIcon, ArrowTrendingUpIcon, CheckIcon } from "@heroicons/react/24/outline";
+import { ArrowRightIcon, ArrowTrendingUpIcon, CheckIcon, UserPlusIcon } from "@heroicons/react/24/outline";
 import { dashboardConfig, globalConfig } from "@majoexe/config";
 import prismaClient from "@majoexe/database";
 import { formatNumber } from "@majoexe/util/functions";
@@ -7,12 +7,11 @@ import avatar01 from "public/assets/avatars/01.webp";
 import ray from "public/assets/ray.png";
 import tada from "public/assets/tada.svg";
 import Balancer from "react-wrap-balancer";
-import { LoginButton } from "@/components/Buttons";
+import { ButtonSecondary, LoginButton } from "@/components/Buttons";
 import GlobeClient from "@/components/client/Globe";
 import { AddReaction, HomepageLevelUp } from "@/components/client/Interactions";
 import Image from "@/components/client/shared/Image";
 import { GradientHeader, Header1 } from "@/components/Headers";
-import { Invite } from "@/components/Invite";
 import { Typing } from "@/components/Loaders";
 
 export default async function Main() {
@@ -49,7 +48,10 @@ export default async function Main() {
      </h2>
      <div className="mt-2 flex flex-col gap-4 sm:flex-row">
       <LoginButton />
-      <Invite />
+      <ButtonSecondary href="/api/invite">
+       <UserPlusIcon className="min-h-5 min-w-5 mr-2 h-5 w-5" aria-hidden="true" role="img" />
+       Add to your server
+      </ButtonSecondary>
      </div>
     </div>
     <Image alt="Background" width={1000} height={1000} className="pointer-events-none absolute -top-20 left-0 right-0 z-0 mx-auto hidden h-full w-full select-none lg:block" src={ray} loading={"eager"} />
