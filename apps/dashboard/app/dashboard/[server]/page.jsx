@@ -7,11 +7,11 @@ import Link from "next/link";
 import { redirect } from "next/navigation";
 import Balancer from "react-wrap-balancer";
 import { Block } from "@/components/Block";
+import { ButtonSecondary } from "@/components/Buttons";
 import { Leaderboard } from "@/components/client/lists/Leaderboard";
 import Image from "@/components/client/shared/Image";
 import { Tooltip } from "@/components/client/shared/Tooltip";
 import { Header4, Header5 } from "@/components/Headers";
-import { SecondaryButton } from "@/components/Secondary";
 
 export const metadata = {
  title: "Server Overview",
@@ -98,10 +98,10 @@ export default async function ServerOverview({ params }) {
      </div>
     </div>
     {guild.publicPage ? (
-     <SecondaryButton href={`/server/${guild.vanity || serverDownload.id}`} className={"mx-auto !flex flex-row whitespace-nowrap sm:ml-auto sm:mr-0"} target="_blank" rel="noreferrer noopener">
+     <ButtonSecondary href={`/server/${guild.vanity || serverDownload.id}`} className={"mx-auto !flex flex-row whitespace-nowrap sm:ml-auto sm:mr-0"} target="_blank" rel="noreferrer noopener">
       <ArrowTopRightOnSquareIcon className="min-h-5 min-w-5 mr-2 h-5 w-5" aria-hidden="true" role="img" />
       Server page
-     </SecondaryButton>
+     </ButtonSecondary>
     ) : (
      <span className="mx-auto whitespace-nowrap sm:ml-auto sm:mr-0">Powered by Majo.exe</span>
     )}

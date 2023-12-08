@@ -3,8 +3,8 @@
 import { MagnifyingGlassIcon } from "@heroicons/react/24/outline";
 import { useEffect } from "react";
 import { useTable, useSortBy, usePagination, useGlobalFilter } from "react-table";
+import { ButtonSecondary } from "@/components/Buttons";
 import { InputWithIcon } from "@/components/Input";
-import { SecondaryButton } from "@/components/Secondary";
 
 export function Table({
  columns,
@@ -106,16 +106,16 @@ export function Table({
 
     {showControls && (
      <div className="mt-2 flex items-center justify-between border-t border-t-neutral-800 pt-2 text-gray-600">
-      <SecondaryButton onClick={() => previousPage()} disabled={!canPreviousPage} className={"!w-fit"}>
+      <ButtonSecondary onClick={() => previousPage()} disabled={!canPreviousPage} className={"!w-fit"}>
        Previous
-      </SecondaryButton>
+      </ButtonSecondary>
       <div>
        Page {pageIndex + 1} of {pageOptions.length}
       </div>
       <div className="flex items-center space-x-2">
-       <SecondaryButton onClick={() => nextPage()} disabled={!canNextPage} className={"!w-fit"}>
+       <ButtonSecondary onClick={() => nextPage()} disabled={!canNextPage} className={"!w-fit"}>
         Next
-       </SecondaryButton>
+       </ButtonSecondary>
       </div>
      </div>
     )}

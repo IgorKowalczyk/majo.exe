@@ -4,7 +4,7 @@ import { ArrowPathIcon } from "@heroicons/react/24/outline";
 import clsx from "clsx";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
-import { SecondaryButton } from "@/components/Secondary";
+import { ButtonSecondary } from "@/components/Buttons";
 
 export function Refetch() {
  const router = useRouter();
@@ -16,7 +16,7 @@ export function Refetch() {
  };
 
  return (
-  <SecondaryButton onClick={handleClick}>
+  <ButtonSecondary onClick={handleClick}>
    <ArrowPathIcon
     className={clsx(
      {
@@ -28,6 +28,6 @@ export function Refetch() {
     role="img"
    />{" "}
    Refetch
-  </SecondaryButton>
+  </ButtonSecondary>
  );
 }

@@ -1,7 +1,7 @@
 import { QuestionMarkCircleIcon, ArrowLeftIcon } from "@heroicons/react/24/outline";
+import { ButtonPrimary } from "@/components/Buttons";
+import { ButtonSecondary } from "@/components/Buttons";
 import { Header1, HeaderBig } from "@/components/Headers";
-import { PrimaryButton } from "@/components/Primary";
-import { SecondaryButton } from "@/components/Secondary";
 import "styles/glitch.css";
 
 export default function NotFound() {
@@ -15,13 +15,13 @@ export default function NotFound() {
     <Header1 className={"!justify-center text-center"}>Sorry, page not found!</Header1>
     <h2 className="text-center text-xl opacity-50">We're sorry we can't find the page you're looking for.</h2>
     <div className="flex gap-4">
-     <PrimaryButton href="/">
+     <ButtonPrimary href="/">
       <ArrowLeftIcon className="min-h-5 min-w-5 mr-2 h-5 w-5" aria-hidden="true" role="img" />
       Go back home
-     </PrimaryButton>
-     <SecondaryButton href="/discord">
+     </ButtonPrimary>
+     <ButtonSecondary href="/discord">
       <QuestionMarkCircleIcon className="min-h-5 min-w-5 mr-2 h-5 w-5" aria-hidden="true" role="img" /> Contact support
-     </SecondaryButton>
+     </ButtonSecondary>
     </div>
    </div>
   </div>

@@ -6,7 +6,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useContext } from "react";
 import { VisibilityContext } from "./VisibilityContext";
-import { PrimaryButton } from "@/components/Primary";
+import { ButtonPrimary } from "@/components/Buttons";
 
 export function NavBadge({ children }) {
  return <div className="bg-button-primary -mt-3 rounded-md px-1 py-px pb-0 text-xs uppercase">{children}</div>;
@@ -38,9 +38,9 @@ export function SideNav({ server }) {
     )}
    >
     <div className="px-4">
-     <PrimaryButton href="/dashboard" className="mb-4 w-full">
+     <ButtonPrimary href="/dashboard" className="mb-4 w-full">
       <ArrowLeftIcon className="min-h-5 min-w-5 mr-2 h-5 w-5 cursor-pointer text-white" /> Go back
-     </PrimaryButton>
+     </ButtonPrimary>
     </div>
 
     <div className="flex w-full flex-col items-center justify-center gap-2 border-t border-t-neutral-800 px-4 pt-4">

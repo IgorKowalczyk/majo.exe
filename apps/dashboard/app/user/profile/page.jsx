@@ -3,11 +3,11 @@ import { getFlags } from "@majoexe/util/functions";
 import { getSession } from "lib/session";
 import Link from "next/link";
 import { redirect } from "next/navigation";
+import { ButtonPrimary } from "@/components/Buttons";
 import DeleteAccount from "@/components/client/settings/DeleteUserData";
 import Image from "@/components/client/shared/Image";
 import { Tooltip } from "@/components/client/shared/Tooltip";
 import { Emojis } from "@/components/emojis";
-import { PrimaryButton } from "@/components/Primary";
 
 export default async function Profile() {
  const user = await getSession();
@@ -75,10 +75,10 @@ export default async function Profile() {
      <p className="mt-2 leading-none text-white/70">
       Download all your data in a <code>.json</code> file. This includes your profile, data from all servers you are in and more.
      </p>
-     <PrimaryButton className="mt-4 w-fit" href="/api/user/download" target="_blank">
+     <ButtonPrimary className="mt-4 w-fit" href="/api/user/download" target="_blank">
       <FolderArrowDownIcon className="mr-2 inline-block h-5 w-5 " aria-hidden="true" role="img" />
       Download data
-     </PrimaryButton>
+     </ButtonPrimary>
     </div>
 
     <div className="bg-background-navbar relative overflow-hidden rounded-lg border border-red-400/50 p-4 md:w-full">

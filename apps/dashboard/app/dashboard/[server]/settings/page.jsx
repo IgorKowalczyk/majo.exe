@@ -5,11 +5,11 @@ import { getGuildMember, getPermissionNames, getServer } from "@majoexe/util/fun
 import { getSession } from "lib/session";
 import { redirect } from "next/navigation";
 import { Block } from "@/components/Block";
+import { ButtonPrimary } from "@/components/Buttons";
 import { ChangeEmbedColor } from "@/components/client/settings/ChangeEmbedColor";
 import DeleteServerData from "@/components/client/settings/DeleteServerData";
 import { EnablePublicDashboard } from "@/components/client/settings/EnablePublicDashboard";
 import { Header1 } from "@/components/Headers";
-import { PrimaryButton } from "@/components/Primary";
 
 export default async function Settings({ params }) {
  const session = await getSession();
@@ -133,10 +133,10 @@ export default async function Settings({ params }) {
     <p className="mt-2 leading-none text-white/70">
      Download all server data in a <code>.json</code> file. This includes logs, settings, moderation and more.
     </p>
-    <PrimaryButton className="mt-4 w-fit" href={`/api/settings/download/${serverDownload.id}`} target="_blank">
+    <ButtonPrimary className="mt-4 w-fit" href={`/api/settings/download/${serverDownload.id}`} target="_blank">
      <FolderArrowDownIcon className="mr-2 inline-block h-5 w-5 " aria-hidden="true" role="img" />
      Download data
-    </PrimaryButton>
+    </ButtonPrimary>
    </Block>
    <div className="bg-background-navbar relative mt-4 overflow-hidden rounded-lg border border-red-400/50 p-4 md:w-full">
     <h2 className="mb-1 flex items-center justify-start gap-2 text-left text-2xl font-semibold text-red-400">

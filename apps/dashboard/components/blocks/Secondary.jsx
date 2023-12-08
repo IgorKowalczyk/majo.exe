@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { twMerge } from "tailwind-merge";
 
-export function SecondaryButton({ children, ...props }) {
+export function ButtonSecondary({ children, ...props }) {
  if (props && props.href) {
   return (
    <Link {...props} className={twMerge(props.className, "bg-button-secondary hover:bg-button-secondary-hover disabled:bg-button-secondary/30 hover:disabled:bg-button-secondary-hover/40 flex cursor-pointer items-center rounded px-4 py-2 leading-6 text-white duration-200 disabled:cursor-not-allowed motion-reduce:transition-none")}>
