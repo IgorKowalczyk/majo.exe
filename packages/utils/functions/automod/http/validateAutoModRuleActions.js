@@ -100,7 +100,7 @@ export async function validateAutoModRuleActions(data, allChannels, dueToMessage
    }
 
    const getChannelPermissions = await getChannelPermissionsAPI.json();
-   const parsedActionPermissions = getPermissionNames(getChannelPermissions.permissions || 0n);
+   const parsedActionPermissions = getPermissionNames(getChannelPermissions.permission_overwrites.find((p) => p.id === process.env.CLIENT_ID)?.allow ?? 0n);
 
    if (!parsedActionPermissions.includes("VIEW_CHANNEL") || !parsedActionPermissions.includes("SEND_MESSAGES")) {
     return {
