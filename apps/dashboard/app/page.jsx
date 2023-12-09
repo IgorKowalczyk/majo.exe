@@ -7,12 +7,13 @@ import avatar01 from "public/assets/avatars/01.webp";
 import ray from "public/assets/ray.png";
 import tada from "public/assets/tada.svg";
 import Balancer from "react-wrap-balancer";
-import { ButtonSecondary, LoginButton } from "@/components/Buttons";
+import { ButtonSecondary } from "@/components/Buttons";
 import GlobeClient from "@/components/client/Globe";
 import { AddReaction, HomepageLevelUp } from "@/components/client/Interactions";
 import Image from "@/components/client/shared/Image";
 import { GradientHeader, Header1 } from "@/components/Headers";
 import { Typing } from "@/components/Loaders";
+import { LoginButton } from "@/components/LoginButton";
 
 export default async function Main() {
  const allCommands = await prismaClient.commands.findMany({
