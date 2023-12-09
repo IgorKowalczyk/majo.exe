@@ -332,7 +332,7 @@ export async function POST(request) {
       },
      }
     );
-   } else if (timeoutAction.metadata.duration_seconds < 60 || timeoutAction.metadata.duration_seconds > 2419200) {
+   } else if ((timeoutAction.metadata.duration_seconds < 60 || timeoutAction.metadata.duration_seconds > 2419200) && timeoutAction.metadata.duration_seconds !== 0) {
     return NextResponse.json(
      {
       error: "Timeout duration must be between 60 seconds and 28 days",
