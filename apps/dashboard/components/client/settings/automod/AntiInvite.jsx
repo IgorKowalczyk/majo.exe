@@ -161,7 +161,7 @@ export function AntiInvite({ serverId, enabled, existingActions, existingExemptR
       </Tooltip>
       <TimeSelect // prettier
        selectedChoice={actions.find((action) => action.type === 3)?.metadata?.duration_seconds || 0}
-       setSelectedChoice={(value) => setActions(actions.map((action) => (action.type === 3 ? { ...action, metadata: { duration_seconds: value } } : action)))}
+       setSelectedChoice={(value) => setActions(actions.some((action) => action.type === 3) ? actions.map((action) => (action.type === 3 ? { ...action, metadata: { duration_seconds: value } } : action)) : [...actions, { type: 3, metadata: { duration_seconds: value } }])}
       />
      </div>
 
@@ -174,8 +174,8 @@ export function AntiInvite({ serverId, enabled, existingActions, existingExemptR
       </Tooltip>
       <ChannelsSelect // prettier
        allChannels={[{ id: "1", name: "Disabled", type: 0 }, ...allChannels]}
-       exemptChannels={actions.find((action) => action.type === 2)?.metadata?.channel_id || 1}
-       setExemptChannels={(value) => setActions(actions.map((action) => (action.type === 2 ? { ...action, metadata: { channel_id: value } } : action)))}
+       exemptChannels={actions.find((action) => action.type === 2)?.metadata?.channel_id || "1"}
+       setExemptChannels={(value) => setActions(actions.some((action) => action.type === 2) ? actions.map((action) => (action.type === 2 ? { ...action, metadata: { channel_id: value } } : action)) : [...actions, { type: 2, metadata: { channel_id: value } }])}
        multiple={false}
       />
      </div>

@@ -3,10 +3,11 @@
 import { globalConfig } from "@majoexe/config";
 import prismaClient from "@majoexe/database";
 import { syncAutoModRule } from "@majoexe/util/database";
-import { getServer, getGuildMember, getPermissionNames } from "@majoexe/util/functions";
+import { getServer, getGuildMember } from "@majoexe/util/functions";
 import { AutoModerationRuleTriggerType, AutoModerationRuleEventType, AutoModerationActionType, ChannelType } from "discord-api-types/v10";
 import { getSession } from "lib/session";
 import { NextResponse } from "next/server";
+import { validateActions } from "./validateActions";
 
 export async function POST(request) {
  try {
@@ -32,12 +33,29 @@ export async function POST(request) {
   const cloned = await request.clone();
   const data = await cloned.json();
 
-  if (data?.actions?.length === 0) {
+  if (!data) {
+   return NextResponse.json(
+    {
+     error: "Bad Request - incomplete data",
+     code: 400,
+    },
+    {
+     status: 400,
+     headers: {
+      ...(process.env.NODE_ENV !== "production" && {
+       "Server-Timing": `response;dur=${Date.now() - start}ms`,
+      }),
+     },
+    }
+   );
+  }
+
+  if (!data.actions || data.actions.length === 0) {
    data.actions = [
     {
      type: AutoModerationActionType.BlockMessage,
      metadata: {
-      customMessage: "Message blocked due to containing an invite link. Rule added by Majo.exe",
+      custom_message: "Message blocked due to containing an invite link. Rule added by Majo.exe",
      },
     },
    ];
@@ -274,188 +292,26 @@ export async function POST(request) {
    }
   }
 
-  // ==================
-  // BLOCK MESSAGE
-  // ==================
-  let blockAction = data.actions.find((a) => a.type === AutoModerationActionType.BlockMessage);
+  const validatedActions = await validateActions(data.actions, allChannels, "Message blocked due to containing an invite link. Rule added by Majo.exe");
 
-  if (blockAction) {
-   if (!blockAction.metadata) {
-    return NextResponse.json(
-     {
-      error: "Cannot find the block message settings",
-      code: 400,
-     },
-     {
-      status: 400,
-      headers: {
-       ...(process.env.NODE_ENV !== "production" && {
-        "Server-Timing": `response;dur=${Date.now() - start}ms`,
-       }),
-      },
-     }
-    );
-   }
-
-   data.actions.find((a) => a.type === AutoModerationActionType.BlockMessage).metadata.customMessage = "Message blocked due to containing an invite link. Rule added by Majo.exe";
-  }
-
-  // ==================
-  // TIMEOUT MEMBER
-  // ==================
-  let timeoutAction = data.actions.find((a) => a.type === AutoModerationActionType.Timeout);
-
-  if (timeoutAction) {
-   if (!timeoutAction.metadata) {
-    return NextResponse.json(
-     {
-      error: "Cannot find the timeout settings",
-      code: 400,
-     },
-     {
-      status: 400,
-      headers: {
-       ...(process.env.NODE_ENV !== "production" && {
-        "Server-Timing": `response;dur=${Date.now() - start}ms`,
-       }),
-      },
-     }
-    );
-   }
-
-   if (!timeoutAction.metadata.duration_seconds) {
-    return NextResponse.json(
-     {
-      error: "Timeout duration must be between 60 seconds and 28 days",
-      code: 400,
-     },
-     {
-      status: 400,
-      headers: {
-       ...(process.env.NODE_ENV !== "production" && {
-        "Server-Timing": `response;dur=${Date.now() - start}ms`,
-       }),
-      },
-     }
-    );
-   } else if (timeoutAction.metadata.duration_seconds !== 0 && (timeoutAction.metadata.duration_seconds < 60 || timeoutAction.metadata.duration_seconds > 2419200)) {
-    return NextResponse.json(
-     {
-      error: "Timeout duration must be between 60 seconds and 28 days",
-      code: 400,
-     },
-     {
-      status: 400,
-      headers: {
-       ...(process.env.NODE_ENV !== "production" && {
-        "Server-Timing": `response;dur=${Date.now() - start}ms`,
-       }),
-      },
-     }
-    );
-   } else if (timeoutAction.metadata.duration_seconds === 0) {
-    const indexToDelete = data.actions.findIndex((a) => a.type === AutoModerationActionType.Timeout);
-    if (indexToDelete !== -1) data.actions.splice(indexToDelete, 1);
-    timeoutAction = null;
-   }
-  }
-
-  // ==================
-  // SEND ALERT MESSAGE
-  // ==================
-  let alertAction = data.actions.find((a) => a.type === AutoModerationActionType.SendAlertMessage);
-
-  if (alertAction) {
-   if (!alertAction.metadata) {
-    return NextResponse.json(
-     {
-      error: "Cannot find the alert settings",
-      code: 400,
-     },
-     {
-      status: 400,
-      headers: {
-       ...(process.env.NODE_ENV !== "production" && {
-        "Server-Timing": `response;dur=${Date.now() - start}ms`,
-       }),
-      },
-     }
-    );
-   }
-
-   if (alertAction.metadata.channel_id === "1") {
-    const indexToDelete = data.actions.findIndex((a) => a.type === AutoModerationActionType.SendAlertMessage);
-    if (indexToDelete !== -1) data.actions.splice(indexToDelete, 1);
-    alertAction = null;
-   } else {
-    if (!alertAction.metadata.channel_id || !allChannels.find((c) => c.id === alertAction.metadata.channel_id) || allChannels.find((c) => c.id === alertAction.metadata.channel_id).type !== ChannelType.GuildText) {
-     return NextResponse.json(
-      {
-       error: "Cannot find the alert channel",
-       code: 404,
-      },
-      {
-       status: 404,
-       headers: {
-        ...(process.env.NODE_ENV !== "production" && {
-         "Server-Timing": `response;dur=${Date.now() - start}ms`,
-        }),
-       },
-      }
-     );
-    }
-
-    const getChannelPermissionsAPI = await fetch(`https://discord.com/api/v${globalConfig.apiVersion}/channels/${alertAction.metadata.channel_id}`, {
-     method: "GET",
+  if (validatedActions.error) {
+   return NextResponse.json(
+    {
+     error: validatedActions.error,
+     code: validatedActions.code,
+    },
+    {
+     status: validatedActions.code,
      headers: {
-      Authorization: `Bot ${process.env.TOKEN}`,
+      ...(process.env.NODE_ENV !== "production" && {
+       "Server-Timing": `response;dur=${Date.now() - start}ms`,
+      }),
      },
-    });
-
-    if (!getChannelPermissionsAPI.ok) {
-     return NextResponse.json(
-      {
-       error: "Unable to find the alert channel",
-       code: 404,
-      },
-      {
-       status: 404,
-       headers: {
-        ...(process.env.NODE_ENV !== "production" && {
-         "Server-Timing": `response;dur=${Date.now() - start}ms`,
-        }),
-       },
-      }
-     );
     }
-
-    const getChannelPermissions = await getChannelPermissionsAPI.json();
-    const parsedActionPermissions = getPermissionNames(getChannelPermissions.permissions || 0n);
-
-    if (!parsedActionPermissions.includes("VIEW_CHANNEL") || !parsedActionPermissions.includes("SEND_MESSAGES")) {
-     return NextResponse.json(
-      {
-       error: "The bot must have 'View Channel' and 'Send Messages' permissions in the alert channel",
-       code: 400,
-      },
-      {
-       status: 400,
-       headers: {
-        ...(process.env.NODE_ENV !== "production" && {
-         "Server-Timing": `response;dur=${Date.now() - start}ms`,
-        }),
-       },
-      }
-     );
-    }
-   }
+   );
   }
 
-  // ==================
-  // CHECK IF ACTIONS ARE ENABLED
-  // ==================
-
-  if (!blockAction && !timeoutAction && !alertAction) {
+  if (!validatedActions || validatedActions.length === 0) {
    return NextResponse.json(
     {
      error: "You must have at least one action enabled",
@@ -529,7 +385,7 @@ export async function POST(request) {
     body: JSON.stringify({
      enabled: data.enabled,
      name: "Disallow invites [Majo.exe]",
-     actions: data.actions,
+     actions: validatedActions,
      trigger_type: AutoModerationRuleTriggerType.Keyword,
      exempt_roles: data.exemptRoles,
      exempt_channels: data.exemptChannels,
@@ -579,7 +435,7 @@ export async function POST(request) {
     body: JSON.stringify({
      enabled: data.enabled,
      name: "Disallow invites [Majo.exe]",
-     actions: data.actions,
+     actions: validatedActions,
      exempt_roles: data.exemptRoles,
      exempt_channels: data.exemptChannels,
      event_type: AutoModerationRuleEventType.MessageSend,
