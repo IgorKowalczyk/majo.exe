@@ -14,6 +14,8 @@ import { syncAutoModRule } from "../../../database";
 export async function createHTTPAutomodRule(serverId, ruleType, ruleData) {
  const existingRule = await syncAutoModRule(serverId, ruleType);
 
+ console.log(ruleData);
+
  const checkFetch = await fetch(`https://discord.com/api/v${globalConfig.apiVersion}/guilds/${serverId}/auto-moderation/rules`, {
   method: "GET",
   headers: {

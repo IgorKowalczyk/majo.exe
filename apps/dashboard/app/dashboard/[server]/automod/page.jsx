@@ -1,4 +1,6 @@
-import { AtSymbolIcon, ChatBubbleBottomCenterTextIcon, ChatBubbleLeftEllipsisIcon, LinkIcon, NoSymbolIcon } from "@heroicons/react/24/outline";
+/* eslint-disable complexity */
+
+import { AtSymbolIcon, ChatBubbleBottomCenterTextIcon, ChatBubbleLeftEllipsisIcon, NoSymbolIcon } from "@heroicons/react/24/outline";
 import { globalConfig } from "@majoexe/config";
 import prismaClient from "@majoexe/database";
 import { syncAutoModRule } from "@majoexe/util/database";
@@ -8,6 +10,7 @@ import { getSession } from "lib/session";
 import { redirect } from "next/navigation";
 import { Block } from "@/components/Block";
 import { AntiInvite } from "@/components/client/settings/automod/AntiInvite";
+import { AntiLink } from "@/components/client/settings/automod/AntiLink";
 import { Header1, Header5 } from "@/components/Headers";
 import "tippy.js/dist/backdrop.css";
 import "tippy.js/animations/shift-away.css";
@@ -53,6 +56,7 @@ export default async function ServerAutomod({ params }) {
  });
 
  const enabledAntiInvite = (await syncAutoModRule(serverDownload.id, "anti-invite")) || false;
+ const enabledAntiLink = (await syncAutoModRule(serverDownload.id, "anti-link")) || false;
 
  const allRolesFetch = await fetch(`https://discord.com/api/v${globalConfig.apiVersion}/guilds/${serverDownload.id}/roles`, {
   method: "GET",
@@ -107,13 +111,11 @@ export default async function ServerAutomod({ params }) {
     )}
    </Block>
    <Block className="mb-4">
-    <h2 className="mb-1 flex items-center justify-start gap-2 text-left text-2xl font-bold">
-     <LinkIcon className="min-h-6 min-w-6 h-6 w-6" />
-     Anti-Link <NavBadge>Coming Soon</NavBadge>
-    </h2>
-    <p className="mb-4 text-left">
-     <span>Automatically delete all messages containing links.</span>
-    </p>
+    {enabledAntiLink ? ( // prettier
+     <AntiLink serverId={serverDownload.id} existingExemptChannels={enabledAntiLink.exempt_channels || []} existingExemptRoles={enabledAntiLink.exempt_roles || []} enabled={enabledAntiLink.enabled || false} existingActions={enabledAntiLink.actions || []} allRoles={allRoles} allChannels={allChannels} />
+    ) : (
+     <AntiLink serverId={serverDownload.id} existingExemptChannels={[]} existingExemptRoles={[]} enabled={false} existingActions={[]} allRoles={allRoles} allChannels={allChannels} />
+    )}
    </Block>
    <Block className="mb-4">
     <h2 className="mb-1 flex items-center justify-start gap-2 text-left text-2xl font-bold">

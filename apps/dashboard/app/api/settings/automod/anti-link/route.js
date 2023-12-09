@@ -54,7 +54,7 @@ export async function POST(request) {
     {
      type: AutoModerationActionType.BlockMessage,
      metadata: {
-      custom_message: "Message blocked due to containing an invite link. Rule added by Majo.exe",
+      custom_message: "Message blocked due to containing an link. Rule added by Majo.exe",
      },
     },
    ];
@@ -221,7 +221,7 @@ export async function POST(request) {
    );
   }
 
-  const validatedActions = await validateAutoModRuleActions(data.actions, allChannels, "Message blocked due to containing an invite link. Rule added by Majo.exe");
+  const validatedActions = await validateAutoModRuleActions(data.actions, allChannels, "Message blocked due to containing an link. Rule added by Majo.exe");
 
   if (validatedActions.error) {
    return NextResponse.json(
@@ -257,16 +257,16 @@ export async function POST(request) {
    );
   }
 
-  const createdRule = await createHTTPAutomodRule(server.id, "anti-invite", {
+  const createdRule = await createHTTPAutomodRule(server.id, "anti-link", {
    enabled: data.enabled,
-   name: "Disallow invites [Majo.exe]",
+   name: "Disallow links [Majo.exe]",
    actions: validatedActions,
    event_type: AutoModerationRuleEventType.MessageSend,
    trigger_type: AutoModerationRuleTriggerType.Keyword,
    exempt_roles: data.exemptRoles,
    exempt_channels: data.exemptChannels,
    trigger_metadata: {
-    regex_patterns: ["(?:https?://)?(?:www.|ptb.|canary.)?(?:discord(?:app)?.(?:(?:com|gg)/(?:invite|servers)/[a-z0-9-_]+)|discord.gg/[a-z0-9-_]+)"],
+    regex_patterns: ["(https?://)?([\\da-z.-]+)\\.([a-z.]{2,6})[/\\w .-]*/?"],
    },
   });
 
@@ -288,7 +288,7 @@ export async function POST(request) {
   } else {
    return NextResponse.json(
     {
-     message: "Successfully updated the anti-invite system",
+     message: "Successfully updated the anti-link system",
      code: 200,
     },
     {
