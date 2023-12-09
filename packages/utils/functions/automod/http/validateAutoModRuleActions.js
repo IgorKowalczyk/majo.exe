@@ -1,8 +1,16 @@
 import { globalConfig } from "@majoexe/config";
-import { getPermissionNames } from "@majoexe/util/functions";
 import { AutoModerationActionType, ChannelType } from "discord-api-types/v10";
+import { getPermissionNames } from "../../user/checkPermissions";
 
-export async function validateActions(data, allChannels, dueToMessage) {
+/**
+ * Validate AutoMod rule actions
+ *
+ * @param {object[]} data Rule actions
+ * @param {object[]} allChannels All channels in the server
+ * @param {string} dueToMessage Message to send when a rule is triggered
+ * @returns {Promise<{error: string, code: number}> | Promise<object[]>} Error message and code or validated actions
+ */
+export async function validateAutoModRuleActions(data, allChannels, dueToMessage) {
  // ==================
  // BLOCK MESSAGE
  // ==================

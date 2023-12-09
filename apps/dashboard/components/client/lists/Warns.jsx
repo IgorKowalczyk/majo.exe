@@ -1,7 +1,7 @@
 "use client";
 
 import { ArrowPathIcon, CheckIcon, LinkIcon, TrashIcon } from "@heroicons/react/24/outline";
-import { formatDuration } from "@majoexe/util/functions";
+import { formatDuration } from "@majoexe/util/functions/util";
 import { useRouter } from "next/navigation";
 import { useMemo, useState } from "react";
 import { toast } from "sonner";

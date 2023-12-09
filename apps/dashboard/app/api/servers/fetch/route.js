@@ -1,5 +1,4 @@
-import { getServers } from "@majoexe/util/functions";
-import { isBotInServer } from "@majoexe/util/functions";
+import { getServers, isBotInServer } from "@majoexe/util/functions/guild";
 import { getSession } from "lib/session";
 import { NextResponse } from "next/server";
 

@@ -16,7 +16,7 @@ const longest = types.reduce((long, str) => Math.max(long, str.length), 0);
 /**
  * Logs a message to the console with a colored log type.
  *
- * @param {"info" | "event" | "error" | "warn" | "ready" | "cron"* } type - The type of log.
+ * @param {"info" | "event" | "error" | "warn" | "ready" | "cron" } type - The type of log.
  * @param {...string} args - The message to log.
  */
 export function Logger(type, ...args) {

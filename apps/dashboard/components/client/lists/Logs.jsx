@@ -2,7 +2,7 @@
 
 import { MagnifyingGlassIcon, BarsArrowDownIcon, BarsArrowUpIcon } from "@heroicons/react/24/outline";
 import { CubeTransparentIcon, CubeIcon, NoSymbolIcon, PaintBrushIcon, LinkIcon, UsersIcon } from "@heroicons/react/24/solid";
-import { formatDate, formatDuration } from "@majoexe/util/functions";
+import { formatDate, formatDuration } from "@majoexe/util/functions/util";
 import Link from "next/link";
 import React, { useState, useRef, useEffect } from "react";
 import InfiniteScroll from "react-infinite-scroller";

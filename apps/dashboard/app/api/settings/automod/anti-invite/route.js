@@ -2,12 +2,11 @@
 
 import { globalConfig } from "@majoexe/config";
 import prismaClient from "@majoexe/database";
-import { syncAutoModRule } from "@majoexe/util/database";
-import { getServer, getGuildMember } from "@majoexe/util/functions";
-import { AutoModerationRuleTriggerType, AutoModerationRuleEventType, AutoModerationActionType, ChannelType } from "discord-api-types/v10";
+import { createHTTPAutomodRule, validateAutoModIgnores, validateAutoModRuleActions } from "@majoexe/util/functions/automod";
+import { getServer, getGuildMember } from "@majoexe/util/functions/guild";
+import { AutoModerationActionType, AutoModerationRuleTriggerType, ChannelType } from "discord-api-types/v10";
 import { getSession } from "lib/session";
 import { NextResponse } from "next/server";
-import { validateActions } from "./validateActions";
 
 export async function POST(request) {
  try {
@@ -203,14 +202,16 @@ export async function POST(request) {
    })
    .filter(Boolean);
 
-  if (data.exemptChannels.length > 50) {
+  const validatedIgnores = await validateAutoModIgnores(allChannels, allRoles, data.exemptRoles, data.exemptChannels);
+
+  if (validatedIgnores.error || validatedIgnores.code !== 200) {
    return NextResponse.json(
     {
-     error: "You can only have 50 ignored channels at once. Please remove some of the existing ignored channels before adding this one.",
-     code: 400,
+     error: validatedIgnores.error,
+     code: validatedIgnores.code,
     },
     {
-     status: 400,
+     status: validatedIgnores.code,
      headers: {
       ...(process.env.NODE_ENV !== "production" && {
        "Server-Timing": `response;dur=${Date.now() - start}ms`,
@@ -220,79 +221,7 @@ export async function POST(request) {
    );
   }
 
-  if (data.exemptRoles.length > 20) {
-   return NextResponse.json(
-    {
-     error: "You can only have 20 ignored roles at once. Please remove some of the existing ignored roles before adding this one.",
-     code: 400,
-    },
-    {
-     status: 400,
-     headers: {
-      ...(process.env.NODE_ENV !== "production" && {
-       "Server-Timing": `response;dur=${Date.now() - start}ms`,
-      }),
-     },
-    }
-   );
-  }
-
-  for (const role of data.exemptRoles) {
-   if (!allRoles.find((r) => r.id === role)) {
-    return NextResponse.json(
-     {
-      error: `Unable to find role with id ${role}`,
-      code: 404,
-     },
-     {
-      status: 404,
-      headers: {
-       ...(process.env.NODE_ENV !== "production" && {
-        "Server-Timing": `response;dur=${Date.now() - start}ms`,
-       }),
-      },
-     }
-    );
-   }
-  }
-
-  for (const channel of data.exemptChannels) {
-   if (!allChannels.find((c) => c.id === channel)) {
-    return NextResponse.json(
-     {
-      error: `Unable to find channel with id ${channel}`,
-      code: 404,
-     },
-     {
-      status: 404,
-      headers: {
-       ...(process.env.NODE_ENV !== "production" && {
-        "Server-Timing": `response;dur=${Date.now() - start}ms`,
-       }),
-      },
-     }
-    );
-   }
-
-   if (allChannels.find((c) => c.id === channel).type !== ChannelType.GuildText) {
-    return NextResponse.json(
-     {
-      error: `Channel #${allChannels.find((c) => c.id === channel)?.name || channel} is not a text channel`,
-      code: 400,
-     },
-     {
-      status: 400,
-      headers: {
-       ...(process.env.NODE_ENV !== "production" && {
-        "Server-Timing": `response;dur=${Date.now() - start}ms`,
-       }),
-      },
-     }
-    );
-   }
-  }
-
-  const validatedActions = await validateActions(data.actions, allChannels, "Message blocked due to containing an invite link. Rule added by Majo.exe");
+  const validatedActions = await validateAutoModRuleActions(data.actions, allChannels, "Message blocked due to containing an invite link. Rule added by Majo.exe");
 
   if (validatedActions.error) {
    return NextResponse.json(
@@ -312,6 +241,7 @@ export async function POST(request) {
   }
 
   if (!validatedActions || validatedActions.length === 0) {
+   console.log("In here");
    return NextResponse.json(
     {
      error: "You must have at least one action enabled",
@@ -328,24 +258,26 @@ export async function POST(request) {
    );
   }
 
-  const existingRule = await syncAutoModRule(server.id, "anti-invite");
-
-  const checkFetch = await fetch(`https://discord.com/api/v${globalConfig.apiVersion}/guilds/${server.id}/auto-moderation/rules`, {
-   method: "GET",
-   headers: {
-    Authorization: `Bot ${process.env.TOKEN}`,
-    "Content-Type": "application/json",
+  const createdRule = await createHTTPAutomodRule(server.id, "anti-invite", {
+   enabled: data.enabled,
+   name: "Disallow invites [Majo.exe]",
+   actions: validatedActions,
+   trigger_type: AutoModerationRuleTriggerType.Keyword,
+   exempt_roles: data.exemptRoles,
+   exempt_channels: data.exemptChannels,
+   trigger_metadata: {
+    regex_patterns: ["(?:https?://)?(?:www.|ptb.|canary.)?(?:discord(?:app)?.(?:(?:com|gg)/(?:invite|servers)/[a-z0-9-_]+)|discord.gg/[a-z0-9-_]+)"],
    },
   });
 
-  if (!checkFetch.ok) {
+  if (createdRule.error) {
    return NextResponse.json(
     {
-     error: "Internal Server Error",
-     code: 500,
+     error: createdRule.error,
+     code: createdRule.code,
     },
     {
-     status: 500,
+     status: createdRule.code,
      headers: {
       ...(process.env.NODE_ENV !== "production" && {
        "Server-Timing": `response;dur=${Date.now() - start}ms`,
@@ -353,145 +285,22 @@ export async function POST(request) {
      },
     }
    );
-  }
-
-  const check = await checkFetch.json();
-  const conflictingRules = check.filter((rule) => rule.trigger_type === AutoModerationRuleTriggerType.Keyword);
-
-  if (conflictingRules.length === 6 && data.enabled) {
-   return NextResponse.json(
-    {
-     error: "You can only have 6 keyword rules enabled at once. Please disable one of the existing keyword rules before enabling this one.",
-     code: 400,
-    },
-    {
-     status: 400,
-     headers: {
-      ...(process.env.NODE_ENV !== "production" && {
-       "Server-Timing": `response;dur=${Date.now() - start}ms`,
-      }),
-     },
-    }
-   );
-  }
-
-  if (existingRule) {
-   const discordRequest = await fetch(`https://discord.com/api/v${globalConfig.apiVersion}/guilds/${server.id}/auto-moderation/rules/${existingRule.id}`, {
-    method: "PATCH",
-    headers: {
-     Authorization: `Bot ${process.env.TOKEN}`,
-     "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-     enabled: data.enabled,
-     name: "Disallow invites [Majo.exe]",
-     actions: validatedActions,
-     trigger_type: AutoModerationRuleTriggerType.Keyword,
-     exempt_roles: data.exemptRoles,
-     exempt_channels: data.exemptChannels,
-     trigger_metadata: {
-      regex_patterns: ["(?:https?://)?(?:www.|ptb.|canary.)?(?:discord(?:app)?.(?:(?:com|gg)/(?:invite|servers)/[a-z0-9-_]+)|discord.gg/[a-z0-9-_]+)"],
-     },
-    }),
-   });
-
-   if (!discordRequest.ok) {
-    return NextResponse.json(
-     {
-      error: "Something went wrong while trying to update the anti-invite system",
-      code: 500,
-     },
-     {
-      status: 500,
-      headers: {
-       ...(process.env.NODE_ENV !== "production" && {
-        "Server-Timing": `response;dur=${Date.now() - start}ms`,
-       }),
-      },
-     }
-    );
-   }
-
-   await prismaClient.autoMod.update({
-    where: {
-     ruleId: existingRule.id,
-    },
-    data: {
-     guild: {
-      connect: {
-       guildId: server.id,
-      },
-     },
-     ruleType: "anti-invite",
-    },
-   });
   } else {
-   const discordRequest = await fetch(`https://discord.com/api/v${globalConfig.apiVersion}/guilds/${server.id}/auto-moderation/rules`, {
-    method: "POST",
-    headers: {
-     Authorization: `Bot ${process.env.TOKEN}`,
-     "Content-Type": "application/json",
+   return NextResponse.json(
+    {
+     message: "Successfully updated the anti-invite system",
+     code: 200,
     },
-    body: JSON.stringify({
-     enabled: data.enabled,
-     name: "Disallow invites [Majo.exe]",
-     actions: validatedActions,
-     exempt_roles: data.exemptRoles,
-     exempt_channels: data.exemptChannels,
-     event_type: AutoModerationRuleEventType.MessageSend,
-     trigger_type: AutoModerationRuleTriggerType.Keyword,
-     trigger_metadata: {
-      regex_patterns: ["(?:https?://)?(?:www.|ptb.|canary.)?(?:discord(?:app)?.(?:(?:com|gg)/(?:invite|servers)/[a-z0-9-_]+)|discord.gg/[a-z0-9-_]+)"],
+    {
+     status: 200,
+     headers: {
+      ...(process.env.NODE_ENV !== "production" && {
+       "Server-Timing": `response;dur=${Date.now() - start}ms`,
+      }),
      },
-    }),
-   });
-
-   if (!discordRequest.ok) {
-    return NextResponse.json(
-     {
-      error: "Something went wrong while trying to update the anti-invite system",
-      code: 500,
-     },
-     {
-      status: 500,
-      headers: {
-       ...(process.env.NODE_ENV !== "production" && {
-        "Server-Timing": `response;dur=${Date.now() - start}ms`,
-       }),
-      },
-     }
-    );
-   }
-
-   const discordData = await discordRequest.json();
-
-   await prismaClient.autoMod.create({
-    data: {
-     guild: {
-      connect: {
-       guildId: server.id,
-      },
-     },
-     ruleId: discordData.id.toString(),
-     ruleType: "anti-invite",
-    },
-   });
+    }
+   );
   }
-
-  return NextResponse.json(
-   {
-    message: "Successfully updated the anti-invite system",
-    code: 200,
-   },
-   {
-    status: 200,
-    headers: {
-     ...(process.env.NODE_ENV !== "production" && {
-      "Server-Timing": `response;dur=${Date.now() - start}ms`,
-     }),
-    },
-   }
-  );
  } catch (err) {
   console.log(err);
   return NextResponse.json(

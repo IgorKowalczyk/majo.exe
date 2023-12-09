@@ -1,6 +1,5 @@
 import { PlusSmallIcon, RectangleStackIcon } from "@heroicons/react/24/outline";
-import { getServers } from "@majoexe/util/functions";
-import { isBotInServer } from "@majoexe/util/functions";
+import { getServers, isBotInServer } from "@majoexe/util/functions/guild";
 import clsx from "clsx";
 import { getSession } from "lib/session";
 import Link from "next/link";

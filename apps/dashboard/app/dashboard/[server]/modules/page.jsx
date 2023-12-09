@@ -1,7 +1,7 @@
 import { CubeIcon, CubeTransparentIcon, SquaresPlusIcon, InformationCircleIcon } from "@heroicons/react/24/outline";
 import { botConfig } from "@majoexe/config";
 import prismaClient from "@majoexe/database";
-import { getGuildMember, getServer } from "@majoexe/util/functions";
+import { getGuildMember, getServer } from "@majoexe/util/functions/guild";
 import clsx from "clsx";
 import { getSession } from "lib/session";
 import { redirect } from "next/navigation";

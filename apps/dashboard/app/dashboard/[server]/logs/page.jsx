@@ -1,6 +1,6 @@
 import { ListBulletIcon } from "@heroicons/react/24/outline";
 import prismaClient from "@majoexe/database";
-import { getGuildMember, getServer } from "@majoexe/util/functions";
+import { getGuildMember, getServer } from "@majoexe/util/functions/guild";
 import { getSession } from "lib/session";
 import { redirect } from "next/navigation";
 import { Block } from "@/components/Block";

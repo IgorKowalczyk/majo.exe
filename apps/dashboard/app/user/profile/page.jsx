@@ -1,5 +1,5 @@
 import { ArrowDownTrayIcon, ArrowTopRightOnSquareIcon, ExclamationTriangleIcon, FolderArrowDownIcon } from "@heroicons/react/24/outline";
-import { getFlags } from "@majoexe/util/functions";
+import { getFlags } from "@majoexe/util/functions/user";
 import { getSession } from "lib/session";
 import Link from "next/link";
 import { redirect } from "next/navigation";

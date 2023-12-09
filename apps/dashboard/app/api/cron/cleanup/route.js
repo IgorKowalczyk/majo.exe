@@ -1,5 +1,5 @@
 import prismaClient from "@majoexe/database";
-import { Logger } from "@majoexe/util/functions";
+import { Logger } from "@majoexe/util/functions/util";
 import { NextResponse } from "next/server";
 
 export async function GET(request) {

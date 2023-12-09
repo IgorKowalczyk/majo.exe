@@ -1,4 +1,4 @@
-import { formatNumber } from "@majoexe/util/functions";
+import { formatNumber } from "@majoexe/util/functions/util";
 import { loadImage, createCanvas } from "@napi-rs/canvas";
 
 /**

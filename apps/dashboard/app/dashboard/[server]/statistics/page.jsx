@@ -2,7 +2,7 @@
 
 import { ArrowTrendingDownIcon, ArrowTrendingUpIcon, ChatBubbleLeftRightIcon, MinusIcon, UserMinusIcon, UserPlusIcon } from "@heroicons/react/24/outline";
 import prismaClient from "@majoexe/database";
-import { getGuildMember, getServer } from "@majoexe/util/functions";
+import { getGuildMember, getServer } from "@majoexe/util/functions/guild";
 import { json2csv } from "json-2-csv";
 import { getSession } from "lib/session";
 import { redirect } from "next/navigation";

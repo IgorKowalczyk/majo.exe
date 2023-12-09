@@ -1,7 +1,7 @@
 import { ArrowRightIcon, ArrowTrendingUpIcon, CheckIcon, UserPlusIcon } from "@heroicons/react/24/outline";
 import { dashboardConfig, globalConfig } from "@majoexe/config";
 import prismaClient from "@majoexe/database";
-import { formatNumber } from "@majoexe/util/functions";
+import { formatNumber } from "@majoexe/util/functions/util";
 import Link from "next/link";
 import avatar01 from "public/assets/avatars/01.webp";
 import ray from "public/assets/ray.png";

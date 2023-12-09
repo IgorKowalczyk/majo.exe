@@ -1,6 +1,6 @@
 "use client";
 
-import { formatNumber } from "@majoexe/util/functions";
+import { formatNumber } from "@majoexe/util/functions/util";
 import Link from "next/link";
 import { useMemo } from "react";
 import Image from "@/components/client/shared/Image";

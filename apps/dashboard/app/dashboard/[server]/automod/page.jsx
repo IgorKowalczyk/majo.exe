@@ -2,7 +2,7 @@ import { AtSymbolIcon, ChatBubbleBottomCenterTextIcon, ChatBubbleLeftEllipsisIco
 import { globalConfig } from "@majoexe/config";
 import prismaClient from "@majoexe/database";
 import { syncAutoModRule } from "@majoexe/util/database";
-import { getGuildMember, getServer } from "@majoexe/util/functions";
+import { getGuildMember, getServer } from "@majoexe/util/functions/guild";
 import { ChannelType } from "discord-api-types/v10";
 import { getSession } from "lib/session";
 import { redirect } from "next/navigation";

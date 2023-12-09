@@ -1,7 +1,7 @@
 /* eslint-disable complexity */
 import { dashboardConfig } from "@majoexe/config";
 import prismaClient from "@majoexe/database";
-import { getServer, getGuildPreview } from "@majoexe/util/functions";
+import { getServer, getGuildPreview } from "@majoexe/util/functions/guild";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import Balancer from "react-wrap-balancer";

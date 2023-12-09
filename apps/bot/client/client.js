@@ -1,8 +1,8 @@
-import { dirname } from "path";
-import { fileURLToPath } from "url";
+import { dirname } from "node:path";
+import { fileURLToPath } from "node:url";
 import { globalConfig, botConfig, debuggerConfig, dashboardConfig, globalPermissions } from "@majoexe/config";
 import { createErrorEmbed } from "@majoexe/util/embeds";
-import { Logger, chalk } from "@majoexe/util/functions";
+import { Logger, chalk } from "@majoexe/util/functions/util";
 import { Client, GatewayIntentBits } from "discord.js";
 import giveaway from "../util/giveaway/core.js";
 import loadCommands from "../util/loaders/loadCommands.js";

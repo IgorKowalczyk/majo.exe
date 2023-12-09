@@ -1,7 +1,8 @@
 import { ArrowDownTrayIcon, CheckIcon, Cog6ToothIcon, ExclamationTriangleIcon, FolderArrowDownIcon, InformationCircleIcon, PaintBrushIcon, ShieldCheckIcon, UsersIcon, XMarkIcon } from "@heroicons/react/24/outline";
 import { globalConfig } from "@majoexe/config";
 import prismaClient from "@majoexe/database";
-import { getGuildMember, getPermissionNames, getServer } from "@majoexe/util/functions";
+import { getGuildMember, getServer } from "@majoexe/util/functions/guild";
+import { getPermissionNames } from "@majoexe/util/functions/user";
 import { getSession } from "lib/session";
 import { redirect } from "next/navigation";
 import { Block } from "@/components/Block";

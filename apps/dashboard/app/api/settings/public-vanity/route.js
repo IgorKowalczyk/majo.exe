@@ -1,7 +1,7 @@
 /* eslint-disable complexity */
 
 import prismaClient from "@majoexe/database";
-import { getServer, getGuildMember } from "@majoexe/util/functions";
+import { getServer, getGuildMember } from "@majoexe/util/functions/guild";
 import { getSession } from "lib/session";
 import { NextResponse } from "next/server";
 

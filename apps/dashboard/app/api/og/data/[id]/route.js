@@ -1,5 +1,5 @@
 import prismaClient from "@majoexe/database";
-import { getServer } from "@majoexe/util/functions";
+import { getServer } from "@majoexe/util/functions/guild";
 import { NextResponse } from "next/server";
 
 export async function GET(request, { params }) {

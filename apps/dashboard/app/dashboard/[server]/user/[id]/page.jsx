@@ -2,7 +2,9 @@
 
 import { ArrowTopRightOnSquareIcon, ExclamationCircleIcon, ShieldExclamationIcon } from "@heroicons/react/24/outline";
 import prismaClient from "@majoexe/database";
-import { formatNumber, getFlags, getGuildMember, getServer } from "@majoexe/util/functions";
+import { getGuildMember, getServer } from "@majoexe/util/functions/guild";
+import { getFlags } from "@majoexe/util/functions/user";
+import { formatNumber } from "@majoexe/util/functions/util";
 import { getSession } from "lib/session";
 import Link from "next/link";
 import { redirect } from "next/navigation";

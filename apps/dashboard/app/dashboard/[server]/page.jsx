@@ -1,7 +1,7 @@
 /* eslint-disable complexity */
 import { ArrowTopRightOnSquareIcon } from "@heroicons/react/24/outline";
 import prismaClient from "@majoexe/database";
-import { getServer, getGuildPreview, getGuildMember } from "@majoexe/util/functions";
+import { getServer, getGuildPreview, getGuildMember } from "@majoexe/util/functions/guild";
 import { getSession } from "lib/session";
 import Link from "next/link";
 import { redirect } from "next/navigation";

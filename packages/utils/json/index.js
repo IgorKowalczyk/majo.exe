@@ -1,5 +1,5 @@
-import { readFileSync } from "fs";
-import path from "path";
+import { readFileSync } from "node:fs";
+import path from "node:path";
 
 /**
  * Import a json file from the same folder as the current module
