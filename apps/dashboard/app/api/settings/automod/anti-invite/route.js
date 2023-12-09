@@ -274,6 +274,9 @@ export async function POST(request) {
    }
   }
 
+  // ==================
+  // BLOCK MESSAGE
+  // ==================
   let blockAction = data.actions.find((a) => a.type === AutoModerationActionType.BlockMessage);
 
   if (blockAction) {
@@ -297,6 +300,9 @@ export async function POST(request) {
    data.actions.find((a) => a.type === AutoModerationActionType.BlockMessage).metadata.customMessage = "Message blocked due to containing an invite link. Rule added by Majo.exe";
   }
 
+  // ==================
+  // TIMEOUT MEMBER
+  // ==================
   let timeoutAction = data.actions.find((a) => a.type === AutoModerationActionType.Timeout);
 
   if (timeoutAction) {
@@ -332,7 +338,7 @@ export async function POST(request) {
       },
      }
     );
-   } else if ((timeoutAction.metadata.duration_seconds < 60 || timeoutAction.metadata.duration_seconds > 2419200) && timeoutAction.metadata.duration_seconds !== 0) {
+   } else if (timeoutAction.metadata.duration_seconds !== 0 && (timeoutAction.metadata.duration_seconds < 60 || timeoutAction.metadata.duration_seconds > 2419200)) {
     return NextResponse.json(
      {
       error: "Timeout duration must be between 60 seconds and 28 days",
@@ -348,14 +354,19 @@ export async function POST(request) {
      }
     );
    } else if (timeoutAction.metadata.duration_seconds === 0) {
-    delete data.actions.find((a) => a.type === AutoModerationActionType.Timeout);
+    const indexToDelete = data.actions.findIndex((a) => a.type === AutoModerationActionType.Timeout);
+    if (indexToDelete !== -1) data.actions.splice(indexToDelete, 1);
+    timeoutAction = null;
    }
   }
 
-  let alert = data.actions.find((a) => a.type === AutoModerationActionType.SendAlertMessage);
+  // ==================
+  // SEND ALERT MESSAGE
+  // ==================
+  let alertAction = data.actions.find((a) => a.type === AutoModerationActionType.SendAlertMessage);
 
-  if (alert) {
-   if (!alert.metadata) {
+  if (alertAction) {
+   if (!alertAction.metadata) {
     return NextResponse.json(
      {
       error: "Cannot find the alert settings",
@@ -372,8 +383,12 @@ export async function POST(request) {
     );
    }
 
-   if (alert.metadata.channel_id !== "1") {
-    if (!alert.metadata.channel_id || !allChannels.find((c) => c.id === alert.metadata.channel_id) || allChannels.find((c) => c.id === alert.metadata.channel_id).type !== ChannelType.GuildText) {
+   if (alertAction.metadata.channel_id === "1") {
+    const indexToDelete = data.actions.findIndex((a) => a.type === AutoModerationActionType.SendAlertMessage);
+    if (indexToDelete !== -1) data.actions.splice(indexToDelete, 1);
+    alertAction = null;
+   } else {
+    if (!alertAction.metadata.channel_id || !allChannels.find((c) => c.id === alertAction.metadata.channel_id) || allChannels.find((c) => c.id === alertAction.metadata.channel_id).type !== ChannelType.GuildText) {
      return NextResponse.json(
       {
        error: "Cannot find the alert channel",
@@ -390,7 +405,7 @@ export async function POST(request) {
      );
     }
 
-    const getChannelPermissionsAPI = await fetch(`https://discord.com/api/v${globalConfig.apiVersion}/channels/${alert.metadata.channel_id}`, {
+    const getChannelPermissionsAPI = await fetch(`https://discord.com/api/v${globalConfig.apiVersion}/channels/${alertAction.metadata.channel_id}`, {
      method: "GET",
      headers: {
       Authorization: `Bot ${process.env.TOKEN}`,
@@ -433,14 +448,14 @@ export async function POST(request) {
       }
      );
     }
-   } else {
-    const indexToDelete = data.actions.findIndex((a) => a.type === AutoModerationActionType.SendAlertMessage);
-    if (indexToDelete !== -1) data.actions.splice(indexToDelete, 1);
-    alert = null;
    }
   }
 
-  if (!blockAction && !timeoutAction && !alert) {
+  // ==================
+  // CHECK IF ACTIONS ARE ENABLED
+  // ==================
+
+  if (!blockAction && !timeoutAction && !alertAction) {
    return NextResponse.json(
     {
      error: "You must have at least one action enabled",
