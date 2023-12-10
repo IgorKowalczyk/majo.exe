@@ -28,7 +28,7 @@ export default async function ServerAutomod() {
    <Block className="mb-4">
     <h2 className="mb-1 flex items-center justify-start gap-2 text-left text-2xl font-bold">
      <UserPlusIcon className="min-h-6 min-w-6 h-6 w-6" />
-     Anti-Invite <ArrowPathIcon className="min-h-6 min-w-6 h-6 w-6 stroke-accent-primary animate-spin" />
+     Anti-Invite <ArrowPathIcon className="min-h-6 min-w-6 stroke-accent-primary h-6 w-6 animate-spin" />
     </h2>
     <p className="mb-4 text-left">
      <span>Automatically delete all messages containing Discord server invites.</span>
@@ -46,7 +46,7 @@ export default async function ServerAutomod() {
         <UserGroupIcon className="stroke-accent-primary min-h-5 min-w-5 h-5 w-5" aria-hidden="true" />
         Ignore Roles:
        </span>
-       <InputSkeleton className="!w-40 !h-[37.6px]" />
+       <InputSkeleton className="!h-[37.6px] !w-40" />
       </div>
 
       <div className="mt-2 flex flex-row flex-wrap gap-2">
@@ -54,7 +54,7 @@ export default async function ServerAutomod() {
         <HashtagIcon className="stroke-accent-primary min-h-5 min-w-5 h-5 w-5" aria-hidden="true" />
         Ignore Channels:
        </span>
-       <InputSkeleton className="!w-40 !h-[37.6px]" />
+       <InputSkeleton className="!h-[37.6px] !w-40" />
       </div>
 
       <p className="mt-2 gap-2 text-sm text-white/70">
@@ -73,7 +73,7 @@ export default async function ServerAutomod() {
         <TrashIcon className="min-h-6 min-w-6 h-6 w-6 stroke-red-400" />
         Delete message:
        </span>
-       <InputSkeleton className="!w-12 !h-[30px]" />
+       <InputSkeleton className="!h-[30px] !w-12" />
       </div>
 
       <div className="my-2 flex flex-row flex-wrap gap-2">
@@ -81,7 +81,7 @@ export default async function ServerAutomod() {
         <ClockIcon className="min-h-6 min-w-6 h-6 w-6 stroke-red-400" />
         Timeout member:
        </span>
-       <InputSkeleton className="!w-40 !h-[37.6px]" />
+       <InputSkeleton className="!h-[37.6px] !w-40" />
       </div>
 
       <div className="my-2 flex flex-row flex-wrap  gap-2">
@@ -89,7 +89,7 @@ export default async function ServerAutomod() {
         <ChatBubbleBottomCenterTextIcon className="min-h-6 min-w-6 h-6 w-6 stroke-red-400" />
         Log to channel:
        </span>
-       <InputSkeleton className="!w-40 !h-[37.6px]" />
+       <InputSkeleton className="!h-[37.6px] !w-40" />
       </div>
      </Block>
 
@@ -105,7 +105,7 @@ export default async function ServerAutomod() {
    <Block className="mb-4">
     <h2 className="mb-1 flex items-center justify-start gap-2 text-left text-2xl font-bold">
      <LinkIcon className="min-h-6 min-w-6 h-6 w-6" />
-     Anti-Link <ArrowPathIcon className="min-h-6 min-w-6 h-6 w-6 stroke-accent-primary animate-spin" />
+     Anti-Link <ArrowPathIcon className="min-h-6 min-w-6 stroke-accent-primary h-6 w-6 animate-spin" />
     </h2>
     <p className="mb-4 text-left">
      <span>Automatically delete all messages containing links.</span>
@@ -123,7 +123,7 @@ export default async function ServerAutomod() {
         <UserGroupIcon className="stroke-accent-primary min-h-5 min-w-5 h-5 w-5" aria-hidden="true" />
         Ignore Roles:
        </span>
-       <InputSkeleton className="!w-40 !h-[37.6px]" />
+       <InputSkeleton className="!h-[37.6px] !w-40" />
       </div>
 
       <div className="mt-2 flex flex-row flex-wrap gap-2">
@@ -131,7 +131,7 @@ export default async function ServerAutomod() {
         <HashtagIcon className="stroke-accent-primary min-h-5 min-w-5 h-5 w-5" aria-hidden="true" />
         Ignore Channels:
        </span>
-       <InputSkeleton className="!w-40 !h-[37.6px]" />
+       <InputSkeleton className="!h-[37.6px] !w-40" />
       </div>
 
       <p className="mt-2 gap-2 text-sm text-white/70">
@@ -150,7 +150,7 @@ export default async function ServerAutomod() {
         <TrashIcon className="min-h-6 min-w-6 h-6 w-6 stroke-red-400" />
         Delete message:
        </span>
-       <InputSkeleton className="!w-12 !h-[30px]" />
+       <InputSkeleton className="!h-[30px] !w-12" />
       </div>
 
       <div className="my-2 flex flex-row flex-wrap gap-2">
@@ -158,7 +158,7 @@ export default async function ServerAutomod() {
         <ClockIcon className="min-h-6 min-w-6 h-6 w-6 stroke-red-400" />
         Timeout member:
        </span>
-       <InputSkeleton className="!w-40 !h-[37.6px]" />
+       <InputSkeleton className="!h-[37.6px] !w-40" />
       </div>
 
       <div className="my-2 flex flex-row flex-wrap  gap-2">
@@ -166,7 +166,7 @@ export default async function ServerAutomod() {
         <ChatBubbleBottomCenterTextIcon className="min-h-6 min-w-6 h-6 w-6 stroke-red-400" />
         Log to channel:
        </span>
-       <InputSkeleton className="!w-40 !h-[37.6px]" />
+       <InputSkeleton className="!h-[37.6px] !w-40" />
       </div>
      </Block>
 
