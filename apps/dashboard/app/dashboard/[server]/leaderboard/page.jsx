@@ -5,7 +5,7 @@ import { getSession } from "lib/session";
 import { redirect } from "next/navigation";
 import { Block } from "@/components/Block";
 import { Leaderboard } from "@/components/client/lists/Leaderboard";
-import { Header1, Header5 } from "@/components/Headers";
+import { Header1 } from "@/components/Headers";
 import "tippy.js/dist/backdrop.css";
 import "tippy.js/animations/shift-away.css";
 import "tippy.js/dist/tippy.css";
@@ -68,32 +68,13 @@ export default async function ServerLeaderboard({ params }) {
   };
  });
 
- const currentUser = guild.guildXp.findIndex((x) => x.user.discordId === session.id) + 1;
-
  return (
   <>
    <Header1>
     <SparklesIcon className="min-h-9 min-w-9 h-9 w-9" />
     Leaderboard
    </Header1>
-   <Header5 className="mb-4 mt-2 !justify-start !text-left">
-    <span>
-     There are {data.length} users in the leaderboard right now.{" "}
-     {currentUser && currentUser > 0 && (
-      <span>
-       You are currently <span className="text-accent-primary">#{currentUser}</span> in the leaderboard.
-      </span>
-     )}
-    </span>
-   </Header5>
-   <Block className="flex w-full overflow-auto">
-    {data.length === 0 && <h3 className="text-left text-xl font-bold">Sadly, there are no users in the leaderboard right now!</h3>}
-    {data.length > 0 && (
-     <div className="mt-4 w-full">
-      <Leaderboard data={data} />
-     </div>
-    )}
-   </Block>
+   <Block className="flex w-full overflow-auto">{data.length > 0 ? <Leaderboard data={data} /> : <span className="opacity-50">No users found. Maybe you should try talking in chat?</span>}</Block>
   </>
  );
 }

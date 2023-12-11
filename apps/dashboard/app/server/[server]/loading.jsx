@@ -34,12 +34,6 @@ export default function Loading() {
     </Block>
     <div className="mt-6 flex flex-col justify-start gap-6 [flex:2_1_0%] lg:mt-0">
      <Block>
-      <Header4 className="!items-start !justify-normal opacity-80">
-       Language
-       <span className="ml-auto font-medium">Loading...</span>
-      </Header4>
-     </Block>
-     <Block>
       <Header4 className="mb-4 !items-start !justify-normal opacity-80">
        Emojis
        <span className="ml-auto font-medium opacity-60">Loading...</span>

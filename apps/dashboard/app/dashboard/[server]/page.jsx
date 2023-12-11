@@ -21,6 +21,7 @@ export const metadata = {
 export default async function ServerOverview({ params }) {
  const session = await getSession();
  if (!session || !session.access_token) redirect("/auth/login");
+
  const { server } = params;
  const serverDownload = await getServer(server);
  if (!serverDownload || serverDownload.code === 10004 || !serverDownload.bot) return redirect("/auth/error?error=It%20looks%20like%20the%20server%20you%20are%20trying%20to%20display%20does%20not%20exist");
@@ -113,12 +114,6 @@ export default async function ServerOverview({ params }) {
      {data.length > 0 ? <Leaderboard data={data} showSearch={false} showControls={false} /> : <span className="opacity-50">No users found. Maybe you should try talking in chat?</span>}
     </Block>
     <div className="mt-6 flex flex-col justify-start gap-6 [flex:2_1_0%] lg:mt-0">
-     <Block>
-      <Header4 className="!items-start !justify-normal opacity-80">
-       Language
-       <span className="ml-auto font-medium">{serverDownload.preferred_locale || "en_US"}</span>
-      </Header4>
-     </Block>
      <Block>
       <Header4 className="mb-4 !items-start !justify-normal opacity-80">
        Emojis

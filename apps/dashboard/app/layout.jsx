@@ -13,9 +13,6 @@ import { VisibilityProvider } from "@/components/nav/client/VisibilityContext";
 import { Nav } from "@/components/nav/server/Nav";
 import { TailwindIndicator } from "@/components/TailwindIndicator";
 import "styles/globals.css";
-//import { Inter } from "next/font/google";
-
-//const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
  metadataBase: new URL(dashboardConfig.url),

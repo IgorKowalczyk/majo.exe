@@ -24,7 +24,6 @@ export default async function Main() {
  });
 
  let commandsCount = 0;
-
  allCommands.map((command) => {
   command.options?.map((option) => {
    if (option.type === 1 || option.type === 2) commandsCount++;
@@ -32,6 +31,15 @@ export default async function Main() {
   commandsCount++;
  });
 
+ const guilds = await fetch(`https://discord.com/api/v${globalConfig.apiVersion}/applications/@me`, {
+  method: "GET",
+  headers: {
+   Authorization: `Bot ${process.env.TOKEN}`,
+  },
+  next: { revalidate: 3600 },
+ });
+
+ const jsonData = await guilds.json();
  return (
   <>
    <div className="before:md:bg-grid-[#fff] relative z-20 flex min-h-screen w-full items-center justify-center before:absolute before:z-10 before:h-full before:w-full before:opacity-5 before:grayscale">
@@ -67,7 +75,7 @@ export default async function Main() {
     <div className="mx-auto pb-10 md:px-8 lg:px-16 xl:w-4/5">
      <div className="mx-auto flex flex-col justify-around gap-4 md:flex-row">
       <div className="flex flex-col items-center justify-center gap-4">
-       <GradientHeader>{formatNumber(100)}+ servers</GradientHeader>
+       <GradientHeader>{formatNumber(jsonData.approximate_guild_count || 0)}+ servers</GradientHeader>
       </div>
       <div className="flex flex-col items-center justify-center gap-4">
        <GradientHeader>{formatNumber(commandsCount)}+ commands</GradientHeader>

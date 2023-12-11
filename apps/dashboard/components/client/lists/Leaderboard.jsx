@@ -11,7 +11,7 @@ export function Leaderboard({ data = [], showControls = true, showSearch = true 
  const columns = useMemo(
   () => [
    {
-    Header: "#",
+    Header: "Position",
     accessor: "id",
     Cell: ({ value }) => `#${value}`,
    },
@@ -50,5 +50,5 @@ export function Leaderboard({ data = [], showControls = true, showSearch = true 
   []
  );
 
- return <Table columns={columns} data={data} showControls={showControls} showSearch={showSearch} sortBy={[{ id: "xp", desc: true }]} />;
+ return <Table columns={columns} data={data} showControls={showControls} showSearch={showSearch} sortBy={[{ id: "id", desc: false }]} />;
 }

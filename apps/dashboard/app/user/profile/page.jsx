@@ -9,6 +9,8 @@ import Image from "@/components/client/shared/Image";
 import { Tooltip } from "@/components/client/shared/Tooltip";
 import { Emojis } from "@/components/emojis";
 
+export const revalidate = 3600; // 1 hour
+
 export default async function Profile() {
  const user = await getSession();
  if (!user) return redirect("/auth/login");

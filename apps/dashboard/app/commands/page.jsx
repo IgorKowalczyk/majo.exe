@@ -6,6 +6,8 @@ import { DiscordCommands } from "@/components/client/commandModules/DiscordComma
 import Image from "@/components/client/shared/Image";
 import { Header1 } from "@/components/Headers";
 
+export const revalidate = 3600; // 1 hour
+
 export const metadata = {
  title: "Commands",
  description: "A list of all the commands available for Majo.exe.",
