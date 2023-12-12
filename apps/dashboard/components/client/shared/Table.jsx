@@ -66,7 +66,7 @@ export function Table({
        <tr {...headerGroup.getHeaderGroupProps()} key={`headerGroup-${index}`}>
         {headerGroup.headers.map((column, colIndex) => (
          <th {...column.getHeaderProps()} {...column.getSortByToggleProps()} key={`header-${colIndex}`} className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500">
-          <span className="flex items-center select-none gap-2">
+          <span className="flex select-none items-center gap-2">
            {column.render("Header")}
            <div className="relative h-4 w-4">
             <>
@@ -77,7 +77,7 @@ export function Table({
                 "scale-100": !column.isSortedDesc,
                 "opacity-0": !column.isSorted,
                },
-               "h-4 w-4 absolute duration-200"
+               "absolute h-4 w-4 duration-200"
               )}
              />
              <ArrowSmallDownIcon
@@ -87,7 +87,7 @@ export function Table({
                 "scale-100": column.isSortedDesc,
                 "opacity-0": !column.isSorted,
                },
-               "h-4 w-4 absolute duration-200"
+               "absolute h-4 w-4 duration-200"
               )}
              />
             </>

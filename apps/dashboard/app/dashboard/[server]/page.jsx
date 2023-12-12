@@ -77,7 +77,7 @@ export default async function ServerOverview({ params }) {
 
  return (
   <>
-   <div className="mb-4 flex flex-col items-center justify-normal gap-4 text-3xl font-bold sm:flex-row md:text-4xl">
+   <div className="mb-4 flex flex-col items-center justify-normal gap-4 text-2xl font-bold sm:flex-row md:text-3xl">
     {guildPreview.icon ? <Image src={`https://cdn.discordapp.com/icons/${guildPreview.id}/${guildPreview.icon}.${guildPreview.icon.startsWith("a_") ? "gif" : "png"}`} alt={guildPreview.name} quality={95} width={64} height={64} className="min-h-16 min-w-16 h-16 w-16 rounded-full" /> : <div className="bg-button-secondary min-h-16 min-w-16 h-16 w-16 rounded-full" />}
     <div className="flex flex-col text-center sm:ml-4 sm:text-left">
      {guildPreview.name || "Unnamed server"}

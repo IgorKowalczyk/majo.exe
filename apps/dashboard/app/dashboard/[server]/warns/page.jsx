@@ -78,11 +78,7 @@ export default async function ServerLogs({ params }) {
    </Header5>
    <Block className="flex w-full overflow-auto">
     {data.length === 0 && <h3 className="text-left">Hooray! No warns have been issued yet.</h3>}
-    {data.length > 0 && (
-     <div className="mt-4 w-full">
-      <Warns data={data} />
-     </div>
-    )}
+    {data.length > 0 && <Warns data={data} />}
    </Block>
   </>
  );
