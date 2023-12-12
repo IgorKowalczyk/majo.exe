@@ -1,6 +1,3 @@
-import dotenv from "dotenv";
-dotenv.config({ path: "../../../.env" });
-
 /* Dashboard related config */
 export const dashboardConfig = {
  title: "Majo.exe", // string. Dashboard title, will be shown in browser tab and in search results

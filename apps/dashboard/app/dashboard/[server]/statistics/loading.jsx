@@ -45,7 +45,7 @@ export default function Loading() {
       <span>
        <span className="opacity-80">New Members</span>
       </span>
-      <ArrowPathIcon className="min-h-5 text-accent-primary stroke-2 min-w-6 h-6 w-6 animate-spin" />
+      <ArrowPathIcon className="min-h-5 text-accent-primary min-w-6 h-6 w-6 animate-spin stroke-2" />
       <InputSkeleton className="ml-auto !w-32" />
      </Header4>
      <GraphSkeleton className="mt-10 h-80" />
@@ -55,7 +55,7 @@ export default function Loading() {
       <span>
        <span className="opacity-80">Members Left</span>
       </span>
-      <ArrowPathIcon className="min-h-5 text-accent-primary stroke-2 min-w-6 h-6 w-6 animate-spin" />
+      <ArrowPathIcon className="min-h-5 text-accent-primary min-w-6 h-6 w-6 animate-spin stroke-2" />
       <InputSkeleton className="ml-auto !w-32" />
      </Header4>
      <GraphSkeleton className="mt-10 h-80" />
@@ -65,7 +65,7 @@ export default function Loading() {
       <span>
        <span className="opacity-80">Messages Sent</span>
       </span>
-      <ArrowPathIcon className="min-h-5 text-accent-primary stroke-2 min-w-6 h-6 w-6 animate-spin" />
+      <ArrowPathIcon className="min-h-5 text-accent-primary min-w-6 h-6 w-6 animate-spin stroke-2" />
       <InputSkeleton className="ml-auto !w-32" />
      </Header4>
      <GraphSkeleton className="mt-10 h-80" />

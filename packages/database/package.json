@@ -4,6 +4,7 @@
   "description": "Majo.exe main database schema/client/migrations package",
   "exports": {
     ".": "./src/client.js",
+    "./edge": "./src/edge.js",
     "./redis": "./src/redis.js"
   },
   "type": "module",

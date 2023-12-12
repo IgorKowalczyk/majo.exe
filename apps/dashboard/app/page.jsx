@@ -195,7 +195,7 @@ export default async function Main() {
       </div>
       <div className={"bg-background-secondary relative col-span-2 row-span-1 overflow-hidden rounded-xl border border-neutral-800 px-8 py-6 duration-200 hover:bg-neutral-800/50 lg:col-span-1"}>
        <GradientHeader>Giveaways? Why not?</GradientHeader>
-       <p className="mt-2 max-w-[680px] text-white/70">Want to host a giveaway or a drop? Majo.exe caan help you with that! You can easily create and moderate giveaways with few simple commands!</p>
+       <p className="mt-2 max-w-[680px] text-white/70">Want to host a giveaway or a drop? Majo.exe can help you with that! You can easily create and moderate giveaways with few simple commands!</p>
        <div className="my-6 flex items-center gap-1">
         <Image src={dashboardConfig.logo} alt={`${dashboardConfig.title} avatar`} quality={95} width={64} height={64} className="min-h-10 min-w-10 h-10 w-10 self-baseline rounded-full" />
         <div className="flex flex-col">

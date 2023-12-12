@@ -21,7 +21,7 @@ export function SideMenuControl() {
          "scale-0": !sideNavVisible,
          "scale-100": sideNavVisible,
         },
-        "min-h-6 min-w-6 absolute top-0 duration-200 h-6 w-6"
+        "min-h-6 min-w-6 absolute top-0 h-6 w-6 duration-200"
        )}
       />
       <Bars3BottomLeftIcon
@@ -30,7 +30,7 @@ export function SideMenuControl() {
          "scale-100": !sideNavVisible,
          "scale-0": sideNavVisible,
         },
-        "min-h-6 min-w-6 absolute duration-200 top-0 h-6 w-6"
+        "min-h-6 min-w-6 absolute top-0 h-6 w-6 duration-200"
        )}
       />
      </div>

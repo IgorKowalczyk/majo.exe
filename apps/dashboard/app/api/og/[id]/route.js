@@ -1,6 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 import { redirect } from "next/navigation";
 import { ImageResponse } from "next/og";
+import { getServer } from "@majoexe/util/functions/guild";
 
 export const runtime = "edge";
 
@@ -24,8 +25,10 @@ export async function GET(request, { params }) {
  const id = params.id;
  if (!id) return redirect("/opengraph-image");
 
- const data = await fetch(`${process.env.NEXTAUTH_URL}/api/og/data/${id}`).then((res) => res.json());
- if (data.error || !data.name || !data.icon) return redirect("/opengraph-image");
+ const server = await getServer(id);
+ if (server.error || !server.bot) return redirect("/opengraph-image");
+
+ const icon = server.icon ? `https://cdn.discordapp.com/icons/${server.id}/${server.icon}.${server.icon.startsWith("a_") ? "gif" : "png"}` : `${process.env.NEXTAUTH_URL}/assets/avatar.png`;
 
  const fontBold = await fetch(new URL("/public/fonts/bold.ttf", import.meta.url)).then((res) => res.arrayBuffer());
  const fontRegular = await fetch(new URL("/public/fonts/regular.ttf", import.meta.url)).then((res) => res.arrayBuffer());
@@ -48,7 +51,7 @@ export async function GET(request, { params }) {
      backgroundImage: "url(\"data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' width='32' height='32' fill='none' stroke='rgb(255,255,255,0.05)'%3e%3cpath d='M0 .5H31.5V32'/%3e%3c/svg%3e\")",
     }}
    >
-    <img src={data.icon} alt="avatar" style={{ width: "125px", height: "125px", marginBottom: "20px", borderRadius: "50%", boxShadow: "0px 0px 277px 3px #101110" }} />
+    <img src={icon} alt="avatar" style={{ width: "125px", height: "125px", marginBottom: "20px", borderRadius: "50%", boxShadow: "0px 0px 277px 3px #101110" }} />
     <div
      style={{
       backgroundImage: "linear-gradient(to bottom, rgb(255, 255, 255), rgb(163, 163, 163))",
@@ -58,7 +61,7 @@ export async function GET(request, { params }) {
       fontFamily: "PoppinsBold",
      }}
     >
-     {shortenText(data.name)}
+     {shortenText(server.name)}
     </div>
     <div
      style={{
@@ -70,7 +73,7 @@ export async function GET(request, { params }) {
       marginTop: "15px",
      }}
     >
-     {shortenText(data.description || "This server has no description", 100)}
+     {shortenText(server.description || "This server has no description", 100)}
     </div>
    </div>
   ),
