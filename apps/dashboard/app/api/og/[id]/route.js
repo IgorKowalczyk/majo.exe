@@ -1,7 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
+import { getServer } from "@majoexe/util/functions/guild";
 import { redirect } from "next/navigation";
 import { ImageResponse } from "next/og";
-import { getServer } from "@majoexe/util/functions/guild";
 
 export const runtime = "edge";
 
