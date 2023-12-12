@@ -42,14 +42,9 @@ export default function Loading() {
    <div className="flex flex-col gap-6">
     <Block>
      <Header4 className="mb-4 !justify-normal whitespace-nowrap sm:flex-row">
-      <span className="opacity-80">New Members</span> <ArrowPathIcon className="min-h-5 text-accent-primary stroke-2 min-w-6 h-6 w-6 animate-spin" />
-      <InputSkeleton className="ml-auto !w-32" />
-     </Header4>
-     <GraphSkeleton className="mt-10 h-80" />
-    </Block>
-    <Block>
-     <Header4 className="mb-4 !justify-normal whitespace-nowrap sm:flex-row">
-      <span className="opacity-80">Members Left</span>
+      <span>
+       <span className="opacity-80">New Members</span>
+      </span>
       <ArrowPathIcon className="min-h-5 text-accent-primary stroke-2 min-w-6 h-6 w-6 animate-spin" />
       <InputSkeleton className="ml-auto !w-32" />
      </Header4>
@@ -57,7 +52,19 @@ export default function Loading() {
     </Block>
     <Block>
      <Header4 className="mb-4 !justify-normal whitespace-nowrap sm:flex-row">
-      <span className="opacity-80">Messages Sent</span>
+      <span>
+       <span className="opacity-80">Members Left</span>
+      </span>
+      <ArrowPathIcon className="min-h-5 text-accent-primary stroke-2 min-w-6 h-6 w-6 animate-spin" />
+      <InputSkeleton className="ml-auto !w-32" />
+     </Header4>
+     <GraphSkeleton className="mt-10 h-80" />
+    </Block>
+    <Block>
+     <Header4 className="mb-4 !justify-normal whitespace-nowrap sm:flex-row">
+      <span>
+       <span className="opacity-80">Messages Sent</span>
+      </span>
       <ArrowPathIcon className="min-h-5 text-accent-primary stroke-2 min-w-6 h-6 w-6 animate-spin" />
       <InputSkeleton className="ml-auto !w-32" />
      </Header4>

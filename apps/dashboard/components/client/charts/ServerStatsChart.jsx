@@ -28,7 +28,9 @@ function GenerateComponent({ title, data, CSVData, valueName, fileName, categori
  return (
   <Block>
    <Header4 className="mb-4 flex-col !justify-normal whitespace-nowrap sm:flex-row">
-    <span className="opacity-80">{title}</span> <span className="text-accent-primary">(+{sumArray(data, valueName)})</span>
+    <span>
+     <span className="opacity-80">{title}</span> <span className="text-accent-primary">(+{sumArray(data, valueName)})</span>
+    </span>
     <Menu as="div" className="relative mx-auto inline-block text-left sm:ml-auto sm:mr-0">
      <Menu.Button className="ui-open:border-neutral-700 hover:bg-background-menu-button ui-open:bg-background-menu-button ml-4 flex h-10 cursor-pointer select-none items-center gap-3 rounded-md border border-neutral-800 px-3 py-2 text-sm font-normal duration-200 hover:border-neutral-700 motion-reduce:transition-none sm:text-sm">
       <>
@@ -53,7 +55,7 @@ function GenerateComponent({ title, data, CSVData, valueName, fileName, categori
      </Transition>
     </Menu>
    </Header4>
-   <AreaChart className="mt-10 h-80" data={data} index="date" categories={categories} yAxisWidth={50} valueFormatter={numberFormatter} CSVData={CSVData} />
+   <AreaChart className="mt-10 h-80" data={data} index="date" categories={categories} yAxisWidth={50} valueFormatter={numberFormatter} />
   </Block>
  );
 }

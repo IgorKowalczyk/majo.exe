@@ -31,10 +31,10 @@ export function SideNav({ server }) {
    <aside
     className={clsx(
      {
-      hidden: !sideNavVisible,
-      flex: sideNavVisible,
+      "opacity-0 pointer-events-none": !sideNavVisible,
+      "opacity-100": sideNavVisible,
      },
-     "menu bg-background-navbar fixed z-[9998] mt-8 h-screen w-64 flex-none flex-col flex-nowrap overflow-y-auto overflow-x-hidden border-r border-r-neutral-800 py-8 pb-32 shadow-lg md:top-0 md:mt-16 md:flex"
+     "flex md:opacity-100 md:pointer-events-auto bg-background-navbar duration-100 fixed z-[9998] mt-8 h-screen w-64 flex-none flex-col flex-nowrap overflow-y-auto overflow-x-hidden border-r border-r-neutral-800 py-8 pb-32 shadow-lg md:top-0 md:mt-16"
     )}
    >
     <div className="px-4">
