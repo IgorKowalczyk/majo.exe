@@ -15,7 +15,7 @@ export default function AreaChart({ data = [], categories = [], index, valueForm
   <div className={twMerge("h-80 w-full", className)} {...other}>
    <ResponsiveContainer className="h-full w-full">
     {data && data.length > 0 ? (
-     <ReChartsAreaChart data={data} syncId="anyId">
+     <ReChartsAreaChart data={data}>
       <CartesianGrid className="stroke-gray-600 stroke-1" strokeDasharray="3 3" horizontal={true} vertical={false} />
       <XAxis hide={!showXAxis} dataKey={index} tick={{ transform: "translate(0, 6)" }} ticks={startEndOnly ? [data[0][index], data[data.length - 1][index]] : undefined} fill="" stroke="" className="fill-gray-600" interval="preserveStartEnd" tickLine={false} axisLine={false} padding={{ left: 10, right: 10 }} minTickGap={5} />
       <YAxis width={yAxisWidth} hide={!showYAxis} axisLine={false} tickLine={false} type="number" domain={yAxisDomain} tick={{ transform: "translate(-3, 0)" }} fill="" stroke="" className="fill-gray-600" tickFormatter={valueFormatter} allowDecimals={allowDecimals} />

@@ -25,113 +25,78 @@ export default async function Statistics({ params }) {
  )
   return redirect("/auth/error?error=It%20looks%20like%20you%20do%20not%20have%20permission%20to%20access%20this%20page.");
 
- const guild = await prismaClient.guild.findFirst({
+ const guild = await prismaClient.guild.upsert({
   where: {
    guildId: serverDownload.id,
   },
+  update: {},
+  create: {
+   guildId: serverDownload.id,
+  },
   select: {
-   guildId: true,
-   guildJoin: {
-    where: {
-     date: {
-      gte: new Date(new Date().setMonth(new Date().getMonth() - 1)),
-     },
-    },
-    select: {
-     date: true,
-     joins: true,
-    },
-   },
-   guildLeave: {
-    where: {
-     date: {
-      gte: new Date(new Date().setMonth(new Date().getMonth() - 1)),
-     },
-    },
-    select: {
-     date: true,
-     leaves: true,
-    },
-   },
-   guildMessage: {
-    where: {
-     date: {
-      gte: new Date(new Date().setMonth(new Date().getMonth() - 1)),
-     },
-    },
-    select: {
-     date: true,
-     messages: true,
-    },
-   },
+   guildJoin: true,
+   guildLeave: true,
+   guildMessage: true,
   },
  });
-
- if (!guild) {
-  await prismaClient.guild.create({
-   data: {
-    guildId: serverDownload.id,
-   },
-  });
- }
-
- const guildJoinMap = new Map();
- const guildLeaveMap = new Map();
- const guildMessageMap = new Map();
 
  const parseDate = (dateString) => {
   const date = new Date(dateString);
   return isNaN(date) ? null : date.toISOString().split("T")[0];
  };
 
- guild.guildJoin.forEach((guildJoinData) => {
-  const dateFormatted = parseDate(guildJoinData.date);
-  if (dateFormatted !== null) {
-   guildJoinMap.set(dateFormatted, (guildJoinMap.get(dateFormatted) || 0) + guildJoinData.joins);
+ const sumArray = (array, metric) => {
+  return array.reduce((accumulator, currentValue) => accumulator + currentValue[metric], 0);
+ };
+
+ let guildJoin = guild.guildJoin.map((guildJoinData) => ({
+  date: parseDate(guildJoinData.date),
+  Joins: guildJoinData.joins,
+ }));
+
+ let guildLeave = guild.guildLeave.map((guildLeaveData) => ({
+  date: parseDate(guildLeaveData.date),
+  Leaves: guildLeaveData.leaves,
+ }));
+
+ let guildMessage = guild.guildMessage.map((guildMessageData) => ({
+  date: parseDate(guildMessageData.date),
+  Messages: guildMessageData.messages,
+ }));
+
+ const generateDates = (startDate, endDate) => {
+  let dates = [];
+  let currentDate = new Date(startDate);
+
+  while (currentDate <= endDate) {
+   dates.push(new Date(currentDate));
+   currentDate.setDate(currentDate.getDate() + 1);
   }
- });
 
- guild.guildLeave.forEach((guildLeaveData) => {
-  const dateFormatted = parseDate(guildLeaveData.date);
-  if (dateFormatted !== null) {
-   guildLeaveMap.set(dateFormatted, (guildLeaveMap.get(dateFormatted) || 0) + guildLeaveData.leaves);
-  }
- });
+  return dates;
+ };
 
- guild.guildMessage.forEach((guildMessageData) => {
-  const dateFormatted = parseDate(guildMessageData.date);
-  if (dateFormatted !== null) {
-   guildMessageMap.set(dateFormatted, (guildMessageMap.get(dateFormatted) || 0) + guildMessageData.messages);
-  }
- });
+ const fillMissingDates = (array, property) => {
+  const minDate = new Date(Math.min(...array.map((e) => new Date(e.date))));
+  const maxDate = new Date(Math.max(...array.map((e) => new Date(e.date))));
+  const allDates = generateDates(minDate, maxDate);
 
- const currentDate = new Date();
- const pastDays = 30;
- const guildJoin = [];
- const guildLeave = [];
- const guildMessage = [];
+  allDates.forEach((date) => {
+   if (!array.some((e) => new Date(e.date).getTime() === date.getTime())) {
+    array.push({ date: date.toISOString().split("T")[0], [property]: 0 });
+   }
+  });
 
- for (let i = 0; i < pastDays; i++) {
-  const date = new Date(currentDate);
-  date.setDate(currentDate.getDate() - i);
-  const dateFormatted = parseDate(date.toISOString().split("T")[0]);
+  return array.sort((a, b) => new Date(a.date) - new Date(b.date));
+ };
 
-  const joins = guildJoinMap.get(dateFormatted) || 0;
-  const leaves = guildLeaveMap.get(dateFormatted) || 0;
-  const messages = guildMessageMap.get(dateFormatted) || 0;
-
-  guildJoin.unshift({ date: dateFormatted, Joins: joins });
-  guildLeave.unshift({ date: dateFormatted, Leaves: leaves });
-  guildMessage.unshift({ date: dateFormatted, Messages: messages });
- }
+ guildJoin = fillMissingDates(guildJoin, "Joins");
+ guildLeave = fillMissingDates(guildLeave, "Leaves");
+ guildMessage = fillMissingDates(guildMessage, "Messages");
 
  const guildJoinCSV = json2csv(guildJoin);
  const guildLeaveCSV = json2csv(guildLeave);
  const guildMessageCSV = json2csv(guildMessage);
-
- function sumArray(array, metric) {
-  return array.reduce((accumulator, currentValue) => accumulator + currentValue[metric], 0);
- }
 
  const newMembers = sumArray(guildJoin, "Joins") - sumArray(guildLeave, "Leaves");
  const membersLeft = sumArray(guildLeave, "Leaves");
