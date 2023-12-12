@@ -14,6 +14,7 @@ const nextConfig = {
  poweredByHeader: false,
  trailingSlash: false,
  images: {
+  unoptimized: true,
   remotePatterns: [
    {
     protocol: "https",
