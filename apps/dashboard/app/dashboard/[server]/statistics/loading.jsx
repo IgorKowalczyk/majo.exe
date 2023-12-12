@@ -2,7 +2,7 @@ import { ArrowPathIcon, UserMinusIcon, ChatBubbleLeftRightIcon, UserPlusIcon } f
 import { Block } from "@/components/Block";
 import { GraphCard } from "@/components/Card";
 import { Header4 } from "@/components/Headers";
-import { GraphSkeleton } from "@/components/Skeletons";
+import { GraphSkeleton, InputSkeleton } from "@/components/Skeletons";
 
 export default function Loading() {
  return (
@@ -39,27 +39,31 @@ export default function Loading() {
      }}
     />
    </div>
-   <Block className="mt-4">
-    <Header4 className="mb-4 flex-col !justify-normal whitespace-nowrap sm:flex-row">
-     <span className="opacity-80">Members Joined</span>
-     <ArrowPathIcon className="min-h-5 text-accent-primary min-w-6 h-6 w-6 animate-spin" />
-    </Header4>
-    <GraphSkeleton className="mt-10 h-80" />
-   </Block>
-   <Block className="mt-4">
-    <Header4 className="mb-4 flex-col !justify-normal whitespace-nowrap sm:flex-row">
-     <span className="opacity-80">Members Left</span>
-     <ArrowPathIcon className="min-h-5 text-accent-primary min-w-6 h-6 w-6 animate-spin" />
-    </Header4>
-    <GraphSkeleton className="mt-10 h-80" />
-   </Block>
-   <Block className="mt-4">
-    <Header4 className="mb-4 flex-col !justify-normal whitespace-nowrap sm:flex-row">
-     <span className="opacity-80">Messages Sent</span>
-     <ArrowPathIcon className="min-h-5 text-accent-primary min-w-6 h-6 w-6 animate-spin" />
-    </Header4>
-    <GraphSkeleton className="mt-10 h-80" />
-   </Block>
+   <div className="flex flex-col gap-6">
+    <Block>
+     <Header4 className="mb-4 !justify-normal whitespace-nowrap sm:flex-row">
+      <span className="opacity-80">New Members</span> <ArrowPathIcon className="min-h-5 text-accent-primary stroke-2 min-w-6 h-6 w-6 animate-spin" />
+      <InputSkeleton className="ml-auto !w-32" />
+     </Header4>
+     <GraphSkeleton className="mt-10 h-80" />
+    </Block>
+    <Block>
+     <Header4 className="mb-4 !justify-normal whitespace-nowrap sm:flex-row">
+      <span className="opacity-80">Members Left</span>
+      <ArrowPathIcon className="min-h-5 text-accent-primary stroke-2 min-w-6 h-6 w-6 animate-spin" />
+      <InputSkeleton className="ml-auto !w-32" />
+     </Header4>
+     <GraphSkeleton className="mt-10 h-80" />
+    </Block>
+    <Block>
+     <Header4 className="mb-4 !justify-normal whitespace-nowrap sm:flex-row">
+      <span className="opacity-80">Messages Sent</span>
+      <ArrowPathIcon className="min-h-5 text-accent-primary stroke-2 min-w-6 h-6 w-6 animate-spin" />
+      <InputSkeleton className="ml-auto !w-32" />
+     </Header4>
+     <GraphSkeleton className="mt-10 h-80" />
+    </Block>
+   </div>
   </>
  );
 }
