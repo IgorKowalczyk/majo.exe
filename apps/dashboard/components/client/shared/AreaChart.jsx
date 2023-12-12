@@ -1,10 +1,11 @@
 "use client";
 
+import { ExclamationCircleIcon } from "@heroicons/react/24/outline";
 import { globalConfig } from "@majoexe/config";
 import { Area, CartesianGrid, AreaChart as ReChartsAreaChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
 import { twMerge } from "tailwind-merge";
 
-export default function AreaChart({ data = [], categories = [], index, valueFormatter = (value) => value, startEndOnly = false, showXAxis = true, showYAxis = true, yAxisWidth = 56, autoMinValue = false, curveType = "monotone", minValue, maxValue, connectNulls = true, allowDecimals = true, noDataText = "No data", className, ...other }) {
+export default function AreaChart({ data = [], categories = [], index, valueFormatter = (value) => value, startEndOnly = false, showXAxis = true, showYAxis = true, yAxisWidth = 56, autoMinValue = false, curveType = "monotone", minValue, maxValue, connectNulls = true, noDataText = "This chart has no data! Please check back later.", className, ...other }) {
  const yAxisDomain = autoMinValue ? [0, "auto"] : [minValue ?? 0, maxValue ?? "auto"];
 
  const categoryColors = categories.map((category) => {
@@ -18,7 +19,7 @@ export default function AreaChart({ data = [], categories = [], index, valueForm
      <ReChartsAreaChart data={data}>
       <CartesianGrid className="stroke-gray-600 stroke-1" strokeDasharray="3 3" horizontal={true} vertical={false} />
       <XAxis hide={!showXAxis} dataKey={index} tick={{ transform: "translate(0, 6)" }} ticks={startEndOnly ? [data[0][index], data[data.length - 1][index]] : undefined} fill="" stroke="" className="fill-gray-600" interval="preserveStartEnd" tickLine={false} axisLine={false} padding={{ left: 10, right: 10 }} minTickGap={5} />
-      <YAxis width={yAxisWidth} hide={!showYAxis} axisLine={false} tickLine={false} type="number" domain={yAxisDomain} tick={{ transform: "translate(-3, 0)" }} fill="" stroke="" className="fill-gray-600" tickFormatter={valueFormatter} allowDecimals={allowDecimals} />
+      <YAxis width={yAxisWidth} hide={!showYAxis} axisLine={false} tickLine={false} type="number" domain={yAxisDomain} tick={{ transform: "translate(-3, 0)" }} fill="" stroke="" className="fill-gray-600" tickFormatter={(value) => Math.round(valueFormatter(value))} allowDecimals={false} />
       <Tooltip wrapperStyle={{ outline: "none" }} isAnimationActive={true} animationDuration={500} cursor={{ stroke: globalConfig.defaultColor, strokeWidth: 1 }} content={({ active, payload, label }) => <ChartTooltip active={active} payload={payload} label={label} categoryColors={categoryColors} valueFormatter={valueFormatter} />} position={{ y: "auto" }} />
       {categories.map((category) => (
        <defs key={category}>
@@ -49,7 +50,10 @@ export default function AreaChart({ data = [], categories = [], index, valueForm
       ))}
      </ReChartsAreaChart>
     ) : (
-     <p>{noDataText}</p>
+     <p className="mb-4 flex items-center justify-start gap-2 text-left text-red-400">
+      <ExclamationCircleIcon className="min-h-5 min-w-5 h-5 w-5" />
+      {noDataText}
+     </p>
     )}
    </ResponsiveContainer>
   </div>

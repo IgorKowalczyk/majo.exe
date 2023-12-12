@@ -49,11 +49,21 @@ function GenerateComponent({ title, data, CSVData, valueName, fileName, categori
   filteredData = data.filter((item) => new Date(item.date) >= cutoffDate);
  }
 
+ const start = filteredData[0]?.date;
+ const end = filteredData[filteredData.length - 1]?.date;
+
  return (
   <Block>
    <Header4 className="mb-4 flex-col !justify-normal whitespace-nowrap sm:flex-row">
-    <span>
-     <span className="opacity-80">{title}</span> <span className="text-accent-primary">(+{sumArray(filteredData, valueName)})</span>
+    <span className="flex flex-col gap-1">
+     <span>
+      <span className="opacity-80">{title}</span> <span className="text-accent-primary">(+{sumArray(filteredData, valueName)})</span>
+     </span>
+     {start && end && (
+      <span className="text-left text-sm font-normal opacity-40">
+       ({start} - {end})
+      </span>
+     )}
     </span>
     <div className="relative mx-auto flex flex-row gap-1 text-left sm:ml-auto sm:mr-0">
      <Menu as="div" className="relative">

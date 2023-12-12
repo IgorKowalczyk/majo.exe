@@ -77,13 +77,21 @@ export default async function Statistics({ params }) {
  };
 
  const fillMissingDates = (array, property) => {
-  const minDate = new Date(Math.min(...array.map((e) => new Date(e.date))));
-  const maxDate = new Date(Math.max(...array.map((e) => new Date(e.date))));
-  const allDates = generateDates(minDate, maxDate);
+  let minDate = new Date(Math.min(...array.map((e) => new Date(e.date))));
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+  const thirtyDaysAgo = new Date(today.getTime());
+  thirtyDaysAgo.setDate(thirtyDaysAgo.getDate() - 30);
+
+  if (minDate < thirtyDaysAgo) minDate = thirtyDaysAgo;
+
+  const allDates = generateDates(minDate, today);
+  const dateSet = new Set(array.map((e) => new Date(e.date).toISOString().split("T")[0]));
 
   allDates.forEach((date) => {
-   if (!array.some((e) => new Date(e.date).getTime() === date.getTime())) {
-    array.push({ date: date.toISOString().split("T")[0], [property]: 0 });
+   const dateString = date.toISOString().split("T")[0];
+   if (!dateSet.has(dateString)) {
+    array.push({ date: dateString, [property]: 0 });
    }
   });
 
