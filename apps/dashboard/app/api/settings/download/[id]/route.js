@@ -181,7 +181,6 @@ export async function GET(request, { params }) {
      select: {
       ruleId: true,
       ruleType: true,
-      enabled: true,
       createdAt: true,
      },
     },
