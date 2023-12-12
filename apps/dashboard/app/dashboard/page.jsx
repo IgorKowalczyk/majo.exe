@@ -90,9 +90,9 @@ export default async function Dashboard() {
      ) : (
       <div className="flex flex-col items-center justify-center gap-4">
        <h3 className="text-center text-xl font-bold">You don't have any servers!</h3>
-        <ButtonPrimary href={"/api/invite"}>
-         <PlusSmallIcon className="min-h-5 min-w-5 mr-2 h-5 w-5" aria-hidden="true" role="img" /> Add bot
-        </ButtonPrimary>
+       <ButtonPrimary href={"/api/invite"}>
+        <PlusSmallIcon className="min-h-5 min-w-5 mr-2 h-5 w-5" aria-hidden="true" role="img" /> Add bot
+       </ButtonPrimary>
       </div>
      )}
     </div>
