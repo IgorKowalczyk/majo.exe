@@ -181,7 +181,7 @@ export default async function ServerAutomod() {
    <Block className="mb-4">
     <h2 className="mb-1 flex items-center justify-start gap-2 text-left text-2xl font-bold">
      <AtSymbolIcon className="min-h-6 min-w-6 h-6 w-6" />
-     Anti-Menion <NavBadge>Coming Soon</NavBadge>
+     Anti-Mention <NavBadge>Coming Soon</NavBadge>
     </h2>
     <p className="mb-4 text-left">
      <span>Automatically delete all messages containing user mentions.</span>
