@@ -143,8 +143,8 @@ importers:
         specifier: 1.1.1
         version: 1.1.1
       '@vercel/speed-insights':
-        specifier: 1.0.1
-        version: 1.0.1
+        specifier: 1.0.2
+        version: 1.0.2
       clsx:
         specifier: 2.0.0
         version: 2.0.0
@@ -3407,8 +3407,8 @@ packages:
       server-only: 0.0.1
     dev: false
 
-  /@vercel/speed-insights@1.0.1:
-    resolution: {integrity: sha512-cm8KTTsDgS1AbWsgIEZuMoyPUjclzeqJihyLp0tnA21B/x9iTE8hu2S5zM+/DBzihuHxWL1dx9pCWk22ctMFWQ==}
+  /@vercel/speed-insights@1.0.2:
+    resolution: {integrity: sha512-y5HWeB6RmlyVYxJAMrjiDEz8qAIy2cit0fhBq+MD78WaUwQvuBnQlX4+5MuwVTWi46bV3klaRMq83u9zUy1KOg==}
     requiresBuild: true
     dev: false
 
