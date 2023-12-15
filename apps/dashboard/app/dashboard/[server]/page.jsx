@@ -146,10 +146,10 @@ export default async function ServerOverview({ params }) {
   let minDate = new Date(Math.min(...array.map((e) => new Date(e.date))));
   const today = new Date();
   today.setHours(0, 0, 0, 0);
-  const thirtyDaysAgo = new Date(today.getTime());
-  thirtyDaysAgo.setDate(thirtyDaysAgo.getDate() - 30);
+  const sevenDaysAgo = new Date(today.getTime());
+  sevenDaysAgo.setDate(sevenDaysAgo.getDate() - 7);
 
-  if (minDate < thirtyDaysAgo) minDate = thirtyDaysAgo;
+  if (minDate < sevenDaysAgo) minDate = sevenDaysAgo;
 
   const allDates = generateDates(minDate, today);
   const dateSet = new Set(array.map((e) => new Date(e.date).toISOString().split("T")[0]));
@@ -270,7 +270,7 @@ export default async function ServerOverview({ params }) {
          <LightBulbIcon className="min-h-5 min-w-5 h-5 w-5" aria-hidden="true" role="img" />
          Ways to improve your score:
         </Header4>
-        <div className="mt-2 list-inside list-decimal">
+        <div className="mt-2 space-y-1">
          {(!guild.autoMod || guild.autoMod.length === 0) && (
           <div>
            <span className="gap-1 font-bold">
