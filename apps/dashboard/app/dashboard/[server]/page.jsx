@@ -255,7 +255,7 @@ export default async function ServerOverview({ params }) {
           "text-emerald-500": guildScore > 60,
          })}
         >
-         {guildScore}% ({guildScore <= 10 ? "Bad" : guildScore > 10 && guildScore <= 30 ? "Okay" : guildScore > 30 && guildScore <= 60 ? "Good" : "Perfect!"})
+         {guildScore}% ({guildScore <= 10 ? "Bad" : guildScore > 10 && guildScore <= 30 ? "Okay" : guildScore > 30 && guildScore <= 60 ? "Good" : guildScore > 60 && guildScore <= 90 ? "Great" : guildScore > 90 ? "Perfect!" : "Unknown"})
         </span>
        </span>
       </Header4>

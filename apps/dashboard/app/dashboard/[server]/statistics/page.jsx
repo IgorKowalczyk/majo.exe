@@ -106,9 +106,9 @@ export default async function Statistics({ params }) {
  const guildLeaveCSV = json2csv(guildLeave);
  const guildMessageCSV = json2csv(guildMessage);
 
- const newMembers = sumArray(guildJoin, "Joins") - sumArray(guildLeave, "Leaves");
- const membersLeft = sumArray(guildLeave, "Leaves");
- const newMessages = sumArray(guildMessage, "Messages");
+ const newMembers = sumArray(guildJoin.slice(-7), "Joins") - sumArray(guildLeave.slice(-7), "Leaves");
+ const membersLeft = sumArray(guildLeave.slice(-7), "Leaves");
+ const newMessages = sumArray(guildMessage.slice(-7), "Messages");
 
  return (
   <>
@@ -118,7 +118,7 @@ export default async function Statistics({ params }) {
      data={{
       icon: <UserPlusIcon className="min-h-8 min-w-8 h-8 w-8" />,
       title: "New Members",
-      description: "The amount of new members that joined your server.",
+      description: "Amount of new members that joined your server in the last 7 days.",
       value: newMembers,
       graph: newMembers === 0 ? <MinusIcon className="min-h-5 min-w-5 h-5 w-5" /> : newMembers < 0 ? <ArrowTrendingDownIcon className="min-h-5 min-w-5 h-5 w-5" /> : <ArrowTrendingUpIcon className="min-h-5 min-w-5 h-5 w-5" />,
      }}
@@ -128,7 +128,7 @@ export default async function Statistics({ params }) {
      data={{
       icon: <UserMinusIcon className="min-h-8 min-w-8 h-8 w-8" />,
       title: "Members Left",
-      description: "The amount of members that left your server.",
+      description: "Amount of members that left your server in the last 7 days.",
       value: membersLeft,
       graph: membersLeft === 0 ? <MinusIcon className="min-h-5 min-w-5 h-5 w-5" /> : membersLeft < 0 ? <ArrowTrendingDownIcon className="min-h-5 min-w-5 h-5 w-5" /> : <ArrowTrendingUpIcon className="min-h-5 min-w-5 h-5 w-5" />,
      }}
@@ -138,7 +138,7 @@ export default async function Statistics({ params }) {
      data={{
       icon: <ChatBubbleLeftRightIcon className="min-h-8 min-w-8 h-8 w-8" />,
       title: "New Messages",
-      description: "The amount of messages that were sent in your server.",
+      description: "The amount of messages that were sent in your server in the last 7 days.",
       value: newMessages,
       graph: newMessages === 0 ? <MinusIcon className="min-h-5 min-w-5 h-5 w-5" /> : newMessages < 0 ? <ArrowTrendingDownIcon className="min-h-5 min-w-5 h-5 w-5" /> : <ArrowTrendingUpIcon className="min-h-5 min-w-5 h-5 w-5" />,
      }}

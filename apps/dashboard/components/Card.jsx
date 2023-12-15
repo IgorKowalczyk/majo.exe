@@ -1,5 +1,4 @@
 import clsx from "clsx";
-import Balancer from "react-wrap-balancer";
 import { Header4 } from "@/components/Headers";
 
 export function Card({ children }) {
@@ -14,9 +13,7 @@ export function GraphCard({ data, className }) {
      {data.icon}
      <div className="flex flex-col">
       <Header4 className="!justify-start">{data.title}</Header4>
-      <p className="text-sm">
-       <Balancer>{data.description}</Balancer>
-      </p>
+      <p className="text-sm text-gray-400">{data.description}</p>
      </div>
     </div>
     <div className="flex flex-row items-center gap-4">
