@@ -1,18 +1,17 @@
 /* eslint-disable complexity */
-import { ArrowPathIcon, LightBulbIcon, PlusSmallIcon } from "@heroicons/react/24/outline";
-import { BoltIcon, SparklesIcon } from "@heroicons/react/24/solid";
+import { LightBulbIcon, ChatBubbleLeftRightIcon, PlusSmallIcon, UserMinusIcon, UserPlusIcon } from "@heroicons/react/24/outline";
+import { BoltIcon } from "@heroicons/react/24/solid";
 import prismaClient from "@majoexe/database";
 import { getServer, getGuildPreview, getGuildMember } from "@majoexe/util/functions/guild";
 import clsx from "clsx";
 import { getSession } from "lib/session";
 import Link from "next/link";
 import { redirect } from "next/navigation";
-import Balancer from "react-wrap-balancer";
 import { Block } from "@/components/Block";
-import { GraphCard } from "@/components/Card";
 import { CategoryBar } from "@/components/CategoryBar";
 import { Leaderboard } from "@/components/client/lists/Leaderboard";
 import Image from "@/components/client/shared/Image";
+import { SparkLineChart } from "@/components/client/shared/SparkChart";
 import { Tooltip } from "@/components/client/shared/Tooltip";
 import { Header4, Header5 } from "@/components/Headers";
 
@@ -66,6 +65,27 @@ export default async function ServerOverview({ params }) {
     },
    },
    autoMod: true,
+   guildJoin: {
+    where: {
+     date: {
+      gte: new Date(new Date().getTime() - 60 * 60 * 24 * 7 * 1000),
+     },
+    },
+   },
+   guildLeave: {
+    where: {
+     date: {
+      gte: new Date(new Date().getTime() - 60 * 60 * 24 * 7 * 1000),
+     },
+    },
+   },
+   guildMessage: {
+    where: {
+     date: {
+      gte: new Date(new Date().getTime() - 60 * 60 * 24 * 7 * 1000),
+     },
+    },
+   },
   },
  });
 
@@ -86,6 +106,72 @@ export default async function ServerOverview({ params }) {
  if (guild.publicPage) guildScore += 25;
  if (guild.vanity) guildScore += 25;
 
+ const parseDate = (dateString) => {
+  const date = new Date(dateString);
+  return isNaN(date) ? null : date.toISOString().split("T")[0];
+ };
+
+ const sumArray = (array, metric) => {
+  return array.reduce((accumulator, currentValue) => accumulator + currentValue[metric], 0);
+ };
+
+ let guildJoin = guild.guildJoin.map((guildJoinData) => ({
+  date: parseDate(guildJoinData.date),
+  Joins: guildJoinData.joins,
+ }));
+
+ let guildLeave = guild.guildLeave.map((guildLeaveData) => ({
+  date: parseDate(guildLeaveData.date),
+  Leaves: guildLeaveData.leaves,
+ }));
+
+ let guildMessage = guild.guildMessage.map((guildMessageData) => ({
+  date: parseDate(guildMessageData.date),
+  Messages: guildMessageData.messages,
+ }));
+
+ const generateDates = (startDate, endDate) => {
+  let dates = [];
+  let currentDate = new Date(startDate);
+
+  while (currentDate <= endDate) {
+   dates.push(new Date(currentDate));
+   currentDate.setDate(currentDate.getDate() + 1);
+  }
+
+  return dates;
+ };
+
+ const fillMissingDates = (array, property) => {
+  let minDate = new Date(Math.min(...array.map((e) => new Date(e.date))));
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+  const thirtyDaysAgo = new Date(today.getTime());
+  thirtyDaysAgo.setDate(thirtyDaysAgo.getDate() - 30);
+
+  if (minDate < thirtyDaysAgo) minDate = thirtyDaysAgo;
+
+  const allDates = generateDates(minDate, today);
+  const dateSet = new Set(array.map((e) => new Date(e.date).toISOString().split("T")[0]));
+
+  allDates.forEach((date) => {
+   const dateString = date.toISOString().split("T")[0];
+   if (!dateSet.has(dateString)) {
+    array.push({ date: dateString, [property]: 0 });
+   }
+  });
+
+  return array.sort((a, b) => new Date(a.date) - new Date(b.date));
+ };
+
+ guildJoin = fillMissingDates(guildJoin, "Joins");
+ guildLeave = fillMissingDates(guildLeave, "Leaves");
+ guildMessage = fillMissingDates(guildMessage, "Messages");
+
+ const newMembers = sumArray(guildJoin, "Joins");
+ const membersLeft = sumArray(guildLeave, "Leaves");
+ const newMessages = sumArray(guildMessage, "Messages");
+
  return (
   <>
    <div className="mb-4 flex flex-col items-center justify-normal gap-4 text-2xl font-bold sm:flex-row md:text-3xl">
@@ -93,49 +179,72 @@ export default async function ServerOverview({ params }) {
     <div className="flex flex-col text-center sm:ml-4 sm:text-left">
      {guildPreview.name || "Unnamed server"}
      <Header5 className="mt-2 text-center opacity-60 sm:text-left">
-      <Balancer>{guildPreview.description || "This server has no description, maybe you should add one?"}</Balancer>
+      <p>{guildPreview.description || "This server has no description, maybe you should add one?"}</p>
      </Header5>
     </div>
    </div>
 
-   {/* <div className="mb-4 grid grid-cols-1 gap-0 md:grid-cols-1 md:gap-4 lg:grid-cols-2 xl:grid-cols-3">
-    <GraphCard
-     className={"mt-0"}
-     data={{
-      icon: <SparklesIcon className="min-h-8 min-w-8 h-8 w-8" />,
-      title: "Soon!",
-      description: "This feature is coming soon! Stay tuned!",
-      value: "Loading",
-      graph: <ArrowPathIcon className="min-h-5 min-w-5 h-5 w-5 animate-spin" />,
-     }}
-    />
-    <GraphCard
-     className={"mt-0"}
-     data={{
-      icon: <SparklesIcon className="min-h-8 min-w-8 h-8 w-8" />,
-      title: "Soon!",
-      description: "This feature is coming soon! Stay tuned!",
-      value: "Loading",
-      graph: <ArrowPathIcon className="min-h-5 min-w-5 h-5 w-5 animate-spin" />,
-     }}
-    />
-    <GraphCard
-     className={"col-span-1 mt-0 lg:col-span-2 xl:col-span-1"}
-     data={{
-      icon: <SparklesIcon className="min-h-8 min-w-8 h-8 w-8" />,
-      title: "Soon!",
-      description: "This feature is coming soon! Stay tuned!",
-      value: "Loading",
-      graph: <ArrowPathIcon className="min-h-5 min-w-5 h-5 w-5 animate-spin" />,
-     }}
-    />
-   </div> */}
+   <div className="mb-4 grid grid-cols-1 gap-0 md:grid-cols-1 md:gap-4 lg:grid-cols-2 xl:grid-cols-3">
+    <Link href={`/dashboard/${serverDownload.id}/statistics`} className="bg-background-secondary mt-4 cursor-pointer overflow-auto rounded-lg border border-neutral-800 p-4">
+     <div className="flex flex-row items-center justify-between">
+      <div className="flex flex-row items-center gap-4">
+       <UserPlusIcon className="min-h-8 min-w-8 h-8 w-8" aria-hidden="true" role="img" />
+       <div className="flex flex-col">
+        <Header4 className="!justify-start whitespace-nowrap">
+         New members
+         <span className="bg-accent-primary rounded-md px-2 text-sm font-normal text-white">+{newMembers}</span>
+        </Header4>
+        <p className="text-sm text-gray-400">Amount of new members that joined your server in the last 7 days.</p>
+       </div>
+      </div>
+      <div className="flex flex-row items-center ml-2 gap-4">
+       <SparkLineChart data={guildJoin} categories={["Joins"]} index="date" />
+      </div>
+     </div>
+    </Link>
+
+    <Link href={`/dashboard/${serverDownload.id}/statistics`} className="bg-background-secondary mt-4 cursor-pointer overflow-auto rounded-lg border border-neutral-800 p-4">
+     <div className="flex flex-row items-center justify-between">
+      <div className="flex flex-row items-center gap-4">
+       <ChatBubbleLeftRightIcon className="min-h-8 min-w-8 h-8 w-8" aria-hidden="true" role="img" />
+       <div className="flex flex-col">
+        <Header4 className="!justify-start whitespace-nowrap">
+         Messages sent
+         <span className="bg-accent-primary rounded-md px-2 text-sm font-normal text-white">+{newMessages}</span>
+        </Header4>
+        <p className="text-sm text-gray-400">Amount of messages that were sent in your server in the last 7 days.</p>
+       </div>
+      </div>
+      <div className="flex flex-row items-center ml-2 gap-4">
+       <SparkLineChart data={guildMessage} categories={["Messages"]} index="date" />
+      </div>
+     </div>
+    </Link>
+
+    <Link href={`/dashboard/${serverDownload.id}/statistics`} className="bg-background-secondary mt-4 cursor-pointer overflow-auto rounded-lg border border-neutral-800 p-4">
+     <div className="flex flex-row items-center justify-between">
+      <div className="flex flex-row items-center gap-4">
+       <UserMinusIcon className="min-h-8 min-w-8 h-8 w-8" aria-hidden="true" role="img" />
+       <div className="flex flex-col">
+        <Header4 className="!justify-start whitespace-nowrap">
+         Members left
+         <span className="bg-accent-primary rounded-md px-2 text-sm font-normal text-white">-{membersLeft}</span>
+        </Header4>
+        <p className="text-sm text-gray-400">Amount of members that left your server in the last 7 days.</p>
+       </div>
+      </div>
+      <div className="flex flex-row items-center ml-2 gap-4">
+       <SparkLineChart data={guildLeave} categories={["Leaves"]} index="date" />
+      </div>
+     </div>
+    </Link>
+   </div>
 
    <div className="mt-6 block gap-6 lg:flex lg:items-start">
-    <div className="[flex:3_1_0] gap-6 flex flex-col justify-start overflow-x-scroll">
+    <div className="flex flex-col justify-start gap-6 overflow-x-scroll [flex:3_1_0]">
      <Block>
-      <Header4 className="!block mb-2 !text-left">
-       <span className="flex flex-row items-center flex-wrap gap-2">
+      <Header4 className="mb-2 !block !text-left">
+       <span className="flex flex-row flex-wrap items-center gap-2">
         <BoltIcon className="min-h-5 min-w-5 h-5 w-5" aria-hidden="true" role="img" />
         <span className="opacity-80">Server Score: </span>
         <span
@@ -157,15 +266,15 @@ export default async function ServerOverview({ params }) {
 
       {guildScore !== 100 && (
        <>
-        <Header4 className="pt-4 !items-center !gap-2 !justify-normal opacity-80">
+        <Header4 className="!items-center !justify-normal !gap-2 pt-4 opacity-80">
          <LightBulbIcon className="min-h-5 min-w-5 h-5 w-5" aria-hidden="true" role="img" />
          Ways to improve your score:
         </Header4>
-        <div className="list-decimal list-inside mt-2">
+        <div className="mt-2 list-inside list-decimal">
          {(!guild.autoMod || guild.autoMod.length === 0) && (
           <div>
-           <span className="font-bold gap-1">
-            <PlusSmallIcon className="min-h-5 min-w-5 h-5 w-5 inline mr-1 stroke-2 stroke-accent-primary" aria-hidden="true" role="img" />
+           <span className="gap-1 font-bold">
+            <PlusSmallIcon className="min-h-5 min-w-5 stroke-accent-primary mr-1 inline h-5 w-5 stroke-2" aria-hidden="true" role="img" />
             Enable AutoMod:
            </span>{" "}
            <span className="font-normal text-gray-400">
@@ -178,8 +287,8 @@ export default async function ServerOverview({ params }) {
          )}
          {!guild.enableXP && (
           <div>
-           <span className="font-bold gap-1">
-            <PlusSmallIcon className="min-h-5 min-w-5 h-5 w-5 inline mr-1 stroke-2 stroke-accent-primary" aria-hidden="true" role="img" />
+           <span className="gap-1 font-bold">
+            <PlusSmallIcon className="min-h-5 min-w-5 stroke-accent-primary mr-1 inline h-5 w-5 stroke-2" aria-hidden="true" role="img" />
             Enable XP:
            </span>{" "}
            <span className="font-normal text-gray-400">
@@ -192,8 +301,8 @@ export default async function ServerOverview({ params }) {
          )}
          {!guild.publicPage && (
           <div>
-           <span className="font-bold gap-1">
-            <PlusSmallIcon className="min-h-5 min-w-5 h-5 w-5 inline mr-1 stroke-2 stroke-accent-primary" aria-hidden="true" role="img" />
+           <span className="gap-1 font-bold">
+            <PlusSmallIcon className="min-h-5 min-w-5 stroke-accent-primary mr-1 inline h-5 w-5 stroke-2" aria-hidden="true" role="img" />
             Enable Public Page:
            </span>{" "}
            <span className="font-normal text-gray-400">
@@ -206,8 +315,8 @@ export default async function ServerOverview({ params }) {
          )}
          {!guild.vanity && (
           <div>
-           <span className="font-bold gap-1">
-            <PlusSmallIcon className="min-h-5 min-w-5 h-5 w-5 inline mr-1 stroke-2 stroke-accent-primary" aria-hidden="true" role="img" />
+           <span className="gap-1 font-bold">
+            <PlusSmallIcon className="min-h-5 min-w-5 stroke-accent-primary mr-1 inline h-5 w-5 stroke-2" aria-hidden="true" role="img" />
             Set Vanity URL:
            </span>{" "}
            <span className="font-normal text-gray-400">
@@ -231,7 +340,7 @@ export default async function ServerOverview({ params }) {
     <div className="mt-6 flex flex-col justify-start gap-6 [flex:2_1_0%] lg:mt-0">
      <Block>
       <Header4 className="mb-4 !items-start !justify-normal opacity-80">Quick Stats</Header4>
-      <div className="flex gap-2 flex-row flex-wrap">
+      <div className="flex flex-row flex-wrap gap-2">
        <div className="flex items-center">
         <div className="min-h-3 min-w-3 mr-2 h-3 w-3 rounded-full bg-[#81848f]" />
         {guildPreview.approximate_member_count || "0"} members

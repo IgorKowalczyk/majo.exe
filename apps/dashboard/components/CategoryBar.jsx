@@ -3,14 +3,14 @@ import clsx from "clsx";
 export function CategoryBar({ percent = 50, ...props }) {
  return (
   <div {...props}>
-   <div className="relative text-gray-500 flex w-full mb-2 h-5">
+   <div className="relative mb-2 flex h-5 w-full text-gray-500">
     <div
      className="flex items-center justify-end"
      style={{
       width: "10%",
      }}
     >
-     <span className="block left-1/2 translate-x-1/2">10</span>
+     <span className="left-1/2 block translate-x-1/2">10</span>
     </div>
     <div
      className="flex items-center justify-end"
@@ -18,7 +18,7 @@ export function CategoryBar({ percent = 50, ...props }) {
       width: "20%",
      }}
     >
-     <span className="block left-1/2 translate-x-1/2">30</span>
+     <span className="left-1/2 block translate-x-1/2">30</span>
     </div>
     <div
      className="flex items-center justify-end"
@@ -26,7 +26,7 @@ export function CategoryBar({ percent = 50, ...props }) {
       width: "30%",
      }}
     >
-     <span className="hidden left-1/2 translate-x-1/2">60</span>
+     <span className="left-1/2 hidden translate-x-1/2">60</span>
     </div>
     <div
      className="flex items-center justify-end"
@@ -34,13 +34,13 @@ export function CategoryBar({ percent = 50, ...props }) {
       width: "40%",
      }}
     >
-     <span className="hidden left-1/2 translate-x-1/2">100</span>{" "}
+     <span className="left-1/2 hidden translate-x-1/2">100</span>{" "}
     </div>
-    <div className="absolute bottom-0 flex items-center left-0">0</div>
-    <div className="absolute bottom-0 flex items-center right-0">100</div>
+    <div className="absolute bottom-0 left-0 flex items-center">0</div>
+    <div className="absolute bottom-0 right-0 flex items-center">100</div>
    </div>
-   <div className="relative w-full flex items-center h-2">
-    <div className="flex-1 flex items-center h-full overflow-hidden rounded-full">
+   <div className="relative flex h-2 w-full items-center">
+    <div className="flex h-full flex-1 items-center overflow-hidden rounded-full">
      <div
       className="h-full bg-rose-500"
       style={{
@@ -67,7 +67,7 @@ export function CategoryBar({ percent = 50, ...props }) {
      />
     </div>
     <div
-     className="absolute right-1/2 -translate-x-1/2 w-5"
+     className="absolute right-1/2 w-5 -translate-x-1/2"
      style={{
       left: `${percent}%`,
      }}
@@ -80,7 +80,7 @@ export function CategoryBar({ percent = 50, ...props }) {
         "bg-yellow-500": percent > 30 && percent <= 60,
         "bg-emerald-500": percent > 60,
        },
-       "ring-2 mx-auto rounded-full ring-background-secondary h-4 w-1"
+       "ring-background-secondary mx-auto h-4 w-1 rounded-full ring-2"
       )}
      />
     </div>
