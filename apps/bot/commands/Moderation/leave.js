@@ -52,16 +52,16 @@ export default {
     if (!channel.permissionsFor(interaction.guild.members.me).has(PermissionsBitField.Flags.AttachFiles)) return client.errorMessages.createSlashError(interaction, "❌ I don't have permission to attach files in that channel!");
     if (!channel.permissionsFor(interaction.guild.members.me).has(PermissionsBitField.Flags.ViewChannel)) return client.errorMessages.createSlashError(interaction, "❌ I don't have permission to view that channel!");
 
-    await prismaClient.guild.update({
+    await prismaClient.guildLeaveMessage.upsert({
      where: {
       guildId: interaction.guild.id,
      },
-     data: {
-      guildLeaveMessage: {
-       create: {
-        channelId: channel.id,
-       },
-      },
+     update: {
+      channelId: channel.id,
+     },
+     create: {
+      guildId: interaction.guild.id,
+      channelId: channel.id,
      },
     });
 
@@ -80,14 +80,9 @@ export default {
 
     await interaction.followUp({ embeds: [embed] });
    } else if (command === "disable") {
-    await prismaClient.guild.update({
+    await prismaClient.guildLeaveMessage.delete({
      where: {
       guildId: interaction.guild.id,
-     },
-     data: {
-      guildLeaveMessage: {
-       delete: true,
-      },
      },
     });
 
@@ -134,14 +129,9 @@ export default {
      const channel = interaction.guild.channels.cache.get(guild.guildLeaveMessage.channelId);
 
      if (!channel) {
-      await prismaClient.guild.update({
+      await prismaClient.guildLeaveMessage.delete({
        where: {
         guildId: interaction.guild.id,
-       },
-       data: {
-        guildLeaveMessage: {
-         delete: true,
-        },
        },
       });
 
