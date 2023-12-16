@@ -188,23 +188,6 @@ export async function POST(request) {
    );
   }
 
-  if (new Date().getTime() - current.embedLastChanged.getTime() < 10000) {
-   return NextResponse.json(
-    {
-     error: "You can only change the embed color every 10 seconds",
-     code: 400,
-    },
-    {
-     status: 200,
-     headers: {
-      ...(process.env.NODE_ENV !== "production" && {
-       "Server-Timing": `response;dur=${Date.now() - start}ms`,
-      }),
-     },
-    }
-   );
-  }
-
   await prismaClient.guild.update({
    where: {
     guildId: id,
@@ -413,23 +396,6 @@ export async function PUT(request) {
    return NextResponse.json(
     {
      error: "Embed color is already set to that",
-     code: 400,
-    },
-    {
-     status: 200,
-     headers: {
-      ...(process.env.NODE_ENV !== "production" && {
-       "Server-Timing": `response;dur=${Date.now() - start}ms`,
-      }),
-     },
-    }
-   );
-  }
-
-  if (new Date().getTime() - current.embedLastChanged.getTime() < 10000) {
-   return NextResponse.json(
-    {
-     error: "You can only change the embed color every 10 seconds",
      code: 400,
     },
     {
