@@ -29,7 +29,7 @@ export default function Loading() {
         <p className="text-sm text-gray-400">Amount of new members that joined your server in the last 7 days.</p>
        </div>
       </div>
-      <div className="flex min-h-[40px] min-w-[144px] ml-2 flex-row items-center gap-4" />
+      <div className="ml-2 flex min-h-[40px] min-w-[144px] flex-row items-center gap-4" />
      </div>
     </div>
 
@@ -45,7 +45,7 @@ export default function Loading() {
         <p className="text-sm text-gray-400">Amount of messages that were sent in your server in the last 7 days.</p>
        </div>
       </div>
-      <div className="flex min-h-[40px] min-w-[144px] ml-2 flex-row items-center gap-4" />
+      <div className="ml-2 flex min-h-[40px] min-w-[144px] flex-row items-center gap-4" />
      </div>
     </div>
 
@@ -61,7 +61,7 @@ export default function Loading() {
         <p className="text-sm text-gray-400">Amount of members that left your server in the last 7 days.</p>
        </div>
       </div>
-      <div className="flex min-h-[40px] min-w-[144px] ml-2 flex-row items-center gap-4" />
+      <div className="ml-2 flex min-h-[40px] min-w-[144px] flex-row items-center gap-4" />
      </div>
     </div>
    </div>

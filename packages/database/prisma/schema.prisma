@@ -133,6 +133,8 @@ model Guild {
  guildDisabledCategories            GuildDisabledCategories[]
  autoMod                            AutoMod[]
  guildWarns                         GuildWarns[]
+ guildWelcomeMessage                GuildWelcomeMessage?
+ guildLeaveMessage                  GuildLeaveMessage?
 
  @@map(name: "guilds")
 }
@@ -266,4 +268,26 @@ model GuildWarns {
  user        User     @relation(fields: [userId], references: [discordId], onDelete: Cascade)
 
  @@map(name: "guild_warns")
+}
+
+// Guild welcome message
+model GuildWelcomeMessage {
+ id        String   @id @default(cuid())
+ guildId   String   @unique @map(name: "guild_id")
+ channelId String   @map(name: "channel_id")
+ createdAt DateTime @default(now()) @map(name: "created_at")
+ guild     Guild    @relation(fields: [guildId], references: [guildId], onDelete: Cascade)
+
+ @@map(name: "guild_welcome_message")
+}
+
+// Guild leave message
+model GuildLeaveMessage {
+ id        String   @id @default(cuid())
+ guildId   String   @unique @map(name: "guild_id")
+ channelId String   @map(name: "channel_id")
+ createdAt DateTime @default(now()) @map(name: "created_at")
+ guild     Guild    @relation(fields: [guildId], references: [guildId], onDelete: Cascade)
+
+ @@map(name: "guild_leave_message")
 }

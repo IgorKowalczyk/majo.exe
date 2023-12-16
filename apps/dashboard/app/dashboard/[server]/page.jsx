@@ -197,7 +197,7 @@ export default async function ServerOverview({ params }) {
         <p className="text-sm text-gray-400">Amount of new members that joined your server in the last 7 days.</p>
        </div>
       </div>
-      <div className="flex flex-row items-center ml-2 gap-4">
+      <div className="ml-2 flex flex-row items-center gap-4">
        <SparkLineChart data={guildJoin} categories={["Joins"]} index="date" />
       </div>
      </div>
@@ -215,7 +215,7 @@ export default async function ServerOverview({ params }) {
         <p className="text-sm text-gray-400">Amount of messages that were sent in your server in the last 7 days.</p>
        </div>
       </div>
-      <div className="flex flex-row items-center ml-2 gap-4">
+      <div className="ml-2 flex flex-row items-center gap-4">
        <SparkLineChart data={guildMessage} categories={["Messages"]} index="date" />
       </div>
      </div>
@@ -233,7 +233,7 @@ export default async function ServerOverview({ params }) {
         <p className="text-sm text-gray-400">Amount of members that left your server in the last 7 days.</p>
        </div>
       </div>
-      <div className="flex flex-row items-center ml-2 gap-4">
+      <div className="ml-2 flex flex-row items-center gap-4">
        <SparkLineChart data={guildLeave} categories={["Leaves"]} index="date" />
       </div>
      </div>
