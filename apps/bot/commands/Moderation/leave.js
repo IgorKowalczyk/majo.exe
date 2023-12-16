@@ -1,5 +1,5 @@
-import { ApplicationCommandType, ApplicationCommandOptionType, ChannelType, PermissionsBitField, EmbedBuilder, PermissionFlagsBits } from "discord.js";
 import prismaClient from "@majoexe/database";
+import { ApplicationCommandType, ApplicationCommandOptionType, ChannelType, PermissionsBitField, EmbedBuilder, PermissionFlagsBits } from "discord.js";
 
 export default {
  name: "leave",
@@ -88,7 +88,7 @@ export default {
 
     const embed = new EmbedBuilder() // prettier
      .setTitle("✅ Success!")
-     .setDescription(`> **Leave messages have been disabled!** You can enable them again by using \`/leave enable\``)
+     .setDescription("> **Leave messages have been disabled!** You can enable them again by using `/leave enable`")
      .setColor(guildSettings?.embedColor || client.config.defaultColor)
      .setTimestamp()
      .setThumbnail(interaction.guild.iconURL({ size: 256 }))
@@ -113,7 +113,7 @@ export default {
     if (!guild?.guildLeaveMessage) {
      const embed = new EmbedBuilder() // prettier
       .setTitle("👋 Leave messages are disabled")
-      .setDescription(`> Leave messages are disabled! You can enable them by using \`/leave enable\``)
+      .setDescription("> Leave messages are disabled! You can enable them by using `/leave enable`")
       .setColor(guildSettings?.embedColor || client.config.defaultColor)
       .setTimestamp()
       .setThumbnail(interaction.guild.iconURL({ size: 256 }))
@@ -137,7 +137,7 @@ export default {
 
       const embed = new EmbedBuilder() // prettier
        .setTitle("👋 Leave messages are disabled")
-       .setDescription(`> **Leave messages have been disabled automatically** because the channel was deleted or I don't have permission to view it!\n> You can enable them again by using \`/leave enable\``)
+       .setDescription("> **Leave messages have been disabled automatically** because the channel was deleted or I don't have permission to view it!\n> You can enable them again by using `/leave enable`")
        .setColor(guildSettings?.embedColor || client.config.defaultColor)
        .setTimestamp()
        .setThumbnail(interaction.guild.iconURL({ size: 256 }))

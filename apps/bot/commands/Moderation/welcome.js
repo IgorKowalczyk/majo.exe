@@ -1,5 +1,5 @@
-import { ApplicationCommandType, ApplicationCommandOptionType, ChannelType, PermissionsBitField, EmbedBuilder, PermissionFlagsBits } from "discord.js";
 import prismaClient from "@majoexe/database";
+import { ApplicationCommandType, ApplicationCommandOptionType, ChannelType, PermissionsBitField, EmbedBuilder, PermissionFlagsBits } from "discord.js";
 
 export default {
  name: "welcome",
@@ -88,7 +88,7 @@ export default {
 
     const embed = new EmbedBuilder() // prettier
      .setTitle("✅ Success!")
-     .setDescription(`> **Welcome messages have been disabled**. You can enable them again by using \`/welcome enable\``)
+     .setDescription("> **Welcome messages have been disabled**. You can enable them again by using `/welcome enable`")
      .setColor(guildSettings?.embedColor || client.config.defaultColor)
      .setTimestamp()
      .setThumbnail(interaction.guild.iconURL({ size: 256 }))
@@ -113,7 +113,7 @@ export default {
     if (!guild?.guildWelcomeMessage) {
      const embed = new EmbedBuilder() // prettier
       .setTitle("👋 Welcome messages are disabled")
-      .setDescription(`> Welcome messages are disabled, you can enable them by using \`/welcome enable\``)
+      .setDescription("> Welcome messages are disabled, you can enable them by using `/welcome enable`")
       .setColor(guildSettings?.embedColor || client.config.defaultColor)
       .setTimestamp()
       .setThumbnail(interaction.guild.iconURL({ size: 256 }))
@@ -137,7 +137,7 @@ export default {
 
       const embed = new EmbedBuilder() // prettier
        .setTitle("👋 Welcome messages are disabled")
-       .setDescription(`>>> **Welcome messages have been disabled automatically** because the channel was deleted or I don't have permission to view it!\nYou can enable them again by using \`/welcome enable\``)
+       .setDescription(">>> **Welcome messages have been disabled automatically** because the channel was deleted or I don't have permission to view it!\nYou can enable them again by using `/welcome enable`")
        .setColor(guildSettings?.embedColor || client.config.defaultColor)
        .setTimestamp()
        .setThumbnail(interaction.guild.iconURL({ size: 256 }))

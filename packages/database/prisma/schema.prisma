@@ -108,36 +108,36 @@ model Commands {
 
 // Discord guilds
 model Guild {
- id                                 String                    @id @default(cuid())
- guildId                            String                    @unique @map(name: "guild_id")
- lastUpdated                        DateTime                  @default(now()) @updatedAt @map(name: "last_updated")
- createdAt                          DateTime                  @default(now()) @map(name: "created_at")
+ id          String   @id @default(cuid())
+ guildId     String   @unique @map(name: "guild_id")
+ lastUpdated DateTime @default(now()) @updatedAt @map(name: "last_updated")
+ createdAt   DateTime @default(now()) @map(name: "created_at")
 
  // XP Module
- enableXP                           Boolean                   @default(true) @map(name: "enable_xp")
- enableXPLastChanged                DateTime                  @default(now()) @map(name: "enable_xp_last_changed")
- enableXPLevelUpMessage             Boolean                   @default(true) @map(name: "sent_level_messages")
- enableXPLevelUpMessageLastChanged  DateTime                  @default(now()) @map(name: "sent_level_messages_last_changed")
+ enableXP                          Boolean  @default(true) @map(name: "enable_xp")
+ enableXPLastChanged               DateTime @default(now()) @map(name: "enable_xp_last_changed")
+ enableXPLevelUpMessage            Boolean  @default(true) @map(name: "sent_level_messages")
+ enableXPLevelUpMessageLastChanged DateTime @default(now()) @map(name: "sent_level_messages_last_changed")
 
  // Guild customizations
- embedColor                         String                    @default("#5865F2") @map(name: "embed_color")
- publicPage                         Boolean                   @default(false) @map(name: "public_page")
- vanity                             String?                   @unique
+ embedColor String  @default("#5865F2") @map(name: "embed_color")
+ publicPage Boolean @default(false) @map(name: "public_page")
+ vanity     String? @unique
 
  // Guild modules
- guildLogs                          GuildLogs[]
- guildXp                            GuildXp[]
- guildJoin                          GuildJoin[]
- guildLeave                         GuildLeave[]
- reputation                         Reputation[]
- giveaway                           Giveaways[]
- guildMessage                       GuildMessage[]
- guildDisabledCommands              GuildDisabledCommands[]
- guildDisabledCategories            GuildDisabledCategories[]
- autoMod                            AutoMod[]
- guildWarns                         GuildWarns[]
- guildWelcomeMessage                GuildWelcomeMessage?
- guildLeaveMessage                  GuildLeaveMessage?
+ guildLogs               GuildLogs[]
+ guildXp                 GuildXp[]
+ guildJoin               GuildJoin[]
+ guildLeave              GuildLeave[]
+ reputation              Reputation[]
+ giveaway                Giveaways[]
+ guildMessage            GuildMessage[]
+ guildDisabledCommands   GuildDisabledCommands[]
+ guildDisabledCategories GuildDisabledCategories[]
+ autoMod                 AutoMod[]
+ guildWarns              GuildWarns[]
+ guildWelcomeMessage     GuildWelcomeMessage?
+ guildLeaveMessage       GuildLeaveMessage?
 
  @@map(name: "guilds")
 }
