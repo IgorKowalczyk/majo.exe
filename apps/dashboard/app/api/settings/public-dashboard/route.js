@@ -111,7 +111,6 @@ export async function POST(request) {
     data: {
      guildId: id,
      publicPage: enabled,
-     publicPageLastChanged: new Date(),
     },
    });
 
@@ -159,7 +158,6 @@ export async function POST(request) {
    },
    data: {
     publicPage: enabled,
-    publicPageLastChanged: new Date(),
    },
   });
 

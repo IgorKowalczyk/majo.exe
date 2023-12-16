@@ -110,13 +110,9 @@ export async function GET(request, { params }) {
     enableXPLastChanged: true,
     enableXPLevelUpMessage: true,
     enableXPLevelUpMessageLastChanged: true,
-    enableWarningAutomation: true,
-    enableWarningAutomationLastChanged: true,
     embedColor: true,
-    embedLastChanged: true,
     lastUpdated: true,
     publicPage: true,
-    publicPageLastChanged: true,
     vanity: true,
     guildLogs: {
      select: {

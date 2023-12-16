@@ -110,18 +110,21 @@ model Commands {
 model Guild {
  id                                 String                    @id @default(cuid())
  guildId                            String                    @unique @map(name: "guild_id")
+ lastUpdated                        DateTime                  @default(now()) @updatedAt @map(name: "last_updated")
+ createdAt                          DateTime                  @default(now()) @map(name: "created_at")
+
+ // XP Module
  enableXP                           Boolean                   @default(true) @map(name: "enable_xp")
  enableXPLastChanged                DateTime                  @default(now()) @map(name: "enable_xp_last_changed")
  enableXPLevelUpMessage             Boolean                   @default(true) @map(name: "sent_level_messages")
  enableXPLevelUpMessageLastChanged  DateTime                  @default(now()) @map(name: "sent_level_messages_last_changed")
- enableWarningAutomation            Boolean                   @default(false) @map(name: "enable_warning_automation")
- enableWarningAutomationLastChanged DateTime                  @default(now()) @map(name: "enable_warning_automation_last_changed")
+
+ // Guild customizations
  embedColor                         String                    @default("#5865F2") @map(name: "embed_color")
- embedLastChanged                   DateTime                  @default(now()) @map(name: "embed_last_changed")
- lastUpdated                        DateTime                  @default(now()) @updatedAt @map(name: "last_updated")
  publicPage                         Boolean                   @default(false) @map(name: "public_page")
- publicPageLastChanged              DateTime                  @default(now()) @map(name: "public_page_last_changed")
  vanity                             String?                   @unique
+
+ // Guild modules
  guildLogs                          GuildLogs[]
  guildXp                            GuildXp[]
  guildJoin                          GuildJoin[]

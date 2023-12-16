@@ -129,7 +129,6 @@ export async function POST(request) {
     data: {
      guildId: id,
      embedColor: color,
-     embedLastChanged: new Date(),
     },
    });
 
@@ -194,7 +193,6 @@ export async function POST(request) {
    },
    data: {
     embedColor: color,
-    embedLastChanged: new Date(),
    },
   });
 
@@ -415,7 +413,6 @@ export async function PUT(request) {
    },
    data: {
     embedColor: globalConfig.defaultColor,
-    embedLastChanged: new Date(),
    },
   });
 
