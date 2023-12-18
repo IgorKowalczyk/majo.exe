@@ -1,7 +1,7 @@
 import prismaClient from "@majoexe/database";
+import { shortenText } from "@majoexe/util/functions/util";
 import { EmbedBuilder, AttachmentBuilder, PermissionsBitField } from "discord.js";
 import { createUserGuildCard } from "../../util/images/createUserGuildCard.js";
-import { shortenText } from "@majoexe/util/functions/util";
 
 export async function guildMemberRemove(client, member) {
  if (!member || !member.user || !member.guild) return;
