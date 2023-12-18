@@ -47,7 +47,7 @@
     "react-wrap-balancer": "1.1.0",
     "recharts": "2.10.3",
     "server-only": "0.0.1",
-    "sharp": "0.33.0",
+    "sharp": "0.33.1",
     "sonner": "1.2.4"
   },
   "devDependencies": {
