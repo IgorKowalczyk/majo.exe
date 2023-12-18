@@ -1,6 +1,7 @@
 import prismaClient from "@majoexe/database";
 import { EmbedBuilder, AttachmentBuilder, PermissionsBitField } from "discord.js";
 import { createUserGuildCard } from "../../util/images/createUserGuildCard.js";
+import { shortenText } from "@majoexe/util/functions/util";
 
 export async function guildMemberRemove(client, member) {
  if (!member || !member.user || !member.guild) return;
@@ -13,11 +14,14 @@ export async function guildMemberRemove(client, member) {
   create: {
    guildId: member.guild.id,
   },
+  include: {
+   guildLeaveMessage: true,
+  },
  });
 
- if (guild.guildleaveChannel) {
+ if (guild.guildLeaveMessage) {
   try {
-   const leaveChannel = member.guild.channels.cache.get(guild.guildleaveChannel.channelId);
+   const leaveChannel = member.guild.channels.cache.get(guild.guildLeaveMessage.channelId);
 
    if (!leaveChannel) return;
    if (!leaveChannel.isTextBased()) return;
@@ -43,9 +47,15 @@ export async function guildMemberRemove(client, member) {
     name: "leave.png",
    });
 
+   const userName = member.user.globalName || member.user.username;
+   const guildName = member.guild.name;
+
+   const embedTitle = guild.guildLeaveMessage.title.replaceAll(/{user}/g, userName).replaceAll(/{guild}/g, guildName);
+   const embedDescription = guild.guildLeaveMessage.description.replaceAll(/{user}/g, userName).replaceAll(/{guild}/g, guildName);
+
    const embed = new EmbedBuilder() // prettier
-    .setTitle(`👋 Goodbye ${member.user.globalName || member.user.username}`)
-    .setDescription("> We're sorry to see you go!")
+    .setTitle(shortenText(embedTitle, 250))
+    .setDescription(shortenText(embedDescription, 2040))
     .setColor("#10B981")
     .setTimestamp()
     .setImage("attachment://leave.png");

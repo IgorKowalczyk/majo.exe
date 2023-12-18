@@ -1,5 +1,6 @@
 import prismaClient from "@majoexe/database";
-import { ApplicationCommandType, ApplicationCommandOptionType, ChannelType, PermissionsBitField, EmbedBuilder, PermissionFlagsBits } from "discord.js";
+import { shortenText } from "@majoexe/util/functions/util";
+import { ApplicationCommandType, ApplicationCommandOptionType, ChannelType, PermissionsBitField, EmbedBuilder, PermissionFlagsBits, codeBlock } from "discord.js";
 
 export default {
  name: "leave",
@@ -20,6 +21,20 @@ export default {
      type: ApplicationCommandOptionType.Channel,
      channel_types: [ChannelType.GuildText],
      required: true,
+    },
+    {
+     name: "title",
+     description: "Title of the leave message. Use {user} to mention the user and {guild} to mention the guild",
+     type: ApplicationCommandOptionType.String,
+     required: false,
+     max_length: 250,
+    },
+    {
+     name: "description",
+     description: "Description of the leave message. Use {user} to mention the user and {guild} to mention the guild",
+     type: ApplicationCommandOptionType.String,
+     required: false,
+     max_length: 2040,
     },
    ],
   },
@@ -52,22 +67,41 @@ export default {
     if (!channel.permissionsFor(interaction.guild.members.me).has(PermissionsBitField.Flags.AttachFiles)) return client.errorMessages.createSlashError(interaction, "❌ I don't have permission to attach files in that channel!");
     if (!channel.permissionsFor(interaction.guild.members.me).has(PermissionsBitField.Flags.ViewChannel)) return client.errorMessages.createSlashError(interaction, "❌ I don't have permission to view that channel!");
 
+    const title = interaction.options.getString("title") || "👋 Goodbye {user}!";
+    const description = interaction.options.getString("description") || "> We're sorry to see you go!";
+
     await prismaClient.guildLeaveMessage.upsert({
      where: {
       guildId: interaction.guild.id,
      },
      update: {
       channelId: channel.id,
+      title: shortenText(title, 250),
+      description: shortenText(description, 2040),
      },
      create: {
       guildId: interaction.guild.id,
       channelId: channel.id,
+      title: shortenText(title, 250),
+      description: shortenText(description, 2040),
      },
     });
 
     const embed = new EmbedBuilder() // prettier
      .setTitle("✅ Success!")
      .setDescription(`> **Leave messages have been enabled in ${channel.toString()}**`)
+     .setFields([
+      {
+       name: "Embed title",
+       value: codeBlock(title),
+       inline: false,
+      },
+      {
+       name: "Embed description",
+       value: codeBlock(description),
+       inline: false,
+      },
+     ])
      .setColor(guildSettings?.embedColor || client.config.defaultColor)
      .setTimestamp()
      .setThumbnail(interaction.guild.iconURL({ size: 256 }))
@@ -152,7 +186,19 @@ export default {
      } else {
       const embed = new EmbedBuilder() // prettier
        .setTitle("👋 Leave messages are enabled")
-       .setDescription(`>>> **Leave messages are enabled in ${channel.toString()}!**\nWhen a member leaves, I will send a message in that channel`)
+       .setDescription(`>>> **Leave messages are enabled in ${channel.toString()}!**\nWhen a member leaves, I will send a message in that channel.`)
+       .setFields([
+        {
+         name: "Embed title",
+         value: codeBlock(guild.guildLeaveMessage.title),
+         inline: false,
+        },
+        {
+         name: "Embed description",
+         value: codeBlock(guild.guildLeaveMessage.description),
+         inline: false,
+        },
+       ])
        .setColor(guildSettings?.embedColor || client.config.defaultColor)
        .setTimestamp()
        .setThumbnail(interaction.guild.iconURL({ size: 256 }))

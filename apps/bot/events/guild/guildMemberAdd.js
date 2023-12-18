@@ -1,6 +1,7 @@
 import prismaClient from "@majoexe/database";
 import { EmbedBuilder, AttachmentBuilder, PermissionsBitField } from "discord.js";
 import { createUserGuildCard } from "../../util/images/createUserGuildCard.js";
+import { shortenText } from "@majoexe/util/functions/util";
 
 export async function guildMemberAdd(client, member) {
  if (!member || !member.user || !member.guild) return;
@@ -13,11 +14,14 @@ export async function guildMemberAdd(client, member) {
   create: {
    guildId: member.guild.id,
   },
+  include: {
+   guildWelcomeMessage: true,
+  },
  });
 
- if (guild.guildWelcomeChannel) {
+ if (guild.guildWelcomeMessage) {
   try {
-   const welcomeChannel = member.guild.channels.cache.get(guild.guildWelcomeChannel.channelId);
+   const welcomeChannel = member.guild.channels.cache.get(guild.guildWelcomeMessage.channelId);
 
    if (!welcomeChannel) return;
    if (!welcomeChannel.isTextBased()) return;
@@ -43,9 +47,15 @@ export async function guildMemberAdd(client, member) {
     name: "welcome.png",
    });
 
+   const userName = member.user.globalName || member.user.username;
+   const guildName = member.guild.name;
+
+   const embedTitle = guild.guildWelcomeMessage.title.replaceAll(/{user}/g, userName).replaceAll(/{guild}/g, guildName);
+   const embedDescription = guild.guildWelcomeMessage.description.replaceAll(/{user}/g, userName).replaceAll(/{guild}/g, guildName);
+
    const embed = new EmbedBuilder() // prettier
-    .setTitle(`🎉 Welcome to the server ${member.user.globalName || member.user.username}`)
-    .setDescription(`> Welcome to **${member.guild.name}**! We hope you enjoy your stay here!`)
+    .setTitle(shortenText(embedTitle, 250))
+    .setDescription(shortenText(embedDescription, 2040))
     .setColor("#10B981")
     .setTimestamp()
     .setImage("attachment://welcome.png");

@@ -275,22 +275,26 @@ model GuildWarns {
 
 // Guild welcome message
 model GuildWelcomeMessage {
- id        String   @id @default(cuid())
- guildId   String   @unique @map(name: "guild_id")
- channelId String   @map(name: "channel_id")
- createdAt DateTime @default(now()) @map(name: "created_at")
- guild     Guild    @relation(fields: [guildId], references: [guildId], onDelete: Cascade)
+ id          String   @id @default(cuid())
+ guildId     String   @unique @map(name: "guild_id")
+ channelId   String   @map(name: "channel_id")
+ title       String   @default("🎉 Welcome to the server {user}!")
+ description String   @default("> Welcome to **{guild}** We hope you enjoy your stay here!")
+ createdAt   DateTime @default(now()) @map(name: "created_at")
+ guild       Guild    @relation(fields: [guildId], references: [guildId], onDelete: Cascade)
 
  @@map(name: "guild_welcome_message")
 }
 
 // Guild leave message
 model GuildLeaveMessage {
- id        String   @id @default(cuid())
- guildId   String   @unique @map(name: "guild_id")
- channelId String   @map(name: "channel_id")
- createdAt DateTime @default(now()) @map(name: "created_at")
- guild     Guild    @relation(fields: [guildId], references: [guildId], onDelete: Cascade)
+ id          String   @id @default(cuid())
+ guildId     String   @unique @map(name: "guild_id")
+ channelId   String   @map(name: "channel_id")
+ title       String   @default("👋 Goodbye {user}!")
+ description String   @default("> We're sorry to see you go!")
+ createdAt   DateTime @default(now()) @map(name: "created_at")
+ guild       Guild    @relation(fields: [guildId], references: [guildId], onDelete: Cascade)
 
  @@map(name: "guild_leave_message")
 }
