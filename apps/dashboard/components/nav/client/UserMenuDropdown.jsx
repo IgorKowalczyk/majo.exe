@@ -1,6 +1,6 @@
 "use client";
 
-import { RectangleStackIcon, UserIcon, ArrowRightOnRectangleIcon, QuestionMarkCircleIcon } from "@heroicons/react/24/outline";
+import { RectangleStackIcon, UserIcon, ArrowRightStartOnRectangleIcon, QuestionMarkCircleIcon } from "@heroicons/react/24/outline";
 import { signOut } from "next-auth/react";
 import Image from "@/components/client/shared/Image";
 import Menu from "@/components/client/shared/Menu";
@@ -30,7 +30,7 @@ export function UserMenuDropdown({ user }) {
       <QuestionMarkCircleIcon className="min-h-5 min-w-5 mr-2 h-5 w-5 " aria-hidden="true" role="img" /> Support
      </Menu.Link>
      <Menu.Item onClick={() => signOut({ redirect: true, callbackUrl: "/" })} style="action">
-      <ArrowRightOnRectangleIcon className="min-h-5 min-w-5 mr-2 h-5 w-5" aria-hidden="true" role="img" /> Logout
+      <ArrowRightStartOnRectangleIcon className="min-h-5 min-w-5 mr-2 h-5 w-5" aria-hidden="true" role="img" /> Logout
      </Menu.Item>
     </div>
    </Menu>

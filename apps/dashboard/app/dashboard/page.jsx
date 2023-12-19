@@ -1,4 +1,4 @@
-import { PlusSmallIcon, RectangleStackIcon } from "@heroicons/react/24/outline";
+import { PlusIcon, RectangleStackIcon } from "@heroicons/react/24/outline";
 import { getServers, isBotInServer } from "@majoexe/util/functions/guild";
 import clsx from "clsx";
 import { getSession } from "lib/session";
@@ -48,11 +48,11 @@ export default async function Dashboard() {
          <>
           {server.bot ? (
            <ButtonPrimary href={`/dashboard/${server.id}`} className="ml-auto">
-            <PlusSmallIcon className="min-h-5 min-w-5 mr-2 h-5 w-5" aria-hidden="true" role="img" /> Manage
+            <PlusIcon className="min-h-5 min-w-5 mr-2 h-5 w-5" aria-hidden="true" role="img" /> Manage
            </ButtonPrimary>
           ) : (
            <ButtonSecondary href={`/api/invite/${server.id}`} className="ml-auto cursor-copy">
-            <PlusSmallIcon className="min-h-5 min-w-5 mr-2 h-5 w-5" aria-hidden="true" role="img" /> Add bot
+            <PlusIcon className="min-h-5 min-w-5 mr-2 h-5 w-5" aria-hidden="true" role="img" /> Add bot
            </ButtonSecondary>
           )}
          </>
@@ -91,7 +91,7 @@ export default async function Dashboard() {
       <div className="flex flex-col items-center justify-center gap-4">
        <h3 className="text-center text-xl font-bold">You don't have any servers!</h3>
        <ButtonPrimary href={"/api/invite"}>
-        <PlusSmallIcon className="min-h-5 min-w-5 mr-2 h-5 w-5" aria-hidden="true" role="img" /> Add bot
+        <PlusIcon className="min-h-5 min-w-5 mr-2 h-5 w-5" aria-hidden="true" role="img" /> Add bot
        </ButtonPrimary>
       </div>
      )}

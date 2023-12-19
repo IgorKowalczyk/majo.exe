@@ -1,5 +1,5 @@
 /* eslint-disable complexity */
-import { LightBulbIcon, ChatBubbleLeftRightIcon, PlusSmallIcon, UserMinusIcon, UserPlusIcon } from "@heroicons/react/24/outline";
+import { LightBulbIcon, ChatBubbleLeftRightIcon, PlusIcon, UserMinusIcon, UserPlusIcon } from "@heroicons/react/24/outline";
 import { BoltIcon } from "@heroicons/react/24/solid";
 import prismaClient from "@majoexe/database";
 import { getServer, getGuildPreview, getGuildMember } from "@majoexe/util/functions/guild";
@@ -274,7 +274,7 @@ export default async function ServerOverview({ params }) {
          {(!guild.autoMod || guild.autoMod.length === 0) && (
           <div>
            <span className="gap-1 font-bold">
-            <PlusSmallIcon className="min-h-5 min-w-5 stroke-accent-primary mr-1 inline h-5 w-5 stroke-2" aria-hidden="true" role="img" />
+            <PlusIcon className="min-h-5 min-w-5 stroke-accent-primary mr-1 inline h-5 w-5 stroke-2" aria-hidden="true" role="img" />
             Enable AutoMod:
            </span>{" "}
            <span className="font-normal text-gray-400">
@@ -288,7 +288,7 @@ export default async function ServerOverview({ params }) {
          {!guild.enableXP && (
           <div>
            <span className="gap-1 font-bold">
-            <PlusSmallIcon className="min-h-5 min-w-5 stroke-accent-primary mr-1 inline h-5 w-5 stroke-2" aria-hidden="true" role="img" />
+            <PlusIcon className="min-h-5 min-w-5 stroke-accent-primary mr-1 inline h-5 w-5 stroke-2" aria-hidden="true" role="img" />
             Enable XP:
            </span>{" "}
            <span className="font-normal text-gray-400">
@@ -302,7 +302,7 @@ export default async function ServerOverview({ params }) {
          {!guild.publicPage && (
           <div>
            <span className="gap-1 font-bold">
-            <PlusSmallIcon className="min-h-5 min-w-5 stroke-accent-primary mr-1 inline h-5 w-5 stroke-2" aria-hidden="true" role="img" />
+            <PlusIcon className="min-h-5 min-w-5 stroke-accent-primary mr-1 inline h-5 w-5 stroke-2" aria-hidden="true" role="img" />
             Enable Public Page:
            </span>{" "}
            <span className="font-normal text-gray-400">
@@ -316,7 +316,7 @@ export default async function ServerOverview({ params }) {
          {!guild.vanity && (
           <div>
            <span className="gap-1 font-bold">
-            <PlusSmallIcon className="min-h-5 min-w-5 stroke-accent-primary mr-1 inline h-5 w-5 stroke-2" aria-hidden="true" role="img" />
+            <PlusIcon className="min-h-5 min-w-5 stroke-accent-primary mr-1 inline h-5 w-5 stroke-2" aria-hidden="true" role="img" />
             Set Vanity URL:
            </span>{" "}
            <span className="font-normal text-gray-400">
