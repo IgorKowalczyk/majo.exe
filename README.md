@@ -24,16 +24,18 @@ Go to [this link](https://discord.com/oauth2/authorize/?permissions=4294967287&s
 ## 🖥️ Hosting
 
 We are hosting Majo.exe on our own servers. Majo.exe will be online 24/7. [Invite Majo here!](https://majoexe.xyz/api/invite)  
-However, if you want to host Majo.exe yourself see links below.
+However, if you want to host Majo.exe yourself, you can do it. [Check out our tutorials](#-tutorials) to learn how to do it.
+
+<!-- prettier-ignore-start -->
+> [!IMPORTANT]
+> **This project is not for beginners.** If you are not familiar with Node.js, Prisma, Discord.js or any other technology used in this project, you should not host Majo.exe yourself!
+<!-- prettier-ignore-end -->
 
 ### 📝 Tutorials
 
 - **[🤖 Bot setup tutorial](/apps/bot/README.md)**
 - **[🔩 Dashboard setup tutorial](/apps/dashboard/README.md)**
 - **[📝 Database setup tutorial](/packages/database/README.md)**
-
-> [!WARNING]
-> There is one global `.env` file for all projects. **Do not create `.env` file in `apps/bot`, `packages/database` or `apps/dashboard` folders!** **This can cause problems and potential security issues.**
 
 ## ⚙️ System Requirements
 
@@ -75,6 +77,9 @@ Ensure your setup meets these prerequisites before setting up Majo.exe:
 > 4. `TOPGG_API_KEY` is required only if you want to automatically post server count to [top.gg](https://top.gg).
 
 <!-- prettier-ignore-end -->
+
+> [!WARNING]
+> There is one global `.env` file for all projects. **Do not create `.env` file in `apps/bot`, `packages/database` or `apps/dashboard` folders!** **This can cause problems and potential security issues.**
 
 ## 📝 Contributors
 
