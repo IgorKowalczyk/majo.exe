@@ -7,7 +7,7 @@ import { ButtonPrimary } from "@/components/Buttons";
 import DeleteAccount from "@/components/client/settings/DeleteUserData";
 import Image from "@/components/client/shared/Image";
 import { Tooltip } from "@/components/client/shared/Tooltip";
-import { Emojis } from "@/components/emojis";
+import { Emojis } from "@/components/DiscordEmojis";
 
 export const revalidate = 3600; // 1 hour
 
@@ -30,7 +30,7 @@ export default async function Profile() {
       <div className="bg-background-navbar flex h-[72px] w-auto flex-row justify-between gap-6 p-12">
        <div className="ml-[-16px] mt-[-20px] box-content flex items-center rounded-full">
         <Tooltip content="Click to see full size">
-         <Link href={`${user.image}?size=2048`} target="_blank" className="min-w-24 min-h-24 h-24 w-24">
+         <Link href={`${user.image}?size=2048`} target="_blank" className="h-24 min-h-24 w-24 min-w-24">
           <Image quality={100} src={user.image} alt={user.username} width={94} height={94} className="!border-background-navbar rounded-full !border-4 !border-solid backdrop-blur-sm duration-200 hover:opacity-75" />
          </Link>
         </Tooltip>
@@ -61,7 +61,7 @@ export default async function Profile() {
        </div>
        <div className="mb-[-14px] hidden w-full items-end justify-end font-semibold md:flex">
         <Link href={`https://discord.com/users/${user.id}`} target="_blank" className="bg-button-primary hover:bg-button-primary-hover flex h-[40px] cursor-pointer items-center rounded px-4 py-0 font-normal text-white duration-200 motion-reduce:transition-none">
-         <ArrowTopRightOnSquareIcon className="min-h-4 min-w-4 mr-2 h-4 w-4" aria-hidden="true" role="img" /> See global profile
+         <ArrowTopRightOnSquareIcon className="mr-2 h-4 min-h-4 w-4 min-w-4" aria-hidden="true" role="img" /> See global profile
         </Link>
        </div>
       </div>

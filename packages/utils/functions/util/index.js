@@ -5,3 +5,4 @@ export * from "./formatNumber.js";
 export * from "./logger.js";
 export * from "./percentageBar.js";
 export * from "./shortenText.js";
+export * from "./isNumeric.js";

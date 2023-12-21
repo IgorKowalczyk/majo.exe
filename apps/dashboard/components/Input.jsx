@@ -12,7 +12,7 @@ export function Checkbox({ name, value, onChange, className, checked }) {
  return <input type="checkbox" name={name} value={value} onChange={onChange} checked={checked} className={clsx("checked:bg-accent-primary checked:hover:bg-accent-primary focus:!border-accent-primary focus:outline-accent-primary focus:ring-accent-primary focus:checked:bg-accent-primary cursor-pointer rounded-md border border-neutral-800 bg-transparent p-1 shadow-sm outline-none !ring-0 duration-200", className)} />;
 }
 
-export function InputWithIcon({ icon, text, required, placeholder, className, readOnly = false, ...props }) {
+export function InputWithIcon({ icon, text, required, placeholder, className, readOnly = false, type = "text", ...props }) {
  return (
   <label className="w-full" htmlFor={text}>
    <span className="flex items-center gap-1 opacity-90">
@@ -31,7 +31,7 @@ export function InputWithIcon({ icon, text, required, placeholder, className, re
     >
      {icon}
     </div>
-    <Input id={text} placeholder={placeholder} {...props} className={clsx("pl-10", className)} readOnly={readOnly} />
+    <Input type={type} id={text} placeholder={placeholder} {...props} className={clsx("pl-10", className)} readOnly={readOnly} />
    </div>
   </label>
  );
