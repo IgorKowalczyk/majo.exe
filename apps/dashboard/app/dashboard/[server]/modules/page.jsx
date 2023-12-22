@@ -61,7 +61,7 @@ export default async function Settings({ params }) {
     <SquaresPlusIcon className="min-h-9 min-w-9 h-9 w-9" />
     Modules
    </Header1>
-   <Block>
+   <Block className="mt-4">
     <Header2>
      <CubeIcon className="min-h-8 min-w-8 h-8 w-8" />
      Categories

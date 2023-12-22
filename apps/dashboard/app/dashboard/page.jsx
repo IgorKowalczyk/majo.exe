@@ -30,7 +30,7 @@ export default async function Dashboard() {
 
  return (
   <div className="flex w-full flex-col items-center px-8 pb-8 pt-16 antialiased md:px-16 md:py-16">
-   <div className="flex flex-col justify-center gap-4">
+   <div className="flex flex-col justify-center">
     <Header1 className={"!justify-center"}>
      <RectangleStackIcon className="min-h-10 min-w-10 h-10 w-10" aria-hidden="true" role="img" />
      Dashboard
@@ -38,7 +38,7 @@ export default async function Dashboard() {
     <h2 className="text-center text-xl text-white/50">
      You can only add the bot to servers you have the <code>Manage Server</code> permission in.
     </h2>
-    <div className="flex flex-row flex-wrap justify-center gap-4 sm:flex-col">
+    <div className="flex flex-row flex-wrap justify-center mt-4 gap-4 sm:flex-col">
      {servers && servers.length > 0 ? (
       servers.map((server) => (
        <div key={server.id}>

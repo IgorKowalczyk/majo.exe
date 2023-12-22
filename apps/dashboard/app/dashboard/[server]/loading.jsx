@@ -8,7 +8,7 @@ import { AvatarSkeleton, EmbedSkeleton, TextSkeleton } from "@/components/Skelet
 export default function Loading() {
  return (
   <>
-   <div className="mb-4 flex max-h-[73px] flex-col items-center justify-normal gap-4 text-2xl font-bold sm:flex-row md:text-3xl">
+   <div className="mb-4 flex max-h-[73px] flex-col items-center justify-normal gap-4 sm:flex-row">
     <AvatarSkeleton className="h-16 w-16 rounded-full" />
     <div className="flex flex-col text-center sm:ml-4 sm:text-left">
      <TextSkeleton className="!h-[43px] w-44" />

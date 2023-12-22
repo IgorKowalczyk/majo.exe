@@ -1,6 +1,6 @@
 /* eslint-disable complexity */
 
-import { ArrowTopRightOnSquareIcon, ExclamationCircleIcon, HandThumbUpIcon, ShieldExclamationIcon } from "@heroicons/react/24/outline";
+import { ArrowTopRightOnSquareIcon, ExclamationCircleIcon, ExclamationTriangleIcon, HandThumbUpIcon, ShieldExclamationIcon } from "@heroicons/react/24/outline";
 import prismaClient from "@majoexe/database";
 import { getGuildMember, getServer } from "@majoexe/util/functions/guild";
 import { getFlags } from "@majoexe/util/functions/user";
@@ -11,9 +11,11 @@ import { redirect } from "next/navigation";
 import { Block } from "@/components/Block";
 import { ManageWarns } from "@/components/client/lists/Warns";
 import { ChangeUserReputation } from "@/components/client/settings/ChangeUserReputation";
+import { ResetUserXP } from "@/components/client/settings/ResetUserXP";
 import Image from "@/components/client/shared/Image";
 import { Tooltip } from "@/components/client/shared/Tooltip";
 import { Emojis } from "@/components/DiscordEmojis";
+import { Header2 } from "@/components/Headers";
 
 export async function generateMetadata({ params }) {
  const { id, server } = params;
@@ -208,10 +210,10 @@ export default async function ServerLogs({ params }) {
     </>
    </div>
    <Block className="mt-4">
-    <h2 id="warns" className="mb-1 flex items-center justify-start gap-2 text-left text-2xl font-bold">
+    <Header2 id="warns">
      <ShieldExclamationIcon className="h-6 min-h-6 w-6 min-w-6" />
      Warns
-    </h2>
+    </Header2>
     <p className="mb-4 text-left opacity-70">You can view all warns given to this user in this server. You can also manage them by deleting them.</p>
     {user.guildWarns.length === 0 ? (
      <p className="mb-4 flex items-center justify-start gap-2 text-left text-red-400">
@@ -223,24 +225,26 @@ export default async function ServerLogs({ params }) {
     )}
    </Block>
    <Block className="mt-4">
-    <h2 id="reputation" className="mb-1 flex items-center justify-start gap-2 text-left text-2xl font-bold">
+    <Header2 id="reputation">
      <HandThumbUpIcon className="h-6 min-h-6 w-6 min-w-6" />
      Reputation
-    </h2>
-    <p className="mt-2 text-white/70">You can manage the reputation of this user in this server. Set a reputation to 0 to reset it.</p>
+    </Header2>
+    <p className="mt-2 text-white/70">Change the reputation of this user in this server, set it to 0 to remove it.</p>
     <ChangeUserReputation userId={user.discordId} guildId={serverDownload.id} userReputation={userRepuation} />
    </Block>
-   {/* <div className="bg-background-navbar relative mt-4 overflow-hidden rounded-lg border border-red-400/50 p-4 md:w-full">
-    <h2 id="actions" className="text-2xl font-semibold text-red-400">
-     <ExclamationTriangleIcon className="mr-2 inline-block h-5 w-5 stroke-2" aria-hidden="true" role="img" />
+   <Block theme="danger" className="mt-4">
+    <Header2 id="reset-xp" className="text-red-400">
+     <ExclamationTriangleIcon className="h-6 min-h-6 w-6 min-w-6" />
      Reset XP
-    </h2>
-    <p className="mt-2 text-white/70">You can reset the XP of this user in this server. This action is irreversible.</p>
-    <RedButton className="mt-4 w-fit" href={`/dashboard/${server}/user/${id}/actions`}>
-     <TrashIcon className="mr-2 inline-block h-5 w-5 " aria-hidden="true" role="img" />
-     Reset XP
-    </RedButton>
-   </div> */}
+    </Header2>
+    <p className="mt-2 text-white/70">Reset the XP of this user in this server. This action cannot be undone and will reset the XP of this user to 0.</p>
+
+    <p className="mt-2 text-white/70">
+     <span className="font-semibold">The user currently has: </span>
+     {formatNumber(userXP || 0)} XP ({Math.floor(0.1 * Math.sqrt(userXP || 0))} level)
+    </p>
+    <ResetUserXP userId={user.discordId} guildId={serverDownload.id} />
+   </Block>
   </>
  );
 }

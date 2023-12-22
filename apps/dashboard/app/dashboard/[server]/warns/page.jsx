@@ -1,4 +1,5 @@
 import { ExclamationTriangleIcon } from "@heroicons/react/24/outline";
+import { SparklesIcon } from "@heroicons/react/24/solid";
 import prismaClient from "@majoexe/database";
 import { getGuildMember, getServer } from "@majoexe/util/functions/guild";
 import { getSession } from "lib/session";
@@ -76,8 +77,13 @@ export default async function ServerLogs({ params }) {
    <Header5 className="mb-4 !block !justify-start gap-1 !text-left">
     Here you can view all users warns issued by users with the <code>Manage Server</code> permission.
    </Header5>
-   <Block className="flex w-full overflow-auto">
-    {data.length === 0 && <h3 className="text-left">Hooray! No warns have been issued yet.</h3>}
+   <Block className="flex w-full mt-4 overflow-auto">
+    {data.length === 0 && (
+     <p className="text-left flex items-center gap-2">
+      <SparklesIcon className="min-h-5 min-w-5 h-5 w-5" />
+      Hooray! No warns have been issued yet.
+     </p>
+    )}
     {data.length > 0 && <Warns data={data} />}
    </Block>
   </>

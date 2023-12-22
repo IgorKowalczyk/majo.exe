@@ -66,7 +66,7 @@ export function ChangeUserReputation({ userId, guildId, userReputation = 0 }) {
  };
 
  return (
-  <div className="flex flex-col items-start gap-2">
+  <form className="flex flex-col items-start gap-2" onSubmit={handleReputation}>
    <InputWithIcon
     type="number"
     icon={<ChatBubbleOvalLeftEllipsisIcon className="mb-[1px] h-5 min-h-5 w-5 min-w-5" />}
@@ -77,7 +77,7 @@ export function ChangeUserReputation({ userId, guildId, userReputation = 0 }) {
      {
       "!border-red-400 !text-red-400 focus:!border-red-400": error,
      },
-     "w-full"
+     "w-fit"
     )}
    />
    <ButtonPrimary onClick={handleReputation} disabled={loading || error}>
@@ -87,10 +87,10 @@ export function ChangeUserReputation({ userId, guildId, userReputation = 0 }) {
      </>
     ) : (
      <>
-      <CheckIcon className=" mr-2 inline-block h-5 w-5" /> Update
+      <CheckIcon className="mr-2 inline-block h-5 w-5" /> Update
      </>
     )}
    </ButtonPrimary>
-  </div>
+  </form>
  );
 }

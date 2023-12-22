@@ -13,7 +13,7 @@ import { Leaderboard } from "@/components/client/lists/Leaderboard";
 import Image from "@/components/client/shared/Image";
 import { SparkLineChart } from "@/components/client/shared/SparkChart";
 import { Tooltip } from "@/components/client/shared/Tooltip";
-import { Header4, Header5 } from "@/components/Headers";
+import { Header1, Header4, Header5 } from "@/components/Headers";
 
 export const metadata = {
  title: "Server Overview",
@@ -174,10 +174,10 @@ export default async function ServerOverview({ params }) {
 
  return (
   <>
-   <div className="mb-4 flex flex-col items-center justify-normal gap-4 text-2xl font-bold sm:flex-row md:text-3xl">
+   <div className="mb-4 flex flex-col items-center justify-normal gap-4 sm:flex-row">
     {guildPreview.icon ? <Image src={`https://cdn.discordapp.com/icons/${guildPreview.id}/${guildPreview.icon}.${guildPreview.icon.startsWith("a_") ? "gif" : "png"}`} alt={guildPreview.name} quality={95} width={64} height={64} className="min-h-16 min-w-16 h-16 w-16 rounded-full" /> : <div className="bg-button-secondary min-h-16 min-w-16 h-16 w-16 rounded-full" />}
     <div className="flex flex-col text-center sm:ml-4 sm:text-left">
-     {guildPreview.name || "Unnamed server"}
+     <Header1 className="mb-0">{guildPreview.name || "Unnamed server"}</Header1>
      <Header5 className="mt-2 text-center opacity-60 sm:text-left">
       <p>{guildPreview.description || "This server has no description, maybe you should add one?"}</p>
      </Header5>

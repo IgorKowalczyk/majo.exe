@@ -3,7 +3,7 @@
 import { ArrowPathIcon, AtSymbolIcon, ChatBubbleBottomCenterTextIcon, ChatBubbleLeftEllipsisIcon, CheckIcon, ClockIcon, EyeSlashIcon, HashtagIcon, LinkIcon, NoSymbolIcon, TrashIcon, UserGroupIcon, UserPlusIcon, WrenchIcon } from "@heroicons/react/24/outline";
 import { Block } from "@/components/Block";
 import { ButtonPrimary } from "@/components/Buttons";
-import { Header1, Header5 } from "@/components/Headers";
+import { Header1, Header2, Header5 } from "@/components/Headers";
 import "tippy.js/dist/backdrop.css";
 import "tippy.js/animations/shift-away.css";
 import "tippy.js/dist/tippy.css";
@@ -26,10 +26,10 @@ export default async function ServerAutomod() {
     <span>Automatically moderate your server, block bad words, links and other things.</span>
    </Header5>
    <Block className="mb-4">
-    <h2 className="mb-1 flex items-center justify-start gap-2 text-left text-2xl font-bold">
+    <Header2>
      <UserPlusIcon className="min-h-6 min-w-6 h-6 w-6" />
      Anti-Invite <ArrowPathIcon className="min-h-6 min-w-6 stroke-accent-primary h-6 w-6 animate-spin" />
-    </h2>
+    </Header2>
     <p className="mb-4 text-left">
      <span>Automatically delete all messages containing Discord server invites.</span>
     </p>
@@ -103,10 +103,10 @@ export default async function ServerAutomod() {
    </Block>
 
    <Block className="mb-4">
-    <h2 className="mb-1 flex items-center justify-start gap-2 text-left text-2xl font-bold">
+    <Header2>
      <LinkIcon className="min-h-6 min-w-6 h-6 w-6" />
      Anti-Link <ArrowPathIcon className="min-h-6 min-w-6 stroke-accent-primary h-6 w-6 animate-spin" />
-    </h2>
+    </Header2>
     <p className="mb-4 text-left">
      <span>Automatically delete all messages containing links.</span>
     </p>
@@ -179,28 +179,28 @@ export default async function ServerAutomod() {
     </div>
    </Block>
    <Block className="mb-4">
-    <h2 className="mb-1 flex items-center justify-start gap-2 text-left text-2xl font-bold">
+    <Header2>
      <AtSymbolIcon className="min-h-6 min-w-6 h-6 w-6" />
      Anti-Mention <NavBadge>Coming Soon</NavBadge>
-    </h2>
+    </Header2>
     <p className="mb-4 text-left">
      <span>Automatically delete all messages containing user mentions.</span>
     </p>
    </Block>
    <Block className="mb-4">
-    <h2 className="mb-1 flex items-center justify-start gap-2 text-left text-2xl font-bold">
+    <Header2>
      <ChatBubbleLeftEllipsisIcon className="min-h-6 min-w-6 h-6 w-6" />
      Anti-Spam <NavBadge>Coming Soon</NavBadge>
-    </h2>
+    </Header2>
     <p className="mb-4 text-left">
      <span>Automatically delete all messages deemed as spam.</span>
     </p>
    </Block>
    <Block className="mb-4">
-    <h2 className="mb-1 flex items-center justify-start gap-2 text-left text-2xl font-bold">
+    <Header2>
      <NoSymbolIcon className="min-h-6 min-w-6 h-6 w-6" />
      Anti-Badwords <NavBadge>Coming Soon</NavBadge>
-    </h2>
+    </Header2>
     <p className="mb-4 text-left">
      <span>Automatically delete all messages containing bad words or phrases.</span>
     </p>

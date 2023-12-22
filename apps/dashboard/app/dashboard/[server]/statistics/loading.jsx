@@ -1,7 +1,7 @@
 import { ArrowPathIcon, UserMinusIcon, ChatBubbleLeftRightIcon, UserPlusIcon } from "@heroicons/react/24/outline";
 import { Block } from "@/components/Block";
 import { GraphCard } from "@/components/Card";
-import { Header4 } from "@/components/Headers";
+import { Header2 } from "@/components/Headers";
 import { GraphSkeleton, InputSkeleton } from "@/components/Skeletons";
 
 export default function Loading() {
@@ -41,33 +41,48 @@ export default function Loading() {
    </div>
    <div className="flex flex-col gap-6">
     <Block>
-     <Header4 className="mb-4 !justify-normal whitespace-nowrap sm:flex-row">
-      <span>
-       <span className="opacity-80">New Members</span>
-      </span>
-      <ArrowPathIcon className="min-h-5 text-accent-primary min-w-6 h-6 w-6 animate-spin stroke-2" />
-      <InputSkeleton className="ml-auto !w-32" />
-     </Header4>
+     <div className="mb-4 flex-col flex items-center justify-normal whitespace-nowrap gap-2 lg:flex-row">
+      <Header2 className="flex-col w-full items-center lg:items-start gap-1">
+       <span>
+        New Members <ArrowPathIcon className="min-h-5 ml-2 text-accent-primary align-middle inline-block min-w-6 h-6 w-6 animate-spin stroke-2" />
+       </span>
+       <span class="text-left text-sm font-normal opacity-40">Loading...</span>
+      </Header2>
+      <div className="relative mx-auto flex flex-row items-center justify-center gap-3 lg:ml-auto lg:mr-0">
+       <InputSkeleton className="!w-32" />
+       <InputSkeleton className="!w-48" />
+      </div>
+     </div>
      <GraphSkeleton className="mt-10 h-80" />
     </Block>
     <Block>
-     <Header4 className="mb-4 !justify-normal whitespace-nowrap sm:flex-row">
-      <span>
-       <span className="opacity-80">Members Left</span>
-      </span>
-      <ArrowPathIcon className="min-h-5 text-accent-primary min-w-6 h-6 w-6 animate-spin stroke-2" />
-      <InputSkeleton className="ml-auto !w-32" />
-     </Header4>
+     <div className="mb-4 flex-col flex items-center justify-normal whitespace-nowrap gap-2 lg:flex-row">
+      <Header2 className="flex-col w-full items-center lg:items-start gap-1">
+       <span>
+        Members left <ArrowPathIcon className="min-h-5 ml-2 text-accent-primary align-middle inline-block min-w-6 h-6 w-6 animate-spin stroke-2" />
+       </span>
+       <span class="text-left text-sm font-normal opacity-40">Loading...</span>
+      </Header2>
+      <div className="relative mx-auto flex flex-row items-center justify-center gap-3 lg:ml-auto lg:mr-0">
+       <InputSkeleton className="!w-32" />
+       <InputSkeleton className="!w-48" />
+      </div>
+     </div>
      <GraphSkeleton className="mt-10 h-80" />
     </Block>
     <Block>
-     <Header4 className="mb-4 !justify-normal whitespace-nowrap sm:flex-row">
-      <span>
-       <span className="opacity-80">Messages Sent</span>
-      </span>
-      <ArrowPathIcon className="min-h-5 text-accent-primary min-w-6 h-6 w-6 animate-spin stroke-2" />
-      <InputSkeleton className="ml-auto !w-32" />
-     </Header4>
+     <div className="mb-4 flex-col flex items-center justify-normal whitespace-nowrap gap-2 lg:flex-row">
+      <Header2 className="flex-col w-full items-center lg:items-start gap-1">
+       <span>
+        Messages Sent <ArrowPathIcon className="min-h-5 ml-2 text-accent-primary align-middle inline-block min-w-6 h-6 w-6 animate-spin stroke-2" />
+       </span>
+       <span class="text-left text-sm font-normal opacity-40">Loading...</span>
+      </Header2>
+      <div className="relative mx-auto flex flex-row items-center justify-center gap-3 lg:ml-auto lg:mr-0">
+       <InputSkeleton className="!w-32" />
+       <InputSkeleton className="!w-48" />
+      </div>
+     </div>
      <GraphSkeleton className="mt-10 h-80" />
     </Block>
    </div>

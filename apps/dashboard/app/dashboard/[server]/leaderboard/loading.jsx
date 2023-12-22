@@ -10,7 +10,7 @@ export default async function Loading() {
     <SparklesIcon className="min-h-9 min-w-9 h-9 w-9" />
     Leaderboard
    </Header1>
-   <Block className="flex w-full overflow-auto">
+   <Block className="flex mt-4 w-full overflow-auto">
     <EmbedSkeleton className="h-64 w-full" />
    </Block>
   </>

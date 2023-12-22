@@ -11,6 +11,7 @@ import { RolesSelect } from "@/components/client/shared/RolesSelect";
 import Switch from "@/components/client/shared/Switch";
 import { TimeSelect } from "@/components/client/shared/TimeSelect";
 import { Tooltip } from "@/components/client/shared/Tooltip";
+import { Header2 } from "@/components/Headers";
 
 export function AntiInvite({ serverId, enabled, existingActions, existingExemptRoles, existingExemptChannels, allRoles, allChannels }) {
  const [isEnabled, setIsEnabled] = useState(enabled ?? false);
@@ -70,10 +71,10 @@ export function AntiInvite({ serverId, enabled, existingActions, existingExemptR
 
  return (
   <>
-   <h2 className="mb-1 flex items-center justify-start gap-2 text-left text-2xl font-bold">
+   <Header2>
     <UserPlusIcon className="min-h-6 min-w-6 h-6 w-6" />
     Anti-Invite <Switch enabled={isEnabled} onChange={save} disabled={loading} />
-   </h2>
+   </Header2>
    <p className="mb-4 text-left">
     <span>Automatically delete all messages containing Discord server invites.</span>
    </p>

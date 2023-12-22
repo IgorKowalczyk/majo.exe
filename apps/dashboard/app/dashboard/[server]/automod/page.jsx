@@ -11,7 +11,7 @@ import { redirect } from "next/navigation";
 import { Block } from "@/components/Block";
 import { AntiInvite } from "@/components/client/settings/automod/AntiInvite";
 import { AntiLink } from "@/components/client/settings/automod/AntiLink";
-import { Header1, Header5 } from "@/components/Headers";
+import { Header1, Header2, Header5 } from "@/components/Headers";
 import "tippy.js/dist/backdrop.css";
 import "tippy.js/animations/shift-away.css";
 import "tippy.js/dist/tippy.css";
@@ -118,28 +118,28 @@ export default async function ServerAutomod({ params }) {
     )}
    </Block>
    <Block className="mb-4">
-    <h2 className="mb-1 flex items-center justify-start gap-2 text-left text-2xl font-bold">
+    <Header2>
      <AtSymbolIcon className="min-h-6 min-w-6 h-6 w-6" />
      Anti-Mention <NavBadge>Coming Soon</NavBadge>
-    </h2>
+    </Header2>
     <p className="mb-4 text-left">
      <span>Automatically delete all messages containing user mentions.</span>
     </p>
    </Block>
    <Block className="mb-4">
-    <h2 className="mb-1 flex items-center justify-start gap-2 text-left text-2xl font-bold">
+    <Header2>
      <ChatBubbleLeftEllipsisIcon className="min-h-6 min-w-6 h-6 w-6" />
      Anti-Spam <NavBadge>Coming Soon</NavBadge>
-    </h2>
+    </Header2>
     <p className="mb-4 text-left">
      <span>Automatically delete all messages deemed as spam.</span>
     </p>
    </Block>
    <Block className="mb-4">
-    <h2 className="mb-1 flex items-center justify-start gap-2 text-left text-2xl font-bold">
+    <Header2>
      <NoSymbolIcon className="min-h-6 min-w-6 h-6 w-6" />
      Anti-Badwords <NavBadge>Coming Soon</NavBadge>
-    </h2>
+    </Header2>
     <p className="mb-4 text-left">
      <span>Automatically delete all messages containing bad words or phrases.</span>
     </p>

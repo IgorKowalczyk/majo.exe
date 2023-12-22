@@ -3,11 +3,13 @@ import { getFlags } from "@majoexe/util/functions/user";
 import { getSession } from "lib/session";
 import Link from "next/link";
 import { redirect } from "next/navigation";
+import { Block } from "@/components/Block";
 import { ButtonPrimary } from "@/components/Buttons";
 import DeleteAccount from "@/components/client/settings/DeleteUserData";
 import Image from "@/components/client/shared/Image";
 import { Tooltip } from "@/components/client/shared/Tooltip";
 import { Emojis } from "@/components/DiscordEmojis";
+import { Header2 } from "@/components/Headers";
 
 export const revalidate = 3600; // 1 hour
 
@@ -70,10 +72,10 @@ export default async function Profile() {
     </div>
 
     <div className="bg-background-navbar relative overflow-hidden rounded-lg border border-neutral-800 p-4 md:w-full">
-     <p className="text-xl font-semibold text-white">
-      <ArrowDownTrayIcon className="mr-2 inline-block h-5 w-5 stroke-2" aria-hidden="true" role="img" />
+     <Header2>
+      <ArrowDownTrayIcon className="h-6 min-h-6 w-6 min-w-6" />
       Download data
-     </p>
+     </Header2>
      <p className="mt-2 leading-none text-white/70">
       Download all your data in a <code>.json</code> file. This includes your profile, data from all servers you are in and more.
      </p>
@@ -83,14 +85,14 @@ export default async function Profile() {
      </ButtonPrimary>
     </div>
 
-    <div className="bg-background-navbar relative overflow-hidden rounded-lg border border-red-400/50 p-4 md:w-full">
-     <p className="text-xl font-semibold text-red-400">
-      <ExclamationTriangleIcon className="mr-2 inline-block h-5 w-5 stroke-2" aria-hidden="true" role="img" />
+    <Block theme="danger">
+     <Header2 className="text-red-400">
+      <ExclamationTriangleIcon className="h-6 min-h-6 w-6 min-w-6" />
       Delete account
-     </p>
+     </Header2>
      <p className="mt-2 text-white/70">If you want to delete all your data and your account, click the button below. This action is irreversible.</p>
      <DeleteAccount userId={user.id} />
-    </div>
+    </Block>
    </div>
   </div>
  );

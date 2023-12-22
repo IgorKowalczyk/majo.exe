@@ -7,7 +7,7 @@ import { Fragment, useState } from "react";
 import { Block } from "@/components/Block";
 import AreaChart from "@/components/client/shared/AreaChart";
 import Menu from "@/components/client/shared/Menu";
-import { Header4 } from "@/components/Headers";
+import { Header2 } from "@/components/Headers";
 
 export function ServerStatsChart({ guildJoin, guildLeave, guildJoinCSV, guildLeaveCSV, guildMessage, guildMessageCSV }) {
  return (
@@ -55,18 +55,18 @@ function GenerateComponent({ title, data, CSVData, valueName, fileName, categori
 
  return (
   <Block>
-   <Header4 className="mb-4 flex-col !justify-normal whitespace-nowrap sm:flex-row">
-    <span className="flex flex-col gap-1">
+   <div className="mb-4 flex-col flex items-center justify-normal whitespace-nowrap gap-2 lg:flex-row">
+    <Header2 className="flex-col items-center lg:items-start gap-1">
      <span>
-      <span className="opacity-80">{title}</span> <span className="text-accent-primary">(+{sumArray(filteredData, valueName)})</span>
+      {title} <span className="text-accent-primary">(+{sumArray(filteredData, valueName)})</span>
      </span>
      {start && end && (
       <span className="text-left text-sm font-normal opacity-40">
        ({start} - {end})
       </span>
      )}
-    </span>
-    <div className="relative mx-auto flex flex-row gap-1 text-left sm:ml-auto sm:mr-0">
+    </Header2>
+    <div className="relative mx-auto flex flex-row flex-wrap items-center justify-center gap-2 lg:gap-1 lg:ml-auto lg:mr-0">
      <Menu
       label={
        <>
@@ -105,7 +105,7 @@ function GenerateComponent({ title, data, CSVData, valueName, fileName, categori
       </div>
      </Listbox>
     </div>
-   </Header4>
+   </div>
    <AreaChart className="mt-10 h-80" data={filteredData} index="date" categories={categories} yAxisWidth={50} valueFormatter={numberFormatter} />
   </Block>
  );
