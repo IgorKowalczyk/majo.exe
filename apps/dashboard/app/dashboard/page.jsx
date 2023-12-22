@@ -31,28 +31,28 @@ export default async function Dashboard() {
  return (
   <div className="flex w-full flex-col items-center px-8 pb-8 pt-16 antialiased md:px-16 md:py-16">
    <div className="flex flex-col justify-center">
-    <Header1 className={"!justify-center"}>
-     <RectangleStackIcon className="min-h-10 min-w-10 h-10 w-10" aria-hidden="true" role="img" />
+    <Header1 className="!justify-center">
+     <RectangleStackIcon className="h-10 min-h-10 w-10 min-w-10" aria-hidden="true" role="img" />
      Dashboard
     </Header1>
     <h2 className="text-center text-xl text-white/50">
      You can only add the bot to servers you have the <code>Manage Server</code> permission in.
     </h2>
-    <div className="flex flex-row flex-wrap justify-center mt-4 gap-4 sm:flex-col">
+    <div className="mt-4 flex flex-row flex-wrap justify-center gap-4 sm:flex-col">
      {servers && servers.length > 0 ? (
       servers.map((server) => (
        <div key={server.id}>
         <div className="hidden flex-row items-center justify-start gap-4 sm:flex">
-         {server.icon ? <Image src={`https://cdn.discordapp.com/icons/${server.id}/${server.icon}.${server.icon.startsWith("a_") ? "gif" : "png"}`} alt={server.name} quality={95} width={64} height={64} className="min-h-16 min-w-16 h-16 w-16 rounded-full" /> : <div className="bg-button-secondary min-h-16 min-w-16 h-16 w-16 rounded-full" />}
+         {server.icon ? <Image src={`https://cdn.discordapp.com/icons/${server.id}/${server.icon}.${server.icon.startsWith("a_") ? "gif" : "png"}`} alt={server.name} quality={95} width={64} height={64} className="h-16 min-h-16 w-16 min-w-16 rounded-full" /> : <div className="bg-button-secondary h-16 min-h-16 w-16 min-w-16 rounded-full" />}
          <h3 className="text-center text-xl font-bold">{server.name}</h3>
          <>
           {server.bot ? (
            <ButtonPrimary href={`/dashboard/${server.id}`} className="ml-auto">
-            <PlusIcon className="min-h-5 min-w-5 mr-2 h-5 w-5" aria-hidden="true" role="img" /> Manage
+            <PlusIcon className="mr-2 h-5 min-h-5 w-5 min-w-5" aria-hidden="true" role="img" /> Manage
            </ButtonPrimary>
           ) : (
            <ButtonSecondary href={`/api/invite/${server.id}`} className="ml-auto cursor-copy">
-            <PlusIcon className="min-h-5 min-w-5 mr-2 h-5 w-5" aria-hidden="true" role="img" /> Add bot
+            <PlusIcon className="mr-2 h-5 min-h-5 w-5 min-w-5" aria-hidden="true" role="img" /> Add bot
            </ButtonSecondary>
           )}
          </>
@@ -70,7 +70,7 @@ export default async function Dashboard() {
              {
               "opacity-20": !server.bot,
              },
-             "min-w-24 min-h-24 h-24 w-24 rounded-md"
+             "h-24 min-h-24 w-24 min-w-24 rounded-md"
             )}
            />
           ) : (
@@ -79,7 +79,7 @@ export default async function Dashboard() {
              {
               "opacity-20": !server.bot,
              },
-             "bg-button-secondary min-w-24 min-h-24 h-24 w-24 rounded-md"
+             "bg-button-secondary h-24 min-h-24 w-24 min-w-24 rounded-md"
             )}
            />
           )}
@@ -90,8 +90,8 @@ export default async function Dashboard() {
      ) : (
       <div className="flex flex-col items-center justify-center gap-4">
        <h3 className="text-center text-xl font-bold">You don't have any servers!</h3>
-       <ButtonPrimary href={"/api/invite"}>
-        <PlusIcon className="min-h-5 min-w-5 mr-2 h-5 w-5" aria-hidden="true" role="img" /> Add bot
+       <ButtonPrimary href="/api/invite">
+        <PlusIcon className="mr-2 h-5 min-h-5 w-5 min-w-5" aria-hidden="true" role="img" /> Add bot
        </ButtonPrimary>
       </div>
      )}

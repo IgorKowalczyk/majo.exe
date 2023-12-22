@@ -65,10 +65,10 @@ export default async function ServerLogs({ params }) {
  return (
   <>
    <Header1>
-    <ListBulletIcon className="min-h-9 min-w-9 h-9 w-9" />
+    <ListBulletIcon className="h-9 min-h-9 w-9 min-w-9" />
     Activity Logs
    </Header1>
-   <div className="overflow-auto mt-4">
+   <div className="mt-4 overflow-auto">
     {!guild.guildLogs || guild.guildLogs.length === 0 ? (
      <Block>
       <p className="text-left">No logs found! Check back later, maybe something will happen.</p>

@@ -64,7 +64,7 @@ export default function RootLayout({ children }) {
     <body className={twMerge("bg-background-primary text-white antialiased", GeistSans.className)}>
      <ProgressBar />
      <VisibilityProvider>
-      <Nav theme={"full"} />
+      <Nav theme="full" />
       <main className="flex min-h-screen flex-row flex-wrap">
        <div className="mt-8">{children}</div>
       </main>

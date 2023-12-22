@@ -61,7 +61,7 @@ export default async function ServerOverview({ params }) {
 
  return (
   <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-   <Header1 className={"!mb-6 flex flex-col !justify-normal"}>
+   <Header1 className="!mb-6 flex flex-col !justify-normal">
     {guildPreview.icon ? <Image src={`https://cdn.discordapp.com/icons/${guildPreview.id}/${guildPreview.icon}.${guildPreview.icon.startsWith("a_") ? "gif" : "png"}`} alt={guildPreview.name} quality={95} width={96} height={96} className="h-24 w-24 rounded-full" /> : <div className="bg-button-secondary h-24 w-24 rounded-full" />}
     <div className="flex flex-col text-center sm:ml-4">
      {guildPreview.name || "Unnamed server"}
@@ -74,11 +74,11 @@ export default async function ServerOverview({ params }) {
    <Block className="!mt-4 flex w-full flex-col gap-4 !p-4 sm:flex-row sm:gap-0">
     <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
      <div className="flex items-center">
-      <div className="min-h-3 min-w-3 mr-2 h-3 w-3 rounded-full bg-[#81848f]" />
+      <div className="mr-2 h-3 min-h-3 w-3 min-w-3 rounded-full bg-[#81848f]" />
       {guildPreview.approximate_member_count || "0"} members
      </div>
      <div className="flex items-center">
-      <div className="min-h-3 min-w-3 mr-2 h-3 w-3 rounded-full bg-[#22a55b]" />
+      <div className="mr-2 h-3 min-h-3 w-3 min-w-3 rounded-full bg-[#22a55b]" />
       {guildPreview.approximate_presence_count || "0"} online
      </div>
     </div>
@@ -102,7 +102,7 @@ export default async function ServerOverview({ params }) {
          <Link key={emoji.id + emoji.name} className="flex flex-col items-center justify-center gap-2" href={`https://cdn.discordapp.com/emojis/${emoji.id}.${emoji.animated ? "gif" : "png"}`} target="_blank" rel="noreferrer noopener">
           <Tooltip content={emoji.name || "Unnamed emoji"}>
            <>
-            <Image src={`https://cdn.discordapp.com/emojis/${emoji.id}.${emoji.animated ? "gif" : "png"}`} alt={emoji.name} quality={95} width={32} height={32} className="min-h-8 min-w-8 h-8 w-8" />
+            <Image src={`https://cdn.discordapp.com/emojis/${emoji.id}.${emoji.animated ? "gif" : "png"}`} alt={emoji.name} quality={95} width={32} height={32} className="h-8 min-h-8 w-8 min-w-8" />
            </>
           </Tooltip>
          </Link>
@@ -124,7 +124,7 @@ export default async function ServerOverview({ params }) {
          <Link key={sticker.id + sticker.name} className="flex flex-col items-center justify-center gap-2" href={`https://cdn.discordapp.com/stickers/${sticker.id}.${sticker.format_type === 1 ? "png" : sticker.format_type === 2 ? "apng" : sticker.format_type === 3 ? "lottie" : "gif"}`} target="_blank" rel="noreferrer noopener">
           <Tooltip content={sticker.name || "Unnamed sticker"}>
            <>
-            <Image unoptimized src={`https://cdn.discordapp.com/stickers/${sticker.id}.${sticker.format_type === 1 ? "png" : sticker.format_type === 2 ? "apng" : sticker.format_type === 3 ? "lottie" : "gif"}`} alt={sticker.name} quality={95} width={95} height={95} className="min-h-24 min-w-24 h-24 w-24" />
+            <Image unoptimized src={`https://cdn.discordapp.com/stickers/${sticker.id}.${sticker.format_type === 1 ? "png" : sticker.format_type === 2 ? "apng" : sticker.format_type === 3 ? "lottie" : "gif"}`} alt={sticker.name} quality={95} width={95} height={95} className="h-24 min-h-24 w-24 min-w-24" />
            </>
           </Tooltip>
          </Link>

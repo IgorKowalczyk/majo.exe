@@ -7,12 +7,12 @@ export default async function Loading() {
  return (
   <>
    <Header1>
-    <SquaresPlusIcon className="min-h-9 min-w-9 h-9 w-9" />
+    <SquaresPlusIcon className="h-9 min-h-9 w-9 min-w-9" />
     Modules
    </Header1>
    <Block className="mt-4">
     <Header2>
-     <CubeIcon className="min-h-8 min-w-8 h-8 w-8" />
+     <CubeIcon className="h-8 min-h-8 w-8 min-w-8" />
      Categories
     </Header2>
     <p className="mb-4 mt-2 text-left">Enable or disable categories of commands.</p>
@@ -32,7 +32,7 @@ export default async function Loading() {
 
    <Block className="mt-4">
     <Header2>
-     <CubeTransparentIcon className="min-h-8 min-w-8 h-8 w-8" />
+     <CubeTransparentIcon className="h-8 min-h-8 w-8 min-w-8" />
      Commands
     </Header2>
     <p className="mb-4 mt-2 text-left">Enable or disable commands.</p>

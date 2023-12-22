@@ -20,7 +20,7 @@ export default function Loading() {
     <div className="bg-background-secondary mt-4 overflow-auto rounded-lg border border-neutral-800 p-4">
      <div className="flex flex-row items-center justify-between">
       <div className="flex flex-row items-center gap-4">
-       <UserPlusIcon className="min-h-8 min-w-8 h-8 w-8" aria-hidden="true" role="img" />
+       <UserPlusIcon className="h-8 min-h-8 w-8 min-w-8" aria-hidden="true" role="img" />
        <div className="flex flex-col">
         <Header4 className="!justify-start whitespace-nowrap">
          New members
@@ -36,7 +36,7 @@ export default function Loading() {
     <div className="bg-background-secondary mt-4 overflow-auto rounded-lg border border-neutral-800 p-4">
      <div className="flex flex-row items-center justify-between">
       <div className="flex flex-row items-center gap-4">
-       <ChatBubbleLeftRightIcon className="min-h-8 min-w-8 h-8 w-8" aria-hidden="true" role="img" />
+       <ChatBubbleLeftRightIcon className="h-8 min-h-8 w-8 min-w-8" aria-hidden="true" role="img" />
        <div className="flex flex-col">
         <Header4 className="!justify-start whitespace-nowrap">
          Messages sent
@@ -52,7 +52,7 @@ export default function Loading() {
     <div className="bg-background-secondary mt-4 overflow-auto rounded-lg border border-neutral-800 p-4">
      <div className="flex flex-row items-center justify-between">
       <div className="flex flex-row items-center gap-4">
-       <UserMinusIcon className="min-h-8 min-w-8 h-8 w-8" aria-hidden="true" role="img" />
+       <UserMinusIcon className="h-8 min-h-8 w-8 min-w-8" aria-hidden="true" role="img" />
        <div className="flex flex-col">
         <Header4 className="!justify-start whitespace-nowrap">
          Members left
@@ -71,7 +71,7 @@ export default function Loading() {
      <Block>
       <Header4 className="mb-2 !block !text-left">
        <span className="flex flex-row flex-wrap items-center gap-2">
-        <BoltIcon className="min-h-5 min-w-5 h-5 w-5" aria-hidden="true" role="img" />
+        <BoltIcon className="h-5 min-h-5 w-5 min-w-5" aria-hidden="true" role="img" />
         <span className="opacity-80">Server Score: </span>
         <span>Calculating...</span>
        </span>
@@ -96,11 +96,11 @@ export default function Loading() {
       </Header4>
       <div className="flex flex-row flex-wrap gap-2">
        <div className="flex items-center">
-        <div className="min-h-3 min-w-3 mr-2 h-3 w-3 rounded-full bg-[#81848f]" />
+        <div className="mr-2 h-3 min-h-3 w-3 min-w-3 rounded-full bg-[#81848f]" />
         Loading...
        </div>
        <div className="flex items-center">
-        <div className="min-h-3 min-w-3 mr-2 h-3 w-3 rounded-full bg-[#22a55b]" />
+        <div className="mr-2 h-3 min-h-3 w-3 min-w-3 rounded-full bg-[#22a55b]" />
         Loading...
        </div>
       </div>
@@ -112,7 +112,7 @@ export default function Loading() {
       </Header4>
       <div className="flex flex-row flex-wrap gap-4">
        {Array.from({ length: 25 }).map((_, i) => (
-        <AvatarSkeleton key={i} className="!min-h-8 !min-w-8 !h-8 !w-8 !rounded-md" />
+        <AvatarSkeleton key={i} className="!h-8 !min-h-8 !w-8 !min-w-8 !rounded-md" />
        ))}
       </div>
      </Block>
@@ -124,7 +124,7 @@ export default function Loading() {
       </Header4>
       <div className="flex flex-row flex-wrap gap-4">
        {Array.from({ length: 10 }).map((_, i) => (
-        <AvatarSkeleton key={i} className="!min-h-24 !min-w-24 !h-24 !w-24 !rounded-md" />
+        <AvatarSkeleton key={i} className="!h-24 !min-h-24 !w-24 !min-w-24 !rounded-md" />
        ))}
       </div>
      </Block>

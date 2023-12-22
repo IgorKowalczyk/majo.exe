@@ -71,16 +71,16 @@ export default async function ServerLogs({ params }) {
  return (
   <>
    <Header1>
-    <ExclamationTriangleIcon className="min-h-9 min-w-9 h-9 w-9" />
+    <ExclamationTriangleIcon className="h-9 min-h-9 w-9 min-w-9" />
     Warns <span className="text-accent-primary">({data.length})</span>
    </Header1>
    <Header5 className="mb-4 !block !justify-start gap-1 !text-left">
     Here you can view all users warns issued by users with the <code>Manage Server</code> permission.
    </Header5>
-   <Block className="flex w-full mt-4 overflow-auto">
+   <Block className="mt-4 flex w-full overflow-auto">
     {data.length === 0 && (
-     <p className="text-left flex items-center gap-2">
-      <SparklesIcon className="min-h-5 min-w-5 h-5 w-5" />
+     <p className="flex items-center gap-2 text-left">
+      <SparklesIcon className="h-5 min-h-5 w-5 min-w-5" />
       Hooray! No warns have been issued yet.
      </p>
     )}

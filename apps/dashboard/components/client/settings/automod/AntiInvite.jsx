@@ -72,7 +72,7 @@ export function AntiInvite({ serverId, enabled, existingActions, existingExemptR
  return (
   <>
    <Header2>
-    <UserPlusIcon className="min-h-6 min-w-6 h-6 w-6" />
+    <UserPlusIcon className="h-6 min-h-6 w-6 min-w-6" />
     Anti-Invite <Switch enabled={isEnabled} onChange={save} disabled={loading} />
    </Header2>
    <p className="mb-4 text-left">
@@ -82,7 +82,7 @@ export function AntiInvite({ serverId, enabled, existingActions, existingExemptR
    {!isEnabled && (
     <div className="border-accent-primary bg-accent-primary/10 my-4 flex flex-row flex-wrap items-start whitespace-nowrap rounded-md border p-4">
      <span className="mr-1 flex flex-row items-center whitespace-nowrap font-bold">
-      <InformationCircleIcon className="stroke-accent-primary min-w-5 min-h-5 mr-1 h-5 w-5" />
+      <InformationCircleIcon className="stroke-accent-primary mr-1 h-5 min-h-5 w-5 min-w-5" />
       Note:
      </span>
      <span className="whitespace-normal">You have to enable this rule to change its settings!</span>
@@ -98,13 +98,13 @@ export function AntiInvite({ serverId, enabled, existingActions, existingExemptR
    >
     <Block className="mb-4 !py-3">
      <h3 className="mb-1 flex items-center justify-start gap-2 text-left text-xl font-bold">
-      <EyeSlashIcon className="min-h-6 min-w-6 h-6 w-6" /> Ignored:
+      <EyeSlashIcon className="h-6 min-h-6 w-6 min-w-6" /> Ignored:
      </h3>
      <span className="mb-4 font-normal">What should I ignore?</span>
      <div className="flex w-fit flex-row flex-wrap items-center gap-2 text-center font-bold">
       <Tooltip content="Ignore certain roles from triggering the rule.">
        <span className="flex cursor-help items-center gap-2">
-        <UserGroupIcon className="stroke-accent-primary min-h-5 min-w-5 h-5 w-5" aria-hidden="true" />
+        <UserGroupIcon className="stroke-accent-primary h-5 min-h-5 w-5 min-w-5" aria-hidden="true" />
         Ignore Roles:
        </span>
       </Tooltip>
@@ -118,7 +118,7 @@ export function AntiInvite({ serverId, enabled, existingActions, existingExemptR
      <div className="mt-2 flex w-fit flex-row flex-wrap items-center gap-2 text-center font-bold">
       <Tooltip content="Ignore certain channels from being moderated.">
        <span className="flex cursor-help items-center gap-2">
-        <HashtagIcon className="stroke-accent-primary min-h-5 min-w-5 h-5 w-5" aria-hidden="true" />
+        <HashtagIcon className="stroke-accent-primary h-5 min-h-5 w-5 min-w-5" aria-hidden="true" />
         Ignore Channels:
        </span>
       </Tooltip>
@@ -136,14 +136,14 @@ export function AntiInvite({ serverId, enabled, existingActions, existingExemptR
 
     <Block className="mb-4 !py-3">
      <h3 className="mb-1 flex items-center justify-start gap-2 text-left text-xl font-bold">
-      <WrenchIcon className="min-h-6 min-w-6 h-6 w-6" /> Actions:
+      <WrenchIcon className="h-6 min-h-6 w-6 min-w-6" /> Actions:
      </h3>
      <span className="mb-4 font-normal">What should I do when a member triggers the rule?</span>
 
      <div className="my-2 flex flex-row flex-wrap gap-2">
       <Tooltip content="Delete the message that triggered the rule.">
        <span className="flex w-fit cursor-help items-center gap-2 font-bold">
-        <TrashIcon className="min-h-6 min-w-6 h-6 w-6 stroke-red-400" />
+        <TrashIcon className="h-6 min-h-6 w-6 min-w-6 stroke-red-400" />
         Delete message:
        </span>
       </Tooltip>
@@ -156,7 +156,7 @@ export function AntiInvite({ serverId, enabled, existingActions, existingExemptR
      <div className="my-2 flex flex-row flex-wrap gap-2">
       <Tooltip content="Timeout the member that triggered the rule.">
        <span className="flex w-fit cursor-help items-center gap-2 font-bold">
-        <ClockIcon className="min-h-6 min-w-6 h-6 w-6 stroke-red-400" />
+        <ClockIcon className="h-6 min-h-6 w-6 min-w-6 stroke-red-400" />
         Timeout member:
        </span>
       </Tooltip>
@@ -169,7 +169,7 @@ export function AntiInvite({ serverId, enabled, existingActions, existingExemptR
      <div className="my-2 flex flex-row flex-wrap  gap-2">
       <Tooltip content="Send a message to selected channel when a member triggers the rule.">
        <span className="flex w-fit cursor-help items-center gap-2 font-bold">
-        <ChatBubbleBottomCenterIcon className="min-h-6 min-w-6 h-6 w-6 stroke-red-400" />
+        <ChatBubbleBottomCenterIcon className="h-6 min-h-6 w-6 min-w-6 stroke-red-400" />
         Log to channel:
        </span>
       </Tooltip>
@@ -185,7 +185,7 @@ export function AntiInvite({ serverId, enabled, existingActions, existingExemptR
       <>
        <div className="my-4 flex flex-row items-start whitespace-nowrap rounded-md border border-red-400 bg-red-400/10 p-4 text-red-400">
         <span className="mr-1 flex flex-row items-center whitespace-nowrap font-bold">
-         <ExclamationTriangleIcon className="min-w-5 min-h-5 mr-1 h-5 w-5 stroke-red-400" />
+         <ExclamationTriangleIcon className="mr-1 h-5 min-h-5 w-5 min-w-5 stroke-red-400" />
          Warning:
         </span>
         <span className="whitespace-normal">You have to select at least one action!</span>

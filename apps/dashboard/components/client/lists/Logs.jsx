@@ -60,14 +60,14 @@ export default function Logs({ initialItems, id }) {
  return (
   <div className="block">
    <div className="mb-4 flex items-center justify-center gap-2">
-    <InputWithIcon placeholder="Search..." value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} icon={<MagnifyingGlassIcon className="min-h-5 min-w-5 h-5 w-5 text-white/50" aria-hidden="true" role="img" />} />
+    <InputWithIcon placeholder="Search..." value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} icon={<MagnifyingGlassIcon className="h-5 min-h-5 w-5 min-w-5 text-white/50" aria-hidden="true" role="img" />} />
     <Tooltip content={sortDescending ? "Sort ascending" : "Sort descending"}>
      <span onClick={() => setSortDescending(!sortDescending)} className="hover:border-button-primary flex h-[41.6px] cursor-pointer items-center justify-center rounded-md border border-neutral-800 px-3 py-2 text-white duration-200">
-      {sortDescending ? <BarsArrowDownIcon className="min-h-5 min-w-5 h-5 w-5" /> : <BarsArrowUpIcon className="min-h-5 min-w-5 h-5 w-5" />}
+      {sortDescending ? <BarsArrowDownIcon className="h-5 min-h-5 w-5 min-w-5" /> : <BarsArrowUpIcon className="h-5 min-h-5 w-5 min-w-5" />}
      </span>
     </Tooltip>
    </div>
-   <InfiniteScroll hasMore={hasMore} pageStart={0} loadMore={loadMore} loader={<GraphSkeleton className={"mb-4 !h-20"} />}>
+   <InfiniteScroll hasMore={hasMore} pageStart={0} loadMore={loadMore} loader={<GraphSkeleton className="mb-4 !h-20" />}>
     {sortedFilteredItems.map((item, index) => (
      <Disclosure
       key={index}
@@ -76,15 +76,15 @@ export default function Logs({ initialItems, id }) {
         <div className="flex flex-row items-center gap-4">
          {item.type && (
           <>
-           {item.type === "profanity" && <NoSymbolIcon className="min-h-6 min-w-6 h-6 w-6 text-red-400" />}
-           {item.type === "embed_color" && <PaintBrushIcon className="ui-open:text-accent-primary min-h-6 min-w-6 h-6 w-6 text-white/60 duration-200" />}
-           {item.type === "command_change" && <CubeTransparentIcon className="ui-open:text-accent-primary min-h-6 min-w-6 h-6 w-6 text-white/60 duration-200" />}
-           {item.type === "category_change" && <CubeIcon className="ui-open:text-accent-primary min-h-6 min-w-6 h-6 w-6 text-white/60 duration-200" />}
-           {item.type === "public_dashboard" && <UsersIcon className="ui-open:text-accent-primary min-h-6 min-w-6 h-6 w-6 text-white/60 duration-200" />}
-           {item.type === "vanity" && <LinkIcon className="ui-open:text-accent-primary min-h-6 min-w-6 h-6 w-6 text-white/60 duration-200" />}
+           {item.type === "profanity" && <NoSymbolIcon className="h-6 min-h-6 w-6 min-w-6 text-red-400" />}
+           {item.type === "embed_color" && <PaintBrushIcon className="ui-open:text-accent-primary h-6 min-h-6 w-6 min-w-6 text-white/60 duration-200" />}
+           {item.type === "command_change" && <CubeTransparentIcon className="ui-open:text-accent-primary h-6 min-h-6 w-6 min-w-6 text-white/60 duration-200" />}
+           {item.type === "category_change" && <CubeIcon className="ui-open:text-accent-primary h-6 min-h-6 w-6 min-w-6 text-white/60 duration-200" />}
+           {item.type === "public_dashboard" && <UsersIcon className="ui-open:text-accent-primary h-6 min-h-6 w-6 min-w-6 text-white/60 duration-200" />}
+           {item.type === "vanity" && <LinkIcon className="ui-open:text-accent-primary h-6 min-h-6 w-6 min-w-6 text-white/60 duration-200" />}
           </>
          )}
-         {item.user?.avatar && <Image src={`https://cdn.discordapp.com/avatars/${item.user?.discordId}/${item.user?.avatar}.${item.user?.avatar.startsWith("a_") ? "gif" : "png"}`} alt={`${item.user?.name} avatar`} quality={95} width={32} height={32} className="min-h-12 min-w-12 h-12 w-12 rounded-full" />}
+         {item.user?.avatar && <Image src={`https://cdn.discordapp.com/avatars/${item.user?.discordId}/${item.user?.avatar}.${item.user?.avatar.startsWith("a_") ? "gif" : "png"}`} alt={`${item.user?.name} avatar`} quality={95} width={32} height={32} className="h-12 min-h-12 w-12 min-w-12 rounded-full" />}
         </div>
         <div className="flex flex-col">
          <p className="text-left font-bold">
@@ -111,7 +111,7 @@ export default function Logs({ initialItems, id }) {
       </p>
       <p>
        <span className="font-bold">User:</span>{" "}
-       <Link href={`/dashboard/${id}/user/${item.user?.discordId}`} className={"hover:text-button-primary opacity-70 duration-200 hover:opacity-100"}>
+       <Link href={`/dashboard/${id}/user/${item.user?.discordId}`} className="hover:text-button-primary opacity-70 duration-200 hover:opacity-100">
         {item.user?.global_name || item.user?.username}
         {item.user?.discriminator !== "0" && <span className="opacity-70">#{item.user?.discriminator || "0000"}</span>} (ID: {item.user?.discordId || item.user?.id})
        </Link>

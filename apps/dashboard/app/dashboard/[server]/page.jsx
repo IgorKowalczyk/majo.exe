@@ -175,7 +175,7 @@ export default async function ServerOverview({ params }) {
  return (
   <>
    <div className="mb-4 flex flex-col items-center justify-normal gap-4 sm:flex-row">
-    {guildPreview.icon ? <Image src={`https://cdn.discordapp.com/icons/${guildPreview.id}/${guildPreview.icon}.${guildPreview.icon.startsWith("a_") ? "gif" : "png"}`} alt={guildPreview.name} quality={95} width={64} height={64} className="min-h-16 min-w-16 h-16 w-16 rounded-full" /> : <div className="bg-button-secondary min-h-16 min-w-16 h-16 w-16 rounded-full" />}
+    {guildPreview.icon ? <Image src={`https://cdn.discordapp.com/icons/${guildPreview.id}/${guildPreview.icon}.${guildPreview.icon.startsWith("a_") ? "gif" : "png"}`} alt={guildPreview.name} quality={95} width={64} height={64} className="h-16 min-h-16 w-16 min-w-16 rounded-full" /> : <div className="bg-button-secondary h-16 min-h-16 w-16 min-w-16 rounded-full" />}
     <div className="flex flex-col text-center sm:ml-4 sm:text-left">
      <Header1 className="mb-0">{guildPreview.name || "Unnamed server"}</Header1>
      <Header5 className="mt-2 text-center opacity-60 sm:text-left">
@@ -188,7 +188,7 @@ export default async function ServerOverview({ params }) {
     <Link href={`/dashboard/${serverDownload.id}/statistics`} className="bg-background-secondary mt-4 cursor-pointer overflow-auto rounded-lg border border-neutral-800 p-4">
      <div className="flex flex-row items-center justify-between">
       <div className="flex flex-row items-center gap-4">
-       <UserPlusIcon className="min-h-8 min-w-8 h-8 w-8" aria-hidden="true" role="img" />
+       <UserPlusIcon className="h-8 min-h-8 w-8 min-w-8" aria-hidden="true" role="img" />
        <div className="flex flex-col">
         <Header4 className="!justify-start whitespace-nowrap">
          New members
@@ -206,7 +206,7 @@ export default async function ServerOverview({ params }) {
     <Link href={`/dashboard/${serverDownload.id}/statistics`} className="bg-background-secondary mt-4 cursor-pointer overflow-auto rounded-lg border border-neutral-800 p-4">
      <div className="flex flex-row items-center justify-between">
       <div className="flex flex-row items-center gap-4">
-       <ChatBubbleLeftRightIcon className="min-h-8 min-w-8 h-8 w-8" aria-hidden="true" role="img" />
+       <ChatBubbleLeftRightIcon className="h-8 min-h-8 w-8 min-w-8" aria-hidden="true" role="img" />
        <div className="flex flex-col">
         <Header4 className="!justify-start whitespace-nowrap">
          Messages sent
@@ -224,7 +224,7 @@ export default async function ServerOverview({ params }) {
     <Link href={`/dashboard/${serverDownload.id}/statistics`} className="bg-background-secondary mt-4 cursor-pointer overflow-auto rounded-lg border border-neutral-800 p-4">
      <div className="flex flex-row items-center justify-between">
       <div className="flex flex-row items-center gap-4">
-       <UserMinusIcon className="min-h-8 min-w-8 h-8 w-8" aria-hidden="true" role="img" />
+       <UserMinusIcon className="h-8 min-h-8 w-8 min-w-8" aria-hidden="true" role="img" />
        <div className="flex flex-col">
         <Header4 className="!justify-start whitespace-nowrap">
          Members left
@@ -245,7 +245,7 @@ export default async function ServerOverview({ params }) {
      <Block>
       <Header4 className="mb-2 !block !text-left">
        <span className="flex flex-row flex-wrap items-center gap-2">
-        <BoltIcon className="min-h-5 min-w-5 h-5 w-5" aria-hidden="true" role="img" />
+        <BoltIcon className="h-5 min-h-5 w-5 min-w-5" aria-hidden="true" role="img" />
         <span className="opacity-80">Server Score: </span>
         <span
          className={clsx({
@@ -267,14 +267,14 @@ export default async function ServerOverview({ params }) {
       {guildScore !== 100 && (
        <>
         <Header4 className="!items-center !justify-normal !gap-2 pt-4 opacity-80">
-         <LightBulbIcon className="min-h-5 min-w-5 h-5 w-5" aria-hidden="true" role="img" />
+         <LightBulbIcon className="h-5 min-h-5 w-5 min-w-5" aria-hidden="true" role="img" />
          Ways to improve your score:
         </Header4>
         <div className="mt-2 space-y-1">
          {(!guild.autoMod || guild.autoMod.length === 0) && (
           <div>
            <span className="gap-1 font-bold">
-            <PlusIcon className="min-h-5 min-w-5 stroke-accent-primary mr-1 inline h-5 w-5 stroke-2" aria-hidden="true" role="img" />
+            <PlusIcon className="stroke-accent-primary mr-1 inline h-5 min-h-5 w-5 min-w-5 stroke-2" aria-hidden="true" role="img" />
             Enable AutoMod:
            </span>{" "}
            <span className="font-normal text-gray-400">
@@ -288,7 +288,7 @@ export default async function ServerOverview({ params }) {
          {!guild.enableXP && (
           <div>
            <span className="gap-1 font-bold">
-            <PlusIcon className="min-h-5 min-w-5 stroke-accent-primary mr-1 inline h-5 w-5 stroke-2" aria-hidden="true" role="img" />
+            <PlusIcon className="stroke-accent-primary mr-1 inline h-5 min-h-5 w-5 min-w-5 stroke-2" aria-hidden="true" role="img" />
             Enable XP:
            </span>{" "}
            <span className="font-normal text-gray-400">
@@ -302,7 +302,7 @@ export default async function ServerOverview({ params }) {
          {!guild.publicPage && (
           <div>
            <span className="gap-1 font-bold">
-            <PlusIcon className="min-h-5 min-w-5 stroke-accent-primary mr-1 inline h-5 w-5 stroke-2" aria-hidden="true" role="img" />
+            <PlusIcon className="stroke-accent-primary mr-1 inline h-5 min-h-5 w-5 min-w-5 stroke-2" aria-hidden="true" role="img" />
             Enable Public Page:
            </span>{" "}
            <span className="font-normal text-gray-400">
@@ -316,7 +316,7 @@ export default async function ServerOverview({ params }) {
          {!guild.vanity && (
           <div>
            <span className="gap-1 font-bold">
-            <PlusIcon className="min-h-5 min-w-5 stroke-accent-primary mr-1 inline h-5 w-5 stroke-2" aria-hidden="true" role="img" />
+            <PlusIcon className="stroke-accent-primary mr-1 inline h-5 min-h-5 w-5 min-w-5 stroke-2" aria-hidden="true" role="img" />
             Set Vanity URL:
            </span>{" "}
            <span className="font-normal text-gray-400">
@@ -342,16 +342,16 @@ export default async function ServerOverview({ params }) {
       <Header4 className="mb-4 !items-start !justify-normal opacity-80">Quick Stats</Header4>
       <div className="flex flex-row flex-wrap gap-2">
        <div className="flex items-center">
-        <div className="min-h-3 min-w-3 mr-2 h-3 w-3 rounded-full bg-[#81848f]" />
+        <div className="mr-2 h-3 min-h-3 w-3 min-w-3 rounded-full bg-[#81848f]" />
         {guildPreview.approximate_member_count || "0"} members
        </div>
        <div className="flex items-center">
-        <div className="min-h-3 min-w-3 mr-2 h-3 w-3 rounded-full bg-[#22a55b]" />
+        <div className="mr-2 h-3 min-h-3 w-3 min-w-3 rounded-full bg-[#22a55b]" />
         {guildPreview.approximate_presence_count || "0"} online
        </div>
       </div>
       {/* {guild.publicPage ? (
-       <ButtonSecondary href={`/server/${guild.vanity || serverDownload.id}`} className={"mx-auto !flex flex-row whitespace-nowrap sm:ml-auto sm:mr-0"} target="_blank" rel="noreferrer noopener">
+       <ButtonSecondary href={`/server/${guild.vanity || serverDownload.id}`} className="mx-auto !flex flex-row whitespace-nowrap sm:ml-auto sm:mr-0" target="_blank" rel="noreferrer noopener">
         <ArrowTopRightOnSquareIcon className="min-h-5 min-w-5 mr-2 h-5 w-5" aria-hidden="true" role="img" />
         Server page
        </ButtonSecondary>
@@ -370,7 +370,7 @@ export default async function ServerOverview({ params }) {
          <Tooltip key={emoji.id + emoji.name} content={emoji.name || "Unnamed emoji"}>
           <>
            <Link className="flex flex-col items-center justify-center gap-2" href={`https://cdn.discordapp.com/emojis/${emoji.id}.${emoji.animated ? "gif" : "png"}`} target="_blank" rel="noreferrer noopener">
-            <Image src={`https://cdn.discordapp.com/emojis/${emoji.id}.${emoji.animated ? "gif" : "png"}`} alt={emoji.name} quality={95} width={32} height={32} className="min-h-8 min-w-8 h-8 w-8" />
+            <Image src={`https://cdn.discordapp.com/emojis/${emoji.id}.${emoji.animated ? "gif" : "png"}`} alt={emoji.name} quality={95} width={32} height={32} className="h-8 min-h-8 w-8 min-w-8" />
            </Link>
           </>
          </Tooltip>

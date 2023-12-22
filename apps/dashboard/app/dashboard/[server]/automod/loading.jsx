@@ -19,7 +19,7 @@ export default async function ServerAutomod() {
  return (
   <>
    <Header1>
-    <ChatBubbleBottomCenterTextIcon className="min-h-9 min-w-9 h-9 w-9" />
+    <ChatBubbleBottomCenterTextIcon className="h-9 min-h-9 w-9 min-w-9" />
     Automod
    </Header1>
    <Header5 className="mb-4 mt-2 !justify-start !text-left">
@@ -27,8 +27,8 @@ export default async function ServerAutomod() {
    </Header5>
    <Block className="mb-4">
     <Header2>
-     <UserPlusIcon className="min-h-6 min-w-6 h-6 w-6" />
-     Anti-Invite <ArrowPathIcon className="min-h-6 min-w-6 stroke-accent-primary h-6 w-6 animate-spin" />
+     <UserPlusIcon className="h-6 min-h-6 w-6 min-w-6" />
+     Anti-Invite <ArrowPathIcon className="stroke-accent-primary h-6 min-h-6 w-6 min-w-6 animate-spin" />
     </Header2>
     <p className="mb-4 text-left">
      <span>Automatically delete all messages containing Discord server invites.</span>
@@ -37,13 +37,13 @@ export default async function ServerAutomod() {
     <div>
      <Block className="mb-4 !py-3">
       <h3 className="mb-1 flex items-center justify-start gap-2 text-left text-xl font-bold">
-       <EyeSlashIcon className="min-h-6 min-w-6 h-6 w-6" /> Ignored:
+       <EyeSlashIcon className="h-6 min-h-6 w-6 min-w-6" /> Ignored:
       </h3>
       <span className="mb-4 font-normal">What should I ignore?</span>
 
       <div className="flex flex-row flex-wrap gap-2">
        <span className="flex w-fit items-center gap-2 font-bold">
-        <UserGroupIcon className="stroke-accent-primary min-h-5 min-w-5 h-5 w-5" aria-hidden="true" />
+        <UserGroupIcon className="stroke-accent-primary h-5 min-h-5 w-5 min-w-5" aria-hidden="true" />
         Ignore Roles:
        </span>
        <InputSkeleton className="!h-[37.6px] !w-40" />
@@ -51,7 +51,7 @@ export default async function ServerAutomod() {
 
       <div className="mt-2 flex flex-row flex-wrap gap-2">
        <span className="flex w-fit items-center gap-2 font-bold">
-        <HashtagIcon className="stroke-accent-primary min-h-5 min-w-5 h-5 w-5" aria-hidden="true" />
+        <HashtagIcon className="stroke-accent-primary h-5 min-h-5 w-5 min-w-5" aria-hidden="true" />
         Ignore Channels:
        </span>
        <InputSkeleton className="!h-[37.6px] !w-40" />
@@ -64,13 +64,13 @@ export default async function ServerAutomod() {
 
      <Block className="mb-4 !py-3">
       <h3 className="mb-1 flex items-center justify-start gap-2 text-left text-xl font-bold">
-       <WrenchIcon className="min-h-6 min-w-6 h-6 w-6" /> Actions:
+       <WrenchIcon className="h-6 min-h-6 w-6 min-w-6" /> Actions:
       </h3>
       <span className="mb-4 font-normal">What should I do when a member triggers the rule?</span>
 
       <div className="my-2 flex flex-row flex-wrap gap-2">
        <span className="flex w-fit items-center gap-2 font-bold">
-        <TrashIcon className="min-h-6 min-w-6 h-6 w-6 stroke-red-400" />
+        <TrashIcon className="h-6 min-h-6 w-6 min-w-6 stroke-red-400" />
         Delete message:
        </span>
        <InputSkeleton className="!h-[30px] !w-12" />
@@ -78,7 +78,7 @@ export default async function ServerAutomod() {
 
       <div className="my-2 flex flex-row flex-wrap gap-2">
        <span className="flex w-fit items-center gap-2 font-bold">
-        <ClockIcon className="min-h-6 min-w-6 h-6 w-6 stroke-red-400" />
+        <ClockIcon className="h-6 min-h-6 w-6 min-w-6 stroke-red-400" />
         Timeout member:
        </span>
        <InputSkeleton className="!h-[37.6px] !w-40" />
@@ -86,7 +86,7 @@ export default async function ServerAutomod() {
 
       <div className="my-2 flex flex-row flex-wrap  gap-2">
        <span className="flex w-fit items-center gap-2 font-bold">
-        <ChatBubbleBottomCenterTextIcon className="min-h-6 min-w-6 h-6 w-6 stroke-red-400" />
+        <ChatBubbleBottomCenterTextIcon className="h-6 min-h-6 w-6 min-w-6 stroke-red-400" />
         Log to channel:
        </span>
        <InputSkeleton className="!h-[37.6px] !w-40" />
@@ -104,8 +104,8 @@ export default async function ServerAutomod() {
 
    <Block className="mb-4">
     <Header2>
-     <LinkIcon className="min-h-6 min-w-6 h-6 w-6" />
-     Anti-Link <ArrowPathIcon className="min-h-6 min-w-6 stroke-accent-primary h-6 w-6 animate-spin" />
+     <LinkIcon className="h-6 min-h-6 w-6 min-w-6" />
+     Anti-Link <ArrowPathIcon className="stroke-accent-primary h-6 min-h-6 w-6 min-w-6 animate-spin" />
     </Header2>
     <p className="mb-4 text-left">
      <span>Automatically delete all messages containing links.</span>
@@ -114,13 +114,13 @@ export default async function ServerAutomod() {
     <div>
      <Block className="mb-4 !py-3">
       <h3 className="mb-1 flex items-center justify-start gap-2 text-left text-xl font-bold">
-       <EyeSlashIcon className="min-h-6 min-w-6 h-6 w-6" /> Ignored:
+       <EyeSlashIcon className="h-6 min-h-6 w-6 min-w-6" /> Ignored:
       </h3>
       <span className="mb-4 font-normal">What should I ignore?</span>
 
       <div className="flex flex-row flex-wrap gap-2">
        <span className="flex w-fit items-center gap-2 font-bold">
-        <UserGroupIcon className="stroke-accent-primary min-h-5 min-w-5 h-5 w-5" aria-hidden="true" />
+        <UserGroupIcon className="stroke-accent-primary h-5 min-h-5 w-5 min-w-5" aria-hidden="true" />
         Ignore Roles:
        </span>
        <InputSkeleton className="!h-[37.6px] !w-40" />
@@ -128,7 +128,7 @@ export default async function ServerAutomod() {
 
       <div className="mt-2 flex flex-row flex-wrap gap-2">
        <span className="flex w-fit items-center gap-2 font-bold">
-        <HashtagIcon className="stroke-accent-primary min-h-5 min-w-5 h-5 w-5" aria-hidden="true" />
+        <HashtagIcon className="stroke-accent-primary h-5 min-h-5 w-5 min-w-5" aria-hidden="true" />
         Ignore Channels:
        </span>
        <InputSkeleton className="!h-[37.6px] !w-40" />
@@ -141,13 +141,13 @@ export default async function ServerAutomod() {
 
      <Block className="mb-4 !py-3">
       <h3 className="mb-1 flex items-center justify-start gap-2 text-left text-xl font-bold">
-       <WrenchIcon className="min-h-6 min-w-6 h-6 w-6" /> Actions:
+       <WrenchIcon className="h-6 min-h-6 w-6 min-w-6" /> Actions:
       </h3>
       <span className="mb-4 font-normal">What should I do when a member triggers the rule?</span>
 
       <div className="my-2 flex flex-row flex-wrap gap-2">
        <span className="flex w-fit items-center gap-2 font-bold">
-        <TrashIcon className="min-h-6 min-w-6 h-6 w-6 stroke-red-400" />
+        <TrashIcon className="h-6 min-h-6 w-6 min-w-6 stroke-red-400" />
         Delete message:
        </span>
        <InputSkeleton className="!h-[30px] !w-12" />
@@ -155,7 +155,7 @@ export default async function ServerAutomod() {
 
       <div className="my-2 flex flex-row flex-wrap gap-2">
        <span className="flex w-fit items-center gap-2 font-bold">
-        <ClockIcon className="min-h-6 min-w-6 h-6 w-6 stroke-red-400" />
+        <ClockIcon className="h-6 min-h-6 w-6 min-w-6 stroke-red-400" />
         Timeout member:
        </span>
        <InputSkeleton className="!h-[37.6px] !w-40" />
@@ -163,7 +163,7 @@ export default async function ServerAutomod() {
 
       <div className="my-2 flex flex-row flex-wrap  gap-2">
        <span className="flex w-fit items-center gap-2 font-bold">
-        <ChatBubbleBottomCenterTextIcon className="min-h-6 min-w-6 h-6 w-6 stroke-red-400" />
+        <ChatBubbleBottomCenterTextIcon className="h-6 min-h-6 w-6 min-w-6 stroke-red-400" />
         Log to channel:
        </span>
        <InputSkeleton className="!h-[37.6px] !w-40" />
@@ -180,7 +180,7 @@ export default async function ServerAutomod() {
    </Block>
    <Block className="mb-4">
     <Header2>
-     <AtSymbolIcon className="min-h-6 min-w-6 h-6 w-6" />
+     <AtSymbolIcon className="h-6 min-h-6 w-6 min-w-6" />
      Anti-Mention <NavBadge>Coming Soon</NavBadge>
     </Header2>
     <p className="mb-4 text-left">
@@ -189,7 +189,7 @@ export default async function ServerAutomod() {
    </Block>
    <Block className="mb-4">
     <Header2>
-     <ChatBubbleLeftEllipsisIcon className="min-h-6 min-w-6 h-6 w-6" />
+     <ChatBubbleLeftEllipsisIcon className="h-6 min-h-6 w-6 min-w-6" />
      Anti-Spam <NavBadge>Coming Soon</NavBadge>
     </Header2>
     <p className="mb-4 text-left">
@@ -198,7 +198,7 @@ export default async function ServerAutomod() {
    </Block>
    <Block className="mb-4">
     <Header2>
-     <NoSymbolIcon className="min-h-6 min-w-6 h-6 w-6" />
+     <NoSymbolIcon className="h-6 min-h-6 w-6 min-w-6" />
      Anti-Badwords <NavBadge>Coming Soon</NavBadge>
     </Header2>
     <p className="mb-4 text-left">

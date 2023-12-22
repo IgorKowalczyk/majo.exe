@@ -18,7 +18,7 @@ export function GradientHeader({ children, className, ...props }) {
 
 export function Header1({ children, className, ...props }) {
  return (
-  <h1 className={twMerge("mb-2 flex items-center justify-start gap-2 font-bold text-3xl", className)} {...props}>
+  <h1 className={twMerge("mb-2 flex items-center justify-start gap-2 text-3xl font-bold", className)} {...props}>
    {children}
   </h1>
  );

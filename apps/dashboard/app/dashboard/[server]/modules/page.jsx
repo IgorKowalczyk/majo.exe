@@ -58,12 +58,12 @@ export default async function Settings({ params }) {
  return (
   <>
    <Header1>
-    <SquaresPlusIcon className="min-h-9 min-w-9 h-9 w-9" />
+    <SquaresPlusIcon className="h-9 min-h-9 w-9 min-w-9" />
     Modules
    </Header1>
    <Block className="mt-4">
     <Header2>
-     <CubeIcon className="min-h-8 min-w-8 h-8 w-8" />
+     <CubeIcon className="h-8 min-h-8 w-8 min-w-8" />
      Categories
     </Header2>
     <p className="mb-4 mt-2 text-left">Enable or disable categories of commands.</p>
@@ -91,7 +91,7 @@ export default async function Settings({ params }) {
 
    <Block className="mt-4">
     <Header2>
-     <CubeTransparentIcon className="min-h-8 min-w-8 h-8 w-8" />
+     <CubeTransparentIcon className="h-8 min-h-8 w-8 min-w-8" />
      Commands
     </Header2>
     <p className="mb-4 mt-2 text-left">Enable or disable commands.</p>
@@ -105,7 +105,7 @@ export default async function Settings({ params }) {
       {guild.guildDisabledCategories.some((cat) => cat.categoryName === category.name) && (
        <div className="border-accent-primary bg-accent-primary/10 my-4 flex flex-row flex-wrap items-start whitespace-nowrap rounded-md border p-4">
         <span className="mr-1 flex flex-row items-center whitespace-nowrap font-bold">
-         <InformationCircleIcon className="stroke-accent-primary min-w-5 min-h-5 mr-1 h-5 w-5" />
+         <InformationCircleIcon className="stroke-accent-primary mr-1 h-5 min-h-5 w-5 min-w-5" />
          Note:
         </span>
         <span className="whitespace-normal">You have to enable this category to change status of individual commands in it!</span>

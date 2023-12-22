@@ -55,8 +55,8 @@ function GenerateComponent({ title, data, CSVData, valueName, fileName, categori
 
  return (
   <Block>
-   <div className="mb-4 flex-col flex items-center justify-normal whitespace-nowrap gap-2 lg:flex-row">
-    <Header2 className="flex-col items-center lg:items-start gap-1">
+   <div className="mb-4 flex flex-col items-center justify-normal gap-2 whitespace-nowrap lg:flex-row">
+    <Header2 className="flex-col items-center gap-1 lg:items-start">
      <span>
       {title} <span className="text-accent-primary">(+{sumArray(filteredData, valueName)})</span>
      </span>
@@ -66,21 +66,21 @@ function GenerateComponent({ title, data, CSVData, valueName, fileName, categori
       </span>
      )}
     </Header2>
-    <div className="relative mx-auto flex flex-row flex-wrap items-center justify-center gap-2 lg:gap-1 lg:ml-auto lg:mr-0">
+    <div className="relative mx-auto flex flex-row flex-wrap items-center justify-center gap-2 lg:ml-auto lg:mr-0 lg:gap-1">
      <Menu
       label={
        <>
-        <ArrowDownTrayIcon className="min-h-4 min-w-4 h-4 w-4" aria-hidden="true" role="img" />
+        <ArrowDownTrayIcon className="h-4 min-h-4 w-4 min-w-4" aria-hidden="true" role="img" />
         <span>Export</span>
        </>
       }
      >
       <div>
        <Menu.Item onClick={() => fileDl(CSVData, `${fileName}.csv`)}>
-        <DocumentArrowDownIcon className="min-h-5 min-w-5 mr-2 h-5 w-5 " aria-hidden="true" role="img" /> Export as CSV
+        <DocumentArrowDownIcon className="mr-2 h-5 min-h-5 w-5 min-w-5 " aria-hidden="true" role="img" /> Export as CSV
        </Menu.Item>
        <Menu.Item onClick={() => fileDl(JSON.stringify(data), `${fileName}.json`)}>
-        <DocumentArrowDownIcon className="min-h-5 min-w-5 mr-2 h-5 w-5 " aria-hidden="true" role="img" /> Export as JSON
+        <DocumentArrowDownIcon className="mr-2 h-5 min-h-5 w-5 min-w-5 " aria-hidden="true" role="img" /> Export as JSON
        </Menu.Item>
       </div>
      </Menu>
@@ -88,9 +88,9 @@ function GenerateComponent({ title, data, CSVData, valueName, fileName, categori
       <div className="relative">
        <Listbox.Button className="ui-open:border-neutral-700 hover:bg-background-menu-button ui-open:bg-background-menu-button ml-2 flex h-10 cursor-pointer select-none items-center gap-3 rounded-md border border-neutral-800 px-3 py-2 text-sm font-normal duration-200 hover:border-neutral-700 motion-reduce:transition-none sm:text-sm">
         <>
-         <ClockIcon className="min-h-4 min-w-4 h-4 w-4" aria-hidden="true" role="img" />
+         <ClockIcon className="h-4 min-h-4 w-4 min-w-4" aria-hidden="true" role="img" />
          <span>Date Range: {dateRange}</span>
-         <ChevronDownIcon className="min-h-4 ui-open:rotate-180 min-w-4 h-4 w-4 duration-200 motion-reduce:transition-none" />
+         <ChevronDownIcon className="ui-open:rotate-180 h-4 min-h-4 w-4 min-w-4 duration-200 motion-reduce:transition-none" />
         </>
        </Listbox.Button>
        <Transition as={Fragment} enter="transition ease-out duration-100" enterFrom="transform opacity-0 scale-95" enterTo="transform opacity-100 scale-100" leave="transition ease-in duration-75" leaveFrom="transform opacity-100 scale-100" leaveTo="transform opacity-0 scale-95">

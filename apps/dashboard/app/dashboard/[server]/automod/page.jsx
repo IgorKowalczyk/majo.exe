@@ -97,7 +97,7 @@ export default async function ServerAutomod({ params }) {
  return (
   <>
    <Header1>
-    <ChatBubbleBottomCenterTextIcon className="min-h-9 min-w-9 h-9 w-9" />
+    <ChatBubbleBottomCenterTextIcon className="h-9 min-h-9 w-9 min-w-9" />
     Automod
    </Header1>
    <Header5 className="mb-4 mt-2 !justify-start !text-left">
@@ -119,7 +119,7 @@ export default async function ServerAutomod({ params }) {
    </Block>
    <Block className="mb-4">
     <Header2>
-     <AtSymbolIcon className="min-h-6 min-w-6 h-6 w-6" />
+     <AtSymbolIcon className="h-6 min-h-6 w-6 min-w-6" />
      Anti-Mention <NavBadge>Coming Soon</NavBadge>
     </Header2>
     <p className="mb-4 text-left">
@@ -128,7 +128,7 @@ export default async function ServerAutomod({ params }) {
    </Block>
    <Block className="mb-4">
     <Header2>
-     <ChatBubbleLeftEllipsisIcon className="min-h-6 min-w-6 h-6 w-6" />
+     <ChatBubbleLeftEllipsisIcon className="h-6 min-h-6 w-6 min-w-6" />
      Anti-Spam <NavBadge>Coming Soon</NavBadge>
     </Header2>
     <p className="mb-4 text-left">
@@ -137,7 +137,7 @@ export default async function ServerAutomod({ params }) {
    </Block>
    <Block className="mb-4">
     <Header2>
-     <NoSymbolIcon className="min-h-6 min-w-6 h-6 w-6" />
+     <NoSymbolIcon className="h-6 min-h-6 w-6 min-w-6" />
      Anti-Badwords <NavBadge>Coming Soon</NavBadge>
     </Header2>
     <p className="mb-4 text-left">

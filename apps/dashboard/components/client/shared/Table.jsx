@@ -56,7 +56,7 @@ export function Table({
   <>
    <div className="flex w-full flex-col">
     <div className="flex flex-row items-stretch gap-4">
-     {showSearch && <InputWithIcon icon={<MagnifyingGlassIcon className="min-h-5 min-w-5 h-5 w-5" />} placeholder="Search" value={globalFilter || ""} onChange={(e) => setGlobalFilter(e.target.value)} className="h-10" />}
+     {showSearch && <InputWithIcon icon={<MagnifyingGlassIcon className="h-5 min-h-5 w-5 min-w-5" />} placeholder="Search" value={globalFilter || ""} onChange={(e) => setGlobalFilter(e.target.value)} className="h-10" />}
      {showControls && <ViewSelect selectedValue={pageSize} setSelectedValue={setPageSize} />}
     </div>
 
@@ -117,17 +117,17 @@ export function Table({
 
     {showControls && (
      <div className="mt-2 flex items-center justify-between border-t border-t-neutral-800 pt-2 text-neutral-500">
-      <ButtonSecondary onClick={() => previousPage()} disabled={!canPreviousPage} className={"!w-fit"}>
-       <ArrowLeftIcon className="min-h-5 min-w-5 mr-2 h-5 w-5" />
+      <ButtonSecondary onClick={() => previousPage()} disabled={!canPreviousPage} className="!w-fit">
+       <ArrowLeftIcon className="mr-2 h-5 min-h-5 w-5 min-w-5" />
        Previous
       </ButtonSecondary>
       <div>
        Page {pageIndex + 1} of {pageOptions.length}
       </div>
       <div className="flex items-center space-x-2">
-       <ButtonSecondary onClick={() => nextPage()} disabled={!canNextPage} className={"!w-fit"}>
+       <ButtonSecondary onClick={() => nextPage()} disabled={!canNextPage} className="!w-fit">
         Next
-        <ArrowRightIcon className="min-h-5 min-w-5 ml-2 h-5 w-5" />
+        <ArrowRightIcon className="ml-2 h-5 min-h-5 w-5 min-w-5" />
        </ButtonSecondary>
       </div>
      </div>

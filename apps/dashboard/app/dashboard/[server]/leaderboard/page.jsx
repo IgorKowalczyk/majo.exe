@@ -71,10 +71,10 @@ export default async function ServerLeaderboard({ params }) {
  return (
   <>
    <Header1>
-    <SparklesIcon className="min-h-9 min-w-9 h-9 w-9" />
+    <SparklesIcon className="h-9 min-h-9 w-9 min-w-9" />
     Leaderboard
    </Header1>
-   <Block className="flex mt-4 w-full overflow-auto">{data.length > 0 ? <Leaderboard data={data} /> : <span className="opacity-50">No users found. Maybe you should try talking in chat?</span>}</Block>
+   <Block className="mt-4 flex w-full overflow-auto">{data.length > 0 ? <Leaderboard data={data} /> : <span className="opacity-50">No users found. Maybe you should try talking in chat?</span>}</Block>
   </>
  );
 }

@@ -19,7 +19,7 @@ export function HomepageLevelUp({ logo }) {
 
  return (
   <div className="mt-6 flex flex-row items-center gap-1">
-   <Image src={logo} alt="User avatar" quality={95} width={64} height={64} className="min-h-10 min-w-10 h-10 w-10 self-baseline rounded-full" />
+   <Image src={logo} alt="User avatar" quality={95} width={64} height={64} className="h-10 min-h-10 w-10 min-w-10 self-baseline rounded-full" />
    <span className="ml-2">
     <span className="font-bold">Majonez.exe</span> leveled up to <span className="text-accent-primary font-bold [font-feature-settings:'tnum']">level {level}</span>{" "}
     <span onClick={setIt} className="cursor-pointer select-none">
@@ -39,7 +39,7 @@ export function AddReaction({ reaction, countL = 2 }) {
 
  const setIt = () => {
   toast(!clicked ? "Joined the giveaway!" : "Left the giveaway!", {
-   icon: <Image src={reaction} alt="Reaction emoji" quality={95} width={16} height={16} className="min-h-4 min-w-4 h-4 w-4" />,
+   icon: <Image src={reaction} alt="Reaction emoji" quality={95} width={16} height={16} className="h-4 min-h-4 w-4 min-w-4" />,
   });
   setClicked(!clicked);
   setCount(clicked ? count - 1 : count + 1);
@@ -56,7 +56,7 @@ export function AddReaction({ reaction, countL = 2 }) {
    )}
    onClick={() => setIt()}
   >
-   <Image src={reaction} alt={"Reaction emoji"} quality={100} width={16} height={16} className="min-h-4 min-w-4 h-4 w-4" />
+   <Image src={reaction} alt="Reaction emoji" quality={100} width={16} height={16} className="h-4 min-h-4 w-4 min-w-4" />
    <span className="font-bold">{count}</span>
   </div>
  );

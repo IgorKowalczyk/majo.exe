@@ -114,33 +114,33 @@ export default async function Statistics({ params }) {
   <>
    <div className="mb-4 grid grid-cols-1 gap-0 md:grid-cols-1 md:gap-4 lg:grid-cols-2 xl:grid-cols-3">
     <GraphCard
-     className={"mt-0"}
+     className="mt-0"
      data={{
-      icon: <UserPlusIcon className="min-h-8 min-w-8 h-8 w-8" />,
+      icon: <UserPlusIcon className="h-8 min-h-8 w-8 min-w-8" />,
       title: "New Members",
       description: "Amount of new members that joined your server in the last 7 days.",
       value: newMembers,
-      graph: newMembers === 0 ? <MinusIcon className="min-h-5 min-w-5 h-5 w-5" /> : newMembers < 0 ? <ArrowTrendingDownIcon className="min-h-5 min-w-5 h-5 w-5" /> : <ArrowTrendingUpIcon className="min-h-5 min-w-5 h-5 w-5" />,
+      graph: newMembers === 0 ? <MinusIcon className="h-5 min-h-5 w-5 min-w-5" /> : newMembers < 0 ? <ArrowTrendingDownIcon className="h-5 min-h-5 w-5 min-w-5" /> : <ArrowTrendingUpIcon className="h-5 min-h-5 w-5 min-w-5" />,
      }}
     />
     <GraphCard
-     className={"mt-0"}
+     className="mt-0"
      data={{
-      icon: <UserMinusIcon className="min-h-8 min-w-8 h-8 w-8" />,
+      icon: <UserMinusIcon className="h-8 min-h-8 w-8 min-w-8" />,
       title: "Members Left",
       description: "Amount of members that left your server in the last 7 days.",
       value: membersLeft,
-      graph: membersLeft === 0 ? <MinusIcon className="min-h-5 min-w-5 h-5 w-5" /> : membersLeft < 0 ? <ArrowTrendingDownIcon className="min-h-5 min-w-5 h-5 w-5" /> : <ArrowTrendingUpIcon className="min-h-5 min-w-5 h-5 w-5" />,
+      graph: membersLeft === 0 ? <MinusIcon className="h-5 min-h-5 w-5 min-w-5" /> : membersLeft < 0 ? <ArrowTrendingDownIcon className="h-5 min-h-5 w-5 min-w-5" /> : <ArrowTrendingUpIcon className="h-5 min-h-5 w-5 min-w-5" />,
      }}
     />
     <GraphCard
-     className={"col-span-1 mt-0 lg:col-span-2 xl:col-span-1"}
+     className="col-span-1 mt-0 lg:col-span-2 xl:col-span-1"
      data={{
-      icon: <ChatBubbleLeftRightIcon className="min-h-8 min-w-8 h-8 w-8" />,
+      icon: <ChatBubbleLeftRightIcon className="h-8 min-h-8 w-8 min-w-8" />,
       title: "New Messages",
       description: "The amount of messages that were sent in your server in the last 7 days.",
       value: newMessages,
-      graph: newMessages === 0 ? <MinusIcon className="min-h-5 min-w-5 h-5 w-5" /> : newMessages < 0 ? <ArrowTrendingDownIcon className="min-h-5 min-w-5 h-5 w-5" /> : <ArrowTrendingUpIcon className="min-h-5 min-w-5 h-5 w-5" />,
+      graph: newMessages === 0 ? <MinusIcon className="h-5 min-h-5 w-5 min-w-5" /> : newMessages < 0 ? <ArrowTrendingDownIcon className="h-5 min-h-5 w-5 min-w-5" /> : <ArrowTrendingUpIcon className="h-5 min-h-5 w-5 min-w-5" />,
      }}
     />
    </div>

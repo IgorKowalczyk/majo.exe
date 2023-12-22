@@ -138,7 +138,7 @@ export function EnablePublicDashboard({ enabled, serverId, vanityURL }) {
        value={vanity}
        onChange={(e) => changeVanityText(e)}
        disabled={disabled}
-       placeholder={"Vanity URL"}
+       placeholder="Vanity URL"
        className={clsx(
         {
          "!border-red-400 focus:!border-red-400": vanityError,
@@ -161,13 +161,13 @@ export function EnablePublicDashboard({ enabled, serverId, vanityURL }) {
       </div>
      </div>
      <ButtonPrimary onClick={(e) => updateVanity(e)} disabled={disabled || vanityError || vanity.length === 0 || buttonText === "Updating..."} className="mx-auto font-normal md:mx-0">
-      {buttonText === "Updating..." ? <ArrowPathIcon className="min-h-5 min-w-5 mr-2 h-5 w-5 animate-spin" /> : <CheckIcon className="min-h-5 min-w-5 mr-2 h-5 w-5" />} {buttonText}
+      {buttonText === "Updating..." ? <ArrowPathIcon className="mr-2 h-5 min-h-5 w-5 min-w-5 animate-spin" /> : <CheckIcon className="mr-2 h-5 min-h-5 w-5 min-w-5" />} {buttonText}
      </ButtonPrimary>
     </div>
    </div>
    {vanityError && (
     <p className="flex items-center text-red-400">
-     <ExclamationCircleIcon className="min-h-5 min-w-5 mr-2 h-5 w-5" />
+     <ExclamationCircleIcon className="mr-2 h-5 min-h-5 w-5 min-w-5" />
      {vanityError}
     </p>
    )}

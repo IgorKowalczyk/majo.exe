@@ -16,13 +16,13 @@ export default function NotFound() {
     </div>
     <Header2 className="justify-center">Sorry, page not found!</Header2>
     <h2 className="text-center text-xl opacity-50">We're sorry we can't find the page you're looking for.</h2>
-    <div className="flex gap-2 justify-center mt-2 flex-wrap">
+    <div className="mt-2 flex flex-wrap justify-center gap-2">
      <ButtonPrimary href="/">
-      <ArrowLeftIcon className="min-h-5 min-w-5 mr-2 h-5 w-5" aria-hidden="true" role="img" />
+      <ArrowLeftIcon className="mr-2 h-5 min-h-5 w-5 min-w-5" aria-hidden="true" role="img" />
       Go back home
      </ButtonPrimary>
      <ButtonSecondary href="/discord">
-      <QuestionMarkCircleIcon className="min-h-5 min-w-5 mr-2 h-5 w-5" aria-hidden="true" role="img" /> Contact support
+      <QuestionMarkCircleIcon className="mr-2 h-5 min-h-5 w-5 min-w-5" aria-hidden="true" role="img" /> Contact support
      </ButtonSecondary>
     </div>
    </div>
