@@ -11,7 +11,7 @@ import { RolesSelect } from "@/components/client/shared/RolesSelect";
 import Switch from "@/components/client/shared/Switch";
 import { TimeSelect } from "@/components/client/shared/TimeSelect";
 import { Tooltip } from "@/components/client/shared/Tooltip";
-import { Header2 } from "@/components/Headers";
+import { Header2, Header3 } from "@/components/Headers";
 
 export function AntiInvite({ serverId, enabled, existingActions, existingExemptRoles, existingExemptChannels, allRoles, allChannels }) {
  const [isEnabled, setIsEnabled] = useState(enabled ?? false);
@@ -97,9 +97,9 @@ export function AntiInvite({ serverId, enabled, existingActions, existingExemptR
     })}
    >
     <Block className="mb-4 !py-3">
-     <h3 className="mb-1 flex items-center justify-start gap-2 text-left text-xl font-bold">
+     <Header3>
       <EyeSlashIcon className="h-6 min-h-6 w-6 min-w-6" /> Ignored:
-     </h3>
+     </Header3>
      <span className="mb-4 font-normal">What should I ignore?</span>
      <div className="flex w-fit flex-row flex-wrap items-center gap-2 text-center font-bold">
       <Tooltip content="Ignore certain roles from triggering the rule.">
@@ -135,9 +135,9 @@ export function AntiInvite({ serverId, enabled, existingActions, existingExemptR
     </Block>
 
     <Block className="mb-4 !py-3">
-     <h3 className="mb-1 flex items-center justify-start gap-2 text-left text-xl font-bold">
+     <Header3>
       <WrenchIcon className="h-6 min-h-6 w-6 min-w-6" /> Actions:
-     </h3>
+     </Header3>
      <span className="mb-4 font-normal">What should I do when a member triggers the rule?</span>
 
      <div className="my-2 flex flex-row flex-wrap gap-2">

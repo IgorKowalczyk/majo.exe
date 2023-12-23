@@ -3,7 +3,7 @@
 import { ArrowPathIcon, AtSymbolIcon, ChatBubbleBottomCenterTextIcon, ChatBubbleLeftEllipsisIcon, CheckIcon, ClockIcon, EyeSlashIcon, HashtagIcon, LinkIcon, NoSymbolIcon, TrashIcon, UserGroupIcon, UserPlusIcon, WrenchIcon } from "@heroicons/react/24/outline";
 import { Block } from "@/components/Block";
 import { ButtonPrimary } from "@/components/Buttons";
-import { Header1, Header2, Header5 } from "@/components/Headers";
+import { Header1, Header2, Header3, Header5 } from "@/components/Headers";
 import "tippy.js/dist/backdrop.css";
 import "tippy.js/animations/shift-away.css";
 import "tippy.js/dist/tippy.css";
@@ -36,9 +36,9 @@ export default async function ServerAutomod() {
 
     <div>
      <Block className="mb-4 !py-3">
-      <h3 className="mb-1 flex items-center justify-start gap-2 text-left text-xl font-bold">
+      <Header3>
        <EyeSlashIcon className="h-6 min-h-6 w-6 min-w-6" /> Ignored:
-      </h3>
+      </Header3>
       <span className="mb-4 font-normal">What should I ignore?</span>
 
       <div className="flex flex-row flex-wrap gap-2">
@@ -63,9 +63,9 @@ export default async function ServerAutomod() {
      </Block>
 
      <Block className="mb-4 !py-3">
-      <h3 className="mb-1 flex items-center justify-start gap-2 text-left text-xl font-bold">
+      <Header3>
        <WrenchIcon className="h-6 min-h-6 w-6 min-w-6" /> Actions:
-      </h3>
+      </Header3>
       <span className="mb-4 font-normal">What should I do when a member triggers the rule?</span>
 
       <div className="my-2 flex flex-row flex-wrap gap-2">
@@ -113,9 +113,9 @@ export default async function ServerAutomod() {
 
     <div>
      <Block className="mb-4 !py-3">
-      <h3 className="mb-1 flex items-center justify-start gap-2 text-left text-xl font-bold">
+      <Header3>
        <EyeSlashIcon className="h-6 min-h-6 w-6 min-w-6" /> Ignored:
-      </h3>
+      </Header3>
       <span className="mb-4 font-normal">What should I ignore?</span>
 
       <div className="flex flex-row flex-wrap gap-2">
@@ -140,9 +140,9 @@ export default async function ServerAutomod() {
      </Block>
 
      <Block className="mb-4 !py-3">
-      <h3 className="mb-1 flex items-center justify-start gap-2 text-left text-xl font-bold">
+      <Header3>
        <WrenchIcon className="h-6 min-h-6 w-6 min-w-6" /> Actions:
-      </h3>
+      </Header3>
       <span className="mb-4 font-normal">What should I do when a member triggers the rule?</span>
 
       <div className="my-2 flex flex-row flex-wrap gap-2">

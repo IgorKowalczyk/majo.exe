@@ -121,44 +121,42 @@ export default async function Settings({ params }) {
       >
        {category.commands.map((command) => (
         <div key={command.name} className="bg-background-navbar hide-scrollbar my-2 w-full overflow-scroll rounded-md border border-neutral-800 px-6 py-4">
-         <h3 className="hide-scrollbar overflow-scroll whitespace-nowrap text-center">
-          <div className="flex flex-row items-center justify-between">
-           <div
-            className={clsx(
-             {
-              "cursor-not-allowed opacity-70": guild.guildDisabledCommands.some((com) => com.commandName.toLowerCase() === command.name.toLowerCase()),
-             },
-             "flex flex-col items-start gap-2"
-            )}
-           >
-            <div className="flex items-center font-bold">
-             /{command.name}{" "}
-             {command.options &&
-              command.options.map((option) => (
-               <span
-                key={option.name}
-                className={clsx(
-                 {
-                  "!font-normal opacity-70": !option.required,
-                  "opacity-100": option.required,
-                 },
-                 "ml-2 [line-height:normal]"
-                )}
-               >
-                <Tooltip content={`${option.description} ${option.required ? "(required)" : "(optional)"}`}>
-                 <code className="cursor-pointer">
-                  {option.name}
-                  {option.required ? <span className="text-red-400">*</span> : ""}
-                 </code>
-                </Tooltip>
-               </span>
-              ))}
-            </div>
-            <p className="opacity-70">{command.description}</p>
+         <div className="flex flex-row items-center justify-between">
+          <div
+           className={clsx(
+            {
+             "cursor-not-allowed opacity-70": guild.guildDisabledCommands.some((com) => com.commandName.toLowerCase() === command.name.toLowerCase()),
+            },
+            "flex flex-col items-start gap-2"
+           )}
+          >
+           <div className="flex items-center font-bold">
+            /{command.name}{" "}
+            {command.options &&
+             command.options.map((option) => (
+              <span
+               key={option.name}
+               className={clsx(
+                {
+                 "!font-normal opacity-70": !option.required,
+                 "opacity-100": option.required,
+                },
+                "ml-2 [line-height:normal]"
+               )}
+              >
+               <Tooltip content={`${option.description} ${option.required ? "(required)" : "(optional)"}`}>
+                <code className="cursor-pointer">
+                 {option.name}
+                 {option.required ? <span className="text-red-400">*</span> : ""}
+                </code>
+               </Tooltip>
+              </span>
+             ))}
            </div>
-           <UpdateCommands serverId={serverDownload.id} commandName={command.name} commandEnabled={!guild.guildDisabledCommands.some((com) => com.commandName.toLowerCase() === command.name.toLowerCase())} />
+           <p className="opacity-70">{command.description}</p>
           </div>
-         </h3>
+          <UpdateCommands serverId={serverDownload.id} commandName={command.name} commandEnabled={!guild.guildDisabledCommands.some((com) => com.commandName.toLowerCase() === command.name.toLowerCase())} />
+         </div>
         </div>
        ))}
       </div>

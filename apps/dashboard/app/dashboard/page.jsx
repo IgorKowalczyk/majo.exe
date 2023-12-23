@@ -7,7 +7,7 @@ import { redirect } from "next/navigation";
 import { ButtonPrimary } from "@/components/Buttons";
 import { ButtonSecondary } from "@/components/Buttons";
 import Image from "@/components/client/shared/Image";
-import { Header1 } from "@/components/Headers";
+import { Header1, Header3 } from "@/components/Headers";
 
 export default async function Dashboard() {
  const session = await getSession();
@@ -44,7 +44,7 @@ export default async function Dashboard() {
        <div key={server.id}>
         <div className="hidden flex-row items-center justify-start gap-4 sm:flex">
          {server.icon ? <Image src={`https://cdn.discordapp.com/icons/${server.id}/${server.icon}.${server.icon.startsWith("a_") ? "gif" : "png"}`} alt={server.name} quality={95} width={64} height={64} className="h-16 min-h-16 w-16 min-w-16 rounded-full" /> : <div className="bg-button-secondary h-16 min-h-16 w-16 min-w-16 rounded-full" />}
-         <h3 className="text-center text-xl font-bold">{server.name}</h3>
+         <Header3 className="text-center">{server.name}</Header3>
          <>
           {server.bot ? (
            <ButtonPrimary href={`/dashboard/${server.id}`} className="ml-auto">
@@ -89,7 +89,7 @@ export default async function Dashboard() {
       ))
      ) : (
       <div className="flex flex-col items-center justify-center gap-4">
-       <h3 className="text-center text-xl font-bold">You don't have any servers!</h3>
+       <Header3 className="text-center">You don't have any servers!</Header3>
        <ButtonPrimary href="/api/invite">
         <PlusIcon className="mr-2 h-5 min-h-5 w-5 min-w-5" aria-hidden="true" role="img" /> Add bot
        </ButtonPrimary>

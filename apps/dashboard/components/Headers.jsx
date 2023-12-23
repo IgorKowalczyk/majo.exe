@@ -34,7 +34,7 @@ export function Header2({ children, className, ...props }) {
 
 export function Header3({ children, className, ...props }) {
  return (
-  <h3 className={twMerge("flex items-center gap-4 text-center text-xl font-bold", className)} {...props}>
+  <h3 className={twMerge("mb-1 flex items-center gap-2 text-center text-xl font-bold", className)} {...props}>
    {children}
   </h3>
  );

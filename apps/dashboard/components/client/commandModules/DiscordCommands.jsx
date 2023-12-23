@@ -3,6 +3,7 @@ import { ArrowPathIcon, CheckIcon, MagnifyingGlassIcon, XCircleIcon, XMarkIcon }
 import clsx from "clsx";
 import { useEffect, useState, useMemo } from "react";
 import { Tooltip } from "@/components/client/shared/Tooltip";
+import { Header3 } from "@/components/Headers";
 import { InputWithIcon } from "@/components/Input";
 import { InputSkeleton, TextSkeleton } from "@/components/Skeletons";
 
@@ -46,10 +47,10 @@ export function DiscordCommands({ commands, categories }) {
     </div>
 
     <div className="mt-8 flex flex-col items-center justify-center gap-2">
-     <h3 className="flex items-center text-center text-xl font-bold">
-      <ArrowPathIcon className="min-h-6 min-w-6 mr-2 h-6 w-6 animate-spin" aria-hidden="true" role="img" />
+     <Header3 className="text-center">
+      <ArrowPathIcon className="mr-2 h-6 min-h-6 w-6 min-w-6 animate-spin" aria-hidden="true" role="img" />
       Loading commands...
-     </h3>
+     </Header3>
      <p className="text-center text-white/50">This may take a few seconds.</p>
     </div>
    </>
@@ -58,7 +59,7 @@ export function DiscordCommands({ commands, categories }) {
 
  return (
   <>
-   <InputWithIcon placeholder="Search commands..." value={search} onChange={(e) => setSearch(e.target.value)} icon={<MagnifyingGlassIcon className="min-h-5 min-w-5 h-5 w-5 text-white/50" aria-hidden="true" role="img" />} />
+   <InputWithIcon placeholder="Search commands..." value={search} onChange={(e) => setSearch(e.target.value)} icon={<MagnifyingGlassIcon className="h-5 min-h-5 w-5 min-w-5 text-white/50" aria-hidden="true" role="img" />} />
    <div className="mt-8 flex flex-wrap gap-2">
     {categories.map((category) => (
      <div
@@ -78,17 +79,17 @@ export function DiscordCommands({ commands, categories }) {
        }
       }}
      >
-      {filteredCategories?.includes(category) ? <CheckIcon className="text-accent-primary min-h-5 min-w-5 h-5 w-5" aria-hidden="true" role="img" /> : <XMarkIcon className="min-h-5 min-w-5 h-5 w-5 text-red-400/50" aria-hidden="true" role="img" />}
+      {filteredCategories?.includes(category) ? <CheckIcon className="text-accent-primary h-5 min-h-5 w-5 min-w-5" aria-hidden="true" role="img" /> : <XMarkIcon className="h-5 min-h-5 w-5 min-w-5 text-red-400/50" aria-hidden="true" role="img" />}
       {category.name}
      </div>
     ))}
    </div>
    {filteredCommands.length === 0 ? (
     <div className="mt-8 flex flex-col items-center justify-center gap-2">
-     <h3 className="flex items-center text-center text-xl font-bold">
-      <XCircleIcon className="min-h-6 min-w-6 mr-2 h-6 w-6 text-red-400" aria-hidden="true" role="img" />
+     <Header3 className="text-center">
+      <XCircleIcon className="mr-2 h-6 min-h-6 w-6 min-w-6 text-red-400" aria-hidden="true" role="img" />
       No commands found.
-     </h3>
+     </Header3>
      <p className="text-center text-white/50">Try searching for something else or change the categories.</p>
     </div>
    ) : (
@@ -98,41 +99,39 @@ export function DiscordCommands({ commands, categories }) {
       .filter((category) => filteredCommands.some((command) => command.categoryName === category.name))
       .map((category) => (
        <div key={category.name} className="mt-8">
-        <h3 className="text-left text-xl font-bold">
+        <Header3>
          {category.name} <span className="text-accent-primary">({filteredCommands.filter((command) => command.categoryName === category.name).length})</span>
-        </h3>
+        </Header3>
         {filteredCommands
          .filter((command) => command.categoryName === category.name)
          .map((command) => (
           <div key={command.name} className="bg-background-navbar my-4 w-full rounded-md border border-neutral-800 px-6 py-4">
-           <h3 className="hide-scrollbar overflow-scroll whitespace-nowrap text-center">
-            <div className="flex flex-col items-start gap-2">
-             <div className="flex items-center font-bold">
-              /{command.name}{" "}
-              {command.options &&
-               command.options.map((option) => (
-                <span
-                 key={option.name}
-                 className={clsx(
-                  {
-                   "!font-normal opacity-70": !option.required,
-                   "opacity-100": option.required,
-                  },
-                  "ml-2 [line-height:normal]"
-                 )}
-                >
-                 <Tooltip content={`${option.description} ${option.required ? "(required)" : "(optional)"}`}>
-                  <code className="cursor-pointer">
-                   {option.name}
-                   {option.required ? <span className="text-red-400">*</span> : ""}
-                  </code>
-                 </Tooltip>
-                </span>
-               ))}
-             </div>
-             <p className="opacity-70">{command.description}</p>
+           <div className="flex flex-col items-start gap-2">
+            <div className="flex items-center">
+             <span className="font-bold">/{command.name} </span>
+             {command.options &&
+              command.options.map((option) => (
+               <span
+                key={option.name}
+                className={clsx(
+                 {
+                  "!font-normal opacity-70": !option.required,
+                  "opacity-100": option.required,
+                 },
+                 "ml-2 [line-height:normal]"
+                )}
+               >
+                <Tooltip content={`${option.description} ${option.required ? "(required)" : "(optional)"}`}>
+                 <code className="cursor-pointer">
+                  {option.name}
+                  {option.required ? <span className="text-red-400">*</span> : ""}
+                 </code>
+                </Tooltip>
+               </span>
+              ))}
             </div>
-           </h3>
+            <p className="opacity-70">{command.description}</p>
+           </div>
           </div>
          ))}
        </div>
