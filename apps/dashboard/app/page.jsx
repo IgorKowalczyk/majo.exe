@@ -11,7 +11,7 @@ import { ButtonSecondary } from "@/components/Buttons";
 import GlobeClient from "@/components/client/Globe";
 import { AddReaction, HomepageLevelUp } from "@/components/client/Interactions";
 import Image from "@/components/client/shared/Image";
-import { GradientHeader, Header1 } from "@/components/Headers";
+import { GradientHeader, Header1, Header2 } from "@/components/Headers";
 import { Typing } from "@/components/Loaders";
 import { LoginButton } from "@/components/LoginButton";
 
@@ -52,9 +52,9 @@ export default async function Main() {
       </span>
      </Link>
      <Header1 className="text-fill-transparent mb-0 justify-center bg-gradient-to-b	from-white to-neutral-400 box-decoration-clone bg-clip-text text-center !font-black !leading-snug xl:!text-5xl 2xl:!text-7xl">The only one Discord Bot</Header1>
-     <h2 className="max-w-[680px] text-center text-2xl text-white/70">
+     <Header2 className="mb-0 max-w-[680px] text-center font-normal text-white/70">
       <Balancer>Majo.exe will not only keep your server entertained but also assist you with moderation and many other things!</Balancer>
-     </h2>
+     </Header2>
      <div className="mt-2 flex flex-col gap-4 sm:flex-row">
       <LoginButton />
       <ButtonSecondary href="/api/invite">

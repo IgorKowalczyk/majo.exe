@@ -1,5 +1,5 @@
 import { RectangleStackIcon } from "@heroicons/react/24/outline";
-import { Header1 } from "@/components/Headers";
+import { Header1, Header2 } from "@/components/Headers";
 import { AvatarSkeleton, TextSkeleton, ButtonSkeleton } from "@/components/Skeletons";
 
 export default function Loading() {
@@ -10,9 +10,9 @@ export default function Loading() {
      <RectangleStackIcon className="h-10 min-h-10 w-10 min-w-10" aria-hidden="true" role="img" />
      Dashboard
     </Header1>
-    <h2 className="text-center text-xl text-white/50">
+    <Header2 className="text-xl font-normal text-white/50">
      You can only add the bot to servers you have the <code>Manage Server</code> permission in.
-    </h2>
+    </Header2>
     <div className="mt-4 flex flex-row flex-wrap justify-center gap-4 sm:flex-col">
      {[...Array(10)].map((_, i) => (
       <div key={i}>

@@ -7,7 +7,7 @@ import { redirect } from "next/navigation";
 import { ButtonPrimary } from "@/components/Buttons";
 import { ButtonSecondary } from "@/components/Buttons";
 import Image from "@/components/client/shared/Image";
-import { Header1, Header3 } from "@/components/Headers";
+import { Header1, Header2, Header3 } from "@/components/Headers";
 
 export default async function Dashboard() {
  const session = await getSession();
@@ -35,9 +35,9 @@ export default async function Dashboard() {
      <RectangleStackIcon className="h-10 min-h-10 w-10 min-w-10" aria-hidden="true" role="img" />
      Dashboard
     </Header1>
-    <h2 className="text-center text-xl text-white/50">
+    <Header2 className="text-xl font-normal text-white/50">
      You can only add the bot to servers you have the <code>Manage Server</code> permission in.
-    </h2>
+    </Header2>
     <div className="mt-4 flex flex-row flex-wrap justify-center gap-4 sm:flex-col">
      {servers && servers.length > 0 ? (
       servers.map((server) => (
