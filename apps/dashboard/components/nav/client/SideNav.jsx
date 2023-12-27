@@ -1,6 +1,6 @@
 "use client";
 
-import { ArrowLeftIcon, ArrowTrendingUpIcon, ChatBubbleBottomCenterTextIcon, Cog8ToothIcon, ExclamationTriangleIcon, ListBulletIcon, RectangleStackIcon, SparklesIcon, SquaresPlusIcon } from "@heroicons/react/24/outline";
+import { ArrowLeftIcon, ArrowTrendingUpIcon, ChatBubbleBottomCenterTextIcon, Cog8ToothIcon, ExclamationTriangleIcon, GiftIcon, ListBulletIcon, RectangleStackIcon, SparklesIcon, SquaresPlusIcon } from "@heroicons/react/24/outline";
 import clsx from "clsx";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -55,6 +55,10 @@ export function SideNav({ server }) {
      <SideNavLink href={`/dashboard/${server}/leaderboard`}>
       <SparklesIcon className="min-h-6 min-w-6 h-6 w-6" />
       Leaderboard
+     </SideNavLink>
+     <SideNavLink href={`/dashboard/${server}/giveaways`}>
+      <GiftIcon className="min-h-6 min-w-6 h-6 w-6" />
+      Giveaways
      </SideNavLink>
     </div>
 

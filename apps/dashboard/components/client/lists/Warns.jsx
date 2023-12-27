@@ -1,6 +1,6 @@
 "use client";
 
-import { ArrowPathIcon, CheckIcon, LinkIcon, TrashIcon } from "@heroicons/react/24/outline";
+import { ArrowPathIcon, CheckIcon, TrashIcon, UserIcon } from "@heroicons/react/24/outline";
 import { formatDuration } from "@majoexe/util/functions/util";
 import { useRouter } from "next/navigation";
 import { useMemo, useState } from "react";
@@ -50,8 +50,8 @@ export function Warns({ data, showControls = true, showSearch = true }) {
     accessor: "link",
     Cell: ({ value }) => (
      <ButtonSecondary className="w-fit" href={`user/${value}#warns`}>
-      <LinkIcon className="min-h-5 min-w-5 -ml-1 mr-2 h-5 w-5" />
-      View
+      <UserIcon className="min-h-5 min-w-5 -ml-1 mr-2 h-5 w-5" />
+      View profile
      </ButtonSecondary>
     ),
    },
