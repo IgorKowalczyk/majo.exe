@@ -20,6 +20,16 @@ export const dashboardRedirects = [
   permanent: true,
  },
  {
+  source: "/support",
+  destination: "/discord",
+  permanent: true,
+ },
+ {
+  source: "/contact",
+  destination: "/discord",
+  permanent: true,
+ },
+ {
   source: "/server",
   destination: "/discord",
   permanent: true,

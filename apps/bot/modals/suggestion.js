@@ -66,12 +66,7 @@ export default {
    data: {
     message: suggestion,
     userId: interaction.member.user.id,
-    guild: {
-     connectOrCreate: {
-      where: { guildId: interaction.guild.id },
-      create: { guildId: interaction.guild.id },
-     },
-    },
+    guildId: interaction.guild.id,
    },
   });
 
