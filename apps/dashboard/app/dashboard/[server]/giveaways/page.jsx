@@ -94,7 +94,15 @@ export default async function ServerGiveaways({ params }) {
     <GiftIcon className="h-9 min-h-9 w-9 min-w-9" />
     Giveaways
    </Header1>
-   <Block className="mt-4 flex w-full overflow-auto">{data.length > 0 ? <Giveaways data={data} /> : <span className="opacity-50">No giveaways found.</span>}</Block>
+   <Block className="mt-4 flex w-full overflow-auto">
+    {data.length > 0 ? (
+     <Giveaways data={data} />
+    ) : (
+     <span className="opacity-50 leading-none">
+      No giveaways found. You can create one by using <code>/giveaway</code> command in chat.
+     </span>
+    )}
+   </Block>
   </>
  );
 }
