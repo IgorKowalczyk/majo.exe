@@ -60,9 +60,9 @@ export function Giveaways({ data = [] }) {
    {
     Header: "Started",
     accessor: "startedAt",
-    Cell: ({ value }) => (
-     <Tooltip content={value}>
-      <span className="cursor-help">{formatDuration(Date.now() - new Date(value).getTime())} ago</span>
+    Cell: ({ row }) => (
+     <Tooltip content={formatDate(row.original.time.startedAt)}>
+      <span className="cursor-help">{formatDuration(Date.now() - new Date(row.original.time.startedAt))} ago</span>
      </Tooltip>
     ),
    },

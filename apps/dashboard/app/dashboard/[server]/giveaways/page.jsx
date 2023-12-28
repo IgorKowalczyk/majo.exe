@@ -74,10 +74,9 @@ export default async function ServerGiveaways({ params }) {
     winners: giveaway.data.winnerCount,
     time: {
      startedAt: new Date(giveaway.data.startAt),
-     ended: giveaway.data.ended,
+     ended: new Date(giveaway.data.endAt) < new Date() || giveaway.data.ended,
      endedAt: new Date(giveaway.data.endAt),
     },
-    startedAt: new Date(giveaway.data.startAt).toString(),
     startedBy: startedBy || {
      global_name: "Unknown",
      discordId: hostedBy,
