@@ -9,6 +9,11 @@ import { Block } from "@/components/Block";
 import { ChangeWelcomeMessages, ChangeLeaveMessages } from "@/components/client/settings/ChangeCustomMessages";
 import { Header1 } from "@/components/Headers";
 
+export const metadata = {
+ title: "Custom Messages",
+ description: "Customize the messages sent by the bot.",
+};
+
 export default async function Settings({ params }) {
  const session = await getSession();
  if (!session || !session.access_token) redirect("/auth/login");
