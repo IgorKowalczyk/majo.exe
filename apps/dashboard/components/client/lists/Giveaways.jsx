@@ -29,14 +29,14 @@ export function Giveaways({ data = [] }) {
      <>
       {value.ended ? (
        <Tooltip content={`Ended ${formatDate(value.endedAt)} (${formatDuration(new Date(value.endedAt) - new Date(value.startedAt))})`}>
-        <div className="flex items-center cursor-help space-x-2">
+        <div className="flex cursor-help items-center space-x-2">
          <ClockIcon className="h-4 w-4 text-red-400" />
          <span className="text-red-400">Ended</span>
         </div>
        </Tooltip>
       ) : (
        <Tooltip content={`Started ${formatDate(value.startedAt)} (${formatDuration(Date.now() - new Date(value.startedAt))} ago)`}>
-        <div className="flex items-center cursor-help space-x-2">
+        <div className="flex cursor-help items-center space-x-2">
          <ClockIcon className="h-4 w-4 text-yellow-500" />
          <span className="text-yellow-500">Ends in {formatDuration(new Date(value.endedAt) - Date.now())}</span>
         </div>
@@ -50,9 +50,9 @@ export function Giveaways({ data = [] }) {
     accessor: "startedBy",
     Cell: ({ value }) => (
      <Link className="flex items-center space-x-4" href={`user/${value?.discordId}`} passHref>
-      <div className="relative">{value?.avatar && <Image src={value?.avatar} alt={`${value?.name} avatar`} quality={95} width={32} height={32} className="min-h-12 min-w-12 h-12 w-12 rounded-full" />}</div>
+      <div className="relative">{value?.avatar && <Image src={value?.avatar} alt={`${value?.name} avatar`} quality={95} width={32} height={32} className="h-12 min-h-12 w-12 min-w-12 rounded-full" />}</div>
       <Tooltip content={`Discord ID: ${value?.discordId || "Unknown"}`}>
-       <span className="text-left cursor-help font-bold">{value?.global_name || value?.name}</span>
+       <span className="cursor-help text-left font-bold">{value?.global_name || value?.name}</span>
       </Tooltip>
      </Link>
     ),
@@ -72,7 +72,7 @@ export function Giveaways({ data = [] }) {
     Cell: () => (
      <Tooltip content="Editing giveaways is not yet supported">
       <ButtonSecondary className="!w-fit" disabled>
-       <PencilIcon className="min-h-5 min-w-5 -ml-1 mr-2 h-5 w-5" />
+       <PencilIcon className="-ml-1 mr-2 h-5 min-h-5 w-5 min-w-5" />
        Edit
       </ButtonSecondary>
      </Tooltip>

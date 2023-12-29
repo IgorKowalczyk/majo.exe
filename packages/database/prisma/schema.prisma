@@ -280,6 +280,8 @@ model GuildWelcomeMessage {
  channelId   String   @map(name: "channel_id")
  title       String   @default("🎉 Welcome to the server {user}!")
  description String   @default("> Welcome to **{guild}** We hope you enjoy your stay here!")
+ embedColor  String   @default("#5865F2") @map(name: "embed_color")
+ enabled     Boolean  @default(false)
  createdAt   DateTime @default(now()) @map(name: "created_at")
  guild       Guild    @relation(fields: [guildId], references: [guildId], onDelete: Cascade)
 
@@ -293,6 +295,8 @@ model GuildLeaveMessage {
  channelId   String   @map(name: "channel_id")
  title       String   @default("👋 Goodbye {user}!")
  description String   @default("> We're sorry to see you go!")
+ embedColor  String   @default("#5865F2") @map(name: "embed_color")
+ enabled     Boolean  @default(false)
  createdAt   DateTime @default(now()) @map(name: "created_at")
  guild       Guild    @relation(fields: [guildId], references: [guildId], onDelete: Cascade)
 

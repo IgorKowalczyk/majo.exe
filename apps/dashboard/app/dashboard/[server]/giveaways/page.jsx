@@ -97,7 +97,7 @@ export default async function ServerGiveaways({ params }) {
     {data.length > 0 ? (
      <Giveaways data={data} />
     ) : (
-     <span className="opacity-50 leading-none">
+     <span className="leading-none opacity-50">
       No giveaways found. You can create one by using <code>/giveaway</code> command in chat.
      </span>
     )}

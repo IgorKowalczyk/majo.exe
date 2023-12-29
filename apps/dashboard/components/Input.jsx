@@ -1,7 +1,7 @@
 import clsx from "clsx";
 
 export function Input({ placeholder, type, name, value, onChange, className }) {
- return <input type={type} name={name} value={value} onChange={onChange} className={clsx("focus:!border-accent-primary w-full rounded-md border border-neutral-800 bg-transparent px-3 py-2 shadow-sm outline-none !ring-0 duration-200", className)} placeholder={placeholder} />;
+ return <input type={type} name={name} value={value} onChange={onChange} className={clsx("focus:!border-accent-primary disabled:opacity-77 w-full rounded-md border border-neutral-800 bg-transparent px-3 py-2 shadow-sm outline-none !ring-0 duration-200 disabled:pointer-events-none disabled:cursor-not-allowed", className)} placeholder={placeholder} />;
 }
 
 export function Textarea({ placeholder, name, value, onChange, className }) {

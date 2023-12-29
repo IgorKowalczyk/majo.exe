@@ -19,7 +19,7 @@ export async function guildMemberAdd(client, member) {
   },
  });
 
- if (guild.guildWelcomeMessage) {
+ if (guild.guildWelcomeMessage && guild.guildWelcomeMessage.enabled) {
   try {
    const welcomeChannel = member.guild.channels.cache.get(guild.guildWelcomeMessage.channelId);
 
@@ -56,7 +56,7 @@ export async function guildMemberAdd(client, member) {
    const embed = new EmbedBuilder() // prettier
     .setTitle(shortenText(embedTitle, 250))
     .setDescription(shortenText(embedDescription, 2040))
-    .setColor("#10B981")
+    .setColor(guild.guildWelcomeMessage.embedColor || client.config.defaultColor)
     .setTimestamp()
     .setImage("attachment://welcome.png");
 

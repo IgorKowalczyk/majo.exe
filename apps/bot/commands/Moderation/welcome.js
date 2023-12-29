@@ -78,12 +78,14 @@ export default {
       channelId: channel.id,
       title: shortenText(title, 250),
       description: shortenText(description, 2040),
+      enabled: true,
      },
      create: {
       guildId: interaction.guild.id,
       channelId: channel.id,
       title: shortenText(title, 250),
       description: shortenText(description, 2040),
+      enabled: true,
      },
     });
 
@@ -114,9 +116,12 @@ export default {
 
     await interaction.followUp({ embeds: [embed] });
    } else if (command === "disable") {
-    await prismaClient.guildWelcomeMessage.delete({
+    await prismaClient.guildWelcomeMessage.update({
      where: {
       guildId: interaction.guild.id,
+     },
+     data: {
+      enabled: false,
      },
     });
 
@@ -144,7 +149,7 @@ export default {
      },
     });
 
-    if (!guild?.guildWelcomeMessage) {
+    if (!guild?.guildWelcomeMessage || !guild.guildWelcomeMessage.enabled) {
      const embed = new EmbedBuilder() // prettier
       .setTitle("👋 Welcome messages are disabled")
       .setDescription("> Welcome messages are disabled, you can enable them by using `/welcome enable`")

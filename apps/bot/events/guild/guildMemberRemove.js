@@ -19,7 +19,7 @@ export async function guildMemberRemove(client, member) {
   },
  });
 
- if (guild.guildLeaveMessage) {
+ if (guild.guildLeaveMessage && guild.guildLeaveMessage.enabled) {
   try {
    const leaveChannel = member.guild.channels.cache.get(guild.guildLeaveMessage.channelId);
 
@@ -56,7 +56,7 @@ export async function guildMemberRemove(client, member) {
    const embed = new EmbedBuilder() // prettier
     .setTitle(shortenText(embedTitle, 250))
     .setDescription(shortenText(embedDescription, 2040))
-    .setColor("#10B981")
+    .setColor(guild.guildLeaveMessage.embedColor || client.config.defaultColor)
     .setTimestamp()
     .setImage("attachment://leave.png");
 
