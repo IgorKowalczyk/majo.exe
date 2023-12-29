@@ -27,7 +27,7 @@
     "@tippyjs/react": "4.2.6",
     "@vercel/analytics": "1.1.1",
     "@vercel/speed-insights": "1.0.2",
-    "clsx": "2.0.0",
+    "clsx": "2.1.0",
     "cobe": "0.6.3",
     "discord-api-types": "0.37.67",
     "geist": "1.2.0",
