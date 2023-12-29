@@ -1,5 +1,5 @@
 import { load } from "cheerio";
-import { ApplicationCommandType, EmbedBuilder, ApplicationCommandOptionType } from "discord.js";
+import { ApplicationCommandType, EmbedBuilder, ActionRowBuilder, ButtonBuilder, ApplicationCommandOptionType, ButtonStyle } from "discord.js";
 
 export default {
  name: "comic",
@@ -64,7 +64,15 @@ export default {
       text: `Requested by ${interaction.member.user.globalName || interaction.member.user.username}`,
       iconURL: interaction.member.user.displayAvatarURL({ size: 256 }),
      });
-    return interaction.followUp({ embeds: [embed] });
+
+    const actionRow = new ActionRowBuilder().addComponents([
+     new ButtonBuilder() // prettier
+      .setStyle(ButtonStyle.Link)
+      .setLabel("View on xkcd")
+      .setURL(`https://xkcd.com/${json.num}`),
+    ]);
+
+    return interaction.followUp({ embeds: [embed], components: [actionRow] });
    }
 
    if (command === "phd") {
@@ -81,7 +89,7 @@ export default {
     const images = [];
 
     // eslint-disable-next-line quotes
-    $('img[name="comic2"]').each((index, element) => {
+    $('img[name="comic2"]').each((_, element) => {
      const imageUrl = $(element).attr("src");
      if (imageUrl) images.push(imageUrl);
     });
@@ -99,7 +107,15 @@ export default {
       text: `Requested by ${interaction.member.user.globalName || interaction.member.user.username}`,
       iconURL: interaction.member.user.displayAvatarURL({ size: 256 }),
      });
-    return interaction.followUp({ embeds: [embed] });
+
+    const actionRow = new ActionRowBuilder().addComponents([
+     new ButtonBuilder() // prettier
+      .setStyle(ButtonStyle.Link)
+      .setLabel("View on PHD Comics")
+      .setURL(`https://phdcomics.com${issue ? "/comics/archive.php?comicid=" + issue : ""}`),
+    ]);
+
+    return interaction.followUp({ embeds: [embed], components: [actionRow] });
    }
 
    if (command === "garfield") {
@@ -131,7 +147,15 @@ export default {
       text: `Requested by ${interaction.member.user.globalName || interaction.member.user.username}`,
       iconURL: interaction.member.user.displayAvatarURL({ size: 256 }),
      });
-    return interaction.followUp({ embeds: [embed] });
+
+    const actionRow = new ActionRowBuilder().addComponents([
+     new ButtonBuilder() // prettier
+      .setStyle(ButtonStyle.Link)
+      .setLabel("View on GoComics")
+      .setURL(`https://www.gocomics.com/garfield/${year}/${month}/${day}`),
+    ]);
+
+    return interaction.followUp({ embeds: [embed], components: [actionRow] });
    }
   } catch (err) {
    client.errorMessages.internalError(interaction, err);

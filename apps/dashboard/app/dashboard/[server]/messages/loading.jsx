@@ -33,7 +33,7 @@ export default async function ServerAutomod() {
       <CheckIcon className="h-6 min-h-6 w-6 min-w-6" />
       Enabled:
      </span>
-     <InputSkeleton className="!w-16 !h-[30px]" />
+     <InputSkeleton className="!h-[30px] !w-16" />
     </div>
     <ButtonPrimary className="mt-4" disabled>
      <CheckIcon className="h-6 min-h-6 w-6 min-w-6" />
@@ -55,7 +55,7 @@ export default async function ServerAutomod() {
       <CheckIcon className="h-6 min-h-6 w-6 min-w-6" />
       Enabled:
      </span>
-     <InputSkeleton className="!w-16 !h-[30px]" />
+     <InputSkeleton className="!h-[30px] !w-16" />
     </div>
     <ButtonPrimary className="mt-4" disabled>
      <CheckIcon className="h-6 min-h-6 w-6 min-w-6" />

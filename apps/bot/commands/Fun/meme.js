@@ -1,4 +1,4 @@
-import { ApplicationCommandType, EmbedBuilder } from "discord.js";
+import { ActionRowBuilder, ApplicationCommandType, ButtonBuilder, ButtonStyle, EmbedBuilder } from "discord.js";
 import fetch from "node-fetch";
 
 export default {
@@ -27,7 +27,15 @@ export default {
      text: `Requested by ${interaction.member.user.globalName || interaction.member.user.username}`,
      iconURL: interaction.member.user.displayAvatarURL({ size: 256 }),
     });
-   return interaction.followUp({ embeds: [embed] });
+
+   const actionRow = new ActionRowBuilder().addComponents(
+    new ButtonBuilder() // prettier
+     .setStyle(ButtonStyle.Link)
+     .setLabel("View on Reddit")
+     .setURL(`https://reddit.com${json[0].data.children[0].data.permalink}`)
+   );
+
+   return interaction.followUp({ embeds: [embed], components: [actionRow] });
   } catch (err) {
    client.errorMessages.internalError(interaction, err);
   }

@@ -1,4 +1,4 @@
-import { ApplicationCommandType, EmbedBuilder } from "discord.js";
+import { ActionRowBuilder, ApplicationCommandType, ButtonBuilder, ButtonStyle, EmbedBuilder } from "discord.js";
 
 export default {
  name: "cat",
@@ -25,7 +25,14 @@ export default {
      text: `Requested by ${interaction.member.user.globalName || interaction.member.user.username}`,
      iconURL: interaction.member.user.displayAvatarURL({ size: 256 }),
     });
-   return interaction.followUp({ embeds: [embed] });
+
+   const actionRow = new ActionRowBuilder().addComponents(
+    new ButtonBuilder() // prettier
+     .setStyle(ButtonStyle.Link)
+     .setLabel("View image")
+     .setURL(json[0].url)
+   );
+   return interaction.followUp({ embeds: [embed], components: [actionRow] });
   } catch (err) {
    client.errorMessages.internalError(interaction, err);
   }

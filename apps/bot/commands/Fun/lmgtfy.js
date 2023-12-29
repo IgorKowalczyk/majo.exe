@@ -30,12 +30,13 @@ export default {
      iconURL: interaction.member.user.displayAvatarURL({ size: 256 }),
     });
 
-   const button = new ButtonBuilder() // prettier
-    .setLabel("Search")
-    .setEmoji("🔍")
-    .setStyle(ButtonStyle.Link)
-    .setURL(`https://letmegooglethat.com/?q=${encodeURIComponent(query)}`);
-   const row = new ActionRowBuilder().addComponents(button);
+   const row = new ActionRowBuilder().addComponents(
+    new ButtonBuilder() // prettier
+     .setLabel("Search")
+     .setEmoji("🔍")
+     .setStyle(ButtonStyle.Link)
+     .setURL(`https://letmegooglethat.com/?q=${encodeURIComponent(query)}`)
+   );
 
    return interaction.followUp({ embeds: [embed], components: [row] });
   } catch (err) {

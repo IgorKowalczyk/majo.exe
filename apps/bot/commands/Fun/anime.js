@@ -1,5 +1,5 @@
 /* eslint-disable complexity */
-import { ApplicationCommandType, ApplicationCommandOptionType, EmbedBuilder, codeBlock } from "discord.js";
+import { ApplicationCommandType, ApplicationCommandOptionType, EmbedBuilder, codeBlock, ActionRowBuilder, ButtonBuilder, ButtonStyle } from "discord.js";
 
 export default {
  name: "anime",
@@ -114,7 +114,15 @@ export default {
 
    data.posterImage?.original ? embed.setThumbnail(data.posterImage.original) : null;
 
-   return interaction.followUp({ embeds: [embed] });
+   const actionRow = new ActionRowBuilder() // prettier
+    .addComponents([
+     new ButtonBuilder() // prettier
+      .setStyle(ButtonStyle.Link)
+      .setLabel("View on Kitsu")
+      .setURL(`https://kitsu.io/anime/${data.slug}`),
+    ]);
+
+   return interaction.followUp({ embeds: [embed], components: [actionRow] });
   } catch (err) {
    client.errorMessages.internalError(interaction, err);
   }
