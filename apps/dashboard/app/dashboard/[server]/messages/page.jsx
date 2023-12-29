@@ -6,8 +6,7 @@ import { ChannelType } from "discord-api-types/v10";
 import { getSession } from "lib/session";
 import { redirect } from "next/navigation";
 import { Block } from "@/components/Block";
-import { ChangeLeaveMessages } from "@/components/client/settings/ChangeLeaveMessages";
-import { ChangeWelcomeMessages } from "@/components/client/settings/ChangeWelcomeMessages";
+import { ChangeWelcomeMessages, ChangeLeaveMessages } from "@/components/client/settings/ChangeCustomMessages";
 import { Header1 } from "@/components/Headers";
 
 export default async function Settings({ params }) {
@@ -65,12 +64,12 @@ export default async function Settings({ params }) {
     Custom messages
    </Header1>
 
-   <Block className="mt-4">
-    <ChangeWelcomeMessages serverId={serverDownload.id} enabled={guild.guildWelcomeMessage ? true : false} title={guild.guildWelcomeMessage?.title || "🎉 Welcome to the server {user}!"} description={guild.guildWelcomeMessage?.description || "> Welcome to **{guild}** We hope you enjoy your stay here!"} existingChannel={guild.guildWelcomeMessage?.channel} allChannels={allChannels} />
+   <Block className="mt-4 !overflow-x-visible">
+    <ChangeWelcomeMessages serverId={serverDownload.id} enabled={guild.guildWelcomeMessage ? true : false} title={guild.guildWelcomeMessage?.title || "🎉 Welcome to the server {user}!"} description={guild.guildWelcomeMessage?.description || "> Welcome to **{guild}** We hope you enjoy your stay here!"} existingChannel={guild.guildWelcomeMessage?.channelId} allChannels={allChannels} />
    </Block>
 
-   <Block className="mt-4">
-    <ChangeLeaveMessages serverId={serverDownload.id} enabled={guild.guildLeaveMessage ? true : false} title={guild.guildLeaveMessage?.title || "👋 Goodbye {user}!"} description={guild.guildLeaveMessage?.description || "> We're sorry to see you go!"} existingChannel={guild.guildLeaveMessage?.channel} allChannels={allChannels} />
+   <Block className="mt-4 !overflow-x-visible">
+    <ChangeLeaveMessages serverId={serverDownload.id} enabled={guild.guildLeaveMessage ? true : false} title={guild.guildLeaveMessage?.title || "👋 Goodbye {user}!"} description={guild.guildLeaveMessage?.description || "> We're sorry to see you go!"} existingChannel={guild.guildLeaveMessage?.channelId} allChannels={allChannels} />
    </Block>
   </>
  );
