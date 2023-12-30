@@ -1,6 +1,5 @@
 "use client";
 
-import { InformationCircleIcon, ArrowPathIcon, UserMinusIcon, ExclamationTriangleIcon, CheckIcon, UserPlusIcon, HashtagIcon, Bars3CenterLeftIcon, ChatBubbleLeftIcon } from "@heroicons/react/24/outline";
 import clsx from "clsx";
 import { useState } from "react";
 import { toast } from "sonner";
@@ -10,6 +9,7 @@ import { ChannelsSelect } from "@/components/client/shared/ChannelsSelect";
 import Switch from "@/components/client/shared/Switch";
 import { Tooltip } from "@/components/client/shared/Tooltip";
 import { Header2 } from "@/components/Headers";
+import { Icons, iconVariants } from "@/components/Icons";
 import { Input, Textarea } from "@/components/Input";
 
 export function ChangeWelcomeMessages({ serverId, enabled, title, description, existingChannel, allChannels }) {
@@ -71,7 +71,7 @@ export function ChangeWelcomeMessages({ serverId, enabled, title, description, e
  return (
   <>
    <Header2>
-    <UserPlusIcon className="h-6 min-h-6 w-6 min-w-6" />
+    <Icons.userAdd className={iconVariants({ variant: "large", className: "stroke-2" })} />
     Welcome Messages
    </Header2>
    <p className="mb-4 text-left">
@@ -86,7 +86,7 @@ export function ChangeWelcomeMessages({ serverId, enabled, title, description, e
     <div className="my-2 flex flex-row flex-wrap gap-2">
      <Tooltip content="Enable or disable welcome messages.">
       <span className="flex w-fit cursor-help items-center gap-2 font-bold">
-       <CheckIcon className="h-6 min-h-6 w-6 min-w-6" />
+       <Icons.check className={iconVariants({ variant: "normal" })} />
        Enabled:
       </span>
      </Tooltip>
@@ -106,7 +106,7 @@ export function ChangeWelcomeMessages({ serverId, enabled, title, description, e
       <div className="mb-2 flex w-fit flex-col flex-wrap gap-2">
        <Tooltip content="Where should the welcome message be sent?">
         <span className="flex w-fit cursor-help items-center gap-2 font-bold">
-         <HashtagIcon className="h-6 min-h-6 w-6 min-w-6" />
+         <Icons.hash className={iconVariants({ variant: "normal" })} />
          Channel:
         </span>
        </Tooltip>
@@ -121,7 +121,7 @@ export function ChangeWelcomeMessages({ serverId, enabled, title, description, e
       {!messageChannel && (
        <div className="my-4 flex flex-row flex-wrap items-start whitespace-nowrap rounded-md border border-orange-400 bg-orange-400/10 p-4">
         <span className="mr-1 flex flex-row items-center whitespace-nowrap font-bold leading-none">
-         <ExclamationTriangleIcon className="mr-1 h-5 min-h-5 w-5 min-w-5 stroke-orange-400" />
+         <Icons.warning className={iconVariants({ variant: "normal", className: "mr-1 stroke-orange-400" })} />
          Warning:
         </span>
         <span className="whitespace-normal">You must select a channel to send welcome messages to.</span>
@@ -131,7 +131,7 @@ export function ChangeWelcomeMessages({ serverId, enabled, title, description, e
       <div className="my-2 flex flex-col flex-wrap gap-2">
        <Tooltip content="The title of the welcome message.">
         <span className="flex w-fit cursor-help items-center gap-2 font-bold">
-         <ChatBubbleLeftIcon className="h-6 min-h-6 w-6 min-w-6" />
+         <Icons.type className={iconVariants({ variant: "normal" })} />
          Title:
         </span>
        </Tooltip>
@@ -141,7 +141,7 @@ export function ChangeWelcomeMessages({ serverId, enabled, title, description, e
       <div className="my-2 flex flex-col flex-wrap gap-2">
        <Tooltip content="The description of the welcome message.">
         <span className="flex w-fit cursor-help items-center gap-2 font-bold">
-         <Bars3CenterLeftIcon className="h-6 min-h-6 w-6 min-w-6" />
+         <Icons.text className={iconVariants({ variant: "normal" })} />
          Description:
         </span>
        </Tooltip>
@@ -150,7 +150,7 @@ export function ChangeWelcomeMessages({ serverId, enabled, title, description, e
 
       <div className="border-accent-primary bg-accent-primary/10 my-4 flex flex-row flex-wrap items-start whitespace-nowrap rounded-md border p-4">
        <span className="mr-1  flex flex-row items-center whitespace-nowrap font-bold leading-none">
-        <InformationCircleIcon className="stroke-accent-primary mr-1 h-5 min-h-5 w-5 min-w-5" />
+        <Icons.info className={iconVariants({ variant: "normal", className: "stroke-accent-primary mr-1" })} />
         Note:
        </span>
        <span className="whitespace-normal leading-none">
@@ -162,12 +162,12 @@ export function ChangeWelcomeMessages({ serverId, enabled, title, description, e
     <ButtonPrimary className="mt-4" onClick={() => save(false)} disabled={!messageChannel || loading}>
      {loading ? (
       <>
-       <ArrowPathIcon className="-ml-1 mr-3 h-5 w-5 animate-spin text-white" aria-hidden="true" />
+       <Icons.refresh className={iconVariants({ variant: "button", className: "animate-spin" })} />
        Saving...
       </>
      ) : (
       <>
-       <CheckIcon className="-ml-1 mr-3 h-5 w-5 text-white" aria-hidden="true" />
+       <Icons.check className={iconVariants({ variant: "button" })} />
        Save
       </>
      )}
@@ -236,7 +236,7 @@ export function ChangeLeaveMessages({ serverId, enabled, title, description, exi
  return (
   <>
    <Header2>
-    <UserMinusIcon className="h-6 min-h-6 w-6 min-w-6" />
+    <Icons.userMinus className={iconVariants({ variant: "large", className: "stroke-2" })} />
     Leave Messages
    </Header2>
    <p className="mb-4 text-left">
@@ -251,7 +251,7 @@ export function ChangeLeaveMessages({ serverId, enabled, title, description, exi
     <div className="my-2 flex flex-row flex-wrap gap-2">
      <Tooltip content="Enable or disable leave messages.">
       <span className="flex w-fit cursor-help items-center gap-2 font-bold">
-       <CheckIcon className="h-6 min-h-6 w-6 min-w-6" />
+       <Icons.check className={iconVariants({ variant: "normal" })} />
        Enabled:
       </span>
      </Tooltip>
@@ -271,7 +271,7 @@ export function ChangeLeaveMessages({ serverId, enabled, title, description, exi
       <div className="mb-2 flex w-fit flex-col flex-wrap gap-2">
        <Tooltip content="Where should the leave message be sent?">
         <span className="flex w-fit cursor-help items-center gap-2 font-bold">
-         <HashtagIcon className="h-6 min-h-6 w-6 min-w-6" />
+         <Icons.hash className={iconVariants({ variant: "normal" })} />
          Channel:
         </span>
        </Tooltip>
@@ -286,7 +286,7 @@ export function ChangeLeaveMessages({ serverId, enabled, title, description, exi
       {!messageChannel && (
        <div className="my-4 flex flex-row flex-wrap items-start whitespace-nowrap rounded-md border border-orange-400 bg-orange-400/10 p-4">
         <span className="mr-1 flex flex-row items-center whitespace-nowrap font-bold leading-none">
-         <ExclamationTriangleIcon className="mr-1 h-5 min-h-5 w-5 min-w-5 stroke-orange-400" />
+         <Icons.warning className={iconVariants({ variant: "normal", className: "mr-1 stroke-orange-400" })} />
          Warning:
         </span>
         <span className="whitespace-normal">You must select a channel to send leave messages to.</span>
@@ -296,7 +296,7 @@ export function ChangeLeaveMessages({ serverId, enabled, title, description, exi
       <div className="my-2 flex flex-col flex-wrap gap-2">
        <Tooltip content="The title of the leave message.">
         <span className="flex w-fit cursor-help items-center gap-2 font-bold">
-         <ChatBubbleLeftIcon className="h-6 min-h-6 w-6 min-w-6" />
+         <Icons.type className={iconVariants({ variant: "normal" })} />
          Title:
         </span>
        </Tooltip>
@@ -306,7 +306,7 @@ export function ChangeLeaveMessages({ serverId, enabled, title, description, exi
       <div className="my-2 flex flex-col flex-wrap gap-2">
        <Tooltip content="The description of the leave message.">
         <span className="flex w-fit cursor-help items-center gap-2 font-bold">
-         <Bars3CenterLeftIcon className="h-6 min-h-6 w-6 min-w-6" />
+         <Icons.text className={iconVariants({ variant: "normal" })} />
          Description:
         </span>
        </Tooltip>
@@ -315,7 +315,7 @@ export function ChangeLeaveMessages({ serverId, enabled, title, description, exi
 
       <div className="border-accent-primary bg-accent-primary/10 my-4 flex flex-row flex-wrap items-start whitespace-nowrap rounded-md border p-4">
        <span className="mr-1  flex flex-row items-center whitespace-nowrap font-bold leading-none">
-        <InformationCircleIcon className="stroke-accent-primary mr-1 h-5 min-h-5 w-5 min-w-5" />
+        <Icons.info className={iconVariants({ variant: "normal", className: "stroke-accent-primary mr-1" })} />
         Note:
        </span>
        <span className="whitespace-normal leading-none">
@@ -327,12 +327,12 @@ export function ChangeLeaveMessages({ serverId, enabled, title, description, exi
     <ButtonPrimary className="mt-4" onClick={() => save(false)} disabled={!messageChannel || loading}>
      {loading ? (
       <>
-       <ArrowPathIcon className="-ml-1 mr-3 h-5 w-5 animate-spin text-white" aria-hidden="true" />
+       <Icons.refresh className={iconVariants({ variant: "button", className: "animate-spin" })} />
        Saving...
       </>
      ) : (
       <>
-       <CheckIcon className="-ml-1 mr-3 h-5 w-5 text-white" aria-hidden="true" />
+       <Icons.check className={iconVariants({ variant: "button" })} />
        Save
       </>
      )}

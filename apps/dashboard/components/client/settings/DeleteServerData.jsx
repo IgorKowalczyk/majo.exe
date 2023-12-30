@@ -1,12 +1,12 @@
 "use client";
 
 import { Dialog, Transition } from "@headlessui/react";
-import { TrashIcon, ExclamationTriangleIcon, XMarkIcon, ArrowPathIcon } from "@heroicons/react/24/outline";
 import { useRouter } from "next/navigation";
 import { Fragment, useState } from "react";
 import { toast } from "sonner";
 import { RedButton } from "@/components/Buttons";
 import { ButtonSecondary } from "@/components/Buttons";
+import { Icons, iconVariants } from "@/components/Icons";
 
 export default function DeleteServerData({ serverId }) {
  const [isOpen, setIsOpen] = useState(false);
@@ -59,7 +59,7 @@ export default function DeleteServerData({ serverId }) {
  return (
   <div>
    <RedButton className="mt-4" onClick={() => setIsOpen(true)}>
-    <TrashIcon className="mr-2 inline-block h-5 w-5" aria-hidden="true" role="img" /> Delete server data
+    <Icons.trash className={iconVariants({ variant: "button" })} /> Delete server data
    </RedButton>
    <Transition.Root appear show={isOpen} as={Fragment}>
     <Dialog as="div" unmount="true" className="relative z-[99999]" onClose={() => setIsOpen(false)}>
@@ -70,8 +70,8 @@ export default function DeleteServerData({ serverId }) {
       <div className="flex min-h-full items-center justify-center p-4 text-center ">
        <Transition.Child as={Fragment} enter="transition ease-out duration-200 motion-reduce:transition-none" enterFrom="transform opacity-0 scale-95" enterTo="transform opacity-100 scale-100" leave="transition ease-in duration-100 motion-reduce:duration-[1ms]" leaveFrom="transform opacity-100 scale-100" leaveTo="transform opacity-0 scale-95">
         <Dialog.Panel className="hide-scrollbar bg-background-secondary w-full max-w-lg transform overflow-visible rounded-md border-[1px] border-neutral-800 p-6 text-left align-middle shadow-xl transition-all">
-         <Dialog.Title as="h3" className="text-xl font-semibold text-red-400 duration-200 motion-reduce:transition-none">
-          <ExclamationTriangleIcon className="mr-2 inline-block h-5 w-5 stroke-2" aria-hidden="true" role="img" />
+         <Dialog.Title as="h3" className="flex items-center text-xl font-semibold text-red-400 duration-200 motion-reduce:transition-none">
+          <Icons.warning className={iconVariants({ variant: "large", className: "mr-2 stroke-2" })} />
           Delete server data
          </Dialog.Title>
          <div className="mt-2">
@@ -82,18 +82,18 @@ export default function DeleteServerData({ serverId }) {
           <RedButton onClick={handleDelete} disabled={loading}>
            {loading ? (
             <>
-             <ArrowPathIcon className="mr-2 inline-block h-5 w-5 animate-spin" aria-hidden="true" role="img" />
+             <Icons.refresh className={iconVariants({ variant: "button", className: "animate-spin" })} />
              Deleting server data...
             </>
            ) : (
             <>
-             <TrashIcon className="mr-2 inline-block h-5 w-5" aria-hidden="true" role="img" />
+             <Icons.trash className={iconVariants({ variant: "button" })} />
              Yes, delete server data
             </>
            )}
           </RedButton>
           <ButtonSecondary onClick={() => setIsOpen(false)}>
-           <XMarkIcon className="mr-2 inline-block h-5 w-5" aria-hidden="true" role="img" />
+           <Icons.close className={iconVariants({ variant: "button" })} />
            Cancel
           </ButtonSecondary>
          </div>

@@ -1,25 +1,18 @@
-/* eslint-disable complexity */
-
-import { ArrowPathIcon, AtSymbolIcon, ChatBubbleBottomCenterTextIcon, ChatBubbleLeftEllipsisIcon, CheckIcon, ClockIcon, EyeSlashIcon, HashtagIcon, LinkIcon, NoSymbolIcon, TrashIcon, UserGroupIcon, UserPlusIcon, WrenchIcon } from "@heroicons/react/24/outline";
 import { Block } from "@/components/Block";
 import { ButtonPrimary } from "@/components/Buttons";
 import { Header1, Header2, Header3, Header5 } from "@/components/Headers";
 import "tippy.js/dist/backdrop.css";
 import "tippy.js/animations/shift-away.css";
 import "tippy.js/dist/tippy.css";
+import { Icons, iconVariants } from "@/components/Icons";
 import { NavBadge } from "@/components/nav/client/SideNav";
 import { InputSkeleton } from "@/components/Skeletons";
-
-export const metadata = {
- title: "Leaderboard",
- description: "View the leaderboard for your server.",
-};
 
 export default async function ServerAutomod() {
  return (
   <>
    <Header1>
-    <ChatBubbleBottomCenterTextIcon className="h-9 min-h-9 w-9 min-w-9" />
+    <Icons.bot className={iconVariants({ variant: "extraLarge" })} />
     Automod
    </Header1>
    <Header5 className="mb-4 mt-2 !justify-start !text-left">
@@ -27,8 +20,8 @@ export default async function ServerAutomod() {
    </Header5>
    <Block className="mb-4">
     <Header2>
-     <UserPlusIcon className="h-6 min-h-6 w-6 min-w-6" />
-     Anti-Invite <ArrowPathIcon className="stroke-accent-primary h-6 min-h-6 w-6 min-w-6 animate-spin" />
+     <Icons.userBlock className={iconVariants({ variant: "large", className: "stroke-2" })} />
+     Anti-Invite <Icons.refresh className={iconVariants({ variant: "large", className: "stroke-accent-primary animate-spin" })} />
     </Header2>
     <p className="mb-4 text-left">
      <span>Automatically delete all messages containing Discord server invites.</span>
@@ -37,13 +30,13 @@ export default async function ServerAutomod() {
     <div>
      <Block className="mb-4 !py-3">
       <Header3>
-       <EyeSlashIcon className="h-6 min-h-6 w-6 min-w-6" /> Ignored:
+       <Icons.hide className={iconVariants({ variant: "large" })} /> Exempt:
       </Header3>
-      <span className="mb-4 font-normal">What should I ignore?</span>
+      <span className="mb-4 font-normal">What should be ignored by the rule?</span>
 
       <div className="flex flex-row flex-wrap gap-2">
        <span className="flex w-fit items-center gap-2 font-bold">
-        <UserGroupIcon className="stroke-accent-primary h-5 min-h-5 w-5 min-w-5" aria-hidden="true" />
+        <Icons.users className={iconVariants({ variant: "normal", className: "stroke-accent-primary" })} />
         Ignore Roles:
        </span>
        <InputSkeleton className="!h-[37.6px] !w-40" />
@@ -51,7 +44,7 @@ export default async function ServerAutomod() {
 
       <div className="mt-2 flex flex-row flex-wrap gap-2">
        <span className="flex w-fit items-center gap-2 font-bold">
-        <HashtagIcon className="stroke-accent-primary h-5 min-h-5 w-5 min-w-5" aria-hidden="true" />
+        <Icons.hash className={iconVariants({ variant: "normal", className: "stroke-accent-primary" })} />
         Ignore Channels:
        </span>
        <InputSkeleton className="!h-[37.6px] !w-40" />
@@ -64,13 +57,13 @@ export default async function ServerAutomod() {
 
      <Block className="mb-4 !py-3">
       <Header3>
-       <WrenchIcon className="h-6 min-h-6 w-6 min-w-6" /> Actions:
+       <Icons.shieldMinus className={iconVariants({ variant: "large" })} /> Actions:
       </Header3>
       <span className="mb-4 font-normal">What should I do when a member triggers the rule?</span>
 
       <div className="my-2 flex flex-row flex-wrap gap-2">
        <span className="flex w-fit items-center gap-2 font-bold">
-        <TrashIcon className="h-6 min-h-6 w-6 min-w-6 stroke-red-400" />
+        <Icons.trash className={iconVariants({ variant: "normal", className: "stroke-red-400" })} />
         Delete message:
        </span>
        <InputSkeleton className="!h-[30px] !w-12" />
@@ -78,7 +71,7 @@ export default async function ServerAutomod() {
 
       <div className="my-2 flex flex-row flex-wrap gap-2">
        <span className="flex w-fit items-center gap-2 font-bold">
-        <ClockIcon className="h-6 min-h-6 w-6 min-w-6 stroke-red-400" />
+        <Icons.timer className={iconVariants({ variant: "normal", className: "stroke-red-400" })} />
         Timeout member:
        </span>
        <InputSkeleton className="!h-[37.6px] !w-40" />
@@ -86,7 +79,7 @@ export default async function ServerAutomod() {
 
       <div className="my-2 flex flex-row flex-wrap  gap-2">
        <span className="flex w-fit items-center gap-2 font-bold">
-        <ChatBubbleBottomCenterTextIcon className="h-6 min-h-6 w-6 min-w-6 stroke-red-400" />
+        <Icons.messageWarning className={iconVariants({ variant: "normal", className: "stroke-red-400" })} />
         Log to channel:
        </span>
        <InputSkeleton className="!h-[37.6px] !w-40" />
@@ -95,7 +88,7 @@ export default async function ServerAutomod() {
 
      <ButtonPrimary className="mt-4" disabled={true}>
       <>
-       <CheckIcon className="-ml-1 mr-3 h-5 w-5 text-white" aria-hidden="true" />
+       <Icons.check className={iconVariants({ variant: "button" })} />
        Save
       </>
      </ButtonPrimary>
@@ -104,8 +97,8 @@ export default async function ServerAutomod() {
 
    <Block className="mb-4">
     <Header2>
-     <LinkIcon className="h-6 min-h-6 w-6 min-w-6" />
-     Anti-Link <ArrowPathIcon className="stroke-accent-primary h-6 min-h-6 w-6 min-w-6 animate-spin" />
+     <Icons.unlink className={iconVariants({ variant: "large", className: "stroke-2" })} />
+     Anti-Link <Icons.refresh className={iconVariants({ variant: "large", className: "stroke-accent-primary animate-spin" })} />
     </Header2>
     <p className="mb-4 text-left">
      <span>Automatically delete all messages containing links.</span>
@@ -114,13 +107,12 @@ export default async function ServerAutomod() {
     <div>
      <Block className="mb-4 !py-3">
       <Header3>
-       <EyeSlashIcon className="h-6 min-h-6 w-6 min-w-6" /> Ignored:
+       <Icons.hide className={iconVariants({ variant: "large" })} /> Exempt:
       </Header3>
-      <span className="mb-4 font-normal">What should I ignore?</span>
-
+      <span className="mb-4 font-normal">What should be ignored by the rule?</span>
       <div className="flex flex-row flex-wrap gap-2">
        <span className="flex w-fit items-center gap-2 font-bold">
-        <UserGroupIcon className="stroke-accent-primary h-5 min-h-5 w-5 min-w-5" aria-hidden="true" />
+        <Icons.users className={iconVariants({ variant: "normal", className: "stroke-accent-primary" })} />
         Ignore Roles:
        </span>
        <InputSkeleton className="!h-[37.6px] !w-40" />
@@ -128,7 +120,7 @@ export default async function ServerAutomod() {
 
       <div className="mt-2 flex flex-row flex-wrap gap-2">
        <span className="flex w-fit items-center gap-2 font-bold">
-        <HashtagIcon className="stroke-accent-primary h-5 min-h-5 w-5 min-w-5" aria-hidden="true" />
+        <Icons.hash className={iconVariants({ variant: "normal", className: "stroke-accent-primary" })} />
         Ignore Channels:
        </span>
        <InputSkeleton className="!h-[37.6px] !w-40" />
@@ -141,13 +133,13 @@ export default async function ServerAutomod() {
 
      <Block className="mb-4 !py-3">
       <Header3>
-       <WrenchIcon className="h-6 min-h-6 w-6 min-w-6" /> Actions:
+       <Icons.shieldMinus className={iconVariants({ variant: "large" })} /> Actions:
       </Header3>
       <span className="mb-4 font-normal">What should I do when a member triggers the rule?</span>
 
       <div className="my-2 flex flex-row flex-wrap gap-2">
        <span className="flex w-fit items-center gap-2 font-bold">
-        <TrashIcon className="h-6 min-h-6 w-6 min-w-6 stroke-red-400" />
+        <Icons.trash className={iconVariants({ variant: "normal", className: "stroke-red-400" })} />
         Delete message:
        </span>
        <InputSkeleton className="!h-[30px] !w-12" />
@@ -155,7 +147,7 @@ export default async function ServerAutomod() {
 
       <div className="my-2 flex flex-row flex-wrap gap-2">
        <span className="flex w-fit items-center gap-2 font-bold">
-        <ClockIcon className="h-6 min-h-6 w-6 min-w-6 stroke-red-400" />
+        <Icons.timer className={iconVariants({ variant: "normal", className: "stroke-red-400" })} />
         Timeout member:
        </span>
        <InputSkeleton className="!h-[37.6px] !w-40" />
@@ -163,7 +155,7 @@ export default async function ServerAutomod() {
 
       <div className="my-2 flex flex-row flex-wrap  gap-2">
        <span className="flex w-fit items-center gap-2 font-bold">
-        <ChatBubbleBottomCenterTextIcon className="h-6 min-h-6 w-6 min-w-6 stroke-red-400" />
+        <Icons.messageWarning className={iconVariants({ variant: "normal", className: "stroke-red-400" })} />
         Log to channel:
        </span>
        <InputSkeleton className="!h-[37.6px] !w-40" />
@@ -172,7 +164,7 @@ export default async function ServerAutomod() {
 
      <ButtonPrimary className="mt-4" disabled={true}>
       <>
-       <CheckIcon className="-ml-1 mr-3 h-5 w-5 text-white" aria-hidden="true" />
+       <Icons.check className={iconVariants({ variant: "button" })} />
        Save
       </>
      </ButtonPrimary>
@@ -180,7 +172,7 @@ export default async function ServerAutomod() {
    </Block>
    <Block className="mb-4">
     <Header2>
-     <AtSymbolIcon className="h-6 min-h-6 w-6 min-w-6" />
+     <Icons.mention className={iconVariants({ variant: "large" })} />
      Anti-Mention <NavBadge>Coming Soon</NavBadge>
     </Header2>
     <p className="mb-4 text-left">
@@ -189,7 +181,7 @@ export default async function ServerAutomod() {
    </Block>
    <Block className="mb-4">
     <Header2>
-     <ChatBubbleLeftEllipsisIcon className="h-6 min-h-6 w-6 min-w-6" />
+     <Icons.messageOff className={iconVariants({ variant: "large" })} />
      Anti-Spam <NavBadge>Coming Soon</NavBadge>
     </Header2>
     <p className="mb-4 text-left">
@@ -198,7 +190,7 @@ export default async function ServerAutomod() {
    </Block>
    <Block className="mb-4">
     <Header2>
-     <NoSymbolIcon className="h-6 min-h-6 w-6 min-w-6" />
+     <Icons.shieldBan className={iconVariants({ variant: "large" })} />
      Anti-Badwords <NavBadge>Coming Soon</NavBadge>
     </Header2>
     <p className="mb-4 text-left">

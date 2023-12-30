@@ -1,11 +1,11 @@
 "use client";
 
-import { ArrowPathIcon, ChatBubbleOvalLeftEllipsisIcon, CheckIcon } from "@heroicons/react/24/outline";
 import { isNumeric } from "@majoexe/util/functions/util";
 import clsx from "clsx";
 import { useState } from "react";
 import { toast } from "sonner";
 import { ButtonPrimary } from "@/components/Buttons";
+import { Icons, iconVariants } from "@/components/Icons";
 import { InputWithIcon } from "@/components/Input";
 
 export function ChangeUserReputation({ userId, guildId, userReputation = 0 }) {
@@ -69,7 +69,7 @@ export function ChangeUserReputation({ userId, guildId, userReputation = 0 }) {
   <form className="flex flex-col items-start gap-2" onSubmit={handleReputation}>
    <InputWithIcon
     type="number"
-    icon={<ChatBubbleOvalLeftEllipsisIcon className="mb-[1px] h-5 min-h-5 w-5 min-w-5" />}
+    icon={<Icons.messageDot className={iconVariants({ variant: "normal" })} />}
     placeholder="User reputation"
     value={userRep}
     onChange={(e) => changeReputation(e.target.value)}
@@ -83,11 +83,11 @@ export function ChangeUserReputation({ userId, guildId, userReputation = 0 }) {
    <ButtonPrimary onClick={handleReputation} disabled={loading || error}>
     {loading ? (
      <>
-      <ArrowPathIcon className="mr-2 inline-block h-5 w-5 animate-spin" /> Updating...
+      <Icons.refresh className={iconVariants({ variant: "button", className: "animate-spin" })} /> Updating...
      </>
     ) : (
      <>
-      <CheckIcon className="mr-2 inline-block h-5 w-5" /> Update
+      <Icons.check className={iconVariants({ variant: "button" })} /> Update
      </>
     )}
    </ButtonPrimary>

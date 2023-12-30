@@ -1,6 +1,5 @@
 "use client";
 
-import { UserIcon } from "@heroicons/react/24/outline";
 import { formatNumber } from "@majoexe/util/functions/util";
 import Link from "next/link";
 import { useMemo } from "react";
@@ -8,6 +7,7 @@ import { ButtonSecondary } from "@/components/Buttons";
 import Image from "@/components/client/shared/Image";
 import { Table } from "@/components/client/shared/Table";
 import { Tooltip } from "@/components/client/shared/Tooltip";
+import { Icons, iconVariants } from "@/components/Icons";
 
 export function Leaderboard({ data = [], showControls = true, showSearch = true }) {
  const columns = useMemo(
@@ -54,7 +54,7 @@ export function Leaderboard({ data = [], showControls = true, showSearch = true 
         accessor: "actions",
         Cell: ({ row }) => (
          <ButtonSecondary className="!w-fit" href={`user/${row.original.user?.discordId}`}>
-          <UserIcon className="-ml-1 mr-2 h-5 min-h-5 w-5 min-w-5" />
+          <Icons.user className={iconVariants({ variant: "button" })} />
           View profile
          </ButtonSecondary>
         ),

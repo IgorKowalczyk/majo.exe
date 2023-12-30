@@ -1,8 +1,7 @@
-import { UserMinusIcon, UserPlusIcon, ChatBubbleLeftRightIcon } from "@heroicons/react/24/outline";
-import { BoltIcon } from "@heroicons/react/24/solid";
 import { Block } from "@/components/Block";
 import { CategoryBar } from "@/components/CategoryBar";
 import { Header4, Header5 } from "@/components/Headers";
+import { Icons, iconVariants } from "@/components/Icons";
 import { AvatarSkeleton, EmbedSkeleton, TextSkeleton } from "@/components/Skeletons";
 
 export default function Loading() {
@@ -20,7 +19,7 @@ export default function Loading() {
     <div className="bg-background-secondary mt-4 overflow-auto rounded-lg border border-neutral-800 p-4">
      <div className="flex flex-row items-center justify-between">
       <div className="flex flex-row items-center gap-4">
-       <UserPlusIcon className="h-8 min-h-8 w-8 min-w-8" aria-hidden="true" role="img" />
+       <Icons.userAdd className={iconVariants({ variant: "extraLarge" })} />
        <div className="flex flex-col">
         <Header4 className="!justify-start whitespace-nowrap">
          New members
@@ -36,7 +35,7 @@ export default function Loading() {
     <div className="bg-background-secondary mt-4 overflow-auto rounded-lg border border-neutral-800 p-4">
      <div className="flex flex-row items-center justify-between">
       <div className="flex flex-row items-center gap-4">
-       <ChatBubbleLeftRightIcon className="h-8 min-h-8 w-8 min-w-8" aria-hidden="true" role="img" />
+       <Icons.commentAdd className={iconVariants({ variant: "extraLarge" })} />
        <div className="flex flex-col">
         <Header4 className="!justify-start whitespace-nowrap">
          Messages sent
@@ -52,7 +51,7 @@ export default function Loading() {
     <div className="bg-background-secondary mt-4 overflow-auto rounded-lg border border-neutral-800 p-4">
      <div className="flex flex-row items-center justify-between">
       <div className="flex flex-row items-center gap-4">
-       <UserMinusIcon className="h-8 min-h-8 w-8 min-w-8" aria-hidden="true" role="img" />
+       <Icons.userMinus className={iconVariants({ variant: "extraLarge" })} />
        <div className="flex flex-col">
         <Header4 className="!justify-start whitespace-nowrap">
          Members left
@@ -71,7 +70,7 @@ export default function Loading() {
      <Block>
       <Header4 className="mb-2 !block !text-left">
        <span className="flex flex-row flex-wrap items-center gap-2">
-        <BoltIcon className="h-5 min-h-5 w-5 min-w-5" aria-hidden="true" role="img" />
+        <Icons.gauge className={iconVariants({ variant: "normal", className: "!stroke-2" })} />
         <span className="opacity-80">Server Score: </span>
         <span>Calculating...</span>
        </span>

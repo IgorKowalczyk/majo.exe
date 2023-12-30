@@ -1,4 +1,3 @@
-import { ListBulletIcon } from "@heroicons/react/24/outline";
 import prismaClient from "@majoexe/database";
 import { getGuildMember, getServer } from "@majoexe/util/functions/guild";
 import { getSession } from "lib/session";
@@ -6,6 +5,7 @@ import { redirect } from "next/navigation";
 import { Block } from "@/components/Block";
 import Logs from "@/components/client/lists/Logs";
 import { Header1 } from "@/components/Headers";
+import { Icons, iconVariants } from "@/components/Icons";
 
 export const metadata = {
  title: "Server Logs",
@@ -65,13 +65,13 @@ export default async function ServerLogs({ params }) {
  return (
   <>
    <Header1>
-    <ListBulletIcon className="h-9 min-h-9 w-9 min-w-9" />
+    <Icons.list className={iconVariants({ variant: "extraLarge" })} />
     Activity Logs
    </Header1>
    <div className="mt-4 overflow-auto">
     {!guild.guildLogs || guild.guildLogs.length === 0 ? (
      <Block>
-      <p className="text-left">No logs found! Check back later, maybe something will happen.</p>
+      <p className="text-left">No logs found! Check back later, maybe something will happen soon!</p>
      </Block>
     ) : (
      <Logs initialItems={guild.guildLogs} id={serverDownload.id} />

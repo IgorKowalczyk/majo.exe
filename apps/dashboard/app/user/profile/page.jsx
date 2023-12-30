@@ -1,4 +1,3 @@
-import { ArrowDownTrayIcon, ArrowTopRightOnSquareIcon, ExclamationTriangleIcon, FolderArrowDownIcon } from "@heroicons/react/24/outline";
 import { getFlags } from "@majoexe/util/functions/user";
 import { getSession } from "lib/session";
 import Link from "next/link";
@@ -10,6 +9,7 @@ import Image from "@/components/client/shared/Image";
 import { Tooltip } from "@/components/client/shared/Tooltip";
 import { Emojis } from "@/components/DiscordEmojis";
 import { Header2 } from "@/components/Headers";
+import { Icons, iconVariants } from "@/components/Icons";
 
 export const revalidate = 3600; // 1 hour
 
@@ -61,10 +61,10 @@ export default async function Profile() {
           })}
         </div>
        </div>
-       <div className="mb-[-14px] hidden w-full items-end justify-end font-semibold md:flex">
-        <Link href={`https://discord.com/users/${user.id}`} target="_blank" className="bg-button-primary hover:bg-button-primary-hover flex h-[40px] cursor-pointer items-center rounded px-4 py-0 font-normal text-white duration-200 motion-reduce:transition-none">
-         <ArrowTopRightOnSquareIcon className="mr-2 h-4 min-h-4 w-4 min-w-4" aria-hidden="true" role="img" /> See global profile
-        </Link>
+       <div className="mb-[-14px] hidden w-full items-end justify-end md:flex">
+        <ButtonPrimary href={`https://discord.com/users/${user.id}`} target="_blank">
+         <Icons.externalLink className={iconVariants({ variant: "button" })} /> Discord profile
+        </ButtonPrimary>
        </div>
       </div>
       <div className="bg-background-menu-button/70 m-[8px_16px_16px] rounded-lg border border-neutral-800 p-4">Note: By default your banner and accent color are taken from Discord</div>
@@ -73,21 +73,21 @@ export default async function Profile() {
 
     <div className="bg-background-navbar relative overflow-hidden rounded-lg border border-neutral-800 p-4 md:w-full">
      <Header2>
-      <ArrowDownTrayIcon className="h-6 min-h-6 w-6 min-w-6" />
+      <Icons.download className={iconVariants({ variant: "large", className: "stroke-2" })} />
       Download data
      </Header2>
      <p className="mt-2 leading-none text-white/70">
       Download all your data in a <code>.json</code> file. This includes your profile, data from all servers you are in and more.
      </p>
      <ButtonPrimary className="mt-4 w-fit" href="/api/user/download" target="_blank">
-      <FolderArrowDownIcon className="mr-2 inline-block h-5 w-5 " aria-hidden="true" role="img" />
+      <Icons.download className={iconVariants({ variant: "button" })} />
       Download data
      </ButtonPrimary>
     </div>
 
     <Block theme="danger">
      <Header2 className="text-red-400">
-      <ExclamationTriangleIcon className="h-6 min-h-6 w-6 min-w-6" />
+      <Icons.warning className={iconVariants({ variant: "large", className: "stroke-red-400 stroke-2" })} />
       Delete account
      </Header2>
      <p className="mt-2 text-white/70">If you want to delete all your data and your account, click the button below. This action is irreversible.</p>

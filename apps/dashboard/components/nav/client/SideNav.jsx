@@ -1,12 +1,12 @@
 "use client";
 
-import { ArrowLeftIcon, ArrowTrendingUpIcon, ChatBubbleBottomCenterTextIcon, ChatBubbleLeftRightIcon, Cog8ToothIcon, ExclamationTriangleIcon, GiftIcon, ListBulletIcon, RectangleStackIcon, SparklesIcon, SquaresPlusIcon } from "@heroicons/react/24/outline";
 import clsx from "clsx";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useContext } from "react";
 import { VisibilityContext } from "./VisibilityContext";
 import { ButtonPrimary } from "@/components/Buttons";
+import { Icons, iconVariants } from "@/components/Icons";
 
 export function NavBadge({ children }) {
  return <div className="bg-button-primary -mt-3 rounded-md px-1 py-px pb-0 text-xs uppercase">{children}</div>;
@@ -16,7 +16,7 @@ export function SideNavLink({ href, children }) {
  const router = usePathname();
  const isSelected = (path) => router === path;
  return (
-  <Link href={href} className={`${isSelected(href) ? "bg-button-primary/20 before:!h-[29px]" : "hover:bg-button-primary/20"} before:border-button-primary hover:bg-button-primary/20 flex h-[45px] w-full items-center gap-2 rounded py-2 pr-4 duration-200 before:h-0 before:rounded-r-md before:border-l-4 before:duration-200 hover:before:h-[29px]`}>
+  <Link href={href} className={`${isSelected(href) ? "bg-button-primary/20 before:!h-[29px]" : "hover:bg-button-primary/20"} before:border-button-primary hover:bg-button-primary/20 flex h-[45px] w-full items-center gap-2 rounded-md py-2 pr-4 duration-200 before:h-0 before:rounded-r-md before:border-l-4 before:duration-200 hover:before:h-[29px]`}>
    {children}
   </Link>
  );
@@ -39,25 +39,25 @@ export function SideNav({ server }) {
    >
     <div className="px-4">
      <ButtonPrimary href="/dashboard" className="mb-4 w-full">
-      <ArrowLeftIcon className="mr-2 h-5 min-h-5 w-5 min-w-5 cursor-pointer text-white" /> Go back
+      <Icons.arrowLeft className={iconVariants({ variant: "button" })} /> Go back
      </ButtonPrimary>
     </div>
 
     <div className="flex w-full flex-col items-center justify-center gap-2 border-t border-t-neutral-800 px-4 pt-4">
      <SideNavLink href={`/dashboard/${server}`}>
-      <RectangleStackIcon className="h-6 min-h-6 w-6 min-w-6" />
+      <Icons.home className={iconVariants({ variant: "large" })} />
       Overview
      </SideNavLink>
      <SideNavLink href={`/dashboard/${server}/statistics`}>
-      <ArrowTrendingUpIcon className="h-6 min-h-6 w-6 min-w-6" />
+      <Icons.trendingUp className={iconVariants({ variant: "large" })} />
       Statistics
      </SideNavLink>
      <SideNavLink href={`/dashboard/${server}/leaderboard`}>
-      <SparklesIcon className="h-6 min-h-6 w-6 min-w-6" />
+      <Icons.sparkles className={iconVariants({ variant: "large" })} />
       Leaderboard
      </SideNavLink>
      <SideNavLink href={`/dashboard/${server}/giveaways`}>
-      <GiftIcon className="h-6 min-h-6 w-6 min-w-6" />
+      <Icons.gift className={iconVariants({ variant: "large" })} />
       Giveaways
      </SideNavLink>
     </div>
@@ -65,30 +65,30 @@ export function SideNav({ server }) {
     <div className="text-text mt-2 border-t border-white/20 px-5 py-2 opacity-40">Moderation</div>
     <div className="flex w-full flex-col items-center justify-center gap-2 px-4">
      <SideNavLink href={`/dashboard/${server}/warns`}>
-      <ExclamationTriangleIcon className="h-6 min-h-6 w-6 min-w-6" />
+      <Icons.warning className={iconVariants({ variant: "large" })} />
       Warns
      </SideNavLink>
      <SideNavLink href={`/dashboard/${server}/logs`}>
-      <ListBulletIcon className="h-6 min-h-6 w-6 min-w-6" />
+      <Icons.list className={iconVariants({ variant: "large" })} />
       Logs
      </SideNavLink>
     </div>
     <div className="text-text mt-2 border-t border-white/20 px-5 py-2 opacity-40">Management</div>
     <div className="flex w-full flex-col items-center justify-center gap-2 px-4">
      <SideNavLink href={`/dashboard/${server}/modules`}>
-      <SquaresPlusIcon className="h-6 min-h-6 w-6 min-w-6" />
+      <Icons.packagePlus className={iconVariants({ variant: "large" })} />
       Modules
      </SideNavLink>
      <SideNavLink href={`/dashboard/${server}/automod`}>
-      <ChatBubbleBottomCenterTextIcon className="h-6 min-h-6 w-6 min-w-6" />
+      <Icons.bot className={iconVariants({ variant: "large" })} />
       Automod<NavBadge>beta</NavBadge>
      </SideNavLink>
      <SideNavLink href={`/dashboard/${server}/messages`}>
-      <ChatBubbleLeftRightIcon className="h-6 min-h-6 w-6 min-w-6" />
+      <Icons.messageCode className={iconVariants({ variant: "large" })} />
       Custom messages
      </SideNavLink>
      <SideNavLink href={`/dashboard/${server}/settings`}>
-      <Cog8ToothIcon className="h-6 min-h-6 w-6 min-w-6" />
+      <Icons.settings className={iconVariants({ variant: "large" })} />
       Settings
      </SideNavLink>
     </div>

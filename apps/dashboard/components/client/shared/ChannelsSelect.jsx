@@ -1,8 +1,8 @@
 "use client";
 
 import { Listbox, Transition } from "@headlessui/react";
-import { CheckIcon, ExclamationCircleIcon, ChevronUpDownIcon } from "@heroicons/react/24/outline";
 import { Fragment } from "react";
+import { Icons, iconVariants } from "@/components/Icons";
 
 export function ChannelsSelect({ allChannels, exemptChannels, setExemptChannels, multiple = true }) {
  return (
@@ -26,7 +26,7 @@ export function ChannelsSelect({ allChannels, exemptChannels, setExemptChannels,
        )}
       </span>
       <span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
-       <ChevronUpDownIcon className="h-5 w-5 text-gray-400" aria-hidden="true" />
+       <Icons.chevronsUpDown className={iconVariants({ variant: "small", className: "text-gray-400" })} />
       </span>
      </Listbox.Button>
      <Transition as={Fragment} enter="transition duration-200 ease-out" enterFrom="transform scale-95 opacity-0" enterTo="transform scale-100 opacity-100" leave="transition duration-200 ease-out" leaveFrom="transform scale-100 opacity-100" leaveTo="transform scale-95 opacity-0">
@@ -35,7 +35,7 @@ export function ChannelsSelect({ allChannels, exemptChannels, setExemptChannels,
         <Listbox.Option key={index} className="ui-active:bg-accent-primary ui-active:text-white relative mx-2 my-1 cursor-pointer select-none rounded-md py-2 pl-4 pr-10 font-normal text-white/70 duration-200" value={channel.id}>
          <div className="flex items-center gap-1 truncate">{channel.name}</div>
          <span className="ui-selected:!opacity-100 ui-not-selected:opacity-0 ui-active:opacity-100 ui-not-active:opacity-0 absolute inset-y-0 right-0 flex items-center pr-3 text-white duration-200">
-          <CheckIcon className="h-5 w-5" aria-hidden="true" />
+          <Icons.check className={iconVariants({ variant: "normal" })} />
          </span>
         </Listbox.Option>
        ))}
@@ -44,7 +44,7 @@ export function ChannelsSelect({ allChannels, exemptChannels, setExemptChannels,
     </Listbox>
    ) : (
     <div className="flex items-center justify-center gap-2 font-normal text-red-400">
-     <ExclamationCircleIcon className="h-5 w-5" aria-hidden="true" />
+     <Icons.warning className={iconVariants({ variant: "normal" })} />
      <span className="text-sm">No channels on this server!</span>
     </div>
    )}

@@ -1,4 +1,3 @@
-import { ChatBubbleLeftRightIcon } from "@heroicons/react/24/outline";
 import { globalConfig } from "@majoexe/config";
 import prismaClient from "@majoexe/database";
 import { getGuildMember, getServer } from "@majoexe/util/functions/guild";
@@ -8,6 +7,7 @@ import { redirect } from "next/navigation";
 import { Block } from "@/components/Block";
 import { ChangeWelcomeMessages, ChangeLeaveMessages } from "@/components/client/settings/ChangeCustomMessages";
 import { Header1 } from "@/components/Headers";
+import { Icons, iconVariants } from "@/components/Icons";
 
 export const metadata = {
  title: "Custom Messages",
@@ -65,7 +65,7 @@ export default async function Settings({ params }) {
  return (
   <>
    <Header1>
-    <ChatBubbleLeftRightIcon className="h-9 min-h-9 w-9 min-w-9" />
+    <Icons.messageCode className={iconVariants({ variant: "extraLarge" })} />
     Custom messages
    </Header1>
 

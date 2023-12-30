@@ -1,4 +1,3 @@
-import { PlusIcon, RectangleStackIcon } from "@heroicons/react/24/outline";
 import { getServers, isBotInServer } from "@majoexe/util/functions/guild";
 import clsx from "clsx";
 import { getSession } from "lib/session";
@@ -8,6 +7,7 @@ import { ButtonPrimary } from "@/components/Buttons";
 import { ButtonSecondary } from "@/components/Buttons";
 import Image from "@/components/client/shared/Image";
 import { Header1, Header2, Header3 } from "@/components/Headers";
+import { Icons, iconVariants } from "@/components/Icons";
 
 export default async function Dashboard() {
  const session = await getSession();
@@ -32,7 +32,7 @@ export default async function Dashboard() {
   <div className="flex w-full flex-col items-center px-8 pb-8 pt-16 antialiased md:px-16 md:py-16">
    <div className="flex flex-col justify-center">
     <Header1 className="!justify-center">
-     <RectangleStackIcon className="h-10 min-h-10 w-10 min-w-10" aria-hidden="true" role="img" />
+     <Icons.dashboard className="h-10 min-h-10 w-10 min-w-10" />
      Dashboard
     </Header1>
     <Header2 className="text-xl font-normal text-white/50">
@@ -48,11 +48,11 @@ export default async function Dashboard() {
          <>
           {server.bot ? (
            <ButtonPrimary href={`/dashboard/${server.id}`} className="ml-auto">
-            <PlusIcon className="mr-2 h-5 min-h-5 w-5 min-w-5" aria-hidden="true" role="img" /> Manage
+            <Icons.plus className={iconVariants({ variant: "button" })} /> Manage
            </ButtonPrimary>
           ) : (
            <ButtonSecondary href={`/api/invite/${server.id}`} className="ml-auto cursor-copy">
-            <PlusIcon className="mr-2 h-5 min-h-5 w-5 min-w-5" aria-hidden="true" role="img" /> Add bot
+            <Icons.plus className={iconVariants({ variant: "button" })} /> Add bot
            </ButtonSecondary>
           )}
          </>
@@ -91,7 +91,7 @@ export default async function Dashboard() {
       <div className="flex flex-col items-center justify-center gap-4">
        <Header3 className="text-center">You don't have any servers!</Header3>
        <ButtonPrimary href="/api/invite">
-        <PlusIcon className="mr-2 h-5 min-h-5 w-5 min-w-5" aria-hidden="true" role="img" /> Add bot
+        <Icons.plus className={iconVariants({ variant: "button" })} /> Add bot
        </ButtonPrimary>
       </div>
      )}

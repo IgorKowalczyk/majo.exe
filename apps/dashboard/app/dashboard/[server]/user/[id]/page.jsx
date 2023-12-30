@@ -1,6 +1,5 @@
 /* eslint-disable complexity */
 
-import { ArrowTopRightOnSquareIcon, ExclamationCircleIcon, ExclamationTriangleIcon, HandThumbUpIcon, ShieldExclamationIcon } from "@heroicons/react/24/outline";
 import prismaClient from "@majoexe/database";
 import { getGuildMember, getServer } from "@majoexe/util/functions/guild";
 import { getFlags } from "@majoexe/util/functions/user";
@@ -9,6 +8,7 @@ import { getSession } from "lib/session";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import { Block } from "@/components/Block";
+import { ButtonPrimary } from "@/components/Buttons";
 import { ManageWarns } from "@/components/client/lists/Warns";
 import { ChangeUserReputation } from "@/components/client/settings/ChangeUserReputation";
 import { ResetUserXP } from "@/components/client/settings/ResetUserXP";
@@ -16,6 +16,7 @@ import Image from "@/components/client/shared/Image";
 import { Tooltip } from "@/components/client/shared/Tooltip";
 import { Emojis } from "@/components/DiscordEmojis";
 import { Header2 } from "@/components/Headers";
+import { Icons, iconVariants } from "@/components/Icons";
 
 export async function generateMetadata({ params }) {
  const { id, server } = params;
@@ -107,9 +108,7 @@ export default async function ServerLogs({ params }) {
   },
  });
 
- if (!user) {
-  return redirect("/auth/error?error=It%20looks%20like%20the%20user%20you%20are%20trying%20to%20display%20does%20not%20exist");
- }
+ if (!user) return redirect("/auth/error?error=It%20looks%20like%20the%20user%20you%20are%20trying%20to%20display%20does%20not%20exist");
 
  await prismaClient.guild.upsert({
   where: {
@@ -177,10 +176,10 @@ export default async function ServerLogs({ params }) {
          })}
        </div>
       </div>
-      <div className="mb-[-14px] hidden w-full items-end justify-end font-semibold md:flex">
-       <Link href={`https://discord.com/users/${user.discordId}`} target="_blank" className="bg-button-primary hover:bg-button-primary-hover flex h-[40px] cursor-pointer items-center rounded px-4 py-0 font-normal text-white duration-200 motion-reduce:transition-none">
-        <ArrowTopRightOnSquareIcon className="mr-2 h-4 min-h-4 w-4 min-w-4" aria-hidden="true" role="img" /> See global profile
-       </Link>
+      <div className="mb-[-14px] hidden w-full items-end justify-end md:flex">
+       <ButtonPrimary href={`https://discord.com/users/${user.discordId}`} target="_blank">
+        <Icons.externalLink className={iconVariants({ variant: "button" })} /> Discord profile
+       </ButtonPrimary>
       </div>
      </div>
      <div className="bg-background-menu-button/70 m-[8px_16px_16px] rounded-lg border border-neutral-800 p-4">
@@ -211,13 +210,13 @@ export default async function ServerLogs({ params }) {
    </div>
    <Block className="mt-4">
     <Header2 id="warns">
-     <ShieldExclamationIcon className="h-6 min-h-6 w-6 min-w-6" />
+     <Icons.warning className={iconVariants({ variant: "large", className: "stroke-2" })} />
      Warns
     </Header2>
     <p className="mb-4 text-left opacity-70">You can view all warns given to this user in this server. You can also manage them by deleting them.</p>
     {user.guildWarns.length === 0 ? (
      <p className="mb-4 flex items-center justify-start gap-2 text-left text-red-400">
-      <ExclamationCircleIcon className="h-5 min-h-5 w-5 min-w-5" />
+      <Icons.warning className={iconVariants({ variant: "normal", className: "mr-1" })} />
       This user has no warns in this server.
      </p>
     ) : (
@@ -226,7 +225,7 @@ export default async function ServerLogs({ params }) {
    </Block>
    <Block className="mt-4">
     <Header2 id="reputation">
-     <HandThumbUpIcon className="h-6 min-h-6 w-6 min-w-6" />
+     <Icons.like className={iconVariants({ variant: "large", className: "stroke-2" })} />
      Reputation
     </Header2>
     <p className="mt-2 text-white/70">Change the reputation of this user in this server, set it to 0 to remove it.</p>
@@ -234,7 +233,7 @@ export default async function ServerLogs({ params }) {
    </Block>
    <Block theme="danger" className="mt-4">
     <Header2 id="reset-xp" className="text-red-400">
-     <ExclamationTriangleIcon className="h-6 min-h-6 w-6 min-w-6" />
+     <Icons.warning className={iconVariants({ variant: "large", className: "stroke-2" })} />
      Reset XP
     </Header2>
     <p className="mt-2 text-white/70">Reset the XP of this user in this server. This action cannot be undone and will reset the XP of this user to 0.</p>

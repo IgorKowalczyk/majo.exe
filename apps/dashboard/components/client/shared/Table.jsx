@@ -1,11 +1,11 @@
 "use client";
 
-import { ArrowLeftIcon, ArrowRightIcon, ArrowSmallDownIcon, ArrowSmallUpIcon, MagnifyingGlassIcon } from "@heroicons/react/24/outline";
 import clsx from "clsx";
 import { useEffect } from "react";
 import { useTable, useSortBy, usePagination, useGlobalFilter } from "react-table";
 import { ViewSelect } from "./ViewSelect";
 import { ButtonSecondary } from "@/components/Buttons";
+import { Icons, iconVariants } from "@/components/Icons";
 import { InputWithIcon } from "@/components/Input";
 
 export function Table({
@@ -56,7 +56,7 @@ export function Table({
   <>
    <div className="flex w-full flex-col">
     <div className="flex flex-row items-stretch gap-4">
-     {showSearch && <InputWithIcon icon={<MagnifyingGlassIcon className="h-5 min-h-5 w-5 min-w-5" />} placeholder="Search" value={globalFilter || ""} onChange={(e) => setGlobalFilter(e.target.value)} className="h-10" />}
+     {showSearch && <InputWithIcon icon={<Icons.search className={iconVariants({ variant: "normal" })} />} placeholder="Search" value={globalFilter || ""} onChange={(e) => setGlobalFilter(e.target.value)} className="h-10" />}
      {showControls && <ViewSelect selectedValue={pageSize} setSelectedValue={setPageSize} />}
     </div>
 
@@ -70,25 +70,25 @@ export function Table({
            {column.render("Header")}
            <div className="relative h-4 w-4">
             <>
-             <ArrowSmallUpIcon
-              className={clsx(
-               {
+             <Icons.arrowUp
+              className={iconVariants({
+               variant: "small",
+               className: clsx("absolute h-4 w-4 duration-200", {
                 "scale-0": column.isSortedDesc,
                 "scale-100": !column.isSortedDesc,
                 "opacity-0": !column.isSorted,
-               },
-               "absolute h-4 w-4 duration-200"
-              )}
+               }),
+              })}
              />
-             <ArrowSmallDownIcon
-              className={clsx(
-               {
+             <Icons.arrowDown
+              className={iconVariants({
+               variant: "small",
+               className: clsx("absolute h-4 w-4 duration-200", {
                 "scale-0": !column.isSortedDesc,
                 "scale-100": column.isSortedDesc,
                 "opacity-0": !column.isSorted,
-               },
-               "absolute h-4 w-4 duration-200"
-              )}
+               }),
+              })}
              />
             </>
            </div>
@@ -118,7 +118,7 @@ export function Table({
     {showControls && (
      <div className="mt-2 flex items-center justify-between border-t border-t-neutral-800 pt-2 text-neutral-500">
       <ButtonSecondary onClick={() => previousPage()} disabled={!canPreviousPage} className="!w-fit">
-       <ArrowLeftIcon className="mr-2 h-5 min-h-5 w-5 min-w-5" />
+       <Icons.arrowLeft className={iconVariants({ variant: "button" })} />
        Previous
       </ButtonSecondary>
       <div>
@@ -127,7 +127,7 @@ export function Table({
       <div className="flex items-center space-x-2">
        <ButtonSecondary onClick={() => nextPage()} disabled={!canNextPage} className="!w-fit">
         Next
-        <ArrowRightIcon className="ml-2 h-5 min-h-5 w-5 min-w-5" />
+        <Icons.arrowRight className={iconVariants({ variant: "button", className: "!-mr-1 ml-2" })} />
        </ButtonSecondary>
       </div>
      </div>

@@ -1,6 +1,5 @@
 "use client";
 
-import { ClockIcon, HashtagIcon, UserGroupIcon, ChatBubbleBottomCenterIcon, InformationCircleIcon, WrenchIcon, TrashIcon, ExclamationTriangleIcon, EyeSlashIcon, ArrowPathIcon, CheckIcon, LinkIcon } from "@heroicons/react/24/outline";
 import clsx from "clsx";
 import { useState } from "react";
 import { toast } from "sonner";
@@ -12,6 +11,7 @@ import Switch from "@/components/client/shared/Switch";
 import { TimeSelect } from "@/components/client/shared/TimeSelect";
 import { Tooltip } from "@/components/client/shared/Tooltip";
 import { Header2, Header3 } from "@/components/Headers";
+import { Icons, iconVariants } from "@/components/Icons";
 
 export function AntiLink({ serverId, enabled, existingActions, existingExemptRoles, existingExemptChannels, allRoles, allChannels }) {
  const [isEnabled, setIsEnabled] = useState(enabled ?? false);
@@ -72,7 +72,7 @@ export function AntiLink({ serverId, enabled, existingActions, existingExemptRol
  return (
   <>
    <Header2>
-    <LinkIcon className="h-6 min-h-6 w-6 min-w-6" />
+    <Icons.unlink className={iconVariants({ variant: "large", className: "stroke-2" })} />
     Anti-Link <Switch enabled={isEnabled} onChange={save} disabled={loading} />
    </Header2>
    <p className="mb-4 text-left">
@@ -82,7 +82,7 @@ export function AntiLink({ serverId, enabled, existingActions, existingExemptRol
    {!isEnabled && (
     <div className="border-accent-primary bg-accent-primary/10 my-4 flex flex-row flex-wrap items-start whitespace-nowrap rounded-md border p-4">
      <span className="mr-1 flex flex-row items-center whitespace-nowrap font-bold">
-      <InformationCircleIcon className="stroke-accent-primary mr-1 h-5 min-h-5 w-5 min-w-5" />
+      <Icons.info className={iconVariants({ variant: "normal", className: "stroke-accent-primary mr-1" })} />
       Note:
      </span>
      <span className="whitespace-normal">You have to enable this rule to change its settings!</span>
@@ -98,13 +98,13 @@ export function AntiLink({ serverId, enabled, existingActions, existingExemptRol
    >
     <Block className="mb-4 !py-3">
      <Header3>
-      <EyeSlashIcon className="h-6 min-h-6 w-6 min-w-6" /> Ignored:
+      <Icons.hide className={iconVariants({ variant: "large" })} /> Exempt:
      </Header3>
-     <span className="mb-4 font-normal">What should I ignore?</span>
+     <span className="mb-4 font-normal">What should be ignored by the rule?</span>
      <div className="flex w-fit flex-row flex-wrap items-center gap-2 text-center font-bold">
       <Tooltip content="Ignore certain roles from triggering the rule.">
        <span className="flex cursor-help items-center gap-2">
-        <UserGroupIcon className="stroke-accent-primary h-5 min-h-5 w-5 min-w-5" aria-hidden="true" />
+        <Icons.users className={iconVariants({ variant: "normal", className: "stroke-accent-primary" })} />
         Ignore Roles:
        </span>
       </Tooltip>
@@ -118,7 +118,7 @@ export function AntiLink({ serverId, enabled, existingActions, existingExemptRol
      <div className="mt-2 flex w-fit flex-row flex-wrap items-center gap-2 text-center font-bold">
       <Tooltip content="Ignore certain channels from being moderated.">
        <span className="flex cursor-help items-center gap-2">
-        <HashtagIcon className="stroke-accent-primary h-5 min-h-5 w-5 min-w-5" aria-hidden="true" />
+        <Icons.hash className={iconVariants({ variant: "normal", className: "stroke-accent-primary" })} />
         Ignore Channels:
        </span>
       </Tooltip>
@@ -136,14 +136,14 @@ export function AntiLink({ serverId, enabled, existingActions, existingExemptRol
 
     <Block className="mb-4 !py-3">
      <Header3>
-      <WrenchIcon className="h-6 min-h-6 w-6 min-w-6" /> Actions:
+      <Icons.shieldMinus className={iconVariants({ variant: "large" })} /> Actions:
      </Header3>
      <span className="mb-4 font-normal">What should I do when a member triggers the rule?</span>
 
      <div className="my-2 flex flex-row flex-wrap gap-2">
       <Tooltip content="Delete the message that triggered the rule.">
        <span className="flex w-fit cursor-help items-center gap-2 font-bold">
-        <TrashIcon className="h-6 min-h-6 w-6 min-w-6 stroke-red-400" />
+        <Icons.trash className={iconVariants({ variant: "normal", className: "stroke-red-400" })} />
         Delete message:
        </span>
       </Tooltip>
@@ -156,7 +156,7 @@ export function AntiLink({ serverId, enabled, existingActions, existingExemptRol
      <div className="my-2 flex flex-row flex-wrap gap-2">
       <Tooltip content="Timeout the member that triggered the rule.">
        <span className="flex w-fit cursor-help items-center gap-2 font-bold">
-        <ClockIcon className="h-6 min-h-6 w-6 min-w-6 stroke-red-400" />
+        <Icons.timer className={iconVariants({ variant: "normal", className: "stroke-red-400" })} />
         Timeout member:
        </span>
       </Tooltip>
@@ -169,7 +169,7 @@ export function AntiLink({ serverId, enabled, existingActions, existingExemptRol
      <div className="my-2 flex flex-row flex-wrap  gap-2">
       <Tooltip content="Send a message to selected channel when a member triggers the rule.">
        <span className="flex w-fit cursor-help items-center gap-2 font-bold">
-        <ChatBubbleBottomCenterIcon className="h-6 min-h-6 w-6 min-w-6 stroke-red-400" />
+        <Icons.messageWarning className={iconVariants({ variant: "normal", className: "stroke-red-400" })} />
         Log to channel:
        </span>
       </Tooltip>
@@ -185,7 +185,7 @@ export function AntiLink({ serverId, enabled, existingActions, existingExemptRol
       <>
        <div className="my-4 flex flex-row items-start whitespace-nowrap rounded-md border border-red-400 bg-red-400/10 p-4 text-red-400">
         <span className="mr-1 flex flex-row items-center whitespace-nowrap font-bold">
-         <ExclamationTriangleIcon className="mr-1 h-5 min-h-5 w-5 min-w-5 stroke-red-400" />
+         <Icons.warning className={iconVariants({ variant: "normal", className: "mr-1 stroke-red-400" })} />
          Warning:
         </span>
         <span className="whitespace-normal">You have to select at least one action!</span>
@@ -197,12 +197,12 @@ export function AntiLink({ serverId, enabled, existingActions, existingExemptRol
     <ButtonPrimary className="mt-4" onClick={() => save(false)} disabled={!isEnabled || loading || !actions || actions.length === 0}>
      {loading ? (
       <>
-       <ArrowPathIcon className="-ml-1 mr-3 h-5 w-5 animate-spin text-white" aria-hidden="true" />
+       <Icons.refresh className={iconVariants({ variant: "button", className: "animate-spin" })} />
        Saving...
       </>
      ) : (
       <>
-       <CheckIcon className="-ml-1 mr-3 h-5 w-5 text-white" aria-hidden="true" />
+       <Icons.check className={iconVariants({ variant: "button" })} />
        Save
       </>
      )}

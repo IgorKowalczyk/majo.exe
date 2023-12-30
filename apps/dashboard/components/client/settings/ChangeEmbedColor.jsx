@@ -1,6 +1,5 @@
 "use client";
 
-import { ArrowPathIcon, CheckIcon, TrashIcon } from "@heroicons/react/24/outline";
 import { dashboardConfig, globalConfig } from "@majoexe/config";
 import { useState } from "react";
 import { HexColorPicker } from "react-colorful";
@@ -8,6 +7,7 @@ import { toast } from "sonner";
 import { ButtonPrimary } from "@/components/Buttons";
 import { ButtonSecondary } from "@/components/Buttons";
 import Image from "@/components/client/shared/Image";
+import { Icons, iconVariants } from "@/components/Icons";
 import { Input } from "@/components/Input";
 
 export function ChangeEmbedColor({ serverId, serverColor }) {
@@ -109,12 +109,12 @@ export function ChangeEmbedColor({ serverId, serverColor }) {
    </div>
    <div>
     <div className="mt-4 flex items-center gap-1 sm:ml-4">
-     <Image src={dashboardConfig.logo} alt={serverId} quality={95} width={64} height={64} className="min-h-10 min-w-10 h-10 w-10 self-baseline rounded-full" />
+     <Image src={dashboardConfig.logo} alt={serverId} quality={95} width={64} height={64} className="h-10 min-h-10 w-10 min-w-10 self-baseline rounded-full" />
      <div className="flex flex-col">
       <div className="ml-1 flex h-10 flex-row items-center">
        <span className="font-bold">{dashboardConfig.title}</span>{" "}
        <span className="ml-1 flex items-center gap-1 rounded bg-[#5c65f3] px-1 py-[0.12rem] text-xs text-white">
-        <CheckIcon className="min-h-4 min-w-4 h-4 w-4 stroke-2" aria-hidden="true" role="img" /> <span className="-mb-px">BOT</span>
+        <Icons.check className={iconVariants({ variant: "small", className: "stroke-2" })} /> <span className="-mb-px">BOT</span>
        </span>
        <span className="ml-2 text-sm text-gray-400">Today at 4:20 PM</span>
       </div>
@@ -132,11 +132,11 @@ export function ChangeEmbedColor({ serverId, serverColor }) {
        </div>
        <div className="my-2 ml-1 flex flex-row gap-2">
         <ButtonPrimary onClick={handleSubmit} disabled={buttonText === "Saving..."}>
-         {buttonText === "Saving..." ? <ArrowPathIcon className="min-h-5 min-w-5 -ml-1 mr-1 h-5 w-5 animate-spin" /> : <CheckIcon className="min-h-5 min-w-5 -ml-1 mr-1 h-5 w-5" />}
+         {buttonText === "Saving..." ? <Icons.refresh className={iconVariants({ variant: "button", className: "animate-spin" })} /> : <Icons.check className={iconVariants({ variant: "button" })} />}
          {buttonText}
         </ButtonPrimary>
         <ButtonSecondary onClick={handleReset} disabled={resetButtonText === "Resetting..."}>
-         {resetButtonText === "Resetting..." ? <ArrowPathIcon className="min-h-5 min-w-5 -ml-1 mr-1 h-5 w-5 animate-spin" /> : <TrashIcon className="min-h-5 min-w-5 -ml-1 mr-1 h-5 w-5" />}
+         {resetButtonText === "Resetting..." ? <Icons.refresh className={iconVariants({ variant: "button", className: "animate-spin" })} /> : <Icons.trash className={iconVariants({ variant: "button" })} />}
          {resetButtonText}
         </ButtonSecondary>
        </div>

@@ -1,12 +1,11 @@
-import { ArrowUturnLeftIcon } from "@heroicons/react/24/outline";
-import { XMarkIcon } from "@heroicons/react/24/solid";
 import { getSession } from "lib/session";
-import Link from "next/link";
 import { redirect } from "next/navigation";
 import { getProviders } from "next-auth/react";
+import { ButtonSecondary } from "@/components/Buttons";
 import { ProviderLogin } from "@/components/client/ProviderLogin";
 import Image from "@/components/client/shared/Image";
 import { Header1 } from "@/components/Headers";
+import { Icons, iconVariants } from "@/components/Icons";
 import { Dots } from "@/components/Loaders";
 
 export const metadata = {
@@ -26,7 +25,7 @@ export default async function Login({ searchParams }) {
     <Image src="/assets/avatar.png" width={112} height={112} alt="Avatar" className="h-20 min-h-20 w-20 min-w-20 rounded-full sm:h-28 sm:min-h-28 sm:w-28 sm:min-w-28" quality={90} />
     {searchParams.error ? (
      <div className="mx-4 flex items-center justify-center">
-      <XMarkIcon className="h-8 min-h-8 w-8 min-w-8 text-red-500 " />
+      <Icons.close className="h-8 min-h-8 w-8 min-w-8 text-red-500" />
      </div>
     ) : (
      <Dots />
@@ -51,12 +50,10 @@ export default async function Login({ searchParams }) {
     {Object.values(providers).map((provider) => (
      <ProviderLogin key={provider.name} provider={provider} />
     ))}
-    <Link href="/" className="bg-button-secondary hover:bg-button-secondary-hover flex cursor-pointer items-center rounded px-4 py-2 leading-6 text-white duration-200 motion-reduce:transition-none">
-     <>
-      <ArrowUturnLeftIcon className="mr-2 h-5 min-h-5 w-5 min-w-5" aria-hidden="true" role="img" />
-      Go back
-     </>
-    </Link>
+    <ButtonSecondary href="/">
+     <Icons.arrowLeft className={iconVariants({ variant: "button" })} />
+     Go back home
+    </ButtonSecondary>
    </div>
   </div>
  );
