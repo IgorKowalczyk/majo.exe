@@ -1,10 +1,10 @@
 "use client";
 
 import { Dialog, Transition } from "@headlessui/react";
-import { ExclamationTriangleIcon, XMarkIcon, ArrowPathIcon, TrashIcon } from "@heroicons/react/24/outline";
 import { Fragment, useState } from "react";
 import { toast } from "sonner";
 import { RedButton, ButtonSecondary } from "@/components/Buttons";
+import { Icons, iconVariants } from "@/components/Icons";
 
 export function ResetUserXP({ userId, guildId }) {
  const [isOpen, setIsOpen] = useState(false);
@@ -57,7 +57,7 @@ export function ResetUserXP({ userId, guildId }) {
  return (
   <>
    <RedButton className="mt-4 w-fit" onClick={() => setIsOpen(true)}>
-    <TrashIcon className="mr-2 inline-block h-5 w-5" />
+    <Icons.trash className={iconVariants({ variant: "button" })} />
     Reset XP
    </RedButton>
 
@@ -70,8 +70,8 @@ export function ResetUserXP({ userId, guildId }) {
       <div className="flex min-h-full items-center justify-center p-4 text-center ">
        <Transition.Child as={Fragment} enter="transition ease-out duration-200 motion-reduce:transition-none" enterFrom="transform opacity-0 scale-95" enterTo="transform opacity-100 scale-100" leave="transition ease-in duration-100 motion-reduce:duration-[1ms]" leaveFrom="transform opacity-100 scale-100" leaveTo="transform opacity-0 scale-95">
         <Dialog.Panel className="hide-scrollbar bg-background-secondary w-full max-w-lg transform overflow-visible rounded-md border-[1px] border-neutral-800 p-6 text-left align-middle shadow-xl transition-all">
-         <Dialog.Title as="h3" className="text-xl font-semibold text-red-400 duration-200 motion-reduce:transition-none">
-          <ExclamationTriangleIcon className="mr-2 inline-block h-5 w-5 stroke-2" aria-hidden="true" role="img" />
+         <Dialog.Title as="h3" className="flex items-center text-xl font-semibold text-red-400 duration-200 motion-reduce:transition-none">
+          <Icons.warning className={iconVariants({ variant: "large", className: "mr-2 stroke-2" })} />
           Reset XP
          </Dialog.Title>
          <div className="mt-2">
@@ -82,18 +82,18 @@ export function ResetUserXP({ userId, guildId }) {
           <RedButton onClick={handleReset} disabled={loading}>
            {loading ? (
             <>
-             <ArrowPathIcon className="mr-2 inline-block h-5 w-5 animate-spin" aria-hidden="true" role="img" />
+             <Icons.refresh className={iconVariants({ variant: "button", className: "animate-spin" })} />
              Resetting...
             </>
            ) : (
             <>
-             <TrashIcon className="mr-2 inline-block h-5 w-5" aria-hidden="true" role="img" />
+             <Icons.trash className={iconVariants({ variant: "button" })} />
              Yes, reset XP
             </>
            )}
           </RedButton>
           <ButtonSecondary onClick={() => setIsOpen(false)}>
-           <XMarkIcon className="mr-2 inline-block h-5 w-5" aria-hidden="true" role="img" />
+           <Icons.close className={iconVariants({ variant: "button" })} />
            Cancel
           </ButtonSecondary>
          </div>

@@ -1,4 +1,3 @@
-import { ArrowPathIcon } from "@heroicons/react/24/outline";
 import { dashboardConfig } from "@majoexe/config";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
@@ -9,6 +8,7 @@ import ProgressBar from "@/components/client/shared/ProgressBar";
 import { Session } from "@/components/client/shared/Session";
 import { Footer } from "@/components/Footer";
 import { Hotjar } from "@/components/Hotjar";
+import { Icons, iconVariants } from "@/components/Icons";
 import { VisibilityProvider } from "@/components/nav/client/VisibilityContext";
 import { Nav } from "@/components/nav/server/Nav";
 import { TailwindIndicator } from "@/components/TailwindIndicator";
@@ -74,7 +74,7 @@ export default function RootLayout({ children }) {
        theme="dark"
        closeButton={true}
        visibleToasts={4}
-       loadingIcon={<ArrowPathIcon className="h-5 w-5 animate-spin text-white" />}
+       loadingIcon={<Icons.refresh className={iconVariants({ variant: "normal", className: "animate-spin" })} />}
        expand={false}
       />
       <SpeedInsights />

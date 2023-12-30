@@ -1,5 +1,5 @@
-import { ArrowUturnRightIcon } from "@heroicons/react/24/outline";
 import { getSession } from "lib/session";
+import { Icons, iconVariants } from "./Icons";
 import { ButtonPrimary } from "@/components/Buttons";
 import { ProviderLogin } from "@/components/client/ProviderLogin";
 
@@ -12,7 +12,7 @@ export async function LoginButton() {
 
  return (
   <ButtonPrimary href="/dashboard">
-   <ArrowUturnRightIcon className="min-h-5 min-w-5 mr-2 h-5 w-5" aria-hidden="true" role="img" /> Go to dashboard
+   <Icons.cornerRight className={iconVariants({ variant: "button" })} /> Go to dashboard
   </ButtonPrimary>
  );
 }

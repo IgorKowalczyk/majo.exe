@@ -1,14 +1,14 @@
 "use client";
 
-import { MagnifyingGlassIcon, BarsArrowDownIcon, BarsArrowUpIcon } from "@heroicons/react/24/outline";
-import { CubeTransparentIcon, CubeIcon, NoSymbolIcon, PaintBrushIcon, LinkIcon, UsersIcon } from "@heroicons/react/24/solid";
 import { formatDate, formatDuration } from "@majoexe/util/functions/util";
+import clsx from "clsx";
 import Link from "next/link";
 import React, { useState, useRef, useEffect } from "react";
 import InfiniteScroll from "react-infinite-scroller";
 import { Disclosure } from "../shared/Disclosure";
 import Image from "@/components/client/shared/Image";
 import { Tooltip } from "@/components/client/shared/Tooltip";
+import { Icons, iconVariants } from "@/components/Icons";
 import { InputWithIcon } from "@/components/Input";
 import { GraphSkeleton } from "@/components/Skeletons";
 
@@ -26,10 +26,8 @@ export default function Logs({ initialItems, id }) {
     fetching.current = true;
     const response = await fetch(`${process.env.NEXT_PUBLIC_URL}/api/logs/${id}?page=${page}`);
     const data = await response.json();
-    if (!data.length) {
-     setHasMore(false);
-     return;
-    }
+    if (!data.length) return setHasMore(false);
+
     const filteredData = data.filter((item) => !items.some((i) => i.id === item.id));
     filteredData.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
     setPages((prev) => [...prev, filteredData]);
@@ -40,9 +38,7 @@ export default function Logs({ initialItems, id }) {
  };
 
  useEffect(() => {
-  if (pages.length === 1 && !initialItems.length) {
-   setHasMore(false);
-  }
+  if (pages.length === 1 && !initialItems.length) setHasMore(false);
  }, [initialItems.length, pages.length]);
 
  const filteredItems = items.filter((item) => item.content.toLowerCase().includes(searchQuery.toLowerCase()));
@@ -60,10 +56,31 @@ export default function Logs({ initialItems, id }) {
  return (
   <div className="block">
    <div className="mb-4 flex items-center justify-center gap-2">
-    <InputWithIcon placeholder="Search..." value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} icon={<MagnifyingGlassIcon className="h-5 min-h-5 w-5 min-w-5 text-white/50" aria-hidden="true" role="img" />} />
+    <InputWithIcon placeholder="Search..." value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} icon={<Icons.refresh className={iconVariants({ variant: "normal", className: "text-white/50" })} />} />
     <Tooltip content={sortDescending ? "Sort ascending" : "Sort descending"}>
      <span onClick={() => setSortDescending(!sortDescending)} className="hover:border-button-primary flex h-[41.6px] cursor-pointer items-center justify-center rounded-md border border-neutral-800 px-3 py-2 text-white duration-200">
-      {sortDescending ? <BarsArrowDownIcon className="h-5 min-h-5 w-5 min-w-5" /> : <BarsArrowUpIcon className="h-5 min-h-5 w-5 min-w-5" />}
+      <div className="relative h-5 w-5">
+       <Icons.sortDescending
+        className={iconVariants({
+         variant: "normal",
+         className: clsx(
+          // prettier
+          "absolute left-0 top-0 h-full w-full duration-200",
+          { "scale-0 opacity-0": !sortDescending, "scale-100 opacity-100": sortDescending }
+         ),
+        })}
+       />
+       <Icons.sortAscending
+        className={iconVariants({
+         variant: "normal",
+         className: clsx(
+          // prettier
+          "absolute left-0 top-0 h-full w-full duration-200",
+          { "scale-0 opacity-0": sortDescending, "scale-100 opacity-100": !sortDescending }
+         ),
+        })}
+       />
+      </div>
      </span>
     </Tooltip>
    </div>
@@ -76,12 +93,11 @@ export default function Logs({ initialItems, id }) {
         <div className="flex flex-row items-center gap-4">
          {item.type && (
           <>
-           {item.type === "profanity" && <NoSymbolIcon className="h-6 min-h-6 w-6 min-w-6 text-red-400" />}
-           {item.type === "embed_color" && <PaintBrushIcon className="ui-open:text-accent-primary h-6 min-h-6 w-6 min-w-6 text-white/60 duration-200" />}
-           {item.type === "command_change" && <CubeTransparentIcon className="ui-open:text-accent-primary h-6 min-h-6 w-6 min-w-6 text-white/60 duration-200" />}
-           {item.type === "category_change" && <CubeIcon className="ui-open:text-accent-primary h-6 min-h-6 w-6 min-w-6 text-white/60 duration-200" />}
-           {item.type === "public_dashboard" && <UsersIcon className="ui-open:text-accent-primary h-6 min-h-6 w-6 min-w-6 text-white/60 duration-200" />}
-           {item.type === "vanity" && <LinkIcon className="ui-open:text-accent-primary h-6 min-h-6 w-6 min-w-6 text-white/60 duration-200" />}
+           {item.type === "embed_color" && <Icons.paintBrush className={iconVariants({ variant: "large", className: "ui-open:text-accent-primary stroke-2 text-white/60 duration-200" })} />}
+           {item.type === "command_change" && <Icons.slash className={iconVariants({ variant: "large", className: "ui-open:text-accent-primary stroke-2 text-white/60 duration-200" })} />}
+           {item.type === "category_change" && <Icons.blocks className={iconVariants({ variant: "large", className: "ui-open:text-accent-primary stroke-2 text-white/60 duration-200" })} />}
+           {item.type === "public_dashboard" && <Icons.users className={iconVariants({ variant: "large", className: "ui-open:text-accent-primary stroke-2 text-white/60 duration-200" })} />}
+           {item.type === "vanity" && <Icons.link className={iconVariants({ variant: "large", className: "ui-open:text-accent-primary stroke-2 text-white/60 duration-200" })} />}
           </>
          )}
          {item.user?.avatar && <Image src={`https://cdn.discordapp.com/avatars/${item.user?.discordId}/${item.user?.avatar}.${item.user?.avatar.startsWith("a_") ? "gif" : "png"}`} alt={`${item.user?.name} avatar`} quality={95} width={32} height={32} className="h-12 min-h-12 w-12 min-w-12 rounded-full" />}

@@ -1,4 +1,3 @@
-import { GiftIcon } from "@heroicons/react/24/outline";
 import prismaClient from "@majoexe/database";
 import { getGuildMember, getServer } from "@majoexe/util/functions/guild";
 import { getSession } from "lib/session";
@@ -9,6 +8,7 @@ import { Header1 } from "@/components/Headers";
 import "tippy.js/dist/backdrop.css";
 import "tippy.js/animations/shift-away.css";
 import "tippy.js/dist/tippy.css";
+import { Icons, iconVariants } from "@/components/Icons";
 
 export const metadata = {
  title: "Giveaways",
@@ -90,7 +90,7 @@ export default async function ServerGiveaways({ params }) {
  return (
   <>
    <Header1>
-    <GiftIcon className="h-9 min-h-9 w-9 min-w-9" />
+    <Icons.gift className={iconVariants({ variant: "extraLarge" })} />
     Giveaways
    </Header1>
    <Block className="mt-4 flex w-full overflow-auto">

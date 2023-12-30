@@ -1,5 +1,5 @@
-import { ArrowPathIcon, ListBulletIcon, MagnifyingGlassIcon } from "@heroicons/react/24/outline";
 import { Header1 } from "@/components/Headers";
+import { Icons, iconVariants } from "@/components/Icons";
 import { InputWithIcon } from "@/components/Input";
 import { GraphSkeleton } from "@/components/Skeletons";
 
@@ -7,14 +7,14 @@ export default function Loading() {
  return (
   <>
    <Header1>
-    <ListBulletIcon className="h-9 min-h-9 w-9 min-w-9" />
+    <Icons.list className={iconVariants({ variant: "extraLarge" })} />
     Activity Logs
    </Header1>
    <div className="mt-4 gap-4 overflow-auto">
     <div className="mb-4 flex items-center justify-center gap-2">
-     <InputWithIcon placeholder="Search..." icon={<MagnifyingGlassIcon className="h-5 min-h-5 w-5 min-w-5 text-white/50" aria-hidden="true" role="img" />} disabled={true} />
+     <InputWithIcon placeholder="Search..." icon={<Icons.search className={iconVariants({ variant: "normal", className: "text-white/50" })} />} disabled={true} />
      <span className="hover:border-button-primary flex h-[41.6px] cursor-pointer items-center justify-center rounded-md border border-neutral-800 px-3 py-2 text-white duration-200">
-      <ArrowPathIcon className="h-5 min-h-5 w-5 min-w-5 animate-spin" />
+      <Icons.refresh className={iconVariants({ variant: "normal", className: "stroke-accent-primary animate-spin" })} />
      </span>
     </div>
     {[...Array(5)].map((_, i) => (

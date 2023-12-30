@@ -1,6 +1,5 @@
 /* eslint-disable complexity */
 
-import { AtSymbolIcon, ChatBubbleBottomCenterTextIcon, ChatBubbleLeftEllipsisIcon, NoSymbolIcon } from "@heroicons/react/24/outline";
 import { globalConfig } from "@majoexe/config";
 import prismaClient from "@majoexe/database";
 import { syncAutoModRule } from "@majoexe/util/database";
@@ -15,11 +14,12 @@ import { Header1, Header2, Header5 } from "@/components/Headers";
 import "tippy.js/dist/backdrop.css";
 import "tippy.js/animations/shift-away.css";
 import "tippy.js/dist/tippy.css";
+import { Icons, iconVariants } from "@/components/Icons";
 import { NavBadge } from "@/components/nav/client/SideNav";
 
 export const metadata = {
- title: "Leaderboard",
- description: "View the leaderboard for your server.",
+ title: "Automod",
+ description: "Automatically moderate your server, block bad words, links and other things.",
 };
 
 export default async function ServerAutomod({ params }) {
@@ -97,7 +97,7 @@ export default async function ServerAutomod({ params }) {
  return (
   <>
    <Header1>
-    <ChatBubbleBottomCenterTextIcon className="h-9 min-h-9 w-9 min-w-9" />
+    <Icons.bot className={iconVariants({ variant: "extraLarge" })} />
     Automod
    </Header1>
    <Header5 className="mb-4 mt-2 !justify-start !text-left">
@@ -119,7 +119,7 @@ export default async function ServerAutomod({ params }) {
    </Block>
    <Block className="mb-4">
     <Header2>
-     <AtSymbolIcon className="h-6 min-h-6 w-6 min-w-6" />
+     <Icons.mention className={iconVariants({ variant: "large" })} />
      Anti-Mention <NavBadge>Coming Soon</NavBadge>
     </Header2>
     <p className="mb-4 text-left">
@@ -128,7 +128,7 @@ export default async function ServerAutomod({ params }) {
    </Block>
    <Block className="mb-4">
     <Header2>
-     <ChatBubbleLeftEllipsisIcon className="h-6 min-h-6 w-6 min-w-6" />
+     <Icons.messageOff className={iconVariants({ variant: "large" })} />
      Anti-Spam <NavBadge>Coming Soon</NavBadge>
     </Header2>
     <p className="mb-4 text-left">
@@ -137,7 +137,7 @@ export default async function ServerAutomod({ params }) {
    </Block>
    <Block className="mb-4">
     <Header2>
-     <NoSymbolIcon className="h-6 min-h-6 w-6 min-w-6" />
+     <Icons.shieldBan className={iconVariants({ variant: "large" })} />
      Anti-Badwords <NavBadge>Coming Soon</NavBadge>
     </Header2>
     <p className="mb-4 text-left">

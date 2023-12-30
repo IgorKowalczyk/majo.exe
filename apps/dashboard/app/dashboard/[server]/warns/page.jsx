@@ -1,5 +1,3 @@
-import { ExclamationTriangleIcon } from "@heroicons/react/24/outline";
-import { SparklesIcon } from "@heroicons/react/24/solid";
 import prismaClient from "@majoexe/database";
 import { getGuildMember, getServer } from "@majoexe/util/functions/guild";
 import { getSession } from "lib/session";
@@ -7,9 +5,10 @@ import { redirect } from "next/navigation";
 import { Block } from "@/components/Block";
 import { Warns } from "@/components/client/lists/Warns";
 import { Header1, Header5 } from "@/components/Headers";
+import { Icons, iconVariants } from "@/components/Icons";
 
 export const metadata = {
- title: "Server warns",
+ title: "Warns",
  description: "View the warn logs of your server.",
 };
 
@@ -71,7 +70,7 @@ export default async function ServerLogs({ params }) {
  return (
   <>
    <Header1>
-    <ExclamationTriangleIcon className="h-9 min-h-9 w-9 min-w-9" />
+    <Icons.warning className={iconVariants({ variant: "extraLarge" })} />
     Warns <span className="text-accent-primary">({data.length})</span>
    </Header1>
    <Header5 className="mb-4 !block !justify-start gap-1 !text-left">
@@ -80,7 +79,7 @@ export default async function ServerLogs({ params }) {
    <Block className="mt-4 flex w-full overflow-auto">
     {data.length === 0 && (
      <p className="flex items-center gap-2 text-left">
-      <SparklesIcon className="h-5 min-h-5 w-5 min-w-5" />
+      <Icons.sparkles className={iconVariants({ variant: "normal" })} />
       Hooray! No warns have been issued yet.
      </p>
     )}

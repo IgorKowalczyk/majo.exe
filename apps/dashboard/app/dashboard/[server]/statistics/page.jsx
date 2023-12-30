@@ -1,6 +1,5 @@
 /* eslint-disable complexity */
 
-import { ArrowTrendingDownIcon, ArrowTrendingUpIcon, ChatBubbleLeftRightIcon, MinusIcon, UserMinusIcon, UserPlusIcon } from "@heroicons/react/24/outline";
 import prismaClient from "@majoexe/database";
 import { getGuildMember, getServer } from "@majoexe/util/functions/guild";
 import { json2csv } from "json-2-csv";
@@ -8,6 +7,7 @@ import { getSession } from "lib/session";
 import { redirect } from "next/navigation";
 import { GraphCard } from "@/components/Card";
 import { ServerStatsChart } from "@/components/client/charts/ServerStatsChart";
+import { Icons, iconVariants } from "@/components/Icons";
 
 export default async function Statistics({ params }) {
  const session = await getSession();
@@ -116,31 +116,31 @@ export default async function Statistics({ params }) {
     <GraphCard
      className="mt-0"
      data={{
-      icon: <UserPlusIcon className="h-8 min-h-8 w-8 min-w-8" />,
+      icon: <Icons.userAdd className={iconVariants({ variant: "extraLarge" })} />,
       title: "New Members",
       description: "Amount of new members that joined your server in the last 7 days.",
       value: newMembers,
-      graph: newMembers === 0 ? <MinusIcon className="h-5 min-h-5 w-5 min-w-5" /> : newMembers < 0 ? <ArrowTrendingDownIcon className="h-5 min-h-5 w-5 min-w-5" /> : <ArrowTrendingUpIcon className="h-5 min-h-5 w-5 min-w-5" />,
+      graph: newMembers === 0 ? <Icons.minus className={iconVariants({ variant: "normal " })} /> : newMembers < 0 ? <Icons.trendingDown className={iconVariants({ variant: "normal " })} /> : <Icons.trendingUp className={iconVariants({ variant: "normal " })} />,
      }}
     />
     <GraphCard
      className="mt-0"
      data={{
-      icon: <UserMinusIcon className="h-8 min-h-8 w-8 min-w-8" />,
+      icon: <Icons.userMinus className={iconVariants({ variant: "extraLarge" })} />,
       title: "Members Left",
       description: "Amount of members that left your server in the last 7 days.",
       value: membersLeft,
-      graph: membersLeft === 0 ? <MinusIcon className="h-5 min-h-5 w-5 min-w-5" /> : membersLeft < 0 ? <ArrowTrendingDownIcon className="h-5 min-h-5 w-5 min-w-5" /> : <ArrowTrendingUpIcon className="h-5 min-h-5 w-5 min-w-5" />,
+      graph: membersLeft === 0 ? <Icons.minus className={iconVariants({ variant: "normal " })} /> : membersLeft < 0 ? <Icons.trendingDown className={iconVariants({ variant: "normal " })} /> : <Icons.trendingUp className={iconVariants({ variant: "normal " })} />,
      }}
     />
     <GraphCard
      className="col-span-1 mt-0 lg:col-span-2 xl:col-span-1"
      data={{
-      icon: <ChatBubbleLeftRightIcon className="h-8 min-h-8 w-8 min-w-8" />,
+      icon: <Icons.commentAdd className={iconVariants({ variant: "extraLarge" })} />,
       title: "New Messages",
       description: "The amount of messages that were sent in your server in the last 7 days.",
       value: newMessages,
-      graph: newMessages === 0 ? <MinusIcon className="h-5 min-h-5 w-5 min-w-5" /> : newMessages < 0 ? <ArrowTrendingDownIcon className="h-5 min-h-5 w-5 min-w-5" /> : <ArrowTrendingUpIcon className="h-5 min-h-5 w-5 min-w-5" />,
+      graph: newMessages === 0 ? <Icons.minus className={iconVariants({ variant: "normal " })} /> : newMessages < 0 ? <Icons.trendingDown className={iconVariants({ variant: "normal " })} /> : <Icons.trendingUp className={iconVariants({ variant: "normal " })} />,
      }}
     />
    </div>

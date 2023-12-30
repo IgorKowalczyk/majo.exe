@@ -1,6 +1,5 @@
 "use client";
 
-import { ClockIcon, PencilIcon } from "@heroicons/react/24/outline";
 import { formatDate, formatDuration } from "@majoexe/util/functions/util";
 import Link from "next/link";
 import { useMemo } from "react";
@@ -8,6 +7,7 @@ import { ButtonSecondary } from "@/components/Buttons";
 import Image from "@/components/client/shared/Image";
 import { Table } from "@/components/client/shared/Table";
 import { Tooltip } from "@/components/client/shared/Tooltip";
+import { Icons, iconVariants } from "@/components/Icons";
 
 export function Giveaways({ data = [] }) {
  const columns = useMemo(
@@ -29,15 +29,15 @@ export function Giveaways({ data = [] }) {
      <>
       {value.ended ? (
        <Tooltip content={`Ended ${formatDate(value.endedAt)} (${formatDuration(new Date(value.endedAt) - new Date(value.startedAt))})`}>
-        <div className="flex cursor-help items-center space-x-2">
-         <ClockIcon className="h-4 w-4 text-red-400" />
+        <div className="flex cursor-help items-center">
+         <Icons.timer className={iconVariants({ variant: "button", className: "text-red-400" })} />
          <span className="text-red-400">Ended</span>
         </div>
        </Tooltip>
       ) : (
        <Tooltip content={`Started ${formatDate(value.startedAt)} (${formatDuration(Date.now() - new Date(value.startedAt))} ago)`}>
-        <div className="flex cursor-help items-center space-x-2">
-         <ClockIcon className="h-4 w-4 text-yellow-500" />
+        <div className="flex cursor-help items-center">
+         <Icons.timer className={iconVariants({ variant: "button", className: "text-yellow-400" })} />
          <span className="text-yellow-500">Ends in {formatDuration(new Date(value.endedAt) - Date.now())}</span>
         </div>
        </Tooltip>
@@ -72,7 +72,7 @@ export function Giveaways({ data = [] }) {
     Cell: () => (
      <Tooltip content="Editing giveaways is not yet supported">
       <ButtonSecondary className="!w-fit" disabled>
-       <PencilIcon className="-ml-1 mr-2 h-5 min-h-5 w-5 min-w-5" />
+       <Icons.edit className={iconVariants({ variant: "button" })} />
        Edit
       </ButtonSecondary>
      </Tooltip>

@@ -1,10 +1,10 @@
 "use client";
 
-import { SparklesIcon } from "@heroicons/react/24/solid";
 import { dashboardConfig } from "@majoexe/config";
 import clsx from "clsx";
 import Link from "next/link";
 import { useSelectedLayoutSegment, usePathname } from "next/navigation";
+import { Icons } from "./Icons";
 import { ButtonPrimary } from "@/components/Buttons";
 import Image from "@/components/client/shared/Image";
 
@@ -28,7 +28,7 @@ export function Footer() {
       <div className="flex items-center space-x-5">
        <Link href="/">
         <p className="flex cursor-pointer items-center text-2xl font-semibold">
-         <Image className="min-h-9 min-w-9 mr-2 h-9 w-9 rounded-full" src={dashboardConfig.logo} alt={`${dashboardConfig.title} logo`} width={36} height={36} />
+         <Image className="mr-2 h-9 min-h-9 w-9 min-w-9 rounded-full" src={dashboardConfig.logo} alt={`${dashboardConfig.title} logo`} width={36} height={36} />
          {dashboardConfig.title}
         </p>
        </Link>
@@ -50,7 +50,7 @@ export function Footer() {
          </Link>
          .
          <ButtonPrimary className="mt-3 w-fit" href="https://majoexe.xyz/invite">
-          <SparklesIcon className="mr-2 h-5 w-5" />
+          <Icons.sparkles className="mr-2 h-5 w-5" />
           Invite original Majo.exe
          </ButtonPrimary>
         </div>

@@ -1,9 +1,9 @@
 "use client";
 
-import { ExclamationCircleIcon } from "@heroicons/react/24/outline";
 import { globalConfig } from "@majoexe/config";
 import { Area, CartesianGrid, AreaChart as ReChartsAreaChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
 import { twMerge } from "tailwind-merge";
+import { Icons, iconVariants } from "@/components/Icons";
 
 export default function AreaChart({ data = [], categories = [], index, valueFormatter = (value) => value, startEndOnly = false, showXAxis = true, showYAxis = true, yAxisWidth = 56, autoMinValue = false, curveType = "monotone", minValue, maxValue, connectNulls = true, noDataText = "This chart has no data! Please check back later.", className, ...other }) {
  const yAxisDomain = autoMinValue ? [0, "auto"] : [minValue ?? 0, maxValue ?? "auto"];
@@ -51,7 +51,7 @@ export default function AreaChart({ data = [], categories = [], index, valueForm
      </ReChartsAreaChart>
     ) : (
      <p className="mb-4 flex items-center justify-start gap-2 text-left text-red-400">
-      <ExclamationCircleIcon className="h-5 min-h-5 w-5 min-w-5" />
+      <Icons.warning className={iconVariants({ variant: "large", className: "mr-2 stroke-2" })} />
       {noDataText}
      </p>
     )}

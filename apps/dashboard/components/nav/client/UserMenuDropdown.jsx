@@ -1,9 +1,9 @@
 "use client";
 
-import { RectangleStackIcon, UserIcon, ArrowRightStartOnRectangleIcon, QuestionMarkCircleIcon } from "@heroicons/react/24/outline";
 import { signOut } from "next-auth/react";
 import Image from "@/components/client/shared/Image";
 import Menu from "@/components/client/shared/Menu";
+import { Icons, iconVariants } from "@/components/Icons";
 
 export function UserMenuDropdown({ user }) {
  return (
@@ -18,19 +18,19 @@ export function UserMenuDropdown({ user }) {
    >
     <div className="mb-2">
      <Menu.Link href="/dashboard">
-      <RectangleStackIcon className="mr-2 h-5 min-h-5 w-5 min-w-5 " aria-hidden="true" role="img" /> Dashboard
+      <Icons.dashboard className={iconVariants({ variant: "button", className: "ml-1" })} /> Dashboard
      </Menu.Link>
      <Menu.Link href="/user/profile">
-      <UserIcon className="mr-2 h-5 min-h-5 w-5 min-w-5 " aria-hidden="true" role="img" /> Profile
+      <Icons.user className={iconVariants({ variant: "button", className: "ml-1" })} /> Profile
      </Menu.Link>
     </div>
 
     <div className="pt-1">
      <Menu.Link href="/discord">
-      <QuestionMarkCircleIcon className="mr-2 h-5 min-h-5 w-5 min-w-5 " aria-hidden="true" role="img" /> Support
+      <Icons.help className={iconVariants({ variant: "button", className: "ml-1" })} /> Support
      </Menu.Link>
      <Menu.Item onClick={() => signOut({ redirect: true, callbackUrl: "/" })} style="action">
-      <ArrowRightStartOnRectangleIcon className="mr-2 h-5 min-h-5 w-5 min-w-5" aria-hidden="true" role="img" /> Logout
+      <Icons.logout className={iconVariants({ variant: "button", className: "ml-1" })} /> Logout
      </Menu.Item>
     </div>
    </Menu>

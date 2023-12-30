@@ -1,6 +1,5 @@
 "use client";
 
-import { ArrowPathIcon, CheckIcon, TrashIcon, UserIcon } from "@heroicons/react/24/outline";
 import { formatDuration } from "@majoexe/util/functions/util";
 import { useRouter } from "next/navigation";
 import { useMemo, useState } from "react";
@@ -10,6 +9,7 @@ import { ButtonSecondary } from "@/components/Buttons";
 import Image from "@/components/client/shared/Image";
 import { Table } from "@/components/client/shared/Table";
 import { Tooltip } from "@/components/client/shared/Tooltip";
+import { Icons, iconVariants } from "@/components/Icons";
 import { AvatarSkeleton, TextSkeleton } from "@/components/Skeletons";
 
 export function Warns({ data, showControls = true, showSearch = true }) {
@@ -50,7 +50,7 @@ export function Warns({ data, showControls = true, showSearch = true }) {
     accessor: "link",
     Cell: ({ value }) => (
      <ButtonSecondary className="w-fit" href={`user/${value}#warns`}>
-      <UserIcon className="-ml-1 mr-2 h-5 min-h-5 w-5 min-w-5" />
+      <Icons.warning className={iconVariants({ variant: "button" })} />
       View profile
      </ButtonSecondary>
     ),
@@ -139,19 +139,19 @@ export function ManageWarns({ data, guildId, showControls = true, showSearch = t
      <RedButton className="w-fit" onClick={() => removeWarn(value)} disabled={loadingWarns?.includes(value) || deletedWarns?.includes(value)}>
       {deletedWarns?.includes(value) ? (
        <>
-        <CheckIcon className="-ml-1 mr-2 h-5 min-h-5 w-5 min-w-5" />
+        <Icons.check className={iconVariants({ variant: "button" })} />
         Deleted!
        </>
       ) : (
        <>
         {loadingWarns?.includes(value) ? (
          <>
-          <ArrowPathIcon className="-ml-1 mr-2 h-5 min-h-5 w-5 min-w-5 animate-spin" />
+          <Icons.refresh className={iconVariants({ variant: "button", className: "animate-spin" })} />
           Deleting...
          </>
         ) : (
          <>
-          <TrashIcon className="-ml-1 mr-2 h-5 min-h-5 w-5 min-w-5" />
+          <Icons.trash className={iconVariants({ variant: "button" })} />
           Delete
          </>
         )}

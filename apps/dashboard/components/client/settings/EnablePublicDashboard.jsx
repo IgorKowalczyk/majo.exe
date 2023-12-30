@@ -1,11 +1,11 @@
 "use client";
 
-import { ArrowPathIcon, CheckIcon, ExclamationCircleIcon } from "@heroicons/react/24/outline";
 import clsx from "clsx";
 import { useState } from "react";
 import { toast } from "sonner";
 import { ButtonPrimary } from "@/components/Buttons";
 import Switch from "@/components/client/shared/Switch";
+import { Icons, iconVariants } from "@/components/Icons";
 import { Input } from "@/components/Input";
 
 export function EnablePublicDashboard({ enabled, serverId, vanityURL }) {
@@ -161,13 +161,13 @@ export function EnablePublicDashboard({ enabled, serverId, vanityURL }) {
       </div>
      </div>
      <ButtonPrimary onClick={(e) => updateVanity(e)} disabled={disabled || vanityError || vanity.length === 0 || buttonText === "Updating..."} className="mx-auto font-normal md:mx-0">
-      {buttonText === "Updating..." ? <ArrowPathIcon className="mr-2 h-5 min-h-5 w-5 min-w-5 animate-spin" /> : <CheckIcon className="mr-2 h-5 min-h-5 w-5 min-w-5" />} {buttonText}
+      {buttonText === "Updating..." ? <Icons.refresh className={iconVariants({ variant: "button", className: "animate-spin" })} /> : <Icons.check className={iconVariants({ variant: "button" })} />} {buttonText}
      </ButtonPrimary>
     </div>
    </div>
    {vanityError && (
     <p className="flex items-center text-red-400">
-     <ExclamationCircleIcon className="mr-2 h-5 min-h-5 w-5 min-w-5" />
+     <Icons.warning className={iconVariants({ variant: "normal", className: "mr-1" })} />
      {vanityError}
     </p>
    )}

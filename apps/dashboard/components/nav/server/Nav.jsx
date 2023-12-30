@@ -1,4 +1,3 @@
-import { RectangleStackIcon, UserPlusIcon } from "@heroicons/react/24/outline";
 import { dashboardConfig } from "@majoexe/config";
 import clsx from "clsx";
 import { getSession } from "lib/session";
@@ -6,6 +5,7 @@ import Link from "next/link";
 import { ButtonSecondary } from "@/components/Buttons";
 import { ProviderLogin } from "@/components/client/ProviderLogin";
 import Image from "@/components/client/shared/Image";
+import { Icons, iconVariants } from "@/components/Icons";
 import { SideMenuControl } from "@/components/nav/client/SideMenuControl";
 import { UserMenuDropdown } from "@/components/nav/client/UserMenuDropdown";
 
@@ -33,9 +33,7 @@ export async function Nav({ theme }) {
     <div className="hidden md:flex">
      <div className="mx-4 h-6 w-1 border-l-2 border-l-neutral-700" />
      <Link href="/commands" className="flex items-center text-white/60 duration-200 hover:text-white motion-reduce:transition-none">
-      <svg className="mr-2 h-6 min-h-6 w-6 min-w-5" aria-hidden="true" role="img" width="24" height="24" viewBox="0 0 24 24">
-       <path fill="currentColor" fillRule="evenodd" clipRule="evenodd" d="M5 3C3.89543 3 3 3.89543 3 5V19C3 20.1046 3.89543 21 5 21H19C20.1046 21 21 20.1046 21 19V5C21 3.89543 20.1046 3 19 3H5ZM16.8995 8.41419L15.4853 6.99998L7 15.4853L8.41421 16.8995L16.8995 8.41419Z" />
-      </svg>
+      <Icons.slash className={iconVariants({ variant: "large", className: "mr-2" })} />
       <span className="-mb-px">Commands</span>
      </Link>
     </div>
@@ -43,7 +41,7 @@ export async function Nav({ theme }) {
      {session ? (
       <div className="flex items-center gap-2">
        <Link href="/dashboard" className="hidden items-center text-white/60 duration-200 hover:text-white motion-reduce:transition-none md:flex">
-        <RectangleStackIcon className="mr-2 h-6 min-h-6 w-6 min-w-6" aria-hidden="true" role="img" /> <span className="-mb-px">Dashboard</span>
+        <Icons.dashboard className={iconVariants({ variant: "large", className: "mr-2" })} /> <span className="-mb-px">Dashboard</span>
        </Link>
        <UserMenuDropdown user={session} />
       </div>
@@ -51,7 +49,7 @@ export async function Nav({ theme }) {
       <div className="flex items-center justify-center gap-2">
        <div className="hidden md:block">
         <ButtonSecondary href="/api/invite">
-         <UserPlusIcon className="mr-2 h-5 min-h-5 w-5 min-w-5" aria-hidden="true" role="img" />
+         <Icons.userAdd className={iconVariants({ variant: "button" })} />
          Add to your server
         </ButtonSecondary>
        </div>

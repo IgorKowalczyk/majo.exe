@@ -1,4 +1,3 @@
-import { CubeIcon, CubeTransparentIcon, SquaresPlusIcon, InformationCircleIcon } from "@heroicons/react/24/outline";
 import { botConfig } from "@majoexe/config";
 import prismaClient from "@majoexe/database";
 import { getGuildMember, getServer } from "@majoexe/util/functions/guild";
@@ -10,6 +9,7 @@ import { UpdateCategories } from "@/components/client/commandModules/UpdateCateg
 import { UpdateCommands } from "@/components/client/commandModules/UpdateCommands";
 import { Tooltip } from "@/components/client/shared/Tooltip";
 import { Header1, Header2, Header3 } from "@/components/Headers";
+import { Icons, iconVariants } from "@/components/Icons";
 
 export default async function Settings({ params }) {
  const session = await getSession();
@@ -58,12 +58,12 @@ export default async function Settings({ params }) {
  return (
   <>
    <Header1>
-    <SquaresPlusIcon className="h-9 min-h-9 w-9 min-w-9" />
+    <Icons.packagePlus className={iconVariants({ variant: "extraLarge" })} />
     Modules
    </Header1>
    <Block className="mt-4">
     <Header2>
-     <CubeIcon className="h-8 min-h-8 w-8 min-w-8" />
+     <Icons.blocks className={iconVariants({ variant: "large", className: "stroke-2" })} />
      Categories
     </Header2>
     <p className="mb-4 mt-2 text-left">Enable or disable categories of commands.</p>
@@ -91,7 +91,7 @@ export default async function Settings({ params }) {
 
    <Block className="mt-4">
     <Header2>
-     <CubeTransparentIcon className="h-8 min-h-8 w-8 min-w-8" />
+     <Icons.slash className={iconVariants({ variant: "large", className: "stroke-2" })} />
      Commands
     </Header2>
     <p className="mb-4 mt-2 text-left">Enable or disable commands.</p>
@@ -105,8 +105,7 @@ export default async function Settings({ params }) {
       {guild.guildDisabledCategories.some((cat) => cat.categoryName === category.name) && (
        <div className="border-accent-primary bg-accent-primary/10 my-4 flex flex-row flex-wrap items-start whitespace-nowrap rounded-md border p-4">
         <span className="mr-1 flex flex-row items-center whitespace-nowrap font-bold">
-         <InformationCircleIcon className="stroke-accent-primary mr-1 h-5 min-h-5 w-5 min-w-5" />
-         Note:
+         <Icons.info className={iconVariants({ variant: "normal", className: "stroke-accent-primary mr-1" })} /> Note:
         </span>
         <span className="whitespace-normal">You have to enable this category to change status of individual commands in it!</span>
        </div>

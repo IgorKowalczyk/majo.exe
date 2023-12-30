@@ -1,7 +1,7 @@
-import { QuestionMarkCircleIcon, ArrowLeftIcon } from "@heroicons/react/24/outline";
 import { ButtonPrimary } from "@/components/Buttons";
 import { ButtonSecondary } from "@/components/Buttons";
 import { Header2, Header3, HeaderBig } from "@/components/Headers";
+import { Icons, iconVariants } from "@/components/Icons";
 import "styles/glitch.css";
 
 export default function NotFound() {
@@ -18,11 +18,11 @@ export default function NotFound() {
     <Header3 className="text-center font-normal opacity-50">We're sorry we can't find the page you're looking for.</Header3>
     <div className="mt-4 flex flex-wrap justify-center gap-2">
      <ButtonPrimary href="/">
-      <ArrowLeftIcon className="mr-2 h-5 min-h-5 w-5 min-w-5" aria-hidden="true" role="img" />
+      <Icons.arrowLeft className={iconVariants({ variant: "button" })} />
       Go back home
      </ButtonPrimary>
      <ButtonSecondary href="/discord">
-      <QuestionMarkCircleIcon className="mr-2 h-5 min-h-5 w-5 min-w-5" aria-hidden="true" role="img" /> Contact support
+      <Icons.help className={iconVariants({ variant: "button" })} /> Contact support
      </ButtonSecondary>
     </div>
    </div>

@@ -1,5 +1,5 @@
-import { RectangleStackIcon } from "@heroicons/react/24/outline";
 import { Header1, Header2 } from "@/components/Headers";
+import { Icons } from "@/components/Icons";
 import { AvatarSkeleton, TextSkeleton, ButtonSkeleton } from "@/components/Skeletons";
 
 export default function Loading() {
@@ -7,7 +7,7 @@ export default function Loading() {
   <div className="flex w-full flex-col items-center px-8 pb-8 pt-16 antialiased md:px-16 md:py-16">
    <div className="flex flex-col justify-center">
     <Header1 className="!justify-center">
-     <RectangleStackIcon className="h-10 min-h-10 w-10 min-w-10" aria-hidden="true" role="img" />
+     <Icons.dashboard className="h-10 min-h-10 w-10 min-w-10" />
      Dashboard
     </Header1>
     <Header2 className="text-xl font-normal text-white/50">

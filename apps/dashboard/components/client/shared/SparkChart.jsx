@@ -1,7 +1,7 @@
 "use client";
 
-import { ExclamationCircleIcon } from "@heroicons/react/24/outline";
 import { Area, AreaChart as ReChartsAreaChart, ResponsiveContainer, XAxis } from "recharts";
+import { Icons, iconVariants } from "@/components/Icons";
 
 export async function SparkLineChart({ data = [], categories = [], index }) {
  return (
@@ -40,7 +40,7 @@ export async function SparkLineChart({ data = [], categories = [], index }) {
      </ReChartsAreaChart>
     ) : (
      <div className="mb-4 flex items-center justify-start gap-2 text-left text-red-400">
-      <ExclamationCircleIcon className="h-5 min-h-5 w-5 min-w-5" />
+      <Icons.warning className={iconVariants({ variant: "normal" })} />
       <span>No data found.</span>
      </div>
     )}

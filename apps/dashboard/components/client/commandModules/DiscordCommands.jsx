@@ -1,9 +1,9 @@
 "use client";
-import { ArrowPathIcon, CheckIcon, MagnifyingGlassIcon, XCircleIcon, XMarkIcon } from "@heroicons/react/24/outline";
 import clsx from "clsx";
 import { useEffect, useState, useMemo } from "react";
 import { Tooltip } from "@/components/client/shared/Tooltip";
 import { Header3 } from "@/components/Headers";
+import { Icons, iconVariants } from "@/components/Icons";
 import { InputWithIcon } from "@/components/Input";
 import { InputSkeleton, TextSkeleton } from "@/components/Skeletons";
 
@@ -48,7 +48,7 @@ export function DiscordCommands({ commands, categories }) {
 
     <div className="mt-8 flex flex-col items-center justify-center gap-2">
      <Header3 className="text-center">
-      <ArrowPathIcon className="mr-2 h-6 min-h-6 w-6 min-w-6 animate-spin" aria-hidden="true" role="img" />
+      <Icons.refresh className={iconVariants({ variant: "large", className: "animate-spin" })} />
       Loading commands...
      </Header3>
      <p className="text-center text-white/50">This may take a few seconds.</p>
@@ -59,17 +59,16 @@ export function DiscordCommands({ commands, categories }) {
 
  return (
   <>
-   <InputWithIcon placeholder="Search commands..." value={search} onChange={(e) => setSearch(e.target.value)} icon={<MagnifyingGlassIcon className="h-5 min-h-5 w-5 min-w-5 text-white/50" aria-hidden="true" role="img" />} />
+   <InputWithIcon placeholder="Search commands..." value={search} onChange={(e) => setSearch(e.target.value)} icon={<Icons.search className={iconVariants({ variant: "normal", className: "text-white/50" })} />} className="w-full !max-w-none" />
    <div className="mt-8 flex flex-wrap gap-2">
     {categories.map((category) => (
      <div
       key={category.name}
       className={clsx(
        {
-        "bg-background-secondary": filteredCategories?.includes(category),
         "opacity-50": !filteredCategories?.includes(category),
        },
-       "flex cursor-pointer items-center gap-2 rounded-lg border border-neutral-800 px-4 py-2"
+       "flex cursor-pointer select-none items-center gap-2 rounded-md border border-neutral-800 px-4 py-2 duration-200"
       )}
       onClick={() => {
        if (filteredCategories.includes(category)) {
@@ -79,7 +78,26 @@ export function DiscordCommands({ commands, categories }) {
        }
       }}
      >
-      {filteredCategories?.includes(category) ? <CheckIcon className="text-accent-primary h-5 min-h-5 w-5 min-w-5" aria-hidden="true" role="img" /> : <XMarkIcon className="h-5 min-h-5 w-5 min-w-5 text-red-400/50" aria-hidden="true" role="img" />}
+      <div className="relative h-5 w-5">
+       <Icons.check
+        className={iconVariants({
+         variant: "normal",
+         className: clsx("absolute inset-0 h-full w-full duration-200", {
+          "text-accent-primary -ml-1 scale-100": filteredCategories?.includes(category),
+          "scale-0": !filteredCategories?.includes(category),
+         }),
+        })}
+       />
+       <Icons.close
+        className={iconVariants({
+         variant: "normal",
+         className: clsx("absolute inset-0 h-full w-full duration-200", {
+          "-ml-1 scale-100 text-red-400": !filteredCategories?.includes(category),
+          "scale-0": filteredCategories?.includes(category),
+         }),
+        })}
+       />
+      </div>
       {category.name}
      </div>
     ))}
@@ -87,7 +105,7 @@ export function DiscordCommands({ commands, categories }) {
    {filteredCommands.length === 0 ? (
     <div className="mt-8 flex flex-col items-center justify-center gap-2">
      <Header3 className="text-center">
-      <XCircleIcon className="mr-2 h-6 min-h-6 w-6 min-w-6 text-red-400" aria-hidden="true" role="img" />
+      <Icons.close className={iconVariants({ variant: "large", className: "text-red-400" })} />
       No commands found.
      </Header3>
      <p className="text-center text-white/50">Try searching for something else or change the categories.</p>

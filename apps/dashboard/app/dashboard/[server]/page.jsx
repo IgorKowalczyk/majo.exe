@@ -1,6 +1,4 @@
 /* eslint-disable complexity */
-import { LightBulbIcon, ChatBubbleLeftRightIcon, PlusIcon, UserMinusIcon, UserPlusIcon } from "@heroicons/react/24/outline";
-import { BoltIcon } from "@heroicons/react/24/solid";
 import prismaClient from "@majoexe/database";
 import { getServer, getGuildPreview, getGuildMember } from "@majoexe/util/functions/guild";
 import clsx from "clsx";
@@ -14,6 +12,7 @@ import Image from "@/components/client/shared/Image";
 import { SparkLineChart } from "@/components/client/shared/SparkChart";
 import { Tooltip } from "@/components/client/shared/Tooltip";
 import { Header1, Header4, Header5 } from "@/components/Headers";
+import { Icons, iconVariants } from "@/components/Icons";
 
 export const metadata = {
  title: "Server Overview",
@@ -188,7 +187,7 @@ export default async function ServerOverview({ params }) {
     <Link href={`/dashboard/${serverDownload.id}/statistics`} className="bg-background-secondary mt-4 cursor-pointer overflow-auto rounded-lg border border-neutral-800 p-4">
      <div className="flex flex-row items-center justify-between">
       <div className="flex flex-row items-center gap-4">
-       <UserPlusIcon className="h-8 min-h-8 w-8 min-w-8" aria-hidden="true" role="img" />
+       <Icons.userAdd className={iconVariants({ variant: "extraLarge" })} />
        <div className="flex flex-col">
         <Header4 className="!justify-start whitespace-nowrap">
          New members
@@ -206,7 +205,7 @@ export default async function ServerOverview({ params }) {
     <Link href={`/dashboard/${serverDownload.id}/statistics`} className="bg-background-secondary mt-4 cursor-pointer overflow-auto rounded-lg border border-neutral-800 p-4">
      <div className="flex flex-row items-center justify-between">
       <div className="flex flex-row items-center gap-4">
-       <ChatBubbleLeftRightIcon className="h-8 min-h-8 w-8 min-w-8" aria-hidden="true" role="img" />
+       <Icons.commentAdd className={iconVariants({ variant: "extraLarge" })} />
        <div className="flex flex-col">
         <Header4 className="!justify-start whitespace-nowrap">
          Messages sent
@@ -224,7 +223,7 @@ export default async function ServerOverview({ params }) {
     <Link href={`/dashboard/${serverDownload.id}/statistics`} className="bg-background-secondary mt-4 cursor-pointer overflow-auto rounded-lg border border-neutral-800 p-4">
      <div className="flex flex-row items-center justify-between">
       <div className="flex flex-row items-center gap-4">
-       <UserMinusIcon className="h-8 min-h-8 w-8 min-w-8" aria-hidden="true" role="img" />
+       <Icons.userMinus className={iconVariants({ variant: "extraLarge" })} />
        <div className="flex flex-col">
         <Header4 className="!justify-start whitespace-nowrap">
          Members left
@@ -245,7 +244,7 @@ export default async function ServerOverview({ params }) {
      <Block>
       <Header4 className="mb-2 !block !text-left">
        <span className="flex flex-row flex-wrap items-center gap-2">
-        <BoltIcon className="h-5 min-h-5 w-5 min-w-5" aria-hidden="true" role="img" />
+        <Icons.gauge className={iconVariants({ variant: "normal", className: "!stroke-2" })} />
         <span className="opacity-80">Server Score: </span>
         <span
          className={clsx({
@@ -260,21 +259,21 @@ export default async function ServerOverview({ params }) {
        </span>
       </Header4>
 
-      {guildScore !== 100 ? <Header5 className="!text-left !text-base opacity-60">Your server score is not 100%, this means that you are missing some features that could be useful to your server.</Header5> : <Header5 className="!text-left !text-base opacity-60">Your server score is 100%, this means that you have all the features that could be useful to your server! Good job!</Header5>}
+      {guildScore !== 100 ? <Header5 className="!text-left !text-base opacity-60">Your server score is not 100%, this means that you are missing some features that could be useful for your server.</Header5> : <Header5 className="!text-left !text-base opacity-60">Your server score is 100%, this means that you have all the features that could be useful to your server! Good job!</Header5>}
 
       <CategoryBar percent={guildScore} className="my-4" />
 
       {guildScore !== 100 && (
        <>
         <Header4 className="!items-center !justify-normal !gap-2 pt-4 opacity-80">
-         <LightBulbIcon className="h-5 min-h-5 w-5 min-w-5" aria-hidden="true" role="img" />
+         <Icons.lightBulb className={iconVariants({ variant: "normal", className: "!stroke-2" })} />
          Ways to improve your score:
         </Header4>
         <div className="mt-2 space-y-1">
          {(!guild.autoMod || guild.autoMod.length === 0) && (
           <div>
            <span className="gap-1 font-bold">
-            <PlusIcon className="stroke-accent-primary mr-1 inline h-5 min-h-5 w-5 min-w-5 stroke-2" aria-hidden="true" role="img" />
+            <Icons.plus className={iconVariants({ variant: "normal", className: "mr-1 inline !stroke-2" })} />
             Enable AutoMod:
            </span>{" "}
            <span className="font-normal text-gray-400">
@@ -288,7 +287,7 @@ export default async function ServerOverview({ params }) {
          {!guild.enableXP && (
           <div>
            <span className="gap-1 font-bold">
-            <PlusIcon className="stroke-accent-primary mr-1 inline h-5 min-h-5 w-5 min-w-5 stroke-2" aria-hidden="true" role="img" />
+            <Icons.plus className={iconVariants({ variant: "normal", className: "mr-1 inline !stroke-2" })} />
             Enable XP:
            </span>{" "}
            <span className="font-normal text-gray-400">
@@ -302,7 +301,7 @@ export default async function ServerOverview({ params }) {
          {!guild.publicPage && (
           <div>
            <span className="gap-1 font-bold">
-            <PlusIcon className="stroke-accent-primary mr-1 inline h-5 min-h-5 w-5 min-w-5 stroke-2" aria-hidden="true" role="img" />
+            <Icons.plus className={iconVariants({ variant: "normal", className: "mr-1 inline !stroke-2" })} />
             Enable Public Page:
            </span>{" "}
            <span className="font-normal text-gray-400">
@@ -316,7 +315,7 @@ export default async function ServerOverview({ params }) {
          {!guild.vanity && (
           <div>
            <span className="gap-1 font-bold">
-            <PlusIcon className="stroke-accent-primary mr-1 inline h-5 min-h-5 w-5 min-w-5 stroke-2" aria-hidden="true" role="img" />
+            <Icons.plus className={iconVariants({ variant: "normal", className: "mr-1 inline !stroke-2" })} />
             Set Vanity URL:
            </span>{" "}
            <span className="font-normal text-gray-400">
