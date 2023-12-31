@@ -23,7 +23,7 @@ export default async function ServerAutomod() {
 
     <div className="my-2 flex flex-row flex-wrap gap-2">
      <span className="flex w-fit cursor-help items-center gap-2 font-bold">
-      <Icons.text className={iconVariants({ variant: "normal" })} />
+      <Icons.check className={iconVariants({ variant: "normal" })} />
       Enabled:
      </span>
      <InputSkeleton className="!h-[30px] !w-16" />
@@ -45,7 +45,7 @@ export default async function ServerAutomod() {
 
     <div className="my-2 flex flex-row flex-wrap gap-2">
      <span className="flex w-fit cursor-help items-center gap-2 font-bold">
-      <Icons.text className={iconVariants({ variant: "normal" })} />
+      <Icons.check className={iconVariants({ variant: "normal" })} />
       Enabled:
      </span>
      <InputSkeleton className="!h-[30px] !w-16" />
