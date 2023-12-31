@@ -15,7 +15,7 @@ import { Icons, iconVariants } from "@/components/Icons";
 import { Typing } from "@/components/Loaders";
 import { LoginButton } from "@/components/LoginButton";
 
-export default async function Main() {
+export default async function HomePage() {
  const allCommands = await prismaClient.commands.findMany({
   select: {
    name: true,

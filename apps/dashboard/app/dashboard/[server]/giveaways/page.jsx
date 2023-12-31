@@ -15,7 +15,7 @@ export const metadata = {
  description: "View the giveaways for your server.",
 };
 
-export default async function ServerGiveaways({ params }) {
+export default async function GiveawaysPage({ params }) {
  const session = await getSession();
  if (!session || !session.access_token) redirect("/auth/login");
  const { server } = params;

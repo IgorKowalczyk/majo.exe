@@ -53,7 +53,7 @@ export async function generateMetadata({ params }) {
  };
 }
 
-export default async function ServerLogs({ params }) {
+export default async function UserPage({ params }) {
  const session = await getSession();
  if (!session || !session.access_token) redirect("/auth/login");
  const { server, id } = params;

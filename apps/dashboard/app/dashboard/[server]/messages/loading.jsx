@@ -4,7 +4,7 @@ import { Header1, Header2 } from "@/components/Headers";
 import { Icons, iconVariants } from "@/components/Icons";
 import { InputSkeleton } from "@/components/Skeletons";
 
-export default async function ServerAutomod() {
+export default async function Loading() {
  return (
   <>
    <Header1>

@@ -14,7 +14,7 @@ export const metadata = {
  description: "Customize the messages sent by the bot.",
 };
 
-export default async function Settings({ params }) {
+export default async function CustomMessagesPage({ params }) {
  const session = await getSession();
  if (!session || !session.access_token) redirect("/auth/login");
  const { server } = params;

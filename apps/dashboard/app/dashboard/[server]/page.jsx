@@ -19,7 +19,7 @@ export const metadata = {
  description: "View the overview of your server.",
 };
 
-export default async function ServerOverview({ params }) {
+export default async function OverviewPage({ params }) {
  const session = await getSession();
  if (!session || !session.access_token) redirect("/auth/login");
 

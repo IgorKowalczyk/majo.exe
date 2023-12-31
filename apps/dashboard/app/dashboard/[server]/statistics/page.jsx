@@ -9,7 +9,7 @@ import { GraphCard } from "@/components/Card";
 import { ServerStatsChart } from "@/components/client/charts/ServerStatsChart";
 import { Icons, iconVariants } from "@/components/Icons";
 
-export default async function Statistics({ params }) {
+export default async function StatisticsPage({ params }) {
  const session = await getSession();
  if (!session || !session.access_token) redirect("/auth/login");
  const { server } = params;

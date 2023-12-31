@@ -12,7 +12,7 @@ import { EnablePublicDashboard } from "@/components/client/settings/EnablePublic
 import { Header1, Header2, Header3 } from "@/components/Headers";
 import { Icons, iconVariants } from "@/components/Icons";
 
-export default async function Settings({ params }) {
+export default async function SettingsPage({ params }) {
  const session = await getSession();
  if (!session || !session.access_token) redirect("/auth/login");
  const { server } = params;

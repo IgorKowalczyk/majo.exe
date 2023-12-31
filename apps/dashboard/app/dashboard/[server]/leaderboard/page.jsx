@@ -15,7 +15,7 @@ export const metadata = {
  description: "View the leaderboard for your server.",
 };
 
-export default async function ServerLeaderboard({ params }) {
+export default async function LeaderboardPage({ params }) {
  const session = await getSession();
  if (!session || !session.access_token) redirect("/auth/login");
  const { server } = params;

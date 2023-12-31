@@ -13,7 +13,7 @@ export const metadata = {
  description: "A list of all the commands available for Majo.exe.",
 };
 
-export default async function Commands() {
+export default async function CommandsPage() {
  let commands = await prismaClient.commands.findMany({});
  const categories = await prismaClient.commandCategories.findMany({});
 

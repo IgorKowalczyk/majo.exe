@@ -11,7 +11,7 @@ import Image from "@/components/client/shared/Image";
 import { Tooltip } from "@/components/client/shared/Tooltip";
 import { Header1, Header4, Header5 } from "@/components/Headers";
 
-export default async function ServerOverview({ params }) {
+export default async function CustomOverviewPage({ params }) {
  const { server } = params;
  const guild = await prismaClient.guild.findFirst({
   where: {

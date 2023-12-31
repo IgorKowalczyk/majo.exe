@@ -13,7 +13,7 @@ import { Icons, iconVariants } from "@/components/Icons";
 
 export const revalidate = 3600; // 1 hour
 
-export default async function Profile() {
+export default async function UserProfilePage() {
  const user = await getSession();
  if (!user) return redirect("/auth/login");
 

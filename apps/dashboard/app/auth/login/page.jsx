@@ -13,7 +13,7 @@ export const metadata = {
  description: "Login to your account",
 };
 
-export default async function Login({ searchParams }) {
+export default async function LoginPage({ searchParams }) {
  const providers = await getProviders();
  const user = await getSession();
  if (user) return redirect("/");
