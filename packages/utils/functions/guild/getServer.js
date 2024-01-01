@@ -12,7 +12,6 @@ import { isBotInServer } from "./isBotInServer.js";
 export async function getServer(id) {
  try {
   const res = await fetch(`https://discord.com/api/v${globalConfig.apiVersion}/guilds/${id}`, {
-   next: { revalidate: 10 },
    headers: {
     Authorization: `Bot ${process.env.TOKEN}`,
    },

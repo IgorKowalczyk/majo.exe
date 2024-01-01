@@ -114,7 +114,7 @@ export function ChangeEmbedColor({ serverId, serverColor }) {
       <div className="ml-1 flex h-10 flex-row items-center">
        <span className="font-bold">{dashboardConfig.title}</span>{" "}
        <span className="ml-1 flex items-center gap-1 rounded bg-[#5c65f3] px-1 py-[0.12rem] text-xs text-white">
-        <Icons.check className={iconVariants({ variant: "small", className: "stroke-2" })} /> <span className="-mb-px">BOT</span>
+        <Icons.check className={iconVariants({ variant: "small", className: "!stroke-2" })} /> <span className="-mb-px">BOT</span>
        </span>
        <span className="ml-2 text-sm text-gray-400">Today at 4:20 PM</span>
       </div>

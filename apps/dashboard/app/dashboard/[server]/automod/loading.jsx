@@ -20,7 +20,7 @@ export default async function Loading() {
    </Header5>
    <Block className="mb-4">
     <Header2>
-     <Icons.userBlock className={iconVariants({ variant: "large", className: "stroke-2" })} />
+     <Icons.userBlock className={iconVariants({ variant: "large", className: "!stroke-2" })} />
      Anti-Invite <Icons.refresh className={iconVariants({ variant: "large", className: "stroke-accent-primary animate-spin" })} />
     </Header2>
     <p className="mb-4 text-left">
@@ -97,7 +97,7 @@ export default async function Loading() {
 
    <Block className="mb-4">
     <Header2>
-     <Icons.unlink className={iconVariants({ variant: "large", className: "stroke-2" })} />
+     <Icons.unlink className={iconVariants({ variant: "large", className: "!stroke-2" })} />
      Anti-Link <Icons.refresh className={iconVariants({ variant: "large", className: "stroke-accent-primary animate-spin" })} />
     </Header2>
     <p className="mb-4 text-left">

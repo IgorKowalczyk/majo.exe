@@ -73,7 +73,7 @@ export default async function UserProfilePage() {
 
     <div className="bg-background-navbar relative overflow-hidden rounded-lg border border-neutral-800 p-4 md:w-full">
      <Header2>
-      <Icons.download className={iconVariants({ variant: "large", className: "stroke-2" })} />
+      <Icons.download className={iconVariants({ variant: "large", className: "!stroke-2" })} />
       Download data
      </Header2>
      <p className="mt-2 leading-none text-white/70">
@@ -87,7 +87,7 @@ export default async function UserProfilePage() {
 
     <Block theme="danger">
      <Header2 className="text-red-400">
-      <Icons.warning className={iconVariants({ variant: "large", className: "stroke-red-400 stroke-2" })} />
+      <Icons.warning className={iconVariants({ variant: "large", className: "stroke-red-400 !stroke-2" })} />
       Delete account
      </Header2>
      <p className="mt-2 text-white/70">If you want to delete all your data and your account, click the button below. This action is irreversible.</p>

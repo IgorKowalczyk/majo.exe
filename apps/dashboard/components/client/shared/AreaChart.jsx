@@ -51,7 +51,7 @@ export default function AreaChart({ data = [], categories = [], index, valueForm
      </ReChartsAreaChart>
     ) : (
      <p className="mb-4 flex items-center justify-start gap-2 text-left text-red-400">
-      <Icons.warning className={iconVariants({ variant: "large", className: "mr-2 stroke-2" })} />
+      <Icons.warning className={iconVariants({ variant: "large", className: "mr-2 !stroke-2" })} />
       {noDataText}
      </p>
     )}

@@ -72,7 +72,7 @@ export function AntiLink({ serverId, enabled, existingActions, existingExemptRol
  return (
   <>
    <Header2>
-    <Icons.unlink className={iconVariants({ variant: "large", className: "stroke-2" })} />
+    <Icons.unlink className={iconVariants({ variant: "large", className: "!stroke-2" })} />
     Anti-Link <Switch enabled={isEnabled} onChange={save} disabled={loading} />
    </Header2>
    <p className="mb-4 text-left">

@@ -72,7 +72,7 @@ export function AntiInvite({ serverId, enabled, existingActions, existingExemptR
  return (
   <>
    <Header2>
-    <Icons.userBlock className={iconVariants({ variant: "large", className: "stroke-2" })} />
+    <Icons.userBlock className={iconVariants({ variant: "large", className: "!stroke-2" })} />
     Anti-Invite <Switch enabled={isEnabled} onChange={save} disabled={loading} />
    </Header2>
    <p className="mb-4 text-left">

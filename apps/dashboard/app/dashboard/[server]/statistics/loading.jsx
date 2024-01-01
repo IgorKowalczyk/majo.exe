@@ -44,7 +44,7 @@ export default function Loading() {
      <div className="mb-4 flex flex-col items-center justify-normal gap-2 whitespace-nowrap lg:flex-row">
       <Header2 className="w-full flex-col items-center gap-1 lg:items-start">
        <span>
-        New Members <Icons.refresh className={iconVariants({ variant: "large", className: "text-accent-primary ml-2 inline-block animate-spin stroke-2 align-middle" })} />
+        New Members <Icons.refresh className={iconVariants({ variant: "large", className: "text-accent-primary ml-2 inline-block animate-spin !stroke-2 align-middle" })} />
        </span>
        <span class="text-left text-sm font-normal opacity-40">Loading...</span>
       </Header2>
@@ -59,7 +59,7 @@ export default function Loading() {
      <div className="mb-4 flex flex-col items-center justify-normal gap-2 whitespace-nowrap lg:flex-row">
       <Header2 className="w-full flex-col items-center gap-1 lg:items-start">
        <span>
-        Members left <Icons.refresh className={iconVariants({ variant: "large", className: "text-accent-primary ml-2 inline-block animate-spin stroke-2 align-middle" })} />
+        Members left <Icons.refresh className={iconVariants({ variant: "large", className: "text-accent-primary ml-2 inline-block animate-spin !stroke-2 align-middle" })} />
        </span>
        <span class="text-left text-sm font-normal opacity-40">Loading...</span>
       </Header2>
@@ -74,7 +74,7 @@ export default function Loading() {
      <div className="mb-4 flex flex-col items-center justify-normal gap-2 whitespace-nowrap lg:flex-row">
       <Header2 className="w-full flex-col items-center gap-1 lg:items-start">
        <span>
-        Messages Sent <Icons.refresh className={iconVariants({ variant: "large", className: "text-accent-primary ml-2 inline-block animate-spin stroke-2 align-middle" })} />
+        Messages Sent <Icons.refresh className={iconVariants({ variant: "large", className: "text-accent-primary ml-2 inline-block animate-spin !stroke-2 align-middle" })} />
        </span>
        <span class="text-left text-sm font-normal opacity-40">Loading...</span>
       </Header2>

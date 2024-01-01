@@ -12,7 +12,7 @@ export default async function Loading() {
    </Header1>
    <Block className="mt-4">
     <Header2>
-     <Icons.blocks className={iconVariants({ variant: "large", className: "stroke-2" })} />
+     <Icons.blocks className={iconVariants({ variant: "large", className: "!stroke-2" })} />
      Categories
     </Header2>
     <p className="mb-4 mt-2 text-left">Enable or disable categories of commands.</p>
@@ -32,7 +32,7 @@ export default async function Loading() {
 
    <Block className="mt-4">
     <Header2>
-     <Icons.slash className={iconVariants({ variant: "large", className: "stroke-2" })} />
+     <Icons.slash className={iconVariants({ variant: "large", className: "!stroke-2" })} />
      Commands
     </Header2>
     <p className="mb-4 mt-2 text-left">Enable or disable commands.</p>

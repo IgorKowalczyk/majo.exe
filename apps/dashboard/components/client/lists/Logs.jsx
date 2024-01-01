@@ -93,11 +93,11 @@ export default function Logs({ initialItems, id }) {
         <div className="flex flex-row items-center gap-4">
          {item.type && (
           <>
-           {item.type === "embed_color" && <Icons.paintBrush className={iconVariants({ variant: "large", className: "ui-open:text-accent-primary stroke-2 text-white/60 duration-200" })} />}
-           {item.type === "command_change" && <Icons.slash className={iconVariants({ variant: "large", className: "ui-open:text-accent-primary stroke-2 text-white/60 duration-200" })} />}
-           {item.type === "category_change" && <Icons.blocks className={iconVariants({ variant: "large", className: "ui-open:text-accent-primary stroke-2 text-white/60 duration-200" })} />}
-           {item.type === "public_dashboard" && <Icons.users className={iconVariants({ variant: "large", className: "ui-open:text-accent-primary stroke-2 text-white/60 duration-200" })} />}
-           {item.type === "vanity" && <Icons.link className={iconVariants({ variant: "large", className: "ui-open:text-accent-primary stroke-2 text-white/60 duration-200" })} />}
+           {item.type === "embed_color" && <Icons.paintBrush className={iconVariants({ variant: "large", className: "ui-open:text-accent-primary !stroke-2 text-white/60 duration-200" })} />}
+           {item.type === "command_change" && <Icons.slash className={iconVariants({ variant: "large", className: "ui-open:text-accent-primary !stroke-2 text-white/60 duration-200" })} />}
+           {item.type === "category_change" && <Icons.blocks className={iconVariants({ variant: "large", className: "ui-open:text-accent-primary !stroke-2 text-white/60 duration-200" })} />}
+           {item.type === "public_dashboard" && <Icons.users className={iconVariants({ variant: "large", className: "ui-open:text-accent-primary !stroke-2 text-white/60 duration-200" })} />}
+           {item.type === "vanity" && <Icons.link className={iconVariants({ variant: "large", className: "ui-open:text-accent-primary !stroke-2 text-white/60 duration-200" })} />}
           </>
          )}
          {item.user?.avatar && <Image src={`https://cdn.discordapp.com/avatars/${item.user?.discordId}/${item.user?.avatar}.${item.user?.avatar.startsWith("a_") ? "gif" : "png"}`} alt={`${item.user?.name} avatar`} quality={95} width={32} height={32} className="h-12 min-h-12 w-12 min-w-12 rounded-full" />}

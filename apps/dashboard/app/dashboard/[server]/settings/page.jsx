@@ -46,7 +46,7 @@ export default async function SettingsPage({ params }) {
    </Header1>
    <Block className="mt-4">
     <Header2>
-     <Icons.paintBrush className={iconVariants({ variant: "large", className: "stroke-2" })} />
+     <Icons.paintBrush className={iconVariants({ variant: "large", className: "!stroke-2" })} />
      Default Embed Color
     </Header2>
     <p className="mb-4 text-left">Change the color of the embeds sent by the bot. This will not affect embeds sent by other bots.</p>
@@ -55,7 +55,7 @@ export default async function SettingsPage({ params }) {
 
    <Block className="mt-4">
     <Header2>
-     <Icons.shieldCheck className={iconVariants({ variant: "large", className: "stroke-2" })} />
+     <Icons.shieldCheck className={iconVariants({ variant: "large", className: "!stroke-2" })} />
      Dashboard Access
     </Header2>
     <p className="mb-4 text-left">
@@ -82,7 +82,7 @@ export default async function SettingsPage({ params }) {
    </Block>
    <Block className="mt-4">
     <Header2>
-     <Icons.users className={iconVariants({ variant: "large", className: "stroke-2" })} />
+     <Icons.users className={iconVariants({ variant: "large", className: "!stroke-2" })} />
      Public Dashboard
     </Header2>
     <p className="mb-4 text-left">
@@ -128,7 +128,7 @@ export default async function SettingsPage({ params }) {
    </Block>
    <Block className="mt-4">
     <Header2>
-     <Icons.download className={iconVariants({ variant: "large", className: "stroke-2" })} />
+     <Icons.download className={iconVariants({ variant: "large", className: "!stroke-2" })} />
      Download data
     </Header2>
     <p className="mt-2 leading-none text-white/70">

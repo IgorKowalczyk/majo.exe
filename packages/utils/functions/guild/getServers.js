@@ -13,7 +13,6 @@ import { getPermissionNames } from "../user/checkPermissions.js";
 export async function getServers(token) {
  try {
   const res = await fetch(`https://discord.com/api/v${globalConfig.apiVersion}/users/@me/guilds`, {
-   next: { revalidate: 10 },
    headers: {
     Authorization: `Bearer ${token}`,
    },

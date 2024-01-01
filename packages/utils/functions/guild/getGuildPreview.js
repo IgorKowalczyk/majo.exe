@@ -11,7 +11,6 @@ import { globalConfig } from "@majoexe/config";
 export async function getGuildPreview(id) {
  try {
   const res = await fetch(`https://discord.com/api/v${globalConfig.apiVersion}/guilds/${id}/preview`, {
-   next: { revalidate: 10 },
    headers: {
     Authorization: `Bot ${process.env.TOKEN}`,
    },

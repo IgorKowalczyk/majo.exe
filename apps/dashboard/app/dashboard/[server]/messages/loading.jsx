@@ -14,7 +14,7 @@ export default async function Loading() {
 
    <Block className="mt-4 !overflow-x-visible">
     <Header2>
-     <Icons.userAdd className={iconVariants({ variant: "large", className: "stroke-2" })} />
+     <Icons.userAdd className={iconVariants({ variant: "large", className: "!stroke-2" })} />
      Welcome Messages
     </Header2>
     <p className="mb-4 text-left">
@@ -36,7 +36,7 @@ export default async function Loading() {
 
    <Block className="mt-4 !overflow-x-visible">
     <Header2>
-     <Icons.userMinus className={iconVariants({ variant: "large", className: "stroke-2" })} />
+     <Icons.userMinus className={iconVariants({ variant: "large", className: "!stroke-2" })} />
      Leave Messages
     </Header2>
     <p className="mb-4 text-left">

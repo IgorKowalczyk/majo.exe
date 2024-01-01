@@ -23,6 +23,7 @@
     "@mdx-js/react": "3.0.0",
     "@next-auth/prisma-adapter": "1.0.7",
     "@next/mdx": "14.0.4",
+    "@riskymh/discord-markdown": "3.0.0",
     "@tippyjs/react": "4.2.6",
     "@vercel/analytics": "1.1.1",
     "@vercel/speed-insights": "1.0.2",

@@ -210,7 +210,7 @@ export default async function UserPage({ params }) {
    </div>
    <Block className="mt-4">
     <Header2 id="warns">
-     <Icons.warning className={iconVariants({ variant: "large", className: "stroke-2" })} />
+     <Icons.warning className={iconVariants({ variant: "large", className: "!stroke-2" })} />
      Warns
     </Header2>
     <p className="mb-4 text-left opacity-70">You can view all warns given to this user in this server. You can also manage them by deleting them.</p>
@@ -225,7 +225,7 @@ export default async function UserPage({ params }) {
    </Block>
    <Block className="mt-4">
     <Header2 id="reputation">
-     <Icons.like className={iconVariants({ variant: "large", className: "stroke-2" })} />
+     <Icons.like className={iconVariants({ variant: "large", className: "!stroke-2" })} />
      Reputation
     </Header2>
     <p className="mt-2 text-white/70">Change the reputation of this user in this server, set it to 0 to remove it.</p>
@@ -233,7 +233,7 @@ export default async function UserPage({ params }) {
    </Block>
    <Block theme="danger" className="mt-4">
     <Header2 id="reset-xp" className="text-red-400">
-     <Icons.warning className={iconVariants({ variant: "large", className: "stroke-2" })} />
+     <Icons.warning className={iconVariants({ variant: "large", className: "!stroke-2" })} />
      Reset XP
     </Header2>
     <p className="mt-2 text-white/70">Reset the XP of this user in this server. This action cannot be undone and will reset the XP of this user to 0.</p>

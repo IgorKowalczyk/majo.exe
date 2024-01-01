@@ -117,7 +117,7 @@ const authOptions = {
     return token;
    }
   },
-  async session({ session, token }) {
+  async session({ token }) {
    if (token.avatar) {
     token.image = `https://cdn.discordapp.com/avatars/${token.id}/${token.avatar}.${token.avatar.startsWith("a_") ? "gif" : "png"}?size=2048`;
    } else if (token.discriminator !== "0") {
@@ -127,7 +127,6 @@ const authOptions = {
    }
 
    return {
-    ...session.expires,
     ...token,
    };
   },
