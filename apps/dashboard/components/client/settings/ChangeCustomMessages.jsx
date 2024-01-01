@@ -1,9 +1,7 @@
 "use client";
 
-import { dashboardConfig } from "@majoexe/config";
 import { toHTML } from "@riskymh/discord-markdown";
 import clsx from "clsx";
-import Image from "next/image";
 import { useState } from "react";
 import { toast } from "sonner";
 import { Block } from "@/components/Block";
@@ -11,6 +9,7 @@ import { ButtonPrimary } from "@/components/Buttons";
 import { ChannelsSelect } from "@/components/client/shared/ChannelsSelect";
 import Switch from "@/components/client/shared/Switch";
 import { Tooltip } from "@/components/client/shared/Tooltip";
+import Embed from "@/components/Embed";
 import { Header2 } from "@/components/Headers";
 import { Icons, iconVariants } from "@/components/Icons";
 import { Input, Textarea } from "@/components/Input";
@@ -119,14 +118,17 @@ export function ChangeMessages({ serverId, enabled, title, description, existing
     )}
 
     <Block
-     className={clsx({
-      "pointer-events-none cursor-not-allowed opacity-50": !isEnabled && !loading,
-      "pointer-events-none cursor-wait opacity-50": loading,
-      "cursor-default opacity-100": isEnabled,
-     })}
+     className={clsx(
+      {
+       "pointer-events-none cursor-not-allowed opacity-50": !isEnabled && !loading,
+       "pointer-events-none cursor-wait opacity-50": loading,
+       "cursor-default opacity-100": isEnabled,
+      },
+      "!border-none !p-0 md:border-neutral-800 md:p-6"
+     )}
     >
-     <div className="flex flex-col gap-8 xl:flex-row">
-      <div>
+     <div className="flex flex-col gap-4 xl:flex-row xl:gap-8">
+      <div className="w-full">
        <div className="mb-2 flex w-fit flex-col flex-wrap gap-2">
         <Tooltip content="Where should the welcome message be sent?">
          <span className="flex w-fit cursor-help items-center gap-2 font-bold">
@@ -185,28 +187,18 @@ export function ChangeMessages({ serverId, enabled, title, description, existing
         </div>
        </div>
       </div>
-      <div className="mt-4 flex items-start gap-1 xl:ml-4">
-       <Image src={dashboardConfig.logo} alt={"Bot logo"} quality={95} width={64} height={64} className="h-10 min-h-10 w-10 min-w-10 self-baseline rounded-full" />
-       <div className="flex flex-col">
-        <div className="ml-1 flex h-10 flex-row items-center">
-         <span className="font-bold">{dashboardConfig.title}</span>{" "}
-         <span className="ml-1 flex items-center gap-1 rounded bg-[#5c65f3] px-1 py-[0.12rem] text-xs text-white">
-          <Icons.check className={iconVariants({ variant: "small", className: "!stroke-2" })} /> <span className="-mb-px">BOT</span>
-         </span>
-         <span className="ml-2 text-sm text-gray-400">Today at 4:20 PM</span>
-        </div>
-        <div>
-         <div
-          className="ml-1 mt-2 rounded bg-[#2b2d31] p-4 shadow-lg"
-          style={{
-           borderLeft: "4px solid #5865F2",
-          }}
-         >
-          <p className="mb-2 font-bold">{(newTitle || defaultMessages.title).replaceAll(/{user}/g, replacedData.user).replaceAll(/{guild}/g, replacedData.guild)}</p>
-          <p className="prose prose-invert" dangerouslySetInnerHTML={{ __html: toHTML((newDescription?.trim() || defaultMessages.description).replaceAll(/{user}/g, replacedData.user).replaceAll(/{guild}/g, replacedData.guild)) }} />
-         </div>
-        </div>
-       </div>
+      <div className="w-full">
+       <span className="flex w-full items-center gap-2 font-bold">
+        <Icons.viewing className={iconVariants({ variant: "normal" })} />
+        Embed preview:
+       </span>
+       <Embed>
+        <Embed.Title>{(newTitle || defaultMessages.title).replaceAll(/{user}/g, replacedData.user).replaceAll(/{guild}/g, replacedData.guild)}</Embed.Title>
+        <Embed.Description>
+         <p className="prose prose-invert" dangerouslySetInnerHTML={{ __html: toHTML((newDescription?.trim() || defaultMessages.description).replaceAll(/{user}/g, replacedData.user).replaceAll(/{guild}/g, replacedData.guild)) }} />
+        </Embed.Description>
+        <Embed.Image />
+       </Embed>
       </div>
      </div>
     </Block>

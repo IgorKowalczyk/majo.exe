@@ -1,12 +1,12 @@
 "use client";
 
-import { dashboardConfig, globalConfig } from "@majoexe/config";
+import { globalConfig } from "@majoexe/config";
 import { useState } from "react";
 import { HexColorPicker } from "react-colorful";
 import { toast } from "sonner";
 import { ButtonPrimary } from "@/components/Buttons";
 import { ButtonSecondary } from "@/components/Buttons";
-import Image from "@/components/client/shared/Image";
+import Embed from "@/components/Embed";
 import { Icons, iconVariants } from "@/components/Icons";
 import { Input } from "@/components/Input";
 
@@ -102,47 +102,43 @@ export function ChangeEmbedColor({ serverId, serverColor }) {
  };
 
  return (
-  <div className="flex flex-col items-center gap-4 sm:flex-row sm:divide-x sm:divide-neutral-800">
-   <div className="flex flex-col items-center gap-4">
+  <div className="flex flex-col gap-4 lg:flex-row lg:gap-8 lg:divide-x lg:divide-neutral-800">
+   <div className="flex flex-col items-center justify-center gap-4">
     <HexColorPicker color={color} onChange={setColor} />
-    <Input type="text" value={color} onChange={(e) => setColor(e.target.value)} className="w-full" />
+    <Input
+     type="text"
+     value={color}
+     onChange={(e) => setColor(e.target.value)}
+     className="w-full focus:!bg-transparent"
+     style={{
+      backgroundColor: `${color}1A`, // 10% opacity
+      borderColor: color,
+     }}
+    />
    </div>
-   <div>
-    <div className="mt-4 flex items-center gap-1 sm:ml-4">
-     <Image src={dashboardConfig.logo} alt={serverId} quality={95} width={64} height={64} className="h-10 min-h-10 w-10 min-w-10 self-baseline rounded-full" />
-     <div className="flex flex-col">
-      <div className="ml-1 flex h-10 flex-row items-center">
-       <span className="font-bold">{dashboardConfig.title}</span>{" "}
-       <span className="ml-1 flex items-center gap-1 rounded bg-[#5c65f3] px-1 py-[0.12rem] text-xs text-white">
-        <Icons.check className={iconVariants({ variant: "small", className: "!stroke-2" })} /> <span className="-mb-px">BOT</span>
-       </span>
-       <span className="ml-2 text-sm text-gray-400">Today at 4:20 PM</span>
-      </div>
-      <div>
-       <div
-        className="ml-1 mt-2 rounded bg-[#2b2d31] p-4 shadow-lg"
-        style={{
-         borderLeft: `4px solid ${color}`,
-        }}
-       >
-        <p className="mb-2 font-bold">Embed color changed to {color}</p>
-
-        <p>This is an example of how your embed color will look like.</p>
-        <p>You can change this color by clicking on the color picker above.</p>
-       </div>
-       <div className="my-2 ml-1 flex flex-row gap-2">
-        <ButtonPrimary onClick={handleSubmit} disabled={buttonText === "Saving..."}>
-         {buttonText === "Saving..." ? <Icons.refresh className={iconVariants({ variant: "button", className: "animate-spin" })} /> : <Icons.check className={iconVariants({ variant: "button" })} />}
-         {buttonText}
-        </ButtonPrimary>
-        <ButtonSecondary onClick={handleReset} disabled={resetButtonText === "Resetting..."}>
-         {resetButtonText === "Resetting..." ? <Icons.refresh className={iconVariants({ variant: "button", className: "animate-spin" })} /> : <Icons.trash className={iconVariants({ variant: "button" })} />}
-         {resetButtonText}
-        </ButtonSecondary>
-       </div>
-      </div>
-     </div>
-    </div>
+   <div className="w-full lg:pl-8">
+    <span className="flex w-full items-center gap-2 font-bold">
+     <Icons.viewing className={iconVariants({ variant: "normal" })} />
+     Embed preview:
+    </span>
+    <Embed
+     color={color}
+     buttons={
+      <>
+       <ButtonPrimary onClick={handleSubmit} disabled={buttonText === "Saving..."}>
+        {buttonText === "Saving..." ? <Icons.refresh className={iconVariants({ variant: "button", className: "animate-spin" })} /> : <Icons.check className={iconVariants({ variant: "button" })} />}
+        {buttonText}
+       </ButtonPrimary>
+       <ButtonSecondary onClick={handleReset} disabled={resetButtonText === "Resetting..."}>
+        {resetButtonText === "Resetting..." ? <Icons.refresh className={iconVariants({ variant: "button", className: "animate-spin" })} /> : <Icons.trash className={iconVariants({ variant: "button" })} />}
+        {resetButtonText}
+       </ButtonSecondary>
+      </>
+     }
+    >
+     <Embed.Title>Embed color changed to {color}</Embed.Title>
+     <Embed.Description>This is an example of how your embed color will look like. You can change this color by clicking on the color picker above.</Embed.Description>
+    </Embed>
    </div>
   </div>
  );
