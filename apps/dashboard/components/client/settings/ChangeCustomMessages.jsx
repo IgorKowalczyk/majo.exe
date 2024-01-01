@@ -1,6 +1,9 @@
 "use client";
 
+import { dashboardConfig } from "@majoexe/config";
+import { toHTML } from "@riskymh/discord-markdown";
 import clsx from "clsx";
+import Image from "next/image";
 import { useState } from "react";
 import { toast } from "sonner";
 import { Block } from "@/components/Block";
@@ -11,9 +14,6 @@ import { Tooltip } from "@/components/client/shared/Tooltip";
 import { Header2 } from "@/components/Headers";
 import { Icons, iconVariants } from "@/components/Icons";
 import { Input, Textarea } from "@/components/Input";
-import { dashboardConfig } from "@majoexe/config";
-import Image from "next/image";
-import { toHTML } from "@riskymh/discord-markdown";
 
 export function ChangeMessages({ serverId, enabled, title, description, existingChannel, allChannels, type, defaultMessages, replacedData }) {
  const [isEnabled, setIsEnabled] = useState(enabled ?? false);
@@ -125,7 +125,7 @@ export function ChangeMessages({ serverId, enabled, title, description, existing
       "cursor-default opacity-100": isEnabled,
      })}
     >
-     <div className="flex xl:flex-row flex-col gap-8">
+     <div className="flex flex-col gap-8 xl:flex-row">
       <div>
        <div className="mb-2 flex w-fit flex-col flex-wrap gap-2">
         <Tooltip content="Where should the welcome message be sent?">
@@ -143,7 +143,7 @@ export function ChangeMessages({ serverId, enabled, title, description, existing
        </div>
 
        {!messageChannel && (
-        <div className="my-4 flex flex-row w-fit flex-wrap items-start whitespace-nowrap rounded-md border border-orange-400 bg-orange-400/10 p-4">
+        <div className="my-4 flex w-fit flex-row flex-wrap items-start whitespace-nowrap rounded-md border border-orange-400 bg-orange-400/10 p-4">
          <span className="mr-1 flex flex-row items-center whitespace-nowrap font-bold leading-none">
           <Icons.warning className={iconVariants({ variant: "normal", className: "mr-1 stroke-orange-400" })} />
           Warning:
@@ -172,12 +172,12 @@ export function ChangeMessages({ serverId, enabled, title, description, existing
         <Textarea type="text" value={newDescription} onChange={(e) => setNewDescription(e.target.value)} disabled={!isEnabled || loading || !messageChannel} placeholder={defaultMessages.description} className="!max-w-96 font-normal" />
        </div>
 
-       <div className="border-accent-primary w-fit bg-accent-primary/10 my-4 whitespace-nowrap rounded-md border p-4">
+       <div className="border-accent-primary bg-accent-primary/10 my-4 w-fit whitespace-nowrap rounded-md border p-4">
         <div className="mr-1 flex flex-row items-center whitespace-nowrap font-bold">
          <Icons.info className={iconVariants({ variant: "normal", className: "stroke-accent-primary mr-1" })} />
          Note:
         </div>
-        <div className="whitespace-normal mt-1">
+        <div className="mt-1 whitespace-normal">
          <p>Discord markdown is supported.</p>
          <p className="leading-none">
           Use <code>{"{user}"}</code> to mention the user and <code>{"{guild}"}</code> to display the server name.
