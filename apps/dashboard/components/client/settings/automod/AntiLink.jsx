@@ -79,7 +79,15 @@ export function AntiLink({ serverId, enabled, existingActions, existingExemptRol
     <span>Automatically delete all messages containing links.</span>
    </p>
 
-   {!isEnabled && (
+   <div
+    className={clsx(
+     {
+      "opacity-0 max-h-0": isEnabled,
+      "opacity-100 max-h-[500px] ": !isEnabled,
+     },
+     "transition-all ease-in-out duration-200"
+    )}
+   >
     <div className="border-accent-primary bg-accent-primary/10 my-4 flex flex-row flex-wrap items-start whitespace-nowrap rounded-md border p-4">
      <span className="mr-1 flex flex-row items-center whitespace-nowrap font-bold">
       <Icons.info className={iconVariants({ variant: "normal", className: "stroke-accent-primary mr-1" })} />
@@ -87,12 +95,12 @@ export function AntiLink({ serverId, enabled, existingActions, existingExemptRol
      </span>
      <span className="whitespace-normal">You have to enable this rule to change its settings!</span>
     </div>
-   )}
+   </div>
 
    <div
     className={clsx({
      "pointer-events-none cursor-not-allowed opacity-50": !isEnabled && !loading,
-     "pointer-events-none cursor-wait opacity-50": loading,
+     "pointer-events-none opacity-50": loading,
      "cursor-default opacity-100": isEnabled,
     })}
    >

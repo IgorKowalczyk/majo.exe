@@ -2,7 +2,7 @@ import { Block } from "@/components/Block";
 import { ButtonPrimary } from "@/components/Buttons";
 import { Header1, Header2 } from "@/components/Headers";
 import { Icons, iconVariants } from "@/components/Icons";
-import { InputSkeleton } from "@/components/Skeletons";
+import { GraphSkeleton, InputSkeleton } from "@/components/Skeletons";
 
 export default async function Loading() {
  return (
@@ -26,8 +26,9 @@ export default async function Loading() {
       <Icons.check className={iconVariants({ variant: "normal" })} />
       Enabled:
      </span>
-     <InputSkeleton className="!h-[30px] !w-16" />
+     <InputSkeleton className="!h-[30px] !w-12" />
     </div>
+    <GraphSkeleton className="w-full h-96" />
     <ButtonPrimary className="mt-4" disabled>
      <Icons.check className={iconVariants({ variant: "button" })} />
      Save
@@ -48,8 +49,9 @@ export default async function Loading() {
       <Icons.check className={iconVariants({ variant: "normal" })} />
       Enabled:
      </span>
-     <InputSkeleton className="!h-[30px] !w-16" />
+     <InputSkeleton className="!h-[30px] !w-12" />
     </div>
+    <GraphSkeleton className="w-full h-96" />
     <ButtonPrimary className="mt-4" disabled>
      <Icons.check className={iconVariants({ variant: "button" })} />
      Save

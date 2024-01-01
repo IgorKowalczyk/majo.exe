@@ -1,5 +1,5 @@
 import { cva } from "class-variance-authority";
-import { AlertTriangle, Bot, Check, ChevronDown, ChevronRight, ChevronUp, ChevronsUpDown, Edit, ExternalLink, Eye, GalleryVerticalEnd, Gift, HelpCircle, Home, Image, Info, Link2, Link2Off, LogOut, MessageSquare, MessageSquareCode, MessageSquarePlus, Minus, PackagePlus, Plus, ScrollText, Search, Settings, SquareSlash, Text, Timer, Trash, TrendingDown, TrendingUp, Twitter, X, UserPlus, UserMinus, CornerDownRight, Sparkles, Menu, ChevronLeft, EyeOff, Gauge, Lightbulb, RotateCw, User, UserX, Hash, Users, MessageSquareWarning, ShieldMinusIcon, AtSign, MessageSquareOff, ShieldBan, TextQuote, Type, Blocks, Ungroup, Paintbrush2, ShieldCheck, Download, CalendarRange, FileJson, FileSpreadsheet, ThumbsUp, MessageSquareDot, ArrowDownNarrowWide, ArrowUpNarrowWide } from "lucide-react";
+import { AlertTriangle, Bot, Pencil, Check, ChevronDown, ChevronRight, ChevronUp, ChevronsUpDown, Edit, ExternalLink, Eye, GalleryVerticalEnd, Gift, HelpCircle, Home, Image, Info, Link2, Link2Off, LogOut, MessageSquare, MessageSquareCode, MessageSquarePlus, Minus, PackagePlus, Plus, ScrollText, Search, Settings, SquareSlash, Text, Timer, Trash, TrendingDown, TrendingUp, Twitter, X, UserPlus, UserMinus, CornerDownRight, Sparkles, Menu, ChevronLeft, EyeOff, Gauge, Lightbulb, RotateCw, User, UserX, Hash, Users, MessageSquareWarning, ShieldMinusIcon, AtSign, MessageSquareOff, ShieldBan, TextQuote, Type, Blocks, Ungroup, Paintbrush2, ShieldCheck, Download, CalendarRange, FileJson, FileSpreadsheet, ThumbsUp, MessageSquareDot, ArrowDownNarrowWide, ArrowUpNarrowWide } from "lucide-react";
 
 export const Icons = {
  arrowDown: ChevronDown,
@@ -28,6 +28,7 @@ export const Icons = {
  minus: Minus,
  plus: Plus,
  edit: Edit,
+ pencil: Pencil,
  menu: Menu,
  cornerRight: CornerDownRight,
  refresh: RotateCw,

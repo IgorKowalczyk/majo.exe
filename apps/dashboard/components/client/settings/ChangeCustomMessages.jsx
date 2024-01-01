@@ -24,7 +24,7 @@ export function ChangeMessages({ serverId, enabled, title, description, existing
  const save = async (change = true) => {
   setLoading(true);
   if (change) setIsEnabled(!isEnabled);
-  const loading = toast.loading(`Turning ${!isEnabled ? "on" : "off"} ${type} messages...`);
+  const loading = toast.loading(`Turning ${isEnabled ? "on" : "off"} ${type} messages...`);
 
   const res = await fetch(`/api/settings/messages/${type}`, {
    method: "POST",
@@ -97,7 +97,7 @@ export function ChangeMessages({ serverId, enabled, title, description, existing
      "pointer-events-none cursor-wait opacity-50": loading,
     })}
    >
-    <div className="my-2 flex flex-row flex-wrap gap-2">
+    <div className="my-4 flex flex-row flex-wrap gap-2">
      <Tooltip content="Enable or disable welcome messages.">
       <span className="flex w-fit cursor-help items-center gap-2 font-bold">
        <Icons.check className={iconVariants({ variant: "normal" })} />
@@ -107,24 +107,32 @@ export function ChangeMessages({ serverId, enabled, title, description, existing
      <Switch enabled={isEnabled} onChange={() => setIsEnabled(!isEnabled)} disabled={loading} />
     </div>
 
-    {!isEnabled && (
-     <div className="border-accent-primary bg-accent-primary/10 my-4 flex flex-row flex-wrap items-start whitespace-nowrap rounded-md border p-4">
+    <div
+     className={clsx(
+      {
+       "opacity-0 max-h-0": isEnabled,
+       "opacity-100 max-h-[500px] ": !isEnabled,
+      },
+      "transition-all ease-in-out duration-200"
+     )}
+    >
+     <div className="border-accent-primary my-4 p-4 will-change-transform overflow-hidden duration-200 bg-accent-primary/10 flex flex-row flex-wrap items-start whitespace-nowrap rounded-md border">
       <span className="mr-1 flex flex-row items-center whitespace-nowrap font-bold">
        <Icons.info className={iconVariants({ variant: "normal", className: "stroke-accent-primary mr-1" })} />
        Note:
       </span>
       <span className="whitespace-normal">You have to enable this message to configure it.</span>
      </div>
-    )}
+    </div>
 
     <Block
      className={clsx(
       {
        "pointer-events-none cursor-not-allowed opacity-50": !isEnabled && !loading,
-       "pointer-events-none cursor-wait opacity-50": loading,
+       "pointer-events-none opacity-50": loading,
        "cursor-default opacity-100": isEnabled,
       },
-      "!border-none !p-0 md:border-neutral-800 md:p-6"
+      "border-0 p-0 md:border-neutral-800 md:border duration-200 md:p-6"
      )}
     >
      <div className="flex flex-col gap-4 xl:flex-row xl:gap-8">
@@ -144,7 +152,15 @@ export function ChangeMessages({ serverId, enabled, title, description, existing
         />
        </div>
 
-       {!messageChannel && (
+       <div
+        className={clsx(
+         {
+          "opacity-0 max-h-0": messageChannel,
+          "opacity-100 max-h-[500px] ": !messageChannel,
+         },
+         "transition-all ease-in-out duration-200"
+        )}
+       >
         <div className="my-4 flex w-fit flex-row flex-wrap items-start whitespace-nowrap rounded-md border border-orange-400 bg-orange-400/10 p-4">
          <span className="mr-1 flex flex-row items-center whitespace-nowrap font-bold leading-none">
           <Icons.warning className={iconVariants({ variant: "normal", className: "mr-1 stroke-orange-400" })} />
@@ -152,7 +168,7 @@ export function ChangeMessages({ serverId, enabled, title, description, existing
          </span>
          <span className="whitespace-normal">You must select a channel to send {type} messages to.</span>
         </div>
-       )}
+       </div>
 
        <div className="my-2 flex flex-col flex-wrap gap-2">
         <Tooltip content="The title of the welcome message.">
