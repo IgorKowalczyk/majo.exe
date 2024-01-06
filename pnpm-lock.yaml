@@ -170,7 +170,7 @@ importers:
         specifier: 5.0.1
         version: 5.0.1
       lucide-react:
-        specifier: ^0.305.0
+        specifier: 0.305.0
         version: 0.305.0(react@18.2.0)
       mini-svg-data-uri:
         specifier: 1.4.4
