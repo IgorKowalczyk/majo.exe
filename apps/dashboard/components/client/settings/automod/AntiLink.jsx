@@ -82,10 +82,10 @@ export function AntiLink({ serverId, enabled, existingActions, existingExemptRol
    <div
     className={clsx(
      {
-      "opacity-0 max-h-0": isEnabled,
-      "opacity-100 max-h-[500px] ": !isEnabled,
+      "max-h-0 opacity-0": isEnabled,
+      "max-h-[500px] opacity-100 ": !isEnabled,
      },
-     "transition-all ease-in-out duration-200"
+     "transition-all duration-200 ease-in-out"
     )}
    >
     <div className="border-accent-primary bg-accent-primary/10 my-4 flex flex-row flex-wrap items-start whitespace-nowrap rounded-md border p-4">

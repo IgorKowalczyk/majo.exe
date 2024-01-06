@@ -28,7 +28,7 @@ export default async function Loading() {
      </span>
      <InputSkeleton className="!h-[30px] !w-12" />
     </div>
-    <GraphSkeleton className="w-full h-96" />
+    <GraphSkeleton className="h-96 w-full" />
     <ButtonPrimary className="mt-4" disabled>
      <Icons.check className={iconVariants({ variant: "button" })} />
      Save
@@ -51,7 +51,7 @@ export default async function Loading() {
      </span>
      <InputSkeleton className="!h-[30px] !w-12" />
     </div>
-    <GraphSkeleton className="w-full h-96" />
+    <GraphSkeleton className="h-96 w-full" />
     <ButtonPrimary className="mt-4" disabled>
      <Icons.check className={iconVariants({ variant: "button" })} />
      Save
