@@ -2,6 +2,7 @@
 
 import prismaClient from "@majoexe/database";
 import { getGuildMember, getServer } from "@majoexe/util/functions/guild";
+import { fillMissingDates } from "@majoexe/util/functions/util";
 import { json2csv } from "json-2-csv";
 import { getSession } from "lib/session";
 import { redirect } from "next/navigation";
@@ -40,63 +41,22 @@ export default async function StatisticsPage({ params }) {
   },
  });
 
- const parseDate = (dateString) => {
-  const date = new Date(dateString);
-  return isNaN(date) ? null : date.toISOString().split("T")[0];
- };
-
- const sumArray = (array, metric) => {
-  return array.reduce((accumulator, currentValue) => accumulator + currentValue[metric], 0);
- };
+ const sumArray = (array, metric) => array.reduce((accumulator, currentValue) => accumulator + currentValue[metric], 0);
 
  let guildJoin = guild.guildJoin.map((guildJoinData) => ({
-  date: parseDate(guildJoinData.date),
+  date: guildJoinData.date.toISOString().split("T")[0],
   Joins: guildJoinData.joins,
  }));
 
  let guildLeave = guild.guildLeave.map((guildLeaveData) => ({
-  date: parseDate(guildLeaveData.date),
+  date: guildLeaveData.date.toISOString().split("T")[0],
   Leaves: guildLeaveData.leaves,
  }));
 
  let guildMessage = guild.guildMessage.map((guildMessageData) => ({
-  date: parseDate(guildMessageData.date),
+  date: guildMessageData.date.toISOString().split("T")[0],
   Messages: guildMessageData.messages,
  }));
-
- const generateDates = (startDate, endDate) => {
-  let dates = [];
-  let currentDate = new Date(startDate);
-
-  while (currentDate <= endDate) {
-   dates.push(new Date(currentDate));
-   currentDate.setDate(currentDate.getDate() + 1);
-  }
-
-  return dates;
- };
-
- const fillMissingDates = (array, property) => {
-  let minDate = new Date(Math.min(...array.map((e) => new Date(e.date))));
-  const today = new Date();
-  today.setHours(0, 0, 0, 0);
-  const thirtyDaysAgo = new Date(today.getTime());
-  thirtyDaysAgo.setDate(thirtyDaysAgo.getDate() - 30);
-
-  if (minDate < thirtyDaysAgo) minDate = thirtyDaysAgo;
-
-  const allDates = generateDates(minDate, today);
-  const dateSet = new Set(array.map((e) => new Date(e.date).toISOString().split("T")[0]));
-
-  allDates.forEach((date) => {
-   const dateString = date.toISOString().split("T")[0];
-   if (!dateSet.has(dateString)) {
-    array.push({ date: dateString, [property]: 0 });
-   }
-  });
-
-  return array.sort((a, b) => new Date(a.date) - new Date(b.date));
- };
 
  guildJoin = fillMissingDates(guildJoin, "Joins");
  guildLeave = fillMissingDates(guildLeave, "Leaves");

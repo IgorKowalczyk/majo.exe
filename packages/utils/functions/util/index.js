@@ -6,3 +6,5 @@ export * from "./logger.js";
 export * from "./percentageBar.js";
 export * from "./shortenText.js";
 export * from "./isNumeric.js";
+export * from "./generateDates.js";
+export * from "./fillMissingDates.js";
