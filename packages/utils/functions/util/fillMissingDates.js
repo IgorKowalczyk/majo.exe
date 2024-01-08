@@ -17,7 +17,7 @@ export function fillMissingDates(array, property) {
  const dateSet = new Set(arrayDates.map((date) => date.toISOString().split("T")[0]));
 
  generateDates(minDate, today).forEach((date) => {
-  const dateString = date.toISOString().split("T")[0];
+  const [dateString] = date.toISOString().split("T");
   if (!dateSet.has(dateString)) {
    array.push({ date: dateString, [property]: 0 });
   }

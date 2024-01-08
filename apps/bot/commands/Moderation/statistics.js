@@ -1,10 +1,61 @@
-import { ApplicationCommandType, ApplicationCommandOptionType, PermissionFlagsBits, AttachmentBuilder, EmbedBuilder } from "discord.js";
 import prismaClient from "@majoexe/database";
+import { fillMissingDates } from "@majoexe/util/functions/util";
 import * as Plot from "@observablehq/plot";
+import { ApplicationCommandType, ApplicationCommandOptionType, PermissionFlagsBits, AttachmentBuilder, EmbedBuilder } from "discord.js";
 import jsdom from "jsdom";
 import sharp from "sharp";
-import { fillMissingDates } from "@majoexe/util/functions/util";
 const { JSDOM } = jsdom;
+
+async function generateChart(data, name, color) {
+ const chartData = fillMissingDates(data, name);
+ const { document } = new JSDOM("").window;
+
+ const chart = Plot.plot({
+  document,
+  marginBottom: 60,
+  marginTop: 40,
+  width: 934,
+
+  marks: [
+   // prettier
+   Plot.gridY({
+    stroke: "white",
+    strokeOpacity: 0.2, // opaque
+   }),
+   Plot.axisY({
+    color,
+    fontWeight: "bold",
+    fontFamily: "Quicksand",
+    fontSize: 18,
+    label: name.charAt(0).toUpperCase() + name.slice(1),
+    tickFormat: (number) => (number % 1 === 0 ? number : ""),
+   }),
+   Plot.axisX({
+    color,
+    fontWeight: "bold",
+    fontSize: 18,
+    fontFamily: "Quicksand",
+   }),
+   Plot.lineX(chartData, {
+    x: "date",
+    y: name,
+    strokeWidth: 2,
+    curve: "monotone-x",
+    stroke: color,
+    color,
+   }),
+  ],
+ });
+
+ document.body.appendChild(chart);
+
+ const buffer = await sharp(Buffer.from(document.body.innerHTML)).png().toBuffer();
+ const attachment = new AttachmentBuilder(buffer, {
+  name: "chart.png",
+ });
+
+ return attachment;
+}
 
 export default {
  name: "statistics",
@@ -127,54 +178,3 @@ export default {
   }
  },
 };
-
-async function generateChart(data, name, color) {
- const chartData = fillMissingDates(data, name);
- const document = new JSDOM("").window.document;
-
- const chart = Plot.plot({
-  document: document,
-  marginBottom: 60,
-  marginTop: 40,
-  width: 934,
-
-  marks: [
-   // prettier
-   Plot.gridY({
-    stroke: "white",
-    strokeOpacity: 0.2, // opaque
-   }),
-   Plot.axisY({
-    color: color,
-    fontWeight: "bold",
-    fontFamily: "Quicksand",
-    fontSize: 18,
-    label: name.charAt(0).toUpperCase() + name.slice(1),
-    tickFormat: (number) => (number % 1 === 0 ? number : ""),
-   }),
-   Plot.axisX({
-    color: color,
-    fontWeight: "bold",
-    fontSize: 18,
-    fontFamily: "Quicksand",
-   }),
-   Plot.lineX(chartData, {
-    x: "date",
-    y: name,
-    strokeWidth: 2,
-    curve: "monotone-x",
-    stroke: color,
-    color: color,
-   }),
-  ],
- });
-
- document.body.appendChild(chart);
-
- const buffer = await sharp(Buffer.from(document.body.innerHTML)).png().toBuffer();
- const attachment = new AttachmentBuilder(buffer, {
-  name: "chart.png",
- });
-
- return attachment;
-}
