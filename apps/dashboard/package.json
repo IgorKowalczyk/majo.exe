@@ -55,7 +55,7 @@
   },
   "devDependencies": {
     "@next/bundle-analyzer": "14.0.4",
-    "@prisma/nextjs-monorepo-workaround-plugin": "5.7.1",
+    "@prisma/nextjs-monorepo-workaround-plugin": "5.8.0",
     "@tailwindcss/typography": "0.5.10",
     "autoprefixer": "10.4.16",
     "eslint-config-next": "14.0.4",
