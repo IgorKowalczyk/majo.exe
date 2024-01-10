@@ -7,6 +7,7 @@ import { formatNumber } from "@majoexe/util/functions/util";
 import { getSession } from "lib/session";
 import Link from "next/link";
 import { redirect } from "next/navigation";
+import { notFound } from "next/navigation";
 import { Block } from "@/components/Block";
 import { ButtonPrimary } from "@/components/Buttons";
 import { ManageWarns } from "@/components/client/lists/Warns";
@@ -58,7 +59,7 @@ export default async function UserPage({ params }) {
  if (!session || !session.access_token) redirect("/auth/login");
  const { server, id } = params;
  const serverDownload = await getServer(server);
- if (!serverDownload || serverDownload.code === 10004 || !serverDownload.bot) return redirect("/auth/error?error=It%20looks%20like%20the%20server%20you%20are%20trying%20to%20display%20does%20not%20exist");
+ if (!serverDownload || serverDownload.code === 10004 || !serverDownload.bot) return notFound();
  const serverMember = await getGuildMember(serverDownload.id, session.access_token);
  if (
   // prettier
@@ -67,7 +68,7 @@ export default async function UserPage({ params }) {
   !serverMember.permissions_names.includes("ManageGuild") ||
   !serverMember.permissions_names.includes("Administrator")
  )
-  return redirect("/auth/error?error=It%20looks%20like%20you%20do%20not%20have%20permission%20to%20access%20this%20page.");
+  return notFound();
 
  const user = await prismaClient.user.findFirst({
   where: {

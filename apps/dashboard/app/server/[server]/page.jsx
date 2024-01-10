@@ -3,7 +3,7 @@ import { dashboardConfig } from "@majoexe/config";
 import prismaClient from "@majoexe/database";
 import { getServer, getGuildPreview } from "@majoexe/util/functions/guild";
 import Link from "next/link";
-import { redirect } from "next/navigation";
+import { notFound } from "next/navigation";
 import Balancer from "react-wrap-balancer";
 import { Block } from "@/components/Block";
 import { Leaderboard } from "@/components/client/lists/Leaderboard";
@@ -45,10 +45,10 @@ export default async function CustomOverviewPage({ params }) {
   },
  });
 
- if (!guild || !guild.guildId || !guild.publicPage) return redirect("/auth/error?error=It%20looks%20like%20the%20server%20you%20are%20trying%20to%20display%20does%20not%20exist");
+ if (!guild || !guild.guildId || !guild.publicPage) return notFound();
 
  const guildPreview = await getGuildPreview(guild.guildId);
- if (!guildPreview || !guildPreview.id) return redirect("/auth/error?error=It%20looks%20like%20the%20server%20you%20are%20trying%20to%20display%20does%20not%20exist");
+ if (!guildPreview || !guildPreview.id) return notFound();
 
  const data = guild.guildXp.map((x, i) => {
   return {
