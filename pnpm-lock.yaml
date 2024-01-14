@@ -304,7 +304,7 @@ importers:
         version: 4.8.0
       ws:
         specifier: ^8.14.2
-        version: 8.14.2
+        version: 8.16.0
     devDependencies:
       prettier-plugin-prisma:
         specifier: 5.0.0
@@ -1735,13 +1735,6 @@ packages:
     resolution: {integrity: sha512-x/rqGMdzj+fWZvCOYForTghzbtqPDZ5gPwaoNGHdgDfF2QA/XZbCBp4Moo5scrkAMPhB7z26XM/AaHuIJdgauA==}
     dev: false
 
-  /@babel/runtime@7.23.2:
-    resolution: {integrity: sha512-mM8eg4yl5D6i3lu2QKPuPH4FArvJ8KhTofbE7jwMUv9KX5mBvwPAqnV3MlyBNqdp9RyRKP6Yck8TrfYrPvX3bg==}
-    engines: {node: '>=6.9.0'}
-    dependencies:
-      regenerator-runtime: 0.14.0
-    dev: false
-
   /@babel/runtime@7.23.5:
     resolution: {integrity: sha512-NdUTHcPe4C99WxPub+K9l9tK5/lV4UXIoaHSYgzco9BCyjKAAwzdBI+wWtYqHt7LJdbo74ZjRPJgzVweq1sz0w==}
     engines: {node: '>=6.9.0'}
@@ -1846,7 +1839,7 @@ packages:
       '@vladfrangu/async_event_emitter': 2.2.2
       discord-api-types: 0.37.61
       tslib: 2.6.2
-      ws: 8.14.2
+      ws: 8.16.0
     transitivePeerDependencies:
       - bufferutil
       - utf-8-validate
@@ -1890,11 +1883,6 @@ packages:
       strip-json-comments: 3.1.1
     transitivePeerDependencies:
       - supports-color
-    dev: true
-
-  /@eslint/js@8.55.0:
-    resolution: {integrity: sha512-qQfo2mxH5yVom1kacMtZZJFVdW+E70mqHMJvVg6WTLo+VBuQJ4TojZlfWBjK0ve5BdEeNAVxOsl/nvNMpJOaJA==}
-    engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
     dev: true
 
   /@eslint/js@8.56.0:
@@ -1971,7 +1959,7 @@ packages:
     peerDependencies:
       eslint: '>=8.0.0'
     dependencies:
-      '@eslint/js': 8.55.0
+      '@eslint/js': 8.56.0
       eslint: 8.56.0
       eslint-plugin-import: 2.29.0(@typescript-eslint/parser@6.9.1)(eslint-import-resolver-typescript@3.6.1)(eslint@8.56.0)
       eslint-plugin-prettier: 5.0.1(eslint@8.56.0)(prettier@3.2.2)
@@ -7945,7 +7933,7 @@ packages:
       nodemailer:
         optional: true
     dependencies:
-      '@babel/runtime': 7.23.2
+      '@babel/runtime': 7.23.5
       '@panva/hkdf': 1.1.1
       cookie: 0.5.0
       jose: 4.15.4

@@ -5,7 +5,7 @@ export function GraphSkeleton({ className }) {
 }
 
 export function TextSkeleton({ className, ...otherProps }) {
- return <div className={twMerge(className, "min-h-6 bg-background-menu-button relative isolate h-6 max-w-[20rem] overflow-hidden rounded-md border border-neutral-800 before:absolute before:inset-0 before:-translate-x-full before:animate-[shimmer_1s_infinite] before:bg-gradient-to-r before:from-transparent before:via-white/10 before:to-transparent")} {...otherProps} />;
+ return <div className={twMerge(className, "bg-background-menu-button relative isolate h-6 min-h-6 max-w-[20rem] overflow-hidden rounded-md border border-neutral-800 before:absolute before:inset-0 before:-translate-x-full before:animate-[shimmer_1s_infinite] before:bg-gradient-to-r before:from-transparent before:via-white/10 before:to-transparent")} {...otherProps} />;
 }
 
 export function InputSkeleton({ className }) {
@@ -17,7 +17,7 @@ export function EmbedSkeleton({ className }) {
 }
 
 export function AvatarSkeleton({ className }) {
- return <div className={twMerge(className, "min-h-16 min-w-16 bg-background-menu-button relative isolate h-16 w-16 overflow-hidden rounded-full border border-neutral-800 before:absolute before:inset-0 before:-translate-x-full before:animate-[shimmer_1s_infinite] before:bg-gradient-to-r before:from-transparent before:via-white/10 before:to-transparent")} />;
+ return <div className={twMerge(className, "bg-background-menu-button relative isolate h-16 min-h-16 w-16 min-w-16 overflow-hidden rounded-full border border-neutral-800 before:absolute before:inset-0 before:-translate-x-full before:animate-[shimmer_1s_infinite] before:bg-gradient-to-r before:from-transparent before:via-white/10 before:to-transparent")} />;
 }
 
 export function ButtonSkeleton({ className }) {
