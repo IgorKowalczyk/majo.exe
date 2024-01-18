@@ -57,7 +57,7 @@
     "@next/bundle-analyzer": "14.0.4",
     "@prisma/nextjs-monorepo-workaround-plugin": "5.8.1",
     "@tailwindcss/typography": "0.5.10",
-    "autoprefixer": "10.4.16",
+    "autoprefixer": "10.4.17",
     "eslint-config-next": "14.0.4",
     "postcss": "8.4.33",
     "prettier-plugin-tailwindcss": "0.5.11",
