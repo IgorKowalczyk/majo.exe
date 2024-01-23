@@ -19,7 +19,7 @@
  },
  "dependencies": {
   "discord-api-types": "0.37.67",
-  "dotenv": "16.3.2"
+  "dotenv": "16.4.0"
  },
  "engines": {
   "node": ">=18.0.0"
