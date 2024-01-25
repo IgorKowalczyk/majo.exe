@@ -26,7 +26,7 @@
     "@riskymh/discord-markdown": "3.0.0",
     "@tippyjs/react": "4.2.6",
     "@vercel/analytics": "1.1.2",
-    "@vercel/speed-insights": "1.0.7",
+    "@vercel/speed-insights": "1.0.8",
     "class-variance-authority": "0.7.0",
     "clsx": "2.1.0",
     "cobe": "0.6.3",
