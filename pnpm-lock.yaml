@@ -138,7 +138,7 @@ importers:
         version: 3.0.0(@types/react@18.2.48)(react@18.2.0)
       '@next-auth/prisma-adapter':
         specifier: 1.0.7
-        version: 1.0.7(@prisma/client@5.9.0)(next-auth@4.24.5)
+        version: 1.0.7(@prisma/client@5.9.1)(next-auth@4.24.5)
       '@next/mdx':
         specifier: 14.1.0
         version: 14.1.0(@mdx-js/loader@3.0.0)(@mdx-js/react@3.0.0)
@@ -234,8 +234,8 @@ importers:
         specifier: 14.1.0
         version: 14.1.0
       '@prisma/nextjs-monorepo-workaround-plugin':
-        specifier: 5.9.0
-        version: 5.9.0
+        specifier: 5.9.1
+        version: 5.9.1
       '@tailwindcss/typography':
         specifier: 0.5.10
         version: 0.5.10(tailwindcss@3.4.1)
@@ -282,11 +282,11 @@ importers:
         specifier: 0.7.2
         version: 0.7.2
       '@prisma/adapter-neon':
-        specifier: 5.9.0
-        version: 5.9.0(@neondatabase/serverless@0.7.2)
+        specifier: 5.9.1
+        version: 5.9.1(@neondatabase/serverless@0.7.2)
       '@prisma/client':
-        specifier: 5.9.0
-        version: 5.9.0(prisma@5.9.0)
+        specifier: 5.9.1
+        version: 5.9.1(prisma@5.9.1)
       chalk:
         specifier: 5.3.0
         version: 5.3.0
@@ -297,8 +297,8 @@ importers:
         specifier: 5.3.2
         version: 5.3.2
       prisma:
-        specifier: 5.9.0
-        version: 5.9.0
+        specifier: 5.9.1
+        version: 5.9.1
       prisma-redis-middleware:
         specifier: 4.8.0
         version: 4.8.0
@@ -2479,13 +2479,13 @@ packages:
       '@types/pg': 8.6.6
     dev: false
 
-  /@next-auth/prisma-adapter@1.0.7(@prisma/client@5.9.0)(next-auth@4.24.5):
+  /@next-auth/prisma-adapter@1.0.7(@prisma/client@5.9.1)(next-auth@4.24.5):
     resolution: {integrity: sha512-Cdko4KfcmKjsyHFrWwZ//lfLUbcLqlyFqjd/nYE2m3aZ7tjMNUjpks47iw7NTCnXf+5UWz5Ypyt1dSs1EP5QJw==}
     peerDependencies:
       '@prisma/client': '>=2.26.0 || >=3'
       next-auth: ^4
     dependencies:
-      '@prisma/client': 5.9.0(prisma@5.9.0)
+      '@prisma/client': 5.9.1(prisma@5.9.1)
       next-auth: 4.24.5(next@14.1.0)(react-dom@18.2.0)(react@18.2.0)
     dev: false
 
@@ -2655,20 +2655,20 @@ packages:
     resolution: {integrity: sha512-P1st0aksCrn9sGZhp8GMYwBnQsbvAWsZAX44oXNNvLHGqAOcoVxmjZiohstwQ7SqKnbR47akdNi+uleWD8+g6A==}
     dev: false
 
-  /@prisma/adapter-neon@5.9.0(@neondatabase/serverless@0.7.2):
-    resolution: {integrity: sha512-jR7qqgOCFbMgyorm/bAOuAtkCywzMTX9NohErOnbYJ1U+5RuNur6yElL7fmQFffPQ0pqUOdwwu6/Pr7Fgcs/Gw==}
+  /@prisma/adapter-neon@5.9.1(@neondatabase/serverless@0.7.2):
+    resolution: {integrity: sha512-an/M2KD24faPuca9EvqGaH8fTi/Ii/eYQxUolQzCdgTwzeTnCVVys2MmH9IycVp88nGrn3NWKgWT69Av6BBiLA==}
     peerDependencies:
       '@neondatabase/serverless': ^0.6.0 || ^0.7.0
     dependencies:
       '@neondatabase/serverless': 0.7.2
-      '@prisma/driver-adapter-utils': 5.9.0
+      '@prisma/driver-adapter-utils': 5.9.1
       postgres-array: 3.0.2
     transitivePeerDependencies:
       - supports-color
     dev: false
 
-  /@prisma/client@5.9.0(prisma@5.9.0):
-    resolution: {integrity: sha512-dHvFZgCT0BpRS+gRhk3S+50DstXMmVowxbrPeUJaK7sjNq5OhzfpT/OGE1kq9z5Q8WmOwIXJXyxP8O2CmP+nSg==}
+  /@prisma/client@5.9.1(prisma@5.9.1):
+    resolution: {integrity: sha512-caSOnG4kxcSkhqC/2ShV7rEoWwd3XrftokxJqOCMVvia4NYV/TPtJlS9C2os3Igxw/Qyxumj9GBQzcStzECvtQ==}
     engines: {node: '>=16.13'}
     requiresBuild: true
     peerDependencies:
@@ -2677,15 +2677,15 @@ packages:
       prisma:
         optional: true
     dependencies:
-      prisma: 5.9.0
+      prisma: 5.9.1
     dev: false
 
-  /@prisma/debug@5.9.0:
-    resolution: {integrity: sha512-3Uhj5YSPqaIfzJQ6JQzCNBXeBTy0x803fGIoo2tvP/KIEd+o4o49JxCQtKtP8aeef5iNh5Nn9Z25wDrdLjS80A==}
+  /@prisma/debug@5.9.1:
+    resolution: {integrity: sha512-yAHFSFCg8KVoL0oRUno3m60GAjsUKYUDkQ+9BA2X2JfVR3kRVSJFc/GpQ2fSORi4pSHZR9orfM4UC9OVXIFFTA==}
     dev: false
 
-  /@prisma/driver-adapter-utils@5.9.0:
-    resolution: {integrity: sha512-0Z/rqRkRc+OE0bZO2hipsTfMw3s7yp2sFBdyWXGc7Y3r4g2H6R42X/C+1YYrymlWHce6dgUbXLcAgOaKBIuCSw==}
+  /@prisma/driver-adapter-utils@5.9.1:
+    resolution: {integrity: sha512-1h1+6kU3PfsE2CvQoU49Jt7yrXybU0C/H/+W8Bh0pJefMAbTY8KoWssYXgwQp1PUKBtdh1GDQsMf9ojFeQ0RWg==}
     dependencies:
       debug: 4.3.4(supports-color@5.5.0)
     transitivePeerDependencies:
@@ -2696,32 +2696,32 @@ packages:
     resolution: {integrity: sha512-HFl7275yF0FWbdcNvcSRbbu9JCBSLMcurYwvWc8WGDnpu7APxQo2ONtZrUggU3WxLxUJ2uBX+0GOFIcJeVeOOQ==}
     dev: false
 
-  /@prisma/engines@5.9.0:
-    resolution: {integrity: sha512-BH1fpXbMH09TwfZH5FVMJwRp6afEhKzqwebbCLdaEkJDuhxA//iwbILLqGFtGTgZbdBNUOThIK+UC3++5kWMTg==}
+  /@prisma/engines@5.9.1:
+    resolution: {integrity: sha512-gkdXmjxQ5jktxWNdDA5aZZ6R8rH74JkoKq6LD5mACSvxd2vbqWeWIOV0Py5wFC8vofOYShbt6XUeCIUmrOzOnQ==}
     requiresBuild: true
     dependencies:
-      '@prisma/debug': 5.9.0
+      '@prisma/debug': 5.9.1
       '@prisma/engines-version': 5.9.0-32.23fdc5965b1e05fc54e5f26ed3de66776b93de64
-      '@prisma/fetch-engine': 5.9.0
-      '@prisma/get-platform': 5.9.0
+      '@prisma/fetch-engine': 5.9.1
+      '@prisma/get-platform': 5.9.1
     dev: false
 
-  /@prisma/fetch-engine@5.9.0:
-    resolution: {integrity: sha512-NL8Vm8Vl2d6NOSkkPGN5TTTz4s6cyCleXOzqtOFWzfKFJ4wtN2Shu7llOT+ykf6nDzh1lCN2JHUt1S6FGFZGig==}
+  /@prisma/fetch-engine@5.9.1:
+    resolution: {integrity: sha512-l0goQOMcNVOJs1kAcwqpKq3ylvkD9F04Ioe1oJoCqmz05mw22bNAKKGWuDd3zTUoUZr97va0c/UfLNru+PDmNA==}
     dependencies:
-      '@prisma/debug': 5.9.0
+      '@prisma/debug': 5.9.1
       '@prisma/engines-version': 5.9.0-32.23fdc5965b1e05fc54e5f26ed3de66776b93de64
-      '@prisma/get-platform': 5.9.0
+      '@prisma/get-platform': 5.9.1
     dev: false
 
-  /@prisma/get-platform@5.9.0:
-    resolution: {integrity: sha512-8CatX+E6eZxcOjJZe5hF8EXxdb5GsQTA/u7pdmUJSxGLacW9K3r5vDdgV8s22PubObQQ6979/rkCMItbCrG4Yg==}
+  /@prisma/get-platform@5.9.1:
+    resolution: {integrity: sha512-6OQsNxTyhvG+T2Ksr8FPFpuPeL4r9u0JF0OZHUBI/Uy9SS43sPyAIutt4ZEAyqWQt104ERh70EZedkHZKsnNbg==}
     dependencies:
-      '@prisma/debug': 5.9.0
+      '@prisma/debug': 5.9.1
     dev: false
 
-  /@prisma/nextjs-monorepo-workaround-plugin@5.9.0:
-    resolution: {integrity: sha512-++aY/BdZFbVMUvpFb+kyXSmFKGlFbyKCeR296hHfeokuIxnit9V4hVdRZbEzkGxza5d4bn/3UYbqhMatkMkHFQ==}
+  /@prisma/nextjs-monorepo-workaround-plugin@5.9.1:
+    resolution: {integrity: sha512-eyhfdkGUtUyz8BxKocgl953KuC5WWLxL+EC2aJBUSSozh+l/COg1FjvCa4fGeNbiJPdFnBPybv5+M52jc+vV6Q==}
     dev: true
 
   /@prisma/prisma-schema-wasm@4.17.0-26.6b0aef69b7cdfc787f822ecd7cdc76d5f1991584:
@@ -8744,13 +8744,13 @@ packages:
       - supports-color
     dev: false
 
-  /prisma@5.9.0:
-    resolution: {integrity: sha512-0UcOofjNuAnd227JMaPqZvP01dsUXw9EXB9iC8fyoZtfv7zkQ0ozxyjY1g+vcjFPOnNLICMnLHx+lM5BJZYqOQ==}
+  /prisma@5.9.1:
+    resolution: {integrity: sha512-Hy/8KJZz0ELtkw4FnG9MS9rNWlXcJhf98Z2QMqi0QiVMoS8PzsBkpla0/Y5hTlob8F3HeECYphBjqmBxrluUrQ==}
     engines: {node: '>=16.13'}
     hasBin: true
     requiresBuild: true
     dependencies:
-      '@prisma/engines': 5.9.0
+      '@prisma/engines': 5.9.1
     dev: false
 
   /process-nextick-args@2.0.1:
