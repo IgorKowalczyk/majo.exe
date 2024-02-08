@@ -24,7 +24,7 @@
   },
   "dependencies": {
     "@majoexe/config": "workspace:*",
-    "@neondatabase/serverless": "0.7.2",
+    "@neondatabase/serverless": "0.8.1",
     "@prisma/adapter-neon": "5.9.1",
     "@prisma/client": "5.9.1",
     "chalk": "5.3.0",

@@ -279,11 +279,11 @@ importers:
         specifier: workspace:*
         version: link:../config
       '@neondatabase/serverless':
-        specifier: 0.7.2
-        version: 0.7.2
+        specifier: 0.8.1
+        version: 0.8.1
       '@prisma/adapter-neon':
         specifier: 5.9.1
-        version: 5.9.1(@neondatabase/serverless@0.7.2)
+        version: 5.9.1(@neondatabase/serverless@0.8.1)
       '@prisma/client':
         specifier: 5.9.1
         version: 5.9.1(prisma@5.9.1)
@@ -2473,8 +2473,8 @@ packages:
       '@napi-rs/canvas-win32-x64-msvc': 0.1.45
     dev: false
 
-  /@neondatabase/serverless@0.7.2:
-    resolution: {integrity: sha512-wU3WA2uTyNO7wjPs3Mg0G01jztAxUxzd9/mskMmtPwPTjf7JKWi9AW5/puOGXLxmZ9PVgRFeBVRVYq5nBPhsCg==}
+  /@neondatabase/serverless@0.8.1:
+    resolution: {integrity: sha512-nxZfTLbGqvDrw0W9WnQxzoPn4KC6SLjkvK4grdf6eWVMQSc24X+8udz9inZWOGu8f0O3wJAq586fCZ32r22lwg==}
     dependencies:
       '@types/pg': 8.6.6
     dev: false
@@ -2655,12 +2655,12 @@ packages:
     resolution: {integrity: sha512-P1st0aksCrn9sGZhp8GMYwBnQsbvAWsZAX44oXNNvLHGqAOcoVxmjZiohstwQ7SqKnbR47akdNi+uleWD8+g6A==}
     dev: false
 
-  /@prisma/adapter-neon@5.9.1(@neondatabase/serverless@0.7.2):
+  /@prisma/adapter-neon@5.9.1(@neondatabase/serverless@0.8.1):
     resolution: {integrity: sha512-an/M2KD24faPuca9EvqGaH8fTi/Ii/eYQxUolQzCdgTwzeTnCVVys2MmH9IycVp88nGrn3NWKgWT69Av6BBiLA==}
     peerDependencies:
       '@neondatabase/serverless': ^0.6.0 || ^0.7.0
     dependencies:
-      '@neondatabase/serverless': 0.7.2
+      '@neondatabase/serverless': 0.8.1
       '@prisma/driver-adapter-utils': 5.9.1
       postgres-array: 3.0.2
     transitivePeerDependencies:
