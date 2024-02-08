@@ -252,8 +252,8 @@ importers:
         specifier: 0.5.11
         version: 0.5.11(prettier@3.2.4)
       tailwind-gradient-mask-image:
-        specifier: 1.1.0
-        version: 1.1.0
+        specifier: 1.2.0
+        version: 1.2.0
       tailwind-merge:
         specifier: 2.2.1
         version: 2.2.1
@@ -9909,8 +9909,8 @@ packages:
       tslib: 2.6.2
     dev: true
 
-  /tailwind-gradient-mask-image@1.1.0:
-    resolution: {integrity: sha512-sUhik6Srts8XvSpCFEelxF0hRud+eQI1TYgVH2sREtAavP+wEVE65JQCiDj/XBoTwCo+ElVAVNljjpfm2mCkKw==}
+  /tailwind-gradient-mask-image@1.2.0:
+    resolution: {integrity: sha512-tUJaGhvqbJFiVKJu6EU5n//KvGdVvY3L3VOFNqjztk13+ifAk00pcSNHBTgHfUiBGOEzDn0gFRbSmsftUV1lXA==}
     dev: true
 
   /tailwind-merge@2.2.1:
