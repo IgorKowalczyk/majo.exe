@@ -76,8 +76,8 @@ importers:
         specifier: 14.14.1
         version: 14.14.1
       dotenv:
-        specifier: 16.4.3
-        version: 16.4.3
+        specifier: 16.4.4
+        version: 16.4.4
       figlet:
         specifier: 1.7.0
         version: 1.7.0
@@ -270,8 +270,8 @@ importers:
         specifier: 0.37.69
         version: 0.37.69
       dotenv:
-        specifier: 16.4.3
-        version: 16.4.3
+        specifier: 16.4.4
+        version: 16.4.4
 
   packages/database:
     dependencies:
@@ -5196,7 +5196,7 @@ packages:
     hasBin: true
     dependencies:
       cross-spawn: 7.0.3
-      dotenv: 16.4.3
+      dotenv: 16.4.4
       dotenv-expand: 10.0.0
       minimist: 1.2.8
     dev: false
@@ -5211,8 +5211,8 @@ packages:
     engines: {node: '>=12'}
     dev: true
 
-  /dotenv@16.4.3:
-    resolution: {integrity: sha512-II98GFrje5psQTSve0E7bnwMFybNLqT8Vu8JIFWRjsE3khyNUm/loZupuy5DVzG2IXf/ysxvrixYOQnM6mjD3A==}
+  /dotenv@16.4.4:
+    resolution: {integrity: sha512-XvPXc8XAQThSjAbY6cQ/9PcBXmFoWuw1sQ3b8HqUCR6ziGXjkTi//kB9SWa2UwqlgdAIuRqAa/9hVljzPehbYg==}
     engines: {node: '>=12'}
     dev: false
 
