@@ -18,7 +18,7 @@
   "lint:fix": "eslint . --fix"
  },
  "dependencies": {
-  "discord-api-types": "0.37.69",
+  "discord-api-types": "0.37.70",
   "dotenv": "16.4.4"
  },
  "engines": {
