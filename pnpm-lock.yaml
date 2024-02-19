@@ -149,8 +149,8 @@ importers:
         specifier: 4.2.6
         version: 4.2.6(react-dom@18.2.0)(react@18.2.0)
       '@vercel/analytics':
-        specifier: 1.2.0
-        version: 1.2.0(next@14.1.0)(react@18.2.0)
+        specifier: 1.2.1
+        version: 1.2.1(next@14.1.0)(react@18.2.0)
       '@vercel/speed-insights':
         specifier: 1.0.10
         version: 1.0.10(next@14.1.0)(react@18.2.0)
@@ -3610,8 +3610,8 @@ packages:
   /@ungap/structured-clone@1.2.0:
     resolution: {integrity: sha512-zuVdFrMJiuCDQUMCzQaD6KL28MjnqqN8XnAqiEq9PNm/hCPTSGfrXCOfwj1ow4LFb/tNymJPwsNbVePc1xFqrQ==}
 
-  /@vercel/analytics@1.2.0(next@14.1.0)(react@18.2.0):
-    resolution: {integrity: sha512-Q9hduY6+i73Is1m57Y3OlawleeYVi4cvuh/0j6IwmSndMOE4+BKkMwjnwz+7xnqfZCanipIG6+q+zHalH9X0Zg==}
+  /@vercel/analytics@1.2.1(next@14.1.0)(react@18.2.0):
+    resolution: {integrity: sha512-ZB5gDPCQvHu0DcBbywIwMm5aY9mTV8mBl7Mmk8QD84JqBnuYbsNCDnnDuzblNjd82tDtRjAqruZ0mzNm6MAWpA==}
     peerDependencies:
       next: '>= 13'
       react: ^18 || ^19
