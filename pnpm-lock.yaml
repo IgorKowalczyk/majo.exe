@@ -176,8 +176,8 @@ importers:
         specifier: 0.4.12
         version: 0.4.12
       json-2-csv:
-        specifier: 5.1.0
-        version: 5.1.0
+        specifier: 5.2.0
+        version: 5.2.0
       lucide-react:
         specifier: 0.336.0
         version: 0.336.0(react@18.2.0)
@@ -6987,8 +6987,8 @@ packages:
     hasBin: true
     dev: false
 
-  /json-2-csv@5.1.0:
-    resolution: {integrity: sha512-qGq2IaAndaC/aAtEW8p6WM/VaF47cdXN2LtJ4T8THC8OsSWr1H2nYmuwYgvHJbF4WwCDmOx/seqSUNy15H01CQ==}
+  /json-2-csv@5.2.0:
+    resolution: {integrity: sha512-C+XmSKRCS7zSTENm7Ha/lhLkO2ZE+fcSNC2kLiWSEGKy6ZwRCG2KakMJj0bvyfy2U8oZY+KFoU8F1isCgpUBYg==}
     engines: {node: '>= 16'}
     dependencies:
       deeks: 3.0.2
