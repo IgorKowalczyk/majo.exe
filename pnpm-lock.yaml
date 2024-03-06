@@ -191,8 +191,8 @@ importers:
         specifier: 4.24.6
         version: 4.24.6(next@14.1.0)(react-dom@18.2.0)(react@18.2.0)
       next-nprogress-bar:
-        specifier: 2.3.1
-        version: 2.3.1
+        specifier: 2.3.4
+        version: 2.3.4
       react:
         specifier: 18.2.0
         version: 18.2.0
@@ -8001,8 +8001,8 @@ packages:
       uuid: 8.3.2
     dev: false
 
-  /next-nprogress-bar@2.3.1:
-    resolution: {integrity: sha512-fg0kY6vfndoBbCFJ5O1GnVj7UQ4Xc0h1ePSQ7HoUY5Iu2GL5fZJlSlGklf5ozcPpYQWC7roQ/GdP7OXm2KvCcQ==}
+  /next-nprogress-bar@2.3.4:
+    resolution: {integrity: sha512-R4okQiaMIw5yFIq9SjBkQ0TPv7UVSkR5fWt7tauO2gQYW+62Wyq3kK8M40VtrwO42xJ1anEevDBxM88wb9ZE7g==}
     dependencies:
       nprogress: 0.2.0
     dev: false
