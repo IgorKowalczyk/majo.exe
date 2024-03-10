@@ -19,7 +19,7 @@
     "prisma:seed": "dotenv -- turbo run prisma:seed --color --filter=database"
   },
   "dependencies": {
-    "dotenv-cli": "7.4.0",
+    "dotenv-cli": "7.4.1",
     "turbo": "1.12.5"
   },
   "devDependencies": {
