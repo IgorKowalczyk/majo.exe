@@ -52,8 +52,8 @@ importers:
         specifier: 0.1.51
         version: 0.1.51
       '@observablehq/plot':
-        specifier: 0.6.13
-        version: 0.6.13
+        specifier: 0.6.14
+        version: 0.6.14
       chalk:
         specifier: 5.3.0
         version: 5.3.0
@@ -2661,8 +2661,8 @@ packages:
       '@nodelib/fs.scandir': 2.1.5
       fastq: 1.16.0
 
-  /@observablehq/plot@0.6.13:
-    resolution: {integrity: sha512-ebQS4ENodOy+O3WUjhqv9jNPZENAZRQMIdO3ziOlAKfUzSf69+gaFAqqc04SGrQA6JwJjPYnbfeN3YIpNsCF/A==}
+  /@observablehq/plot@0.6.14:
+    resolution: {integrity: sha512-A9HWSboh1WgFonKqYKC522VkxJwhkTUTye606qjxQH8iPtSVjVXUF6JRKwf7MPaYTin/MypaSSd+08ML4LA1rw==}
     engines: {node: '>=12'}
     dependencies:
       d3: 7.9.0
