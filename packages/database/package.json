@@ -8,19 +8,18 @@
     "./redis": "./src/redis.js"
   },
   "type": "module",
-  "prisma": {
-    "seed": "node ./src/seed.js"
-  },
   "scripts": {
-    "prisma:seed": "node ./src/seed.js",
-    "prisma:generate": "prisma generate && pnpm run prisma:seed",
+    "prisma:generate": "prisma generate",
     "prisma:migrate": "prisma migrate dev",
     "prisma:format": "prisma format",
     "prisma:push": "prisma db push",
+    "prisma:seed": "node ./src/seed.js",
     "format": "prettier . --write --cache --ignore-unknown --plugin=prettier-plugin-prisma",
     "format:check": "prettier . --check --cache",
     "lint": "eslint .",
-    "lint:fix": "eslint . --fix"
+    "lint:fix": "eslint . --fix",
+    "prebuild": "pnpm run prisma:generate",
+    "studio": "prisma studio"
   },
   "dependencies": {
     "@majoexe/config": "workspace:*",

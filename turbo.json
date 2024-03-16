@@ -9,6 +9,10 @@
    "dependsOn": ["^prisma:generate", "lint"],
    "outputs": [".next/**", "!.next/cache/**"]
   },
+  "docker:build": {
+   "outputs": [],
+   "cache": false
+  },
   "deploy": {
    "dependsOn": ["^build"],
    "outputs": [".next/**", "!.next/cache/**"]

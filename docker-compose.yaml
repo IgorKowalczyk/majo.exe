@@ -1,0 +1,53 @@
+version: "3"
+
+services:
+  db:
+    image: postgres:latest
+    container_name: majoexe-db
+    restart: always
+    user: postgres
+    environment:
+      - POSTGRES_DB=majoexe
+      - POSTGRES_PASSWORD=${DATABASE_PASSWORD}
+    volumes:
+      - database:/var/lib/postgresql-docker/data
+    ports:
+      - "5432:5432"
+    networks:
+      - app_network
+    healthcheck:
+      test: [ "CMD", "pg_isready" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+  bot:
+    environment:
+      - NODE_ENV=production
+      - TOKEN=${TOKEN}
+      - CLIENT_ID=${CLIENT_ID}
+
+#      - DATABASE_URL=postgres://postgres:${DATABASE_PASSWORD}@db:5432/majoexe
+#      - DIRECT_URL=postgres://postgres:${DATABASE_PASSWORD}@db:5432/majoexe
+ 
+      - DATABASE_URL=${DATABASE_URL}
+      - DIRECT_URL=${DIRECT_URL}
+
+      - TOPGG_API_KEY=${TOPGG_API_KEY}
+    container_name: majoexe-bot
+    build:
+      context: .
+      dockerfile: ./apps/bot/Dockerfile
+    restart: always
+    depends_on:
+      db:
+        condition: service_healthy
+    networks:
+      - app_network
+
+networks:
+  app_network:
+    driver: bridge
+
+volumes:
+  database:
+    driver: local

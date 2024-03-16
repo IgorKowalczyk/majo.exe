@@ -5,6 +5,7 @@ import { Logger } from "./logger.js";
 const upsertCategoriesAndCommands = async (categoriesData, commandsData) => {
  Logger("event", `Upserting ${categoriesData.length} categories and ${commandsData.length} commands...`);
  await prismaClient.$transaction([...categoriesData.map((x) => prismaClient.commandCategories.upsert(x)), ...commandsData.map((x) => prismaClient.commands.upsert(x))]);
+ await prismaClient.$disconnect();
 };
 
 const categoriesData = [];
