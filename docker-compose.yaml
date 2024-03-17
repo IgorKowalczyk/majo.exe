@@ -10,7 +10,7 @@ services:
       - POSTGRES_DB=majoexe
       - POSTGRES_PASSWORD=${DATABASE_PASSWORD}
     volumes:
-      - database:/var/lib/postgresql-docker/data
+      - database:/var/lib/postgresql/data
     ports:
       - "5432:5432"
     networks:
@@ -20,17 +20,41 @@ services:
       interval: 10s
       timeout: 5s
       retries: 5
+  redis:
+    image: redis:latest
+    container_name: majoexe-cache
+    restart: always
+    environment:
+      - REDIS_PASSWORD=${REDIS_PASSWORD}
+    ports:
+      - "6379:6379"
+    networks:
+      - app_network
+    volumes:
+      - cache:/data
+    depends_on:
+      db:
+        condition: service_healthy
+    healthcheck:
+      test: [ "CMD", "redis-cli", "ping" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
   bot:
     environment:
       - NODE_ENV=production
       - TOKEN=${TOKEN}
       - CLIENT_ID=${CLIENT_ID}
 
-#      - DATABASE_URL=postgres://postgres:${DATABASE_PASSWORD}@db:5432/majoexe
-#      - DIRECT_URL=postgres://postgres:${DATABASE_PASSWORD}@db:5432/majoexe
+      # - DATABASE_URL=postgres://postgres:${DATABASE_PASSWORD}@db:5432/majoexe
+      # - DIRECT_URL=postgres://postgres:${DATABASE_PASSWORD}@db:5432/majoexe
  
       - DATABASE_URL=${DATABASE_URL}
       - DIRECT_URL=${DIRECT_URL}
+
+      - REDIS_URL=redis://default:${REDIS_PASSWORD}@redis:6379
+
+      # - REDIS_URL=${REDIS_URL}
 
       - TOPGG_API_KEY=${TOPGG_API_KEY}
     container_name: majoexe-bot
@@ -41,6 +65,8 @@ services:
     depends_on:
       db:
         condition: service_healthy
+      redis:
+        condition: service_healthy
     networks:
       - app_network
 
@@ -50,4 +76,6 @@ networks:
 
 volumes:
   database:
+    driver: local
+  cache:
     driver: local

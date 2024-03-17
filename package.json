@@ -21,7 +21,9 @@
     "prisma:generate": "turbo run prisma:generate ",
     "prisma:migrate": "turbo run prisma:migrate ",
     "prisma:format": "turbo run prisma:format ",
-    "prisma:seed": "turbo run prisma:seed --no-cache"
+    "prisma:seed": "turbo run prisma:seed --no-cache",
+    "prisma:studio": "turbo run prisma:studio",
+    "prisma:push": "turbo run prisma:push"
   },
   "prisma": {
     "schema": "packages/database/prisma/schema.prisma",

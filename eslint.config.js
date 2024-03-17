@@ -8,7 +8,8 @@ export default [
    turbo: turboPlugin,
   },
   rules: {
-   "turbo/no-undeclared-env-vars": "warn",
+   ...turboPlugin.configs["recommended"].rules,
+   "turbo/no-undeclared-env-vars": "off",
   },
  },
 ];
