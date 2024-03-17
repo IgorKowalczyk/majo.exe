@@ -182,7 +182,7 @@ importers:
         specifier: 0.358.0
         version: 0.358.0(react@18.2.0)
       million:
-        specifier: ^3.0.6
+        specifier: 3.0.6
         version: 3.0.6
       mini-svg-data-uri:
         specifier: 1.4.4
