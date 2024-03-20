@@ -74,7 +74,9 @@ export default function RootLayout({ children }) {
        theme="dark"
        closeButton={true}
        visibleToasts={4}
-       loadingIcon={<Icons.refresh className={iconVariants({ variant: "normal", className: "animate-spin" })} />}
+       icons={{
+        loading: <Icons.refresh className={iconVariants({ variant: "normal", className: "animate-spin" })} />,
+       }}
        expand={false}
       />
       <SpeedInsights />
