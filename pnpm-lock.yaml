@@ -164,8 +164,8 @@ importers:
         specifier: 0.6.3
         version: 0.6.3
       discord-api-types:
-        specifier: 0.37.75
-        version: 0.37.75
+        specifier: 0.37.76
+        version: 0.37.76
       geist:
         specifier: 1.2.2
         version: 1.2.2(next@14.1.4)
@@ -270,8 +270,8 @@ importers:
   packages/config:
     dependencies:
       discord-api-types:
-        specifier: 0.37.75
-        version: 0.37.75
+        specifier: 0.37.76
+        version: 0.37.76
       dotenv:
         specifier: 16.4.5
         version: 16.4.5
@@ -325,8 +325,8 @@ importers:
         specifier: 5.3.0
         version: 5.3.0
       discord-api-types:
-        specifier: 0.37.75
-        version: 0.37.75
+        specifier: 0.37.76
+        version: 0.37.76
       discord.js:
         specifier: 14.14.1
         version: 14.14.1
@@ -5183,8 +5183,8 @@ packages:
     resolution: {integrity: sha512-o/dXNFfhBpYHpQFdT6FWzeO7pKc838QeeZ9d91CfVAtpr5XLK4B/zYxQbYgPdoMiTDvJfzcsLW5naXgmHGDNXw==}
     dev: false
 
-  /discord-api-types@0.37.75:
-    resolution: {integrity: sha512-pnb2iPp63+TqSs+3MCzl47y0CFQYjDDQBmuiCs0LkLoRdFx2dDpjrzJYC7BcHJCa/Xlpf+/JuDT/YADvQLu3yQ==}
+  /discord-api-types@0.37.76:
+    resolution: {integrity: sha512-GQI02JvBVl9+WQiMmyc/OFuJ4bBBf2VWb6NjPBnzrrdF2D/2S07mA1ZCd5+IhHRjU8wQ83c/hmjj9nn1+r/K9g==}
     dev: false
 
   /discord-giveaways@6.0.1(discord.js@14.14.1):
