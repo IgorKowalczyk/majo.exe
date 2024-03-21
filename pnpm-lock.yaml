@@ -176,8 +176,8 @@ importers:
         specifier: 0.4.12
         version: 0.4.12
       json-2-csv:
-        specifier: 5.5.0
-        version: 5.5.0
+        specifier: 5.5.1
+        version: 5.5.1
       lucide-react:
         specifier: 0.360.0
         version: 0.360.0(react@18.2.0)
@@ -5224,8 +5224,8 @@ packages:
   /dlv@1.1.3:
     resolution: {integrity: sha512-+HlytyjlPKnIG8XuRG8WvmBP8xs8P71y+SKKS6ZXWoEgLuePxtDoUEiH7WkdePWrQ5JBpE6aoVqfZfJUQkjXwA==}
 
-  /doc-path@4.1.0:
-    resolution: {integrity: sha512-i+hXn5HFwpPOwe8JcvjjQYuUVt0p46Ybi+73g9L43zQUKR6zMyaUAKFwGBMH3NWQDugRWIwxg2+FvvxCv0IG7Q==}
+  /doc-path@4.1.1:
+    resolution: {integrity: sha512-h1ErTglQAVv2gCnOpD3sFS6uolDbOKHDU1BZq+Kl3npPqroU3dYL42lUgMfd5UimlwtRgp7C9dLGwqQ5D2HYgQ==}
     engines: {node: '>=16'}
     dev: false
 
@@ -7072,12 +7072,12 @@ packages:
     hasBin: true
     dev: false
 
-  /json-2-csv@5.5.0:
-    resolution: {integrity: sha512-1Y4upYpzhoweEMkFDogMU8fKLCs+ciNKviTotrrMZ8duqlycERcB38GYXpu4xcwm6YBn86cTXd7za2yUl0GAkg==}
+  /json-2-csv@5.5.1:
+    resolution: {integrity: sha512-KgAtAXTQopRwe90gh8SgjRSxgt9bUWbGAPMo9W0TZLA8SqiQH7khtagFfeEUjG3NBPwJu/+9uX5pMvunKaPvrQ==}
     engines: {node: '>= 16'}
     dependencies:
       deeks: 3.1.0
-      doc-path: 4.1.0
+      doc-path: 4.1.1
     dev: false
 
   /json-buffer@3.0.1:
