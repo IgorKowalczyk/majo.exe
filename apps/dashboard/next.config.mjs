@@ -2,7 +2,6 @@ import { dashboardHeaders, dashboardRedirects } from "@majoexe/config";
 import withBundleAnalyzer from "@next/bundle-analyzer";
 import createMdx from "@next/mdx";
 import { PrismaPlugin } from "@prisma/nextjs-monorepo-workaround-plugin";
-import million from "million/compiler";
 
 const withMDX = createMdx();
 const withBundle = withBundleAnalyzer({
@@ -48,8 +47,4 @@ const nextConfig = {
  },
 };
 
-const millionConfig = {
- auto: { rsc: true },
-};
-
-export default million.next(withMDX(withBundle(nextConfig)), millionConfig);
+export default withMDX(withBundle(nextConfig));
