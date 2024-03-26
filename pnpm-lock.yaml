@@ -237,8 +237,8 @@ importers:
         specifier: 5.11.0
         version: 5.11.0
       '@tailwindcss/typography':
-        specifier: 0.5.10
-        version: 0.5.10(tailwindcss@3.4.1)
+        specifier: 0.5.11
+        version: 0.5.11(tailwindcss@3.4.1)
       autoprefixer:
         specifier: 10.4.19
         version: 10.4.19(postcss@8.4.38)
@@ -3333,8 +3333,8 @@ packages:
       tslib: 2.6.2
     dev: false
 
-  /@tailwindcss/typography@0.5.10(tailwindcss@3.4.1):
-    resolution: {integrity: sha512-Pe8BuPJQJd3FfRnm6H0ulKIGoMEQS+Vq01R6M5aCrFB/ccR/shT+0kXLjouGC1gFLm9hopTFN+DMP0pfwRWzPw==}
+  /@tailwindcss/typography@0.5.11(tailwindcss@3.4.1):
+    resolution: {integrity: sha512-ahOULqBQGCdSqL3vMNjH1R5cU2gxTh059fJIKF2enHXE8c/s3yKGDSKZ1+4poCr7BZRREJS8n5cCFmwsW4Ok3A==}
     peerDependencies:
       tailwindcss: '>=3.0.0 || insiders'
     dependencies:
