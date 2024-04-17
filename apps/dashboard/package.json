@@ -68,7 +68,7 @@
     "tailwindcss-text-fill": "0.2.0"
   },
   "engines": {
-    "node": ">=18.0.0"
+    "node": ">=20.0.0"
   },
   "browserslist": [
     ">0.3%",
