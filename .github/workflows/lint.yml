@@ -13,7 +13,6 @@ jobs:
   strategy:
    fail-fast: false
    matrix:
-    language: ["javascript"]
     node: ["20.x"]
   steps:
    - name: 🧱 Checkout repository
