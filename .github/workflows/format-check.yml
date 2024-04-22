@@ -13,14 +13,12 @@ jobs:
   strategy:
    fail-fast: false
    matrix:
-    node: ["20.x"]
+    node: ["lts/*"]
   steps:
    - name: 🧱 Checkout repository
      uses: actions/checkout@v4
-     with:
-      fetch-depth: 2
    - name: 🔩 Setup PNPM
-     uses: pnpm/action-setup@v3.0.0
+     uses: pnpm/action-setup@v3
      with:
       version: next-9
       standalone: true
