@@ -15,16 +15,15 @@ jobs:
    matrix:
     language: ["javascript"]
     node: ["20.x"]
-    pnpm: ["9.0.4"]
   steps:
    - name: 🧱 Checkout repository
      uses: actions/checkout@v4
      with:
       fetch-depth: 2
-   - name: 🔩 Setup PNPM ${{ matrix.pnpm }}
+   - name: 🔩 Setup PNPM
      uses: pnpm/action-setup@v2
      with:
-      version: ${{ matrix.pnpm }}
+      version: "9.0.4"
    - name: 🔩 Setup Node ${{ matrix.node }}
      uses: actions/setup-node@v4
      with:
