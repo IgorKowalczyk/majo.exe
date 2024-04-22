@@ -21,7 +21,7 @@ jobs:
      uses: actions/checkout@v4
      with:
       fetch-depth: 2
-   - name: 🔩 Setup PNPM
+   - name: 🔩 Setup PNPM ${{ matrix.pnpm }}
      uses: pnpm/action-setup@v2
      with:
       version: ${{ matrix.pnpm }}
