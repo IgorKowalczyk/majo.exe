@@ -59,6 +59,5 @@
     "majoexe",
     "bot",
     "discord-bot"
-  ],
-  "packageManager": "pnpm@9.0.5"
+  ]
 }
