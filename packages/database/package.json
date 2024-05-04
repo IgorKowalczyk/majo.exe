@@ -31,7 +31,7 @@
     "ioredis": "5.4.1",
     "prisma": "5.13.0",
     "prisma-redis-middleware": "4.8.0",
-    "ws": "8.14.2"
+    "ws": "8.17.0"
   },
   "devDependencies": {
     "prettier-plugin-prisma": "5.0.0"
