@@ -106,8 +106,8 @@ importers:
         specifier: 0.33.3
         version: 0.33.3
       validator:
-        specifier: 13.11.0
-        version: 13.11.0
+        specifier: 13.12.0
+        version: 13.12.0
     devDependencies:
       nodemon:
         specifier: 3.1.0
@@ -227,8 +227,8 @@ importers:
         specifier: 1.4.41
         version: 1.4.41(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       validator:
-        specifier: 13.11.0
-        version: 13.11.0
+        specifier: 13.12.0
+        version: 13.12.0
     devDependencies:
       '@next/bundle-analyzer':
         specifier: 14.2.3
@@ -5629,8 +5629,8 @@ packages:
     resolution: {integrity: sha512-+NYs2QeMWy+GWFOEm9xnn6HCDp0l7QBD7ml8zLUmJ+93Q5NF0NocErnwkTkXVFNiX3/fpC6afS8Dhb/gz7R7eg==}
     hasBin: true
 
-  validator@13.11.0:
-    resolution: {integrity: sha512-Ii+sehpSfZy+At5nPdnyMhx78fEoPDkR2XW/zimHEL3MyGJQOCQ7WeP20jPYRz7ZCpcKLB21NxuXHF3bxjStBQ==}
+  validator@13.12.0:
+    resolution: {integrity: sha512-c1Q0mCiPlgdTVVVIJIrBuxNicYE+t/7oKeI9MWLj3fh/uq2Pxh/3eeWbVZ4OcGW1TUf53At0njHw5SMdA3tmMg==}
     engines: {node: '>= 0.10'}
 
   vary@1.1.2:
@@ -12146,7 +12146,7 @@ snapshots:
 
   uuid@8.3.2: {}
 
-  validator@13.11.0: {}
+  validator@13.12.0: {}
 
   vary@1.1.2: {}
 
