@@ -50,7 +50,7 @@
     "react-wrap-balancer": "1.1.0",
     "recharts": "2.12.7",
     "server-only": "0.0.1",
-    "sharp": "0.33.3",
+    "sharp": "0.33.4",
     "sonner": "1.4.41",
     "validator": "13.12.0"
   },
