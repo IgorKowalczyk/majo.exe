@@ -15,7 +15,7 @@
     "lint:fix": "next lint --fix"
   },
   "dependencies": {
-    "@headlessui/react": "2.0.3",
+    "@headlessui/react": "2.0.4",
     "@headlessui/tailwindcss": "0.2.0",
     "@majoexe/config": "workspace:*",
     "@majoexe/database": "workspace:*",
