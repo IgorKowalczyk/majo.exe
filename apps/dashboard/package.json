@@ -16,7 +16,7 @@
   },
   "dependencies": {
     "@headlessui/react": "2.0.4",
-    "@headlessui/tailwindcss": "0.2.0",
+    "@headlessui/tailwindcss": "0.2.1",
     "@majoexe/config": "workspace:*",
     "@majoexe/database": "workspace:*",
     "@majoexe/util": "workspace:*",

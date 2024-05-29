@@ -119,8 +119,8 @@ importers:
         specifier: 2.0.4
         version: 2.0.4(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@headlessui/tailwindcss':
-        specifier: 0.2.0
-        version: 0.2.0(tailwindcss@3.4.3)
+        specifier: 0.2.1
+        version: 0.2.1(tailwindcss@3.4.3)
       '@majoexe/config':
         specifier: workspace:*
         version: link:../../packages/config
@@ -1154,8 +1154,8 @@ packages:
       react: ^18
       react-dom: ^18
 
-  '@headlessui/tailwindcss@0.2.0':
-    resolution: {integrity: sha512-fpL830Fln1SykOCboExsWr3JIVeQKieLJ3XytLe/tt1A0XzqUthOftDmjcCYLW62w7mQI7wXcoPXr3tZ9QfGxw==}
+  '@headlessui/tailwindcss@0.2.1':
+    resolution: {integrity: sha512-2+5+NZ+RzMyrVeCZOxdbvkUSssSxGvcUxphkIfSVLpRiKsj+/63T2TOL9dBYMXVfj/CGr6hMxSRInzXv6YY7sA==}
     engines: {node: '>=10'}
     peerDependencies:
       tailwindcss: ^3.0
@@ -6914,7 +6914,7 @@ snapshots:
       react: 18.3.1
       react-dom: 18.3.1(react@18.3.1)
 
-  '@headlessui/tailwindcss@0.2.0(tailwindcss@3.4.3)':
+  '@headlessui/tailwindcss@0.2.1(tailwindcss@3.4.3)':
     dependencies:
       tailwindcss: 3.4.3
 
