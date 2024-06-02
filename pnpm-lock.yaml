@@ -17,10 +17,10 @@ importers:
     devDependencies:
       '@igorkowalczyk/eslint-config':
         specifier: 2.2.0
-        version: 2.2.0(@types/eslint@8.56.10)(eslint@8.57.0)(prettier@3.2.5)
+        version: 2.2.0(@types/eslint@8.56.10)(eslint@8.57.0)(prettier@3.3.0)
       '@igorkowalczyk/prettier-config':
         specifier: 2.2.0
-        version: 2.2.0(prettier@3.2.5)
+        version: 2.2.0(prettier@3.3.0)
       eslint:
         specifier: 8.57.0
         version: 8.57.0
@@ -28,8 +28,8 @@ importers:
         specifier: 1.13.3
         version: 1.13.3(eslint@8.57.0)
       prettier:
-        specifier: 3.2.5
-        version: 3.2.5
+        specifier: 3.3.0
+        version: 3.3.0
 
   apps/bot:
     dependencies:
@@ -250,7 +250,7 @@ importers:
         version: 8.4.38
       prettier-plugin-tailwindcss:
         specifier: 0.6.1
-        version: 0.6.1(prettier@3.2.5)
+        version: 0.6.1(prettier@3.3.0)
       tailwind-gradient-mask-image:
         specifier: 1.2.0
         version: 1.2.0
@@ -308,7 +308,7 @@ importers:
     devDependencies:
       prettier-plugin-prisma:
         specifier: 5.0.0
-        version: 5.0.0(prettier@3.2.5)
+        version: 5.0.0(prettier@3.3.0)
 
   packages/utils:
     dependencies:
@@ -4763,8 +4763,8 @@ packages:
       prettier-plugin-svelte:
         optional: true
 
-  prettier@3.2.5:
-    resolution: {integrity: sha512-3/GWa9aOC0YeD7LUfvOG2NiDyhOWRvt1k+rcKhOuYnMY24iiCphgneUfJDyFXd6rZCAnuLBv6UeAULtrhT/F4A==}
+  prettier@3.3.0:
+    resolution: {integrity: sha512-J9odKxERhCQ10OC2yb93583f6UnYutOeiV5i0zEDS7UGTdUt0u+y8erxl3lBKvwo/JHyyoEdXjwp4dke9oyZ/g==}
     engines: {node: '>=14'}
     hasBin: true
 
@@ -6934,12 +6934,12 @@ snapshots:
     dependencies:
       undici: 5.28.2
 
-  '@igorkowalczyk/eslint-config@2.2.0(@types/eslint@8.56.10)(eslint@8.57.0)(prettier@3.2.5)':
+  '@igorkowalczyk/eslint-config@2.2.0(@types/eslint@8.56.10)(eslint@8.57.0)(prettier@3.3.0)':
     dependencies:
       '@eslint/js': 8.57.0
       eslint: 8.57.0
       eslint-plugin-import: 2.29.1(@typescript-eslint/parser@6.19.0(eslint@8.57.0)(typescript@5.4.2))(eslint-import-resolver-typescript@3.6.1)(eslint@8.57.0)
-      eslint-plugin-prettier: 5.1.3(@types/eslint@8.56.10)(eslint@8.57.0)(prettier@3.2.5)
+      eslint-plugin-prettier: 5.1.3(@types/eslint@8.56.10)(eslint@8.57.0)(prettier@3.3.0)
       globals: 13.23.0
     transitivePeerDependencies:
       - '@types/eslint'
@@ -6950,9 +6950,9 @@ snapshots:
       - prettier
       - supports-color
 
-  '@igorkowalczyk/prettier-config@2.2.0(prettier@3.2.5)':
+  '@igorkowalczyk/prettier-config@2.2.0(prettier@3.3.0)':
     dependencies:
-      prettier: 3.2.5
+      prettier: 3.3.0
 
   '@img/sharp-darwin-arm64@0.33.4':
     optionalDependencies:
@@ -9176,10 +9176,10 @@ snapshots:
       object.entries: 1.1.7
       object.fromentries: 2.0.7
 
-  eslint-plugin-prettier@5.1.3(@types/eslint@8.56.10)(eslint@8.57.0)(prettier@3.2.5):
+  eslint-plugin-prettier@5.1.3(@types/eslint@8.56.10)(eslint@8.57.0)(prettier@3.3.0):
     dependencies:
       eslint: 8.57.0
-      prettier: 3.2.5
+      prettier: 3.3.0
       prettier-linter-helpers: 1.0.0
       synckit: 0.8.8
     optionalDependencies:
@@ -11192,16 +11192,16 @@ snapshots:
     dependencies:
       fast-diff: 1.3.0
 
-  prettier-plugin-prisma@5.0.0(prettier@3.2.5):
+  prettier-plugin-prisma@5.0.0(prettier@3.3.0):
     dependencies:
       '@prisma/prisma-schema-wasm': 4.17.0-26.6b0aef69b7cdfc787f822ecd7cdc76d5f1991584
-      prettier: 3.2.5
+      prettier: 3.3.0
 
-  prettier-plugin-tailwindcss@0.6.1(prettier@3.2.5):
+  prettier-plugin-tailwindcss@0.6.1(prettier@3.3.0):
     dependencies:
-      prettier: 3.2.5
+      prettier: 3.3.0
 
-  prettier@3.2.5: {}
+  prettier@3.3.0: {}
 
   pretty-format@26.6.2:
     dependencies:
