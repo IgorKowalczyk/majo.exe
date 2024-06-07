@@ -86,7 +86,7 @@ export default async function CustomOverviewPage({ params }) {
    </Block>
 
    <div className="mt-6 block gap-6 lg:flex lg:items-start">
-    <Block className="scrollbar-show flex flex-col justify-start overflow-x-scroll [flex:3_1_0] ">
+    <Block className="scrollbar-show flex flex-col justify-start overflow-x-scroll [flex:3_1_0]">
      <Header4 className="mb-4 !items-start !justify-normal opacity-80">Leaderboard</Header4>
      {data.length > 0 ? <Leaderboard data={data} showSearch={false} showControls={false} /> : <span className="opacity-50">No users found. Maybe you should try talking in chat?</span>}
     </Block>

@@ -77,7 +77,7 @@ export default async function Loading() {
        <InputSkeleton className="!h-[37.6px] !w-40" />
       </div>
 
-      <div className="my-2 flex flex-row flex-wrap  gap-2">
+      <div className="my-2 flex flex-row flex-wrap gap-2">
        <span className="flex w-fit items-center gap-2 font-bold">
         <Icons.messageWarning className={iconVariants({ variant: "normal", className: "stroke-red-400" })} />
         Log to channel:
@@ -153,7 +153,7 @@ export default async function Loading() {
        <InputSkeleton className="!h-[37.6px] !w-40" />
       </div>
 
-      <div className="my-2 flex flex-row flex-wrap  gap-2">
+      <div className="my-2 flex flex-row flex-wrap gap-2">
        <span className="flex w-fit items-center gap-2 font-bold">
         <Icons.messageWarning className={iconVariants({ variant: "normal", className: "stroke-red-400" })} />
         Log to channel:

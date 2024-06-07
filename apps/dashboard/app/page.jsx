@@ -52,7 +52,7 @@ export default async function HomePage() {
        <Icons.arrowRight className={iconVariants({ variant: "normal", className: "-mr-1 ml-2 transition-all duration-200 group-hover:translate-x-1" })} />
       </span>
      </Link>
-     <Header1 className="text-fill-transparent mb-0 justify-center bg-gradient-to-b	from-white to-neutral-400 box-decoration-clone bg-clip-text text-center !font-black !leading-snug xl:!text-5xl 2xl:!text-7xl">The only one Discord Bot</Header1>
+     <Header1 className="text-fill-transparent mb-0 justify-center bg-gradient-to-b from-white to-neutral-400 box-decoration-clone bg-clip-text text-center !font-black !leading-snug xl:!text-5xl 2xl:!text-7xl">The only one Discord Bot</Header1>
      <Header2 className="mb-0 max-w-[680px] text-center font-normal text-white/70">
       <Balancer>Majo.exe will not only keep your server entertained but also assist you with moderation and many other things!</Balancer>
      </Header2>
@@ -157,7 +157,7 @@ export default async function HomePage() {
       <div className="bg-background-secondary relative col-span-2 row-span-2 overflow-hidden rounded-xl border border-neutral-800 duration-200 hover:bg-neutral-800/50">
        <div className="relative z-50 h-full">
         <div className="px-8 py-6">
-         <Header1 className="text-fill-transparent mb-0 bg-gradient-to-b from-white	to-neutral-400 box-decoration-clone bg-clip-text !text-left !font-black">Know more about your server</Header1>
+         <Header1 className="text-fill-transparent mb-0 bg-gradient-to-b from-white to-neutral-400 box-decoration-clone bg-clip-text !text-left !font-black">Know more about your server</Header1>
          <p className="max-w-[680px] text-white/70">
           <Balancer>With Majo.exe you can get to know your server better with the help of the dashboard. You can see the most active members, the most used channels and activity graphs!</Balancer>
          </p>

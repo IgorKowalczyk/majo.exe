@@ -111,7 +111,7 @@ export function ChangeMessages({ serverId, enabled, title, description, existing
      className={clsx(
       {
        "max-h-0 opacity-0": isEnabled,
-       "max-h-[500px] opacity-100 ": !isEnabled,
+       "max-h-[500px] opacity-100": !isEnabled,
       },
       "transition-all duration-200 ease-in-out"
      )}
@@ -156,7 +156,7 @@ export function ChangeMessages({ serverId, enabled, title, description, existing
         className={clsx(
          {
           "max-h-0 opacity-0": messageChannel,
-          "max-h-[500px] opacity-100 ": !messageChannel,
+          "max-h-[500px] opacity-100": !messageChannel,
          },
          "transition-all duration-200 ease-in-out"
         )}
