@@ -31,13 +31,13 @@
   },
   "dependencies": {
     "dotenv-cli": "7.4.2",
-    "turbo": "1.13.4"
+    "turbo": "2.0.3"
   },
   "devDependencies": {
     "@igorkowalczyk/eslint-config": "2.2.0",
     "@igorkowalczyk/prettier-config": "2.2.0",
     "eslint": "8.57.0",
-    "eslint-plugin-turbo": "1.13.4",
+    "eslint-plugin-turbo": "2.0.3",
     "prettier": "3.3.1"
   },
   "engines": {
