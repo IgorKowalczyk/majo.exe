@@ -10,10 +10,10 @@ const MenuItem = ({ children, onClick, style = "default" }) => (
    onClick={onClick}
    className={clsx(
     {
-     "ui-active:bg-button-primary ": style === "default",
-     "ui-active:bg-button-action-primary ": style === "action",
+     "ui-active:bg-button-primary": style === "default",
+     "ui-active:bg-button-action-primary": style === "action",
     },
-    "ui-active:text-white  group my-1 flex w-full cursor-pointer items-center rounded-md px-2 py-2 text-sm font-normal text-gray-400 duration-200 motion-reduce:transition-none"
+    "ui-active:text-white group my-1 flex w-full cursor-pointer items-center rounded-md px-2 py-2 text-sm font-normal text-gray-400 duration-200 motion-reduce:transition-none"
    )}
   >
    {children}
@@ -28,10 +28,10 @@ const MenuLink = ({ children, href, style = "default", target = "_self" }) => (
    target={target}
    className={clsx(
     {
-     "ui-active:bg-button-primary ": style === "default",
-     "ui-active:bg-button-action-primary ": style === "action",
+     "ui-active:bg-button-primary": style === "default",
+     "ui-active:bg-button-action-primary": style === "action",
     },
-    "ui-active:text-white  group my-1 flex w-full cursor-pointer items-center rounded-md px-2 py-2 text-sm font-normal text-gray-400 duration-200 motion-reduce:transition-none"
+    "ui-active:text-white group my-1 flex w-full cursor-pointer items-center rounded-md px-2 py-2 text-sm font-normal text-gray-400 duration-200 motion-reduce:transition-none"
    )}
   >
    {children}
@@ -47,7 +47,7 @@ const Menu = ({ label, children }) => {
     <Icons.arrowDown className={iconVariants({ variant: "small", className: "ui-open:rotate-180 text-gray-400 duration-200 motion-reduce:transition-none" })} />
    </DefaultMenu.Button>
    <Transition as={Fragment} enter="transition ease-out duration-100" enterFrom="transform opacity-0 scale-95" enterTo="transform opacity-100 scale-100" leave="transition ease-in duration-75" leaveFrom="transform opacity-100 scale-100" leaveTo="transform opacity-0 scale-95">
-    <DefaultMenu.Items className="bg-background-secondary absolute right-0 z-50 mt-2 w-56 origin-top-right divide-y divide-neutral-800  rounded-xl border border-neutral-800 px-2 py-1 shadow-2xl">{children}</DefaultMenu.Items>
+    <DefaultMenu.Items className="bg-background-secondary absolute right-0 z-50 mt-2 w-56 origin-top-right divide-y divide-neutral-800 rounded-xl border border-neutral-800 px-2 py-1 shadow-2xl">{children}</DefaultMenu.Items>
    </Transition>
   </DefaultMenu>
  );

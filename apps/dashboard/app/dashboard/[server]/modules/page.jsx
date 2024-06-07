@@ -72,7 +72,7 @@ export default async function ModulesPage({ params }) {
     <div className="flex flex-wrap items-stretch justify-start gap-8">
      {categories.map((category) => (
       <Block className="min-w-48" key={category.name}>
-       <p className="mb-4 flex items-center gap-4 text-center text-xl font-bold ">
+       <p className="mb-4 flex items-center gap-4 text-center text-xl font-bold">
         {botConfig.emojis.categories.find((cat) => cat.name === category.name.toLowerCase())?.emoji || "❔"} {category.name}
         <span className="ml-auto mr-0">
          <UpdateCategories serverId={serverDownload.id} categoryName={category.name} categoryEnabled={!guild.guildDisabledCategories.some((cat) => cat.categoryName === category.name)} />

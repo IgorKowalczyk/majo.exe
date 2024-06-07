@@ -28,7 +28,7 @@ export default function Loading() {
    </Block>
 
    <div className="mt-6 block gap-6 lg:flex lg:items-start">
-    <Block className="scrollbar-show flex flex-col justify-start overflow-x-scroll [flex:3_1_0] ">
+    <Block className="scrollbar-show flex flex-col justify-start overflow-x-scroll [flex:3_1_0]">
      <Header4 className="mb-4 !items-start !justify-normal opacity-80">Leaderboard</Header4>
      <EmbedSkeleton className="h-64 w-full" />
     </Block>

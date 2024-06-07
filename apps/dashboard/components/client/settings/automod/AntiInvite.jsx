@@ -83,7 +83,7 @@ export function AntiInvite({ serverId, enabled, existingActions, existingExemptR
     className={clsx(
      {
       "max-h-0 opacity-0": isEnabled,
-      "max-h-[500px] opacity-100 ": !isEnabled,
+      "max-h-[500px] opacity-100": !isEnabled,
      },
      "transition-all duration-200 ease-in-out"
     )}
@@ -174,7 +174,7 @@ export function AntiInvite({ serverId, enabled, existingActions, existingExemptR
       />
      </div>
 
-     <div className="my-2 flex flex-row flex-wrap  gap-2">
+     <div className="my-2 flex flex-row flex-wrap gap-2">
       <Tooltip content="Send a message to selected channel when a member triggers the rule.">
        <span className="flex w-fit cursor-help items-center gap-2 font-bold">
         <Icons.messageWarning className={iconVariants({ variant: "normal", className: "stroke-red-400" })} />

@@ -10,7 +10,7 @@ export function HeaderBig({ children, className, ...props }) {
 
 export function GradientHeader({ children, className, ...props }) {
  return (
-  <h1 className={twMerge(className, "text-fill-transparent mb-0 flex items-center gap-4 bg-gradient-to-b from-white to-neutral-400 box-decoration-clone	bg-clip-text text-left text-xl font-black md:text-2xl")} {...props}>
+  <h1 className={twMerge(className, "text-fill-transparent mb-0 flex items-center gap-4 bg-gradient-to-b from-white to-neutral-400 box-decoration-clone bg-clip-text text-left text-xl font-black md:text-2xl")} {...props}>
    {children}
   </h1>
  );

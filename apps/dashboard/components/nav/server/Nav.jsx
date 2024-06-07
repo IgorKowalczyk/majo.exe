@@ -37,7 +37,7 @@ export async function Nav({ theme }) {
       <span className="-mb-px">Commands</span>
      </Link>
     </div>
-    <div className="ml-auto mr-4 ">
+    <div className="ml-auto mr-4">
      {session ? (
       <div className="flex items-center gap-2">
        <Link href="/dashboard" className="hidden items-center text-white/60 duration-200 hover:text-white motion-reduce:transition-none md:flex">
