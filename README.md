@@ -60,7 +60,7 @@ Ensure your setup meets these prerequisites before setting up Majo.exe:
 | `CLIENT_ID`                 | Discord client ID                                | `✅ Yes`       | `✅ Yes`             |
 | `CLIENT_SECRET`             | Discord client secret                            | `❌ No`        | `✅ Yes`             |
 | `DATABASE_URL`              | Main database connection string                  | `✅ Yes`       | `✅ Yes`             |
-| `DIRECT_URL`                | Non-pooling database connection string           | `❌ No`        | `❌ No`              |
+| `DATABASE_URL_UNPOOLED`                | Non-pooling database connection string           | `❌ No`        | `❌ No`              |
 | `REDIS_URL`¹                | Redis Cache connection string                    | `❌ No`        | `❌ No`              |
 | `SECRET`                    | Secret string (minimum 32 characters)            | `❌ No`        | `✅ Yes`             |
 | `NEXTAUTH_URL`              | NextAuth.js URL (e.g., http://localhost:3000)    | `❌ No`        | `✅ Yes`             |

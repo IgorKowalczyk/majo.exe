@@ -19,7 +19,7 @@
    - `CLIENT_SECRET` - Discord bot secret [[Tutorial](#-discord-secret)]
    - Database URLs [[Tutorial](/packages/database/README.md)]
      - `DATABASE_URL` - Main database URL
-     - `DIRECT_URL` - Direct database URL (optional)
+     - `DATABASE_URL_UNPOOLED` - Direct database URL (optional)
 6. Run `pnpm i` to install all dependencies
 7. Go to `/packages/config/` directory and change values in `/configs/bot.js` to your values
 8. Go back to main directory and run `pnpm run dev --filter=bot` or `pnpm run deploy --filter=bot` to start bot

@@ -29,7 +29,7 @@
 2. Create new file or edit existing `.env` file in root directory of the project
 3. In `.env` file set these values:
    - `DATABASE_URL` - pooling database connection string
-   - `DIRECT_URL` - non-pooling database connection string
+   - `DATABASE_URL_UNPOOLED` - non-pooling database connection string
 4. Run `pnpm install` to install dependencies.
 5. Run `pnpm prisma:migrate` to generate & apply initial migration.
 6. Run `pnpm prisma:generate` to generate database client.
@@ -42,7 +42,7 @@
 4. Create new file or edit existing `.env` file in root directory of the project
 5. In `.env` file set this values:
    - `DATABASE_URL=postgresql://postgres:postgres@localhost:5432/majoexe`
-   - `DIRECT_URL=postgresql://postgres:postgres@localhost:5432/majoexe`
+   - `DATABASE_URL_UNPOOLED=postgresql://postgres:postgres@localhost:5432/majoexe`
 6. Run `pnpm install` to install dependencies.
 7. Run `pnpm prisma:migrate` to generate & apply initial migration.
 8. Run `pnpm prisma:generate` to generate database client.
@@ -81,7 +81,7 @@
 
 ```
 DATABASE_URL=DATABASE_URL
-DIRECT_URL=DIRECT_DATABASE_URL
+DATABASE_URL_UNPOOLED=DIRECT_DATABASE_URL
 
 REDIS_URL=REDIS_URL
 ```

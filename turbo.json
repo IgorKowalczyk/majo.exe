@@ -69,21 +69,21 @@
       ],
       "env": [
         "DATABASE_URL",
-        "DIRECT_URL"
+        "DATABASE_URL_UNPOOLED"
       ]
     },
     "prisma:seed": {
       "cache": false,
       "env": [
         "DATABASE_URL",
-        "DIRECT_URL"
+        "DATABASE_URL_UNPOOLED"
       ]
     },
     "prisma:push": {
       "cache": false,
       "env": [
         "DATABASE_URL",
-        "DIRECT_URL"
+        "DATABASE_URL_UNPOOLED"
       ]
     },
     "prisma:migrate": {
@@ -92,7 +92,7 @@
       ],
       "env": [
         "DATABASE_URL",
-        "DIRECT_URL"
+        "DATABASE_URL_UNPOOLED"
       ]
     },
     "prisma:format": {
