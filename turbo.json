@@ -1,62 +1,104 @@
 {
- "$schema": "https://turborepo.org/schema.json",
- "globalDotEnv": [".env"],
- "globalDependencies": [".env", ".prettierignore", "prettier.config.mjs", "eslint.config.js"],
- "pipeline": {
-  "dev": {
-   "dependsOn": ["prisma:generate"],
-   "outputs": [],
-   "persistent": true
-  },
-  "build": {
-   "dependsOn": ["^prisma:generate", "lint"],
-   "outputs": [".next/**", "!.next/cache/**"]
-  },
-  "docker:build": {
-   "outputs": [],
-   "cache": false
-  },
-  "deploy": {
-   "dependsOn": ["^build"],
-   "outputs": [".next/**", "!.next/cache/**"],
-   "persistent": true
-  },
-  "analyze": {
-   "dependsOn": ["^build"],
-   "outputs": [".next/**", "!.next/cache/**"]
-  },
-  "lint": {
-   "dependsOn": ["^format:check"],
-   "outputs": []
-  },
-  "lint:fix": {
-   "outputs": []
-  },
-  "format": {
-   "outputs": []
-  },
-  "format:check": {
-   "outputs": []
-  },
-  "prisma:generate": {
-   "cache": false,
-   "outputs": ["prisma/schema.prisma"],
-   "env": ["DATABASE_URL", "DIRECT_URL"]
-  },
-  "prisma:seed": {
-   "cache": false,
-     "env": ["DATABASE_URL", "DIRECT_URL"]
-  },
-  "prisma:push": {
-   "cache": false,
-      "env": ["DATABASE_URL", "DIRECT_URL"]
-  },
-  "prisma:migrate": {
-   "outputs": ["prisma/migrations/**"],
-      "env": ["DATABASE_URL", "DIRECT_URL"]
-  },
-  "prisma:format": {
-   "outputs": ["prisma/schema.prisma"]
+  "$schema": "https://turborepo.org/schema.json",
+  "globalDependencies": [
+    ".env",
+    ".prettierignore",
+    "prettier.config.js",
+    "eslint.config.js"
+  ],
+  "tasks": {
+    "dev": {
+      "dependsOn": [
+        "prisma:generate"
+      ],
+      "outputs": [],
+      "persistent": true
+    },
+    "build": {
+      "dependsOn": [
+        "^prisma:generate",
+        "lint"
+      ],
+      "outputs": [
+        ".next/**",
+        "!.next/cache/**"
+      ]
+    },
+    "docker:build": {
+      "outputs": [],
+      "cache": false
+    },
+    "deploy": {
+      "dependsOn": [
+        "^build"
+      ],
+      "outputs": [
+        ".next/**",
+        "!.next/cache/**"
+      ],
+      "persistent": true
+    },
+    "analyze": {
+      "dependsOn": [
+        "^build"
+      ],
+      "outputs": [
+        ".next/**",
+        "!.next/cache/**"
+      ]
+    },
+    "lint": {
+      "dependsOn": [
+        "^format:check"
+      ],
+      "outputs": []
+    },
+    "lint:fix": {
+      "outputs": []
+    },
+    "format": {
+      "outputs": []
+    },
+    "format:check": {
+      "outputs": []
+    },
+    "prisma:generate": {
+      "cache": false,
+      "outputs": [
+        "prisma/schema.prisma"
+      ],
+      "env": [
+        "DATABASE_URL",
+        "DIRECT_URL"
+      ]
+    },
+    "prisma:seed": {
+      "cache": false,
+      "env": [
+        "DATABASE_URL",
+        "DIRECT_URL"
+      ]
+    },
+    "prisma:push": {
+      "cache": false,
+      "env": [
+        "DATABASE_URL",
+        "DIRECT_URL"
+      ]
+    },
+    "prisma:migrate": {
+      "outputs": [
+        "prisma/migrations/**"
+      ],
+      "env": [
+        "DATABASE_URL",
+        "DIRECT_URL"
+      ]
+    },
+    "prisma:format": {
+      "outputs": [
+        "prisma/schema.prisma"
+      ]
+    }
   }
- }
 }

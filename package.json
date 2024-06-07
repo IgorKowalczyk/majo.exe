@@ -31,7 +31,7 @@
   },
   "dependencies": {
     "dotenv-cli": "7.4.2",
-    "turbo": "1.13.4"
+    "turbo": "2.0.3"
   },
   "devDependencies": {
     "@igorkowalczyk/eslint-config": "2.2.0",
