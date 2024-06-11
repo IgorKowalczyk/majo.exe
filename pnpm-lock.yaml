@@ -249,8 +249,8 @@ importers:
         specifier: 8.4.38
         version: 8.4.38
       prettier-plugin-tailwindcss:
-        specifier: 0.6.2
-        version: 0.6.2(prettier@3.3.2)
+        specifier: 0.6.3
+        version: 0.6.3(prettier@3.3.2)
       tailwind-gradient-mask-image:
         specifier: 1.2.0
         version: 1.2.0
@@ -4761,8 +4761,8 @@ packages:
     peerDependencies:
       prettier: '>=2 || >=3'
 
-  prettier-plugin-tailwindcss@0.6.2:
-    resolution: {integrity: sha512-eFefm4cg+1c2B57+H274Qm//CTWBdtQN9ansl0YTP/8TC8x3bugCTQSS/e4FC5Ctl9djhTzsbcMrZ7x2/abIow==}
+  prettier-plugin-tailwindcss@0.6.3:
+    resolution: {integrity: sha512-GeJ9bqXN4APAP0V5T2a1J/o6a50MWevEUCPWxijpdXFDQkBCoAfz4pQfv+YMXSqZ5GXLMDYio0mUOfrYL7gf4w==}
     engines: {node: '>=14.21.3'}
     peerDependencies:
       '@ianvs/prettier-plugin-sort-imports': '*'
@@ -11404,7 +11404,7 @@ snapshots:
       '@prisma/prisma-schema-wasm': 4.17.0-26.6b0aef69b7cdfc787f822ecd7cdc76d5f1991584
       prettier: 3.3.2
 
-  prettier-plugin-tailwindcss@0.6.2(prettier@3.3.2):
+  prettier-plugin-tailwindcss@0.6.3(prettier@3.3.2):
     dependencies:
       prettier: 3.3.2
 
