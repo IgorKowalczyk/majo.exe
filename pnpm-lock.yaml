@@ -52,8 +52,8 @@ importers:
         specifier: 0.1.53
         version: 0.1.53
       '@observablehq/plot':
-        specifier: 0.6.14
-        version: 0.6.14
+        specifier: 0.6.15
+        version: 0.6.15
       chalk:
         specifier: 5.3.0
         version: 5.3.0
@@ -1532,8 +1532,8 @@ packages:
     resolution: {integrity: sha512-oGB+UxlgWcgQkgwo8GcEGwemoTFt3FIO9ababBmaGwXIoBKZ+GTy0pP185beGg7Llih/NSHSV2XAs1lnznocSg==}
     engines: {node: '>= 8'}
 
-  '@observablehq/plot@0.6.14':
-    resolution: {integrity: sha512-A9HWSboh1WgFonKqYKC522VkxJwhkTUTye606qjxQH8iPtSVjVXUF6JRKwf7MPaYTin/MypaSSd+08ML4LA1rw==}
+  '@observablehq/plot@0.6.15':
+    resolution: {integrity: sha512-xWHnb60XmsUL0YWvYER7jWghMYIqG+jA+ZR9UDx1k2GozflbiRJxh66OJLzITqxypUHEzgce30hvD0T1/37A6A==}
     engines: {node: '>=12'}
 
   '@panva/hkdf@1.1.1':
@@ -7400,7 +7400,7 @@ snapshots:
       '@nodelib/fs.scandir': 2.1.5
       fastq: 1.17.1
 
-  '@observablehq/plot@0.6.14':
+  '@observablehq/plot@0.6.15':
     dependencies:
       d3: 7.9.0
       interval-tree-1d: 1.0.4
