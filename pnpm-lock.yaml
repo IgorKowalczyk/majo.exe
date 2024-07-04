@@ -303,8 +303,8 @@ importers:
         specifier: 4.8.0
         version: 4.8.0
       ws:
-        specifier: 8.17.1
-        version: 8.17.1
+        specifier: 8.18.0
+        version: 8.18.0
     devDependencies:
       prettier-plugin-prisma:
         specifier: 5.0.0
@@ -5969,8 +5969,8 @@ packages:
       utf-8-validate:
         optional: true
 
-  ws@8.17.1:
-    resolution: {integrity: sha512-6XQFvXTkbfUOZOKKILFG1PDK2NDQs4azKQl26T0YS5CxqWLgXajbPZ+h4gZekJyRqFU8pvnbAbbs/3TgRPy+GQ==}
+  ws@8.18.0:
+    resolution: {integrity: sha512-8VbfWfHLbbwu3+N6OKsOMpBdT4kXPDDB9cJk2bJ6mh9ucxdlnNvH1e+roYkKmN9Nxw2yjz7VzeO9oOz2zJ04Pw==}
     engines: {node: '>=10.0.0'}
     peerDependencies:
       bufferutil: ^4.0.1
@@ -7031,7 +7031,7 @@ snapshots:
       '@vladfrangu/async_event_emitter': 2.2.4
       discord-api-types: 0.37.83
       tslib: 2.6.2
-      ws: 8.17.1
+      ws: 8.18.0
     transitivePeerDependencies:
       - bufferutil
       - utf-8-validate
@@ -12885,7 +12885,7 @@ snapshots:
 
   ws@8.17.0: {}
 
-  ws@8.17.1: {}
+  ws@8.18.0: {}
 
   xml-name-validator@5.0.0: {}
 
