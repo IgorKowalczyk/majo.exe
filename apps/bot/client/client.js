@@ -10,7 +10,7 @@ import loadEvents from "../util/loaders/loadEvents.js";
 import loadFonts from "../util/loaders/loadFonts.js";
 import loadModals from "../util/loaders/loadModals.js";
 
-const cwd = dirname(fileURLToPath(import.meta.url)).replace("/client", "");
+const cwd = dirname(fileURLToPath(import.meta.url)).replace("/client", "").replace("\\client", "");
 Logger("info", `Current working directory: ${cwd}`);
 process.chdir(cwd);
 
