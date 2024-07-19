@@ -72,7 +72,7 @@ export default function RootLayout({ children }) {
       <Toaster // prettier
        richColors={true}
        theme="dark"
-       closeButton={true}
+       closeButton={false}
        visibleToasts={4}
        icons={{
         loading: <Icons.refresh className={iconVariants({ variant: "normal", className: "animate-spin" })} />,
