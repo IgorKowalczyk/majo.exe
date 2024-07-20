@@ -6,6 +6,7 @@ import { Logger, chalk } from "@majoexe/util/functions/util";
 import { Client, GatewayIntentBits } from "discord.js";
 import giveaway from "./util/giveaway/core.js";
 import loadCommands from "./util/loaders/loadCommands.js";
+import loadEmojis from "./util/loaders/loadEmojis.js";
 import loadEvents from "./util/loaders/loadEvents.js";
 import loadFonts from "./util/loaders/loadFonts.js";
 import loadModals from "./util/loaders/loadModals.js";
@@ -66,11 +67,11 @@ client.performance = (time) => {
  return run > 500 ? chalk.underline.red(`${run}ms`) : chalk.underline(`${run}ms`);
 };
 
-
 await loadCommands(client);
 await loadModals(client);
 await loadFonts(client);
 await loadEvents(client);
+await loadEmojis(client);
 
 Logger("info", "Logging in...");
 
