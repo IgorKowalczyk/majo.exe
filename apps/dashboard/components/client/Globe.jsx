@@ -41,6 +41,10 @@ const GlobeAnimation = () => {
 
  useEffect(() => {
   let phi = 4.25;
+  let width = 0;
+  const onResize = () => canvasRef.current && (width = canvasRef.current.offsetWidth);
+  window.addEventListener("resize", onResize);
+  onResize();
   const globe = createGlobe(canvasRef.current, {
    devicePixelRatio: 2,
    width: 750 * 2,
@@ -58,21 +62,28 @@ const GlobeAnimation = () => {
    opacity: 1,
    markers: [
     // Prettier
-    { location: [52.22977, 21.01178], size: 0.06 },
-    { location: [50.11552, 8.68417], size: 0.04 },
-    { location: [37.77493, -122.41942], size: 0.04 },
-    { location: [40.05832, -74.40566], size: 0.04 },
-    { location: [39.96118, -82.99879], size: 0.04 },
-    { location: [-33.865143, 151.2099], size: 0.04 },
-    { location: [35.6895, 139.69171], size: 0.04 },
+    { location: [52.22977, 21.01178], size: 0.06 }, // Warsaw
+    { location: [50.11552, 8.68417], size: 0.04 }, // Frankfurt
+    { location: [37.77493, -122.41942], size: 0.04 }, // San Francisco
+    { location: [40.05832, -74.40566], size: 0.04 }, // New Jersey
+    { location: [39.96118, -82.99879], size: 0.04 }, // Ohio
+    { location: [-33.865143, 151.2099], size: 0.04 }, // Sydney
+    { location: [35.6895, 139.69171], size: 0.04 }, // Tokyo
    ],
    onRender: (state) => {
-    phi += 0.002;
+    if (!pointerInteracting.current) {
+     phi += 0.002;
+    }
     state.phi = phi + r.get();
+    state.width = width * 2;
+    state.height = width * 2;
    },
   });
   setTimeout(() => (canvasRef.current.style.opacity = "1"));
-  return () => globe.destroy();
+  return () => {
+   globe.destroy();
+   window.removeEventListener("resize", onResize);
+  };
   /* eslint-disable-next-line react-hooks/exhaustive-deps */
  }, []);
 
