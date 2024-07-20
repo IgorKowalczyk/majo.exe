@@ -5,7 +5,7 @@ import { Area, CartesianGrid, AreaChart as ReChartsAreaChart, ResponsiveContaine
 import { twMerge } from "tailwind-merge";
 import { Icons, iconVariants } from "@/components/Icons";
 
-export default function AreaChart({ data = [], categories = [], index, valueFormatter = (value) => value, startEndOnly = false, showXAxis = true, showYAxis = true, yAxisWidth = 56, autoMinValue = false, curveType = "monotone", minValue, maxValue, connectNulls = true, noDataText = "This chart has no data! Please check back later.", className, ...other }) {
+export default function AreaChart({ data = [], categories = [], index, valueFormatter = (value) => value, startEndOnly = false, showXAxis = true, showYAxis = true, yAxisWidth = 56, autoMinValue = false, curveType = "monotone", showGrid = true, minValue, maxValue, connectNulls = true, noDataText = "This chart has no data! Please check back later.", className, ...other }) {
  const yAxisDomain = autoMinValue ? [0, "auto"] : [minValue ?? 0, maxValue ?? "auto"];
 
  const categoryColors = categories.map((category) => {
@@ -17,7 +17,7 @@ export default function AreaChart({ data = [], categories = [], index, valueForm
    <ResponsiveContainer className="h-full w-full">
     {data && data.length > 0 ? (
      <ReChartsAreaChart data={data}>
-      <CartesianGrid className="stroke-gray-600 stroke-1" strokeDasharray="3 3" horizontal={true} vertical={false} />
+      {showGrid && <CartesianGrid className="stroke-gray-600 stroke-1" strokeDasharray="3 3" horizontal={true} vertical={false} />}
       <XAxis hide={!showXAxis} dataKey={index} tick={{ transform: "translate(0, 6)" }} ticks={startEndOnly ? [data[0][index], data[data.length - 1][index]] : undefined} fill="" stroke="" className="fill-gray-600" interval="preserveStartEnd" tickLine={false} axisLine={false} padding={{ left: 10, right: 10 }} minTickGap={5} />
       <YAxis width={yAxisWidth} hide={!showYAxis} axisLine={false} tickLine={false} type="number" domain={yAxisDomain} tick={{ transform: "translate(-3, 0)" }} fill="" stroke="" className="fill-gray-600" tickFormatter={(value) => Math.round(valueFormatter(value))} allowDecimals={false} />
       <Tooltip wrapperStyle={{ outline: "none" }} isAnimationActive={true} animationDuration={500} cursor={{ stroke: globalConfig.defaultColor, strokeWidth: 1 }} content={({ active, payload, label }) => <ChartTooltip active={active} payload={payload} label={label} categoryColors={categoryColors} valueFormatter={valueFormatter} />} position={{ y: "auto" }} />

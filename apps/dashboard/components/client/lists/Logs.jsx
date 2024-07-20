@@ -1,3 +1,4 @@
+/* eslint-disable complexity */
 "use client";
 
 import { formatDate, formatDuration } from "@majoexe/util/functions/util";
@@ -11,6 +12,65 @@ import { Tooltip } from "@/components/client/shared/Tooltip";
 import { Icons, iconVariants } from "@/components/Icons";
 import { InputWithIcon } from "@/components/Input";
 import { GraphSkeleton } from "@/components/Skeletons";
+
+export function LogDisclosure({ item, index, guildId, preview = false }) {
+ return (
+  <Disclosure
+   key={index}
+   button={
+    <>
+     <div className="flex flex-row items-center gap-4">
+      {item.type && (
+       <>
+        {item.type === "embed_color" && <Icons.paintBrush className={iconVariants({ variant: "large", className: "ui-open:text-accent-primary !stroke-2 text-white/60 duration-200" })} />}
+        {item.type === "command_change" && <Icons.slash className={iconVariants({ variant: "large", className: "ui-open:text-accent-primary !stroke-2 text-white/60 duration-200" })} />}
+        {item.type === "category_change" && <Icons.blocks className={iconVariants({ variant: "large", className: "ui-open:text-accent-primary !stroke-2 text-white/60 duration-200" })} />}
+        {item.type === "public_dashboard" && <Icons.users className={iconVariants({ variant: "large", className: "ui-open:text-accent-primary !stroke-2 text-white/60 duration-200" })} />}
+        {item.type === "vanity" && <Icons.link className={iconVariants({ variant: "large", className: "ui-open:text-accent-primary !stroke-2 text-white/60 duration-200" })} />}
+       </>
+      )}
+      {item.user.fullAvatar ? <Image src={item.user.fullAvatar} alt={`${item.user.name} avatar`} quality={95} width={32} height={32} className="h-12 min-h-12 w-12 min-w-12 rounded-full" /> : <>{item.user?.avatar && <Image src={`https://cdn.discordapp.com/avatars/${item.user?.discordId}/${item.user?.avatar}.${item.user?.avatar.startsWith("a_") ? "gif" : "png"}`} alt={`${item.user?.name} avatar`} quality={95} width={32} height={32} className="h-12 min-h-12 w-12 min-w-12 rounded-full" />}</>}
+     </div>
+     <div className="flex flex-col">
+      <p className="text-left font-bold">
+       {item.user?.global_name || item.user?.username}
+       {item.user?.discriminator !== "0" && <span className="opacity-70">#{item.user?.discriminator || "0000"}</span>}: {item.content}
+      </p>
+      <span className="text-left opacity-70">
+       {formatDate(item.createdAt)} ({formatDuration(new Date().getTime() - new Date(item.createdAt).getTime())} ago)
+      </span>
+     </div>
+    </>
+   }
+  >
+   {item.actionTaken && (
+    <p>
+     <span className="font-bold">Action taken:</span> <span className="opacity-70">{item.actionTaken}</span>
+    </p>
+   )}
+   <p>
+    <span className="font-bold">Type:</span> <span className="opacity-70">{item.type}</span>
+   </p>
+   <p>
+    <span className="font-bold">Date:</span> <span className="opacity-70">{item.createdAt}</span>
+   </p>
+   <p>
+    <span className="font-bold">User:</span>{" "}
+    {preview ? (
+     <>
+      {item.user?.global_name || item.user?.username}
+      {item.user?.discriminator !== "0" && <span className="opacity-70">#{item.user?.discriminator || "0000"}</span>} (ID: {item.user?.discordId || item.user?.id})
+     </>
+    ) : (
+     <Link href={`/dashboard/${guildId}/user/${item.user?.discordId}`} className="hover:text-button-primary opacity-70 duration-200 hover:opacity-100">
+      {item.user?.global_name || item.user?.username}
+      {item.user?.discriminator !== "0" && <span className="opacity-70">#{item.user?.discriminator || "0000"}</span>} (ID: {item.user?.discordId || item.user?.id})
+     </Link>
+    )}
+   </p>
+  </Disclosure>
+ );
+}
 
 export default function Logs({ initialItems, id }) {
  const fetching = useRef(false);
@@ -86,53 +146,7 @@ export default function Logs({ initialItems, id }) {
    </div>
    <InfiniteScroll hasMore={hasMore} pageStart={0} loadMore={loadMore} loader={<GraphSkeleton className="mb-4 !h-20" />}>
     {sortedFilteredItems.map((item, index) => (
-     <Disclosure
-      key={index}
-      button={
-       <>
-        <div className="flex flex-row items-center gap-4">
-         {item.type && (
-          <>
-           {item.type === "embed_color" && <Icons.paintBrush className={iconVariants({ variant: "large", className: "ui-open:text-accent-primary !stroke-2 text-white/60 duration-200" })} />}
-           {item.type === "command_change" && <Icons.slash className={iconVariants({ variant: "large", className: "ui-open:text-accent-primary !stroke-2 text-white/60 duration-200" })} />}
-           {item.type === "category_change" && <Icons.blocks className={iconVariants({ variant: "large", className: "ui-open:text-accent-primary !stroke-2 text-white/60 duration-200" })} />}
-           {item.type === "public_dashboard" && <Icons.users className={iconVariants({ variant: "large", className: "ui-open:text-accent-primary !stroke-2 text-white/60 duration-200" })} />}
-           {item.type === "vanity" && <Icons.link className={iconVariants({ variant: "large", className: "ui-open:text-accent-primary !stroke-2 text-white/60 duration-200" })} />}
-          </>
-         )}
-         {item.user?.avatar && <Image src={`https://cdn.discordapp.com/avatars/${item.user?.discordId}/${item.user?.avatar}.${item.user?.avatar.startsWith("a_") ? "gif" : "png"}`} alt={`${item.user?.name} avatar`} quality={95} width={32} height={32} className="h-12 min-h-12 w-12 min-w-12 rounded-full" />}
-        </div>
-        <div className="flex flex-col">
-         <p className="text-left font-bold">
-          {item.user?.global_name || item.user?.username}
-          {item.user?.discriminator !== "0" && <span className="opacity-70">#{item.user?.discriminator || "0000"}</span>}: {item.content}
-         </p>
-         <span className="text-left opacity-70">
-          {formatDate(item.createdAt)} ({formatDuration(new Date().getTime() - new Date(item.createdAt).getTime())} ago)
-         </span>
-        </div>
-       </>
-      }
-     >
-      {item.actionTaken && (
-       <p>
-        <span className="font-bold">Action taken:</span> <span className="opacity-70">{item.actionTaken}</span>
-       </p>
-      )}
-      <p>
-       <span className="font-bold">Type:</span> <span className="opacity-70">{item.type}</span>
-      </p>
-      <p>
-       <span className="font-bold">Date:</span> <span className="opacity-70">{item.createdAt}</span>
-      </p>
-      <p>
-       <span className="font-bold">User:</span>{" "}
-       <Link href={`/dashboard/${id}/user/${item.user?.discordId}`} className="hover:text-button-primary opacity-70 duration-200 hover:opacity-100">
-        {item.user?.global_name || item.user?.username}
-        {item.user?.discriminator !== "0" && <span className="opacity-70">#{item.user?.discriminator || "0000"}</span>} (ID: {item.user?.discordId || item.user?.id})
-       </Link>
-      </p>
-     </Disclosure>
+     <LogDisclosure key={index} item={item} index={index} guildId={id} />
     ))}
    </InfiniteScroll>
   </div>

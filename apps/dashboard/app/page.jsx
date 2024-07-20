@@ -3,17 +3,90 @@ import prismaClient from "@majoexe/database";
 import { formatNumber } from "@majoexe/util/functions/util";
 import Link from "next/link";
 import avatar01 from "public/assets/avatars/01.webp";
+import avatar02 from "public/assets/avatars/02.webp";
+import avatar03 from "public/assets/avatars/03.webp";
 import ray from "public/assets/ray.png";
 import tada from "public/assets/tada.svg";
 import Balancer from "react-wrap-balancer";
 import { ButtonSecondary } from "@/components/Buttons";
 import GlobeClient from "@/components/client/Globe";
 import { AddReaction, HomepageLevelUp } from "@/components/client/Interactions";
+import { LogDisclosure } from "@/components/client/lists/Logs";
+import AreaChart from "@/components/client/shared/AreaChart";
 import Image from "@/components/client/shared/Image";
 import { GradientHeader, Header1, Header2 } from "@/components/Headers";
 import { Icons, iconVariants } from "@/components/Icons";
 import { Typing } from "@/components/Loaders";
 import { LoginButton } from "@/components/LoginButton";
+
+const exampleLogs = [
+ {
+  id: "0",
+  type: "command_change",
+  createdAt: new Date(new Date().getTime() - 2 * 16 * 60 * 15 * 1000).toISOString().toString(),
+  content: "Disabled command /help",
+  user: {
+   id: "544164729354977282",
+   global_name: "Robert",
+   //avatar: "0",
+   fullAvatar: avatar03,
+   discriminator: "0",
+  },
+ },
+ {
+  id: "1",
+  type: "vanity",
+  createdAt: new Date(new Date().getTime() - 1 * 21 * 60 * 60 * 1000).toISOString().toString(),
+  content: "Changed vanity URL to /majo",
+  user: {
+   id: "689210472345677282",
+   global_name: "Jonas",
+   //avatar: "0",
+   fullAvatar: avatar01,
+   discriminator: "0",
+  },
+ },
+ {
+  id: "2",
+  type: "category_change",
+  // date 3 days ago
+  createdAt: new Date(new Date().getTime() - 2 * 23 * 60 * 60 * 1000).toISOString().toString(),
+  content: "Enabled category Fun",
+  user: {
+   id: "989210472345677282",
+   global_name: "Ethan (I love coffee)",
+   //avatar: "0",
+   fullAvatar: avatar02,
+   discriminator: "0",
+  },
+ },
+];
+
+function pseudoRandom(index) {
+ const seed = index;
+ const random1 = Math.sin(seed) * 10000;
+ const baseValue1 = random1 - Math.floor(random1);
+ const random2 = Math.cos(seed * 2) * 10000;
+ const baseValue2 = random2 - Math.floor(random2);
+ const growthFactor = Math.pow(index + 1, 1.5);
+ const variationFactor = 26;
+
+ const result = (baseValue1 + baseValue2) * (1 + variationFactor) + growthFactor;
+ return result;
+}
+
+const generateRandomData = (length) => {
+ const data = [];
+ for (let i = 0; i < length; i++) {
+  data.push({
+   date: new Date(new Date().getTime() - i * 24 * 60 * 60 * 1000).toISOString().split("T")[0],
+   Joins: Math.floor(pseudoRandom(i)),
+  });
+ }
+ return data;
+};
+
+const exampleStatsData = generateRandomData(30);
 
 export default async function HomePage() {
  const allCommands = await prismaClient.commands.findMany({
@@ -73,7 +146,7 @@ export default async function HomePage() {
    <div className="bg-background-primary relative z-[600]">
     <hr className="m-[0_auto] mb-8 h-px w-full border-none bg-[linear-gradient(to_right,transparent,rgba(255,255,255,0.1)_50%,transparent)] px-8 duration-300 motion-reduce:transition-none" />
 
-    <div className="mx-auto pb-10 md:px-8 lg:px-16 xl:w-4/5">
+    <div className="mx-auto max-w-7xl pb-10 md:px-8 lg:px-16">
      <div className="mx-auto flex flex-col justify-around gap-4 md:flex-row">
       <div className="flex flex-col items-center justify-center gap-4">
        <GradientHeader>{formatNumber(jsonData.approximate_guild_count || 0)}+ servers</GradientHeader>
@@ -89,7 +162,7 @@ export default async function HomePage() {
 
      <p className="my-6 w-full text-center text-white/70">...and counting!</p>
 
-     <div className="mx-auto flex w-full flex-col gap-4 px-4 md:grid md:grid-cols-2 lg:grid-cols-3">
+     <div className="mx-auto flex w-full max-w-7xl flex-col gap-4 px-4 md:grid md:grid-cols-2 md:px-0 lg:grid-cols-3">
       <div className="bg-background-secondary row-span-1 overflow-hidden rounded-xl border border-neutral-800 p-4 duration-200 hover:bg-neutral-800/50">
        <GradientHeader>Image manipulation? We got you!</GradientHeader>
        <p className="mt-2 max-w-[680px] text-white/70">Want to edit an image? Or maybe you want to make a meme?</p>
@@ -225,6 +298,46 @@ export default async function HomePage() {
          <AddReaction reaction={tada} />
         </div>
        </div>
+      </div>
+     </div>
+    </div>
+
+    <div className="mx-auto mt-12 pb-10 md:px-8 lg:px-16">
+     <GradientHeader className="!block !text-center !text-3xl md:!text-4xl">
+      Trusted by more than <span className="text-fill-transparent from-accent-primary to-accent-primary bg-gradient-to-b box-decoration-clone bg-clip-text">{formatNumber(jsonData.approximate_guild_count || 0)}+</span> servers
+     </GradientHeader>
+     <p className="mb-6 mt-3 w-full text-center text-white/70">
+      <Balancer>
+       Majo.exe is trusted by more than {formatNumber(jsonData.approximate_guild_count || 0)} servers and {formatNumber(100000)} users! Join them and see what Majo.exe can do for you!
+      </Balancer>
+     </p>
+
+     <ButtonSecondary href="/api/invite" className="mx-auto w-fit">
+      <Icons.userAdd className={iconVariants({ variant: "button" })} />
+      Add to your server
+     </ButtonSecondary>
+
+     <Icons.arrowDown className="text-accent-primary mx-auto mt-12 size-8 animate-bounce" />
+
+     <div className="mx-auto my-16 flex max-w-7xl flex-col gap-8 px-4 lg:flex-row lg:gap-16 lg:px-0">
+      <div className="flex w-full flex-col justify-center gap-2 lg:w-2/5">
+       <Header1>See what's happening in your server</Header1>
+       <p className="text-white/70">With Majo.exe you can see your server statistics in real-time. You can see the most active members, the most used channels and much more!</p>
+      </div>
+      <div className="bg-background-secondary w-full overflow-hidden rounded-xl border border-neutral-800 py-6 pl-4 pr-8 duration-200 hover:bg-neutral-800/50 lg:w-3/5">
+       <AreaChart className="h-56" data={exampleStatsData} index="date" categories={["Joins"]} yAxisWidth={50} showYAxis={true} showXAxis={false} />
+      </div>
+     </div>
+
+     <div className="mx-auto my-16 flex max-w-7xl flex-col-reverse gap-6 px-4 lg:flex-row lg:gap-16 lg:px-0">
+      <div className="w-full lg:w-3/5">
+       {exampleLogs.map((log) => (
+        <LogDisclosure item={log} key={log.id} preview={true} />
+       ))}
+      </div>
+      <div className="flex w-full flex-col justify-center gap-2 lg:w-2/5">
+       <Header1>Keep track of everything</Header1>
+       <p className="text-white/70">Majo.exe has a powerful logging system that will keep track of everything that happens in your server. You can easily see who did what and when!</p>
       </div>
      </div>
     </div>
