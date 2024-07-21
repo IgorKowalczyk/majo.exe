@@ -9,7 +9,7 @@ import ray from "public/assets/ray.png";
 import tada from "public/assets/tada.svg";
 import Balancer from "react-wrap-balancer";
 import { ButtonSecondary } from "@/components/Buttons";
-import GlobeClient from "@/components/client/Globe";
+// import GlobeClient from "@/components/client/Globe";
 import { AddReaction, HomepageLevelUp } from "@/components/client/Interactions";
 import { LogDisclosure } from "@/components/client/lists/Logs";
 import AreaChart from "@/components/client/shared/AreaChart";
@@ -139,7 +139,7 @@ export default async function HomePage() {
     </div>
     <Image alt="Background" width={1000} height={1000} className="pointer-events-none absolute -top-20 left-0 right-0 z-0 mx-auto hidden h-full w-full select-none lg:block" src={ray} loading="eager" />
     <div className="absolute bottom-0 z-10 hidden min-h-[500px] w-full translate-y-1/2 flex-col items-center justify-center md:flex">
-     <GlobeClient />
+     {/* <GlobeClient /> */}
      <div className="absolute inset-0 z-[-10] m-auto mt-[100px] h-[580px] w-[580px] rounded-full bg-[#ddd] opacity-5 blur-3xl" />
     </div>
    </div>
