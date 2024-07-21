@@ -17,7 +17,7 @@ importers:
     devDependencies:
       '@igorkowalczyk/eslint-config':
         specifier: 2.2.0
-        version: 2.2.0(eslint@8.57.0)(prettier@3.3.3)
+        version: 2.2.0(@types/eslint@8.56.10)(eslint@8.57.0)(prettier@3.3.3)
       '@igorkowalczyk/prettier-config':
         specifier: 2.2.0
         version: 2.2.0(prettier@3.3.3)
@@ -91,8 +91,8 @@ importers:
         specifier: 14.0.2
         version: 14.0.2
       jsdom:
-        specifier: 24.1.0
-        version: 24.1.0
+        specifier: 24.1.1
+        version: 24.1.1
       ms:
         specifier: 2.1.3
         version: 2.1.3
@@ -3885,8 +3885,8 @@ packages:
     peerDependencies:
       '@babel/preset-env': ^7.1.6
 
-  jsdom@24.1.0:
-    resolution: {integrity: sha512-6gpM7pRXCwIOKxX47cgOyvyQDN/Eh0f1MeKySBV2xGdKtqJBLj8P25eY3EVCWo2mglDDzozR2r2MW4T+JiNUZA==}
+  jsdom@24.1.1:
+    resolution: {integrity: sha512-5O1wWV99Jhq4DV7rCLIoZ/UIhyQeDR7wHVyZAHAshbrvZsLs+Xzz7gtwnlJTJDjleiTKh54F4dXrX70vJQTyJQ==}
     engines: {node: '>=18'}
     peerDependencies:
       canvas: ^2.11.2
@@ -7095,12 +7095,12 @@ snapshots:
     dependencies:
       undici: 5.28.4
 
-  '@igorkowalczyk/eslint-config@2.2.0(eslint@8.57.0)(prettier@3.3.3)':
+  '@igorkowalczyk/eslint-config@2.2.0(@types/eslint@8.56.10)(eslint@8.57.0)(prettier@3.3.3)':
     dependencies:
       '@eslint/js': 8.57.0
       eslint: 8.57.0
       eslint-plugin-import: 2.29.1(@typescript-eslint/parser@7.2.0(eslint@8.57.0)(typescript@5.5.3))(eslint-import-resolver-typescript@3.6.1)(eslint@8.57.0)
-      eslint-plugin-prettier: 5.2.1(eslint@8.57.0)(prettier@3.3.3)
+      eslint-plugin-prettier: 5.2.1(@types/eslint@8.56.10)(eslint@8.57.0)(prettier@3.3.3)
       globals: 13.23.0
     transitivePeerDependencies:
       - '@types/eslint'
@@ -9408,12 +9408,14 @@ snapshots:
       safe-regex-test: 1.0.3
       string.prototype.includes: 2.0.0
 
-  eslint-plugin-prettier@5.2.1(eslint@8.57.0)(prettier@3.3.3):
+  eslint-plugin-prettier@5.2.1(@types/eslint@8.56.10)(eslint@8.57.0)(prettier@3.3.3):
     dependencies:
       eslint: 8.57.0
       prettier: 3.3.3
       prettier-linter-helpers: 1.0.0
       synckit: 0.9.1
+    optionalDependencies:
+      '@types/eslint': 8.56.10
 
   eslint-plugin-react-hooks@4.6.2(eslint@8.57.0):
     dependencies:
@@ -10324,7 +10326,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  jsdom@24.1.0:
+  jsdom@24.1.1:
     dependencies:
       cssstyle: 4.0.1
       data-urls: 5.0.0
