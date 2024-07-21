@@ -33,7 +33,7 @@ export default async function UserProfilePage() {
        <div className="ml-[-16px] mt-[-20px] box-content flex items-center rounded-full">
         <Tooltip content="Click to see full size">
          <Link href={`${user.image}?size=2048`} target="_blank" className="h-24 min-h-24 w-24 min-w-24">
-          <Image quality={100} src={user.image} alt={user.username} width={94} height={94} className="!border-background-navbar rounded-full !border-4 !border-solid backdrop-blur-sm duration-200 hover:opacity-75" />
+          <Image quality={100} src={user.image} alt={user.username} width={95} height={96} className="!border-background-navbar rounded-full !border-4 !border-solid backdrop-blur-sm duration-200 hover:opacity-75" />
          </Link>
         </Tooltip>
         <div className="ml-2 flex items-center text-lg font-bold">

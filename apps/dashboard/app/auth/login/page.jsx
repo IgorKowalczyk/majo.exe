@@ -22,7 +22,7 @@ export default async function LoginPage({ searchParams }) {
   <div className="before:md:bg-grid-[#fff] relative z-20 flex min-h-screen w-full flex-col items-center justify-center gap-4 px-3 before:absolute before:z-10 before:h-full before:w-full before:opacity-5 before:grayscale">
    <div className="absolute left-0 top-0 z-10 h-full w-full bg-[radial-gradient(circle,rgba(2,0,36,0)0,rgb(16,17,16,100%))]" />
    <div className="z-30 mb-2 flex flex-row">
-    <Image src="/assets/avatar.png" width={112} height={112} alt="Avatar" className="h-20 min-h-20 w-20 min-w-20 rounded-full sm:h-28 sm:min-h-28 sm:w-28 sm:min-w-28" quality={90} />
+    <Image src="/assets/avatar.png" width={80} height={80} alt="Avatar" className="h-20 min-h-20 w-20 min-w-20 rounded-full sm:h-28 sm:min-h-28 sm:w-28 sm:min-w-28" quality={90} />
     {searchParams.error ? (
      <div className="mx-4 flex items-center justify-center">
       <Icons.close className="h-8 min-h-8 w-8 min-w-8 text-red-500" />

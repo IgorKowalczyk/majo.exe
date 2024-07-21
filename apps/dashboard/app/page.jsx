@@ -237,13 +237,13 @@ export default async function HomePage() {
        <div className="mt-3">
         <div className="flex flex-row items-center gap-1">
          <div className="ml-5 h-3 w-7 rounded-tl-md border-l-2 border-t-2 border-[#4e5058]" />
-         <Image src={dashboardConfig.logo} alt="User avatar" quality={95} width={16} height={16} className="h-5 min-h-5 w-5 min-w-5 self-baseline rounded-full" />
+         <Image src={dashboardConfig.logo} alt="User avatar" quality={95} width={20} height={20} className="h-5 min-h-5 w-5 min-w-5 self-baseline rounded-full" />
          <span className="text-xs">
           <span className="font-bold">Majonez.exe</span> used <span className="text-accent-primary font-bold">/ai</span>
          </span>
         </div>
         <div className="flex items-center gap-1">
-         <Image src={dashboardConfig.logo} alt={`${dashboardConfig.title} avatar`} quality={95} width={64} height={64} className="h-10 min-h-10 w-10 min-w-10 self-baseline rounded-full" />
+         <Image src={dashboardConfig.logo} alt={`${dashboardConfig.title} avatar`} quality={95} width={40} height={40} className="h-10 min-h-10 w-10 min-w-10 self-baseline rounded-full" />
          <div className="flex flex-col">
           <div className="ml-2 flex h-10 flex-row items-center">
            <span className="font-bold">{dashboardConfig.title}</span>{" "}
@@ -334,7 +334,7 @@ export default async function HomePage() {
        <GradientHeader>Giveaways? Why not?</GradientHeader>
        <p className="mt-2 max-w-[680px] text-white/70">Want to host a giveaway or a drop? Majo.exe can help you with that! You can easily create and moderate giveaways with few simple commands!</p>
        <div className="my-6 flex items-center gap-1">
-        <Image src={dashboardConfig.logo} alt={`${dashboardConfig.title} avatar`} quality={95} width={64} height={64} className="h-10 min-h-10 w-10 min-w-10 self-baseline rounded-full" />
+        <Image src={dashboardConfig.logo} alt={`${dashboardConfig.title} avatar`} quality={95} width={40} height={40} className="h-10 min-h-10 w-10 min-w-10 self-baseline rounded-full" />
         <div className="flex flex-col">
          <div className="ml-2 flex flex-row items-center">
           <span className="font-bold">{dashboardConfig.title}</span>{" "}

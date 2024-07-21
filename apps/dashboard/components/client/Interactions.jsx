@@ -19,7 +19,7 @@ export function HomepageLevelUp({ logo }) {
 
  return (
   <div className="mt-6 flex flex-row items-center gap-1">
-   <Image src={logo} alt="User avatar" quality={95} width={64} height={64} className="h-10 min-h-10 w-10 min-w-10 self-baseline rounded-full" />
+   <Image src={logo} alt="User avatar" quality={40} width={40} height={64} className="h-10 min-h-10 w-10 min-w-10 self-baseline rounded-full" />
    <span className="ml-2">
     <span className="font-bold">Majonez.exe</span> leveled up to <span className="text-accent-primary font-bold [font-feature-settings:'tnum']">level {level}</span>{" "}
     <span onClick={setIt} className="cursor-pointer select-none">
