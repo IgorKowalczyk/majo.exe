@@ -11,6 +11,7 @@ import avatar06 from "public/assets/avatars/06.webp";
 import avatar07 from "public/assets/avatars/07.webp";
 import ray from "public/assets/ray.png";
 import tada from "public/assets/tada.svg";
+import tadaAnimated from "public/assets/tada_animated.gif";
 import Balancer from "react-wrap-balancer";
 import { twMerge } from "tailwind-merge";
 import { ButtonSecondary } from "@/components/Buttons";
@@ -355,7 +356,7 @@ export default async function HomePage() {
             <span className="mt-1 block text-sm text-gray-400">React with 🎉 to participate!</span>
            </div>
 
-           <Image src={tada} alt="Giveaway emoji" quality={95} width={64} height={64} className="h-16 min-h-16 w-16 min-w-16" />
+           <Image src={tadaAnimated} alt="Giveaway emoji" quality={95} width={64} height={64} className="h-16 min-h-16 w-16 min-w-16" />
           </div>
          </div>
          <AddReaction reaction={tada} />
