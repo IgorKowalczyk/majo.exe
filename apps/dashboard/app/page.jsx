@@ -14,9 +14,8 @@ import tada from "public/assets/tada.svg";
 import tadaAnimated from "public/assets/tada_animated.gif";
 import Balancer from "react-wrap-balancer";
 import { twMerge } from "tailwind-merge";
-import { ButtonSecondary } from "@/components/Buttons";
+import { ButtonPrimary, ButtonSecondary } from "@/components/Buttons";
 // import GlobeClient from "@/components/client/Globe";
-import { AddReaction, HomepageLevelUp } from "@/components/client/Interactions";
 import { LogDisclosure } from "@/components/client/lists/Logs";
 import { AnimatedList } from "@/components/client/shared/AnimatedList";
 import AnimatedShinyText from "@/components/client/shared/AnimatedShinyText";
@@ -26,7 +25,10 @@ import { GradientHeader, Header1, Header2 } from "@/components/Headers";
 import { Icons, iconVariants } from "@/components/Icons";
 import { Typing } from "@/components/Loaders";
 import { LoginButton } from "@/components/LoginButton";
+import Faq from "./_components/home/Faq";
 // import TextRevealByWord from "@/components/client/shared/TextRevealByWord";
+import { LevelUp } from "./_components/home/LevelUp";
+import { AddReaction } from "./_components/home/AddReaction";
 
 const exampleLogs = [
  {
@@ -266,7 +268,7 @@ export default async function HomePage() {
       <div className="bg-background-secondary row-span-1 overflow-hidden rounded-xl border border-neutral-800 p-4 duration-200 hover:bg-neutral-800/50">
        <GradientHeader>Leveling?</GradientHeader>
        <p className="mt-2 max-w-[680px] text-white/70">Majo.exe has a leveling system that will keep your members active and entertained.</p>
-       <HomepageLevelUp logo={dashboardConfig.logo} />
+       <LevelUp avatar={dashboardConfig.logo} username="Majonez.exe" />
       </div>
       <div className="bg-background-secondary relative col-span-2 row-span-2 overflow-hidden rounded-xl border border-neutral-800 px-8 py-6 duration-200 hover:bg-neutral-800/50 lg:col-span-1">
        <GradientHeader>Moderation? We have it!</GradientHeader>
@@ -405,6 +407,22 @@ export default async function HomePage() {
       </div>
      </div>
     </div>
+   </div>
+   <div className="mx-auto pb-10 md:px-8 lg:px-16">
+    <GradientHeader className="!block !text-center !text-3xl md:!text-4xl">Frequently asked questions</GradientHeader>
+    <Faq />
+   </div>
+
+   <div className="mx-auto mt-12 pb-10 md:px-8 lg:px-16">
+    <GradientHeader className="!block !text-center !text-3xl md:!text-4xl">What are you waiting for?</GradientHeader>
+    <p className="mb-6 mt-3 w-full text-center text-white/70">
+     <Balancer>Don't wait ages to add Majo.exe to your server! Invite it now and see it in action!</Balancer>
+    </p>
+
+    <ButtonPrimary href="/api/invite" className="mx-auto w-fit">
+     <Icons.userAdd className={iconVariants({ variant: "button" })} />
+     Add to your server
+    </ButtonPrimary>
    </div>
    {/* <Icons.arrowDown className="text-accent-primary mx-auto mt-12 size-8 animate-bounce" />
 
