@@ -39,10 +39,22 @@ const tailwindConfig = {
    backgroundImage: {
     "main-gradient": "linear-gradient(180deg, #101110 calc(100% - 400px), #161617 100%);",
    },
+   animation: {
+    shimmerText: "shimmerText 8s infinite",
+   },
    keyframes: {
     shimmer: {
      "100%": {
       transform: "translateX(100%)",
+     },
+    },
+
+    shimmerText: {
+     "0%, 90%, 100%": {
+      "background-position": "calc(-100% - var(--shimmer-width)) 0",
+     },
+     "30%, 60%": {
+      "background-position": "calc(100% + var(--shimmer-width)) 0",
      },
     },
 

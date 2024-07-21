@@ -18,6 +18,10 @@ import { GradientHeader, Header1, Header2 } from "@/components/Headers";
 import { Icons, iconVariants } from "@/components/Icons";
 import { Typing } from "@/components/Loaders";
 import { LoginButton } from "@/components/LoginButton";
+import { AnimatedList } from "@/components/client/shared/AnimatedList";
+import { twMerge } from "tailwind-merge";
+import AnimatedShinyText from "@/components/client/shared/AnimatedShinyText";
+import TextRevealByWord from "@/components/client/shared/TextRevealByWord";
 
 const exampleLogs = [
  {
@@ -88,6 +92,65 @@ const generateRandomData = (length) => {
 
 const exampleStatsData = generateRandomData(30);
 
+let notifications = [
+ {
+  author: "Amelia",
+  avatar: avatar02,
+  content: (
+   <span>
+    enabled <span className="text-accent-primary font-bold">AutoMod</span>
+   </span>
+  ),
+ },
+ {
+  author: "Jonas",
+  avatar: avatar01,
+  content: (
+   <span>
+    banned <span className="text-accent-primary font-bold">John Doe</span>
+   </span>
+  ),
+ },
+ {
+  author: "Michael",
+  avatar: avatar03,
+  content: (
+   <span>
+    warned <span className="text-accent-primary font-bold">Jane Smith</span>
+   </span>
+  ),
+ },
+ {
+  author: "Lucas",
+  avatar: avatar01,
+  content: (
+   <span>
+    deleted <span className="text-accent-primary font-bold">Paul's</span> reputation
+   </span>
+  ),
+ },
+ {
+  author: "Ethan",
+  avatar: avatar02,
+  content: (
+   <span>
+    set vanity to <span className="text-accent-primary font-bold">/majo</span>
+   </span>
+  ),
+ },
+ {
+  author: "Oliver",
+  avatar: avatar03,
+  content: (
+   <span>
+    enabled category <span className="text-accent-primary font-bold">Moderation</span>
+   </span>
+  ),
+ },
+];
+
+notifications = Array.from({ length: 10 }, () => notifications).flat();
+
 export default async function HomePage() {
  const allCommands = await prismaClient.commands.findMany({
   select: {
@@ -119,12 +182,13 @@ export default async function HomePage() {
    <div className="before:md:bg-grid-[#fff] relative z-20 flex min-h-screen w-full items-center justify-center before:absolute before:z-10 before:h-full before:w-full before:opacity-5 before:grayscale">
     <div className="absolute left-0 top-0 z-10 h-full w-full bg-[radial-gradient(circle,rgba(2,0,36,0)0,rgb(16,17,16,100%))]" />
     <div className="relative z-20 -mt-8 flex w-full select-none flex-col items-center justify-center gap-4 px-3 md:w-[90%]">
-     <Link href="/api/invite" className="before:w-wit group relative -mt-4 flex h-8 min-h-8 cursor-pointer items-center justify-center rounded-full bg-gradient-to-tr from-neutral-700/80 via-neutral-700/80 to-[#111012]/80 p-px text-center text-lg font-normal text-neutral-300 duration-200 before:absolute before:inset-0 before:h-8 before:min-h-8 before:rounded-full before:bg-gradient-to-tr before:from-neutral-700 before:via-neutral-500 before:to-[#111012] before:opacity-0 before:duration-200 hover:before:opacity-100">
-      <span className="from-black-10/50 relative mt-px flex h-full w-full items-center rounded-full bg-gradient-to-tr to-[#111012] px-6">
-       Introducing Majo.exe
-       <Icons.arrowRight className={iconVariants({ variant: "normal", className: "-mr-1 ml-2 transition-all duration-200 group-hover:translate-x-1" })} />
-      </span>
+     <Link href="/api/invite" className={twMerge("group rounded-full border text-base text-white transition-all ease-in hover:cursor-pointer border-white/5 bg-neutral-900 hover:bg-neutral-800")}>
+      <AnimatedShinyText className="inline-flex items-center justify-center px-4 py-1 transition ease-out hover:duration-300 hover:text-neutral-400">
+       <span>✨ Introducing Majo.exe</span>
+       <Icons.arrowRight className={iconVariants({ variant: "normal", className: "-mr-1 ml-1 transition-transform ease-in-out group-hover:translate-x-0.5" })} />
+      </AnimatedShinyText>
      </Link>
+
      <Header1 className="text-fill-transparent mb-0 justify-center bg-gradient-to-b from-white to-neutral-400 box-decoration-clone bg-clip-text text-center !font-black !leading-snug xl:!text-5xl 2xl:!text-7xl">The only one Discord Bot</Header1>
      <Header2 className="mb-0 max-w-[680px] text-center font-normal text-white/70">
       <Balancer>Majo.exe will not only keep your server entertained but also assist you with moderation and many other things!</Balancer>
@@ -206,24 +270,19 @@ export default async function HomePage() {
         <p className="mt-2 max-w-[680px] text-white/70">
          <Balancer>Someone's breaking the rules? You can easily enable Auto-Moderation and Majo.exe will take care of the rest!</Balancer>
         </p>
-        <div className="mt-3 flex flex-row items-center gap-1">
-         <Image src={dashboardConfig.logo} alt="User avatar" quality={95} width={64} height={64} className="h-10 min-h-10 w-10 min-w-10 self-baseline rounded-full" />
-         <span className="ml-2">
-          <span className="font-bold">Majonez.exe</span> banned <span className="text-accent-primary font-bold">John Doe</span> 🔨
-         </span>
-        </div>
-        <div className="mt-3 flex flex-row items-center gap-1">
-         <Image src={avatar01} alt="User avatar" quality={95} width={64} height={64} className="h-10 min-h-10 w-10 min-w-10 self-baseline rounded-full" />
-         <span className="ml-2">
-          <span className="font-bold">Jonas</span> enabled <span className="text-accent-primary font-bold">Auto-Moderation</span> ⚙️
-         </span>
-        </div>
-
-        <div className="mt-3 flex flex-row items-center gap-1">
-         <div className="bg-button-secondary h-10 min-h-10 w-10 min-w-10 self-baseline rounded-full" />
-         <span className="ml-2 flex items-center gap-2 text-gray-400">
-          Listening for other events <Typing />
-         </span>
+        <div className="h-48 mt-3 overflow-hidden">
+         <AnimatedList>
+          {notifications.map((item, idx) => (
+           <figure key={`notification-${idx}`} className="relative mx-auto min-h-fit w-full max-w-[400px] overflow-hidden transition-all duration-200 ease-in-out transform-gpu ">
+            <div className="mt-1 flex flex-row items-center gap-1">
+             <Image src={item.avatar} alt={`${item.author} avatar`} quality={95} width={64} height={64} className="size-5 self-baseline rounded-full" />
+             <span className="ml-2 text-sm">
+              <span className="font-bold">{item.author}</span> {item.content}
+             </span>
+            </div>
+           </figure>
+          ))}
+         </AnimatedList>
         </div>
        </div>
       </div>
@@ -342,6 +401,11 @@ export default async function HomePage() {
      </div>
     </div>
    </div>
+   {/* <Icons.arrowDown className="text-accent-primary mx-auto mt-12 size-8 animate-bounce" />
+
+   <div className="z-10 flex min-h-[16rem] items-center justify-center">
+    <TextRevealByWord text={`I don't know what to write here. TODO: Add more content`} className="w-full" />
+   </div> */}
   </>
  );
 }
