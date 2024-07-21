@@ -2,8 +2,8 @@
 
 "use client";
 
-import React, { useEffect, useMemo, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
+import React, { useEffect, useMemo, useState } from "react";
 
 export const AnimatedList = React.memo(({ className, children, delay = 1000 }) => {
  const [index, setIndex] = useState(0);

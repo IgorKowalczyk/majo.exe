@@ -1,7 +1,7 @@
 "use client";
 
-import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
+import { useRef } from "react";
 import { twMerge } from "tailwind-merge";
 
 export default function TextRevealByWord({ text, className }) {
@@ -36,7 +36,7 @@ const Word = ({ children, progress, range }) => {
  return (
   <span className="xl:lg-3 relative mx-1 lg:mx-2.5">
    <span className={"absolute opacity-30"}>{children}</span>
-   <motion.span style={{ opacity: opacity }} className={" text-white"}>
+   <motion.span style={{ opacity: opacity }} className={"text-white"}>
     {children}
    </motion.span>
   </span>

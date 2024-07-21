@@ -5,23 +5,27 @@ import Link from "next/link";
 import avatar01 from "public/assets/avatars/01.webp";
 import avatar02 from "public/assets/avatars/02.webp";
 import avatar03 from "public/assets/avatars/03.webp";
+import avatar04 from "public/assets/avatars/04.webp";
+import avatar05 from "public/assets/avatars/05.webp";
+import avatar06 from "public/assets/avatars/06.webp";
+import avatar07 from "public/assets/avatars/07.webp";
 import ray from "public/assets/ray.png";
 import tada from "public/assets/tada.svg";
 import Balancer from "react-wrap-balancer";
+import { twMerge } from "tailwind-merge";
 import { ButtonSecondary } from "@/components/Buttons";
 // import GlobeClient from "@/components/client/Globe";
 import { AddReaction, HomepageLevelUp } from "@/components/client/Interactions";
 import { LogDisclosure } from "@/components/client/lists/Logs";
+import { AnimatedList } from "@/components/client/shared/AnimatedList";
+import AnimatedShinyText from "@/components/client/shared/AnimatedShinyText";
 import AreaChart from "@/components/client/shared/AreaChart";
 import Image from "@/components/client/shared/Image";
 import { GradientHeader, Header1, Header2 } from "@/components/Headers";
 import { Icons, iconVariants } from "@/components/Icons";
 import { Typing } from "@/components/Loaders";
 import { LoginButton } from "@/components/LoginButton";
-import { AnimatedList } from "@/components/client/shared/AnimatedList";
-import { twMerge } from "tailwind-merge";
-import AnimatedShinyText from "@/components/client/shared/AnimatedShinyText";
-import TextRevealByWord from "@/components/client/shared/TextRevealByWord";
+// import TextRevealByWord from "@/components/client/shared/TextRevealByWord";
 
 const exampleLogs = [
  {
@@ -58,9 +62,9 @@ const exampleLogs = [
   content: "Enabled category Fun",
   user: {
    id: "989210472345677282",
-   global_name: "Ethan (I love coffee)",
+   global_name: "Ethan",
    //avatar: "0",
-   fullAvatar: avatar02,
+   fullAvatar: avatar05,
    discriminator: "0",
   },
  },
@@ -103,8 +107,8 @@ let notifications = [
   ),
  },
  {
-  author: "Jonas",
-  avatar: avatar01,
+  author: "Zoe",
+  avatar: avatar07,
   content: (
    <span>
     banned <span className="text-accent-primary font-bold">John Doe</span>
@@ -113,7 +117,7 @@ let notifications = [
  },
  {
   author: "Michael",
-  avatar: avatar03,
+  avatar: avatar04,
   content: (
    <span>
     warned <span className="text-accent-primary font-bold">Jane Smith</span>
@@ -121,17 +125,17 @@ let notifications = [
   ),
  },
  {
-  author: "Lucas",
-  avatar: avatar01,
+  author: "Leani" /* ;-; good old times */,
+  avatar: avatar06,
   content: (
    <span>
-    deleted <span className="text-accent-primary font-bold">Paul's</span> reputation
+    disabled <span className="text-accent-primary font-bold">/help</span> command
    </span>
   ),
  },
  {
   author: "Ethan",
-  avatar: avatar02,
+  avatar: avatar05,
   content: (
    <span>
     set vanity to <span className="text-accent-primary font-bold">/majo</span>
@@ -182,8 +186,8 @@ export default async function HomePage() {
    <div className="before:md:bg-grid-[#fff] relative z-20 flex min-h-screen w-full items-center justify-center before:absolute before:z-10 before:h-full before:w-full before:opacity-5 before:grayscale">
     <div className="absolute left-0 top-0 z-10 h-full w-full bg-[radial-gradient(circle,rgba(2,0,36,0)0,rgb(16,17,16,100%))]" />
     <div className="relative z-20 -mt-8 flex w-full select-none flex-col items-center justify-center gap-4 px-3 md:w-[90%]">
-     <Link href="/api/invite" className={twMerge("group rounded-full border text-base text-white transition-all ease-in hover:cursor-pointer border-white/5 bg-neutral-900 hover:bg-neutral-800")}>
-      <AnimatedShinyText className="inline-flex items-center justify-center px-4 py-1 transition ease-out hover:duration-300 hover:text-neutral-400">
+     <Link href="/api/invite" className={twMerge("group rounded-full border border-white/5 bg-neutral-900 text-base text-white transition-all ease-in hover:cursor-pointer hover:bg-neutral-800")}>
+      <AnimatedShinyText className="inline-flex items-center justify-center px-4 py-1 transition ease-out hover:text-neutral-400 hover:duration-300">
        <span>✨ Introducing Majo.exe</span>
        <Icons.arrowRight className={iconVariants({ variant: "normal", className: "-mr-1 ml-1 transition-transform ease-in-out group-hover:translate-x-0.5" })} />
       </AnimatedShinyText>
@@ -270,10 +274,10 @@ export default async function HomePage() {
         <p className="mt-2 max-w-[680px] text-white/70">
          <Balancer>Someone's breaking the rules? You can easily enable Auto-Moderation and Majo.exe will take care of the rest!</Balancer>
         </p>
-        <div className="h-48 mt-3 overflow-hidden">
+        <div className="mt-3 h-48 overflow-hidden">
          <AnimatedList>
           {notifications.map((item, idx) => (
-           <figure key={`notification-${idx}`} className="relative mx-auto min-h-fit w-full max-w-[400px] overflow-hidden transition-all duration-200 ease-in-out transform-gpu ">
+           <figure key={`notification-${idx}`} className="relative mx-auto min-h-fit w-full max-w-[400px] transform-gpu overflow-hidden transition-all duration-200 ease-in-out">
             <div className="mt-1 flex flex-row items-center gap-1">
              <Image src={item.avatar} alt={`${item.author} avatar`} quality={95} width={64} height={64} className="size-5 self-baseline rounded-full" />
              <span className="ml-2 text-sm">
