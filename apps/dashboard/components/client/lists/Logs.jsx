@@ -29,7 +29,7 @@ export function LogDisclosure({ item, index, guildId, preview = false }) {
         {item.type === "vanity" && <Icons.link className={iconVariants({ variant: "large", className: "ui-open:text-accent-primary !stroke-2 text-white/60 duration-200" })} />}
        </>
       )}
-      {item.user.fullAvatar ? <Image src={item.user.fullAvatar} alt={`${item.user.name} avatar`} quality={95} width={32} height={32} className="h-12 min-h-12 w-12 min-w-12 rounded-full" /> : <>{item.user?.avatar && <Image src={`https://cdn.discordapp.com/avatars/${item.user?.discordId}/${item.user?.avatar}.${item.user?.avatar.startsWith("a_") ? "gif" : "png"}`} alt={`${item.user?.name} avatar`} quality={95} width={32} height={32} className="h-12 min-h-12 w-12 min-w-12 rounded-full" />}</>}
+      {item.user.fullAvatar ? <Image src={item.user.fullAvatar} alt={`${item.user.name} avatar`} quality={95} width={48} height={48} className="h-12 min-h-12 w-12 min-w-12 rounded-full" /> : <>{item.user?.avatar && <Image src={`https://cdn.discordapp.com/avatars/${item.user?.discordId}/${item.user?.avatar}.${item.user?.avatar.startsWith("a_") ? "gif" : "png"}`} alt={`${item.user?.name} avatar`} quality={95} width={48} height={48} className="h-12 min-h-12 w-12 min-w-12 rounded-full" />}</>}
      </div>
      <div className="flex flex-col">
       <p className="text-left font-bold">
