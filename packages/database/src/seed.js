@@ -1,4 +1,4 @@
-import { globby } from "globby";
+import { readdirSync } from "node:fs";
 import prismaClient from "./client.js";
 import { Logger } from "./logger.js";
 
@@ -9,7 +9,9 @@ const upsertCategoriesAndCommands = async (categoriesData, commandsData) => {
 };
 
 const categoriesData = [];
-const categories = await globby("../../apps/bot/commands/*", { onlyDirectories: true });
+const categories = readdirSync("../../apps/bot/commands", { withFileTypes: true })
+ .filter((dir) => dir.isDirectory())
+ .map((dir) => dir.name);
 const categoryNames = categories.map((x) => x.split("/")[x.split("/").length - 1]);
 for (const category of categoryNames) {
  categoriesData.push({
@@ -21,7 +23,15 @@ for (const category of categoryNames) {
  });
 }
 
-const slashCommands = await globby("../../apps/bot/commands/**/*.js");
+const slashCommandsDirectories = readdirSync("../../apps/bot/commands", { withFileTypes: true }).filter((dir) => dir.isDirectory());
+const slashCommands = [];
+for (const dir of slashCommandsDirectories) {
+ const commands = readdirSync("../../apps/bot/commands/" + dir.name, { withFileTypes: true }).filter((file) => file.isFile() && file.name.endsWith(".js"));
+ for (const command of commands) {
+  slashCommands.push("../../apps/bot/commands/" + dir.name + "/" + command.name);
+ }
+}
+
 const commandsData = [];
 for (const slashCommand of slashCommands) {
  const file = await import("../" + slashCommand);
