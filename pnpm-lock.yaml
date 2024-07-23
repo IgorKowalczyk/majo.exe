@@ -87,9 +87,6 @@ importers:
       gif-encoder-2:
         specifier: 1.0.5
         version: 1.0.5
-      globby:
-        specifier: 14.0.2
-        version: 14.0.2
       jsdom:
         specifier: 24.1.1
         version: 24.1.1
@@ -330,6 +327,9 @@ importers:
       discord.js:
         specifier: 14.15.3
         version: 14.15.3
+      globby:
+        specifier: 14.0.2
+        version: 14.0.2
       ms:
         specifier: 2.1.3
         version: 2.1.3

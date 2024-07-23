@@ -14,6 +14,9 @@ import tada from "public/assets/tada.svg";
 import tadaAnimated from "public/assets/tada_animated.gif";
 import Balancer from "react-wrap-balancer";
 import { twMerge } from "tailwind-merge";
+import { AddReaction } from "./_components/home/AddReaction";
+import Faq from "./_components/home/Faq";
+import { LevelUp } from "./_components/home/LevelUp";
 import { ButtonPrimary, ButtonSecondary } from "@/components/Buttons";
 // import GlobeClient from "@/components/client/Globe";
 import { LogDisclosure } from "@/components/client/lists/Logs";
@@ -25,10 +28,7 @@ import { GradientHeader, Header1, Header2 } from "@/components/Headers";
 import { Icons, iconVariants } from "@/components/Icons";
 import { Typing } from "@/components/Loaders";
 import { LoginButton } from "@/components/LoginButton";
-import Faq from "./_components/home/Faq";
 // import TextRevealByWord from "@/components/client/shared/TextRevealByWord";
-import { LevelUp } from "./_components/home/LevelUp";
-import { AddReaction } from "./_components/home/AddReaction";
 
 const exampleLogs = [
  {

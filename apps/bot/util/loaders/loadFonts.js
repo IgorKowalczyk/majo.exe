@@ -1,5 +1,5 @@
+import { globby } from "@majoexe/util/functions/util";
 import { GlobalFonts } from "@napi-rs/canvas";
-import { globby } from "globby";
 
 /**
  * Loads all fonts from the /util/images/fonts folder

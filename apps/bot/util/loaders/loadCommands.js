@@ -1,6 +1,6 @@
 /* eslint-disable camelcase */
+import { globby } from "@majoexe/util/functions/util";
 import { PermissionsBitField, Collection } from "discord.js";
-import { globby } from "globby";
 
 /**
  * Loads all slash commands from the /commands folder

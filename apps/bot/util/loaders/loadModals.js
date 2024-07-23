@@ -1,5 +1,5 @@
+import { globby } from "@majoexe/util/functions/util";
 import { Collection } from "discord.js";
-import { globby } from "globby";
 
 /**
  * Loads all modals from the /modals folder

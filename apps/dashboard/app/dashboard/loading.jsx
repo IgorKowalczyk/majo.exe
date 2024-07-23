@@ -10,7 +10,7 @@ export default function Loading() {
      <Icons.dashboard className="h-10 min-h-10 w-10 min-w-10" />
      Dashboard
     </Header1>
-    <Header2 className="text-xl !block font-normal text-white/50 text-center">
+    <Header2 className="!block text-center text-xl font-normal text-white/50">
      You can only add the bot to servers you have the <code>Manage Server</code> permission in.
     </Header2>
     <div className="mt-4 flex flex-row flex-wrap justify-center gap-4 sm:flex-col">

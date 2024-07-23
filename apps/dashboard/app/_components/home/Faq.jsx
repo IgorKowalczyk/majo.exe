@@ -28,16 +28,16 @@ export default function Faq() {
  ];
 
  return (
-  <div className="mx-auto w-full mt-9 max-w-xl divide-y divide-neutral-800 rounded-xl">
+  <div className="mx-auto mt-9 w-full max-w-xl divide-y divide-neutral-800 rounded-xl">
    {items.map((item, index) => (
     <Disclosure as="div" key={index} className="p-6 py-3">
      {({ open }) => (
       <>
        <DisclosureButton className="group flex w-full items-center justify-between">
-        <span className="font-medium text-white duration-200 motion-reduce:duration-0 group-data-[hover]:text-white/80">{item.question}</span>
-        {open ? <Icons.minus className="size-5 duration-200 motion-reduce:duration-0 fill-white/60 group-data-[hover]:fill-white/50" /> : <Icons.plus className="size-5 duration-200 motion-reduce:duration-0 fill-white/60 group-data-[hover]:fill-white/50" />}
+        <span className="font-medium text-white duration-200 group-data-[hover]:text-white/80 motion-reduce:duration-0">{item.question}</span>
+        {open ? <Icons.minus className="size-5 fill-white/60 duration-200 group-data-[hover]:fill-white/50 motion-reduce:duration-0" /> : <Icons.plus className="size-5 fill-white/60 duration-200 group-data-[hover]:fill-white/50 motion-reduce:duration-0" />}
        </DisclosureButton>
-       <DisclosurePanel className="origin-top mt-2 text-white/60">{item.answer}</DisclosurePanel>
+       <DisclosurePanel className="mt-2 origin-top text-white/60">{item.answer}</DisclosurePanel>
       </>
      )}
     </Disclosure>

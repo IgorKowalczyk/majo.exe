@@ -1,5 +1,5 @@
 import { basename } from "node:path";
-import { globby } from "globby";
+import { globby } from "@majoexe/util/functions/util";
 
 /**
  * Loads all events from the /events folder
