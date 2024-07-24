@@ -1,5 +1,5 @@
 import { basename } from "node:path";
-import { globby } from "@majoexe/util/functions/files/globby.js";
+import { readDir } from "@majoexe/util/functions/files/readDir.js";
 
 /**
  * Loads all events from the /events folder
@@ -12,7 +12,7 @@ export default async function loadEvents(client) {
  try {
   const loadTime = performance.now();
 
-  const events = await globby(`${process.cwd()}/events/*/*.js`);
+  const events = readDir(`${process.cwd()}/events/`, true, [".js"]);
   for (const file of events) {
    await import(file).then((e) => {
     const eventName = basename(file, ".js");

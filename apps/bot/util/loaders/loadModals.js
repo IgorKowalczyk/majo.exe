@@ -1,4 +1,4 @@
-import { globby } from "@majoexe/util/functions/files/globby.js";
+import { readDir } from "@majoexe/util/functions/files/readDir.js";
 import { Collection } from "discord.js";
 
 /**
@@ -13,7 +13,8 @@ export default async function loadModals(client) {
   const loadTime = performance.now();
   client.modals = new Collection();
 
-  const modals = await globby(`${process.cwd()}/modals/**/*.js`);
+  const modals = readDir(`${process.cwd()}/modals/`, true, [".js"]);
+
   for (const value of modals) {
    try {
     const file = await import(value);

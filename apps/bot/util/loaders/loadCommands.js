@@ -1,5 +1,5 @@
 /* eslint-disable camelcase */
-import { globby } from "@majoexe/util/functions/files/globby.js";
+import { readDir } from "@majoexe/util/functions/files/readDir.js";
 import { PermissionsBitField, Collection } from "discord.js";
 
 /**
@@ -14,7 +14,7 @@ export default async function loadCommands(client) {
  client.additionalSlashCommands = 0;
 
  const commandLoadTime = performance.now();
- const slashCommands = await globby(`${process.cwd()}/commands/**/*.js`);
+ const slashCommands = readDir(`${process.cwd()}/commands/`, true, ["js"]);
 
  for (const value of slashCommands) {
   try {

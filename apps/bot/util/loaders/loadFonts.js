@@ -1,4 +1,4 @@
-import { globby } from "@majoexe/util/functions/files/globby.js";
+import { readDir } from "@majoexe/util/functions/files/readDir.js";
 import { GlobalFonts } from "@napi-rs/canvas";
 
 /**
@@ -11,7 +11,8 @@ import { GlobalFonts } from "@napi-rs/canvas";
 export default async function loadFonts(client) {
  try {
   const loadTime = performance.now();
-  const fonts = await globby(`${process.cwd()}/util/images/fonts/*.ttf`);
+  const fonts = readDir(`${process.cwd()}/util/images/fonts/`, true, [".ttf"]);
+
   for (const font of fonts) {
    GlobalFonts.registerFromPath(font, font.split("/").pop().replace(".ttf", ""));
   }
