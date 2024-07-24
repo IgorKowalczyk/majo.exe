@@ -82,7 +82,7 @@ Ensure your setup meets these prerequisites before setting up Majo.exe:
 ## 📝 Contributors
 
 - [**@binary-blazer**](https://github.com/binary-blazer) - Hosting support
-- [**TsukiyoDevs**](https://github.com/TsukiyoDevs) - Bug fixes, New features, Testing
+- [**@TsukiyoDevs**](https://github.com/TsukiyoDevs) - Bug fixes, New features, Testing
 - [**@r-kjha**](https://github.com/r-kjha) - Emoji config support, Bug fixes, New features, Testing
 - [**@Joao-Victor-Liporini**](https://github.com/Joao-Victor-Liporini) - Bug fixes, Command handler improvements, Testing, New features
 - [**@evandev**](https://github.com/xefew) - Bug fixes, Testing
