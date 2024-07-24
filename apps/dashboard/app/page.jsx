@@ -28,6 +28,7 @@ import { GradientHeader, Header1, Header2 } from "@/components/Headers";
 import { Icons, iconVariants } from "@/components/Icons";
 import { Typing } from "@/components/Loaders";
 import { LoginButton } from "@/components/LoginButton";
+import { Suspense } from "react";
 // import TextRevealByWord from "@/components/client/shared/TextRevealByWord";
 
 const exampleLogs = [
@@ -391,7 +392,9 @@ export default async function HomePage() {
        <p className="text-white/70">With Majo.exe you can see your server statistics in real-time. You can see the most active members, the most used channels and much more!</p>
       </div>
       <div className="bg-background-secondary w-full overflow-hidden rounded-xl border border-neutral-800 py-6 pl-4 pr-8 duration-200 hover:bg-neutral-800/50 lg:w-3/5">
-       <AreaChart className="h-56" data={exampleStatsData} index="date" categories={["Joins"]} yAxisWidth={50} showYAxis={true} showXAxis={false} />
+       <Suspense fallback={<div className="w-full h-56 bg-background-secondary rounded-xl border border-neutral-800" />}>
+        <AreaChart className="h-56" data={exampleStatsData} index="date" categories={["Joins"]} yAxisWidth={50} showYAxis={true} showXAxis={false} />
+       </Suspense>
       </div>
      </div>
 

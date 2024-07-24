@@ -1,9 +1,11 @@
 module.exports = {
  root: true,
  extends: ["@igorkowalczyk/eslint-config/legacy", "next"],
+ // plugins: ["eslint-plugin-react-compiler"],
  rules: {
   "react/no-unescaped-entities": "off",
   "@next/next/no-html-link-for-pages": "off",
+  // "react-compiler/react-compiler": "warn",
  },
  env: {
   node: true,

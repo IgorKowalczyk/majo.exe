@@ -1,6 +1,6 @@
 "use client";
 
-import { toHTML } from "@riskymh/discord-markdown";
+import { toHTML } from "@odiffey/discord-markdown";
 import clsx from "clsx";
 import { useState } from "react";
 import { toast } from "sonner";

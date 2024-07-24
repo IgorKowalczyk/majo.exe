@@ -9,22 +9,6 @@ import { Logger } from "./logger.js";
 import Redis from "./redis.js";
 
 neonConfig.webSocketConstructor = ws;
-const connectionString = `${process.env.DATABASE_URL}`;
-
-const prismaClientSingleton = () => {
- if (process.env.DATABASE_URL?.includes("neon.tech")) {
-  Logger("info", "Neon Database URL found, setting up Neon Database...");
-  const pool = new Pool({ connectionString });
-  const adapter = new PrismaNeon(pool);
-  return new PrismaClient({ adapter });
- } else {
-  Logger("info", "No Neon Database URL found, setting up Prisma...");
-  return new PrismaClient();
- }
-};
-
-const globalForPrisma = globalThis;
-const prisma = globalForPrisma.prisma || prismaClientSingleton();
 
 const logger = (params, next) => {
  const before = Date.now();
@@ -34,46 +18,66 @@ const logger = (params, next) => {
  return result;
 };
 
-if (debuggerConfig.displayDatabaseLogs) prisma.$use(logger);
-
-const cache = createPrismaRedisCache({
- models: [
-  { model: "User", excludeMethods: ["findMany"] },
-  { model: "Guild", excludeMethods: ["findMany"], invalidateRelated: ["GuildDisabledCommands", "GuildDisabledCategories"] },
-  { model: "GuildDisabledCommands", excludeMethods: ["findMany"], invalidateRelated: ["Guild"] },
-  { model: "GuildDisabledCategories", excludeMethods: ["findMany"], invalidateRelated: ["Guild"] },
-  { model: "GuildLogs", cacheTime: 15 },
-  { model: "GuildXp", cacheTime: 15 },
- ],
- storage: {
-  // Prettier
-  type: Redis instanceof Map ? "memory" : "redis",
-  options: {
+const prismaClientWrapper = (prisma) => {
+ const cache = createPrismaRedisCache({
+  models: [
+   { model: "User", excludeMethods: ["findMany"] },
+   { model: "Guild", excludeMethods: ["findMany"], invalidateRelated: ["GuildDisabledCommands", "GuildDisabledCategories"] },
+   { model: "GuildDisabledCommands", excludeMethods: ["findMany"], invalidateRelated: ["Guild"] },
+   { model: "GuildDisabledCategories", excludeMethods: ["findMany"], invalidateRelated: ["Guild"] },
+   { model: "GuildLogs", cacheTime: 15 },
+   { model: "GuildXp", cacheTime: 15 },
+  ],
+  storage: {
    // Prettier
-   client: Redis instanceof Map ? undefined : Redis,
-   invalidation: { referencesTTL: 300 },
+   type: Redis instanceof Map ? "memory" : "redis",
+   options: {
+    // Prettier
+    client: Redis instanceof Map ? undefined : Redis,
+    invalidation: { referencesTTL: 300 },
+   },
   },
- },
- cacheTime: 30,
- excludeModels: ["Session", "Account"],
- onHit: (key) => {
-  if (debuggerConfig.displayCacheMessages) {
-   Logger("info", `Cache hit for key ${key}`);
-  }
- },
- onMiss: (key) => {
-  if (debuggerConfig.displayCacheMessages) {
-   Logger("info", `Cache miss for key ${key}`);
-  }
- },
- onError: (key) => {
-  if (debuggerConfig.displayCacheMessages) {
-   Logger("info", `Cache error for key ${key}`);
-  }
- },
-});
+  cacheTime: 30,
+  excludeModels: ["Session", "Account"],
+  onHit: (key) => {
+   if (debuggerConfig.displayCacheMessages) {
+    Logger("info", `Cache hit for key ${key}`);
+   }
+  },
+  onMiss: (key) => {
+   if (debuggerConfig.displayCacheMessages) {
+    Logger("info", `Cache miss for key ${key}`);
+   }
+  },
+  onError: (key) => {
+   if (debuggerConfig.displayCacheMessages) {
+    Logger("info", `Cache error for key ${key}`);
+   }
+  },
+ });
 
-prisma.$use(cache);
+ if (debuggerConfig.displayDatabaseLogs) prisma.$use(logger);
+
+ prisma.$use(cache);
+ return prisma;
+};
+
+const connectionString = `${process.env.DATABASE_URL}`;
+
+const prismaClientSingleton = () => {
+ if (process.env.DATABASE_URL?.includes("neon.tech")) {
+  Logger("info", "Neon Database URL found, setting up Neon Database...");
+  const pool = new Pool({ connectionString });
+  const adapter = new PrismaNeon(pool);
+  return prismaClientWrapper(new PrismaClient({ adapter }));
+ } else {
+  Logger("info", "No Neon Database URL found, setting up Prisma...");
+  return prismaClientWrapper(new PrismaClient());
+ }
+};
+
+const globalForPrisma = globalThis;
+const prisma = globalForPrisma.prisma ?? prismaClientSingleton();
 
 export default prisma;
 

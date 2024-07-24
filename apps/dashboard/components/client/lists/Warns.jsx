@@ -2,7 +2,7 @@
 
 import { formatDuration } from "@majoexe/util/functions/util";
 import { useRouter } from "next/navigation";
-import { useMemo, useState } from "react";
+import { useMemo, useState, useCallback } from "react";
 import { toast } from "sonner";
 import { RedButton } from "@/components/Buttons";
 import { ButtonSecondary } from "@/components/Buttons";
@@ -67,29 +67,31 @@ export function ManageWarns({ data, guildId, showControls = true, showSearch = t
  const [deletedWarns, setDeletedWarns] = useState([]);
  const router = useRouter();
 
- const removeWarn = async (warnId) => {
-  setLoadingWarns((old) => [...old, warnId]);
-  const loading = toast.loading(`Deleting warn #${warnId}...`);
+ const removeWarn = useCallback(
+  async (warnId) => {
+   setLoadingWarns((old) => [...old, warnId]);
+   const loading = toast.loading(`Deleting warn #${warnId}...`);
 
-  const res = await fetch(`/api/warns/${guildId}/${warnId}`, {
-   method: "DELETE",
-  });
-
-  setLoadingWarns((old) => old.filter((warn) => warn !== warnId));
-
-  if (res.status === 200) {
-   toast.success(`Deleted warn #${warnId}!`, {
-    id: loading,
+   const res = await fetch(`/api/warns/${guildId}/${warnId}`, {
+    method: "DELETE",
    });
-   setDeletedWarns((old) => [...old, warnId]);
-   return router.refresh();
-  } else {
-   toast.error(`Failed to delete warn #${warnId}!`, {
-    id: loading,
-   });
-   return;
-  }
- };
+
+   setLoadingWarns((old) => old.filter((warn) => warn !== warnId));
+
+   if (res.status === 200) {
+    toast.success(`Deleted warn #${warnId}!`, {
+     id: loading,
+    });
+    setDeletedWarns((old) => [...old, warnId]);
+    router.refresh();
+   } else {
+    toast.error(`Failed to delete warn #${warnId}!`, {
+     id: loading,
+    });
+   }
+  },
+  [guildId, router]
+ );
 
  const columns = useMemo(
   () => [
@@ -161,8 +163,7 @@ export function ManageWarns({ data, guildId, showControls = true, showSearch = t
     ),
    },
   ],
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  [loadingWarns]
+  [loadingWarns, deletedWarns, removeWarn]
  );
 
  return <Table columns={columns} data={data} showControls={showControls} showSearch={showSearch} sortBy={[{ id: "createdAt", desc: true }]} />;

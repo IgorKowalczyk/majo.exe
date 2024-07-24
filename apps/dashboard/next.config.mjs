@@ -13,6 +13,12 @@ const nextConfig = {
  pageExtensions: ["mdx", "jsx", "js"],
  poweredByHeader: false,
  trailingSlash: false,
+ experimental: {
+  // ppr: true,
+  // reactCompiler: {
+  //  compilationMode: "annotation",
+  // },
+ },
  images: {
   unoptimized: true,
   remotePatterns: [

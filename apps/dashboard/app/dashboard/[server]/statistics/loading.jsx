@@ -46,7 +46,7 @@ export default function Loading() {
        <span>
         New Members <Icons.refresh className={iconVariants({ variant: "large", className: "text-accent-primary ml-2 inline-block animate-spin !stroke-2 align-middle" })} />
        </span>
-       <span class="text-left text-sm font-normal opacity-40">Loading...</span>
+       <span className="text-left text-sm font-normal opacity-40">Loading...</span>
       </Header2>
       <div className="relative mx-auto flex flex-row items-center justify-center gap-3 lg:ml-auto lg:mr-0">
        <InputSkeleton className="!w-32" />
@@ -61,7 +61,7 @@ export default function Loading() {
        <span>
         Members left <Icons.refresh className={iconVariants({ variant: "large", className: "text-accent-primary ml-2 inline-block animate-spin !stroke-2 align-middle" })} />
        </span>
-       <span class="text-left text-sm font-normal opacity-40">Loading...</span>
+       <span className="text-left text-sm font-normal opacity-40">Loading...</span>
       </Header2>
       <div className="relative mx-auto flex flex-row items-center justify-center gap-3 lg:ml-auto lg:mr-0">
        <InputSkeleton className="!w-32" />
@@ -76,7 +76,7 @@ export default function Loading() {
        <span>
         Messages Sent <Icons.refresh className={iconVariants({ variant: "large", className: "text-accent-primary ml-2 inline-block animate-spin !stroke-2 align-middle" })} />
        </span>
-       <span class="text-left text-sm font-normal opacity-40">Loading...</span>
+       <span className="text-left text-sm font-normal opacity-40">Loading...</span>
       </Header2>
       <div className="relative mx-auto flex flex-row items-center justify-center gap-3 lg:ml-auto lg:mr-0">
        <InputSkeleton className="!w-32" />

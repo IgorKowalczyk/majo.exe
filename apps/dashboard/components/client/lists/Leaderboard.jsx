@@ -62,8 +62,7 @@ export function Leaderboard({ data = [], showControls = true, showSearch = true 
       ]
     : []),
   ],
-  /* eslint-disable-next-line react-hooks/exhaustive-deps */
-  []
+  [showControls]
  );
 
  return <Table columns={columns} data={data} showControls={showControls} showSearch={showSearch} sortBy={[{ id: "id", desc: false }]} />;
