@@ -60,7 +60,7 @@ Ensure your setup meets these prerequisites before setting up Majo.exe:
 | `CLIENT_ID`                 | Discord client ID                                | `✅ Yes`       | `✅ Yes`             |
 | `CLIENT_SECRET`             | Discord client secret                            | `❌ No`        | `✅ Yes`             |
 | `DATABASE_URL`              | Main database connection string                  | `✅ Yes`       | `✅ Yes`             |
-| `DATABASE_URL_UNPOOLED`                | Non-pooling database connection string           | `❌ No`        | `❌ No`              |
+| `DATABASE_URL_UNPOOLED`     | Non-pooling database connection string           | `❌ No`        | `❌ No`              |
 | `REDIS_URL`¹                | Redis Cache connection string                    | `❌ No`        | `❌ No`              |
 | `SECRET`                    | Secret string (minimum 32 characters)            | `❌ No`        | `✅ Yes`             |
 | `NEXTAUTH_URL`              | NextAuth.js URL (e.g., http://localhost:3000)    | `❌ No`        | `✅ Yes`             |
@@ -84,6 +84,7 @@ Ensure your setup meets these prerequisites before setting up Majo.exe:
 ## 📝 Contributors
 
 - [**@binary-blazer**](https://github.com/binary-blazer) - Hosting support
+- [**TsukiyoDevs**](https://github.com/TsukiyoDevs) - Bug fixes, New features, Testing
 - [**@r-kjha**](https://github.com/r-kjha) - Emoji config support, Bug fixes, New features, Testing
 - [**@Joao-Victor-Liporini**](https://github.com/Joao-Victor-Liporini) - Bug fixes, Command handler improvements, Testing, New features
 - [**@evandev**](https://github.com/xefew) - Bug fixes, Testing
@@ -96,10 +97,9 @@ Ensure your setup meets these prerequisites before setting up Majo.exe:
 
 **These wonderful people and services have helped develop Majo.exe, without them this project would not exist. Thanks goes to these wonderful people!**
 
-|                                                                                                                                                             | Sponsor                                                             | Description                                                                                                                                                         |
-| ----------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| ![TrestHost Logo](https://majoexe.xyz/assets/sponsors/tresthost.png)                      | [**TrestHost**](https://dash.tresthost.me/register?ref=majonez.exe) | **TrestHost is a good and powerful hosting provider** providing servers from the **USA and Germany**. Try us out today!                                             |
-
+|                                                                      | Sponsor                                                             | Description                                                                                                             |
+| -------------------------------------------------------------------- | ------------------------------------------------------------------- | :---------------------------------------------------------------------------------------------------------------------- |
+| ![TrestHost Logo](https://majoexe.xyz/assets/sponsors/tresthost.png) | [**TrestHost**](https://dash.tresthost.me/register?ref=majonez.exe) | **TrestHost is a good and powerful hosting provider** providing servers from the **USA and Germany**. Try us out today! |
 
 ## ⛔ Hosting Agreement
 
