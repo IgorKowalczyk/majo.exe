@@ -1,4 +1,4 @@
-import { globby } from "@majoexe/util/functions/util";
+import { globby } from "@majoexe/util/functions/files/globby.js";
 import { Collection } from "discord.js";
 
 /**

@@ -3,11 +3,21 @@
   "version": "6.0.0",
   "description": "Shared utility functions for Majo.exe",
   "exports": {
-    "./functions/*": "./functions/*/index.js",
-    "./embeds": "./embeds/index.js",
     "./database": "./database/index.js",
-    "./json": "./json/index.js",
-    "./images": "./images/index.js"
+    "./database/*": "./database/*",
+    "./embeds": "./embeds/index.js",
+    "./embeds/*": "./embeds/*",
+    "./functions/automod": "./functions/automod/index.js",
+    "./functions/automod/*": "./functions/automod/*",
+    "./functions/files/*": "./functions/files/*",
+    "./functions/guild": "./functions/guild/index.js",
+    "./functions/guild/*": "./functions/guild/*",
+    "./functions/user": "./functions/user/index.js",
+    "./functions/user/*": "./functions/user/*",
+    "./functions/util": "./functions/util/index.js",
+    "./functions/util/*": "./functions/util/*",
+    "./images": "./images/index.js",
+    "./images/*": "./images/*"
   },
   "type": "module",
   "scripts": {

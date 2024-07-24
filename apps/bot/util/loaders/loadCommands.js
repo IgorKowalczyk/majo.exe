@@ -1,5 +1,5 @@
 /* eslint-disable camelcase */
-import { globby } from "@majoexe/util/functions/util";
+import { globby } from "@majoexe/util/functions/files/globby.js";
 import { PermissionsBitField, Collection } from "discord.js";
 
 /**

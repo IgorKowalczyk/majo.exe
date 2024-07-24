@@ -1,4 +1,4 @@
-import path from "node:path";
+import path from "path";
 import { globby as coreGlobby } from "globby";
 
 function normalizePaths(patterns) {

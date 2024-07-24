@@ -7,5 +7,4 @@ export * from "./percentageBar.js";
 export * from "./shortenText.js";
 export * from "./isNumeric.js";
 export * from "./generateDates.js";
-export * from "./globby.js";
 export * from "./fillMissingDates.js";

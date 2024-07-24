@@ -16,7 +16,7 @@ export function ImportJSON(name) {
  try {
   const currentModuleFileUrl = import.meta.url;
   const currentModuleFolderPath = path.dirname(new URL(currentModuleFileUrl).pathname);
-  const filePath = path.join(currentModuleFolderPath, `${name}.json`);
+  const filePath = path.join(currentModuleFolderPath, "content", `${name}.json`);
   const fileContent = readFileSync(filePath, "utf8");
 
   return JSON.parse(fileContent);
