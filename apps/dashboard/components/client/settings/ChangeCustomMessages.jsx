@@ -1,6 +1,6 @@
 "use client";
 
-import { toHTML } from "@odiffey/discord-markdown";
+import discordParser from "@odiffey/discord-markdown";
 import clsx from "clsx";
 import { useState } from "react";
 import { toast } from "sonner";
@@ -211,7 +211,7 @@ export function ChangeMessages({ serverId, enabled, title, description, existing
        <Embed>
         <Embed.Title>{(newTitle || defaultMessages.title).replaceAll(/{user}/g, replacedData.user).replaceAll(/{guild}/g, replacedData.guild)}</Embed.Title>
         <Embed.Description>
-         <p className="prose prose-invert" dangerouslySetInnerHTML={{ __html: toHTML((newDescription?.trim() || defaultMessages.description).replaceAll(/{user}/g, replacedData.user).replaceAll(/{guild}/g, replacedData.guild)) }} />
+         <p className="prose prose-invert" dangerouslySetInnerHTML={{ __html: discordParser.toHTML((newDescription?.trim() || defaultMessages.description).replaceAll(/{user}/g, replacedData.user).replaceAll(/{guild}/g, replacedData.guild || "")) }} />
         </Embed.Description>
         <Embed.Image />
        </Embed>
