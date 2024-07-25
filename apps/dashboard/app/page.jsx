@@ -1,6 +1,6 @@
-import { dashboardConfig, globalConfig } from "@majoexe/config";
-import prismaClient from "@majoexe/database";
-import { formatNumber } from "@majoexe/util/functions/util";
+import { dashboardConfig, globalConfig } from "@nyxia/config";
+import prismaClient from "@nyxia/database";
+import { formatNumber } from "@nyxia/util/functions/util";
 import Link from "next/link";
 import avatar01 from "public/assets/avatars/01.webp";
 import avatar02 from "public/assets/avatars/02.webp";
@@ -192,14 +192,14 @@ export default async function HomePage() {
     <div className="relative z-20 -mt-8 flex w-full select-none flex-col items-center justify-center gap-4 px-3 md:w-[90%]">
      <Link href="/api/invite" className={twMerge("group rounded-full border border-white/5 bg-neutral-900 text-base text-white transition-all ease-in hover:cursor-pointer hover:bg-neutral-800")}>
       <AnimatedShinyText className="inline-flex items-center justify-center px-4 py-1 transition ease-out hover:text-neutral-400 hover:duration-300">
-       <span>✨ Introducing Majo.exe</span>
+       <span>🌸 Introducing Nyxia</span>
        <Icons.arrowRight className={iconVariants({ variant: "normal", className: "-mr-1 ml-1 transition-transform ease-in-out group-hover:translate-x-0.5" })} />
       </AnimatedShinyText>
      </Link>
 
-     <Header1 className="text-fill-transparent mb-0 justify-center bg-gradient-to-b from-white to-neutral-400 box-decoration-clone bg-clip-text text-center !font-black !leading-snug xl:!text-5xl 2xl:!text-7xl">The only one Discord Bot</Header1>
+     <Header1 className="text-fill-transparent mb-0 justify-center bg-gradient-to-b from-white to-neutral-400 box-decoration-clone bg-clip-text text-center !font-black !leading-snug xl:!text-5xl 2xl:!text-7xl">Your servers one and only</Header1>
      <Header2 className="mb-0 max-w-[680px] text-center font-normal text-white/70">
-      <Balancer>Majo.exe will not only keep your server entertained but also assist you with moderation and many other things!</Balancer>
+      <Balancer>Nyxia - the ultimate Discord bot for fun, memes, images, giveaways, and anime! Nyxia boasts an impressive array of over 120 commands, ensuring there's something for everyone. Whether you're looking to entertain your server with hilarious memes, host exciting giveaways, or dive into the world of anime, Nyxia has you covered!</Balancer>
      </Header2>
      <div className="mt-2 flex flex-col gap-4 sm:flex-row">
       <LoginButton />
@@ -268,7 +268,7 @@ export default async function HomePage() {
       </div>
       <div className="bg-background-secondary row-span-1 overflow-hidden rounded-xl border border-neutral-800 p-4 duration-200 hover:bg-neutral-800/50">
        <GradientHeader>Leveling?</GradientHeader>
-       <p className="mt-2 max-w-[680px] text-white/70">Majo.exe has a leveling system that will keep your members active and entertained.</p>
+       <p className="mt-2 max-w-[680px] text-white/70">Nyxia has a leveling system that will keep your members active and entertained.</p>
        <LevelUp avatar={dashboardConfig.logo} username="Majonez.exe" />
       </div>
       <div className="bg-background-secondary relative col-span-2 row-span-2 overflow-hidden rounded-xl border border-neutral-800 px-8 py-6 duration-200 hover:bg-neutral-800/50 lg:col-span-1">
@@ -276,7 +276,7 @@ export default async function HomePage() {
        <div className="absolute inset-0 z-0 m-auto mt-[100px] h-[580px] w-[580px] rounded-full bg-[#ddd] opacity-5 blur-3xl" />
        <div className="relative z-10">
         <p className="mt-2 max-w-[680px] text-white/70">
-         <Balancer>Someone's breaking the rules? You can easily enable Auto-Moderation and Majo.exe will take care of the rest!</Balancer>
+         <Balancer>Someone's breaking the rules? You can easily enable Auto-Moderation and Nyxia will take care of the rest!</Balancer>
         </p>
         <div className="mt-3 h-48 overflow-hidden">
          <AnimatedList>
@@ -299,7 +299,7 @@ export default async function HomePage() {
         <div className="px-8 py-6">
          <Header1 className="text-fill-transparent mb-0 bg-gradient-to-b from-white to-neutral-400 box-decoration-clone bg-clip-text !text-left !font-black">Know more about your server</Header1>
          <p className="max-w-[680px] text-white/70">
-          <Balancer>With Majo.exe you can get to know your server better with the help of the dashboard. You can see the most active members, the most used channels and activity graphs!</Balancer>
+          <Balancer>With Nyxia you can get to know your server better with the help of the dashboard. You can see the most active members, the most used channels and activity graphs!</Balancer>
          </p>
         </div>
 
@@ -336,7 +336,7 @@ export default async function HomePage() {
       </div>
       <div className="bg-background-secondary relative col-span-2 row-span-1 overflow-hidden rounded-xl border border-neutral-800 px-8 py-6 duration-200 hover:bg-neutral-800/50 lg:col-span-1">
        <GradientHeader>Giveaways? Why not?</GradientHeader>
-       <p className="mt-2 max-w-[680px] text-white/70">Want to host a giveaway or a drop? Majo.exe can help you with that! You can easily create and moderate giveaways with few simple commands!</p>
+       <p className="mt-2 max-w-[680px] text-white/70">Want to host a giveaway or a drop? Nyxia can help you with that! You can easily create and moderate giveaways with few simple commands!</p>
        <div className="my-6 flex items-center gap-1">
         <Image src={dashboardConfig.logo} alt={`${dashboardConfig.title} avatar`} quality={95} width={40} height={40} className="h-10 min-h-10 w-10 min-w-10 self-baseline rounded-full" />
         <div className="flex flex-col">
@@ -375,7 +375,7 @@ export default async function HomePage() {
      </GradientHeader>
      <p className="mb-6 mt-3 w-full text-center text-white/70">
       <Balancer>
-       Majo.exe is trusted by more than {formatNumber(jsonData.approximate_guild_count || 0)} servers and {formatNumber(100000)} users! Join them and see what Majo.exe can do for you!
+       Nyxia is trusted by more than {formatNumber(jsonData.approximate_guild_count || 0)} servers and {formatNumber(100000)} users! Join them and see what Nyxia can do for you!
       </Balancer>
      </p>
 
@@ -389,7 +389,7 @@ export default async function HomePage() {
      <div className="mx-auto my-16 flex max-w-7xl flex-col gap-8 px-4 lg:flex-row lg:gap-16 lg:px-0">
       <div className="flex w-full flex-col justify-center gap-2 lg:w-2/5">
        <Header1>See what's happening in your server</Header1>
-       <p className="text-white/70">With Majo.exe you can see your server statistics in real-time. You can see the most active members, the most used channels and much more!</p>
+       <p className="text-white/70">With Nyxia you can see your server statistics in real-time. You can see the most active members, the most used channels and much more!</p>
       </div>
       <div className="bg-background-secondary w-full overflow-hidden rounded-xl border border-neutral-800 py-6 pl-4 pr-8 duration-200 hover:bg-neutral-800/50 lg:w-3/5">
        <Suspense fallback={<div className="w-full h-56 bg-background-secondary rounded-xl border border-neutral-800" />}>
@@ -406,7 +406,7 @@ export default async function HomePage() {
       </div>
       <div className="flex w-full flex-col justify-center gap-2 lg:w-2/5">
        <Header1>Keep track of everything</Header1>
-       <p className="text-white/70">Majo.exe has a powerful logging system that will keep track of everything that happens in your server. You can easily see who did what and when!</p>
+       <p className="text-white/70">Nyxia has a powerful logging system that will keep track of everything that happens in your server. You can easily see who did what and when!</p>
       </div>
      </div>
     </div>
@@ -419,7 +419,7 @@ export default async function HomePage() {
    <div className="mx-auto mt-12 pb-10 md:px-8 lg:px-16">
     <GradientHeader className="!block !text-center !text-3xl md:!text-4xl">What are you waiting for?</GradientHeader>
     <p className="mb-6 mt-3 w-full text-center text-white/70">
-     <Balancer>Don't wait ages to add Majo.exe to your server! Invite it now and see it in action!</Balancer>
+     <Balancer>Don't wait ages to add Nyxia to your server! Invite it now and see it in action!</Balancer>
     </p>
 
     <ButtonPrimary href="/api/invite" className="mx-auto w-fit">

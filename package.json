@@ -1,9 +1,8 @@
 {
-  "name": "@majoexe/monorepo",
+  "name": "@nyxia/monorepo",
   "version": "0.0.0",
   "private": true,
   "type": "module",
-  "description": "Monorepo for majo.exe",
   "scripts": {
     "dev": "turbo run dev",
     "build": "turbo run build",
@@ -44,22 +43,5 @@
   "engines": {
     "node": ">=20.0.0"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/IgorKowalczyk/majo.exe.git"
-  },
-  "author": "Igor Kowalczyk",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/IgorKowalczyk/majo.exe/issues"
-  },
-  "homepage": "https://majoexe.xyz",
-  "keywords": [
-    "node",
-    "discord",
-    "majoexe",
-    "bot",
-    "discord-bot"
-  ],
   "packageManager": "pnpm@9.6.0"
 }

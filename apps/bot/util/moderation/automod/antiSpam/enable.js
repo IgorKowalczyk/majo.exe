@@ -1,6 +1,6 @@
 /* eslint-disable complexity */
 
-import { createAutoModRule, syncAutoModRule } from "@majoexe/util/database";
+import { createAutoModRule, syncAutoModRule } from "@nyxia/util/database";
 import { ChannelType, AutoModerationRuleEventType, AutoModerationActionType, AutoModerationRuleTriggerType, EmbedBuilder, PermissionsBitField, codeBlock } from "discord.js";
 
 export async function enableAntiSpam(client, interaction, guildSettings) {
@@ -41,7 +41,7 @@ export async function enableAntiSpam(client, interaction, guildSettings) {
   return interaction.followUp({ embeds: [embed] });
  } else {
   const ruleToCreate = {
-   name: "Anti-spam [Majo.exe]",
+   name: "Anti-spam [default]",
    creatorId: client.id,
    enabled: true,
    eventType: AutoModerationRuleEventType.MessageSend,
@@ -53,7 +53,7 @@ export async function enableAntiSpam(client, interaction, guildSettings) {
      type: AutoModerationActionType.BlockMessage,
      metadata: {
       channel: interaction.channel,
-      customMessage: "Message blocked due to detected spam. Rule added by Majo.exe",
+      customMessage: "Message blocked due to detected spam from the default filter.",
      },
     },
    ],
@@ -81,7 +81,7 @@ export async function enableAntiSpam(client, interaction, guildSettings) {
     type: AutoModerationActionType.SendAlertMessage,
     metadata: {
      channel: logChannel,
-     message: "Message blocked due to detected spam. Rule added by Majo.exe",
+     message: "Message blocked due to detected spam from the default filter.",
     },
    });
   }

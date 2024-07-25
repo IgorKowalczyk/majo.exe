@@ -1,7 +1,7 @@
 /* eslint-disable complexity */
 "use client";
 
-import { formatDate, formatDuration } from "@majoexe/util/functions/util";
+import { formatDate, formatDuration } from "@nyxia/util/functions/util";
 import clsx from "clsx";
 import Link from "next/link";
 import React, { useState, useRef, useEffect } from "react";

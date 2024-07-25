@@ -1,4 +1,4 @@
-import { checkXP, fetchXPSettings } from "@majoexe/util/database";
+import { checkXP, fetchXPSettings } from "@nyxia/util/database";
 import { ApplicationCommandType, ApplicationCommandOptionType, AttachmentBuilder, EmbedBuilder, ButtonBuilder, ActionRowBuilder, ButtonStyle } from "discord.js";
 import { createXPCard } from "../../util/images/createXPCard.js";
 

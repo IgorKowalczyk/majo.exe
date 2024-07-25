@@ -1,4 +1,4 @@
-import { dashboardConfig } from "@majoexe/config";
+import { dashboardConfig } from "@nyxia/config";
 import clsx from "clsx";
 import { getSession } from "lib/session";
 import Link from "next/link";

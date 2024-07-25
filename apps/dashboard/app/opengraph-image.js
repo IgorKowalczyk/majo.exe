@@ -3,7 +3,7 @@ import { ImageResponse } from "next/og";
 
 export const runtime = "edge";
 
-export const alt = "Majo.exe - The only one Discord Bot";
+export const alt = "Nyxia - Your servers only and only";
 
 export const size = {
  width: 1200,
@@ -44,7 +44,7 @@ export default async function Image() {
       fontFamily: "PoppinsBold",
      }}
     >
-     The only one Discord Bot
+     Your servers one and only
     </div>
     <div
      style={{
@@ -56,7 +56,7 @@ export default async function Image() {
       marginTop: "15px",
      }}
     >
-     Majo.exe will not only keep your server entertained but also assist you with moderation and many other things!
+     Nyxia - the ultimate Discord bot for fun, memes, images, giveaways, and anime! Nyxia boasts an impressive array of over 120 commands, ensuring there's something for everyone. Whether you're looking to entertain your server with hilarious memes, host exciting giveaways, or dive into the world of anime, Nyxia has you covered!
     </div>
    </div>
   ),

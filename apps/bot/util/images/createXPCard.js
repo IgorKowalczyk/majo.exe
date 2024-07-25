@@ -1,4 +1,4 @@
-import { formatNumber } from "@majoexe/util/functions/util";
+import { formatNumber } from "@nyxia/util/functions/util";
 import { loadImage, createCanvas } from "@napi-rs/canvas";
 
 /**

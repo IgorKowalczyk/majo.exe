@@ -1,6 +1,6 @@
 "use client";
 
-import { formatNumber } from "@majoexe/util/functions/util";
+import { formatNumber } from "@nyxia/util/functions/util";
 import Link from "next/link";
 import { useMemo } from "react";
 import { ButtonSecondary } from "@/components/Buttons";

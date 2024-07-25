@@ -1,7 +1,6 @@
 {
-  "name": "@majoexe/database",
+  "name": "@nyxia/database",
   "version": "6.0.0",
-  "description": "Majo.exe main database schema/client/migrations package",
   "exports": {
     ".": "./src/client.js",
     "./edge": "./src/edge.js",
@@ -22,7 +21,7 @@
     "studio": "prisma studio"
   },
   "dependencies": {
-    "@majoexe/config": "workspace:*",
+    "@nyxia/config": "workspace:*",
     "@neondatabase/serverless": "0.9.4",
     "@prisma/adapter-neon": "5.17.0",
     "@prisma/client": "5.17.0",
@@ -38,24 +37,5 @@
   "engines": {
     "node": ">=20.0.0"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/igorkowalczyk/majo.exe.git",
-    "directory": "packages/database"
-  },
-  "keywords": [
-    "prisma",
-    "database",
-    "orm",
-    "sql",
-    "postgresql",
-    "mysql"
-  ],
-  "author": "Igor Kowalczyk",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/igorkowalczyk/majo.exe/issues"
-  },
-  "homepage": "https://github.com/igorkowalczyk/majo.exe#readme",
   "packageManager": "pnpm@9.6.0"
 }

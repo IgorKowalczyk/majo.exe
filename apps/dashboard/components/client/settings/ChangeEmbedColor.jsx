@@ -1,6 +1,6 @@
 "use client";
 
-import { globalConfig } from "@majoexe/config";
+import { globalConfig } from "@nyxia/config";
 import { useState } from "react";
 import { HexColorPicker } from "react-colorful";
 import { toast } from "sonner";

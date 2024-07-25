@@ -1,4 +1,4 @@
-import { debuggerConfig } from "@majoexe/config";
+import { debuggerConfig } from "@nyxia/config";
 import Redis from "ioredis";
 import { Logger } from "./logger.js";
 

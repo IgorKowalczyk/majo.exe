@@ -1,4 +1,4 @@
-import { syncAutoModRule } from "@majoexe/util/database";
+import { syncAutoModRule } from "@nyxia/util/database";
 import { EmbedBuilder } from "discord.js";
 
 export async function disableAntiLink(client, interaction, guildSettings) {

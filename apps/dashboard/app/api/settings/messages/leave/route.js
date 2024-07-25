@@ -1,9 +1,9 @@
 /* eslint-disable complexity */
 
-import { globalConfig } from "@majoexe/config";
-import prismaClient from "@majoexe/database";
-import { getServer, getGuildMember } from "@majoexe/util/functions/guild";
-import { shortenText } from "@majoexe/util/functions/util";
+import { globalConfig } from "@nyxia/config";
+import prismaClient from "@nyxia/database";
+import { getServer, getGuildMember } from "@nyxia/util/functions/guild";
+import { shortenText } from "@nyxia/util/functions/util";
 import { ChannelType } from "discord-api-types/v10";
 import { getSession } from "lib/session";
 import { NextResponse } from "next/server";

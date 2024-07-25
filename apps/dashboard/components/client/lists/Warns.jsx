@@ -1,6 +1,6 @@
 "use client";
 
-import { formatDuration } from "@majoexe/util/functions/util";
+import { formatDuration } from "@nyxia/util/functions/util";
 import { useRouter } from "next/navigation";
 import { useMemo, useState, useCallback } from "react";
 import { toast } from "sonner";

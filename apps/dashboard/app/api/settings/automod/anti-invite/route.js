@@ -1,9 +1,9 @@
 /* eslint-disable complexity */
 
-import { globalConfig } from "@majoexe/config";
-import prismaClient from "@majoexe/database";
-import { createHTTPAutomodRule, validateAutoModIgnores, validateAutoModRuleActions } from "@majoexe/util/functions/automod";
-import { getServer, getGuildMember } from "@majoexe/util/functions/guild";
+import { globalConfig } from "@nyxia/config";
+import prismaClient from "@nyxia/database";
+import { createHTTPAutomodRule, validateAutoModIgnores, validateAutoModRuleActions } from "@nyxia/util/functions/automod";
+import { getServer, getGuildMember } from "@nyxia/util/functions/guild";
 import { AutoModerationActionType, AutoModerationRuleTriggerType, AutoModerationRuleEventType, ChannelType } from "discord-api-types/v10";
 import { getSession } from "lib/session";
 import { NextResponse } from "next/server";
@@ -54,7 +54,7 @@ export async function POST(request) {
     {
      type: AutoModerationActionType.BlockMessage,
      metadata: {
-      custom_message: "Message blocked due to containing an invite link. Rule added by Majo.exe",
+      custom_message: "Message blocked due to containing an invite link from the default filter.",
      },
     },
    ];
@@ -221,7 +221,7 @@ export async function POST(request) {
    );
   }
 
-  const validatedActions = await validateAutoModRuleActions(data.actions, allChannels, "Message blocked due to containing an invite link. Rule added by Majo.exe");
+  const validatedActions = await validateAutoModRuleActions(data.actions, allChannels, "Message blocked due to containing an invite link from the default filter.");
 
   if (validatedActions.error) {
    return NextResponse.json(
@@ -259,7 +259,7 @@ export async function POST(request) {
 
   const createdRule = await createHTTPAutomodRule(server.id, "anti-invite", {
    enabled: data.enabled,
-   name: "Disallow invites [Majo.exe]",
+   name: "Disallow invites [default]",
    actions: validatedActions,
    event_type: AutoModerationRuleEventType.MessageSend,
    trigger_type: AutoModerationRuleTriggerType.Keyword,

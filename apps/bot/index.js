@@ -1,8 +1,8 @@
 import { dirname } from "node:path";
 import { fileURLToPath } from "node:url";
-import { globalConfig, botConfig, debuggerConfig, dashboardConfig, globalPermissions } from "@majoexe/config";
-import { createErrorEmbed } from "@majoexe/util/embeds";
-import { Logger, chalk } from "@majoexe/util/functions/util";
+import { globalConfig, botConfig, debuggerConfig, dashboardConfig, globalPermissions } from "@nyxia/config";
+import { createErrorEmbed } from "@nyxia/util/embeds";
+import { Logger, chalk } from "@nyxia/util/functions/util";
 import { Client, GatewayIntentBits } from "discord.js";
 import giveaway from "./util/giveaway/core.js";
 import loadCommands from "./util/loaders/loadCommands.js";
@@ -15,9 +15,7 @@ const cwd = dirname(fileURLToPath(import.meta.url));
 Logger("info", `Current working directory: ${cwd}`);
 process.chdir(cwd);
 
-Logger("info", "Starting Majo.exe Bot...");
-Logger("info", `Running version v${process.env.npm_package_version} on Node.js ${process.version} on ${process.platform} ${process.arch}`);
-Logger("info", "Check out the source code at https://github.com/igorkowalczyk/majo.exe! Don't forget to star the repository, it helps a lot!");
+Logger("info", "Starting Nyxia");
 
 const client = new Client({
  intents: [

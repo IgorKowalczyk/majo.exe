@@ -1,5 +1,5 @@
-import prismaClient from "@majoexe/database";
-import { shortenText } from "@majoexe/util/functions/util";
+import prismaClient from "@nyxia/database";
+import { shortenText } from "@nyxia/util/functions/util";
 import { EmbedBuilder, AttachmentBuilder, PermissionsBitField } from "discord.js";
 import { createUserGuildCard } from "../../util/images/createUserGuildCard.js";
 

@@ -1,4 +1,4 @@
-import { dashboardConfig } from "@majoexe/config";
+import { dashboardConfig } from "@nyxia/config";
 
 export default async function sitemap() {
  const routes = ["", "/commands", "/legal/privacy-policy", "/legal/terms-of-service"].map((route) => ({

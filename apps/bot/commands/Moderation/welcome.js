@@ -1,5 +1,5 @@
-import prismaClient from "@majoexe/database";
-import { shortenText } from "@majoexe/util/functions/util";
+import prismaClient from "@nyxia/database";
+import { shortenText } from "@nyxia/util/functions/util";
 import { ApplicationCommandType, ApplicationCommandOptionType, ChannelType, PermissionsBitField, EmbedBuilder, PermissionFlagsBits, codeBlock } from "discord.js";
 
 export default {

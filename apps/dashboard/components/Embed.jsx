@@ -1,4 +1,4 @@
-import { dashboardConfig } from "@majoexe/config";
+import { dashboardConfig } from "@nyxia/config";
 import Image from "next/image";
 import { twMerge } from "tailwind-merge";
 import { Icons, iconVariants } from "./Icons";

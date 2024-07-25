@@ -1,6 +1,6 @@
-import { globalConfig } from "@majoexe/config";
-import prismaClient from "@majoexe/database";
-import { getGuildMember, getServer } from "@majoexe/util/functions/guild";
+import { globalConfig } from "@nyxia/config";
+import prismaClient from "@nyxia/database";
+import { getGuildMember, getServer } from "@nyxia/util/functions/guild";
 import { ChannelType } from "discord-api-types/v10";
 import { getSession } from "lib/session";
 import { redirect } from "next/navigation";

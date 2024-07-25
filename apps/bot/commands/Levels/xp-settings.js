@@ -1,5 +1,5 @@
 /* eslint-disable complexity */
-import { setXPLevelUpMessageSettings, setXPSettings, fetchXPSettings } from "@majoexe/util/database";
+import { setXPLevelUpMessageSettings, setXPSettings, fetchXPSettings } from "@nyxia/util/database";
 import { ApplicationCommandType, ApplicationCommandOptionType, PermissionsBitField, PermissionFlagsBits, EmbedBuilder, time } from "discord.js";
 
 export default {

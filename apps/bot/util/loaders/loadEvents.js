@@ -1,5 +1,5 @@
 import { basename } from "node:path";
-import { readDir } from "@majoexe/util/functions/files/readDir.js";
+import { readDir } from "@nyxia/util/functions/files/readDir.js";
 
 /**
  * Loads all events from the /events folder

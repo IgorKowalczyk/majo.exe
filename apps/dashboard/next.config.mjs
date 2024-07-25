@@ -1,4 +1,4 @@
-import { dashboardHeaders, dashboardRedirects } from "@majoexe/config";
+import { dashboardHeaders, dashboardRedirects } from "@nyxia/config";
 import withBundleAnalyzer from "@next/bundle-analyzer";
 import createMdx from "@next/mdx";
 import { PrismaPlugin } from "@prisma/nextjs-monorepo-workaround-plugin";

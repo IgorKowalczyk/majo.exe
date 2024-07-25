@@ -1,7 +1,7 @@
 /* eslint-disable complexity */
-import { dashboardConfig } from "@majoexe/config";
-import prismaClient from "@majoexe/database";
-import { getServer, getGuildPreview } from "@majoexe/util/functions/guild";
+import { dashboardConfig } from "@nyxia/config";
+import prismaClient from "@nyxia/database";
+import { getServer, getGuildPreview } from "@nyxia/util/functions/guild";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import Balancer from "react-wrap-balancer";
@@ -82,7 +82,7 @@ export default async function CustomOverviewPage({ params }) {
       {guildPreview.approximate_presence_count || "0"} online
      </div>
     </div>
-    <span className="mx-auto whitespace-nowrap sm:ml-auto sm:mr-0">Powered by Majo.exe</span>
+
    </Block>
 
    <div className="mt-6 block gap-6 lg:flex lg:items-start">

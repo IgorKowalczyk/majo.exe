@@ -1,6 +1,6 @@
-import { botConfig } from "@majoexe/config";
-import prismaClient from "@majoexe/database";
-import { getGuildMember, getServer } from "@majoexe/util/functions/guild";
+import { botConfig } from "@nyxia/config";
+import prismaClient from "@nyxia/database";
+import { getGuildMember, getServer } from "@nyxia/util/functions/guild";
 import clsx from "clsx";
 import { getSession } from "lib/session";
 import { redirect } from "next/navigation";

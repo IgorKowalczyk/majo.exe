@@ -42,13 +42,13 @@ importers:
       '@iamtraction/google-translate':
         specifier: 2.0.1
         version: 2.0.1
-      '@majoexe/config':
+      '@nyxia/config':
         specifier: workspace:*
         version: link:../../packages/config
-      '@majoexe/database':
+      '@nyxia/database':
         specifier: workspace:*
         version: link:../../packages/database
-      '@majoexe/util':
+      '@nyxia/util':
         specifier: workspace:*
         version: link:../../packages/utils
       '@napi-rs/canvas':
@@ -121,13 +121,13 @@ importers:
       '@headlessui/tailwindcss':
         specifier: 0.2.1
         version: 0.2.1(tailwindcss@3.4.6)
-      '@majoexe/config':
+      '@nyxia/config':
         specifier: workspace:*
         version: link:../../packages/config
-      '@majoexe/database':
+      '@nyxia/database':
         specifier: workspace:*
         version: link:../../packages/database
-      '@majoexe/util':
+      '@nyxia/util':
         specifier: workspace:*
         version: link:../../packages/utils
       '@mdx-js/loader':
@@ -275,7 +275,7 @@ importers:
 
   packages/database:
     dependencies:
-      '@majoexe/config':
+      '@nyxia/config':
         specifier: workspace:*
         version: link:../config
       '@neondatabase/serverless':
@@ -309,10 +309,10 @@ importers:
 
   packages/utils:
     dependencies:
-      '@majoexe/config':
+      '@nyxia/config':
         specifier: workspace:*
         version: link:../config
-      '@majoexe/database':
+      '@nyxia/database':
         specifier: workspace:*
         version: link:../database
       chalk:

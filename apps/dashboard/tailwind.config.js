@@ -4,8 +4,8 @@ import svgToDataUri from "mini-svg-data-uri";
 import tailwindGradientMaskImage from "tailwind-gradient-mask-image";
 import plugin from "tailwindcss/plugin";
 import tailwindTextFill from "tailwindcss-text-fill";
-import { globalConfig } from "@majoexe/config";
-import { adjustColor } from "@majoexe/util/functions/util";
+import { globalConfig } from "@nyxia/config";
+import { adjustColor } from "@nyxia/util/functions/util";
 
 const tailwindConfig = {
  darkMode: "class",

@@ -1,9 +1,9 @@
 /* Dashboard related config */
 export const dashboardConfig = {
- title: "Majo.exe", // string. Dashboard title, will be shown in browser tab and in search results
- url: "https://majoexe.xyz", // string. Dashboard url, to Disable dashboard, set this to null (Note: when you change it to null the dashboard will not work and commands related to dashboard will not work)
+ title: "Nyxia", // string. Dashboard title, will be shown in browser tab and in search results
+ url: "https://nyxia.vercel.app", // string. Dashboard url, to Disable dashboard, set this to null (Note: when you change it to null the dashboard will not work and commands related to dashboard will not work)
  logo: "/assets/avatar.png", // string. Logo of your bot
- description: "Majo.exe - Discord bot for Fun, Memes, Images, Giveaway, Economy and Anime! Majo.exe serve over 117 commands!", // string. Dashboard description, will be shown in search results
+ description: "Nyxia - the ultimate Discord bot for fun, memes, images, giveaways, and anime! Nyxia boasts an impressive array of over 120 commands, ensuring there's something for everyone. Whether you're looking to entertain your server with hilarious memes, host exciting giveaways, or dive into the world of anime, Nyxia has you covered!", // string. Dashboard description, will be shown in search results
  image: "/opengraph-image", // string. Dashboard open graph image (Note: this is not a url, this is a path to the image/generator, for example: /opengraph-image)
 };
 
@@ -11,7 +11,7 @@ export const dashboardConfig = {
 export const dashboardRedirects = [
  {
   source: "/discord",
-  destination: "https://discord.gg/sgt4QEyDxK",
+  destination: "https://discord.gg/sJRAsZaYry",
   permanent: true,
  },
  {
@@ -36,7 +36,7 @@ export const dashboardRedirects = [
  },
  {
   source: "/status",
-  destination: "https://status.majoexe.xyz",
+  destination: "https://status.tsukiyodevteam.xyz",
   permanent: true,
  },
 ];

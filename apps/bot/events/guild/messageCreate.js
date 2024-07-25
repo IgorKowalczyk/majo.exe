@@ -1,8 +1,8 @@
 /* eslint-disable complexity */
 
-import prismaClient from "@majoexe/database";
-import { cacheGet, cacheSet } from "@majoexe/database/redis";
-import { fetchXPSettings } from "@majoexe/util/database";
+import prismaClient from "@nyxia/database";
+import { cacheGet, cacheSet } from "@nyxia/database/redis";
+import { fetchXPSettings } from "@nyxia/util/database";
 import { EmbedBuilder, AttachmentBuilder, PermissionsBitField, ButtonBuilder, ChannelType, ActionRowBuilder, ButtonStyle } from "discord.js";
 import { createXPCard } from "../../util/images/createXPCard.js";
 

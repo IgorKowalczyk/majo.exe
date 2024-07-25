@@ -42,7 +42,7 @@ export default async function LoginPage({ searchParams }) {
     ) : (
      <>
       <Header1 className="!justify-center text-center">Connect your account</Header1>
-      <p className="my-1 mt-2 text-center text-xl text-[#939DB8]">Authorize your Discord account to use all the Majo.exe features</p>
+      <p className="my-1 mt-2 text-center text-xl text-[#939DB8]">Authorize your Discord account to use all of Nyxia's features</p>
      </>
     )}
    </div>

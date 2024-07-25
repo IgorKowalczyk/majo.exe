@@ -1,5 +1,5 @@
-import { globalConfig } from "@majoexe/config";
-import { Logger } from "@majoexe/util/functions/util";
+import { globalConfig } from "@nyxia/config";
+import { Logger } from "@nyxia/util/functions/util";
 
 const emojiDownloadList = {
  success: "https://cdn.discordapp.com/emojis/963333541112987668.png",

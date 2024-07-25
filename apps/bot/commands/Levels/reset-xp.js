@@ -1,4 +1,4 @@
-import { resetXP, fetchXPSettings } from "@majoexe/util/database";
+import { resetXP, fetchXPSettings } from "@nyxia/util/database";
 import { ApplicationCommandType, ApplicationCommandOptionType, PermissionFlagsBits, EmbedBuilder } from "discord.js";
 
 export default {

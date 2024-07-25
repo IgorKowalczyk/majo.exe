@@ -1,4 +1,4 @@
-import { getLines } from "@majoexe/util/images";
+import { getLines } from "@nyxia/util/images";
 import { loadImage, createCanvas } from "@napi-rs/canvas";
 import { ApplicationCommandType, ApplicationCommandOptionType, AttachmentBuilder, EmbedBuilder } from "discord.js";
 

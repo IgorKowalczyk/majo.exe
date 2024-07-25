@@ -1,4 +1,4 @@
-import prismaClient from "@majoexe/database";
+import prismaClient from "@nyxia/database";
 
 /**
  * Fetches the XP settings for a guild. If the guild does not exist, it will be created.

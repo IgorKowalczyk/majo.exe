@@ -1,6 +1,6 @@
 /* eslint-disable func-names, space-before-function-paren */
 
-import prismaClient from "@majoexe/database";
+import prismaClient from "@nyxia/database";
 import { PrismaAdapter } from "@next-auth/prisma-adapter";
 import DiscordProvider from "next-auth/providers/discord";
 

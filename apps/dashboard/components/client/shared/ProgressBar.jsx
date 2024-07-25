@@ -1,6 +1,6 @@
 "use client";
 
-import { globalConfig } from "@majoexe/config";
+import { globalConfig } from "@nyxia/config";
 import { AppProgressBar as ProgressBarNext } from "next-nprogress-bar";
 import { Suspense } from "react";
 

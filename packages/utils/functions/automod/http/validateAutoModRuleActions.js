@@ -1,4 +1,4 @@
-import { globalConfig } from "@majoexe/config";
+import { globalConfig } from "@nyxia/config";
 import { AutoModerationActionType, ChannelType } from "discord-api-types/v10";
 import { getPermissionNames } from "../../user/checkPermissions";
 

@@ -1,9 +1,9 @@
 /* eslint-disable complexity */
 
-import prismaClient from "@majoexe/database";
-import { cacheGet, cacheSet } from "@majoexe/database/redis";
-import { createUser } from "@majoexe/util/database";
-import { formatDuration } from "@majoexe/util/functions/util";
+import prismaClient from "@nyxia/database";
+import { cacheGet, cacheSet } from "@nyxia/database/redis";
+import { createUser } from "@nyxia/util/database";
+import { formatDuration } from "@nyxia/util/functions/util";
 import { EmbedBuilder, PermissionsBitField } from "discord.js";
 
 export async function interactionCreate(client, interaction) {

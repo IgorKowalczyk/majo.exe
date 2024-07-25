@@ -1,4 +1,4 @@
-import { globalPermissions } from "@majoexe/config/permissions";
+import { globalPermissions } from "@nyxia/config/permissions";
 import { NextResponse } from "next/server";
 
 export const runtime = "edge";

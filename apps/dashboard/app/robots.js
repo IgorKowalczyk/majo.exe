@@ -1,4 +1,4 @@
-import { dashboardConfig } from "@majoexe/config";
+import { dashboardConfig } from "@nyxia/config";
 
 export default function robots() {
  return {

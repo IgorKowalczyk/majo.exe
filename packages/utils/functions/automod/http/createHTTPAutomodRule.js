@@ -1,5 +1,5 @@
-import { globalConfig } from "@majoexe/config";
-import prismaClient from "@majoexe/database";
+import { globalConfig } from "@nyxia/config";
+import prismaClient from "@nyxia/database";
 import { AutoModerationRuleTriggerType } from "discord-api-types/v10";
 import { syncAutoModRule } from "../../../database";
 

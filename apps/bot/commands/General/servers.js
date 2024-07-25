@@ -1,9 +1,9 @@
-import { formatNumber } from "@majoexe/util/functions/util";
+import { formatNumber } from "@nyxia/util/functions/util";
 import { ApplicationCommandType, EmbedBuilder, ButtonBuilder, ActionRowBuilder, ButtonStyle } from "discord.js";
 
 export default {
  name: "servers",
- description: "🧭 Display the number of servers the Majo.exe is in",
+ description: "🧭 Display the number of servers the Nyxia is in",
  type: ApplicationCommandType.ChatInput,
  cooldown: 3000,
  dm_permission: true,
@@ -17,7 +17,7 @@ export default {
    const inviteLink = `https://discord.com/oauth2/authorize/?permissions=${client.config.permissions}&scope=${client.config.scopes}&client_id=${client.user.id}`;
    const embed = new EmbedBuilder() // Prettier
     .setTitle(`🧭 ${client.user.username} is in ${allGuilds.size} servers!`)
-    .setDescription(`**...thats a lot of servers!** To be exact, <@${client.user.id}> is serving commands to \`${formatNumber(allUsers) || "0"}\` users in \`${formatNumber(allChannels.size)}\` channels across \`${formatNumber(allGuilds.size)}\` servers!\n\n**If you want to invite Majo.exe to your server, you can do so by clicking [here](${inviteLink}).**`)
+    .setDescription(`To be exact, <@${client.user.id}> is serving commands to \`${formatNumber(allUsers) || "no"}\` users in \`${formatNumber(allChannels.size)}\` channels across \`${formatNumber(allGuilds.size)}\` servers!\n\n**If you want to invite Nyxia to your server, you can do so by clicking [here](${inviteLink}).**`)
     .setFooter({
      text: `Requested by ${interaction.member.user.globalName || interaction.member.user.username}`,
      iconURL: interaction.member.user.displayAvatarURL({

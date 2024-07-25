@@ -1,5 +1,5 @@
-import prismaClient from "@majoexe/database";
-import { Logger } from "@majoexe/util/functions/util";
+import prismaClient from "@nyxia/database";
+import { Logger } from "@nyxia/util/functions/util";
 import { NextResponse } from "next/server";
 
 export async function GET(request) {

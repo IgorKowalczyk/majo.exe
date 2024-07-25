@@ -1,4 +1,4 @@
-import { invertColor } from "@majoexe/util/images";
+import { invertColor } from "@nyxia/util/images";
 import { createCanvas } from "@napi-rs/canvas";
 import { Color, isColor } from "coloras";
 import { ApplicationCommandType, ApplicationCommandOptionType, AttachmentBuilder, EmbedBuilder } from "discord.js";

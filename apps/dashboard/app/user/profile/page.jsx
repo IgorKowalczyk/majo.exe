@@ -1,4 +1,4 @@
-import { getFlags } from "@majoexe/util/functions/user";
+import { getFlags } from "@nyxia/util/functions/user";
 import { getSession } from "lib/session";
 import Link from "next/link";
 import { redirect } from "next/navigation";

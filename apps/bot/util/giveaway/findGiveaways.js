@@ -1,4 +1,4 @@
-import prismaClient from "@majoexe/database";
+import prismaClient from "@nyxia/database";
 import { EmbedBuilder } from "discord.js";
 
 /**

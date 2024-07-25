@@ -1,5 +1,5 @@
-import prismaClient from "@majoexe/database";
-import { fillMissingDates } from "@majoexe/util/functions/util";
+import prismaClient from "@nyxia/database";
+import { fillMissingDates } from "@nyxia/util/functions/util";
 import * as Plot from "@observablehq/plot";
 import { ApplicationCommandType, ApplicationCommandOptionType, PermissionFlagsBits, AttachmentBuilder, EmbedBuilder } from "discord.js";
 import jsdom from "jsdom";

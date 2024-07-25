@@ -1,5 +1,5 @@
 /* eslint-disable camelcase */
-import { readDir } from "@majoexe/util/functions/files/readDir.js";
+import { readDir } from "@nyxia/util/functions/files/readDir.js";
 import { PermissionsBitField, Collection } from "discord.js";
 
 /**

@@ -1,4 +1,4 @@
-import { shortenText } from "@majoexe/util/functions/util";
+import { shortenText } from "@nyxia/util/functions/util";
 import { loadImage, createCanvas } from "@napi-rs/canvas";
 
 export async function createUserGuildCard(user, guild) {

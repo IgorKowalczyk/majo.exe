@@ -157,7 +157,7 @@ export function AntiLink({ serverId, enabled, existingActions, existingExemptRol
       </Tooltip>
       <Switch // prettier
        enabled={actions.some((action) => action.type === 1)}
-       onChange={() => setActions(actions.some((action) => action.type === 1) ? actions.filter((action) => action.type !== 1) : [...actions, { type: 1, metadata: { custom_message: "Message blocked due to containing an invite link. Rule added by Majo.exe" } }])}
+       onChange={() => setActions(actions.some((action) => action.type === 1) ? actions.filter((action) => action.type !== 1) : [...actions, { type: 1, metadata: { custom_message: "Message blocked due to containing an invite link from the default filter." } }])}
       />
      </div>
 

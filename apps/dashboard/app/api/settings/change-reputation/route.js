@@ -1,8 +1,8 @@
 /* eslint-disable complexity */
 
-import { setReputation } from "@majoexe/util/database";
-import { getServer, getGuildMember } from "@majoexe/util/functions/guild";
-import { isNumeric } from "@majoexe/util/functions/util";
+import { setReputation } from "@nyxia/util/database";
+import { getServer, getGuildMember } from "@nyxia/util/functions/guild";
+import { isNumeric } from "@nyxia/util/functions/util";
 import { getSession } from "lib/session";
 import { revalidatePath } from "next/cache";
 import { NextResponse } from "next/server";

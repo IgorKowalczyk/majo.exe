@@ -1,6 +1,6 @@
 "use client";
 
-import { formatDate, formatDuration } from "@majoexe/util/functions/util";
+import { formatDate, formatDuration } from "@nyxia/util/functions/util";
 import Link from "next/link";
 import { useMemo } from "react";
 import { ButtonSecondary } from "@/components/Buttons";

@@ -1,8 +1,8 @@
 /* eslint-disable complexity */
 
-import { globalConfig } from "@majoexe/config";
-import prismaClient from "@majoexe/database";
-import { getServer, getGuildMember } from "@majoexe/util/functions/guild";
+import { globalConfig } from "@nyxia/config";
+import prismaClient from "@nyxia/database";
+import { getServer, getGuildMember } from "@nyxia/util/functions/guild";
 import { getSession } from "lib/session";
 import { NextResponse } from "next/server";
 

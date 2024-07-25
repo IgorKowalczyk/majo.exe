@@ -1,9 +1,9 @@
 /* eslint-disable complexity */
 
-import { globalConfig } from "@majoexe/config";
-import prismaClient from "@majoexe/database";
-import { syncAutoModRule } from "@majoexe/util/database";
-import { getGuildMember, getServer } from "@majoexe/util/functions/guild";
+import { globalConfig } from "@nyxia/config";
+import prismaClient from "@nyxia/database";
+import { syncAutoModRule } from "@nyxia/util/database";
+import { getGuildMember, getServer } from "@nyxia/util/functions/guild";
 import { ChannelType } from "discord-api-types/v10";
 import { getSession } from "lib/session";
 import { redirect } from "next/navigation";

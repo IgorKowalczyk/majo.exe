@@ -1,4 +1,4 @@
-import { getServers, isBotInServer } from "@majoexe/util/functions/guild";
+import { getServers, isBotInServer } from "@nyxia/util/functions/guild";
 import clsx from "clsx";
 import { getSession } from "lib/session";
 import Link from "next/link";

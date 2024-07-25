@@ -1,7 +1,7 @@
 /* eslint-disable complexity */
-import prismaClient from "@majoexe/database";
-import { getServer, getGuildPreview, getGuildMember } from "@majoexe/util/functions/guild";
-import { fillMissingDates } from "@majoexe/util/functions/util";
+import prismaClient from "@nyxia/database";
+import { getServer, getGuildPreview, getGuildMember } from "@nyxia/util/functions/guild";
+import { fillMissingDates } from "@nyxia/util/functions/util";
 import clsx from "clsx";
 import { getSession } from "lib/session";
 import Link from "next/link";
@@ -310,14 +310,6 @@ export default async function OverviewPage({ params }) {
         {guildPreview.approximate_presence_count || "0"} online
        </div>
       </div>
-      {/* {guild.publicPage ? (
-       <ButtonSecondary href={`/server/${guild.vanity || serverDownload.id}`} className="mx-auto !flex flex-row whitespace-nowrap sm:ml-auto sm:mr-0" target="_blank" rel="noreferrer noopener">
-        <ArrowTopRightOnSquareIcon className="min-h-5 min-w-5 mr-2 h-5 w-5" aria-hidden="true" role="img" />
-        Server page
-       </ButtonSecondary>
-      ) : (
-       <span className="mx-auto whitespace-nowrap sm:ml-auto sm:mr-0">Powered by Majo.exe</span>
-      )} */}
      </Block>
      <Block>
       <Header4 className="mb-4 !items-start !justify-normal opacity-80">

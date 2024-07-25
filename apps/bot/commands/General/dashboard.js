@@ -28,7 +28,7 @@ export default {
    const action = new ActionRowBuilder().addComponents(contactButton);
 
    const embed = new EmbedBuilder()
-    .setDescription(`Click the button below or [click here](${client.config.url}) to visit our dashboard.\n\n>>> **Useful links:**\n- [View all Majo.exe commands](${client.config.url}/commands)\n- [Majo.exe support server](${client.config.url}/support)`)
+    .setDescription(`Click the button below or [click here](${client.config.url}) to visit our dashboard.\n\n>>> **Useful links:**\n- [View all commands](${client.config.url}/commands)\n- [Support server](${client.config.url}/support)`)
     .setFooter({
      text: `Requested by ${interaction.member.user.globalName || interaction.member.user.username}`,
      iconURL: interaction.member.user.displayAvatarURL({

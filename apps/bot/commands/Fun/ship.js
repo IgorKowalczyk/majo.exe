@@ -1,4 +1,4 @@
-import { percentageBar } from "@majoexe/util/functions/util";
+import { percentageBar } from "@nyxia/util/functions/util";
 import { ApplicationCommandType, ApplicationCommandOptionType, EmbedBuilder } from "discord.js";
 
 export default {

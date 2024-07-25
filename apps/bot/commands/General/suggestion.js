@@ -2,7 +2,7 @@ import { ApplicationCommandType, ActionRowBuilder, ModalBuilder, TextInputBuilde
 
 export default {
  name: "suggestion",
- description: "📝 Send a suggestion to the Majo.exe team",
+ description: "📝 Send a suggestion to the Nyxia team",
  type: ApplicationCommandType.ChatInput,
  cooldown: 10000,
  dm_permission: false,

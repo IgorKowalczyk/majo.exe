@@ -1,6 +1,6 @@
 "use client";
 
-import { isNumeric } from "@majoexe/util/functions/util";
+import { isNumeric } from "@nyxia/util/functions/util";
 import clsx from "clsx";
 import { useState } from "react";
 import { toast } from "sonner";

@@ -1,4 +1,4 @@
-import { formatDuration } from "@majoexe/util/functions/util";
+import { formatDuration } from "@nyxia/util/functions/util";
 import { ApplicationCommandType, ApplicationCommandOptionType, EmbedBuilder, codeBlock, ActionRowBuilder, ButtonBuilder, ButtonStyle, StringSelectMenuBuilder, ComponentType } from "discord.js";
 
 export default {

@@ -1,7 +1,7 @@
 /* eslint-disable complexity */
-import { cacheGet, cacheSet } from "@majoexe/database/redis";
-import { checkReputation, giveReputation, takeReputation, setReputation } from "@majoexe/util/database";
-import { formatDuration } from "@majoexe/util/functions/util";
+import { cacheGet, cacheSet } from "@nyxia/database/redis";
+import { checkReputation, giveReputation, takeReputation, setReputation } from "@nyxia/util/database";
+import { formatDuration } from "@nyxia/util/functions/util";
 import { ApplicationCommandType, ApplicationCommandOptionType, EmbedBuilder, PermissionFlagsBits } from "discord.js";
 
 export default {

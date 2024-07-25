@@ -12,13 +12,12 @@ export default {
    const embed = new EmbedBuilder() // Prettier
     .setTitle(`🤖 About ${client.user.username}`)
     .setDescription(
-     `Majo.exe is a Discord bot made for **Memes, Image editing, Giveaways, Moderation, Anime and even more!** 🎉
-     
-     It is made by the awesome [Majo.exe Team & Contributors](https://github.com/IgorKowalczyk/majo.exe#-contributors) and is **completly open source and free**.
-     
-     **You can find the source code [on Github](https://github.com/igorkowalczyk/majo.exe).** If you want to help us with our journey and you know how to code, you can contribute to the project by forking the repository and making a pull request. **We really appreciate it!** ❤️‍🔥
+     `**Nyxia** is a heavily modified version of [\`Majo.exe\`](https://github.com/IgorKowalczyk/majo.exe) originally developed by [\`Igor Kowalczyk\`](https://github.com/igorkowalczyk) and contributed by [\`these people\`](https://github.com/IgorKowalczyk/majo.exe#-contributors)!
 
-     ${client.config.url ? `**If you want to invite Majo.exe to your server, you can do so by clicking [here](${client.config.url})**` : ""}
+     > - ⭐ Star the repository [\`here\`](https://github.com/tsukiyodevs/nyxia)!
+     > - 💖 Support us [\`here\`](https://github.com/sponsors/tsukiyodevs)!
+     
+     > - 💖 Support Igor and his work [\`here\`](https://github.com/sponsors/igorkowalczyk)!
      `
     )
     .setFooter({

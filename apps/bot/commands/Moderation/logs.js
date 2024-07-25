@@ -1,9 +1,9 @@
-import { fetchLogs, countLogs } from "@majoexe/util/database";
+import { fetchLogs, countLogs } from "@nyxia/util/database";
 import { ApplicationCommandType, ApplicationCommandOptionType, PermissionFlagsBits, EmbedBuilder } from "discord.js";
 
 export default {
  name: "logs",
- description: "📝 View the Majo.exe logs for this server",
+ description: "📝 View the logs for this server",
  type: ApplicationCommandType.ChatInput,
  cooldown: 5000,
  dm_permission: false,

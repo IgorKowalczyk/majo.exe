@@ -1,5 +1,5 @@
-import prismaClient from "@majoexe/database";
-import { getGuildMember, getServer } from "@majoexe/util/functions/guild";
+import prismaClient from "@nyxia/database";
+import { getGuildMember, getServer } from "@nyxia/util/functions/guild";
 import { getSession } from "lib/session";
 import { redirect } from "next/navigation";
 import { notFound } from "next/navigation";

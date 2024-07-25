@@ -1,4 +1,4 @@
-import { dashboardConfig } from "@majoexe/config";
+import { dashboardConfig } from "@nyxia/config";
 import { SideNav } from "@/components/nav/client/SideNav";
 
 export async function generateMetadata({ params }) {

@@ -1,4 +1,4 @@
-import { globalConfig } from "@majoexe/config";
+import { globalConfig } from "@nyxia/config";
 import { isBotInServer } from "./isBotInServer.js";
 
 /**

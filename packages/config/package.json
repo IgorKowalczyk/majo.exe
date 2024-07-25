@@ -1,7 +1,6 @@
 {
- "name": "@majoexe/config",
+ "name": "@nyxia/config",
  "version": "6.0.0",
- "description": "Majo.exe shared config for all packages and projects",
  "exports": {
   ".": "./index.js",
   "./bot": "./configs/bot.js",
@@ -24,19 +23,5 @@
  "engines": {
   "node": ">=20.0.0"
  },
- "repository": {
-  "type": "git",
-  "url": "git+https://github.com/igorkowalczyk/majo.exe.git",
-  "directory": "packages/config"
- },
- "keywords": [
-  "config"
- ],
- "author": "Igor Kowalczyk",
- "license": "MIT",
- "bugs": {
-  "url": "https://github.com/igorkowalczyk/majo.exe/issues"
- },
- "homepage": "https://github.com/igorkowalczyk/majo.exe#readme",
  "packageManager": "pnpm@9.6.0"
 }

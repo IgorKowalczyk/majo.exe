@@ -2,7 +2,7 @@ import { ApplicationCommandType, EmbedBuilder, ActionRowBuilder, ButtonBuilder, 
 
 export default {
  name: "invite",
- description: "🎉 Invite Majo.exe to your server!",
+ description: "🎉 Invite Nyxia to your server!",
  type: ApplicationCommandType.ChatInput,
  cooldown: 3000,
  dm_permission: true,

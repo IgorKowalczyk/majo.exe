@@ -1,9 +1,9 @@
 /* eslint-disable complexity */
 
-import prismaClient from "@majoexe/database";
-import { getGuildMember, getServer } from "@majoexe/util/functions/guild";
-import { getFlags } from "@majoexe/util/functions/user";
-import { formatNumber } from "@majoexe/util/functions/util";
+import prismaClient from "@nyxia/database";
+import { getGuildMember, getServer } from "@nyxia/util/functions/guild";
+import { getFlags } from "@nyxia/util/functions/user";
+import { formatNumber } from "@nyxia/util/functions/util";
 import { getSession } from "lib/session";
 import Link from "next/link";
 import { redirect } from "next/navigation";

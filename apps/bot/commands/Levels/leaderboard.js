@@ -1,5 +1,5 @@
-import prismaClient from "@majoexe/database";
-import { fetchXPSettings } from "@majoexe/util/database";
+import prismaClient from "@nyxia/database";
+import { fetchXPSettings } from "@nyxia/util/database";
 import { ApplicationCommandType, EmbedBuilder, ButtonBuilder, ActionRowBuilder, ButtonStyle, PermissionsBitField } from "discord.js";
 
 export default {

@@ -1,7 +1,6 @@
 {
-  "name": "@majoexe/bot",
+  "name": "@nyxia/bot",
   "version": "6.0.0",
-  "description": "Majo.exe have almost everything - Fun, Memes, Images, Giveaway Moderation, Anime and even more!. Majo.exe serve over 150 commands!",
   "exports": null,
   "type": "module",
   "scripts": {
@@ -16,9 +15,9 @@
   "dependencies": {
     "@discordjs/rest": "2.3.0",
     "@iamtraction/google-translate": "2.0.1",
-    "@majoexe/config": "workspace:*",
-    "@majoexe/database": "workspace:*",
-    "@majoexe/util": "workspace:*",
+    "@nyxia/config": "workspace:*",
+    "@nyxia/database": "workspace:*",
+    "@nyxia/util": "workspace:*",
     "@napi-rs/canvas": "0.1.53",
     "@observablehq/plot": "0.6.15",
     "chalk": "5.3.0",
@@ -45,24 +44,5 @@
   "engines": {
     "node": ">=20.0.0"
   },
-  "repository": {
-    "type": "git",
-    "url": "https://gihub.com/igorkowalczyk/majo.exe",
-    "directory": "apps/bot"
-  },
-  "keywords": [
-    "node",
-    "nodejs",
-    "discord",
-    "discordjs",
-    "discordbot",
-    "majoexe"
-  ],
-  "author": "Igor Kowalczyk",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/igorkowalczyk/majo.exe/issues"
-  },
-  "homepage": "https://github.com/igorkowalczyk/majo.exe#readme",
   "packageManager": "pnpm@9.6.0"
 }

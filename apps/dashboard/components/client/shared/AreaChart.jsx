@@ -1,6 +1,6 @@
 "use client";
 
-import { globalConfig } from "@majoexe/config";
+import { globalConfig } from "@nyxia/config";
 import { Area, CartesianGrid, AreaChart as ReChartsAreaChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
 import { twMerge } from "tailwind-merge";
 import { Icons, iconVariants } from "@/components/Icons";

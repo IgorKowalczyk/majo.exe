@@ -1,8 +1,8 @@
 /* eslint-disable complexity */
 
-import prismaClient from "@majoexe/database";
-import { getGuildMember, getServer } from "@majoexe/util/functions/guild";
-import { fillMissingDates } from "@majoexe/util/functions/util";
+import prismaClient from "@nyxia/database";
+import { getGuildMember, getServer } from "@nyxia/util/functions/guild";
+import { fillMissingDates } from "@nyxia/util/functions/util";
 import { json2csv } from "json-2-csv";
 import { getSession } from "lib/session";
 import { redirect } from "next/navigation";

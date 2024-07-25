@@ -1,7 +1,7 @@
-import { globalConfig } from "@majoexe/config";
-import prismaClient from "@majoexe/database";
-import { getGuildMember, getServer } from "@majoexe/util/functions/guild";
-import { getPermissionNames } from "@majoexe/util/functions/user";
+import { globalConfig } from "@nyxia/config";
+import prismaClient from "@nyxia/database";
+import { getGuildMember, getServer } from "@nyxia/util/functions/guild";
+import { getPermissionNames } from "@nyxia/util/functions/user";
 import { getSession } from "lib/session";
 import { redirect } from "next/navigation";
 import { notFound } from "next/navigation";

@@ -1,4 +1,4 @@
-import { readDir } from "@majoexe/util/functions/files/readDir.js";
+import { readDir } from "@nyxia/util/functions/files/readDir.js";
 import { Collection } from "discord.js";
 
 /**

@@ -8,7 +8,7 @@ function convertCamelCaseToWords(text) {
 
 export default {
  name: "permissions",
- description: "🎛️ Check Majo.exe's permissions in your server",
+ description: "🛠️ Check Nyxia's permissions in your server",
  type: ApplicationCommandType.ChatInput,
  cooldown: 5000,
  dm_permission: false,
@@ -28,7 +28,7 @@ export default {
    const embed = new EmbedBuilder()
     .setColor(guildSettings.embedColor || client.config.defaultColor)
     .setTimestamp()
-    .setTitle(`🎛️ Permissions in ${interaction.guild.name}`)
+    .setTitle(`🛠️ Permissions in ${interaction.guild.name}`)
     .setDescription(`> To work properly, ${client.user} needs **all** of the following permissions:\n${codeBlock(permissionsText.join("\n"))}`)
     .setTimestamp()
     .setFooter({
