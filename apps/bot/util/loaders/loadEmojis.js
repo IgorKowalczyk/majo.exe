@@ -40,6 +40,7 @@ const emojiDownloadList = {
  slash_commands: "https://cdn.discordapp.com/emojis/963333541565968384.png",
  mention: "https://cdn.discordapp.com/emojis/963333541259792384.png",
  settings: "https://cdn.discordapp.com/emojis/963333541716963348.png",
+ github: "https://cdn.discordapp.com/emojis/1265996675613200489.png"
 };
 
 /**
