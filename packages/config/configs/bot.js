@@ -25,8 +25,13 @@ config.donate = {
   {
    name: "Github Sponsors",
    url: "https://github.com/sponsors/tsukiyodevs",
-   icon: "🔗",
+   icon: "<:github:1265997148907110400>",
   },
+  {
+    name: "Ko-Fi",
+    url: "https://ko-fi.com/tsukiyodev",
+    icon: "<:kofi:1265997485675905034>",
+   },
  ],
 };
 
@@ -38,7 +43,7 @@ config.emojis = {
  categories: [
   {
    name: "general",
-   emoji: "🧱",
+   emoji: "🚀",
   },
   {
    name: "moderation",
@@ -58,7 +63,7 @@ config.emojis = {
   },
   {
    name: "reputation",
-   emoji: "👍",
+   emoji: "🌟",
   },
   {
    name: "image",
