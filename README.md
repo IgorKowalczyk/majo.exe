@@ -8,6 +8,6 @@ Nyxia is a highly modified version of [Majo.exe](https://github.com/IgorKowalczy
 > TsukiyoDev Team and fellow devs will not provide assistance with self hosting. This repo exists for the sake of transparency with the code and for others to contribute to the bot
 
 
-> [!ERROR]
+> [!IMPORTANT]
 > Nyxia is not modified with other people being able to self host on their own servers in mind, so if you want to then give it a shot I guess
 <!-- prettier-ignore-end -->
