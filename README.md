@@ -15,7 +15,7 @@ You can contact us via our support server or by shooting us an email at **tsukiy
     - [**Support**](https://github.com/sponsors/igorkowalczyk/)
 
 - [**Markdown Guide**](https://www.markdownguide.org/)
-    - [**Markdown Guide (GitHub)**](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax)
+    - [**GitHub**](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax)
 
 - [**TsukiyoDev Team homepage**](https://tsukiyodevteam.xyz/)
     - [**Service Status**](https://status.tsukiyodevteam.xyz/)
