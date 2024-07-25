@@ -1,4 +1,4 @@
-![Header](/apps/dashboard/public/assets/Nyxia.png)
+![Header](/apps/dashboard/public/assets/images/Nyxia.png)
 
 ## 🌸 Nyxia - Your servers companion
 Nyxia is a highly modified version of [Majo.exe](https://github.com/IgorKowalczyk/majo.exe)!
