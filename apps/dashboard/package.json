@@ -7,11 +7,7 @@
     "build": "next build",
     "docker:build": "cd ../.. & docker build -t majoexe/dashboard:latest -f ./apps/dashboard/Dockerfile .",
     "deploy": "pnpm run build && pnpm run start",
-    "format": "prettier . --write --cache --ignore-unknown --plugin=prettier-plugin-tailwindcss",
-    "format:check": "prettier . --check --cache",
-    "analyze": "ANALYZE=true next build",
-    "lint": "next lint",
-    "lint:fix": "next lint --fix"
+    "analyze": "ANALYZE=true next build"
   },
   "dependencies": {
     "@headlessui/react": "2.1.2",
@@ -58,9 +54,7 @@
     "@prisma/nextjs-monorepo-workaround-plugin": "5.17.0",
     "@tailwindcss/typography": "0.5.13",
     "autoprefixer": "10.4.19",
-    "eslint-config-next": "14.2.5",
     "postcss": "8.4.40",
-    "prettier-plugin-tailwindcss": "0.6.5",
     "tailwind-gradient-mask-image": "1.2.0",
     "tailwind-merge": "2.4.0",
     "tailwindcss": "3.4.6",

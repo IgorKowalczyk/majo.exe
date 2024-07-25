@@ -1,4 +1,4 @@
-/* eslint-disable complexity */
+
 import { cacheGet, cacheSet } from "@nyxia/database/redis";
 import { checkReputation, giveReputation, takeReputation, setReputation } from "@nyxia/util/database";
 import { formatDuration } from "@nyxia/util/functions/util";

@@ -1,4 +1,4 @@
-/* eslint-disable complexity */
+
 import { dashboardConfig } from "@nyxia/config";
 import prismaClient from "@nyxia/database";
 import { getServer, getGuildPreview } from "@nyxia/util/functions/guild";

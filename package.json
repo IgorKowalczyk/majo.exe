@@ -9,8 +9,6 @@
     "build:force": "turbo run build:force",
     "deploy": "turbo run deploy",
     "analyze": "turbo run analyze",
-    "lint": "turbo run lint",
-    "lint:fix": "turbo run lint:fix",
     "docker:all": "docker compose -f docker-compose.yaml up -d",
     "docker:build": "turbo run docker:build",
     "docker:build:bot": "docker build -t majoexe/bot:latest -f ./apps/bot/Dockerfile .",
@@ -32,13 +30,6 @@
     "dotenv-cli": "7.4.2",
     "mongodb": "^6.8.0",
     "turbo": "2.0.9"
-  },
-  "devDependencies": {
-    "@igorkowalczyk/eslint-config": "2.2.0",
-    "@igorkowalczyk/prettier-config": "2.2.0",
-    "eslint": "8.57.0",
-    "eslint-plugin-turbo": "2.0.9",
-    "prettier": "3.3.3"
   },
   "engines": {
     "node": ">=20.0.0"

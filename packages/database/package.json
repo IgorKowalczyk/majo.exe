@@ -13,10 +13,6 @@
     "prisma:format": "prisma format",
     "prisma:push": "prisma db push",
     "prisma:seed": "node ./src/seed.js",
-    "format": "prettier . --write --cache --ignore-unknown --plugin=prettier-plugin-prisma",
-    "format:check": "prettier . --check --cache",
-    "lint": "eslint .",
-    "lint:fix": "eslint . --fix",
     "prebuild": "pnpm run prisma:generate",
     "studio": "prisma studio"
   },
@@ -30,9 +26,6 @@
     "prisma": "5.17.0",
     "prisma-redis-middleware": "4.8.0",
     "ws": "8.18.0"
-  },
-  "devDependencies": {
-    "prettier-plugin-prisma": "5.0.0"
   },
   "engines": {
     "node": ">=20.0.0"

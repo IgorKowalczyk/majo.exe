@@ -1,4 +1,4 @@
-/* eslint-disable complexity */
+
 
 import { clearWarns, listWarnings, warnUser, removeWarning } from "@nyxia/util/database";
 import { ApplicationCommandType, ApplicationCommandOptionType, PermissionsBitField, EmbedBuilder, codeBlock, PermissionFlagsBits } from "discord.js";

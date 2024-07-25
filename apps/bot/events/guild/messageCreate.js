@@ -1,4 +1,4 @@
-/* eslint-disable complexity */
+
 
 import prismaClient from "@nyxia/database";
 import { cacheGet, cacheSet } from "@nyxia/database/redis";

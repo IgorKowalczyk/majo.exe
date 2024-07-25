@@ -1,4 +1,4 @@
-/* eslint-disable complexity */
+
 "use client";
 
 import { formatDate, formatDuration } from "@nyxia/util/functions/util";

@@ -1,4 +1,4 @@
-/* eslint-disable complexity */
+
 import { ApplicationCommandType, ApplicationCommandOptionType, EmbedBuilder, PermissionsBitField, codeBlock, PermissionFlagsBits } from "discord.js";
 import isURL from "validator/lib/isURL.js";
 

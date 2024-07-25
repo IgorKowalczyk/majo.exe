@@ -1,4 +1,4 @@
-/* eslint-disable complexity */
+
 import { ApplicationCommandType, ApplicationCommandOptionType, EmbedBuilder, codeBlock, ActionRowBuilder, ButtonBuilder, ButtonStyle } from "discord.js";
 
 export default {

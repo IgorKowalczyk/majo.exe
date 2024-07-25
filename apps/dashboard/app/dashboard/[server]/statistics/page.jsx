@@ -1,4 +1,4 @@
-/* eslint-disable complexity */
+
 
 import prismaClient from "@nyxia/database";
 import { getGuildMember, getServer } from "@nyxia/util/functions/guild";

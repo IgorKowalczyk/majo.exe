@@ -1,4 +1,4 @@
-/* eslint-disable complexity */
+
 import prismaClient from "@nyxia/database";
 import { getServer, getGuildPreview, getGuildMember } from "@nyxia/util/functions/guild";
 import { fillMissingDates } from "@nyxia/util/functions/util";

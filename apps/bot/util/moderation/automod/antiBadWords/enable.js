@@ -1,4 +1,4 @@
-/* eslint-disable complexity */
+
 
 import { createAutoModRule, syncAutoModRule } from "@nyxia/util/database";
 import { ChannelType, AutoModerationRuleEventType, AutoModerationRuleKeywordPresetType, AutoModerationActionType, AutoModerationRuleTriggerType, EmbedBuilder, PermissionsBitField, codeBlock } from "discord.js";

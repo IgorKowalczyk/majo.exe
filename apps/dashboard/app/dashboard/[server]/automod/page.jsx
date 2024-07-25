@@ -1,4 +1,4 @@
-/* eslint-disable complexity */
+
 
 import { globalConfig } from "@nyxia/config";
 import prismaClient from "@nyxia/database";

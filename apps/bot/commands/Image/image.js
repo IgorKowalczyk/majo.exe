@@ -1,4 +1,4 @@
-/* eslint-disable complexity */
+
 import { isColor } from "coloras";
 import { ApplicationCommandType, ApplicationCommandOptionType, AttachmentBuilder, EmbedBuilder } from "discord.js";
 import sharp from "sharp";

@@ -1,4 +1,4 @@
-/* eslint-disable complexity */
+
 
 import { setReputation } from "@nyxia/util/database";
 import { getServer, getGuildMember } from "@nyxia/util/functions/guild";
