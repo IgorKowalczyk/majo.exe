@@ -21,7 +21,7 @@ You can contact us via our support server or by shooting us an email at **tsukiy
     - [**Service Status**](https://status.tsukiyodevteam.xyz/)
     - [**Support us**](https://github.com/sponsors/tsukiyodevs/)
     - [**Ko-Fi**](https://ko-fi.com/tsukiyodevs)
-    - [**Support Server**](https://discord.gg/)
+    - [**Support Server**](https://discord.gg/sJRAsZaYry)
 
 - [**Clippy Bot homepage**](https://clippydev.xyz/)
  
