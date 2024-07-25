@@ -9,7 +9,7 @@ import avatar04 from "public/assets/avatars/04.webp";
 import avatar05 from "public/assets/avatars/05.webp";
 import avatar06 from "public/assets/avatars/06.webp";
 import avatar07 from "public/assets/avatars/07.webp";
-import ray from "public/assets/background.png";
+import ray from "public/assets/ray.png";
 import tada from "public/assets/tada.svg";
 import tadaAnimated from "public/assets/tada_animated.gif";
 import Balancer from "react-wrap-balancer";
