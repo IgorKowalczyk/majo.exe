@@ -1,21 +1,23 @@
 import { readdirSync, statSync } from "node:fs";
 import path from "node:path";
+import { pathToFileURL } from "node:url";
 
 /**
- * Read all files with specified extensions in a directory, optionally including subdirectories
+ * Read all files with specified extensions in a directory, optionally including subdirectories,
+ * and format paths as file:// URLs.
  *
  * @param {string} dir - The directory to read
  * @param {boolean} [recursive=false] - Whether to include subdirectories
  * @param {string|string[]} [extensions=['.js']] - The file extension(s) to include
- * @returns {string[]} - The files in the directory with the specified extensions
+ * @returns {string[]} - The files in the directory with the specified extensions formatted as file:// URLs
  * @example
  * const jsFiles = readDir("./src", true, '.js');
  * console.log(jsFiles);
- * // => [ "./src/index.js", "./src/lib/util.js", ... ]
+ * // => [ "file:///C:/path/to/src/index.js", "file:///C:/path/to/src/lib/util.js", ... ]
  *
  * const cssAndJsFiles = readDir("./src", true, ['.js', '.css']);
  * console.log(cssAndJsFiles);
- * // => [ "./src/index.js", "./src/style.css", "./src/lib/util.js", ... ]
+ * // => [ "file:///C:/path/to/src/index.js", "file:///C:/path/to/src/style.css", "file:///C:/path/to/src/lib/util.js", ... ]
  */
 export function readDir(dir, recursive = false, extensions = [".js"]) {
  if (typeof extensions === "string") {
@@ -31,7 +33,7 @@ export function readDir(dir, recursive = false, extensions = [".js"]) {
   if (stat.isDirectory() && recursive) {
    directories = directories.concat(readDir(filePath, true, extensions));
   } else if (stat.isFile() && extensions.some((ext) => filePath.endsWith(ext))) {
-   directories.push(filePath.split(path.sep).join("/"));
+   directories.push(pathToFileURL(filePath).href);
   }
  });
 
