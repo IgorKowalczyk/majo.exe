@@ -44,7 +44,7 @@ export function Footer() {
          <Link href="https://github.com/IgorKowalczyk/majo.exe" className="font-semibold text-neutral-200 hover:underline">
           Majo.exe
          </Link>
-         originally created by
+         {" "}originally created by{" "}
          <Link href="https://github.com/IgorKowalczyk" className="font-semibold text-neutral-200 hover:underline">
           Igor Kowalczyk
          </Link>
