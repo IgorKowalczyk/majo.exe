@@ -41,6 +41,7 @@ export function EnablePublicDashboard({ enabled, serverId, vanityURL }) {
      id: loading,
     });
    } catch (e) {
+    console.log(e);
     return toast.error("Something went wrong", {
      id: loading,
     });
@@ -61,7 +62,7 @@ export function EnablePublicDashboard({ enabled, serverId, vanityURL }) {
   }
  };
 
- const changeVanityText = async (e) => {
+ const changeVanityText = (e) => {
   setVanity(e.target.value);
   if (e.target.value.length > 0) {
    if (!e.target.value.match(/^[a-zA-Z0-9]+$/)) {
@@ -91,7 +92,7 @@ export function EnablePublicDashboard({ enabled, serverId, vanityURL }) {
    },
    body: JSON.stringify({
     id: serverId,
-    vanity: vanity,
+    vanity,
    }),
   });
 
@@ -104,6 +105,7 @@ export function EnablePublicDashboard({ enabled, serverId, vanityURL }) {
      id: loading,
     });
    } catch (e) {
+    console.log(e);
     return toast.error("Something went wrong", {
      id: loading,
     });

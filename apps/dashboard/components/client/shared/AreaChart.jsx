@@ -14,7 +14,7 @@ export default function AreaChart({ data = [], categories = [], index, valueForm
 
  return (
   <div className={twMerge("h-80 w-full", className)} {...other}>
-   <ResponsiveContainer className="h-full w-full">
+   <ResponsiveContainer className="size-full">
     {data && data.length > 0 ? (
      <ReChartsAreaChart data={data}>
       {showGrid && <CartesianGrid className="stroke-gray-600 stroke-1" strokeDasharray="3 3" horizontal={true} vertical={false} />}
@@ -63,15 +63,15 @@ export default function AreaChart({ data = [], categories = [], index, valueForm
 const ChartTooltip = ({ active, payload, label, categoryColors, valueFormatter }) => {
  if (active && payload && categoryColors) {
   return (
-   <div className="bg-background-secondary rounded-lg border border-neutral-800 text-white shadow-lg">
+   <div className="rounded-lg border border-neutral-800 bg-background-secondary text-white shadow-lg">
     <div className="border-b border-neutral-800 px-4 py-2">
      <p className="font-medium text-white">{label}</p>
     </div>
     <div className="space-y-1 px-4 py-2">
-     {payload.map(({ value, name }, idx) => (
-      <div key={`id-${idx}`} className="flex items-center justify-between space-x-2">
+     {payload.map(({ value, name }) => (
+      <div key={`chart-tooltip-${name}-${value}`} className="flex items-center justify-between space-x-2">
        <div className="flex items-center space-x-2">
-        <span className="bg-accent-primary h-4 min-h-4 w-4 min-w-4 shrink-0 rounded-full border border-neutral-800 shadow-md" />
+        <span className="size-4 min-h-4 min-w-4 shrink-0 rounded-full border border-neutral-800 bg-accent-primary shadow-md" />
         <p className="whitespace-nowrap text-right text-white">{name}</p>
        </div>
        <p className="whitespace-nowrap text-right font-medium tabular-nums text-white">{valueFormatter(value)}</p>

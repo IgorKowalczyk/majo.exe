@@ -5,8 +5,8 @@ import { NextResponse } from "next/server";
 
 export async function DELETE(request, { params }) {
  try {
-  const serverId = params.serverId;
-  const warnId = params.warnId;
+  const { serverId } = params;
+  const { warnId } = params;
   const start = Date.now();
 
   if (!serverId) {

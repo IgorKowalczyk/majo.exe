@@ -28,7 +28,7 @@ export function Footer() {
       <div className="flex items-center space-x-5">
        <Link href="/">
         <p className="flex cursor-pointer items-center text-2xl font-semibold">
-         <Image className="mr-2 h-9 min-h-9 w-9 min-w-9 rounded-full" src={dashboardConfig.logo} alt={`${dashboardConfig.title} logo`} width={36} height={36} />
+         <Image className="mr-2 size-9 min-h-9 min-w-9 rounded-full" src={dashboardConfig.logo} alt={`${dashboardConfig.title} logo`} width={36} height={36} />
          {dashboardConfig.title}
         </p>
        </Link>
@@ -40,7 +40,7 @@ export function Footer() {
       {/* =================================================== */}
       {!process.env.NEXT_PUBLIC_IS_HOSTED_BY_CREATOR ? (
        <div className="mt-3 text-neutral-300">
-        <Link target="_blank" href="https://majoexe.xyz" className="text-accent-primary font-semibold hover:opacity-80">
+        <Link target="_blank" href="https://majoexe.xyz" className="font-semibold text-accent-primary hover:opacity-80">
          🔥 Powered by Majo.exe!
         </Link>
         <div className="mt-2">
@@ -50,7 +50,7 @@ export function Footer() {
          </Link>
          .
          <ButtonPrimary className="mt-3 w-fit" href="https://majoexe.xyz/invite">
-          <Icons.sparkles className="mr-2 h-5 w-5" />
+          <Icons.sparkles className="mr-2 size-5" />
           Invite original Majo.exe
          </ButtonPrimary>
         </div>

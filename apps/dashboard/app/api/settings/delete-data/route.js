@@ -1,5 +1,3 @@
-/* eslint-disable complexity */
-
 import prismaClient from "@majoexe/database";
 import { getServer, getGuildMember } from "@majoexe/util/functions/guild";
 import { getSession } from "lib/session";
@@ -144,6 +142,7 @@ export async function POST(request) {
    }
   );
  } catch (error) {
+  console.error(error);
   return NextResponse.json(
    {
     error: "Internal Server Error",

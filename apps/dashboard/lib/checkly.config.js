@@ -11,7 +11,7 @@ const dimensions = [
  { width: 600, height: 800, name: "small" },
 ];
 
-test.describe("emulate different viewport sizes", async () => {
+test.describe("emulate different viewport sizes", () => {
  for (const { name, width, height } of dimensions) {
   test("take screenshot on " + name + " viewport", async ({ browser }) => {
    for (const endpoint of endpoints) {

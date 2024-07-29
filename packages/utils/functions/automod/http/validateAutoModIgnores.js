@@ -9,7 +9,7 @@ import { ChannelType } from "discord-api-types/v10";
  * @param {string[]} exemptChannels Channels to exempt
  * @returns {Promise<{error: string, code: number}>} Error message and code
  */
-export async function validateAutoModIgnores(allChannels, allRoles, exemptRoles, exemptChannels) {
+export function validateAutoModIgnores(allChannels, allRoles, exemptRoles, exemptChannels) {
  if (exemptChannels.length > 50) {
   return {
    error: "You can only have 50 ignored channels at once. Please remove some of the existing ignored channels before adding this one.",

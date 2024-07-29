@@ -11,7 +11,7 @@ export function AddReaction({ reaction, countL = 2 }) {
 
  const setIt = () => {
   toast(!clicked ? "Joined the giveaway!" : "Left the giveaway!", {
-   icon: <Image src={reaction} alt="Reaction emoji" quality={95} width={16} height={16} className="h-4 min-h-4 w-4 min-w-4" />,
+   icon: <Image src={reaction} alt="Reaction emoji" quality={95} width={16} height={16} className="size-4 min-h-4 min-w-4" />,
   });
   setClicked(!clicked);
   setCount(clicked ? count - 1 : count + 1);
@@ -28,7 +28,7 @@ export function AddReaction({ reaction, countL = 2 }) {
    )}
    onClick={() => setIt()}
   >
-   <Image src={reaction} alt="Reaction emoji" quality={100} width={16} height={16} className="h-4 min-h-4 w-4 min-w-4" />
+   <Image src={reaction} alt="Reaction emoji" quality={100} width={16} height={16} className="size-4 min-h-4 min-w-4" />
    <span className="font-bold">{count}</span>
   </div>
  );

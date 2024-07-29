@@ -3,10 +3,10 @@
 import { Area, AreaChart as ReChartsAreaChart, ResponsiveContainer, XAxis } from "recharts";
 import { Icons, iconVariants } from "@/components/Icons";
 
-export async function SparkLineChart({ data = [], categories = [], index }) {
+export function SparkLineChart({ data = [], categories = [], index }) {
  return (
   <div className="h-10 w-36">
-   <ResponsiveContainer className="h-full w-full">
+   <ResponsiveContainer className="size-full">
     {data.length ? (
      <ReChartsAreaChart data={data}>
       <XAxis hide dataKey={index} />

@@ -99,11 +99,10 @@ export async function GET() {
    );
   }
 
-  /* eslint-disable func-names, space-before-function-paren */
+  /* eslint-disable func-names, @stylistic/space-before-function-paren */
   BigInt.prototype.toJSON = function () {
    return this.toString();
   };
-  /* eslint-enable func-names, space-before-function-paren */
 
   return new Response(JSON.stringify(user), {
    headers: {
@@ -115,6 +114,7 @@ export async function GET() {
    },
   });
  } catch (err) {
+  console.error(err);
   return NextResponse.json(
    {
     error: "Internal Server Error",

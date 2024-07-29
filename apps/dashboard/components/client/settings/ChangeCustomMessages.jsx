@@ -50,6 +50,7 @@ export function ChangeMessages({ serverId, enabled, title, description, existing
      id: loading,
     });
    } catch (e) {
+    console.log(e);
     return toast.error("Something went wrong", {
      id: loading,
     });
@@ -116,7 +117,7 @@ export function ChangeMessages({ serverId, enabled, title, description, existing
       "transition-all duration-200 ease-in-out"
      )}
     >
-     <div className="border-accent-primary bg-accent-primary/10 my-4 flex flex-row flex-wrap items-start overflow-hidden whitespace-nowrap rounded-md border p-4 duration-200 will-change-transform">
+     <div className="my-4 flex flex-row flex-wrap items-start overflow-hidden whitespace-nowrap rounded-md border border-accent-primary bg-accent-primary/10 p-4 duration-200 will-change-transform">
       <span className="mr-1 flex flex-row items-center whitespace-nowrap font-bold">
        <Icons.info className={iconVariants({ variant: "normal", className: "stroke-accent-primary mr-1" })} />
        Note:
@@ -190,7 +191,7 @@ export function ChangeMessages({ serverId, enabled, title, description, existing
         <Textarea type="text" value={newDescription} onChange={(e) => setNewDescription(e.target.value)} disabled={!isEnabled || loading || !messageChannel} placeholder={defaultMessages.description} className="!max-w-96 font-normal" />
        </div>
 
-       <div className="border-accent-primary bg-accent-primary/10 my-4 w-fit whitespace-nowrap rounded-md border p-4">
+       <div className="my-4 w-fit whitespace-nowrap rounded-md border border-accent-primary bg-accent-primary/10 p-4">
         <div className="mr-1 flex flex-row items-center whitespace-nowrap font-bold">
          <Icons.info className={iconVariants({ variant: "normal", className: "stroke-accent-primary mr-1" })} />
          Note:

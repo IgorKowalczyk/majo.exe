@@ -74,4 +74,5 @@ await upsertCategoriesAndCommands(categoriesData, commandsData);
 const perf = Math.floor((performance.now() - time) / 1000);
 Logger("ready", `Seeded database in ${perf}s`);
 
-process.exit(0);
+/* eslint-disable no-process-exit */
+//process.exit(0);

@@ -13,12 +13,13 @@ export default function Loading() {
    <div className="mt-4 gap-4 overflow-auto">
     <div className="mb-4 flex items-center justify-center gap-2">
      <InputWithIcon placeholder="Search..." icon={<Icons.search className={iconVariants({ variant: "normal", className: "text-white/50" })} />} disabled={true} />
-     <span className="hover:border-button-primary flex h-[41.6px] cursor-pointer items-center justify-center rounded-md border border-neutral-800 px-3 py-2 text-white duration-200">
+     <span className="flex h-[41.6px] cursor-pointer items-center justify-center rounded-md border border-neutral-800 px-3 py-2 text-white duration-200 hover:border-button-primary">
       <Icons.refresh className={iconVariants({ variant: "normal", className: "stroke-accent-primary animate-spin" })} />
      </span>
     </div>
     {[...Array(5)].map((_, i) => (
-     <GraphSkeleton className="my-4 !h-[81.6px]" key={i} />
+     // eslint-disable-next-line @eslint-react/no-array-index-key
+     <GraphSkeleton className="my-4 !h-[81.6px]" key={`skeleton-${i}`} />
     ))}
    </div>
   </>

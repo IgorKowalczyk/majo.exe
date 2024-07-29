@@ -22,7 +22,6 @@ export function DiscordCommands({ commands, categories }) {
   }
 
   setFilteredCategories(categories);
-  // eslint-disable-next-line react-hooks/exhaustive-deps
  }, [categories]);
 
  useEffect(() => {
@@ -37,7 +36,8 @@ export function DiscordCommands({ commands, categories }) {
     <div className="mt-8 flex flex-wrap gap-2">
      {Array.from({ length: 8 }).map((_, i) => (
       <TextSkeleton
-       key={i}
+       // eslint-disable-next-line @eslint-react/no-array-index-key
+       key={`command-skeleton-${i}`}
        className="!h-[42px]"
        style={{
         width: `${Math.floor(Math.random() * (150 - 64 + 1) + 64)}px !important`,
@@ -78,11 +78,11 @@ export function DiscordCommands({ commands, categories }) {
        }
       }}
      >
-      <div className="relative h-5 w-5">
+      <div className="relative size-5">
        <Icons.check
         className={iconVariants({
          variant: "normal",
-         className: clsx("absolute inset-0 h-full w-full duration-200", {
+         className: clsx("absolute inset-0 size-full duration-200", {
           "text-accent-primary -ml-1 scale-100": filteredCategories?.includes(category),
           "scale-0": !filteredCategories?.includes(category),
          }),
@@ -91,7 +91,7 @@ export function DiscordCommands({ commands, categories }) {
        <Icons.close
         className={iconVariants({
          variant: "normal",
-         className: clsx("absolute inset-0 h-full w-full duration-200", {
+         className: clsx("absolute inset-0 size-full duration-200", {
           "-ml-1 scale-100 text-red-400": !filteredCategories?.includes(category),
           "scale-0": filteredCategories?.includes(category),
          }),
@@ -123,7 +123,7 @@ export function DiscordCommands({ commands, categories }) {
         {filteredCommands
          .filter((command) => command.categoryName === category.name)
          .map((command) => (
-          <div key={command.name} className="bg-background-navbar my-4 w-full rounded-md border border-neutral-800 px-6 py-4">
+          <div key={command.name} className="my-4 w-full rounded-md border border-neutral-800 bg-background-navbar px-6 py-4">
            <div className="flex flex-col items-start gap-2">
             <div className="flex items-center">
              <span className="font-bold">/{command.name} </span>

@@ -45,10 +45,10 @@ const nextConfig = {
   }
   return config;
  },
- async redirects() {
+ redirects() {
   return dashboardRedirects;
  },
- async headers() {
+ headers() {
   return dashboardHeaders;
  },
 };

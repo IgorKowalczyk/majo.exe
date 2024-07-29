@@ -29,8 +29,8 @@ export default function Faq() {
 
  return (
   <div className="mx-auto mt-9 w-full max-w-xl divide-y divide-neutral-800 rounded-xl">
-   {items.map((item, index) => (
-    <Disclosure as="div" key={index} className="p-6 py-3">
+   {items.map((item) => (
+    <Disclosure as="div" key={`faq-${item.question}`} className="p-6 py-3">
      {({ open }) => (
       <>
        <DisclosureButton className="group flex w-full items-center justify-between">

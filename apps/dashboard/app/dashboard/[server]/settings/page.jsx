@@ -69,7 +69,7 @@ export default async function SettingsPage({ params }) {
        return (
         <div key={role.id} className="flex items-center justify-start gap-2 rounded-full border border-neutral-700 px-2 py-1">
          <div
-          className="h-4 min-h-4 w-4 min-w-4 rounded-full"
+          className="size-4 min-h-4 min-w-4 rounded-full"
           style={{
            backgroundColor: role.color ? `#${role.color.toString(16)}` : "#000000",
           }}
@@ -77,7 +77,7 @@ export default async function SettingsPage({ params }) {
          <p className="text-neutral-100">{role.name}</p>
         </div>
        );
-      }
+      } else return null;
      })}
     </div>
    </Block>
@@ -119,7 +119,7 @@ export default async function SettingsPage({ params }) {
 
     <EnablePublicDashboard enabled={Boolean(guild.publicPage)} serverId={serverDownload.id} vanityURL={guild.vanity || guild.guildId} />
 
-    <div className="border-accent-primary bg-accent-primary/10 my-4 flex flex-row flex-wrap items-start whitespace-nowrap rounded-md border p-4">
+    <div className="my-4 flex flex-row flex-wrap items-start whitespace-nowrap rounded-md border border-accent-primary bg-accent-primary/10 p-4">
      <span className="mr-1 flex flex-row items-center whitespace-nowrap font-bold">
       <Icons.info className={iconVariants({ variant: "normal", className: "stroke-accent-primary mr-1" })} />
       Note:

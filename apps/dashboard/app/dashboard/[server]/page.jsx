@@ -1,4 +1,3 @@
-/* eslint-disable complexity */
 import prismaClient from "@majoexe/database";
 import { getServer, getGuildPreview, getGuildMember } from "@majoexe/util/functions/guild";
 import { fillMissingDates } from "@majoexe/util/functions/util";
@@ -135,7 +134,7 @@ export default async function OverviewPage({ params }) {
  return (
   <>
    <div className="mb-4 flex flex-col items-center justify-normal gap-4 sm:flex-row">
-    {guildPreview.icon ? <Image src={`https://cdn.discordapp.com/icons/${guildPreview.id}/${guildPreview.icon}.${guildPreview.icon.startsWith("a_") ? "gif" : "png"}`} alt={guildPreview.name} quality={95} width={64} height={64} className="h-16 min-h-16 w-16 min-w-16 rounded-full" /> : <div className="bg-button-secondary h-16 min-h-16 w-16 min-w-16 rounded-full" />}
+    {guildPreview.icon ? <Image src={`https://cdn.discordapp.com/icons/${guildPreview.id}/${guildPreview.icon}.${guildPreview.icon.startsWith("a_") ? "gif" : "png"}`} alt={guildPreview.name} quality={95} width={64} height={64} className="size-16 min-h-16 min-w-16 rounded-full" /> : <div className="size-16 min-h-16 min-w-16 rounded-full bg-button-secondary" />}
     <div className="flex flex-col justify-center text-center sm:ml-4 sm:justify-start sm:text-left">
      <Header1 className="mb-0">{guildPreview.name || "Unnamed server"}</Header1>
      <Header5 className="mt-2 text-center opacity-60 sm:text-left">
@@ -145,14 +144,14 @@ export default async function OverviewPage({ params }) {
    </div>
 
    <div className="mb-4 grid grid-cols-1 gap-0 md:grid-cols-1 md:gap-4 lg:grid-cols-2 xl:grid-cols-3">
-    <Link href={`/dashboard/${serverDownload.id}/statistics`} className="bg-background-secondary mt-4 cursor-pointer overflow-auto rounded-lg border border-neutral-800 p-4">
+    <Link href={`/dashboard/${serverDownload.id}/statistics`} className="mt-4 cursor-pointer overflow-auto rounded-lg border border-neutral-800 bg-background-secondary p-4">
      <div className="flex flex-row items-center justify-between">
       <div className="flex flex-row items-center gap-4">
        <Icons.userAdd className={iconVariants({ variant: "extraLarge" })} />
        <div className="flex flex-col">
         <Header4 className="!justify-start whitespace-nowrap">
          New members
-         <span className="bg-accent-primary rounded-md px-2 text-sm font-normal text-white">+{newMembers}</span>
+         <span className="rounded-md bg-accent-primary px-2 text-sm font-normal text-white">+{newMembers}</span>
         </Header4>
         <p className="text-sm text-gray-400">Amount of new members that joined your server in the last 7 days.</p>
        </div>
@@ -163,14 +162,14 @@ export default async function OverviewPage({ params }) {
      </div>
     </Link>
 
-    <Link href={`/dashboard/${serverDownload.id}/statistics`} className="bg-background-secondary mt-4 cursor-pointer overflow-auto rounded-lg border border-neutral-800 p-4">
+    <Link href={`/dashboard/${serverDownload.id}/statistics`} className="mt-4 cursor-pointer overflow-auto rounded-lg border border-neutral-800 bg-background-secondary p-4">
      <div className="flex flex-row items-center justify-between">
       <div className="flex flex-row items-center gap-4">
        <Icons.commentAdd className={iconVariants({ variant: "extraLarge" })} />
        <div className="flex flex-col">
         <Header4 className="!justify-start whitespace-nowrap">
          Messages sent
-         <span className="bg-accent-primary rounded-md px-2 text-sm font-normal text-white">+{newMessages}</span>
+         <span className="rounded-md bg-accent-primary px-2 text-sm font-normal text-white">+{newMessages}</span>
         </Header4>
         <p className="text-sm text-gray-400">Amount of messages that were sent in your server in the last 7 days.</p>
        </div>
@@ -181,14 +180,14 @@ export default async function OverviewPage({ params }) {
      </div>
     </Link>
 
-    <Link href={`/dashboard/${serverDownload.id}/statistics`} className="bg-background-secondary mt-4 cursor-pointer overflow-auto rounded-lg border border-neutral-800 p-4">
+    <Link href={`/dashboard/${serverDownload.id}/statistics`} className="mt-4 cursor-pointer overflow-auto rounded-lg border border-neutral-800 bg-background-secondary p-4">
      <div className="flex flex-row items-center justify-between">
       <div className="flex flex-row items-center gap-4">
        <Icons.userMinus className={iconVariants({ variant: "extraLarge" })} />
        <div className="flex flex-col">
         <Header4 className="!justify-start whitespace-nowrap">
          Members left
-         <span className="bg-accent-primary rounded-md px-2 text-sm font-normal text-white">-{membersLeft}</span>
+         <span className="rounded-md bg-accent-primary px-2 text-sm font-normal text-white">-{membersLeft}</span>
         </Header4>
         <p className="text-sm text-gray-400">Amount of members that left your server in the last 7 days.</p>
        </div>
@@ -302,11 +301,11 @@ export default async function OverviewPage({ params }) {
       <Header4 className="mb-4 !items-start !justify-normal opacity-80">Quick Stats</Header4>
       <div className="flex flex-row flex-wrap gap-2">
        <div className="flex items-center">
-        <div className="mr-2 h-3 min-h-3 w-3 min-w-3 rounded-full bg-[#81848f]" />
+        <div className="mr-2 size-3 min-h-3 min-w-3 rounded-full bg-[#81848f]" />
         {guildPreview.approximate_member_count || "0"} members
        </div>
        <div className="flex items-center">
-        <div className="mr-2 h-3 min-h-3 w-3 min-w-3 rounded-full bg-[#22a55b]" />
+        <div className="mr-2 size-3 min-h-3 min-w-3 rounded-full bg-[#22a55b]" />
         {guildPreview.approximate_presence_count || "0"} online
        </div>
       </div>
@@ -330,7 +329,7 @@ export default async function OverviewPage({ params }) {
          <Tooltip key={emoji.id + emoji.name} content={emoji.name || "Unnamed emoji"}>
           <>
            <Link className="flex flex-col items-center justify-center gap-2" href={`https://cdn.discordapp.com/emojis/${emoji.id}.${emoji.animated ? "gif" : "png"}`} target="_blank" rel="noreferrer noopener">
-            <Image src={`https://cdn.discordapp.com/emojis/${emoji.id}.${emoji.animated ? "gif" : "png"}`} alt={emoji.name} quality={95} width={32} height={32} className="h-8 min-h-8 w-8 min-w-8" />
+            <Image src={`https://cdn.discordapp.com/emojis/${emoji.id}.${emoji.animated ? "gif" : "png"}`} alt={emoji.name} quality={95} width={32} height={32} className="size-8 min-h-8 min-w-8" />
            </Link>
           </>
          </Tooltip>
@@ -352,7 +351,7 @@ export default async function OverviewPage({ params }) {
          <Tooltip key={sticker.id + sticker.name} content={sticker.name || "Unnamed sticker"}>
           <>
            <Link className="flex flex-col items-center justify-center gap-2" href={`https://cdn.discordapp.com/stickers/${sticker.id}.${sticker.format_type === 1 ? "png" : sticker.format_type === 2 ? "apng" : sticker.format_type === 3 ? "lottie" : "gif"}`} target="_blank" rel="noreferrer noopener">
-            <Image unoptimized src={`https://cdn.discordapp.com/stickers/${sticker.id}.${sticker.format_type === 1 ? "png" : sticker.format_type === 2 ? "apng" : sticker.format_type === 3 ? "lottie" : "gif"}`} alt={sticker.name} quality={95} width={95} height={95} className="h-24 w-24" />
+            <Image unoptimized src={`https://cdn.discordapp.com/stickers/${sticker.id}.${sticker.format_type === 1 ? "png" : sticker.format_type === 2 ? "apng" : sticker.format_type === 3 ? "lottie" : "gif"}`} alt={sticker.name} quality={95} width={95} height={95} className="size-24" />
            </Link>
           </>
          </Tooltip>

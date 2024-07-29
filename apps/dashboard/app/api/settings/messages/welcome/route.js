@@ -1,5 +1,3 @@
-/* eslint-disable complexity */
-
 import { globalConfig } from "@majoexe/config";
 import prismaClient from "@majoexe/database";
 import { getServer, getGuildMember } from "@majoexe/util/functions/guild";
@@ -244,7 +242,7 @@ export async function POST(request) {
 
   await prismaClient.guildWelcomeMessage.upsert({
    where: {
-    guildId: guildId,
+    guildId,
    },
    update: {
     channelId: channel.toString(),
@@ -253,7 +251,7 @@ export async function POST(request) {
     enabled: enabled || false,
    },
    create: {
-    guildId: guildId,
+    guildId,
     channelId: channel.toString(),
     title: shortenText(title, 250),
     description: shortenText(description, 2040),
@@ -276,6 +274,7 @@ export async function POST(request) {
    }
   );
  } catch (err) {
+  console.error(err);
   return NextResponse.json(
    {
     error: "Internal Server Error",

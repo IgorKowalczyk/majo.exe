@@ -39,6 +39,7 @@ export function ChangeEmbedColor({ serverId, serverColor }) {
      id: loading,
     });
    } catch (e) {
+    console.log(e);
     return toast.error("Something went wrong", {
      id: loading,
     });
@@ -81,6 +82,7 @@ export function ChangeEmbedColor({ serverId, serverColor }) {
      id: loading,
     });
    } catch (e) {
+    console.log(e);
     return toast.error("Something went wrong", {
      id: loading,
     });

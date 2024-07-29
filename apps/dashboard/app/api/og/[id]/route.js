@@ -1,4 +1,4 @@
-/* eslint-disable @next/next/no-img-element */
+/* eslint-disable next/no-img-element */
 import { getServer } from "@majoexe/util/functions/guild";
 import { redirect } from "next/navigation";
 import { ImageResponse } from "next/og";
@@ -22,7 +22,7 @@ const shortenText = (text, maxLen = 24) => {
 };
 
 export async function GET(request, { params }) {
- const id = params.id;
+ const { id } = params;
  if (!id) return redirect("/opengraph-image");
 
  const server = await getServer(id);

@@ -1,4 +1,3 @@
-/* eslint-disable complexity */
 "use client";
 
 import { formatDate, formatDuration } from "@majoexe/util/functions/util";
@@ -29,7 +28,7 @@ export function LogDisclosure({ item, index, guildId, preview = false }) {
         {item.type === "vanity" && <Icons.link className={iconVariants({ variant: "large", className: "ui-open:text-accent-primary !stroke-2 text-white/60 duration-200" })} />}
        </>
       )}
-      {item.user.fullAvatar ? <Image src={item.user.fullAvatar} alt={`${item.user.name} avatar`} quality={95} width={48} height={48} className="h-12 min-h-12 w-12 min-w-12 rounded-full" /> : <>{item.user?.avatar && <Image src={`https://cdn.discordapp.com/avatars/${item.user?.discordId}/${item.user?.avatar}.${item.user?.avatar.startsWith("a_") ? "gif" : "png"}`} alt={`${item.user?.name} avatar`} quality={95} width={48} height={48} className="h-12 min-h-12 w-12 min-w-12 rounded-full" />}</>}
+      {item.user.fullAvatar ? <Image src={item.user.fullAvatar} alt={`${item.user.name} avatar`} quality={95} width={48} height={48} className="size-12 min-h-12 min-w-12 rounded-full" /> : <>{item.user?.avatar && <Image src={`https://cdn.discordapp.com/avatars/${item.user?.discordId}/${item.user?.avatar}.${item.user?.avatar.startsWith("a_") ? "gif" : "png"}`} alt={`${item.user?.name} avatar`} quality={95} width={48} height={48} className="size-12 min-h-12 min-w-12 rounded-full" />}</>}
      </div>
      <div className="flex flex-col">
       <p className="text-left font-bold">
@@ -62,7 +61,7 @@ export function LogDisclosure({ item, index, guildId, preview = false }) {
       {item.user?.discriminator !== "0" && <span className="opacity-70">#{item.user?.discriminator || "0000"}</span>} (ID: {item.user?.discordId || item.user?.id})
      </>
     ) : (
-     <Link href={`/dashboard/${guildId}/user/${item.user?.discordId}`} className="hover:text-button-primary opacity-70 duration-200 hover:opacity-100">
+     <Link href={`/dashboard/${guildId}/user/${item.user?.discordId}`} className="opacity-70 duration-200 hover:text-button-primary hover:opacity-100">
       {item.user?.global_name || item.user?.username}
       {item.user?.discriminator !== "0" && <span className="opacity-70">#{item.user?.discriminator || "0000"}</span>} (ID: {item.user?.discordId || item.user?.id})
      </Link>
@@ -118,14 +117,14 @@ export default function Logs({ initialItems, id }) {
    <div className="mb-4 flex items-center justify-center gap-2">
     <InputWithIcon placeholder="Search..." value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} icon={<Icons.refresh className={iconVariants({ variant: "normal", className: "text-white/50" })} />} />
     <Tooltip content={sortDescending ? "Sort ascending" : "Sort descending"}>
-     <span onClick={() => setSortDescending(!sortDescending)} className="hover:border-button-primary flex h-[41.6px] cursor-pointer items-center justify-center rounded-md border border-neutral-800 px-3 py-2 text-white duration-200">
-      <div className="relative h-5 w-5">
+     <span onClick={() => setSortDescending(!sortDescending)} className="flex h-[41.6px] cursor-pointer items-center justify-center rounded-md border border-neutral-800 px-3 py-2 text-white duration-200 hover:border-button-primary">
+      <div className="relative size-5">
        <Icons.sortDescending
         className={iconVariants({
          variant: "normal",
          className: clsx(
           // prettier
-          "absolute left-0 top-0 h-full w-full duration-200",
+          "absolute left-0 top-0 size-full duration-200",
           { "scale-0 opacity-0": !sortDescending, "scale-100 opacity-100": sortDescending }
          ),
         })}
@@ -135,7 +134,7 @@ export default function Logs({ initialItems, id }) {
          variant: "normal",
          className: clsx(
           // prettier
-          "absolute left-0 top-0 h-full w-full duration-200",
+          "absolute left-0 top-0 size-full duration-200",
           { "scale-0 opacity-0": sortDescending, "scale-100 opacity-100": !sortDescending }
          ),
         })}
@@ -146,7 +145,7 @@ export default function Logs({ initialItems, id }) {
    </div>
    <InfiniteScroll hasMore={hasMore} pageStart={0} loadMore={loadMore} loader={<GraphSkeleton className="mb-4 !h-20" />}>
     {sortedFilteredItems.map((item, index) => (
-     <LogDisclosure key={index} item={item} index={index} guildId={id} />
+     <LogDisclosure key={`log-${item.id}-${id}`} item={item} index={index} guildId={id} />
     ))}
    </InfiniteScroll>
   </div>

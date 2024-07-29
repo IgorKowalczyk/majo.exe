@@ -1,5 +1,3 @@
-/* eslint-disable func-names, space-before-function-paren */
-
 import prismaClient from "@majoexe/database";
 import { PrismaAdapter } from "@next-auth/prisma-adapter";
 import DiscordProvider from "next-auth/providers/discord";
@@ -105,7 +103,7 @@ const authOptions = {
   maxAge: 1 * 60 * 60, // 1 hour
  },
  callbacks: {
-  async jwt({ token, account, profile }) {
+  jwt({ token, account, profile }) {
    if (account) {
     token = {
      ...token,
@@ -117,7 +115,7 @@ const authOptions = {
     return token;
    }
   },
-  async session({ token }) {
+  session({ token }) {
    if (token.avatar) {
     token.image = `https://cdn.discordapp.com/avatars/${token.id}/${token.avatar}.${token.avatar.startsWith("a_") ? "gif" : "png"}?size=2048`;
    } else if (token.discriminator !== "0") {

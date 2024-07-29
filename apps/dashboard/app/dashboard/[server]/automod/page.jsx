@@ -1,5 +1,3 @@
-/* eslint-disable complexity */
-
 import { globalConfig } from "@majoexe/config";
 import prismaClient from "@majoexe/database";
 import { syncAutoModRule } from "@majoexe/util/database";

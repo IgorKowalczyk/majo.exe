@@ -13,7 +13,7 @@ export async function Nav({ theme }) {
  const session = await getSession();
 
  return (
-  <nav className="bg-background-navbar fixed z-[9999] flex w-full items-center border-b border-b-neutral-800 py-4 text-left shadow-lg md:bg-opacity-70 md:backdrop-blur-[9px]">
+  <nav className="fixed z-[9999] flex w-full items-center border-b border-b-neutral-800 bg-background-navbar py-4 text-left shadow-lg md:bg-background-navbar/70 md:backdrop-blur-[9px]">
    <SideMenuControl />
    <div
     className={clsx(
@@ -26,7 +26,7 @@ export async function Nav({ theme }) {
    >
     <Link href="/" className="text-lg text-white">
      <div className="flex cursor-pointer items-center gap-2 pl-4 pr-2 text-xl duration-200 hover:opacity-90 motion-reduce:transition-none">
-      <Image className="h-9 min-h-9 w-9 min-w-9 rounded-full" src={dashboardConfig.logo} alt={`${dashboardConfig.title} logo`} width={36} height={36} />
+      <Image className="size-9 min-h-9 min-w-9 rounded-full" src={dashboardConfig.logo} alt={`${dashboardConfig.title} logo`} width={36} height={36} />
       <p className="hidden font-bold sm:block">{dashboardConfig.title}</p>
      </div>
     </Link>

@@ -8,7 +8,7 @@ import { Icons, iconVariants } from "@/components/Icons";
 import { NavBadge } from "@/components/nav/client/SideNav";
 import { InputSkeleton } from "@/components/Skeletons";
 
-export default async function Loading() {
+export default function Loading() {
  return (
   <>
    <Header1>

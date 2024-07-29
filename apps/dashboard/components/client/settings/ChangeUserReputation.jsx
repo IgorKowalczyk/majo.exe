@@ -13,7 +13,7 @@ export function ChangeUserReputation({ userId, guildId, userReputation = 0 }) {
  const [loading, setLoading] = useState(false);
  const [error, setError] = useState(false);
 
- const changeReputation = async (value) => {
+ const changeReputation = (value) => {
   setUserRep(value);
   setError(false);
   if (!isNumeric(value)) setError(true);
@@ -46,6 +46,7 @@ export function ChangeUserReputation({ userId, guildId, userReputation = 0 }) {
      id: loadingToast,
     });
    } catch (e) {
+    console.log(e);
     return toast.error("Something went wrong", {
      id: loadingToast,
     });

@@ -50,7 +50,7 @@ export function Giveaways({ data = [] }) {
     accessor: "startedBy",
     Cell: ({ value }) => (
      <Link className="flex items-center space-x-4" href={`user/${value?.discordId}`} passHref>
-      <div className="relative">{value?.avatar && <Image src={value?.avatar} alt={`${value?.name} avatar`} quality={95} width={48} height={48} className="h-12 min-h-12 w-12 min-w-12 rounded-full" />}</div>
+      <div className="relative">{value?.avatar && <Image src={value?.avatar} alt={`${value?.name} avatar`} quality={95} width={48} height={48} className="size-12 min-h-12 min-w-12 rounded-full" />}</div>
       <Tooltip content={`Discord ID: ${value?.discordId || "Unknown"}`}>
        <span className="cursor-help text-left font-bold">{value?.global_name || value?.name}</span>
       </Tooltip>

@@ -1,5 +1,3 @@
-/* eslint-disable complexity */
-
 import { globalConfig } from "@majoexe/config";
 import prismaClient from "@majoexe/database";
 import { createHTTPAutomodRule, validateAutoModIgnores, validateAutoModRuleActions } from "@majoexe/util/functions/automod";

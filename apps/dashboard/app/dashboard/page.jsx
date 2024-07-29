@@ -29,10 +29,10 @@ export default async function Dashboard() {
  servers.sort((a, b) => (a.bot && !b.bot ? -1 : !a.bot && b.bot ? 1 : 0));
 
  return (
-  <div className="flex w-full flex-col items-center px-8 pb-8 pt-16 antialiased md:px-16 md:py-16">
+  <div className="flex w-full flex-col items-center px-8 pb-8 pt-16 antialiased md:p-16">
    <div className="flex flex-col justify-center">
     <Header1 className="!justify-center">
-     <Icons.dashboard className="h-10 min-h-10 w-10 min-w-10" />
+     <Icons.dashboard className="size-10 min-h-10 min-w-10" />
      Dashboard
     </Header1>
     <Header2 className="!block text-center text-xl font-normal text-white/50">
@@ -43,7 +43,7 @@ export default async function Dashboard() {
       servers.map((server) => (
        <div key={server.id}>
         <div className="hidden flex-row items-center justify-start gap-4 sm:flex">
-         {server.icon ? <Image src={`https://cdn.discordapp.com/icons/${server.id}/${server.icon}.${server.icon.startsWith("a_") ? "gif" : "png"}`} alt={server.name} quality={95} width={64} height={64} className="h-16 min-h-16 w-16 min-w-16 rounded-full" /> : <div className="bg-button-secondary h-16 min-h-16 w-16 min-w-16 rounded-full" />}
+         {server.icon ? <Image src={`https://cdn.discordapp.com/icons/${server.id}/${server.icon}.${server.icon.startsWith("a_") ? "gif" : "png"}`} alt={server.name} quality={95} width={64} height={64} className="size-16 min-h-16 min-w-16 rounded-full" /> : <div className="size-16 min-h-16 min-w-16 rounded-full bg-button-secondary" />}
          <Header3 className="text-center">{server.name}</Header3>
          <>
           {server.bot ? (
@@ -70,7 +70,7 @@ export default async function Dashboard() {
              {
               "opacity-20": !server.bot,
              },
-             "h-24 min-h-24 w-24 min-w-24 rounded-md"
+             "size-24 min-h-24 min-w-24 rounded-md"
             )}
            />
           ) : (
@@ -79,7 +79,7 @@ export default async function Dashboard() {
              {
               "opacity-20": !server.bot,
              },
-             "bg-button-secondary h-24 min-h-24 w-24 min-w-24 rounded-md"
+             "size-24 min-h-24 min-w-24 rounded-md bg-button-secondary"
             )}
            />
           )}

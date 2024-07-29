@@ -1,5 +1,3 @@
-/* eslint-disable complexity */
-
 import prismaClient from "@majoexe/database";
 import { getServer, getGuildMember } from "@majoexe/util/functions/guild";
 import { getSession } from "lib/session";
@@ -9,7 +7,7 @@ export async function GET(request, { params }) {
  try {
   const session = await getSession();
   const start = Date.now();
-  const id = params.id;
+  const { id } = params;
 
   if (!session || !session.access_token) {
    return NextResponse.json(
@@ -208,11 +206,10 @@ export async function GET(request, { params }) {
    );
   }
 
-  /* eslint-disable func-names, space-before-function-paren */
+  /* eslint-disable func-names, @stylistic/space-before-function-paren */
   BigInt.prototype.toJSON = function () {
    return this.toString();
   };
-  /* eslint-enable func-names, space-before-function-paren */
 
   return new Response(JSON.stringify(guild), {
    headers: {

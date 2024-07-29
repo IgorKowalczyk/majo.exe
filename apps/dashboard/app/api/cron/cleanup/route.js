@@ -99,6 +99,7 @@ export async function GET(request) {
    }
   );
  } catch (error) {
+  console.error(error);
   return NextResponse.json(
    { success: false },
    {

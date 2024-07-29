@@ -3,7 +3,7 @@ import { Header1 } from "@/components/Headers";
 import { Icons, iconVariants } from "@/components/Icons";
 import { EmbedSkeleton } from "@/components/Skeletons";
 
-export default async function Loading() {
+export default function Loading() {
  return (
   <>
    <Header1>

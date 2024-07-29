@@ -1,5 +1,3 @@
-/* eslint-disable complexity */
-
 import prismaClient from "@majoexe/database";
 import { getServer, getGuildMember } from "@majoexe/util/functions/guild";
 import { getSession } from "lib/session";
@@ -136,7 +134,7 @@ export async function POST(request) {
 
   const checkVanity = await prismaClient.guild.findFirst({
    where: {
-    vanity: vanity,
+    vanity,
    },
   });
 
@@ -167,7 +165,7 @@ export async function POST(request) {
    await prismaClient.guild.create({
     data: {
      guildId: id,
-     vanity: vanity,
+     vanity,
     },
    });
 
@@ -214,7 +212,7 @@ export async function POST(request) {
     guildId: id,
    },
    data: {
-    vanity: vanity,
+    vanity,
    },
   });
 
@@ -255,6 +253,7 @@ export async function POST(request) {
    }
   );
  } catch (err) {
+  console.error(err);
   return NextResponse.json(
    {
     error: "Internal Server Error",

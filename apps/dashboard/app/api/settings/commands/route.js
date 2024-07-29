@@ -1,5 +1,3 @@
-/* eslint-disable complexity */
-
 import prismaClient from "@majoexe/database";
 import { getServer, getGuildMember } from "@majoexe/util/functions/guild";
 import { getSession } from "lib/session";
@@ -80,7 +78,7 @@ export async function POST(request) {
 
   const existingCommand = await prismaClient.commands.findFirst({
    where: {
-    name: name,
+    name,
    },
   });
 
@@ -248,68 +246,67 @@ export async function POST(request) {
      }
     );
    }
+  } else if (enabled) {
+   await prismaClient.guildDisabledCommands.delete({
+    where: {
+     id: alreadyDisabled.id,
+    },
+   });
+
+   await prismaClient.guildLogs.create({
+    data: {
+     guild: {
+      connectOrCreate: {
+       where: {
+        guildId: id,
+       },
+       create: {
+        guildId: id,
+       },
+      },
+     },
+     user: {
+      connect: {
+       id: session.sub,
+      },
+     },
+     content: `Enabled command ${existingCommand.name}`,
+     type: "command_change",
+    },
+   });
+
+   return NextResponse.json(
+    {
+     message: "Command enabled",
+     code: 200,
+    },
+    {
+     status: 200,
+     headers: {
+      ...(process.env.NODE_ENV !== "production" && {
+       "Server-Timing": `response;dur=${Date.now() - start}ms`,
+      }),
+     },
+    }
+   );
   } else {
-   if (enabled) {
-    await prismaClient.guildDisabledCommands.delete({
-     where: {
-      id: alreadyDisabled.id,
+   return NextResponse.json(
+    {
+     message: "Command is already disabled, no action taken",
+     code: 200,
+    },
+    {
+     status: 200,
+     headers: {
+      ...(process.env.NODE_ENV !== "production" && {
+       "Server-Timing": `response;dur=${Date.now() - start}ms`,
+      }),
      },
-    });
-
-    await prismaClient.guildLogs.create({
-     data: {
-      guild: {
-       connectOrCreate: {
-        where: {
-         guildId: id,
-        },
-        create: {
-         guildId: id,
-        },
-       },
-      },
-      user: {
-       connect: {
-        id: session.sub,
-       },
-      },
-      content: `Enabled command ${existingCommand.name}`,
-      type: "command_change",
-     },
-    });
-
-    return NextResponse.json(
-     {
-      message: "Command enabled",
-      code: 200,
-     },
-     {
-      status: 200,
-      headers: {
-       ...(process.env.NODE_ENV !== "production" && {
-        "Server-Timing": `response;dur=${Date.now() - start}ms`,
-       }),
-      },
-     }
-    );
-   } else {
-    return NextResponse.json(
-     {
-      message: "Command is already disabled, no action taken",
-      code: 200,
-     },
-     {
-      status: 200,
-      headers: {
-       ...(process.env.NODE_ENV !== "production" && {
-        "Server-Timing": `response;dur=${Date.now() - start}ms`,
-       }),
-      },
-     }
-    );
-   }
+    }
+   );
   }
  } catch (err) {
+  console.error(err);
   return NextResponse.json(
    {
     error: "Internal Server Error",

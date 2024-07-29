@@ -1,5 +1,3 @@
-/* eslint-disable complexity */
-
 import { setReputation } from "@majoexe/util/database";
 import { getServer, getGuildMember } from "@majoexe/util/functions/guild";
 import { isNumeric } from "@majoexe/util/functions/util";

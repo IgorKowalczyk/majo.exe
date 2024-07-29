@@ -1,5 +1,10 @@
-import eslintConfig from "@igorkowalczyk/eslint-config/flat";
+import eslintConfig from "@igorkowalczyk/eslint-config";
 
 export default [
- ...eslintConfig,
+ // prettier
+ ...eslintConfig.base,
+ //...eslintConfig.react,
+ //...eslintConfig.next,
+ ...eslintConfig.node,
+ //...eslintConfig.tailwindcss,
 ];

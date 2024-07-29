@@ -14,6 +14,7 @@ export default function GlobeClient() {
    console.log("WebGL supported, showing globe animation...");
    context.getSupportedExtensions();
   } catch (e) {
+   console.log(`WebGL not supported: ${e}`);
    setWebglSupported(false);
    return;
   }
@@ -84,7 +85,6 @@ const GlobeAnimation = () => {
    globe.destroy();
    window.removeEventListener("resize", onResize);
   };
-  /* eslint-disable-next-line react-hooks/exhaustive-deps */
  }, []);
 
  return (

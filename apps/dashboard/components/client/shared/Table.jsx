@@ -1,3 +1,5 @@
+/* eslint-disable @eslint-react/no-array-index-key */
+
 "use client";
 
 import clsx from "clsx";
@@ -68,12 +70,12 @@ export function Table({
          <th {...column.getHeaderProps()} {...column.getSortByToggleProps()} key={`header-${colIndex}`} className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500">
           <span className="flex select-none items-center gap-2">
            {column.render("Header")}
-           <div className="relative h-4 w-4">
+           <div className="relative size-4">
             <>
              <Icons.arrowUp
               className={iconVariants({
                variant: "small",
-               className: clsx("absolute h-4 w-4 duration-200", {
+               className: clsx("absolute size-4 duration-200", {
                 "scale-0": column.isSortedDesc,
                 "scale-100": !column.isSortedDesc,
                 "opacity-0": !column.isSorted,
@@ -83,7 +85,7 @@ export function Table({
              <Icons.arrowDown
               className={iconVariants({
                variant: "small",
-               className: clsx("absolute h-4 w-4 duration-200", {
+               className: clsx("absolute size-4 duration-200", {
                 "scale-0": !column.isSortedDesc,
                 "scale-100": column.isSortedDesc,
                 "opacity-0": !column.isSorted,

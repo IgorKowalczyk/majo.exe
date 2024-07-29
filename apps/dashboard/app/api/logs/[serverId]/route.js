@@ -5,7 +5,7 @@ import { NextResponse } from "next/server";
 
 export async function GET(request, { params }) {
  try {
-  const serverId = params.serverId;
+  const { serverId } = params;
   const { searchParams } = new URL(request.url);
   const page = Number.parseInt(searchParams.get("page") || "1", 10);
   const start = Date.now();
@@ -105,11 +105,10 @@ export async function GET(request, { params }) {
    log.createdAt = new Date(log.createdAt).toISOString() || null;
   });
 
-  /* eslint-disable func-names, space-before-function-paren */
+  /* eslint-disable func-names, @stylistic/space-before-function-paren */
   BigInt.prototype.toJSON = function () {
    return this.toString();
   };
-  /* eslint-enable func-names, space-before-function-paren */
 
   return NextResponse.json(logs, {
    status: 200,

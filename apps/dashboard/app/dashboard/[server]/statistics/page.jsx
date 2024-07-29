@@ -1,5 +1,3 @@
-/* eslint-disable complexity */
-
 import prismaClient from "@majoexe/database";
 import { getGuildMember, getServer } from "@majoexe/util/functions/guild";
 import { fillMissingDates } from "@majoexe/util/functions/util";

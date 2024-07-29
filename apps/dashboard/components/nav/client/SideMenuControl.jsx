@@ -13,15 +13,15 @@ export function SideMenuControl() {
  return (
   <>
    {params.server && (
-    <button className="bg-elements text-text ml-4 flex flex-row items-center gap-2 rounded-lg p-2 md:hidden" onClick={toggleSideNav}>
-     <div className="relative h-6 w-6">
+    <button className="bg-elements text-text ml-4 flex flex-row items-center gap-2 rounded-lg p-2 md:hidden" onClick={toggleSideNav} type="button">
+     <div className="relative size-6">
       <Icons.close
        className={clsx(
         {
          "scale-0": !sideNavVisible,
          "scale-100": sideNavVisible,
         },
-        "absolute top-0 h-6 min-h-6 w-6 min-w-6 duration-200"
+        "absolute top-0 size-6 min-h-6 min-w-6 duration-200"
        )}
       />
       <Icons.menu
@@ -30,7 +30,7 @@ export function SideMenuControl() {
          "scale-100": !sideNavVisible,
          "scale-0": sideNavVisible,
         },
-        "absolute top-0 h-6 min-h-6 w-6 min-w-6 duration-200"
+        "absolute top-0 size-6 min-h-6 min-w-6 duration-200"
        )}
       />
      </div>

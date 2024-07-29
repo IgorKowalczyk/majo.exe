@@ -5,7 +5,7 @@ import { Header1, Header2, Header3 } from "@/components/Headers";
 import { Icons, iconVariants } from "@/components/Icons";
 import { GraphSkeleton, InputSkeleton, TextSkeleton } from "@/components/Skeletons";
 
-export default async function Loading() {
+export default function Loading() {
  return (
   <>
    <Header1>
@@ -33,7 +33,8 @@ export default async function Loading() {
     <div className="flex flex-wrap items-center justify-start gap-2">
      {Array.from({ length: 8 }).map((_, i) => (
       <TextSkeleton
-       key={i}
+       // eslint-disable-next-line @eslint-react/no-array-index-key
+       key={`role-${i}`}
        className="!h-[42px] min-w-[150px]"
        style={{
         width: `${Math.floor(Math.random() * (150 - 64 + 1) + 64)}px !important`,
@@ -81,7 +82,7 @@ export default async function Loading() {
     <InputSkeleton className="!max-w-none" />
     <InputSkeleton className="mt-4 !max-w-none" />
 
-    <div className="border-accent-primary bg-accent-primary/10 mt-4 flex flex-row items-start whitespace-nowrap rounded-md border p-4">
+    <div className="mt-4 flex flex-row items-start whitespace-nowrap rounded-md border border-accent-primary bg-accent-primary/10 p-4">
      <span className="mr-1 flex flex-row items-center whitespace-nowrap font-bold">
       <Icons.info className={iconVariants({ variant: "normal", className: "stroke-accent-primary mr-1" })} />
       Note:
