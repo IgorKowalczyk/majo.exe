@@ -16,7 +16,7 @@ export default {
    required: true,
   },
  ],
- run: async (client, interaction) => {
+ run: (client, interaction) => {
   try {
    const thing = interaction.options.getString("thing");
    const rate = Math.floor(Math.random() * 100) + 1;

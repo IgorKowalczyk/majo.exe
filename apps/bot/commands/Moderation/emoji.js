@@ -1,4 +1,3 @@
-/* eslint-disable complexity */
 import { ApplicationCommandType, ApplicationCommandOptionType, EmbedBuilder, PermissionsBitField, codeBlock, PermissionFlagsBits } from "discord.js";
 import isURL from "validator/lib/isURL.js";
 
@@ -143,7 +142,7 @@ export default {
       });
 
      return interaction.followUp({ ephemeral: false, embeds: [embed] });
-    } catch (err) {
+    } catch (_err) {
      return client.errorMessages.createSlashError(interaction, "❌ Cannot create emoji! It may be because of the following reasons:\n\n>>> - You have reached the maximum number of emojis on this server\n- The emoji URL is invalid\n- The emoji name is invalid\n- The emoji is too large");
     }
    } catch (err) {
@@ -177,7 +176,7 @@ export default {
 
     try {
      await emojiToDelete.delete();
-    } catch (err) {
+    } catch (_err) {
      return client.errorMessages.createSlashError(interaction, "❌ Cannot delete emoji! It may be because of the following reasons:\n\n>>> - The emoji is not from this server\n- The emoji is not found\n - This is just a bug");
     }
 

@@ -10,7 +10,7 @@ export default {
  cooldown: 3000,
  dm_permission: true,
  usage: "/advice",
- run: async (client, interaction, guildSettings) => {
+ run: (client, interaction, guildSettings) => {
   try {
    const parsed = advices[Math.floor(Math.random() * advices.length)];
 

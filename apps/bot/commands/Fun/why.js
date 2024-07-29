@@ -10,7 +10,7 @@ export default {
  cooldown: 3000,
  dm_permission: true,
  usage: "/why",
- run: async (client, interaction, guildSettings) => {
+ run: (client, interaction, guildSettings) => {
   try {
    const parsed = why[Math.floor(Math.random() * why.length)];
 

@@ -22,7 +22,7 @@ export default {
    required: true,
   },
  ],
- run: async (client, interaction, guildSettings) => {
+ run: (client, interaction, guildSettings) => {
   try {
    const first = interaction.options.getUser("first");
    const second = interaction.options.getUser("second");

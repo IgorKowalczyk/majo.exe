@@ -20,7 +20,7 @@ export async function getServer(id) {
   const json = await res.json();
   json.bot = await isBotInServer(id);
   return json;
- } catch (e) {
+ } catch (_e) {
   return { error: "Invalid server ID" };
  }
 }

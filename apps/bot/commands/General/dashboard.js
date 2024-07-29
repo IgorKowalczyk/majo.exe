@@ -7,7 +7,7 @@ export default {
  cooldown: 3000,
  dm_permission: true,
  usage: "/dashboard",
- run: async (client, interaction, guildSettings) => {
+ run: (client, interaction, guildSettings) => {
   try {
    if (!client.config.url) {
     const embed = new EmbedBuilder()

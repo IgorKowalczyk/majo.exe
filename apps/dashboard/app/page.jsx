@@ -106,7 +106,7 @@ let notifications = [
   avatar: avatar02,
   content: (
    <span>
-    enabled <span className="font-bold text-accent-primary">AutoMod</span>
+    enabled <span className="text-accent-primary font-bold">AutoMod</span>
    </span>
   ),
  },
@@ -115,7 +115,7 @@ let notifications = [
   avatar: avatar07,
   content: (
    <span>
-    banned <span className="font-bold text-accent-primary">John Doe</span>
+    banned <span className="text-accent-primary font-bold">John Doe</span>
    </span>
   ),
  },
@@ -124,7 +124,7 @@ let notifications = [
   avatar: avatar04,
   content: (
    <span>
-    warned <span className="font-bold text-accent-primary">Jane Smith</span>
+    warned <span className="text-accent-primary font-bold">Jane Smith</span>
    </span>
   ),
  },
@@ -133,7 +133,7 @@ let notifications = [
   avatar: avatar06,
   content: (
    <span>
-    disabled <span className="font-bold text-accent-primary">/help</span> command
+    disabled <span className="text-accent-primary font-bold">/help</span> command
    </span>
   ),
  },
@@ -142,7 +142,7 @@ let notifications = [
   avatar: avatar05,
   content: (
    <span>
-    set vanity to <span className="font-bold text-accent-primary">/majo</span>
+    set vanity to <span className="text-accent-primary font-bold">/majo</span>
    </span>
   ),
  },
@@ -151,7 +151,7 @@ let notifications = [
   avatar: avatar03,
   content: (
    <span>
-    enabled category <span className="font-bold text-accent-primary">Moderation</span>
+    enabled category <span className="text-accent-primary font-bold">Moderation</span>
    </span>
   ),
  },
@@ -189,7 +189,7 @@ export default async function HomePage() {
 
  return (
   <>
-   <div className="relative z-20 flex min-h-screen w-full items-center justify-center before:absolute before:z-10 before:size-full before:opacity-5 before:grayscale before:md:bg-grid-[#fff]">
+   <div className="before:md:bg-grid-[#fff] relative z-20 flex min-h-screen w-full items-center justify-center before:absolute before:z-10 before:size-full before:opacity-5 before:grayscale">
     <div className="absolute left-0 top-0 z-10 size-full bg-[radial-gradient(circle,rgba(2,0,36,0)0,rgb(16,17,16,100%))]" />
     <div className="relative z-20 -mt-8 flex w-full select-none flex-col items-center justify-center gap-4 px-3 md:w-[90%]">
      <Link href="/api/invite" className={twMerge("group rounded-full border border-white/5 bg-neutral-900 text-base text-white transition-all ease-in hover:cursor-pointer hover:bg-neutral-800")}>
@@ -199,7 +199,7 @@ export default async function HomePage() {
       </AnimatedShinyText>
      </Link>
 
-     <Header1 className="mb-0 justify-center bg-gradient-to-b from-white to-neutral-400 box-decoration-clone bg-clip-text text-center !font-black !leading-snug text-fill-transparent xl:!text-5xl 2xl:!text-7xl">The only one Discord Bot</Header1>
+     <Header1 className="text-fill-transparent mb-0 justify-center bg-gradient-to-b from-white to-neutral-400 box-decoration-clone bg-clip-text text-center !font-black !leading-snug xl:!text-5xl 2xl:!text-7xl">The only one Discord Bot</Header1>
      <Header2 className="mb-0 max-w-[680px] text-center font-normal text-white/70">
       <Balancer>Majo.exe will not only keep your server entertained but also assist you with moderation and many other things!</Balancer>
      </Header2>
@@ -217,7 +217,7 @@ export default async function HomePage() {
      <div className="absolute inset-0 -z-10 m-auto mt-[100px] size-[580px] rounded-full bg-[#ddd] opacity-5 blur-3xl" />
     </div>
    </div>
-   <div className="relative z-[600] bg-background-primary">
+   <div className="bg-background-primary relative z-[600]">
     <hr className="m-[0_auto] mb-8 h-px w-full border-none bg-[linear-gradient(to_right,transparent,rgba(255,255,255,0.1)_50%,transparent)] px-8 duration-300 motion-reduce:transition-none" />
 
     <div className="mx-auto max-w-7xl pb-10 md:px-8 lg:px-16">
@@ -237,15 +237,15 @@ export default async function HomePage() {
      <p className="my-6 w-full text-center text-white/70">...and counting!</p>
 
      <div className="mx-auto flex w-full max-w-7xl flex-col gap-4 px-4 md:grid md:grid-cols-2 md:px-0 lg:grid-cols-3">
-      <div className="row-span-1 overflow-hidden rounded-xl border border-neutral-800 bg-background-secondary p-4 duration-200 hover:bg-neutral-800/50">
+      <div className="bg-background-secondary row-span-1 overflow-hidden rounded-xl border border-neutral-800 p-4 duration-200 hover:bg-neutral-800/50">
        <GradientHeader>Image manipulation? We got you!</GradientHeader>
        <p className="mt-2 max-w-[680px] text-white/70">Want to edit an image? Or maybe you want to make a meme?</p>
        <div className="mt-3">
         <div className="flex flex-row items-center gap-1">
-         <div className="ml-5 h-3 w-7 rounded-tl-md border-l-2 border-t-2 border-button-secondary" />
+         <div className="border-button-secondary ml-5 h-3 w-7 rounded-tl-md border-l-2 border-t-2" />
          <Image src={dashboardConfig.logo} alt="User avatar" quality={95} width={20} height={20} className="size-5 min-h-5 min-w-5 self-baseline rounded-full" />
          <span className="text-xs">
-          <span className="font-bold">Majonez.exe</span> used <span className="font-bold text-accent-primary">/ai</span>
+          <span className="font-bold">Majonez.exe</span> used <span className="text-accent-primary font-bold">/ai</span>
          </span>
         </div>
         <div className="flex items-center gap-1">
@@ -268,12 +268,12 @@ export default async function HomePage() {
         </div>
        </div>
       </div>
-      <div className="row-span-1 overflow-hidden rounded-xl border border-neutral-800 bg-background-secondary p-4 duration-200 hover:bg-neutral-800/50">
+      <div className="bg-background-secondary row-span-1 overflow-hidden rounded-xl border border-neutral-800 p-4 duration-200 hover:bg-neutral-800/50">
        <GradientHeader>Leveling?</GradientHeader>
        <p className="mt-2 max-w-[680px] text-white/70">Majo.exe has a leveling system that will keep your members active and entertained.</p>
        <LevelUp avatar={dashboardConfig.logo} username="Majonez.exe" />
       </div>
-      <div className="relative col-span-2 row-span-2 overflow-hidden rounded-xl border border-neutral-800 bg-background-secondary px-8 py-6 duration-200 hover:bg-neutral-800/50 lg:col-span-1">
+      <div className="bg-background-secondary relative col-span-2 row-span-2 overflow-hidden rounded-xl border border-neutral-800 px-8 py-6 duration-200 hover:bg-neutral-800/50 lg:col-span-1">
        <GradientHeader>Moderation? We have it!</GradientHeader>
        <div className="absolute inset-0 z-0 m-auto mt-[100px] size-[580px] rounded-full bg-[#ddd] opacity-5 blur-3xl" />
        <div className="relative z-10">
@@ -296,27 +296,27 @@ export default async function HomePage() {
         </div>
        </div>
       </div>
-      <div className="relative col-span-2 row-span-2 overflow-hidden rounded-xl border border-neutral-800 bg-background-secondary duration-200 hover:bg-neutral-800/50">
+      <div className="bg-background-secondary relative col-span-2 row-span-2 overflow-hidden rounded-xl border border-neutral-800 duration-200 hover:bg-neutral-800/50">
        <div className="relative z-50 h-full">
         <div className="px-8 py-6">
-         <Header1 className="mb-0 bg-gradient-to-b from-white to-neutral-400 box-decoration-clone bg-clip-text !text-left !font-black text-fill-transparent">Know more about your server</Header1>
+         <Header1 className="text-fill-transparent mb-0 bg-gradient-to-b from-white to-neutral-400 box-decoration-clone bg-clip-text !text-left !font-black">Know more about your server</Header1>
          <p className="max-w-[680px] text-white/70">
           <Balancer>With Majo.exe you can get to know your server better with the help of the dashboard. You can see the most active members, the most used channels and activity graphs!</Balancer>
          </p>
         </div>
 
         <div className="z-50 flex flex-col items-center justify-center gap-4 px-8 py-6 md:flex-row">
-         <p className="flex cursor-pointer gap-1 rounded-full border border-accent-primary/50 bg-accent-primary/20 px-2 py-1 text-sm font-bold text-accent-primary backdrop-blur-md duration-200 hover:bg-accent-primary/30">
+         <p className="border-accent-primary/50 bg-accent-primary/20 text-accent-primary hover:bg-accent-primary/30 flex cursor-pointer gap-1 rounded-full border px-2 py-1 text-sm font-bold backdrop-blur-md duration-200">
           +{Math.floor(Math.random() * 10 + 15)} users today
           <Icons.trendingUp className={iconVariants({ variant: "normal" })} />
          </p>
 
-         <p className="flex cursor-pointer gap-1 rounded-full border border-accent-primary/50 bg-accent-primary/20 px-2 py-1 text-sm font-bold text-accent-primary backdrop-blur-md duration-200 hover:bg-accent-primary/30">
+         <p className="border-accent-primary/50 bg-accent-primary/20 text-accent-primary hover:bg-accent-primary/30 flex cursor-pointer gap-1 rounded-full border px-2 py-1 text-sm font-bold backdrop-blur-md duration-200">
           +{Math.floor(Math.random() * 500 + 100)} messages today
           <Icons.trendingUp className={iconVariants({ variant: "normal" })} />
          </p>
 
-         <p className="flex cursor-pointer gap-1 rounded-full border border-accent-primary/50 bg-accent-primary/20 px-2 py-1 text-sm font-bold text-accent-primary backdrop-blur-md duration-200 hover:bg-accent-primary/30">
+         <p className="border-accent-primary/50 bg-accent-primary/20 text-accent-primary hover:bg-accent-primary/30 flex cursor-pointer gap-1 rounded-full border px-2 py-1 text-sm font-bold backdrop-blur-md duration-200">
           +{Math.floor(Math.random() * 80 + 5)}% increase in activity
           <Icons.trendingUp className={iconVariants({ variant: "normal" })} />
          </p>
@@ -336,7 +336,7 @@ export default async function HomePage() {
 
        <div className="absolute inset-0 z-10 m-auto mt-[100px] size-[980px] rounded-full bg-[#ddd] opacity-5 blur-3xl" />
       </div>
-      <div className="relative col-span-2 row-span-1 overflow-hidden rounded-xl border border-neutral-800 bg-background-secondary px-8 py-6 duration-200 hover:bg-neutral-800/50 lg:col-span-1">
+      <div className="bg-background-secondary relative col-span-2 row-span-1 overflow-hidden rounded-xl border border-neutral-800 px-8 py-6 duration-200 hover:bg-neutral-800/50 lg:col-span-1">
        <GradientHeader>Giveaways? Why not?</GradientHeader>
        <p className="mt-2 max-w-[680px] text-white/70">Want to host a giveaway or a drop? Majo.exe can help you with that! You can easily create and moderate giveaways with few simple commands!</p>
        <div className="my-6 flex items-center gap-1">
@@ -373,7 +373,7 @@ export default async function HomePage() {
 
     <div className="mx-auto mt-12 pb-10 md:px-8 lg:px-16">
      <GradientHeader className="!block !text-center !text-3xl md:!text-4xl">
-      Trusted by more than <span className="bg-gradient-to-b from-accent-primary to-accent-primary box-decoration-clone bg-clip-text text-fill-transparent">{formatNumber(jsonData.approximate_guild_count || 0)}+</span> servers
+      Trusted by more than <span className="from-accent-primary to-accent-primary text-fill-transparent bg-gradient-to-b box-decoration-clone bg-clip-text">{formatNumber(jsonData.approximate_guild_count || 0)}+</span> servers
      </GradientHeader>
      <p className="mb-6 mt-3 w-full text-center text-white/70">
       <Balancer>
@@ -386,15 +386,15 @@ export default async function HomePage() {
       Add to your server
      </ButtonSecondary>
 
-     <Icons.arrowDown className="mx-auto mt-12 size-8 animate-bounce text-accent-primary" />
+     <Icons.arrowDown className="text-accent-primary mx-auto mt-12 size-8 animate-bounce" />
 
      <div className="mx-auto my-16 flex max-w-7xl flex-col gap-8 px-4 lg:flex-row lg:gap-16 lg:px-0">
       <div className="flex w-full flex-col justify-center gap-2 lg:w-2/5">
        <Header1>See what's happening in your server</Header1>
        <p className="text-white/70">With Majo.exe you can see your server statistics in real-time. You can see the most active members, the most used channels and much more!</p>
       </div>
-      <div className="w-full overflow-hidden rounded-xl border border-neutral-800 bg-background-secondary py-6 pl-4 pr-8 duration-200 hover:bg-neutral-800/50 lg:w-3/5">
-       <Suspense fallback={<div className="h-56 w-full rounded-xl border border-neutral-800 bg-background-secondary" />}>
+      <div className="bg-background-secondary w-full overflow-hidden rounded-xl border border-neutral-800 py-6 pl-4 pr-8 duration-200 hover:bg-neutral-800/50 lg:w-3/5">
+       <Suspense fallback={<div className="bg-background-secondary h-56 w-full rounded-xl border border-neutral-800" />}>
         <AreaChart className="h-56" data={exampleStatsData} index="date" categories={["Joins"]} yAxisWidth={50} showYAxis={true} showXAxis={false} />
        </Suspense>
       </div>

@@ -7,7 +7,7 @@ export default {
  cooldown: 3000,
  dm_permission: true,
  usage: "/dice",
- run: async (client, interaction, guildSettings) => {
+ run: (client, interaction, guildSettings) => {
   try {
    const dice = Math.floor(Math.random() * 6) + 1;
 

@@ -8,7 +8,7 @@ export default {
  cooldown: 3000,
  dm_permission: true,
  usage: "/servers",
- run: async (client, interaction, guildSettings) => {
+ run: (client, interaction, guildSettings) => {
   try {
    const allGuilds = client.guilds.cache;
    const allChannels = client.channels.cache;

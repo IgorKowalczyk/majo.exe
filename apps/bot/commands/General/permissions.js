@@ -13,7 +13,7 @@ export default {
  cooldown: 5000,
  dm_permission: false,
  usage: "/permissions",
- run: async (client, interaction, guildSettings) => {
+ run: (client, interaction, guildSettings) => {
   try {
    const clientMember = interaction.guild.members.cache.get(client.user.id);
    const requiredPermissions = new PermissionsBitField(client.config.permissions);

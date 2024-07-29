@@ -16,7 +16,7 @@ export async function getGuildMember(guildId, token) {
   const server = servers.find((server) => server.id === guildId);
   if (!server) return { error: "Invalid server ID" };
   return server;
- } catch (e) {
+ } catch (_e) {
   return { error: "Invalid server ID or user token" };
  }
 }

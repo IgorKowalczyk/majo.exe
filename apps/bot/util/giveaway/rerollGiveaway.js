@@ -25,7 +25,7 @@ export async function RerollGiveaway(client, interaction, color) {
 
   try {
    await client.giveawaysManager.reroll(giveaway.messageId);
-  } catch (err) {
+  } catch (_err) {
    return client.errorMessages.createSlashError(interaction, "❌ Something went wrong while rerolling the giveaway!");
   }
 

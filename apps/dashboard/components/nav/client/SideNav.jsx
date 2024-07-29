@@ -9,14 +9,14 @@ import { ButtonPrimary } from "@/components/Buttons";
 import { Icons, iconVariants } from "@/components/Icons";
 
 export function NavBadge({ children }) {
- return <div className="-mt-3 rounded-md bg-button-primary px-1 py-px pb-0 text-xs uppercase">{children}</div>;
+ return <div className="bg-button-primary -mt-3 rounded-md px-1 py-px pb-0 text-xs uppercase">{children}</div>;
 }
 
 export function SideNavLink({ href, children }) {
  const router = usePathname();
  const isSelected = (path) => router === path;
  return (
-  <Link href={href} className={`${isSelected(href) ? "bg-button-primary/20 before:!h-[29px]" : "hover:bg-button-primary/20"} flex h-[45px] w-full items-center gap-2 rounded-md py-2 pr-4 duration-200 before:h-0 before:rounded-r-md before:border-l-4 before:border-button-primary before:duration-200 hover:bg-button-primary/20 hover:before:h-[29px]`}>
+  <Link href={href} className={`${isSelected(href) ? "bg-button-primary/20 before:!h-[29px]" : "hover:bg-button-primary/20"} before:border-button-primary hover:bg-button-primary/20 flex h-[45px] w-full items-center gap-2 rounded-md py-2 pr-4 duration-200 before:h-0 before:rounded-r-md before:border-l-4 before:duration-200 hover:before:h-[29px]`}>
    {children}
   </Link>
  );
@@ -34,7 +34,7 @@ export function SideNav({ server }) {
       "pointer-events-none opacity-0": !sideNavVisible,
       "opacity-100": sideNavVisible,
      },
-     "fixed z-[9998] mt-8 flex h-screen w-64 flex-none flex-col flex-nowrap overflow-y-auto overflow-x-hidden border-r border-r-neutral-800 bg-background-navbar py-8 pb-32 shadow-lg duration-100 md:pointer-events-auto md:top-0 md:mt-16 md:opacity-100"
+     "bg-background-navbar fixed z-[9998] mt-8 flex h-screen w-64 flex-none flex-col flex-nowrap overflow-y-auto overflow-x-hidden border-r border-r-neutral-800 py-8 pb-32 shadow-lg duration-100 md:pointer-events-auto md:top-0 md:mt-16 md:opacity-100"
     )}
    >
     <div className="px-4">

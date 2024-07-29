@@ -44,7 +44,7 @@ export async function StartGiveaway(client, interaction, color) {
      endedAt: "Ended at",
     },
    });
-  } catch (err) {
+  } catch (_err) {
    return client.errorMessages.createSlashError(interaction, "❌ Something went wrong while creating the giveaway!");
   }
 
@@ -106,7 +106,7 @@ export async function StartDropGiveaway(client, interaction, color) {
      winners: "> Winner(s): ",
     },
    });
-  } catch (err) {
+  } catch (_err) {
    return client.errorMessages.createSlashError(interaction, "❌ Something went wrong while creating the giveaway!");
   }
 

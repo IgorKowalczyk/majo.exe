@@ -7,7 +7,7 @@ export default {
  cooldown: 3000,
  dm_permission: true,
  usage: "/uptime",
- run: async (client, interaction, guildSettings) => {
+ run: (client, interaction, guildSettings) => {
   try {
    const embed = new EmbedBuilder()
     .setTitle("📈 Majo.exe uptime")

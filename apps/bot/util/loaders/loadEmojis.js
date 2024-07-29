@@ -73,7 +73,7 @@ export async function uploadEmoji(clientId, client, { name, image }) {
    try {
     const error = await emojiUpload.json();
     throw new Error(`Failed to upload emoji: ${error} (${emojiUpload.statusText})`);
-   } catch (error) {
+   } catch (_e) {
     throw new Error(`Failed to upload emoji: ${emojiUpload.statusText}`);
    }
   }

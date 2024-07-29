@@ -16,7 +16,7 @@ export default {
    max_length: 256,
   },
  ],
- run: async (client, interaction, guildSettings) => {
+ run: (client, interaction, guildSettings) => {
   try {
    const query = interaction.options.getString("query");
 

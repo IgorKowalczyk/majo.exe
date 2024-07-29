@@ -25,7 +25,7 @@ export async function PauseGiveaway(client, interaction, color) {
 
   try {
    await client.giveawaysManager.pause(giveaway.messageId);
-  } catch (err) {
+  } catch (_err) {
    return client.errorMessages.createSlashError(interaction, "❌ Something went wrong while pausing the giveaway!");
   }
 

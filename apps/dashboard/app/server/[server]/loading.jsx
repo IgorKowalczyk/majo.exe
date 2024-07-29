@@ -6,7 +6,7 @@ export default function Loading() {
  return (
   <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
    <Header1 className="!mb-6 flex flex-col !justify-normal">
-    <div className="size-24 min-h-24 min-w-24 rounded-full bg-button-secondary" />
+    <div className="bg-button-secondary size-24 min-h-24 min-w-24 rounded-full" />
     <div className="flex flex-col items-center justify-center text-center sm:ml-4">
      <TextSkeleton className="w-32" />
      <Header5 className="mt-2 text-center opacity-60">

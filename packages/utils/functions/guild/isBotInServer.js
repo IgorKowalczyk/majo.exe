@@ -16,7 +16,7 @@ export async function isBotInServer(guildId) {
   });
   if (res.ok) return true;
   return false;
- } catch (e) {
+ } catch (_e) {
   return false;
  }
 }

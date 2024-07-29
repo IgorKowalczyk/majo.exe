@@ -104,7 +104,7 @@ export default async function ModulesPage({ params }) {
       </Header3>
 
       {guild.guildDisabledCategories.some((cat) => cat.categoryName === category.name) && (
-       <div className="my-4 flex flex-row flex-wrap items-start whitespace-nowrap rounded-md border border-accent-primary bg-accent-primary/10 p-4">
+       <div className="border-accent-primary bg-accent-primary/10 my-4 flex flex-row flex-wrap items-start whitespace-nowrap rounded-md border p-4">
         <span className="mr-1 flex flex-row items-center whitespace-nowrap font-bold">
          <Icons.info className={iconVariants({ variant: "normal", className: "stroke-accent-primary mr-1" })} /> Note:
         </span>
@@ -120,7 +120,7 @@ export default async function ModulesPage({ params }) {
        )}
       >
        {category.commands.map((command) => (
-        <div key={command.name} className="hide-scrollbar my-2 w-full overflow-scroll rounded-md border border-neutral-800 bg-background-navbar px-6 py-4">
+        <div key={command.name} className="hide-scrollbar bg-background-navbar my-2 w-full overflow-scroll rounded-md border border-neutral-800 px-6 py-4">
          <div className="flex flex-row items-center justify-between">
           <div
            className={clsx(

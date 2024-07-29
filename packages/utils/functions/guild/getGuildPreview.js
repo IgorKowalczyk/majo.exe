@@ -18,7 +18,7 @@ export async function getGuildPreview(id) {
   if (!res.ok) return { error: "Invalid server ID" };
   const json = await res.json();
   return json;
- } catch (e) {
+ } catch (_e) {
   return { error: "Invalid server ID" };
  }
 }

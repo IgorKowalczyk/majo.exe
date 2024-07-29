@@ -25,7 +25,7 @@ export async function EndGiveaway(client, interaction, color) {
 
   try {
    await client.giveawaysManager.end(giveaway.messageId);
-  } catch (err) {
+  } catch (_err) {
    return client.errorMessages.createSlashError(interaction, "❌ Something went wrong while ending the giveaway!");
   }
 

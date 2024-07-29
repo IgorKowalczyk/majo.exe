@@ -2,12 +2,12 @@ import clsx from "clsx";
 import { Header4 } from "@/components/Headers";
 
 export function Card({ children }) {
- return <div className="rounded-xl border border-accent-primary bg-accent-primary/5 px-6 py-3">{children}</div>;
+ return <div className="border-accent-primary bg-accent-primary/5 rounded-xl border px-6 py-3">{children}</div>;
 }
 
 export function GraphCard({ data, className }) {
  return (
-  <div className={clsx("mt-4 overflow-auto rounded-lg border border-neutral-800 bg-background-secondary p-4", className)}>
+  <div className={clsx("bg-background-secondary mt-4 overflow-auto rounded-lg border border-neutral-800 p-4", className)}>
    <div className="flex flex-row items-center justify-between">
     <div className="flex flex-row items-center gap-4">
      {data.icon}
@@ -18,7 +18,7 @@ export function GraphCard({ data, className }) {
     </div>
     <div className="flex flex-row items-center gap-4">
      {parseInt(data.value) > 0 ? (
-      <p className="flex gap-2 rounded-full border border-accent-primary/50 bg-accent-primary/20 px-2 py-1 text-sm font-bold text-accent-primary">
+      <p className="border-accent-primary/50 bg-accent-primary/20 text-accent-primary flex gap-2 rounded-full border px-2 py-1 text-sm font-bold">
        +{data.value} {data.graph}
       </p>
      ) : parseInt(data.value) < 0 ? (

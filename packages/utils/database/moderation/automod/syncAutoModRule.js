@@ -37,7 +37,7 @@ export async function syncAutoModRule(guildId, ruleType) {
    } else {
     return existingRule;
    }
-  } catch (err) {
+  } catch (_err) {
    await deleteAutoModRule(guildId, createdRule.ruleId);
    return null;
   }

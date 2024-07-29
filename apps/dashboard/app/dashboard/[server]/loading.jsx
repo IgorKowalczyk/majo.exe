@@ -16,14 +16,14 @@ export default function Loading() {
    </div>
 
    <div className="mb-4 grid grid-cols-1 gap-0 md:grid-cols-1 md:gap-4 lg:grid-cols-2 xl:grid-cols-3">
-    <div className="mt-4 overflow-auto rounded-lg border border-neutral-800 bg-background-secondary p-4">
+    <div className="bg-background-secondary mt-4 overflow-auto rounded-lg border border-neutral-800 p-4">
      <div className="flex flex-row items-center justify-between">
       <div className="flex flex-row items-center gap-4">
        <Icons.userAdd className={iconVariants({ variant: "extraLarge" })} />
        <div className="flex flex-col">
         <Header4 className="!justify-start whitespace-nowrap">
          New members
-         <span className="rounded-md bg-accent-primary px-2 text-sm font-normal text-white">Loading...</span>
+         <span className="bg-accent-primary rounded-md px-2 text-sm font-normal text-white">Loading...</span>
         </Header4>
         <p className="text-sm text-gray-400">Amount of new members that joined your server in the last 7 days.</p>
        </div>
@@ -32,14 +32,14 @@ export default function Loading() {
      </div>
     </div>
 
-    <div className="mt-4 overflow-auto rounded-lg border border-neutral-800 bg-background-secondary p-4">
+    <div className="bg-background-secondary mt-4 overflow-auto rounded-lg border border-neutral-800 p-4">
      <div className="flex flex-row items-center justify-between">
       <div className="flex flex-row items-center gap-4">
        <Icons.commentAdd className={iconVariants({ variant: "extraLarge" })} />
        <div className="flex flex-col">
         <Header4 className="!justify-start whitespace-nowrap">
          Messages sent
-         <span className="rounded-md bg-accent-primary px-2 text-sm font-normal text-white">Loading...</span>
+         <span className="bg-accent-primary rounded-md px-2 text-sm font-normal text-white">Loading...</span>
         </Header4>
         <p className="text-sm text-gray-400">Amount of messages that were sent in your server in the last 7 days.</p>
        </div>
@@ -48,14 +48,14 @@ export default function Loading() {
      </div>
     </div>
 
-    <div className="mt-4 overflow-auto rounded-lg border border-neutral-800 bg-background-secondary p-4">
+    <div className="bg-background-secondary mt-4 overflow-auto rounded-lg border border-neutral-800 p-4">
      <div className="flex flex-row items-center justify-between">
       <div className="flex flex-row items-center gap-4">
        <Icons.userMinus className={iconVariants({ variant: "extraLarge" })} />
        <div className="flex flex-col">
         <Header4 className="!justify-start whitespace-nowrap">
          Members left
-         <span className="rounded-md bg-accent-primary px-2 text-sm font-normal text-white">Loading...</span>
+         <span className="bg-accent-primary rounded-md px-2 text-sm font-normal text-white">Loading...</span>
         </Header4>
         <p className="text-sm text-gray-400">Amount of members that left your server in the last 7 days.</p>
        </div>

@@ -1,6 +1,6 @@
 import { EmbedBuilder } from "discord.js";
 
-export async function getMemberInfo(client, interaction, color) {
+export function getMemberInfo(client, interaction, color) {
  try {
   const user = interaction.options.getMember("user");
 

@@ -17,7 +17,7 @@ export default {
    max_length: 500,
   },
  ],
- run: async (client, interaction, guildSettings) => {
+ run: (client, interaction, guildSettings) => {
   try {
    const text = interaction.options.getString("text");
 

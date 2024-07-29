@@ -31,7 +31,7 @@ export default {
    ],
   },
  ],
- run: async (client, interaction, guildSettings) => {
+ run: (client, interaction, guildSettings) => {
   try {
    if (interaction.options.getSubcommand() == "coin") {
     const coin = Math.floor(Math.random() * 2) + 1;

@@ -16,7 +16,7 @@ export default {
    max_length: 100,
   },
  ],
- run: async (client, interaction, guildSettings) => {
+ run: (client, interaction, guildSettings) => {
   try {
    const args = interaction.options.getString("question");
 

@@ -1,4 +1,3 @@
-/* eslint-disable complexity */
 import { ApplicationCommandType, ApplicationCommandOptionType, PermissionsBitField, PermissionFlagsBits, EmbedBuilder } from "discord.js";
 
 export default {

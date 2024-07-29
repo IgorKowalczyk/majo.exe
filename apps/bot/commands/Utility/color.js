@@ -19,7 +19,7 @@ export default {
    max_length: 7,
   },
  ],
- run: async (client, interaction) => {
+ run: (client, interaction) => {
   try {
    let color = interaction.options.getString("color");
    let random;

@@ -7,7 +7,7 @@ export default {
  cooldown: 3000,
  dm_permission: true,
  usage: "/donate",
- run: async (client, interaction, guildSettings) => {
+ run: (client, interaction, guildSettings) => {
   try {
    if (!client.config.donate.enabled || !client.config.donate.links) {
     const embed = new EmbedBuilder()

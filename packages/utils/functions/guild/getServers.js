@@ -23,7 +23,7 @@ export async function getServers(token) {
    server.permissions_names = getPermissionNames(BigInt(server.permissions || 0)) || [];
   }
   return json;
- } catch (e) {
+ } catch (_e) {
   return { error: "Invalid token" };
  }
 }

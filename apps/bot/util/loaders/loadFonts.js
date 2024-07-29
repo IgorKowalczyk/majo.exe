@@ -8,7 +8,7 @@ import { GlobalFonts } from "@napi-rs/canvas";
  * @returns {Promise<void>} Promise that resolves when all fonts are loaded
  * @throws {Error} Error that is thrown if a font could not be loaded
  */
-export default async function loadFonts(client) {
+export default function loadFonts(client) {
  try {
   const loadTime = performance.now();
   const fonts = readDir(`${process.cwd()}/util/images/fonts/`, true, [".ttf"]);

@@ -15,7 +15,7 @@ export default {
    required: false,
   },
  ],
- run: async (client, interaction, guildSettings) => {
+ run: (client, interaction, guildSettings) => {
   try {
    const user = interaction.options.getUser("user") || interaction.member.user;
    const iq = Math.floor(Math.random() * 200) + 1;

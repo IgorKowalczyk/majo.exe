@@ -39,7 +39,7 @@ export default {
    ],
   },
  ],
- run: async (client, interaction, guildSettings) => {
+ run: (client, interaction, guildSettings) => {
   try {
    const type = interaction.options.getSubcommand();
 

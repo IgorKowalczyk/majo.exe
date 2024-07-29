@@ -25,7 +25,7 @@ export async function ResumeGiveaway(client, interaction, color) {
 
   try {
    await client.giveawaysManager.unpause(giveaway.messageId);
-  } catch (err) {
+  } catch (_err) {
    return client.errorMessages.createSlashError(interaction, "❌ Something went wrong while resuming the giveaway!");
   }
 

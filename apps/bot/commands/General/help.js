@@ -186,7 +186,7 @@ export default {
       });
      try {
       await i.update({ embeds: [embed], components: actionRow });
-     } catch (err) {
+     } catch (_err) {
       return;
      }
     });
@@ -194,7 +194,7 @@ export default {
     collector.on("end", async () => {
      try {
       await interaction.editReply({ embeds: [embed], components: globalActionRow });
-     } catch (err) {
+     } catch (_err) {
       return;
      }
     });
