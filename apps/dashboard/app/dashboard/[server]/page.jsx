@@ -134,7 +134,7 @@ export default async function OverviewPage({ params }) {
  return (
   <>
    <div className="mb-4 flex flex-col items-center justify-normal gap-4 sm:flex-row">
-    {guildPreview.icon ? <Image src={`https://cdn.discordapp.com/icons/${guildPreview.id}/${guildPreview.icon}.${guildPreview.icon.startsWith("a_") ? "gif" : "png"}`} alt={guildPreview.name} quality={95} width={64} height={64} className="size-16 min-h-16 min-w-16 rounded-full" /> : <div className="bg-button-secondary size-16 min-h-16 min-w-16 rounded-full" />}
+    {guildPreview.icon ? <Image src={`https://cdn.discordapp.com/icons/${guildPreview.id}/${guildPreview.icon}.${guildPreview.icon.startsWith("a_") ? "gif" : "png"}`} alt={guildPreview.name} quality={95} width={64} height={64} className="size-16 min-h-16 min-w-16 rounded-full" /> : <div className="size-16 min-h-16 min-w-16 rounded-full bg-button-secondary" />}
     <div className="flex flex-col justify-center text-center sm:ml-4 sm:justify-start sm:text-left">
      <Header1 className="mb-0">{guildPreview.name || "Unnamed server"}</Header1>
      <Header5 className="mt-2 text-center opacity-60 sm:text-left">
@@ -144,14 +144,14 @@ export default async function OverviewPage({ params }) {
    </div>
 
    <div className="mb-4 grid grid-cols-1 gap-0 md:grid-cols-1 md:gap-4 lg:grid-cols-2 xl:grid-cols-3">
-    <Link href={`/dashboard/${serverDownload.id}/statistics`} className="bg-background-secondary mt-4 cursor-pointer overflow-auto rounded-lg border border-neutral-800 p-4">
+    <Link href={`/dashboard/${serverDownload.id}/statistics`} className="mt-4 cursor-pointer overflow-auto rounded-lg border border-neutral-800 bg-background-secondary p-4">
      <div className="flex flex-row items-center justify-between">
       <div className="flex flex-row items-center gap-4">
        <Icons.userAdd className={iconVariants({ variant: "extraLarge" })} />
        <div className="flex flex-col">
         <Header4 className="!justify-start whitespace-nowrap">
          New members
-         <span className="bg-accent-primary rounded-md px-2 text-sm font-normal text-white">+{newMembers}</span>
+         <span className="rounded-md bg-accent-primary px-2 text-sm font-normal text-white">+{newMembers}</span>
         </Header4>
         <p className="text-sm text-gray-400">Amount of new members that joined your server in the last 7 days.</p>
        </div>
@@ -162,14 +162,14 @@ export default async function OverviewPage({ params }) {
      </div>
     </Link>
 
-    <Link href={`/dashboard/${serverDownload.id}/statistics`} className="bg-background-secondary mt-4 cursor-pointer overflow-auto rounded-lg border border-neutral-800 p-4">
+    <Link href={`/dashboard/${serverDownload.id}/statistics`} className="mt-4 cursor-pointer overflow-auto rounded-lg border border-neutral-800 bg-background-secondary p-4">
      <div className="flex flex-row items-center justify-between">
       <div className="flex flex-row items-center gap-4">
        <Icons.commentAdd className={iconVariants({ variant: "extraLarge" })} />
        <div className="flex flex-col">
         <Header4 className="!justify-start whitespace-nowrap">
          Messages sent
-         <span className="bg-accent-primary rounded-md px-2 text-sm font-normal text-white">+{newMessages}</span>
+         <span className="rounded-md bg-accent-primary px-2 text-sm font-normal text-white">+{newMessages}</span>
         </Header4>
         <p className="text-sm text-gray-400">Amount of messages that were sent in your server in the last 7 days.</p>
        </div>
@@ -180,14 +180,14 @@ export default async function OverviewPage({ params }) {
      </div>
     </Link>
 
-    <Link href={`/dashboard/${serverDownload.id}/statistics`} className="bg-background-secondary mt-4 cursor-pointer overflow-auto rounded-lg border border-neutral-800 p-4">
+    <Link href={`/dashboard/${serverDownload.id}/statistics`} className="mt-4 cursor-pointer overflow-auto rounded-lg border border-neutral-800 bg-background-secondary p-4">
      <div className="flex flex-row items-center justify-between">
       <div className="flex flex-row items-center gap-4">
        <Icons.userMinus className={iconVariants({ variant: "extraLarge" })} />
        <div className="flex flex-col">
         <Header4 className="!justify-start whitespace-nowrap">
          Members left
-         <span className="bg-accent-primary rounded-md px-2 text-sm font-normal text-white">-{membersLeft}</span>
+         <span className="rounded-md bg-accent-primary px-2 text-sm font-normal text-white">-{membersLeft}</span>
         </Header4>
         <p className="text-sm text-gray-400">Amount of members that left your server in the last 7 days.</p>
        </div>

@@ -61,7 +61,7 @@ export default async function CustomOverviewPage({ params }) {
  return (
   <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
    <Header1 className="!mb-6 flex flex-col !justify-normal">
-    {guildPreview.icon ? <Image src={`https://cdn.discordapp.com/icons/${guildPreview.id}/${guildPreview.icon}.${guildPreview.icon.startsWith("a_") ? "gif" : "png"}`} alt={guildPreview.name} quality={95} width={96} height={96} className="size-24 rounded-full" /> : <div className="bg-button-secondary size-24 rounded-full" />}
+    {guildPreview.icon ? <Image src={`https://cdn.discordapp.com/icons/${guildPreview.id}/${guildPreview.icon}.${guildPreview.icon.startsWith("a_") ? "gif" : "png"}`} alt={guildPreview.name} quality={95} width={96} height={96} className="size-24 rounded-full" /> : <div className="size-24 rounded-full bg-button-secondary" />}
     <div className="flex flex-col text-center sm:ml-4">
      {guildPreview.name || "Unnamed server"}
      <Header5 className="mt-2 text-center opacity-60">

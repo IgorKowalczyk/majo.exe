@@ -80,7 +80,7 @@ export function CategoryBar({ percent = 50, ...props }) {
         "bg-yellow-500": percent > 30 && percent <= 60,
         "bg-emerald-500": percent > 60,
        },
-       "ring-background-secondary mx-auto h-4 w-1 rounded-full ring-2"
+       "mx-auto h-4 w-1 rounded-full ring-2 ring-background-secondary"
       )}
      />
     </div>

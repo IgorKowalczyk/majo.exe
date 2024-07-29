@@ -86,7 +86,7 @@ function GenerateComponent({ title, data, CSVData, valueName, fileName, categori
      </Menu>
      <Listbox value={dateRange} onChange={setDateRange}>
       <div className="relative">
-       <Listbox.Button className="hover:bg-background-menu-button ui-open:border-neutral-700 ui-open:bg-background-menu-button ml-2 flex h-10 cursor-pointer select-none items-center gap-3 rounded-md border border-neutral-800 px-3 py-2 text-sm font-normal duration-200 hover:border-neutral-700 motion-reduce:transition-none sm:text-sm">
+       <Listbox.Button className="ml-2 flex h-10 cursor-pointer select-none items-center gap-3 rounded-md border border-neutral-800 px-3 py-2 text-sm font-normal duration-200 hover:border-neutral-700 hover:bg-background-menu-button ui-open:border-neutral-700 ui-open:bg-background-menu-button motion-reduce:transition-none sm:text-sm">
         <>
          <Icons.calendarRange className={iconVariants({ variant: "small" })} />
          <span>Date Range: {dateRange}</span>
@@ -94,9 +94,9 @@ function GenerateComponent({ title, data, CSVData, valueName, fileName, categori
         </>
        </Listbox.Button>
        <Transition as={Fragment} enter="transition ease-out duration-100" enterFrom="transform opacity-0 scale-95" enterTo="transform opacity-100 scale-100" leave="transition ease-in duration-75" leaveFrom="transform opacity-100 scale-100" leaveTo="transform opacity-0 scale-95">
-        <Listbox.Options className="bg-background-secondary absolute right-0 z-50 mt-2 w-56 origin-top-right rounded-xl border border-neutral-800 px-2 py-1 shadow-2xl">
+        <Listbox.Options className="absolute right-0 z-50 mt-2 w-56 origin-top-right rounded-xl border border-neutral-800 bg-background-secondary px-2 py-1 shadow-2xl">
          {dateRanges.map((range) => (
-          <Listbox.Option key={`range-${range}`} value={range} className="ui-active:bg-button-primary ui-active:text-white group my-1 flex w-full cursor-pointer items-center rounded-md p-2 text-sm font-normal text-gray-400 duration-200 motion-reduce:transition-none">
+          <Listbox.Option key={`range-${range}`} value={range} className="group my-1 flex w-full cursor-pointer items-center rounded-md p-2 text-sm font-normal text-gray-400 duration-200 ui-active:bg-button-primary ui-active:text-white motion-reduce:transition-none">
            {range}
           </Listbox.Option>
          ))}

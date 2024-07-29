@@ -43,7 +43,7 @@ export default async function Dashboard() {
       servers.map((server) => (
        <div key={server.id}>
         <div className="hidden flex-row items-center justify-start gap-4 sm:flex">
-         {server.icon ? <Image src={`https://cdn.discordapp.com/icons/${server.id}/${server.icon}.${server.icon.startsWith("a_") ? "gif" : "png"}`} alt={server.name} quality={95} width={64} height={64} className="size-16 min-h-16 min-w-16 rounded-full" /> : <div className="bg-button-secondary size-16 min-h-16 min-w-16 rounded-full" />}
+         {server.icon ? <Image src={`https://cdn.discordapp.com/icons/${server.id}/${server.icon}.${server.icon.startsWith("a_") ? "gif" : "png"}`} alt={server.name} quality={95} width={64} height={64} className="size-16 min-h-16 min-w-16 rounded-full" /> : <div className="size-16 min-h-16 min-w-16 rounded-full bg-button-secondary" />}
          <Header3 className="text-center">{server.name}</Header3>
          <>
           {server.bot ? (
@@ -79,7 +79,7 @@ export default async function Dashboard() {
              {
               "opacity-20": !server.bot,
              },
-             "bg-button-secondary size-24 min-h-24 min-w-24 rounded-md"
+             "size-24 min-h-24 min-w-24 rounded-md bg-button-secondary"
             )}
            />
           )}

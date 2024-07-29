@@ -61,7 +61,7 @@ export function LogDisclosure({ item, index, guildId, preview = false }) {
       {item.user?.discriminator !== "0" && <span className="opacity-70">#{item.user?.discriminator || "0000"}</span>} (ID: {item.user?.discordId || item.user?.id})
      </>
     ) : (
-     <Link href={`/dashboard/${guildId}/user/${item.user?.discordId}`} className="hover:text-button-primary opacity-70 duration-200 hover:opacity-100">
+     <Link href={`/dashboard/${guildId}/user/${item.user?.discordId}`} className="opacity-70 duration-200 hover:text-button-primary hover:opacity-100">
       {item.user?.global_name || item.user?.username}
       {item.user?.discriminator !== "0" && <span className="opacity-70">#{item.user?.discriminator || "0000"}</span>} (ID: {item.user?.discordId || item.user?.id})
      </Link>
@@ -117,7 +117,7 @@ export default function Logs({ initialItems, id }) {
    <div className="mb-4 flex items-center justify-center gap-2">
     <InputWithIcon placeholder="Search..." value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} icon={<Icons.refresh className={iconVariants({ variant: "normal", className: "text-white/50" })} />} />
     <Tooltip content={sortDescending ? "Sort ascending" : "Sort descending"}>
-     <span onClick={() => setSortDescending(!sortDescending)} className="hover:border-button-primary flex h-[41.6px] cursor-pointer items-center justify-center rounded-md border border-neutral-800 px-3 py-2 text-white duration-200">
+     <span onClick={() => setSortDescending(!sortDescending)} className="flex h-[41.6px] cursor-pointer items-center justify-center rounded-md border border-neutral-800 px-3 py-2 text-white duration-200 hover:border-button-primary">
       <div className="relative size-5">
        <Icons.sortDescending
         className={iconVariants({

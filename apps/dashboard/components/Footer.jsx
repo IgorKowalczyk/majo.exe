@@ -40,7 +40,7 @@ export function Footer() {
       {/* =================================================== */}
       {!process.env.NEXT_PUBLIC_IS_HOSTED_BY_CREATOR ? (
        <div className="mt-3 text-neutral-300">
-        <Link target="_blank" href="https://majoexe.xyz" className="text-accent-primary font-semibold hover:opacity-80">
+        <Link target="_blank" href="https://majoexe.xyz" className="font-semibold text-accent-primary hover:opacity-80">
          🔥 Powered by Majo.exe!
         </Link>
         <div className="mt-2">
