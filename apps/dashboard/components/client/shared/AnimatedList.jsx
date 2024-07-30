@@ -7,6 +7,7 @@ import React, { useEffect, useMemo, useState } from "react";
 
 export const AnimatedList = React.memo(({ className, children, delay = 1000 }) => {
  const [index, setIndex] = useState(0);
+ /* eslint-disable-next-line @eslint-react/no-children-to-array */
  const childrenArray = React.Children.toArray(children);
 
  useEffect(() => {

@@ -7,12 +7,4 @@ export default [
  ...eslintConfig.next,
  ...eslintConfig.node,
  ...eslintConfig.tailwindcss,
- {
-  rules: {
-   "@eslint-react/no-unstable-context-value": "off",
-   "react-a11y/click-events-have-key-events": "off",
-   "react-a11y/no-noninteractive-element-interactions": "off",
-   "react-a11y/no-static-element-interactions": "off",
-  },
- },
 ];
