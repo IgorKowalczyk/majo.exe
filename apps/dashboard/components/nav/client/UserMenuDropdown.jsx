@@ -29,7 +29,13 @@ export function UserMenuDropdown({ user }) {
      <Menu.Link href="/discord">
       <Icons.help className={iconVariants({ variant: "button", className: "ml-1" })} /> Support
      </Menu.Link>
-     <Menu.Item onClick={() => signOut({ redirect: true, callbackUrl: "/" })} style="action">
+     <Menu.Item
+      onClick={(e) => {
+       e.preventDefault();
+       signOut({ redirect: true, callbackUrl: "/" });
+      }}
+      style="action"
+     >
       <Icons.logout className={iconVariants({ variant: "button", className: "ml-1" })} /> Logout
      </Menu.Item>
     </div>

@@ -2,6 +2,8 @@ import prismaClient from "@majoexe/database";
 import { Logger } from "@majoexe/util/functions/util";
 import { NextResponse } from "next/server";
 
+export const dynamic = "force-dynamic";
+
 export async function GET(request) {
  try {
   const authHeader = request.headers.get("authorization");

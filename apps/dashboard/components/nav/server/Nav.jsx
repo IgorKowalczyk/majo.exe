@@ -3,7 +3,7 @@ import clsx from "clsx";
 import { getSession } from "lib/session";
 import Link from "next/link";
 import { ButtonSecondary } from "@/components/Buttons";
-import { ProviderLogin } from "@/components/client/ProviderLogin";
+import { DiscordLogin } from "@/components/client/DiscordLogin";
 import Image from "@/components/client/shared/Image";
 import { Icons, iconVariants } from "@/components/Icons";
 import { SideMenuControl } from "@/components/nav/client/SideMenuControl";
@@ -53,7 +53,7 @@ export async function Nav({ theme }) {
          Add to your server
         </ButtonSecondary>
        </div>
-       <ProviderLogin provider={{ id: "discord", name: "Discord" }} />
+       <DiscordLogin />
       </div>
      )}
     </div>

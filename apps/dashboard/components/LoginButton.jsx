@@ -1,13 +1,13 @@
 import { getSession } from "lib/session";
 import { Icons, iconVariants } from "./Icons";
 import { ButtonPrimary } from "@/components/Buttons";
-import { ProviderLogin } from "@/components/client/ProviderLogin";
+import { DiscordLogin } from "@/components/client/DiscordLogin";
 
 export async function LoginButton() {
  const session = await getSession();
 
  if (!session) {
-  return <ProviderLogin provider={{ id: "discord", name: "Discord" }} />;
+  return <DiscordLogin />;
  }
 
  return (
