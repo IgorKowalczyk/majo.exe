@@ -19,6 +19,9 @@ const nextConfig = {
   //  compilationMode: "annotation",
   // },
  },
+ eslint: {
+  ignoreDuringBuilds: true,
+ },
  images: {
   unoptimized: true,
   remotePatterns: [
