@@ -140,8 +140,8 @@ importers:
         specifier: 14.2.5
         version: 14.2.5(@mdx-js/loader@3.0.1(webpack@5.93.0))(@mdx-js/react@3.0.1(@types/react@18.3.3)(react@18.3.1))
       '@odiffey/discord-markdown':
-        specifier: 3.1.2
-        version: 3.1.2(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+        specifier: 3.2.0
+        version: 3.2.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@tippyjs/react':
         specifier: 4.2.6
         version: 4.2.6(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
@@ -1568,8 +1568,8 @@ packages:
     resolution: {integrity: sha512-xWHnb60XmsUL0YWvYER7jWghMYIqG+jA+ZR9UDx1k2GozflbiRJxh66OJLzITqxypUHEzgce30hvD0T1/37A6A==}
     engines: {node: '>=12'}
 
-  '@odiffey/discord-markdown@3.1.2':
-    resolution: {integrity: sha512-V+lVkoMhiNVEyLJ4ezmvigHU91SwiACc13jcBDosfkUbcLK82YXG+L6Dkzuaw7EY34Gh4HGO6+n8ZtwEF1WZJQ==}
+  '@odiffey/discord-markdown@3.2.0':
+    resolution: {integrity: sha512-HIuB5wOyv4t9ODJG76GkNKpvtUJ/aF2DXDXyiXmLeJJZWYA8Ynz7ULceybbWRHHxAeo0VdhnrAGgEM8JG8flcg==}
 
   '@panva/hkdf@1.2.1':
     resolution: {integrity: sha512-6oclG6Y3PiDFcoyk8srjLfVKyMfVCKJ27JwNPViuXziFpmdz+MZnZN/aKY0JGXgYuO/VghU0jcOAZgWXZ1Dmrw==}
@@ -2437,11 +2437,6 @@ packages:
     resolution: {integrity: sha512-yQbXgO/OSZVD2IsiLlro+7Hf6Q18EJrKSEsdoMzKePKXct3gvD8oLcOQdIzGupr5Fj+EDe8gO/lxc1BzfMpxvA==}
     engines: {node: '>=8'}
 
-  browserslist@4.23.2:
-    resolution: {integrity: sha512-qkqSyistMYdxAcw+CzbZwlBy8AGmS/eEWs+sEV5TnLRGDOL+C5M2EnH6tlZyg0YoAxGJAFKh61En9BR941GnHA==}
-    engines: {node: ^6 || ^7 || ^8 || ^9 || ^10 || ^11 || ^12 || >=13.7}
-    hasBin: true
-
   browserslist@4.23.3:
     resolution: {integrity: sha512-btwCFJVjI4YWDNfau8RhZ+B1Q/VLoUITrm3RlP6y1tYGWIOa+InuYiRGXUBXo8nA1qKmHMyLB/iVQg5TT4eFoA==}
     engines: {node: ^6 || ^7 || ^8 || ^9 || ^10 || ^11 || ^12 || >=13.7}
@@ -3058,9 +3053,6 @@ packages:
 
   ee-first@1.1.1:
     resolution: {integrity: sha512-WMwm9LhRUo+WUaRN+vRuETqG89IgZphVSNkdFgeb6sS/E4OrDIN7t48CAewSHXc6C8lefD8KKfr5vY61brQlow==}
-
-  electron-to-chromium@1.4.832:
-    resolution: {integrity: sha512-cTen3SB0H2SGU7x467NRe1eVcQgcuS6jckKfWJHia2eo0cHIGOqHoAxevIYZD4eRHcWjkvFzo93bi3vJ9W+1lA==}
 
   electron-to-chromium@1.5.4:
     resolution: {integrity: sha512-orzA81VqLyIGUEA77YkVA1D+N+nNfl2isJVjjmOyrlxuooZ19ynb+dOlaDTqd/idKRS9lDCSBmtzM+kyCsMnkA==}
@@ -4573,9 +4565,6 @@ packages:
 
   node-int64@0.4.0:
     resolution: {integrity: sha512-O5lz91xSOeoXP6DulyHfllpq+Eg00MWitZIbtPfoSEvqIHdl5gfcY6hYzDWnj0qD5tz52PI08u9qUvSVeUBeHw==}
-
-  node-releases@2.0.17:
-    resolution: {integrity: sha512-Ww6ZlOiEQfPfXM45v17oabk77Z7mg5bOt7AjDyzy7RjK9OrLrLC8dyZQoAPEOtFX9SaNf1Tdvr5gRJWdTJj7GA==}
 
   node-releases@2.0.18:
     resolution: {integrity: sha512-d9VeXT4SJ7ZeOqGX6R5EM022wpL+eWPooLI+5UpWn2jCT1aosUQEhQP214x33Wkwx3JQMvIm+tIoVOdodFS40g==}
@@ -6256,7 +6245,7 @@ snapshots:
     dependencies:
       '@babel/compat-data': 7.24.9
       '@babel/helper-validator-option': 7.24.8
-      browserslist: 4.23.2
+      browserslist: 4.23.3
       lru-cache: 5.1.1
       semver: 6.3.1
 
@@ -7741,7 +7730,7 @@ snapshots:
       interval-tree-1d: 1.0.4
       isoformat: 0.2.1
 
-  '@odiffey/discord-markdown@3.1.2(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
+  '@odiffey/discord-markdown@3.2.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
     dependencies:
       '@khanacademy/simple-markdown': 0.12.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       highlight.js: 11.10.0
@@ -8921,13 +8910,6 @@ snapshots:
     dependencies:
       fill-range: 7.1.1
 
-  browserslist@4.23.2:
-    dependencies:
-      caniuse-lite: 1.0.30001642
-      electron-to-chromium: 1.4.832
-      node-releases: 2.0.17
-      update-browserslist-db: 1.1.0(browserslist@4.23.2)
-
   browserslist@4.23.3:
     dependencies:
       caniuse-lite: 1.0.30001646
@@ -9179,7 +9161,7 @@ snapshots:
 
   core-js-compat@3.37.1:
     dependencies:
-      browserslist: 4.23.2
+      browserslist: 4.23.3
 
   core-util-is@1.0.3: {}
 
@@ -9582,8 +9564,6 @@ snapshots:
   eastasianwidth@0.2.0: {}
 
   ee-first@1.1.1: {}
-
-  electron-to-chromium@1.4.832: {}
 
   electron-to-chromium@1.5.4: {}
 
@@ -11640,8 +11620,6 @@ snapshots:
 
   node-int64@0.4.0: {}
 
-  node-releases@2.0.17: {}
-
   node-releases@2.0.18: {}
 
   node-stream-zip@1.15.0: {}
@@ -13082,12 +13060,6 @@ snapshots:
 
   unpipe@1.0.0: {}
 
-  update-browserslist-db@1.1.0(browserslist@4.23.2):
-    dependencies:
-      browserslist: 4.23.2
-      escalade: 3.1.2
-      picocolors: 1.0.1
-
   update-browserslist-db@1.1.0(browserslist@4.23.3):
     dependencies:
       browserslist: 4.23.3
@@ -13196,7 +13168,7 @@ snapshots:
       '@webassemblyjs/wasm-parser': 1.12.1
       acorn: 8.12.1
       acorn-import-attributes: 1.9.5(acorn@8.12.1)
-      browserslist: 4.23.2
+      browserslist: 4.23.3
       chrome-trace-event: 1.0.4
       enhanced-resolve: 5.17.0
       es-module-lexer: 1.5.4
