@@ -59,7 +59,7 @@
     "@prisma/nextjs-monorepo-workaround-plugin": "5.17.0",
     "@tailwindcss/typography": "0.5.13",
     "autoprefixer": "10.4.20",
-    "postcss": "8.4.40",
+    "postcss": "8.4.41",
     "prettier-plugin-tailwindcss": "0.6.5",
     "tailwind-gradient-mask-image": "1.2.0",
     "tailwind-merge": "2.4.0",
