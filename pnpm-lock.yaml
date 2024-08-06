@@ -52,8 +52,8 @@ importers:
         specifier: 0.1.53
         version: 0.1.53
       '@observablehq/plot':
-        specifier: 0.6.15
-        version: 0.6.15
+        specifier: 0.6.16
+        version: 0.6.16
       chalk:
         specifier: 5.3.0
         version: 5.3.0
@@ -1564,8 +1564,8 @@ packages:
     resolution: {integrity: sha512-oGB+UxlgWcgQkgwo8GcEGwemoTFt3FIO9ababBmaGwXIoBKZ+GTy0pP185beGg7Llih/NSHSV2XAs1lnznocSg==}
     engines: {node: '>= 8'}
 
-  '@observablehq/plot@0.6.15':
-    resolution: {integrity: sha512-xWHnb60XmsUL0YWvYER7jWghMYIqG+jA+ZR9UDx1k2GozflbiRJxh66OJLzITqxypUHEzgce30hvD0T1/37A6A==}
+  '@observablehq/plot@0.6.16':
+    resolution: {integrity: sha512-LRi9Rn93yUx90MIo2Md7+vazxO3Wiat14but2ttCER0xVS+jnfoUjuCGoz6H7bz/lgI9CFcW0HWlvWjMFjAv8g==}
     engines: {node: '>=12'}
 
   '@odiffey/discord-markdown@3.2.0':
@@ -7721,7 +7721,7 @@ snapshots:
       '@nodelib/fs.scandir': 2.1.5
       fastq: 1.17.1
 
-  '@observablehq/plot@0.6.15':
+  '@observablehq/plot@0.6.16':
     dependencies:
       d3: 7.9.0
       interval-tree-1d: 1.0.4
