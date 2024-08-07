@@ -57,7 +57,7 @@
   "devDependencies": {
     "@next/bundle-analyzer": "14.2.5",
     "@prisma/nextjs-monorepo-workaround-plugin": "5.18.0",
-    "@tailwindcss/typography": "0.5.13",
+    "@tailwindcss/typography": "0.5.14",
     "autoprefixer": "10.4.20",
     "postcss": "8.4.41",
     "prettier-plugin-tailwindcss": "0.6.5",
