@@ -58,7 +58,7 @@ export default {
    description: "👍 Set the reputation of a user",
    type: ApplicationCommandOptionType.Subcommand,
    usage: "/rep set <user> <amount>",
-   default_member_permissions: [PermissionFlagsBits.Administrator],
+   defaultMemberPermissions: [PermissionFlagsBits.Administrator],
    options: [
     {
      name: "user",

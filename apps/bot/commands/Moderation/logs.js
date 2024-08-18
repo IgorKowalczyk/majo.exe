@@ -8,7 +8,7 @@ export default {
  cooldown: 5000,
  dm_permission: false,
  usage: "/logs [page]",
- default_member_permissions: [PermissionFlagsBits.ManageGuild],
+ defaultMemberPermissions: [PermissionFlagsBits.ManageGuild],
  options: [
   {
    name: "page",

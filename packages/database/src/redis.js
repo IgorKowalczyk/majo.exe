@@ -18,7 +18,7 @@ export default cache;
  * Set a key in the cache
  *
  * @param {string} key - The key to set
- * @param {string} value - The value to set
+ * @param {object | string} value - The value to set
  * @param {number} ttl - The TTL (Time To Live) of the key in seconds
  * @returns {Promise<void>} - Promise that resolves when the key is set
  * */

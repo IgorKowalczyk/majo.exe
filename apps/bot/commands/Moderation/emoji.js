@@ -14,7 +14,7 @@ export default {
    description: "🎨 Create an emoji on this server",
    type: ApplicationCommandOptionType.Subcommand,
    usage: "/emoji create <emoji name> <emoji url>",
-   default_member_permissions: [PermissionFlagsBits.ManageGuildExpressions],
+   defaultMemberPermissions: [PermissionFlagsBits.ManageGuildExpressions],
    options: [
     {
      name: "emoji_name",
@@ -35,7 +35,7 @@ export default {
    description: "🎨 Delete an emoji from this server",
    type: ApplicationCommandOptionType.Subcommand,
    usage: "/emoji delete <emoji>",
-   default_member_permissions: [PermissionFlagsBits.ManageGuildExpressions],
+   defaultMemberPermissions: [PermissionFlagsBits.ManageGuildExpressions],
    options: [
     {
      name: "emoji",

@@ -1,0 +1,105 @@
+import { dirname } from "node:path";
+import { fileURLToPath } from "node:url";
+import { globalConfig, botConfig, debuggerConfig, dashboardConfig, globalPermissions } from "@majoexe/config";
+import { createErrorEmbed } from "@majoexe/util/embeds";
+import { Logger, chalk } from "@majoexe/util/functions/util";
+import { Client, type CommandInteraction, GatewayIntentBits, Collection } from "discord.js";
+import giveaway from "./util/giveaway/core.js";
+import loadCommands, { type SlashCommand } from "./util/loaders/loadCommands.js";
+import loadEmojis from "./util/loaders/loadEmojis.ts";
+import loadEvents from "./util/loaders/loadEvents.ts";
+import loadFonts from "./util/loaders/loadFonts.ts";
+import loadModals, { type Modal } from "./util/loaders/loadModals.ts";
+
+const cwd = dirname(fileURLToPath(import.meta.url));
+Logger("info", `Current working directory: ${cwd}`);
+process.chdir(cwd);
+
+Logger("info", "Starting Majo.exe Bot...");
+Logger("info", `Running version v${process.env.npm_package_version} on Node.js ${process.version} on ${process.platform} ${process.arch}`);
+Logger("info", "Check out the source code at https://github.com/igorkowalczyk/majo.exe! Don't forget to star the repository, it helps a lot!");
+
+class Majobot extends Client {
+ public config: Record<string, any> = {};
+ public modals: Collection<string, Modal> = new Collection();
+ public slashCommands: Collection<string, SlashCommand> = new Collection();
+ public additionalSlashCommands: number = 0;
+ public commandsRan: number = 0;
+ public giveawaysManager: any;
+ public errorMessages: {
+  internalError: (interaction: CommandInteraction, error: Error) => Promise<void>;
+  createSlashError: (interaction: CommandInteraction, description: string, title: string) => void;
+ } = {
+  internalError: async (interaction: CommandInteraction, error: Error): Promise<void> => {
+   Logger("error", error?.toString() ?? "Unknown error occurred");
+   const embed = createErrorEmbed("An error occurred while executing this command. Please try again later.", "Unknown error occurred");
+   await interaction.followUp({ embeds: [embed], ephemeral: true });
+  },
+  createSlashError: (interaction: CommandInteraction, description: string, title: string): void => {
+   const embed = createErrorEmbed(description, title);
+   embed.setFooter({
+    text: `Requested by ${interaction.user.globalName ?? interaction.user.username}`,
+    iconURL: interaction.user.displayAvatarURL(),
+   });
+   interaction.followUp({ embeds: [embed], ephemeral: true });
+  },
+ };
+ public debugger: (type: "info" | "event" | "error" | "warn" | "ready" | "cron", message: string) => void = (type, message) => {
+  Logger(type, message);
+ };
+ public performance: (time: number) => string = (time: number): string => {
+  const run = Math.floor(performance.now() - time);
+  return run > 500 ? chalk.underline.red(`${run}ms`) : chalk.underline(`${run}ms`);
+ };
+
+ constructor(options: any) {
+  super(options);
+ }
+}
+
+const client = new Majobot({
+ intents: [
+  // Prettier
+  GatewayIntentBits.Guilds,
+  GatewayIntentBits.GuildModeration,
+  GatewayIntentBits.GuildMembers,
+  GatewayIntentBits.GuildMessages,
+  GatewayIntentBits.GuildEmojisAndStickers,
+  GatewayIntentBits.GuildMessageReactions,
+ ],
+});
+
+client.config = {
+ ...botConfig,
+ ...globalPermissions,
+ ...globalConfig,
+ ...debuggerConfig,
+ ...dashboardConfig,
+};
+
+client.giveawaysManager = giveaway(client);
+
+await loadCommands(client);
+await loadModals(client);
+await loadFonts(client);
+await loadEvents(client);
+await loadEmojis(client);
+
+Logger("info", "Logging in...");
+
+process.on("unhandledRejection", (reason) => {
+ Logger("error", `Unhandled rejection: ${reason}`);
+});
+
+process.on("uncaughtException", (error) => {
+ Logger("error", `Uncaught exception: ${error}`);
+});
+
+process.on("warning", (warning) => {
+ Logger("warn", `Warning: ${warning}`);
+});
+
+await client.login(process.env.TOKEN);
+
+export default client;
+export type { Majobot };

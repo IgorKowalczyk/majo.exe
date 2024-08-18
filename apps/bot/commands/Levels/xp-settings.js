@@ -8,14 +8,14 @@ export default {
  cooldown: 3000,
  dm_permission: false,
  usage: "/xp-settings <subcommand>",
- default_member_permissions: [PermissionFlagsBits.Administrator],
+ defaultMemberPermissions: [PermissionFlagsBits.Administrator],
  options: [
   {
    name: "change",
    description: "📈 Change the XP settings of current server",
    type: ApplicationCommandOptionType.Subcommand,
    usage: "/xp-settings change <action> <type>",
-   default_member_permissions: [PermissionFlagsBits.Administrator],
+   defaultMemberPermissions: [PermissionFlagsBits.Administrator],
    options: [
     {
      name: "action",
@@ -56,7 +56,7 @@ export default {
    description: "📈 View the XP settings of current server",
    type: ApplicationCommandOptionType.Subcommand,
    usage: "/xp-settings view",
-   default_member_permissions: [PermissionFlagsBits.Administrator],
+   defaultMemberPermissions: [PermissionFlagsBits.Administrator],
   },
  ],
  run: async (client, interaction, guildSettings) => {

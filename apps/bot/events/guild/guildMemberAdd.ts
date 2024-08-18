@@ -1,10 +1,11 @@
 import prismaClient from "@majoexe/database";
 import { shortenText } from "@majoexe/util/functions/util";
-import { EmbedBuilder, AttachmentBuilder, PermissionsBitField } from "discord.js";
+import { EmbedBuilder, AttachmentBuilder, PermissionsBitField, type GuildMember } from "discord.js";
 import { createUserGuildCard } from "../../util/images/createUserGuildCard.js";
+import type { Majobot } from "../../index.js";
 
-export async function guildMemberAdd(client, member) {
- if (!member || !member.user || !member.guild) return;
+export async function guildMemberAdd(client: Majobot, member: GuildMember): Promise<void> {
+ if (!member || !member.user || !member.guild || !member.guild.available) return;
 
  const guild = await prismaClient.guild.upsert({
   where: {
@@ -26,6 +27,7 @@ export async function guildMemberAdd(client, member) {
    if (!welcomeChannel) return;
    if (!welcomeChannel.isTextBased()) return;
 
+   if (!member.guild.members.me) return;
    if (!member.guild.members.me.permissions.has(PermissionsBitField.Flags.SendMessages)) return;
    if (!member.guild.members.me.permissions.has(PermissionsBitField.Flags.EmbedLinks)) return;
    if (!member.guild.members.me.permissions.has(PermissionsBitField.Flags.AttachFiles)) return;
@@ -37,7 +39,6 @@ export async function guildMemberAdd(client, member) {
    if (!welcomeChannel.permissionsFor(member.guild.members.me).has(PermissionsBitField.Flags.ViewChannel)) return;
 
    member.user.avatar = member.displayAvatarURL({
-    dynamic: false,
     size: 128,
    });
 
@@ -61,8 +62,8 @@ export async function guildMemberAdd(client, member) {
     .setImage("attachment://welcome.png");
 
    welcomeChannel.send({ embeds: [embed], files: [attachment] });
-  } catch (error) {
-   client.debugger("error", error);
+  } catch (error: Error | any) {
+   client.debugger("error", error.message);
   }
  }
 

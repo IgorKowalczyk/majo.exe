@@ -13,7 +13,7 @@ export default {
    description: "🧩 Add role to user",
    type: ApplicationCommandOptionType.Subcommand,
    usage: "/role add <role> <user>",
-   default_member_permissions: [PermissionFlagsBits.ManageRoles],
+   defaultMemberPermissions: [PermissionFlagsBits.ManageRoles],
    options: [
     {
      name: "role",
@@ -41,7 +41,7 @@ export default {
    description: "🧩 Remove role from user",
    type: ApplicationCommandOptionType.Subcommand,
    usage: "/role remove <role> <user>",
-   default_member_permissions: [PermissionFlagsBits.ManageRoles],
+   defaultMemberPermissions: [PermissionFlagsBits.ManageRoles],
    options: [
     {
      name: "role",

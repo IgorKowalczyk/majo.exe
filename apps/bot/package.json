@@ -5,8 +5,8 @@
   "exports": null,
   "type": "module",
   "scripts": {
-    "dev": "nodemon index.js",
-    "deploy": "node index.js",
+    "dev": "tsx watch index.ts",
+    "deploy": "tsx index.ts",
     "format": "prettier . --write --cache --ignore-unknown",
     "format:check": "prettier . --check --cache",
     "lint": "eslint .",
@@ -19,6 +19,7 @@
     "@majoexe/config": "workspace:*",
     "@majoexe/database": "workspace:*",
     "@majoexe/util": "workspace:*",
+    "@majoexe/typescript-config": "workspace:*",
     "@napi-rs/canvas": "0.1.54",
     "@observablehq/plot": "0.6.16",
     "chalk": "5.3.0",

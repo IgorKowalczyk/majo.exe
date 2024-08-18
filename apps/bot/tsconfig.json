@@ -1,0 +1,3 @@
+{
+ "extends": "@majoexe/typescript-config/base"
+}

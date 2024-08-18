@@ -8,7 +8,7 @@ export default {
  cooldown: 2000,
  dm_permission: false,
  usage: "/slowmode <time>",
- default_member_permissions: [PermissionFlagsBits.ManageChannels],
+ defaultMemberPermissions: [PermissionFlagsBits.ManageChannels],
  options: [
   {
    name: "time",

@@ -8,7 +8,7 @@ export default {
  cooldown: 3000,
  dm_permission: false,
  usage: "/reset <user>",
- default_member_permissions: [PermissionFlagsBits.Administrator],
+ defaultMemberPermissions: [PermissionFlagsBits.Administrator],
  options: [
   {
    name: "user",

@@ -2,17 +2,22 @@ import prismaClient from "@majoexe/database";
 import { cacheGet, cacheSet } from "@majoexe/database/redis";
 import { createUser } from "@majoexe/util/database";
 import { formatDuration } from "@majoexe/util/functions/util";
-import { EmbedBuilder, PermissionsBitField } from "discord.js";
+import { ChannelType, EmbedBuilder, InteractionType, Message, PermissionsBitField, type Interaction } from "discord.js";
+import type { Majobot } from "../..";
 
-export async function interactionCreate(client, interaction) {
+export async function interactionCreate(client: Majobot, interaction: Interaction): Promise<Message | void> {
  try {
   client.commandsRan++;
   if (!interaction.guild || !interaction.guild.available) return;
-  if (!interaction.member.user) await interaction.guild.members.fetch(interaction.member.user.id);
+  if (!interaction.member) await interaction.guild.members.fetch(interaction.user.id);
+  if (!interaction.member) return;
 
+  //#region Slash commands
   if (interaction.isChatInputCommand()) {
    const command = client.slashCommands.get(interaction.commandName);
    if (!command) return;
+
+   if (!interaction.member.user) await interaction.guild.members.fetch(interaction.user.id);
 
    client.config.displayCommandUsage && client.debugger("info", `Command used: ${interaction.commandName} by ${interaction.member.user.username} (${interaction.member.user.id})`);
 
@@ -21,6 +26,7 @@ export async function interactionCreate(client, interaction) {
 
    const key = `timeout-${interaction.member.user.id}-${interaction.commandName}`;
    const { cooldown } = command;
+
    if (cooldown) {
     const time = JSON.parse(await cacheGet(key));
     if (time && time.time + cooldown > Date.now()) {
@@ -31,8 +37,8 @@ export async function interactionCreate(client, interaction) {
       .setColor("#EF4444")
       .setTimestamp()
       .setFooter({
-       text: `Requested by ${interaction.member.user.globalName || interaction.member.user.username}`,
-       iconURL: interaction.member.user.displayAvatarURL({ size: 256 }),
+       text: `Requested by ${interaction.user.globalName || interaction.user.username}`,
+       iconURL: interaction.user.displayAvatarURL({ size: 256 }),
       });
      return interaction.followUp({ ephemeral: true, embeds: [embed] });
     } else {
@@ -54,11 +60,15 @@ export async function interactionCreate(client, interaction) {
     },
    });
 
-   const canManageGuild = interaction.member.permissions.has(PermissionsBitField.Flags.ManageGuild);
-   const canManageCategories = interaction.member.permissions.has(PermissionsBitField.Flags.Administrator);
+   if (!interaction.channel || !interaction.channel.isTextBased() || interaction.member) return;
+   if (interaction.channel.type !== ChannelType.GuildText) return;
+   const permissions = interaction.channel.permissionsFor(interaction.member);
 
-   const commandDisabled = guildSettings.guildDisabledCommands.some((cmd) => cmd.commandName === interaction.commandName);
-   const categoryDisabled = guildSettings.guildDisabledCategories.some((cat) => cat.categoryName === command.category);
+   const canManageGuild = permissions.has(PermissionsBitField.Flags.ManageGuild);
+   const canManageCategories = permissions.has(PermissionsBitField.Flags.Administrator);
+
+   const commandDisabled = guildSettings.guildDisabledCommands.some((cmd: { commandName: string }) => cmd.commandName === interaction.commandName);
+   const categoryDisabled = guildSettings.guildDisabledCategories.some((cat: { categoryName: string }) => cat.categoryName === command.category);
 
    if (commandDisabled) {
     const embed = new EmbedBuilder()
@@ -67,8 +77,8 @@ export async function interactionCreate(client, interaction) {
      .setColor("#EF4444")
      .setTimestamp()
      .setFooter({
-      text: `Requested by ${interaction.member.user.globalName || interaction.member.user.username}`,
-      iconURL: interaction.member.user.displayAvatarURL({ size: 256 }),
+      text: `Requested by ${interaction.user.globalName || interaction.user.username}`,
+      iconURL: interaction.user.displayAvatarURL({ size: 256 }),
      });
 
     return interaction.followUp({ ephemeral: true, embeds: [embed] });
@@ -81,23 +91,30 @@ export async function interactionCreate(client, interaction) {
      .setColor("#EF4444")
      .setTimestamp()
      .setFooter({
-      text: `Requested by ${interaction.member.user.globalName || interaction.member.user.username}`,
-      iconURL: interaction.member.user.displayAvatarURL({ size: 256 }),
+      text: `Requested by ${interaction.user.globalName || interaction.user.username}`,
+      iconURL: interaction.user.displayAvatarURL({ size: 256 }),
      });
 
     return interaction.followUp({ ephemeral: true, embeds: [embed] });
    }
 
-   await createUser(interaction.member.user);
+   await createUser(interaction.member);
 
-   client.slashCommands.get(interaction.commandName).run(client, interaction, guildSettings);
+   await command.run(client, interaction, guildSettings);
+
+   // #endregion
+   // #region Modals
   } else if (interaction.isModalSubmit()) {
    const modal = client.modals.get(interaction.customId);
    if (!modal) return;
 
-   client.config.displayModalUsage && client.debugger("info", `Modal used: ${interaction.customId} by ${interaction.member.user.username} (${interaction.member.user.id})`);
+   if (interaction.type !== InteractionType.ModalSubmit) return;
+   if (!interaction.member) await interaction.guild.members.fetch(interaction.user.id);
+   if (!interaction.member) return;
 
-   const guildSettings = await prismaClient.guild.upsert({
+   client.config.displayModalUsage && client.debugger("info", `Modal used: ${interaction.customId} by ${interaction.user.username} (${interaction.user.id})`);
+
+   await prismaClient.guild.upsert({
     where: {
      guildId: interaction.guild.id,
     },
@@ -107,15 +124,18 @@ export async function interactionCreate(client, interaction) {
     },
    });
 
-   await createUser(interaction.member.user);
+   await createUser(interaction.user as any);
 
-   await modal.run(client, interaction, guildSettings);
+   await modal.run(client, interaction);
+
+   // #endregion
+   // #region Autocomplete
   } else if (interaction.isAutocomplete()) {
    const command = client.slashCommands.get(interaction.commandName);
    if (!command) return;
    if (command.autocomplete && typeof command.autocomplete === "function") await command.autocomplete(client, interaction);
   }
- } catch (err) {
-  client.debugger("error", err);
+ } catch (err: Error | any) {
+  client.debugger("error", err.message);
  }
 }

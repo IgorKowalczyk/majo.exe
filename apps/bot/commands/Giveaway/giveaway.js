@@ -19,7 +19,7 @@ export default {
    name: "start",
    description: "🎉 Start giveaway",
    type: ApplicationCommandOptionType.Subcommand,
-   default_member_permissions: [PermissionFlagsBits.ManageGuild],
+   defaultMemberPermissions: [PermissionFlagsBits.ManageGuild],
    usage: "/giveaway start <time> <winners> <channel> <prize>",
    options: [
     {
@@ -58,7 +58,7 @@ export default {
    name: "drop",
    description: "🎉 Create a drop giveaway",
    type: ApplicationCommandOptionType.Subcommand,
-   default_member_permissions: [PermissionFlagsBits.ManageGuild],
+   defaultMemberPermissions: [PermissionFlagsBits.ManageGuild],
    usage: "/drop-giveaway <winners> <channel> <prize>",
    options: [
     {
@@ -89,7 +89,7 @@ export default {
    name: "end",
    description: "🎉 End a giveaway",
    type: ApplicationCommandOptionType.Subcommand,
-   default_member_permissions: [PermissionFlagsBits.ManageGuild],
+   defaultMemberPermissions: [PermissionFlagsBits.ManageGuild],
    usage: "/giveaway end <giveaway id>",
    options: [
     {
@@ -105,7 +105,7 @@ export default {
    name: "pause",
    description: "🎉 Pause a giveaway",
    type: ApplicationCommandOptionType.Subcommand,
-   default_member_permissions: [PermissionFlagsBits.ManageGuild],
+   defaultMemberPermissions: [PermissionFlagsBits.ManageGuild],
    usage: "/giveaway pause <giveaway id>",
    options: [
     {
@@ -121,7 +121,7 @@ export default {
    name: "resume",
    description: "🎉 Resume a giveaway",
    type: ApplicationCommandOptionType.Subcommand,
-   default_member_permissions: [PermissionFlagsBits.ManageGuild],
+   defaultMemberPermissions: [PermissionFlagsBits.ManageGuild],
    usage: "/giveaway resume <giveaway id>",
    options: [
     {
@@ -137,7 +137,7 @@ export default {
    name: "list",
    description: "🎉 Get list of all giveaways",
    type: ApplicationCommandOptionType.SubcommandGroup,
-   default_member_permissions: [PermissionFlagsBits.ManageGuild],
+   defaultMemberPermissions: [PermissionFlagsBits.ManageGuild],
    usage: "/giveaway list",
    options: [
     {
@@ -164,7 +164,7 @@ export default {
    name: "reroll",
    description: "🎉 Reroll a giveaway",
    type: ApplicationCommandOptionType.Subcommand,
-   default_member_permissions: [PermissionFlagsBits.ManageGuild],
+   defaultMemberPermissions: [PermissionFlagsBits.ManageGuild],
    usage: "/giveaway reroll <giveaway id>",
    options: [
     {

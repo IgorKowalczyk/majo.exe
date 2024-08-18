@@ -1,5 +1,7 @@
 import { globalConfig } from "@majoexe/config";
 import { Logger } from "@majoexe/util/functions/util";
+import type { Majobot } from "../..";
+import type { APIUser, DiscordAPIError, PartialEmoji } from "discord.js";
 
 const emojiDownloadList = {
  success: "https://cdn.discordapp.com/emojis/963333541112987668.png",
@@ -42,18 +44,7 @@ const emojiDownloadList = {
  settings: "https://cdn.discordapp.com/emojis/963333541716963348.png",
 };
 
-/**
- * Uploads an emoji to Discord using the Discord API
- *
- * @param {string} clientId - The client ID
- * @param {object} client - The Discord client
- * @param {object} emoji - The emoji to upload
- * @param {string} emoji.name - The name of the emoji
- * @param {Buffer} emoji.image - The image of the emoji as a buffer
- * @returns {Promise<void>} Promise that resolves when the emoji is uploaded
- * @throws {Error} Error that is thrown if the emoji could not be uploaded
- */
-export async function uploadEmoji(clientId, client, { name, image }) {
+export async function uploadEmoji(clientId: string, client: Majobot, { name, image }: { name: string; image: Buffer }): Promise<void> {
  try {
   const emojiUploadTime = performance.now();
 
@@ -71,14 +62,14 @@ export async function uploadEmoji(clientId, client, { name, image }) {
 
   if (!emojiUpload.ok) {
    try {
-    const error = await emojiUpload.json();
+    const error = (await emojiUpload.json()) as DiscordAPIError;
     throw new Error(`Failed to upload emoji: ${error} (${emojiUpload.statusText})`);
    } catch (_e) {
     throw new Error(`Failed to upload emoji: ${emojiUpload.statusText}`);
    }
   }
 
-  const emoji = await emojiUpload.json();
+  const emoji = (await emojiUpload.json()) as PartialEmoji;
 
   if (!emoji) {
    throw new Error("Failed to upload emoji: No emoji returned from Discord API");
@@ -88,18 +79,11 @@ export async function uploadEmoji(clientId, client, { name, image }) {
 
   emoji.animated ? (client.config.emojis[emoji.name] = `<a:${emoji.name}:${emoji.id}>`) : (client.config.emojis[emoji.name] = `<:${emoji.name}:${emoji.id}>`);
  } catch (error) {
-  Logger("error", `Error uploading emoji: ${error.message}`);
+  Logger("error", `Error uploading emoji: ${error}`);
  }
 }
 
-/**
- * Loads all slash commands from the /commands folder
- *
- * @param {object} client - The Discord client
- * @returns {Promise<void>} Promise that resolves when all emojis are loaded
- * @throws {Error} Error that is thrown if an emoji could not be loaded
- */
-export default async function loadEmojis(client) {
+export default async function loadEmojis(client: Majobot): Promise<void> {
  try {
   const emojiLoadTime = performance.now();
 
@@ -113,7 +97,7 @@ export default async function loadEmojis(client) {
    throw new Error(`Failed to fetch user: ${userFetch.statusText}`);
   }
 
-  const user = await userFetch.json();
+  const user = (await userFetch.json()) as APIUser;
 
   const emojiListFetch = await fetch(`https://discord.com/api/v${globalConfig.apiVersion}/applications/${user.id}/emojis`, {
    headers: {
@@ -125,7 +109,7 @@ export default async function loadEmojis(client) {
    throw new Error(`Failed to fetch emojis: ${emojiListFetch.statusText}`);
   }
 
-  const emojis = await emojiListFetch.json();
+  const emojis = (await emojiListFetch.json()) as { items: PartialEmoji[] };
 
   if (!emojis || !emojis.items) {
    throw new Error("Failed to fetch emojis: No emojis returned from Discord API");
@@ -139,17 +123,18 @@ export default async function loadEmojis(client) {
 
   for (const [name, url] of Object.entries(emojiDownloadList)) {
    const emoji = emojis.items.find((emoji) => emoji.name === name);
+
    if (!emoji) {
     Logger("warn", `Emoji ${name} not found in fetched emojis!`);
 
-    const emojiFile = await fetch(url);
+    const emojiFile = (await fetch(url)) as Response;
 
     if (!emojiFile.ok) {
      throw new Error(`Failed to fetch emoji: ${emojiFile.statusText}`);
     }
 
-    const buffer = [];
-    for await (const chunk of emojiFile.body) {
+    const buffer: Uint8Array[] = [];
+    for await (const chunk of emojiFile.body as unknown as AsyncIterable<Uint8Array>) {
      buffer.push(chunk);
     }
 
@@ -157,7 +142,7 @@ export default async function loadEmojis(client) {
     continue;
    }
   }
- } catch (error) {
+ } catch (error: Error | any) {
   Logger("error", `Error loading emojis: ${error.message}`);
  }
 }

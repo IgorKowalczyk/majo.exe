@@ -1,8 +1,9 @@
 import { shortenText } from "@majoexe/util/functions/util";
 import { loadImage, createCanvas } from "@napi-rs/canvas";
+import type { Guild, User } from "discord.js";
 
-export async function createUserGuildCard(user, guild) {
- const avatar = await loadImage(user.avatar);
+export async function createUserGuildCard(user: User, guild: Guild): Promise<Buffer> {
+ const avatar = await loadImage(user.avatar || user.defaultAvatarURL);
  const canvas = createCanvas(934, 282);
  const context = canvas.getContext("2d");
 

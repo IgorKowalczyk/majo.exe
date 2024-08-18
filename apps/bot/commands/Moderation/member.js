@@ -19,7 +19,7 @@ export default {
    description: "🔐 Ban user from this server",
    type: ApplicationCommandOptionType.Subcommand,
    usage: "/member ban <reason>",
-   default_member_permissions: [PermissionFlagsBits.BanMembers],
+   defaultMemberPermissions: [PermissionFlagsBits.BanMembers],
    options: [
     {
      name: "user",
@@ -41,7 +41,7 @@ export default {
    description: "🔓 Unban user from this server",
    type: ApplicationCommandOptionType.Subcommand,
    usage: "/member unban <reason>",
-   default_member_permissions: [PermissionFlagsBits.BanMembers],
+   defaultMemberPermissions: [PermissionFlagsBits.BanMembers],
    options: [
     {
      name: "user_id",
@@ -63,7 +63,7 @@ export default {
    description: "🔐 Kick user from this server",
    type: ApplicationCommandOptionType.Subcommand,
    usage: "/member kick <reason>",
-   default_member_permissions: [PermissionFlagsBits.KickMembers],
+   defaultMemberPermissions: [PermissionFlagsBits.KickMembers],
    options: [
     {
      name: "user",
@@ -138,7 +138,7 @@ export default {
    description: "🏷️ Set/remove nickname for user",
    type: ApplicationCommandOptionType.SubcommandGroup,
    usage: "/member nickname set <user> <nickname> | /member nickname remove <user>",
-   default_member_permissions: [PermissionFlagsBits.ManageNicknames],
+   defaultMemberPermissions: [PermissionFlagsBits.ManageNicknames],
    options: [
     {
      name: "set",
@@ -165,7 +165,7 @@ export default {
      description: "🏷️ Remove nickname for user",
      type: ApplicationCommandOptionType.Subcommand,
      usage: "/member nickname remove <user>",
-     default_member_permissions: [PermissionFlagsBits.ManageNicknames],
+     defaultMemberPermissions: [PermissionFlagsBits.ManageNicknames],
      options: [
       {
        name: "user",

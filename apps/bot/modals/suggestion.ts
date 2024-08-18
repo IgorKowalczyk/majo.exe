@@ -1,11 +1,14 @@
 const timeout = new Map();
 import prismaClient from "@majoexe/database";
 import { formatDuration } from "@majoexe/util/functions/util";
-import { EmbedBuilder } from "discord.js";
+import { BaseInteraction, CommandInteraction, EmbedBuilder, type Interaction, type ModalMessageModalSubmitInteraction } from "discord.js";
+import type { Majobot } from "..";
 
 export default {
  id: "suggestion",
- run: async (client, interaction) => {
+ run: async (client: Majobot, interaction: ModalMessageModalSubmitInteraction) => {
+  if (!interaction.guild) return;
+
   await interaction.deferReply({ ephemeral: true });
   const suggestion = interaction.fields.getTextInputValue("suggestion");
   if (suggestion.length < 5 || suggestion.length > 500) {
@@ -15,8 +18,8 @@ export default {
     .setColor("#EF4444")
     .setTimestamp()
     .setFooter({
-     text: `Suggested by ${interaction.member.user.globalName || interaction.member.user.username}`,
-     iconURL: interaction.member.user.displayAvatarURL({
+     text: `Suggested by ${interaction.user.globalName || interaction.user.username}`,
+     iconURL: interaction.user.displayAvatarURL({
       size: 256,
      }),
     });
@@ -24,7 +27,7 @@ export default {
    return interaction.followUp({ ephemeral: true, embeds: [embed] });
   }
 
-  const key = `${interaction.member.user.id}-suggest`;
+  const key = `${interaction.user.id}-suggest`;
 
   if (timeout.has(key) && timeout.get(key).time > Date.now()) {
    const { time } = timeout.get(key);
@@ -36,8 +39,8 @@ export default {
     .setColor("#EF4444")
     .setTimestamp()
     .setFooter({
-     text: `Suggested by ${interaction.member.user.globalName || interaction.member.user.username}`,
-     iconURL: interaction.member.user.displayAvatarURL({
+     text: `Suggested by ${interaction.user.globalName || interaction.user.username}`,
+     iconURL: interaction.user.displayAvatarURL({
       size: 256,
      }),
     });
@@ -56,8 +59,8 @@ export default {
    .setColor("#3B82F6")
    .setTimestamp()
    .setFooter({
-    text: `Suggested by ${interaction.member.user.globalName || interaction.member.user.username}`,
-    iconURL: interaction.member.user.displayAvatarURL({
+    text: `Suggested by ${interaction.user.globalName || interaction.user.username}`,
+    iconURL: interaction.user.displayAvatarURL({
      size: 256,
     }),
    });
@@ -65,7 +68,7 @@ export default {
   await prismaClient.suggestions.create({
    data: {
     message: suggestion,
-    userId: interaction.member.user.id,
+    userId: interaction.user.id,
     guildId: interaction.guild.id,
    },
   });

@@ -36,9 +36,12 @@
   "devDependencies": {
     "@igorkowalczyk/eslint-config": "3.0.0-beta.11",
     "@igorkowalczyk/prettier-config": "3.0.0-beta.11",
+    "@types/node": "22.4.0",
     "eslint": "9.9.0",
     "eslint-plugin-turbo": "2.0.14",
-    "prettier": "3.3.3"
+    "prettier": "3.3.3",
+    "tsx": "4.17.0",
+    "typescript": "5.5.4"
   },
   "engines": {
     "node": ">=20.0.0"

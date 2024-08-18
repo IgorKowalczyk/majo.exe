@@ -1,11 +1,14 @@
 import prismaClient from "@majoexe/database";
 import { cacheGet, cacheSet } from "@majoexe/database/redis";
 import { fetchXPSettings } from "@majoexe/util/database";
-import { EmbedBuilder, AttachmentBuilder, PermissionsBitField, ButtonBuilder, ChannelType, ActionRowBuilder, ButtonStyle } from "discord.js";
+import { EmbedBuilder, AttachmentBuilder, PermissionsBitField, ButtonBuilder, ChannelType, ActionRowBuilder, ButtonStyle, Message } from "discord.js";
 import { createXPCard } from "../../util/images/createXPCard.js";
+import type { Majobot } from "../../index.js";
 
-export async function messageCreate(client, message) {
+export async function messageCreate(client: Majobot, message: Message): Promise<Message | void> {
+ if (!message.guild || !message.guild.available) return;
  if (message.author.bot) return;
+ if (!client.user) return;
 
  if (message.mentions.users.has(client.user.id) && (!message.reference || !message.reference.messageId)) {
   const embed = new EmbedBuilder()
@@ -25,7 +28,7 @@ export async function messageCreate(client, message) {
    });
 
   if (client.config.url) {
-   const action = new ActionRowBuilder() // prettier
+   const action = new ActionRowBuilder<ButtonBuilder>() // prettier
     .addComponents(
      new ButtonBuilder() // prettier
       .setLabel("Dashboard")
@@ -44,7 +47,7 @@ export async function messageCreate(client, message) {
  }
 
  // Only count messages in guild text channels
- if (message.channel.type !== ChannelType.GuildText && message.channel.type !== ChannelType.GuildForum && message.channel.type !== ChannelType.GuildAnnouncement) return;
+ if (![ChannelType.GuildText, ChannelType.GuildForum, ChannelType.PublicThread, ChannelType.PrivateThread].includes(message.channel.type)) return;
 
  const date = new Date();
 
@@ -139,10 +142,16 @@ export async function messageCreate(client, message) {
  const nextLevel = Math.floor(0.1 * Math.sqrt(xpAfter));
 
  if (level < nextLevel) {
-  const permissions = message.channel.permissionsFor(message.guild.members.me);
+  if (!message.channel) return;
+  if (message.channel.type !== ChannelType.GuildText) return;
+
+  const member = message.guild.members.me;
+  if (!member) return;
+
+  const permissions = message.channel.permissionsFor(member);
   if (!permissions.has(PermissionsBitField.Flags.SendMessages) || !permissions.has(PermissionsBitField.Flags.EmbedLinks) || !permissions.has(PermissionsBitField.Flags.AttachFiles)) return;
 
-  message.author.avatar = message.author.displayAvatarURL({ dynamic: false, size: 128 });
+  message.author.avatar = message.author.displayAvatarURL({ size: 128 });
   const rank = await createXPCard(message.author, { xp: xpAfter, level: nextLevel, xpNeeded: Math.ceil(Math.pow((nextLevel + 1) / 0.1, 2)) }, "#10B981");
 
   const attachment = new AttachmentBuilder(rank, {

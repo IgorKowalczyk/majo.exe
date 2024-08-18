@@ -1,24 +1,20 @@
 import { readDir } from "@majoexe/util/functions/files/readDir.js";
-import { Collection } from "discord.js";
+import type { Majobot } from "../..";
+import type { ModalSubmitInteraction } from "discord.js";
 
-/**
- * Loads all modals from the /modals folder
- *
- * @param {object} client - The Discord client
- * @returns {Promise<void>} Promise that resolves when all modals are loaded
- * @throws {Error} Error that is thrown if a modal could not be loaded
- */
-export default async function loadModals(client) {
+export interface Modal {
+ id: string;
+ run: (client: Majobot, interaction: ModalSubmitInteraction) => Promise<void>;
+}
+
+export default async function loadModals(client: Majobot): Promise<void> {
  try {
   const loadTime = performance.now();
-  client.modals = new Collection();
-
-  const modals = readDir(`${process.cwd()}/modals/`, true, [".js"]);
-
+  const modals = readDir(`${process.cwd()}/modals/`, true, [".js", ".ts"]);
   for (const value of modals) {
    try {
     const file = await import(value);
-    const { default: modal } = file;
+    const { default: modal } = file as { default: Modal };
 
     if (!modal) {
      client.debugger("error", `Modal ${value} doesn't have a default export!`);
@@ -37,12 +33,12 @@ export default async function loadModals(client) {
     if (client.config.displayModalList) {
      client.debugger("info", `Loaded modal ${id} from ${value.replace(process.cwd(), "")}`);
     }
-   } catch (error) {
+   } catch (error: Error | any) {
     client.debugger("error", `Error loading modal ${value}: ${error.message}`);
    }
   }
   client.debugger("event", `Loaded ${client.modals.size} modals from /modals in ${client.performance(loadTime)}`);
- } catch (error) {
-  client.debugger("error", `Error loading modals: ${error.message}`);
+ } catch (error: Error | any) {
+  client.debugger("error", `Error loading modals: ${error.mesage}`);
  }
 }

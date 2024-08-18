@@ -1,7 +1,8 @@
 import prismaClient from "@majoexe/database";
 import { Logger } from "@majoexe/util/functions/util";
+import type { Guild } from "discord.js";
 
-export async function GuildDelete({ guild }) {
+export async function GuildDelete({ guild }: { guild: Guild }): Promise<void> {
  try {
   const guildExists = await prismaClient.guilds.findFirst({
    where: {
@@ -16,7 +17,7 @@ export async function GuildDelete({ guild }) {
     },
    });
   }
- } catch (error) {
-  Logger.error("Failed to create guild:", error);
+ } catch (error: Error | any) {
+  Logger("error", "Failed to create guild:", error.message);
  }
 }

@@ -1,10 +1,11 @@
 import prismaClient from "@majoexe/database";
 import { shortenText } from "@majoexe/util/functions/util";
-import { EmbedBuilder, AttachmentBuilder, PermissionsBitField } from "discord.js";
+import { EmbedBuilder, AttachmentBuilder, PermissionsBitField, GuildMember } from "discord.js";
 import { createUserGuildCard } from "../../util/images/createUserGuildCard.js";
+import type { Majobot } from "../../index.js";
 
-export async function guildMemberRemove(client, member) {
- if (!member || !member.user || !member.guild) return;
+export async function guildMemberRemove(client: Majobot, member: GuildMember): Promise<void> {
+ if (!member || !member.user || !member.guild || !member.guild.available) return;
 
  const guild = await prismaClient.guild.upsert({
   where: {
@@ -26,6 +27,7 @@ export async function guildMemberRemove(client, member) {
    if (!leaveChannel) return;
    if (!leaveChannel.isTextBased()) return;
 
+   if (!member.guild.members.me) return;
    if (!member.guild.members.me.permissions.has(PermissionsBitField.Flags.SendMessages)) return;
    if (!member.guild.members.me.permissions.has(PermissionsBitField.Flags.EmbedLinks)) return;
    if (!member.guild.members.me.permissions.has(PermissionsBitField.Flags.AttachFiles)) return;
@@ -37,7 +39,6 @@ export async function guildMemberRemove(client, member) {
    if (!leaveChannel.permissionsFor(member.guild.members.me).has(PermissionsBitField.Flags.ViewChannel)) return;
 
    member.user.avatar = member.displayAvatarURL({
-    dynamic: false,
     size: 128,
    });
 
@@ -61,8 +62,8 @@ export async function guildMemberRemove(client, member) {
     .setImage("attachment://leave.png");
 
    leaveChannel.send({ embeds: [embed], files: [attachment] });
-  } catch (error) {
-   client.debugger("error", error);
+  } catch (error: Error | any) {
+   client.debugger("error", error.message);
   }
  }
 

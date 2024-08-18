@@ -81,7 +81,7 @@ export default {
    type: ApplicationCommandOptionType.Subcommand,
   },
  ],
- default_member_permissions: [PermissionFlagsBits.Administrator, PermissionFlagsBits.ManageGuild],
+ defaultMemberPermissions: [PermissionFlagsBits.Administrator, PermissionFlagsBits.ManageGuild],
  run: async (client, interaction, guildSettings) => {
   const command = interaction.options.getSubcommand();
 

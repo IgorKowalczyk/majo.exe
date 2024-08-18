@@ -1,14 +1,8 @@
-import { formatNumber } from "@majoexe/util/functions/util";
+import { formatNumber, shortenText } from "@majoexe/util/functions/util";
 import { loadImage, createCanvas } from "@napi-rs/canvas";
+import type { User } from "discord.js";
 
-/**
- * Calculates the progress of the xp bar.
- *
- * @param {number} currentXp - Number of current xp
- * @param {number} requiredXp - Number of required xp
- * @returns {number} - The progress
- */
-function calculateProgress(currentXp, requiredXp) {
+export function calculateProgress(currentXp: number, requiredXp: number): number {
  if (requiredXp <= 0) return 1;
  if (currentXp > requiredXp) return 597;
 
@@ -20,22 +14,14 @@ function calculateProgress(currentXp, requiredXp) {
  return Math.floor((nx * 615) / nr);
 }
 
-/**
- * Creates a XP card.
- *
- * @param {object} user - The user object
- * @param {object} xp - The xp object
- * @param {string} color - The color of the progress bar
- * @returns {Promise<Buffer>} - The buffer of the image
- **/
-export async function createXPCard(user, xp, color) {
- const avatar = await loadImage(user.avatar);
+export async function createXPCard(user: User, xp: { xp: number; xpNeeded: number; level: number }, color: string): Promise<Buffer> {
+ const avatar = await loadImage(user.avatar || user.defaultAvatarURL);
  const canvas = createCanvas(934, 282);
  const context = canvas.getContext("2d");
 
  context.globalAlpha = 1;
 
- const name = user.globalName.length > 20 ? user.globalName.substring(0, 20) + "..." : user.globalName;
+ const name = shortenText(user.globalName || user.username, 20);
 
  context.font = "bold 36px Quicksand";
  context.fillStyle = "#ffffff";
@@ -46,7 +32,7 @@ export async function createXPCard(user, xp, color) {
  context.fillStyle = "rgba(255, 255, 255, 0.4)";
  context.fillText(`@${user.globalName || user.username}`, 272, 164);
 
- const levelText = `Level: ${formatNumber(parseInt(xp.level))}`;
+ const levelText = `Level: ${formatNumber(xp.level)}`;
  context.font = "bold 36px Quicksand";
  context.fillStyle = "#FFFFFF";
  context.fillText(levelText, canvas.width - context.measureText(levelText).width - 43, 82);
