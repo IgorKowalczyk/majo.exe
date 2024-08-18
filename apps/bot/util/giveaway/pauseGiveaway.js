@@ -1,4 +1,4 @@
-import { EmbedBuilder } from "discord.js";
+import { EmbedBuilder, PermissionsBitField } from "discord.js";
 
 /**
  * Pause a giveaway.
@@ -12,6 +12,9 @@ import { EmbedBuilder } from "discord.js";
 export async function PauseGiveaway(client, interaction, color) {
  try {
   await interaction.deferReply({ ephemeral: true });
+
+  if (!interaction.member.permissions.has(PermissionsBitField.Flags.ManageGuild)) return client.errorMessages.createSlashError(interaction, "❌ You do not have permission to pause giveaways! You need `MANAGE_GUILD` permission.");
+
   const query = interaction.options.getString("query");
   const giveaway = client.giveawaysManager.giveaways.find((g) => g.messageId === query && g.guildId === interaction.guild.id);
 

@@ -1,4 +1,4 @@
-import { EmbedBuilder } from "discord.js";
+import { EmbedBuilder, PermissionsBitField } from "discord.js";
 import ms from "ms";
 
 /**
@@ -13,6 +13,9 @@ import ms from "ms";
 export async function StartGiveaway(client, interaction, color) {
  try {
   await interaction.deferReply({ ephemeral: true });
+
+  if (!interaction.member.permissions.has(PermissionsBitField.Flags.ManageGuild)) return client.errorMessages.createSlashError(interaction, "❌ You do not have permission to create giveaways! You need `MANAGE_GUILD` permission.");
+
   const channel = interaction.options.getChannel("channel");
 
   try {

@@ -1,5 +1,5 @@
 import prismaClient from "@majoexe/database";
-import { EmbedBuilder } from "discord.js";
+import { EmbedBuilder, PermissionsBitField } from "discord.js";
 
 /**
  * Find giveaways in a guild.
@@ -13,6 +13,9 @@ import { EmbedBuilder } from "discord.js";
 export async function FindGiveaways(client, interaction, color, type) {
  try {
   await interaction.deferReply({ ephemeral: true });
+
+  if (!interaction.member.permissions.has(PermissionsBitField.Flags.ManageGuild)) return client.errorMessages.createSlashError(interaction, "❌ You do not have permission to find giveaways! You need `MANAGE_GUILD` permission.");
+
   const giveaways = await prismaClient.giveaways.findMany({
    where: {
     guildId: interaction.guild.id,
