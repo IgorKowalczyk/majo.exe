@@ -161,8 +161,8 @@ importers:
         specifier: 0.6.3
         version: 0.6.3
       discord-api-types:
-        specifier: 0.37.94
-        version: 0.37.94
+        specifier: 0.37.95
+        version: 0.37.95
       framer-motion:
         specifier: 11.3.28
         version: 11.3.28(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
@@ -261,8 +261,8 @@ importers:
   packages/config:
     dependencies:
       discord-api-types:
-        specifier: 0.37.94
-        version: 0.37.94
+        specifier: 0.37.95
+        version: 0.37.95
       dotenv:
         specifier: 16.4.5
         version: 16.4.5
@@ -313,8 +313,8 @@ importers:
         specifier: 5.3.0
         version: 5.3.0
       discord-api-types:
-        specifier: 0.37.94
-        version: 0.37.94
+        specifier: 0.37.95
+        version: 0.37.95
       discord.js:
         specifier: 14.15.3
         version: 14.15.3
@@ -2981,8 +2981,8 @@ packages:
   discord-api-types@0.37.83:
     resolution: {integrity: sha512-urGGYeWtWNYMKnYlZnOnDHm8fVRffQs3U0SpE8RHeiuLKb/u92APS8HoQnPTFbnXmY1vVnXjXO4dOxcAn3J+DA==}
 
-  discord-api-types@0.37.94:
-    resolution: {integrity: sha512-gD1CDdsnXNTLGwvVoxCXMlM4L2NXUaB227h5z2F0oQ0VkRFi/BzSOTPuOoieq8czUMl67Z+rVstKNVcPFom6fw==}
+  discord-api-types@0.37.95:
+    resolution: {integrity: sha512-EuEO4vu8+rtWbrVufDtYFH5dm40Wo55jBWEdwyvav1r3XiM51PzAnZ/BUaHmfqYLEooJs+3Tn56o/Vnp1qLMJg==}
 
   discord-giveaways@6.0.1:
     resolution: {integrity: sha512-hs6Vtb62VdlV7NfB93Phaxc8FW0cH4N1Nkb0bXVZ2npgn73yGOFVmdp8bBP5gsC2ady9OAXXI8Gb66t1IddkFw==}
@@ -9502,7 +9502,7 @@ snapshots:
 
   discord-api-types@0.37.83: {}
 
-  discord-api-types@0.37.94: {}
+  discord-api-types@0.37.95: {}
 
   discord-giveaways@6.0.1(discord.js@14.15.3):
     dependencies:
