@@ -1,6 +1,9 @@
 import { loadImage, createCanvas } from "@napi-rs/canvas";
-import { ApplicationCommandType, ApplicationCommandOptionType, AttachmentBuilder, EmbedBuilder } from "discord.js";
+import { ApplicationCommandType, ApplicationCommandOptionType, AttachmentBuilder, EmbedBuilder, ChatInputCommandInteraction, User } from "discord.js";
+// @ts-ignore - No type definitions
 import GIFEncoder from "gif-encoder-2";
+import type { Majobot } from "../..";
+import type { GuildSettings } from "../../util/types/Command";
 
 export default {
  name: "trigger",
@@ -23,10 +26,12 @@ export default {
    required: false,
   },
  ],
- run: async (client, interaction, guildSettings) => {
+ run: async (client: Majobot, interaction: ChatInputCommandInteraction, guildSettings: GuildSettings) => {
   try {
+   if (!interaction.member) return client.errorMessages.createSlashError(interaction, "❌ Unable to get member data. Please try again.");
+
    const attachment = interaction.options.getAttachment("attachment");
-   const user = interaction.options.getUser("user") || interaction.member.user;
+   const user = interaction.options.getUser("user") || (interaction.member.user as User);
    let image;
 
    if (attachment) {
@@ -97,7 +102,7 @@ export default {
      }),
     });
 
-   if (attachment && (attachment.width > 256 || attachment.height > 310)) {
+   if (attachment && attachment.width && attachment.height && (attachment.width > 256 || attachment.height > 310)) {
     embed.setDescription("> ⚠️ Your attachment was resized to 256x310 pixels because it was too big!");
    }
 

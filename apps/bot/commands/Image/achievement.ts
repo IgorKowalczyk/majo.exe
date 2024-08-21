@@ -1,5 +1,7 @@
 import { loadImage, createCanvas } from "@napi-rs/canvas";
-import { ApplicationCommandType, ApplicationCommandOptionType, AttachmentBuilder, EmbedBuilder } from "discord.js";
+import { ApplicationCommandType, ApplicationCommandOptionType, AttachmentBuilder, EmbedBuilder, ChatInputCommandInteraction } from "discord.js";
+import type { Majobot } from "../..";
+import type { GuildSettings } from "../../util/types/Command";
 
 export default {
  name: "achievement",
@@ -17,7 +19,7 @@ export default {
    max_length: 50,
   },
  ],
- run: async (client, interaction, guildSettings) => {
+ run: async (client: Majobot, interaction: ChatInputCommandInteraction, guildSettings: GuildSettings) => {
   try {
    const text = interaction.options.getString("text") || "How Did We Get Here?";
    const background = await loadImage("./util/images/files/achievement.png");

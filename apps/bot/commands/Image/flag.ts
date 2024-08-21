@@ -1,7 +1,10 @@
 import { loadImage, createCanvas, ImageData } from "@napi-rs/canvas";
 import decodeGif from "decode-gif";
-import { ApplicationCommandType, ApplicationCommandOptionType, AttachmentBuilder, EmbedBuilder } from "discord.js";
+import { ApplicationCommandType, ApplicationCommandOptionType, AttachmentBuilder, EmbedBuilder, ChatInputCommandInteraction, User } from "discord.js";
+// @ts-ignore - No type definitions
 import GIFEncoder from "gif-encoder-2";
+import type { Majobot } from "../..";
+import type { GuildSettings } from "../../util/types/Command";
 
 export default {
  name: "flag",
@@ -107,9 +110,12 @@ export default {
    ],
   },
  ],
- run: async (client, interaction, guildSettings) => {
+ run: async (client: Majobot, interaction: ChatInputCommandInteraction, guildSettings: GuildSettings) => {
+  if (!interaction.guild) return client.errorMessages.createSlashError(interaction, "❌ This command can only be used in servers.");
+  if (!interaction.member) return client.errorMessages.createSlashError(interaction, "❌ You must be in a server to use this command.");
+
   try {
-   const countryFlags = {
+   const countryFlags: { [key: string]: string } = {
     japan: "🇯🇵",
     usa: "🇺🇸",
     russia: "🇷🇺",
@@ -118,7 +124,7 @@ export default {
    };
    const subcommand = interaction.options.getSubcommand();
    const attachment = interaction.options.getAttachment("attachment");
-   const user = interaction.options.getUser("user") || interaction.member.user;
+   const user = interaction.options.getUser("user") || (interaction.member.user as User);
    let image;
 
    if (attachment) {
@@ -149,8 +155,6 @@ export default {
 
    const canvas = createCanvas(background.width, background.height);
    const context = canvas.getContext("2d");
-   context.quality = "fast";
-   context.patternQuality = "fast";
 
    const { frames } = decodeGif(background.src);
 
@@ -158,6 +162,7 @@ export default {
     context.globalAlpha = 1;
     const frame = frames[i];
     const imageData = new ImageData(frame.data, background.width, background.height);
+    // @ts-ignore - Invalid types in napi-rs/canvas
     context.putImageData(imageData, 0, 0);
     context.globalAlpha = 0.5;
     context.drawImage(targetImage, 0, 0, background.width, background.height);
@@ -182,7 +187,7 @@ export default {
      }),
     });
 
-   if (attachment && (attachment.width > 512 || attachment.height > 512)) {
+   if (attachment && attachment && attachment.width && attachment.height && (attachment.width > 512 || attachment.height > 512)) {
     embed.setDescription("⚠️ Your attachment was resized to 510x510px because it was too big.");
    }
 

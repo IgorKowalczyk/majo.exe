@@ -1,6 +1,8 @@
 import { isColor } from "coloras";
-import { ApplicationCommandType, ApplicationCommandOptionType, AttachmentBuilder, EmbedBuilder } from "discord.js";
+import { ApplicationCommandType, ApplicationCommandOptionType, AttachmentBuilder, EmbedBuilder, ChatInputCommandInteraction, User } from "discord.js";
 import sharp from "sharp";
+import type { Majobot } from "../..";
+import type { GuildSettings } from "../../util/types/Command";
 
 export default {
  name: "image",
@@ -193,11 +195,13 @@ export default {
    ],
   },
  ],
- run: async (client, interaction, guildSettings) => {
+ run: async (client: Majobot, interaction: ChatInputCommandInteraction, guildSettings: GuildSettings) => {
   try {
+   if (!interaction.member) return client.errorMessages.createSlashError(interaction, "❌ Unable to get member data. Please try again.");
+
    const subcommand = interaction.options.getSubcommand();
    const attachment = interaction.options.getAttachment("attachment");
-   const user = interaction.options.getUser("user") || interaction.member.user;
+   const user = interaction.options.getUser("user") || (interaction.member.user as User);
    let image;
 
    if (attachment) {
@@ -265,7 +269,7 @@ export default {
      }),
     });
 
-   if (attachment && (attachment.width > 510 || attachment.height > 510)) {
+   if (attachment && attachment && attachment.width && attachment.height && (attachment.width > 510 || attachment.height > 510)) {
     embed.setDescription("> ⚠️ Your attachment was resized to 510x510px because it was too big!");
    }
    return interaction.followUp({ embeds: [embed], files: [attachmentBuilder] });

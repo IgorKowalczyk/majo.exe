@@ -1,5 +1,7 @@
 import { loadImage, createCanvas } from "@napi-rs/canvas";
-import { ApplicationCommandType, ApplicationCommandOptionType, AttachmentBuilder, EmbedBuilder } from "discord.js";
+import { ApplicationCommandType, ApplicationCommandOptionType, AttachmentBuilder, EmbedBuilder, ChatInputCommandInteraction } from "discord.js";
+import type { Majobot } from "../..";
+import type { GuildSettings } from "../../util/types/Command";
 
 export default {
  name: "fbi",
@@ -17,9 +19,10 @@ export default {
    max_length: 120,
   },
  ],
- run: async (client, interaction, guildSettings) => {
+ run: async (client: Majobot, interaction: ChatInputCommandInteraction, guildSettings: GuildSettings) => {
   try {
    const text = interaction.options.getString("text");
+   if (!text) return client.errorMessages.createSlashError(interaction, "❌ Please provide a valid text to put on the image.");
 
    const background = await loadImage("./util/images/files/why-fbi-here.png");
    const overlay = await loadImage("./util/images/files/why-fbi-here-overlay.png");
