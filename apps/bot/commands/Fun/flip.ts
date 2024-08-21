@@ -1,5 +1,5 @@
-import { ApplicationCommandType, ApplicationCommandOptionType, EmbedBuilder, ChatInputCommandInteraction } from "discord.js";
 import { flipText } from "@majoexe/util/functions/util";
+import { ApplicationCommandType, ApplicationCommandOptionType, EmbedBuilder, ChatInputCommandInteraction } from "discord.js";
 import type { Majobot } from "../..";
 import type { GuildSettings } from "../../util/types/Command";
 

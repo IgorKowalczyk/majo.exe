@@ -4,14 +4,14 @@ import type { Guild } from "discord.js";
 
 export async function GuildDelete({ guild }: { guild: Guild }): Promise<void> {
  try {
-  const guildExists = await prismaClient.guilds.findFirst({
+  const guildExists = await prismaClient.guild.findFirst({
    where: {
     guildId: guild.id,
    },
   });
 
   if (guildExists) {
-   await prismaClient.guilds.delete({
+   await prismaClient.guild.delete({
     where: {
      guildId: guild.id,
     },

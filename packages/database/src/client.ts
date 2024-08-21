@@ -4,20 +4,29 @@ import { PrismaNeon } from "@prisma/adapter-neon";
 import { PrismaClient } from "@prisma/client";
 import { createPrismaRedisCache } from "prisma-redis-middleware";
 import ws from "ws";
-import { Logger } from "./logger.js";
-import Redis from "./redis.js";
+import { Logger } from "./logger";
+import RedisCache from "./redis";
+import type { CreatePrismaRedisCache } from "prisma-redis-middleware/dist/types";
 
 neonConfig.webSocketConstructor = ws;
 
-const logger = (params, next) => {
- const before = Date.now();
- const result = next(params);
- const after = Date.now();
- Logger("info", `Query ${params.model}.${params.action} took ${after - before}ms`);
- return result;
-};
+const prismaClientWrapper = (prisma: PrismaClient) => {
+ let cacheOptions: CreatePrismaRedisCache["storage"];
 
-const prismaClientWrapper = (prisma) => {
+ if (RedisCache instanceof Map) {
+  cacheOptions = {
+   type: "memory",
+   options: {},
+  };
+ } else {
+  cacheOptions = {
+   type: "redis",
+   options: {
+    client: RedisCache as any,
+   },
+  };
+ }
+
  const cache = createPrismaRedisCache({
   models: [
    { model: "User", excludeMethods: ["findMany"] },
@@ -27,15 +36,7 @@ const prismaClientWrapper = (prisma) => {
    { model: "GuildLogs", cacheTime: 15 },
    { model: "GuildXp", cacheTime: 15 },
   ],
-  storage: {
-   // Prettier
-   type: Redis instanceof Map ? "memory" : "redis",
-   options: {
-    // Prettier
-    client: Redis instanceof Map ? undefined : Redis,
-    invalidation: { referencesTTL: 300 },
-   },
-  },
+  storage: cacheOptions,
   cacheTime: 30,
   excludeModels: ["Session", "Account"],
   onHit: (key) => {
@@ -55,9 +56,21 @@ const prismaClientWrapper = (prisma) => {
   },
  });
 
- if (debuggerConfig.displayDatabaseLogs) prisma.$use(logger);
-
  prisma.$use(cache);
+
+ if (debuggerConfig.displayDatabaseLogs)
+  prisma.$extends({
+   query: {
+    async $allOperations({ operation, model, args, query }) {
+     const start = performance.now();
+     const result = await query(args);
+     const end = performance.now();
+     const time = end - start;
+     Logger("info", `Query ${model}.${operation} took ${time}ms`);
+     return result;
+    },
+   },
+  });
  return prisma;
 };
 
@@ -75,9 +88,15 @@ const prismaClientSingleton = () => {
  }
 };
 
-const globalForPrisma = globalThis;
-const prisma = globalForPrisma.prisma ?? prismaClientSingleton();
+declare const globalThis: {
+ prismaGlobal: ReturnType<typeof prismaClientSingleton>;
+} & typeof global;
+
+const prisma = globalThis.prismaGlobal ?? prismaClientSingleton();
 
 export default prisma;
 
-if (process.env.NODE_ENV !== "production") globalForPrisma.prisma = prisma;
+if (process.env.NODE_ENV !== "production") globalThis.prismaGlobal = prisma;
+
+// also export types
+export * from "@prisma/client";

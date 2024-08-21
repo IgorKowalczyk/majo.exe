@@ -1,6 +1,6 @@
 import { loadImage, createCanvas } from "@napi-rs/canvas";
 import { ApplicationCommandType, ApplicationCommandOptionType, AttachmentBuilder, EmbedBuilder, ChatInputCommandInteraction, User } from "discord.js";
-// @ts-ignore - No type definitions
+// @ts-expect-error - No type definitions
 import GIFEncoder from "gif-encoder-2";
 import type { Majobot } from "../..";
 import type { GuildSettings } from "../../util/types/Command";

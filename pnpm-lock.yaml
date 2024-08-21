@@ -284,6 +284,9 @@ importers:
       '@majoexe/config':
         specifier: workspace:*
         version: link:../config
+      '@majoexe/typescript-config':
+        specifier: workspace:*
+        version: link:../typescript-config
       '@neondatabase/serverless':
         specifier: 0.9.4
         version: 0.9.4
@@ -293,6 +296,9 @@ importers:
       '@prisma/client':
         specifier: 5.18.0
         version: 5.18.0(prisma@5.18.0)
+      '@types/ws':
+        specifier: ^8.5.12
+        version: 8.5.12
       chalk:
         specifier: 5.3.0
         version: 5.3.0
@@ -309,6 +315,9 @@ importers:
         specifier: 8.18.0
         version: 8.18.0
     devDependencies:
+      '@types/ioredis':
+        specifier: 5.0.0
+        version: 5.0.0
       prettier-plugin-prisma:
         specifier: 5.0.0
         version: 5.0.0(prettier@3.3.3)
@@ -2146,6 +2155,10 @@ packages:
   '@types/hast@3.0.4':
     resolution: {integrity: sha512-WPs+bbQw5aCj+x6laNGWLH3wviHtoCv/P3+otBhbOhJgG8qtpdAMlTCxLtsTWA7LH1Oh/bFCHsBn0TPS5m30EQ==}
 
+  '@types/ioredis@5.0.0':
+    resolution: {integrity: sha512-zJbJ3FVE17CNl5KXzdeSPtdltc4tMT3TzC6fxQS0sQngkbFZ6h+0uTafsRqu+eSLIugf6Yb0Ea0SUuRr42Nk9g==}
+    deprecated: This is a stub types definition. ioredis provides its own type definitions, so you do not need this installed.
+
   '@types/istanbul-lib-coverage@2.0.6':
     resolution: {integrity: sha512-2QF/t/auWm0lsy8XtKVPG19v3sSOQlJe/YHZgfjb/KBBHOGSV+J2q/S671rcq9uTBrLAXmZpqJiaQbMT+zNU1w==}
 
@@ -2205,6 +2218,9 @@ packages:
 
   '@types/ws@8.5.11':
     resolution: {integrity: sha512-4+q7P5h3SpJxaBft0Dzpbr6lmMaqh0Jr2tbhJZ/luAwvD7ohSCniYkwz/pLxuT2h0EOa6QADgJj1Ko+TzRfZ+w==}
+
+  '@types/ws@8.5.12':
+    resolution: {integrity: sha512-3tPRkv1EtkDpzlgyKyI8pGsGZAGPEaXeu0DOj5DI25Ja91bdAYddYHbADRYVrZMRbfW+1l5YwXVDKohDJNQxkQ==}
 
   '@types/yargs-parser@21.0.3':
     resolution: {integrity: sha512-I4q9QU9MQv4oEOz4tAHJtNz1cwuLxn2F3xcc2iV5WdqLPpUnj30aUuxt1mAxYTG+oe8CZMV/+6rU4S4gRDzqtQ==}
@@ -8761,6 +8777,12 @@ snapshots:
     dependencies:
       '@types/unist': 3.0.2
 
+  '@types/ioredis@5.0.0':
+    dependencies:
+      ioredis: 5.4.1
+    transitivePeerDependencies:
+      - supports-color
+
   '@types/istanbul-lib-coverage@2.0.6': {}
 
   '@types/istanbul-lib-report@3.0.3':
@@ -8823,6 +8845,10 @@ snapshots:
   '@types/webxr@0.5.19': {}
 
   '@types/ws@8.5.11':
+    dependencies:
+      '@types/node': 22.4.0
+
+  '@types/ws@8.5.12':
     dependencies:
       '@types/node': 22.4.0
 

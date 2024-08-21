@@ -1,0 +1,6 @@
+{
+ "extends": "@majoexe/typescript-config/base",
+ "compilerOptions": {
+  "esModuleInterop": true
+ }
+}

@@ -28,7 +28,7 @@ export async function interactionCreate(client: Majobot, interaction: Interactio
    const { cooldown } = command;
 
    if (cooldown) {
-    const time = JSON.parse(await cacheGet(key));
+    const time = JSON.parse((await cacheGet(key)) ?? "{}");
     if (time && time.time + cooldown > Date.now()) {
      const timeLeft = time.time + cooldown - Date.now();
      const embed = new EmbedBuilder()
@@ -54,7 +54,14 @@ export async function interactionCreate(client: Majobot, interaction: Interactio
     create: {
      guildId: interaction.guild.id,
     },
-    include: {
+    select: {
+     embedColor: true,
+     publicPage: true,
+     vanity: true,
+     enableXPLevelUpMessage: true,
+     enableXPLevelUpMessageLastChanged: true,
+     enableXPLastChanged: true,
+
      guildDisabledCommands: true,
      guildDisabledCategories: true,
     },

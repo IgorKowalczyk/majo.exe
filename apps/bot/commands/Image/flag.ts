@@ -1,7 +1,7 @@
 import { loadImage, createCanvas, ImageData } from "@napi-rs/canvas";
 import decodeGif from "decode-gif";
 import { ApplicationCommandType, ApplicationCommandOptionType, AttachmentBuilder, EmbedBuilder, ChatInputCommandInteraction, User } from "discord.js";
-// @ts-ignore - No type definitions
+// @ts-expect-error - No type definitions
 import GIFEncoder from "gif-encoder-2";
 import type { Majobot } from "../..";
 import type { GuildSettings } from "../../util/types/Command";
@@ -162,7 +162,7 @@ export default {
     context.globalAlpha = 1;
     const frame = frames[i];
     const imageData = new ImageData(frame.data, background.width, background.height);
-    // @ts-ignore - Invalid types in napi-rs/canvas
+    // @ts-expect-error - Invalid types in napi-rs/canvas
     context.putImageData(imageData, 0, 0);
     context.globalAlpha = 0.5;
     context.drawImage(targetImage, 0, 0, background.width, background.height);

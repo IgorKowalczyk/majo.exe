@@ -91,7 +91,7 @@ export async function messageCreate(client: Majobot, message: Message): Promise<
  if (!settings || !settings.enableXP) return;
 
  const key = `${message.guild.id}-${message.author.id}`;
- const time = JSON.parse(await cacheGet(key));
+ const time = JSON.parse((await cacheGet(key)) ?? "{}");
  const cooldown = 60000;
 
  if (time && time.time + cooldown > Date.now()) return;

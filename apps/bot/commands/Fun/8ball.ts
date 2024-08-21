@@ -1,6 +1,6 @@
 import { ApplicationCommandType, ApplicationCommandOptionType, EmbedBuilder, type ChatInputCommandInteraction } from "discord.js";
-import type { GuildSettings } from "../../util/types/Command";
 import type { Majobot } from "../..";
+import type { GuildSettings } from "../../util/types/Command";
 
 export default {
  name: "8ball",

@@ -3,23 +3,23 @@ import fetch from "node-fetch";
 import type { Majobot } from "../..";
 import type { GuildSettings } from "../../util/types/Command";
 
-interface RedditResponse {
- kind: string;
- data: RedditData;
-}
-
-interface RedditData {
- children: RedditChildren[];
+interface RedditPost {
+ title: string;
+ url: string;
+ permalink: string;
 }
 
 interface RedditChildren {
  data: RedditPost;
 }
 
-interface RedditPost {
- title: string;
- url: string;
- permalink: string;
+interface RedditData {
+ children: RedditChildren[];
+}
+
+interface RedditResponse {
+ kind: string;
+ data: RedditData;
 }
 
 export default {
