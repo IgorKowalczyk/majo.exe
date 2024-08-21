@@ -1,4 +1,6 @@
-import { ApplicationCommandType, EmbedBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle } from "discord.js";
+import { ApplicationCommandType, EmbedBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle, ChatInputCommandInteraction } from "discord.js";
+import type { Majobot } from "../..";
+import type { GuildSettings } from "../../util/types/Command";
 
 export default {
  name: "contact",
@@ -7,7 +9,7 @@ export default {
  cooldown: 3000,
  dm_permission: true,
  usage: "/contact",
- run: (client, interaction, guildSettings) => {
+ run: (client: Majobot, interaction: ChatInputCommandInteraction, guildSettings: GuildSettings) => {
   try {
    if (!client.config.url) {
     const embed = new EmbedBuilder()
@@ -25,7 +27,7 @@ export default {
     return interaction.followUp({ ephemeral: false, embeds: [embed] });
    }
 
-   const action = new ActionRowBuilder() // prettier
+   const action = new ActionRowBuilder<ButtonBuilder>() // prettier
     .addComponents(
      new ButtonBuilder() // prettier
       .setLabel("Contact")

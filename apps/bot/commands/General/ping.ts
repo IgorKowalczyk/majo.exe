@@ -1,5 +1,7 @@
 import prismaClient from "@majoexe/database";
-import { ApplicationCommandType, EmbedBuilder, codeBlock, Status } from "discord.js";
+import { ApplicationCommandType, EmbedBuilder, codeBlock, Status, ChatInputCommandInteraction } from "discord.js";
+import type { Majobot } from "../..";
+import type { GuildSettings } from "../../util/types/Command";
 
 export default {
  name: "ping",
@@ -8,8 +10,10 @@ export default {
  cooldown: 3000,
  usage: "/ping",
  dm_permission: true,
- run: async (client, interaction, guildSettings) => {
+ run: async (client: Majobot, interaction: ChatInputCommandInteraction, guildSettings: GuildSettings) => {
   try {
+   if (!interaction.guild) return client.errorMessages.createSlashError(interaction, "❌ This command can only be used in a server.");
+
    const dbTime = performance.now();
    await prismaClient.user.findUnique({ where: { id: "1" } });
    const dbTiming = performance.now() - dbTime;
@@ -17,6 +21,8 @@ export default {
    const waitEmbed = new EmbedBuilder().setColor(guildSettings?.embedColor || client.config.defaultColor).setDescription("🏓 Pong!...");
    const message = await interaction.followUp({ embeds: [waitEmbed] });
    const thisServerShard = client.ws.shards.get(interaction.guild.shardId);
+
+   if (!thisServerShard) return client.errorMessages.createSlashError(interaction, "❌ Shard not found. Please try again later.");
 
    const pingMessage = new EmbedBuilder()
     .setColor(guildSettings?.embedColor || client.config.defaultColor)
@@ -55,7 +61,7 @@ export default {
       size: 256,
      }),
     });
-   await message.edit({ ephemeral: false, embeds: [pingMessage] });
+   await message.edit({ embeds: [pingMessage] });
   } catch (err) {
    client.errorMessages.internalError(interaction, err);
   }

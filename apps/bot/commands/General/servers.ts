@@ -1,5 +1,7 @@
 import { formatNumber } from "@majoexe/util/functions/util";
-import { ApplicationCommandType, EmbedBuilder, ButtonBuilder, ActionRowBuilder, ButtonStyle } from "discord.js";
+import { ApplicationCommandType, EmbedBuilder, ButtonBuilder, ActionRowBuilder, ButtonStyle, ChatInputCommandInteraction } from "discord.js";
+import type { Majobot } from "../..";
+import type { GuildSettings } from "../../util/types/Command";
 
 export default {
  name: "servers",
@@ -8,8 +10,10 @@ export default {
  cooldown: 3000,
  dm_permission: true,
  usage: "/servers",
- run: (client, interaction, guildSettings) => {
+ run: (client: Majobot, interaction: ChatInputCommandInteraction, guildSettings: GuildSettings) => {
   try {
+   if (!client.user) return client.errorMessages.createSlashError(interaction, "❌ Bot is not ready yet. Please try again later.");
+
    const allGuilds = client.guilds.cache;
    const allChannels = client.channels.cache;
    const allUsers = client.guilds.cache.reduce((acc, guild) => acc + guild.memberCount, 0);
@@ -39,7 +43,7 @@ export default {
      .setStyle(ButtonStyle.Link)
      .setURL(client.config.url);
 
-    const action = new ActionRowBuilder() // prettier
+    const action = new ActionRowBuilder<ButtonBuilder>() // prettier
      .addComponents(
       // prettier
       inviteButton,
@@ -48,7 +52,11 @@ export default {
     return interaction.followUp({ ephemeral: false, embeds: [embed], components: [action] });
    }
 
-   const action = new ActionRowBuilder().addComponents(inviteButton);
+   const action = new ActionRowBuilder<ButtonBuilder>() // prettier
+    .addComponents(
+     // prettier
+     inviteButton
+    );
 
    return interaction.followUp({ ephemeral: false, embeds: [embed], components: [action] });
   } catch (err) {

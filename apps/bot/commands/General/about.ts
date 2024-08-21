@@ -1,4 +1,6 @@
-import { ActionRowBuilder, ApplicationCommandType, ButtonStyle, ButtonBuilder, EmbedBuilder } from "discord.js";
+import { ActionRowBuilder, ApplicationCommandType, ButtonStyle, ButtonBuilder, EmbedBuilder, ChatInputCommandInteraction } from "discord.js";
+import type { Majobot } from "../..";
+import type { GuildSettings } from "../../util/types/Command";
 
 export default {
  name: "about",
@@ -7,8 +9,10 @@ export default {
  cooldown: 3000,
  dm_permission: true,
  usage: "/about",
- run: (client, interaction, guildSettings) => {
+ run: (client: Majobot, interaction: ChatInputCommandInteraction, guildSettings: GuildSettings) => {
   try {
+   if (!client.user) return client.errorMessages.createSlashError(interaction, "❌ Bot is not ready yet. Please try again later.");
+
    const embed = new EmbedBuilder() // Prettier
     .setTitle(`🤖 About ${client.user.username}`)
     .setDescription(
@@ -31,7 +35,7 @@ export default {
     .setTimestamp();
 
    if (client.config.url) {
-    const action = new ActionRowBuilder() // prettier
+    const action = new ActionRowBuilder<ButtonBuilder>() // prettier
      .addComponents(
       new ButtonBuilder() // prettier
        .setLabel("Dashboard")

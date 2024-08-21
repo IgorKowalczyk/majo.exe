@@ -1,4 +1,6 @@
-import { EmbedBuilder, time, ButtonBuilder, ActionRowBuilder, ApplicationCommandType, ButtonStyle } from "discord.js";
+import { EmbedBuilder, time, ButtonBuilder, ActionRowBuilder, ApplicationCommandType, ButtonStyle, ChatInputCommandInteraction } from "discord.js";
+import type { Majobot } from "../..";
+import type { GuildSettings } from "../../util/types/Command";
 
 export default {
  name: "uptime",
@@ -7,13 +9,15 @@ export default {
  cooldown: 3000,
  dm_permission: true,
  usage: "/uptime",
- run: (client, interaction, guildSettings) => {
+ run: (client: Majobot, interaction: ChatInputCommandInteraction, guildSettings: GuildSettings) => {
   try {
+   if (!client.user) return client.errorMessages.createSlashError(interaction, "❌ Bot is not ready yet. Please try again later.");
+
    const embed = new EmbedBuilder()
     .setTitle("📈 Majo.exe uptime")
     .setDescription(
-     `**🚀 Date launched**: ${time(client.readyAt)}
-     **⏱️ Started:** ${time(client.readyAt, "R")}
+     `**🚀 Date launched**: ${client.readyAt ? time(client.readyAt) : "Unknown"}
+    **⏱️ Started:** ${client.readyAt ? time(client.readyAt, "R") : "Unknown"}
      
      **✨ Did you know?** From the time Majo.exe was launched it served \`${client.commandsRan}\` commands!
      `
@@ -28,12 +32,13 @@ export default {
     });
 
    if (client.config.url) {
-    const action = new ActionRowBuilder().addComponents(
-     new ButtonBuilder() // prettier
-      .setLabel("Status page")
-      .setStyle(ButtonStyle.Link)
-      .setURL(`${client.config.url}/status`)
-    );
+    const action = new ActionRowBuilder<ButtonBuilder>() // prettier
+     .addComponents(
+      new ButtonBuilder() // prettier
+       .setLabel("Status page")
+       .setStyle(ButtonStyle.Link)
+       .setURL(`${client.config.url}/status`)
+     );
     return interaction.followUp({ ephemeral: false, embeds: [embed], components: [action] });
    } else {
     return interaction.followUp({ ephemeral: false, embeds: [embed] });

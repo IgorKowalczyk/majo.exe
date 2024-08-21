@@ -1,4 +1,12 @@
-import { ApplicationCommandType, EmbedBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle } from "discord.js";
+import { ApplicationCommandType, EmbedBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle, ChatInputCommandInteraction } from "discord.js";
+import type { Majobot } from "../..";
+import type { GuildSettings } from "../../util/types/Command";
+
+interface DonateLink {
+ icon: string;
+ name: string;
+ url: string;
+}
 
 export default {
  name: "donate",
@@ -7,7 +15,7 @@ export default {
  cooldown: 3000,
  dm_permission: true,
  usage: "/donate",
- run: (client, interaction, guildSettings) => {
+ run: (client: Majobot, interaction: ChatInputCommandInteraction, guildSettings: GuildSettings) => {
   try {
    if (!client.config.donate.enabled || !client.config.donate.links) {
     const embed = new EmbedBuilder()
@@ -25,7 +33,7 @@ export default {
    }
 
    const embed = new EmbedBuilder()
-    .setDescription("> **You can donate to Majo.exe by using the following methods:**\n" + client.config.donate.links.map((link) => `- [${link.icon} ${link.name}](${link.url})`).join("\n"))
+    .setDescription("> **You can donate to Majo.exe by using the following methods:**\n" + client.config.donate.links.map((link: DonateLink) => `- [${link.icon} ${link.name}](${link.url})`).join("\n"))
     .setFooter({
      text: `Requested by ${interaction.user.globalName || interaction.user.username}`,
      iconURL: interaction.user.displayAvatarURL({
@@ -36,11 +44,12 @@ export default {
     .setTimestamp()
     .setTitle("🪙 Donate to Majo.exe");
 
-   const action = new ActionRowBuilder().addComponents(
-    client.config.donate.links.map((link) => {
-     return new ButtonBuilder().setLabel(link.name).setStyle(ButtonStyle.Link).setURL(link.url).setEmoji(link.icon);
-    })
-   );
+   const action = new ActionRowBuilder<ButtonBuilder>() // prettier
+    .addComponents(
+     client.config.donate.links.map((link: DonateLink) => {
+      return new ButtonBuilder().setLabel(link.name).setStyle(ButtonStyle.Link).setURL(link.url).setEmoji(link.icon);
+     })
+    );
 
    return interaction.followUp({ ephemeral: false, embeds: [embed], components: [action] });
   } catch (err) {

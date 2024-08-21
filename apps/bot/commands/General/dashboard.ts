@@ -1,4 +1,6 @@
-import { ApplicationCommandType, EmbedBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle } from "discord.js";
+import { ApplicationCommandType, EmbedBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle, ChatInputCommandInteraction } from "discord.js";
+import type { Majobot } from "../..";
+import type { GuildSettings } from "../../util/types/Command";
 
 export default {
  name: "dashboard",
@@ -7,7 +9,7 @@ export default {
  cooldown: 3000,
  dm_permission: true,
  usage: "/dashboard",
- run: (client, interaction, guildSettings) => {
+ run: (client: Majobot, interaction: ChatInputCommandInteraction, guildSettings: GuildSettings) => {
   try {
    if (!client.config.url) {
     const embed = new EmbedBuilder()
@@ -24,8 +26,13 @@ export default {
     return interaction.followUp({ ephemeral: false, embeds: [embed] });
    }
 
-   const contactButton = new ButtonBuilder().setLabel("Dashboard").setStyle(ButtonStyle.Link).setURL(client.config.url);
-   const action = new ActionRowBuilder().addComponents(contactButton);
+   const action = new ActionRowBuilder<ButtonBuilder>() // prettier
+    .addComponents(
+     new ButtonBuilder() // prettier
+      .setLabel("Dashboard")
+      .setStyle(ButtonStyle.Link)
+      .setURL(client.config.url)
+    );
 
    const embed = new EmbedBuilder()
     .setDescription(`Click the button below or [click here](${client.config.url}) to visit our dashboard.\n\n>>> **Useful links:**\n- [View all Majo.exe commands](${client.config.url}/commands)\n- [Majo.exe support server](${client.config.url}/support)`)

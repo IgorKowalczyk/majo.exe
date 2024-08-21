@@ -1,5 +1,17 @@
-import { ApplicationCommandType, EmbedBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle, time } from "discord.js";
+import { ApplicationCommandType, EmbedBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle, time, ChatInputCommandInteraction } from "discord.js";
 import fetch from "node-fetch";
+import type { Majobot } from "../..";
+import type { GuildSettings } from "../../util/types/Command";
+
+interface GithubResponse {
+ sha: string;
+ html_url: string;
+ commit: {
+  committer: {
+   date: string;
+  };
+ };
+}
 
 export default {
  name: "opensource",
@@ -8,10 +20,15 @@ export default {
  cooldown: 3000,
  usage: "/contact",
  dm_permission: true,
- run: async (client, interaction, guildSettings) => {
+ run: async (client: Majobot, interaction: ChatInputCommandInteraction, guildSettings: GuildSettings) => {
   try {
-   const response = await fetch("https://api.github.com/repos/igorkowalczyk/majo.exe/commits?per_page=1").then((res) => res.json());
-   const lastTimestamp = Math.floor(new Date(response[0].commit.committer.date) / 1000);
+   if (!client.user) return client.errorMessages.createSlashError(interaction, "❌ Bot is not ready yet. Please try again later.");
+
+   const request = await fetch("https://api.github.com/repos/igorkowalczyk/majo.exe/commits?per_page=1");
+   if (!request.ok) return client.errorMessages.createSlashError(interaction, "❌ No results found. Please try again later.");
+   const response = (await request.json()) as GithubResponse[];
+
+   const lastTimestamp = Math.floor(new Date(response[0].commit.committer.date).getTime() / 1000);
 
    const embed = new EmbedBuilder() // Prettier
     .setTitle(`🐙 ${client.user.username} Github Repository`)
@@ -31,7 +48,7 @@ export default {
     .setColor(guildSettings?.embedColor || client.config.defaultColor)
     .setTimestamp();
 
-   const row = new ActionRowBuilder()
+   const row = new ActionRowBuilder<ButtonBuilder>()
     .addComponents(
      new ButtonBuilder() // Prettier
       .setURL("https://github.com/igorkowalczyk/majo.exe")

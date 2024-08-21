@@ -1,4 +1,6 @@
-import { ApplicationCommandType, EmbedBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle } from "discord.js";
+import { ApplicationCommandType, EmbedBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle, ChatInputCommandInteraction } from "discord.js";
+import type { Majobot } from "../..";
+import type { GuildSettings } from "../../util/types/Command";
 
 export default {
  name: "invite",
@@ -7,8 +9,10 @@ export default {
  cooldown: 3000,
  dm_permission: true,
  usage: "/invite",
- run: (client, interaction, guildSettings) => {
+ run: (client: Majobot, interaction: ChatInputCommandInteraction, guildSettings: GuildSettings) => {
   try {
+   if (!client.user) return client.errorMessages.createSlashError(interaction, "❌ Bot is not ready yet. Please try again later.");
+
    const inviteLink = `https://discord.com/oauth2/authorize/?permissions=${client.config.permissions}&scope=${client.config.scopes}&client_id=${client.user.id}`;
    const inviteLinkRoot = `https://discord.com/oauth2/authorize/?permissions=8&scope=${client.config.scopes}&client_id=${client.user.id}`;
 
@@ -24,7 +28,7 @@ export default {
       size: 256,
      }),
     });
-   const row = new ActionRowBuilder() // Prettier
+   const row = new ActionRowBuilder<ButtonBuilder>() // Prettier
     .addComponents(
      new ButtonBuilder() // Prettier
       .setURL(inviteLink)
