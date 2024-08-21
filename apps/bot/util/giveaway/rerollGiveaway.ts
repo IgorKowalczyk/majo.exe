@@ -1,6 +1,6 @@
+import type { Giveaway } from "discord-giveaways";
 import { type ChatInputCommandInteraction, EmbedBuilder, PermissionsBitField, type ColorResolvable, type Message } from "discord.js";
 import type { Majobot } from "../..";
-import type { Giveaway } from "discord-giveaways";
 
 export async function RerollGiveaway(client: Majobot, interaction: ChatInputCommandInteraction, color: ColorResolvable): Promise<Message | void> {
  try {

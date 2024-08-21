@@ -1,11 +1,11 @@
 import { ApplicationCommandType, ApplicationCommandOptionType, ChannelType, PermissionFlagsBits, type ChatInputCommandInteraction } from "discord.js";
+import type { Majobot } from "../../index.ts";
 import { EndGiveaway } from "../../util/giveaway/endGiveaway";
 import { FindGiveaways } from "../../util/giveaway/findGiveaways";
 import { PauseGiveaway } from "../../util/giveaway/pauseGiveaway";
 import { RerollGiveaway } from "../../util/giveaway/rerollGiveaway";
 import { ResumeGiveaway } from "../../util/giveaway/resumeGiveaway";
 import { StartDropGiveaway, StartGiveaway } from "../../util/giveaway/startGiveaway";
-import type { Majobot } from "../../index.ts";
 import type { GuildSettings } from "../../util/types/Command";
 
 export default {

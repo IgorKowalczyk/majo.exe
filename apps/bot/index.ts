@@ -3,6 +3,7 @@ import { fileURLToPath } from "node:url";
 import { globalConfig, botConfig, debuggerConfig, dashboardConfig, globalPermissions } from "@majoexe/config";
 import { createErrorEmbed } from "@majoexe/util/embeds";
 import { Logger, chalk } from "@majoexe/util/functions/util";
+import type { GiveawaysManager } from "discord-giveaways";
 import { Client, type CommandInteraction, GatewayIntentBits, Collection } from "discord.js";
 import giveaway from "./util/giveaway/core.js";
 import loadCommands from "./util/loaders/loadCommands.js";
@@ -10,7 +11,6 @@ import loadEmojis from "./util/loaders/loadEmojis.ts";
 import loadEvents from "./util/loaders/loadEvents.ts";
 import loadFonts from "./util/loaders/loadFonts.ts";
 import loadModals, { type Modal } from "./util/loaders/loadModals.ts";
-import type { GiveawaysManager } from "discord-giveaways";
 import type { SlashCommand } from "./util/types/Command.ts";
 
 const cwd = dirname(fileURLToPath(import.meta.url));

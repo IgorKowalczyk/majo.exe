@@ -1,8 +1,8 @@
 import prismaClient from "@majoexe/database";
 import { shortenText } from "@majoexe/util/functions/util";
 import { EmbedBuilder, AttachmentBuilder, PermissionsBitField, GuildMember } from "discord.js";
-import { createUserGuildCard } from "../../util/images/createUserGuildCard.js";
 import type { Majobot } from "../../index.js";
+import { createUserGuildCard } from "../../util/images/createUserGuildCard.js";
 
 export async function guildMemberRemove(client: Majobot, member: GuildMember): Promise<void> {
  if (!member || !member.user || !member.guild || !member.guild.available) return;
