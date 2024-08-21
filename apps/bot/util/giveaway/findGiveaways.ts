@@ -50,7 +50,7 @@ export async function FindGiveaways(client: Majobot, interaction: ChatInputComma
     }),
    });
   return interaction.followUp({ ephemeral: true, embeds: [embed] });
- } catch (err: Error | any) {
-  client.errorMessages.internalError(interaction, err.message);
+ } catch (err: unknown) {
+  client.errorMessages.internalError(interaction, err);
  }
 }

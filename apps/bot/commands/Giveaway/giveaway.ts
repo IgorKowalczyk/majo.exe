@@ -198,8 +198,8 @@ export default {
    } else if (type === "all" || type === "running" || type === "ended") {
     await FindGiveaways(client, interaction, guildSettings?.embedColor || client.config.defaultColor, type);
    }
-  } catch (err: Error | any) {
-   client.errorMessages.internalError(interaction, err.message);
+  } catch (err: unknown) {
+   client.errorMessages.internalError(interaction, err);
   }
  },
 };

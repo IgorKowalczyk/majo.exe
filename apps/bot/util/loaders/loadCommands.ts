@@ -44,13 +44,13 @@ export default async function loadCommands(client: Majobot): Promise<void> {
     }
 
     client.config.displayCommandList && client.debugger("info", `Loaded slash command ${name} from ${value.replace(process.cwd(), "")}`);
-   } catch (error: Error | any) {
-    client.debugger("error", `Error loading slash command ${value}: ${error?.message ?? "Unknown error"}`);
+   } catch (error: unknown) {
+    client.debugger("error", `Error loading slash command ${value}: ${error}`);
    }
   }
 
   client.debugger("event", `Loaded ${client.slashCommands.size + client.additionalSlashCommands} slash commands from /commands in ${client.performance(commandLoadTime)}`);
- } catch (error: Error | any) {
-  client.debugger("error", `Error loading slash commands: ${error?.message ?? "Unknown error"}`);
+ } catch (error: unknown) {
+  client.debugger("error", `Error loading slash commands: ${error}`);
  }
 }

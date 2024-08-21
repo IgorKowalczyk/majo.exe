@@ -62,8 +62,8 @@ export async function guildMemberAdd(client: Majobot, member: GuildMember): Prom
     .setImage("attachment://welcome.png");
 
    welcomeChannel.send({ embeds: [embed], files: [attachment] });
-  } catch (error: Error | any) {
-   client.debugger("error", error.message);
+  } catch (error: unknown) {
+   client.debugger("error", error);
   }
  }
 

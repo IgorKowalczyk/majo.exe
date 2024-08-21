@@ -13,7 +13,7 @@ export async function GuildCreate({ guild }: { guild: Guild }): Promise<void> {
     guildId: guild.id,
    },
   });
- } catch (error: Error | any) {
-  Logger("error", "Failed to create guild:", error.message);
+ } catch (error: unknown) {
+  Logger("error", "Failed to create guild:", error);
  }
 }

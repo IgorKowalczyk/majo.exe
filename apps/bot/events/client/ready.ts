@@ -11,7 +11,7 @@ export async function ready(client: Majobot) {
  client.application.commands
   .set(client.slashCommands.map((command) => command))
   .catch((error: Error) => {
-   client.debugger("error", error.message);
+   client.debugger("error", error);
   })
   .then((commands) => {
    if (commands) {

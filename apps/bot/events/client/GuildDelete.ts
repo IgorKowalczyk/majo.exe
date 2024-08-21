@@ -17,7 +17,7 @@ export async function GuildDelete({ guild }: { guild: Guild }): Promise<void> {
     },
    });
   }
- } catch (error: Error | any) {
-  Logger("error", "Failed to create guild:", error.message);
+ } catch (error: unknown) {
+  Logger("error", "Failed to create guild:", error);
  }
 }

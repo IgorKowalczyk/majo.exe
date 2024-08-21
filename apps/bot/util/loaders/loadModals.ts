@@ -33,12 +33,12 @@ export default async function loadModals(client: Majobot): Promise<void> {
     if (client.config.displayModalList) {
      client.debugger("info", `Loaded modal ${id} from ${value.replace(process.cwd(), "")}`);
     }
-   } catch (error: Error | any) {
-    client.debugger("error", `Error loading modal ${value}: ${error.message}`);
+   } catch (error: unknown) {
+    client.debugger("error", `Error loading modal ${value}: ${error}`);
    }
   }
   client.debugger("event", `Loaded ${client.modals.size} modals from /modals in ${client.performance(loadTime)}`);
- } catch (error: Error | any) {
-  client.debugger("error", `Error loading modals: ${error.mesage}`);
+ } catch (error: unknown) {
+  client.debugger("error", `Error loading modals: ${error}`);
  }
 }

@@ -22,8 +22,7 @@ export async function EndGiveaway(client: Majobot, interaction: ChatInputCommand
 
   try {
    await client.giveawaysManager.end(giveaway.messageId);
-  } catch (_err) {
-   console.log(_err);
+  } catch (_err: unknown) {
    return client.errorMessages.createSlashError(interaction, "❌ Something went wrong while ending the giveaway!");
   }
 
@@ -38,7 +37,7 @@ export async function EndGiveaway(client: Majobot, interaction: ChatInputCommand
    });
 
   return interaction.followUp({ embeds: [embed], ephemeral: true });
- } catch (err: Error | any) {
-  client.errorMessages.internalError(interaction, err.message);
+ } catch (err: unknown) {
+  client.errorMessages.internalError(interaction, err);
  }
 }

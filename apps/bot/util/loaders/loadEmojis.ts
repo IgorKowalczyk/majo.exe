@@ -142,7 +142,7 @@ export default async function loadEmojis(client: Majobot): Promise<void> {
     continue;
    }
   }
- } catch (error: Error | any) {
-  Logger("error", `Error loading emojis: ${error.message}`);
+ } catch (error: unknown) {
+  Logger("error", `Error loading emojis: ${error}`);
  }
 }

@@ -62,8 +62,8 @@ export async function guildMemberRemove(client: Majobot, member: GuildMember): P
     .setImage("attachment://leave.png");
 
    leaveChannel.send({ embeds: [embed], files: [attachment] });
-  } catch (error: Error | any) {
-   client.debugger("error", error.message);
+  } catch (error: unknown) {
+   client.debugger("error", error);
   }
  }
 

@@ -99,7 +99,7 @@ export async function interactionCreate(client: Majobot, interaction: Interactio
     return interaction.followUp({ ephemeral: true, embeds: [embed] });
    }
 
-   await createUser(interaction.user as any);
+   await createUser(interaction.member);
 
    await command.run(client, interaction, guildSettings);
 
@@ -125,7 +125,7 @@ export async function interactionCreate(client: Majobot, interaction: Interactio
     },
    });
 
-   await createUser(interaction.user as any);
+   await createUser(interaction.user);
 
    await modal.run(client, interaction);
 
@@ -136,7 +136,7 @@ export async function interactionCreate(client: Majobot, interaction: Interactio
    if (!command) return;
    if (command.autocomplete && typeof command.autocomplete === "function") await command.autocomplete(client, interaction);
   }
- } catch (err: Error | any) {
-  client.debugger("error", err.message);
+ } catch (err: unknown) {
+  client.debugger("error", err);
  }
 }

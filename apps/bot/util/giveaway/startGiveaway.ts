@@ -74,8 +74,8 @@ export async function StartGiveaway(client: Majobot, interaction: ChatInputComma
    .setTimestamp();
 
   await interaction.followUp({ embeds: [success] });
- } catch (err: Error | any) {
-  client.errorMessages.internalError(interaction, err.message);
+ } catch (err: unknown) {
+  client.errorMessages.internalError(interaction, err);
  }
 }
 
@@ -147,7 +147,7 @@ export async function StartDropGiveaway(client: Majobot, interaction: ChatInputC
     }),
    });
   await interaction.followUp({ embeds: [success] });
- } catch (err: Error | any) {
-  client.errorMessages.internalError(interaction, err.message);
+ } catch (err: unknown) {
+  client.errorMessages.internalError(interaction, err);
  }
 }

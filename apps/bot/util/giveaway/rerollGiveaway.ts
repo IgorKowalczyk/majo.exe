@@ -37,7 +37,7 @@ export async function RerollGiveaway(client: Majobot, interaction: ChatInputComm
     }),
    });
   return interaction.followUp({ embeds: [embed], ephemeral: true });
- } catch (err: Error | any) {
-  client.errorMessages.internalError(interaction, err.message);
+ } catch (err: unknown) {
+  client.errorMessages.internalError(interaction, err);
  }
 }

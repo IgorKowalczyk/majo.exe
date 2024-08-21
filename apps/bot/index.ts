@@ -22,6 +22,7 @@ Logger("info", `Running version v${process.env.npm_package_version} on Node.js $
 Logger("info", "Check out the source code at https://github.com/igorkowalczyk/majo.exe! Don't forget to star the repository, it helps a lot!");
 
 class Majobot extends Client {
+ // eslint-disable-next-line typescript/no-explicit-any
  public config: Record<string, any> = {};
  public modals: Collection<string, Modal> = new Collection();
  public slashCommands: Collection<string, SlashCommand> = new Collection();
@@ -29,10 +30,10 @@ class Majobot extends Client {
  public commandsRan: number = 0;
  public giveawaysManager: GiveawaysManager = {} as GiveawaysManager;
  public errorMessages: {
-  internalError: (interaction: CommandInteraction, error: Error) => Promise<void>;
+  internalError: (interaction: CommandInteraction, error: unknown) => Promise<void>;
   createSlashError: (interaction: CommandInteraction, description: string, title?: string) => void;
  } = {
-  internalError: async (interaction: CommandInteraction, error: Error): Promise<void> => {
+  internalError: async (interaction: CommandInteraction, error: unknown): Promise<void> => {
    Logger("error", error?.toString() ?? "Unknown error occurred");
    const embed = createErrorEmbed("An error occurred while executing this command. Please try again later.", "Unknown error occurred");
    await interaction.followUp({ embeds: [embed], ephemeral: true });
@@ -46,7 +47,7 @@ class Majobot extends Client {
    interaction.followUp({ embeds: [embed], ephemeral: true });
   },
  };
- public debugger: (type: "info" | "event" | "error" | "warn" | "ready" | "cron", message: string) => void = (type, message) => {
+ public debugger: (type: "info" | "event" | "error" | "warn" | "ready" | "cron", message: string | unknown) => void = (type, message) => {
   Logger(type, message);
  };
  public performance: (time: number) => string = (time: number): string => {
@@ -54,6 +55,7 @@ class Majobot extends Client {
   return run > 500 ? chalk.underline.red(`${run}ms`) : chalk.underline(`${run}ms`);
  };
 
+ // eslint-disable-next-line typescript/no-explicit-any
  constructor(options: any) {
   super(options);
  }
