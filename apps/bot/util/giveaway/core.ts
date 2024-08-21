@@ -1,20 +1,16 @@
 import prismaClient from "@majoexe/database";
-import { GiveawaysManager } from "discord-giveaways";
+import { GiveawaysManager, type GiveawayData } from "discord-giveaways";
+import type { Majobot } from "../..";
+import type { ColorResolvable, Snowflake } from "discord.js";
+import { globalConfig } from "@majoexe/config";
 
-/**
- * Creates a new giveaway manager.
- *
- * @param {object} client - The Discord client.
- * @returns {GiveawaysManager} The giveaway manager.
- */
-
-export default function giveaway(client) {
+export default function giveaway(client: Majobot): GiveawaysManager {
  const Giveaways = class extends GiveawaysManager {
   async getAllGiveaways() {
    return await prismaClient.giveaways.findMany();
   }
 
-  async saveGiveaway(messageId, giveawayData) {
+  async saveGiveaway(messageId: Snowflake, giveawayData: GiveawayData) {
    return await prismaClient.giveaways.create({
     data: {
      messageId,
@@ -29,7 +25,7 @@ export default function giveaway(client) {
    });
   }
 
-  async editGiveaway(messageId, giveawayData) {
+  async editGiveaway(messageId: Snowflake, giveawayData: GiveawayData) {
    return await prismaClient.giveaways.update({
     where: { messageId },
     data: {
@@ -38,7 +34,7 @@ export default function giveaway(client) {
    });
   }
 
-  async deleteGiveaway(messageId) {
+  async deleteGiveaway(messageId: Snowflake) {
    return await prismaClient.giveaways.delete({
     where: { messageId },
    });
@@ -46,15 +42,15 @@ export default function giveaway(client) {
  };
 
  const manager = new Giveaways(client, {
-  updateCountdownEvery: 10000,
-  hasGuildMembersIntent: true,
-  embedColorEnd: "15859772",
-  embedColor: "#ab4b52",
+  forceUpdateEvery: 10000,
   default: {
    botsCanWin: false,
+   embedColorEnd: globalConfig.defaultColor as ColorResolvable,
+   embedColor: globalConfig.defaultColor as ColorResolvable,
    // exemptPermissions: ["MANAGE_MESSAGES", "ADMINISTRATOR"],
    reaction: client.config.emojis.giveaway,
   },
  });
+
  return manager;
 }

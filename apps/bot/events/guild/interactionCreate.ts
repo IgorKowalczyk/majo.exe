@@ -2,7 +2,7 @@ import prismaClient from "@majoexe/database";
 import { cacheGet, cacheSet } from "@majoexe/database/redis";
 import { createUser } from "@majoexe/util/database";
 import { formatDuration } from "@majoexe/util/functions/util";
-import { ChannelType, EmbedBuilder, InteractionType, Message, PermissionsBitField, type Interaction } from "discord.js";
+import { ChannelType, EmbedBuilder, GuildMember, InteractionType, Message, PermissionsBitField, type Interaction } from "discord.js";
 import type { Majobot } from "../..";
 
 export async function interactionCreate(client: Majobot, interaction: Interaction): Promise<Message | void> {
@@ -60,9 +60,10 @@ export async function interactionCreate(client: Majobot, interaction: Interactio
     },
    });
 
-   if (!interaction.channel || !interaction.channel.isTextBased() || interaction.member) return;
+   if (!interaction.channel || !interaction.channel.isTextBased() || !interaction.member) return;
    if (interaction.channel.type !== ChannelType.GuildText) return;
-   const permissions = interaction.channel.permissionsFor(interaction.member);
+
+   const permissions = interaction.channel.permissionsFor(interaction.member as GuildMember);
 
    const canManageGuild = permissions.has(PermissionsBitField.Flags.ManageGuild);
    const canManageCategories = permissions.has(PermissionsBitField.Flags.Administrator);
@@ -98,7 +99,7 @@ export async function interactionCreate(client: Majobot, interaction: Interactio
     return interaction.followUp({ ephemeral: true, embeds: [embed] });
    }
 
-   await createUser(interaction.member);
+   await createUser(interaction.user as any);
 
    await command.run(client, interaction, guildSettings);
 

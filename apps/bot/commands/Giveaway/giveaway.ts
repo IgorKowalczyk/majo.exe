@@ -1,10 +1,12 @@
-import { ApplicationCommandType, ApplicationCommandOptionType, ChannelType, PermissionFlagsBits } from "discord.js";
-import { EndGiveaway } from "../../util/giveaway/endGiveaway.js";
-import { FindGiveaways } from "../../util/giveaway/findGiveaways.js";
-import { PauseGiveaway } from "../../util/giveaway/pauseGiveaway.js";
-import { RerollGiveaway } from "../../util/giveaway/rerollGiveaway.js";
-import { ResumeGiveaway } from "../../util/giveaway/resumeGiveaway.js";
-import { StartDropGiveaway, StartGiveaway } from "../../util/giveaway/startGiveaway.js";
+import { ApplicationCommandType, ApplicationCommandOptionType, ChannelType, PermissionFlagsBits, type ChatInputCommandInteraction } from "discord.js";
+import { EndGiveaway } from "../../util/giveaway/endGiveaway";
+import { FindGiveaways } from "../../util/giveaway/findGiveaways";
+import { PauseGiveaway } from "../../util/giveaway/pauseGiveaway";
+import { RerollGiveaway } from "../../util/giveaway/rerollGiveaway";
+import { ResumeGiveaway } from "../../util/giveaway/resumeGiveaway";
+import { StartDropGiveaway, StartGiveaway } from "../../util/giveaway/startGiveaway";
+import type { Majobot } from "../../index.ts";
+import type { GuildSettings } from "../../util/types/Command";
 
 export default {
  name: "giveaway",
@@ -177,9 +179,10 @@ export default {
    ],
   },
  ],
- run: async (client, interaction, guildSettings) => {
+ run: async (client: Majobot, interaction: ChatInputCommandInteraction, guildSettings: GuildSettings) => {
   try {
    const type = interaction.options.getSubcommand();
+
    if (type === "start") {
     await StartGiveaway(client, interaction, guildSettings?.embedColor || client.config.defaultColor);
    } else if (type === "drop") {
@@ -195,8 +198,8 @@ export default {
    } else if (type === "all" || type === "running" || type === "ended") {
     await FindGiveaways(client, interaction, guildSettings?.embedColor || client.config.defaultColor, type);
    }
-  } catch (err) {
-   client.errorMessages.internalError(interaction, err);
+  } catch (err: Error | any) {
+   client.errorMessages.internalError(interaction, err.message);
   }
  },
 };

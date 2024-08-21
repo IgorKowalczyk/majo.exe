@@ -1,7 +1,7 @@
 const timeout = new Map();
 import prismaClient from "@majoexe/database";
 import { formatDuration } from "@majoexe/util/functions/util";
-import { BaseInteraction, CommandInteraction, EmbedBuilder, type Interaction, type ModalMessageModalSubmitInteraction } from "discord.js";
+import { EmbedBuilder, type ModalMessageModalSubmitInteraction } from "discord.js";
 import type { Majobot } from "..";
 
 export default {

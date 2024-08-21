@@ -5,11 +5,13 @@ import { createErrorEmbed } from "@majoexe/util/embeds";
 import { Logger, chalk } from "@majoexe/util/functions/util";
 import { Client, type CommandInteraction, GatewayIntentBits, Collection } from "discord.js";
 import giveaway from "./util/giveaway/core.js";
-import loadCommands, { type SlashCommand } from "./util/loaders/loadCommands.js";
+import loadCommands from "./util/loaders/loadCommands.js";
 import loadEmojis from "./util/loaders/loadEmojis.ts";
 import loadEvents from "./util/loaders/loadEvents.ts";
 import loadFonts from "./util/loaders/loadFonts.ts";
 import loadModals, { type Modal } from "./util/loaders/loadModals.ts";
+import type { GiveawaysManager } from "discord-giveaways";
+import type { SlashCommand } from "./util/types/Command.ts";
 
 const cwd = dirname(fileURLToPath(import.meta.url));
 Logger("info", `Current working directory: ${cwd}`);
@@ -25,17 +27,17 @@ class Majobot extends Client {
  public slashCommands: Collection<string, SlashCommand> = new Collection();
  public additionalSlashCommands: number = 0;
  public commandsRan: number = 0;
- public giveawaysManager: any;
+ public giveawaysManager: GiveawaysManager = {} as GiveawaysManager;
  public errorMessages: {
   internalError: (interaction: CommandInteraction, error: Error) => Promise<void>;
-  createSlashError: (interaction: CommandInteraction, description: string, title: string) => void;
+  createSlashError: (interaction: CommandInteraction, description: string, title?: string) => void;
  } = {
   internalError: async (interaction: CommandInteraction, error: Error): Promise<void> => {
    Logger("error", error?.toString() ?? "Unknown error occurred");
    const embed = createErrorEmbed("An error occurred while executing this command. Please try again later.", "Unknown error occurred");
    await interaction.followUp({ embeds: [embed], ephemeral: true });
   },
-  createSlashError: (interaction: CommandInteraction, description: string, title: string): void => {
+  createSlashError: (interaction: CommandInteraction, description: string, title?: string): void => {
    const embed = createErrorEmbed(description, title);
    embed.setFooter({
     text: `Requested by ${interaction.user.globalName ?? interaction.user.username}`,
@@ -77,13 +79,13 @@ client.config = {
  ...dashboardConfig,
 };
 
-client.giveawaysManager = giveaway(client);
-
 await loadCommands(client);
 await loadModals(client);
 await loadFonts(client);
 await loadEvents(client);
 await loadEmojis(client);
+
+client.giveawaysManager = giveaway(client);
 
 Logger("info", "Logging in...");
 

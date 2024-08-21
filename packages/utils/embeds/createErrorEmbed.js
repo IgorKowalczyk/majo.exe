@@ -4,7 +4,7 @@ import { EmbedBuilder } from "discord.js";
  * Create an error embed.
  *
  * @param {string} description The error to display.
- * @param {string} title The title of the embed.
+ * @param {string | undefined} title The title of the embed.
  * @returns {EmbedBuilder} The error embed.
  * @example const errorEmbed = createErrorEmbed("Error");
  * */

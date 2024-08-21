@@ -1,14 +1,7 @@
 import { readDir } from "@majoexe/util/functions/files/readDir.js";
-import { type ApplicationCommandOption, ApplicationCommandOptionType, type ApplicationCommandDataResolvable, type ChatInputApplicationCommandData, CommandInteraction, AutocompleteInteraction } from "discord.js";
+import { type ApplicationCommandOption, ApplicationCommandOptionType } from "discord.js";
 import type { Majobot } from "../..";
-
-export interface SlashCommand extends ChatInputApplicationCommandData {
- category: string;
- cooldown?: number;
- defer?: boolean;
- run: (client: Majobot, interaction: CommandInteraction, args: any) => Promise<void>;
- autocomplete?: (client: Majobot, interaction: AutocompleteInteraction) => Promise<void>;
-}
+import type { SlashCommand } from "../types/Command";
 
 export default async function loadCommands(client: Majobot): Promise<void> {
  try {
