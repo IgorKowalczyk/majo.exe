@@ -11,6 +11,8 @@ export interface SlashCommand extends ChatInputApplicationCommandData {
  category: string;
  cooldown?: number;
  defer?: boolean;
+ dm_permission: boolean;
+ usage: string;
  run: (client: Majobot, interaction: CommandInteraction, args: GuildSettings) => Promise<Message | void>;
  autocomplete?: (client: Majobot, interaction: AutocompleteInteraction) => Promise<void>;
 }
