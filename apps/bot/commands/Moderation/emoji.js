@@ -135,8 +135,8 @@ export default {
       ])
       .setThumbnail(emoji.imageURL({ dynamic: true, size: 256 }))
       .setFooter({
-       text: `Requested by ${interaction.member.user.globalName || interaction.member.user.username}`,
-       iconURL: interaction.member.user.displayAvatarURL({
+       text: `Requested by ${interaction.user.globalName || interaction.user.username}`,
+       iconURL: interaction.user.displayAvatarURL({
         size: 256,
        }),
       });
@@ -202,8 +202,8 @@ export default {
      ])
      .setThumbnail(emojiToDelete.imageURL({ dynamic: true, size: 256 }))
      .setFooter({
-      text: `Requested by ${interaction.member.user.globalName || interaction.member.user.username}`,
-      iconURL: interaction.member.user.displayAvatarURL({
+      text: `Requested by ${interaction.user.globalName || interaction.user.username}`,
+      iconURL: interaction.user.displayAvatarURL({
        size: 256,
       }),
      });
@@ -266,8 +266,8 @@ export default {
      ])
      .setThumbnail(emojiToGet.imageURL({ dynamic: true, size: 256 }))
      .setFooter({
-      text: `Requested by ${interaction.member.user.globalName || interaction.member.user.username}`,
-      iconURL: interaction.member.user.displayAvatarURL({
+      text: `Requested by ${interaction.user.globalName || interaction.user.username}`,
+      iconURL: interaction.user.displayAvatarURL({
        size: 256,
       }),
      });
@@ -309,8 +309,8 @@ export default {
       }`
      )
      .setFooter({
-      text: `Requested by ${interaction.member.user.globalName || interaction.member.user.username}`,
-      iconURL: interaction.member.user.displayAvatarURL({
+      text: `Requested by ${interaction.user.globalName || interaction.user.username}`,
+      iconURL: interaction.user.displayAvatarURL({
        size: 256,
       }),
      });

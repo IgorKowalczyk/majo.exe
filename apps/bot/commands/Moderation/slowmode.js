@@ -48,8 +48,8 @@ export default {
     .setTitle("🕐 Slowmode")
     .setDescription(`Slowmode has been changed from \`${ms(before * 1000)}\` to \`${time}\``)
     .setFooter({
-     text: `Requested by ${interaction.member.user.globalName || interaction.member.user.username}`,
-     iconURL: interaction.member.user.displayAvatarURL({
+     text: `Requested by ${interaction.user.globalName || interaction.user.username}`,
+     iconURL: interaction.user.displayAvatarURL({
       size: 256,
      }),
     });

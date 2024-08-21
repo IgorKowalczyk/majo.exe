@@ -44,8 +44,8 @@ export async function getUserAvatar(client, interaction, color) {
    .setTitle(`${user.user.globalName || user.user.username}${serverAvatar ? " server" : ""} avatar`)
    .setImage(avatar)
    .setFooter({
-    text: `Requested by ${interaction.member.user.globalName || interaction.member.user.username}`,
-    iconURL: interaction.member.user.displayAvatarURL({
+    text: `Requested by ${interaction.user.globalName || interaction.user.username}`,
+    iconURL: interaction.user.displayAvatarURL({
      size: 256,
     }),
    });
@@ -118,8 +118,8 @@ export async function getUserBanner(client, interaction, color) {
    .setTitle(`${user.user.globalName || user.user.username}${serverBanner ? " server" : ""} banner`)
    .setImage(banner)
    .setFooter({
-    text: `Requested by ${interaction.member.user.globalName || interaction.member.user.username}`,
-    iconURL: interaction.member.user.displayAvatarURL({
+    text: `Requested by ${interaction.user.globalName || interaction.user.username}`,
+    iconURL: interaction.user.displayAvatarURL({
      size: 256,
     }),
    });

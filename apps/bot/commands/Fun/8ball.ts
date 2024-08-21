@@ -1,4 +1,6 @@
-import { ApplicationCommandType, ApplicationCommandOptionType, EmbedBuilder } from "discord.js";
+import { ApplicationCommandType, ApplicationCommandOptionType, EmbedBuilder, type ChatInputCommandInteraction } from "discord.js";
+import type { GuildSettings } from "../../util/types/Command";
+import type { Majobot } from "../..";
 
 export default {
  name: "8ball",
@@ -16,7 +18,7 @@ export default {
    max_length: 100,
   },
  ],
- run: (client, interaction, guildSettings) => {
+ run: (client: Majobot, interaction: ChatInputCommandInteraction, guildSettings: GuildSettings) => {
   try {
    const args = interaction.options.getString("question");
 
@@ -48,8 +50,8 @@ export default {
     .setTimestamp()
     .setColor(guildSettings?.embedColor || client.config.defaultColor)
     .setFooter({
-     text: `Requested by ${interaction.member.user.globalName || interaction.member.user.username}`,
-     iconURL: interaction.member.user.displayAvatarURL({ size: 256 }),
+     text: `Requested by ${interaction.user.globalName || interaction.user.username}`,
+     iconURL: interaction.user.displayAvatarURL({ size: 256 }),
     });
 
    return interaction.followUp({ embeds: [embed] });

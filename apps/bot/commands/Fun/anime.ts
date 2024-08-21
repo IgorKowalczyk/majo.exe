@@ -1,4 +1,6 @@
-import { ApplicationCommandType, ApplicationCommandOptionType, EmbedBuilder, codeBlock, ActionRowBuilder, ButtonBuilder, ButtonStyle } from "discord.js";
+import { ApplicationCommandType, ApplicationCommandOptionType, EmbedBuilder, codeBlock, ActionRowBuilder, ButtonBuilder, ButtonStyle, ChatInputCommandInteraction } from "discord.js";
+import type { Majobot } from "../..";
+import type { GuildSettings } from "../../util/types/Command";
 
 export default {
  name: "anime",
@@ -16,9 +18,11 @@ export default {
    max_length: 256,
   },
  ],
- run: async (client, interaction, guildSettings) => {
+ run: async (client: Majobot, interaction: ChatInputCommandInteraction, guildSettings: GuildSettings) => {
   try {
    const query = interaction.options.getString("query");
+
+   if (!query) return client.errorMessages.createSlashError(interaction, "❌ Please provide a valid anime name.");
 
    const request = await fetch(`https://kitsu.io/api/edge/anime?filter[text]=${query}&page%5Boffset%5D=0&page%5Blimit%5D=1`, {
     method: "GET",
@@ -44,8 +48,8 @@ export default {
      .setTitle("❌ Error")
      .setDescription("> No results found.")
      .setFooter({
-      text: `Requested by ${interaction.member.user.globalName || interaction.member.user.username}`,
-      iconURL: interaction.member.user.displayAvatarURL({
+      text: `Requested by ${interaction.user.globalName || interaction.user.username}`,
+      iconURL: interaction.user.displayAvatarURL({
        size: 256,
       }),
      });
@@ -59,7 +63,7 @@ export default {
    const embed = new EmbedBuilder()
     .setColor(guildSettings?.embedColor || client.config.defaultColor)
     .setTimestamp()
-    .setTitle(data.canonicalTitle || query.splice(0, 20))
+    .setTitle(data.canonicalTitle || query.slice(0, 20))
     .setURL(`https://kitsu.io/anime/${data.slug}`)
     .setDescription(data.synopsis ? (data.synopsis.length > 1024 ? data.synopsis.slice(0, 1021) + "..." : data.synopsis) : "No description!")
     .addFields([
@@ -105,15 +109,15 @@ export default {
      },
     ])
     .setFooter({
-     text: `Requested by ${interaction.member.user.globalName || interaction.member.user.username}`,
-     iconURL: interaction.member.user.displayAvatarURL({
+     text: `Requested by ${interaction.user.globalName || interaction.user.username}`,
+     iconURL: interaction.user.displayAvatarURL({
       size: 256,
      }),
     });
 
    data.posterImage?.original ? embed.setThumbnail(data.posterImage.original) : null;
 
-   const actionRow = new ActionRowBuilder() // prettier
+   const actionRow = new ActionRowBuilder<ButtonBuilder>() // prettier
     .addComponents([
      new ButtonBuilder() // prettier
       .setStyle(ButtonStyle.Link)

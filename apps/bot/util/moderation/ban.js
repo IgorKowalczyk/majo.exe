@@ -41,8 +41,8 @@ export async function banMember(client, interaction, color) {
    .setTitle("🔨 Member banned")
    .setDescription(`> **${user}** has been banned from the server\n> **Reason:** ${reason}`)
    .setFooter({
-    text: `Banned by ${interaction.member.user.globalName || interaction.member.user.username}`,
-    iconURL: interaction.member.user.displayAvatarURL({
+    text: `Banned by ${interaction.user.globalName || interaction.user.username}`,
+    iconURL: interaction.user.displayAvatarURL({
      size: 256,
     }),
    });

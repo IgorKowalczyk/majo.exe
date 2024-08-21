@@ -1,5 +1,7 @@
 import { percentageBar } from "@majoexe/util/functions/util";
-import { ApplicationCommandType, ApplicationCommandOptionType, EmbedBuilder } from "discord.js";
+import { ApplicationCommandType, ApplicationCommandOptionType, EmbedBuilder, ChatInputCommandInteraction } from "discord.js";
+import type { Majobot } from "../..";
+import type { GuildSettings } from "../../util/types/Command";
 
 export default {
  name: "ship",
@@ -22,7 +24,7 @@ export default {
    required: true,
   },
  ],
- run: (client, interaction, guildSettings) => {
+ run: (client: Majobot, interaction: ChatInputCommandInteraction, guildSettings: GuildSettings) => {
   try {
    const first = interaction.options.getUser("first");
    const second = interaction.options.getUser("second");
@@ -43,8 +45,8 @@ export default {
     .setTimestamp()
     .setColor(guildSettings?.embedColor || client.config.defaultColor)
     .setFooter({
-     text: `Requested by ${interaction.member.user.globalName || interaction.member.user.username}`,
-     iconURL: interaction.member.user.displayAvatarURL({
+     text: `Requested by ${interaction.user.globalName || interaction.user.username}`,
+     iconURL: interaction.user.displayAvatarURL({
       size: 256,
      }),
     });

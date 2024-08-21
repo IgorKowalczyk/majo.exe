@@ -87,8 +87,8 @@ export default {
        .setTitle("✅ Success")
        .setDescription("> Successfully **`enabled`** leveling messages, now bot **will send** a message when a user levels up")
        .setFooter({
-        text: `Requested by ${interaction.member.user.globalName || interaction.member.user.username}`,
-        iconURL: interaction.member.user.displayAvatarURL({
+        text: `Requested by ${interaction.user.globalName || interaction.user.username}`,
+        iconURL: interaction.user.displayAvatarURL({
          size: 256,
         }),
        });
@@ -107,8 +107,8 @@ export default {
        .setTitle("✅ Success")
        .setDescription("> Successfully **`disabled`** leveling messages, now bot **will not send** a message when a user levels up")
        .setFooter({
-        text: `Requested by ${interaction.member.user.globalName || interaction.member.user.username}`,
-        iconURL: interaction.member.user.displayAvatarURL({
+        text: `Requested by ${interaction.user.globalName || interaction.user.username}`,
+        iconURL: interaction.user.displayAvatarURL({
          size: 256,
         }),
        });
@@ -124,8 +124,8 @@ export default {
        .setTitle("✅ Success")
        .setDescription("> Successfully **`enabled`** gaining XP, now users **will gain XP** when they send a message")
        .setFooter({
-        text: `Requested by ${interaction.member.user.globalName || interaction.member.user.username}`,
-        iconURL: interaction.member.user.displayAvatarURL({
+        text: `Requested by ${interaction.user.globalName || interaction.user.username}`,
+        iconURL: interaction.user.displayAvatarURL({
          size: 256,
         }),
        });
@@ -139,8 +139,8 @@ export default {
        .setTitle("✅ Success")
        .setDescription("> Successfully **`disabled`** gaining XP, now users **will not gain XP** when they send a message")
        .setFooter({
-        text: `Requested by ${interaction.member.user.globalName || interaction.member.user.username}`,
-        iconURL: interaction.member.user.displayAvatarURL({
+        text: `Requested by ${interaction.user.globalName || interaction.user.username}`,
+        iconURL: interaction.user.displayAvatarURL({
          size: 256,
         }),
        });
@@ -156,8 +156,8 @@ export default {
      .setTitle("📈 XP Settings")
      .setDescription(`> ${settings.enableXPLevelUpMessage ? client.config.emojis.success : client.config.emojis.error} **Leveling messages:** \`${settings.enableXPLevelUpMessage ? "Enabled" : "Disabled"}\` (Last updated: ${settings.enableXPLevelUpMessageLastChanged ? time(settings.enableXPLevelUpMessageLastChanged, "R") : "Never"})\n> ${settings.enableXP ? client.config.emojis.success : client.config.emojis.error} **Gaining XP:** \`${settings.enableXP ? "Enabled" : "Disabled"}\` (Last updated: ${settings.enableXPLastChanged ? time(settings.enableXPLastChanged, "R") : "Never"})`)
      .setFooter({
-      text: `Requested by ${interaction.member.user.globalName || interaction.member.user.username}`,
-      iconURL: interaction.member.user.displayAvatarURL({
+      text: `Requested by ${interaction.user.globalName || interaction.user.username}`,
+      iconURL: interaction.user.displayAvatarURL({
        size: 256,
       }),
      });

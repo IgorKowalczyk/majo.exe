@@ -25,8 +25,8 @@ export async function enableAntiSpam(client, interaction, guildSettings) {
    .setTitle("✅ Successfully `enabled` the anti-spam system again")
    .setDescription("The anti-spam system has been `enabled`. Generic spam will now be blocked.")
    .setFooter({
-    text: `Requested by ${interaction.member.user.globalName || interaction.member.user.username}`,
-    iconURL: interaction.member.user.displayAvatarURL({
+    text: `Requested by ${interaction.user.globalName || interaction.user.username}`,
+    iconURL: interaction.user.displayAvatarURL({
      size: 256,
     }),
    })
@@ -55,7 +55,7 @@ export async function enableAntiSpam(client, interaction, guildSettings) {
      },
     },
    ],
-   reason: `Requested by ${interaction.member.user.globalName || interaction.member.user.username}`,
+   reason: `Requested by ${interaction.user.globalName || interaction.user.username}`,
   };
 
   if (logChannel) {
@@ -131,8 +131,8 @@ export async function enableAntiSpam(client, interaction, guildSettings) {
     },
    ])
    .setFooter({
-    text: `Requested by ${interaction.member.user.globalName || interaction.member.user.username}`,
-    iconURL: interaction.member.user.displayAvatarURL({
+    text: `Requested by ${interaction.user.globalName || interaction.user.username}`,
+    iconURL: interaction.user.displayAvatarURL({
      size: 256,
     }),
    })

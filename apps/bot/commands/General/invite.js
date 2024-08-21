@@ -19,8 +19,8 @@ export default {
     .setDescription(`> **[Click this link to invite me!](${inviteLink})** **__[Recomended!]__**\n\n *Or [click this link to invite me as administrator](${inviteLinkRoot}) [Not recomended!]*`)
     .setTimestamp()
     .setFooter({
-     text: `Requested by ${interaction.member.user.globalName || interaction.member.user.username}`,
-     iconURL: interaction.member.user.displayAvatarURL({
+     text: `Requested by ${interaction.user.globalName || interaction.user.username}`,
+     iconURL: interaction.user.displayAvatarURL({
       size: 256,
      }),
     });

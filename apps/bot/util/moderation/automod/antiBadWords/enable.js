@@ -30,8 +30,8 @@ export async function enableAntiBadWords(client, interaction, guildSettings) {
    .setTitle("✅ Successfully `enabled` the anti-bad-words system again")
    .setDescription("The anti-bad-words system has been `enabled`. Common bad words will now be blocked.")
    .setFooter({
-    text: `Requested by ${interaction.member.user.globalName || interaction.member.user.username}`,
-    iconURL: interaction.member.user.displayAvatarURL({
+    text: `Requested by ${interaction.user.globalName || interaction.user.username}`,
+    iconURL: interaction.user.displayAvatarURL({
      size: 256,
     }),
    })
@@ -63,7 +63,7 @@ export async function enableAntiBadWords(client, interaction, guildSettings) {
      },
     },
    ],
-   reason: `Requested by ${interaction.member.user.globalName || interaction.member.user.username}`,
+   reason: `Requested by ${interaction.user.globalName || interaction.user.username}`,
   };
 
   if (profanity) ruleToCreate.triggerMetadata.presets.push(AutoModerationRuleKeywordPresetType.Profanity);
@@ -143,8 +143,8 @@ export async function enableAntiBadWords(client, interaction, guildSettings) {
     },
    ])
    .setFooter({
-    text: `Requested by ${interaction.member.user.globalName || interaction.member.user.username}`,
-    iconURL: interaction.member.user.displayAvatarURL({
+    text: `Requested by ${interaction.user.globalName || interaction.user.username}`,
+    iconURL: interaction.user.displayAvatarURL({
      size: 256,
     }),
    })

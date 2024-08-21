@@ -1,4 +1,6 @@
-import { ActionRowBuilder, ApplicationCommandType, ButtonBuilder, ButtonStyle, EmbedBuilder } from "discord.js";
+import { ActionRowBuilder, ApplicationCommandType, ButtonBuilder, ButtonStyle, ChatInputCommandInteraction, EmbedBuilder } from "discord.js";
+import type { Majobot } from "../..";
+import type { GuildSettings } from "../../util/types/Command";
 
 export default {
  name: "cat",
@@ -7,7 +9,7 @@ export default {
  cooldown: 3000,
  dm_permission: true,
  usage: "/cat",
- run: async (client, interaction, guildSettings) => {
+ run: async (client: Majobot, interaction: ChatInputCommandInteraction, guildSettings: GuildSettings) => {
   try {
    const data = await fetch("https://api.thecatapi.com/v1/images/search");
    const json = await data.json();
@@ -22,16 +24,17 @@ export default {
     .setColor(guildSettings?.embedColor || client.config.defaultColor)
     .setTimestamp()
     .setFooter({
-     text: `Requested by ${interaction.member.user.globalName || interaction.member.user.username}`,
-     iconURL: interaction.member.user.displayAvatarURL({ size: 256 }),
+     text: `Requested by ${interaction.user.globalName || interaction.user.username}`,
+     iconURL: interaction.user.displayAvatarURL({ size: 256 }),
     });
 
-   const actionRow = new ActionRowBuilder().addComponents(
-    new ButtonBuilder() // prettier
-     .setStyle(ButtonStyle.Link)
-     .setLabel("View image")
-     .setURL(json[0].url)
-   );
+   const actionRow = new ActionRowBuilder<ButtonBuilder>() // prettier
+    .addComponents(
+     new ButtonBuilder() // prettier
+      .setStyle(ButtonStyle.Link)
+      .setLabel("View image")
+      .setURL(json[0].url)
+    );
    return interaction.followUp({ embeds: [embed], components: [actionRow] });
   } catch (err) {
    client.errorMessages.internalError(interaction, err);

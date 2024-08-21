@@ -126,8 +126,8 @@ export default {
     .setDescription(`> **${user}** has been given the role **${role}**\n> **Reason:** ${reason}`)
     .setThumbnail(user.displayAvatarURL({ dynamic: true }))
     .setFooter({
-     text: `Role added by ${interaction.member.user.globalName || interaction.member.user.username}`,
-     iconURL: interaction.member.user.displayAvatarURL({ dynamic: true }),
+     text: `Role added by ${interaction.user.globalName || interaction.user.username}`,
+     iconURL: interaction.user.displayAvatarURL({ dynamic: true }),
     });
 
    return interaction.followUp({ embeds: [embed] });
@@ -187,8 +187,8 @@ export default {
     .setThumbnail(user.displayAvatarURL({ dynamic: true }))
     .setDescription(`> **${user}** has been removed from the role **${role}**\n> **Reason:** ${reason}`)
     .setFooter({
-     text: `Role removed by ${interaction.member.user.globalName || interaction.member.user.username}`,
-     iconURL: interaction.member.user.displayAvatarURL({ dynamic: true }),
+     text: `Role removed by ${interaction.user.globalName || interaction.user.username}`,
+     iconURL: interaction.user.displayAvatarURL({ dynamic: true }),
     });
 
    return interaction.followUp({ embeds: [embed] });
@@ -208,8 +208,8 @@ export default {
     })
     .setColor(role.color || guildSettings?.embedColor || client.config.defaultColor)
     .setFooter({
-     text: `Requested by ${interaction.member.user.globalName || interaction.member.user.username}`,
-     iconURL: interaction.member.user.displayAvatarURL({
+     text: `Requested by ${interaction.user.globalName || interaction.user.username}`,
+     iconURL: interaction.user.displayAvatarURL({
       size: 256,
      }),
     })

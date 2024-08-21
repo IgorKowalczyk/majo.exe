@@ -1,5 +1,7 @@
 import { load } from "cheerio";
-import { ApplicationCommandType, EmbedBuilder, ActionRowBuilder, ButtonBuilder, ApplicationCommandOptionType, ButtonStyle } from "discord.js";
+import { ApplicationCommandType, EmbedBuilder, ActionRowBuilder, ButtonBuilder, ApplicationCommandOptionType, ButtonStyle, ChatInputCommandInteraction } from "discord.js";
+import type { Majobot } from "../..";
+import type { GuildSettings } from "../../util/types/Command";
 
 export default {
  name: "comic",
@@ -41,7 +43,7 @@ export default {
    type: ApplicationCommandOptionType.Subcommand,
   },
  ],
- run: async (client, interaction, guildSettings) => {
+ run: async (client: Majobot, interaction: ChatInputCommandInteraction, guildSettings: GuildSettings) => {
   try {
    const command = interaction.options.getSubcommand();
 
@@ -61,16 +63,17 @@ export default {
      .setColor(guildSettings?.embedColor || client.config.defaultColor)
      .setTimestamp()
      .setFooter({
-      text: `Requested by ${interaction.member.user.globalName || interaction.member.user.username}`,
-      iconURL: interaction.member.user.displayAvatarURL({ size: 256 }),
+      text: `Requested by ${interaction.user.globalName || interaction.user.username}`,
+      iconURL: interaction.user.displayAvatarURL({ size: 256 }),
      });
 
-    const actionRow = new ActionRowBuilder().addComponents([
-     new ButtonBuilder() // prettier
-      .setStyle(ButtonStyle.Link)
-      .setLabel("View on xkcd")
-      .setURL(`https://xkcd.com/${json.num}`),
-    ]);
+    const actionRow = new ActionRowBuilder<ButtonBuilder>() // prettier
+     .addComponents([
+      new ButtonBuilder() // prettier
+       .setStyle(ButtonStyle.Link)
+       .setLabel("View on xkcd")
+       .setURL(`https://xkcd.com/${json.num}`),
+     ]);
 
     return interaction.followUp({ embeds: [embed], components: [actionRow] });
    }
@@ -86,7 +89,7 @@ export default {
 
     const $ = load(text);
 
-    const images = [];
+    const images: string[] = [];
 
     $("img[name='comic2']").each((_, element) => {
      const imageUrl = $(element).attr("src");
@@ -103,16 +106,17 @@ export default {
      .setColor(guildSettings?.embedColor || client.config.defaultColor)
      .setTimestamp()
      .setFooter({
-      text: `Requested by ${interaction.member.user.globalName || interaction.member.user.username}`,
-      iconURL: interaction.member.user.displayAvatarURL({ size: 256 }),
+      text: `Requested by ${interaction.user.globalName || interaction.user.username}`,
+      iconURL: interaction.user.displayAvatarURL({ size: 256 }),
      });
 
-    const actionRow = new ActionRowBuilder().addComponents([
-     new ButtonBuilder() // prettier
-      .setStyle(ButtonStyle.Link)
-      .setLabel("View on PHD Comics")
-      .setURL(`https://phdcomics.com${issue ? "/comics/archive.php?comicid=" + issue : ""}`),
-    ]);
+    const actionRow = new ActionRowBuilder<ButtonBuilder>() // prettier
+     .addComponents([
+      new ButtonBuilder() // prettier
+       .setStyle(ButtonStyle.Link)
+       .setLabel("View on PHD Comics")
+       .setURL(`https://phdcomics.com${issue ? "/comics/archive.php?comicid=" + issue : ""}`),
+     ]);
 
     return interaction.followUp({ embeds: [embed], components: [actionRow] });
    }
@@ -143,16 +147,17 @@ export default {
      .setColor(guildSettings?.embedColor || client.config.defaultColor)
      .setTimestamp()
      .setFooter({
-      text: `Requested by ${interaction.member.user.globalName || interaction.member.user.username}`,
-      iconURL: interaction.member.user.displayAvatarURL({ size: 256 }),
+      text: `Requested by ${interaction.user.globalName || interaction.user.username}`,
+      iconURL: interaction.user.displayAvatarURL({ size: 256 }),
      });
 
-    const actionRow = new ActionRowBuilder().addComponents([
-     new ButtonBuilder() // prettier
-      .setStyle(ButtonStyle.Link)
-      .setLabel("View on GoComics")
-      .setURL(`https://www.gocomics.com/garfield/${year}/${month}/${day}`),
-    ]);
+    const actionRow = new ActionRowBuilder<ButtonBuilder>() //
+     .addComponents([
+      new ButtonBuilder() // prettier
+       .setStyle(ButtonStyle.Link)
+       .setLabel("View on GoComics")
+       .setURL(`https://www.gocomics.com/garfield/${year}/${month}/${day}`),
+     ]);
 
     return interaction.followUp({ embeds: [embed], components: [actionRow] });
    }

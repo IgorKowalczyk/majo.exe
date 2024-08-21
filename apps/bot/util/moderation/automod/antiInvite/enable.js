@@ -26,8 +26,8 @@ export async function enableAntiInvite(client, interaction, guildSettings) {
    .setTitle("✅ Successfully `enabled` the anti-invite system again")
    .setDescription("The anti-invite system has been `enabled`. All Discord invites will now be blocked.")
    .setFooter({
-    text: `Requested by ${interaction.member.user.globalName || interaction.member.user.username}`,
-    iconURL: interaction.member.user.displayAvatarURL({
+    text: `Requested by ${interaction.user.globalName || interaction.user.username}`,
+    iconURL: interaction.user.displayAvatarURL({
      size: 256,
     }),
    })
@@ -59,7 +59,7 @@ export async function enableAntiInvite(client, interaction, guildSettings) {
      },
     },
    ],
-   reason: `Requested by ${interaction.member.user.globalName || interaction.member.user.username}`,
+   reason: `Requested by ${interaction.user.globalName || interaction.user.username}`,
   };
 
   if (timeout) {
@@ -149,8 +149,8 @@ export async function enableAntiInvite(client, interaction, guildSettings) {
     },
    ])
    .setFooter({
-    text: `Requested by ${interaction.member.user.globalName || interaction.member.user.username}`,
-    iconURL: interaction.member.user.displayAvatarURL({
+    text: `Requested by ${interaction.user.globalName || interaction.user.username}`,
+    iconURL: interaction.user.displayAvatarURL({
      size: 256,
     }),
    })

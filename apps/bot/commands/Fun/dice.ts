@@ -1,4 +1,6 @@
-import { ApplicationCommandType, EmbedBuilder } from "discord.js";
+import { ApplicationCommandType, CommandInteraction, EmbedBuilder } from "discord.js";
+import type { Majobot } from "../..";
+import type { GuildSettings } from "../../util/types/Command";
 
 export default {
  name: "dice",
@@ -7,7 +9,7 @@ export default {
  cooldown: 3000,
  dm_permission: true,
  usage: "/dice",
- run: (client, interaction, guildSettings) => {
+ run: (client: Majobot, interaction: CommandInteraction, guildSettings: GuildSettings) => {
   try {
    const dice = Math.floor(Math.random() * 6) + 1;
 
@@ -16,10 +18,10 @@ export default {
     .setDescription(`>>> **You rolled a ${dice}!**`)
     .setTimestamp()
     .setColor(guildSettings?.embedColor || client.config.defaultColor)
-    .setThumbnail(interaction.member.user.displayAvatarURL({ size: 256 }))
+    .setThumbnail(interaction.user.displayAvatarURL({ size: 256 }))
     .setFooter({
-     text: `Requested by ${interaction.member.user.globalName || interaction.member.user.username}`,
-     iconURL: interaction.member.user.displayAvatarURL({ size: 256 }),
+     text: `Requested by ${interaction.user.globalName || interaction.user.username}`,
+     iconURL: interaction.user.displayAvatarURL({ size: 256 }),
     });
    return interaction.followUp({ embeds: [embed] });
   } catch (err) {

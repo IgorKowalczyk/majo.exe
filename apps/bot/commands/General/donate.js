@@ -13,8 +13,8 @@ export default {
     const embed = new EmbedBuilder()
      .setDescription("Currently, we do not accept any donation methods! Try again later")
      .setFooter({
-      text: `Requested by ${interaction.member.user.globalName || interaction.member.user.username}`,
-      iconURL: interaction.member.user.displayAvatarURL({
+      text: `Requested by ${interaction.user.globalName || interaction.user.username}`,
+      iconURL: interaction.user.displayAvatarURL({
        size: 256,
       }),
      })
@@ -27,8 +27,8 @@ export default {
    const embed = new EmbedBuilder()
     .setDescription("> **You can donate to Majo.exe by using the following methods:**\n" + client.config.donate.links.map((link) => `- [${link.icon} ${link.name}](${link.url})`).join("\n"))
     .setFooter({
-     text: `Requested by ${interaction.member.user.globalName || interaction.member.user.username}`,
-     iconURL: interaction.member.user.displayAvatarURL({
+     text: `Requested by ${interaction.user.globalName || interaction.user.username}`,
+     iconURL: interaction.user.displayAvatarURL({
       size: 256,
      }),
     })

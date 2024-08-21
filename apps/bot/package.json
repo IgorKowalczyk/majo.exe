@@ -32,7 +32,6 @@
     "discord.js": "14.15.3",
     "dotenv": "16.4.5",
     "figlet": "1.7.0",
-    "flip-text": "1.2.0",
     "gif-encoder-2": "1.0.5",
     "jsdom": "24.1.1",
     "ms": "2.1.3",

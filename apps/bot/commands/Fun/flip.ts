@@ -1,5 +1,7 @@
-import { ApplicationCommandType, ApplicationCommandOptionType, EmbedBuilder } from "discord.js";
-import flipText from "flip-text";
+import { ApplicationCommandType, ApplicationCommandOptionType, EmbedBuilder, ChatInputCommandInteraction } from "discord.js";
+import { flipText } from "@majoexe/util/functions/util";
+import type { Majobot } from "../..";
+import type { GuildSettings } from "../../util/types/Command";
 
 export default {
  name: "flip",
@@ -31,7 +33,7 @@ export default {
    ],
   },
  ],
- run: (client, interaction, guildSettings) => {
+ run: (client: Majobot, interaction: ChatInputCommandInteraction, guildSettings: GuildSettings) => {
   try {
    if (interaction.options.getSubcommand() == "coin") {
     const coin = Math.floor(Math.random() * 2) + 1;
@@ -40,23 +42,25 @@ export default {
      .setDescription(`>>> **You flipped a ${coin == 1 ? "heads" : "tails"}!**`)
      .setTimestamp()
      .setColor(guildSettings?.embedColor || client.config.defaultColor)
-     .setThumbnail(interaction.member.user.displayAvatarURL({ size: 256 }))
+     .setThumbnail(interaction.user.displayAvatarURL({ size: 256 }))
      .setFooter({
-      text: `Requested by ${interaction.member.user.globalName || interaction.member.user.username}`,
-      iconURL: interaction.member.user.displayAvatarURL({ size: 256 }),
+      text: `Requested by ${interaction.user.globalName || interaction.user.username}`,
+      iconURL: interaction.user.displayAvatarURL({ size: 256 }),
      });
     return interaction.followUp({ embeds: [embed] });
    } else if (interaction.options.getSubcommand() == "text") {
     const text = interaction.options.getString("text");
+    if (!text) return client.errorMessages.createSlashError(interaction, "❌ Please provide a valid text to flip.");
+
     const embed = new EmbedBuilder()
      .setTitle("🔁 Flipped Text")
      .setDescription(`>>> **${flipText(text)}**`)
      .setTimestamp()
      .setColor(guildSettings?.embedColor || client.config.defaultColor)
-     .setThumbnail(interaction.member.user.displayAvatarURL({ size: 256 }))
+     .setThumbnail(interaction.user.displayAvatarURL({ size: 256 }))
      .setFooter({
-      text: `Requested by ${interaction.member.user.globalName || interaction.member.user.username}`,
-      iconURL: interaction.member.user.displayAvatarURL({ size: 256 }),
+      text: `Requested by ${interaction.user.globalName || interaction.user.username}`,
+      iconURL: interaction.user.displayAvatarURL({ size: 256 }),
      });
     return interaction.followUp({ embeds: [embed] });
    }

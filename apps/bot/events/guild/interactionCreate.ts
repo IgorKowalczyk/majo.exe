@@ -19,7 +19,7 @@ export async function interactionCreate(client: Majobot, interaction: Interactio
 
    if (!interaction.member.user) await interaction.guild.members.fetch(interaction.user.id);
 
-   client.config.displayCommandUsage && client.debugger("info", `Command used: ${interaction.commandName} by ${interaction.member.user.username} (${interaction.member.user.id})`);
+   client.config.displayCommandUsage && client.debugger("info", `Command used: ${interaction.commandName} by ${interaction.user.username} (${interaction.member.user.id})`);
 
    const shouldDefer = command.defer ?? true;
    if (shouldDefer) await interaction.deferReply({ ephemeral: false });
@@ -99,7 +99,7 @@ export async function interactionCreate(client: Majobot, interaction: Interactio
     return interaction.followUp({ ephemeral: true, embeds: [embed] });
    }
 
-   await createUser(interaction.member);
+   await createUser(interaction.member.user);
 
    await command.run(client, interaction, guildSettings);
 
@@ -125,7 +125,7 @@ export async function interactionCreate(client: Majobot, interaction: Interactio
     },
    });
 
-   await createUser(interaction.user);
+   await createUser(interaction.member.user);
 
    await modal.run(client, interaction);
 

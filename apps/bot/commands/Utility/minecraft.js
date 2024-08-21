@@ -49,8 +49,8 @@ export default {
      .setAuthor({ name: `${serverIp} (Bedrock)`, iconURL: `https://api.mcsrvstat.us/icon/${serverIp}` })
      .setThumbnail(`https://api.mcsrvstat.us/icon/${serverIp}`)
      .setFooter({
-      text: `Requested by ${interaction.member.user.globalName || interaction.member.user.username}`,
-      iconURL: interaction.member.user.displayAvatarURL({
+      text: `Requested by ${interaction.user.globalName || interaction.user.username}`,
+      iconURL: interaction.user.displayAvatarURL({
        size: 256,
       }),
      });
@@ -109,8 +109,8 @@ export default {
      .setAuthor({ name: `${serverIp} (Java)`, iconURL: `https://api.mcsrvstat.us/icon/${serverIp.replace(":", "/")}` })
      .setThumbnail(`https://api.mcsrvstat.us/icon/${serverIp.replace(":", "/")}`)
      .setFooter({
-      text: `Requested by ${interaction.member.user.globalName || interaction.member.user.username}`,
-      iconURL: interaction.member.user.displayAvatarURL({
+      text: `Requested by ${interaction.user.globalName || interaction.user.username}`,
+      iconURL: interaction.user.displayAvatarURL({
        size: 256,
       }),
      });

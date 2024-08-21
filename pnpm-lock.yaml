@@ -96,9 +96,6 @@ importers:
       figlet:
         specifier: 1.7.0
         version: 1.7.0
-      flip-text:
-        specifier: 1.2.0
-        version: 1.2.0
       gif-encoder-2:
         specifier: 1.0.5
         version: 1.0.5
@@ -3628,10 +3625,6 @@ packages:
 
   flatten-tailwindcss-theme@1.0.0:
     resolution: {integrity: sha512-7B795m0qzLF0yQYGkfGanO3NOisEI4EaVObnr3DBq7Qc8Ygq4yWGa0Gpx2rtb10NSgIcimUqu4Xaqh+0bkC87w==}
-
-  flip-text@1.2.0:
-    resolution: {integrity: sha512-6gZynclke4Cwl1VCUXDjryfqYZIIYwZnlYHOsUF5Btrax2+6VndQdsdwDiPyKE4Uv2qYFFxzM4XYPjF7DfdBhw==}
-    hasBin: true
 
   flow-enums-runtime@0.0.6:
     resolution: {integrity: sha512-3PYnM29RFXwvAN6Pc/scUfkI7RwhQ/xqyLUyPNlXUp9S40zI8nup9tUSrTLSVnWGBN38FNiGWbwZOB6uR4OGdw==}
@@ -10470,8 +10463,6 @@ snapshots:
   flatted@3.3.1: {}
 
   flatten-tailwindcss-theme@1.0.0: {}
-
-  flip-text@1.2.0: {}
 
   flow-enums-runtime@0.0.6: {}
 

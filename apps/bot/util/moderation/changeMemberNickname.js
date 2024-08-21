@@ -38,8 +38,8 @@ export async function changememberNickname(client, interaction, color, type) {
     .setTitle("🏷️ Nickname set")
     .setDescription(`> **${user}** nickname has been set to **${nickname}**`)
     .setFooter({
-     text: `Changed by ${interaction.member.user.globalName || interaction.member.user.username}`,
-     iconURL: interaction.member.user.displayAvatarURL({
+     text: `Changed by ${interaction.user.globalName || interaction.user.username}`,
+     iconURL: interaction.user.displayAvatarURL({
       size: 256,
      }),
     });
@@ -76,8 +76,8 @@ export async function changememberNickname(client, interaction, color, type) {
     .setTitle("🏷️ Nickname removed")
     .setDescription(`> **${user}** nickname has been removed`)
     .setFooter({
-     text: `Changed by ${interaction.member.user.globalName || interaction.member.user.username}`,
-     iconURL: interaction.member.user.displayAvatarURL({
+     text: `Changed by ${interaction.user.globalName || interaction.user.username}`,
+     iconURL: interaction.user.displayAvatarURL({
       size: 256,
      }),
     });

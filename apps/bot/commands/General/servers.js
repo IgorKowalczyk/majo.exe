@@ -19,8 +19,8 @@ export default {
     .setTitle(`🧭 ${client.user.username} is in ${allGuilds.size} servers!`)
     .setDescription(`**...thats a lot of servers!** To be exact, <@${client.user.id}> is serving commands to \`${formatNumber(allUsers) || "0"}\` users in \`${formatNumber(allChannels.size)}\` channels across \`${formatNumber(allGuilds.size)}\` servers!\n\n**If you want to invite Majo.exe to your server, you can do so by clicking [here](${inviteLink}).**`)
     .setFooter({
-     text: `Requested by ${interaction.member.user.globalName || interaction.member.user.username}`,
-     iconURL: interaction.member.user.displayAvatarURL({
+     text: `Requested by ${interaction.user.globalName || interaction.user.username}`,
+     iconURL: interaction.user.displayAvatarURL({
       size: 256,
      }),
     })

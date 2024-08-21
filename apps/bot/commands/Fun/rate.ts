@@ -1,4 +1,5 @@
-import { ApplicationCommandType, ApplicationCommandOptionType, EmbedBuilder } from "discord.js";
+import { ApplicationCommandType, ApplicationCommandOptionType, EmbedBuilder, type ChatInputCommandInteraction, type ColorResolvable } from "discord.js";
+import type { Majobot } from "../..";
 
 export default {
  name: "rate",
@@ -16,7 +17,7 @@ export default {
    required: true,
   },
  ],
- run: (client, interaction) => {
+ run: (client: Majobot, interaction: ChatInputCommandInteraction) => {
   try {
    const thing = interaction.options.getString("thing");
    const rate = Math.floor(Math.random() * 100) + 1;
@@ -34,11 +35,11 @@ export default {
     .setTitle("📈 Rating")
     .setDescription(`>>> **I rate ${thing} a ${rate}/100!**`)
     .setTimestamp()
-    .setColor(color)
-    .setThumbnail(interaction.member.user.displayAvatarURL({ size: 256 }))
+    .setColor(color as ColorResolvable)
+    .setThumbnail(interaction.user.displayAvatarURL({ size: 256 }))
     .setFooter({
-     text: `Requested by ${interaction.member.user.globalName || interaction.member.user.username}`,
-     iconURL: interaction.member.user.displayAvatarURL({ size: 256 }),
+     text: `Requested by ${interaction.user.globalName || interaction.user.username}`,
+     iconURL: interaction.user.displayAvatarURL({ size: 256 }),
     });
    return interaction.followUp({ embeds: [embed] });
   } catch (err) {
