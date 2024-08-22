@@ -1,5 +1,7 @@
 import { resetXP, fetchXPSettings } from "@majoexe/util/database";
-import { ApplicationCommandType, ApplicationCommandOptionType, PermissionFlagsBits, EmbedBuilder } from "discord.js";
+import { ApplicationCommandType, ApplicationCommandOptionType, PermissionFlagsBits, EmbedBuilder, ChatInputCommandInteraction } from "discord.js";
+import type { Majobot } from "../..";
+import type { GuildSettings } from "../../util/types/Command";
 
 export default {
  name: "reset-xp",
@@ -17,16 +19,21 @@ export default {
    required: true,
   },
  ],
- run: async (client, interaction, guildSettings) => {
+ run: async (client: Majobot, interaction: ChatInputCommandInteraction, guildSettings: GuildSettings) => {
   try {
+   if (!interaction.guild) return client.errorMessages.createSlashError(interaction, "❌ This command can only be used in a server.");
+   if (!interaction.member) return client.errorMessages.createSlashError(interaction, "❌ You must be in a server to use this command.");
+   if (!interaction.guildId) return client.errorMessages.createSlashError(interaction, "❌ Unable to get server data. Please try again.");
+
    const xpSettings = await fetchXPSettings(interaction.guild.id);
    if (!xpSettings || !xpSettings.enableXP) {
     return client.errorMessages.createSlashError(interaction, "❌ XP is disabled in this server.");
    }
+
    const user = interaction.options.getUser("user");
-   if (user.bot) {
-    return client.errorMessages.createSlashError(interaction, "❌ You can't reset the XP of a bot.\nNote: Bots don't gain XP.");
-   }
+
+   if (!user) return client.errorMessages.createSlashError(interaction, "❌ Please provide a valid user.");
+   if (user.bot) return client.errorMessages.createSlashError(interaction, "❌ You can't reset the XP of a bot.\nNote: Bots don't gain XP.");
 
    await resetXP(user.id, interaction.guild.id);
    const embed = new EmbedBuilder()

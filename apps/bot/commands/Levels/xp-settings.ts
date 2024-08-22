@@ -1,5 +1,7 @@
 import { setXPLevelUpMessageSettings, setXPSettings, fetchXPSettings } from "@majoexe/util/database";
-import { ApplicationCommandType, ApplicationCommandOptionType, PermissionsBitField, PermissionFlagsBits, EmbedBuilder, time } from "discord.js";
+import { ApplicationCommandType, ApplicationCommandOptionType, PermissionsBitField, PermissionFlagsBits, EmbedBuilder, time, ChatInputCommandInteraction } from "discord.js";
+import type { Majobot } from "../..";
+import type { GuildSettings } from "../../util/types/Command";
 
 export default {
  name: "xp-settings",
@@ -59,9 +61,15 @@ export default {
    defaultMemberPermissions: [PermissionFlagsBits.Administrator],
   },
  ],
- run: async (client, interaction, guildSettings) => {
+ run: async (client: Majobot, interaction: ChatInputCommandInteraction, guildSettings: GuildSettings) => {
   try {
-   if (!interaction.member.permissions.has(PermissionsBitField.Flags.Administrator)) {
+   if (!interaction.guild) return client.errorMessages.createSlashError(interaction, "❌ This command can only be used in a server.");
+   if (!interaction.member) return client.errorMessages.createSlashError(interaction, "❌ You must be in a server to use this command.");
+   if (!interaction.guildId) return client.errorMessages.createSlashError(interaction, "❌ Unable to get server data. Please try again.");
+
+   const userPermissions = interaction.member.permissions as PermissionsBitField;
+
+   if (!userPermissions.has(PermissionsBitField.Flags.Administrator)) {
     return client.errorMessages.createSlashError(interaction, "❌ You don't have permission to enable leveling messages, you need `Administrator` permission");
    }
 
