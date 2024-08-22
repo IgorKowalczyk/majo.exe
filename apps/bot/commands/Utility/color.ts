@@ -1,7 +1,8 @@
 import { invertColor } from "@majoexe/util/images";
 import { createCanvas } from "@napi-rs/canvas";
 import { Color, isColor } from "coloras";
-import { ApplicationCommandType, ApplicationCommandOptionType, AttachmentBuilder, EmbedBuilder } from "discord.js";
+import { ApplicationCommandType, ApplicationCommandOptionType, AttachmentBuilder, EmbedBuilder, ChatInputCommandInteraction, type ColorResolvable } from "discord.js";
+import type { Majobot } from "../..";
 
 export default {
  name: "color",
@@ -19,13 +20,15 @@ export default {
    max_length: 7,
   },
  ],
- run: (client, interaction) => {
+ run: (client: Majobot, interaction: ChatInputCommandInteraction) => {
   try {
-   let color = interaction.options.getString("color");
+   let color = interaction.options.getString("color") || "";
+
    let random;
+
    !color ? (random = true) : (random = false);
 
-   if (!random && !color.startsWith("#")) {
+   if (!random && color && !color.startsWith("#")) {
     color = `#${color}`;
    }
 
@@ -33,7 +36,7 @@ export default {
     return client.errorMessages.createSlashError(interaction, "❌ The color you provided is invalid. The color must be in hex format. Example: `#FF0000`");
    }
 
-   const value = random ? null : color;
+   const value = random ? "" : color;
    const colorInfo = new Color(value);
    const hex = colorInfo.toHex();
 
@@ -84,7 +87,7 @@ export default {
      },
     ])
     .setImage("attachment://color.png")
-    .setColor(colorInfo.toHex())
+    .setColor(colorInfo.toHex() as ColorResolvable)
     .setTimestamp()
     .setFooter({
      text: `Requested by ${interaction.user.globalName || interaction.user.username}`,

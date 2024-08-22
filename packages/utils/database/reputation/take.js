@@ -3,13 +3,13 @@ import prismaClient from "@majoexe/database";
 /**
  * Take reputation from user
  *
- * @param {string} user - The user to take reputation from
+ * @param {Object} user - The user object containing user details.
  * @param {string} user.id - The ID of the user.
  * @param {string} user.username - The username of the user.
- * @param {string} [user.globalName] - The global name of the user.
+ * @param {string | null} [user.globalName] - The global name of the user.
  * @param {string} user.discriminator - The discriminator of the user.
- * @param {string} user.avatar - The avatar of the user.
- * @param {string} guild - The guild to take reputation in
+ * @param {string | null} user.avatar - The avatar of the user.
+ * @param {Object} guild - The guild to take reputation in
  * @returns {Promise<number>} - The reputation of the user in the guild
  * @throws {Error} - If there is an error in taking reputation
  */

@@ -1,10 +1,12 @@
-import { ApplicationCommandType, ApplicationCommandOptionType, PermissionFlagsBits } from "discord.js";
-import { banMember } from "../../util/moderation/ban.js";
-import { changememberNickname } from "../../util/moderation/changeMemberNickname.js";
-import { getUserAvatar, getUserBanner } from "../../util/moderation/getMemberImages.js";
-import { getMemberInfo } from "../../util/moderation/getMemberInfo.js";
-import { kickMember } from "../../util/moderation/kick.js";
-import { unBanMember } from "../../util/moderation/unban.js";
+import { ApplicationCommandType, ApplicationCommandOptionType, PermissionFlagsBits, ChatInputCommandInteraction } from "discord.js";
+import { banMember } from "../../util/moderation/ban";
+import { changememberNickname } from "../../util/moderation/changeMemberNickname";
+import { getUserAvatar, getUserBanner } from "../../util/moderation/getMemberImages";
+import { getMemberInfo } from "../../util/moderation/getMemberInfo";
+import { kickMember } from "../../util/moderation/kick";
+import { unBanMember } from "../../util/moderation/unban";
+import type { Majobot } from "../..";
+import type { GuildSettings } from "../../util/types/Command";
 
 export default {
  name: "member",
@@ -178,11 +180,9 @@ export default {
    ],
   },
  ],
- run: async (client, interaction, guildSettings) => {
+ run: async (client: Majobot, interaction: ChatInputCommandInteraction, guildSettings: GuildSettings) => {
   const command = interaction.options.getSubcommandGroup();
   const subcommand = interaction.options.getSubcommand();
-
-  //console.log(command, subcommand);
 
   if (subcommand === "ban") {
    await banMember(client, interaction, guildSettings?.embedColor || client.config.defaultColor);

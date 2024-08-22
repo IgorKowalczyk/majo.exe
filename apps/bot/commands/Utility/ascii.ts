@@ -1,5 +1,7 @@
-import { ApplicationCommandType, ApplicationCommandOptionType, EmbedBuilder, AttachmentBuilder } from "discord.js";
+import { ApplicationCommandType, ApplicationCommandOptionType, EmbedBuilder, AttachmentBuilder, ChatInputCommandInteraction } from "discord.js";
 import figlet from "figlet";
+import type { Majobot } from "../..";
+import type { GuildSettings } from "../../util/types/Command";
 
 export default {
  name: "ascii",
@@ -17,9 +19,10 @@ export default {
    max_length: 500,
   },
  ],
- run: (client, interaction, guildSettings) => {
+ run: (client: Majobot, interaction: ChatInputCommandInteraction, guildSettings: GuildSettings) => {
   try {
    const text = interaction.options.getString("text");
+   if (!text) return client.errorMessages.createSlashError(interaction, "❌ Please provide a valid text to convert.");
 
    figlet(text, (err, data) => {
     if (err) {
@@ -37,7 +40,7 @@ export default {
       }),
      });
 
-    const attached = new AttachmentBuilder().setName("ascii.txt").setFile(Buffer.from(data));
+    const attached = new AttachmentBuilder(Buffer.from(data ?? "").toString()).setName("ascii.txt").setFile(data ?? "");
     return interaction.followUp({ ephemeral: false, embeds: [embed], files: [attached] });
    });
   } catch (err) {

@@ -1,5 +1,7 @@
-import { ApplicationCommandType, ApplicationCommandOptionType, EmbedBuilder, PermissionsBitField, codeBlock, PermissionFlagsBits } from "discord.js";
-import isURL from "validator/lib/isURL.js";
+import { ApplicationCommandType, ApplicationCommandOptionType, EmbedBuilder, PermissionsBitField, codeBlock, PermissionFlagsBits, ChatInputCommandInteraction, type GuildEmoji } from "discord.js";
+import isURL from "validator/lib/isURL";
+import type { Majobot } from "../..";
+import type { GuildSettings } from "../../util/types/Command";
 
 export default {
  name: "emoji",
@@ -66,32 +68,31 @@ export default {
    usage: "/emoji list",
   },
  ],
- run: async (client, interaction, guildSettings) => {
-  const subcommand = interaction.options.getSubcommand();
+ run: async (client: Majobot, interaction: ChatInputCommandInteraction, guildSettings: GuildSettings) => {
+  if (!interaction.guild) return client.errorMessages.createSlashError(interaction, "❌ This command can only be used in a server.");
+  if (!interaction.member) return client.errorMessages.createSlashError(interaction, "❌ You must be in a server to use this command.");
+  if (!interaction.guildId) return client.errorMessages.createSlashError(interaction, "❌ Unable to get server data. Please try again.");
+  if (!interaction.guild.members.me) return client.errorMessages.createSlashError(interaction, "❌ Unable to get server data. Please try again.");
 
+  const subcommand = interaction.options.getSubcommand();
+  const memberPermissions = interaction.member.permissions as PermissionsBitField;
+
+  // #region Create
   if (subcommand === "create") {
    try {
-    if (!interaction.member.permissions.has(PermissionsBitField.Flags.ManageGuildExpressions)) {
-     return client.errorMessages.createSlashError(interaction, "❌ You need the `MANAGE_EMOJIS_AND_STICKERS` permission to create emojis!");
-    }
-    if (!interaction.guild.members.me.permissions.has(PermissionsBitField.Flags.ManageGuildExpressions)) {
-     return client.errorMessages.createSlashError(interaction, "❌ I need `BAN_MEMBERS` permission to ban members");
-    }
+    if (!memberPermissions.has(PermissionsBitField.Flags.ManageGuildExpressions)) return client.errorMessages.createSlashError(interaction, "❌ You need the `MANAGE_EMOJIS_AND_STICKERS` permission to create emojis!");
+    if (!interaction.guild.members.me.permissions.has(PermissionsBitField.Flags.ManageGuildExpressions)) return client.errorMessages.createSlashError(interaction, "❌ I need `MANAGE_EMOJIS_AND_STICKERS` permission to manage emojis!");
 
     const emojiName = interaction.options.getString("emoji_name");
     const emojiURL = interaction.options.getString("emoji");
 
-    if (interaction.guild.emojis.cache.find((semoji) => semoji.name.toLowerCase() === emojiName.toLowerCase())) {
-     return client.errorMessages.createSlashError(interaction, "❌ An emoji with that name already exists!");
-    }
+    if (!emojiName || !emojiURL) return client.errorMessages.createSlashError(interaction, "❌ Please provide an emoji name and an emoji URL!");
 
-    if (emojiName.length > 32) {
-     return client.errorMessages.createSlashError(interaction, "❌ Emoji name must be less than 32 characters!");
-    }
+    if (interaction.guild.emojis.cache.find((semoji) => semoji && semoji.name && semoji.name.toLowerCase() === emojiName.toLowerCase() && semoji.name !== null)) return client.errorMessages.createSlashError(interaction, "❌ An emoji with that name already exists!");
 
-    if (emojiName.length < 2) {
-     return client.errorMessages.createSlashError(interaction, "❌ Emoji name must be more than 2 characters!");
-    }
+    if (emojiName.length > 32) return client.errorMessages.createSlashError(interaction, "❌ Emoji name must be less than 32 characters!");
+
+    if (emojiName.length < 2) return client.errorMessages.createSlashError(interaction, "❌ Emoji name must be more than 2 characters!");
 
     let emojiToCreate;
 
@@ -101,7 +102,7 @@ export default {
      const animated = emojiURL.startsWith("<a:");
      const emojiId = emojiURL.split(":")[2].replaceAll(">", "");
      emojiToCreate = `https://cdn.discordapp.com/emojis/${emojiId}.${animated ? "gif" : "png"}`;
-    } else if (!isNaN(emojiURL)) {
+    } else if (!isNaN(Number(emojiURL))) {
      emojiToCreate = `https://cdn.discordapp.com/emojis/${emojiURL}.png`;
     } else {
      return client.errorMessages.createSlashError(interaction, "❌ Invalid emoji URL/ID!");
@@ -120,7 +121,7 @@ export default {
       .setFields([
        {
         name: `${client.config.emojis.edit} Emoji name`,
-        value: codeBlock(emoji.name),
+        value: codeBlock(emoji.name || "None"),
         inline: true,
        },
        {
@@ -130,10 +131,10 @@ export default {
        },
        {
         name: `${client.config.emojis.link} Emoji URL`,
-        value: `> <${emoji.imageURL({ dynamic: true, size: 256 })}>`,
+        value: `> <${emoji.imageURL({ size: 256 })}>`,
        },
       ])
-      .setThumbnail(emoji.imageURL({ dynamic: true, size: 256 }))
+      .setThumbnail(emoji.imageURL({ size: 256 }))
       .setFooter({
        text: `Requested by ${interaction.user.globalName || interaction.user.username}`,
        iconURL: interaction.user.displayAvatarURL({
@@ -148,31 +149,28 @@ export default {
    } catch (err) {
     client.errorMessages.internalError(interaction, err);
    }
+   // #endregion
+   // #region Delete
   } else if (subcommand === "delete") {
    try {
-    if (!interaction.member.permissions.has(PermissionsBitField.Flags.ManageGuildExpressions)) {
-     return client.errorMessages.createSlashError(interaction, "❌ You need the `MANAGE_EMOJIS_AND_STICKERS` permission to create emojis!");
-    }
-    if (!interaction.guild.members.me.permissions.has(PermissionsBitField.Flags.ManageGuildExpressions)) {
-     return client.errorMessages.createSlashError(interaction, "❌ I need `BAN_MEMBERS` permission to ban members");
-    }
+    if (!memberPermissions.has(PermissionsBitField.Flags.ManageGuildExpressions)) return client.errorMessages.createSlashError(interaction, "❌ You need the `MANAGE_EMOJIS_AND_STICKERS` permission to create emojis!");
+    if (!interaction.guild.members.me.permissions.has(PermissionsBitField.Flags.ManageGuildExpressions)) return client.errorMessages.createSlashError(interaction, "❌ I need `MANAGE_EMOJIS_AND_STICKERS` permission to manage emojis!");
 
     const emoji = interaction.options.getString("emoji");
+
+    if (!emoji) return client.errorMessages.createSlashError(interaction, "❌ Please provide an emoji name or ID!");
+
     let emojiToDelete;
 
-    if (!isNaN(emoji)) {
+    if (!isNaN(Number(emoji))) {
      emojiToDelete = await interaction.guild.emojis.fetch(emoji);
     } else {
-     emojiToDelete = interaction.guild.emojis.cache.find((semoji) => semoji.name === emoji || semoji.name.toLowerCase() === emoji.toLowerCase() || semoji.name === emoji.split(":")[0] || semoji.name === emoji.split(":")[1]);
+     emojiToDelete = interaction.guild.emojis.cache.find((semoji) => semoji && semoji.name && (semoji.name === emoji || semoji.name.toLowerCase() === emoji.toLowerCase() || semoji.name.split(":")[0] === emoji || semoji.name.split(":")[1] === emoji));
     }
 
-    if (!emojiToDelete) {
-     return client.errorMessages.createSlashError(interaction, "❌ It seems like that emoji doesn't exist!");
-    }
+    if (!emojiToDelete) return client.errorMessages.createSlashError(interaction, "❌ It seems like that emoji doesn't exist!");
 
-    if (emojiToDelete.managed) {
-     return client.errorMessages.createSlashError(interaction, "❌ You cannot delete an emoji that is managed by an external service!");
-    }
+    if (emojiToDelete.managed) return client.errorMessages.createSlashError(interaction, "❌ You cannot delete an emoji that is managed by an external service!");
 
     try {
      await emojiToDelete.delete();
@@ -187,7 +185,7 @@ export default {
      .setFields([
       {
        name: `${client.config.emojis.edit} Emoji name`,
-       value: codeBlock(emojiToDelete.name),
+       value: codeBlock(emojiToDelete.name || "None"),
        inline: true,
       },
       {
@@ -197,10 +195,10 @@ export default {
       },
       {
        name: `${client.config.emojis.link} Emoji URL`,
-       value: `> <${emojiToDelete.imageURL({ dynamic: true, size: 256 })}>`,
+       value: `> <${emojiToDelete.imageURL({ size: 256 })}>`,
       },
      ])
-     .setThumbnail(emojiToDelete.imageURL({ dynamic: true, size: 256 }))
+     .setThumbnail(emojiToDelete.imageURL({ size: 256 }))
      .setFooter({
       text: `Requested by ${interaction.user.globalName || interaction.user.username}`,
       iconURL: interaction.user.displayAvatarURL({
@@ -212,22 +210,21 @@ export default {
    } catch (err) {
     client.errorMessages.internalError(interaction, err);
    }
+   // #endregion
+   // #region Info
   } else if (subcommand === "info") {
    try {
     const emoji = interaction.options.getString("emoji");
-    let emojiToGet;
+    if (!emoji) return client.errorMessages.createSlashError(interaction, "❌ Please provide an emoji name or ID!");
+    let emojiToGet: GuildEmoji | undefined;
 
-    if (!isNaN(emoji)) {
+    if (!isNaN(Number(emoji))) {
      emojiToGet = await interaction.guild.emojis.fetch(emoji);
     } else {
-     emojiToGet = interaction.guild.emojis.cache.find((semoji) => semoji.name === emoji || semoji.name.toLowerCase() === emoji.toLowerCase() || semoji.name === emoji.split(":")[0] || semoji.name === emoji.split(":")[1]);
+     emojiToGet = interaction.guild.emojis.cache.find((semoji) => semoji && semoji.name && (semoji.name === emoji || semoji.name.toLowerCase() === emoji.toLowerCase() || semoji.name.split(":")[0] === emoji || semoji.name.split(":")[1] === emoji));
     }
 
-    if (!emojiToGet) {
-     return client.errorMessages.createSlashError(interaction, "❌ It seems like that emoji doesn't exist!");
-    }
-
-    const addedBy = await emojiToGet.fetchAuthor();
+    if (!emojiToGet) return client.errorMessages.createSlashError(interaction, "❌ It seems like that emoji doesn't exist!");
 
     const embed = new EmbedBuilder()
      .setColor(guildSettings?.embedColor || client.config.defaultColor)
@@ -236,12 +233,12 @@ export default {
      .setFields([
       {
        name: `${client.config.emojis.edit} Emoji name`,
-       value: codeBlock(emojiToGet.name),
+       value: codeBlock(emojiToGet.name || "None"),
        inline: true,
       },
       {
        name: `${client.config.emojis.screw_that} Emoji ID`,
-       value: codeBlock(emojiToGet.id),
+       value: codeBlock(emojiToGet.id || "None"),
        inline: true,
       },
       {
@@ -251,7 +248,7 @@ export default {
       },
       {
        name: `${client.config.emojis.member} Added by`,
-       value: `> ${addedBy}`,
+       value: `> ${emojiToGet.fetchAuthor()}`,
        inline: true,
       },
       {
@@ -261,10 +258,10 @@ export default {
       },
       {
        name: `${client.config.emojis.link} Emoji URL`,
-       value: `> ${emojiToGet.imageURL({ dynamic: true, size: 256 })}`,
+       value: `> ${emojiToGet.imageURL({ size: 256 })}`,
       },
      ])
-     .setThumbnail(emojiToGet.imageURL({ dynamic: true, size: 256 }))
+     .setThumbnail(emojiToGet.imageURL({ size: 256 }))
      .setFooter({
       text: `Requested by ${interaction.user.globalName || interaction.user.username}`,
       iconURL: interaction.user.displayAvatarURL({
@@ -276,6 +273,8 @@ export default {
    } catch (err) {
     client.errorMessages.internalError(interaction, err);
    }
+   // #endregion
+   // #region List
   } else if (subcommand === "list") {
    try {
     const embed = new EmbedBuilder()
@@ -284,17 +283,17 @@ export default {
      .setFields([
       {
        name: "Total Emojis",
-       value: codeBlock(interaction.guild.emojis.cache.size),
+       value: codeBlock(interaction.guild.emojis.cache.size.toString() || "0"),
        inline: true,
       },
       {
        name: "Animated Emojis",
-       value: codeBlock(interaction.guild.emojis.cache.filter((emoji) => emoji.animated).size),
+       value: codeBlock(interaction.guild.emojis.cache.filter((emoji) => emoji.animated).size.toString() || "0"),
        inline: true,
       },
       {
        name: "Static Emojis",
-       value: codeBlock(interaction.guild.emojis.cache.filter((emoji) => !emoji.animated).size),
+       value: codeBlock(interaction.guild.emojis.cache.filter((emoji) => !emoji.animated).size.toString() || "0"),
        inline: true,
       },
      ])
@@ -320,5 +319,6 @@ export default {
     client.errorMessages.internalError(interaction, err);
    }
   }
+  // #endregion
  },
 };

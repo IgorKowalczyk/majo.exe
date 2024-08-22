@@ -1,5 +1,30 @@
-import { ApplicationCommandType, ApplicationCommandOptionType, EmbedBuilder } from "discord.js";
+import { ApplicationCommandType, ApplicationCommandOptionType, EmbedBuilder, ChatInputCommandInteraction } from "discord.js";
 import fetch from "node-fetch";
+import type { Majobot } from "../..";
+import type { GuildSettings } from "../../util/types/Command";
+
+interface MinecraftServer {
+ ip: string;
+ port: number;
+ debug: boolean;
+ error: boolean;
+ description: string;
+ latency: number;
+ version: {
+  name: string;
+  protocol: number;
+ };
+ motd: {
+  raw: string[];
+  clean: string[];
+ };
+ players: {
+  online: number;
+  max: number;
+  list: string[];
+ };
+ online: boolean;
+}
 
 export default {
  name: "minecraft",
@@ -22,9 +47,11 @@ export default {
    type: ApplicationCommandOptionType.Boolean,
   },
  ],
- run: async (client, interaction, guildSettings) => {
+ run: async (client: Majobot, interaction: ChatInputCommandInteraction, guildSettings: GuildSettings) => {
   try {
    const serverIp = interaction.options.getString("server_ip");
+   if (!serverIp) return client.errorMessages.createSlashError(interaction, "❌ Please provide a valid server IP.");
+
    const bedrock = interaction.options.getBoolean("bedrock") || false;
 
    if (!/^([a-z0-9]+(-[a-z0-9]+)*\.)+[a-z]{2,}(:?[0-9]*)$/gim.test(serverIp)) {
@@ -33,11 +60,10 @@ export default {
 
    if (bedrock) {
     const request = await fetch(`https://api.mcsrvstat.us/bedrock/2/${serverIp}`);
-    if (!request.ok) {
-     return client.errorMessages.createSlashError(interaction, "❌ We couldn't get the server info, please try again later");
-    }
 
-    const json = await request.json();
+    if (!request.ok) return client.errorMessages.createSlashError(interaction, "❌ We couldn't get the server info, please try again later");
+
+    const json = (await request.json()) as MinecraftServer;
 
     if (json.ip == "127.0.0.1" || !json.ip) {
      return client.errorMessages.createSlashError(interaction, "❌ We couldn't get the server info, please try again later");
@@ -97,7 +123,7 @@ export default {
      return client.errorMessages.createSlashError(interaction, "❌ We couldn't get the server info, please try again later");
     }
 
-    const json = await request.json();
+    const json = (await request.json()) as MinecraftServer;
 
     if (json.error) {
      return client.errorMessages.createSlashError(interaction, "❌ We couldn't get the server info, please try again later");

@@ -1,7 +1,9 @@
 import { cacheGet, cacheSet } from "@majoexe/database/redis";
 import { checkReputation, giveReputation, takeReputation, setReputation } from "@majoexe/util/database";
 import { formatDuration } from "@majoexe/util/functions/util";
-import { ApplicationCommandType, ApplicationCommandOptionType, EmbedBuilder, PermissionFlagsBits } from "discord.js";
+import { ApplicationCommandType, ApplicationCommandOptionType, EmbedBuilder, PermissionFlagsBits, ChatInputCommandInteraction, PermissionsBitField } from "discord.js";
+import type { Majobot } from "../..";
+import type { GuildSettings } from "../../util/types/Command";
 
 export default {
  name: "rep",
@@ -75,13 +77,17 @@ export default {
    ],
   },
  ],
- run: async (client, interaction, guildSettings) => {
+ run: async (client: Majobot, interaction: ChatInputCommandInteraction, guildSettings: GuildSettings) => {
   try {
    const type = interaction.options.getSubcommand();
+   if (!interaction.guild) return client.errorMessages.createSlashError(interaction, "❌ This command can only be used in a server.");
+   if (!interaction.member) return client.errorMessages.createSlashError(interaction, "❌ You must be in a server to use this command.");
+   if (!interaction.guildId) return client.errorMessages.createSlashError(interaction, "❌ Unable to get server data. Please try again.");
 
    if (type === "get") {
     const user = interaction.options.getUser("user");
 
+    if (!user) return client.errorMessages.createSlashError(interaction, "❌ Please provide a valid user.");
     const rep = await checkReputation(user.id, interaction.guild.id);
 
     const embed = new EmbedBuilder()
@@ -100,6 +106,7 @@ export default {
     return interaction.followUp({ embeds: [embed] });
    } else if (type === "give") {
     const user = interaction.options.getUser("user");
+    if (!user) return client.errorMessages.createSlashError(interaction, "❌ Please provide a valid user.");
 
     if (user.id === interaction.member.user.id) {
      return client.errorMessages.createSlashError(interaction, "❌ You can't give reputation to yourself");
@@ -110,7 +117,7 @@ export default {
     }
 
     const key = `${interaction.member.user.id}-${user.id}`;
-    const time = JSON.parse(await cacheGet(key));
+    const time = JSON.parse((await cacheGet(key)) || "{}");
 
     if (time && time.time + 86400000 > Date.now()) {
      const timeLeft = time.time + 86400000 - Date.now();
@@ -136,6 +143,7 @@ export default {
     return interaction.followUp({ embeds: [embed] });
    } else if (type === "take") {
     const user = interaction.options.getUser("user");
+    if (!user) return client.errorMessages.createSlashError(interaction, "❌ Please provide a valid user.");
 
     if (user.id === interaction.member.user.id) {
      return client.errorMessages.createSlashError(interaction, "❌ You can't take reputation from yourself");
@@ -146,7 +154,7 @@ export default {
     }
 
     const key = `${interaction.member.user.id}-${user.id}`;
-    const time = JSON.parse(await cacheGet(key));
+    const time = JSON.parse((await cacheGet(key)) || "{}");
 
     if (time && time.time + 86400000 > Date.now()) {
      const timeLeft = time.time + 86400000 - Date.now();
@@ -175,22 +183,19 @@ export default {
     const user = interaction.options.getUser("user");
     const amount = interaction.options.getInteger("amount");
 
-    if (!interaction.member.permissions.has(PermissionFlagsBits.Administrator)) {
-     return client.errorMessages.createSlashError(interaction, "❌ You don't have `Administrator` permissions to use this command");
-    }
+    if (!user) return client.errorMessages.createSlashError(interaction, "❌ Please provide a valid user.");
+    if (!amount) return client.errorMessages.createSlashError(interaction, "❌ Please provide a valid amount.");
 
-    if (amount < 0) {
-     return client.errorMessages.createSlashError(interaction, "❌ You can't set a user's reputation to a negative number");
-    }
+    const userPermissions = interaction.member.permissions as PermissionsBitField;
+
+    if (!userPermissions.has(PermissionFlagsBits.Administrator)) return client.errorMessages.createSlashError(interaction, "❌ You don't have `Administrator` permissions to use this command");
+
+    if (amount < 0) return client.errorMessages.createSlashError(interaction, "❌ You can't set a user's reputation to a negative number");
 
     // 32-bit integer limit
-    if (amount >= 2147483647) {
-     return client.errorMessages.createSlashError(interaction, "❌ You can't set a user's reputation to a number that is too large");
-    }
+    if (amount >= 2147483647) return client.errorMessages.createSlashError(interaction, "❌ You can't set a user's reputation to a number that is too large");
 
-    if (user.bot) {
-     return client.errorMessages.createSlashError(interaction, "❌ You can't set a bot's reputation");
-    }
+    if (user.bot) return client.errorMessages.createSlashError(interaction, "❌ You can't set a bot's reputation");
 
     const rep = await setReputation(user, interaction.guild, amount);
 

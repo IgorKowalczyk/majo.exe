@@ -1,5 +1,7 @@
-import { ApplicationCommandType, ApplicationCommandOptionType, EmbedBuilder, AttachmentBuilder } from "discord.js";
+import { ApplicationCommandType, ApplicationCommandOptionType, EmbedBuilder, AttachmentBuilder, ChatInputCommandInteraction } from "discord.js";
 import QRCode from "qrcode";
+import type { Majobot } from "../..";
+import type { GuildSettings } from "../../util/types/Command";
 
 export default {
  name: "qrcode",
@@ -17,9 +19,11 @@ export default {
    max_length: 512,
   },
  ],
- run: async (client, interaction, guildSettings) => {
+ run: async (client: Majobot, interaction: ChatInputCommandInteraction, guildSettings: GuildSettings) => {
   try {
    const text = interaction.options.getString("text");
+   if (!text) return client.errorMessages.createSlashError(interaction, "❌ Please provide a valid text to generate a QR code.");
+
    const qrCode = await QRCode.toDataURL(text);
 
    const attachment = new AttachmentBuilder(Buffer.from(qrCode.split(",")[1], "base64"), {

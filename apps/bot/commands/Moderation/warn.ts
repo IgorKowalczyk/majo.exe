@@ -1,5 +1,7 @@
 import { clearWarns, listWarnings, warnUser, removeWarning } from "@majoexe/util/database";
-import { ApplicationCommandType, ApplicationCommandOptionType, PermissionsBitField, EmbedBuilder, codeBlock, PermissionFlagsBits } from "discord.js";
+import { ApplicationCommandType, ApplicationCommandOptionType, PermissionsBitField, EmbedBuilder, codeBlock, PermissionFlagsBits, ChatInputCommandInteraction, GuildMember } from "discord.js";
+import type { Majobot } from "../..";
+import type { GuildSettings } from "../../util/types/Command";
 
 export default {
  name: "warn",
@@ -75,9 +77,15 @@ export default {
   },
  ],
  permissions: [PermissionFlagsBits.ManageGuild],
- run: async (client, interaction, guildSettings) => {
+ run: async (client: Majobot, interaction: ChatInputCommandInteraction, guildSettings: GuildSettings) => {
   try {
-   if (!interaction.member.permissions.has(PermissionsBitField.Flags.ManageGuild)) {
+   if (!interaction.guild) return client.errorMessages.createSlashError(interaction, "❌ This command can only be used in a server.");
+   if (!interaction.member) return client.errorMessages.createSlashError(interaction, "❌ You must be in a server to use this command.");
+   if (!interaction.guild.members.me) return client.errorMessages.createSlashError(interaction, "❌ Unable to get server data. Please try again.");
+
+   const userPermissions = interaction.member.permissions as PermissionsBitField;
+
+   if (!userPermissions.has(PermissionsBitField.Flags.ManageGuild)) {
     return client.errorMessages.createSlashError(interaction, "❌ You don't have permission to use this command. You need `Manage Server` permission");
    }
 
@@ -103,7 +111,7 @@ export default {
     const warnNumber = addedWarning.warnId;
 
     const embed = new EmbedBuilder()
-     .setTitle(`**✅ Successfully warned ${user.global_name || user.username}** / \`#${warnNumber}\``)
+     .setTitle(`**✅ Successfully warned ${user.globalName || user.username}** / \`#${warnNumber}\``)
      .setDescription(`**Reason:**\n${codeBlock(reason)}\n**Note:** You can remove this warning with \`/warn remove ${user.id} ${warnNumber}\``)
      .setColor(guildSettings?.embedColor || client.config.defaultColor)
      .setTimestamp()
@@ -160,7 +168,7 @@ export default {
     }
 
     const embed = new EmbedBuilder()
-     .setTitle(`🤖 Warnings for ${user.global_name || user.username} (${warnings.length})`)
+     .setTitle(`🤖 Warnings for ${user.globalName || user.username} (${warnings.length})`)
      .setDescription(warnings.map((warning) => `- \`#${warning.warnId}\` - ${warning.message} (by <@${warning.createdById}> / <t:${Math.floor(warning.createdAt.getTime() / 1000)}:R>)`).join("\n"))
      .setColor(guildSettings?.embedColor || client.config.defaultColor)
      .setTimestamp()
@@ -182,7 +190,7 @@ export default {
     const count = await clearWarns(user.id, interaction.guild.id);
 
     const embed = new EmbedBuilder()
-     .setTitle(`✅ Successfully cleared all warnings from ${user.global_name || user.username}`)
+     .setTitle(`✅ Successfully cleared all warnings from ${user.globalName || user.username}`)
      .setDescription(`> \`${count || 0}\` warnings have been cleared from ${user}`)
      .setColor(guildSettings?.embedColor || client.config.defaultColor)
      .setTimestamp()

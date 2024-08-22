@@ -1,4 +1,6 @@
-import { ApplicationCommandType, ApplicationCommandOptionType, EmbedBuilder } from "discord.js";
+import { ApplicationCommandType, ApplicationCommandOptionType, EmbedBuilder, ChatInputCommandInteraction } from "discord.js";
+import type { Majobot } from "../..";
+import type { GuildSettings } from "../../util/types/Command";
 
 export default {
  name: "base64",
@@ -39,12 +41,14 @@ export default {
    ],
   },
  ],
- run: (client, interaction, guildSettings) => {
+ run: (client: Majobot, interaction: ChatInputCommandInteraction, guildSettings: GuildSettings) => {
   try {
    const type = interaction.options.getSubcommand();
 
    if (type === "encode") {
     const text = interaction.options.getString("text");
+    if (!text) return client.errorMessages.createSlashError(interaction, "❌ Please provide a valid text to encode.");
+
     const encoded = Buffer.from(text).toString("base64");
 
     const embed = new EmbedBuilder()
@@ -62,6 +66,7 @@ export default {
     return interaction.followUp({ ephemeral: true, embeds: [embed] });
    } else if (type === "decode") {
     const text = interaction.options.getString("text");
+    if (!text) return client.errorMessages.createSlashError(interaction, "❌ Please provide a valid text to decode.");
     const decoded = Buffer.from(text, "base64").toString("utf-8");
 
     const embed = new EmbedBuilder()

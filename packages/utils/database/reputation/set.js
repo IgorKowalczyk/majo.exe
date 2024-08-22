@@ -6,9 +6,9 @@ import prismaClient from "@majoexe/database";
  * @param {Object} user - The user object containing user details.
  * @param {string} user.id - The ID of the user.
  * @param {string} user.username - The username of the user.
- * @param {string} [user.globalName] - The global name of the user.
+ * @param {string | null} [user.globalName] - The global name of the user.
  * @param {string} user.discriminator - The discriminator of the user.
- * @param {string} user.avatar - The avatar of the user.
+ * @param {string | null} user.avatar - The avatar of the user.
  * @param {Object} guildId - The ID of the guild.
  * @param {number} amount - The amount of reputation to set.
  * @returns {Promise<number>} - Returns the set amount of reputation for the user in the guild.
