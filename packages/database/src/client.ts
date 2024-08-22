@@ -3,10 +3,10 @@ import { Pool, neonConfig } from "@neondatabase/serverless";
 import { PrismaNeon } from "@prisma/adapter-neon";
 import { PrismaClient } from "@prisma/client";
 import { createPrismaRedisCache } from "prisma-redis-middleware";
+import type { CreatePrismaRedisCache } from "prisma-redis-middleware/dist/types";
 import ws from "ws";
 import { Logger } from "./logger";
 import RedisCache from "./redis";
-import type { CreatePrismaRedisCache } from "prisma-redis-middleware/dist/types";
 
 neonConfig.webSocketConstructor = ws;
 
@@ -22,7 +22,8 @@ const prismaClientWrapper = (prisma: PrismaClient) => {
   cacheOptions = {
    type: "redis",
    options: {
-    client: RedisCache as any,
+    /* @ts-expect-error Invalid types in cacheOptions */
+    client: RedisCache,
    },
   };
  }

@@ -58,6 +58,7 @@ export const chars = {
  ".": "˙",
  ",": "'",
  "'": ",",
+ // eslint-disable-next-line @stylistic/quotes
  '"': ",,",
  "`": ",",
  "<": ">",
@@ -125,11 +126,6 @@ export const chars = {
  я: "ʁ",
 };
 
-/**
- * Flips the given text.
- * @param {string} text The text to flip.
- * @returns {string} The flipped text.
- */
 export const flipText = (text) => {
  let result = "";
  for (let i = text.length - 1; i >= 0; i--) {
