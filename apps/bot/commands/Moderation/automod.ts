@@ -1,5 +1,7 @@
-import { ApplicationCommandType, ChannelType, ApplicationCommandOptionType, PermissionsBitField, PermissionFlagsBits } from "discord.js";
-import { autoModSettings, disableAntiBadWords, enableAntiBadWords, disableAntiInvite, enableAntiInvite, disableAntiLink, enableAntiLink, disableAntiMention, enableAntiMention, disableAntiSpam, enableAntiSpam } from "../../util/moderation/automod/index.js";
+import { ApplicationCommandType, ChannelType, ApplicationCommandOptionType, PermissionsBitField, PermissionFlagsBits, ChatInputCommandInteraction } from "discord.js";
+import { autoModSettings, disableAntiBadWords, enableAntiBadWords, disableAntiInvite, enableAntiInvite, disableAntiLink, enableAntiLink, disableAntiMention, enableAntiMention, disableAntiSpam, enableAntiSpam } from "../../util/moderation/automod/index";
+import type { Majobot } from "../..";
+import type { GuildSettings } from "../../util/types/Command";
 
 export default {
  name: "automod",
@@ -261,9 +263,15 @@ export default {
   },
  ],
  permissions: [PermissionFlagsBits.ManageGuild],
- run: async (client, interaction, guildSettings) => {
+ run: async (client: Majobot, interaction: ChatInputCommandInteraction, guildSettings: GuildSettings) => {
   try {
-   if (!interaction.member.permissions.has(PermissionsBitField.Flags.ManageGuild)) {
+   if (!interaction.guild) return client.errorMessages.createSlashError(interaction, "❌ This command can only be used in a server.");
+   if (!interaction.member) return client.errorMessages.createSlashError(interaction, "❌ You must be in a server to use this command.");
+   if (!interaction.guild.members.me) return client.errorMessages.createSlashError(interaction, "❌ Unable to get server data. Please try again.");
+
+   const memberPermissions = interaction.member.permissions as PermissionsBitField;
+
+   if (!memberPermissions.has(PermissionsBitField.Flags.ManageGuild)) {
     return client.errorMessages.createSlashError(interaction, "❌ You don't have permission to use this command. You need `Manage Server` permission");
    }
 
