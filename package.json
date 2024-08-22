@@ -30,6 +30,7 @@
     "seed": "node packages/database/src/seed.js"
   },
   "dependencies": {
+    "tsx": "4.17.0",
     "dotenv-cli": "7.4.2",
     "turbo": "2.0.14"
   },
@@ -40,7 +41,6 @@
     "eslint": "9.9.0",
     "eslint-plugin-turbo": "2.0.14",
     "prettier": "3.3.3",
-    "tsx": "4.17.0",
     "typescript": "5.5.4"
   },
   "engines": {
