@@ -93,5 +93,5 @@
     "url": "https://github.com/igorkowalczyk/majo.exe/issues"
   },
   "homepage": "https://github.com/igorkowalczyk/majo.exe#readme",
-  "packageManager": "pnpm@9.8.0"
+  "packageManager": "pnpm@9.9.0"
 }
