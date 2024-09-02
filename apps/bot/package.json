@@ -14,7 +14,7 @@
     "docker:build": "cd ../.. & docker build -t majoexe/bot:latest -f ./apps/bot/Dockerfile ."
   },
   "dependencies": {
-    "@discordjs/rest": "2.3.0",
+    "@discordjs/rest": "2.4.0",
     "@iamtraction/google-translate": "2.0.1",
     "@majoexe/config": "workspace:*",
     "@majoexe/database": "workspace:*",
