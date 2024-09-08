@@ -140,8 +140,8 @@ importers:
         specifier: 14.2.8
         version: 14.2.8(@mdx-js/loader@3.0.1(webpack@5.93.0))(@mdx-js/react@3.0.1(@types/react@18.3.3)(react@18.3.1))
       '@odiffey/discord-markdown':
-        specifier: 3.2.0
-        version: 3.2.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+        specifier: 3.3.0
+        version: 3.3.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@tippyjs/react':
         specifier: 4.2.6
         version: 4.2.6(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
@@ -1568,8 +1568,8 @@ packages:
     resolution: {integrity: sha512-LRi9Rn93yUx90MIo2Md7+vazxO3Wiat14but2ttCER0xVS+jnfoUjuCGoz6H7bz/lgI9CFcW0HWlvWjMFjAv8g==}
     engines: {node: '>=12'}
 
-  '@odiffey/discord-markdown@3.2.0':
-    resolution: {integrity: sha512-HIuB5wOyv4t9ODJG76GkNKpvtUJ/aF2DXDXyiXmLeJJZWYA8Ynz7ULceybbWRHHxAeo0VdhnrAGgEM8JG8flcg==}
+  '@odiffey/discord-markdown@3.3.0':
+    resolution: {integrity: sha512-NdJAN9LC6K35TYI5/5Y8zJE5BJS4T5UZWChyVQ5ZTq5igreCu136eZJMo/c4Z/VVhvsuoyC7R7S88I0CBvbIug==}
 
   '@panva/hkdf@1.2.1':
     resolution: {integrity: sha512-6oclG6Y3PiDFcoyk8srjLfVKyMfVCKJ27JwNPViuXziFpmdz+MZnZN/aKY0JGXgYuO/VghU0jcOAZgWXZ1Dmrw==}
@@ -7748,7 +7748,7 @@ snapshots:
       interval-tree-1d: 1.0.4
       isoformat: 0.2.1
 
-  '@odiffey/discord-markdown@3.2.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
+  '@odiffey/discord-markdown@3.3.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
     dependencies:
       '@khanacademy/simple-markdown': 0.12.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       highlight.js: 11.10.0
