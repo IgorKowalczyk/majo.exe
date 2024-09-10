@@ -1,7 +1,7 @@
 import { checkXP, fetchXPSettings } from "@majoexe/util/database";
 import { ApplicationCommandType, ApplicationCommandOptionType, AttachmentBuilder, EmbedBuilder, ButtonBuilder, ActionRowBuilder, ButtonStyle, ChatInputCommandInteraction, User } from "discord.js";
-import { createXPCard } from "../../util/images/createXPCard";
 import type { Majobot } from "../../index";
+import { createXPCard } from "../../util/images/createXPCard";
 import type { GuildSettings } from "../../util/types/Command";
 
 export default {

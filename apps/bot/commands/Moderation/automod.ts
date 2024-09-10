@@ -1,6 +1,6 @@
 import { ApplicationCommandType, ChannelType, ApplicationCommandOptionType, PermissionsBitField, PermissionFlagsBits, ChatInputCommandInteraction } from "discord.js";
-import { autoModSettings, disableAntiBadWords, enableAntiBadWords, disableAntiInvite, enableAntiInvite, disableAntiLink, enableAntiLink, disableAntiMention, enableAntiMention, disableAntiSpam, enableAntiSpam } from "../../util/moderation/automod/index";
 import type { Majobot } from "../..";
+import { autoModSettings, disableAntiBadWords, enableAntiBadWords, disableAntiInvite, enableAntiInvite, disableAntiLink, enableAntiLink, disableAntiMention, enableAntiMention, disableAntiSpam, enableAntiSpam } from "../../util/moderation/automod/index";
 import type { GuildSettings } from "../../util/types/Command";
 
 export default {

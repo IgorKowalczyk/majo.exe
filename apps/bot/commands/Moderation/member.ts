@@ -1,11 +1,11 @@
 import { ApplicationCommandType, ApplicationCommandOptionType, PermissionFlagsBits, ChatInputCommandInteraction } from "discord.js";
+import type { Majobot } from "../..";
 import { banMember } from "../../util/moderation/ban";
 import { changememberNickname } from "../../util/moderation/changeMemberNickname";
 import { getUserAvatar, getUserBanner } from "../../util/moderation/getMemberImages";
 import { getMemberInfo } from "../../util/moderation/getMemberInfo";
 import { kickMember } from "../../util/moderation/kick";
 import { unBanMember } from "../../util/moderation/unban";
-import type { Majobot } from "../..";
 import type { GuildSettings } from "../../util/types/Command";
 
 export default {

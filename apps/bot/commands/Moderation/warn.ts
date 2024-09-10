@@ -1,5 +1,5 @@
 import { clearWarns, listWarnings, warnUser, removeWarning } from "@majoexe/util/database";
-import { ApplicationCommandType, ApplicationCommandOptionType, PermissionsBitField, EmbedBuilder, codeBlock, PermissionFlagsBits, ChatInputCommandInteraction, GuildMember } from "discord.js";
+import { ApplicationCommandType, ApplicationCommandOptionType, PermissionsBitField, EmbedBuilder, codeBlock, PermissionFlagsBits, ChatInputCommandInteraction } from "discord.js";
 import type { Majobot } from "../..";
 import type { GuildSettings } from "../../util/types/Command";
 
