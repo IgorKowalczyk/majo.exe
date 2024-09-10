@@ -1,0 +1,103 @@
+import { debuggerConfig } from "@majoexe/config";
+import { Pool, neonConfig } from "@neondatabase/serverless";
+import { PrismaNeon } from "@prisma/adapter-neon";
+import { PrismaClient } from "@prisma/client";
+import { createPrismaRedisCache } from "prisma-redis-middleware";
+import type { CreatePrismaRedisCache } from "prisma-redis-middleware/dist/types";
+import ws from "ws";
+import { Logger } from "./logger";
+import RedisCache from "./redis";
+
+neonConfig.webSocketConstructor = ws;
+
+const prismaClientWrapper = (prisma: PrismaClient) => {
+ let cacheOptions: CreatePrismaRedisCache["storage"];
+
+ if (RedisCache instanceof Map) {
+  cacheOptions = {
+   type: "memory",
+   options: {},
+  };
+ } else {
+  cacheOptions = {
+   type: "redis",
+   options: {
+    /* @ts-expect-error Invalid types in cacheOptions */
+    client: RedisCache,
+   },
+  };
+ }
+
+ const cache = createPrismaRedisCache({
+  models: [
+   { model: "User", excludeMethods: ["findMany"] },
+   { model: "Guild", excludeMethods: ["findMany"], invalidateRelated: ["GuildDisabledCommands", "GuildDisabledCategories"] },
+   { model: "GuildDisabledCommands", excludeMethods: ["findMany"], invalidateRelated: ["Guild"] },
+   { model: "GuildDisabledCategories", excludeMethods: ["findMany"], invalidateRelated: ["Guild"] },
+   { model: "GuildLogs", cacheTime: 15 },
+   { model: "GuildXp", cacheTime: 15 },
+  ],
+  storage: cacheOptions,
+  cacheTime: 30,
+  excludeModels: ["Session", "Account"],
+  onHit: (key) => {
+   if (debuggerConfig.displayCacheMessages) {
+    Logger("info", `Cache hit for key ${key}`);
+   }
+  },
+  onMiss: (key) => {
+   if (debuggerConfig.displayCacheMessages) {
+    Logger("info", `Cache miss for key ${key}`);
+   }
+  },
+  onError: (key) => {
+   if (debuggerConfig.displayCacheMessages) {
+    Logger("info", `Cache error for key ${key}`);
+   }
+  },
+ });
+
+ prisma.$use(cache);
+
+ if (debuggerConfig.displayDatabaseLogs)
+  prisma.$extends({
+   query: {
+    async $allOperations({ operation, model, args, query }) {
+     const start = performance.now();
+     const result = await query(args);
+     const end = performance.now();
+     const time = end - start;
+     Logger("info", `Query ${model}.${operation} took ${time}ms`);
+     return result;
+    },
+   },
+  });
+ return prisma;
+};
+
+const connectionString = `${process.env.DATABASE_URL}`;
+
+const prismaClientSingleton = () => {
+ if (process.env.DATABASE_URL?.includes("neon.tech")) {
+  Logger("info", "Neon Database URL found, setting up Neon Database...");
+  const pool = new Pool({ connectionString });
+  const adapter = new PrismaNeon(pool);
+  return prismaClientWrapper(new PrismaClient({ adapter }));
+ } else {
+  Logger("info", "No Neon Database URL found, setting up Prisma...");
+  return prismaClientWrapper(new PrismaClient());
+ }
+};
+
+declare const globalThis: {
+ prismaGlobal: ReturnType<typeof prismaClientSingleton>;
+} & typeof global;
+
+const prisma = globalThis.prismaGlobal ?? prismaClientSingleton();
+
+export default prisma;
+
+if (process.env.NODE_ENV !== "production") globalThis.prismaGlobal = prisma;
+
+// also export types
+export * from "@prisma/client";

@@ -5,8 +5,8 @@ import prismaClient from "@majoexe/database";
  *
  * @param {string} guildId - The ID of the guild.
  * @param {string} userId - The ID of the user.
- * @param {string} warnId - The ID of the warning.
- * @returns {Promise<Object|boolean>} - Returns the warning object if it was successfully removed, false otherwise.
+ * @param {number} warnId - The ID of the warning.
+ * @returns {Promise<any>} - Returns the warning object if it was successfully removed, false otherwise.
  * @throws {Error} - Throws an error if the operation fails.
  */
 export async function removeWarning(guildId, userId, warnId) {
