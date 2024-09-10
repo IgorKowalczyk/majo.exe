@@ -1,9 +1,14 @@
-import { EmbedBuilder, PermissionsBitField } from "discord.js";
+import { ChatInputCommandInteraction, EmbedBuilder, GuildMember, GuildMemberRoleManager, PermissionsBitField, type ColorResolvable } from "discord.js";
+import type { Majobot } from "../..";
 
-export async function changememberNickname(client, interaction, color, type) {
+export async function changememberNickname(client: Majobot, interaction: ChatInputCommandInteraction, color: ColorResolvable, type = "set" || "remove") {
  try {
+  if (!interaction.guild) return client.errorMessages.createSlashError(interaction, "❌ This command can only be used in a server.");
+  if (!interaction.guild.members.me) return client.errorMessages.createSlashError(interaction, "❌ I can't execute this command in this server.");
+  if (!interaction.member) return client.errorMessages.createSlashError(interaction, "❌ I can't find you in this server.");
+
   if (type === "set") {
-   const user = interaction.options.getMember("user");
+   const user = interaction.options.getMember("user") as GuildMember;
    const nickname = interaction.options.getString("nickname");
 
    if (!user) {
@@ -14,7 +19,10 @@ export async function changememberNickname(client, interaction, color, type) {
     return client.errorMessages.createSlashError(interaction, "❌ You need to provide a nickname to set");
    }
 
-   if (!interaction.member.permissions.has(PermissionsBitField.Flags.ManageNicknames)) {
+   const memberPermissions = interaction.member.permissions as PermissionsBitField;
+   const memberRoles = interaction.member.roles as GuildMemberRoleManager;
+
+   if (!memberPermissions.has(PermissionsBitField.Flags.ManageNicknames)) {
     return client.errorMessages.createSlashError(interaction, "❌ You need `MANAGE_NICKNAMES` permission to set nicknames");
    }
 
@@ -22,7 +30,7 @@ export async function changememberNickname(client, interaction, color, type) {
     return client.errorMessages.createSlashError(interaction, "❌ I need `MANAGE_NICKNAMES` permission to set nicknames");
    }
 
-   if (user.roles.highest.comparePositionTo(interaction.member.roles.highest) >= 0) {
+   if (user.roles.highest.comparePositionTo(memberRoles.highest) >= 0) {
     return client.errorMessages.createSlashError(interaction, "❌ This user has higher or equal roles than you");
    }
 
@@ -30,7 +38,13 @@ export async function changememberNickname(client, interaction, color, type) {
     return client.errorMessages.createSlashError(interaction, "❌ This user has higher or equal roles than me");
    }
 
-   await interaction.guild.members.cache.get(user.id).edit({ nick: nickname });
+   const memberToEdit = interaction.guild.members.cache.get(user.id);
+
+   if (!memberToEdit) {
+    return client.errorMessages.createSlashError(interaction, "❌ I can't find this user in the server");
+   }
+
+   await memberToEdit.edit({ nick: nickname });
 
    const embed = new EmbedBuilder()
     .setColor(color)
@@ -46,13 +60,16 @@ export async function changememberNickname(client, interaction, color, type) {
 
    interaction.followUp({ embeds: [embed] });
   } else if (type === "remove") {
-   const user = interaction.options.getMember("user");
+   const user = interaction.options.getMember("user") as GuildMember;
 
-   if (!user) {
+   if (!user || !user.id) {
     return client.errorMessages.createSlashError(interaction, "❌ You need to provide a user to kick");
    }
 
-   if (!interaction.member.permissions.has(PermissionsBitField.Flags.ManageNicknames)) {
+   const memberPermissions = interaction.member.permissions as PermissionsBitField;
+   const memberRoles = interaction.member.roles as GuildMemberRoleManager;
+
+   if (!memberPermissions.has(PermissionsBitField.Flags.ManageNicknames)) {
     return client.errorMessages.createSlashError(interaction, "❌ You need `MANAGE_NICKNAMES` permission to set nicknames");
    }
 
@@ -60,7 +77,7 @@ export async function changememberNickname(client, interaction, color, type) {
     return client.errorMessages.createSlashError(interaction, "❌ I need `MANAGE_NICKNAMES` permission to set nicknames");
    }
 
-   if (user.roles.highest.comparePositionTo(interaction.member.roles.highest) >= 0) {
+   if (user.roles.highest.comparePositionTo(memberRoles.highest) >= 0) {
     return client.errorMessages.createSlashError(interaction, "❌ This user has higher or equal roles than you");
    }
 
@@ -68,7 +85,13 @@ export async function changememberNickname(client, interaction, color, type) {
     return client.errorMessages.createSlashError(interaction, "❌ This user has higher or equal roles than me");
    }
 
-   await interaction.guild.members.cache.get(user.id).edit({ nick: null });
+   const memberToEdit = interaction.guild.members.cache.get(user.id);
+
+   if (!memberToEdit) {
+    return client.errorMessages.createSlashError(interaction, "❌ I can't find this user in the server");
+   }
+
+   await memberToEdit.edit({ nick: null });
 
    const embed = new EmbedBuilder()
     .setColor(color)

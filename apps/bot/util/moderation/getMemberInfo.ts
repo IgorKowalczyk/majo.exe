@@ -1,10 +1,11 @@
-import { EmbedBuilder } from "discord.js";
+import { ChatInputCommandInteraction, EmbedBuilder, GuildMember, type ColorResolvable } from "discord.js";
+import type { Majobot } from "../..";
 
-export function getMemberInfo(client, interaction, color) {
+export function getMemberInfo(client: Majobot, interaction: ChatInputCommandInteraction, color: ColorResolvable) {
  try {
-  const user = interaction.options.getMember("user");
+  const user = interaction.options.getMember("user") as GuildMember;
 
-  if (!user) {
+  if (!user || !user.user) {
    return client.errorMessages.createSlashError(interaction, "❌ You need to provide a user to check info");
   }
 
@@ -20,13 +21,15 @@ export function getMemberInfo(client, interaction, color) {
    HypeSquadOnlineHouse3: client.config.emojis.hypesquad_balance,
    PremiumEarlySupporter: client.config.emojis.early_supporter,
    TeamPseudoUser: "Team User",
-   erifiedBot: `${client.config.emojis.bot_badge_part_1}${client.config.emojis.bot_badge_part_2}`,
+   VerifiedBot: `${client.config.emojis.bot_badge_part_1}${client.config.emojis.bot_badge_part_2}`,
    VerifiedDeveloper: client.config.emojis.verified_bot_developer,
   };
 
+  type UserFlags = keyof typeof flags;
+
   const userFlags = [];
-  user.user.flags.toArray().map((flag) => {
-   return flags[flag.toString()] ? userFlags.push(flags[flag.toString()]) : null;
+  user.user.flags?.toArray().map((flag) => {
+   return flags[flag as UserFlags] ? userFlags.push(flags[flag as UserFlags]) : null;
   });
 
   if (userFlags.length === 0) {
@@ -58,12 +61,12 @@ export function getMemberInfo(client, interaction, color) {
    },
    {
     name: `${client.config.emojis.stopwatch} Joined server at`,
-    value: `> <t:${parseInt(user.joinedTimestamp / 1000)}> (<t:${parseInt(user.joinedTimestamp / 1000)}:R>)`,
+    value: user.joinedTimestamp ? `><t:${parseInt((user.joinedTimestamp / 1000).toString())}> (<t:${parseInt((user.joinedTimestamp / 1000).toString())}:R>)` : "Unknown",
     inline: false,
    },
    {
     name: `${client.config.emojis.stopwatch} Account created at`,
-    value: `> <t:${parseInt(user.user.createdAt / 1000)}> (<t:${parseInt(user.user.createdAt / 1000)}:R>)`,
+    value: `> <t:${parseInt((user.user.createdAt.getTime() / 1000).toString())}> (<t:${parseInt((user.user.createdAt.getTime() / 1000).toString())}:R>)`,
     inline: false,
    },
    {
@@ -78,10 +81,10 @@ export function getMemberInfo(client, interaction, color) {
    },
   ];
 
-  if (user.user.nickname) {
+  if (user.nickname) {
    fields.push({
     name: `${client.config.emojis.nickname} Nickname`,
-    value: `> ${user.user.nickname}`,
+    value: `> ${user.nickname}`,
     inline: false,
    });
   }

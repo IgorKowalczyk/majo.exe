@@ -1,7 +1,11 @@
-import { EmbedBuilder, PermissionsBitField } from "discord.js";
+import { ChatInputCommandInteraction, EmbedBuilder, PermissionsBitField, type ColorResolvable } from "discord.js";
+import type { Majobot } from "../..";
 
-export async function unBanMember(client, interaction, color) {
+export async function unBanMember(client: Majobot, interaction: ChatInputCommandInteraction, color: ColorResolvable) {
  try {
+  if (!interaction.guild) return client.errorMessages.createSlashError(interaction, "❌ This command can only be used in a server.");
+  if (!interaction.guild.members.me) return client.errorMessages.createSlashError(interaction, "❌ I can't execute this command in this server.");
+  if (!interaction.member) return client.errorMessages.createSlashError(interaction, "❌ I can't find you in this server.");
   const user = interaction.options.getString("user_id");
   const reason = interaction.options.getString("reason") || "No reason provided";
 
@@ -9,7 +13,9 @@ export async function unBanMember(client, interaction, color) {
    return client.errorMessages.createSlashError(interaction, "❌ You need to provide a user to unban");
   }
 
-  if (!interaction.member.permissions.has(PermissionsBitField.Flags.BanMembers)) {
+  const memberPermissions = interaction.member.permissions as PermissionsBitField;
+
+  if (!memberPermissions.has(PermissionsBitField.Flags.BanMembers)) {
    return client.errorMessages.createSlashError(interaction, "❌ You need `BAN_MEMBERS` permission to unban members");
   }
 
@@ -17,7 +23,7 @@ export async function unBanMember(client, interaction, color) {
    return client.errorMessages.createSlashError(interaction, "❌ I need `BAN_MEMBERS` permission to unban members");
   }
 
-  await interaction.guild.members.unban(user, { reason });
+  await interaction.guild.members.unban(user, reason);
 
   const embed = new EmbedBuilder()
    .setColor(color)

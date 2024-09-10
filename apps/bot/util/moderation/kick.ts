@@ -1,15 +1,22 @@
-import { EmbedBuilder, PermissionsBitField } from "discord.js";
+import { ChatInputCommandInteraction, EmbedBuilder, GuildMember, GuildMemberRoleManager, PermissionsBitField, type ColorResolvable } from "discord.js";
+import type { Majobot } from "../..";
 
-export async function kickMember(client, interaction, color) {
+export async function kickMember(client: Majobot, interaction: ChatInputCommandInteraction, color: ColorResolvable) {
  try {
-  const user = interaction.options.getMember("user");
+  if (!interaction.guild) return client.errorMessages.createSlashError(interaction, "❌ This command can only be used in a server.");
+  if (!interaction.guild.members.me) return client.errorMessages.createSlashError(interaction, "❌ I can't execute this command in this server.");
+  if (!interaction.member) return client.errorMessages.createSlashError(interaction, "❌ I can't find you in this server.");
+
+  const user = interaction.options.getMember("user") as GuildMember;
   const reason = interaction.options.getString("reason") || "No reason provided";
 
   if (!user) {
    return client.errorMessages.createSlashError(interaction, "❌ You need to provide a user to kick");
   }
 
-  if (!interaction.member.permissions.has(PermissionsBitField.Flags.KickMembers)) {
+  const memberPermissions = interaction.member.permissions as PermissionsBitField;
+
+  if (!memberPermissions.has(PermissionsBitField.Flags.KickMembers)) {
    return client.errorMessages.createSlashError(interaction, "❌ You need `KICK_MEMBERS` permission to kick members");
   }
 
@@ -21,11 +28,13 @@ export async function kickMember(client, interaction, color) {
    return client.errorMessages.createSlashError(interaction, "❌ You can't kick yourself");
   }
 
-  if (user.id === client.user.id) {
+  if (user.id === client.user?.id) {
    return client.errorMessages.createSlashError(interaction, "❌ You can't kick me");
   }
 
-  if (user.roles.highest.comparePositionTo(interaction.member.roles.highest) >= 0) {
+  const userRoles = interaction.member.roles as GuildMemberRoleManager;
+
+  if (user.roles.highest.comparePositionTo(userRoles.highest) >= 0) {
    return client.errorMessages.createSlashError(interaction, "❌ This user has higher or equal roles than you");
   }
 
@@ -33,7 +42,7 @@ export async function kickMember(client, interaction, color) {
    return client.errorMessages.createSlashError(interaction, "❌ This user has higher or equal roles than me");
   }
 
-  await interaction.guild.members.kick(user, { reason });
+  await interaction.guild.members.kick(user, reason);
 
   const embed = new EmbedBuilder()
    .setColor(color)

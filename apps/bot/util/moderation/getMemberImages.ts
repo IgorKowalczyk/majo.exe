@@ -1,18 +1,14 @@
-import { EmbedBuilder, ActionRowBuilder, ButtonStyle, ButtonBuilder } from "discord.js";
+import { EmbedBuilder, ActionRowBuilder, ButtonStyle, ButtonBuilder, ChatInputCommandInteraction, type ColorResolvable, GuildMember } from "discord.js";
+import type { Majobot } from "../..";
 
-/**
- * @param {client} client
- * @param {CommandInteraction} interaction
- * @param {string} color
- * @returns {Promise<void>}
- * @description Get user avatar
- * */
-export async function getUserAvatar(client, interaction, color) {
+export async function getUserAvatar(client: Majobot, interaction: ChatInputCommandInteraction, color: ColorResolvable) {
  try {
-  const user = interaction.options.getMember("user");
+  if (!interaction.guild) return client.errorMessages.createSlashError(interaction, "❌ This command can only be used in a server.");
+
+  const user = interaction.options.getMember("user") as GuildMember;
   const serverAvatar = interaction.options.getBoolean("guild_avatar") || false;
 
-  if (!user) {
+  if (!user || !user.id) {
    return client.errorMessages.createSlashError(interaction, "❌ You need to provide a user to check avatar");
   }
 
@@ -50,7 +46,7 @@ export async function getUserAvatar(client, interaction, color) {
     }),
    });
 
-  const row = new ActionRowBuilder().addComponents(
+  const row = new ActionRowBuilder<ButtonBuilder>().addComponents(
    new ButtonBuilder() // prettier
     .setLabel("Avatar")
     .setStyle(ButtonStyle.Link)
@@ -63,19 +59,13 @@ export async function getUserAvatar(client, interaction, color) {
  }
 }
 
-/**
- * @param {client} client
- * @param {CommandInteraction} interaction
- * @param {string} color
- * @returns {Promise<void>}
- * @description Get user banner
- * */
-export async function getUserBanner(client, interaction, color) {
+export async function getUserBanner(client: Majobot, interaction: ChatInputCommandInteraction, color: ColorResolvable) {
  try {
-  const user = interaction.options.getMember("user");
+  if (!interaction.guild) return client.errorMessages.createSlashError(interaction, "❌ This command can only be used in a server.");
+  const user = interaction.options.getMember("user") as GuildMember;
   const serverBanner = interaction.options.getBoolean("guild_banner") || false;
 
-  if (!user) {
+  if (!user || !user.id) {
    return client.errorMessages.createSlashError(interaction, "❌ You need to provide a user to check banner");
   }
 
@@ -124,7 +114,7 @@ export async function getUserBanner(client, interaction, color) {
     }),
    });
 
-  const row = new ActionRowBuilder().addComponents(
+  const row = new ActionRowBuilder<ButtonBuilder>().addComponents(
    new ButtonBuilder() // prettier
     .setLabel("Banner")
     .setStyle(ButtonStyle.Link)

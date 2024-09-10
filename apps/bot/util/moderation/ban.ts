@@ -1,15 +1,21 @@
-import { EmbedBuilder, PermissionsBitField } from "discord.js";
+import { ChatInputCommandInteraction, EmbedBuilder, GuildMember, GuildMemberRoleManager, PermissionsBitField, type ColorResolvable } from "discord.js";
+import type { Majobot } from "../..";
 
-export async function banMember(client, interaction, color) {
+export async function banMember(client: Majobot, interaction: ChatInputCommandInteraction, color: ColorResolvable) {
  try {
-  const user = interaction.options.getMember("user");
+  if (!interaction.guild) return client.errorMessages.createSlashError(interaction, "❌ This command can only be used in a server.");
+  if (!interaction.guild.members.me) return client.errorMessages.createSlashError(interaction, "❌ I can't execute this command in this server.");
+  if (!interaction.member) return client.errorMessages.createSlashError(interaction, "❌ I can't find you in this server.");
+  const user = interaction.options.getMember("user") as GuildMember;
   const reason = interaction.options.getString("reason") || "No reason provided";
 
   if (!user) {
    return client.errorMessages.createSlashError(interaction, "❌ You need to provide a user to ban");
   }
 
-  if (!interaction.member.permissions.has(PermissionsBitField.Flags.BanMembers)) {
+  const memberPermissions = interaction.member.permissions as PermissionsBitField;
+
+  if (!memberPermissions.has(PermissionsBitField.Flags.BanMembers)) {
    return client.errorMessages.createSlashError(interaction, "❌ You don't have permission to ban members");
   }
 
@@ -21,11 +27,13 @@ export async function banMember(client, interaction, color) {
    return client.errorMessages.createSlashError(interaction, "❌ You can't ban yourself, try banning someone else");
   }
 
-  if (user.id === client.user.id) {
+  if (user.id === client.user?.id) {
    return client.errorMessages.createSlashError(interaction, "❌ You can't ban me, try banning someone else");
   }
 
-  if (user.roles.highest.comparePositionTo(interaction.member.roles.highest) >= 0) {
+  const memberRoles = interaction.member.roles as GuildMemberRoleManager;
+
+  if (user.roles.highest.comparePositionTo(memberRoles.highest) >= 0) {
    return client.errorMessages.createSlashError(interaction, "❌ This user has higher or equal roles than you, try banning someone else");
   }
 
