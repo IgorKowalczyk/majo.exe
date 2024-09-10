@@ -2,8 +2,8 @@ import prismaClient from "@majoexe/database";
 import { cacheGet, cacheSet } from "@majoexe/database/redis";
 import { fetchXPSettings } from "@majoexe/util/database";
 import { EmbedBuilder, AttachmentBuilder, PermissionsBitField, ButtonBuilder, ChannelType, ActionRowBuilder, ButtonStyle, Message } from "discord.js";
-import type { Majobot } from "../../index.js";
-import { createXPCard } from "../../util/images/createXPCard.js";
+import type { Majobot } from "../../index";
+import { createXPCard } from "../../util/images/createXPCard";
 
 export async function messageCreate(client: Majobot, message: Message): Promise<Message | void> {
  if (!message.guild || !message.guild.available) return;

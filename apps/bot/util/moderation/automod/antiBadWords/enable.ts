@@ -1,21 +1,30 @@
 import { createAutoModRule, syncAutoModRule } from "@majoexe/util/database";
-import { ChannelType, AutoModerationRuleEventType, AutoModerationActionType, AutoModerationRuleTriggerType, EmbedBuilder, PermissionsBitField, codeBlock } from "discord.js";
+import { ChannelType, AutoModerationRuleEventType, AutoModerationRuleKeywordPresetType, AutoModerationActionType, AutoModerationRuleTriggerType, EmbedBuilder, PermissionsBitField, codeBlock, ChatInputCommandInteraction, TextChannel, GuildMember, type AutoModerationRuleCreateOptions } from "discord.js";
+import type { Majobot } from "../../../..";
+import type { GuildSettings } from "../../../types/Command";
 
-export async function enableAntiMention(client, interaction, guildSettings) {
- const createdRule = await syncAutoModRule(interaction.guild.id, "anti-mention");
+export async function enableAntiBadWords(client: Majobot, interaction: ChatInputCommandInteraction, guildSettings: GuildSettings) {
+ if (!interaction.guild) return client.errorMessages.createSlashError(interaction, "❌ This command can only be used in a server.");
+ if (!interaction.guild.members.me) return client.errorMessages.createSlashError(interaction, "❌ I can't find myself in this server.");
+ if (!interaction.member) return client.errorMessages.createSlashError(interaction, "❌ You must be in a server to use this command.");
 
- const limit = interaction.options.getInteger("limit") || 5;
+ const createdRule = await syncAutoModRule(interaction.guild.id, "anti-bad-words");
+
  const exemptRoles = interaction.options.getRole("exempt-roles");
  const exemptChannels = interaction.options.getChannel("exempt-channels");
- const timeout = interaction.options.getInteger("timeout");
- const logChannel = interaction.options.getChannel("log-channel");
+ const logChannel = interaction.options.getChannel("log-channel") as TextChannel;
+ const profanity = interaction.options.getBoolean("profanity") ?? true;
+ const sexualContent = interaction.options.getBoolean("sexual-content") ?? true;
+ const slurs = interaction.options.getBoolean("slurs") ?? true;
+
+ if (!profanity && !sexualContent && !slurs) return client.errorMessages.createSlashError(interaction, "❌ You need to enable at least one filter!");
 
  const existingRules = await interaction.guild.autoModerationRules.fetch({ cache: false });
- const conflictingRule = existingRules.filter((rule) => rule.triggerType === AutoModerationRuleTriggerType.MentionSpam).first();
- if (conflictingRule) await conflictingRule.delete("New anti-mention rule created");
+ const conflictingRule = existingRules.filter((rule) => rule.triggerType === AutoModerationRuleTriggerType.KeywordPreset).first();
+ if (conflictingRule) await conflictingRule.delete("New anti-bad-words rule created");
 
  if (createdRule) {
-  if (createdRule.enabled) return client.errorMessages.createSlashError(interaction, "❌ The anti-mention system is already `enabled`");
+  if (createdRule.enabled) return client.errorMessages.createSlashError(interaction, "❌ The anti-bad-words system is already `enabled`");
 
   await interaction.guild.autoModerationRules.edit(createdRule.id, {
    enabled: true,
@@ -24,8 +33,8 @@ export async function enableAntiMention(client, interaction, guildSettings) {
   const embed = new EmbedBuilder()
    .setColor(guildSettings?.embedColor || client.config.defaultColor)
    .setTimestamp()
-   .setTitle("✅ Successfully `enabled` the anti-mention system again")
-   .setDescription("The anti-mention system has been `enabled`. Mention spam will now be blocked.")
+   .setTitle("✅ Successfully `enabled` the anti-bad-words system again")
+   .setDescription("The anti-bad-words system has been `enabled`. Common bad words will now be blocked.")
    .setFooter({
     text: `Requested by ${interaction.user.globalName || interaction.user.username}`,
     iconURL: interaction.user.displayAvatarURL({
@@ -41,37 +50,32 @@ export async function enableAntiMention(client, interaction, guildSettings) {
   return interaction.followUp({ embeds: [embed] });
  } else {
   const ruleToCreate = {
-   name: "Disallow mention spam [Majo.exe]",
-   creatorId: client.id,
+   name: "Anti bad words [Majo.exe]",
+   creatorId: client.user?.id,
    enabled: true,
    eventType: AutoModerationRuleEventType.MessageSend,
-   triggerType: AutoModerationRuleTriggerType.MentionSpam,
+   triggerType: AutoModerationRuleTriggerType.KeywordPreset,
    exemptChannels: exemptChannels ? [exemptChannels.id] : [],
    exemptRoles: exemptRoles ? [exemptRoles.id] : [],
    triggerMetadata: {
-    mentionTotalLimit: limit,
-    mentionRaidProtectionEnabled: true,
+    presets: [
+     // prettier
+     profanity ? AutoModerationRuleKeywordPresetType.Profanity : undefined,
+     sexualContent ? AutoModerationRuleKeywordPresetType.SexualContent : undefined,
+     slurs ? AutoModerationRuleKeywordPresetType.Slurs : undefined,
+    ].filter(Boolean),
    },
    actions: [
     {
      type: AutoModerationActionType.BlockMessage,
      metadata: {
       channel: interaction.channel,
-      customMessage: "Message blocked due to containing too many mentions. Rule added by Majo.exe",
+      customMessage: "Message blocked due to containing a bad word. Rule added by Majo.exe",
      },
     },
    ],
    reason: `Requested by ${interaction.user.globalName || interaction.user.username}`,
-  };
-
-  if (timeout) {
-   ruleToCreate.actions.push({
-    type: AutoModerationActionType.Timeout,
-    metadata: {
-     durationSeconds: timeout,
-    },
-   });
-  }
+  } as AutoModerationRuleCreateOptions;
 
   if (logChannel) {
    if (!logChannel.permissionsFor(interaction.guild.members.me).has(PermissionsBitField.Flags.ViewChannel)) {
@@ -82,36 +86,38 @@ export async function enableAntiMention(client, interaction, guildSettings) {
     return client.errorMessages.createSlashError(interaction, `❌ I don't have permission to send messages in <#${logChannel.id}> channel`);
    }
 
-   if (!logChannel.permissionsFor(interaction.member).has(PermissionsBitField.Flags.ViewChannel)) {
+   const user = interaction.member as GuildMember;
+
+   if (!logChannel.permissionsFor(user).has(PermissionsBitField.Flags.ViewChannel)) {
     return client.errorMessages.createSlashError(interaction, `❌ You don't have permission to view <#${logChannel.id}> channel`);
    }
 
-   if (!logChannel.permissionsFor(interaction.member).has(PermissionsBitField.Flags.SendMessages)) {
+   if (!logChannel.permissionsFor(user).has(PermissionsBitField.Flags.SendMessages)) {
     return client.errorMessages.createSlashError(interaction, `❌ You don't have permission to send messages in <#${logChannel.id}> channel`);
    }
 
-   ruleToCreate.actions.push({
+   ruleToCreate.actions = ruleToCreate.actions.concat({
     type: AutoModerationActionType.SendAlertMessage,
     metadata: {
      channel: logChannel,
-     message: "Message blocked due to containing too many mentions. Rule added by Majo.exe",
+     customMessage: "Message blocked due to containing a bad word. Rule added by Majo.exe",
     },
    });
   }
 
   const rule = await interaction.guild.autoModerationRules.create(ruleToCreate);
 
-  await createAutoModRule(interaction.guild.id, rule.id, "anti-mention", true);
+  await createAutoModRule(interaction.guild.id, rule.id, "anti-bad-words");
 
   const embed = new EmbedBuilder()
    .setColor(guildSettings?.embedColor || client.config.defaultColor)
    .setTimestamp()
-   .setTitle("✅ Successfully `enabled` the anti-mention system")
-   .setDescription(`The anti-mention system has been \`enabled\`. Mention spam over the limit (${limit}) will now be blocked.`)
+   .setTitle("✅ Successfully `enabled` the anti-bad-words system")
+   .setDescription("The anti-bad-words system has been `enabled`. Common bad words will now be blocked.")
    .setFields([
     {
      name: "🔒 Rule name",
-     value: `\`Mention spam over the limit (${limit})\``,
+     value: "`Anti bad words`",
      inline: true,
     },
     {
@@ -120,13 +126,8 @@ export async function enableAntiMention(client, interaction, guildSettings) {
      inline: true,
     },
     {
-     name: `📛 Rule action${timeout || logChannel ? "s" : ""}`,
-     value: `\`Block message\`${timeout ? `, Timeout for \`${timeout}\` seconds` : ""}${logChannel ? `, Send alert message in <#${logChannel.id}>` : ""}`,
-     inline: true,
-    },
-    {
-     name: "⏱️ Rule timeout",
-     value: timeout ? `\`${timeout} seconds\`` : "`None`",
+     name: `📛 Rule action${logChannel ? "s" : ""}`,
+     value: `\`Block message\`${logChannel ? `, Send alert message in <#${logChannel.id}>` : ""}`,
      inline: true,
     },
     {
@@ -136,7 +137,7 @@ export async function enableAntiMention(client, interaction, guildSettings) {
     },
     {
      name: "🔑 Rule trigger",
-     value: codeBlock(`All mentions over the limit (${limit})`),
+     value: codeBlock("Common bad words"),
      inline: false,
     },
     {

@@ -1,7 +1,11 @@
 import { syncAutoModRule } from "@majoexe/util/database";
-import { EmbedBuilder, codeBlock } from "discord.js";
+import { ChatInputCommandInteraction, EmbedBuilder, codeBlock } from "discord.js";
+import type { Majobot } from "../../../..";
+import type { GuildSettings } from "../../../types/Command";
 
-export async function autoModSettings(client, interaction, guildSettings) {
+export async function autoModSettings(client: Majobot, interaction: ChatInputCommandInteraction, guildSettings: GuildSettings) {
+ if (!interaction.guild) return client.errorMessages.createSlashError(interaction, "❌ This command can only be used in a server.");
+
  const antiInviteRule = (await syncAutoModRule(interaction.guild.id, "anti-invite")) || false;
  const antiLinkRule = (await syncAutoModRule(interaction.guild.id, "anti-link")) || false;
  const antiMentionRule = (await syncAutoModRule(interaction.guild.id, "anti-mention")) || false;

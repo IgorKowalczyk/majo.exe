@@ -1,5 +1,5 @@
 import { ApplicationCommandType, ApplicationCommandOptionType, ChannelType, PermissionFlagsBits, type ChatInputCommandInteraction } from "discord.js";
-import type { Majobot } from "../../index.ts";
+import type { Majobot } from "../../index";
 import { EndGiveaway } from "../../util/giveaway/endGiveaway";
 import { FindGiveaways } from "../../util/giveaway/findGiveaways";
 import { PauseGiveaway } from "../../util/giveaway/pauseGiveaway";
