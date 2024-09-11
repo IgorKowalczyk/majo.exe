@@ -13,7 +13,7 @@
   "lint:fix": "eslint . --fix"
  },
  "dependencies": {
-  "tsx": "4.17.0",
+  "tsx": "4.19.0",
   "typescript": "5.5.4",
   "@types/node": "22.5.4"
  },
