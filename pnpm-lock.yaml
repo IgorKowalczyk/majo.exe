@@ -43,8 +43,8 @@ importers:
   apps/bot:
     dependencies:
       '@discordjs/rest':
-        specifier: 2.3.0
-        version: 2.3.0
+        specifier: 2.4.0
+        version: 2.4.0
       '@iamtraction/google-translate':
         specifier: 2.0.1
         version: 2.0.1
@@ -1076,10 +1076,6 @@ packages:
   '@discordjs/formatters@0.5.0':
     resolution: {integrity: sha512-98b3i+Y19RFq1Xke4NkVY46x8KjJQjldHUuEbCqMvp1F5Iq9HgnGpu91jOi/Ufazhty32eRsKnnzS8n4c+L93g==}
     engines: {node: '>=18'}
-
-  '@discordjs/rest@2.3.0':
-    resolution: {integrity: sha512-C1kAJK8aSYRv3ZwMG8cvrrW4GN0g5eMdP8AuN8ODH5DyOCbHgJspze1my3xHOAgwLJdKUbWNVyAeJ9cEdduqIg==}
-    engines: {node: '>=16.11.0'}
 
   '@discordjs/rest@2.4.0':
     resolution: {integrity: sha512-Xb2irDqNcq+O8F0/k/NaDp7+t091p+acb51iA4bCKfIn+WFWd6HrNvcsSbMMxIR9NjcMZS6NReTKygqiQN+ntw==}
@@ -6184,10 +6180,6 @@ packages:
     resolution: {integrity: sha512-72RFADWFqKmUb2hmmvNODKL3p9hcB6Gt2DOQMis1SEBaV6a4MH8soBvzg+95CYhCKPFedut2JY9bMfrDl9D23g==}
     engines: {node: '>=14.0'}
 
-  undici@6.13.0:
-    resolution: {integrity: sha512-Q2rtqmZWrbP8nePMq7mOJIN98M0fYvSgV89vwl/BQRT4mDOeY2GXZngfGpcBBhtky3woM7G24wZV3Q304Bv6cw==}
-    engines: {node: '>=18.0'}
-
   undici@6.19.7:
     resolution: {integrity: sha512-HR3W/bMGPSr90i8AAp2C4DM3wChFdJPLrWYpIS++LxS8K+W535qftjt+4MyjNYHeWabMj1nvtmLIi7l++iq91A==}
     engines: {node: '>=18.17'}
@@ -7430,18 +7422,6 @@ snapshots:
     dependencies:
       discord-api-types: 0.37.97
 
-  '@discordjs/rest@2.3.0':
-    dependencies:
-      '@discordjs/collection': 2.1.1
-      '@discordjs/util': 1.1.1
-      '@sapphire/async-queue': 1.5.3
-      '@sapphire/snowflake': 3.5.3
-      '@vladfrangu/async_event_emitter': 2.4.6
-      discord-api-types: 0.37.83
-      magic-bytes.js: 1.10.0
-      tslib: 2.7.0
-      undici: 6.13.0
-
   '@discordjs/rest@2.4.0':
     dependencies:
       '@discordjs/collection': 2.1.1
@@ -7459,7 +7439,7 @@ snapshots:
   '@discordjs/ws@1.1.1':
     dependencies:
       '@discordjs/collection': 2.1.1
-      '@discordjs/rest': 2.3.0
+      '@discordjs/rest': 2.4.0
       '@discordjs/util': 1.1.1
       '@sapphire/async-queue': 1.5.3
       '@types/ws': 8.5.12
@@ -13612,8 +13592,6 @@ snapshots:
   undici@5.28.4:
     dependencies:
       '@fastify/busboy': 2.1.1
-
-  undici@6.13.0: {}
 
   undici@6.19.7: {}
 
