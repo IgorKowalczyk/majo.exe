@@ -18,7 +18,7 @@
     "@majoexe/database": "workspace:*",
     "@majoexe/typescript-config": "workspace:*",
     "@majoexe/util": "workspace:*",
-    "@discordjs/rest": "2.3.0",
+    "@discordjs/rest": "2.4.0",
     "@iamtraction/google-translate": "2.0.1",
     "@napi-rs/canvas": "0.1.55",
     "@observablehq/plot": "0.6.16",
