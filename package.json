@@ -30,7 +30,7 @@
     "seed": "node packages/database/src/seed.js"
   },
   "dependencies": {
-    "tsx": "4.17.0",
+    "tsx": "4.19.0",
     "dotenv-cli": "7.4.2",
     "turbo": "2.1.1"
   },
