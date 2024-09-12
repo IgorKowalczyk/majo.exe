@@ -28,7 +28,7 @@
     "d3": "^7.8.5",
     "decode-gif": "1.0.1",
     "discord-giveaways": "6.0.1",
-    "discord.js": "14.16.1",
+    "discord.js": "14.16.2",
     "dotenv": "16.4.5",
     "figlet": "1.7.0",
     "gif-encoder-2": "1.0.5",
