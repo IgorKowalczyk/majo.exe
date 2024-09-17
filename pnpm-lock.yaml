@@ -128,8 +128,8 @@ importers:
         specifier: 1.5.5
         version: 1.5.5
       '@types/validator':
-        specifier: 13.12.1
-        version: 13.12.1
+        specifier: 13.12.2
+        version: 13.12.2
 
   apps/dashboard:
     dependencies:
@@ -2201,8 +2201,8 @@ packages:
   '@types/unist@3.0.2':
     resolution: {integrity: sha512-dqId9J8K/vGi5Zr7oo212BGii5m3q5Hxlkwy3WpYuKPklmBEvsbMYYyLxAQpSffdLl/gdW0XUpKWFvYmyoWCoQ==}
 
-  '@types/validator@13.12.1':
-    resolution: {integrity: sha512-w0URwf7BQb0rD/EuiG12KP0bailHKHP5YVviJG9zw3ykAokL0TuxU2TUqMB7EwZ59bDHYdeTIvjI5m0S7qHfOA==}
+  '@types/validator@13.12.2':
+    resolution: {integrity: sha512-6SlHBzUW8Jhf3liqrGGXyTJSIFe4nqlJ5A5KaMZ2l/vbM3Wh3KSybots/wfWVzNLK4D1NZluDlSQIbIEPx6oyA==}
 
   '@types/webxr@0.5.20':
     resolution: {integrity: sha512-JGpU6qiIJQKUuVSKx1GtQnHJGxRjtfGIhzO2ilq43VZZS//f1h1Sgexbdk+Lq+7569a6EYhOWrUpIruR/1Enmg==}
@@ -8810,7 +8810,7 @@ snapshots:
 
   '@types/unist@3.0.2': {}
 
-  '@types/validator@13.12.1': {}
+  '@types/validator@13.12.2': {}
 
   '@types/webxr@0.5.20': {}
 
