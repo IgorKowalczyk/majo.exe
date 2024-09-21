@@ -5,6 +5,9 @@ import { ApplicationCommandType, ApplicationCommandOptionType, AttachmentBuilder
 import GIFEncoder from "gif-encoder-2";
 import type { Majobot } from "../..";
 import type { GuildSettings } from "../../util/types/Command";
+import { readFile } from "fs/promises";
+import path from "node:path";
+import { fileURLToPath } from "node:url";
 
 export default {
  name: "flag",
@@ -144,28 +147,27 @@ export default {
    }
 
    const targetImage = await loadImage(image.split("?")[0]);
-   const background = await loadImage(`./util/images/files/${subcommand}.gif`);
+   const backgroundPath = path.join(path.dirname(fileURLToPath(import.meta.url)), `../../util/images/files/${subcommand}.gif`);
+   const backgroundBuffer = await readFile(backgroundPath);
+   const { frames, width, height } = decodeGif(backgroundBuffer);
 
-   const gif = new GIFEncoder(background.width, background.height, "neuquant", true);
-
+   const gif = new GIFEncoder(width, height, "neuquant", true);
    gif.start();
    gif.setQuality(1);
    gif.setDelay(40);
    gif.setDispose(2);
    gif.setRepeat(0);
 
-   const canvas = createCanvas(background.width, background.height);
+   const canvas = createCanvas(width, height);
    const context = canvas.getContext("2d");
-
-   const { frames } = decodeGif(Buffer.from(background.src));
 
    for (let i = 0; i < frames.length; i++) {
     context.globalAlpha = 1;
     const frame = frames[i];
-    const imageData = new ImageData(frame.data, background.width, background.height);
+    const imageData = new ImageData(frame.data, width, height);
     context.putImageData(imageData, 0, 0);
     context.globalAlpha = 0.5;
-    context.drawImage(targetImage, 0, 0, background.width, background.height);
+    context.drawImage(targetImage, 0, 0, width, height);
     gif.addFrame(context);
    }
 
@@ -187,7 +189,7 @@ export default {
      }),
     });
 
-   if (attachment && attachment && attachment.width && attachment.height && (attachment.width > 512 || attachment.height > 512)) {
+   if (attachment && attachment.width && attachment.height && (attachment.width > 512 || attachment.height > 512)) {
     embed.setDescription("⚠️ Your attachment was resized to 510x510px because it was too big.");
    }
 

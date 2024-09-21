@@ -37,9 +37,13 @@ export default {
    const level = Math.floor(0.1 * Math.sqrt(xp || 0));
    const xpNeeded = Math.ceil(Math.pow((level + 1) / 0.1, 2));
 
-   user.avatar = user.displayAvatarURL({
-    size: 128,
-   });
+   user.avatar = user
+    .displayAvatarURL({
+     size: 128,
+     forceStatic: true,
+     extension: "png",
+    })
+    .split("?")[0];
 
    const rank = await createXPCard(user, { xp, level, xpNeeded }, guildSettings?.embedColor || client.config.defaultColor);
 
@@ -65,6 +69,7 @@ export default {
        .setStyle(ButtonStyle.Link)
        .setURL(`${client.config.url}/dashboard/${interaction.guild.id}/leaderboard`)
      );
+
     return interaction.followUp({ ephemeral: false, embeds: [embed], components: [action], files: [attachment] });
    } else {
     return interaction.followUp({ ephemeral: false, embeds: [embed], files: [attachment] });
