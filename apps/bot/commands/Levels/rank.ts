@@ -37,13 +37,15 @@ export default {
    const level = Math.floor(0.1 * Math.sqrt(xp || 0));
    const xpNeeded = Math.ceil(Math.pow((level + 1) / 0.1, 2));
 
-   user.avatar = user
+   const [avatarURL] = user
     .displayAvatarURL({
      size: 128,
      forceStatic: true,
      extension: "png",
     })
-    .split("?")[0];
+    .split("?");
+
+   user.avatar = avatarURL;
 
    const rank = await createXPCard(user, { xp, level, xpNeeded }, guildSettings?.embedColor || client.config.defaultColor);
 
