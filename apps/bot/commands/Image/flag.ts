@@ -153,7 +153,7 @@ export default {
    gif.setDispose(2);
    gif.setRepeat(0);
 
-   const canvas = createCanvas(width, height);
+   const canvas = createCanvas(background.width, background.height);
    const context = canvas.getContext("2d");
 
    const { frames } = decodeGif(background.src);
@@ -165,7 +165,7 @@ export default {
     // @ts-expect-error - Invalid types in napi-rs/canvas
     context.putImageData(imageData, 0, 0);
     context.globalAlpha = 0.5;
-    context.drawImage(targetImage, 0, 0, width, height);
+    context.drawImage(targetImage, 0, 0, background.width, background.height);
     gif.addFrame(context);
    }
 
@@ -187,7 +187,7 @@ export default {
      }),
     });
 
-   if (attachment && attachment.width && attachment.height && (attachment.width > 512 || attachment.height > 512)) {
+   if (attachment && attachment && attachment.width && attachment.height && (attachment.width > 512 || attachment.height > 512)) {
     embed.setDescription("⚠️ Your attachment was resized to 510x510px because it was too big.");
    }
 
