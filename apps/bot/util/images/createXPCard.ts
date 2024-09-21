@@ -1,5 +1,5 @@
 import { formatNumber, shortenText } from "@majoexe/util/functions/util";
-import { loadImage, createCanvas } from "@napi-rs/canvas";
+import { loadImage, createCanvas } from "canvas";
 import type { User } from "discord.js";
 
 export function calculateProgress(currentXp: number, requiredXp: number): number {
@@ -15,7 +15,13 @@ export function calculateProgress(currentXp: number, requiredXp: number): number
 }
 
 export async function createXPCard(user: User, xp: { xp: number; xpNeeded: number; level: number }, color: string): Promise<Buffer> {
- const avatar = await loadImage(user.avatar || user.defaultAvatarURL);
+ console.log(
+  user.displayAvatarURL({
+   size: 128,
+   extension: "png",
+  })
+ );
+ const avatar = await loadImage(user.avatar);
  const canvas = createCanvas(934, 282);
  const context = canvas.getContext("2d");
 

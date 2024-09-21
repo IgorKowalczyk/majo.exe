@@ -1,4 +1,4 @@
-import { loadImage, createCanvas, ImageData } from "@napi-rs/canvas";
+import { loadImage, createCanvas, ImageData } from "canvas";
 import decodeGif from "decode-gif";
 import { ApplicationCommandType, ApplicationCommandOptionType, AttachmentBuilder, EmbedBuilder, ChatInputCommandInteraction, User } from "discord.js";
 // @ts-expect-error - No type definitions
@@ -147,6 +147,7 @@ export default {
    const background = await loadImage(`./util/images/files/${subcommand}.gif`);
 
    const gif = new GIFEncoder(background.width, background.height, "neuquant", true);
+
    gif.start();
    gif.setQuality(1);
    gif.setDelay(40);
@@ -156,13 +157,12 @@ export default {
    const canvas = createCanvas(background.width, background.height);
    const context = canvas.getContext("2d");
 
-   const { frames } = decodeGif(background.src);
+   const { frames } = decodeGif(Buffer.from(background.src));
 
    for (let i = 0; i < frames.length; i++) {
     context.globalAlpha = 1;
     const frame = frames[i];
     const imageData = new ImageData(frame.data, background.width, background.height);
-    // @ts-expect-error - Invalid types in napi-rs/canvas
     context.putImageData(imageData, 0, 0);
     context.globalAlpha = 0.5;
     context.drawImage(targetImage, 0, 0, background.width, background.height);
