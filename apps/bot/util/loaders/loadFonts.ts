@@ -1,5 +1,5 @@
 import { readDir } from "@majoexe/util/functions/files/readDir.js";
-import { registerFont } from "canvas";
+import { GlobalFonts } from "@napi-rs/canvas";
 import type { Majobot } from "../..";
 
 export default async function loadFonts(client: Majobot): Promise<void> {
@@ -11,7 +11,7 @@ export default async function loadFonts(client: Majobot): Promise<void> {
    const fontName = font.split("/").pop();
 
    if (fontName) {
-    registerFont(font, { family: fontName.replace(".ttf", "") });
+    GlobalFonts.registerFromPath(font, fontName.replace(".ttf", ""));
    } else {
     console.error("Invalid font path:", font);
    }

@@ -1,5 +1,5 @@
 import { invertColor } from "@majoexe/util/images";
-import { createCanvas } from "canvas";
+import { createCanvas } from "@napi-rs/canvas";
 import { Color, isColor } from "coloras";
 import { ApplicationCommandType, ApplicationCommandOptionType, AttachmentBuilder, EmbedBuilder, ChatInputCommandInteraction, type ColorResolvable } from "discord.js";
 import type { Majobot } from "../..";

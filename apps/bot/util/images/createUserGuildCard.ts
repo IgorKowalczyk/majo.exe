@@ -1,5 +1,5 @@
 import { shortenText } from "@majoexe/util/functions/util";
-import { loadImage, createCanvas } from "canvas";
+import { loadImage, createCanvas } from "@napi-rs/canvas";
 import type { Guild, User } from "discord.js";
 
 export async function createUserGuildCard(user: User, guild: Guild): Promise<Buffer> {

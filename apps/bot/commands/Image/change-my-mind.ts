@@ -1,5 +1,5 @@
 import { getLines } from "@majoexe/util/images";
-import { loadImage, createCanvas } from "canvas";
+import { loadImage, createCanvas } from "@napi-rs/canvas";
 import { ApplicationCommandType, ApplicationCommandOptionType, AttachmentBuilder, EmbedBuilder, ChatInputCommandInteraction } from "discord.js";
 import type { Majobot } from "../..";
 import type { GuildSettings } from "../../util/types/Command";

@@ -1,4 +1,4 @@
-import { loadImage, createCanvas } from "canvas";
+import { loadImage, createCanvas } from "@napi-rs/canvas";
 import { ApplicationCommandType, ApplicationCommandOptionType, AttachmentBuilder, EmbedBuilder, ChatInputCommandInteraction, User } from "discord.js";
 import type { Majobot } from "../..";
 import type { GuildSettings } from "../../util/types/Command";

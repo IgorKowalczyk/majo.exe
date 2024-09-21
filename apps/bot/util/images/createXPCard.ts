@@ -1,5 +1,5 @@
 import { formatNumber, shortenText } from "@majoexe/util/functions/util";
-import { loadImage, createCanvas } from "canvas";
+import { loadImage, createCanvas } from "@napi-rs/canvas";
 import type { User } from "discord.js";
 
 export function calculateProgress(currentXp: number, requiredXp: number): number {

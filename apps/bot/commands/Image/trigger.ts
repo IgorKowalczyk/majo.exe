@@ -1,4 +1,4 @@
-import { loadImage, createCanvas } from "canvas";
+import { loadImage, createCanvas } from "@napi-rs/canvas";
 import { ApplicationCommandType, ApplicationCommandOptionType, AttachmentBuilder, EmbedBuilder, ChatInputCommandInteraction, User } from "discord.js";
 // @ts-expect-error - No type definitions
 import GIFEncoder from "gif-encoder-2";
@@ -52,6 +52,8 @@ export default {
 
    const targetImage = await loadImage(image.split("?")[0]);
    const background = await loadImage("./util/images/files/triggered.png");
+
+   // get buffer from background
 
    const gif = new GIFEncoder(256, 310, "neuquant", true);
 
