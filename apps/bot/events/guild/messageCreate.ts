@@ -135,6 +135,18 @@ export async function messageCreate(client: Majobot, message: Message): Promise<
   return;
  }
 
+ await prismaClient.guildXp.updateMany({
+  where: {
+   guildId: message.guild.id,
+   userId: message.author.id,
+  },
+  data: {
+   xp: {
+    increment: random,
+   },
+  },
+ });
+
  if (!settings.enableXPLevelUpMessage) return;
 
  const level = Math.floor(0.1 * Math.sqrt(xp.xp));
@@ -167,16 +179,4 @@ export async function messageCreate(client: Majobot, message: Message): Promise<
 
   await message.channel.send({ embeds: [embed], files: [attachment] });
  }
-
- await prismaClient.guildXp.updateMany({
-  where: {
-   guildId: message.guild.id,
-   userId: message.author.id,
-  },
-  data: {
-   xp: {
-    increment: random,
-   },
-  },
- });
 }

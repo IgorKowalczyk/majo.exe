@@ -20,22 +20,6 @@ export default {
    defaultMemberPermissions: [PermissionFlagsBits.Administrator],
    options: [
     {
-     name: "action",
-     description: "The action you want to perform",
-     required: true,
-     type: ApplicationCommandOptionType.String,
-     choices: [
-      {
-       name: "Enable",
-       value: "enable",
-      },
-      {
-       name: "Disable",
-       value: "disable",
-      },
-     ],
-    },
-    {
      name: "type",
      description: "The type of XP settings you want to enable",
      required: true,
@@ -48,6 +32,22 @@ export default {
       {
        name: "Gaining XP",
        value: "gaining",
+      },
+     ],
+    },
+    {
+     name: "action",
+     description: "The action you want to perform",
+     required: true,
+     type: ApplicationCommandOptionType.String,
+     choices: [
+      {
+       name: "Enable",
+       value: "enable",
+      },
+      {
+       name: "Disable",
+       value: "disable",
       },
      ],
     },
