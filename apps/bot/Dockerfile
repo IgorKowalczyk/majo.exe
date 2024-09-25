@@ -1,5 +1,4 @@
-# Base image for building
-FROM debian:bookworm-slim AS builder
+FROM debian:bookworm-slim
 
 ARG APP_PKG_NAME=@majoexe/bot
 
@@ -21,9 +20,9 @@ ENV PATH="$PNPM_HOME:$PATH"
 WORKDIR /app
 COPY . .
 
-RUN apt-get -y update && \
-  apt-get -y upgrade && \
-  apt-get install -y git curl clang \
+RUN apt -y update && \
+  apt -y upgrade && \
+  apt install -y git curl clang \
   # libaom
   yasm cmake \
   # libheif
@@ -61,21 +60,21 @@ RUN pnpm turbo telemetry disable
 RUN pnpm run prisma:generate
 
 # building libwebp
-RUN echo "build libwebp" && git clone -b "v$LIB_WEBP_VERSION" --single-branch --depth 1 https://chromium.googlesource.com/webm/libwebp && cd libwebp && \
+RUN && git clone -b "v$LIB_WEBP_VERSION" --single-branch --depth 1 https://chromium.googlesource.com/webm/libwebp && cd libwebp && \
   cmake -H. -Bbuild -GNinja -DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIBS=ON && \
   cmake --build build && \
   cmake --install build && \
   ldconfig && cd .. && rm -rf libwebp
 
 # building libaom
-RUN echo "build libaom" &&  git clone -b "v$LIB_AOM_VERSION" --single-branch --depth 1 https://aomedia.googlesource.com/aom && cd aom && \
+RUN &&  git clone -b "v$LIB_AOM_VERSION" --single-branch --depth 1 https://aomedia.googlesource.com/aom && cd aom && \
   cmake -H. -Bbuild -GNinja -DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIBS=ON -DENABLE_DOCS=OFF -DENABLE_TESTDATA=OFF -DENABLE_TESTS=OFF -DENABLE_TOOLS=OFF && \
   cmake --build build && \
   cmake --install build && \
   ldconfig && cd .. && rm -rf aom
 
 # building libheif
-RUN echo "build libheif" && curl -fsL https://github.com/strukturag/libheif/releases/download/v${LIB_HEIF_VERSION}/libheif-${LIB_HEIF_VERSION}.tar.gz -o libheif.tar.gz && \
+RUN && curl -fsL https://github.com/strukturag/libheif/releases/download/v${LIB_HEIF_VERSION}/libheif-${LIB_HEIF_VERSION}.tar.gz -o libheif.tar.gz && \
   tar -xzvf libheif.tar.gz && cd libheif-${LIB_HEIF_VERSION} && \
   cmake -H. -Bbuild -GNinja -DCMAKE_BUILD_TYPE=Release -DWITH_RAV1E=OFF -DWITH_DAV1D=OFF -DWITH_SvtEnc=OFF && \
   cmake --build build && \
@@ -83,12 +82,12 @@ RUN echo "build libheif" && curl -fsL https://github.com/strukturag/libheif/rele
   ldconfig && cd .. && rm -rf libheif-${LIB_HEIF_VERSION} libheif.tar.gz
 
 # building imagemagick
-RUN echo "build imagemagick" && git clone -b "$IM_VERSION" --single-branch --depth 1 https://github.com/ImageMagick/ImageMagick.git && cd ImageMagick && \
+RUN git clone -b "$IM_VERSION" --single-branch --depth 1 https://github.com/ImageMagick/ImageMagick.git && cd ImageMagick && \
   ./configure --without-magick-plus-plus --enable-static --disable-docs --disable-dependency-tracking --with-modules && make -j$(nproc) && make install && ldconfig && cd .. && \
   rm -rf ImageMagick
 
 # building libvips
-RUN echo "build libvips" && curl -fsL https://github.com/libvips/libvips/releases/download/v${LIB_VIPS_VERSION}/vips-${LIB_VIPS_VERSION}.tar.xz -o libvips.tar.xz && \
+RUN curl -fsL https://github.com/libvips/libvips/releases/download/v${LIB_VIPS_VERSION}/vips-${LIB_VIPS_VERSION}.tar.xz -o libvips.tar.xz && \
   tar -xvf libvips.tar.xz && cd vips-${LIB_VIPS_VERSION} && \
   meson setup build && \
   cd build && meson compile && meson test && meson install && cd ../.. && \
@@ -98,10 +97,5 @@ RUN echo "build libvips" && curl -fsL https://github.com/libvips/libvips/release
 RUN apt-get remove --autoremove --purge -y bc gtk-doc-tools libde265-dev libfontconfig1-dev libfreetype6-dev libgif-dev libgirepository1.0-dev libsdl1.2-dev libtiff5-dev libtool libxml2-utils meson ninja-build swig yasm
 RUN apt-get -qq clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /var/cache/*
 
-RUN vips --version
-
-# Final image
-COPY . .
-
 WORKDIR /app/apps/bot
-ENTRYPOINT ["pnpm", "run", "deploy"]
+ENTRYPOINT ["sh", "-c", "vips --version && pnpm run deploy"]
