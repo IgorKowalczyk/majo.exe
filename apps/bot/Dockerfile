@@ -18,8 +18,8 @@ ENV PNPM_HOME="/root/.local/share/pnpm"
 ENV PATH="$PNPM_HOME:$PATH"
 
 WORKDIR /app
-COPY . .
 
+# Install dependencies
 RUN apt -y update && \
   apt -y upgrade && \
   apt install -y git curl clang \
@@ -54,27 +54,29 @@ ENV PATH="/root/.nvm/versions/node/v${NODE_VERSION}/bin/:${PATH}"
 RUN corepack enable
 RUN corepack prepare pnpm@latest --activate
 
+COPY . .
+
 RUN pnpm install -r --prod --frozen-lockfile
 RUN pnpm turbo telemetry disable
 
 RUN pnpm run prisma:generate
 
 # building libwebp
-RUN && git clone -b "v$LIB_WEBP_VERSION" --single-branch --depth 1 https://chromium.googlesource.com/webm/libwebp && cd libwebp && \
+RUN git clone -b "v$LIB_WEBP_VERSION" --single-branch --depth 1 https://chromium.googlesource.com/webm/libwebp && cd libwebp && \
   cmake -H. -Bbuild -GNinja -DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIBS=ON && \
   cmake --build build && \
   cmake --install build && \
   ldconfig && cd .. && rm -rf libwebp
 
 # building libaom
-RUN &&  git clone -b "v$LIB_AOM_VERSION" --single-branch --depth 1 https://aomedia.googlesource.com/aom && cd aom && \
+RUN git clone -b "v$LIB_AOM_VERSION" --single-branch --depth 1 https://aomedia.googlesource.com/aom && cd aom && \
   cmake -H. -Bbuild -GNinja -DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIBS=ON -DENABLE_DOCS=OFF -DENABLE_TESTDATA=OFF -DENABLE_TESTS=OFF -DENABLE_TOOLS=OFF && \
   cmake --build build && \
   cmake --install build && \
   ldconfig && cd .. && rm -rf aom
 
 # building libheif
-RUN && curl -fsL https://github.com/strukturag/libheif/releases/download/v${LIB_HEIF_VERSION}/libheif-${LIB_HEIF_VERSION}.tar.gz -o libheif.tar.gz && \
+RUN curl -fsL https://github.com/strukturag/libheif/releases/download/v${LIB_HEIF_VERSION}/libheif-${LIB_HEIF_VERSION}.tar.gz -o libheif.tar.gz && \
   tar -xzvf libheif.tar.gz && cd libheif-${LIB_HEIF_VERSION} && \
   cmake -H. -Bbuild -GNinja -DCMAKE_BUILD_TYPE=Release -DWITH_RAV1E=OFF -DWITH_DAV1D=OFF -DWITH_SvtEnc=OFF && \
   cmake --build build && \
