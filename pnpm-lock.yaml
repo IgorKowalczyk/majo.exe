@@ -83,10 +83,10 @@ importers:
         version: 1.0.1
       discord-giveaways:
         specifier: 6.0.1
-        version: 6.0.1(discord.js@14.16.2)
+        version: 6.0.1(discord.js@14.16.3)
       discord.js:
-        specifier: 14.16.2
-        version: 14.16.2
+        specifier: 14.16.3
+        version: 14.16.3
       dotenv:
         specifier: 16.4.5
         version: 16.4.5
@@ -361,8 +361,8 @@ importers:
         specifier: 0.37.101
         version: 0.37.101
       discord.js:
-        specifier: 14.16.2
-        version: 14.16.2
+        specifier: 14.16.3
+        version: 14.16.3
       ms:
         specifier: 2.1.3
         version: 2.1.3
@@ -3236,6 +3236,9 @@ packages:
     resolution: {integrity: sha512-WkrWp9GR4KXfKGYzOLmTuGVi1UWFfws377n9cc55/tb6DuqyF6pcQ5AbiHEshaDpY9v6oaSr2XCDidGmMwdzIA==}
     engines: {node: '>=8'}
 
+  discord-api-types@0.37.100:
+    resolution: {integrity: sha512-a8zvUI0GYYwDtScfRd/TtaNBDTXwP5DiDVX7K5OmE+DRT57gBqKnwtOC5Ol8z0mRW8KQfETIgiB8U0YZ9NXiCA==}
+
   discord-api-types@0.37.101:
     resolution: {integrity: sha512-2wizd94t7G3A8U5Phr3AiuL4gSvhqistDwWnlk1VLTit8BI1jWUncFqFQNdPbHqS3661+Nx/iEyIwtVjPuBP3w==}
 
@@ -3251,8 +3254,8 @@ packages:
     peerDependencies:
       discord.js: '>=14.0.0'
 
-  discord.js@14.16.2:
-    resolution: {integrity: sha512-VGNi9WE2dZIxYM8/r/iatQQ+3LT8STW4hhczJOwm+DBeHq66vsKDCk8trChNCB01sMO9crslYuEMeZl2d7r3xw==}
+  discord.js@14.16.3:
+    resolution: {integrity: sha512-EPCWE9OkA9DnFFNrO7Kl1WHHDYFXu3CNVFJg63bfU7hVtjZGyhShwZtSBImINQRWxWP2tgo2XI+QhdXx28r0aA==}
     engines: {node: '>=18'}
 
   dlv@1.1.3:
@@ -10058,19 +10061,21 @@ snapshots:
     dependencies:
       path-type: 4.0.0
 
+  discord-api-types@0.37.100: {}
+
   discord-api-types@0.37.101: {}
 
   discord-api-types@0.37.83: {}
 
   discord-api-types@0.37.97: {}
 
-  discord-giveaways@6.0.1(discord.js@14.16.2):
+  discord-giveaways@6.0.1(discord.js@14.16.3):
     dependencies:
       deepmerge-ts: 4.3.0
-      discord.js: 14.16.2
+      discord.js: 14.16.3
       serialize-javascript: 6.0.2
 
-  discord.js@14.16.2:
+  discord.js@14.16.3:
     dependencies:
       '@discordjs/builders': 1.9.0
       '@discordjs/collection': 1.5.3
@@ -10079,7 +10084,7 @@ snapshots:
       '@discordjs/util': 1.1.1
       '@discordjs/ws': 1.1.1
       '@sapphire/snowflake': 3.5.3
-      discord-api-types: 0.37.97
+      discord-api-types: 0.37.100
       fast-deep-equal: 3.1.3
       lodash.snakecase: 4.1.1
       tslib: 2.7.0
