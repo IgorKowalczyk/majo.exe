@@ -131,8 +131,8 @@ importers:
         specifier: 13.12.2
         version: 13.12.2
       node-addon-api:
-        specifier: 8.1.0
-        version: 8.1.0
+        specifier: 8.2.0
+        version: 8.2.0
       node-gyp:
         specifier: 10.2.0
         version: 10.2.0
@@ -4913,8 +4913,8 @@ packages:
   node-abort-controller@3.1.1:
     resolution: {integrity: sha512-AGK2yQKIjRuqnc6VkX2Xj5d+QW8xZ87pa1UK6yA6ouUyuxfHuMP6umE5QK7UmTeOAymo+Zx1Fxiuw9rVx8taHQ==}
 
-  node-addon-api@8.1.0:
-    resolution: {integrity: sha512-yBY+qqWSv3dWKGODD6OGE6GnTX7Q2r+4+DfpqxHSHh8x0B4EKP9+wVGLS6U/AM1vxSNNmUEuIV5EGhYwPpfOwQ==}
+  node-addon-api@8.2.0:
+    resolution: {integrity: sha512-qnyuI2ROiCkye42n9Tj5aX1ns7rzj6n7zW1XReSnLSL9v/vbLeR6fJq6PU27YU/ICfYw6W7Ouk/N7cysWu/hlw==}
     engines: {node: ^18 || ^20 || >= 21}
 
   node-dir@0.1.17:
@@ -12352,7 +12352,7 @@ snapshots:
 
   node-abort-controller@3.1.1: {}
 
-  node-addon-api@8.1.0: {}
+  node-addon-api@8.2.0: {}
 
   node-dir@0.1.17:
     dependencies:
