@@ -38,7 +38,7 @@
     "@igorkowalczyk/eslint-config": "3.0.0-beta.11",
     "@igorkowalczyk/prettier-config": "3.0.0-beta.11",
     "@types/node": "22.7.4",
-    "eslint": "9.11.1",
+    "eslint": "9.12.0",
     "eslint-plugin-turbo": "2.1.3",
     "prettier": "3.3.3",
     "typescript": "5.6.2"
