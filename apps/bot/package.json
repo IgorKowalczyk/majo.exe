@@ -40,7 +40,7 @@
     "validator": "13.12.0"
   },
   "devDependencies": {
-    "@types/figlet": "1.5.8",
+    "@types/figlet": "1.7.0",
     "@types/jsdom": "21.1.7",
     "@types/ms": "0.7.34",
     "@types/qrcode": "1.5.5",
