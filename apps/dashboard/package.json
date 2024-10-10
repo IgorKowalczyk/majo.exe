@@ -15,7 +15,7 @@
     "lint:fix": "eslint . --fix"
   },
   "dependencies": {
-    "@headlessui/react": "2.1.9",
+    "@headlessui/react": "2.1.10",
     "@headlessui/tailwindcss": "0.2.1",
     "@majoexe/config": "workspace:*",
     "@majoexe/database": "workspace:*",
