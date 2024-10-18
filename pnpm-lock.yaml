@@ -155,17 +155,17 @@ importers:
         specifier: workspace:*
         version: link:../../packages/utils
       '@mdx-js/loader':
-        specifier: 3.0.1
-        version: 3.0.1(webpack@5.94.0)
+        specifier: 3.1.0
+        version: 3.1.0(webpack@5.94.0)
       '@mdx-js/react':
-        specifier: 3.0.1
-        version: 3.0.1(@types/react@18.3.8)(react@18.3.1)
+        specifier: 3.1.0
+        version: 3.1.0(@types/react@18.3.8)(react@18.3.1)
       '@next-auth/prisma-adapter':
         specifier: 1.0.7
         version: 1.0.7(@prisma/client@5.21.1(prisma@5.21.1))(next-auth@4.24.8(next@14.2.15(@babel/core@7.25.2)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1))
       '@next/mdx':
         specifier: 14.2.15
-        version: 14.2.15(@mdx-js/loader@3.0.1(webpack@5.94.0))(@mdx-js/react@3.0.1(@types/react@18.3.8)(react@18.3.1))
+        version: 14.2.15(@mdx-js/loader@3.1.0(webpack@5.94.0))(@mdx-js/react@3.1.0(@types/react@18.3.8)(react@18.3.1))
       '@odiffey/discord-markdown':
         specifier: 3.3.0
         version: 3.3.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
@@ -1563,16 +1563,19 @@ packages:
     resolution: {integrity: sha512-Yhlar6v9WQgUp/He7BdgzOz8lqMQ8sU+jkCq7Wx8Myc5YFJLbEe7lgui/V7G1qB1DJykHSGwreceSaD60Y0PUQ==}
     hasBin: true
 
-  '@mdx-js/loader@3.0.1':
-    resolution: {integrity: sha512-YbYUt7YyEOdFxhyuCWmLKf5vKhID/hJAojEUnheJk4D8iYVLFQw+BAoBWru/dHGch1omtmZOPstsmKPyBF68Tw==}
+  '@mdx-js/loader@3.1.0':
+    resolution: {integrity: sha512-xU/lwKdOyfXtQGqn3VnJjlDrmKXEvMi1mgYxVmukEUtVycIz1nh7oQ40bKTd4cA7rLStqu0740pnhGYxGoqsCg==}
     peerDependencies:
       webpack: '>=5'
+    peerDependenciesMeta:
+      webpack:
+        optional: true
 
   '@mdx-js/mdx@3.0.1':
     resolution: {integrity: sha512-eIQ4QTrOWyL3LWEe/bu6Taqzq2HQvHcyTMaOrI95P2/LmJE7AsfPfgJGuFLPVqBUE1BC1rik3VIhU+s9u72arA==}
 
-  '@mdx-js/react@3.0.1':
-    resolution: {integrity: sha512-9ZrPIU4MGf6et1m1ov3zKf+q9+deetI51zprKB1D/z3NOb+rUxxtEl3mCjW5wTGh6VhRdwPueh1oRzi6ezkA8A==}
+  '@mdx-js/react@3.1.0':
+    resolution: {integrity: sha512-QjHtSaoameoalGnKDT3FoIl4+9RwyTmo9ZJGBdLOks/YOiWHoRDI3PUwEzOE7kEmGcV3AFcp9K6dYu9rEuKLAQ==}
     peerDependencies:
       '@types/react': '>=16'
       react: '>=16'
@@ -2141,9 +2144,6 @@ packages:
 
   '@types/estree-jsx@1.0.5':
     resolution: {integrity: sha512-52CcUVNFyfb1A2ALocQw/Dd1BQFNmSdkuC3BkZ6iqhdMfQz7JWOFRuJFloOzjk+6WijU56m9oKXFAXc7o3Towg==}
-
-  '@types/estree@1.0.5':
-    resolution: {integrity: sha512-/kYRxGDLWzHOB7q+wtSUQlFrtcdUccpfy+X+9iMBpHK8QLLhx2wIPYuS5DYtR9Wa/YlZAbIovy7qVdB1Aq6Lyw==}
 
   '@types/estree@1.0.6':
     resolution: {integrity: sha512-AYnb1nQyY49te+VRAVgmzfcgjYS91mY5P0TKUDCLEM+gNnA+3T6rWITXRLYCpahpqSQbN5cE+gHpnPyXjHWxcw==}
@@ -8078,17 +8078,18 @@ snapshots:
       - supports-color
     optional: true
 
-  '@mdx-js/loader@3.0.1(webpack@5.94.0)':
+  '@mdx-js/loader@3.1.0(webpack@5.94.0)':
     dependencies:
       '@mdx-js/mdx': 3.0.1
       source-map: 0.7.4
+    optionalDependencies:
       webpack: 5.94.0
     transitivePeerDependencies:
       - supports-color
 
   '@mdx-js/mdx@3.0.1':
     dependencies:
-      '@types/estree': 1.0.5
+      '@types/estree': 1.0.6
       '@types/estree-jsx': 1.0.5
       '@types/hast': 3.0.4
       '@types/mdx': 2.0.13
@@ -8114,7 +8115,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@mdx-js/react@3.0.1(@types/react@18.3.8)(react@18.3.1)':
+  '@mdx-js/react@3.1.0(@types/react@18.3.8)(react@18.3.1)':
     dependencies:
       '@types/mdx': 2.0.13
       '@types/react': 18.3.8
@@ -8181,12 +8182,12 @@ snapshots:
     dependencies:
       glob: 10.3.10
 
-  '@next/mdx@14.2.15(@mdx-js/loader@3.0.1(webpack@5.94.0))(@mdx-js/react@3.0.1(@types/react@18.3.8)(react@18.3.1))':
+  '@next/mdx@14.2.15(@mdx-js/loader@3.1.0(webpack@5.94.0))(@mdx-js/react@3.1.0(@types/react@18.3.8)(react@18.3.1))':
     dependencies:
       source-map: 0.7.4
     optionalDependencies:
-      '@mdx-js/loader': 3.0.1(webpack@5.94.0)
-      '@mdx-js/react': 3.0.1(@types/react@18.3.8)(react@18.3.1)
+      '@mdx-js/loader': 3.1.0(webpack@5.94.0)
+      '@mdx-js/react': 3.1.0(@types/react@18.3.8)(react@18.3.1)
 
   '@next/swc-darwin-arm64@14.2.15':
     optional: true
@@ -8863,8 +8864,6 @@ snapshots:
     dependencies:
       '@types/estree': 1.0.6
 
-  '@types/estree@1.0.5': {}
-
   '@types/estree@1.0.6': {}
 
   '@types/figlet@1.7.0': {}
@@ -9063,20 +9062,26 @@ snapshots:
     dependencies:
       '@webassemblyjs/helper-numbers': 1.11.6
       '@webassemblyjs/helper-wasm-bytecode': 1.11.6
+    optional: true
 
-  '@webassemblyjs/floating-point-hex-parser@1.11.6': {}
+  '@webassemblyjs/floating-point-hex-parser@1.11.6':
+    optional: true
 
-  '@webassemblyjs/helper-api-error@1.11.6': {}
+  '@webassemblyjs/helper-api-error@1.11.6':
+    optional: true
 
-  '@webassemblyjs/helper-buffer@1.12.1': {}
+  '@webassemblyjs/helper-buffer@1.12.1':
+    optional: true
 
   '@webassemblyjs/helper-numbers@1.11.6':
     dependencies:
       '@webassemblyjs/floating-point-hex-parser': 1.11.6
       '@webassemblyjs/helper-api-error': 1.11.6
       '@xtuc/long': 4.2.2
+    optional: true
 
-  '@webassemblyjs/helper-wasm-bytecode@1.11.6': {}
+  '@webassemblyjs/helper-wasm-bytecode@1.11.6':
+    optional: true
 
   '@webassemblyjs/helper-wasm-section@1.12.1':
     dependencies:
@@ -9084,16 +9089,20 @@ snapshots:
       '@webassemblyjs/helper-buffer': 1.12.1
       '@webassemblyjs/helper-wasm-bytecode': 1.11.6
       '@webassemblyjs/wasm-gen': 1.12.1
+    optional: true
 
   '@webassemblyjs/ieee754@1.11.6':
     dependencies:
       '@xtuc/ieee754': 1.2.0
+    optional: true
 
   '@webassemblyjs/leb128@1.11.6':
     dependencies:
       '@xtuc/long': 4.2.2
+    optional: true
 
-  '@webassemblyjs/utf8@1.11.6': {}
+  '@webassemblyjs/utf8@1.11.6':
+    optional: true
 
   '@webassemblyjs/wasm-edit@1.12.1':
     dependencies:
@@ -9105,6 +9114,7 @@ snapshots:
       '@webassemblyjs/wasm-opt': 1.12.1
       '@webassemblyjs/wasm-parser': 1.12.1
       '@webassemblyjs/wast-printer': 1.12.1
+    optional: true
 
   '@webassemblyjs/wasm-gen@1.12.1':
     dependencies:
@@ -9113,6 +9123,7 @@ snapshots:
       '@webassemblyjs/ieee754': 1.11.6
       '@webassemblyjs/leb128': 1.11.6
       '@webassemblyjs/utf8': 1.11.6
+    optional: true
 
   '@webassemblyjs/wasm-opt@1.12.1':
     dependencies:
@@ -9120,6 +9131,7 @@ snapshots:
       '@webassemblyjs/helper-buffer': 1.12.1
       '@webassemblyjs/wasm-gen': 1.12.1
       '@webassemblyjs/wasm-parser': 1.12.1
+    optional: true
 
   '@webassemblyjs/wasm-parser@1.12.1':
     dependencies:
@@ -9129,15 +9141,19 @@ snapshots:
       '@webassemblyjs/ieee754': 1.11.6
       '@webassemblyjs/leb128': 1.11.6
       '@webassemblyjs/utf8': 1.11.6
+    optional: true
 
   '@webassemblyjs/wast-printer@1.12.1':
     dependencies:
       '@webassemblyjs/ast': 1.12.1
       '@xtuc/long': 4.2.2
+    optional: true
 
-  '@xtuc/ieee754@1.2.0': {}
+  '@xtuc/ieee754@1.2.0':
+    optional: true
 
-  '@xtuc/long@4.2.2': {}
+  '@xtuc/long@4.2.2':
+    optional: true
 
   abbrev@1.1.1:
     optional: true
@@ -9156,6 +9172,7 @@ snapshots:
   acorn-import-attributes@1.9.5(acorn@8.12.1):
     dependencies:
       acorn: 8.12.1
+    optional: true
 
   acorn-jsx@5.3.2(acorn@8.12.1):
     dependencies:
@@ -9188,6 +9205,7 @@ snapshots:
   ajv-keywords@3.5.2(ajv@6.12.6):
     dependencies:
       ajv: 6.12.6
+    optional: true
 
   ajv@6.12.6:
     dependencies:
@@ -9595,7 +9613,8 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  chrome-trace-event@1.0.4: {}
+  chrome-trace-event@1.0.4:
+    optional: true
 
   chromium-edge-launcher@0.2.0:
     dependencies:
@@ -10199,6 +10218,7 @@ snapshots:
     dependencies:
       graceful-fs: 4.2.11
       tapable: 2.2.1
+    optional: true
 
   entities@4.5.0: {}
 
@@ -10305,7 +10325,8 @@ snapshots:
       iterator.prototype: 1.1.2
       safe-array-concat: 1.1.2
 
-  es-module-lexer@1.5.4: {}
+  es-module-lexer@1.5.4:
+    optional: true
 
   es-object-atoms@1.0.0:
     dependencies:
@@ -10610,6 +10631,7 @@ snapshots:
     dependencies:
       esrecurse: 4.3.0
       estraverse: 4.3.0
+    optional: true
 
   eslint-scope@8.0.2:
     dependencies:
@@ -10691,7 +10713,8 @@ snapshots:
     dependencies:
       estraverse: 5.3.0
 
-  estraverse@4.3.0: {}
+  estraverse@4.3.0:
+    optional: true
 
   estraverse@5.3.0: {}
 
@@ -10731,7 +10754,8 @@ snapshots:
 
   eventemitter3@4.0.7: {}
 
-  events@3.3.0: {}
+  events@3.3.0:
+    optional: true
 
   execa@5.1.1:
     dependencies:
@@ -10952,7 +10976,8 @@ snapshots:
     dependencies:
       is-glob: 4.0.3
 
-  glob-to-regexp@0.4.1: {}
+  glob-to-regexp@0.4.1:
+    optional: true
 
   glob@10.3.10:
     dependencies:
@@ -11478,6 +11503,7 @@ snapshots:
       '@types/node': 22.7.6
       merge-stream: 2.0.0
       supports-color: 8.1.1
+    optional: true
 
   jest-worker@29.7.0:
     dependencies:
@@ -11640,7 +11666,8 @@ snapshots:
 
   lines-and-columns@1.2.4: {}
 
-  loader-runner@4.3.0: {}
+  loader-runner@4.3.0:
+    optional: true
 
   locate-path@3.0.0:
     dependencies:
@@ -13251,6 +13278,7 @@ snapshots:
       '@types/json-schema': 7.0.15
       ajv: 6.12.6
       ajv-keywords: 3.5.2(ajv@6.12.6)
+    optional: true
 
   selfsigned@2.4.1:
     dependencies:
@@ -13668,6 +13696,7 @@ snapshots:
       serialize-javascript: 6.0.2
       terser: 5.33.0
       webpack: 5.94.0
+    optional: true
 
   terser@5.33.0:
     dependencies:
@@ -13983,6 +14012,7 @@ snapshots:
     dependencies:
       glob-to-regexp: 0.4.1
       graceful-fs: 4.2.11
+    optional: true
 
   wcwidth@1.0.1:
     dependencies:
@@ -14013,7 +14043,8 @@ snapshots:
       - bufferutil
       - utf-8-validate
 
-  webpack-sources@3.2.3: {}
+  webpack-sources@3.2.3:
+    optional: true
 
   webpack@5.94.0:
     dependencies:
@@ -14044,6 +14075,7 @@ snapshots:
       - '@swc/core'
       - esbuild
       - uglify-js
+    optional: true
 
   whatwg-encoding@3.1.1:
     dependencies:
