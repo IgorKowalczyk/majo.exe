@@ -31,8 +31,8 @@ importers:
         specifier: 9.13.0
         version: 9.13.0(jiti@1.21.6)
       eslint-plugin-turbo:
-        specifier: 2.2.2
-        version: 2.2.2(eslint@9.13.0(jiti@1.21.6))
+        specifier: 2.2.3
+        version: 2.2.3(eslint@9.13.0(jiti@1.21.6))
       prettier:
         specifier: 3.3.3
         version: 3.3.3
@@ -3571,8 +3571,8 @@ packages:
     peerDependencies:
       tailwindcss: ^3.4.0
 
-  eslint-plugin-turbo@2.2.2:
-    resolution: {integrity: sha512-M7MK21GMoRAy8siU6xT+xJPpdxvR0UP1QbnZjkQI9A65B2h3qVNAU2QfIb2EwwY95eK6dPlfszCm4rbaCvVuPA==}
+  eslint-plugin-turbo@2.2.3:
+    resolution: {integrity: sha512-LHt35VwxthdGVO6hQRfvmFb6ee8/exAzAYWCy4o87Bnp7urltP8qg7xMd4dPSLAhtfnI2xSo1WgeVaR3MeItxw==}
     peerDependencies:
       eslint: '>6.6.0'
 
@@ -10614,7 +10614,7 @@ snapshots:
       postcss: 8.4.47
       tailwindcss: 3.4.14
 
-  eslint-plugin-turbo@2.2.2(eslint@9.13.0(jiti@1.21.6)):
+  eslint-plugin-turbo@2.2.3(eslint@9.13.0(jiti@1.21.6)):
     dependencies:
       dotenv: 16.0.3
       eslint: 9.13.0(jiti@1.21.6)
