@@ -21,7 +21,8 @@ export const metadata = {
  description: "Automatically moderate your server, block bad words, links and other things.",
 };
 
-export default async function AutomodPage({ params }) {
+export default async function AutomodPage(props) {
+ const params = await props.params;
  const session = await getSession();
  if (!session || !session.access_token) redirect("/auth/login");
  const { server } = params;

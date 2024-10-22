@@ -17,7 +17,8 @@ import { Emojis } from "@/components/DiscordEmojis";
 import { Header2 } from "@/components/Headers";
 import { Icons, iconVariants } from "@/components/Icons";
 
-export async function generateMetadata({ params }) {
+export async function generateMetadata(props) {
+ const params = await props.params;
  const { id, server } = params;
 
  const guild = await prismaClient.guild.findFirst({
@@ -52,7 +53,8 @@ export async function generateMetadata({ params }) {
  };
 }
 
-export default async function UserPage({ params }) {
+export default async function UserPage(props) {
+ const params = await props.params;
  const session = await getSession();
  if (!session || !session.access_token) redirect("/auth/login");
  const { server, id } = params;

@@ -3,7 +3,8 @@ import { getServer, getGuildMember } from "@majoexe/util/functions/guild";
 import { getSession } from "lib/session";
 import { NextResponse } from "next/server";
 
-export async function DELETE(request, { params }) {
+export async function DELETE(request, props) {
+ const params = await props.params;
  try {
   const { serverId } = params;
   const { warnId } = params;

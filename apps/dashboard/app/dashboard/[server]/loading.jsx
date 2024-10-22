@@ -14,7 +14,6 @@ export default function Loading() {
      <TextSkeleton className="mt-2 !h-5 w-64 opacity-60" />
     </div>
    </div>
-
    <div className="mb-4 grid grid-cols-1 gap-0 md:grid-cols-1 md:gap-4 lg:grid-cols-2 xl:grid-cols-3">
     <div className="mt-4 overflow-auto rounded-lg border border-neutral-800 bg-background-secondary p-4">
      <div className="flex flex-row items-center justify-between">
@@ -64,7 +63,6 @@ export default function Loading() {
      </div>
     </div>
    </div>
-
    <div className="mt-6 block gap-6 lg:flex lg:items-start">
     <div className="flex flex-col justify-start gap-6 overflow-x-scroll [flex:3_1_0]">
      <Block>

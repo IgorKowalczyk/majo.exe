@@ -10,7 +10,8 @@ import Image from "@/components/client/shared/Image";
 import { Tooltip } from "@/components/client/shared/Tooltip";
 import { Header1, Header4, Header5 } from "@/components/Headers";
 
-export default async function CustomOverviewPage({ params }) {
+export default async function CustomOverviewPage(props) {
+ const params = await props.params;
  const { server } = params;
  const guild = await prismaClient.guild.findFirst({
   where: {
@@ -139,7 +140,8 @@ export default async function CustomOverviewPage({ params }) {
  );
 }
 
-export async function generateMetadata({ params }) {
+export async function generateMetadata(props) {
+ const params = await props.params;
  const { server } = params;
  const guild = await prismaClient.guild.findFirst({
   where: {

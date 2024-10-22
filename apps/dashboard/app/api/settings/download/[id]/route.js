@@ -3,7 +3,8 @@ import { getServer, getGuildMember } from "@majoexe/util/functions/guild";
 import { getSession } from "lib/session";
 import { NextResponse } from "next/server";
 
-export async function GET(request, { params }) {
+export async function GET(request, props) {
+ const params = await props.params;
  try {
   const session = await getSession();
   const start = Date.now();

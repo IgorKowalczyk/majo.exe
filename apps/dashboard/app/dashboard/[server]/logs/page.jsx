@@ -13,7 +13,8 @@ export const metadata = {
  description: "View the logs of your server.",
 };
 
-export default async function LogsPage({ params }) {
+export default async function LogsPage(props) {
+ const params = await props.params;
  const session = await getSession();
  if (!session || !session.access_token) redirect("/auth/login");
  const { server } = params;

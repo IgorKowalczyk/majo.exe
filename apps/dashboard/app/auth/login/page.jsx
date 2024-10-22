@@ -12,7 +12,8 @@ export const metadata = {
  description: "Login to your account",
 };
 
-export default async function LoginPage({ searchParams }) {
+export default async function LoginPage(props) {
+ const searchParams = await props.searchParams;
  const user = await getSession();
  if (user) return redirect("/");
 

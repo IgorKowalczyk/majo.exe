@@ -1,7 +1,8 @@
 import { dashboardConfig } from "@majoexe/config";
 import { SideNav } from "@/components/nav/client/SideNav";
 
-export function generateMetadata({ params }) {
+export async function generateMetadata(props) {
+ const params = await props.params;
  const { server } = params;
 
  return {
@@ -21,7 +22,11 @@ export function generateMetadata({ params }) {
  };
 }
 
-export default function Layout({ children, params }) {
+export default async function Layout(props) {
+ const params = await props.params;
+
+ const { children } = props;
+
  return (
   <>
    <SideNav server={params.server} />

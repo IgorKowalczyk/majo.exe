@@ -16,7 +16,8 @@ export const metadata = {
  description: "View the giveaways for your server.",
 };
 
-export default async function GiveawaysPage({ params }) {
+export default async function GiveawaysPage(props) {
+ const params = await props.params;
  const session = await getSession();
  if (!session || !session.access_token) redirect("/auth/login");
  const { server } = params;

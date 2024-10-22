@@ -21,7 +21,8 @@ const shortenText = (text, maxLen = 24) => {
  return text;
 };
 
-export async function GET(request, { params }) {
+export async function GET(request, props) {
+ const params = await props.params;
  const { id } = params;
  if (!id) return redirect("/opengraph-image");
 

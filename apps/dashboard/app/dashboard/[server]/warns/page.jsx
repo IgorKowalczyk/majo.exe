@@ -13,7 +13,8 @@ export const metadata = {
  description: "View the warn logs of your server.",
 };
 
-export default async function WarnsPage({ params }) {
+export default async function WarnsPage(props) {
+ const params = await props.params;
  const session = await getSession();
  if (!session || !session.access_token) redirect("/auth/login");
  const { server } = params;

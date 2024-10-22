@@ -30,7 +30,6 @@ export default function Loading() {
      ))}
     </div>
    </Block>
-
    <Block className="mt-4">
     <Header2>
      <Icons.slash className={iconVariants({ variant: "large", className: "!stroke-2" })} />

@@ -92,7 +92,6 @@ export function ChangeMessages({ serverId, enabled, title, description, existing
      <p className="mb-4 text-left">Send a message when a user leaves the server.</p>
     </>
    )}
-
    <div
     className={clsx({
      "pointer-events-none cursor-wait opacity-50": loading,
