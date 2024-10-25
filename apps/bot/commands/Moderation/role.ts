@@ -262,7 +262,7 @@ export default {
     return interaction.followUp({ embeds: [embed] });
    }
    // #endregion
-  } catch (error) {
+  } catch (_err) {
    return client.errorMessages.createSlashError(interaction, "❌ An error occurred while executing this command");
   }
  },
