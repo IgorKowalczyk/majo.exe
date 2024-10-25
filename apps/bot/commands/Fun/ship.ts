@@ -51,7 +51,11 @@ export default {
      }),
     });
 
-   ship > 50 ? embed.setThumbnail("https://cdn.discordapp.com/emojis/797365365595439104.gif?v=1") : embed.setThumbnail("https://cdn.discordapp.com/emojis/853644938867769454.gif?v=1");
+   if (ship > 50) {
+    embed.setThumbnail("https://cdn.discordapp.com/emojis/797365365595439104.gif?v=1");
+   } else {
+    embed.setThumbnail("https://cdn.discordapp.com/emojis/853644938867769454.gif?v=1");
+   }
 
    interaction.followUp({ embeds: [embed] });
   } catch (err) {

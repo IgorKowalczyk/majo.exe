@@ -285,15 +285,35 @@ export default {
    if (subcommand === "settings") {
     await autoModSettings(client, interaction, guildSettings);
    } else if (command === "anti-invite") {
-    subcommand === "enable" ? await enableAntiInvite(client, interaction, guildSettings) : await disableAntiInvite(client, interaction, guildSettings);
+    if (subcommand === "enable") {
+     await enableAntiInvite(client, interaction, guildSettings);
+    } else {
+     await disableAntiInvite(client, interaction, guildSettings);
+    }
    } else if (command === "anti-link") {
-    subcommand === "enable" ? await enableAntiLink(client, interaction, guildSettings) : await disableAntiLink(client, interaction, guildSettings);
+    if (subcommand === "enable") {
+     await enableAntiLink(client, interaction, guildSettings);
+    } else {
+     await disableAntiLink(client, interaction, guildSettings);
+    }
    } else if (command === "anti-mention") {
-    subcommand === "enable" ? await enableAntiMention(client, interaction, guildSettings) : await disableAntiMention(client, interaction, guildSettings);
+    if (subcommand === "enable") {
+     await enableAntiMention(client, interaction, guildSettings);
+    } else {
+     await disableAntiMention(client, interaction, guildSettings);
+    }
    } else if (command === "anti-spam") {
-    subcommand === "enable" ? await enableAntiSpam(client, interaction, guildSettings) : await disableAntiSpam(client, interaction, guildSettings);
+    if (subcommand === "enable") {
+     await enableAntiSpam(client, interaction, guildSettings);
+    } else {
+     await disableAntiSpam(client, interaction, guildSettings);
+    }
    } else if (command === "anti-bad-words") {
-    subcommand === "enable" ? await enableAntiBadWords(client, interaction, guildSettings) : await disableAntiBadWords(client, interaction, guildSettings);
+    if (subcommand === "enable") {
+     await enableAntiBadWords(client, interaction, guildSettings);
+    } else {
+     await disableAntiBadWords(client, interaction, guildSettings);
+    }
    }
   } catch (err) {
    client.errorMessages.internalError(interaction, err);

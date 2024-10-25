@@ -19,7 +19,7 @@ export async function interactionCreate(client: Majobot, interaction: Interactio
 
    if (!interaction.member.user) await interaction.guild.members.fetch(interaction.user.id);
 
-   client.config.displayCommandUsage && client.debugger("info", `Command used: ${interaction.commandName} by ${interaction.user.username} (${interaction.member.user.id})`);
+   if (client.config.displayCommandUsage) client.debugger("info", `Command used: ${interaction.commandName} by ${interaction.user.username} (${interaction.member.user.id})`);
 
    const shouldDefer = command.defer ?? true;
    if (shouldDefer) await interaction.deferReply({ ephemeral: false });
@@ -120,7 +120,7 @@ export async function interactionCreate(client: Majobot, interaction: Interactio
    if (!interaction.member) await interaction.guild.members.fetch(interaction.user.id);
    if (!interaction.member) return;
 
-   client.config.displayModalUsage && client.debugger("info", `Modal used: ${interaction.customId} by ${interaction.user.username} (${interaction.user.id})`);
+   if (client.config.displayModalUsage) client.debugger("info", `Modal used: ${interaction.customId} by ${interaction.user.username} (${interaction.user.id})`);
 
    await prismaClient.guild.upsert({
     where: {

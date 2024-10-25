@@ -1,3 +1,5 @@
+/* eslint-disable complexity */
+
 import { ApplicationCommandType, ApplicationCommandOptionType, EmbedBuilder, PermissionsBitField, codeBlock, PermissionFlagsBits, ChatInputCommandInteraction, type GuildEmoji } from "discord.js";
 import isURL from "validator/lib/isURL";
 import type { Majobot } from "../..";

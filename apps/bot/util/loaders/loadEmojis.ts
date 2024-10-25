@@ -64,7 +64,7 @@ export async function uploadEmoji(clientId: string, client: Majobot, { name, ima
    try {
     const error = (await emojiUpload.json()) as DiscordAPIError;
     throw new Error(`Failed to upload emoji: ${error} (${emojiUpload.statusText})`);
-   } catch (_e) {
+   } catch (_err) {
     throw new Error(`Failed to upload emoji: ${emojiUpload.statusText}`);
    }
   }
@@ -77,7 +77,11 @@ export async function uploadEmoji(clientId: string, client: Majobot, { name, ima
 
   Logger("event", `Uploaded ${emoji.name} emoji in ${client.performance(performance.now() - emojiUploadTime)}`);
 
-  emoji.animated ? (client.config.emojis[emoji.name] = `<a:${emoji.name}:${emoji.id}>`) : (client.config.emojis[emoji.name] = `<:${emoji.name}:${emoji.id}>`);
+  if (emoji.animated) {
+   client.config.emojis[emoji.name] = `<a:${emoji.name}:${emoji.id}>`;
+  } else {
+   client.config.emojis[emoji.name] = `<:${emoji.name}:${emoji.id}>`;
+  }
  } catch (error) {
   Logger("error", `Error uploading emoji: ${error}`);
  }
@@ -118,7 +122,11 @@ export default async function loadEmojis(client: Majobot): Promise<void> {
   Logger("event", `Fetched ${emojis.items.length} emojis in ${client.performance(performance.now() - emojiLoadTime)}`);
 
   for (const emoji of emojis.items) {
-   emoji.animated ? (client.config.emojis[emoji.name] = `<a:${emoji.name}:${emoji.id}>`) : (client.config.emojis[emoji.name] = `<:${emoji.name}:${emoji.id}>`);
+   if (emoji.animated) {
+    client.config.emojis[emoji.name] = `<a:${emoji.name}:${emoji.id}>`;
+   } else {
+    client.config.emojis[emoji.name] = `<:${emoji.name}:${emoji.id}>`;
+   }
   }
 
   for (const [name, url] of Object.entries(emojiDownloadList)) {

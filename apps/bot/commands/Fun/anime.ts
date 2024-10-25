@@ -115,7 +115,9 @@ export default {
      }),
     });
 
-   data.posterImage?.original ? embed.setThumbnail(data.posterImage.original) : null;
+   if (data.posterImage?.original) {
+    embed.setThumbnail(data.posterImage.original);
+   }
 
    const actionRow = new ActionRowBuilder<ButtonBuilder>() // prettier
     .addComponents([

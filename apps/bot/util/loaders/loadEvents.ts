@@ -13,7 +13,7 @@ export default async function loadEvents(client: Majobot): Promise<void> {
    await import(file).then((e) => {
     const eventName = basename(file).split(".")[0] as keyof ClientEvents;
 
-    client.config.displayEventList && client.debugger("info", `Loaded event ${eventName} from ${file.replace(process.cwd(), "")}`);
+    if (client.config.displayEventList) client.debugger("info", `Loaded event ${eventName} from ${file.replace(process.cwd(), "")}`);
 
     client.on(eventName, e[eventName].bind(null, client));
    });

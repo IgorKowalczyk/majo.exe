@@ -37,13 +37,14 @@ export default async function loadCommands(client: Majobot): Promise<void> {
     if (options) {
      options.forEach((option: ApplicationCommandOption) => {
       if (option.type === ApplicationCommandOptionType.Subcommand || option.type === ApplicationCommandOptionType.SubcommandGroup) {
-       client.config.displayCommandList && client.debugger("info", `Loaded slash subcommand ${option.name} from ${value.replace(process.cwd(), "")}`);
+       if (client.config.displayCommandList) client.debugger("info", `Loaded slash subcommand ${option.name} from ${value.replace(process.cwd(), "")}`);
+
        client.additionalSlashCommands++;
       }
      });
     }
 
-    client.config.displayCommandList && client.debugger("info", `Loaded slash command ${name} from ${value.replace(process.cwd(), "")}`);
+    if (client.config.displayCommandList) client.debugger("info", `Loaded slash command ${name} from ${value.replace(process.cwd(), "")}`);
    } catch (error: unknown) {
     client.debugger("error", `Error loading slash command ${value}: ${error}`);
    }

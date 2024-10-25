@@ -24,17 +24,12 @@ export default {
   try {
    let color = interaction.options.getString("color") || "";
 
-   let random;
+   let random = false;
+   if (!color) random = true;
 
-   !color ? (random = true) : (random = false);
+   if (!random && color && !color.startsWith("#")) color = `#${color}`;
 
-   if (!random && color && !color.startsWith("#")) {
-    color = `#${color}`;
-   }
-
-   if (!random && !isColor(color).color) {
-    return client.errorMessages.createSlashError(interaction, "❌ The color you provided is invalid. The color must be in hex format. Example: `#FF0000`");
-   }
+   if (!random && !isColor(color).color) return client.errorMessages.createSlashError(interaction, "❌ The color you provided is invalid. The color must be in hex format. Example: `#FF0000`");
 
    const value = random ? "" : color;
    const colorInfo = new Color(value);
