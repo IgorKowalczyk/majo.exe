@@ -51,7 +51,7 @@
     "recharts": "2.13.3",
     "server-only": "0.0.1",
     "sharp": "0.33.5",
-    "sonner": "1.6.1",
+    "sonner": "1.7.0",
     "validator": "13.12.0"
   },
   "devDependencies": {
