@@ -215,8 +215,8 @@ importers:
         specifier: 4.24.10
         version: 4.24.10(next@15.0.3(@babel/core@7.25.2)(react-dom@19.0.0-rc-fb9a90fa48-20240614(react@19.0.0-rc-fb9a90fa48-20240614))(react@19.0.0-rc-fb9a90fa48-20240614))(react-dom@19.0.0-rc-fb9a90fa48-20240614(react@19.0.0-rc-fb9a90fa48-20240614))(react@19.0.0-rc-fb9a90fa48-20240614)
       next-nprogress-bar:
-        specifier: 2.3.14
-        version: 2.3.14
+        specifier: 2.3.15
+        version: 2.3.15
       react:
         specifier: 19.0.0-rc-fb9a90fa48-20240614
         version: 19.0.0-rc-fb9a90fa48-20240614
@@ -4955,8 +4955,8 @@ packages:
       nodemailer:
         optional: true
 
-  next-nprogress-bar@2.3.14:
-    resolution: {integrity: sha512-r2zdo5SFakm1CSYLBo2/+9X2F5NRnbV/LI1b/Iu3mFLa9ln+Dlwx3vjJc3kVHI4i42jRC0an++obVHeWkYU6gA==}
+  next-nprogress-bar@2.3.15:
+    resolution: {integrity: sha512-8s8slKMUXvDrl7wWzKyWt6BJQThOJREpCicdbi66xAOzQ23DeIauEzMGPg1BMixnqlIRY3ayUO/ey9dafkgWcA==}
 
   next@15.0.3:
     resolution: {integrity: sha512-ontCbCRKJUIoivAdGB34yCaOcPgYXr9AAkV/IwqFfWWTXEPUgLYkSkqBhIk9KK7gGmgjc64B+RdoeIDM13Irnw==}
@@ -6695,7 +6695,7 @@ snapshots:
   '@babel/code-frame@7.24.7':
     dependencies:
       '@babel/highlight': 7.24.7
-      picocolors: 1.1.0
+      picocolors: 1.1.1
 
   '@babel/compat-data@7.25.4': {}
 
@@ -6862,7 +6862,7 @@ snapshots:
       '@babel/helper-validator-identifier': 7.24.7
       chalk: 2.4.2
       js-tokens: 4.0.0
-      picocolors: 1.1.0
+      picocolors: 1.1.1
 
   '@babel/parser@7.25.6':
     dependencies:
@@ -12440,7 +12440,7 @@ snapshots:
       react-dom: 19.0.0-rc-fb9a90fa48-20240614(react@19.0.0-rc-fb9a90fa48-20240614)
       uuid: 8.3.2
 
-  next-nprogress-bar@2.3.14:
+  next-nprogress-bar@2.3.15:
     dependencies:
       nprogress: 0.2.0
 
