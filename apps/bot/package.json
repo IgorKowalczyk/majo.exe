@@ -20,7 +20,7 @@
     "@majoexe/database": "workspace:*",
     "@majoexe/typescript-config": "workspace:*",
     "@majoexe/util": "workspace:*",
-    "@napi-rs/canvas": "0.1.60",
+    "@napi-rs/canvas": "0.1.61",
     "@observablehq/plot": "0.6.16",
     "chalk": "5.3.0",
     "cheerio": "1.0.0",
