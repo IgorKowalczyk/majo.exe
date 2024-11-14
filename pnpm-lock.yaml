@@ -20,7 +20,7 @@ importers:
     devDependencies:
       '@igorkowalczyk/eslint-config':
         specifier: 3.0.0-beta.15
-        version: 3.0.0-beta.15(eslint@9.14.0(jiti@1.21.6))(prettier@3.3.3)(tailwindcss@3.4.14)(typescript@5.6.3)
+        version: 3.0.0-beta.15(eslint@9.14.0(jiti@1.21.6))(prettier@3.3.3)(tailwindcss@3.4.15)(typescript@5.6.3)
       '@igorkowalczyk/prettier-config':
         specifier: 3.0.0-beta.15
         version: 3.0.0-beta.15(prettier@3.3.3)(tslib@2.7.0)(typescript@5.6.3)
@@ -144,7 +144,7 @@ importers:
         version: 2.2.0(react-dom@19.0.0-rc-fb9a90fa48-20240614(react@19.0.0-rc-fb9a90fa48-20240614))(react@19.0.0-rc-fb9a90fa48-20240614)
       '@headlessui/tailwindcss':
         specifier: 0.2.1
-        version: 0.2.1(tailwindcss@3.4.14)
+        version: 0.2.1(tailwindcss@3.4.15)
       '@majoexe/config':
         specifier: workspace:*
         version: link:../../packages/config
@@ -262,7 +262,7 @@ importers:
         version: 5.22.0
       '@tailwindcss/typography':
         specifier: 0.5.15
-        version: 0.5.15(tailwindcss@3.4.14)
+        version: 0.5.15(tailwindcss@3.4.15)
       autoprefixer:
         specifier: 10.4.20
         version: 10.4.20(postcss@8.4.49)
@@ -279,11 +279,11 @@ importers:
         specifier: 2.5.4
         version: 2.5.4
       tailwindcss:
-        specifier: 3.4.14
-        version: 3.4.14
+        specifier: 3.4.15
+        version: 3.4.15
       tailwindcss-text-fill:
         specifier: 0.2.0
-        version: 0.2.0(tailwindcss@3.4.14)
+        version: 0.2.0(tailwindcss@3.4.15)
 
   packages/config:
     dependencies:
@@ -5370,6 +5370,10 @@ packages:
     resolution: {integrity: sha512-b4dlw/9V8A71rLIDsSwVmak9z2DuBUB7CA1/wSdelNEzqsjoSPeADTWNO09lpH49Diy3/JIZ2bSPB1dI3LJCHg==}
     engines: {node: '>=4'}
 
+  postcss-selector-parser@6.1.2:
+    resolution: {integrity: sha512-Q8qQfPiZ+THO/3ZrOrO0cJJKfpYCagtMUkXbnEfmgUjwXg6z/WBeOyS9APBBPCTSiDV+s4SwQGu8yFsiMRIudg==}
+    engines: {node: '>=4'}
+
   postcss-value-parser@4.2.0:
     resolution: {integrity: sha512-1NNCs6uurfkVbeXG4S8JFT9t19m45ICnif8zWLd5oPSZ50QnwMfK+H3jv408d4jw/7Bttv5axS5IiHoLaVNHeQ==}
 
@@ -6158,8 +6162,8 @@ packages:
     peerDependencies:
       tailwindcss: '>=2.0.0'
 
-  tailwindcss@3.4.14:
-    resolution: {integrity: sha512-IcSvOcTRcUtQQ7ILQL5quRDg7Xs93PdJEk1ZLbhhvJc7uj/OAhYOnruEiwnGgBvUtaUAJ8/mhSw1o8L2jCiENA==}
+  tailwindcss@3.4.15:
+    resolution: {integrity: sha512-r4MeXnfBmSOuKUWmXe6h2CcyfzJCEk4F0pptO5jlnYSIViUkVmsawj80N5h2lO3gwcmSb4n3PuN+e+GC1Guylw==}
     engines: {node: '>=14.0.0'}
     hasBin: true
 
@@ -7921,9 +7925,9 @@ snapshots:
       react: 19.0.0-rc-fb9a90fa48-20240614
       react-dom: 19.0.0-rc-fb9a90fa48-20240614(react@19.0.0-rc-fb9a90fa48-20240614)
 
-  '@headlessui/tailwindcss@0.2.1(tailwindcss@3.4.14)':
+  '@headlessui/tailwindcss@0.2.1(tailwindcss@3.4.15)':
     dependencies:
-      tailwindcss: 3.4.14
+      tailwindcss: 3.4.15
 
   '@humanfs/core@0.19.1': {}
 
@@ -7942,7 +7946,7 @@ snapshots:
     dependencies:
       undici: 5.28.4
 
-  '@igorkowalczyk/eslint-config@3.0.0-beta.15(eslint@9.14.0(jiti@1.21.6))(prettier@3.3.3)(tailwindcss@3.4.14)(typescript@5.6.3)':
+  '@igorkowalczyk/eslint-config@3.0.0-beta.15(eslint@9.14.0(jiti@1.21.6))(prettier@3.3.3)(tailwindcss@3.4.15)(typescript@5.6.3)':
     dependencies:
       '@eslint-react/eslint-plugin': 1.15.0(eslint@9.14.0(jiti@1.21.6))(typescript@5.6.3)
       '@eslint/compat': 1.2.1(eslint@9.14.0(jiti@1.21.6))
@@ -7964,7 +7968,7 @@ snapshots:
       eslint-plugin-n: 17.11.1(eslint@9.14.0(jiti@1.21.6))
       eslint-plugin-prettier: 5.2.1(@types/eslint@9.6.1)(eslint-config-prettier@9.1.0(eslint@9.14.0(jiti@1.21.6)))(eslint@9.14.0(jiti@1.21.6))(prettier@3.3.3)
       eslint-plugin-react: 7.37.2(eslint@9.14.0(jiti@1.21.6))
-      eslint-plugin-tailwindcss: 3.17.5(tailwindcss@3.4.14)
+      eslint-plugin-tailwindcss: 3.17.5(tailwindcss@3.4.15)
       globals: 15.11.0
       typescript-eslint: 8.11.0(eslint@9.14.0(jiti@1.21.6))(typescript@5.6.3)
     transitivePeerDependencies:
@@ -8850,13 +8854,13 @@ snapshots:
     dependencies:
       tslib: 2.7.0
 
-  '@tailwindcss/typography@0.5.15(tailwindcss@3.4.14)':
+  '@tailwindcss/typography@0.5.15(tailwindcss@3.4.15)':
     dependencies:
       lodash.castarray: 4.4.0
       lodash.isplainobject: 4.0.6
       lodash.merge: 4.6.2
       postcss-selector-parser: 6.0.10
-      tailwindcss: 3.4.14
+      tailwindcss: 3.4.15
 
   '@tanstack/react-virtual@3.10.7(react-dom@19.0.0-rc-fb9a90fa48-20240614(react@19.0.0-rc-fb9a90fa48-20240614))(react@19.0.0-rc-fb9a90fa48-20240614)':
     dependencies:
@@ -10684,11 +10688,11 @@ snapshots:
       string.prototype.matchall: 4.0.11
       string.prototype.repeat: 1.0.0
 
-  eslint-plugin-tailwindcss@3.17.5(tailwindcss@3.4.14):
+  eslint-plugin-tailwindcss@3.17.5(tailwindcss@3.4.15):
     dependencies:
       fast-glob: 3.3.2
       postcss: 8.4.49
-      tailwindcss: 3.4.14
+      tailwindcss: 3.4.15
 
   eslint-plugin-turbo@2.3.0(eslint@9.14.0(jiti@1.21.6)):
     dependencies:
@@ -12830,7 +12834,7 @@ snapshots:
   postcss-nested@6.2.0(postcss@8.4.49):
     dependencies:
       postcss: 8.4.49
-      postcss-selector-parser: 6.1.1
+      postcss-selector-parser: 6.1.2
 
   postcss-selector-parser@6.0.10:
     dependencies:
@@ -12838,6 +12842,11 @@ snapshots:
       util-deprecate: 1.0.2
 
   postcss-selector-parser@6.1.1:
+    dependencies:
+      cssesc: 3.0.0
+      util-deprecate: 1.0.2
+
+  postcss-selector-parser@6.1.2:
     dependencies:
       cssesc: 3.0.0
       util-deprecate: 1.0.2
@@ -13713,12 +13722,12 @@ snapshots:
 
   tailwind-merge@2.5.4: {}
 
-  tailwindcss-text-fill@0.2.0(tailwindcss@3.4.14):
+  tailwindcss-text-fill@0.2.0(tailwindcss@3.4.15):
     dependencies:
       flatten-tailwindcss-theme: 1.0.0
-      tailwindcss: 3.4.14
+      tailwindcss: 3.4.15
 
-  tailwindcss@3.4.14:
+  tailwindcss@3.4.15:
     dependencies:
       '@alloc/quick-lru': 5.2.0
       arg: 5.0.2
@@ -13733,13 +13742,13 @@ snapshots:
       micromatch: 4.0.8
       normalize-path: 3.0.0
       object-hash: 3.0.0
-      picocolors: 1.1.0
+      picocolors: 1.1.1
       postcss: 8.4.49
       postcss-import: 15.1.0(postcss@8.4.49)
       postcss-js: 4.0.1(postcss@8.4.49)
       postcss-load-config: 4.0.2(postcss@8.4.49)
       postcss-nested: 6.2.0(postcss@8.4.49)
-      postcss-selector-parser: 6.1.1
+      postcss-selector-parser: 6.1.2
       resolve: 1.22.8
       sucrase: 3.35.0
     transitivePeerDependencies:
