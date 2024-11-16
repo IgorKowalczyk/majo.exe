@@ -1,6 +1,6 @@
-import type { SlashCommand } from "@/util/types/Command";
 import { ApplicationCommandType, ApplicationCommandOptionType, PermissionsBitField, EmbedBuilder, PermissionFlagsBits, ChannelType, GuildMember, InteractionContextType, ApplicationIntegrationType } from "discord.js";
 import ms from "ms";
+import type { SlashCommand } from "@/util/types/Command";
 
 export default {
  name: "slowmode",

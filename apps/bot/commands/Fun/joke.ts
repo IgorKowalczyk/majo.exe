@@ -1,6 +1,6 @@
-import type { SlashCommand } from "@/util/types/Command";
 import { ApplicationCommandType, ApplicationIntegrationType, EmbedBuilder, InteractionContextType } from "discord.js";
 import fetch from "node-fetch";
+import type { SlashCommand } from "@/util/types/Command";
 
 interface Joke {
  type: string;

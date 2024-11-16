@@ -1,5 +1,5 @@
-import type { SlashCommand } from "@/util/types/Command";
 import { EmbedBuilder, time, ButtonBuilder, ActionRowBuilder, ApplicationCommandType, ButtonStyle, ApplicationIntegrationType, InteractionContextType } from "discord.js";
+import type { SlashCommand } from "@/util/types/Command";
 
 export default {
  name: "uptime",

@@ -1,5 +1,5 @@
-import type { SlashCommand } from "@/util/types/Command";
 import { ActionRowBuilder, ApplicationCommandType, ButtonStyle, ButtonBuilder, EmbedBuilder, InteractionContextType, ApplicationIntegrationType } from "discord.js";
+import type { SlashCommand } from "@/util/types/Command";
 
 export default {
  name: "about",

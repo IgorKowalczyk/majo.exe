@@ -1,7 +1,7 @@
-import type { SlashCommand } from "@/util/types/Command";
 import { isColor } from "coloras";
 import { ApplicationCommandType, ApplicationCommandOptionType, AttachmentBuilder, EmbedBuilder, InteractionContextType, ApplicationIntegrationType } from "discord.js";
 import sharp from "sharp";
+import type { SlashCommand } from "@/util/types/Command";
 
 export default {
  name: "image",

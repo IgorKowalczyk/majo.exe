@@ -1,10 +1,10 @@
-import type { SlashCommand } from "@/util/types/Command";
 import prismaClient, { type GuildJoin, type GuildLeave, type GuildMessage } from "@majoexe/database";
 import { fillMissingDates } from "@majoexe/util/functions/util";
 import * as Plot from "@observablehq/plot";
 import { ApplicationCommandType, ApplicationCommandOptionType, PermissionFlagsBits, AttachmentBuilder, EmbedBuilder, InteractionContextType, ApplicationIntegrationType } from "discord.js";
 import jsdom from "jsdom";
 import sharp from "sharp";
+import type { SlashCommand } from "@/util/types/Command";
 const { JSDOM } = jsdom;
 
 async function generateChart(data: GuildJoin[] | GuildLeave[] | GuildMessage[], name: string, color: string) {

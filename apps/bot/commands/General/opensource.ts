@@ -1,6 +1,6 @@
-import type { SlashCommand } from "@/util/types/Command";
 import { ApplicationCommandType, EmbedBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle, time, ApplicationIntegrationType, InteractionContextType } from "discord.js";
 import fetch from "node-fetch";
+import type { SlashCommand } from "@/util/types/Command";
 
 interface GithubResponse {
  sha: string;

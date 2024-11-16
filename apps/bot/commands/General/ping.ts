@@ -1,6 +1,6 @@
-import type { SlashCommand } from "@/util/types/Command";
 import prismaClient from "@majoexe/database";
 import { ApplicationCommandType, EmbedBuilder, codeBlock, Status, ApplicationIntegrationType, InteractionContextType } from "discord.js";
+import type { SlashCommand } from "@/util/types/Command";
 
 export default {
  name: "ping",

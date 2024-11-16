@@ -1,7 +1,7 @@
-import type { SlashCommand } from "@/util/types/Command";
 import prismaClient from "@majoexe/database";
 import { fetchXPSettings } from "@majoexe/util/database";
 import { ApplicationCommandType, EmbedBuilder, ButtonBuilder, ActionRowBuilder, ButtonStyle, PermissionsBitField, InteractionContextType, ApplicationIntegrationType } from "discord.js";
+import type { SlashCommand } from "@/util/types/Command";
 
 export default {
  name: "leaderboard",

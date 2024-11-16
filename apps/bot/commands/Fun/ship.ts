@@ -1,6 +1,6 @@
-import type { SlashCommand } from "@/util/types/Command";
 import { percentageBar } from "@majoexe/util/functions/util";
 import { ApplicationCommandType, ApplicationCommandOptionType, EmbedBuilder, ApplicationIntegrationType, InteractionContextType } from "discord.js";
+import type { SlashCommand } from "@/util/types/Command";
 
 export default {
  name: "ship",

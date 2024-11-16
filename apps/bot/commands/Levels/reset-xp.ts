@@ -1,6 +1,6 @@
-import type { SlashCommand } from "@/util/types/Command";
 import { resetXP, fetchXPSettings } from "@majoexe/util/database";
 import { ApplicationCommandType, ApplicationCommandOptionType, PermissionFlagsBits, EmbedBuilder, InteractionContextType, ApplicationIntegrationType } from "discord.js";
+import type { SlashCommand } from "@/util/types/Command";
 
 export default {
  name: "reset-xp",

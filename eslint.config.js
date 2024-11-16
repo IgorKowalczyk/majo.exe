@@ -8,4 +8,10 @@ export default [
  ...eslintConfig.node,
  ...eslintConfig.typescript,
  //...eslintConfig.tailwindcss,
+ {
+  name: "Override",
+  rules: {
+   "require-await": "off",
+  },
+ },
 ];

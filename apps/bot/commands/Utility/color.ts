@@ -1,8 +1,8 @@
-import type { SlashCommand } from "@/util/types/Command";
 import { invertColor } from "@majoexe/util/images";
 import { createCanvas } from "@napi-rs/canvas";
 import { Color, isColor } from "coloras";
 import { ApplicationCommandType, ApplicationCommandOptionType, AttachmentBuilder, EmbedBuilder, type ColorResolvable, InteractionContextType, ApplicationIntegrationType } from "discord.js";
+import type { SlashCommand } from "@/util/types/Command";
 
 export default {
  name: "color",

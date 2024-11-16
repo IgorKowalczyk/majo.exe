@@ -1,8 +1,8 @@
 /* eslint-disable complexity */
 
-import type { SlashCommand } from "@/util/types/Command";
 import { ApplicationCommandType, ApplicationCommandOptionType, EmbedBuilder, PermissionsBitField, codeBlock, PermissionFlagsBits, type GuildEmoji, InteractionContextType, ApplicationIntegrationType } from "discord.js";
 import isURL from "validator/lib/isURL";
+import type { SlashCommand } from "@/util/types/Command";
 
 export default {
  name: "emoji",

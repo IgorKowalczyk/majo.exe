@@ -1,5 +1,5 @@
 import { checkXP, fetchXPSettings } from "@majoexe/util/database";
-import { ApplicationCommandType, ApplicationCommandOptionType, AttachmentBuilder, EmbedBuilder, ButtonBuilder, ActionRowBuilder, ButtonStyle, User, InteractionContextType, ApplicationIntegrationType } from "discord.js";
+import { ApplicationCommandType, ApplicationCommandOptionType, AttachmentBuilder, EmbedBuilder, ButtonBuilder, ActionRowBuilder, ButtonStyle, InteractionContextType, ApplicationIntegrationType } from "discord.js";
 import { createXPCard } from "@/util/images/createXPCard";
 import type { SlashCommand } from "@/util/types/Command";
 

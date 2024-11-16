@@ -1,6 +1,6 @@
-import type { SlashCommand } from "@/util/types/Command";
 import { formatDuration } from "@majoexe/util/functions/util";
 import { ApplicationCommandType, ApplicationCommandOptionType, EmbedBuilder, codeBlock, ActionRowBuilder, ButtonBuilder, ButtonStyle, StringSelectMenuBuilder, ComponentType, ApplicationIntegrationType, InteractionContextType } from "discord.js";
+import type { SlashCommand } from "@/util/types/Command";
 
 interface Category {
  name: string;

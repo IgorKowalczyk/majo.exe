@@ -1,5 +1,5 @@
-import type { SlashCommand } from "@/util/types/Command";
 import { ApplicationCommandType, ApplicationCommandOptionType, EmbedBuilder, ApplicationIntegrationType, InteractionContextType } from "discord.js";
+import type { SlashCommand } from "@/util/types/Command";
 
 export default {
  name: "8ball",

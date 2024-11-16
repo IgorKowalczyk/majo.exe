@@ -1,6 +1,6 @@
-import type { SlashCommand } from "@/util/types/Command";
 import { formatNumber } from "@majoexe/util/functions/util";
 import { ApplicationCommandType, EmbedBuilder, ButtonBuilder, ActionRowBuilder, ButtonStyle, ApplicationIntegrationType, InteractionContextType } from "discord.js";
+import type { SlashCommand } from "@/util/types/Command";
 
 export default {
  name: "servers",

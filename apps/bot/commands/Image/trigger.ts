@@ -1,8 +1,8 @@
-import type { SlashCommand } from "@/util/types/Command";
 import { loadImage, createCanvas } from "@napi-rs/canvas";
 import { ApplicationCommandType, ApplicationCommandOptionType, AttachmentBuilder, EmbedBuilder, InteractionContextType, ApplicationIntegrationType } from "discord.js";
 // @ts-expect-error - No type definitions
 import GIFEncoder from "gif-encoder-2";
+import type { SlashCommand } from "@/util/types/Command";
 
 export default {
  name: "trigger",

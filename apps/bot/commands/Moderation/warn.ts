@@ -1,6 +1,6 @@
-import type { SlashCommand } from "@/util/types/Command";
 import { clearWarns, listWarnings, warnUser, removeWarning } from "@majoexe/util/database";
 import { ApplicationCommandType, ApplicationCommandOptionType, PermissionsBitField, EmbedBuilder, codeBlock, PermissionFlagsBits, InteractionContextType, ApplicationIntegrationType } from "discord.js";
+import type { SlashCommand } from "@/util/types/Command";
 
 export default {
  name: "warn",

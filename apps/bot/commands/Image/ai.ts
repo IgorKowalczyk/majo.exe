@@ -30,7 +30,7 @@ export default {
     .setColor(guildSettings?.embedColor || client.config.defaultColor)
     .setTitle(`${client.config.emojis.loading} Generating image with AI...`)
     .setTimestamp()
-    .setDescription(`> Please wait while I generate an image with AI based on the prompt you provided. This may take a few seconds...`)
+    .setDescription("> Please wait while I generate an image with AI based on the prompt you provided. This may take a few seconds...")
     .setFooter({
      text: `Requested by ${interaction.user.globalName || interaction.user.username}`,
      iconURL: interaction.user.displayAvatarURL({ size: 256 }),
@@ -46,7 +46,7 @@ export default {
     try {
      const error = await request.json();
      return client.errorMessages.createSlashError(interaction, `❌ Failed to generate image: \`${error.message}\``);
-    } catch (err) {
+    } catch (_err) {
      return client.errorMessages.createSlashError(interaction, "❌ Failed to generate image, please try again.");
     }
    }
@@ -58,10 +58,9 @@ export default {
    const attachment = new AttachmentBuilder(Buffer.from(image), {
     name: "generated-image.png",
    });
-   3;
 
    const embed = new EmbedBuilder() // prettier
-    .setTitle(`🖼️ Generated Image`)
+    .setTitle("🖼️ Generated Image")
     .setDescription(codeBlock("md", prompt))
     .setImage("attachment://generated-image.png")
     .setColor(guildSettings?.embedColor || client.config.defaultColor)
@@ -73,7 +72,6 @@ export default {
 
    return await interaction.editReply({ embeds: [embed], files: [attachment] });
   } catch (err) {
-   console.log(err);
    client.errorMessages.internalError(interaction, err);
   }
  },

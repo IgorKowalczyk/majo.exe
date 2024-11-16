@@ -1,7 +1,7 @@
-import type { SlashCommand } from "@/util/types/Command";
 import prismaClient from "@majoexe/database";
 import { shortenText } from "@majoexe/util/functions/util";
 import { ApplicationCommandType, ApplicationCommandOptionType, ChannelType, PermissionsBitField, EmbedBuilder, PermissionFlagsBits, codeBlock, TextChannel, InteractionContextType, ApplicationIntegrationType } from "discord.js";
+import type { SlashCommand } from "@/util/types/Command";
 
 export default {
  name: "leave",

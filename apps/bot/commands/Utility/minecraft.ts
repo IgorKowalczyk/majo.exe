@@ -1,6 +1,6 @@
-import type { SlashCommand } from "@/util/types/Command";
 import { ApplicationCommandType, ApplicationCommandOptionType, EmbedBuilder, ApplicationIntegrationType, InteractionContextType } from "discord.js";
 import fetch from "node-fetch";
+import type { SlashCommand } from "@/util/types/Command";
 
 interface MinecraftServer {
  ip: string;
