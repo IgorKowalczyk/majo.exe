@@ -1,15 +1,15 @@
-import { ApplicationCommandType, EmbedBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle, ChatInputCommandInteraction } from "discord.js";
-import type { Majobot } from "../..";
-import type { GuildSettings } from "../../util/types/Command";
+import type { SlashCommand } from "@/util/types/Command";
+import { ApplicationCommandType, EmbedBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle, ApplicationIntegrationType, InteractionContextType } from "discord.js";
 
 export default {
  name: "dashboard",
  description: "💻 Visit our dashboard",
  type: ApplicationCommandType.ChatInput,
  cooldown: 3000,
- dm_permission: true,
+ contexts: [InteractionContextType.Guild, InteractionContextType.BotDM, InteractionContextType.PrivateChannel],
+ integrationTypes: [ApplicationIntegrationType.GuildInstall, ApplicationIntegrationType.UserInstall],
  usage: "/dashboard",
- run: (client: Majobot, interaction: ChatInputCommandInteraction, guildSettings: GuildSettings) => {
+ run: async (client, interaction, guildSettings) => {
   try {
    if (!client.config.url) {
     const embed = new EmbedBuilder()
@@ -51,4 +51,4 @@ export default {
    client.errorMessages.internalError(interaction, err);
   }
  },
-};
+} satisfies SlashCommand;

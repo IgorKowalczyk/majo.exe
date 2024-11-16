@@ -1,14 +1,15 @@
+import type { SlashCommand } from "@/util/types/Command";
 import { clearWarns, listWarnings, warnUser, removeWarning } from "@majoexe/util/database";
-import { ApplicationCommandType, ApplicationCommandOptionType, PermissionsBitField, EmbedBuilder, codeBlock, PermissionFlagsBits, ChatInputCommandInteraction } from "discord.js";
-import type { Majobot } from "../..";
-import type { GuildSettings } from "../../util/types/Command";
+import { ApplicationCommandType, ApplicationCommandOptionType, PermissionsBitField, EmbedBuilder, codeBlock, PermissionFlagsBits, InteractionContextType, ApplicationIntegrationType } from "discord.js";
 
 export default {
  name: "warn",
  description: "⚠️ Add/remove/modify warnings for a user",
  type: ApplicationCommandType.ChatInput,
  cooldown: 2000,
- dm_permission: false,
+ contexts: [InteractionContextType.Guild],
+ integrationTypes: [ApplicationIntegrationType.GuildInstall],
+ defaultMemberPermissions: [PermissionFlagsBits.ManageGuild],
  usage: "/warn <subcommand>",
  options: [
   {
@@ -76,8 +77,7 @@ export default {
    ],
   },
  ],
- permissions: [PermissionFlagsBits.ManageGuild],
- run: async (client: Majobot, interaction: ChatInputCommandInteraction, guildSettings: GuildSettings) => {
+ run: async (client, interaction, guildSettings) => {
   try {
    if (!interaction.guild) return client.errorMessages.createSlashError(interaction, "❌ This command can only be used in a server.");
    if (!interaction.member) return client.errorMessages.createSlashError(interaction, "❌ You must be in a server to use this command.");
@@ -207,4 +207,4 @@ export default {
    client.errorMessages.internalError(interaction, err);
   }
  },
-};
+} satisfies SlashCommand;

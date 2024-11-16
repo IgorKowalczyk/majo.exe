@@ -1,7 +1,6 @@
-import { ActionRowBuilder, ApplicationCommandType, ButtonBuilder, ButtonStyle, ChatInputCommandInteraction, EmbedBuilder } from "discord.js";
+import type { SlashCommand } from "@/util/types/Command";
+import { ActionRowBuilder, ApplicationCommandType, ApplicationIntegrationType, ButtonBuilder, ButtonStyle, EmbedBuilder, InteractionContextType } from "discord.js";
 import fetch from "node-fetch";
-import type { Majobot } from "../..";
-import type { GuildSettings } from "../../util/types/Command";
 
 interface RedditPost {
  title: string;
@@ -27,9 +26,10 @@ export default {
  description: "😂 Get a random meme",
  type: ApplicationCommandType.ChatInput,
  cooldown: 3000,
- dm_permission: true,
+ contexts: [InteractionContextType.Guild, InteractionContextType.BotDM, InteractionContextType.PrivateChannel],
+ integrationTypes: [ApplicationIntegrationType.GuildInstall, ApplicationIntegrationType.UserInstall],
  usage: "/meme",
- run: async (client: Majobot, interaction: ChatInputCommandInteraction, guildSettings: GuildSettings) => {
+ run: async (client, interaction, guildSettings) => {
   try {
    const meme = await fetch("https://reddit.com/r/dankmemes/random/.json");
    if (!meme.ok) return client.errorMessages.createSlashError(interaction, "❌ No memes found! Please try again later.");
@@ -63,4 +63,4 @@ export default {
    client.errorMessages.internalError(interaction, err);
   }
  },
-};
+} satisfies SlashCommand;

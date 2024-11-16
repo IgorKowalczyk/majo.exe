@@ -1,15 +1,16 @@
+import type { SlashCommand } from "@/util/types/Command";
 import { invertColor } from "@majoexe/util/images";
 import { createCanvas } from "@napi-rs/canvas";
 import { Color, isColor } from "coloras";
-import { ApplicationCommandType, ApplicationCommandOptionType, AttachmentBuilder, EmbedBuilder, ChatInputCommandInteraction, type ColorResolvable } from "discord.js";
-import type { Majobot } from "../..";
+import { ApplicationCommandType, ApplicationCommandOptionType, AttachmentBuilder, EmbedBuilder, type ColorResolvable, InteractionContextType, ApplicationIntegrationType } from "discord.js";
 
 export default {
  name: "color",
  description: "🎨 Display color info",
  type: ApplicationCommandType.ChatInput,
  cooldown: 5000,
- dm_permission: false,
+ contexts: [InteractionContextType.Guild, InteractionContextType.BotDM, InteractionContextType.PrivateChannel],
+ integrationTypes: [ApplicationIntegrationType.GuildInstall, ApplicationIntegrationType.UserInstall],
  usage: "/color [color]",
  options: [
   {
@@ -20,7 +21,7 @@ export default {
    max_length: 7,
   },
  ],
- run: (client: Majobot, interaction: ChatInputCommandInteraction) => {
+ run: async (client, interaction) => {
   try {
    let color = interaction.options.getString("color") || "";
 
@@ -96,4 +97,4 @@ export default {
    client.errorMessages.internalError(interaction, err);
   }
  },
-};
+} satisfies SlashCommand;

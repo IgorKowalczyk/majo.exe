@@ -1,13 +1,13 @@
-import { ApplicationCommandType, ApplicationCommandOptionType, PermissionsBitField, PermissionFlagsBits, EmbedBuilder, ChatInputCommandInteraction, Role, GuildMember } from "discord.js";
-import type { Majobot } from "../..";
-import type { GuildSettings } from "../../util/types/Command";
+import { ApplicationCommandType, ApplicationCommandOptionType, PermissionsBitField, EmbedBuilder, Role, GuildMember, InteractionContextType, ApplicationIntegrationType } from "discord.js";
+import type { SlashCommand } from "@/util/types/Command";
 
 export default {
  name: "role",
  description: "🧩 Add/Remove role from user",
  type: ApplicationCommandType.ChatInput,
  cooldown: 2000,
- dm_permission: false,
+ contexts: [InteractionContextType.Guild],
+ integrationTypes: [ApplicationIntegrationType.GuildInstall],
  usage: "/role add <role> <user> | /role remove <role> <user> | /role info <role>",
  options: [
   {
@@ -15,7 +15,7 @@ export default {
    description: "🧩 Add role to user",
    type: ApplicationCommandOptionType.Subcommand,
    usage: "/role add <role> <user>",
-   defaultMemberPermissions: [PermissionFlagsBits.ManageRoles],
+   //defaultMemberPermissions: [PermissionFlagsBits.ManageRoles],
    options: [
     {
      name: "role",
@@ -43,7 +43,7 @@ export default {
    description: "🧩 Remove role from user",
    type: ApplicationCommandOptionType.Subcommand,
    usage: "/role remove <role> <user>",
-   defaultMemberPermissions: [PermissionFlagsBits.ManageRoles],
+   //defaultMemberPermissions: [PermissionFlagsBits.ManageRoles],
    options: [
     {
      name: "role",
@@ -81,7 +81,7 @@ export default {
    ],
   },
  ],
- run: async (client: Majobot, interaction: ChatInputCommandInteraction, guildSettings: GuildSettings) => {
+ run: async (client, interaction, guildSettings) => {
   try {
    if (!interaction.guild) return client.errorMessages.createSlashError(interaction, "❌ This command can only be used in a server.");
    if (!interaction.member) return client.errorMessages.createSlashError(interaction, "❌ You must be in a server to use this command.");
@@ -266,4 +266,4 @@ export default {
    return client.errorMessages.createSlashError(interaction, "❌ An error occurred while executing this command");
   }
  },
-};
+} satisfies SlashCommand;

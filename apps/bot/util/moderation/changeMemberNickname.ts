@@ -1,5 +1,5 @@
 import { ChatInputCommandInteraction, EmbedBuilder, GuildMember, GuildMemberRoleManager, PermissionsBitField, type ColorResolvable } from "discord.js";
-import type { Majobot } from "../..";
+import type { Majobot } from "@/index";
 
 export async function changememberNickname(client: Majobot, interaction: ChatInputCommandInteraction, color: ColorResolvable, type = "set" || "remove") {
  try {

@@ -1,15 +1,16 @@
-import { ApplicationCommandType, ActionRowBuilder, ModalBuilder, TextInputBuilder, TextInputStyle, ChatInputCommandInteraction } from "discord.js";
-import type { Majobot } from "../..";
+import type { SlashCommand } from "@/util/types/Command";
+import { ApplicationCommandType, ActionRowBuilder, ModalBuilder, TextInputBuilder, TextInputStyle, ApplicationIntegrationType, InteractionContextType } from "discord.js";
 
 export default {
  name: "suggestion",
  description: "📝 Send a suggestion to the Majo.exe team",
  type: ApplicationCommandType.ChatInput,
  cooldown: 10000,
- dm_permission: false,
+ contexts: [InteractionContextType.Guild, InteractionContextType.BotDM, InteractionContextType.PrivateChannel],
+ integrationTypes: [ApplicationIntegrationType.GuildInstall, ApplicationIntegrationType.UserInstall],
  defer: false,
  usage: "/suggestion",
- run: async (client: Majobot, interaction: ChatInputCommandInteraction) => {
+ run: async (client, interaction) => {
   try {
    const modal = new ModalBuilder() // prettier
     .setCustomId("suggestion")
@@ -34,4 +35,4 @@ export default {
    client.errorMessages.internalError(interaction, err);
   }
  },
-};
+} satisfies SlashCommand;

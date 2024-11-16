@@ -1,13 +1,13 @@
-import { ApplicationCommandType, ApplicationCommandOptionType, EmbedBuilder, ChatInputCommandInteraction } from "discord.js";
-import type { Majobot } from "../..";
-import type { GuildSettings } from "../../util/types/Command";
+import type { SlashCommand } from "@/util/types/Command";
+import { ApplicationCommandType, ApplicationCommandOptionType, EmbedBuilder, InteractionContextType, ApplicationIntegrationType } from "discord.js";
 
 export default {
  name: "base64",
  description: "🔒 Encode or decode base64",
  type: ApplicationCommandType.ChatInput,
  cooldown: 5000,
- dm_permission: false,
+ contexts: [InteractionContextType.Guild, InteractionContextType.BotDM, InteractionContextType.PrivateChannel],
+ integrationTypes: [ApplicationIntegrationType.GuildInstall, ApplicationIntegrationType.UserInstall],
  usage: "/base64 <encode/decode> <text>",
  options: [
   {
@@ -41,7 +41,7 @@ export default {
    ],
   },
  ],
- run: (client: Majobot, interaction: ChatInputCommandInteraction, guildSettings: GuildSettings) => {
+ run: async (client, interaction, guildSettings) => {
   try {
    const type = interaction.options.getSubcommand();
 
@@ -87,4 +87,4 @@ export default {
    client.errorMessages.internalError(interaction, err);
   }
  },
-};
+} satisfies SlashCommand;

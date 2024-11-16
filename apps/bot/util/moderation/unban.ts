@@ -1,5 +1,5 @@
 import { ChatInputCommandInteraction, EmbedBuilder, PermissionsBitField, type ColorResolvable } from "discord.js";
-import type { Majobot } from "../..";
+import type { Majobot } from "@/index";
 
 export async function unBanMember(client: Majobot, interaction: ChatInputCommandInteraction, color: ColorResolvable) {
  try {

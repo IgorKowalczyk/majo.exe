@@ -1,14 +1,14 @@
 import translate from "@iamtraction/google-translate";
-import { ApplicationCommandType, ApplicationCommandOptionType, EmbedBuilder, ChatInputCommandInteraction } from "discord.js";
-import type { Majobot } from "../..";
-import type { GuildSettings } from "../../util/types/Command";
+import { ApplicationCommandType, ApplicationCommandOptionType, EmbedBuilder, ApplicationIntegrationType, InteractionContextType } from "discord.js";
+import type { SlashCommand } from "@/util/types/Command";
 
 export default {
  name: "translate",
  description: "🈯 Translate text",
  type: ApplicationCommandType.ChatInput,
  cooldown: 5000,
- dm_permission: false,
+ contexts: [InteractionContextType.Guild, InteractionContextType.BotDM, InteractionContextType.PrivateChannel],
+ integrationTypes: [ApplicationIntegrationType.GuildInstall, ApplicationIntegrationType.UserInstall],
  usage: "/translate <text> [to] [from]",
  options: [
   {
@@ -31,7 +31,7 @@ export default {
    max_length: 60,
   },
  ],
- run: async (client: Majobot, interaction: ChatInputCommandInteraction, guildSettings: GuildSettings) => {
+ run: async (client, interaction, guildSettings) => {
   try {
    const text = interaction.options.getString("text");
    const to = interaction.options.getString("to") || "en";
@@ -63,4 +63,4 @@ export default {
    client.errorMessages.internalError(interaction, err);
   }
  },
-};
+} satisfies SlashCommand;

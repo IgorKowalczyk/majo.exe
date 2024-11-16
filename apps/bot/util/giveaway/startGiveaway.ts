@@ -1,6 +1,6 @@
 import { type ChatInputCommandInteraction, EmbedBuilder, type Message, PermissionsBitField, User, type ColorResolvable, ChannelType } from "discord.js";
 import ms from "ms";
-import type { Majobot } from "../..";
+import type { Majobot } from "@/index";
 
 export async function StartGiveaway(client: Majobot, interaction: ChatInputCommandInteraction, color: ColorResolvable): Promise<Message | void> {
  try {

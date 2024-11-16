@@ -1,13 +1,13 @@
-import { ApplicationCommandType, ApplicationCommandOptionType, EmbedBuilder, codeBlock, ActionRowBuilder, ButtonBuilder, ButtonStyle, ChatInputCommandInteraction } from "discord.js";
-import type { Majobot } from "../..";
-import type { GuildSettings } from "../../util/types/Command";
+import type { SlashCommand } from "@/util/types/Command";
+import { ApplicationCommandType, ApplicationCommandOptionType, EmbedBuilder, codeBlock, ActionRowBuilder, ButtonBuilder, ButtonStyle, ApplicationIntegrationType, InteractionContextType } from "discord.js";
 
 export default {
  name: "anime",
  description: "💮 Search for information about Anime by given name",
  type: ApplicationCommandType.ChatInput,
  cooldown: 3000,
- dm_permission: true,
+ contexts: [InteractionContextType.Guild, InteractionContextType.BotDM, InteractionContextType.PrivateChannel],
+ integrationTypes: [ApplicationIntegrationType.GuildInstall, ApplicationIntegrationType.UserInstall],
  usage: "/anime <anime name>",
  options: [
   {
@@ -18,7 +18,7 @@ export default {
    max_length: 256,
   },
  ],
- run: async (client: Majobot, interaction: ChatInputCommandInteraction, guildSettings: GuildSettings) => {
+ run: async (client, interaction, guildSettings) => {
   try {
    const query = interaction.options.getString("query");
 
@@ -132,4 +132,4 @@ export default {
    client.errorMessages.internalError(interaction, err);
   }
  },
-};
+} satisfies SlashCommand;

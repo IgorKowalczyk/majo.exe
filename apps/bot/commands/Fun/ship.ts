@@ -1,14 +1,14 @@
+import type { SlashCommand } from "@/util/types/Command";
 import { percentageBar } from "@majoexe/util/functions/util";
-import { ApplicationCommandType, ApplicationCommandOptionType, EmbedBuilder, ChatInputCommandInteraction } from "discord.js";
-import type { Majobot } from "../..";
-import type { GuildSettings } from "../../util/types/Command";
+import { ApplicationCommandType, ApplicationCommandOptionType, EmbedBuilder, ApplicationIntegrationType, InteractionContextType } from "discord.js";
 
 export default {
  name: "ship",
  description: "❤️ Ship users together",
  type: ApplicationCommandType.ChatInput,
  cooldown: 3000,
- dm_permission: true,
+ contexts: [InteractionContextType.Guild, InteractionContextType.BotDM, InteractionContextType.PrivateChannel],
+ integrationTypes: [ApplicationIntegrationType.GuildInstall, ApplicationIntegrationType.UserInstall],
  usage: "/ship <user1> <user2>",
  options: [
   {
@@ -24,7 +24,7 @@ export default {
    required: true,
   },
  ],
- run: (client: Majobot, interaction: ChatInputCommandInteraction, guildSettings: GuildSettings) => {
+ run: async (client, interaction, guildSettings) => {
   try {
    const first = interaction.options.getUser("first");
    const second = interaction.options.getUser("second");
@@ -62,4 +62,4 @@ export default {
    client.errorMessages.internalError(interaction, err);
   }
  },
-};
+} satisfies SlashCommand;

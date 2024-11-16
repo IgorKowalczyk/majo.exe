@@ -1,5 +1,5 @@
 import { ChatInputCommandInteraction, EmbedBuilder, GuildMember, type ColorResolvable } from "discord.js";
-import type { Majobot } from "../..";
+import type { Majobot } from "@/index";
 
 export function getMemberInfo(client: Majobot, interaction: ChatInputCommandInteraction, color: ColorResolvable) {
  try {

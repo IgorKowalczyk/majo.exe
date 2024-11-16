@@ -1,17 +1,17 @@
+import type { SlashCommand } from "@/util/types/Command";
 import { loadImage, createCanvas, ImageData } from "@napi-rs/canvas";
 import decodeGif from "decode-gif";
-import { ApplicationCommandType, ApplicationCommandOptionType, AttachmentBuilder, EmbedBuilder, ChatInputCommandInteraction, User } from "discord.js";
+import { ApplicationCommandType, ApplicationCommandOptionType, AttachmentBuilder, EmbedBuilder, InteractionContextType, ApplicationIntegrationType } from "discord.js";
 // @ts-expect-error - No type definitions
 import GIFEncoder from "gif-encoder-2";
-import type { Majobot } from "../..";
-import type { GuildSettings } from "../../util/types/Command";
 
 export default {
  name: "flag",
  description: "🏳️ Put a country flag on image",
  type: ApplicationCommandType.ChatInput,
  cooldown: 5000,
- dm_permission: false,
+ contexts: [InteractionContextType.Guild, InteractionContextType.BotDM, InteractionContextType.PrivateChannel],
+ integrationTypes: [ApplicationIntegrationType.GuildInstall, ApplicationIntegrationType.UserInstall],
  usage: "/flag <country> [attachment/user]",
  options: [
   {
@@ -110,10 +110,7 @@ export default {
    ],
   },
  ],
- run: async (client: Majobot, interaction: ChatInputCommandInteraction, guildSettings: GuildSettings) => {
-  if (!interaction.guild) return client.errorMessages.createSlashError(interaction, "❌ This command can only be used in servers.");
-  if (!interaction.member) return client.errorMessages.createSlashError(interaction, "❌ You must be in a server to use this command.");
-
+ run: async (client, interaction, guildSettings) => {
   try {
    const countryFlags: { [key: string]: string } = {
     japan: "🇯🇵",
@@ -124,7 +121,7 @@ export default {
    };
    const subcommand = interaction.options.getSubcommand();
    const attachment = interaction.options.getAttachment("attachment");
-   const user = interaction.options.getUser("user") || (interaction.member.user as User);
+   const user = interaction.options.getUser("user") || interaction.user;
    let image;
 
    if (attachment) {
@@ -197,4 +194,4 @@ export default {
    client.errorMessages.internalError(interaction, err);
   }
  },
-};
+} satisfies SlashCommand;

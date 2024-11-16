@@ -1,14 +1,14 @@
+import type { SlashCommand } from "@/util/types/Command";
 import { loadImage, createCanvas } from "@napi-rs/canvas";
-import { ApplicationCommandType, ApplicationCommandOptionType, AttachmentBuilder, EmbedBuilder, ChatInputCommandInteraction, User } from "discord.js";
-import type { Majobot } from "../..";
-import type { GuildSettings } from "../../util/types/Command";
+import { ApplicationCommandType, ApplicationCommandOptionType, AttachmentBuilder, EmbedBuilder, InteractionContextType, ApplicationIntegrationType } from "discord.js";
 
 export default {
  name: "trash",
  description: "🗑️ Put someone or something in the trash",
  type: ApplicationCommandType.ChatInput,
  cooldown: 5000,
- dm_permission: false,
+ contexts: [InteractionContextType.Guild, InteractionContextType.BotDM, InteractionContextType.PrivateChannel],
+ integrationTypes: [ApplicationIntegrationType.GuildInstall, ApplicationIntegrationType.UserInstall],
  usage: "/trash [user/attachment]",
  options: [
   {
@@ -24,12 +24,10 @@ export default {
    required: false,
   },
  ],
- run: async (client: Majobot, interaction: ChatInputCommandInteraction, guildSettings: GuildSettings) => {
+ run: async (client, interaction, guildSettings) => {
   try {
-   if (!interaction.member) return client.errorMessages.createSlashError(interaction, "❌ Unable to get member data. Please try again.");
-
    const attachment = interaction.options.getAttachment("attachment");
-   const user = interaction.options.getUser("user") || (interaction.member.user as User);
+   const user = interaction.options.getUser("user") || interaction.user;
    let image;
 
    if (attachment) {
@@ -83,4 +81,4 @@ export default {
    client.errorMessages.internalError(interaction, err);
   }
  },
-};
+} satisfies SlashCommand;

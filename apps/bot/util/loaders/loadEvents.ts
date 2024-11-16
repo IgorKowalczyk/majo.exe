@@ -1,7 +1,7 @@
 import { basename } from "node:path";
 import { readDir } from "@majoexe/util/functions/files/readDir.js";
 import type { ClientEvents } from "discord.js";
-import type { Majobot } from "../..";
+import type { Majobot } from "@/index";
 
 export default async function loadEvents(client: Majobot): Promise<void> {
  try {

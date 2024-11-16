@@ -1,7 +1,6 @@
-import { ApplicationCommandType, ChatInputCommandInteraction, EmbedBuilder } from "discord.js";
+import type { SlashCommand } from "@/util/types/Command";
+import { ApplicationCommandType, ApplicationIntegrationType, EmbedBuilder, InteractionContextType } from "discord.js";
 import fetch from "node-fetch";
-import type { Majobot } from "../..";
-import type { GuildSettings } from "../../util/types/Command";
 
 interface Joke {
  type: string;
@@ -15,9 +14,10 @@ export default {
  description: "😂 Get a random joke",
  type: ApplicationCommandType.ChatInput,
  cooldown: 3000,
- dm_permission: true,
+ contexts: [InteractionContextType.Guild, InteractionContextType.BotDM, InteractionContextType.PrivateChannel],
+ integrationTypes: [ApplicationIntegrationType.GuildInstall, ApplicationIntegrationType.UserInstall],
  usage: "/joke",
- run: async (client: Majobot, interaction: ChatInputCommandInteraction, guildSettings: GuildSettings) => {
+ run: async (client, interaction, guildSettings) => {
   try {
    const joke = await fetch("https://official-joke-api.appspot.com/random_joke");
    if (!joke.ok) return client.errorMessages.createSlashError(interaction, "❌ No jokes found! Please try again later.");
@@ -43,4 +43,4 @@ export default {
    client.errorMessages.internalError(interaction, err);
   }
  },
-};
+} satisfies SlashCommand;

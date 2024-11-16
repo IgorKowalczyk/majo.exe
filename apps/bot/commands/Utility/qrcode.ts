@@ -1,14 +1,14 @@
-import { ApplicationCommandType, ApplicationCommandOptionType, EmbedBuilder, AttachmentBuilder, ChatInputCommandInteraction } from "discord.js";
+import { ApplicationCommandType, ApplicationCommandOptionType, EmbedBuilder, AttachmentBuilder, ApplicationIntegrationType, InteractionContextType } from "discord.js";
 import QRCode from "qrcode";
-import type { Majobot } from "../..";
-import type { GuildSettings } from "../../util/types/Command";
+import type { SlashCommand } from "@/util/types/Command";
 
 export default {
  name: "qrcode",
  description: "📱 Generate a QR code",
  type: ApplicationCommandType.ChatInput,
  cooldown: 5000,
- dm_permission: false,
+ contexts: [InteractionContextType.Guild, InteractionContextType.BotDM, InteractionContextType.PrivateChannel],
+ integrationTypes: [ApplicationIntegrationType.GuildInstall, ApplicationIntegrationType.UserInstall],
  usage: "/qrcode <text>",
  options: [
   {
@@ -19,7 +19,7 @@ export default {
    max_length: 512,
   },
  ],
- run: async (client: Majobot, interaction: ChatInputCommandInteraction, guildSettings: GuildSettings) => {
+ run: async (client, interaction, guildSettings) => {
   try {
    const text = interaction.options.getString("text");
    if (!text) return client.errorMessages.createSlashError(interaction, "❌ Please provide a valid text to generate a QR code.");
@@ -46,4 +46,4 @@ export default {
    client.errorMessages.internalError(interaction, err);
   }
  },
-};
+} satisfies SlashCommand;

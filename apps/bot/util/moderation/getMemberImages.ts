@@ -1,5 +1,5 @@
 import { EmbedBuilder, ActionRowBuilder, ButtonStyle, ButtonBuilder, ChatInputCommandInteraction, type ColorResolvable, GuildMember } from "discord.js";
-import type { Majobot } from "../..";
+import type { Majobot } from "@/index";
 
 export async function getUserAvatar(client: Majobot, interaction: ChatInputCommandInteraction, color: ColorResolvable) {
  try {

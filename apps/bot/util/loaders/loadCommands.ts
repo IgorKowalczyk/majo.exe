@@ -1,7 +1,7 @@
 import { readDir } from "@majoexe/util/functions/files/readDir.js";
 import { type ApplicationCommandOption, ApplicationCommandOptionType } from "discord.js";
-import type { Majobot } from "../..";
-import type { SlashCommand } from "../types/Command";
+import type { Majobot } from "@/index";
+import type { SlashCommand } from "@/util/types/Command";
 
 export default async function loadCommands(client: Majobot): Promise<void> {
  try {

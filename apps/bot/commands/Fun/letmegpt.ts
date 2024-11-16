@@ -1,13 +1,13 @@
-import { ApplicationCommandType, ApplicationCommandOptionType, EmbedBuilder, ButtonBuilder, ButtonStyle, ActionRowBuilder, type ChatInputCommandInteraction } from "discord.js";
-import type { Majobot } from "../..";
-import type { GuildSettings } from "../../util/types/Command";
+import type { SlashCommand } from "@/util/types/Command";
+import { ApplicationCommandType, ApplicationCommandOptionType, EmbedBuilder, ButtonBuilder, ButtonStyle, ActionRowBuilder, ApplicationIntegrationType, InteractionContextType } from "discord.js";
 
 export default {
  name: "letmegpt",
  description: "🔍 Let me GPT that for you",
  type: ApplicationCommandType.ChatInput,
  cooldown: 3000,
- dm_permission: true,
+ contexts: [InteractionContextType.Guild, InteractionContextType.BotDM, InteractionContextType.PrivateChannel],
+ integrationTypes: [ApplicationIntegrationType.GuildInstall, ApplicationIntegrationType.UserInstall],
  usage: "/lmgtfy <query>",
  options: [
   {
@@ -18,7 +18,7 @@ export default {
    max_length: 256,
   },
  ],
- run: (client: Majobot, interaction: ChatInputCommandInteraction, guildSettings: GuildSettings) => {
+ run: async (client, interaction, guildSettings) => {
   try {
    const query = interaction.options.getString("query");
    if (!query) return client.errorMessages.createSlashError(interaction, "❌ Please provide a valid search query.");
@@ -47,4 +47,4 @@ export default {
    client.errorMessages.internalError(interaction, err);
   }
  },
-};
+} satisfies SlashCommand;

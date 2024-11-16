@@ -1,20 +1,22 @@
+import type { SlashCommand } from "@/util/types/Command";
 import prismaClient from "@majoexe/database";
 import { fetchXPSettings } from "@majoexe/util/database";
-import { ApplicationCommandType, EmbedBuilder, ButtonBuilder, ActionRowBuilder, ButtonStyle, PermissionsBitField, ChatInputCommandInteraction } from "discord.js";
-import type { Majobot } from "../..";
-import type { GuildSettings } from "../../util/types/Command";
+import { ApplicationCommandType, EmbedBuilder, ButtonBuilder, ActionRowBuilder, ButtonStyle, PermissionsBitField, InteractionContextType, ApplicationIntegrationType } from "discord.js";
 
 export default {
  name: "leaderboard",
  description: "📈 Check 10 top users with most XP points",
  type: ApplicationCommandType.ChatInput,
  cooldown: 3000,
- dm_permission: false,
- run: async (client: Majobot, interaction: ChatInputCommandInteraction, guildSettings: GuildSettings) => {
+ usage: "/leaderboard",
+ contexts: [InteractionContextType.Guild],
+ integrationTypes: [ApplicationIntegrationType.GuildInstall],
+ run: async (client, interaction, guildSettings) => {
   try {
    if (!interaction.guild) return client.errorMessages.createSlashError(interaction, "❌ This command can only be used in a server.");
    if (!interaction.member) return client.errorMessages.createSlashError(interaction, "❌ You must be in a server to use this command.");
    if (!interaction.guildId) return client.errorMessages.createSlashError(interaction, "❌ Unable to get server data. Please try again.");
+   if (!guildSettings) return client.errorMessages.createSlashError(interaction, "❌ Unable to get server settings. Please try again.");
 
    const xpSettings = await fetchXPSettings(interaction.guild.id);
    if (!xpSettings || !xpSettings.enableXP) {
@@ -91,4 +93,4 @@ export default {
    client.errorMessages.internalError(interaction, err);
   }
  },
-};
+} satisfies SlashCommand;

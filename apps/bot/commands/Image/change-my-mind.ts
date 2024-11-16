@@ -1,15 +1,15 @@
 import { getLines } from "@majoexe/util/images";
 import { loadImage, createCanvas } from "@napi-rs/canvas";
-import { ApplicationCommandType, ApplicationCommandOptionType, AttachmentBuilder, EmbedBuilder, ChatInputCommandInteraction } from "discord.js";
-import type { Majobot } from "../..";
-import type { GuildSettings } from "../../util/types/Command";
+import { ApplicationCommandType, ApplicationCommandOptionType, AttachmentBuilder, EmbedBuilder, InteractionContextType, ApplicationIntegrationType } from "discord.js";
+import type { SlashCommand } from "@/util/types/Command";
 
 export default {
  name: "change-my-mind",
  description: "🤔 Change my mind",
  type: ApplicationCommandType.ChatInput,
  cooldown: 5000,
- dm_permission: false,
+ contexts: [InteractionContextType.Guild, InteractionContextType.BotDM, InteractionContextType.PrivateChannel],
+ integrationTypes: [ApplicationIntegrationType.GuildInstall, ApplicationIntegrationType.UserInstall],
  usage: "/change-my-mind [text]",
  options: [
   {
@@ -20,7 +20,7 @@ export default {
    max_length: 120,
   },
  ],
- run: async (client: Majobot, interaction: ChatInputCommandInteraction, guildSettings: GuildSettings) => {
+ run: async (client, interaction, guildSettings) => {
   try {
    const text = interaction.options.getString("text");
    if (!text) return client.errorMessages.createSlashError(interaction, "❌ Please provide a valid text to put on the sign.");
@@ -85,4 +85,4 @@ export default {
    client.errorMessages.internalError(interaction, err);
   }
  },
-};
+} satisfies SlashCommand;

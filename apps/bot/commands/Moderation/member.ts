@@ -1,19 +1,20 @@
-import { ApplicationCommandType, ApplicationCommandOptionType, PermissionFlagsBits, ChatInputCommandInteraction } from "discord.js";
-import type { Majobot } from "../..";
-import { banMember } from "../../util/moderation/ban";
-import { changememberNickname } from "../../util/moderation/changeMemberNickname";
-import { getUserAvatar, getUserBanner } from "../../util/moderation/getMemberImages";
-import { getMemberInfo } from "../../util/moderation/getMemberInfo";
-import { kickMember } from "../../util/moderation/kick";
-import { unBanMember } from "../../util/moderation/unban";
-import type { GuildSettings } from "../../util/types/Command";
+import { ApplicationCommandType, ApplicationCommandOptionType, PermissionFlagsBits, InteractionContextType, ApplicationIntegrationType } from "discord.js";
+import { banMember } from "@/util/moderation/ban";
+import { changememberNickname } from "@/util/moderation/changeMemberNickname";
+import { getUserAvatar, getUserBanner } from "@/util/moderation/getMemberImages";
+import { getMemberInfo } from "@/util/moderation/getMemberInfo";
+import { kickMember } from "@/util/moderation/kick";
+import { unBanMember } from "@/util/moderation/unban";
+import type { SlashCommand } from "@/util/types/Command";
 
 export default {
  name: "member",
  description: "👋 Modify user on this server",
  type: ApplicationCommandType.ChatInput,
  cooldown: 5000,
- dm_permission: false,
+ contexts: [InteractionContextType.Guild],
+ defaultMemberPermissions: [PermissionFlagsBits.ManageGuild, PermissionFlagsBits.ManageRoles, PermissionFlagsBits.ManageNicknames, PermissionFlagsBits.KickMembers, PermissionFlagsBits.BanMembers],
+ integrationTypes: [ApplicationIntegrationType.GuildInstall],
  usage: "/member <subcommand>",
  options: [
   {
@@ -21,7 +22,7 @@ export default {
    description: "🔐 Ban user from this server",
    type: ApplicationCommandOptionType.Subcommand,
    usage: "/member ban <reason>",
-   defaultMemberPermissions: [PermissionFlagsBits.BanMembers],
+   //defaultMemberPermissions: [PermissionFlagsBits.BanMembers],
    options: [
     {
      name: "user",
@@ -43,7 +44,7 @@ export default {
    description: "🔓 Unban user from this server",
    type: ApplicationCommandOptionType.Subcommand,
    usage: "/member unban <reason>",
-   defaultMemberPermissions: [PermissionFlagsBits.BanMembers],
+   //defaultMemberPermissions: [PermissionFlagsBits.BanMembers],
    options: [
     {
      name: "user_id",
@@ -65,7 +66,7 @@ export default {
    description: "🔐 Kick user from this server",
    type: ApplicationCommandOptionType.Subcommand,
    usage: "/member kick <reason>",
-   defaultMemberPermissions: [PermissionFlagsBits.KickMembers],
+   //defaultMemberPermissions: [PermissionFlagsBits.KickMembers],
    options: [
     {
      name: "user",
@@ -140,7 +141,7 @@ export default {
    description: "🏷️ Set/remove nickname for user",
    type: ApplicationCommandOptionType.SubcommandGroup,
    usage: "/member nickname set <user> <nickname> | /member nickname remove <user>",
-   defaultMemberPermissions: [PermissionFlagsBits.ManageNicknames],
+   //defaultMemberPermissions: [PermissionFlagsBits.ManageNicknames],
    options: [
     {
      name: "set",
@@ -166,8 +167,7 @@ export default {
      name: "remove",
      description: "🏷️ Remove nickname for user",
      type: ApplicationCommandOptionType.Subcommand,
-     usage: "/member nickname remove <user>",
-     defaultMemberPermissions: [PermissionFlagsBits.ManageNicknames],
+     //defaultMemberPermissions: [PermissionFlagsBits.ManageNicknames],
      options: [
       {
        name: "user",
@@ -180,7 +180,7 @@ export default {
    ],
   },
  ],
- run: async (client: Majobot, interaction: ChatInputCommandInteraction, guildSettings: GuildSettings) => {
+ run: async (client, interaction, guildSettings) => {
   const command = interaction.options.getSubcommandGroup();
   const subcommand = interaction.options.getSubcommand();
 
@@ -201,4 +201,4 @@ export default {
    await changememberNickname(client, interaction, guildSettings?.embedColor || client.config.defaultColor, subcommand);
   }
  },
-};
+} satisfies SlashCommand;

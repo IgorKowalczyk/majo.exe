@@ -1,19 +1,20 @@
-import { ApplicationCommandType, ApplicationCommandOptionType, ChannelType, PermissionFlagsBits, type ChatInputCommandInteraction } from "discord.js";
-import type { Majobot } from "../../index";
-import { EndGiveaway } from "../../util/giveaway/endGiveaway";
-import { FindGiveaways } from "../../util/giveaway/findGiveaways";
-import { PauseGiveaway } from "../../util/giveaway/pauseGiveaway";
-import { RerollGiveaway } from "../../util/giveaway/rerollGiveaway";
-import { ResumeGiveaway } from "../../util/giveaway/resumeGiveaway";
-import { StartDropGiveaway, StartGiveaway } from "../../util/giveaway/startGiveaway";
-import type { GuildSettings } from "../../util/types/Command";
+import { ApplicationCommandType, ApplicationCommandOptionType, ChannelType, PermissionFlagsBits, ApplicationIntegrationType, InteractionContextType } from "discord.js";
+import { EndGiveaway } from "@/util/giveaway/endGiveaway";
+import { FindGiveaways } from "@/util/giveaway/findGiveaways";
+import { PauseGiveaway } from "@/util/giveaway/pauseGiveaway";
+import { RerollGiveaway } from "@/util/giveaway/rerollGiveaway";
+import { ResumeGiveaway } from "@/util/giveaway/resumeGiveaway";
+import { StartDropGiveaway, StartGiveaway } from "@/util/giveaway/startGiveaway";
+import type { SlashCommand } from "@/util/types/Command";
 
 export default {
  name: "giveaway",
  description: "🎉 Manage giveaway's",
  type: ApplicationCommandType.ChatInput,
  cooldown: 3000,
- dm_permission: false,
+ contexts: [InteractionContextType.Guild],
+ integrationTypes: [ApplicationIntegrationType.GuildInstall],
+ defaultMemberPermissions: [PermissionFlagsBits.ManageGuild],
  defer: false,
  usage: "/giveaway <command>",
  options: [
@@ -21,7 +22,7 @@ export default {
    name: "start",
    description: "🎉 Start giveaway",
    type: ApplicationCommandOptionType.Subcommand,
-   defaultMemberPermissions: [PermissionFlagsBits.ManageGuild],
+   //defaultMemberPermissions: [PermissionFlagsBits.ManageGuild],
    usage: "/giveaway start <time> <winners> <channel> <prize>",
    options: [
     {
@@ -60,7 +61,7 @@ export default {
    name: "drop",
    description: "🎉 Create a drop giveaway",
    type: ApplicationCommandOptionType.Subcommand,
-   defaultMemberPermissions: [PermissionFlagsBits.ManageGuild],
+   //defaultMemberPermissions: [PermissionFlagsBits.ManageGuild],
    usage: "/drop-giveaway <winners> <channel> <prize>",
    options: [
     {
@@ -91,7 +92,7 @@ export default {
    name: "end",
    description: "🎉 End a giveaway",
    type: ApplicationCommandOptionType.Subcommand,
-   defaultMemberPermissions: [PermissionFlagsBits.ManageGuild],
+   //defaultMemberPermissions: [PermissionFlagsBits.ManageGuild],
    usage: "/giveaway end <giveaway id>",
    options: [
     {
@@ -107,7 +108,7 @@ export default {
    name: "pause",
    description: "🎉 Pause a giveaway",
    type: ApplicationCommandOptionType.Subcommand,
-   defaultMemberPermissions: [PermissionFlagsBits.ManageGuild],
+   //defaultMemberPermissions: [PermissionFlagsBits.ManageGuild],
    usage: "/giveaway pause <giveaway id>",
    options: [
     {
@@ -123,7 +124,7 @@ export default {
    name: "resume",
    description: "🎉 Resume a giveaway",
    type: ApplicationCommandOptionType.Subcommand,
-   defaultMemberPermissions: [PermissionFlagsBits.ManageGuild],
+   //defaultMemberPermissions: [PermissionFlagsBits.ManageGuild],
    usage: "/giveaway resume <giveaway id>",
    options: [
     {
@@ -139,26 +140,26 @@ export default {
    name: "list",
    description: "🎉 Get list of all giveaways",
    type: ApplicationCommandOptionType.SubcommandGroup,
-   defaultMemberPermissions: [PermissionFlagsBits.ManageGuild],
+   //defaultMemberPermissions: [PermissionFlagsBits.ManageGuild],
    usage: "/giveaway list",
    options: [
     {
      name: "all",
      description: "🎉 Get list of all giveaways",
      type: ApplicationCommandOptionType.Subcommand,
-     usage: "/giveaway list all",
+     //usage: "/giveaway list all",
     },
     {
      name: "running",
      description: "🎉 Get list of all running giveaways",
      type: ApplicationCommandOptionType.Subcommand,
-     usage: "/giveaway list running",
+     //usage: "/giveaway list running",
     },
     {
      name: "ended",
      description: "🎉 Get list of all ended giveaways",
      type: ApplicationCommandOptionType.Subcommand,
-     usage: "/giveaway list ended",
+     //usage: "/giveaway list ended",
     },
    ],
   },
@@ -166,7 +167,7 @@ export default {
    name: "reroll",
    description: "🎉 Reroll a giveaway",
    type: ApplicationCommandOptionType.Subcommand,
-   defaultMemberPermissions: [PermissionFlagsBits.ManageGuild],
+   //defaultMemberPermissions: [PermissionFlagsBits.ManageGuild],
    usage: "/giveaway reroll <giveaway id>",
    options: [
     {
@@ -179,7 +180,7 @@ export default {
    ],
   },
  ],
- run: async (client: Majobot, interaction: ChatInputCommandInteraction, guildSettings: GuildSettings) => {
+ run: async (client, interaction, guildSettings) => {
   try {
    const type = interaction.options.getSubcommand();
 
@@ -202,4 +203,4 @@ export default {
    client.errorMessages.internalError(interaction, err);
   }
  },
-};
+} satisfies SlashCommand;

@@ -1,6 +1,6 @@
 import { readDir } from "@majoexe/util/functions/files/readDir.js";
 import { GlobalFonts } from "@napi-rs/canvas";
-import type { Majobot } from "../..";
+import type { Majobot } from "@/index";
 
 export default async function loadFonts(client: Majobot): Promise<void> {
  try {

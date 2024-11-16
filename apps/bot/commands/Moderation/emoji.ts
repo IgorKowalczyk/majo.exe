@@ -1,16 +1,17 @@
 /* eslint-disable complexity */
 
-import { ApplicationCommandType, ApplicationCommandOptionType, EmbedBuilder, PermissionsBitField, codeBlock, PermissionFlagsBits, ChatInputCommandInteraction, type GuildEmoji } from "discord.js";
+import type { SlashCommand } from "@/util/types/Command";
+import { ApplicationCommandType, ApplicationCommandOptionType, EmbedBuilder, PermissionsBitField, codeBlock, PermissionFlagsBits, type GuildEmoji, InteractionContextType, ApplicationIntegrationType } from "discord.js";
 import isURL from "validator/lib/isURL";
-import type { Majobot } from "../..";
-import type { GuildSettings } from "../../util/types/Command";
 
 export default {
  name: "emoji",
  description: "🎨 Manage emojis on this server",
  type: ApplicationCommandType.ChatInput,
  cooldown: 5000,
- dm_permission: false,
+ contexts: [InteractionContextType.Guild],
+ integrationTypes: [ApplicationIntegrationType.GuildInstall],
+ defaultMemberPermissions: [PermissionFlagsBits.ManageGuild],
  usage: "/emoji create <emoji name> <emoji url> | /emoji delete <emoji> | /emoji info <emoji> | /emoji steal <new emoji name> <emoji> | /emoji list",
  options: [
   {
@@ -18,7 +19,7 @@ export default {
    description: "🎨 Create an emoji on this server",
    type: ApplicationCommandOptionType.Subcommand,
    usage: "/emoji create <emoji name> <emoji url>",
-   defaultMemberPermissions: [PermissionFlagsBits.ManageGuildExpressions],
+   //defaultMemberPermissions: [PermissionFlagsBits.ManageGuildExpressions],
    options: [
     {
      name: "emoji_name",
@@ -39,7 +40,7 @@ export default {
    description: "🎨 Delete an emoji from this server",
    type: ApplicationCommandOptionType.Subcommand,
    usage: "/emoji delete <emoji>",
-   defaultMemberPermissions: [PermissionFlagsBits.ManageGuildExpressions],
+   //defaultMemberPermissions: [PermissionFlagsBits.ManageGuildExpressions],
    options: [
     {
      name: "emoji",
@@ -70,7 +71,7 @@ export default {
    usage: "/emoji list",
   },
  ],
- run: async (client: Majobot, interaction: ChatInputCommandInteraction, guildSettings: GuildSettings) => {
+ run: async (client, interaction, guildSettings) => {
   if (!interaction.guild) return client.errorMessages.createSlashError(interaction, "❌ This command can only be used in a server.");
   if (!interaction.member) return client.errorMessages.createSlashError(interaction, "❌ You must be in a server to use this command.");
   if (!interaction.guildId) return client.errorMessages.createSlashError(interaction, "❌ Unable to get server data. Please try again.");
@@ -323,4 +324,4 @@ export default {
   }
   // #endregion
  },
-};
+} satisfies SlashCommand;

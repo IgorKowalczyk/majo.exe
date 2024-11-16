@@ -1,15 +1,16 @@
+import type { SlashCommand } from "@/util/types/Command";
 import prismaClient from "@majoexe/database";
 import { shortenText } from "@majoexe/util/functions/util";
-import { ApplicationCommandType, ApplicationCommandOptionType, ChannelType, PermissionsBitField, EmbedBuilder, PermissionFlagsBits, codeBlock, ChatInputCommandInteraction, TextChannel } from "discord.js";
-import type { Majobot } from "../..";
-import type { GuildSettings } from "../../util/types/Command";
+import { ApplicationCommandType, ApplicationCommandOptionType, ChannelType, PermissionsBitField, EmbedBuilder, PermissionFlagsBits, codeBlock, TextChannel, InteractionContextType, ApplicationIntegrationType } from "discord.js";
 
 export default {
  name: "leave",
- description: "👋 Leave new members",
+ description: "👋 Setup leave messages for your server",
  type: ApplicationCommandType.ChatInput,
  cooldown: 2000,
- dm_permission: false,
+ contexts: [InteractionContextType.Guild],
+ integrationTypes: [ApplicationIntegrationType.GuildInstall],
+ defaultMemberPermissions: [PermissionFlagsBits.ManageGuild],
  usage: "/leave <subcommand>",
  options: [
   {
@@ -51,8 +52,7 @@ export default {
    type: ApplicationCommandOptionType.Subcommand,
   },
  ],
- permissions: [PermissionFlagsBits.ManageGuild],
- run: async (client: Majobot, interaction: ChatInputCommandInteraction, guildSettings: GuildSettings) => {
+ run: async (client, interaction, guildSettings) => {
   try {
    if (!interaction.guild) return client.errorMessages.createSlashError(interaction, "❌ This command can only be used in a server.");
    if (!interaction.member) return client.errorMessages.createSlashError(interaction, "❌ You must be in a server to use this command.");
@@ -231,4 +231,4 @@ export default {
    client.errorMessages.internalError(interaction, err);
   }
  },
-};
+} satisfies SlashCommand;

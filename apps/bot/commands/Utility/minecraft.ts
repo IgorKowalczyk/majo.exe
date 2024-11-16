@@ -1,7 +1,6 @@
-import { ApplicationCommandType, ApplicationCommandOptionType, EmbedBuilder, ChatInputCommandInteraction } from "discord.js";
+import type { SlashCommand } from "@/util/types/Command";
+import { ApplicationCommandType, ApplicationCommandOptionType, EmbedBuilder, ApplicationIntegrationType, InteractionContextType } from "discord.js";
 import fetch from "node-fetch";
-import type { Majobot } from "../..";
-import type { GuildSettings } from "../../util/types/Command";
 
 interface MinecraftServer {
  ip: string;
@@ -31,7 +30,8 @@ export default {
  description: "🌳 Display minecraft server info",
  type: ApplicationCommandType.ChatInput,
  cooldown: 5000,
- dm_permission: false,
+ contexts: [InteractionContextType.Guild, InteractionContextType.BotDM, InteractionContextType.PrivateChannel],
+ integrationTypes: [ApplicationIntegrationType.GuildInstall, ApplicationIntegrationType.UserInstall],
  usage: "/minecraft <server ip> [bedrock]",
  options: [
   {
@@ -47,7 +47,7 @@ export default {
    type: ApplicationCommandOptionType.Boolean,
   },
  ],
- run: async (client: Majobot, interaction: ChatInputCommandInteraction, guildSettings: GuildSettings) => {
+ run: async (client, interaction, guildSettings) => {
   try {
    const serverIp = interaction.options.getString("server_ip");
    if (!serverIp) return client.errorMessages.createSlashError(interaction, "❌ Please provide a valid server IP.");
@@ -186,4 +186,4 @@ export default {
    client.errorMessages.internalError(interaction, err);
   }
  },
-};
+} satisfies SlashCommand;

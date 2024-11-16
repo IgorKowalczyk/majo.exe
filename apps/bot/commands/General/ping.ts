@@ -1,7 +1,6 @@
+import type { SlashCommand } from "@/util/types/Command";
 import prismaClient from "@majoexe/database";
-import { ApplicationCommandType, EmbedBuilder, codeBlock, Status, ChatInputCommandInteraction } from "discord.js";
-import type { Majobot } from "../..";
-import type { GuildSettings } from "../../util/types/Command";
+import { ApplicationCommandType, EmbedBuilder, codeBlock, Status, ApplicationIntegrationType, InteractionContextType } from "discord.js";
 
 export default {
  name: "ping",
@@ -9,20 +8,18 @@ export default {
  type: ApplicationCommandType.ChatInput,
  cooldown: 3000,
  usage: "/ping",
- dm_permission: true,
- run: async (client: Majobot, interaction: ChatInputCommandInteraction, guildSettings: GuildSettings) => {
+ contexts: [InteractionContextType.Guild, InteractionContextType.BotDM, InteractionContextType.PrivateChannel],
+ integrationTypes: [ApplicationIntegrationType.GuildInstall, ApplicationIntegrationType.UserInstall],
+ run: async (client, interaction, guildSettings) => {
   try {
-   if (!interaction.guild) return client.errorMessages.createSlashError(interaction, "❌ This command can only be used in a server.");
-
    const dbTime = performance.now();
    await prismaClient.user.findUnique({ where: { id: "1" } });
    const dbTiming = performance.now() - dbTime;
 
-   const waitEmbed = new EmbedBuilder().setColor(guildSettings?.embedColor || client.config.defaultColor).setDescription("🏓 Pong!...");
+   const waitEmbed = new EmbedBuilder() // prettier
+    .setColor(guildSettings?.embedColor || client.config.defaultColor)
+    .setDescription("🏓 Pong!...");
    const message = await interaction.followUp({ embeds: [waitEmbed] });
-   const thisServerShard = client.ws.shards.get(interaction.guild.shardId);
-
-   if (!thisServerShard) return client.errorMessages.createSlashError(interaction, "❌ Shard not found. Please try again later.");
 
    const pingMessage = new EmbedBuilder()
     .setColor(guildSettings?.embedColor || client.config.defaultColor)
@@ -44,6 +41,19 @@ export default {
       value: codeBlock("yaml", `${Math.floor(dbTiming)}ms`),
       inline: true,
      },
+    ])
+    .setFooter({
+     text: `Requested by ${interaction.user.globalName || interaction.user.username}`,
+     iconURL: interaction.user.displayAvatarURL({
+      size: 256,
+     }),
+    });
+
+   if (interaction.guild) {
+    const thisServerShard = client.ws.shards.get(interaction.guild.shardId);
+    if (!thisServerShard) return interaction.editReply({ embeds: [pingMessage] });
+
+    pingMessage.addFields([
      {
       name: "Websocket",
       value: codeBlock("yaml", `${Status[thisServerShard.status]}`),
@@ -54,16 +64,12 @@ export default {
       value: codeBlock("yaml", `${thisServerShard.id}/${client.ws.shards.size} (${thisServerShard.ping > 0 ? `${Math.floor(thisServerShard.ping)}ms` : "Calculating..."})`),
       inline: true,
      },
-    ])
-    .setFooter({
-     text: `Requested by ${interaction.user.globalName || interaction.user.username}`,
-     iconURL: interaction.user.displayAvatarURL({
-      size: 256,
-     }),
-    });
-   await message.edit({ embeds: [pingMessage] });
+    ]);
+   }
+
+   await interaction.editReply({ embeds: [pingMessage] });
   } catch (err) {
    client.errorMessages.internalError(interaction, err);
   }
  },
-};
+} satisfies SlashCommand;

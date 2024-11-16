@@ -1,3 +1,9 @@
 {
- "extends": "@majoexe/typescript-config/base"
+ "extends": "@majoexe/typescript-config/base",
+ "compilerOptions": {
+  "baseUrl": ".",
+  "paths": {
+   "@/*": ["./*"]
+  }
+ }
 }

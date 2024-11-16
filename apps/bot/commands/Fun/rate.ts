@@ -1,12 +1,13 @@
-import { ApplicationCommandType, ApplicationCommandOptionType, EmbedBuilder, type ChatInputCommandInteraction, type ColorResolvable } from "discord.js";
-import type { Majobot } from "../..";
+import type { SlashCommand } from "@/util/types/Command";
+import { ApplicationCommandType, ApplicationCommandOptionType, EmbedBuilder, type ColorResolvable, ApplicationIntegrationType, InteractionContextType } from "discord.js";
 
 export default {
  name: "rate",
  description: "📈 Rate something",
  type: ApplicationCommandType.ChatInput,
  cooldown: 3000,
- dm_permission: true,
+ contexts: [InteractionContextType.Guild, InteractionContextType.BotDM, InteractionContextType.PrivateChannel],
+ integrationTypes: [ApplicationIntegrationType.GuildInstall, ApplicationIntegrationType.UserInstall],
  usage: "/rate (thing)",
  options: [
   {
@@ -17,7 +18,7 @@ export default {
    required: true,
   },
  ],
- run: (client: Majobot, interaction: ChatInputCommandInteraction) => {
+ run: async (client, interaction) => {
   try {
    const thing = interaction.options.getString("thing");
    const rate = Math.floor(Math.random() * 100) + 1;
@@ -46,4 +47,4 @@ export default {
    client.errorMessages.internalError(interaction, err);
   }
  },
-};
+} satisfies SlashCommand;

@@ -1,5 +1,5 @@
 import { PresenceUpdateStatus, ActivityType } from "discord.js";
-import type { Majobot } from "../..";
+import type { Majobot } from "@/index";
 
 export async function ready(client: Majobot) {
  if (!client.user) return client.debugger("error", "Client user is not available!");

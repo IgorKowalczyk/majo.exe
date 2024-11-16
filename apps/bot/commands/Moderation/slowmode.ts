@@ -1,16 +1,16 @@
-import { ApplicationCommandType, ApplicationCommandOptionType, PermissionsBitField, EmbedBuilder, PermissionFlagsBits, ChatInputCommandInteraction, ChannelType, GuildMember } from "discord.js";
+import type { SlashCommand } from "@/util/types/Command";
+import { ApplicationCommandType, ApplicationCommandOptionType, PermissionsBitField, EmbedBuilder, PermissionFlagsBits, ChannelType, GuildMember, InteractionContextType, ApplicationIntegrationType } from "discord.js";
 import ms from "ms";
-import type { Majobot } from "../..";
-import type { GuildSettings } from "../../util/types/Command";
 
 export default {
  name: "slowmode",
  description: "🕐 Set the slowmode for a channel",
  type: ApplicationCommandType.ChatInput,
  cooldown: 2000,
- dm_permission: false,
- usage: "/slowmode <time>",
+ integrationTypes: [ApplicationIntegrationType.GuildInstall],
+ contexts: [InteractionContextType.Guild],
  defaultMemberPermissions: [PermissionFlagsBits.ManageChannels],
+ usage: "/slowmode <time>",
  options: [
   {
    name: "time",
@@ -19,7 +19,7 @@ export default {
    required: true,
   },
  ],
- run: async (client: Majobot, interaction: ChatInputCommandInteraction, guildSettings: GuildSettings) => {
+ run: async (client, interaction, guildSettings) => {
   try {
    if (!interaction.guild) return client.errorMessages.createSlashError(interaction, "❌ This command can only be used in a server.");
    if (!interaction.member) return client.errorMessages.createSlashError(interaction, "❌ You must be in a server to use this command.");
@@ -71,4 +71,4 @@ export default {
    client.errorMessages.internalError(interaction, err);
   }
  },
-};
+} satisfies SlashCommand;

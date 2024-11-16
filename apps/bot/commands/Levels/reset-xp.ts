@@ -1,15 +1,15 @@
+import type { SlashCommand } from "@/util/types/Command";
 import { resetXP, fetchXPSettings } from "@majoexe/util/database";
-import { ApplicationCommandType, ApplicationCommandOptionType, PermissionFlagsBits, EmbedBuilder, ChatInputCommandInteraction } from "discord.js";
-import type { Majobot } from "../..";
-import type { GuildSettings } from "../../util/types/Command";
+import { ApplicationCommandType, ApplicationCommandOptionType, PermissionFlagsBits, EmbedBuilder, InteractionContextType, ApplicationIntegrationType } from "discord.js";
 
 export default {
  name: "reset-xp",
  description: "📈 Reset a user's XP",
  type: ApplicationCommandType.ChatInput,
  cooldown: 3000,
- dm_permission: false,
  usage: "/reset <user>",
+ contexts: [InteractionContextType.Guild],
+ integrationTypes: [ApplicationIntegrationType.GuildInstall],
  defaultMemberPermissions: [PermissionFlagsBits.Administrator],
  options: [
   {
@@ -19,11 +19,12 @@ export default {
    required: true,
   },
  ],
- run: async (client: Majobot, interaction: ChatInputCommandInteraction, guildSettings: GuildSettings) => {
+ run: async (client, interaction, guildSettings) => {
   try {
    if (!interaction.guild) return client.errorMessages.createSlashError(interaction, "❌ This command can only be used in a server.");
    if (!interaction.member) return client.errorMessages.createSlashError(interaction, "❌ You must be in a server to use this command.");
    if (!interaction.guildId) return client.errorMessages.createSlashError(interaction, "❌ Unable to get server data. Please try again.");
+   if (!guildSettings) return client.errorMessages.createSlashError(interaction, "❌ Unable to get server settings. Please try again.");
 
    const xpSettings = await fetchXPSettings(interaction.guild.id);
    if (!xpSettings || !xpSettings.enableXP) {
@@ -53,4 +54,4 @@ export default {
    client.errorMessages.internalError(interaction, err);
   }
  },
-};
+} satisfies SlashCommand;

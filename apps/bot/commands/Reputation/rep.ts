@@ -1,16 +1,16 @@
+import type { SlashCommand } from "@/util/types/Command";
 import { cacheGet, cacheSet } from "@majoexe/database/redis";
 import { checkReputation, giveReputation, takeReputation, setReputation } from "@majoexe/util/database";
 import { formatDuration } from "@majoexe/util/functions/util";
-import { ApplicationCommandType, ApplicationCommandOptionType, EmbedBuilder, PermissionFlagsBits, ChatInputCommandInteraction, PermissionsBitField } from "discord.js";
-import type { Majobot } from "../..";
-import type { GuildSettings } from "../../util/types/Command";
+import { ApplicationCommandType, ApplicationCommandOptionType, EmbedBuilder, PermissionFlagsBits, PermissionsBitField, InteractionContextType, ApplicationIntegrationType } from "discord.js";
 
 export default {
  name: "rep",
  description: "👍 Get the reputation of a user",
  type: ApplicationCommandType.ChatInput,
  cooldown: 5000,
- dm_permission: false,
+ contexts: [InteractionContextType.Guild],
+ integrationTypes: [ApplicationIntegrationType.GuildInstall],
  usage: "/rep <command>",
  options: [
   {
@@ -60,7 +60,7 @@ export default {
    description: "👍 Set the reputation of a user",
    type: ApplicationCommandOptionType.Subcommand,
    usage: "/rep set <user> <amount>",
-   defaultMemberPermissions: [PermissionFlagsBits.Administrator],
+   //defaultMemberPermissions: [PermissionFlagsBits.Administrator],
    options: [
     {
      name: "user",
@@ -77,7 +77,7 @@ export default {
    ],
   },
  ],
- run: async (client: Majobot, interaction: ChatInputCommandInteraction, guildSettings: GuildSettings) => {
+ run: async (client, interaction, guildSettings) => {
   try {
    const type = interaction.options.getSubcommand();
    if (!interaction.guild) return client.errorMessages.createSlashError(interaction, "❌ This command can only be used in a server.");
@@ -218,4 +218,4 @@ export default {
    client.errorMessages.internalError(interaction, err);
   }
  },
-};
+} satisfies SlashCommand;

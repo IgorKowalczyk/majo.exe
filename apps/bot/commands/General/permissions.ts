@@ -1,6 +1,5 @@
-import { ApplicationCommandType, ChatInputCommandInteraction, EmbedBuilder, PermissionsBitField, codeBlock } from "discord.js";
-import type { Majobot } from "../..";
-import type { GuildSettings } from "../../util/types/Command";
+import { ApplicationCommandType, ApplicationIntegrationType, EmbedBuilder, InteractionContextType, PermissionsBitField, codeBlock } from "discord.js";
+import type { SlashCommand } from "@/util/types/Command";
 
 function convertCamelCaseToWords(text: string) {
  return text.replace(/([A-Z])/g, " $1").replace(/^./, (str) => {
@@ -13,12 +12,14 @@ export default {
  description: "🎛️ Check Majo.exe's permissions in your server",
  type: ApplicationCommandType.ChatInput,
  cooldown: 5000,
- dm_permission: false,
+ contexts: [InteractionContextType.Guild],
+ integrationTypes: [ApplicationIntegrationType.GuildInstall],
  usage: "/permissions",
- run: (client: Majobot, interaction: ChatInputCommandInteraction, guildSettings: GuildSettings) => {
+ run: async (client, interaction, guildSettings) => {
   try {
    if (!client.user) return client.errorMessages.createSlashError(interaction, "❌ Bot is not ready yet. Please try again later.");
    if (!interaction.guild) return client.errorMessages.createSlashError(interaction, "❌ This command can only be used in a server.");
+   if (!guildSettings) return client.errorMessages.createSlashError(interaction, "❌ Guild settings not found. Please try again later.");
 
    const clientMember = interaction.guild.members.cache.get(client.user.id);
    if (!clientMember) return client.errorMessages.createSlashError(interaction, "❌ Bot is not in the server.");
@@ -48,4 +49,4 @@ export default {
    client.errorMessages.internalError(interaction, err);
   }
  },
-};
+} satisfies SlashCommand;

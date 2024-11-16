@@ -1,14 +1,15 @@
-import { ApplicationCommandType, ChannelType, ApplicationCommandOptionType, PermissionsBitField, PermissionFlagsBits, ChatInputCommandInteraction } from "discord.js";
-import type { Majobot } from "../..";
-import { autoModSettings, disableAntiBadWords, enableAntiBadWords, disableAntiInvite, enableAntiInvite, disableAntiLink, enableAntiLink, disableAntiMention, enableAntiMention, disableAntiSpam, enableAntiSpam } from "../../util/moderation/automod/index";
-import type { GuildSettings } from "../../util/types/Command";
+import { ApplicationCommandType, ChannelType, ApplicationCommandOptionType, PermissionsBitField, PermissionFlagsBits, InteractionContextType, ApplicationIntegrationType } from "discord.js";
+import { autoModSettings, disableAntiBadWords, enableAntiBadWords, disableAntiInvite, enableAntiInvite, disableAntiLink, enableAntiLink, disableAntiMention, enableAntiMention, disableAntiSpam, enableAntiSpam } from "@/util/moderation/automod/index";
+import type { SlashCommand } from "@/util/types/Command";
 
 export default {
  name: "automod",
  description: "🤖 Configure Automoderation for your server",
  type: ApplicationCommandType.ChatInput,
  cooldown: 4000,
- dm_permission: false,
+ contexts: [InteractionContextType.Guild],
+ integrationTypes: [ApplicationIntegrationType.GuildInstall],
+ defaultMemberPermissions: [PermissionFlagsBits.ManageGuild],
  usage: "/automod <subcommand>",
  options: [
   {
@@ -262,12 +263,12 @@ export default {
    ],
   },
  ],
- permissions: [PermissionFlagsBits.ManageGuild],
- run: async (client: Majobot, interaction: ChatInputCommandInteraction, guildSettings: GuildSettings) => {
+ run: async (client, interaction, guildSettings) => {
   try {
    if (!interaction.guild) return client.errorMessages.createSlashError(interaction, "❌ This command can only be used in a server.");
    if (!interaction.member) return client.errorMessages.createSlashError(interaction, "❌ You must be in a server to use this command.");
    if (!interaction.guild.members.me) return client.errorMessages.createSlashError(interaction, "❌ Unable to get server data. Please try again.");
+   if (!guildSettings) return client.errorMessages.createSlashError(interaction, "❌ Unable to get server settings. Please try again later.");
 
    const memberPermissions = interaction.member.permissions as PermissionsBitField;
 
@@ -319,4 +320,4 @@ export default {
    client.errorMessages.internalError(interaction, err);
   }
  },
-};
+} satisfies SlashCommand;

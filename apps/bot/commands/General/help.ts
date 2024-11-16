@@ -1,7 +1,6 @@
+import type { SlashCommand } from "@/util/types/Command";
 import { formatDuration } from "@majoexe/util/functions/util";
-import { ApplicationCommandType, ApplicationCommandOptionType, EmbedBuilder, codeBlock, ActionRowBuilder, ButtonBuilder, ButtonStyle, StringSelectMenuBuilder, ComponentType, AutocompleteInteraction, ChatInputCommandInteraction } from "discord.js";
-import type { Majobot } from "../..";
-import type { GuildSettings } from "../../util/types/Command";
+import { ApplicationCommandType, ApplicationCommandOptionType, EmbedBuilder, codeBlock, ActionRowBuilder, ButtonBuilder, ButtonStyle, StringSelectMenuBuilder, ComponentType, ApplicationIntegrationType, InteractionContextType } from "discord.js";
 
 interface Category {
  name: string;
@@ -13,7 +12,8 @@ export default {
  description: "❔ Display a list of all available commands",
  type: ApplicationCommandType.ChatInput,
  cooldown: 5000,
- dm_permission: true,
+ contexts: [InteractionContextType.Guild, InteractionContextType.BotDM, InteractionContextType.PrivateChannel],
+ integrationTypes: [ApplicationIntegrationType.GuildInstall, ApplicationIntegrationType.UserInstall],
  usage: "/help [command]",
  options: [
   {
@@ -25,7 +25,7 @@ export default {
    required: false,
   },
  ],
- autocomplete: async (client: Majobot, interaction: AutocompleteInteraction) => {
+ autocomplete: async (client, interaction) => {
   const focusedOption = interaction.options.getFocused(true);
   if (focusedOption.name === "query") {
    const commands = focusedOption.value // prettier
@@ -41,10 +41,9 @@ export default {
    );
   }
  },
- run: async (client: Majobot, interaction: ChatInputCommandInteraction, guildSettings: GuildSettings) => {
+ run: async (client, interaction, guildSettings) => {
   try {
    if (!client.user) return client.errorMessages.createSlashError(interaction, "❌ Bot is not ready yet. Please try again later.");
-   if (!interaction.member) return client.errorMessages.createSlashError(interaction, "❌ Member not found. Please try again later.");
 
    const globalActionRow: ActionRowBuilder<ButtonBuilder | StringSelectMenuBuilder>[] = [];
    const inviteLink = `https://discord.com/oauth2/authorize/?permissions=${client.config.permissions}&scope=${client.config.scopes}&client_id=${client.user.id}`;
@@ -104,12 +103,7 @@ export default {
       },
       {
        name: "Category",
-       value: codeBlock(command.category),
-       inline: true,
-      },
-      {
-       name: "DM Permission",
-       value: codeBlock(command.dm_permission ? "Yes" : "No"),
+       value: codeBlock(command.category || "General"),
        inline: true,
       },
      ])
@@ -127,7 +121,7 @@ export default {
     // #region Category
    } else if (query && isCategory) {
     // If the query is a category, display all commands in that category.
-    const commands = client.slashCommands.filter((cmd) => cmd.category.toLowerCase() === query.toLowerCase());
+    const commands = client.slashCommands.filter((cmd) => cmd.category?.toLowerCase() === query.toLowerCase());
     const embed = new EmbedBuilder()
      .setTitle(`${client.config.emojis.categories.find((cat: Category) => cat.name === query.toLowerCase()).emoji} Available \`${query}\` commands \`(${commands.size})\``)
      .setDescription(`> ${commands.map((cmd) => `\`/${cmd.name}\``).join(", ")}`)
@@ -152,9 +146,9 @@ export default {
      .addFields(
       categories
        .map((category) => ({
-        name: `${client.config.emojis.categories.find((cat: Category) => cat.name === category.toLowerCase()).emoji} ${category}`,
-        value: codeBlock(`/help ${category.toLowerCase()}`),
-        inline: `/help ${category.toLowerCase()}`.length < 15,
+        name: `${client.config.emojis.categories.find((cat: Category) => cat.name === category?.toLowerCase()).emoji} ${category}`,
+        value: codeBlock(`/help ${category?.toLowerCase()}`),
+        inline: `/help ${category?.toLowerCase()}`.length < 15,
        }))
        .sort((a, b) => (a.inline === b.inline ? a.name.length - b.name.length : a.inline ? -1 : 1))
      )
@@ -179,9 +173,9 @@ export default {
        .setPlaceholder("Select a category")
        .addOptions(
         categories.map((category) => ({
-         label: `${client.config.emojis.categories.find((cat: Category) => cat.name === category.toLowerCase()).emoji} ${category}`,
-         description: `View all ${client.slashCommands.filter((cmd) => cmd.category.toLowerCase() === category.toLowerCase()).size} commands`,
-         value: category.toLowerCase(),
+         label: `${client.config.emojis.categories.find((cat: Category) => cat.name === category?.toLowerCase()).emoji} ${category}`,
+         description: `View all ${client.slashCommands.filter((cmd) => cmd.category?.toLowerCase() === category?.toLowerCase()).size} commands`,
+         value: category?.toLowerCase() ?? "",
         }))
        )
      );
@@ -198,7 +192,7 @@ export default {
     collector.on("collect", async (i) => {
      /* eslint-disable-next-line prefer-destructuring */
      const category = i.values[0];
-     const commands = client.slashCommands.filter((cmd) => cmd.category.toLowerCase() === category.toLowerCase());
+     const commands = client.slashCommands.filter((cmd) => cmd.category?.toLowerCase() === category.toLowerCase());
      const embed = new EmbedBuilder()
       .setTitle(`${client.config.emojis.categories.find((cat: Category) => cat.name === category.toLowerCase()).emoji} Available \`${category}\` commands \`(${commands.size})\``)
       .setDescription(`> ${commands.map((cmd) => `\`/${cmd.name}\``).join(", ")}`)
@@ -232,4 +226,4 @@ export default {
    client.errorMessages.internalError(interaction, err);
   }
  },
-};
+} satisfies SlashCommand;

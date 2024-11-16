@@ -1,16 +1,16 @@
+import type { SlashCommand } from "@/util/types/Command";
 import { fetchLogs, countLogs } from "@majoexe/util/database";
-import { ApplicationCommandType, ApplicationCommandOptionType, PermissionFlagsBits, EmbedBuilder, ChatInputCommandInteraction, PermissionsBitField } from "discord.js";
-import type { Majobot } from "../..";
-import type { GuildSettings } from "../../util/types/Command";
+import { ApplicationCommandType, ApplicationCommandOptionType, PermissionFlagsBits, EmbedBuilder, PermissionsBitField, InteractionContextType, ApplicationIntegrationType } from "discord.js";
 
 export default {
  name: "logs",
  description: "📝 View the Majo.exe logs for this server",
  type: ApplicationCommandType.ChatInput,
  cooldown: 5000,
- dm_permission: false,
- usage: "/logs [page]",
+ contexts: [InteractionContextType.Guild],
+ integrationTypes: [ApplicationIntegrationType.GuildInstall],
  defaultMemberPermissions: [PermissionFlagsBits.ManageGuild],
+ usage: "/logs [page]",
  options: [
   {
    name: "page",
@@ -21,7 +21,7 @@ export default {
    required: false,
   },
  ],
- run: async (client: Majobot, interaction: ChatInputCommandInteraction, guildSettings: GuildSettings) => {
+ run: async (client, interaction, guildSettings) => {
   try {
    if (!interaction.guild) return client.errorMessages.createSlashError(interaction, "❌ This command can only be used in a server.");
    if (!interaction.member) return client.errorMessages.createSlashError(interaction, "❌ You must be in a server to use this command.");
@@ -62,4 +62,4 @@ export default {
    client.errorMessages.internalError(interaction, err);
   }
  },
-};
+} satisfies SlashCommand;

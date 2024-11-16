@@ -2,7 +2,7 @@ import { globalConfig } from "@majoexe/config";
 import prismaClient from "@majoexe/database";
 import { GiveawaysManager, type GiveawayData } from "discord-giveaways";
 import type { ColorResolvable, Snowflake } from "discord.js";
-import type { Majobot } from "../..";
+import type { Majobot } from "@/index";
 
 export default function giveaway(client: Majobot): GiveawaysManager {
  const Giveaways = class extends GiveawaysManager {

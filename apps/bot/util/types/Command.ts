@@ -1,17 +1,21 @@
 import type { Guild, GuildDisabledCategories, GuildDisabledCommands } from "@majoexe/database";
-import { type ChatInputApplicationCommandData, CommandInteraction, AutocompleteInteraction, Message } from "discord.js";
-import type { Majobot } from "../..";
+import { type ChatInputApplicationCommandData, ChatInputCommandInteraction, AutocompleteInteraction, Message, type ApplicationCommandOptionData } from "discord.js";
+import type { Majobot } from "@/index";
 
 export interface GuildSettings extends Pick<Guild, "embedColor" | "publicPage" | "vanity"> {
  guildDisabledCommands: GuildDisabledCommands[];
  guildDisabledCategories: GuildDisabledCategories[];
 }
+
+// Create a new type that includes the usage property
+type ExtendedApplicationCommandOptionData = ApplicationCommandOptionData & { usage?: string };
+
 export interface SlashCommand extends ChatInputApplicationCommandData {
- category: string;
+ category?: string;
  cooldown?: number;
  defer?: boolean;
- dm_permission: boolean;
  usage: string;
- run: (client: Majobot, interaction: CommandInteraction, args: GuildSettings) => Promise<Message | void>;
+ options?: readonly ExtendedApplicationCommandOptionData[];
+ run: (client: Majobot, interaction: ChatInputCommandInteraction, guildSettings?: GuildSettings) => Promise<Message | void>;
  autocomplete?: (client: Majobot, interaction: AutocompleteInteraction) => Promise<void>;
 }

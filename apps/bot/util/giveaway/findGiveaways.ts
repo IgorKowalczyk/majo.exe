@@ -1,7 +1,7 @@
 import prismaClient from "@majoexe/database";
 import type { Giveaway } from "discord-giveaways";
 import { type ChatInputCommandInteraction, EmbedBuilder, type Message, PermissionsBitField, type ColorResolvable } from "discord.js";
-import type { Majobot } from "../..";
+import type { Majobot } from "@/index";
 
 export async function FindGiveaways(client: Majobot, interaction: ChatInputCommandInteraction, color: ColorResolvable, type: "all" | "ended" | "running"): Promise<Message | void> {
  try {

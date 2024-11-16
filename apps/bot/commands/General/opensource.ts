@@ -1,7 +1,6 @@
-import { ApplicationCommandType, EmbedBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle, time, ChatInputCommandInteraction } from "discord.js";
+import type { SlashCommand } from "@/util/types/Command";
+import { ApplicationCommandType, EmbedBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle, time, ApplicationIntegrationType, InteractionContextType } from "discord.js";
 import fetch from "node-fetch";
-import type { Majobot } from "../..";
-import type { GuildSettings } from "../../util/types/Command";
 
 interface GithubResponse {
  sha: string;
@@ -18,9 +17,10 @@ export default {
  description: "📚 Check out Majo.exe source code",
  type: ApplicationCommandType.ChatInput,
  cooldown: 3000,
- usage: "/contact",
- dm_permission: true,
- run: async (client: Majobot, interaction: ChatInputCommandInteraction, guildSettings: GuildSettings) => {
+ usage: "/opensource",
+ contexts: [InteractionContextType.Guild, InteractionContextType.BotDM, InteractionContextType.PrivateChannel],
+ integrationTypes: [ApplicationIntegrationType.GuildInstall, ApplicationIntegrationType.UserInstall],
+ run: async (client, interaction, guildSettings) => {
   try {
    if (!client.user) return client.errorMessages.createSlashError(interaction, "❌ Bot is not ready yet. Please try again later.");
 
@@ -66,4 +66,4 @@ export default {
    client.errorMessages.internalError(interaction, err);
   }
  },
-};
+} satisfies SlashCommand;

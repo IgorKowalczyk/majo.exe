@@ -1,7 +1,7 @@
 import { globalConfig } from "@majoexe/config";
 import { Logger } from "@majoexe/util/functions/util";
 import type { APIUser, DiscordAPIError, PartialEmoji } from "discord.js";
-import type { Majobot } from "../..";
+import type { Majobot } from "@/index";
 
 const emojiDownloadList = {
  success: "https://cdn.discordapp.com/emojis/963333541112987668.png",

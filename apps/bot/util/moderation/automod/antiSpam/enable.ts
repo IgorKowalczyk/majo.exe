@@ -1,7 +1,7 @@
 import { createAutoModRule, syncAutoModRule } from "@majoexe/util/database";
 import { ChannelType, AutoModerationRuleEventType, AutoModerationActionType, AutoModerationRuleTriggerType, EmbedBuilder, PermissionsBitField, codeBlock, ChatInputCommandInteraction, type AutoModerationRuleCreateOptions, TextChannel, GuildMember } from "discord.js";
-import type { Majobot } from "../../../..";
-import type { GuildSettings } from "../../../types/Command";
+import type { Majobot } from "@/index";
+import type { GuildSettings } from "@/util/types/Command";
 
 export async function enableAntiSpam(client: Majobot, interaction: ChatInputCommandInteraction, guildSettings: GuildSettings) {
  if (!interaction.guild) return client.errorMessages.createSlashError(interaction, "❌ This command can only be used in a server.");

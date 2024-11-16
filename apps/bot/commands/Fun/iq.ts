@@ -1,13 +1,13 @@
-import { ApplicationCommandType, ApplicationCommandOptionType, EmbedBuilder, ChatInputCommandInteraction, User } from "discord.js";
-import type { Majobot } from "../..";
-import type { GuildSettings } from "../../util/types/Command";
+import { ApplicationCommandType, ApplicationCommandOptionType, EmbedBuilder, ApplicationIntegrationType, InteractionContextType } from "discord.js";
+import type { SlashCommand } from "@/util/types/Command";
 
 export default {
  name: "iq",
  description: "🧠 Get a random IQ score",
  type: ApplicationCommandType.ChatInput,
  cooldown: 3000,
- dm_permission: true,
+ contexts: [InteractionContextType.Guild, InteractionContextType.BotDM, InteractionContextType.PrivateChannel],
+ integrationTypes: [ApplicationIntegrationType.GuildInstall, ApplicationIntegrationType.UserInstall],
  usage: "/iq (user)",
  options: [
   {
@@ -17,10 +17,10 @@ export default {
    required: false,
   },
  ],
- run: (client: Majobot, interaction: ChatInputCommandInteraction, guildSettings: GuildSettings) => {
+ run: async (client, interaction, guildSettings) => {
   try {
    if (!interaction.member) return;
-   const user = interaction.options.getUser("user") || (interaction.member.user as User);
+   const user = interaction.options.getUser("user") || interaction.user;
    const iq = Math.floor(Math.random() * 200) + 1;
 
    const embed = new EmbedBuilder()
@@ -38,4 +38,4 @@ export default {
    client.errorMessages.internalError(interaction, err);
   }
  },
-};
+} satisfies SlashCommand;

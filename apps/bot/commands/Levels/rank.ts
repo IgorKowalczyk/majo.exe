@@ -1,15 +1,15 @@
 import { checkXP, fetchXPSettings } from "@majoexe/util/database";
-import { ApplicationCommandType, ApplicationCommandOptionType, AttachmentBuilder, EmbedBuilder, ButtonBuilder, ActionRowBuilder, ButtonStyle, ChatInputCommandInteraction, User } from "discord.js";
-import type { Majobot } from "../../index";
-import { createXPCard } from "../../util/images/createXPCard";
-import type { GuildSettings } from "../../util/types/Command";
+import { ApplicationCommandType, ApplicationCommandOptionType, AttachmentBuilder, EmbedBuilder, ButtonBuilder, ActionRowBuilder, ButtonStyle, User, InteractionContextType, ApplicationIntegrationType } from "discord.js";
+import { createXPCard } from "@/util/images/createXPCard";
+import type { SlashCommand } from "@/util/types/Command";
 
 export default {
  name: "rank",
  description: "📈 Check your current level and XP",
  type: ApplicationCommandType.ChatInput,
  cooldown: 3000,
- dm_permission: false,
+ contexts: [InteractionContextType.Guild],
+ integrationTypes: [ApplicationIntegrationType.GuildInstall],
  usage: "/rank [user]",
  options: [
   {
@@ -19,7 +19,7 @@ export default {
    required: false,
   },
  ],
- run: async (client: Majobot, interaction: ChatInputCommandInteraction, guildSettings: GuildSettings) => {
+ run: async (client, interaction, guildSettings) => {
   try {
    if (!interaction.guild) return client.errorMessages.createSlashError(interaction, "❌ This command can only be used in a server.");
    if (!interaction.member) return client.errorMessages.createSlashError(interaction, "❌ You must be in a server to use this command.");
@@ -29,7 +29,7 @@ export default {
    if (!xpSettings || !xpSettings.enableXP) {
     return client.errorMessages.createSlashError(interaction, "❌ Leveling is disabled in this server.");
    }
-   const user = interaction.options.getUser("user") || (interaction.member.user as User);
+   const user = interaction.options.getUser("user") || interaction.user;
 
    if (user.bot) return client.errorMessages.createSlashError(interaction, "❌ You can't check the level and XP of a bot. Note: Bots don't gain XP.");
 
@@ -81,4 +81,4 @@ export default {
    client.errorMessages.internalError(interaction, err);
   }
  },
-};
+} satisfies SlashCommand;

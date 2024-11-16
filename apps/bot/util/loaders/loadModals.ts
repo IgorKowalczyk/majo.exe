@@ -1,6 +1,6 @@
 import { readDir } from "@majoexe/util/functions/files/readDir.js";
 import type { ModalSubmitInteraction } from "discord.js";
-import type { Majobot } from "../..";
+import type { Majobot } from "@/index";
 
 export interface Modal {
  id: string;
