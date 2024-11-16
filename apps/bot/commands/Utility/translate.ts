@@ -76,12 +76,8 @@ export default {
    const response = await translator(text, { from, to });
    if (!response.text) return client.errorMessages.createSlashError(interaction, "❌ We couldn't translate the text, please try again later");
 
-   const languageKeys = Object.values(translator.languages).filter((language) => typeof language === "string");
-
    const translatedFrom = translator.languages[response.from.language.iso];
    const translatedTo = translator.languages[to];
-
-   console.log(translatedFrom);
 
    const embed = new EmbedBuilder()
     .setTitle(`🈯 Translated Text`)
