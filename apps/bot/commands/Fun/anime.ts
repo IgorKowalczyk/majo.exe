@@ -9,11 +9,44 @@ export default {
  contexts: [InteractionContextType.Guild, InteractionContextType.BotDM, InteractionContextType.PrivateChannel],
  integrationTypes: [ApplicationIntegrationType.GuildInstall, ApplicationIntegrationType.UserInstall],
  usage: "/anime <anime name>",
+ autocomplete: async (client, interaction) => {
+  const focusedOption = interaction.options.getFocused(true);
+
+  if (focusedOption.name === "query") {
+   const query = focusedOption.value;
+   const request = await fetch(`https://kitsu.app/api/edge/anime?filter[text]=${query}&page%5Boffset%5D=0&page%5Blimit%5D=5`, {
+    method: "GET",
+    headers: {
+     "Content-Type": "application/vnd.api+json",
+     Accept: "application/vnd.api+json",
+    },
+   });
+
+   if (!request || !request.ok) {
+    return;
+   }
+   const json = await request.json();
+   if (!json || !json.data || json.data.length < 1) {
+    return;
+   }
+
+   const results = json.data.map((result: any) => {
+    const data = result.attributes;
+    return {
+     name: data.canonicalTitle,
+     value: data.canonicalTitle,
+    };
+   });
+
+   await interaction.respond(results);
+  }
+ },
  options: [
   {
    name: "query",
    description: "Anime name",
    required: true,
+   autocomplete: true,
    type: ApplicationCommandOptionType.String,
    max_length: 256,
   },
@@ -24,7 +57,7 @@ export default {
 
    if (!query) return client.errorMessages.createSlashError(interaction, "❌ Please provide a valid anime name.");
 
-   const request = await fetch(`https://kitsu.io/api/edge/anime?filter[text]=${query}&page%5Boffset%5D=0&page%5Blimit%5D=1`, {
+   const request = await fetch(`https://kitsu.app/api/edge/anime?filter[text]=${query}&page%5Boffset%5D=0&page%5Blimit%5D=1`, {
     method: "GET",
     headers: {
      "Content-Type": "application/vnd.api+json",
