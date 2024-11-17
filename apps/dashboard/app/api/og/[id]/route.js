@@ -5,15 +5,6 @@ import { ImageResponse } from "next/og";
 
 export const runtime = "edge";
 
-export const alt = "Majo.exe - The only one Discord Bot";
-
-export const size = {
- width: 1200,
- height: 630,
-};
-
-export const contentType = "image/png";
-
 const shortenText = (text, maxLen = 24) => {
  if (text.length > maxLen) {
   text = text.substr(0, maxLen) + "...";
@@ -31,8 +22,8 @@ export async function GET(request, props) {
 
  const icon = server.icon ? `https://cdn.discordapp.com/icons/${server.id}/${server.icon}.${server.icon.startsWith("a_") ? "gif" : "png"}` : `${process.env.NEXTAUTH_URL}/assets/avatar.png`;
 
- const fontBold = await fetch(new URL("/public/fonts/bold.ttf", import.meta.url)).then((res) => res.arrayBuffer());
- const fontRegular = await fetch(new URL("/public/fonts/regular.ttf", import.meta.url)).then((res) => res.arrayBuffer());
+ const fontBold = await fetch(new URL("public/fonts/bold.ttf", import.meta.url)).then((res) => res.arrayBuffer());
+ const fontRegular = await fetch(new URL("public/fonts/regular.ttf", import.meta.url)).then((res) => res.arrayBuffer());
 
  return new ImageResponse(
   (
@@ -79,7 +70,8 @@ export async function GET(request, props) {
    </div>
   ),
   {
-   ...size,
+   width: 1200,
+   height: 630,
    fonts: [
     {
      name: "PoppinsBold",

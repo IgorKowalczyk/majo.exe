@@ -3,15 +3,6 @@ import { ImageResponse } from "next/og";
 
 export const runtime = "edge";
 
-export const alt = "Majo.exe - The only one Discord Bot";
-
-export const size = {
- width: 1200,
- height: 630,
-};
-
-export const contentType = "image/png";
-
 export default async function Image() {
  const fontBold = await fetch(new URL("public/fonts/bold.ttf", import.meta.url)).then((res) => res.arrayBuffer());
  const fontRegular = await fetch(new URL("public/fonts/regular.ttf", import.meta.url)).then((res) => res.arrayBuffer());
@@ -61,7 +52,8 @@ export default async function Image() {
    </div>
   ),
   {
-   ...size,
+   width: 1200,
+   height: 630,
    fonts: [
     {
      name: "PoppinsBold",
