@@ -172,6 +172,12 @@ importers:
       '@tippyjs/react':
         specifier: 4.2.6
         version: 4.2.6(react-dom@19.0.0-rc-fb9a90fa48-20240614(react@19.0.0-rc-fb9a90fa48-20240614))(react@19.0.0-rc-fb9a90fa48-20240614)
+      '@types/react':
+        specifier: 18.3.12
+        version: 18.3.12
+      '@types/react-dom':
+        specifier: 18.3.1
+        version: 18.3.1
       '@vercel/analytics':
         specifier: 1.4.0
         version: 1.4.0(next@15.0.3(@babel/core@7.26.0)(react-dom@19.0.0-rc-fb9a90fa48-20240614(react@19.0.0-rc-fb9a90fa48-20240614))(react@19.0.0-rc-fb9a90fa48-20240614))(react@19.0.0-rc-fb9a90fa48-20240614)
@@ -251,12 +257,15 @@ importers:
         specifier: 1.7.0
         version: 1.7.0(react-dom@19.0.0-rc-fb9a90fa48-20240614(react@19.0.0-rc-fb9a90fa48-20240614))(react@19.0.0-rc-fb9a90fa48-20240614)
       tippy.js:
-        specifier: ^6.3.7
+        specifier: 6.3.7
         version: 6.3.7
       validator:
         specifier: 13.12.0
         version: 13.12.0
     devDependencies:
+      '@majoexe/typescript-config':
+        specifier: workspace:*
+        version: link:../../packages/typescript-config
       '@next/bundle-analyzer':
         specifier: 15.0.3
         version: 15.0.3
@@ -2187,6 +2196,9 @@ packages:
 
   '@types/qrcode@1.5.5':
     resolution: {integrity: sha512-CdfBi/e3Qk+3Z/fXYShipBT13OJ2fDO2Q2w5CIP5anLTLIndQG9z6P1cnm+8zCWSpm5dnxMFd/uREtb0EXuQzg==}
+
+  '@types/react-dom@18.3.1':
+    resolution: {integrity: sha512-qW1Mfv8taImTthu4KoXgDfLuk4bydU6Q/TkADnDWWHwi4NX4BR+LWfTp2sVmTqRrsHvyDDTelgelxJ+SsejKKQ==}
 
   '@types/react-reconciler@0.26.7':
     resolution: {integrity: sha512-mBDYl8x+oyPX/VBb3E638N0B7xG+SPk/EAMcVPeexqus/5aTpTphQi0curhhshOqRrc9t6OPoJfEUkbymse/lQ==}
@@ -8464,6 +8476,10 @@ snapshots:
   '@types/qrcode@1.5.5':
     dependencies:
       '@types/node': 22.9.0
+
+  '@types/react-dom@18.3.1':
+    dependencies:
+      '@types/react': 18.3.12
 
   '@types/react-reconciler@0.26.7':
     dependencies:

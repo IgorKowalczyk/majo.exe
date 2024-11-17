@@ -5,9 +5,9 @@ import { useState } from "react";
 import { toast } from "sonner";
 import Image from "@/components/client/shared/Image";
 
-export function AddReaction({ reaction, countL = 2 }) {
- const [clicked, setClicked] = useState(true);
- const [count, setCount] = useState(countL);
+export function AddReaction({ reaction, countL = 2 }: { reaction: string; countL?: number }) {
+ const [clicked, setClicked] = useState<boolean>(true);
+ const [count, setCount] = useState<number>(countL);
 
  const setIt = () => {
   toast(!clicked ? "Joined the giveaway!" : "Left the giveaway!", {

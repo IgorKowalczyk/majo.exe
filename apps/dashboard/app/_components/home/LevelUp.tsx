@@ -4,9 +4,9 @@ import { useState } from "react";
 import { toast } from "sonner";
 import Image from "@/components/client/shared/Image";
 
-export function LevelUp({ avatar, username }) {
- const [level, setLevel] = useState(2);
- const [xp, setXp] = useState(46);
+export function LevelUp({ avatar, username }: { avatar: string; username: string }) {
+ const [level, setLevel] = useState<number>(2);
+ const [xp, setXp] = useState<number>(46);
 
  const setIt = () => {
   toast("You leveled up!", {
