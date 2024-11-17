@@ -13,8 +13,8 @@ export const size = {
 export const contentType = "image/png";
 
 export default async function Image() {
- const fontBold = await fetch(new URL("/public/fonts/bold.ttf", import.meta.url)).then((res) => res.arrayBuffer());
- const fontRegular = await fetch(new URL("/public/fonts/regular.ttf", import.meta.url)).then((res) => res.arrayBuffer());
+ const fontBold = await fetch(new URL("public/fonts/bold.ttf", import.meta.url)).then((res) => res.arrayBuffer());
+ const fontRegular = await fetch(new URL("public/fonts/regular.ttf", import.meta.url)).then((res) => res.arrayBuffer());
 
  return new ImageResponse(
   (

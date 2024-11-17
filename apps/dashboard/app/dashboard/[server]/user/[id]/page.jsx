@@ -148,8 +148,8 @@ export default async function UserPage(props) {
      <div className="flex h-[72px] w-auto flex-row justify-between gap-6 bg-background-navbar p-12">
       <div className="ml-[-16px] mt-[-20px] box-content flex items-center rounded-full">
        <Tooltip content="Click to see full size">
-        <Link href={`https://cdn.discordapp.com/avatars/${user.discordId}/${user.avatar}.${user.avatar.startsWith("a_") ? "gif" : "png"}?size=2048`} target="_blank" className="size-24 min-h-24 min-w-24">
-         <Image quality={100} src={`https://cdn.discordapp.com/avatars/${user.discordId}/${user.avatar}.${user.avatar.startsWith("a_") ? "gif" : "png"}`} alt={`${user.global_name || user.username} Avatar`} width={96} height={96} className="rounded-full !border-4 !border-solid !border-background-navbar duration-200 hover:opacity-75" />
+        <Link href={`/api/user/avatar/${user.id}`} target="_blank" className="size-24 min-h-24 min-w-24">
+         <Image quality={100} src={`/api/user/avatar/${user.id}`} alt={`${user.global_name || user.username} Avatar`} width={96} height={96} className="rounded-full !border-4 !border-solid !border-background-navbar duration-200 hover:opacity-75" />
         </Link>
        </Tooltip>
        <div className="ml-2 flex items-center text-lg font-bold">
