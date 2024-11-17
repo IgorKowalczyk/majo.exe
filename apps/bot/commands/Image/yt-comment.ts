@@ -87,18 +87,18 @@ export default {
 
    context.translate(105, 10);
 
-   context.font = "semibold 19px Arial";
+   context.font = "semibold 19px roboto-regular";
    context.fillStyle = "#f1f1f1";
 
    const usernameWidth = context.measureText(`@${username}`).width;
 
    context.fillText(`@${username}`, 0, 15);
 
-   context.font = "18px Arial";
+   context.font = "18px roboto-regular";
    context.fillStyle = "#aaaaaa";
    context.fillText("26 minutes ago", usernameWidth + 10, 15);
 
-   context.font = "20px Arial";
+   context.font = "20px roboto-regular";
    context.fillStyle = "#f1f1f1";
    context.fillText(comment, 0, 50);
 

@@ -153,7 +153,16 @@ export default {
    const canvas = createCanvas(background.width, background.height);
    const context = canvas.getContext("2d");
 
-   const { frames } = decodeGif(background.src);
+   let gifData: Uint8Array;
+   if (background.src instanceof Uint8Array) {
+    gifData = background.src;
+   } else if (typeof background.src === "string") {
+    gifData = new TextEncoder().encode(background.src);
+   } else {
+    throw new Error("Invalid background image source format");
+   }
+
+   const { frames } = decodeGif(gifData);
 
    for (let i = 0; i < frames.length; i++) {
     context.globalAlpha = 1;
