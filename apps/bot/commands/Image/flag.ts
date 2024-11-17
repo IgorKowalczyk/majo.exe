@@ -4,6 +4,7 @@ import { ApplicationCommandType, ApplicationCommandOptionType, AttachmentBuilder
 // @ts-expect-error - No type definitions
 import GIFEncoder from "gif-encoder-2";
 import type { SlashCommand } from "@/util/types/Command";
+import { readFileSync } from "fs";
 
 export default {
  name: "flag",
@@ -109,6 +110,44 @@ export default {
     },
    ],
   },
+  {
+   name: "uk",
+   description: "🇬🇧 Put a UK flag on image",
+   type: ApplicationCommandOptionType.Subcommand,
+   options: [
+    {
+     name: "attachment",
+     description: "Attachment to put UK flag",
+     type: ApplicationCommandOptionType.Attachment,
+     required: false,
+    },
+    {
+     name: "user",
+     description: "User to put UK flag",
+     type: ApplicationCommandOptionType.User,
+     required: false,
+    },
+   ],
+  },
+  {
+   name: "ukraine",
+   description: "🇺🇦 Put a Ukrainian flag on image",
+   type: ApplicationCommandOptionType.Subcommand,
+   options: [
+    {
+     name: "attachment",
+     description: "Attachment to put Ukrainian flag",
+     type: ApplicationCommandOptionType.Attachment,
+     required: false,
+    },
+    {
+     name: "user",
+     description: "User to put Ukrainian flag",
+     type: ApplicationCommandOptionType.User,
+     required: false,
+    },
+   ],
+  },
  ],
  run: async (client, interaction, guildSettings) => {
   try {
@@ -117,6 +156,8 @@ export default {
     usa: "🇺🇸",
     russia: "🇷🇺",
     germany: "🇩🇪",
+    ukraine: "🇺🇦",
+    uk: "🇬🇧",
     poland: "🇵🇱",
    };
    const subcommand = interaction.options.getSubcommand();
@@ -141,37 +182,32 @@ export default {
    }
 
    const targetImage = await loadImage(image.split("?")[0]);
-   const background = await loadImage(`./util/images/files/${subcommand}.gif`);
+   const background = readFileSync(`./util/images/files/${subcommand}.gif`);
+   const backgroundData = new Uint8Array(background);
 
-   const gif = new GIFEncoder(background.width, background.height, "neuquant", true);
+   const height = backgroundData[6] + backgroundData[7] * 256;
+   const width = backgroundData[8] + backgroundData[9] * 256;
+
+   const gif = new GIFEncoder(width, height, "neuquant", true);
    gif.start();
    gif.setQuality(1);
    gif.setDelay(40);
    gif.setDispose(2);
    gif.setRepeat(0);
 
-   const canvas = createCanvas(background.width, background.height);
+   const canvas = createCanvas(width, height);
    const context = canvas.getContext("2d");
 
-   let gifData: Uint8Array;
-   if (background.src instanceof Uint8Array) {
-    gifData = background.src;
-   } else if (typeof background.src === "string") {
-    gifData = new TextEncoder().encode(background.src);
-   } else {
-    throw new Error("Invalid background image source format");
-   }
-
-   const { frames } = decodeGif(gifData);
+   const { frames } = decodeGif(backgroundData);
 
    for (let i = 0; i < frames.length; i++) {
     context.globalAlpha = 1;
     const frame = frames[i];
-    const imageData = new ImageData(frame.data, background.width, background.height);
+    const imageData = new ImageData(frame.data, width, height);
     // @ts-expect-error - Invalid types in napi-rs/canvas
     context.putImageData(imageData, 0, 0);
     context.globalAlpha = 0.5;
-    context.drawImage(targetImage, 0, 0, background.width, background.height);
+    context.drawImage(targetImage, 0, 0, width, height);
     gif.addFrame(context);
    }
 
