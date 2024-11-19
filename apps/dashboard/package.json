@@ -64,7 +64,7 @@
     "@tailwindcss/typography": "0.5.15",
     "autoprefixer": "10.4.20",
     "postcss": "8.4.49",
-    "prettier-plugin-tailwindcss": "0.6.8",
+    "prettier-plugin-tailwindcss": "0.6.9",
     "tailwind-gradient-mask-image": "1.2.0",
     "tailwind-merge": "2.5.4",
     "tailwindcss": "3.4.15",
