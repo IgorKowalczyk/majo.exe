@@ -1,9 +1,9 @@
 import { redirect } from "next/navigation";
 import { globalConfig } from "@majoexe/config";
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 import type { APIUser } from "discord-api-types/v10";
 
-export async function GET(request, props) {
+export async function GET(request: NextRequest, props: { params: Promise<{ id: string }> }) {
  const params = await props.params;
  try {
   const { id } = params;

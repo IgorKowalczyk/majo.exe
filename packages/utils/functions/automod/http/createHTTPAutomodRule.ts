@@ -31,7 +31,7 @@ export async function createHTTPAutomodRule(serverId: string, ruleType: string, 
   };
  }
 
- const check: APIAutoModerationRule[] = await checkFetch.json();
+ const check = (await checkFetch.json()) as APIAutoModerationRule[];
  const conflictingRules = check.filter((rule) => rule.trigger_type === AutoModerationRuleTriggerType.Keyword);
 
  if (conflictingRules.length === 6 && ruleData.enabled) {
@@ -93,7 +93,7 @@ export async function createHTTPAutomodRule(serverId: string, ruleType: string, 
    };
   }
 
-  const discordData: APIAutoModerationRule = await discordRequest.json();
+  const discordData = (await discordRequest.json()) as APIAutoModerationRule;
 
   await prismaClient.autoMod.create({
    data: {

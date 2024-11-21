@@ -2,11 +2,11 @@ import { globalConfig } from "@majoexe/config";
 import prismaClient from "@majoexe/database";
 import { getServer, getGuildMember } from "@majoexe/util/functions/guild";
 import { shortenText } from "@majoexe/util/functions/util";
-import { ChannelType } from "discord-api-types/v10";
+import { APIChannel, APIGuildChannel, ChannelType, GuildChannelType } from "discord-api-types/v10";
 import { getSession } from "lib/session";
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 
-export async function POST(request) {
+export async function POST(request: NextRequest) {
  try {
   const session = await getSession();
   const start = Date.now();
@@ -150,7 +150,7 @@ export async function POST(request) {
 
   const server = await getServer(guildId);
 
-  if (!server || server.error) {
+  if (!server) {
    return NextResponse.json(
     {
      error: "Unable to find this server",
@@ -208,8 +208,11 @@ export async function POST(request) {
    headers: {
     Authorization: `Bot ${process.env.TOKEN}`,
    },
-  }).then((res) => res.json());
-  const allChannels = allChannelsFetch
+  });
+
+  const allChannelsData = (await allChannelsFetch.json()) as APIGuildChannel<GuildChannelType>[];
+
+  const allChannels = allChannelsData
    .map((channel) => {
     if (channel.type !== ChannelType.GuildText) return null;
 
@@ -222,7 +225,7 @@ export async function POST(request) {
    })
    .filter(Boolean);
 
-  if (!allChannels.find((c) => c.id === channel.toString())) {
+  if (!allChannels.find((c) => c && c.id === channel.toString())) {
    return NextResponse.json(
     {
      error: "Bad Request - Invalid channel",
@@ -240,7 +243,7 @@ export async function POST(request) {
    );
   }
 
-  await prismaClient.guildLeaveMessage.upsert({
+  await prismaClient.guildWelcomeMessage.upsert({
    where: {
     guildId,
    },
@@ -261,7 +264,7 @@ export async function POST(request) {
 
   return NextResponse.json(
    {
-    message: "Successfully enabled leave messages",
+    message: "Successfully enabled welcome messages",
     code: 200,
    },
    {

@@ -2,9 +2,9 @@ import { resetXP } from "@majoexe/util/database";
 import { getServer, getGuildMember } from "@majoexe/util/functions/guild";
 import { getSession } from "lib/session";
 import { revalidatePath } from "next/cache";
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 
-export async function POST(request) {
+export async function POST(request: NextRequest) {
  try {
   const session = await getSession();
   const start = Date.now();
@@ -63,7 +63,7 @@ export async function POST(request) {
 
   const server = await getServer(guildId);
 
-  if (!server || server.error) {
+  if (!server) {
    return NextResponse.json(
     {
      error: "Unable to find this server",
@@ -118,7 +118,7 @@ export async function POST(request) {
 
   const action = await resetXP(userId, guildId);
 
-  if (!action || action.error) {
+  if (!action) {
    return NextResponse.json(
     {
      error: "Unable to reset XP",

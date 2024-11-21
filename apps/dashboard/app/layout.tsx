@@ -13,8 +13,9 @@ import { VisibilityProvider } from "@/components/nav/client/VisibilityContext";
 import { Nav } from "@/components/nav/server/Nav";
 import { TailwindIndicator } from "@/components/TailwindIndicator";
 import "styles/globals.css";
+import type { Metadata } from "next";
 
-export const metadata = {
+export const metadata: Metadata = {
  metadataBase: new URL(dashboardConfig.url),
  title: {
   default: dashboardConfig.title,
@@ -56,7 +57,7 @@ export const metadata = {
  },
 };
 
-export default function RootLayout({ children }) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
  return (
   <Session>
    <html lang="en">
