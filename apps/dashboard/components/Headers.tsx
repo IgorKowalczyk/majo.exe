@@ -1,16 +1,12 @@
 import { twMerge } from "tailwind-merge";
-import { ReactNode, HTMLAttributes } from "react";
+import React, { ReactNode, HTMLAttributes } from "react";
 import { cva, type VariantProps } from "class-variance-authority";
 
-interface HeaderProps extends HTMLAttributes<HTMLHeadingElement> {
- children: ReactNode;
- className?: string;
-}
-
-const headerVariants = cva("flex items-center font-bold", {
+export const headerVariants = cva("flex items-center font-bold", {
  variants: {
-  size: {
-   big: "text-4xl md:text-6xl font-extrabold",
+  variant: {
+   big: "text-4xl md:text-6xl font-extrabold xl:!text-5xl 2xl:!text-7xl",
+   medium: "!text-3xl md:!text-4xl text-2xl md:text-3xl font-black",
    gradient: "text-xl md:text-2xl font-black",
    h1: "text-3xl",
    h2: "text-2xl",
@@ -18,9 +14,16 @@ const headerVariants = cva("flex items-center font-bold", {
    h4: "text-lg md:text-xl",
    h5: "text-base md:text-lg font-medium",
   },
+  effects: {
+   gradient: "bg-gradient-to-b from-white to-neutral-400 box-decoration-clone bg-clip-text font-black text-fill-transparent",
+  },
   alignment: {
    center: "text-center justify-center",
    left: "text-left justify-start",
+  },
+  margin: {
+   normal: "mb-2",
+   wide: "mb-4",
   },
   spacing: {
    normal: "gap-2",
@@ -28,21 +31,31 @@ const headerVariants = cva("flex items-center font-bold", {
   },
  },
  defaultVariants: {
-  size: "h1",
+  variant: "h1",
   alignment: "left",
   spacing: "normal",
  },
 });
 
-export function HeaderBig({ children, className, ...props }: HeaderProps) {
- return (
-  <h1 className={twMerge(className, "pt-4 text-center text-4xl font-extrabold text-white md:text-6xl")} {...props}>
-   {children}
-  </h1>
- );
+const Header = React.forwardRef<HTMLHeadingElement, HTMLAttributes<HTMLHeadingElement> & VariantProps<typeof headerVariants>>(({ className, variant, ...props }, ref) => (
+ <h1 ref={ref} className={twMerge(headerVariants({ variant }), className)} {...props}>
+  {props.children}
+ </h1>
+));
+
+export default Header;
+
+// ======================================================================
+
+interface LegacyHeaderProps extends HTMLAttributes<HTMLHeadingElement> {
+ children: ReactNode;
+ className?: string;
 }
 
-export function GradientHeader({ children, className, ...props }: HeaderProps) {
+/**
+ * @deprecated Use `Header` instead.
+ */
+export function GradientHeader({ children, className, ...props }: LegacyHeaderProps) {
  return (
   <h1 className={twMerge(className, "text-fill-transparent mb-0 flex items-center gap-4 bg-gradient-to-b from-white to-neutral-400 box-decoration-clone bg-clip-text text-left text-xl font-black md:text-2xl")} {...props}>
    {children}
@@ -50,7 +63,10 @@ export function GradientHeader({ children, className, ...props }: HeaderProps) {
  );
 }
 
-export function Header1({ children, className, ...props }: HeaderProps) {
+/**
+ * @deprecated Use `Header` instead.
+ */
+export function Header1({ children, className, ...props }: LegacyHeaderProps) {
  return (
   <h1 className={twMerge("mb-2 flex items-center justify-start gap-2 text-3xl font-bold", className)} {...props}>
    {children}
@@ -58,7 +74,10 @@ export function Header1({ children, className, ...props }: HeaderProps) {
  );
 }
 
-export function Header2({ children, className, ...props }: HeaderProps) {
+/**
+ * @deprecated Use `Header` instead.
+ */
+export function Header2({ children, className, ...props }: LegacyHeaderProps) {
  return (
   <h2 className={twMerge("mb-1 flex items-center justify-start gap-2 text-left text-2xl font-bold", className)} {...props}>
    {children}
@@ -66,7 +85,10 @@ export function Header2({ children, className, ...props }: HeaderProps) {
  );
 }
 
-export function Header3({ children, className, ...props }: HeaderProps) {
+/**
+ * @deprecated Use `Header` instead.
+ */
+export function Header3({ children, className, ...props }: LegacyHeaderProps) {
  return (
   <h3 className={twMerge("mb-1 flex items-center gap-2 text-center text-xl font-bold", className)} {...props}>
    {children}
@@ -74,7 +96,10 @@ export function Header3({ children, className, ...props }: HeaderProps) {
  );
 }
 
-export function Header4({ children, className, ...props }: HeaderProps) {
+/**
+ * @deprecated Use `Header` instead.
+ */
+export function Header4({ children, className, ...props }: LegacyHeaderProps) {
  return (
   <h4 className={twMerge(className, "flex items-center gap-4 text-center text-lg font-bold md:text-xl")} {...props}>
    {children}
@@ -82,7 +107,10 @@ export function Header4({ children, className, ...props }: HeaderProps) {
  );
 }
 
-export function Header5({ children, className, ...props }: HeaderProps) {
+/**
+ * @deprecated Use `Header` instead.
+ */
+export function Header5({ children, className, ...props }: LegacyHeaderProps) {
  return (
   <h5 className={twMerge(className, "flex items-center gap-4 text-center text-base font-medium md:text-lg")} {...props}>
    {children}

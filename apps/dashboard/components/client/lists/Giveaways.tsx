@@ -9,9 +9,10 @@ import { Table } from "@/components/client/shared/Table";
 import { Tooltip } from "@/components/client/shared/Tooltip";
 import { Icons, iconVariants } from "@/components/Icons";
 import type { Column } from "react-table";
+import { User } from "@majoexe/database";
 
 interface Giveaway {
- id: string;
+ id: number;
  prize: string;
  winners: number;
  time: {
@@ -19,12 +20,7 @@ interface Giveaway {
   ended: boolean;
   endedAt: Date;
  };
- startedBy: {
-  global_name: string;
-  discordId: string;
-  name: string;
-  avatar: string;
- };
+ startedBy: Pick<User, "discordId" | "global_name" | "name" | "avatar"> | null;
 }
 
 export function Giveaways({ data = [] }: { data: Giveaway[] }) {
@@ -46,17 +42,17 @@ export function Giveaways({ data = [] }: { data: Giveaway[] }) {
     Cell: ({ value }) => (
      <>
       {value.ended ? (
-       <Tooltip content={`Ended ${formatDate(value.endedAt)} (${formatDuration(new Date(value.endedAt) - new Date(value.startedAt))})`}>
+       <Tooltip content={`Ended ${formatDate(value.endedAt)} (${formatDuration(new Date(value.endedAt).getTime() - new Date(value.startedAt).getTime())})`}>
         <div className="flex cursor-help items-center">
          <Icons.timer className={iconVariants({ variant: "button", className: "text-red-400" })} />
          <span className="text-red-400">Ended</span>
         </div>
        </Tooltip>
       ) : (
-       <Tooltip content={`Started ${formatDate(value.startedAt)} (${formatDuration(Date.now() - new Date(value.startedAt))} ago)`}>
+       <Tooltip content={`Started ${formatDate(value.startedAt)} (${formatDuration(Date.now() - new Date(value.startedAt).getTime())} ago)`}>
         <div className="flex cursor-help items-center">
          <Icons.timer className={iconVariants({ variant: "button", className: "text-yellow-400" })} />
-         <span className="text-yellow-500">Ends in {formatDuration(new Date(value.endedAt) - Date.now())}</span>
+         <span className="text-yellow-500">Ends in {formatDuration(new Date(value.endedAt).getTime() - Date.now())}</span>
         </div>
        </Tooltip>
       )}
@@ -67,26 +63,31 @@ export function Giveaways({ data = [] }: { data: Giveaway[] }) {
     Header: "Started By",
     accessor: "startedBy",
     Cell: ({ value }) => (
-     <Link className="flex items-center space-x-4" href={`user/${value?.discordId}`} passHref>
-      <div className="relative">{value?.avatar && <Image src={value?.avatar} alt={`${value?.name} avatar`} quality={95} width={48} height={48} className="size-12 min-h-12 min-w-12 rounded-full" />}</div>
-      <Tooltip content={`Discord ID: ${value?.discordId || "Unknown"}`}>
-       <span className="cursor-help text-left font-bold">{value?.global_name || value?.name}</span>
-      </Tooltip>
-     </Link>
+     <>
+      {value ? (
+       <Link className="flex items-center space-x-4" href={`user/${value.discordId}`} passHref>
+        <div className="relative">{value.avatar && <Image src={value.avatar} alt={`${value.name} avatar`} quality={95} width={48} height={48} className="size-12 min-h-12 min-w-12 rounded-full" />}</div>
+        <Tooltip content={`Discord ID: ${value.discordId || "Unknown"}`}>
+         <span className="cursor-help text-left font-bold">{value.global_name || value.name}</span>
+        </Tooltip>
+       </Link>
+      ) : (
+       <span>Unknown</span>
+      )}
+     </>
     ),
    },
    {
     Header: "Started",
-    accessor: "startedAt",
+    accessor: "time",
     Cell: ({ row }) => (
      <Tooltip content={formatDate(row.original.time.startedAt)}>
-      <span className="cursor-help">{formatDuration(Date.now() - new Date(row.original.time.startedAt))} ago</span>
+      <span className="cursor-help">{formatDuration(Date.now() - new Date(row.original.time.startedAt).getTime())} ago</span>
      </Tooltip>
     ),
    },
    {
     Header: "Actions",
-    accessor: "actions",
     Cell: () => (
      <Tooltip content="Editing giveaways is not yet supported">
       <ButtonSecondary className="!w-fit" disabled>

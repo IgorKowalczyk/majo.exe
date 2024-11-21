@@ -31,7 +31,7 @@
     "@majoexe/database": "workspace:*",
     "@majoexe/typescript-config": "workspace:*",
     "chalk": "5.3.0",
-    "discord-api-types": "0.37.105",
+    "discord-api-types": "0.37.106",
     "discord.js": "14.16.3",
     "ms": "2.1.3"
   },

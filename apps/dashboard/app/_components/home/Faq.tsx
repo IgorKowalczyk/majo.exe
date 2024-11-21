@@ -1,6 +1,6 @@
 "use client";
 
-import { Disclosure, DisclosureButton, DisclosurePanel } from "@headlessui/react";
+import { Disclosure, DisclosureButton, DisclosurePanel, Transition } from "@headlessui/react";
 import { Icons } from "@/components/Icons";
 
 export default function Faq() {
@@ -37,7 +37,10 @@ export default function Faq() {
         <span className="font-medium text-white duration-200 group-data-[hover]:text-white/80 motion-reduce:duration-0">{item.question}</span>
         {open ? <Icons.minus className="size-5 fill-white/60 duration-200 group-data-[hover]:fill-white/50 motion-reduce:duration-0" /> : <Icons.plus className="size-5 fill-white/60 duration-200 group-data-[hover]:fill-white/50 motion-reduce:duration-0" />}
        </DisclosureButton>
-       <DisclosurePanel className="mt-2 origin-top text-white/60">{item.answer}</DisclosurePanel>
+
+       <Transition enter="transition duration-100 ease-out" enterFrom="transform scale-95 opacity-0" enterTo="w-full transform scale-100 opacity-100" leave="w-full transition duration-75 ease-out" leaveFrom="transform scale-100 opacity-100" leaveTo="w-full transform scale-95 opacity-0">
+        <DisclosurePanel className="mt-2 origin-top text-white/60">{item.answer}</DisclosurePanel>
+       </Transition>
       </>
      )}
     </Disclosure>

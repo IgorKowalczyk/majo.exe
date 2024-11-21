@@ -1,5 +1,5 @@
 import { ButtonPrimary, ButtonSecondary } from "@/components/Buttons";
-import { Header1 } from "@/components/Headers";
+import Header, { headerVariants } from "@/components/Headers";
 import { Icons, iconVariants } from "@/components/Icons";
 
 export const metadata = {
@@ -15,7 +15,7 @@ export default async function ErrorPage(props: { searchParams: Promise<{ error: 
    <div className="z-30">
     <>
      <Icons.warning className="mx-auto mb-2 size-20 rounded-full border border-neutral-700 bg-neutral-700/25 p-4 text-red-500 backdrop-blur-md" />
-     <Header1 className="!justify-center text-center">Something went wrong!</Header1>
+     <Header className={headerVariants({ variant: "h1", alignment: "center" })}>Something went wrong!</Header>
      <p className="my-1 mt-2 text-center text-xl text-[#939DB8]">{searchParams.error}</p>
      <div className="mt-4 flex flex-wrap justify-center gap-2">
       <ButtonPrimary href="/">

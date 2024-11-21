@@ -3,7 +3,7 @@ import { redirect } from "next/navigation";
 import { ButtonSecondary } from "@/components/Buttons";
 import { DiscordLogin } from "@/components/client/DiscordLogin";
 import Image from "@/components/client/shared/Image";
-import { Header1 } from "@/components/Headers";
+import Header, { headerVariants } from "@/components/Headers";
 import { Icons, iconVariants } from "@/components/Icons";
 import { Dots } from "@/components/Loaders";
 
@@ -35,12 +35,12 @@ export default async function LoginPage(props: { searchParams: Promise<{ error: 
    <div className="z-30">
     {searchParams.error ? (
      <>
-      <Header1 className="!justify-center text-center">Something went wrong!</Header1>
+      <Header className={headerVariants({ variant: "h1", alignment: "center" })}>Something went wrong!</Header>
       <p className="my-1 mt-2 text-center text-xl text-[#939DB8]">Something went wrong while trying to connect your Discord account!</p>
      </>
     ) : (
      <>
-      <Header1 className="!justify-center text-center">Connect your account</Header1>
+      <Header className={headerVariants({ variant: "h1", alignment: "center" })}>Connect your account</Header>
       <p className="my-1 mt-2 text-center text-xl text-[#939DB8]">Authorize your Discord account to use all the Majo.exe features</p>
      </>
     )}

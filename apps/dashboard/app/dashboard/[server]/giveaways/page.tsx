@@ -85,15 +85,10 @@ export default async function GiveawaysPage(props: { params: Promise<{ server: s
      ended: new Date(data.endAt) < new Date() || data.ended,
      endedAt: new Date(data.endAt),
     },
-    startedBy: startedBy || {
-     global_name: "Unknown",
-     discordId: hostedBy,
-     name: "Unknown",
-     avatar: "https://cdn.discordapp.com/embed/avatars/0.png",
-    },
+    startedBy: startedBy,
    };
   })
- );
+ ).then((data) => data.filter((x) => x !== null));
 
  return (
   <>

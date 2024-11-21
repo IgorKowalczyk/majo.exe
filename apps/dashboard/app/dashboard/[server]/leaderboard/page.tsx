@@ -10,8 +10,9 @@ import "tippy.js/dist/backdrop.css";
 import "tippy.js/animations/shift-away.css";
 import "tippy.js/dist/tippy.css";
 import { Icons, iconVariants } from "@/components/Icons";
+import { Metadata } from "next";
 
-export const metadata = {
+export const metadata: Metadata = {
  title: "Leaderboard",
  description: "View the leaderboard for your server.",
 };
@@ -60,7 +61,6 @@ export default async function LeaderboardPage(props: { params: Promise<{ server:
    },
   },
  });
-
  const data = guild.guildXp.map((x, i) => {
   return {
    id: i + 1,
