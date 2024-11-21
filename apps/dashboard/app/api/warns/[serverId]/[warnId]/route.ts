@@ -1,9 +1,9 @@
 import prismaClient from "@majoexe/database";
 import { getServer, getGuildMember } from "@majoexe/util/functions/guild";
 import { getSession } from "lib/session";
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 
-export async function DELETE(request, props) {
+export async function DELETE(request: NextRequest, props: { params: Promise<{ serverId: string; warnId: string }> }) {
  const params = await props.params;
  try {
   const { serverId } = params;
@@ -46,7 +46,7 @@ export async function DELETE(request, props) {
 
   const server = await getServer(serverId);
 
-  if (!server || server.error) {
+  if (!server) {
    return NextResponse.json(
     {
      error: "Unable to find this server",

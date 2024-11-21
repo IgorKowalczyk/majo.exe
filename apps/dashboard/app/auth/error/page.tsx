@@ -7,7 +7,7 @@ export const metadata = {
  description: "Something went wrong! Please try again later, or contact us if the problem persists.",
 };
 
-export default async function ErrorPage(props) {
+export default async function ErrorPage(props: { searchParams: Promise<{ error: string }> }) {
  const searchParams = await props.searchParams;
  return (
   <div className="relative z-20 flex min-h-screen w-full flex-col items-center justify-center gap-4 px-3 before:absolute before:z-10 before:size-full before:opacity-5 before:grayscale before:md:bg-grid-[#fff]">
