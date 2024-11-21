@@ -2,12 +2,12 @@
   "name": "@majoexe/database",
   "version": "6.0.0",
   "description": "Majo.exe main database schema/client/migrations package",
+  "type": "module",
   "exports": {
     ".": "./src/client.ts",
     "./edge": "./src/edge.ts",
     "./redis": "./src/redis.ts"
   },
-  "type": "module",
   "scripts": {
     "prisma:generate": "prisma generate",
     "prisma:migrate": "prisma migrate dev",

@@ -1,20 +1,24 @@
 import prismaClient from "@majoexe/database";
 import { PrismaAdapter } from "@next-auth/prisma-adapter";
-import DiscordProvider from "next-auth/providers/discord";
+import { Account, AuthOptions, DefaultSession } from "next-auth";
+import DiscordProvider, { DiscordProfile } from "next-auth/providers/discord";
+
+declare module "next-auth" {
+ interface Session extends DefaultSession, Account, DiscordProfile {}
+}
 
 const authOptions = {
  adapter: PrismaAdapter(prismaClient),
  providers: [
   DiscordProvider({
-   clientId: process.env.CLIENT_ID,
-   clientSecret: process.env.CLIENT_SECRET,
+   clientId: process.env.CLIENT_ID as string,
+   clientSecret: process.env.CLIENT_SECRET as string,
    authorization: { params: { scope: "identify guilds guilds.join" } },
    async profile(profile, tokens) {
     if (tokens.access_token && process.env.DISCORD_SUPPORT_SERVER_ID) {
      try {
       await fetch(`https://discord.com/api/guilds/${process.env.DISCORD_SUPPORT_SERVER_ID}/members/${profile.id}`, {
        method: "PUT",
-       access_token: tokens.access_token,
        body: JSON.stringify({
         access_token: tokens.access_token,
        }),
@@ -115,20 +119,15 @@ const authOptions = {
     return token;
    }
   },
-  session({ token }) {
-   if (token.avatar) {
-    token.image = `https://cdn.discordapp.com/avatars/${token.id}/${token.avatar}.${token.avatar.startsWith("a_") ? "gif" : "png"}?size=2048`;
-   } else if (token.discriminator !== "0") {
-    token.image = `https://cdn.discordapp.com/embed/avatars/${Number(token.discriminator) % 5}.png`;
-   } else {
-    token.image = `https://cdn.discordapp.com/embed/avatars/${(token.id >> 22) % 6}.png`;
-   }
+  session({ session, token }) {
+   token.avatar = `${process.env.NEXTAUTH_URL}/api/user/avatar/${token.id}`;
 
    return {
     ...token,
+    ...session,
    };
   },
  },
-};
+} satisfies AuthOptions;
 
 export default authOptions;

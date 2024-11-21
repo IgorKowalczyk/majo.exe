@@ -17,7 +17,7 @@ test.describe("emulate different viewport sizes", () => {
    for (const endpoint of endpoints) {
     const page = await browser.newPage({
      extraHTTPHeaders: {
-      "x-vercel-protection-bypass": process.env.VERCEL_BYPASS,
+      "x-vercel-protection-bypass": process.env.VERCEL_BYPASS || "majoexe",
      },
      viewport: {
       height,
@@ -28,6 +28,7 @@ test.describe("emulate different viewport sizes", () => {
     console.log(`Opening page for path ${defaultURL}${endpoint}`);
     try {
      const response = await page.goto(`${defaultURL}${endpoint}`, { waitUntil: "domcontentloaded" });
+     if (!response) throw new Error(`Failed getting path ${endpoint}!`);
      if (response.status() > 399) throw new Error(`Failed getting path ${endpoint}! Path response code ${response.status()}`);
 
      await page.screenshot({ path: `${name}_${endpoint.replace(/\//g, "")}.png`, fullPage: true });

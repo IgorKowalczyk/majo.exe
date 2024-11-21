@@ -1,16 +1,14 @@
 import { dashboardHeaders, dashboardRedirects } from "@majoexe/config";
-import withBundleAnalyzer from "@next/bundle-analyzer";
 import createMdx from "@next/mdx";
+// @ts-expect-error No types available
 import { PrismaPlugin } from "@prisma/nextjs-monorepo-workaround-plugin";
+import type { NextConfig } from "next";
 
 const withMDX = createMdx();
-const withBundle = withBundleAnalyzer({
- enabled: process.env.ANALYZE === "true",
-});
 
 const nextConfig = {
  reactStrictMode: true,
- pageExtensions: ["mdx", "jsx", "js"],
+ pageExtensions: ["mdx", "jsx", "js", "ts", "tsx"],
  poweredByHeader: false,
  trailingSlash: false,
  experimental: {
@@ -21,6 +19,9 @@ const nextConfig = {
  },
  eslint: {
   ignoreDuringBuilds: true,
+ },
+ typescript: {
+  ignoreBuildErrors: true,
  },
  images: {
   unoptimized: true,
@@ -48,12 +49,12 @@ const nextConfig = {
   }
   return config;
  },
- redirects() {
+ async redirects() {
   return dashboardRedirects;
  },
- headers() {
+ async headers() {
   return dashboardHeaders;
  },
-};
+} satisfies NextConfig;
 
-export default withMDX(withBundle(nextConfig));
+export default withMDX(nextConfig);

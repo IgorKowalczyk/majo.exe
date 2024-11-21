@@ -24,7 +24,7 @@ export * from "./xp/reset.js";
 export * from "./reputation/check.js";
 export * from "./reputation/give.js";
 export * from "./reputation/take.js";
-export * from "./reputation/set.js";
+export * from "./reputation/set";
 
 // User
 export * from "./user/createUser.js";

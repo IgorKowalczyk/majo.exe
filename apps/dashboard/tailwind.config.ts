@@ -3,9 +3,12 @@ import { globalConfig } from "@majoexe/config";
 import { adjustColor } from "@majoexe/util/functions/util";
 import tailwindTypography from "@tailwindcss/typography";
 import svgToDataUri from "mini-svg-data-uri";
+// @ts-expect-error No types available
 import tailwindGradientMaskImage from "tailwind-gradient-mask-image";
 import plugin from "tailwindcss/plugin";
+// @ts-expect-error No types available
 import tailwindTextFill from "tailwindcss-text-fill";
+import type { Config } from "tailwindcss";
 
 const tailwindConfig = {
  darkMode: "class",
@@ -16,12 +19,6 @@ const tailwindConfig = {
  ],
  theme: {
   extend: {
-   minHeight: (theme) => ({
-    ...theme("spacing"),
-   }),
-   minWidth: (theme) => ({
-    ...theme("spacing"),
-   }),
    colors: {
     "background-primary": "#101110",
     "background-secondary": "#161617",
@@ -61,28 +58,28 @@ const tailwindConfig = {
     loader: {
      "0%": {
       height: "0.5rem",
-      opacity: 0.2,
+      opacity: "0.2",
      },
      "50%": {
       height: "1rem",
-      opacity: 1,
+      opacity: "1",
      },
      "100%": {
       height: "0.5rem",
-      opacity: 0.2,
+      opacity: "0.2",
      },
     },
 
     // blink-182
     blinking: {
      "0%": {
-      opacity: 0.2,
+      opacity: "0.2",
      },
      "50%": {
-      opacity: 1,
+      opacity: "1",
      },
      "100%": {
-      opacity: 0.2,
+      opacity: "0.2",
      },
     },
    },
@@ -101,6 +98,6 @@ const tailwindConfig = {
   tailwindHeadlessui,
   tailwindTypography,
  ],
-};
+} satisfies Config;
 
 export default tailwindConfig;

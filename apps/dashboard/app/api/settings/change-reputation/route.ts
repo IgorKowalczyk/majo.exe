@@ -1,8 +1,12 @@
-import prismaClient from "@majoexe/database";
+import { setReputation } from "@majoexe/util/database";
 import { getServer, getGuildMember } from "@majoexe/util/functions/guild";
+import { isNumeric } from "@majoexe/util/functions/util";
+import { APIUser } from "discord-api-types/v10";
 import { getSession } from "lib/session";
-import { NextResponse } from "next/server";
-export async function POST(request) {
+import { revalidatePath } from "next/cache";
+import { NextRequest, NextResponse } from "next/server";
+
+export async function POST(request: NextRequest) {
  try {
   const session = await getSession();
   const start = Date.now();
@@ -23,12 +27,13 @@ export async function POST(request) {
    );
   }
 
-  const { id, name, enabled } = await request.clone().json();
+  const cloned = request.clone();
+  const { userId, guildId, reputation = 0 } = await cloned.json();
 
-  if (!id || !name || Boolean(enabled) === undefined) {
+  if (!guildId || typeof guildId !== "string") {
    return NextResponse.json(
     {
-     error: "Bad Request - incomplete data",
+     error: "Bad Request - Missing guildId or invalid types",
      code: 400,
     },
     {
@@ -42,10 +47,10 @@ export async function POST(request) {
    );
   }
 
-  if (typeof enabled !== "boolean" || typeof name !== "string" || typeof id !== "string") {
+  if (!userId || typeof userId !== "string") {
    return NextResponse.json(
     {
-     error: "Bad Request - incomplete data",
+     error: "Bad Request - Missing userId or invalid types",
      code: 400,
     },
     {
@@ -59,10 +64,10 @@ export async function POST(request) {
    );
   }
 
-  if (name.length > 20) {
+  if (!reputation) {
    return NextResponse.json(
     {
-     error: "Bad Request - incomplete data",
+     error: "Bad Request - Missing reputation or invalid types",
      code: 400,
     },
     {
@@ -76,20 +81,14 @@ export async function POST(request) {
    );
   }
 
-  const existingCategory = await prismaClient.commandCategories.findFirst({
-   where: {
-    name,
-   },
-  });
-
-  if (!existingCategory) {
+  if (!isNumeric(reputation)) {
    return NextResponse.json(
     {
-     error: "Category not found",
-     code: 404,
+     error: "Bad Request - reputation is not a number",
+     code: 400,
     },
     {
-     status: 404,
+     status: 400,
      headers: {
       ...(process.env.NODE_ENV !== "production" && {
        "Server-Timing": `response;dur=${Date.now() - start}ms`,
@@ -99,9 +98,26 @@ export async function POST(request) {
    );
   }
 
-  const server = await getServer(id);
+  if (reputation > 2147483647 || reputation < -2147483647) {
+   return NextResponse.json(
+    {
+     error: "Bad Request - reputation is too large or too small",
+     code: 400,
+    },
+    {
+     status: 400,
+     headers: {
+      ...(process.env.NODE_ENV !== "production" && {
+       "Server-Timing": `response;dur=${Date.now() - start}ms`,
+      }),
+     },
+    }
+   );
+  }
 
-  if (!server || server.error) {
+  const server = await getServer(guildId);
+
+  if (!server) {
    return NextResponse.json(
     {
      error: "Unable to find this server",
@@ -154,125 +170,20 @@ export async function POST(request) {
    );
   }
 
-  const alreadyDisabled = await prismaClient.guildDisabledCategories.findFirst({
-   where: {
-    guildId: server.id,
-    categoryName: existingCategory.name,
+  const user = await fetch(`https://discord.com/api/v${process.env.API_VERSION}/users/${userId}`, {
+   headers: {
+    Authorization: `Bearer ${session.access_token}`,
    },
   });
 
-  if (!alreadyDisabled) {
-   if (enabled) {
-    return new NextResponse(
-     {
-      message: "Category is already enabled, no action taken",
-      code: 200,
-     },
-     {
-      status: 200,
-      headers: {
-       ...(process.env.NODE_ENV !== "production" && {
-        "Server-Timing": `response;dur=${Date.now() - start}ms`,
-       }),
-      },
-     }
-    );
-   } else {
-    await prismaClient.guildDisabledCategories.create({
-     data: {
-      guildId: server.id,
-      categoryName: existingCategory.name,
-     },
-    });
-
-    await prismaClient.guildLogs.create({
-     data: {
-      guild: {
-       connectOrCreate: {
-        where: {
-         guildId: id,
-        },
-        create: {
-         guildId: id,
-        },
-       },
-      },
-      user: {
-       connect: {
-        id: session.sub,
-       },
-      },
-      content: `Disabled category ${existingCategory.name}`,
-      type: "category_change",
-     },
-    });
-
-    return NextResponse.json(
-     {
-      message: "Category disabled",
-      code: 200,
-     },
-     {
-      status: 200,
-      headers: {
-       ...(process.env.NODE_ENV !== "production" && {
-        "Server-Timing": `response;dur=${Date.now() - start}ms`,
-       }),
-      },
-     }
-    );
-   }
-  } else if (enabled) {
-   await prismaClient.guildDisabledCategories.delete({
-    where: {
-     id: alreadyDisabled.id,
-    },
-   });
-
-   await prismaClient.guildLogs.create({
-    data: {
-     guild: {
-      connectOrCreate: {
-       where: {
-        guildId: id,
-       },
-       create: {
-        guildId: id,
-       },
-      },
-     },
-     user: {
-      connect: {
-       id: session.sub,
-      },
-     },
-     content: `Enabled category ${existingCategory.name}`,
-     type: "category_change",
-    },
-   });
-
+  if (!user.ok) {
    return NextResponse.json(
     {
-     message: "Category enabled",
-     code: 200,
+     error: "Unable to find this user",
+     code: 404,
     },
     {
-     status: 200,
-     headers: {
-      ...(process.env.NODE_ENV !== "production" && {
-       "Server-Timing": `response;dur=${Date.now() - start}ms`,
-      }),
-     },
-    }
-   );
-  } else {
-   return NextResponse.json(
-    {
-     message: "Category is already disabled, no action taken",
-     code: 200,
-    },
-    {
-     status: 200,
+     status: 404,
      headers: {
       ...(process.env.NODE_ENV !== "production" && {
        "Server-Timing": `response;dur=${Date.now() - start}ms`,
@@ -281,8 +192,63 @@ export async function POST(request) {
     }
    );
   }
- } catch (err) {
-  console.error(err);
+
+  const userJson = (await user.json()) as APIUser;
+
+  if (!userJson) {
+   return NextResponse.json(
+    {
+     error: "Unable to find this user",
+     code: 404,
+    },
+    {
+     status: 404,
+     headers: {
+      ...(process.env.NODE_ENV !== "production" && {
+       "Server-Timing": `response;dur=${Date.now() - start}ms`,
+      }),
+     },
+    }
+   );
+  }
+
+  const action = await setReputation(userJson, guildId, reputation);
+
+  if (typeof action === "object") {
+   return NextResponse.json(
+    {
+     error: "Unable to set reputation",
+     code: 500,
+    },
+    {
+     status: 500,
+     headers: {
+      ...(process.env.NODE_ENV !== "production" && {
+       "Server-Timing": `response;dur=${Date.now() - start}ms`,
+      }),
+     },
+    }
+   );
+  }
+
+  revalidatePath(`/dashboard/${guildId}/user/${userId}`);
+
+  return NextResponse.json(
+   {
+    message: "Successfully set reputation",
+    code: 200,
+   },
+   {
+    status: 200,
+    headers: {
+     ...(process.env.NODE_ENV !== "production" && {
+      "Server-Timing": `response;dur=${Date.now() - start}ms`,
+     }),
+    },
+   }
+  );
+ } catch (error) {
+  console.error("Failed to set reputation:", error);
   return NextResponse.json(
    {
     error: "Internal Server Error",

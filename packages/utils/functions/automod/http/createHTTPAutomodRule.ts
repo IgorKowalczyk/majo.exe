@@ -1,17 +1,19 @@
 import { globalConfig } from "@majoexe/config";
 import prismaClient from "@majoexe/database";
-import { AutoModerationRuleTriggerType } from "discord-api-types/v10";
+import { type APIAutoModerationRule, AutoModerationRuleTriggerType } from "discord-api-types/v10";
 import { syncAutoModRule } from "../../../database";
 
-/**
- * Create an AutoMod rule using the Discord API
- *
- * @param {string} serverId Discord server ID
- * @param {string} ruleType Rule type to sync/create
- * @param {object} ruleData Rule data to send to Discord
- * @returns {Promise<{error: string, code: number}>} Error message and code
- */
-export async function createHTTPAutomodRule(serverId, ruleType, ruleData) {
+interface ErrorResponse {
+ error: string;
+ code: number;
+}
+
+interface SuccessResponse {
+ error: null;
+ code: number;
+}
+
+export async function createHTTPAutomodRule(serverId: string, ruleType: string, ruleData: Omit<APIAutoModerationRule, "id" | "guild_id" | "creator_id">): Promise<ErrorResponse | SuccessResponse> {
  const existingRule = await syncAutoModRule(serverId, ruleType);
 
  const checkFetch = await fetch(`https://discord.com/api/v${globalConfig.apiVersion}/guilds/${serverId}/auto-moderation/rules`, {
@@ -29,7 +31,7 @@ export async function createHTTPAutomodRule(serverId, ruleType, ruleData) {
   };
  }
 
- const check = await checkFetch.json();
+ const check: APIAutoModerationRule[] = await checkFetch.json();
  const conflictingRules = check.filter((rule) => rule.trigger_type === AutoModerationRuleTriggerType.Keyword);
 
  if (conflictingRules.length === 6 && ruleData.enabled) {
@@ -91,7 +93,7 @@ export async function createHTTPAutomodRule(serverId, ruleType, ruleData) {
    };
   }
 
-  const discordData = await discordRequest.json();
+  const discordData: APIAutoModerationRule = await discordRequest.json();
 
   await prismaClient.autoMod.create({
    data: {

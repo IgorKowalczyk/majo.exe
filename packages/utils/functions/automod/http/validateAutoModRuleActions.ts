@@ -1,19 +1,14 @@
 import { globalConfig } from "@majoexe/config";
-import { AutoModerationActionType, ChannelType } from "discord-api-types/v10";
+import { type APIAutoModerationAction, AutoModerationActionType, ChannelType, type GuildTextChannelType, type APIGuildChannel, type APIGuildTextChannel } from "discord-api-types/v10";
 import { getPermissionNames } from "../../user/checkPermissions";
 
-/**
- * Validate AutoMod rule actions
- *
- * @param {object[]} data Rule actions
- * @param {object[]} allChannels All channels in the server
- * @param {string} dueToMessage Message to send when a rule is triggered
- * @returns {Promise<{error: string, code: number}> | Promise<object[]>} Error message and code or validated actions
- */
-export async function validateAutoModRuleActions(data, allChannels, dueToMessage) {
- // ==================
- // BLOCK MESSAGE
- // ==================
+interface ValidationResult {
+ error: string;
+ code: number;
+}
+
+export async function validateAutoModRuleActions(data: APIAutoModerationAction[], allChannels: APIGuildChannel<GuildTextChannelType>[], dueToMessage: string): Promise<ValidationResult | APIAutoModerationAction[]> {
+ // #region Block Message
  let blockAction = data.find((a) => a.type === AutoModerationActionType.BlockMessage);
 
  if (blockAction) {
@@ -27,14 +22,13 @@ export async function validateAutoModRuleActions(data, allChannels, dueToMessage
   blockAction = {
    type: AutoModerationActionType.BlockMessage,
    metadata: {
-    customMessage: dueToMessage,
+    custom_message: dueToMessage,
    },
   };
  }
+ // #endregion
 
- // ==================
- // TIMEOUT MEMBER
- // ==================
+ // #region Timeout
  let timeoutAction = data.find((a) => a.type === AutoModerationActionType.Timeout);
 
  if (timeoutAction) {
@@ -46,7 +40,7 @@ export async function validateAutoModRuleActions(data, allChannels, dueToMessage
   }
 
   if (timeoutAction.metadata.duration_seconds === 0 || !timeoutAction.metadata.duration_seconds) {
-   timeoutAction = null;
+   timeoutAction = undefined;
   } else if (timeoutAction.metadata.duration_seconds < 60 || timeoutAction.metadata.duration_seconds > 604800) {
    return {
     error: "Timeout duration must be between 60 seconds and 7 days",
@@ -61,10 +55,9 @@ export async function validateAutoModRuleActions(data, allChannels, dueToMessage
    };
   }
  }
+ // #endregion
 
- // ==================
- // SEND ALERT MESSAGE
- // ==================
+ // #region Send Alert Message
  let alertAction = data.find((a) => a.type === AutoModerationActionType.SendAlertMessage);
 
  if (alertAction) {
@@ -76,9 +69,16 @@ export async function validateAutoModRuleActions(data, allChannels, dueToMessage
   }
 
   if (alertAction.metadata.channel_id === "1") {
-   alertAction = null;
+   alertAction = undefined;
   } else {
-   if (!alertAction.metadata.channel_id || !allChannels.find((c) => c.id === alertAction.metadata.channel_id) || allChannels.find((c) => c.id === alertAction.metadata.channel_id).type !== ChannelType.GuildText) {
+   if (!alertAction || !alertAction.metadata) {
+    return {
+     error: "Cannot find the alert channel",
+     code: 404,
+    };
+   }
+
+   if (!alertAction.metadata.channel_id || !allChannels.find((c) => c.id === alertAction?.metadata?.channel_id) || allChannels.find((c) => c.id === alertAction?.metadata?.channel_id)?.type !== ChannelType.GuildText) {
     return {
      error: "Cannot find the alert channel",
      code: 404,
@@ -99,8 +99,8 @@ export async function validateAutoModRuleActions(data, allChannels, dueToMessage
     };
    }
 
-   const getChannelPermissions = await getChannelPermissionsAPI.json();
-   const parsedActionPermissions = getPermissionNames(getChannelPermissions.permission_overwrites.find((p) => p.id === process.env.CLIENT_ID)?.allow ?? 0n);
+   const getChannelPermissions = (await getChannelPermissionsAPI.json()) as APIGuildTextChannel<GuildTextChannelType>;
+   const parsedActionPermissions = getPermissionNames(BigInt(getChannelPermissions.permission_overwrites?.find((p) => p.id === process.env.CLIENT_ID)?.allow ?? 0));
 
    if (!parsedActionPermissions.includes("VIEW_CHANNEL") || !parsedActionPermissions.includes("SEND_MESSAGES")) {
     return {
@@ -120,5 +120,5 @@ export async function validateAutoModRuleActions(data, allChannels, dueToMessage
  }
 
  // remove the action if it's not set
- return [blockAction, timeoutAction, alertAction].filter((a) => a);
+ return [blockAction, timeoutAction, alertAction].filter((a): a is APIAutoModerationAction => a !== undefined);
 }

@@ -1,12 +1,12 @@
 import { globalConfig } from "@majoexe/config";
 import prismaClient from "@majoexe/database";
-import { createHTTPAutomodRule, validateAutoModIgnores, validateAutoModRuleActions } from "@majoexe/util/functions/automod";
+import { AutoModerationRuleCreationData, createHTTPAutomodRule, validateAutoModIgnores, validateAutoModRuleActions } from "@majoexe/util/functions/automod";
 import { getServer, getGuildMember } from "@majoexe/util/functions/guild";
 import { AutoModerationActionType, AutoModerationRuleTriggerType, AutoModerationRuleEventType, ChannelType } from "discord-api-types/v10";
 import { getSession } from "lib/session";
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 
-export async function POST(request) {
+export async function POST(request: NextRequest) {
  try {
   const session = await getSession();
   const start = Date.now();
@@ -28,7 +28,7 @@ export async function POST(request) {
   }
 
   const cloned = await request.clone();
-  const data = await cloned.json();
+  const data: AutoModerationRuleCreationData | undefined = await cloned.json();
 
   if (!data) {
    return NextResponse.json(
@@ -52,7 +52,7 @@ export async function POST(request) {
     {
      type: AutoModerationActionType.BlockMessage,
      metadata: {
-      custom_message: "Message blocked due to containing an invite link. Rule added by Majo.exe",
+      custom_message: "Message blocked due to containing an link. Rule added by Majo.exe",
      },
     },
    ];
@@ -72,7 +72,7 @@ export async function POST(request) {
    !Array.isArray(data.exemptChannels) ||
    !data.exemptRoles.every((r) => typeof r === "string") ||
    !data.exemptChannels.every((c) => typeof c === "string") ||
-   !data.actions.every((a) => a.type !== AutoModerationActionType.BlockMessage || a.type !== AutoModerationActionType.SendAlertMessage || a.type !== AutoModerationActionType.Timeout)
+   !data.actions.every((a) => a.type === AutoModerationActionType.BlockMessage || a.type === AutoModerationActionType.SendAlertMessage || a.type === AutoModerationActionType.Timeout)
   ) {
    return NextResponse.json(
     {
@@ -92,7 +92,7 @@ export async function POST(request) {
 
   const server = await getServer(data.id);
 
-  if (!server || server.error) {
+  if (!server) {
    return NextResponse.json(
     {
      error: "Unable to find this server",
@@ -162,19 +162,23 @@ export async function POST(request) {
    },
   });
 
-  const allRolesFetch = await fetch(`https://discord.com/api/v${globalConfig.apiVersion}/guilds/${server.id}/roles`, {
+  const allRolesRequest = await fetch(`https://discord.com/api/v${globalConfig.apiVersion}/guilds/${server.id}/roles`, {
    method: "GET",
    headers: {
     Authorization: `Bot ${process.env.TOKEN}`,
    },
-  }).then((res) => res.json());
+  });
 
-  const allChannelsFetch = await fetch(`https://discord.com/api/v${globalConfig.apiVersion}/guilds/${server.id}/channels`, {
+  const allChannelsRequest = await fetch(`https://discord.com/api/v${globalConfig.apiVersion}/guilds/${server.id}/channels`, {
    method: "GET",
    headers: {
     Authorization: `Bot ${process.env.TOKEN}`,
    },
-  }).then((res) => res.json());
+  });
+
+  // add the types here:
+
+  const [allRolesFetch, allChannelsFetch] = await Promise.all([allRolesRequest, allChannelsRequest]).then((res) => Promise.all(res.map((r) => r.json())));
 
   const allRoles = allRolesFetch
    .map((role) => {
@@ -219,9 +223,9 @@ export async function POST(request) {
    );
   }
 
-  const validatedActions = await validateAutoModRuleActions(data.actions, allChannels, "Message blocked due to containing an invite link. Rule added by Majo.exe");
+  const validatedActions = await validateAutoModRuleActions(data.actions, allChannels, "Message blocked due to containing an link. Rule added by Majo.exe");
 
-  if (validatedActions.error) {
+  if ("error" in validatedActions) {
    return NextResponse.json(
     {
      error: validatedActions.error,
@@ -255,16 +259,16 @@ export async function POST(request) {
    );
   }
 
-  const createdRule = await createHTTPAutomodRule(server.id, "anti-invite", {
+  const createdRule = await createHTTPAutomodRule(server.id, "anti-link", {
    enabled: data.enabled,
-   name: "Disallow invites [Majo.exe]",
+   name: "Disallow links [Majo.exe]",
    actions: validatedActions,
    event_type: AutoModerationRuleEventType.MessageSend,
    trigger_type: AutoModerationRuleTriggerType.Keyword,
    exempt_roles: data.exemptRoles,
    exempt_channels: data.exemptChannels,
    trigger_metadata: {
-    regex_patterns: ["(?:https?://)?(?:www.|ptb.|canary.)?(?:discord(?:app)?.(?:(?:com|gg)/(?:invite|servers)/[a-z0-9-_]+)|discord.gg/[a-z0-9-_]+)"],
+    regex_patterns: ["(https?://)?([\\da-z.-]+)\\.([a-z.]{2,6})[/\\w .-]*/?"],
    },
   });
 
@@ -286,7 +290,7 @@ export async function POST(request) {
   } else {
    return NextResponse.json(
     {
-     message: "Successfully updated the anti-invite system",
+     message: "Successfully updated the anti-link system",
      code: 200,
     },
     {

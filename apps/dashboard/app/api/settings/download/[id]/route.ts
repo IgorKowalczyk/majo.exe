@@ -1,14 +1,13 @@
 import prismaClient from "@majoexe/database";
 import { getServer, getGuildMember } from "@majoexe/util/functions/guild";
 import { getSession } from "lib/session";
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 
-export async function GET(request, props) {
- const params = await props.params;
+export async function GET(request: NextRequest, props: { params: Promise<{ id: string }> }) {
  try {
   const session = await getSession();
   const start = Date.now();
-  const { id } = params;
+  const { id } = await props.params;
 
   if (!session || !session.access_token) {
    return NextResponse.json(
@@ -45,7 +44,7 @@ export async function GET(request, props) {
 
   const server = await getServer(id);
 
-  if (!server || server.error) {
+  if (!server) {
    return NextResponse.json(
     {
      error: "Unable to find this server",
@@ -208,7 +207,7 @@ export async function GET(request, props) {
   }
 
   /* eslint-disable func-names, @stylistic/space-before-function-paren */
-  BigInt.prototype.toJSON = function () {
+  (BigInt.prototype as any).toJSON = function () {
    return this.toString();
   };
 

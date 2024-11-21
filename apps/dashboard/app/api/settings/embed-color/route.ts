@@ -2,9 +2,10 @@ import { globalConfig } from "@majoexe/config";
 import prismaClient from "@majoexe/database";
 import { getServer, getGuildMember } from "@majoexe/util/functions/guild";
 import { getSession } from "lib/session";
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 
-export async function POST(request) {
+// #region POST
+export async function POST(request: NextRequest) {
  try {
   const session = await getSession();
   const start = Date.now();
@@ -46,7 +47,7 @@ export async function POST(request) {
 
   const server = await getServer(id);
 
-  if (!server || server.error) {
+  if (!server) {
    return NextResponse.json(
     {
      error: "Unable to find this server",
@@ -243,12 +244,10 @@ export async function POST(request) {
   );
  }
 }
+// #endregion
 
-/// ================================
-/// PUT
-/// ================================
-
-export async function PUT(request) {
+// #region PUT
+export async function PUT(request: NextRequest) {
  try {
   const session = await getSession();
   const start = Date.now();
@@ -289,7 +288,7 @@ export async function PUT(request) {
 
   const server = await getServer(id);
 
-  if (!server || server.error) {
+  if (!server) {
    return NextResponse.json(
     {
      error: "Unable to find this server",

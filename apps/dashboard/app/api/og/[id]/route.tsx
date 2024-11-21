@@ -1,24 +1,19 @@
 /* eslint-disable next/no-img-element */
 import { getServer } from "@majoexe/util/functions/guild";
+import { shortenText } from "@majoexe/util/functions/util";
 import { redirect } from "next/navigation";
 import { ImageResponse } from "next/og";
+import { NextRequest } from "next/server";
 
 export const runtime = "edge";
 
-const shortenText = (text, maxLen = 24) => {
- if (text.length > maxLen) {
-  text = text.substr(0, maxLen) + "...";
- }
- return text;
-};
-
-export async function GET(request, props) {
+export async function GET(request: NextRequest, props: { params: Promise<{ id: string }> }) {
  const params = await props.params;
  const { id } = params;
  if (!id) return redirect("/opengraph-image");
 
  const server = await getServer(id);
- if (server.error || !server.bot) return redirect("/opengraph-image");
+ if (!server || !server.bot) return redirect("/opengraph-image");
 
  const icon = server.icon ? `https://cdn.discordapp.com/icons/${server.id}/${server.icon}.${server.icon.startsWith("a_") ? "gif" : "png"}` : `${process.env.NEXTAUTH_URL}/assets/avatar.png`;
 
@@ -48,7 +43,7 @@ export async function GET(request, props) {
      style={{
       backgroundImage: "linear-gradient(to bottom, rgb(255, 255, 255), rgb(163, 163, 163))",
       backgroundClip: "text",
-      "-webkit-background-clip": "text",
+      WebkitBackgroundClip: "text",
       color: "transparent",
       fontFamily: "PoppinsBold",
      }}

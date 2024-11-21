@@ -2,12 +2,13 @@
   "name": "@majoexe/util",
   "version": "6.0.0",
   "description": "Shared utility functions for Majo.exe",
+  "type": "module",
   "exports": {
     "./database": "./database/index.js",
     "./database/*": "./database/*",
     "./embeds": "./embeds/index.js",
     "./embeds/*": "./embeds/*",
-    "./functions/automod": "./functions/automod/index.js",
+    "./functions/automod": "./functions/automod/index.ts",
     "./functions/automod/*": "./functions/automod/*",
     "./functions/files/*": "./functions/files/*",
     "./functions/guild": "./functions/guild/index.js",
@@ -19,7 +20,6 @@
     "./images": "./images/index.js",
     "./images/*": "./images/*"
   },
-  "type": "module",
   "scripts": {
     "format": "prettier . --write --cache --ignore-unknown",
     "format:check": "prettier . --check --cache",
@@ -29,6 +29,7 @@
   "dependencies": {
     "@majoexe/config": "workspace:*",
     "@majoexe/database": "workspace:*",
+    "@majoexe/typescript-config": "workspace:*",
     "chalk": "5.3.0",
     "discord-api-types": "0.37.105",
     "discord.js": "14.16.3",

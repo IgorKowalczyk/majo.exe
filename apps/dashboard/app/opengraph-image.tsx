@@ -30,7 +30,7 @@ export default async function Image() {
      style={{
       backgroundImage: "linear-gradient(to bottom, rgb(255, 255, 255), rgb(163, 163, 163))",
       backgroundClip: "text",
-      "-webkit-background-clip": "text",
+      WebkitBackgroundClip: "text",
       color: "transparent",
       fontFamily: "PoppinsBold",
      }}

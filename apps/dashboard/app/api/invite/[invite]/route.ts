@@ -1,9 +1,9 @@
 import { globalPermissions } from "@majoexe/config/permissions";
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 
 export const runtime = "edge";
 
-export async function GET(request, props) {
+export async function GET(request: NextRequest, props: { params: Promise<{ invite: string }> }) {
  const params = await props.params;
  const { invite } = params;
  if (!invite) return NextResponse.redirect(new URL("/dashboard", request.url));

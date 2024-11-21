@@ -19,7 +19,6 @@ import { AddReaction } from "./_components/home/AddReaction";
 import Faq from "./_components/home/Faq";
 import { LevelUp } from "./_components/home/LevelUp";
 import { ButtonPrimary, ButtonSecondary } from "@/components/Buttons";
-// import GlobeClient from "@/components/client/Globe";
 import { LogDisclosure } from "@/components/client/lists/Logs";
 import { AnimatedList } from "@/components/client/shared/AnimatedList";
 import AnimatedShinyText from "@/components/client/shared/AnimatedShinyText";
@@ -29,7 +28,6 @@ import { GradientHeader, Header1, Header2 } from "@/components/Headers";
 import { Icons, iconVariants } from "@/components/Icons";
 import { Typing } from "@/components/Loaders";
 import { LoginButton } from "@/components/LoginButton";
-// import TextRevealByWord from "@/components/client/shared/TextRevealByWord";
 
 const exampleLogs = [
  {
@@ -169,10 +167,14 @@ export default async function HomePage() {
 
  let commandsCount = 0;
  allCommands.map((command) => {
-  command.options?.map((option) => {
+  if (!command.options) return;
+
+  command.options.map((option) => {
+   if (!option) return;
    if (option.type === 1 || option.type === 2) commandsCount++;
    return option;
   });
+
   commandsCount++;
   return command;
  });
@@ -433,11 +435,6 @@ export default async function HomePage() {
      Add to your server
     </ButtonPrimary>
    </div>
-   {/* <Icons.arrowDown className="text-accent-primary mx-auto mt-12 size-8 animate-bounce" />
-
-   <div className="z-10 flex min-h-[16rem] items-center justify-center">
-    <TextRevealByWord text={`I don't know what to write here. TODO: Add more content`} className="w-full" />
-   </div> */}
   </>
  );
 }

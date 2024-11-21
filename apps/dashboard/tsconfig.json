@@ -1,28 +1,15 @@
 {
+ "extends": "@majoexe/typescript-config/base",
  "compilerOptions": {
-  "target": "ES2017",
-  "lib": ["dom", "dom.iterable", "esnext"],
-  "allowJs": true,
-  "skipLibCheck": true,
-  "strict": false,
-  "noEmit": true,
-  "incremental": true,
-  "module": "esnext",
-  "esModuleInterop": true,
-  "moduleResolution": "node",
-  "resolveJsonModule": true,
-  "isolatedModules": true,
+  "lib": ["ES2022", "dom", "dom.iterable"],
   "jsx": "preserve",
   "baseUrl": ".",
   "paths": {
    "@/*": ["./*"]
   },
-  "plugins": [
-   {
-    "name": "next"
-   }
-  ]
+  "plugins": [{ "name": "next" }],
+  "module": "esnext"
  },
- "include": ["next-env.d.ts", ".next/types/**/*.ts", "**/*.ts", "**/*.tsx"],
+ "include": [".", ".next/types/**/*.ts"],
  "exclude": ["node_modules"]
 }
