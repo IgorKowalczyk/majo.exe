@@ -11,7 +11,7 @@ export function UserMenuDropdown({ user }) {
    <Menu
     label={
      <>
-      <Image width="32" height="32" quality={100} className="-ml-1 !h-6 min-h-6 !w-6 min-w-6 rounded-full" src={user.image} loading="lazy" alt={`${user.name} Avatar`} />
+      <Image width="32" height="32" quality={100} className="-ml-1 !h-6 min-h-6 !w-6 min-w-6 rounded-full" src={user.avatar} loading="lazy" alt={`${user.name} Avatar`} />
       <span>{user.global_name || user.name}</span>
      </>
     }

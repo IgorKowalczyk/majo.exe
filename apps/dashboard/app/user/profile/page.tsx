@@ -8,13 +8,15 @@ import DeleteAccount from "@/components/client/settings/DeleteUserData";
 import Image from "@/components/client/shared/Image";
 import { Tooltip } from "@/components/client/shared/Tooltip";
 import { Emojis } from "@/components/DiscordEmojis";
-import { Header2 } from "@/components/Headers";
+import Header, { headerVariants } from "@/components/Headers";
 import { Icons, iconVariants } from "@/components/Icons";
-
+import { Account, DefaultSession } from "next-auth";
+import { DiscordProfile } from "next-auth/providers/discord";
+import { twMerge } from "tailwind-merge";
 export const revalidate = 3600; // 1 hour
 
 export default async function UserProfilePage() {
- const user = await getSession();
+ const user = (await getSession()) as DefaultSession & Account & DiscordProfile;
  if (!user) return redirect("/auth/login");
 
  return (
@@ -32,15 +34,18 @@ export default async function UserProfilePage() {
       <div className="flex h-[72px] w-auto flex-row justify-between gap-6 bg-background-navbar p-12">
        <div className="ml-[-16px] mt-[-20px] box-content flex items-center rounded-full">
         <Tooltip content="Click to see full size">
-         <Link href={`${user.image}?size=2048`} target="_blank" className="size-24 min-h-24 min-w-24">
-          <Image quality={100} src={user.image} alt={user.username} width={95} height={96} className="rounded-full !border-4 !border-solid !border-background-navbar backdrop-blur-sm duration-200 hover:opacity-75" />
+         <Link href={`${user.avatar}?size=2048`} target="_blank" className="size-24 min-h-24 min-w-24">
+          <Image quality={100} src={user.avatar} alt={user.username} width={95} height={96} className="rounded-full !border-4 !border-solid !border-background-navbar backdrop-blur-sm duration-200 hover:opacity-75" />
          </Link>
         </Tooltip>
         <div className="ml-2 flex items-center text-lg font-bold">
          {user.discriminator === "0" ? (
           <>
-           {user.global_name && user.username && <Tooltip content={`@${user.username}`} />}
-           <div className="text-white">{user.global_name}</div>
+           {user.global_name && user.username && (
+            <Tooltip content={`@${user.username}`}>
+             <div className="text-white">{user.global_name}</div>
+            </Tooltip>
+           )}
           </>
          ) : (
           <>
@@ -55,7 +60,7 @@ export default async function UserProfilePage() {
           getFlags(user.public_flags).map((flag) => {
            return (
             <Tooltip key={`flag-${flag.name}`} content={flag.content}>
-             {Emojis[flag.name]}
+             {Emojis[flag.name as keyof typeof Emojis]}
             </Tooltip>
            );
           })}
@@ -72,10 +77,10 @@ export default async function UserProfilePage() {
     </div>
 
     <div className="relative overflow-hidden rounded-lg border border-neutral-800 bg-background-navbar p-4 md:w-full">
-     <Header2>
+     <Header className={twMerge(headerVariants({ variant: "h2" }))}>
       <Icons.download className={iconVariants({ variant: "large", className: "!stroke-2" })} />
       Download data
-     </Header2>
+     </Header>
      <p className="mt-2 leading-none text-white/70">
       Download all your data in a <code>.json</code> file. This includes your profile, data from all servers you are in and more.
      </p>
@@ -86,12 +91,12 @@ export default async function UserProfilePage() {
     </div>
 
     <Block theme="danger">
-     <Header2 className="text-red-400">
+     <Header className={twMerge(headerVariants({ variant: "h2" }), "text-red-400")}>
       <Icons.warning className={iconVariants({ variant: "large", className: "stroke-red-400 !stroke-2" })} />
       Delete account
-     </Header2>
+     </Header>
      <p className="mt-2 text-white/70">If you want to delete all your data and your account, click the button below. This action is irreversible.</p>
-     <DeleteAccount userId={user.id} />
+     <DeleteAccount />
     </Block>
    </div>
   </div>

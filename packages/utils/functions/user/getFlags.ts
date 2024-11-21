@@ -1,3 +1,9 @@
+export interface UserFlagsObject {
+ flags: number;
+ content: string;
+ name: string;
+}
+
 export const flagsArray = [
  {
   flags: 1, // 1 << 0 = 1
@@ -59,17 +65,10 @@ export const flagsArray = [
   content: "Active Developer",
   name: "ACTIVE_DEVELOPER",
  },
-];
+] satisfies Array<UserFlagsObject>;
 
-/**
- * Get the flags from a number.
- *
- * @param {number} number The number to get the flags from.
- * @returns {object[]} The flags.
- * @example const flags = getFlags(4194304)
- * */
-export function getFlags(number) {
- return flagsArray.reduce((acc, flag) => {
+export function getFlags(number: number): UserFlagsObject[] {
+ return flagsArray.reduce((acc: UserFlagsObject[], flag) => {
   if (Number(number) & flag.flags) acc.push(flag);
   return acc;
  }, []);
