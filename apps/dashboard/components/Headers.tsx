@@ -55,17 +55,6 @@ interface LegacyHeaderProps extends HTMLAttributes<HTMLHeadingElement> {
 /**
  * @deprecated Use `Header` instead.
  */
-export function GradientHeader({ children, className, ...props }: LegacyHeaderProps) {
- return (
-  <h1 className={twMerge(className, "text-fill-transparent mb-0 flex items-center gap-4 bg-gradient-to-b from-white to-neutral-400 box-decoration-clone bg-clip-text text-left text-xl font-black md:text-2xl")} {...props}>
-   {children}
-  </h1>
- );
-}
-
-/**
- * @deprecated Use `Header` instead.
- */
 export function Header1({ children, className, ...props }: LegacyHeaderProps) {
  return (
   <h1 className={twMerge("mb-2 flex items-center justify-start gap-2 text-3xl font-bold", className)} {...props}>
