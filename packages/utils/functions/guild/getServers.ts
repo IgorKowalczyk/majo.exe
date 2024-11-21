@@ -15,7 +15,7 @@ export async function getServers(token: String) {
    },
   });
   if (!res.ok) return null;
-  const json: ExtendedAPIGuild[] = await res.json();
+  const json = (await res.json()) as ExtendedAPIGuild[];
 
   for (const server of json) {
    server.permissions_names = getPermissionNames(BigInt(server.permissions || 0)) || [];

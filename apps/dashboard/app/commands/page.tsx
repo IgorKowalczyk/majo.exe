@@ -5,6 +5,7 @@ import { Block } from "@/components/Block";
 import { DiscordCommands } from "@/components/client/commandModules/DiscordCommands";
 import Image from "@/components/client/shared/Image";
 import { Header1 } from "@/components/Headers";
+import { APIApplicationCommandOption } from "discord-api-types/v10";
 
 export const revalidate = 3600; // 1 hour
 
@@ -13,26 +14,38 @@ export const metadata = {
  description: "A list of all the commands available for Majo.exe.",
 };
 
+type ExtendedApplicationCommandOptionData = APIApplicationCommandOption & { usage?: string };
+
+interface Command {
+ name: string;
+ description: string;
+ options: ExtendedApplicationCommandOptionData[];
+ categoryName: string;
+}
+
 export default async function CommandsPage() {
- let commands = await prismaClient.commands.findMany({});
+ const databaseCommands = (await prismaClient.commands.findMany({})) as unknown as Command[];
  const categories = await prismaClient.commandCategories.findMany({});
 
- const subCommands = [];
- commands = commands.map((command) => {
+ const subCommands: Command[] = [];
+
+ let commands = databaseCommands.map((command) => {
   command.options = command.options.map((option) => {
    if (option.type === 1) {
     subCommands.push({
      ...option,
      categoryName: command.categoryName,
      name: command.name + " " + option.name,
+     options: option.options || [],
     });
    } else if (option.type === 2) {
-    option.options = option.options.map((subOptions) => {
+    option.options = option.options?.map((subOptions) => {
      if (subOptions?.type === 1) {
       subCommands.push({
        ...subOptions,
        categoryName: command.categoryName,
        name: command.name + " " + option.name + " " + subOptions.name,
+       options: subOptions.options || [],
       });
      }
      return subOptions;

@@ -2,7 +2,7 @@ import { globalConfig } from "@majoexe/config";
 import prismaClient from "@majoexe/database";
 import { syncAutoModRule } from "@majoexe/util/database";
 import { getGuildMember, getServer } from "@majoexe/util/functions/guild";
-import { ChannelType } from "discord-api-types/v10";
+import { APIGuildChannel, APIRole, ChannelType, GuildChannelType } from "discord-api-types/v10";
 import { getSession } from "lib/session";
 import { redirect } from "next/navigation";
 import { notFound } from "next/navigation";
@@ -21,13 +21,13 @@ export const metadata = {
  description: "Automatically moderate your server, block bad words, links and other things.",
 };
 
-export default async function AutomodPage(props) {
+export default async function AutomodPage(props: { params: Promise<{ server: string }> }) {
  const params = await props.params;
  const session = await getSession();
  if (!session || !session.access_token) redirect("/auth/login");
  const { server } = params;
  const serverDownload = await getServer(server);
- if (!serverDownload || serverDownload.code === 10004 || !serverDownload.bot) return notFound();
+ if (!serverDownload || !serverDownload.bot) return notFound();
  const serverMember = await getGuildMember(serverDownload.id, session.access_token);
  if (
   // prettier
@@ -63,16 +63,19 @@ export default async function AutomodPage(props) {
   headers: {
    Authorization: `Bot ${process.env.TOKEN}`,
   },
- }).then((res) => res.json());
+ });
 
  const allChannelsFetch = await fetch(`https://discord.com/api/v${globalConfig.apiVersion}/guilds/${serverDownload.id}/channels`, {
   method: "GET",
   headers: {
    Authorization: `Bot ${process.env.TOKEN}`,
   },
- }).then((res) => res.json());
+ });
 
- const allRoles = allRolesFetch
+ const allChannelsJson = (await allChannelsFetch.json()) as APIGuildChannel<GuildChannelType>[];
+ const allRolesJson = (await allRolesFetch.json()) as APIRole[];
+
+ const allRoles = allRolesJson
   .map((role) => {
    if (role.name === "@everyone") return null;
    return {
@@ -83,7 +86,7 @@ export default async function AutomodPage(props) {
   })
   .filter(Boolean);
 
- const allChannels = allChannelsFetch
+ const allChannels = allChannelsJson
   .map((channel) => {
    if (channel.type !== ChannelType.GuildText) return null;
 

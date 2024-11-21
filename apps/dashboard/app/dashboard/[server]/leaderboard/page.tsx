@@ -16,13 +16,13 @@ export const metadata = {
  description: "View the leaderboard for your server.",
 };
 
-export default async function LeaderboardPage(props) {
+export default async function LeaderboardPage(props: { params: Promise<{ server: string }> }) {
  const params = await props.params;
  const session = await getSession();
  if (!session || !session.access_token) redirect("/auth/login");
  const { server } = params;
  const serverDownload = await getServer(server);
- if (!serverDownload || serverDownload.code === 10004 || !serverDownload.bot) return notFound();
+ if (!serverDownload || !serverDownload.bot) return notFound();
  const serverMember = await getGuildMember(serverDownload.id, session.access_token);
  if (
   // prettier

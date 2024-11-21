@@ -184,6 +184,9 @@ importers:
       '@types/react-dom':
         specifier: 18.3.1
         version: 18.3.1
+      '@types/react-table':
+        specifier: ^7.7.20
+        version: 7.7.20
       '@vercel/analytics':
         specifier: 1.4.1
         version: 1.4.1(next@15.0.3(@babel/core@7.26.0)(@playwright/test@1.49.0)(react-dom@19.0.0-rc-fb9a90fa48-20240614(react@19.0.0-rc-fb9a90fa48-20240614))(react@19.0.0-rc-fb9a90fa48-20240614))(react@19.0.0-rc-fb9a90fa48-20240614)
@@ -202,6 +205,9 @@ importers:
       discord-api-types:
         specifier: 0.37.105
         version: 0.37.105
+      discord-giveaways:
+        specifier: 6.0.1
+        version: 6.0.1(discord.js@14.16.3)
       framer-motion:
         specifier: 11.11.17
         version: 11.11.17(react-dom@19.0.0-rc-fb9a90fa48-20240614(react@19.0.0-rc-fb9a90fa48-20240614))(react@19.0.0-rc-fb9a90fa48-20240614)
@@ -2217,6 +2223,9 @@ packages:
 
   '@types/react-reconciler@0.28.8':
     resolution: {integrity: sha512-SN9c4kxXZonFhbX4hJrZy37yw9e7EIxcpHCxQv5JUS18wDE5ovkQKlqQEkufdJCCMfuI9BnjUJvhYeJ9x5Ra7g==}
+
+  '@types/react-table@7.7.20':
+    resolution: {integrity: sha512-ahMp4pmjVlnExxNwxyaDrFgmKxSbPwU23sGQw2gJK4EhCvnvmib2s/O/+y1dfV57dXOwpr2plfyBol+vEHbi2w==}
 
   '@types/react@18.3.12':
     resolution: {integrity: sha512-D2wOSq/d6Agt28q7rSI3jhU7G6aiuzljDGZ2hTZHIkrTLUI+AF3WMeKkEZ9nN2fkBAlcktT6vcZjDFiIhMYEQw==}
@@ -8512,6 +8521,10 @@ snapshots:
       '@types/react': 18.3.12
 
   '@types/react-reconciler@0.28.8':
+    dependencies:
+      '@types/react': 18.3.12
+
+  '@types/react-table@7.7.20':
     dependencies:
       '@types/react': 18.3.12
 

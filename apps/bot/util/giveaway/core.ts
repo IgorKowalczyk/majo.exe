@@ -4,7 +4,7 @@ import { GiveawaysManager, type GiveawayData } from "discord-giveaways";
 import type { ColorResolvable, Snowflake } from "discord.js";
 import type { Majobot } from "@/index";
 
-export default function giveaway(client: Majobot): GiveawaysManager {
+export default function giveaway(client: Majobot) {
  const Giveaways = class extends GiveawaysManager {
   async getAllGiveaways() {
    return await prismaClient.giveaways.findMany();

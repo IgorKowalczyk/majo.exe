@@ -28,7 +28,7 @@ class Majobot extends Client {
  public slashCommands: Collection<string, SlashCommand> = new Collection();
  public additionalSlashCommands: number = 0;
  public commandsRan: number = 0;
- public giveawaysManager: GiveawaysManager = {} as GiveawaysManager;
+ public giveawaysManager = {};
  public errorMessages: {
   internalError: (interaction: CommandInteraction, error: unknown) => Promise<void>;
   createSlashError: (interaction: CommandInteraction, description: string, title?: string) => void;

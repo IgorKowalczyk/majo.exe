@@ -10,19 +10,20 @@ import "tippy.js/dist/backdrop.css";
 import "tippy.js/animations/shift-away.css";
 import "tippy.js/dist/tippy.css";
 import { Icons, iconVariants } from "@/components/Icons";
+import type { GiveawayData } from "discord-giveaways";
 
 export const metadata = {
  title: "Giveaways",
  description: "View the giveaways for your server.",
 };
 
-export default async function GiveawaysPage(props) {
+export default async function GiveawaysPage(props: { params: Promise<{ server: string }> }) {
  const params = await props.params;
  const session = await getSession();
  if (!session || !session.access_token) redirect("/auth/login");
  const { server } = params;
  const serverDownload = await getServer(server);
- if (!serverDownload || serverDownload.code === 10004 || !serverDownload.bot) return notFound();
+ if (!serverDownload || !serverDownload.bot) return notFound();
  const serverMember = await getGuildMember(serverDownload.id, session.access_token);
  if (
   // prettier
@@ -52,7 +53,12 @@ export default async function GiveawaysPage(props) {
 
  const data = await Promise.all(
   guild.giveaway.map(async (giveaway) => {
-   const hostedBy = giveaway.data.hostedBy.replace(/<@!?(\d+)>/g, "$1");
+   if (!giveaway.data) return null;
+
+   const data = giveaway.data as unknown as GiveawayData;
+
+   const hostedBy = data.hostedBy ? data.hostedBy.replace(/<@!?(\d+)>/g, "$1") : data.hostedBy;
+
    const startedBy = await prismaClient.user.findUnique({
     where: {
      discordId: hostedBy,
@@ -65,19 +71,19 @@ export default async function GiveawaysPage(props) {
     },
    });
 
-   if (startedBy.avatar) startedBy.avatar = `https://cdn.discordapp.com/avatars/${hostedBy}/${startedBy.avatar}.${startedBy.avatar.startsWith("a_") ? "gif" : "png"}` || "https://cdn.discordapp.com/embed/avatars/0.png";
+   if (startedBy && startedBy.avatar) startedBy.avatar = `https://cdn.discordapp.com/avatars/${hostedBy}/${startedBy.avatar}.${startedBy.avatar.startsWith("a_") ? "gif" : "png"}` || "https://cdn.discordapp.com/embed/avatars/0.png";
 
    return {
     id: giveaway.id,
-    prize: giveaway.data.prize
+    prize: data.prize
      .replace(/<a?:\w+:\d+>/g, "")
      .replace("Giveaway: ", "")
      .trim(),
-    winners: giveaway.data.winnerCount,
+    winners: data.winnerCount,
     time: {
-     startedAt: new Date(giveaway.data.startAt),
-     ended: new Date(giveaway.data.endAt) < new Date() || giveaway.data.ended,
-     endedAt: new Date(giveaway.data.endAt),
+     startedAt: new Date(data.startAt),
+     ended: new Date(data.endAt) < new Date() || data.ended,
+     endedAt: new Date(data.endAt),
     },
     startedBy: startedBy || {
      global_name: "Unknown",

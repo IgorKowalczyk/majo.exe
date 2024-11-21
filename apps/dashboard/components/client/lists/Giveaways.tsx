@@ -8,9 +8,27 @@ import Image from "@/components/client/shared/Image";
 import { Table } from "@/components/client/shared/Table";
 import { Tooltip } from "@/components/client/shared/Tooltip";
 import { Icons, iconVariants } from "@/components/Icons";
+import type { Column } from "react-table";
 
-export function Giveaways({ data = [] }) {
- const columns = useMemo(
+interface Giveaway {
+ id: string;
+ prize: string;
+ winners: number;
+ time: {
+  startedAt: Date;
+  ended: boolean;
+  endedAt: Date;
+ };
+ startedBy: {
+  global_name: string;
+  discordId: string;
+  name: string;
+  avatar: string;
+ };
+}
+
+export function Giveaways({ data = [] }: { data: Giveaway[] }) {
+ const columns: Column<Giveaway>[] = useMemo(
   () => [
    {
     Header: "Prize",
