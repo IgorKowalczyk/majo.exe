@@ -203,8 +203,8 @@ importers:
         specifier: 0.6.3
         version: 0.6.3
       discord-api-types:
-        specifier: 0.37.105
-        version: 0.37.105
+        specifier: 0.37.107
+        version: 0.37.107
       discord-giveaways:
         specifier: 6.0.1
         version: 6.0.1(discord.js@14.16.3)
@@ -315,8 +315,8 @@ importers:
         specifier: workspace:*
         version: link:../typescript-config
       discord-api-types:
-        specifier: 0.37.105
-        version: 0.37.105
+        specifier: 0.37.107
+        version: 0.37.107
       dotenv:
         specifier: 16.4.5
         version: 16.4.5
@@ -388,8 +388,8 @@ importers:
         specifier: 5.3.0
         version: 5.3.0
       discord-api-types:
-        specifier: 0.37.105
-        version: 0.37.105
+        specifier: 0.37.107
+        version: 0.37.107
       discord.js:
         specifier: 14.16.3
         version: 14.16.3
@@ -3158,8 +3158,8 @@ packages:
   discord-api-types@0.37.100:
     resolution: {integrity: sha512-a8zvUI0GYYwDtScfRd/TtaNBDTXwP5DiDVX7K5OmE+DRT57gBqKnwtOC5Ol8z0mRW8KQfETIgiB8U0YZ9NXiCA==}
 
-  discord-api-types@0.37.105:
-    resolution: {integrity: sha512-TSNlLF5Q9vFLMeHjYskhmDj/zCQ4dFA+OLxQrHUypGW48gt8ttGaB+opCD9w3Zkq1otyoBoetrwaoDFZAFuGng==}
+  discord-api-types@0.37.107:
+    resolution: {integrity: sha512-XOxmxnhtYIRH55kLTrc/JS3nJV1l3wfBtTptFiRGdGDOe2qdCT4DltpxSgskasfDrKfw71Z5quG4tYqTxyPJ7g==}
 
   discord-api-types@0.37.83:
     resolution: {integrity: sha512-urGGYeWtWNYMKnYlZnOnDHm8fVRffQs3U0SpE8RHeiuLKb/u92APS8HoQnPTFbnXmY1vVnXjXO4dOxcAn3J+DA==}
@@ -9541,7 +9541,7 @@ snapshots:
 
   discord-api-types@0.37.100: {}
 
-  discord-api-types@0.37.105: {}
+  discord-api-types@0.37.107: {}
 
   discord-api-types@0.37.83: {}
 
