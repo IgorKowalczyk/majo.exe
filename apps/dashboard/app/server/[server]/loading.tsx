@@ -1,19 +1,18 @@
 import { Block } from "@/components/Block";
-import { Header1, Header4, Header5 } from "@/components/Headers";
+import Header, { Header4, headerVariants } from "@/components/Headers";
 import { EmbedSkeleton, TextSkeleton } from "@/components/Skeletons";
+import { twMerge } from "tailwind-merge";
 
 export default function Loading() {
  return (
   <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-   <Header1 className="!mb-6 flex flex-col !justify-normal">
+   <Header className={twMerge(headerVariants({ variant: "h1" }), "mb-6 justify-normal flex-col")}>
     <div className="size-24 min-h-24 min-w-24 rounded-full bg-button-secondary" />
     <div className="flex flex-col items-center justify-center text-center sm:ml-4">
      <TextSkeleton className="w-32" />
-     <Header5 className="mt-2 text-center opacity-60">
-      <TextSkeleton className="w-64" />
-     </Header5>
+     <TextSkeleton className="w-64 mt-2 opacity-60" />
     </div>
-   </Header1>
+   </Header>
 
    <Block className="!mt-4 flex w-full flex-col gap-4 !p-4 sm:flex-row sm:gap-0">
     <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">

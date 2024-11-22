@@ -8,11 +8,69 @@ import { Block } from "@/components/Block";
 import { Leaderboard } from "@/components/client/lists/Leaderboard";
 import Image from "@/components/client/shared/Image";
 import { Tooltip } from "@/components/client/shared/Tooltip";
-import { Header1, Header4, Header5 } from "@/components/Headers";
+import Header, { Header4, headerVariants } from "@/components/Headers";
+import { twMerge } from "tailwind-merge";
+import { Metadata } from "next";
 
-export default async function CustomOverviewPage(props) {
+export async function generateMetadata({ params }: { params: Promise<{ server: string }> }): Promise<Metadata> {
+ const { server } = await params;
+ const guild = await prismaClient.guild.findFirst({
+  where: {
+   OR: [
+    {
+     guildId: server,
+    },
+    {
+     vanity: server,
+    },
+   ],
+  },
+ });
+
+ if (!guild || !guild.guildId || !guild.publicPage)
+  return {
+   title: "Public Server Overview",
+   description: "View the overview of your server.",
+  };
+
+ const serverDownload = await getServer(guild.guildId);
+
+ if (!serverDownload || !serverDownload.bot)
+  return {
+   title: "Public Server Overview",
+   description: "View the overview of your server.",
+  };
+
+ const guildPreview = await getGuildPreview(serverDownload.id);
+ if (!guildPreview || !guildPreview.id)
+  return {
+   title: "Public Server Overview",
+   description: "View the overview of your server.",
+  };
+
+ return {
+  title: `${guildPreview.name || "Unnamed server"}`,
+  description: guildPreview.description || "View the overview of your server.",
+  openGraph: {
+   title: `${guildPreview.name || "Unnamed server"}`,
+   description: guildPreview.description || "View the overview of your server.",
+   url: dashboardConfig.url,
+   siteName: dashboardConfig.title,
+   images: [
+    {
+     url: `${dashboardConfig.url}/api/og/${server}`,
+     width: 1200,
+     height: 630,
+    },
+   ],
+  },
+ };
+}
+
+export default async function Page(props: { params: Promise<{ server: string }> }) {
  const params = await props.params;
  const { server } = params;
+
  const guild = await prismaClient.guild.findFirst({
   where: {
    OR: [
@@ -61,15 +119,15 @@ export default async function CustomOverviewPage(props) {
 
  return (
   <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-   <Header1 className="!mb-6 flex flex-col !justify-normal">
+   <Header className={twMerge(headerVariants({ variant: "h1" }), "mb-6 justify-normal flex-col")}>
     {guildPreview.icon ? <Image src={`https://cdn.discordapp.com/icons/${guildPreview.id}/${guildPreview.icon}.${guildPreview.icon.startsWith("a_") ? "gif" : "png"}`} alt={guildPreview.name} quality={95} width={96} height={96} className="size-24 rounded-full" /> : <div className="size-24 rounded-full bg-button-secondary" />}
     <div className="flex flex-col text-center sm:ml-4">
      {guildPreview.name || "Unnamed server"}
-     <Header5 className="mt-2 text-center opacity-60">
+     <Header className={twMerge(headerVariants({ variant: "h5", alignment: "center" }), "mt-2 opacity-60")}>
       <Balancer>{guildPreview.description || "This server has no description, maybe you should add one?"}</Balancer>
-     </Header5>
+     </Header>
     </div>
-   </Header1>
+   </Header>
 
    <Block className="!mt-4 flex w-full flex-col gap-4 !p-4 sm:flex-row sm:gap-0">
     <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
@@ -99,10 +157,10 @@ export default async function CustomOverviewPage(props) {
       {guildPreview.emojis && guildPreview.emojis.length > 0 ? (
        <div className="flex flex-row flex-wrap gap-4">
         {guildPreview.emojis.map((emoji) => (
-         <Link key={emoji.id + emoji.name} className="flex flex-col items-center justify-center gap-2" href={`https://cdn.discordapp.com/emojis/${emoji.id}.${emoji.animated ? "gif" : "png"}`} target="_blank" rel="noreferrer noopener">
+         <Link key={emoji.id || "" + emoji.name} className="flex flex-col items-center justify-center gap-2" href={`https://cdn.discordapp.com/emojis/${emoji?.id}.${emoji?.animated ? "gif" : "png"}`} target="_blank" rel="noreferrer noopener">
           <Tooltip content={emoji.name || "Unnamed emoji"}>
            <>
-            <Image src={`https://cdn.discordapp.com/emojis/${emoji.id}.${emoji.animated ? "gif" : "png"}`} alt={emoji.name} quality={95} width={32} height={32} className="size-8 min-h-8 min-w-8" />
+            <Image src={`https://cdn.discordapp.com/emojis/${emoji.id}.${emoji.animated ? "gif" : "png"}`} alt={emoji.name || ""} quality={95} width={32} height={32} className="size-8 min-h-8 min-w-8" />
            </>
           </Tooltip>
          </Link>
@@ -138,55 +196,4 @@ export default async function CustomOverviewPage(props) {
    </div>
   </div>
  );
-}
-
-export async function generateMetadata(props) {
- const params = await props.params;
- const { server } = params;
- const guild = await prismaClient.guild.findFirst({
-  where: {
-   OR: [
-    {
-     guildId: server,
-    },
-    {
-     vanity: server,
-    },
-   ],
-  },
- });
-
- if (!guild || !guild.guildId || !guild.publicPage)
-  return {
-   title: "Public Server Overview",
-   description: "View the overview of your server.",
-  };
-
- const serverDownload = await getServer(guild.guildId);
-
- if (!serverDownload || serverDownload.code === 10004 || !serverDownload.bot)
-  return {
-   title: "Public Server Overview",
-   description: "View the overview of your server.",
-  };
-
- const guildPreview = await getGuildPreview(serverDownload.id);
-
- return {
-  title: `${guildPreview.name || "Unnamed server"}`,
-  description: guildPreview.description || "View the overview of your server.",
-  openGraph: {
-   title: `${guildPreview.name || "Unnamed server"}`,
-   description: guildPreview.description || "View the overview of your server.",
-   url: dashboardConfig.url,
-   siteName: dashboardConfig.title,
-   images: [
-    {
-     url: `${dashboardConfig.url}/api/og/${server}`,
-     width: 1200,
-     height: 630,
-    },
-   ],
-  },
- };
 }

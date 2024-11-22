@@ -11,7 +11,7 @@
     "./functions/automod": "./functions/automod/index.ts",
     "./functions/automod/*": "./functions/automod/*",
     "./functions/files/*": "./functions/files/*",
-    "./functions/guild": "./functions/guild/index.js",
+    "./functions/guild": "./functions/guild/index.ts",
     "./functions/guild/*": "./functions/guild/*",
     "./functions/user": "./functions/user/index.js",
     "./functions/user/*": "./functions/user/*",

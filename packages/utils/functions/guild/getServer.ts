@@ -1,5 +1,5 @@
 import { globalConfig } from "@majoexe/config";
-import { isBotInServer } from "./isBotInServer.js";
+import { isBotInServer } from "./isBotInServer";
 import { APIGuild, RESTError, Snowflake } from "discord-api-types/v10";
 
 export async function getServer(id: Snowflake): Promise<(APIGuild & { bot: boolean }) | null> {

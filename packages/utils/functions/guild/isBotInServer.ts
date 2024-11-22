@@ -1,13 +1,7 @@
 import { globalConfig } from "@majoexe/config";
+import { Snowflake } from "discord-api-types/globals";
 
-/**
- * Checks if the bot is in a server
- *
- * @param {string} guildId - The guild ID.
- * @returns {Promise<boolean>} - Whether the bot is in the server.
- * @throws {Error} - Throws an error if the operation fails.
- * */
-export async function isBotInServer(guildId) {
+export async function isBotInServer(guildId: Snowflake): Promise<boolean> {
  try {
   const res = await fetch(`https://discord.com/api/v${globalConfig.apiVersion}/guilds/${guildId}/members/${process.env.CLIENT_ID}`, {
    headers: {
