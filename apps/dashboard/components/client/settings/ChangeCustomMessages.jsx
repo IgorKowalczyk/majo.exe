@@ -187,7 +187,7 @@ export function ChangeMessages({ serverId, enabled, title, description, existing
           Description:
          </span>
         </Tooltip>
-        <Textarea type="text" value={newDescription} onChange={(e) => setNewDescription(e.target.value)} disabled={!isEnabled || loading || !messageChannel} placeholder={defaultMessages.description} className="!max-w-96 font-normal" />
+        <Textarea value={newDescription} onChange={(e) => setNewDescription(e.target.value)} disabled={!isEnabled || loading || !messageChannel} placeholder={defaultMessages.description} className="!max-w-96 font-normal" />
        </div>
 
        <div className="my-4 w-fit whitespace-nowrap rounded-md border border-accent-primary bg-accent-primary/10 p-4">
