@@ -1,27 +1,28 @@
 import { globalConfig } from "@majoexe/config";
 import prismaClient from "@majoexe/database";
-import { getGuildMember, getServer } from "@majoexe/util/functions/guild";
-import { ChannelType } from "discord-api-types/v10";
+import { getGuildChannels, getGuildMember, getServer } from "@majoexe/util/functions/guild";
+import { APIGuildChannel, ChannelType, GuildChannelType } from "discord-api-types/v10";
 import { getSession } from "lib/session";
 import { redirect } from "next/navigation";
 import { notFound } from "next/navigation";
-import { Block } from "@/components/Block";
+import { Block, ErrorBlock } from "@/components/Block";
 import { ChangeMessages } from "@/components/client/settings/ChangeCustomMessages";
-import { Header1 } from "@/components/Headers";
+import Header, { headerVariants } from "@/components/Headers";
 import { Icons, iconVariants } from "@/components/Icons";
+import { twMerge } from "tailwind-merge";
 
 export const metadata = {
  title: "Custom Messages",
  description: "Customize the messages sent by the bot.",
 };
 
-export default async function CustomMessagesPage(props) {
+export default async function Page(props: { params: Promise<{ server: string }> }) {
  const params = await props.params;
  const session = await getSession();
  if (!session || !session.access_token) redirect("/auth/login");
  const { server } = params;
  const serverDownload = await getServer(server);
- if (!serverDownload || serverDownload.code === 10004 || !serverDownload.bot) return notFound();
+ if (!serverDownload || !serverDownload.bot) return notFound();
  const serverMember = await getGuildMember(serverDownload.id, session.access_token);
  if (
   // prettier
@@ -46,17 +47,13 @@ export default async function CustomMessagesPage(props) {
   },
  });
 
- const allChannelsFetch = await fetch(`https://discord.com/api/v${globalConfig.apiVersion}/guilds/${serverDownload.id}/channels`, {
-  method: "GET",
-  headers: {
-   Authorization: `Bot ${process.env.TOKEN}`,
-  },
- }).then((res) => res.json());
+ if (!guild) return <ErrorBlock title="Could not fetch guild" description="Please try again later or contact support if the issue persists." />;
 
- const allChannels = allChannelsFetch
+ const channels = await getGuildChannels(serverDownload.id, [ChannelType.GuildText]);
+ if (!channels) return <ErrorBlock title="Could not fetch channels" description="Please try again later or contact support if the issue persists." />;
+
+ const allChannels = channels
   .map((channel) => {
-   if (channel.type !== ChannelType.GuildText) return null;
-
    return {
     id: channel.id,
     name: channel.name,
@@ -66,10 +63,10 @@ export default async function CustomMessagesPage(props) {
 
  return (
   <>
-   <Header1>
+   <Header className={twMerge(headerVariants({ variant: "h1" }))}>
     <Icons.messageCode className={iconVariants({ variant: "extraLarge" })} />
     Custom messages
-   </Header1>
+   </Header>
 
    <Block className="mt-4 !overflow-x-visible">
     <ChangeMessages
@@ -85,7 +82,7 @@ export default async function CustomMessagesPage(props) {
      existingChannel={guild.guildWelcomeMessage?.channelId}
      allChannels={allChannels}
      replacedData={{
-      user: session.global_name || serverMember.username || serverMember.name,
+      user: session.global_name || serverMember.name,
       guild: serverDownload.name,
      }}
     />
@@ -105,7 +102,7 @@ export default async function CustomMessagesPage(props) {
      existingChannel={guild.guildLeaveMessage?.channelId}
      allChannels={allChannels}
      replacedData={{
-      user: session.global_name || serverMember.username || serverMember.name,
+      user: session.global_name || serverMember.name,
       guild: serverDownload.name,
      }}
     />

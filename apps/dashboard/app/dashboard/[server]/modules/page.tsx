@@ -9,16 +9,18 @@ import { Block } from "@/components/Block";
 import { UpdateCategories } from "@/components/client/commandModules/UpdateCategories";
 import { UpdateCommands } from "@/components/client/commandModules/UpdateCommands";
 import { Tooltip } from "@/components/client/shared/Tooltip";
-import { Header1, Header2, Header3 } from "@/components/Headers";
+import Header, { headerVariants } from "@/components/Headers";
 import { Icons, iconVariants } from "@/components/Icons";
+import { twMerge } from "tailwind-merge";
+import { Command } from "@/lib/types";
 
-export default async function ModulesPage(props) {
+export default async function Page(props: { params: Promise<{ server: string }> }) {
  const params = await props.params;
  const session = await getSession();
  if (!session || !session.access_token) redirect("/auth/login");
  const { server } = params;
  const serverDownload = await getServer(server);
- if (!serverDownload || serverDownload.code === 10004 || !serverDownload.bot) return notFound();
+ if (!serverDownload || !serverDownload.bot) return notFound();
  const serverMember = await getGuildMember(serverDownload.id, session.access_token);
  if (
   // prettier
@@ -43,7 +45,7 @@ export default async function ModulesPage(props) {
   },
  });
 
- const categories = await prismaClient.commandCategories.findMany({
+ const categories = (await prismaClient.commandCategories.findMany({
   select: {
    name: true,
    commands: {
@@ -55,19 +57,20 @@ export default async function ModulesPage(props) {
     },
    },
   },
- });
+ })) as unknown as { name: string; commands: Command[] }[];
 
  return (
   <>
-   <Header1>
+   <Header className={twMerge(headerVariants({ variant: "h1" }))}>
     <Icons.packagePlus className={iconVariants({ variant: "extraLarge" })} />
     Modules
-   </Header1>
+   </Header>
+
    <Block className="mt-4">
-    <Header2>
+    <Header className={twMerge(headerVariants({ variant: "h2" }))}>
      <Icons.blocks className={iconVariants({ variant: "large", className: "!stroke-2" })} />
      Categories
-    </Header2>
+    </Header>
     <p className="mb-4 mt-2 text-left">Enable or disable categories of commands.</p>
 
     <div className="flex flex-wrap items-stretch justify-start gap-8">
@@ -92,17 +95,17 @@ export default async function ModulesPage(props) {
    </Block>
 
    <Block className="mt-4">
-    <Header2>
+    <Header className={twMerge(headerVariants({ variant: "h2" }))}>
      <Icons.slash className={iconVariants({ variant: "large", className: "!stroke-2" })} />
      Commands
-    </Header2>
+    </Header>
     <p className="mb-4 mt-2 text-left">Enable or disable commands.</p>
 
     {categories.map((category) => (
      <div key={category.name}>
-      <Header3 className="mb-4 mt-8">
+      <Header className={twMerge(headerVariants({ variant: "h3", margin: "normal" }), "mt-8")}>
        {botConfig.emojis.categories.find((cat) => cat.name === category.name.toLowerCase())?.emoji || "❔"} {category.name} ({category.commands.length} commands)
-      </Header3>
+      </Header>
 
       {guild.guildDisabledCategories.some((cat) => cat.categoryName === category.name) && (
        <div className="my-4 flex flex-row flex-wrap items-start whitespace-nowrap rounded-md border border-accent-primary bg-accent-primary/10 p-4">

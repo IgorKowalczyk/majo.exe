@@ -9,12 +9,13 @@ import { notFound } from "next/navigation";
 import { Block } from "@/components/Block";
 import { AntiInvite } from "@/components/client/settings/automod/AntiInvite";
 import { AntiLink } from "@/components/client/settings/automod/AntiLink";
-import { Header1, Header2, Header5 } from "@/components/Headers";
+import Header, { headerVariants } from "@/components/Headers";
 import "tippy.js/dist/backdrop.css";
 import "tippy.js/animations/shift-away.css";
 import "tippy.js/dist/tippy.css";
 import { Icons, iconVariants } from "@/components/Icons";
 import { NavBadge } from "@/components/nav/client/SideNav";
+import { twMerge } from "tailwind-merge";
 
 export const metadata = {
  title: "Automod",
@@ -99,13 +100,11 @@ export default async function AutomodPage(props: { params: Promise<{ server: str
 
  return (
   <>
-   <Header1>
+   <Header className={twMerge(headerVariants({ variant: "h1" }))}>
     <Icons.bot className={iconVariants({ variant: "extraLarge" })} />
     Automod
-   </Header1>
-   <Header5 className="mb-4 mt-2 !justify-start !text-left">
-    <span>Automatically moderate your server, block bad words, links and other things.</span>
-   </Header5>
+   </Header>
+   <p className="mb-4 text-left text-base md:text-lg">Automatically moderate your server, block bad words, links and other things.</p>
    <Block className="mb-4">
     {enabledAntiInvite ? ( // prettier
      <AntiInvite serverId={serverDownload.id} existingExemptChannels={enabledAntiInvite.exempt_channels || []} existingExemptRoles={enabledAntiInvite.exempt_roles || []} enabled={enabledAntiInvite.enabled || false} existingActions={enabledAntiInvite.actions || []} allRoles={allRoles} allChannels={allChannels} />
@@ -121,28 +120,28 @@ export default async function AutomodPage(props: { params: Promise<{ server: str
     )}
    </Block>
    <Block className="mb-4">
-    <Header2>
+    <Header className={twMerge(headerVariants({ variant: "h2" }))}>
      <Icons.mention className={iconVariants({ variant: "large" })} />
      Anti-Mention <NavBadge>Coming Soon</NavBadge>
-    </Header2>
+    </Header>
     <p className="mb-4 text-left">
      <span>Automatically delete all messages containing user mentions.</span>
     </p>
    </Block>
    <Block className="mb-4">
-    <Header2>
+    <Header className={twMerge(headerVariants({ variant: "h2" }))}>
      <Icons.messageOff className={iconVariants({ variant: "large" })} />
      Anti-Spam <NavBadge>Coming Soon</NavBadge>
-    </Header2>
+    </Header>
     <p className="mb-4 text-left">
      <span>Automatically delete all messages deemed as spam.</span>
     </p>
    </Block>
    <Block className="mb-4">
-    <Header2>
+    <Header className={twMerge(headerVariants({ variant: "h2" }))}>
      <Icons.shieldBan className={iconVariants({ variant: "large" })} />
      Anti-Badwords <NavBadge>Coming Soon</NavBadge>
-    </Header2>
+    </Header>
     <p className="mb-4 text-left">
      <span>Automatically delete all messages containing bad words or phrases.</span>
     </p>

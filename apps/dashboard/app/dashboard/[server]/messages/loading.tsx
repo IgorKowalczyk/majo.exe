@@ -1,22 +1,23 @@
 import { Block } from "@/components/Block";
 import { ButtonPrimary } from "@/components/Buttons";
-import { Header1, Header2 } from "@/components/Headers";
+import Header, { headerVariants } from "@/components/Headers";
 import { Icons, iconVariants } from "@/components/Icons";
 import { GraphSkeleton, InputSkeleton } from "@/components/Skeletons";
+import { twMerge } from "tailwind-merge";
 
 export default function Loading() {
  return (
   <>
-   <Header1>
+   <Header className={twMerge(headerVariants({ variant: "h1" }))}>
     <Icons.messageCode className={iconVariants({ variant: "extraLarge" })} />
     Custom messages
-   </Header1>
+   </Header>
 
    <Block className="mt-4 !overflow-x-visible">
-    <Header2>
+    <Header className={twMerge(headerVariants({ variant: "h2" }))}>
      <Icons.userAdd className={iconVariants({ variant: "large", className: "!stroke-2" })} />
      Welcome Messages
-    </Header2>
+    </Header>
     <p className="mb-4 text-left">
      <span>Send a welcome message to new members when they join your server.</span>
     </p>
@@ -36,10 +37,10 @@ export default function Loading() {
    </Block>
 
    <Block className="mt-4 !overflow-x-visible">
-    <Header2>
+    <Header className={twMerge(headerVariants({ variant: "h2" }))}>
      <Icons.userMinus className={iconVariants({ variant: "large", className: "!stroke-2" })} />
      Leave Messages
-    </Header2>
+    </Header>
     <p className="mb-4 text-left">
      <span>Send a leave message to a channel when a user leaves the server.</span>
     </p>

@@ -60,7 +60,7 @@ export default function DeleteAccount() {
     <Icons.trash className={iconVariants({ variant: "button" })} /> Delete account
    </RedButton>
    <Transition.Root appear show={isOpen} as={Fragment}>
-    <Dialog as="div" unmount="true" className="relative z-[99999]" onClose={() => setIsOpen(false)}>
+    <Dialog as="div" unmount={true} className="relative z-[99999]" onClose={() => setIsOpen(false)}>
      <Transition.Child as={Fragment} enter="ease-out duration-200 motion-reduce:transition-none" enterFrom="opacity-0" enterTo="opacity-100" leave="ease-in duration-200 motion-reduce:duration-[1ms]" leaveFrom="opacity-100" leaveTo="opacity-0">
       <div className="firefox:bg-opacity-50 fixed inset-0 bg-black bg-opacity-25 backdrop-blur" />
      </Transition.Child>

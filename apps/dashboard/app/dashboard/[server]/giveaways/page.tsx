@@ -5,12 +5,13 @@ import { redirect } from "next/navigation";
 import { notFound } from "next/navigation";
 import { Block } from "@/components/Block";
 import { Giveaways } from "@/components/client/lists/Giveaways";
-import { Header1 } from "@/components/Headers";
+import Header, { headerVariants } from "@/components/Headers";
 import "tippy.js/dist/backdrop.css";
 import "tippy.js/animations/shift-away.css";
 import "tippy.js/dist/tippy.css";
 import { Icons, iconVariants } from "@/components/Icons";
 import type { GiveawayData } from "discord-giveaways";
+import { twMerge } from "tailwind-merge";
 
 export const metadata = {
  title: "Giveaways",
@@ -92,10 +93,10 @@ export default async function GiveawaysPage(props: { params: Promise<{ server: s
 
  return (
   <>
-   <Header1>
+   <Header className={twMerge(headerVariants({ variant: "h1" }))}>
     <Icons.gift className={iconVariants({ variant: "extraLarge" })} />
     Giveaways
-   </Header1>
+   </Header>
    <Block className="mt-4 flex w-full overflow-auto">
     {data.length > 0 ? (
      <Giveaways data={data} />

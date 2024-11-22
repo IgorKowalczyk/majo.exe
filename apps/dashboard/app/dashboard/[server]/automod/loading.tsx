@@ -1,28 +1,27 @@
 import { Block } from "@/components/Block";
 import { ButtonPrimary } from "@/components/Buttons";
-import { Header1, Header2, Header3, Header5 } from "@/components/Headers";
+import Header, { Header1, Header2, Header3, Header5, headerVariants } from "@/components/Headers";
 import "tippy.js/dist/backdrop.css";
 import "tippy.js/animations/shift-away.css";
 import "tippy.js/dist/tippy.css";
 import { Icons, iconVariants } from "@/components/Icons";
 import { NavBadge } from "@/components/nav/client/SideNav";
 import { InputSkeleton } from "@/components/Skeletons";
+import { twMerge } from "tailwind-merge";
 
 export default function Loading() {
  return (
   <>
-   <Header1>
+   <Header className={twMerge(headerVariants({ variant: "h1" }))}>
     <Icons.bot className={iconVariants({ variant: "extraLarge" })} />
     Automod
-   </Header1>
-   <Header5 className="mb-4 mt-2 !justify-start !text-left">
-    <span>Automatically moderate your server, block bad words, links and other things.</span>
-   </Header5>
+   </Header>
+   <p className="mb-4 text-left text-base md:text-lg">Automatically moderate your server, block bad words, links and other things.</p>
    <Block className="mb-4">
-    <Header2>
+    <Header className={twMerge(headerVariants({ variant: "h2" }))}>
      <Icons.userBlock className={iconVariants({ variant: "large", className: "!stroke-2" })} />
      Anti-Invite <Icons.refresh className={iconVariants({ variant: "large", className: "stroke-accent-primary animate-spin" })} />
-    </Header2>
+    </Header>
     <p className="mb-4 text-left">
      <span>Automatically delete all messages containing Discord server invites.</span>
     </p>
@@ -96,10 +95,10 @@ export default function Loading() {
    </Block>
 
    <Block className="mb-4">
-    <Header2>
+    <Header className={twMerge(headerVariants({ variant: "h2" }))}>
      <Icons.unlink className={iconVariants({ variant: "large", className: "!stroke-2" })} />
      Anti-Link <Icons.refresh className={iconVariants({ variant: "large", className: "stroke-accent-primary animate-spin" })} />
-    </Header2>
+    </Header>
     <p className="mb-4 text-left">
      <span>Automatically delete all messages containing links.</span>
     </p>
@@ -171,28 +170,28 @@ export default function Loading() {
     </div>
    </Block>
    <Block className="mb-4">
-    <Header2>
+    <Header className={twMerge(headerVariants({ variant: "h2" }))}>
      <Icons.mention className={iconVariants({ variant: "large" })} />
      Anti-Mention <NavBadge>Coming Soon</NavBadge>
-    </Header2>
+    </Header>
     <p className="mb-4 text-left">
      <span>Automatically delete all messages containing user mentions.</span>
     </p>
    </Block>
    <Block className="mb-4">
-    <Header2>
+    <Header className={twMerge(headerVariants({ variant: "h2" }))}>
      <Icons.messageOff className={iconVariants({ variant: "large" })} />
      Anti-Spam <NavBadge>Coming Soon</NavBadge>
-    </Header2>
+    </Header>
     <p className="mb-4 text-left">
      <span>Automatically delete all messages deemed as spam.</span>
     </p>
    </Block>
    <Block className="mb-4">
-    <Header2>
+    <Header className={twMerge(headerVariants({ variant: "h2" }))}>
      <Icons.shieldBan className={iconVariants({ variant: "large" })} />
      Anti-Badwords <NavBadge>Coming Soon</NavBadge>
-    </Header2>
+    </Header>
     <p className="mb-4 text-left">
      <span>Automatically delete all messages containing bad words or phrases.</span>
     </p>

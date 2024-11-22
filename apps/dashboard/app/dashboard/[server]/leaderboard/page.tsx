@@ -5,12 +5,13 @@ import { redirect } from "next/navigation";
 import { notFound } from "next/navigation";
 import { Block } from "@/components/Block";
 import { Leaderboard } from "@/components/client/lists/Leaderboard";
-import { Header1 } from "@/components/Headers";
+import Header, { headerVariants } from "@/components/Headers";
 import "tippy.js/dist/backdrop.css";
 import "tippy.js/animations/shift-away.css";
 import "tippy.js/dist/tippy.css";
 import { Icons, iconVariants } from "@/components/Icons";
 import { Metadata } from "next";
+import { twMerge } from "tailwind-merge";
 
 export const metadata: Metadata = {
  title: "Leaderboard",
@@ -72,10 +73,10 @@ export default async function LeaderboardPage(props: { params: Promise<{ server:
 
  return (
   <>
-   <Header1>
+   <Header className={twMerge(headerVariants({ variant: "h1" }))}>
     <Icons.sparkles className={iconVariants({ variant: "extraLarge" })} />
     Leaderboard
-   </Header1>
+   </Header>
    <Block className="mt-4 flex w-full overflow-auto">{data.length > 0 ? <Leaderboard data={data} /> : <span className="opacity-50">No users found. Maybe you should try talking in chat?</span>}</Block>
   </>
  );

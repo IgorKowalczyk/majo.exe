@@ -1,20 +1,22 @@
 import { Block } from "@/components/Block";
-import { Header1, Header2 } from "@/components/Headers";
+import Header, { headerVariants } from "@/components/Headers";
 import { Icons, iconVariants } from "@/components/Icons";
 import { InputSkeleton, TextSkeleton } from "@/components/Skeletons";
+import { twMerge } from "tailwind-merge";
 
 export default function Loading() {
  return (
   <>
-   <Header1>
+   <Header className={twMerge(headerVariants({ variant: "h1" }))}>
     <Icons.packagePlus className={iconVariants({ variant: "extraLarge" })} />
     Modules
-   </Header1>
+   </Header>
+
    <Block className="mt-4">
-    <Header2>
+    <Header className={twMerge(headerVariants({ variant: "h2" }))}>
      <Icons.blocks className={iconVariants({ variant: "large", className: "!stroke-2" })} />
      Categories
-    </Header2>
+    </Header>
     <p className="mb-4 mt-2 text-left">Enable or disable categories of commands.</p>
 
     <div className="flex flex-wrap items-stretch justify-start gap-8">
@@ -31,10 +33,10 @@ export default function Loading() {
     </div>
    </Block>
    <Block className="mt-4">
-    <Header2>
+    <Header className={twMerge(headerVariants({ variant: "h2" }))}>
      <Icons.slash className={iconVariants({ variant: "large", className: "!stroke-2" })} />
      Commands
-    </Header2>
+    </Header>
     <p className="mb-4 mt-2 text-left">Enable or disable commands.</p>
 
     <InputSkeleton className="mb-4 !w-1/2" />

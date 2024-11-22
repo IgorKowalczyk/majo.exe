@@ -1,5 +1,5 @@
 import { globalConfig } from "@majoexe/config";
-import { getPermissionNames } from "../user/checkPermissions.js";
+import { getPermissionNames } from "../user/getPermissionNames.js";
 import { APIGuild } from "discord-api-types/v10";
 
 interface ExtendedAPIGuild extends APIGuild {
