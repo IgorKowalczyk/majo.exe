@@ -1,6 +1,6 @@
 import prismaClient from "@majoexe/database";
 import { getGuildMember, getServer } from "@majoexe/util/functions/guild";
-import { fillMissingDates } from "@majoexe/util/functions/util";
+import { fillMissingDates, sumArray } from "@majoexe/util/functions/util";
 import { json2csv } from "json-2-csv";
 import { getSession } from "lib/session";
 import { redirect } from "next/navigation";
@@ -9,13 +9,13 @@ import { GraphCard } from "@/components/Card";
 import { ServerStatsChart } from "@/components/client/charts/ServerStatsChart";
 import { Icons, iconVariants } from "@/components/Icons";
 
-export default async function StatisticsPage(props) {
+export default async function Page(props: { params: Promise<{ server: string }> }) {
  const params = await props.params;
  const session = await getSession();
  if (!session || !session.access_token) redirect("/auth/login");
  const { server } = params;
  const serverDownload = await getServer(server);
- if (!serverDownload || serverDownload.code === 10004 || !serverDownload.bot) return notFound();
+ if (!serverDownload || !serverDownload.bot) return notFound();
  const serverMember = await getGuildMember(serverDownload.id, session.access_token);
  if (
   // prettier
@@ -40,27 +40,19 @@ export default async function StatisticsPage(props) {
    guildMessage: true,
   },
  });
+ const mapGuildData = (data: any[], key: string) =>
+  data.map((item) => ({
+   date: item.date.toISOString().split("T")[0],
+   [key]: item[key.toLowerCase()],
+  }));
 
- const sumArray = (array, metric) => array.reduce((accumulator, currentValue) => accumulator + currentValue[metric], 0);
+ const guildJoin = mapGuildData(guild.guildJoin, "Joins");
+ const guildLeave = mapGuildData(guild.guildLeave, "Leaves");
+ const guildMessage = mapGuildData(guild.guildMessage, "Messages");
 
- let guildJoin = guild.guildJoin.map((guildJoinData) => ({
-  date: guildJoinData.date.toISOString().split("T")[0],
-  Joins: guildJoinData.joins,
- }));
-
- let guildLeave = guild.guildLeave.map((guildLeaveData) => ({
-  date: guildLeaveData.date.toISOString().split("T")[0],
-  Leaves: guildLeaveData.leaves,
- }));
-
- let guildMessage = guild.guildMessage.map((guildMessageData) => ({
-  date: guildMessageData.date.toISOString().split("T")[0],
-  Messages: guildMessageData.messages,
- }));
-
- guildJoin = fillMissingDates(guildJoin, "Joins");
- guildLeave = fillMissingDates(guildLeave, "Leaves");
- guildMessage = fillMissingDates(guildMessage, "Messages");
+ const guildJoinData = fillMissingDates(guildJoin, "Joins");
+ const guildLeaveData = fillMissingDates(guildLeave, "Leaves");
+ const guildMessageData = fillMissingDates(guildMessage, "Messages");
 
  const guildJoinCSV = json2csv(guildJoin);
  const guildLeaveCSV = json2csv(guildLeave);
@@ -104,7 +96,7 @@ export default async function StatisticsPage(props) {
      }}
     />
    </div>
-   <ServerStatsChart guildJoin={guildJoin} guildLeave={guildLeave} guildJoinCSV={guildJoinCSV} guildLeaveCSV={guildLeaveCSV} guildMessage={guildMessage} guildMessageCSV={guildMessageCSV} />
+   <ServerStatsChart guildJoin={guildJoinData} guildLeave={guildLeaveData} guildJoinCSV={guildJoinCSV} guildLeaveCSV={guildLeaveCSV} guildMessage={guildMessageData} guildMessageCSV={guildMessageCSV} />
   </>
  );
 }

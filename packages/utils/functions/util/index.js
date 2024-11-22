@@ -10,3 +10,4 @@ export * from "./isNumeric.js";
 export * from "./generateDates.js";
 export * from "./fillMissingDates.js";
 export * from "./randomness";
+export * from "./sumArray";

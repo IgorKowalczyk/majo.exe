@@ -1,8 +1,9 @@
 import { Block } from "@/components/Block";
 import { GraphCard } from "@/components/Card";
-import { Header2 } from "@/components/Headers";
+import Header, { headerVariants } from "@/components/Headers";
 import { Icons, iconVariants } from "@/components/Icons";
 import { GraphSkeleton, InputSkeleton } from "@/components/Skeletons";
+import { twMerge } from "tailwind-merge";
 
 export default function Loading() {
  return (
@@ -42,12 +43,12 @@ export default function Loading() {
    <div className="flex flex-col gap-6">
     <Block>
      <div className="mb-4 flex flex-col items-center justify-normal gap-2 whitespace-nowrap lg:flex-row">
-      <Header2 className="w-full flex-col items-center gap-1 lg:items-start">
+      <Header className={twMerge(headerVariants({ variant: "h2" }), "items-center gap-1 lg:items-center")}>
        <span>
         New Members <Icons.refresh className={iconVariants({ variant: "large", className: "text-accent-primary ml-2 inline-block animate-spin !stroke-2 align-middle" })} />
        </span>
        <span className="text-left text-sm font-normal opacity-40">Loading...</span>
-      </Header2>
+      </Header>
       <div className="relative mx-auto flex flex-row items-center justify-center gap-3 lg:ml-auto lg:mr-0">
        <InputSkeleton className="!w-32" />
        <InputSkeleton className="!w-48" />
@@ -57,12 +58,12 @@ export default function Loading() {
     </Block>
     <Block>
      <div className="mb-4 flex flex-col items-center justify-normal gap-2 whitespace-nowrap lg:flex-row">
-      <Header2 className="w-full flex-col items-center gap-1 lg:items-start">
+      <Header className={twMerge(headerVariants({ variant: "h2" }), "items-center gap-1 lg:items-center")}>
        <span>
         Members left <Icons.refresh className={iconVariants({ variant: "large", className: "text-accent-primary ml-2 inline-block animate-spin !stroke-2 align-middle" })} />
        </span>
        <span className="text-left text-sm font-normal opacity-40">Loading...</span>
-      </Header2>
+      </Header>
       <div className="relative mx-auto flex flex-row items-center justify-center gap-3 lg:ml-auto lg:mr-0">
        <InputSkeleton className="!w-32" />
        <InputSkeleton className="!w-48" />
@@ -72,12 +73,12 @@ export default function Loading() {
     </Block>
     <Block>
      <div className="mb-4 flex flex-col items-center justify-normal gap-2 whitespace-nowrap lg:flex-row">
-      <Header2 className="w-full flex-col items-center gap-1 lg:items-start">
+      <Header className={twMerge(headerVariants({ variant: "h2" }), "items-center gap-1 lg:items-center")}>
        <span>
         Messages Sent <Icons.refresh className={iconVariants({ variant: "large", className: "text-accent-primary ml-2 inline-block animate-spin !stroke-2 align-middle" })} />
        </span>
        <span className="text-left text-sm font-normal opacity-40">Loading...</span>
-      </Header2>
+      </Header>
       <div className="relative mx-auto flex flex-row items-center justify-center gap-3 lg:ml-auto lg:mr-0">
        <InputSkeleton className="!w-32" />
        <InputSkeleton className="!w-48" />

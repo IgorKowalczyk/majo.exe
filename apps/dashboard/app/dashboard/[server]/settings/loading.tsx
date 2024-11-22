@@ -1,7 +1,7 @@
 import { Block } from "@/components/Block";
 import { ButtonPrimary } from "@/components/Buttons";
 import { RedButton } from "@/components/Buttons";
-import Header, { Header1, Header2, Header3, headerVariants } from "@/components/Headers";
+import Header, { headerVariants } from "@/components/Headers";
 import { Icons, iconVariants } from "@/components/Icons";
 import { GraphSkeleton, InputSkeleton, TextSkeleton } from "@/components/Skeletons";
 import { twMerge } from "tailwind-merge";
