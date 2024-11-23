@@ -1,11 +1,13 @@
 import { getSession } from "lib/session";
 import { redirect } from "next/navigation";
-import { ButtonSecondary } from "@/components/Buttons";
+import { buttonVariants } from "@/components/Buttons";
 import { DiscordLogin } from "@/components/client/DiscordLogin";
 import Image from "@/components/client/shared/Image";
 import Header, { headerVariants } from "@/components/Headers";
 import { Icons, iconVariants } from "@/components/Icons";
 import { Dots } from "@/components/Loaders";
+import Link from "next/link";
+import { twMerge } from "tailwind-merge";
 
 export const metadata = {
  title: "Login",
@@ -47,10 +49,10 @@ export default async function LoginPage(props: { searchParams: Promise<{ error: 
    </div>
    <div className="z-30 flex flex-col gap-4 sm:flex-row">
     <DiscordLogin />
-    <ButtonSecondary href="/">
+    <Link href="/" className={twMerge(buttonVariants({ variant: "secondary" }))}>
      <Icons.arrowLeft className={iconVariants({ variant: "button" })} />
      Go back home
-    </ButtonSecondary>
+    </Link>
    </div>
   </div>
  );

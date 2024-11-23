@@ -15,7 +15,7 @@ import { twMerge } from "tailwind-merge";
 import { AddReaction } from "./_components/home/AddReaction";
 import Faq from "./_components/home/Faq";
 import { LevelUp } from "./_components/home/LevelUp";
-import { ButtonSecondary, buttonVariants } from "@/components/Buttons";
+import { buttonVariants } from "@/components/Buttons";
 import { LogDisclosure } from "@/components/client/lists/Logs";
 import AnimatedShinyText from "@/components/client/shared/AnimatedShinyText";
 import AreaChart from "@/components/client/shared/AreaChart";

@@ -6,7 +6,7 @@ import clsx from "clsx";
 import { useEffect } from "react";
 import { useTable, useSortBy, usePagination, useGlobalFilter } from "react-table";
 import { ViewSelect } from "./ViewSelect";
-import { ButtonSecondary } from "@/components/Buttons";
+import { Button } from "@/components/Buttons";
 import { Icons, iconVariants } from "@/components/Icons";
 import { InputWithIcon } from "@/components/Input";
 
@@ -119,18 +119,18 @@ export function Table({
 
     {showControls && (
      <div className="mt-2 flex items-center justify-between border-t border-t-neutral-800 pt-2 text-neutral-500">
-      <ButtonSecondary onClick={() => previousPage()} disabled={!canPreviousPage} className="!w-fit">
+      <Button variant="secondary" onClick={() => previousPage()} disabled={!canPreviousPage} className="!w-fit">
        <Icons.arrowLeft className={iconVariants({ variant: "button" })} />
        Previous
-      </ButtonSecondary>
+      </Button>
       <div>
        Page {pageIndex + 1} of {pageOptions.length}
       </div>
       <div className="flex items-center space-x-2">
-       <ButtonSecondary onClick={() => nextPage()} disabled={!canNextPage} className="!w-fit">
+       <Button variant="secondary" onClick={() => nextPage()} disabled={!canNextPage} className="!w-fit">
         Next
         <Icons.arrowRight className={iconVariants({ variant: "button", className: "!-mr-1 ml-2" })} />
-       </ButtonSecondary>
+       </Button>
       </div>
      </div>
     )}

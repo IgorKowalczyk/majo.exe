@@ -5,7 +5,6 @@ import { signOut } from "next-auth/react";
 import { Fragment, useState } from "react";
 import { toast } from "sonner";
 import { Button } from "@/components/Buttons";
-import { ButtonSecondary } from "@/components/Buttons";
 import { Icons, iconVariants } from "@/components/Icons";
 
 export default function DeleteAccount() {

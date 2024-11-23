@@ -3,13 +3,14 @@
 import { formatNumber } from "@majoexe/util/functions/util";
 import Link from "next/link";
 import { useMemo } from "react";
-import { ButtonSecondary } from "@/components/Buttons";
+import { buttonVariants } from "@/components/Buttons";
 import Image from "@/components/client/shared/Image";
 import { Table } from "@/components/client/shared/Table";
 import { Tooltip } from "@/components/client/shared/Tooltip";
 import { Icons, iconVariants } from "@/components/Icons";
 import type { Column } from "react-table";
 import { User } from "@majoexe/database";
+import { twMerge } from "tailwind-merge";
 
 export interface LeaderboardData {
  id: number;
@@ -61,10 +62,10 @@ export function Leaderboard({ data, showControls = true, showSearch = true }: { 
        {
         Header: "Actions",
         Cell: ({ row }: { row: { original: LeaderboardData } }) => (
-         <ButtonSecondary className="!w-fit" href={`user/${row.original.user?.discordId}`}>
+         <Link className={twMerge(buttonVariants({ variant: "secondary" }), "w-fit")} href={`user/${row.original.user?.discordId}`}>
           <Icons.User className={iconVariants({ variant: "button" })} />
           View profile
-         </ButtonSecondary>
+         </Link>
         ),
        },
       ]

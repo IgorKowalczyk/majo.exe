@@ -4,8 +4,7 @@ import { globalConfig } from "@majoexe/config";
 import { useState } from "react";
 import { HexColorPicker } from "react-colorful";
 import { toast } from "sonner";
-import { ButtonPrimary } from "@/components/Buttons";
-import { ButtonSecondary } from "@/components/Buttons";
+import { Button } from "@/components/Buttons";
 import Embed from "@/components/Embed";
 import { Icons, iconVariants } from "@/components/Icons";
 import { Input } from "@/components/Input";
@@ -127,14 +126,14 @@ export function ChangeEmbedColor({ serverId, serverColor }) {
      color={color}
      buttons={
       <>
-       <ButtonPrimary onClick={handleSubmit} disabled={buttonText === "Saving..."}>
+       <Button variant="primary" onClick={handleSubmit} disabled={buttonText === "Saving..."}>
         {buttonText === "Saving..." ? <Icons.refresh className={iconVariants({ variant: "button", className: "animate-spin" })} /> : <Icons.Check className={iconVariants({ variant: "button" })} />}
         {buttonText}
-       </ButtonPrimary>
-       <ButtonSecondary onClick={handleReset} disabled={resetButtonText === "Resetting..."}>
+       </Button>
+       <Button variant="secondary" onClick={handleReset} disabled={resetButtonText === "Resetting..."}>
         {resetButtonText === "Resetting..." ? <Icons.refresh className={iconVariants({ variant: "button", className: "animate-spin" })} /> : <Icons.Trash className={iconVariants({ variant: "button" })} />}
         {resetButtonText}
-       </ButtonSecondary>
+       </Button>
       </>
      }
     >

@@ -2,7 +2,7 @@ import { dashboardConfig } from "@majoexe/config";
 import clsx from "clsx";
 import { getSession } from "lib/session";
 import Link from "next/link";
-import { ButtonSecondary } from "@/components/Buttons";
+import { buttonVariants } from "@/components/Buttons";
 import { DiscordLogin } from "@/components/client/DiscordLogin";
 import Image from "@/components/client/shared/Image";
 import { Icons, iconVariants } from "@/components/Icons";
@@ -48,10 +48,10 @@ export async function Nav({ theme }) {
      ) : (
       <div className="flex items-center justify-center gap-2">
        <div className="hidden md:block">
-        <ButtonSecondary href="/api/invite">
+        <Link href="/api/invite" className={buttonVariants({ variant: "secondary" })}>
          <Icons.userAdd className={iconVariants({ variant: "button" })} />
          Add to your server
-        </ButtonSecondary>
+        </Link>
        </div>
        <DiscordLogin />
       </div>

@@ -4,13 +4,14 @@ import { formatDuration } from "@majoexe/util/functions/util";
 import { useRouter } from "next/navigation";
 import { useMemo, useState, useCallback } from "react";
 import { toast } from "sonner";
-import { Button } from "@/components/Buttons";
-import { ButtonSecondary } from "@/components/Buttons";
+import { Button, buttonVariants } from "@/components/Buttons";
 import Image from "@/components/client/shared/Image";
 import { Table } from "@/components/client/shared/Table";
 import { Tooltip } from "@/components/client/shared/Tooltip";
 import { Icons, iconVariants } from "@/components/Icons";
 import { Skeleton } from "@/components/Skeletons";
+import { twMerge } from "tailwind-merge";
+import Link from "next/link";
 
 export function Warns({ data, showControls = true, showSearch = true }) {
  const columns = useMemo(
@@ -49,10 +50,10 @@ export function Warns({ data, showControls = true, showSearch = true }) {
     Header: "Actions",
     accessor: "link",
     Cell: ({ value }) => (
-     <ButtonSecondary className="w-fit" href={`user/${value}#warns`}>
+     <Link href={`user/${value}#warns`} className={twMerge(buttonVariants({ variant: "secondary"}), "w-fit")} >
       <Icons.warning className={iconVariants({ variant: "button" })} />
       View profile
-     </ButtonSecondary>
+     </Link>
     ),
    },
   ],

@@ -3,7 +3,7 @@
 import { formatDate, formatDuration } from "@majoexe/util/functions/util";
 import Link from "next/link";
 import { useMemo } from "react";
-import { ButtonSecondary } from "@/components/Buttons";
+import { Button } from "@/components/Buttons";
 import Image from "@/components/client/shared/Image";
 import { Table } from "@/components/client/shared/Table";
 import { Tooltip } from "@/components/client/shared/Tooltip";
@@ -89,10 +89,10 @@ export function Giveaways({ data = [] }: { data: Giveaway[] }) {
     Header: "Actions",
     Cell: () => (
      <Tooltip content="Editing giveaways is not yet supported">
-      <ButtonSecondary className="!w-fit" disabled>
+      <Button variant="secondary" className="!w-fit" disabled>
        <Icons.Edit className={iconVariants({ variant: "button" })} />
        Edit
-      </ButtonSecondary>
+      </Button>
      </Tooltip>
     ),
    },
