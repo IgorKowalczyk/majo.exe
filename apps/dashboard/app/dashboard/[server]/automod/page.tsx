@@ -101,7 +101,7 @@ export default async function AutomodPage(props: { params: Promise<{ server: str
  return (
   <>
    <Header className={twMerge(headerVariants({ variant: "h1" }))}>
-    <Icons.bot className={iconVariants({ variant: "extraLarge" })} />
+    <Icons.Bot className={iconVariants({ variant: "extraLarge" })} />
     Automod
    </Header>
    <p className="mb-4 text-left text-base md:text-lg">Automatically moderate your server, block bad words, links and other things.</p>
@@ -139,7 +139,7 @@ export default async function AutomodPage(props: { params: Promise<{ server: str
    </Block>
    <Block className="mb-4">
     <Header className={twMerge(headerVariants({ variant: "h2" }))}>
-     <Icons.shieldBan className={iconVariants({ variant: "large" })} />
+     <Icons.ShieldBan className={iconVariants({ variant: "large" })} />
      Anti-Badwords <NavBadge>Coming Soon</NavBadge>
     </Header>
     <p className="mb-4 text-left">

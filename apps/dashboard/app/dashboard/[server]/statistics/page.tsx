@@ -73,7 +73,7 @@ export default async function Page(props: { params: Promise<{ server: string }> 
       title: "New Members",
       description: "Amount of new members that joined your server in the last 7 days.",
       value: newMembers,
-      graph: newMembers === 0 ? <Icons.minus className={iconVariants({ variant: "normal" })} /> : newMembers < 0 ? <Icons.trendingDown className={iconVariants({ variant: "normal" })} /> : <Icons.trendingUp className={iconVariants({ variant: "normal" })} />,
+      graph: newMembers === 0 ? <Icons.Minus className={iconVariants({ variant: "normal" })} /> : newMembers < 0 ? <Icons.TrendingDown className={iconVariants({ variant: "normal" })} /> : <Icons.TrendingUp className={iconVariants({ variant: "normal" })} />,
      }}
     />
     <GraphCard
@@ -83,7 +83,7 @@ export default async function Page(props: { params: Promise<{ server: string }> 
       title: "Members Left",
       description: "Amount of members that left your server in the last 7 days.",
       value: membersLeft,
-      graph: membersLeft === 0 ? <Icons.minus className={iconVariants({ variant: "normal" })} /> : membersLeft < 0 ? <Icons.trendingDown className={iconVariants({ variant: "normal" })} /> : <Icons.trendingUp className={iconVariants({ variant: "normal" })} />,
+      graph: membersLeft === 0 ? <Icons.Minus className={iconVariants({ variant: "normal" })} /> : membersLeft < 0 ? <Icons.TrendingDown className={iconVariants({ variant: "normal" })} /> : <Icons.TrendingUp className={iconVariants({ variant: "normal" })} />,
      }}
     />
     <GraphCard
@@ -93,7 +93,7 @@ export default async function Page(props: { params: Promise<{ server: string }> 
       title: "New Messages",
       description: "The amount of messages that were sent in your server in the last 7 days.",
       value: newMessages,
-      graph: newMessages === 0 ? <Icons.minus className={iconVariants({ variant: "normal" })} /> : newMessages < 0 ? <Icons.trendingDown className={iconVariants({ variant: "normal" })} /> : <Icons.trendingUp className={iconVariants({ variant: "normal" })} />,
+      graph: newMessages === 0 ? <Icons.Minus className={iconVariants({ variant: "normal" })} /> : newMessages < 0 ? <Icons.TrendingDown className={iconVariants({ variant: "normal" })} /> : <Icons.TrendingUp className={iconVariants({ variant: "normal" })} />,
      }}
     />
    </div>

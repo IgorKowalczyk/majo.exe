@@ -91,7 +91,7 @@ export function AntiLink({ serverId, enabled, existingActions, existingExemptRol
    >
     <div className="my-4 flex flex-row flex-wrap items-start whitespace-nowrap rounded-md border border-accent-primary bg-accent-primary/10 p-4">
      <span className="mr-1 flex flex-row items-center whitespace-nowrap font-bold">
-      <Icons.info className={iconVariants({ variant: "normal", className: "stroke-accent-primary mr-1" })} />
+      <Icons.Info className={iconVariants({ variant: "normal", className: "stroke-accent-primary mr-1" })} />
       Note:
      </span>
      <span className="whitespace-normal">You have to enable this rule to change its settings!</span>
@@ -113,7 +113,7 @@ export function AntiLink({ serverId, enabled, existingActions, existingExemptRol
      <div className="flex w-fit flex-row flex-wrap items-center gap-2 text-center font-bold">
       <Tooltip content="Ignore certain roles from triggering the rule.">
        <span className="flex cursor-help items-center gap-2">
-        <Icons.users className={iconVariants({ variant: "normal", className: "stroke-accent-primary" })} />
+        <Icons.Users className={iconVariants({ variant: "normal", className: "stroke-accent-primary" })} />
         Ignore Roles:
        </span>
       </Tooltip>
@@ -127,7 +127,7 @@ export function AntiLink({ serverId, enabled, existingActions, existingExemptRol
      <div className="mt-2 flex w-fit flex-row flex-wrap items-center gap-2 text-center font-bold">
       <Tooltip content="Ignore certain channels from being moderated.">
        <span className="flex cursor-help items-center gap-2">
-        <Icons.hash className={iconVariants({ variant: "normal", className: "stroke-accent-primary" })} />
+        <Icons.Hash className={iconVariants({ variant: "normal", className: "stroke-accent-primary" })} />
         Ignore Channels:
        </span>
       </Tooltip>
@@ -145,14 +145,14 @@ export function AntiLink({ serverId, enabled, existingActions, existingExemptRol
 
     <Block className="mb-4 !py-3">
      <Header3>
-      <Icons.shieldMinus className={iconVariants({ variant: "large" })} /> Actions:
+      <Icons.ShieldMinus className={iconVariants({ variant: "large" })} /> Actions:
      </Header3>
      <span className="mb-4 font-normal">What should I do when a member triggers the rule?</span>
 
      <div className="my-2 flex flex-row flex-wrap gap-2">
       <Tooltip content="Delete the message that triggered the rule.">
        <span className="flex w-fit cursor-help items-center gap-2 font-bold">
-        <Icons.trash className={iconVariants({ variant: "normal", className: "stroke-red-400" })} />
+        <Icons.Trash className={iconVariants({ variant: "normal", className: "stroke-red-400" })} />
         Delete message:
        </span>
       </Tooltip>
@@ -165,7 +165,7 @@ export function AntiLink({ serverId, enabled, existingActions, existingExemptRol
      <div className="my-2 flex flex-row flex-wrap gap-2">
       <Tooltip content="Timeout the member that triggered the rule.">
        <span className="flex w-fit cursor-help items-center gap-2 font-bold">
-        <Icons.timer className={iconVariants({ variant: "normal", className: "stroke-red-400" })} />
+        <Icons.Timer className={iconVariants({ variant: "normal", className: "stroke-red-400" })} />
         Timeout member:
        </span>
       </Tooltip>
@@ -211,7 +211,7 @@ export function AntiLink({ serverId, enabled, existingActions, existingExemptRol
       </>
      ) : (
       <>
-       <Icons.check className={iconVariants({ variant: "button" })} />
+       <Icons.Check className={iconVariants({ variant: "button" })} />
        Save
       </>
      )}

@@ -70,7 +70,7 @@ function GenerateComponent({ title, data, CSVData, valueName, fileName, categori
      <Menu
       label={
        <>
-        <Icons.download className={iconVariants({ variant: "small" })} />
+        <Icons.Download className={iconVariants({ variant: "small" })} />
         <span>Export</span>
        </>
       }
@@ -88,7 +88,7 @@ function GenerateComponent({ title, data, CSVData, valueName, fileName, categori
       <div className="relative">
        <Listbox.Button className="ml-2 flex h-10 cursor-pointer select-none items-center gap-3 rounded-md border border-neutral-800 px-3 py-2 text-sm font-normal duration-200 hover:border-neutral-700 hover:bg-background-menu-button ui-open:border-neutral-700 ui-open:bg-background-menu-button motion-reduce:transition-none sm:text-sm">
         <>
-         <Icons.calendarRange className={iconVariants({ variant: "small" })} />
+         <Icons.CalendarRange className={iconVariants({ variant: "small" })} />
          <span>Date Range: {dateRange}</span>
          <Icons.arrowDown className={iconVariants({ variant: "small", className: "ui-open:rotate-180 text-gray-400 duration-200 motion-reduce:transition-none" })} />
         </>

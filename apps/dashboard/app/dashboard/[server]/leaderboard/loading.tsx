@@ -8,7 +8,7 @@ export default function Loading() {
  return (
   <>
    <Header className={twMerge(headerVariants({ variant: "h1" }))}>
-    <Icons.sparkles className={iconVariants({ variant: "extraLarge" })} />
+    <Icons.Sparkles className={iconVariants({ variant: "extraLarge" })} />
     Leaderboard
    </Header>
    <Block className="mt-4 flex w-full overflow-auto">

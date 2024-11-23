@@ -62,13 +62,13 @@ export default async function Page(props: { params: Promise<{ server: string }> 
  return (
   <>
    <Header className={twMerge(headerVariants({ variant: "h1" }))}>
-    <Icons.packagePlus className={iconVariants({ variant: "extraLarge" })} />
+    <Icons.PackagePlus className={iconVariants({ variant: "extraLarge" })} />
     Modules
    </Header>
 
    <Block className="mt-4">
     <Header className={twMerge(headerVariants({ variant: "h2" }))}>
-     <Icons.blocks className={iconVariants({ variant: "large", className: "!stroke-2" })} />
+     <Icons.Blocks className={iconVariants({ variant: "large", className: "!stroke-2" })} />
      Categories
     </Header>
     <p className="mb-4 mt-2 text-left">Enable or disable categories of commands.</p>
@@ -110,7 +110,7 @@ export default async function Page(props: { params: Promise<{ server: string }> 
       {guild.guildDisabledCategories.some((cat) => cat.categoryName === category.name) && (
        <div className="my-4 flex flex-row flex-wrap items-start whitespace-nowrap rounded-md border border-accent-primary bg-accent-primary/10 p-4">
         <span className="mr-1 flex flex-row items-center whitespace-nowrap font-bold">
-         <Icons.info className={iconVariants({ variant: "normal", className: "stroke-accent-primary mr-1" })} /> Note:
+         <Icons.Info className={iconVariants({ variant: "normal", className: "stroke-accent-primary mr-1" })} /> Note:
         </span>
         <span className="whitespace-normal">You have to enable this category to change status of individual commands in it!</span>
        </div>

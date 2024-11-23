@@ -100,7 +100,7 @@ export function ChangeMessages({ serverId, enabled, title, description, existing
     <div className="my-4 flex flex-row flex-wrap gap-2">
      <Tooltip content="Enable or disable welcome messages.">
       <span className="flex w-fit cursor-help items-center gap-2 font-bold">
-       <Icons.check className={iconVariants({ variant: "normal" })} />
+       <Icons.Check className={iconVariants({ variant: "normal" })} />
        Enabled:
       </span>
      </Tooltip>
@@ -118,7 +118,7 @@ export function ChangeMessages({ serverId, enabled, title, description, existing
     >
      <div className="my-4 flex flex-row flex-wrap items-start overflow-hidden whitespace-nowrap rounded-md border border-accent-primary bg-accent-primary/10 p-4 duration-200 will-change-transform">
       <span className="mr-1 flex flex-row items-center whitespace-nowrap font-bold">
-       <Icons.info className={iconVariants({ variant: "normal", className: "stroke-accent-primary mr-1" })} />
+       <Icons.Info className={iconVariants({ variant: "normal", className: "stroke-accent-primary mr-1" })} />
        Note:
       </span>
       <span className="whitespace-normal">You have to enable this message to configure it.</span>
@@ -140,7 +140,7 @@ export function ChangeMessages({ serverId, enabled, title, description, existing
        <div className="mb-2 flex w-fit flex-col flex-wrap gap-2">
         <Tooltip content="Where should the welcome message be sent?">
          <span className="flex w-fit cursor-help items-center gap-2 font-bold">
-          <Icons.hash className={iconVariants({ variant: "normal" })} />
+          <Icons.Hash className={iconVariants({ variant: "normal" })} />
           Channel:
          </span>
         </Tooltip>
@@ -173,7 +173,7 @@ export function ChangeMessages({ serverId, enabled, title, description, existing
        <div className="my-2 flex flex-col flex-wrap gap-2">
         <Tooltip content="The title of the welcome message.">
          <span className="flex w-fit cursor-help items-center gap-2 font-bold">
-          <Icons.type className={iconVariants({ variant: "normal" })} />
+          <Icons.Type className={iconVariants({ variant: "normal" })} />
           Title:
          </span>
         </Tooltip>
@@ -183,7 +183,7 @@ export function ChangeMessages({ serverId, enabled, title, description, existing
        <div className="my-2 flex flex-col flex-wrap gap-2">
         <Tooltip content="The description of the welcome message.">
          <span className="flex w-fit cursor-help items-center gap-2 font-bold">
-          <Icons.text className={iconVariants({ variant: "normal" })} />
+          <Icons.Text className={iconVariants({ variant: "normal" })} />
           Description:
          </span>
         </Tooltip>
@@ -192,7 +192,7 @@ export function ChangeMessages({ serverId, enabled, title, description, existing
 
        <div className="my-4 w-fit whitespace-nowrap rounded-md border border-accent-primary bg-accent-primary/10 p-4">
         <div className="mr-1 flex flex-row items-center whitespace-nowrap font-bold">
-         <Icons.info className={iconVariants({ variant: "normal", className: "stroke-accent-primary mr-1" })} />
+         <Icons.Info className={iconVariants({ variant: "normal", className: "stroke-accent-primary mr-1" })} />
          Note:
         </div>
         <div className="mt-1 whitespace-normal">
@@ -226,7 +226,7 @@ export function ChangeMessages({ serverId, enabled, title, description, existing
       </>
      ) : (
       <>
-       <Icons.check className={iconVariants({ variant: "button" })} />
+       <Icons.Check className={iconVariants({ variant: "button" })} />
        Save
       </>
      )}

@@ -21,7 +21,7 @@ export function UserMenuDropdown({ user }) {
       <Icons.dashboard className={iconVariants({ variant: "button", className: "ml-1" })} /> Dashboard
      </Menu.Link>
      <Menu.Link href="/user/profile">
-      <Icons.user className={iconVariants({ variant: "button", className: "ml-1" })} /> Profile
+      <Icons.User className={iconVariants({ variant: "button", className: "ml-1" })} /> Profile
      </Menu.Link>
     </div>
 

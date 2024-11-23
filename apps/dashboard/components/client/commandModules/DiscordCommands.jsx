@@ -59,7 +59,7 @@ export function DiscordCommands({ commands, categories }) {
 
  return (
   <>
-   <InputWithIcon placeholder="Search commands..." value={search} onChange={(e) => setSearch(e.target.value)} icon={<Icons.search className={iconVariants({ variant: "normal", className: "text-white/50" })} />} className="w-full !max-w-none" />
+   <InputWithIcon placeholder="Search commands..." value={search} onChange={(e) => setSearch(e.target.value)} icon={<Icons.Search className={iconVariants({ variant: "normal", className: "text-white/50" })} />} className="w-full !max-w-none" />
    <div className="mt-8 flex flex-wrap gap-2">
     {categories.map((category) => (
      <div
@@ -79,7 +79,7 @@ export function DiscordCommands({ commands, categories }) {
       }}
      >
       <div className="relative size-5">
-       <Icons.check
+       <Icons.Check
         className={iconVariants({
          variant: "normal",
          className: clsx("absolute inset-0 size-full duration-200", {

@@ -199,7 +199,7 @@ export default async function Page(props: { params: Promise<{ server: string }> 
      <Block>
       <Header className={twMerge(headerVariants({ variant: "h4", margin: "normal" }), "block")}>
        <span className="flex flex-row flex-wrap items-center gap-2">
-        <Icons.gauge className={iconVariants({ variant: "normal", className: "!stroke-2" })} />
+        <Icons.Gauge className={iconVariants({ variant: "normal", className: "!stroke-2" })} />
         <span className="opacity-80">Server Score: </span>
         <span
          className={clsx({
@@ -221,14 +221,14 @@ export default async function Page(props: { params: Promise<{ server: string }> 
       {guildScore !== 100 && (
        <>
         <Header className={twMerge(headerVariants({ variant: "h4", margin: "wide" }), "items-start pt-4 justify-normal opacity-80")}>
-         <Icons.lightBulb className={iconVariants({ variant: "normal", className: "!stroke-2" })} />
+         <Icons.Lightbulb className={iconVariants({ variant: "normal", className: "!stroke-2" })} />
          Ways to improve your score:
         </Header>
         <div className="mt-2 space-y-1">
          {(!guild.autoMod || guild.autoMod.length === 0) && (
           <div>
            <span className="gap-1 font-bold">
-            <Icons.plus className={iconVariants({ variant: "normal", className: "mr-1 inline !stroke-2" })} />
+            <Icons.Minus className={iconVariants({ variant: "normal", className: "mr-1 inline !stroke-2" })} />
             Enable AutoMod:
            </span>{" "}
            <span className="font-normal text-gray-400">
@@ -242,7 +242,7 @@ export default async function Page(props: { params: Promise<{ server: string }> 
          {!guild.enableXP && (
           <div>
            <span className="gap-1 font-bold">
-            <Icons.plus className={iconVariants({ variant: "normal", className: "mr-1 inline !stroke-2" })} />
+            <Icons.Minus className={iconVariants({ variant: "normal", className: "mr-1 inline !stroke-2" })} />
             Enable XP:
            </span>{" "}
            <span className="font-normal text-gray-400">
@@ -256,7 +256,7 @@ export default async function Page(props: { params: Promise<{ server: string }> 
          {!guild.publicPage && (
           <div>
            <span className="gap-1 font-bold">
-            <Icons.plus className={iconVariants({ variant: "normal", className: "mr-1 inline !stroke-2" })} />
+            <Icons.Minus className={iconVariants({ variant: "normal", className: "mr-1 inline !stroke-2" })} />
             Enable Public Page:
            </span>{" "}
            <span className="font-normal text-gray-400">
@@ -270,7 +270,7 @@ export default async function Page(props: { params: Promise<{ server: string }> 
          {!guild.vanity && (
           <div>
            <span className="gap-1 font-bold">
-            <Icons.plus className={iconVariants({ variant: "normal", className: "mr-1 inline !stroke-2" })} />
+            <Icons.Minus className={iconVariants({ variant: "normal", className: "mr-1 inline !stroke-2" })} />
             Set Vanity URL:
            </span>{" "}
            <span className="font-normal text-gray-400">
@@ -297,7 +297,7 @@ export default async function Page(props: { params: Promise<{ server: string }> 
        Quick Stats
        {guild.publicPage ? (
         <ButtonPrimary href={`/server/${guild.vanity || serverDownload.id}`} className="mx-auto font-normal w-fit !flex flex-row whitespace-nowrap sm:ml-auto sm:mr-0" target="_blank" rel="noreferrer noopener">
-         <Icons.externalLink className="shrink-0 mr-2 h-5 w-5" aria-hidden="true" role="img" />
+         <Icons.ExternalLink className="shrink-0 mr-2 h-5 w-5" aria-hidden="true" role="img" />
          Server page
         </ButtonPrimary>
        ) : null}

@@ -74,7 +74,7 @@ export default async function LeaderboardPage(props: { params: Promise<{ server:
  return (
   <>
    <Header className={twMerge(headerVariants({ variant: "h1" }))}>
-    <Icons.sparkles className={iconVariants({ variant: "extraLarge" })} />
+    <Icons.Sparkles className={iconVariants({ variant: "extraLarge" })} />
     Leaderboard
    </Header>
    <Block className="mt-4 flex w-full overflow-auto">{data.length > 0 ? <Leaderboard data={data} /> : <span className="opacity-50">No users found. Maybe you should try talking in chat?</span>}</Block>

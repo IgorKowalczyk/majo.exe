@@ -50,7 +50,7 @@ export function Footer() {
          </Link>
          .
          <ButtonPrimary className="mt-3 w-fit" href="https://majoexe.xyz/invite">
-          <Icons.sparkles className="mr-2 size-5" />
+          <Icons.Sparkles className="mr-2 size-5" />
           Invite original Majo.exe
          </ButtonPrimary>
         </div>

@@ -128,11 +128,11 @@ export function ChangeEmbedColor({ serverId, serverColor }) {
      buttons={
       <>
        <ButtonPrimary onClick={handleSubmit} disabled={buttonText === "Saving..."}>
-        {buttonText === "Saving..." ? <Icons.refresh className={iconVariants({ variant: "button", className: "animate-spin" })} /> : <Icons.check className={iconVariants({ variant: "button" })} />}
+        {buttonText === "Saving..." ? <Icons.refresh className={iconVariants({ variant: "button", className: "animate-spin" })} /> : <Icons.Check className={iconVariants({ variant: "button" })} />}
         {buttonText}
        </ButtonPrimary>
        <ButtonSecondary onClick={handleReset} disabled={resetButtonText === "Resetting..."}>
-        {resetButtonText === "Resetting..." ? <Icons.refresh className={iconVariants({ variant: "button", className: "animate-spin" })} /> : <Icons.trash className={iconVariants({ variant: "button" })} />}
+        {resetButtonText === "Resetting..." ? <Icons.refresh className={iconVariants({ variant: "button", className: "animate-spin" })} /> : <Icons.Trash className={iconVariants({ variant: "button" })} />}
         {resetButtonText}
        </ButtonSecondary>
       </>

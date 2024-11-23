@@ -196,7 +196,7 @@ export default async function User(props: { params: Promise<{ server: string; id
       </div>
       <div className="mb-[-14px] hidden w-full items-end justify-end lg:flex">
        <ButtonPrimary href={`https://discord.com/users/${user.discordId}`} target="_blank">
-        <Icons.externalLink className={iconVariants({ variant: "button" })} /> Discord profile
+        <Icons.ExternalLink className={iconVariants({ variant: "button" })} /> Discord profile
        </ButtonPrimary>
       </div>
      </div>

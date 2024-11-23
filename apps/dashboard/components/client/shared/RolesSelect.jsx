@@ -22,7 +22,7 @@ export function RolesSelect({ allRoles, exemptRoles, setExemptRoles }) {
         )}
        </span>
        <span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
-        <Icons.chevronsUpDown className={iconVariants({ variant: "small", className: "text-gray-400" })} />
+        <Icons.ChevronsUpDown className={iconVariants({ variant: "small", className: "text-gray-400" })} />
        </span>
       </Listbox.Button>
       <Transition as={Fragment} enter="transition duration-200 ease-out" enterFrom="transform scale-95 opacity-0" enterTo="transform scale-100 opacity-100" leave="transition duration-200 ease-out" leaveFrom="transform scale-100 opacity-100" leaveTo="transform scale-95 opacity-0">
@@ -34,7 +34,7 @@ export function RolesSelect({ allRoles, exemptRoles, setExemptRoles }) {
            {role.name}
           </div>
           <span className="absolute inset-y-0 right-0 flex items-center pr-3 text-white duration-200 ui-selected:!opacity-100 ui-not-selected:opacity-0 ui-active:opacity-100 ui-not-active:opacity-0">
-           <Icons.check className={iconVariants({ variant: "normal" })} />
+           <Icons.Check className={iconVariants({ variant: "normal" })} />
           </span>
          </Listbox.Option>
         ))}

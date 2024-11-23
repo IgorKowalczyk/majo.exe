@@ -57,7 +57,7 @@ export default function DeleteAccount() {
  return (
   <div>
    <RedButton className="mt-4" onClick={() => setIsOpen(true)}>
-    <Icons.trash className={iconVariants({ variant: "button" })} /> Delete account
+    <Icons.Trash className={iconVariants({ variant: "button" })} /> Delete account
    </RedButton>
    <Transition.Root appear show={isOpen} as={Fragment}>
     <Dialog as="div" unmount={true} className="relative z-[99999]" onClose={() => setIsOpen(false)}>
@@ -84,7 +84,7 @@ export default function DeleteAccount() {
             </>
            ) : (
             <>
-             <Icons.trash className={iconVariants({ variant: "button" })} /> Yes, delete my account
+             <Icons.Trash className={iconVariants({ variant: "button" })} /> Yes, delete my account
             </>
            )}
           </RedButton>

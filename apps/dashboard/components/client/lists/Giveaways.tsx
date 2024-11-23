@@ -44,14 +44,14 @@ export function Giveaways({ data = [] }: { data: Giveaway[] }) {
       {value.ended ? (
        <Tooltip content={`Ended ${formatDate(value.endedAt)} (${formatDuration(new Date(value.endedAt).getTime() - new Date(value.startedAt).getTime())})`}>
         <div className="flex cursor-help items-center">
-         <Icons.timer className={iconVariants({ variant: "button", className: "text-red-400" })} />
+         <Icons.Timer className={iconVariants({ variant: "button", className: "text-red-400" })} />
          <span className="text-red-400">Ended</span>
         </div>
        </Tooltip>
       ) : (
        <Tooltip content={`Started ${formatDate(value.startedAt)} (${formatDuration(Date.now() - new Date(value.startedAt).getTime())} ago)`}>
         <div className="flex cursor-help items-center">
-         <Icons.timer className={iconVariants({ variant: "button", className: "text-yellow-400" })} />
+         <Icons.Timer className={iconVariants({ variant: "button", className: "text-yellow-400" })} />
          <span className="text-yellow-500">Ends in {formatDuration(new Date(value.endedAt).getTime() - Date.now())}</span>
         </div>
        </Tooltip>
@@ -90,7 +90,7 @@ export function Giveaways({ data = [] }: { data: Giveaway[] }) {
     Cell: () => (
      <Tooltip content="Editing giveaways is not yet supported">
       <ButtonSecondary className="!w-fit" disabled>
-       <Icons.edit className={iconVariants({ variant: "button" })} />
+       <Icons.Edit className={iconVariants({ variant: "button" })} />
        Edit
       </ButtonSecondary>
      </Tooltip>

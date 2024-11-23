@@ -24,14 +24,14 @@ export default function Loading() {
 
     <div className="my-2 flex flex-row flex-wrap gap-2">
      <span className="flex w-fit cursor-help items-center gap-2 font-bold">
-      <Icons.check className={iconVariants({ variant: "normal" })} />
+      <Icons.Check className={iconVariants({ variant: "normal" })} />
       Enabled:
      </span>
      <InputSkeleton className="!h-[30px] !w-12" />
     </div>
     <GraphSkeleton className="h-96 w-full" />
     <ButtonPrimary className="mt-4" disabled>
-     <Icons.check className={iconVariants({ variant: "button" })} />
+     <Icons.Check className={iconVariants({ variant: "button" })} />
      Save
     </ButtonPrimary>
    </Block>
@@ -47,14 +47,14 @@ export default function Loading() {
 
     <div className="my-2 flex flex-row flex-wrap gap-2">
      <span className="flex w-fit cursor-help items-center gap-2 font-bold">
-      <Icons.check className={iconVariants({ variant: "normal" })} />
+      <Icons.Check className={iconVariants({ variant: "normal" })} />
       Enabled:
      </span>
      <InputSkeleton className="!h-[30px] !w-12" />
     </div>
     <GraphSkeleton className="h-96 w-full" />
     <ButtonPrimary className="mt-4" disabled>
-     <Icons.check className={iconVariants({ variant: "button" })} />
+     <Icons.Check className={iconVariants({ variant: "button" })} />
      Save
     </ButtonPrimary>
    </Block>

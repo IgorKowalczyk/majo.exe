@@ -141,7 +141,7 @@ export function ManageWarns({ data, guildId, showControls = true, showSearch = t
      <RedButton className="w-fit" onClick={() => removeWarn(value)} disabled={loadingWarns?.includes(value) || deletedWarns?.includes(value)}>
       {deletedWarns?.includes(value) ? (
        <>
-        <Icons.check className={iconVariants({ variant: "button" })} />
+        <Icons.Check className={iconVariants({ variant: "button" })} />
         Deleted!
        </>
       ) : (
@@ -153,7 +153,7 @@ export function ManageWarns({ data, guildId, showControls = true, showSearch = t
          </>
         ) : (
          <>
-          <Icons.trash className={iconVariants({ variant: "button" })} />
+          <Icons.Trash className={iconVariants({ variant: "button" })} />
           Delete
          </>
         )}

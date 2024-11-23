@@ -28,8 +28,8 @@ export function LogDisclosure({ item, guildId, preview = false }: { item: LogIte
        <>
         {item.type === "embed_color" && <Icons.paintBrush className={iconVariants({ variant: "large", className: "ui-open:text-accent-primary !stroke-2 text-white/60 duration-200" })} />}
         {item.type === "command_change" && <Icons.slash className={iconVariants({ variant: "large", className: "ui-open:text-accent-primary !stroke-2 text-white/60 duration-200" })} />}
-        {item.type === "category_change" && <Icons.blocks className={iconVariants({ variant: "large", className: "ui-open:text-accent-primary !stroke-2 text-white/60 duration-200" })} />}
-        {item.type === "public_dashboard" && <Icons.users className={iconVariants({ variant: "large", className: "ui-open:text-accent-primary !stroke-2 text-white/60 duration-200" })} />}
+        {item.type === "category_change" && <Icons.Blocks className={iconVariants({ variant: "large", className: "ui-open:text-accent-primary !stroke-2 text-white/60 duration-200" })} />}
+        {item.type === "public_dashboard" && <Icons.Users className={iconVariants({ variant: "large", className: "ui-open:text-accent-primary !stroke-2 text-white/60 duration-200" })} />}
         {item.type === "vanity" && <Icons.link className={iconVariants({ variant: "large", className: "ui-open:text-accent-primary !stroke-2 text-white/60 duration-200" })} />}
        </>
       )}{" "}

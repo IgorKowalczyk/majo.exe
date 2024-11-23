@@ -88,7 +88,7 @@ export function ChangeUserReputation({ userId, guildId, userReputation = 0 }) {
      </>
     ) : (
      <>
-      <Icons.check className={iconVariants({ variant: "button" })} /> Update
+      <Icons.Check className={iconVariants({ variant: "button" })} /> Update
      </>
     )}
    </ButtonPrimary>

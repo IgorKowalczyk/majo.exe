@@ -94,7 +94,7 @@ export default async function GiveawaysPage(props: { params: Promise<{ server: s
  return (
   <>
    <Header className={twMerge(headerVariants({ variant: "h1" }))}>
-    <Icons.gift className={iconVariants({ variant: "extraLarge" })} />
+    <Icons.Gift className={iconVariants({ variant: "extraLarge" })} />
     Giveaways
    </Header>
    <Block className="mt-4 flex w-full overflow-auto">

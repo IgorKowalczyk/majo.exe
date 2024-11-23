@@ -8,13 +8,13 @@ export default function Loading() {
  return (
   <>
    <Header className={twMerge(headerVariants({ variant: "h1" }))}>
-    <Icons.packagePlus className={iconVariants({ variant: "extraLarge" })} />
+    <Icons.PackagePlus className={iconVariants({ variant: "extraLarge" })} />
     Modules
    </Header>
 
    <Block className="mt-4">
     <Header className={twMerge(headerVariants({ variant: "h2" }))}>
-     <Icons.blocks className={iconVariants({ variant: "large", className: "!stroke-2" })} />
+     <Icons.Blocks className={iconVariants({ variant: "large", className: "!stroke-2" })} />
      Categories
     </Header>
     <p className="mb-4 mt-2 text-left">Enable or disable categories of commands.</p>

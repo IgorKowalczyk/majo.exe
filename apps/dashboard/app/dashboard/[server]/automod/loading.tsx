@@ -13,7 +13,7 @@ export default function Loading() {
  return (
   <>
    <Header className={twMerge(headerVariants({ variant: "h1" }))}>
-    <Icons.bot className={iconVariants({ variant: "extraLarge" })} />
+    <Icons.Bot className={iconVariants({ variant: "extraLarge" })} />
     Automod
    </Header>
    <p className="mb-4 text-left text-base md:text-lg">Automatically moderate your server, block bad words, links and other things.</p>
@@ -35,7 +35,7 @@ export default function Loading() {
 
       <div className="flex flex-row flex-wrap gap-2">
        <span className="flex w-fit items-center gap-2 font-bold">
-        <Icons.users className={iconVariants({ variant: "normal", className: "stroke-accent-primary" })} />
+        <Icons.Users className={iconVariants({ variant: "normal", className: "stroke-accent-primary" })} />
         Ignore Roles:
        </span>
        <InputSkeleton className="!h-[37.6px] !w-40" />
@@ -43,7 +43,7 @@ export default function Loading() {
 
       <div className="mt-2 flex flex-row flex-wrap gap-2">
        <span className="flex w-fit items-center gap-2 font-bold">
-        <Icons.hash className={iconVariants({ variant: "normal", className: "stroke-accent-primary" })} />
+        <Icons.Hash className={iconVariants({ variant: "normal", className: "stroke-accent-primary" })} />
         Ignore Channels:
        </span>
        <InputSkeleton className="!h-[37.6px] !w-40" />
@@ -56,13 +56,13 @@ export default function Loading() {
 
      <Block className="mb-4 !py-3">
       <Header3>
-       <Icons.shieldMinus className={iconVariants({ variant: "large" })} /> Actions:
+       <Icons.ShieldMinus className={iconVariants({ variant: "large" })} /> Actions:
       </Header3>
       <span className="mb-4 font-normal">What should I do when a member triggers the rule?</span>
 
       <div className="my-2 flex flex-row flex-wrap gap-2">
        <span className="flex w-fit items-center gap-2 font-bold">
-        <Icons.trash className={iconVariants({ variant: "normal", className: "stroke-red-400" })} />
+        <Icons.Trash className={iconVariants({ variant: "normal", className: "stroke-red-400" })} />
         Delete message:
        </span>
        <InputSkeleton className="!h-[30px] !w-12" />
@@ -70,7 +70,7 @@ export default function Loading() {
 
       <div className="my-2 flex flex-row flex-wrap gap-2">
        <span className="flex w-fit items-center gap-2 font-bold">
-        <Icons.timer className={iconVariants({ variant: "normal", className: "stroke-red-400" })} />
+        <Icons.Timer className={iconVariants({ variant: "normal", className: "stroke-red-400" })} />
         Timeout member:
        </span>
        <InputSkeleton className="!h-[37.6px] !w-40" />
@@ -87,7 +87,7 @@ export default function Loading() {
 
      <ButtonPrimary className="mt-4" disabled={true}>
       <>
-       <Icons.check className={iconVariants({ variant: "button" })} />
+       <Icons.Check className={iconVariants({ variant: "button" })} />
        Save
       </>
      </ButtonPrimary>
@@ -111,7 +111,7 @@ export default function Loading() {
       <span className="mb-4 font-normal">What should be ignored by the rule?</span>
       <div className="flex flex-row flex-wrap gap-2">
        <span className="flex w-fit items-center gap-2 font-bold">
-        <Icons.users className={iconVariants({ variant: "normal", className: "stroke-accent-primary" })} />
+        <Icons.Users className={iconVariants({ variant: "normal", className: "stroke-accent-primary" })} />
         Ignore Roles:
        </span>
        <InputSkeleton className="!h-[37.6px] !w-40" />
@@ -119,7 +119,7 @@ export default function Loading() {
 
       <div className="mt-2 flex flex-row flex-wrap gap-2">
        <span className="flex w-fit items-center gap-2 font-bold">
-        <Icons.hash className={iconVariants({ variant: "normal", className: "stroke-accent-primary" })} />
+        <Icons.Hash className={iconVariants({ variant: "normal", className: "stroke-accent-primary" })} />
         Ignore Channels:
        </span>
        <InputSkeleton className="!h-[37.6px] !w-40" />
@@ -132,13 +132,13 @@ export default function Loading() {
 
      <Block className="mb-4 !py-3">
       <Header3>
-       <Icons.shieldMinus className={iconVariants({ variant: "large" })} /> Actions:
+       <Icons.ShieldMinus className={iconVariants({ variant: "large" })} /> Actions:
       </Header3>
       <span className="mb-4 font-normal">What should I do when a member triggers the rule?</span>
 
       <div className="my-2 flex flex-row flex-wrap gap-2">
        <span className="flex w-fit items-center gap-2 font-bold">
-        <Icons.trash className={iconVariants({ variant: "normal", className: "stroke-red-400" })} />
+        <Icons.Trash className={iconVariants({ variant: "normal", className: "stroke-red-400" })} />
         Delete message:
        </span>
        <InputSkeleton className="!h-[30px] !w-12" />
@@ -146,7 +146,7 @@ export default function Loading() {
 
       <div className="my-2 flex flex-row flex-wrap gap-2">
        <span className="flex w-fit items-center gap-2 font-bold">
-        <Icons.timer className={iconVariants({ variant: "normal", className: "stroke-red-400" })} />
+        <Icons.Timer className={iconVariants({ variant: "normal", className: "stroke-red-400" })} />
         Timeout member:
        </span>
        <InputSkeleton className="!h-[37.6px] !w-40" />
@@ -163,7 +163,7 @@ export default function Loading() {
 
      <ButtonPrimary className="mt-4" disabled={true}>
       <>
-       <Icons.check className={iconVariants({ variant: "button" })} />
+       <Icons.Check className={iconVariants({ variant: "button" })} />
        Save
       </>
      </ButtonPrimary>
@@ -189,7 +189,7 @@ export default function Loading() {
    </Block>
    <Block className="mb-4">
     <Header className={twMerge(headerVariants({ variant: "h2" }))}>
-     <Icons.shieldBan className={iconVariants({ variant: "large" })} />
+     <Icons.ShieldBan className={iconVariants({ variant: "large" })} />
      Anti-Badwords <NavBadge>Coming Soon</NavBadge>
     </Header>
     <p className="mb-4 text-left">

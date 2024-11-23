@@ -24,7 +24,7 @@ export function SideMenuControl() {
         "absolute top-0 size-6 shrink-0 duration-200"
        )}
       />
-      <Icons.menu
+      <Icons.Menu
        className={clsx(
         {
          "scale-100": !sideNavVisible,

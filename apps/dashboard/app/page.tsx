@@ -181,7 +181,7 @@ export default async function HomePage() {
           <div className="ml-2 flex h-10 flex-row items-center">
            <span className="font-bold">{dashboardConfig.title}</span>{" "}
            <span className="ml-1 flex items-center gap-1 rounded bg-[#5c65f3] px-1 py-[0.12rem] text-xs text-white">
-            <Icons.check className={iconVariants({ variant: "small" })} /> <span className="-mb-px">BOT</span>
+            <Icons.Check className={iconVariants({ variant: "small" })} /> <span className="-mb-px">BOT</span>
            </span>
            <span className="ml-2 text-sm text-gray-400">Today at 4:20 PM</span>
           </div>
@@ -224,17 +224,17 @@ export default async function HomePage() {
         <div className="z-50 flex flex-col items-center justify-center gap-4 px-8 py-6 md:flex-row">
          <p className="flex cursor-pointer gap-1 rounded-full border border-accent-primary/50 bg-accent-primary/20 px-2 py-1 text-sm font-bold text-accent-primary backdrop-blur-md duration-200 hover:bg-accent-primary/30">
           +{Math.floor(Math.random() * 10 + 15)} users today
-          <Icons.trendingUp className={iconVariants({ variant: "normal" })} />
+          <Icons.TrendingUp className={iconVariants({ variant: "normal" })} />
          </p>
 
          <p className="flex cursor-pointer gap-1 rounded-full border border-accent-primary/50 bg-accent-primary/20 px-2 py-1 text-sm font-bold text-accent-primary backdrop-blur-md duration-200 hover:bg-accent-primary/30">
           +{Math.floor(Math.random() * 500 + 100)} messages today
-          <Icons.trendingUp className={iconVariants({ variant: "normal" })} />
+          <Icons.TrendingUp className={iconVariants({ variant: "normal" })} />
          </p>
 
          <p className="flex cursor-pointer gap-1 rounded-full border border-accent-primary/50 bg-accent-primary/20 px-2 py-1 text-sm font-bold text-accent-primary backdrop-blur-md duration-200 hover:bg-accent-primary/30">
           +{Math.floor(Math.random() * 80 + 5)}% increase in activity
-          <Icons.trendingUp className={iconVariants({ variant: "normal" })} />
+          <Icons.TrendingUp className={iconVariants({ variant: "normal" })} />
          </p>
         </div>
        </div>
@@ -261,7 +261,7 @@ export default async function HomePage() {
          <div className="ml-2 flex flex-row items-center">
           <span className="font-bold">{dashboardConfig.title}</span>{" "}
           <span className="ml-1 flex items-center gap-1 rounded bg-[#5c65f3] px-1 py-[0.12rem] text-xs text-white">
-           <Icons.check className={iconVariants({ variant: "small" })} /> <span className="-mb-px">BOT</span>
+           <Icons.Check className={iconVariants({ variant: "small" })} /> <span className="-mb-px">BOT</span>
           </span>
           <span className="ml-2 text-sm text-gray-400">Today at 4:20 PM</span>
          </div>

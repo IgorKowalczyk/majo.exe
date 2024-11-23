@@ -58,7 +58,7 @@ export function ResetUserXP({ userId, guildId }) {
  return (
   <>
    <RedButton className="mt-4 w-fit" onClick={() => setIsOpen(true)}>
-    <Icons.trash className={iconVariants({ variant: "button" })} />
+    <Icons.Trash className={iconVariants({ variant: "button" })} />
     Reset XP
    </RedButton>
 
@@ -88,7 +88,7 @@ export function ResetUserXP({ userId, guildId }) {
             </>
            ) : (
             <>
-             <Icons.trash className={iconVariants({ variant: "button" })} />
+             <Icons.Trash className={iconVariants({ variant: "button" })} />
              Yes, reset XP
             </>
            )}

@@ -45,19 +45,19 @@ export function SideNav({ server }) {
 
     <div className="flex w-full flex-col items-center justify-center gap-2 border-t border-t-neutral-800 px-4 pt-4">
      <SideNavLink href={`/dashboard/${server}`}>
-      <Icons.home className={iconVariants({ variant: "large" })} />
+      <Icons.Home className={iconVariants({ variant: "large" })} />
       Overview
      </SideNavLink>
      <SideNavLink href={`/dashboard/${server}/statistics`}>
-      <Icons.trendingUp className={iconVariants({ variant: "large" })} />
+      <Icons.TrendingUp className={iconVariants({ variant: "large" })} />
       Statistics
      </SideNavLink>
      <SideNavLink href={`/dashboard/${server}/leaderboard`}>
-      <Icons.sparkles className={iconVariants({ variant: "large" })} />
+      <Icons.Sparkles className={iconVariants({ variant: "large" })} />
       Leaderboard
      </SideNavLink>
      <SideNavLink href={`/dashboard/${server}/giveaways`}>
-      <Icons.gift className={iconVariants({ variant: "large" })} />
+      <Icons.Gift className={iconVariants({ variant: "large" })} />
       Giveaways
      </SideNavLink>
     </div>
@@ -76,11 +76,11 @@ export function SideNav({ server }) {
     <div className="text-text mt-2 border-t border-white/20 px-5 py-2 opacity-40">Management</div>
     <div className="flex w-full flex-col items-center justify-center gap-2 px-4">
      <SideNavLink href={`/dashboard/${server}/modules`}>
-      <Icons.packagePlus className={iconVariants({ variant: "large" })} />
+      <Icons.PackagePlus className={iconVariants({ variant: "large" })} />
       Modules
      </SideNavLink>
      <SideNavLink href={`/dashboard/${server}/automod`}>
-      <Icons.bot className={iconVariants({ variant: "large" })} />
+      <Icons.Bot className={iconVariants({ variant: "large" })} />
       Automod<NavBadge>beta</NavBadge>
      </SideNavLink>
      <SideNavLink href={`/dashboard/${server}/messages`}>
@@ -88,7 +88,7 @@ export function SideNav({ server }) {
       Custom messages
      </SideNavLink>
      <SideNavLink href={`/dashboard/${server}/settings`}>
-      <Icons.settings className={iconVariants({ variant: "large" })} />
+      <Icons.Settings className={iconVariants({ variant: "large" })} />
       Settings
      </SideNavLink>
     </div>

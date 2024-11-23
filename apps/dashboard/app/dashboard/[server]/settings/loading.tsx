@@ -10,7 +10,7 @@ export default function Loading() {
  return (
   <>
    <Header className={twMerge(headerVariants({ variant: "h1" }))}>
-    <Icons.settings className={iconVariants({ variant: "extraLarge" })} />
+    <Icons.Settings className={iconVariants({ variant: "extraLarge" })} />
     Settings
    </Header>
    <Block className="mt-4">
@@ -24,7 +24,7 @@ export default function Loading() {
 
    <Block className="mt-4">
     <Header className={twMerge(headerVariants({ variant: "h1" }))}>
-     <Icons.shieldCheck className={iconVariants({ variant: "large", className: "!stroke-2" })} />
+     <Icons.ShieldCheck className={iconVariants({ variant: "large", className: "!stroke-2" })} />
      Dashboard Access
     </Header>
     <p className="mb-4 text-left">
@@ -46,7 +46,7 @@ export default function Loading() {
    </Block>
    <Block className="mt-4">
     <Header className={twMerge(headerVariants({ variant: "h1" }))}>
-     <Icons.users className={iconVariants({ variant: "large", className: "!stroke-2" })} />
+     <Icons.Users className={iconVariants({ variant: "large", className: "!stroke-2" })} />
      Public Dashboard
     </Header>
     <p className="mb-4 text-left">
@@ -56,7 +56,7 @@ export default function Loading() {
     <div className="mb-4 grid grid-cols-1 gap-4 lg:grid-cols-2">
      <Block className="flex flex-col items-start justify-start gap-2">
       <Header className={twMerge(headerVariants({ variant: "h3" }))}>
-       <Icons.check className={iconVariants({ variant: "large", className: "rounded-md border border-green-400 stroke-green-400 p-1" })} />
+       <Icons.Check className={iconVariants({ variant: "large", className: "rounded-md border border-green-400 stroke-green-400 p-1" })} />
        Things that are shown:
       </Header>
       <ul className="list-inside list-disc">
@@ -85,7 +85,7 @@ export default function Loading() {
 
     <div className="mt-4 flex flex-row items-start whitespace-nowrap rounded-md border border-accent-primary bg-accent-primary/10 p-4">
      <span className="mr-1 flex flex-row items-center whitespace-nowrap font-bold">
-      <Icons.info className={iconVariants({ variant: "normal", className: "stroke-accent-primary mr-1" })} />
+      <Icons.Info className={iconVariants({ variant: "normal", className: "stroke-accent-primary mr-1" })} />
       Note:
      </span>
      <span className="whitespace-normal">The public dashboard will be visible to everyone with the link!</span>
@@ -93,14 +93,14 @@ export default function Loading() {
    </Block>
    <Block className="mt-4">
     <Header className={twMerge(headerVariants({ variant: "h2" }))}>
-     <Icons.download className={iconVariants({ variant: "large", className: "!stroke-2" })} />
+     <Icons.Download className={iconVariants({ variant: "large", className: "!stroke-2" })} />
      Download data
     </Header>
     <p className="mt-2 leading-none text-white/70">
      Download all server data in a <code>.json</code> file. This includes logs, settings, moderation and more.
     </p>
     <ButtonPrimary className="mt-4 w-fit" disabled={true}>
-     <Icons.download className={iconVariants({ variant: "button" })} />
+     <Icons.Download className={iconVariants({ variant: "button" })} />
      Download data
     </ButtonPrimary>
    </Block>
@@ -111,7 +111,7 @@ export default function Loading() {
     </Header>
     <p className="mt-2 text-white/70">If you want to delete all data related to this server, you can do so by clicking the button below. This action is irreversible.</p>
     <RedButton className="mt-4" disabled={true}>
-     <Icons.trash className={iconVariants({ variant: "button" })} /> Delete server data
+     <Icons.Trash className={iconVariants({ variant: "button" })} /> Delete server data
     </RedButton>
    </Block>
   </>

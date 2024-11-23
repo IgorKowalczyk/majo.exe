@@ -60,7 +60,7 @@ export default function DeleteServerData({ serverId }) {
  return (
   <div>
    <RedButton className="mt-4" onClick={() => setIsOpen(true)}>
-    <Icons.trash className={iconVariants({ variant: "button" })} /> Delete server data
+    <Icons.Trash className={iconVariants({ variant: "button" })} /> Delete server data
    </RedButton>
    <Transition.Root appear show={isOpen} as={Fragment}>
     <Dialog as="div" unmount="true" className="relative z-[99999]" onClose={() => setIsOpen(false)}>
@@ -88,7 +88,7 @@ export default function DeleteServerData({ serverId }) {
             </>
            ) : (
             <>
-             <Icons.trash className={iconVariants({ variant: "button" })} />
+             <Icons.Trash className={iconVariants({ variant: "button" })} />
              Yes, delete server data
             </>
            )}

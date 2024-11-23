@@ -163,7 +163,7 @@ export function EnablePublicDashboard({ enabled, serverId, vanityURL }) {
       </div>
      </div>
      <ButtonPrimary onClick={(e) => updateVanity(e)} disabled={disabled || vanityError || vanity.length === 0 || buttonText === "Updating..."} className="mx-auto font-normal md:mx-0">
-      {buttonText === "Updating..." ? <Icons.refresh className={iconVariants({ variant: "button", className: "animate-spin" })} /> : <Icons.check className={iconVariants({ variant: "button" })} />} {buttonText}
+      {buttonText === "Updating..." ? <Icons.refresh className={iconVariants({ variant: "button", className: "animate-spin" })} /> : <Icons.Check className={iconVariants({ variant: "button" })} />} {buttonText}
      </ButtonPrimary>
     </div>
    </div>

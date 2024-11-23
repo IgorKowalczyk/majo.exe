@@ -78,7 +78,7 @@ export default async function Page(props: { params: Promise<{ server: string }> 
    <Block className="mt-4 flex w-full overflow-auto">
     {warns.length === 0 && (
      <p className="flex items-center gap-2 text-left">
-      <Icons.sparkles className={iconVariants({ variant: "normal" })} />
+      <Icons.Sparkles className={iconVariants({ variant: "normal" })} />
       Hooray! No warns have been issued yet.
      </p>
     )}

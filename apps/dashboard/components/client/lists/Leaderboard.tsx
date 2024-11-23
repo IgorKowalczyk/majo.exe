@@ -62,7 +62,7 @@ export function Leaderboard({ data, showControls = true, showSearch = true }: { 
         Header: "Actions",
         Cell: ({ row }: { row: { original: LeaderboardData } }) => (
          <ButtonSecondary className="!w-fit" href={`user/${row.original.user?.discordId}`}>
-          <Icons.user className={iconVariants({ variant: "button" })} />
+          <Icons.User className={iconVariants({ variant: "button" })} />
           View profile
          </ButtonSecondary>
         ),

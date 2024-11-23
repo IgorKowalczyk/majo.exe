@@ -49,11 +49,11 @@ export default async function Dashboard() {
          <>
           {server.bot ? (
            <ButtonPrimary href={`/dashboard/${server.id}`} className="ml-auto">
-            <Icons.plus className={iconVariants({ variant: "button" })} /> Manage
+            <Icons.Minus className={iconVariants({ variant: "button" })} /> Manage
            </ButtonPrimary>
           ) : (
            <ButtonSecondary href={`/api/invite/${server.id}`} className="ml-auto cursor-copy">
-            <Icons.plus className={iconVariants({ variant: "button" })} /> Add bot
+            <Icons.Minus className={iconVariants({ variant: "button" })} /> Add bot
            </ButtonSecondary>
           )}
          </>
@@ -92,7 +92,7 @@ export default async function Dashboard() {
       <div className="flex flex-col items-center justify-center gap-4">
        <Header className={twMerge(headerVariants({ variant: "h3", alignment: "center" }))}>You don't have any servers!</Header>
        <ButtonPrimary href="/api/invite">
-        <Icons.plus className={iconVariants({ variant: "button" })} /> Add bot
+        <Icons.Minus className={iconVariants({ variant: "button" })} /> Add bot
        </ButtonPrimary>
       </div>
      )}

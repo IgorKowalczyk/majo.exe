@@ -68,7 +68,7 @@ export default async function UserProfilePage() {
        </div>
        <div className="mb-[-14px] hidden w-full items-end justify-end md:flex">
         <ButtonPrimary href={`https://discord.com/users/${user.id}`} target="_blank">
-         <Icons.externalLink className={iconVariants({ variant: "button" })} /> Discord profile
+         <Icons.ExternalLink className={iconVariants({ variant: "button" })} /> Discord profile
         </ButtonPrimary>
        </div>
       </div>
@@ -78,14 +78,14 @@ export default async function UserProfilePage() {
 
     <div className="relative overflow-hidden rounded-lg border border-neutral-800 bg-background-navbar p-4 md:w-full">
      <Header className={twMerge(headerVariants({ variant: "h2" }))}>
-      <Icons.download className={iconVariants({ variant: "large", className: "!stroke-2" })} />
+      <Icons.Download className={iconVariants({ variant: "large", className: "!stroke-2" })} />
       Download data
      </Header>
      <p className="mt-2 leading-none text-white/70">
       Download all your data in a <code>.json</code> file. This includes your profile, data from all servers you are in and more.
      </p>
      <ButtonPrimary className="mt-4 w-fit" href="/api/user/download" target="_blank">
-      <Icons.download className={iconVariants({ variant: "button" })} />
+      <Icons.Download className={iconVariants({ variant: "button" })} />
       Download data
      </ButtonPrimary>
     </div>

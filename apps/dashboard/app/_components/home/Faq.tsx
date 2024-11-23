@@ -35,7 +35,7 @@ export default function Faq() {
       <>
        <DisclosureButton className="group flex w-full items-center justify-between">
         <span className="font-medium text-white duration-200 group-data-[hover]:text-white/80 motion-reduce:duration-0">{item.question}</span>
-        {open ? <Icons.minus className="size-5 fill-white/60 duration-200 group-data-[hover]:fill-white/50 motion-reduce:duration-0" /> : <Icons.plus className="size-5 fill-white/60 duration-200 group-data-[hover]:fill-white/50 motion-reduce:duration-0" />}
+        {open ? <Icons.Minus className="size-5 fill-white/60 duration-200 group-data-[hover]:fill-white/50 motion-reduce:duration-0" /> : <Icons.Minus className="size-5 fill-white/60 duration-200 group-data-[hover]:fill-white/50 motion-reduce:duration-0" />}
        </DisclosureButton>
 
        <Transition enter="transition duration-100 ease-out" enterFrom="transform scale-95 opacity-0" enterTo="w-full transform scale-100 opacity-100" leave="w-full transition duration-75 ease-out" leaveFrom="transform scale-100 opacity-100" leaveTo="w-full transform scale-95 opacity-0">
