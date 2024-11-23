@@ -181,10 +181,13 @@ export default {
     });
    }
 
-   const targetImage = await loadImage(image.split("?")[0]);
+   const toFetch = image.split("?")[0];
+   if (!toFetch || toFetch.length < 1) return client.errorMessages.createSlashError(interaction, "❌ The image URL is invalid.");
+   const targetImage = await loadImage(toFetch);
    const background = readFileSync(`./util/images/files/${subcommand}.gif`);
    const backgroundData = new Uint8Array(background);
 
+   if (!backgroundData || backgroundData.length < 1) return client.errorMessages.createSlashError(interaction, "❌ The background data is undefined.");
    const height = backgroundData[6] + backgroundData[7] * 256;
    const width = backgroundData[8] + backgroundData[9] * 256;
 
@@ -203,9 +206,11 @@ export default {
    for (let i = 0; i < frames.length; i++) {
     context.globalAlpha = 1;
     const frame = frames[i];
-    const imageData = new ImageData(frame.data, width, height);
-    // @ts-expect-error - Invalid types in napi-rs/canvas
-    context.putImageData(imageData, 0, 0);
+    if (frame) {
+     const imageData = new ImageData(frame.data, width, height);
+     // @ts-expect-error - Invalid types in napi-rs/canvas
+     context.putImageData(imageData, 0, 0);
+    }
     context.globalAlpha = 0.5;
     context.drawImage(targetImage, 0, 0, width, height);
     gif.addFrame(context);

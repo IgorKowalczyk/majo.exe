@@ -27,6 +27,7 @@ export default {
    const request = await fetch("https://api.github.com/repos/igorkowalczyk/majo.exe/commits?per_page=1");
    if (!request.ok) return client.errorMessages.createSlashError(interaction, "❌ No results found. Please try again later.");
    const response = (await request.json()) as GithubResponse[];
+   if (!response[0]) return client.errorMessages.createSlashError(interaction, "❌ No results found. Please try again later.");
 
    const lastTimestamp = Math.floor(new Date(response[0].commit.committer.date).getTime() / 1000);
 

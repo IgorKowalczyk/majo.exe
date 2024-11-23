@@ -21,6 +21,7 @@ export default {
  run: async (client, interaction, guildSettings) => {
   try {
    const args = interaction.options.getString("question");
+   if (!args) return client.errorMessages.createSlashError(interaction, "❌ Please provide a valid question.");
 
    const images = [
     ["Yes.", "https://c.tenor.com/TFhmPga4xEwAAAAC/magic8ball-yes.gif"],
@@ -44,8 +45,10 @@ export default {
    const parsed = images.map((x) => [x[0], x[1]]);
    const random = Math.floor(Math.random() * parsed.length);
 
+   if (!parsed[random] || !parsed[random][0] || !parsed[random][1]) return client.errorMessages.createSlashError(interaction, "❌ No answer available.");
+
    const embed = new EmbedBuilder()
-    .setDescription(`>>> **Q:** ${args} \n**A:** ${parsed[random][0]}`)
+    .setDescription(`>>> **Q:** ${args} \n**A:** ${parsed[random][0] || "No answer available"}`)
     .setImage(parsed[random][1])
     .setTimestamp()
     .setColor(guildSettings?.embedColor || client.config.defaultColor)

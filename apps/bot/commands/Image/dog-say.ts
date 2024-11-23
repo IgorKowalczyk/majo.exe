@@ -39,7 +39,9 @@ export default {
    const lines = getLines(context, text, 275);
 
    for (let i = 0; i < lines.length; i++) {
-    context.fillText(lines[i], 0, i * fontSize);
+    if (lines[i]) {
+     context.fillText(lines[i] as string, 0, i * fontSize);
+    }
    }
 
    const file = new AttachmentBuilder(canvas.toBuffer("image/png"), {

@@ -192,9 +192,9 @@ export default {
     collector.on("collect", async (i) => {
      /* eslint-disable-next-line prefer-destructuring */
      const category = i.values[0];
-     const commands = client.slashCommands.filter((cmd) => cmd.category?.toLowerCase() === category.toLowerCase());
+     const commands = client.slashCommands.filter((cmd) => cmd.category?.toLowerCase() === (category ?? "").toLowerCase());
      const embed = new EmbedBuilder()
-      .setTitle(`${client.config.emojis.categories.find((cat: Category) => cat.name === category.toLowerCase()).emoji} Available \`${category}\` commands \`(${commands.size})\``)
+      .setTitle(`${client.config.emojis.categories.find((cat: Category) => cat.name === (category ?? "").toLowerCase()).emoji} Available \`${category ?? ""}\` commands \`(${commands.size})\``)
       .setDescription(`> ${commands.map((cmd) => `\`/${cmd.name}\``).join(", ")}`)
       .setColor(guildSettings?.embedColor || client.config.defaultColor)
       .setTimestamp()

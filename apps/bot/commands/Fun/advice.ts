@@ -18,6 +18,7 @@ export default {
  run: async (client, interaction, guildSettings) => {
   try {
    const parsed = advices[Math.floor(Math.random() * advices.length)];
+   if (!parsed) return client.errorMessages.createSlashError(interaction, "❌ Failed to fetch advice. Please try again later.");
 
    const embed = new EmbedBuilder()
     .setTitle("🤌 My advice is:")
