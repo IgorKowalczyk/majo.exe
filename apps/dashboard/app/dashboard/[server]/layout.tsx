@@ -1,7 +1,8 @@
 import { dashboardConfig } from "@majoexe/config";
 import { SideNav } from "@/components/nav/client/SideNav";
+import { Metadata } from "next";
 
-export async function generateMetadata(props) {
+export async function generateMetadata(props: { params: Promise<{ server: string }> }): Promise<Metadata> {
  const params = await props.params;
  const { server } = params;
 
@@ -22,7 +23,7 @@ export async function generateMetadata(props) {
  };
 }
 
-export default async function Layout(props) {
+export default async function Layout(props: { params: Promise<{ server: string }>; children: React.ReactNode }) {
  const params = await props.params;
 
  const { children } = props;

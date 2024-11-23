@@ -9,6 +9,7 @@ import plugin from "tailwindcss/plugin";
 // @ts-expect-error No types available
 import tailwindTextFill from "tailwindcss-text-fill";
 import type { Config } from "tailwindcss";
+import tailwindAnimate from "tailwindcss-animate";
 
 const tailwindConfig = {
  darkMode: "class",
@@ -93,6 +94,7 @@ const tailwindConfig = {
     }),
    });
   }),
+  tailwindAnimate,
   tailwindTextFill,
   tailwindGradientMaskImage,
   tailwindHeadlessui,
