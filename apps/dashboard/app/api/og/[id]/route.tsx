@@ -1,5 +1,5 @@
 /* eslint-disable next/no-img-element */
-import { getServer } from "@majoexe/util/functions/guild";
+import { getGuild } from "@majoexe/util/functions/guild";
 import { shortenText } from "@majoexe/util/functions/util";
 import { redirect } from "next/navigation";
 import { ImageResponse } from "next/og";
@@ -12,7 +12,7 @@ export async function GET(request: NextRequest, props: { params: Promise<{ id: s
  const { id } = params;
  if (!id) return redirect("/opengraph-image");
 
- const server = await getServer(id);
+ const server = await getGuild(id);
  if (!server || !server.bot) return redirect("/opengraph-image");
 
  const icon = server.icon ? `https://cdn.discordapp.com/icons/${server.id}/${server.icon}.${server.icon.startsWith("a_") ? "gif" : "png"}` : `${process.env.NEXTAUTH_URL}/assets/avatar.png`;

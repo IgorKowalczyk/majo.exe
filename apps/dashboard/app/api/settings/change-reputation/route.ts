@@ -1,5 +1,5 @@
 import { setReputation } from "@majoexe/util/database";
-import { getServer, getGuildMember } from "@majoexe/util/functions/guild";
+import { getGuild, getGuildFromMemberGuilds } from "@majoexe/util/functions/guild";
 import { isNumeric } from "@majoexe/util/functions/util";
 import { APIUser } from "discord-api-types/v10";
 import { getSession } from "lib/session";
@@ -115,7 +115,7 @@ export async function POST(request: NextRequest) {
    );
   }
 
-  const server = await getServer(guildId);
+  const server = await getGuild(guildId);
 
   if (!server) {
    return NextResponse.json(
@@ -151,7 +151,7 @@ export async function POST(request: NextRequest) {
    );
   }
 
-  const serverMember = await getGuildMember(server.id, session.access_token);
+  const serverMember = await getGuildFromMemberGuilds(server.id, session.access_token);
 
   if (!serverMember || !serverMember.permissions_names || !serverMember.permissions_names.includes("ManageGuild") || !serverMember.permissions_names.includes("Administrator")) {
    return NextResponse.json(

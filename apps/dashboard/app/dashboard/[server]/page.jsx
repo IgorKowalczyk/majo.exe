@@ -1,5 +1,5 @@
 import prismaClient from "@majoexe/database";
-import { getServer, getGuildPreview, getGuildMember } from "@majoexe/util/functions/guild";
+import { getGuild, getGuildPreview, getGuildFromMemberGuilds } from "@majoexe/util/functions/guild";
 import { fillMissingDates } from "@majoexe/util/functions/util";
 import clsx from "clsx";
 import { getSession } from "lib/session";
@@ -26,9 +26,9 @@ export default async function OverviewPage(props) {
  if (!session || !session.access_token) redirect("/auth/login");
 
  const { server } = params;
- const serverDownload = await getServer(server);
+ const serverDownload = await getGuild(server);
  if (!serverDownload || serverDownload.code === 10004 || !serverDownload.bot) return notFound();
- const serverMember = await getGuildMember(serverDownload.id, session.access_token);
+ const serverMember = await getGuildFromMemberGuilds(serverDownload.id, session.access_token);
  if (
   // prettier
   !serverMember ||

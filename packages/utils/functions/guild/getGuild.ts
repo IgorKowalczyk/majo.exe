@@ -2,7 +2,7 @@ import { globalConfig } from "@majoexe/config";
 import { isBotInServer } from "./isBotInServer";
 import { APIGuild, RESTError, Snowflake } from "discord-api-types/v10";
 
-export async function getServer(id: Snowflake): Promise<(APIGuild & { bot: boolean }) | null> {
+export async function getGuild(id: Snowflake): Promise<(APIGuild & { bot: boolean }) | null> {
  try {
   const res = await fetch(`https://discord.com/api/v${globalConfig.apiVersion}/guilds/${id}`, {
    headers: {

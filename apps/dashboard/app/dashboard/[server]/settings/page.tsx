@@ -1,6 +1,6 @@
 import { globalConfig } from "@majoexe/config";
 import prismaClient from "@majoexe/database";
-import { getGuildMember, getServer } from "@majoexe/util/functions/guild";
+import { getGuildFromMemberGuilds, getGuild } from "@majoexe/util/functions/guild";
 import { getPermissionNames } from "@majoexe/util/functions/user";
 import { getSession } from "lib/session";
 import { redirect } from "next/navigation";
@@ -19,9 +19,9 @@ export default async function Page(props: { params: Promise<{ server: string }> 
  const session = await getSession();
  if (!session || !session.access_token) redirect("/auth/login");
  const { server } = params;
- const serverDownload = await getServer(server);
+ const serverDownload = await getGuild(server);
  if (!serverDownload || !serverDownload.bot) return notFound();
- const serverMember = await getGuildMember(serverDownload.id, session.access_token);
+ const serverMember = await getGuildFromMemberGuilds(serverDownload.id, session.access_token);
  if (
   // prettier
   !serverMember ||

@@ -1,7 +1,7 @@
 import { globalConfig } from "@majoexe/config";
 import prismaClient from "@majoexe/database";
 import { syncAutoModRule } from "@majoexe/util/database";
-import { getGuildMember, getServer } from "@majoexe/util/functions/guild";
+import { getGuildFromMemberGuilds, getGuild } from "@majoexe/util/functions/guild";
 import { APIGuildChannel, APIRole, ChannelType, GuildChannelType } from "discord-api-types/v10";
 import { getSession } from "lib/session";
 import { redirect } from "next/navigation";
@@ -27,9 +27,9 @@ export default async function AutomodPage(props: { params: Promise<{ server: str
  const session = await getSession();
  if (!session || !session.access_token) redirect("/auth/login");
  const { server } = params;
- const serverDownload = await getServer(server);
+ const serverDownload = await getGuild(server);
  if (!serverDownload || !serverDownload.bot) return notFound();
- const serverMember = await getGuildMember(serverDownload.id, session.access_token);
+ const serverMember = await getGuildFromMemberGuilds(serverDownload.id, session.access_token);
  if (
   // prettier
   !serverMember ||

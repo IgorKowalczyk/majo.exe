@@ -13,7 +13,7 @@
     "./functions/files/*": "./functions/files/*",
     "./functions/guild": "./functions/guild/index.ts",
     "./functions/guild/*": "./functions/guild/*",
-    "./functions/user": "./functions/user/index.js",
+    "./functions/user": "./functions/user/index.ts",
     "./functions/user/*": "./functions/user/*",
     "./functions/util": "./functions/util/index.js",
     "./functions/util/*": "./functions/util/*",

@@ -1,6 +1,6 @@
 import { dashboardConfig } from "@majoexe/config";
 import prismaClient from "@majoexe/database";
-import { getServer, getGuildPreview } from "@majoexe/util/functions/guild";
+import { getGuild, getGuildPreview } from "@majoexe/util/functions/guild";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import Balancer from "react-wrap-balancer";
@@ -33,7 +33,7 @@ export async function generateMetadata({ params }: { params: Promise<{ server: s
    description: "View the overview of your server.",
   };
 
- const serverDownload = await getServer(guild.guildId);
+ const serverDownload = await getGuild(guild.guildId);
 
  if (!serverDownload || !serverDownload.bot)
   return {

@@ -1,4 +1,4 @@
-import { getServers, isBotInServer } from "@majoexe/util/functions/guild";
+import { getMemberGuilds, isBotInServer } from "@majoexe/util/functions/guild";
 import clsx from "clsx";
 import { getSession } from "lib/session";
 import Link from "next/link";
@@ -13,7 +13,7 @@ export default async function Dashboard() {
  const session = await getSession();
  if (!session || !session.access_token) redirect("/auth/login");
 
- const data = (await getServers(session.access_token)) || [];
+ const data = (await getMemberGuilds(session.access_token)) || [];
  if (!data || data.error) return redirect("/auth/error?error=We%20were%20unable%20to%20get%20a%20list%20of%20your%20servers,%20if%20the%20problem%20persists%20log%20out%20and%20log%20back%20in.");
 
  const servers =

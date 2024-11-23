@@ -1,7 +1,7 @@
 import { globalConfig } from "@majoexe/config";
 import prismaClient from "@majoexe/database";
 import { AutoModerationRuleCreationData, createHTTPAutomodRule, validateAutoModIgnores, validateAutoModRuleActions } from "@majoexe/util/functions/automod";
-import { getServer, getGuildMember } from "@majoexe/util/functions/guild";
+import { getGuild, getGuildFromMemberGuilds } from "@majoexe/util/functions/guild";
 import { AutoModerationActionType, AutoModerationRuleTriggerType, AutoModerationRuleEventType, ChannelType } from "discord-api-types/v10";
 import { getSession } from "lib/session";
 import { NextRequest, NextResponse } from "next/server";
@@ -90,7 +90,7 @@ export async function POST(request: NextRequest) {
    );
   }
 
-  const server = await getServer(data.id);
+  const server = await getGuild(data.id);
 
   if (!server) {
    return NextResponse.json(
@@ -126,7 +126,7 @@ export async function POST(request: NextRequest) {
    );
   }
 
-  const serverMember = await getGuildMember(server.id, session.access_token);
+  const serverMember = await getGuildFromMemberGuilds(server.id, session.access_token);
 
   if (!serverMember || !serverMember.permissions_names || !serverMember.permissions_names.includes("ManageGuild") || !serverMember.permissions_names.includes("Administrator")) {
    return NextResponse.json(

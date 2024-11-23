@@ -10,10 +10,11 @@ export async function GET(request: NextRequest, props: { params: Promise<{ id: s
   if (!id || !/^\d{17,19}$/.test(id)) return redirect("/assets/fallback.webp");
 
   const user = await getDiscordUser(id);
-  if (!user || !user.avatar) return redirect("/assets/fallback.webp");
+  if (!user || !user.avatar_decoration_data) return redirect("/assets/fallback.webp");
 
-  if (user.avatar.startsWith("a_")) return NextResponse.redirect(`https://cdn.discordapp.com/avatars/${id}/${user.avatar}.gif?size=1024`);
-  return NextResponse.redirect(`https://cdn.discordapp.com/avatars/${id}/${user.avatar}.webp?size=1024`);
+  if (user.avatar_decoration_data.asset.startsWith("a_")) return NextResponse.redirect(`https://cdn.discordapp.com/avatar-decoration-presets/${user.avatar_decoration_data.asset}.png?size=128`);
+
+  return NextResponse.redirect(`https://cdn.discordapp.com/avatar-decoration-presets/${user.avatar_decoration_data.asset}.webp?size=128`);
  } catch (error) {
   return redirect("/assets/fallback.webp");
  }

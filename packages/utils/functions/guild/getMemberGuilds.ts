@@ -7,7 +7,7 @@ interface ExtendedAPIGuild extends APIGuild {
  bot: boolean;
 }
 
-export async function getServers(token: String) {
+export async function getMemberGuilds(token: String) {
  try {
   const res = await fetch(`https://discord.com/api/v${globalConfig.apiVersion}/users/@me/guilds`, {
    headers: {
@@ -17,8 +17,8 @@ export async function getServers(token: String) {
   if (!res.ok) return null;
   const json = (await res.json()) as ExtendedAPIGuild[];
 
-  for (const server of json) {
-   server.permissions_names = getPermissionNames(BigInt(server.permissions || 0)) || [];
+  for (const guild of json) {
+   guild.permissions_names = getPermissionNames(BigInt(guild.permissions || 0)) || [];
   }
   return json;
  } catch (_e) {

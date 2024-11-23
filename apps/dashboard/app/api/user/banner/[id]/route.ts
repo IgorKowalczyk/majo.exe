@@ -1,7 +1,6 @@
 import { redirect } from "next/navigation";
-import { globalConfig } from "@majoexe/config";
 import { NextRequest, NextResponse } from "next/server";
-import type { APIUser } from "discord-api-types/v10";
+import { getDiscordUser } from "@majoexe/util/functions/user";
 
 export async function GET(request: NextRequest, props: { params: Promise<{ id: string }> }) {
  const params = await props.params;
@@ -10,18 +9,10 @@ export async function GET(request: NextRequest, props: { params: Promise<{ id: s
 
   if (!id || !/^\d{17,19}$/.test(id)) return redirect("/assets/fallback.webp");
 
-  const discordApiFetch = await fetch(`https://discord.com/api/v${globalConfig.apiVersion}/users/${id}`, {
-   headers: {
-    "Content-Type": "application/json",
-    Authorization: `Bot ${process.env.TOKEN}`,
-   },
-  });
-
-  if (!discordApiFetch.ok) return redirect("/assets/fallback.webp");
-
-  const user: APIUser = await discordApiFetch.json();
+  const user = await getDiscordUser(id);
   if (!user || !user.banner) return redirect("/assets/fallback.webp");
 
+  if (user.banner.startsWith("a_")) return NextResponse.redirect(`https://cdn.discordapp.com/banners/${id}/${user.banner}.gif?size=1024`);
   return NextResponse.redirect(`https://cdn.discordapp.com/banners/${id}/${user.banner}.webp?size=1024`);
  } catch (error) {
   return redirect("/assets/fallback.webp");

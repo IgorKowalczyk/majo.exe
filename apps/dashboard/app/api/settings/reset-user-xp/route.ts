@@ -1,5 +1,5 @@
 import { resetXP } from "@majoexe/util/database";
-import { getServer, getGuildMember } from "@majoexe/util/functions/guild";
+import { getGuild, getGuildFromMemberGuilds } from "@majoexe/util/functions/guild";
 import { getSession } from "lib/session";
 import { revalidatePath } from "next/cache";
 import { NextRequest, NextResponse } from "next/server";
@@ -61,7 +61,7 @@ export async function POST(request: NextRequest) {
    );
   }
 
-  const server = await getServer(guildId);
+  const server = await getGuild(guildId);
 
   if (!server) {
    return NextResponse.json(
@@ -97,7 +97,7 @@ export async function POST(request: NextRequest) {
    );
   }
 
-  const serverMember = await getGuildMember(server.id, session.access_token);
+  const serverMember = await getGuildFromMemberGuilds(server.id, session.access_token);
 
   if (!serverMember || !serverMember.permissions_names || !serverMember.permissions_names.includes("ManageGuild") || !serverMember.permissions_names.includes("Administrator")) {
    return NextResponse.json(
