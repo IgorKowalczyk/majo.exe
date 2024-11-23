@@ -8,11 +8,11 @@ import { twMerge } from "tailwind-merge";
 export default function Loading() {
  return (
   <>
-   <div className="mb-4 flex max-h-[73px] flex-col items-center justify-normal gap-4 sm:flex-row">
+   <div className="mb-4 flex max-h-[73px] flex-col items-center justify-normal gap-2 sm:flex-row">
     <Skeleton className="size-16 rounded-full" />
     <div className="flex flex-col text-center sm:ml-4 sm:text-left">
-     <Skeleton className="h-[43px] w-44" />
-     <Skeleton className="mt-2 h-5 w-64 opacity-60" />
+     <Skeleton className="h-[36px] w-44" />
+     <Skeleton className="h-5 mt-1 w-64 opacity-60" />
     </div>
    </div>
    <div className="mb-4 grid grid-cols-1 gap-0 md:grid-cols-1 md:gap-4 lg:grid-cols-2 xl:grid-cols-3">
