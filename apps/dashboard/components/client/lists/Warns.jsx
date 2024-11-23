@@ -10,7 +10,7 @@ import Image from "@/components/client/shared/Image";
 import { Table } from "@/components/client/shared/Table";
 import { Tooltip } from "@/components/client/shared/Tooltip";
 import { Icons, iconVariants } from "@/components/Icons";
-import { AvatarSkeleton, Skeleton, TextSkeleton } from "@/components/Skeletons";
+import { Skeleton, TextSkeleton } from "@/components/Skeletons";
 
 export function Warns({ data, showControls = true, showSearch = true }) {
  const columns = useMemo(

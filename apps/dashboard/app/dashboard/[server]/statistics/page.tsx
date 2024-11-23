@@ -66,35 +66,29 @@ export default async function Page(props: { params: Promise<{ server: string }> 
  return (
   <>
    <div className="mb-4 grid grid-cols-1 gap-0 md:grid-cols-1 md:gap-4 lg:grid-cols-2 xl:grid-cols-3">
-    <GraphCard
+    <GraphCard // prettier
      className="mt-0"
-     data={{
-      icon: <Icons.userAdd className={iconVariants({ variant: "extraLarge" })} />,
-      title: "New Members",
-      description: "Amount of new members that joined your server in the last 7 days.",
-      value: newMembers,
-      graph: newMembers === 0 ? <Icons.Minus className={iconVariants({ variant: "normal" })} /> : newMembers < 0 ? <Icons.TrendingDown className={iconVariants({ variant: "normal" })} /> : <Icons.TrendingUp className={iconVariants({ variant: "normal" })} />,
-     }}
+     icon={<Icons.userAdd className={iconVariants({ variant: "extraLarge" })} />}
+     title="New Members"
+     description="Amount of new members that joined your server in the last 7 days."
+     value={newMembers.toString()}
+     graph={newMembers === 0 ? <Icons.Minus className={iconVariants({ variant: "normal" })} /> : newMembers < 0 ? <Icons.TrendingDown className={iconVariants({ variant: "normal" })} /> : <Icons.TrendingUp className={iconVariants({ variant: "normal" })} />}
     />
-    <GraphCard
+    <GraphCard // prettier
      className="mt-0"
-     data={{
-      icon: <Icons.userMinus className={iconVariants({ variant: "extraLarge" })} />,
-      title: "Members Left",
-      description: "Amount of members that left your server in the last 7 days.",
-      value: membersLeft,
-      graph: membersLeft === 0 ? <Icons.Minus className={iconVariants({ variant: "normal" })} /> : membersLeft < 0 ? <Icons.TrendingDown className={iconVariants({ variant: "normal" })} /> : <Icons.TrendingUp className={iconVariants({ variant: "normal" })} />,
-     }}
+     icon={<Icons.userMinus className={iconVariants({ variant: "extraLarge" })} />}
+     title="Members Left"
+     description="Amount of members that left your server in the last 7 days."
+     value={membersLeft.toString()}
+     graph={membersLeft === 0 ? <Icons.Minus className={iconVariants({ variant: "normal" })} /> : membersLeft < 0 ? <Icons.TrendingDown className={iconVariants({ variant: "normal" })} /> : <Icons.TrendingUp className={iconVariants({ variant: "normal" })} />}
     />
-    <GraphCard
+    <GraphCard // prettier
      className="col-span-1 mt-0 lg:col-span-2 xl:col-span-1"
-     data={{
-      icon: <Icons.commentAdd className={iconVariants({ variant: "extraLarge" })} />,
-      title: "New Messages",
-      description: "The amount of messages that were sent in your server in the last 7 days.",
-      value: newMessages,
-      graph: newMessages === 0 ? <Icons.Minus className={iconVariants({ variant: "normal" })} /> : newMessages < 0 ? <Icons.TrendingDown className={iconVariants({ variant: "normal" })} /> : <Icons.TrendingUp className={iconVariants({ variant: "normal" })} />,
-     }}
+     icon={<Icons.commentAdd className={iconVariants({ variant: "extraLarge" })} />}
+     title="New Messages"
+     description="The amount of messages that were sent in your server in the last 7 days."
+     value={newMessages.toString()}
+     graph={newMessages === 0 ? <Icons.Minus className={iconVariants({ variant: "normal" })} /> : newMessages < 0 ? <Icons.TrendingDown className={iconVariants({ variant: "normal" })} /> : <Icons.TrendingUp className={iconVariants({ variant: "normal" })} />}
     />
    </div>
    <ServerStatsChart guildJoin={guildJoinData} guildLeave={guildLeaveData} guildJoinCSV={guildJoinCSV} guildLeaveCSV={guildLeaveCSV} guildMessage={guildMessageData} guildMessageCSV={guildMessageCSV} />

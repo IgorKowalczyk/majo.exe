@@ -1,6 +1,6 @@
 import Script from "next/script";
 
-export function Hotjar({ id }) {
+export function Hotjar({ id }: { id: number | null }) {
  if (!id) return null;
  return (
   <Script strategy="afterInteractive" id="hotjar">
