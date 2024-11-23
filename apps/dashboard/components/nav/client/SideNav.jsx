@@ -16,7 +16,7 @@ export function SideNavLink({ href, children }) {
  const router = usePathname();
  const isSelected = (path) => router === path;
  return (
-  <Link href={href} className={`${isSelected(href) ? "bg-button-primary/20 before:!h-[29px]" : "hover:bg-button-primary/20"} flex h-[45px] w-full items-center gap-2 rounded-md py-2 pr-4 duration-200 before:h-0 before:rounded-r-md before:border-l-4 before:border-button-primary before:duration-200 hover:bg-button-primary/20 hover:before:h-[29px]`}>
+  <Link href={href} className={`${isSelected(href) ? "bg-button-primary/20 before:h-[29px]" : "hover:bg-button-primary/20"} flex h-[45px] w-full items-center gap-2 rounded-md py-2 pr-4 duration-200 before:h-0 before:rounded-r-md before:border-l-4 before:border-button-primary before:duration-200 hover:bg-button-primary/20 hover:before:h-[29px]`}>
    {children}
   </Link>
  );

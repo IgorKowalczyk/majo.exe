@@ -1,12 +1,12 @@
 import { Block } from "@/components/Block";
 import { ButtonPrimary } from "@/components/Buttons";
-import Header, { Header1, Header2, Header3, Header5, headerVariants } from "@/components/Headers";
+import Header, { Header3, headerVariants } from "@/components/Headers";
 import "tippy.js/dist/backdrop.css";
 import "tippy.js/animations/shift-away.css";
 import "tippy.js/dist/tippy.css";
 import { Icons, iconVariants } from "@/components/Icons";
 import { NavBadge } from "@/components/nav/client/SideNav";
-import { InputSkeleton } from "@/components/Skeletons";
+import { Skeleton } from "@/components/Skeletons";
 import { twMerge } from "tailwind-merge";
 
 export default function Loading() {
@@ -38,7 +38,7 @@ export default function Loading() {
         <Icons.Users className={iconVariants({ variant: "normal", className: "stroke-accent-primary" })} />
         Ignore Roles:
        </span>
-       <InputSkeleton className="!h-[37.6px] !w-40" />
+       <Skeleton className="h-[37.6px] w-40" />
       </div>
 
       <div className="mt-2 flex flex-row flex-wrap gap-2">
@@ -46,7 +46,7 @@ export default function Loading() {
         <Icons.Hash className={iconVariants({ variant: "normal", className: "stroke-accent-primary" })} />
         Ignore Channels:
        </span>
-       <InputSkeleton className="!h-[37.6px] !w-40" />
+       <Skeleton className="h-[37.6px] w-40" />
       </div>
 
       <p className="mt-2 gap-2 text-sm text-white/70">
@@ -65,7 +65,7 @@ export default function Loading() {
         <Icons.Trash className={iconVariants({ variant: "normal", className: "stroke-red-400" })} />
         Delete message:
        </span>
-       <InputSkeleton className="!h-[30px] !w-12" />
+       <Skeleton className="h-[30px] w-12" />
       </div>
 
       <div className="my-2 flex flex-row flex-wrap gap-2">
@@ -73,7 +73,7 @@ export default function Loading() {
         <Icons.Timer className={iconVariants({ variant: "normal", className: "stroke-red-400" })} />
         Timeout member:
        </span>
-       <InputSkeleton className="!h-[37.6px] !w-40" />
+       <Skeleton className="h-[37.6px] w-40" />
       </div>
 
       <div className="my-2 flex flex-row flex-wrap gap-2">
@@ -81,7 +81,7 @@ export default function Loading() {
         <Icons.messageWarning className={iconVariants({ variant: "normal", className: "stroke-red-400" })} />
         Log to channel:
        </span>
-       <InputSkeleton className="!h-[37.6px] !w-40" />
+       <Skeleton className="h-[37.6px] w-40" />
       </div>
      </Block>
 
@@ -114,7 +114,7 @@ export default function Loading() {
         <Icons.Users className={iconVariants({ variant: "normal", className: "stroke-accent-primary" })} />
         Ignore Roles:
        </span>
-       <InputSkeleton className="!h-[37.6px] !w-40" />
+       <Skeleton className="h-[37.6px] w-40" />
       </div>
 
       <div className="mt-2 flex flex-row flex-wrap gap-2">
@@ -122,7 +122,7 @@ export default function Loading() {
         <Icons.Hash className={iconVariants({ variant: "normal", className: "stroke-accent-primary" })} />
         Ignore Channels:
        </span>
-       <InputSkeleton className="!h-[37.6px] !w-40" />
+       <Skeleton className="h-[37.6px] w-40" />
       </div>
 
       <p className="mt-2 gap-2 text-sm text-white/70">
@@ -141,7 +141,7 @@ export default function Loading() {
         <Icons.Trash className={iconVariants({ variant: "normal", className: "stroke-red-400" })} />
         Delete message:
        </span>
-       <InputSkeleton className="!h-[30px] !w-12" />
+       <Skeleton className="h-[30px] w-12" />
       </div>
 
       <div className="my-2 flex flex-row flex-wrap gap-2">
@@ -149,7 +149,7 @@ export default function Loading() {
         <Icons.Timer className={iconVariants({ variant: "normal", className: "stroke-red-400" })} />
         Timeout member:
        </span>
-       <InputSkeleton className="!h-[37.6px] !w-40" />
+       <Skeleton className="h-[37.6px] w-40" />
       </div>
 
       <div className="my-2 flex flex-row flex-wrap gap-2">
@@ -157,7 +157,7 @@ export default function Loading() {
         <Icons.messageWarning className={iconVariants({ variant: "normal", className: "stroke-red-400" })} />
         Log to channel:
        </span>
-       <InputSkeleton className="!h-[37.6px] !w-40" />
+       <Skeleton className="h-[37.6px] w-40" />
       </div>
      </Block>
 

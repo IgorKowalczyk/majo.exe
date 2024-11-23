@@ -3,7 +3,7 @@ import { ButtonPrimary } from "@/components/Buttons";
 import { RedButton } from "@/components/Buttons";
 import Header, { headerVariants } from "@/components/Headers";
 import { Icons, iconVariants } from "@/components/Icons";
-import { GraphSkeleton, InputSkeleton, TextSkeleton } from "@/components/Skeletons";
+import { InputSkeleton, TextSkeleton, Skeleton } from "@/components/Skeletons";
 import { twMerge } from "tailwind-merge";
 
 export default function Loading() {
@@ -19,7 +19,7 @@ export default function Loading() {
      Default Embed Color
     </Header>
     <p className="mb-4 text-left">Change the color of the embeds sent by the bot. This will not affect embeds sent by other bots.</p>
-    <GraphSkeleton className="mt-10 h-60" />
+    <Skeleton className="mt-10 h-60" />
    </Block>
 
    <Block className="mt-4">
@@ -36,7 +36,7 @@ export default function Loading() {
       <TextSkeleton
        // eslint-disable-next-line @eslint-react/no-array-index-key
        key={`role-${i}`}
-       className="!h-[42px] min-w-[150px]"
+       className="h-[42px] min-w-[150px]"
        style={{
         width: `${Math.floor(Math.random() * (150 - 64 + 1) + 64)}px !important`,
        }}

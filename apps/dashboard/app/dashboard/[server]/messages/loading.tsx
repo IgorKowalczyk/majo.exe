@@ -2,7 +2,7 @@ import { Block } from "@/components/Block";
 import { ButtonPrimary } from "@/components/Buttons";
 import Header, { headerVariants } from "@/components/Headers";
 import { Icons, iconVariants } from "@/components/Icons";
-import { GraphSkeleton, InputSkeleton } from "@/components/Skeletons";
+import { Skeleton } from "@/components/Skeletons";
 import { twMerge } from "tailwind-merge";
 
 export default function Loading() {
@@ -27,9 +27,9 @@ export default function Loading() {
       <Icons.Check className={iconVariants({ variant: "normal" })} />
       Enabled:
      </span>
-     <InputSkeleton className="!h-[30px] !w-12" />
+     <Skeleton className="h-[30px] w-12" />
     </div>
-    <GraphSkeleton className="h-96 w-full" />
+    <Skeleton className="h-96 w-full" />
     <ButtonPrimary className="mt-4" disabled>
      <Icons.Check className={iconVariants({ variant: "button" })} />
      Save
@@ -50,9 +50,9 @@ export default function Loading() {
       <Icons.Check className={iconVariants({ variant: "normal" })} />
       Enabled:
      </span>
-     <InputSkeleton className="!h-[30px] !w-12" />
+     <Skeleton className="h-[30px] w-12" />
     </div>
-    <GraphSkeleton className="h-96 w-full" />
+    <Skeleton className="h-96 w-full" />
     <ButtonPrimary className="mt-4" disabled>
      <Icons.Check className={iconVariants({ variant: "button" })} />
      Save

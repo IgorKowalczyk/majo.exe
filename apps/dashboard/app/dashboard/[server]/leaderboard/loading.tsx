@@ -1,7 +1,7 @@
 import { Block } from "@/components/Block";
 import Header, { headerVariants } from "@/components/Headers";
 import { Icons, iconVariants } from "@/components/Icons";
-import { EmbedSkeleton } from "@/components/Skeletons";
+import { Skeleton } from "@/components/Skeletons";
 import { twMerge } from "tailwind-merge";
 
 export default function Loading() {
@@ -12,7 +12,7 @@ export default function Loading() {
     Leaderboard
    </Header>
    <Block className="mt-4 flex w-full overflow-auto">
-    <EmbedSkeleton className="h-64 w-full" />
+    <Skeleton className="h-64 w-full" />
    </Block>
   </>
  );

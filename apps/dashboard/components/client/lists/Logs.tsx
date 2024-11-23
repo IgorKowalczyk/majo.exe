@@ -143,7 +143,7 @@ export default function Logs({ initialItems, server }: { initialItems: LogItem[]
      </span>
     </Tooltip>
    </div>
-   <InfiniteScroll hasMore={hasMore} pageStart={0} loadMore={loadMore} loader={<GraphSkeleton className="mb-4 !h-20" />}>
+   <InfiniteScroll hasMore={hasMore} pageStart={0} loadMore={loadMore} loader={<Skeleton className="mb-4 h-20" />}>
     {sortedFilteredItems.map((item, index) => (
      <LogDisclosure key={`log-${item.id}-${server}`} item={item} guildId={server} />
     ))}

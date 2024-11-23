@@ -38,7 +38,7 @@ export function DiscordCommands({ commands, categories }) {
       <TextSkeleton
        // eslint-disable-next-line @eslint-react/no-array-index-key
        key={`command-skeleton-${i}`}
-       className="!h-[42px]"
+       className="h-[42px]"
        style={{
         width: `${Math.floor(Math.random() * (150 - 64 + 1) + 64)}px !important`,
        }}
