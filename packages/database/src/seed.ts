@@ -19,7 +19,7 @@ for (const category of categoryNames) {
   where: { name: category },
   update: { name: category },
   create: {
-   name: category,
+   name: category || "",
   },
  });
 }
