@@ -50,7 +50,7 @@ export function Warns({ data, showControls = true, showSearch = true }) {
     Header: "Actions",
     accessor: "link",
     Cell: ({ value }) => (
-     <Link href={`user/${value}#warns`} className={twMerge(buttonVariants({ variant: "secondary"}), "w-fit")} >
+     <Link href={`user/${value}#warns`} className={twMerge(buttonVariants({ variant: "secondary" }), "w-fit")}>
       <Icons.warning className={iconVariants({ variant: "button" })} />
       View profile
      </Link>
@@ -160,7 +160,7 @@ export function ManageWarns({ data, guildId, showControls = true, showSearch = t
         )}
        </>
       )}
-     </Bu>
+     </Button>
     ),
    },
   ],
