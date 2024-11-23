@@ -11,6 +11,7 @@ import { Tooltip } from "@/components/client/shared/Tooltip";
 import { Icons, iconVariants } from "@/components/Icons";
 import { InputWithIcon } from "@/components/Input";
 import { GuildLogs, User } from "@majoexe/database";
+import { Skeleton } from "@/components/Skeletons";
 
 interface LogItem extends Omit<GuildLogs, "createdAt"> {
  createdAt: string;

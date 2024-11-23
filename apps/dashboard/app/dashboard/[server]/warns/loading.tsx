@@ -1,4 +1,4 @@
-import Header, { Header5, headerVariants } from "@/components/Headers";
+import Header, { headerVariants } from "@/components/Headers";
 import { Icons, iconVariants } from "@/components/Icons";
 import { Skeleton } from "@/components/Skeletons";
 import { twMerge } from "tailwind-merge";

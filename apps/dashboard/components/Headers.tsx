@@ -55,17 +55,6 @@ interface LegacyHeaderProps extends HTMLAttributes<HTMLHeadingElement> {
 /**
  * @deprecated Use `Header` instead.
  */
-export function Header1({ children, className, ...props }: LegacyHeaderProps) {
- return (
-  <h1 className={twMerge("mb-2 flex items-center justify-start gap-2 text-3xl font-bold", className)} {...props}>
-   {children}
-  </h1>
- );
-}
-
-/**
- * @deprecated Use `Header` instead.
- */
 export function Header2({ children, className, ...props }: LegacyHeaderProps) {
  return (
   <h2 className={twMerge("mb-1 flex items-center justify-start gap-2 text-left text-2xl font-bold", className)} {...props}>
@@ -93,16 +82,5 @@ export function Header4({ children, className, ...props }: LegacyHeaderProps) {
   <h4 className={twMerge(className, "flex items-center gap-4 text-center text-lg font-bold md:text-xl")} {...props}>
    {children}
   </h4>
- );
-}
-
-/**
- * @deprecated Use `Header` instead.
- */
-export function Header5({ children, className, ...props }: LegacyHeaderProps) {
- return (
-  <h5 className={twMerge(className, "flex items-center gap-4 text-center text-base font-medium md:text-lg")} {...props}>
-   {children}
-  </h5>
  );
 }
