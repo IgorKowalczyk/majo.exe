@@ -1,6 +1,7 @@
-import { ButtonPrimary, ButtonSecondary } from "@/components/Buttons";
+import { buttonVariants } from "@/components/Buttons";
 import Header, { headerVariants } from "@/components/Headers";
 import { Icons, iconVariants } from "@/components/Icons";
+import Link from "next/link";
 
 export const metadata = {
  title: "Error",
@@ -18,13 +19,13 @@ export default async function ErrorPage(props: { searchParams: Promise<{ error: 
      <Header className={headerVariants({ variant: "h1", alignment: "center" })}>Something went wrong!</Header>
      <p className="my-1 mt-2 text-center text-xl text-[#939DB8]">{searchParams.error}</p>
      <div className="mt-4 flex flex-wrap justify-center gap-2">
-      <ButtonPrimary href="/">
+      <Link href="/" className={buttonVariants({ variant: "primary" })}>
        <Icons.arrowLeft className={iconVariants({ variant: "button" })} />
        Go back home
-      </ButtonPrimary>
-      <ButtonSecondary href="/discord">
+      </Link>
+      <Link href="/discord" className={buttonVariants({ variant: "secondary" })}>
        <Icons.help className={iconVariants({ variant: "button" })} /> Contact support
-      </ButtonSecondary>
+      </Link>
      </div>
     </>
    </div>

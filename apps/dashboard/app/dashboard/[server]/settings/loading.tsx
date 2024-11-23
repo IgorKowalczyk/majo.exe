@@ -1,6 +1,5 @@
 import { Block } from "@/components/Block";
-import { ButtonPrimary } from "@/components/Buttons";
-import { RedButton } from "@/components/Buttons";
+import { Button, ButtonPrimary } from "@/components/Buttons";
 import Header, { headerVariants } from "@/components/Headers";
 import { Icons, iconVariants } from "@/components/Icons";
 import { Skeleton } from "@/components/Skeletons";
@@ -110,9 +109,9 @@ export default function Loading() {
      Delete server data
     </Header>
     <p className="mt-2 text-white/70">If you want to delete all data related to this server, you can do so by clicking the button below. This action is irreversible.</p>
-    <RedButton className="mt-4" disabled={true}>
+    <Button variant="red" className="mt-4" disabled={true}>
      <Icons.Trash className={iconVariants({ variant: "button" })} /> Delete server data
-    </RedButton>
+    </Button>
    </Block>
   </>
  );

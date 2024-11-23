@@ -5,7 +5,7 @@ import { cva, type VariantProps } from "class-variance-authority";
 export const headerVariants = cva("flex items-center font-bold", {
  variants: {
   variant: {
-   big: "text-4xl md:text-6xl font-extrabold xl:!text-5xl 2xl:!text-7xl",
+   big: "text-3xl md:text-5xl font-extrabold xl:!text-4xl 2xl:!text-6xl",
    medium: "!text-3xl md:!text-4xl text-2xl md:text-3xl font-black",
    gradient: "text-xl md:text-2xl font-black",
    h1: "text-3xl",

@@ -5,8 +5,9 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useContext } from "react";
 import { VisibilityContext } from "./VisibilityContext";
-import { ButtonPrimary } from "@/components/Buttons";
+import { ButtonPrimary, buttonVariants } from "@/components/Buttons";
 import { Icons, iconVariants } from "@/components/Icons";
+import { twMerge } from "tailwind-merge";
 
 export function NavBadge({ children }) {
  return <div className="-mt-3 rounded-md bg-button-primary px-1 py-px pb-0 text-xs uppercase">{children}</div>;
@@ -38,9 +39,9 @@ export function SideNav({ server }) {
     )}
    >
     <div className="px-4">
-     <ButtonPrimary href="/dashboard" className="mb-4 w-full">
+     <Link href="/dashboard" className={twMerge(buttonVariants({ variant: "primary" }), "mb-4 w-full")}>
       <Icons.arrowLeft className={iconVariants({ variant: "button" })} /> Go back
-     </ButtonPrimary>
+     </Link>
     </div>
 
     <div className="flex w-full flex-col items-center justify-center gap-2 border-t border-t-neutral-800 px-4 pt-4">

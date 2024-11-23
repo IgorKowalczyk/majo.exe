@@ -3,7 +3,7 @@
 import { Dialog, Transition } from "@headlessui/react";
 import { Fragment, useState } from "react";
 import { toast } from "sonner";
-import { RedButton, ButtonSecondary } from "@/components/Buttons";
+import { Button } from "@/components/Buttons";
 import { Icons, iconVariants } from "@/components/Icons";
 
 export function ResetUserXP({ userId, guildId }) {
@@ -57,13 +57,13 @@ export function ResetUserXP({ userId, guildId }) {
 
  return (
   <>
-   <RedButton className="mt-4 w-fit" onClick={() => setIsOpen(true)}>
+   <Button variant="red" className="mt-4 w-fit" onClick={() => setIsOpen(true)}>
     <Icons.Trash className={iconVariants({ variant: "button" })} />
     Reset XP
-   </RedButton>
+   </Button>
 
    <Transition.Root appear show={isOpen} as={Fragment}>
-    <Dialog as="div" unmount="true" className="relative z-[99999]" onClose={() => setIsOpen(false)}>
+    <Dialog as="div" unmount={true} className="relative z-[99999]" onClose={() => setIsOpen(false)}>
      <Transition.Child as={Fragment} enter="ease-out duration-200 motion-reduce:transition-none" enterFrom="opacity-0" enterTo="opacity-100" leave="ease-in duration-200 motion-reduce:duration-[1ms]" leaveFrom="opacity-100" leaveTo="opacity-0">
       <div className="firefox:bg-opacity-50 fixed inset-0 bg-black bg-opacity-25 backdrop-blur" />
      </Transition.Child>
@@ -80,7 +80,7 @@ export function ResetUserXP({ userId, guildId }) {
          </div>
 
          <div className="mt-4 flex justify-between gap-2">
-          <RedButton onClick={handleReset} disabled={loading}>
+          <Button variant="red" onClick={handleReset} disabled={loading}>
            {loading ? (
             <>
              <Icons.refresh className={iconVariants({ variant: "button", className: "animate-spin" })} />
@@ -92,11 +92,11 @@ export function ResetUserXP({ userId, guildId }) {
              Yes, reset XP
             </>
            )}
-          </RedButton>
-          <ButtonSecondary onClick={() => setIsOpen(false)}>
+          </Button>
+          <Button variant="secondary" onClick={() => setIsOpen(false)}>
            <Icons.close className={iconVariants({ variant: "button" })} />
            Cancel
-          </ButtonSecondary>
+          </Button>
          </div>
         </Dialog.Panel>
        </Transition.Child>

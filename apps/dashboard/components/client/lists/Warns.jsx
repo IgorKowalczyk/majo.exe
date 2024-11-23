@@ -4,7 +4,7 @@ import { formatDuration } from "@majoexe/util/functions/util";
 import { useRouter } from "next/navigation";
 import { useMemo, useState, useCallback } from "react";
 import { toast } from "sonner";
-import { RedButton } from "@/components/Buttons";
+import { Button } from "@/components/Buttons";
 import { ButtonSecondary } from "@/components/Buttons";
 import Image from "@/components/client/shared/Image";
 import { Table } from "@/components/client/shared/Table";
@@ -138,7 +138,7 @@ export function ManageWarns({ data, guildId, showControls = true, showSearch = t
     Header: "Actions",
     accessor: "id",
     Cell: ({ value }) => (
-     <RedButton className="w-fit" onClick={() => removeWarn(value)} disabled={loadingWarns?.includes(value) || deletedWarns?.includes(value)}>
+     <Button variant="red" className="w-fit" onClick={() => removeWarn(value)} disabled={loadingWarns?.includes(value) || deletedWarns?.includes(value)}>
       {deletedWarns?.includes(value) ? (
        <>
         <Icons.Check className={iconVariants({ variant: "button" })} />
@@ -159,7 +159,7 @@ export function ManageWarns({ data, guildId, showControls = true, showSearch = t
         )}
        </>
       )}
-     </RedButton>
+     </Bu>
     ),
    },
   ],

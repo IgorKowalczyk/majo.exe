@@ -3,8 +3,7 @@ import clsx from "clsx";
 import { getSession } from "lib/session";
 import Link from "next/link";
 import { redirect } from "next/navigation";
-import { ButtonPrimary } from "@/components/Buttons";
-import { ButtonSecondary } from "@/components/Buttons";
+import { buttonVariants } from "@/components/Buttons";
 import Image from "@/components/client/shared/Image";
 import Header, { headerVariants } from "@/components/Headers";
 import { Icons, iconVariants } from "@/components/Icons";
@@ -48,13 +47,13 @@ export default async function Dashboard() {
          <Header className={twMerge(headerVariants({ variant: "h3" }))}>{server.name}</Header>
          <>
           {server.bot ? (
-           <ButtonPrimary href={`/dashboard/${server.id}`} className="ml-auto">
+           <Link href={`/dashboard/${server.id}`} className={twMerge(buttonVariants({ variant: "primary" }), "ml-auto")}>
             <Icons.Minus className={iconVariants({ variant: "button" })} /> Manage
-           </ButtonPrimary>
+           </Link>
           ) : (
-           <ButtonSecondary href={`/api/invite/${server.id}`} className="ml-auto cursor-copy">
+           <Link href={`/api/invite/${server.id}`} className={twMerge(buttonVariants({ variant: "secondary" }), "ml-auto cursor-copy")}>
             <Icons.Minus className={iconVariants({ variant: "button" })} /> Add bot
-           </ButtonSecondary>
+           </Link>
           )}
          </>
         </div>
@@ -91,9 +90,9 @@ export default async function Dashboard() {
      ) : (
       <div className="flex flex-col items-center justify-center gap-4">
        <Header className={twMerge(headerVariants({ variant: "h3", alignment: "center" }))}>You don't have any servers!</Header>
-       <ButtonPrimary href="/api/invite">
+       <Link href="/api/invite" className={twMerge(buttonVariants({ variant: "primary" }))}>
         <Icons.Minus className={iconVariants({ variant: "button" })} /> Add bot
-       </ButtonPrimary>
+       </Link>
       </div>
      )}
     </div>

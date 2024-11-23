@@ -14,7 +14,7 @@ import { SparkLineChart } from "@/components/client/shared/SparkChart";
 import { Tooltip } from "@/components/client/shared/Tooltip";
 import Header, { headerVariants } from "@/components/Headers";
 import { Icons, iconVariants } from "@/components/Icons";
-import { ButtonPrimary } from "@/components/Buttons";
+import { buttonVariants } from "@/components/Buttons";
 import { twMerge } from "tailwind-merge";
 
 export const metadata = {
@@ -296,10 +296,10 @@ export default async function Page(props: { params: Promise<{ server: string }> 
       <Header className={twMerge(headerVariants({ variant: "h4", margin: "wide" }), "items-start justify-normal opacity-80")}>
        Quick Stats
        {guild.publicPage ? (
-        <ButtonPrimary href={`/server/${guild.vanity || serverDownload.id}`} className="mx-auto font-normal w-fit !flex flex-row whitespace-nowrap sm:ml-auto sm:mr-0" target="_blank" rel="noreferrer noopener">
-         <Icons.ExternalLink className="shrink-0 mr-2 h-5 w-5" aria-hidden="true" role="img" />
+        <Link href={`/server/${guild.vanity || serverDownload.id}`} target="_blank" rel="noreferrer noopener" className={twMerge(buttonVariants({ variant: "primary" }), "mx-auto font-normal w-fit !flex flex-row whitespace-nowrap text-base sm:ml-auto sm:mr-0")}>
+         <Icons.ExternalLink className={iconVariants({ variant: "button" })} aria-hidden="true" role="img" />
          Server page
-        </ButtonPrimary>
+        </Link>
        ) : null}
       </Header>
       <div className="flex flex-row flex-wrap gap-2">

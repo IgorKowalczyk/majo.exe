@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { twMerge } from "tailwind-merge";
 import { cva, VariantProps } from "class-variance-authority";
-import React, { HTMLAttributes } from "react";
+import React from "react";
 
 export const buttonVariants = cva("flex cursor-pointer items-center rounded-md px-4 py-2 leading-6 text-white duration-200 motion-reduce:transition-none disabled:cursor-not-allowed", {
  variants: {
@@ -17,7 +17,7 @@ export const buttonVariants = cva("flex cursor-pointer items-center rounded-md p
  },
 });
 
-export const Button = React.forwardRef<HTMLButtonElement, HTMLAttributes<HTMLButtonElement> & VariantProps<typeof buttonVariants>>(({ className, variant, ...props }, ref) => (
+export const Button = React.forwardRef<HTMLButtonElement, React.ButtonHTMLAttributes<HTMLButtonElement> & VariantProps<typeof buttonVariants>>(({ className, variant, ...props }, ref) => (
  <button ref={ref} className={twMerge(buttonVariants({ variant }), className)} {...props}>
   {props.children}
  </button>
@@ -92,24 +92,5 @@ export function ButtonSecondary({ children, type = "default", ...props }) {
     </button>
    );
   }
- }
-}
-
-/**
- * @deprecated Use `Button` instead.
- */
-export function RedButton({ children, ...props }) {
- if (props && props.href) {
-  return (
-   <Link {...props} className={twMerge(props.className, "flex cursor-pointer items-center rounded-md bg-red-400/20 px-4 py-2 leading-6 text-red-400 duration-200 hover:bg-red-400/50 disabled:cursor-not-allowed disabled:bg-red-400/10 motion-reduce:transition-none")}>
-    {children}
-   </Link>
-  );
- } else {
-  return (
-   <button {...props} className={twMerge(props.className, "flex cursor-pointer items-center rounded-md bg-red-400/20 px-4 py-2 leading-6 text-red-400 duration-200 hover:bg-red-400/50 disabled:cursor-not-allowed disabled:bg-red-400/10 motion-reduce:transition-none")} type="button">
-    {children}
-   </button>
-  );
  }
 }
