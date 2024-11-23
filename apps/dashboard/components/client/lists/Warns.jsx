@@ -10,7 +10,7 @@ import Image from "@/components/client/shared/Image";
 import { Table } from "@/components/client/shared/Table";
 import { Tooltip } from "@/components/client/shared/Tooltip";
 import { Icons, iconVariants } from "@/components/Icons";
-import { Skeleton, TextSkeleton } from "@/components/Skeletons";
+import { Skeleton } from "@/components/Skeletons";
 
 export function Warns({ data, showControls = true, showSearch = true }) {
  const columns = useMemo(
@@ -113,7 +113,7 @@ export function ManageWarns({ data, guildId, showControls = true, showSearch = t
       ) : (
        <div className="flex flex-row items-center space-x-4">
         <Skeleton className="size-12 shrink-0 rounded-full" />
-        <TextSkeleton className="w-20" />
+        <Skeleton className="w-20 h-6" />
        </div>
       )}
      </>

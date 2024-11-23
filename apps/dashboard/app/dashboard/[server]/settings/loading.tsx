@@ -3,7 +3,7 @@ import { ButtonPrimary } from "@/components/Buttons";
 import { RedButton } from "@/components/Buttons";
 import Header, { headerVariants } from "@/components/Headers";
 import { Icons, iconVariants } from "@/components/Icons";
-import { InputSkeleton, TextSkeleton, Skeleton } from "@/components/Skeletons";
+import { Skeleton } from "@/components/Skeletons";
 import { twMerge } from "tailwind-merge";
 
 export default function Loading() {
@@ -33,7 +33,7 @@ export default function Loading() {
 
     <div className="flex flex-wrap items-center justify-start gap-2">
      {Array.from({ length: 8 }).map((_, i) => (
-      <TextSkeleton
+      <Skeleton
        // eslint-disable-next-line @eslint-react/no-array-index-key
        key={`role-${i}`}
        className="h-[42px] min-w-[150px]"
@@ -80,8 +80,8 @@ export default function Loading() {
      </Block>
     </div>
 
-    <InputSkeleton className="!max-w-none" />
-    <InputSkeleton className="mt-4 !max-w-none" />
+    <Skeleton className="h-10 !max-w-none" />
+    <Skeleton className="mt-4 h-10 !max-w-none" />
 
     <div className="mt-4 flex flex-row items-start whitespace-nowrap rounded-md border border-accent-primary bg-accent-primary/10 p-4">
      <span className="mr-1 flex flex-row items-center whitespace-nowrap font-bold">

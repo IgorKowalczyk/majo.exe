@@ -10,7 +10,6 @@ import Image from "@/components/client/shared/Image";
 import { Tooltip } from "@/components/client/shared/Tooltip";
 import { Icons, iconVariants } from "@/components/Icons";
 import { InputWithIcon } from "@/components/Input";
-import { GraphSkeleton } from "@/components/Skeletons";
 import { GuildLogs, User } from "@majoexe/database";
 
 interface LogItem extends Omit<GuildLogs, "createdAt"> {

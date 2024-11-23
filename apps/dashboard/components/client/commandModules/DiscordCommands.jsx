@@ -5,7 +5,7 @@ import { Tooltip } from "@/components/client/shared/Tooltip";
 import { Header3 } from "@/components/Headers";
 import { Icons, iconVariants } from "@/components/Icons";
 import { InputWithIcon } from "@/components/Input";
-import { InputSkeleton, TextSkeleton } from "@/components/Skeletons";
+import { Skeleton } from "@/components/Skeletons";
 
 export function DiscordCommands({ commands, categories }) {
  const [filteredCategories, setFilteredCategories] = useState([]);
@@ -31,11 +31,11 @@ export function DiscordCommands({ commands, categories }) {
  if (!mounted) {
   return (
    <>
-    <InputSkeleton className="w-full !max-w-none" />
+    <Skeleton className="w-full h-10 !max-w-none" />
 
     <div className="mt-8 flex flex-wrap gap-2">
      {Array.from({ length: 8 }).map((_, i) => (
-      <TextSkeleton
+      <Skeleton
        // eslint-disable-next-line @eslint-react/no-array-index-key
        key={`command-skeleton-${i}`}
        className="h-[42px]"

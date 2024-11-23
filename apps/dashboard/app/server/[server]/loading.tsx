@@ -1,6 +1,6 @@
 import { Block } from "@/components/Block";
 import Header, { Header4, headerVariants } from "@/components/Headers";
-import { EmbedSkeleton, TextSkeleton } from "@/components/Skeletons";
+import { Skeleton } from "@/components/Skeletons";
 import { twMerge } from "tailwind-merge";
 
 export default function Loading() {
@@ -9,8 +9,8 @@ export default function Loading() {
    <Header className={twMerge(headerVariants({ variant: "h1" }), "mb-6 justify-normal flex-col")}>
     <div className="size-24 shrink-0 rounded-full bg-button-secondary" />
     <div className="flex flex-col items-center justify-center text-center sm:ml-4">
-     <TextSkeleton className="w-32" />
-     <TextSkeleton className="w-64 mt-2 opacity-60" />
+     <Skeleton className="h-6 w-32" />
+     <Skeleton className="h-6 w-64 mt-2 opacity-60" />
     </div>
    </Header>
 
@@ -29,7 +29,7 @@ export default function Loading() {
    <div className="mt-6 block gap-6 lg:flex lg:items-start">
     <Block className="scrollbar-show flex flex-col justify-start overflow-x-scroll [flex:3_1_0]">
      <Header4 className="mb-4 !items-start !justify-normal opacity-80">Leaderboard</Header4>
-     <EmbedSkeleton className="h-64 w-full" />
+     <Skeleton className="h-64 w-full" />
     </Block>
     <div className="mt-6 flex flex-col justify-start gap-6 [flex:2_1_0%] lg:mt-0">
      <Block>
