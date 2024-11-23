@@ -132,11 +132,11 @@ export default async function Page(props: { params: Promise<{ server: string }> 
    <Block className="!mt-4 flex w-full flex-col gap-4 !p-4 sm:flex-row sm:gap-0">
     <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
      <div className="flex items-center">
-      <div className="mr-2 size-3 min-h-3 min-w-3 rounded-full bg-[#81848f]" />
+      <div className="mr-2 size-3 shrink-0 rounded-full bg-[#81848f]" />
       {guildPreview.approximate_member_count || "0"} members
      </div>
      <div className="flex items-center">
-      <div className="mr-2 size-3 min-h-3 min-w-3 rounded-full bg-[#22a55b]" />
+      <div className="mr-2 size-3 shrink-0 rounded-full bg-[#22a55b]" />
       {guildPreview.approximate_presence_count || "0"} online
      </div>
     </div>
@@ -160,7 +160,7 @@ export default async function Page(props: { params: Promise<{ server: string }> 
          <Link key={emoji.id || "" + emoji.name} className="flex flex-col items-center justify-center gap-2" href={`https://cdn.discordapp.com/emojis/${emoji?.id}.${emoji?.animated ? "gif" : "png"}`} target="_blank" rel="noreferrer noopener">
           <Tooltip content={emoji.name || "Unnamed emoji"}>
            <>
-            <Image src={`https://cdn.discordapp.com/emojis/${emoji.id}.${emoji.animated ? "gif" : "png"}`} alt={emoji.name || ""} quality={95} width={32} height={32} className="size-8 min-h-8 min-w-8" />
+            <Image src={`https://cdn.discordapp.com/emojis/${emoji.id}.${emoji.animated ? "gif" : "png"}`} alt={emoji.name || ""} quality={95} width={32} height={32} className="size-8 shrink-0" />
            </>
           </Tooltip>
          </Link>
@@ -182,7 +182,7 @@ export default async function Page(props: { params: Promise<{ server: string }> 
          <Link key={sticker.id + sticker.name} className="flex flex-col items-center justify-center gap-2" href={`https://cdn.discordapp.com/stickers/${sticker.id}.${sticker.format_type === 1 ? "png" : sticker.format_type === 2 ? "apng" : sticker.format_type === 3 ? "lottie" : "gif"}`} target="_blank" rel="noreferrer noopener">
           <Tooltip content={sticker.name || "Unnamed sticker"}>
            <>
-            <Image unoptimized src={`https://cdn.discordapp.com/stickers/${sticker.id}.${sticker.format_type === 1 ? "png" : sticker.format_type === 2 ? "apng" : sticker.format_type === 3 ? "lottie" : "gif"}`} alt={sticker.name} quality={95} width={96} height={96} className="size-24 min-h-24 min-w-24" />
+            <Image unoptimized src={`https://cdn.discordapp.com/stickers/${sticker.id}.${sticker.format_type === 1 ? "png" : sticker.format_type === 2 ? "apng" : sticker.format_type === 3 ? "lottie" : "gif"}`} alt={sticker.name} quality={95} width={96} height={96} className="size-24 shrink-0" />
            </>
           </Tooltip>
          </Link>

@@ -66,7 +66,7 @@ export function Giveaways({ data = [] }: { data: Giveaway[] }) {
      <>
       {value ? (
        <Link className="flex items-center space-x-4" href={`user/${value.discordId}`} passHref>
-        <div className="relative">{value.avatar && <Image src={value.avatar} alt={`${value.name} avatar`} quality={95} width={48} height={48} className="size-12 min-h-12 min-w-12 rounded-full" />}</div>
+        <Image src={`/api/user/avatar/${value.discordId}`} alt={`${value.name} avatar`} quality={95} width={48} height={48} className="size-12 shrink-0 rounded-full" />
         <Tooltip content={`Discord ID: ${value.discordId || "Unknown"}`}>
          <span className="cursor-help text-left font-bold">{value.global_name || value.name}</span>
         </Tooltip>
@@ -79,7 +79,6 @@ export function Giveaways({ data = [] }: { data: Giveaway[] }) {
    },
    {
     Header: "Started",
-    accessor: "time",
     Cell: ({ row }) => (
      <Tooltip content={formatDate(row.original.time.startedAt)}>
       <span className="cursor-help">{formatDuration(Date.now() - new Date(row.original.time.startedAt).getTime())} ago</span>

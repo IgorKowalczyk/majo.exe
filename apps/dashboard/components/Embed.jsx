@@ -6,7 +6,7 @@ import { Icons, iconVariants } from "./Icons";
 const Embed = ({ children, color = "#5865F2", buttons, className }) => {
  return (
   <div className={twMerge("mt-4 flex w-full max-w-[432px] items-start gap-1", className)}>
-   <Image src={dashboardConfig.logo} alt={"Bot logo"} quality={95} width={40} height={40} className="size-10 min-h-10 min-w-10 self-baseline rounded-full" />
+   <Image src={dashboardConfig.logo} alt={"Bot logo"} quality={95} width={40} height={40} className="size-10 shrink-0 self-baseline rounded-full" />
    <div className="flex w-full flex-col">
     <div className="ml-1 flex h-10 flex-row items-center">
      <span className="font-bold">{dashboardConfig.title}</span>{" "}

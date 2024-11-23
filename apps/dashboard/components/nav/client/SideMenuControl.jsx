@@ -21,7 +21,7 @@ export function SideMenuControl() {
          "scale-0": !sideNavVisible,
          "scale-100": sideNavVisible,
         },
-        "absolute top-0 size-6 min-h-6 min-w-6 duration-200"
+        "absolute top-0 size-6 shrink-0 duration-200"
        )}
       />
       <Icons.menu
@@ -30,7 +30,7 @@ export function SideMenuControl() {
          "scale-100": !sideNavVisible,
          "scale-0": sideNavVisible,
         },
-        "absolute top-0 size-6 min-h-6 min-w-6 duration-200"
+        "absolute top-0 size-6 shrink-0 duration-200"
        )}
       />
      </div>

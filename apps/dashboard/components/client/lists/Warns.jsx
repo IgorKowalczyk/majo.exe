@@ -10,7 +10,7 @@ import Image from "@/components/client/shared/Image";
 import { Table } from "@/components/client/shared/Table";
 import { Tooltip } from "@/components/client/shared/Tooltip";
 import { Icons, iconVariants } from "@/components/Icons";
-import { AvatarSkeleton, TextSkeleton } from "@/components/Skeletons";
+import { AvatarSkeleton, Skeleton, TextSkeleton } from "@/components/Skeletons";
 
 export function Warns({ data, showControls = true, showSearch = true }) {
  const columns = useMemo(
@@ -20,7 +20,7 @@ export function Warns({ data, showControls = true, showSearch = true }) {
     accessor: "user",
     Cell: ({ value }) => (
      <div className="flex items-center space-x-4">
-      <div className="relative">{value?.avatar && <Image src={`https://cdn.discordapp.com/avatars/${value?.discordId}/${value?.avatar}.${value?.avatar.startsWith("a_") ? "gif" : "png"}`} alt={`${value?.name} avatar`} quality={95} width={48} height={48} className="size-12 min-h-12 min-w-12 rounded-full" />}</div>
+      <div className="relative">{value?.avatar && <Image src={`https://cdn.discordapp.com/avatars/${value?.discordId}/${value?.avatar}.${value?.avatar.startsWith("a_") ? "gif" : "png"}`} alt={`${value?.name} avatar`} quality={95} width={48} height={48} className="size-12 shrink-0 rounded-full" />}</div>
       <Tooltip content={`Discord ID: ${value?.discordId || "Unknown"}`}>
        <span className="text-left font-bold">
         {value?.global_name || value?.name}
@@ -102,7 +102,7 @@ export function ManageWarns({ data, guildId, showControls = true, showSearch = t
      <>
       {value && value.discordId ? (
        <div className="flex items-center space-x-4">
-        <div className="relative">{value?.avatar && <Image src={`https://cdn.discordapp.com/avatars/${value?.discordId}/${value?.avatar}.${value?.avatar.startsWith("a_") ? "gif" : "png"}`} alt={`${value?.name} avatar`} quality={95} width={48} height={48} className="size-12 min-h-12 min-w-12 rounded-full" />}</div>
+        <div className="relative">{value?.avatar && <Image src={`https://cdn.discordapp.com/avatars/${value?.discordId}/${value?.avatar}.${value?.avatar.startsWith("a_") ? "gif" : "png"}`} alt={`${value?.name} avatar`} quality={95} width={48} height={48} className="size-12 shrink-0 rounded-full" />}</div>
         <Tooltip content={`Discord ID: ${value?.discordId || "Unknown"}`}>
          <span className="text-left font-bold">
           {value?.global_name || value?.name}
@@ -112,7 +112,7 @@ export function ManageWarns({ data, guildId, showControls = true, showSearch = t
        </div>
       ) : (
        <div className="flex flex-row items-center space-x-4">
-        <AvatarSkeleton className="!h-12 !min-h-12 !w-12 !min-w-12 rounded-full" />
+        <Skeleton className="size-12 shrink-0 rounded-full" />
         <TextSkeleton className="w-20" />
        </div>
       )}

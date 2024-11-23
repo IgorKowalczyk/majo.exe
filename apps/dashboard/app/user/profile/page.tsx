@@ -34,7 +34,7 @@ export default async function UserProfilePage() {
       <div className="flex h-[72px] w-auto flex-row justify-between gap-6 bg-background-navbar p-12">
        <div className="ml-[-16px] mt-[-20px] box-content flex items-center rounded-full">
         <Tooltip content="Click to see full size">
-         <Link href={`${user.avatar}?size=2048`} target="_blank" className="size-24 min-h-24 min-w-24">
+         <Link href={`${user.avatar}?size=2048`} target="_blank" className="size-24 shrink-0">
           <Image quality={100} src={user.avatar} alt={user.username} width={95} height={96} className="rounded-full !border-4 !border-solid !border-background-navbar backdrop-blur-sm duration-200 hover:opacity-75" />
          </Link>
         </Tooltip>

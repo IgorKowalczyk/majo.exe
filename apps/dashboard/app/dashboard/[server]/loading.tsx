@@ -81,50 +81,50 @@ export default function Loading() {
      </Block>
 
      <Block className="scrollbar-show">
-      <Header className={twMerge(headerVariants({ variant: "h4" }), "items-start justify-normal opacity-80")}>Leaderboard</Header>
+      <Header className={twMerge(headerVariants({ variant: "h4", margin: "wide" }), "items-start justify-normal opacity-80")}>Leaderboard</Header>
       <Skeleton className="h-64 w-full" />
      </Block>
     </div>
 
     <div className="mt-6 flex flex-col justify-start gap-6 [flex:2_1_0%] lg:mt-0">
      <Block>
-      <Header className={twMerge(headerVariants({ variant: "h4" }), "items-start justify-normal opacity-80")}>
+      <Header className={twMerge(headerVariants({ variant: "h4", margin: "wide" }), "items-start justify-normal opacity-80")}>
        Quick Stats
        <span className="ml-auto font-medium opacity-60">Loading...</span>
       </Header>
       <div className="flex flex-row flex-wrap gap-2">
        <div className="flex items-center">
-        <div className="mr-2 size-3 min-h-3 min-w-3 rounded-full bg-[#81848f]" />
+        <div className="mr-2 size-3 shrink-0 rounded-full bg-[#81848f]" />
         Loading...
        </div>
        <div className="flex items-center">
-        <div className="mr-2 size-3 min-h-3 min-w-3 rounded-full bg-[#22a55b]" />
+        <div className="mr-2 size-3 shrink-0 rounded-full bg-[#22a55b]" />
         Loading...
        </div>
       </div>
      </Block>
      <Block>
-      <Header className={twMerge(headerVariants({ variant: "h4" }), "items-start justify-normal opacity-80")}>
+      <Header className={twMerge(headerVariants({ variant: "h4", margin: "wide" }), "items-start justify-normal opacity-80")}>
        Emojis
        <span className="ml-auto font-medium opacity-60">Loading...</span>
       </Header>
       <div className="flex flex-row flex-wrap gap-4">
        {Array.from({ length: 25 }).map((_, i) => (
         // eslint-disable-next-line @eslint-react/no-array-index-key
-        <Skeleton key={`emoji-${i}`} className="size-8 rounded-md" />
+        <Skeleton key={`emoji-${i}`} className="size-8 shrink-0 rounded-md" />
        ))}
       </div>
      </Block>
 
      <Block>
-      <Header className={twMerge(headerVariants({ variant: "h4" }), "items-start justify-normal opacity-80")}>
+      <Header className={twMerge(headerVariants({ variant: "h4", margin: "wide" }), "items-start justify-normal opacity-80")}>
        Stickers
        <span className="ml-auto font-medium opacity-60">Loading...</span>
       </Header>
       <div className="flex flex-row flex-wrap gap-4">
        {Array.from({ length: 10 }).map((_, i) => (
         // eslint-disable-next-line @eslint-react/no-array-index-key
-        <Skeleton key={`sticker-${i}`} className="size-24 rounded-md" />
+        <Skeleton key={`sticker-${i}`} className="size-24 shrink-0 rounded-md" />
        ))}
       </div>
      </Block>

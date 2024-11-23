@@ -71,7 +71,7 @@ export default async function Page(props: { params: Promise<{ server: string }> 
        return (
         <div key={role.id} className="flex items-center justify-start gap-2 rounded-full border border-neutral-700 px-2 py-1">
          <div
-          className="size-4 min-h-4 min-w-4 rounded-full"
+          className="size-4 shrink-0 rounded-full"
           style={{
            backgroundColor: role.color ? `#${role.color.toString(16)}` : "#000000",
           }}

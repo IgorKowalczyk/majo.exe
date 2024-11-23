@@ -170,13 +170,13 @@ export default async function HomePage() {
        <div className="mt-3">
         <div className="flex flex-row items-center gap-1">
          <div className="ml-5 h-3 w-7 rounded-tl-md border-l-2 border-t-2 border-button-secondary" />
-         <Image src={dashboardConfig.logo} alt="User avatar" quality={95} width={20} height={20} className="size-5 min-h-5 min-w-5 self-baseline rounded-full" />
+         <Image src={dashboardConfig.logo} alt="User avatar" quality={95} width={20} height={20} className="size-5 shrink-0 self-baseline rounded-full" />
          <span className="text-xs">
           <span className="font-bold">Majonez.exe</span> used <span className="font-bold text-accent-primary">/ai</span>
          </span>
         </div>
         <div className="flex items-center gap-1">
-         <Image src={dashboardConfig.logo} alt={`${dashboardConfig.title} avatar`} quality={95} width={40} height={40} className="size-10 min-h-10 min-w-10 self-baseline rounded-full" />
+         <Image src={dashboardConfig.logo} alt={`${dashboardConfig.title} avatar`} quality={95} width={40} height={40} className="size-10 shrink-0 self-baseline rounded-full" />
          <div className="flex flex-col">
           <div className="ml-2 flex h-10 flex-row items-center">
            <span className="font-bold">{dashboardConfig.title}</span>{" "}
@@ -256,7 +256,7 @@ export default async function HomePage() {
        <Header className={headerVariants({ variant: "h2", margin: "normal", effects: "gradient" })}>Giveaways? Why not?</Header>
        <p className="mt-2 max-w-[680px] text-white/70">Want to host a giveaway or a drop? Majo.exe can help you with that! You can easily create and moderate giveaways with few simple commands!</p>
        <div className="my-6 flex items-center gap-1">
-        <Image src={dashboardConfig.logo} alt={`${dashboardConfig.title} avatar`} quality={95} width={40} height={40} className="size-10 min-h-10 min-w-10 self-baseline rounded-full" />
+        <Image src={dashboardConfig.logo} alt={`${dashboardConfig.title} avatar`} quality={95} width={40} height={40} className="size-10 shrink-0 self-baseline rounded-full" />
         <div className="flex flex-col">
          <div className="ml-2 flex flex-row items-center">
           <span className="font-bold">{dashboardConfig.title}</span>{" "}
@@ -277,7 +277,7 @@ export default async function HomePage() {
             <span className="mt-1 block text-sm text-gray-400">React with 🎉 to participate!</span>
            </div>
 
-           <Image src={tadaAnimated.src} alt="Giveaway emoji" quality={95} width={64} height={64} className="size-16 min-h-16 min-w-16" />
+           <Image src={tadaAnimated.src} alt="Giveaway emoji" quality={95} width={64} height={64} className="size-16 shrink-0" />
           </div>
          </div>
          <AddReaction reaction={tada} />

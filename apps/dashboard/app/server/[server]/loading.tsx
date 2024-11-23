@@ -7,7 +7,7 @@ export default function Loading() {
  return (
   <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
    <Header className={twMerge(headerVariants({ variant: "h1" }), "mb-6 justify-normal flex-col")}>
-    <div className="size-24 min-h-24 min-w-24 rounded-full bg-button-secondary" />
+    <div className="size-24 shrink-0 rounded-full bg-button-secondary" />
     <div className="flex flex-col items-center justify-center text-center sm:ml-4">
      <TextSkeleton className="w-32" />
      <TextSkeleton className="w-64 mt-2 opacity-60" />
@@ -17,10 +17,10 @@ export default function Loading() {
    <Block className="!mt-4 flex w-full flex-col gap-4 !p-4 sm:flex-row sm:gap-0">
     <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
      <div className="flex items-center">
-      <div className="mr-2 size-3 min-h-3 min-w-3 rounded-full bg-[#81848f]" />0 members
+      <div className="mr-2 size-3 shrink-0 rounded-full bg-[#81848f]" />0 members
      </div>
      <div className="flex items-center">
-      <div className="mr-2 size-3 min-h-3 min-w-3 rounded-full bg-[#22a55b]" />0 online
+      <div className="mr-2 size-3 shrink-0 rounded-full bg-[#22a55b]" />0 online
      </div>
     </div>
     <span className="mx-auto whitespace-nowrap sm:ml-auto sm:mr-0">Powered by Majo.exe</span>

@@ -24,7 +24,7 @@ export default async function LoginPage(props: { searchParams: Promise<{ error: 
     <Image src="/assets/avatar.png" width={80} height={80} alt="Avatar" className="size-20 min-h-20 min-w-20 rounded-full sm:size-28 sm:min-h-28 sm:min-w-28" quality={90} />
     {searchParams.error ? (
      <div className="mx-4 flex items-center justify-center">
-      <Icons.close className="size-8 min-h-8 min-w-8 text-red-500" />
+      <Icons.close className="size-8 shrink-0 text-red-500" />
      </div>
     ) : (
      <Dots />

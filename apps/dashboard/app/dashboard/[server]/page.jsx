@@ -135,7 +135,7 @@ export default async function OverviewPage(props) {
  return (
   <>
    <div className="mb-4 flex flex-col items-center justify-normal gap-4 sm:flex-row">
-    {guildPreview.icon ? <Image src={`https://cdn.discordapp.com/icons/${guildPreview.id}/${guildPreview.icon}.${guildPreview.icon.startsWith("a_") ? "gif" : "png"}`} alt={guildPreview.name} quality={95} width={64} height={64} className="size-16 min-h-16 min-w-16 rounded-full" /> : <div className="size-16 min-h-16 min-w-16 rounded-full bg-button-secondary" />}
+    {guildPreview.icon ? <Image src={`https://cdn.discordapp.com/icons/${guildPreview.id}/${guildPreview.icon}.${guildPreview.icon.startsWith("a_") ? "gif" : "png"}`} alt={guildPreview.name} quality={95} width={64} height={64} className="size-16 shrink-0 rounded-full" /> : <div className="size-16 shrink-0 rounded-full bg-button-secondary" />}
     <div className="flex flex-col justify-center text-center sm:ml-4 sm:justify-start sm:text-left">
      <Header1 className="mb-0">{guildPreview.name || "Unnamed server"}</Header1>
      <Header5 className="mt-2 text-center opacity-60 sm:text-left">
@@ -302,17 +302,17 @@ export default async function OverviewPage(props) {
       <Header4 className="mb-4 !items-start !justify-normal opacity-80">Quick Stats</Header4>
       <div className="flex flex-row flex-wrap gap-2">
        <div className="flex items-center">
-        <div className="mr-2 size-3 min-h-3 min-w-3 rounded-full bg-[#81848f]" />
+        <div className="mr-2 size-3 shrink-0 rounded-full bg-[#81848f]" />
         {guildPreview.approximate_member_count || "0"} members
        </div>
        <div className="flex items-center">
-        <div className="mr-2 size-3 min-h-3 min-w-3 rounded-full bg-[#22a55b]" />
+        <div className="mr-2 size-3 shrink-0 rounded-full bg-[#22a55b]" />
         {guildPreview.approximate_presence_count || "0"} online
        </div>
       </div>
       {/* {guild.publicPage ? (
        <ButtonSecondary href={`/server/${guild.vanity || serverDownload.id}`} className="mx-auto !flex flex-row whitespace-nowrap sm:ml-auto sm:mr-0" target="_blank" rel="noreferrer noopener">
-        <ArrowTopRightOnSquareIcon className="min-h-5 min-w-5 mr-2 h-5 w-5" aria-hidden="true" role="img" />
+        <ArrowTopRightOnSquareIcon className="shrink-0 mr-2 h-5 w-5" aria-hidden="true" role="img" />
         Server page
        </ButtonSecondary>
       ) : (
@@ -330,7 +330,7 @@ export default async function OverviewPage(props) {
          <Tooltip key={emoji.id + emoji.name} content={emoji.name || "Unnamed emoji"}>
           <>
            <Link className="flex flex-col items-center justify-center gap-2" href={`https://cdn.discordapp.com/emojis/${emoji.id}.${emoji.animated ? "gif" : "png"}`} target="_blank" rel="noreferrer noopener">
-            <Image src={`https://cdn.discordapp.com/emojis/${emoji.id}.${emoji.animated ? "gif" : "png"}`} alt={emoji.name} quality={95} width={32} height={32} className="size-8 min-h-8 min-w-8" />
+            <Image src={`https://cdn.discordapp.com/emojis/${emoji.id}.${emoji.animated ? "gif" : "png"}`} alt={emoji.name} quality={95} width={32} height={32} className="size-8 shrink-0" />
            </Link>
           </>
          </Tooltip>

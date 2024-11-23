@@ -88,11 +88,11 @@ export const Icons = {
 export const iconVariants = cva("", {
  variants: {
   variant: {
-   normal: "size-5 min-h-5 min-w-5",
-   small: "size-4 min-h-4 min-w-4",
-   large: "size-6 min-h-6 min-w-6",
-   extraLarge: "size-8 min-h-8 min-w-8",
-   button: "-ml-1 mr-2 size-5 min-h-5 min-w-5",
+   normal: "size-5 shrink-0",
+   small: "size-4 shrink-0",
+   large: "size-6 shrink-0",
+   extraLarge: "size-8 shrink-0",
+   button: "-ml-1 mr-2 size-5 shrink-0",
   },
  },
  defaultVariants: {

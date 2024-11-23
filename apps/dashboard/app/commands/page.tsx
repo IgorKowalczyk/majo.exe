@@ -56,7 +56,7 @@ export default async function CommandsPage() {
  return (
   <div className="flex w-full flex-col items-center px-8 pb-8 pt-16 antialiased md:p-16">
    <div className="flex flex-col justify-center gap-4">
-    <Image src={dashboardConfig.logo} alt="Majo.exe logo" quality={100} width={112} height={112} className="mx-auto size-28 min-h-28 min-w-28 rounded-full" />
+    <Image src={dashboardConfig.logo} alt="Majo.exe logo" quality={100} width={112} height={112} className="mx-auto size-28 shrink-0 rounded-full" />
     <Header className={twMerge(headerVariants({ variant: "h1", alignment: "center", effects: "gradient" }))}>Majo.exe Commands</Header>
     <p className="max-w-3xl text-center text-xl text-white/50">
      <Balancer>

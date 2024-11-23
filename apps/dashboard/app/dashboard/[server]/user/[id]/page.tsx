@@ -155,7 +155,7 @@ export default async function User(props: { params: Promise<{ server: string; id
      <div className="flex h-[72px] w-auto flex-row justify-between gap-6 bg-background-navbar p-12">
       <div className="ml-[-16px] mt-[-20px] w-full box-content flex items-center rounded-full">
        <Tooltip content="Click to see full size">
-        <Link href={`/api/user/avatar/${discordUser.id}`} target="_blank" className="size-24 min-h-24 min-w-24 relative">
+        <Link href={`/api/user/avatar/${discordUser.id}`} target="_blank" className="size-24 shrink-0 relative">
          <Image quality={100} src={`/api/user/avatar/${discordUser.id}`} alt={`${discordUser.global_name || discordUser.username} Avatar`} width={96} height={96} className="rounded-full !border-4 !border-solid !border-background-navbar duration-200 hover:opacity-75" />
          {discordUser.avatar_decoration_data ? <Image quality={100} src={`/api/user/avatar-decoration/${discordUser.id}`} alt={`${discordUser.global_name || discordUser.username} Avatar decoration`} width={96} height={96} className="absolute top-0 left-0 rounded-full" /> : null}
         </Link>
@@ -204,21 +204,21 @@ export default async function User(props: { params: Promise<{ server: string; id
       <div className="flex flex-col items-center justify-center gap-4 sm:flex-row sm:justify-start">
        <Tooltip content="Total gained XP">
         <div className="flex cursor-help items-center">
-         <div className="mr-2 size-3 min-h-3 min-w-3 rounded-full bg-[#81848f]" />
+         <div className="mr-2 size-3 shrink-0 rounded-full bg-[#81848f]" />
          {formatNumber(userXP || 0)} XP ({Math.floor(0.1 * Math.sqrt(userXP || 0))} level)
         </div>
        </Tooltip>
 
        <Tooltip content="Total reputation given by other users">
         <div className="flex cursor-help items-center">
-         <div className="mr-2 size-3 min-h-3 min-w-3 rounded-full bg-[#81848f]" />
+         <div className="mr-2 size-3 shrink-0 rounded-full bg-[#81848f]" />
          {formatNumber(userRepuation || 0)} Reputation
         </div>
        </Tooltip>
 
        <Tooltip content="Total warns given by moderators">
         <div className="flex cursor-help items-center">
-         <div className="mr-2 size-3 min-h-3 min-w-3 rounded-full bg-[#81848f]" />
+         <div className="mr-2 size-3 shrink-0 rounded-full bg-[#81848f]" />
          {formatNumber(warns.length || 0)} warns
         </div>
        </Tooltip>

@@ -6,15 +6,16 @@ import { redirect } from "next/navigation";
 import { ButtonPrimary } from "@/components/Buttons";
 import { ButtonSecondary } from "@/components/Buttons";
 import Image from "@/components/client/shared/Image";
-import { Header1, Header2, Header3 } from "@/components/Headers";
+import Header, { headerVariants } from "@/components/Headers";
 import { Icons, iconVariants } from "@/components/Icons";
+import { twMerge } from "tailwind-merge";
 
 export default async function Dashboard() {
  const session = await getSession();
  if (!session || !session.access_token) redirect("/auth/login");
 
  const data = (await getMemberGuilds(session.access_token)) || [];
- if (!data || data.error) return redirect("/auth/error?error=We%20were%20unable%20to%20get%20a%20list%20of%20your%20servers,%20if%20the%20problem%20persists%20log%20out%20and%20log%20back%20in.");
+ if (!data) return redirect("/auth/error?error=We%20were%20unable%20to%20get%20a%20list%20of%20your%20servers,%20if%20the%20problem%20persists%20log%20out%20and%20log%20back%20in.");
 
  const servers =
   (await Promise.all(
@@ -31,20 +32,20 @@ export default async function Dashboard() {
  return (
   <div className="flex w-full flex-col items-center px-8 pb-8 pt-16 antialiased md:p-16">
    <div className="flex flex-col justify-center">
-    <Header1 className="!justify-center">
-     <Icons.dashboard className="size-10 min-h-10 min-w-10" />
+    <Header className={twMerge(headerVariants({ variant: "h1", alignment: "center", margin: "normal" }))}>
+     <Icons.dashboard className="size-10 shrink-0" />
      Dashboard
-    </Header1>
-    <Header2 className="!block text-center text-xl font-normal text-white/50">
+    </Header>
+    <p className="mb-4 text-center text-base md:text-xl text-white/50">
      You can only add the bot to servers you have the <code>Manage Server</code> permission in.
-    </Header2>
+    </p>
     <div className="mt-4 flex flex-row flex-wrap justify-center gap-4 sm:flex-col">
      {servers && servers.length > 0 ? (
       servers.map((server) => (
        <div key={server.id}>
         <div className="hidden flex-row items-center justify-start gap-4 sm:flex">
-         {server.icon ? <Image src={`https://cdn.discordapp.com/icons/${server.id}/${server.icon}.${server.icon.startsWith("a_") ? "gif" : "png"}`} alt={server.name} quality={95} width={64} height={64} className="size-16 min-h-16 min-w-16 rounded-full" /> : <div className="size-16 min-h-16 min-w-16 rounded-full bg-button-secondary" />}
-         <Header3 className="text-center">{server.name}</Header3>
+         {server.icon ? <Image src={`https://cdn.discordapp.com/icons/${server.id}/${server.icon}.${server.icon.startsWith("a_") ? "gif" : "png"}`} alt={server.name} quality={95} width={64} height={64} className="size-16 shrink-0 rounded-full" /> : <div className="size-16 shrink-0 rounded-full bg-button-secondary" />}
+         <Header className={twMerge(headerVariants({ variant: "h3" }))}>{server.name}</Header>
          <>
           {server.bot ? (
            <ButtonPrimary href={`/dashboard/${server.id}`} className="ml-auto">
@@ -70,7 +71,7 @@ export default async function Dashboard() {
              {
               "opacity-20": !server.bot,
              },
-             "size-24 min-h-24 min-w-24 rounded-md"
+             "size-24 shrink-0 rounded-md"
             )}
            />
           ) : (
@@ -79,7 +80,7 @@ export default async function Dashboard() {
              {
               "opacity-20": !server.bot,
              },
-             "size-24 min-h-24 min-w-24 rounded-md bg-button-secondary"
+             "size-24 shrink-0 rounded-md bg-button-secondary"
             )}
            />
           )}
@@ -89,7 +90,7 @@ export default async function Dashboard() {
       ))
      ) : (
       <div className="flex flex-col items-center justify-center gap-4">
-       <Header3 className="text-center">You don't have any servers!</Header3>
+       <Header className={twMerge(headerVariants({ variant: "h3", alignment: "center" }))}>You don't have any servers!</Header>
        <ButtonPrimary href="/api/invite">
         <Icons.plus className={iconVariants({ variant: "button" })} /> Add bot
        </ButtonPrimary>

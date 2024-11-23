@@ -71,7 +71,7 @@ const ChartTooltip = ({ active, payload, label, categoryColors, valueFormatter }
      {payload.map(({ value, name }) => (
       <div key={`chart-tooltip-${name}-${value}`} className="flex items-center justify-between space-x-2">
        <div className="flex items-center space-x-2">
-        <span className="size-4 min-h-4 min-w-4 shrink-0 rounded-full border border-neutral-800 bg-accent-primary shadow-md" />
+        <span className="size-4 shrink-0 shrink-0 rounded-full border border-neutral-800 bg-accent-primary shadow-md" />
         <p className="whitespace-nowrap text-right text-white">{name}</p>
        </div>
        <p className="whitespace-nowrap text-right font-medium tabular-nums text-white">{valueFormatter(value)}</p>

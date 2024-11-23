@@ -1,28 +1,29 @@
-import { Header1, Header2 } from "@/components/Headers";
+import Header, { headerVariants } from "@/components/Headers";
 import { Icons } from "@/components/Icons";
-import { AvatarSkeleton, TextSkeleton, ButtonSkeleton } from "@/components/Skeletons";
+import { Skeleton } from "@/components/Skeletons";
+import { twMerge } from "tailwind-merge";
 
 export default function Loading() {
  return (
   <div className="flex w-full flex-col items-center px-8 pb-8 pt-16 antialiased md:p-16">
    <div className="flex flex-col justify-center">
-    <Header1 className="!justify-center">
-     <Icons.dashboard className="size-10 min-h-10 min-w-10" />
+    <Header className={twMerge(headerVariants({ variant: "h1", alignment: "center", margin: "normal" }))}>
+     <Icons.dashboard className="size-10 shrink-0" />
      Dashboard
-    </Header1>
-    <Header2 className="!block text-center text-xl font-normal text-white/50">
+    </Header>
+    <p className="mb-4 text-center text-base md:text-xl text-white/50">
      You can only add the bot to servers you have the <code>Manage Server</code> permission in.
-    </Header2>
+    </p>
     <div className="mt-4 flex flex-row flex-wrap justify-center gap-4 sm:flex-col">
      {[...Array(10)].map((_, i) => (
       // eslint-disable-next-line @eslint-react/no-array-index-key
       <div key={`skeleton-${i}`}>
        <div className="hidden flex-row items-center justify-start gap-4 sm:flex">
-        <AvatarSkeleton />
-        <TextSkeleton className="!h-7 w-full" />
-        <ButtonSkeleton className="ml-auto" />
+        <Skeleton className="size-16 shrink-0 rounded-full" />
+        <Skeleton className="h-7 w-full" />
+        <Skeleton className="ml-auto h-10 w-32" />
        </div>
-       <AvatarSkeleton className="!h-24 !w-24 !rounded-md sm:hidden" />
+       <Skeleton className="size-24 rounded-md sm:hidden" />
       </div>
      ))}
     </div>
