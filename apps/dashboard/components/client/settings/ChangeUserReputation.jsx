@@ -4,7 +4,7 @@ import { isNumeric } from "@majoexe/util/functions/util";
 import clsx from "clsx";
 import { useState } from "react";
 import { toast } from "sonner";
-import { ButtonPrimary } from "@/components/Buttons";
+import { Button } from "@/components/Buttons";
 import { Icons, iconVariants } from "@/components/Icons";
 import { InputWithIcon } from "@/components/Input";
 
@@ -81,7 +81,7 @@ export function ChangeUserReputation({ userId, guildId, userReputation = 0 }) {
      "w-fit"
     )}
    />
-   <ButtonPrimary onClick={handleReputation} disabled={loading || error}>
+   <Button variant="primary" onClick={handleReputation} disabled={loading || error}>
     {loading ? (
      <>
       <Icons.refresh className={iconVariants({ variant: "button", className: "animate-spin" })} /> Updating...
@@ -91,7 +91,7 @@ export function ChangeUserReputation({ userId, guildId, userReputation = 0 }) {
       <Icons.Check className={iconVariants({ variant: "button" })} /> Update
      </>
     )}
-   </ButtonPrimary>
+   </Button>
   </form>
  );
 }

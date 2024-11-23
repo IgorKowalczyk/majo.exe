@@ -1,5 +1,5 @@
 import { Block } from "@/components/Block";
-import { ButtonPrimary } from "@/components/Buttons";
+import { Button } from "@/components/Buttons";
 import Header, { headerVariants } from "@/components/Headers";
 import { Icons, iconVariants } from "@/components/Icons";
 import { Skeleton } from "@/components/Skeletons";
@@ -30,10 +30,10 @@ export default function Loading() {
      <Skeleton className="h-[30px] w-12" />
     </div>
     <Skeleton className="h-96 w-full" />
-    <ButtonPrimary className="mt-4" disabled>
+    <Button variant="primary" className="mt-4" disabled>
      <Icons.Check className={iconVariants({ variant: "button" })} />
      Save
-    </ButtonPrimary>
+    </Button>
    </Block>
 
    <Block className="mt-4 !overflow-x-visible">
@@ -53,10 +53,10 @@ export default function Loading() {
      <Skeleton className="h-[30px] w-12" />
     </div>
     <Skeleton className="h-96 w-full" />
-    <ButtonPrimary className="mt-4" disabled>
+    <Button variant="primary" className="mt-4" disabled>
      <Icons.Check className={iconVariants({ variant: "button" })} />
      Save
-    </ButtonPrimary>
+    </Button>
    </Block>
   </>
  );

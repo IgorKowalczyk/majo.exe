@@ -2,11 +2,12 @@
 
 import { signIn } from "next-auth/react";
 import { Icons, iconVariants } from "../Icons";
-import { ButtonPrimary } from "@/components/Buttons";
+import { Button } from "@/components/Buttons";
 
 export function DiscordLogin() {
  return (
-  <ButtonPrimary
+  <Button
+   variant="primary"
    onClick={(e) => {
     e.preventDefault();
     signIn("discord", { scope: "session identity guilds" });
@@ -14,6 +15,6 @@ export function DiscordLogin() {
   >
    <Icons.discord className={iconVariants({ variant: "button" })} />
    Login with Discord
-  </ButtonPrimary>
+  </Button>
  );
 }

@@ -3,7 +3,7 @@
 import clsx from "clsx";
 import { useState } from "react";
 import { toast } from "sonner";
-import { ButtonPrimary } from "@/components/Buttons";
+import { Button } from "@/components/Buttons";
 import Switch from "@/components/client/shared/Switch";
 import { Icons, iconVariants } from "@/components/Icons";
 import { Input } from "@/components/Input";
@@ -162,9 +162,9 @@ export function EnablePublicDashboard({ enabled, serverId, vanityURL }) {
        {process.env.NEXT_PUBLIC_URL}/server/
       </div>
      </div>
-     <ButtonPrimary onClick={(e) => updateVanity(e)} disabled={disabled || vanityError || vanity.length === 0 || buttonText === "Updating..."} className="mx-auto font-normal md:mx-0">
+     <Button variant="primary" onClick={(e) => updateVanity(e)} disabled={disabled || vanityError || vanity.length === 0 || buttonText === "Updating..."} className="mx-auto font-normal md:mx-0">
       {buttonText === "Updating..." ? <Icons.refresh className={iconVariants({ variant: "button", className: "animate-spin" })} /> : <Icons.Check className={iconVariants({ variant: "button" })} />} {buttonText}
-     </ButtonPrimary>
+     </Button>
     </div>
    </div>
    {vanityError && (

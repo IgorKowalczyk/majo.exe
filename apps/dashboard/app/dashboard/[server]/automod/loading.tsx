@@ -1,5 +1,5 @@
 import { Block } from "@/components/Block";
-import { ButtonPrimary } from "@/components/Buttons";
+import { Button } from "@/components/Buttons";
 import Header, { Header3, headerVariants } from "@/components/Headers";
 import "tippy.js/dist/backdrop.css";
 import "tippy.js/animations/shift-away.css";
@@ -85,12 +85,10 @@ export default function Loading() {
       </div>
      </Block>
 
-     <ButtonPrimary className="mt-4" disabled={true}>
-      <>
-       <Icons.Check className={iconVariants({ variant: "button" })} />
-       Save
-      </>
-     </ButtonPrimary>
+     <Button variant="primary" className="mt-4" disabled={true}>
+      <Icons.Check className={iconVariants({ variant: "button" })} />
+      Save
+     </Button>
     </div>
    </Block>
 
@@ -161,12 +159,10 @@ export default function Loading() {
       </div>
      </Block>
 
-     <ButtonPrimary className="mt-4" disabled={true}>
-      <>
-       <Icons.Check className={iconVariants({ variant: "button" })} />
-       Save
-      </>
-     </ButtonPrimary>
+     <Button variant="primary" className="mt-4" disabled={true}>
+      <Icons.Check className={iconVariants({ variant: "button" })} />
+      Save
+     </Button>
     </div>
    </Block>
    <Block className="mb-4">

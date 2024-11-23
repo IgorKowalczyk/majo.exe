@@ -5,7 +5,7 @@ import clsx from "clsx";
 import { useState } from "react";
 import { toast } from "sonner";
 import { Block } from "@/components/Block";
-import { ButtonPrimary } from "@/components/Buttons";
+import { Button } from "@/components/Buttons";
 import { ChannelsSelect } from "@/components/client/shared/ChannelsSelect";
 import Switch from "@/components/client/shared/Switch";
 import { Tooltip } from "@/components/client/shared/Tooltip";
@@ -218,7 +218,7 @@ export function ChangeMessages({ serverId, enabled, title, description, existing
       </div>
      </div>
     </Block>
-    <ButtonPrimary className="mt-4" onClick={() => save(false)} disabled={!messageChannel || loading}>
+    <Button variant="primary" className="mt-4" onClick={() => save(false)} disabled={!messageChannel || loading}>
      {loading ? (
       <>
        <Icons.refresh className={iconVariants({ variant: "button", className: "animate-spin" })} />
@@ -230,7 +230,7 @@ export function ChangeMessages({ serverId, enabled, title, description, existing
        Save
       </>
      )}
-    </ButtonPrimary>
+    </Button>
    </div>
   </>
  );

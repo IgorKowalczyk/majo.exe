@@ -7,7 +7,7 @@ import Link from "next/link";
 import { redirect } from "next/navigation";
 import { notFound } from "next/navigation";
 import { Block } from "@/components/Block";
-import { ButtonPrimary } from "@/components/Buttons";
+import { buttonVariants } from "@/components/Buttons";
 import { ManageWarns } from "@/components/client/lists/Warns";
 import { ChangeUserReputation } from "@/components/client/settings/ChangeUserReputation";
 import { ResetUserXP } from "@/components/client/settings/ResetUserXP";
@@ -195,9 +195,9 @@ export default async function User(props: { params: Promise<{ server: string; id
        </div>
       </div>
       <div className="mb-[-14px] hidden w-full items-end justify-end lg:flex">
-       <ButtonPrimary href={`https://discord.com/users/${user.discordId}`} target="_blank">
+       <Link href={`https://discord.com/users/${user.discordId}`} className={twMerge(buttonVariants({ variant: "primary" }))} target="_blank">
         <Icons.ExternalLink className={iconVariants({ variant: "button" })} /> Discord profile
-       </ButtonPrimary>
+       </Link>
       </div>
      </div>
      <div className="m-[8px_16px_16px] rounded-lg border border-neutral-800 bg-background-menu-button/70 p-4">

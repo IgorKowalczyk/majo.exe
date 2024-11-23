@@ -4,7 +4,7 @@ import clsx from "clsx";
 import { useState } from "react";
 import { toast } from "sonner";
 import { Block } from "@/components/Block";
-import { ButtonPrimary } from "@/components/Buttons";
+import { Button } from "@/components/Buttons";
 import { ChannelsSelect } from "@/components/client/shared/ChannelsSelect";
 import { RolesSelect } from "@/components/client/shared/RolesSelect";
 import Switch from "@/components/client/shared/Switch";
@@ -203,7 +203,7 @@ export function AntiInvite({ serverId, enabled, existingActions, existingExemptR
      )}
     </Block>
 
-    <ButtonPrimary className="mt-4" onClick={() => save(false)} disabled={!isEnabled || loading || !actions || actions.length === 0}>
+    <Button variant="primary" className="mt-4" onClick={() => save(false)} disabled={!isEnabled || loading || !actions || actions.length === 0}>
      {loading ? (
       <>
        <Icons.refresh className={iconVariants({ variant: "button", className: "animate-spin" })} />
@@ -215,7 +215,7 @@ export function AntiInvite({ serverId, enabled, existingActions, existingExemptR
        Save
       </>
      )}
-    </ButtonPrimary>
+    </Button>
    </div>
   </>
  );

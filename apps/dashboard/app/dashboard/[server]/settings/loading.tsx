@@ -1,5 +1,5 @@
 import { Block } from "@/components/Block";
-import { Button, ButtonPrimary } from "@/components/Buttons";
+import { Button } from "@/components/Buttons";
 import Header, { headerVariants } from "@/components/Headers";
 import { Icons, iconVariants } from "@/components/Icons";
 import { Skeleton } from "@/components/Skeletons";
@@ -98,10 +98,10 @@ export default function Loading() {
     <p className="mt-2 leading-none text-white/70">
      Download all server data in a <code>.json</code> file. This includes logs, settings, moderation and more.
     </p>
-    <ButtonPrimary className="mt-4 w-fit" disabled={true}>
+    <Button variant="primary" className="mt-4 w-fit" disabled={true}>
      <Icons.Download className={iconVariants({ variant: "button" })} />
      Download data
-    </ButtonPrimary>
+    </Button>
    </Block>
    <Block theme="danger" className="mt-4">
     <Header className={twMerge(headerVariants({ variant: "h2" }))}>

@@ -5,8 +5,9 @@ import clsx from "clsx";
 import Link from "next/link";
 import { useSelectedLayoutSegment, usePathname } from "next/navigation";
 import { Icons } from "./Icons";
-import { ButtonPrimary } from "@/components/Buttons";
+import { buttonVariants } from "@/components/Buttons";
 import Image from "@/components/client/shared/Image";
+import { twMerge } from "tailwind-merge";
 
 export function Footer() {
  const segment = useSelectedLayoutSegment();
@@ -49,10 +50,10 @@ export function Footer() {
           by clicking here
          </Link>
          .
-         <ButtonPrimary className="mt-3 w-fit" href="https://majoexe.xyz/invite">
+         <Link className={twMerge(buttonVariants({ variant: "primary" }), "mt-3 w-fit")} href="https://majoexe.xyz/invite">
           <Icons.Sparkles className="mr-2 size-5" />
           Invite original Majo.exe
-         </ButtonPrimary>
+         </Link>
         </div>
        </div>
       ) : (

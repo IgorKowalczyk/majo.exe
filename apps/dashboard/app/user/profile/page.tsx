@@ -3,7 +3,7 @@ import { getSession } from "lib/session";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import { Block } from "@/components/Block";
-import { ButtonPrimary } from "@/components/Buttons";
+import { buttonVariants } from "@/components/Buttons";
 import DeleteAccount from "@/components/client/settings/DeleteUserData";
 import Image from "@/components/client/shared/Image";
 import { Tooltip } from "@/components/client/shared/Tooltip";
@@ -13,9 +13,10 @@ import { Icons, iconVariants } from "@/components/Icons";
 import { Account, DefaultSession } from "next-auth";
 import { DiscordProfile } from "next-auth/providers/discord";
 import { twMerge } from "tailwind-merge";
+
 export const revalidate = 3600; // 1 hour
 
-export default async function UserProfilePage() {
+export default async function Page() {
  const user = (await getSession()) as DefaultSession & Account & DiscordProfile;
  if (!user) return redirect("/auth/login");
 
@@ -67,9 +68,9 @@ export default async function UserProfilePage() {
         </div>
        </div>
        <div className="mb-[-14px] hidden w-full items-end justify-end md:flex">
-        <ButtonPrimary href={`https://discord.com/users/${user.id}`} target="_blank">
+        <Link href={`https://discord.com/users/${user.id}`} className={twMerge(buttonVariants({ variant: "primary" }))} target="_blank">
          <Icons.ExternalLink className={iconVariants({ variant: "button" })} /> Discord profile
-        </ButtonPrimary>
+        </Link>
        </div>
       </div>
       <div className="m-[8px_16px_16px] rounded-lg border border-neutral-800 bg-background-menu-button/70 p-4">Note: By default your banner and accent color are taken from Discord</div>
@@ -84,10 +85,10 @@ export default async function UserProfilePage() {
      <p className="mt-2 leading-none text-white/70">
       Download all your data in a <code>.json</code> file. This includes your profile, data from all servers you are in and more.
      </p>
-     <ButtonPrimary className="mt-4 w-fit" href="/api/user/download" target="_blank">
+     <Link href="/api/user/download" className={twMerge(buttonVariants({ variant: "primary" }), "mt-4 w-fit")} target="_blank">
       <Icons.Download className={iconVariants({ variant: "button" })} />
       Download data
-     </ButtonPrimary>
+     </Link>
     </div>
 
     <Block theme="danger">

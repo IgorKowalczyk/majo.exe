@@ -5,7 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useContext } from "react";
 import { VisibilityContext } from "./VisibilityContext";
-import { ButtonPrimary, buttonVariants } from "@/components/Buttons";
+import { buttonVariants } from "@/components/Buttons";
 import { Icons, iconVariants } from "@/components/Icons";
 import { twMerge } from "tailwind-merge";
 

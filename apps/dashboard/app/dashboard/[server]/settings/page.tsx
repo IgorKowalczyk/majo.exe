@@ -6,13 +6,14 @@ import { getSession } from "lib/session";
 import { redirect } from "next/navigation";
 import { notFound } from "next/navigation";
 import { Block } from "@/components/Block";
-import { ButtonPrimary } from "@/components/Buttons";
+import { buttonVariants } from "@/components/Buttons";
 import { ChangeEmbedColor } from "@/components/client/settings/ChangeEmbedColor";
 import DeleteServerData from "@/components/client/settings/DeleteServerData";
 import { EnablePublicDashboard } from "@/components/client/settings/EnablePublicDashboard";
 import Header, { headerVariants } from "@/components/Headers";
 import { Icons, iconVariants } from "@/components/Icons";
 import { twMerge } from "tailwind-merge";
+import Link from "next/link";
 
 export default async function Page(props: { params: Promise<{ server: string }> }) {
  const params = await props.params;
@@ -137,10 +138,10 @@ export default async function Page(props: { params: Promise<{ server: string }> 
     <p className="mt-2 leading-none text-white/70">
      Download all server data in a <code>.json</code> file. This includes logs, settings, moderation and more.
     </p>
-    <ButtonPrimary className="mt-4 w-fit" href={`/api/settings/download/${serverDownload.id}`} target="_blank">
+    <Link href={`/api/settings/download/${serverDownload.id}`} className={twMerge(buttonVariants({ variant: "primary" }), "mt-4 w-fit")} target="_blank">
      <Icons.Download className={iconVariants({ variant: "button" })} />
      Download data
-    </ButtonPrimary>
+    </Link>
    </Block>
    <Block theme="danger" className="mt-4">
     <Header className={twMerge(headerVariants({ variant: "h2" }))}>
