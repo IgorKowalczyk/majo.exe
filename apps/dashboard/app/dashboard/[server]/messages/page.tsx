@@ -8,7 +8,7 @@ import { Block, ErrorBlock } from "@/components/Block";
 import { ChangeCustomMessages } from "@/components/client/settings/ChangeCustomMessages";
 import Header, { headerVariants } from "@/components/Headers";
 import { Icons, iconVariants } from "@/components/Icons";
-import { twMerge } from "tailwind-merge";
+import { cn } from "@/lib/utils";
 
 export const metadata = {
  title: "Custom Messages",
@@ -62,7 +62,7 @@ export default async function Page(props: { params: Promise<{ server: string }> 
 
  return (
   <>
-   <Header className={twMerge(headerVariants({ variant: "h1", margin: "normal" }))}>
+   <Header className={cn(headerVariants({ variant: "h1", margin: "normal" }))}>
     <Icons.messageCode className={iconVariants({ variant: "extraLarge" })} />
     Custom messages
    </Header>

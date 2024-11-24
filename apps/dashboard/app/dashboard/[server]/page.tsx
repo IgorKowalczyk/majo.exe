@@ -1,7 +1,7 @@
 import prismaClient from "@majoexe/database";
 import { getGuild, getGuildPreview, getGuildFromMemberGuilds } from "@majoexe/util/functions/guild";
 import { fillMissingDates, sumArray } from "@majoexe/util/functions/util";
-import clsx from "clsx";
+import { cn } from "@/lib/utils";
 import { getSession } from "lib/session";
 import Link from "next/link";
 import { redirect } from "next/navigation";
@@ -15,7 +15,7 @@ import { Tooltip } from "@/components/client/shared/Tooltip";
 import Header, { headerVariants } from "@/components/Headers";
 import { Icons, iconVariants } from "@/components/Icons";
 import { buttonVariants } from "@/components/Buttons";
-import { twMerge } from "tailwind-merge";
+import { cn } from "@/lib/utils";
 
 export const metadata = {
  title: "Server Overview",
@@ -133,7 +133,7 @@ export default async function Page(props: { params: Promise<{ server: string }> 
    <div className="mb-4 flex flex-col items-center justify-normal gap-2 sm:flex-row">
     {guildPreview.icon ? <Image src={`https://cdn.discordapp.com/icons/${guildPreview.id}/${guildPreview.icon}.${guildPreview.icon.startsWith("a_") ? "gif" : "png"}`} alt={guildPreview.name} quality={95} width={64} height={64} className="size-16 shrink-0 rounded-full" /> : <div className="size-16 shrink-0 rounded-full bg-button-secondary" />}
     <div className="flex flex-col justify-center text-center sm:ml-4 sm:justify-start sm:text-left">
-     <Header className={twMerge(headerVariants({ variant: "h1" }))}>{guildPreview.name || "Unnamed server"}</Header>
+     <Header className={cn(headerVariants({ variant: "h1" }))}>{guildPreview.name || "Unnamed server"}</Header>
      <p className="text-center text-base md:text-xl opacity-60 sm:text-left">{guildPreview.description || "This server has no description, maybe you should add one?"}</p>
     </div>
    </div>
@@ -144,7 +144,7 @@ export default async function Page(props: { params: Promise<{ server: string }> 
       <div className="flex flex-row items-center gap-4">
        <Icons.userAdd className={iconVariants({ variant: "extraLarge" })} />
        <div className="flex flex-col">
-        <Header className={twMerge(headerVariants({ variant: "h4" }), "justify-start whitespace-nowrap")}>
+        <Header className={cn(headerVariants({ variant: "h4" }), "justify-start whitespace-nowrap")}>
          New members
          <span className="rounded-md bg-accent-primary px-2 text-sm font-normal text-white">+{newMembers}</span>
         </Header>
@@ -162,7 +162,7 @@ export default async function Page(props: { params: Promise<{ server: string }> 
       <div className="flex flex-row items-center gap-4">
        <Icons.commentAdd className={iconVariants({ variant: "extraLarge" })} />
        <div className="flex flex-col">
-        <Header className={twMerge(headerVariants({ variant: "h4" }), "justify-start whitespace-nowrap")}>
+        <Header className={cn(headerVariants({ variant: "h4" }), "justify-start whitespace-nowrap")}>
          Messages sent
          <span className="rounded-md bg-accent-primary px-2 text-sm font-normal text-white">+{newMessages}</span>
         </Header>
@@ -180,7 +180,7 @@ export default async function Page(props: { params: Promise<{ server: string }> 
       <div className="flex flex-row items-center gap-4">
        <Icons.userMinus className={iconVariants({ variant: "extraLarge" })} />
        <div className="flex flex-col">
-        <Header className={twMerge(headerVariants({ variant: "h4" }), "justify-start whitespace-nowrap")}>
+        <Header className={cn(headerVariants({ variant: "h4" }), "justify-start whitespace-nowrap")}>
          Members left
          <span className="rounded-md bg-accent-primary px-2 text-sm font-normal text-white">-{membersLeft}</span>
         </Header>
@@ -197,12 +197,12 @@ export default async function Page(props: { params: Promise<{ server: string }> 
    <div className="mt-6 block gap-6 lg:flex lg:items-start">
     <div className="flex flex-col justify-start gap-6 overflow-x-scroll [flex:3_1_0]">
      <Block>
-      <Header className={twMerge(headerVariants({ variant: "h4", margin: "normal" }), "block")}>
+      <Header className={cn(headerVariants({ variant: "h4", margin: "normal" }), "block")}>
        <span className="flex flex-row flex-wrap items-center gap-2">
         <Icons.Gauge className={iconVariants({ variant: "normal", className: "!stroke-2" })} />
         <span className="opacity-80">Server Score: </span>
         <span
-         className={clsx({
+         className={cn({
           "text-rose-500": guildScore <= 10,
           "text-orange-500": guildScore > 10 && guildScore <= 30,
           "text-yellow-500": guildScore > 30 && guildScore <= 60,
@@ -220,7 +220,7 @@ export default async function Page(props: { params: Promise<{ server: string }> 
 
       {guildScore !== 100 && (
        <>
-        <Header className={twMerge(headerVariants({ variant: "h4", margin: "wide" }), "items-start pt-4 justify-normal opacity-80")}>
+        <Header className={cn(headerVariants({ variant: "h4", margin: "wide" }), "items-start pt-4 justify-normal opacity-80")}>
          <Icons.Lightbulb className={iconVariants({ variant: "normal", className: "!stroke-2" })} />
          Ways to improve your score:
         </Header>
@@ -287,16 +287,16 @@ export default async function Page(props: { params: Promise<{ server: string }> 
      </Block>
 
      <Block className="scrollbar-show">
-      <Header className={twMerge(headerVariants({ variant: "h4", margin: "wide" }), "items-start justify-normal opacity-80")}>Leaderboard</Header>
+      <Header className={cn(headerVariants({ variant: "h4", margin: "wide" }), "items-start justify-normal opacity-80")}>Leaderboard</Header>
       {data.length > 0 ? <Leaderboard data={data} showSearch={false} showControls={false} /> : <span className="opacity-50">No users found. Maybe you should try talking in chat?</span>}
      </Block>
     </div>
     <div className="mt-6 flex flex-col justify-start gap-6 [flex:2_1_0%] lg:mt-0">
      <Block>
-      <Header className={twMerge(headerVariants({ variant: "h4", margin: "wide" }), "items-start justify-normal opacity-80")}>
+      <Header className={cn(headerVariants({ variant: "h4", margin: "wide" }), "items-start justify-normal opacity-80")}>
        Quick Stats
        {guild.publicPage ? (
-        <Link href={`/server/${guild.vanity || serverDownload.id}`} target="_blank" rel="noreferrer noopener" className={twMerge(buttonVariants({ variant: "primary" }), "mx-auto font-normal w-fit !flex flex-row whitespace-nowrap text-base sm:ml-auto sm:mr-0")}>
+        <Link href={`/server/${guild.vanity || serverDownload.id}`} target="_blank" rel="noreferrer noopener" className={cn(buttonVariants({ variant: "primary" }), "mx-auto font-normal w-fit !flex flex-row whitespace-nowrap text-base sm:ml-auto sm:mr-0")}>
          <Icons.ExternalLink className={iconVariants({ variant: "button" })} aria-hidden="true" role="img" />
          Server page
         </Link>
@@ -314,7 +314,7 @@ export default async function Page(props: { params: Promise<{ server: string }> 
       </div>
      </Block>
      <Block>
-      <Header className={twMerge(headerVariants({ variant: "h4", margin: "wide" }), "items-start justify-normal opacity-80")}>
+      <Header className={cn(headerVariants({ variant: "h4", margin: "wide" }), "items-start justify-normal opacity-80")}>
        Emojis
        <span className="ml-auto font-medium opacity-60">{guildPreview.emojis.length || "0"}</span>
       </Header>
@@ -336,7 +336,7 @@ export default async function Page(props: { params: Promise<{ server: string }> 
      </Block>
 
      <Block>
-      <Header className={twMerge(headerVariants({ variant: "h4", margin: "wide" }), "items-start justify-normal opacity-80")}>
+      <Header className={cn(headerVariants({ variant: "h4", margin: "wide" }), "items-start justify-normal opacity-80")}>
        Stickers
        <span className="ml-auto font-medium opacity-60">{guildPreview.stickers.length || "0"}</span>
       </Header>

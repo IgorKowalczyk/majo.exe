@@ -1,4 +1,4 @@
-import { twMerge } from "tailwind-merge";
+import { cn } from "@/lib/utils";
 import React, { ReactNode, HTMLAttributes } from "react";
 import { cva, type VariantProps } from "class-variance-authority";
 
@@ -38,7 +38,7 @@ export const headerVariants = cva("flex items-center font-bold", {
 });
 
 const Header = React.forwardRef<HTMLHeadingElement, HTMLAttributes<HTMLHeadingElement> & VariantProps<typeof headerVariants>>(({ className, variant, ...props }, ref) => (
- <h1 ref={ref} className={twMerge(headerVariants({ variant }), className)} {...props}>
+ <h1 ref={ref} className={cn(headerVariants({ variant }), className)} {...props}>
   {props.children}
  </h1>
 ));
@@ -57,7 +57,7 @@ interface LegacyHeaderProps extends HTMLAttributes<HTMLHeadingElement> {
  */
 export function Header2({ children, className, ...props }: LegacyHeaderProps) {
  return (
-  <h2 className={twMerge("mb-1 flex items-center justify-start gap-2 text-left text-2xl font-bold", className)} {...props}>
+  <h2 className={cn("mb-1 flex items-center justify-start gap-2 text-left text-2xl font-bold", className)} {...props}>
    {children}
   </h2>
  );
@@ -68,7 +68,7 @@ export function Header2({ children, className, ...props }: LegacyHeaderProps) {
  */
 export function Header3({ children, className, ...props }: LegacyHeaderProps) {
  return (
-  <h3 className={twMerge("mb-1 flex items-center gap-2 text-center text-xl font-bold", className)} {...props}>
+  <h3 className={cn("mb-1 flex items-center gap-2 text-center text-xl font-bold", className)} {...props}>
    {children}
   </h3>
  );
@@ -79,7 +79,7 @@ export function Header3({ children, className, ...props }: LegacyHeaderProps) {
  */
 export function Header4({ children, className, ...props }: LegacyHeaderProps) {
  return (
-  <h4 className={twMerge(className, "flex items-center gap-4 text-center text-lg font-bold md:text-xl")} {...props}>
+  <h4 className={cn(className, "flex items-center gap-4 text-center text-lg font-bold md:text-xl")} {...props}>
    {children}
   </h4>
  );

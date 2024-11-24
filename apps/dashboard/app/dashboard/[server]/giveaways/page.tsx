@@ -11,7 +11,7 @@ import "tippy.js/animations/shift-away.css";
 import "tippy.js/dist/tippy.css";
 import { Icons, iconVariants } from "@/components/Icons";
 import type { GiveawayData } from "discord-giveaways";
-import { twMerge } from "tailwind-merge";
+import { cn } from "@/lib/utils";
 
 export const metadata = {
  title: "Giveaways",
@@ -93,7 +93,7 @@ export default async function GiveawaysPage(props: { params: Promise<{ server: s
 
  return (
   <>
-   <Header className={twMerge(headerVariants({ variant: "h1", margin: "normal" }))}>
+   <Header className={cn(headerVariants({ variant: "h1", margin: "normal" }))}>
     <Icons.Gift className={iconVariants({ variant: "extraLarge" })} />
     Giveaways
    </Header>

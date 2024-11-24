@@ -1,4 +1,4 @@
-import clsx from "clsx";
+import { cn } from "@/lib/utils";
 import React, { HTMLAttributes } from "react";
 
 export const CategoryBar = React.forwardRef<HTMLDivElement, HTMLAttributes<HTMLDivElement> & { percent?: number }>(({ percent = 50, className, ...props }, ref) => (
@@ -73,7 +73,7 @@ export const CategoryBar = React.forwardRef<HTMLDivElement, HTMLAttributes<HTMLD
     }}
    >
     <div
-     className={clsx(
+     className={cn(
       {
        "bg-rose-500": percent <= 10,
        "bg-orange-500": percent > 10 && percent <= 30,

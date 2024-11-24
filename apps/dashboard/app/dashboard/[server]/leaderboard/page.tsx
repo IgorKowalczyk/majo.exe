@@ -11,7 +11,7 @@ import "tippy.js/animations/shift-away.css";
 import "tippy.js/dist/tippy.css";
 import { Icons, iconVariants } from "@/components/Icons";
 import { Metadata } from "next";
-import { twMerge } from "tailwind-merge";
+import { cn } from "@/lib/utils";
 
 export const metadata: Metadata = {
  title: "Leaderboard",
@@ -73,7 +73,7 @@ export default async function LeaderboardPage(props: { params: Promise<{ server:
 
  return (
   <>
-   <Header className={twMerge(headerVariants({ variant: "h1", margin: "normal" }))}>
+   <Header className={cn(headerVariants({ variant: "h1", margin: "normal" }))}>
     <Icons.Sparkles className={iconVariants({ variant: "extraLarge" })} />
     Leaderboard
    </Header>

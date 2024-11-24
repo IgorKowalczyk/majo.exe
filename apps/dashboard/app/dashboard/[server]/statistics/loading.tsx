@@ -3,12 +3,12 @@ import { GraphCard } from "@/components/Card";
 import Header, { headerVariants } from "@/components/Headers";
 import { Icons, iconVariants } from "@/components/Icons";
 import { Skeleton } from "@/components/Skeletons";
-import { twMerge } from "tailwind-merge";
+import { cn } from "@/lib/utils";
 
 export default function Loading() {
  return (
   <>
-   <Header className={twMerge(headerVariants({ variant: "h1", margin: "normal" }))}>
+   <Header className={cn(headerVariants({ variant: "h1", margin: "normal" }))}>
     <Icons.TrendingUp className={iconVariants({ variant: "extraLarge" })} />
     Statistics
    </Header>
@@ -42,7 +42,7 @@ export default function Loading() {
    <div className="flex flex-col gap-6">
     <Block>
      <div className="mb-4 flex flex-col items-center justify-normal gap-2 whitespace-nowrap lg:flex-row">
-      <Header className={twMerge(headerVariants({ variant: "h2" }), "items-center gap-1 lg:items-center")}>
+      <Header className={cn(headerVariants({ variant: "h2" }), "items-center gap-1 lg:items-center")}>
        <span>
         New Members <Icons.refresh className={iconVariants({ variant: "large", className: "text-accent-primary ml-2 inline-block animate-spin !stroke-2 align-middle" })} />
        </span>
@@ -57,7 +57,7 @@ export default function Loading() {
     </Block>
     <Block>
      <div className="mb-4 flex flex-col items-center justify-normal gap-2 whitespace-nowrap lg:flex-row">
-      <Header className={twMerge(headerVariants({ variant: "h2" }), "items-center gap-1 lg:items-center")}>
+      <Header className={cn(headerVariants({ variant: "h2" }), "items-center gap-1 lg:items-center")}>
        <span>
         Members left <Icons.refresh className={iconVariants({ variant: "large", className: "text-accent-primary ml-2 inline-block animate-spin !stroke-2 align-middle" })} />
        </span>
@@ -72,7 +72,7 @@ export default function Loading() {
     </Block>
     <Block>
      <div className="mb-4 flex flex-col items-center justify-normal gap-2 whitespace-nowrap lg:flex-row">
-      <Header className={twMerge(headerVariants({ variant: "h2" }), "items-center gap-1 lg:items-center")}>
+      <Header className={cn(headerVariants({ variant: "h2" }), "items-center gap-1 lg:items-center")}>
        <span>
         Messages Sent <Icons.refresh className={iconVariants({ variant: "large", className: "text-accent-primary ml-2 inline-block animate-spin !stroke-2 align-middle" })} />
        </span>

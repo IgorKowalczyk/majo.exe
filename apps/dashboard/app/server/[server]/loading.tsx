@@ -1,12 +1,12 @@
 import { Block } from "@/components/Block";
 import Header, { Header4, headerVariants } from "@/components/Headers";
 import { Skeleton } from "@/components/Skeletons";
-import { twMerge } from "tailwind-merge";
+import { cn } from "@/lib/utils";
 
 export default function Loading() {
  return (
   <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-   <Header className={twMerge(headerVariants({ variant: "h1" }), "mb-6 justify-normal flex-col")}>
+   <Header className={cn(headerVariants({ variant: "h1" }), "mb-6 justify-normal flex-col")}>
     <div className="size-24 shrink-0 rounded-full bg-button-secondary" />
     <div className="flex flex-col items-center justify-center text-center sm:ml-4">
      <Skeleton className="h-6 w-32" />

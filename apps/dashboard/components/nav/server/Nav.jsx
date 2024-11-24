@@ -1,5 +1,5 @@
 import { dashboardConfig } from "@majoexe/config";
-import clsx from "clsx";
+import { cn } from "@/lib/utils";
 import { getSession } from "lib/session";
 import Link from "next/link";
 import { buttonVariants } from "@/components/Buttons";
@@ -16,7 +16,7 @@ export async function Nav({ theme }) {
   <nav className="fixed z-40 flex w-full items-center border-b border-b-neutral-800 bg-background-navbar py-4 text-left shadow-lg md:bg-background-navbar/70 md:backdrop-blur-[9px]">
    <SideMenuControl />
    <div
-    className={clsx(
+    className={cn(
      {
       "xl:w-4/5": theme === "compact",
       "w-full": !theme || theme === "full",

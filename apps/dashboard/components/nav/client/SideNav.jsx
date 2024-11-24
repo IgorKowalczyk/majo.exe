@@ -1,13 +1,12 @@
 "use client";
 
-import clsx from "clsx";
+import { cn } from "@/lib/utils";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { useContext } from "react";
 import { VisibilityContext } from "./VisibilityContext";
 import { Button, buttonVariants } from "@/components/Buttons";
 import { Icons, iconVariants } from "@/components/Icons";
-import { twMerge } from "tailwind-merge";
 
 export function NavBadge({ children }) {
  return <div className="-mt-3 rounded-md bg-button-primary px-1 py-px pb-0 text-xs uppercase">{children}</div>;
@@ -31,7 +30,7 @@ export function SideNav({ server }) {
   <>
    {sideNavVisible && <div className="fixed inset-0 z-20 size-full bg-black/50 duration-200" onClick={() => sideNavVisible && toggleSideNav()} />}
    <aside
-    className={clsx(
+    className={cn(
      {
       "pointer-events-none opacity-0": !sideNavVisible,
       "opacity-100": sideNavVisible,
@@ -40,7 +39,7 @@ export function SideNav({ server }) {
     )}
    >
     <div className="px-4">
-     <Button onClick={() => router.back()} className={twMerge(buttonVariants({ variant: "primary" }), "mb-4 w-full")}>
+     <Button onClick={() => router.back()} className={cn(buttonVariants({ variant: "primary" }), "mb-4 w-full")}>
       <Icons.arrowLeft className={iconVariants({ variant: "button" })} /> Server list
      </Button>
     </div>

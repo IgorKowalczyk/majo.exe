@@ -1,12 +1,12 @@
 import Header, { headerVariants } from "@/components/Headers";
 import { Icons, iconVariants } from "@/components/Icons";
 import { Skeleton } from "@/components/Skeletons";
-import { twMerge } from "tailwind-merge";
+import { cn } from "@/lib/utils";
 
 export default function Loading() {
  return (
   <>
-   <Header className={twMerge(headerVariants({ variant: "h1" }))}>
+   <Header className={cn(headerVariants({ variant: "h1" }))}>
     <Icons.warning className={iconVariants({ variant: "extraLarge" })} />
     Warns <Icons.refresh className={iconVariants({ variant: "extraLarge", className: "stroke-accent-primary animate-spin" })} />
    </Header>

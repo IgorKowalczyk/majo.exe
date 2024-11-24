@@ -1,5 +1,5 @@
 import { Menu as DefaultMenu, Transition } from "@headlessui/react";
-import clsx from "clsx";
+import { cn } from "@/lib/utils";
 import Link from "next/link";
 import { Fragment } from "react";
 import { Icons, iconVariants } from "@/components/Icons";
@@ -8,7 +8,7 @@ const MenuItem = ({ children, onClick, style = "default" }) => (
  <DefaultMenu.Item>
   <p
    onClick={onClick}
-   className={clsx(
+   className={cn(
     {
      "ui-active:bg-button-primary": style === "default",
      "ui-active:bg-button-action-primary": style === "action",
@@ -26,7 +26,7 @@ const MenuLink = ({ children, href, style = "default", target = "_self" }) => (
   <Link
    href={href}
    target={target}
-   className={clsx(
+   className={cn(
     {
      "ui-active:bg-button-primary": style === "default",
      "ui-active:bg-button-action-primary": style === "action",

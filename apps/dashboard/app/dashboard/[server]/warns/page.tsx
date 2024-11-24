@@ -7,7 +7,7 @@ import { Block } from "@/components/Block";
 import { Warns } from "@/components/client/lists/Warns";
 import Header, { headerVariants } from "@/components/Headers";
 import { Icons, iconVariants } from "@/components/Icons";
-import { twMerge } from "tailwind-merge";
+import { cn } from "@/lib/utils";
 
 export const metadata = {
  title: "Warns",
@@ -68,7 +68,7 @@ export default async function Page(props: { params: Promise<{ server: string }> 
 
  return (
   <>
-   <Header className={twMerge(headerVariants({ variant: "h1" }))}>
+   <Header className={cn(headerVariants({ variant: "h1" }))}>
     <Icons.warning className={iconVariants({ variant: "extraLarge" })} />
     Warns <span className="text-accent-primary">({warns.length})</span>
    </Header>

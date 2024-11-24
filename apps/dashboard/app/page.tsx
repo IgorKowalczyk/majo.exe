@@ -10,7 +10,6 @@ import tada from "public/assets/tada.svg";
 import tadaAnimated from "public/assets/tada_animated.gif";
 import { Suspense } from "react";
 import Balancer from "react-wrap-balancer";
-import { twMerge } from "tailwind-merge";
 import { AddReaction } from "./_components/home/AddReaction";
 import Faq from "./_components/home/Faq";
 import { LevelUp } from "./_components/home/LevelUp";
@@ -26,6 +25,7 @@ import { LoginButton } from "@/components/LoginButton";
 import { Notifications } from "./_components/home/Notifications";
 import { Command } from "@/lib/types";
 import { ApplicationCommandOptionType } from "discord-api-types/v10";
+import { cn } from "@/lib/utils";
 
 export default async function HomePage() {
  const exampleLogs = [
@@ -119,20 +119,20 @@ export default async function HomePage() {
    <div className="relative z-20 flex min-h-screen w-full items-center justify-center before:absolute before:z-10 before:size-full before:opacity-5 before:grayscale before:md:bg-grid-[#fff]">
     <div className="absolute left-0 top-0 z-10 size-full bg-[radial-gradient(circle,rgba(2,0,36,0)0,rgb(16,17,16,100%))]" />
     <div className="relative z-20 -mt-8 flex w-full select-none flex-col items-center justify-center gap-4 px-3 md:w-[90%]">
-     <Link href="/api/invite" className={twMerge("group rounded-full border border-white/5 bg-neutral-900 text-base text-white transition-all ease-in hover:cursor-pointer hover:bg-neutral-800")}>
+     <Link href="/api/invite" className={cn("group rounded-full border border-white/5 bg-neutral-900 text-base text-white transition-all ease-in hover:cursor-pointer hover:bg-neutral-800")}>
       <AnimatedShinyText className="inline-flex items-center justify-center px-4 py-1 transition ease-out hover:text-neutral-400 hover:duration-300">
        <span>✨ Introducing Majo.exe</span>
        <Icons.arrowRight className={iconVariants({ variant: "normal", className: "-mr-1 ml-1 transition-transform ease-in-out group-hover:translate-x-0.5" })} />
       </AnimatedShinyText>
      </Link>
 
-     <Header className={twMerge(headerVariants({ variant: "big", alignment: "center", effects: "gradient" }), "!font-black !leading-snug ")}>The only one Discord Bot</Header>
-     <Header className={twMerge(headerVariants({ variant: "h2", alignment: "center" }), "text-white/70 font-normal max-w-[680px]")}>
+     <Header className={cn(headerVariants({ variant: "big", alignment: "center", effects: "gradient" }), "!font-black !leading-snug ")}>The only one Discord Bot</Header>
+     <Header className={cn(headerVariants({ variant: "h2", alignment: "center" }), "text-white/70 font-normal max-w-[680px]")}>
       <Balancer>Majo.exe will not only keep your server entertained but also assist you with moderation and many other things!</Balancer>
      </Header>
      <div className="mt-2 flex flex-col gap-4 sm:flex-row">
       <LoginButton />
-      <Link href="/api/invite" className={twMerge(buttonVariants({ variant: "secondary" }))}>
+      <Link href="/api/invite" className={cn(buttonVariants({ variant: "secondary" }))}>
        <Icons.userAdd className={iconVariants({ variant: "button" })} />
        Add to your server
       </Link>
@@ -202,7 +202,7 @@ export default async function HomePage() {
        <LevelUp avatar={dashboardConfig.logo} username="Majonez.exe" />
       </div>
       <div className="relative col-span-2 row-span-2 overflow-hidden rounded-xl border border-neutral-800 bg-background-secondary px-8 py-6 duration-200 hover:bg-neutral-800/50 lg:col-span-1">
-       <Header className={twMerge(headerVariants({ variant: "h2", margin: "normal" }), "bg-gradient-to-b from-white to-neutral-400 box-decoration-clone bg-clip-text font-black text-fill-transparent")}>Moderation? We have it!</Header>
+       <Header className={cn(headerVariants({ variant: "h2", margin: "normal" }), "bg-gradient-to-b from-white to-neutral-400 box-decoration-clone bg-clip-text font-black text-fill-transparent")}>Moderation? We have it!</Header>
        <div className="absolute inset-0 z-0 m-auto mt-[100px] size-[580px] rounded-full bg-[#ddd] opacity-5 blur-3xl" />
        <div className="relative z-10">
         <p className="mt-2 max-w-[680px] text-white/70">
@@ -216,7 +216,7 @@ export default async function HomePage() {
       <div className="relative col-span-2 row-span-2 overflow-hidden rounded-xl border border-neutral-800 bg-background-secondary duration-200 hover:bg-neutral-800/50">
        <div className="relative z-50 h-full">
         <div className="px-8 py-6">
-         <Header className={twMerge(headerVariants({ variant: "h1", margin: "normal" }), "bg-gradient-to-b from-white to-neutral-400 box-decoration-clone bg-clip-text font-black text-fill-transparent")}>Know more about your server</Header>
+         <Header className={cn(headerVariants({ variant: "h1", margin: "normal" }), "bg-gradient-to-b from-white to-neutral-400 box-decoration-clone bg-clip-text font-black text-fill-transparent")}>Know more about your server</Header>
          <p className="max-w-[680px] text-white/70">
           <Balancer>With Majo.exe you can get to know your server better with the help of the dashboard. You can see the most active members, the most used channels and activity graphs!</Balancer>
          </p>
@@ -298,7 +298,7 @@ export default async function HomePage() {
       </Balancer>
      </p>
 
-     <Link href="/api/invite" className={twMerge(buttonVariants({ variant: "secondary" }), "mx-auto w-fit")}>
+     <Link href="/api/invite" className={cn(buttonVariants({ variant: "secondary" }), "mx-auto w-fit")}>
       <Icons.userAdd className={iconVariants({ variant: "button" })} />
       Add to your server
      </Link>
@@ -353,7 +353,7 @@ export default async function HomePage() {
      <Balancer>Don't wait ages to add Majo.exe to your server! Invite it now and see it in action!</Balancer>
     </p>
 
-    <Link href="/api/invite" className={twMerge(buttonVariants({ variant: "primary" }), "mx-auto w-fit")}>
+    <Link href="/api/invite" className={cn(buttonVariants({ variant: "primary" }), "mx-auto w-fit")}>
      <Icons.userAdd className={iconVariants({ variant: "button" })} />
      Add to your server
     </Link>

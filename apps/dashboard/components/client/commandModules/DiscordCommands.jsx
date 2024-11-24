@@ -1,5 +1,5 @@
 "use client";
-import clsx from "clsx";
+import { cn } from "@/lib/utils";
 import { useEffect, useState, useMemo } from "react";
 import { Tooltip } from "@/components/client/shared/Tooltip";
 import { Header3 } from "@/components/Headers";
@@ -64,7 +64,7 @@ export function DiscordCommands({ commands, categories }) {
     {categories.map((category) => (
      <div
       key={category.name}
-      className={clsx(
+      className={cn(
        {
         "opacity-50": !filteredCategories?.includes(category),
        },
@@ -82,7 +82,7 @@ export function DiscordCommands({ commands, categories }) {
        <Icons.Check
         className={iconVariants({
          variant: "normal",
-         className: clsx("absolute inset-0 size-full duration-200", {
+         className: cn("absolute inset-0 size-full duration-200", {
           "text-accent-primary -ml-1 scale-100": filteredCategories?.includes(category),
           "scale-0": !filteredCategories?.includes(category),
          }),
@@ -91,7 +91,7 @@ export function DiscordCommands({ commands, categories }) {
        <Icons.close
         className={iconVariants({
          variant: "normal",
-         className: clsx("absolute inset-0 size-full duration-200", {
+         className: cn("absolute inset-0 size-full duration-200", {
           "-ml-1 scale-100 text-red-400": !filteredCategories?.includes(category),
           "scale-0": filteredCategories?.includes(category),
          }),
@@ -131,7 +131,7 @@ export function DiscordCommands({ commands, categories }) {
               command.options.map((option) => (
                <span
                 key={option.name}
-                className={clsx(
+                className={cn(
                  {
                   "!font-normal opacity-70": !option.required,
                   "opacity-100": option.required,

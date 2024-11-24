@@ -1,6 +1,6 @@
 "use client";
 
-import clsx from "clsx";
+import { cn } from "@/lib/utils";
 import { useState } from "react";
 import { toast } from "sonner";
 import { Block } from "@/components/Block";
@@ -81,7 +81,7 @@ export function AntiLink({ serverId, enabled, existingActions, existingExemptRol
    </p>
 
    <div
-    className={clsx(
+    className={cn(
      {
       "max-h-0 opacity-0": isEnabled,
       "max-h-[500px] opacity-100": !isEnabled,
@@ -99,7 +99,7 @@ export function AntiLink({ serverId, enabled, existingActions, existingExemptRol
    </div>
 
    <div
-    className={clsx({
+    className={cn({
      "pointer-events-none cursor-not-allowed opacity-50": !isEnabled && !loading,
      "pointer-events-none opacity-50": loading,
      "cursor-default opacity-100": isEnabled,

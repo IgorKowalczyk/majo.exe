@@ -8,7 +8,7 @@ import { Button } from "@/components/Buttons";
 import { EmbedTitle, Embed, EmbedDescription } from "@/components/Embed";
 import { Icons, iconVariants } from "@/components/Icons";
 import { Input } from "@/components/Input";
-import { twMerge } from "tailwind-merge";
+import { cn } from "@/lib/utils";
 
 interface ChangeEmbedColorProps extends React.HTMLAttributes<HTMLDivElement> {
  serverId: string;
@@ -109,7 +109,7 @@ export const ChangeEmbedColor = React.forwardRef<HTMLDivElement, ChangeEmbedColo
  };
 
  return (
-  <div className={twMerge("flex flex-col gap-4 lg:flex-row lg:gap-8 lg:divide-x lg:divide-neutral-800", className)} ref={ref} {...props}>
+  <div className={cn("flex flex-col gap-4 lg:flex-row lg:gap-8 lg:divide-x lg:divide-neutral-800", className)} ref={ref} {...props}>
    <div className="flex flex-col items-center justify-center gap-4">
     <div>
      <div className="flex flex-row gap-1">

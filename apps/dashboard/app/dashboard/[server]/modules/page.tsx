@@ -1,7 +1,7 @@
 import { botConfig } from "@majoexe/config";
 import prismaClient from "@majoexe/database";
 import { getGuildFromMemberGuilds, getGuild } from "@majoexe/util/functions/guild";
-import clsx from "clsx";
+import { cn } from "@/lib/utils";
 import { getSession } from "lib/session";
 import { redirect } from "next/navigation";
 import { notFound } from "next/navigation";
@@ -11,7 +11,6 @@ import { UpdateCommands } from "@/components/client/commandModules/UpdateCommand
 import { Tooltip } from "@/components/client/shared/Tooltip";
 import Header, { headerVariants } from "@/components/Headers";
 import { Icons, iconVariants } from "@/components/Icons";
-import { twMerge } from "tailwind-merge";
 import { Command } from "@/lib/types";
 
 export default async function Page(props: { params: Promise<{ server: string }> }) {
@@ -61,13 +60,13 @@ export default async function Page(props: { params: Promise<{ server: string }> 
 
  return (
   <>
-   <Header className={twMerge(headerVariants({ variant: "h1", margin: "normal" }))}>
+   <Header className={cn(headerVariants({ variant: "h1", margin: "normal" }))}>
     <Icons.PackagePlus className={iconVariants({ variant: "extraLarge" })} />
     Modules
    </Header>
    <p className="mb-4 text-left text-base md:text-lg">Choose which modules you want to be enabled on your server.</p>
    <Block className="mt-4">
-    <Header className={twMerge(headerVariants({ variant: "h2" }))}>
+    <Header className={cn(headerVariants({ variant: "h2" }))}>
      <Icons.Blocks className={iconVariants({ variant: "large", className: "!stroke-2" })} />
      Categories
     </Header>
@@ -95,7 +94,7 @@ export default async function Page(props: { params: Promise<{ server: string }> 
    </Block>
 
    <Block className="mt-4">
-    <Header className={twMerge(headerVariants({ variant: "h2" }))}>
+    <Header className={cn(headerVariants({ variant: "h2" }))}>
      <Icons.slash className={iconVariants({ variant: "large", className: "!stroke-2" })} />
      Commands
     </Header>
@@ -103,7 +102,7 @@ export default async function Page(props: { params: Promise<{ server: string }> 
 
     {categories.map((category) => (
      <div key={category.name}>
-      <Header className={twMerge(headerVariants({ variant: "h3", margin: "normal" }), "mt-8")}>
+      <Header className={cn(headerVariants({ variant: "h3", margin: "normal" }), "mt-8")}>
        {botConfig.emojis.categories.find((cat) => cat.name === category.name.toLowerCase())?.emoji || "❔"} {category.name} ({category.commands.length} commands)
       </Header>
 
@@ -116,7 +115,7 @@ export default async function Page(props: { params: Promise<{ server: string }> 
        </div>
       )}
       <div
-       className={clsx(
+       className={cn(
         {
          "pointer-events-none cursor-not-allowed opacity-30": guild.guildDisabledCategories.some((cat) => cat.categoryName === category.name),
         },
@@ -127,7 +126,7 @@ export default async function Page(props: { params: Promise<{ server: string }> 
         <div key={command.name} className="hide-scrollbar my-2 w-full overflow-scroll rounded-md border border-neutral-800 bg-background-navbar px-6 py-4">
          <div className="flex flex-row items-center justify-between">
           <div
-           className={clsx(
+           className={cn(
             {
              "cursor-not-allowed opacity-70": guild.guildDisabledCommands.some((com) => com.commandName.toLowerCase() === command.name.toLowerCase()),
             },
@@ -140,7 +139,7 @@ export default async function Page(props: { params: Promise<{ server: string }> 
              command.options.map((option) => (
               <span
                key={option.name}
-               className={clsx(
+               className={cn(
                 {
                  "!font-normal opacity-70": !option.required,
                  "opacity-100": option.required,

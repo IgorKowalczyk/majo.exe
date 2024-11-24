@@ -1,6 +1,6 @@
 "use client";
 
-import clsx from "clsx";
+import { cn } from "@/lib/utils";
 import { useState } from "react";
 import { toast } from "sonner";
 import Image from "@/components/client/shared/Image";
@@ -19,7 +19,7 @@ export function AddReaction({ reaction, countL = 2 }: { reaction: string; countL
 
  return (
   <div
-   className={clsx(
+   className={cn(
     {
      "border-neutral-700": !clicked,
      "border-accent-primary bg-accent-primary/20": clicked,

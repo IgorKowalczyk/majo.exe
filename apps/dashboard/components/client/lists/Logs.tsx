@@ -1,7 +1,7 @@
 "use client";
 
 import { formatDate, formatDuration } from "@majoexe/util/functions/util";
-import clsx from "clsx";
+import { cn } from "@/lib/utils";
 import Link from "next/link";
 import React, { useState, useRef, useEffect } from "react";
 import InfiniteScroll from "react-infinite-scroller";
@@ -122,7 +122,7 @@ export default function Logs({ initialItems, server }: { initialItems: LogItem[]
        <Icons.sortDescending
         className={iconVariants({
          variant: "normal",
-         className: clsx(
+         className: cn(
           // prettier
           "absolute left-0 top-0 size-full duration-200",
           { "scale-0 opacity-0": !sortDescending, "scale-100 opacity-100": sortDescending }
@@ -132,7 +132,7 @@ export default function Logs({ initialItems, server }: { initialItems: LogItem[]
        <Icons.sortAscending
         className={iconVariants({
          variant: "normal",
-         className: clsx(
+         className: cn(
           // prettier
           "absolute left-0 top-0 size-full duration-200",
           { "scale-0 opacity-0": sortDescending, "scale-100 opacity-100": !sortDescending }

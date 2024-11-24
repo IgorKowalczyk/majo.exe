@@ -1,7 +1,7 @@
 "use client";
 
 import { toHTML } from "@odiffey/discord-markdown";
-import clsx from "clsx";
+import { cn } from "@/lib/utils";
 import React, { useState } from "react";
 import { toast } from "sonner";
 import { Block } from "@/components/Block";
@@ -107,7 +107,7 @@ export const ChangeCustomMessages = React.forwardRef<HTMLDivElement, ChangeCusto
     </>
    )}
    <div
-    className={clsx({
+    className={cn({
      "pointer-events-none cursor-wait opacity-50": loading,
     })}
    >
@@ -122,7 +122,7 @@ export const ChangeCustomMessages = React.forwardRef<HTMLDivElement, ChangeCusto
     </div>
 
     <div
-     className={clsx(
+     className={cn(
       {
        "max-h-0 opacity-0": isEnabled,
        "max-h-[500px] opacity-100": !isEnabled,
@@ -140,7 +140,7 @@ export const ChangeCustomMessages = React.forwardRef<HTMLDivElement, ChangeCusto
     </div>
 
     <Block
-     className={clsx(
+     className={cn(
       {
        "pointer-events-none cursor-not-allowed opacity-50": !isEnabled && !loading,
        "pointer-events-none opacity-50": loading,
@@ -167,7 +167,7 @@ export const ChangeCustomMessages = React.forwardRef<HTMLDivElement, ChangeCusto
        </div>
 
        <div
-        className={clsx(
+        className={cn(
          {
           "max-h-0 opacity-0": messageChannel,
           "max-h-[500px] opacity-100": !messageChannel,

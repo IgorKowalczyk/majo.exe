@@ -3,19 +3,19 @@ import { Button } from "@/components/Buttons";
 import Header, { headerVariants } from "@/components/Headers";
 import { Icons, iconVariants } from "@/components/Icons";
 import { Skeleton } from "@/components/Skeletons";
-import { twMerge } from "tailwind-merge";
+import { cn } from "@/lib/utils";
 
 export default function Loading() {
  return (
   <>
-   <Header className={twMerge(headerVariants({ variant: "h1", margin: "normal" }))}>
+   <Header className={cn(headerVariants({ variant: "h1", margin: "normal" }))}>
     <Icons.messageCode className={iconVariants({ variant: "extraLarge" })} />
     Custom messages
    </Header>
    <p className="mb-4 text-left text-base md:text-lg">Customize the messages that are sent to your server members.</p>
 
    <Block className="mt-4 !overflow-x-visible">
-    <Header className={twMerge(headerVariants({ variant: "h2" }))}>
+    <Header className={cn(headerVariants({ variant: "h2" }))}>
      <Icons.userAdd className={iconVariants({ variant: "large", className: "!stroke-2" })} />
      Welcome Messages
     </Header>
@@ -38,7 +38,7 @@ export default function Loading() {
    </Block>
 
    <Block className="mt-4 !overflow-x-visible">
-    <Header className={twMerge(headerVariants({ variant: "h2" }))}>
+    <Header className={cn(headerVariants({ variant: "h2" }))}>
      <Icons.userMinus className={iconVariants({ variant: "large", className: "!stroke-2" })} />
      Leave Messages
     </Header>

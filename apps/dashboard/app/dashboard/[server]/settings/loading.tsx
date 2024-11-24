@@ -3,18 +3,18 @@ import { Button } from "@/components/Buttons";
 import Header, { headerVariants } from "@/components/Headers";
 import { Icons, iconVariants } from "@/components/Icons";
 import { Skeleton } from "@/components/Skeletons";
-import { twMerge } from "tailwind-merge";
+import { cn } from "@/lib/utils";
 
 export default function Loading() {
  return (
   <>
-   <Header className={twMerge(headerVariants({ variant: "h1", margin: "normal" }))}>
+   <Header className={cn(headerVariants({ variant: "h1", margin: "normal" }))}>
     <Icons.Settings className={iconVariants({ variant: "extraLarge" })} />
     Settings
    </Header>
    <p className="mb-4 text-left text-base md:text-lg">Configure the settings of the bot in your server.</p>
    <Block className="mt-4">
-    <Header className={twMerge(headerVariants({ variant: "h2" }))}>
+    <Header className={cn(headerVariants({ variant: "h2" }))}>
      <Icons.paintBrush className={iconVariants({ variant: "large", className: "!stroke-2" })} />
      Default Embed Color
     </Header>
@@ -22,7 +22,7 @@ export default function Loading() {
     <Skeleton className="mt-10 h-60" />
    </Block>
    <Block className="mt-4">
-    <Header className={twMerge(headerVariants({ variant: "h2" }))}>
+    <Header className={cn(headerVariants({ variant: "h2" }))}>
      <Icons.ShieldCheck className={iconVariants({ variant: "large", className: "!stroke-2" })} />
      Dashboard Access
     </Header>
@@ -44,7 +44,7 @@ export default function Loading() {
     </div>
    </Block>
    <Block className="mt-4">
-    <Header className={twMerge(headerVariants({ variant: "h2" }))}>
+    <Header className={cn(headerVariants({ variant: "h2" }))}>
      <Icons.Users className={iconVariants({ variant: "large", className: "!stroke-2" })} />
      Public Dashboard
     </Header>
@@ -54,7 +54,7 @@ export default function Loading() {
 
     <div className="mb-4 grid grid-cols-1 gap-4 lg:grid-cols-2">
      <Block className="flex flex-col items-start justify-start gap-2">
-      <Header className={twMerge(headerVariants({ variant: "h3" }))}>
+      <Header className={cn(headerVariants({ variant: "h3" }))}>
        <Icons.Check className={iconVariants({ variant: "large", className: "stroke-green-500" })} />
        Things that are shown:
       </Header>
@@ -66,7 +66,7 @@ export default function Loading() {
       </ul>
      </Block>
      <Block className="flex flex-col items-start justify-start gap-2">
-      <Header className={twMerge(headerVariants({ variant: "h3" }))}>
+      <Header className={cn(headerVariants({ variant: "h3" }))}>
        <Icons.close className={iconVariants({ variant: "large", className: "stroke-red-400" })} />
        Things that are not shown:
       </Header>
@@ -91,7 +91,7 @@ export default function Loading() {
     </div>
    </Block>
    <Block className="mt-4">
-    <Header className={twMerge(headerVariants({ variant: "h2" }))}>
+    <Header className={cn(headerVariants({ variant: "h2" }))}>
      <Icons.Download className={iconVariants({ variant: "large", className: "!stroke-2" })} />
      Download data
     </Header>
@@ -104,7 +104,7 @@ export default function Loading() {
     </Button>
    </Block>
    <Block theme="danger" className="mt-4">
-    <Header className={twMerge(headerVariants({ variant: "h2" }))}>
+    <Header className={cn(headerVariants({ variant: "h2" }))}>
      <Icons.warning className={iconVariants({ variant: "large", className: "stroke-red-400 stroke-2" })} />
      Delete server data
     </Header>

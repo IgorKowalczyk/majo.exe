@@ -1,6 +1,6 @@
 // From magic-ui: https://magicui.design/
 
-import { twMerge } from "tailwind-merge";
+import { cn } from "@/lib/utils";
 
 export default function AnimatedShinyText({ children, className, shimmerWidth = 100 }) {
  return (
@@ -8,7 +8,7 @@ export default function AnimatedShinyText({ children, className, shimmerWidth = 
    style={{
     "--shimmer-width": `${shimmerWidth}px`,
    }}
-   className={twMerge(
+   className={cn(
     "mx-auto max-w-md text-neutral-400/70",
 
     // Shimmer effect

@@ -2,7 +2,7 @@
 
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
-import { twMerge } from "tailwind-merge";
+import { cn } from "@/lib/utils";
 
 export default function TextRevealByWord({ text, className }) {
  const targetRef = useRef(null);
@@ -13,7 +13,7 @@ export default function TextRevealByWord({ text, className }) {
  const words = text.split(" ");
 
  return (
-  <div ref={targetRef} className={twMerge("relative z-0 h-[200vh]", className)}>
+  <div ref={targetRef} className={cn("relative z-0 h-[200vh]", className)}>
    <div className={"sticky top-0 mx-auto flex h-1/2 max-w-4xl items-center bg-transparent px-4 py-20"}>
     <p ref={targetRef} className={"flex flex-wrap p-5 text-2xl font-bold text-white/20 md:p-8 md:text-3xl lg:p-10 lg:text-4xl xl:text-5xl"}>
      {words.map((word, i) => {

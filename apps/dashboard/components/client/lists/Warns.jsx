@@ -10,7 +10,7 @@ import { Table } from "@/components/client/shared/Table";
 import { Tooltip } from "@/components/client/shared/Tooltip";
 import { Icons, iconVariants } from "@/components/Icons";
 import { Skeleton } from "@/components/Skeletons";
-import { twMerge } from "tailwind-merge";
+import { cn } from "@/lib/utils";
 import Link from "next/link";
 
 export function Warns({ data, showControls = true, showSearch = true }) {
@@ -50,7 +50,7 @@ export function Warns({ data, showControls = true, showSearch = true }) {
     Header: "Actions",
     accessor: "link",
     Cell: ({ value }) => (
-     <Link href={`user/${value}#warns`} className={twMerge(buttonVariants({ variant: "secondary" }), "w-fit")}>
+     <Link href={`user/${value}#warns`} className={cn(buttonVariants({ variant: "secondary" }), "w-fit")}>
       <Icons.warning className={iconVariants({ variant: "button" })} />
       View profile
      </Link>

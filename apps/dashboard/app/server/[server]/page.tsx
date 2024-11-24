@@ -9,7 +9,7 @@ import { Leaderboard } from "@/components/client/lists/Leaderboard";
 import Image from "@/components/client/shared/Image";
 import { Tooltip } from "@/components/client/shared/Tooltip";
 import Header, { Header4, headerVariants } from "@/components/Headers";
-import { twMerge } from "tailwind-merge";
+import { cn } from "@/lib/utils";
 import { Metadata } from "next";
 
 export async function generateMetadata({ params }: { params: Promise<{ server: string }> }): Promise<Metadata> {
@@ -119,11 +119,11 @@ export default async function Page(props: { params: Promise<{ server: string }> 
 
  return (
   <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-   <Header className={twMerge(headerVariants({ variant: "h1" }), "mb-6 justify-normal flex-col")}>
+   <Header className={cn(headerVariants({ variant: "h1" }), "mb-6 justify-normal flex-col")}>
     {guildPreview.icon ? <Image src={`https://cdn.discordapp.com/icons/${guildPreview.id}/${guildPreview.icon}.${guildPreview.icon.startsWith("a_") ? "gif" : "png"}`} alt={guildPreview.name} quality={95} width={96} height={96} className="size-24 rounded-full" /> : <div className="size-24 rounded-full bg-button-secondary" />}
     <div className="flex flex-col text-center sm:ml-4">
      {guildPreview.name || "Unnamed server"}
-     <Header className={twMerge(headerVariants({ variant: "h5", alignment: "center" }), "mt-2 opacity-60")}>
+     <Header className={cn(headerVariants({ variant: "h5", alignment: "center" }), "mt-2 opacity-60")}>
       <Balancer>{guildPreview.description || "This server has no description, maybe you should add one?"}</Balancer>
      </Header>
     </div>

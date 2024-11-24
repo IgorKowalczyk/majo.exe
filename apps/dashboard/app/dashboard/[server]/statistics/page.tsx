@@ -9,7 +9,7 @@ import { GraphCard } from "@/components/Card";
 import { ServerStatsChart } from "@/components/client/charts/ServerStatsChart";
 import { Icons, iconVariants } from "@/components/Icons";
 import Header, { headerVariants } from "@/components/Headers";
-import { twMerge } from "tailwind-merge";
+import { cn } from "@/lib/utils";
 
 export default async function Page(props: { params: Promise<{ server: string }> }) {
  const params = await props.params;
@@ -67,7 +67,7 @@ export default async function Page(props: { params: Promise<{ server: string }> 
 
  return (
   <>
-   <Header className={twMerge(headerVariants({ variant: "h1", margin: "normal" }))}>
+   <Header className={cn(headerVariants({ variant: "h1", margin: "normal" }))}>
     <Icons.TrendingUp className={iconVariants({ variant: "extraLarge" })} />
     Statistics
    </Header>

@@ -1,4 +1,4 @@
-import { twMerge } from "tailwind-merge";
+import { cn } from "@/lib/utils";
 import { cva, VariantProps } from "class-variance-authority";
 import React from "react";
 
@@ -17,7 +17,7 @@ export const buttonVariants = cva("flex cursor-pointer items-center rounded-md p
 });
 
 export const Button = React.forwardRef<HTMLButtonElement, React.ButtonHTMLAttributes<HTMLButtonElement> & VariantProps<typeof buttonVariants>>(({ className, variant, ...props }, ref) => (
- <button ref={ref} className={twMerge(buttonVariants({ variant }), className)} {...props}>
+ <button ref={ref} className={cn(buttonVariants({ variant }), className)} {...props}>
   {props.children}
  </button>
 ));

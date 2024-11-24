@@ -1,13 +1,12 @@
 "use client";
 
 import { isNumeric } from "@majoexe/util/functions/util";
-import clsx from "clsx";
+import { cn } from "@/lib/utils";
 import React, { useState } from "react";
 import { toast } from "sonner";
 import { Button } from "@/components/Buttons";
 import { Icons, iconVariants } from "@/components/Icons";
 import { InputWithIcon } from "@/components/Input";
-import { twMerge } from "tailwind-merge";
 
 interface ChangeUserReputationProps extends React.HTMLAttributes<HTMLFormElement> {
  userId: string;
@@ -74,14 +73,14 @@ export const ChangeUserReputation = React.forwardRef<HTMLFormElement, ChangeUser
  };
 
  return (
-  <form className={twMerge("flex flex-col items-start gap-2", className)} onSubmit={handleReputation} {...props} ref={ref}>
+  <form className={cn("flex flex-col items-start gap-2", className)} onSubmit={handleReputation} {...props} ref={ref}>
    <InputWithIcon
     type="number"
     icon={<Icons.messageDot className={iconVariants({ variant: "normal" })} />}
     placeholder="User reputation"
     value={userRep}
     onChange={(e) => changeReputation(parseInt(e.target.value))}
-    className={clsx(
+    className={cn(
      {
       "!border-red-400 !text-red-400 focus:!border-red-400": error,
      },

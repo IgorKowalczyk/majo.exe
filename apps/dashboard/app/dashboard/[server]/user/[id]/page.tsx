@@ -17,7 +17,7 @@ import { Emojis } from "@/components/DiscordEmojis";
 import Header, { headerVariants } from "@/components/Headers";
 import { Icons, iconVariants } from "@/components/Icons";
 import { Metadata } from "next";
-import { twMerge } from "tailwind-merge";
+import { cn } from "@/lib/utils";
 
 export async function generateMetadata({ params }: { params: Promise<{ server: string; id: string }> }): Promise<Metadata> {
  const { id, server } = await params;
@@ -146,7 +146,7 @@ export default async function User(props: { params: Promise<{ server: string; id
    <div className="relative overflow-hidden rounded-lg border border-neutral-800 bg-background-navbar md:w-full">
     <>
      <div
-      className={twMerge("h-[100px] w-full bg-cover bg-center bg-no-repeat", typeof discordUser.banner == "string" ? "h-40" : "h-24")}
+      className={cn("h-[100px] w-full bg-cover bg-center bg-no-repeat", typeof discordUser.banner == "string" ? "h-40" : "h-24")}
       style={{
        backgroundColor: "#" + (!discordUser.accent_color ? "5c64f4" : discordUser.accent_color.toString(16)),
        backgroundImage: typeof discordUser.banner == "string" ? `url(/api/user/banner/${discordUser.id})` : undefined,
@@ -195,7 +195,7 @@ export default async function User(props: { params: Promise<{ server: string; id
        </div>
       </div>
       <div className="mb-[-14px] hidden w-full items-end justify-end lg:flex">
-       <Link href={`https://discord.com/users/${user.discordId}`} className={twMerge(buttonVariants({ variant: "primary" }))} target="_blank">
+       <Link href={`https://discord.com/users/${user.discordId}`} className={cn(buttonVariants({ variant: "primary" }))} target="_blank">
         <Icons.ExternalLink className={iconVariants({ variant: "button" })} /> Discord profile
        </Link>
       </div>
@@ -227,7 +227,7 @@ export default async function User(props: { params: Promise<{ server: string; id
     </>
    </div>
    <Block className="mt-4">
-    <Header className={twMerge(headerVariants({ variant: "h2" }))}>
+    <Header className={cn(headerVariants({ variant: "h2" }))}>
      <Icons.warning className={iconVariants({ variant: "large", className: "!stroke-2" })} />
      Warns
     </Header>
@@ -242,7 +242,7 @@ export default async function User(props: { params: Promise<{ server: string; id
     )}
    </Block>
    <Block className="mt-4">
-    <Header className={twMerge(headerVariants({ variant: "h2" }))}>
+    <Header className={cn(headerVariants({ variant: "h2" }))}>
      <Icons.like className={iconVariants({ variant: "large", className: "!stroke-2" })} />
      Reputation
     </Header>
@@ -250,7 +250,7 @@ export default async function User(props: { params: Promise<{ server: string; id
     <ChangeUserReputation userId={user.discordId} guildId={serverDownload.id} userReputation={userRepuation} />
    </Block>
    <Block theme="danger" className="mt-4">
-    <Header className={twMerge(headerVariants({ variant: "h2" }), "text-red-400")}>
+    <Header className={cn(headerVariants({ variant: "h2" }), "text-red-400")}>
      <Icons.warning className={iconVariants({ variant: "large", className: "!stroke-2" })} />
      Reset XP
     </Header>

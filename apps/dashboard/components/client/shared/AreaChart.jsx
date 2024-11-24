@@ -2,7 +2,7 @@
 
 import { globalConfig } from "@majoexe/config";
 import { Area, CartesianGrid, AreaChart as ReChartsAreaChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
-import { twMerge } from "tailwind-merge";
+import { cn } from "@/lib/utils";
 import { Icons, iconVariants } from "@/components/Icons";
 
 export default function AreaChart({ data = [], categories = [], index, valueFormatter = (value) => value, startEndOnly = false, showXAxis = true, showYAxis = true, yAxisWidth = 56, autoMinValue = false, curveType = "monotone", showGrid = true, minValue, maxValue, connectNulls = true, noDataText = "This chart has no data! Please check back later.", className, ...other }) {
@@ -13,7 +13,7 @@ export default function AreaChart({ data = [], categories = [], index, valueForm
  });
 
  return (
-  <div className={twMerge("h-80 w-full", className)} {...other}>
+  <div className={cn("h-80 w-full", className)} {...other}>
    <ResponsiveContainer className="size-full">
     {data && data.length > 0 ? (
      <ReChartsAreaChart data={data}>

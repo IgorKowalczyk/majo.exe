@@ -10,7 +10,7 @@ import { Tooltip } from "@/components/client/shared/Tooltip";
 import { Emojis } from "@/components/DiscordEmojis";
 import Header, { headerVariants } from "@/components/Headers";
 import { Icons, iconVariants } from "@/components/Icons";
-import { twMerge } from "tailwind-merge";
+import { cn } from "@/lib/utils";
 
 export const revalidate = 3600; // 1 hour
 
@@ -66,7 +66,7 @@ export default async function Page() {
         </div>
        </div>
        <div className="mb-[-14px] hidden w-full items-end justify-end md:flex">
-        <Link href={`https://discord.com/users/${user.id}`} className={twMerge(buttonVariants({ variant: "primary" }))} target="_blank">
+        <Link href={`https://discord.com/users/${user.id}`} className={cn(buttonVariants({ variant: "primary" }))} target="_blank">
          <Icons.ExternalLink className={iconVariants({ variant: "button" })} /> Discord profile
         </Link>
        </div>
@@ -76,21 +76,21 @@ export default async function Page() {
     </div>
 
     <div className="relative overflow-hidden rounded-lg border border-neutral-800 bg-background-navbar p-4 md:w-full">
-     <Header className={twMerge(headerVariants({ variant: "h2" }))}>
+     <Header className={cn(headerVariants({ variant: "h2" }))}>
       <Icons.Download className={iconVariants({ variant: "large", className: "!stroke-2" })} />
       Download data
      </Header>
      <p className="mt-2 leading-none text-white/70">
       Download all your data in a <code>.json</code> file. This includes your profile, data from all servers you are in and more.
      </p>
-     <Link href="/api/user/download" className={twMerge(buttonVariants({ variant: "primary" }), "mt-4 w-fit")} target="_blank">
+     <Link href="/api/user/download" className={cn(buttonVariants({ variant: "primary" }), "mt-4 w-fit")} target="_blank">
       <Icons.Download className={iconVariants({ variant: "button" })} />
       Download data
      </Link>
     </div>
 
     <Block theme="danger">
-     <Header className={twMerge(headerVariants({ variant: "h2" }), "text-red-400")}>
+     <Header className={cn(headerVariants({ variant: "h2" }), "text-red-400")}>
       <Icons.warning className={iconVariants({ variant: "large", className: "stroke-red-400 !stroke-2" })} />
       Delete account
      </Header>

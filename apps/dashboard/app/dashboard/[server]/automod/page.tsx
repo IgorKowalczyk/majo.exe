@@ -15,7 +15,7 @@ import "tippy.js/animations/shift-away.css";
 import "tippy.js/dist/tippy.css";
 import { Icons, iconVariants } from "@/components/Icons";
 import { NavBadge } from "@/components/nav/client/SideNav";
-import { twMerge } from "tailwind-merge";
+import { cn } from "@/lib/utils";
 
 export const metadata = {
  title: "Automod",
@@ -100,7 +100,7 @@ export default async function AutomodPage(props: { params: Promise<{ server: str
 
  return (
   <>
-   <Header className={twMerge(headerVariants({ variant: "h1", margin: "normal" }))}>
+   <Header className={cn(headerVariants({ variant: "h1", margin: "normal" }))}>
     <Icons.Bot className={iconVariants({ variant: "extraLarge" })} />
     Automod
    </Header>
@@ -120,7 +120,7 @@ export default async function AutomodPage(props: { params: Promise<{ server: str
     )}
    </Block>
    <Block className="mb-4">
-    <Header className={twMerge(headerVariants({ variant: "h2" }))}>
+    <Header className={cn(headerVariants({ variant: "h2" }))}>
      <Icons.mention className={iconVariants({ variant: "large" })} />
      Anti-Mention <NavBadge>Coming Soon</NavBadge>
     </Header>
@@ -129,7 +129,7 @@ export default async function AutomodPage(props: { params: Promise<{ server: str
     </p>
    </Block>
    <Block className="mb-4">
-    <Header className={twMerge(headerVariants({ variant: "h2" }))}>
+    <Header className={cn(headerVariants({ variant: "h2" }))}>
      <Icons.messageOff className={iconVariants({ variant: "large" })} />
      Anti-Spam <NavBadge>Coming Soon</NavBadge>
     </Header>
@@ -138,7 +138,7 @@ export default async function AutomodPage(props: { params: Promise<{ server: str
     </p>
    </Block>
    <Block className="mb-4">
-    <Header className={twMerge(headerVariants({ variant: "h2" }))}>
+    <Header className={cn(headerVariants({ variant: "h2" }))}>
      <Icons.ShieldBan className={iconVariants({ variant: "large" })} />
      Anti-Badwords <NavBadge>Coming Soon</NavBadge>
     </Header>

@@ -7,7 +7,7 @@ import Header, { headerVariants } from "@/components/Headers";
 import { Icons, iconVariants } from "@/components/Icons";
 import { Dots } from "@/components/Loaders";
 import Link from "next/link";
-import { twMerge } from "tailwind-merge";
+import { cn } from "@/lib/utils";
 
 export const metadata = {
  title: "Login",
@@ -49,7 +49,7 @@ export default async function LoginPage(props: { searchParams: Promise<{ error: 
    </div>
    <div className="z-30 flex flex-col gap-4 sm:flex-row">
     <DiscordLogin />
-    <Link href="/" className={twMerge(buttonVariants({ variant: "secondary" }))}>
+    <Link href="/" className={cn(buttonVariants({ variant: "secondary" }))}>
      <Icons.arrowLeft className={iconVariants({ variant: "button" })} />
      Go back home
     </Link>

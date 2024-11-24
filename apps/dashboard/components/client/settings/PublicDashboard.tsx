@@ -1,6 +1,6 @@
 "use client";
 
-import clsx from "clsx";
+import { cn } from "@/lib/utils";
 import React, { useState } from "react";
 import { toast } from "sonner";
 import { Button, buttonVariants } from "@/components/Buttons";
@@ -8,7 +8,6 @@ import Switch from "@/components/client/shared/Switch";
 import { Icons, iconVariants } from "@/components/Icons";
 import { Input } from "@/components/Input";
 import Link from "next/link";
-import { twMerge } from "tailwind-merge";
 import Header, { headerVariants } from "@/components/Headers";
 
 interface PublicDashboardProps {
@@ -136,9 +135,9 @@ export const PublicDashboard = React.forwardRef<HTMLDivElement, PublicDashboardP
  };
 
  return (
-  <div className={twMerge("mt-6", className)} ref={ref} {...props}>
+  <div className={cn("mt-6", className)} ref={ref} {...props}>
    <div className="flex flex-row items-center gap-2">
-    <Header className={twMerge(headerVariants({ variant: "h3", margin: "normal" }))}>
+    <Header className={cn(headerVariants({ variant: "h3", margin: "normal" }))}>
      <Icons.Power className={iconVariants({ variant: "large" })} />
      Enable public dashboard overview:
      <Switch enabled={isEnabled} onChange={toggle} disabled={disabled} />
@@ -146,7 +145,7 @@ export const PublicDashboard = React.forwardRef<HTMLDivElement, PublicDashboardP
    </div>
    <p className="text-white/70">Allow users to view a public dashboard of your server, even if they are not a member.</p>
    <div className="mt-4">
-    <Header className={twMerge(headerVariants({ variant: "h3", margin: "normal" }))}>
+    <Header className={cn(headerVariants({ variant: "h3", margin: "normal" }))}>
      <Icons.Link2 className={iconVariants({ variant: "large" })} />
      Vanity URL:
     </Header>
@@ -159,7 +158,7 @@ export const PublicDashboard = React.forwardRef<HTMLDivElement, PublicDashboardP
        onChange={(e) => changeVanityText(e)}
        disabled={disabled}
        placeholder="Vanity URL"
-       className={clsx(
+       className={cn(
         {
          "!border-red-400 focus:!border-red-400": vanityError,
         },
@@ -169,7 +168,7 @@ export const PublicDashboard = React.forwardRef<HTMLDivElement, PublicDashboardP
        name="vanity"
       />
       <div
-       className={clsx(
+       className={cn(
         {
          "!border-red-400 focus:!border-red-400": vanityError,
          "peer-focus:!border-button-primary border-neutral-800": !vanityError,
@@ -187,13 +186,13 @@ export const PublicDashboard = React.forwardRef<HTMLDivElement, PublicDashboardP
    </div>
    {isEnabled && (
     <div className="flex mt-4 flex-col">
-     <Header className={twMerge(headerVariants({ variant: "h3" }))}>
+     <Header className={cn(headerVariants({ variant: "h3" }))}>
       <Icons.Sparkles className={iconVariants({ variant: "large" })} />
       Your public dashboard is live!
      </Header>
      <span className="mt-2 mb-4 leading-none text-white/70">Note: The dashboard is available to everyone, regardless of whether they are a member of your server.</span>
      <div className="flex flex-row flex-wrap gap-4">
-      <Link href={`/server/${encodeURIComponent(vanity)}`} className={twMerge(buttonVariants({ variant: "primary" }), "w-fit")}>
+      <Link href={`/server/${encodeURIComponent(vanity)}`} className={cn(buttonVariants({ variant: "primary" }), "w-fit")}>
        <Icons.viewing className={iconVariants({ variant: "button" })} /> Preview
       </Link>
       <Button

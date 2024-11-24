@@ -1,6 +1,6 @@
 import Header, { headerVariants } from "@/components/Headers";
 import React, { HTMLAttributes } from "react";
-import { twMerge } from "tailwind-merge";
+import { cn } from "@/lib/utils";
 
 interface GraphCardProps extends HTMLAttributes<HTMLDivElement> {
  title: string;
@@ -11,12 +11,12 @@ interface GraphCardProps extends HTMLAttributes<HTMLDivElement> {
 }
 
 export const GraphCard = React.forwardRef<HTMLDivElement, GraphCardProps>(({ children, title, description, value, icon, graph, className, ...props }, ref) => (
- <div ref={ref} className={twMerge("mt-4 overflow-auto rounded-lg border border-neutral-800 bg-background-secondary p-4", className)} {...props}>
+ <div ref={ref} className={cn("mt-4 overflow-auto rounded-lg border border-neutral-800 bg-background-secondary p-4", className)} {...props}>
   <div className="flex flex-row items-center justify-between">
    <div className="flex flex-row items-center gap-4">
     {icon}
     <div className="flex flex-col">
-     <Header className={twMerge(headerVariants({ variant: "h4" }), "justify-start whitespace-nowrap")}>{title}</Header>
+     <Header className={cn(headerVariants({ variant: "h4" }), "justify-start whitespace-nowrap")}>{title}</Header>
      <p className="text-sm text-gray-400">{description}</p>
     </div>
    </div>

@@ -1,13 +1,13 @@
 import Header, { headerVariants } from "@/components/Headers";
 import { Icons, iconVariants } from "@/components/Icons";
 import { Skeleton } from "@/components/Skeletons";
-import { twMerge } from "tailwind-merge";
+import { cn } from "@/lib/utils";
 
 export default function Loading() {
  return (
   <div className="flex w-full flex-col items-center px-8 pb-8 pt-16 antialiased md:p-16">
    <div className="flex flex-col justify-center">
-    <Header className={twMerge(headerVariants({ variant: "h1", alignment: "center", margin: "normal" }))}>
+    <Header className={cn(headerVariants({ variant: "h1", alignment: "center", margin: "normal" }))}>
      <Icons.Navigation className={iconVariants({ variant: "extraLarge" })} />
      Choose a server
     </Header>

@@ -2,7 +2,7 @@
 
 "use client";
 
-import clsx from "clsx";
+import { cn } from "@/lib/utils";
 import { useEffect } from "react";
 import { useTable, useSortBy, usePagination, useGlobalFilter } from "react-table";
 import { ViewSelect } from "./ViewSelect";
@@ -75,7 +75,7 @@ export function Table({
              <Icons.arrowUp
               className={iconVariants({
                variant: "small",
-               className: clsx("absolute size-4 duration-200", {
+               className: cn("absolute size-4 duration-200", {
                 "scale-0": column.isSortedDesc,
                 "scale-100": !column.isSortedDesc,
                 "opacity-0": !column.isSorted,
@@ -85,7 +85,7 @@ export function Table({
              <Icons.arrowDown
               className={iconVariants({
                variant: "small",
-               className: clsx("absolute size-4 duration-200", {
+               className: cn("absolute size-4 duration-200", {
                 "scale-0": !column.isSortedDesc,
                 "scale-100": column.isSortedDesc,
                 "opacity-0": !column.isSorted,

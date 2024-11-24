@@ -3,7 +3,6 @@ import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { GeistSans } from "geist/font/sans";
 import { Toaster } from "sonner";
-import { twMerge } from "tailwind-merge";
 import ProgressBar from "@/components/client/shared/ProgressBar";
 import { Session } from "@/components/client/shared/Session";
 import { Footer } from "@/components/Footer";
@@ -14,6 +13,7 @@ import { Nav } from "@/components/nav/server/Nav";
 import { TailwindIndicator } from "@/components/TailwindIndicator";
 import "styles/globals.css";
 import type { Metadata } from "next";
+import { cn } from "@/lib/utils";
 
 export const metadata: Metadata = {
  metadataBase: new URL(dashboardConfig.url),
@@ -62,7 +62,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   <Session>
    <html lang="en">
     <head>{process.env.HOTJAR_ID && <Hotjar id={process.env.HOTJAR_ID} />}</head>
-    <body className={twMerge("bg-background-primary text-white antialiased", GeistSans.className)}>
+    <body className={cn("bg-background-primary text-white antialiased", GeistSans.className)}>
      <ProgressBar />
      <VisibilityProvider>
       <Nav theme="full" />

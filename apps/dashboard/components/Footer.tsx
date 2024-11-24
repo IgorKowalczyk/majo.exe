@@ -1,13 +1,12 @@
 "use client";
 
 import { dashboardConfig } from "@majoexe/config";
-import clsx from "clsx";
+import { cn } from "@/lib/utils";
 import Link from "next/link";
 import { useSelectedLayoutSegment, usePathname } from "next/navigation";
 import { Icons } from "./Icons";
 import { buttonVariants } from "@/components/Buttons";
 import Image from "@/components/client/shared/Image";
-import { twMerge } from "tailwind-merge";
 import React, { HTMLAttributes } from "react";
 
 export const Footer = React.forwardRef<HTMLDivElement, HTMLAttributes<HTMLDivElement>>(({ className, ...props }, ref) => {
@@ -18,7 +17,7 @@ export const Footer = React.forwardRef<HTMLDivElement, HTMLAttributes<HTMLDivEle
   <footer
    {...props}
    ref={ref}
-   className={clsx(
+   className={cn(
     {
      "!w-full md:!pl-[18rem]": segment === "dashboard" && pathname !== "/dashboard",
      "w-full xl:w-4/5": segment !== "dashboard" || pathname === "/dashboard",
@@ -54,7 +53,7 @@ export const Footer = React.forwardRef<HTMLDivElement, HTMLAttributes<HTMLDivEle
           by clicking here
          </Link>
          .
-         <Link className={twMerge(buttonVariants({ variant: "primary" }), "mt-3 w-fit")} href="https://majoexe.xyz/invite">
+         <Link className={cn(buttonVariants({ variant: "primary" }), "mt-3 w-fit")} href="https://majoexe.xyz/invite">
           <Icons.Sparkles className="mr-2 size-5" />
           Invite original Majo.exe
          </Link>

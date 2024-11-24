@@ -12,7 +12,7 @@ import { DeleteServerData } from "@/components/client/settings/DeleteServerData"
 import { PublicDashboard } from "@/components/client/settings/PublicDashboard";
 import Header, { headerVariants } from "@/components/Headers";
 import { Icons, iconVariants } from "@/components/Icons";
-import { twMerge } from "tailwind-merge";
+import { cn } from "@/lib/utils";
 import Link from "next/link";
 
 export default async function Page(props: { params: Promise<{ server: string }> }) {
@@ -44,13 +44,13 @@ export default async function Page(props: { params: Promise<{ server: string }> 
 
  return (
   <>
-   <Header className={twMerge(headerVariants({ variant: "h1", margin: "normal" }))}>
+   <Header className={cn(headerVariants({ variant: "h1", margin: "normal" }))}>
     <Icons.Settings className={iconVariants({ variant: "extraLarge" })} />
     Settings
    </Header>
    <p className="mb-4 text-left text-base md:text-lg">Configure the settings of the bot in your server.</p>
    <Block className="mt-4">
-    <Header className={twMerge(headerVariants({ variant: "h2" }))}>
+    <Header className={cn(headerVariants({ variant: "h2" }))}>
      <Icons.paintBrush className={iconVariants({ variant: "large", className: "!stroke-2" })} />
      Default Embed Color
     </Header>
@@ -59,7 +59,7 @@ export default async function Page(props: { params: Promise<{ server: string }> 
    </Block>
 
    <Block className="mt-4">
-    <Header className={twMerge(headerVariants({ variant: "h2" }))}>
+    <Header className={cn(headerVariants({ variant: "h2" }))}>
      <Icons.ShieldCheck className={iconVariants({ variant: "large", className: "!stroke-2" })} />
      Dashboard Access
     </Header>
@@ -86,7 +86,7 @@ export default async function Page(props: { params: Promise<{ server: string }> 
     </div>
    </Block>
    <Block className="mt-4">
-    <Header className={twMerge(headerVariants({ variant: "h2" }))}>
+    <Header className={cn(headerVariants({ variant: "h2" }))}>
      <Icons.Users className={iconVariants({ variant: "large", className: "!stroke-2" })} />
      Public Dashboard
     </Header>
@@ -96,7 +96,7 @@ export default async function Page(props: { params: Promise<{ server: string }> 
 
     <div className="mb-4 grid grid-cols-1 gap-4 lg:grid-cols-2">
      <Block className="flex flex-col items-start justify-start gap-2">
-      <Header className={twMerge(headerVariants({ variant: "h3" }))}>
+      <Header className={cn(headerVariants({ variant: "h3" }))}>
        <Icons.Check className={iconVariants({ variant: "large", className: "stroke-green-500" })} />
        Things that are shown:
       </Header>
@@ -108,7 +108,7 @@ export default async function Page(props: { params: Promise<{ server: string }> 
       </ul>
      </Block>
      <Block className="flex flex-col items-start justify-start gap-2">
-      <Header className={twMerge(headerVariants({ variant: "h3" }))}>
+      <Header className={cn(headerVariants({ variant: "h3" }))}>
        <Icons.close className={iconVariants({ variant: "large", className: "stroke-red-400" })} />
        Things that are not shown:
       </Header>
@@ -124,20 +124,20 @@ export default async function Page(props: { params: Promise<{ server: string }> 
     <PublicDashboard enabled={Boolean(guild.publicPage)} serverId={serverDownload.id} vanityURL={guild.vanity || guild.guildId} />
    </Block>
    <Block className="mt-4">
-    <Header className={twMerge(headerVariants({ variant: "h2" }))}>
+    <Header className={cn(headerVariants({ variant: "h2" }))}>
      <Icons.Download className={iconVariants({ variant: "large", className: "!stroke-2" })} />
      Download data
     </Header>
     <p className="mt-2 leading-none text-white/70">
      Download all server data in a <code>.json</code> file. This includes logs, settings, moderation and more.
     </p>
-    <Link href={`/api/settings/download/${serverDownload.id}`} className={twMerge(buttonVariants({ variant: "primary" }), "mt-4 w-fit")} target="_blank">
+    <Link href={`/api/settings/download/${serverDownload.id}`} className={cn(buttonVariants({ variant: "primary" }), "mt-4 w-fit")} target="_blank">
      <Icons.Download className={iconVariants({ variant: "button" })} />
      Download data
     </Link>
    </Block>
    <Block theme="danger" className="mt-4">
-    <Header className={twMerge(headerVariants({ variant: "h2" }))}>
+    <Header className={cn(headerVariants({ variant: "h2" }))}>
      <Icons.warning className={iconVariants({ variant: "large", className: "stroke-red-400 stroke-2" })} />
      Delete server data
     </Header>

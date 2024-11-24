@@ -1,11 +1,11 @@
 import { dashboardConfig } from "@majoexe/config";
 import Image from "next/image";
-import { twMerge } from "tailwind-merge";
+import { cn } from "@/lib/utils";
 import { Icons, iconVariants } from "./Icons";
 import React, { HTMLAttributes } from "react";
 
 export const Embed = React.forwardRef<HTMLDivElement, HTMLAttributes<HTMLDivElement> & { color: string; buttons?: React.ReactNode }>(({ className, children, color, buttons, ...props }, ref) => (
- <div className={twMerge("flex w-full max-w-[432px] items-start gap-1", className)} {...props} ref={ref}>
+ <div className={cn("flex w-full max-w-[432px] items-start gap-1", className)} {...props} ref={ref}>
   <Image src={dashboardConfig.logo} alt={"Bot logo"} quality={95} width={40} height={40} className="size-10 shrink-0 self-baseline rounded-full" />
   <div className="flex w-full flex-col">
    <div className="ml-1 flex h-10 flex-row items-center">
@@ -28,9 +28,9 @@ export const Embed = React.forwardRef<HTMLDivElement, HTMLAttributes<HTMLDivElem
  </div>
 ));
 
-export const EmbedTitle = React.forwardRef<HTMLParagraphElement, HTMLAttributes<HTMLParagraphElement>>(({ className, ...props }, ref) => <p ref={ref} className={twMerge("mb-2 font-bold", className)} {...props} />);
+export const EmbedTitle = React.forwardRef<HTMLParagraphElement, HTMLAttributes<HTMLParagraphElement>>(({ className, ...props }, ref) => <p ref={ref} className={cn("mb-2 font-bold", className)} {...props} />);
 
-export const EmbedDescription = React.forwardRef<HTMLParagraphElement, HTMLAttributes<HTMLParagraphElement>>(({ className, ...props }, ref) => <p ref={ref} className={twMerge("prose prose-invert", className)} {...props} />);
+export const EmbedDescription = React.forwardRef<HTMLParagraphElement, HTMLAttributes<HTMLParagraphElement>>(({ className, ...props }, ref) => <p ref={ref} className={cn("prose prose-invert", className)} {...props} />);
 
 interface EmbedImageProps {
  src?: string;

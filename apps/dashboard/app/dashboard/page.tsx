@@ -1,5 +1,4 @@
 import { getMemberGuilds, isBotInServer } from "@majoexe/util/functions/guild";
-import clsx from "clsx";
 import { getSession } from "lib/session";
 import Link from "next/link";
 import { redirect } from "next/navigation";
@@ -7,7 +6,7 @@ import { buttonVariants } from "@/components/Buttons";
 import Image from "@/components/client/shared/Image";
 import Header, { headerVariants } from "@/components/Headers";
 import { Icons, iconVariants } from "@/components/Icons";
-import { twMerge } from "tailwind-merge";
+import { cn } from "@/lib/utils";
 
 export default async function Dashboard() {
  const session = await getSession();
@@ -32,7 +31,7 @@ export default async function Dashboard() {
     <div className="mt-4 flex flex-row flex-wrap justify-center gap-4 sm:flex-col">
      {servers && servers.length > 0 ? (
       <>
-       <Header className={twMerge(headerVariants({ variant: "h1", alignment: "center", margin: "normal" }))}>
+       <Header className={cn(headerVariants({ variant: "h1", alignment: "center", margin: "normal" }))}>
         <Icons.Navigation className={iconVariants({ variant: "extraLarge" })} />
         Choose a server
        </Header>
@@ -41,14 +40,14 @@ export default async function Dashboard() {
         <div key={server.id}>
          <div className="hidden flex-row items-center justify-start gap-4 sm:flex">
           {server.icon ? <Image src={`https://cdn.discordapp.com/icons/${server.id}/${server.icon}.${server.icon.startsWith("a_") ? "gif" : "png"}`} alt={server.name} quality={95} width={64} height={64} className="size-16 shrink-0 rounded-full" /> : <div className="size-16 shrink-0 rounded-full bg-button-secondary" />}
-          <Header className={twMerge(headerVariants({ variant: "h3" }))}>{server.name}</Header>
+          <Header className={cn(headerVariants({ variant: "h3" }))}>{server.name}</Header>
           <>
            {server.bot ? (
-            <Link href={`/dashboard/${server.id}`} className={twMerge(buttonVariants({ variant: "primary" }), "ml-auto")}>
+            <Link href={`/dashboard/${server.id}`} className={cn(buttonVariants({ variant: "primary" }), "ml-auto")}>
              <Icons.Plus className={iconVariants({ variant: "button" })} /> Manage
             </Link>
            ) : (
-            <Link href={`/api/invite/${server.id}`} className={twMerge(buttonVariants({ variant: "secondary" }), "ml-auto cursor-copy")}>
+            <Link href={`/api/invite/${server.id}`} className={cn(buttonVariants({ variant: "secondary" }), "ml-auto cursor-copy")}>
              <Icons.Plus className={iconVariants({ variant: "button" })} /> Add bot
             </Link>
            )}
@@ -63,7 +62,7 @@ export default async function Dashboard() {
              quality={95}
              width={64}
              height={64}
-             className={clsx(
+             className={cn(
               {
                "opacity-20": !server.bot,
               },
@@ -72,7 +71,7 @@ export default async function Dashboard() {
             />
            ) : (
             <div
-             className={clsx(
+             className={cn(
               {
                "opacity-20": !server.bot,
               },
@@ -87,16 +86,16 @@ export default async function Dashboard() {
       </>
      ) : (
       <div className="flex flex-col items-center justify-center">
-       <Header className={twMerge(headerVariants({ variant: "h1", alignment: "center", margin: "normal" }))}>
+       <Header className={cn(headerVariants({ variant: "h1", alignment: "center", margin: "normal" }))}>
         <Icons.TriangleAlert className={iconVariants({ variant: "extraLarge" })} />
         You don't have any servers!
        </Header>
        <p className="mb-6 text-center text-base md:text-xl text-white/50">It seems like you're not in any servers that you can manage, try joining a server or creating one.</p>
        <div className="flex flex-wrap justify-center gap-4">
-        <Link href="/api/invite" className={twMerge(buttonVariants({ variant: "primary" }))}>
+        <Link href="/api/invite" className={cn(buttonVariants({ variant: "primary" }))}>
          <Icons.Plus className={iconVariants({ variant: "button" })} /> Add bot
         </Link>
-        <Link href="/" className={twMerge(buttonVariants({ variant: "secondary" }))}>
+        <Link href="/" className={cn(buttonVariants({ variant: "secondary" }))}>
          <Icons.Home className={iconVariants({ variant: "button" })} /> Go home
         </Link>
        </div>

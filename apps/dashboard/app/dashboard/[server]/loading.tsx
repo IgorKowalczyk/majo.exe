@@ -3,7 +3,7 @@ import { CategoryBar } from "@/components/CategoryBar";
 import Header, { headerVariants } from "@/components/Headers";
 import { Icons, iconVariants } from "@/components/Icons";
 import { Skeleton } from "@/components/Skeletons";
-import { twMerge } from "tailwind-merge";
+import { cn } from "@/lib/utils";
 
 export default function Loading() {
  return (
@@ -21,7 +21,7 @@ export default function Loading() {
       <div className="flex flex-row items-center gap-4">
        <Icons.userAdd className={iconVariants({ variant: "extraLarge" })} />
        <div className="flex flex-col">
-        <Header className={twMerge(headerVariants({ variant: "h4" }), "justify-start whitespace-nowrap")}>
+        <Header className={cn(headerVariants({ variant: "h4" }), "justify-start whitespace-nowrap")}>
          New members
          <span className="rounded-md bg-accent-primary px-2 text-sm font-normal text-white">Loading...</span>
         </Header>
@@ -37,7 +37,7 @@ export default function Loading() {
       <div className="flex flex-row items-center gap-4">
        <Icons.commentAdd className={iconVariants({ variant: "extraLarge" })} />
        <div className="flex flex-col">
-        <Header className={twMerge(headerVariants({ variant: "h4" }), "justify-start whitespace-nowrap")}>
+        <Header className={cn(headerVariants({ variant: "h4" }), "justify-start whitespace-nowrap")}>
          Messages sent
          <span className="rounded-md bg-accent-primary px-2 text-sm font-normal text-white">Loading...</span>
         </Header>
@@ -53,7 +53,7 @@ export default function Loading() {
       <div className="flex flex-row items-center gap-4">
        <Icons.userMinus className={iconVariants({ variant: "extraLarge" })} />
        <div className="flex flex-col">
-        <Header className={twMerge(headerVariants({ variant: "h4" }), "justify-start whitespace-nowrap")}>
+        <Header className={cn(headerVariants({ variant: "h4" }), "justify-start whitespace-nowrap")}>
          Members left
          <span className="rounded-md bg-accent-primary px-2 text-sm font-normal text-white">Loading...</span>
         </Header>
@@ -67,7 +67,7 @@ export default function Loading() {
    <div className="mt-6 block gap-6 lg:flex lg:items-start">
     <div className="flex flex-col justify-start gap-6 overflow-x-scroll [flex:3_1_0]">
      <Block>
-      <Header className={twMerge(headerVariants({ variant: "h4", margin: "normal" }), "block")}>
+      <Header className={cn(headerVariants({ variant: "h4", margin: "normal" }), "block")}>
        <span className="flex flex-row flex-wrap items-center gap-2">
         <Icons.Gauge className={iconVariants({ variant: "normal", className: "!stroke-2" })} />
         <span className="opacity-80">Server Score: </span>
@@ -81,14 +81,14 @@ export default function Loading() {
      </Block>
 
      <Block className="scrollbar-show">
-      <Header className={twMerge(headerVariants({ variant: "h4", margin: "wide" }), "items-start justify-normal opacity-80")}>Leaderboard</Header>
+      <Header className={cn(headerVariants({ variant: "h4", margin: "wide" }), "items-start justify-normal opacity-80")}>Leaderboard</Header>
       <Skeleton className="h-64 w-full" />
      </Block>
     </div>
 
     <div className="mt-6 flex flex-col justify-start gap-6 [flex:2_1_0%] lg:mt-0">
      <Block>
-      <Header className={twMerge(headerVariants({ variant: "h4", margin: "wide" }), "items-start justify-normal opacity-80")}>
+      <Header className={cn(headerVariants({ variant: "h4", margin: "wide" }), "items-start justify-normal opacity-80")}>
        Quick Stats
        <span className="ml-auto font-medium opacity-60">Loading...</span>
       </Header>
@@ -104,7 +104,7 @@ export default function Loading() {
       </div>
      </Block>
      <Block>
-      <Header className={twMerge(headerVariants({ variant: "h4", margin: "wide" }), "items-start justify-normal opacity-80")}>
+      <Header className={cn(headerVariants({ variant: "h4", margin: "wide" }), "items-start justify-normal opacity-80")}>
        Emojis
        <span className="ml-auto font-medium opacity-60">Loading...</span>
       </Header>
@@ -117,7 +117,7 @@ export default function Loading() {
      </Block>
 
      <Block>
-      <Header className={twMerge(headerVariants({ variant: "h4", margin: "wide" }), "items-start justify-normal opacity-80")}>
+      <Header className={cn(headerVariants({ variant: "h4", margin: "wide" }), "items-start justify-normal opacity-80")}>
        Stickers
        <span className="ml-auto font-medium opacity-60">Loading...</span>
       </Header>

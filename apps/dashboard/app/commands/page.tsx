@@ -7,7 +7,7 @@ import Image from "@/components/client/shared/Image";
 import Header, { headerVariants } from "@/components/Headers";
 import { Command } from "@/lib/types";
 import { ApplicationCommandOptionType } from "discord-api-types/v10";
-import { twMerge } from "tailwind-merge";
+import { cn } from "@/lib/utils";
 
 export const revalidate = 3600; // 1 hour
 
@@ -57,7 +57,7 @@ export default async function CommandsPage() {
   <div className="flex w-full flex-col items-center px-8 pb-8 pt-16 antialiased md:p-16">
    <div className="flex flex-col justify-center gap-4">
     <Image src={dashboardConfig.logo} alt="Majo.exe logo" quality={100} width={112} height={112} className="mx-auto size-28 shrink-0 rounded-full" />
-    <Header className={twMerge(headerVariants({ variant: "h1", alignment: "center", effects: "gradient" }))}>Majo.exe Commands</Header>
+    <Header className={cn(headerVariants({ variant: "h1", alignment: "center", effects: "gradient" }))}>Majo.exe Commands</Header>
     <p className="max-w-3xl text-center text-xl text-white/50">
      <Balancer>
       Check out all the commands available for Majo.exe. There are currently <span className="text-accent-primary">{newCommands.length}</span> commands in <span className="text-accent-primary">{categories.length}</span> categories.
