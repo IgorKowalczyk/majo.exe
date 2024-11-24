@@ -6,7 +6,7 @@
   "exports": {
     "./database": "./database/index.js",
     "./database/*": "./database/*",
-    "./embeds": "./embeds/index.js",
+    "./embeds": "./embeds/index.ts",
     "./embeds/*": "./embeds/*",
     "./functions/automod": "./functions/automod/index.ts",
     "./functions/automod/*": "./functions/automod/*",
