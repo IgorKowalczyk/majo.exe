@@ -193,13 +193,13 @@ export const PublicDashboard = React.forwardRef<HTMLDivElement, PublicDashboardP
      </Header>
      <span className="mt-2 mb-4 leading-none text-white/70">Note: The dashboard is available to everyone, regardless of whether they are a member of your server.</span>
      <div className="flex flex-row flex-wrap gap-4">
-      <Link href={`/server/${vanity}`} className={twMerge(buttonVariants({ variant: "primary" }), "w-fit")}>
+      <Link href={`/server/${encodeURIComponent(vanity)}`} className={twMerge(buttonVariants({ variant: "primary" }), "w-fit")}>
        <Icons.viewing className={iconVariants({ variant: "button" })} /> Preview
       </Link>
       <Button
        variant="secondary"
        onClick={() => {
-        navigator.clipboard.writeText(`${process.env.NEXT_PUBLIC_URL}/server/${vanity}`);
+        navigator.clipboard.writeText(`${process.env.NEXT_PUBLIC_URL}/server/${encodeURIComponent(vanity)}`);
         toast.success("Link copied to clipboard!");
        }}
        className="w-fit"
