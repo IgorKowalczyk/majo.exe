@@ -24,6 +24,7 @@ export default {
   try {
    const text = interaction.options.getString("text");
    if (!text) return client.errorMessages.createSlashError(interaction, "❌ Please provide a valid text for the note.");
+   if (text.length > 256) return client.errorMessages.createSlashError(interaction, "❌ The text must be less than 256 characters.");
 
    const background = await loadImage("./util/images/files/note.png");
    const canvas = createCanvas(background.width, background.height);
@@ -31,14 +32,13 @@ export default {
    context.drawImage(background, 0, 0, canvas.width, canvas.height);
 
    const x = text.length;
-   const fontSize = Math.floor(0.0003 * (x * x) - 0.19 * x + 35.37);
+   const fontSize = Math.floor(0.0003 * (x * x) - 0.19 * x + 35.37) || 35;
    context.font = `${fontSize}px Arial`;
    context.fillStyle = "#000000";
    context.translate(425, 445);
    context.rotate(0.53);
    const lines = getLines(context, text, 160);
 
-   // place the text on 423, 455
    lines.forEach((line, i) => {
     context.fillText(line, 0, i * fontSize);
    });
