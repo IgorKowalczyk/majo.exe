@@ -7,10 +7,11 @@ import { twMerge } from "tailwind-merge";
 export default function Loading() {
  return (
   <>
-   <Header className={twMerge(headerVariants({ variant: "h1" }))}>
+   <Header className={twMerge(headerVariants({ variant: "h1", margin: "normal" }))}>
     <Icons.PackagePlus className={iconVariants({ variant: "extraLarge" })} />
     Modules
    </Header>
+   <p className="mb-4 text-left text-base md:text-lg">Choose which modules you want to be enabled on your server.</p>
 
    <Block className="mt-4">
     <Header className={twMerge(headerVariants({ variant: "h2" }))}>

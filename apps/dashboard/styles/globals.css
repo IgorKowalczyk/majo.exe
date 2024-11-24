@@ -100,7 +100,7 @@ canvas {
 }
 
 code {
- @apply bg-background-secondary inline-block rounded-md border border-neutral-800 px-2 py-1;
+ @apply bg-background-secondary inline rounded-md border border-neutral-800 px-2 py-1;
 }
 
 .from-black-10\/50 {

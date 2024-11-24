@@ -8,10 +8,11 @@ import { twMerge } from "tailwind-merge";
 export default function Loading() {
  return (
   <>
-   <Header className={twMerge(headerVariants({ variant: "h1" }))}>
+   <Header className={twMerge(headerVariants({ variant: "h1", margin: "normal" }))}>
     <Icons.messageCode className={iconVariants({ variant: "extraLarge" })} />
     Custom messages
    </Header>
+   <p className="mb-4 text-left text-base md:text-lg">Customize the messages that are sent to your server members.</p>
 
    <Block className="mt-4 !overflow-x-visible">
     <Header className={twMerge(headerVariants({ variant: "h2" }))}>

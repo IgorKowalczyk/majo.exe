@@ -9,7 +9,7 @@ import { Block } from "@/components/Block";
 import { buttonVariants } from "@/components/Buttons";
 import { ChangeEmbedColor } from "@/components/client/settings/ChangeEmbedColor";
 import DeleteServerData from "@/components/client/settings/DeleteServerData";
-import { EnablePublicDashboard } from "@/components/client/settings/EnablePublicDashboard";
+import { PublicDashboard } from "@/components/client/settings/PublicDashboard";
 import Header, { headerVariants } from "@/components/Headers";
 import { Icons, iconVariants } from "@/components/Icons";
 import { twMerge } from "tailwind-merge";
@@ -44,10 +44,11 @@ export default async function Page(props: { params: Promise<{ server: string }> 
 
  return (
   <>
-   <Header className={twMerge(headerVariants({ variant: "h1" }))}>
+   <Header className={twMerge(headerVariants({ variant: "h1", margin: "normal" }))}>
     <Icons.Settings className={iconVariants({ variant: "extraLarge" })} />
     Settings
    </Header>
+   <p className="mb-4 text-left text-base md:text-lg">Configure the settings of the bot in your server.</p>
    <Block className="mt-4">
     <Header className={twMerge(headerVariants({ variant: "h2" }))}>
      <Icons.paintBrush className={iconVariants({ variant: "large", className: "!stroke-2" })} />
@@ -96,7 +97,7 @@ export default async function Page(props: { params: Promise<{ server: string }> 
     <div className="mb-4 grid grid-cols-1 gap-4 lg:grid-cols-2">
      <Block className="flex flex-col items-start justify-start gap-2">
       <Header className={twMerge(headerVariants({ variant: "h3" }))}>
-       <Icons.Check className={iconVariants({ variant: "large", className: "rounded-md border border-green-400 stroke-green-400 p-1" })} />
+       <Icons.Check className={iconVariants({ variant: "large", className: "stroke-green-500" })} />
        Things that are shown:
       </Header>
       <ul className="list-inside list-disc">
@@ -108,7 +109,7 @@ export default async function Page(props: { params: Promise<{ server: string }> 
      </Block>
      <Block className="flex flex-col items-start justify-start gap-2">
       <Header className={twMerge(headerVariants({ variant: "h3" }))}>
-       <Icons.close className={iconVariants({ variant: "large", className: "rounded-md border border-red-400 stroke-red-400 p-1" })} />
+       <Icons.close className={iconVariants({ variant: "large", className: "stroke-red-400" })} />
        Things that are not shown:
       </Header>
       <ul className="list-inside list-disc">
@@ -120,15 +121,7 @@ export default async function Page(props: { params: Promise<{ server: string }> 
      </Block>
     </div>
 
-    <EnablePublicDashboard enabled={Boolean(guild.publicPage)} serverId={serverDownload.id} vanityURL={guild.vanity || guild.guildId} />
-
-    <div className="my-4 flex flex-row flex-wrap items-start whitespace-nowrap rounded-md border border-accent-primary bg-accent-primary/10 p-4">
-     <span className="mr-1 flex flex-row items-center whitespace-nowrap font-bold">
-      <Icons.Info className={iconVariants({ variant: "normal", className: "stroke-accent-primary mr-1" })} />
-      Note:
-     </span>
-     <span className="whitespace-normal">The public dashboard will be visible to everyone with the link!</span>
-    </div>
+    <PublicDashboard enabled={Boolean(guild.publicPage)} serverId={serverDownload.id} vanityURL={guild.vanity || guild.guildId} />
    </Block>
    <Block className="mt-4">
     <Header className={twMerge(headerVariants({ variant: "h2" }))}>

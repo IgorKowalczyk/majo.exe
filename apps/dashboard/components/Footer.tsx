@@ -20,7 +20,7 @@ export const Footer = React.forwardRef<HTMLDivElement, HTMLAttributes<HTMLDivEle
    ref={ref}
    className={clsx(
     {
-     "!w-full md:!pl-[17.5rem]": segment === "dashboard" && pathname !== "/dashboard",
+     "!w-full md:!pl-[18rem]": segment === "dashboard" && pathname !== "/dashboard",
      "w-full xl:w-4/5": segment !== "dashboard" || pathname === "/dashboard",
     },
     "mx-auto px-4 py-10 md:px-8 lg:px-16",

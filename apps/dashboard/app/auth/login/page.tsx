@@ -38,12 +38,12 @@ export default async function LoginPage(props: { searchParams: Promise<{ error: 
     {searchParams.error ? (
      <>
       <Header className={headerVariants({ variant: "h1", alignment: "center" })}>Something went wrong!</Header>
-      <p className="my-1 mt-2 text-center text-xl text-[#939DB8]">Something went wrong while trying to connect your Discord account!</p>
+      <p className="my-1 mt-2 text-center text-xl text-white/50">Something went wrong while trying to connect your Discord account!</p>
      </>
     ) : (
      <>
       <Header className={headerVariants({ variant: "h1", alignment: "center" })}>Connect your account</Header>
-      <p className="my-1 mt-2 text-center text-xl text-[#939DB8]">Authorize your Discord account to use all the Majo.exe features</p>
+      <p className="my-1 mt-2 text-center text-xl text-white/50">Authorize your Discord account to use all the Majo.exe features</p>
      </>
     )}
    </div>

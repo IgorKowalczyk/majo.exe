@@ -93,10 +93,11 @@ export default async function GiveawaysPage(props: { params: Promise<{ server: s
 
  return (
   <>
-   <Header className={twMerge(headerVariants({ variant: "h1" }))}>
+   <Header className={twMerge(headerVariants({ variant: "h1", margin: "normal" }))}>
     <Icons.Gift className={iconVariants({ variant: "extraLarge" })} />
     Giveaways
    </Header>
+   <p className="mb-4 text-left text-base md:text-lg">Create and manage giveaways for your server, let your members win some cool prizes</p>
    <Block className="mt-4 flex w-full overflow-auto">
     {data.length > 0 ? (
      <Giveaways data={data} />

@@ -1,19 +1,29 @@
 "use client";
 
 import clsx from "clsx";
-import { useState } from "react";
+import React, { useState } from "react";
 import { toast } from "sonner";
-import { Button } from "@/components/Buttons";
+import { Button, buttonVariants } from "@/components/Buttons";
 import Switch from "@/components/client/shared/Switch";
 import { Icons, iconVariants } from "@/components/Icons";
 import { Input } from "@/components/Input";
+import Link from "next/link";
+import { twMerge } from "tailwind-merge";
+import Header, { headerVariants } from "@/components/Headers";
 
-export function EnablePublicDashboard({ enabled, serverId, vanityURL }) {
+interface PublicDashboardProps {
+ enabled: boolean;
+ serverId: string;
+ vanityURL: string;
+ className?: string;
+}
+
+export const PublicDashboard = React.forwardRef<HTMLDivElement, PublicDashboardProps>(({ enabled, serverId, vanityURL, className, ...props }, ref) => {
  const [isEnabled, setIsEnabled] = useState(enabled);
  const [disabled, setDisabled] = useState(false);
  const [vanity, setVanity] = useState(vanityURL);
- const [vanityError, setVanityError] = useState(false);
- const [buttonText, setButtonText] = useState("Update vanity");
+ const [vanityError, setVanityError] = useState<string>();
+ const [buttonText, setButtonText] = useState("Save");
 
  const toggle = async () => {
   setDisabled(true);
@@ -62,26 +72,26 @@ export function EnablePublicDashboard({ enabled, serverId, vanityURL }) {
   }
  };
 
- const changeVanityText = (e) => {
+ const changeVanityText = (e: React.ChangeEvent<HTMLInputElement>) => {
   setVanity(e.target.value);
   if (e.target.value.length > 0) {
    if (!e.target.value.match(/^[a-zA-Z0-9]+$/)) {
     setVanityError("Vanity URL can only contain letters and numbers.");
    } else {
-    setVanityError(false);
+    setVanityError("");
    }
   }
   if (e.target.value.length > 20) {
    setVanityError("Vanity URL can only be 20 characters long.");
   }
   if (e.target.value.length === 0) {
-   setVanityError(false);
+   setVanityError("");
   }
  };
 
- const updateVanity = async (e) => {
+ const updateVanity = async (e: React.MouseEvent<HTMLButtonElement>) => {
   e.preventDefault();
-  setButtonText("Updating...");
+  setButtonText("Saving...");
   setVanityError("");
 
   const loading = toast.loading("Updating vanity...");
@@ -96,7 +106,7 @@ export function EnablePublicDashboard({ enabled, serverId, vanityURL }) {
    }),
   });
 
-  setButtonText("Update vanity");
+  setButtonText("Save");
 
   if (!res.ok) {
    try {
@@ -126,14 +136,22 @@ export function EnablePublicDashboard({ enabled, serverId, vanityURL }) {
  };
 
  return (
-  <div className="flex flex-col items-start justify-start gap-4">
-   <div className="mx-auto flex flex-col items-center justify-center gap-2 text-center font-bold md:mx-0 md:flex-row md:justify-start md:text-left">
-    Enable public dashboard overview:
-    <Switch enabled={isEnabled} onChange={toggle} disabled={disabled} />
+  <div className={twMerge("mt-6", className)} ref={ref} {...props}>
+   <div className="flex flex-row items-center gap-2">
+    <Header className={twMerge(headerVariants({ variant: "h3", margin: "normal" }))}>
+     <Icons.Power className={iconVariants({ variant: "large" })} />
+     Enable public dashboard overview:
+     <Switch enabled={isEnabled} onChange={toggle} disabled={disabled} />
+    </Header>
    </div>
-   <div className="mx-auto flex flex-col flex-wrap items-center justify-center gap-2 font-bold md:mx-0 md:flex-row md:justify-start">
-    Set server vanity URL:
-    <div className="flex flex-col flex-wrap items-center justify-start gap-2 md:flex-row">
+   <p className="text-white/70">Allow users to view a public dashboard of your server, even if they are not a member.</p>
+   <div className="mt-4">
+    <Header className={twMerge(headerVariants({ variant: "h3", margin: "normal" }))}>
+     <Icons.Link2 className={iconVariants({ variant: "large" })} />
+     Vanity URL:
+    </Header>
+    <p className="text-white/70">Customize the URL of your public dashboard.</p>
+    <div className="flex mt-2 flex-col flex-wrap items-center justify-start gap-2 md:flex-row">
      <div className="group flex flex-row-reverse items-center justify-start gap-0">
       <Input
        type="text"
@@ -162,17 +180,41 @@ export function EnablePublicDashboard({ enabled, serverId, vanityURL }) {
        {process.env.NEXT_PUBLIC_URL}/server/
       </div>
      </div>
-     <Button variant="primary" onClick={(e) => updateVanity(e)} disabled={disabled || vanityError || vanity.length === 0 || buttonText === "Updating..."} className="mx-auto font-normal md:mx-0">
-      {buttonText === "Updating..." ? <Icons.refresh className={iconVariants({ variant: "button", className: "animate-spin" })} /> : <Icons.Check className={iconVariants({ variant: "button" })} />} {buttonText}
+     <Button variant="primary" onClick={(e) => updateVanity(e)} disabled={disabled || !!vanityError || vanity.length === 0 || buttonText === "Saving..."} className="mx-auto font-normal md:mx-0">
+      {buttonText === "Saving..." ? <Icons.refresh className={iconVariants({ variant: "button", className: "animate-spin" })} /> : <Icons.Check className={iconVariants({ variant: "button" })} />} {buttonText}
      </Button>
     </div>
    </div>
+   {isEnabled && (
+    <div className="flex mt-4 flex-col">
+     <Header className={twMerge(headerVariants({ variant: "h3" }))}>
+      <Icons.Sparkles className={iconVariants({ variant: "large" })} />
+      Your public dashboard is live!
+     </Header>
+     <span className="mt-2 mb-4 leading-none text-white/70">Note: The dashboard is available to everyone, regardless of whether they are a member of your server.</span>
+     <div className="flex flex-row flex-wrap gap-4">
+      <Link href={`/server/${vanity}`} className={twMerge(buttonVariants({ variant: "primary" }), "w-fit")}>
+       <Icons.viewing className={iconVariants({ variant: "button" })} /> Preview
+      </Link>
+      <Button
+       variant="secondary"
+       onClick={() => {
+        navigator.clipboard.writeText(`${process.env.NEXT_PUBLIC_URL}/server/${vanity}`);
+        toast.success("Link copied to clipboard!");
+       }}
+       className="w-fit"
+      >
+       <Icons.Copy className={iconVariants({ variant: "button" })} /> Copy link
+      </Button>
+     </div>
+    </div>
+   )}
    {vanityError && (
-    <p className="flex items-center text-red-400">
+    <p className="flex mt-4 items-center text-red-400">
      <Icons.warning className={iconVariants({ variant: "normal", className: "mr-1" })} />
      {vanityError}
     </p>
    )}
   </div>
  );
-}
+});

@@ -12,7 +12,7 @@ import { twMerge } from "tailwind-merge";
 export default function Loading() {
  return (
   <>
-   <Header className={twMerge(headerVariants({ variant: "h1" }))}>
+   <Header className={twMerge(headerVariants({ variant: "h1", margin: "normal" }))}>
     <Icons.Bot className={iconVariants({ variant: "extraLarge" })} />
     Automod
    </Header>

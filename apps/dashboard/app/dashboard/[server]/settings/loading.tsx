@@ -8,10 +8,11 @@ import { twMerge } from "tailwind-merge";
 export default function Loading() {
  return (
   <>
-   <Header className={twMerge(headerVariants({ variant: "h1" }))}>
+   <Header className={twMerge(headerVariants({ variant: "h1", margin: "normal" }))}>
     <Icons.Settings className={iconVariants({ variant: "extraLarge" })} />
     Settings
    </Header>
+   <p className="mb-4 text-left text-base md:text-lg">Configure the settings of the bot in your server.</p>
    <Block className="mt-4">
     <Header className={twMerge(headerVariants({ variant: "h1" }))}>
      <Icons.paintBrush className={iconVariants({ variant: "large", className: "!stroke-2" })} />
@@ -20,7 +21,6 @@ export default function Loading() {
     <p className="mb-4 text-left">Change the color of the embeds sent by the bot. This will not affect embeds sent by other bots.</p>
     <Skeleton className="mt-10 h-60" />
    </Block>
-
    <Block className="mt-4">
     <Header className={twMerge(headerVariants({ variant: "h1" }))}>
      <Icons.ShieldCheck className={iconVariants({ variant: "large", className: "!stroke-2" })} />
@@ -55,7 +55,7 @@ export default function Loading() {
     <div className="mb-4 grid grid-cols-1 gap-4 lg:grid-cols-2">
      <Block className="flex flex-col items-start justify-start gap-2">
       <Header className={twMerge(headerVariants({ variant: "h3" }))}>
-       <Icons.Check className={iconVariants({ variant: "large", className: "rounded-md border border-green-400 stroke-green-400 p-1" })} />
+       <Icons.Check className={iconVariants({ variant: "large", className: "stroke-green-500" })} />
        Things that are shown:
       </Header>
       <ul className="list-inside list-disc">
@@ -67,7 +67,7 @@ export default function Loading() {
      </Block>
      <Block className="flex flex-col items-start justify-start gap-2">
       <Header className={twMerge(headerVariants({ variant: "h3" }))}>
-       <Icons.close className={iconVariants({ variant: "large", className: "rounded-md border border-red-400 stroke-red-400 p-1" })} />
+       <Icons.close className={iconVariants({ variant: "large", className: "stroke-red-400" })} />
        Things that are not shown:
       </Header>
       <ul className="list-inside list-disc">

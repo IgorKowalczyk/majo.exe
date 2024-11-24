@@ -1,4 +1,3 @@
-import { Block } from "@/components/Block";
 import Header, { headerVariants } from "@/components/Headers";
 import { Icons, iconVariants } from "@/components/Icons";
 import { Skeleton } from "@/components/Skeletons";
@@ -7,13 +6,12 @@ import { twMerge } from "tailwind-merge";
 export default function Loading() {
  return (
   <>
-   <Header className={twMerge(headerVariants({ variant: "h1" }))}>
+   <Header className={twMerge(headerVariants({ variant: "h1", margin: "normal" }))}>
     <Icons.Sparkles className={iconVariants({ variant: "extraLarge" })} />
     Leaderboard
    </Header>
-   <Block className="mt-4 flex w-full overflow-auto">
-    <Skeleton className="h-64 w-full" />
-   </Block>
+   <p className="mb-4 text-left text-base md:text-lg">View the leaderboard for your server, see who's the most active</p>
+   <Skeleton className="h-64 w-full" />
   </>
  );
 }

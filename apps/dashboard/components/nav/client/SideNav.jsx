@@ -2,10 +2,10 @@
 
 import clsx from "clsx";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { useContext } from "react";
 import { VisibilityContext } from "./VisibilityContext";
-import { buttonVariants } from "@/components/Buttons";
+import { Button, buttonVariants } from "@/components/Buttons";
 import { Icons, iconVariants } from "@/components/Icons";
 import { twMerge } from "tailwind-merge";
 
@@ -25,6 +25,7 @@ export function SideNavLink({ href, children }) {
 
 export function SideNav({ server }) {
  const { sideNavVisible, toggleSideNav } = useContext(VisibilityContext);
+ const router = useRouter();
 
  return (
   <>
@@ -39,9 +40,9 @@ export function SideNav({ server }) {
     )}
    >
     <div className="px-4">
-     <Link href="/dashboard" className={twMerge(buttonVariants({ variant: "primary" }), "mb-4 w-full")}>
-      <Icons.arrowLeft className={iconVariants({ variant: "button" })} /> Go back
-     </Link>
+     <Button onClick={() => router.back()} className={twMerge(buttonVariants({ variant: "primary" }), "mb-4 w-full")}>
+      <Icons.arrowLeft className={iconVariants({ variant: "button" })} /> Server list
+     </Button>
     </div>
 
     <div className="flex w-full flex-col items-center justify-center gap-2 border-t border-t-neutral-800 px-4 pt-4">
@@ -59,7 +60,7 @@ export function SideNav({ server }) {
      </SideNavLink>
      <SideNavLink href={`/dashboard/${server}/giveaways`}>
       <Icons.Gift className={iconVariants({ variant: "large" })} />
-      Giveaways
+      Giveaways<NavBadge>beta</NavBadge>
      </SideNavLink>
     </div>
 

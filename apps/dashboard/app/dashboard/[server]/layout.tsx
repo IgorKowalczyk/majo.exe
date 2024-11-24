@@ -31,7 +31,7 @@ export default async function Layout(props: { params: Promise<{ server: string }
  return (
   <>
    <SideNav server={params.server} />
-   <div className="ml-0 flex-1 p-6 pt-[5.5rem] md:pl-[17.5rem]">{children}</div>
+   <div className="ml-0 flex-1 p-6 pt-[5rem] md:pl-[18rem]">{children}</div>
   </>
  );
 }
