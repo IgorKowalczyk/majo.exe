@@ -5,7 +5,6 @@ import Link from "next/link";
 import avatar01 from "public/assets/avatars/01.webp";
 import avatar03 from "public/assets/avatars/03.webp";
 import avatar05 from "public/assets/avatars/05.webp";
-import globe from "public/assets/images/globe.png";
 import ray from "public/assets/ray.png";
 import tada from "public/assets/tada.svg";
 import tadaAnimated from "public/assets/tada_animated.gif";
@@ -141,7 +140,7 @@ export default async function HomePage() {
     </div>
     <Image alt="Background" width={1000} height={1000} className="pointer-events-none absolute inset-x-0 -top-20 z-0 mx-auto hidden size-full select-none lg:block" src={ray.src} loading="eager" />
     <div className="absolute bottom-0 z-10 hidden min-h-[500px] w-full translate-y-1/2 flex-col items-center justify-center md:flex">
-     <Image src={globe.src} alt="Globe" width={750} height={750} className="aspect-square max-w-full" />
+     <Image src="/assets/images/globe.png" alt="Globe" width={750} height={750} className="aspect-square max-w-full" loading="lazy" />
      {/* <GlobeClient /> */}
      <div className="absolute inset-0 -z-10 m-auto mt-[100px] size-[580px] rounded-full bg-[#ddd] opacity-5 blur-3xl" />
     </div>

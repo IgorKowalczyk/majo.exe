@@ -393,6 +393,9 @@ importers:
       '@majoexe/typescript-config':
         specifier: workspace:*
         version: link:../typescript-config
+      '@napi-rs/canvas':
+        specifier: 0.1.62
+        version: 0.1.62
       '@types/ms':
         specifier: 0.7.34
         version: 0.7.34

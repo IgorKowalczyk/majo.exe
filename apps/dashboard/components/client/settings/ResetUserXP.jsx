@@ -64,12 +64,12 @@ export function ResetUserXP({ userId, guildId }) {
 
    <Transition.Root appear show={isOpen} as={Fragment}>
     <Dialog as="div" unmount={true} className="relative z-[99999]" onClose={() => setIsOpen(false)}>
-     <Transition.Child as={Fragment} enter="ease-out duration-200 motion-reduce:transition-none" enterFrom="opacity-0" enterTo="opacity-100" leave="ease-in duration-200 motion-reduce:duration-[1ms]" leaveFrom="opacity-100" leaveTo="opacity-0">
+     <Transition.Child as={Fragment} enter="ease-out duration-200 motion-reduce:transition-none" enterFrom="opacity-0" enterTo="opacity-100" leave="ease-in duration-200 motion-reduce:duration-0" leaveFrom="opacity-100" leaveTo="opacity-0">
       <div className="firefox:bg-opacity-50 fixed inset-0 bg-black bg-opacity-25 backdrop-blur" />
      </Transition.Child>
      <div className="fixed inset-0 overflow-y-auto">
       <div className="flex min-h-full items-center justify-center p-4 text-center">
-       <Transition.Child as={Fragment} enter="transition ease-out duration-200 motion-reduce:transition-none" enterFrom="transform opacity-0 scale-95" enterTo="transform opacity-100 scale-100" leave="transition ease-in duration-100 motion-reduce:duration-[1ms]" leaveFrom="transform opacity-100 scale-100" leaveTo="transform opacity-0 scale-95">
+       <Transition.Child as={Fragment} enter="transition ease-out duration-200 motion-reduce:transition-none" enterFrom="transform opacity-0 scale-95" enterTo="transform opacity-100 scale-100" leave="transition ease-in duration-100 motion-reduce:duration-0" leaveFrom="transform opacity-100 scale-100" leaveTo="transform opacity-0 scale-95">
         <Dialog.Panel className="hide-scrollbar w-full max-w-lg overflow-visible rounded-md border border-neutral-800 bg-background-secondary p-6 text-left align-middle shadow-xl transition-all">
          <Dialog.Title as="h3" className="flex items-center text-xl font-semibold text-red-400 duration-200 motion-reduce:transition-none">
           <Icons.warning className={iconVariants({ variant: "large", className: "mr-2 !stroke-2" })} />

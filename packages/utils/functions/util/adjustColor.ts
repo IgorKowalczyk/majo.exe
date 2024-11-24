@@ -1,12 +1,4 @@
-/**
- * Adjusts the color by a percentage
- *
- * @param {string} hexColor The hex color to adjust
- * @param {number} percent The percentage to adjust the color by
- * @param {"darken" | "lighten"} action The action to perform on the color
- * @returns {string} The adjusted color
- **/
-export function adjustColor(hexColor, percent, action = "darken") {
+export function adjustColor(hexColor: string, percent: number, action: "darken" | "lighten" = "darken") {
  hexColor = hexColor.replace("#", "");
 
  const r = parseInt(hexColor.slice(0, 2), 16);

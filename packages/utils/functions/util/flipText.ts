@@ -1,4 +1,4 @@
-export const chars = {
+export const chars: { [key: string]: string } = {
  // uppercase
  A: "∀",
  B: "𐐒",
@@ -126,12 +126,13 @@ export const chars = {
  я: "ʁ",
 };
 
-export const flipText = (text) => {
+export const flipText = (text: string): string => {
  let result = "";
  for (let i = text.length - 1; i >= 0; i--) {
   const char = text[i];
-  const flipped = chars[char];
-  result += flipped ? flipped : char;
+  if (!char) continue;
+  const flipped = chars[char] !== undefined ? chars[char] : char;
+  result += flipped;
  }
  return result;
 };

@@ -1,15 +1,13 @@
-import { generateDates } from "./generateDates.js";
+import { generateDates } from "./generateDates";
 
-/**
- *  Fill missing dates in an array of objects
- *
- *  @param {Object[]} array - The array to fill
- *  @param {string} property - The property to fill in the array
- *  @returns {Object[]} The array with the missing dates filled
- */
-export function fillMissingDates(array, property) {
+interface DataEntry {
+ date: string;
+ [key: string]: any;
+}
+
+export function fillMissingDates(array: DataEntry[], property: string): DataEntry[] {
  const arrayDates = array.map((e) => new Date(e.date));
- let minDate = new Date(Math.min(...arrayDates));
+ let minDate = new Date(Math.min(...arrayDates.map((date) => date.getTime())));
  const today = new Date();
  const thirtyDaysAgo = new Date(today.getFullYear(), today.getMonth(), today.getDate() - 30);
 
@@ -18,10 +16,10 @@ export function fillMissingDates(array, property) {
 
  generateDates(minDate, today).forEach((date) => {
   const [dateString] = date.toISOString().split("T");
-  if (!dateSet.has(dateString)) {
+  if (dateString && !dateSet.has(dateString)) {
    array.push({ date: dateString, [property]: 0 });
   }
  });
 
- return array.sort((a, b) => new Date(a.date) - new Date(b.date));
+ return array.sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
 }

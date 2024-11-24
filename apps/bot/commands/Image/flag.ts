@@ -188,7 +188,9 @@ export default {
    const backgroundData = new Uint8Array(background);
 
    if (!backgroundData || backgroundData.length < 1) return client.errorMessages.createSlashError(interaction, "❌ The background data is undefined.");
+   /* @ts-expect-error - Invalid types */
    const height = backgroundData[6] + backgroundData[7] * 256;
+   /* @ts-expect-error - Invalid types */
    const width = backgroundData[8] + backgroundData[9] * 256;
 
    const gif = new GIFEncoder(width, height, "neuquant", true);

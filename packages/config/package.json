@@ -2,6 +2,7 @@
  "name": "@majoexe/config",
  "version": "6.0.0",
  "description": "Majo.exe shared config for all packages and projects",
+ "type": "module",
  "exports": {
   ".": "./index.ts",
   "./bot": "./configs/bot.ts",

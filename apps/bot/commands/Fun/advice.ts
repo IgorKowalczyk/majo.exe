@@ -1,11 +1,6 @@
-import { ImportJSON } from "@majoexe/util/functions/files/importJSON.js";
 import { ApplicationCommandType, ApplicationIntegrationType, EmbedBuilder, InteractionContextType } from "discord.js";
 import type { SlashCommand } from "@/util/types/Command";
-
-const advices = (await ImportJSON("advices")) as {
- id: number;
- advice: string;
-}[];
+import advices from "@majoexe/util/content/advices.json";
 
 export default {
  name: "advice",
