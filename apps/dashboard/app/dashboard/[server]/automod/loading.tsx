@@ -1,9 +1,6 @@
 import { Block } from "@/components/Block";
 import { Button } from "@/components/Buttons";
 import Header, { Header3, headerVariants } from "@/components/Headers";
-import "tippy.js/dist/backdrop.css";
-import "tippy.js/animations/shift-away.css";
-import "tippy.js/dist/tippy.css";
 import { Icons, iconVariants } from "@/components/Icons";
 import { NavBadge } from "@/components/nav/client/SideNav";
 import { Skeleton } from "@/components/Skeletons";

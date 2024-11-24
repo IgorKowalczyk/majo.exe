@@ -224,9 +224,7 @@ export const ChangeCustomMessages = React.forwardRef<HTMLDivElement, ChangeCusto
        </span> */}
        <Embed color={globalConfig.defaultColor}>
         <EmbedTitle>{(newTitle || defaultMessages.title).replaceAll(/{user}/g, replacedData.user).replaceAll(/{guild}/g, replacedData.guild)}</EmbedTitle>
-        <EmbedDescription>
-         <p className="prose prose-invert" dangerouslySetInnerHTML={{ __html: toHTML((newDescription?.trim() || defaultMessages.description).replaceAll(/{user}/g, replacedData.user).replaceAll(/{guild}/g, replacedData.guild || "")) }} />
-        </EmbedDescription>
+        <EmbedDescription dangerouslySetInnerHTML={{ __html: toHTML((newDescription?.trim() || defaultMessages.description).replaceAll(/{user}/g, replacedData.user).replaceAll(/{guild}/g, replacedData.guild || "")) }} />
         <EmbedImage />
        </Embed>
       </div>

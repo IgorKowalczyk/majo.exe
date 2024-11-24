@@ -26,6 +26,7 @@
     "@next/mdx": "15.0.3",
     "@odiffey/discord-markdown": "3.3.0",
     "@playwright/test": "1.49.0",
+    "@radix-ui/react-tooltip": "1.1.4",
     "@tippyjs/react": "4.2.6",
     "@types/ms": "0.7.34",
     "@types/react-infinite-scroller": "1.2.5",
@@ -56,8 +57,7 @@
     "server-only": "0.0.1",
     "sharp": "0.33.5",
     "sonner": "1.7.0",
-    "tailwindcss-animate": "^1.0.7",
-    "tippy.js": "6.3.7",
+    "tailwindcss-animate": "1.0.7",
     "validator": "13.12.0"
   },
   "devDependencies": {
