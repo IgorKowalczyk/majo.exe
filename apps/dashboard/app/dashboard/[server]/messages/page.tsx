@@ -1,12 +1,11 @@
-import { globalConfig } from "@majoexe/config";
 import prismaClient from "@majoexe/database";
 import { getGuildChannels, getGuildFromMemberGuilds, getGuild } from "@majoexe/util/functions/guild";
-import { APIGuildChannel, ChannelType, GuildChannelType } from "discord-api-types/v10";
+import { ChannelType } from "discord-api-types/v10";
 import { getSession } from "lib/session";
 import { redirect } from "next/navigation";
 import { notFound } from "next/navigation";
 import { Block, ErrorBlock } from "@/components/Block";
-import { ChangeMessages } from "@/components/client/settings/ChangeCustomMessages";
+import { ChangeCustomMessages } from "@/components/client/settings/ChangeCustomMessages";
 import Header, { headerVariants } from "@/components/Headers";
 import { Icons, iconVariants } from "@/components/Icons";
 import { twMerge } from "tailwind-merge";
@@ -70,7 +69,7 @@ export default async function Page(props: { params: Promise<{ server: string }> 
    <p className="mb-4 text-left text-base md:text-lg">Customize the messages that are sent to your server members.</p>
 
    <Block className="mt-4 !overflow-x-visible">
-    <ChangeMessages
+    <ChangeCustomMessages
      type="welcome"
      serverId={serverDownload.id}
      enabled={guild.guildWelcomeMessage ? true : false}
@@ -80,7 +79,7 @@ export default async function Page(props: { params: Promise<{ server: string }> 
       title: "🎉 Welcome to the server {user}!",
       description: "> Welcome to **{guild}** We hope you enjoy your stay here!",
      }}
-     existingChannel={guild.guildWelcomeMessage?.channelId}
+     existingChannel={guild.guildWelcomeMessage?.channelId || null}
      allChannels={allChannels}
      replacedData={{
       user: session.global_name || serverMember.name,
@@ -90,7 +89,7 @@ export default async function Page(props: { params: Promise<{ server: string }> 
    </Block>
 
    <Block className="mt-4 !overflow-x-visible">
-    <ChangeMessages
+    <ChangeCustomMessages
      type="leave"
      serverId={serverDownload.id}
      enabled={guild.guildLeaveMessage ? true : false}
@@ -100,7 +99,7 @@ export default async function Page(props: { params: Promise<{ server: string }> 
       title: "👋 Goodbye {user}!",
       description: "> We're sorry to see you go!",
      }}
-     existingChannel={guild.guildLeaveMessage?.channelId}
+     existingChannel={guild.guildLeaveMessage?.channelId || null}
      allChannels={allChannels}
      replacedData={{
       user: session.global_name || serverMember.name,

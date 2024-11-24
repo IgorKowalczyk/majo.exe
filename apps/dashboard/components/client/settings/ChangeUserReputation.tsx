@@ -2,18 +2,25 @@
 
 import { isNumeric } from "@majoexe/util/functions/util";
 import clsx from "clsx";
-import { useState } from "react";
+import React, { useState } from "react";
 import { toast } from "sonner";
 import { Button } from "@/components/Buttons";
 import { Icons, iconVariants } from "@/components/Icons";
 import { InputWithIcon } from "@/components/Input";
+import { twMerge } from "tailwind-merge";
 
-export function ChangeUserReputation({ userId, guildId, userReputation = 0 }) {
+interface ChangeUserReputationProps extends React.HTMLAttributes<HTMLFormElement> {
+ userId: string;
+ guildId: string;
+ userReputation?: number;
+}
+
+export const ChangeUserReputation = React.forwardRef<HTMLFormElement, ChangeUserReputationProps>(({ userId, guildId, userReputation, className, ...props }, ref) => {
  const [userRep, setUserRep] = useState(userReputation ?? 0);
  const [loading, setLoading] = useState(false);
  const [error, setError] = useState(false);
 
- const changeReputation = (value) => {
+ const changeReputation = (value: number) => {
   setUserRep(value);
   setError(false);
   if (!isNumeric(value)) setError(true);
@@ -33,7 +40,7 @@ export function ChangeUserReputation({ userId, guildId, userReputation = 0 }) {
    body: JSON.stringify({
     userId,
     guildId,
-    reputation: parseInt(userRep),
+    reputation: userRep,
    }),
   });
 
@@ -67,13 +74,13 @@ export function ChangeUserReputation({ userId, guildId, userReputation = 0 }) {
  };
 
  return (
-  <form className="flex flex-col items-start gap-2" onSubmit={handleReputation}>
+  <form className={twMerge("flex flex-col items-start gap-2", className)} onSubmit={handleReputation} {...props} ref={ref}>
    <InputWithIcon
     type="number"
     icon={<Icons.messageDot className={iconVariants({ variant: "normal" })} />}
     placeholder="User reputation"
     value={userRep}
-    onChange={(e) => changeReputation(e.target.value)}
+    onChange={(e) => changeReputation(parseInt(e.target.value))}
     className={clsx(
      {
       "!border-red-400 !text-red-400 focus:!border-red-400": error,
@@ -94,4 +101,4 @@ export function ChangeUserReputation({ userId, guildId, userReputation = 0 }) {
    </Button>
   </form>
  );
-}
+});

@@ -2,7 +2,7 @@
 
 import { toHTML } from "@odiffey/discord-markdown";
 import clsx from "clsx";
-import { useState } from "react";
+import React, { useState } from "react";
 import { toast } from "sonner";
 import { Block } from "@/components/Block";
 import { Button } from "@/components/Buttons";
@@ -14,8 +14,21 @@ import { Header2 } from "@/components/Headers";
 import { Icons, iconVariants } from "@/components/Icons";
 import { Input, Textarea } from "@/components/Input";
 import { globalConfig } from "@majoexe/config";
+import { Snowflake } from "discord-api-types/globals";
 
-export function ChangeMessages({ serverId, enabled, title, description, existingChannel, allChannels, type, defaultMessages, replacedData }) {
+export interface ChangeCustomMessagesProps extends React.HTMLAttributes<HTMLDivElement> {
+ serverId: string;
+ enabled: boolean;
+ title: string;
+ description: string;
+ existingChannel: string | null;
+ allChannels: { id: Snowflake; name: string }[];
+ type: "welcome" | "leave";
+ defaultMessages: { title: string; description: string };
+ replacedData: { user: string; guild: string };
+}
+
+export const ChangeCustomMessages = React.forwardRef<HTMLDivElement, ChangeCustomMessagesProps>(({ serverId, enabled, title, description, existingChannel, allChannels, type, defaultMessages, replacedData, className, ...props }, ref) => {
  const [isEnabled, setIsEnabled] = useState(enabled ?? false);
  const [loading, setLoading] = useState(false);
  const [newTitle, setNewTitle] = useState(title);
@@ -75,7 +88,7 @@ export function ChangeMessages({ serverId, enabled, title, description, existing
  if (!allChannels) return null;
 
  return (
-  <>
+  <div className={className} ref={ref} {...props}>
    {type === "welcome" ? (
     <>
      <Header2>
@@ -148,7 +161,7 @@ export function ChangeMessages({ serverId, enabled, title, description, existing
         <ChannelsSelect // prettier
          allChannels={allChannels}
          exemptChannels={messageChannel}
-         setExemptChannels={(value) => setMessageChannel(value)}
+         setExemptChannels={(value: string) => setMessageChannel(value)}
          multiple={false}
         />
        </div>
@@ -233,6 +246,6 @@ export function ChangeMessages({ serverId, enabled, title, description, existing
      )}
     </Button>
    </div>
-  </>
+  </div>
  );
-}
+});

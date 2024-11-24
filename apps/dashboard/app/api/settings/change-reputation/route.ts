@@ -1,5 +1,6 @@
 import { setReputation } from "@majoexe/util/database";
 import { getGuild, getGuildFromMemberGuilds } from "@majoexe/util/functions/guild";
+import { getDiscordUser } from "@majoexe/util/functions/user";
 import { isNumeric } from "@majoexe/util/functions/util";
 import { APIUser } from "discord-api-types/v10";
 import { getSession } from "lib/session";
@@ -170,13 +171,9 @@ export async function POST(request: NextRequest) {
    );
   }
 
-  const user = await fetch(`https://discord.com/api/v${process.env.API_VERSION}/users/${userId}`, {
-   headers: {
-    Authorization: `Bearer ${session.access_token}`,
-   },
-  });
+  const user = await getDiscordUser(userId);
 
-  if (!user.ok) {
+  if (!user) {
    return NextResponse.json(
     {
      error: "Unable to find this user",
@@ -193,26 +190,7 @@ export async function POST(request: NextRequest) {
    );
   }
 
-  const userJson = (await user.json()) as APIUser;
-
-  if (!userJson) {
-   return NextResponse.json(
-    {
-     error: "Unable to find this user",
-     code: 404,
-    },
-    {
-     status: 404,
-     headers: {
-      ...(process.env.NODE_ENV !== "production" && {
-       "Server-Timing": `response;dur=${Date.now() - start}ms`,
-      }),
-     },
-    }
-   );
-  }
-
-  const action = await setReputation(userJson, guildId, reputation);
+  const action = await setReputation(user, guildId, reputation);
 
   if (typeof action === "object") {
    return NextResponse.json(

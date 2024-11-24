@@ -10,14 +10,12 @@ import { Tooltip } from "@/components/client/shared/Tooltip";
 import { Emojis } from "@/components/DiscordEmojis";
 import Header, { headerVariants } from "@/components/Headers";
 import { Icons, iconVariants } from "@/components/Icons";
-import { Account, DefaultSession } from "next-auth";
-import { DiscordProfile } from "next-auth/providers/discord";
 import { twMerge } from "tailwind-merge";
 
 export const revalidate = 3600; // 1 hour
 
 export default async function Page() {
- const user = (await getSession()) as DefaultSession & Account & DiscordProfile;
+ const user = await getSession();
  if (!user) return redirect("/auth/login");
 
  return (
