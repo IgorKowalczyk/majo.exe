@@ -14,7 +14,7 @@ export default function Loading() {
    </Header>
    <p className="mb-4 text-left text-base md:text-lg">Configure the settings of the bot in your server.</p>
    <Block className="mt-4">
-    <Header className={twMerge(headerVariants({ variant: "h1" }))}>
+    <Header className={twMerge(headerVariants({ variant: "h2" }))}>
      <Icons.paintBrush className={iconVariants({ variant: "large", className: "!stroke-2" })} />
      Default Embed Color
     </Header>
@@ -22,7 +22,7 @@ export default function Loading() {
     <Skeleton className="mt-10 h-60" />
    </Block>
    <Block className="mt-4">
-    <Header className={twMerge(headerVariants({ variant: "h1" }))}>
+    <Header className={twMerge(headerVariants({ variant: "h2" }))}>
      <Icons.ShieldCheck className={iconVariants({ variant: "large", className: "!stroke-2" })} />
      Dashboard Access
     </Header>
@@ -44,7 +44,7 @@ export default function Loading() {
     </div>
    </Block>
    <Block className="mt-4">
-    <Header className={twMerge(headerVariants({ variant: "h1" }))}>
+    <Header className={twMerge(headerVariants({ variant: "h2" }))}>
      <Icons.Users className={iconVariants({ variant: "large", className: "!stroke-2" })} />
      Public Dashboard
     </Header>

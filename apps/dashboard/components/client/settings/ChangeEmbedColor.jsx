@@ -105,6 +105,26 @@ export function ChangeEmbedColor({ serverId, serverColor }) {
  return (
   <div className="flex flex-col gap-4 lg:flex-row lg:gap-8 lg:divide-x lg:divide-neutral-800">
    <div className="flex flex-col items-center justify-center gap-4">
+    <div>
+     <div className="flex flex-row gap-1">
+      <div className="bg-[#1bbd9c] text-white size-6 rounded-lg cursor-pointer" onClick={() => setColor("#1bbd9c")} />
+      <div className="bg-[#2fcd71] text-white size-6 rounded-lg cursor-pointer" onClick={() => setColor("#2fcd71")} />
+      <div className="bg-[#3598da] text-white size-6 rounded-lg cursor-pointer" onClick={() => setColor("#3598da")} />
+      <div className="bg-[#9a59b7] text-white size-6 rounded-lg cursor-pointer" onClick={() => setColor("#9a59b7")} />
+      <div className="bg-[#e81e62] text-white size-6 rounded-lg cursor-pointer" onClick={() => setColor("#e81e62")} />
+      <div className="bg-[#f0c40e] text-white size-6 rounded-lg cursor-pointer" onClick={() => setColor("#f0c40e")} />
+      <div className="bg-[#e67f23] text-white size-6 rounded-lg cursor-pointer" onClick={() => setColor("#e67f23")} />
+     </div>
+     <div className="flex mt-1 flex-row gap-1">
+      <div className="bg-[#10816a] text-white size-6 rounded-lg cursor-pointer" onClick={() => setColor("#10816a")} />
+      <div className="bg-[#1f8b4c] text-white size-6 rounded-lg cursor-pointer" onClick={() => setColor("#1f8b4c")} />
+      <div className="bg-[#216695] text-white size-6 rounded-lg cursor-pointer" onClick={() => setColor("#216695")} />
+      <div className="bg-[#71368a] text-white size-6 rounded-lg cursor-pointer" onClick={() => setColor("#71368a")} />
+      <div className="bg-[#ac1456] text-white size-6 rounded-lg cursor-pointer" onClick={() => setColor("#ac1456")} />
+      <div className="bg-[#c37d0e] text-white size-6 rounded-lg cursor-pointer" onClick={() => setColor("#c37d0e")} />
+      <div className="bg-[#a94301] text-white size-6 rounded-lg cursor-pointer" onClick={() => setColor("#a94301")} />
+     </div>
+    </div>
     <HexColorPicker color={color} onChange={setColor} />
     <Input
      type="text"
@@ -118,10 +138,10 @@ export function ChangeEmbedColor({ serverId, serverColor }) {
     />
    </div>
    <div className="w-full lg:pl-8">
-    <span className="flex w-full items-center gap-2 font-bold">
+    {/* <span className="flex w-full items-center gap-2 font-bold">
      <Icons.viewing className={iconVariants({ variant: "normal" })} />
      Embed preview:
-    </span>
+    </span> */}
     <Embed
      color={color}
      buttons={

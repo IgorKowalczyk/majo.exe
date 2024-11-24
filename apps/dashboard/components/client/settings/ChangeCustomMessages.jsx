@@ -205,10 +205,10 @@ export function ChangeMessages({ serverId, enabled, title, description, existing
        </div>
       </div>
       <div className="w-full">
-       <span className="flex w-full items-center gap-2 font-bold">
+       {/* <span className="flex w-full items-center gap-2 font-bold">
         <Icons.viewing className={iconVariants({ variant: "normal" })} />
         Embed preview:
-       </span>
+       </span> */}
        <Embed color={globalConfig.defaultColor}>
         <EmbedTitle>{(newTitle || defaultMessages.title).replaceAll(/{user}/g, replacedData.user).replaceAll(/{guild}/g, replacedData.guild)}</EmbedTitle>
         <EmbedDescription>
