@@ -145,7 +145,7 @@ export default async function HomePage() {
      <div className="absolute inset-0 -z-10 m-auto mt-[100px] size-[580px] rounded-full bg-[#ddd] opacity-5 blur-3xl" />
     </div>
    </div>
-   <div className="relative z-10 bg-background-primary">
+   <div className="relative z-20 bg-background-primary">
     <hr className="m-[0_auto] mb-8 h-px w-full border-none bg-[linear-gradient(to_right,transparent,rgba(255,255,255,0.1)_50%,transparent)] px-8 duration-300 motion-reduce:transition-none" />
 
     <div className="mx-auto max-w-7xl pb-10 md:px-8 lg:px-16">

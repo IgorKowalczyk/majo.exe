@@ -15,7 +15,6 @@ import { Tooltip } from "@/components/client/shared/Tooltip";
 import Header, { headerVariants } from "@/components/Headers";
 import { Icons, iconVariants } from "@/components/Icons";
 import { buttonVariants } from "@/components/Buttons";
-import { cn } from "@/lib/utils";
 
 export const metadata = {
  title: "Server Overview",
