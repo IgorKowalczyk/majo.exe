@@ -9,10 +9,11 @@ import { Button } from "@/components/Buttons";
 import { ChannelsSelect } from "@/components/client/shared/ChannelsSelect";
 import Switch from "@/components/client/shared/Switch";
 import { Tooltip } from "@/components/client/shared/Tooltip";
-import Embed from "@/components/Embed";
+import { EmbedTitle, Embed, EmbedDescription, EmbedImage } from "@/components/Embed";
 import { Header2 } from "@/components/Headers";
 import { Icons, iconVariants } from "@/components/Icons";
 import { Input, Textarea } from "@/components/Input";
+import { globalConfig } from "@majoexe/config";
 
 export function ChangeMessages({ serverId, enabled, title, description, existingChannel, allChannels, type, defaultMessages, replacedData }) {
  const [isEnabled, setIsEnabled] = useState(enabled ?? false);
@@ -208,12 +209,12 @@ export function ChangeMessages({ serverId, enabled, title, description, existing
         <Icons.viewing className={iconVariants({ variant: "normal" })} />
         Embed preview:
        </span>
-       <Embed>
-        <Embed.Title>{(newTitle || defaultMessages.title).replaceAll(/{user}/g, replacedData.user).replaceAll(/{guild}/g, replacedData.guild)}</Embed.Title>
-        <Embed.Description>
+       <Embed color={globalConfig.defaultColor}>
+        <EmbedTitle>{(newTitle || defaultMessages.title).replaceAll(/{user}/g, replacedData.user).replaceAll(/{guild}/g, replacedData.guild)}</EmbedTitle>
+        <EmbedDescription>
          <p className="prose prose-invert" dangerouslySetInnerHTML={{ __html: toHTML((newDescription?.trim() || defaultMessages.description).replaceAll(/{user}/g, replacedData.user).replaceAll(/{guild}/g, replacedData.guild || "")) }} />
-        </Embed.Description>
-        <Embed.Image />
+        </EmbedDescription>
+        <EmbedImage />
        </Embed>
       </div>
      </div>

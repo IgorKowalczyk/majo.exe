@@ -5,7 +5,7 @@ import { useState } from "react";
 import { HexColorPicker } from "react-colorful";
 import { toast } from "sonner";
 import { Button } from "@/components/Buttons";
-import Embed from "@/components/Embed";
+import { EmbedTitle, Embed, EmbedDescription } from "@/components/Embed";
 import { Icons, iconVariants } from "@/components/Icons";
 import { Input } from "@/components/Input";
 
@@ -137,8 +137,8 @@ export function ChangeEmbedColor({ serverId, serverColor }) {
       </>
      }
     >
-     <Embed.Title>Embed color changed to {color}</Embed.Title>
-     <Embed.Description>This is an example of how your embed color will look like. You can change this color by clicking on the color picker above.</Embed.Description>
+     <EmbedTitle>Embed color changed to {color}</EmbedTitle>
+     <EmbedDescription>This is an example of how your embed color will look like. You can change this color by clicking on the color picker above.</EmbedDescription>
     </Embed>
    </div>
   </div>
