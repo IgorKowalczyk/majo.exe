@@ -26,7 +26,7 @@ export function RolesSelect({ allRoles, exemptRoles, setExemptRoles }) {
        </span>
       </Listbox.Button>
       <Transition as={Fragment} enter="transition duration-200 ease-out" enterFrom="transform scale-95 opacity-0" enterTo="transform scale-100 opacity-100" leave="transition duration-200 ease-out" leaveFrom="transform scale-100 opacity-100" leaveTo="transform scale-95 opacity-0">
-       <Listbox.Options className="absolute z-[544] mt-1 max-h-60 w-fit overflow-auto rounded-xl border border-neutral-800 bg-background-secondary py-1 text-base shadow-lg sm:text-sm">
+       <Listbox.Options className="absolute z-10 mt-1 max-h-60 w-fit overflow-auto rounded-xl border border-neutral-800 bg-background-secondary py-1 text-base shadow-lg sm:text-sm">
         {allRoles.map((role) => (
          <Listbox.Option key={`role-select-option-${role.id}`} className="relative mx-2 my-1 cursor-pointer select-none rounded-md py-2 pl-4 pr-10 font-normal text-white/70 duration-200 ui-active:bg-accent-primary ui-active:text-white" value={role.id}>
           <div className="flex items-center gap-1 truncate">

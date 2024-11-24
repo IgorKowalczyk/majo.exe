@@ -4,7 +4,7 @@ import Link from "next/link";
 import { redirect } from "next/navigation";
 import { Block } from "@/components/Block";
 import { buttonVariants } from "@/components/Buttons";
-import DeleteAccount from "@/components/client/settings/DeleteUserData";
+import { DeleteUserData } from "@/components/client/settings/DeleteUserData";
 import Image from "@/components/client/shared/Image";
 import { Tooltip } from "@/components/client/shared/Tooltip";
 import { Emojis } from "@/components/DiscordEmojis";
@@ -97,7 +97,7 @@ export default async function Page() {
       Delete account
      </Header>
      <p className="mt-2 text-white/70">If you want to delete all your data and your account, click the button below. This action is irreversible.</p>
-     <DeleteAccount />
+     <DeleteUserData />
     </Block>
    </div>
   </div>

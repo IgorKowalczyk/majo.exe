@@ -1,15 +1,21 @@
 "use client";
 
 import { globalConfig } from "@majoexe/config";
-import { useState } from "react";
+import React, { useState } from "react";
 import { HexColorPicker } from "react-colorful";
 import { toast } from "sonner";
 import { Button } from "@/components/Buttons";
 import { EmbedTitle, Embed, EmbedDescription } from "@/components/Embed";
 import { Icons, iconVariants } from "@/components/Icons";
 import { Input } from "@/components/Input";
+import { twMerge } from "tailwind-merge";
 
-export function ChangeEmbedColor({ serverId, serverColor }) {
+interface ChangeEmbedColorProps extends React.HTMLAttributes<HTMLDivElement> {
+ serverId: string;
+ serverColor: string;
+}
+
+export const ChangeEmbedColor = React.forwardRef<HTMLDivElement, ChangeEmbedColorProps>(({ serverId, serverColor, className, ...props }, ref) => {
  const [color, setColor] = useState(serverColor ?? globalConfig.defaultColor);
  const [buttonText, setButtonText] = useState("Save");
  const [resetButtonText, setResetButtonText] = useState("Reset");
@@ -103,7 +109,7 @@ export function ChangeEmbedColor({ serverId, serverColor }) {
  };
 
  return (
-  <div className="flex flex-col gap-4 lg:flex-row lg:gap-8 lg:divide-x lg:divide-neutral-800">
+  <div className={twMerge("flex flex-col gap-4 lg:flex-row lg:gap-8 lg:divide-x lg:divide-neutral-800", className)} ref={ref} {...props}>
    <div className="flex flex-col items-center justify-center gap-4">
     <div>
      <div className="flex flex-row gap-1">
@@ -163,4 +169,4 @@ export function ChangeEmbedColor({ serverId, serverColor }) {
    </div>
   </div>
  );
-}
+});

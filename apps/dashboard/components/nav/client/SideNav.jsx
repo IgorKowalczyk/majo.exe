@@ -29,14 +29,14 @@ export function SideNav({ server }) {
 
  return (
   <>
-   {sideNavVisible && <div className="fixed inset-0 z-[1000] size-full bg-black/50 duration-200" onClick={() => sideNavVisible && toggleSideNav()} />}
+   {sideNavVisible && <div className="fixed inset-0 z-20 size-full bg-black/50 duration-200" onClick={() => sideNavVisible && toggleSideNav()} />}
    <aside
     className={clsx(
      {
       "pointer-events-none opacity-0": !sideNavVisible,
       "opacity-100": sideNavVisible,
      },
-     "fixed z-[9998] mt-8 flex h-screen w-64 flex-none flex-col flex-nowrap overflow-y-auto overflow-x-hidden border-r border-r-neutral-800 bg-background-navbar py-8 pb-32 shadow-lg duration-100 md:pointer-events-auto md:top-0 md:mt-16 md:opacity-100"
+     "fixed z-30 mt-8 flex h-screen w-64 flex-none flex-col flex-nowrap overflow-y-auto overflow-x-hidden border-r border-r-neutral-800 bg-background-navbar py-8 pb-32 shadow-lg duration-100 md:pointer-events-auto md:top-0 md:mt-16 md:opacity-100"
     )}
    >
     <div className="px-4">

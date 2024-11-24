@@ -8,7 +8,7 @@ import { notFound } from "next/navigation";
 import { Block } from "@/components/Block";
 import { buttonVariants } from "@/components/Buttons";
 import { ChangeEmbedColor } from "@/components/client/settings/ChangeEmbedColor";
-import DeleteServerData from "@/components/client/settings/DeleteServerData";
+import { DeleteServerData } from "@/components/client/settings/DeleteServerData";
 import { PublicDashboard } from "@/components/client/settings/PublicDashboard";
 import Header, { headerVariants } from "@/components/Headers";
 import { Icons, iconVariants } from "@/components/Icons";
