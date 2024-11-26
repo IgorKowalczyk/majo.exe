@@ -3,8 +3,8 @@
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { toast } from "sonner";
-import { Switch } from "@/components/client/shared/Switch";
-import { Tooltip } from "@/components/client/shared/Tooltip";
+import { Switch } from "@/components/ui/Switch";
+import { Tooltip } from "@/components/ui/Tooltip";
 
 export function UpdateCategories({ serverId, categoryName, categoryEnabled }) {
  const [enabled, setEnabled] = useState(categoryEnabled);

@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { toast } from "sonner";
-import Image from "@/components/client/shared/Image";
+import Image from "@/components/ui/Image";
 
 export function LevelUp({ avatar, username }: { avatar: string; username: string }) {
  const [level, setLevel] = useState<number>(2);

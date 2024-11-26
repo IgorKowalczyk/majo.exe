@@ -2,7 +2,7 @@ import { Menu as DefaultMenu, MenuButton as DefaultMenuButton, MenuItem as Defau
 import { cn } from "@/lib/utils";
 import Link from "next/link";
 import React, { Fragment } from "react";
-import { Icons, iconVariants } from "@/components/Icons";
+import { Icons, iconVariants } from "@/components/ui/Icons";
 import { cva, VariantProps } from "class-variance-authority";
 
 export const MenuArrow = () => <Icons.arrowDown className={iconVariants({ variant: "small", className: "ui-open:rotate-180 text-gray-400 duration-200 motion-reduce:transition-none" })} />;

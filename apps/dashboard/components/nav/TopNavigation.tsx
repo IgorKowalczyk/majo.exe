@@ -2,12 +2,12 @@ import { dashboardConfig } from "@majoexe/config";
 import { cn } from "@/lib/utils";
 import { getSession } from "lib/session";
 import Link from "next/link";
-import { buttonVariants } from "@/components/Buttons";
-import { DiscordLogin } from "@/components/client/DiscordLogin";
-import Image from "@/components/client/shared/Image";
-import { Icons, iconVariants } from "@/components/Icons";
-import { SideMenuControl } from "@/components/nav/client/SideMenuControl";
-import { UserMenuDropdown } from "@/components/nav/client/UserMenuDropdown";
+import { buttonVariants } from "@/components/ui/Buttons";
+import { DiscordLogin } from "@/components/DiscordLogin";
+import Image from "@/components/ui/Image";
+import { Icons, iconVariants } from "@/components/ui/Icons";
+import { SideMenuControl } from "@/components/nav/SideMenuControl";
+import { UserMenuDropdown } from "@/components/nav/UserMenuDropdown";
 import React, { HTMLAttributes } from "react";
 
 export const TopNavigation = React.forwardRef<HTMLDivElement, HTMLAttributes<HTMLDivElement> & { theme?: "full" | "compact" }>(async ({ className, theme, ...props }, ref) => {

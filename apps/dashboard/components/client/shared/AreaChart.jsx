@@ -3,7 +3,7 @@
 import { globalConfig } from "@majoexe/config";
 import { Area, CartesianGrid, AreaChart as ReChartsAreaChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
 import { cn } from "@/lib/utils";
-import { Icons, iconVariants } from "@/components/Icons";
+import { Icons, iconVariants } from "@/components/ui/Icons";
 
 export default function AreaChart({ data = [], categories = [], index, valueFormatter = (value) => value, startEndOnly = false, showXAxis = true, showYAxis = true, yAxisWidth = 56, autoMinValue = false, curveType = "monotone", showGrid = true, minValue, maxValue, connectNulls = true, noDataText = "This chart has no data! Please check back later.", className, ...other }) {
  const yAxisDomain = autoMinValue ? [0, "auto"] : [minValue ?? 0, maxValue ?? "auto"];

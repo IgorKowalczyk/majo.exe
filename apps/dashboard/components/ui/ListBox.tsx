@@ -1,7 +1,7 @@
 import { Listbox as DefaultListbox, ListboxButton as DefaultListboxButton, ListboxOption as DefaultListboxOption, ListboxOptions as DefaultListboxOptions, ListboxButtonProps, ListboxOptionProps, ListboxOptionsProps, ListboxProps, Transition } from "@headlessui/react";
 import { cn } from "@/lib/utils";
 import React, { Fragment } from "react";
-import { Icons, iconVariants } from "@/components/Icons";
+import { Icons, iconVariants } from "@/components/ui/Icons";
 import { cva, VariantProps } from "class-variance-authority";
 
 export const ListBoxArrow = () => (

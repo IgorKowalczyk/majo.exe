@@ -3,10 +3,10 @@ import { getGuildFromMemberGuilds, getGuild } from "@majoexe/util/functions/guil
 import { getSession } from "lib/session";
 import { redirect } from "next/navigation";
 import { notFound } from "next/navigation";
-import { Block } from "@/components/Block";
+import { Block } from "@/components/ui/Block";
 import { Giveaways } from "@/components/client/lists/Giveaways";
-import Header, { headerVariants } from "@/components/Headers";
-import { Icons, iconVariants } from "@/components/Icons";
+import Header, { headerVariants } from "@/components/ui/Headers";
+import { Icons, iconVariants } from "@/components/ui/Icons";
 import type { GiveawayData } from "discord-giveaways";
 import { cn } from "@/lib/utils";
 

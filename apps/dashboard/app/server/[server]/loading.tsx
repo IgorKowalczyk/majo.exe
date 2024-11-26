@@ -1,6 +1,6 @@
-import { Block } from "@/components/Block";
-import Header, { Header4, headerVariants } from "@/components/Headers";
-import { Skeleton } from "@/components/Skeletons";
+import { Block } from "@/components/ui/Block";
+import Header, { Header4, headerVariants } from "@/components/ui/Headers";
+import { Skeleton } from "@/components/ui/Skeletons";
 import { cn } from "@/lib/utils";
 
 export default function Loading() {

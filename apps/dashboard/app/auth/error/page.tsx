@@ -1,6 +1,6 @@
-import { buttonVariants } from "@/components/Buttons";
-import Header, { headerVariants } from "@/components/Headers";
-import { Icons, iconVariants } from "@/components/Icons";
+import { buttonVariants } from "@/components/ui/Buttons";
+import Header, { headerVariants } from "@/components/ui/Headers";
+import { Icons, iconVariants } from "@/components/ui/Icons";
 import Link from "next/link";
 
 export const metadata = {

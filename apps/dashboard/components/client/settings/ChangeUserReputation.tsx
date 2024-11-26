@@ -4,9 +4,9 @@ import { isNumeric } from "@majoexe/util/functions/util";
 import { cn } from "@/lib/utils";
 import React, { useState } from "react";
 import { toast } from "sonner";
-import { Button } from "@/components/Buttons";
-import { Icons, iconVariants } from "@/components/Icons";
-import { InputWithIcon } from "@/components/Input";
+import { Button } from "@/components/ui/Buttons";
+import { Icons, iconVariants } from "@/components/ui/Icons";
+import { InputWithIcon } from "@/components/ui/Input";
 
 interface ChangeUserReputationProps extends React.HTMLAttributes<HTMLFormElement> {
  userId: string;

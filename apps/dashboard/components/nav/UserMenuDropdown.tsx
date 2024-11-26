@@ -1,9 +1,9 @@
 "use client";
 
 import { signOut } from "next-auth/react";
-import Image from "@/components/client/shared/Image";
-import { Menu, MenuLink, MenuItem, MenuButton, MenuItems, MenuArrow } from "@/components/client/shared/Menu";
-import { Icons, iconVariants } from "@/components/Icons";
+import Image from "@/components/ui/Image";
+import { Menu, MenuLink, MenuItem, MenuButton, MenuItems, MenuArrow } from "@/components/ui/Menu";
+import { Icons, iconVariants } from "@/components/ui/Icons";
 import { getSession } from "@/lib/session";
 import React from "react";
 

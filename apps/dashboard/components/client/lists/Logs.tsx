@@ -5,13 +5,13 @@ import { cn } from "@/lib/utils";
 import Link from "next/link";
 import React, { useState, useRef, useEffect } from "react";
 import InfiniteScroll from "react-infinite-scroller";
-import { Disclosure } from "../shared/Disclosure";
-import Image from "@/components/client/shared/Image";
-import { Tooltip } from "@/components/client/shared/Tooltip";
-import { Icons, iconVariants } from "@/components/Icons";
-import { InputWithIcon } from "@/components/Input";
+import { Disclosure } from "../../ui/Disclosure";
+import Image from "@/components/ui/Image";
+import { Tooltip } from "@/components/ui/Tooltip";
+import { Icons, iconVariants } from "@/components/ui/Icons";
+import { InputWithIcon } from "@/components/ui/Input";
 import { GuildLogs, User } from "@majoexe/database";
-import { Skeleton } from "@/components/Skeletons";
+import { Skeleton } from "@/components/ui/Skeletons";
 
 interface LogItem extends Omit<GuildLogs, "createdAt"> {
  createdAt: string;

@@ -3,11 +3,11 @@
 import { Listbox, Transition } from "@headlessui/react";
 import fileDl from "js-file-download";
 import { Fragment, useState } from "react";
-import { Block } from "@/components/Block";
+import { Block } from "@/components/ui/Block";
 import AreaChart from "@/components/client/shared/AreaChart";
-import { Menu, MenuArrow, MenuButton, MenuItem, MenuItems } from "@/components/client/shared/Menu";
-import { Header2 } from "@/components/Headers";
-import { Icons, iconVariants } from "@/components/Icons";
+import { Menu, MenuArrow, MenuButton, MenuItem, MenuItems } from "@/components/ui/Menu";
+import { Header2 } from "@/components/ui/Headers";
+import { Icons, iconVariants } from "@/components/ui/Icons";
 import { sumArray } from "@majoexe/util/functions/util";
 
 export function ServerStatsChart({ guildJoin, guildLeave, guildJoinCSV, guildLeaveCSV, guildMessage, guildMessageCSV }) {

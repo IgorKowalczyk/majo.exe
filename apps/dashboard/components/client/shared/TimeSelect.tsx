@@ -1,7 +1,7 @@
 "use client";
 
-import { ListBox, ListBoxArrow, ListBoxButton, ListBoxOption, ListBoxOptions } from "@/components/client/shared/ListBox";
-import { Icons, iconVariants } from "@/components/Icons";
+import { ListBox, ListBoxArrow, ListBoxButton, ListBoxOption, ListBoxOptions } from "@/components/ui/ListBox";
+import { Icons, iconVariants } from "@/components/ui/Icons";
 import React from "react";
 
 export const choices = [

@@ -4,9 +4,9 @@ import { dashboardConfig } from "@majoexe/config";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
 import { useSelectedLayoutSegment, usePathname } from "next/navigation";
-import { Icons } from "./Icons";
-import { buttonVariants } from "@/components/Buttons";
-import Image from "@/components/client/shared/Image";
+import { Icons } from "./ui/Icons";
+import { buttonVariants } from "@/components/ui/Buttons";
+import Image from "@/components/ui/Image";
 import React, { HTMLAttributes } from "react";
 
 export const Footer = React.forwardRef<HTMLDivElement, HTMLAttributes<HTMLDivElement>>(({ className, ...props }, ref) => {

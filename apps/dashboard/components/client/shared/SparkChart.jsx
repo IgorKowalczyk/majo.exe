@@ -1,7 +1,7 @@
 "use client";
 
 import { Area, AreaChart as ReChartsAreaChart, ResponsiveContainer, XAxis } from "recharts";
-import { Icons, iconVariants } from "@/components/Icons";
+import { Icons, iconVariants } from "@/components/ui/Icons";
 
 export function SparkLineChart({ data = [], categories = [], index }) {
  return (

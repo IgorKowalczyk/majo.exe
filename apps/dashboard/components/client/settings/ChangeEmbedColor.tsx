@@ -4,10 +4,10 @@ import { globalConfig } from "@majoexe/config";
 import React, { useState } from "react";
 import { HexColorPicker } from "react-colorful";
 import { toast } from "sonner";
-import { Button } from "@/components/Buttons";
-import { EmbedTitle, Embed, EmbedDescription } from "@/components/Embed";
-import { Icons, iconVariants } from "@/components/Icons";
-import { Input } from "@/components/Input";
+import { Button } from "@/components/ui/Buttons";
+import { EmbedTitle, Embed, EmbedDescription } from "@/components/ui/Embed";
+import { Icons, iconVariants } from "@/components/ui/Icons";
+import { Input } from "@/components/ui/Input";
 import { cn } from "@/lib/utils";
 
 interface ChangeEmbedColorProps extends React.HTMLAttributes<HTMLDivElement> {

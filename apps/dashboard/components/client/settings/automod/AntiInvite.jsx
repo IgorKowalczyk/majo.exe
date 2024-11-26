@@ -3,15 +3,15 @@
 import { cn } from "@/lib/utils";
 import { useState } from "react";
 import { toast } from "sonner";
-import { Block } from "@/components/Block";
-import { Button } from "@/components/Buttons";
+import { Block } from "@/components/ui/Block";
+import { Button } from "@/components/ui/Buttons";
 import { ChannelsSelect } from "@/components/client/shared/ChannelsSelect";
 import { RolesSelect } from "@/components/client/shared/RolesSelect";
-import { Switch } from "@/components/client/shared/Switch";
+import { Switch } from "@/components/ui/Switch";
 import { TimeSelect } from "@/components/client/shared/TimeSelect";
-import { Tooltip } from "@/components/client/shared/Tooltip";
-import { Header2, Header3 } from "@/components/Headers";
-import { Icons, iconVariants } from "@/components/Icons";
+import { Tooltip } from "@/components/ui/Tooltip";
+import { Header2, Header3 } from "@/components/ui/Headers";
+import { Icons, iconVariants } from "@/components/ui/Icons";
 
 export function AntiInvite({ serverId, enabled, existingActions, existingExemptRoles, existingExemptChannels, allRoles, allChannels }) {
  const [isEnabled, setIsEnabled] = useState(enabled ?? false);

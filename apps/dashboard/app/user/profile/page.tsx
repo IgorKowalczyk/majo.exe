@@ -2,14 +2,14 @@ import { getFlags } from "@majoexe/util/functions/user";
 import { getSession } from "lib/session";
 import Link from "next/link";
 import { redirect } from "next/navigation";
-import { Block } from "@/components/Block";
-import { buttonVariants } from "@/components/Buttons";
+import { Block } from "@/components/ui/Block";
+import { buttonVariants } from "@/components/ui/Buttons";
 import { DeleteUserData } from "@/components/client/settings/DeleteUserData";
-import Image from "@/components/client/shared/Image";
-import { Tooltip } from "@/components/client/shared/Tooltip";
+import Image from "@/components/ui/Image";
+import { Tooltip } from "@/components/ui/Tooltip";
 import { Emojis } from "@/components/DiscordEmojis";
-import Header, { headerVariants } from "@/components/Headers";
-import { Icons, iconVariants } from "@/components/Icons";
+import Header, { headerVariants } from "@/components/ui/Headers";
+import { Icons, iconVariants } from "@/components/ui/Icons";
 import { cn } from "@/lib/utils";
 
 export const revalidate = 3600; // 1 hour

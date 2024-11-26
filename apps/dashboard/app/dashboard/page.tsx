@@ -2,10 +2,10 @@ import { getMemberGuilds, isBotInServer } from "@majoexe/util/functions/guild";
 import { getSession } from "lib/session";
 import Link from "next/link";
 import { redirect } from "next/navigation";
-import { buttonVariants } from "@/components/Buttons";
-import Image from "@/components/client/shared/Image";
-import Header, { headerVariants } from "@/components/Headers";
-import { Icons, iconVariants } from "@/components/Icons";
+import { buttonVariants } from "@/components/ui/Buttons";
+import Image from "@/components/ui/Image";
+import Header, { headerVariants } from "@/components/ui/Headers";
+import { Icons, iconVariants } from "@/components/ui/Icons";
 import { cn } from "@/lib/utils";
 
 export default async function Dashboard() {

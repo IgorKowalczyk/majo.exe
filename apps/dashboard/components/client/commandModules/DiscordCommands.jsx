@@ -1,11 +1,11 @@
 "use client";
 import { cn } from "@/lib/utils";
 import { useEffect, useState, useMemo } from "react";
-import { Tooltip } from "@/components/client/shared/Tooltip";
-import { Header3 } from "@/components/Headers";
-import { Icons, iconVariants } from "@/components/Icons";
-import { InputWithIcon } from "@/components/Input";
-import { Skeleton } from "@/components/Skeletons";
+import { Tooltip } from "@/components/ui/Tooltip";
+import { Header3 } from "@/components/ui/Headers";
+import { Icons, iconVariants } from "@/components/ui/Icons";
+import { InputWithIcon } from "@/components/ui/Input";
+import { Skeleton } from "@/components/ui/Skeletons";
 
 export function DiscordCommands({ commands, categories }) {
  const [filteredCategories, setFilteredCategories] = useState([]);

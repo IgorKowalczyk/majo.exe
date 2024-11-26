@@ -1,11 +1,11 @@
 import { getSession } from "lib/session";
 import { redirect } from "next/navigation";
-import { buttonVariants } from "@/components/Buttons";
-import { DiscordLogin } from "@/components/client/DiscordLogin";
-import Image from "@/components/client/shared/Image";
-import Header, { headerVariants } from "@/components/Headers";
-import { Icons, iconVariants } from "@/components/Icons";
-import { Dots } from "@/components/Loaders";
+import { buttonVariants } from "@/components/ui/Buttons";
+import { DiscordLogin } from "@/components/DiscordLogin";
+import Image from "@/components/ui/Image";
+import Header, { headerVariants } from "@/components/ui/Headers";
+import { Icons, iconVariants } from "@/components/ui/Icons";
+import { Dots } from "@/components/ui/Loaders";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 

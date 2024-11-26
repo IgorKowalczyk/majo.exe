@@ -1,4 +1,4 @@
-import Header, { headerVariants } from "@/components/Headers";
+import Header, { headerVariants } from "@/components/ui/Headers";
 import React, { HTMLAttributes } from "react";
 import { cn } from "@/lib/utils";
 

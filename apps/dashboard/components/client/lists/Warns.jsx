@@ -4,12 +4,12 @@ import { formatDuration } from "@majoexe/util/functions/util";
 import { useRouter } from "next/navigation";
 import { useMemo, useState, useCallback } from "react";
 import { toast } from "sonner";
-import { Button, buttonVariants } from "@/components/Buttons";
-import Image from "@/components/client/shared/Image";
+import { Button, buttonVariants } from "@/components/ui/Buttons";
+import Image from "@/components/ui/Image";
 import { Table } from "@/components/client/shared/Table";
-import { Tooltip } from "@/components/client/shared/Tooltip";
-import { Icons, iconVariants } from "@/components/Icons";
-import { Skeleton } from "@/components/Skeletons";
+import { Tooltip } from "@/components/ui/Tooltip";
+import { Icons, iconVariants } from "@/components/ui/Icons";
+import { Skeleton } from "@/components/ui/Skeletons";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
 

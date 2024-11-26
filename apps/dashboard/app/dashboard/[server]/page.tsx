@@ -6,15 +6,15 @@ import { getSession } from "lib/session";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import { notFound } from "next/navigation";
-import { Block } from "@/components/Block";
+import { Block } from "@/components/ui/Block";
 import { CategoryBar } from "@/components/CategoryBar";
 import { Leaderboard } from "@/components/client/lists/Leaderboard";
-import Image from "@/components/client/shared/Image";
+import Image from "@/components/ui/Image";
 import { SparkLineChart } from "@/components/client/shared/SparkChart";
-import { Tooltip } from "@/components/client/shared/Tooltip";
-import Header, { headerVariants } from "@/components/Headers";
-import { Icons, iconVariants } from "@/components/Icons";
-import { buttonVariants } from "@/components/Buttons";
+import { Tooltip } from "@/components/ui/Tooltip";
+import Header, { headerVariants } from "@/components/ui/Headers";
+import { Icons, iconVariants } from "@/components/ui/Icons";
+import { buttonVariants } from "@/components/ui/Buttons";
 
 export const metadata = {
  title: "Server Overview",

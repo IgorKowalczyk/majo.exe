@@ -4,10 +4,10 @@ import { ChannelType } from "discord-api-types/v10";
 import { getSession } from "lib/session";
 import { redirect } from "next/navigation";
 import { notFound } from "next/navigation";
-import { Block, ErrorBlock } from "@/components/Block";
+import { Block, ErrorBlock } from "@/components/ui/Block";
 import { ChangeCustomMessages } from "@/components/client/settings/ChangeCustomMessages";
-import Header, { headerVariants } from "@/components/Headers";
-import { Icons, iconVariants } from "@/components/Icons";
+import Header, { headerVariants } from "@/components/ui/Headers";
+import { Icons, iconVariants } from "@/components/ui/Icons";
 import { cn } from "@/lib/utils";
 
 export const metadata = {

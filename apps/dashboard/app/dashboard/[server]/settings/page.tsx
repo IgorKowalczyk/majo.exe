@@ -5,13 +5,13 @@ import { getPermissionNames } from "@majoexe/util/functions/user";
 import { getSession } from "lib/session";
 import { redirect } from "next/navigation";
 import { notFound } from "next/navigation";
-import { Block } from "@/components/Block";
-import { buttonVariants } from "@/components/Buttons";
+import { Block } from "@/components/ui/Block";
+import { buttonVariants } from "@/components/ui/Buttons";
 import { ChangeEmbedColor } from "@/components/client/settings/ChangeEmbedColor";
 import { DeleteServerData } from "@/components/client/settings/DeleteServerData";
 import { PublicDashboard } from "@/components/client/settings/PublicDashboard";
-import Header, { headerVariants } from "@/components/Headers";
-import { Icons, iconVariants } from "@/components/Icons";
+import Header, { headerVariants } from "@/components/ui/Headers";
+import { Icons, iconVariants } from "@/components/ui/Icons";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
 

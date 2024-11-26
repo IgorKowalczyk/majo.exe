@@ -1,9 +1,9 @@
-import { Block } from "@/components/Block";
-import { Button } from "@/components/Buttons";
-import Header, { Header3, headerVariants } from "@/components/Headers";
-import { Icons, iconVariants } from "@/components/Icons";
+import { Block } from "@/components/ui/Block";
+import { Button } from "@/components/ui/Buttons";
+import Header, { Header3, headerVariants } from "@/components/ui/Headers";
+import { Icons, iconVariants } from "@/components/ui/Icons";
 import { Badge } from "@/components/ui/Badge";
-import { Skeleton } from "@/components/Skeletons";
+import { Skeleton } from "@/components/ui/Skeletons";
 import { cn } from "@/lib/utils";
 
 export default function Loading() {

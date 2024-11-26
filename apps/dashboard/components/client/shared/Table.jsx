@@ -6,9 +6,9 @@ import { cn } from "@/lib/utils";
 import { useEffect } from "react";
 import { useTable, useSortBy, usePagination, useGlobalFilter } from "react-table";
 import { ViewSelect } from "./ViewSelect";
-import { Button } from "@/components/Buttons";
-import { Icons, iconVariants } from "@/components/Icons";
-import { InputWithIcon } from "@/components/Input";
+import { Button } from "@/components/ui/Buttons";
+import { Icons, iconVariants } from "@/components/ui/Icons";
+import { InputWithIcon } from "@/components/ui/Input";
 
 export function Table({
  columns,

@@ -1,4 +1,4 @@
-import { AnimatedList } from "@/components/client/shared/AnimatedList";
+import { AnimatedList } from "@/components/ui/effects/AnimatedList";
 import Image from "next/image";
 import avatar01 from "public/assets/avatars/01.webp";
 import avatar02 from "public/assets/avatars/02.webp";

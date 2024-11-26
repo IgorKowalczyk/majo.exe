@@ -5,10 +5,10 @@ import { json2csv } from "json-2-csv";
 import { getSession } from "lib/session";
 import { redirect } from "next/navigation";
 import { notFound } from "next/navigation";
-import { GraphCard } from "@/components/Card";
+import { GraphCard } from "@/components/ui/GraphCard";
 import { ServerStatsChart } from "@/components/client/charts/ServerStatsChart";
-import { Icons, iconVariants } from "@/components/Icons";
-import Header, { headerVariants } from "@/components/Headers";
+import { Icons, iconVariants } from "@/components/ui/Icons";
+import Header, { headerVariants } from "@/components/ui/Headers";
 import { cn } from "@/lib/utils";
 
 export default async function Page(props: { params: Promise<{ server: string }> }) {

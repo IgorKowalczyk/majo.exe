@@ -1,6 +1,6 @@
 import { cn } from "@/lib/utils";
-import Header, { headerVariants } from "./Headers";
-import { Icons, iconVariants } from "./Icons";
+import Header, { headerVariants } from "@/components/ui/Headers";
+import { Icons, iconVariants } from "@/components/ui/Icons";
 import React, { HTMLAttributes } from "react";
 import { cva, VariantProps } from "class-variance-authority";
 

@@ -1,7 +1,7 @@
 "use client";
 
 import { Disclosure as HeadlessDisclosure, DisclosureButton, DisclosurePanel, Transition } from "@headlessui/react";
-import { Icons, iconVariants } from "@/components/Icons";
+import { Icons, iconVariants } from "@/components/ui/Icons";
 import React from "react";
 
 export const Disclosure = React.forwardRef<HTMLDivElement, { button: React.ReactNode; children: React.ReactNode } & React.ComponentProps<typeof HeadlessDisclosure>>(({ button, children, ...props }, ref) => (

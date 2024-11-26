@@ -3,10 +3,10 @@ import { getGuildFromMemberGuilds, getGuild } from "@majoexe/util/functions/guil
 import { getSession } from "lib/session";
 import { redirect } from "next/navigation";
 import { notFound } from "next/navigation";
-import { Block } from "@/components/Block";
+import { Block } from "@/components/ui/Block";
 import { Leaderboard } from "@/components/client/lists/Leaderboard";
-import Header, { headerVariants } from "@/components/Headers";
-import { Icons, iconVariants } from "@/components/Icons";
+import Header, { headerVariants } from "@/components/ui/Headers";
+import { Icons, iconVariants } from "@/components/ui/Icons";
 import { Metadata } from "next";
 import { cn } from "@/lib/utils";
 

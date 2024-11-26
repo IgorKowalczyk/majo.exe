@@ -5,12 +5,12 @@ import { cn } from "@/lib/utils";
 import { getSession } from "lib/session";
 import { redirect } from "next/navigation";
 import { notFound } from "next/navigation";
-import { Block } from "@/components/Block";
+import { Block } from "@/components/ui/Block";
 import { UpdateCategories } from "@/components/client/commandModules/UpdateCategories";
 import { UpdateCommands } from "@/components/client/commandModules/UpdateCommands";
-import { Tooltip } from "@/components/client/shared/Tooltip";
-import Header, { headerVariants } from "@/components/Headers";
-import { Icons, iconVariants } from "@/components/Icons";
+import { Tooltip } from "@/components/ui/Tooltip";
+import Header, { headerVariants } from "@/components/ui/Headers";
+import { Icons, iconVariants } from "@/components/ui/Icons";
 import { Command } from "@/lib/types";
 
 export default async function Page(props: { params: Promise<{ server: string }> }) {

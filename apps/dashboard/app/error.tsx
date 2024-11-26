@@ -1,8 +1,8 @@
 "use client";
 
-import { buttonVariants } from "@/components/Buttons";
-import { Header2, Header3 } from "@/components/Headers";
-import { Icons, iconVariants } from "@/components/Icons";
+import { buttonVariants } from "@/components/ui/Buttons";
+import { Header2, Header3 } from "@/components/ui/Headers";
+import { Icons, iconVariants } from "@/components/ui/Icons";
 import Link from "next/link";
 import "styles/glitch.css";
 

@@ -1,10 +1,10 @@
 import { dashboardConfig } from "@majoexe/config";
 import prismaClient from "@majoexe/database";
 import Balancer from "react-wrap-balancer";
-import { Block } from "@/components/Block";
+import { Block } from "@/components/ui/Block";
 import { DiscordCommands } from "@/components/client/commandModules/DiscordCommands";
-import Image from "@/components/client/shared/Image";
-import Header, { headerVariants } from "@/components/Headers";
+import Image from "@/components/ui/Image";
+import Header, { headerVariants } from "@/components/ui/Headers";
 import { Command } from "@/lib/types";
 import { ApplicationCommandOptionType } from "discord-api-types/v10";
 import { cn } from "@/lib/utils";

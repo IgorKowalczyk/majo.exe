@@ -4,8 +4,8 @@ import { Dialog, DialogBackdrop, DialogPanel, DialogTitle } from "@headlessui/re
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 import { toast } from "sonner";
-import { Button } from "@/components/Buttons";
-import { Icons, iconVariants } from "@/components/Icons";
+import { Button } from "@/components/ui/Buttons";
+import { Icons, iconVariants } from "@/components/ui/Icons";
 
 export interface DeleteServerDataProps extends React.HTMLAttributes<HTMLDivElement> {
  serverId: string;

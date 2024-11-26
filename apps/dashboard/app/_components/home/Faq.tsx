@@ -1,7 +1,7 @@
 "use client";
 
 import { Disclosure, DisclosureButton, DisclosurePanel, Transition } from "@headlessui/react";
-import { Icons } from "@/components/Icons";
+import { Icons } from "@/components/ui/Icons";
 
 export default function Faq() {
  const items = [

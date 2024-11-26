@@ -3,11 +3,11 @@
 import { formatNumber } from "@majoexe/util/functions/util";
 import Link from "next/link";
 import { useMemo } from "react";
-import { buttonVariants } from "@/components/Buttons";
-import Image from "@/components/client/shared/Image";
+import { buttonVariants } from "@/components/ui/Buttons";
+import Image from "@/components/ui/Image";
 import { Table } from "@/components/client/shared/Table";
-import { Tooltip } from "@/components/client/shared/Tooltip";
-import { Icons, iconVariants } from "@/components/Icons";
+import { Tooltip } from "@/components/ui/Tooltip";
+import { Icons, iconVariants } from "@/components/ui/Icons";
 import type { Column } from "react-table";
 import { User } from "@majoexe/database";
 import { cn } from "@/lib/utils";

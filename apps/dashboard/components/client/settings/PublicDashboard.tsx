@@ -3,12 +3,12 @@
 import { cn } from "@/lib/utils";
 import React, { useState } from "react";
 import { toast } from "sonner";
-import { Button, buttonVariants } from "@/components/Buttons";
-import { Switch } from "@/components/client/shared/Switch";
-import { Icons, iconVariants } from "@/components/Icons";
-import { Input } from "@/components/Input";
+import { Button, buttonVariants } from "@/components/ui/Buttons";
+import { Switch } from "@/components/ui/Switch";
+import { Icons, iconVariants } from "@/components/ui/Icons";
+import { Input } from "@/components/ui/Input";
 import Link from "next/link";
-import Header, { headerVariants } from "@/components/Headers";
+import Header, { headerVariants } from "@/components/ui/Headers";
 
 interface PublicDashboardProps {
  enabled: boolean;

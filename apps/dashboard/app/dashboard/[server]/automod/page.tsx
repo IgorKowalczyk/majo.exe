@@ -6,11 +6,11 @@ import { APIGuildChannel, APIRole, ChannelType, GuildChannelType } from "discord
 import { getSession } from "lib/session";
 import { redirect } from "next/navigation";
 import { notFound } from "next/navigation";
-import { Block } from "@/components/Block";
+import { Block } from "@/components/ui/Block";
 import { AntiInvite } from "@/components/client/settings/automod/AntiInvite";
 import { AntiLink } from "@/components/client/settings/automod/AntiLink";
-import Header, { headerVariants } from "@/components/Headers";
-import { Icons, iconVariants } from "@/components/Icons";
+import Header, { headerVariants } from "@/components/ui/Headers";
+import { Icons, iconVariants } from "@/components/ui/Icons";
 import { Badge } from "@/components/ui/Badge";
 import { cn } from "@/lib/utils";
 

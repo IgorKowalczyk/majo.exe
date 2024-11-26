@@ -3,8 +3,8 @@
 import { Dialog, DialogBackdrop, DialogPanel, DialogTitle } from "@headlessui/react";
 import React, { useState } from "react";
 import { toast } from "sonner";
-import { Button } from "@/components/Buttons";
-import { Icons, iconVariants } from "@/components/Icons";
+import { Button } from "@/components/ui/Buttons";
+import { Icons, iconVariants } from "@/components/ui/Icons";
 
 interface ResetUserXPProps extends React.HTMLAttributes<HTMLDivElement> {
  userId: string;
