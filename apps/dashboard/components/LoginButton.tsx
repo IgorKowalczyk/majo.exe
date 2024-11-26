@@ -1,27 +1,13 @@
 import { getSession } from "lib/session";
 import { Icons, iconVariants } from "@/components/ui/Icons";
-import { Button, buttonVariants } from "@/components/ui/Buttons";
+import { buttonVariants } from "@/components/ui/Buttons";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
-
-export function DiscordLoginButton() {
- return (
-  <Button
-   variant="primary"
-   onClick={(e) => {
-    e.preventDefault();
-    signIn("discord", { scope: "session identity guilds" });
-   }}
-  >
-   <Icons.discord className={iconVariants({ variant: "button" })} />
-   Login with Discord
-  </Button>
- );
-}
+import { DiscordLogin } from "./DiscordLogin";
 
 export async function LoginButton() {
  const session = await getSession();
- if (!session) return <DiscordLoginButton />;
+ if (!session) return <DiscordLogin />;
 
  return (
   <Link href="/dashboard" className={cn(buttonVariants({ variant: "primary" }))}>
@@ -29,7 +15,3 @@ export async function LoginButton() {
   </Link>
  );
 }
-
-("use client");
-
-import { signIn } from "next-auth/react";
