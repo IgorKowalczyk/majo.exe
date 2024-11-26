@@ -160,8 +160,8 @@ export const ChangeCustomMessages = React.forwardRef<HTMLDivElement, ChangeCusto
         </Tooltip>
         <ChannelsSelect // prettier
          allChannels={allChannels}
-         exemptChannels={messageChannel}
-         setExemptChannels={(value: string) => setMessageChannel(value)}
+         selectedChannels={messageChannel ? [messageChannel] : []}
+         setChannels={setMessageChannel}
          multiple={false}
         />
        </div>

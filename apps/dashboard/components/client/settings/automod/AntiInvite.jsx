@@ -133,8 +133,8 @@ export function AntiInvite({ serverId, enabled, existingActions, existingExemptR
       </Tooltip>
       <ChannelsSelect // prettier
        allChannels={allChannels}
-       exemptChannels={exemptChannels}
-       setExemptChannels={setExemptChannels}
+       selectedChannels={exemptChannels}
+       setChannels={setExemptChannels}
       />
      </div>
 
@@ -184,8 +184,8 @@ export function AntiInvite({ serverId, enabled, existingActions, existingExemptR
       </Tooltip>
       <ChannelsSelect // prettier
        allChannels={[{ id: "1", name: "Disabled", type: 0 }, ...allChannels]}
-       exemptChannels={actions.find((action) => action.type === 2)?.metadata?.channel_id || "1"}
-       setExemptChannels={(value) => setActions(actions.some((action) => action.type === 2) ? actions.map((action) => (action.type === 2 ? { ...action, metadata: { channel_id: value } } : action)) : [...actions, { type: 2, metadata: { channel_id: value } }])}
+       selectedChannels={actions.find((action) => action.type === 2)?.metadata?.channel_id || "1"}
+       setChannels={(value) => setActions(actions.some((action) => action.type === 2) ? actions.map((action) => (action.type === 2 ? { ...action, metadata: { channel_id: value } } : action)) : [...actions, { type: 2, metadata: { channel_id: value } }])}
        multiple={false}
       />
      </div>
