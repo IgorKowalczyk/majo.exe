@@ -5,7 +5,7 @@ import { getSession } from "lib/session";
 import { redirect } from "next/navigation";
 import { notFound } from "next/navigation";
 import { Block, ErrorBlock } from "@/components/ui/Block";
-import { ChangeCustomMessages } from "@/components/client/settings/ChangeCustomMessages";
+import { ChangeCustomMessages } from "@/app/dashboard/[server]/messages/components/ChangeCustomMessages";
 import Header, { headerVariants } from "@/components/ui/Headers";
 import { Icons, iconVariants } from "@/components/ui/Icons";
 import { cn } from "@/lib/utils";

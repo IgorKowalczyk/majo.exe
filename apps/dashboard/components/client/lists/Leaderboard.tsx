@@ -48,14 +48,14 @@ export function Leaderboard({ data, showControls = true, showSearch = true }: { 
     Header: "XP",
     accessor: "xp",
     Cell: ({ value }) => (
-     <Tooltip content={value}>
+     <Tooltip content={value.toString()}>
       <span className="cursor-help">{formatNumber(value)}</span>
      </Tooltip>
     ),
    },
    {
     Header: "Level",
-    accessor: "level",
+    accessor: "level" as const,
    },
    ...(showControls
     ? [

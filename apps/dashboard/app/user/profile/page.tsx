@@ -4,7 +4,7 @@ import Link from "next/link";
 import { redirect } from "next/navigation";
 import { Block } from "@/components/ui/Block";
 import { buttonVariants } from "@/components/ui/Buttons";
-import { DeleteUserData } from "@/components/client/settings/DeleteUserData";
+import { DeleteUserData } from "@/app/user/components/DeleteUserData";
 import Image from "@/components/ui/Image";
 import { Tooltip } from "@/components/ui/Tooltip";
 import { Emojis } from "@/components/DiscordEmojis";
