@@ -330,11 +330,11 @@ importers:
         specifier: workspace:*
         version: link:../typescript-config
       '@neondatabase/serverless':
-        specifier: 0.10.3
-        version: 0.10.3
+        specifier: 0.10.4
+        version: 0.10.4
       '@prisma/adapter-neon':
         specifier: 5.22.0
-        version: 5.22.0(@neondatabase/serverless@0.10.3)
+        version: 5.22.0(@neondatabase/serverless@0.10.4)
       '@prisma/client':
         specifier: 5.22.0
         version: 5.22.0(prisma@5.22.0)
@@ -1676,8 +1676,8 @@ packages:
     resolution: {integrity: sha512-B1H0lBQJOivF3JW1uXMHydIbHRYcMLXUVgjyF5NZHvNCHCmQhbDerbiM9Q2Wwm9KtcQ2t1I2J+DJEFVE9Q33lQ==}
     engines: {node: '>= 10'}
 
-  '@neondatabase/serverless@0.10.3':
-    resolution: {integrity: sha512-F4kqSj++GUwLnO3OzPb95Y/xn3qVLkjJA/36YTqT7c3MRgA/IBOIs/Is1+HBZkGfEwfMG3A9tFkxiEg5eBjxDw==}
+  '@neondatabase/serverless@0.10.4':
+    resolution: {integrity: sha512-2nZuh3VUO9voBauuh+IGYRhGU/MskWHt1IuZvHcJw6GLjDgtqj/KViKo7SIrLdGLdot7vFbiRRw+BgEy3wT9HA==}
 
   '@next-auth/prisma-adapter@1.0.7':
     resolution: {integrity: sha512-Cdko4KfcmKjsyHFrWwZ//lfLUbcLqlyFqjd/nYE2m3aZ7tjMNUjpks47iw7NTCnXf+5UWz5Ypyt1dSs1EP5QJw==}
@@ -7883,7 +7883,7 @@ snapshots:
       '@napi-rs/canvas-linux-x64-musl': 0.1.63
       '@napi-rs/canvas-win32-x64-msvc': 0.1.63
 
-  '@neondatabase/serverless@0.10.3':
+  '@neondatabase/serverless@0.10.4':
     dependencies:
       '@types/pg': 8.11.6
 
@@ -7991,9 +7991,9 @@ snapshots:
 
   '@popperjs/core@2.11.8': {}
 
-  '@prisma/adapter-neon@5.22.0(@neondatabase/serverless@0.10.3)':
+  '@prisma/adapter-neon@5.22.0(@neondatabase/serverless@0.10.4)':
     dependencies:
-      '@neondatabase/serverless': 0.10.3
+      '@neondatabase/serverless': 0.10.4
       '@prisma/driver-adapter-utils': 5.22.0
       postgres-array: 3.0.2
 
