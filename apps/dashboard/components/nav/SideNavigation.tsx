@@ -7,7 +7,7 @@ import React, { useContext } from "react";
 import { VisibilityContext } from "@/components/nav/client/VisibilityContext";
 import { Button, buttonVariants } from "@/components/Buttons";
 import { Icons, iconVariants } from "@/components/Icons";
-import { Badge } from "@/components/Badge";
+import { Badge } from "@/components/ui/Badge";
 
 export const SideNavLink = React.forwardRef<HTMLAnchorElement, React.AnchorHTMLAttributes<HTMLAnchorElement> & { href: string }>(({ href, children, ...props }, ref) => {
  const router = usePathname();

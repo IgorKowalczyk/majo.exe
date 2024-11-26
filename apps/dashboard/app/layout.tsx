@@ -3,7 +3,7 @@ import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { GeistSans } from "geist/font/sans";
 import { Toaster } from "sonner";
-import ProgressBar from "@/components/client/shared/ProgressBar";
+import { ProgressBar } from "@/components/client/shared/ProgressBar";
 import { Session } from "@/components/client/shared/Session";
 import { Footer } from "@/components/Footer";
 import { Hotjar } from "@/components/Hotjar";

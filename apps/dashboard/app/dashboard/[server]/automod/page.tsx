@@ -11,7 +11,7 @@ import { AntiInvite } from "@/components/client/settings/automod/AntiInvite";
 import { AntiLink } from "@/components/client/settings/automod/AntiLink";
 import Header, { headerVariants } from "@/components/Headers";
 import { Icons, iconVariants } from "@/components/Icons";
-import { Badge } from "@/components/Badge";
+import { Badge } from "@/components/ui/Badge";
 import { cn } from "@/lib/utils";
 
 export const metadata = {
