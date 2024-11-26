@@ -4,7 +4,7 @@ import { cn } from "@/lib/utils";
 import React, { useState } from "react";
 import { toast } from "sonner";
 import { Button, buttonVariants } from "@/components/Buttons";
-import Switch from "@/components/client/shared/Switch";
+import { Switch } from "@/components/client/shared/Switch";
 import { Icons, iconVariants } from "@/components/Icons";
 import { Input } from "@/components/Input";
 import Link from "next/link";
@@ -140,7 +140,7 @@ export const PublicDashboard = React.forwardRef<HTMLDivElement, PublicDashboardP
     <Header className={cn(headerVariants({ variant: "h3", margin: "normal" }))}>
      <Icons.Power className={iconVariants({ variant: "large" })} />
      Enable public dashboard overview:
-     <Switch enabled={isEnabled} onChange={toggle} disabled={disabled} />
+     <Switch checked={isEnabled} onChange={toggle} disabled={disabled} />
     </Header>
    </div>
    <p className="text-white/70">Allow users to view a public dashboard of your server, even if they are not a member.</p>

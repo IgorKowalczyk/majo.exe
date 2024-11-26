@@ -7,7 +7,7 @@ import { Block } from "@/components/Block";
 import { Button } from "@/components/Buttons";
 import { ChannelsSelect } from "@/components/client/shared/ChannelsSelect";
 import { RolesSelect } from "@/components/client/shared/RolesSelect";
-import Switch from "@/components/client/shared/Switch";
+import { Switch } from "@/components/client/shared/Switch";
 import { TimeSelect } from "@/components/client/shared/TimeSelect";
 import { Tooltip } from "@/components/client/shared/Tooltip";
 import { Header2, Header3 } from "@/components/Headers";
@@ -74,7 +74,7 @@ export function AntiInvite({ serverId, enabled, existingActions, existingExemptR
   <>
    <Header2>
     <Icons.userBlock className={iconVariants({ variant: "large", className: "!stroke-2" })} />
-    Anti-Invite <Switch enabled={isEnabled} onChange={save} disabled={loading} />
+    Anti-Invite <Switch checked={isEnabled} onChange={save} disabled={loading} />
    </Header2>
    <p className="mb-4 text-left">
     <span>Automatically delete all messages containing Discord server invites.</span>
@@ -157,7 +157,7 @@ export function AntiInvite({ serverId, enabled, existingActions, existingExemptR
        </span>
       </Tooltip>
       <Switch // prettier
-       enabled={actions.some((action) => action.type === 1)}
+       checked={actions.some((action) => action.type === 1)}
        onChange={() => setActions(actions.some((action) => action.type === 1) ? actions.filter((action) => action.type !== 1) : [...actions, { type: 1, metadata: { custom_message: "Message blocked due to containing an invite link. Rule added by Majo.exe" } }])}
       />
      </div>

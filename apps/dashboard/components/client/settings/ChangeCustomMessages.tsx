@@ -7,7 +7,7 @@ import { toast } from "sonner";
 import { Block } from "@/components/Block";
 import { Button } from "@/components/Buttons";
 import { ChannelsSelect } from "@/components/client/shared/ChannelsSelect";
-import Switch from "@/components/client/shared/Switch";
+import { Switch } from "@/components/client/shared/Switch";
 import { Tooltip } from "@/components/client/shared/Tooltip";
 import { EmbedTitle, Embed, EmbedDescription, EmbedImage } from "@/components/Embed";
 import { Header2 } from "@/components/Headers";
@@ -118,7 +118,7 @@ export const ChangeCustomMessages = React.forwardRef<HTMLDivElement, ChangeCusto
        Enabled:
       </span>
      </Tooltip>
-     <Switch enabled={isEnabled} onChange={() => setIsEnabled(!isEnabled)} disabled={loading} />
+     <Switch checked={isEnabled} onChange={() => setIsEnabled(!isEnabled)} disabled={loading} />
     </div>
 
     <div

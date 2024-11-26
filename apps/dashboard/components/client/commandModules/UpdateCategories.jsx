@@ -3,7 +3,7 @@
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { toast } from "sonner";
-import Switch from "@/components/client/shared/Switch";
+import { Switch } from "@/components/client/shared/Switch";
 import { Tooltip } from "@/components/client/shared/Tooltip";
 
 export function UpdateCategories({ serverId, categoryName, categoryEnabled }) {
@@ -55,7 +55,7 @@ export function UpdateCategories({ serverId, categoryName, categoryEnabled }) {
  return (
   <Tooltip content={enabled ? "Disable category" : loading ? "Changing status..." : "Enable category"}>
    <span>
-    <Switch enabled={enabled} disabled={loading} onChange={() => updateCategory()} />
+    <Switch checked={enabled} disabled={loading} onChange={() => updateCategory()} />
    </span>
   </Tooltip>
  );
