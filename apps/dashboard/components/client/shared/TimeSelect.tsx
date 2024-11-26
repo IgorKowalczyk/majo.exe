@@ -2,7 +2,6 @@
 
 import { ListBox, ListBoxArrow, ListBoxButton, ListBoxOption, ListBoxOptions } from "@/components/client/shared/ListBox";
 import { Icons, iconVariants } from "@/components/Icons";
-import { Listbox } from "@headlessui/react";
 import React from "react";
 
 export const choices = [
@@ -44,12 +43,12 @@ export const choices = [
  },
 ];
 
-export interface TimeSelectProps extends React.ComponentProps<typeof Listbox> {
+export interface TimeSelectProps extends React.ComponentProps<typeof ListBox> {
  selectedChoice: number;
  setSelectedChoice: (value: number) => void;
 }
 
-export const TimeSelect = React.forwardRef<React.ElementRef<typeof Listbox>, TimeSelectProps>(({ className, selectedChoice, setSelectedChoice, ...props }, ref) => (
+export const TimeSelect = React.forwardRef<React.ElementRef<typeof ListBox>, TimeSelectProps>(({ className, selectedChoice, setSelectedChoice, ...props }, ref) => (
  <>
   {choices && choices.length > 0 ? (
    <ListBox value={selectedChoice.toString()} onChange={(value: string) => setSelectedChoice(parseInt(value))} {...props} ref={ref}>
