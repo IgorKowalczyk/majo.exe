@@ -119,8 +119,8 @@ export function AntiInvite({ serverId, enabled, existingActions, existingExemptR
       </Tooltip>
       <RolesSelect // prettier
        allRoles={allRoles}
-       exemptRoles={exemptRoles}
-       setExemptRoles={setExemptRoles}
+       selectedRoles={exemptRoles}
+       setRoles={setExemptRoles}
       />
      </div>
 

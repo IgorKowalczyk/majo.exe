@@ -119,8 +119,8 @@ export function AntiLink({ serverId, enabled, existingActions, existingExemptRol
       </Tooltip>
       <RolesSelect // prettier
        allRoles={allRoles}
-       exemptRoles={exemptRoles}
-       setExemptRoles={setExemptRoles}
+       selectedRoles={exemptRoles}
+       setRoles={setExemptRoles}
       />
      </div>
 

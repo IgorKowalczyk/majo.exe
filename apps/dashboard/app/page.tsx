@@ -15,7 +15,7 @@ import Faq from "./_components/home/Faq";
 import { LevelUp } from "./_components/home/LevelUp";
 import { buttonVariants } from "@/components/Buttons";
 import { LogDisclosure } from "@/components/client/lists/Logs";
-import AnimatedShinyText from "@/components/client/shared/AnimatedShinyText";
+import { AnimatedShinyText } from "@/components/client/shared/AnimatedShinyText";
 import AreaChart from "@/components/client/shared/AreaChart";
 import Image from "@/components/client/shared/Image";
 import Header, { headerVariants } from "@/components/Headers";
