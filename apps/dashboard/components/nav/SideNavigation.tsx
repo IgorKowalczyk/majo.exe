@@ -3,26 +3,28 @@
 import { cn } from "@/lib/utils";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
-import { useContext } from "react";
-import { VisibilityContext } from "./VisibilityContext";
+import React, { useContext } from "react";
+import { VisibilityContext } from "@/components/nav/client/VisibilityContext";
 import { Button, buttonVariants } from "@/components/Buttons";
 import { Icons, iconVariants } from "@/components/Icons";
+import { Badge } from "@/components/Badge";
 
-export function NavBadge({ children }) {
- return <div className="-mt-3 rounded-md bg-button-primary px-1 py-px pb-0 text-xs uppercase">{children}</div>;
-}
-
-export function SideNavLink({ href, children }) {
+export const SideNavLink = React.forwardRef<HTMLAnchorElement, React.AnchorHTMLAttributes<HTMLAnchorElement> & { href: string }>(({ href, children, ...props }, ref) => {
  const router = usePathname();
- const isSelected = (path) => router === path;
+ const isSelected = (path: string) => router === path;
+
  return (
-  <Link href={href} className={`${isSelected(href) ? "bg-button-primary/20 before:h-[29px]" : "hover:bg-button-primary/20"} flex h-[45px] w-full items-center gap-2 rounded-md py-2 pr-4 duration-200 before:h-0 before:rounded-r-md before:border-l-4 before:border-button-primary before:duration-200 hover:bg-button-primary/20 hover:before:h-[29px]`}>
+  <Link href={href} className={`${isSelected(href) ? "bg-button-primary/20 before:h-[29px]" : "hover:bg-button-primary/20"} flex h-[45px] w-full items-center gap-2 rounded-md py-2 pr-4 duration-200 before:h-0 before:rounded-r-md before:border-l-4 before:border-button-primary before:duration-200 hover:bg-button-primary/20 hover:before:h-[29px]`} {...props} ref={ref}>
    {children}
   </Link>
  );
+});
+
+export interface SideNavigationProps extends React.HTMLAttributes<HTMLDivElement> {
+ server: string;
 }
 
-export function SideNav({ server }) {
+export const SideNavigation = React.forwardRef<HTMLDivElement, SideNavigationProps>(async ({ className, server, ...props }, ref) => {
  const { sideNavVisible, toggleSideNav } = useContext(VisibilityContext);
  const router = useRouter();
 
@@ -35,8 +37,11 @@ export function SideNav({ server }) {
       "pointer-events-none opacity-0": !sideNavVisible,
       "opacity-100": sideNavVisible,
      },
-     "fixed z-30 mt-8 flex h-screen w-64 flex-none flex-col flex-nowrap overflow-y-auto overflow-x-hidden border-r border-r-neutral-800 bg-background-navbar py-8 pb-32 shadow-lg duration-100 md:pointer-events-auto md:top-0 md:mt-16 md:opacity-100"
+     "fixed z-30 mt-8 flex h-screen w-64 flex-none flex-col flex-nowrap overflow-y-auto overflow-x-hidden border-r border-r-neutral-800 bg-background-navbar py-8 pb-32 shadow-lg duration-100 md:pointer-events-auto md:top-0 md:mt-16 md:opacity-100",
+     className
     )}
+    {...props}
+    ref={ref}
    >
     <div className="px-4">
      <Button onClick={() => router.back()} className={cn(buttonVariants({ variant: "primary" }), "mb-4 w-full")}>
@@ -59,7 +64,7 @@ export function SideNav({ server }) {
      </SideNavLink>
      <SideNavLink href={`/dashboard/${server}/giveaways`}>
       <Icons.Gift className={iconVariants({ variant: "large" })} />
-      Giveaways<NavBadge>beta</NavBadge>
+      Giveaways<Badge className="-mt-3">beta</Badge>
      </SideNavLink>
     </div>
 
@@ -82,7 +87,7 @@ export function SideNav({ server }) {
      </SideNavLink>
      <SideNavLink href={`/dashboard/${server}/automod`}>
       <Icons.Bot className={iconVariants({ variant: "large" })} />
-      Automod<NavBadge>beta</NavBadge>
+      Automod<Badge className="-mt-3">beta</Badge>
      </SideNavLink>
      <SideNavLink href={`/dashboard/${server}/messages`}>
       <Icons.messageCode className={iconVariants({ variant: "large" })} />
@@ -96,4 +101,4 @@ export function SideNav({ server }) {
    </aside>
   </>
  );
-}
+});

@@ -8,12 +8,13 @@ import Image from "@/components/client/shared/Image";
 import { Icons, iconVariants } from "@/components/Icons";
 import { SideMenuControl } from "@/components/nav/client/SideMenuControl";
 import { UserMenuDropdown } from "@/components/nav/client/UserMenuDropdown";
+import React, { HTMLAttributes } from "react";
 
-export async function Nav({ theme }) {
+export const TopNavigation = React.forwardRef<HTMLDivElement, HTMLAttributes<HTMLDivElement> & { theme?: "full" | "compact" }>(async ({ className, theme, ...props }, ref) => {
  const session = await getSession();
 
  return (
-  <nav className="fixed z-40 flex w-full items-center border-b border-b-neutral-800 bg-background-navbar py-4 text-left shadow-lg md:bg-background-navbar/70 md:backdrop-blur-[9px]">
+  <nav className={cn("fixed z-40 flex w-full items-center border-b border-b-neutral-800 bg-background-navbar py-4 text-left shadow-lg md:bg-background-navbar/70 md:backdrop-blur-[9px]", className)} {...props} ref={ref}>
    <SideMenuControl />
    <div
     className={cn(
@@ -60,4 +61,4 @@ export async function Nav({ theme }) {
    </div>
   </nav>
  );
-}
+});

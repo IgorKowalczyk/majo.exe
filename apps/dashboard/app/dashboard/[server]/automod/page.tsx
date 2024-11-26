@@ -11,7 +11,7 @@ import { AntiInvite } from "@/components/client/settings/automod/AntiInvite";
 import { AntiLink } from "@/components/client/settings/automod/AntiLink";
 import Header, { headerVariants } from "@/components/Headers";
 import { Icons, iconVariants } from "@/components/Icons";
-import { NavBadge } from "@/components/nav/client/SideNav";
+import { Badge } from "@/components/Badge";
 import { cn } from "@/lib/utils";
 
 export const metadata = {
@@ -119,7 +119,7 @@ export default async function AutomodPage(props: { params: Promise<{ server: str
    <Block className="mb-4">
     <Header className={cn(headerVariants({ variant: "h2" }))}>
      <Icons.mention className={iconVariants({ variant: "large" })} />
-     Anti-Mention <NavBadge>Coming Soon</NavBadge>
+     Anti-Mention <Badge>Coming Soon</Badge>
     </Header>
     <p className="mb-4 text-left">
      <span>Automatically delete all messages containing user mentions.</span>
@@ -128,7 +128,7 @@ export default async function AutomodPage(props: { params: Promise<{ server: str
    <Block className="mb-4">
     <Header className={cn(headerVariants({ variant: "h2" }))}>
      <Icons.messageOff className={iconVariants({ variant: "large" })} />
-     Anti-Spam <NavBadge>Coming Soon</NavBadge>
+     Anti-Spam <Badge>Coming Soon</Badge>
     </Header>
     <p className="mb-4 text-left">
      <span>Automatically delete all messages deemed as spam.</span>
@@ -137,7 +137,7 @@ export default async function AutomodPage(props: { params: Promise<{ server: str
    <Block className="mb-4">
     <Header className={cn(headerVariants({ variant: "h2" }))}>
      <Icons.ShieldBan className={iconVariants({ variant: "large" })} />
-     Anti-Badwords <NavBadge>Coming Soon</NavBadge>
+     Anti-Badwords <Badge>Coming Soon</Badge>
     </Header>
     <p className="mb-4 text-left">
      <span>Automatically delete all messages containing bad words or phrases.</span>

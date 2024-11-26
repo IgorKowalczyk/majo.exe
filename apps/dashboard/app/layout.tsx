@@ -9,7 +9,7 @@ import { Footer } from "@/components/Footer";
 import { Hotjar } from "@/components/Hotjar";
 import { Icons, iconVariants } from "@/components/Icons";
 import { VisibilityProvider } from "@/components/nav/client/VisibilityContext";
-import { Nav } from "@/components/nav/server/Nav";
+import { TopNavigation } from "@/components/nav/TopNavigation";
 import { TailwindIndicator } from "@/components/TailwindIndicator";
 import "styles/globals.css";
 import type { Metadata } from "next";
@@ -65,7 +65,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <body className={cn("bg-background-primary text-white antialiased", GeistSans.className)}>
      <ProgressBar />
      <VisibilityProvider>
-      <Nav theme="full" />
+      <TopNavigation theme="full" />
       <main className="flex min-h-screen flex-row flex-wrap">
        <div className="mt-8">{children}</div>
       </main>

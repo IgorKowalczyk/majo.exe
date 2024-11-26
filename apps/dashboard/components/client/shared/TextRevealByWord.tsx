@@ -4,7 +4,7 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 import { cn } from "@/lib/utils";
 
-export default function TextRevealByWord({ text, className }) {
+export default function TextRevealByWord({ text, className }: { text: string; className?: string }) {
  const targetRef = useRef(null);
 
  const { scrollYProgress } = useScroll({
@@ -31,7 +31,7 @@ export default function TextRevealByWord({ text, className }) {
  );
 }
 
-const Word = ({ children, progress, range }) => {
+const Word = ({ children, progress, range }: { children: string; progress: any; range: [number, number] }) => {
  const opacity = useTransform(progress, range, [0, 1]);
  return (
   <span className="relative mx-1 lg:mx-2.5">

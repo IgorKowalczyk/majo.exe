@@ -59,7 +59,7 @@ export function Table({
    <div className="flex w-full flex-col">
     <div className="flex flex-row items-stretch gap-4">
      {showSearch && <InputWithIcon icon={<Icons.Search className={iconVariants({ variant: "normal" })} />} placeholder="Search" value={globalFilter || ""} onChange={(e) => setGlobalFilter(e.target.value)} className="h-10" />}
-     {showControls && <ViewSelect selectedValue={pageSize} setSelectedValue={setPageSize} />}
+     {showControls && <ViewSelect selectedValue={pageSize} setSelectedValue={setPageSize} className="my-2" />}
     </div>
 
     <table className="min-w-full divide-y divide-neutral-800">

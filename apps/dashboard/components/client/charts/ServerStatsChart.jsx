@@ -5,9 +5,10 @@ import fileDl from "js-file-download";
 import { Fragment, useState } from "react";
 import { Block } from "@/components/Block";
 import AreaChart from "@/components/client/shared/AreaChart";
-import Menu from "@/components/client/shared/Menu";
+import { Menu, MenuArrow, MenuButton, MenuItem, MenuItems } from "@/components/client/shared/Menu";
 import { Header2 } from "@/components/Headers";
 import { Icons, iconVariants } from "@/components/Icons";
+import { sumArray } from "@majoexe/util/functions/util";
 
 export function ServerStatsChart({ guildJoin, guildLeave, guildJoinCSV, guildLeaveCSV, guildMessage, guildMessageCSV }) {
  return (
@@ -24,10 +25,6 @@ function GenerateComponent({ title, data, CSVData, valueName, fileName, categori
  const dateRanges = ["Last 7 days", "Last 14 days", "Last 30 days", "All time"];
 
  const numberFormatter = (value) => Intl.NumberFormat("us").format(value).toString();
-
- const sumArray = (array, metric) => {
-  return array.reduce((accumulator, currentValue) => accumulator + currentValue[metric], 0);
- };
 
  let filteredData = data;
  if (dateRange !== "All time") {
@@ -67,22 +64,22 @@ function GenerateComponent({ title, data, CSVData, valueName, fileName, categori
      )}
     </Header2>
     <div className="relative mx-auto flex flex-row flex-wrap items-center justify-center gap-2 lg:ml-auto lg:mr-0 lg:gap-1">
-     <Menu
-      label={
-       <>
-        <Icons.Download className={iconVariants({ variant: "small" })} />
-        <span>Export</span>
-       </>
-      }
-     >
-      <div>
-       <Menu.Item onClick={() => fileDl(CSVData, `${fileName}.csv`)}>
-        <Icons.fileCSV className={iconVariants({ variant: "button", className: "ml-1" })} /> Export as CSV
-       </Menu.Item>
-       <Menu.Item onClick={() => fileDl(JSON.stringify(data), `${fileName}.json`)}>
-        <Icons.fileJSON className={iconVariants({ variant: "button", className: "ml-1" })} /> Export as JSON
-       </Menu.Item>
-      </div>
+     <Menu>
+      <MenuButton>
+       <Icons.Download className={iconVariants({ variant: "small" })} />
+       <span>Export</span>
+       <MenuArrow />
+      </MenuButton>
+      <MenuItems>
+       <div>
+        <MenuItem onClick={() => fileDl(CSVData, `${fileName}.csv`)}>
+         <Icons.fileCSV className={iconVariants({ variant: "button", className: "ml-1" })} /> Export as CSV
+        </MenuItem>
+        <MenuItem onClick={() => fileDl(JSON.stringify(data), `${fileName}.json`)}>
+         <Icons.fileJSON className={iconVariants({ variant: "button", className: "ml-1" })} /> Export as JSON
+        </MenuItem>
+       </div>
+      </MenuItems>
      </Menu>
      <Listbox value={dateRange} onChange={setDateRange}>
       <div className="relative">

@@ -2,18 +2,18 @@
 
 import { cn } from "@/lib/utils";
 import { useParams } from "next/navigation";
-import { useContext } from "react";
-import { VisibilityContext } from "./VisibilityContext";
+import React, { useContext } from "react";
+import { VisibilityContext } from "@/components/nav/client/VisibilityContext";
 import { Icons } from "@/components/Icons";
 
-export function SideMenuControl() {
+export const SideMenuControl = React.forwardRef<HTMLButtonElement, React.ButtonHTMLAttributes<HTMLButtonElement>>(({ className, ...props }, ref) => {
  const { toggleSideNav, sideNavVisible } = useContext(VisibilityContext);
  const params = useParams();
 
  return (
   <>
    {params.server && (
-    <button className="bg-elements text-text ml-4 flex flex-row items-center gap-2 rounded-lg p-2 md:hidden" onClick={toggleSideNav} type="button">
+    <button className={cn("bg-elements text-text ml-4 flex flex-row items-center gap-2 rounded-lg p-2 md:hidden", className)} onClick={toggleSideNav} type="button" ref={ref} {...props}>
      <div className="relative size-6">
       <Icons.close
        className={cn(
@@ -38,4 +38,4 @@ export function SideMenuControl() {
    )}
   </>
  );
-}
+});
