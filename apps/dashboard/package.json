@@ -70,7 +70,7 @@
     "postcss": "8.4.49",
     "prettier-plugin-tailwindcss": "0.6.9",
     "tailwind-gradient-mask-image": "1.2.0",
-    "tailwind-merge": "2.5.4",
+    "tailwind-merge": "2.5.5",
     "tailwindcss": "3.4.15",
     "tailwindcss-text-fill": "0.2.0"
   },
