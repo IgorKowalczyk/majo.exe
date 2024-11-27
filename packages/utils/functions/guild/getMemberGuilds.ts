@@ -2,7 +2,7 @@ import { globalConfig } from "@majoexe/config";
 import { getPermissionNames } from "../user/getPermissionNames";
 import { APIGuild } from "discord-api-types/v10";
 
-interface ExtendedAPIGuild extends APIGuild {
+export interface ExtendedAPIGuild extends APIGuild {
  permissions_names: string[];
  bot: boolean;
 }

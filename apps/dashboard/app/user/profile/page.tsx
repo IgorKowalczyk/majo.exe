@@ -11,12 +11,70 @@ import { Emojis } from "@/components/DiscordEmojis";
 import Header, { headerVariants } from "@/components/ui/Headers";
 import { Icons, iconVariants } from "@/components/ui/Icons";
 import { cn } from "@/lib/utils";
+import { ExtendedAPIGuild, getMemberGuilds } from "@majoexe/util/functions/guild";
+import prisma, { GuildWarns, GuildXp } from "@majoexe/database";
+import { formatNumber } from "@majoexe/util/functions/util";
 
 export const revalidate = 3600; // 1 hour
 
 export default async function Page() {
  const user = await getSession();
  if (!user) return redirect("/auth/login");
+ if (!user.access_token) return redirect("/auth/login");
+
+ const userServers = (await getMemberGuilds(user.access_token)) || [];
+ const userServerIds = userServers.map((server) => server.id);
+
+ const userData = await prisma.user.findUnique({
+  where: {
+   discordId: user.id,
+  },
+  include: {
+   guildWarns: true,
+   guildXp: true,
+  },
+ });
+ if (!userData) return redirect("/auth/login");
+
+ type GroupedGuilds = {
+  [guildId: string]: {
+   guild: ExtendedAPIGuild;
+   warns: GuildWarns[];
+   xp: GuildXp[];
+  };
+ };
+
+ const groupedGuilds: GroupedGuilds = {};
+
+ userData.guildWarns.forEach((warn: GuildWarns) => {
+  const guildId = warn.guildId;
+  if (!userServerIds.includes(guildId)) return;
+  const guild = userServers.find((server) => server.id === guildId);
+  if (!guild) return;
+  if (!groupedGuilds[guildId]) {
+   groupedGuilds[guildId] = {
+    guild,
+    warns: [],
+    xp: [],
+   };
+  }
+  groupedGuilds[guildId].warns.push(warn);
+ });
+
+ userData.guildXp.forEach((xp: GuildXp) => {
+  const guildId = xp.guildId;
+  if (!userServerIds.includes(guildId)) return;
+  const guild = userServers.find((server) => server.id === guildId);
+  if (!guild) return;
+  if (!groupedGuilds[guildId]) {
+   groupedGuilds[guildId] = {
+    guild,
+    warns: [],
+    xp: [],
+   };
+  }
+  groupedGuilds[guildId].xp.push(xp);
+ });
 
  return (
   <div className="flex w-full flex-col items-center px-8 pb-8 pt-16 antialiased md:p-16">
@@ -41,7 +99,7 @@ export default async function Page() {
          {user.discriminator === "0" ? (
           <>
            {user.global_name && user.username && (
-            <Tooltip content={`@${user.username}`}>
+            <Tooltip content={`Tag: @${user.username}`} className="font-normal">
              <div className="text-white">{user.global_name}</div>
             </Tooltip>
            )}
@@ -53,12 +111,16 @@ export default async function Page() {
           </>
          )}
 
-         {user.nitro > 0 && <Tooltip content="Nitro">{Emojis["nitro"]}</Tooltip>}
+         {user.nitro > 0 && (
+          <Tooltip content="Nitro" className="font-normal">
+           {Emojis["nitro"]}
+          </Tooltip>
+         )}
 
          {getFlags(user.public_flags) &&
           getFlags(user.public_flags).map((flag) => {
            return (
-            <Tooltip key={`flag-${flag.name}`} content={flag.content}>
+            <Tooltip key={`flag-${flag.name}`} content={flag.content} className="font-normal">
              {Emojis[flag.name as keyof typeof Emojis]}
             </Tooltip>
            );
@@ -71,11 +133,55 @@ export default async function Page() {
         </Link>
        </div>
       </div>
-      <div className="m-[8px_16px_16px] rounded-lg border border-neutral-800 bg-background-menu-button/70 p-4">Note: By default your banner and accent color are taken from Discord</div>
+      {/* <div className="m-[8px_16px_16px] rounded-lg border border-neutral-800 bg-background-menu-button/70 p-4">{groupedGuilds && Object.keys(groupedGuilds).length} servers</div> */}
      </>
     </div>
 
-    <div className="relative overflow-hidden rounded-lg border border-neutral-800 bg-background-navbar p-4 md:w-full">
+    <Block>
+     <Header className={cn(headerVariants({ variant: "h2" }))}>
+      <Icons.Logs className={iconVariants({ variant: "large", className: "!stroke-2" })} />
+      Servers
+     </Header>
+     <p className="mt-2 leading-none text-white/70">A list of servers you are in and some information about them.</p>
+     {groupedGuilds ? (
+      <div className="flex flex-col gap-4 mt-4">
+       {Object.keys(groupedGuilds).map((guildId) => {
+        const guild = groupedGuilds[guildId];
+        if (!guild) return null;
+        const userXP = guild.xp.reduce((acc, curr) => acc + curr.xp, 0);
+        return (
+         <div key={guild.guild.id} className="relative flex  overflow-hidden rounded-lg border border-neutral-800 bg-background-navbar p-4 justify-between">
+          <div className="flex flex-row items-center gap-4">
+           {guild.guild.icon ? <Image src={`https://cdn.discordapp.com/icons/${guild.guild.id}/${guild.guild.icon}.${guild.guild.icon.startsWith("a_") ? "gif" : "png"}`} alt={guild.guild.name} quality={95} width={64} height={64} className="size-16 shrink-0 rounded-full" /> : <div className="size-16 shrink-0 rounded-full bg-button-secondary" />}
+           <div className="flex flex-col">
+            <Header className={cn(headerVariants({ variant: "h4" }))}>{guild.guild.name}</Header>
+            <p className="text-white/70 text-sm">Server ID: {guild.guild.id}</p>
+           </div>
+          </div>
+          <div className="flex flex-row items-center gap-4">
+           <div className="flex flex-col">
+            {/* <p className="text-white font-semibold">Warns</p> */}
+            <p className="text-white/70">{guild.warns.length} warns</p>
+           </div>
+           <div className="flex flex-col">
+            {/* <p className="text-white font-semibold">XP</p> */}
+            <Tooltip content={`Total XP: ${userXP}`}>
+             <p className="text-white/70">
+              {formatNumber(userXP || 0)} XP ({Math.floor(0.1 * Math.sqrt(userXP || 0))} level)
+             </p>
+            </Tooltip>
+           </div>
+          </div>
+         </div>
+        );
+       })}
+      </div>
+     ) : (
+      <div className="mt-4 text-white/70">No servers found.</div>
+     )}
+    </Block>
+
+    <Block>
      <Header className={cn(headerVariants({ variant: "h2" }))}>
       <Icons.Download className={iconVariants({ variant: "large", className: "!stroke-2" })} />
       Download data
@@ -87,14 +193,14 @@ export default async function Page() {
       <Icons.Download className={iconVariants({ variant: "button" })} />
       Download data
      </Link>
-    </div>
+    </Block>
 
     <Block theme="danger">
      <Header className={cn(headerVariants({ variant: "h2" }), "text-red-400")}>
       <Icons.warning className={iconVariants({ variant: "large", className: "stroke-red-400 !stroke-2" })} />
       Delete account
      </Header>
-     <p className="mt-2 text-white/70">If you want to delete all your data and your account, click the button below. This action is irreversible.</p>
+     <p className="mt-2 text-white/70">If you want to delete all your data and your account, click the button below. This action is irreversible - all your data will be lost.</p>
      <DeleteUserData />
     </Block>
    </div>

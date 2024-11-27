@@ -48,7 +48,7 @@ export function Leaderboard({ data, showControls = true, showSearch = true }: { 
     Header: "XP",
     accessor: "xp",
     Cell: ({ value }) => (
-     <Tooltip content={`Total XP: ${formatNumber(value)}`}>
+     <Tooltip content={`Total XP: ${value}`}>
       <span className="cursor-help">{formatNumber(value)} XP</span>
      </Tooltip>
     ),
