@@ -5,7 +5,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import Balancer from "react-wrap-balancer";
 import { Block } from "@/components/ui/Block";
-import { Leaderboard } from "@/components/client/lists/Leaderboard";
+import { Leaderboard } from "@/app/dashboard/[server]/leaderboard/components/Leaderboard";
 import Image from "@/components/ui/Image";
 import { Tooltip } from "@/components/ui/Tooltip";
 import Header, { Header4, headerVariants } from "@/components/ui/Headers";

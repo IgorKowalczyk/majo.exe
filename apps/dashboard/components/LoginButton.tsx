@@ -3,7 +3,7 @@ import { Icons, iconVariants } from "@/components/ui/Icons";
 import { buttonVariants } from "@/components/ui/Buttons";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
-import { DiscordLogin } from "./DiscordLogin";
+import { DiscordLogin } from "@/components/DiscordLogin";
 
 export async function LoginButton() {
  const session = await getSession();

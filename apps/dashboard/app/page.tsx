@@ -14,7 +14,7 @@ import { AddReaction } from "@/app/_components/AddReaction";
 import Faq from "@/app/_components/Faq";
 import { LevelUp } from "@/app/_components/LevelUp";
 import { buttonVariants } from "@/components/ui/Buttons";
-import { LogDisclosure } from "@/components/client/lists/Logs";
+import { LogDisclosure } from "@/app/dashboard/[server]/logs/components/Logs";
 import { AnimatedShinyText } from "@/components/ui/effects/AnimatedShinyText";
 import AreaChart from "@/components/client/shared/AreaChart";
 import Image from "@/components/ui/Image";

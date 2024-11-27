@@ -4,7 +4,7 @@ import { dashboardConfig } from "@majoexe/config";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
 import { useSelectedLayoutSegment, usePathname } from "next/navigation";
-import { Icons } from "./ui/Icons";
+import { Icons } from "@/components/ui/Icons";
 import { buttonVariants } from "@/components/ui/Buttons";
 import Image from "@/components/ui/Image";
 import React, { HTMLAttributes } from "react";

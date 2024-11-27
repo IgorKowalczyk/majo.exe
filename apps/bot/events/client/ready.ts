@@ -52,9 +52,11 @@ export async function ready(client: Majobot) {
   }
  }
 
- client.user.setActivity(client.config.presence.activity.type === ActivityType.Custom ? client.config.presence.activity.state : client.config.presence.activity.name, {
-  type: client.config.presence.activity.type,
- });
-
- client.user.setStatus(client.config.presence.status ?? PresenceUpdateStatus.Online);
+ setInterval(async () => {
+  if (!client.user) return;
+  client.user.setActivity(client.config.presence.activity.type === ActivityType.Custom ? client.config.presence.activity.state : client.config.presence.activity.name, {
+   type: client.config.presence.activity.type,
+  });
+  client.user.setStatus(client.config.presence.status ?? PresenceUpdateStatus.Online);
+ }, 60000); // 1 minute
 }

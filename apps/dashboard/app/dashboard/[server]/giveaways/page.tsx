@@ -4,7 +4,7 @@ import { getSession } from "lib/session";
 import { redirect } from "next/navigation";
 import { notFound } from "next/navigation";
 import { Block } from "@/components/ui/Block";
-import { Giveaways } from "@/components/client/lists/Giveaways";
+import { Giveaways } from "@/app/dashboard/[server]/giveaways/components/Giveaways";
 import Header, { headerVariants } from "@/components/ui/Headers";
 import { Icons, iconVariants } from "@/components/ui/Icons";
 import type { GiveawayData } from "discord-giveaways";

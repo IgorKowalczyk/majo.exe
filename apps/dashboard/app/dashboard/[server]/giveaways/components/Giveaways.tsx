@@ -43,7 +43,7 @@ export function Giveaways({ data = [] }: { data: Giveaway[] }) {
      <>
       {value.ended ? (
        <Tooltip content={`Ended ${formatDate(value.endedAt)} (${formatDuration(new Date(value.endedAt).getTime() - new Date(value.startedAt).getTime())})`}>
-        <div className="flex cursor-help items-center">
+        <div className="flex cursor-help items-center w-fit">
          <Icons.Timer className={iconVariants({ variant: "button", className: "text-red-400" })} />
          <span className="text-red-400">Ended</span>
         </div>
@@ -65,12 +65,16 @@ export function Giveaways({ data = [] }: { data: Giveaway[] }) {
     Cell: ({ value }) => (
      <>
       {value ? (
-       <Link className="flex items-center space-x-4" href={`user/${value.discordId}`} passHref>
-        <Image src={`/api/user/avatar/${value.discordId}`} alt={`${value.name} avatar`} quality={95} width={48} height={48} className="size-12 shrink-0 rounded-full" />
-        <Tooltip content={`Discord ID: ${value.discordId || "Unknown"}`}>
-         <span className="cursor-help text-left font-bold">{value.global_name || value.name}</span>
-        </Tooltip>
-       </Link>
+       <Tooltip content={`Discord ID: ${value.discordId || "Unknown"}`}>
+        <Link className="flex items-center space-x-4 w-fit" href={`user/${value.discordId}`}>
+         <Image src={`/api/user/avatar/${value.discordId}`} alt={`${value.name} avatar`} quality={95} width={48} height={48} className="size-12 shrink-0 rounded-full" />
+
+         <span className="text-left font-bold">
+          {value.global_name || value.name}
+          {/* {value.discriminator !== "0" && <span className="opacity-70">#{value.discriminator || "0000"}</span>} */}
+         </span>
+        </Link>
+       </Tooltip>
       ) : (
        <span>Unknown</span>
       )}

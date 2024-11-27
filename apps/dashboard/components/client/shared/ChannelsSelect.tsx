@@ -1,7 +1,7 @@
 "use client";
 
 import { Icons, iconVariants } from "@/components/ui/Icons";
-import { ListBox, ListBoxArrow, ListBoxButton, ListBoxOptions, ListBoxOption } from "../../ui/ListBox";
+import { ListBox, ListBoxArrow, ListBoxButton, ListBoxOptions, ListBoxOption } from "@/components/ui/ListBox";
 import { Snowflake } from "discord-api-types/globals";
 import React from "react";
 

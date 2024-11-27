@@ -8,7 +8,7 @@ import { redirect } from "next/navigation";
 import { notFound } from "next/navigation";
 import { Block } from "@/components/ui/Block";
 import { buttonVariants } from "@/components/ui/Buttons";
-import { ManageWarns } from "@/components/client/lists/Warns";
+import { ManageUserWarns, UserWarns } from "@/app/dashboard/[server]/warns/components/Warns";
 import { ChangeUserReputation } from "@/app/dashboard/[server]/user/components/ChangeUserReputation";
 import { ResetUserXP } from "@/app/dashboard/[server]/user/components/ResetUserXP";
 import Image from "@/components/ui/Image";
@@ -89,6 +89,8 @@ export default async function User(props: { params: Promise<{ server: string; id
      message: true,
      createdAt: true,
      createdById: true,
+     guildId: true,
+     userId: true,
     },
    },
    guildXp: {
@@ -122,18 +124,27 @@ export default async function User(props: { params: Promise<{ server: string; id
   },
  });
 
- const warns = user.guildWarns.map(async (warn) => {
-  return {
-   ...warn,
-   createdAt: warn.createdAt instanceof Date ? warn.createdAt.toString() : new Date(warn.createdAt).toString(),
-   loading: false,
-   addedBy: await prismaClient.user.findFirst({
-    where: {
-     discordId: warn.createdById,
-    },
-   }),
-  };
- });
+ const warns = (await Promise.all(
+  user.guildWarns.map(async (warn) => {
+   return {
+    ...warn,
+    createdAt: warn.createdAt instanceof Date ? warn.createdAt : new Date(warn.createdAt),
+    loading: false,
+    addedBy: await prismaClient.user.findFirst({
+     where: {
+      discordId: warn.createdById,
+     },
+     select: {
+      discordId: true,
+      name: true,
+      global_name: true,
+      avatar: true,
+      discriminator: true,
+     },
+    }),
+   };
+  })
+ )) satisfies UserWarns[];
 
  const userXP = user.guildXp.reduce((a, b) => a + (b["xp"] || 0), 0);
  const userRepuation = user.reputation.reduce((a, b) => a + (b["reputation"] || 0), 0);
@@ -238,7 +249,7 @@ export default async function User(props: { params: Promise<{ server: string; id
       This user has no warns in this server.
      </p>
     ) : (
-     <ManageWarns data={warns} guildId={serverDownload.id} />
+     <ManageUserWarns data={warns} guildId={serverDownload.id} />
     )}
    </Block>
    <Block className="mt-4">

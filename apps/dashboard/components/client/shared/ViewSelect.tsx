@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { ListBox, ListBoxArrow, ListBoxButton, ListBoxOption, ListBoxOptions } from "../../ui/ListBox";
+import { ListBox, ListBoxArrow, ListBoxButton, ListBoxOption, ListBoxOptions } from "@/components/ui/ListBox";
 
 export interface ViewSelectProps extends React.ComponentProps<typeof ListBox> {
  selectedValue: number;

@@ -8,7 +8,7 @@ import { redirect } from "next/navigation";
 import { notFound } from "next/navigation";
 import { Block } from "@/components/ui/Block";
 import { CategoryBar } from "@/components/CategoryBar";
-import { Leaderboard } from "@/components/client/lists/Leaderboard";
+import { Leaderboard } from "@/app/dashboard/[server]/leaderboard/components/Leaderboard";
 import Image from "@/components/ui/Image";
 import { SparkLineChart } from "@/components/client/shared/SparkChart";
 import { Tooltip } from "@/components/ui/Tooltip";

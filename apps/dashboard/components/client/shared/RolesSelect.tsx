@@ -1,9 +1,9 @@
 "use client";
 
-import React, { Fragment } from "react";
+import React from "react";
 import { Icons, iconVariants } from "@/components/ui/Icons";
 import { Snowflake } from "discord-api-types/globals";
-import { ListBox, ListBoxArrow, ListBoxButton, ListBoxOption, ListBoxOptions } from "../../ui/ListBox";
+import { ListBox, ListBoxArrow, ListBoxButton, ListBoxOption, ListBoxOptions } from "@/components/ui/ListBox";
 
 export interface ChannelsSelectProps extends React.ComponentProps<typeof ListBox> {
  setRoles: React.ComponentProps<typeof ListBox>["onChange"];

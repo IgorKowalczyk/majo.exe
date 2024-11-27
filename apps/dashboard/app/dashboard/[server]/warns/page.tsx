@@ -4,7 +4,7 @@ import { getSession } from "lib/session";
 import { redirect } from "next/navigation";
 import { notFound } from "next/navigation";
 import { Block } from "@/components/ui/Block";
-import { Warns } from "@/components/client/lists/Warns";
+import { WarnItems, Warns } from "@/app/dashboard/[server]/warns/components/Warns";
 import Header, { headerVariants } from "@/components/ui/Headers";
 import { Icons, iconVariants } from "@/components/ui/Icons";
 import { cn } from "@/lib/utils";
@@ -49,6 +49,7 @@ export default async function Page(props: { params: Promise<{ server: string }> 
       select: {
        discordId: true,
        name: true,
+       global_name: true,
        avatar: true,
        discriminator: true,
       },
@@ -58,13 +59,15 @@ export default async function Page(props: { params: Promise<{ server: string }> 
   },
  });
 
- const warns = guild.guildWarns.map(async (warn) => {
-  return {
-   ...warn,
-   createdAt: warn.createdAt instanceof Date ? warn.createdAt.toString() : new Date(warn.createdAt).toString(),
-   link: warn.user.discordId,
-  };
- });
+ const warns = (await Promise.all(
+  guild.guildWarns.map(async (warn) => {
+   return {
+    ...warn,
+    createdAt: warn.createdAt instanceof Date ? warn.createdAt.toString() : new Date(warn.createdAt).toString(),
+    link: warn.user.discordId,
+   };
+  })
+ )) satisfies WarnItems[];
 
  return (
   <>
@@ -82,7 +85,7 @@ export default async function Page(props: { params: Promise<{ server: string }> 
       Hooray! No warns have been issued yet.
      </p>
     )}
-    {warns.length > 0 && <Warns data={warns} />}
+    {warns.length > 0 && <Warns data={warns} guildId={serverDownload.id} />}
    </Block>
   </>
  );

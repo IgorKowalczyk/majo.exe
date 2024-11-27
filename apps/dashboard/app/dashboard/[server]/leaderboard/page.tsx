@@ -4,7 +4,7 @@ import { getSession } from "lib/session";
 import { redirect } from "next/navigation";
 import { notFound } from "next/navigation";
 import { Block } from "@/components/ui/Block";
-import { Leaderboard } from "@/components/client/lists/Leaderboard";
+import { Leaderboard } from "@/app/dashboard/[server]/leaderboard/components/Leaderboard";
 import Header, { headerVariants } from "@/components/ui/Headers";
 import { Icons, iconVariants } from "@/components/ui/Icons";
 import { Metadata } from "next";
