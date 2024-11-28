@@ -6,7 +6,7 @@ import React, { useState } from "react";
 import { toast } from "sonner";
 import { Block } from "@/components/ui/Block";
 import { Button } from "@/components/ui/Buttons";
-import { ChannelsSelect } from "@/components/client/shared/ChannelsSelect";
+import { ChannelsSelect } from "@/components/ui/ChannelsSelect";
 import { Switch } from "@/components/ui/Switch";
 import { Tooltip } from "@/components/ui/Tooltip";
 import { EmbedTitle, Embed, EmbedDescription, EmbedImage } from "@/components/ui/Embed";

@@ -2,13 +2,12 @@
 
 import { formatDate, formatDuration } from "@majoexe/util/functions/util";
 import Link from "next/link";
-import { useMemo } from "react";
 import { Button } from "@/components/ui/Buttons";
 import Image from "@/components/ui/Image";
-import { Table } from "@/components/client/shared/Table";
+import { Table, TableColumnHeader } from "@/components/client/shared/Table";
 import { Tooltip } from "@/components/ui/Tooltip";
 import { Icons, iconVariants } from "@/components/ui/Icons";
-import type { Column } from "react-table";
+import type { ColumnDef } from "@tanstack/react-table";
 import { User } from "@majoexe/database";
 
 interface Giveaway {
@@ -24,22 +23,24 @@ interface Giveaway {
 }
 
 export function Giveaways({ data = [] }: { data: Giveaway[] }) {
- const columns: Column<Giveaway>[] = useMemo(
-  () => [
-   {
-    Header: "Prize",
-    accessor: "prize",
-    Cell: ({ value }) => value || "Unknown",
-   },
-   {
-    Header: "Winners",
-    accessor: "winners",
-    Cell: ({ value }) => value || "1",
-   },
-   {
-    Header: "Status",
-    accessor: "time",
-    Cell: ({ value }) => (
+ const columns: ColumnDef<Giveaway>[] = [
+  {
+   header: ({ column }) => <TableColumnHeader column={column} title="Prize" />,
+   accessorKey: "prize",
+   cell: ({ row }) => row.getValue("prize") || "Unknown",
+  },
+  {
+   header: ({ column }) => <TableColumnHeader column={column} title="Winners" />,
+   accessorKey: "winners",
+   cell: ({ row }) => row.getValue("winners") || "1",
+  },
+  {
+   header: ({ column }) => <TableColumnHeader column={column} title="Time" />,
+   accessorKey: "time",
+   cell: ({ row }) => {
+    const value = row.original.time;
+
+    return (
      <>
       {value.ended ? (
        <Tooltip content={`Ended ${formatDate(value.endedAt)} (${formatDuration(new Date(value.endedAt).getTime() - new Date(value.startedAt).getTime())})`}>
@@ -57,12 +58,29 @@ export function Giveaways({ data = [] }: { data: Giveaway[] }) {
        </Tooltip>
       )}
      </>
-    ),
+    );
    },
-   {
-    Header: "Started By",
-    accessor: "startedBy",
-    Cell: ({ value }) => (
+  },
+  {
+   header: ({ column }) => <TableColumnHeader column={column} title="Started By" />,
+   accessorKey: "startedBy",
+   sortingFn: (a, b) => {
+    const firstRow = a.original.startedBy;
+    const secondRow = b.original.startedBy;
+
+    if (!firstRow || !secondRow) return 0;
+    if (firstRow.global_name && secondRow.global_name) return firstRow.global_name.localeCompare(secondRow.global_name);
+    if (firstRow.global_name) return -1;
+    if (secondRow.global_name) return 1;
+    if (firstRow.name && secondRow.name) return firstRow.name.localeCompare(secondRow.name);
+    if (firstRow.name) return -1;
+    if (secondRow.name) return 1;
+    return 0;
+   },
+   cell: ({ row }) => {
+    const value = row.original.startedBy;
+
+    return (
      <>
       {value ? (
        <Tooltip content={`Discord ID: ${value.discordId || "Unknown"}`}>
@@ -79,30 +97,30 @@ export function Giveaways({ data = [] }: { data: Giveaway[] }) {
        <span>Unknown</span>
       )}
      </>
-    ),
+    );
    },
-   {
-    Header: "Started",
-    Cell: ({ row }) => (
-     <Tooltip content={formatDate(row.original.time.startedAt)}>
-      <span className="cursor-help">{formatDuration(Date.now() - new Date(row.original.time.startedAt).getTime())} ago</span>
-     </Tooltip>
-    ),
-   },
-   {
-    Header: "Actions",
-    Cell: () => (
-     <Tooltip content="Editing giveaways is not yet supported">
-      <Button variant="secondary" className="!w-fit" disabled>
-       <Icons.Edit className={iconVariants({ variant: "button" })} />
-       Edit
-      </Button>
-     </Tooltip>
-    ),
-   },
-  ],
-  []
- );
+  },
+  {
+   header: ({ column }) => <TableColumnHeader column={column} title="Started" />,
+   accessorKey: "time-2",
+   cell: ({ row }) => (
+    <Tooltip content={formatDate(row.original.time.startedAt)}>
+     <span className="cursor-help">{formatDuration(Date.now() - new Date(row.original.time.startedAt).getTime())} ago</span>
+    </Tooltip>
+   ),
+  },
+  {
+   header: "Actions",
+   cell: () => (
+    <Tooltip content="Editing giveaways is not yet supported">
+     <Button variant="secondary" className="!w-fit" disabled>
+      <Icons.Edit className={iconVariants({ variant: "button" })} />
+      Edit
+     </Button>
+    </Tooltip>
+   ),
+  },
+ ];
 
- return <Table columns={columns} data={data} sortBy={[{ id: "startedAt", desc: true }]} />;
+ return <Table columns={columns} data={data} sortBy={[{ id: "time", desc: true }]} />;
 }

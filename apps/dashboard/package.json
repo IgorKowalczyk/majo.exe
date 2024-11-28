@@ -27,6 +27,7 @@
     "@odiffey/discord-markdown": "3.3.0",
     "@playwright/test": "1.49.0",
     "@radix-ui/react-tooltip": "1.1.4",
+    "@tanstack/react-table": "^8.20.5",
     "@tippyjs/react": "4.2.6",
     "@types/ms": "0.7.34",
     "@types/react-infinite-scroller": "1.2.5",
