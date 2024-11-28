@@ -6,7 +6,7 @@ import React, { useMemo, useState, useCallback } from "react";
 import { toast } from "sonner";
 import { Button, buttonVariants } from "@/components/ui/Buttons";
 import Image from "@/components/ui/Image";
-import { Table, TableColumnHeader } from "@/components/client/shared/Table";
+import { Table, TableColumnHeader } from "@/components/ui/Table";
 import { Tooltip } from "@/components/ui/Tooltip";
 import { Icons, iconVariants } from "@/components/ui/Icons";
 import { Skeleton } from "@/components/ui/Skeletons";
