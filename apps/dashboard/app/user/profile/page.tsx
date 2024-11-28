@@ -82,17 +82,18 @@ export default async function Page() {
     <div className="relative overflow-hidden rounded-lg border border-neutral-800 bg-background-navbar md:w-full">
      <>
       <div
-       className="h-[100px] w-full bg-cover bg-center bg-no-repeat"
+       className={cn("h-[100px] w-full bg-cover bg-center bg-no-repeat", typeof user.banner == "string" ? "h-40" : "h-24")}
        style={{
         backgroundColor: "#" + (!user.accent_color ? "5c64f4" : user.accent_color.toString(16)),
-        backgroundImage: `url(${user.banner})`,
+        backgroundImage: typeof user.banner == "string" ? `url(/api/user/banner/${user.id})` : undefined,
        }}
       />
       <div className="flex h-[72px] w-auto flex-row justify-between gap-6 bg-background-navbar p-12">
        <div className="ml-[-16px] mt-[-20px] box-content flex items-center rounded-full">
         <Tooltip content="Click to see full size">
          <Link href={`${user.avatar}?size=2048`} target="_blank" className="size-24 shrink-0">
-          <Image quality={100} src={user.avatar} alt={user.username} width={95} height={96} className="rounded-full !border-4 !border-solid !border-background-navbar backdrop-blur-sm duration-200 hover:opacity-75" />
+          <Image quality={100} src={`/api/user/avatar/${user.id}`} alt={`${user.global_name || user.username} Avatar`} width={96} height={96} className="rounded-full border-4 border-solid border-background-navbar duration-200 hover:opacity-75  backdrop-blur-sm" />
+          {user.avatar_decoration_data ? <Image quality={100} src={`/api/user/avatar-decoration/${user.id}`} alt={`${user.global_name || user.username} Avatar decoration`} width={96} height={96} className="absolute top-0 left-0 rounded-full" /> : null}
          </Link>
         </Tooltip>
         <div className="ml-2 flex items-center text-lg font-bold">
@@ -152,7 +153,7 @@ export default async function Page() {
         return (
          <div key={guild.guild.id} className="relative flex  overflow-hidden rounded-lg border border-neutral-800 bg-background-navbar p-4 justify-between">
           <div className="flex flex-row items-center gap-4">
-           {guild.guild.icon ? <Image src={`https://cdn.discordapp.com/icons/${guild.guild.id}/${guild.guild.icon}.${guild.guild.icon.startsWith("a_") ? "gif" : "png"}`} alt={guild.guild.name} quality={95} width={64} height={64} className="size-16 shrink-0 rounded-full" /> : <div className="size-16 shrink-0 rounded-full bg-button-secondary" />}
+           {guild.guild.icon ? <Image src={`https://cdn.discordapp.com/icons/${guild.guild.id}/${guild.guild.icon}.${guild.guild.icon.startsWith("a_") ? "gif" : "png"}`} alt={guild.guild.name} quality={95} width={64} height={64} className="size-14 shrink-0 rounded-full" /> : <div className="size-14 shrink-0 rounded-full bg-button-secondary" />}
            <div className="flex flex-col">
             <Header className={cn(headerVariants({ variant: "h4" }))}>{guild.guild.name}</Header>
             <p className="text-white/70 text-sm">Server ID: {guild.guild.id}</p>

@@ -78,16 +78,16 @@ export const SideNavigation = React.forwardRef<HTMLDivElement, SideNavigationPro
       <Icons.list className={iconVariants({ variant: "large" })} />
       Logs
      </SideNavLink>
+     <SideNavLink href={`/dashboard/${server}/automod`}>
+      <Icons.Bot className={iconVariants({ variant: "large" })} />
+      Automod<Badge className="-mt-3">beta</Badge>
+     </SideNavLink>
     </div>
     <div className="text-text mt-2 border-t border-white/20 px-5 py-2 opacity-40">Management</div>
     <div className="flex w-full flex-col items-center justify-center gap-2 px-4">
      <SideNavLink href={`/dashboard/${server}/modules`}>
       <Icons.PackagePlus className={iconVariants({ variant: "large" })} />
       Modules
-     </SideNavLink>
-     <SideNavLink href={`/dashboard/${server}/automod`}>
-      <Icons.Bot className={iconVariants({ variant: "large" })} />
-      Automod<Badge className="-mt-3">beta</Badge>
      </SideNavLink>
      <SideNavLink href={`/dashboard/${server}/messages`}>
       <Icons.messageCode className={iconVariants({ variant: "large" })} />
