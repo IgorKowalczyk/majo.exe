@@ -10,7 +10,7 @@ import { Block } from "@/components/ui/Block";
 import { CategoryBar } from "@/components/CategoryBar";
 import { Leaderboard } from "@/app/dashboard/[server]/leaderboard/components/Leaderboard";
 import Image from "@/components/ui/Image";
-import { SparkLineChart } from "@/components/client/shared/SparkChart";
+import { SparkLineChart } from "@/components/ui/SparkChart";
 import { Tooltip } from "@/components/ui/Tooltip";
 import Header, { headerVariants } from "@/components/ui/Headers";
 import { Icons, iconVariants } from "@/components/ui/Icons";
