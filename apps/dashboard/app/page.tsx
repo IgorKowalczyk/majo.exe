@@ -16,7 +16,7 @@ import { LevelUp } from "@/app/_components/LevelUp";
 import { buttonVariants } from "@/components/ui/Buttons";
 import { LogDisclosure } from "@/app/dashboard/[server]/logs/components/Logs";
 import { AnimatedShinyText } from "@/components/ui/effects/AnimatedShinyText";
-import AreaChart from "@/components/client/shared/AreaChart";
+import { AreaChart } from "@/components/ui/AreaChart";
 import Image from "@/components/ui/Image";
 import Header, { headerVariants } from "@/components/ui/Headers";
 import { Icons, iconVariants } from "@/components/ui/Icons";
@@ -318,11 +318,12 @@ export default async function HomePage() {
           date: new Date(Date.now() - i * 86400000).toISOString().split("T")[0],
           Joins: Math.floor(pseudoRandom(i)),
          }))}
-         index="date"
+         dataKey="date"
          categories={["Joins"]}
          yAxisWidth={50}
          showYAxis={true}
          showXAxis={false}
+         type="monotoneX"
         />
        </Suspense>
       </div>

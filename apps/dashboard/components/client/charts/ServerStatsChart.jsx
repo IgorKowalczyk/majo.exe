@@ -4,7 +4,7 @@ import { Listbox, Transition } from "@headlessui/react";
 import fileDl from "js-file-download";
 import { Fragment, useState } from "react";
 import { Block } from "@/components/ui/Block";
-import AreaChart from "@/components/client/shared/AreaChart";
+import { AreaChart } from "@/components/ui/AreaChart";
 import { Menu, MenuArrow, MenuButton, MenuItem, MenuItems } from "@/components/ui/Menu";
 import { Header2 } from "@/components/ui/Headers";
 import { Icons, iconVariants } from "@/components/ui/Icons";
@@ -103,7 +103,7 @@ function GenerateComponent({ title, data, CSVData, valueName, fileName, categori
      </Listbox>
     </div>
    </div>
-   <AreaChart className="mt-10 h-80" data={filteredData} index="date" categories={categories} yAxisWidth={50} valueFormatter={numberFormatter} />
+   <AreaChart className="mt-10" data={filteredData} dataKey="date" categories={categories} yAxisWidth={50} valueFormatter={numberFormatter} type="monotoneX" />
   </Block>
  );
 }
