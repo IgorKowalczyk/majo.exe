@@ -80,7 +80,7 @@ export const SideNavigation = React.forwardRef<HTMLDivElement, SideNavigationPro
      </SideNavLink>
      <SideNavLink href={`/dashboard/${server}/automod`}>
       <Icons.Bot className={iconVariants({ variant: "large" })} />
-      Automod<Badge className="-mt-3">beta</Badge>
+      Automod<Badge className="-mt-3">new</Badge>
      </SideNavLink>
     </div>
     <div className="text-text mt-2 border-t border-white/20 px-5 py-2 opacity-40">Management</div>

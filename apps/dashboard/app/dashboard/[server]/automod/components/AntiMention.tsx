@@ -15,8 +15,9 @@ import DeleteMessage from "./DeleteMessage";
 import TimeoutMember from "./TimeoutMember";
 import { cn } from "@/lib/utils";
 import { ChannelsSelect } from "@/components/ui/ChannelsSelect";
+import { MentionLimitSelect } from "./Limit";
 
-export interface AntiLinkProps {
+export interface AntiMentionProps {
  serverId: APIAutoModerationRule["guild_id"];
  enabled: APIAutoModerationRule["enabled"];
  existingActions: APIAutoModerationRule["actions"];
@@ -30,19 +31,20 @@ export interface AntiLinkProps {
  allChannels: APIGuildChannel<GuildChannelType>[] | null[];
 }
 
-export const AntiLink = React.forwardRef<HTMLDivElement, AntiLinkProps>(({ serverId, enabled, existingActions, existingExemptRoles, existingExemptChannels, allRoles, allChannels }, ref) => {
+export const AntiMention = React.forwardRef<HTMLDivElement, AntiMentionProps>(({ serverId, enabled, existingActions, existingExemptRoles, existingExemptChannels, allRoles, allChannels }, ref) => {
  const [isEnabled, setIsEnabled] = useState(enabled ?? false);
  const [loading, setLoading] = useState(false);
  const [actions, setActions] = useState(existingActions || []);
  const [exemptRoles, setExemptRoles] = useState(existingExemptRoles || []);
  const [exemptChannels, setExemptChannels] = useState(existingExemptChannels || []);
+ const [limit, setLimit] = useState(5);
 
  const save = async (change = true) => {
   setLoading(true);
   if (change) setIsEnabled(!isEnabled);
-  const loading = toast.loading(`Turning ${!isEnabled ? "on" : "off"} anti-link...`);
+  const loading = toast.loading(`Turning ${!isEnabled ? "on" : "off"} anti-mention...`);
 
-  const res = await fetch("/api/settings/automod/anti-link", {
+  const res = await fetch("/api/settings/automod/anti-mention", {
    method: "POST",
    headers: {
     "Content-Type": "application/json",
@@ -53,6 +55,7 @@ export const AntiLink = React.forwardRef<HTMLDivElement, AntiLinkProps>(({ serve
     actions,
     exemptRoles,
     exemptChannels,
+    limit,
    }),
   });
 
@@ -76,7 +79,7 @@ export const AntiLink = React.forwardRef<HTMLDivElement, AntiLinkProps>(({ serve
   const json = await res.json();
 
   if (json.code === 200) {
-   return toast.success(json.message ?? "Anti-link enabled!", {
+   return toast.success(json.message ?? "Anti-mention enabled!", {
     id: loading,
    });
   } else {
@@ -90,11 +93,11 @@ export const AntiLink = React.forwardRef<HTMLDivElement, AntiLinkProps>(({ serve
  return (
   <>
    <Header className={cn(headerVariants({ variant: "h2", margin: "normal" }))}>
-    <Icons.unlink className={iconVariants({ variant: "large", className: "!stroke-2" })} />
-    Anti-Link <Switch checked={isEnabled} onChange={save} disabled={loading} />
+    <Icons.mention className={iconVariants({ variant: "large", className: "!stroke-2" })} />
+    Anti-Mention <Switch checked={isEnabled} onChange={save} disabled={loading} />
    </Header>
    <p className="mb-4 text-left">
-    <span>Automatically delete all messages containing links, serverr invites, and other URLs.</span>
+    <span>Automatically delete messages containing too many unique user or role mentions.</span>
    </p>
 
    <div
@@ -173,6 +176,36 @@ export const AntiLink = React.forwardRef<HTMLDivElement, AntiLinkProps>(({ serve
        <span className="whitespace-normal">You have to select at least one action!</span>
       </div>
      )}
+    </Block>
+
+    <Icons.ArrowDown className={cn(iconVariants({ variant: "large" }), "opacity-50 mb-4 mx-6")} />
+
+    <Block className="mb-4 !py-3">
+     <Header className={cn(headerVariants({ variant: "h3" }))}>
+      <Icons.ShieldX className={iconVariants({ variant: "large" })} /> Limits:
+     </Header>
+
+     <div className="my-2 flex flex-row flex-wrap gap-2">
+      <Tooltip content="Limits how many unique mentions (user & roles) are allowed in a single message.">
+       <span className="flex w-fit cursor-help items-center gap-2 font-bold">
+        <Icons.AtSign className={iconVariants({ variant: "normal", className: "stroke-red-400" })} />
+        How many mentions are allowed in a single message?
+       </span>
+      </Tooltip>
+
+      <MentionLimitSelect selectedChoice={limit} setSelectedChoice={setLimit} triggerMetadata={{ mentionTotalLimit: limit, mentionRaidProtectionEnabled: true }} setTriggerMetadata={() => {}} />
+     </div>
+
+     <div className="my-2 flex flex-row flex-wrap gap-2">
+      <Tooltip content="Allow automatic detection of mention raids in the server.">
+       <span className="flex w-fit cursor-help items-center gap-2 font-bold">
+        <Icons.ShieldPlus className={iconVariants({ variant: "normal", className: "stroke-red-400" })} />
+        Enable Mention Raid Protection
+       </span>
+      </Tooltip>
+
+      <Switch checked={true} onChange={() => {}} />
+     </div>
     </Block>
 
     <Button variant="primary" className="mt-4" onClick={() => save(false)} disabled={!isEnabled || loading || !actions || actions.length === 0}>

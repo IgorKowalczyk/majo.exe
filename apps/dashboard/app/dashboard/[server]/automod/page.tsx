@@ -13,6 +13,8 @@ import Header, { headerVariants } from "@/components/ui/Headers";
 import { Icons, iconVariants } from "@/components/ui/Icons";
 import { Badge } from "@/components/ui/Badge";
 import { cn } from "@/lib/utils";
+import { AntiSpam } from "./components/AntiSpam";
+import { AntiMention } from "./components/AntiMention";
 
 export const metadata = {
  title: "Automod",
@@ -55,6 +57,8 @@ export default async function AutomodPage(props: { params: Promise<{ server: str
 
  const enabledAntiInvite = await syncAutoModRule(serverDownload.id, "anti-invite");
  const enabledAntiLink = await syncAutoModRule(serverDownload.id, "anti-link");
+ const enabledAntiSpam = await syncAutoModRule(serverDownload.id, "anti-spam");
+ const enabledAntiMention = await syncAutoModRule(serverDownload.id, "anti-mention");
 
  const allChannels = (await getGuildChannels(serverDownload.id, [ChannelType.GuildText])) || [];
  const allRolesFetch = (await getGuildRoles(serverDownload.id)) || [];
@@ -75,39 +79,35 @@ export default async function AutomodPage(props: { params: Promise<{ server: str
     Automod
    </Header>
    <p className="mb-4 text-left text-base md:text-lg">Automatically moderate your server, block bad words, links and other things.</p>
-   <Block className="mb-4">
+   <Block className="mb-6">
     {enabledAntiInvite ? ( // prettier
      <AntiInvite serverId={serverDownload.id} existingExemptChannels={enabledAntiInvite.exempt_channels || []} existingExemptRoles={enabledAntiInvite.exempt_roles || []} enabled={enabledAntiInvite.enabled || false} existingActions={enabledAntiInvite.actions || []} allRoles={allRoles} allChannels={allChannels} />
     ) : (
      <AntiInvite serverId={serverDownload.id} existingExemptChannels={[]} existingExemptRoles={[]} enabled={false} existingActions={[]} allRoles={allRoles} allChannels={allChannels} />
     )}
    </Block>
-   <Block className="mb-4">
+   <Block className="mb-6">
     {enabledAntiLink ? ( // prettier
      <AntiLink serverId={serverDownload.id} existingExemptChannels={enabledAntiLink.exempt_channels || []} existingExemptRoles={enabledAntiLink.exempt_roles || []} enabled={enabledAntiLink.enabled || false} existingActions={enabledAntiLink.actions || []} allRoles={allRoles} allChannels={allChannels} />
     ) : (
      <AntiLink serverId={serverDownload.id} existingExemptChannels={[]} existingExemptRoles={[]} enabled={false} existingActions={[]} allRoles={allRoles} allChannels={allChannels} />
     )}
    </Block>
-   <Block className="mb-4">
-    <Header className={cn(headerVariants({ variant: "h2" }))}>
-     <Icons.mention className={iconVariants({ variant: "large" })} />
-     Anti-Mention <Badge>Coming Soon</Badge>
-    </Header>
-    <p className="mb-4 text-left">
-     <span>Automatically delete all messages containing user mentions.</span>
-    </p>
+   <Block className="mb-6">
+    {enabledAntiMention ? ( // prettier
+     <AntiMention serverId={serverDownload.id} existingExemptChannels={enabledAntiMention.exempt_channels || []} existingExemptRoles={enabledAntiMention.exempt_roles || []} enabled={enabledAntiMention.enabled || false} existingActions={enabledAntiMention.actions || []} allRoles={allRoles} allChannels={allChannels} />
+    ) : (
+     <AntiMention serverId={serverDownload.id} existingExemptChannels={[]} existingExemptRoles={[]} enabled={false} existingActions={[]} allRoles={allRoles} allChannels={allChannels} />
+    )}
    </Block>
-   <Block className="mb-4">
-    <Header className={cn(headerVariants({ variant: "h2" }))}>
-     <Icons.messageOff className={iconVariants({ variant: "large" })} />
-     Anti-Spam <Badge>Coming Soon</Badge>
-    </Header>
-    <p className="mb-4 text-left">
-     <span>Automatically delete all messages deemed as spam.</span>
-    </p>
+   <Block className="mb-6">
+    {enabledAntiSpam ? ( // prettier
+     <AntiSpam serverId={serverDownload.id} existingExemptChannels={enabledAntiSpam.exempt_channels || []} existingExemptRoles={enabledAntiSpam.exempt_roles || []} enabled={enabledAntiSpam.enabled || false} existingActions={enabledAntiSpam.actions || []} allRoles={allRoles} allChannels={allChannels} />
+    ) : (
+     <AntiSpam serverId={serverDownload.id} existingExemptChannels={[]} existingExemptRoles={[]} enabled={false} existingActions={[]} allRoles={allRoles} allChannels={allChannels} />
+    )}
    </Block>
-   <Block className="mb-4">
+   <Block className="mb-6">
     <Header className={cn(headerVariants({ variant: "h2" }))}>
      <Icons.ShieldBan className={iconVariants({ variant: "large" })} />
      Anti-Badwords <Badge>Coming Soon</Badge>

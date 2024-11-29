@@ -16,7 +16,7 @@ import TimeoutMember from "./TimeoutMember";
 import { cn } from "@/lib/utils";
 import { ChannelsSelect } from "@/components/ui/ChannelsSelect";
 
-export interface AntiLinkProps {
+export interface AntiSpamProps {
  serverId: APIAutoModerationRule["guild_id"];
  enabled: APIAutoModerationRule["enabled"];
  existingActions: APIAutoModerationRule["actions"];
@@ -30,7 +30,7 @@ export interface AntiLinkProps {
  allChannels: APIGuildChannel<GuildChannelType>[] | null[];
 }
 
-export const AntiLink = React.forwardRef<HTMLDivElement, AntiLinkProps>(({ serverId, enabled, existingActions, existingExemptRoles, existingExemptChannels, allRoles, allChannels }, ref) => {
+export const AntiSpam = React.forwardRef<HTMLDivElement, AntiSpamProps>(({ serverId, enabled, existingActions, existingExemptRoles, existingExemptChannels, allRoles, allChannels }, ref) => {
  const [isEnabled, setIsEnabled] = useState(enabled ?? false);
  const [loading, setLoading] = useState(false);
  const [actions, setActions] = useState(existingActions || []);
@@ -40,9 +40,9 @@ export const AntiLink = React.forwardRef<HTMLDivElement, AntiLinkProps>(({ serve
  const save = async (change = true) => {
   setLoading(true);
   if (change) setIsEnabled(!isEnabled);
-  const loading = toast.loading(`Turning ${!isEnabled ? "on" : "off"} anti-link...`);
+  const loading = toast.loading(`Turning ${!isEnabled ? "on" : "off"} anti-spam...`);
 
-  const res = await fetch("/api/settings/automod/anti-link", {
+  const res = await fetch("/api/settings/automod/anti-spam", {
    method: "POST",
    headers: {
     "Content-Type": "application/json",
@@ -76,7 +76,7 @@ export const AntiLink = React.forwardRef<HTMLDivElement, AntiLinkProps>(({ serve
   const json = await res.json();
 
   if (json.code === 200) {
-   return toast.success(json.message ?? "Anti-link enabled!", {
+   return toast.success(json.message ?? "Anti-spam enabled!", {
     id: loading,
    });
   } else {
@@ -89,12 +89,12 @@ export const AntiLink = React.forwardRef<HTMLDivElement, AntiLinkProps>(({ serve
 
  return (
   <>
-   <Header className={cn(headerVariants({ variant: "h2", margin: "normal" }))}>
-    <Icons.unlink className={iconVariants({ variant: "large", className: "!stroke-2" })} />
-    Anti-Link <Switch checked={isEnabled} onChange={save} disabled={loading} />
+   <Header className={cn(headerVariants({ variant: "h2" }))}>
+    <Icons.messageOff className={iconVariants({ variant: "large", className: "!stroke-2" })} />
+    Anti-Spam <Switch checked={isEnabled} onChange={save} disabled={loading} />
    </Header>
    <p className="mb-4 text-left">
-    <span>Automatically delete all messages containing links, serverr invites, and other URLs.</span>
+    <span>Automatically delete all spam messages.</span>
    </p>
 
    <div
@@ -116,12 +116,16 @@ export const AntiLink = React.forwardRef<HTMLDivElement, AntiLinkProps>(({ serve
    </div>
 
    <div
-    className={cn({
-     "pointer-events-none cursor-not-allowed opacity-50": !isEnabled && !loading,
-     "pointer-events-none opacity-50": loading,
-     "cursor-default opacity-100": isEnabled,
-    })}
+    className={cn(
+     {
+      "pointer-events-none cursor-not-allowed opacity-50": !isEnabled && !loading,
+      "pointer-events-none opacity-50": loading,
+      "cursor-default opacity-100": isEnabled,
+     },
+     "relative"
+    )}
    >
+    {/* <div className={cn({ "pointer-events-none z-10 bg-gradient-to-t from-background-secondary to-90% inset-0 absolute": !isEnabled && !loading })} /> */}
     <Block className="mb-4 !py-3">
      <Header className={cn(headerVariants({ variant: "h3" }))}>
       <Icons.hide className={iconVariants({ variant: "large" })} /> Exempt:

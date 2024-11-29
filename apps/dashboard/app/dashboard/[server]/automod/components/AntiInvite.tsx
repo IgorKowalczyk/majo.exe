@@ -89,12 +89,12 @@ export const AntiInvite = React.forwardRef<HTMLDivElement, AntiInviteProps>(({ s
 
  return (
   <>
-   <Header className={cn(headerVariants({ variant: "h2" }))}>
+   <Header className={cn(headerVariants({ variant: "h2", margin: "normal" }))}>
     <Icons.userBlock className={iconVariants({ variant: "large", className: "!stroke-2" })} />
     Anti-Invite <Switch checked={isEnabled} onChange={save} disabled={loading} />
    </Header>
    <p className="mb-4 text-left">
-    <span>Automatically delete all messages containing Discord server invites.</span>
+    <span>Automatically delete all messages containing Discord server invites. This also includes server links.</span>
    </p>
 
    <div
@@ -151,6 +151,8 @@ export const AntiInvite = React.forwardRef<HTMLDivElement, AntiInviteProps>(({ s
       <span className="font-bold">Pssst!</span> Members with Admin or Manage Server permissions are always excluded from automod.
      </p>
     </Block>
+
+    <Icons.MoveVertical className={cn(iconVariants({ variant: "large" }), "opacity-50 mb-4 mx-6")} />
 
     <Block className="mb-4 !py-3">
      <Header className={cn(headerVariants({ variant: "h3" }))}>
