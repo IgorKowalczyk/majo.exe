@@ -1,7 +1,7 @@
 import { globalConfig } from "@majoexe/config";
 import prismaClient from "@majoexe/database";
 import { syncAutoModRule } from "@majoexe/util/database";
-import { getGuildFromMemberGuilds, getGuild } from "@majoexe/util/functions/guild";
+import { getGuildFromMemberGuilds, getGuild, getGuildRoles, getGuildChannels } from "@majoexe/util/functions/guild";
 import { APIGuildChannel, APIRole, ChannelType, GuildChannelType } from "discord-api-types/v10";
 import { getSession } from "lib/session";
 import { redirect } from "next/navigation";
@@ -53,47 +53,20 @@ export default async function AutomodPage(props: { params: Promise<{ server: str
   },
  });
 
- const enabledAntiInvite = (await syncAutoModRule(serverDownload.id, "anti-invite")) || false;
- const enabledAntiLink = (await syncAutoModRule(serverDownload.id, "anti-link")) || false;
+ const enabledAntiInvite = await syncAutoModRule(serverDownload.id, "anti-invite");
+ const enabledAntiLink = await syncAutoModRule(serverDownload.id, "anti-link");
 
- const allRolesFetch = await fetch(`https://discord.com/api/v${globalConfig.apiVersion}/guilds/${serverDownload.id}/roles`, {
-  method: "GET",
-  headers: {
-   Authorization: `Bot ${process.env.TOKEN}`,
-  },
+ const allChannels = (await getGuildChannels(serverDownload.id, [ChannelType.GuildText])) || [];
+ const allRolesFetch = (await getGuildRoles(serverDownload.id)) || [];
+
+ const allRoles = allRolesFetch.map((role) => {
+  if (role.name === "@everyone") return null;
+  return {
+   id: role.id,
+   name: role.name,
+   color: role.color ? `#${role.color.toString(16).toUpperCase()}` : "#FFFFFF",
+  };
  });
-
- const allChannelsFetch = await fetch(`https://discord.com/api/v${globalConfig.apiVersion}/guilds/${serverDownload.id}/channels`, {
-  method: "GET",
-  headers: {
-   Authorization: `Bot ${process.env.TOKEN}`,
-  },
- });
-
- const allChannelsJson = (await allChannelsFetch.json()) as APIGuildChannel<GuildChannelType>[];
- const allRolesJson = (await allRolesFetch.json()) as APIRole[];
-
- const allRoles = allRolesJson
-  .map((role) => {
-   if (role.name === "@everyone") return null;
-   return {
-    id: role.id,
-    name: role.name,
-    color: role.color ? `#${role.color.toString(16).toUpperCase()}` : "#FFFFFF",
-   };
-  })
-  .filter(Boolean);
-
- const allChannels = allChannelsJson
-  .map((channel) => {
-   if (channel.type !== ChannelType.GuildText) return null;
-
-   return {
-    id: channel.id,
-    name: channel.name,
-   };
-  })
-  .filter(Boolean);
 
  return (
   <>

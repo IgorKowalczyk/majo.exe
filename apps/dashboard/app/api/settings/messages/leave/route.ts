@@ -1,6 +1,6 @@
 import { globalConfig } from "@majoexe/config";
 import prismaClient from "@majoexe/database";
-import { getGuild, getGuildFromMemberGuilds } from "@majoexe/util/functions/guild";
+import { getGuild, getGuildChannels, getGuildFromMemberGuilds } from "@majoexe/util/functions/guild";
 import { shortenText } from "@majoexe/util/functions/util";
 import { APIGuildChannel, ChannelType, GuildChannelType, GuildTextChannelType } from "discord-api-types/v10";
 import { getSession } from "lib/session";
@@ -203,16 +203,9 @@ export async function POST(request: NextRequest) {
    );
   }
 
-  const allChannelsFetch = await fetch(`https://discord.com/api/v${globalConfig.apiVersion}/guilds/${server.id}/channels`, {
-   method: "GET",
-   headers: {
-    Authorization: `Bot ${process.env.TOKEN}`,
-   },
-  });
+  const guildChannels = (await getGuildChannels(server.id, [ChannelType.GuildText])) || [];
 
-  const allChannelsData = (await allChannelsFetch.json()) as APIGuildChannel<GuildChannelType>[];
-
-  const allChannels = allChannelsData
+  const allChannels = guildChannels
    .map((channel) => {
     if (channel.type !== ChannelType.GuildText) return null;
 

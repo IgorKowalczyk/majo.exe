@@ -1,14 +1,5 @@
 import { ChannelType } from "discord-api-types/v10";
 
-/**
- * Validate AutoMod ignore channels and roles data
- *
- * @param {string[]} allChannels All channels in the server
- * @param {string[]} allRoles All roles in the server
- * @param {string[]} exemptRoles Roles to exempt
- * @param {string[]} exemptChannels Channels to exempt
- * @returns {Promise<{error: string, code: number}>} Error message and code
- */
 export function validateAutoModIgnores(allChannels, allRoles, exemptRoles, exemptChannels) {
  if (exemptChannels.length > 50) {
   return {

@@ -1,13 +1,14 @@
 import { globalConfig } from "@majoexe/config";
-import { type APIAutoModerationAction, AutoModerationActionType, ChannelType, type GuildTextChannelType, type APIGuildChannel, type APIGuildTextChannel } from "discord-api-types/v10";
+import { type APIAutoModerationAction, AutoModerationActionType, ChannelType, type GuildTextChannelType, type APIGuildChannel, type GuildChannelType, RESTGetAPIGuildChannelsResult, RESTError, RESTGetAPIChannelResult } from "discord-api-types/v10";
 import { getPermissionNames } from "../../user/getPermissionNames";
+import { getGuildChannels } from "../../guild";
 
 interface ValidationResult {
  error: string;
  code: number;
 }
 
-export async function validateAutoModRuleActions(data: APIAutoModerationAction[], allChannels: APIGuildChannel<GuildTextChannelType>[], dueToMessage: string): Promise<ValidationResult | APIAutoModerationAction[]> {
+export async function validateAutoModRuleActions(data: APIAutoModerationAction[], allChannels: APIGuildChannel<GuildChannelType>[], dueToMessage: string): Promise<ValidationResult | APIAutoModerationAction[]> {
  // #region Block Message
  let blockAction = data.find((a) => a.type === AutoModerationActionType.BlockMessage);
 
@@ -99,10 +100,41 @@ export async function validateAutoModRuleActions(data: APIAutoModerationAction[]
     };
    }
 
-   const getChannelPermissions = (await getChannelPermissionsAPI.json()) as APIGuildTextChannel<GuildTextChannelType>;
-   const parsedActionPermissions = getPermissionNames(BigInt(getChannelPermissions.permission_overwrites?.find((p) => p.id === process.env.CLIENT_ID)?.allow ?? 0));
+   const getChannelPermissions = (await getChannelPermissionsAPI.json()) as RESTGetAPIChannelResult | RESTError;
 
-   if (!parsedActionPermissions.includes("VIEW_CHANNEL") || !parsedActionPermissions.includes("SEND_MESSAGES")) {
+   if ("code" in getChannelPermissions) {
+    return {
+     error: "Unable to find the alert channel",
+     code: 404,
+    };
+   }
+
+   if (getChannelPermissions.type !== ChannelType.GuildText) {
+    return {
+     error: "The alert channel must be a text channel",
+     code: 400,
+    };
+   }
+
+   if (!getChannelPermissions.permission_overwrites) {
+    return {
+     error: "The bot must have 'View Channel' and 'Send Messages' permissions in the alert channel",
+     code: 400,
+    };
+   }
+
+   const userPermissionOverride = getChannelPermissions.permission_overwrites.find((override) => override.id === process.env.CLIENT_ID);
+
+   if (!userPermissionOverride) {
+    return {
+     error: "The bot must have 'View Channel' and 'Send Messages' permissions in the alert channel",
+     code: 400,
+    };
+   }
+
+   const parsedUserPermissions = getPermissionNames(BigInt(userPermissionOverride.allow ?? 0));
+
+   if (!parsedUserPermissions.includes("ViewChannel") || !parsedUserPermissions.includes("SendMessages")) {
     return {
      error: "The bot must have 'View Channel' and 'Send Messages' permissions in the alert channel",
      code: 400,

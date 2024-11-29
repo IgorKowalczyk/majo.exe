@@ -1,16 +1,11 @@
 import { globalConfig } from "@majoexe/config";
-import { deleteAutoModRule } from "./deleteAutoModRule.js";
-import { fetchAutoModRules } from "./fetchAutoModRules.js";
+import { deleteAutoModRule } from "./deleteAutoModRule";
+import { fetchAutoModRules } from "./fetchAutoModRules";
+import { Snowflake } from "discord-api-types/globals";
+import { AutoMod } from "@majoexe/database";
+import { RESTError, RESTGetAPIAutoModerationRuleResult } from "discord-api-types/v10";
 
-/**
- * Syncs an automod rule with the database
- *
- * @param {string} guildId The id of the guild
- * @param {string} ruleType The type of the rule
- * @returns {Promise<>} The automod rule
- * @throws {Error} Will throw an error if the sync of the automod rule fails.
- */
-export async function syncAutoModRule(guildId, ruleType) {
+export async function syncAutoModRule(guildId: Snowflake, ruleType: AutoMod["ruleType"]) {
  const rules = await fetchAutoModRules(guildId);
  const createdRule = rules.find((rule) => rule.ruleType === ruleType);
 
@@ -29,7 +24,12 @@ export async function syncAutoModRule(guildId, ruleType) {
     return null;
    }
 
-   const existingRule = await existingRuleFetch.json();
+   const existingRule = (await existingRuleFetch.json()) as RESTGetAPIAutoModerationRuleResult | RESTError;
+
+   if ("code" in existingRule) {
+    await deleteAutoModRule(guildId, createdRule.ruleId);
+    return null;
+   }
 
    if (!existingRule || !existingRule.id) {
     await deleteAutoModRule(guildId, createdRule.ruleId);

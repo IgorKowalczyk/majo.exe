@@ -1,19 +1,36 @@
 "use client";
 
-import { cn } from "@/lib/utils";
-import { useState } from "react";
+import React, { useState } from "react";
 import { toast } from "sonner";
 import { Block } from "@/components/ui/Block";
 import { Button } from "@/components/ui/Buttons";
-import { ChannelsSelect } from "@/components/ui/ChannelsSelect";
 import { RolesSelect } from "@/components/ui/RolesSelect";
 import { Switch } from "@/components/ui/Switch";
-import { TimeSelect } from "@/components/ui/TimeSelect";
 import { Tooltip } from "@/components/ui/Tooltip";
-import { Header2, Header3 } from "@/components/ui/Headers";
+import Header, { headerVariants } from "@/components/ui/Headers";
 import { Icons, iconVariants } from "@/components/ui/Icons";
+import { APIAutoModerationRule, APIGuildChannel, GuildChannelType } from "discord-api-types/v10";
+import LogChannel from "./LogChannel";
+import DeleteMessage from "./DeleteMessage";
+import TimeoutMember from "./TimeoutMember";
+import { cn } from "@/lib/utils";
+import { ChannelsSelect } from "@/components/ui/ChannelsSelect";
 
-export function AntiInvite({ serverId, enabled, existingActions, existingExemptRoles, existingExemptChannels, allRoles, allChannels }) {
+export interface AntiLinkProps {
+ serverId: APIAutoModerationRule["guild_id"];
+ enabled: APIAutoModerationRule["enabled"];
+ existingActions: APIAutoModerationRule["actions"];
+ existingExemptRoles: APIAutoModerationRule["exempt_roles"];
+ existingExemptChannels: APIAutoModerationRule["exempt_channels"];
+ allRoles: ({
+  id: string;
+  name: string;
+  color: string;
+ } | null)[];
+ allChannels: APIGuildChannel<GuildChannelType>[] | null[];
+}
+
+export const AntiLink = React.forwardRef<HTMLDivElement, AntiLinkProps>(({ serverId, enabled, existingActions, existingExemptRoles, existingExemptChannels, allRoles, allChannels }, ref) => {
  const [isEnabled, setIsEnabled] = useState(enabled ?? false);
  const [loading, setLoading] = useState(false);
  const [actions, setActions] = useState(existingActions || []);
@@ -23,9 +40,9 @@ export function AntiInvite({ serverId, enabled, existingActions, existingExemptR
  const save = async (change = true) => {
   setLoading(true);
   if (change) setIsEnabled(!isEnabled);
-  const loading = toast.loading(`Turning ${!isEnabled ? "on" : "off"} anti-invite...`);
+  const loading = toast.loading(`Turning ${!isEnabled ? "on" : "off"} anti-link...`);
 
-  const res = await fetch("/api/settings/automod/anti-invite", {
+  const res = await fetch("/api/settings/automod/anti-link", {
    method: "POST",
    headers: {
     "Content-Type": "application/json",
@@ -59,7 +76,7 @@ export function AntiInvite({ serverId, enabled, existingActions, existingExemptR
   const json = await res.json();
 
   if (json.code === 200) {
-   return toast.success(json.message ?? "Anti-invite enabled!", {
+   return toast.success(json.message ?? "Anti-link enabled!", {
     id: loading,
    });
   } else {
@@ -72,12 +89,12 @@ export function AntiInvite({ serverId, enabled, existingActions, existingExemptR
 
  return (
   <>
-   <Header2>
-    <Icons.userBlock className={iconVariants({ variant: "large", className: "!stroke-2" })} />
-    Anti-Invite <Switch checked={isEnabled} onChange={save} disabled={loading} />
-   </Header2>
+   <Header className={cn(headerVariants({ variant: "h2" }))}>
+    <Icons.unlink className={iconVariants({ variant: "large", className: "!stroke-2" })} />
+    Anti-Link <Switch checked={isEnabled} onChange={save} disabled={loading} />
+   </Header>
    <p className="mb-4 text-left">
-    <span>Automatically delete all messages containing Discord server invites.</span>
+    <span>Automatically delete all messages containing links.</span>
    </p>
 
    <div
@@ -106,9 +123,9 @@ export function AntiInvite({ serverId, enabled, existingActions, existingExemptR
     })}
    >
     <Block className="mb-4 !py-3">
-     <Header3>
+     <Header className={cn(headerVariants({ variant: "h3" }))}>
       <Icons.hide className={iconVariants({ variant: "large" })} /> Exempt:
-     </Header3>
+     </Header>
      <span className="mb-4 font-normal">What should be ignored by the rule?</span>
      <div className="flex w-fit flex-row flex-wrap items-center gap-2 text-center font-bold">
       <Tooltip content="Ignore certain roles from triggering the rule.">
@@ -117,11 +134,7 @@ export function AntiInvite({ serverId, enabled, existingActions, existingExemptR
         Ignore Roles:
        </span>
       </Tooltip>
-      <RolesSelect // prettier
-       allRoles={allRoles}
-       selectedRoles={exemptRoles}
-       setRoles={setExemptRoles}
-      />
+      <RolesSelect allRoles={allRoles.filter((role) => role !== null)} selectedRoles={exemptRoles} setRoles={setExemptRoles} />
      </div>
 
      <div className="mt-2 flex w-fit flex-row flex-wrap items-center gap-2 text-center font-bold">
@@ -131,11 +144,7 @@ export function AntiInvite({ serverId, enabled, existingActions, existingExemptR
         Ignore Channels:
        </span>
       </Tooltip>
-      <ChannelsSelect // prettier
-       allChannels={allChannels}
-       selectedChannels={exemptChannels}
-       setChannels={setExemptChannels}
-      />
+      <ChannelsSelect allChannels={allChannels.filter((channel) => channel !== null)} selectedChannels={exemptChannels} setChannels={setExemptChannels} />
      </div>
 
      <p className="mt-2 gap-2 text-sm text-white/70">
@@ -144,62 +153,23 @@ export function AntiInvite({ serverId, enabled, existingActions, existingExemptR
     </Block>
 
     <Block className="mb-4 !py-3">
-     <Header3>
+     <Header className={cn(headerVariants({ variant: "h3" }))}>
       <Icons.ShieldMinus className={iconVariants({ variant: "large" })} /> Actions:
-     </Header3>
+     </Header>
      <span className="mb-4 font-normal">What should I do when a member triggers the rule?</span>
 
-     <div className="my-2 flex flex-row flex-wrap gap-2">
-      <Tooltip content="Delete the message that triggered the rule.">
-       <span className="flex w-fit cursor-help items-center gap-2 font-bold">
-        <Icons.Trash className={iconVariants({ variant: "normal", className: "stroke-red-400" })} />
-        Delete message:
-       </span>
-      </Tooltip>
-      <Switch // prettier
-       checked={actions.some((action) => action.type === 1)}
-       onChange={() => setActions(actions.some((action) => action.type === 1) ? actions.filter((action) => action.type !== 1) : [...actions, { type: 1, metadata: { custom_message: "Message blocked due to containing an invite link. Rule added by Majo.exe" } }])}
-      />
-     </div>
-
-     <div className="my-2 flex flex-row flex-wrap gap-2">
-      <Tooltip content="Timeout the member that triggered the rule.">
-       <span className="flex w-fit cursor-help items-center gap-2 font-bold">
-        <Icons.Timer className={iconVariants({ variant: "normal", className: "stroke-red-400" })} />
-        Timeout member:
-       </span>
-      </Tooltip>
-      <TimeSelect // prettier
-       selectedChoice={actions.find((action) => action.type === 3)?.metadata?.duration_seconds || 0}
-       setSelectedChoice={(value) => setActions(actions.some((action) => action.type === 3) ? actions.map((action) => (action.type === 3 ? { ...action, metadata: { duration_seconds: value } } : action)) : [...actions, { type: 3, metadata: { duration_seconds: value } }])}
-      />
-     </div>
-
-     <div className="my-2 flex flex-row flex-wrap gap-2">
-      <Tooltip content="Send a message to selected channel when a member triggers the rule.">
-       <span className="flex w-fit cursor-help items-center gap-2 font-bold">
-        <Icons.messageWarning className={iconVariants({ variant: "normal", className: "stroke-red-400" })} />
-        Log to channel:
-       </span>
-      </Tooltip>
-      <ChannelsSelect // prettier
-       allChannels={[{ id: "1", name: "Disabled", type: 0 }, ...allChannels]}
-       selectedChannels={actions.find((action) => action.type === 2)?.metadata?.channel_id || "1"}
-       setChannels={(value) => setActions(actions.some((action) => action.type === 2) ? actions.map((action) => (action.type === 2 ? { ...action, metadata: { channel_id: value } } : action)) : [...actions, { type: 2, metadata: { channel_id: value } }])}
-       multiple={false}
-      />
-     </div>
+     <DeleteMessage actions={actions} setActions={setActions} />
+     <TimeoutMember actions={actions} setActions={setActions} />
+     <LogChannel actions={actions} setActions={setActions} allChannels={allChannels} />
 
      {(!actions || actions.length === 0) && isEnabled && !loading && (
-      <>
-       <div className="my-4 flex flex-row items-start whitespace-nowrap rounded-md border border-red-400 bg-red-400/10 p-4 text-red-400">
-        <span className="mr-1 flex flex-row items-center whitespace-nowrap font-bold">
-         <Icons.warning className={iconVariants({ variant: "normal", className: "mr-1 stroke-red-400" })} />
-         Warning:
-        </span>
-        <span className="whitespace-normal">You have to select at least one action!</span>
-       </div>
-      </>
+      <div className="my-4 flex flex-row items-start whitespace-nowrap rounded-md border border-red-400 bg-red-400/10 p-4 text-red-400">
+       <span className="mr-1 flex flex-row items-center whitespace-nowrap font-bold">
+        <Icons.warning className={iconVariants({ variant: "normal", className: "mr-1 stroke-red-400" })} />
+        Warning:
+       </span>
+       <span className="whitespace-normal">You have to select at least one action!</span>
+      </div>
      )}
     </Block>
 
@@ -219,4 +189,4 @@ export function AntiInvite({ serverId, enabled, existingActions, existingExemptR
    </div>
   </>
  );
-}
+});
