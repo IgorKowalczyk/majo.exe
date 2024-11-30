@@ -1,6 +1,6 @@
 "use client";
 import { useEffect, useState, useMemo } from "react";
-import { Header3 } from "@/components/ui/Headers";
+import Header, { headerVariants } from "@/components/ui/Headers";
 import { Icons, iconVariants } from "@/components/ui/Icons";
 import { InputWithIcon } from "@/components/ui/Input";
 import { Skeleton } from "@/components/ui/Skeletons";
@@ -47,10 +47,10 @@ export function DiscordCommands({ commands, categories }) {
     </div>
 
     <div className="mt-8 flex flex-col items-center justify-center gap-2">
-     <Header3 className="text-center">
+     <Header className={cn(headerVariants({ variant: "h3", alignment: "center" }))}>
       <Icons.refresh className={iconVariants({ variant: "large", className: "animate-spin" })} />
       Loading commands...
-     </Header3>
+     </Header>
      <p className="text-center text-white/50">This may take a few seconds.</p>
     </div>
    </>
@@ -104,10 +104,10 @@ export function DiscordCommands({ commands, categories }) {
    </div>
    {filteredCommands.length === 0 ? (
     <div className="mt-8 flex flex-col items-center justify-center gap-2">
-     <Header3 className="text-center">
+     <Header className={cn(headerVariants({ variant: "h3", alignment: "center" }))}>
       <Icons.close className={iconVariants({ variant: "large", className: "text-red-400" })} />
       No commands found.
-     </Header3>
+     </Header>
      <p className="text-center text-white/50">Try searching for something else or change the categories.</p>
     </div>
    ) : (
@@ -117,9 +117,9 @@ export function DiscordCommands({ commands, categories }) {
       .filter((category) => filteredCommands.some((command) => command.categoryName === category.name))
       .map((category) => (
        <div key={category.name} className="mt-8">
-        <Header3>
+        <Header className={cn(headerVariants({ variant: "h3" }))}>
          {category.name} <span className="text-accent-primary">({filteredCommands.filter((command) => command.categoryName === category.name).length})</span>
-        </Header3>
+        </Header>
         {filteredCommands
          .filter((command) => command.categoryName === category.name)
          .map((command) => (

@@ -17,7 +17,7 @@ export default function Loading() {
    <Block className="mt-4 !overflow-x-visible">
     <Header className={cn(headerVariants({ variant: "h2" }))}>
      <Icons.userAdd className={iconVariants({ variant: "large", className: "!stroke-2" })} />
-     Welcome Messages
+     Welcome messages
     </Header>
     <p className="mb-4 text-left">
      <span>Send a welcome message to new members when they join your server.</span>
@@ -40,7 +40,7 @@ export default function Loading() {
    <Block className="mt-4 !overflow-x-visible">
     <Header className={cn(headerVariants({ variant: "h2" }))}>
      <Icons.userMinus className={iconVariants({ variant: "large", className: "!stroke-2" })} />
-     Leave Messages
+     Leave messages
     </Header>
     <p className="mb-4 text-left">
      <span>Send a leave message to a channel when a user leaves the server.</span>

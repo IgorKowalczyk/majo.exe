@@ -2,15 +2,16 @@
 
 import Link from "next/link";
 import { buttonVariants } from "@/components/ui/Buttons";
-import { Header2, Header3 } from "@/components/ui/Headers";
+import Header, { headerVariants } from "@/components/ui/Headers";
 import { Icons, iconVariants } from "@/components/ui/Icons";
+import { cn } from "@/lib/utils";
 
 export default function Error({ reset }: { error: Error & { digest?: string }; reset: () => void }) {
  return (
   <div className="relative z-20 flex min-h-screen w-full flex-col items-center justify-center gap-4">
    <div className="z-30">
-    <Header2 className="mb-2 justify-center !text-3xl">500, server error!</Header2>
-    <Header3 className="max-w-lg text-center font-normal opacity-50">Sorry, we're having trouble loading this page. Please try again later or contact support.</Header3>
+    <Header className={cn(headerVariants({ variant: "h1", margin: "normal", alignment: "center" }))}>500, server error!</Header>
+    <span className="text-xl text-center gap-2 max-w-md opacity-50 flex">Sorry, we're having trouble loading this page. Please try again later or contact support.</span>
     <div className="mt-6 flex flex-wrap justify-center gap-4">
      <Link href="/" className={buttonVariants({ variant: "primary" })}>
       <Icons.refresh className={iconVariants({ variant: "button" })} onClick={reset} />

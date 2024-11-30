@@ -9,7 +9,7 @@ import { Block } from "@/components/ui/Block";
 import { Button } from "@/components/ui/Buttons";
 import { ChannelsSelect } from "@/components/ui/ChannelsSelect";
 import { EmbedTitle, Embed, EmbedDescription, EmbedImage } from "@/components/ui/Embed";
-import { Header2 } from "@/components/ui/Headers";
+import Header, { headerVariants } from "@/components/ui/Headers";
 import { Icons, iconVariants } from "@/components/ui/Icons";
 import { Input, Textarea } from "@/components/ui/Input";
 import { Switch } from "@/components/ui/Switch";
@@ -91,19 +91,19 @@ export const ChangeCustomMessages = React.forwardRef<HTMLDivElement, ChangeCusto
   <div className={className} ref={ref} {...props}>
    {type === "welcome" ? (
     <>
-     <Header2>
+     <Header className={cn(headerVariants({ variant: "h2" }))}>
       <Icons.userAdd className={iconVariants({ variant: "large", className: "!stroke-2" })} />
       Welcome messages
-     </Header2>
-     <p className="mb-4 text-left">Send a message when a user joins the server.</p>
+     </Header>
+     <p className="mb-4 text-left">Send a welcome message to new members when they join your server.</p>
     </>
    ) : (
     <>
-     <Header2>
+     <Header className={cn(headerVariants({ variant: "h2" }))}>
       <Icons.userMinus className={iconVariants({ variant: "large", className: "!stroke-2" })} />
       Leave messages
-     </Header2>
-     <p className="mb-4 text-left">Send a message when a user leaves the server.</p>
+     </Header>
+     <p className="mb-4 text-left">Send a leave message to a channel when a user leaves the server.</p>
     </>
    )}
    <div

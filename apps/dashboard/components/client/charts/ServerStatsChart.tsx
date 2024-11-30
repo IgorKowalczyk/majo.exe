@@ -5,10 +5,11 @@ import fileDl from "js-file-download";
 import React, { Fragment, useState } from "react";
 import { AreaChart } from "@/components/ui/AreaChart";
 import { Block } from "@/components/ui/Block";
-import { Header2 } from "@/components/ui/Headers";
+import Header, { headerVariants } from "@/components/ui/Headers";
 import { Icons, iconVariants } from "@/components/ui/Icons";
 import { Menu, MenuArrow, MenuButton, MenuItem, MenuItems } from "@/components/ui/Menu";
 import { ListBox, ListBoxArrow, ListBoxButton, ListBoxOption, ListBoxOptions } from "@/components/ui/ListBox";
+import { cn } from "@/lib/utils";
 
 export interface ServerStatsChartsProps {
  guildJoin: DataEntry[];
@@ -70,7 +71,7 @@ export const StatsChart = React.forwardRef<HTMLDivElement, StatsChartProps>(({ t
  return (
   <Block ref={ref}>
    <div className="mb-4 flex flex-col items-center justify-normal gap-2 whitespace-nowrap lg:flex-row">
-    <Header2 className="flex-col items-center gap-1 lg:items-start">
+    <Header className={cn(headerVariants({ variant: "h2" }), "flex-col items-center gap-1 lg:items-start")}>
      <span>
       {title} <span className="text-accent-primary">(+{sumArray(filteredData, valueName)})</span>
      </span>
@@ -79,7 +80,7 @@ export const StatsChart = React.forwardRef<HTMLDivElement, StatsChartProps>(({ t
        ({start.toString()} - {end.toString()})
       </span>
      )}
-    </Header2>
+    </Header>
     <div className="relative mx-auto flex flex-row flex-wrap items-center justify-center gap-2 lg:ml-auto lg:mr-0 lg:gap-2">
      <Menu>
       <MenuButton>

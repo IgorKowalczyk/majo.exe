@@ -1,5 +1,5 @@
 import { Block } from "@/components/ui/Block";
-import Header, { Header4, headerVariants } from "@/components/ui/Headers";
+import Header, { headerVariants } from "@/components/ui/Headers";
 import { Skeleton } from "@/components/ui/Skeletons";
 import { cn } from "@/lib/utils";
 
@@ -28,22 +28,22 @@ export default function Loading() {
 
    <div className="mt-6 block gap-6 lg:flex lg:items-start">
     <Block className="scrollbar-show flex flex-col justify-start overflow-x-scroll [flex:3_1_0]">
-     <Header4 className="mb-4 !items-start !justify-normal opacity-80">Leaderboard</Header4>
+     <Header className={cn(headerVariants({ variant: "h4", margin: "wide" }), "items-start justify-normal opacity-80")}>Leaderboard</Header>
      <Skeleton className="h-64 w-full" />
     </Block>
     <div className="mt-6 flex flex-col justify-start gap-6 [flex:2_1_0%] lg:mt-0">
      <Block>
-      <Header4 className="mb-4 !items-start !justify-normal opacity-80">
+      <Header className={cn(headerVariants({ variant: "h4", margin: "wide" }), "items-start justify-normal opacity-80")}>
        Emojis
        <span className="ml-auto font-medium opacity-60">Loading...</span>
-      </Header4>
+      </Header>
      </Block>
 
      <Block>
-      <Header4 className="mb-4 !items-start !justify-normal opacity-80">
+      <Header className={cn(headerVariants({ variant: "h4", margin: "wide" }), "items-start justify-normal opacity-80")}>
        Stickers
        <span className="ml-auto font-medium opacity-60">Loading...</span>
-      </Header4>
+      </Header>
      </Block>
     </div>
    </div>

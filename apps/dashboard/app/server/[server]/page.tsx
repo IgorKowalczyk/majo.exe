@@ -7,7 +7,7 @@ import { notFound } from "next/navigation";
 import Balancer from "react-wrap-balancer";
 import { Leaderboard } from "@/app/dashboard/[server]/leaderboard/components/Leaderboard";
 import { Block } from "@/components/ui/Block";
-import Header, { Header4, headerVariants } from "@/components/ui/Headers";
+import Header, { headerVariants } from "@/components/ui/Headers";
 import Image from "@/components/ui/Image";
 import { Tooltip } from "@/components/ui/Tooltip";
 import { cn } from "@/lib/utils";
@@ -145,15 +145,15 @@ export default async function Page(props: { params: Promise<{ server: string }> 
 
    <div className="mt-6 block gap-6 lg:flex lg:items-start">
     <Block className="scrollbar-show flex flex-col justify-start overflow-x-scroll [flex:3_1_0]">
-     <Header4 className="mb-4 !items-start !justify-normal opacity-80">Leaderboard</Header4>
+     <Header className={cn(headerVariants({ variant: "h4", margin: "wide" }), "items-start justify-normal opacity-80")}>Leaderboard</Header>
      {data.length > 0 ? <Leaderboard data={data} showSearch={false} showControls={false} /> : <span className="opacity-50">No users found. Maybe you should try talking in chat?</span>}
     </Block>
     <div className="mt-6 flex flex-col justify-start gap-6 [flex:2_1_0%] lg:mt-0">
      <Block>
-      <Header4 className="mb-4 !items-start !justify-normal opacity-80">
+      <Header className={cn(headerVariants({ variant: "h4", margin: "wide" }), "items-start justify-normal opacity-80")}>
        Emojis
        <span className="ml-auto font-medium opacity-60">{guildPreview.emojis.length || "0"}</span>
-      </Header4>
+      </Header>
       {guildPreview.emojis && guildPreview.emojis.length > 0 ? (
        <div className="flex flex-row flex-wrap gap-4">
         {guildPreview.emojis.map((emoji) => (
@@ -172,10 +172,10 @@ export default async function Page(props: { params: Promise<{ server: string }> 
      </Block>
 
      <Block>
-      <Header4 className="mb-4 !items-start !justify-normal opacity-80">
+      <Header className={cn(headerVariants({ variant: "h4", margin: "wide" }), "items-start justify-normal opacity-80")}>
        Stickers
        <span className="ml-auto font-medium opacity-60">{guildPreview.stickers.length || "0"}</span>
-      </Header4>
+      </Header>
       {guildPreview.stickers && guildPreview.stickers.length > 0 ? (
        <div className="flex flex-row flex-wrap gap-4">
         {guildPreview.stickers.map((sticker) => (
