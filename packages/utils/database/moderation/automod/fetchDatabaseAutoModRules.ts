@@ -1,7 +1,7 @@
 import prismaClient, { AutoMod } from "@majoexe/database";
 import { Snowflake } from "discord-api-types/globals";
 
-export async function fetchAutoModRules(guildId: Snowflake) {
+export async function fetchDatabaseAutoModRules(guildId: Snowflake) {
  try {
   const rules = await prismaClient.autoMod.findMany({
    where: {
@@ -16,7 +16,7 @@ export async function fetchAutoModRules(guildId: Snowflake) {
  }
 }
 
-export async function fetchAutoModRule(guildId: Snowflake, ruleId: AutoMod["ruleId"]) {
+export async function fetchDatabaseAutoModRule(guildId: Snowflake, ruleId: AutoMod["ruleId"]) {
  try {
   const rule = await prismaClient.autoMod.findFirst({
    where: {

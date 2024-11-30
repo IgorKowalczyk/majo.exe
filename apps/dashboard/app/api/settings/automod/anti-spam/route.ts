@@ -26,8 +26,7 @@ export async function POST(request: NextRequest) {
    );
   }
 
-  const cloned = await request.clone();
-  const data: AutoModerationRuleCreationData | undefined = await cloned.json();
+  const data: AutoModerationRuleCreationData | undefined = await request.json();
 
   if (!data) {
    return NextResponse.json(
@@ -51,7 +50,7 @@ export async function POST(request: NextRequest) {
     {
      type: AutoModerationActionType.BlockMessage,
      metadata: {
-      custom_message: "Message blocked due to containing an link. Rule added by Majo.exe",
+      custom_message: "Message blocked due to detected spam. Rule added by Majo.exe",
      },
     },
    ];
@@ -71,7 +70,7 @@ export async function POST(request: NextRequest) {
    !Array.isArray(data.exemptChannels) ||
    !data.exemptRoles.every((r) => typeof r === "string") ||
    !data.exemptChannels.every((c) => typeof c === "string") ||
-   !data.actions.every((a) => a.type === AutoModerationActionType.BlockMessage || a.type === AutoModerationActionType.SendAlertMessage || a.type === AutoModerationActionType.Timeout)
+   !data.actions.every((a) => a.type === AutoModerationActionType.BlockMessage || a.type === AutoModerationActionType.SendAlertMessage)
   ) {
    return NextResponse.json(
     {
@@ -183,7 +182,7 @@ export async function POST(request: NextRequest) {
    );
   }
 
-  const validatedActions = await validateAutoModRuleActions(data.actions, guildChannels, "Message blocked due to containing an link. Rule added by Majo.exe");
+  const validatedActions = await validateAutoModRuleActions(data.actions, guildChannels, "Message blocked due to detected spam. Rule added by Majo.exe");
 
   if ("error" in validatedActions) {
    return NextResponse.json(
@@ -219,19 +218,19 @@ export async function POST(request: NextRequest) {
    );
   }
 
-  const createdRule = await createDiscordAutoModRule(server.id, "anti-link", {
+  const createdRule = await createDiscordAutoModRule(server.id, "anti-spam", {
    enabled: data.enabled,
-   name: "Disallow links [Majo.exe]",
-   creator_id: process.env.CLIENT_ID || "",
+   name: "Anti-spam [Majo.exe]",
    actions: validatedActions,
    event_type: AutoModerationRuleEventType.MessageSend,
-   trigger_type: AutoModerationRuleTriggerType.Keyword,
+   trigger_type: AutoModerationRuleTriggerType.Spam,
    exempt_roles: data.exemptRoles,
    exempt_channels: data.exemptChannels,
-   trigger_metadata: {
-    regex_patterns: ["(https?://)?([\\da-z.-]+)\\.([a-z.]{2,6})[/\\w .-]*/?"],
-   },
+   trigger_metadata: {},
+   creator_id: process.env.CLIENT_ID || "",
   });
+
+  console.log(createdRule);
 
   if (createdRule.error) {
    return NextResponse.json(
@@ -251,7 +250,7 @@ export async function POST(request: NextRequest) {
   } else {
    return NextResponse.json(
     {
-     message: "Successfully updated the anti-link system",
+     message: "Successfully updated the anti-spam system",
      code: 200,
     },
     {

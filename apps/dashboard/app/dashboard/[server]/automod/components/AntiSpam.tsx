@@ -12,7 +12,6 @@ import { Icons, iconVariants } from "@/components/ui/Icons";
 import { APIAutoModerationRule, APIGuildChannel, GuildChannelType } from "discord-api-types/v10";
 import LogChannel from "./LogChannel";
 import DeleteMessage from "./DeleteMessage";
-import TimeoutMember from "./TimeoutMember";
 import { cn } from "@/lib/utils";
 import { ChannelsSelect } from "@/components/ui/ChannelsSelect";
 
@@ -89,7 +88,7 @@ export const AntiSpam = React.forwardRef<HTMLDivElement, AntiSpamProps>(({ serve
 
  return (
   <>
-   <Header className={cn(headerVariants({ variant: "h2" }))}>
+   <Header className={cn(headerVariants({ variant: "h2", margin: "normal" }))}>
     <Icons.messageOff className={iconVariants({ variant: "large", className: "!stroke-2" })} />
     Anti-Spam <Switch checked={isEnabled} onChange={save} disabled={loading} />
    </Header>
@@ -165,7 +164,6 @@ export const AntiSpam = React.forwardRef<HTMLDivElement, AntiSpamProps>(({ serve
      <span className="mb-4 font-normal">What should I do when a member triggers the rule?</span>
 
      <DeleteMessage actions={actions} setActions={setActions} />
-     <TimeoutMember actions={actions} setActions={setActions} />
      <LogChannel actions={actions} setActions={setActions} allChannels={allChannels} />
 
      {(!actions || actions.length === 0) && isEnabled && !loading && (

@@ -1,4 +1,4 @@
-import { syncAutoModRule } from "@majoexe/util/database";
+import { syncDatabaseAutoModRule } from "@majoexe/util/database";
 import { ChatInputCommandInteraction, EmbedBuilder } from "discord.js";
 import type { Majobot } from "@/index";
 import type { GuildSettings } from "@/util/types/Command";
@@ -6,7 +6,7 @@ import type { GuildSettings } from "@/util/types/Command";
 export async function disableAntiBadWords(client: Majobot, interaction: ChatInputCommandInteraction, guildSettings: GuildSettings) {
  if (!interaction.guild) return client.errorMessages.createSlashError(interaction, "❌ This command can only be used in a server.");
 
- const createdRule = await syncAutoModRule(interaction.guild.id, "anti-bad-words");
+ const createdRule = await syncDatabaseAutoModRule(interaction.guild.id, "anti-bad-words");
 
  if (!createdRule) {
   return client.errorMessages.createSlashError(interaction, "❌ The anti-bad-words system is already `disabled`");

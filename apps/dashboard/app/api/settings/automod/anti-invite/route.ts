@@ -1,5 +1,5 @@
 import prismaClient from "@majoexe/database";
-import { AutoModerationRuleCreationData, createHTTPAutomodRule, validateAutoModIgnores, validateAutoModRuleActions } from "@majoexe/util/functions/automod";
+import { AutoModerationRuleCreationData, createDiscordAutoModRule, validateAutoModIgnores, validateAutoModRuleActions } from "@majoexe/util/functions/automod";
 import { getGuild, getGuildChannels, getGuildFromMemberGuilds, getGuildRoles } from "@majoexe/util/functions/guild";
 import { AutoModerationActionType, AutoModerationRuleTriggerType, AutoModerationRuleEventType, ChannelType } from "discord-api-types/v10";
 import { getSession } from "lib/session";
@@ -218,9 +218,10 @@ export async function POST(request: NextRequest) {
    );
   }
 
-  const createdRule = await createHTTPAutomodRule(server.id, "anti-invite", {
+  const createdRule = await createDiscordAutoModRule(server.id, "anti-invite", {
    enabled: data.enabled,
    name: "Disallow invites [Majo.exe]",
+   creator_id: process.env.CLIENT_ID || "",
    actions: validatedActions,
    event_type: AutoModerationRuleEventType.MessageSend,
    trigger_type: AutoModerationRuleTriggerType.Keyword,

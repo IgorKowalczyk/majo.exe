@@ -1,12 +1,12 @@
 import { globalConfig } from "@majoexe/config";
-import { deleteAutoModRule } from "./deleteAutoModRule";
-import { fetchAutoModRules } from "./fetchAutoModRules";
+import { deleteDatabaseAutoModRule } from "./deleteDatabaseAutoModRule";
+import { fetchDatabaseAutoModRules } from "./fetchDatabaseAutoModRules";
 import { Snowflake } from "discord-api-types/globals";
 import { AutoMod } from "@majoexe/database";
 import { RESTError, RESTGetAPIAutoModerationRuleResult } from "discord-api-types/v10";
 
-export async function syncAutoModRule(guildId: Snowflake, ruleType: AutoMod["ruleType"]) {
- const rules = await fetchAutoModRules(guildId);
+export async function syncDatabaseAutoModRule(guildId: Snowflake, ruleType: AutoMod["ruleType"]) {
+ const rules = await fetchDatabaseAutoModRules(guildId);
  const createdRule = rules.find((rule) => rule.ruleType === ruleType);
 
  if (createdRule) {
@@ -20,25 +20,25 @@ export async function syncAutoModRule(guildId: Snowflake, ruleType: AutoMod["rul
    });
 
    if (!existingRuleFetch.ok) {
-    await deleteAutoModRule(guildId, createdRule.ruleId);
+    await deleteDatabaseAutoModRule(guildId, createdRule.ruleId);
     return null;
    }
 
    const existingRule = (await existingRuleFetch.json()) as RESTGetAPIAutoModerationRuleResult | RESTError;
 
    if ("code" in existingRule) {
-    await deleteAutoModRule(guildId, createdRule.ruleId);
+    await deleteDatabaseAutoModRule(guildId, createdRule.ruleId);
     return null;
    }
 
    if (!existingRule || !existingRule.id) {
-    await deleteAutoModRule(guildId, createdRule.ruleId);
+    await deleteDatabaseAutoModRule(guildId, createdRule.ruleId);
     return null;
    } else {
     return existingRule;
    }
   } catch (_err) {
-   await deleteAutoModRule(guildId, createdRule.ruleId);
+   await deleteDatabaseAutoModRule(guildId, createdRule.ruleId);
    return null;
   }
  } else {

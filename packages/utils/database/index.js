@@ -5,10 +5,11 @@ export * from "./settings/XPSettings.js";
 export * from "./logs/fetchLogs.js";
 
 // AutoMod
-export * from "./moderation/automod/createAutoModRule.js";
-export * from "./moderation/automod/deleteAutoModRule.js";
-export * from "./moderation/automod/fetchAutoModRules";
-export * from "./moderation/automod/syncAutoModRule";
+export * from "./moderation/automod/createDatabaseAutoModRule";
+export * from "./moderation/automod/deleteDatabaseAutoModRule";
+export * from "./moderation/automod/fetchDatabaseAutoModRules";
+export * from "./moderation/automod/syncDatabaseAutoModRule";
+export * from "./moderation/automod/updateDatabaseAutoModRule";
 
 // Warnings
 export * from "./moderation/warn/add.js";
