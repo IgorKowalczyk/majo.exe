@@ -4,7 +4,6 @@ import { buttonVariants } from "@/components/ui/Buttons";
 import { Header2, Header3 } from "@/components/ui/Headers";
 import { Icons, iconVariants } from "@/components/ui/Icons";
 import Link from "next/link";
-import "styles/glitch.css";
 
 export default function Error({ reset }: { error: Error & { digest?: string }; reset: () => void }) {
  return (
