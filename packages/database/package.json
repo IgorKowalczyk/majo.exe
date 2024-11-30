@@ -38,7 +38,7 @@
     "prettier-plugin-prisma": "5.0.0"
   },
   "engines": {
-    "node": ">=20.0.0"
+    "node": ">=20"
   },
   "repository": {
     "type": "git",
