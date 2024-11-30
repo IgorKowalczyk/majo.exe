@@ -1,4 +1,4 @@
-import { clearWarns, listWarnings, warnUser, removeWarning } from "@majoexe/util/database";
+import { clearWarns, listWarns, warnUser, removeWarn } from "@majoexe/util/database";
 import { ApplicationCommandType, ApplicationCommandOptionType, PermissionsBitField, EmbedBuilder, codeBlock, PermissionFlagsBits, InteractionContextType, ApplicationIntegrationType } from "discord.js";
 import type { SlashCommand } from "@/util/types/Command";
 
@@ -135,7 +135,7 @@ export default {
      return client.errorMessages.createSlashError(interaction, "❌ You need to provide the ID of the warning to remove!");
     }
 
-    const removedWarning = await removeWarning(interaction.guild.id, user.id, id);
+    const removedWarning = await removeWarn(interaction.guild.id, user.id, id);
 
     if (!removedWarning) {
      return client.errorMessages.createSlashError(interaction, "❌ I couldn't find a warning with that ID!");
@@ -161,7 +161,7 @@ export default {
      return client.errorMessages.createSlashError(interaction, "❌ You need to provide a user to list the warnings of!");
     }
 
-    const warnings = await listWarnings(interaction.guild.id, user.id);
+    const warnings = await listWarns(interaction.guild.id, user.id);
 
     if (!warnings || warnings.length === 0) {
      return client.errorMessages.createSlashError(interaction, "❌ I couldn't find any warnings for that user!");

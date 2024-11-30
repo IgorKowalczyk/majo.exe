@@ -10,6 +10,7 @@
     "./embeds/*": "./embeds/*",
     "./functions/automod": "./functions/automod/index.ts",
     "./functions/automod/*": "./functions/automod/*",
+    "./functions/files": "./functions/files/index.ts",
     "./functions/files/*": "./functions/files/*",
     "./functions/guild": "./functions/guild/index.ts",
     "./functions/guild/*": "./functions/guild/*",

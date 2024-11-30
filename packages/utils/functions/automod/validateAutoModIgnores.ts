@@ -1,6 +1,7 @@
-import { ChannelType } from "discord-api-types/v10";
+import { APIGuildChannel, GuildChannelType, APIRole, ChannelType } from "discord-api-types/v10";
+import { AutoModerationRuleCreationData } from "./types";
 
-export function validateAutoModIgnores(allChannels, allRoles, exemptRoles, exemptChannels) {
+export async function validateAutoModIgnores(allChannels: APIGuildChannel<GuildChannelType>[], allRoles: APIRole[], exemptRoles: AutoModerationRuleCreationData["exemptRoles"], exemptChannels: AutoModerationRuleCreationData["exemptChannels"]) {
  if (exemptChannels.length > 50) {
   return {
    error: "You can only have 50 ignored channels at once. Please remove some of the existing ignored channels before adding this one.",
@@ -32,7 +33,9 @@ export function validateAutoModIgnores(allChannels, allRoles, exemptRoles, exemp
    };
   }
 
-  if (allChannels.find((c) => c.id === channel).type !== ChannelType.GuildText) {
+  const foundChannel = allChannels.find((c) => c.id === channel);
+
+  if (foundChannel && foundChannel.type !== ChannelType.GuildText) {
    return {
     error: `Channel #${allChannels.find((c) => c.id === channel)?.name || channel} is not a text channel`,
     code: 400,

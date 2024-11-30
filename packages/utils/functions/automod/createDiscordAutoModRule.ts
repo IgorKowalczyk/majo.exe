@@ -1,6 +1,6 @@
 import { globalConfig } from "@majoexe/config";
 import { type APIAutoModerationRule, AutoModerationRuleTriggerType } from "discord-api-types/v10";
-import { createDatabaseAutoModRule, deleteDatabaseAutoModRule, syncDatabaseAutoModRule, updateDatabaseAutoModRule } from "../../database";
+import { createDatabaseAutoModRule, syncDatabaseAutoModRule, updateDatabaseAutoModRule } from "../../database";
 import { fetchDiscordAutoModRules } from "./fetchDiscordAutoModRules";
 import { deleteDiscordAutoModRules } from "./deleteDiscordAutoModRule";
 
