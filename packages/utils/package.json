@@ -4,7 +4,7 @@
   "description": "Shared utility functions for Majo.exe",
   "type": "module",
   "exports": {
-    "./database": "./database/index.js",
+    "./database": "./database/index.ts",
     "./database/*": "./database/*",
     "./embeds": "./embeds/index.ts",
     "./embeds/*": "./embeds/*",
