@@ -1,14 +1,14 @@
 "use client";
 
+import { User } from "@majoexe/database";
 import { formatNumber } from "@majoexe/util/functions/util";
+import type { ColumnDef } from "@tanstack/react-table";
 import Link from "next/link";
-import { Button, buttonVariants } from "@/components/ui/Buttons";
+import { buttonVariants } from "@/components/ui/Buttons";
+import { Icons, iconVariants } from "@/components/ui/Icons";
 import Image from "@/components/ui/Image";
 import { Table, TableColumnHeader } from "@/components/ui/Table";
 import { Tooltip } from "@/components/ui/Tooltip";
-import { Icons, iconVariants } from "@/components/ui/Icons";
-import type { ColumnDef } from "@tanstack/react-table";
-import { User } from "@majoexe/database";
 import { cn } from "@/lib/utils";
 
 export interface LeaderboardData {

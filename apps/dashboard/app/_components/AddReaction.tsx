@@ -1,9 +1,9 @@
 "use client";
 
-import { cn } from "@/lib/utils";
 import { useState } from "react";
 import { toast } from "sonner";
 import Image from "@/components/ui/Image";
+import { cn } from "@/lib/utils";
 
 export function AddReaction({ reaction, countL = 2 }: { reaction: string; countL?: number }) {
  const [clicked, setClicked] = useState<boolean>(true);

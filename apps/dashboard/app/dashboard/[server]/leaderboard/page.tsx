@@ -1,13 +1,13 @@
 import prismaClient from "@majoexe/database";
 import { getGuildFromMemberGuilds, getGuild } from "@majoexe/util/functions/guild";
 import { getSession } from "lib/session";
+import { Metadata } from "next";
 import { redirect } from "next/navigation";
 import { notFound } from "next/navigation";
-import { Block } from "@/components/ui/Block";
 import { Leaderboard } from "@/app/dashboard/[server]/leaderboard/components/Leaderboard";
+import { Block } from "@/components/ui/Block";
 import Header, { headerVariants } from "@/components/ui/Headers";
 import { Icons, iconVariants } from "@/components/ui/Icons";
-import { Metadata } from "next";
 import { cn } from "@/lib/utils";
 
 export const metadata: Metadata = {

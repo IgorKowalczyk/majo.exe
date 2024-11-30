@@ -1,14 +1,14 @@
 "use client";
 
+import { User } from "@majoexe/database";
 import { formatDate, formatDuration } from "@majoexe/util/functions/util";
+import type { ColumnDef } from "@tanstack/react-table";
 import Link from "next/link";
 import { Button } from "@/components/ui/Buttons";
+import { Icons, iconVariants } from "@/components/ui/Icons";
 import Image from "@/components/ui/Image";
 import { Table, TableColumnHeader } from "@/components/ui/Table";
 import { Tooltip } from "@/components/ui/Tooltip";
-import { Icons, iconVariants } from "@/components/ui/Icons";
-import type { ColumnDef } from "@tanstack/react-table";
-import { User } from "@majoexe/database";
 
 interface Giveaway {
  id: number;
@@ -44,7 +44,7 @@ export function Giveaways({ data = [] }: { data: Giveaway[] }) {
      <>
       {value.ended ? (
        <Tooltip content={`Ended ${formatDate(value.endedAt)} (${formatDuration(new Date(value.endedAt).getTime() - new Date(value.startedAt).getTime())})`}>
-        <div className="flex cursor-help items-center w-fit">
+        <div className="flex w-fit cursor-help items-center">
          <Icons.Timer className={iconVariants({ variant: "button", className: "text-red-400" })} />
          <span className="text-red-400">Ended</span>
         </div>
@@ -84,7 +84,7 @@ export function Giveaways({ data = [] }: { data: Giveaway[] }) {
      <>
       {value ? (
        <Tooltip content={`Discord ID: ${value.discordId || "Unknown"}`}>
-        <Link className="flex items-center space-x-4 w-fit" href={`user/${value.discordId}`}>
+        <Link className="flex w-fit items-center space-x-4" href={`user/${value.discordId}`}>
          <Image src={`/api/user/avatar/${value.discordId}`} alt={`${value.name} avatar`} quality={95} width={48} height={48} className="size-12 shrink-0 rounded-full" />
 
          <span className="text-left font-bold">

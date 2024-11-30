@@ -1,13 +1,13 @@
 "use client";
 
-import { cn } from "@/lib/utils";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import React, { useContext } from "react";
 import { VisibilityContext } from "@/components/nav/VisibilityContext";
+import { Badge } from "@/components/ui/Badge";
 import { Button, buttonVariants } from "@/components/ui/Buttons";
 import { Icons, iconVariants } from "@/components/ui/Icons";
-import { Badge } from "@/components/ui/Badge";
+import { cn } from "@/lib/utils";
 
 export const SideNavLink = React.forwardRef<HTMLAnchorElement, React.AnchorHTMLAttributes<HTMLAnchorElement> & { href: string }>(({ href, children, ...props }, ref) => {
  const router = usePathname();
@@ -37,7 +37,7 @@ export const SideNavigation: React.FC<SideNavigationProps> = ({ className, serve
       "pointer-events-none opacity-0": !sideNavVisible,
       "opacity-100": sideNavVisible,
      },
-     "fixed z-30 mt-8 flex h-screen w-64 flex-none flex-col flex-nowrap overflow-y-auto overflow-x-hidden border-r border-r-neutral-800 bg-background-navbar py-8 pb-32 shadow-lg duration-100 md:pointer-events-auto md:top-0 md:mt-16 md:opacity-100",
+     "bg-background-navbar fixed z-30 mt-8 flex h-screen w-64 flex-none flex-col flex-nowrap overflow-y-auto overflow-x-hidden border-r border-r-neutral-800 py-8 pb-32 shadow-lg duration-100 md:pointer-events-auto md:top-0 md:mt-16 md:opacity-100",
      className
     )}
     {...props}

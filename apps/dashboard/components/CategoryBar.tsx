@@ -1,8 +1,8 @@
-import { cn } from "@/lib/utils";
 import React, { HTMLAttributes } from "react";
+import { cn } from "@/lib/utils";
 
 export const CategoryBar = React.forwardRef<HTMLDivElement, HTMLAttributes<HTMLDivElement> & { percent?: number }>(({ percent = 50, className, ...props }, ref) => (
- <div {...props} ref={ref}>
+ <div {...props} ref={ref} className={className}>
   <div className="relative mb-2 flex h-5 w-full text-gray-500">
    <div
     className="flex items-center justify-end"
@@ -80,7 +80,7 @@ export const CategoryBar = React.forwardRef<HTMLDivElement, HTMLAttributes<HTMLD
        "bg-yellow-500": percent > 30 && percent <= 60,
        "bg-emerald-500": percent > 60,
       },
-      "mx-auto h-4 w-1 rounded-full ring-2 ring-background-secondary"
+      "ring-background-secondary mx-auto h-4 w-1 rounded-full ring-2"
      )}
     />
    </div>

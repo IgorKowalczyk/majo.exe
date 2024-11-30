@@ -1,6 +1,6 @@
+import advices from "@majoexe/util/content/advices.json";
 import { ApplicationCommandType, ApplicationIntegrationType, EmbedBuilder, InteractionContextType } from "discord.js";
 import type { SlashCommand } from "@/util/types/Command";
-import advices from "@majoexe/util/content/advices.json";
 
 export default {
  name: "advice",

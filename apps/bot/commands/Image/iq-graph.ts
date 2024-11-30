@@ -46,7 +46,7 @@ export default {
    context.drawImage(background, 0, 0, canvas.width, canvas.height);
 
    const calculateFontSize = (text: string) => {
-    const length = text.length;
+    const { length } = text;
     if (length <= 10) return 32;
     if (length <= 20) return 26;
     if (length <= 30) return 20;

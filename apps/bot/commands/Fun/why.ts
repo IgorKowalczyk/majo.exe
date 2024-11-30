@@ -1,6 +1,6 @@
+import why from "@majoexe/util/content/why.json";
 import { ApplicationCommandType, ApplicationIntegrationType, EmbedBuilder, InteractionContextType } from "discord.js";
 import type { SlashCommand } from "@/util/types/Command";
-import why from "@majoexe/util/content/why.json";
 
 export default {
  name: "why",

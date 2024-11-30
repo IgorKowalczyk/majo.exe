@@ -4,30 +4,6 @@ import createGlobe from "cobe";
 import { useEffect, useRef, useState } from "react";
 import { useSpring } from "react-spring";
 
-export default function GlobeClient() {
- const [webglSupported, setWebglSupported] = useState(true);
-
- useEffect(() => {
-  try {
-   const canvas = window.document.createElement("canvas");
-   const context = canvas.getContext("webgl") || canvas.getContext("experimental-webgl");
-   console.log("WebGL supported, showing globe animation...");
-   if (!context) {
-    console.log("WebGL not supported");
-    setWebglSupported(false);
-    return;
-   }
-   (context as WebGLRenderingContext).getSupportedExtensions();
-  } catch (e) {
-   console.log(`WebGL not supported: ${e}`);
-   setWebglSupported(false);
-   return;
-  }
- }, []);
-
- return webglSupported && <GlobeAnimation />;
-}
-
 const convertColor = (array: [number, number, number]): [number, number, number] => {
  return [array[0] / 255, array[1] / 255, array[2] / 255];
 };
@@ -89,7 +65,7 @@ const GlobeAnimation = () => {
      state.height = width * 2;
     },
    });
-   setTimeout(() => {
+   const timeout1 = setTimeout(() => {
     if (canvasRef.current) {
      canvasRef.current.style.opacity = "1";
     }
@@ -97,15 +73,17 @@ const GlobeAnimation = () => {
    return () => {
     if (globe) globe.destroy();
     window.removeEventListener("resize", onResize);
+    if (timeout1) clearTimeout(timeout1);
    };
   }
-  setTimeout(() => {
+  const timeout2 = setTimeout(() => {
    if (canvasRef.current) {
     canvasRef.current.style.opacity = "1";
    }
   });
   return () => {
    window.removeEventListener("resize", onResize);
+   if (timeout2) clearTimeout(timeout2);
   };
  }, []);
 
@@ -152,3 +130,27 @@ const GlobeAnimation = () => {
   />
  );
 };
+
+export default function GlobeClient() {
+ const [webglSupported, setWebglSupported] = useState(true);
+
+ useEffect(() => {
+  try {
+   const canvas = window.document.createElement("canvas");
+   const context = canvas.getContext("webgl") || canvas.getContext("experimental-webgl");
+   console.log("WebGL supported, showing globe animation...");
+   if (!context) {
+    console.log("WebGL not supported");
+    setWebglSupported(false);
+    return;
+   }
+   (context as WebGLRenderingContext).getSupportedExtensions();
+  } catch (e) {
+   console.log(`WebGL not supported: ${e}`);
+   setWebglSupported(false);
+   return;
+  }
+ }, []);
+
+ return webglSupported && <GlobeAnimation />;
+}

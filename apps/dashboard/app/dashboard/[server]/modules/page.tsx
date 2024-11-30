@@ -1,17 +1,17 @@
 import { botConfig } from "@majoexe/config";
 import prismaClient from "@majoexe/database";
 import { getGuildFromMemberGuilds, getGuild } from "@majoexe/util/functions/guild";
-import { cn } from "@/lib/utils";
 import { getSession } from "lib/session";
 import { redirect } from "next/navigation";
 import { notFound } from "next/navigation";
-import { Block } from "@/components/ui/Block";
 import { UpdateCategories } from "@/components/client/commandModules/UpdateCategories";
 import { UpdateCommands } from "@/components/client/commandModules/UpdateCommands";
-import { Tooltip } from "@/components/ui/Tooltip";
+import { Block } from "@/components/ui/Block";
 import Header, { headerVariants } from "@/components/ui/Headers";
 import { Icons, iconVariants } from "@/components/ui/Icons";
+import { Tooltip } from "@/components/ui/Tooltip";
 import { Command } from "@/lib/types";
+import { cn } from "@/lib/utils";
 
 export default async function Page(props: { params: Promise<{ server: string }> }) {
  const params = await props.params;

@@ -1,6 +1,7 @@
 import { dashboardConfig, globalConfig } from "@majoexe/config";
 import prismaClient from "@majoexe/database";
 import { formatNumber, pseudoRandom } from "@majoexe/util/functions/util";
+import { ApplicationCommandOptionType } from "discord-api-types/v10";
 import Link from "next/link";
 import avatar01 from "public/assets/avatars/01.webp";
 import avatar03 from "public/assets/avatars/03.webp";
@@ -13,18 +14,17 @@ import Balancer from "react-wrap-balancer";
 import { AddReaction } from "@/app/_components/AddReaction";
 import Faq from "@/app/_components/Faq";
 import { LevelUp } from "@/app/_components/LevelUp";
-import { buttonVariants } from "@/components/ui/Buttons";
+import { Notifications } from "@/app/_components/Notifications";
 import { LogDisclosure } from "@/app/dashboard/[server]/logs/components/Logs";
-import { AnimatedShinyText } from "@/components/ui/effects/AnimatedShinyText";
+import { LoginButton } from "@/components/LoginButton";
 import { AreaChart } from "@/components/ui/AreaChart";
-import Image from "@/components/ui/Image";
+import { buttonVariants } from "@/components/ui/Buttons";
+import { AnimatedShinyText } from "@/components/ui/effects/AnimatedShinyText";
 import Header, { headerVariants } from "@/components/ui/Headers";
 import { Icons, iconVariants } from "@/components/ui/Icons";
+import Image from "@/components/ui/Image";
 import { Typing } from "@/components/ui/Loaders";
-import { LoginButton } from "@/components/LoginButton";
-import { Notifications } from "@/app/_components/Notifications";
 import { Command } from "@/lib/types";
-import { ApplicationCommandOptionType } from "discord-api-types/v10";
 import { cn } from "@/lib/utils";
 
 export default async function HomePage() {
@@ -91,19 +91,16 @@ export default async function HomePage() {
 
  let commandsCount = 0;
 
- allCommands.map((command) => {
+ allCommands.forEach((command) => {
   if (!command.options) return;
 
-  command.options.map((option) => {
+  command.options.forEach((option) => {
    if (!option) return;
    if (option.type === ApplicationCommandOptionType.Subcommand || option.type === ApplicationCommandOptionType.SubcommandGroup) commandsCount++;
-   return option;
   });
 
   commandsCount++;
-  return command;
  });
-
  const guilds = await fetch(`https://discord.com/api/v${globalConfig.apiVersion}/applications/@me`, {
   method: "GET",
   headers: {
@@ -126,8 +123,8 @@ export default async function HomePage() {
       </AnimatedShinyText>
      </Link>
 
-     <Header className={cn(headerVariants({ variant: "big", alignment: "center", effects: "gradient" }), "!font-black !leading-snug ")}>The only one Discord Bot</Header>
-     <Header className={cn(headerVariants({ variant: "h2", alignment: "center" }), "text-white/70 font-normal max-w-[680px]")}>
+     <Header className={cn(headerVariants({ variant: "big", alignment: "center", effects: "gradient" }), "!font-black !leading-snug")}>The only one Discord Bot</Header>
+     <Header className={cn(headerVariants({ variant: "h2", alignment: "center" }), "max-w-[680px] font-normal text-white/70")}>
       <Balancer>Majo.exe will not only keep your server entertained but also assist you with moderation and many other things!</Balancer>
      </Header>
      <div className="mt-2 flex flex-col gap-4 sm:flex-row">
@@ -202,7 +199,7 @@ export default async function HomePage() {
        <LevelUp avatar={dashboardConfig.logo} username="Majonez.exe" />
       </div>
       <div className="relative col-span-2 row-span-2 overflow-hidden rounded-xl border border-neutral-800 bg-background-secondary px-8 py-6 duration-200 hover:bg-neutral-800/50 lg:col-span-1">
-       <Header className={cn(headerVariants({ variant: "h2", margin: "normal" }), "bg-gradient-to-b from-white to-neutral-400 box-decoration-clone bg-clip-text font-black text-fill-transparent")}>Moderation? We have it!</Header>
+       <Header className={cn(headerVariants({ variant: "h2", margin: "normal" }), "text-fill-transparent bg-gradient-to-b from-white to-neutral-400 box-decoration-clone bg-clip-text font-black")}>Moderation? We have it!</Header>
        <div className="absolute inset-0 z-0 m-auto mt-[100px] size-[580px] rounded-full bg-[#ddd] opacity-5 blur-3xl" />
        <div className="relative z-10">
         <p className="mt-2 max-w-[680px] text-white/70">
@@ -216,7 +213,7 @@ export default async function HomePage() {
       <div className="relative col-span-2 row-span-2 overflow-hidden rounded-xl border border-neutral-800 bg-background-secondary duration-200 hover:bg-neutral-800/50">
        <div className="relative z-50 h-full">
         <div className="px-8 py-6">
-         <Header className={cn(headerVariants({ variant: "h1", margin: "normal" }), "bg-gradient-to-b from-white to-neutral-400 box-decoration-clone bg-clip-text font-black text-fill-transparent")}>Know more about your server</Header>
+         <Header className={cn(headerVariants({ variant: "h1", margin: "normal" }), "text-fill-transparent bg-gradient-to-b from-white to-neutral-400 box-decoration-clone bg-clip-text font-black")}>Know more about your server</Header>
          <p className="max-w-[680px] text-white/70">
           <Balancer>With Majo.exe you can get to know your server better with the help of the dashboard. You can see the most active members, the most used channels and activity graphs!</Balancer>
          </p>

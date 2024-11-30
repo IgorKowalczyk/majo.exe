@@ -1,7 +1,6 @@
 import { globalConfig } from "@majoexe/config";
-import { type APIAutoModerationAction, AutoModerationActionType, ChannelType, type GuildTextChannelType, type APIGuildChannel, type GuildChannelType, RESTGetAPIGuildChannelsResult, RESTError, RESTGetAPIChannelResult } from "discord-api-types/v10";
+import { type APIAutoModerationAction, AutoModerationActionType, ChannelType, type APIGuildChannel, type GuildChannelType, RESTError, RESTGetAPIChannelResult } from "discord-api-types/v10";
 import { getPermissionNames } from "../user/getPermissionNames";
-import { getGuildChannels } from "../guild";
 
 interface ValidationResult {
  error: string;

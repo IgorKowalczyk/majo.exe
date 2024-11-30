@@ -3,9 +3,9 @@ import { getSession } from "lib/session";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import { buttonVariants } from "@/components/ui/Buttons";
-import Image from "@/components/ui/Image";
 import Header, { headerVariants } from "@/components/ui/Headers";
 import { Icons, iconVariants } from "@/components/ui/Icons";
+import Image from "@/components/ui/Image";
 import { cn } from "@/lib/utils";
 
 export default async function Dashboard() {
@@ -35,7 +35,7 @@ export default async function Dashboard() {
         <Icons.Navigation className={iconVariants({ variant: "extraLarge" })} />
         Choose a server
        </Header>
-       <p className="mb-4 text-center text-base md:text-xl text-white/50">Select a server to manage, or add the bot to a new server.</p>
+       <p className="mb-4 text-center text-base text-white/50 md:text-xl">Select a server to manage, or add the bot to a new server.</p>
        {servers.map((server) => (
         <div key={server.id}>
          <div className="hidden flex-row items-center justify-start gap-4 sm:flex">
@@ -75,7 +75,7 @@ export default async function Dashboard() {
               {
                "opacity-20": !server.bot,
               },
-              "size-24 shrink-0 rounded-md bg-button-secondary"
+              "bg-button-secondary size-24 shrink-0 rounded-md"
              )}
             />
            )}
@@ -90,7 +90,7 @@ export default async function Dashboard() {
         <Icons.TriangleAlert className={iconVariants({ variant: "extraLarge" })} />
         You don't have any servers!
        </Header>
-       <p className="mb-6 text-center text-base md:text-xl text-white/50">It seems like you're not in any servers that you can manage, try joining a server or creating one.</p>
+       <p className="mb-6 text-center text-base text-white/50 md:text-xl">It seems like you're not in any servers that you can manage, try joining a server or creating one.</p>
        <div className="flex flex-wrap justify-center gap-4">
         <Link href="/api/invite" className={cn(buttonVariants({ variant: "primary" }))}>
          <Icons.Plus className={iconVariants({ variant: "button" })} /> Add bot
@@ -103,7 +103,7 @@ export default async function Dashboard() {
      )}
     </div>
     <div className="my-4 mt-12 flex flex-row flex-wrap items-start whitespace-nowrap rounded-md border border-accent-primary bg-accent-primary/10 p-4">
-     <span className="flex mr-1 flex-row items-center gap-1 whitespace-nowrap font-bold">
+     <span className="mr-1 flex flex-row items-center gap-1 whitespace-nowrap font-bold">
       <Icons.Info className={iconVariants({ variant: "normal", className: "stroke-accent-primary" })} /> Note:
      </span>
      <span className="whitespace-normal">

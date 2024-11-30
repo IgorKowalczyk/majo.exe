@@ -2,17 +2,17 @@ import { dashboardConfig } from "@majoexe/config";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { GeistSans } from "geist/font/sans";
+import type { Metadata } from "next";
 import { Toaster } from "sonner";
-import { ProgressBar } from "@/components/ProgressBar";
-import { Session } from "@/components/Session";
 import { Footer } from "@/components/Footer";
 import { Hotjar } from "@/components/Hotjar";
-import { Icons, iconVariants } from "@/components/ui/Icons";
-import { VisibilityProvider } from "@/components/nav/VisibilityContext";
 import { TopNavigation } from "@/components/nav/TopNavigation";
+import { VisibilityProvider } from "@/components/nav/VisibilityContext";
+import { ProgressBar } from "@/components/ProgressBar";
+import { Session } from "@/components/Session";
 import { TailwindIndicator } from "@/components/TailwindIndicator";
+import { Icons, iconVariants } from "@/components/ui/Icons";
 import "styles/globals.css";
-import type { Metadata } from "next";
 import { cn } from "@/lib/utils";
 
 export const metadata: Metadata = {

@@ -1,7 +1,7 @@
+import Link from "next/link";
 import { buttonVariants } from "@/components/ui/Buttons";
 import Header, { headerVariants } from "@/components/ui/Headers";
 import { Icons, iconVariants } from "@/components/ui/Icons";
-import Link from "next/link";
 
 export const metadata = {
  title: "Error",

@@ -1,13 +1,13 @@
 import { globalConfig } from "@majoexe/config";
-import { getPermissionNames } from "../user/getPermissionNames";
 import { APIGuild } from "discord-api-types/v10";
+import { getPermissionNames } from "../user/getPermissionNames";
 
 export interface ExtendedAPIGuild extends APIGuild {
  permissions_names: string[];
  bot: boolean;
 }
 
-export async function getMemberGuilds(token: String) {
+export async function getMemberGuilds(token: string) {
  try {
   const res = await fetch(`https://discord.com/api/v${globalConfig.apiVersion}/users/@me/guilds`, {
    headers: {

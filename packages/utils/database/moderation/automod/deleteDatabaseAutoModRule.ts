@@ -5,8 +5,8 @@ export async function deleteDatabaseAutoModRule(guildId: Snowflake, ruleId: Snow
  try {
   await prisma.autoMod.deleteMany({
    where: {
-    guildId: guildId,
-    ruleId: ruleId,
+    guildId,
+    ruleId,
    },
   });
  } catch (error) {

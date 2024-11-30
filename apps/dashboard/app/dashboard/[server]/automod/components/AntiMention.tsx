@@ -1,21 +1,21 @@
 "use client";
 
+import { APIAutoModerationRule, APIGuildChannel, GuildChannelType } from "discord-api-types/v10";
 import React, { useState } from "react";
 import { toast } from "sonner";
+import DeleteMessage from "./DeleteMessage";
+import { MentionLimitSelect } from "./Limit";
+import LogChannel from "./LogChannel";
+import TimeoutMember from "./TimeoutMember";
 import { Block } from "@/components/ui/Block";
 import { Button } from "@/components/ui/Buttons";
+import { ChannelsSelect } from "@/components/ui/ChannelsSelect";
+import Header, { headerVariants } from "@/components/ui/Headers";
+import { Icons, iconVariants } from "@/components/ui/Icons";
 import { RolesSelect } from "@/components/ui/RolesSelect";
 import { Switch } from "@/components/ui/Switch";
 import { Tooltip } from "@/components/ui/Tooltip";
-import Header, { headerVariants } from "@/components/ui/Headers";
-import { Icons, iconVariants } from "@/components/ui/Icons";
-import { APIAutoModerationRule, APIGuildChannel, GuildChannelType } from "discord-api-types/v10";
-import LogChannel from "./LogChannel";
-import DeleteMessage from "./DeleteMessage";
-import TimeoutMember from "./TimeoutMember";
 import { cn } from "@/lib/utils";
-import { ChannelsSelect } from "@/components/ui/ChannelsSelect";
-import { MentionLimitSelect } from "./Limit";
 
 export interface AntiMentionProps {
  serverId: APIAutoModerationRule["guild_id"];
@@ -82,16 +82,15 @@ export const AntiMention = React.forwardRef<HTMLDivElement, AntiMentionProps>(({
    return toast.success(json.message ?? "Anti-mention enabled!", {
     id: loading,
    });
-  } else {
-   change && setIsEnabled(isEnabled);
-   return toast.error(json.error ?? "Something went wrong", {
-    id: loading,
-   });
   }
+  if (change) setIsEnabled(isEnabled);
+  return toast.error(json.error ?? "Something went wrong", {
+   id: loading,
+  });
  };
 
  return (
-  <>
+  <div ref={ref}>
    <Header className={cn(headerVariants({ variant: "h2", margin: "normal" }))}>
     <Icons.mention className={iconVariants({ variant: "large", className: "!stroke-2" })} />
     Anti-Mention <Switch checked={isEnabled} onChange={save} disabled={loading} />
@@ -155,7 +154,7 @@ export const AntiMention = React.forwardRef<HTMLDivElement, AntiMentionProps>(({
      </p>
     </Block>
 
-    <Icons.MoveVertical className={cn(iconVariants({ variant: "large" }), "opacity-50 mb-4 mx-6")} />
+    <Icons.MoveVertical className={cn(iconVariants({ variant: "large" }), "mx-6 mb-4 opacity-50")} />
 
     <Block className="mb-4 !py-3">
      <Header className={cn(headerVariants({ variant: "h3" }))}>
@@ -178,7 +177,7 @@ export const AntiMention = React.forwardRef<HTMLDivElement, AntiMentionProps>(({
      )}
     </Block>
 
-    <Icons.ArrowDown className={cn(iconVariants({ variant: "large" }), "opacity-50 mb-4 mx-6")} />
+    <Icons.ArrowDown className={cn(iconVariants({ variant: "large" }), "mx-6 mb-4 opacity-50")} />
 
     <Block className="mb-4 !py-3">
      <Header className={cn(headerVariants({ variant: "h3" }))}>
@@ -222,6 +221,6 @@ export const AntiMention = React.forwardRef<HTMLDivElement, AntiMentionProps>(({
      )}
     </Button>
    </div>
-  </>
+  </div>
  );
 });

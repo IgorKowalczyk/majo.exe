@@ -1,12 +1,12 @@
 import { getSession } from "lib/session";
+import Link from "next/link";
 import { redirect } from "next/navigation";
-import { buttonVariants } from "@/components/ui/Buttons";
 import { DiscordLogin } from "@/components/DiscordLogin";
-import Image from "@/components/ui/Image";
+import { buttonVariants } from "@/components/ui/Buttons";
 import Header, { headerVariants } from "@/components/ui/Headers";
 import { Icons, iconVariants } from "@/components/ui/Icons";
+import Image from "@/components/ui/Image";
 import { Dots } from "@/components/ui/Loaders";
-import Link from "next/link";
 import { cn } from "@/lib/utils";
 
 export const metadata = {

@@ -30,6 +30,7 @@ export default {
     return;
    }
 
+   /* eslint-disable typescript/no-explicit-any */
    const results = json.data.map((result: any) => {
     const data = result.attributes;
     return {

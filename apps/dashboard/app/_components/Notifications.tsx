@@ -1,4 +1,3 @@
-import { AnimatedList } from "@/components/ui/effects/AnimatedList";
 import Image from "next/image";
 import avatar01 from "public/assets/avatars/01.webp";
 import avatar02 from "public/assets/avatars/02.webp";
@@ -7,6 +6,7 @@ import avatar04 from "public/assets/avatars/04.webp";
 import avatar05 from "public/assets/avatars/05.webp";
 import avatar06 from "public/assets/avatars/06.webp";
 import avatar07 from "public/assets/avatars/07.webp";
+import { AnimatedList } from "@/components/ui/effects/AnimatedList";
 
 export function Notifications() {
  let notifications = [
@@ -79,8 +79,8 @@ export function Notifications() {
 
  return (
   <AnimatedList>
-   {notifications.map((item, index) => (
-    <figure key={`notification-${item.content}-${index}-${item.author}`} className="relative mx-auto min-h-fit w-full max-w-[400px] transform-gpu overflow-hidden transition-all duration-200 ease-in-out">
+   {notifications.map((item) => (
+    <figure key={`notification-${item.content}-${item.author}`} className="relative mx-auto min-h-fit w-full max-w-[400px] transform-gpu overflow-hidden transition-all duration-200 ease-in-out">
      <div className="mt-1 flex flex-row items-center gap-1">
       <Image src={item.avatar} alt={`${item.author} avatar`} quality={95} width={20} height={20} className="size-5 self-baseline rounded-full" />
       <span className="ml-2 text-sm">

@@ -1,19 +1,19 @@
 "use client";
 
+import { GuildWarns, User } from "@majoexe/database";
 import { formatDuration, shortenText } from "@majoexe/util/functions/util";
+import type { ColumnDef } from "@tanstack/react-table";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
-import React, { useMemo, useState, useCallback } from "react";
+import React, { useState, useCallback } from "react";
 import { toast } from "sonner";
 import { Button, buttonVariants } from "@/components/ui/Buttons";
+import { Icons, iconVariants } from "@/components/ui/Icons";
 import Image from "@/components/ui/Image";
+import { Skeleton } from "@/components/ui/Skeletons";
 import { Table, TableColumnHeader } from "@/components/ui/Table";
 import { Tooltip } from "@/components/ui/Tooltip";
-import { Icons, iconVariants } from "@/components/ui/Icons";
-import { Skeleton } from "@/components/ui/Skeletons";
 import { cn } from "@/lib/utils";
-import Link from "next/link";
-import { GuildWarns, User } from "@majoexe/database";
-import type { ColumnDef } from "@tanstack/react-table";
 
 export interface WarnItems extends Omit<GuildWarns, "createdAt"> {
  createdAt: string;
@@ -61,7 +61,7 @@ export const Warns = React.forwardRef<ReturnType<typeof Table>, { data: WarnItem
      <>
       {value && value.discordId ? (
        <Tooltip content={`Discord ID: ${value.discordId || "Unknown"}`}>
-        <Link href={`user/${value.discordId}`} className="flex items-center w-fit space-x-4">
+        <Link href={`user/${value.discordId}`} className="flex w-fit items-center space-x-4">
          <Image src={`/api/user/avatar/${value.discordId}`} alt={`${value.name} avatar`} quality={95} width={48} height={48} className="size-12 shrink-0 rounded-full" />
          <span className="text-left font-bold">
           {value.global_name || value.name}
@@ -72,7 +72,7 @@ export const Warns = React.forwardRef<ReturnType<typeof Table>, { data: WarnItem
       ) : (
        <div className="flex flex-row items-center space-x-4">
         <Skeleton className="size-12 shrink-0 rounded-full" />
-        <Skeleton className="w-20 h-6" />
+        <Skeleton className="h-6 w-20" />
        </div>
       )}
      </>
@@ -116,7 +116,7 @@ export const Warns = React.forwardRef<ReturnType<typeof Table>, { data: WarnItem
  ];
 
  /* @ts-expect-error Table is not accepting columns */
- return <Table data={data} sortBy={[{ id: "createdAt", desc: true }]} {...props} columns={columns} />;
+ return <Table data={data} sortBy={[{ id: "createdAt", desc: true }]} {...props} columns={columns} ref={ref} />;
 });
 
 export interface UserWarns extends Omit<GuildWarns, "createdById" | "link"> {
@@ -165,7 +165,7 @@ export const ManageUserWarns = React.forwardRef<ReturnType<typeof Table>, { data
      <>
       {value && value.discordId ? (
        <Tooltip content={`Discord ID: ${value.discordId || "Unknown"}`}>
-        <div className="flex items-center space-x-4 w-fit">
+        <div className="flex w-fit items-center space-x-4">
          <Image src={`/api/user/avatar/${value.discordId}`} alt={`${value.name} avatar`} quality={95} width={48} height={48} className="size-12 shrink-0 rounded-full" />
          <span className="text-left font-bold">
           {value.global_name || value.name}
@@ -176,7 +176,7 @@ export const ManageUserWarns = React.forwardRef<ReturnType<typeof Table>, { data
       ) : (
        <div className="flex flex-row items-center space-x-4">
         <Skeleton className="size-12 shrink-0 rounded-full" />
-        <Skeleton className="w-20 h-6" />
+        <Skeleton className="h-6 w-20" />
        </div>
       )}
      </>
@@ -232,5 +232,5 @@ export const ManageUserWarns = React.forwardRef<ReturnType<typeof Table>, { data
  ];
 
  /* @ts-expect-error Table is not accepting columns */
- return <Table data={data} {...props} sortBy={[{ id: "createdAt", desc: true }]} columns={columns} />;
+ return <Table data={data} {...props} sortBy={[{ id: "createdAt", desc: true }]} columns={columns} ref={ref} />;
 });

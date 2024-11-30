@@ -1,12 +1,12 @@
 import { dashboardConfig } from "@majoexe/config";
 import prismaClient from "@majoexe/database";
-import Balancer from "react-wrap-balancer";
-import { Block } from "@/components/ui/Block";
-import { DiscordCommands } from "@/components/client/commandModules/DiscordCommands";
-import Image from "@/components/ui/Image";
-import Header, { headerVariants } from "@/components/ui/Headers";
-import { Command } from "@/lib/types";
 import { ApplicationCommandOptionType } from "discord-api-types/v10";
+import Balancer from "react-wrap-balancer";
+import { DiscordCommands } from "@/components/client/commandModules/DiscordCommands";
+import { Block } from "@/components/ui/Block";
+import Header, { headerVariants } from "@/components/ui/Headers";
+import Image from "@/components/ui/Image";
+import { Command } from "@/lib/types";
 import { cn } from "@/lib/utils";
 
 export const revalidate = 3600; // 1 hour

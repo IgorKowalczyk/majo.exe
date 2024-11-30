@@ -1,11 +1,11 @@
 "use client";
 
 import { signOut } from "next-auth/react";
+import React from "react";
+import { Icons, iconVariants } from "@/components/ui/Icons";
 import Image from "@/components/ui/Image";
 import { Menu, MenuLink, MenuItem, MenuButton, MenuItems, MenuArrow } from "@/components/ui/Menu";
-import { Icons, iconVariants } from "@/components/ui/Icons";
 import { getSession } from "@/lib/session";
-import React from "react";
 
 type UserSession = Awaited<ReturnType<typeof getSession>>;
 

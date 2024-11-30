@@ -1,20 +1,20 @@
 import { dashboardConfig } from "@majoexe/config";
-import { cn } from "@/lib/utils";
 import { getSession } from "lib/session";
 import Link from "next/link";
-import { buttonVariants } from "@/components/ui/Buttons";
+import React, { HTMLAttributes } from "react";
 import { DiscordLogin } from "@/components/DiscordLogin";
-import Image from "@/components/ui/Image";
-import { Icons, iconVariants } from "@/components/ui/Icons";
 import { SideMenuControl } from "@/components/nav/SideMenuControl";
 import { UserMenuDropdown } from "@/components/nav/UserMenuDropdown";
-import React, { HTMLAttributes } from "react";
+import { buttonVariants } from "@/components/ui/Buttons";
+import { Icons, iconVariants } from "@/components/ui/Icons";
+import Image from "@/components/ui/Image";
+import { cn } from "@/lib/utils";
 
 export const TopNavigation = React.forwardRef<HTMLDivElement, HTMLAttributes<HTMLDivElement> & { theme?: "full" | "compact" }>(async ({ className, theme, ...props }, ref) => {
  const session = await getSession();
 
  return (
-  <nav className={cn("fixed z-40 flex w-full items-center border-b border-b-neutral-800 bg-background-navbar py-4 text-left shadow-lg md:bg-background-navbar/70 md:backdrop-blur-[9px]", className)} {...props} ref={ref}>
+  <nav className={cn("bg-background-navbar md:bg-background-navbar/70 fixed z-40 flex w-full items-center border-b border-b-neutral-800 py-4 text-left shadow-lg md:backdrop-blur-[9px]", className)} {...props} ref={ref}>
    <SideMenuControl />
    <div
     className={cn(

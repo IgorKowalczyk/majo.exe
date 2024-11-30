@@ -1,8 +1,8 @@
 "use client";
 
-import { ListBox, ListBoxArrow, ListBoxButton, ListBoxOption, ListBoxOptions } from "@/components/ui/ListBox";
-import { Icons, iconVariants } from "@/components/ui/Icons";
 import React from "react";
+import { Icons, iconVariants } from "@/components/ui/Icons";
+import { ListBox, ListBoxArrow, ListBoxButton, ListBoxOption, ListBoxOptions } from "@/components/ui/ListBox";
 
 export const choices = [
  {
@@ -37,7 +37,7 @@ export interface MentionSelectProps extends React.ComponentProps<typeof ListBox>
  setTriggerMetadata: (metadata: { mentionTotalLimit: number; mentionRaidProtectionEnabled: boolean }) => void;
 }
 
-export const MentionLimitSelect = React.forwardRef<React.ElementRef<typeof ListBox>, MentionSelectProps>(({ className, selectedChoice, setSelectedChoice, triggerMetadata, setTriggerMetadata, ...props }, ref) => {
+export const MentionLimitSelect = React.forwardRef<React.ElementRef<typeof ListBox>, MentionSelectProps>(({ selectedChoice, setSelectedChoice, triggerMetadata, setTriggerMetadata, ...props }, ref) => {
  const setMentions = (value: number) => {
   const updatedTriggerMetadata = {
    ...triggerMetadata,

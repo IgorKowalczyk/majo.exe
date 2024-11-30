@@ -1,6 +1,6 @@
-import { Snowflake } from "discord.js";
 import { globalConfig } from "@majoexe/config";
 import { RESTError, APIAutoModerationRule } from "discord-api-types/v10";
+import { Snowflake } from "discord.js";
 
 export async function fetchDiscordAutoModRules(guildId: Snowflake) {
  try {

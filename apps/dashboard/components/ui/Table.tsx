@@ -1,13 +1,13 @@
 "use client";
 
-import { cn } from "@/lib/utils";
-import React, { useState } from "react";
 import { useReactTable, getCoreRowModel, getSortedRowModel, getPaginationRowModel, getFilteredRowModel, ColumnDef, Column, flexRender } from "@tanstack/react-table";
-import { ViewSelect } from "@/components/ui/ViewSelect";
+import React, { useState } from "react";
 import { Button } from "@/components/ui/Buttons";
 import { Icons, iconVariants } from "@/components/ui/Icons";
 import { InputWithIcon } from "@/components/ui/Input";
 import { Menu, MenuItem, MenuItems, MenuButton } from "@/components/ui/Menu";
+import { ViewSelect } from "@/components/ui/ViewSelect";
+import { cn } from "@/lib/utils";
 
 interface TableProps<TData, TValue> {
  columns: ColumnDef<TData, TValue>[];
@@ -30,7 +30,7 @@ export function TableColumnHeader<TData, TValue>({ column, title, className }: D
  return (
   <div className={cn("flex items-center space-x-2", className)}>
    <Menu>
-    <MenuButton aria-label={column.getIsSorted() === "desc" ? "Sorted descending. Click to sort ascending." : column.getIsSorted() === "asc" ? "Sorted ascending. Click to sort descending." : "Not sorted. Click to sort ascending."} className="px-3 font-medium text-gray-500 !text-xs uppercase h-8 border-transparent ml-0 gap-2">
+    <MenuButton aria-label={column.getIsSorted() === "desc" ? "Sorted descending. Click to sort ascending." : column.getIsSorted() === "asc" ? "Sorted ascending. Click to sort descending." : "Not sorted. Click to sort ascending."} className="ml-0 h-8 gap-2 border-transparent px-3 !text-xs font-medium uppercase text-gray-500">
      <span>{title}</span>
      {column.getCanSort() && (
       <div className="relative size-4">
@@ -72,11 +72,11 @@ export function TableColumnHeader<TData, TValue>({ column, title, className }: D
       {column.getCanSort() && (
        <>
         <MenuItem aria-label="Sort ascending" onClick={() => column.toggleSorting(false)}>
-         <Icons.ArrowUp className="mr-2 size-3.5 text-muted-foreground/70" aria-hidden="true" />
+         <Icons.ArrowUp className="text-muted-foreground/70 mr-2 size-3.5" aria-hidden="true" />
          Asc
         </MenuItem>
         <MenuItem aria-label="Sort descending" onClick={() => column.toggleSorting(true)}>
-         <Icons.ArrowDown className="mr-2 size-3.5 text-muted-foreground/70" aria-hidden="true" />
+         <Icons.ArrowDown className="text-muted-foreground/70 mr-2 size-3.5" aria-hidden="true" />
          Desc
         </MenuItem>
        </>
@@ -96,7 +96,7 @@ export function TableColumnHeader<TData, TValue>({ column, title, className }: D
 }
 
 export const Table = <TData, TValue>({ columns, data, sortBy = [{ id: "id", desc: false }], showControls = true, showSearch = true }: TableProps<TData, TValue>) => {
- const [globalFilter, setGlobalFilter] = useState<any>([]);
+ const [globalFilter, setGlobalFilter] = useState<string>("");
 
  const table = useReactTable({
   data: data || [],
@@ -131,7 +131,7 @@ export const Table = <TData, TValue>({ columns, data, sortBy = [{ id: "id", desc
       {table.getHeaderGroups().map((headerGroup) => (
        <tr key={headerGroup.id} id={headerGroup.id}>
         {headerGroup.headers.map((header) => (
-         <th key={header.id} className="h-10 tracking-wider select-none items-center gap-3 text-xs sm:text-xs  text-gray-500 font-medium">
+         <th key={header.id} className="h-10 select-none items-center gap-3 text-xs font-medium tracking-wider text-gray-500 sm:text-xs">
           <span className="flex select-none items-center gap-2 px-6 uppercase">{flexRender(header.column.columnDef.header, header.getContext())}</span>
          </th>
         ))}
@@ -152,7 +152,7 @@ export const Table = <TData, TValue>({ columns, data, sortBy = [{ id: "id", desc
        ))
       ) : (
        <tr>
-        <td colSpan={columns.length} className="text-center py-4 text-neutral-500">
+        <td colSpan={columns.length} className="py-4 text-center text-neutral-500">
          No data available
         </td>
        </tr>

@@ -1,8 +1,8 @@
 "use client";
 
 import { Switch as HeadlessSwitch } from "@headlessui/react";
-import { cn } from "@/lib/utils";
 import React from "react";
+import { cn } from "@/lib/utils";
 
 export const Switch = React.forwardRef<React.ElementRef<typeof HeadlessSwitch>, React.ComponentProps<typeof HeadlessSwitch>>(({ className, checked, onChange, disabled }, ref) => {
  return (
@@ -18,6 +18,7 @@ export const Switch = React.forwardRef<React.ElementRef<typeof HeadlessSwitch>, 
     "relative inline-flex max-h-[24px] w-[45px] cursor-pointer items-center rounded-full border text-left text-gray-200/75 ring-0 transition-colors duration-200 ease-in-out hover:border-neutral-600 hover:text-gray-200 focus-visible:ring-2 focus-visible:ring-opacity-75 motion-reduce:transition-none",
     className
    )}
+   ref={ref}
   >
    <span className="sr-only">Use setting</span>
    <span

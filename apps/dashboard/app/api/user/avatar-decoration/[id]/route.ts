@@ -1,6 +1,6 @@
+import { getDiscordUser } from "@majoexe/util/functions/user";
 import { redirect } from "next/navigation";
 import { NextRequest, NextResponse } from "next/server";
-import { getDiscordUser } from "@majoexe/util/functions/user";
 
 export async function GET(request: NextRequest, props: { params: Promise<{ id: string }> }) {
  const params = await props.params;
@@ -15,7 +15,7 @@ export async function GET(request: NextRequest, props: { params: Promise<{ id: s
   if (user.avatar_decoration_data.asset.startsWith("a_")) return NextResponse.redirect(`https://cdn.discordapp.com/avatar-decoration-presets/${user.avatar_decoration_data.asset}.png?size=128`);
 
   return NextResponse.redirect(`https://cdn.discordapp.com/avatar-decoration-presets/${user.avatar_decoration_data.asset}.webp?size=128`);
- } catch (error) {
+ } catch (_error) {
   return redirect("/assets/fallback.webp");
  }
 }

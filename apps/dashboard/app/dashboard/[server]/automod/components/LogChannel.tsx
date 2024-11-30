@@ -1,9 +1,9 @@
+import { AutoModerationActionType } from "discord-api-types/v10";
 import React from "react";
 import { ChannelsSelect } from "@/components/ui/ChannelsSelect";
-import { Tooltip } from "@/components/ui/Tooltip";
 import { Icons, iconVariants } from "@/components/ui/Icons";
-import { AutoModerationActionType } from "discord-api-types/v10";
 import { Skeleton } from "@/components/ui/Skeletons";
+import { Tooltip } from "@/components/ui/Tooltip";
 
 interface LogChannelProps {
  actions: any[];

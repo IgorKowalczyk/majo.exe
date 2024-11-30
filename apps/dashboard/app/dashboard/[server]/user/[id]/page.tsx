@@ -3,20 +3,20 @@ import { getGuildFromMemberGuilds, getGuild } from "@majoexe/util/functions/guil
 import { getDiscordUser, getFlags } from "@majoexe/util/functions/user";
 import { formatNumber } from "@majoexe/util/functions/util";
 import { getSession } from "lib/session";
+import { Metadata } from "next";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import { notFound } from "next/navigation";
-import { Block } from "@/components/ui/Block";
-import { buttonVariants } from "@/components/ui/Buttons";
-import { ManageUserWarns, UserWarns } from "@/app/dashboard/[server]/warns/components/Warns";
 import { ChangeUserReputation } from "@/app/dashboard/[server]/user/components/ChangeUserReputation";
 import { ResetUserXP } from "@/app/dashboard/[server]/user/components/ResetUserXP";
-import Image from "@/components/ui/Image";
-import { Tooltip } from "@/components/ui/Tooltip";
+import { ManageUserWarns, UserWarns } from "@/app/dashboard/[server]/warns/components/Warns";
 import { Emojis } from "@/components/DiscordEmojis";
+import { Block } from "@/components/ui/Block";
+import { buttonVariants } from "@/components/ui/Buttons";
 import Header, { headerVariants } from "@/components/ui/Headers";
 import { Icons, iconVariants } from "@/components/ui/Icons";
-import { Metadata } from "next";
+import Image from "@/components/ui/Image";
+import { Tooltip } from "@/components/ui/Tooltip";
 import { cn } from "@/lib/utils";
 
 export async function generateMetadata({ params }: { params: Promise<{ server: string; id: string }> }): Promise<Metadata> {
@@ -164,11 +164,11 @@ export default async function User(props: { params: Promise<{ server: string; id
       }}
      />
      <div className="flex h-[72px] w-auto flex-row justify-between gap-6 bg-background-navbar p-12">
-      <div className="ml-[-16px] mt-[-20px] w-full box-content flex items-center rounded-full">
+      <div className="ml-[-16px] mt-[-20px] box-content flex w-full items-center rounded-full">
        <Tooltip content="Click to see full size">
-        <Link href={`/api/user/avatar/${discordUser.id}`} target="_blank" className="size-24 shrink-0 relative">
+        <Link href={`/api/user/avatar/${discordUser.id}`} target="_blank" className="relative size-24 shrink-0">
          <Image quality={100} src={`/api/user/avatar/${discordUser.id}`} alt={`${discordUser.global_name || discordUser.username} Avatar`} width={96} height={96} className="rounded-full !border-4 !border-solid !border-background-navbar duration-200 hover:opacity-75" />
-         {discordUser.avatar_decoration_data ? <Image quality={100} src={`/api/user/avatar-decoration/${discordUser.id}`} alt={`${discordUser.global_name || discordUser.username} Avatar decoration`} width={96} height={96} className="absolute top-0 left-0 rounded-full" /> : null}
+         {discordUser.avatar_decoration_data ? <Image quality={100} src={`/api/user/avatar-decoration/${discordUser.id}`} alt={`${discordUser.global_name || discordUser.username} Avatar decoration`} width={96} height={96} className="absolute left-0 top-0 rounded-full" /> : null}
         </Link>
        </Tooltip>
 
@@ -190,7 +190,7 @@ export default async function User(props: { params: Promise<{ server: string; id
 
         {user.nitro && user.nitro > 0 ? (
          <Tooltip content="Nitro">
-          <div className="size-5 mx-1">{Emojis["nitro"]}</div>
+          <div className="mx-1 size-5">{Emojis["nitro"]}</div>
          </Tooltip>
         ) : null}
 
@@ -199,7 +199,7 @@ export default async function User(props: { params: Promise<{ server: string; id
          getFlags(Number(user.public_flags)).map((flag) => {
           return (
            <Tooltip key={`flag-tooltip-${flag.name}`} content={flag.content}>
-            <div className="size-5 mx-1">{Emojis[flag.name as keyof typeof Emojis]}</div>
+            <div className="mx-1 size-5">{Emojis[flag.name as keyof typeof Emojis]}</div>
            </Tooltip>
           );
          })}

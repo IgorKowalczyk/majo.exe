@@ -1,8 +1,8 @@
 "use client";
 
-import { ListBox, ListBoxArrow, ListBoxButton, ListBoxOption, ListBoxOptions } from "@/components/ui/ListBox";
-import { Icons, iconVariants } from "@/components/ui/Icons";
 import React from "react";
+import { Icons, iconVariants } from "@/components/ui/Icons";
+import { ListBox, ListBoxArrow, ListBoxButton, ListBoxOption, ListBoxOptions } from "@/components/ui/ListBox";
 
 export const choices = [
  {
@@ -48,7 +48,7 @@ export interface TimeSelectProps extends React.ComponentProps<typeof ListBox> {
  setSelectedChoice: (value: number) => void;
 }
 
-export const TimeSelect = React.forwardRef<React.ElementRef<typeof ListBox>, TimeSelectProps>(({ className, selectedChoice, setSelectedChoice, ...props }, ref) => (
+export const TimeSelect = React.forwardRef<React.ElementRef<typeof ListBox>, TimeSelectProps>(({ selectedChoice, setSelectedChoice, ...props }, ref) => (
  <>
   {choices && choices.length > 0 ? (
    <ListBox value={selectedChoice.toString()} onChange={(value: string) => setSelectedChoice(parseInt(value))} {...props} ref={ref}>

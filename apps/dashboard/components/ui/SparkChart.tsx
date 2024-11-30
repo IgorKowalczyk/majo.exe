@@ -1,17 +1,17 @@
 "use client";
 
+import React from "react";
 import { Area, AreaChart as ReChartsAreaChart, ResponsiveContainer, XAxis } from "recharts";
 import { Icons, iconVariants } from "@/components/ui/Icons";
-import React from "react";
 
 export interface SparkLineChartProps {
- data: { [key: string]: number }[];
+ data: Record<string, number>[];
  categories: string[];
  index: string;
 }
 
 export const SparkLineChart = React.forwardRef<ReturnType<typeof ReChartsAreaChart>, SparkLineChartProps>(({ data, categories, index }, ref) => (
- <div className="h-10 w-36">
+ <div className="h-10 w-36" ref={ref as React.Ref<HTMLDivElement>}>
   <ResponsiveContainer className="size-full">
    {data.length ? (
     <ReChartsAreaChart data={data}>

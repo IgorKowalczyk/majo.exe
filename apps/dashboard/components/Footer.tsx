@@ -1,13 +1,13 @@
 "use client";
 
 import { dashboardConfig } from "@majoexe/config";
-import { cn } from "@/lib/utils";
 import Link from "next/link";
 import { useSelectedLayoutSegment, usePathname } from "next/navigation";
-import { Icons } from "@/components/ui/Icons";
-import { buttonVariants } from "@/components/ui/Buttons";
-import Image from "@/components/ui/Image";
 import React, { HTMLAttributes } from "react";
+import { buttonVariants } from "@/components/ui/Buttons";
+import { Icons } from "@/components/ui/Icons";
+import Image from "@/components/ui/Image";
+import { cn } from "@/lib/utils";
 
 export const Footer = React.forwardRef<HTMLDivElement, HTMLAttributes<HTMLDivElement>>(({ className, ...props }, ref) => {
  const segment = useSelectedLayoutSegment();

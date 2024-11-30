@@ -1,20 +1,20 @@
 "use client";
 
+import { globalConfig } from "@majoexe/config";
 import { toHTML } from "@odiffey/discord-markdown";
-import { cn } from "@/lib/utils";
+import { Snowflake } from "discord-api-types/globals";
 import React, { useState } from "react";
 import { toast } from "sonner";
 import { Block } from "@/components/ui/Block";
 import { Button } from "@/components/ui/Buttons";
 import { ChannelsSelect } from "@/components/ui/ChannelsSelect";
-import { Switch } from "@/components/ui/Switch";
-import { Tooltip } from "@/components/ui/Tooltip";
 import { EmbedTitle, Embed, EmbedDescription, EmbedImage } from "@/components/ui/Embed";
 import { Header2 } from "@/components/ui/Headers";
 import { Icons, iconVariants } from "@/components/ui/Icons";
 import { Input, Textarea } from "@/components/ui/Input";
-import { globalConfig } from "@majoexe/config";
-import { Snowflake } from "discord-api-types/globals";
+import { Switch } from "@/components/ui/Switch";
+import { Tooltip } from "@/components/ui/Tooltip";
+import { cn } from "@/lib/utils";
 
 export interface ChangeCustomMessagesProps extends React.HTMLAttributes<HTMLDivElement> {
  serverId: string;
@@ -77,12 +77,12 @@ export const ChangeCustomMessages = React.forwardRef<HTMLDivElement, ChangeCusto
    return toast.success(json.message, {
     id: loading,
    });
-  } else {
-   change && setIsEnabled(isEnabled);
-   return toast.error(json.error ?? "Something went wrong", {
-    id: loading,
-   });
   }
+
+  if (change) setIsEnabled(isEnabled);
+  return toast.error(json.error ?? "Something went wrong", {
+   id: loading,
+  });
  };
 
  if (!allChannels) return null;

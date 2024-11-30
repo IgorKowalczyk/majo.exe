@@ -1,19 +1,19 @@
+import prisma, { GuildWarns, GuildXp } from "@majoexe/database";
+import { ExtendedAPIGuild, getMemberGuilds } from "@majoexe/util/functions/guild";
 import { getFlags } from "@majoexe/util/functions/user";
+import { formatNumber } from "@majoexe/util/functions/util";
 import { getSession } from "lib/session";
 import Link from "next/link";
 import { redirect } from "next/navigation";
+import { DeleteUserData } from "@/app/user/components/DeleteUserData";
+import { Emojis } from "@/components/DiscordEmojis";
 import { Block } from "@/components/ui/Block";
 import { buttonVariants } from "@/components/ui/Buttons";
-import { DeleteUserData } from "@/app/user/components/DeleteUserData";
-import Image from "@/components/ui/Image";
-import { Tooltip } from "@/components/ui/Tooltip";
-import { Emojis } from "@/components/DiscordEmojis";
 import Header, { headerVariants } from "@/components/ui/Headers";
 import { Icons, iconVariants } from "@/components/ui/Icons";
+import Image from "@/components/ui/Image";
+import { Tooltip } from "@/components/ui/Tooltip";
 import { cn } from "@/lib/utils";
-import { ExtendedAPIGuild, getMemberGuilds } from "@majoexe/util/functions/guild";
-import prisma, { GuildWarns, GuildXp } from "@majoexe/database";
-import { formatNumber } from "@majoexe/util/functions/util";
 
 export const revalidate = 3600; // 1 hour
 
@@ -47,7 +47,7 @@ export default async function Page() {
  const groupedGuilds: GroupedGuilds = {};
 
  userData.guildWarns.forEach((warn: GuildWarns) => {
-  const guildId = warn.guildId;
+  const { guildId } = warn;
   if (!userServerIds.includes(guildId)) return;
   const guild = userServers.find((server) => server.id === guildId);
   if (!guild) return;
@@ -62,7 +62,7 @@ export default async function Page() {
  });
 
  userData.guildXp.forEach((xp: GuildXp) => {
-  const guildId = xp.guildId;
+  const { guildId } = xp;
   if (!userServerIds.includes(guildId)) return;
   const guild = userServers.find((server) => server.id === guildId);
   if (!guild) return;
@@ -92,8 +92,8 @@ export default async function Page() {
        <div className="ml-[-16px] mt-[-20px] box-content flex items-center rounded-full">
         <Tooltip content="Click to see full size">
          <Link href={`${user.avatar}?size=2048`} target="_blank" className="size-24 shrink-0">
-          <Image quality={100} src={`/api/user/avatar/${user.id}`} alt={`${user.global_name || user.username} Avatar`} width={96} height={96} className="rounded-full border-4 border-solid border-background-navbar duration-200 hover:opacity-75  backdrop-blur-sm" />
-          {user.avatar_decoration_data ? <Image quality={100} src={`/api/user/avatar-decoration/${user.id}`} alt={`${user.global_name || user.username} Avatar decoration`} width={96} height={96} className="absolute top-0 left-0 rounded-full" /> : null}
+          <Image quality={100} src={`/api/user/avatar/${user.id}`} alt={`${user.global_name || user.username} Avatar`} width={96} height={96} className="rounded-full border-4 border-solid border-background-navbar backdrop-blur-sm duration-200 hover:opacity-75" />
+          {user.avatar_decoration_data ? <Image quality={100} src={`/api/user/avatar-decoration/${user.id}`} alt={`${user.global_name || user.username} Avatar decoration`} width={96} height={96} className="absolute left-0 top-0 rounded-full" /> : null}
          </Link>
         </Tooltip>
         <div className="ml-2 flex items-center text-lg font-bold">
@@ -145,18 +145,18 @@ export default async function Page() {
      </Header>
      <p className="mt-2 leading-none text-white/70">A list of servers you are in and some information about them.</p>
      {groupedGuilds ? (
-      <div className="flex flex-col gap-4 mt-4">
+      <div className="mt-4 flex flex-col gap-4">
        {Object.keys(groupedGuilds).map((guildId) => {
         const guild = groupedGuilds[guildId];
         if (!guild) return null;
         const userXP = guild.xp.reduce((acc, curr) => acc + curr.xp, 0);
         return (
-         <div key={guild.guild.id} className="relative flex  overflow-hidden rounded-lg border border-neutral-800 bg-background-navbar p-4 justify-between">
+         <div key={guild.guild.id} className="relative flex justify-between overflow-hidden rounded-lg border border-neutral-800 bg-background-navbar p-4">
           <div className="flex flex-row items-center gap-4">
            {guild.guild.icon ? <Image src={`https://cdn.discordapp.com/icons/${guild.guild.id}/${guild.guild.icon}.${guild.guild.icon.startsWith("a_") ? "gif" : "png"}`} alt={guild.guild.name} quality={95} width={64} height={64} className="size-14 shrink-0 rounded-full" /> : <div className="size-14 shrink-0 rounded-full bg-button-secondary" />}
            <div className="flex flex-col">
             <Header className={cn(headerVariants({ variant: "h4" }))}>{guild.guild.name}</Header>
-            <p className="text-white/70 text-sm">Server ID: {guild.guild.id}</p>
+            <p className="text-sm text-white/70">Server ID: {guild.guild.id}</p>
            </div>
           </div>
           <div className="flex flex-row items-center gap-4">

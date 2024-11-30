@@ -113,22 +113,22 @@ export const ChangeEmbedColor = React.forwardRef<HTMLDivElement, ChangeEmbedColo
    <div className="flex flex-col items-center justify-center gap-4">
     <div>
      <div className="flex flex-row gap-1">
-      <div className="bg-[#1bbd9c] text-white size-6 rounded-lg cursor-pointer" onClick={() => setColor("#1bbd9c")} />
-      <div className="bg-[#2fcd71] text-white size-6 rounded-lg cursor-pointer" onClick={() => setColor("#2fcd71")} />
-      <div className="bg-[#3598da] text-white size-6 rounded-lg cursor-pointer" onClick={() => setColor("#3598da")} />
-      <div className="bg-[#9a59b7] text-white size-6 rounded-lg cursor-pointer" onClick={() => setColor("#9a59b7")} />
-      <div className="bg-[#e81e62] text-white size-6 rounded-lg cursor-pointer" onClick={() => setColor("#e81e62")} />
-      <div className="bg-[#f0c40e] text-white size-6 rounded-lg cursor-pointer" onClick={() => setColor("#f0c40e")} />
-      <div className="bg-[#e67f23] text-white size-6 rounded-lg cursor-pointer" onClick={() => setColor("#e67f23")} />
+      <div className="size-6 cursor-pointer rounded-lg bg-[#1bbd9c] text-white" onClick={() => setColor("#1bbd9c")} />
+      <div className="size-6 cursor-pointer rounded-lg bg-[#2fcd71] text-white" onClick={() => setColor("#2fcd71")} />
+      <div className="size-6 cursor-pointer rounded-lg bg-[#3598da] text-white" onClick={() => setColor("#3598da")} />
+      <div className="size-6 cursor-pointer rounded-lg bg-[#9a59b7] text-white" onClick={() => setColor("#9a59b7")} />
+      <div className="size-6 cursor-pointer rounded-lg bg-[#e81e62] text-white" onClick={() => setColor("#e81e62")} />
+      <div className="size-6 cursor-pointer rounded-lg bg-[#f0c40e] text-white" onClick={() => setColor("#f0c40e")} />
+      <div className="size-6 cursor-pointer rounded-lg bg-[#e67f23] text-white" onClick={() => setColor("#e67f23")} />
      </div>
-     <div className="flex mt-1 flex-row gap-1">
-      <div className="bg-[#10816a] text-white size-6 rounded-lg cursor-pointer" onClick={() => setColor("#10816a")} />
-      <div className="bg-[#1f8b4c] text-white size-6 rounded-lg cursor-pointer" onClick={() => setColor("#1f8b4c")} />
-      <div className="bg-[#216695] text-white size-6 rounded-lg cursor-pointer" onClick={() => setColor("#216695")} />
-      <div className="bg-[#71368a] text-white size-6 rounded-lg cursor-pointer" onClick={() => setColor("#71368a")} />
-      <div className="bg-[#ac1456] text-white size-6 rounded-lg cursor-pointer" onClick={() => setColor("#ac1456")} />
-      <div className="bg-[#c37d0e] text-white size-6 rounded-lg cursor-pointer" onClick={() => setColor("#c37d0e")} />
-      <div className="bg-[#a94301] text-white size-6 rounded-lg cursor-pointer" onClick={() => setColor("#a94301")} />
+     <div className="mt-1 flex flex-row gap-1">
+      <div className="size-6 cursor-pointer rounded-lg bg-[#10816a] text-white" onClick={() => setColor("#10816a")} />
+      <div className="size-6 cursor-pointer rounded-lg bg-[#1f8b4c] text-white" onClick={() => setColor("#1f8b4c")} />
+      <div className="size-6 cursor-pointer rounded-lg bg-[#216695] text-white" onClick={() => setColor("#216695")} />
+      <div className="size-6 cursor-pointer rounded-lg bg-[#71368a] text-white" onClick={() => setColor("#71368a")} />
+      <div className="size-6 cursor-pointer rounded-lg bg-[#ac1456] text-white" onClick={() => setColor("#ac1456")} />
+      <div className="size-6 cursor-pointer rounded-lg bg-[#c37d0e] text-white" onClick={() => setColor("#c37d0e")} />
+      <div className="size-6 cursor-pointer rounded-lg bg-[#a94301] text-white" onClick={() => setColor("#a94301")} />
      </div>
     </div>
     <HexColorPicker color={color} onChange={setColor} />

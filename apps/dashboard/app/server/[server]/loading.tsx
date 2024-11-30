@@ -6,11 +6,11 @@ import { cn } from "@/lib/utils";
 export default function Loading() {
  return (
   <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-   <Header className={cn(headerVariants({ variant: "h1" }), "mb-6 justify-normal flex-col")}>
+   <Header className={cn(headerVariants({ variant: "h1" }), "mb-6 flex-col justify-normal")}>
     <div className="size-24 shrink-0 rounded-full bg-button-secondary" />
     <div className="flex flex-col items-center justify-center text-center sm:ml-4">
      <Skeleton className="h-6 w-32" />
-     <Skeleton className="h-6 w-64 mt-2 opacity-60" />
+     <Skeleton className="mt-2 h-6 w-64 opacity-60" />
     </div>
    </Header>
 

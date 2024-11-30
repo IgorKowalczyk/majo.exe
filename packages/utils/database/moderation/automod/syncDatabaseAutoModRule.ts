@@ -1,9 +1,9 @@
 import { globalConfig } from "@majoexe/config";
+import { AutoMod } from "@majoexe/database";
+import { Snowflake } from "discord-api-types/globals";
+import { RESTError, RESTGetAPIAutoModerationRuleResult } from "discord-api-types/v10";
 import { deleteDatabaseAutoModRule } from "./deleteDatabaseAutoModRule";
 import { fetchDatabaseAutoModRules } from "./fetchDatabaseAutoModRules";
-import { Snowflake } from "discord-api-types/globals";
-import { AutoMod } from "@majoexe/database";
-import { RESTError, RESTGetAPIAutoModerationRuleResult } from "discord-api-types/v10";
 
 export async function syncDatabaseAutoModRule(guildId: Snowflake, ruleType: AutoMod["ruleType"]) {
  const rules = await fetchDatabaseAutoModRules(guildId);

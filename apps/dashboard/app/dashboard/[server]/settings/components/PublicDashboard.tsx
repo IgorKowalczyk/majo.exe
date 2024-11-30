@@ -1,14 +1,14 @@
 "use client";
 
-import { cn } from "@/lib/utils";
+import Link from "next/link";
 import React, { useState } from "react";
 import { toast } from "sonner";
 import { Button, buttonVariants } from "@/components/ui/Buttons";
-import { Switch } from "@/components/ui/Switch";
+import Header, { headerVariants } from "@/components/ui/Headers";
 import { Icons, iconVariants } from "@/components/ui/Icons";
 import { Input } from "@/components/ui/Input";
-import Link from "next/link";
-import Header, { headerVariants } from "@/components/ui/Headers";
+import { Switch } from "@/components/ui/Switch";
+import { cn } from "@/lib/utils";
 
 interface PublicDashboardProps {
  enabled: boolean;
@@ -150,7 +150,7 @@ export const PublicDashboard = React.forwardRef<HTMLDivElement, PublicDashboardP
      Vanity URL:
     </Header>
     <p className="text-white/70">Customize the URL of your public dashboard.</p>
-    <div className="flex mt-2 flex-col flex-wrap items-center justify-start gap-2 md:flex-row">
+    <div className="mt-2 flex flex-col flex-wrap items-center justify-start gap-2 md:flex-row">
      <div className="group flex flex-row-reverse items-center justify-start gap-0">
       <Input
        type="text"
@@ -185,12 +185,12 @@ export const PublicDashboard = React.forwardRef<HTMLDivElement, PublicDashboardP
     </div>
    </div>
    {isEnabled && (
-    <div className="flex mt-4 flex-col">
+    <div className="mt-4 flex flex-col">
      <Header className={cn(headerVariants({ variant: "h3" }))}>
       <Icons.Sparkles className={iconVariants({ variant: "large" })} />
       Your public dashboard is live!
      </Header>
-     <span className="mt-2 mb-4 leading-none text-white/70">Note: The dashboard is available to everyone, regardless of whether they are a member of your server.</span>
+     <span className="mb-4 mt-2 leading-none text-white/70">Note: The dashboard is available to everyone, regardless of whether they are a member of your server.</span>
      <div className="flex flex-row flex-wrap gap-4">
       <Link href={`/server/${encodeURIComponent(vanity)}`} className={cn(buttonVariants({ variant: "primary" }), "w-fit")}>
        <Icons.viewing className={iconVariants({ variant: "button" })} /> Preview
@@ -209,7 +209,7 @@ export const PublicDashboard = React.forwardRef<HTMLDivElement, PublicDashboardP
     </div>
    )}
    {vanityError && (
-    <p className="flex mt-4 items-center text-red-400">
+    <p className="mt-4 flex items-center text-red-400">
      <Icons.warning className={iconVariants({ variant: "normal", className: "mr-1" })} />
      {vanityError}
     </p>

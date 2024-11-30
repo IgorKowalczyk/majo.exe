@@ -1,10 +1,38 @@
 "use client";
 
 import { globalConfig } from "@majoexe/config";
-import { Area, AreaProps, CartesianGrid, AreaChart as ReChartsAreaChart, ResponsiveContainer, Tooltip, TooltipProps, XAxis, YAxis } from "recharts";
-import { cn } from "@/lib/utils";
-import { Icons, iconVariants } from "@/components/ui/Icons";
 import React from "react";
+import { Area, AreaProps, CartesianGrid, AreaChart as ReChartsAreaChart, ResponsiveContainer, Tooltip, TooltipProps, XAxis, YAxis } from "recharts";
+import { Icons, iconVariants } from "@/components/ui/Icons";
+import { cn } from "@/lib/utils";
+
+interface ChartTooltipProps extends TooltipProps<any, any> {
+ categoryColors: string[];
+ valueFormatter: (value: number) => string;
+}
+
+const ChartTooltip: React.FC<ChartTooltipProps> = ({ categoryColors, valueFormatter, ...props }) => {
+ if (!props.active || !props.payload || !categoryColors) return null;
+
+ return (
+  <div className="rounded-lg border border-neutral-800 bg-background-secondary text-white shadow-lg">
+   <div className="border-b border-neutral-800 px-4 py-2">
+    <p className="font-medium text-white">{props.label}</p>
+   </div>
+   <div className="space-y-1 px-4 py-2">
+    {props.payload.map(({ value, name }) => (
+     <div key={`chart-tooltip-${name}-${value}`} className="flex items-center justify-between space-x-2">
+      <div className="flex items-center space-x-2">
+       <span className="size-4 shrink-0 rounded-full border border-neutral-800 bg-accent-primary shadow-md" />
+       <p className="whitespace-nowrap text-right text-white">{name}</p>
+      </div>
+      <p className="whitespace-nowrap text-right font-medium tabular-nums text-white">{valueFormatter(value)}</p>
+     </div>
+    ))}
+   </div>
+  </div>
+ );
+};
 
 export interface AreaChartProps extends AreaProps {
  data?: any[];
@@ -33,7 +61,7 @@ export const AreaChart = React.forwardRef<ReturnType<typeof ReChartsAreaChart>, 
  const valueFormatter = (value: number) => (props.valueFormatter ? props.valueFormatter(value) : value.toString());
 
  return (
-  <div className={cn("h-80 w-full", className)}>
+  <div className={cn("h-80 w-full", className)} ref={ref as React.Ref<HTMLDivElement>}>
    <ResponsiveContainer className="size-full">
     {data && data.length > 0 ? (
      <ReChartsAreaChart data={data}>
@@ -82,31 +110,3 @@ export const AreaChart = React.forwardRef<ReturnType<typeof ReChartsAreaChart>, 
   </div>
  );
 });
-
-interface ChartTooltipProps extends TooltipProps<any, any> {
- categoryColors: string[];
- valueFormatter: (value: number) => string;
-}
-
-const ChartTooltip: React.FC<ChartTooltipProps> = ({ categoryColors, valueFormatter, ...props }) => {
- if (!props.active || !props.payload || !categoryColors) return null;
-
- return (
-  <div className="rounded-lg border border-neutral-800 bg-background-secondary text-white shadow-lg">
-   <div className="border-b border-neutral-800 px-4 py-2">
-    <p className="font-medium text-white">{props.label}</p>
-   </div>
-   <div className="space-y-1 px-4 py-2">
-    {props.payload.map(({ value, name }) => (
-     <div key={`chart-tooltip-${name}-${value}`} className="flex items-center justify-between space-x-2">
-      <div className="flex items-center space-x-2">
-       <span className="size-4 shrink-0 rounded-full border border-neutral-800 bg-accent-primary shadow-md" />
-       <p className="whitespace-nowrap text-right text-white">{name}</p>
-      </div>
-      <p className="whitespace-nowrap text-right font-medium tabular-nums text-white">{valueFormatter(value)}</p>
-     </div>
-    ))}
-   </div>
-  </div>
- );
-};

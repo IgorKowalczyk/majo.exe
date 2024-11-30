@@ -5,7 +5,7 @@ export async function updateDatabaseAutoModRule(guildId: Snowflake, ruleId: Snow
  try {
   await prismaClient.autoMod.update({
    where: {
-    ruleId: ruleId,
+    ruleId,
    },
    data: {
     guildId,

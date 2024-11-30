@@ -1,8 +1,7 @@
-import { globalConfig } from "@majoexe/config";
 import prismaClient from "@majoexe/database";
 import { getGuild, getGuildChannels, getGuildFromMemberGuilds } from "@majoexe/util/functions/guild";
 import { shortenText } from "@majoexe/util/functions/util";
-import { APIGuildChannel, ChannelType, GuildChannelType, GuildTextChannelType } from "discord-api-types/v10";
+import { ChannelType } from "discord-api-types/v10";
 import { getSession } from "lib/session";
 import { NextRequest, NextResponse } from "next/server";
 

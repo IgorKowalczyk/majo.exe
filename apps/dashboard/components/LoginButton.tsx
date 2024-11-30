@@ -1,9 +1,9 @@
 import { getSession } from "lib/session";
-import { Icons, iconVariants } from "@/components/ui/Icons";
-import { buttonVariants } from "@/components/ui/Buttons";
 import Link from "next/link";
-import { cn } from "@/lib/utils";
 import { DiscordLogin } from "@/components/DiscordLogin";
+import { buttonVariants } from "@/components/ui/Buttons";
+import { Icons, iconVariants } from "@/components/ui/Icons";
+import { cn } from "@/lib/utils";
 
 export async function LoginButton() {
  const session = await getSession();

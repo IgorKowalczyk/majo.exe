@@ -1,8 +1,8 @@
 import { dashboardConfig } from "@majoexe/config";
 import Image from "next/image";
-import { cn } from "@/lib/utils";
-import { Icons, iconVariants } from "@/components/ui/Icons";
 import React, { HTMLAttributes } from "react";
+import { Icons, iconVariants } from "@/components/ui/Icons";
+import { cn } from "@/lib/utils";
 
 export const Embed = React.forwardRef<HTMLDivElement, HTMLAttributes<HTMLDivElement> & { color: string; buttons?: React.ReactNode }>(({ className, children, color, buttons, ...props }, ref) => (
  <div className={cn("flex w-full max-w-[432px] items-start gap-1", className)} {...props} ref={ref}>

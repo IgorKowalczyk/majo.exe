@@ -1,10 +1,10 @@
-import { cn } from "@/lib/utils";
+import { cva, VariantProps } from "class-variance-authority";
+import React, { HTMLAttributes } from "react";
 import Header, { headerVariants } from "@/components/ui/Headers";
 import { Icons, iconVariants } from "@/components/ui/Icons";
-import React, { HTMLAttributes } from "react";
-import { cva, VariantProps } from "class-variance-authority";
+import { cn } from "@/lib/utils";
 
-export const blockVariants = cva("bg-background-secondary hide-scrollbar overflow-x-scroll rounded-md border p-6", {
+export const blockVariants = cva("hide-scrollbar overflow-x-scroll rounded-md border bg-background-secondary p-6", {
  variants: {
   theme: {
    normal: "border-neutral-800",

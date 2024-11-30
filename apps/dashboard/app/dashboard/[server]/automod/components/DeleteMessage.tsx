@@ -1,9 +1,9 @@
+import { AutoModerationActionType } from "discord-api-types/v10";
 import React from "react";
+import { Icons, iconVariants } from "@/components/ui/Icons";
+import { Skeleton } from "@/components/ui/Skeletons";
 import { Switch } from "@/components/ui/Switch";
 import { Tooltip } from "@/components/ui/Tooltip";
-import { Icons, iconVariants } from "@/components/ui/Icons";
-import { AutoModerationActionType } from "discord-api-types/v10";
-import { Skeleton } from "@/components/ui/Skeletons";
 
 interface DeleteMessageProps {
  actions: any[];

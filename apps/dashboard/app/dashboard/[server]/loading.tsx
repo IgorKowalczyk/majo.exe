@@ -1,5 +1,5 @@
-import { Block } from "@/components/ui/Block";
 import { CategoryBar } from "@/components/CategoryBar";
+import { Block } from "@/components/ui/Block";
 import Header, { headerVariants } from "@/components/ui/Headers";
 import { Icons, iconVariants } from "@/components/ui/Icons";
 import { Skeleton } from "@/components/ui/Skeletons";
@@ -12,7 +12,7 @@ export default function Loading() {
     <Skeleton className="size-16 rounded-full" />
     <div className="flex flex-col text-center sm:ml-4 sm:text-left">
      <Skeleton className="h-[36px] w-44" />
-     <Skeleton className="h-5 mt-1 w-64 opacity-60" />
+     <Skeleton className="mt-1 h-5 w-64 opacity-60" />
     </div>
    </div>
    <div className="mb-4 grid grid-cols-1 gap-0 md:grid-cols-1 md:gap-4 lg:grid-cols-2 xl:grid-cols-3">

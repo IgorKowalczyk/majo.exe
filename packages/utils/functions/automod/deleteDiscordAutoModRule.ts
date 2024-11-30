@@ -1,5 +1,5 @@
-import { Snowflake } from "discord.js";
 import { globalConfig } from "@majoexe/config";
+import { Snowflake } from "discord.js";
 
 export async function deleteDiscordAutoModRules(guildId: Snowflake, ruleId: Snowflake) {
  try {

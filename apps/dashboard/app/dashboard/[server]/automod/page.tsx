@@ -1,20 +1,19 @@
-import { globalConfig } from "@majoexe/config";
 import prismaClient from "@majoexe/database";
 import { syncDatabaseAutoModRule } from "@majoexe/util/database";
 import { getGuildFromMemberGuilds, getGuild, getGuildRoles, getGuildChannels } from "@majoexe/util/functions/guild";
-import { APIGuildChannel, APIRole, ChannelType, GuildChannelType } from "discord-api-types/v10";
+import { ChannelType } from "discord-api-types/v10";
 import { getSession } from "lib/session";
 import { redirect } from "next/navigation";
 import { notFound } from "next/navigation";
-import { Block } from "@/components/ui/Block";
+import { AntiMention } from "./components/AntiMention";
+import { AntiSpam } from "./components/AntiSpam";
 import { AntiInvite } from "@/app/dashboard/[server]/automod/components/AntiInvite";
 import { AntiLink } from "@/app/dashboard/[server]/automod/components/AntiLink";
+import { Badge } from "@/components/ui/Badge";
+import { Block } from "@/components/ui/Block";
 import Header, { headerVariants } from "@/components/ui/Headers";
 import { Icons, iconVariants } from "@/components/ui/Icons";
-import { Badge } from "@/components/ui/Badge";
 import { cn } from "@/lib/utils";
-import { AntiSpam } from "./components/AntiSpam";
-import { AntiMention } from "./components/AntiMention";
 
 export const metadata = {
  title: "Automod",

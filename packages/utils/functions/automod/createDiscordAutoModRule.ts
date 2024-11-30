@@ -1,8 +1,8 @@
 import { globalConfig } from "@majoexe/config";
 import { type APIAutoModerationRule, AutoModerationRuleTriggerType } from "discord-api-types/v10";
 import { createDatabaseAutoModRule, syncDatabaseAutoModRule, updateDatabaseAutoModRule } from "../../database";
-import { fetchDiscordAutoModRules } from "./fetchDiscordAutoModRules";
 import { deleteDiscordAutoModRules } from "./deleteDiscordAutoModRule";
+import { fetchDiscordAutoModRules } from "./fetchDiscordAutoModRules";
 
 export async function createDiscordAutoModRule(serverId: string, ruleType: string, ruleData: Omit<APIAutoModerationRule, "id" | "guild_id">) {
  const existingRule = await syncDatabaseAutoModRule(serverId, ruleType);

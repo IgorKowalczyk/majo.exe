@@ -1,5 +1,5 @@
-import { APIGuildChannel, GuildChannelType, RESTError, Snowflake } from "discord.js";
 import { globalConfig } from "@majoexe/config";
+import { APIGuildChannel, GuildChannelType, RESTError, Snowflake } from "discord.js";
 
 export async function getGuildChannels(guildId: Snowflake, types: GuildChannelType[]): Promise<APIGuildChannel<GuildChannelType>[] | null> {
  try {

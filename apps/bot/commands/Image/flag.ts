@@ -1,10 +1,10 @@
+import { readFileSync } from "fs";
 import { loadImage, createCanvas, ImageData } from "@napi-rs/canvas";
 import decodeGif from "decode-gif";
 import { ApplicationCommandType, ApplicationCommandOptionType, AttachmentBuilder, EmbedBuilder, InteractionContextType, ApplicationIntegrationType } from "discord.js";
 // @ts-expect-error - No type definitions
 import GIFEncoder from "gif-encoder-2";
 import type { SlashCommand } from "@/util/types/Command";
-import { readFileSync } from "fs";
 
 export default {
  name: "flag",
@@ -181,7 +181,7 @@ export default {
     });
    }
 
-   const toFetch = image.split("?")[0];
+   const [toFetch] = image.split("?");
    if (!toFetch || toFetch.length < 1) return client.errorMessages.createSlashError(interaction, "❌ The image URL is invalid.");
    const targetImage = await loadImage(toFetch);
    const background = readFileSync(`./util/images/files/${subcommand}.gif`);

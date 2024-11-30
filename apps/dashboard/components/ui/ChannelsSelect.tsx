@@ -1,9 +1,9 @@
 "use client";
 
-import { Icons, iconVariants } from "@/components/ui/Icons";
-import { ListBox, ListBoxArrow, ListBoxButton, ListBoxOptions, ListBoxOption } from "@/components/ui/ListBox";
 import { Snowflake } from "discord-api-types/globals";
 import React from "react";
+import { Icons, iconVariants } from "@/components/ui/Icons";
+import { ListBox, ListBoxArrow, ListBoxButton, ListBoxOptions, ListBoxOption } from "@/components/ui/ListBox";
 
 export interface ChannelsSelectProps extends React.ComponentProps<typeof ListBox> {
  setChannels: React.ComponentProps<typeof ListBox>["onChange"];
@@ -12,7 +12,7 @@ export interface ChannelsSelectProps extends React.ComponentProps<typeof ListBox
  multiple?: boolean;
 }
 
-export const ChannelsSelect = React.forwardRef<React.ElementRef<typeof ListBox>, ChannelsSelectProps>(({ className, allChannels, selectedChannels, setChannels, multiple = true, ...props }, ref) => {
+export const ChannelsSelect = React.forwardRef<React.ElementRef<typeof ListBox>, ChannelsSelectProps>(({ allChannels, selectedChannels, setChannels, multiple = true, ...props }, ref) => {
  return (
   <>
    {allChannels && allChannels.length > 0 ? (

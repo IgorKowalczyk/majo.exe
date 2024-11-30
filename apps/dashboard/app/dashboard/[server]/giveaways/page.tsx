@@ -1,13 +1,13 @@
 import prismaClient from "@majoexe/database";
 import { getGuildFromMemberGuilds, getGuild } from "@majoexe/util/functions/guild";
+import type { GiveawayData } from "discord-giveaways";
 import { getSession } from "lib/session";
 import { redirect } from "next/navigation";
 import { notFound } from "next/navigation";
-import { Block } from "@/components/ui/Block";
 import { Giveaways } from "@/app/dashboard/[server]/giveaways/components/Giveaways";
+import { Block } from "@/components/ui/Block";
 import Header, { headerVariants } from "@/components/ui/Headers";
 import { Icons, iconVariants } from "@/components/ui/Icons";
-import type { GiveawayData } from "discord-giveaways";
 import { cn } from "@/lib/utils";
 
 export const metadata = {
@@ -83,7 +83,7 @@ export default async function GiveawaysPage(props: { params: Promise<{ server: s
      ended: new Date(data.endAt) < new Date() || data.ended,
      endedAt: new Date(data.endAt),
     },
-    startedBy: startedBy,
+    startedBy,
    };
   })
  ).then((data) => data.filter((x) => x !== null));

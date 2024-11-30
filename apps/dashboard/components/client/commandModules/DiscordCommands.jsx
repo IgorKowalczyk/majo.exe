@@ -1,11 +1,11 @@
 "use client";
-import { cn } from "@/lib/utils";
 import { useEffect, useState, useMemo } from "react";
-import { Tooltip } from "@/components/ui/Tooltip";
 import { Header3 } from "@/components/ui/Headers";
 import { Icons, iconVariants } from "@/components/ui/Icons";
 import { InputWithIcon } from "@/components/ui/Input";
 import { Skeleton } from "@/components/ui/Skeletons";
+import { Tooltip } from "@/components/ui/Tooltip";
+import { cn } from "@/lib/utils";
 
 export function DiscordCommands({ commands, categories }) {
  const [filteredCategories, setFilteredCategories] = useState([]);
@@ -31,7 +31,7 @@ export function DiscordCommands({ commands, categories }) {
  if (!mounted) {
   return (
    <>
-    <Skeleton className="w-full h-10 !max-w-none" />
+    <Skeleton className="h-10 w-full !max-w-none" />
 
     <div className="mt-8 flex flex-wrap gap-2">
      {Array.from({ length: 8 }).map((_, i) => (

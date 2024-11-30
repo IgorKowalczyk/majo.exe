@@ -1,16 +1,16 @@
 import { dashboardConfig } from "@majoexe/config";
 import prismaClient from "@majoexe/database";
 import { getGuild, getGuildPreview } from "@majoexe/util/functions/guild";
+import { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import Balancer from "react-wrap-balancer";
-import { Block } from "@/components/ui/Block";
 import { Leaderboard } from "@/app/dashboard/[server]/leaderboard/components/Leaderboard";
+import { Block } from "@/components/ui/Block";
+import Header, { Header4, headerVariants } from "@/components/ui/Headers";
 import Image from "@/components/ui/Image";
 import { Tooltip } from "@/components/ui/Tooltip";
-import Header, { Header4, headerVariants } from "@/components/ui/Headers";
 import { cn } from "@/lib/utils";
-import { Metadata } from "next";
 
 export async function generateMetadata({ params }: { params: Promise<{ server: string }> }): Promise<Metadata> {
  const { server } = await params;
@@ -119,7 +119,7 @@ export default async function Page(props: { params: Promise<{ server: string }> 
 
  return (
   <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-   <Header className={cn(headerVariants({ variant: "h1" }), "mb-6 justify-normal flex-col")}>
+   <Header className={cn(headerVariants({ variant: "h1" }), "mb-6 flex-col justify-normal")}>
     {guildPreview.icon ? <Image src={`https://cdn.discordapp.com/icons/${guildPreview.id}/${guildPreview.icon}.${guildPreview.icon.startsWith("a_") ? "gif" : "png"}`} alt={guildPreview.name} quality={95} width={96} height={96} className="size-24 rounded-full" /> : <div className="size-24 rounded-full bg-button-secondary" />}
     <div className="flex flex-col text-center sm:ml-4">
      {guildPreview.name || "Unnamed server"}

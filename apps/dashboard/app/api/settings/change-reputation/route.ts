@@ -2,7 +2,6 @@ import { setReputation } from "@majoexe/util/database";
 import { getGuild, getGuildFromMemberGuilds } from "@majoexe/util/functions/guild";
 import { getDiscordUser } from "@majoexe/util/functions/user";
 import { isNumeric } from "@majoexe/util/functions/util";
-import { APIUser } from "discord-api-types/v10";
 import { getSession } from "lib/session";
 import { revalidatePath } from "next/cache";
 import { NextRequest, NextResponse } from "next/server";

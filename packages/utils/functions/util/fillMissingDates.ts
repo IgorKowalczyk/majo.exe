@@ -1,11 +1,12 @@
 import { generateDates } from "./generateDates";
 
 interface DataEntry {
- date: string;
+ date: string | Date;
+ /* eslint-disable typescript/no-explicit-any */
  [key: string]: any;
 }
 
-export function fillMissingDates(array: DataEntry[], property: string): DataEntry[] {
+export function fillMissingDates(array: DataEntry[], property: string) {
  const arrayDates = array.map((e) => new Date(e.date));
  let minDate = new Date(Math.min(...arrayDates.map((date) => date.getTime())));
  const today = new Date();

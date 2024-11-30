@@ -1,5 +1,5 @@
-import Header, { headerVariants } from "@/components/ui/Headers";
 import React, { HTMLAttributes } from "react";
+import Header, { headerVariants } from "@/components/ui/Headers";
 import { cn } from "@/lib/utils";
 
 interface GraphCardProps extends HTMLAttributes<HTMLDivElement> {
@@ -10,8 +10,8 @@ interface GraphCardProps extends HTMLAttributes<HTMLDivElement> {
  graph: React.ReactNode;
 }
 
-export const GraphCard = React.forwardRef<HTMLDivElement, GraphCardProps>(({ children, title, description, value, icon, graph, className, ...props }, ref) => (
- <div ref={ref} className={cn("mt-4 overflow-auto rounded-lg border border-neutral-800 bg-background-secondary p-4", className)} {...props}>
+export const GraphCard = React.forwardRef<HTMLDivElement, GraphCardProps>(({ title, description, value, icon, graph, className, ...props }, ref) => (
+ <div ref={ref} className={cn("bg-background-secondary mt-4 overflow-auto rounded-lg border border-neutral-800 p-4", className)} {...props}>
   <div className="flex flex-row items-center justify-between">
    <div className="flex flex-row items-center gap-4">
     {icon}

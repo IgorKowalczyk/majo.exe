@@ -1,6 +1,6 @@
-import { RESTError, Snowflake } from "discord.js";
 import { globalConfig } from "@majoexe/config";
 import { RESTGetAPIGuildRolesResult } from "discord-api-types/v10";
+import { RESTError, Snowflake } from "discord.js";
 
 export async function getGuildRoles(guildId: Snowflake): Promise<RESTGetAPIGuildRolesResult | null> {
  try {

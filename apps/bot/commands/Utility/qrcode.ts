@@ -26,7 +26,7 @@ export default {
 
    const qrCode = await QRCode.toDataURL(text);
 
-   const qrCodeData = qrCode.split(",")[1];
+   const [, qrCodeData] = qrCode.split(",");
    if (!qrCodeData) return client.errorMessages.createSlashError(interaction, "❌ Failed to generate QR code, please try again.");
    const attachment = new AttachmentBuilder(Buffer.from(qrCodeData, "base64"), {
     name: "qrcode.png",

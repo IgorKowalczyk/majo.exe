@@ -11,7 +11,7 @@ export default function Loading() {
      <Icons.Navigation className={iconVariants({ variant: "extraLarge" })} />
      Choose a server
     </Header>
-    <p className="mb-4 text-center text-base md:text-xl text-white/50">Select a server to manage, or add the bot to a new server.</p>
+    <p className="mb-4 text-center text-base text-white/50 md:text-xl">Select a server to manage, or add the bot to a new server.</p>
     <div className="mt-4 flex flex-row flex-wrap justify-center gap-4 sm:flex-col">
      {[...Array(10)].map((_, i) => (
       // eslint-disable-next-line @eslint-react/no-array-index-key

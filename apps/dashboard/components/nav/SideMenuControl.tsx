@@ -1,10 +1,10 @@
 "use client";
 
-import { cn } from "@/lib/utils";
 import { useParams } from "next/navigation";
 import React, { useContext } from "react";
 import { VisibilityContext } from "@/components/nav/VisibilityContext";
 import { Icons } from "@/components/ui/Icons";
+import { cn } from "@/lib/utils";
 
 export const SideMenuControl = React.forwardRef<HTMLButtonElement, React.ButtonHTMLAttributes<HTMLButtonElement>>(({ className, ...props }, ref) => {
  const { toggleSideNav, sideNavVisible } = useContext(VisibilityContext);

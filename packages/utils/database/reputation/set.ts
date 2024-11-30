@@ -48,8 +48,8 @@ export async function setReputation(user: APIUser | GuildMember, guildId: Snowfl
         discordId: userId,
         name: username,
         global_name: globalName,
-        avatar: avatar,
-        discriminator: discriminator,
+        avatar,
+        discriminator,
        },
       },
      },
@@ -69,7 +69,7 @@ export async function setReputation(user: APIUser | GuildMember, guildId: Snowfl
   });
 
   return amount;
- } catch (error) {
+ } catch (_error) {
   return {
    error: "Failed to set reputation",
    code: 500,

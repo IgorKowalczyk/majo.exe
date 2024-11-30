@@ -3,17 +3,17 @@ import prismaClient from "@majoexe/database";
 import { getGuildFromMemberGuilds, getGuild } from "@majoexe/util/functions/guild";
 import { getPermissionNames } from "@majoexe/util/functions/user";
 import { getSession } from "lib/session";
+import Link from "next/link";
 import { redirect } from "next/navigation";
 import { notFound } from "next/navigation";
-import { Block } from "@/components/ui/Block";
-import { buttonVariants } from "@/components/ui/Buttons";
 import { ChangeEmbedColor } from "@/app/dashboard/[server]/settings/components/ChangeEmbedColor";
 import { DeleteServerData } from "@/app/dashboard/[server]/settings/components/DeleteServerData";
 import { PublicDashboard } from "@/app/dashboard/[server]/settings/components/PublicDashboard";
+import { Block } from "@/components/ui/Block";
+import { buttonVariants } from "@/components/ui/Buttons";
 import Header, { headerVariants } from "@/components/ui/Headers";
 import { Icons, iconVariants } from "@/components/ui/Icons";
 import { cn } from "@/lib/utils";
-import Link from "next/link";
 
 export default async function Page(props: { params: Promise<{ server: string }> }) {
  const params = await props.params;

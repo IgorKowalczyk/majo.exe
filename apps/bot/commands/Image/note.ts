@@ -1,7 +1,7 @@
+import { getLines } from "@majoexe/util/images";
 import { loadImage, createCanvas } from "@napi-rs/canvas";
 import { ApplicationCommandType, ApplicationCommandOptionType, AttachmentBuilder, EmbedBuilder, InteractionContextType, ApplicationIntegrationType } from "discord.js";
 import type { SlashCommand } from "@/util/types/Command";
-import { getLines } from "@majoexe/util/images";
 
 export default {
  name: "note",

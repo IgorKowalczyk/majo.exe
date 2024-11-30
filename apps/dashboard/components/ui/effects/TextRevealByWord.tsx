@@ -4,6 +4,19 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 import { cn } from "@/lib/utils";
 
+ 
+const Word = ({ children, progress, range }: { children: string; progress: any; range: [number, number] }) => {
+ const opacity = useTransform(progress, range, [0, 1]);
+ return (
+  <span className="relative mx-1 lg:mx-2.5">
+   <span className={"absolute opacity-30"}>{children}</span>
+   <motion.span style={{ opacity }} className={"text-white"}>
+    {children}
+   </motion.span>
+  </span>
+ );
+};
+
 export default function TextRevealByWord({ text, className }: { text: string; className?: string }) {
  const targetRef = useRef(null);
 
@@ -30,15 +43,3 @@ export default function TextRevealByWord({ text, className }: { text: string; cl
   </div>
  );
 }
-
-const Word = ({ children, progress, range }: { children: string; progress: any; range: [number, number] }) => {
- const opacity = useTransform(progress, range, [0, 1]);
- return (
-  <span className="relative mx-1 lg:mx-2.5">
-   <span className={"absolute opacity-30"}>{children}</span>
-   <motion.span style={{ opacity }} className={"text-white"}>
-    {children}
-   </motion.span>
-  </span>
- );
-};

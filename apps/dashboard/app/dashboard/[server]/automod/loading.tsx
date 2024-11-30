@@ -1,13 +1,13 @@
+import { DeleteMessageLoader } from "./components/DeleteMessage";
+import { LogToChannelLoader } from "./components/LogChannel";
+import { TimeoutMemberLoader } from "./components/TimeoutMember";
+import { Badge } from "@/components/ui/Badge";
 import { Block } from "@/components/ui/Block";
 import { Button } from "@/components/ui/Buttons";
 import Header, { headerVariants } from "@/components/ui/Headers";
 import { Icons, iconVariants } from "@/components/ui/Icons";
-import { Badge } from "@/components/ui/Badge";
 import { Skeleton } from "@/components/ui/Skeletons";
 import { cn } from "@/lib/utils";
-import { DeleteMessageLoader } from "./components/DeleteMessage";
-import { LogToChannelLoader } from "./components/LogChannel";
-import { TimeoutMemberLoader } from "./components/TimeoutMember";
 
 const IgnoreRolesLoader = () => (
  <div className="flex w-fit flex-row flex-wrap items-center gap-2 text-center font-bold">
@@ -58,7 +58,7 @@ export default function Loading() {
      </p>
     </Block>
 
-    <Icons.MoveVertical className={cn(iconVariants({ variant: "large" }), "opacity-50 mb-4 mx-6")} />
+    <Icons.MoveVertical className={cn(iconVariants({ variant: "large" }), "mx-6 mb-4 opacity-50")} />
 
     <Block className="mb-4 !py-3">
      <Header className={cn(headerVariants({ variant: "h3" }))}>
@@ -100,7 +100,7 @@ export default function Loading() {
      </p>
     </Block>
 
-    <Icons.MoveVertical className={cn(iconVariants({ variant: "large" }), "opacity-50 mb-4 mx-6")} />
+    <Icons.MoveVertical className={cn(iconVariants({ variant: "large" }), "mx-6 mb-4 opacity-50")} />
 
     <Block className="mb-4 !py-3">
      <Header className={cn(headerVariants({ variant: "h3" }))}>
@@ -139,7 +139,7 @@ export default function Loading() {
      </p>
     </Block>
 
-    <Icons.MoveVertical className={cn(iconVariants({ variant: "large" }), "opacity-50 mb-4 mx-6")} />
+    <Icons.MoveVertical className={cn(iconVariants({ variant: "large" }), "mx-6 mb-4 opacity-50")} />
 
     <Block className="mb-4 !py-3">
      <Header className={cn(headerVariants({ variant: "h3" }))}>
@@ -152,7 +152,7 @@ export default function Loading() {
      <LogToChannelLoader />
     </Block>
 
-    <Icons.ArrowDown className={cn(iconVariants({ variant: "large" }), "opacity-50 mb-4 mx-6")} />
+    <Icons.ArrowDown className={cn(iconVariants({ variant: "large" }), "mx-6 mb-4 opacity-50")} />
 
     <Block className="mb-4 !py-3">
      <Header className={cn(headerVariants({ variant: "h3" }))}>
@@ -201,7 +201,7 @@ export default function Loading() {
      </p>
     </Block>
 
-    <Icons.MoveVertical className={cn(iconVariants({ variant: "large" }), "opacity-50 mb-4 mx-6")} />
+    <Icons.MoveVertical className={cn(iconVariants({ variant: "large" }), "mx-6 mb-4 opacity-50")} />
 
     <Block className="mb-4 !py-3">
      <Header className={cn(headerVariants({ variant: "h3" }))}>

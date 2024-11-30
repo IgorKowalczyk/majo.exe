@@ -3,8 +3,8 @@ import { getGuildFromMemberGuilds, getGuild } from "@majoexe/util/functions/guil
 import { getSession } from "lib/session";
 import { redirect } from "next/navigation";
 import { notFound } from "next/navigation";
-import { Block } from "@/components/ui/Block";
 import { WarnItems, Warns } from "@/app/dashboard/[server]/warns/components/Warns";
+import { Block } from "@/components/ui/Block";
 import Header, { headerVariants } from "@/components/ui/Headers";
 import { Icons, iconVariants } from "@/components/ui/Icons";
 import { cn } from "@/lib/utils";
@@ -60,7 +60,7 @@ export default async function Page(props: { params: Promise<{ server: string }> 
  });
 
  const warns = (await Promise.all(
-  guild.guildWarns.map(async (warn) => {
+  guild.guildWarns.map((warn) => {
    return {
     ...warn,
     createdAt: warn.createdAt instanceof Date ? warn.createdAt.toString() : new Date(warn.createdAt).toString(),

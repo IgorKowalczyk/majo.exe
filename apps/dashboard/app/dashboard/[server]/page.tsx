@@ -1,20 +1,20 @@
 import prismaClient from "@majoexe/database";
 import { getGuild, getGuildPreview, getGuildFromMemberGuilds } from "@majoexe/util/functions/guild";
 import { fillMissingDates, sumArray } from "@majoexe/util/functions/util";
-import { cn } from "@/lib/utils";
 import { getSession } from "lib/session";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import { notFound } from "next/navigation";
-import { Block } from "@/components/ui/Block";
-import { CategoryBar } from "@/components/CategoryBar";
 import { Leaderboard } from "@/app/dashboard/[server]/leaderboard/components/Leaderboard";
+import { CategoryBar } from "@/components/CategoryBar";
+import { Block } from "@/components/ui/Block";
+import { buttonVariants } from "@/components/ui/Buttons";
+import Header, { headerVariants } from "@/components/ui/Headers";
+import { Icons, iconVariants } from "@/components/ui/Icons";
 import Image from "@/components/ui/Image";
 import { SparkLineChart } from "@/components/ui/SparkChart";
 import { Tooltip } from "@/components/ui/Tooltip";
-import Header, { headerVariants } from "@/components/ui/Headers";
-import { Icons, iconVariants } from "@/components/ui/Icons";
-import { buttonVariants } from "@/components/ui/Buttons";
+import { cn } from "@/lib/utils";
 
 export const metadata = {
  title: "Server Overview",
@@ -133,7 +133,7 @@ export default async function Page(props: { params: Promise<{ server: string }> 
     {guildPreview.icon ? <Image src={`https://cdn.discordapp.com/icons/${guildPreview.id}/${guildPreview.icon}.${guildPreview.icon.startsWith("a_") ? "gif" : "png"}`} alt={guildPreview.name} quality={95} width={64} height={64} className="size-16 shrink-0 rounded-full" /> : <div className="size-16 shrink-0 rounded-full bg-button-secondary" />}
     <div className="flex flex-col justify-center text-center sm:ml-4 sm:justify-start sm:text-left">
      <Header className={cn(headerVariants({ variant: "h1" }))}>{guildPreview.name || "Unnamed server"}</Header>
-     <p className="text-center text-base md:text-xl opacity-60 sm:text-left">{guildPreview.description || "This server has no description, maybe you should add one?"}</p>
+     <p className="text-center text-base opacity-60 sm:text-left md:text-xl">{guildPreview.description || "This server has no description, maybe you should add one?"}</p>
     </div>
    </div>
 
@@ -219,7 +219,7 @@ export default async function Page(props: { params: Promise<{ server: string }> 
 
       {guildScore !== 100 && (
        <>
-        <Header className={cn(headerVariants({ variant: "h4", margin: "wide" }), "items-start pt-4 justify-normal opacity-80")}>
+        <Header className={cn(headerVariants({ variant: "h4", margin: "wide" }), "items-start justify-normal pt-4 opacity-80")}>
          <Icons.Lightbulb className={iconVariants({ variant: "normal", className: "!stroke-2" })} />
          Ways to improve your score:
         </Header>
@@ -295,7 +295,7 @@ export default async function Page(props: { params: Promise<{ server: string }> 
       <Header className={cn(headerVariants({ variant: "h4", margin: "wide" }), "items-start justify-normal opacity-80")}>
        Quick Stats
        {guild.publicPage ? (
-        <Link href={`/server/${guild.vanity || serverDownload.id}`} target="_blank" rel="noreferrer noopener" className={cn(buttonVariants({ variant: "primary" }), "mx-auto font-normal w-fit !flex flex-row whitespace-nowrap text-base sm:ml-auto sm:mr-0")}>
+        <Link href={`/server/${guild.vanity || serverDownload.id}`} target="_blank" rel="noreferrer noopener" className={cn(buttonVariants({ variant: "primary" }), "mx-auto !flex w-fit flex-row whitespace-nowrap text-base font-normal sm:ml-auto sm:mr-0")}>
          <Icons.ExternalLink className={iconVariants({ variant: "button" })} aria-hidden="true" role="img" />
          Server page
         </Link>

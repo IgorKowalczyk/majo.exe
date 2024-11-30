@@ -1,8 +1,8 @@
 "use client";
 
 import { signIn } from "next-auth/react";
-import { Icons, iconVariants } from "@/components/ui/Icons";
 import { Button } from "@/components/ui/Buttons";
+import { Icons, iconVariants } from "@/components/ui/Icons";
 
 export function DiscordLogin() {
  return (
