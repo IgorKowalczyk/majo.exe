@@ -1,8 +1,8 @@
 import { generateDates } from "./generateDates";
 
-interface DataEntry {
+export interface DataEntry {
  date: string | Date;
- /* eslint-disable typescript/no-explicit-any */
+ /* eslint-disable @typescript-eslint/no-explicit-any */
  [key: string]: any;
 }
 

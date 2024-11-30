@@ -4,17 +4,13 @@ import React, { Fragment } from "react";
 import { Icons, iconVariants } from "@/components/ui/Icons";
 import { cn } from "@/lib/utils";
 
-export const ListBoxArrow = () => (
- <span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
-  <Icons.ChevronsUpDown className={iconVariants({ variant: "small", className: "text-gray-400 duration-200 motion-reduce:transition-none" })} />
- </span>
-);
+export const ListBoxArrow = () => <Icons.ChevronsUpDown className={iconVariants({ variant: "small", className: "text-gray-400 duration-200 motion-reduce:transition-none" })} />;
 
-export const ListBoxButton = React.forwardRef<HTMLButtonElement, ListboxButtonProps>(({ className, ...props }, ref) => <DefaultListboxButton className={cn("hover:bg-background-menu-button ui-open:border-neutral-700 ui-open:bg-background-menu-button relative w-full cursor-pointer rounded-md border border-neutral-800 py-2 pl-3 pr-10 text-left font-normal duration-200 hover:border-neutral-700 sm:text-sm", className)} {...props} ref={ref} />);
+export const ListBoxButton = React.forwardRef<HTMLButtonElement, ListboxButtonProps>(({ className, ...props }, ref) => <DefaultListboxButton className={cn("hover:bg-background-menu-button ui-open:border-neutral-700 ui-open:bg-background-menu-button flex h-10 cursor-pointer select-none items-center gap-3 rounded-md border border-neutral-800 px-3 py-2 text-sm font-normal duration-200 hover:border-neutral-700 motion-reduce:transition-none sm:text-sm", className)} {...props} ref={ref} />);
 
 export const ListBoxOptions = React.forwardRef<HTMLDivElement, ListboxOptionsProps>(({ className, ...props }, ref) => (
  <Transition as={Fragment} enter="transition ease-out duration-100" enterFrom="transform opacity-0 scale-95" enterTo="transform opacity-100 scale-100" leave="transition ease-in duration-75" leaveFrom="transform opacity-100 scale-100" leaveTo="transform opacity-0 scale-95">
-  <DefaultListboxOptions ref={ref} className={cn("bg-background-secondary absolute z-10 mt-1 max-h-60 w-fit overflow-auto rounded-xl border border-neutral-800 py-1 text-base shadow-lg sm:text-sm", className)} {...props} />
+  <DefaultListboxOptions ref={ref} className={cn("bg-background-secondary absolute z-10 mt-1 max-h-60 min-w-[--button-width] overflow-auto rounded-xl border border-neutral-800 py-1 text-base shadow-lg sm:text-sm", className)} {...props} />
  </Transition>
 ));
 

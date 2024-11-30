@@ -40,7 +40,7 @@ export const TopNavigation = React.forwardRef<HTMLDivElement, HTMLAttributes<HTM
     </div>
     <div className="ml-auto mr-4">
      {session ? (
-      <div className="flex items-center gap-2">
+      <div className="flex items-center gap-4">
        <Link href="/dashboard" className="hidden items-center text-white/60 duration-200 hover:text-white motion-reduce:transition-none md:flex">
         <Icons.dashboard className={iconVariants({ variant: "large", className: "mr-2" })} /> <span className="-mb-px">Dashboard</span>
        </Link>

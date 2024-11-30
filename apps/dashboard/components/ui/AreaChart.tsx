@@ -49,7 +49,7 @@ export interface AreaChartProps extends AreaProps {
  valueFormatter?: (value: number) => string;
 }
 
-export const AreaChart = React.forwardRef<ReturnType<typeof ReChartsAreaChart>, AreaChartProps>(({ data, categories, noDataText = "No data", className, ...props }, ref) => {
+export const AreaChart = React.forwardRef<ReturnType<typeof ReChartsAreaChart>, AreaChartProps>(({ data, categories, noDataText = "No data", showGrid = true, showXAxis = true, showYAxis = true, className, ...props }, ref) => {
  if (!categories) return null;
 
  const yAxisDomain: [number | string, number | string] = props.autoMinValue ? [0, "auto"] : [props.minValue ?? 0, props.maxValue ?? "auto"];
@@ -65,11 +65,11 @@ export const AreaChart = React.forwardRef<ReturnType<typeof ReChartsAreaChart>, 
    <ResponsiveContainer className="size-full">
     {data && data.length > 0 ? (
      <ReChartsAreaChart data={data}>
-      {props.showGrid && <CartesianGrid className="stroke-gray-600 stroke-1" strokeDasharray="3 3" horizontal={true} vertical={false} />}
+      {showGrid && <CartesianGrid className="stroke-gray-600 stroke-1" strokeDasharray="3 3" horizontal={true} vertical={false} />}
 
-      <XAxis hide={!props.showXAxis} dataKey={props.dataKey} tick={{ transform: "translate(0, 6)" }} className="fill-gray-600" interval="preserveStartEnd" tickLine={false} axisLine={false} padding={{ left: 10, right: 10 }} minTickGap={5} />
+      <XAxis hide={!showXAxis} dataKey={props.dataKey} tick={{ transform: "translate(0, 6)" }} className="fill-gray-600" interval="preserveStartEnd" tickLine={false} axisLine={false} padding={{ left: 10, right: 10 }} minTickGap={5} />
 
-      <YAxis width={props.yAxisWidth} hide={!props.showYAxis} axisLine={false} tickLine={false} type="number" domain={yAxisDomain} tick={{ transform: "translate(-3, 0)" }} fill="" stroke="" className="fill-gray-600" tickFormatter={valueFormatter} allowDecimals={false} />
+      <YAxis width={props.yAxisWidth} hide={!showYAxis} axisLine={false} tickLine={false} type="number" domain={yAxisDomain} tick={{ transform: "translate(-3, 0)" }} fill="" stroke="" className="fill-gray-600" tickFormatter={valueFormatter} allowDecimals={false} />
 
       <Tooltip wrapperStyle={{ outline: "none" }} isAnimationActive={true} animationDuration={500} cursor={{ stroke: globalConfig.defaultColor, strokeWidth: 1 }} content={({ ...props }) => <ChartTooltip {...props} categoryColors={categoryColors} valueFormatter={valueFormatter} />} position={{ y: 0 }} />
 

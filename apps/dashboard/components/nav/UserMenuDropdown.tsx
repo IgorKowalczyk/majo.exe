@@ -19,7 +19,7 @@ export const UserMenuDropdown = React.forwardRef<HTMLDivElement, UserSession & {
     <span>{user.global_name || user.name}</span>
     <MenuArrow />
    </MenuButton>
-   <MenuItems>
+   <MenuItems className="min-w-52">
     <div className="mb-2">
      <MenuLink href="/dashboard">
       <Icons.dashboard className={iconVariants({ variant: "button", className: "ml-1" })} /> Dashboard

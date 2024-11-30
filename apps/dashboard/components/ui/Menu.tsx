@@ -7,11 +7,11 @@ import { cn } from "@/lib/utils";
 
 export const MenuArrow = () => <Icons.arrowDown className={iconVariants({ variant: "small", className: "ui-open:rotate-180 text-gray-400 duration-200 motion-reduce:transition-none" })} />;
 
-export const MenuButton = React.forwardRef<React.ElementRef<typeof DefaultMenuButton>, MenuButtonProps>(({ className, ...props }, ref) => <DefaultMenuButton ref={ref} className={cn("hover:bg-background-menu-button ui-open:border-neutral-700 ui-open:bg-background-menu-button ml-2 flex h-10 cursor-pointer select-none items-center gap-3 rounded-md border border-neutral-800 px-3 py-2 text-sm font-normal duration-200 hover:border-neutral-700 motion-reduce:transition-none sm:text-sm", className)} {...props} />);
+export const MenuButton = React.forwardRef<React.ElementRef<typeof DefaultMenuButton>, MenuButtonProps>(({ className, ...props }, ref) => <DefaultMenuButton ref={ref} className={cn("hover:bg-background-menu-button ui-open:border-neutral-700 ui-open:bg-background-menu-button flex h-10 cursor-pointer select-none items-center gap-3 rounded-md border border-neutral-800 px-3 py-2 text-sm font-normal duration-200 hover:border-neutral-700 motion-reduce:transition-none sm:text-sm", className)} {...props} />);
 
 export const MenuItems = React.forwardRef<React.ElementRef<typeof DefaultMenuItems>, MenuItemsProps>(({ className, ...props }, ref) => (
  <Transition as={Fragment} enter="transition ease-out duration-100" enterFrom="transform opacity-0 scale-95" enterTo="transform opacity-100 scale-100" leave="transition ease-in duration-75" leaveFrom="transform opacity-100 scale-100" leaveTo="transform opacity-0 scale-95">
-  <DefaultMenuItems ref={ref} className={cn("bg-background-secondary absolute right-0 z-50 mt-2 w-56 origin-top-right divide-y divide-neutral-800 rounded-xl border border-neutral-800 px-2 py-1 shadow-2xl", className)} {...props} />
+  <DefaultMenuItems ref={ref} className={cn("bg-background-secondary absolute right-0 z-50 mt-2 min-w-[--button-width] origin-top-right divide-y divide-neutral-800 rounded-xl border border-neutral-800 px-2 py-1 shadow-2xl", className)} {...props} />
  </Transition>
 ));
 

@@ -5,7 +5,7 @@ import { json2csv } from "json-2-csv";
 import { getSession } from "lib/session";
 import { redirect } from "next/navigation";
 import { notFound } from "next/navigation";
-import { ServerStatsChart } from "@/components/client/charts/ServerStatsChart";
+import { ServerStatsCharts } from "@/components/client/charts/ServerStatsChart";
 import { GraphCard } from "@/components/ui/GraphCard";
 import Header, { headerVariants } from "@/components/ui/Headers";
 import { Icons, iconVariants } from "@/components/ui/Icons";
@@ -98,7 +98,7 @@ export default async function Page(props: { params: Promise<{ server: string }> 
      graph={newMessages === 0 ? <Icons.Minus className={iconVariants({ variant: "normal" })} /> : newMessages < 0 ? <Icons.TrendingDown className={iconVariants({ variant: "normal" })} /> : <Icons.TrendingUp className={iconVariants({ variant: "normal" })} />}
     />
    </div>
-   <ServerStatsChart guildJoin={guildJoinData} guildLeave={guildLeaveData} guildJoinCSV={guildJoinCSV} guildLeaveCSV={guildLeaveCSV} guildMessage={guildMessageData} guildMessageCSV={guildMessageCSV} />
+   <ServerStatsCharts guildJoin={guildJoinData} guildLeave={guildLeaveData} guildJoinCSV={guildJoinCSV} guildLeaveCSV={guildLeaveCSV} guildMessage={guildMessageData} guildMessageCSV={guildMessageCSV} />
   </>
  );
 }
