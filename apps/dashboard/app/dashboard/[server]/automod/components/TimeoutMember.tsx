@@ -3,6 +3,7 @@ import { TimeSelect } from "@/components/ui/TimeSelect";
 import { Tooltip } from "@/components/ui/Tooltip";
 import { Icons, iconVariants } from "@/components/ui/Icons";
 import { AutoModerationActionType } from "discord-api-types/v10";
+import { Skeleton } from "@/components/ui/Skeletons";
 
 interface TimeoutMemberProps {
  actions: any[];
@@ -32,3 +33,15 @@ const TimeoutMember: React.FC<TimeoutMemberProps> = ({ actions, setActions }) =>
 };
 
 export default TimeoutMember;
+
+export const TimeoutMemberLoader = () => {
+ return (
+  <div className="my-2 flex flex-row flex-wrap gap-2">
+   <span className="flex w-fit items-center gap-2 font-bold">
+    <Icons.Timer className={iconVariants({ variant: "normal", className: "stroke-red-400" })} />
+    Timeout member:
+   </span>
+   <Skeleton className="h-[37.6px] w-40" />
+  </div>
+ );
+};

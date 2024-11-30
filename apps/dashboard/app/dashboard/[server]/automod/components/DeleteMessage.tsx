@@ -3,6 +3,7 @@ import { Switch } from "@/components/ui/Switch";
 import { Tooltip } from "@/components/ui/Tooltip";
 import { Icons, iconVariants } from "@/components/ui/Icons";
 import { AutoModerationActionType } from "discord-api-types/v10";
+import { Skeleton } from "@/components/ui/Skeletons";
 
 interface DeleteMessageProps {
  actions: any[];
@@ -32,3 +33,15 @@ const DeleteMessage: React.FC<DeleteMessageProps> = ({ actions, setActions }) =>
 };
 
 export default DeleteMessage;
+
+export const DeleteMessageLoader = () => {
+ return (
+  <div className="my-2 flex flex-row flex-wrap gap-2">
+   <span className="flex w-fit items-center gap-2 font-bold">
+    <Icons.Trash className={iconVariants({ variant: "normal", className: "stroke-red-400" })} />
+    Delete message:
+   </span>
+   <Skeleton className="h-[30px] w-12" />
+  </div>
+ );
+};

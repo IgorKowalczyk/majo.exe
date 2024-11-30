@@ -62,8 +62,6 @@ export default async function AutomodPage(props: { params: Promise<{ server: str
  const enabledAntiSpam = await syncDatabaseAutoModRule(serverDownload.id, "anti-spam");
  const enabledAntiMention = await syncDatabaseAutoModRule(serverDownload.id, "anti-mention");
 
- console.log(enabledAntiSpam);
-
  const allChannels = (await getGuildChannels(serverDownload.id, [ChannelType.GuildText])) || [];
  const allRolesFetch = (await getGuildRoles(serverDownload.id)) || [];
 

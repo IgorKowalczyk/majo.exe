@@ -3,6 +3,7 @@ import { ChannelsSelect } from "@/components/ui/ChannelsSelect";
 import { Tooltip } from "@/components/ui/Tooltip";
 import { Icons, iconVariants } from "@/components/ui/Icons";
 import { AutoModerationActionType } from "discord-api-types/v10";
+import { Skeleton } from "@/components/ui/Skeletons";
 
 interface LogChannelProps {
  actions: any[];
@@ -33,3 +34,15 @@ const LogChannel: React.FC<LogChannelProps> = ({ actions, setActions, allChannel
 };
 
 export default LogChannel;
+
+export const LogToChannelLoader = () => {
+ return (
+  <div className="my-2 flex flex-row flex-wrap gap-2">
+   <span className="flex w-fit items-center gap-2 font-bold">
+    <Icons.messageWarning className={iconVariants({ variant: "normal", className: "stroke-red-400" })} />
+    Log to channel:
+   </span>
+   <Skeleton className="h-[37.6px] w-40" />
+  </div>
+ );
+};

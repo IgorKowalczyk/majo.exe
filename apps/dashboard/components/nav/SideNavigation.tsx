@@ -24,7 +24,7 @@ export interface SideNavigationProps extends React.HTMLAttributes<HTMLDivElement
  server: string;
 }
 
-export const SideNavigation = React.forwardRef<HTMLDivElement, SideNavigationProps>(async ({ className, server, ...props }, ref) => {
+export const SideNavigation: React.FC<SideNavigationProps> = ({ className, server, ...props }) => {
  const { sideNavVisible, toggleSideNav } = useContext(VisibilityContext);
  const router = useRouter();
 
@@ -41,7 +41,6 @@ export const SideNavigation = React.forwardRef<HTMLDivElement, SideNavigationPro
      className
     )}
     {...props}
-    ref={ref}
    >
     <div className="px-4">
      <Button onClick={() => router.back()} className={cn(buttonVariants({ variant: "primary" }), "mb-4 w-full")}>
@@ -101,4 +100,4 @@ export const SideNavigation = React.forwardRef<HTMLDivElement, SideNavigationPro
    </aside>
   </>
  );
-});
+};
