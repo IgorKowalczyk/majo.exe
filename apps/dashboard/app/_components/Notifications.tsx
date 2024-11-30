@@ -79,8 +79,8 @@ export function Notifications() {
 
  return (
   <AnimatedList>
-   {notifications.map((item) => (
-    <figure key={`notification-${item.content}-${item.author}`} className="relative mx-auto min-h-fit w-full max-w-[400px] transform-gpu overflow-hidden transition-all duration-200 ease-in-out">
+   {notifications.map((item, index) => (
+    <figure key={`notification-${item.content}-${item.author}-${index}`} className="relative mx-auto min-h-fit w-full max-w-[400px] transform-gpu overflow-hidden transition-all duration-200 ease-in-out">
      <div className="mt-1 flex flex-row items-center gap-1">
       <Image src={item.avatar} alt={`${item.author} avatar`} quality={95} width={20} height={20} className="size-5 self-baseline rounded-full" />
       <span className="ml-2 text-sm">
