@@ -1,7 +1,7 @@
 import { ChatInputCommandInteraction, EmbedBuilder, GuildMember, GuildMemberRoleManager, PermissionsBitField, type ColorResolvable } from "discord.js";
 import type { Majobot } from "@/index";
 
-export async function changememberNickname(client: Majobot, interaction: ChatInputCommandInteraction, color: ColorResolvable, type = "set" || "remove") {
+export async function changememberNickname(client: Majobot, interaction: ChatInputCommandInteraction, color: ColorResolvable, type: "set" | "remove" = "set") {
  try {
   if (!interaction.guild) return client.errorMessages.createSlashError(interaction, "❌ This command can only be used in a server.");
   if (!interaction.guild.members.me) return client.errorMessages.createSlashError(interaction, "❌ I can't execute this command in this server.");
