@@ -1,5 +1,5 @@
 import { cva, type VariantProps } from "class-variance-authority";
-import React, { ReactNode, HTMLAttributes } from "react";
+import React, { HTMLAttributes } from "react";
 import { cn } from "@/lib/utils";
 
 export const headerVariants = cva("flex items-center font-bold", {

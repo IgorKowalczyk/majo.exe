@@ -11,7 +11,7 @@ export default function Error({ reset }: { error: Error & { digest?: string }; r
   <div className="relative z-20 flex min-h-screen w-full flex-col items-center justify-center gap-4">
    <div className="z-30">
     <Header className={cn(headerVariants({ variant: "h1", margin: "normal", alignment: "center" }))}>500, server error!</Header>
-    <span className="text-xl text-center gap-2 max-w-md opacity-50 flex">Sorry, we're having trouble loading this page. Please try again later or contact support.</span>
+    <span className="flex max-w-md gap-2 text-center text-xl opacity-50">Sorry, we're having trouble loading this page. Please try again later or contact support.</span>
     <div className="mt-6 flex flex-wrap justify-center gap-4">
      <Link href="/" className={buttonVariants({ variant: "primary" })}>
       <Icons.refresh className={iconVariants({ variant: "button" })} onClick={reset} />

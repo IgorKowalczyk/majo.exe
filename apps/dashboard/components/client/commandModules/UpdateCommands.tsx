@@ -1,11 +1,11 @@
 "use client";
 
+import { Snowflake } from "discord-api-types/globals";
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 import { toast } from "sonner";
 import { Switch } from "@/components/ui/Switch";
 import { Tooltip } from "@/components/ui/Tooltip";
-import { Snowflake } from "discord-api-types/globals";
 
 export interface UpdateCommandsProps extends React.HTMLAttributes<HTMLDivElement> {
  serverId: Snowflake;

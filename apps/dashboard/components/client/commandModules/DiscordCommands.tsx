@@ -1,13 +1,13 @@
 "use client";
+import { CommandCategories } from "@majoexe/database";
 import React, { useEffect, useState, useMemo, HTMLAttributes } from "react";
 import Header, { headerVariants } from "@/components/ui/Headers";
 import { Icons, iconVariants } from "@/components/ui/Icons";
 import { InputWithIcon } from "@/components/ui/Input";
 import { Skeleton } from "@/components/ui/Skeletons";
 import { Tooltip } from "@/components/ui/Tooltip";
-import { cn } from "@/lib/utils";
 import { Command } from "@/lib/types";
-import { CommandCategories } from "@majoexe/database";
+import { cn } from "@/lib/utils";
 
 export interface DiscordCommandsProps extends HTMLAttributes<HTMLDivElement> {
  commands: Command[];

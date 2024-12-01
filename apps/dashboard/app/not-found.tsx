@@ -9,7 +9,7 @@ export default function NotFound() {
   <div className="relative z-20 flex min-h-screen w-full flex-col items-center justify-center gap-4">
    <div className="z-30">
     <Header className={cn(headerVariants({ variant: "h1", margin: "normal", alignment: "center" }))}>404, page not found!</Header>
-    <span className="text-xl text-center gap-2 max-w-md opacity-50 flex">We're sorry we can't find the page you're looking for. Please try again later or contact support.</span>
+    <span className="flex max-w-md gap-2 text-center text-xl opacity-50">We're sorry we can't find the page you're looking for. Please try again later or contact support.</span>
     <div className="mt-6 flex flex-wrap justify-center gap-4">
      <Link href="/" className={buttonVariants({ variant: "primary" })}>
       <Icons.arrowLeft className={iconVariants({ variant: "button" })} />

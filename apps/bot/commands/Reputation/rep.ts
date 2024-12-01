@@ -1,7 +1,7 @@
 import { cacheGet, cacheSet } from "@majoexe/database/redis";
 import { checkReputation, giveReputation, takeReputation, setReputation } from "@majoexe/util/database";
 import { formatDuration } from "@majoexe/util/functions/util";
-import { ApplicationCommandType, ApplicationCommandOptionType, EmbedBuilder, PermissionFlagsBits, PermissionsBitField, InteractionContextType, ApplicationIntegrationType, GuildMember } from "discord.js";
+import { ApplicationCommandType, ApplicationCommandOptionType, EmbedBuilder, PermissionFlagsBits, PermissionsBitField, InteractionContextType, ApplicationIntegrationType } from "discord.js";
 import type { SlashCommand } from "@/util/types/Command";
 
 export default {

@@ -2,7 +2,7 @@ import { generateDates } from "./generateDates";
 
 export interface DataEntry {
  date: string | Date;
- /* eslint-disable @typescript-eslint/no-explicit-any */
+ /* eslint-disable-next-line typescript/no-explicit-any */
  [key: string]: any;
 }
 

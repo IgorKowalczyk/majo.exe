@@ -8,7 +8,7 @@ export async function takeReputation(user: APIUser | User, guildId: Snowflake) {
   const globalName = (isAPIUser(user) ? user.global_name : user.globalName) || user.username;
   const rep = await prismaClient.reputation.findFirst({
    where: {
-    guildId: guildId,
+    guildId,
     userId: user.id,
    },
   });
@@ -19,10 +19,10 @@ export async function takeReputation(user: APIUser | User, guildId: Snowflake) {
      guild: {
       connectOrCreate: {
        where: {
-        guildId: guildId,
+        guildId,
        },
        create: {
-        guildId: guildId,
+        guildId,
        },
       },
      },

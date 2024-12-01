@@ -2,31 +2,14 @@
 
 import { DataEntry, sumArray } from "@majoexe/util/functions/util";
 import fileDl from "js-file-download";
-import React, { Fragment, useState } from "react";
+import React, { useState } from "react";
 import { AreaChart } from "@/components/ui/AreaChart";
 import { Block } from "@/components/ui/Block";
 import Header, { headerVariants } from "@/components/ui/Headers";
 import { Icons, iconVariants } from "@/components/ui/Icons";
-import { Menu, MenuArrow, MenuButton, MenuItem, MenuItems } from "@/components/ui/Menu";
 import { ListBox, ListBoxArrow, ListBoxButton, ListBoxOption, ListBoxOptions } from "@/components/ui/ListBox";
+import { Menu, MenuArrow, MenuButton, MenuItem, MenuItems } from "@/components/ui/Menu";
 import { cn } from "@/lib/utils";
-
-export interface ServerStatsChartsProps {
- guildJoin: DataEntry[];
- guildLeave: DataEntry[];
- guildJoinCSV: string;
- guildLeaveCSV: string;
- guildMessage: DataEntry[];
- guildMessageCSV: string;
-}
-
-export const ServerStatsCharts = React.forwardRef<HTMLDivElement, ServerStatsChartsProps>(({ guildJoin, guildLeave, guildJoinCSV, guildLeaveCSV, guildMessage, guildMessageCSV }, ref) => (
- <div className="flex flex-col gap-6" ref={ref}>
-  <StatsChart title="New Members" data={guildJoin} CSVData={guildJoinCSV} valueName="Joins" fileName="guild-joins" categories={["Joins"]} />
-  <StatsChart title="Members Left" data={guildLeave} CSVData={guildLeaveCSV} valueName="Leaves" fileName="guild-leaves" categories={["Leaves"]} />
-  <StatsChart title="Messages Sent" data={guildMessage} CSVData={guildMessageCSV} valueName="Messages" fileName="guild-messages" categories={["Messages"]} />
- </div>
-));
 
 interface StatsChartProps {
  title: string;
@@ -120,3 +103,20 @@ export const StatsChart = React.forwardRef<HTMLDivElement, StatsChartProps>(({ t
   </Block>
  );
 });
+
+export interface ServerStatsChartsProps {
+ guildJoin: DataEntry[];
+ guildLeave: DataEntry[];
+ guildJoinCSV: string;
+ guildLeaveCSV: string;
+ guildMessage: DataEntry[];
+ guildMessageCSV: string;
+}
+
+export const ServerStatsCharts = React.forwardRef<HTMLDivElement, ServerStatsChartsProps>(({ guildJoin, guildLeave, guildJoinCSV, guildLeaveCSV, guildMessage, guildMessageCSV }, ref) => (
+ <div className="flex flex-col gap-6" ref={ref}>
+  <StatsChart title="New Members" data={guildJoin} CSVData={guildJoinCSV} valueName="Joins" fileName="guild-joins" categories={["Joins"]} />
+  <StatsChart title="Members Left" data={guildLeave} CSVData={guildLeaveCSV} valueName="Leaves" fileName="guild-leaves" categories={["Leaves"]} />
+  <StatsChart title="Messages Sent" data={guildMessage} CSVData={guildMessageCSV} valueName="Messages" fileName="guild-messages" categories={["Messages"]} />
+ </div>
+));

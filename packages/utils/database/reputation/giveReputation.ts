@@ -9,7 +9,7 @@ export async function giveReputation(user: APIUser | User, guildId: Snowflake) {
 
   const rep = await prismaClient.reputation.findFirst({
    where: {
-    guildId: guildId,
+    guildId,
     userId: user.id,
    },
   });
@@ -20,10 +20,10 @@ export async function giveReputation(user: APIUser | User, guildId: Snowflake) {
      guild: {
       connectOrCreate: {
        where: {
-        guildId: guildId,
+        guildId,
        },
        create: {
-        guildId: guildId,
+        guildId,
        },
       },
      },
