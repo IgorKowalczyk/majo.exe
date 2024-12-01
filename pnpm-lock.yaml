@@ -318,8 +318,8 @@ importers:
         specifier: workspace:*
         version: link:../typescript-config
       discord-api-types:
-        specifier: 0.37.106
-        version: 0.37.106
+        specifier: 0.37.110
+        version: 0.37.110
       dotenv:
         specifier: 16.4.5
         version: 16.4.5
@@ -397,8 +397,8 @@ importers:
         specifier: 5.3.0
         version: 5.3.0
       discord-api-types:
-        specifier: 0.37.106
-        version: 0.37.106
+        specifier: 0.37.110
+        version: 0.37.110
       discord.js:
         specifier: 14.16.3
         version: 14.16.3
@@ -3385,9 +3385,6 @@ packages:
 
   discord-api-types@0.37.100:
     resolution: {integrity: sha512-a8zvUI0GYYwDtScfRd/TtaNBDTXwP5DiDVX7K5OmE+DRT57gBqKnwtOC5Ol8z0mRW8KQfETIgiB8U0YZ9NXiCA==}
-
-  discord-api-types@0.37.106:
-    resolution: {integrity: sha512-yuBujntynx44/OFCeT2oPhjXakvvav8ugUXBFaTDt2vgSa7l04TenEV2b8HleoDZdKHjtBxwaP8nAQbIcPhuOQ==}
 
   discord-api-types@0.37.110:
     resolution: {integrity: sha512-wVaAJkrSgNRo8nd523qKYPqkClTNHhjKOk/g6265rzHuc7TNS6Ivz06DPW4iZvnhFobbH95hKlgsRf6jcAbtlA==}
@@ -9893,8 +9890,6 @@ snapshots:
       path-type: 4.0.0
 
   discord-api-types@0.37.100: {}
-
-  discord-api-types@0.37.106: {}
 
   discord-api-types@0.37.110: {}
 
