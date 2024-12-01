@@ -2,18 +2,18 @@ import { dashboardConfig } from "@majoexe/config";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { GeistSans } from "geist/font/sans";
+import type { Metadata } from "next";
 import { Toaster } from "sonner";
-import { twMerge } from "tailwind-merge";
-import ProgressBar from "@/components/client/shared/ProgressBar";
-import { Session } from "@/components/client/shared/Session";
 import { Footer } from "@/components/Footer";
 import { Hotjar } from "@/components/Hotjar";
-import { Icons, iconVariants } from "@/components/Icons";
-import { VisibilityProvider } from "@/components/nav/client/VisibilityContext";
-import { Nav } from "@/components/nav/server/Nav";
+import { TopNavigation } from "@/components/nav/TopNavigation";
+import { VisibilityProvider } from "@/components/nav/VisibilityContext";
+import { ProgressBar } from "@/components/ProgressBar";
+import { Session } from "@/components/Session";
 import { TailwindIndicator } from "@/components/TailwindIndicator";
+import { Icons, iconVariants } from "@/components/ui/Icons";
 import "styles/globals.css";
-import type { Metadata } from "next";
+import { cn } from "@/lib/utils";
 
 export const metadata: Metadata = {
  metadataBase: new URL(dashboardConfig.url),
@@ -62,10 +62,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   <Session>
    <html lang="en">
     <head>{process.env.HOTJAR_ID && <Hotjar id={process.env.HOTJAR_ID} />}</head>
-    <body className={twMerge("bg-background-primary text-white antialiased", GeistSans.className)}>
+    <body className={cn("bg-background-primary text-white antialiased", GeistSans.className)}>
      <ProgressBar />
      <VisibilityProvider>
-      <Nav theme="full" />
+      <TopNavigation theme="full" />
       <main className="flex min-h-screen flex-row flex-wrap">
        <div className="mt-8">{children}</div>
       </main>

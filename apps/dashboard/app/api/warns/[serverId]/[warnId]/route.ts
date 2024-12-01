@@ -1,5 +1,5 @@
 import prismaClient from "@majoexe/database";
-import { getServer, getGuildMember } from "@majoexe/util/functions/guild";
+import { getGuild, getGuildFromMemberGuilds } from "@majoexe/util/functions/guild";
 import { getSession } from "lib/session";
 import { NextRequest, NextResponse } from "next/server";
 
@@ -44,7 +44,7 @@ export async function DELETE(request: NextRequest, props: { params: Promise<{ se
    );
   }
 
-  const server = await getServer(serverId);
+  const server = await getGuild(serverId);
 
   if (!server) {
    return NextResponse.json(
@@ -80,7 +80,7 @@ export async function DELETE(request: NextRequest, props: { params: Promise<{ se
    );
   }
 
-  const serverMember = await getGuildMember(server.id, session.access_token);
+  const serverMember = await getGuildFromMemberGuilds(server.id, session.access_token);
 
   if (!serverMember || !serverMember.permissions_names || !serverMember.permissions_names.includes("ManageGuild") || !serverMember.permissions_names.includes("Administrator")) {
    return NextResponse.json(

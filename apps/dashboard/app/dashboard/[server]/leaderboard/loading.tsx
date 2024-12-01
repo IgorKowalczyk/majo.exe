@@ -1,18 +1,17 @@
-import { Block } from "@/components/Block";
-import { Header1 } from "@/components/Headers";
-import { Icons, iconVariants } from "@/components/Icons";
-import { EmbedSkeleton } from "@/components/Skeletons";
+import Header, { headerVariants } from "@/components/ui/Headers";
+import { Icons, iconVariants } from "@/components/ui/Icons";
+import { Skeleton } from "@/components/ui/Skeletons";
+import { cn } from "@/lib/utils";
 
 export default function Loading() {
  return (
   <>
-   <Header1>
-    <Icons.sparkles className={iconVariants({ variant: "extraLarge" })} />
+   <Header className={cn(headerVariants({ variant: "h1", margin: "normal" }))}>
+    <Icons.Sparkles className={iconVariants({ variant: "extraLarge" })} />
     Leaderboard
-   </Header1>
-   <Block className="mt-4 flex w-full overflow-auto">
-    <EmbedSkeleton className="h-64 w-full" />
-   </Block>
+   </Header>
+   <p className="mb-4 text-left text-base md:text-lg">View the leaderboard for your server, see who's the most active</p>
+   <Skeleton className="h-64 w-full" />
   </>
  );
 }

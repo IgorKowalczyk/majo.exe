@@ -1,8 +1,6 @@
-import { ImportJSON } from "@majoexe/util/functions/files/importJSON.js";
+import why from "@majoexe/util/content/why.json";
 import { ApplicationCommandType, ApplicationIntegrationType, EmbedBuilder, InteractionContextType } from "discord.js";
 import type { SlashCommand } from "@/util/types/Command";
-
-const why = (await ImportJSON("why")) as string[];
 
 export default {
  name: "why",

@@ -9,7 +9,7 @@ export async function StartGiveaway(client: Majobot, interaction: ChatInputComma
   if (!interaction.member) return client.errorMessages.createSlashError(interaction, "❌ This command can only be used by a member!");
   if (!client.user) return client.errorMessages.createSlashError(interaction, "❌ The bot is not available!");
 
-  const userPermissions = interaction.member.permissions as PermissionsBitField;
+  const userPermissions = interaction.memberPermissions || new PermissionsBitField();
 
   if (!userPermissions.has(PermissionsBitField.Flags.ManageGuild)) return client.errorMessages.createSlashError(interaction, "❌ You do not have permission to create giveaways! You need `MANAGE_GUILD` permission.");
 
@@ -86,7 +86,7 @@ export async function StartDropGiveaway(client: Majobot, interaction: ChatInputC
   if (!interaction.member) return client.errorMessages.createSlashError(interaction, "❌ This command can only be used by a member!");
   if (!client.user) return client.errorMessages.createSlashError(interaction, "❌ The bot is not available!");
 
-  const userPermissions = interaction.member.permissions as PermissionsBitField;
+  const userPermissions = interaction.memberPermissions || new PermissionsBitField();
 
   if (!userPermissions.has(PermissionsBitField.Flags.ManageGuild)) return client.errorMessages.createSlashError(interaction, "❌ You do not have permission to create giveaways! You need `MANAGE_GUILD` permission.");
 

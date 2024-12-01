@@ -1,7 +1,6 @@
-import { globalConfig } from "@majoexe/config";
 import prismaClient from "@majoexe/database";
-import { AutoModerationRuleCreationData, createHTTPAutomodRule, validateAutoModIgnores, validateAutoModRuleActions } from "@majoexe/util/functions/automod";
-import { getServer, getGuildMember } from "@majoexe/util/functions/guild";
+import { AutoModerationRuleCreationData, createDiscordAutoModRule, validateAutoModIgnores, validateAutoModRuleActions } from "@majoexe/util/functions/automod";
+import { getGuild, getGuildChannels, getGuildFromMemberGuilds, getGuildRoles } from "@majoexe/util/functions/guild";
 import { AutoModerationActionType, AutoModerationRuleTriggerType, AutoModerationRuleEventType, ChannelType } from "discord-api-types/v10";
 import { getSession } from "lib/session";
 import { NextRequest, NextResponse } from "next/server";
@@ -90,7 +89,7 @@ export async function POST(request: NextRequest) {
    );
   }
 
-  const server = await getServer(data.id);
+  const server = await getGuild(data.id);
 
   if (!server) {
    return NextResponse.json(
@@ -126,7 +125,7 @@ export async function POST(request: NextRequest) {
    );
   }
 
-  const serverMember = await getGuildMember(server.id, session.access_token);
+  const serverMember = await getGuildFromMemberGuilds(server.id, session.access_token);
 
   if (!serverMember || !serverMember.permissions_names || !serverMember.permissions_names.includes("ManageGuild") || !serverMember.permissions_names.includes("Administrator")) {
    return NextResponse.json(
@@ -162,49 +161,10 @@ export async function POST(request: NextRequest) {
    },
   });
 
-  const allRolesRequest = await fetch(`https://discord.com/api/v${globalConfig.apiVersion}/guilds/${server.id}/roles`, {
-   method: "GET",
-   headers: {
-    Authorization: `Bot ${process.env.TOKEN}`,
-   },
-  });
+  const guildRoles = (await getGuildRoles(server.id)) || [];
+  const guildChannels = (await getGuildChannels(server.id, [ChannelType.GuildText])) || [];
 
-  const allChannelsRequest = await fetch(`https://discord.com/api/v${globalConfig.apiVersion}/guilds/${server.id}/channels`, {
-   method: "GET",
-   headers: {
-    Authorization: `Bot ${process.env.TOKEN}`,
-   },
-  });
-
-  // add the types here:
-
-  const [allRolesFetch, allChannelsFetch] = await Promise.all([allRolesRequest, allChannelsRequest]).then((res) => Promise.all(res.map((r) => r.json())));
-
-  const allRoles = allRolesFetch
-   .map((role) => {
-    if (role.name === "@everyone") return null;
-    return {
-     id: role.id,
-     name: role.name,
-     color: role.color ? `#${role.color.toString(16).toUpperCase()}` : "#FFFFFF",
-    };
-   })
-   .filter(Boolean);
-
-  const allChannels = allChannelsFetch
-   .map((channel) => {
-    if (channel.type !== ChannelType.GuildText) return null;
-
-    return {
-     id: channel.id,
-     name: channel.name,
-     type: channel.type,
-     permissions: channel.permission_overwrites,
-    };
-   })
-   .filter(Boolean);
-
-  const validatedIgnores = await validateAutoModIgnores(allChannels, allRoles, data.exemptRoles, data.exemptChannels);
+  const validatedIgnores = await validateAutoModIgnores(guildChannels, guildRoles, data.exemptRoles, data.exemptChannels);
 
   if (validatedIgnores.error || validatedIgnores.code !== 200) {
    return NextResponse.json(
@@ -223,7 +183,7 @@ export async function POST(request: NextRequest) {
    );
   }
 
-  const validatedActions = await validateAutoModRuleActions(data.actions, allChannels, "Message blocked due to containing an link. Rule added by Majo.exe");
+  const validatedActions = await validateAutoModRuleActions(data.actions, guildChannels, "Message blocked due to containing an link. Rule added by Majo.exe");
 
   if ("error" in validatedActions) {
    return NextResponse.json(
@@ -259,9 +219,10 @@ export async function POST(request: NextRequest) {
    );
   }
 
-  const createdRule = await createHTTPAutomodRule(server.id, "anti-link", {
+  const createdRule = await createDiscordAutoModRule(server.id, "anti-link", {
    enabled: data.enabled,
    name: "Disallow links [Majo.exe]",
+   creator_id: process.env.CLIENT_ID || "",
    actions: validatedActions,
    event_type: AutoModerationRuleEventType.MessageSend,
    trigger_type: AutoModerationRuleTriggerType.Keyword,

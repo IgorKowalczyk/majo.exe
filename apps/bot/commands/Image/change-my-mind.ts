@@ -60,7 +60,7 @@ export default {
    const lines = getLines(context, text, maxX - startX);
 
    for (let i = 0; i < lines.length; i++) {
-    context.fillText(lines[i], 10, i * fontSize + 10);
+    context.fillText(lines[i] as string, 10, i * fontSize + 10);
    }
 
    const file = new AttachmentBuilder(canvas.toBuffer("image/png"), {

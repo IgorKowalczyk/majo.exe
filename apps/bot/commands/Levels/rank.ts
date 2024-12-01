@@ -45,7 +45,7 @@ export default {
     })
     .split("?");
 
-   user.avatar = avatarURL;
+   user.avatar = avatarURL || null;
 
    const rank = await createXPCard(user, { xp, level, xpNeeded }, guildSettings?.embedColor || client.config.defaultColor);
 

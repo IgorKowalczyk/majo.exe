@@ -1,198 +1,228 @@
-import { Block } from "@/components/Block";
-import { ButtonPrimary } from "@/components/Buttons";
-import { Header1, Header2, Header3, Header5 } from "@/components/Headers";
-import "tippy.js/dist/backdrop.css";
-import "tippy.js/animations/shift-away.css";
-import "tippy.js/dist/tippy.css";
-import { Icons, iconVariants } from "@/components/Icons";
-import { NavBadge } from "@/components/nav/client/SideNav";
-import { InputSkeleton } from "@/components/Skeletons";
+import { DeleteMessageLoader } from "./components/DeleteMessage";
+import { LogToChannelLoader } from "./components/LogChannel";
+import { TimeoutMemberLoader } from "./components/TimeoutMember";
+import { Badge } from "@/components/ui/Badge";
+import { Block } from "@/components/ui/Block";
+import { Button } from "@/components/ui/Buttons";
+import Header, { headerVariants } from "@/components/ui/Headers";
+import { Icons, iconVariants } from "@/components/ui/Icons";
+import { Skeleton } from "@/components/ui/Skeletons";
+import { cn } from "@/lib/utils";
+
+const IgnoreRolesLoader = () => (
+ <div className="flex w-fit flex-row flex-wrap items-center gap-2 text-center font-bold">
+  <span className="flex w-fit items-center gap-2 font-bold">
+   <Icons.Users className={iconVariants({ variant: "normal", className: "stroke-accent-primary" })} />
+   Ignore Roles:
+  </span>
+  <Skeleton className="h-[37.6px] w-40" />
+ </div>
+);
+
+const IgnoreChannelsLoader = () => (
+ <div className="mt-2 flex w-fit flex-row flex-wrap items-center gap-2 text-center font-bold">
+  <span className="flex w-fit items-center gap-2 font-bold">
+   <Icons.Hash className={iconVariants({ variant: "normal", className: "stroke-accent-primary" })} />
+   Ignore Channels:
+  </span>
+  <Skeleton className="h-[37.6px] w-40" />
+ </div>
+);
 
 export default function Loading() {
  return (
   <>
-   <Header1>
-    <Icons.bot className={iconVariants({ variant: "extraLarge" })} />
+   <Header className={cn(headerVariants({ variant: "h1", margin: "normal" }))}>
+    <Icons.Bot className={iconVariants({ variant: "extraLarge" })} />
     Automod
-   </Header1>
-   <Header5 className="mb-4 mt-2 !justify-start !text-left">
-    <span>Automatically moderate your server, block bad words, links and other things.</span>
-   </Header5>
+   </Header>
+   <p className="mb-4 text-left text-base md:text-lg">Automatically moderate your server, block bad words, links and other things.</p>
    <Block className="mb-4">
-    <Header2>
+    <Header className={cn(headerVariants({ variant: "h2", margin: "normal" }))}>
      <Icons.userBlock className={iconVariants({ variant: "large", className: "!stroke-2" })} />
      Anti-Invite <Icons.refresh className={iconVariants({ variant: "large", className: "stroke-accent-primary animate-spin" })} />
-    </Header2>
+    </Header>
     <p className="mb-4 text-left">
      <span>Automatically delete all messages containing Discord server invites.</span>
     </p>
 
-    <div>
-     <Block className="mb-4 !py-3">
-      <Header3>
-       <Icons.hide className={iconVariants({ variant: "large" })} /> Exempt:
-      </Header3>
-      <span className="mb-4 font-normal">What should be ignored by the rule?</span>
+    <Block className="mb-4 !py-3">
+     <Header className={cn(headerVariants({ variant: "h3" }))}>
+      <Icons.hide className={iconVariants({ variant: "large" })} /> Exempt:
+     </Header>
+     <span className="mb-4 font-normal">What should be ignored by the rule?</span>
+     <IgnoreRolesLoader />
+     <IgnoreChannelsLoader />
+     <p className="mt-2 gap-2 text-sm text-white/70">
+      <span className="font-bold">Pssst!</span> Members with Admin or Manage Server permissions are always excluded from automod.
+     </p>
+    </Block>
 
-      <div className="flex flex-row flex-wrap gap-2">
-       <span className="flex w-fit items-center gap-2 font-bold">
-        <Icons.users className={iconVariants({ variant: "normal", className: "stroke-accent-primary" })} />
-        Ignore Roles:
-       </span>
-       <InputSkeleton className="!h-[37.6px] !w-40" />
-      </div>
+    <Icons.MoveVertical className={cn(iconVariants({ variant: "large" }), "mx-6 mb-4 opacity-50")} />
 
-      <div className="mt-2 flex flex-row flex-wrap gap-2">
-       <span className="flex w-fit items-center gap-2 font-bold">
-        <Icons.hash className={iconVariants({ variant: "normal", className: "stroke-accent-primary" })} />
-        Ignore Channels:
-       </span>
-       <InputSkeleton className="!h-[37.6px] !w-40" />
-      </div>
+    <Block className="mb-4 !py-3">
+     <Header className={cn(headerVariants({ variant: "h3" }))}>
+      <Icons.ShieldMinus className={iconVariants({ variant: "large" })} /> Actions:
+     </Header>
+     <span className="mb-4 font-normal">What should I do when a member triggers the rule?</span>
 
-      <p className="mt-2 gap-2 text-sm text-white/70">
-       <span className="font-bold">Pssst!</span> Members with Admin or Manage Server permissions are always excluded from automod.
-      </p>
-     </Block>
+     <DeleteMessageLoader />
+     <TimeoutMemberLoader />
+     <LogToChannelLoader />
+    </Block>
 
-     <Block className="mb-4 !py-3">
-      <Header3>
-       <Icons.shieldMinus className={iconVariants({ variant: "large" })} /> Actions:
-      </Header3>
-      <span className="mb-4 font-normal">What should I do when a member triggers the rule?</span>
-
-      <div className="my-2 flex flex-row flex-wrap gap-2">
-       <span className="flex w-fit items-center gap-2 font-bold">
-        <Icons.trash className={iconVariants({ variant: "normal", className: "stroke-red-400" })} />
-        Delete message:
-       </span>
-       <InputSkeleton className="!h-[30px] !w-12" />
-      </div>
-
-      <div className="my-2 flex flex-row flex-wrap gap-2">
-       <span className="flex w-fit items-center gap-2 font-bold">
-        <Icons.timer className={iconVariants({ variant: "normal", className: "stroke-red-400" })} />
-        Timeout member:
-       </span>
-       <InputSkeleton className="!h-[37.6px] !w-40" />
-      </div>
-
-      <div className="my-2 flex flex-row flex-wrap gap-2">
-       <span className="flex w-fit items-center gap-2 font-bold">
-        <Icons.messageWarning className={iconVariants({ variant: "normal", className: "stroke-red-400" })} />
-        Log to channel:
-       </span>
-       <InputSkeleton className="!h-[37.6px] !w-40" />
-      </div>
-     </Block>
-
-     <ButtonPrimary className="mt-4" disabled={true}>
-      <>
-       <Icons.check className={iconVariants({ variant: "button" })} />
-       Save
-      </>
-     </ButtonPrimary>
-    </div>
+    <Button variant="primary" className="mt-4" disabled={true}>
+     <Icons.Check className={iconVariants({ variant: "button" })} />
+     Save
+    </Button>
    </Block>
 
    <Block className="mb-4">
-    <Header2>
+    <Header className={cn(headerVariants({ variant: "h2", margin: "normal" }))}>
      <Icons.unlink className={iconVariants({ variant: "large", className: "!stroke-2" })} />
      Anti-Link <Icons.refresh className={iconVariants({ variant: "large", className: "stroke-accent-primary animate-spin" })} />
-    </Header2>
+    </Header>
     <p className="mb-4 text-left">
      <span>Automatically delete all messages containing links.</span>
     </p>
 
-    <div>
-     <Block className="mb-4 !py-3">
-      <Header3>
-       <Icons.hide className={iconVariants({ variant: "large" })} /> Exempt:
-      </Header3>
-      <span className="mb-4 font-normal">What should be ignored by the rule?</span>
-      <div className="flex flex-row flex-wrap gap-2">
-       <span className="flex w-fit items-center gap-2 font-bold">
-        <Icons.users className={iconVariants({ variant: "normal", className: "stroke-accent-primary" })} />
-        Ignore Roles:
-       </span>
-       <InputSkeleton className="!h-[37.6px] !w-40" />
-      </div>
+    <Block className="mb-4 !py-3">
+     <Header className={cn(headerVariants({ variant: "h3" }))}>
+      <Icons.hide className={iconVariants({ variant: "large" })} /> Exempt:
+     </Header>
+     <span className="mb-4 font-normal">What should be ignored by the rule?</span>
 
-      <div className="mt-2 flex flex-row flex-wrap gap-2">
-       <span className="flex w-fit items-center gap-2 font-bold">
-        <Icons.hash className={iconVariants({ variant: "normal", className: "stroke-accent-primary" })} />
-        Ignore Channels:
-       </span>
-       <InputSkeleton className="!h-[37.6px] !w-40" />
-      </div>
+     <IgnoreRolesLoader />
+     <IgnoreChannelsLoader />
 
-      <p className="mt-2 gap-2 text-sm text-white/70">
-       <span className="font-bold">Pssst!</span> Members with Admin or Manage Server permissions are always excluded from automod.
-      </p>
-     </Block>
+     <p className="mt-2 gap-2 text-sm text-white/70">
+      <span className="font-bold">Pssst!</span> Members with Admin or Manage Server permissions are always excluded from automod.
+     </p>
+    </Block>
 
-     <Block className="mb-4 !py-3">
-      <Header3>
-       <Icons.shieldMinus className={iconVariants({ variant: "large" })} /> Actions:
-      </Header3>
-      <span className="mb-4 font-normal">What should I do when a member triggers the rule?</span>
+    <Icons.MoveVertical className={cn(iconVariants({ variant: "large" }), "mx-6 mb-4 opacity-50")} />
 
-      <div className="my-2 flex flex-row flex-wrap gap-2">
-       <span className="flex w-fit items-center gap-2 font-bold">
-        <Icons.trash className={iconVariants({ variant: "normal", className: "stroke-red-400" })} />
-        Delete message:
-       </span>
-       <InputSkeleton className="!h-[30px] !w-12" />
-      </div>
+    <Block className="mb-4 !py-3">
+     <Header className={cn(headerVariants({ variant: "h3" }))}>
+      <Icons.ShieldMinus className={iconVariants({ variant: "large" })} /> Actions:
+     </Header>
+     <span className="mb-4 font-normal">What should I do when a member triggers the rule?</span>
+     <DeleteMessageLoader />
+     <TimeoutMemberLoader />
+     <LogToChannelLoader />
+    </Block>
 
-      <div className="my-2 flex flex-row flex-wrap gap-2">
-       <span className="flex w-fit items-center gap-2 font-bold">
-        <Icons.timer className={iconVariants({ variant: "normal", className: "stroke-red-400" })} />
-        Timeout member:
-       </span>
-       <InputSkeleton className="!h-[37.6px] !w-40" />
-      </div>
-
-      <div className="my-2 flex flex-row flex-wrap gap-2">
-       <span className="flex w-fit items-center gap-2 font-bold">
-        <Icons.messageWarning className={iconVariants({ variant: "normal", className: "stroke-red-400" })} />
-        Log to channel:
-       </span>
-       <InputSkeleton className="!h-[37.6px] !w-40" />
-      </div>
-     </Block>
-
-     <ButtonPrimary className="mt-4" disabled={true}>
-      <>
-       <Icons.check className={iconVariants({ variant: "button" })} />
-       Save
-      </>
-     </ButtonPrimary>
-    </div>
+    <Button variant="primary" className="mt-4" disabled={true}>
+     <Icons.Check className={iconVariants({ variant: "button" })} />
+     Save
+    </Button>
    </Block>
    <Block className="mb-4">
-    <Header2>
+    <Header className={cn(headerVariants({ variant: "h2", margin: "normal" }))}>
      <Icons.mention className={iconVariants({ variant: "large" })} />
-     Anti-Mention <NavBadge>Coming Soon</NavBadge>
-    </Header2>
+     Anti-Mention
+    </Header>
     <p className="mb-4 text-left">
      <span>Automatically delete all messages containing user mentions.</span>
     </p>
+    <Block className="mb-4 !py-3">
+     <Header className={cn(headerVariants({ variant: "h3" }))}>
+      <Icons.hide className={iconVariants({ variant: "large" })} /> Exempt:
+     </Header>
+     <span className="mb-4 font-normal">What should be ignored by the rule?</span>
+
+     <IgnoreRolesLoader />
+     <IgnoreChannelsLoader />
+
+     <p className="mt-2 gap-2 text-sm text-white/70">
+      <span className="font-bold">Pssst!</span> Members with Admin or Manage Server permissions are always excluded from automod.
+     </p>
+    </Block>
+
+    <Icons.MoveVertical className={cn(iconVariants({ variant: "large" }), "mx-6 mb-4 opacity-50")} />
+
+    <Block className="mb-4 !py-3">
+     <Header className={cn(headerVariants({ variant: "h3" }))}>
+      <Icons.ShieldMinus className={iconVariants({ variant: "large" })} /> Actions:
+     </Header>
+     <span className="mb-4 font-normal">What should I do when a member triggers the rule?</span>
+
+     <DeleteMessageLoader />
+     <TimeoutMemberLoader />
+     <LogToChannelLoader />
+    </Block>
+
+    <Icons.ArrowDown className={cn(iconVariants({ variant: "large" }), "mx-6 mb-4 opacity-50")} />
+
+    <Block className="mb-4 !py-3">
+     <Header className={cn(headerVariants({ variant: "h3" }))}>
+      <Icons.ShieldX className={iconVariants({ variant: "large" })} /> Limits:
+     </Header>
+
+     <div className="my-2 flex flex-row flex-wrap gap-2">
+      <span className="flex w-fit cursor-help items-center gap-2 font-bold">
+       <Icons.AtSign className={iconVariants({ variant: "normal", className: "stroke-red-400" })} />
+       How many mentions are allowed in a single message?
+      </span>
+
+      <Skeleton className="h-[37.6px] w-40" />
+     </div>
+
+     <div className="my-2 flex flex-row flex-wrap gap-2">
+      <span className="flex w-fit cursor-help items-center gap-2 font-bold">
+       <Icons.ShieldPlus className={iconVariants({ variant: "normal", className: "stroke-red-400" })} />
+       Enable Mention Raid Protection
+      </span>
+
+      <Skeleton className="h-[37.6px] w-40" />
+     </div>
+    </Block>
    </Block>
    <Block className="mb-4">
-    <Header2>
-     <Icons.messageOff className={iconVariants({ variant: "large" })} />
-     Anti-Spam <NavBadge>Coming Soon</NavBadge>
-    </Header2>
+    <Header className={cn(headerVariants({ variant: "h2", margin: "normal" }))}>
+     <Icons.messageOff className={iconVariants({ variant: "large", className: "!stroke-2" })} />
+     Anti-Spam <Icons.refresh className={iconVariants({ variant: "large", className: "stroke-accent-primary animate-spin" })} />
+    </Header>
     <p className="mb-4 text-left">
-     <span>Automatically delete all messages deemed as spam.</span>
+     <span>Automatically delete all spam messages.</span>
     </p>
+
+    <Block className="mb-4 !py-3">
+     <Header className={cn(headerVariants({ variant: "h3" }))}>
+      <Icons.hide className={iconVariants({ variant: "large" })} /> Exempt:
+     </Header>
+     <span className="mb-4 font-normal">What should be ignored by the rule?</span>
+
+     <IgnoreRolesLoader />
+     <IgnoreChannelsLoader />
+
+     <p className="mt-2 gap-2 text-sm text-white/70">
+      <span className="font-bold">Pssst!</span> Members with Admin or Manage Server permissions are always excluded from automod.
+     </p>
+    </Block>
+
+    <Icons.MoveVertical className={cn(iconVariants({ variant: "large" }), "mx-6 mb-4 opacity-50")} />
+
+    <Block className="mb-4 !py-3">
+     <Header className={cn(headerVariants({ variant: "h3" }))}>
+      <Icons.ShieldMinus className={iconVariants({ variant: "large" })} /> Actions:
+     </Header>
+     <span className="mb-4 font-normal">What should I do when a member triggers the rule?</span>
+
+     <DeleteMessageLoader />
+     <LogToChannelLoader />
+    </Block>
+
+    <Button variant="primary" className="mt-4" disabled={true}>
+     <Icons.Check className={iconVariants({ variant: "button" })} />
+     Save
+    </Button>
    </Block>
    <Block className="mb-4">
-    <Header2>
-     <Icons.shieldBan className={iconVariants({ variant: "large" })} />
-     Anti-Badwords <NavBadge>Coming Soon</NavBadge>
-    </Header2>
+    <Header className={cn(headerVariants({ variant: "h2", margin: "normal" }))}>
+     <Icons.ShieldBan className={iconVariants({ variant: "large" })} />
+     Anti-Badwords <Badge>Coming Soon</Badge>
+    </Header>
     <p className="mb-4 text-left">
      <span>Automatically delete all messages containing bad words or phrases.</span>
     </p>

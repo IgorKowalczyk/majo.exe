@@ -218,7 +218,9 @@ export default {
     });
    }
 
-   const fetchImage = await fetch(image.split("?")[0]);
+   const [toFetch] = image.split("?");
+   if (!toFetch || toFetch.length < 1) return client.errorMessages.createSlashError(interaction, "❌ The image URL is invalid.");
+   const fetchImage = await fetch(toFetch);
    if (!fetchImage.ok) return client.errorMessages.createSlashError(interaction, "❌ The image could not be fetched.");
    const buffer = await fetchImage.arrayBuffer();
 

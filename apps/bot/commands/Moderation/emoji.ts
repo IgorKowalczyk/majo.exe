@@ -78,7 +78,7 @@ export default {
   if (!interaction.guild.members.me) return client.errorMessages.createSlashError(interaction, "❌ Unable to get server data. Please try again.");
 
   const subcommand = interaction.options.getSubcommand();
-  const memberPermissions = interaction.member.permissions as PermissionsBitField;
+  const memberPermissions = interaction.memberPermissions || new PermissionsBitField();
 
   // #region Create
   if (subcommand === "create") {
@@ -103,7 +103,7 @@ export default {
      emojiToCreate = emojiURL;
     } else if ((emojiURL.startsWith("<:") || emojiURL.startsWith("<a:")) && emojiURL.endsWith(">")) {
      const animated = emojiURL.startsWith("<a:");
-     const emojiId = emojiURL.split(":")[2].replaceAll(">", "");
+     const emojiId = emojiURL.split(":")[2]?.replaceAll(">", "") || "";
      emojiToCreate = `https://cdn.discordapp.com/emojis/${emojiId}.${animated ? "gif" : "png"}`;
     } else if (!isNaN(Number(emojiURL))) {
      emojiToCreate = `https://cdn.discordapp.com/emojis/${emojiURL}.png`;

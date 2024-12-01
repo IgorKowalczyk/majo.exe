@@ -1,8 +1,7 @@
-import { globalConfig } from "@majoexe/config";
 import prismaClient from "@majoexe/database";
-import { getServer, getGuildMember } from "@majoexe/util/functions/guild";
+import { getGuild, getGuildChannels, getGuildFromMemberGuilds } from "@majoexe/util/functions/guild";
 import { shortenText } from "@majoexe/util/functions/util";
-import { APIGuildChannel, ChannelType, GuildChannelType, GuildTextChannelType } from "discord-api-types/v10";
+import { ChannelType } from "discord-api-types/v10";
 import { getSession } from "lib/session";
 import { NextRequest, NextResponse } from "next/server";
 
@@ -148,7 +147,7 @@ export async function POST(request: NextRequest) {
    );
   }
 
-  const server = await getServer(guildId);
+  const server = await getGuild(guildId);
 
   if (!server) {
    return NextResponse.json(
@@ -184,7 +183,7 @@ export async function POST(request: NextRequest) {
    );
   }
 
-  const serverMember = await getGuildMember(server.id, session.access_token);
+  const serverMember = await getGuildFromMemberGuilds(server.id, session.access_token);
 
   if (!serverMember || !serverMember.permissions_names || !serverMember.permissions_names.includes("ManageGuild") || !serverMember.permissions_names.includes("Administrator")) {
    return NextResponse.json(
@@ -203,16 +202,9 @@ export async function POST(request: NextRequest) {
    );
   }
 
-  const allChannelsFetch = await fetch(`https://discord.com/api/v${globalConfig.apiVersion}/guilds/${server.id}/channels`, {
-   method: "GET",
-   headers: {
-    Authorization: `Bot ${process.env.TOKEN}`,
-   },
-  });
+  const guildChannels = (await getGuildChannels(server.id, [ChannelType.GuildText])) || [];
 
-  const allChannelsData = (await allChannelsFetch.json()) as APIGuildChannel<GuildChannelType>[];
-
-  const allChannels = allChannelsData
+  const allChannels = guildChannels
    .map((channel) => {
     if (channel.type !== ChannelType.GuildText) return null;
 

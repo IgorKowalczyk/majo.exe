@@ -1,7 +1,7 @@
 import translate from "@iamtraction/google-translate";
+import { shortenText } from "@majoexe/util/functions/util";
 import { ApplicationCommandType, ApplicationCommandOptionType, EmbedBuilder, ApplicationIntegrationType, InteractionContextType } from "discord.js";
 import type { SlashCommand } from "@/util/types/Command";
-import { shortenText } from "@majoexe/util/functions/util";
 
 type Translator = typeof translate & {
  languages: {
@@ -24,11 +24,11 @@ export default {
   const focusedOption = interaction.options.getFocused(true);
 
   if (focusedOption.name === "to" || focusedOption.name === "from") {
-   let languages = Object.entries(translator.languages).filter(([key, value]) => typeof value === "string");
+   let languages = Object.entries(translator.languages).filter(([, value]) => typeof value === "string");
 
    if (focusedOption.value) {
     const search = focusedOption.value.toLowerCase();
-    languages = languages.filter(([key, value]) => typeof value === "string" && value.toLowerCase().includes(search));
+    languages = languages.filter(([, value]) => typeof value === "string" && value.toLowerCase().includes(search));
    }
 
    await interaction.respond(
@@ -80,7 +80,7 @@ export default {
    const translatedTo = translator.languages[to];
 
    const embed = new EmbedBuilder()
-    .setTitle(`🈯 Translated Text`)
+    .setTitle("🈯 Translated Text")
     .setFields([
      {
       name: "Translated to",

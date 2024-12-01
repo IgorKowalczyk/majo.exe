@@ -14,7 +14,7 @@ export async function kickMember(client: Majobot, interaction: ChatInputCommandI
    return client.errorMessages.createSlashError(interaction, "❌ You need to provide a user to kick");
   }
 
-  const memberPermissions = interaction.member.permissions as PermissionsBitField;
+  const memberPermissions = interaction.memberPermissions || new PermissionsBitField();
 
   if (!memberPermissions.has(PermissionsBitField.Flags.KickMembers)) {
    return client.errorMessages.createSlashError(interaction, "❌ You need `KICK_MEMBERS` permission to kick members");

@@ -1,4 +1,4 @@
-import { createAutoModRule, syncAutoModRule } from "@majoexe/util/database";
+import { createDatabaseAutoModRule, syncDatabaseAutoModRule } from "@majoexe/util/database";
 import { ChannelType, AutoModerationRuleEventType, AutoModerationActionType, AutoModerationRuleTriggerType, EmbedBuilder, PermissionsBitField, codeBlock, ChatInputCommandInteraction, type AutoModerationRuleCreateOptions, TextChannel, GuildMember } from "discord.js";
 import type { Majobot } from "@/index";
 import type { GuildSettings } from "@/util/types/Command";
@@ -7,7 +7,7 @@ export async function enableAntiInvite(client: Majobot, interaction: ChatInputCo
  if (!interaction.guild) return client.errorMessages.createSlashError(interaction, "❌ This command can only be used in a server.");
  if (!interaction.guild.members.me) return client.errorMessages.createSlashError(interaction, "❌ I can't find myself in this server.");
  if (!interaction.member) return client.errorMessages.createSlashError(interaction, "❌ You must be in a server to use this command.");
- const createdRule = await syncAutoModRule(interaction.guild.id, "anti-invite");
+ const createdRule = await syncDatabaseAutoModRule(interaction.guild.id, "anti-invite");
 
  const exemptRoles = interaction.options.getRole("exempt-roles");
  const exemptChannels = interaction.options.getChannel("exempt-channels");
@@ -106,7 +106,7 @@ export async function enableAntiInvite(client: Majobot, interaction: ChatInputCo
 
   const rule = await interaction.guild.autoModerationRules.create(ruleToCreate);
 
-  await createAutoModRule(interaction.guild.id, rule.id, "anti-invite");
+  await createDatabaseAutoModRule(interaction.guild.id, rule.id, "anti-invite");
 
   const embed = new EmbedBuilder()
    .setColor(guildSettings?.embedColor || client.config.defaultColor)

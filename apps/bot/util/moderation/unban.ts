@@ -13,7 +13,7 @@ export async function unBanMember(client: Majobot, interaction: ChatInputCommand
    return client.errorMessages.createSlashError(interaction, "❌ You need to provide a user to unban");
   }
 
-  const memberPermissions = interaction.member.permissions as PermissionsBitField;
+  const memberPermissions = interaction.memberPermissions || new PermissionsBitField();
 
   if (!memberPermissions.has(PermissionsBitField.Flags.BanMembers)) {
    return client.errorMessages.createSlashError(interaction, "❌ You need `BAN_MEMBERS` permission to unban members");

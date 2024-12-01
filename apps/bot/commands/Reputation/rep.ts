@@ -124,7 +124,7 @@ export default {
      return client.errorMessages.createSlashError(interaction, `❌ You can't give reputation to ${user} for another \`${formatDuration(timeLeft)}\``);
     }
 
-    const rep = await giveReputation(user, interaction.guild);
+    const rep = await giveReputation(user, interaction.guild.id);
     await cacheSet(key, { userId: interaction.member.user.id, time: Date.now() }, 86400000);
 
     const embed = new EmbedBuilder()
@@ -186,7 +186,7 @@ export default {
     if (!user) return client.errorMessages.createSlashError(interaction, "❌ Please provide a valid user.");
     if (!amount) return client.errorMessages.createSlashError(interaction, "❌ Please provide a valid amount.");
 
-    const userPermissions = interaction.member.permissions as PermissionsBitField;
+    const userPermissions = interaction.memberPermissions || new PermissionsBitField();
 
     if (!userPermissions.has(PermissionFlagsBits.Administrator)) return client.errorMessages.createSlashError(interaction, "❌ You don't have `Administrator` permissions to use this command");
 
@@ -197,7 +197,7 @@ export default {
 
     if (user.bot) return client.errorMessages.createSlashError(interaction, "❌ You can't set a bot's reputation");
 
-    const rep = await setReputation(user, interaction.guild, amount);
+    const rep = await setReputation(user, interaction.guild.id, amount);
 
     const embed = new EmbedBuilder()
      .setColor(guildSettings?.embedColor || client.config.defaultColor)

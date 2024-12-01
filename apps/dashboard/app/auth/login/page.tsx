@@ -1,11 +1,13 @@
 import { getSession } from "lib/session";
+import Link from "next/link";
 import { redirect } from "next/navigation";
-import { ButtonSecondary } from "@/components/Buttons";
-import { DiscordLogin } from "@/components/client/DiscordLogin";
-import Image from "@/components/client/shared/Image";
-import { Header1 } from "@/components/Headers";
-import { Icons, iconVariants } from "@/components/Icons";
-import { Dots } from "@/components/Loaders";
+import { DiscordLogin } from "@/components/DiscordLogin";
+import { buttonVariants } from "@/components/ui/Buttons";
+import Header, { headerVariants } from "@/components/ui/Headers";
+import { Icons, iconVariants } from "@/components/ui/Icons";
+import Image from "@/components/ui/Image";
+import { Dots } from "@/components/ui/Loaders";
+import { cn } from "@/lib/utils";
 
 export const metadata = {
  title: "Login",
@@ -24,7 +26,7 @@ export default async function LoginPage(props: { searchParams: Promise<{ error: 
     <Image src="/assets/avatar.png" width={80} height={80} alt="Avatar" className="size-20 min-h-20 min-w-20 rounded-full sm:size-28 sm:min-h-28 sm:min-w-28" quality={90} />
     {searchParams.error ? (
      <div className="mx-4 flex items-center justify-center">
-      <Icons.close className="size-8 min-h-8 min-w-8 text-red-500" />
+      <Icons.close className="size-8 shrink-0 text-red-500" />
      </div>
     ) : (
      <Dots />
@@ -35,22 +37,22 @@ export default async function LoginPage(props: { searchParams: Promise<{ error: 
    <div className="z-30">
     {searchParams.error ? (
      <>
-      <Header1 className="!justify-center text-center">Something went wrong!</Header1>
-      <p className="my-1 mt-2 text-center text-xl text-[#939DB8]">Something went wrong while trying to connect your Discord account!</p>
+      <Header className={headerVariants({ variant: "h1", alignment: "center" })}>Something went wrong!</Header>
+      <p className="my-1 mt-2 text-center text-xl text-white/50">Something went wrong while trying to connect your Discord account!</p>
      </>
     ) : (
      <>
-      <Header1 className="!justify-center text-center">Connect your account</Header1>
-      <p className="my-1 mt-2 text-center text-xl text-[#939DB8]">Authorize your Discord account to use all the Majo.exe features</p>
+      <Header className={headerVariants({ variant: "h1", alignment: "center" })}>Connect your account</Header>
+      <p className="my-1 mt-2 text-center text-xl text-white/50">Authorize your Discord account to use all the Majo.exe features</p>
      </>
     )}
    </div>
    <div className="z-30 flex flex-col gap-4 sm:flex-row">
     <DiscordLogin />
-    <ButtonSecondary href="/">
+    <Link href="/" className={cn(buttonVariants({ variant: "secondary" }))}>
      <Icons.arrowLeft className={iconVariants({ variant: "button" })} />
      Go back home
-    </ButtonSecondary>
+    </Link>
    </div>
   </div>
  );

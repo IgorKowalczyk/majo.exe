@@ -9,7 +9,7 @@ export async function FindGiveaways(client: Majobot, interaction: ChatInputComma
   if (!interaction.guild || !interaction.guild.available) return client.errorMessages.createSlashError(interaction, "❌ This command can only be used in a server!");
   if (!interaction.member) return client.errorMessages.createSlashError(interaction, "❌ This command can only be used by a member!");
 
-  const userPermissions = interaction.member.permissions as PermissionsBitField;
+  const userPermissions = interaction.memberPermissions || new PermissionsBitField();
 
   if (!userPermissions.has(PermissionsBitField.Flags.ManageGuild)) return client.errorMessages.createSlashError(interaction, "❌ You do not have permission to find giveaways! You need `MANAGE_GUILD` permission.");
 

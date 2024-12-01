@@ -1,11 +1,6 @@
-import { ImportJSON } from "@majoexe/util/functions/files/importJSON.js";
+import advices from "@majoexe/util/content/advices.json";
 import { ApplicationCommandType, ApplicationIntegrationType, EmbedBuilder, InteractionContextType } from "discord.js";
 import type { SlashCommand } from "@/util/types/Command";
-
-const advices = (await ImportJSON("advices")) as {
- id: number;
- advice: string;
-}[];
 
 export default {
  name: "advice",
@@ -18,6 +13,7 @@ export default {
  run: async (client, interaction, guildSettings) => {
   try {
    const parsed = advices[Math.floor(Math.random() * advices.length)];
+   if (!parsed) return client.errorMessages.createSlashError(interaction, "❌ Failed to fetch advice. Please try again later.");
 
    const embed = new EmbedBuilder()
     .setTitle("🤌 My advice is:")

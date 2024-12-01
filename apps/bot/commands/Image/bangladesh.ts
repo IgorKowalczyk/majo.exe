@@ -1,7 +1,7 @@
+import { shortenText } from "@majoexe/util/functions/util";
 import { loadImage, createCanvas } from "@napi-rs/canvas";
 import { ApplicationCommandType, ApplicationCommandOptionType, AttachmentBuilder, EmbedBuilder, InteractionContextType, ApplicationIntegrationType } from "discord.js";
 import type { SlashCommand } from "@/util/types/Command";
-import { shortenText } from "@majoexe/util/functions/util";
 
 export default {
  name: "bangladesh",
@@ -22,19 +22,21 @@ export default {
  run: async (client, interaction, guildSettings) => {
   try {
    const user = interaction.options.getUser("user") || interaction.user;
-   let image;
 
    if (!user.displayAvatarURL({ size: 2048, extension: "png", forceStatic: true })) {
     return client.errorMessages.createSlashError(interaction, "❌ The user must have an avatar.");
    }
 
-   image = user.displayAvatarURL({
+   const image = user.displayAvatarURL({
     size: 2048,
     extension: "png",
     forceStatic: true,
    });
 
-   const targetImage = await loadImage(image.split("?")[0]);
+   const [toFetch] = image.split("?");
+   if (!toFetch || toFetch.length < 1) return client.errorMessages.createSlashError(interaction, "❌ The image URL is invalid.");
+   const targetImage = await loadImage(toFetch);
+
    const background = await loadImage("./util/images/files/bangladesh.png");
 
    const canvas = createCanvas(background.width, background.height);

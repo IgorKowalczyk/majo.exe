@@ -1,16 +1,14 @@
 import prismaClient from "@majoexe/database";
-import { getGuildMember, getServer } from "@majoexe/util/functions/guild";
+import { getGuildFromMemberGuilds, getGuild } from "@majoexe/util/functions/guild";
+import type { GiveawayData } from "discord-giveaways";
 import { getSession } from "lib/session";
 import { redirect } from "next/navigation";
 import { notFound } from "next/navigation";
-import { Block } from "@/components/Block";
-import { Giveaways } from "@/components/client/lists/Giveaways";
-import { Header1 } from "@/components/Headers";
-import "tippy.js/dist/backdrop.css";
-import "tippy.js/animations/shift-away.css";
-import "tippy.js/dist/tippy.css";
-import { Icons, iconVariants } from "@/components/Icons";
-import type { GiveawayData } from "discord-giveaways";
+import { Giveaways } from "@/app/dashboard/[server]/giveaways/components/Giveaways";
+import { Block } from "@/components/ui/Block";
+import Header, { headerVariants } from "@/components/ui/Headers";
+import { Icons, iconVariants } from "@/components/ui/Icons";
+import { cn } from "@/lib/utils";
 
 export const metadata = {
  title: "Giveaways",
@@ -22,9 +20,9 @@ export default async function GiveawaysPage(props: { params: Promise<{ server: s
  const session = await getSession();
  if (!session || !session.access_token) redirect("/auth/login");
  const { server } = params;
- const serverDownload = await getServer(server);
+ const serverDownload = await getGuild(server);
  if (!serverDownload || !serverDownload.bot) return notFound();
- const serverMember = await getGuildMember(serverDownload.id, session.access_token);
+ const serverMember = await getGuildFromMemberGuilds(serverDownload.id, session.access_token);
  if (
   // prettier
   !serverMember ||
@@ -85,22 +83,18 @@ export default async function GiveawaysPage(props: { params: Promise<{ server: s
      ended: new Date(data.endAt) < new Date() || data.ended,
      endedAt: new Date(data.endAt),
     },
-    startedBy: startedBy || {
-     global_name: "Unknown",
-     discordId: hostedBy,
-     name: "Unknown",
-     avatar: "https://cdn.discordapp.com/embed/avatars/0.png",
-    },
+    startedBy,
    };
   })
- );
+ ).then((data) => data.filter((x) => x !== null));
 
  return (
   <>
-   <Header1>
-    <Icons.gift className={iconVariants({ variant: "extraLarge" })} />
+   <Header className={cn(headerVariants({ variant: "h1", margin: "normal" }))}>
+    <Icons.Gift className={iconVariants({ variant: "extraLarge" })} />
     Giveaways
-   </Header1>
+   </Header>
+   <p className="mb-4 text-left text-base md:text-lg">Create and manage giveaways for your server, let your members win some cool prizes</p>
    <Block className="mt-4 flex w-full overflow-auto">
     {data.length > 0 ? (
      <Giveaways data={data} />

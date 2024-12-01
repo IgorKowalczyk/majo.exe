@@ -46,7 +46,9 @@ export default {
     });
    }
 
-   const targetImage = await loadImage(image.split("?")[0]);
+   const [toFetch] = image.split("?");
+   if (!toFetch || toFetch.length < 1) return client.errorMessages.createSlashError(interaction, "❌ The image URL is invalid.");
+   const targetImage = await loadImage(toFetch);
    const background = await loadImage("./util/images/files/trash.png");
 
    const canvas = createCanvas(background.width, background.height);

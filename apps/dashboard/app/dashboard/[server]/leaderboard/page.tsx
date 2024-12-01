@@ -1,17 +1,16 @@
 import prismaClient from "@majoexe/database";
-import { getGuildMember, getServer } from "@majoexe/util/functions/guild";
+import { getGuildFromMemberGuilds, getGuild } from "@majoexe/util/functions/guild";
 import { getSession } from "lib/session";
+import { Metadata } from "next";
 import { redirect } from "next/navigation";
 import { notFound } from "next/navigation";
-import { Block } from "@/components/Block";
-import { Leaderboard } from "@/components/client/lists/Leaderboard";
-import { Header1 } from "@/components/Headers";
-import "tippy.js/dist/backdrop.css";
-import "tippy.js/animations/shift-away.css";
-import "tippy.js/dist/tippy.css";
-import { Icons, iconVariants } from "@/components/Icons";
+import { Leaderboard } from "@/app/dashboard/[server]/leaderboard/components/Leaderboard";
+import { Block } from "@/components/ui/Block";
+import Header, { headerVariants } from "@/components/ui/Headers";
+import { Icons, iconVariants } from "@/components/ui/Icons";
+import { cn } from "@/lib/utils";
 
-export const metadata = {
+export const metadata: Metadata = {
  title: "Leaderboard",
  description: "View the leaderboard for your server.",
 };
@@ -21,9 +20,9 @@ export default async function LeaderboardPage(props: { params: Promise<{ server:
  const session = await getSession();
  if (!session || !session.access_token) redirect("/auth/login");
  const { server } = params;
- const serverDownload = await getServer(server);
+ const serverDownload = await getGuild(server);
  if (!serverDownload || !serverDownload.bot) return notFound();
- const serverMember = await getGuildMember(serverDownload.id, session.access_token);
+ const serverMember = await getGuildFromMemberGuilds(serverDownload.id, session.access_token);
  if (
   // prettier
   !serverMember ||
@@ -60,7 +59,6 @@ export default async function LeaderboardPage(props: { params: Promise<{ server:
    },
   },
  });
-
  const data = guild.guildXp.map((x, i) => {
   return {
    id: i + 1,
@@ -72,10 +70,11 @@ export default async function LeaderboardPage(props: { params: Promise<{ server:
 
  return (
   <>
-   <Header1>
-    <Icons.sparkles className={iconVariants({ variant: "extraLarge" })} />
+   <Header className={cn(headerVariants({ variant: "h1", margin: "normal" }))}>
+    <Icons.Sparkles className={iconVariants({ variant: "extraLarge" })} />
     Leaderboard
-   </Header1>
+   </Header>
+   <p className="mb-4 text-left text-base md:text-lg">View the leaderboard for your server, see who's the most active</p>
    <Block className="mt-4 flex w-full overflow-auto">{data.length > 0 ? <Leaderboard data={data} /> : <span className="opacity-50">No users found. Maybe you should try talking in chat?</span>}</Block>
   </>
  );

@@ -1,4 +1,4 @@
-import { createAutoModRule, syncAutoModRule } from "@majoexe/util/database";
+import { createDatabaseAutoModRule, syncDatabaseAutoModRule } from "@majoexe/util/database";
 import { ChannelType, AutoModerationRuleEventType, AutoModerationRuleKeywordPresetType, AutoModerationActionType, AutoModerationRuleTriggerType, EmbedBuilder, PermissionsBitField, codeBlock, ChatInputCommandInteraction, TextChannel, GuildMember, type AutoModerationRuleCreateOptions } from "discord.js";
 import type { Majobot } from "@/index";
 import type { GuildSettings } from "@/util/types/Command";
@@ -8,7 +8,7 @@ export async function enableAntiBadWords(client: Majobot, interaction: ChatInput
  if (!interaction.guild.members.me) return client.errorMessages.createSlashError(interaction, "❌ I can't find myself in this server.");
  if (!interaction.member) return client.errorMessages.createSlashError(interaction, "❌ You must be in a server to use this command.");
 
- const createdRule = await syncAutoModRule(interaction.guild.id, "anti-bad-words");
+ const createdRule = await syncDatabaseAutoModRule(interaction.guild.id, "anti-bad-words");
 
  const exemptRoles = interaction.options.getRole("exempt-roles");
  const exemptChannels = interaction.options.getChannel("exempt-channels");
@@ -107,7 +107,7 @@ export async function enableAntiBadWords(client: Majobot, interaction: ChatInput
 
   const rule = await interaction.guild.autoModerationRules.create(ruleToCreate);
 
-  await createAutoModRule(interaction.guild.id, rule.id, "anti-bad-words");
+  await createDatabaseAutoModRule(interaction.guild.id, rule.id, "anti-bad-words");
 
   const embed = new EmbedBuilder()
    .setColor(guildSettings?.embedColor || client.config.defaultColor)

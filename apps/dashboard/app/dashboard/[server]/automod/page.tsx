@@ -1,34 +1,35 @@
-import { globalConfig } from "@majoexe/config";
 import prismaClient from "@majoexe/database";
-import { syncAutoModRule } from "@majoexe/util/database";
-import { getGuildMember, getServer } from "@majoexe/util/functions/guild";
-import { APIGuildChannel, APIRole, ChannelType, GuildChannelType } from "discord-api-types/v10";
+import { syncDatabaseAutoModRule } from "@majoexe/util/database";
+import { getGuildFromMemberGuilds, getGuild, getGuildRoles, getGuildChannels } from "@majoexe/util/functions/guild";
+import { ChannelType } from "discord-api-types/v10";
 import { getSession } from "lib/session";
 import { redirect } from "next/navigation";
 import { notFound } from "next/navigation";
-import { Block } from "@/components/Block";
-import { AntiInvite } from "@/components/client/settings/automod/AntiInvite";
-import { AntiLink } from "@/components/client/settings/automod/AntiLink";
-import { Header1, Header2, Header5 } from "@/components/Headers";
-import "tippy.js/dist/backdrop.css";
-import "tippy.js/animations/shift-away.css";
-import "tippy.js/dist/tippy.css";
-import { Icons, iconVariants } from "@/components/Icons";
-import { NavBadge } from "@/components/nav/client/SideNav";
+import { AntiMention } from "./components/AntiMention";
+import { AntiSpam } from "./components/AntiSpam";
+import { AntiInvite } from "@/app/dashboard/[server]/automod/components/AntiInvite";
+import { AntiLink } from "@/app/dashboard/[server]/automod/components/AntiLink";
+import { Badge } from "@/components/ui/Badge";
+import { Block } from "@/components/ui/Block";
+import Header, { headerVariants } from "@/components/ui/Headers";
+import { Icons, iconVariants } from "@/components/ui/Icons";
+import { cn } from "@/lib/utils";
 
 export const metadata = {
  title: "Automod",
  description: "Automatically moderate your server, block bad words, links and other things.",
 };
 
+export const dynamic = "force-dynamic";
+
 export default async function AutomodPage(props: { params: Promise<{ server: string }> }) {
  const params = await props.params;
  const session = await getSession();
  if (!session || !session.access_token) redirect("/auth/login");
  const { server } = params;
- const serverDownload = await getServer(server);
+ const serverDownload = await getGuild(server);
  if (!serverDownload || !serverDownload.bot) return notFound();
- const serverMember = await getGuildMember(serverDownload.id, session.access_token);
+ const serverMember = await getGuildFromMemberGuilds(serverDownload.id, session.access_token);
  if (
   // prettier
   !serverMember ||
@@ -55,94 +56,63 @@ export default async function AutomodPage(props: { params: Promise<{ server: str
   },
  });
 
- const enabledAntiInvite = (await syncAutoModRule(serverDownload.id, "anti-invite")) || false;
- const enabledAntiLink = (await syncAutoModRule(serverDownload.id, "anti-link")) || false;
+ const enabledAntiInvite = await syncDatabaseAutoModRule(serverDownload.id, "anti-invite");
+ const enabledAntiLink = await syncDatabaseAutoModRule(serverDownload.id, "anti-link");
+ const enabledAntiSpam = await syncDatabaseAutoModRule(serverDownload.id, "anti-spam");
+ const enabledAntiMention = await syncDatabaseAutoModRule(serverDownload.id, "anti-mention");
 
- const allRolesFetch = await fetch(`https://discord.com/api/v${globalConfig.apiVersion}/guilds/${serverDownload.id}/roles`, {
-  method: "GET",
-  headers: {
-   Authorization: `Bot ${process.env.TOKEN}`,
-  },
+ const allChannels = (await getGuildChannels(serverDownload.id, [ChannelType.GuildText])) || [];
+ const allRolesFetch = (await getGuildRoles(serverDownload.id)) || [];
+
+ const allRoles = allRolesFetch.map((role) => {
+  if (role.name === "@everyone") return null;
+  return {
+   id: role.id,
+   name: role.name,
+   color: role.color ? `#${role.color.toString(16).toUpperCase()}` : "#FFFFFF",
+  };
  });
-
- const allChannelsFetch = await fetch(`https://discord.com/api/v${globalConfig.apiVersion}/guilds/${serverDownload.id}/channels`, {
-  method: "GET",
-  headers: {
-   Authorization: `Bot ${process.env.TOKEN}`,
-  },
- });
-
- const allChannelsJson = (await allChannelsFetch.json()) as APIGuildChannel<GuildChannelType>[];
- const allRolesJson = (await allRolesFetch.json()) as APIRole[];
-
- const allRoles = allRolesJson
-  .map((role) => {
-   if (role.name === "@everyone") return null;
-   return {
-    id: role.id,
-    name: role.name,
-    color: role.color ? `#${role.color.toString(16).toUpperCase()}` : "#FFFFFF",
-   };
-  })
-  .filter(Boolean);
-
- const allChannels = allChannelsJson
-  .map((channel) => {
-   if (channel.type !== ChannelType.GuildText) return null;
-
-   return {
-    id: channel.id,
-    name: channel.name,
-   };
-  })
-  .filter(Boolean);
 
  return (
   <>
-   <Header1>
-    <Icons.bot className={iconVariants({ variant: "extraLarge" })} />
+   <Header className={cn(headerVariants({ variant: "h1", margin: "normal" }))}>
+    <Icons.Bot className={iconVariants({ variant: "extraLarge" })} />
     Automod
-   </Header1>
-   <Header5 className="mb-4 mt-2 !justify-start !text-left">
-    <span>Automatically moderate your server, block bad words, links and other things.</span>
-   </Header5>
-   <Block className="mb-4">
+   </Header>
+   <p className="mb-4 text-left text-base md:text-lg">Automatically moderate your server, block bad words, links and other things.</p>
+   <Block className="mb-6">
     {enabledAntiInvite ? ( // prettier
-     <AntiInvite serverId={serverDownload.id} existingExemptChannels={enabledAntiInvite.exempt_channels || []} existingExemptRoles={enabledAntiInvite.exempt_roles || []} enabled={enabledAntiInvite.enabled || false} existingActions={enabledAntiInvite.actions || []} allRoles={allRoles} allChannels={allChannels} />
+     <AntiInvite serverId={serverDownload.id} existingExemptChannels={enabledAntiInvite.exempt_channels} existingExemptRoles={enabledAntiInvite.exempt_roles} enabled={enabledAntiInvite.enabled} existingActions={enabledAntiInvite.actions} allRoles={allRoles} allChannels={allChannels} />
     ) : (
      <AntiInvite serverId={serverDownload.id} existingExemptChannels={[]} existingExemptRoles={[]} enabled={false} existingActions={[]} allRoles={allRoles} allChannels={allChannels} />
     )}
    </Block>
-   <Block className="mb-4">
+   <Block className="mb-6">
     {enabledAntiLink ? ( // prettier
-     <AntiLink serverId={serverDownload.id} existingExemptChannels={enabledAntiLink.exempt_channels || []} existingExemptRoles={enabledAntiLink.exempt_roles || []} enabled={enabledAntiLink.enabled || false} existingActions={enabledAntiLink.actions || []} allRoles={allRoles} allChannels={allChannels} />
+     <AntiLink serverId={serverDownload.id} existingExemptChannels={enabledAntiLink.exempt_channels} existingExemptRoles={enabledAntiLink.exempt_roles} enabled={enabledAntiLink.enabled} existingActions={enabledAntiLink.actions} allRoles={allRoles} allChannels={allChannels} />
     ) : (
      <AntiLink serverId={serverDownload.id} existingExemptChannels={[]} existingExemptRoles={[]} enabled={false} existingActions={[]} allRoles={allRoles} allChannels={allChannels} />
     )}
    </Block>
-   <Block className="mb-4">
-    <Header2>
-     <Icons.mention className={iconVariants({ variant: "large" })} />
-     Anti-Mention <NavBadge>Coming Soon</NavBadge>
-    </Header2>
-    <p className="mb-4 text-left">
-     <span>Automatically delete all messages containing user mentions.</span>
-    </p>
+   <Block className="mb-6">
+    {enabledAntiMention ? ( // prettier
+     <AntiMention serverId={serverDownload.id} existingExemptChannels={enabledAntiMention.exempt_channels} existingExemptRoles={enabledAntiMention.exempt_roles} enabled={enabledAntiMention.enabled} existingActions={enabledAntiMention.actions} allRoles={allRoles} allChannels={allChannels} />
+    ) : (
+     <AntiMention serverId={serverDownload.id} existingExemptChannels={[]} existingExemptRoles={[]} enabled={false} existingActions={[]} allRoles={allRoles} allChannels={allChannels} />
+    )}
    </Block>
-   <Block className="mb-4">
-    <Header2>
-     <Icons.messageOff className={iconVariants({ variant: "large" })} />
-     Anti-Spam <NavBadge>Coming Soon</NavBadge>
-    </Header2>
-    <p className="mb-4 text-left">
-     <span>Automatically delete all messages deemed as spam.</span>
-    </p>
+   <Block className="mb-6">
+    {enabledAntiSpam ? ( // prettier
+     <AntiSpam serverId={serverDownload.id} existingExemptChannels={enabledAntiSpam.exempt_channels} existingExemptRoles={enabledAntiSpam.exempt_roles} enabled={enabledAntiSpam.enabled} existingActions={enabledAntiSpam.actions} allRoles={allRoles} allChannels={allChannels} />
+    ) : (
+     <AntiSpam serverId={serverDownload.id} existingExemptChannels={[]} existingExemptRoles={[]} enabled={false} existingActions={[]} allRoles={allRoles} allChannels={allChannels} />
+    )}
    </Block>
-   <Block className="mb-4">
-    <Header2>
-     <Icons.shieldBan className={iconVariants({ variant: "large" })} />
-     Anti-Badwords <NavBadge>Coming Soon</NavBadge>
-    </Header2>
+   <Block className="mb-6">
+    <Header className={cn(headerVariants({ variant: "h2" }))}>
+     <Icons.ShieldBan className={iconVariants({ variant: "large" })} />
+     Anti-Badwords <Badge>Coming Soon</Badge>
+    </Header>
     <p className="mb-4 text-left">
      <span>Automatically delete all messages containing bad words or phrases.</span>
     </p>
