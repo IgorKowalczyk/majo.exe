@@ -14,8 +14,8 @@
  },
  "dependencies": {
   "tsx": "4.19.2",
-  "typescript": "5.6.3",
-  "@types/node": "22.9.1"
+  "typescript": "5.7.2",
+  "@types/node": "22.10.1"
  },
  "engines": {
   "node": ">=20"
@@ -36,5 +36,5 @@
   "url": "https://github.com/igorkowalczyk/majo.exe/issues"
  },
  "homepage": "https://github.com/igorkowalczyk/majo.exe#readme",
- "packageManager": "pnpm@9.14.2"
+ "packageManager": "pnpm@9.14.4"
 }
