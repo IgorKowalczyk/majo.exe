@@ -1,19 +1,26 @@
 "use client";
-import { useEffect, useState, useMemo } from "react";
+import React, { useEffect, useState, useMemo, HTMLAttributes } from "react";
 import Header, { headerVariants } from "@/components/ui/Headers";
 import { Icons, iconVariants } from "@/components/ui/Icons";
 import { InputWithIcon } from "@/components/ui/Input";
 import { Skeleton } from "@/components/ui/Skeletons";
 import { Tooltip } from "@/components/ui/Tooltip";
 import { cn } from "@/lib/utils";
+import { Command } from "@/lib/types";
+import { CommandCategories } from "@majoexe/database";
 
-export function DiscordCommands({ commands, categories }) {
- const [filteredCategories, setFilteredCategories] = useState([]);
+export interface DiscordCommandsProps extends HTMLAttributes<HTMLDivElement> {
+ commands: Command[];
+ categories: CommandCategories[];
+}
+
+export const DiscordCommands = React.forwardRef<HTMLDivElement, DiscordCommandsProps>(({ commands, categories, className, ...props }, ref) => {
+ const [filteredCategories, setFilteredCategories] = useState<CommandCategories[]>(categories);
  const [search, setSearch] = useState("");
  const [mounted, setMounted] = useState(false);
 
  const filteredCommands = useMemo(() => {
-  return commands.filter((command) => command.name.toLowerCase().includes(search.toLowerCase() || "") && filteredCategories?.some((category) => category.name === command.categoryName));
+  return commands.filter((command) => command.name.toLowerCase().includes(search.toLowerCase() || "") && filteredCategories.some((category) => category.name === command.categoryName));
  }, [search, commands, filteredCategories]);
 
  useEffect(() => {
@@ -58,7 +65,7 @@ export function DiscordCommands({ commands, categories }) {
  }
 
  return (
-  <>
+  <div ref={ref} className={cn(className)} {...props}>
    <InputWithIcon placeholder="Search commands..." value={search} onChange={(e) => setSearch(e.target.value)} icon={<Icons.Search className={iconVariants({ variant: "normal", className: "text-white/50" })} />} className="w-full !max-w-none" />
    <div className="mt-8 flex flex-wrap gap-2">
     {categories.map((category) => (
@@ -156,6 +163,6 @@ export function DiscordCommands({ commands, categories }) {
       ))}
     </>
    )}
-  </>
+  </div>
  );
-}
+});

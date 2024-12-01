@@ -49,7 +49,7 @@ export default async function CommandsPage() {
   return command;
  });
 
- commands = commands.filter((command) => !command.options?.some((option) => option.type === 1 || option.type === 2));
+ commands = commands.filter((command) => !command.options.some((option) => option.type === ApplicationCommandOptionType.Subcommand || option.type === ApplicationCommandOptionType.SubcommandGroup));
 
  const newCommands = [...commands, ...subCommands];
 

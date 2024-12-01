@@ -63,7 +63,7 @@
   "devDependencies": {
     "@majoexe/typescript-config": "workspace:*",
     "@next/bundle-analyzer": "15.0.3",
-    "@prisma/nextjs-monorepo-workaround-plugin": "5.22.0",
+    "@prisma/nextjs-monorepo-workaround-plugin": "6.0.0",
     "@tailwindcss/typography": "0.5.15",
     "@types/mdx": "2.0.13",
     "@types/react": "18.3.12",
