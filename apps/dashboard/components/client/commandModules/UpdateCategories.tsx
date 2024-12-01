@@ -1,12 +1,19 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import React, { useState } from "react";
 import { toast } from "sonner";
 import { Switch } from "@/components/ui/Switch";
 import { Tooltip } from "@/components/ui/Tooltip";
+import { Snowflake } from "discord-api-types/globals";
 
-export function UpdateCategories({ serverId, categoryName, categoryEnabled }) {
+export interface UpdateCategoriesProps extends React.HTMLAttributes<HTMLDivElement> {
+ serverId: Snowflake;
+ categoryName: string;
+ categoryEnabled: boolean;
+}
+
+export const UpdateCategories = React.forwardRef<HTMLDivElement, UpdateCategoriesProps>(({ serverId, categoryName, categoryEnabled, ...props }, ref) => {
  const [enabled, setEnabled] = useState(categoryEnabled);
  const [loading, setLoading] = useState(false);
  const router = useRouter();
@@ -53,10 +60,8 @@ export function UpdateCategories({ serverId, categoryName, categoryEnabled }) {
  };
 
  return (
-  <Tooltip content={enabled ? "Disable category" : loading ? "Changing status..." : "Enable category"}>
-   <span>
-    <Switch checked={enabled} disabled={loading} onChange={() => updateCategory()} />
-   </span>
+  <Tooltip content={enabled ? "Disable category" : loading ? "Changing status..." : "Enable category"} ref={ref} {...props}>
+   <Switch checked={enabled} disabled={loading} onChange={() => updateCategory()} />
   </Tooltip>
  );
-}
+});

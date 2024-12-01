@@ -1,12 +1,19 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import React, { useState } from "react";
 import { toast } from "sonner";
 import { Switch } from "@/components/ui/Switch";
 import { Tooltip } from "@/components/ui/Tooltip";
+import { Snowflake } from "discord-api-types/globals";
 
-export function UpdateCommands({ serverId, commandName, commandEnabled }) {
+export interface UpdateCommandsProps extends React.HTMLAttributes<HTMLDivElement> {
+ serverId: Snowflake;
+ commandName: string;
+ commandEnabled: boolean;
+}
+
+export const UpdateCommands = React.forwardRef<HTMLDivElement, UpdateCommandsProps>(({ serverId, commandName, commandEnabled, ...props }, ref) => {
  const [enabled, setEnabled] = useState(commandEnabled);
  const [loading, setLoading] = useState(false);
  const router = useRouter();
@@ -53,10 +60,8 @@ export function UpdateCommands({ serverId, commandName, commandEnabled }) {
  };
 
  return (
-  <Tooltip content={enabled ? "Disable command" : loading ? "Changing status..." : "Enable command"}>
-   <span>
-    <Switch checked={enabled} disabled={loading} onChange={() => updateCommand()} />
-   </span>
+  <Tooltip content={enabled ? "Disable command" : loading ? "Changing status..." : "Enable command"} ref={ref} {...props}>
+   <Switch checked={enabled} disabled={loading} onChange={() => updateCommand()} />
   </Tooltip>
  );
-}
+});
