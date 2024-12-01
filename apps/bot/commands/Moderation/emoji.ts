@@ -78,7 +78,7 @@ export default {
   if (!interaction.guild.members.me) return client.errorMessages.createSlashError(interaction, "❌ Unable to get server data. Please try again.");
 
   const subcommand = interaction.options.getSubcommand();
-  const memberPermissions = interaction.member.permissions as PermissionsBitField;
+  const memberPermissions = interaction.memberPermissions || new PermissionsBitField();
 
   // #region Create
   if (subcommand === "create") {

@@ -28,7 +28,7 @@ export default {
    if (!interaction.guildId) return client.errorMessages.createSlashError(interaction, "❌ Unable to get server data. Please try again.");
    if (!interaction.guild.members.me) return client.errorMessages.createSlashError(interaction, "❌ Unable to get server data. Please try again.");
 
-   const memberPermissions = interaction.member.permissions as PermissionsBitField;
+   const memberPermissions = interaction.memberPermissions || new PermissionsBitField();
 
    if (!memberPermissions.has(PermissionsBitField.Flags.ManageGuild)) return client.errorMessages.createSlashError(interaction, "❌ You don't have permission to use this command. You need `Manage Server` permission");
    if (!interaction.guild.members.me.permissions.has(PermissionsBitField.Flags.ManageGuild)) return client.errorMessages.createSlashError(interaction, "❌ I don't have permission to change settings. Please give me `Manage Server` permission");

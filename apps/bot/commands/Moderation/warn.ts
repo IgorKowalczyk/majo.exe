@@ -83,7 +83,7 @@ export default {
    if (!interaction.member) return client.errorMessages.createSlashError(interaction, "❌ You must be in a server to use this command.");
    if (!interaction.guild.members.me) return client.errorMessages.createSlashError(interaction, "❌ Unable to get server data. Please try again.");
 
-   const userPermissions = interaction.member.permissions as PermissionsBitField;
+   const userPermissions = interaction.memberPermissions || new PermissionsBitField();
 
    if (!userPermissions.has(PermissionsBitField.Flags.ManageGuild)) {
     return client.errorMessages.createSlashError(interaction, "❌ You don't have permission to use this command. You need `Manage Server` permission");

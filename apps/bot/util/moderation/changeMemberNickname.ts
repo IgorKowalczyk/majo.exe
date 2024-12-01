@@ -19,7 +19,7 @@ export async function changememberNickname(client: Majobot, interaction: ChatInp
     return client.errorMessages.createSlashError(interaction, "❌ You need to provide a nickname to set");
    }
 
-   const memberPermissions = interaction.member.permissions as PermissionsBitField;
+   const memberPermissions = interaction.memberPermissions || new PermissionsBitField();
    const memberRoles = interaction.member.roles as GuildMemberRoleManager;
 
    if (!memberPermissions.has(PermissionsBitField.Flags.ManageNicknames)) {
@@ -66,7 +66,7 @@ export async function changememberNickname(client: Majobot, interaction: ChatInp
     return client.errorMessages.createSlashError(interaction, "❌ You need to provide a user to kick");
    }
 
-   const memberPermissions = interaction.member.permissions as PermissionsBitField;
+   const memberPermissions = interaction.memberPermissions || new PermissionsBitField();
    const memberRoles = interaction.member.roles as GuildMemberRoleManager;
 
    if (!memberPermissions.has(PermissionsBitField.Flags.ManageNicknames)) {

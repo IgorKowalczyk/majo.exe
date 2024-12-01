@@ -65,7 +65,7 @@ export default {
    const components: ButtonBuilder[] = [];
 
    if (client.config.url) {
-    const userPermissions = interaction.member.permissions as PermissionsBitField;
+    const userPermissions = interaction.memberPermissions || new PermissionsBitField();
 
     if (userPermissions.has(PermissionsBitField.Flags.Administrator) || userPermissions.has(PermissionsBitField.Flags.ManageGuild)) {
      components.push(

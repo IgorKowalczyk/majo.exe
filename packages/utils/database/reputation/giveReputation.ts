@@ -1,23 +1,15 @@
 import prismaClient from "@majoexe/database";
+import { APIUser, Snowflake } from "discord-api-types/v10";
+import type { User } from "discord.js";
+import { isAPIUser } from "../../functions/user";
 
-/**
- * Gives reputation to a user in a guild.
- *
- * @param {Object} user - The user object containing user details.
- * @param {string} user.id - The ID of the user.
- * @param {string} user.username - The username of the user.
- * @param {string | null} [user.globalName] - The global name of the user.
- * @param {string} user.discriminator - The discriminator of the user.
- * @param {string | null} user.avatar - The avatar of the user.
- * @param {Object} guild - The guild object containing guild details.
- * @returns {Promise<number>} - Returns the updated reputation of the user in the guild.
- * @throws {Error} - Throws an error if the operation fails.
- */
-export async function giveReputation(user, guild) {
+export async function giveReputation(user: APIUser | User, guildId: Snowflake) {
  try {
+  const globalName = (isAPIUser(user) ? user.global_name : user.globalName) || user.username;
+
   const rep = await prismaClient.reputation.findFirst({
    where: {
-    guildId: guild.id,
+    guildId: guildId,
     userId: user.id,
    },
   });
@@ -28,10 +20,10 @@ export async function giveReputation(user, guild) {
      guild: {
       connectOrCreate: {
        where: {
-        guildId: guild.id,
+        guildId: guildId,
        },
        create: {
-        guildId: guild.id,
+        guildId: guildId,
        },
       },
      },
@@ -43,7 +35,7 @@ export async function giveReputation(user, guild) {
        create: {
         discordId: user.id,
         name: user.username,
-        global_name: user.globalName || user.username,
+        global_name: globalName,
         avatar: user.avatar,
         discriminator: user.discriminator,
        },

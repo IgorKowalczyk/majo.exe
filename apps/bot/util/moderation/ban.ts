@@ -13,7 +13,7 @@ export async function banMember(client: Majobot, interaction: ChatInputCommandIn
    return client.errorMessages.createSlashError(interaction, "❌ You need to provide a user to ban");
   }
 
-  const memberPermissions = interaction.member.permissions as PermissionsBitField;
+  const memberPermissions = interaction.memberPermissions || new PermissionsBitField();
 
   if (!memberPermissions.has(PermissionsBitField.Flags.BanMembers)) {
    return client.errorMessages.createSlashError(interaction, "❌ You don't have permission to ban members");

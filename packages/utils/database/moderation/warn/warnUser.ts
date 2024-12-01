@@ -1,18 +1,11 @@
 import prismaClient from "@majoexe/database";
+import type { APIUser, Snowflake } from "discord-api-types/v10";
+import type { User } from "discord.js";
+import { isAPIUser } from "../../../functions/user";
 
-/**
- * Warns a user in a guild.
- *
- * @param {string} guildId - The ID of the guild.
- * @param {Object} user - The user to be warned.
- * @param {string} reason - The reason for the warning.
- * @param {string} warnedBy - The ID of the user who issued the warning.
- * @returns {Promise<any>}
- *  A promise that resolves to the created warning.
- * @throws {Error} If there is an error in creating the warning.
- */
-export async function warnUser(guildId, user, reason, warnedBy) {
+export async function warnUser(guildId: Snowflake, user: APIUser | User, reason: string, warnedBy: Snowflake) {
  try {
+  const globalName = (isAPIUser(user) ? user.global_name : user.globalName) || user.username;
   const warning = await prismaClient.guildWarns.findMany({
    where: {
     guildId,
@@ -26,7 +19,7 @@ export async function warnUser(guildId, user, reason, warnedBy) {
    },
   });
 
-  const warnNumber = warning.length === 0 ? 1 : warning[0].warnId + 1;
+  const warnNumber = warning && warning[0] ? (warning.length === 0 ? 1 : warning[0].warnId + 1) : 1;
 
   const createdWarning = await prismaClient.guildWarns.create({
    data: {
@@ -48,7 +41,7 @@ export async function warnUser(guildId, user, reason, warnedBy) {
       create: {
        discordId: user.id,
        name: user.username,
-       global_name: user.globalName || user.username,
+       global_name: globalName,
        discriminator: user.discriminator,
       },
      },

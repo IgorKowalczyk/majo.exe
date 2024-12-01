@@ -1,5 +1,5 @@
 // Settings
-export * from "./settings/XPSettings.js";
+export * from "./settings/XPSettings";
 
 // Logs
 export * from "./logs/fetchLogs";
@@ -12,7 +12,7 @@ export * from "./moderation/automod/syncDatabaseAutoModRule";
 export * from "./moderation/automod/updateDatabaseAutoModRule";
 
 // Warnings
-export * from "./moderation/warn/warnUser.js";
+export * from "./moderation/warn/warnUser";
 export * from "./moderation/warn/clearWarns";
 export * from "./moderation/warn/listWarns";
 export * from "./moderation/warn/removeWarn";
@@ -23,9 +23,9 @@ export * from "./xp/resetXP";
 
 // Reputation
 export * from "./reputation/checkReputation";
-export * from "./reputation/give.js";
-export * from "./reputation/take.js";
-export * from "./reputation/set";
+export * from "./reputation/giveReputation";
+export * from "./reputation/takeReputation";
+export * from "./reputation/setReputation";
 
 // User
-export * from "./user/createUser.js";
+export * from "./user/createUser";
