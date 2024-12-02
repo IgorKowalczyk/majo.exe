@@ -30,6 +30,10 @@ import { cn } from "@/lib/utils";
 import { NumberTicker } from "@/components/ui/effects/NumberTicker";
 import FlickeringGrid from "@/components/ui/effects/FlickeringGrid";
 import { Block } from "@/components/ui/Block";
+import { BorderBeam } from "@/components/ui/effects/BorderBeam";
+import { AnimatedBeamMultipleOutputDemo } from "./_components/Replaces";
+import Meteors from "@/components/ui/effects/Meteors";
+import Ripple from "@/components/ui/effects/Ripple";
 
 export default async function HomePage() {
  const exampleLogs = [
@@ -148,39 +152,44 @@ export default async function HomePage() {
    </div>
    <div className="relative z-20 bg-background-primary">
     <hr className="m-[0_auto] mb-8 h-px w-full border-none bg-[linear-gradient(to_right,transparent,rgba(255,255,255,0.1)_50%,transparent)] px-8 duration-300 motion-reduce:transition-none" />
-
-    <div className="mx-auto max-w-7xl pb-10 md:px-8 lg:px-16">
+    <div className="mx-auto max-w-[1400px] pb-10 md:px-8 lg:px-16 mb-32">
      <div className="mx-auto flex flex-col justify-around gap-4 md:flex-row">
       <div className="flex flex-col items-center justify-center gap-4">
        <Header className={headerVariants({ variant: "h2", effects: "gradient" })}>
-        <Suspense fallback={<span>{jsonData.approximate_guild_count || 0}</span>}>
-         <NumberTicker value={jsonData.approximate_guild_count || 0} />
-        </Suspense>
-        + servers
+        <span>
+         <Suspense fallback={<span>{jsonData.approximate_guild_count || 0}</span>}>
+          <NumberTicker value={jsonData.approximate_guild_count || 0} />
+         </Suspense>
+         + servers
+        </span>
        </Header>
       </div>
       <div className="flex flex-col items-center justify-center gap-4">
        <Header className={headerVariants({ variant: "h2", effects: "gradient" })}>
-        <Suspense fallback={<span>{commandsCount}</span>}>
-         <NumberTicker value={commandsCount} />
-        </Suspense>
-        + commands
+        <span>
+         <Suspense fallback={<span>{commandsCount}</span>}>
+          <NumberTicker value={commandsCount} />
+         </Suspense>
+         + commands
+        </span>
        </Header>
       </div>
 
       <div className="flex flex-col items-center justify-center gap-4">
        <Header className={headerVariants({ variant: "h2", effects: "gradient" })}>
-        <Suspense fallback={<span>100000</span>}>
-         <NumberTicker value={100000} />
-        </Suspense>
-        + users
+        <span>
+         <Suspense fallback={<span>100000</span>}>
+          <NumberTicker value={100000} />
+         </Suspense>
+         + users
+        </span>
        </Header>
       </div>
      </div>
 
-     <p className="my-6 w-full text-center text-white/70">...and counting!</p>
+     <p className="my-6 w-full text-neutral-400 text-center text-sm">...and counting!</p>
 
-     <div className="mx-auto flex w-full max-w-7xl flex-col gap-4 px-4 md:grid md:grid-cols-2 md:px-0 lg:grid-cols-3">
+     <div className="mx-auto flex w-full max-w-[1400px] flex-col gap-4 px-4 md:grid md:grid-cols-2 md:px-0 lg:grid-cols-3">
       <div className="row-span-1 overflow-hidden rounded-xl border border-neutral-800 bg-background-secondary p-4 duration-200 hover:bg-neutral-800/50">
        <Header className={headerVariants({ variant: "h2", effects: "gradient" })}>Image manipulation? We got you!</Header>
        <p className="mt-2 max-w-[680px] text-white/70">Want to edit an image? Or maybe you want to make a meme?</p>
@@ -202,10 +211,10 @@ export default async function HomePage() {
            </span>
            <span className="ml-2 text-sm text-gray-400">Today at 4:20 PM</span>
           </div>
-          <span className="ml-2 flex items-center gap-2 text-gray-400">
+          <span className="ml-2 flex items-center gap-1  text-neutral-400">
            Generating image
            <Link href="/assets/avatars/cheese.jpeg" target="_blank" rel="noopener noreferrer">
-            <Typing />
+            <Typing className="mx-2" />
            </Link>
           </span>
          </div>
@@ -255,21 +264,25 @@ export default async function HomePage() {
          </p>
         </div>
        </div>
-       <svg viewBox="0 0 512 120" fill="none" xmlns="http://www.w3.org/2000/svg" className="absolute inset-x-0 bottom-0">
-        <g id="Frame" clipPath="url(#chart-clip)">
-         <path d="M0 119.141C5.632 118.328 16.896 116.991 28.16 115.076C39.424 113.162 45.056 110.603 56.32 109.569C67.584 108.535 73.216 111.017 84.48 109.907C95.744 108.798 101.376 105.376 112.64 104.021C123.904 102.666 129.536 105.474 140.8 103.131C152.064 100.787 157.696 93.9799 168.96 92.3035C180.224 90.628 185.856 95.9134 197.12 94.7504C208.384 93.5865 214.016 89.5922 225.28 86.4866C236.544 83.3811 242.176 82.357 253.44 79.2217C264.704 76.0863 270.336 70.9047 281.6 70.8081C292.864 70.7125 298.496 79.698 309.76 78.7399C321.024 77.7817 326.656 72.4313 337.92 66.0162C349.184 59.6012 354.816 48.3726 366.08 46.6665C377.344 44.9603 382.976 58.2199 394.24 57.4845C405.504 56.7501 411.136 50.4054 422.4 42.9925C433.664 35.5796 439.296 22.542 450.56 20.418C461.824 18.2941 467.456 31.6818 478.72 32.3747C489.984 33.0686 506.368 22.9011 512 21.203V120H0V119.141Z" fill={globalConfig.defaultColor} fillOpacity="0.1" />
-         <path d="M-10 121.5C-4.368 120.687 16.896 116.991 28.16 115.076C39.424 113.162 45.056 110.603 56.32 109.569C67.584 108.535 73.216 111.017 84.48 109.907C95.744 108.798 101.376 105.376 112.64 104.021C123.904 102.666 129.536 105.474 140.8 103.131C152.064 100.787 157.696 93.9799 168.96 92.3035C180.224 90.628 185.856 95.9134 197.12 94.7504C208.384 93.5865 214.016 89.5922 225.28 86.4866C236.544 83.3811 242.176 82.357 253.44 79.2217C264.704 76.0863 270.336 70.9047 281.6 70.8081C292.864 70.7125 298.496 79.698 309.76 78.7399C321.024 77.7817 326.656 72.4313 337.92 66.0162C349.184 59.6012 354.816 48.3726 366.08 46.6665C377.344 44.9603 382.976 58.2199 394.24 57.4845C405.504 56.7501 411.136 50.4054 422.4 42.9925C433.664 35.5796 439.296 22.542 450.56 20.418C461.824 18.2941 467.456 31.6818 478.72 32.3747C489.984 33.0686 509.568 22.1161 515.2 20.418" stroke={globalConfig.defaultColor} strokeWidth="2" />
-        </g>
-        <defs>
-         <clipPath id="chart-clip">
-          <rect width="512" height="120" fill="white" />
-         </clipPath>
-        </defs>
-       </svg>
-
+       <Suspense fallback={<div className="h-56 w-full rounded-xl border border-neutral-800 bg-background-secondary" />}>
+        <AreaChart
+         className="absolute inset-x-0 bottom-0 scale-105"
+         data={Array.from({ length: 30 }, (_, i) => ({
+          date: new Date(Date.now() - i * 86400000).toISOString().split("T")[0],
+          Joins: Math.floor(pseudoRandom(i / 1.33)),
+         }))}
+         dataKey="date"
+         categories={["Joins"]}
+         yAxisWidth={50}
+         showYAxis={false}
+         showXAxis={false}
+         showGrid={false}
+         type="monotoneX"
+        />
+       </Suspense>
        <div className="absolute inset-0 z-10 m-auto mt-[100px] size-[980px] rounded-full bg-[#ddd] opacity-5 blur-3xl" />
       </div>
-      <div className="relative col-span-2 row-span-1 overflow-hidden rounded-xl border border-neutral-800 bg-background-secondary px-8 py-6 duration-200 hover:bg-neutral-800/50 lg:col-span-1">
+      <div className="relative col-span-2 row-span-1 overflow-hidden rounded-xl border border-neutral-800 bg-background-secondary px-8 py-6 pb-2 duration-200 hover:bg-neutral-800/50 lg:col-span-1">
        <Header className={headerVariants({ variant: "h2", margin: "normal", effects: "gradient" })}>Giveaways? Why not?</Header>
        <p className="mt-2 max-w-[680px] text-white/70">Want to host a giveaway or a drop? Majo.exe can help you with that! You can easily create and moderate giveaways with few simple commands!</p>
        <div className="my-6 flex items-center gap-1">
@@ -304,8 +317,8 @@ export default async function HomePage() {
      </div>
     </div>
 
-    <div className="mx-auto mt-12 pb-10 md:px-8 lg:px-16">
-     <Header className={headerVariants({ variant: "medium", margin: "normal", alignment: "center", effects: "gradient" })}>
+    <div className="mx-auto mt-12 max-w-[1400px] pb-10 md:px-8 lg:px-16 mb-32">
+     {/* <Header className={headerVariants({ variant: "medium", margin: "normal", alignment: "center" })}>
       Trusted by more than <span className="bg-gradient-to-b from-accent-primary to-accent-primary box-decoration-clone bg-clip-text text-fill-transparent">{formatNumber(jsonData.approximate_guild_count || 0)}+</span> servers
      </Header>
      <p className="mb-6 mt-3 w-full text-center text-white/70">
@@ -319,9 +332,9 @@ export default async function HomePage() {
       Add to your server
      </Link>
 
-     <Icons.arrowDown className="mx-auto mt-12 size-8 animate-bounce text-accent-primary" />
+     <Icons.arrowDown className="mx-auto mt-12 size-8 animate-bounce text-accent-primary" /> */}
 
-     <div className="mx-auto my-16 flex max-w-7xl flex-col gap-8 px-4 lg:flex-row lg:gap-16 lg:px-0">
+     <div className="mx-auto my-16 mt-32 flex max-w-[1400px] flex-col gap-8 px-4 lg:flex-row lg:gap-16 lg:px-0">
       <div className="flex w-full flex-col justify-center gap-2 lg:w-2/5">
        <Header className={headerVariants({ variant: "h1", margin: "normal", effects: "gradient" })}>See what's happening in your server</Header>
        <p className="text-white/70">With Majo.exe you can see your server statistics in real-time. You can see the most active members, the most used channels and much more!</p>
@@ -345,7 +358,7 @@ export default async function HomePage() {
       </div>
      </div>
 
-     <div className="mx-auto my-16 flex max-w-7xl flex-col-reverse gap-6 px-4 lg:flex-row lg:gap-16 lg:px-0">
+     <div className="mx-auto my-16 flex max-w-[1400px] flex-col-reverse gap-6 px-4 lg:flex-row lg:gap-16 lg:px-0">
       <div className="w-full lg:w-3/5">
        {exampleLogs.map((log) => (
         <LogDisclosure item={log} key={log.id} preview={true} guildId="123" />
@@ -356,6 +369,17 @@ export default async function HomePage() {
        <p className="text-white/70">Majo.exe has a powerful logging system that will keep track of everything that happens in your server. You can easily see who did what and when!</p>
       </div>
      </div>
+
+     <div className="mx-auto my-16 mt-32 flex max-w-[1400px] flex-col gap-8 px-4 lg:flex-row lg:gap-16 lg:px-0">
+      <div className="flex w-full flex-col justify-center gap-2 lg:w-2/5">
+       <Header className={headerVariants({ variant: "h1", margin: "normal", effects: "gradient" })}>Why so many bots?</Header>
+       <p className="text-white/70">Majo.exe with its many features can replace many bots on your server. You can have moderation, leveling, image manipulation and much more in one bot!</p>
+      </div>
+      <div className="w-full relative overflow-hidden rounded-xl border border-neutral-800 bg-background-secondary py-6 px-8 duration-200 lg:w-3/5">
+       <Ripple className="opacity-30" />
+       <AnimatedBeamMultipleOutputDemo />
+      </div>
+     </div>
     </div>
    </div>
    <div className="mx-auto pb-10 md:px-8 lg:px-16">
@@ -364,10 +388,10 @@ export default async function HomePage() {
     <Faq />
    </div>
 
-   <div className="h-[600px] border border-neutral-800 mx-auto bg-transparent mt-12 pb-10 md:px-8 lg:px-16 relative rounded-3xl max-w-6xl overflow-hidden">
+   <div className="h-[600px] border border-neutral-800 shadow-2xl mx-auto bg-transparent mt-12 pb-10 md:px-8 lg:px-16 relative rounded-3xl max-w-6xl overflow-hidden">
     <div className="flex flex-col items-center justify-center pt-20">
      <Header className={headerVariants({ variant: "medium", margin: "normal", alignment: "center" })}>What are you waiting for?</Header>
-     <p className="mb-6 text-lg mt-3 w-full text-center text-neutral-200">
+     <p className="mb-6 text-lg w-full text-center text-neutral-300">
       <Balancer>Don't wait ages to add Majo.exe to your server! Invite it now and see it in action!</Balancer>
      </p>
 
@@ -380,7 +404,7 @@ export default async function HomePage() {
     <div className="relative mt-16 flex w-full justify-center overflow-hidden lg:px-16">
      <Image src="/assets/images/dash.png" alt="Dashboard" width={1844} height={962} className="size-full rounded-md border object-cover border-neutral-800 object-top shadow-lg" loading="lazy" />
     </div>
-
+    <BorderBeam colorFrom={globalConfig.defaultColor} colorTo={globalConfig.defaultColor} size={450} borderWidth={1.7} />
     <FlickeringGrid width={1200} height={800} squareSize={3} color={"#737373"} className="pointer-events-none absolute inset-0 bg-background-secondary -z-10 opacity-70 size-full" />
     <div className="to-[hsla(202, 36%, 96%, 1)] absolute inset-0 -z-10 size-full bg-gradient-to-b from-accent-primary/15" />
    </div>

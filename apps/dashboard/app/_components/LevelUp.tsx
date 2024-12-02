@@ -1,10 +1,16 @@
 "use client";
 
-import { useState } from "react";
+import React, { useState } from "react";
 import { toast } from "sonner";
 import Image from "@/components/ui/Image";
+import { cn } from "@/lib/utils";
 
-export function LevelUp({ avatar, username }: { avatar: string; username: string }) {
+export interface LevelUpProps extends React.HTMLAttributes<HTMLDivElement> {
+ avatar: string;
+ username: string;
+}
+
+export const LevelUp = React.forwardRef<HTMLDivElement, LevelUpProps>(({ avatar, username, className, ...props }, ref) => {
  const [level, setLevel] = useState<number>(2);
  const [xp, setXp] = useState<number>(46);
 
@@ -17,17 +23,17 @@ export function LevelUp({ avatar, username }: { avatar: string; username: string
  };
 
  return (
-  <div className="mt-6 flex flex-row items-center gap-1">
+  <div className={cn("mt-6 flex flex-row items-center gap-1", className)} ref={ref} {...props}>
    <Image src={avatar} alt="User avatar" quality={40} width={40} height={64} className="size-10 shrink-0 self-baseline rounded-full" />
    <span className="ml-2">
     <span className="font-bold">{username}</span> leveled up to <span className="font-bold text-accent-primary [font-feature-settings:'tnum']">level {level}</span>{" "}
     <span onClick={setIt} className="cursor-pointer select-none">
      🔥
     </span>
-    <span className="relative mt-2 block h-2 w-full rounded-full bg-[#2b2d31]">
+    <span className="relative mt-3 block h-2 w-full rounded-full bg-[#2b2d31]">
      <span className="absolute inset-0 h-2 rounded-full bg-accent-primary duration-500" style={{ width: `${xp}%` }} />
     </span>
    </span>
   </div>
  );
-}
+});
