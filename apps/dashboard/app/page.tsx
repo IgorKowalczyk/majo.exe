@@ -31,7 +31,7 @@ import { NumberTicker } from "@/components/ui/effects/NumberTicker";
 import FlickeringGrid from "@/components/ui/effects/FlickeringGrid";
 import { Block } from "@/components/ui/Block";
 import { BorderBeam } from "@/components/ui/effects/BorderBeam";
-import { AnimatedBeamMultipleOutputDemo } from "./_components/Replaces";
+import { BotReplacement } from "./_components/BotReplacement";
 import Meteors from "@/components/ui/effects/Meteors";
 import Ripple from "@/components/ui/effects/Ripple";
 
@@ -152,7 +152,7 @@ export default async function HomePage() {
    </div>
    <div className="relative z-20 bg-background-primary">
     <hr className="m-[0_auto] mb-8 h-px w-full border-none bg-[linear-gradient(to_right,transparent,rgba(255,255,255,0.1)_50%,transparent)] px-8 duration-300 motion-reduce:transition-none" />
-    <div className="mx-auto max-w-[1400px] pb-10 md:px-8 lg:px-16 mb-32">
+    <div className="mx-auto max-w-[1400px] md:px-8 lg:px-16 mb-32">
      <div className="mx-auto flex flex-col justify-around gap-4 md:flex-row">
       <div className="flex flex-col items-center justify-center gap-4">
        <Header className={headerVariants({ variant: "h2", effects: "gradient" })}>
@@ -317,7 +317,7 @@ export default async function HomePage() {
      </div>
     </div>
 
-    <div className="mx-auto mt-12 max-w-[1400px] pb-10 md:px-8 lg:px-16 mb-32">
+    <div className="mx-auto max-w-[1400px] md:px-8 lg:px-16 mb-32">
      {/* <Header className={headerVariants({ variant: "medium", margin: "normal", alignment: "center" })}>
       Trusted by more than <span className="bg-gradient-to-b from-accent-primary to-accent-primary box-decoration-clone bg-clip-text text-fill-transparent">{formatNumber(jsonData.approximate_guild_count || 0)}+</span> servers
      </Header>
@@ -334,7 +334,7 @@ export default async function HomePage() {
 
      <Icons.arrowDown className="mx-auto mt-12 size-8 animate-bounce text-accent-primary" /> */}
 
-     <div className="mx-auto my-16 mt-32 flex max-w-[1400px] flex-col gap-8 px-4 lg:flex-row lg:gap-16 lg:px-0">
+     <div className="flex flex-col gap-8 lg:flex-row lg:gap-16 lg:px-0 mx-auto my-16 px-4">
       <div className="flex w-full flex-col justify-center gap-2 lg:w-2/5">
        <Header className={headerVariants({ variant: "h1", margin: "normal", effects: "gradient" })}>See what's happening in your server</Header>
        <p className="text-white/70">With Majo.exe you can see your server statistics in real-time. You can see the most active members, the most used channels and much more!</p>
@@ -358,7 +358,7 @@ export default async function HomePage() {
       </div>
      </div>
 
-     <div className="mx-auto my-16 flex max-w-[1400px] flex-col-reverse gap-6 px-4 lg:flex-row lg:gap-16 lg:px-0">
+     <div className="flex flex-col gap-8 lg:flex-row lg:gap-16 lg:px-0 mx-auto my-16 px-4">
       <div className="w-full lg:w-3/5">
        {exampleLogs.map((log) => (
         <LogDisclosure item={log} key={log.id} preview={true} guildId="123" />
@@ -370,43 +370,46 @@ export default async function HomePage() {
       </div>
      </div>
 
-     <div className="mx-auto my-16 mt-32 flex max-w-[1400px] flex-col gap-8 px-4 lg:flex-row lg:gap-16 lg:px-0">
+     <div className="flex flex-col gap-8 lg:flex-row lg:gap-16 lg:px-0 mx-auto my-16 px-4">
       <div className="flex w-full flex-col justify-center gap-2 lg:w-2/5">
-       <Header className={headerVariants({ variant: "h1", margin: "normal", effects: "gradient" })}>Why so many bots?</Header>
+       <Header className={headerVariants({ variant: "h1", margin: "normal", effects: "gradient" })}>Why so many unnecessary bots?</Header>
        <p className="text-white/70">Majo.exe with its many features can replace many bots on your server. You can have moderation, leveling, image manipulation and much more in one bot!</p>
       </div>
       <div className="w-full relative overflow-hidden rounded-xl border border-neutral-800 bg-background-secondary py-6 px-8 duration-200 lg:w-3/5">
        <Ripple className="opacity-30" />
-       <AnimatedBeamMultipleOutputDemo />
+       <BotReplacement />
       </div>
      </div>
     </div>
    </div>
-   <div className="mx-auto pb-10 md:px-8 lg:px-16">
-    <Header className={headerVariants({ variant: "medium", margin: "normal", alignment: "center", effects: "gradient" })}>Frequently asked questions</Header>
 
-    <Faq />
-   </div>
+   <div className="mx-auto max-w-[1400px] md:px-8 lg:px-16 mb-32">
+    <div>
+     <Header className={headerVariants({ variant: "medium", margin: "normal", alignment: "center", effects: "gradient" })}>Frequently asked questions</Header>
 
-   <div className="h-[600px] border border-neutral-800 shadow-2xl mx-auto bg-transparent mt-12 pb-10 md:px-8 lg:px-16 relative rounded-3xl max-w-6xl overflow-hidden">
-    <div className="flex flex-col items-center justify-center pt-20">
-     <Header className={headerVariants({ variant: "medium", margin: "normal", alignment: "center" })}>What are you waiting for?</Header>
-     <p className="mb-6 text-lg w-full text-center text-neutral-300">
-      <Balancer>Don't wait ages to add Majo.exe to your server! Invite it now and see it in action!</Balancer>
-     </p>
-
-     <Link href="/api/invite" className={cn(buttonVariants({ variant: "primary" }), "mx-auto w-fit")}>
-      <Icons.userAdd className={iconVariants({ variant: "button" })} />
-      Add to your server
-     </Link>
+     <Faq />
     </div>
 
-    <div className="relative mt-16 flex w-full justify-center overflow-hidden lg:px-16">
-     <Image src="/assets/images/dash.png" alt="Dashboard" width={1844} height={962} className="size-full rounded-md border object-cover border-neutral-800 object-top shadow-lg" loading="lazy" />
+    <div className="h-[600px] border border-neutral-800 shadow-2xl mx-auto bg-transparent mt-32 pb-10 md:px-8 lg:px-16 relative rounded-3xl max-w-6xl overflow-hidden">
+     <div className="flex flex-col items-center justify-center pt-20">
+      <Header className={headerVariants({ variant: "medium", margin: "normal", alignment: "center" })}>What are you waiting for?</Header>
+      <p className="mb-6 text-lg w-full text-center text-neutral-300">
+       <Balancer>Don't wait ages to add Majo.exe to your server! Invite it now and see it in action!</Balancer>
+      </p>
+
+      <Link href="/api/invite" className={cn(buttonVariants({ variant: "primary" }), "mx-auto w-fit")}>
+       <Icons.userAdd className={iconVariants({ variant: "button" })} />
+       Add to your server
+      </Link>
+     </div>
+
+     <div className="relative mt-16 flex w-full justify-center overflow-hidden lg:px-16">
+      <Image src="/assets/images/dash.png" alt="Dashboard" width={1844} height={962} className="size-full rounded-md border object-cover border-neutral-800 object-top shadow-lg" loading="lazy" />
+     </div>
+     <BorderBeam colorFrom={globalConfig.defaultColor} colorTo={globalConfig.defaultColor} size={450} borderWidth={1.7} />
+     <FlickeringGrid width={1200} height={800} squareSize={3} color={"#737373"} className="pointer-events-none absolute inset-0 bg-background-secondary -z-10 opacity-70 size-full" />
+     <div className="to-[hsla(202, 36%, 96%, 1)] absolute inset-0 -z-10 size-full bg-gradient-to-b from-accent-primary/15" />
     </div>
-    <BorderBeam colorFrom={globalConfig.defaultColor} colorTo={globalConfig.defaultColor} size={450} borderWidth={1.7} />
-    <FlickeringGrid width={1200} height={800} squareSize={3} color={"#737373"} className="pointer-events-none absolute inset-0 bg-background-secondary -z-10 opacity-70 size-full" />
-    <div className="to-[hsla(202, 36%, 96%, 1)] absolute inset-0 -z-10 size-full bg-gradient-to-b from-accent-primary/15" />
    </div>
   </>
  );

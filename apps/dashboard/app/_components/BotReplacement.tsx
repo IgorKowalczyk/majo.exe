@@ -10,7 +10,7 @@ import { globalConfig } from "@majoexe/config";
 
 const Circle = forwardRef<HTMLDivElement, { className?: string; children?: React.ReactNode }>(({ className, children }, ref) => {
  return (
-  <div ref={ref} className={cn("z-10 flex size-14 items-center justify-center rounded-full border-2 border-neutral-800 bg-background-secondary shadow-[0_0_20px_-12px_rgba(0,0,0,0.8)]", className)}>
+  <div ref={ref} className={cn("z-10 flex size-14 items-center justify-center rounded-full border-2 border-neutral-800 bg-background-secondary", className)}>
    {children}
   </div>
  );
@@ -18,7 +18,7 @@ const Circle = forwardRef<HTMLDivElement, { className?: string; children?: React
 
 Circle.displayName = "Circle";
 
-export function AnimatedBeamMultipleOutputDemo({ className }: { className?: string }) {
+export function BotReplacement({ className }: { className?: string }) {
  const containerRef = useRef<HTMLDivElement>(null);
  const div1Ref = useRef<HTMLDivElement>(null);
  const div2Ref = useRef<HTMLDivElement>(null);
