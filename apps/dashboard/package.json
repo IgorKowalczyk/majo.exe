@@ -26,6 +26,7 @@
     "@next/mdx": "15.0.3",
     "@odiffey/discord-markdown": "3.3.0",
     "@playwright/test": "1.49.0",
+    "@radix-ui/react-accordion": "^1.2.1",
     "@radix-ui/react-tooltip": "1.1.4",
     "@tanstack/react-table": "8.20.5",
     "@tippyjs/react": "4.2.6",

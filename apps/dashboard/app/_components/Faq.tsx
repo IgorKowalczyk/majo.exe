@@ -1,7 +1,8 @@
 "use client";
 
-import { Disclosure, DisclosureButton, DisclosurePanel, Transition } from "@headlessui/react";
 import { Icons } from "@/components/ui/Icons";
+import * as Accordion from "@radix-ui/react-accordion";
+import Link from "next/link";
 
 export default function Faq() {
  const items = [
@@ -28,23 +29,28 @@ export default function Faq() {
  ];
 
  return (
-  <div className="mx-auto mt-9 w-full max-w-xl divide-y divide-neutral-800 rounded-xl">
-   {items.map((item) => (
-    <Disclosure as="div" key={`faq-${item.question}`} className="p-6 py-3">
-     {({ open }) => (
-      <>
-       <DisclosureButton className="group flex w-full items-center justify-between">
-        <span className="font-medium text-white duration-200 group-data-[hover]:text-white/80 motion-reduce:duration-0">{item.question}</span>
-        {open ? <Icons.Minus className="size-5 fill-white/60 duration-200 group-data-[hover]:fill-white/50 motion-reduce:duration-0" /> : <Icons.Minus className="size-5 fill-white/60 duration-200 group-data-[hover]:fill-white/50 motion-reduce:duration-0" />}
-       </DisclosureButton>
+  <div className="mx-auto mt-9 w-full max-w-3xl rounded-xl">
+   {items.map((item, index) => (
+    <Accordion.Root type="single" defaultValue="item-1" collapsible key={`faq-${item.question}`}>
+     <Accordion.Item className="border-b border-neutral-800" value={`item-${index + 1}`}>
+      <Accordion.Header className="flex">
+       <Accordion.Trigger className="font-medium py-4 p-6 [&[data-state=open]>svg]:rotate-180 text-white duration-200 w-full flex items-center justify-between">
+        {item.question}
+        <Icons.ChevronDown className="size-4 duration-200" />
+       </Accordion.Trigger>
+      </Accordion.Header>
 
-       <Transition enter="transition duration-100 ease-out" enterFrom="transform scale-95 opacity-0" enterTo="w-full transform scale-100 opacity-100" leave="w-full transition duration-75 ease-out" leaveFrom="transform scale-100 opacity-100" leaveTo="w-full transform scale-95 opacity-0">
-        <DisclosurePanel className="mt-2 origin-top text-white/60">{item.answer}</DisclosurePanel>
-       </Transition>
-      </>
-     )}
-    </Disclosure>
+      <Accordion.Content className=" px-6 transition-all data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down pb-3 origin-top text-neutral-400">{item.answer} </Accordion.Content>
+     </Accordion.Item>
+    </Accordion.Root>
    ))}
+
+   <div className="mt-6 text-neutral-400 text-center text-sm">
+    Have more questions?{" "}
+    <Link href="/contact" className="underline">
+     Contact us.
+    </Link>
+   </div>
   </div>
  );
 }

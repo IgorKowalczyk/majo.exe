@@ -8,6 +8,7 @@ import avatar03 from "public/assets/avatars/03.webp";
 import avatar05 from "public/assets/avatars/05.webp";
 import ray from "public/assets/ray.png";
 import tada from "public/assets/tada.svg";
+import dashImage from "public/assets/images/dash.png";
 import tadaAnimated from "public/assets/tada_animated.gif";
 import { Suspense } from "react";
 import Balancer from "react-wrap-balancer";
@@ -26,6 +27,9 @@ import Image from "@/components/ui/Image";
 import { Typing } from "@/components/ui/Loaders";
 import { Command } from "@/lib/types";
 import { cn } from "@/lib/utils";
+import { NumberTicker } from "@/components/ui/effects/NumberTicker";
+import FlickeringGrid from "@/components/ui/effects/FlickeringGrid";
+import { Block } from "@/components/ui/Block";
 
 export default async function HomePage() {
  const exampleLogs = [
@@ -148,14 +152,29 @@ export default async function HomePage() {
     <div className="mx-auto max-w-7xl pb-10 md:px-8 lg:px-16">
      <div className="mx-auto flex flex-col justify-around gap-4 md:flex-row">
       <div className="flex flex-col items-center justify-center gap-4">
-       <Header className={headerVariants({ variant: "h2", effects: "gradient" })}>{formatNumber(jsonData.approximate_guild_count || 0)}+ servers</Header>
+       <Header className={headerVariants({ variant: "h2", effects: "gradient" })}>
+        <Suspense fallback={<span>{jsonData.approximate_guild_count || 0}</span>}>
+         <NumberTicker value={jsonData.approximate_guild_count || 0} />
+        </Suspense>
+        + servers
+       </Header>
       </div>
       <div className="flex flex-col items-center justify-center gap-4">
-       <Header className={headerVariants({ variant: "h2", effects: "gradient" })}>{formatNumber(commandsCount)}+ commands</Header>
+       <Header className={headerVariants({ variant: "h2", effects: "gradient" })}>
+        <Suspense fallback={<span>{commandsCount}</span>}>
+         <NumberTicker value={commandsCount} />
+        </Suspense>
+        + commands
+       </Header>
       </div>
 
       <div className="flex flex-col items-center justify-center gap-4">
-       <Header className={headerVariants({ variant: "h2", effects: "gradient" })}>{formatNumber(100000)}+ users</Header>
+       <Header className={headerVariants({ variant: "h2", effects: "gradient" })}>
+        <Suspense fallback={<span>100000</span>}>
+         <NumberTicker value={100000} />
+        </Suspense>
+        + users
+       </Header>
       </div>
      </div>
 
@@ -345,16 +364,25 @@ export default async function HomePage() {
     <Faq />
    </div>
 
-   <div className="mx-auto mt-12 pb-10 md:px-8 lg:px-16">
-    <Header className={headerVariants({ variant: "medium", margin: "normal", alignment: "center", effects: "gradient" })}>What are you waiting for?</Header>
-    <p className="mb-6 mt-3 w-full text-center text-white/70">
-     <Balancer>Don't wait ages to add Majo.exe to your server! Invite it now and see it in action!</Balancer>
-    </p>
+   <div className="h-[600px] border border-neutral-800 mx-auto bg-transparent mt-12 pb-10 md:px-8 lg:px-16 relative rounded-3xl max-w-6xl overflow-hidden">
+    <div className="flex flex-col items-center justify-center pt-20">
+     <Header className={headerVariants({ variant: "medium", margin: "normal", alignment: "center" })}>What are you waiting for?</Header>
+     <p className="mb-6 text-lg mt-3 w-full text-center text-neutral-200">
+      <Balancer>Don't wait ages to add Majo.exe to your server! Invite it now and see it in action!</Balancer>
+     </p>
 
-    <Link href="/api/invite" className={cn(buttonVariants({ variant: "primary" }), "mx-auto w-fit")}>
-     <Icons.userAdd className={iconVariants({ variant: "button" })} />
-     Add to your server
-    </Link>
+     <Link href="/api/invite" className={cn(buttonVariants({ variant: "primary" }), "mx-auto w-fit")}>
+      <Icons.userAdd className={iconVariants({ variant: "button" })} />
+      Add to your server
+     </Link>
+    </div>
+
+    <div className="relative mt-16 flex w-full justify-center overflow-hidden lg:px-16">
+     <Image src="/assets/images/dash.png" alt="Dashboard" width={1844} height={962} className="size-full rounded-md border object-cover border-neutral-800 object-top shadow-lg" loading="lazy" />
+    </div>
+
+    <FlickeringGrid width={1200} height={800} squareSize={3} color={"#737373"} className="pointer-events-none absolute inset-0 bg-background-secondary -z-10 opacity-70 size-full" />
+    <div className="to-[hsla(202, 36%, 96%, 1)] absolute inset-0 -z-10 size-full bg-gradient-to-b from-accent-primary/15" />
    </div>
   </>
  );
