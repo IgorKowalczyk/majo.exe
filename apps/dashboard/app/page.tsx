@@ -34,6 +34,9 @@ import { BorderBeam } from "@/components/ui/effects/BorderBeam";
 import { BotReplacement } from "./_components/BotReplacement";
 import Meteors from "@/components/ui/effects/Meteors";
 import Ripple from "@/components/ui/effects/Ripple";
+import { WordPullUp } from "@/components/ui/effects/WordPullUp";
+import { Fade } from "@/components/ui/effects/FadeText";
+import Particles from "@/components/ui/effects/Particles";
 
 export default async function HomePage() {
  const exampleLogs = [
@@ -121,33 +124,58 @@ export default async function HomePage() {
 
  return (
   <>
-   <div className="relative z-20 flex min-h-screen w-full items-center justify-center before:absolute before:z-10 before:size-full before:opacity-5 before:grayscale before:md:bg-grid-[#fff]">
+   <div className="relative z-20 flex min-h-screen w-full items-center justify-center">
     <div className="absolute left-0 top-0 z-10 size-full bg-[radial-gradient(circle,rgba(2,0,36,0)0,rgb(16,17,16,100%))]" />
     <div className="relative z-20 -mt-8 flex w-full select-none flex-col items-center justify-center gap-4 px-3 md:w-[90%]">
-     <Link href="/api/invite" className={cn("group rounded-full border border-white/5 bg-neutral-900 text-base text-white transition-all ease-in hover:cursor-pointer hover:bg-neutral-800")}>
-      <AnimatedShinyText className="inline-flex items-center justify-center px-4 py-1 transition ease-out hover:text-neutral-400 hover:duration-300">
-       <span>✨ Introducing Majo.exe</span>
-       <Icons.arrowRight className={iconVariants({ variant: "normal", className: "-mr-1 ml-1 transition-transform ease-in-out group-hover:translate-x-0.5" })} />
-      </AnimatedShinyText>
-     </Link>
-
-     <Header className={cn(headerVariants({ variant: "big", alignment: "center", effects: "gradient" }), "!font-black !leading-snug")}>The only one Discord Bot</Header>
-     <Header className={cn(headerVariants({ variant: "h2", alignment: "center" }), "max-w-[680px] font-normal text-white/70")}>
-      <Balancer>Majo.exe will not only keep your server entertained but also assist you with moderation and many other things!</Balancer>
-     </Header>
-     <div className="mt-2 flex flex-col gap-4 sm:flex-row">
-      <LoginButton />
-      <Link href="/api/invite" className={cn(buttonVariants({ variant: "secondary" }))}>
-       <Icons.userAdd className={iconVariants({ variant: "button" })} />
-       Add to your server
+     <Fade
+      framerProps={{
+       show: { opacity: 1, transition: { type: "spring", delay: 0.85, duration: 0.5 } },
+      }}
+     >
+      <Link href="/api/invite" className={cn("group rounded-full border flex transition-all ease-in hover:cursor-pointer  border-neutral-800 bg-neutral-900 hover:border-neutral-700 hover:bg-neutral-800")}>
+       <AnimatedShinyText className="inline-flex items-center justify-center px-4 py-1 transition ease-out hover:duration-300 hover:text-neutral-400">
+        <span>✨ Introducing Majo.exe</span>
+        <Icons.arrowRight className={iconVariants({ variant: "normal", className: "-mr-1 ml-1 transition-transform ease-in-out group-hover:translate-x-0.5" })} />
+       </AnimatedShinyText>
       </Link>
-     </div>
+     </Fade>
+     <WordPullUp wordsClassName={cn(headerVariants({ variant: "big", alignment: "center", effects: "gradient" }), "!font-black !leading-snug")} words="The only one Discord Bot" />
+     {/* <Header className=>The only one Discord Bot</Header> */}
+     <Fade
+      framerProps={{
+       show: { opacity: 1, transition: { type: "spring", delay: 0.9, duration: 0.5 } },
+      }}
+     >
+      <Header className={cn(headerVariants({ variant: "h2", alignment: "center" }), "max-w-[680px] font-normal text-white/70")}>Majo.exe will not only keep your server entertained but also assist you with moderation and many other things!</Header>
+     </Fade>
+     <Fade
+      framerProps={{
+       show: { opacity: 1, transition: { type: "spring", delay: 0.95, duration: 0.5 } },
+      }}
+     >
+      <div className="mt-2 flex flex-col gap-4 sm:flex-row">
+       <LoginButton />
+       <Link href="/api/invite" className={cn(buttonVariants({ variant: "secondary" }))}>
+        <Icons.userAdd className={iconVariants({ variant: "button" })} />
+        Add to your server
+       </Link>
+      </div>
+     </Fade>
     </div>
+    <Particles className="absolute inset-0" quantity={200} ease={80} color={"#fff"} refresh />
+
     <Image alt="Background" width={1000} height={1000} className="pointer-events-none absolute inset-x-0 -top-20 z-0 mx-auto hidden size-full select-none lg:block" src={ray.src} loading="eager" />
+
     <div className="absolute bottom-0 z-10 hidden min-h-[500px] w-full translate-y-1/2 flex-col items-center justify-center md:flex">
-     <Image src="/assets/images/globe.png" alt="Globe" width={750} height={750} className="aspect-square max-w-full" loading="lazy" />
-     {/* <GlobeClient /> */}
-     <div className="absolute inset-0 -z-10 m-auto mt-[100px] size-[580px] rounded-full bg-[#ddd] opacity-5 blur-3xl" />
+     <Fade
+      framerProps={{
+       show: { opacity: 1, transition: { type: "spring", delay: 1, duration: 0.5 } },
+      }}
+     >
+      <Image src="/assets/images/globe.png" alt="Globe" width={750} height={750} className="aspect-square max-w-full" loading="lazy" />
+      {/* <GlobeClient /> */}
+      <div className="absolute inset-0 -z-10 m-auto mt-[100px] size-[580px] rounded-full bg-[#ddd] opacity-5 blur-3xl" />
+     </Fade>
     </div>
    </div>
    <div className="relative z-20 bg-background-primary">

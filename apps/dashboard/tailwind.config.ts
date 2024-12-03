@@ -38,7 +38,7 @@ const tailwindConfig = {
     "main-gradient": "linear-gradient(180deg, #101110 calc(100% - 400px), #161617 100%);",
    },
    animation: {
-    shimmerText: "shimmerText 8s infinite",
+    "shiny-text": "shiny-text 8s infinite",
     "accordion-down": "accordion-down 0.2s ease-out",
     "accordion-up": "accordion-up 0.2s ease-out",
     "border-beam": "border-beam calc(var(--duration)*1s) infinite linear",
@@ -53,12 +53,12 @@ const tailwindConfig = {
      },
     },
 
-    shimmerText: {
+    "shiny-text": {
      "0%, 90%, 100%": {
-      "background-position": "calc(-100% - var(--shimmer-width)) 0",
+      "background-position": "calc(-100% - var(--shiny-width)) 0",
      },
      "30%, 60%": {
-      "background-position": "calc(100% + var(--shimmer-width)) 0",
+      "background-position": "calc(100% + var(--shiny-width)) 0",
      },
     },
 
