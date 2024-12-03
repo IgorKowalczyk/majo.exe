@@ -134,8 +134,8 @@ importers:
         specifier: 8.3.0
         version: 8.3.0
       node-gyp:
-        specifier: 10.2.0
-        version: 10.2.0
+        specifier: 10.3.1
+        version: 10.3.1
 
   apps/dashboard:
     dependencies:
@@ -5089,8 +5089,8 @@ packages:
     resolution: {integrity: sha512-dPEtOeMvF9VMcYV/1Wb8CPoVAXtp6MKMlcbAt4ddqmGqUJ6fQZFXkNZNkNlfevtNkGtaSoXf/vNNNSvgrdXwtA==}
     engines: {node: '>= 6.13.0'}
 
-  node-gyp@10.2.0:
-    resolution: {integrity: sha512-sp3FonBAaFe4aYTcFdZUn2NYkbP7xroPGYvQmP4Nl5PxamznItBnNCgjrVTKrEfQynInMsJvZrdmqUnysCJ8rw==}
+  node-gyp@10.3.1:
+    resolution: {integrity: sha512-Pp3nFHBThHzVtNY7U6JfPjvT/DTE8+o/4xKsLQtBoU+j2HLsGlhcfzflAoUreaJbNmYnX+LlLi0qjV8kpyO6xQ==}
     engines: {node: ^16.14.0 || >=18.0.0}
     hasBin: true
 
@@ -12288,7 +12288,7 @@ snapshots:
 
   node-forge@1.3.1: {}
 
-  node-gyp@10.2.0:
+  node-gyp@10.3.1:
     dependencies:
       env-paths: 2.2.1
       exponential-backoff: 3.1.1
