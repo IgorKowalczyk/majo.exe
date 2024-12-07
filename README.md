@@ -54,20 +54,21 @@ Ensure your setup meets these prerequisites before setting up Majo.exe:
 
 ## 🔒 Global `.env` file
 
-| Variable                    | Description                                      | Required (Bot) | Required (Dashboard) |
-| --------------------------- | ------------------------------------------------ | -------------- | -------------------- |
-| `TOKEN`                     | Discord bot token                                | `✅ Yes`       | `✅ Yes`             |
-| `CLIENT_ID`                 | Discord client ID                                | `✅ Yes`       | `✅ Yes`             |
-| `CLIENT_SECRET`             | Discord client secret                            | `❌ No`        | `✅ Yes`             |
-| `DATABASE_URL`              | Main database connection string                  | `✅ Yes`       | `✅ Yes`             |
-| `DATABASE_URL_UNPOOLED`     | Non-pooling database connection string           | `❌ No`        | `❌ No`              |
-| `REDIS_URL`¹                | Redis Cache connection string                    | `❌ No`        | `❌ No`              |
-| `SECRET`                    | Secret string (minimum 32 characters)            | `❌ No`        | `✅ Yes`             |
-| `NEXTAUTH_URL`              | NextAuth.js URL (e.g., http://localhost:3000)    | `❌ No`        | `✅ Yes`             |
-| `NEXT_PUBLIC_URL`           | Next.js public URL (e.g., http://localhost:3000) | `❌ No`²       | `✅ Yes`             |
-| `HOTJAR_ID`                 | [Hotjar](https://hotjar.com) ID                  | `❌ No`        | `❌ No`              |
-| `DISCORD_SUPPORT_SERVER_ID` | Discord support server ID                        | `❌ No`        | `❌ No`³             |
-| `TOPGG_API_KEY`             | [top.gg](https://top.gg) API key                 | `❌ No`        | `❌ No`⁴             |
+| Variable                    | Description                                              | Required (Bot) | Required (Dashboard) |
+| --------------------------- | -------------------------------------------------------- | -------------- | -------------------- |
+| `TOKEN`                     | Discord bot token                                        | `✅ Yes`       | `✅ Yes`             |
+| `CLIENT_ID`                 | Discord client ID                                        | `✅ Yes`       | `✅ Yes`             |
+| `CLIENT_SECRET`             | Discord client secret                                    | `❌ No`        | `✅ Yes`             |
+| `DATABASE_URL`              | Main database connection string                          | `✅ Yes`       | `✅ Yes`             |
+| `DATABASE_URL_UNPOOLED`     | Non-pooling database connection string                   | `❌ No`        | `❌ No`              |
+| `REDIS_URL`¹                | Redis Cache connection string                            | `❌ No`        | `❌ No`              |
+| `SECRET`                    | Secret string (minimum 32 characters)                    | `❌ No`        | `✅ Yes`             |
+| `NEXTAUTH_URL`              | NextAuth.js URL (e.g., http://localhost:3000)            | `❌ No`        | `✅ Yes`             |
+| `NEXT_PUBLIC_URL`           | Next.js public URL (e.g., http://localhost:3000)         | `❌ No`²       | `✅ Yes`             |
+| `HOTJAR_ID`                 | [Hotjar](https://hotjar.com) ID                          | `❌ No`        | `❌ No`              |
+| `DISCORD_SUPPORT_SERVER_ID` | Discord support server ID                                | `❌ No`        | `❌ No`³             |
+| `TOPGG_API_KEY`             | [top.gg](https://top.gg) API key                         | `❌ No`        | `❌ No`⁴             |
+| `DISCORD_BOT_LIST_API_KEY`  | [discordbotlist.com](https://discordbotlist.com) API key | `❌ No`        | `❌ No`⁵             |
 
 <!-- prettier-ignore-start -->
 > [!NOTE]
@@ -75,6 +76,7 @@ Ensure your setup meets these prerequisites before setting up Majo.exe:
 > 2. `NEXT_PUBLIC_URL` is required only if you want to also include the dashboard.  
 > 3. `DISCORD_SUPPORT_SERVER_ID` is required only if you want to automatically add users to your own Discord server when they log in to the dashboard. Please note that the bot needs `Manage Server` permission in the server!\
 > 4. `TOPGG_API_KEY` is required only if you want to automatically post server count to [top.gg](https://top.gg).
+> 5. `DISCORD_BOT_LIST_API_KEY` is required only if you want to automatically post server count, stats and more to [discordbotlist.com](https://discordbotlist.com).
 
 <!-- prettier-ignore-end -->
 

@@ -55,6 +55,7 @@ services:
    # - REDIS_URL=${REDIS_URL}
 
    - TOPGG_API_KEY=${TOPGG_API_KEY}
+   - DISCORD_BOT_LIST_API_KEY=${DISCORD_BOT_LIST_API_KEY}
   container_name: majoexe-bot
   build:
    context: .
