@@ -40,7 +40,6 @@ export async function ready(client: Majobot) {
  }
 
  setInterval(async () => {
-  console.log(client.user);
   if (process.env.DISCORD_BOT_LIST_API_KEY && client.user) {
    client.debugger("info", "Posting stats to discordbotlist.com");
    await postBotStats(process.env.DISCORD_BOT_LIST_API_KEY, client.user.id, {
