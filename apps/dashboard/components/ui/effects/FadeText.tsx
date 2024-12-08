@@ -1,7 +1,7 @@
 "use client";
 
-import React, { useMemo } from "react";
 import { motion, Variants } from "framer-motion";
+import React, { useMemo } from "react";
 
 interface FadeTextProps extends React.HTMLAttributes<HTMLDivElement> {
  framerProps?: Variants;

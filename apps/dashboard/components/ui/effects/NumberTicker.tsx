@@ -1,8 +1,7 @@
 "use client";
 
-import { useEffect, useRef } from "react";
 import { useInView, useMotionValue, useSpring } from "framer-motion";
-
+import { useEffect, useRef } from "react";
 import { cn } from "@/lib/utils";
 
 export function NumberTicker({
@@ -18,7 +17,7 @@ export function NumberTicker({
  delay?: number; // delay in s
  decimalPlaces?: number;
 }) {
- const ref = useRef<HTMLSpanElement>(null);
+ const ref = useRef<HTMLSpanElement>(null as unknown as HTMLSpanElement);
  const motionValue = useMotionValue(direction === "down" ? value : 0);
  const springValue = useSpring(motionValue, {
   damping: 60,
@@ -27,10 +26,12 @@ export function NumberTicker({
  const isInView = useInView(ref, { once: true, margin: "0px" });
 
  useEffect(() => {
-  isInView &&
-   setTimeout(() => {
+  if (isInView) {
+   const timeoutId = setTimeout(() => {
     motionValue.set(direction === "down" ? 0 : value);
    }, delay * 1000);
+   return () => clearTimeout(timeoutId);
+  }
  }, [motionValue, isInView, delay, value, direction]);
 
  useEffect(

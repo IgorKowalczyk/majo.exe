@@ -1,5 +1,4 @@
 import React, { CSSProperties } from "react";
-
 import { cn } from "@/lib/utils";
 
 interface RippleProps {
@@ -22,7 +21,7 @@ const Ripple = React.memo(function Ripple({ mainCircleSize = 210, mainCircleOpac
     return (
      <div
       key={i}
-      className={`absolute animate-ripple rounded-full bg-foreground/25 shadow-xl border [--i:${i}]`}
+      className={`bg-foreground/25 [--i: absolute animate-ripple rounded-full border shadow-xl${i}]`}
       style={
        {
         width: `${size}px`,

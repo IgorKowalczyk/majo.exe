@@ -1,6 +1,6 @@
 import { dashboardConfig, globalConfig } from "@majoexe/config";
 import prismaClient from "@majoexe/database";
-import { formatNumber, pseudoRandom } from "@majoexe/util/functions/util";
+import { pseudoRandom } from "@majoexe/util/functions/util";
 import { ApplicationCommandOptionType } from "discord-api-types/v10";
 import Link from "next/link";
 import avatar01 from "public/assets/avatars/01.webp";
@@ -8,10 +8,10 @@ import avatar03 from "public/assets/avatars/03.webp";
 import avatar05 from "public/assets/avatars/05.webp";
 import ray from "public/assets/ray.png";
 import tada from "public/assets/tada.svg";
-import dashImage from "public/assets/images/dash.png";
 import tadaAnimated from "public/assets/tada_animated.gif";
 import { Suspense } from "react";
 import Balancer from "react-wrap-balancer";
+import { BotReplacement } from "./_components/BotReplacement";
 import { AddReaction } from "@/app/_components/AddReaction";
 import Faq from "@/app/_components/Faq";
 import { LevelUp } from "@/app/_components/LevelUp";
@@ -21,22 +21,19 @@ import { LoginButton } from "@/components/LoginButton";
 import { AreaChart } from "@/components/ui/AreaChart";
 import { buttonVariants } from "@/components/ui/Buttons";
 import { AnimatedShinyText } from "@/components/ui/effects/AnimatedShinyText";
+import { BorderBeam } from "@/components/ui/effects/BorderBeam";
+import { Fade } from "@/components/ui/effects/FadeText";
+import FlickeringGrid from "@/components/ui/effects/FlickeringGrid";
+import { NumberTicker } from "@/components/ui/effects/NumberTicker";
+import Particles from "@/components/ui/effects/Particles";
+import Ripple from "@/components/ui/effects/Ripple";
+import { WordPullUp } from "@/components/ui/effects/WordPullUp";
 import Header, { headerVariants } from "@/components/ui/Headers";
 import { Icons, iconVariants } from "@/components/ui/Icons";
 import Image from "@/components/ui/Image";
 import { Typing } from "@/components/ui/Loaders";
 import { Command } from "@/lib/types";
 import { cn } from "@/lib/utils";
-import { NumberTicker } from "@/components/ui/effects/NumberTicker";
-import FlickeringGrid from "@/components/ui/effects/FlickeringGrid";
-import { Block } from "@/components/ui/Block";
-import { BorderBeam } from "@/components/ui/effects/BorderBeam";
-import { BotReplacement } from "./_components/BotReplacement";
-import Meteors from "@/components/ui/effects/Meteors";
-import Ripple from "@/components/ui/effects/Ripple";
-import { WordPullUp } from "@/components/ui/effects/WordPullUp";
-import { Fade } from "@/components/ui/effects/FadeText";
-import Particles from "@/components/ui/effects/Particles";
 
 export default async function HomePage() {
  const exampleLogs = [
@@ -133,7 +130,7 @@ export default async function HomePage() {
       }}
      >
       <Link href="/api/invite" className={cn("group rounded-full border flex transition-all ease-in hover:cursor-pointer  border-neutral-800 bg-neutral-900 hover:border-neutral-700 hover:bg-neutral-800")}>
-       <AnimatedShinyText className="inline-flex items-center justify-center px-4 py-1 transition ease-out hover:duration-300 hover:text-neutral-400">
+       <AnimatedShinyText className="inline-flex items-center justify-center px-4 py-1 transition ease-out hover:text-neutral-400 hover:duration-300">
         <span>✨ Introducing Majo.exe</span>
         <Icons.arrowRight className={iconVariants({ variant: "normal", className: "-mr-1 ml-1 transition-transform ease-in-out group-hover:translate-x-0.5" })} />
        </AnimatedShinyText>
@@ -180,7 +177,7 @@ export default async function HomePage() {
    </div>
    <div className="relative z-20 bg-background-primary">
     <hr className="m-[0_auto] mb-8 h-px w-full border-none bg-[linear-gradient(to_right,transparent,rgba(255,255,255,0.1)_50%,transparent)] px-8 duration-300 motion-reduce:transition-none" />
-    <div className="mx-auto max-w-[1400px] md:px-8 lg:px-16 mb-32">
+    <div className="mx-auto mb-32 max-w-[1400px] md:px-8 lg:px-16">
      <div className="mx-auto flex flex-col justify-around gap-4 md:flex-row">
       <div className="flex flex-col items-center justify-center gap-4">
        <Header className={headerVariants({ variant: "h2", effects: "gradient" })}>
@@ -215,7 +212,7 @@ export default async function HomePage() {
       </div>
      </div>
 
-     <p className="my-6 w-full text-neutral-400 text-center text-sm">...and counting!</p>
+     <p className="my-6 w-full text-center text-sm text-neutral-400">...and counting!</p>
 
      <div className="mx-auto flex w-full max-w-[1400px] flex-col gap-4 px-4 md:grid md:grid-cols-2 md:px-0 lg:grid-cols-3">
       <div className="row-span-1 overflow-hidden rounded-xl border border-neutral-800 bg-background-secondary p-4 duration-200 hover:bg-neutral-800/50">
@@ -345,7 +342,7 @@ export default async function HomePage() {
      </div>
     </div>
 
-    <div className="mx-auto max-w-[1400px] md:px-8 lg:px-16 mb-32">
+    <div className="mx-auto mb-32 max-w-[1400px] md:px-8 lg:px-16">
      {/* <Header className={headerVariants({ variant: "medium", margin: "normal", alignment: "center" })}>
       Trusted by more than <span className="bg-gradient-to-b from-accent-primary to-accent-primary box-decoration-clone bg-clip-text text-fill-transparent">{formatNumber(jsonData.approximate_guild_count || 0)}+</span> servers
      </Header>
@@ -362,7 +359,7 @@ export default async function HomePage() {
 
      <Icons.arrowDown className="mx-auto mt-12 size-8 animate-bounce text-accent-primary" /> */}
 
-     <div className="flex flex-col gap-8 lg:flex-row lg:gap-16 lg:px-0 mx-auto my-16 px-4">
+     <div className="mx-auto my-16 flex flex-col gap-8 px-4 lg:flex-row lg:gap-16 lg:px-0">
       <div className="flex w-full flex-col justify-center gap-2 lg:w-2/5">
        <Header className={headerVariants({ variant: "h1", margin: "normal", effects: "gradient" })}>See what's happening in your server</Header>
        <p className="text-white/70">With Majo.exe you can see your server statistics in real-time. You can see the most active members, the most used channels and much more!</p>
@@ -386,7 +383,7 @@ export default async function HomePage() {
       </div>
      </div>
 
-     <div className="flex flex-col gap-8 lg:flex-row lg:gap-16 lg:px-0 mx-auto my-16 px-4">
+     <div className="mx-auto my-16 flex flex-col gap-8 px-4 lg:flex-row lg:gap-16 lg:px-0">
       <div className="w-full lg:w-3/5">
        {exampleLogs.map((log) => (
         <LogDisclosure item={log} key={log.id} preview={true} guildId="123" />
@@ -398,12 +395,12 @@ export default async function HomePage() {
       </div>
      </div>
 
-     <div className="flex flex-col gap-8 lg:flex-row lg:gap-16 lg:px-0 mx-auto my-16 px-4">
+     <div className="mx-auto my-16 flex flex-col gap-8 px-4 lg:flex-row lg:gap-16 lg:px-0">
       <div className="flex w-full flex-col justify-center gap-2 lg:w-2/5">
        <Header className={headerVariants({ variant: "h1", margin: "normal", effects: "gradient" })}>Why so many unnecessary bots?</Header>
        <p className="text-white/70">Majo.exe with its many features can replace many bots on your server. You can have moderation, leveling, image manipulation and much more in one bot!</p>
       </div>
-      <div className="w-full relative overflow-hidden rounded-xl border border-neutral-800 bg-background-secondary py-6 px-8 duration-200 lg:w-3/5">
+      <div className="relative w-full overflow-hidden rounded-xl border border-neutral-800 bg-background-secondary px-8 py-6 duration-200 lg:w-3/5">
        <Ripple className="opacity-30" />
        <BotReplacement />
       </div>
@@ -411,17 +408,17 @@ export default async function HomePage() {
     </div>
    </div>
 
-   <div className="mx-auto max-w-[1400px] md:px-8 lg:px-16 mb-32">
+   <div className="mx-auto mb-32 max-w-[1400px] md:px-8 lg:px-16">
     <div>
      <Header className={headerVariants({ variant: "medium", margin: "normal", alignment: "center", effects: "gradient" })}>Frequently asked questions</Header>
 
      <Faq />
     </div>
 
-    <div className="h-[600px] border border-neutral-800 shadow-2xl mx-auto bg-transparent mt-32 pb-10 md:px-8 lg:px-16 relative rounded-3xl max-w-6xl overflow-hidden">
+    <div className="relative mx-auto mt-32 h-[600px] max-w-6xl overflow-hidden rounded-3xl border border-neutral-800 bg-transparent pb-10 shadow-2xl md:px-8 lg:px-16">
      <div className="flex flex-col items-center justify-center pt-20">
       <Header className={headerVariants({ variant: "medium", margin: "normal", alignment: "center" })}>What are you waiting for?</Header>
-      <p className="mb-6 text-lg w-full text-center text-neutral-300">
+      <p className="mb-6 w-full text-center text-lg text-neutral-300">
        <Balancer>Don't wait ages to add Majo.exe to your server! Invite it now and see it in action!</Balancer>
       </p>
 
@@ -432,10 +429,10 @@ export default async function HomePage() {
      </div>
 
      <div className="relative mt-16 flex w-full justify-center overflow-hidden lg:px-16">
-      <Image src="/assets/images/dash.png" alt="Dashboard" width={1844} height={962} className="size-full rounded-md border object-cover border-neutral-800 object-top shadow-lg" loading="lazy" />
+      <Image src="/assets/images/dash.png" alt="Dashboard" width={1844} height={962} className="size-full rounded-md border border-neutral-800 object-cover object-top shadow-lg" loading="lazy" />
      </div>
      <BorderBeam colorFrom={globalConfig.defaultColor} colorTo={globalConfig.defaultColor} size={450} borderWidth={1.7} />
-     <FlickeringGrid width={1200} height={800} squareSize={3} color={"#737373"} className="pointer-events-none absolute inset-0 bg-background-secondary -z-10 opacity-70 size-full" />
+     <FlickeringGrid width={1200} height={800} squareSize={3} color={"#737373"} className="pointer-events-none absolute inset-0 -z-10 size-full bg-background-secondary opacity-70" />
      <div className="to-[hsla(202, 36%, 96%, 1)] absolute inset-0 -z-10 size-full bg-gradient-to-b from-accent-primary/15" />
     </div>
    </div>

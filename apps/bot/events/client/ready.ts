@@ -1,7 +1,7 @@
-import { PresenceUpdateStatus, ActivityType } from "discord.js";
-import type { Majobot } from "@/index";
-import { postBotCommands, postBotStats } from "discordbotlist";
 import topggSDK from "@top-gg/sdk";
+import { PresenceUpdateStatus, ActivityType, RESTPutAPIApplicationCommandsJSONBody } from "discord.js";
+import { postBotCommands, postBotStats } from "discordbotlist";
+import type { Majobot } from "@/index";
 
 export async function ready(client: Majobot) {
  if (!client.user) return client.debugger("error", "Client user is not available!");
@@ -47,7 +47,7 @@ export async function ready(client: Majobot) {
     users: client.users.cache.size,
    });
 
-   await postBotCommands(process.env.DISCORD_BOT_LIST_API_KEY, client.user.id, client.slashCommands.map((command) => command) as any);
+   await postBotCommands(process.env.DISCORD_BOT_LIST_API_KEY, client.user.id, client.slashCommands.map((command) => command) as RESTPutAPIApplicationCommandsJSONBody);
   }
  }, 300000); // 5 minutes
 

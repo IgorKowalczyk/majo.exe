@@ -23,7 +23,7 @@ const FlickeringGrid: React.FC<FlickeringGridProps> = ({ squareSize = 4, gridGap
  const memoizedColor = useMemo(() => {
   const toRGBA = (color: string) => {
    if (typeof window === "undefined") {
-    return `rgba(0, 0, 0,`;
+    return "rgba(0, 0, 0,";
    }
    const canvas = document.createElement("canvas");
    canvas.width = canvas.height = 1;
@@ -146,7 +146,7 @@ const FlickeringGrid: React.FC<FlickeringGridProps> = ({ squareSize = 4, gridGap
  }, [setupCanvas, updateSquares, drawGrid, width, height, isInView]);
 
  return (
-  <div ref={containerRef} className={`w-full h-full ${className}`}>
+  <div ref={containerRef} className={`size-full ${className}`}>
    <canvas
     ref={canvasRef}
     className="pointer-events-none"

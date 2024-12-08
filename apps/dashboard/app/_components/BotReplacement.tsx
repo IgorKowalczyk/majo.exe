@@ -1,12 +1,12 @@
 "use client";
 
-import React, { forwardRef, useRef } from "react";
-import avatar from "public/assets/avatar.png";
-import { Icons } from "@/components/ui/Icons";
-import { cn } from "@/lib/utils";
-import { AnimatedBeam } from "@/components/ui/effects/AnimatedBeam";
-import Image from "@/components/ui/Image";
 import { globalConfig } from "@majoexe/config";
+import avatar from "public/assets/avatar.png";
+import React, { forwardRef, useRef } from "react";
+import { AnimatedBeam } from "@/components/ui/effects/AnimatedBeam";
+import { Icons } from "@/components/ui/Icons";
+import Image from "@/components/ui/Image";
+import { cn } from "@/lib/utils";
 
 const Circle = forwardRef<HTMLDivElement, { className?: string; children?: React.ReactNode }>(({ className, children }, ref) => {
  return (
@@ -30,7 +30,7 @@ export function BotReplacement({ className }: { className?: string }) {
 
  return (
   <div className={cn("relative flex items-center justify-center overflow-hidden", className)} ref={containerRef}>
-   <div className="flex size-full flex-row items-stretch justify-between gap-10 max-w-lg">
+   <div className="flex size-full max-w-lg flex-row items-stretch justify-between gap-10">
     <div className="flex flex-col justify-center gap-2">
      <Circle ref={div1Ref}>
       <Icons.Bot />
