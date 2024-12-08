@@ -26,7 +26,7 @@
      - `DATABASE_URL_UNPOOLED` - Direct database URL (optional)
 7. Run `pnpm i` to install all dependencies
 8. Go to `/packages/config/` directory and change values in `/configs/dashboard.js` to your values
-9. Go back to main directory and run `pnpm run dev --filter=dashboard` or `pnpm run deploy --filter=dashboard` to start dashboard
+9. Go back to main directory and run `pnpm run dev --filter="@majoexe/dashboard"` or `pnpm run deploy --filter="@majoexe/dashboard"` to start dashboard
 10. That's it! You can now visit your dashboard for the first time!
 
 ## ▲ Vercel Deploy
