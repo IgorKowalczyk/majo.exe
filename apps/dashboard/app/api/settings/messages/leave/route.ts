@@ -1,4 +1,5 @@
-import prismaClient from "@majoexe/database";
+import prismaClient, { GuildLogType } from "@majoexe/database";
+import { createLog } from "@majoexe/util/database";
 import { getGuild, getGuildChannels, getGuildFromMemberGuilds } from "@majoexe/util/functions/guild";
 import { shortenText } from "@majoexe/util/functions/util";
 import { ChannelType } from "discord-api-types/v10";
@@ -252,6 +253,11 @@ export async function POST(request: NextRequest) {
     description: shortenText(description, 2040),
     enabled: enabled || false,
    },
+  });
+
+  await createLog(server.id, session.id, {
+   content: `${enabled ? "Enabled" : "Disabled"} leave messages`,
+   type: enabled ? GuildLogType.LeaveMessageEnable : GuildLogType.LeaveMessageDisable,
   });
 
   return NextResponse.json(

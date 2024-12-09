@@ -1,6 +1,8 @@
 import type { Giveaway } from "discord-giveaways";
 import { type ChatInputCommandInteraction, EmbedBuilder, type Message, PermissionsBitField, type ColorResolvable } from "discord.js";
 import type { Majobot } from "@/index";
+import { createLog } from "@majoexe/util/database";
+import { GuildLogType } from "@majoexe/database";
 
 export async function PauseGiveaway(client: Majobot, interaction: ChatInputCommandInteraction, color: ColorResolvable): Promise<Message | void> {
  try {
@@ -26,6 +28,11 @@ export async function PauseGiveaway(client: Majobot, interaction: ChatInputComma
   } catch (_err) {
    return client.errorMessages.createSlashError(interaction, "❌ Something went wrong while pausing the giveaway!");
   }
+
+  await createLog(interaction.guild.id, interaction.user.id, {
+   content: `Paused giveaway \`${giveaway.prize.replace(`${client.config.emojis.giveaway} Giveaway: `, "").replace(`${client.config.emojis.giveaway} Drop: `, "")}\``,
+   type: GuildLogType.GiveawayPaused,
+  });
 
   const embed = new EmbedBuilder()
    .setDescription(`${client.config.emojis.sparkles} | Success! Giveaway \`${query}\` paused!`)

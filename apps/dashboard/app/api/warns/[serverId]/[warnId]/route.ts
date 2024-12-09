@@ -1,4 +1,5 @@
-import prismaClient from "@majoexe/database";
+import prismaClient, { GuildLogType } from "@majoexe/database";
+import { createLog } from "@majoexe/util/database";
 import { getGuild, getGuildFromMemberGuilds } from "@majoexe/util/functions/guild";
 import { getSession } from "lib/session";
 import { NextRequest, NextResponse } from "next/server";
@@ -122,6 +123,11 @@ export async function DELETE(request: NextRequest, props: { params: Promise<{ se
     }
    );
   }
+
+  await createLog(server.id, session.id, {
+   content: `Removed warning ${existingWarning.id} from ${existingWarning.userId}`,
+   type: GuildLogType.WarnDelete,
+  });
 
   await prismaClient.guildWarns.delete({
    where: {

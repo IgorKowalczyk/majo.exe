@@ -1,5 +1,6 @@
 import { globalConfig } from "@majoexe/config";
-import prismaClient from "@majoexe/database";
+import prismaClient, { GuildLogType } from "@majoexe/database";
+import { createLog } from "@majoexe/util/database";
 import { getGuild, getGuildFromMemberGuilds } from "@majoexe/util/functions/guild";
 import { getSession } from "lib/session";
 import { NextRequest, NextResponse } from "next/server";
@@ -131,26 +132,9 @@ export async function POST(request: NextRequest) {
     },
    });
 
-   await prismaClient.guildLogs.create({
-    data: {
-     guild: {
-      connectOrCreate: {
-       where: {
-        guildId: id,
-       },
-       create: {
-        guildId: id,
-       },
-      },
-     },
-     user: {
-      connect: {
-       id: session.sub,
-      },
-     },
-     content: `Changed global embed color to ${color}`,
-     type: "embed_color",
-    },
+   await createLog(server.id, session.id, {
+    content: `Changed global embed color to ${color}`,
+    type: GuildLogType.EmbedColorUpdate,
    });
 
    return NextResponse.json(
@@ -195,26 +179,9 @@ export async function POST(request: NextRequest) {
    },
   });
 
-  await prismaClient.guildLogs.create({
-   data: {
-    guild: {
-     connectOrCreate: {
-      where: {
-       guildId: id,
-      },
-      create: {
-       guildId: id,
-      },
-     },
-    },
-    user: {
-     connect: {
-      id: session.sub,
-     },
-    },
-    content: `Changed global embed color to ${color}`,
-    type: "embed_color",
-   },
+  await createLog(server.id, session.id, {
+   content: `Changed global embed color to ${color}`,
+   type: GuildLogType.EmbedColorUpdate,
   });
 
   return NextResponse.json(
@@ -355,21 +322,9 @@ export async function PUT(request: NextRequest) {
     },
    });
 
-   await prismaClient.guildLogs.create({
-    data: {
-     guild: {
-      connect: {
-       guildId: id,
-      },
-     },
-     user: {
-      connect: {
-       id: session.sub,
-      },
-     },
-     content: "Changed global embed color to default",
-     type: "embed_color",
-    },
+   await createLog(server.id, session.id, {
+    content: `Reset global embed color to default`,
+    type: GuildLogType.EmbedColorUpdate,
    });
 
    return NextResponse.json(
@@ -414,22 +369,11 @@ export async function PUT(request: NextRequest) {
    },
   });
 
-  await prismaClient.guildLogs.create({
-   data: {
-    guild: {
-     connect: {
-      guildId: id,
-     },
-    },
-    user: {
-     connect: {
-      id: session.sub,
-     },
-    },
-    content: "Changed global embed color to default",
-    type: "embed_color",
-   },
+  await createLog(server.id, session.id, {
+   content: `Reset global embed color to default`,
+   type: GuildLogType.EmbedColorUpdate,
   });
+
   return NextResponse.json(
    {
     message: "Embed color updated",

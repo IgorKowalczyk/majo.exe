@@ -1,4 +1,5 @@
-import prismaClient from "@majoexe/database";
+import prismaClient, { GuildLogType } from "@majoexe/database";
+import { createLog } from "@majoexe/util/database";
 import { getGuild, getGuildFromMemberGuilds } from "@majoexe/util/functions/guild";
 import { getSession } from "lib/session";
 import { NextRequest, NextResponse } from "next/server";
@@ -187,26 +188,12 @@ export async function POST(request: NextRequest) {
      },
     });
 
-    await prismaClient.guildLogs.create({
+    await createLog(server.id, session.sub, {
+     content: `Disabled category ${existingCategory.name}`,
      data: {
-      guild: {
-       connectOrCreate: {
-        where: {
-         guildId: id,
-        },
-        create: {
-         guildId: id,
-        },
-       },
-      },
-      user: {
-       connect: {
-        id: session.sub,
-       },
-      },
-      content: `Disabled category ${existingCategory.name}`,
-      type: "category_change",
+      category: existingCategory.name,
      },
+     type: GuildLogType.CommandCategoryDisable,
     });
 
     return NextResponse.json(
@@ -231,26 +218,12 @@ export async function POST(request: NextRequest) {
     },
    });
 
-   await prismaClient.guildLogs.create({
+   await createLog(server.id, session.sub, {
+    content: `Enabled category ${existingCategory.name}`,
     data: {
-     guild: {
-      connectOrCreate: {
-       where: {
-        guildId: id,
-       },
-       create: {
-        guildId: id,
-       },
-      },
-     },
-     user: {
-      connect: {
-       id: session.sub,
-      },
-     },
-     content: `Enabled category ${existingCategory.name}`,
-     type: "category_change",
+     category: existingCategory.name,
     },
+    type: GuildLogType.CommandCategoryEnable,
    });
 
    return NextResponse.json(

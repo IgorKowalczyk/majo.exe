@@ -3,6 +3,7 @@ export * from "./settings/XPSettings";
 
 // Logs
 export * from "./logs/fetchLogs";
+export * from "./logs/createLog";
 
 // AutoMod
 export * from "./moderation/automod/createDatabaseAutoModRule";

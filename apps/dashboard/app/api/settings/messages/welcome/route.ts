@@ -1,5 +1,6 @@
 import { globalConfig } from "@majoexe/config";
-import prismaClient from "@majoexe/database";
+import prismaClient, { GuildLogType } from "@majoexe/database";
+import { createLog } from "@majoexe/util/database";
 import { getGuild, getGuildFromMemberGuilds } from "@majoexe/util/functions/guild";
 import { shortenText } from "@majoexe/util/functions/util";
 import { APIGuildChannel, ChannelType, GuildChannelType } from "discord-api-types/v10";
@@ -260,6 +261,11 @@ export async function POST(request: NextRequest) {
     description: shortenText(description, 2040),
     enabled: enabled || false,
    },
+  });
+
+  await createLog(server.id, session.id, {
+   content: `${enabled ? "Enabled" : "Disabled"} welcome messages`,
+   type: enabled ? GuildLogType.WelcomeMessageEnable : GuildLogType.WelcomeMessageDisable,
   });
 
   return NextResponse.json(

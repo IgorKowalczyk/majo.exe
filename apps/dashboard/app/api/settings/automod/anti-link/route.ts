@@ -1,4 +1,5 @@
-import prismaClient from "@majoexe/database";
+import prismaClient, { GuildLogType } from "@majoexe/database";
+import { createLog } from "@majoexe/util/database";
 import { AutoModerationRuleCreationData, createDiscordAutoModRule, validateAutoModIgnores, validateAutoModRuleActions } from "@majoexe/util/functions/automod";
 import { getGuild, getGuildChannels, getGuildFromMemberGuilds, getGuildRoles } from "@majoexe/util/functions/guild";
 import { AutoModerationActionType, AutoModerationRuleTriggerType, AutoModerationRuleEventType, ChannelType } from "discord-api-types/v10";
@@ -249,6 +250,11 @@ export async function POST(request: NextRequest) {
     }
    );
   } else {
+   await createLog(server.id, session.id, {
+    content: `${data.enabled ? "Enabled" : "Disabled"} anti-link system`,
+    type: GuildLogType.AutoModerationRuleCreate,
+   });
+
    return NextResponse.json(
     {
      message: "Successfully updated the anti-link system",

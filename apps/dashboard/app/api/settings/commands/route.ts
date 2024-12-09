@@ -1,4 +1,5 @@
-import prismaClient from "@majoexe/database";
+import prismaClient, { GuildLogType } from "@majoexe/database";
+import { createLog } from "@majoexe/util/database";
 import { getGuild, getGuildFromMemberGuilds } from "@majoexe/util/functions/guild";
 import { getSession } from "lib/session";
 import { NextRequest, NextResponse } from "next/server";
@@ -211,26 +212,9 @@ export async function POST(request: NextRequest) {
      },
     });
 
-    await prismaClient.guildLogs.create({
-     data: {
-      guild: {
-       connectOrCreate: {
-        where: {
-         guildId: id,
-        },
-        create: {
-         guildId: id,
-        },
-       },
-      },
-      user: {
-       connect: {
-        id: session.sub,
-       },
-      },
-      content: `Disabled command ${existingCommand.name}`,
-      type: "command_change",
-     },
+    await createLog(server.id, session.id, {
+     content: `Disabled command ${existingCommand.name}`,
+     type: GuildLogType.CommandDisable,
     });
 
     return NextResponse.json(
@@ -255,26 +239,9 @@ export async function POST(request: NextRequest) {
     },
    });
 
-   await prismaClient.guildLogs.create({
-    data: {
-     guild: {
-      connectOrCreate: {
-       where: {
-        guildId: id,
-       },
-       create: {
-        guildId: id,
-       },
-      },
-     },
-     user: {
-      connect: {
-       id: session.sub,
-      },
-     },
-     content: `Enabled command ${existingCommand.name}`,
-     type: "command_change",
-    },
+   await createLog(server.id, session.id, {
+    content: `Enabled command ${existingCommand.name}`,
+    type: GuildLogType.CommandEnable,
    });
 
    return NextResponse.json(

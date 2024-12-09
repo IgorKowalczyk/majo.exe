@@ -12,6 +12,7 @@ import loadEvents from "./util/loaders/loadEvents";
 import loadFonts from "./util/loaders/loadFonts";
 import loadModals, { type Modal } from "./util/loaders/loadModals";
 import type { SlashCommand } from "./util/types/Command";
+import { GiveawaysManager } from "discord-giveaways";
 
 const cwd = dirname(fileURLToPath(import.meta.url));
 Logger("info", `Current working directory: ${cwd}`);
@@ -28,7 +29,7 @@ class Majobot extends Client {
  public slashCommands: Collection<string, SlashCommand> = new Collection();
  public additionalSlashCommands: number = 0;
  public commandsRan: number = 0;
- public giveawaysManager = {};
+ public giveawaysManager: GiveawaysManager = {} as GiveawaysManager;
  public errorMessages: {
   internalError: (interaction: CommandInteraction, error: unknown) => Promise<void>;
   createSlashError: (interaction: CommandInteraction, description: string, title?: string) => void;
@@ -87,7 +88,7 @@ await loadFonts(client);
 await loadEvents(client);
 await loadEmojis(client);
 
-client.giveawaysManager = giveaway(client);
+client.giveawaysManager = giveaway(client) as unknown as GiveawaysManager;
 
 Logger("info", "Logging in...");
 

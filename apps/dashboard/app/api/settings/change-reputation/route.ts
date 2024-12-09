@@ -1,4 +1,5 @@
-import { setReputation } from "@majoexe/util/database";
+import { GuildLogType } from "@majoexe/database";
+import { createLog, setReputation } from "@majoexe/util/database";
 import { getGuild, getGuildFromMemberGuilds } from "@majoexe/util/functions/guild";
 import { getDiscordUser } from "@majoexe/util/functions/user";
 import { isNumeric } from "@majoexe/util/functions/util";
@@ -209,6 +210,11 @@ export async function POST(request: NextRequest) {
   }
 
   revalidatePath(`/dashboard/${guildId}/user/${userId}`);
+
+  await createLog(server.id, session.id, {
+   content: `Set reputation of ${user.username} (${user.id}) to ${reputation}`,
+   type: GuildLogType.ReputationUpdate,
+  });
 
   return NextResponse.json(
    {

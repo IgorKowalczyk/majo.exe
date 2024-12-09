@@ -1,4 +1,5 @@
-import prismaClient from "@majoexe/database";
+import prismaClient, { GuildLogType } from "@majoexe/database";
+import { createLog } from "@majoexe/util/database";
 import { getGuild, getGuildFromMemberGuilds } from "@majoexe/util/functions/guild";
 import { getSession } from "lib/session";
 import { NextRequest, NextResponse } from "next/server";
@@ -169,26 +170,9 @@ export async function POST(request: NextRequest) {
     },
    });
 
-   await prismaClient.guildLogs.create({
-    data: {
-     guild: {
-      connectOrCreate: {
-       where: {
-        guildId: id,
-       },
-       create: {
-        guildId: id,
-       },
-      },
-     },
-     user: {
-      connect: {
-       id: session.sub,
-      },
-     },
-     content: `Set vanity to ${vanity}`,
-     type: "vanity",
-    },
+   await createLog(id, session.id, {
+    content: `Set vanity to ${vanity}`,
+    type: GuildLogType.VanityUpdate,
    });
 
    return NextResponse.json(
@@ -216,26 +200,9 @@ export async function POST(request: NextRequest) {
    },
   });
 
-  await prismaClient.guildLogs.create({
-   data: {
-    guild: {
-     connectOrCreate: {
-      where: {
-       guildId: id,
-      },
-      create: {
-       guildId: id,
-      },
-     },
-    },
-    user: {
-     connect: {
-      id: session.sub,
-     },
-    },
-    content: `Set vanity to ${vanity}`,
-    type: "vanity",
-   },
+  await createLog(id, session.id, {
+   content: `Set vanity to ${vanity}`,
+   type: GuildLogType.VanityUpdate,
   });
 
   return NextResponse.json(

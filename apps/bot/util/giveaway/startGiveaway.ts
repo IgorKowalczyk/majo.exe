@@ -1,6 +1,8 @@
 import { type ChatInputCommandInteraction, EmbedBuilder, type Message, PermissionsBitField, User, type ColorResolvable, ChannelType } from "discord.js";
 import ms from "ms";
 import type { Majobot } from "@/index";
+import { createLog } from "@majoexe/util/database";
+import { GuildLogType } from "@majoexe/database";
 
 export async function StartGiveaway(client: Majobot, interaction: ChatInputCommandInteraction, color: ColorResolvable): Promise<Message | void> {
  try {
@@ -135,6 +137,11 @@ export async function StartDropGiveaway(client: Majobot, interaction: ChatInputC
   } catch (_err) {
    return client.errorMessages.createSlashError(interaction, "❌ Something went wrong while creating the giveaway!");
   }
+
+  await createLog(interaction.guild.id, interaction.user.id, {
+   content: `Started a drop giveaway in ${channel} with ${winners} winner(s) and prize: ${prize}`,
+   type: GuildLogType.GiveawayCreate,
+  });
 
   const success = new EmbedBuilder() // Prettier
    .setColor(color)

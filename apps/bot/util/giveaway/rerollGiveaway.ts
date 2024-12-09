@@ -1,6 +1,8 @@
 import type { Giveaway } from "discord-giveaways";
 import { type ChatInputCommandInteraction, EmbedBuilder, PermissionsBitField, type ColorResolvable, type Message } from "discord.js";
 import type { Majobot } from "@/index";
+import { GuildLogType } from "@majoexe/database";
+import { createLog } from "@majoexe/util/database";
 
 export async function RerollGiveaway(client: Majobot, interaction: ChatInputCommandInteraction, color: ColorResolvable): Promise<Message | void> {
  try {
@@ -26,6 +28,11 @@ export async function RerollGiveaway(client: Majobot, interaction: ChatInputComm
   } catch (_err) {
    return client.errorMessages.createSlashError(interaction, "❌ Something went wrong while rerolling the giveaway!");
   }
+
+  await createLog(interaction.guild.id, interaction.user.id, {
+   content: `Rerolled giveaway \`${giveaway.prize.replace(`${client.config.emojis.giveaway} Giveaway: `, "").replace(`${client.config.emojis.giveaway} Drop: `, "")}\``,
+   type: GuildLogType.GiveawayEdit,
+  });
 
   const embed = new EmbedBuilder()
    .setDescription(`${client.config.emojis.sparkles} | Success! Giveaway \`${query}\` rerolled!`)

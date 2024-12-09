@@ -1,4 +1,5 @@
-import prismaClient from "@majoexe/database";
+import prismaClient, { GuildLogType } from "@majoexe/database";
+import { createLog } from "@majoexe/util/database";
 import { getGuild, getGuildFromMemberGuilds } from "@majoexe/util/functions/guild";
 import { getSession } from "lib/session";
 import { NextRequest, NextResponse } from "next/server";
@@ -112,26 +113,9 @@ export async function POST(request: NextRequest) {
     },
    });
 
-   await prismaClient.guildLogs.create({
-    data: {
-     guild: {
-      connectOrCreate: {
-       where: {
-        guildId: id,
-       },
-       create: {
-        guildId: id,
-       },
-      },
-     },
-     user: {
-      connect: {
-       id: session.sub,
-      },
-     },
-     content: `${enabled ? "Enabled" : "Disabled"} public dashboard`,
-     type: "public_dashboard",
-    },
+   await createLog(id, session.id, {
+    content: `${enabled ? "Enabled" : "Disabled"} public dashboard`,
+    type: GuildLogType.PublicDashboardUpdate,
    });
 
    return NextResponse.json(
@@ -159,26 +143,9 @@ export async function POST(request: NextRequest) {
    },
   });
 
-  await prismaClient.guildLogs.create({
-   data: {
-    guild: {
-     connectOrCreate: {
-      where: {
-       guildId: id,
-      },
-      create: {
-       guildId: id,
-      },
-     },
-    },
-    user: {
-     connect: {
-      id: session.sub,
-     },
-    },
-    content: `${enabled ? "Enabled" : "Disabled"} public dashboard`,
-    type: "public_dashboard",
-   },
+  await createLog(id, session.id, {
+   content: `${enabled ? "Enabled" : "Disabled"} public dashboard`,
+   type: GuildLogType.PublicDashboardUpdate,
   });
 
   return NextResponse.json(
