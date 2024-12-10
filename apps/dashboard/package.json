@@ -68,7 +68,7 @@
     "@tailwindcss/typography": "0.5.15",
     "@types/mdx": "2.0.13",
     "@types/react": "19.0.1",
-    "@types/react-dom": "19.0.1",
+    "@types/react-dom": "19.0.2",
     "autoprefixer": "10.4.20",
     "postcss": "8.4.49",
     "tailwind-gradient-mask-image": "1.2.0",
