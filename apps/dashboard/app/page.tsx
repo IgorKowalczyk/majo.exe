@@ -1,5 +1,5 @@
 import { dashboardConfig, globalConfig } from "@majoexe/config";
-import prismaClient from "@majoexe/database";
+import prismaClient, { GuildLogType } from "@majoexe/database";
 import { pseudoRandom } from "@majoexe/util/functions/util";
 import { ApplicationCommandOptionType } from "discord-api-types/v10";
 import Link from "next/link";
@@ -39,11 +39,12 @@ export default async function HomePage() {
  const exampleLogs = [
   {
    id: "0",
-   type: "command_change",
+   type: GuildLogType.CommandEnable,
    guildId: "1234567890",
    authorId: "123456789",
    createdAt: new Date(new Date().getTime() - 2 * 16 * 60 * 15 * 1000).toISOString().toString(),
    content: "Disabled command /help",
+   data: {},
    user: {
     discordId: "544164729354977282",
     global_name: "Robert",
@@ -56,11 +57,12 @@ export default async function HomePage() {
   },
   {
    id: "1",
-   type: "vanity",
+   type: GuildLogType.VanityUpdate,
    guildId: "1234567890",
    authorId: "123456789",
    createdAt: new Date(new Date().getTime() - 1 * 21 * 60 * 60 * 1000).toISOString().toString(),
    content: "Changed vanity URL to /majo",
+   data: {},
    user: {
     discordId: "689210472345677282",
     global_name: "Jonas",
@@ -73,11 +75,12 @@ export default async function HomePage() {
   },
   {
    id: "2",
-   type: "category_change",
+   type: GuildLogType.CommandCategoryEnable,
    guildId: "1234567890",
    authorId: "123456789",
    createdAt: new Date(new Date().getTime() - 2 * 23 * 60 * 60 * 1000).toISOString().toString(),
    content: "Enabled category Fun",
+   data: {},
    user: {
     discordId: "989210472345677282",
     global_name: "Ethan",

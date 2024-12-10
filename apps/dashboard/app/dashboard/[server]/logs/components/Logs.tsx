@@ -1,6 +1,6 @@
 "use client";
 
-import { GuildLogs, GuildLogType, User } from "@majoexe/database";
+import { GuildLogs, User } from "@majoexe/database";
 import { formatDate, formatDuration } from "@majoexe/util/functions/util";
 import Link from "next/link";
 import React, { useState, useRef, useEffect } from "react";
@@ -18,31 +18,12 @@ interface LogItem extends Omit<GuildLogs, "createdAt"> {
  user: Pick<User, "name" | "discordId" | "avatar" | "global_name" | "discriminator"> & { fullAvatar?: string };
 }
 
-const iconClasses = "ui-open:text-accent-primary !stroke-2 text-white/60 duration-200";
-
 export function LogDisclosure({ item, guildId, preview = false }: { item: LogItem; guildId: string; preview?: boolean }) {
  return (
   <Disclosure
    button={
     <>
-     <div className="flex flex-row items-center gap-4">
-      {item.type && (
-       <>
-        {/* {item.type === "embed_color" && <Icons.PaintBucket className={iconVariants({ variant: "large", className: "ui-open:text-accent-primary !stroke-2 text-white/60 duration-200" })} />}
-        {item.type === "command_change" && <Icons.slash className={iconVariants({ variant: "large", className: "ui-open:text-accent-primary !stroke-2 text-white/60 duration-200" })} />}
-        {item.type === "automod" && <Icons.Bot className={iconVariants({ variant: "large", className: "ui-open:text-accent-primary !stroke-2 text-white/60 duration-200" })} />}
-        {item.type === "giveaways" && <Icons.PartyPopper className={iconVariants({ variant: "large", className: "ui-open:text-accent-primary !stroke-2 text-white/60 duration-200" })} />}
-        {item.type === "custom_messages" && <Icons.MessageSquareCode className={iconVariants({ variant: "large", className: "ui-open:text-accent-primary !stroke-2 text-white/60 duration-200" })} />}
-        {item.type === "category_change" && <Icons.Blocks className={iconVariants({ variant: "large", className: "ui-open:text-accent-primary !stroke-2 text-white/60 duration-200" })} />}
-        {item.type === "public_dashboard" && <Icons.Users className={iconVariants({ variant: "large", className: "ui-open:text-accent-primary !stroke-2 text-white/60 duration-200" })} />}
-        {item.type === "vanity" && <Icons.link className={iconVariants({ variant: "large", className: "ui-open:text-accent-primary !stroke-2 text-white/60 duration-200" })} />}
-        */}
-
-        {item.type === GuildLogType.Unknown && <Icons.ShieldQuestion className={iconVariants({ variant: "large", className: iconClasses })} />}
-       </>
-      )}{" "}
-      {item.user.fullAvatar ? <Image src={item.user.fullAvatar} alt={`${item.user.name} avatar`} quality={95} width={48} height={48} className="size-12 shrink-0 rounded-full" /> : <>{item.user.avatar && <Image src={`/api/user/avatar/${item.user.discordId}`} alt={`${item.user.name} avatar`} quality={95} width={48} height={48} className="size-12 shrink-0 rounded-full" />}</>}
-     </div>
+     <div className="flex flex-row items-center gap-4">{item.user.fullAvatar ? <Image src={item.user.fullAvatar} alt={`${item.user.name} avatar`} quality={95} width={48} height={48} className="size-12 shrink-0 rounded-full" /> : <>{item.user.avatar && <Image src={`/api/user/avatar/${item.user.discordId}`} alt={`${item.user.name} avatar`} quality={95} width={48} height={48} className="size-12 shrink-0 rounded-full" />}</>}</div>
      <div className="flex flex-col">
       <p className="text-left font-bold">
        {item.user.global_name}

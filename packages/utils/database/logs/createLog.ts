@@ -1,7 +1,7 @@
 import prisma, { type Prisma } from "@majoexe/database";
 import { Snowflake } from "discord-api-types/globals";
 
-export async function createLog(guildId: Snowflake, userId: Snowflake, data: Omit<Prisma.GuildLogsCreateInput, "id" | "guild" | "user" | "createdAt">) {
+export async function createLog(guildId: Snowflake, userId: Snowflake, data: Omit<Prisma.GuildLogsCreateInput, "id" | "guild" | "user" | "authorId" | "createdAt">) {
  try {
   await prisma.guildLogs.create({
    data: {
@@ -16,10 +16,19 @@ export async function createLog(guildId: Snowflake, userId: Snowflake, data: Omi
      },
     },
     user: {
-     connect: {
-      id: userId,
+     connectOrCreate: {
+      where: {
+       discordId: userId,
+      },
+      create: {
+       discordId: userId,
+       name: "Unknown",
+       discriminator: "0000",
+       global_name: "Unknown#0000",
+      },
      },
     },
+
     ...data,
    },
   });

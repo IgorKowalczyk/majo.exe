@@ -153,23 +153,6 @@ export async function POST(request: NextRequest) {
    );
   }
 
-  if (current.embedColor === color) {
-   return NextResponse.json(
-    {
-     error: "Embed color is already set to that",
-     code: 400,
-    },
-    {
-     status: 200,
-     headers: {
-      ...(process.env.NODE_ENV !== "production" && {
-       "Server-Timing": `response;dur=${Date.now() - start}ms`,
-      }),
-     },
-    }
-   );
-  }
-
   await prismaClient.guild.update({
    where: {
     guildId: id,
@@ -331,23 +314,6 @@ export async function PUT(request: NextRequest) {
     {
      message: "Embed color updated",
      code: 200,
-    },
-    {
-     status: 200,
-     headers: {
-      ...(process.env.NODE_ENV !== "production" && {
-       "Server-Timing": `response;dur=${Date.now() - start}ms`,
-      }),
-     },
-    }
-   );
-  }
-
-  if (current.embedColor === globalConfig.defaultColor) {
-   return NextResponse.json(
-    {
-     error: "Embed color is already set to that",
-     code: 400,
     },
     {
      status: 200,
