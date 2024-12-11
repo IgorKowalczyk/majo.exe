@@ -242,8 +242,8 @@ importers:
         specifier: 4.24.11
         version: 4.24.11(next@15.1.0(@babel/core@7.26.0)(@playwright/test@1.49.1)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
       next-nprogress-bar:
-        specifier: 2.3.15
-        version: 2.3.15
+        specifier: 2.3.16
+        version: 2.3.16
       react:
         specifier: 19.0.0
         version: 19.0.0
@@ -5078,8 +5078,8 @@ packages:
       nodemailer:
         optional: true
 
-  next-nprogress-bar@2.3.15:
-    resolution: {integrity: sha512-8s8slKMUXvDrl7wWzKyWt6BJQThOJREpCicdbi66xAOzQ23DeIauEzMGPg1BMixnqlIRY3ayUO/ey9dafkgWcA==}
+  next-nprogress-bar@2.3.16:
+    resolution: {integrity: sha512-/otM20uuAvLZdnPStx12Qc/aZT7EwSMZX3VyQfIbrxOaNr8Lg0YzzS9TRw4HG5XfqfEoad0dpRV2M1sn6H/yfQ==}
 
   next@15.1.0:
     resolution: {integrity: sha512-QKhzt6Y8rgLNlj30izdMbxAwjHMFANnLwDwZ+WQh5sMhyt4lEBqDK9QpvWHtIM4rINKPoJ8aiRZKg5ULSybVHw==}
@@ -12394,7 +12394,7 @@ snapshots:
       react-dom: 19.0.0(react@19.0.0)
       uuid: 8.3.2
 
-  next-nprogress-bar@2.3.15:
+  next-nprogress-bar@2.3.16:
     dependencies:
       nprogress: 0.2.0
 
