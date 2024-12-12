@@ -220,7 +220,7 @@ enum GuildLogType {
  AutoModerationRuleCreate
  AutoModerationRuleDelete
  AutoModerationRuleUpdate
- 
+
  PublicDashboardUpdate
  VanityUpdate
  EmbedColorUpdate
@@ -252,15 +252,15 @@ enum GuildLogType {
 }
 
 model GuildLogs {
- id        String   @id @default(cuid())
- guildId   String   @map(name: "guild_id")
- authorId  String   @map(name: "author_id")
+ id        String       @id @default(cuid())
+ guildId   String       @map(name: "guild_id")
+ authorId  String       @map(name: "author_id")
  content   String
- data      Json    @default("{}")
+ data      Json         @default("{}")
  type      GuildLogType @default(Unknown)
- createdAt DateTime @default(now()) @map(name: "created_at")
- guild     Guild    @relation(fields: [guildId], references: [guildId], onDelete: Cascade)
- user      User     @relation(fields: [authorId], references: [discordId], onDelete: Cascade)
+ createdAt DateTime     @default(now()) @map(name: "created_at")
+ guild     Guild        @relation(fields: [guildId], references: [guildId], onDelete: Cascade)
+ user      User         @relation(fields: [authorId], references: [discordId], onDelete: Cascade)
 
  @@map(name: "guild_logs")
 }

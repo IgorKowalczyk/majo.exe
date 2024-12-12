@@ -1,8 +1,8 @@
+import { GuildLogType } from "@majoexe/database";
+import { createLog } from "@majoexe/util/database";
 import { type ChatInputCommandInteraction, EmbedBuilder, type Message, PermissionsBitField, User, type ColorResolvable, ChannelType } from "discord.js";
 import ms from "ms";
 import type { Majobot } from "@/index";
-import { createLog } from "@majoexe/util/database";
-import { GuildLogType } from "@majoexe/database";
 
 export async function StartGiveaway(client: Majobot, interaction: ChatInputCommandInteraction, color: ColorResolvable): Promise<Message | void> {
  try {

@@ -1,5 +1,4 @@
 import prismaClient from "@majoexe/database";
-import type { Giveaway } from "discord-giveaways";
 import { type ChatInputCommandInteraction, EmbedBuilder, type Message, PermissionsBitField, type ColorResolvable } from "discord.js";
 import type { Majobot } from "@/index";
 

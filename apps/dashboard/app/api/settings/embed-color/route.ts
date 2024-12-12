@@ -306,7 +306,7 @@ export async function PUT(request: NextRequest) {
    });
 
    await createLog(server.id, session.id, {
-    content: `Reset global embed color to default`,
+    content: "Reset global embed color to default",
     type: GuildLogType.EmbedColorUpdate,
    });
 
@@ -336,7 +336,7 @@ export async function PUT(request: NextRequest) {
   });
 
   await createLog(server.id, session.id, {
-   content: `Reset global embed color to default`,
+   content: "Reset global embed color to default",
    type: GuildLogType.EmbedColorUpdate,
   });
 
