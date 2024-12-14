@@ -54,7 +54,7 @@
     "react-infinite-scroller": "1.2.6",
     "react-spring": "9.7.5",
     "react-wrap-balancer": "1.1.1",
-    "recharts": "2.14.1",
+    "recharts": "2.15.0",
     "server-only": "0.0.1",
     "sharp": "0.33.5",
     "sonner": "1.7.1",
