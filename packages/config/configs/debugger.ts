@@ -1,4 +1,5 @@
 export const debuggerConfig = {
+ displayDebugMessages: false, // boolean. Display debug messages
  displayDatabaseLogs: false, // boolean. Display database logs
  displayCacheMessages: false, // boolean. Display cache messages
  displayEventList: false, // boolean. Display event list on startup

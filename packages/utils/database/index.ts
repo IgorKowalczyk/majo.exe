@@ -4,6 +4,7 @@ export * from "./settings/XPSettings";
 // Logs
 export * from "./logs/fetchLogs";
 export * from "./logs/createLog";
+export * from "./logs/getGuildLogSettings";
 
 // AutoMod
 export * from "./moderation/automod/createDatabaseAutoModRule";

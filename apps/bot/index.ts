@@ -55,11 +55,6 @@ class Majobot extends Client {
   const run = Math.floor(performance.now() - time);
   return run > 500 ? chalk.underline.red(`${run}ms`) : chalk.underline(`${run}ms`);
  };
-
- // eslint-disable-next-line typescript/no-explicit-any
- constructor(options: any) {
-  super(options);
- }
 }
 
 const client = new Majobot({
@@ -91,6 +86,10 @@ await loadEmojis(client);
 client.giveawaysManager = giveaway(client) as unknown as GiveawaysManager;
 
 Logger("info", "Logging in...");
+
+client.on("debug", (invite) => {
+ if (client.config.displayDebugMessages) Logger("info", invite);
+});
 
 process.on("unhandledRejection", (reason) => {
  Logger("error", `Unhandled rejection: ${reason}`);

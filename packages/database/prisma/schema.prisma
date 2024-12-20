@@ -126,6 +126,7 @@ model Guild {
 
  // Guild modules
  guildLogs               GuildLogs[]
+ guildLogsSettings       GuildLogsSettings[]
  guildXp                 GuildXp[]
  guildJoin               GuildJoin[]
  guildLeave              GuildLeave[]
@@ -251,6 +252,21 @@ enum GuildLogType {
  Unknown
 }
 
+// Guild audit logs settings
+model GuildLogsSettings {
+ id        String       @id @default(cuid())
+ guildId   String       @map(name: "guild_id")
+ type      GuildLogType @default(Unknown)
+ enabled   Boolean      @default(false)
+ channelId String       @map(name: "channel_id")
+ createdAt DateTime     @default(now()) @map(name: "created_at")
+ guild     Guild        @relation(fields: [guildId], references: [guildId], onDelete: Cascade)
+
+ @@unique([guildId, type])
+ @@map(name: "guild_logs_settings")
+}
+
+// Guild audit logs
 model GuildLogs {
  id        String       @id @default(cuid())
  guildId   String       @map(name: "guild_id")

@@ -80,32 +80,290 @@ const config = {
   // Log types
   logs: [
    {
-    type: "profanity",
-    emoji: "🤬",
+    type: "InviteCreate",
+    emoji: "✉️",
    },
-
    {
-    type: "embed_color",
+    type: "InviteDelete",
+    emoji: "❌",
+   },
+   {
+    type: "MessageBulkDelete",
+    emoji: "🗑️",
+   },
+   {
+    type: "MessageCreate",
+    emoji: "💬",
+   },
+   {
+    type: "MessageDelete",
+    emoji: "🗑️",
+   },
+   {
+    type: "MessagePollVoteAdd",
+    emoji: "🗳️",
+   },
+   {
+    type: "MessagePollVoteRemove",
+    emoji: "🗳️",
+   },
+   {
+    type: "MessageReactionAdd",
+    emoji: "👍",
+   },
+   {
+    type: "MessageReactionRemove",
+    emoji: "👎",
+   },
+   {
+    type: "MessageReactionRemoveAll",
+    emoji: "🚫",
+   },
+   {
+    type: "MessageReactionRemoveEmoji",
+    emoji: "🚫",
+   },
+   {
+    type: "MessageUpdate",
+    emoji: "✏️",
+   },
+   {
+    type: "ThreadCreate",
+    emoji: "�",
+   },
+   {
+    type: "ThreadDelete",
+    emoji: "🗑️",
+   },
+   {
+    type: "ThreadListSync",
+    emoji: "🔄",
+   },
+   {
+    type: "ThreadMembersUpdate",
+    emoji: "👥",
+   },
+   {
+    type: "ThreadMemberUpdate",
+    emoji: "👤",
+   },
+   {
+    type: "ThreadUpdate",
+    emoji: "✏️",
+   },
+   {
+    type: "GuildUpdate",
+    emoji: "�",
+   },
+   {
+    type: "GuildMemberUpdate",
+    emoji: "👤",
+   },
+   {
+    type: "GuildRoleCreate",
+    emoji: "➕",
+   },
+   {
+    type: "GuildRoleDelete",
+    emoji: "❌",
+   },
+   {
+    type: "GuildRoleUpdate",
+    emoji: "✏️",
+   },
+   {
+    type: "GuildScheduledEventCreate",
+    emoji: "📅",
+   },
+   {
+    type: "GuildScheduledEventDelete",
+    emoji: "📅",
+   },
+   {
+    type: "GuildScheduledEventUpdate",
+    emoji: "📅",
+   },
+   {
+    type: "GuildScheduledEventUserAdd",
+    emoji: "👤",
+   },
+   {
+    type: "GuildScheduledEventUserRemove",
+    emoji: "👤",
+   },
+   {
+    type: "GuildStickerCreate",
+    emoji: "🆕",
+   },
+   {
+    type: "GuildStickerDelete",
+    emoji: "❌",
+   },
+   {
+    type: "GuildStickerUpdate",
+    emoji: "✏️",
+   },
+   {
+    type: "GuildUnavailable",
+    emoji: "🚫",
+   },
+   {
+    type: "GuildEmojiCreate",
+    emoji: "🆕",
+   },
+   {
+    type: "GuildEmojiDelete",
+    emoji: "❌",
+   },
+   {
+    type: "GuildEmojiUpdate",
+    emoji: "✏️",
+   },
+   {
+    type: "GuildIntegrationsUpdate",
+    emoji: "🔄",
+   },
+   {
+    type: "GuildMemberAdd",
+    emoji: "👤",
+   },
+   {
+    type: "GuildMemberAvailable",
+    emoji: "👤",
+   },
+   {
+    type: "GuildMemberRemove",
+    emoji: "👤",
+   },
+   {
+    type: "GuildBanAdd",
+    emoji: "🔨",
+   },
+   {
+    type: "GuildBanRemove",
+    emoji: "🔓",
+   },
+   {
+    type: "ChannelCreate",
+    emoji: "🆕",
+   },
+   {
+    type: "ChannelDelete",
+    emoji: "❌",
+   },
+   {
+    type: "ChannelPinsUpdate",
+    emoji: "📌",
+   },
+   {
+    type: "ChannelUpdate",
+    emoji: "✏️",
+   },
+   {
+    type: "AutoModerationActionExecution",
+    emoji: "�",
+   },
+   {
+    type: "AutoModerationRuleCreate",
+    emoji: "🆕",
+   },
+   {
+    type: "AutoModerationRuleDelete",
+    emoji: "❌",
+   },
+   {
+    type: "AutoModerationRuleUpdate",
+    emoji: "✏️",
+   },
+   {
+    type: "PublicDashboardUpdate",
+    emoji: "🔗",
+   },
+   {
+    type: "VanityUpdate",
+    emoji: "🔗",
+   },
+   {
+    type: "EmbedColorUpdate",
     emoji: "🎨",
    },
    {
-    type: "command_change",
-    emoji: "<:slash_commands:963333541565968384>",
+    type: "CommandCategoryEnable",
+    emoji: "✅",
    },
    {
-    type: "category_change",
-    emoji: "📂",
+    type: "CommandCategoryDisable",
+    emoji: "❌",
    },
    {
-    type: "public_dashboard",
-    emoji: "🔗",
+    type: "CommandEnable",
+    emoji: "✅",
    },
    {
-    type: "vanity",
-    emoji: "🔗",
+    type: "CommandDisable",
+    emoji: "❌",
+   },
+   {
+    type: "GiveawayCreate",
+    emoji: "🎉",
+   },
+   {
+    type: "GiveawayDelete",
+    emoji: "❌",
+   },
+   {
+    type: "GiveawayEdit",
+    emoji: "✏️",
+   },
+   {
+    type: "GiveawayPaused",
+    emoji: "⏸️",
+   },
+   {
+    type: "GiveawayResumed",
+    emoji: "▶️",
+   },
+   {
+    type: "GiveawayEnded",
+    emoji: "🏁",
+   },
+   {
+    type: "WelcomeMessageEnable",
+    emoji: "👋",
+   },
+   {
+    type: "WelcomeMessageDisable",
+    emoji: "❌�",
+   },
+   {
+    type: "LeaveMessageEnable",
+    emoji: "👋",
+   },
+   {
+    type: "LeaveMessageDisable",
+    emoji: "👋",
+   },
+   {
+    type: "ReputationUpdate",
+    emoji: "⭐",
+   },
+   {
+    type: "WarnCreate",
+    emoji: "⚠️",
+   },
+   {
+    type: "WarnDelete",
+    emoji: "⚠️",
+   },
+   {
+    type: "WarnUpdate",
+    emoji: "⚠️",
+   },
+   {
+    type: "Unknown",
+    emoji: "❓",
    },
   ] satisfies { type: string; emoji: string }[],
-
   // Utility emojis
   picture_frame: "🖼️",
   anger: "💢",
