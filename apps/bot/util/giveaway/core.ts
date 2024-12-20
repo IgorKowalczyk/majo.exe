@@ -1,20 +1,21 @@
 import { globalConfig } from "@majoexe/config";
-import prismaClient from "@majoexe/database";
-import { GiveawaysManager, type GiveawayData } from "discord-giveaways";
+import prismaClient, { Prisma } from "@majoexe/database";
+import { Giveaway, GiveawaysManager, type GiveawayData } from "discord-giveaways";
 import type { ColorResolvable, Snowflake } from "discord.js";
 import type { Majobot } from "@/index";
 
 export default function giveaway(client: Majobot) {
  const Giveaways = class extends GiveawaysManager {
   async getAllGiveaways() {
-   return await prismaClient.giveaways.findMany();
+   const giveaways = await prismaClient.giveaways.findMany();
+   return giveaways as unknown as Giveaway[];
   }
 
   async saveGiveaway(messageId: Snowflake, giveawayData: GiveawayData) {
-   return await prismaClient.giveaways.create({
+   await prismaClient.giveaways.create({
     data: {
      messageId,
-     data: giveawayData,
+     data: giveawayData as unknown as Prisma.JsonObject,
      guild: {
       connectOrCreate: {
        where: { guildId: giveawayData.guildId },
@@ -23,21 +24,27 @@ export default function giveaway(client: Majobot) {
      },
     },
    });
+
+   return true;
   }
 
   async editGiveaway(messageId: Snowflake, giveawayData: GiveawayData) {
-   return await prismaClient.giveaways.update({
+   await prismaClient.giveaways.update({
     where: { messageId },
     data: {
-     data: giveawayData,
+     data: giveawayData as unknown as Prisma.JsonObject,
     },
    });
+
+   return true;
   }
 
   async deleteGiveaway(messageId: Snowflake) {
-   return await prismaClient.giveaways.delete({
+   await prismaClient.giveaways.delete({
     where: { messageId },
    });
+
+   return true;
   }
  };
 

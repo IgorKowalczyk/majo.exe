@@ -1,6 +1,7 @@
 import prismaClient from "@majoexe/database";
 import { type ChatInputCommandInteraction, EmbedBuilder, type Message, PermissionsBitField, type ColorResolvable } from "discord.js";
 import type { Majobot } from "@/index";
+import { GiveawayData } from "discord-giveaways";
 
 export async function FindGiveaways(client: Majobot, interaction: ChatInputCommandInteraction, color: ColorResolvable, type: "all" | "ended" | "running"): Promise<Message | void> {
  try {
@@ -18,18 +19,30 @@ export async function FindGiveaways(client: Majobot, interaction: ChatInputComma
    },
   });
 
-  const list = giveaways.filter((giveaway) => {
-   if (!giveaway.data) return false;
+  const list = giveaways
+   .filter((giveaway) => {
+    if (!giveaway.data) return false;
 
-   if (type === "ended") {
-    return giveaway.data.ended;
-   } else if (type === "running") {
-    return !giveaway.data.ended;
-   }
-   return true;
-  });
+    const giveawayData = giveaway.data as unknown as GiveawayData;
 
-  if (!giveaways) return client.errorMessages.createSlashError(interaction, "❌ No giveaways found!");
+    if (type === "ended") {
+     return giveawayData.ended;
+    } else if (type === "running") {
+     return !giveawayData.ended;
+    }
+    return true;
+   })
+   .map((g) => {
+    const giveawayData = g.data as unknown as GiveawayData;
+
+    const prize = giveawayData.prize ? giveawayData.prize.replace(`${client.config.emojis.giveaway} Giveaway: `, "").replace(`${client.config.emojis.giveaway} Drop: `, "") : "No prize";
+    const winnerCount = giveawayData.winnerCount || 1;
+    const endDate = giveawayData.ended ? "" : `, Ends <t:${Math.floor(giveawayData.endAt / 1000)}:R>` || "No end date";
+    const url = `https://discord.com/channels/${g.guildId}/${giveawayData.channelId}/${g.messageId}`;
+    return `**${prize}**: Winners: \`${winnerCount}\`${endDate}, ${url}`;
+   });
+
+  if (!list) return client.errorMessages.createSlashError(interaction, "❌ No giveaways found!");
 
   const embed = new EmbedBuilder()
    .setColor(color)
@@ -38,7 +51,7 @@ export async function FindGiveaways(client: Majobot, interaction: ChatInputComma
    .setDescription(
     `>>> ${
      list.length > 0 // prettier
-      ? list.map((g) => `**${g.data.prize ? g.data.prize.replace(`${client.config.emojis.giveaway} Giveaway: `, "").replace(`${client.config.emojis.giveaway} Drop: `, "") : "No prize"}**: Winners: \`${g.data.winnerCount || 1}\`${g.data.ended ? "" : `, Ends <t:${Math.floor(g.data.endAt / 1000)}:R>` || "No end date"}, https://discord.com/channels/${g.guildId}/${g.data.channelId}/${g.messageId}`).join("\n")
+      ? list.join("\n")
       : "No giveaways found for this type!"
     }`
    )
