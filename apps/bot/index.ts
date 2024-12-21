@@ -64,8 +64,14 @@ const client = new Majobot({
   GatewayIntentBits.GuildModeration,
   GatewayIntentBits.GuildMembers,
   GatewayIntentBits.GuildMessages,
+  GatewayIntentBits.GuildMessagePolls,
+  GatewayIntentBits.GuildBans,
   GatewayIntentBits.GuildEmojisAndStickers,
   GatewayIntentBits.GuildMessageReactions,
+  GatewayIntentBits.AutoModerationExecution,
+  GatewayIntentBits.AutoModerationConfiguration,
+  //  GatewayIntentBits.GuildExpressions,
+  GatewayIntentBits.GuildInvites,
  ],
 });
 
