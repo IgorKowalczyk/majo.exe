@@ -172,8 +172,9 @@ enum GuildLogType {
  // Discord events
  InviteCreate // Done
  InviteDelete // Done
- MessageBulkDelete // Done
+
  MessageCreate // Exclude
+ MessageBulkDelete // Done
  MessageDelete // Done
  MessagePollVoteAdd // Done
  MessagePollVoteRemove // Done
@@ -184,33 +185,39 @@ enum GuildLogType {
  ThreadMembersUpdate
  ThreadMemberUpdate
  ThreadUpdate
- GuildUpdate
 
+ GuildUpdate // Done
  GuildMemberUpdate
+ GuildMemberAdd // Exclude
+ GuildMemberRemove // Exclude
+ GuildIntegrationsUpdate
+
  GuildRoleCreate
  GuildRoleDelete
  GuildRoleUpdate
+
  GuildScheduledEventCreate
  GuildScheduledEventDelete
  GuildScheduledEventUpdate
  GuildScheduledEventUserAdd
  GuildScheduledEventUserRemove
+
  GuildStickerCreate
  GuildStickerDelete
  GuildStickerUpdate
+
  GuildEmojiCreate // Done
  GuildEmojiDelete // Done
  GuildEmojiUpdate // Done
- GuildIntegrationsUpdate
- GuildMemberAdd // Exclude
- GuildMemberRemove // Exclude
 
  GuildBanAdd // Done
  GuildBanRemove // Done
+
  ChannelCreate // Done
  ChannelDelete // Done
  ChannelPinsUpdate // Done
  ChannelUpdate // Done
+
  AutoModerationActionExecution
  AutoModerationRuleCreate
  AutoModerationRuleDelete
