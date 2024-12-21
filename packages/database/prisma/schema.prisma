@@ -217,7 +217,7 @@ enum GuildLogType {
  ChannelCreate // Done
  ChannelDelete // Done
  ChannelPinsUpdate
- ChannelUpdate
+ ChannelUpdate // Done
  AutoModerationActionExecution
  AutoModerationRuleCreate
  AutoModerationRuleDelete
