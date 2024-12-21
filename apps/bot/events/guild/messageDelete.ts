@@ -1,6 +1,6 @@
 import { GuildLogType } from "@majoexe/database";
 import { getGuildLogSettings } from "@majoexe/util/database";
-import { Message, Guild, EmbedBuilder, time, escapeCodeBlock } from "discord.js";
+import { Message, EmbedBuilder, time, escapeCodeBlock } from "discord.js";
 import type { Majobot } from "@/index";
 
 export async function messageDelete(client: Majobot, message: Message): Promise<void> {
@@ -8,7 +8,7 @@ export async function messageDelete(client: Majobot, message: Message): Promise<
   if (!message.guild) return;
   const settings = await getGuildLogSettings(message.guild.id, GuildLogType.MessageDelete);
   if (!settings?.enabled || !settings.channelId) return;
-  const discordGuild = message.guild as Guild;
+  const discordGuild = message.guild;
   const channel = await discordGuild.channels.fetch(settings.channelId);
   if (!channel || !channel.isTextBased()) return;
 

@@ -1,6 +1,6 @@
 import { GuildLogType } from "@majoexe/database";
 import { getGuildLogSettings } from "@majoexe/util/database";
-import { Message, Guild, EmbedBuilder, escapeCodeBlock, time } from "discord.js";
+import { Message, EmbedBuilder, escapeCodeBlock, time } from "discord.js";
 import type { Majobot } from "@/index";
 
 export async function messageUpdate(client: Majobot, oldMessage: Message, newMessage: Message) {
@@ -8,7 +8,7 @@ export async function messageUpdate(client: Majobot, oldMessage: Message, newMes
   if (!oldMessage.guild || !newMessage.guild) return;
   const settings = await getGuildLogSettings(newMessage.guild.id, GuildLogType.MessageUpdate);
   if (!settings?.enabled || !settings.channelId) return;
-  const discordGuild = newMessage.guild as Guild;
+  const discordGuild = newMessage.guild;
   const channel = await discordGuild.channels.fetch(settings.channelId);
   if (!channel || !channel.isTextBased()) return;
 

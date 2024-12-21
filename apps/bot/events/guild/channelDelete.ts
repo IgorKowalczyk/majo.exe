@@ -1,12 +1,13 @@
 import { GuildLogType } from "@majoexe/database";
 import { getGuildLogSettings } from "@majoexe/util/database";
-import { NonThreadGuildBasedChannel, EmbedBuilder, time, ChannelType, inlineCode } from "discord.js";
+import { NonThreadGuildBasedChannel, EmbedBuilder, time, DMChannel, ChannelType, inlineCode } from "discord.js";
 import type { Majobot } from "@/index";
 
-export async function channelCreate(client: Majobot, channel: NonThreadGuildBasedChannel) {
+export async function channelDelete(client: Majobot, channel: DMChannel | NonThreadGuildBasedChannel) {
  try {
+  if (channel.type === ChannelType.DM) return;
   if (!channel.guild) return;
-  const settings = await getGuildLogSettings(channel.guild.id, GuildLogType.ChannelCreate);
+  const settings = await getGuildLogSettings(channel.guild.id, GuildLogType.ChannelDelete);
   if (!settings?.enabled || !settings.channelId) return;
   const discordGuild = channel.guild;
   const logChannel = await discordGuild.channels.fetch(settings.channelId);
@@ -29,10 +30,14 @@ export async function channelCreate(client: Majobot, channel: NonThreadGuildBase
     name: "Created At",
     value: time(channel.createdAt),
    },
+   {
+    name: "Deleted at",
+    value: time(Date.now()),
+   },
   ];
 
   const embed = new EmbedBuilder()
-   .setTitle("📢 Channel Created")
+   .setTitle("📢 Channel Deleted")
    .setFields(fields)
    .setColor("#3B82F6")
    .setTimestamp()

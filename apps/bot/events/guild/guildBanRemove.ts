@@ -1,6 +1,6 @@
 import { GuildLogType } from "@majoexe/database";
 import { getGuildLogSettings } from "@majoexe/util/database";
-import { GuildBan, Guild, EmbedBuilder } from "discord.js";
+import { GuildBan, EmbedBuilder } from "discord.js";
 import type { Majobot } from "@/index";
 
 export async function guildBanRemove(client: Majobot, ban: GuildBan) {
@@ -8,7 +8,7 @@ export async function guildBanRemove(client: Majobot, ban: GuildBan) {
   if (!ban.guild) return;
   const settings = await getGuildLogSettings(ban.guild.id, GuildLogType.GuildBanRemove);
   if (!settings?.enabled || !settings.channelId) return;
-  const discordGuild = ban.guild as Guild;
+  const discordGuild = ban.guild;
   const channel = await discordGuild.channels.fetch(settings.channelId);
   if (!channel || !channel.isTextBased()) return;
 

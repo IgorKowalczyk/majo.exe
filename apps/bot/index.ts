@@ -59,19 +59,27 @@ class Majobot extends Client {
 
 const client = new Majobot({
  intents: [
-  // Prettier
   GatewayIntentBits.Guilds,
-  GatewayIntentBits.GuildModeration,
   GatewayIntentBits.GuildMembers,
-  GatewayIntentBits.GuildMessages,
-  GatewayIntentBits.GuildMessagePolls,
-  GatewayIntentBits.GuildBans,
+  GatewayIntentBits.GuildModeration,
   GatewayIntentBits.GuildEmojisAndStickers,
-  GatewayIntentBits.GuildMessageReactions,
-  GatewayIntentBits.AutoModerationExecution,
-  GatewayIntentBits.AutoModerationConfiguration,
-  //  GatewayIntentBits.GuildExpressions,
+  GatewayIntentBits.GuildIntegrations,
+  GatewayIntentBits.GuildWebhooks,
   GatewayIntentBits.GuildInvites,
+  GatewayIntentBits.GuildVoiceStates,
+  // GatewayIntentBits.GuildPresences,
+  GatewayIntentBits.GuildMessages,
+  GatewayIntentBits.GuildMessageReactions,
+  // GatewayIntentBits.GuildMessageTyping,
+  // GatewayIntentBits.DirectMessages,
+  GatewayIntentBits.DirectMessageReactions,
+  // GatewayIntentBits.DirectMessageTyping,
+  // GatewayIntentBits.MessageContent,
+  GatewayIntentBits.GuildScheduledEvents,
+  GatewayIntentBits.AutoModerationConfiguration,
+  GatewayIntentBits.AutoModerationExecution,
+  GatewayIntentBits.GuildMessagePolls,
+  // GatewayIntentBits.DirectMessagePolls
  ],
 });
 

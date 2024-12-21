@@ -1,6 +1,6 @@
 import { GuildLogType } from "@majoexe/database";
 import { getGuildLogSettings } from "@majoexe/util/database";
-import { Guild, EmbedBuilder, PollAnswer, Snowflake } from "discord.js";
+import { EmbedBuilder, PollAnswer, Snowflake } from "discord.js";
 import type { Majobot } from "@/index";
 
 export async function messagePollVoteAdd(client: Majobot, poolAnswer: PollAnswer, userId: Snowflake) {
@@ -8,7 +8,7 @@ export async function messagePollVoteAdd(client: Majobot, poolAnswer: PollAnswer
   if (!poolAnswer.poll.message.guild) return;
   const settings = await getGuildLogSettings(poolAnswer.poll.message.guild.id, GuildLogType.MessagePollVoteAdd);
   if (!settings?.enabled || !settings.channelId) return;
-  const discordGuild = poolAnswer.poll.message.guild as Guild;
+  const discordGuild = poolAnswer.poll.message.guild;
   const channel = await discordGuild.channels.fetch(settings.channelId);
   if (!channel || !channel.isTextBased()) return;
 

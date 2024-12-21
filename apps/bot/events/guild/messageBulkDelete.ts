@@ -1,6 +1,6 @@
 import { GuildLogType } from "@majoexe/database";
 import { getGuildLogSettings } from "@majoexe/util/database";
-import { Collection, Message, Guild, EmbedBuilder } from "discord.js";
+import { Collection, Message, EmbedBuilder } from "discord.js";
 import type { Majobot } from "@/index";
 
 export async function messageBulkDelete(client: Majobot, messages: Collection<string, Message>): Promise<void> {
@@ -10,7 +10,7 @@ export async function messageBulkDelete(client: Majobot, messages: Collection<st
   if (!firstMessage?.guild) return;
   const settings = await getGuildLogSettings(firstMessage.guild.id, GuildLogType.MessageBulkDelete);
   if (!settings?.enabled || !settings.channelId) return;
-  const discordGuild = firstMessage.guild as Guild;
+  const discordGuild = firstMessage.guild;
   const channel = await discordGuild.channels.fetch(settings.channelId);
   if (!channel || !channel.isTextBased()) return;
 
