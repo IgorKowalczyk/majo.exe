@@ -41,11 +41,13 @@
     "eslint": "9.17.0",
     "eslint-plugin-turbo": "2.3.3",
     "prettier": "3.4.2",
-    "typescript": "5.7.2"
+    "typescript": "5.7.2",
+    "pre-commit": "1.2.2"
   },
   "engines": {
     "node": ">=20"
   },
+  "pre-commit": ["lint","format"],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/IgorKowalczyk/majo.exe.git"
