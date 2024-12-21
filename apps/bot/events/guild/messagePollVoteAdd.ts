@@ -1,6 +1,6 @@
 import { GuildLogType } from "@majoexe/database";
 import { getGuildLogSettings } from "@majoexe/util/database";
-import { EmbedBuilder, PollAnswer, Snowflake } from "discord.js";
+import { EmbedBuilder, PollAnswer, Snowflake, inlineCode } from "discord.js";
 import type { Majobot } from "@/index";
 
 export async function messagePollVoteAdd(client: Majobot, poolAnswer: PollAnswer, userId: Snowflake) {
@@ -19,11 +19,11 @@ export async function messagePollVoteAdd(client: Majobot, poolAnswer: PollAnswer
    },
    {
     name: "Answer",
-    value: poolAnswer.text || "Unknown",
+    value: inlineCode(poolAnswer.text || "Unknown"),
    },
    {
     name: "Vote Count",
-    value: poolAnswer.voteCount.toString(),
+    value: inlineCode(poolAnswer.voteCount.toString()),
    },
    {
     name: "User",

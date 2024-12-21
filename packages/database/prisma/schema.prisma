@@ -177,10 +177,10 @@ enum GuildLogType {
  MessageDelete // Done
  MessagePollVoteAdd // Done
  MessagePollVoteRemove // Done
- MessageReactionAdd
- MessageReactionRemove
- MessageReactionRemoveAll
- MessageReactionRemoveEmoji
+ MessageReactionAdd // Exclude
+ MessageReactionRemove // Exclude
+ MessageReactionRemoveAll // Exclude
+ MessageReactionRemoveEmoji // Exclude
  MessageUpdate // Done
 
  ThreadCreate
@@ -203,20 +203,20 @@ enum GuildLogType {
  GuildStickerCreate
  GuildStickerDelete
  GuildStickerUpdate
- GuildUnavailable
- GuildEmojiCreate
- GuildEmojiDelete
- GuildEmojiUpdate
+ GuildUnavailable // Exclude
+ GuildEmojiCreate // Done
+ GuildEmojiDelete // Done
+ GuildEmojiUpdate // Done
  GuildIntegrationsUpdate
- GuildMemberAdd
- GuildMemberAvailable
- GuildMemberRemove
+ GuildMemberAdd // Done
+ GuildMemberAvailable // Exclude
+ GuildMemberRemove // Exclude
 
  GuildBanAdd // Done
  GuildBanRemove // Done
  ChannelCreate // Done
  ChannelDelete // Done
- ChannelPinsUpdate
+ ChannelPinsUpdate // Done
  ChannelUpdate // Done
  AutoModerationActionExecution
  AutoModerationRuleCreate
@@ -253,6 +253,7 @@ enum GuildLogType {
 
  Unknown
 }
+
 
 // Guild audit logs settings
 model GuildLogsSettings {

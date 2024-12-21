@@ -1,43 +1,43 @@
 import { GuildLogType } from "@majoexe/database";
 import { getGuildLogSettings } from "@majoexe/util/database";
-import { NonThreadGuildBasedChannel, EmbedBuilder, time, ChannelType, inlineCode } from "discord.js";
+import { GuildEmoji, EmbedBuilder, inlineCode, time } from "discord.js";
 import type { Majobot } from "@/index";
 
-export async function channelCreate(client: Majobot, channel: NonThreadGuildBasedChannel) {
+export async function emojiCreate(client: Majobot, emoji: GuildEmoji) {
  try {
-  if (!channel.guild) return;
-  const settings = await getGuildLogSettings(channel.guild.id, GuildLogType.ChannelCreate);
+  if (!emoji.guild) return;
+  const settings = await getGuildLogSettings(emoji.guild.id, GuildLogType.GuildEmojiCreate);
   if (!settings?.enabled || !settings.channelId) return;
-  const discordGuild = channel.guild;
+  const discordGuild = emoji.guild;
   const logChannel = await discordGuild.channels.fetch(settings.channelId);
   if (!logChannel || !logChannel.isTextBased()) return;
 
   const fields = [
    {
-    name: "Channel",
-    value: `${channel.toString()} (${inlineCode(channel.name)})`,
+    name: "Emoji",
+    value: `${emoji.toString()} (${inlineCode(emoji.name || "N/A")})`,
    },
    {
     name: "ID",
-    value: inlineCode(channel.id),
-   },
-   {
-    name: "Type",
-    value: inlineCode(ChannelType[channel.type]),
+    value: inlineCode(emoji.id),
    },
    {
     name: "Created At",
-    value: time(channel.createdAt),
+    value: time(emoji.createdAt),
+   },
+   {
+    name: "Created By",
+    value: `${emoji.author?.toString() || "N/A"} (${inlineCode(emoji.author?.id || "N/A")})`,
    },
   ];
 
   const embed = new EmbedBuilder()
-   .setTitle("📢 Channel Created")
+   .setTitle("🆕 Emoji Created")
    .setFields(fields)
    .setColor("#3B82F6")
    .setTimestamp()
    .setFooter({
-    text: "Channel created",
+    text: `Emoji created`,
     iconURL: discordGuild.iconURL({ size: 256 }) || undefined,
    });
 

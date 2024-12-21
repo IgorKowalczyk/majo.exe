@@ -1,13 +1,12 @@
 import { GuildLogType } from "@majoexe/database";
 import { getGuildLogSettings } from "@majoexe/util/database";
-import { NonThreadGuildBasedChannel, EmbedBuilder, time, DMChannel, ChannelType, inlineCode } from "discord.js";
+import { NonThreadGuildBasedChannel, EmbedBuilder, time, inlineCode } from "discord.js";
 import type { Majobot } from "@/index";
 
-export async function channelDelete(client: Majobot, channel: DMChannel | NonThreadGuildBasedChannel) {
+export async function channelPinsUpdate(client: Majobot, channel: NonThreadGuildBasedChannel, timeUpdated: Date) {
  try {
-  if (channel.type === ChannelType.DM) return;
   if (!channel.guild) return;
-  const settings = await getGuildLogSettings(channel.guild.id, GuildLogType.ChannelDelete);
+  const settings = await getGuildLogSettings(channel.guild.id, GuildLogType.ChannelPinsUpdate);
   if (!settings?.enabled || !settings.channelId) return;
   const discordGuild = channel.guild;
   const logChannel = await discordGuild.channels.fetch(settings.channelId);
@@ -23,26 +22,18 @@ export async function channelDelete(client: Majobot, channel: DMChannel | NonThr
     value: inlineCode(channel.id),
    },
    {
-    name: "Type",
-    value: inlineCode(ChannelType[channel.type]),
-   },
-   {
-    name: "Created At",
-    value: time(channel.createdAt),
-   },
-   {
-    name: "Deleted at",
-    value: time(Date.now()),
+    name: "Updated At",
+    value: time(timeUpdated),
    },
   ];
 
   const embed = new EmbedBuilder()
-   .setTitle("📢 Channel Deleted")
+   .setTitle("📌 Channel Pins Updated")
    .setFields(fields)
    .setColor("#3B82F6")
    .setTimestamp()
    .setFooter({
-    text: "Channel created",
+    text: "Pins updated",
     iconURL: discordGuild.iconURL({ size: 256 }) || undefined,
    });
 

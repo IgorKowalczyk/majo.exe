@@ -1,6 +1,6 @@
 import { GuildLogType } from "@majoexe/database";
 import { getGuildLogSettings } from "@majoexe/util/database";
-import { Message, EmbedBuilder, time, escapeCodeBlock } from "discord.js";
+import { Message, EmbedBuilder, time, escapeCodeBlock, codeBlock } from "discord.js";
 import type { Majobot } from "@/index";
 
 export async function messageDelete(client: Majobot, message: Message): Promise<void> {
@@ -27,7 +27,7 @@ export async function messageDelete(client: Majobot, message: Message): Promise<
    },
    {
     name: "Content",
-    value: escapeCodeBlock(message.content) || "No content",
+    value: codeBlock(escapeCodeBlock(message.content) || "No content"),
    },
   ];
 

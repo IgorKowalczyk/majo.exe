@@ -1,6 +1,6 @@
 import { GuildLogType } from "@majoexe/database";
 import { getGuildLogSettings } from "@majoexe/util/database";
-import { GuildBan, EmbedBuilder } from "discord.js";
+import { GuildBan, EmbedBuilder, inlineCode } from "discord.js";
 import type { Majobot } from "@/index";
 
 export async function guildBanAdd(client: Majobot, ban: GuildBan) {
@@ -15,11 +15,11 @@ export async function guildBanAdd(client: Majobot, ban: GuildBan) {
   const fields = [
    {
     name: "User",
-    value: `${ban.user.globalName || ban.user.username || "Unknown"} (${ban.user.id})`,
+    value: `${ban.user.globalName || ban.user.username || "Unknown"} (${inlineCode(ban.user.id)})`,
    },
    {
     name: "Reason",
-    value: ban.reason || "No reason provided",
+    value: inlineCode(ban.reason || "No reason provided"),
    },
   ];
 

@@ -2,6 +2,7 @@
 export * from "./settings/XPSettings";
 
 // Logs
+export * from "./logs/events";
 export * from "./logs/fetchLogs";
 export * from "./logs/createLog";
 export * from "./logs/getGuildLogSettings";

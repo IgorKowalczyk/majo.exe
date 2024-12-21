@@ -51,7 +51,7 @@ export async function channelUpdate(client: Majobot, oldChannel: DMChannel | Non
    .setColor("#F59E0B")
    .setTimestamp()
    .setFooter({
-    text: `Channel updated`,
+    text: "Channel updated",
     iconURL: discordGuild.iconURL({ size: 256 }) || undefined,
    });
 

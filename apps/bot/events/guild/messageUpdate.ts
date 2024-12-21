@@ -1,6 +1,6 @@
 import { GuildLogType } from "@majoexe/database";
 import { getGuildLogSettings } from "@majoexe/util/database";
-import { Message, EmbedBuilder, escapeCodeBlock, time } from "discord.js";
+import { Message, EmbedBuilder, escapeCodeBlock, time, codeBlock } from "discord.js";
 import type { Majobot } from "@/index";
 
 export async function messageUpdate(client: Majobot, oldMessage: Message, newMessage: Message) {
@@ -27,11 +27,11 @@ export async function messageUpdate(client: Majobot, oldMessage: Message, newMes
    },
    {
     name: "Old content",
-    value: escapeCodeBlock(oldMessage.content) || "No content",
+    value: codeBlock(escapeCodeBlock(oldMessage.content) || "No content"),
    },
    {
     name: "New content",
-    value: escapeCodeBlock(newMessage.content) || "No content",
+    value: codeBlock(escapeCodeBlock(newMessage.content) || "No content"),
    },
   ];
 

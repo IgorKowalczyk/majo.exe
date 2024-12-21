@@ -1,6 +1,6 @@
 import { GuildLogType } from "@majoexe/database";
 import { getGuildLogSettings } from "@majoexe/util/database";
-import { Invite, Guild, EmbedBuilder } from "discord.js";
+import { Invite, Guild, EmbedBuilder, time } from "discord.js";
 import type { Majobot } from "@/index";
 
 export async function inviteDelete(client: Majobot, invite: Invite) {
@@ -23,7 +23,7 @@ export async function inviteDelete(client: Majobot, invite: Invite) {
    },
    {
     name: "Expires",
-    value: invite.expiresAt ? invite.expiresAt.toUTCString() : "Never",
+    value: invite.expiresAt ? time(invite.expiresAt) : "Never",
    },
   ];
 

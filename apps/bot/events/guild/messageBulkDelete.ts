@@ -1,6 +1,6 @@
 import { GuildLogType } from "@majoexe/database";
 import { getGuildLogSettings } from "@majoexe/util/database";
-import { Collection, Message, EmbedBuilder } from "discord.js";
+import { Collection, Message, EmbedBuilder, inlineCode } from "discord.js";
 import type { Majobot } from "@/index";
 
 export async function messageBulkDelete(client: Majobot, messages: Collection<string, Message>): Promise<void> {
@@ -21,7 +21,7 @@ export async function messageBulkDelete(client: Majobot, messages: Collection<st
    },
    {
     name: "Messages Deleted",
-    value: messages.size.toString(),
+    value: inlineCode(messages.size.toString()),
    },
   ];
 
