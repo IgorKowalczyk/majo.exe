@@ -37,7 +37,7 @@ export async function emojiCreate(client: Majobot, emoji: GuildEmoji) {
    .setColor("#3B82F6")
    .setTimestamp()
    .setFooter({
-    text: `Emoji created`,
+    text: "Emoji created",
     iconURL: discordGuild.iconURL({ size: 256 }) || undefined,
    });
 

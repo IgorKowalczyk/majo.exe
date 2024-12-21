@@ -45,7 +45,7 @@ export async function roleDelete(client: Majobot, role: Role) {
    .setColor("#EF4444")
    .setTimestamp()
    .setFooter({
-    text: `Role deleted`,
+    text: "Role deleted",
     iconURL: discordGuild.iconURL({ size: 256 }) || undefined,
    });
 

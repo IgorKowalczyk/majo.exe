@@ -45,7 +45,7 @@ export async function roleCreate(client: Majobot, role: Role) {
    .setColor("#10B981")
    .setTimestamp()
    .setFooter({
-    text: `Role created`,
+    text: "Role created",
     iconURL: discordGuild.iconURL({ size: 256 }) || undefined,
    });
 

@@ -33,7 +33,7 @@ export async function emojiDelete(client: Majobot, emoji: GuildEmoji) {
    .setColor("#EF4444")
    .setTimestamp()
    .setFooter({
-    text: `Emoji deleted`,
+    text: "Emoji deleted",
     iconURL: discordGuild.iconURL({ size: 256 }) || undefined,
    });
 

@@ -49,7 +49,7 @@ export async function guildUpdate(client: Majobot, oldGuild: Guild, newGuild: Gu
    .setColor("#F59E0B")
    .setTimestamp()
    .setFooter({
-    text: `Guild updated`,
+    text: "Guild updated",
     iconURL: newGuild.iconURL({ size: 256 }) || undefined,
    });
 

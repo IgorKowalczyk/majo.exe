@@ -44,7 +44,7 @@ export async function emojiUpdate(client: Majobot, oldEmoji: GuildEmoji, newEmoj
    .setColor("#F59E0B")
    .setTimestamp()
    .setFooter({
-    text: `Emoji updated`,
+    text: "Emoji updated",
     iconURL: discordGuild.iconURL({ size: 256 }) || undefined,
    });
 

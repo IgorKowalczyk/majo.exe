@@ -69,7 +69,7 @@ export async function roleUpdate(client: Majobot, oldRole: Role, newRole: Role) 
    .setColor("#F59E0B")
    .setTimestamp()
    .setFooter({
-    text: `Role updated`,
+    text: "Role updated",
     iconURL: discordGuild.iconURL({ size: 256 }) || undefined,
    });
 
