@@ -169,18 +169,19 @@ model GuildDisabledCategories {
 
 // Guild security/audit logs
 enum GuildLogType {
- InviteCreate
- InviteDelete
- MessageBulkDelete
- MessageCreate
- MessageDelete
- MessagePollVoteAdd
- MessagePollVoteRemove
+ // Discord events
+ InviteCreate // Done
+ InviteDelete // Done
+ MessageBulkDelete // Done
+ MessageCreate // Exclude
+ MessageDelete // Done
+ MessagePollVoteAdd // Done
+ MessagePollVoteRemove // Done
  MessageReactionAdd
  MessageReactionRemove
  MessageReactionRemoveAll
  MessageReactionRemoveEmoji
- MessageUpdate
+ MessageUpdate // Done
 
  ThreadCreate
  ThreadDelete
@@ -211,10 +212,10 @@ enum GuildLogType {
  GuildMemberAvailable
  GuildMemberRemove
 
- GuildBanAdd
- GuildBanRemove
- ChannelCreate
- ChannelDelete
+ GuildBanAdd // Done
+ GuildBanRemove // Done
+ ChannelCreate // Done
+ ChannelDelete // Done
  ChannelPinsUpdate
  ChannelUpdate
  AutoModerationActionExecution
@@ -222,6 +223,7 @@ enum GuildLogType {
  AutoModerationRuleDelete
  AutoModerationRuleUpdate
 
+ // Custom
  PublicDashboardUpdate
  VanityUpdate
  EmbedColorUpdate
