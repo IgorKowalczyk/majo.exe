@@ -1,5 +1,5 @@
-import { Snowflake } from "discord.js";
 import prismaClient, { GuildLogType } from "@majoexe/database";
+import { Snowflake } from "discord.js";
 
 export async function getGuildLogSettings(guildId: Snowflake, type: GuildLogType) {
  try {
