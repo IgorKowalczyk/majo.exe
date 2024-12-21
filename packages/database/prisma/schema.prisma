@@ -177,15 +177,10 @@ enum GuildLogType {
  MessageDelete // Done
  MessagePollVoteAdd // Done
  MessagePollVoteRemove // Done
- MessageReactionAdd // Exclude
- MessageReactionRemove // Exclude
- MessageReactionRemoveAll // Exclude
- MessageReactionRemoveEmoji // Exclude
  MessageUpdate // Done
 
  ThreadCreate
  ThreadDelete
- ThreadListSync
  ThreadMembersUpdate
  ThreadMemberUpdate
  ThreadUpdate
@@ -203,13 +198,11 @@ enum GuildLogType {
  GuildStickerCreate
  GuildStickerDelete
  GuildStickerUpdate
- GuildUnavailable // Exclude
  GuildEmojiCreate // Done
  GuildEmojiDelete // Done
  GuildEmojiUpdate // Done
  GuildIntegrationsUpdate
- GuildMemberAdd // Done
- GuildMemberAvailable // Exclude
+ GuildMemberAdd // Exclude
  GuildMemberRemove // Exclude
 
  GuildBanAdd // Done

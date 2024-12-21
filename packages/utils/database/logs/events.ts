@@ -1,43 +1,37 @@
-import { type GuildLogType } from "@majoexe/database";
+import { GuildLogType } from "@majoexe/database";
 
 export const ExcludedEvents: GuildLogType[] = [
- "MessageCreate",
- "MessageReactionAdd",
- "MessageReactionRemove",
- "MessageReactionRemoveAll",
- "MessageReactionRemoveEmoji",
- "GuildMemberAvailable",
- "GuildMemberRemove",
- "GuildMemberUpdate",
- "GuildUnavailable",
+ GuildLogType.MessageCreate,
+ GuildLogType.GuildMemberAdd,
+ GuildLogType.GuildMemberRemove,
 
  // Custom are also excluded
- "PublicDashboardUpdate",
- "VanityUpdate",
- "EmbedColorUpdate",
- "CommandCategoryEnable",
- "CommandCategoryDisable",
- "CommandEnable",
- "CommandDisable",
+ GuildLogType.PublicDashboardUpdate,
+ GuildLogType.VanityUpdate,
+ GuildLogType.EmbedColorUpdate,
+ GuildLogType.CommandCategoryEnable,
+ GuildLogType.CommandCategoryDisable,
+ GuildLogType.CommandEnable,
+ GuildLogType.CommandDisable,
 
- "GiveawayCreate",
- "GiveawayDelete",
- "GiveawayEdit",
- "GiveawayPaused",
- "GiveawayResumed",
- "GiveawayEnded",
+ GuildLogType.GiveawayCreate,
+ GuildLogType.GiveawayDelete,
+ GuildLogType.GiveawayEdit,
+ GuildLogType.GiveawayPaused,
+ GuildLogType.GiveawayResumed,
+ GuildLogType.GiveawayEnded,
 
- "WelcomeMessageEnable",
- "WelcomeMessageDisable",
+ GuildLogType.WelcomeMessageEnable,
+ GuildLogType.WelcomeMessageDisable,
 
- "LeaveMessageEnable",
- "LeaveMessageDisable",
+ GuildLogType.LeaveMessageEnable,
+ GuildLogType.LeaveMessageDisable,
 
- "ReputationUpdate",
+ GuildLogType.ReputationUpdate,
 
- "WarnCreate",
- "WarnDelete",
- "WarnUpdate",
+ GuildLogType.WarnCreate,
+ GuildLogType.WarnDelete,
+ GuildLogType.WarnUpdate,
 
- "Unknown",
+ GuildLogType.Unknown,
 ];

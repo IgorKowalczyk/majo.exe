@@ -108,36 +108,16 @@ const config = {
     emoji: "🗳️",
    },
    {
-    type: "MessageReactionAdd",
-    emoji: "👍",
-   },
-   {
-    type: "MessageReactionRemove",
-    emoji: "👎",
-   },
-   {
-    type: "MessageReactionRemoveAll",
-    emoji: "🚫",
-   },
-   {
-    type: "MessageReactionRemoveEmoji",
-    emoji: "🚫",
-   },
-   {
     type: "MessageUpdate",
     emoji: "✏️",
    },
    {
     type: "ThreadCreate",
-    emoji: "�",
+    emoji: "🆕",
    },
    {
     type: "ThreadDelete",
     emoji: "🗑️",
-   },
-   {
-    type: "ThreadListSync",
-    emoji: "🔄",
    },
    {
     type: "ThreadMembersUpdate",
@@ -153,7 +133,7 @@ const config = {
    },
    {
     type: "GuildUpdate",
-    emoji: "�",
+    emoji: "✏️",
    },
    {
     type: "GuildMemberUpdate",
@@ -204,10 +184,6 @@ const config = {
     emoji: "✏️",
    },
    {
-    type: "GuildUnavailable",
-    emoji: "🚫",
-   },
-   {
     type: "GuildEmojiCreate",
     emoji: "🆕",
    },
@@ -227,10 +203,7 @@ const config = {
     type: "GuildMemberAdd",
     emoji: "👤",
    },
-   {
-    type: "GuildMemberAvailable",
-    emoji: "👤",
-   },
+
    {
     type: "GuildMemberRemove",
     emoji: "👤",
@@ -261,7 +234,7 @@ const config = {
    },
    {
     type: "AutoModerationActionExecution",
-    emoji: "�",
+    emoji: "🛠️",
    },
    {
     type: "AutoModerationRuleCreate",
@@ -333,7 +306,7 @@ const config = {
    },
    {
     type: "WelcomeMessageDisable",
-    emoji: "❌�",
+    emoji: "❌",
    },
    {
     type: "LeaveMessageEnable",
