@@ -192,9 +192,9 @@ enum GuildLogType {
  GuildMemberRemove // Exclude
  GuildIntegrationsUpdate
 
- GuildRoleCreate
- GuildRoleDelete
- GuildRoleUpdate
+ GuildRoleCreate // Done
+ GuildRoleDelete // Done
+ GuildRoleUpdate // Done
 
  GuildScheduledEventCreate
  GuildScheduledEventDelete
