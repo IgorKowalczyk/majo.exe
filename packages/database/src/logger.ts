@@ -1,6 +1,8 @@
 import chalk from "chalk";
 
-const colors: Record<"info" | "event" | "error" | "warn" | "ready" | "cron", string> = {
+const colors: Record<
+
+"info" | "event" | "error" | "warn" | "ready" | "cron", string> = {
  info: "cyan",
  event: "magenta",
  error: "red",
