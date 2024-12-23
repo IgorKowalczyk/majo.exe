@@ -36,7 +36,7 @@
     "@napi-rs/canvas": "0.1.65",
     "@types/ms": "0.7.34",
     "chalk": "5.4.1",
-    "discord-api-types": "0.37.112",
+    "discord-api-types": "0.37.114",
     "discord.js": "14.16.3",
     "ms": "2.1.3"
   },
