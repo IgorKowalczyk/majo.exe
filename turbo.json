@@ -1,6 +1,6 @@
 {
  "$schema": "https://turborepo.org/schema.json",
- "globalDependencies": [".env", ".prettierignore", "prettier.config.js", "eslint.config.js"],
+ "globalDependencies": [".env", ".prettierignore", "prettier.config.js", "eslint.config.ts"],
  "tasks": {
   "dev": {
    "dependsOn": ["prisma:generate"],
@@ -44,15 +44,18 @@
   },
   "prisma:seed": {
    "cache": false,
-   "env": ["DATABASE_URL", "DATABASE_URL_UNPOOLED"]
+   "env": ["DATABASE_URL", "DATABASE_URL_UNPOOLED"],
+   "interactive": true
   },
   "prisma:push": {
    "cache": false,
-   "env": ["DATABASE_URL", "DATABASE_URL_UNPOOLED"]
+   "env": ["DATABASE_URL", "DATABASE_URL_UNPOOLED"],
+   "interactive": true
   },
   "prisma:migrate": {
    "outputs": ["prisma/migrations/**"],
-   "env": ["DATABASE_URL", "DATABASE_URL_UNPOOLED"]
+   "env": ["DATABASE_URL", "DATABASE_URL_UNPOOLED"],
+   "interactive": true
   },
   "prisma:format": {
    "outputs": ["prisma/schema.prisma"]

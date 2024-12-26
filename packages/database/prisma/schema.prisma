@@ -202,9 +202,9 @@ enum GuildLogType {
  GuildScheduledEventUserAdd
  GuildScheduledEventUserRemove
 
- GuildStickerCreate
- GuildStickerDelete
- GuildStickerUpdate
+ GuildStickerCreate // Done
+ GuildStickerDelete // Done
+ GuildStickerUpdate // Done
 
  GuildEmojiCreate // Done
  GuildEmojiDelete // Done
