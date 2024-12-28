@@ -17,6 +17,8 @@ export const metadata = {
  description: "All the logs of the different actions that have been happening on your dashboard.",
 };
 
+export const dynamic = "force-dynamic";
+
 export default async function LogsPage(props: { params: Promise<{ server: string }> }) {
  const params = await props.params;
  const session = await getSession();

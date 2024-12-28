@@ -74,7 +74,7 @@ export default async function Page(props: { params: Promise<{ server: string }> 
 
     <div className="flex flex-wrap items-stretch justify-start gap-8">
      {categories.map((category) => (
-      <Block className="min-w-48" key={category.name}>
+      <Block className="w-full min-w-48 md:w-auto" key={category.name}>
        <p className="mb-4 flex items-center gap-4 text-center text-xl font-bold">
         {botConfig.emojis.categories.find((cat) => cat.name === category.name.toLowerCase())?.emoji || "❔"} {category.name}
         <span className="ml-auto mr-0">
@@ -133,7 +133,7 @@ export default async function Page(props: { params: Promise<{ server: string }> 
             "flex flex-col items-start gap-2"
            )}
           >
-           <div className="flex items-center font-bold">
+           <div className="flex flex-wrap items-center gap-2 font-bold">
             /{command.name}{" "}
             {command.options &&
              command.options.map((option) => (
@@ -144,7 +144,7 @@ export default async function Page(props: { params: Promise<{ server: string }> 
                  "!font-normal opacity-70": !option.required,
                  "opacity-100": option.required,
                 },
-                "ml-2 [line-height:normal]"
+                "[line-height:normal]"
                )}
               >
                <Tooltip content={`${option.description} ${option.required ? "(required)" : "(optional)"}`}>

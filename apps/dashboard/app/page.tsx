@@ -123,7 +123,7 @@ export default async function HomePage() {
  const jsonData = await guilds.json();
 
  return (
-  <>
+  <div className="p-6">
    <div className="relative z-20 flex min-h-screen w-full items-center justify-center">
     <div className="absolute left-0 top-0 z-10 size-full bg-[radial-gradient(circle,rgba(2,0,36,0)0,rgb(16,17,16,100%))]" />
     <div className="relative z-20 -mt-8 flex w-full select-none flex-col items-center justify-center gap-4 px-3 md:w-[90%]">
@@ -139,7 +139,7 @@ export default async function HomePage() {
        </AnimatedShinyText>
       </Link>
      </Fade>
-     <WordPullUp wordsClassName={cn(headerVariants({ variant: "big", alignment: "center", effects: "gradient" }), "!font-black !leading-snug")} words="The only one Discord Bot" />
+     <WordPullUp wordsClassName={cn(headerVariants({ variant: "big", alignment: "center", effects: "gradient" }), "!font-black !leading-snug")} words="The only one Discord Bot" className="text-center" />
      {/* <Header className=>The only one Discord Bot</Header> */}
      <Fade
       framerProps={{
@@ -386,7 +386,7 @@ export default async function HomePage() {
       </div>
      </div>
 
-     <div className="mx-auto my-16 flex flex-col gap-8 px-4 lg:flex-row lg:gap-16 lg:px-0">
+     <div className="mx-auto my-16 flex flex-col-reverse gap-8 px-4 lg:flex-row lg:gap-16 lg:px-0">
       <div className="w-full lg:w-3/5">
        {exampleLogs.map((log) => (
         <LogDisclosure item={log} key={log.id} preview={true} guildId="123" />
@@ -439,6 +439,6 @@ export default async function HomePage() {
      <div className="to-[hsla(202, 36%, 96%, 1)] absolute inset-0 -z-10 size-full bg-gradient-to-b from-accent-primary/15" />
     </div>
    </div>
-  </>
+  </div>
  );
 }

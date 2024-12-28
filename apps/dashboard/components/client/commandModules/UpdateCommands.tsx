@@ -20,7 +20,7 @@ export const UpdateCommands = React.forwardRef<HTMLDivElement, UpdateCommandsPro
 
  const updateCommand = async () => {
   setLoading(true);
-  const loading = toast.loading(`${!enabled ? "Enabling" : "Disabling"} command ${commandName}...`);
+  const loading = toast.loading(`${!enabled ? "Enabling" : "Disabling"} command /${commandName}...`);
 
   const res = await fetch("/api/settings/commands", {
    method: "POST",
