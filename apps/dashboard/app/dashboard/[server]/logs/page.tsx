@@ -1,17 +1,16 @@
 import prismaClient from "@majoexe/database";
+import { GuildLogType } from "@majoexe/database";
+import { ExcludedEvents } from "@majoexe/util/database";
 import { getGuildFromMemberGuilds, getGuild, getGuildChannels } from "@majoexe/util/functions/guild";
+import { ChannelType } from "discord-api-types/v10";
 import { getSession } from "lib/session";
 import { redirect } from "next/navigation";
 import { notFound } from "next/navigation";
+import { UpdateLogs } from "./components/UpdateLogs";
+import { ErrorBlock } from "@/components/ui/Block";
 import Header, { headerVariants } from "@/components/ui/Headers";
 import { Icons, iconVariants } from "@/components/ui/Icons";
 import { cn } from "@/lib/utils";
-import { ChannelType } from "discord-api-types/v10";
-import { Block, ErrorBlock } from "@/components/ui/Block";
-import { GuildLogType } from "@majoexe/database";
-import { ExcludedEvents } from "@majoexe/util/database";
-import { UpdateLog, UpdateLogs } from "./components/UpdateLogs";
-import { capitalize, splitCamelCase } from "@majoexe/util/functions/util";
 
 export const metadata = {
  title: "Logs",

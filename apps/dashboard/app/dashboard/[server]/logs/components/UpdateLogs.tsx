@@ -1,21 +1,21 @@
 "use client";
 
-import { Snowflake } from "discord-api-types/globals";
 import { botConfig } from "@majoexe/config";
-import React, { useState, useEffect } from "react";
-import { toast } from "sonner";
-import { Switch } from "@/components/ui/Switch";
-import { Tooltip } from "@/components/ui/Tooltip";
 import { GuildLogType, GuildLogsSettings } from "@majoexe/database";
-import Header, { headerVariants } from "@/components/ui/Headers";
-import { Block } from "@/components/ui/Block";
-import { Icons, iconVariants } from "@/components/ui/Icons";
-import { cn } from "@/lib/utils";
 import { capitalize, splitCamelCase } from "@majoexe/util/functions/util";
-import { ChannelsSelect } from "@/components/ui/ChannelsSelect";
-import { Button } from "@/components/ui/Buttons";
+import { Snowflake } from "discord-api-types/globals";
 import { useRouter } from "next/navigation";
 import { useNavigationGuard } from "next-navigation-guard";
+import React, { useState, useEffect } from "react";
+import { toast } from "sonner";
+import { Block } from "@/components/ui/Block";
+import { Button } from "@/components/ui/Buttons";
+import { ChannelsSelect } from "@/components/ui/ChannelsSelect";
+import Header, { headerVariants } from "@/components/ui/Headers";
+import { Icons, iconVariants } from "@/components/ui/Icons";
+import { Switch } from "@/components/ui/Switch";
+import { Tooltip } from "@/components/ui/Tooltip";
+import { cn } from "@/lib/utils";
 
 export function handleLogText(log: GuildLogType) {
  let transformedLog = splitCamelCase(log).toLowerCase();
@@ -57,7 +57,6 @@ export const UpdateLogs = React.forwardRef<HTMLDivElement, UpdateLogsProps>(({ s
 
  const handleSaveAll = async () => {
   setLoading(true);
-  const failedLogs: UpdateLog[] = [];
 
   const res = await fetch("/api/settings/update-logs", {
    method: "POST",
@@ -107,29 +106,8 @@ export const UpdateLogs = React.forwardRef<HTMLDivElement, UpdateLogsProps>(({ s
   setResetKey((prevKey) => prevKey + 1); // Force re-render of UpdateLog components to reset their state
  };
 
- const updateLog = async (logType: UpdateLog["type"], enabled: UpdateLog["enabled"], channelId: UpdateLog["channelId"]) => {
-  const res = await fetch("/api/settings/update-logs", {
-   method: "POST",
-   headers: {
-    "Content-Type": "application/json",
-   },
-   body: JSON.stringify({
-    id: serverId,
-    type: logType,
-    enabled,
-    channelId,
-   }),
-  });
-
-  if (!res.ok) return false;
-  const json = await res.json();
-
-  if (json.code === 200) return true;
-  return false;
- };
-
  return (
-  <>
+  <div {...ref}>
    <div
     className={cn(
      {
@@ -139,9 +117,9 @@ export const UpdateLogs = React.forwardRef<HTMLDivElement, UpdateLogsProps>(({ s
      "md:ml-72 md:mr-6 fixed bottom-6 z-50 duration-200 ease-in-out left-0 right-0 origin-bottom"
     )}
    >
-    <div className="mx-auto w-full max-w-3xl rounded-2xl shadow-2xl flex items-center border justify-between border-neutral-800 bg-background-secondary p-3">
+    <div className="mx-auto flex w-full max-w-3xl items-center justify-between rounded-2xl border border-neutral-800 bg-background-secondary p-3 shadow-2xl">
      <span className="flex items-center gap-2 font-bold">
-      <Icons.TriangleAlert className="size-6 ml-2 text-red-400" />
+      <Icons.TriangleAlert className="ml-2 size-6 text-red-400" />
       Caution - You have unsaved changes
      </span>
      <div className="flex gap-4">
@@ -168,7 +146,7 @@ export const UpdateLogs = React.forwardRef<HTMLDivElement, UpdateLogsProps>(({ s
    {botConfig.emojis.logs.map((category) => (
     <div key={category.category}>
      <Header className={cn(headerVariants({ variant: "h2" }), "mt-6 mb-2")}>{category.category}</Header>
-     <div className="grid grid-cols-1 lg:grid-cols-2 2xl:grid-cols-3 gap-8">
+     <div className="grid grid-cols-1 gap-8 lg:grid-cols-2 2xl:grid-cols-3">
       {category.types
        .filter((logType) => allowedLogs.includes(logType.type as GuildLogType))
        .map((logType) => {
@@ -176,7 +154,6 @@ export const UpdateLogs = React.forwardRef<HTMLDivElement, UpdateLogsProps>(({ s
         return (
          <UpdateLog
           key={`${log.type}-${resetKey}`} // Key is resetKey to force re-render when reset
-          serverId={serverId}
           logType={log.type as GuildLogType}
           logEnabled={log.enabled}
           exisingChannel={log.channelId}
@@ -201,12 +178,11 @@ export const UpdateLogs = React.forwardRef<HTMLDivElement, UpdateLogsProps>(({ s
      </div>
     </div>
    ))}
-  </>
+  </div>
  );
 });
 
 export interface UpdateLogProps {
- serverId: Snowflake;
  logType: GuildLogType;
  logEnabled: boolean;
  exisingChannel: Snowflake | null;
@@ -215,7 +191,7 @@ export interface UpdateLogProps {
  disabled: boolean;
 }
 
-export const UpdateLog = React.forwardRef<HTMLDivElement, UpdateLogProps>(({ serverId, allChannels, exisingChannel, logType, logEnabled, onChange, disabled, ...props }, ref) => {
+export const UpdateLog = React.forwardRef<HTMLDivElement, UpdateLogProps>(({ allChannels, exisingChannel, logType, logEnabled, onChange, disabled, ...props }, ref) => {
  const [enabled, setEnabled] = useState(logEnabled);
  const [messageChannel, setMessageChannel] = useState<Snowflake | null>(exisingChannel);
 
@@ -224,7 +200,7 @@ export const UpdateLog = React.forwardRef<HTMLDivElement, UpdateLogProps>(({ ser
  }, [enabled, messageChannel]);
 
  return (
-  <Block key={logType} {...props}>
+  <Block key={logType} {...props} ref={ref}>
    <div className="mb-1 flex items-center gap-4">
     <Header className={cn(headerVariants({ variant: "h3" }))}>
      {botConfig.emojis.logs.flatMap((category) => category.types).find((log) => log.type === logType)?.emoji || "❔"} {handleLogText(logType)}
@@ -241,13 +217,13 @@ export const UpdateLog = React.forwardRef<HTMLDivElement, UpdateLogProps>(({ ser
     </Tooltip>
     <Switch checked={enabled} onChange={() => setEnabled(!enabled)} disabled={disabled} />
    </div>
-   <div className="flex items-end gap-4 justify-between">
+   <div className="flex items-end justify-between gap-4">
     <div>
      <span className="flex items-center gap-2 font-bold">
       <Icons.Hash className={iconVariants({ variant: "normal" })} />
       Channel:
      </span>
-     <p className="text-neutral-500 mb-2 text-sm">Select the channel where the logs will be sent.</p>
+     <p className="mb-2 text-sm text-neutral-500">Select the channel where the logs will be sent.</p>
      <ChannelsSelect allChannels={allChannels} selectedChannels={messageChannel ? [messageChannel] : []} setChannels={(channel) => setMessageChannel(channel as Snowflake | null)} disabled={disabled} multiple={false} />
     </div>
    </div>

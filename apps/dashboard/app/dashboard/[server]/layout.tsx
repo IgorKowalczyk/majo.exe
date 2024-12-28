@@ -1,7 +1,7 @@
 import { dashboardConfig } from "@majoexe/config";
 import { Metadata } from "next";
-import { SideNavigation } from "@/components/nav/SideNavigation";
 import { NavigationGuardProvider } from "next-navigation-guard";
+import { SideNavigation } from "@/components/nav/SideNavigation";
 
 export async function generateMetadata(props: { params: Promise<{ server: string }> }): Promise<Metadata> {
  const params = await props.params;
