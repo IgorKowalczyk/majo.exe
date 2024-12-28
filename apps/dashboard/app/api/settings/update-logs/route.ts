@@ -1,4 +1,4 @@
-import { handleLogText } from "@/app/dashboard/[server]/logs/components/UpdateLogs";
+import { handleLogText } from "@/app/dashboard/[server]/logs/components/handleLogText";
 import prismaClient, { GuildLogType } from "@majoexe/database";
 import { createLog } from "@majoexe/util/database";
 import { ExcludedEvents } from "@majoexe/util/database";

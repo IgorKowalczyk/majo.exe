@@ -2,7 +2,6 @@
 
 import { botConfig } from "@majoexe/config";
 import { GuildLogType, GuildLogsSettings } from "@majoexe/database";
-import { capitalize, splitCamelCase } from "@majoexe/util/functions/util";
 import { Snowflake } from "discord-api-types/globals";
 import { useRouter } from "next/navigation";
 import { useNavigationGuard } from "next-navigation-guard";
@@ -16,13 +15,7 @@ import { Icons, iconVariants } from "@/components/ui/Icons";
 import { Switch } from "@/components/ui/Switch";
 import { Tooltip } from "@/components/ui/Tooltip";
 import { cn } from "@/lib/utils";
-
-export function handleLogText(log: GuildLogType, toUpperCase = true): string {
- let transformedLog = splitCamelCase(log).toLowerCase();
- if (transformedLog.startsWith("guild")) transformedLog = transformedLog.slice(6);
-
- return toUpperCase ? capitalize(transformedLog) : transformedLog;
-}
+import { handleLogText } from "./handleLogText";
 
 type UpdateLog = Pick<GuildLogsSettings, "type" | "enabled" | "channelId">;
 
@@ -143,41 +136,43 @@ export const UpdateLogs = React.forwardRef<HTMLDivElement, UpdateLogsProps>(({ s
     </div>
    </div>
 
-   {botConfig.emojis.logs.map((category) => (
-    <div key={category.category}>
-     <Header className={cn(headerVariants({ variant: "h2" }), "mt-6 mb-2")}>{category.category}</Header>
-     <div className="grid grid-cols-1 gap-8 lg:grid-cols-2 2xl:grid-cols-3">
-      {category.types
-       .filter((logType) => allowedLogs.includes(logType.type as GuildLogType))
-       .map((logType) => {
-        const log = logStates.find((log) => log.type === logType.type) || { type: logType.type, enabled: false, channelId: null };
-        return (
-         <UpdateLog
-          key={`${log.type}-${resetKey}`} // Key is resetKey to force re-render when reset
-          logType={log.type as GuildLogType}
-          logEnabled={log.enabled}
-          exisingChannel={log.channelId}
-          allChannels={allChannels}
-          onChange={(enabled, channelId) => {
-           const initialLog = logs.find((l) => l.type === logType.type) || { type: logType.type, enabled: false, channelId: null };
-           const newLogStates = logStates.map((log) => (log.type === logType.type ? { ...log, enabled, channelId } : log));
-           const newChangedLogStates = changedLogStates.filter((log) => log.type !== logType.type);
+   {botConfig.emojis.logs
+    .filter((category) => category.types.some((logType) => allowedLogs.includes(logType.type as GuildLogType)))
+    .map((category) => (
+     <div key={category.category}>
+      <Header className={cn(headerVariants({ variant: "h2" }), "mt-6 mb-2")}>{category.category}</Header>
+      <div className="grid grid-cols-1 gap-8 lg:grid-cols-2 2xl:grid-cols-3">
+       {category.types
+        .filter((logType) => allowedLogs.includes(logType.type as GuildLogType))
+        .map((logType) => {
+         const log = logStates.find((log) => log.type === logType.type) || { type: logType.type, enabled: false, channelId: null };
+         return (
+          <UpdateLog
+           key={`${log.type}-${resetKey}`} // Key is resetKey to force re-render when reset
+           logType={log.type as GuildLogType}
+           logEnabled={log.enabled}
+           exisingChannel={log.channelId}
+           allChannels={allChannels}
+           onChange={(enabled, channelId) => {
+            const initialLog = logs.find((l) => l.type === logType.type) || { type: logType.type, enabled: false, channelId: null };
+            const newLogStates = logStates.map((log) => (log.type === logType.type ? { ...log, enabled, channelId } : log));
+            const newChangedLogStates = changedLogStates.filter((log) => log.type !== logType.type);
 
-           if (initialLog.enabled !== enabled || initialLog.channelId !== channelId) {
-            const changedLog = { type: logType.type, enabled, channelId } as UpdateLog;
-            newChangedLogStates.push(changedLog);
-           }
+            if (initialLog.enabled !== enabled || initialLog.channelId !== channelId) {
+             const changedLog = { type: logType.type, enabled, channelId } as UpdateLog;
+             newChangedLogStates.push(changedLog);
+            }
 
-           setChangedLogStates(newChangedLogStates);
-           setLogStates(newLogStates);
-          }}
-          disabled={loading}
-         />
-        );
-       })}
+            setChangedLogStates(newChangedLogStates);
+            setLogStates(newLogStates);
+           }}
+           disabled={loading}
+          />
+         );
+        })}
+      </div>
      </div>
-    </div>
-   ))}
+    ))}
   </div>
  );
 });

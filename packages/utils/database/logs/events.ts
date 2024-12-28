@@ -42,6 +42,25 @@ export const ExcludedEvents: GuildLogType[] = [
  GuildLogType.GuildMemberAdd,
  GuildLogType.GuildMemberRemove,
 
+ // WORK IN PROGRESS
+ GuildLogType.AutoModerationActionExecution,
+ GuildLogType.AutoModerationRuleCreate,
+ GuildLogType.AutoModerationRuleDelete,
+ GuildLogType.AutoModerationRuleUpdate,
+
+ GuildLogType.GuildScheduledEventCreate,
+ GuildLogType.GuildScheduledEventDelete,
+ GuildLogType.GuildScheduledEventUpdate,
+ GuildLogType.GuildScheduledEventUserAdd,
+ GuildLogType.GuildScheduledEventUserRemove,
+
+ GuildLogType.ThreadCreate,
+ GuildLogType.ThreadDelete,
+ GuildLogType.ThreadMembersUpdate,
+ GuildLogType.ThreadMemberUpdate,
+ GuildLogType.ThreadUpdate,
+ // -------------------
+
  // Exclude custom events
  ...CustomEvents,
 ];
