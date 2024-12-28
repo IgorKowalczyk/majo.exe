@@ -75,7 +75,7 @@ export const DiscordCommands = React.forwardRef<HTMLDivElement, DiscordCommandsP
        {
         "opacity-50": !filteredCategories?.includes(category),
        },
-       "flex cursor-pointer select-none items-center gap-2 rounded-md border border-neutral-800 px-4 py-2 duration-200"
+       "flex cursor-pointer select-none items-center gap-2 rounded-lg border border-neutral-800 px-4 py-2 duration-200"
       )}
       onClick={() => {
        if (filteredCategories.includes(category)) {
@@ -130,7 +130,7 @@ export const DiscordCommands = React.forwardRef<HTMLDivElement, DiscordCommandsP
         {filteredCommands
          .filter((command) => command.categoryName === category.name)
          .map((command) => (
-          <div key={command.name} className="my-4 w-full rounded-md border border-neutral-800 bg-background-navbar px-6 py-4">
+          <div key={command.name} className="my-4 w-full rounded-lg border border-neutral-800 bg-background-navbar px-6 py-4">
            <div className="flex flex-col items-start gap-2">
             <div className="flex items-center">
              <span className="font-bold">/{command.name} </span>

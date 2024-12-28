@@ -130,7 +130,7 @@ export const ChangeCustomMessages = React.forwardRef<HTMLDivElement, ChangeCusto
       "transition-all duration-200 ease-in-out"
      )}
     >
-     <div className="my-4 flex flex-row flex-wrap items-start overflow-hidden whitespace-nowrap rounded-md border border-accent-primary bg-accent-primary/10 p-4 duration-200 will-change-transform">
+     <div className="my-4 flex flex-row flex-wrap items-start overflow-hidden whitespace-nowrap rounded-lg border border-accent-primary bg-accent-primary/10 p-4 duration-200 will-change-transform">
       <span className="mr-1 flex flex-row items-center whitespace-nowrap font-bold">
        <Icons.Info className={iconVariants({ variant: "normal", className: "stroke-accent-primary mr-1" })} />
        Note:
@@ -175,7 +175,7 @@ export const ChangeCustomMessages = React.forwardRef<HTMLDivElement, ChangeCusto
          "transition-all duration-200 ease-in-out"
         )}
        >
-        <div className="my-4 flex w-fit flex-row flex-wrap items-start whitespace-nowrap rounded-md border border-orange-400 bg-orange-400/10 p-4">
+        <div className="my-4 flex w-fit flex-row flex-wrap items-start whitespace-nowrap rounded-lg border border-orange-400 bg-orange-400/10 p-4">
          <span className="mr-1 flex flex-row items-center whitespace-nowrap font-bold leading-none">
           <Icons.warning className={iconVariants({ variant: "normal", className: "mr-1 stroke-orange-400" })} />
           Warning:
@@ -204,7 +204,7 @@ export const ChangeCustomMessages = React.forwardRef<HTMLDivElement, ChangeCusto
         <Textarea value={newDescription} onChange={(e) => setNewDescription(e.target.value)} disabled={!isEnabled || loading || !messageChannel} placeholder={defaultMessages.description} className="!max-w-96 font-normal" />
        </div>
 
-       <div className="my-4 w-fit whitespace-nowrap rounded-md border border-accent-primary bg-accent-primary/10 p-4">
+       <div className="my-4 w-fit whitespace-nowrap rounded-lg border border-accent-primary bg-accent-primary/10 p-4">
         <div className="mr-1 flex flex-row items-center whitespace-nowrap font-bold">
          <Icons.Info className={iconVariants({ variant: "normal", className: "stroke-accent-primary mr-1" })} />
          Note:

@@ -11,8 +11,8 @@ import { Icons, iconVariants } from "@/components/ui/Icons";
 import { cn } from "@/lib/utils";
 
 export const metadata = {
- title: "Custom Messages",
- description: "Customize the messages sent by the bot.",
+ title: "Welcome & Leave",
+ description: "Customize the messages that are sent to your server members.",
 };
 
 export default async function Page(props: { params: Promise<{ server: string }> }) {
@@ -63,8 +63,8 @@ export default async function Page(props: { params: Promise<{ server: string }> 
  return (
   <>
    <Header className={cn(headerVariants({ variant: "h1", margin: "normal" }))}>
-    <Icons.messageCode className={iconVariants({ variant: "extraLarge" })} />
-    Custom messages
+    <Icons.Hand className={iconVariants({ variant: "extraLarge" })} />
+    Welcome & leave
    </Header>
    <p className="mb-4 text-left text-base md:text-lg">Customize the messages that are sent to your server members.</p>
 

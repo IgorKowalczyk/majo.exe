@@ -16,7 +16,7 @@ import { AddReaction } from "@/app/_components/AddReaction";
 import Faq from "@/app/_components/Faq";
 import { LevelUp } from "@/app/_components/LevelUp";
 import { Notifications } from "@/app/_components/Notifications";
-import { LogDisclosure } from "@/app/dashboard/[server]/logs/components/Logs";
+import { LogDisclosure } from "@/app/dashboard/[server]/dashboard-logs/components/Logs";
 import { LoginButton } from "@/components/LoginButton";
 import { AreaChart } from "@/components/ui/AreaChart";
 import { buttonVariants } from "@/components/ui/Buttons";

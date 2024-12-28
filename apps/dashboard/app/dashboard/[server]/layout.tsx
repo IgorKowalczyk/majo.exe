@@ -1,6 +1,7 @@
 import { dashboardConfig } from "@majoexe/config";
 import { Metadata } from "next";
 import { SideNavigation } from "@/components/nav/SideNavigation";
+import { NavigationGuardProvider } from "next-navigation-guard";
 
 export async function generateMetadata(props: { params: Promise<{ server: string }> }): Promise<Metadata> {
  const params = await props.params;
@@ -30,8 +31,10 @@ export default async function Layout(props: { params: Promise<{ server: string }
 
  return (
   <>
-   <SideNavigation server={params.server} />
-   <div className="ml-0 flex-1 p-6 pt-20 md:pl-72">{children}</div>
+   <NavigationGuardProvider>
+    <SideNavigation server={params.server} />
+    <div className="ml-0 flex-1 p-6 pt-20 md:pl-72">{children}</div>
+   </NavigationGuardProvider>
   </>
  );
 }

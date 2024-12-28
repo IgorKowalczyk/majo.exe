@@ -1,20 +1,16 @@
 import prismaClient from "@majoexe/database";
-import { getGuildFromMemberGuilds, getGuild, getGuildChannels } from "@majoexe/util/functions/guild";
+import { getGuildFromMemberGuilds, getGuild } from "@majoexe/util/functions/guild";
 import { getSession } from "lib/session";
 import { redirect } from "next/navigation";
 import { notFound } from "next/navigation";
+import Logs from "@/app/dashboard/[server]/dashboard-logs/components/Logs";
+import { Block } from "@/components/ui/Block";
 import Header, { headerVariants } from "@/components/ui/Headers";
 import { Icons, iconVariants } from "@/components/ui/Icons";
 import { cn } from "@/lib/utils";
-import { ChannelType } from "discord-api-types/v10";
-import { Block, ErrorBlock } from "@/components/ui/Block";
-import { GuildLogType } from "@majoexe/database";
-import { ExcludedEvents } from "@majoexe/util/database";
-import { UpdateLog, UpdateLogs } from "./components/UpdateLogs";
-import { capitalize, splitCamelCase } from "@majoexe/util/functions/util";
 
 export const metadata = {
- title: "Logs",
+ title: "Dashboard Logs",
  description: "All the logs of the different actions that have been happening on your dashboard.",
 };
 
@@ -44,38 +40,50 @@ export default async function LogsPage(props: { params: Promise<{ server: string
    guildId: serverDownload.id,
   },
   include: {
-   guildLogsSettings: {
-    select: {
-     type: true,
-     enabled: true,
-     channelId: true,
+   guildLogs: {
+    take: 20,
+    skip: 0,
+    orderBy: {
+     createdAt: "desc",
+    },
+    include: {
+     user: {
+      select: {
+       discordId: true,
+       name: true,
+       global_name: true,
+       avatar: true,
+       discriminator: true,
+      },
+     },
     },
    },
   },
  });
 
- const channels = await getGuildChannels(serverDownload.id, [ChannelType.GuildText]);
- if (!channels) return <ErrorBlock title="Could not fetch channels" description="Please try again later or contact support if the issue persists." />;
-
- const allChannels = channels
-  .map((channel) => {
-   return {
-    id: channel.id,
-    name: channel.name,
-   };
-  })
-  .filter(Boolean);
-
- const allowedEvents = Object.keys(GuildLogType).filter((x) => !ExcludedEvents.includes(x as GuildLogType)) as GuildLogType[];
+ const logs = guild.guildLogs.map((log) => {
+  return {
+   ...log,
+   createdAt: log.createdAt instanceof Date ? log.createdAt.toString() : new Date(log.createdAt).toString(),
+  };
+ });
 
  return (
   <>
    <Header className={cn(headerVariants({ variant: "h1", margin: "normal" }))}>
-    <Icons.ScrollText className={iconVariants({ variant: "extraLarge" })} />
-    Logs
+    <Icons.Logs className={iconVariants({ variant: "extraLarge" })} />
+    Dashboard Logs
    </Header>
-   <p className="mb-4 text-left text-base md:text-lg">Manage the actions that Majo.exe can watch and log in selected channels.</p>
-   <UpdateLogs allowedLogs={allowedEvents} allChannels={allChannels} serverId={serverDownload.id} logs={guild.guildLogsSettings} />
+   <p className="mb-4 text-left text-base md:text-lg">All the logs of the different actions that have been happening on your dashboard.</p>
+   <div className="mt-4 overflow-auto">
+    {!logs || logs.length === 0 ? (
+     <Block>
+      <p className="text-left">No logs found! Check back later, maybe something will happen soon!</p>
+     </Block>
+    ) : (
+     <Logs initialItems={logs} server={serverDownload.id} />
+    )}
+   </div>
   </>
  );
 }

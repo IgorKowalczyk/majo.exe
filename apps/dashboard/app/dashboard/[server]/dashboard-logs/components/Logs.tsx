@@ -106,7 +106,7 @@ export default function Logs({ initialItems, server }: { initialItems: LogItem[]
    <div className="mb-4 flex items-center justify-center gap-2">
     <InputWithIcon placeholder="Search..." value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} icon={<Icons.refresh className={iconVariants({ variant: "normal", className: "text-white/50" })} />} />
     <Tooltip content={sortDescending ? "Sort ascending" : "Sort descending"}>
-     <span onClick={() => setSortDescending(!sortDescending)} className="flex h-[41.6px] cursor-pointer items-center justify-center rounded-md border border-neutral-800 px-3 py-2 text-white duration-200 hover:border-button-primary">
+     <span onClick={() => setSortDescending(!sortDescending)} className="flex h-[41.6px] cursor-pointer items-center justify-center rounded-lg border border-neutral-800 px-3 py-2 text-white duration-200 hover:border-button-primary">
       <div className="relative size-5">
        <Icons.sortDescending
         className={iconVariants({

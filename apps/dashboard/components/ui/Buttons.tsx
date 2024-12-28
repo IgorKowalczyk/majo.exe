@@ -2,7 +2,7 @@ import { cva, VariantProps } from "class-variance-authority";
 import React from "react";
 import { cn } from "@/lib/utils";
 
-export const buttonVariants = cva("flex cursor-pointer items-center rounded-md px-4 py-2 leading-6 text-white duration-200 disabled:cursor-not-allowed motion-reduce:transition-none", {
+export const buttonVariants = cva("flex cursor-pointer items-center rounded-lg px-4 py-2 leading-6 text-white duration-200 disabled:cursor-not-allowed motion-reduce:transition-none", {
  variants: {
   variant: {
    primary: "bg-button-primary hover:bg-button-primary-hover disabled:bg-button-primary/50 disabled:hover:bg-button-primary-hover/50",

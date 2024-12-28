@@ -72,8 +72,8 @@ export default async function Page(props: { params: Promise<{ server: string }> 
  return (
   <>
    <Header className={cn(headerVariants({ variant: "h1" }))}>
-    <Icons.warning className={iconVariants({ variant: "extraLarge" })} />
-    Warns <span className="text-accent-primary">({warns.length})</span>
+    <Icons.MessageSquareWarning className={iconVariants({ variant: "extraLarge" })} />
+    User warns <span className="text-accent-primary">({warns.length})</span>
    </Header>
    <p className="mb-4 text-left text-base md:text-lg">
     Here you can view all users warns issued by users with the <code>Manage Server</code> permission.

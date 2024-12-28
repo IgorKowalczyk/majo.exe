@@ -108,7 +108,7 @@ export const AntiMention = React.forwardRef<HTMLDivElement, AntiMentionProps>(({
      "transition-all duration-200 ease-in-out"
     )}
    >
-    <div className="my-4 flex flex-row flex-wrap items-start whitespace-nowrap rounded-md border border-accent-primary bg-accent-primary/10 p-4">
+    <div className="my-4 flex flex-row flex-wrap items-start whitespace-nowrap rounded-lg border border-accent-primary bg-accent-primary/10 p-4">
      <span className="mr-1 flex flex-row items-center whitespace-nowrap font-bold">
       <Icons.Info className={iconVariants({ variant: "normal", className: "stroke-accent-primary mr-1" })} />
       Note:
@@ -167,7 +167,7 @@ export const AntiMention = React.forwardRef<HTMLDivElement, AntiMentionProps>(({
      <LogChannel actions={actions} setActions={setActions} allChannels={allChannels} />
 
      {(!actions || actions.length === 0) && isEnabled && !loading && (
-      <div className="my-4 flex flex-row items-start whitespace-nowrap rounded-md border border-red-400 bg-red-400/10 p-4 text-red-400">
+      <div className="my-4 flex flex-row items-start whitespace-nowrap rounded-lg border border-red-400 bg-red-400/10 p-4 text-red-400">
        <span className="mr-1 flex flex-row items-center whitespace-nowrap font-bold">
         <Icons.warning className={iconVariants({ variant: "normal", className: "mr-1 stroke-red-400" })} />
         Warning:

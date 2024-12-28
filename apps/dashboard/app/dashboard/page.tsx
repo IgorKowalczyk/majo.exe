@@ -66,7 +66,7 @@ export default async function Dashboard() {
               {
                "opacity-20": !server.bot,
               },
-              "size-24 shrink-0 rounded-md"
+              "size-24 shrink-0 rounded-lg"
              )}
             />
            ) : (
@@ -75,7 +75,7 @@ export default async function Dashboard() {
               {
                "opacity-20": !server.bot,
               },
-              "bg-button-secondary size-24 shrink-0 rounded-md"
+              "bg-button-secondary size-24 shrink-0 rounded-lg"
              )}
             />
            )}
@@ -102,7 +102,7 @@ export default async function Dashboard() {
       </div>
      )}
     </div>
-    <div className="my-4 mt-12 flex flex-row flex-wrap items-start whitespace-nowrap rounded-md border border-accent-primary bg-accent-primary/10 p-4">
+    <div className="my-4 mt-12 flex flex-row flex-wrap items-start whitespace-nowrap rounded-lg border border-accent-primary bg-accent-primary/10 p-4">
      <span className="mr-1 flex flex-row items-center gap-1 whitespace-nowrap font-bold">
       <Icons.Info className={iconVariants({ variant: "normal", className: "stroke-accent-primary" })} /> Note:
      </span>

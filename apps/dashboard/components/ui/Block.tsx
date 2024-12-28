@@ -4,7 +4,7 @@ import Header, { headerVariants } from "@/components/ui/Headers";
 import { Icons, iconVariants } from "@/components/ui/Icons";
 import { cn } from "@/lib/utils";
 
-export const blockVariants = cva("hide-scrollbar overflow-x-scroll rounded-md border bg-background-secondary p-6", {
+export const blockVariants = cva("hide-scrollbar overflow-x-scroll rounded-xl border bg-background-secondary p-6", {
  variants: {
   theme: {
    normal: "border-neutral-800",
