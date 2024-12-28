@@ -1,4 +1,3 @@
-import { handleLogText } from "@/app/dashboard/[server]/logs/components/handleLogText";
 import prismaClient, { GuildLogType } from "@majoexe/database";
 import { createLog } from "@majoexe/util/database";
 import { ExcludedEvents } from "@majoexe/util/database";
@@ -6,6 +5,7 @@ import { getGuild, getGuildChannels, getGuildFromMemberGuilds } from "@majoexe/u
 import { ChannelType } from "discord-api-types/v10";
 import { getSession } from "lib/session";
 import { NextRequest, NextResponse } from "next/server";
+import { handleLogText } from "@/app/dashboard/[server]/logs/components/handleLogText";
 
 export async function POST(request: NextRequest) {
  try {

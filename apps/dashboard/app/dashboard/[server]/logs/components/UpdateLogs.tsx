@@ -7,6 +7,7 @@ import { useRouter } from "next/navigation";
 import { useNavigationGuard } from "next-navigation-guard";
 import React, { useState, useEffect } from "react";
 import { toast } from "sonner";
+import { handleLogText } from "./handleLogText";
 import { Block } from "@/components/ui/Block";
 import { Button } from "@/components/ui/Buttons";
 import { ChannelsSelect } from "@/components/ui/ChannelsSelect";
@@ -15,7 +16,6 @@ import { Icons, iconVariants } from "@/components/ui/Icons";
 import { Switch } from "@/components/ui/Switch";
 import { Tooltip } from "@/components/ui/Tooltip";
 import { cn } from "@/lib/utils";
-import { handleLogText } from "./handleLogText";
 
 type UpdateLog = Pick<GuildLogsSettings, "type" | "enabled" | "channelId">;
 
@@ -110,7 +110,7 @@ export const UpdateLogs = React.forwardRef<HTMLDivElement, UpdateLogsProps>(({ s
      "lg:ml-72 md:mr-6 mx-3 fixed bottom-6 z-50 duration-200 ease-in-out left-0 right-0 origin-bottom"
     )}
    >
-    <div className="mx-auto flex w-full max-w-3xl items-center justify-between md:flex-row flex-col gap-4 rounded-2xl border border-neutral-800 bg-background-secondary p-3 shadow-2xl">
+    <div className="mx-auto flex w-full max-w-3xl flex-col items-center justify-between gap-4 rounded-2xl border border-neutral-800 bg-background-secondary p-3 shadow-2xl md:flex-row">
      <span className="flex items-center gap-2 font-bold">
       <Icons.TriangleAlert className="ml-2 size-6 text-red-400" />
       Caution - You have unsaved changes
