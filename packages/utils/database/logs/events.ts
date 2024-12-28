@@ -27,6 +27,8 @@ export const CustomEvents: GuildLogType[] = [
  GuildLogType.WarnDelete,
  GuildLogType.WarnUpdate,
 
+ GuildLogType.LogUpdate,
+
  GuildLogType.Unknown,
 ];
 

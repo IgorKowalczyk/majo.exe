@@ -17,11 +17,11 @@ import { Switch } from "@/components/ui/Switch";
 import { Tooltip } from "@/components/ui/Tooltip";
 import { cn } from "@/lib/utils";
 
-export function handleLogText(log: GuildLogType) {
+export function handleLogText(log: GuildLogType, toUpperCase = true): string {
  let transformedLog = splitCamelCase(log).toLowerCase();
  if (transformedLog.startsWith("guild")) transformedLog = transformedLog.slice(6);
 
- return capitalize(transformedLog);
+ return toUpperCase ? capitalize(transformedLog) : transformedLog;
 }
 
 type UpdateLog = Pick<GuildLogsSettings, "type" | "enabled" | "channelId">;
@@ -114,10 +114,10 @@ export const UpdateLogs = React.forwardRef<HTMLDivElement, UpdateLogsProps>(({ s
       "opacity-0 translate-y-4 scale-95": !unsavedChanges,
       "opacity-100 translate-y-0 scale-100": unsavedChanges,
      },
-     "md:ml-72 md:mr-6 fixed bottom-6 z-50 duration-200 ease-in-out left-0 right-0 origin-bottom"
+     "lg:ml-72 md:mr-6 mx-3 fixed bottom-6 z-50 duration-200 ease-in-out left-0 right-0 origin-bottom"
     )}
    >
-    <div className="mx-auto flex w-full max-w-3xl items-center justify-between rounded-2xl border border-neutral-800 bg-background-secondary p-3 shadow-2xl">
+    <div className="mx-auto flex w-full max-w-3xl items-center justify-between md:flex-row flex-col gap-4 rounded-2xl border border-neutral-800 bg-background-secondary p-3 shadow-2xl">
      <span className="flex items-center gap-2 font-bold">
       <Icons.TriangleAlert className="ml-2 size-6 text-red-400" />
       Caution - You have unsaved changes

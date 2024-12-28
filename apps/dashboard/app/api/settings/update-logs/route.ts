@@ -1,3 +1,4 @@
+import { handleLogText } from "@/app/dashboard/[server]/logs/components/UpdateLogs";
 import prismaClient, { GuildLogType } from "@majoexe/database";
 import { createLog } from "@majoexe/util/database";
 import { ExcludedEvents } from "@majoexe/util/database";
@@ -145,7 +146,7 @@ export async function POST(request: NextRequest) {
    });
 
    await createLog(id, session.id, {
-    content: `${log.enabled ? "Enabled" : "Disabled"} log ${log.type}`,
+    content: `${log.enabled ? "Enabled" : "Disabled"} log ${handleLogText(log.type)}`,
     type: GuildLogType.LogUpdate,
    });
   }

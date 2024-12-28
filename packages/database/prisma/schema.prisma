@@ -232,6 +232,8 @@ enum GuildLogType {
  CommandEnable
  CommandDisable
 
+ LogUpdate
+
  GiveawayCreate
  GiveawayDelete
  GiveawayEdit
