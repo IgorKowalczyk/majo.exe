@@ -15,7 +15,7 @@ export const Switch = React.forwardRef<React.ElementRef<typeof HeadlessSwitch>, 
      "border-neutral-700 bg-transparent": !checked,
      "!cursor-not-allowed !opacity-50": disabled,
     },
-    "relative inline-flex max-h-[24px] w-[45px] cursor-pointer items-center rounded-full border text-left text-gray-200/75 ring-0 transition-colors duration-200 ease-in-out hover:border-neutral-600 hover:text-gray-200 focus-visible:ring-2 focus-visible:ring-opacity-75 motion-reduce:transition-none",
+    "relative inline-flex flex-shrink-0 max-h-[24px] w-[45px] cursor-pointer items-center rounded-full border text-left text-gray-200/75 ring-0 transition-colors duration-200 ease-in-out hover:border-neutral-600 hover:text-gray-200 focus-visible:ring-2 focus-visible:ring-opacity-75 motion-reduce:transition-none",
     className
    )}
    ref={ref}

@@ -9,8 +9,8 @@ export default function Loading() {
  return (
   <>
    <Header className={cn(headerVariants({ variant: "h1", margin: "normal" }))}>
-    <Icons.messageCode className={iconVariants({ variant: "extraLarge" })} />
-    Custom messages
+    <Icons.Hand className={iconVariants({ variant: "extraLarge" })} />
+    Welcome & Leave
    </Header>
    <p className="mb-4 text-left text-base md:text-lg">Customize the messages that are sent to your server members.</p>
 

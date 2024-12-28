@@ -239,7 +239,7 @@ export default async function User(props: { params: Promise<{ server: string; id
    </div>
    <Block className="mt-4">
     <Header className={cn(headerVariants({ variant: "h2" }))}>
-     <Icons.warning className={iconVariants({ variant: "large", className: "!stroke-2" })} />
+     <Icons.MessageSquareWarning className={iconVariants({ variant: "large", className: "!stroke-2" })} />
      Warns
     </Header>
     <p className="mb-4 text-left opacity-70">You can view all warns given to this user in this server. You can also manage them by deleting them.</p>

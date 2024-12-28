@@ -244,6 +244,9 @@ importers:
       next-auth:
         specifier: 4.24.11
         version: 4.24.11(next@15.1.3(@babel/core@7.26.0)(@playwright/test@1.49.1)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
+      next-navigation-guard:
+        specifier: 0.1.2
+        version: 0.1.2(next@15.1.3(@babel/core@7.26.0)(@playwright/test@1.49.1)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react@19.0.0)
       next-nprogress-bar:
         specifier: 2.4.3
         version: 2.4.3
@@ -5102,6 +5105,12 @@ packages:
         optional: true
       nodemailer:
         optional: true
+
+  next-navigation-guard@0.1.2:
+    resolution: {integrity: sha512-gh+hUMqnI9a/iQ3sxCd7aagQB0NTioe7kj7UJagVfWh+GWfyr4mErlBy2yNZk0VyXebtW86I3cP6lcwraIFhYA==}
+    peerDependencies:
+      next: ^14 || ^15
+      react: ^18.3.1
 
   next-nprogress-bar@2.4.3:
     resolution: {integrity: sha512-069WmFALkpCyKiIy89q6dWcPiHhUmXh6EZz6oLpOS7zsIunNOYLscloKFALjIQNCOg3ZO9dWRPowYW4ULho4HQ==}
@@ -12482,6 +12491,11 @@ snapshots:
       react: 19.0.0
       react-dom: 19.0.0(react@19.0.0)
       uuid: 8.3.2
+
+  next-navigation-guard@0.1.2(next@15.1.3(@babel/core@7.26.0)(@playwright/test@1.49.1)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react@19.0.0):
+    dependencies:
+      next: 15.1.3(@babel/core@7.26.0)(@playwright/test@1.49.1)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
+      react: 19.0.0
 
   next-nprogress-bar@2.4.3:
     dependencies:

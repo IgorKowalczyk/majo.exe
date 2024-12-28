@@ -80,263 +80,361 @@ const config = {
   // Log types
   logs: [
    {
-    type: "InviteCreate",
-    emoji: "✉️",
+    category: "Invite",
+    types: [
+     {
+      type: "InviteCreate",
+      emoji: "✉️",
+      description: "Triggered when an invite is created.",
+     },
+     {
+      type: "InviteDelete",
+      emoji: "❌",
+      description: "Triggered when an invite is deleted.",
+     },
+    ],
    },
    {
-    type: "InviteDelete",
-    emoji: "❌",
+    category: "Message",
+    types: [
+     {
+      type: "MessageBulkDelete",
+      emoji: "🗑️",
+      description: "Triggered when multiple messages are deleted at once.",
+     },
+     {
+      type: "MessageCreate",
+      emoji: "💬",
+      description: "Triggered when a message is created.",
+     },
+     {
+      type: "MessageDelete",
+      emoji: "🗑️",
+      description: "Triggered when a message is deleted.",
+     },
+     {
+      type: "MessagePollVoteAdd",
+      emoji: "🗳️",
+      description: "Triggered when a poll vote is added.",
+     },
+     {
+      type: "MessagePollVoteRemove",
+      emoji: "🗳️",
+      description: "Triggered when a poll vote is removed.",
+     },
+     {
+      type: "MessageUpdate",
+      emoji: "✏️",
+      description: "Triggered when a message is updated.",
+     },
+    ],
    },
    {
-    type: "MessageBulkDelete",
-    emoji: "🗑️",
+    category: "Thread",
+    types: [
+     {
+      type: "ThreadCreate",
+      emoji: "🆕",
+      description: "Triggered when a thread is created.",
+     },
+     {
+      type: "ThreadDelete",
+      emoji: "🗑️",
+      description: "Triggered when a thread is deleted.",
+     },
+     {
+      type: "ThreadMembersUpdate",
+      emoji: "👥",
+      description: "Triggered when members are added or removed from a thread.",
+     },
+     {
+      type: "ThreadMemberUpdate",
+      emoji: "👤",
+      description: "Triggered when a thread member is updated.",
+     },
+     {
+      type: "ThreadUpdate",
+      emoji: "✏️",
+      description: "Triggered when a thread is updated.",
+     },
+    ],
    },
    {
-    type: "MessageCreate",
-    emoji: "💬",
+    category: "Guild",
+    types: [
+     {
+      type: "GuildUpdate",
+      emoji: "✏️",
+      description: "Triggered when a guild is updated.",
+     },
+     {
+      type: "GuildMemberUpdate",
+      emoji: "👤",
+      description: "Triggered when a guild member is updated.",
+     },
+     {
+      type: "GuildRoleCreate",
+      emoji: "➕",
+      description: "Triggered when a guild role is created.",
+     },
+     {
+      type: "GuildRoleDelete",
+      emoji: "❌",
+      description: "Triggered when a guild role is deleted.",
+     },
+     {
+      type: "GuildRoleUpdate",
+      emoji: "✏️",
+      description: "Triggered when a guild role is updated.",
+     },
+     {
+      type: "GuildScheduledEventCreate",
+      emoji: "📅",
+      description: "Triggered when a guild scheduled event is created.",
+     },
+     {
+      type: "GuildScheduledEventDelete",
+      emoji: "📅",
+      description: "Triggered when a guild scheduled event is deleted.",
+     },
+     {
+      type: "GuildScheduledEventUpdate",
+      emoji: "📅",
+      description: "Triggered when a guild scheduled event is updated.",
+     },
+     {
+      type: "GuildScheduledEventUserAdd",
+      emoji: "👤",
+      description: "Triggered when a user is added to a guild scheduled event.",
+     },
+     {
+      type: "GuildScheduledEventUserRemove",
+      emoji: "👤",
+      description: "Triggered when a user is removed from a guild scheduled event.",
+     },
+     {
+      type: "GuildStickerCreate",
+      emoji: "🆕",
+      description: "Triggered when a guild sticker is created.",
+     },
+     {
+      type: "GuildStickerDelete",
+      emoji: "❌",
+      description: "Triggered when a guild sticker is deleted.",
+     },
+     {
+      type: "GuildStickerUpdate",
+      emoji: "✏️",
+      description: "Triggered when a guild sticker is updated.",
+     },
+     {
+      type: "GuildEmojiCreate",
+      emoji: "🆕",
+      description: "Triggered when a guild emoji is created.",
+     },
+     {
+      type: "GuildEmojiDelete",
+      emoji: "❌",
+      description: "Triggered when a guild emoji is deleted.",
+     },
+     {
+      type: "GuildEmojiUpdate",
+      emoji: "✏️",
+      description: "Triggered when a guild emoji is updated.",
+     },
+     {
+      type: "GuildIntegrationsUpdate",
+      emoji: "🔄",
+      description: "Triggered when a guild integration is updated.",
+     },
+     {
+      type: "GuildMemberAdd",
+      emoji: "👤",
+      description: "Triggered when a new member joins the guild.",
+     },
+     {
+      type: "GuildMemberRemove",
+      emoji: "👤",
+      description: "Triggered when a member leaves the guild.",
+     },
+     {
+      type: "GuildBanAdd",
+      emoji: "🔨",
+      description: "Triggered when a member is banned from the guild.",
+     },
+     {
+      type: "GuildBanRemove",
+      emoji: "🔓",
+      description: "Triggered when a member is unbanned from the guild.",
+     },
+    ],
    },
    {
-    type: "MessageDelete",
-    emoji: "🗑️",
+    category: "Channel",
+    types: [
+     {
+      type: "ChannelCreate",
+      emoji: "🆕",
+      description: "Triggered when a channel is created.",
+     },
+     {
+      type: "ChannelDelete",
+      emoji: "❌",
+      description: "Triggered when a channel is deleted.",
+     },
+     {
+      type: "ChannelPinsUpdate",
+      emoji: "📌",
+      description: "Triggered when a channel's pins are updated.",
+     },
+     {
+      type: "ChannelUpdate",
+      emoji: "✏️",
+      description: "Triggered when a channel is updated.",
+     },
+    ],
    },
    {
-    type: "MessagePollVoteAdd",
-    emoji: "🗳️",
+    category: "AutoModeration",
+    types: [
+     {
+      type: "AutoModerationActionExecution",
+      emoji: "🛠️",
+      description: "Triggered when an auto-moderation action is executed.",
+     },
+     {
+      type: "AutoModerationRuleCreate",
+      emoji: "🆕",
+      description: "Triggered when an auto-moderation rule is created.",
+     },
+     {
+      type: "AutoModerationRuleDelete",
+      emoji: "❌",
+      description: "Triggered when an auto-moderation rule is deleted.",
+     },
+     {
+      type: "AutoModerationRuleUpdate",
+      emoji: "✏️",
+      description: "Triggered when an auto-moderation rule is updated.",
+     },
+    ],
    },
    {
-    type: "MessagePollVoteRemove",
-    emoji: "🗳️",
+    category: "Miscellaneous",
+    types: [
+     {
+      type: "PublicDashboardUpdate",
+      emoji: "🔗",
+      description: "Triggered when the public dashboard is updated.",
+     },
+     {
+      type: "VanityUpdate",
+      emoji: "🔗",
+      description: "Triggered when the vanity URL is updated.",
+     },
+     {
+      type: "EmbedColorUpdate",
+      emoji: "🎨",
+      description: "Triggered when the embed color is updated.",
+     },
+     {
+      type: "CommandCategoryEnable",
+      emoji: "✅",
+      description: "Triggered when a command category is enabled.",
+     },
+     {
+      type: "CommandCategoryDisable",
+      emoji: "❌",
+      description: "Triggered when a command category is disabled.",
+     },
+     {
+      type: "CommandEnable",
+      emoji: "✅",
+      description: "Triggered when a command is enabled.",
+     },
+     {
+      type: "CommandDisable",
+      emoji: "❌",
+      description: "Triggered when a command is disabled.",
+     },
+     {
+      type: "GiveawayCreate",
+      emoji: "🎉",
+      description: "Triggered when a giveaway is created.",
+     },
+     {
+      type: "GiveawayDelete",
+      emoji: "❌",
+      description: "Triggered when a giveaway is deleted.",
+     },
+     {
+      type: "GiveawayEdit",
+      emoji: "✏️",
+      description: "Triggered when a giveaway is edited.",
+     },
+     {
+      type: "GiveawayPaused",
+      emoji: "⏸️",
+      description: "Triggered when a giveaway is paused.",
+     },
+     {
+      type: "GiveawayResumed",
+      emoji: "▶️",
+      description: "Triggered when a giveaway is resumed.",
+     },
+     {
+      type: "GiveawayEnded",
+      emoji: "🏁",
+      description: "Triggered when a giveaway ends.",
+     },
+     {
+      type: "WelcomeMessageEnable",
+      emoji: "👋",
+      description: "Triggered when the welcome message is enabled.",
+     },
+     {
+      type: "WelcomeMessageDisable",
+      emoji: "❌",
+      description: "Triggered when the welcome message is disabled.",
+     },
+     {
+      type: "LeaveMessageEnable",
+      emoji: "👋",
+      description: "Triggered when the leave message is enabled.",
+     },
+     {
+      type: "LeaveMessageDisable",
+      emoji: "❌",
+      description: "Triggered when the leave message is disabled.",
+     },
+     {
+      type: "ReputationUpdate",
+      emoji: "⭐",
+      description: "Triggered when a user's reputation is updated.",
+     },
+     {
+      type: "WarnCreate",
+      emoji: "⚠️",
+      description: "Triggered when a warning is created.",
+     },
+     {
+      type: "WarnDelete",
+      emoji: "⚠️",
+      description: "Triggered when a warning is deleted.",
+     },
+     {
+      type: "WarnUpdate",
+      emoji: "⚠️",
+      description: "Triggered when a warning is updated.",
+     },
+     {
+      type: "Unknown",
+      emoji: "❓",
+      description: "Triggered when an unknown event occurs.",
+     },
+    ],
    },
-   {
-    type: "MessageUpdate",
-    emoji: "✏️",
-   },
-   {
-    type: "ThreadCreate",
-    emoji: "🆕",
-   },
-   {
-    type: "ThreadDelete",
-    emoji: "🗑️",
-   },
-   {
-    type: "ThreadMembersUpdate",
-    emoji: "👥",
-   },
-   {
-    type: "ThreadMemberUpdate",
-    emoji: "👤",
-   },
-   {
-    type: "ThreadUpdate",
-    emoji: "✏️",
-   },
-   {
-    type: "GuildUpdate",
-    emoji: "✏️",
-   },
-   {
-    type: "GuildMemberUpdate",
-    emoji: "👤",
-   },
-   {
-    type: "GuildRoleCreate",
-    emoji: "➕",
-   },
-   {
-    type: "GuildRoleDelete",
-    emoji: "❌",
-   },
-   {
-    type: "GuildRoleUpdate",
-    emoji: "✏️",
-   },
-   {
-    type: "GuildScheduledEventCreate",
-    emoji: "📅",
-   },
-   {
-    type: "GuildScheduledEventDelete",
-    emoji: "📅",
-   },
-   {
-    type: "GuildScheduledEventUpdate",
-    emoji: "📅",
-   },
-   {
-    type: "GuildScheduledEventUserAdd",
-    emoji: "👤",
-   },
-   {
-    type: "GuildScheduledEventUserRemove",
-    emoji: "👤",
-   },
-   {
-    type: "GuildStickerCreate",
-    emoji: "🆕",
-   },
-   {
-    type: "GuildStickerDelete",
-    emoji: "❌",
-   },
-   {
-    type: "GuildStickerUpdate",
-    emoji: "✏️",
-   },
-   {
-    type: "GuildEmojiCreate",
-    emoji: "🆕",
-   },
-   {
-    type: "GuildEmojiDelete",
-    emoji: "❌",
-   },
-   {
-    type: "GuildEmojiUpdate",
-    emoji: "✏️",
-   },
-   {
-    type: "GuildIntegrationsUpdate",
-    emoji: "🔄",
-   },
-   {
-    type: "GuildMemberAdd",
-    emoji: "👤",
-   },
-
-   {
-    type: "GuildMemberRemove",
-    emoji: "👤",
-   },
-   {
-    type: "GuildBanAdd",
-    emoji: "🔨",
-   },
-   {
-    type: "GuildBanRemove",
-    emoji: "🔓",
-   },
-   {
-    type: "ChannelCreate",
-    emoji: "🆕",
-   },
-   {
-    type: "ChannelDelete",
-    emoji: "❌",
-   },
-   {
-    type: "ChannelPinsUpdate",
-    emoji: "📌",
-   },
-   {
-    type: "ChannelUpdate",
-    emoji: "✏️",
-   },
-   {
-    type: "AutoModerationActionExecution",
-    emoji: "🛠️",
-   },
-   {
-    type: "AutoModerationRuleCreate",
-    emoji: "🆕",
-   },
-   {
-    type: "AutoModerationRuleDelete",
-    emoji: "❌",
-   },
-   {
-    type: "AutoModerationRuleUpdate",
-    emoji: "✏️",
-   },
-   {
-    type: "PublicDashboardUpdate",
-    emoji: "🔗",
-   },
-   {
-    type: "VanityUpdate",
-    emoji: "🔗",
-   },
-   {
-    type: "EmbedColorUpdate",
-    emoji: "🎨",
-   },
-   {
-    type: "CommandCategoryEnable",
-    emoji: "✅",
-   },
-   {
-    type: "CommandCategoryDisable",
-    emoji: "❌",
-   },
-   {
-    type: "CommandEnable",
-    emoji: "✅",
-   },
-   {
-    type: "CommandDisable",
-    emoji: "❌",
-   },
-   {
-    type: "GiveawayCreate",
-    emoji: "🎉",
-   },
-   {
-    type: "GiveawayDelete",
-    emoji: "❌",
-   },
-   {
-    type: "GiveawayEdit",
-    emoji: "✏️",
-   },
-   {
-    type: "GiveawayPaused",
-    emoji: "⏸️",
-   },
-   {
-    type: "GiveawayResumed",
-    emoji: "▶️",
-   },
-   {
-    type: "GiveawayEnded",
-    emoji: "🏁",
-   },
-   {
-    type: "WelcomeMessageEnable",
-    emoji: "👋",
-   },
-   {
-    type: "WelcomeMessageDisable",
-    emoji: "❌",
-   },
-   {
-    type: "LeaveMessageEnable",
-    emoji: "👋",
-   },
-   {
-    type: "LeaveMessageDisable",
-    emoji: "👋",
-   },
-   {
-    type: "ReputationUpdate",
-    emoji: "⭐",
-   },
-   {
-    type: "WarnCreate",
-    emoji: "⚠️",
-   },
-   {
-    type: "WarnDelete",
-    emoji: "⚠️",
-   },
-   {
-    type: "WarnUpdate",
-    emoji: "⚠️",
-   },
-   {
-    type: "Unknown",
-    emoji: "❓",
-   },
-  ] satisfies { type: string; emoji: string }[],
+  ] satisfies { category: string; types: { type: string; emoji: string; description: string }[] }[],
   // Utility emojis
   picture_frame: "🖼️",
   anger: "💢",

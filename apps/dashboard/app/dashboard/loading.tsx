@@ -21,11 +21,11 @@ export default function Loading() {
         <Skeleton className="h-7 w-1/3" />
         <Skeleton className="ml-auto h-10 w-[115px]" />
        </div>
-       <Skeleton className="size-24 rounded-md sm:hidden" />
+       <Skeleton className="size-24 rounded-lg sm:hidden" />
       </div>
      ))}
     </div>
-    <div className="my-4 mt-12 flex flex-row flex-wrap items-start whitespace-nowrap rounded-md border border-accent-primary bg-accent-primary/10 p-4">
+    <div className="my-4 mt-12 flex flex-row flex-wrap items-start whitespace-nowrap rounded-lg border border-accent-primary bg-accent-primary/10 p-4">
      <span className="mr-1 flex flex-row items-center gap-1 whitespace-nowrap font-bold">
       <Icons.Info className={iconVariants({ variant: "normal", className: "stroke-accent-primary" })} /> Note:
      </span>

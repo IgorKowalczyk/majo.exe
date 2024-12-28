@@ -74,7 +74,7 @@ export default async function Page(props: { params: Promise<{ server: string }> 
 
     <div className="flex flex-wrap items-stretch justify-start gap-8">
      {categories.map((category) => (
-      <Block className="min-w-48" key={category.name}>
+      <Block className="w-full min-w-48 md:w-auto" key={category.name}>
        <p className="mb-4 flex items-center gap-4 text-center text-xl font-bold">
         {botConfig.emojis.categories.find((cat) => cat.name === category.name.toLowerCase())?.emoji || "❔"} {category.name}
         <span className="ml-auto mr-0">
@@ -107,7 +107,7 @@ export default async function Page(props: { params: Promise<{ server: string }> 
       </Header>
 
       {guild.guildDisabledCategories.some((cat) => cat.categoryName === category.name) && (
-       <div className="my-4 flex flex-row flex-wrap items-start whitespace-nowrap rounded-md border border-accent-primary bg-accent-primary/10 p-4">
+       <div className="my-4 flex flex-row flex-wrap items-start whitespace-nowrap rounded-lg border border-accent-primary bg-accent-primary/10 p-4">
         <span className="mr-1 flex flex-row items-center whitespace-nowrap font-bold">
          <Icons.Info className={iconVariants({ variant: "normal", className: "stroke-accent-primary mr-1" })} /> Note:
         </span>
@@ -123,7 +123,7 @@ export default async function Page(props: { params: Promise<{ server: string }> 
        )}
       >
        {category.commands.map((command) => (
-        <div key={command.name} className="hide-scrollbar my-2 w-full overflow-scroll rounded-md border border-neutral-800 bg-background-navbar px-6 py-4">
+        <div key={command.name} className="hide-scrollbar my-2 w-full overflow-scroll rounded-lg border border-neutral-800 bg-background-navbar px-6 py-4">
          <div className="flex flex-row items-center justify-between">
           <div
            className={cn(
@@ -133,7 +133,7 @@ export default async function Page(props: { params: Promise<{ server: string }> 
             "flex flex-col items-start gap-2"
            )}
           >
-           <div className="flex items-center font-bold">
+           <div className="flex flex-wrap items-center gap-2 font-bold">
             /{command.name}{" "}
             {command.options &&
              command.options.map((option) => (
@@ -144,7 +144,7 @@ export default async function Page(props: { params: Promise<{ server: string }> 
                  "!font-normal opacity-70": !option.required,
                  "opacity-100": option.required,
                 },
-                "ml-2 [line-height:normal]"
+                "[line-height:normal]"
                )}
               >
                <Tooltip content={`${option.description} ${option.required ? "(required)" : "(optional)"}`}>

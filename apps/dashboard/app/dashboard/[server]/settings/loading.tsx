@@ -82,7 +82,7 @@ export default function Loading() {
     <Skeleton className="h-10 !max-w-none" />
     <Skeleton className="mt-4 h-10 !max-w-none" />
 
-    <div className="mt-4 flex flex-row items-start whitespace-nowrap rounded-md border border-accent-primary bg-accent-primary/10 p-4">
+    <div className="mt-4 flex flex-row items-start whitespace-nowrap rounded-lg border border-accent-primary bg-accent-primary/10 p-4">
      <span className="mr-1 flex flex-row items-center whitespace-nowrap font-bold">
       <Icons.Info className={iconVariants({ variant: "normal", className: "stroke-accent-primary mr-1" })} />
       Note:

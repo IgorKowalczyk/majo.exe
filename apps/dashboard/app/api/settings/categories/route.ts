@@ -188,7 +188,7 @@ export async function POST(request: NextRequest) {
      },
     });
 
-    await createLog(server.id, session.sub, {
+    await createLog(server.id, session.id, {
      content: `Disabled category ${existingCategory.name}`,
      data: {
       category: existingCategory.name,
@@ -218,7 +218,7 @@ export async function POST(request: NextRequest) {
     },
    });
 
-   await createLog(server.id, session.sub, {
+   await createLog(server.id, session.id, {
     content: `Enabled category ${existingCategory.name}`,
     data: {
      category: existingCategory.name,
