@@ -4,12 +4,12 @@ import { fillMissingDates, sumArray } from "@majoexe/util/functions/util";
 import { getSession } from "lib/session";
 import { redirect } from "next/navigation";
 import { notFound } from "next/navigation";
+import { StatisticCharts } from "@/app/dashboard/[server]/statistics/components/StatisticCharts";
+import { ChartConfig } from "@/components/ui/BetaChart";
 import { GraphCard } from "@/components/ui/GraphCard";
 import Header, { headerVariants } from "@/components/ui/Headers";
 import { Icons, iconVariants } from "@/components/ui/Icons";
 import { cn } from "@/lib/utils";
-import { ChartConfig } from "@/components/ui/BetaChart";
-import { StatisticCharts } from "@/app/dashboard/[server]/statistics/components/StatisticCharts";
 
 export default async function Page(props: { params: Promise<{ server: string }> }) {
  const params = await props.params;

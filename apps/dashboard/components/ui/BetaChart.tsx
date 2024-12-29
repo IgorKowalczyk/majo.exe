@@ -2,10 +2,10 @@
 
 "use client";
 
-import { cn } from "@/lib/utils";
 import clsx from "clsx";
 import * as React from "react";
 import * as RechartsPrimitive from "recharts";
+import { cn } from "@/lib/utils";
 
 // Format: { THEME_NAME: CSS_SELECTOR }
 const THEMES = { light: "", dark: ".dark" };
@@ -51,27 +51,6 @@ function useChart() {
  return context;
 }
 
-const ChartContainer = React.forwardRef<
- HTMLDivElement,
- React.ComponentProps<"div"> & {
-  config: ChartConfig;
-  children: React.ComponentProps<typeof RechartsPrimitive.ResponsiveContainer>["children"];
- }
->(({ id, className, children, config, ...props }, ref) => {
- const uniqueId = React.useId();
- const chartId = `chart-${id || uniqueId.replace(/:/g, "")}`;
-
- return (
-  <ChartContext.Provider value={{ config }}>
-   <div data-chart={chartId} ref={ref} className={clsx("flex aspect-video justify-center [&_.recharts-cartesian-axis-tick_text]:fill-text [&_.recharts-cartesian-grid_line[stroke='#ccc']]:stroke-neutral-800 [&_.recharts-curve.recharts-tooltip-cursor]:stroke-neutral-800 [&_.recharts-dot[stroke='#fff']]:stroke-transparent [&_.recharts-layer]:outline-none [&_.recharts-polar-grid_[stroke='#ccc']]:stroke-neutral-800 [&_.recharts-radial-bar-background-sector]:fill-background-secondary [&_.recharts-rectangle.recharts-tooltip-cursor]:fill-background-secondary [&_.recharts-reference-line_[stroke='#ccc']]:stroke-neutral-800 [&_.recharts-sector[stroke='#fff']]:stroke-transparent [&_.recharts-sector]:outline-none [&_.recharts-surface]:outline-none", className)} {...props}>
-    <ChartStyle id={chartId} config={config} />
-    <RechartsPrimitive.ResponsiveContainer>{children}</RechartsPrimitive.ResponsiveContainer>
-   </div>
-  </ChartContext.Provider>
- );
-});
-ChartContainer.displayName = "Chart";
-
 const ChartStyle = ({ id, config }: { id: string; config: ChartConfig }) => {
  const colorConfig = Object.entries(config).filter(([_, config]) => config.theme || config.color);
 
@@ -100,6 +79,27 @@ ${colorConfig
   />
  );
 };
+
+const ChartContainer = React.forwardRef<
+ HTMLDivElement,
+ React.ComponentProps<"div"> & {
+  config: ChartConfig;
+  children: React.ComponentProps<typeof RechartsPrimitive.ResponsiveContainer>["children"];
+ }
+>(({ id, className, children, config, ...props }, ref) => {
+ const uniqueId = React.useId();
+ const chartId = `chart-${id || uniqueId.replace(/:/g, "")}`;
+
+ return (
+  <ChartContext.Provider value={{ config }}>
+   <div data-chart={chartId} ref={ref} className={clsx("[&_.recharts-cartesian-axis-tick_text]:fill-text flex aspect-video justify-center [&_.recharts-cartesian-grid_line[stroke='#ccc']]:stroke-neutral-800 [&_.recharts-curve.recharts-tooltip-cursor]:stroke-neutral-800 [&_.recharts-dot[stroke='#fff']]:stroke-transparent [&_.recharts-layer]:outline-none [&_.recharts-polar-grid_[stroke='#ccc']]:stroke-neutral-800 [&_.recharts-radial-bar-background-sector]:fill-background-secondary [&_.recharts-rectangle.recharts-tooltip-cursor]:fill-background-secondary [&_.recharts-reference-line_[stroke='#ccc']]:stroke-neutral-800 [&_.recharts-sector[stroke='#fff']]:stroke-transparent [&_.recharts-sector]:outline-none [&_.recharts-surface]:outline-none", className)} {...props}>
+    <ChartStyle id={chartId} config={config} />
+    <RechartsPrimitive.ResponsiveContainer>{children}</RechartsPrimitive.ResponsiveContainer>
+   </div>
+  </ChartContext.Provider>
+ );
+});
+ChartContainer.displayName = "Chart";
 
 const ChartTooltip = RechartsPrimitive.Tooltip;
 
@@ -183,10 +183,10 @@ const ChartTooltipContent = React.forwardRef<
          )}
          <div className={cn("flex flex-1 gap-2 justify-between leading-none", nestLabel ? "items-end" : "items-center")}>
           <div className="grid gap-1">
-           <span className="text-neutral-400 text-sm">{nestLabel ? tooltipLabel : null}</span>
+           <span className="text-sm text-neutral-400">{nestLabel ? tooltipLabel : null}</span>
            <span className="text-white">{itemConfig?.label || item.name}</span>
           </div>
-          {item.value && <span className="font-medium tabular-nums text-text">{item.value.toLocaleString()}</span>}
+          {item.value && <span className="text-text font-medium tabular-nums">{item.value.toLocaleString()}</span>}
          </div>
         </>
        )}

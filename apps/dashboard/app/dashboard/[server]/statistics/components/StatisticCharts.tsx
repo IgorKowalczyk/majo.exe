@@ -1,8 +1,8 @@
 "use client";
 
-import { StatsChart } from "@/components/client/charts/ServerStatsChart";
 import { DataEntry, sumArray } from "@majoexe/util/functions/util";
 import { json2csv } from "json-2-csv";
+import { StatsChart } from "@/components/client/charts/ServerStatsChart";
 import type { ChartConfig } from "@/components/ui/BetaChart";
 
 interface StatisticChartsProps {

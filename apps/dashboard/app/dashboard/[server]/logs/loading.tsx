@@ -1,8 +1,7 @@
-import { Block } from "@/components/ui/Block";
 import Header, { headerVariants } from "@/components/ui/Headers";
 import { Icons, iconVariants } from "@/components/ui/Icons";
-import { cn } from "@/lib/utils";
 import { Skeleton } from "@/components/ui/Skeletons";
+import { cn } from "@/lib/utils";
 
 export default function Loading() {
  return (
@@ -15,7 +14,7 @@ export default function Loading() {
 
    {Array.from({ length: 8 }).map((_, i) => (
     <div key={i}>
-     <Skeleton className="w-32 h-8 mt-6 mb-2" />
+     <Skeleton className="mb-2 mt-6 h-8 w-32" />
 
      <div className="grid grid-cols-1 gap-8 lg:grid-cols-2 2xl:grid-cols-3">
       <Skeleton className="h-[289px]" />

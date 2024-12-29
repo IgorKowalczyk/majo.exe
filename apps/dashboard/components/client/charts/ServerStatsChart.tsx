@@ -3,6 +3,7 @@
 import { DataEntry } from "@majoexe/util/functions/util";
 import fileDl from "js-file-download";
 import React, { useState } from "react";
+import { Area, AreaChart, CartesianGrid, XAxis } from "recharts";
 import { ChartContainer, ChartConfig, ChartTooltip, ChartTooltipContent, ChartLegend, ChartLegendContent } from "@/components/ui/BetaChart";
 import { Block } from "@/components/ui/Block";
 import Header, { headerVariants } from "@/components/ui/Headers";
@@ -10,7 +11,6 @@ import { Icons, iconVariants } from "@/components/ui/Icons";
 import { ListBox, ListBoxArrow, ListBoxButton, ListBoxOption, ListBoxOptions } from "@/components/ui/ListBox";
 import { Menu, MenuArrow, MenuButton, MenuItem, MenuItems } from "@/components/ui/Menu";
 import { cn } from "@/lib/utils";
-import { Area, AreaChart, CartesianGrid, XAxis } from "recharts";
 
 export const dateRanges = [
  { label: "Last 7 days", days: 7 },
