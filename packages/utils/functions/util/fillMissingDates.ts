@@ -8,11 +8,9 @@ export interface DataEntry {
 
 export function fillMissingDates(array: DataEntry[], property: string) {
  const arrayDates = array.map((e) => new Date(e.date));
- let minDate = new Date(Math.min(...arrayDates.map((date) => date.getTime())));
+ const minDate = new Date(Math.min(...arrayDates.map((date) => date.getTime())));
  const today = new Date();
- const thirtyDaysAgo = new Date(today.getFullYear(), today.getMonth(), today.getDate() - 30);
 
- minDate = minDate < thirtyDaysAgo ? thirtyDaysAgo : minDate;
  const dateSet = new Set(arrayDates.map((date) => date.toISOString().split("T")[0]));
 
  generateDates(minDate, today).forEach((date) => {
@@ -22,5 +20,7 @@ export function fillMissingDates(array: DataEntry[], property: string) {
   }
  });
 
- return array.sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
+ const sortedArray = array.sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
+
+ return sortedArray;
 }
