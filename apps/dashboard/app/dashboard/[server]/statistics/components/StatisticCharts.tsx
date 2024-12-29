@@ -20,7 +20,7 @@ export function StatisticCharts({ guildJoin, guildLeave, guildMessage, chartConf
  })) satisfies DataEntry[];
 
  return (
-  <>
+  <div className="space-y-4">
    <StatsChart
     title="Members"
     data={combinedData}
@@ -61,6 +61,6 @@ export function StatisticCharts({ guildJoin, guildLeave, guildMessage, chartConf
      );
     }}
    />
-  </>
+  </div>
  );
 }
