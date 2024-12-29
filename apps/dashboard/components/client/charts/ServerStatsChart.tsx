@@ -3,13 +3,14 @@
 import { DataEntry, sumArray } from "@majoexe/util/functions/util";
 import fileDl from "js-file-download";
 import React, { useState } from "react";
-import { AreaChart } from "@/components/ui/AreaChart";
+import { ChartContainer, ChartConfig, ChartTooltip, ChartTooltipContent, ChartLegend, ChartLegendContent } from "@/components/ui/BetaChart";
 import { Block } from "@/components/ui/Block";
 import Header, { headerVariants } from "@/components/ui/Headers";
 import { Icons, iconVariants } from "@/components/ui/Icons";
 import { ListBox, ListBoxArrow, ListBoxButton, ListBoxOption, ListBoxOptions } from "@/components/ui/ListBox";
 import { Menu, MenuArrow, MenuButton, MenuItem, MenuItems } from "@/components/ui/Menu";
 import { cn } from "@/lib/utils";
+import { Area, AreaChart, CartesianGrid, XAxis } from "recharts";
 
 interface StatsChartProps {
  title: string;
@@ -20,11 +21,26 @@ interface StatsChartProps {
  categories: string[];
 }
 
+const chartConfig = {
+ Joins: {
+  label: "Members Joined",
+  color: "hsl(var(--chart-blue))",
+ },
+
+ Leaves: {
+  label: "Members Left",
+  color: "hsl(var(--chart-blue))",
+ },
+
+ Messages: {
+  label: "Messages Sent",
+  color: "hsl(var(--chart-blue))",
+ },
+} satisfies ChartConfig;
+
 export const StatsChart = React.forwardRef<HTMLDivElement, StatsChartProps>(({ title, data, CSVData, valueName, fileName, categories }, ref) => {
  const dateRanges = ["Last 7 days", "Last 14 days", "Last 30 days", "All time"];
  const [dateRange, setDateRange] = useState<(typeof dateRanges)[number]>("Last 7 days");
-
- const numberFormatter = (value: number) => Intl.NumberFormat("us").format(value).toString();
 
  let filteredData = data;
 
@@ -99,7 +115,56 @@ export const StatsChart = React.forwardRef<HTMLDivElement, StatsChartProps>(({ t
      </ListBox>
     </div>
    </div>
-   <AreaChart className="mt-10" data={filteredData} dataKey="date" categories={categories} yAxisWidth={50} valueFormatter={numberFormatter} type="monotoneX" />
+   <ChartContainer config={chartConfig || {}} className="aspect-auto h-[250px] w-full">
+    <AreaChart accessibilityLayer data={filteredData}>
+     <defs>
+      {categories.map((category) => {
+       const config = chartConfig[category as keyof typeof chartConfig];
+       const color = config ? config.color : "hsl(var(--chart-1))";
+       return (
+        <linearGradient key={category} id={`fill-${category.toLowerCase().replace(/ /g, "")}`} x1="0" y1="0" x2="0" y2="1">
+         <stop offset="5%" stopColor={color} stopOpacity={0.8} />
+         <stop offset="95%" stopColor={color} stopOpacity={0.1} />
+        </linearGradient>
+       );
+      })}
+     </defs>
+     <CartesianGrid vertical={false} />
+     <XAxis
+      dataKey="date"
+      tickLine={false}
+      axisLine={false}
+      tickMargin={8}
+      minTickGap={32}
+      tickFormatter={(value) => {
+       const date = new Date(value);
+       return date.toLocaleDateString("en-US", {
+        month: "short",
+        day: "numeric",
+       });
+      }}
+     />
+     <ChartTooltip
+      cursor={true}
+      content={
+       <ChartTooltipContent
+        labelFormatter={(value) => {
+         return new Date(value).toLocaleDateString("en-US", {
+          month: "short",
+          day: "numeric",
+         });
+        }}
+        indicator="line"
+       />
+      }
+     />
+
+     {categories.map((category) => (
+      <Area key={category} dataKey={category} type="monotoneX" fill={`url(#fill-${category.toLowerCase().replace(/ /g, "")})`} stroke={chartConfig[category as keyof typeof chartConfig]?.color || "hsl(var(--chart-5))"} stackId={`stack-${category}`} />
+     ))}
+     <ChartLegend content={<ChartLegendContent />} />
+    </AreaChart>
+   </ChartContainer>
   </Block>
  );
 });

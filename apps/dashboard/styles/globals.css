@@ -2,6 +2,17 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+ --chart-1: 158.66 60.82% 51.96%;
+ --chart-2: 220 70% 50%;
+ --chart-3: 30 80% 55%;
+ --chart-4: 280 65% 60%;
+ --chart-5: 340 75% 55%;
+ --chart-6: 160 60% 45%;
+
+ --chart-blue: 228 100% 65%;
+}
+
 html,
 body {
  @apply m-0 scroll-smooth p-0 antialiased transition-[background-color] duration-300 motion-reduce:transition-none;
