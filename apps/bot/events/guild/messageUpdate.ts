@@ -1,4 +1,4 @@
-import { GuildLogType } from "@majoexe/database";
+import { GuildLogType } from "@majoexe/database/types";
 import { getGuildLogSettings } from "@majoexe/util/database";
 import { Message, EmbedBuilder, escapeCodeBlock, time, codeBlock } from "discord.js";
 import type { Majobot } from "@/index";

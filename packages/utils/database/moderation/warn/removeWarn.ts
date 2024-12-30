@@ -1,4 +1,5 @@
-import prismaClient, { GuildWarns } from "@majoexe/database";
+import prismaClient from "@majoexe/database";
+import type { GuildWarns } from "@majoexe/database/types";
 import { Snowflake } from "discord-api-types/globals";
 
 export async function removeWarn(guildId: Snowflake, userId: Snowflake, warnId: GuildWarns["warnId"]) {

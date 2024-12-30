@@ -1,5 +1,5 @@
 import prismaClient from "@majoexe/database";
-import { GuildLogType } from "@majoexe/database";
+import { GuildLogType } from "@majoexe/database/types";
 import { ExcludedEvents } from "@majoexe/util/database";
 import { getGuildFromMemberGuilds, getGuild, getGuildChannels } from "@majoexe/util/functions/guild";
 import { ChannelType } from "discord-api-types/v10";
@@ -27,6 +27,7 @@ export default async function LogsPage(props: { params: Promise<{ server: string
  const serverDownload = await getGuild(server);
  if (!serverDownload || !serverDownload.bot) return notFound();
  const serverMember = await getGuildFromMemberGuilds(serverDownload.id, session.access_token);
+
  if (
   // prettier
   !serverMember ||

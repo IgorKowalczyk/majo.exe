@@ -24,6 +24,7 @@
    - Database URLs [[Tutorial](/packages/database/README.md)]
      - `DATABASE_URL` - Main database URL
      - `DATABASE_URL_UNPOOLED` - Direct database URL (optional)
+     - `REDIS_URL` - Redis database URL
 7. Run `pnpm i` to install all dependencies
 8. Go to `/packages/config/` directory and change values in `/configs/dashboard.js` to your values
 9. Go back to main directory and run `pnpm run dev --filter="@majoexe/dashboard"` or `pnpm run deploy --filter="@majoexe/dashboard"` to start dashboard

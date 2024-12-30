@@ -1,5 +1,6 @@
 import { globalConfig } from "@majoexe/config";
-import prismaClient, { Prisma } from "@majoexe/database";
+import prismaClient from "@majoexe/database";
+import type { Prisma } from "@majoexe/database/types";
 import { Giveaway, GiveawaysManager, type GiveawayData } from "discord-giveaways";
 import type { ColorResolvable, Snowflake } from "discord.js";
 import type { Majobot } from "@/index";

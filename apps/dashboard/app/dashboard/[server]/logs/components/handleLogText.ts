@@ -1,4 +1,4 @@
-import { GuildLogType } from "@majoexe/database";
+import type { GuildLogType } from "@majoexe/database/types";
 import { capitalize, splitCamelCase } from "@majoexe/util/functions/util";
 
 export function handleLogText(log: GuildLogType, toUpperCase = true): string {

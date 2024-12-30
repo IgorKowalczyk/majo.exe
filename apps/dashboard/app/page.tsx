@@ -1,5 +1,6 @@
 import { dashboardConfig, globalConfig } from "@majoexe/config";
-import prismaClient, { GuildLogType } from "@majoexe/database";
+import prismaClient from "@majoexe/database";
+import { GuildLogType } from "@majoexe/database/types";
 import { pseudoRandom } from "@majoexe/util/functions/util";
 import { ApplicationCommandOptionType } from "discord-api-types/v10";
 import Link from "next/link";
@@ -12,11 +13,13 @@ import tadaAnimated from "public/assets/tada_animated.gif";
 import { Suspense } from "react";
 import Balancer from "react-wrap-balancer";
 import { BotReplacement } from "./_components/BotReplacement";
+import { statisticsChartConfig } from "./dashboard/[server]/statistics/page";
 import { AddReaction } from "@/app/_components/AddReaction";
 import Faq from "@/app/_components/Faq";
 import { LevelUp } from "@/app/_components/LevelUp";
 import { Notifications } from "@/app/_components/Notifications";
 import { LogDisclosure } from "@/app/dashboard/[server]/dashboard-logs/components/Logs";
+import { StatsChart } from "@/components/client/charts/ServerStatsChart";
 import { LoginButton } from "@/components/LoginButton";
 import { AreaChart } from "@/components/ui/AreaChart";
 import { buttonVariants } from "@/components/ui/Buttons";
@@ -346,41 +349,23 @@ export default async function HomePage() {
     </div>
 
     <div className="mx-auto mb-32 max-w-[1400px] md:px-8 lg:px-16">
-     {/* <Header className={headerVariants({ variant: "medium", margin: "normal", alignment: "center" })}>
-      Trusted by more than <span className="bg-gradient-to-b from-accent-primary to-accent-primary box-decoration-clone bg-clip-text text-fill-transparent">{formatNumber(jsonData.approximate_guild_count || 0)}+</span> servers
-     </Header>
-     <p className="mb-6 mt-3 w-full text-center text-white/70">
-      <Balancer>
-       Majo.exe is trusted by more than {formatNumber(jsonData.approximate_guild_count || 0)} servers and {formatNumber(100000)} users! Join them and see what Majo.exe can do for you!
-      </Balancer>
-     </p>
-
-     <Link href="/api/invite" className={cn(buttonVariants({ variant: "secondary" }), "mx-auto w-fit")}>
-      <Icons.userAdd className={iconVariants({ variant: "button" })} />
-      Add to your server
-     </Link>
-
-     <Icons.arrowDown className="mx-auto mt-12 size-8 animate-bounce text-accent-primary" /> */}
-
      <div className="mx-auto my-16 flex flex-col gap-8 px-4 lg:flex-row lg:gap-16 lg:px-0">
       <div className="flex w-full flex-col justify-center gap-2 lg:w-2/5">
        <Header className={headerVariants({ variant: "h1", margin: "normal", effects: "gradient" })}>See what's happening in your server</Header>
        <p className="text-white/70">With Majo.exe you can see your server statistics in real-time. You can see the most active members, the most used channels and much more!</p>
       </div>
-      <div className="w-full overflow-hidden rounded-xl border border-neutral-800 bg-background-secondary py-6 pl-4 pr-8 duration-200 hover:bg-neutral-800/50 lg:w-3/5">
+      <div className="w-full overflow-hidden rounded-xl border border-neutral-800 bg-background-secondary px-8 py-6 duration-200 hover:bg-neutral-800/50 lg:w-3/5">
        <Suspense fallback={<div className="h-56 w-full rounded-xl border border-neutral-800 bg-background-secondary" />}>
-        <AreaChart
-         className="h-56"
-         data={Array.from({ length: 30 }, (_, i) => ({
-          date: new Date(Date.now() - i * 86400000).toISOString().split("T")[0],
+        <StatsChart
+         title="Members"
+         showDateRange={false}
+         data={Array.from({ length: 7 }, (_, i) => ({
+          date: new Date(Date.now() - i * 86400000).toISOString().split("T")[0] || "",
           Joins: Math.floor(pseudoRandom(i)),
+          Leaves: Math.floor(pseudoRandom(i) / 3.33),
          }))}
-         dataKey="date"
-         categories={["Joins"]}
-         yAxisWidth={50}
-         showYAxis={true}
-         showXAxis={false}
-         type="monotoneX"
+         categories={["Joins", "Leaves"]}
+         chartConfig={statisticsChartConfig}
         />
        </Suspense>
       </div>

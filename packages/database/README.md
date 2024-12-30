@@ -12,7 +12,8 @@
 - `/prisma/schema.prisma` contains database schema. It's used by [Prisma](https://www.prisma.io/) to generate database client.
 - `/prisma/migrations` contains database migrations. They are used to update database. Do not edit them manually.
 - `/src/client.js` contains database client. It's used by Majo.exe to interact with database. It also includes edge client for Prisma Data Proxy.
-- `/src/redis.js` contains Redis client. It's used by Majo.exe to cache queries and data. It supports Redis and memory cache depending on configuration. It also includes functions to add, remove and get data from cache.
+- `/src/redis/client.js` contains Redis client. It's used by Majo.exe to cache queries and data.
+- `/src/redis/cache.js` contains cache functions and other cache related functions.
 - `/src/seed.js` contains database seed. It's used to populate database with initial data like bot slash commands. It's executed by `pnpm prisma:seed` or `pnpm prisma:generate` command.
 
 > [!IMPORTANT]
@@ -52,7 +53,7 @@
 
 ---
 
-## ⌛ Caching [optional]
+## ⌛ Caching with Redis
 
 ### ☁ Redis Cloud
 
@@ -71,9 +72,6 @@
 5. In `.env` file set these values:
    - `REDIS_URL`- `ioredis` connection string (`redis://localhost:6379`)
 6. That's it! Majo.exe will automatically cache data in Redis.
-
-> [!NOTE]
-> If you do not set `REDIS_URL` in `.env` file Majo.exe will use memory cache instead of Redis. Memory cache is not persistent and will be cleared after restarting Majo.exe. Memory cache will consume more resources than Redis cache.
 
 ---
 

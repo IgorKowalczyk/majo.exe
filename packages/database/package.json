@@ -5,8 +5,8 @@
   "type": "module",
   "exports": {
     ".": "./src/client.ts",
-    "./edge": "./src/edge.ts",
-    "./redis": "./src/redis.ts"
+    "./types": "./src/types.ts",
+    "./redis": "./src/redis/cache.ts"
   },
   "scripts": {
     "prisma:generate": "prisma generate",

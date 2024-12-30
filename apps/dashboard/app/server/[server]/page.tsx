@@ -56,13 +56,6 @@ export async function generateMetadata({ params }: { params: Promise<{ server: s
    description: guildPreview.description || "View the overview of your server.",
    url: dashboardConfig.url,
    siteName: dashboardConfig.title,
-   images: [
-    {
-     url: `${dashboardConfig.url}/api/og/${server}`,
-     width: 1200,
-     height: 630,
-    },
-   ],
   },
  };
 }

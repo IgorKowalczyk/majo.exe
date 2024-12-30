@@ -1,6 +1,6 @@
 "use client";
 
-import { User } from "@majoexe/database";
+import type { User } from "@majoexe/database/types";
 import { formatNumber } from "@majoexe/util/functions/util";
 import type { ColumnDef } from "@tanstack/react-table";
 import Link from "next/link";

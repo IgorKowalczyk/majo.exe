@@ -11,6 +11,21 @@ import Header, { headerVariants } from "@/components/ui/Headers";
 import { Icons, iconVariants } from "@/components/ui/Icons";
 import { cn } from "@/lib/utils";
 
+export const statisticsChartConfig = {
+ Joins: {
+  label: "Members Joined",
+  color: "hsl(var(--chart-blue))",
+ },
+ Leaves: {
+  label: "Members Left",
+  color: "hsl(var(--chart-red))",
+ },
+ Messages: {
+  label: "Messages Sent",
+  color: "hsl(var(--chart-blue))",
+ },
+} satisfies ChartConfig;
+
 export default async function Page(props: { params: Promise<{ server: string }> }) {
  const params = await props.params;
  const session = await getSession();
@@ -56,21 +71,6 @@ export default async function Page(props: { params: Promise<{ server: string }> 
  const membersLeft = sumArray(guildLeave.slice(-7), "Leaves");
  const newMessages = sumArray(guildMessage.slice(-7), "Messages");
 
- const chartConfig = {
-  Joins: {
-   label: "Members Joined",
-   color: "hsl(var(--chart-blue))",
-  },
-  Leaves: {
-   label: "Members Left",
-   color: "hsl(var(--chart-red))",
-  },
-  Messages: {
-   label: "Messages Sent",
-   color: "hsl(var(--chart-blue))",
-  },
- } satisfies ChartConfig;
-
  return (
   <>
    <Header className={cn(headerVariants({ variant: "h1", margin: "normal" }))}>
@@ -82,7 +82,7 @@ export default async function Page(props: { params: Promise<{ server: string }> 
     <GraphCard className="mt-0" icon={<Icons.userMinus className={iconVariants({ variant: "extraLarge" })} />} title="Members Left" description="Amount of members that left your server in the last 7 days." value={membersLeft.toString()} graph={membersLeft === 0 ? <Icons.Minus className={iconVariants({ variant: "normal" })} /> : membersLeft < 0 ? <Icons.TrendingDown className={iconVariants({ variant: "normal" })} /> : <Icons.TrendingUp className={iconVariants({ variant: "normal" })} />} />
     <GraphCard className="mt-0" icon={<Icons.commentAdd className={iconVariants({ variant: "extraLarge" })} />} title="New Messages" description="The amount of messages that were sent in your server in the last 7 days." value={newMessages.toString()} graph={newMessages === 0 ? <Icons.Minus className={iconVariants({ variant: "normal" })} /> : newMessages < 0 ? <Icons.TrendingDown className={iconVariants({ variant: "normal" })} /> : <Icons.TrendingUp className={iconVariants({ variant: "normal" })} />} />
    </div>
-   <StatisticCharts guildJoin={fillMissingDates(guildJoin, "Joins")} guildLeave={fillMissingDates(guildLeave, "Leaves")} guildMessage={fillMissingDates(guildMessage, "Messages")} chartConfig={chartConfig} />
+   <StatisticCharts guildJoin={fillMissingDates(guildJoin, "Joins")} guildLeave={fillMissingDates(guildLeave, "Leaves")} guildMessage={fillMissingDates(guildMessage, "Messages")} chartConfig={statisticsChartConfig} />
   </>
  );
 }

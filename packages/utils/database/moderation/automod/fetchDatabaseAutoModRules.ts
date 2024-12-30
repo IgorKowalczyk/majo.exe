@@ -1,4 +1,5 @@
-import prismaClient, { AutoMod } from "@majoexe/database";
+import prismaClient from "@majoexe/database";
+import type { AutoMod } from "@majoexe/database/types";
 import { Snowflake } from "discord-api-types/globals";
 
 export async function fetchDatabaseAutoModRules(guildId: Snowflake) {

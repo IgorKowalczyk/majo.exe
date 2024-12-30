@@ -1,5 +1,6 @@
 import { readdirSync } from "node:fs";
-import prismaClient, { type Prisma } from "./client";
+import type { Prisma } from "@prisma/client";
+import prismaClient from "./client";
 import { Logger } from "./logger";
 
 const upsertCategoriesAndCommands = async (categoriesData: Prisma.CommandCategoriesUpsertArgs[], commandsData: Prisma.CommandsUpsertArgs[]) => {

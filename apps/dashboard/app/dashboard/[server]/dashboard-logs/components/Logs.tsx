@@ -1,6 +1,6 @@
 "use client";
 
-import { GuildLogs, User } from "@majoexe/database";
+import type { GuildLogs, User } from "@majoexe/database/types";
 import { formatDate, formatDuration } from "@majoexe/util/functions/util";
 import Link from "next/link";
 import React, { useState, useRef, useEffect } from "react";

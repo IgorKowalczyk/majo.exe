@@ -1,4 +1,4 @@
-import type { Guild, GuildDisabledCategories, GuildDisabledCommands } from "@majoexe/database";
+import type { Guild, GuildDisabledCategories, GuildDisabledCommands } from "@majoexe/database/types";
 import { type ChatInputApplicationCommandData, ChatInputCommandInteraction, AutocompleteInteraction, Message, type ApplicationCommandOptionData } from "discord.js";
 import type { Majobot } from "@/index";
 

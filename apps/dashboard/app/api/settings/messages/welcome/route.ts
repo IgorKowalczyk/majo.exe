@@ -1,5 +1,6 @@
 import { globalConfig } from "@majoexe/config";
-import prismaClient, { GuildLogType } from "@majoexe/database";
+import prismaClient from "@majoexe/database";
+import { GuildLogType } from "@majoexe/database/types";
 import { createLog } from "@majoexe/util/database";
 import { getGuild, getGuildFromMemberGuilds } from "@majoexe/util/functions/guild";
 import { shortenText } from "@majoexe/util/functions/util";

@@ -1,4 +1,5 @@
-import prisma, { type Prisma } from "@majoexe/database";
+import prisma from "@majoexe/database";
+import type { Prisma } from "@majoexe/database/types";
 import { Snowflake } from "discord-api-types/globals";
 
 export async function createLog(guildId: Snowflake, userId: Snowflake, data: Omit<Prisma.GuildLogsCreateInput, "id" | "guild" | "user" | "authorId" | "createdAt">) {

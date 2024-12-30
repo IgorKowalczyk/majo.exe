@@ -1,4 +1,4 @@
-import { GuildLogType } from "@majoexe/database";
+import { GuildLogType } from "@majoexe/database/types";
 import { createLog, setReputation } from "@majoexe/util/database";
 import { getGuild, getGuildFromMemberGuilds } from "@majoexe/util/functions/guild";
 import { getDiscordUser } from "@majoexe/util/functions/user";

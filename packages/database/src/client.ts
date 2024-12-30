@@ -3,31 +3,12 @@ import { Pool, neonConfig } from "@neondatabase/serverless";
 import { PrismaNeon } from "@prisma/adapter-neon";
 import { PrismaClient } from "@prisma/client";
 import { createPrismaRedisCache } from "prisma-redis-middleware";
-import type { CreatePrismaRedisCache } from "prisma-redis-middleware/dist/types";
 import ws from "ws";
 import { Logger } from "./logger";
-import RedisCache from "./redis";
-
+import redisClient from "./redis/client";
 neonConfig.webSocketConstructor = ws;
 
 const prismaClientWrapper = (prisma: PrismaClient) => {
- let cacheOptions: CreatePrismaRedisCache["storage"];
-
- if (RedisCache instanceof Map) {
-  cacheOptions = {
-   type: "memory",
-   options: {},
-  };
- } else {
-  cacheOptions = {
-   type: "redis",
-   options: {
-    /* @ts-expect-error Invalid types in cacheOptions */
-    client: RedisCache,
-   },
-  };
- }
-
  const cache = createPrismaRedisCache({
   models: [
    { model: "User", excludeMethods: ["findMany"] },
@@ -37,7 +18,13 @@ const prismaClientWrapper = (prisma: PrismaClient) => {
    { model: "GuildLogs", cacheTime: 15 },
    { model: "GuildXp", cacheTime: 15 },
   ],
-  storage: cacheOptions,
+  storage: {
+   type: "redis",
+   options: {
+    /* @ts-expect-error Invalid types in cacheOptions */
+    client: redisClient,
+   },
+  },
   cacheTime: 30,
   excludeModels: ["Session", "Account"],
   onHit: (key) => {
@@ -98,6 +85,3 @@ const prisma = globalThis.prismaGlobal ?? prismaClientSingleton();
 export default prisma;
 
 if (process.env.NODE_ENV !== "production") globalThis.prismaGlobal = prisma;
-
-// also export types
-export * from "@prisma/client";
