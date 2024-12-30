@@ -3,30 +3,19 @@ import { Metadata } from "next";
 import { NavigationGuardProvider } from "next-navigation-guard";
 import { SideNavigation } from "@/components/nav/SideNavigation";
 
-export async function generateMetadata(props: { params: Promise<{ server: string }> }): Promise<Metadata> {
- const params = await props.params;
- const { server } = params;
-
+export function generateMetadata(): Metadata {
  return {
   openGraph: {
    title: dashboardConfig.title,
    description: dashboardConfig.description,
    url: dashboardConfig.url,
    siteName: dashboardConfig.title,
-   images: [
-    {
-     url: `${dashboardConfig.url}/api/og/${server}`,
-     width: 1200,
-     height: 630,
-    },
-   ],
   },
  };
 }
 
 export default async function Layout(props: { params: Promise<{ server: string }>; children: React.ReactNode }) {
  const params = await props.params;
-
  const { children } = props;
 
  return (

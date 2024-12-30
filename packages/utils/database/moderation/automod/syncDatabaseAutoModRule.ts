@@ -1,5 +1,5 @@
 import { globalConfig } from "@majoexe/config";
-import { AutoMod } from "@majoexe/database";
+import type { AutoMod } from "@majoexe/database/types";
 import { Snowflake } from "discord-api-types/globals";
 import { RESTError, RESTGetAPIAutoModerationRuleResult } from "discord-api-types/v10";
 import { deleteDatabaseAutoModRule } from "./deleteDatabaseAutoModRule";

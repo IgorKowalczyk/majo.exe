@@ -1,4 +1,5 @@
-import prisma, { GuildWarns, GuildXp } from "@majoexe/database";
+import prisma from "@majoexe/database";
+import type { GuildWarns, GuildXp } from "@majoexe/database/types";
 import { ExtendedAPIGuild, getMemberGuilds } from "@majoexe/util/functions/guild";
 import { getFlags } from "@majoexe/util/functions/user";
 import { formatNumber } from "@majoexe/util/functions/util";

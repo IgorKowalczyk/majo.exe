@@ -1,4 +1,4 @@
-import { GuildLogType } from "@majoexe/database";
+import { GuildLogType } from "@majoexe/database/types";
 import { createLog } from "@majoexe/util/database";
 import { type ChatInputCommandInteraction, EmbedBuilder, type Message, PermissionsBitField, User, type ColorResolvable, ChannelType } from "discord.js";
 import ms from "ms";

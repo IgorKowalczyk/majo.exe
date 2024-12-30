@@ -1,4 +1,5 @@
-import prismaClient, { GuildLogType } from "@majoexe/database";
+import prismaClient from "@majoexe/database";
+import { GuildLogType } from "@majoexe/database/types";
 import { createLog } from "@majoexe/util/database";
 import { AutoModerationRuleCreationData, createDiscordAutoModRule, validateAutoModIgnores, validateAutoModRuleActions } from "@majoexe/util/functions/automod";
 import { getGuild, getGuildChannels, getGuildFromMemberGuilds, getGuildRoles } from "@majoexe/util/functions/guild";

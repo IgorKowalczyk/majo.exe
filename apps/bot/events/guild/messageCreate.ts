@@ -90,11 +90,10 @@ export async function messageCreate(client: Majobot, message: Message): Promise<
 
  if (!settings || !settings.enableXP) return;
 
- const key = `${message.guild.id}-${message.author.id}`;
- const time = JSON.parse((await cacheGet(key)) ?? "{}");
- const cooldown = 60000;
+ const key = `user:${message.author.id}:xp:${message.guild.id}`;
+ const timeout = await cacheGet(key);
 
- if (time && time.time + cooldown > Date.now()) return;
+ if (timeout) return;
  const random = Math.floor(Math.random() * 60) + 1;
 
  const xp = await prismaClient.guildXp.findFirst({
@@ -104,7 +103,7 @@ export async function messageCreate(client: Majobot, message: Message): Promise<
   },
  });
 
- await cacheSet(key, { time: Date.now() }, cooldown);
+ await cacheSet(key, { time: Date.now() }, 60); // 1 minute
 
  if (!xp) {
   await prismaClient.guildXp.create({

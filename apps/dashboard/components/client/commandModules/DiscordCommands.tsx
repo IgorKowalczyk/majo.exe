@@ -1,5 +1,5 @@
 "use client";
-import { CommandCategories } from "@majoexe/database";
+import type { CommandCategories } from "@majoexe/database/types";
 import React, { useEffect, useState, useMemo, HTMLAttributes } from "react";
 import Header, { headerVariants } from "@/components/ui/Headers";
 import { Icons, iconVariants } from "@/components/ui/Icons";

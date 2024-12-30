@@ -1,5 +1,5 @@
 import prismaClient from "@majoexe/database";
-import { cacheGet, cacheSet } from "@majoexe/database/redis";
+import { cacheGet, cacheSet, cacheTTL } from "@majoexe/database/redis";
 import { createUser } from "@majoexe/util/database";
 import { formatDuration } from "@majoexe/util/functions/util";
 import { ChannelType, EmbedBuilder, GuildMember, InteractionType, Message, PermissionsBitField, type Interaction } from "discord.js";
@@ -19,16 +19,16 @@ export async function interactionCreate(client: Majobot, interaction: Interactio
    const shouldDefer = command.defer ?? true;
    if (shouldDefer) await interaction.deferReply({ ephemeral: false });
 
-   const key = `timeout-${interaction.user.id}-${interaction.commandName}`;
    const { cooldown } = command;
+   const key = `user:${interaction.user.id}:timeout:${interaction.commandName}`;
+   const time = await cacheGet(key);
 
    if (cooldown) {
-    const time = JSON.parse((await cacheGet(key)) ?? "{}");
-    if (time && time.time + cooldown > Date.now()) {
-     const timeLeft = time.time + cooldown - Date.now();
+    if (time) {
+     const timeLeft = await cacheTTL(key);
      const embed = new EmbedBuilder()
       .setTitle("‼️ Slow down!")
-      .setDescription(`You are on cooldown! Please wait \`${formatDuration(timeLeft)}\` before using this command again!`)
+      .setDescription(`You are on cooldown! Please wait \`${formatDuration(timeLeft * 1000)}\` before using this command again!`)
       .setColor("#EF4444")
       .setTimestamp()
       .setFooter({
@@ -37,7 +37,7 @@ export async function interactionCreate(client: Majobot, interaction: Interactio
       });
      return interaction.followUp({ ephemeral: true, embeds: [embed] });
     } else {
-     await cacheSet(key, { userId: interaction.user.id, time: Date.now() }, cooldown);
+     await cacheSet(key, { userId: interaction.user.id, time: Date.now(), command: interaction.commandName }, cooldown / 1000);
     }
    }
 

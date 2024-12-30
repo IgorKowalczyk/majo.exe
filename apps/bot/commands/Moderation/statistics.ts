@@ -1,4 +1,5 @@
-import prismaClient, { type GuildJoin, type GuildLeave, type GuildMessage } from "@majoexe/database";
+import prismaClient from "@majoexe/database";
+import type { GuildJoin, GuildLeave, GuildMessage } from "@majoexe/database/types";
 import { fillMissingDates } from "@majoexe/util/functions/util";
 import * as Plot from "@observablehq/plot";
 import { ApplicationCommandType, ApplicationCommandOptionType, PermissionFlagsBits, AttachmentBuilder, EmbedBuilder, InteractionContextType, ApplicationIntegrationType } from "discord.js";

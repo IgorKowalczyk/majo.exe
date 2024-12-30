@@ -1,6 +1,6 @@
 "use client";
 
-import { GuildWarns, User } from "@majoexe/database";
+import type { GuildWarns, User } from "@majoexe/database/types";
 import { formatDuration, shortenText } from "@majoexe/util/functions/util";
 import type { ColumnDef } from "@tanstack/react-table";
 import Link from "next/link";

@@ -1,5 +1,5 @@
-const timeout = new Map();
 import prismaClient from "@majoexe/database";
+import { cacheGet, cacheSet, cacheTTL } from "@majoexe/database/redis";
 import { formatDuration } from "@majoexe/util/functions/util";
 import { EmbedBuilder, type ModalMessageModalSubmitInteraction } from "discord.js";
 import type { Majobot } from "..";
@@ -27,15 +27,15 @@ export default {
    return interaction.followUp({ ephemeral: true, embeds: [embed] });
   }
 
-  const key = `${interaction.user.id}-suggest`;
+  const key = `user:${interaction.user.id}:suggestion`;
+  const timeout = await cacheGet(key);
 
-  if (timeout.has(key) && timeout.get(key).time > Date.now()) {
-   const { time } = timeout.get(key);
-   const duration = formatDuration(time - Date.now());
+  if (timeout) {
+   const timeLeft = await cacheTTL(key);
 
    const embed = new EmbedBuilder()
     .setTitle("‼️ You are on cooldown!")
-    .setDescription(`You are on cooldown for \`${duration}\`! Please wait before suggesting again!`)
+    .setDescription(`You are on cooldown for \`${formatDuration(timeLeft * 1000)}\`! Please wait before suggesting again!`)
     .setColor("#EF4444")
     .setTimestamp()
     .setFooter({
@@ -48,10 +48,7 @@ export default {
    return interaction.followUp({ ephemeral: true, embeds: [embed] });
   }
 
-  timeout.set(key, { time: Date.now() + 60000 });
-  setTimeout(() => {
-   timeout.delete(key);
-  }, 60000);
+  await cacheSet(key, { userId: interaction.user.id, time: Date.now() }, 60); // 1 minute
 
   const embed = new EmbedBuilder()
    .setTitle("📝 Thank you for your suggestion!")

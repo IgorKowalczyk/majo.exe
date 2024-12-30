@@ -1,4 +1,4 @@
-import type { GuildLogs, User } from "@majoexe/database";
+import type { GuildLogs, User } from "@majoexe/database/types";
 import type { APIApplicationCommandOption } from "discord-api-types/v10";
 
 export type ExtendedApplicationCommandOptionData = APIApplicationCommandOption & { usage?: string };

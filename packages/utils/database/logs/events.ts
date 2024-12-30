@@ -1,4 +1,4 @@
-import { GuildLogType } from "@majoexe/database";
+import { GuildLogType } from "@majoexe/database/types";
 
 /**
  * Events that can't be triggered by Discord.js

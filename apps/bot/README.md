@@ -20,6 +20,7 @@
    - Database URLs [[Tutorial](/packages/database/README.md)]
      - `DATABASE_URL` - Main database URL
      - `DATABASE_URL_UNPOOLED` - Direct database URL (optional)
+     - `REDIS_URL` - Redis database URL
 6. Run `pnpm i` to install all dependencies
 7. Go to `/packages/config/` directory and change values in `/configs/bot.js` to your values
 8. Go back to main directory and run `pnpm run dev --filter="@majoexe/bot"` or `pnpm run deploy --filter="@majoexe/bot"` to start bot

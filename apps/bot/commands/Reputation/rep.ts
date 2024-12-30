@@ -1,4 +1,4 @@
-import { cacheGet, cacheSet } from "@majoexe/database/redis";
+import { cacheGet, cacheSet, cacheTTL } from "@majoexe/database/redis";
 import { checkReputation, giveReputation, takeReputation, setReputation } from "@majoexe/util/database";
 import { formatDuration } from "@majoexe/util/functions/util";
 import { ApplicationCommandType, ApplicationCommandOptionType, EmbedBuilder, PermissionFlagsBits, PermissionsBitField, InteractionContextType, ApplicationIntegrationType } from "discord.js";
@@ -83,11 +83,12 @@ export default {
    if (!interaction.guild) return client.errorMessages.createSlashError(interaction, "❌ This command can only be used in a server.");
    if (!interaction.member) return client.errorMessages.createSlashError(interaction, "❌ You must be in a server to use this command.");
    if (!interaction.guildId) return client.errorMessages.createSlashError(interaction, "❌ Unable to get server data. Please try again.");
+   const user = interaction.options.getUser("user");
+   if (!user) return client.errorMessages.createSlashError(interaction, "❌ Please provide a valid user.");
+
+   const key = `user:${interaction.member.user.id}:reputation:${user.id}`;
 
    if (type === "get") {
-    const user = interaction.options.getUser("user");
-
-    if (!user) return client.errorMessages.createSlashError(interaction, "❌ Please provide a valid user.");
     const rep = await checkReputation(user.id, interaction.guild.id);
 
     const embed = new EmbedBuilder()
@@ -105,27 +106,19 @@ export default {
 
     return interaction.followUp({ embeds: [embed] });
    } else if (type === "give") {
-    const user = interaction.options.getUser("user");
-    if (!user) return client.errorMessages.createSlashError(interaction, "❌ Please provide a valid user.");
+    if (user.id === interaction.member.user.id) return client.errorMessages.createSlashError(interaction, "❌ You can't give reputation to yourself");
+    if (user.bot) return client.errorMessages.createSlashError(interaction, "❌ You can't give reputation to a bot");
 
-    if (user.id === interaction.member.user.id) {
-     return client.errorMessages.createSlashError(interaction, "❌ You can't give reputation to yourself");
-    }
+    const time = await cacheGet(key);
 
-    if (user.bot) {
-     return client.errorMessages.createSlashError(interaction, "❌ You can't give reputation to a bot");
-    }
-
-    const key = `${interaction.member.user.id}-${user.id}`;
-    const time = JSON.parse((await cacheGet(key)) || "{}");
-
-    if (time && time.time + 86400000 > Date.now()) {
-     const timeLeft = time.time + 86400000 - Date.now();
-     return client.errorMessages.createSlashError(interaction, `❌ You can't give reputation to ${user} for another \`${formatDuration(timeLeft)}\``);
+    if (time) {
+     const timeLeft = await cacheTTL(key);
+     return client.errorMessages.createSlashError(interaction, `❌ You can't give reputation to ${user} for another \`${formatDuration(timeLeft * 1000)}\``);
     }
 
     const rep = await giveReputation(user, interaction.guild.id);
-    await cacheSet(key, { userId: interaction.member.user.id, time: Date.now() }, 86400000);
+
+    await cacheSet(key, { userId: interaction.member.user.id, for: user.id, timeSet: Date.now() }, 24 * 60 * 60); // 24 hours
 
     const embed = new EmbedBuilder()
      .setColor(guildSettings?.embedColor || client.config.defaultColor)
@@ -142,28 +135,19 @@ export default {
 
     return interaction.followUp({ embeds: [embed] });
    } else if (type === "take") {
-    const user = interaction.options.getUser("user");
-    if (!user) return client.errorMessages.createSlashError(interaction, "❌ Please provide a valid user.");
+    if (user.id === interaction.member.user.id) return client.errorMessages.createSlashError(interaction, "❌ You can't take reputation from yourself");
+    if (user.bot) return client.errorMessages.createSlashError(interaction, "❌ You can't take reputation from a bot");
 
-    if (user.id === interaction.member.user.id) {
-     return client.errorMessages.createSlashError(interaction, "❌ You can't take reputation from yourself");
+    const time = await cacheGet(key);
+
+    if (time) {
+     const timeLeft = await cacheTTL(key);
+     return client.errorMessages.createSlashError(interaction, `❌ You can't take reputation from ${user} for another \`${formatDuration(timeLeft * 1000)}\``);
     }
 
-    if (user.bot) {
-     return client.errorMessages.createSlashError(interaction, "❌ You can't take reputation from a bot");
-    }
+    const rep = await takeReputation(user, interaction.guild.id);
 
-    const key = `${interaction.member.user.id}-${user.id}`;
-    const time = JSON.parse((await cacheGet(key)) || "{}");
-
-    if (time && time.time + 86400000 > Date.now()) {
-     const timeLeft = time.time + 86400000 - Date.now();
-     return client.errorMessages.createSlashError(interaction, `❌ You can't take reputation from ${user} for another \`${formatDuration(timeLeft)}\``);
-    }
-
-    const rep = await takeReputation(user, interaction.guild);
-
-    await cacheSet(key, { userId: interaction.member.user.id, time: Date.now() }, 86400000);
+    await cacheSet(key, { userId: interaction.member.user.id, for: user.id, timeSet: Date.now() }, 24 * 60 * 60); // 24 hours
 
     const embed = new EmbedBuilder()
      .setColor(guildSettings?.embedColor || client.config.defaultColor)
