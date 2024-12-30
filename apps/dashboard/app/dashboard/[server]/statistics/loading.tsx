@@ -12,7 +12,6 @@ export default function Loading() {
     <Icons.TrendingUp className={iconVariants({ variant: "extraLarge" })} />
     Statistics
    </Header>
-   <p className="mb-4 text-left text-base md:text-lg">Here you can view the statistics of your server, see how it's been doing recently.</p>
    <div className="mb-4 grid grid-cols-1 gap-0 md:grid-cols-1 md:gap-4 lg:grid-cols-2 xl:grid-cols-3">
     <GraphCard // prettier
      className="mt-0"
