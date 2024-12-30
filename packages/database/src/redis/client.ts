@@ -6,10 +6,10 @@ declare const globalThis: {
 } & typeof global;
 
 const createRedisClient = () => {
- if (!process.env.REDIS_URL) throw new Error("No Redis URL found! Please set the REDIS_URL environment variable.");
+ if (!process.env.REDIS_URL) Logger("warn", "No Redis URL found! Please set the REDIS_URL environment variable! Defaulting to redis://localhost:6379");
  Logger("info", "Creating Redis client...");
 
- return new Redis(process.env.REDIS_URL);
+ return new Redis(process.env.REDIS_URL ?? "redis://localhost:6379");
 };
 
 const redisClient = globalThis.redisGlobal ?? createRedisClient();
