@@ -72,13 +72,13 @@ const client = new Majobot({
   GatewayIntentBits.GuildMessageReactions,
   // GatewayIntentBits.GuildMessageTyping,
   // GatewayIntentBits.DirectMessages,
-  GatewayIntentBits.DirectMessageReactions,
+  // GatewayIntentBits.DirectMessageReactions,
   // GatewayIntentBits.DirectMessageTyping,
   // GatewayIntentBits.MessageContent,
   GatewayIntentBits.GuildScheduledEvents,
   GatewayIntentBits.AutoModerationConfiguration,
   GatewayIntentBits.AutoModerationExecution,
-  GatewayIntentBits.GuildMessagePolls,
+  // GatewayIntentBits.GuildMessagePolls,
   // GatewayIntentBits.DirectMessagePolls
  ],
 });

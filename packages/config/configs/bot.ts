@@ -112,16 +112,16 @@ const config = {
       emoji: "🗑️",
       description: "Triggered when a message is deleted.",
      },
-     {
-      type: "MessagePollVoteAdd",
-      emoji: "🗳️",
-      description: "Triggered when a poll vote is added.",
-     },
-     {
-      type: "MessagePollVoteRemove",
-      emoji: "🗳️",
-      description: "Triggered when a poll vote is removed.",
-     },
+     // {
+     //  type: "MessagePollVoteAdd",
+     //  emoji: "🗳️",
+     //  description: "Triggered when a poll vote is added.",
+     // },
+     // {
+     //  type: "MessagePollVoteRemove",
+     //  emoji: "🗳️",
+     //  description: "Triggered when a poll vote is removed.",
+     // },
      {
       type: "MessageUpdate",
       emoji: "✏️",

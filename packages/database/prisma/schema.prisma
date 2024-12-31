@@ -176,8 +176,6 @@ enum GuildLogType {
  MessageCreate // Exclude
  MessageBulkDelete // Done
  MessageDelete // Done
- MessagePollVoteAdd // Done
- MessagePollVoteRemove // Done
  MessageUpdate // Done
 
  ThreadCreate
