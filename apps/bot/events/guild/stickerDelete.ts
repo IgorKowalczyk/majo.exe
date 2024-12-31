@@ -1,6 +1,6 @@
 import { GuildLogType } from "@majoexe/database/types";
 import { getGuildLogSettings } from "@majoexe/util/database";
-import { Sticker, EmbedBuilder, inlineCode } from "discord.js";
+import { Sticker, EmbedBuilder, inlineCode, StickerFormatType, codeBlock, time } from "discord.js";
 import type { Majobot } from "@/index";
 
 export async function stickerDelete(client: Majobot, sticker: Sticker) {
@@ -14,8 +14,16 @@ export async function stickerDelete(client: Majobot, sticker: Sticker) {
 
   const fields = [
    {
-    name: "Sticker",
-    value: `${sticker.name}`,
+    name: "Sticker Name",
+    value: `${inlineCode(sticker.name)}`,
+   },
+   {
+    name: "Description",
+    value: codeBlock(sticker.description || "None"),
+   },
+   {
+    name: "Emoji",
+    value: sticker.tags?.toString() || "None",
    },
    {
     name: "ID",
@@ -23,13 +31,20 @@ export async function stickerDelete(client: Majobot, sticker: Sticker) {
    },
    {
     name: "Format",
-    value: inlineCode(sticker.format.toString() || "PNG"),
+    value: inlineCode(StickerFormatType[sticker.format] || "Unknown"),
    },
    {
     name: "Deleted At",
-    value: new Date().toISOString(),
+    value: time(Math.round(Date.now() / 1000)),
    },
   ];
+
+  if (sticker.user) {
+   fields.push({
+    name: "Creator",
+    value: `${sticker.user.toString()} (${inlineCode(sticker.user.id)})`,
+   });
+  }
 
   const embed = new EmbedBuilder()
    .setTitle("📢 Sticker Deleted")

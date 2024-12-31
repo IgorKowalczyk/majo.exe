@@ -1,6 +1,6 @@
 import { GuildLogType } from "@majoexe/database/types";
 import { getGuildLogSettings } from "@majoexe/util/database";
-import { Sticker, EmbedBuilder, inlineCode } from "discord.js";
+import { Sticker, EmbedBuilder, time, inlineCode, codeBlock, StickerFormatType } from "discord.js";
 import type { Majobot } from "@/index";
 
 export async function stickerUpdate(client: Majobot, oldSticker: Sticker, newSticker: Sticker) {
@@ -14,8 +14,8 @@ export async function stickerUpdate(client: Majobot, oldSticker: Sticker, newSti
 
   const fields = [
    {
-    name: "Sticker",
-    value: `${newSticker.toString()} (${inlineCode(newSticker.name)})`,
+    name: "Sticker Name",
+    value: `${inlineCode(newSticker.name)}`,
    },
    {
     name: "ID",
@@ -23,7 +23,7 @@ export async function stickerUpdate(client: Majobot, oldSticker: Sticker, newSti
    },
    {
     name: "Updated At",
-    value: new Date().toISOString(),
+    value: time(Math.round(Date.now() / 1000)),
    },
   ];
 
@@ -38,14 +38,36 @@ export async function stickerUpdate(client: Majobot, oldSticker: Sticker, newSti
    });
   }
 
+  if (oldSticker.description !== newSticker.description) {
+   fields.push({
+    name: "Old Description",
+    value: codeBlock(oldSticker.description || "None"),
+   });
+   fields.push({
+    name: "New Description",
+    value: codeBlock(newSticker.description || "None"),
+   });
+  }
+
   if (oldSticker.format !== newSticker.format) {
    fields.push({
     name: "Old Format",
-    value: inlineCode(oldSticker.format.toString() || "PNG"),
+    value: inlineCode(StickerFormatType[oldSticker.format] || "Unknown"),
    });
    fields.push({
     name: "New Format",
-    value: inlineCode(newSticker.format.toString() || "PNG"),
+    value: inlineCode(StickerFormatType[newSticker.format] || "Unknown"),
+   });
+  }
+
+  if (oldSticker.tags !== newSticker.tags) {
+   fields.push({
+    name: "Old Emoji",
+    value: oldSticker.tags?.toString() || "None",
+   });
+   fields.push({
+    name: "New Emoji",
+    value: newSticker.tags?.toString() || "None",
    });
   }
 

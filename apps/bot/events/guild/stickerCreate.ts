@@ -1,6 +1,6 @@
 import { GuildLogType } from "@majoexe/database/types";
 import { getGuildLogSettings } from "@majoexe/util/database";
-import { Sticker, EmbedBuilder, time, inlineCode } from "discord.js";
+import { Sticker, EmbedBuilder, time, inlineCode, codeBlock, StickerFormatType } from "discord.js";
 import type { Majobot } from "@/index";
 
 export async function stickerCreate(client: Majobot, sticker: Sticker) {
@@ -14,8 +14,16 @@ export async function stickerCreate(client: Majobot, sticker: Sticker) {
 
   const fields = [
    {
-    name: "Sticker",
-    value: `${sticker.toString()} (${inlineCode(sticker.name)})`,
+    name: "Sticker Name",
+    value: `${inlineCode(sticker.name)}`,
+   },
+   {
+    name: "Description",
+    value: codeBlock(sticker.description || "None"),
+   },
+   {
+    name: "Emoji",
+    value: sticker.tags?.toString() || "None",
    },
    {
     name: "ID",
@@ -23,17 +31,20 @@ export async function stickerCreate(client: Majobot, sticker: Sticker) {
    },
    {
     name: "Format",
-    value: inlineCode(sticker.format.toString() || "PNG"),
+    value: inlineCode(StickerFormatType[sticker.format] || "Unknown"),
    },
    {
     name: "Created At",
     value: time(sticker.createdAt),
    },
-   {
-    name: "Created By",
-    value: `${sticker.user?.toString() || "Unknown"}`,
-   },
   ];
+
+  if (sticker.user) {
+   fields.push({
+    name: "Creator",
+    value: `${sticker.user.toString()} (${inlineCode(sticker.user.id)})`,
+   });
+  }
 
   const embed = new EmbedBuilder()
    .setTitle("📢 Sticker Created")
