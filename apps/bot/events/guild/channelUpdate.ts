@@ -30,7 +30,7 @@ export async function channelUpdate(client: Majobot, oldChannel: DMChannel | Non
    },
    {
     name: "Updated At",
-    value: time(Date.now()),
+    value: time(Math.round(Date.now() / 1000)),
    },
   ];
 

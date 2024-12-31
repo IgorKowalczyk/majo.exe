@@ -1,6 +1,6 @@
 import { GuildLogType } from "@majoexe/database/types";
 import { getGuildLogSettings } from "@majoexe/util/database";
-import { Guild, EmbedBuilder, inlineCode, time } from "discord.js";
+import { Guild, EmbedBuilder, inlineCode, time, codeBlock } from "discord.js";
 import type { Majobot } from "@/index";
 
 export async function guildUpdate(client: Majobot, oldGuild: Guild, newGuild: Guild) {
@@ -10,6 +10,8 @@ export async function guildUpdate(client: Majobot, oldGuild: Guild, newGuild: Gu
   const logChannel = await newGuild.channels.fetch(settings.channelId);
   if (!logChannel || !logChannel.isTextBased()) return;
 
+  console.log(oldGuild, newGuild);
+
   const fields = [
    {
     name: "Guild",
@@ -17,9 +19,86 @@ export async function guildUpdate(client: Majobot, oldGuild: Guild, newGuild: Gu
    },
    {
     name: "Updated At",
-    value: time(Date.now()),
+    value: time(Math.round(Date.now() / 1000)),
    },
   ];
+
+  if (oldGuild.nsfwLevel !== newGuild.nsfwLevel) {
+   fields.push({
+    name: "Old NSFW Level",
+    value: inlineCode(oldGuild.nsfwLevel.toString() || "None"),
+   });
+   fields.push({
+    name: "New NSFW Level",
+    value: inlineCode(newGuild.nsfwLevel.toString() || "None"),
+   });
+  }
+
+  if (oldGuild.splashURL() !== newGuild.splashURL()) {
+   fields.push({
+    name: "Old Splash",
+    value: oldGuild.splashURL() ? `[Link](${oldGuild.splashURL()})` : "None",
+   });
+   fields.push({
+    name: "New Splash",
+    value: newGuild.splashURL() ? `[Link](${newGuild.splashURL()})` : "None",
+   });
+  }
+
+  if (oldGuild.bannerURL() !== newGuild.bannerURL()) {
+   fields.push({
+    name: "Old Banner",
+    value: oldGuild.bannerURL() ? `[Link](${oldGuild.bannerURL()})` : "None",
+   });
+   fields.push({
+    name: "New Banner",
+    value: newGuild.bannerURL() ? `[Link](${newGuild.bannerURL()})` : "None",
+   });
+  }
+
+  if (oldGuild.description !== newGuild.description) {
+   fields.push({
+    name: "Old Description",
+    value: codeBlock(oldGuild.description || "None"),
+   });
+   fields.push({
+    name: "New Description",
+    value: codeBlock(newGuild.description || "None"),
+   });
+  }
+
+  if (oldGuild.rulesChannelId !== newGuild.rulesChannelId) {
+   fields.push({
+    name: "Old Rules Channel",
+    value: inlineCode(oldGuild.rulesChannelId || "None"),
+   });
+   fields.push({
+    name: "New Rules Channel",
+    value: inlineCode(newGuild.rulesChannelId || "None"),
+   });
+  }
+
+  if (oldGuild.publicUpdatesChannelId !== newGuild.publicUpdatesChannelId) {
+   fields.push({
+    name: "Old Public Updates Channel",
+    value: inlineCode(oldGuild.publicUpdatesChannelId || "None"),
+   });
+   fields.push({
+    name: "New Public Updates Channel",
+    value: inlineCode(newGuild.publicUpdatesChannelId || "None"),
+   });
+  }
+
+  if (oldGuild.safetyAlertsChannelId !== newGuild.safetyAlertsChannelId) {
+   fields.push({
+    name: "Old Safety Alerts Channel",
+    value: inlineCode(oldGuild.safetyAlertsChannelId || "None"),
+   });
+   fields.push({
+    name: "New Safety Alerts Channel",
+    value: inlineCode(newGuild.safetyAlertsChannelId || "None"),
+   });
+  }
 
   if (oldGuild.name !== newGuild.name) {
    fields.push({
@@ -40,6 +119,13 @@ export async function guildUpdate(client: Majobot, oldGuild: Guild, newGuild: Gu
    fields.push({
     name: "New Icon",
     value: newGuild.iconURL() ? `[Link](${newGuild.iconURL()})` : "None",
+   });
+  }
+
+  if (fields.length === 2) {
+   fields.push({
+    name: "We couldn't find any changes",
+    value: "Due to the limitations of the Discord, we couldn't find any changes in the guild, check the audit logs for more information.",
    });
   }
 

@@ -23,7 +23,7 @@ export async function emojiUpdate(client: Majobot, oldEmoji: GuildEmoji, newEmoj
    },
    {
     name: "Updated At",
-    value: time(Date.now()),
+    value: time(Math.round(Date.now() / 1000)),
    },
   ];
 

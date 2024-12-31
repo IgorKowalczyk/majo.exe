@@ -32,7 +32,7 @@ export async function channelDelete(client: Majobot, channel: DMChannel | NonThr
    },
    {
     name: "Deleted at",
-    value: time(Date.now()),
+    value: time(Math.round(Date.now() / 1000)),
    },
   ];
 

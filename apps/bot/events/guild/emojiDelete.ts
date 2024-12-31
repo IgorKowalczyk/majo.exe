@@ -23,7 +23,7 @@ export async function emojiDelete(client: Majobot, emoji: GuildEmoji) {
    },
    {
     name: "Deleted At",
-    value: time(Date.now()),
+    value: time(Math.round(Date.now() / 1000)),
    },
   ];
 

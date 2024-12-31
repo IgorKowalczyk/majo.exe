@@ -23,7 +23,7 @@ export async function roleUpdate(client: Majobot, oldRole: Role, newRole: Role) 
    },
    {
     name: "Updated At",
-    value: time(Date.now()),
+    value: time(Math.round(Date.now() / 1000)),
    },
   ];
 

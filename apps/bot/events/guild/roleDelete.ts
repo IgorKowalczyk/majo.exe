@@ -23,7 +23,7 @@ export async function roleDelete(client: Majobot, role: Role) {
    },
    {
     name: "Deleted At",
-    value: time(Date.now()),
+    value: time(Math.round(Date.now() / 1000)),
    },
    {
     name: "Color",
