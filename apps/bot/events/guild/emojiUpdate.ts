@@ -1,6 +1,6 @@
 import { GuildLogType } from "@majoexe/database/types";
 import { getGuildLogSettings } from "@majoexe/util/database";
-import { GuildEmoji, EmbedBuilder, inlineCode } from "discord.js";
+import { GuildEmoji, EmbedBuilder, inlineCode, time } from "discord.js";
 import type { Majobot } from "@/index";
 
 export async function emojiUpdate(client: Majobot, oldEmoji: GuildEmoji, newEmoji: GuildEmoji) {
@@ -15,7 +15,7 @@ export async function emojiUpdate(client: Majobot, oldEmoji: GuildEmoji, newEmoj
   const fields = [
    {
     name: "Emoji",
-    value: `${newEmoji.toString()} (${inlineCode(newEmoji.name)})`,
+    value: `${newEmoji.toString()} (${inlineCode(newEmoji.name || "None")})`,
    },
    {
     name: "ID",
@@ -30,11 +30,11 @@ export async function emojiUpdate(client: Majobot, oldEmoji: GuildEmoji, newEmoj
   if (oldEmoji.name !== newEmoji.name) {
    fields.push({
     name: "Old Name",
-    value: inlineCode(oldEmoji.name),
+    value: inlineCode(oldEmoji.name || "None"),
    });
    fields.push({
     name: "New Name",
-    value: inlineCode(newEmoji.name),
+    value: inlineCode(newEmoji.name || "None"),
    });
   }
 

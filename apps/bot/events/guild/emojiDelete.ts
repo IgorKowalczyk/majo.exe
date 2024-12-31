@@ -1,6 +1,6 @@
 import { GuildLogType } from "@majoexe/database/types";
 import { getGuildLogSettings } from "@majoexe/util/database";
-import { GuildEmoji, EmbedBuilder, inlineCode } from "discord.js";
+import { GuildEmoji, EmbedBuilder, inlineCode, time } from "discord.js";
 import type { Majobot } from "@/index";
 
 export async function emojiDelete(client: Majobot, emoji: GuildEmoji) {
@@ -15,7 +15,7 @@ export async function emojiDelete(client: Majobot, emoji: GuildEmoji) {
   const fields = [
    {
     name: "Emoji",
-    value: `${emoji.toString()} (${inlineCode(emoji.name)})`,
+    value: `${emoji.toString()} (${inlineCode(emoji.name || "None")})`,
    },
    {
     name: "ID",
