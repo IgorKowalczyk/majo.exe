@@ -215,8 +215,8 @@ importers:
         specifier: 0.6.3
         version: 0.6.3
       discord-api-types:
-        specifier: 0.37.114
-        version: 0.37.114
+        specifier: 0.37.115
+        version: 0.37.115
       discord-giveaways:
         specifier: 6.0.1
         version: 6.0.1(discord.js@14.17.2)
@@ -333,8 +333,8 @@ importers:
         specifier: workspace:*
         version: link:../typescript-config
       discord-api-types:
-        specifier: 0.37.114
-        version: 0.37.114
+        specifier: 0.37.115
+        version: 0.37.115
       dotenv:
         specifier: 16.4.7
         version: 16.4.7
@@ -412,8 +412,8 @@ importers:
         specifier: 5.4.1
         version: 5.4.1
       discord-api-types:
-        specifier: 0.37.114
-        version: 0.37.114
+        specifier: 0.37.115
+        version: 0.37.115
       discord.js:
         specifier: 14.17.2
         version: 14.17.2
@@ -3481,6 +3481,9 @@ packages:
 
   discord-api-types@0.37.114:
     resolution: {integrity: sha512-9b9oOpktWSmE6ooToc46wfw151SHC/+idmnZvtwpEzW85BijUspQxj4W2uOmo+nZVTdEyb3fku58k+4rHKpdSQ==}
+
+  discord-api-types@0.37.115:
+    resolution: {integrity: sha512-ivPnJotSMrXW8HLjFu+0iCVs8zP6KSliMelhr7HgcB2ki1QzpORkb26m71l1pzSnnGfm7gb5n/VtRTtpw8kXFA==}
 
   discord-giveaways@6.0.1:
     resolution: {integrity: sha512-hs6Vtb62VdlV7NfB93Phaxc8FW0cH4N1Nkb0bXVZ2npgn73yGOFVmdp8bBP5gsC2ady9OAXXI8Gb66t1IddkFw==}
@@ -7600,7 +7603,7 @@ snapshots:
       '@discordjs/formatters': 0.6.0
       '@discordjs/util': 1.1.1
       '@sapphire/shapeshift': 4.0.0
-      discord-api-types: 0.37.114
+      discord-api-types: 0.37.115
       fast-deep-equal: 3.1.3
       ts-mixer: 6.0.4
       tslib: 2.8.1
@@ -7611,7 +7614,7 @@ snapshots:
 
   '@discordjs/formatters@0.6.0':
     dependencies:
-      discord-api-types: 0.37.114
+      discord-api-types: 0.37.115
 
   '@discordjs/rest@2.4.2':
     dependencies:
@@ -7635,7 +7638,7 @@ snapshots:
       '@sapphire/async-queue': 1.5.5
       '@types/ws': 8.5.13
       '@vladfrangu/async_event_emitter': 2.4.6
-      discord-api-types: 0.37.114
+      discord-api-types: 0.37.115
       tslib: 2.8.1
       ws: 8.18.0
     transitivePeerDependencies:
@@ -10186,6 +10189,8 @@ snapshots:
       path-type: 4.0.0
 
   discord-api-types@0.37.114: {}
+
+  discord-api-types@0.37.115: {}
 
   discord-giveaways@6.0.1(discord.js@14.17.2):
     dependencies:
