@@ -61,6 +61,8 @@ RUN pnpm turbo telemetry disable
 
 RUN pnpm run prisma:generate
 
+RUN pnpm run prisma:migrate
+
 # building libwebp
 RUN git clone -b "v$LIB_WEBP_VERSION" --single-branch --depth 1 https://chromium.googlesource.com/webm/libwebp && cd libwebp && \
   cmake -H. -Bbuild -GNinja -DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIBS=ON && \

@@ -44,11 +44,11 @@ services:
    - TOKEN=${TOKEN}
    - CLIENT_ID=${CLIENT_ID}
 
-   # - DATABASE_URL=postgres://postgres:${DATABASE_PASSWORD}@db:5432/majoexe
-   # - DATABASE_URL_UNPOOLED=postgres://postgres:${DATABASE_PASSWORD}@db:5432/majoexe
+   - DATABASE_URL=postgres://postgres:${DATABASE_PASSWORD}@db:5432/majoexe
+   - DATABASE_URL_UNPOOLED=postgres://postgres:${DATABASE_PASSWORD}@db:5432/majoexe
 
-   - DATABASE_URL=${DATABASE_URL}
-   - DATABASE_URL_UNPOOLED=${DATABASE_URL_UNPOOLED}
+   #- DATABASE_URL=${DATABASE_URL}
+   #- DATABASE_URL_UNPOOLED=${DATABASE_URL_UNPOOLED}
 
    - REDIS_URL=redis://default:${REDIS_PASSWORD}@redis:6379
 

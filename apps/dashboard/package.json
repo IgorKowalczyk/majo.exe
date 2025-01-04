@@ -6,7 +6,7 @@
     "start": "next start",
     "dev": "next dev --turbo",
     "build": "next build",
-    "docker:build": "cd ../.. & docker build -t majoexe/dashboard:latest -f ./apps/dashboard/Dockerfile .",
+    "docker:build": "cd ../../ && docker build --tag majoexe/dashboard:latest --file ./apps/dashboard/Dockerfile .",
     "deploy": "pnpm run build && pnpm run start",
     "format": "prettier . --write --cache --ignore-unknown",
     "format:check": "prettier . --check --cache",
