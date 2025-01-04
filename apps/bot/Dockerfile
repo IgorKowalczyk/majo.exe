@@ -1,4 +1,4 @@
-FROM debian:bookworm-slim
+FROM debian:bookworm-slim AS base
 
 ARG APP_PKG_NAME=@majoexe/bot
 
@@ -61,8 +61,6 @@ RUN pnpm turbo telemetry disable
 
 RUN pnpm run prisma:generate
 
-RUN pnpm run prisma:migrate
-
 # building libwebp
 RUN git clone -b "v$LIB_WEBP_VERSION" --single-branch --depth 1 https://chromium.googlesource.com/webm/libwebp && cd libwebp && \
   cmake -H. -Bbuild -GNinja -DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIBS=ON && \
@@ -100,6 +98,7 @@ RUN curl -fsL https://github.com/libvips/libvips/releases/download/v${LIB_VIPS_V
 # cleanup
 RUN apt-get remove --autoremove --purge -y bc gtk-doc-tools libde265-dev libfontconfig1-dev libfreetype6-dev libgif-dev libgirepository1.0-dev libsdl1.2-dev libtiff5-dev libtool libxml2-utils meson ninja-build swig yasm
 RUN apt-get -qq clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /var/cache/*
+
 
 WORKDIR /app/apps/bot
 ENTRYPOINT ["sh", "-c", "vips --version && pnpm run deploy"]

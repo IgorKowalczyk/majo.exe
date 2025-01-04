@@ -55,6 +55,7 @@
   "prisma:migrate": {
    "outputs": ["prisma/migrations/**"],
    "env": ["DATABASE_URL", "DATABASE_URL_UNPOOLED"],
+   "cache": false,
    "interactive": true
   },
   "prisma:format": {
