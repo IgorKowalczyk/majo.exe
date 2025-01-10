@@ -41,7 +41,7 @@
     "eslint": "9.17.0",
     "eslint-plugin-turbo": "2.3.3",
     "prettier": "3.4.2",
-    "typescript": "5.7.2",
+    "typescript": "5.7.3",
     "pre-commit": "1.2.2"
   },
   "engines": {
