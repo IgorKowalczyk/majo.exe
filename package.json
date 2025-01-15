@@ -35,7 +35,7 @@
     "turbo": "2.3.3"
   },
   "devDependencies": {
-    "@igorkowalczyk/eslint-config": "3.0.0-beta.16",
+    "@igorkowalczyk/eslint-config": "3.0.2",
     "@igorkowalczyk/prettier-config": "3.0.0-beta.16",
     "@types/node": "22.10.6",
     "eslint": "9.18.0",
