@@ -44,7 +44,7 @@
   "devDependencies": {
     "@types/figlet": "1.7.0",
     "@types/jsdom": "21.1.7",
-    "@types/ms": "0.7.34",
+    "@types/ms": "2.1.0",
     "@types/qrcode": "1.5.5",
     "@types/validator": "13.12.2",
     "node-addon-api": "8.3.0",
