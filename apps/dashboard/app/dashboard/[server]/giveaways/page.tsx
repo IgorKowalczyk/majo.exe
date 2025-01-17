@@ -1,5 +1,5 @@
 import prismaClient from "@majoexe/database";
-import { getGuildFromMemberGuilds, getGuild } from "@majoexe/util/functions/guild";
+import { getGuildFromMemberGuilds, getGuild, getGuildChannels } from "@majoexe/util/functions/guild";
 import type { GiveawayData } from "discord-giveaways";
 import { getSession } from "lib/session";
 import { redirect } from "next/navigation";
@@ -9,6 +9,7 @@ import { Block } from "@/components/ui/Block";
 import Header, { headerVariants } from "@/components/ui/Headers";
 import { Icons, iconVariants } from "@/components/ui/Icons";
 import { cn } from "@/lib/utils";
+import { ChannelType } from "discord-api-types/v10";
 
 export const metadata = {
  title: "Giveaways",
@@ -41,13 +42,11 @@ export default async function GiveawaysPage(props: { params: Promise<{ server: s
    guildId: serverDownload.id,
   },
   include: {
-   giveaway: {
-    orderBy: {
-     createdAt: "desc",
-    },
-   },
+   giveaway: true,
   },
  });
+
+ console.log(guild);
 
  const data = await Promise.all(
   guild.giveaway.map(async (giveaway) => {
@@ -71,13 +70,28 @@ export default async function GiveawaysPage(props: { params: Promise<{ server: s
 
    if (startedBy && startedBy.avatar) startedBy.avatar = `https://cdn.discordapp.com/avatars/${hostedBy}/${startedBy.avatar}.${startedBy.avatar.startsWith("a_") ? "gif" : "png"}` || "https://cdn.discordapp.com/embed/avatars/0.png";
 
+   let channel;
+   if (data.channelId) {
+    const allChannels = await getGuildChannels(serverDownload.id, [ChannelType.GuildText]);
+    if (allChannels) {
+     channel = allChannels.find((x) => x.id === data.channelId);
+    }
+   }
+
    return {
     id: giveaway.id,
     prize: data.prize
      .replace(/<a?:\w+:\d+>/g, "")
      .replace("Giveaway: ", "")
      .trim(),
-    winners: data.winnerCount,
+    winnerCount: data.winnerCount,
+    winners: data.winnerIds,
+    reaction: data.reaction,
+    channel: {
+     id: data.channelId,
+     name: channel?.name || "Unknown",
+     link: channel ? `https://discord.com/channels/${serverDownload.id}/${channel.id}/${data.messageId}` : null,
+    },
     time: {
      startedAt: new Date(data.startAt),
      ended: new Date(data.endAt) < new Date() || data.ended,
@@ -88,13 +102,17 @@ export default async function GiveawaysPage(props: { params: Promise<{ server: s
   })
  ).then((data) => data.filter((x) => x !== null));
 
+ console.log(data);
+
  return (
   <>
    <Header className={cn(headerVariants({ variant: "h1", margin: "normal" }))}>
     <Icons.Gift className={iconVariants({ variant: "extraLarge" })} />
     Giveaways
    </Header>
-   <p className="mb-4 text-left text-base md:text-lg">Create and manage giveaways for your server, let your members win some cool prizes</p>
+   <p className="mb-4 text-left text-base md:text-lg">
+    View all the giveaways for your server. You can create a giveaway by using <code>/giveaway</code> command in chat.
+   </p>
    <Block className="mt-4 flex w-full overflow-auto">
     {data.length > 0 ? (
      <Giveaways data={data} />

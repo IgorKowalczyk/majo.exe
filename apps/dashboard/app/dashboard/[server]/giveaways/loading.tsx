@@ -10,7 +10,9 @@ export default function Loading() {
     <Icons.Gift className={iconVariants({ variant: "extraLarge" })} />
     Giveaways
    </Header>
-   <p className="mb-4 text-left text-base md:text-lg">Create and manage giveaways for your server, let your members win some cool prizes</p>
+   <p className="mb-4 text-left text-base md:text-lg">
+    View all the giveaways for your server. You can create a giveaway by using <code>/giveaway</code> command in chat.
+   </p>
    <Skeleton className="h-64 w-full" />
   </>
  );

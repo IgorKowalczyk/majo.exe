@@ -63,7 +63,7 @@ export const SideNavigation: React.FC<SideNavigationProps> = ({ className, serve
      </SideNavLink>
      <SideNavLink href={`/dashboard/${server}/giveaways`}>
       <Icons.Gift className={iconVariants({ variant: "large" })} />
-      Giveaways<Badge className="-mt-3">beta</Badge>
+      Giveaways
      </SideNavLink>
     </div>
 

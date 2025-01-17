@@ -29,7 +29,7 @@ export async function StartGiveaway(client: Majobot, interaction: ChatInputComma
 
   try {
    await client.giveawaysManager.start(channel, {
-    duration: parseInt(ms(parseInt(time))),
+    duration: ms(time),
     extraData: {
      guildId: interaction.guild.id,
      channelId: channel.id,

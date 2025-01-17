@@ -13,6 +13,7 @@ export default function giveaway(client: Majobot) {
   }
 
   async saveGiveaway(messageId: Snowflake, giveawayData: GiveawayData) {
+   console.log(giveawayData);
    await prismaClient.giveaways.create({
     data: {
      messageId,

@@ -9,11 +9,20 @@ import { Icons, iconVariants } from "@/components/ui/Icons";
 import Image from "@/components/ui/Image";
 import { Table, TableColumnHeader } from "@/components/ui/Table";
 import { Tooltip } from "@/components/ui/Tooltip";
+import { GiveawayData } from "discord-giveaways";
+import { Snowflake } from "discord-api-types/globals";
 
 interface Giveaway {
  id: number;
  prize: string;
- winners: number;
+ winnerCount: GiveawayData["winnerCount"];
+ winners: GiveawayData["winnerIds"];
+ reaction: GiveawayData["reaction"];
+ channel: {
+  id: Snowflake;
+  name: string;
+  link: string | null;
+ };
  time: {
   startedAt: Date;
   ended: boolean;
@@ -25,14 +34,22 @@ interface Giveaway {
 export function Giveaways({ data = [] }: { data: Giveaway[] }) {
  const columns: ColumnDef<Giveaway>[] = [
   {
-   header: ({ column }) => <TableColumnHeader column={column} title="Prize" />,
+   header: ({ column }) => <TableColumnHeader column={column} title="Prize to Win" />,
    accessorKey: "prize",
    cell: ({ row }) => row.getValue("prize") || "Unknown",
   },
   {
    header: ({ column }) => <TableColumnHeader column={column} title="Winners" />,
-   accessorKey: "winners",
-   cell: ({ row }) => row.getValue("winners") || "1",
+   accessorKey: "winnerCount",
+   cell: ({ row }) => {
+    const value = row.original;
+
+    return (
+     <>
+      {value.winnerCount} winner{value.winnerCount > 1 ? "s" : ""}
+     </>
+    );
+   },
   },
   {
    header: ({ column }) => <TableColumnHeader column={column} title="Time" />,
@@ -43,7 +60,7 @@ export function Giveaways({ data = [] }: { data: Giveaway[] }) {
     return (
      <>
       {value.ended ? (
-       <Tooltip content={`Ended ${formatDate(value.endedAt)} (${formatDuration(new Date(value.endedAt).getTime() - new Date(value.startedAt).getTime())})`}>
+       <Tooltip content={`Ended ${formatDate(value.endedAt)} (${formatDuration(new Date(value.endedAt).getTime() - new Date(value.startedAt).getTime())} ago)`}>
         <div className="flex w-fit cursor-help items-center">
          <Icons.Timer className={iconVariants({ variant: "button", className: "text-red-400" })} />
          <span className="text-red-400">Ended</span>
@@ -102,7 +119,7 @@ export function Giveaways({ data = [] }: { data: Giveaway[] }) {
   },
   {
    header: ({ column }) => <TableColumnHeader column={column} title="Started" />,
-   accessorKey: "time-2",
+   accessorKey: "started",
    cell: ({ row }) => (
     <Tooltip content={formatDate(row.original.time.startedAt)}>
      <span className="cursor-help">{formatDuration(Date.now() - new Date(row.original.time.startedAt).getTime())} ago</span>
@@ -111,16 +128,32 @@ export function Giveaways({ data = [] }: { data: Giveaway[] }) {
   },
   {
    header: "Actions",
-   cell: () => (
-    <Tooltip content="Editing giveaways is not yet supported">
-     <Button variant="secondary" className="!w-fit" disabled>
-      <Icons.Edit className={iconVariants({ variant: "button" })} />
-      Edit
-     </Button>
-    </Tooltip>
-   ),
+   cell: ({ row }) => {
+    const value = row.original;
+
+    return (
+     <div className="flex space-x-4">
+      {/* <Tooltip content="Editing giveaways is not yet supported">
+       <Button variant="secondary" className="!w-fit" disabled>
+        <Icons.Edit className={iconVariants({ variant: "button" })} />
+        Edit
+       </Button>
+      </Tooltip> */}
+      {value.channel && value.channel.link ? (
+       <Link href={value.channel.link}>
+        <Button variant="primary" className="!w-fit">
+         <Icons.Hash className={iconVariants({ variant: "button" })} />
+         View on Discord
+        </Button>
+       </Link>
+      ) : (
+       <></>
+      )}
+     </div>
+    );
+   },
   },
  ];
 
- return <Table columns={columns} data={data} sortBy={[{ id: "time", desc: true }]} />;
+ return <Table columns={columns} data={data} sortBy={[{ id: "time", desc: false }]} />;
 }
