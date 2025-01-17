@@ -116,6 +116,11 @@ export default async function AutomodPage(props: { params: Promise<{ server: str
     <p className="mb-4 text-left">
      <span>Automatically delete all messages containing bad words or phrases.</span>
     </p>
+    <p className="mb-4 text-left font-bold">
+     <span>
+      Enabling this rule here is not yet supported. Please use the <code>/automod anti-bad-words enable</code> command in chat.
+     </span>
+    </p>
    </Block>
   </>
  );

@@ -147,7 +147,12 @@ export function Giveaways({ data = [] }: { data: Giveaway[] }) {
         </Button>
        </Link>
       ) : (
-       <></>
+       <Tooltip content="The channel or message was deleted or is not accessible">
+        <Button variant="secondary" className="!w-fit" disabled>
+         <Icons.Hash className={iconVariants({ variant: "button" })} />
+         View on Discord
+        </Button>
+       </Tooltip>
       )}
      </div>
     );
