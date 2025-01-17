@@ -6,6 +6,7 @@ import type { Majobot } from "@/index";
 export async function messageUpdate(client: Majobot, oldMessage: Message, newMessage: Message) {
  try {
   if (!oldMessage.guild || !newMessage.guild) return;
+  if (oldMessage.embeds.length || newMessage.embeds.length) return;
   const settings = await getGuildLogSettings(newMessage.guild.id, GuildLogType.MessageUpdate);
   if (!settings?.enabled || !settings.channelId) return;
   const discordGuild = newMessage.guild;
