@@ -30,7 +30,7 @@
     "@radix-ui/react-tooltip": "1.1.6",
     "@tanstack/react-table": "8.20.6",
     "@tippyjs/react": "4.2.6",
-    "@types/ms": "0.7.34",
+    "@types/ms": "2.1.0",
     "@types/react-infinite-scroller": "1.2.5",
     "@vercel/analytics": "1.4.1",
     "@vercel/speed-insights": "1.1.0",
