@@ -1,5 +1,6 @@
 import prismaClient from "@majoexe/database";
 import { getGuildFromMemberGuilds, getGuild, getGuildChannels } from "@majoexe/util/functions/guild";
+import { ChannelType } from "discord-api-types/v10";
 import type { GiveawayData } from "discord-giveaways";
 import { getSession } from "lib/session";
 import { redirect } from "next/navigation";
@@ -9,7 +10,6 @@ import { Block } from "@/components/ui/Block";
 import Header, { headerVariants } from "@/components/ui/Headers";
 import { Icons, iconVariants } from "@/components/ui/Icons";
 import { cn } from "@/lib/utils";
-import { ChannelType } from "discord-api-types/v10";
 
 export const metadata = {
  title: "Giveaways",

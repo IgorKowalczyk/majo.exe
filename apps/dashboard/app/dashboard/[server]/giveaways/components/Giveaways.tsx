@@ -3,14 +3,14 @@
 import type { User } from "@majoexe/database/types";
 import { formatDate, formatDuration } from "@majoexe/util/functions/util";
 import type { ColumnDef } from "@tanstack/react-table";
+import { Snowflake } from "discord-api-types/globals";
+import { GiveawayData } from "discord-giveaways";
 import Link from "next/link";
 import { Button } from "@/components/ui/Buttons";
 import { Icons, iconVariants } from "@/components/ui/Icons";
 import Image from "@/components/ui/Image";
 import { Table, TableColumnHeader } from "@/components/ui/Table";
 import { Tooltip } from "@/components/ui/Tooltip";
-import { GiveawayData } from "discord-giveaways";
-import { Snowflake } from "discord-api-types/globals";
 
 interface Giveaway {
  id: number;

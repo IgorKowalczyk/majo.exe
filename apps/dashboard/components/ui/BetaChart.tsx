@@ -91,12 +91,12 @@ const ChartContainer = React.forwardRef<
  const chartId = `chart-${id || uniqueId.replace(/:/g, "")}`;
 
  return (
-  <ChartContext.Provider value={{ config }}>
+  <ChartContext value={{ config }}>
    <div data-chart={chartId} ref={ref} className={clsx("[&_.recharts-cartesian-axis-tick_text]:fill-text flex aspect-video justify-center [&_.recharts-cartesian-grid_line[stroke='#ccc']]:stroke-neutral-800 [&_.recharts-curve.recharts-tooltip-cursor]:stroke-neutral-800 [&_.recharts-dot[stroke='#fff']]:stroke-transparent [&_.recharts-layer]:outline-none [&_.recharts-polar-grid_[stroke='#ccc']]:stroke-neutral-800 [&_.recharts-radial-bar-background-sector]:fill-background-secondary [&_.recharts-rectangle.recharts-tooltip-cursor]:fill-background-secondary [&_.recharts-reference-line_[stroke='#ccc']]:stroke-neutral-800 [&_.recharts-sector[stroke='#fff']]:stroke-transparent [&_.recharts-sector]:outline-none [&_.recharts-surface]:outline-none", className)} {...props}>
     <ChartStyle id={chartId} config={config} />
     <RechartsPrimitive.ResponsiveContainer>{children}</RechartsPrimitive.ResponsiveContainer>
    </div>
-  </ChartContext.Provider>
+  </ChartContext>
  );
 });
 ChartContainer.displayName = "Chart";

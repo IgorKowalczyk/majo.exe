@@ -9,8 +9,8 @@ export const VisibilityProvider = forwardRef<HTMLDivElement, { children: React.R
  const toggleSideNav = () => setSideNavVisible(!sideNavVisible);
 
  return (
-  <VisibilityContext.Provider value={{ sideNavVisible, toggleSideNav }}>
+  <VisibilityContext value={{ sideNavVisible, toggleSideNav }}>
    <div ref={ref}>{children}</div>
-  </VisibilityContext.Provider>
+  </VisibilityContext>
  );
 });
