@@ -57,28 +57,20 @@ export default {
    // Sanitize and format server IP
    const sanitizedIp = serverIp.includes(":") ? serverIp : `${serverIp}:25565`;
 
-   const apiUrl = bedrock
-    ? `https://api.mcsrvstat.us/bedrock/2/${serverIp}`
-    : `https://api.mcsrvstat.us/2/${sanitizedIp}`;
+   const apiUrl = bedrock ? `https://api.mcsrvstat.us/bedrock/2/${serverIp}` : `https://api.mcsrvstat.us/2/${sanitizedIp}`;
 
    const request = await fetch(apiUrl);
 
    if (!request.ok) {
     console.error(`API Request Failed: ${apiUrl}`);
-    return client.errorMessages.createSlashError(
-     interaction,
-     "❌ We couldn't get the server info, please try again later"
-    );
+    return client.errorMessages.createSlashError(interaction, "❌ We couldn't get the server info, please try again later");
    }
 
    const json = (await request.json()) as MinecraftServer;
 
    if (json.error || (!json.ip && !json.online)) {
     console.error(`API Response Error for ${serverIp}:`, json);
-    return client.errorMessages.createSlashError(
-     interaction,
-     "❌ We couldn't get the server info, please ensure the IP/domain is correct"
-    );
+    return client.errorMessages.createSlashError(interaction, "❌ We couldn't get the server info, please ensure the IP/domain is correct");
    }
 
    const embed = new EmbedBuilder()
@@ -101,13 +93,13 @@ export default {
    if (json.online) {
     fields.push({
      name: `${client.config.emojis.status_online} Status`,
-     value: `> \`Online\``,
+     value: "> \`Online\`",
      inline: true,
     });
    } else {
     fields.push({
      name: `${client.config.emojis.status_dnd} Status`,
-     value: `> \`Offline\``,
+     value: "> \`Offline\`",
      inline: true,
     });
    }
@@ -137,12 +129,7 @@ export default {
    }
 
    if (json.motd && json.motd.raw[0]) {
-    embed.setDescription(
-     ">>> " +
-      json.motd.raw[0]
-       .replace(/§[0-9A-FK-OR]/gi, "")
-       .replaceAll("`", "")
-    );
+    embed.setDescription(">>> " + json.motd.raw[0].replace(/§[0-9A-FK-OR]/gi, "").replaceAll("`", ""));
    }
 
    if (fields.length < 1) {

@@ -13,6 +13,7 @@ export default [
   rules: {
    "typescript/no-explicit-any": "off",
    "@eslint-react/hooks-extra/no-direct-set-state-in-use-effect": "off",
+   "@eslint-react/no-forward-ref": "off",
   },
  },
 ];

@@ -35,6 +35,7 @@ export const UpdateLogs = React.forwardRef<HTMLDivElement, UpdateLogsProps>(({ s
  const [resetKey, setResetKey] = useState(0);
  const router = useRouter();
 
+ /* eslint-disable-next-line no-alert */
  useNavigationGuard({ enabled: unsavedChanges, confirm: () => window.confirm("You have unsaved changes. Are you sure you want to leave?") });
 
  useEffect(() => {
