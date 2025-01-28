@@ -68,7 +68,7 @@
     "@prisma/nextjs-monorepo-workaround-plugin": "6.3.0",
     "@tailwindcss/typography": "0.5.16",
     "@types/mdx": "2.0.13",
-    "@types/react": "19.0.7",
+    "@types/react": "19.0.8",
     "@types/react-dom": "19.0.3",
     "autoprefixer": "10.4.20",
     "postcss": "8.5.1",
