@@ -360,8 +360,8 @@ importers:
         specifier: 5.4.1
         version: 5.4.1
       ioredis:
-        specifier: 5.4.2
-        version: 5.4.2
+        specifier: 5.5.0
+        version: 5.5.0
       prisma:
         specifier: 6.3.1
         version: 6.3.1(typescript@5.7.3)
@@ -4400,8 +4400,8 @@ packages:
     resolution: {integrity: sha512-1DKMMzlIHM02eBBVOFQ1+AolGjs6+xEcM4PDL7NqOS6szq7H9jSaEkIUH6/a5Hl241LzW6JLSiAbNvTQjUupUA==}
     engines: {node: '>=12.22.0'}
 
-  ioredis@5.4.2:
-    resolution: {integrity: sha512-0SZXGNGZ+WzISQ67QDyZ2x0+wVxjjUndtD8oSeik/4ajifeiRufed8fCb8QW8VMyi4MXcS+UO1k/0NGhvq1PAg==}
+  ioredis@5.5.0:
+    resolution: {integrity: sha512-7CutT89g23FfSa8MDoIFs2GYYa0PaNiW/OrT+nRyjRXHDZd17HmIgy+reOQ/yhh72NznNjGuS8kbCAcA4Ro4mw==}
     engines: {node: '>=12.22.0'}
 
   ip-address@9.0.5:
@@ -11777,7 +11777,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  ioredis@5.4.2:
+  ioredis@5.5.0:
     dependencies:
       '@ioredis/commands': 1.2.0
       cluster-key-slot: 1.1.2
