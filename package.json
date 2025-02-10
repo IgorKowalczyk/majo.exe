@@ -32,14 +32,14 @@
   "dependencies": {
     "dotenv-cli": "8.0.0",
     "tsx": "4.19.2",
-    "turbo": "2.4.0"
+    "turbo": "2.4.1"
   },
   "devDependencies": {
     "@igorkowalczyk/eslint-config": "3.0.2",
     "@igorkowalczyk/prettier-config": "3.0.2",
     "@types/node": "22.13.1",
     "eslint": "9.20.0",
-    "eslint-plugin-turbo": "2.4.0",
+    "eslint-plugin-turbo": "2.4.1",
     "prettier": "3.5.0",
     "typescript": "5.7.3",
     "pre-commit": "1.2.2"
