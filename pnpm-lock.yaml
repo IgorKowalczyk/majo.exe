@@ -67,8 +67,8 @@ importers:
         specifier: 0.1.67
         version: 0.1.67
       '@observablehq/plot':
-        specifier: 0.6.16
-        version: 0.6.16
+        specifier: 0.6.17
+        version: 0.6.17
       '@top-gg/sdk':
         specifier: 3.1.6
         version: 3.1.6
@@ -1843,8 +1843,8 @@ packages:
     resolution: {integrity: sha512-/xGlezI6xfGO9NwuJlnwz/K14qD1kCSAGtacBHnGzeAIuJGazcp45KP5NuyARXoKb7cwulAGWVsbeSxdG/cb0Q==}
     engines: {node: ^18.17.0 || >=20.5.0}
 
-  '@observablehq/plot@0.6.16':
-    resolution: {integrity: sha512-LRi9Rn93yUx90MIo2Md7+vazxO3Wiat14but2ttCER0xVS+jnfoUjuCGoz6H7bz/lgI9CFcW0HWlvWjMFjAv8g==}
+  '@observablehq/plot@0.6.17':
+    resolution: {integrity: sha512-/qaXP/7mc4MUS0s4cPPFASDRjtsWp85/TbfsciqDgU1HwYixbSbbytNuInD8AcTYC3xaxACgVX06agdfQy9W+g==}
     engines: {node: '>=12'}
 
   '@odiffey/discord-markdown@3.3.0':
@@ -8595,7 +8595,7 @@ snapshots:
     dependencies:
       semver: 7.7.1
 
-  '@observablehq/plot@0.6.16':
+  '@observablehq/plot@0.6.17':
     dependencies:
       d3: 7.9.0
       interval-tree-1d: 1.0.4
