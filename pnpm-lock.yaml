@@ -248,8 +248,8 @@ importers:
         specifier: 0.1.2
         version: 0.1.2(next@15.1.7(@babel/core@7.26.7)(@playwright/test@1.50.1)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react@19.0.0)
       next-nprogress-bar:
-        specifier: 2.4.5
-        version: 2.4.5
+        specifier: 2.4.7
+        version: 2.4.7
       react:
         specifier: 19.0.0
         version: 19.0.0
@@ -5244,8 +5244,8 @@ packages:
       next: ^14 || ^15
       react: ^18.3.1
 
-  next-nprogress-bar@2.4.5:
-    resolution: {integrity: sha512-VkPMp+Cnazu0jpABVFVRTnUxGwFblHVxmBiJoVj4xl5tRw+K6jKqP0GNxACeB1ub0RfxKsVGlZ0HNqkwYjJK+Q==}
+  next-nprogress-bar@2.4.7:
+    resolution: {integrity: sha512-OeveNQYFBhQhZ+RgrDnvHNUEQfHCmipymmD4AfAVE9pFV4jeWi7/nNK5f0lIk7ODRrtjyyr/n2YpkRbs5kUoMg==}
 
   next@15.1.7:
     resolution: {integrity: sha512-GNeINPGS9c6OZKCvKypbL8GTsT5GhWPp4DM0fzkXJuXMilOO2EeFxuAY6JZbtk6XIl6Ws10ag3xRINDjSO5+wg==}
@@ -12961,7 +12961,7 @@ snapshots:
       next: 15.1.7(@babel/core@7.26.7)(@playwright/test@1.50.1)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
       react: 19.0.0
 
-  next-nprogress-bar@2.4.5:
+  next-nprogress-bar@2.4.7:
     dependencies:
       nprogress-v2: 1.0.4
 
