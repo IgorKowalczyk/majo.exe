@@ -58,7 +58,7 @@
     "recharts": "2.15.1",
     "server-only": "0.0.1",
     "sharp": "0.33.5",
-    "sonner": "1.7.4",
+    "sonner": "2.0.0",
     "tailwindcss-animate": "1.0.7",
     "validator": "13.12.0"
   },
