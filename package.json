@@ -31,7 +31,7 @@
   },
   "dependencies": {
     "dotenv-cli": "8.0.0",
-    "tsx": "4.19.2",
+    "tsx": "4.19.3",
     "turbo": "2.4.2"
   },
   "devDependencies": {
