@@ -140,8 +140,8 @@ importers:
         specifier: 13.12.2
         version: 13.12.2
       node-addon-api:
-        specifier: 8.3.0
-        version: 8.3.0
+        specifier: 8.3.1
+        version: 8.3.1
       node-gyp:
         specifier: 11.1.0
         version: 11.1.0
@@ -5279,8 +5279,8 @@ packages:
       sass:
         optional: true
 
-  node-addon-api@8.3.0:
-    resolution: {integrity: sha512-8VOpLHFrOQlAH+qA0ZzuGRlALRA6/LVh8QJldbrC4DY0hXoMP0l4Acq8TzFC018HztWiRqyCEj2aTWY2UvnJUg==}
+  node-addon-api@8.3.1:
+    resolution: {integrity: sha512-lytcDEdxKjGJPTLEfW4mYMigRezMlyJY8W4wxJK8zE533Jlb8L8dRuObJFWg2P+AuOIxoCgKF+2Oq4d4Zd0OUA==}
     engines: {node: ^18 || ^20 || >= 21}
 
   node-dir@0.1.17:
@@ -13025,7 +13025,7 @@ snapshots:
       - '@babel/core'
       - babel-plugin-macros
 
-  node-addon-api@8.3.0: {}
+  node-addon-api@8.3.1: {}
 
   node-dir@0.1.17:
     dependencies:
