@@ -31,7 +31,7 @@
     "ioredis": "5.5.0",
     "prisma": "6.4.1",
     "prisma-redis-middleware": "4.8.0",
-    "ws": "8.18.0"
+    "ws": "8.18.1"
   },
   "devDependencies": {
     "@types/ws": "8.5.14",
