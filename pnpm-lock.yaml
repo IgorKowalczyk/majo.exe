@@ -233,8 +233,8 @@ importers:
         specifier: 5.5.9
         version: 5.5.9
       lucide-react:
-        specifier: 0.477.0
-        version: 0.477.0(react@19.0.0)
+        specifier: 0.478.0
+        version: 0.478.0(react@19.0.0)
       mini-svg-data-uri:
         specifier: 1.4.4
         version: 1.4.4
@@ -4883,8 +4883,8 @@ packages:
     resolution: {integrity: sha512-Jo6dJ04CmSjuznwJSS3pUeWmd/H0ffTlkXXgwZi+eq1UCmqQwCh+eLsYOYCwY991i2Fah4h1BEMCx4qThGbsiA==}
     engines: {node: '>=10'}
 
-  lucide-react@0.477.0:
-    resolution: {integrity: sha512-yCf7aYxerFZAbd8jHJxjwe1j7jEMPptjnaOqdYeirFnEy85cNR3/L+o0I875CYFYya+eEVzZSbNuRk8BZPDpVw==}
+  lucide-react@0.478.0:
+    resolution: {integrity: sha512-aO8e1ZQEjh/0LcEjm08VyBAPtRSfGG/rJEUTph6/Bfi4GrosZKOawUoc0+JBGSslM04bRWaOTkCCzq+pVrUCnQ==}
     peerDependencies:
       react: ^16.5.1 || ^17.0.0 || ^18.0.0 || ^19.0.0
 
@@ -12340,7 +12340,7 @@ snapshots:
     dependencies:
       yallist: 4.0.0
 
-  lucide-react@0.477.0(react@19.0.0):
+  lucide-react@0.478.0(react@19.0.0):
     dependencies:
       react: 19.0.0
 
