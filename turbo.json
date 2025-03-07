@@ -1,6 +1,7 @@
 {
  "$schema": "https://turborepo.org/schema.json",
  "globalDependencies": [".env", ".prettierignore", "prettier.config.js", "eslint.config.ts"],
+ "ui": "tui",
  "tasks": {
   "dev": {
    "dependsOn": ["prisma:generate"],
