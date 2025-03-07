@@ -35,19 +35,22 @@
     "turbo": "2.4.4"
   },
   "devDependencies": {
-    "@igorkowalczyk/eslint-config": "3.0.2",
-    "@igorkowalczyk/prettier-config": "3.0.2",
+    "@igorkowalczyk/eslint-config": "3.0.7",
+    "@igorkowalczyk/prettier-config": "3.0.7",
     "@types/node": "22.13.9",
     "eslint": "9.21.0",
     "eslint-plugin-turbo": "2.4.4",
+    "pre-commit": "1.2.2",
     "prettier": "3.5.3",
-    "typescript": "5.8.2",
-    "pre-commit": "1.2.2"
+    "typescript": "5.8.2"
   },
   "engines": {
     "node": ">=20"
   },
-  "pre-commit": ["lint","format"],
+  "pre-commit": [
+    "lint",
+    "format"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/IgorKowalczyk/majo.exe.git"

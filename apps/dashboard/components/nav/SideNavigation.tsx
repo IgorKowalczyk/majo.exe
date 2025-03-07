@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
-import React, { useContext } from "react";
+import React, { use } from "react";
 import { VisibilityContext } from "@/components/nav/VisibilityContext";
 import { Badge } from "@/components/ui/Badge";
 import { Button, buttonVariants } from "@/components/ui/Buttons";
@@ -25,7 +25,7 @@ export interface SideNavigationProps extends React.HTMLAttributes<HTMLDivElement
 }
 
 export const SideNavigation: React.FC<SideNavigationProps> = ({ className, server, ...props }) => {
- const { sideNavVisible, toggleSideNav } = useContext(VisibilityContext);
+ const { sideNavVisible, toggleSideNav } = use(VisibilityContext);
  const router = useRouter();
 
  return (

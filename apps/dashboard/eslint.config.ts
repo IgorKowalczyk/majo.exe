@@ -1,4 +1,5 @@
 import eslintConfig from "@igorkowalczyk/eslint-config";
+import type { Linter } from "eslint";
 
 export default [
  // prettier
@@ -7,7 +8,7 @@ export default [
  ...eslintConfig.next,
  ...eslintConfig.typescript,
  ...eslintConfig.node,
- ...eslintConfig.tailwindcss,
+ ...eslintConfig.prettier,
  {
   name: "Override",
   rules: {
@@ -16,4 +17,4 @@ export default [
    "@eslint-react/no-forward-ref": "off",
   },
  },
-];
+] satisfies Linter.Config[];

@@ -1,17 +1,15 @@
 import eslintConfig from "@igorkowalczyk/eslint-config";
+import type { Linter } from "eslint";
 
 export default [
  // prettier
  ...eslintConfig.base,
- //...eslintConfig.react,
- //...eslintConfig.next,
  ...eslintConfig.node,
  ...eslintConfig.typescript,
- //...eslintConfig.tailwindcss,
  {
   name: "Override",
   rules: {
    "require-await": "off",
   },
  },
-];
+] satisfies Linter.Config[];
