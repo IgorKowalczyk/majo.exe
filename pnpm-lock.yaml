@@ -182,7 +182,7 @@ importers:
         specifier: 1.51.0
         version: 1.51.0
       '@radix-ui/react-accordion':
-        specifier: ^1.2.3
+        specifier: 1.2.3
         version: 1.2.3(@types/react-dom@19.0.4(@types/react@19.0.10))(@types/react@19.0.10)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
       '@radix-ui/react-tooltip':
         specifier: 1.1.8
