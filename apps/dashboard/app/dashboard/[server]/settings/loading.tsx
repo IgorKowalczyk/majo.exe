@@ -33,7 +33,6 @@ export default function Loading() {
     <div className="flex flex-wrap items-center justify-start gap-2">
      {Array.from({ length: 8 }).map((_, i) => (
       <Skeleton
-       // eslint-disable-next-line @eslint-react/no-array-index-key
        key={`role-${i}`}
        className="h-[42px] min-w-[150px]"
        style={{

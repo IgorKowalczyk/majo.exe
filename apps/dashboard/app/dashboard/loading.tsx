@@ -14,7 +14,6 @@ export default function Loading() {
     <p className="mb-4 text-center text-base text-white/50 md:text-xl">Select a server to manage, or add the bot to a new server.</p>
     <div className="flex flex-row flex-wrap justify-center gap-4 sm:flex-col">
      {[...Array(10)].map((_, i) => (
-      // eslint-disable-next-line @eslint-react/no-array-index-key
       <div key={`skeleton-${i}`}>
        <div className="hidden flex-row items-center justify-start gap-4 sm:flex">
         <Skeleton className="size-16 shrink-0 rounded-full" />

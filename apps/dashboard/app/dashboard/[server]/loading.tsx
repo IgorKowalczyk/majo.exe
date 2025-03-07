@@ -110,7 +110,6 @@ export default function Loading() {
       </Header>
       <div className="flex flex-row flex-wrap gap-4">
        {Array.from({ length: 25 }).map((_, i) => (
-        // eslint-disable-next-line @eslint-react/no-array-index-key
         <Skeleton key={`emoji-${i}`} className="size-8 shrink-0 rounded-lg" />
        ))}
       </div>
@@ -123,7 +122,6 @@ export default function Loading() {
       </Header>
       <div className="flex flex-row flex-wrap gap-4">
        {Array.from({ length: 10 }).map((_, i) => (
-        // eslint-disable-next-line @eslint-react/no-array-index-key
         <Skeleton key={`sticker-${i}`} className="size-24 shrink-0 rounded-lg" />
        ))}
       </div>

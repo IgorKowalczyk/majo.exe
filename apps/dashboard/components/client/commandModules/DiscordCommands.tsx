@@ -43,7 +43,6 @@ export const DiscordCommands = React.forwardRef<HTMLDivElement, DiscordCommandsP
     <div className="mt-8 flex flex-wrap gap-2">
      {Array.from({ length: 8 }).map((_, i) => (
       <Skeleton
-       // eslint-disable-next-line @eslint-react/no-array-index-key
        key={`command-skeleton-${i}`}
        className="h-[42px]"
        style={{

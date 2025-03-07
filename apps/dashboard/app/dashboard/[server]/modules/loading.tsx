@@ -23,7 +23,6 @@ export default function Loading() {
     <div className="flex flex-wrap items-stretch justify-start gap-8">
      {Array.from({ length: 8 }).map((_, i) => (
       <Skeleton
-       // eslint-disable-next-line @eslint-react/no-array-index-key
        key={`category-keleton-${i}`}
        style={{
         width: `${Math.floor(Math.random() * (500 - 200 + 1) + 200)}px !important`,
@@ -42,7 +41,6 @@ export default function Loading() {
 
     <div className="flex flex-wrap items-stretch justify-start gap-8">
      {Array.from({ length: 8 }).map((_, i) => (
-      // eslint-disable-next-line @eslint-react/no-array-index-key
       <Skeleton key={`command-skeleton-${i}`} className="h-24 w-full" />
      ))}
     </div>
