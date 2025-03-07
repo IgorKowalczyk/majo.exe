@@ -373,8 +373,8 @@ importers:
         version: 8.18.1
     devDependencies:
       '@types/ws':
-        specifier: 8.5.14
-        version: 8.5.14
+        specifier: 8.18.0
+        version: 8.18.0
       prettier-plugin-prisma:
         specifier: 5.0.0
         version: 5.0.0(prettier@3.5.3)
@@ -2550,9 +2550,6 @@ packages:
   '@types/node@22.10.1':
     resolution: {integrity: sha512-qKgsUwfHZV2WCWLAnVP1JqnpE6Im6h3Y0+fYgMTasNQ7V++CBX5OT1as0g0f+OyubbFqhf6XVNIsmN4IIhEgGQ==}
 
-  '@types/node@22.12.0':
-    resolution: {integrity: sha512-Fll2FZ1riMjNmlmJOdAyY5pUbkftXslB5DgEzlIuNaiWhXd00FhWxVC/r4yV/4wBb9JfImTu+jiSvXTkJ7F/gA==}
-
   '@types/node@22.13.9':
     resolution: {integrity: sha512-acBjXdRJ3A6Pb3tqnw9HZmyR3Fiol3aGxRCK1x3d+6CDAMjl7I649wpSd+yNURCjbOUGu9tqtLKnTGxmK6CyGw==}
 
@@ -2599,8 +2596,8 @@ packages:
   '@types/webxr@0.5.21':
     resolution: {integrity: sha512-geZIAtLzjGmgY2JUi6VxXdCrTb99A7yP49lxLr2Nm/uIK0PkkxcEi4OGhoGDO4pxCf3JwGz2GiJL2Ej4K2bKaA==}
 
-  '@types/ws@8.5.14':
-    resolution: {integrity: sha512-bd/YFLW+URhBzMXurx7lWByOu+xzU9+kb3RboOteXYDfW+tr+JZa99OyNmPINEGB/ahzKrEuc8rcv4gnpJmxTw==}
+  '@types/ws@8.18.0':
+    resolution: {integrity: sha512-8svvI3hMyvN0kKCJMvTJP/x6Y/EoQbepff882wL+Sn5QsXb3etnamgrJq4isrBxSJj5L2AuXcI0+bgkoAXGUJw==}
 
   '@types/yargs-parser@21.0.3':
     resolution: {integrity: sha512-I4q9QU9MQv4oEOz4tAHJtNz1cwuLxn2F3xcc2iV5WdqLPpUnj30aUuxt1mAxYTG+oe8CZMV/+6rU4S4gRDzqtQ==}
@@ -7923,7 +7920,7 @@ snapshots:
       '@discordjs/rest': 2.4.3
       '@discordjs/util': 1.1.1
       '@sapphire/async-queue': 1.5.5
-      '@types/ws': 8.5.14
+      '@types/ws': 8.18.0
       '@vladfrangu/async_event_emitter': 2.4.6
       discord-api-types: 0.37.119
       tslib: 2.8.1
@@ -9411,10 +9408,6 @@ snapshots:
     dependencies:
       undici-types: 6.20.0
 
-  '@types/node@22.12.0':
-    dependencies:
-      undici-types: 6.20.0
-
   '@types/node@22.13.9':
     dependencies:
       undici-types: 6.20.0
@@ -9461,9 +9454,9 @@ snapshots:
 
   '@types/webxr@0.5.21': {}
 
-  '@types/ws@8.5.14':
+  '@types/ws@8.18.0':
     dependencies:
-      '@types/node': 22.12.0
+      '@types/node': 22.13.9
 
   '@types/yargs-parser@21.0.3': {}
 
