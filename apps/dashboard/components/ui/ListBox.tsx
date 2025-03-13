@@ -10,7 +10,7 @@ export const ListBoxButton = React.forwardRef<HTMLButtonElement, ListboxButtonPr
 
 export const ListBoxOptions = React.forwardRef<HTMLDivElement, ListboxOptionsProps>(({ className, ...props }, ref) => (
  <Transition as={Fragment} enter="transition ease-out duration-100" enterFrom="transform opacity-0 scale-95" enterTo="transform opacity-100 scale-100" leave="transition ease-in duration-75" leaveFrom="transform opacity-100 scale-100" leaveTo="transform opacity-0 scale-95">
-  <DefaultListboxOptions ref={ref} className={cn("bg-background-secondary absolute z-10 mt-1 max-h-60 min-w-[--button-width] overflow-auto origin-top-left rounded-2xl border border-neutral-800 py-1 text-base shadow-lg sm:text-sm", className)} {...props} />
+  <DefaultListboxOptions ref={ref} className={cn("bg-background-secondary absolute z-10 mt-1 max-h-60 min-w-(--button-width) overflow-auto origin-top-left rounded-2xl border border-neutral-800 py-1 text-base shadow-lg sm:text-sm", className)} {...props} />
  </Transition>
 ));
 

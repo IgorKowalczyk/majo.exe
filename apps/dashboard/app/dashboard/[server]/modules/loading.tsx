@@ -15,7 +15,7 @@ export default function Loading() {
 
    <Block className="mt-4">
     <Header className={cn(headerVariants({ variant: "h2" }))}>
-     <Icons.Blocks className={iconVariants({ variant: "large", className: "!stroke-2" })} />
+     <Icons.Blocks className={iconVariants({ variant: "large", className: "stroke-2!" })} />
      Categories
     </Header>
     <p className="mb-4 mt-2 text-left">Enable or disable categories of commands.</p>
@@ -27,14 +27,14 @@ export default function Loading() {
        style={{
         width: `${Math.floor(Math.random() * (500 - 200 + 1) + 200)}px !important`,
        }}
-       className="h-44 min-w-[400px] !max-w-none"
+       className="h-44 min-w-[400px] max-w-none!"
       />
      ))}
     </div>
    </Block>
    <Block className="mt-4">
     <Header className={cn(headerVariants({ variant: "h2" }))}>
-     <Icons.slash className={iconVariants({ variant: "large", className: "!stroke-2" })} />
+     <Icons.slash className={iconVariants({ variant: "large", className: "stroke-2!" })} />
      Commands
     </Header>
     <p className="mb-4 mt-2 text-left">Enable or disable commands.</p>

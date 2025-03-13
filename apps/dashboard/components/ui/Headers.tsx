@@ -5,7 +5,7 @@ import { cn } from "@/lib/utils";
 export const headerVariants = cva("flex items-center font-bold", {
  variants: {
   variant: {
-   big: "text-3xl font-extrabold md:text-5xl xl:!text-4xl 2xl:!text-6xl",
+   big: "text-3xl font-extrabold md:text-5xl xl:text-4xl! 2xl:text-6xl!",
    medium: "text-3xl font-black md:text-4xl",
    gradient: "text-xl font-black md:text-2xl",
    h1: "text-3xl",
@@ -15,7 +15,7 @@ export const headerVariants = cva("flex items-center font-bold", {
    h5: "text-base font-medium md:text-lg",
   },
   effects: {
-   gradient: "bg-gradient-to-b from-white to-neutral-400 box-decoration-clone bg-clip-text font-black text-fill-transparent",
+   gradient: "bg-linear-to-b from-white to-neutral-400 box-decoration-clone bg-clip-text font-black text-fill-transparent",
   },
   alignment: {
    center: "justify-center text-center",

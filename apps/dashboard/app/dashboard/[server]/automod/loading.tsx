@@ -39,14 +39,14 @@ export default function Loading() {
    <p className="mb-4 text-left text-base md:text-lg">Automatically moderate your server, block bad words, links and other things.</p>
    <Block className="mb-4">
     <Header className={cn(headerVariants({ variant: "h2", margin: "normal" }))}>
-     <Icons.userBlock className={iconVariants({ variant: "large", className: "!stroke-2" })} />
+     <Icons.userBlock className={iconVariants({ variant: "large", className: "stroke-2!" })} />
      Anti-Invite <Icons.refresh className={iconVariants({ variant: "large", className: "stroke-accent-primary animate-spin" })} />
     </Header>
     <p className="mb-4 text-left">
      <span>Automatically delete all messages containing Discord server invites.</span>
     </p>
 
-    <Block className="mb-4 !py-3">
+    <Block className="mb-4 py-3!">
      <Header className={cn(headerVariants({ variant: "h3" }))}>
       <Icons.hide className={iconVariants({ variant: "large" })} /> Exempt:
      </Header>
@@ -60,7 +60,7 @@ export default function Loading() {
 
     <Icons.MoveVertical className={cn(iconVariants({ variant: "large" }), "mx-6 mb-4 opacity-50")} />
 
-    <Block className="mb-4 !py-3">
+    <Block className="mb-4 py-3!">
      <Header className={cn(headerVariants({ variant: "h3" }))}>
       <Icons.ShieldMinus className={iconVariants({ variant: "large" })} /> Actions:
      </Header>
@@ -79,14 +79,14 @@ export default function Loading() {
 
    <Block className="mb-4">
     <Header className={cn(headerVariants({ variant: "h2", margin: "normal" }))}>
-     <Icons.unlink className={iconVariants({ variant: "large", className: "!stroke-2" })} />
+     <Icons.unlink className={iconVariants({ variant: "large", className: "stroke-2!" })} />
      Anti-Link <Icons.refresh className={iconVariants({ variant: "large", className: "stroke-accent-primary animate-spin" })} />
     </Header>
     <p className="mb-4 text-left">
      <span>Automatically delete all messages containing links.</span>
     </p>
 
-    <Block className="mb-4 !py-3">
+    <Block className="mb-4 py-3!">
      <Header className={cn(headerVariants({ variant: "h3" }))}>
       <Icons.hide className={iconVariants({ variant: "large" })} /> Exempt:
      </Header>
@@ -102,7 +102,7 @@ export default function Loading() {
 
     <Icons.MoveVertical className={cn(iconVariants({ variant: "large" }), "mx-6 mb-4 opacity-50")} />
 
-    <Block className="mb-4 !py-3">
+    <Block className="mb-4 py-3!">
      <Header className={cn(headerVariants({ variant: "h3" }))}>
       <Icons.ShieldMinus className={iconVariants({ variant: "large" })} /> Actions:
      </Header>
@@ -125,7 +125,7 @@ export default function Loading() {
     <p className="mb-4 text-left">
      <span>Automatically delete all messages containing user mentions.</span>
     </p>
-    <Block className="mb-4 !py-3">
+    <Block className="mb-4 py-3!">
      <Header className={cn(headerVariants({ variant: "h3" }))}>
       <Icons.hide className={iconVariants({ variant: "large" })} /> Exempt:
      </Header>
@@ -141,7 +141,7 @@ export default function Loading() {
 
     <Icons.MoveVertical className={cn(iconVariants({ variant: "large" }), "mx-6 mb-4 opacity-50")} />
 
-    <Block className="mb-4 !py-3">
+    <Block className="mb-4 py-3!">
      <Header className={cn(headerVariants({ variant: "h3" }))}>
       <Icons.ShieldMinus className={iconVariants({ variant: "large" })} /> Actions:
      </Header>
@@ -154,7 +154,7 @@ export default function Loading() {
 
     <Icons.ArrowDown className={cn(iconVariants({ variant: "large" }), "mx-6 mb-4 opacity-50")} />
 
-    <Block className="mb-4 !py-3">
+    <Block className="mb-4 py-3!">
      <Header className={cn(headerVariants({ variant: "h3" }))}>
       <Icons.ShieldX className={iconVariants({ variant: "large" })} /> Limits:
      </Header>
@@ -180,14 +180,14 @@ export default function Loading() {
    </Block>
    <Block className="mb-4">
     <Header className={cn(headerVariants({ variant: "h2", margin: "normal" }))}>
-     <Icons.messageOff className={iconVariants({ variant: "large", className: "!stroke-2" })} />
+     <Icons.messageOff className={iconVariants({ variant: "large", className: "stroke-2!" })} />
      Anti-Spam <Icons.refresh className={iconVariants({ variant: "large", className: "stroke-accent-primary animate-spin" })} />
     </Header>
     <p className="mb-4 text-left">
      <span>Automatically delete all spam messages.</span>
     </p>
 
-    <Block className="mb-4 !py-3">
+    <Block className="mb-4 py-3!">
      <Header className={cn(headerVariants({ variant: "h3" }))}>
       <Icons.hide className={iconVariants({ variant: "large" })} /> Exempt:
      </Header>
@@ -203,7 +203,7 @@ export default function Loading() {
 
     <Icons.MoveVertical className={cn(iconVariants({ variant: "large" }), "mx-6 mb-4 opacity-50")} />
 
-    <Block className="mb-4 !py-3">
+    <Block className="mb-4 py-3!">
      <Header className={cn(headerVariants({ variant: "h3" }))}>
       <Icons.ShieldMinus className={iconVariants({ variant: "large" })} /> Actions:
      </Header>

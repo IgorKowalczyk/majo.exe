@@ -67,7 +67,7 @@ export default async function Page(props: { params: Promise<{ server: string }> 
    <p className="mb-4 text-left text-base md:text-lg">Choose which modules you want to be enabled on your server.</p>
    <Block className="mt-4">
     <Header className={cn(headerVariants({ variant: "h2" }))}>
-     <Icons.Blocks className={iconVariants({ variant: "large", className: "!stroke-2" })} />
+     <Icons.Blocks className={iconVariants({ variant: "large", className: "stroke-2!" })} />
      Categories
     </Header>
     <p className="mb-4 mt-2 text-left">Enable or disable categories of commands.</p>
@@ -95,7 +95,7 @@ export default async function Page(props: { params: Promise<{ server: string }> 
 
    <Block className="mt-4">
     <Header className={cn(headerVariants({ variant: "h2" }))}>
-     <Icons.slash className={iconVariants({ variant: "large", className: "!stroke-2" })} />
+     <Icons.slash className={iconVariants({ variant: "large", className: "stroke-2!" })} />
      Commands
     </Header>
     <p className="mb-4 mt-2 text-left">Enable or disable commands.</p>
@@ -141,7 +141,7 @@ export default async function Page(props: { params: Promise<{ server: string }> 
                key={option.name}
                className={cn(
                 {
-                 "!font-normal opacity-70": !option.required,
+                 "font-normal! opacity-70": !option.required,
                  "opacity-100": option.required,
                 },
                 "[line-height:normal]"

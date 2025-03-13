@@ -93,7 +93,7 @@ export default async function Page() {
        <div className="ml-[-16px] mt-[-20px] box-content flex items-center rounded-full">
         <Tooltip content="Click to see full size">
          <Link href={`${user.avatar}?size=2048`} target="_blank" className="relative size-24 shrink-0">
-          <Image quality={100} src={`/api/user/avatar/${user.id}`} alt={`${user.global_name || user.username} Avatar`} width={96} height={96} className="rounded-full border-4 border-solid border-background-navbar backdrop-blur-sm duration-200 hover:opacity-75" />
+          <Image quality={100} src={`/api/user/avatar/${user.id}`} alt={`${user.global_name || user.username} Avatar`} width={96} height={96} className="rounded-full border-4 border-solid border-background-navbar backdrop-blur-xs duration-200 hover:opacity-75" />
           {user.avatar_decoration_data ? <Image quality={100} src={`/api/user/avatar-decoration/${user.id}`} alt={`${user.global_name || user.username} Avatar decoration`} width={96} height={96} className="absolute left-0 top-0 rounded-full" /> : null}
          </Link>
         </Tooltip>
@@ -141,7 +141,7 @@ export default async function Page() {
 
     <Block>
      <Header className={cn(headerVariants({ variant: "h2" }))}>
-      <Icons.Server className={iconVariants({ variant: "large", className: "!stroke-2" })} />
+      <Icons.Server className={iconVariants({ variant: "large", className: "stroke-2!" })} />
       Servers
      </Header>
      <p className="mt-2 leading-none text-white/70">A list of servers you are in and some information about them.</p>
@@ -185,7 +185,7 @@ export default async function Page() {
 
     <Block>
      <Header className={cn(headerVariants({ variant: "h2" }))}>
-      <Icons.Download className={iconVariants({ variant: "large", className: "!stroke-2" })} />
+      <Icons.Download className={iconVariants({ variant: "large", className: "stroke-2!" })} />
       Download data
      </Header>
      <p className="mt-2 leading-none text-white/70">
@@ -199,7 +199,7 @@ export default async function Page() {
 
     <Block theme="danger">
      <Header className={cn(headerVariants({ variant: "h2" }), "text-red-400")}>
-      <Icons.warning className={iconVariants({ variant: "large", className: "stroke-red-400 !stroke-2" })} />
+      <Icons.warning className={iconVariants({ variant: "large", className: "stroke-red-400 stroke-2!" })} />
       Delete account
      </Header>
      <p className="mt-2 text-white/70">If you want to delete all your data and your account, click the button below. This action is irreversible - all your data will be lost.</p>

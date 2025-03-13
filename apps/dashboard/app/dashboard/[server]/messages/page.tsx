@@ -68,7 +68,7 @@ export default async function Page(props: { params: Promise<{ server: string }> 
    </Header>
    <p className="mb-4 text-left text-base md:text-lg">Customize the messages that are sent to your server members.</p>
 
-   <Block className="mt-4 !overflow-x-visible">
+   <Block className="mt-4 overflow-x-visible!">
     <ChangeCustomMessages
      type="welcome"
      serverId={serverDownload.id}
@@ -88,7 +88,7 @@ export default async function Page(props: { params: Promise<{ server: string }> 
     />
    </Block>
 
-   <Block className="mt-4 !overflow-x-visible">
+   <Block className="mt-4 overflow-x-visible!">
     <ChangeCustomMessages
      type="leave"
      serverId={serverDownload.id}

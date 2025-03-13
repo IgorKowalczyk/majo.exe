@@ -27,7 +27,7 @@ const DeleteMessage: React.FC<DeleteMessageProps> = ({ actions, setActions }) =>
      Delete message:
     </span>
    </Tooltip>
-   <Switch checked={actions.some((action) => action.type === AutoModerationActionType.BlockMessage)} onChange={setDelete} />
+   <Switch checked={actions.some((action) => action.type === AutoModerationActionType.BlockMessage)} onCheckedChange={setDelete} />
   </div>
  );
 };

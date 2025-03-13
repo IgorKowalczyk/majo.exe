@@ -38,7 +38,7 @@ export const DiscordCommands = React.forwardRef<HTMLDivElement, DiscordCommandsP
  if (!mounted) {
   return (
    <>
-    <Skeleton className="h-10 w-full !max-w-none" />
+    <Skeleton className="h-10 w-full max-w-none!" />
 
     <div className="mt-8 flex flex-wrap gap-2">
      {Array.from({ length: 8 }).map((_, i) => (
@@ -65,7 +65,7 @@ export const DiscordCommands = React.forwardRef<HTMLDivElement, DiscordCommandsP
 
  return (
   <div ref={ref} className={cn(className)} {...props}>
-   <InputWithIcon placeholder="Search commands..." value={search} onChange={(e) => setSearch(e.target.value)} icon={<Icons.Search className={iconVariants({ variant: "normal", className: "text-white/50" })} />} className="w-full !max-w-none" />
+   <InputWithIcon placeholder="Search commands..." value={search} onChange={(e) => setSearch(e.target.value)} icon={<Icons.Search className={iconVariants({ variant: "normal", className: "text-white/50" })} />} className="w-full max-w-none!" />
    <div className="mt-8 flex flex-wrap gap-2">
     {categories.map((category) => (
      <div
@@ -139,7 +139,7 @@ export const DiscordCommands = React.forwardRef<HTMLDivElement, DiscordCommandsP
                 key={option.name}
                 className={cn(
                  {
-                  "!font-normal opacity-70": !option.required,
+                  "font-normal! opacity-70": !option.required,
                   "opacity-100": option.required,
                  },
                  "ml-2 [line-height:normal]"

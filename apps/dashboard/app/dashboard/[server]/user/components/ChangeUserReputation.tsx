@@ -82,7 +82,7 @@ export const ChangeUserReputation = React.forwardRef<HTMLFormElement, ChangeUser
     onChange={(e) => changeReputation(parseInt(e.target.value))}
     className={cn(
      {
-      "!border-red-400 !text-red-400 focus:!border-red-400": error,
+      "border-red-400! text-red-400! focus:border-red-400!": error,
      },
      "w-fit"
     )}

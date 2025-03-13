@@ -134,21 +134,21 @@ export function Giveaways({ data = [] }: { data: Giveaway[] }) {
     return (
      <div className="flex space-x-4">
       {/* <Tooltip content="Editing giveaways is not yet supported">
-       <Button variant="secondary" className="!w-fit" disabled>
+       <Button variant="secondary" className="w-fit!" disabled>
         <Icons.Edit className={iconVariants({ variant: "button" })} />
         Edit
        </Button>
       </Tooltip> */}
       {value.channel && value.channel.link ? (
        <Link href={value.channel.link}>
-        <Button variant="primary" className="!w-fit">
+        <Button variant="primary" className="w-fit!">
          <Icons.Hash className={iconVariants({ variant: "button" })} />
          View on Discord
         </Button>
        </Link>
       ) : (
        <Tooltip content="The channel or message was deleted or is not accessible">
-        <Button variant="secondary" className="!w-fit" disabled>
+        <Button variant="secondary" className="w-fit!" disabled>
          <Icons.Hash className={iconVariants({ variant: "button" })} />
          View on Discord
         </Button>

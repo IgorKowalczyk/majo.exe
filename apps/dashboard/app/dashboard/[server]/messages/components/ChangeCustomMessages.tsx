@@ -92,7 +92,7 @@ export const ChangeCustomMessages = React.forwardRef<HTMLDivElement, ChangeCusto
    {type === "welcome" ? (
     <>
      <Header className={cn(headerVariants({ variant: "h2" }))}>
-      <Icons.userAdd className={iconVariants({ variant: "large", className: "!stroke-2" })} />
+      <Icons.userAdd className={iconVariants({ variant: "large", className: "stroke-2!" })} />
       Welcome messages
      </Header>
      <p className="mb-4 text-left">Send a welcome message to new members when they join your server.</p>
@@ -100,7 +100,7 @@ export const ChangeCustomMessages = React.forwardRef<HTMLDivElement, ChangeCusto
    ) : (
     <>
      <Header className={cn(headerVariants({ variant: "h2" }))}>
-      <Icons.userMinus className={iconVariants({ variant: "large", className: "!stroke-2" })} />
+      <Icons.userMinus className={iconVariants({ variant: "large", className: "stroke-2!" })} />
       Leave messages
      </Header>
      <p className="mb-4 text-left">Send a leave message to a channel when a user leaves the server.</p>
@@ -118,7 +118,7 @@ export const ChangeCustomMessages = React.forwardRef<HTMLDivElement, ChangeCusto
        Enabled:
       </span>
      </Tooltip>
-     <Switch checked={isEnabled} onChange={() => setIsEnabled(!isEnabled)} disabled={loading} />
+     <Switch checked={isEnabled} onCheckedChange={() => setIsEnabled(!isEnabled)} disabled={loading} />
     </div>
 
     <div
@@ -191,7 +191,7 @@ export const ChangeCustomMessages = React.forwardRef<HTMLDivElement, ChangeCusto
           Title:
          </span>
         </Tooltip>
-        <Input type="text" value={newTitle} onChange={(e) => setNewTitle(e.target.value)} disabled={!isEnabled || loading || !messageChannel} placeholder={defaultMessages.title} className="!max-w-96 font-normal" />
+        <Input type="text" value={newTitle} onChange={(e) => setNewTitle(e.target.value)} disabled={!isEnabled || loading || !messageChannel} placeholder={defaultMessages.title} className="max-w-96! font-normal" />
        </div>
 
        <div className="my-2 flex flex-col flex-wrap gap-2">
@@ -201,7 +201,7 @@ export const ChangeCustomMessages = React.forwardRef<HTMLDivElement, ChangeCusto
           Description:
          </span>
         </Tooltip>
-        <Textarea value={newDescription} onChange={(e) => setNewDescription(e.target.value)} disabled={!isEnabled || loading || !messageChannel} placeholder={defaultMessages.description} className="!max-w-96 font-normal" />
+        <Textarea value={newDescription} onChange={(e) => setNewDescription(e.target.value)} disabled={!isEnabled || loading || !messageChannel} placeholder={defaultMessages.description} className="max-w-96! font-normal" />
        </div>
 
        <div className="my-4 w-fit whitespace-nowrap rounded-lg border border-accent-primary bg-accent-primary/10 p-4">

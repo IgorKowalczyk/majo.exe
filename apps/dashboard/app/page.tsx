@@ -3,6 +3,7 @@ import prismaClient from "@majoexe/database";
 import { GuildLogType } from "@majoexe/database/types";
 import { pseudoRandom } from "@majoexe/util/functions/util";
 import { ApplicationCommandOptionType } from "discord-api-types/v10";
+import type { Metadata } from "next";
 import Link from "next/link";
 import avatar01 from "public/assets/avatars/01.webp";
 import avatar03 from "public/assets/avatars/03.webp";
@@ -38,7 +39,12 @@ import { Typing } from "@/components/ui/Loaders";
 import { Command } from "@/lib/types";
 import { cn } from "@/lib/utils";
 
-export default async function HomePage() {
+export const metadata: Metadata = {
+ title: "Majo.exe - The only one Discord Bot",
+ description: "Majo.exe will not only keep your server entertained but also assist you with moderation and many other things!",
+};
+
+export default async function Page() {
  const exampleLogs = [
   {
    id: "0",
@@ -142,8 +148,7 @@ export default async function HomePage() {
        </AnimatedShinyText>
       </Link>
      </Fade>
-     <WordPullUp wordsClassName={cn(headerVariants({ variant: "big", alignment: "center", effects: "gradient" }), "!font-black !leading-snug")} words="The only one Discord Bot" className="text-center" />
-     {/* <Header className=>The only one Discord Bot</Header> */}
+     <WordPullUp wordsClassName={cn(headerVariants({ variant: "big", alignment: "center", effects: "gradient" }), "font-black! leading-snug!")} words="The only one Discord Bot" className="text-center" />
      <Fade
       framerProps={{
        show: { opacity: 1, transition: { type: "spring", delay: 0.9, duration: 0.5 } },
@@ -237,7 +242,7 @@ export default async function HomePage() {
          <div className="flex flex-col">
           <div className="ml-2 flex h-10 flex-row items-center">
            <span className="font-bold">{dashboardConfig.title}</span>{" "}
-           <span className="ml-1 flex items-center gap-1 rounded bg-[#5c65f3] px-1 py-[0.12rem] text-xs text-white">
+           <span className="ml-1 flex items-center gap-1 rounded-sm bg-[#5c65f3] px-1 py-[0.12rem] text-xs text-white">
             <Icons.Check className={iconVariants({ variant: "small" })} /> <span className="-mb-px">BOT</span>
            </span>
            <span className="ml-2 text-sm text-gray-400">Today at 4:20 PM</span>
@@ -258,7 +263,7 @@ export default async function HomePage() {
        <LevelUp avatar={dashboardConfig.logo} username="Majonez.exe" />
       </div>
       <div className="relative col-span-2 row-span-2 overflow-hidden rounded-xl border border-neutral-800 bg-background-secondary px-8 py-6 duration-200 hover:bg-neutral-800/50 lg:col-span-1">
-       <Header className={cn(headerVariants({ variant: "h2", margin: "normal" }), "text-fill-transparent bg-gradient-to-b from-white to-neutral-400 box-decoration-clone bg-clip-text font-black")}>Moderation? We have it!</Header>
+       <Header className={cn(headerVariants({ variant: "h2", margin: "normal" }), "text-fill-transparent bg-linear-to-b from-white to-neutral-400 box-decoration-clone bg-clip-text font-black")}>Moderation? We have it!</Header>
        <div className="absolute inset-0 z-0 m-auto mt-[100px] size-[580px] rounded-full bg-[#ddd] opacity-5 blur-3xl" />
        <div className="relative z-10">
         <p className="mt-2 max-w-[680px] text-white/70">
@@ -272,7 +277,7 @@ export default async function HomePage() {
       <div className="relative col-span-2 row-span-2 overflow-hidden rounded-xl border border-neutral-800 bg-background-secondary duration-200 hover:bg-neutral-800/50">
        <div className="relative z-50 h-full">
         <div className="px-8 py-6">
-         <Header className={cn(headerVariants({ variant: "h1", margin: "normal" }), "text-fill-transparent bg-gradient-to-b from-white to-neutral-400 box-decoration-clone bg-clip-text font-black")}>Know more about your server</Header>
+         <Header className={cn(headerVariants({ variant: "h1", margin: "normal" }), "text-fill-transparent bg-linear-to-b from-white to-neutral-400 box-decoration-clone bg-clip-text font-black")}>Know more about your server</Header>
          <p className="max-w-[680px] text-white/70">
           <Balancer>With Majo.exe you can get to know your server better with the help of the dashboard. You can see the most active members, the most used channels and activity graphs!</Balancer>
          </p>
@@ -321,13 +326,13 @@ export default async function HomePage() {
         <div className="flex flex-col">
          <div className="ml-2 flex flex-row items-center">
           <span className="font-bold">{dashboardConfig.title}</span>{" "}
-          <span className="ml-1 flex items-center gap-1 rounded bg-[#5c65f3] px-1 py-[0.12rem] text-xs text-white">
+          <span className="ml-1 flex items-center gap-1 rounded-sm bg-[#5c65f3] px-1 py-[0.12rem] text-xs text-white">
            <Icons.Check className={iconVariants({ variant: "small" })} /> <span className="-mb-px">BOT</span>
           </span>
           <span className="ml-2 text-sm text-gray-400">Today at 4:20 PM</span>
          </div>
          <div
-          className="ml-1 mt-2 rounded bg-[#2b2d31] p-4 shadow-lg"
+          className="ml-1 mt-2 rounded-sm bg-[#2b2d31] p-4 shadow-lg"
           style={{
            borderLeft: `4px solid ${globalConfig.defaultColor}`,
           }}
@@ -421,7 +426,7 @@ export default async function HomePage() {
      </div>
      <BorderBeam colorFrom={globalConfig.defaultColor} colorTo={globalConfig.defaultColor} size={450} borderWidth={1.7} />
      <FlickeringGrid width={1200} height={800} squareSize={3} color={"#737373"} className="pointer-events-none absolute inset-0 -z-10 size-full bg-background-secondary opacity-70" />
-     <div className="to-[hsla(202, 36%, 96%, 1)] absolute inset-0 -z-10 size-full bg-gradient-to-b from-accent-primary/15" />
+     <div className="to-[hsla(202, 36%, 96%, 1)] absolute inset-0 -z-10 size-full bg-linear-to-b from-accent-primary/15" />
     </div>
    </div>
   </div>

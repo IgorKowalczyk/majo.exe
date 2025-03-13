@@ -211,7 +211,7 @@ export const UpdateLog = React.forwardRef<HTMLDivElement, UpdateLogProps>(({ all
       Enabled:
      </span>
     </Tooltip>
-    <Switch checked={enabled} onChange={() => setEnabled(!enabled)} disabled={disabled} />
+    <Switch checked={enabled} onCheckedChange={() => setEnabled(!enabled)} disabled={disabled} />
    </div>
    <div className="flex items-end justify-between gap-4">
     <div>

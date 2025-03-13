@@ -62,7 +62,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   <Session>
    <html lang="en">
     <head>{process.env.HOTJAR_ID && <Hotjar id={process.env.HOTJAR_ID} />}</head>
-    <body className={cn("bg-background-primary text-white antialiased", GeistSans.className)}>
+    <body className={cn("bg-background-primary selection:bg-accent-primary/30 text-white antialiased", GeistSans.className)}>
      <ProgressBar />
      <VisibilityProvider>
       <TopNavigation theme="full" />
@@ -71,14 +71,20 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       </main>
       <Footer />
       <Toaster // prettier
-       richColors={true}
-       theme="dark"
+       className="toaster group"
        closeButton={false}
-       visibleToasts={4}
+       theme="dark"
        icons={{
         loading: <Icons.refresh className={iconVariants({ variant: "normal", className: "animate-spin" })} />,
        }}
-       expand={false}
+       toastOptions={{
+        classNames: {
+         toast: "group toast group-[.toaster]:bg-background-secondary! group-[.toaster]:text-white group-[.toaster]:border-neutral-800 group-[.toaster]:shadow-lg",
+         description: "group-[.toast]:text-neutral-300",
+         actionButton: "group-[.toast]:bg-button-primary group-[.toast]:text-white",
+         cancelButton: "group-[.toast]:bg-button-secondary group-[.toast]:text-white",
+        },
+       }}
       />
       <SpeedInsights />
       <Analytics />

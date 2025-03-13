@@ -61,7 +61,7 @@ export const UpdateCommands = React.forwardRef<HTMLDivElement, UpdateCommandsPro
 
  return (
   <Tooltip content={enabled ? "Disable command" : loading ? "Changing status..." : "Enable command"} ref={ref} {...props}>
-   <Switch checked={enabled} disabled={loading} onChange={() => updateCommand()} />
+   <Switch checked={enabled} disabled={loading} onCheckedChange={() => updateCommand()} />
   </Tooltip>
  );
 });

@@ -10,8 +10,8 @@ interface GraphCardProps extends HTMLAttributes<HTMLDivElement> {
  graph: React.ReactNode;
 }
 
-export const GraphCard = React.forwardRef<HTMLDivElement, GraphCardProps>(({ title, description, value, icon, graph, className, ...props }, ref) => (
- <div ref={ref} className={cn("bg-background-secondary mt-4 overflow-auto rounded-xl border border-neutral-800 p-4", className)} {...props}>
+export const GraphCard = ({ title, description, value, icon, graph, className, ...props }: GraphCardProps) => (
+ <div className={cn("bg-background-secondary mt-4 overflow-auto rounded-xl border border-neutral-800 p-4", className)} {...props}>
   <div className="flex flex-row items-center justify-between">
    <div className="flex flex-row items-center gap-4">
     {icon}
@@ -37,4 +37,4 @@ export const GraphCard = React.forwardRef<HTMLDivElement, GraphCardProps>(({ tit
    </div>
   </div>
  </div>
-));
+);

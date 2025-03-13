@@ -140,7 +140,7 @@ export const PublicDashboard = React.forwardRef<HTMLDivElement, PublicDashboardP
     <Header className={cn(headerVariants({ variant: "h3", margin: "normal" }))}>
      <Icons.Power className={iconVariants({ variant: "large" })} />
      Enable public dashboard overview:
-     <Switch checked={isEnabled} onChange={toggle} disabled={disabled} />
+     <Switch checked={isEnabled} onCheckedChange={toggle} disabled={disabled} />
     </Header>
    </div>
    <p className="text-white/70">Allow users to view a public dashboard of your server, even if they are not a member.</p>
@@ -160,20 +160,20 @@ export const PublicDashboard = React.forwardRef<HTMLDivElement, PublicDashboardP
        placeholder="Vanity URL"
        className={cn(
         {
-         "!border-red-400 focus:!border-red-400": vanityError,
+         "border-red-400! focus:border-red-400!": vanityError,
         },
 
-        "peer !w-fit font-normal sm:rounded-l-none sm:border-l-0 sm:!pl-0 focus:sm:!border-l-0"
+        "peer w-fit! font-normal sm:rounded-l-none sm:border-l-0 sm:pl-0! sm:focus:border-l-0!"
        )}
        name="vanity"
       />
       <div
        className={cn(
         {
-         "!border-red-400 focus:!border-red-400": vanityError,
-         "peer-focus:!border-button-primary border-neutral-800": !vanityError,
+         "border-red-400! focus:border-red-400!": vanityError,
+         "peer-focus:border-button-primary! border-neutral-800": !vanityError,
         },
-        "hidden select-none rounded-lg rounded-r-none border border-r-0 border-r-transparent bg-transparent py-2 pl-3 font-normal text-white/60 shadow-sm outline-none !ring-0 duration-200 sm:block"
+        "hidden select-none rounded-lg rounded-r-none border border-r-0 border-r-transparent bg-transparent py-2 pl-3 font-normal text-white/60 shadow-xs outline-hidden ring-0! duration-200 sm:block"
        )}
       >
        {process.env.NEXT_PUBLIC_URL}/server/

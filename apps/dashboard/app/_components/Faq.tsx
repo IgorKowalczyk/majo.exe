@@ -1,8 +1,7 @@
 "use client";
 
-import * as Accordion from "@radix-ui/react-accordion";
 import Link from "next/link";
-import { Icons } from "@/components/ui/Icons";
+import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "@/components/ui/Accordion";
 
 export default function Faq() {
  const items = [
@@ -31,18 +30,12 @@ export default function Faq() {
  return (
   <div className="mx-auto mt-9 w-full max-w-3xl rounded-xl">
    {items.map((item, index) => (
-    <Accordion.Root type="single" defaultValue="item-1" collapsible key={`faq-${item.question}`}>
-     <Accordion.Item className="border-b border-neutral-800" value={`item-${index + 1}`}>
-      <Accordion.Header className="flex">
-       <Accordion.Trigger className="flex w-full items-center justify-between p-6 py-4 font-medium text-white duration-200 [&[data-state=open]>svg]:rotate-180">
-        {item.question}
-        <Icons.ChevronDown className="size-4 duration-200" />
-       </Accordion.Trigger>
-      </Accordion.Header>
-
-      <Accordion.Content className=" origin-top px-6 pb-3 text-neutral-400 transition-all data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down">{item.answer} </Accordion.Content>
-     </Accordion.Item>
-    </Accordion.Root>
+    <Accordion type="single" defaultValue="item-1" collapsible key={`faq-${item.question}`}>
+     <AccordionItem value={`item-${index + 1}`}>
+      <AccordionTrigger>{item.question}</AccordionTrigger>
+      <AccordionContent>{item.answer}</AccordionContent>
+     </AccordionItem>
+    </Accordion>
    ))}
 
    <div className="mt-6 text-center text-sm text-neutral-400">

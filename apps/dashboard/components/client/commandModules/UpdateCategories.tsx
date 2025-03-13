@@ -61,7 +61,7 @@ export const UpdateCategories = React.forwardRef<HTMLDivElement, UpdateCategorie
 
  return (
   <Tooltip content={enabled ? "Disable category" : loading ? "Changing status..." : "Enable category"} ref={ref} {...props}>
-   <Switch checked={enabled} disabled={loading} onChange={() => updateCategory()} />
+   <Switch checked={enabled} disabled={loading} onCheckedChange={() => updateCategory()} />
   </Tooltip>
  );
 });

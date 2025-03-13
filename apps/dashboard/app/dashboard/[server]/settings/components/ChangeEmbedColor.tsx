@@ -136,7 +136,7 @@ export const ChangeEmbedColor = React.forwardRef<HTMLDivElement, ChangeEmbedColo
      type="text"
      value={color}
      onChange={(e) => setColor(e.target.value)}
-     className="w-full focus:!bg-transparent"
+     className="w-full focus:bg-transparent!"
      style={{
       backgroundColor: `${color}1A`, // 10% opacity
       borderColor: color,

@@ -11,11 +11,11 @@ export interface ChannelsSelectProps extends React.ComponentProps<typeof ListBox
  selectedRoles?: Snowflake[];
 }
 
-export const RolesSelect = React.forwardRef<React.ElementRef<typeof ListBox>, ChannelsSelectProps>(({ allRoles, selectedRoles, setRoles, ...props }, ref) => {
+export const RolesSelect = ({ allRoles, selectedRoles, setRoles, ...props }: ChannelsSelectProps) => {
  return (
   <>
    {allRoles && allRoles.length > 0 ? (
-    <ListBox value={selectedRoles} onChange={(value) => setRoles && setRoles(value)} multiple={true} ref={ref} {...props}>
+    <ListBox value={selectedRoles} onChange={(value) => setRoles && setRoles(value)} multiple={true} {...props}>
      <ListBoxButton>
       <span className="flex items-center gap-2 truncate">
        {selectedRoles && selectedRoles.length > 0 && allRoles.find((role) => role.id === selectedRoles[0]) ? (
@@ -51,4 +51,4 @@ export const RolesSelect = React.forwardRef<React.ElementRef<typeof ListBox>, Ch
    )}
   </>
  );
-});
+};
