@@ -1,7 +1,7 @@
 "use client";
 
 import { botConfig } from "@majoexe/config";
-import { GuildLogType, GuildLogsSettings } from "@majoexe/database";
+import type { GuildLogType, GuildLogsSettings } from "@majoexe/database/types";
 import { Snowflake } from "discord-api-types/globals";
 import { useRouter } from "next/navigation";
 import { useNavigationGuard } from "next-navigation-guard";
@@ -19,14 +19,14 @@ import { cn } from "@/lib/utils";
 
 type UpdateLog = Pick<GuildLogsSettings, "type" | "enabled" | "channelId">;
 
-export interface UpdateLogsProps extends React.HTMLAttributes<HTMLDivElement> {
+export interface UpdateLogsProps extends React.ComponentProps<"div"> {
  serverId: Snowflake;
  allChannels: { id: Snowflake; name: string }[] | [];
  logs: UpdateLog[];
  allowedLogs: GuildLogType[];
 }
 
-export const UpdateLogs = React.forwardRef<HTMLDivElement, UpdateLogsProps>(({ serverId, allChannels, logs, allowedLogs }, ref) => {
+export const UpdateLogs = ({ serverId, allChannels, logs, allowedLogs }: UpdateLogsProps) => {
  const initialLogStates = allowedLogs.map((logType: GuildLogType) => ({ type: logType, enabled: false, channelId: null as Snowflake | null }));
  const [unsavedChanges, setUnsavedChanges] = useState(false);
  const [logStates, setLogStates] = useState(logs.length > 0 ? logs : initialLogStates);
@@ -101,7 +101,7 @@ export const UpdateLogs = React.forwardRef<HTMLDivElement, UpdateLogsProps>(({ s
  };
 
  return (
-  <div {...ref}>
+  <>
    <div
     className={cn(
      {
@@ -174,11 +174,11 @@ export const UpdateLogs = React.forwardRef<HTMLDivElement, UpdateLogsProps>(({ s
       </div>
      </div>
     ))}
-  </div>
+  </>
  );
-});
+};
 
-export interface UpdateLogProps {
+export interface UpdateLogProps extends Omit<React.ComponentProps<typeof Block>, "onChange"> {
  logType: GuildLogType;
  logEnabled: boolean;
  exisingChannel: Snowflake | null;
@@ -187,7 +187,7 @@ export interface UpdateLogProps {
  disabled: boolean;
 }
 
-export const UpdateLog = React.forwardRef<HTMLDivElement, UpdateLogProps>(({ allChannels, exisingChannel, logType, logEnabled, onChange, disabled, ...props }, ref) => {
+export const UpdateLog = ({ allChannels, exisingChannel, logType, logEnabled, onChange, disabled, ...props }: UpdateLogProps) => {
  const [enabled, setEnabled] = useState(logEnabled);
  const [messageChannel, setMessageChannel] = useState<Snowflake | null>(exisingChannel);
 
@@ -196,7 +196,7 @@ export const UpdateLog = React.forwardRef<HTMLDivElement, UpdateLogProps>(({ all
  }, [enabled, messageChannel]);
 
  return (
-  <Block key={logType} {...props} ref={ref}>
+  <Block key={logType} {...props}>
    <div className="mb-1 flex items-center gap-4">
     <Header className={cn(headerVariants({ variant: "h3" }))}>
      {botConfig.emojis.logs.flatMap((category) => category.types).find((log) => log.type === logType)?.emoji || "❔"} {handleLogText(logType)}
@@ -235,4 +235,4 @@ export const UpdateLog = React.forwardRef<HTMLDivElement, UpdateLogProps>(({ all
    </div>
   </Block>
  );
-});
+};

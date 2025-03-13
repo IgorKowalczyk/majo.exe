@@ -1,5 +1,5 @@
 import { cva, type VariantProps } from "class-variance-authority";
-import React, { HTMLAttributes } from "react";
+import React from "react";
 import { cn } from "@/lib/utils";
 
 export const headerVariants = cva("flex items-center font-bold", {
@@ -37,10 +37,10 @@ export const headerVariants = cva("flex items-center font-bold", {
  },
 });
 
-const Header = React.forwardRef<HTMLHeadingElement, HTMLAttributes<HTMLHeadingElement> & VariantProps<typeof headerVariants>>(({ className, variant, ...props }, ref) => (
- <h1 ref={ref} className={cn(headerVariants({ variant }), className)} {...props}>
+const Header = ({ className, variant, ...props }: React.ComponentProps<"h1"> & VariantProps<typeof headerVariants>) => (
+ <h1 className={cn(headerVariants({ variant }), className)} {...props}>
   {props.children}
  </h1>
-));
+);
 
 export default Header;

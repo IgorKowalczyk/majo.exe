@@ -6,12 +6,12 @@ import { Button } from "@/components/ui/Buttons";
 import { Dialog, DialogClose, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/Dialog";
 import { Icons, iconVariants } from "@/components/ui/Icons";
 
-interface ResetUserXPProps extends React.HTMLAttributes<HTMLDivElement> {
+interface ResetUserXPProps extends React.ComponentProps<"div"> {
  userId: string;
  guildId: string;
 }
 
-export const ResetUserXP = React.forwardRef<HTMLDivElement, ResetUserXPProps>(({ userId, guildId, className, ...props }, ref) => {
+export const ResetUserXP = ({ userId, guildId, className, ...props }: ResetUserXPProps) => {
  const [isOpen, setIsOpen] = useState(false);
  const [loading, setLoading] = useState(false);
 
@@ -61,7 +61,7 @@ export const ResetUserXP = React.forwardRef<HTMLDivElement, ResetUserXPProps>(({
  };
 
  return (
-  <div className={className} {...props} ref={ref}>
+  <div className={className} {...props}>
    <Dialog open={isOpen} onOpenChange={setIsOpen}>
     <DialogTrigger asChild>
      <Button variant="red" className="mt-4 w-fit" onClick={() => setIsOpen(true)}>
@@ -103,4 +103,4 @@ export const ResetUserXP = React.forwardRef<HTMLDivElement, ResetUserXPProps>(({
    </Dialog>
   </div>
  );
-});
+};

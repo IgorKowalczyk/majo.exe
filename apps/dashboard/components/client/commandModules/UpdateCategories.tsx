@@ -7,13 +7,13 @@ import { toast } from "sonner";
 import { Switch } from "@/components/ui/Switch";
 import { Tooltip } from "@/components/ui/Tooltip";
 
-export interface UpdateCategoriesProps extends React.HTMLAttributes<HTMLDivElement> {
+export interface UpdateCategoriesProps extends React.ComponentProps<typeof Tooltip> {
  serverId: Snowflake;
  categoryName: string;
  categoryEnabled: boolean;
 }
 
-export const UpdateCategories = React.forwardRef<HTMLDivElement, UpdateCategoriesProps>(({ serverId, categoryName, categoryEnabled, ...props }, ref) => {
+export const UpdateCategories = ({ serverId, categoryName, categoryEnabled, ...props }: UpdateCategoriesProps) => {
  const [enabled, setEnabled] = useState(categoryEnabled);
  const [loading, setLoading] = useState(false);
  const router = useRouter();
@@ -60,8 +60,8 @@ export const UpdateCategories = React.forwardRef<HTMLDivElement, UpdateCategorie
  };
 
  return (
-  <Tooltip content={enabled ? "Disable category" : loading ? "Changing status..." : "Enable category"} ref={ref} {...props}>
+  <Tooltip {...props} content={enabled ? "Disable category" : loading ? "Changing status..." : "Enable category"}>
    <Switch checked={enabled} disabled={loading} onCheckedChange={() => updateCategory()} />
   </Tooltip>
  );
-});
+};

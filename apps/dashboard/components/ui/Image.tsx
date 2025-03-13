@@ -3,7 +3,12 @@
 import Image from "next/image";
 import { useState, useEffect } from "react";
 
-const ImageWithFallback = ({ fallbackImage = "/assets/fallback.webp", src, ...props }: { fallbackImage?: string; src: string } & React.ComponentProps<typeof Image>) => {
+interface ImageWithFallbackProps extends Omit<React.ComponentProps<typeof Image>, "src"> {
+ fallbackImage?: string;
+ src: string;
+}
+
+const ImageWithFallback = ({ fallbackImage = "/assets/fallback.webp", src, ...props }: ImageWithFallbackProps) => {
  const [error, setError] = useState<boolean | null>(null);
 
  useEffect(() => {

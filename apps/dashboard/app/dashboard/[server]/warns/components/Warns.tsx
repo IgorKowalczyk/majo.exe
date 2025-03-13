@@ -22,7 +22,7 @@ export interface WarnItems extends Omit<GuildWarns, "createdAt"> {
  user: Pick<User, "name" | "discordId" | "avatar" | "global_name" | "discriminator"> | null;
 }
 
-export const Warns = React.forwardRef<ReturnType<typeof Table>, { data: WarnItems[]; guildId: string } & Omit<React.ComponentProps<typeof Table>, "columns">>(({ data, guildId, ...props }, ref) => {
+export const Warns = ({ data, guildId, ...props }: Omit<React.ComponentProps<typeof Table>, "columns"> & { data: WarnItems[]; guildId: string }) => {
  const [loadingWarns, setLoadingWarns] = useState<string[]>([]);
  const router = useRouter();
 
@@ -115,16 +115,15 @@ export const Warns = React.forwardRef<ReturnType<typeof Table>, { data: WarnItem
   },
  ];
 
- /* @ts-expect-error Table is not accepting columns */
- return <Table data={data} sortBy={[{ id: "createdAt", desc: true }]} {...props} columns={columns} ref={ref} />;
-});
+ return <Table data={data} sortBy={[{ id: "createdAt", desc: true }]} {...props} columns={columns} />;
+};
 
 export interface UserWarns extends Omit<GuildWarns, "createdById" | "link"> {
  loading: false;
  addedBy: Pick<User, "discordId" | "name" | "global_name" | "avatar" | "discriminator"> | null;
 }
 
-export const ManageUserWarns = React.forwardRef<ReturnType<typeof Table>, { data: UserWarns[]; guildId: string } & Omit<React.ComponentProps<typeof Table>, "columns">>(({ data, guildId, ...props }, ref) => {
+export const ManageUserWarns = ({ data, guildId, ...props }: React.ComponentProps<typeof Table> & { data: UserWarns[]; guildId: string }) => {
  const [loadingWarns, setLoadingWarns] = useState<string[]>([]);
  const [deletedWarns, setDeletedWarns] = useState<string[]>([]);
  const router = useRouter();
@@ -231,6 +230,5 @@ export const ManageUserWarns = React.forwardRef<ReturnType<typeof Table>, { data
   },
  ];
 
- /* @ts-expect-error Table is not accepting columns */
- return <Table data={data} {...props} sortBy={[{ id: "createdAt", desc: true }]} columns={columns} ref={ref} />;
-});
+ return <Table data={data} {...props} sortBy={[{ id: "createdAt", desc: true }]} columns={columns} />;
+};

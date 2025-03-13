@@ -4,7 +4,12 @@ import React, { HTMLAttributes } from "react";
 import { Icons, iconVariants } from "@/components/ui/Icons";
 import { cn } from "@/lib/utils";
 
-export const Embed = ({ className, children, color, buttons, ...props }: HTMLAttributes<HTMLDivElement> & { color: string; buttons?: React.ReactNode }) => (
+interface EmbedProps extends React.ComponentProps<"div"> {
+ color: string;
+ buttons?: React.ReactNode;
+}
+
+export const Embed = ({ className, children, color, buttons, ...props }: EmbedProps) => (
  <div className={cn("flex w-full max-w-[432px] items-start gap-1", className)} {...props}>
   <Image src={dashboardConfig.logo} alt={"Bot logo"} quality={95} width={40} height={40} className="size-10 shrink-0 self-baseline rounded-full" />
   <div className="flex w-full flex-col">
@@ -28,12 +33,18 @@ export const Embed = ({ className, children, color, buttons, ...props }: HTMLAtt
  </div>
 );
 
-export const EmbedTitle = ({ className, ...props }: HTMLAttributes<HTMLParagraphElement>) => <p className={cn("mb-2 font-bold", className)} {...props} />;
+export const EmbedTitle = ({ className, ...props }: React.ComponentProps<"p">) => <p className={cn("mb-2 font-bold", className)} {...props} />;
 
 export const EmbedDescription = ({ className, ...props }: HTMLAttributes<HTMLParagraphElement>) => <p className={cn("prose prose-invert", className)} {...props} />;
 
-interface EmbedImageProps {
+interface EmbedImageProps extends Omit<React.ComponentProps<typeof Image>, "src"> {
  src?: string;
 }
 
-export const EmbedImage = ({ src }: EmbedImageProps) => <>{src && src.startsWith("http") ? <Image src={src} alt={"Embed image"} quality={95} width={400} height={121} className="mt-4 w-full max-w-[400px] rounded-sm bg-white/10 [aspect-ratio:400/121]" /> : <div className="mt-4 w-full max-w-[400px] rounded-sm bg-white/10 [aspect-ratio:400/121]" />}</>;
+export const EmbedImage = ({ src, className, ...props }: EmbedImageProps) => {
+ if (src && src.startsWith("http")) {
+  return <Image {...props} src={src} quality={95} width={400} height={121} className={cn("mt-4 w-full max-w-[400px] rounded-sm bg-white/10 [aspect-ratio:400/121]", className)} />;
+ }
+
+ return <div className="mt-4 w-full max-w-[400px] rounded-sm bg-white/10 [aspect-ratio:400/121]" />;
+};

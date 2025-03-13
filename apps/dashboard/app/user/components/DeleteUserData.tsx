@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/Buttons";
 import { Dialog, DialogClose, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/Dialog";
 import { Icons, iconVariants } from "@/components/ui/Icons";
 
-export const DeleteUserData = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLDivElement>>(({ className, ...props }, ref) => {
+export const DeleteUserData = ({ className, ...props }: React.ComponentProps<"div">) => {
  const [loading, setLoading] = useState(false);
 
  const handleDelete = async () => {
@@ -43,7 +43,6 @@ export const DeleteUserData = React.forwardRef<HTMLDivElement, React.HTMLAttribu
    toast.success(json.message ?? "Your account has been deleted! We're sad to see you go.", {
     id: loadingToast,
    });
-   setIsOpen(false);
    return signOut({ redirect: true, callbackUrl: "/" });
   } else {
    return toast.error(json.error ?? "Something went wrong", {
@@ -53,7 +52,7 @@ export const DeleteUserData = React.forwardRef<HTMLDivElement, React.HTMLAttribu
  };
 
  return (
-  <div className={className} {...props} ref={ref}>
+  <div className={className} {...props}>
    <Dialog>
     <DialogTrigger asChild>
      <Button variant="red" className="mt-4">
@@ -94,4 +93,4 @@ export const DeleteUserData = React.forwardRef<HTMLDivElement, React.HTMLAttribu
    </Dialog>
   </div>
  );
-});
+};

@@ -8,7 +8,7 @@ import avatar06 from "public/assets/avatars/06.webp";
 import avatar07 from "public/assets/avatars/07.webp";
 import { AnimatedList } from "@/components/ui/effects/AnimatedList";
 
-export function Notifications() {
+export const Notifications = ({ ...props }: Omit<React.ComponentProps<typeof AnimatedList>, "children">) => {
  let notifications = [
   {
    author: "Kilo",
@@ -78,7 +78,7 @@ export function Notifications() {
  notifications = Array.from({ length: 10 }, () => notifications).flat();
 
  return (
-  <AnimatedList>
+  <AnimatedList {...props}>
    {notifications.map((item, index) => (
     <figure key={`notification-${item.content}-${item.author}-${index}`} className="relative mx-auto min-h-fit w-full max-w-[400px] transform-gpu overflow-hidden transition-all duration-200 ease-in-out">
      <div className="mt-1 flex flex-row items-center gap-1">
@@ -91,4 +91,4 @@ export function Notifications() {
    ))}
   </AnimatedList>
  );
-}
+};

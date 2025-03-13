@@ -2,8 +2,9 @@
 
 import Link from "next/link";
 import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "@/components/ui/Accordion";
+import { cn } from "@/lib/utils";
 
-export default function Faq() {
+export const Faq = ({ className, ...props }: React.ComponentProps<"div">) => {
  const items = [
   {
    question: "What is Majo.exe",
@@ -28,7 +29,7 @@ export default function Faq() {
  ];
 
  return (
-  <div className="mx-auto mt-9 w-full max-w-3xl rounded-xl">
+  <div className={cn("mx-auto mt-9 w-full max-w-3xl rounded-xl", className)} {...props}>
    {items.map((item, index) => (
     <Accordion type="single" defaultValue="item-1" collapsible key={`faq-${item.question}`}>
      <AccordionItem value={`item-${index + 1}`}>
@@ -46,4 +47,4 @@ export default function Faq() {
    </div>
   </div>
  );
-}
+};

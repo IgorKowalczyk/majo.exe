@@ -30,7 +30,7 @@ export interface AntiLinkProps {
  allChannels: APIGuildChannel<GuildChannelType>[] | null[];
 }
 
-export const AntiLink = React.forwardRef<HTMLDivElement, AntiLinkProps>(({ serverId, enabled, existingActions, existingExemptRoles, existingExemptChannels, allRoles, allChannels }, ref) => {
+export const AntiLink = ({ serverId, enabled, existingActions, existingExemptRoles, existingExemptChannels, allRoles, allChannels }: AntiLinkProps) => {
  const [isEnabled, setIsEnabled] = useState(enabled ?? false);
  const [loading, setLoading] = useState(false);
  const [actions, setActions] = useState(existingActions || []);
@@ -88,7 +88,7 @@ export const AntiLink = React.forwardRef<HTMLDivElement, AntiLinkProps>(({ serve
  };
 
  return (
-  <div ref={ref}>
+  <div>
    <Header className={cn(headerVariants({ variant: "h2", margin: "normal" }))}>
     <Icons.unlink className={iconVariants({ variant: "large", className: "stroke-2!" })} />
     Anti-Link <Switch checked={isEnabled} onCheckedChange={save} disabled={loading} />
@@ -191,4 +191,4 @@ export const AntiLink = React.forwardRef<HTMLDivElement, AntiLinkProps>(({ serve
    </div>
   </div>
  );
-});
+};

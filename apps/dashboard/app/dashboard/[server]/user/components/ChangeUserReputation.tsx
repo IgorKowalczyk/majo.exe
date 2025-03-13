@@ -8,13 +8,13 @@ import { Icons, iconVariants } from "@/components/ui/Icons";
 import { InputWithIcon } from "@/components/ui/Input";
 import { cn } from "@/lib/utils";
 
-interface ChangeUserReputationProps extends React.HTMLAttributes<HTMLFormElement> {
+interface ChangeUserReputationProps extends React.ComponentProps<"form"> {
  userId: string;
  guildId: string;
  userReputation?: number;
 }
 
-export const ChangeUserReputation = React.forwardRef<HTMLFormElement, ChangeUserReputationProps>(({ userId, guildId, userReputation, className, ...props }, ref) => {
+export const ChangeUserReputation = ({ userId, guildId, userReputation, className, ...props }: ChangeUserReputationProps) => {
  const [userRep, setUserRep] = useState(userReputation ?? 0);
  const [loading, setLoading] = useState(false);
  const [error, setError] = useState(false);
@@ -73,7 +73,7 @@ export const ChangeUserReputation = React.forwardRef<HTMLFormElement, ChangeUser
  };
 
  return (
-  <form className={cn("flex flex-col items-start gap-2", className)} onSubmit={handleReputation} {...props} ref={ref}>
+  <form className={cn("flex flex-col items-start gap-2", className)} onSubmit={handleReputation} {...props}>
    <InputWithIcon
     type="number"
     icon={<Icons.messageDot className={iconVariants({ variant: "normal" })} />}
@@ -100,4 +100,4 @@ export const ChangeUserReputation = React.forwardRef<HTMLFormElement, ChangeUser
    </Button>
   </form>
  );
-});
+};

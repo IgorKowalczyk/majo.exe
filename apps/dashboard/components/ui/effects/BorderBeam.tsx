@@ -1,6 +1,6 @@
 import { cn } from "@/lib/utils";
 
-interface BorderBeamProps {
+interface BorderBeamProps extends React.ComponentProps<"div"> {
  className?: string;
  size?: number;
  duration?: number;
@@ -11,7 +11,7 @@ interface BorderBeamProps {
  delay?: number;
 }
 
-export const BorderBeam = ({ className, size = 200, duration = 15, anchor = 90, borderWidth = 1.5, colorFrom = "#ffaa40", colorTo = "#9c40ff", delay = 0 }: BorderBeamProps) => {
+export const BorderBeam = ({ className, size = 200, duration = 15, anchor = 90, borderWidth = 1.5, colorFrom = "#ffaa40", colorTo = "#9c40ff", delay = 0, ...props }: BorderBeamProps) => {
  return (
   <div
    style={
@@ -35,6 +35,7 @@ export const BorderBeam = ({ className, size = 200, duration = 15, anchor = 90, 
     "after:absolute after:aspect-square after:w-[calc(var(--size)*1px)] after:animate-border-beam after:[animation-delay:var(--delay)] after:[background:linear-gradient(to_left,var(--color-from),var(--color-to),transparent)] after:[offset-anchor:calc(var(--anchor)*1%)_50%] after:[offset-path:rect(0_auto_auto_0_round_calc(var(--size)*1px))]",
     className
    )}
+   {...props}
   />
  );
 };

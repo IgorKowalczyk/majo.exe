@@ -31,7 +31,7 @@ export interface AntiMentionProps {
  allChannels: APIGuildChannel<GuildChannelType>[] | null[];
 }
 
-export const AntiMention = React.forwardRef<HTMLDivElement, AntiMentionProps>(({ serverId, enabled, existingActions, existingExemptRoles, existingExemptChannels, allRoles, allChannels }, ref) => {
+export const AntiMention = ({ serverId, enabled, existingActions, existingExemptRoles, existingExemptChannels, allRoles, allChannels }: AntiMentionProps) => {
  const [isEnabled, setIsEnabled] = useState(enabled ?? false);
  const [loading, setLoading] = useState(false);
  const [actions, setActions] = useState(existingActions || []);
@@ -90,7 +90,7 @@ export const AntiMention = React.forwardRef<HTMLDivElement, AntiMentionProps>(({
  };
 
  return (
-  <div ref={ref}>
+  <div>
    <Header className={cn(headerVariants({ variant: "h2", margin: "normal" }))}>
     <Icons.mention className={iconVariants({ variant: "large", className: "stroke-2!" })} />
     Anti-Mention <Switch checked={isEnabled} onCheckedChange={save} disabled={loading} />
@@ -223,4 +223,4 @@ export const AntiMention = React.forwardRef<HTMLDivElement, AntiMentionProps>(({
    </div>
   </div>
  );
-});
+};

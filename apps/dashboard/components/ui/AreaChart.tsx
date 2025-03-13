@@ -6,11 +6,15 @@ import { Area, AreaProps, CartesianGrid, AreaChart as ReChartsAreaChart, Respons
 import { Icons, iconVariants } from "@/components/ui/Icons";
 import { cn } from "@/lib/utils";
 
+// eslint-disable-next-line typescript/no-explicit-any
 interface ChartTooltipProps extends TooltipProps<any, any> {
  categoryColors: string[];
  valueFormatter: (value: number) => string;
 }
 
+/**
+ * @deprecated Use /components/ui/BetaChart.tsx instead
+ */
 const ChartTooltip: React.FC<ChartTooltipProps> = ({ categoryColors, valueFormatter, ...props }) => {
  if (!props.active || !props.payload || !categoryColors) return null;
 
@@ -35,6 +39,7 @@ const ChartTooltip: React.FC<ChartTooltipProps> = ({ categoryColors, valueFormat
 };
 
 export interface AreaChartProps extends AreaProps {
+ // eslint-disable-next-line typescript/no-explicit-any
  data?: any[];
  categories?: string[];
  noDataText?: string;
@@ -49,7 +54,10 @@ export interface AreaChartProps extends AreaProps {
  valueFormatter?: (value: number) => string;
 }
 
-export const AreaChart = React.forwardRef<ReturnType<typeof ReChartsAreaChart>, AreaChartProps>(({ data, categories, noDataText = "No data", showGrid = true, showXAxis = true, showYAxis = true, className, ...props }, ref) => {
+/**
+ * @deprecated Use /components/ui/BetaChart.tsx instead
+ */
+export const AreaChart = ({ data, categories, noDataText = "No data", showGrid = true, showXAxis = true, showYAxis = true, className, ...props }: AreaChartProps) => {
  if (!categories) return null;
 
  const yAxisDomain: [number | string, number | string] = props.autoMinValue ? [0, "auto"] : [props.minValue ?? 0, props.maxValue ?? "auto"];
@@ -61,7 +69,7 @@ export const AreaChart = React.forwardRef<ReturnType<typeof ReChartsAreaChart>, 
  const valueFormatter = (value: number) => (props.valueFormatter ? props.valueFormatter(value) : value.toString());
 
  return (
-  <div className={cn("h-80 w-full", className)} ref={ref as React.Ref<HTMLDivElement>}>
+  <div className={cn("h-80 w-full", className)}>
    <ResponsiveContainer className="size-full">
     {data && data.length > 0 ? (
      <ReChartsAreaChart data={data}>
@@ -82,22 +90,7 @@ export const AreaChart = React.forwardRef<ReturnType<typeof ReChartsAreaChart>, 
        </defs>
       ))}
       {categories.map((category) => (
-       <Area // prettier
-        className="fill-accent-primary stroke-accent-primary"
-        activeDot={{ className: "stroke-accent-primary fill-accent-primary" }}
-        dot={false}
-        key={category}
-        name={category}
-        stroke=""
-        fill={`url(#${category.replace(/ /g, "-")})`}
-        strokeWidth={2}
-        strokeLinejoin="round"
-        strokeLinecap="round"
-        isAnimationActive={true}
-        animationDuration={1500}
-        {...props}
-        dataKey={category}
-       />
+       <Area className="fill-accent-primary stroke-accent-primary" activeDot={{ className: "stroke-accent-primary fill-accent-primary" }} dot={false} key={category} name={category} stroke="" fill={`url(#${category.replace(/ /g, "-")})`} strokeWidth={2} strokeLinejoin="round" strokeLinecap="round" isAnimationActive={true} animationDuration={1500} dataKey={category} />
       ))}
      </ReChartsAreaChart>
     ) : (
@@ -109,4 +102,4 @@ export const AreaChart = React.forwardRef<ReturnType<typeof ReChartsAreaChart>, 
    </ResponsiveContainer>
   </div>
  );
-});
+};

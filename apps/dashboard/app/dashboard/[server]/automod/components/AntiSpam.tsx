@@ -29,7 +29,7 @@ export interface AntiSpamProps {
  allChannels: APIGuildChannel<GuildChannelType>[] | null[];
 }
 
-export const AntiSpam = React.forwardRef<HTMLDivElement, AntiSpamProps>(({ serverId, enabled, existingActions, existingExemptRoles, existingExemptChannels, allRoles, allChannels }, ref) => {
+export const AntiSpam = ({ serverId, enabled, existingActions, existingExemptRoles, existingExemptChannels, allRoles, allChannels }: AntiSpamProps) => {
  const [isEnabled, setIsEnabled] = useState(enabled ?? false);
  const [loading, setLoading] = useState(false);
  const [actions, setActions] = useState(existingActions || []);
@@ -87,7 +87,7 @@ export const AntiSpam = React.forwardRef<HTMLDivElement, AntiSpamProps>(({ serve
  };
 
  return (
-  <div ref={ref}>
+  <div>
    <Header className={cn(headerVariants({ variant: "h2", margin: "normal" }))}>
     <Icons.messageOff className={iconVariants({ variant: "large", className: "stroke-2!" })} />
     Anti-Spam <Switch checked={isEnabled} onCheckedChange={save} disabled={loading} />
@@ -193,4 +193,4 @@ export const AntiSpam = React.forwardRef<HTMLDivElement, AntiSpamProps>(({ serve
    </div>
   </div>
  );
-});
+};

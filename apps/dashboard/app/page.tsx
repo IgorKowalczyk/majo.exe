@@ -16,7 +16,7 @@ import Balancer from "react-wrap-balancer";
 import { BotReplacement } from "./_components/BotReplacement";
 import { statisticsChartConfig } from "./dashboard/[server]/statistics/page";
 import { AddReaction } from "@/app/_components/AddReaction";
-import Faq from "@/app/_components/Faq";
+import { Faq } from "@/app/_components/Faq";
 import { LevelUp } from "@/app/_components/LevelUp";
 import { Notifications } from "@/app/_components/Notifications";
 import { LogDisclosure } from "@/app/dashboard/[server]/dashboard-logs/components/Logs";

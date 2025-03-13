@@ -7,13 +7,13 @@ import { toast } from "sonner";
 import { Switch } from "@/components/ui/Switch";
 import { Tooltip } from "@/components/ui/Tooltip";
 
-export interface UpdateCommandsProps extends React.HTMLAttributes<HTMLDivElement> {
+export interface UpdateCommandsProps extends React.ComponentProps<typeof Tooltip> {
  serverId: Snowflake;
  commandName: string;
  commandEnabled: boolean;
 }
 
-export const UpdateCommands = React.forwardRef<HTMLDivElement, UpdateCommandsProps>(({ serverId, commandName, commandEnabled, ...props }, ref) => {
+export const UpdateCommands = ({ serverId, commandName, commandEnabled, ...props }: UpdateCommandsProps) => {
  const [enabled, setEnabled] = useState(commandEnabled);
  const [loading, setLoading] = useState(false);
  const router = useRouter();
@@ -60,8 +60,8 @@ export const UpdateCommands = React.forwardRef<HTMLDivElement, UpdateCommandsPro
  };
 
  return (
-  <Tooltip content={enabled ? "Disable command" : loading ? "Changing status..." : "Enable command"} ref={ref} {...props}>
+  <Tooltip {...props} content={enabled ? "Disable command" : loading ? "Changing status..." : "Enable command"}>
    <Switch checked={enabled} disabled={loading} onCheckedChange={() => updateCommand()} />
   </Tooltip>
  );
-});
+};

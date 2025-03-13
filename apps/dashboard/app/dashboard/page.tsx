@@ -8,7 +8,7 @@ import { Icons, iconVariants } from "@/components/ui/Icons";
 import Image from "@/components/ui/Image";
 import { cn } from "@/lib/utils";
 
-export default async function Dashboard() {
+export default async function Page() {
  const session = await getSession();
  if (!session || !session.access_token) redirect("/auth/login");
 

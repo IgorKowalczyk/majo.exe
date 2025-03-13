@@ -7,10 +7,11 @@ import { Button } from "@/components/ui/Buttons";
 import { Dialog, DialogClose, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/Dialog";
 import { Icons, iconVariants } from "@/components/ui/Icons";
 
-export interface DeleteServerDataProps extends React.HTMLAttributes<HTMLDivElement> {
+export interface DeleteServerDataProps extends React.ComponentProps<"div"> {
  serverId: string;
 }
-export const DeleteServerData = React.forwardRef<HTMLDivElement, DeleteServerDataProps>(({ serverId, className, ...props }, ref) => {
+
+export const DeleteServerData = ({ serverId, className, ...props }: DeleteServerDataProps) => {
  const [loading, setLoading] = useState(false);
  const router = useRouter();
 
@@ -59,7 +60,7 @@ export const DeleteServerData = React.forwardRef<HTMLDivElement, DeleteServerDat
  };
 
  return (
-  <div className={className} {...props} ref={ref}>
+  <div className={className} {...props}>
    <Dialog>
     <DialogTrigger asChild>
      <Button variant="red" className="mt-4">
@@ -100,4 +101,4 @@ export const DeleteServerData = React.forwardRef<HTMLDivElement, DeleteServerDat
    </Dialog>
   </div>
  );
-});
+};

@@ -10,14 +10,14 @@ import { Input } from "@/components/ui/Input";
 import { Switch } from "@/components/ui/Switch";
 import { cn } from "@/lib/utils";
 
-interface PublicDashboardProps {
+interface PublicDashboardProps extends React.ComponentProps<"div"> {
  enabled: boolean;
  serverId: string;
  vanityURL: string;
  className?: string;
 }
 
-export const PublicDashboard = React.forwardRef<HTMLDivElement, PublicDashboardProps>(({ enabled, serverId, vanityURL, className, ...props }, ref) => {
+export const PublicDashboard = ({ enabled, serverId, vanityURL, className, ...props }: PublicDashboardProps) => {
  const [isEnabled, setIsEnabled] = useState(enabled);
  const [disabled, setDisabled] = useState(false);
  const [vanity, setVanity] = useState(vanityURL);
@@ -135,7 +135,7 @@ export const PublicDashboard = React.forwardRef<HTMLDivElement, PublicDashboardP
  };
 
  return (
-  <div className={cn("mt-6", className)} ref={ref} {...props}>
+  <div className={cn("mt-6", className)} {...props}>
    <div className="flex flex-row items-center gap-2">
     <Header className={cn(headerVariants({ variant: "h3", margin: "normal" }))}>
      <Icons.Power className={iconVariants({ variant: "large" })} />
@@ -216,4 +216,4 @@ export const PublicDashboard = React.forwardRef<HTMLDivElement, PublicDashboardP
    )}
   </div>
  );
-});
+};

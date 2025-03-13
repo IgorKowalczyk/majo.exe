@@ -19,11 +19,9 @@ export default async function Layout(props: { params: Promise<{ server: string }
  const { children } = props;
 
  return (
-  <>
-   <NavigationGuardProvider>
-    <SideNavigation server={params.server} />
-    <div className="ml-0 flex-1 p-6 pt-20 md:pl-72">{children}</div>
-   </NavigationGuardProvider>
-  </>
+  <NavigationGuardProvider>
+   <SideNavigation server={params.server} />
+   <div className="ml-0 flex-1 p-6 pt-20 md:pl-72">{children}</div>
+  </NavigationGuardProvider>
  );
 }

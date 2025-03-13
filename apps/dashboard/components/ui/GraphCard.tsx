@@ -1,8 +1,8 @@
-import React, { HTMLAttributes } from "react";
+import React from "react";
 import Header, { headerVariants } from "@/components/ui/Headers";
 import { cn } from "@/lib/utils";
 
-interface GraphCardProps extends HTMLAttributes<HTMLDivElement> {
+interface GraphCardProps extends React.ComponentProps<"div"> {
  title: string;
  description: string;
  value: string;

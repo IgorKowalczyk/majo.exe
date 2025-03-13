@@ -10,12 +10,12 @@ import { Icons, iconVariants } from "@/components/ui/Icons";
 import { Input } from "@/components/ui/Input";
 import { cn } from "@/lib/utils";
 
-interface ChangeEmbedColorProps extends React.HTMLAttributes<HTMLDivElement> {
+interface ChangeEmbedColorProps extends React.ComponentProps<"div"> {
  serverId: string;
  serverColor: string;
 }
 
-export const ChangeEmbedColor = React.forwardRef<HTMLDivElement, ChangeEmbedColorProps>(({ serverId, serverColor, className, ...props }, ref) => {
+export const ChangeEmbedColor = ({ serverId, serverColor, className, ...props }: ChangeEmbedColorProps) => {
  const [color, setColor] = useState(serverColor ?? globalConfig.defaultColor);
  const [buttonText, setButtonText] = useState("Save");
  const [resetButtonText, setResetButtonText] = useState("Reset");
@@ -109,7 +109,7 @@ export const ChangeEmbedColor = React.forwardRef<HTMLDivElement, ChangeEmbedColo
  };
 
  return (
-  <div className={cn("flex flex-col gap-4 lg:flex-row lg:gap-8 lg:divide-x lg:divide-neutral-800", className)} ref={ref} {...props}>
+  <div className={cn("flex flex-col gap-4 lg:flex-row lg:gap-8 lg:divide-x lg:divide-neutral-800", className)} {...props}>
    <div className="flex flex-col items-center justify-center gap-4">
     <div>
      <div className="flex flex-row gap-1">
@@ -169,4 +169,4 @@ export const ChangeEmbedColor = React.forwardRef<HTMLDivElement, ChangeEmbedColo
    </div>
   </div>
  );
-});
+};

@@ -5,12 +5,12 @@ import { toast } from "sonner";
 import Image from "@/components/ui/Image";
 import { cn } from "@/lib/utils";
 
-export interface LevelUpProps extends React.HTMLAttributes<HTMLDivElement> {
+export interface LevelUpProps extends React.ComponentProps<"div"> {
  avatar: string;
  username: string;
 }
 
-export const LevelUp = React.forwardRef<HTMLDivElement, LevelUpProps>(({ avatar, username, className, ...props }, ref) => {
+export const LevelUp = ({ avatar, username, className, ...props }: LevelUpProps) => {
  const [level, setLevel] = useState<number>(2);
  const [xp, setXp] = useState<number>(46);
 
@@ -23,7 +23,7 @@ export const LevelUp = React.forwardRef<HTMLDivElement, LevelUpProps>(({ avatar,
  };
 
  return (
-  <div className={cn("mt-6 flex flex-row items-center gap-1", className)} ref={ref} {...props}>
+  <div className={cn("mt-6 flex flex-row items-center gap-1", className)} {...props}>
    <Image src={avatar} alt="User avatar" quality={40} width={40} height={64} className="size-10 shrink-0 self-baseline rounded-full" />
    <span className="ml-2">
     <span className="font-bold">{username}</span> leveled up to <span className="font-bold text-accent-primary [font-feature-settings:'tnum']">level {level}</span>{" "}
@@ -36,4 +36,4 @@ export const LevelUp = React.forwardRef<HTMLDivElement, LevelUpProps>(({ avatar,
    </span>
   </div>
  );
-});
+};

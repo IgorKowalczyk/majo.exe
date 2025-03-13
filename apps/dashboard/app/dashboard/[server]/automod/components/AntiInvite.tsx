@@ -30,7 +30,7 @@ export interface AntiInviteProps {
  allChannels: APIGuildChannel<GuildChannelType>[] | null[];
 }
 
-export const AntiInvite = React.forwardRef<HTMLDivElement, AntiInviteProps>(({ serverId, enabled, existingActions, existingExemptRoles, existingExemptChannels, allRoles, allChannels }, ref) => {
+export const AntiInvite = ({ serverId, enabled, existingActions, existingExemptRoles, existingExemptChannels, allRoles, allChannels }: AntiInviteProps) => {
  const [isEnabled, setIsEnabled] = useState(enabled ?? false);
  const [loading, setLoading] = useState(false);
  const [actions, setActions] = useState(existingActions || []);
@@ -88,7 +88,7 @@ export const AntiInvite = React.forwardRef<HTMLDivElement, AntiInviteProps>(({ s
  };
 
  return (
-  <div ref={ref}>
+  <div>
    <Header className={cn(headerVariants({ variant: "h2", margin: "normal" }))}>
     <Icons.userBlock className={iconVariants({ variant: "large", className: "stroke-2!" })} />
     Anti-Invite <Switch checked={isEnabled} onCheckedChange={save} disabled={loading} />
@@ -191,4 +191,4 @@ export const AntiInvite = React.forwardRef<HTMLDivElement, AntiInviteProps>(({ s
    </div>
   </div>
  );
-});
+};

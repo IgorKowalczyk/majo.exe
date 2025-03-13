@@ -64,7 +64,7 @@ export function MenuLink({ children, href, variant, target, ...props }: MenuLink
  );
 }
 
-export function Menu({ children, ...props }: React.ComponentPropsWithoutRef<typeof DefaultMenu>) {
+export function Menu({ children, ...props }: React.ComponentProps<typeof DefaultMenu>) {
  return (
   <DefaultMenu as="div" className="relative" {...props}>
    {children}

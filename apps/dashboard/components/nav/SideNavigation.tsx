@@ -9,22 +9,22 @@ import { Button, buttonVariants } from "@/components/ui/Buttons";
 import { Icons, iconVariants } from "@/components/ui/Icons";
 import { cn } from "@/lib/utils";
 
-export const SideNavLink = React.forwardRef<HTMLAnchorElement, React.AnchorHTMLAttributes<HTMLAnchorElement> & { href: string }>(({ href, children, ...props }, ref) => {
+export const SideNavLink = ({ href, children, ...props }: React.ComponentProps<typeof Link>) => {
  const router = usePathname();
  const isSelected = (path: string) => router === path;
 
  return (
-  <Link href={href} className={`${isSelected(href) ? "bg-button-primary/20 before:h-[29px]" : "hover:bg-button-primary/20"} flex h-[45px] w-full items-center gap-2 rounded-lg py-2 pr-4 duration-200 before:h-0 before:rounded-r-md before:border-l-4 before:border-button-primary before:duration-200 hover:bg-button-primary/20 hover:before:h-[29px]`} {...props} ref={ref}>
+  <Link href={href} className={`${isSelected(href.toString()) ? "bg-button-primary/20 before:h-[29px]" : "hover:bg-button-primary/20"} flex h-[45px] w-full items-center gap-2 rounded-lg py-2 pr-4 duration-200 before:h-0 before:rounded-r-md before:border-l-4 before:border-button-primary before:duration-200 hover:bg-button-primary/20 hover:before:h-[29px]`} {...props}>
    {children}
   </Link>
  );
-});
+};
 
-export interface SideNavigationProps extends React.HTMLAttributes<HTMLDivElement> {
+export interface SideNavigationProps extends React.ComponentProps<"aside"> {
  server: string;
 }
 
-export const SideNavigation: React.FC<SideNavigationProps> = ({ className, server, ...props }) => {
+export const SideNavigation = ({ className, server, ...props }: SideNavigationProps) => {
  const { sideNavVisible, toggleSideNav } = use(VisibilityContext);
  const router = useRouter();
 

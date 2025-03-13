@@ -28,7 +28,22 @@ export interface ChangeCustomMessagesProps extends React.HTMLAttributes<HTMLDivE
  replacedData: { user: string; guild: string };
 }
 
-export const ChangeCustomMessages = React.forwardRef<HTMLDivElement, ChangeCustomMessagesProps>(({ serverId, enabled, title, description, existingChannel, allChannels, type, defaultMessages, replacedData, className, ...props }, ref) => {
+export const ChangeCustomMessages = ({
+ ref,
+ serverId,
+ enabled,
+ title,
+ description,
+ existingChannel,
+ allChannels,
+ type,
+ defaultMessages,
+ replacedData,
+ className,
+ ...props
+}: ChangeCustomMessagesProps & {
+ ref: React.RefObject<HTMLDivElement>;
+}) => {
  const [isEnabled, setIsEnabled] = useState(enabled ?? false);
  const [loading, setLoading] = useState(false);
  const [newTitle, setNewTitle] = useState(title);
@@ -225,7 +240,7 @@ export const ChangeCustomMessages = React.forwardRef<HTMLDivElement, ChangeCusto
        <Embed color={globalConfig.defaultColor}>
         <EmbedTitle>{(newTitle || defaultMessages.title).replaceAll(/{user}/g, replacedData.user).replaceAll(/{guild}/g, replacedData.guild)}</EmbedTitle>
         <EmbedDescription dangerouslySetInnerHTML={{ __html: toHTML((newDescription?.trim() || defaultMessages.description).replaceAll(/{user}/g, replacedData.user).replaceAll(/{guild}/g, replacedData.guild || "")) }} />
-        <EmbedImage />
+        <EmbedImage alt="Majo.exe logo" />
        </Embed>
       </div>
      </div>
@@ -246,4 +261,4 @@ export const ChangeCustomMessages = React.forwardRef<HTMLDivElement, ChangeCusto
    </div>
   </div>
  );
-});
+};

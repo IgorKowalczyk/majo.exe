@@ -1,6 +1,6 @@
 "use client";
 import type { CommandCategories } from "@majoexe/database/types";
-import React, { useEffect, useState, useMemo, HTMLAttributes } from "react";
+import React, { useEffect, useState, useMemo } from "react";
 import Header, { headerVariants } from "@/components/ui/Headers";
 import { Icons, iconVariants } from "@/components/ui/Icons";
 import { InputWithIcon } from "@/components/ui/Input";
@@ -9,12 +9,12 @@ import { Tooltip } from "@/components/ui/Tooltip";
 import { Command } from "@/lib/types";
 import { cn } from "@/lib/utils";
 
-export interface DiscordCommandsProps extends HTMLAttributes<HTMLDivElement> {
+export interface DiscordCommandsProps extends React.ComponentProps<"div"> {
  commands: Command[];
  categories: CommandCategories[];
 }
 
-export const DiscordCommands = React.forwardRef<HTMLDivElement, DiscordCommandsProps>(({ commands, categories, className, ...props }, ref) => {
+export const DiscordCommands = ({ commands, categories, className, ...props }: DiscordCommandsProps) => {
  const [filteredCategories, setFilteredCategories] = useState<CommandCategories[]>(categories);
  const [search, setSearch] = useState("");
  const [mounted, setMounted] = useState(false);
@@ -64,7 +64,7 @@ export const DiscordCommands = React.forwardRef<HTMLDivElement, DiscordCommandsP
  }
 
  return (
-  <div ref={ref} className={cn(className)} {...props}>
+  <div className={cn(className)} {...props}>
    <InputWithIcon placeholder="Search commands..." value={search} onChange={(e) => setSearch(e.target.value)} icon={<Icons.Search className={iconVariants({ variant: "normal", className: "text-white/50" })} />} className="w-full max-w-none!" />
    <div className="mt-8 flex flex-wrap gap-2">
     {categories.map((category) => (
@@ -164,4 +164,4 @@ export const DiscordCommands = React.forwardRef<HTMLDivElement, DiscordCommandsP
    )}
   </div>
  );
-});
+};

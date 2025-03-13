@@ -1,17 +1,15 @@
 import React, { CSSProperties, ReactNode } from "react";
 import { cn } from "@/lib/utils";
 
-interface AnimatedShinyTextProps {
+interface AnimatedShinyTextProps extends React.ComponentProps<"p"> {
  children: ReactNode;
  className?: string;
  shimmerWidth?: number;
 }
-/*children, className, shimmerWidth = 100 */
 
-export const AnimatedShinyText = React.forwardRef<HTMLParagraphElement, AnimatedShinyTextProps>(({ children, className, shimmerWidth = 100 }, ref) => {
+export const AnimatedShinyText = ({ children, className, shimmerWidth = 100 }: AnimatedShinyTextProps) => {
  return (
   <p
-   ref={ref}
    style={
     {
      "--shiny-width": `${shimmerWidth}px`,
@@ -32,4 +30,4 @@ export const AnimatedShinyText = React.forwardRef<HTMLParagraphElement, Animated
    {children}
   </p>
  );
-});
+};
