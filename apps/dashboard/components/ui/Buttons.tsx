@@ -16,8 +16,8 @@ export const buttonVariants = cva("flex cursor-pointer items-center rounded-lg p
  },
 });
 
-export const Button = React.forwardRef<HTMLButtonElement, React.ButtonHTMLAttributes<HTMLButtonElement> & VariantProps<typeof buttonVariants>>(({ className, variant, ...props }, ref) => (
- <button ref={ref} className={cn(buttonVariants({ variant }), className)} {...props} type={props.type ?? "button"}>
+export const Button = ({ className, variant, ...props }: React.ComponentProps<"button"> & VariantProps<typeof buttonVariants>) => (
+ <button className={cn(buttonVariants({ variant }), className)} {...props} type={props.type ?? "button"}>
   {props.children}
  </button>
-));
+);

@@ -1,4 +1,4 @@
-import { AutoModerationActionType } from "discord-api-types/v10";
+import { AutoModerationActionType, APIAutoModerationAction } from "discord-api-types/v10";
 import React from "react";
 import { Icons, iconVariants } from "@/components/ui/Icons";
 import { Skeleton } from "@/components/ui/Skeletons";
@@ -6,11 +6,11 @@ import { Switch } from "@/components/ui/Switch";
 import { Tooltip } from "@/components/ui/Tooltip";
 
 interface DeleteMessageProps {
- actions: any[];
- setActions: (actions: any[]) => void;
+ actions: APIAutoModerationAction[];
+ setActions: (actions: APIAutoModerationAction[]) => void;
 }
 
-const DeleteMessage: React.FC<DeleteMessageProps> = ({ actions, setActions }) => {
+const DeleteMessage = ({ actions, setActions }: DeleteMessageProps) => {
  const setDelete = () => {
   const deleteActionType = AutoModerationActionType.BlockMessage;
 
@@ -27,7 +27,7 @@ const DeleteMessage: React.FC<DeleteMessageProps> = ({ actions, setActions }) =>
      Delete message:
     </span>
    </Tooltip>
-   <Switch checked={actions.some((action) => action.type === AutoModerationActionType.BlockMessage)} onChange={setDelete} />
+   <Switch checked={actions.some((action) => action.type === AutoModerationActionType.BlockMessage)} onCheckedChange={setDelete} />
   </div>
  );
 };

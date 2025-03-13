@@ -1,52 +1,162 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+@import "tailwindcss/preflight.css" layer(base);
+@plugin "@tailwindcss/typography";
+@plugin "@headlessui/tailwindcss";
 
-:root {
- --chart-1: 158.66 60.82% 51.96%;
- --chart-2: 220 70% 50%;
- --chart-3: 30 80% 55%;
- --chart-4: 280 65% 60%;
- --chart-5: 340 75% 55%;
- --chart-6: 160 60% 45%;
+@import "tw-animate-css";
 
- --chart-blue: 228 100% 65%;
- --chart-red: 0 100% 65%;
+@custom-variant dark (&:is(.dark *));
+
+@theme {
+ --color-background-primary: #101110;
+ --color-background-secondary: #161617;
+ --color-background-navbar: #161617;
+ --color-background-menu: #161617;
+ --color-background-menu-button: #212120;
+ --color-accent-primary: #5865f2;
+ --color-button-primary: #5865f2;
+ --color-button-primary-hover: #4651c2;
+ --color-button-secondary: #4e5058;
+ --color-button-secondary-hover: #5e606a;
+ --color-button-action-primary: #ea4d4d;
+ --color-button-action-hover: #bb3e3e;
+ --color-transparent: transparent;
+
+ --background-image-main-gradient: linear-gradient(180deg, #101110 calc(100% - 400px), #161617 100%);
+
+ --animate-shiny-text: shiny-text 8s infinite;
+ --animate-accordion-down: accordion-down 300ms cubic-bezier(0.87, 0, 0.13, 1);
+ --animate-accordion-up: accordion-up 300ms cubic-bezier(0.87, 0, 0.13, 1);
+ --animate-border-beam: border-beam calc(20s) infinite linear;
+ --animate-meteor: meteor 5s linear infinite;
+ --animate-ripple: ripple var(--duration, 2s) ease calc(var(--i, 0) * 0.2s) infinite;
+
+ @keyframes shimmer {
+  100% {
+   transform: translateX(100%);
+  }
+ }
+
+ @keyframes shiny-text {
+  0%,
+  90%,
+  100% {
+   background-position: calc(-100% - var(--shiny-width)) 0;
+  }
+  30%,
+  60% {
+   background-position: calc(100% + var(--shiny-width)) 0;
+  }
+ }
+
+ @keyframes loader {
+  0% {
+   height: 0.5rem;
+   opacity: 0.2;
+  }
+  50% {
+   height: 1rem;
+   opacity: 1;
+  }
+  100% {
+   height: 0.5rem;
+   opacity: 0.2;
+  }
+ }
+
+ @keyframes blinking {
+  0% {
+   opacity: 0.2;
+  }
+  50% {
+   opacity: 1;
+  }
+  100% {
+   opacity: 0.2;
+  }
+ }
+
+ @keyframes accordion-down {
+  from {
+   height: 0;
+  }
+  to {
+   height: var(--radix-accordion-content-height);
+  }
+ }
+ @keyframes accordion-up {
+  from {
+   height: var(--radix-accordion-content-height);
+  }
+  to {
+   height: 0;
+  }
+ }
+
+ @keyframes border-beam {
+  100% {
+   offset-distance: 100%;
+  }
+ }
+
+ @keyframes meteor {
+  0% {
+   transform: rotate(215deg) translateX(0);
+   opacity: 1;
+  }
+  70% {
+   opacity: 1;
+  }
+  100% {
+   transform: rotate(215deg) translateX(-500px);
+   opacity: 0;
+  }
+ }
+
+ @keyframes ripple {
+  0%,
+  100% {
+   transform: translate(-50%, -50%) scale(1);
+  }
+  50% {
+   transform: translate(-50%, -50%) scale(0.9);
+  }
+ }
 }
 
-html,
-body {
- @apply m-0 scroll-smooth p-0 antialiased transition-[background-color] duration-300 motion-reduce:transition-none;
+@layer base {
+ *,
+ ::after,
+ ::before,
+ ::backdrop,
+ ::file-selector-button {
+  border-color: var(--color-gray-200, currentColor);
+ }
+
+ :root {
+  --chart-1: 158.66 60.82% 51.96%;
+  --chart-2: 220 70% 50%;
+  --chart-3: 30 80% 55%;
+  --chart-4: 280 65% 60%;
+  --chart-5: 340 75% 55%;
+  --chart-6: 160 60% 45%;
+
+  --chart-blue: 228 100% 65%;
+  --chart-red: 0 100% 65%;
+ }
+
+ html {
+  @apply scroll-smooth overflow-auto! pr-0!;
+ }
 }
 
-html {
- @apply !overflow-auto !pr-0;
+@utility text-fill-* {
+ -webkit-text-fill-color: --value(--color- *);
 }
 
 * {
  @apply box-border;
  scrollbar-color: #262626 transparent;
- scrollbar-width: thin;
-}
-
-::-webkit-scrollbar {
- @apply w-[10px];
-}
-
-::-webkit-scrollbar-track {
- @apply bg-background-primary rounded-xl;
-}
-
-::-webkit-scrollbar-thumb {
- @apply rounded-xl bg-neutral-700;
-}
-
-::-webkit-scrollbar-thumb:hover {
- @apply bg-neutral-600;
-}
-
-::-webkit-scrollbar-thumb:active {
- @apply bg-neutral-500;
 }
 
 .hide-scrollbar::-webkit-scrollbar {
@@ -65,16 +175,12 @@ html {
  scrollbar-width: inherit;
 }
 
-::selection {
- @apply bg-accent-primary/20;
-}
-
 #nprogress {
  @apply pointer-events-none;
 }
 
 #nprogress .bar {
- @apply fixed left-0 top-0 !z-[99999] h-[4px] w-full;
+ @apply fixed left-0 top-0 z-99999! h-[4px] w-full;
 }
 
 .nprogress-custom-parent #nprogress .spinner,
@@ -83,11 +189,11 @@ html {
 }
 
 [data-theme~="translucent"] {
- @apply backdrop-blur-[5px] motion-reduce:transition-none;
+ @apply backdrop-blur-xs motion-reduce:transition-none;
 }
 
 .tippy-backdrop {
- @apply !bg-neutral-700 !bg-opacity-[0.7];
+ @apply bg-neutral-700!;
 }
 
 img.twemoji {
@@ -102,39 +208,10 @@ main > div {
  @apply stroke-[1.5];
 }
 
-.custom-bg::after {
- background-image: radial-gradient(at 27% 37%, hsla(215, 98%, 61%, 1) 0px, transparent 50%), radial-gradient(at 97% 21%, hsla(256, 98%, 72%, 1) 0px, transparent 50%), radial-gradient(at 52% 99%, hsla(354, 98%, 61%, 1) 0px, transparent 50%), radial-gradient(at 10% 29%, hsla(133, 96%, 67%, 1) 0px, transparent 50%), radial-gradient(at 97% 96%, hsla(38, 60%, 74%, 1) 0px, transparent 50%), radial-gradient(at 33% 50%, hsla(222, 67%, 73%, 1) 0px, transparent 50%), radial-gradient(at 79% 53%, hsla(343, 68%, 79%, 1) 0px, transparent 50%);
- filter: blur(100px) saturate(150%);
-}
-
 canvas {
  @apply ml-auto flex items-center;
 }
 
 code {
  @apply bg-background-secondary inline rounded-md border border-neutral-800 px-2 py-1;
-}
-
-.from-black-10\/50 {
- --tw-gradient-from: rgba(0, 0, 0, 0.5) var(--tw-gradient-from-position);
- --tw-gradient-to: transparent var(--tw-gradient-to-position);
- --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
-}
-
-[data-sonner-toaster][data-theme="dark"] {
- --normal-bg: rgb(22, 22, 23) !important;
- --normal-border: rgb(38, 38, 38) !important;
- --normal-text: rgb(255, 255, 255) !important;
- --success-bg: rgb(22, 41, 31) !important;
- --success-border: rgb(34, 197, 94) !important;
- --success-text: rgb(255, 255, 255) !important;
- --info-bg: rgb(27, 33, 47) !important;
- --info-border: rgb(59, 130, 246) !important;
- --info-text: rgb(255, 255, 255) !important;
- --warning-bg: rgb(44, 37, 22) !important;
- --warning-border: rgb(245, 158, 11) !important;
- --warning-text: rgb(255, 255, 255) !important;
- --error-bg: rgb(44, 26, 29) !important;
- --error-border: rgb(239, 68, 68) !important;
- --error-text: rgb(255, 255, 255) !important;
 }

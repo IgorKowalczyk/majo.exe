@@ -22,7 +22,7 @@ export function LogDisclosure({ item, guildId, preview = false }: { item: LogIte
  return (
   <Disclosure
    button={
-    <>
+    <div className="flex flex-row items-center gap-4">
      <div className="flex flex-row items-center gap-4">{item.user.fullAvatar ? <Image src={item.user.fullAvatar} alt={`${item.user.name} avatar`} quality={95} width={48} height={48} className="size-12 shrink-0 rounded-full" /> : <>{item.user.avatar && <Image src={`/api/user/avatar/${item.user.discordId}`} alt={`${item.user.name} avatar`} quality={95} width={48} height={48} className="size-12 shrink-0 rounded-full" />}</>}</div>
      <div className="flex flex-col">
       <p className="text-left font-bold">
@@ -33,7 +33,7 @@ export function LogDisclosure({ item, guildId, preview = false }: { item: LogIte
        {formatDate(item.createdAt)} ({formatDuration(new Date().getTime() - new Date(item.createdAt).getTime())} ago)
       </span>
      </div>
-    </>
+    </div>
    }
   >
    <p>

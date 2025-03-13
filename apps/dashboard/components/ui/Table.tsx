@@ -30,7 +30,7 @@ export function TableColumnHeader<TData, TValue>({ column, title, className }: D
  return (
   <div className={cn("flex items-center space-x-2", className)}>
    <Menu>
-    <MenuButton aria-label={column.getIsSorted() === "desc" ? "Sorted descending. Click to sort ascending." : column.getIsSorted() === "asc" ? "Sorted ascending. Click to sort descending." : "Not sorted. Click to sort ascending."} className="ml-0 h-8 gap-2 border-transparent px-3 !text-xs font-medium uppercase text-gray-500">
+    <MenuButton aria-label={column.getIsSorted() === "desc" ? "Sorted descending. Click to sort ascending." : column.getIsSorted() === "asc" ? "Sorted ascending. Click to sort descending." : "Not sorted. Click to sort ascending."} className="ml-0 h-8 gap-2 border-transparent px-3 text-xs! font-medium uppercase text-gray-500">
      <span>{title}</span>
      {column.getCanSort() && (
       <div className="relative size-4">
@@ -162,7 +162,7 @@ export const Table = <TData, TValue>({ columns, data, sortBy = [{ id: "id", desc
 
     {showControls && (
      <div className="mt-2 flex items-center justify-between border-t border-t-neutral-800 pt-2 text-neutral-500">
-      <Button variant="secondary" onClick={() => table.previousPage()} disabled={!table.getCanPreviousPage()} className="!w-fit">
+      <Button variant="secondary" onClick={() => table.previousPage()} disabled={!table.getCanPreviousPage()} className="w-fit!">
        <Icons.arrowLeft className={iconVariants({ variant: "button" })} />
        Previous
       </Button>
@@ -170,9 +170,9 @@ export const Table = <TData, TValue>({ columns, data, sortBy = [{ id: "id", desc
        Page {table.getState().pagination.pageIndex + 1} of {table.getPageCount()}
       </div>
       <div className="flex items-center space-x-2">
-       <Button variant="secondary" onClick={() => table.nextPage()} disabled={!table.getCanNextPage()} className="!w-fit">
+       <Button variant="secondary" onClick={() => table.nextPage()} disabled={!table.getCanNextPage()} className="w-fit!">
         Next
-        <Icons.arrowRight className={iconVariants({ variant: "button", className: "!-mr-1 ml-2" })} />
+        <Icons.arrowRight className={iconVariants({ variant: "button", className: "-mr-1! ml-2" })} />
        </Button>
       </div>
      </div>

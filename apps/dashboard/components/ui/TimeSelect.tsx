@@ -48,10 +48,10 @@ export interface TimeSelectProps extends React.ComponentProps<typeof ListBox> {
  setSelectedChoice: (value: number) => void;
 }
 
-export const TimeSelect = React.forwardRef<React.ElementRef<typeof ListBox>, TimeSelectProps>(({ selectedChoice, setSelectedChoice, ...props }, ref) => (
+export const TimeSelect = ({ selectedChoice, setSelectedChoice, ...props }: TimeSelectProps) => (
  <>
   {choices && choices.length > 0 ? (
-   <ListBox value={selectedChoice.toString()} onChange={(value: string) => setSelectedChoice(parseInt(value))} {...props} ref={ref}>
+   <ListBox value={selectedChoice.toString()} onChange={(value: string) => setSelectedChoice(parseInt(value))} {...props}>
     <ListBoxButton>
      <span className="flex items-center gap-2 truncate">{choices.find((choice) => choice?.time === selectedChoice)?.title || "No time selected"}</span>
      <ListBoxArrow />
@@ -72,4 +72,4 @@ export const TimeSelect = React.forwardRef<React.ElementRef<typeof ListBox>, Tim
    </div>
   )}
  </>
-));
+);

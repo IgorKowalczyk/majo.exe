@@ -122,7 +122,7 @@ export default async function Page(props: { params: Promise<{ server: string }> 
     </div>
    </Header>
 
-   <Block className="!mt-4 flex w-full flex-col gap-4 !p-4 sm:flex-row sm:gap-0">
+   <Block className="mt-4! flex w-full flex-col gap-4 p-4! sm:flex-row sm:gap-0">
     <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
      <div className="flex items-center">
       <div className="mr-2 size-3 shrink-0 rounded-full bg-[#81848f]" />

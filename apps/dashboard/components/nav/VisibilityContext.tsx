@@ -1,16 +1,24 @@
 "use client";
 
-import React, { createContext, useState, forwardRef } from "react";
+import React, { createContext, useState, ReactNode } from "react";
 
-export const VisibilityContext = createContext({ sideNavVisible: false, toggleSideNav: () => {} } as { sideNavVisible: boolean; toggleSideNav: () => void });
+interface VisibilityContextProps {
+ sideNavVisible: boolean;
+ toggleSideNav: () => void;
+}
 
-export const VisibilityProvider = forwardRef<HTMLDivElement, { children: React.ReactNode }>(({ children }, ref) => {
+export const VisibilityContext = createContext<VisibilityContextProps>({
+ sideNavVisible: false,
+ toggleSideNav: () => {},
+});
+
+interface VisibilityProviderProps {
+ children: ReactNode;
+}
+
+export const VisibilityProvider = ({ children }: VisibilityProviderProps) => {
  const [sideNavVisible, setSideNavVisible] = useState(false);
  const toggleSideNav = () => setSideNavVisible(!sideNavVisible);
 
- return (
-  <VisibilityContext value={{ sideNavVisible, toggleSideNav }}>
-   <div ref={ref}>{children}</div>
-  </VisibilityContext>
- );
-});
+ return <VisibilityContext value={{ sideNavVisible, toggleSideNav }}>{children}</VisibilityContext>;
+};

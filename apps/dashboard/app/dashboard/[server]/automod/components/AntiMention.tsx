@@ -31,7 +31,7 @@ export interface AntiMentionProps {
  allChannels: APIGuildChannel<GuildChannelType>[] | null[];
 }
 
-export const AntiMention = React.forwardRef<HTMLDivElement, AntiMentionProps>(({ serverId, enabled, existingActions, existingExemptRoles, existingExemptChannels, allRoles, allChannels }, ref) => {
+export const AntiMention = ({ serverId, enabled, existingActions, existingExemptRoles, existingExemptChannels, allRoles, allChannels }: AntiMentionProps) => {
  const [isEnabled, setIsEnabled] = useState(enabled ?? false);
  const [loading, setLoading] = useState(false);
  const [actions, setActions] = useState(existingActions || []);
@@ -90,10 +90,10 @@ export const AntiMention = React.forwardRef<HTMLDivElement, AntiMentionProps>(({
  };
 
  return (
-  <div ref={ref}>
+  <div>
    <Header className={cn(headerVariants({ variant: "h2", margin: "normal" }))}>
-    <Icons.mention className={iconVariants({ variant: "large", className: "!stroke-2" })} />
-    Anti-Mention <Switch checked={isEnabled} onChange={save} disabled={loading} />
+    <Icons.mention className={iconVariants({ variant: "large", className: "stroke-2!" })} />
+    Anti-Mention <Switch checked={isEnabled} onCheckedChange={save} disabled={loading} />
    </Header>
    <p className="mb-4 text-left">
     <span>Automatically delete messages containing too many unique user or role mentions.</span>
@@ -124,7 +124,7 @@ export const AntiMention = React.forwardRef<HTMLDivElement, AntiMentionProps>(({
      "cursor-default opacity-100": isEnabled,
     })}
    >
-    <Block className="mb-4 !py-3">
+    <Block className="mb-4 py-3!">
      <Header className={cn(headerVariants({ variant: "h3" }))}>
       <Icons.hide className={iconVariants({ variant: "large" })} /> Exempt:
      </Header>
@@ -156,7 +156,7 @@ export const AntiMention = React.forwardRef<HTMLDivElement, AntiMentionProps>(({
 
     <Icons.MoveVertical className={cn(iconVariants({ variant: "large" }), "mx-6 mb-4 opacity-50")} />
 
-    <Block className="mb-4 !py-3">
+    <Block className="mb-4 py-3!">
      <Header className={cn(headerVariants({ variant: "h3" }))}>
       <Icons.ShieldMinus className={iconVariants({ variant: "large" })} /> Actions:
      </Header>
@@ -179,7 +179,7 @@ export const AntiMention = React.forwardRef<HTMLDivElement, AntiMentionProps>(({
 
     <Icons.ArrowDown className={cn(iconVariants({ variant: "large" }), "mx-6 mb-4 opacity-50")} />
 
-    <Block className="mb-4 !py-3">
+    <Block className="mb-4 py-3!">
      <Header className={cn(headerVariants({ variant: "h3" }))}>
       <Icons.ShieldX className={iconVariants({ variant: "large" })} /> Limits:
      </Header>
@@ -203,7 +203,7 @@ export const AntiMention = React.forwardRef<HTMLDivElement, AntiMentionProps>(({
        </span>
       </Tooltip>
 
-      <Switch checked={true} onChange={() => {}} />
+      <Switch checked={true} onCheckedChange={() => {}} />
      </div>
     </Block>
 
@@ -223,4 +223,4 @@ export const AntiMention = React.forwardRef<HTMLDivElement, AntiMentionProps>(({
    </div>
   </div>
  );
-});
+};

@@ -2,21 +2,19 @@
 
 import { globalConfig } from "@majoexe/config";
 import avatar from "public/assets/avatar.png";
-import React, { forwardRef, useRef } from "react";
+import React, { useRef } from "react";
 import { AnimatedBeam } from "@/components/ui/effects/AnimatedBeam";
 import { Icons } from "@/components/ui/Icons";
 import Image from "@/components/ui/Image";
 import { cn } from "@/lib/utils";
 
-const Circle = forwardRef<HTMLDivElement, { className?: string; children?: React.ReactNode }>(({ className, children }, ref) => {
+const Circle = ({ className, children, ...props }: React.ComponentProps<"div">) => {
  return (
-  <div ref={ref} className={cn("z-10 flex size-14 items-center justify-center rounded-full border-2 border-neutral-800 bg-background-secondary", className)}>
+  <div className={cn("z-10 flex size-14 items-center justify-center rounded-full border-2 border-neutral-800 bg-background-secondary", className)} {...props}>
    {children}
   </div>
  );
-});
-
-Circle.displayName = "Circle";
+};
 
 export function BotReplacement({ className }: { className?: string }) {
  const containerRef = useRef<HTMLDivElement>(null);

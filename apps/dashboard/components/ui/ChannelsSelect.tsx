@@ -12,11 +12,11 @@ export interface ChannelsSelectProps extends React.ComponentProps<typeof ListBox
  multiple?: boolean;
 }
 
-export const ChannelsSelect = React.forwardRef<React.ElementRef<typeof ListBox>, ChannelsSelectProps>(({ allChannels, selectedChannels, setChannels, multiple = true, ...props }, ref) => {
+export const ChannelsSelect = ({ allChannels, selectedChannels, setChannels, multiple = true, ...props }: ChannelsSelectProps) => {
  return (
   <>
    {allChannels && allChannels.length > 0 ? (
-    <ListBox value={selectedChannels} onChange={(value) => setChannels && setChannels(value)} multiple={multiple} ref={ref} {...props}>
+    <ListBox value={selectedChannels} onChange={(value) => setChannels && setChannels(value)} multiple={multiple} {...props}>
      <ListBoxButton>
       <span className="flex items-center gap-2 truncate">
        {multiple ? (
@@ -56,4 +56,4 @@ export const ChannelsSelect = React.forwardRef<React.ElementRef<typeof ListBox>,
    )}
   </>
  );
-});
+};

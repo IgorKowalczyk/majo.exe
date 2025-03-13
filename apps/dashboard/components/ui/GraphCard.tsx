@@ -1,8 +1,8 @@
-import React, { HTMLAttributes } from "react";
+import React from "react";
 import Header, { headerVariants } from "@/components/ui/Headers";
 import { cn } from "@/lib/utils";
 
-interface GraphCardProps extends HTMLAttributes<HTMLDivElement> {
+interface GraphCardProps extends React.ComponentProps<"div"> {
  title: string;
  description: string;
  value: string;
@@ -10,8 +10,8 @@ interface GraphCardProps extends HTMLAttributes<HTMLDivElement> {
  graph: React.ReactNode;
 }
 
-export const GraphCard = React.forwardRef<HTMLDivElement, GraphCardProps>(({ title, description, value, icon, graph, className, ...props }, ref) => (
- <div ref={ref} className={cn("bg-background-secondary mt-4 overflow-auto rounded-xl border border-neutral-800 p-4", className)} {...props}>
+export const GraphCard = ({ title, description, value, icon, graph, className, ...props }: GraphCardProps) => (
+ <div className={cn("bg-background-secondary mt-4 overflow-auto rounded-xl border border-neutral-800 p-4", className)} {...props}>
   <div className="flex flex-row items-center justify-between">
    <div className="flex flex-row items-center gap-4">
     {icon}
@@ -27,7 +27,7 @@ export const GraphCard = React.forwardRef<HTMLDivElement, GraphCardProps>(({ tit
      </p>
     ) : parseInt(value) < 0 ? (
      <p className="flex gap-2 rounded-full border border-red-400/50 bg-red-400/30 px-2 py-1 text-sm font-bold text-red-400">
-      -{value} {graph}
+      {value} {graph}
      </p>
     ) : (
      <p className="flex gap-2 rounded-full border border-white/50 bg-white/20 px-2 py-1 text-sm font-bold text-white">
@@ -37,4 +37,4 @@ export const GraphCard = React.forwardRef<HTMLDivElement, GraphCardProps>(({ tit
    </div>
   </div>
  </div>
-));
+);

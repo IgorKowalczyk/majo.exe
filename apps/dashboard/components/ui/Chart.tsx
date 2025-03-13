@@ -22,9 +22,7 @@ type ChartContextProps = {
 };
 
 function getPayloadConfigFromPayload(config: ChartConfig, payload: unknown, key: string) {
- if (typeof payload !== "object" || payload === null) {
-  return undefined;
- }
+ if (typeof payload !== "object" || payload === null) return undefined;
 
  const payloadPayload = "payload" in payload && typeof payload.payload === "object" && payload.payload !== null ? payload.payload : undefined;
 
@@ -44,10 +42,7 @@ const ChartContext = React.createContext<ChartContextProps | null>(null);
 function useChart() {
  const context = React.use(ChartContext);
 
- if (!context) {
-  throw new Error("useChart must be used within a <ChartContainer />");
- }
-
+ if (!context) throw new Error("useChart must be used within a <ChartContainer />");
  return context;
 }
 
@@ -80,40 +75,53 @@ ${colorConfig
  );
 };
 
-const ChartContainer = React.forwardRef<
- HTMLDivElement,
- React.ComponentProps<"div"> & {
-  config: ChartConfig;
-  children: React.ComponentProps<typeof RechartsPrimitive.ResponsiveContainer>["children"];
- }
->(({ id, className, children, config, ...props }, ref) => {
+const ChartContainer = ({
+ id,
+ className,
+ children,
+ config,
+ ...props
+}: React.ComponentProps<"div"> & {
+ config: ChartConfig;
+ children: React.ComponentProps<typeof RechartsPrimitive.ResponsiveContainer>["children"];
+}) => {
  const uniqueId = React.useId();
  const chartId = `chart-${id || uniqueId.replace(/:/g, "")}`;
 
  return (
   <ChartContext value={{ config }}>
-   <div data-chart={chartId} ref={ref} className={clsx("[&_.recharts-cartesian-axis-tick_text]:fill-text flex aspect-video justify-center [&_.recharts-cartesian-grid_line[stroke='#ccc']]:stroke-neutral-800 [&_.recharts-curve.recharts-tooltip-cursor]:stroke-neutral-800 [&_.recharts-dot[stroke='#fff']]:stroke-transparent [&_.recharts-layer]:outline-none [&_.recharts-polar-grid_[stroke='#ccc']]:stroke-neutral-800 [&_.recharts-radial-bar-background-sector]:fill-background-secondary [&_.recharts-rectangle.recharts-tooltip-cursor]:fill-background-secondary [&_.recharts-reference-line_[stroke='#ccc']]:stroke-neutral-800 [&_.recharts-sector[stroke='#fff']]:stroke-transparent [&_.recharts-sector]:outline-none [&_.recharts-surface]:outline-none", className)} {...props}>
+   <div data-chart={chartId} className={clsx("[&_.recharts-cartesian-axis-tick_text]:fill-text flex aspect-video justify-center [&_.recharts-cartesian-grid_line[stroke='#ccc']]:stroke-neutral-800 [&_.recharts-curve.recharts-tooltip-cursor]:stroke-neutral-800 [&_.recharts-dot[stroke='#fff']]:stroke-transparent [&_.recharts-layer]:outline-hidden [&_.recharts-polar-grid_[stroke='#ccc']]:stroke-neutral-800 [&_.recharts-radial-bar-background-sector]:fill-background-secondary [&_.recharts-rectangle.recharts-tooltip-cursor]:fill-background-secondary [&_.recharts-reference-line_[stroke='#ccc']]:stroke-neutral-800 [&_.recharts-sector[stroke='#fff']]:stroke-transparent [&_.recharts-sector]:outline-hidden [&_.recharts-surface]:outline-hidden", className)} {...props}>
     <ChartStyle id={chartId} config={config} />
     <RechartsPrimitive.ResponsiveContainer>{children}</RechartsPrimitive.ResponsiveContainer>
    </div>
   </ChartContext>
  );
-});
-ChartContainer.displayName = "Chart";
+};
 
 const ChartTooltip = RechartsPrimitive.Tooltip;
 
-const ChartTooltipContent = React.forwardRef<
- HTMLDivElement,
- React.ComponentProps<typeof RechartsPrimitive.Tooltip> &
-  React.ComponentProps<"div"> & {
-   hideLabel?: boolean;
-   hideIndicator?: boolean;
-   indicator?: "line" | "dot" | "dashed";
-   nameKey?: string;
-   labelKey?: string;
-  }
->(({ active, payload, className, indicator = "dot", hideLabel = false, hideIndicator = false, label, labelFormatter, labelClassName, formatter, color, nameKey, labelKey }, ref) => {
+const ChartTooltipContent = ({
+ active,
+ payload,
+ className,
+ indicator = "dot",
+ hideLabel = false,
+ hideIndicator = false,
+ label,
+ labelFormatter,
+ labelClassName,
+ formatter,
+ color,
+ nameKey,
+ labelKey,
+}: React.ComponentProps<typeof RechartsPrimitive.Tooltip> &
+ React.ComponentProps<"div"> & {
+  hideLabel?: boolean;
+  hideIndicator?: boolean;
+  indicator?: "line" | "dot" | "dashed";
+  nameKey?: string;
+  labelKey?: string;
+ }) => {
  const { config } = useChart();
 
  const tooltipLabel = React.useMemo(() => {
@@ -147,7 +155,7 @@ const ChartTooltipContent = React.forwardRef<
  const nestLabel = payload.length === 1 && indicator !== "dot";
 
  return (
-  <div ref={ref} className={cn("grid min-w-32 items-start gap-2 rounded-lg border border-neutral-800 bg-background-secondary px-2.5 py-1.5 shadow-xl", className)}>
+  <div className={cn("grid min-w-32 items-start gap-2 rounded-lg border border-neutral-800 bg-background-secondary px-2.5 py-1.5 shadow-xl", className)}>
    {!nestLabel ? tooltipLabel : null}
    <div className="grid gap-2">
     {payload.map((item, index) => {
@@ -166,7 +174,7 @@ const ChartTooltipContent = React.forwardRef<
          ) : (
           !hideIndicator && (
            <div
-            className={cn("shrink-0 rounded-[2px] border-[--color-border] bg-[--color-bg]", {
+            className={cn("shrink-0 rounded-[2px] border-(--color-border) bg-(--color-bg)", {
              "h-2.5 w-2.5": indicator === "dot",
              "w-1": indicator === "line",
              "w-0 border-[1.5px] border-dashed bg-transparent": indicator === "dashed",
@@ -196,19 +204,21 @@ const ChartTooltipContent = React.forwardRef<
    </div>
   </div>
  );
-});
-ChartTooltipContent.displayName = "ChartTooltip";
+};
 
 const ChartLegend = RechartsPrimitive.Legend;
 
-const ChartLegendContent = React.forwardRef<
- HTMLDivElement,
- React.ComponentProps<"div"> &
-  Pick<RechartsPrimitive.LegendProps, "payload" | "verticalAlign"> & {
-   hideIcon?: boolean;
-   nameKey?: string;
-  }
->(({ className, hideIcon = false, payload, verticalAlign = "bottom", nameKey }, ref) => {
+const ChartLegendContent = ({
+ className,
+ hideIcon = false,
+ payload,
+ verticalAlign = "bottom",
+ nameKey,
+}: React.ComponentProps<"div"> &
+ Pick<RechartsPrimitive.LegendProps, "payload" | "verticalAlign"> & {
+  hideIcon?: boolean;
+  nameKey?: string;
+ }) => {
  const { config } = useChart();
 
  if (!payload?.length) {
@@ -216,7 +226,7 @@ const ChartLegendContent = React.forwardRef<
  }
 
  return (
-  <div ref={ref} className={clsx("flex items-center justify-center gap-4", verticalAlign === "top" ? "pb-3" : "pt-3", className)}>
+  <div className={clsx("flex items-center justify-center gap-4", verticalAlign === "top" ? "pb-3" : "pt-3", className)}>
    {payload.map((item) => {
     const key = `${nameKey || item.dataKey || "value"}`;
     const itemConfig = getPayloadConfigFromPayload(config, item, key);
@@ -239,7 +249,6 @@ const ChartLegendContent = React.forwardRef<
    })}
   </div>
  );
-});
-ChartLegendContent.displayName = "ChartLegend";
+};
 
 export { ChartContainer, ChartTooltip, ChartTooltipContent, ChartLegend, ChartLegendContent, ChartStyle };

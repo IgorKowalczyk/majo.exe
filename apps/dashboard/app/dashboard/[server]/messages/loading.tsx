@@ -14,9 +14,9 @@ export default function Loading() {
    </Header>
    <p className="mb-4 text-left text-base md:text-lg">Customize the messages that are sent to your server members.</p>
 
-   <Block className="mt-4 !overflow-x-visible">
+   <Block className="mt-4 overflow-x-visible!">
     <Header className={cn(headerVariants({ variant: "h2" }))}>
-     <Icons.userAdd className={iconVariants({ variant: "large", className: "!stroke-2" })} />
+     <Icons.userAdd className={iconVariants({ variant: "large", className: "stroke-2!" })} />
      Welcome messages
     </Header>
     <p className="mb-4 text-left">
@@ -37,9 +37,9 @@ export default function Loading() {
     </Button>
    </Block>
 
-   <Block className="mt-4 !overflow-x-visible">
+   <Block className="mt-4 overflow-x-visible!">
     <Header className={cn(headerVariants({ variant: "h2" }))}>
-     <Icons.userMinus className={iconVariants({ variant: "large", className: "!stroke-2" })} />
+     <Icons.userMinus className={iconVariants({ variant: "large", className: "stroke-2!" })} />
      Leave messages
     </Header>
     <p className="mb-4 text-left">

@@ -17,7 +17,7 @@ export function NumberTicker({
  delay?: number; // delay in s
  decimalPlaces?: number;
 }) {
- const ref = useRef<HTMLSpanElement>(null as unknown as HTMLSpanElement);
+ const ref = useRef<HTMLSpanElement>(null);
  const motionValue = useMotionValue(direction === "down" ? value : 0);
  const springValue = useSpring(motionValue, {
   damping: 60,
@@ -47,5 +47,5 @@ export function NumberTicker({
   [springValue, decimalPlaces]
  );
 
- return <span className={cn("inline-block tabular-nums text-black dark:text-white tracking-wider", className)} ref={ref} />;
+ return <span className={cn("inline-block tabular-nums text-white tracking-wider", className)} ref={ref} />;
 }

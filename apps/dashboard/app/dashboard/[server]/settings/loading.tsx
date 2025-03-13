@@ -15,7 +15,7 @@ export default function Loading() {
    <p className="mb-4 text-left text-base md:text-lg">Configure the settings of the bot in your server.</p>
    <Block className="mt-4">
     <Header className={cn(headerVariants({ variant: "h2" }))}>
-     <Icons.paintBrush className={iconVariants({ variant: "large", className: "!stroke-2" })} />
+     <Icons.paintBrush className={iconVariants({ variant: "large", className: "stroke-2!" })} />
      Default Embed Color
     </Header>
     <p className="mb-4 text-left">Change the color of the embeds sent by the bot. This will not affect embeds sent by other bots.</p>
@@ -23,7 +23,7 @@ export default function Loading() {
    </Block>
    <Block className="mt-4">
     <Header className={cn(headerVariants({ variant: "h2" }))}>
-     <Icons.ShieldCheck className={iconVariants({ variant: "large", className: "!stroke-2" })} />
+     <Icons.ShieldCheck className={iconVariants({ variant: "large", className: "stroke-2!" })} />
      Dashboard Access
     </Header>
     <p className="mb-4 text-left">
@@ -44,7 +44,7 @@ export default function Loading() {
    </Block>
    <Block className="mt-4">
     <Header className={cn(headerVariants({ variant: "h2" }))}>
-     <Icons.Users className={iconVariants({ variant: "large", className: "!stroke-2" })} />
+     <Icons.Users className={iconVariants({ variant: "large", className: "stroke-2!" })} />
      Public Dashboard
     </Header>
     <p className="mb-4 text-left">
@@ -78,8 +78,8 @@ export default function Loading() {
      </Block>
     </div>
 
-    <Skeleton className="h-10 !max-w-none" />
-    <Skeleton className="mt-4 h-10 !max-w-none" />
+    <Skeleton className="h-10 max-w-none!" />
+    <Skeleton className="mt-4 h-10 max-w-none!" />
 
     <div className="mt-4 flex flex-row items-start whitespace-nowrap rounded-lg border border-accent-primary bg-accent-primary/10 p-4">
      <span className="mr-1 flex flex-row items-center whitespace-nowrap font-bold">
@@ -91,7 +91,7 @@ export default function Loading() {
    </Block>
    <Block className="mt-4">
     <Header className={cn(headerVariants({ variant: "h2" }))}>
-     <Icons.Download className={iconVariants({ variant: "large", className: "!stroke-2" })} />
+     <Icons.Download className={iconVariants({ variant: "large", className: "stroke-2!" })} />
      Download data
     </Header>
     <p className="mt-2 leading-none text-white/70">

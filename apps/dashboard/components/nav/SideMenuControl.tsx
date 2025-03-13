@@ -6,14 +6,14 @@ import { VisibilityContext } from "@/components/nav/VisibilityContext";
 import { Icons } from "@/components/ui/Icons";
 import { cn } from "@/lib/utils";
 
-export const SideMenuControl = React.forwardRef<HTMLButtonElement, React.ButtonHTMLAttributes<HTMLButtonElement>>(({ className, ...props }, ref) => {
+export const SideMenuControl = ({ className, ...props }: React.ComponentProps<"button">) => {
  const { toggleSideNav, sideNavVisible } = use(VisibilityContext);
  const params = useParams();
 
  return (
   <>
    {params.server && (
-    <button className={cn("bg-elements text-text ml-4 flex flex-row items-center gap-2 rounded-lg p-2 md:hidden", className)} onClick={toggleSideNav} type="button" ref={ref} {...props}>
+    <button className={cn("bg-elements text-text ml-4 flex flex-row items-center gap-2 rounded-lg p-2 md:hidden", className)} onClick={toggleSideNav} type="button" {...props}>
      <div className="relative size-6">
       <Icons.close
        className={cn(
@@ -38,4 +38,4 @@ export const SideMenuControl = React.forwardRef<HTMLButtonElement, React.ButtonH
    )}
   </>
  );
-});
+};

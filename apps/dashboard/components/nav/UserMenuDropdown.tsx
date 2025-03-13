@@ -7,13 +7,13 @@ import Image from "@/components/ui/Image";
 import { Menu, MenuLink, MenuItem, MenuButton, MenuItems, MenuArrow } from "@/components/ui/Menu";
 import { getSession } from "@/lib/session";
 
-type UserSession = Awaited<ReturnType<typeof getSession>>;
+export type UserSession = Awaited<ReturnType<typeof getSession>>;
 
-export const UserMenuDropdown = React.forwardRef<HTMLDivElement, UserSession & { className?: string }>(({ user }, ref) => {
+export const UserMenuDropdown = ({ user, ...props }: React.ComponentProps<typeof Menu> & { user: UserSession }) => {
  if (!user) return null;
 
  return (
-  <Menu ref={ref}>
+  <Menu {...props}>
    <MenuButton>
     <Image width="32" height="32" quality={100} className="-ml-1 size-6 shrink-0 rounded-full" src={user.avatar} loading="lazy" alt={`${user.name} Avatar`} />
     <span>{user.global_name || user.name}</span>
@@ -46,4 +46,4 @@ export const UserMenuDropdown = React.forwardRef<HTMLDivElement, UserSession & {
    </MenuItems>
   </Menu>
  );
-});
+};

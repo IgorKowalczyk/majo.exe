@@ -29,7 +29,7 @@ export interface AntiSpamProps {
  allChannels: APIGuildChannel<GuildChannelType>[] | null[];
 }
 
-export const AntiSpam = React.forwardRef<HTMLDivElement, AntiSpamProps>(({ serverId, enabled, existingActions, existingExemptRoles, existingExemptChannels, allRoles, allChannels }, ref) => {
+export const AntiSpam = ({ serverId, enabled, existingActions, existingExemptRoles, existingExemptChannels, allRoles, allChannels }: AntiSpamProps) => {
  const [isEnabled, setIsEnabled] = useState(enabled ?? false);
  const [loading, setLoading] = useState(false);
  const [actions, setActions] = useState(existingActions || []);
@@ -87,10 +87,10 @@ export const AntiSpam = React.forwardRef<HTMLDivElement, AntiSpamProps>(({ serve
  };
 
  return (
-  <div ref={ref}>
+  <div>
    <Header className={cn(headerVariants({ variant: "h2", margin: "normal" }))}>
-    <Icons.messageOff className={iconVariants({ variant: "large", className: "!stroke-2" })} />
-    Anti-Spam <Switch checked={isEnabled} onChange={save} disabled={loading} />
+    <Icons.messageOff className={iconVariants({ variant: "large", className: "stroke-2!" })} />
+    Anti-Spam <Switch checked={isEnabled} onCheckedChange={save} disabled={loading} />
    </Header>
    <p className="mb-4 text-left">
     <span>Automatically delete all spam messages.</span>
@@ -124,8 +124,8 @@ export const AntiSpam = React.forwardRef<HTMLDivElement, AntiSpamProps>(({ serve
      "relative"
     )}
    >
-    {/* <div className={cn({ "pointer-events-none z-10 bg-gradient-to-t from-background-secondary to-90% inset-0 absolute": !isEnabled && !loading })} /> */}
-    <Block className="mb-4 !py-3">
+    {/* <div className={cn({ "pointer-events-none z-10 bg-linear-to-t from-background-secondary to-90% inset-0 absolute": !isEnabled && !loading })} /> */}
+    <Block className="mb-4 py-3!">
      <Header className={cn(headerVariants({ variant: "h3" }))}>
       <Icons.hide className={iconVariants({ variant: "large" })} /> Exempt:
      </Header>
@@ -157,7 +157,7 @@ export const AntiSpam = React.forwardRef<HTMLDivElement, AntiSpamProps>(({ serve
 
     <Icons.MoveVertical className={cn(iconVariants({ variant: "large" }), "mx-6 mb-4 opacity-50")} />
 
-    <Block className="mb-4 !py-3">
+    <Block className="mb-4 py-3!">
      <Header className={cn(headerVariants({ variant: "h3" }))}>
       <Icons.ShieldMinus className={iconVariants({ variant: "large" })} /> Actions:
      </Header>
@@ -193,4 +193,4 @@ export const AntiSpam = React.forwardRef<HTMLDivElement, AntiSpamProps>(({ serve
    </div>
   </div>
  );
-});
+};

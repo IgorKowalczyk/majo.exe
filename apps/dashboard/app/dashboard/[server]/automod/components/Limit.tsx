@@ -37,7 +37,7 @@ export interface MentionSelectProps extends React.ComponentProps<typeof ListBox>
  setTriggerMetadata: (metadata: { mentionTotalLimit: number; mentionRaidProtectionEnabled: boolean }) => void;
 }
 
-export const MentionLimitSelect = React.forwardRef<React.ElementRef<typeof ListBox>, MentionSelectProps>(({ selectedChoice, setSelectedChoice, triggerMetadata, setTriggerMetadata, ...props }, ref) => {
+export const MentionLimitSelect = ({ selectedChoice, setSelectedChoice, triggerMetadata, setTriggerMetadata, ...props }: MentionSelectProps) => {
  const setMentions = (value: number) => {
   const updatedTriggerMetadata = {
    ...triggerMetadata,
@@ -52,7 +52,7 @@ export const MentionLimitSelect = React.forwardRef<React.ElementRef<typeof ListB
  return (
   <>
    {choices && choices.length > 0 ? (
-    <ListBox value={selectedChoice.toString()} onChange={(value: string) => setMentions(parseInt(value))} {...props} ref={ref}>
+    <ListBox value={selectedChoice.toString()} onChange={(value: string) => setMentions(parseInt(value))} {...props}>
      <ListBoxButton>
       <span className="flex items-center gap-2 truncate">{choices.find((choice) => choice?.mentions === selectedChoice)?.title || "No limit selected"}</span>
       <ListBoxArrow />
@@ -74,4 +74,4 @@ export const MentionLimitSelect = React.forwardRef<React.ElementRef<typeof ListB
    )}
   </>
  );
-});
+};

@@ -30,7 +30,7 @@ export interface AntiInviteProps {
  allChannels: APIGuildChannel<GuildChannelType>[] | null[];
 }
 
-export const AntiInvite = React.forwardRef<HTMLDivElement, AntiInviteProps>(({ serverId, enabled, existingActions, existingExemptRoles, existingExemptChannels, allRoles, allChannels }, ref) => {
+export const AntiInvite = ({ serverId, enabled, existingActions, existingExemptRoles, existingExemptChannels, allRoles, allChannels }: AntiInviteProps) => {
  const [isEnabled, setIsEnabled] = useState(enabled ?? false);
  const [loading, setLoading] = useState(false);
  const [actions, setActions] = useState(existingActions || []);
@@ -88,10 +88,10 @@ export const AntiInvite = React.forwardRef<HTMLDivElement, AntiInviteProps>(({ s
  };
 
  return (
-  <div ref={ref}>
+  <div>
    <Header className={cn(headerVariants({ variant: "h2", margin: "normal" }))}>
-    <Icons.userBlock className={iconVariants({ variant: "large", className: "!stroke-2" })} />
-    Anti-Invite <Switch checked={isEnabled} onChange={save} disabled={loading} />
+    <Icons.userBlock className={iconVariants({ variant: "large", className: "stroke-2!" })} />
+    Anti-Invite <Switch checked={isEnabled} onCheckedChange={save} disabled={loading} />
    </Header>
    <p className="mb-4 text-left">
     <span>Automatically delete all messages containing Discord server invites. This also includes server links.</span>
@@ -122,7 +122,7 @@ export const AntiInvite = React.forwardRef<HTMLDivElement, AntiInviteProps>(({ s
      "cursor-default opacity-100": isEnabled,
     })}
    >
-    <Block className="mb-4 !py-3">
+    <Block className="mb-4 py-3!">
      <Header className={cn(headerVariants({ variant: "h3" }))}>
       <Icons.hide className={iconVariants({ variant: "large" })} /> Exempt:
      </Header>
@@ -154,7 +154,7 @@ export const AntiInvite = React.forwardRef<HTMLDivElement, AntiInviteProps>(({ s
 
     <Icons.MoveVertical className={cn(iconVariants({ variant: "large" }), "mx-6 mb-4 opacity-50")} />
 
-    <Block className="mb-4 !py-3">
+    <Block className="mb-4 py-3!">
      <Header className={cn(headerVariants({ variant: "h3" }))}>
       <Icons.ShieldMinus className={iconVariants({ variant: "large" })} /> Actions:
      </Header>
@@ -191,4 +191,4 @@ export const AntiInvite = React.forwardRef<HTMLDivElement, AntiInviteProps>(({ s
    </div>
   </div>
  );
-});
+};

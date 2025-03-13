@@ -1,7 +1,7 @@
 import { dashboardConfig } from "@majoexe/config";
 import { getSession } from "lib/session";
 import Link from "next/link";
-import React, { HTMLAttributes } from "react";
+import React from "react";
 import { DiscordLogin } from "@/components/DiscordLogin";
 import { SideMenuControl } from "@/components/nav/SideMenuControl";
 import { UserMenuDropdown } from "@/components/nav/UserMenuDropdown";
@@ -10,11 +10,11 @@ import { Icons, iconVariants } from "@/components/ui/Icons";
 import Image from "@/components/ui/Image";
 import { cn } from "@/lib/utils";
 
-export const TopNavigation = React.forwardRef<HTMLDivElement, HTMLAttributes<HTMLDivElement> & { theme?: "full" | "compact" }>(async ({ className, theme, ...props }, ref) => {
+export const TopNavigation = async ({ className, theme, ...props }: React.ComponentProps<"nav"> & { theme?: "full" | "compact" }) => {
  const session = await getSession();
 
  return (
-  <nav className={cn("bg-background-navbar md:bg-background-navbar/70 fixed z-40 flex w-full items-center border-b border-b-neutral-800 py-4 text-left shadow-lg md:backdrop-blur-[9px]", className)} {...props} ref={ref}>
+  <nav className={cn("bg-background-navbar md:bg-background-navbar/70 fixed z-40 flex w-full items-center border-b border-b-neutral-800 py-4 text-left shadow-lg md:backdrop-blur-[9px]", className)} {...props}>
    <SideMenuControl />
    <div
     className={cn(
@@ -61,4 +61,4 @@ export const TopNavigation = React.forwardRef<HTMLDivElement, HTMLAttributes<HTM
    </div>
   </nav>
  );
-});
+};

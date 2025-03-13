@@ -3,6 +3,7 @@ import prismaClient from "@majoexe/database";
 import { GuildLogType } from "@majoexe/database/types";
 import { pseudoRandom } from "@majoexe/util/functions/util";
 import { ApplicationCommandOptionType } from "discord-api-types/v10";
+import type { Metadata } from "next";
 import Link from "next/link";
 import avatar01 from "public/assets/avatars/01.webp";
 import avatar03 from "public/assets/avatars/03.webp";
@@ -13,15 +14,15 @@ import tadaAnimated from "public/assets/tada_animated.gif";
 import { Suspense } from "react";
 import Balancer from "react-wrap-balancer";
 import { BotReplacement } from "./_components/BotReplacement";
+import { ExampleChart } from "./_components/ExampleChart";
 import { statisticsChartConfig } from "./dashboard/[server]/statistics/page";
 import { AddReaction } from "@/app/_components/AddReaction";
-import Faq from "@/app/_components/Faq";
+import { Faq } from "@/app/_components/Faq";
 import { LevelUp } from "@/app/_components/LevelUp";
 import { Notifications } from "@/app/_components/Notifications";
 import { LogDisclosure } from "@/app/dashboard/[server]/dashboard-logs/components/Logs";
 import { StatsChart } from "@/components/client/charts/ServerStatsChart";
 import { LoginButton } from "@/components/LoginButton";
-import { AreaChart } from "@/components/ui/AreaChart";
 import { buttonVariants } from "@/components/ui/Buttons";
 import { AnimatedShinyText } from "@/components/ui/effects/AnimatedShinyText";
 import { BorderBeam } from "@/components/ui/effects/BorderBeam";
@@ -38,7 +39,12 @@ import { Typing } from "@/components/ui/Loaders";
 import { Command } from "@/lib/types";
 import { cn } from "@/lib/utils";
 
-export default async function HomePage() {
+export const metadata: Metadata = {
+ title: "Majo.exe - The only one Discord Bot",
+ description: "Majo.exe will not only keep your server entertained but also assist you with moderation and many other things!",
+};
+
+export default async function Page() {
  const exampleLogs = [
   {
    id: "0",
@@ -142,8 +148,7 @@ export default async function HomePage() {
        </AnimatedShinyText>
       </Link>
      </Fade>
-     <WordPullUp wordsClassName={cn(headerVariants({ variant: "big", alignment: "center", effects: "gradient" }), "!font-black !leading-snug")} words="The only one Discord Bot" className="text-center" />
-     {/* <Header className=>The only one Discord Bot</Header> */}
+     <WordPullUp wordsClassName={cn(headerVariants({ variant: "big", alignment: "center", effects: "gradient" }), "font-black! leading-snug!")} words="The only one Discord Bot" className="text-center" />
      <Fade
       framerProps={{
        show: { opacity: 1, transition: { type: "spring", delay: 0.9, duration: 0.5 } },
@@ -237,7 +242,7 @@ export default async function HomePage() {
          <div className="flex flex-col">
           <div className="ml-2 flex h-10 flex-row items-center">
            <span className="font-bold">{dashboardConfig.title}</span>{" "}
-           <span className="ml-1 flex items-center gap-1 rounded bg-[#5c65f3] px-1 py-[0.12rem] text-xs text-white">
+           <span className="ml-1 flex items-center gap-1 rounded-sm bg-[#5c65f3] px-1 py-[0.12rem] text-xs text-white">
             <Icons.Check className={iconVariants({ variant: "small" })} /> <span className="-mb-px">BOT</span>
            </span>
            <span className="ml-2 text-sm text-gray-400">Today at 4:20 PM</span>
@@ -258,7 +263,7 @@ export default async function HomePage() {
        <LevelUp avatar={dashboardConfig.logo} username="Majonez.exe" />
       </div>
       <div className="relative col-span-2 row-span-2 overflow-hidden rounded-xl border border-neutral-800 bg-background-secondary px-8 py-6 duration-200 hover:bg-neutral-800/50 lg:col-span-1">
-       <Header className={cn(headerVariants({ variant: "h2", margin: "normal" }), "text-fill-transparent bg-gradient-to-b from-white to-neutral-400 box-decoration-clone bg-clip-text font-black")}>Moderation? We have it!</Header>
+       <Header className={cn(headerVariants({ variant: "h2", margin: "normal" }), "text-fill-transparent bg-linear-to-b from-white to-neutral-400 box-decoration-clone bg-clip-text font-black")}>Moderation? We have it!</Header>
        <div className="absolute inset-0 z-0 m-auto mt-[100px] size-[580px] rounded-full bg-[#ddd] opacity-5 blur-3xl" />
        <div className="relative z-10">
         <p className="mt-2 max-w-[680px] text-white/70">
@@ -272,12 +277,11 @@ export default async function HomePage() {
       <div className="relative col-span-2 row-span-2 overflow-hidden rounded-xl border border-neutral-800 bg-background-secondary duration-200 hover:bg-neutral-800/50">
        <div className="relative z-50 h-full">
         <div className="px-8 py-6">
-         <Header className={cn(headerVariants({ variant: "h1", margin: "normal" }), "text-fill-transparent bg-gradient-to-b from-white to-neutral-400 box-decoration-clone bg-clip-text font-black")}>Know more about your server</Header>
+         <Header className={cn(headerVariants({ variant: "h1", margin: "normal" }), "text-fill-transparent bg-linear-to-b from-white to-neutral-400 box-decoration-clone bg-clip-text font-black")}>Know more about your server</Header>
          <p className="max-w-[680px] text-white/70">
           <Balancer>With Majo.exe you can get to know your server better with the help of the dashboard. You can see the most active members, the most used channels and activity graphs!</Balancer>
          </p>
         </div>
-
         <div className="z-50 flex flex-col items-center justify-center gap-4 px-8 py-6 md:flex-row">
          <p className="flex cursor-pointer gap-1 rounded-full border border-accent-primary/50 bg-accent-primary/20 px-2 py-1 text-sm font-bold text-accent-primary backdrop-blur-md duration-200 hover:bg-accent-primary/30">
           +{Math.floor(Math.random() * 10 + 15)} users today
@@ -295,22 +299,7 @@ export default async function HomePage() {
          </p>
         </div>
        </div>
-       <Suspense fallback={<div className="h-56 w-full rounded-xl border border-neutral-800 bg-background-secondary" />}>
-        <AreaChart
-         className="absolute inset-x-0 bottom-0 scale-105"
-         data={Array.from({ length: 30 }, (_, i) => ({
-          date: new Date(Date.now() - i * 86400000).toISOString().split("T")[0],
-          Joins: Math.floor(pseudoRandom(i / 1.33)),
-         }))}
-         dataKey="date"
-         categories={["Joins"]}
-         yAxisWidth={50}
-         showYAxis={false}
-         showXAxis={false}
-         showGrid={false}
-         type="monotoneX"
-        />
-       </Suspense>
+       <ExampleChart />
        <div className="absolute inset-0 z-10 m-auto mt-[100px] size-[980px] rounded-full bg-[#ddd] opacity-5 blur-3xl" />
       </div>
       <div className="relative col-span-2 row-span-1 overflow-hidden rounded-xl border border-neutral-800 bg-background-secondary px-8 py-6 pb-2 duration-200 hover:bg-neutral-800/50 lg:col-span-1">
@@ -321,13 +310,13 @@ export default async function HomePage() {
         <div className="flex flex-col">
          <div className="ml-2 flex flex-row items-center">
           <span className="font-bold">{dashboardConfig.title}</span>{" "}
-          <span className="ml-1 flex items-center gap-1 rounded bg-[#5c65f3] px-1 py-[0.12rem] text-xs text-white">
+          <span className="ml-1 flex items-center gap-1 rounded-sm bg-[#5c65f3] px-1 py-[0.12rem] text-xs text-white">
            <Icons.Check className={iconVariants({ variant: "small" })} /> <span className="-mb-px">BOT</span>
           </span>
           <span className="ml-2 text-sm text-gray-400">Today at 4:20 PM</span>
          </div>
          <div
-          className="ml-1 mt-2 rounded bg-[#2b2d31] p-4 shadow-lg"
+          className="ml-1 mt-2 rounded-sm bg-[#2b2d31] p-4 shadow-lg"
           style={{
            borderLeft: `4px solid ${globalConfig.defaultColor}`,
           }}
@@ -420,8 +409,8 @@ export default async function HomePage() {
       <Image src="/assets/images/dash.png" alt="Dashboard" width={1844} height={962} className="size-full rounded-md border border-neutral-800 object-cover object-top shadow-lg" loading="lazy" />
      </div>
      <BorderBeam colorFrom={globalConfig.defaultColor} colorTo={globalConfig.defaultColor} size={450} borderWidth={1.7} />
-     <FlickeringGrid width={1200} height={800} squareSize={3} color={"#737373"} className="pointer-events-none absolute inset-0 -z-10 size-full bg-background-secondary opacity-70" />
-     <div className="to-[hsla(202, 36%, 96%, 1)] absolute inset-0 -z-10 size-full bg-gradient-to-b from-accent-primary/15" />
+     <FlickeringGrid width={1400} height={800} squareSize={3} color={"#737373"} className="pointer-events-none absolute inset-0 -z-10 size-full bg-background-secondary opacity-70" />
+     <div className="to-[hsla(202, 36%, 96%, 1)] absolute inset-0 -z-10 size-full bg-linear-to-b from-accent-primary/15" />
     </div>
    </div>
   </div>

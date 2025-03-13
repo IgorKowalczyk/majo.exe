@@ -198,7 +198,7 @@ export default async function Page(props: { params: Promise<{ server: string }> 
      <Block>
       <Header className={cn(headerVariants({ variant: "h4", margin: "normal" }), "block")}>
        <span className="flex flex-row flex-wrap items-center gap-2">
-        <Icons.Gauge className={iconVariants({ variant: "normal", className: "!stroke-2" })} />
+        <Icons.Gauge className={iconVariants({ variant: "normal", className: "stroke-2!" })} />
         <span className="opacity-80">Server Score: </span>
         <span
          className={cn({
@@ -220,14 +220,14 @@ export default async function Page(props: { params: Promise<{ server: string }> 
       {guildScore !== 100 && (
        <>
         <Header className={cn(headerVariants({ variant: "h4", margin: "wide" }), "items-start justify-normal pt-4 opacity-80")}>
-         <Icons.Lightbulb className={iconVariants({ variant: "normal", className: "!stroke-2" })} />
+         <Icons.Lightbulb className={iconVariants({ variant: "normal", className: "stroke-2!" })} />
          Ways to improve your score:
         </Header>
         <div className="mt-2 space-y-1">
          {(!guild.autoMod || guild.autoMod.length === 0) && (
           <div>
            <span className="gap-1 font-bold">
-            <Icons.Minus className={iconVariants({ variant: "normal", className: "mr-1 inline !stroke-2" })} />
+            <Icons.Minus className={iconVariants({ variant: "normal", className: "mr-1 inline stroke-2!" })} />
             Enable AutoMod:
            </span>{" "}
            <span className="font-normal text-gray-400">
@@ -241,7 +241,7 @@ export default async function Page(props: { params: Promise<{ server: string }> 
          {!guild.enableXP && (
           <div>
            <span className="gap-1 font-bold">
-            <Icons.Minus className={iconVariants({ variant: "normal", className: "mr-1 inline !stroke-2" })} />
+            <Icons.Minus className={iconVariants({ variant: "normal", className: "mr-1 inline stroke-2!" })} />
             Enable XP:
            </span>{" "}
            <span className="font-normal text-gray-400">
@@ -255,7 +255,7 @@ export default async function Page(props: { params: Promise<{ server: string }> 
          {!guild.publicPage && (
           <div>
            <span className="gap-1 font-bold">
-            <Icons.Minus className={iconVariants({ variant: "normal", className: "mr-1 inline !stroke-2" })} />
+            <Icons.Minus className={iconVariants({ variant: "normal", className: "mr-1 inline stroke-2!" })} />
             Enable Public Page:
            </span>{" "}
            <span className="font-normal text-gray-400">
@@ -269,7 +269,7 @@ export default async function Page(props: { params: Promise<{ server: string }> 
          {!guild.vanity && (
           <div>
            <span className="gap-1 font-bold">
-            <Icons.Minus className={iconVariants({ variant: "normal", className: "mr-1 inline !stroke-2" })} />
+            <Icons.Minus className={iconVariants({ variant: "normal", className: "mr-1 inline stroke-2!" })} />
             Set Vanity URL:
            </span>{" "}
            <span className="font-normal text-gray-400">
@@ -295,7 +295,7 @@ export default async function Page(props: { params: Promise<{ server: string }> 
       <Header className={cn(headerVariants({ variant: "h4", margin: "wide" }), "items-start justify-normal opacity-80")}>
        Quick Stats
        {guild.publicPage ? (
-        <Link href={`/server/${guild.vanity || serverDownload.id}`} target="_blank" rel="noreferrer noopener" className={cn(buttonVariants({ variant: "primary" }), "mx-auto !flex w-fit flex-row whitespace-nowrap text-base font-normal sm:ml-auto sm:mr-0")}>
+        <Link href={`/server/${guild.vanity || serverDownload.id}`} target="_blank" rel="noreferrer noopener" className={cn(buttonVariants({ variant: "primary" }), "mx-auto flex! w-fit flex-row whitespace-nowrap text-base font-normal sm:ml-auto sm:mr-0")}>
          <Icons.ExternalLink className={iconVariants({ variant: "button" })} aria-hidden="true" role="img" />
          Server page
         </Link>

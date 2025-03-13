@@ -9,17 +9,16 @@ import { Icons } from "@/components/ui/Icons";
 import Image from "@/components/ui/Image";
 import { cn } from "@/lib/utils";
 
-export const Footer = React.forwardRef<HTMLDivElement, HTMLAttributes<HTMLDivElement>>(({ className, ...props }, ref) => {
+export const Footer = ({ className, ...props }: HTMLAttributes<HTMLDivElement>) => {
  const segment = useSelectedLayoutSegment();
  const pathname = usePathname();
 
  return (
   <footer
    {...props}
-   ref={ref}
    className={cn(
     {
-     "!w-full md:!pl-[18rem]": segment === "dashboard" && pathname !== "/dashboard",
+     "w-full! md:pl-[18rem]!": segment === "dashboard" && pathname !== "/dashboard",
      "w-full xl:w-4/5": segment !== "dashboard" || pathname === "/dashboard",
     },
     "mx-auto px-4 py-10 md:px-8 lg:px-16",
@@ -110,4 +109,4 @@ export const Footer = React.forwardRef<HTMLDivElement, HTMLAttributes<HTMLDivEle
    </div>
   </footer>
  );
-});
+};
