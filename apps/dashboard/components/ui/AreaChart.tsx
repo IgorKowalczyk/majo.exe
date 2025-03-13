@@ -6,7 +6,6 @@ import { Area, AreaProps, CartesianGrid, AreaChart as ReChartsAreaChart, Respons
 import { Icons, iconVariants } from "@/components/ui/Icons";
 import { cn } from "@/lib/utils";
 
-// eslint-disable-next-line typescript/no-explicit-any
 interface ChartTooltipProps extends TooltipProps<any, any> {
  categoryColors: string[];
  valueFormatter: (value: number) => string;
@@ -39,7 +38,6 @@ const ChartTooltip: React.FC<ChartTooltipProps> = ({ categoryColors, valueFormat
 };
 
 export interface AreaChartProps extends AreaProps {
- // eslint-disable-next-line typescript/no-explicit-any
  data?: any[];
  categories?: string[];
  noDataText?: string;

@@ -109,7 +109,6 @@ export default async function Page(props: { params: Promise<{ server: string }> 
  if (guild.publicPage) guildScore += 25;
  if (guild.vanity) guildScore += 25;
 
- // eslint-disable-next-line typescript/no-explicit-any
  const mapGuildData = (data: any[], key: string) =>
   data.map((item) => ({
    date: item.date.toISOString().split("T")[0],
