@@ -5,7 +5,7 @@ import { getSession } from "lib/session";
 import { redirect } from "next/navigation";
 import { notFound } from "next/navigation";
 import { StatisticCharts } from "@/app/dashboard/[server]/statistics/components/StatisticCharts";
-import { ChartConfig } from "@/components/ui/BetaChart";
+import { ChartConfig } from "@/components/ui/Chart";
 import { GraphCard } from "@/components/ui/GraphCard";
 import Header, { headerVariants } from "@/components/ui/Headers";
 import { Icons, iconVariants } from "@/components/ui/Icons";

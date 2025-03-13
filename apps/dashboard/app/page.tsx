@@ -14,6 +14,7 @@ import tadaAnimated from "public/assets/tada_animated.gif";
 import { Suspense } from "react";
 import Balancer from "react-wrap-balancer";
 import { BotReplacement } from "./_components/BotReplacement";
+import { ExampleChart } from "./_components/ExampleChart";
 import { statisticsChartConfig } from "./dashboard/[server]/statistics/page";
 import { AddReaction } from "@/app/_components/AddReaction";
 import { Faq } from "@/app/_components/Faq";
@@ -22,7 +23,6 @@ import { Notifications } from "@/app/_components/Notifications";
 import { LogDisclosure } from "@/app/dashboard/[server]/dashboard-logs/components/Logs";
 import { StatsChart } from "@/components/client/charts/ServerStatsChart";
 import { LoginButton } from "@/components/LoginButton";
-import { AreaChart } from "@/components/ui/AreaChart";
 import { buttonVariants } from "@/components/ui/Buttons";
 import { AnimatedShinyText } from "@/components/ui/effects/AnimatedShinyText";
 import { BorderBeam } from "@/components/ui/effects/BorderBeam";
@@ -282,7 +282,6 @@ export default async function Page() {
           <Balancer>With Majo.exe you can get to know your server better with the help of the dashboard. You can see the most active members, the most used channels and activity graphs!</Balancer>
          </p>
         </div>
-
         <div className="z-50 flex flex-col items-center justify-center gap-4 px-8 py-6 md:flex-row">
          <p className="flex cursor-pointer gap-1 rounded-full border border-accent-primary/50 bg-accent-primary/20 px-2 py-1 text-sm font-bold text-accent-primary backdrop-blur-md duration-200 hover:bg-accent-primary/30">
           +{Math.floor(Math.random() * 10 + 15)} users today
@@ -300,22 +299,7 @@ export default async function Page() {
          </p>
         </div>
        </div>
-       <Suspense fallback={<div className="h-56 w-full rounded-xl border border-neutral-800 bg-background-secondary" />}>
-        <AreaChart
-         className="absolute inset-x-0 bottom-0 scale-105"
-         data={Array.from({ length: 30 }, (_, i) => ({
-          date: new Date(Date.now() - i * 86400000).toISOString().split("T")[0],
-          Joins: Math.floor(pseudoRandom(i / 1.33)),
-         }))}
-         dataKey="date"
-         categories={["Joins"]}
-         yAxisWidth={50}
-         showYAxis={false}
-         showXAxis={false}
-         showGrid={false}
-         type="monotoneX"
-        />
-       </Suspense>
+       <ExampleChart />
        <div className="absolute inset-0 z-10 m-auto mt-[100px] size-[980px] rounded-full bg-[#ddd] opacity-5 blur-3xl" />
       </div>
       <div className="relative col-span-2 row-span-1 overflow-hidden rounded-xl border border-neutral-800 bg-background-secondary px-8 py-6 pb-2 duration-200 hover:bg-neutral-800/50 lg:col-span-1">

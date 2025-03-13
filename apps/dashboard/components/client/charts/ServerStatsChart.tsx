@@ -4,7 +4,7 @@ import { DataEntry } from "@majoexe/util/functions/util";
 import fileDl from "js-file-download";
 import React, { useState } from "react";
 import { Area, AreaChart, CartesianGrid, XAxis } from "recharts";
-import { ChartContainer, ChartConfig, ChartTooltip, ChartTooltipContent, ChartLegend, ChartLegendContent } from "@/components/ui/BetaChart";
+import { ChartContainer, ChartConfig, ChartTooltip, ChartTooltipContent, ChartLegend, ChartLegendContent } from "@/components/ui/Chart";
 import Header, { headerVariants } from "@/components/ui/Headers";
 import { Icons, iconVariants } from "@/components/ui/Icons";
 import { ListBox, ListBoxArrow, ListBoxButton, ListBoxOption, ListBoxOptions } from "@/components/ui/ListBox";
@@ -31,7 +31,7 @@ export interface StatsChartProps {
  calculateTotal?: (data: DataEntry[], dateRange: DateRange) => number;
 }
 
-export const StatsChart = ({ title, data, CSVData, fileName, categories, chartConfig, showDateRange, calculateTotal }: StatsChartProps) => {
+export const StatsChart = ({ title, data, CSVData, fileName, categories, chartConfig, showDateRange = true, calculateTotal }: StatsChartProps) => {
  const [dateRange, setDateRange] = useState<DateRange>(dateRanges[0]);
 
  let filteredData = data;
