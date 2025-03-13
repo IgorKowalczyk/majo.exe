@@ -27,7 +27,7 @@ export const GraphCard = ({ title, description, value, icon, graph, className, .
      </p>
     ) : parseInt(value) < 0 ? (
      <p className="flex gap-2 rounded-full border border-red-400/50 bg-red-400/30 px-2 py-1 text-sm font-bold text-red-400">
-      -{value} {graph}
+      {value} {graph}
      </p>
     ) : (
      <p className="flex gap-2 rounded-full border border-white/50 bg-white/20 px-2 py-1 text-sm font-bold text-white">
