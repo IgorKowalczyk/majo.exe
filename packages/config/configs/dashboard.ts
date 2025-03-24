@@ -1,7 +1,7 @@
 /* Dashboard related config */
 export const dashboardConfig = {
  title: "Majo.exe", // string. Dashboard title, will be shown in browser tab and in search results
- url: "https://majoexe.xyz", // string. Dashboard url, to Disable dashboard, set this to null (Note: when you change it to null the dashboard will not work and commands related to dashboard will not work)
+ url: "https://majoexe.com", // string. Dashboard url, to Disable dashboard, set this to null (Note: when you change it to null the dashboard will not work and commands related to dashboard will not work)
  logo: "/assets/avatar.png", // string. Logo of your bot
  description: "Majo.exe - Discord bot for Fun, Memes, Images, Giveaway, Economy and Anime! Majo.exe serve over 117 commands!", // string. Dashboard description, will be shown in search results
  image: "/opengraph-image", // string. Dashboard open graph image (Note: this is not a url, this is a path to the image/generator, for example: /opengraph-image)
@@ -36,7 +36,7 @@ export const dashboardRedirects = [
  },
  {
   source: "/status",
-  destination: "https://status.majoexe.xyz",
+  destination: "https://status.majoexe.com",
   permanent: true,
  },
 ];

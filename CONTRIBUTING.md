@@ -1,10 +1,10 @@
 ![Header](https://github.com/IgorKowalczyk/majo.exe/assets/49127376/4df57b45-2900-40e0-bf34-707170fb83bc)
 
 <p align="center">
- <a href="https://majoexe.xyz/server"><img src="https://img.shields.io/discord/695282860399001640?color=%234552ef&logo=discord&label=Discord&style=flat&logoColor=fff" alt="Discord" /></a>
+ <a href="https://majoexe.com/server"><img src="https://img.shields.io/discord/695282860399001640?color=%234552ef&logo=discord&label=Discord&style=flat&logoColor=fff" alt="Discord" /></a>
  <a href="https://www.npmjs.com/package/discord.js"><img src="https://img.shields.io/badge/Discord.js-v14-%234552ef?style=flat&logo=npm&logoColor=fff" alt="Discord.js" /></a>
- <a href="https://majoexe.xyz/"><img src="https://img.shields.io/github/actions/workflow/status/igorkowalczyk/majo.exe/codeql-analysis.yml?branch=master&style=flat&label=CodeQL&logo=github&color=%234552ef" alt="CodeQL Checks" /></a>
- <a href="https://majoexe.xyz"><img src="https://img.shields.io/github/license/igorkowalczyk/majo.exe?style=flat&;logo=github&label=License&color=%234552ef" alt="GitHub License" /></a>
+ <a href="https://majoexe.com/"><img src="https://img.shields.io/github/actions/workflow/status/igorkowalczyk/majo.exe/codeql-analysis.yml?branch=master&style=flat&label=CodeQL&logo=github&color=%234552ef" alt="CodeQL Checks" /></a>
+ <a href="https://majoexe.com"><img src="https://img.shields.io/github/license/igorkowalczyk/majo.exe?style=flat&;logo=github&label=License&color=%234552ef" alt="GitHub License" /></a>
 </p>
 
 <!-- prettier-ignore -->
@@ -136,15 +136,15 @@ We know that waiting for your pull request to be accepted can be stressful. **Pl
 
 Want to contribute to Majo.exe but don't know where to start? **Join our community!** We have created a welcoming community that encourages collaboration and supports new contributors. **We are excited to have you on board!** 🙌
 
-[We created a Discord server for the Majo.exe community.](https://majoexe.xyz/discord) **Join the server to connect with fellow contributors and get support from the project maintainers.** We look forward to collaborating with you! 🚀👾🙌
+[We created a Discord server for the Majo.exe community.](https://majoexe.com/discord) **Join the server to connect with fellow contributors and get support from the project maintainers.** We look forward to collaborating with you! 🚀👾🙌
 
-[![Join the Discord server](https://invidget.switchblade.xyz/sgt4QEyDxK)](https://majoexe.xyz/discord)
+[![Join the Discord server](https://invidget.switchblade.xyz/sgt4QEyDxK)](https://majoexe.com/discord)
 
 ### Share Your Feedback 📣
 
 We want to hear from you! **Your feedback is vital for the project's development and success.** If you have any questions, suggestions, or concerns, please feel free to contact the project maintainers. We are always happy to help! 🙌
 
-You can contact the project maintainers by [joining the Discord server](https://majoexe.xyz/discord) or [opening an issue](https://github.com/igorkowalczyk/majo.exe/issues/new/choose) on GitHub.
+You can contact the project maintainers by [joining the Discord server](https://majoexe.com/discord) or [opening an issue](https://github.com/igorkowalczyk/majo.exe/issues/new/choose) on GitHub.
 
 [![Create a new issue on GitHub](https://github.com/IgorKowalczyk/majo.exe/assets/49127376/15422f9b-c7cc-48ef-a047-6a81c0e6c6e9)](https://github.com/igorkowalczyk/majo.exe/issues/new/choose)
 

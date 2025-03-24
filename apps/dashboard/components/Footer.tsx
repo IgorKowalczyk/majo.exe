@@ -43,16 +43,16 @@ export const Footer = ({ className, ...props }: HTMLAttributes<HTMLDivElement>) 
       {/* =================================================== */}
       {!process.env.NEXT_PUBLIC_IS_HOSTED_BY_CREATOR ? (
        <div className="mt-3 text-neutral-300">
-        <Link target="_blank" href="https://majoexe.xyz" className="font-semibold text-accent-primary hover:opacity-80">
+        <Link target="_blank" href="https://majoexe.com" className="font-semibold text-accent-primary hover:opacity-80">
          🔥 Powered by Majo.exe!
         </Link>
         <div className="mt-2">
          This is a public instance of Majo.exe - a free and open-source Discord bot. You can invite it to your server by clicking on the button below or{" "}
-         <Link href="https://majoexe.xyz/invite" className="font-semibold text-neutral-200 hover:underline">
+         <Link href="https://majoexe.com/invite" className="font-semibold text-neutral-200 hover:underline">
           by clicking here
          </Link>
          .
-         <Link className={cn(buttonVariants({ variant: "primary" }), "mt-3 w-fit")} href="https://majoexe.xyz/invite">
+         <Link className={cn(buttonVariants({ variant: "primary" }), "mt-3 w-fit")} href="https://majoexe.com/invite">
           <Icons.Sparkles className="mr-2 size-5" />
           Invite original Majo.exe
          </Link>

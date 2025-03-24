@@ -4,7 +4,7 @@ test.setTimeout(210000);
 test.use({ actionTimeout: 20000 });
 
 const endpoints = ["/", "/commands", "/auth/login", "/legal/privacy-policy", "/legal/terms-of-service"];
-const defaultURL = process.env.ENVIRONMENT_URL || "https://majoexe.xyz";
+const defaultURL = process.env.ENVIRONMENT_URL || "https://majoexe.com";
 const dimensions = [
  { width: 1920, height: 1080, name: "large" },
  { width: 1000, height: 800, name: "middle" },

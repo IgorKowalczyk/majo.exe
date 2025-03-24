@@ -1,10 +1,10 @@
 ![Header](https://github.com/IgorKowalczyk/majo.exe/assets/49127376/8fd53e0b-1902-460c-9d6c-7d42ea84f8bb)
 
 <p align="center">
- <a href="https://majoexe.xyz/server"><img src="https://img.shields.io/discord/695282860399001640?color=%234552ef&logo=discord&label=Discord&style=flat&logoColor=fff" alt="Discord" /></a>
+ <a href="https://majoexe.com/server"><img src="https://img.shields.io/discord/695282860399001640?color=%234552ef&logo=discord&label=Discord&style=flat&logoColor=fff" alt="Discord" /></a>
  <a href="https://www.npmjs.com/package/discord.js"><img src="https://img.shields.io/badge/Discord.js-v14-%234552ef?style=flat&logo=npm&logoColor=fff" alt="Discord.js" /></a>
- <a href="https://majoexe.xyz/"><img src="https://img.shields.io/github/actions/workflow/status/igorkowalczyk/majo.exe/codeql-analysis.yml?branch=master&style=flat&label=CodeQL&logo=github&color=%234552ef" alt="CodeQL Checks" /></a>
- <a href="https://majoexe.xyz"><img src="https://img.shields.io/github/license/igorkowalczyk/majo.exe?style=flat&;logo=github&label=License&color=%234552ef" alt="GitHub License" /></a>
+ <a href="https://majoexe.com/"><img src="https://img.shields.io/github/actions/workflow/status/igorkowalczyk/majo.exe/codeql-analysis.yml?branch=master&style=flat&label=CodeQL&logo=github&color=%234552ef" alt="CodeQL Checks" /></a>
+ <a href="https://majoexe.com"><img src="https://img.shields.io/github/license/igorkowalczyk/majo.exe?style=flat&;logo=github&label=License&color=%234552ef" alt="GitHub License" /></a>
 </p>
 
 ## ✨ Features
@@ -19,11 +19,11 @@
 
 Go to [this link](https://discord.com/oauth2/authorize/?permissions=4294967287&scope=bot%20applications.commands&client_id=949342410150924319) and add the bot (this requires `MANAGE_GUILD` permission) to your server.
 
-[Or to make it easier, visit our website](https://majoexe.xyz/)
+[Or to make it easier, visit our website](https://majoexe.com/)
 
 ## 🖥️ Hosting
 
-We are hosting Majo.exe on our own servers. Majo.exe will be online 24/7. [Invite Majo here!](https://majoexe.xyz/api/invite)  
+We are hosting Majo.exe on our own servers. Majo.exe will be online 24/7. [Invite Majo here!](https://majoexe.com/api/invite)  
 However, if you want to host Majo.exe yourself, you can do it. [Check out our tutorials](#-tutorials) to learn how to do it.
 
 <!-- prettier-ignore-start -->
@@ -101,7 +101,7 @@ Ensure your setup meets these prerequisites before setting up Majo.exe:
 
 |                                                                      | Sponsor                                                             | Description                                                                                                             |
 | -------------------------------------------------------------------- | ------------------------------------------------------------------- | :---------------------------------------------------------------------------------------------------------------------- |
-| ![TrestHost Logo](https://majoexe.xyz/assets/sponsors/tresthost.png) | [**TrestHost**](https://dash.tresthost.me/register?ref=majonez.exe) | **TrestHost is a good and powerful hosting provider** providing servers from the **USA and Germany**. Try us out today! |
+| ![TrestHost Logo](https://majoexe.com/assets/sponsors/tresthost.png) | [**TrestHost**](https://dash.tresthost.me/register?ref=majonez.exe) | **TrestHost is a good and powerful hosting provider** providing servers from the **USA and Germany**. Try us out today! |
 
 ## ⛔ Hosting Agreement
 
