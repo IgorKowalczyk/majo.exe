@@ -28,7 +28,7 @@ export default async function Page() {
  return (
   <div className="flex w-full flex-col items-center px-8 pb-8 pt-16 antialiased md:p-16">
    <div className="flex flex-col justify-center">
-    <div className="mt-4 flex flex-row flex-wrap justify-center gap-4 sm:flex-col">
+    <div className="mt-4 flex flex-row flex-wrap justify-center gap-3 sm:flex-col">
      {servers && servers.length > 0 ? (
       <>
        <div>
@@ -40,7 +40,7 @@ export default async function Page() {
        </div>
        {servers.map((server) => (
         <div key={server.id}>
-         <div className="hidden flex-row items-center justify-start gap-4 sm:flex">
+         <div className="hidden flex-row items-center justify-start gap-3 sm:flex">
           {server.icon ? <Image src={`https://cdn.discordapp.com/icons/${server.id}/${server.icon}.${server.icon.startsWith("a_") ? "gif" : "png"}`} alt={server.name} quality={95} width={64} height={64} className="size-16 shrink-0 rounded-full" /> : <div className="size-16 shrink-0 rounded-full bg-button-secondary" />}
           <Header className={cn(headerVariants({ variant: "h3" }))}>{server.name}</Header>
           <>
@@ -93,7 +93,7 @@ export default async function Page() {
         You don't have any servers!
        </Header>
        <p className="mb-6 text-center text-base text-white/50 md:text-xl">It seems like you're not in any servers that you can manage, try joining a server or creating one.</p>
-       <div className="flex flex-wrap justify-center gap-4">
+       <div className="flex flex-wrap justify-center gap-3">
         <Link href="/api/invite" className={cn(buttonVariants({ variant: "primary" }))}>
          <Icons.Plus className={iconVariants({ variant: "button" })} /> Invite Majo.exe
         </Link>

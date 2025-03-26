@@ -12,7 +12,7 @@ export default function Loading() {
     <Icons.TrendingUp className={iconVariants({ variant: "extraLarge" })} />
     Statistics
    </Header>
-   <div className="mb-4 grid grid-cols-1 gap-0 md:grid-cols-1 md:gap-4 lg:grid-cols-2 xl:grid-cols-3">
+   <div className="mb-6 grid grid-cols-1 gap-0 md:grid-cols-1 md:gap-6 lg:grid-cols-2 xl:grid-cols-3">
     <GraphCard // prettier
      className="mt-0"
      icon={<Icons.userAdd className={iconVariants({ variant: "extraLarge" })} />}

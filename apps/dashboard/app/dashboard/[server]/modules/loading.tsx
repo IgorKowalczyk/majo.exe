@@ -20,7 +20,7 @@ export default function Loading() {
     </Header>
     <p className="mb-4 mt-2 text-left">Enable or disable categories of commands.</p>
 
-    <div className="flex flex-wrap items-stretch justify-start gap-8">
+    <div className="flex flex-wrap items-stretch justify-start gap-6">
      {Array.from({ length: 8 }).map((_, i) => (
       <Skeleton
        key={`category-keleton-${i}`}
@@ -39,7 +39,7 @@ export default function Loading() {
     </Header>
     <p className="mb-4 mt-2 text-left">Enable or disable commands.</p>
 
-    <div className="flex flex-wrap items-stretch justify-start gap-8">
+    <div className="flex flex-wrap items-stretch justify-start gap-6">
      {Array.from({ length: 8 }).map((_, i) => (
       <Skeleton key={`command-skeleton-${i}`} className="h-24 w-full" />
      ))}

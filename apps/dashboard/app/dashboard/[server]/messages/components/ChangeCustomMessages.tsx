@@ -16,7 +16,7 @@ import { Switch } from "@/components/ui/Switch";
 import { Tooltip } from "@/components/ui/Tooltip";
 import { cn } from "@/lib/utils";
 
-export interface ChangeCustomMessagesProps extends React.HTMLAttributes<HTMLDivElement> {
+export interface ChangeCustomMessagesProps extends React.ComponentPropsWithRef<"div"> {
  serverId: string;
  enabled: boolean;
  title: string;
@@ -28,22 +28,7 @@ export interface ChangeCustomMessagesProps extends React.HTMLAttributes<HTMLDivE
  replacedData: { user: string; guild: string };
 }
 
-export const ChangeCustomMessages = ({
- ref,
- serverId,
- enabled,
- title,
- description,
- existingChannel,
- allChannels,
- type,
- defaultMessages,
- replacedData,
- className,
- ...props
-}: ChangeCustomMessagesProps & {
- ref: React.RefObject<HTMLDivElement>;
-}) => {
+export const ChangeCustomMessages = ({ ref, serverId, enabled, title, description, existingChannel, allChannels, type, defaultMessages, replacedData, className, ...props }: ChangeCustomMessagesProps) => {
  const [isEnabled, setIsEnabled] = useState(enabled ?? false);
  const [loading, setLoading] = useState(false);
  const [newTitle, setNewTitle] = useState(title);
@@ -164,7 +149,7 @@ export const ChangeCustomMessages = ({
       "border-0 p-0 duration-200 md:border md:border-neutral-800 md:p-6"
      )}
     >
-     <div className="flex flex-col gap-4 xl:flex-row xl:gap-8">
+     <div className="flex flex-col gap-3 xl:flex-row xl:gap-8">
       <div className="w-full">
        <div className="mb-2 flex w-fit flex-col flex-wrap gap-2">
         <Tooltip content="Where should the welcome message be sent?">

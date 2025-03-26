@@ -11,7 +11,7 @@ export const metadata = {
 export default async function ErrorPage(props: { searchParams: Promise<{ error: string }> }) {
  const searchParams = await props.searchParams;
  return (
-  <div className="relative z-20 flex min-h-screen w-full flex-col items-center justify-center gap-4 px-3">
+  <div className="relative z-20 flex min-h-screen w-full flex-col items-center justify-center gap-3 px-3">
    <div className="absolute left-0 top-0 z-10 size-full bg-[radial-gradient(circle,rgba(2,0,36,0)0,rgb(16,17,16,100%))]" />
    <div className="z-30">
     <>

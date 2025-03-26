@@ -37,7 +37,7 @@ export default function Loading() {
     </Button>
    </Block>
 
-   <Block className="mt-4 overflow-x-visible!">
+   <Block className="mt-6 overflow-x-visible!">
     <Header className={cn(headerVariants({ variant: "h2" }))}>
      <Icons.userMinus className={iconVariants({ variant: "large", className: "stroke-2!" })} />
      Leave messages

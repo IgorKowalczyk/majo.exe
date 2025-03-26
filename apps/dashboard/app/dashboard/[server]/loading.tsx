@@ -15,10 +15,10 @@ export default function Loading() {
      <Skeleton className="mt-1 h-5 w-64 opacity-60" />
     </div>
    </div>
-   <div className="mb-4 grid grid-cols-1 gap-0 md:grid-cols-1 md:gap-4 lg:grid-cols-2 xl:grid-cols-3">
-    <div className="mt-4 overflow-auto rounded-lg border border-neutral-800 bg-background-secondary p-4">
+   <div className="mb-4 grid grid-cols-1 gap-0 md:grid-cols-1 md:gap-6 lg:grid-cols-2 xl:grid-cols-3">
+    <div className="mt-4 overflow-auto rounded-xl border border-neutral-800 bg-background-secondary p-4">
      <div className="flex flex-row items-center justify-between">
-      <div className="flex flex-row items-center gap-4">
+      <div className="flex flex-row items-center gap-3">
        <Icons.userAdd className={iconVariants({ variant: "extraLarge" })} />
        <div className="flex flex-col">
         <Header className={cn(headerVariants({ variant: "h4" }), "justify-start whitespace-nowrap")}>
@@ -28,13 +28,13 @@ export default function Loading() {
         <p className="text-sm text-gray-400">Amount of new members that joined your server in the last 7 days.</p>
        </div>
       </div>
-      <div className="ml-2 flex min-h-[40px] min-w-[144px] flex-row items-center gap-4" />
+      <div className="ml-2 flex min-h-[40px] min-w-[144px] flex-row items-center gap-3" />
      </div>
     </div>
 
     <div className="mt-4 overflow-auto rounded-lg border border-neutral-800 bg-background-secondary p-4">
      <div className="flex flex-row items-center justify-between">
-      <div className="flex flex-row items-center gap-4">
+      <div className="flex flex-row items-center gap-3">
        <Icons.commentAdd className={iconVariants({ variant: "extraLarge" })} />
        <div className="flex flex-col">
         <Header className={cn(headerVariants({ variant: "h4" }), "justify-start whitespace-nowrap")}>
@@ -44,13 +44,13 @@ export default function Loading() {
         <p className="text-sm text-gray-400">Amount of messages that were sent in your server in the last 7 days.</p>
        </div>
       </div>
-      <div className="ml-2 flex min-h-[40px] min-w-[144px] flex-row items-center gap-4" />
+      <div className="ml-2 flex min-h-[40px] min-w-[144px] flex-row items-center gap-3" />
      </div>
     </div>
 
     <div className="mt-4 overflow-auto rounded-lg border border-neutral-800 bg-background-secondary p-4">
      <div className="flex flex-row items-center justify-between">
-      <div className="flex flex-row items-center gap-4">
+      <div className="flex flex-row items-center gap-3">
        <Icons.userMinus className={iconVariants({ variant: "extraLarge" })} />
        <div className="flex flex-col">
         <Header className={cn(headerVariants({ variant: "h4" }), "justify-start whitespace-nowrap")}>
@@ -60,7 +60,7 @@ export default function Loading() {
         <p className="text-sm text-gray-400">Amount of members that left your server in the last 7 days.</p>
        </div>
       </div>
-      <div className="ml-2 flex min-h-[40px] min-w-[144px] flex-row items-center gap-4" />
+      <div className="ml-2 flex min-h-[40px] min-w-[144px] flex-row items-center gap-3" />
      </div>
     </div>
    </div>
@@ -108,7 +108,7 @@ export default function Loading() {
        Emojis
        <span className="ml-auto font-medium opacity-60">Loading...</span>
       </Header>
-      <div className="flex flex-row flex-wrap gap-4">
+      <div className="flex flex-row flex-wrap gap-3">
        {Array.from({ length: 25 }).map((_, i) => (
         <Skeleton key={`emoji-${i}`} className="size-8 shrink-0 rounded-lg" />
        ))}
@@ -120,7 +120,7 @@ export default function Loading() {
        Stickers
        <span className="ml-auto font-medium opacity-60">Loading...</span>
       </Header>
-      <div className="flex flex-row flex-wrap gap-4">
+      <div className="flex flex-row flex-wrap gap-3">
        {Array.from({ length: 10 }).map((_, i) => (
         <Skeleton key={`sticker-${i}`} className="size-24 shrink-0 rounded-lg" />
        ))}

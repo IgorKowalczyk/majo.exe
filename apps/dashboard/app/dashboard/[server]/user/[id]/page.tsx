@@ -212,7 +212,7 @@ export default async function User(props: { params: Promise<{ server: string; id
       </div>
      </div>
      <div className="m-[8px_16px_16px] rounded-lg border border-neutral-800 bg-background-menu-button/70 p-4">
-      <div className="flex flex-col items-center justify-center gap-4 sm:flex-row sm:justify-start">
+      <div className="flex flex-col items-center justify-center gap-3 sm:flex-row sm:justify-start">
        <Tooltip content="Total gained XP">
         <div className="flex cursor-help items-center">
          <div className="mr-2 size-3 shrink-0 rounded-full bg-[#81848f]" />

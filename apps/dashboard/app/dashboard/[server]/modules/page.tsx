@@ -72,10 +72,10 @@ export default async function Page(props: { params: Promise<{ server: string }> 
     </Header>
     <p className="mb-4 mt-2 text-left">Enable or disable categories of commands.</p>
 
-    <div className="flex flex-wrap items-stretch justify-start gap-8">
+    <div className="flex flex-wrap items-stretch justify-start gap-6">
      {categories.map((category) => (
       <Block className="w-full min-w-48 md:w-auto" key={category.name}>
-       <p className="mb-4 flex items-center gap-4 text-center text-xl font-bold">
+       <p className="mb-4 flex items-center gap-3 text-center text-xl font-bold">
         {botConfig.emojis.categories.find((cat) => cat.name === category.name.toLowerCase())?.emoji || "❔"} {category.name}
         <span className="ml-auto mr-0">
          <UpdateCategories serverId={serverDownload.id} categoryName={category.name} categoryEnabled={!guild.guildDisabledCategories.some((cat) => cat.categoryName === category.name)} />
@@ -123,7 +123,7 @@ export default async function Page(props: { params: Promise<{ server: string }> 
        )}
       >
        {category.commands.map((command) => (
-        <div key={command.name} className="hide-scrollbar my-2 w-full overflow-scroll rounded-lg border border-neutral-800 bg-background-navbar px-6 py-4">
+        <div key={command.name} className="hide-scrollbar my-3 w-full overflow-scroll rounded-lg border border-neutral-800 bg-background-navbar px-6 py-4">
          <div className="flex flex-row items-center justify-between">
           <div
            className={cn(

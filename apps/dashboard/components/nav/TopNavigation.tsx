@@ -14,7 +14,7 @@ export const TopNavigation = async ({ className, theme, ...props }: React.Compon
  const session = await getSession();
 
  return (
-  <nav className={cn("bg-background-navbar md:bg-background-navbar/70 fixed z-40 flex w-full items-center border-b border-b-neutral-800 py-4 text-left shadow-lg md:backdrop-blur-[9px]", className)} {...props}>
+  <nav className={cn("bg-background-navbar fixed z-40 flex w-full items-center border-b border-b-neutral-800 py-4 text-left shadow-lg", className)} {...props}>
    <SideMenuControl />
    <div
     className={cn(
@@ -40,7 +40,7 @@ export const TopNavigation = async ({ className, theme, ...props }: React.Compon
     </div>
     <div className="ml-auto mr-4">
      {session ? (
-      <div className="flex items-center gap-4">
+      <div className="flex items-center gap-3">
        <Link href="/dashboard" className="hidden items-center text-white/60 duration-200 hover:text-white motion-reduce:transition-none md:flex">
         <Icons.dashboard className={iconVariants({ variant: "large", className: "mr-2" })} /> <span className="-mb-px">Dashboard</span>
        </Link>

@@ -27,7 +27,7 @@ export const headerVariants = cva("flex items-center font-bold", {
   },
   spacing: {
    normal: "gap-2",
-   wide: "gap-4",
+   wide: "gap-3",
   },
  },
  defaultVariants: {

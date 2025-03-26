@@ -79,7 +79,7 @@ export default async function Page() {
 
  return (
   <div className="flex w-full flex-col items-center px-8 pb-8 pt-16 antialiased md:p-16">
-   <div className="flex flex-col justify-center gap-4">
+   <div className="flex flex-col justify-center gap-3">
     <div className="relative overflow-hidden rounded-lg border border-neutral-800 bg-background-navbar md:w-full">
      <>
       <div
@@ -146,21 +146,21 @@ export default async function Page() {
      </Header>
      <p className="mt-2 leading-none text-white/70">A list of servers you are in and some information about them.</p>
      {groupedGuilds ? (
-      <div className="mt-4 flex flex-col gap-4">
+      <div className="mt-4 flex flex-col gap-3">
        {Object.keys(groupedGuilds).map((guildId) => {
         const guild = groupedGuilds[guildId];
         if (!guild) return null;
         const userXP = guild.xp.reduce((acc, curr) => acc + curr.xp, 0);
         return (
          <div key={guild.guild.id} className="relative flex justify-between overflow-hidden rounded-lg border border-neutral-800 bg-background-navbar p-4">
-          <div className="flex flex-row items-center gap-4">
+          <div className="flex flex-row items-center gap-3">
            {guild.guild.icon ? <Image src={`https://cdn.discordapp.com/icons/${guild.guild.id}/${guild.guild.icon}.${guild.guild.icon.startsWith("a_") ? "gif" : "png"}`} alt={guild.guild.name} quality={95} width={64} height={64} className="size-14 shrink-0 rounded-full" /> : <div className="size-14 shrink-0 rounded-full bg-button-secondary" />}
            <div className="flex flex-col">
             <Header className={cn(headerVariants({ variant: "h4" }))}>{guild.guild.name}</Header>
             <p className="text-sm text-white/70">Server ID: {guild.guild.id}</p>
            </div>
           </div>
-          <div className="flex flex-row items-center gap-4">
+          <div className="flex flex-row items-center gap-3">
            <div className="flex flex-col">
             {/* <p className="text-white font-semibold">Warns</p> */}
             <p className="text-white/70">{guild.warns.length} warns</p>

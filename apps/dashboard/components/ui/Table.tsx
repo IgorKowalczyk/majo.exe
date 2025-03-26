@@ -121,7 +121,7 @@ export const Table = <TData, TValue>({ columns, data, sortBy = [{ id: "id", desc
  return (
   <>
    <div className="flex w-full flex-col">
-    <div className="flex flex-row items-stretch gap-4">
+    <div className="flex flex-row items-stretch gap-3">
      {showSearch && <InputWithIcon icon={<Icons.Search className={iconVariants({ variant: "normal" })} />} placeholder="Search" value={globalFilter || ""} onChange={(e) => setGlobalFilter(e.target.value)} className="h-10" />}
      {showControls && <ViewSelect selectedValue={table.getState().pagination.pageSize} setSelectedValue={table.setPageSize} className="my-2" />}
     </div>

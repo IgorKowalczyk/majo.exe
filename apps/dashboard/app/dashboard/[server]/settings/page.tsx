@@ -94,7 +94,7 @@ export default async function Page(props: { params: Promise<{ server: string }> 
      Everyone with the link can view public dashboard overview. This is useful for communities that want to show off their server. <span className="font-bold">The dashboard overview do not include any sensitive information.</span>
     </p>
 
-    <div className="mb-4 grid grid-cols-1 gap-4 lg:grid-cols-2">
+    <div className="mb-4 grid grid-cols-1 gap-3 lg:grid-cols-2">
      <Block className="flex flex-col items-start justify-start gap-2">
       <Header className={cn(headerVariants({ variant: "h3" }))}>
        <Icons.Check className={iconVariants({ variant: "large", className: "stroke-green-500" })} />

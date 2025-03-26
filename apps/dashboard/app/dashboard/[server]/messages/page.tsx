@@ -88,7 +88,7 @@ export default async function Page(props: { params: Promise<{ server: string }> 
     />
    </Block>
 
-   <Block className="mt-4 overflow-x-visible!">
+   <Block className="mt-6 overflow-x-visible!">
     <ChangeCustomMessages
      type="leave"
      serverId={serverDownload.id}

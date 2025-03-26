@@ -16,7 +16,7 @@ export default function Loading() {
     <div key={i}>
      <Skeleton className="mb-2 mt-6 h-8 w-32" />
 
-     <div className="grid grid-cols-1 gap-8 lg:grid-cols-2 2xl:grid-cols-3">
+     <div className="grid grid-cols-1 gap-6 lg:grid-cols-2 2xl:grid-cols-3">
       <Skeleton className="h-[289px]" />
       <Skeleton className="h-[289px]" />
       {i % 2 === 0 && <Skeleton className="h-[289px]" />}

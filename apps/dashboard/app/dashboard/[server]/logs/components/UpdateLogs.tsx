@@ -111,12 +111,12 @@ export const UpdateLogs = ({ serverId, allChannels, logs, allowedLogs }: UpdateL
      "lg:ml-72 md:mr-6 mx-3 fixed bottom-6 z-50 duration-200 ease-in-out left-0 right-0 origin-bottom"
     )}
    >
-    <div className="mx-auto flex w-full max-w-3xl flex-col items-center justify-between gap-4 rounded-2xl border border-neutral-800 bg-background-secondary p-3 shadow-2xl md:flex-row">
+    <div className="mx-auto flex w-full max-w-3xl flex-col items-center justify-between gap-3 rounded-2xl border border-neutral-800 bg-background-secondary p-3 shadow-2xl md:flex-row">
      <span className="flex items-center gap-2 font-bold">
       <Icons.TriangleAlert className="ml-2 size-6 text-red-400" />
       Caution - You have unsaved changes
      </span>
-     <div className="flex gap-4">
+     <div className="flex gap-3">
       <Button variant="secondary" onClick={handleDiscardAll} className="gap-2" disabled={loading}>
        <Icons.Trash className={iconVariants({ variant: "normal" })} />
        Reset
@@ -142,7 +142,7 @@ export const UpdateLogs = ({ serverId, allChannels, logs, allowedLogs }: UpdateL
     .map((category) => (
      <div key={category.category}>
       <Header className={cn(headerVariants({ variant: "h2" }), "mt-6 mb-2")}>{category.category}</Header>
-      <div className="grid grid-cols-1 gap-8 lg:grid-cols-2 2xl:grid-cols-3">
+      <div className="grid grid-cols-1 gap-6 lg:grid-cols-2 2xl:grid-cols-3">
        {category.types
         .filter((logType) => allowedLogs.includes(logType.type as GuildLogType))
         .map((logType) => {
@@ -197,7 +197,7 @@ export const UpdateLog = ({ allChannels, exisingChannel, logType, logEnabled, on
 
  return (
   <Block key={logType} {...props}>
-   <div className="mb-1 flex items-center gap-4">
+   <div className="mb-1 flex items-center gap-3">
     <Header className={cn(headerVariants({ variant: "h3" }))}>
      {botConfig.emojis.logs.flatMap((category) => category.types).find((log) => log.type === logType)?.emoji || "❔"} {handleLogText(logType)}
     </Header>
@@ -213,7 +213,7 @@ export const UpdateLog = ({ allChannels, exisingChannel, logType, logEnabled, on
     </Tooltip>
     <Switch checked={enabled} onCheckedChange={() => setEnabled(!enabled)} disabled={disabled} />
    </div>
-   <div className="flex items-end justify-between gap-4">
+   <div className="flex items-end justify-between gap-3">
     <div>
      <span className="flex items-center gap-2 font-bold">
       <Icons.Hash className={iconVariants({ variant: "normal" })} />

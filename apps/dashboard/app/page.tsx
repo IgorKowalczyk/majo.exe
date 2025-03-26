@@ -135,7 +135,7 @@ export default async function Page() {
   <div className="p-6">
    <div className="relative z-20 flex min-h-screen w-full items-center justify-center">
     <div className="absolute left-0 top-0 z-10 size-full bg-[radial-gradient(circle,rgba(2,0,36,0)0,rgb(16,17,16,100%))]" />
-    <div className="relative z-20 -mt-8 flex w-full select-none flex-col items-center justify-center gap-4 px-3 md:w-[90%]">
+    <div className="relative z-20 -mt-8 flex w-full select-none flex-col items-center justify-center gap-3 px-3 md:w-[90%]">
      <Fade
       framerProps={{
        show: { opacity: 1, transition: { type: "spring", delay: 0.85, duration: 0.5 } },
@@ -161,7 +161,7 @@ export default async function Page() {
        show: { opacity: 1, transition: { type: "spring", delay: 0.95, duration: 0.5 } },
       }}
      >
-      <div className="mt-2 flex flex-col gap-4 sm:flex-row">
+      <div className="mt-2 flex flex-col gap-3 sm:flex-row">
        <LoginButton />
        <Link href="/api/invite" className={cn(buttonVariants({ variant: "secondary" }))}>
         <Icons.userAdd className={iconVariants({ variant: "button" })} />
@@ -189,8 +189,8 @@ export default async function Page() {
    <div className="relative z-20 bg-background-primary">
     <hr className="m-[0_auto] mb-8 h-px w-full border-none bg-[linear-gradient(to_right,transparent,rgba(255,255,255,0.1)_50%,transparent)] px-8 duration-300 motion-reduce:transition-none" />
     <div className="mx-auto mb-32 max-w-[1400px] md:px-8 lg:px-16">
-     <div className="mx-auto flex flex-col justify-around gap-4 md:flex-row">
-      <div className="flex flex-col items-center justify-center gap-4">
+     <div className="mx-auto flex flex-col justify-around gap-3 md:flex-row">
+      <div className="flex flex-col items-center justify-center gap-3">
        <Header className={headerVariants({ variant: "h2", effects: "gradient" })}>
         <span>
          <Suspense fallback={<span>{jsonData.approximate_guild_count || 0}</span>}>
@@ -200,7 +200,7 @@ export default async function Page() {
         </span>
        </Header>
       </div>
-      <div className="flex flex-col items-center justify-center gap-4">
+      <div className="flex flex-col items-center justify-center gap-3">
        <Header className={headerVariants({ variant: "h2", effects: "gradient" })}>
         <span>
          <Suspense fallback={<span>{commandsCount}</span>}>
@@ -211,7 +211,7 @@ export default async function Page() {
        </Header>
       </div>
 
-      <div className="flex flex-col items-center justify-center gap-4">
+      <div className="flex flex-col items-center justify-center gap-3">
        <Header className={headerVariants({ variant: "h2", effects: "gradient" })}>
         <span>
          <Suspense fallback={<span>100000</span>}>
@@ -225,7 +225,7 @@ export default async function Page() {
 
      <p className="my-6 w-full text-center text-sm text-neutral-400">...and counting!</p>
 
-     <div className="mx-auto flex w-full max-w-[1400px] flex-col gap-4 px-4 md:grid md:grid-cols-2 md:px-0 lg:grid-cols-3">
+     <div className="mx-auto flex w-full max-w-[1400px] flex-col gap-6 px-4 md:grid md:grid-cols-2 md:px-0 lg:grid-cols-3">
       <div className="row-span-1 overflow-hidden rounded-xl border border-neutral-800 bg-background-secondary p-4 duration-200 hover:bg-neutral-800/50">
        <Header className={headerVariants({ variant: "h2", effects: "gradient" })}>Image manipulation? We got you!</Header>
        <p className="mt-2 max-w-[680px] text-white/70">Want to edit an image? Or maybe you want to make a meme?</p>
@@ -282,7 +282,7 @@ export default async function Page() {
           <Balancer>With Majo.exe you can get to know your server better with the help of the dashboard. You can see the most active members, the most used channels and activity graphs!</Balancer>
          </p>
         </div>
-        <div className="z-50 flex flex-col items-center justify-center gap-4 px-8 py-6 md:flex-row">
+        <div className="z-50 flex flex-col items-center justify-center gap-3 px-8 py-6 md:flex-row">
          <p className="flex cursor-pointer gap-1 rounded-full border border-accent-primary/50 bg-accent-primary/20 px-2 py-1 text-sm font-bold text-accent-primary backdrop-blur-md duration-200 hover:bg-accent-primary/30">
           +{Math.floor(Math.random() * 10 + 15)} users today
           <Icons.TrendingUp className={iconVariants({ variant: "normal" })} />

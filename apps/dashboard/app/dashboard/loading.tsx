@@ -6,7 +6,7 @@ import { cn } from "@/lib/utils";
 export default function Loading() {
  return (
   <div className="flex w-full flex-col items-center px-8 pb-8 pt-16 antialiased md:p-16">
-   <div className="mt-4 flex flex-row flex-wrap justify-center gap-4 sm:flex-col">
+   <div className="mt-4 flex flex-row flex-wrap justify-center gap-3 sm:flex-col">
     <div>
      <Header className={cn(headerVariants({ variant: "h1", alignment: "center", margin: "normal" }))}>
       <Icons.Navigation className={iconVariants({ variant: "extraLarge" })} />
@@ -14,10 +14,10 @@ export default function Loading() {
      </Header>
      <p className="mb-4 text-center text-base text-white/50 md:text-xl">Select a server to manage, or add the bot to a new server.</p>
     </div>
-    <div className="flex flex-row flex-wrap justify-center gap-4 sm:flex-col">
+    <div className="flex flex-row flex-wrap justify-center gap-3 sm:flex-col">
      {[...Array(10)].map((_, i) => (
       <div key={`skeleton-${i}`}>
-       <div className="hidden flex-row items-center justify-start gap-4 sm:flex">
+       <div className="hidden flex-row items-center justify-start gap-3 sm:flex">
         <Skeleton className="size-16 shrink-0 rounded-full" />
         <Skeleton className="h-7 w-1/3" />
         <Skeleton className="ml-auto h-10 w-[115px]" />

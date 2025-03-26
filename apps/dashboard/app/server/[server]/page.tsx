@@ -122,8 +122,8 @@ export default async function Page(props: { params: Promise<{ server: string }> 
     </div>
    </Header>
 
-   <Block className="mt-4! flex w-full flex-col gap-4 p-4! sm:flex-row sm:gap-0">
-    <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
+   <Block className="mt-4! flex w-full flex-col gap-3 p-4! sm:flex-row sm:gap-0">
+    <div className="flex flex-col items-center justify-center gap-3 sm:flex-row">
      <div className="flex items-center">
       <div className="mr-2 size-3 shrink-0 rounded-full bg-[#81848f]" />
       {guildPreview.approximate_member_count || "0"} members
@@ -148,7 +148,7 @@ export default async function Page(props: { params: Promise<{ server: string }> 
        <span className="ml-auto font-medium opacity-60">{guildPreview.emojis.length || "0"}</span>
       </Header>
       {guildPreview.emojis && guildPreview.emojis.length > 0 ? (
-       <div className="flex flex-row flex-wrap gap-4">
+       <div className="flex flex-row flex-wrap gap-3">
         {guildPreview.emojis.map((emoji) => (
          <Link key={emoji.id || "" + emoji.name} className="flex flex-col items-center justify-center gap-2" href={`https://cdn.discordapp.com/emojis/${emoji?.id}.${emoji?.animated ? "gif" : "png"}`} target="_blank" rel="noreferrer noopener">
           <Tooltip content={emoji.name || "Unnamed emoji"}>
@@ -170,7 +170,7 @@ export default async function Page(props: { params: Promise<{ server: string }> 
        <span className="ml-auto font-medium opacity-60">{guildPreview.stickers.length || "0"}</span>
       </Header>
       {guildPreview.stickers && guildPreview.stickers.length > 0 ? (
-       <div className="flex flex-row flex-wrap gap-4">
+       <div className="flex flex-row flex-wrap gap-3">
         {guildPreview.stickers.map((sticker) => (
          <Link key={sticker.id + sticker.name} className="flex flex-col items-center justify-center gap-2" href={`https://cdn.discordapp.com/stickers/${sticker.id}.${sticker.format_type === 1 ? "png" : sticker.format_type === 2 ? "apng" : sticker.format_type === 3 ? "lottie" : "gif"}`} target="_blank" rel="noreferrer noopener">
           <Tooltip content={sticker.name || "Unnamed sticker"}>
