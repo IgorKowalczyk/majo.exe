@@ -137,8 +137,8 @@ export default async function Page(props: { params: Promise<{ server: string }> 
     </div>
    </div>
 
-   <div className="mb-4 grid grid-cols-1 gap-0 md:grid-cols-1 md:gap-6 lg:grid-cols-2 xl:grid-cols-3">
-    <Link href={`/dashboard/${serverDownload.id}/statistics`} className="mt-4 cursor-pointer overflow-auto rounded-xl border border-neutral-800 bg-background-secondary p-4">
+   <div className="my-4 grid grid-cols-1 gap-0 md:grid-cols-1 md:gap-6 lg:grid-cols-2 xl:grid-cols-3">
+    <Link href={`/dashboard/${serverDownload.id}/statistics`} className="cursor-pointer overflow-auto rounded-xl border border-neutral-800 bg-background-secondary p-4">
      <div className="flex flex-row items-center justify-between">
       <div className="flex flex-row items-center gap-3">
        <Icons.userAdd className={iconVariants({ variant: "extraLarge" })} />
@@ -147,7 +147,7 @@ export default async function Page(props: { params: Promise<{ server: string }> 
          New members
          <span className="rounded-md bg-accent-primary px-2 text-sm font-normal text-white">+{newMembers}</span>
         </Header>
-        <p className="text-sm text-gray-400">Amount of new members that joined your server in the last 7 days.</p>
+        <p className="text-sm text-gray-400 max-w-md">Amount of new members that joined your server in the last 7 days.</p>
        </div>
       </div>
       <div className="ml-2 flex flex-row items-center gap-3">
@@ -156,7 +156,7 @@ export default async function Page(props: { params: Promise<{ server: string }> 
      </div>
     </Link>
 
-    <Link href={`/dashboard/${serverDownload.id}/statistics`} className="mt-4 cursor-pointer overflow-auto rounded-xl border border-neutral-800 bg-background-secondary p-4">
+    <Link href={`/dashboard/${serverDownload.id}/statistics`} className="cursor-pointer overflow-auto rounded-xl border border-neutral-800 bg-background-secondary p-4">
      <div className="flex flex-row items-center justify-between">
       <div className="flex flex-row items-center gap-3">
        <Icons.commentAdd className={iconVariants({ variant: "extraLarge" })} />
@@ -165,7 +165,7 @@ export default async function Page(props: { params: Promise<{ server: string }> 
          Messages sent
          <span className="rounded-md bg-accent-primary px-2 text-sm font-normal text-white">+{newMessages}</span>
         </Header>
-        <p className="text-sm text-gray-400">Amount of messages that were sent in your server in the last 7 days.</p>
+        <p className="text-sm text-gray-400 max-w-md">Amount of messages that were sent in your server in the last 7 days.</p>
        </div>
       </div>
       <div className="ml-2 flex flex-row items-center gap-3">
@@ -174,7 +174,7 @@ export default async function Page(props: { params: Promise<{ server: string }> 
      </div>
     </Link>
 
-    <Link href={`/dashboard/${serverDownload.id}/statistics`} className="mt-4 cursor-pointer overflow-auto rounded-xl border border-neutral-800 bg-background-secondary p-4">
+    <Link href={`/dashboard/${serverDownload.id}/statistics`} className="cursor-pointer overflow-auto rounded-xl border border-neutral-800 bg-background-secondary p-4">
      <div className="flex flex-row items-center justify-between">
       <div className="flex flex-row items-center gap-3">
        <Icons.userMinus className={iconVariants({ variant: "extraLarge" })} />
@@ -183,7 +183,7 @@ export default async function Page(props: { params: Promise<{ server: string }> 
          Members left
          <span className="rounded-md bg-accent-primary px-2 text-sm font-normal text-white">-{membersLeft}</span>
         </Header>
-        <p className="text-sm text-gray-400">Amount of members that left your server in the last 7 days.</p>
+        <p className="text-sm text-gray-400 max-w-md">Amount of members that left your server in the last 7 days.</p>
        </div>
       </div>
       <div className="ml-2 flex flex-row items-center gap-3">

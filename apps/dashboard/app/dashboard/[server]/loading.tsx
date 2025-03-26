@@ -15,8 +15,8 @@ export default function Loading() {
      <Skeleton className="mt-1 h-5 w-64 opacity-60" />
     </div>
    </div>
-   <div className="mb-4 grid grid-cols-1 gap-0 md:grid-cols-1 md:gap-6 lg:grid-cols-2 xl:grid-cols-3">
-    <div className="mt-4 overflow-auto rounded-xl border border-neutral-800 bg-background-secondary p-4">
+   <div className="my-4 grid grid-cols-1 gap-0 md:grid-cols-1 md:gap-6 lg:grid-cols-2 xl:grid-cols-3">
+    <div className="overflow-auto rounded-xl border border-neutral-800 bg-background-secondary p-4">
      <div className="flex flex-row items-center justify-between">
       <div className="flex flex-row items-center gap-3">
        <Icons.userAdd className={iconVariants({ variant: "extraLarge" })} />
@@ -32,7 +32,7 @@ export default function Loading() {
      </div>
     </div>
 
-    <div className="mt-4 overflow-auto rounded-lg border border-neutral-800 bg-background-secondary p-4">
+    <div className="overflow-auto rounded-lg border border-neutral-800 bg-background-secondary p-4">
      <div className="flex flex-row items-center justify-between">
       <div className="flex flex-row items-center gap-3">
        <Icons.commentAdd className={iconVariants({ variant: "extraLarge" })} />
@@ -48,7 +48,7 @@ export default function Loading() {
      </div>
     </div>
 
-    <div className="mt-4 overflow-auto rounded-lg border border-neutral-800 bg-background-secondary p-4">
+    <div className="overflow-auto rounded-lg border border-neutral-800 bg-background-secondary p-4">
      <div className="flex flex-row items-center justify-between">
       <div className="flex flex-row items-center gap-3">
        <Icons.userMinus className={iconVariants({ variant: "extraLarge" })} />
