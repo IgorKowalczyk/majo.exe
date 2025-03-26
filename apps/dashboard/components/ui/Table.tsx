@@ -30,7 +30,7 @@ export function TableColumnHeader<TData, TValue>({ column, title, className }: D
  return (
   <div className={cn("flex items-center space-x-2", className)}>
    <Menu>
-    <MenuButton aria-label={column.getIsSorted() === "desc" ? "Sorted descending. Click to sort ascending." : column.getIsSorted() === "asc" ? "Sorted ascending. Click to sort descending." : "Not sorted. Click to sort ascending."} className="ml-0 h-8 gap-2 border-transparent px-3 text-xs! font-medium uppercase text-gray-500">
+    <MenuButton aria-label={column.getIsSorted() === "desc" ? "Sorted descending. Click to sort ascending." : column.getIsSorted() === "asc" ? "Sorted ascending. Click to sort descending." : "Not sorted. Click to sort ascending."} className="ml-0 h-8 gap-2 border-transparent px-3 text-xs! font-medium uppercase text-neutral-500">
      <span>{title}</span>
      {column.getCanSort() && (
       <div className="relative size-4">
@@ -131,7 +131,7 @@ export const Table = <TData, TValue>({ columns, data, sortBy = [{ id: "id", desc
       {table.getHeaderGroups().map((headerGroup) => (
        <tr key={headerGroup.id} id={headerGroup.id}>
         {headerGroup.headers.map((header) => (
-         <th key={header.id} className="h-10 select-none items-center gap-3 text-xs font-medium tracking-wider text-gray-500 sm:text-xs">
+         <th key={header.id} className="h-10 select-none items-center gap-3 text-xs font-medium tracking-wider text-neutral-500 sm:text-xs">
           <span className="flex select-none items-center gap-2 px-6 uppercase">{flexRender(header.column.columnDef.header, header.getContext())}</span>
          </th>
         ))}
