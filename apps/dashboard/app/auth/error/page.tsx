@@ -20,7 +20,7 @@ export default async function ErrorPage(props: { searchParams: Promise<{ error: 
      <p className="my-1 mt-2 text-center text-xl text-white/50">{searchParams.error}</p>
      <div className="mt-6 flex flex-wrap justify-center gap-2">
       <Link href="/" className={buttonVariants({ variant: "primary" })}>
-       <Icons.arrowLeft className={iconVariants({ variant: "button" })} />
+       <Icons.Home className={iconVariants({ variant: "button" })} />
        Go back home
       </Link>
       <Link href="/discord" className={buttonVariants({ variant: "secondary" })}>

@@ -16,7 +16,7 @@ export default function NotFound() {
      <span className="flex max-w-md gap-2 text-center text-xl opacity-50">We're sorry we can't find the page you're looking for. Please try again later or contact support.</span>
      <div className="mt-6 flex flex-wrap justify-center gap-3">
       <Link href="/" className={buttonVariants({ variant: "primary" })}>
-       <Icons.arrowLeft className={iconVariants({ variant: "button" })} />
+       <Icons.Home className={iconVariants({ variant: "button" })} />
        Go back home
       </Link>
 
