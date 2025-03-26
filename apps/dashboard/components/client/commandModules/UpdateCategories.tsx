@@ -7,7 +7,7 @@ import { toast } from "sonner";
 import { Switch } from "@/components/ui/Switch";
 import { Tooltip } from "@/components/ui/Tooltip";
 
-export interface UpdateCategoriesProps extends React.ComponentProps<typeof Tooltip> {
+export interface UpdateCategoriesProps extends Omit<React.ComponentProps<typeof Tooltip>, "content"> {
  serverId: Snowflake;
  categoryName: string;
  categoryEnabled: boolean;

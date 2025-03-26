@@ -14,7 +14,7 @@ export function MenuButton({ className, ...props }: MenuButtonProps) {
 export function MenuItems({ className, ...props }: MenuItemsProps) {
  return (
   <Transition as={Fragment} enter="transition ease-out duration-100" enterFrom="transform opacity-0 scale-95" enterTo="transform opacity-100 scale-100" leave="transition ease-in duration-75" leaveFrom="transform opacity-100 scale-100" leaveTo="transform opacity-0 scale-95">
-   <DefaultMenuItems data-slot="menu-items" className={cn("bg-background-secondary absolute right-0 z-50 mt-2 min-w-(--button-width) origin-top-right divide-y divide-neutral-800 rounded-2xl border border-neutral-800 px-2 py-1 shadow-2xl", className)} {...props} />
+   <DefaultMenuItems data-slot="menu-items" className={cn("bg-background-secondary absolute right-0 z-50 mt-2 min-w-(--button-width) origin-top-right divide-y outline-0 divide-neutral-800 rounded-2xl border border-neutral-800 px-2 py-1 shadow-2xl", className)} {...props} />
   </Transition>
  );
 }

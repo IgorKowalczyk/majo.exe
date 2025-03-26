@@ -7,7 +7,7 @@ import { toast } from "sonner";
 import { Switch } from "@/components/ui/Switch";
 import { Tooltip } from "@/components/ui/Tooltip";
 
-export interface UpdateCommandsProps extends React.ComponentProps<typeof Tooltip> {
+export interface UpdateCommandsProps extends Omit<React.ComponentProps<typeof Tooltip>, "content"> {
  serverId: Snowflake;
  commandName: string;
  commandEnabled: boolean;
