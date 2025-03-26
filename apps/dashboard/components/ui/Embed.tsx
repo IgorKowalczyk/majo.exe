@@ -28,7 +28,7 @@ export const Embed = ({ className, children, color, buttons, ...props }: EmbedPr
    >
     {children}
    </div>
-   {buttons && <div className="ml-1 mt-2 flex flex-row gap-2">{buttons}</div>}
+   {buttons && <div className="ml-1 mt-3 flex flex-row gap-3">{buttons}</div>}
   </div>
  </div>
 );

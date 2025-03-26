@@ -191,7 +191,7 @@ export const PublicDashboard = ({ enabled, serverId, vanityURL, className, ...pr
       Your public dashboard is live!
      </Header>
      <span className="mb-4 mt-2 leading-none text-white/70">Note: The dashboard is available to everyone, regardless of whether they are a member of your server.</span>
-     <div className="flex flex-row flex-wrap gap-4">
+     <div className="flex flex-row flex-wrap gap-3">
       <Link href={`/server/${encodeURIComponent(vanity)}`} className={cn(buttonVariants({ variant: "primary" }), "w-fit")}>
        <Icons.viewing className={iconVariants({ variant: "button" })} /> Preview
       </Link>

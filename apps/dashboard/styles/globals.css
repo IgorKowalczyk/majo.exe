@@ -175,27 +175,6 @@
  scrollbar-width: inherit;
 }
 
-#nprogress {
- @apply pointer-events-none;
-}
-
-#nprogress .bar {
- @apply fixed left-0 top-0 z-99999! h-[4px] w-full;
-}
-
-.nprogress-custom-parent #nprogress .spinner,
-.nprogress-custom-parent #nprogress .bar {
- @apply absolute;
-}
-
-[data-theme~="translucent"] {
- @apply backdrop-blur-xs motion-reduce:transition-none;
-}
-
-.tippy-backdrop {
- @apply bg-neutral-700!;
-}
-
 img.twemoji {
  @apply relative top-[-0.1rem] inline-block h-[1em] w-[1em] align-middle;
 }
