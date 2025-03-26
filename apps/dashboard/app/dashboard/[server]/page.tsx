@@ -147,7 +147,7 @@ export default async function Page(props: { params: Promise<{ server: string }> 
          New members
          <span className="rounded-md bg-accent-primary px-2 text-sm font-normal text-white">+{newMembers}</span>
         </Header>
-        <p className="text-sm text-gray-400 max-w-md">Amount of new members that joined your server in the last 7 days.</p>
+        <p className="text-sm text-gray-400 ">Amount of new members that joined your server in the last 7 days.</p>
        </div>
       </div>
       <div className="ml-2 flex flex-row items-center gap-3">
@@ -165,7 +165,7 @@ export default async function Page(props: { params: Promise<{ server: string }> 
          Messages sent
          <span className="rounded-md bg-accent-primary px-2 text-sm font-normal text-white">+{newMessages}</span>
         </Header>
-        <p className="text-sm text-gray-400 max-w-md">Amount of messages that were sent in your server in the last 7 days.</p>
+        <p className="text-sm text-gray-400 ">Amount of messages that were sent in your server in the last 7 days.</p>
        </div>
       </div>
       <div className="ml-2 flex flex-row items-center gap-3">
@@ -183,7 +183,7 @@ export default async function Page(props: { params: Promise<{ server: string }> 
          Members left
          <span className="rounded-md bg-accent-primary px-2 text-sm font-normal text-white">-{membersLeft}</span>
         </Header>
-        <p className="text-sm text-gray-400 max-w-md">Amount of members that left your server in the last 7 days.</p>
+        <p className="text-sm text-gray-400 ">Amount of members that left your server in the last 7 days.</p>
        </div>
       </div>
       <div className="ml-2 flex flex-row items-center gap-3">
