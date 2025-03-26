@@ -1,11 +1,11 @@
 "use client";
 
 import Link from "next/link";
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
 import React, { use } from "react";
 import { VisibilityContext } from "@/components/nav/VisibilityContext";
 import { Badge } from "@/components/ui/Badge";
-import { Button, buttonVariants } from "@/components/ui/Buttons";
+import { buttonVariants } from "@/components/ui/Buttons";
 import { Icons, iconVariants } from "@/components/ui/Icons";
 import { cn } from "@/lib/utils";
 
@@ -26,7 +26,6 @@ export interface SideNavigationProps extends React.ComponentProps<"aside"> {
 
 export const SideNavigation = ({ className, server, ...props }: SideNavigationProps) => {
  const { sideNavVisible, toggleSideNav } = use(VisibilityContext);
- const router = useRouter();
 
  return (
   <>
@@ -43,9 +42,9 @@ export const SideNavigation = ({ className, server, ...props }: SideNavigationPr
     {...props}
    >
     <div className="px-4">
-     <Button onClick={() => router.back()} className={cn(buttonVariants({ variant: "primary" }), "mb-4 w-full")}>
+     <Link href="/dashboard" className={cn(buttonVariants({ variant: "primary" }), "mb-4 w-full")}>
       <Icons.arrowLeft className={iconVariants({ variant: "button" })} /> Server list
-     </Button>
+     </Link>
     </div>
 
     <div className="flex w-full flex-col items-center justify-center gap-2 border-t border-t-neutral-800 px-4 pt-4">
