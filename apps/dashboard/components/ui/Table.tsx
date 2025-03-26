@@ -72,11 +72,11 @@ export function TableColumnHeader<TData, TValue>({ column, title, className }: D
       {column.getCanSort() && (
        <>
         <MenuItem aria-label="Sort ascending" onClick={() => column.toggleSorting(false)}>
-         <Icons.ArrowUp className="text-muted-foreground/70 mr-2 size-3.5" aria-hidden="true" />
+         <Icons.ArrowUp className="text-muted-foreground/70 mr-2 size-4" aria-hidden="true" />
          Asc
         </MenuItem>
         <MenuItem aria-label="Sort descending" onClick={() => column.toggleSorting(true)}>
-         <Icons.ArrowDown className="text-muted-foreground/70 mr-2 size-3.5" aria-hidden="true" />
+         <Icons.ArrowDown className="text-muted-foreground/70 mr-2 size-4" aria-hidden="true" />
          Desc
         </MenuItem>
        </>

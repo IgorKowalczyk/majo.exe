@@ -31,11 +31,13 @@ export default async function Page() {
     <div className="mt-4 flex flex-row flex-wrap justify-center gap-4 sm:flex-col">
      {servers && servers.length > 0 ? (
       <>
-       <Header className={cn(headerVariants({ variant: "h1", alignment: "center", margin: "normal" }))}>
-        <Icons.Navigation className={iconVariants({ variant: "extraLarge" })} />
-        Choose a server
-       </Header>
-       <p className="mb-4 text-center text-base text-white/50 md:text-xl">Select a server to manage, or add the bot to a new server.</p>
+       <div>
+        <Header className={cn(headerVariants({ variant: "h1", alignment: "center", margin: "normal" }))}>
+         <Icons.Navigation className={iconVariants({ variant: "extraLarge" })} />
+         Choose a server
+        </Header>
+        <p className="mb-4 text-center text-base text-white/50 md:text-xl">Select a server to manage, or add the bot to a new server.</p>
+       </div>
        {servers.map((server) => (
         <div key={server.id}>
          <div className="hidden flex-row items-center justify-start gap-4 sm:flex">
@@ -48,7 +50,7 @@ export default async function Page() {
             </Link>
            ) : (
             <Link href={`/api/invite/${server.id}`} className={cn(buttonVariants({ variant: "secondary" }), "ml-auto cursor-copy")}>
-             <Icons.Plus className={iconVariants({ variant: "button" })} /> Add bot
+             <Icons.Plus className={iconVariants({ variant: "button" })} /> Invite
             </Link>
            )}
           </>
@@ -93,7 +95,7 @@ export default async function Page() {
        <p className="mb-6 text-center text-base text-white/50 md:text-xl">It seems like you're not in any servers that you can manage, try joining a server or creating one.</p>
        <div className="flex flex-wrap justify-center gap-4">
         <Link href="/api/invite" className={cn(buttonVariants({ variant: "primary" }))}>
-         <Icons.Plus className={iconVariants({ variant: "button" })} /> Add bot
+         <Icons.Plus className={iconVariants({ variant: "button" })} /> Invite Majo.exe
         </Link>
         <Link href="/" className={cn(buttonVariants({ variant: "secondary" }))}>
          <Icons.Home className={iconVariants({ variant: "button" })} /> Go home

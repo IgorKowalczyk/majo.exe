@@ -24,10 +24,12 @@ export function Leaderboard({ data, showControls = true, showSearch = true }: { 
    header: ({ column }) => <TableColumnHeader column={column} title="Position" />,
    accessorKey: "id",
    cell: ({ row }) => `#${row.getValue("id")}`,
+   size: 40,
   },
   {
    header: ({ column }) => <TableColumnHeader column={column} title="User" />,
    accessorKey: "user",
+   size: 5000,
    cell: ({ row }) => {
     const value = row.original.user;
     return (

@@ -7,11 +7,13 @@ export default function Loading() {
  return (
   <div className="flex w-full flex-col items-center px-8 pb-8 pt-16 antialiased md:p-16">
    <div className="mt-4 flex flex-row flex-wrap justify-center gap-4 sm:flex-col">
-    <Header className={cn(headerVariants({ variant: "h1", alignment: "center", margin: "normal" }))}>
-     <Icons.Navigation className={iconVariants({ variant: "extraLarge" })} />
-     Choose a server
-    </Header>
-    <p className="mb-4 text-center text-base text-white/50 md:text-xl">Select a server to manage, or add the bot to a new server.</p>
+    <div>
+     <Header className={cn(headerVariants({ variant: "h1", alignment: "center", margin: "normal" }))}>
+      <Icons.Navigation className={iconVariants({ variant: "extraLarge" })} />
+      Choose a server
+     </Header>
+     <p className="mb-4 text-center text-base text-white/50 md:text-xl">Select a server to manage, or add the bot to a new server.</p>
+    </div>
     <div className="flex flex-row flex-wrap justify-center gap-4 sm:flex-col">
      {[...Array(10)].map((_, i) => (
       <div key={`skeleton-${i}`}>
