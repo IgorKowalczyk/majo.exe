@@ -8,7 +8,6 @@ import { Footer } from "@/components/Footer";
 import { Hotjar } from "@/components/Hotjar";
 import { TopNavigation } from "@/components/nav/TopNavigation";
 import { VisibilityProvider } from "@/components/nav/VisibilityContext";
-import { ProgressBar } from "@/components/ProgressBar";
 import { Session } from "@/components/Session";
 import { TailwindIndicator } from "@/components/TailwindIndicator";
 import { Icons, iconVariants } from "@/components/ui/Icons";
@@ -63,7 +62,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
    <html lang="en">
     <head>{process.env.HOTJAR_ID && <Hotjar id={process.env.HOTJAR_ID} />}</head>
     <body className={cn("bg-background-primary selection:bg-accent-primary/30 text-white antialiased", GeistSans.className)}>
-     <ProgressBar />
      <VisibilityProvider>
       <TopNavigation theme="full" />
       <main className="flex min-h-screen flex-row flex-wrap">
