@@ -41,9 +41,9 @@ export const TopNavigation = async ({ className, theme, ...props }: React.Compon
     <div className="ml-auto mr-4">
      {session ? (
       <div className="flex items-center gap-3">
-       <Link href="/dashboard" className="hidden items-center text-white/60 duration-200 hover:text-white motion-reduce:transition-none md:flex">
+       {/* <Link href="/dashboard" className="hidden items-center text-white/60 duration-200 hover:text-white motion-reduce:transition-none md:flex">
         <Icons.dashboard className={iconVariants({ variant: "large", className: "mr-2" })} /> <span className="-mb-px">Dashboard</span>
-       </Link>
+       </Link> */}
        <UserMenuDropdown user={session} />
       </div>
      ) : (
