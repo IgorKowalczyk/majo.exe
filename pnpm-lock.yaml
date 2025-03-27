@@ -178,9 +178,6 @@ importers:
       '@odiffey/discord-markdown':
         specifier: 3.3.0
         version: 3.3.0(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
-      '@playwright/test':
-        specifier: 1.51.1
-        version: 1.51.1
       '@radix-ui/react-accordion':
         specifier: 1.2.3
         version: 1.2.3(@types/react-dom@19.0.4(@types/react@19.0.12))(@types/react@19.0.12)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
@@ -9235,6 +9232,7 @@ snapshots:
   '@playwright/test@1.51.1':
     dependencies:
       playwright: 1.51.1
+    optional: true
 
   '@polka/url@1.0.0-next.28': {}
 
@@ -10271,7 +10269,7 @@ snapshots:
 
   '@types/ws@8.18.0':
     dependencies:
-      '@types/node': 22.13.10
+      '@types/node': 22.13.11
 
   '@types/yargs-parser@21.0.3': {}
 
@@ -13993,13 +13991,15 @@ snapshots:
       exsolve: 1.0.2
       pathe: 2.0.3
 
-  playwright-core@1.51.1: {}
+  playwright-core@1.51.1:
+    optional: true
 
   playwright@1.51.1:
     dependencies:
       playwright-core: 1.51.1
     optionalDependencies:
       fsevents: 2.3.2
+    optional: true
 
   pngjs@5.0.0: {}
 
