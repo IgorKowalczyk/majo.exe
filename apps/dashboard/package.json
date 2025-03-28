@@ -57,7 +57,7 @@
     "server-only": "0.0.1",
     "sharp": "0.33.5",
     "sonner": "2.0.2",
-    "tw-animate-css": "1.2.4",
+    "tw-animate-css": "1.2.5",
     "validator": "13.12.0"
   },
   "devDependencies": {
