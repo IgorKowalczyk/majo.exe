@@ -37,7 +37,7 @@
   "devDependencies": {
     "@igorkowalczyk/eslint-config": "3.0.7",
     "@igorkowalczyk/prettier-config": "3.0.7",
-    "@types/node": "22.13.14",
+    "@types/node": "22.13.15",
     "eslint": "9.22.0",
     "eslint-plugin-turbo": "2.4.4",
     "pre-commit": "1.2.2",
