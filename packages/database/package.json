@@ -34,7 +34,7 @@
     "ws": "8.18.1"
   },
   "devDependencies": {
-    "@types/ws": "8.18.0",
+    "@types/ws": "8.18.1",
     "prettier-plugin-prisma": "5.0.0"
   },
   "engines": {
