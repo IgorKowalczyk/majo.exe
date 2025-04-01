@@ -20,7 +20,6 @@ jobs:
    - name: 🔩 Setup PNPM
      uses: pnpm/action-setup@v4
      with:
-      version: next-9
       standalone: true
    - name: 🔩 Setup Node ${{ matrix.node }}
      uses: actions/setup-node@v4
