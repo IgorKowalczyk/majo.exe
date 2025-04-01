@@ -1,40 +1,40 @@
 {
- "name": "@majoexe/typescript-config",
- "version": "6.0.0",
- "description": "Majo.exe TypeScript configuration",
- "exports": {
-  "./base": "./base.json"
- },
- "type": "module",
- "scripts": {
-  "format": "prettier . --write --cache --ignore-unknown",
-  "format:check": "prettier . --check --cache",
-  "lint": "eslint .",
-  "lint:fix": "eslint . --fix"
- },
- "dependencies": {
-  "tsx": "4.19.3",
-  "typescript": "5.8.2",
-  "@types/node": "22.13.15"
- },
- "engines": {
-  "node": ">=20"
- },
- "repository": {
-  "type": "git",
-  "url": "git+https://github.com/igorkowalczyk/majo.exe.git",
-  "directory": "packages/typescript-config"
- },
- "keywords": [
-  "typescript",
-  "config",
-  "majoexe"
- ],
- "author": "Igor Kowalczyk",
- "license": "MIT",
- "bugs": {
-  "url": "https://github.com/igorkowalczyk/majo.exe/issues"
- },
- "homepage": "https://github.com/igorkowalczyk/majo.exe#readme",
- "packageManager": "pnpm@10.6.5"
+  "name": "@majoexe/typescript-config",
+  "version": "6.0.0",
+  "description": "Majo.exe TypeScript configuration",
+  "exports": {
+    "./base": "./base.json"
+  },
+  "type": "module",
+  "scripts": {
+    "format": "prettier . --write --cache --ignore-unknown",
+    "format:check": "prettier . --check --cache",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix"
+  },
+  "dependencies": {
+    "@types/node": "22.13.16",
+    "tsx": "4.19.3",
+    "typescript": "5.8.2"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/igorkowalczyk/majo.exe.git",
+    "directory": "packages/typescript-config"
+  },
+  "keywords": [
+    "typescript",
+    "config",
+    "majoexe"
+  ],
+  "author": "Igor Kowalczyk",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/igorkowalczyk/majo.exe/issues"
+  },
+  "homepage": "https://github.com/igorkowalczyk/majo.exe#readme",
+  "packageManager": "pnpm@10.6.5"
 }
