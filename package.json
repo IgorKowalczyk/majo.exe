@@ -44,10 +44,6 @@
   "engines": {
     "node": ">=20"
   },
-  "pre-commit": [
-    "lint",
-    "format"
-  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/IgorKowalczyk/majo.exe.git"
