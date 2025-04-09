@@ -1,6 +1,6 @@
 {
  "$schema": "https://turborepo.org/schema.json",
- "globalDependencies": [".env", ".prettierignore", "prettier.config.js", "eslint.config.ts"],
+ "globalDependencies": [".prettierignore", "prettier.config.js", "eslint.config.ts"],
  "ui": "tui",
  "tasks": {
   "dev": {
@@ -19,11 +19,8 @@
   "deploy": {
    "dependsOn": ["^build"],
    "outputs": [".next/**", "!.next/cache/**"],
+   "env": ["DATABASE_URL", "DATABASE_URL_UNPOOLED", "REDIS_URL", "TOKEN", "CLIENT_ID", "TOPGG_API_KEY", "DISCORD_BOT_LIST_API_KEY"],
    "persistent": true
-  },
-  "analyze": {
-   "dependsOn": ["^build"],
-   "outputs": [".next/**", "!.next/cache/**"]
   },
   "lint": {
    "dependsOn": ["^format:check"],
@@ -40,22 +37,16 @@
   },
   "prisma:generate": {
    "cache": false,
-   "outputs": ["prisma/schema.prisma"],
-   "env": ["DATABASE_URL", "DATABASE_URL_UNPOOLED"]
+   "outputs": ["prisma/schema.prisma"]
   },
   "prisma:seed": {
    "cache": false,
-   "env": ["DATABASE_URL", "DATABASE_URL_UNPOOLED"],
-   "interactive": true
-  },
-  "prisma:push": {
-   "cache": false,
-   "env": ["DATABASE_URL", "DATABASE_URL_UNPOOLED"],
+   "env": ["DATABASE_URL", "DATABASE_URL_UNPOOLED", "REDIS_URL"],
    "interactive": true
   },
   "prisma:migrate": {
    "outputs": ["prisma/migrations/**"],
-   "env": ["DATABASE_URL", "DATABASE_URL_UNPOOLED"],
+   "env": ["DATABASE_URL", "DATABASE_URL_UNPOOLED", "REDIS_URL"],
    "cache": false,
    "interactive": true
   },

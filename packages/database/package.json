@@ -9,10 +9,10 @@
     "./redis": "./src/redis/cache.ts"
   },
   "scripts": {
+    "deploy": "prisma migrate deploy",    
     "prisma:generate": "prisma generate",
     "prisma:migrate": "prisma migrate dev",
     "prisma:format": "prisma format",
-    "prisma:push": "prisma db push",
     "prisma:seed": "tsx ./src/seed.ts",
     "format": "prettier . --write --cache --ignore-unknown --plugin=prettier-plugin-prisma",
     "format:check": "prettier . --check --cache",

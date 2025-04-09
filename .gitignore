@@ -39,7 +39,6 @@ jspm_packages/
 # dotenv environment variables file
 .env*
 !.env.example
-!packages/database/.env
 
 # Stores VSCode versions used for testing VSCode extensions
 .vscode-test

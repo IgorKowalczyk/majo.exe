@@ -11,10 +11,10 @@
 
 - `/prisma/schema.prisma` contains database schema. It's used by [Prisma](https://www.prisma.io/) to generate database client.
 - `/prisma/migrations` contains database migrations. They are used to update database. Do not edit them manually.
-- `/src/client.js` contains database client. It's used by Majo.exe to interact with database. It also includes edge client for Prisma Data Proxy.
-- `/src/redis/client.js` contains Redis client. It's used by Majo.exe to cache queries and data.
-- `/src/redis/cache.js` contains cache functions and other cache related functions.
-- `/src/seed.js` contains database seed. It's used to populate database with initial data like bot slash commands. It's executed by `pnpm prisma:seed` or `pnpm prisma:generate` command.
+- `/src/client.ts` contains database client. It's used by Majo.exe to interact with database. It also includes edge client for Prisma Data Proxy.
+- `/src/redis/client.ts` contains Redis client. It's used by Majo.exe to cache queries and data.
+- `/src/redis/cache.ts` contains cache functions and other cache related functions.
+- `/src/seed.ts` contains database seed. It's used to populate database with initial data like bot slash commands. It's executed by `pnpm prisma:seed` or `pnpm prisma:generate` command.
 
 > [!IMPORTANT]
 > Never share your `.env` file with anyone. It contains sensitive data like database credentials, tokens and secrets. Leakage of this data can cause serious security issues.
@@ -27,8 +27,8 @@
 ### 🐘 Neon.tech
 
 1. Create new [Neon](https://neon.tech/) account and create new PostgreSQL database.
-2. Create new file or edit existing `.env` file in root directory of the project
-3. In `.env` file set these values:
+2. Rename the `.env.example` file to `.env`
+3. In the `.env` file set these values:
    - `DATABASE_URL` - pooling database connection string
    - `DATABASE_URL_UNPOOLED` - non-pooling database connection string
 4. Run `pnpm install` to install dependencies.
@@ -40,8 +40,8 @@
 1. Install Docker by following the instructions at https://docs.docker.com/get-docker/.
 2. Pull the PostgreSQL Docker image for version 15 (`docker pull postgres:15`) or use existing one.
 3. Create a new container using the PostgreSQL image (`docker run --name majoexe -e POSTGRES_PASSWORD=postgres -p 5432:5432 -d postgres:15`)
-4. Create new file or edit existing `.env` file in root directory of the project
-5. In `.env` file set this values:
+4. Rename the `.env.example` file to `.env`
+5. In the `.env` file set this values:
    - `DATABASE_URL=postgresql://postgres:postgres@localhost:5432/majoexe`
    - `DATABASE_URL_UNPOOLED=postgresql://postgres:postgres@localhost:5432/majoexe`
 6. Run `pnpm install` to install dependencies.
@@ -58,8 +58,8 @@
 ### ☁ Redis Cloud
 
 1. Create new [Redis Cloud](https://app.redislabs.com/) account and create new Redis database.
-2. Create new file or edit existing `.env` file in root directory of the project
-3. In `.env` file set this values:
+2. Rename the `.env.example` file to `.env`
+3. In the `.env` file set this values:
    - `REDIS_URL`- `ioredis` connection string (`redis://[...]`) from Redis Cloud
 4. That's it! Majo.exe will automatically cache data in Redis Cloud.
 
@@ -68,7 +68,7 @@
 1. Install Docker by following the instructions at https://docs.docker.com/get-docker/.
 2. Pull the Redis Docker image (`docker pull redis`) or use existing one.
 3. Create a new container using the Redis image (`docker run --name redis -p 6379:6379 -d redis`)
-4. Create new file or edit existing `.env` file in root directory of the project
+4. Rename the `.env.example` file to `.env`
 5. In `.env` file set these values:
    - `REDIS_URL`- `ioredis` connection string (`redis://localhost:6379`)
 6. That's it! Majo.exe will automatically cache data in Redis.

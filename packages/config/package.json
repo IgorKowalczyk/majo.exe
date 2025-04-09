@@ -19,8 +19,7 @@
  },
  "dependencies": {
   "@majoexe/typescript-config": "workspace:*",
-  "discord-api-types": "0.37.119",
-  "dotenv": "16.4.7"
+  "discord-api-types": "0.37.119"
  },
  "engines": {
   "node": ">=20"

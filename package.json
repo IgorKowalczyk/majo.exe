@@ -9,7 +9,6 @@
     "build": "turbo run build",
     "build:force": "turbo run build:force",
     "deploy": "turbo run deploy",
-    "analyze": "turbo run analyze",
     "lint": "turbo run lint",
     "lint:fix": "turbo run lint:fix",
     "docker:all": "docker compose -f docker-compose.yaml up -d",
@@ -18,19 +17,17 @@
     "docker:run:bot": "docker run -it --init --rm --env-file .env majoexe/bot:latest",
     "format": "turbo run format",
     "format:check": "turbo run format:check",
-    "prisma:generate": "turbo run prisma:generate ",
-    "prisma:migrate": "turbo run prisma:migrate ",
-    "prisma:format": "turbo run prisma:format ",
-    "prisma:seed": "turbo run prisma:seed --no-cache",
-    "prisma:studio": "turbo run prisma:studio",
-    "prisma:push": "turbo run prisma:push"
+    "prisma:generate": "turbo run prisma:generate",
+    "prisma:migrate": "turbo run prisma:migrate",
+    "prisma:format": "turbo run prisma:format",
+    "prisma:seed": "turbo run prisma:seed",
+    "prisma:studio": "turbo run prisma:studio"
   },
   "prisma": {
     "schema": "packages/database/prisma/schema.prisma",
     "seed": "node packages/database/src/seed.ts"
   },
   "dependencies": {
-    "dotenv-cli": "8.0.0",
     "tsx": "4.19.3",
     "turbo": "2.5.0"
   },
