@@ -7,14 +7,9 @@
   "scripts": {
     "dev": "turbo run dev",
     "build": "turbo run build",
-    "build:force": "turbo run build:force",
     "deploy": "turbo run deploy",
     "lint": "turbo run lint",
     "lint:fix": "turbo run lint:fix",
-    "docker:all": "docker compose -f docker-compose.yaml up -d",
-    "docker:build": "turbo run docker:build",
-    "docker:build:bot": "docker build -t majoexe/bot:latest -f ./apps/bot/Dockerfile .",
-    "docker:run:bot": "docker run -it --init --rm --env-file .env majoexe/bot:latest",
     "format": "turbo run format",
     "format:check": "turbo run format:check",
     "prisma:generate": "turbo run prisma:generate",
@@ -37,7 +32,6 @@
     "@types/node": "22.14.0",
     "eslint": "9.24.0",
     "eslint-plugin-turbo": "2.5.0",
-    "pre-commit": "1.2.2",
     "prettier": "3.5.3",
     "typescript": "5.8.3"
   },

@@ -10,8 +10,7 @@
     "format": "prettier . --write --cache --ignore-unknown",
     "format:check": "prettier . --check --cache",
     "lint": "eslint .",
-    "lint:fix": "eslint . --fix",
-    "docker:build": "cd ../../ && docker build --tag majoexe/bot:latest --file apps/bot/Dockerfile ."
+    "lint:fix": "eslint . --fix"
   },
   "dependencies": {
     "@discordjs/rest": "2.4.3",

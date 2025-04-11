@@ -13,7 +13,7 @@ services:
   ports:
    - "5432:5432"
   networks:
-   - app_network
+   - default
   healthcheck:
    test: ["CMD", "pg_isready"]
    interval: 10s
@@ -30,7 +30,7 @@ services:
   ports:
    - "6379:6379"
   networks:
-   - app_network
+   - default
   volumes:
    - cache:/data
   depends_on:
@@ -66,10 +66,11 @@ services:
    redis:
     condition: service_healthy
   networks:
-   - app_network
+   - default
 
 networks:
- app_network:
+ default:
+  #  name: podman
   driver: bridge
 
 volumes:

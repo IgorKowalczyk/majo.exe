@@ -12,10 +12,6 @@
    "dependsOn": ["^prisma:generate"],
    "outputs": [".next/**", "!.next/cache/**"]
   },
-  "docker:build": {
-   "outputs": [],
-   "cache": false
-  },
   "deploy": {
    "dependsOn": ["^build"],
    "outputs": [".next/**", "!.next/cache/**"],
