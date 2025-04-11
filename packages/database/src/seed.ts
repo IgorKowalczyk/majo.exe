@@ -1,5 +1,5 @@
 import { readdirSync } from "node:fs";
-import type { Prisma } from "@prisma/client";
+import type { Prisma } from "../.client";
 import prismaClient from "./client";
 import { Logger } from "./logger";
 

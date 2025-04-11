@@ -9,7 +9,7 @@
     "./redis": "./src/redis/cache.ts"
   },
   "scripts": {
-    "deploy": "prisma migrate deploy",    
+    "deploy": "prisma migrate deploy",
     "prisma:generate": "prisma generate",
     "prisma:migrate": "prisma migrate dev",
     "prisma:format": "prisma format",
