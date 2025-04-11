@@ -18,7 +18,7 @@
     "format:check": "prettier . --check --cache",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
-    "prebuild": "pnpm run prisma:generate",
+    "postinstall": "pnpm run prisma:generate",
     "studio": "prisma studio"
   },
   "dependencies": {

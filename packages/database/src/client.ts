@@ -1,11 +1,12 @@
 import { debuggerConfig } from "@majoexe/config";
-import { Pool, neonConfig } from "@neondatabase/serverless";
+import { neonConfig } from "@neondatabase/serverless";
 import { PrismaNeon } from "@prisma/adapter-neon";
 import { PrismaClient } from "@prisma/client";
 import { createPrismaRedisCache } from "prisma-redis-middleware";
 import ws from "ws";
 import { Logger } from "./logger";
 import redisClient from "./redis/client";
+
 neonConfig.webSocketConstructor = ws;
 
 const prismaClientWrapper = (prisma: PrismaClient) => {
@@ -62,13 +63,10 @@ const prismaClientWrapper = (prisma: PrismaClient) => {
  return prisma;
 };
 
-const connectionString = `${process.env.DATABASE_URL}`;
-
 const prismaClientSingleton = () => {
  if (process.env.DATABASE_URL?.includes("neon.tech")) {
   Logger("info", "Neon Database URL found, setting up Neon Database...");
-  const pool = new Pool({ connectionString });
-  const adapter = new PrismaNeon(pool);
+  const adapter = new PrismaNeon({ connectionString: `${process.env.DATABASE_URL}` });
   return prismaClientWrapper(new PrismaClient({ adapter }));
  } else {
   Logger("info", "No Neon Database URL found, setting up Prisma...");

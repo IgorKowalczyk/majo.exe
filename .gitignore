@@ -54,3 +54,6 @@ jspm_packages/
 # Turborepo & Vercel
 .turbo
 .vercel
+
+# Prisma
+.prisma-client
