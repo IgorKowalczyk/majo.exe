@@ -16,4 +16,7 @@ COPY . .
 
 RUN pnpm install --recursive --prod
 
+# Rebuild packages
+RUN pnpm rebuild -r
+
 CMD ["dotenvx", "run", "--", "pnpm", "run", "deploy", "--filter", "!@majoexe/dashboard"]
