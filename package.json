@@ -23,14 +23,14 @@
     "seed": "node packages/database/src/seed.ts"
   },
   "dependencies": {
-    "tsx": "4.19.3",
     "@dotenvx/dotenvx": "1.39.1",
+    "tsx": "4.19.3",
     "turbo": "2.5.0"
   },
   "devDependencies": {
     "@igorkowalczyk/eslint-config": "3.0.7",
     "@igorkowalczyk/prettier-config": "3.0.7",
-    "@types/node": "22.14.0",
+    "@types/node": "22.14.1",
     "eslint": "9.24.0",
     "eslint-plugin-turbo": "2.5.0",
     "prettier": "3.5.3",
