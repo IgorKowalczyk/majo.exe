@@ -10,10 +10,7 @@
   },
   "build": {
    "dependsOn": ["^prisma:generate"],
-   "env": ["CLIENT_SECRET", "CLIENT_ID", "SECRET", "TOKEN", "REDIS_URL", "DATABASE_URL", "DATABASE_URL_UNPOOLED"]
-  },
-  "@majoexe/dashboard#build": {
-   "env": ["SECRET", "NEXTAUTH_URL", "NEXT_PUBLIC_URL", "HOTJAR_ID", "TOKEN", "CLIENT_ID", "CLIENT_SECRET", "DISCORD_SUPPORT_SERVER_ID", "REDIS_URL", "DATABASE_URL", "DATABASE_URL_UNPOOLED"],
+   "env": ["SECRET", "NEXTAUTH_URL", "NEXT_PUBLIC_URL", "HOTJAR_ID", "TOKEN", "CLIENT_ID", "CLIENT_SECRET", "DISCORD_SUPPORT_SERVER_ID", "CLIENT_SECRET", "CLIENT_ID", "SECRET", "TOKEN", "REDIS_URL", "DATABASE_URL", "DATABASE_URL_UNPOOLED"],
    "outputs": [".next/**", "!.next/cache/**"],
    "persistent": true
   },
