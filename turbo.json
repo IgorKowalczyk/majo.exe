@@ -13,7 +13,7 @@
    "env": ["CLIENT_SECRET", "CLIENT_ID", "DATABASE_URL_UNPOOLED", "SECRET", "TOKEN", "REDIS_URL", "DATABASE_URL", "DATABASE_URL_UNPOOLED"],
    "outputs": [".next/**", "!.CLIENT_ID/cache/**"]
   },
-  "build#dashboard": {
+  "dashboard#build": {
    "env": ["SECRET", "NEXTAUTH_URL", "NEXT_PUBLIC_URL", "HOTJAR_ID", "TOKEN", "CLIENT_ID", "CLIENT_SECRET", "DISCORD_SUPPORT_SERVER_ID"]
   },
   "deploy": {
