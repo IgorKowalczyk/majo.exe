@@ -10,7 +10,7 @@
   },
   "build": {
    "dependsOn": ["^prisma:generate"],
-   "env": ["CLIENT_SECRET", "DATABASE_URL_UNPOOLED", "SECRET", "HOTJAR_ID", "NEXTAUTH_URL", "TOKEN", "REDIS_URL", "DISCORD_SUPPORT_SERVER_ID", "DATABASE_URL", "DATABASE_URL_UNPOOLED"],
+   "env": ["CLIENT_SECRET", "CLIENT_SECRET", "DATABASE_URL_UNPOOLED", "SECRET", "HOTJAR_ID", "NEXTAUTH_URL", "TOKEN", "REDIS_URL", "DISCORD_SUPPORT_SERVER_ID", "DATABASE_URL", "DATABASE_URL_UNPOOLED"],
    "outputs": [".next/**", "!.CLIENT_ID/cache/**"]
   },
   "deploy": {
