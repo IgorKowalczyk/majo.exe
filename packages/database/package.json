@@ -9,9 +9,9 @@
     "./redis": "./src/redis/cache.ts"
   },
   "scripts": {
-    "deploy": "prisma migrate deploy",
-    "prisma:generate": "prisma generate",
-    "prisma:migrate": "prisma migrate dev",
+    "deploy": "dotenvx run -- prisma migrate deploy",
+    "prisma:generate": "dotenvx run -- prisma generate",
+    "prisma:migrate": "dotenvx run -- prisma migrate dev",
     "prisma:format": "prisma format",
     "prisma:seed": "tsx ./src/seed.ts",
     "format": "prettier . --write --cache --ignore-unknown --plugin=prettier-plugin-prisma",
