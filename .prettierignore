@@ -5,4 +5,4 @@ pnpm-lock.yaml
 */*/pnpm-lock.yaml
 
 
-.client
+/packages/database/.client
