@@ -2,7 +2,7 @@ ARG APP_PKG_NAME=@majoexe/bot
 
 FROM node:22-alpine
 
-RUN apk add vips vips-tools
+RUN apk add vips vips-tools curl
 
 RUN apk info -L vips
 
