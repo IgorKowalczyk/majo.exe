@@ -3,9 +3,9 @@
   "version": "6.0.0",
   "description": "Dashboard for Majo.exe built on Next.js and Tailwind.css",
   "scripts": {
-    "start": "next start",
-    "dev": "next dev --turbo",
-    "build": "next build",
+    "start": "dotenvx run -- next start",
+    "dev": "dotenvx run -- next dev --turbo",
+    "build": "dotenvx run -- next build",
     "deploy": "pnpm run build && pnpm run start",
     "format": "prettier . --write --cache --ignore-unknown",
     "format:check": "prettier . --check --cache",
@@ -27,6 +27,8 @@
     "@radix-ui/react-dialog": "1.1.6",
     "@radix-ui/react-switch": "1.1.3",
     "@radix-ui/react-tooltip": "1.1.8",
+    "@t3-oss/env-core": "0.12.0",
+    "@t3-oss/env-nextjs": "0.12.0",
     "@tanstack/react-table": "8.21.2",
     "@vercel/analytics": "1.5.0",
     "@vercel/speed-insights": "1.2.0",
@@ -56,7 +58,8 @@
     "sharp": "0.34.1",
     "sonner": "2.0.3",
     "tw-animate-css": "1.2.5",
-    "validator": "13.15.0"
+    "validator": "13.15.0",
+    "zod": "3.24.2"
   },
   "devDependencies": {
     "@majoexe/typescript-config": "workspace:*",

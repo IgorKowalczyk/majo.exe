@@ -1,3 +1,3 @@
 package.json
 
-.client
+prisma/generated/client

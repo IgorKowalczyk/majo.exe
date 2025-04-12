@@ -6,6 +6,7 @@ import { getGuild, getGuildChannels, getGuildFromMemberGuilds, getGuildRoles } f
 import { AutoModerationActionType, AutoModerationRuleTriggerType, AutoModerationRuleEventType, ChannelType } from "discord-api-types/v10";
 import { getSession } from "lib/session";
 import { NextRequest, NextResponse } from "next/server";
+import { env } from "@/env";
 
 export async function POST(request: NextRequest) {
  try {
@@ -223,7 +224,7 @@ export async function POST(request: NextRequest) {
   const createdRule = await createDiscordAutoModRule(server.id, "anti-invite", {
    enabled: data.enabled,
    name: "Disallow invites [Majo.exe]",
-   creator_id: process.env.CLIENT_ID || "",
+   creator_id: env.CLIENT_ID || "",
    actions: validatedActions,
    event_type: AutoModerationRuleEventType.MessageSend,
    trigger_type: AutoModerationRuleTriggerType.Keyword,

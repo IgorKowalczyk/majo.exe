@@ -7,6 +7,7 @@ import { shortenText } from "@majoexe/util/functions/util";
 import { APIGuildChannel, ChannelType, GuildChannelType } from "discord-api-types/v10";
 import { getSession } from "lib/session";
 import { NextRequest, NextResponse } from "next/server";
+import { env } from "@/env";
 
 export async function POST(request: NextRequest) {
  try {
@@ -208,7 +209,7 @@ export async function POST(request: NextRequest) {
   const allChannelsFetch = await fetch(`https://discord.com/api/v${globalConfig.apiVersion}/guilds/${server.id}/channels`, {
    method: "GET",
    headers: {
-    Authorization: `Bot ${process.env.TOKEN}`,
+    Authorization: `Bot ${env.TOKEN}`,
    },
   });
 

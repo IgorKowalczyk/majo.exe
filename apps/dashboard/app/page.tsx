@@ -36,6 +36,7 @@ import Header, { headerVariants } from "@/components/ui/Headers";
 import { Icons, iconVariants } from "@/components/ui/Icons";
 import Image from "@/components/ui/Image";
 import { Typing } from "@/components/ui/Loaders";
+import { env } from "@/env";
 import { Command } from "@/lib/types";
 import { cn } from "@/lib/utils";
 
@@ -124,7 +125,7 @@ export default async function Page() {
  const guilds = await fetch(`https://discord.com/api/v${globalConfig.apiVersion}/applications/@me`, {
   method: "GET",
   headers: {
-   Authorization: `Bot ${process.env.TOKEN}`,
+   Authorization: `Bot ${env.TOKEN}`,
   },
   next: { revalidate: 3600 },
  });

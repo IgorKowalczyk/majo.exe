@@ -12,6 +12,7 @@ import { Session } from "@/components/Session";
 import { TailwindIndicator } from "@/components/TailwindIndicator";
 import { Icons, iconVariants } from "@/components/ui/Icons";
 import "styles/globals.css";
+import { env } from "@/env";
 import { cn } from "@/lib/utils";
 
 export const metadata: Metadata = {
@@ -60,7 +61,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
  return (
   <Session>
    <html lang="en">
-    <head>{process.env.HOTJAR_ID && <Hotjar id={process.env.HOTJAR_ID} />}</head>
+    <head>{env.HOTJAR_ID && <Hotjar id={env.HOTJAR_ID} />}</head>
     <body className={cn("bg-background-primary selection:bg-accent-primary/30 text-white antialiased", GeistSans.className)}>
      <VisibilityProvider>
       <TopNavigation theme="full" />

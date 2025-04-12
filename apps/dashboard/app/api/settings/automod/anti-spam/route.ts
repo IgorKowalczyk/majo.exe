@@ -6,6 +6,7 @@ import { getGuild, getGuildChannels, getGuildFromMemberGuilds, getGuildRoles } f
 import { AutoModerationActionType, AutoModerationRuleTriggerType, AutoModerationRuleEventType, ChannelType } from "discord-api-types/v10";
 import { getSession } from "lib/session";
 import { NextRequest, NextResponse } from "next/server";
+import { env } from "@/env";
 
 export async function POST(request: NextRequest) {
  try {
@@ -229,7 +230,7 @@ export async function POST(request: NextRequest) {
    exempt_roles: data.exemptRoles,
    exempt_channels: data.exemptChannels,
    trigger_metadata: {},
-   creator_id: process.env.CLIENT_ID || "",
+   creator_id: env.CLIENT_ID || "",
   });
 
   if (createdRule.error) {

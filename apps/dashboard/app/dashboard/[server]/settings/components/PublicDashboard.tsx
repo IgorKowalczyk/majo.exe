@@ -8,6 +8,7 @@ import Header, { headerVariants } from "@/components/ui/Headers";
 import { Icons, iconVariants } from "@/components/ui/Icons";
 import { Input } from "@/components/ui/Input";
 import { Switch } from "@/components/ui/Switch";
+import { env } from "@/env";
 import { cn } from "@/lib/utils";
 
 interface PublicDashboardProps extends React.ComponentProps<"div"> {
@@ -176,7 +177,7 @@ export const PublicDashboard = ({ enabled, serverId, vanityURL, className, ...pr
         "hidden select-none rounded-lg rounded-r-none border border-r-0 border-r-transparent bg-transparent py-2 pl-3 font-normal text-white/60 shadow-xs outline-hidden ring-0! duration-200 sm:block"
        )}
       >
-       {process.env.NEXT_PUBLIC_URL}/server/
+       {env.NEXT_PUBLIC_URL}/server/
       </div>
      </div>
      <Button variant="primary" onClick={(e) => updateVanity(e)} disabled={disabled || !!vanityError || vanity.length === 0 || buttonText === "Saving..."} className="mx-auto font-normal md:mx-0">
@@ -198,7 +199,7 @@ export const PublicDashboard = ({ enabled, serverId, vanityURL, className, ...pr
       <Button
        variant="secondary"
        onClick={() => {
-        navigator.clipboard.writeText(`${process.env.NEXT_PUBLIC_URL}/server/${encodeURIComponent(vanity)}`);
+        navigator.clipboard.writeText(`${env.NEXT_PUBLIC_URL}/server/${encodeURIComponent(vanity)}`);
         toast.success("Link copied to clipboard!");
        }}
        className="w-fit"

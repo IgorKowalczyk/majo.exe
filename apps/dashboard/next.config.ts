@@ -1,8 +1,7 @@
 import { dashboardHeaders, dashboardRedirects } from "@majoexe/config";
 import createMdx from "@next/mdx";
-// @ts-expect-error No types available
-import { PrismaPlugin } from "@prisma/nextjs-monorepo-workaround-plugin";
 import type { NextConfig } from "next";
+import "@/env";
 
 const withMDX = createMdx();
 
@@ -45,7 +44,7 @@ const nextConfig = {
    bufferutil: "commonjs bufferutil",
   });
   if (isServer) {
-   config.plugins = [...config.plugins, new PrismaPlugin()];
+   config.plugins = [...config.plugins];
   }
   return config;
  },

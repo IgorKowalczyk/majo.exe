@@ -11,6 +11,7 @@ import Image from "@/components/ui/Image";
 import { InputWithIcon } from "@/components/ui/Input";
 import { Skeleton } from "@/components/ui/Skeletons";
 import { Tooltip } from "@/components/ui/Tooltip";
+import { env } from "@/env";
 import { cn } from "@/lib/utils";
 
 interface LogItem extends Omit<GuildLogs, "createdAt"> {
@@ -72,7 +73,7 @@ export default function Logs({ initialItems, server }: { initialItems: LogItem[]
   if (!fetching.current) {
    try {
     fetching.current = true;
-    const response = await fetch(`${process.env.NEXT_PUBLIC_URL}/api/logs/${server}?page=${page}`);
+    const response = await fetch(`${env.NEXT_PUBLIC_URL}/api/logs/${server}?page=${page}`);
     const data = (await response.json()) as LogItem[];
     if (!data.length) return setHasMore(false);
 

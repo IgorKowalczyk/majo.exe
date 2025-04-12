@@ -56,4 +56,4 @@ jspm_packages/
 .vercel
 
 # Prisma
-.client
+packages/database/prisma/generated/client

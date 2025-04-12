@@ -6,8 +6,13 @@ datasource db {
 
 generator client {
  provider        = "prisma-client"
- output          = "../.client"
+ output          = "../prisma/generated/client"
  previewFeatures = ["driverAdapters"]
+
+   runtime                = "nodejs"
+  moduleFormat           = "esm"
+  generatedFileExtension = "ts"
+  importFileExtension    = "ts"
 }
 
 // User model

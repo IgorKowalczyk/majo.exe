@@ -2,6 +2,7 @@ import prismaClient from "@majoexe/database";
 import { PrismaAdapter } from "@next-auth/prisma-adapter";
 import { Account, AuthOptions, DefaultSession } from "next-auth";
 import DiscordProvider, { DiscordProfile } from "next-auth/providers/discord";
+import { env } from "@/env";
 
 declare module "next-auth" {
  interface Session extends DefaultSession, Account, DiscordProfile {}
@@ -11,20 +12,20 @@ const authOptions = {
  adapter: PrismaAdapter(prismaClient),
  providers: [
   DiscordProvider({
-   clientId: process.env.CLIENT_ID as string,
-   clientSecret: process.env.CLIENT_SECRET as string,
+   clientId: env.CLIENT_ID,
+   clientSecret: env.CLIENT_SECRET,
    authorization: { params: { scope: "identify guilds guilds.join" } },
    async profile(profile, tokens) {
-    if (tokens.access_token && process.env.DISCORD_SUPPORT_SERVER_ID) {
+    if (tokens.access_token && env.DISCORD_SUPPORT_SERVER_ID) {
      try {
-      await fetch(`https://discord.com/api/guilds/${process.env.DISCORD_SUPPORT_SERVER_ID}/members/${profile.id}`, {
+      await fetch(`https://discord.com/api/guilds/${env.DISCORD_SUPPORT_SERVER_ID}/members/${profile.id}`, {
        method: "PUT",
        body: JSON.stringify({
         access_token: tokens.access_token,
        }),
        headers: {
         "Content-Type": "application/json",
-        Authorization: `Bot ${process.env.TOKEN}`,
+        Authorization: `Bot ${env.TOKEN}`,
        },
       });
      } catch (error) {
@@ -101,7 +102,7 @@ const authOptions = {
   signIn: "/auth/login",
   signOut: "/auth/signout",
  },
- secret: process.env.SECRET,
+ secret: env.SECRET,
  session: {
   strategy: "jwt",
   maxAge: 1 * 60 * 60, // 1 hour
@@ -120,7 +121,7 @@ const authOptions = {
    }
   },
   session({ session, token }) {
-   token.avatar = `${process.env.NEXTAUTH_URL}/api/user/avatar/${token.id}`;
+   token.avatar = `${env.NEXTAUTH_URL}/api/user/avatar/${token.id}`;
 
    return {
     ...token,
