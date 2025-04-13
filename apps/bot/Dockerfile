@@ -12,6 +12,7 @@ WORKDIR /app
 
 ENV NODE_ENV=production
 ENV TURBO_TELEMETRY_DISABLED=1
+ENV npm_config_sharp_libvips=system
 
 RUN corepack enable \
   && corepack prepare pnpm@latest --activate \
