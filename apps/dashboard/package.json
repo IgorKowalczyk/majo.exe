@@ -9,8 +9,8 @@
     "deploy": "pnpm run build && pnpm run start",
     "format": "prettier . --write --cache --ignore-unknown",
     "format:check": "prettier . --check --cache",
-    "lint": "next lint",
-    "lint:fix": "next lint --fix"
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix"
   },
   "dependencies": {
     "@headlessui/react": "2.2.1",
