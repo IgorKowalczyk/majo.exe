@@ -1,9 +1,9 @@
 import { debuggerConfig } from "@majoexe/config";
 import { neonConfig } from "@neondatabase/serverless";
 import { PrismaNeon } from "@prisma/adapter-neon";
+import { PrismaClient } from "@prisma/client";
 import { createPrismaRedisCache } from "prisma-redis-middleware";
 import ws from "ws";
-import { PrismaClient } from "@prisma/client";
 import { Logger } from "./logger";
 import redisClient from "./redis/client";
 

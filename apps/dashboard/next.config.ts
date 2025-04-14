@@ -48,9 +48,11 @@ const nextConfig = {
   }
   return config;
  },
+ /* eslint-disable-next-line require-await */
  async redirects() {
   return dashboardRedirects;
  },
+ /* eslint-disable-next-line require-await */
  async headers() {
   return dashboardHeaders;
  },
