@@ -110,7 +110,7 @@ export const ChangeEmbedColor = ({ serverId, serverColor, className, ...props }:
 
  return (
   <div className={cn("flex flex-col gap-3 lg:flex-row lg:gap-8 lg:divide-x lg:divide-neutral-800", className)} {...props}>
-   <div className="flex flex-col items-center justify-center gap-3">
+   <div className="flex flex-col items-center justify-center gap-3 lg:pr-8">
     <div>
      <div className="flex flex-row gap-1">
       <div className="size-6 cursor-pointer rounded-lg bg-[#1bbd9c] text-white" onClick={() => setColor("#1bbd9c")} />
