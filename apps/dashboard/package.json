@@ -69,7 +69,7 @@
     "@tailwindcss/typography": "0.5.16",
     "@types/mdx": "2.0.13",
     "@types/ms": "2.1.0",
-    "@types/react": "19.1.1",
+    "@types/react": "19.1.2",
     "@types/react-dom": "19.1.2",
     "@types/react-infinite-scroller": "1.2.5",
     "postcss": "8.5.3",
