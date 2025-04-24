@@ -9,7 +9,7 @@ export interface DisclosureProps {
 }
 
 export const Disclosure = ({ button, children, ...props }: DisclosureProps) => (
- <Accordion data-slot="disclosure" {...props} type="single" collapsible>
+ <Accordion {...props} type="single" collapsible>
   <AccordionItem value={"0"} className="border-0 mb-6">
    <AccordionTrigger className="rounded-lg border border-neutral-800 bg-background-navbar px-6 py-4 duration-200 data-[state=open]:mb-0 data-[state=open]:rounded-b-none">{button}</AccordionTrigger>
    <AccordionContent asChild className="w-full rounded-lg rounded-t-none border pt-4 border-t-0 border-neutral-800 bg-background-navbar">

@@ -22,7 +22,7 @@ export default function Loading() {
        <Icons.userAdd className={iconVariants({ variant: "extraLarge" })} />
        <div className="flex flex-col">
         <Header className={cn(headerVariants({ variant: "h4" }), "justify-start whitespace-nowrap")}>New members</Header>
-        <p className="text-sm text-gray-400">Amount of new members that joined your server in the last 7 days.</p>
+        <p className="text-sm text-neutral-400">Amount of new members that joined your server in the last 7 days.</p>
        </div>
       </div>
       <div className="ml-2 flex min-h-[40px] min-w-[144px] flex-row items-center gap-3" />
@@ -35,7 +35,7 @@ export default function Loading() {
        <Icons.commentAdd className={iconVariants({ variant: "extraLarge" })} />
        <div className="flex flex-col">
         <Header className={cn(headerVariants({ variant: "h4" }), "justify-start whitespace-nowrap")}>Messages sent</Header>
-        <p className="text-sm text-gray-400">Amount of messages that were sent in your server in the last 7 days.</p>
+        <p className="text-sm text-neutral-400">Amount of messages that were sent in your server in the last 7 days.</p>
        </div>
       </div>
       <div className="ml-2 flex min-h-[40px] min-w-[144px] flex-row items-center gap-3" />
@@ -48,7 +48,7 @@ export default function Loading() {
        <Icons.userMinus className={iconVariants({ variant: "extraLarge" })} />
        <div className="flex flex-col">
         <Header className={cn(headerVariants({ variant: "h4" }), "justify-start whitespace-nowrap")}>Members left</Header>
-        <p className="text-sm text-gray-400">Amount of members that left your server in the last 7 days.</p>
+        <p className="text-sm text-neutral-400">Amount of members that left your server in the last 7 days.</p>
        </div>
       </div>
       <div className="ml-2 flex min-h-[40px] min-w-[144px] flex-row items-center gap-3" />

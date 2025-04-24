@@ -68,13 +68,13 @@ export const Footer = ({ className, ...props }: HTMLAttributes<HTMLDivElement>) 
      <div className="col-span-1 text-neutral-300">
       <p className="mt-3 font-semibold text-white sm:mb-3 sm:mt-0">Useful links</p>
       <div>
-       <Link href={`${dashboardConfig.url}/discord`} className="mt-2 block duration-100 hover:text-gray-300 hover:underline motion-reduce:transition-none">
+       <Link href={`${dashboardConfig.url}/discord`} className="mt-2 block duration-100 hover:text-neutral-300 hover:underline motion-reduce:transition-none">
         Discord server
        </Link>
-       <Link href={`${dashboardConfig.url}/contact`} className="mt-2 block duration-100 hover:text-gray-300 hover:underline motion-reduce:transition-none">
+       <Link href={`${dashboardConfig.url}/contact`} className="mt-2 block duration-100 hover:text-neutral-300 hover:underline motion-reduce:transition-none">
         Contact us
        </Link>
-       <Link href="https://github.com/igorkowalczyk/majo.exe" className="mt-2 block duration-100 hover:text-gray-300 hover:underline motion-reduce:transition-none">
+       <Link href="https://github.com/igorkowalczyk/majo.exe" className="mt-2 block duration-100 hover:text-neutral-300 hover:underline motion-reduce:transition-none">
         Source code
        </Link>
       </div>
@@ -83,10 +83,10 @@ export const Footer = ({ className, ...props }: HTMLAttributes<HTMLDivElement>) 
      <div className="col-span-1 text-neutral-300">
       <p className="mt-3 font-semibold text-white sm:mb-3 sm:mt-0">Legal</p>
       <div>
-       <Link href={`${dashboardConfig.url}/legal/privacy-policy`} className="mt-2 block duration-100 hover:text-gray-300 hover:underline motion-reduce:transition-none">
+       <Link href={`${dashboardConfig.url}/legal/privacy-policy`} className="mt-2 block duration-100 hover:text-neutral-300 hover:underline motion-reduce:transition-none">
         Privacy Policy
        </Link>
-       <Link href={`${dashboardConfig.url}/legal/terms-of-service`} className="mt-2 block duration-100 hover:text-gray-300 hover:underline motion-reduce:transition-none">
+       <Link href={`${dashboardConfig.url}/legal/terms-of-service`} className="mt-2 block duration-100 hover:text-neutral-300 hover:underline motion-reduce:transition-none">
         Terms of Service
        </Link>
       </div>

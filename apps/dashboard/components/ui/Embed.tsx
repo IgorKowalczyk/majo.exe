@@ -18,7 +18,7 @@ export const Embed = ({ className, children, color, buttons, ...props }: EmbedPr
     <span className="ml-1 flex items-center gap-1 rounded-sm bg-[#5c65f3] px-1 py-[0.12rem] text-xs text-white">
      <Icons.Check className={iconVariants({ variant: "small", className: "stroke-2!" })} /> <span className="-mb-px">BOT</span>
     </span>
-    <span className="ml-2 text-sm text-gray-400">Today at 4:20 PM</span>
+    <span className="ml-2 text-sm text-neutral-400">Today at 4:20 PM</span>
    </div>
    <div
     className="ml-1 mt-2 rounded-sm bg-[#2b2d31] p-4 shadow-lg"

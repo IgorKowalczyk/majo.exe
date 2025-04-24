@@ -12,11 +12,11 @@ export const InputWithIcon = ({ icon, text, required, className, ...props }: Rea
   <span className="flex items-center gap-1 opacity-90">
    {text}
    {required && !props.disabled && <span className="text-red-400">*</span>}
-   {props.disabled && <span className="text-sm text-gray-500">(read only)</span>}
+   {props.disabled && <span className="text-sm text-neutral-500">(read only)</span>}
   </span>
-  <div className="relative my-2 flex">
+  <div className="relative flex">
    <div className={cn(`${props.disabled ? "opacity-50" : ""} absolute inset-y-0 left-0 flex items-center pl-3`)}>{icon}</div>
-   <Input {...props} className={cn("pl-10", className)} {...props} />
+   <Input {...props} className={cn("pl-10 h-10", className)} {...props} />
   </div>
  </label>
 );

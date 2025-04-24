@@ -6,6 +6,7 @@ import { toast } from "sonner";
 import { Button } from "@/components/ui/Buttons";
 import { Dialog, DialogClose, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/Dialog";
 import { Icons, iconVariants } from "@/components/ui/Icons";
+import { Input } from "@/components/ui/Input";
 
 export interface DeleteServerDataProps extends React.ComponentProps<"div"> {
  serverId: string;
@@ -13,9 +14,14 @@ export interface DeleteServerDataProps extends React.ComponentProps<"div"> {
 
 export const DeleteServerData = ({ serverId, className, ...props }: DeleteServerDataProps) => {
  const [loading, setLoading] = useState(false);
+ const [confirmationText, setConfirmationText] = useState("");
  const router = useRouter();
 
  const handleDelete = async () => {
+  if (!confirmationText || confirmationText.length == 0 || confirmationText.toLowerCase() !== "delete") {
+   return toast.error("You must type 'delete' to confirm.");
+  }
+
   setLoading(true);
   const loadingToast = toast.loading("Deleting server data...");
 
@@ -76,8 +82,16 @@ export const DeleteServerData = ({ serverId, className, ...props }: DeleteServer
       <DialogDescription>Deleting server data will remove all data associated with this server. Do you want to continue?</DialogDescription>
      </DialogHeader>
 
+     <div className="mt-4">
+      <label htmlFor="confirmationText" className="flex my-2 w-fit items-center gap-2 font-bold">
+       Type <span className="font-bold">"delete"</span> to confirm:
+      </label>
+
+      <Input type="text" id="confirmationText" value={confirmationText} onChange={(e) => setConfirmationText(e.target.value)} placeholder="delete" />
+     </div>
+
      <div className="mt-4 flex justify-between gap-2">
-      <Button variant="red" onClick={handleDelete} disabled={loading}>
+      <Button variant="red" onClick={handleDelete} disabled={loading || confirmationText.toLowerCase() !== "delete"}>
        {loading ? (
         <>
          <Icons.refresh className={iconVariants({ variant: "button", className: "animate-spin" })} />

@@ -102,7 +102,7 @@ export function Giveaways({ data = [] }: { data: Giveaway[] }) {
       {value ? (
        <Tooltip content={`Discord ID: ${value.discordId || "Unknown"}`}>
         <Link className="flex w-fit items-center space-x-4" href={`user/${value.discordId}`}>
-         <Image src={`/api/user/avatar/${value.discordId}`} alt={`${value.name} avatar`} quality={95} width={48} height={48} className="size-12 shrink-0 rounded-full" />
+         <Image src={`/api/user/avatar/${value.discordId}`} alt={`${value.name} avatar`} quality={95} width={36} height={36} className="size-9 shrink-0 rounded-full" />
 
          <span className="text-left font-bold">
           {value.global_name || value.name}

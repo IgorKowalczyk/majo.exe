@@ -1,4 +1,4 @@
-import { AutoModerationActionType } from "discord-api-types/v10";
+import { AutoModerationActionType, type APIAutoModerationAction } from "discord-api-types/v10";
 import React from "react";
 import { Icons, iconVariants } from "@/components/ui/Icons";
 import { Skeleton } from "@/components/ui/Skeletons";
@@ -6,8 +6,8 @@ import { TimeSelect } from "@/components/ui/TimeSelect";
 import { Tooltip } from "@/components/ui/Tooltip";
 
 interface TimeoutMemberProps {
- actions: any[];
- setActions: (actions: any[]) => void;
+ actions: APIAutoModerationAction[];
+ setActions: (actions: APIAutoModerationAction[]) => void;
 }
 
 const TimeoutMember: React.FC<TimeoutMemberProps> = ({ actions, setActions }) => {

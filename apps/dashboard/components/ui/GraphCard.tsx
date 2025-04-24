@@ -17,7 +17,7 @@ export const GraphCard = ({ title, description, value, icon, graph, className, .
     {icon}
     <div className="flex flex-col">
      <Header className={cn(headerVariants({ variant: "h4" }), "justify-start whitespace-nowrap")}>{title}</Header>
-     <p className="text-sm text-gray-400">{description}</p>
+     <p className="text-sm text-neutral-400">{description}</p>
     </div>
    </div>
    <div className="flex flex-row items-center gap-3">

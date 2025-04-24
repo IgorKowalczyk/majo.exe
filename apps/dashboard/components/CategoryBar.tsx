@@ -7,7 +7,7 @@ interface CategoryBarProps extends HTMLAttributes<HTMLDivElement> {
 
 export const CategoryBar = ({ percent = 50, className, ...props }: CategoryBarProps) => (
  <div {...props} className={className}>
-  <div className="relative mb-2 flex h-5 w-full text-gray-500">
+  <div className="relative mb-2 flex h-5 w-full text-neutral-500">
    <div
     className="flex items-center justify-end"
     style={{

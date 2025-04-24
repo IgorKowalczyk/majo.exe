@@ -31,7 +31,7 @@ export const Faq = ({ className, ...props }: React.ComponentProps<"div">) => {
  return (
   <div className={cn("mx-auto mt-9 w-full max-w-3xl rounded-xl", className)} {...props}>
    {items.map((item, index) => (
-    <Accordion type="single" defaultValue="item-1" collapsible key={`faq-${item.question}`}>
+    <Accordion type="single" collapsible key={`faq-${item.question}`}>
      <AccordionItem value={`item-${index + 1}`}>
       <AccordionTrigger>{item.question}</AccordionTrigger>
       <AccordionContent>{item.answer}</AccordionContent>

@@ -3,6 +3,7 @@ import type { Linter } from "eslint";
 
 export default [
  // prettier
+ // @ts-expect-error Wrong type
  ...eslintConfig.base,
  ...eslintConfig.react,
  ...eslintConfig.next,

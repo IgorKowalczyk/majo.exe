@@ -62,7 +62,7 @@ export const Warns = ({ data, guildId, ...props }: Omit<React.ComponentProps<typ
       {value && value.discordId ? (
        <Tooltip content={`Discord ID: ${value.discordId || "Unknown"}`}>
         <Link href={`user/${value.discordId}`} className="flex w-fit items-center space-x-4">
-         <Image src={`/api/user/avatar/${value.discordId}`} alt={`${value.name} avatar`} quality={95} width={48} height={48} className="size-12 shrink-0 rounded-full" />
+         <Image src={`/api/user/avatar/${value.discordId}`} alt={`${value.name} avatar`} quality={95} width={36} height={36} className="size-9 shrink-0 rounded-full" />
          <span className="text-left font-bold">
           {value.global_name || value.name}
           {value.discriminator !== "0" && <span className="opacity-70">#{value.discriminator || "0000"}</span>}
@@ -123,7 +123,7 @@ export interface UserWarns extends Omit<GuildWarns, "createdById" | "link"> {
  addedBy: Pick<User, "discordId" | "name" | "global_name" | "avatar" | "discriminator"> | null;
 }
 
-export const ManageUserWarns = ({ data, guildId, ...props }: React.ComponentProps<typeof Table> & { data: UserWarns[]; guildId: string }) => {
+export const ManageUserWarns = ({ data, guildId, ...props }: { data: UserWarns[]; guildId: string } & Omit<React.ComponentProps<typeof Table>, "columns">) => {
  const [loadingWarns, setLoadingWarns] = useState<string[]>([]);
  const [deletedWarns, setDeletedWarns] = useState<string[]>([]);
  const router = useRouter();
@@ -165,7 +165,7 @@ export const ManageUserWarns = ({ data, guildId, ...props }: React.ComponentProp
       {value && value.discordId ? (
        <Tooltip content={`Discord ID: ${value.discordId || "Unknown"}`}>
         <div className="flex w-fit items-center space-x-4">
-         <Image src={`/api/user/avatar/${value.discordId}`} alt={`${value.name} avatar`} quality={95} width={48} height={48} className="size-12 shrink-0 rounded-full" />
+         <Image src={`/api/user/avatar/${value.discordId}`} alt={`${value.name} avatar`} quality={95} width={36} height={36} className="size-9 shrink-0 rounded-full" />
          <span className="text-left font-bold">
           {value.global_name || value.name}
           {value.discriminator !== "0" && <span className="opacity-70">#{value.discriminator || "0000"}</span>}
@@ -230,5 +230,6 @@ export const ManageUserWarns = ({ data, guildId, ...props }: React.ComponentProp
   },
  ];
 
- return <Table data={data} {...props} sortBy={[{ id: "createdAt", desc: true }]} columns={columns} />;
+ // @ts-expect-error Wrong type
+ return <Table data={data} sortBy={[{ id: "createdAt", desc: true }]} columns={columns} {...props} />;
 };

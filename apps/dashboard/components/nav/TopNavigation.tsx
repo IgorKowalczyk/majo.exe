@@ -30,7 +30,7 @@ export const TopNavigation = async ({ className, theme, ...props }: React.Compon
  }
 
  return (
-  <nav className={cn("bg-background-navbar fixed z-40 flex w-full items-center border-b border-b-neutral-800 py-4 text-left shadow-lg", className)} {...props}>
+  <nav className={cn("bg-background-navbar fixed z-40 px-1 flex w-full items-center border-b border-b-neutral-800 py-4 text-left shadow-lg", className)} {...props}>
    <SideMenuControl />
    <div
     className={cn(

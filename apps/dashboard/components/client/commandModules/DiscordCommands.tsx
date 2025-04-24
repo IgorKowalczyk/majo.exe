@@ -66,7 +66,7 @@ export const DiscordCommands = ({ commands, categories, className, ...props }: D
  return (
   <div className={cn(className)} {...props}>
    <InputWithIcon placeholder="Search commands..." value={search} onChange={(e) => setSearch(e.target.value)} icon={<Icons.Search className={iconVariants({ variant: "normal", className: "text-white/50" })} />} className="w-full max-w-none!" />
-   <div className="mt-8 flex flex-wrap gap-2">
+   <div className="mt-4 flex flex-wrap gap-2">
     {categories.map((category) => (
      <div
       key={category.name}
@@ -74,7 +74,7 @@ export const DiscordCommands = ({ commands, categories, className, ...props }: D
        {
         "opacity-50": !filteredCategories?.includes(category),
        },
-       "flex cursor-pointer select-none items-center gap-2 rounded-lg border border-neutral-800 px-4 py-2 duration-200"
+       "flex cursor-pointer select-none items-center gap-2 rounded-lg border border-neutral-800 px-3 py-1.5 duration-200"
       )}
       onClick={() => {
        if (filteredCategories.includes(category)) {
@@ -84,7 +84,7 @@ export const DiscordCommands = ({ commands, categories, className, ...props }: D
        }
       }}
      >
-      <div className="relative size-5">
+      <div className="relative size-4">
        <Icons.Check
         className={iconVariants({
          variant: "normal",

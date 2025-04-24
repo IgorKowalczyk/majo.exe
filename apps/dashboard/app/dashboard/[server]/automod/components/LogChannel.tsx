@@ -1,4 +1,4 @@
-import { AutoModerationActionType } from "discord-api-types/v10";
+import { APIAutoModerationAction, APIGuildChannel, AutoModerationActionType, GuildChannelType } from "discord-api-types/v10";
 import React from "react";
 import { ChannelsSelect } from "@/components/ui/ChannelsSelect";
 import { Icons, iconVariants } from "@/components/ui/Icons";
@@ -6,12 +6,12 @@ import { Skeleton } from "@/components/ui/Skeletons";
 import { Tooltip } from "@/components/ui/Tooltip";
 
 interface LogChannelProps {
- actions: any[];
- setActions: (actions: any[]) => void;
- allChannels: any[];
+ actions: APIAutoModerationAction[];
+ setActions: (actions: APIAutoModerationAction[]) => void;
+ allChannels: APIGuildChannel<GuildChannelType>[] | null[];
 }
 
-const LogChannel: React.FC<LogChannelProps> = ({ actions, setActions, allChannels }) => {
+const LogChannel = ({ actions, setActions, allChannels }: LogChannelProps) => {
  const setChannels = (value: string) => {
   const alertActionType = AutoModerationActionType.SendAlertMessage;
 
@@ -28,7 +28,7 @@ const LogChannel: React.FC<LogChannelProps> = ({ actions, setActions, allChannel
      Log to channel:
     </span>
    </Tooltip>
-   <ChannelsSelect allChannels={[{ id: "1", name: "Disabled" }, ...allChannels.filter((channel) => channel !== null)]} selectedChannels={[actions.find((action) => action.type === AutoModerationActionType.SendAlertMessage)?.metadata?.channel_id || "1"]} setChannels={setChannels} multiple={false} />
+   <ChannelsSelect allChannels={[{ id: "1", name: "Disabled" }, ...allChannels.filter((channel) => channel !== null)]} selectedChannels={[actions.find((action) => action.type === AutoModerationActionType.SendAlertMessage)?.metadata?.channel_id || "1"]} setChannels={(channels) => setChannels(channels[0] || "")} multiple={false} />
   </div>
  );
 };

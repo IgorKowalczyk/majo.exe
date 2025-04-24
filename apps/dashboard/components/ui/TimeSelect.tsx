@@ -2,7 +2,7 @@
 
 import React from "react";
 import { Icons, iconVariants } from "@/components/ui/Icons";
-import { ListBox, ListBoxArrow, ListBoxButton, ListBoxOption, ListBoxOptions } from "@/components/ui/ListBox";
+import { Select, SelectTrigger, SelectValue, SelectItem, SelectContent } from "@/components/ui/Select";
 
 export const choices = [
  {
@@ -43,7 +43,7 @@ export const choices = [
  },
 ];
 
-export interface TimeSelectProps extends React.ComponentProps<typeof ListBox> {
+export interface TimeSelectProps extends React.ComponentProps<typeof Select> {
  selectedChoice: number;
  setSelectedChoice: (value: number) => void;
 }
@@ -51,20 +51,21 @@ export interface TimeSelectProps extends React.ComponentProps<typeof ListBox> {
 export const TimeSelect = ({ selectedChoice, setSelectedChoice, ...props }: TimeSelectProps) => (
  <>
   {choices && choices.length > 0 ? (
-   <ListBox value={selectedChoice.toString()} onChange={(value: string) => setSelectedChoice(parseInt(value))} {...props}>
-    <ListBoxButton>
-     <span className="flex items-center gap-2 truncate">{choices.find((choice) => choice?.time === selectedChoice)?.title || "No time selected"}</span>
-     <ListBoxArrow />
-    </ListBoxButton>
+   <Select value={selectedChoice.toString()} onValueChange={(value) => setSelectedChoice(parseInt(value))} {...props}>
+    <SelectTrigger>
+     <SelectValue placeholder="Select time">
+      <span className="flex items-center gap-2 truncate">{choices.find((choice) => choice?.time === selectedChoice)?.title || "No time selected"}</span>
+     </SelectValue>
+    </SelectTrigger>
 
-    <ListBoxOptions>
+    <SelectContent>
      {choices.map((choice) => (
-      <ListBoxOption key={`choice-select-option-${choice.time}`} value={choice.time.toString()}>
+      <SelectItem key={`choice-select-option-${choice.time}`} value={choice.time.toString()}>
        <div className="flex items-center gap-1 truncate">{choice.title}</div>
-      </ListBoxOption>
+      </SelectItem>
      ))}
-    </ListBoxOptions>
-   </ListBox>
+    </SelectContent>
+   </Select>
   ) : (
    <div className="flex items-center justify-center gap-2 font-normal text-red-400">
     <Icons.warning className={iconVariants({ variant: "normal" })} />

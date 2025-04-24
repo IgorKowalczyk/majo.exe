@@ -19,9 +19,6 @@ const nextConfig = {
  eslint: {
   ignoreDuringBuilds: true,
  },
- typescript: {
-  ignoreBuildErrors: true,
- },
  images: {
   unoptimized: true,
   remotePatterns: [
@@ -48,11 +45,9 @@ const nextConfig = {
   }
   return config;
  },
- /* eslint-disable-next-line require-await */
  async redirects() {
   return dashboardRedirects;
  },
- /* eslint-disable-next-line require-await */
  async headers() {
   return dashboardHeaders;
  },
