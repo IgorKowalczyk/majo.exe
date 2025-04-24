@@ -31,7 +31,7 @@
     "@igorkowalczyk/eslint-config": "3.0.7",
     "@igorkowalczyk/prettier-config": "3.0.7",
     "@types/node": "22.14.1",
-    "eslint": "9.24.0",
+    "eslint": "9.25.0",
     "eslint-plugin-turbo": "2.5.0",
     "prettier": "3.5.3",
     "typescript": "5.8.3"
@@ -56,5 +56,5 @@
     "bot",
     "discord-bot"
   ],
-  "packageManager": "pnpm@10.8.1"
+  "packageManager": "pnpm@10.9.0"
 }
