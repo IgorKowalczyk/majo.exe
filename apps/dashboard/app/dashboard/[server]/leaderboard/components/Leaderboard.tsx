@@ -24,19 +24,19 @@ export function Leaderboard({ data, showControls = true, showSearch = true }: { 
    header: ({ column }) => <TableColumnHeader column={column} title="Position" />,
    accessorKey: "id",
    cell: ({ row }) => `#${row.getValue("id")}`,
-   size: 40,
+   size: 2,
   },
   {
    header: ({ column }) => <TableColumnHeader column={column} title="User" />,
    accessorKey: "user",
-   size: 5000,
+   size: 2000,
    cell: ({ row }) => {
     const value = row.original.user;
     return (
      <div id={value.discordId}>
       <Tooltip content={`Discord ID: ${value.discordId}`}>
        <Link className="flex w-fit items-center space-x-4" href={showControls ? `user/${value.discordId}` : `#${value.discordId}`} passHref>
-        <Image src={`/api/user/avatar/${value.discordId}`} alt={`${value.name} avatar`} quality={95} width={48} height={48} className="size-12 shrink-0 rounded-full" />
+        <Image src={`/api/user/avatar/${value.discordId}`} alt={`${value.name} avatar`} quality={95} width={36} height={36} className="size-9 shrink-0 rounded-full" />
         <span className="text-left font-bold">
          {value.global_name || value.name}
          {value.discriminator !== "0" && <span className="opacity-70">#{value.discriminator || "0000"}</span>}

@@ -3,9 +3,9 @@
 import { useReactTable, getCoreRowModel, getSortedRowModel, getPaginationRowModel, getFilteredRowModel, ColumnDef, Column, flexRender } from "@tanstack/react-table";
 import React, { useState } from "react";
 import { Button } from "@/components/ui/Buttons";
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/DropdownMenu";
 import { Icons, iconVariants } from "@/components/ui/Icons";
 import { InputWithIcon } from "@/components/ui/Input";
-import { Menu, MenuItem, MenuItems, MenuButton } from "@/components/ui/Menu";
 import { ViewSelect } from "@/components/ui/ViewSelect";
 import { cn } from "@/lib/utils";
 
@@ -29,68 +29,59 @@ export function TableColumnHeader<TData, TValue>({ column, title, className }: D
 
  return (
   <div className={cn("flex items-center space-x-2", className)}>
-   <Menu>
-    <MenuButton aria-label={column.getIsSorted() === "desc" ? "Sorted descending. Click to sort ascending." : column.getIsSorted() === "asc" ? "Sorted ascending. Click to sort descending." : "Not sorted. Click to sort ascending."} className="ml-0 h-8 gap-2 border-transparent px-3 text-xs! font-medium uppercase text-neutral-500">
+   <DropdownMenu>
+    <DropdownMenuTrigger aria-label={column.getIsSorted() === "desc" ? "Sorted descending. Click to sort ascending." : column.getIsSorted() === "asc" ? "Sorted ascending. Click to sort descending." : "Not sorted. Click to sort ascending."} className="cursor-pointer h-10 items-center font-medium text-xs -ml-3 gap-2 flex border-transparent px-3 text-neutral-500">
      <span>{title}</span>
      {column.getCanSort() && (
-      <div className="relative size-4">
+      <div className="relative">
        <Icons.arrowUp
-        className={iconVariants({
-         variant: "small",
-         className: cn("absolute size-4 duration-200", {
-          "scale-0": column.getIsSorted() === "desc",
-          "scale-100": column.getIsSorted() === "asc",
-          "opacity-0": !column.getIsSorted(),
-         }),
+        className={cn("absolute size-3 duration-200 motion-reduce:transition-none", {
+         "scale-0": column.getIsSorted() === "desc",
+         "scale-100": column.getIsSorted() === "asc",
+         "opacity-0": !column.getIsSorted(),
         })}
        />
        <Icons.arrowDown
-        className={iconVariants({
-         variant: "small",
-         className: cn("absolute size-4 duration-200", {
-          "scale-0": column.getIsSorted() === "asc",
-          "scale-100": column.getIsSorted() === "desc",
-          "opacity-0": !column.getIsSorted(),
-         }),
+        className={cn("absolute size-3 duration-200 motion-reduce:transition-none", {
+         "scale-0": column.getIsSorted() === "asc",
+         "scale-100": column.getIsSorted() === "desc",
+         "opacity-0": !column.getIsSorted(),
         })}
        />
 
        <Icons.ChevronsUpDown
-        className={iconVariants({
-         variant: "small",
-         className: cn("absolute size-4 duration-200", {
-          "scale-0": column.getIsSorted(),
-          "scale-100": !column.getIsSorted(),
-         }),
+        className={cn("absolute size-3 duration-200 motion-reduce:transition-none", {
+         "scale-0": column.getIsSorted(),
+         "scale-100": !column.getIsSorted(),
         })}
        />
       </div>
      )}
-    </MenuButton>
-    <MenuItems className="w-40">
+    </DropdownMenuTrigger>
+    <DropdownMenuContent className="w-40">
      <div>
       {column.getCanSort() && (
        <>
-        <MenuItem aria-label="Sort ascending" onClick={() => column.toggleSorting(false)}>
-         <Icons.ArrowUp className="text-muted-foreground/70 mr-2 size-4" aria-hidden="true" />
+        <DropdownMenuItem aria-label="Sort ascending" onClick={() => column.toggleSorting(false)}>
+         <Icons.ArrowUp className="mr-2 size-4" aria-hidden="true" />
          Asc
-        </MenuItem>
-        <MenuItem aria-label="Sort descending" onClick={() => column.toggleSorting(true)}>
-         <Icons.ArrowDown className="text-muted-foreground/70 mr-2 size-4" aria-hidden="true" />
+        </DropdownMenuItem>
+        <DropdownMenuItem aria-label="Sort descending" onClick={() => column.toggleSorting(true)}>
+         <Icons.ArrowDown className="mr-2 size-4" aria-hidden="true" />
          Desc
-        </MenuItem>
+        </DropdownMenuItem>
        </>
       )}
       {/* {column.getCanSort() && column.getCanHide() && <DropdownMenuSeparator />} */}
       {/* {column.getCanHide() && (
       <MenuItem aria-label="Hide column" onClick={() => column.toggleVisibility(false)}>
-       <Icons.EyeOffIcon className="mr-2 size-3.5 text-muted-foreground/70" aria-hidden="true" />
+       <Icons.EyeOffIcon className="mr-2 size-4" aria-hidden="true" />
        Hide
       </MenuItem>
      )} */}
      </div>
-    </MenuItems>
-   </Menu>
+    </DropdownMenuContent>
+   </DropdownMenu>
   </div>
  );
 }
@@ -121,47 +112,53 @@ export const Table = <TData, TValue>({ columns, data, sortBy = [{ id: "id", desc
  return (
   <>
    <div className="flex w-full flex-col">
-    <div className="flex flex-row items-stretch gap-3">
-     {showSearch && <InputWithIcon icon={<Icons.Search className={iconVariants({ variant: "normal" })} />} placeholder="Search" value={globalFilter || ""} onChange={(e) => setGlobalFilter(e.target.value)} className="h-10" />}
-     {showControls && <ViewSelect selectedValue={table.getState().pagination.pageSize} setSelectedValue={table.setPageSize} className="my-2" />}
+    <div
+     className={cn("flex-row items-stretch gap-3 mb-4", {
+      flex: showSearch || showControls,
+      hidden: !showSearch && !showControls,
+     })}
+    >
+     {showSearch && <InputWithIcon icon={<Icons.Search className={iconVariants({ variant: "normal" })} />} placeholder="Search" value={globalFilter || ""} onChange={(e) => setGlobalFilter(e.target.value)} />}
+     {showControls && <ViewSelect selectedValue={table.getState().pagination.pageSize} setSelectedValue={table.setPageSize} />}
     </div>
-
-    <table className="min-w-full divide-y divide-neutral-800">
-     <thead>
-      {table.getHeaderGroups().map((headerGroup) => (
-       <tr key={headerGroup.id} id={headerGroup.id}>
-        {headerGroup.headers.map((header) => (
-         <th key={header.id} className="h-10 select-none items-center gap-3 text-xs font-medium tracking-wider text-neutral-500 sm:text-xs">
-          <span className="flex select-none items-center gap-2 px-6 uppercase">{flexRender(header.column.columnDef.header, header.getContext())}</span>
-         </th>
-        ))}
-       </tr>
-      ))}
-     </thead>
-
-     <tbody>
-      {table.getRowModel().rows?.length ? (
-       table.getRowModel().rows.map((row) => (
-        <tr key={row.id}>
-         {row.getVisibleCells().map((cell) => (
-          <td key={cell.id} className="whitespace-nowrap px-6 py-4">
-           {flexRender(cell.column.columnDef.cell, cell.getContext())}
-          </td>
+    <div className="overflow-hidden rounded-lg border">
+     <table className="min-w-full divide-y divide-neutral-800">
+      <thead className="[&_tr]:border-b">
+       {table.getHeaderGroups().map((headerGroup) => (
+        <tr key={headerGroup.id} id={headerGroup.id}>
+         {headerGroup.headers.map((header) => (
+          <th key={header.id} className="select-none items-center gap-3 h-10 text-xs font-medium tracking-wider text-neutral-500 sm:text-xs">
+           <span className="flex select-none items-center gap-2 px-6">{flexRender(header.column.columnDef.header, header.getContext())}</span>
+          </th>
          ))}
         </tr>
-       ))
-      ) : (
-       <tr>
-        <td colSpan={columns.length} className="py-4 text-center text-neutral-500">
-         No data available
-        </td>
-       </tr>
-      )}
-     </tbody>
-    </table>
+       ))}
+      </thead>
+
+      <tbody>
+       {table.getRowModel().rows?.length ? (
+        table.getRowModel().rows.map((row) => (
+         <tr key={row.id}>
+          {row.getVisibleCells().map((cell) => (
+           <td key={cell.id} className="whitespace-nowrap px-6 py-4">
+            {flexRender(cell.column.columnDef.cell, cell.getContext())}
+           </td>
+          ))}
+         </tr>
+        ))
+       ) : (
+        <tr>
+         <td colSpan={columns.length} className="py-4 text-center text-neutral-500">
+          No data available
+         </td>
+        </tr>
+       )}
+      </tbody>
+     </table>
+    </div>
 
     {showControls && (
-     <div className="mt-2 flex items-center justify-between border-t border-t-neutral-800 pt-2 text-neutral-500">
+     <div className="flex items-center justify-between  pt-4 text-neutral-500">
       <Button variant="secondary" onClick={() => table.previousPage()} disabled={!table.getCanPreviousPage()} className="w-fit!">
        <Icons.arrowLeft className={iconVariants({ variant: "button" })} />
        Previous

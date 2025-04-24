@@ -1,14 +1,14 @@
 "use client";
 
 import { DataEntry } from "@majoexe/util/functions/util";
-import fileDl from "js-file-download";
 import React, { useState } from "react";
 import { Area, AreaChart, CartesianGrid, XAxis } from "recharts";
+import { Button } from "@/components/ui/Buttons";
 import { ChartContainer, ChartConfig, ChartTooltip, ChartTooltipContent, ChartLegend, ChartLegendContent } from "@/components/ui/Chart";
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/DropdownMenu";
 import Header, { headerVariants } from "@/components/ui/Headers";
 import { Icons, iconVariants } from "@/components/ui/Icons";
-import { ListBox, ListBoxArrow, ListBoxButton, ListBoxOption, ListBoxOptions } from "@/components/ui/ListBox";
-import { Menu, MenuArrow, MenuButton, MenuItem, MenuItems } from "@/components/ui/Menu";
+import { Select, SelectTrigger, SelectItem, SelectContent, SelectValue } from "@/components/ui/Select";
 import { cn } from "@/lib/utils";
 
 export const dateRanges = [
@@ -47,6 +47,19 @@ export const StatsChart = ({ title, data, CSVData, fileName, categories, chartCo
 
  const total = calculateTotal ? calculateTotal(filteredData, dateRange) : null;
 
+ const downloadFile = (data: string, fileName: string) => {
+  const blob = new Blob([data], { type: "text/csv;charset=utf-8;" });
+
+  const url = URL.createObjectURL(blob);
+  const link = document.createElement("a");
+  link.href = url;
+  link.setAttribute("download", fileName);
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+  URL.revokeObjectURL(url);
+ };
+
  return (
   <>
    <div className="mb-4 flex flex-col items-center justify-normal gap-2 whitespace-nowrap lg:flex-row">
@@ -72,40 +85,48 @@ export const StatsChart = ({ title, data, CSVData, fileName, categories, chartCo
     </Header>
     <div className="relative mx-auto flex flex-row flex-wrap items-center justify-center gap-2 lg:ml-auto lg:mr-0 lg:gap-2">
      {fileName && CSVData && (
-      <Menu>
-       <MenuButton>
-        <Icons.Download className={iconVariants({ variant: "small" })} />
-        <span>Export</span>
-        <MenuArrow />
-       </MenuButton>
-       <MenuItems>
-        <div>
-         <MenuItem onClick={() => fileDl(CSVData, `${fileName}.csv`)}>
-          <Icons.fileCSV className={iconVariants({ variant: "button", className: "ml-1" })} /> Export as CSV
-         </MenuItem>
-         <MenuItem onClick={() => fileDl(JSON.stringify(data), `${fileName}.json`)}>
-          <Icons.fileJSON className={iconVariants({ variant: "button", className: "ml-1" })} /> Export as JSON
-         </MenuItem>
-        </div>
-       </MenuItems>
-      </Menu>
+      <DropdownMenu>
+       <DropdownMenuTrigger asChild>
+        <Button variant="select">
+         <Icons.Download className={iconVariants({ variant: "small" })} />
+         Export
+         <Icons.ChevronsUpDown
+          className={iconVariants({
+           variant: "small",
+           className: "text-neutral-400 duration-200 motion-reduce:transition-none",
+          })}
+         />
+        </Button>
+       </DropdownMenuTrigger>
+       <DropdownMenuContent className="min-w-42">
+        <DropdownMenuItem onClick={() => downloadFile(CSVData, `${fileName}.csv`)}>
+         <Icons.fileCSV className={iconVariants({ variant: "button", className: "ml-1" })} /> Export as CSV
+        </DropdownMenuItem>
+        <DropdownMenuItem onClick={() => downloadFile(JSON.stringify(data), `${fileName}.json`)}>
+         <Icons.fileJSON className={iconVariants({ variant: "button", className: "ml-1" })} /> Export as JSON
+        </DropdownMenuItem>
+       </DropdownMenuContent>
+      </DropdownMenu>
      )}
      {showDateRange && (
-      <ListBox value={dateRange} onChange={(value) => setDateRange(dateRanges.find((range) => range.days.toString() === value) || dateRanges[0])}>
-       <ListBoxButton className="flex items-center gap-3">
-        <Icons.CalendarRange className={iconVariants({ variant: "small" })} />
-        <span>Date Range: {dateRange?.label ?? "N/A"}</span>
-        <ListBoxArrow />
-       </ListBoxButton>
+      <Select value={dateRange?.days.toString() ?? dateRanges[0].days.toString()} onValueChange={(value) => setDateRange(dateRanges.find((range) => range.days.toString() === value) || dateRanges[0])}>
+       <SelectTrigger>
+        <SelectValue placeholder="Select date range">
+         <span className="flex items-center gap-2">
+          <Icons.CalendarRange className={iconVariants({ variant: "small" })} />
+          <span>Date Range: {dateRange?.label ?? "N/A"}</span>
+         </span>
+        </SelectValue>
+       </SelectTrigger>
 
-       <ListBoxOptions>
+       <SelectContent className="min-w-[var(--radix-select-trigger-width)]">
         {dateRanges.map((range) => (
-         <ListBoxOption key={`range-${range.label}`} value={range.days.toString()}>
+         <SelectItem key={`range-${range.label}`} value={range.days.toString()}>
           {range.label}
-         </ListBoxOption>
+         </SelectItem>
         ))}
-       </ListBoxOptions>
-      </ListBox>
+       </SelectContent>
+      </Select>
      )}
     </div>
    </div>

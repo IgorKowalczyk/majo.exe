@@ -2,14 +2,15 @@
 
 import { dashboardConfig } from "@majoexe/config";
 import { type ExtendedAPIGuild } from "@majoexe/util/functions/guild";
+import Link from "next/link";
 import { useParams, usePathname } from "next/navigation";
 import React from "react";
+import { Button } from "../ui/Buttons";
+import { DropdownMenu, DropdownMenuContent, DropdownMenuGroup, DropdownMenuItem, DropdownMenuLabel, DropdownMenuTrigger } from "@/components/ui/DropdownMenu";
 import { Icons, iconVariants } from "@/components/ui/Icons";
 import Image from "@/components/ui/Image";
-import { Menu, MenuLink, MenuButton, MenuItems } from "@/components/ui/Menu";
-import { cn } from "@/lib/utils";
 
-export const GuildMenuDropdown = ({ guilds, ...props }: React.ComponentProps<typeof Menu> & { guilds: ExtendedAPIGuild[] }) => {
+export const GuildMenuDropdown = ({ guilds, ...props }: React.ComponentProps<typeof DropdownMenu> & { guilds: ExtendedAPIGuild[] }) => {
  if (!guilds || guilds.length === 0) return null;
  const { server } = useParams<{ server: string }>();
  const path = usePathname();
@@ -22,26 +23,33 @@ export const GuildMenuDropdown = ({ guilds, ...props }: React.ComponentProps<typ
  if (!selectedGuild || selectedGuild === null) return null;
 
  return (
-  <Menu {...props}>
-   <MenuButton className="bg-transparent! w-64 pl-4 pr-2 py-0 border-none">
-    {selectedGuild.icon ? <Image src={`https://cdn.discordapp.com/icons/${selectedGuild.id}/${selectedGuild.icon}.${selectedGuild.icon.startsWith("a_") ? "gif" : "png"}`} alt={selectedGuild.name} quality={95} width={24} height={24} className="size-9 shrink-0 rounded-full" /> : <div className="size-9  shrink-0 rounded-full bg-button-secondary" />}
-    <span className="text-lg font-bold truncate">{selectedGuild?.name || "Select a server"}</span>
-    <Icons.ChevronsUpDown className={cn(iconVariants({ variant: "button" }), "text-neutral-600 m-0 ml-auto")} />
-   </MenuButton>
-   <MenuItems anchor="bottom" className="min-w-52 w-[calc(var(--button-width)_-16px)] max-h-64 overflow-y-auto">
-    <div>
-     <span className="block text-sm text-neutral-400 px-2 pt-2 pb-1">Pick a server</span>
+  <DropdownMenu {...props}>
+   <DropdownMenuTrigger asChild className="bg-transparent! w-64 py-0 border-none">
+    <Button variant="select">
+     {selectedGuild.icon ? <Image src={`https://cdn.discordapp.com/icons/${selectedGuild.id}/${selectedGuild.icon}.${selectedGuild.icon.startsWith("a_") ? "gif" : "png"}`} alt={selectedGuild.name} quality={95} width={24} height={24} className="size-9 shrink-0 rounded-full" /> : <div className="size-9  shrink-0 rounded-full bg-button-secondary" />}
+     <span className="text-lg font-bold truncate">{selectedGuild?.name || "Select a server"}</span>
+     <Icons.ChevronsUpDown
+      className={iconVariants({
+       variant: "normal",
+       className: "text-neutral-400 duration-200 motion-reduce:transition-none",
+      })}
+     />
+    </Button>
+   </DropdownMenuTrigger>
+   <DropdownMenuContent className="max-h-64 min-w-[calc(var(--radix-dropdown-menu-trigger-width)-8px)] overflow-y-auto" align="start" alignOffset={10}>
+    <DropdownMenuLabel className="px-2 pt-2 pb-1 font-normal">Pick a server</DropdownMenuLabel>
+    <DropdownMenuGroup>
      {guilds.map((guild) => (
-      <MenuLink key={guild.id} href={`/dashboard/${guild.id}${url}`}>
-       <div className="flex items-center gap-2">
+      <DropdownMenuItem key={guild.id} asChild>
+       <Link href={`/dashboard/${guild.id}${url}`} className="flex items-center gap-2">
         {guild.icon ? <Image src={`https://cdn.discordapp.com/icons/${guild.id}/${guild.icon}.${guild.icon.startsWith("a_") ? "gif" : "png"}`} alt={guild.name} quality={95} width={24} height={24} className="size-6 shrink-0 rounded-full" /> : <div className="size-6 shrink-0 rounded-full bg-button-secondary" />}
         <span>{guild.name}</span>
-       </div>
-      </MenuLink>
+       </Link>
+      </DropdownMenuItem>
      ))}
-    </div>
-   </MenuItems>
-  </Menu>
+    </DropdownMenuGroup>
+   </DropdownMenuContent>
+  </DropdownMenu>
  );
 };
 

@@ -2,7 +2,7 @@
 
 import React from "react";
 import { Icons, iconVariants } from "@/components/ui/Icons";
-import { ListBox, ListBoxArrow, ListBoxButton, ListBoxOption, ListBoxOptions } from "@/components/ui/ListBox";
+import { Select, SelectTrigger, SelectItem, SelectContent } from "@/components/ui/Select";
 
 export const choices = [
  {
@@ -27,7 +27,7 @@ export const choices = [
  },
 ];
 
-export interface MentionSelectProps extends React.ComponentProps<typeof ListBox> {
+export interface MentionSelectProps extends React.ComponentProps<typeof Select> {
  selectedChoice: number;
  setSelectedChoice: (value: number) => void;
  triggerMetadata: {
@@ -52,20 +52,19 @@ export const MentionLimitSelect = ({ selectedChoice, setSelectedChoice, triggerM
  return (
   <>
    {choices && choices.length > 0 ? (
-    <ListBox value={selectedChoice.toString()} onChange={(value: string) => setMentions(parseInt(value))} {...props}>
-     <ListBoxButton>
+    <Select value={selectedChoice.toString()} onValueChange={(value: string) => setMentions(parseInt(value))} {...props}>
+     <SelectTrigger>
       <span className="flex items-center gap-2 truncate">{choices.find((choice) => choice?.mentions === selectedChoice)?.title || "No limit selected"}</span>
-      <ListBoxArrow />
-     </ListBoxButton>
+     </SelectTrigger>
 
-     <ListBoxOptions>
+     <SelectContent>
       {choices.map((choice) => (
-       <ListBoxOption key={`choice-select-option-${choice.mentions}`} value={choice.mentions.toString()}>
+       <SelectItem key={`choice-select-option-${choice.mentions}`} value={choice.mentions.toString()}>
         <div className="flex items-center gap-1 truncate">{choice.title}</div>
-       </ListBoxOption>
+       </SelectItem>
       ))}
-     </ListBoxOptions>
-    </ListBox>
+     </SelectContent>
+    </Select>
    ) : (
     <div className="flex items-center justify-center gap-2 font-normal text-red-400">
      <Icons.warning className={iconVariants({ variant: "normal" })} />

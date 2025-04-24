@@ -147,7 +147,7 @@ export default async function Page(props: { params: Promise<{ server: string }> 
          New members
          <span className="rounded-md bg-accent-primary px-2 text-sm font-normal text-white">+{newMembers}</span>
         </Header>
-        <p className="text-sm text-gray-400 ">Amount of new members that joined your server in the last 7 days.</p>
+        <p className="text-sm text-neutral-400 ">Amount of new members that joined your server in the last 7 days.</p>
        </div>
       </div>
       <div className="ml-2 flex flex-row items-center gap-3">
@@ -165,7 +165,7 @@ export default async function Page(props: { params: Promise<{ server: string }> 
          Messages sent
          <span className="rounded-md bg-accent-primary px-2 text-sm font-normal text-white">+{newMessages}</span>
         </Header>
-        <p className="text-sm text-gray-400 ">Amount of messages that were sent in your server in the last 7 days.</p>
+        <p className="text-sm text-neutral-400 ">Amount of messages that were sent in your server in the last 7 days.</p>
        </div>
       </div>
       <div className="ml-2 flex flex-row items-center gap-3">
@@ -183,7 +183,7 @@ export default async function Page(props: { params: Promise<{ server: string }> 
          Members left
          <span className="rounded-md bg-accent-primary px-2 text-sm font-normal text-white">-{membersLeft}</span>
         </Header>
-        <p className="text-sm text-gray-400 ">Amount of members that left your server in the last 7 days.</p>
+        <p className="text-sm text-neutral-400 ">Amount of members that left your server in the last 7 days.</p>
        </div>
       </div>
       <div className="ml-2 flex flex-row items-center gap-3">
@@ -230,7 +230,7 @@ export default async function Page(props: { params: Promise<{ server: string }> 
             <Icons.Minus className={iconVariants({ variant: "normal", className: "mr-1 inline stroke-2!" })} />
             Enable AutoMod:
            </span>{" "}
-           <span className="font-normal text-gray-400">
+           <span className="font-normal text-neutral-400">
             Enable AutoMod to protect your server from spam and other malicious content.{" "}
             <Link href={`/dashboard/${server}/automod`} className="text-accent-primary">
              Enable (+25% score)
@@ -244,7 +244,7 @@ export default async function Page(props: { params: Promise<{ server: string }> 
             <Icons.Minus className={iconVariants({ variant: "normal", className: "mr-1 inline stroke-2!" })} />
             Enable XP:
            </span>{" "}
-           <span className="font-normal text-gray-400">
+           <span className="font-normal text-neutral-400">
             Enable XP to give your users a reason to chat.{" "}
             <Link href={`/dashboard/${server}/settings`} className="text-accent-primary">
              Enable (+25% score)
@@ -258,7 +258,7 @@ export default async function Page(props: { params: Promise<{ server: string }> 
             <Icons.Minus className={iconVariants({ variant: "normal", className: "mr-1 inline stroke-2!" })} />
             Enable Public Page:
            </span>{" "}
-           <span className="font-normal text-gray-400">
+           <span className="font-normal text-neutral-400">
             Enable Public Page to show your server on the server list.{" "}
             <Link href={`/dashboard/${server}/settings`} className="text-accent-primary">
              Enable (+25% score)
@@ -272,7 +272,7 @@ export default async function Page(props: { params: Promise<{ server: string }> 
             <Icons.Minus className={iconVariants({ variant: "normal", className: "mr-1 inline stroke-2!" })} />
             Set Vanity URL:
            </span>{" "}
-           <span className="font-normal text-gray-400">
+           <span className="font-normal text-neutral-400">
             Set Vanity URL to give your server a custom URL.{" "}
             <Link href={`/dashboard/${server}/settings`} className="text-accent-primary">
              Enable (+25% score)

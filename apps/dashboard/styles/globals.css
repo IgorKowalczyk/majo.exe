@@ -1,7 +1,6 @@
 @import "tailwindcss";
 @import "tailwindcss/preflight.css" layer(base);
 @plugin "@tailwindcss/typography";
-@plugin "@headlessui/tailwindcss";
 
 @import "tw-animate-css";
 
@@ -130,7 +129,10 @@
  ::before,
  ::backdrop,
  ::file-selector-button {
-  border-color: var(--color-gray-200, currentColor);
+  @apply border-neutral-800
+   outline-neutral-700/50;
+  scrollbar-color: var(--color-secondary) transparent;
+  scrollbar-width: thin;
  }
 
  :root {
@@ -146,7 +148,11 @@
  }
 
  html {
-  @apply scroll-smooth overflow-auto! pr-0!;
+  @apply scroll-smooth overflow-auto!;
+ }
+
+ body[data-scroll-locked] {
+  @apply mr-0!;
  }
 }
 

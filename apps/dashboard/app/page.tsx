@@ -246,7 +246,7 @@ export default async function Page() {
            <span className="ml-1 flex items-center gap-1 rounded-sm bg-[#5c65f3] px-1 py-[0.12rem] text-xs text-white">
             <Icons.Check className={iconVariants({ variant: "small" })} /> <span className="-mb-px">BOT</span>
            </span>
-           <span className="ml-2 text-sm text-gray-400">Today at 4:20 PM</span>
+           <span className="ml-2 text-sm text-neutral-400">Today at 4:20 PM</span>
           </div>
           <span className="ml-2 flex items-center gap-1  text-neutral-400">
            Generating image
@@ -314,7 +314,7 @@ export default async function Page() {
           <span className="ml-1 flex items-center gap-1 rounded-sm bg-[#5c65f3] px-1 py-[0.12rem] text-xs text-white">
            <Icons.Check className={iconVariants({ variant: "small" })} /> <span className="-mb-px">BOT</span>
           </span>
-          <span className="ml-2 text-sm text-gray-400">Today at 4:20 PM</span>
+          <span className="ml-2 text-sm text-neutral-400">Today at 4:20 PM</span>
          </div>
          <div
           className="ml-1 mt-2 rounded-sm bg-[#2b2d31] p-4 shadow-lg"
@@ -325,7 +325,7 @@ export default async function Page() {
           <div className="flex flex-row gap-8">
            <div>
             <span className="font-bold">🎉 New giveaway!</span>
-            <span className="mt-1 block text-sm text-gray-400">React with 🎉 to participate!</span>
+            <span className="mt-1 block text-sm text-neutral-400">React with 🎉 to participate!</span>
            </div>
 
            <Image src={tadaAnimated.src} alt="Giveaway emoji" quality={95} width={64} height={64} className="size-16 shrink-0" />

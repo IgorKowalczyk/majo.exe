@@ -1,54 +1,71 @@
 "use client";
 
 import { Snowflake } from "discord-api-types/globals";
-import React from "react";
+import * as React from "react";
+import { Button } from "@/components/ui/Buttons";
+import { Command, CommandEmpty, CommandGroup, CommandInput, CommandItem, CommandList } from "@/components/ui/Command";
 import { Icons, iconVariants } from "@/components/ui/Icons";
-import { ListBox, ListBoxArrow, ListBoxButton, ListBoxOption, ListBoxOptions } from "@/components/ui/ListBox";
+import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/Popover";
+import { cn } from "@/lib/utils";
 
-export interface ChannelsSelectProps extends React.ComponentProps<typeof ListBox> {
- setRoles: React.ComponentProps<typeof ListBox>["onChange"];
+export interface RolesSelectProps extends React.ComponentProps<typeof Popover> {
  allRoles: { id: Snowflake; name: string; color: string }[];
  selectedRoles?: Snowflake[];
+ setRoles: (value: Snowflake[]) => void;
+ multiple?: boolean;
 }
 
-export const RolesSelect = ({ allRoles, selectedRoles, setRoles, ...props }: ChannelsSelectProps) => {
+export const RolesSelect = ({ allRoles, selectedRoles = [], setRoles, multiple = true }: RolesSelectProps) => {
+ const [open, setOpen] = React.useState(false);
+
+ const handleSelect = (roleId: Snowflake) => {
+  if (multiple) {
+   const updatedSelection = selectedRoles.includes(roleId) ? selectedRoles.filter((id) => id !== roleId) : [...selectedRoles, roleId];
+   setRoles(updatedSelection);
+  } else {
+   setRoles([roleId]);
+   setOpen(false);
+  }
+ };
+
  return (
-  <>
-   {allRoles && allRoles.length > 0 ? (
-    <ListBox value={selectedRoles} onChange={(value) => setRoles && setRoles(value)} multiple={true} {...props}>
-     <ListBoxButton>
-      <span className="flex items-center gap-2 truncate">
-       {selectedRoles && selectedRoles.length > 0 && allRoles.find((role) => role.id === selectedRoles[0]) ? (
-        <>
-         <div className="size-3 rounded-full" style={{ backgroundColor: allRoles.find((role) => role.id === selectedRoles[0])?.color || "#FFFFFF" }} />
-         {allRoles.find((role) => role.id === selectedRoles[0])?.name || "Unknown role"} {selectedRoles.length - 1 > 0 ? `+ ${selectedRoles.length - 1} more` : ""}
-        </>
-       ) : (
-        "No roles selected"
-       )}
-      </span>
-      <ListBoxArrow />
-     </ListBoxButton>
-     <ListBoxOptions>
-      {allRoles.map((role) => (
-       <ListBoxOption key={`role-select-option-${role.id}`} value={role.id}>
-        <div className="flex items-center gap-1 truncate">
-         <div className="size-3 rounded-full" style={{ backgroundColor: role.color || "#FFFFFF" }} />
-         {role.name}
-        </div>
-       </ListBoxOption>
-      ))}
-     </ListBoxOptions>
-    </ListBox>
-   ) : (
-    <div className="mt-2 flex flex-row flex-wrap items-center gap-2 text-center font-bold">
-     Ignore Roles:
-     <div className="flex items-center justify-center gap-2 font-normal text-red-400">
-      <Icons.warning className={iconVariants({ variant: "normal" })} />
-      <span className="text-sm">No roles on this server</span>
-     </div>
-    </div>
-   )}
-  </>
+  <Popover open={open} onOpenChange={setOpen}>
+   <PopoverTrigger asChild>
+    <Button variant="select" role="combobox" aria-expanded={open} className="max-w-sm justify-between">
+     {selectedRoles.length > 0 ? (multiple ? `${allRoles.find((role) => role.id === selectedRoles[0])?.name ?? "Unknown role"}${selectedRoles.length > 1 ? ` + ${selectedRoles.length - 1} more` : ""}` : (allRoles.find((role) => role.id === selectedRoles[0])?.name ?? "No role selected")) : "Select roles..."}
+     <Icons.ChevronsUpDown
+      className={iconVariants({
+       variant: "small",
+       className: "text-neutral-400 duration-200 motion-reduce:transition-none",
+      })}
+     />
+    </Button>
+   </PopoverTrigger>
+   <PopoverContent align="start">
+    <Command>
+     <CommandInput placeholder="Search roles..." />
+     <CommandList>
+      <CommandEmpty>No roles available!</CommandEmpty>
+      <CommandGroup>
+       {allRoles.map((role) => (
+        <CommandItem
+         key={role.id}
+         value={role.id}
+         onSelect={() => {
+          handleSelect(role.id);
+         }}
+        >
+         <div className="flex items-center gap-2">
+          <div className="size-3 rounded-full" style={{ backgroundColor: role.color || "#FFFFFF" }} />
+          {role.name}
+         </div>
+         <Icons.Check className={cn("ml-auto transition", selectedRoles.includes(role.id) ? "opacity-100" : "opacity-0")} />
+        </CommandItem>
+       ))}
+      </CommandGroup>
+     </CommandList>
+    </Command>
+   </PopoverContent>
+  </Popover>
  );
 };

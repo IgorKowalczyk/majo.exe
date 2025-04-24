@@ -220,7 +220,7 @@ export const UpdateLog = ({ allChannels, exisingChannel, logType, logEnabled, on
       Channel:
      </span>
      <p className="mb-2 text-sm text-neutral-500">Select the channel where the logs will be sent.</p>
-     <ChannelsSelect allChannels={allChannels} selectedChannels={messageChannel ? [messageChannel] : []} setChannels={(channel) => setMessageChannel(channel as Snowflake | null)} disabled={disabled} multiple={false} />
+     <ChannelsSelect allChannels={allChannels} selectedChannels={messageChannel ? [messageChannel] : []} setChannels={(channels) => setMessageChannel(channels[0] || null)} multiple={false} />
     </div>
    </div>
 

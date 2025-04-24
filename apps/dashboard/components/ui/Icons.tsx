@@ -65,7 +65,7 @@ export const iconVariants = cva("", {
    small: "size-4 shrink-0",
    large: "size-6 shrink-0",
    extraLarge: "size-8 shrink-0",
-   button: "-ml-1 mr-2 size-5 shrink-0",
+   button: "-ml-1 mr-2 size-4 shrink-0",
   },
  },
  defaultVariants: {

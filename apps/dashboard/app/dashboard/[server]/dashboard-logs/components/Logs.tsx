@@ -24,7 +24,7 @@ export function LogDisclosure({ item, guildId, preview = false }: { item: LogIte
   <Disclosure
    button={
     <div className="flex flex-row items-center gap-3">
-     <div className="flex flex-row items-center gap-3">{item.user.fullAvatar ? <Image src={item.user.fullAvatar} alt={`${item.user.name} avatar`} quality={95} width={48} height={48} className="size-12 shrink-0 rounded-full" /> : <>{item.user.avatar && <Image src={`/api/user/avatar/${item.user.discordId}`} alt={`${item.user.name} avatar`} quality={95} width={48} height={48} className="size-12 shrink-0 rounded-full" />}</>}</div>
+     <div className="flex flex-row items-center gap-3">{item.user.fullAvatar ? <Image src={item.user.fullAvatar} alt={`${item.user.name} avatar`} quality={95} width={36} height={36} className="size-9 shrink-0 rounded-full" /> : <>{item.user.avatar && <Image src={`/api/user/avatar/${item.user.discordId}`} alt={`${item.user.name} avatar`} quality={95} width={36} height={36} className="size-9 shrink-0 rounded-full" />}</>}</div>
      <div className="flex flex-col">
       <p className="text-left font-bold">
        {item.user.global_name}

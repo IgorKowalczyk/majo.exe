@@ -161,7 +161,7 @@ export const ChangeCustomMessages = ({ ref, serverId, enabled, title, descriptio
         <ChannelsSelect // prettier
          allChannels={allChannels}
          selectedChannels={messageChannel ? [messageChannel] : []}
-         setChannels={setMessageChannel}
+         setChannels={(value) => setMessageChannel(value[0] || null)}
          multiple={false}
         />
        </div>
