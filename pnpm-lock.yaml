@@ -330,8 +330,8 @@ importers:
         specifier: workspace:*
         version: link:../typescript-config
       discord-api-types:
-        specifier: 0.37.120
-        version: 0.37.120
+        specifier: 0.38.1
+        version: 0.38.1
 
   packages/database:
     dependencies:
@@ -406,8 +406,8 @@ importers:
         specifier: 5.4.1
         version: 5.4.1
       discord-api-types:
-        specifier: 0.37.120
-        version: 0.37.120
+        specifier: 0.38.1
+        version: 0.38.1
       discord.js:
         specifier: 14.18.0
         version: 14.18.0
