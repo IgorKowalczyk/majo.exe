@@ -1,11 +1,11 @@
 import prismaClient from "@majoexe/database";
 import { GiveawayData } from "discord-giveaways";
-import { type ChatInputCommandInteraction, EmbedBuilder, type Message, PermissionsBitField, type ColorResolvable } from "discord.js";
+import { type ChatInputCommandInteraction, EmbedBuilder, type Message, PermissionsBitField, type ColorResolvable, MessageFlags } from "discord.js";
 import type { Majobot } from "@/index";
 
 export async function FindGiveaways(client: Majobot, interaction: ChatInputCommandInteraction, color: ColorResolvable, type: "all" | "ended" | "running"): Promise<Message | void> {
  try {
-  await interaction.deferReply({ ephemeral: true });
+  await interaction.deferReply({ flags: [MessageFlags.Ephemeral] });
   if (!interaction.guild || !interaction.guild.available) return client.errorMessages.createSlashError(interaction, "❌ This command can only be used in a server!");
   if (!interaction.member) return client.errorMessages.createSlashError(interaction, "❌ This command can only be used by a member!");
 
@@ -61,7 +61,7 @@ export async function FindGiveaways(client: Majobot, interaction: ChatInputComma
      size: 256,
     }),
    });
-  return interaction.followUp({ ephemeral: true, embeds: [embed] });
+  return interaction.followUp({ flags: [MessageFlags.Ephemeral], embeds: [embed] });
  } catch (err: unknown) {
   client.errorMessages.internalError(interaction, err);
  }

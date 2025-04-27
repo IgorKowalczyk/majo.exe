@@ -36,7 +36,7 @@ export default {
       .setLabel("Invite me!")
       .setStyle(ButtonStyle.Link)
     );
-   return interaction.followUp({ ephemeral: false, embeds: [embed], components: [row] });
+   return interaction.followUp({ embeds: [embed], components: [row] });
   } catch (err) {
    client.errorMessages.internalError(interaction, err);
   }

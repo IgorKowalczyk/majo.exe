@@ -29,7 +29,7 @@ export default {
      .setColor(guildSettings?.embedColor || client.config.defaultColor)
      .setTimestamp()
      .setTitle("🪙 Donate to Majo.exe");
-    return interaction.followUp({ ephemeral: false, embeds: [embed] });
+    return interaction.followUp({ embeds: [embed] });
    }
 
    const embed = new EmbedBuilder()
@@ -51,7 +51,7 @@ export default {
      })
     );
 
-   return interaction.followUp({ ephemeral: false, embeds: [embed], components: [action] });
+   return interaction.followUp({ embeds: [embed], components: [action] });
   } catch (err) {
    client.errorMessages.internalError(interaction, err);
   }

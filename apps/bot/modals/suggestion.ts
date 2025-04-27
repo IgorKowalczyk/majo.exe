@@ -1,7 +1,7 @@
 import prismaClient from "@majoexe/database";
 import { cacheGet, cacheSet, cacheTTL } from "@majoexe/database/redis";
 import { formatDuration } from "@majoexe/util/functions/util";
-import { EmbedBuilder, type ModalMessageModalSubmitInteraction } from "discord.js";
+import { EmbedBuilder, MessageFlags, type ModalMessageModalSubmitInteraction } from "discord.js";
 import type { Majobot } from "..";
 
 export default {
@@ -9,7 +9,7 @@ export default {
  run: async (client: Majobot, interaction: ModalMessageModalSubmitInteraction) => {
   if (!interaction.guild) return;
 
-  await interaction.deferReply({ ephemeral: true });
+  await interaction.deferReply({ flags: [MessageFlags.Ephemeral] });
   const suggestion = interaction.fields.getTextInputValue("suggestion");
   if (suggestion.length < 5 || suggestion.length > 500) {
    const embed = new EmbedBuilder()
@@ -24,7 +24,7 @@ export default {
      }),
     });
 
-   return interaction.followUp({ ephemeral: true, embeds: [embed] });
+   return interaction.followUp({ flags: [MessageFlags.Ephemeral], embeds: [embed] });
   }
 
   const key = `user:${interaction.user.id}:suggestion`;
@@ -45,7 +45,7 @@ export default {
      }),
     });
 
-   return interaction.followUp({ ephemeral: true, embeds: [embed] });
+   return interaction.followUp({ flags: [MessageFlags.Ephemeral], embeds: [embed] });
   }
 
   await cacheSet(key, { userId: interaction.user.id, time: Date.now() }, 60); // 1 minute
@@ -70,6 +70,6 @@ export default {
    },
   });
 
-  return interaction.followUp({ ephemeral: true, embeds: [embed] });
+  return interaction.followUp({ flags: [MessageFlags.Ephemeral], embeds: [embed] });
  },
 };

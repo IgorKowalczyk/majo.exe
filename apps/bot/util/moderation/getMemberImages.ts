@@ -1,4 +1,4 @@
-import { EmbedBuilder, ActionRowBuilder, ButtonStyle, ButtonBuilder, ChatInputCommandInteraction, type ColorResolvable, GuildMember } from "discord.js";
+import { EmbedBuilder, ActionRowBuilder, ButtonStyle, ButtonBuilder, ChatInputCommandInteraction, type ColorResolvable, GuildMember, MessageFlags } from "discord.js";
 import type { Majobot } from "@/index";
 
 export async function getUserAvatar(client: Majobot, interaction: ChatInputCommandInteraction, color: ColorResolvable) {
@@ -53,7 +53,7 @@ export async function getUserAvatar(client: Majobot, interaction: ChatInputComma
     .setURL(avatar)
   );
 
-  return interaction.followUp({ ephemeral: true, embeds: [embed], components: [row] });
+  return interaction.followUp({ flags: [MessageFlags.Ephemeral], embeds: [embed], components: [row] });
  } catch (err) {
   client.errorMessages.internalError(interaction, err);
  }
@@ -121,7 +121,7 @@ export async function getUserBanner(client: Majobot, interaction: ChatInputComma
     .setURL(banner)
   );
 
-  return interaction.followUp({ ephemeral: true, embeds: [embed], components: [row] });
+  return interaction.followUp({ flags: [MessageFlags.Ephemeral], embeds: [embed], components: [row] });
  } catch (err) {
   client.errorMessages.internalError(interaction, err);
  }

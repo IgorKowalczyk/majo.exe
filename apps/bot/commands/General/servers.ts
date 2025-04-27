@@ -49,7 +49,7 @@ export default {
       inviteButton,
       contactButton
      );
-    return interaction.followUp({ ephemeral: false, embeds: [embed], components: [action] });
+    return interaction.followUp({ embeds: [embed], components: [action] });
    }
 
    const action = new ActionRowBuilder<ButtonBuilder>() // prettier
@@ -58,7 +58,7 @@ export default {
      inviteButton
     );
 
-   return interaction.followUp({ ephemeral: false, embeds: [embed], components: [action] });
+   return interaction.followUp({ embeds: [embed], components: [action] });
   } catch (err) {
    client.errorMessages.internalError(interaction, err);
   }

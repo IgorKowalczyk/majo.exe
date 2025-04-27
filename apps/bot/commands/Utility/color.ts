@@ -92,7 +92,7 @@ export default {
      }),
     });
 
-   return interaction.followUp({ ephemeral: true, embeds: [embed], files: [file] });
+   return interaction.followUp({ embeds: [embed], files: [file] });
   } catch (err) {
    client.errorMessages.internalError(interaction, err);
   }

@@ -1,12 +1,12 @@
 import { GuildLogType } from "@majoexe/database/types";
 import { createLog } from "@majoexe/util/database";
 import type { Giveaway } from "discord-giveaways";
-import { type ChatInputCommandInteraction, EmbedBuilder, PermissionsBitField, type ColorResolvable, type Message } from "discord.js";
+import { type ChatInputCommandInteraction, EmbedBuilder, PermissionsBitField, type ColorResolvable, type Message, MessageFlags } from "discord.js";
 import type { Majobot } from "@/index";
 
 export async function RerollGiveaway(client: Majobot, interaction: ChatInputCommandInteraction, color: ColorResolvable): Promise<Message | void> {
  try {
-  await interaction.deferReply({ ephemeral: true });
+  await interaction.deferReply({ flags: [MessageFlags.Ephemeral] });
   if (!interaction.guild || !interaction.guild.available) return client.errorMessages.createSlashError(interaction, "❌ This command can only be used in a server!");
   if (!interaction.member) return client.errorMessages.createSlashError(interaction, "❌ This command can only be used by a member!");
 
@@ -43,7 +43,7 @@ export async function RerollGiveaway(client: Majobot, interaction: ChatInputComm
      size: 256,
     }),
    });
-  return interaction.followUp({ embeds: [embed], ephemeral: true });
+  return interaction.followUp({ embeds: [embed], flags: [MessageFlags.Ephemeral] });
  } catch (err: unknown) {
   client.errorMessages.internalError(interaction, err);
  }

@@ -123,7 +123,7 @@ export default {
      })
      .setImage("attachment://chart.png");
 
-    return interaction.followUp({ ephemeral: false, embeds: [embed], files: [attachment] });
+    return interaction.followUp({ embeds: [embed], files: [attachment] });
    } else if (command === "leave") {
     const rawData = await prismaClient.guildLeave.findMany({
      where: {
@@ -155,7 +155,7 @@ export default {
      })
      .setImage("attachment://chart.png");
 
-    return interaction.followUp({ ephemeral: false, embeds: [embed], files: [attachment] });
+    return interaction.followUp({ embeds: [embed], files: [attachment] });
    } else if (command === "messages") {
     const rawData = await prismaClient.guildMessage.findMany({
      where: {
@@ -187,7 +187,7 @@ export default {
      })
      .setImage("attachment://chart.png");
 
-    return interaction.followUp({ ephemeral: false, embeds: [embed], files: [attachment] });
+    return interaction.followUp({ embeds: [embed], files: [attachment] });
    }
   } catch (err) {
    client.errorMessages.internalError(interaction, err);

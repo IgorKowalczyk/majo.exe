@@ -47,9 +47,9 @@ export default {
        .setURL(`${client.config.url}/invite`)
      );
 
-    return interaction.followUp({ ephemeral: false, embeds: [embed], components: [action] });
+    return interaction.followUp({ embeds: [embed], components: [action] });
    } else {
-    return interaction.followUp({ ephemeral: false, embeds: [embed] });
+    return interaction.followUp({ embeds: [embed] });
    }
   } catch (err) {
    client.errorMessages.internalError(interaction, err);

@@ -4,7 +4,7 @@ import { globalConfig, botConfig, debuggerConfig, dashboardConfig, globalPermiss
 import { createErrorEmbed } from "@majoexe/util/embeds";
 import { Logger, chalk } from "@majoexe/util/functions/util";
 import type { GiveawaysManager } from "discord-giveaways";
-import { Client, type CommandInteraction, GatewayIntentBits, Collection } from "discord.js";
+import { Client, type CommandInteraction, GatewayIntentBits, Collection, MessageFlags } from "discord.js";
 import giveaway from "@/util/giveaway/core";
 import loadCommands from "@/util/loaders/loadCommands";
 import loadEmojis from "@/util/loaders/loadEmojis";
@@ -36,7 +36,7 @@ class Majobot extends Client {
   internalError: async (interaction: CommandInteraction, error: unknown): Promise<void> => {
    Logger("error", error?.toString() ?? "Unknown error occurred");
    const embed = createErrorEmbed("An error occurred while executing this command. Please try again later.", "Unknown error occurred");
-   await interaction.followUp({ embeds: [embed], ephemeral: true });
+   await interaction.followUp({ embeds: [embed], flags: [MessageFlags.Ephemeral] });
   },
   createSlashError: (interaction: CommandInteraction, description: string, title?: string): void => {
    const embed = createErrorEmbed(description, title);
@@ -44,7 +44,7 @@ class Majobot extends Client {
     text: `Requested by ${interaction.user.globalName ?? interaction.user.username}`,
     iconURL: interaction.user.displayAvatarURL(),
    });
-   interaction.followUp({ embeds: [embed], ephemeral: true });
+   interaction.followUp({ embeds: [embed], flags: [MessageFlags.Ephemeral] });
   },
  };
  public debugger: (type: "info" | "event" | "error" | "warn" | "ready" | "cron", message: string | unknown) => void = (type, message) => {
@@ -61,7 +61,7 @@ const client = new Majobot({
   GatewayIntentBits.Guilds,
   GatewayIntentBits.GuildMembers,
   GatewayIntentBits.GuildModeration,
-  GatewayIntentBits.GuildEmojisAndStickers,
+  GatewayIntentBits.GuildExpressions,
   GatewayIntentBits.GuildIntegrations,
   GatewayIntentBits.GuildWebhooks,
   GatewayIntentBits.GuildInvites,

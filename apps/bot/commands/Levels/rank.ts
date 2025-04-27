@@ -72,9 +72,9 @@ export default {
        .setURL(`${client.config.url}/dashboard/${interaction.guild.id}/leaderboard`)
      );
 
-    return interaction.followUp({ ephemeral: false, embeds: [embed], components: [action], files: [attachment] });
+    return interaction.followUp({ embeds: [embed], components: [action], files: [attachment] });
    } else {
-    return interaction.followUp({ ephemeral: false, embeds: [embed], files: [attachment] });
+    return interaction.followUp({ embeds: [embed], files: [attachment] });
    }
   } catch (err) {
    console.log(err);

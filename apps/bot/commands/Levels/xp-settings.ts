@@ -1,5 +1,5 @@
 import { setXPLevelUpMessageSettings, setXPSettings, fetchXPSettings } from "@majoexe/util/database";
-import { ApplicationCommandType, ApplicationCommandOptionType, PermissionsBitField, PermissionFlagsBits, EmbedBuilder, time, InteractionContextType, ApplicationIntegrationType } from "discord.js";
+import { ApplicationCommandType, ApplicationCommandOptionType, PermissionsBitField, PermissionFlagsBits, EmbedBuilder, time, InteractionContextType, ApplicationIntegrationType, MessageFlags } from "discord.js";
 import type { SlashCommand } from "@/util/types/Command";
 
 export default {
@@ -101,7 +101,7 @@ export default {
          size: 256,
         }),
        });
-      return interaction.followUp({ ephemeral: true, embeds: [embed] });
+      return interaction.followUp({ flags: [MessageFlags.Ephemeral], embeds: [embed] });
      } else if (action === "disable") {
       const settings = await fetchXPSettings(interaction.guild.id);
 
@@ -121,7 +121,7 @@ export default {
          size: 256,
         }),
        });
-      return interaction.followUp({ ephemeral: true, embeds: [embed] });
+      return interaction.followUp({ flags: [MessageFlags.Ephemeral], embeds: [embed] });
      }
     } else if (type === "gaining") {
      if (action === "enable") {
@@ -138,7 +138,7 @@ export default {
          size: 256,
         }),
        });
-      return interaction.followUp({ ephemeral: true, embeds: [embed] });
+      return interaction.followUp({ flags: [MessageFlags.Ephemeral], embeds: [embed] });
      } else if (action === "disable") {
       await setXPSettings(interaction.guild.id, false);
 
@@ -153,7 +153,7 @@ export default {
          size: 256,
         }),
        });
-      return interaction.followUp({ ephemeral: true, embeds: [embed] });
+      return interaction.followUp({ flags: [MessageFlags.Ephemeral], embeds: [embed] });
      }
     }
    } else if (subcommand === "view") {
@@ -170,7 +170,7 @@ export default {
        size: 256,
       }),
      });
-    return interaction.followUp({ ephemeral: true, embeds: [embed] });
+    return interaction.followUp({ flags: [MessageFlags.Ephemeral], embeds: [embed] });
    } else {
     return client.errorMessages.createSlashError(interaction, "❌ Invalid subcommand, please use `/xp-settings <subcommand>`");
    }

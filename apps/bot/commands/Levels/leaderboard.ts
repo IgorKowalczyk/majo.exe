@@ -87,7 +87,7 @@ export default {
    const row = new ActionRowBuilder<ButtonBuilder>() // prettier
     .addComponents(components);
 
-   return interaction.followUp({ ephemeral: false, embeds: [embed], components: [row || null] });
+   return interaction.followUp({ embeds: [embed], components: [row || null] });
   } catch (err) {
    console.log(err);
    client.errorMessages.internalError(interaction, err);

@@ -1,12 +1,12 @@
 import { GuildLogType } from "@majoexe/database/types";
 import { createLog } from "@majoexe/util/database";
-import { type ChatInputCommandInteraction, EmbedBuilder, type Message, PermissionsBitField, User, type ColorResolvable, ChannelType } from "discord.js";
+import { type ChatInputCommandInteraction, EmbedBuilder, type Message, PermissionsBitField, User, type ColorResolvable, ChannelType, MessageFlags } from "discord.js";
 import ms from "ms";
 import type { Majobot } from "@/index";
 
 export async function StartGiveaway(client: Majobot, interaction: ChatInputCommandInteraction, color: ColorResolvable): Promise<Message | void> {
  try {
-  await interaction.deferReply({ ephemeral: true });
+  await interaction.deferReply({ flags: [MessageFlags.Ephemeral] });
   if (!interaction.guild || !interaction.guild.available) return client.errorMessages.createSlashError(interaction, "❌ This command can only be used in a server!");
   if (!interaction.member) return client.errorMessages.createSlashError(interaction, "❌ This command can only be used by a member!");
   if (!client.user) return client.errorMessages.createSlashError(interaction, "❌ The bot is not available!");
@@ -83,7 +83,7 @@ export async function StartGiveaway(client: Majobot, interaction: ChatInputComma
 
 export async function StartDropGiveaway(client: Majobot, interaction: ChatInputCommandInteraction, color: ColorResolvable): Promise<Message | void> {
  try {
-  await interaction.deferReply({ ephemeral: true });
+  await interaction.deferReply({ flags: [MessageFlags.Ephemeral] });
   if (!interaction.guild || !interaction.guild.available) return client.errorMessages.createSlashError(interaction, "❌ This command can only be used in a server!");
   if (!interaction.member) return client.errorMessages.createSlashError(interaction, "❌ This command can only be used by a member!");
   if (!client.user) return client.errorMessages.createSlashError(interaction, "❌ The bot is not available!");

@@ -2,7 +2,7 @@ import prismaClient from "@majoexe/database";
 import { cacheGet, cacheSet, cacheTTL } from "@majoexe/database/redis";
 import { createUser } from "@majoexe/util/database";
 import { formatDuration } from "@majoexe/util/functions/util";
-import { ChannelType, EmbedBuilder, GuildMember, InteractionType, Message, PermissionsBitField, type Interaction } from "discord.js";
+import { ChannelType, EmbedBuilder, GuildMember, InteractionType, Message, MessageFlags, PermissionsBitField, type Interaction } from "discord.js";
 import type { Majobot } from "@/index";
 
 export async function interactionCreate(client: Majobot, interaction: Interaction): Promise<Message | void> {
@@ -17,7 +17,7 @@ export async function interactionCreate(client: Majobot, interaction: Interactio
    if (client.config.displayCommandUsage) client.debugger("info", `Command used: ${interaction.commandName} by ${interaction.user.username} (${interaction.user.id})`);
 
    const shouldDefer = command.defer ?? true;
-   if (shouldDefer) await interaction.deferReply({ ephemeral: false });
+   if (shouldDefer) await interaction.deferReply();
 
    const { cooldown } = command;
    const key = `user:${interaction.user.id}:timeout:${interaction.commandName}`;
@@ -35,7 +35,7 @@ export async function interactionCreate(client: Majobot, interaction: Interactio
        text: `Requested by ${interaction.user.globalName || interaction.user.username}`,
        iconURL: interaction.user.displayAvatarURL({ size: 256 }),
       });
-     return interaction.followUp({ ephemeral: true, embeds: [embed] });
+     return interaction.followUp({ flags: [MessageFlags.Ephemeral], embeds: [embed] });
     } else {
      await cacheSet(key, { userId: interaction.user.id, time: Date.now(), command: interaction.commandName }, cooldown / 1000);
     }
@@ -85,7 +85,7 @@ export async function interactionCreate(client: Majobot, interaction: Interactio
        iconURL: interaction.user.displayAvatarURL({ size: 256 }),
       });
 
-     return interaction.followUp({ ephemeral: true, embeds: [embed] });
+     return interaction.followUp({ flags: [MessageFlags.Ephemeral], embeds: [embed] });
     }
 
     if (categoryDisabled) {
@@ -99,7 +99,7 @@ export async function interactionCreate(client: Majobot, interaction: Interactio
        iconURL: interaction.user.displayAvatarURL({ size: 256 }),
       });
 
-     return interaction.followUp({ ephemeral: true, embeds: [embed] });
+     return interaction.followUp({ flags: [MessageFlags.Ephemeral], embeds: [embed] });
     }
 
     await createUser(interaction.member.user);

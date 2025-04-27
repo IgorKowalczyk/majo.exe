@@ -1,4 +1,4 @@
-import { ApplicationCommandType, ApplicationCommandOptionType, EmbedBuilder, codeBlock, ActionRowBuilder, ButtonBuilder, ButtonStyle, ApplicationIntegrationType, InteractionContextType } from "discord.js";
+import { ApplicationCommandType, ApplicationCommandOptionType, EmbedBuilder, codeBlock, ActionRowBuilder, ButtonBuilder, ButtonStyle, ApplicationIntegrationType, InteractionContextType, MessageFlags } from "discord.js";
 import type { SlashCommand } from "@/util/types/Command";
 
 export default {
@@ -87,7 +87,7 @@ export default {
        size: 256,
       }),
      });
-    return interaction.followUp({ ephemeral: true, embeds: [embed] });
+    return interaction.followUp({ flags: [MessageFlags.Ephemeral], embeds: [embed] });
    }
 
    if (data.synopsis.length > 1024) {

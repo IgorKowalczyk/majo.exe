@@ -74,7 +74,7 @@ export default {
     name: "ascii-code.txt",
    });
 
-   return interaction.followUp({ ephemeral: false, embeds: [embed], files: [attached] });
+   return interaction.followUp({ embeds: [embed], files: [attached] });
   } catch (err) {
    client.errorMessages.internalError(interaction, err);
   }

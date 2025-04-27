@@ -66,7 +66,7 @@ export default {
      }),
     });
 
-   return interaction.followUp({ ephemeral: false, embeds: [embed] });
+   return interaction.followUp({ embeds: [embed] });
   } catch (err) {
    client.errorMessages.internalError(interaction, err);
   }

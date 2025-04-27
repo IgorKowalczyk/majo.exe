@@ -24,7 +24,7 @@ export default {
      .setColor(guildSettings?.embedColor || client.config.defaultColor)
      .setTimestamp()
      .setTitle("📝 Contact");
-    return interaction.followUp({ ephemeral: false, embeds: [embed] });
+    return interaction.followUp({ embeds: [embed] });
    }
 
    const action = new ActionRowBuilder<ButtonBuilder>() // prettier
@@ -55,7 +55,7 @@ export default {
     .setTimestamp()
     .setTitle("📝 Contact");
 
-   return interaction.followUp({ ephemeral: false, embeds: [embed], components: [action] });
+   return interaction.followUp({ embeds: [embed], components: [action] });
   } catch (err) {
    client.errorMessages.internalError(interaction, err);
   }

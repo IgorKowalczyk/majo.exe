@@ -1,5 +1,5 @@
 import { resetXP, fetchXPSettings } from "@majoexe/util/database";
-import { ApplicationCommandType, ApplicationCommandOptionType, PermissionFlagsBits, EmbedBuilder, InteractionContextType, ApplicationIntegrationType } from "discord.js";
+import { ApplicationCommandType, ApplicationCommandOptionType, PermissionFlagsBits, EmbedBuilder, InteractionContextType, ApplicationIntegrationType, MessageFlags } from "discord.js";
 import type { SlashCommand } from "@/util/types/Command";
 
 export default {
@@ -49,7 +49,7 @@ export default {
       size: 256,
      }),
     });
-   return interaction.followUp({ ephemeral: true, embeds: [embed] });
+   return interaction.followUp({ flags: [MessageFlags.Ephemeral], embeds: [embed] });
   } catch (err) {
    client.errorMessages.internalError(interaction, err);
   }

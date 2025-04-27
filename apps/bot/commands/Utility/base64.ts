@@ -1,4 +1,4 @@
-import { ApplicationCommandType, ApplicationCommandOptionType, EmbedBuilder, InteractionContextType, ApplicationIntegrationType } from "discord.js";
+import { ApplicationCommandType, ApplicationCommandOptionType, EmbedBuilder, InteractionContextType, ApplicationIntegrationType, MessageFlags } from "discord.js";
 import type { SlashCommand } from "@/util/types/Command";
 
 export default {
@@ -63,7 +63,7 @@ export default {
       }),
      });
 
-    return interaction.followUp({ ephemeral: true, embeds: [embed] });
+    return interaction.followUp({ flags: [MessageFlags.Ephemeral], embeds: [embed] });
    } else if (type === "decode") {
     const text = interaction.options.getString("text");
     if (!text) return client.errorMessages.createSlashError(interaction, "❌ Please provide a valid text to decode.");
@@ -81,7 +81,7 @@ export default {
       }),
      });
 
-    return interaction.followUp({ ephemeral: true, embeds: [embed] });
+    return interaction.followUp({ flags: [MessageFlags.Ephemeral], embeds: [embed] });
    }
   } catch (err) {
    client.errorMessages.internalError(interaction, err);

@@ -145,7 +145,7 @@ export default {
        }),
       });
 
-     return interaction.followUp({ ephemeral: false, embeds: [embed] });
+     return interaction.followUp({ embeds: [embed] });
     } catch (_err) {
      return client.errorMessages.createSlashError(interaction, "❌ Cannot create emoji! It may be because of the following reasons:\n\n>>> - You have reached the maximum number of emojis on this server\n- The emoji URL is invalid\n- The emoji name is invalid\n- The emoji is too large");
     }
@@ -209,7 +209,7 @@ export default {
       }),
      });
 
-    return interaction.followUp({ ephemeral: false, embeds: [embed] });
+    return interaction.followUp({ embeds: [embed] });
    } catch (err) {
     client.errorMessages.internalError(interaction, err);
    }
@@ -272,7 +272,7 @@ export default {
       }),
      });
 
-    return interaction.followUp({ ephemeral: false, embeds: [embed] });
+    return interaction.followUp({ embeds: [embed] });
    } catch (err) {
     client.errorMessages.internalError(interaction, err);
    }
@@ -317,7 +317,7 @@ export default {
       }),
      });
 
-    return interaction.followUp({ ephemeral: false, embeds: [embed] });
+    return interaction.followUp({ embeds: [embed] });
    } catch (err) {
     client.errorMessages.internalError(interaction, err);
    }

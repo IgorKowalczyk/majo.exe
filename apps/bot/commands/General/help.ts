@@ -116,7 +116,7 @@ export default {
       }),
      });
 
-    return interaction.followUp({ ephemeral: false, embeds: [embed], components: globalActionRow });
+    return interaction.followUp({ embeds: [embed], components: globalActionRow });
     // #endregion
     // #region Category
    } else if (query && isCategory) {
@@ -133,7 +133,7 @@ export default {
        size: 256,
       }),
      });
-    return interaction.followUp({ ephemeral: false, embeds: [embed], components: globalActionRow });
+    return interaction.followUp({ embeds: [embed], components: globalActionRow });
     // #endregion
     // #region Main menu
    } else {
@@ -181,7 +181,7 @@ export default {
      );
     const actionRow = [selectRow, ...globalActionRow];
 
-    const response = await interaction.followUp({ ephemeral: false, embeds: [embed], components: actionRow });
+    const response = await interaction.followUp({ embeds: [embed], components: actionRow });
 
     const collector = response.createMessageComponentCollector({
      componentType: ComponentType.StringSelect,
