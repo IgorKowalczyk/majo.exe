@@ -2,13 +2,12 @@ import eslintConfig from "@igorkowalczyk/eslint-config";
 import { defineConfig, globalIgnores } from "eslint/config";
 
 export default defineConfig([
- // prettier
- ...eslintConfig.base,
- ...eslintConfig.react,
- ...eslintConfig.next,
- ...eslintConfig.node,
- ...eslintConfig.typescript,
- ...eslintConfig.prettier,
+ eslintConfig.base,
+ eslintConfig.react,
+ eslintConfig.next,
+ eslintConfig.node,
+ eslintConfig.typescript,
+ eslintConfig.prettier,
  globalIgnores([".next/**"], "Ignore next.js build files"),
  {
   name: "Override",

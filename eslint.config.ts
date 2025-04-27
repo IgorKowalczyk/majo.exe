@@ -1,16 +1,14 @@
 import eslintConfig from "@igorkowalczyk/eslint-config";
-import type { Linter } from "eslint";
+import { defineConfig } from "eslint/config";
 
-export default [
- // prettier
- // @ts-expect-error Wrong type
- ...eslintConfig.base,
- ...eslintConfig.node,
- ...eslintConfig.typescript,
+export default defineConfig([
+ eslintConfig.base,
+ eslintConfig.node,
+ eslintConfig.typescript,
  {
   name: "Override",
   rules: {
    "require-await": "off",
   },
  },
-] satisfies Linter.Config[];
+]);
