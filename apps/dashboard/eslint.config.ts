@@ -3,7 +3,6 @@ import { defineConfig, globalIgnores } from "eslint/config";
 
 export default defineConfig([
  // prettier
- // @ts-expect-error Wrong type
  ...eslintConfig.base,
  ...eslintConfig.react,
  ...eslintConfig.next,
