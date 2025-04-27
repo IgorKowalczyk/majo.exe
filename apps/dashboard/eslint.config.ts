@@ -1,15 +1,15 @@
 import eslintConfig from "@igorkowalczyk/eslint-config";
-import type { Linter } from "eslint";
+import { defineConfig, globalIgnores } from "eslint/config";
 
-export default [
+export default defineConfig([
  // prettier
  // @ts-expect-error Wrong type
  ...eslintConfig.base,
  ...eslintConfig.react,
  ...eslintConfig.next,
- ...eslintConfig.typescript,
  ...eslintConfig.node,
- ...eslintConfig.prettier,
+ ...eslintConfig.typescript,
+ globalIgnores([".next/**"], "Ignore next.js build files"),
  {
   name: "Override",
   rules: {
@@ -19,4 +19,4 @@ export default [
    "@eslint-react/no-array-index-key": "off",
   },
  },
-] satisfies Linter.Config[];
+]);

@@ -18,6 +18,7 @@ interface HeadingProps extends HTMLAttributes<HTMLHeadingElement> {
  children: React.ReactNode;
 }
 
+/* eslint-disable-next-line @eslint-react/hooks-extra/no-useless-custom-hooks */
 export function useMDXComponents(components: MDXComponents) {
  return {
   ...components,

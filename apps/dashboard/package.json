@@ -9,8 +9,8 @@
     "deploy": "pnpm run build && pnpm run start",
     "format": "prettier . --write --cache --ignore-unknown",
     "format:check": "prettier . --check --cache",
-    "lint": "next lint",
-    "lint:fix": "next lint --fix"
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix"
   },
   "dependencies": {
     "@bprogress/next": "3.2.12",
@@ -46,6 +46,7 @@
     "lucide-react": "0.503.0",
     "next": "15.3.1",
     "next-auth": "4.24.11",
+    "next-axiom": "1.9.1",
     "next-navigation-guard": "0.1.2",
     "react": "19.1.0",
     "react-colorful": "5.6.1",
@@ -72,6 +73,7 @@
     "@types/react": "19.1.2",
     "@types/react-dom": "19.1.2",
     "@types/react-infinite-scroller": "1.2.5",
+    "jiti": "2.4.2",
     "postcss": "8.5.3",
     "tailwind-merge": "3.2.0",
     "tailwindcss": "4.1.4"

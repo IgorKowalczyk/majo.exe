@@ -2,6 +2,7 @@ import { dashboardHeaders, dashboardRedirects } from "@majoexe/config";
 import createMdx from "@next/mdx";
 import type { NextConfig } from "next";
 import "@/env";
+import { withAxiom } from "next-axiom";
 
 const withMDX = createMdx();
 
@@ -45,12 +46,14 @@ const nextConfig = {
   }
   return config;
  },
+ /* eslint-disable-next-line require-await */
  async redirects() {
   return dashboardRedirects;
  },
+ /* eslint-disable-next-line require-await */
  async headers() {
   return dashboardHeaders;
  },
 } satisfies NextConfig;
 
-export default withMDX(nextConfig);
+export default withMDX(withAxiom(nextConfig));

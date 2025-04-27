@@ -207,7 +207,7 @@ export async function GET(request: NextRequest, props: { params: Promise<{ id: s
   }
 
   /* eslint-disable func-names */
-  (BigInt.prototype as any).toJSON = function () {
+  (BigInt.prototype as any).toJSON = function() {
    return this.toString();
   };
 

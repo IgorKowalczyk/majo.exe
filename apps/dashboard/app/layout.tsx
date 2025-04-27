@@ -3,6 +3,7 @@ import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { GeistSans } from "geist/font/sans";
 import type { Metadata } from "next";
+import { AxiomWebVitals } from "next-axiom";
 import { Toaster } from "sonner";
 import { Footer } from "@/components/Footer";
 import { Hotjar } from "@/components/Hotjar";
@@ -87,6 +88,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       />
       <SpeedInsights />
       <Analytics />
+      <AxiomWebVitals />
       <TailwindIndicator />
      </VisibilityProvider>
     </body>
