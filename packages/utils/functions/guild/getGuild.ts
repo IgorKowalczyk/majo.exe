@@ -5,7 +5,7 @@ import { isBotInServer } from "./isBotInServer";
 
 export async function getGuild(id: Snowflake) {
  try {
-  const cached = (await cacheGet(`guild:${id}:data`)) as APIGuild | null;
+  const cached = (JSON.parse((await cacheGet(`guild:${id}:data`)) as unknown as string) as APIGuild) || null;
   if (cached && typeof cached === "object" && cached.id === id) return JSON.parse(JSON.stringify(cached)) as APIGuild & { bot: boolean };
 
   const res = await fetch(`https://discord.com/api/v${globalConfig.apiVersion}/guilds/${id}`, {

@@ -102,7 +102,7 @@ export async function GET() {
   }
 
   /* eslint-disable func-names */
-  (BigInt.prototype as any).toJSON = function() {
+  (BigInt.prototype as any).toJSON = function () {
    return this.toString();
   };
 

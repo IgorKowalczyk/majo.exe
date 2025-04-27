@@ -8,6 +8,7 @@ export default defineConfig([
  ...eslintConfig.next,
  ...eslintConfig.node,
  ...eslintConfig.typescript,
+ ...eslintConfig.prettier,
  globalIgnores([".next/**"], "Ignore next.js build files"),
  {
   name: "Override",
