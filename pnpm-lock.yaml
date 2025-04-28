@@ -25,8 +25,8 @@ importers:
         specifier: 3.0.8
         version: 3.0.8(prettier@3.5.3)
       '@types/node':
-        specifier: 22.15.2
-        version: 22.15.2
+        specifier: 22.15.3
+        version: 22.15.3
       eslint:
         specifier: 9.25.1
         version: 9.25.1(jiti@2.4.2)
@@ -382,8 +382,8 @@ importers:
   packages/typescript-config:
     dependencies:
       '@types/node':
-        specifier: 22.15.2
-        version: 22.15.2
+        specifier: 22.15.3
+        version: 22.15.3
       tsx:
         specifier: 4.19.3
         version: 4.19.3
@@ -2189,8 +2189,8 @@ packages:
   '@types/node@22.14.1':
     resolution: {integrity: sha512-u0HuPQwe/dHrItgHHpmw3N2fYCR6x4ivMNbPHRkBVP4CvN+kiRrKHWk3i8tXiO/joPwXLMYvF9TTF0eqgHIuOw==}
 
-  '@types/node@22.15.2':
-    resolution: {integrity: sha512-uKXqKN9beGoMdBfcaTY1ecwz6ctxuJAcUlwE55938g0ZJ8lRxwAZqRz2AJ4pzpt5dHdTPMB863UZ0ESiFUcP7A==}
+  '@types/node@22.15.3':
+    resolution: {integrity: sha512-lX7HFZeHf4QG/J7tBZqrCAXwz9J5RD56Y6MpP0eJkka8p+K0RY/yBTW7CYFJ4VGCclxqOLKmiGP5juQc6MKgcw==}
 
   '@types/pg@8.11.14':
     resolution: {integrity: sha512-qyD11E5R3u0eJmd1lB0WnWKXJGA7s015nyARWljfz5DcX83TKAIlY+QrmvzQTsbIe+hkiFtkyL2gHC6qwF6Fbg==}
@@ -6894,14 +6894,14 @@ snapshots:
     dependencies:
       '@jest/fake-timers': 29.7.0
       '@jest/types': 29.6.3
-      '@types/node': 22.15.2
+      '@types/node': 22.15.3
       jest-mock: 29.7.0
 
   '@jest/fake-timers@29.7.0':
     dependencies:
       '@jest/types': 29.6.3
       '@sinonjs/fake-timers': 10.3.0
-      '@types/node': 22.15.2
+      '@types/node': 22.15.3
       jest-message-util: 29.7.0
       jest-mock: 29.7.0
       jest-util: 29.7.0
@@ -6935,7 +6935,7 @@ snapshots:
       '@jest/schemas': 29.6.3
       '@types/istanbul-lib-coverage': 2.0.6
       '@types/istanbul-reports': 3.0.4
-      '@types/node': 22.15.2
+      '@types/node': 22.15.3
       '@types/yargs': 17.0.33
       chalk: 4.1.2
 
@@ -7982,7 +7982,7 @@ snapshots:
 
   '@types/graceful-fs@4.1.9':
     dependencies:
-      '@types/node': 22.15.2
+      '@types/node': 22.15.3
 
   '@types/hast@3.0.4':
     dependencies:
@@ -8018,13 +8018,13 @@ snapshots:
     dependencies:
       undici-types: 6.21.0
 
-  '@types/node@22.15.2':
+  '@types/node@22.15.3':
     dependencies:
       undici-types: 6.21.0
 
   '@types/pg@8.11.14':
     dependencies:
-      '@types/node': 22.15.2
+      '@types/node': 22.15.3
       pg-protocol: 1.9.5
       pg-types: 4.0.2
 
@@ -8592,7 +8592,7 @@ snapshots:
 
   chrome-launcher@0.15.2:
     dependencies:
-      '@types/node': 22.15.2
+      '@types/node': 22.15.3
       escape-string-regexp: 4.0.0
       is-wsl: 2.2.0
       lighthouse-logger: 1.4.2
@@ -8601,7 +8601,7 @@ snapshots:
 
   chromium-edge-launcher@0.2.0:
     dependencies:
-      '@types/node': 22.15.2
+      '@types/node': 22.15.3
       escape-string-regexp: 4.0.0
       is-wsl: 2.2.0
       lighthouse-logger: 1.4.2
@@ -10299,7 +10299,7 @@ snapshots:
       '@jest/environment': 29.7.0
       '@jest/fake-timers': 29.7.0
       '@jest/types': 29.6.3
-      '@types/node': 22.15.2
+      '@types/node': 22.15.3
       jest-mock: 29.7.0
       jest-util: 29.7.0
 
@@ -10309,7 +10309,7 @@ snapshots:
     dependencies:
       '@jest/types': 29.6.3
       '@types/graceful-fs': 4.1.9
-      '@types/node': 22.15.2
+      '@types/node': 22.15.3
       anymatch: 3.1.3
       fb-watchman: 2.0.2
       graceful-fs: 4.2.11
@@ -10336,7 +10336,7 @@ snapshots:
   jest-mock@29.7.0:
     dependencies:
       '@jest/types': 29.6.3
-      '@types/node': 22.15.2
+      '@types/node': 22.15.3
       jest-util: 29.7.0
 
   jest-regex-util@29.6.3: {}
@@ -10344,7 +10344,7 @@ snapshots:
   jest-util@29.7.0:
     dependencies:
       '@jest/types': 29.6.3
-      '@types/node': 22.15.2
+      '@types/node': 22.15.3
       chalk: 4.1.2
       ci-info: 3.9.0
       graceful-fs: 4.2.11
@@ -10361,7 +10361,7 @@ snapshots:
 
   jest-worker@29.7.0:
     dependencies:
-      '@types/node': 22.15.2
+      '@types/node': 22.15.3
       jest-util: 29.7.0
       merge-stream: 2.0.0
       supports-color: 8.1.1
