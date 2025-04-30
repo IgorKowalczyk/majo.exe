@@ -1,13 +1,13 @@
 datasource db {
- provider  = "postgresql"
- url       = env("DATABASE_URL")
- directUrl = env("DATABASE_URL_UNPOOLED")
+ provider = "postgresql"
+ url      = env("DATABASE_URL")
 }
 
 generator client {
  provider        = "prisma-client-js"
- //  output          = "../prisma/generated/client"
  previewFeatures = ["driverAdapters"]
+ output          = "./client"
+ binaryTargets   = ["native", "rhel-openssl-3.0.x"]
 }
 
 // User model

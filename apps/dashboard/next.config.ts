@@ -3,6 +3,7 @@ import createMdx from "@next/mdx";
 import type { NextConfig } from "next";
 import "@/env";
 import { withAxiom } from "next-axiom";
+import { PrismaPlugin } from "@prisma/nextjs-monorepo-workaround-plugin";
 
 const withMDX = createMdx();
 
@@ -42,7 +43,7 @@ const nextConfig = {
    bufferutil: "commonjs bufferutil",
   });
   if (isServer) {
-   config.plugins = [...config.plugins];
+   config.plugins = [...config.plugins, new PrismaPlugin()];
   }
   return config;
  },
