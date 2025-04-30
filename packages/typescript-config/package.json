@@ -13,8 +13,8 @@
   "lint:fix": "eslint . --fix"
  },
  "dependencies": {
-  "@types/node": "22.15.2",
-  "tsx": "4.19.3",
+  "@types/node": "22.15.3",
+  "tsx": "4.19.4",
   "typescript": "5.8.3"
  },
  "engines": {
@@ -36,5 +36,5 @@
   "url": "https://github.com/igorkowalczyk/majo.exe/issues"
  },
  "homepage": "https://github.com/igorkowalczyk/majo.exe#readme",
- "packageManager": "pnpm@10.9.0"
+ "packageManager": "pnpm@10.10.0"
 }
