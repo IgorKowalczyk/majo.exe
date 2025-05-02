@@ -23,7 +23,7 @@
     "seed": "node packages/database/src/seed.ts"
   },
   "dependencies": {
-    "@dotenvx/dotenvx": "1.42.0",
+    "@dotenvx/dotenvx": "1.42.2",
     "tsx": "4.19.4",
     "turbo": "2.5.2"
   },
