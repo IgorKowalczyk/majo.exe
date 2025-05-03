@@ -33,7 +33,7 @@
     "pg": "8.15.6",
     "prisma": "6.7.0",
     "prisma-redis-middleware": "4.8.0",
-    "ws": "8.18.1"
+    "ws": "8.18.2"
   },
   "devDependencies": {
     "@types/ws": "8.18.1",
