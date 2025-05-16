@@ -27,11 +27,11 @@
     "@neondatabase/serverless": "1.0.0",
     "@prisma/adapter-neon": "6.8.2",
     "@prisma/adapter-pg": "6.8.2",
-    "@prisma/client": "6.8.1",
+    "@prisma/client": "6.8.2",
     "chalk": "5.4.1",
     "ioredis": "5.6.1",
     "pg": "8.16.0",
-    "prisma": "6.8.1",
+    "prisma": "6.8.2",
     "prisma-redis-middleware": "4.8.0",
     "ws": "8.18.2"
   },
