@@ -294,8 +294,8 @@ importers:
         specifier: 15.3.2
         version: 15.3.2
       '@prisma/nextjs-monorepo-workaround-plugin':
-        specifier: 6.8.1
-        version: 6.8.1
+        specifier: 6.8.2
+        version: 6.8.2
       '@tailwindcss/postcss':
         specifier: 4.1.7
         version: 4.1.7
@@ -354,11 +354,11 @@ importers:
         specifier: 1.0.0
         version: 1.0.0
       '@prisma/adapter-neon':
-        specifier: 6.8.1
-        version: 6.8.1(@neondatabase/serverless@1.0.0)
+        specifier: 6.8.2
+        version: 6.8.2(@neondatabase/serverless@1.0.0)
       '@prisma/adapter-pg':
-        specifier: 6.8.1
-        version: 6.8.1(pg@8.16.0)
+        specifier: 6.8.2
+        version: 6.8.2(pg@8.16.0)
       '@prisma/client':
         specifier: 6.8.1
         version: 6.8.1(prisma@6.8.1(typescript@5.8.3))(typescript@5.8.3)
@@ -1395,13 +1395,13 @@ packages:
   '@polka/url@1.0.0-next.29':
     resolution: {integrity: sha512-wwQAWhWSuHaag8c4q/KN/vCoeOJYshAIvMQwD4GpSb3OiZklFfvAgmj0VCBBImRpuF/aFgIRzllXlVX93Jevww==}
 
-  '@prisma/adapter-neon@6.8.1':
-    resolution: {integrity: sha512-ST7GJEolYUeeS62XMUGKaWvHN1SFt1AvkLh0ZeeE5ctNKqaqGvj6yKtiAME3VWZlbr2NQjEoWHMxEPdazN7bYg==}
+  '@prisma/adapter-neon@6.8.2':
+    resolution: {integrity: sha512-wBAAoWv7CZhgY/kLGBF+NvQejqYP/GGKg/ms8gwzP6VgsoROBxY0YUJ3Y25pAFdezUj++xmn7vvAEewIproVGA==}
     peerDependencies:
       '@neondatabase/serverless': '>0.6.0 <2'
 
-  '@prisma/adapter-pg@6.8.1':
-    resolution: {integrity: sha512-WGnjkJeeRt8HcDXGrBLhv3QplGgCXdKqGk+WstGg4JbJ0g6L84KCbHxVMRlFCrYtAFwwS7p0q9XFMuIkcORcYw==}
+  '@prisma/adapter-pg@6.8.2':
+    resolution: {integrity: sha512-T0c+oQsP0F47cTsoKPSEtPRmeuhFaCPcMFDev6N1QTnQZi+COkAiO6NKmblf1MM8D9ltYhs1PRsYBzPWB6QKwg==}
     peerDependencies:
       pg: ^8.11.3
 
@@ -1423,8 +1423,11 @@ packages:
   '@prisma/debug@6.8.1':
     resolution: {integrity: sha512-3HrYLFje+ngEUBKH9x6LWBiqpX8pQEB791RWFS+anWoklM9b6MFdWGzK0bika3rGIs0KOb0ZTKVXo6OmWvjryg==}
 
-  '@prisma/driver-adapter-utils@6.8.1':
-    resolution: {integrity: sha512-qbDipyIhVZXcEO/6zxdwi2i7ysre/Qkyv6hBRrd4a9hMl+HO1lu/8UkPapj8FOl753jFRr/XMhgcT1lac8qF1w==}
+  '@prisma/debug@6.8.2':
+    resolution: {integrity: sha512-4muBSSUwJJ9BYth5N8tqts8JtiLT8QI/RSAzEogwEfpbYGFo9mYsInsVo8dqXdPO2+Rm5OG5q0qWDDE3nyUbVg==}
+
+  '@prisma/driver-adapter-utils@6.8.2':
+    resolution: {integrity: sha512-5+CzN/41gBsRmA3ekbVy1TXnSImSPBtMlxWAttVH6tg94bv4zGGRmyk5tUCdT83nl0hG1Sq2oMXR7ml6aqILvw==}
 
   '@prisma/engines-version@6.8.0-43.2060c79ba17c6bb9f5823312b6f6b7f4a845738e':
     resolution: {integrity: sha512-Rkik9lMyHpFNGaLpPF3H5q5TQTkm/aE7DsGM5m92FZTvWQsvmi6Va8On3pWvqLHOt5aPUvFb/FeZTmphI4CPiQ==}
@@ -1438,8 +1441,8 @@ packages:
   '@prisma/get-platform@6.8.1':
     resolution: {integrity: sha512-wOBUB/wiY1m4MDq9VtIy1nVF5bRhd+e0LShR4bxb9oPdfotFubxB3ZkLTRbcSppDkFU2mVSPMPu6YLHXYl5wFg==}
 
-  '@prisma/nextjs-monorepo-workaround-plugin@6.8.1':
-    resolution: {integrity: sha512-pQHHIesJsZ7OnFizgtO//9FotMxc9wEo4SY7+oioRR3RvNyniFWWaCjQlfdyZy6bMhomEWHxKAEOsH4xr8+NOA==}
+  '@prisma/nextjs-monorepo-workaround-plugin@6.8.2':
+    resolution: {integrity: sha512-F/Iq131HGEAlEP1V/XV0yB8GQ6e1AVekjaPtVmr7X8l17X19Ll34/lDzDMFM3DSnK5suC4X8bMxnCPbEHJ/siA==}
 
   '@prisma/prisma-schema-wasm@4.17.0-26.6b0aef69b7cdfc787f822ecd7cdc76d5f1991584':
     resolution: {integrity: sha512-JFdsnSgBPN8reDTLOI9Vh/6ccCb2aD1LbY/LWQnkcIgNo6IdpzvuM+qRVbBuA6IZP2SdqQI8Lu6RL2P8EFBQUA==}
@@ -7429,15 +7432,15 @@ snapshots:
 
   '@polka/url@1.0.0-next.29': {}
 
-  '@prisma/adapter-neon@6.8.1(@neondatabase/serverless@1.0.0)':
+  '@prisma/adapter-neon@6.8.2(@neondatabase/serverless@1.0.0)':
     dependencies:
       '@neondatabase/serverless': 1.0.0
-      '@prisma/driver-adapter-utils': 6.8.1
+      '@prisma/driver-adapter-utils': 6.8.2
       postgres-array: 3.0.4
 
-  '@prisma/adapter-pg@6.8.1(pg@8.16.0)':
+  '@prisma/adapter-pg@6.8.2(pg@8.16.0)':
     dependencies:
-      '@prisma/driver-adapter-utils': 6.8.1
+      '@prisma/driver-adapter-utils': 6.8.2
       pg: 8.16.0
       postgres-array: 3.0.4
 
@@ -7452,9 +7455,11 @@ snapshots:
 
   '@prisma/debug@6.8.1': {}
 
-  '@prisma/driver-adapter-utils@6.8.1':
+  '@prisma/debug@6.8.2': {}
+
+  '@prisma/driver-adapter-utils@6.8.2':
     dependencies:
-      '@prisma/debug': 6.8.1
+      '@prisma/debug': 6.8.2
 
   '@prisma/engines-version@6.8.0-43.2060c79ba17c6bb9f5823312b6f6b7f4a845738e': {}
 
@@ -7475,7 +7480,7 @@ snapshots:
     dependencies:
       '@prisma/debug': 6.8.1
 
-  '@prisma/nextjs-monorepo-workaround-plugin@6.8.1': {}
+  '@prisma/nextjs-monorepo-workaround-plugin@6.8.2': {}
 
   '@prisma/prisma-schema-wasm@4.17.0-26.6b0aef69b7cdfc787f822ecd7cdc76d5f1991584': {}
 
