@@ -37,7 +37,7 @@
     "node-fetch": "3.3.2",
     "qrcode": "1.5.4",
     "sharp": "0.34.2",
-    "validator": "13.15.0"
+    "validator": "13.15.15"
   },
   "devDependencies": {
     "@types/figlet": "1.7.0",
