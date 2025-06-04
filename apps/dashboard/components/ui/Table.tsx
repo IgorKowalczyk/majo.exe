@@ -1,7 +1,7 @@
 "use client";
 
 import { useReactTable, getCoreRowModel, getSortedRowModel, getPaginationRowModel, getFilteredRowModel, ColumnDef, Column, flexRender } from "@tanstack/react-table";
-import { ArrowDownIcon, ArrowUpIcon, ChevronLeftIcon, ChevronRightIcon, ChevronsDownIcon, ChevronsUpDownIcon, ChevronsUpIcon, SearchIcon } from "lucide-react";
+import { ArrowDownIcon, ArrowUpIcon, ChevronLeftIcon, ChevronRightIcon, ChevronDownIcon, ChevronsUpDownIcon, ChevronUpIcon, SearchIcon } from "lucide-react";
 import React, { useState } from "react";
 import { Button } from "@/components/ui/Buttons";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/DropdownMenu";
@@ -34,16 +34,16 @@ export function TableColumnHeader<TData, TValue>({ column, title, className }: D
     <DropdownMenuTrigger aria-label={column.getIsSorted() === "desc" ? "Sorted descending. Click to sort ascending." : column.getIsSorted() === "asc" ? "Sorted ascending. Click to sort descending." : "Not sorted. Click to sort ascending."} className="cursor-pointer h-10 items-center font-medium text-xs -ml-3 gap-2 flex border-transparent px-3 text-neutral-500">
      <span>{title}</span>
      {column.getCanSort() && (
-      <div className="relative">
-       <ChevronsUpIcon
-        className={cn("absolute size-3 duration-200 motion-reduce:transition-none", {
+      <div className="relative flex items-center">
+       <ChevronUpIcon
+        className={cn("absolute size-4 duration-200 motion-reduce:transition-none", {
          "scale-0": column.getIsSorted() === "desc",
          "scale-100": column.getIsSorted() === "asc",
          "opacity-0": !column.getIsSorted(),
         })}
        />
-       <ChevronsDownIcon
-        className={cn("absolute size-3 duration-200 motion-reduce:transition-none", {
+       <ChevronDownIcon
+        className={cn("absolute size-4 duration-200 motion-reduce:transition-none", {
          "scale-0": column.getIsSorted() === "asc",
          "scale-100": column.getIsSorted() === "desc",
          "opacity-0": !column.getIsSorted(),
@@ -51,7 +51,7 @@ export function TableColumnHeader<TData, TValue>({ column, title, className }: D
        />
 
        <ChevronsUpDownIcon
-        className={cn("absolute size-3 duration-200 motion-reduce:transition-none", {
+        className={cn("absolute size-4 duration-200 motion-reduce:transition-none", {
          "scale-0": column.getIsSorted(),
          "scale-100": !column.getIsSorted(),
         })}
