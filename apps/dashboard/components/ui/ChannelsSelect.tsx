@@ -2,10 +2,11 @@
 
 import { Snowflake } from "discord-api-types/globals";
 import { APIGuildChannel, GuildChannelType } from "discord-api-types/v10";
+import { ChevronsUpDownIcon, CheckIcon } from "lucide-react";
 import * as React from "react";
 import { Button } from "@/components/ui/Buttons";
 import { Command, CommandEmpty, CommandGroup, CommandInput, CommandItem, CommandList } from "@/components/ui/Command";
-import { Icons, iconVariants } from "@/components/ui/Icons";
+import { iconVariants } from "@/components/ui/Icons";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/Popover";
 import { cn } from "@/lib/utils";
 
@@ -35,7 +36,7 @@ export const ChannelsSelect = ({ allChannels, selectedChannels = [], setChannels
    <PopoverTrigger asChild>
     <Button variant="select" role="combobox" aria-expanded={open} className="max-w-sm justify-between">
      {selectedChannels.length > 0 ? (multiple ? `${allChannels.find((channel) => channel.id === selectedChannels[0])?.name ?? "Unknown channel"}${selectedChannels.length > 1 ? ` + ${selectedChannels.length - 1} more` : ""}` : (allChannels.find((channel) => channel.id === selectedChannels[0])?.name ?? "No channel selected")) : "Select channels..."}
-     <Icons.ChevronsUpDown
+     <ChevronsUpDownIcon
       className={iconVariants({
        variant: "small",
        className: "text-neutral-400 duration-200 motion-reduce:transition-none",
@@ -58,7 +59,7 @@ export const ChannelsSelect = ({ allChannels, selectedChannels = [], setChannels
          }}
         >
          {channel.name}
-         <Icons.Check className={cn("ml-auto transition", selectedChannels.includes(channel.id) ? "opacity-100" : "opacity-0")} />
+         <CheckIcon className={cn("ml-auto transition", selectedChannels.includes(channel.id) ? "opacity-100" : "opacity-0")} />
         </CommandItem>
        ))}
       </CommandGroup>

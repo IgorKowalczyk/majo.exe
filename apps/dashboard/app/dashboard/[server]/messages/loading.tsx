@@ -1,3 +1,4 @@
+import { CheckIcon, HandIcon } from "lucide-react";
 import { Block } from "@/components/ui/Block";
 import { Button } from "@/components/ui/Buttons";
 import Header, { headerVariants } from "@/components/ui/Headers";
@@ -9,7 +10,7 @@ export default function Loading() {
  return (
   <>
    <Header className={cn(headerVariants({ variant: "h1", margin: "normal" }))}>
-    <Icons.Hand className={iconVariants({ variant: "extraLarge" })} />
+    <HandIcon className={iconVariants({ variant: "extraLarge" })} />
     Welcome & Leave
    </Header>
    <p className="mb-4 text-left text-base md:text-lg">Customize the messages that are sent to your server members.</p>
@@ -25,14 +26,14 @@ export default function Loading() {
 
     <div className="my-2 flex flex-row flex-wrap gap-2">
      <span className="flex w-fit cursor-help items-center gap-2 font-bold">
-      <Icons.Check className={iconVariants({ variant: "normal" })} />
+      <CheckIcon className={iconVariants({ variant: "normal" })} />
       Enabled:
      </span>
      <Skeleton className="h-[30px] w-12" />
     </div>
     <Skeleton className="h-96 w-full" />
     <Button variant="primary" className="mt-4" disabled>
-     <Icons.Check className={iconVariants({ variant: "button" })} />
+     <CheckIcon className={iconVariants({ variant: "button" })} />
      Save
     </Button>
    </Block>
@@ -48,14 +49,14 @@ export default function Loading() {
 
     <div className="my-2 flex flex-row flex-wrap gap-2">
      <span className="flex w-fit cursor-help items-center gap-2 font-bold">
-      <Icons.Check className={iconVariants({ variant: "normal" })} />
+      <CheckIcon className={iconVariants({ variant: "normal" })} />
       Enabled:
      </span>
      <Skeleton className="h-[30px] w-12" />
     </div>
     <Skeleton className="h-96 w-full" />
     <Button variant="primary" className="mt-4" disabled>
-     <Icons.Check className={iconVariants({ variant: "button" })} />
+     <CheckIcon className={iconVariants({ variant: "button" })} />
      Save
     </Button>
    </Block>

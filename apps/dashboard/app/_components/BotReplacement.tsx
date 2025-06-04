@@ -1,10 +1,10 @@
 "use client";
 
 import { globalConfig } from "@majoexe/config";
+import { BotIcon, UserIcon } from "lucide-react";
 import avatar from "public/assets/avatar.png";
 import React, { useRef } from "react";
 import { AnimatedBeam } from "@/components/ui/effects/AnimatedBeam";
-import { Icons } from "@/components/ui/Icons";
 import Image from "@/components/ui/Image";
 import { cn } from "@/lib/utils";
 
@@ -31,16 +31,16 @@ export function BotReplacement({ className }: { className?: string }) {
    <div className="flex size-full max-w-lg flex-row items-stretch justify-between gap-10">
     <div className="flex flex-col justify-center gap-2">
      <Circle ref={div1Ref}>
-      <Icons.Bot />
+      <BotIcon />
      </Circle>
      <Circle ref={div2Ref}>
-      <Icons.Bot />
+      <BotIcon />
      </Circle>
      <Circle ref={div3Ref}>
-      <Icons.Bot />
+      <BotIcon />
      </Circle>
      <Circle ref={div5Ref}>
-      <Icons.Bot />
+      <BotIcon />
      </Circle>
     </div>
     <div className="flex flex-col justify-center">
@@ -50,7 +50,7 @@ export function BotReplacement({ className }: { className?: string }) {
     </div>
     <div className="flex flex-col justify-center">
      <Circle ref={div7Ref}>
-      <Icons.User />
+      <UserIcon />
      </Circle>
     </div>
    </div>

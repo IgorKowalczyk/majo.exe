@@ -1,10 +1,11 @@
 import { getSession } from "lib/session";
+import { HomeIcon, XIcon } from "lucide-react";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import { DiscordLogin } from "@/components/DiscordLogin";
 import { buttonVariants } from "@/components/ui/Buttons";
 import Header, { headerVariants } from "@/components/ui/Headers";
-import { Icons, iconVariants } from "@/components/ui/Icons";
+import { iconVariants } from "@/components/ui/Icons";
 import Image from "@/components/ui/Image";
 import { Dots } from "@/components/ui/Loaders";
 import { cn } from "@/lib/utils";
@@ -26,7 +27,7 @@ export default async function LoginPage(props: { searchParams: Promise<{ error: 
     <Image src="/assets/avatar.png" width={80} height={80} alt="Avatar" className="size-20 min-h-20 min-w-20 rounded-full sm:size-28 sm:min-h-28 sm:min-w-28" quality={90} />
     {searchParams.error ? (
      <div className="mx-4 flex items-center justify-center">
-      <Icons.close className="size-8 shrink-0 text-red-500" />
+      <XIcon className="size-8 shrink-0 text-red-500" />
      </div>
     ) : (
      <Dots />
@@ -50,7 +51,7 @@ export default async function LoginPage(props: { searchParams: Promise<{ error: 
    <div className="z-30 flex flex-col gap-3 sm:flex-row">
     <DiscordLogin />
     <Link href="/" className={cn(buttonVariants({ variant: "secondary" }))}>
-     <Icons.Home className={iconVariants({ variant: "button" })} />
+     <HomeIcon className={iconVariants({ variant: "button" })} />
      Go back home
     </Link>
    </div>

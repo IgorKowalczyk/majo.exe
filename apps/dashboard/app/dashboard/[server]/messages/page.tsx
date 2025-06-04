@@ -2,12 +2,13 @@ import prismaClient from "@majoexe/database";
 import { getGuildChannels, getGuildFromMemberGuilds, getGuild } from "@majoexe/util/functions/guild";
 import { ChannelType } from "discord-api-types/v10";
 import { getSession } from "lib/session";
+import { HandIcon } from "lucide-react";
 import { redirect } from "next/navigation";
 import { notFound } from "next/navigation";
 import { ChangeCustomMessages } from "@/app/dashboard/[server]/messages/components/ChangeCustomMessages";
 import { Block, ErrorBlock } from "@/components/ui/Block";
 import Header, { headerVariants } from "@/components/ui/Headers";
-import { Icons, iconVariants } from "@/components/ui/Icons";
+import { iconVariants } from "@/components/ui/Icons";
 import { cn } from "@/lib/utils";
 
 export const metadata = {
@@ -63,7 +64,7 @@ export default async function Page(props: { params: Promise<{ server: string }> 
  return (
   <>
    <Header className={cn(headerVariants({ variant: "h1", margin: "normal" }))}>
-    <Icons.Hand className={iconVariants({ variant: "extraLarge" })} />
+    <HandIcon className={iconVariants({ variant: "extraLarge" })} />
     Welcome & leave
    </Header>
    <p className="mb-4 text-left text-base md:text-lg">Customize the messages that are sent to your server members.</p>

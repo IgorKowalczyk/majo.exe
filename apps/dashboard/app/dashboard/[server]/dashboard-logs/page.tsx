@@ -1,12 +1,13 @@
 import prismaClient from "@majoexe/database";
 import { getGuildFromMemberGuilds, getGuild } from "@majoexe/util/functions/guild";
 import { getSession } from "lib/session";
+import { LogsIcon } from "lucide-react";
 import { redirect } from "next/navigation";
 import { notFound } from "next/navigation";
 import Logs from "@/app/dashboard/[server]/dashboard-logs/components/Logs";
 import { Block } from "@/components/ui/Block";
 import Header, { headerVariants } from "@/components/ui/Headers";
-import { Icons, iconVariants } from "@/components/ui/Icons";
+import { iconVariants } from "@/components/ui/Icons";
 import { cn } from "@/lib/utils";
 
 export const metadata = {
@@ -71,7 +72,7 @@ export default async function LogsPage(props: { params: Promise<{ server: string
  return (
   <>
    <Header className={cn(headerVariants({ variant: "h1", margin: "normal" }))}>
-    <Icons.Logs className={iconVariants({ variant: "extraLarge" })} />
+    <LogsIcon className={iconVariants({ variant: "extraLarge" })} />
     Dashboard Logs
    </Header>
    <p className="mb-4 text-left text-base md:text-lg">All the logs of the different actions that have been happening on your dashboard.</p>

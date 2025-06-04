@@ -1,5 +1,6 @@
 "use client";
 
+import { TrashIcon } from "lucide-react";
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 import { toast } from "sonner";
@@ -70,7 +71,7 @@ export const DeleteServerData = ({ serverId, className, ...props }: DeleteServer
    <Dialog>
     <DialogTrigger asChild>
      <Button variant="red" className="mt-4">
-      <Icons.Trash className={iconVariants({ variant: "button" })} /> Delete server data
+      <TrashIcon className={iconVariants({ variant: "button" })} /> Delete server data
      </Button>
     </DialogTrigger>
     <DialogContent className="max-w-lg">
@@ -99,7 +100,7 @@ export const DeleteServerData = ({ serverId, className, ...props }: DeleteServer
         </>
        ) : (
         <>
-         <Icons.Trash className={iconVariants({ variant: "button" })} />
+         <TrashIcon className={iconVariants({ variant: "button" })} />
          Yes, delete server data
         </>
        )}

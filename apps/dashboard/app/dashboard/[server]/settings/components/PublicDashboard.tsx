@@ -1,5 +1,6 @@
 "use client";
 
+import { CheckIcon, CopyIcon, Link2Icon, PowerIcon, SparklesIcon } from "lucide-react";
 import Link from "next/link";
 import React, { useState } from "react";
 import { toast } from "sonner";
@@ -139,7 +140,7 @@ export const PublicDashboard = ({ enabled, serverId, vanityURL, className, ...pr
   <div className={cn("mt-6", className)} {...props}>
    <div className="flex flex-row items-center gap-2">
     <Header className={cn(headerVariants({ variant: "h3", margin: "normal" }))}>
-     <Icons.Power className={iconVariants({ variant: "large" })} />
+     <PowerIcon className={iconVariants({ variant: "large" })} />
      Enable public dashboard overview:
      <Switch checked={isEnabled} onCheckedChange={toggle} disabled={disabled} />
     </Header>
@@ -147,7 +148,7 @@ export const PublicDashboard = ({ enabled, serverId, vanityURL, className, ...pr
    <p className="text-white/70">Allow users to view a public dashboard of your server, even if they are not a member.</p>
    <div className="mt-4">
     <Header className={cn(headerVariants({ variant: "h3", margin: "normal" }))}>
-     <Icons.Link2 className={iconVariants({ variant: "large" })} />
+     <Link2Icon className={iconVariants({ variant: "large" })} />
      Vanity URL:
     </Header>
     <p className="text-white/70">Customize the URL of your public dashboard.</p>
@@ -181,14 +182,14 @@ export const PublicDashboard = ({ enabled, serverId, vanityURL, className, ...pr
       </div>
      </div>
      <Button variant="primary" onClick={(e) => updateVanity(e)} disabled={disabled || !!vanityError || vanity.length === 0 || buttonText === "Saving..."} className="mx-auto font-normal md:mx-0">
-      {buttonText === "Saving..." ? <Icons.refresh className={iconVariants({ variant: "button", className: "animate-spin" })} /> : <Icons.Check className={iconVariants({ variant: "button" })} />} {buttonText}
+      {buttonText === "Saving..." ? <Icons.refresh className={iconVariants({ variant: "button", className: "animate-spin" })} /> : <CheckIcon className={iconVariants({ variant: "button" })} />} {buttonText}
      </Button>
     </div>
    </div>
    {isEnabled && (
     <div className="mt-4 flex flex-col">
      <Header className={cn(headerVariants({ variant: "h3" }))}>
-      <Icons.Sparkles className={iconVariants({ variant: "large" })} />
+      <SparklesIcon className={iconVariants({ variant: "large" })} />
       Your public dashboard is live!
      </Header>
      <span className="mb-4 mt-2 leading-none text-white/70">Note: The dashboard is available to everyone, regardless of whether they are a member of your server.</span>
@@ -204,7 +205,7 @@ export const PublicDashboard = ({ enabled, serverId, vanityURL, className, ...pr
        }}
        className="w-fit"
       >
-       <Icons.Copy className={iconVariants({ variant: "button" })} /> Copy link
+       <CopyIcon className={iconVariants({ variant: "button" })} /> Copy link
       </Button>
      </div>
     </div>

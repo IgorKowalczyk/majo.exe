@@ -1,8 +1,8 @@
 "use client";
 
 import * as AccordionPrimitive from "@radix-ui/react-accordion";
+import { ChevronDownIcon } from "lucide-react";
 import * as React from "react";
-import { Icons } from "@/components/ui/Icons";
 import { cn } from "@/lib/utils";
 
 const Accordion = AccordionPrimitive.Root;
@@ -16,7 +16,7 @@ function AccordionTrigger({ className, children, ...props }: React.ComponentProp
   <AccordionPrimitive.Header className="flex">
    <AccordionPrimitive.Trigger className={cn("flex w-full items-center justify-between p-6 py-4 font-medium cursor-pointer text-white duration-200 [&[data-state=open]>svg]:rotate-180", className)} {...props}>
     {children}
-    <Icons.ChevronDown className="size-4 duration-200" />
+    <ChevronDownIcon className="size-4 duration-200" />
    </AccordionPrimitive.Trigger>
   </AccordionPrimitive.Header>
  );

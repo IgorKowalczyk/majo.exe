@@ -1,7 +1,8 @@
 import { dashboardConfig } from "@majoexe/config";
+import { CheckIcon } from "lucide-react";
 import Image from "next/image";
 import React, { HTMLAttributes } from "react";
-import { Icons, iconVariants } from "@/components/ui/Icons";
+import { iconVariants } from "@/components/ui/Icons";
 import { cn } from "@/lib/utils";
 
 interface EmbedProps extends React.ComponentProps<"div"> {
@@ -16,7 +17,7 @@ export const Embed = ({ className, children, color, buttons, ...props }: EmbedPr
    <div className="ml-1 flex h-10 flex-row items-center">
     <span className="font-bold">{dashboardConfig.title}</span>{" "}
     <span className="ml-1 flex items-center gap-1 rounded-sm bg-[#5c65f3] px-1 py-[0.12rem] text-xs text-white">
-     <Icons.Check className={iconVariants({ variant: "small", className: "stroke-2!" })} /> <span className="-mb-px">BOT</span>
+     <CheckIcon className={iconVariants({ variant: "small", className: "stroke-2!" })} /> <span className="-mb-px">BOT</span>
     </span>
     <span className="ml-2 text-sm text-neutral-400">Today at 4:20 PM</span>
    </div>

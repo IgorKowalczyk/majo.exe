@@ -3,12 +3,13 @@ import { getGuildFromMemberGuilds, getGuild, getGuildChannels } from "@majoexe/u
 import { ChannelType } from "discord-api-types/v10";
 import type { GiveawayData } from "discord-giveaways";
 import { getSession } from "lib/session";
+import { GiftIcon } from "lucide-react";
 import { redirect } from "next/navigation";
 import { notFound } from "next/navigation";
 import { Giveaways } from "@/app/dashboard/[server]/giveaways/components/Giveaways";
 import { Block } from "@/components/ui/Block";
 import Header, { headerVariants } from "@/components/ui/Headers";
-import { Icons, iconVariants } from "@/components/ui/Icons";
+import { iconVariants } from "@/components/ui/Icons";
 import { cn } from "@/lib/utils";
 
 export const metadata = {
@@ -107,7 +108,7 @@ export default async function GiveawaysPage(props: { params: Promise<{ server: s
  return (
   <>
    <Header className={cn(headerVariants({ variant: "h1", margin: "normal" }))}>
-    <Icons.Gift className={iconVariants({ variant: "extraLarge" })} />
+    <GiftIcon className={iconVariants({ variant: "extraLarge" })} />
     Giveaways
    </Header>
    <p className="mb-4 text-left text-base md:text-lg">

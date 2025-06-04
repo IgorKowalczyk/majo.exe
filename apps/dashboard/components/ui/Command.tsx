@@ -2,9 +2,9 @@
 
 import { type DialogProps } from "@radix-ui/react-dialog";
 import { Command as CommandPrimitive } from "cmdk";
+import { SearchIcon } from "lucide-react";
 import * as React from "react";
 import { Dialog, DialogContent } from "@/components/ui/Dialog";
-import { Icons } from "@/components/ui/Icons";
 import { cn } from "@/lib/utils";
 
 const Command = ({ className, ...props }: React.ComponentPropsWithRef<typeof CommandPrimitive>) => <CommandPrimitive className={cn("flex h-full flex-col overflow-hidden rounded-xl bg-background-secondary", className)} {...props} />;
@@ -22,7 +22,7 @@ const CommandDialog = ({ children, ...props }: DialogProps) => {
 
 const CommandInput = ({ className, ...props }: React.ComponentPropsWithRef<typeof CommandPrimitive.Input>) => (
  <div className="flex items-center border-b px-3" cmdk-input-wrapper="">
-  <Icons.Search className="mr-2 size-4 shrink-0 opacity-50" />
+  <SearchIcon className="mr-2 size-4 shrink-0 opacity-50" />
   <CommandPrimitive.Input className={cn("flex h-11 w-full rounded-md bg-transparent py-3 text-sm outline-none placeholder:text-neutral-600 disabled:cursor-not-allowed disabled:opacity-50", className)} {...props} />
  </div>
 );

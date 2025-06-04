@@ -1,5 +1,6 @@
+import { InfoIcon, NavigationIcon } from "lucide-react";
 import Header, { headerVariants } from "@/components/ui/Headers";
-import { Icons, iconVariants } from "@/components/ui/Icons";
+import { iconVariants } from "@/components/ui/Icons";
 import { Skeleton } from "@/components/ui/Skeletons";
 import { cn } from "@/lib/utils";
 
@@ -9,7 +10,7 @@ export default function Loading() {
    <div className="mt-4 flex flex-row flex-wrap justify-center gap-3 sm:flex-col">
     <div>
      <Header className={cn(headerVariants({ variant: "h1", alignment: "center", margin: "normal" }))}>
-      <Icons.Navigation className={iconVariants({ variant: "extraLarge" })} />
+      <NavigationIcon className={iconVariants({ variant: "extraLarge" })} />
       Choose a server
      </Header>
      <p className="mb-4 text-center text-base text-white/50 md:text-xl">Select a server to manage, or add the bot to a new server.</p>
@@ -28,7 +29,7 @@ export default function Loading() {
     </div>
     <div className="my-4 mt-12 flex flex-row flex-wrap items-start whitespace-nowrap rounded-lg border border-accent-primary bg-accent-primary/10 p-4">
      <span className="mr-1 flex flex-row items-center gap-1 whitespace-nowrap font-bold">
-      <Icons.Info className={iconVariants({ variant: "normal", className: "stroke-accent-primary" })} /> Note:
+      <InfoIcon className={iconVariants({ variant: "normal", className: "stroke-accent-primary" })} /> Note:
      </span>
      <span className="whitespace-normal">
       You can only add the bot to servers you have the <code className="inline">Manage Server</code> permission in.

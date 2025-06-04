@@ -4,8 +4,13 @@ import type { NextConfig } from "next";
 import "@/env";
 import { withAxiom } from "next-axiom";
 import { PrismaPlugin } from "@prisma/nextjs-monorepo-workaround-plugin";
+import withBundleAnalyzer from "@next/bundle-analyzer";
 
 const withMDX = createMdx();
+
+const bundleAnalyzer = withBundleAnalyzer({
+ enabled: process.env.ANALYZE === "true",
+});
 
 const nextConfig = {
  reactStrictMode: true,
@@ -57,4 +62,4 @@ const nextConfig = {
  },
 } satisfies NextConfig;
 
-export default withMDX(withAxiom(nextConfig));
+export default bundleAnalyzer(withMDX(withAxiom(nextConfig)));

@@ -3,6 +3,7 @@ import prismaClient from "@majoexe/database";
 import { GuildLogType } from "@majoexe/database/types";
 import { pseudoRandom } from "@majoexe/util/functions/util";
 import { ApplicationCommandOptionType } from "discord-api-types/v10";
+import { CheckIcon, TrendingUpIcon } from "lucide-react";
 import type { Metadata } from "next";
 import Link from "next/link";
 import avatar01 from "public/assets/avatars/01.webp";
@@ -244,7 +245,7 @@ export default async function Page() {
           <div className="ml-2 flex h-10 flex-row items-center">
            <span className="font-bold">{dashboardConfig.title}</span>{" "}
            <span className="ml-1 flex items-center gap-1 rounded-sm bg-[#5c65f3] px-1 py-[0.12rem] text-xs text-white">
-            <Icons.Check className={iconVariants({ variant: "small" })} /> <span className="-mb-px">BOT</span>
+            <CheckIcon className={iconVariants({ variant: "small" })} /> <span className="-mb-px">BOT</span>
            </span>
            <span className="ml-2 text-sm text-neutral-400">Today at 4:20 PM</span>
           </div>
@@ -286,17 +287,17 @@ export default async function Page() {
         <div className="z-50 flex flex-col items-center justify-center gap-3 px-8 py-6 md:flex-row">
          <p className="flex cursor-pointer gap-1 rounded-full border border-accent-primary/50 bg-accent-primary/20 px-2 py-1 text-sm font-bold text-accent-primary backdrop-blur-md duration-200 hover:bg-accent-primary/30">
           +{Math.floor(Math.random() * 10 + 15)} users today
-          <Icons.TrendingUp className={iconVariants({ variant: "normal" })} />
+          <TrendingUpIcon className={iconVariants({ variant: "normal" })} />
          </p>
 
          <p className="flex cursor-pointer gap-1 rounded-full border border-accent-primary/50 bg-accent-primary/20 px-2 py-1 text-sm font-bold text-accent-primary backdrop-blur-md duration-200 hover:bg-accent-primary/30">
           +{Math.floor(Math.random() * 500 + 100)} messages today
-          <Icons.TrendingUp className={iconVariants({ variant: "normal" })} />
+          <TrendingUpIcon className={iconVariants({ variant: "normal" })} />
          </p>
 
          <p className="flex cursor-pointer gap-1 rounded-full border border-accent-primary/50 bg-accent-primary/20 px-2 py-1 text-sm font-bold text-accent-primary backdrop-blur-md duration-200 hover:bg-accent-primary/30">
           +{Math.floor(Math.random() * 80 + 5)}% increase in activity
-          <Icons.TrendingUp className={iconVariants({ variant: "normal" })} />
+          <TrendingUpIcon className={iconVariants({ variant: "normal" })} />
          </p>
         </div>
        </div>
@@ -312,7 +313,7 @@ export default async function Page() {
          <div className="ml-2 flex flex-row items-center">
           <span className="font-bold">{dashboardConfig.title}</span>{" "}
           <span className="ml-1 flex items-center gap-1 rounded-sm bg-[#5c65f3] px-1 py-[0.12rem] text-xs text-white">
-           <Icons.Check className={iconVariants({ variant: "small" })} /> <span className="-mb-px">BOT</span>
+           <CheckIcon className={iconVariants({ variant: "small" })} /> <span className="-mb-px">BOT</span>
           </span>
           <span className="ml-2 text-sm text-neutral-400">Today at 4:20 PM</span>
          </div>

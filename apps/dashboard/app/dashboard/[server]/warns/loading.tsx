@@ -1,3 +1,4 @@
+import { MessageSquareWarningIcon } from "lucide-react";
 import Header, { headerVariants } from "@/components/ui/Headers";
 import { Icons, iconVariants } from "@/components/ui/Icons";
 import { Skeleton } from "@/components/ui/Skeletons";
@@ -7,7 +8,7 @@ export default function Loading() {
  return (
   <>
    <Header className={cn(headerVariants({ variant: "h1" }))}>
-    <Icons.MessageSquareWarning className={iconVariants({ variant: "extraLarge" })} />
+    <MessageSquareWarningIcon className={iconVariants({ variant: "extraLarge" })} />
     User warns <Icons.refresh className={iconVariants({ variant: "extraLarge", className: "stroke-accent-primary animate-spin" })} />
    </Header>
    <p className="mb-4 text-left text-base md:text-lg">

@@ -1,8 +1,9 @@
 import { getSession } from "lib/session";
+import { CornerDownRightIcon } from "lucide-react";
 import Link from "next/link";
 import { DiscordLogin } from "@/components/DiscordLogin";
 import { buttonVariants } from "@/components/ui/Buttons";
-import { Icons, iconVariants } from "@/components/ui/Icons";
+import { iconVariants } from "@/components/ui/Icons";
 import { cn } from "@/lib/utils";
 
 export async function LoginButton() {
@@ -11,7 +12,7 @@ export async function LoginButton() {
 
  return (
   <Link href="/dashboard" className={cn(buttonVariants({ variant: "primary" }))}>
-   <Icons.cornerRight className={iconVariants({ variant: "button" })} /> Go to dashboard
+   <CornerDownRightIcon className={iconVariants({ variant: "button" })} /> Go to dashboard
   </Link>
  );
 }

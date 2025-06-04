@@ -5,9 +5,10 @@ import { formatDate, formatDuration } from "@majoexe/util/functions/util";
 import type { ColumnDef } from "@tanstack/react-table";
 import { Snowflake } from "discord-api-types/globals";
 import { GiveawayData } from "discord-giveaways";
+import { HashIcon, TimerIcon } from "lucide-react";
 import Link from "next/link";
 import { Button } from "@/components/ui/Buttons";
-import { Icons, iconVariants } from "@/components/ui/Icons";
+import { iconVariants } from "@/components/ui/Icons";
 import Image from "@/components/ui/Image";
 import { Table, TableColumnHeader } from "@/components/ui/Table";
 import { Tooltip } from "@/components/ui/Tooltip";
@@ -62,14 +63,14 @@ export function Giveaways({ data = [] }: { data: Giveaway[] }) {
       {value.ended ? (
        <Tooltip content={`Ended ${formatDate(value.endedAt)} (${formatDuration(new Date(value.endedAt).getTime() - new Date(value.startedAt).getTime())} ago)`}>
         <div className="flex w-fit cursor-help items-center">
-         <Icons.Timer className={iconVariants({ variant: "button", className: "text-red-400" })} />
+         <TimerIcon className={iconVariants({ variant: "button", className: "text-red-400" })} />
          <span className="text-red-400">Ended</span>
         </div>
        </Tooltip>
       ) : (
        <Tooltip content={`Started ${formatDate(value.startedAt)} (${formatDuration(Date.now() - new Date(value.startedAt).getTime())} ago)`}>
         <div className="flex cursor-help items-center">
-         <Icons.Timer className={iconVariants({ variant: "button", className: "text-yellow-400" })} />
+         <TimerIcon className={iconVariants({ variant: "button", className: "text-yellow-400" })} />
          <span className="text-yellow-500">Ends in {formatDuration(new Date(value.endedAt).getTime() - Date.now())}</span>
         </div>
        </Tooltip>
@@ -135,21 +136,21 @@ export function Giveaways({ data = [] }: { data: Giveaway[] }) {
      <div className="flex space-x-4">
       {/* <Tooltip content="Editing giveaways is not yet supported">
        <Button variant="secondary" className="w-fit!" disabled>
-        <Icons.Edit className={iconVariants({ variant: "button" })} />
+        <EditIcon className={iconVariants({ variant: "button" })} />
         Edit
        </Button>
       </Tooltip> */}
       {value.channel && value.channel.link ? (
        <Link href={value.channel.link}>
         <Button variant="primary" className="w-fit!">
-         <Icons.Hash className={iconVariants({ variant: "button" })} />
+         <HashIcon className={iconVariants({ variant: "button" })} />
          View on Discord
         </Button>
        </Link>
       ) : (
        <Tooltip content="The channel or message was deleted or is not accessible">
         <Button variant="secondary" className="w-fit!" disabled>
-         <Icons.Hash className={iconVariants({ variant: "button" })} />
+         <HashIcon className={iconVariants({ variant: "button" })} />
          View on Discord
         </Button>
        </Tooltip>

@@ -2,12 +2,13 @@
 
 import { dashboardConfig } from "@majoexe/config";
 import { type ExtendedAPIGuild } from "@majoexe/util/functions/guild";
+import { ChevronsUpDownIcon } from "lucide-react";
 import Link from "next/link";
 import { useParams, usePathname } from "next/navigation";
 import React from "react";
 import { Button } from "../ui/Buttons";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuGroup, DropdownMenuItem, DropdownMenuLabel, DropdownMenuTrigger } from "@/components/ui/DropdownMenu";
-import { Icons, iconVariants } from "@/components/ui/Icons";
+import { iconVariants } from "@/components/ui/Icons";
 import Image from "@/components/ui/Image";
 
 export const GuildMenuDropdown = ({ guilds, ...props }: React.ComponentProps<typeof DropdownMenu> & { guilds: ExtendedAPIGuild[] }) => {
@@ -28,7 +29,7 @@ export const GuildMenuDropdown = ({ guilds, ...props }: React.ComponentProps<typ
     <Button variant="select">
      {selectedGuild.icon ? <Image src={`https://cdn.discordapp.com/icons/${selectedGuild.id}/${selectedGuild.icon}.${selectedGuild.icon.startsWith("a_") ? "gif" : "png"}`} alt={selectedGuild.name} quality={95} width={24} height={24} className="size-9 shrink-0 rounded-full" /> : <div className="size-9  shrink-0 rounded-full bg-button-secondary" />}
      <span className="text-lg font-bold truncate">{selectedGuild?.name || "Select a server"}</span>
-     <Icons.ChevronsUpDown
+     <ChevronsUpDownIcon
       className={iconVariants({
        variant: "normal",
        className: "text-neutral-400 duration-200 motion-reduce:transition-none",

@@ -2,6 +2,7 @@ import prismaClient from "@majoexe/database";
 import { getGuildFromMemberGuilds, getGuild } from "@majoexe/util/functions/guild";
 import { fillMissingDates, sumArray } from "@majoexe/util/functions/util";
 import { getSession } from "lib/session";
+import { TrendingDownIcon, TrendingUpIcon, MinusIcon } from "lucide-react";
 import { redirect } from "next/navigation";
 import { notFound } from "next/navigation";
 import { StatisticCharts } from "@/app/dashboard/[server]/statistics/components/StatisticCharts";
@@ -75,13 +76,13 @@ export default async function Page(props: { params: Promise<{ server: string }> 
  return (
   <>
    <Header className={cn(headerVariants({ variant: "h1", margin: "normal" }))}>
-    <Icons.TrendingUp className={iconVariants({ variant: "extraLarge" })} />
+    <TrendingUpIcon className={iconVariants({ variant: "extraLarge" })} />
     Statistics
    </Header>
    <div className="mb-6 mt-4 grid grid-cols-1 gap-0 md:grid-cols-1 md:gap-6 lg:grid-cols-2 xl:grid-cols-3">
-    <GraphCard className="mt-0" icon={<Icons.userAdd className={iconVariants({ variant: "extraLarge" })} />} title="New Members" description="Amount of new members that joined your server in the last 7 days." value={newMembers.toString()} graph={newMembers === 0 ? <Icons.Minus className={iconVariants({ variant: "normal" })} /> : newMembers < 0 ? <Icons.TrendingDown className={iconVariants({ variant: "normal" })} /> : <Icons.TrendingUp className={iconVariants({ variant: "normal" })} />} />
-    <GraphCard className="mt-0" icon={<Icons.userMinus className={iconVariants({ variant: "extraLarge" })} />} title="Members Left" description="Amount of members that left your server in the last 7 days." value={membersLeft.toString()} graph={membersLeft === 0 ? <Icons.Minus className={iconVariants({ variant: "normal" })} /> : membersLeft < 0 ? <Icons.TrendingDown className={iconVariants({ variant: "normal" })} /> : <Icons.TrendingUp className={iconVariants({ variant: "normal" })} />} />
-    <GraphCard className="mt-0" icon={<Icons.commentAdd className={iconVariants({ variant: "extraLarge" })} />} title="New Messages" description="The amount of messages that were sent in your server in the last 7 days." value={newMessages.toString()} graph={newMessages === 0 ? <Icons.Minus className={iconVariants({ variant: "normal" })} /> : newMessages < 0 ? <Icons.TrendingDown className={iconVariants({ variant: "normal" })} /> : <Icons.TrendingUp className={iconVariants({ variant: "normal" })} />} />
+    <GraphCard className="mt-0" icon={<Icons.userAdd className={iconVariants({ variant: "extraLarge" })} />} title="New Members" description="Amount of new members that joined your server in the last 7 days." value={newMembers.toString()} graph={newMembers === 0 ? <MinusIcon className={iconVariants({ variant: "normal" })} /> : newMembers < 0 ? <TrendingDownIcon className={iconVariants({ variant: "normal" })} /> : <TrendingUpIcon className={iconVariants({ variant: "normal" })} />} />
+    <GraphCard className="mt-0" icon={<Icons.userMinus className={iconVariants({ variant: "extraLarge" })} />} title="Members Left" description="Amount of members that left your server in the last 7 days." value={membersLeft.toString()} graph={membersLeft === 0 ? <MinusIcon className={iconVariants({ variant: "normal" })} /> : membersLeft < 0 ? <TrendingDownIcon className={iconVariants({ variant: "normal" })} /> : <TrendingUpIcon className={iconVariants({ variant: "normal" })} />} />
+    <GraphCard className="mt-0" icon={<Icons.commentAdd className={iconVariants({ variant: "extraLarge" })} />} title="New Messages" description="The amount of messages that were sent in your server in the last 7 days." value={newMessages.toString()} graph={newMessages === 0 ? <MinusIcon className={iconVariants({ variant: "normal" })} /> : newMessages < 0 ? <TrendingDownIcon className={iconVariants({ variant: "normal" })} /> : <TrendingUpIcon className={iconVariants({ variant: "normal" })} />} />
    </div>
    <StatisticCharts guildJoin={fillMissingDates(guildJoin, "Joins")} guildLeave={fillMissingDates(guildLeave, "Leaves")} guildMessage={fillMissingDates(guildMessage, "Messages")} chartConfig={statisticsChartConfig} />
   </>

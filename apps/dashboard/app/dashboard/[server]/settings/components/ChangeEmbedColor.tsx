@@ -1,6 +1,7 @@
 "use client";
 
 import { globalConfig } from "@majoexe/config";
+import { CheckIcon, TrashIcon } from "lucide-react";
 import React, { useState } from "react";
 import { HexColorPicker } from "react-colorful";
 import { toast } from "sonner";
@@ -153,11 +154,11 @@ export const ChangeEmbedColor = ({ serverId, serverColor, className, ...props }:
      buttons={
       <>
        <Button variant="primary" onClick={handleSubmit} disabled={buttonText === "Saving..."}>
-        {buttonText === "Saving..." ? <Icons.refresh className={iconVariants({ variant: "button", className: "animate-spin" })} /> : <Icons.Check className={iconVariants({ variant: "button" })} />}
+        {buttonText === "Saving..." ? <Icons.refresh className={iconVariants({ variant: "button", className: "animate-spin" })} /> : <CheckIcon className={iconVariants({ variant: "button" })} />}
         {buttonText}
        </Button>
        <Button variant="secondary" onClick={handleReset} disabled={resetButtonText === "Resetting..."}>
-        {resetButtonText === "Resetting..." ? <Icons.refresh className={iconVariants({ variant: "button", className: "animate-spin" })} /> : <Icons.Trash className={iconVariants({ variant: "button" })} />}
+        {resetButtonText === "Resetting..." ? <Icons.refresh className={iconVariants({ variant: "button", className: "animate-spin" })} /> : <TrashIcon className={iconVariants({ variant: "button" })} />}
         {resetButtonText}
        </Button>
       </>

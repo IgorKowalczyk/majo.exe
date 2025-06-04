@@ -1,3 +1,4 @@
+import { TrendingUpIcon } from "lucide-react";
 import { Block } from "@/components/ui/Block";
 import { GraphCard } from "@/components/ui/GraphCard";
 import Header, { headerVariants } from "@/components/ui/Headers";
@@ -9,7 +10,7 @@ export default function Loading() {
  return (
   <>
    <Header className={cn(headerVariants({ variant: "h1", margin: "normal" }))}>
-    <Icons.TrendingUp className={iconVariants({ variant: "extraLarge" })} />
+    <TrendingUpIcon className={iconVariants({ variant: "extraLarge" })} />
     Statistics
    </Header>
    <div className="mb-6 mt-4 grid grid-cols-1 gap-0 md:grid-cols-1 md:gap-6 lg:grid-cols-2 xl:grid-cols-3">

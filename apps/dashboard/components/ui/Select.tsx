@@ -2,9 +2,10 @@
 
 import * as SelectPrimitive from "@radix-ui/react-select";
 import { cva, VariantProps } from "class-variance-authority";
+import { CheckIcon, ChevronsUpDownIcon } from "lucide-react";
 import React from "react";
 import { buttonVariants } from "@/components/ui/Buttons";
-import { Icons, iconVariants } from "@/components/ui/Icons";
+import { iconVariants } from "@/components/ui/Icons";
 import { cn } from "@/lib/utils";
 
 const Select = SelectPrimitive.Root;
@@ -15,7 +16,7 @@ const SelectTrigger = ({ className, ref, children, ...props }: React.ComponentPr
  <SelectPrimitive.Trigger ref={ref} className={cn(buttonVariants({ variant: "select" }), className)} {...props}>
   {children}
   <SelectPrimitive.Icon asChild>
-   <Icons.ChevronsUpDown
+   <ChevronsUpDownIcon
     className={iconVariants({
      variant: "small",
      className: "text-neutral-400 duration-200 motion-reduce:transition-none",
@@ -54,7 +55,7 @@ const SelectItem = ({ children, variant, ...props }: CustomSelectItemProps) => (
  <SelectPrimitive.Item className={cn(SelectItemVariants(variant), "data-[state=checked]:animate-in data-[state=unchecked]:animate-out focus-visible:outline-0")} {...props}>
   <SelectPrimitive.ItemText>{children}</SelectPrimitive.ItemText>
   <SelectPrimitive.ItemIndicator className="absolute inset-y-0 right-0 flex items-center pr-3 text-white duration-200 data-[state=checked]:!opacity-100 data-[state=unchecked]:opacity-0 data-[highlighted]:opacity-100 data-[unhighlighted]:opacity-0">
-   <Icons.Check className={iconVariants({ variant: "normal" })} />
+   <CheckIcon className={iconVariants({ variant: "normal" })} />
   </SelectPrimitive.ItemIndicator>
  </SelectPrimitive.Item>
 );

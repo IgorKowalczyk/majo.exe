@@ -1,6 +1,7 @@
 "use client";
 
 import { APIAutoModerationRule, APIGuildChannel, GuildChannelType } from "discord-api-types/v10";
+import { CheckIcon, HashIcon, InfoIcon, MoveVerticalIcon, ShieldMinusIcon, UsersIcon } from "lucide-react";
 import React, { useState } from "react";
 import { toast } from "sonner";
 import DeleteMessage from "./DeleteMessage";
@@ -108,7 +109,7 @@ export const AntiLink = ({ serverId, enabled, existingActions, existingExemptRol
    >
     <div className="my-4 flex flex-row flex-wrap items-start whitespace-nowrap rounded-lg border border-accent-primary bg-accent-primary/10 p-4">
      <span className="mr-1 flex flex-row items-center whitespace-nowrap font-bold">
-      <Icons.Info className={iconVariants({ variant: "normal", className: "stroke-accent-primary mr-1" })} />
+      <InfoIcon className={iconVariants({ variant: "normal", className: "stroke-accent-primary mr-1" })} />
       Note:
      </span>
      <span className="whitespace-normal">You have to enable this rule to change its settings!</span>
@@ -130,7 +131,7 @@ export const AntiLink = ({ serverId, enabled, existingActions, existingExemptRol
      <div className="flex w-fit flex-row flex-wrap items-center gap-2 text-center font-bold">
       <Tooltip content="Ignore certain roles from triggering the rule.">
        <span className="flex cursor-help items-center gap-2">
-        <Icons.Users className={iconVariants({ variant: "normal", className: "stroke-accent-primary" })} />
+        <UsersIcon className={iconVariants({ variant: "normal", className: "stroke-accent-primary" })} />
         Ignore Roles:
        </span>
       </Tooltip>
@@ -140,7 +141,7 @@ export const AntiLink = ({ serverId, enabled, existingActions, existingExemptRol
      <div className="mt-2 flex w-fit flex-row flex-wrap items-center gap-2 text-center font-bold">
       <Tooltip content="Ignore certain channels from being moderated.">
        <span className="flex cursor-help items-center gap-2">
-        <Icons.Hash className={iconVariants({ variant: "normal", className: "stroke-accent-primary" })} />
+        <HashIcon className={iconVariants({ variant: "normal", className: "stroke-accent-primary" })} />
         Ignore Channels:
        </span>
       </Tooltip>
@@ -152,11 +153,11 @@ export const AntiLink = ({ serverId, enabled, existingActions, existingExemptRol
      </p>
     </Block>
 
-    <Icons.MoveVertical className={cn(iconVariants({ variant: "large" }), "mx-6 mb-4 opacity-50")} />
+    <MoveVerticalIcon className={cn(iconVariants({ variant: "large" }), "mx-6 mb-4 opacity-50")} />
 
     <Block className="mb-4 py-3!">
      <Header className={cn(headerVariants({ variant: "h3" }))}>
-      <Icons.ShieldMinus className={iconVariants({ variant: "large" })} /> Actions:
+      <ShieldMinusIcon className={iconVariants({ variant: "large" })} /> Actions:
      </Header>
      <span className="mb-4 font-normal">What should I do when a member triggers the rule?</span>
 
@@ -183,7 +184,7 @@ export const AntiLink = ({ serverId, enabled, existingActions, existingExemptRol
       </>
      ) : (
       <>
-       <Icons.Check className={iconVariants({ variant: "button" })} />
+       <CheckIcon className={iconVariants({ variant: "button" })} />
        Save
       </>
      )}

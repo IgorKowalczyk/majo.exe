@@ -3,6 +3,7 @@
 import type { GuildWarns, User } from "@majoexe/database/types";
 import { formatDuration, shortenText } from "@majoexe/util/functions/util";
 import type { ColumnDef } from "@tanstack/react-table";
+import { CheckIcon, TrashIcon, UserIcon } from "lucide-react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import React, { useState, useCallback } from "react";
@@ -102,11 +103,11 @@ export const Warns = ({ data, guildId, ...props }: Omit<React.ComponentProps<typ
     return (
      <div className="flex items-center space-x-4">
       <Link href={`user/${value}#warns`} className={cn(buttonVariants({ variant: "secondary" }), "w-fit")}>
-       <Icons.User className={iconVariants({ variant: "button" })} />
+       <UserIcon className={iconVariants({ variant: "button" })} />
        View profile
       </Link>
       <Button variant="red" className="w-fit" onClick={() => removeWarn(value)} disabled={loadingWarns.includes(value)}>
-       <Icons.Trash className={iconVariants({ variant: "button" })} />
+       <TrashIcon className={iconVariants({ variant: "button" })} />
        Delete warn
       </Button>
      </div>
@@ -206,7 +207,7 @@ export const ManageUserWarns = ({ data, guildId, ...props }: { data: UserWarns[]
      <Button variant="red" className="w-fit" onClick={() => removeWarn(value)} disabled={loadingWarns.includes(value) || deletedWarns.includes(value)}>
       {deletedWarns.includes(value) ? (
        <>
-        <Icons.Check className={iconVariants({ variant: "button" })} />
+        <CheckIcon className={iconVariants({ variant: "button" })} />
         Deleted!
        </>
       ) : (
@@ -218,7 +219,7 @@ export const ManageUserWarns = ({ data, guildId, ...props }: { data: UserWarns[]
          </>
         ) : (
          <>
-          <Icons.Trash className={iconVariants({ variant: "button" })} />
+          <TrashIcon className={iconVariants({ variant: "button" })} />
           Delete
          </>
         )}

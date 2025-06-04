@@ -3,9 +3,10 @@
 import type { User } from "@majoexe/database/types";
 import { formatNumber } from "@majoexe/util/functions/util";
 import type { ColumnDef } from "@tanstack/react-table";
+import { UserIcon } from "lucide-react";
 import Link from "next/link";
 import { buttonVariants } from "@/components/ui/Buttons";
-import { Icons, iconVariants } from "@/components/ui/Icons";
+import { iconVariants } from "@/components/ui/Icons";
 import Image from "@/components/ui/Image";
 import { Table, TableColumnHeader } from "@/components/ui/Table";
 import { Tooltip } from "@/components/ui/Tooltip";
@@ -66,7 +67,7 @@ export function Leaderboard({ data, showControls = true, showSearch = true }: { 
        header: "Actions",
        cell: ({ row }: { row: { original: LeaderboardData } }) => (
         <Link className={cn(buttonVariants({ variant: "secondary" }), "w-fit")} href={`user/${row.original.user?.discordId}`}>
-         <Icons.User className={iconVariants({ variant: "button" })} />
+         <UserIcon className={iconVariants({ variant: "button" })} />
          View profile
         </Link>
        ),

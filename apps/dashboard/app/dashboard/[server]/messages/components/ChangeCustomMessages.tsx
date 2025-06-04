@@ -3,6 +3,7 @@
 import { globalConfig } from "@majoexe/config";
 import { toHTML } from "@odiffey/discord-markdown";
 import { Snowflake } from "discord-api-types/globals";
+import { CheckIcon, HashIcon, InfoIcon, TextIcon, TypeIcon } from "lucide-react";
 import React, { useState } from "react";
 import { toast } from "sonner";
 import { Block } from "@/components/ui/Block";
@@ -114,7 +115,7 @@ export const ChangeCustomMessages = ({ ref, serverId, enabled, title, descriptio
     <div className="my-4 flex flex-row flex-wrap gap-2">
      <Tooltip content="Enable or disable welcome messages.">
       <span className="flex w-fit cursor-help items-center gap-2 font-bold">
-       <Icons.Check className={iconVariants({ variant: "normal" })} />
+       <CheckIcon className={iconVariants({ variant: "normal" })} />
        Enabled:
       </span>
      </Tooltip>
@@ -132,7 +133,7 @@ export const ChangeCustomMessages = ({ ref, serverId, enabled, title, descriptio
     >
      <div className="my-4 flex flex-row flex-wrap items-start overflow-hidden whitespace-nowrap rounded-lg border border-accent-primary bg-accent-primary/10 p-4 duration-200 will-change-transform">
       <span className="mr-1 flex flex-row items-center whitespace-nowrap font-bold">
-       <Icons.Info className={iconVariants({ variant: "normal", className: "stroke-accent-primary mr-1" })} />
+       <InfoIcon className={iconVariants({ variant: "normal", className: "stroke-accent-primary mr-1" })} />
        Note:
       </span>
       <span className="whitespace-normal">You have to enable this message to configure it.</span>
@@ -154,7 +155,7 @@ export const ChangeCustomMessages = ({ ref, serverId, enabled, title, descriptio
        <div className="mb-2 flex w-fit flex-col flex-wrap gap-2">
         <Tooltip content="Where should the welcome message be sent?">
          <span className="flex w-fit cursor-help items-center gap-2 font-bold">
-          <Icons.Hash className={iconVariants({ variant: "normal" })} />
+          <HashIcon className={iconVariants({ variant: "normal" })} />
           Channel:
          </span>
         </Tooltip>
@@ -187,7 +188,7 @@ export const ChangeCustomMessages = ({ ref, serverId, enabled, title, descriptio
        <div className="my-2 flex flex-col flex-wrap gap-2">
         <Tooltip content="The title of the welcome message.">
          <span className="flex w-fit cursor-help items-center gap-2 font-bold">
-          <Icons.Type className={iconVariants({ variant: "normal" })} />
+          <TypeIcon className={iconVariants({ variant: "normal" })} />
           Title:
          </span>
         </Tooltip>
@@ -197,7 +198,7 @@ export const ChangeCustomMessages = ({ ref, serverId, enabled, title, descriptio
        <div className="my-2 flex flex-col flex-wrap gap-2">
         <Tooltip content="The description of the welcome message.">
          <span className="flex w-fit cursor-help items-center gap-2 font-bold">
-          <Icons.Text className={iconVariants({ variant: "normal" })} />
+          <TextIcon className={iconVariants({ variant: "normal" })} />
           Description:
          </span>
         </Tooltip>
@@ -206,7 +207,7 @@ export const ChangeCustomMessages = ({ ref, serverId, enabled, title, descriptio
 
        <div className="my-4 w-fit whitespace-nowrap rounded-lg border border-accent-primary bg-accent-primary/10 p-4">
         <div className="mr-1 flex flex-row items-center whitespace-nowrap font-bold">
-         <Icons.Info className={iconVariants({ variant: "normal", className: "stroke-accent-primary mr-1" })} />
+         <InfoIcon className={iconVariants({ variant: "normal", className: "stroke-accent-primary mr-1" })} />
          Note:
         </div>
         <div className="mt-1 whitespace-normal">
@@ -238,7 +239,7 @@ export const ChangeCustomMessages = ({ ref, serverId, enabled, title, descriptio
       </>
      ) : (
       <>
-       <Icons.Check className={iconVariants({ variant: "button" })} />
+       <CheckIcon className={iconVariants({ variant: "button" })} />
        Save
       </>
      )}

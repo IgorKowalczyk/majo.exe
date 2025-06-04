@@ -4,12 +4,13 @@ import { ExcludedEvents } from "@majoexe/util/database";
 import { getGuildFromMemberGuilds, getGuild, getGuildChannels } from "@majoexe/util/functions/guild";
 import { ChannelType } from "discord-api-types/v10";
 import { getSession } from "lib/session";
+import { ScrollTextIcon } from "lucide-react";
 import { redirect } from "next/navigation";
 import { notFound } from "next/navigation";
 import { UpdateLogs } from "./components/UpdateLogs";
 import { ErrorBlock } from "@/components/ui/Block";
 import Header, { headerVariants } from "@/components/ui/Headers";
-import { Icons, iconVariants } from "@/components/ui/Icons";
+import { iconVariants } from "@/components/ui/Icons";
 import { cn } from "@/lib/utils";
 
 export const metadata = {
@@ -73,7 +74,7 @@ export default async function LogsPage(props: { params: Promise<{ server: string
  return (
   <>
    <Header className={cn(headerVariants({ variant: "h1", margin: "normal" }))}>
-    <Icons.ScrollText className={iconVariants({ variant: "extraLarge" })} />
+    <ScrollTextIcon className={iconVariants({ variant: "extraLarge" })} />
     Logs
    </Header>
    <p className="mb-4 text-left text-base md:text-lg">Manage the actions that Majo.exe can watch and log in selected channels.</p>

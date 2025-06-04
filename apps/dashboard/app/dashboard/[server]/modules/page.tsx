@@ -2,6 +2,7 @@ import { botConfig } from "@majoexe/config";
 import prismaClient from "@majoexe/database";
 import { getGuildFromMemberGuilds, getGuild } from "@majoexe/util/functions/guild";
 import { getSession } from "lib/session";
+import { BlocksIcon, InfoIcon, PackagePlusIcon } from "lucide-react";
 import { redirect } from "next/navigation";
 import { notFound } from "next/navigation";
 import { UpdateCategories } from "@/components/client/commandModules/UpdateCategories";
@@ -61,13 +62,13 @@ export default async function Page(props: { params: Promise<{ server: string }> 
  return (
   <>
    <Header className={cn(headerVariants({ variant: "h1", margin: "normal" }))}>
-    <Icons.PackagePlus className={iconVariants({ variant: "extraLarge" })} />
+    <PackagePlusIcon className={iconVariants({ variant: "extraLarge" })} />
     Modules
    </Header>
    <p className="mb-4 text-left text-base md:text-lg">Choose which modules you want to be enabled on your server.</p>
    <Block className="mt-4">
     <Header className={cn(headerVariants({ variant: "h2" }))}>
-     <Icons.Blocks className={iconVariants({ variant: "large", className: "stroke-2!" })} />
+     <BlocksIcon className={iconVariants({ variant: "large", className: "stroke-2!" })} />
      Categories
     </Header>
     <p className="mb-4 mt-2 text-left">Enable or disable categories of commands.</p>
@@ -109,7 +110,7 @@ export default async function Page(props: { params: Promise<{ server: string }> 
       {guild.guildDisabledCategories.some((cat) => cat.categoryName === category.name) && (
        <div className="my-4 flex flex-row flex-wrap items-start whitespace-nowrap rounded-lg border border-accent-primary bg-accent-primary/10 p-4">
         <span className="mr-1 flex flex-row items-center whitespace-nowrap font-bold">
-         <Icons.Info className={iconVariants({ variant: "normal", className: "stroke-accent-primary mr-1" })} /> Note:
+         <InfoIcon className={iconVariants({ variant: "normal", className: "stroke-accent-primary mr-1" })} /> Note:
         </span>
         <span className="whitespace-normal">You have to enable this category to change status of individual commands in it!</span>
        </div>

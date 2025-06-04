@@ -1,5 +1,6 @@
 "use client";
 
+import { BotIcon, GiftIcon, HandIcon, HomeIcon, LogsIcon, MessageSquareWarningIcon, PackagePlusIcon, SettingsIcon, SparklesIcon, TrendingUpIcon } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React, { use } from "react";
@@ -49,19 +50,19 @@ export const SideNavigation = ({ className, server, ...props }: SideNavigationPr
 
     <div className="flex w-full flex-col items-center justify-center gap-2 border-t border-t-neutral-800 px-4 pt-4">
      <SideNavLink href={`/dashboard/${server}`}>
-      <Icons.Home className={iconVariants({ variant: "large" })} />
+      <HomeIcon className={iconVariants({ variant: "large" })} />
       Overview
      </SideNavLink>
      <SideNavLink href={`/dashboard/${server}/statistics`}>
-      <Icons.TrendingUp className={iconVariants({ variant: "large" })} />
+      <TrendingUpIcon className={iconVariants({ variant: "large" })} />
       Statistics
      </SideNavLink>
      <SideNavLink href={`/dashboard/${server}/leaderboard`}>
-      <Icons.Sparkles className={iconVariants({ variant: "large" })} />
+      <SparklesIcon className={iconVariants({ variant: "large" })} />
       Leaderboard
      </SideNavLink>
      <SideNavLink href={`/dashboard/${server}/giveaways`}>
-      <Icons.Gift className={iconVariants({ variant: "large" })} />
+      <GiftIcon className={iconVariants({ variant: "large" })} />
       Giveaways
      </SideNavLink>
     </div>
@@ -69,7 +70,7 @@ export const SideNavigation = ({ className, server, ...props }: SideNavigationPr
     <div className="text-text mt-2 border-t border-white/20 px-5 py-2 opacity-40">Moderation</div>
     <div className="flex w-full flex-col items-center justify-center gap-2 px-4">
      <SideNavLink href={`/dashboard/${server}/warns`}>
-      <Icons.MessageSquareWarning className={iconVariants({ variant: "large" })} />
+      <MessageSquareWarningIcon className={iconVariants({ variant: "large" })} />
       User warns
      </SideNavLink>
      <SideNavLink href={`/dashboard/${server}/logs`}>
@@ -77,26 +78,26 @@ export const SideNavigation = ({ className, server, ...props }: SideNavigationPr
       Logs <Badge className="-mt-3">new</Badge>
      </SideNavLink>
      <SideNavLink href={`/dashboard/${server}/automod`}>
-      <Icons.Bot className={iconVariants({ variant: "large" })} />
+      <BotIcon className={iconVariants({ variant: "large" })} />
       Automod
      </SideNavLink>
     </div>
     <div className="text-text mt-2 border-t border-white/20 px-5 py-2 opacity-40">Management</div>
     <div className="flex w-full flex-col items-center justify-center gap-2 px-4">
      <SideNavLink href={`/dashboard/${server}/modules`}>
-      <Icons.PackagePlus className={iconVariants({ variant: "large" })} />
+      <PackagePlusIcon className={iconVariants({ variant: "large" })} />
       Modules
      </SideNavLink>
      <SideNavLink href={`/dashboard/${server}/messages`}>
-      <Icons.Hand className={iconVariants({ variant: "large" })} />
+      <HandIcon className={iconVariants({ variant: "large" })} />
       Welcome & Leave
      </SideNavLink>
      <SideNavLink href={`/dashboard/${server}/dashboard-logs`}>
-      <Icons.Logs className={iconVariants({ variant: "large" })} />
+      <LogsIcon className={iconVariants({ variant: "large" })} />
       Dashboard logs
      </SideNavLink>
      <SideNavLink href={`/dashboard/${server}/settings`}>
-      <Icons.Settings className={iconVariants({ variant: "large" })} />
+      <SettingsIcon className={iconVariants({ variant: "large" })} />
       Settings
      </SideNavLink>
     </div>

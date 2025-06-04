@@ -1,5 +1,6 @@
 "use client";
 
+import { ChevronsUpDownIcon, UserIcon } from "lucide-react";
 import Link from "next/link";
 import { signOut } from "next-auth/react";
 import React from "react";
@@ -21,7 +22,7 @@ export const UserMenuDropdown = ({ user, ...props }: React.ComponentProps<typeof
      <Image width="32" height="32" quality={100} className="size-6 shrink-0 rounded-full" src={user.avatar} loading="lazy" alt={`${user.name} Avatar`} />
      {user.global_name || user.name}
 
-     <Icons.ChevronsUpDown
+     <ChevronsUpDownIcon
       className={iconVariants({
        variant: "small",
        className: "text-neutral-400 duration-200 motion-reduce:transition-none",
@@ -37,7 +38,7 @@ export const UserMenuDropdown = ({ user, ...props }: React.ComponentProps<typeof
     </DropdownMenuItem>
     <DropdownMenuItem asChild>
      <Link href="/user/profile">
-      <Icons.User className={iconVariants({ variant: "button", className: "ml-1" })} /> Profile
+      <UserIcon className={iconVariants({ variant: "button", className: "ml-1" })} /> Profile
      </Link>
     </DropdownMenuItem>
 

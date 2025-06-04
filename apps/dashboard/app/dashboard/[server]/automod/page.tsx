@@ -3,6 +3,7 @@ import { syncDatabaseAutoModRule } from "@majoexe/util/database";
 import { getGuildFromMemberGuilds, getGuild, getGuildRoles, getGuildChannels } from "@majoexe/util/functions/guild";
 import { ChannelType } from "discord-api-types/v10";
 import { getSession } from "lib/session";
+import { BotIcon, ShieldBanIcon } from "lucide-react";
 import { redirect } from "next/navigation";
 import { notFound } from "next/navigation";
 import { AntiMention } from "./components/AntiMention";
@@ -12,7 +13,7 @@ import { AntiLink } from "@/app/dashboard/[server]/automod/components/AntiLink";
 import { Badge } from "@/components/ui/Badge";
 import { Block } from "@/components/ui/Block";
 import Header, { headerVariants } from "@/components/ui/Headers";
-import { Icons, iconVariants } from "@/components/ui/Icons";
+import { iconVariants } from "@/components/ui/Icons";
 import { cn } from "@/lib/utils";
 
 export const metadata = {
@@ -76,7 +77,7 @@ export default async function AutomodPage(props: { params: Promise<{ server: str
  return (
   <>
    <Header className={cn(headerVariants({ variant: "h1", margin: "normal" }))}>
-    <Icons.Bot className={iconVariants({ variant: "extraLarge" })} />
+    <BotIcon className={iconVariants({ variant: "extraLarge" })} />
     Automod
    </Header>
    <p className="mb-4 text-left text-base md:text-lg">Automatically moderate your server, block bad words, links and other things.</p>
@@ -110,7 +111,7 @@ export default async function AutomodPage(props: { params: Promise<{ server: str
    </Block>
    <Block className="mb-6">
     <Header className={cn(headerVariants({ variant: "h2" }))}>
-     <Icons.ShieldBan className={iconVariants({ variant: "large" })} />
+     <ShieldBanIcon className={iconVariants({ variant: "large" })} />
      Anti-Badwords <Badge>Coming Soon</Badge>
     </Header>
     <p className="mb-4 text-left">

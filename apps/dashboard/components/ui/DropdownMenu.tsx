@@ -1,8 +1,8 @@
 "use client";
 
 import * as DropdownMenuPrimitive from "@radix-ui/react-dropdown-menu";
+import { CheckIcon, ChevronRightIcon, CircleIcon } from "lucide-react";
 import * as React from "react";
-import { Icons } from "./Icons";
 import { cn } from "@/lib/utils";
 
 const DropdownMenu = DropdownMenuPrimitive.Root;
@@ -22,7 +22,7 @@ const DropdownMenuSubTrigger = ({
 }) => (
  <DropdownMenuPrimitive.SubTrigger className={cn("flex cursor-pointer select-none items-center gap-3 rounded-lg px-3 py-2 text-sm font-normal duration-200 hover:bg-background-menu-button ui-open:border-neutral-700 ui-open:bg-background-menu-button", inset && "pl-8", className)} {...props}>
   {children}
-  <Icons.ChevronRight className="ml-auto" />
+  <ChevronRightIcon className="ml-auto" />
  </DropdownMenuPrimitive.SubTrigger>
 );
 
@@ -61,7 +61,7 @@ const DropdownMenuCheckboxItem = ({ className, children, checked, ...props }: Re
  <DropdownMenuPrimitive.CheckboxItem className={cn("relative flex cursor-pointer select-none items-center rounded-lg py-2 pl-8 pr-2 text-sm font-normal text-neutral-500 duration-200 hover:bg-button-primary hover:text-white", className)} checked={checked} {...props}>
   <span className="absolute left-2 flex size-4 items-center justify-center">
    <DropdownMenuPrimitive.ItemIndicator>
-    <Icons.Check className="size-4 shrink-0" />
+    <CheckIcon className="size-4 shrink-0" />
    </DropdownMenuPrimitive.ItemIndicator>
   </span>
   {children}
@@ -72,7 +72,7 @@ const DropdownMenuRadioItem = ({ className, children, ...props }: React.Componen
  <DropdownMenuPrimitive.RadioItem className={cn("relative flex cursor-pointer select-none items-center rounded-lg py-2 pl-8 pr-2 text-sm font-normal text-neutral-500 duration-200 hover:bg-button-primary hover:text-white", className)} {...props}>
   <span className="absolute left-2 flex size-4 items-center justify-center">
    <DropdownMenuPrimitive.ItemIndicator>
-    <Icons.Circle className="size-2 shrink-0 fill-current" />
+    <CircleIcon className="size-2 shrink-0 fill-current" />
    </DropdownMenuPrimitive.ItemIndicator>
   </span>
   {children}

@@ -4,6 +4,7 @@ import { ExtendedAPIGuild, getMemberGuilds } from "@majoexe/util/functions/guild
 import { getFlags } from "@majoexe/util/functions/user";
 import { formatNumber } from "@majoexe/util/functions/util";
 import { getSession } from "lib/session";
+import { DownloadIcon, ExternalLinkIcon, ServerIcon } from "lucide-react";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import { DeleteUserData } from "@/app/user/components/DeleteUserData";
@@ -131,7 +132,7 @@ export default async function Page() {
        </div>
        <div className="mb-[-14px] hidden w-full items-end justify-end md:flex">
         <Link href={`https://discord.com/users/${user.id}`} className={cn(buttonVariants({ variant: "primary" }))} target="_blank">
-         <Icons.ExternalLink className={iconVariants({ variant: "button" })} /> Discord profile
+         <ExternalLinkIcon className={iconVariants({ variant: "button" })} /> Discord profile
         </Link>
        </div>
       </div>
@@ -141,7 +142,7 @@ export default async function Page() {
 
     <Block>
      <Header className={cn(headerVariants({ variant: "h2" }))}>
-      <Icons.Server className={iconVariants({ variant: "large", className: "stroke-2!" })} />
+      <ServerIcon className={iconVariants({ variant: "large", className: "stroke-2!" })} />
       Servers
      </Header>
      <p className="mt-2 leading-none text-white/70">A list of servers you are in and some information about them.</p>
@@ -185,14 +186,14 @@ export default async function Page() {
 
     <Block>
      <Header className={cn(headerVariants({ variant: "h2" }))}>
-      <Icons.Download className={iconVariants({ variant: "large", className: "stroke-2!" })} />
+      <DownloadIcon className={iconVariants({ variant: "large", className: "stroke-2!" })} />
       Download data
      </Header>
      <p className="mt-2 leading-none text-white/70">
       Download all your data in a <code>.json</code> file. This includes your profile, data from all servers you are in and more.
      </p>
      <Link href="/api/user/download" className={cn(buttonVariants({ variant: "primary" }), "mt-4 w-fit")} target="_blank">
-      <Icons.Download className={iconVariants({ variant: "button" })} />
+      <DownloadIcon className={iconVariants({ variant: "button" })} />
       Download data
      </Link>
     </Block>

@@ -1,6 +1,7 @@
 "use client";
 
 import { DataEntry } from "@majoexe/util/functions/util";
+import { CalendarRangeIcon, ChevronsUpDownIcon, DownloadIcon } from "lucide-react";
 import React, { useState } from "react";
 import { Area, AreaChart, CartesianGrid, XAxis } from "recharts";
 import { Button } from "@/components/ui/Buttons";
@@ -88,9 +89,9 @@ export const StatsChart = ({ title, data, CSVData, fileName, categories, chartCo
       <DropdownMenu>
        <DropdownMenuTrigger asChild>
         <Button variant="select">
-         <Icons.Download className={iconVariants({ variant: "small" })} />
+         <DownloadIcon className={iconVariants({ variant: "small" })} />
          Export
-         <Icons.ChevronsUpDown
+         <ChevronsUpDownIcon
           className={iconVariants({
            variant: "small",
            className: "text-neutral-400 duration-200 motion-reduce:transition-none",
@@ -113,7 +114,7 @@ export const StatsChart = ({ title, data, CSVData, fileName, categories, chartCo
        <SelectTrigger>
         <SelectValue placeholder="Select date range">
          <span className="flex items-center gap-2">
-          <Icons.CalendarRange className={iconVariants({ variant: "small" })} />
+          <CalendarRangeIcon className={iconVariants({ variant: "small" })} />
           <span>Date Range: {dateRange?.label ?? "N/A"}</span>
          </span>
         </SelectValue>

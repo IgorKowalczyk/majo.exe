@@ -1,10 +1,11 @@
 "use client";
 
 import { Snowflake } from "discord-api-types/globals";
+import { CheckIcon, ChevronsUpDownIcon } from "lucide-react";
 import * as React from "react";
 import { Button } from "@/components/ui/Buttons";
 import { Command, CommandEmpty, CommandGroup, CommandInput, CommandItem, CommandList } from "@/components/ui/Command";
-import { Icons, iconVariants } from "@/components/ui/Icons";
+import { iconVariants } from "@/components/ui/Icons";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/Popover";
 import { cn } from "@/lib/utils";
 
@@ -33,7 +34,7 @@ export const RolesSelect = ({ allRoles, selectedRoles = [], setRoles, multiple =
    <PopoverTrigger asChild>
     <Button variant="select" role="combobox" aria-expanded={open} className="max-w-sm justify-between">
      {selectedRoles.length > 0 ? (multiple ? `${allRoles.find((role) => role.id === selectedRoles[0])?.name ?? "Unknown role"}${selectedRoles.length > 1 ? ` + ${selectedRoles.length - 1} more` : ""}` : (allRoles.find((role) => role.id === selectedRoles[0])?.name ?? "No role selected")) : "Select roles..."}
-     <Icons.ChevronsUpDown
+     <ChevronsUpDownIcon
       className={iconVariants({
        variant: "small",
        className: "text-neutral-400 duration-200 motion-reduce:transition-none",
@@ -59,7 +60,7 @@ export const RolesSelect = ({ allRoles, selectedRoles = [], setRoles, multiple =
           <div className="size-3 rounded-full" style={{ backgroundColor: role.color || "#FFFFFF" }} />
           {role.name}
          </div>
-         <Icons.Check className={cn("ml-auto transition", selectedRoles.includes(role.id) ? "opacity-100" : "opacity-0")} />
+         <CheckIcon className={cn("ml-auto transition", selectedRoles.includes(role.id) ? "opacity-100" : "opacity-0")} />
         </CommandItem>
        ))}
       </CommandGroup>

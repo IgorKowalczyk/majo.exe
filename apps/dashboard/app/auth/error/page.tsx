@@ -1,3 +1,4 @@
+import { HomeIcon } from "lucide-react";
 import Link from "next/link";
 import { buttonVariants } from "@/components/ui/Buttons";
 import Header, { headerVariants } from "@/components/ui/Headers";
@@ -20,7 +21,7 @@ export default async function ErrorPage(props: { searchParams: Promise<{ error: 
      <p className="my-1 mt-2 text-center text-xl text-white/50">{searchParams.error}</p>
      <div className="mt-6 flex flex-wrap justify-center gap-2">
       <Link href="/" className={buttonVariants({ variant: "primary" })}>
-       <Icons.Home className={iconVariants({ variant: "button" })} />
+       <HomeIcon className={iconVariants({ variant: "button" })} />
        Go back home
       </Link>
       <Link href="/discord" className={buttonVariants({ variant: "secondary" })}>

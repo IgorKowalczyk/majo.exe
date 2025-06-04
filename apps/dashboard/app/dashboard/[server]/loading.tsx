@@ -1,3 +1,4 @@
+import { GaugeIcon } from "lucide-react";
 import { CategoryBar } from "@/components/CategoryBar";
 import { Block } from "@/components/ui/Block";
 import Header, { headerVariants } from "@/components/ui/Headers";
@@ -60,7 +61,7 @@ export default function Loading() {
      <Block>
       <Header className={cn(headerVariants({ variant: "h4", margin: "normal" }), "block")}>
        <span className="flex flex-row flex-wrap items-center gap-2">
-        <Icons.Gauge className={iconVariants({ variant: "normal", className: "stroke-2!" })} />
+        <GaugeIcon className={iconVariants({ variant: "normal", className: "stroke-2!" })} />
         <span className="opacity-80">Server Score: </span>
         <span>Calculating...</span>
        </span>

@@ -3,6 +3,7 @@
 import { botConfig } from "@majoexe/config";
 import type { GuildLogType, GuildLogsSettings } from "@majoexe/database/types";
 import { Snowflake } from "discord-api-types/globals";
+import { CheckIcon, HashIcon, InfoIcon, TrashIcon, TriangleAlertIcon } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useNavigationGuard } from "next-navigation-guard";
 import React, { useState, useEffect } from "react";
@@ -113,12 +114,12 @@ export const UpdateLogs = ({ serverId, allChannels, logs, allowedLogs }: UpdateL
    >
     <div className="mx-auto flex w-full max-w-3xl flex-col items-center justify-between gap-3 rounded-2xl border border-neutral-800 bg-background-secondary p-3 shadow-2xl md:flex-row">
      <span className="flex items-center gap-2 font-bold">
-      <Icons.TriangleAlert className="ml-2 size-6 text-red-400" />
+      <TriangleAlertIcon className="ml-2 size-6 text-red-400" />
       Caution - You have unsaved changes
      </span>
      <div className="flex gap-3">
       <Button variant="secondary" onClick={handleDiscardAll} className="gap-2" disabled={loading}>
-       <Icons.Trash className={iconVariants({ variant: "normal" })} />
+       <TrashIcon className={iconVariants({ variant: "normal" })} />
        Reset
       </Button>
       <Button variant="primary" onClick={handleSaveAll} className="gap-2" disabled={loading}>
@@ -128,7 +129,7 @@ export const UpdateLogs = ({ serverId, allChannels, logs, allowedLogs }: UpdateL
         </>
        ) : (
         <>
-         <Icons.Check className={iconVariants({ variant: "normal" })} />
+         <CheckIcon className={iconVariants({ variant: "normal" })} />
          Save changes
         </>
        )}
@@ -207,7 +208,7 @@ export const UpdateLog = ({ allChannels, exisingChannel, logType, logEnabled, on
    <div className="my-4 flex flex-row flex-wrap gap-2">
     <Tooltip content={`${enabled ? "Disable" : "Enable"} ${handleLogText(logType).toLowerCase()} event logging.`}>
      <span className="flex w-fit cursor-help items-center gap-2 font-bold">
-      <Icons.Check className={iconVariants({ variant: "normal" })} />
+      <CheckIcon className={iconVariants({ variant: "normal" })} />
       Enabled:
      </span>
     </Tooltip>
@@ -216,7 +217,7 @@ export const UpdateLog = ({ allChannels, exisingChannel, logType, logEnabled, on
    <div className="flex items-end justify-between gap-3">
     <div>
      <span className="flex items-center gap-2 font-bold">
-      <Icons.Hash className={iconVariants({ variant: "normal" })} />
+      <HashIcon className={iconVariants({ variant: "normal" })} />
       Channel:
      </span>
      <p className="mb-2 text-sm text-neutral-500">Select the channel where the logs will be sent.</p>
@@ -230,7 +231,7 @@ export const UpdateLog = ({ allChannels, exisingChannel, logType, logEnabled, on
      "max-h-[500px] opacity-100 p-4": enabled && !messageChannel,
     })}
    >
-    <Icons.Info className={iconVariants({ variant: "normal", className: "stroke-red-400 mr-1" })} />
+    <InfoIcon className={iconVariants({ variant: "normal", className: "stroke-red-400 mr-1" })} />
     <span className="whitespace-normal">Please select a channel to enable logging.</span>
    </div>
   </Block>

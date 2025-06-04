@@ -1,10 +1,11 @@
 "use client";
 
 import { useReactTable, getCoreRowModel, getSortedRowModel, getPaginationRowModel, getFilteredRowModel, ColumnDef, Column, flexRender } from "@tanstack/react-table";
+import { ArrowDownIcon, ArrowUpIcon, ChevronLeftIcon, ChevronRightIcon, ChevronsDownIcon, ChevronsUpDownIcon, ChevronsUpIcon, SearchIcon } from "lucide-react";
 import React, { useState } from "react";
 import { Button } from "@/components/ui/Buttons";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/DropdownMenu";
-import { Icons, iconVariants } from "@/components/ui/Icons";
+import { iconVariants } from "@/components/ui/Icons";
 import { InputWithIcon } from "@/components/ui/Input";
 import { ViewSelect } from "@/components/ui/ViewSelect";
 import { cn } from "@/lib/utils";
@@ -34,14 +35,14 @@ export function TableColumnHeader<TData, TValue>({ column, title, className }: D
      <span>{title}</span>
      {column.getCanSort() && (
       <div className="relative">
-       <Icons.arrowUp
+       <ChevronsUpIcon
         className={cn("absolute size-3 duration-200 motion-reduce:transition-none", {
          "scale-0": column.getIsSorted() === "desc",
          "scale-100": column.getIsSorted() === "asc",
          "opacity-0": !column.getIsSorted(),
         })}
        />
-       <Icons.arrowDown
+       <ChevronsDownIcon
         className={cn("absolute size-3 duration-200 motion-reduce:transition-none", {
          "scale-0": column.getIsSorted() === "asc",
          "scale-100": column.getIsSorted() === "desc",
@@ -49,7 +50,7 @@ export function TableColumnHeader<TData, TValue>({ column, title, className }: D
         })}
        />
 
-       <Icons.ChevronsUpDown
+       <ChevronsUpDownIcon
         className={cn("absolute size-3 duration-200 motion-reduce:transition-none", {
          "scale-0": column.getIsSorted(),
          "scale-100": !column.getIsSorted(),
@@ -63,11 +64,11 @@ export function TableColumnHeader<TData, TValue>({ column, title, className }: D
       {column.getCanSort() && (
        <>
         <DropdownMenuItem aria-label="Sort ascending" onClick={() => column.toggleSorting(false)}>
-         <Icons.ArrowUp className="mr-2 size-4" aria-hidden="true" />
+         <ArrowUpIcon className="mr-2 size-4" aria-hidden="true" />
          Asc
         </DropdownMenuItem>
         <DropdownMenuItem aria-label="Sort descending" onClick={() => column.toggleSorting(true)}>
-         <Icons.ArrowDown className="mr-2 size-4" aria-hidden="true" />
+         <ArrowDownIcon className="mr-2 size-4" aria-hidden="true" />
          Desc
         </DropdownMenuItem>
        </>
@@ -75,7 +76,7 @@ export function TableColumnHeader<TData, TValue>({ column, title, className }: D
       {/* {column.getCanSort() && column.getCanHide() && <DropdownMenuSeparator />} */}
       {/* {column.getCanHide() && (
       <MenuItem aria-label="Hide column" onClick={() => column.toggleVisibility(false)}>
-       <Icons.EyeOffIcon className="mr-2 size-4" aria-hidden="true" />
+       <EyeOffIcon className="mr-2 size-4" aria-hidden="true" />
        Hide
       </MenuItem>
      )} */}
@@ -118,7 +119,7 @@ export const Table = <TData, TValue>({ columns, data, sortBy = [{ id: "id", desc
       hidden: !showSearch && !showControls,
      })}
     >
-     {showSearch && <InputWithIcon icon={<Icons.Search className={iconVariants({ variant: "normal" })} />} placeholder="Search" value={globalFilter || ""} onChange={(e) => setGlobalFilter(e.target.value)} />}
+     {showSearch && <InputWithIcon icon={<SearchIcon className={iconVariants({ variant: "normal" })} />} placeholder="Search" value={globalFilter || ""} onChange={(e) => setGlobalFilter(e.target.value)} />}
      {showControls && <ViewSelect selectedValue={table.getState().pagination.pageSize} setSelectedValue={table.setPageSize} />}
     </div>
     <div className="overflow-hidden rounded-lg border">
@@ -160,7 +161,7 @@ export const Table = <TData, TValue>({ columns, data, sortBy = [{ id: "id", desc
     {showControls && (
      <div className="flex items-center justify-between  pt-4 text-neutral-500">
       <Button variant="secondary" onClick={() => table.previousPage()} disabled={!table.getCanPreviousPage()} className="w-fit!">
-       <Icons.arrowLeft className={iconVariants({ variant: "button" })} />
+       <ChevronLeftIcon className={iconVariants({ variant: "button" })} />
        Previous
       </Button>
       <div>
@@ -169,7 +170,7 @@ export const Table = <TData, TValue>({ columns, data, sortBy = [{ id: "id", desc
       <div className="flex items-center space-x-2">
        <Button variant="secondary" onClick={() => table.nextPage()} disabled={!table.getCanNextPage()} className="w-fit!">
         Next
-        <Icons.arrowRight className={iconVariants({ variant: "button", className: "-mr-1! ml-2" })} />
+        <ChevronRightIcon className={iconVariants({ variant: "button", className: "-mr-1! ml-2" })} />
        </Button>
       </div>
      </div>

@@ -1,6 +1,7 @@
 "use client";
 
 import { isNumeric } from "@majoexe/util/functions/util";
+import { CheckIcon, MessageSquareDotIcon } from "lucide-react";
 import React, { useState } from "react";
 import { toast } from "sonner";
 import { Button } from "@/components/ui/Buttons";
@@ -76,7 +77,7 @@ export const ChangeUserReputation = ({ userId, guildId, userReputation, classNam
   <form className={cn("flex flex-col items-start gap-2", className)} onSubmit={handleReputation} {...props}>
    <InputWithIcon
     type="number"
-    icon={<Icons.messageDot className={iconVariants({ variant: "normal" })} />}
+    icon={<MessageSquareDotIcon className={iconVariants({ variant: "normal" })} />}
     placeholder="User reputation"
     value={userRep}
     onChange={(e) => changeReputation(parseInt(e.target.value))}
@@ -94,7 +95,7 @@ export const ChangeUserReputation = ({ userId, guildId, userReputation, classNam
      </>
     ) : (
      <>
-      <Icons.Check className={iconVariants({ variant: "button" })} /> Update
+      <CheckIcon className={iconVariants({ variant: "button" })} /> Update
      </>
     )}
    </Button>

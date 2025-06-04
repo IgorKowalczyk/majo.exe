@@ -1,5 +1,6 @@
 "use client";
 
+import { TrashIcon, XIcon } from "lucide-react";
 import React, { useState } from "react";
 import { toast } from "sonner";
 import { Button } from "@/components/ui/Buttons";
@@ -65,7 +66,7 @@ export const ResetUserXP = ({ userId, guildId, className, ...props }: ResetUserX
    <Dialog open={isOpen} onOpenChange={setIsOpen}>
     <DialogTrigger asChild>
      <Button variant="red" className="mt-4 w-fit" onClick={() => setIsOpen(true)}>
-      <Icons.Trash className={iconVariants({ variant: "button" })} />
+      <TrashIcon className={iconVariants({ variant: "button" })} />
       Reset XP
      </Button>
     </DialogTrigger>
@@ -87,14 +88,14 @@ export const ResetUserXP = ({ userId, guildId, className, ...props }: ResetUserX
         </>
        ) : (
         <>
-         <Icons.Trash className={iconVariants({ variant: "button" })} />
+         <TrashIcon className={iconVariants({ variant: "button" })} />
          Yes, reset XP
         </>
        )}
       </Button>
       <DialogClose asChild>
        <Button variant="secondary">
-        <Icons.close className={iconVariants({ variant: "button" })} />
+        <XIcon className={iconVariants({ variant: "button" })} />
         Cancel
        </Button>
       </DialogClose>

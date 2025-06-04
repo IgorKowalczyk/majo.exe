@@ -1,11 +1,11 @@
 "use client";
 
 import { dashboardConfig } from "@majoexe/config";
+import { SparklesIcon } from "lucide-react";
 import Link from "next/link";
 import { useSelectedLayoutSegment, usePathname } from "next/navigation";
 import React, { HTMLAttributes } from "react";
 import { buttonVariants } from "@/components/ui/Buttons";
-import { Icons } from "@/components/ui/Icons";
 import Image from "@/components/ui/Image";
 import { cn } from "@/lib/utils";
 
@@ -53,7 +53,7 @@ export const Footer = ({ className, ...props }: HTMLAttributes<HTMLDivElement>) 
          </Link>
          .
          <Link className={cn(buttonVariants({ variant: "primary" }), "mt-3 w-fit")} href="https://majoexe.com/invite">
-          <Icons.Sparkles className="mr-2 size-5" />
+          <SparklesIcon className="mr-2 size-5" />
           Invite original Majo.exe
          </Link>
         </div>

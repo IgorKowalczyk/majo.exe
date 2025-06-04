@@ -1,9 +1,9 @@
 "use client";
 
+import { MenuIcon, XIcon } from "lucide-react";
 import { useParams } from "next/navigation";
 import React, { use } from "react";
 import { VisibilityContext } from "@/components/nav/VisibilityContext";
-import { Icons } from "@/components/ui/Icons";
 import { cn } from "@/lib/utils";
 
 export const SideMenuControl = ({ className, ...props }: React.ComponentProps<"button">) => {
@@ -15,7 +15,7 @@ export const SideMenuControl = ({ className, ...props }: React.ComponentProps<"b
    {params.server && (
     <button className={cn("bg-elements text-text ml-4 flex flex-row items-center gap-2 rounded-lg p-2 md:hidden cursor-pointer", className)} onClick={toggleSideNav} type="button" {...props}>
      <div className="relative size-6">
-      <Icons.close
+      <XIcon
        className={cn(
         {
          "scale-0": !sideNavVisible,
@@ -24,7 +24,7 @@ export const SideMenuControl = ({ className, ...props }: React.ComponentProps<"b
         "absolute top-0 size-6 shrink-0 duration-200"
        )}
       />
-      <Icons.Menu
+      <MenuIcon
        className={cn(
         {
          "scale-100": !sideNavVisible,

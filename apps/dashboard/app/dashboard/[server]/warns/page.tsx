@@ -1,12 +1,13 @@
 import prismaClient from "@majoexe/database";
 import { getGuildFromMemberGuilds, getGuild } from "@majoexe/util/functions/guild";
 import { getSession } from "lib/session";
+import { SparklesIcon, MessageSquareWarningIcon } from "lucide-react";
 import { redirect } from "next/navigation";
 import { notFound } from "next/navigation";
 import { WarnItems, Warns } from "@/app/dashboard/[server]/warns/components/Warns";
 import { Block } from "@/components/ui/Block";
 import Header, { headerVariants } from "@/components/ui/Headers";
-import { Icons, iconVariants } from "@/components/ui/Icons";
+import { iconVariants } from "@/components/ui/Icons";
 import { cn } from "@/lib/utils";
 
 export const metadata = {
@@ -72,7 +73,7 @@ export default async function Page(props: { params: Promise<{ server: string }> 
  return (
   <>
    <Header className={cn(headerVariants({ variant: "h1" }))}>
-    <Icons.MessageSquareWarning className={iconVariants({ variant: "extraLarge" })} />
+    <MessageSquareWarningIcon className={iconVariants({ variant: "extraLarge" })} />
     User warns <span className="text-accent-primary">({warns.length})</span>
    </Header>
    <p className="mb-4 text-left text-base md:text-lg">
@@ -81,7 +82,7 @@ export default async function Page(props: { params: Promise<{ server: string }> 
    <Block className="mt-4 flex w-full overflow-auto">
     {warns.length === 0 && (
      <p className="flex items-center gap-2 text-left">
-      <Icons.Sparkles className={iconVariants({ variant: "normal" })} />
+      <SparklesIcon className={iconVariants({ variant: "normal" })} />
       Hooray! No warns have been issued yet.
      </p>
     )}
