@@ -1,4 +1,4 @@
-import { TrendingUpIcon } from "lucide-react";
+import { LoaderCircleIcon, TrendingUpIcon } from "lucide-react";
 import { Block } from "@/components/ui/Block";
 import { GraphCard } from "@/components/ui/GraphCard";
 import Header, { headerVariants } from "@/components/ui/Headers";
@@ -20,7 +20,7 @@ export default function Loading() {
      title="New Members"
      description="The amount of new members that joined your server."
      value="Loading"
-     graph={<Icons.refresh className={iconVariants({ variant: "normal", className: "animate-spin" })} />}
+     graph={<LoaderCircleIcon className={iconVariants({ variant: "normal", className: "animate-spin" })} />}
     />
     <GraphCard // prettier
      className="mt-0"
@@ -28,7 +28,7 @@ export default function Loading() {
      title="Members Left"
      description="The amount of members that left your server."
      value="Loading"
-     graph={<Icons.refresh className={iconVariants({ variant: "normal", className: "animate-spin" })} />}
+     graph={<LoaderCircleIcon className={iconVariants({ variant: "normal", className: "animate-spin" })} />}
     />
     <GraphCard // prettier
      className="col-span-1 mt-0 lg:col-span-2 xl:col-span-1"
@@ -36,7 +36,7 @@ export default function Loading() {
      title="New Messages"
      description="The amount of messages that were sent in your server."
      value="Loading"
-     graph={<Icons.refresh className={iconVariants({ variant: "normal", className: "animate-spin" })} />}
+     graph={<LoaderCircleIcon className={iconVariants({ variant: "normal", className: "animate-spin" })} />}
     />
    </div>
    <div className="flex flex-col gap-6">
@@ -44,7 +44,7 @@ export default function Loading() {
      <div className="mb-4 flex flex-col items-center justify-normal gap-2 whitespace-nowrap lg:flex-row">
       <Header className={cn(headerVariants({ variant: "h2" }), "items-center gap-1 lg:items-center")}>
        <span>
-        New Members <Icons.refresh className={iconVariants({ variant: "large", className: "text-accent-primary ml-2 inline-block animate-spin stroke-2! align-middle" })} />
+        New Members <LoaderCircleIcon className={iconVariants({ variant: "large", className: "text-accent-primary ml-2 inline-block animate-spin stroke-2! align-middle" })} />
        </span>
       </Header>
       <div className="relative mx-auto flex flex-row items-center justify-center gap-3 lg:ml-auto lg:mr-0">
@@ -58,7 +58,7 @@ export default function Loading() {
      <div className="mb-4 flex flex-col items-center justify-normal gap-2 whitespace-nowrap lg:flex-row">
       <Header className={cn(headerVariants({ variant: "h2" }), "items-center gap-1 lg:items-center")}>
        <span>
-        Members left <Icons.refresh className={iconVariants({ variant: "large", className: "text-accent-primary ml-2 inline-block animate-spin stroke-2! align-middle" })} />
+        Members left <LoaderCircleIcon className={iconVariants({ variant: "large", className: "text-accent-primary ml-2 inline-block animate-spin stroke-2! align-middle" })} />
        </span>
       </Header>
       <div className="relative mx-auto flex flex-row items-center justify-center gap-3 lg:ml-auto lg:mr-0">
@@ -72,7 +72,7 @@ export default function Loading() {
      <div className="mb-4 flex flex-col items-center justify-normal gap-2 whitespace-nowrap lg:flex-row">
       <Header className={cn(headerVariants({ variant: "h2" }), "items-center gap-1 lg:items-center")}>
        <span>
-        Messages Sent <Icons.refresh className={iconVariants({ variant: "large", className: "text-accent-primary ml-2 inline-block animate-spin stroke-2! align-middle" })} />
+        Messages Sent <LoaderCircleIcon className={iconVariants({ variant: "large", className: "text-accent-primary ml-2 inline-block animate-spin stroke-2! align-middle" })} />
        </span>
       </Header>
       <div className="relative mx-auto flex flex-row items-center justify-center gap-3 lg:ml-auto lg:mr-0">

@@ -1,4 +1,4 @@
-import { HashIcon, UsersIcon, BotIcon, ShieldMinusIcon, MoveVerticalIcon, CheckIcon, ShieldBanIcon, ArrowDownIcon, ShieldXIcon, AtSignIcon, ShieldPlusIcon } from "lucide-react";
+import { HashIcon, UsersIcon, BotIcon, ShieldMinusIcon, MoveVerticalIcon, CheckIcon, ShieldBanIcon, ArrowDownIcon, ShieldXIcon, AtSignIcon, ShieldPlusIcon, LoaderCircleIcon, Link2OffIcon } from "lucide-react";
 import { DeleteMessageLoader } from "./components/DeleteMessage";
 import { LogToChannelLoader } from "./components/LogChannel";
 import { TimeoutMemberLoader } from "./components/TimeoutMember";
@@ -41,7 +41,7 @@ export default function Loading() {
    <Block className="mb-4">
     <Header className={cn(headerVariants({ variant: "h2", margin: "normal" }))}>
      <Icons.userBlock className={iconVariants({ variant: "large", className: "stroke-2!" })} />
-     Anti-Invite <Icons.refresh className={iconVariants({ variant: "large", className: "stroke-accent-primary animate-spin" })} />
+     Anti-Invite <LoaderCircleIcon className={iconVariants({ variant: "large", className: "stroke-accent-primary animate-spin" })} />
     </Header>
     <p className="mb-4 text-left">
      <span>Automatically delete all messages containing Discord server invites.</span>
@@ -80,8 +80,8 @@ export default function Loading() {
 
    <Block className="mb-4">
     <Header className={cn(headerVariants({ variant: "h2", margin: "normal" }))}>
-     <Icons.unlink className={iconVariants({ variant: "large", className: "stroke-2!" })} />
-     Anti-Link <Icons.refresh className={iconVariants({ variant: "large", className: "stroke-accent-primary animate-spin" })} />
+     <Link2OffIcon className={iconVariants({ variant: "large", className: "stroke-2!" })} />
+     Anti-Link <LoaderCircleIcon className={iconVariants({ variant: "large", className: "stroke-accent-primary animate-spin" })} />
     </Header>
     <p className="mb-4 text-left">
      <span>Automatically delete all messages containing links.</span>
@@ -120,7 +120,7 @@ export default function Loading() {
    </Block>
    <Block className="mb-4">
     <Header className={cn(headerVariants({ variant: "h2", margin: "normal" }))}>
-     <Icons.mention className={iconVariants({ variant: "large" })} />
+     <AtSignIcon className={iconVariants({ variant: "large" })} />
      Anti-Mention
     </Header>
     <p className="mb-4 text-left">
@@ -182,7 +182,7 @@ export default function Loading() {
    <Block className="mb-4">
     <Header className={cn(headerVariants({ variant: "h2", margin: "normal" }))}>
      <Icons.messageOff className={iconVariants({ variant: "large", className: "stroke-2!" })} />
-     Anti-Spam <Icons.refresh className={iconVariants({ variant: "large", className: "stroke-accent-primary animate-spin" })} />
+     Anti-Spam <LoaderCircleIcon className={iconVariants({ variant: "large", className: "stroke-accent-primary animate-spin" })} />
     </Header>
     <p className="mb-4 text-left">
      <span>Automatically delete all spam messages.</span>

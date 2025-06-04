@@ -3,13 +3,13 @@
 import type { GuildWarns, User } from "@majoexe/database/types";
 import { formatDuration, shortenText } from "@majoexe/util/functions/util";
 import type { ColumnDef } from "@tanstack/react-table";
-import { CheckIcon, TrashIcon, UserIcon } from "lucide-react";
+import { CheckIcon, LoaderCircleIcon, TrashIcon, UserIcon } from "lucide-react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import React, { useState, useCallback } from "react";
 import { toast } from "sonner";
 import { Button, buttonVariants } from "@/components/ui/Buttons";
-import { Icons, iconVariants } from "@/components/ui/Icons";
+import { iconVariants } from "@/components/ui/Icons";
 import Image from "@/components/ui/Image";
 import { Skeleton } from "@/components/ui/Skeletons";
 import { Table, TableColumnHeader } from "@/components/ui/Table";
@@ -214,7 +214,7 @@ export const ManageUserWarns = ({ data, guildId, ...props }: { data: UserWarns[]
        <>
         {loadingWarns.includes(value) ? (
          <>
-          <Icons.refresh className={iconVariants({ variant: "button", className: "animate-spin" })} />
+          <LoaderCircleIcon className={iconVariants({ variant: "button", className: "animate-spin" })} />
           Deleting...
          </>
         ) : (

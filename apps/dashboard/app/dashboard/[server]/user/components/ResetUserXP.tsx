@@ -1,6 +1,6 @@
 "use client";
 
-import { TrashIcon, XIcon } from "lucide-react";
+import { LoaderCircleIcon, TrashIcon, XIcon } from "lucide-react";
 import React, { useState } from "react";
 import { toast } from "sonner";
 import { Button } from "@/components/ui/Buttons";
@@ -83,7 +83,7 @@ export const ResetUserXP = ({ userId, guildId, className, ...props }: ResetUserX
       <Button variant="red" onClick={handleReset} disabled={loading}>
        {loading ? (
         <>
-         <Icons.refresh className={iconVariants({ variant: "button", className: "animate-spin" })} />
+         <LoaderCircleIcon className={iconVariants({ variant: "button", className: "animate-spin" })} />
          Resetting...
         </>
        ) : (

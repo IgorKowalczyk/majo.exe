@@ -1,7 +1,7 @@
 "use client";
 
 import { APIAutoModerationRule, APIGuildChannel, GuildChannelType } from "discord-api-types/v10";
-import { CheckIcon, HashIcon, InfoIcon, MoveVerticalIcon, ShieldMinusIcon, UsersIcon } from "lucide-react";
+import { CheckIcon, HashIcon, InfoIcon, LoaderCircleIcon, MoveVerticalIcon, ShieldMinusIcon, UsersIcon } from "lucide-react";
 import React, { useState } from "react";
 import { toast } from "sonner";
 import DeleteMessage from "./DeleteMessage";
@@ -181,7 +181,7 @@ export const AntiSpam = ({ serverId, enabled, existingActions, existingExemptRol
     <Button variant="primary" className="mt-4" onClick={() => save(false)} disabled={!isEnabled || loading || !actions || actions.length === 0}>
      {loading ? (
       <>
-       <Icons.refresh className={iconVariants({ variant: "button", className: "animate-spin" })} />
+       <LoaderCircleIcon className={iconVariants({ variant: "button", className: "animate-spin" })} />
        Saving...
       </>
      ) : (

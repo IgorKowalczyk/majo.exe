@@ -3,7 +3,7 @@ import prismaClient from "@majoexe/database";
 import { GuildLogType } from "@majoexe/database/types";
 import { pseudoRandom } from "@majoexe/util/functions/util";
 import { ApplicationCommandOptionType } from "discord-api-types/v10";
-import { CheckIcon, TrendingUpIcon } from "lucide-react";
+import { CheckIcon, ChevronRightIcon, TrendingUpIcon } from "lucide-react";
 import type { Metadata } from "next";
 import Link from "next/link";
 import avatar01 from "public/assets/avatars/01.webp";
@@ -146,7 +146,7 @@ export default async function Page() {
       <Link href="/api/invite" className={cn("group rounded-full border flex transition-all ease-in hover:cursor-pointer  border-neutral-800 bg-neutral-900 hover:border-neutral-700 hover:bg-neutral-800")}>
        <AnimatedShinyText className="inline-flex items-center justify-center px-4 py-1 transition ease-out hover:text-neutral-400 hover:duration-300">
         <span>✨ Introducing Majo.exe</span>
-        <Icons.arrowRight className={iconVariants({ variant: "normal", className: "-mr-1 ml-1 transition-transform ease-in-out group-hover:translate-x-0.5" })} />
+        <ChevronRightIcon className={iconVariants({ variant: "normal", className: "-mr-1 ml-1 transition-transform ease-in-out group-hover:translate-x-0.5" })} />
        </AnimatedShinyText>
       </Link>
      </Fade>

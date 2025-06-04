@@ -1,6 +1,6 @@
 "use client";
 
-import { ChevronsUpDownIcon, UserIcon } from "lucide-react";
+import { ChevronsUpDownIcon, LogOutIcon, UserIcon } from "lucide-react";
 import Link from "next/link";
 import { signOut } from "next-auth/react";
 import React from "react";
@@ -56,7 +56,7 @@ export const UserMenuDropdown = ({ user, ...props }: React.ComponentProps<typeof
      }}
      className="hover:!text-red-400 hover:!bg-button-action-hover/40"
     >
-     <Icons.logout className={iconVariants({ variant: "button", className: "ml-1" })} /> Logout
+     <LogOutIcon className={iconVariants({ variant: "button", className: "ml-1" })} /> Logout
     </DropdownMenuItem>
    </DropdownMenuContent>
   </DropdownMenu>

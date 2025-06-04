@@ -2,11 +2,12 @@
 
 import type { GuildLogs, User } from "@majoexe/database/types";
 import { formatDate, formatDuration } from "@majoexe/util/functions/util";
+import { ArrowDownNarrowWideIcon, ArrowUpNarrowWideIcon, SearchIcon } from "lucide-react";
 import Link from "next/link";
 import React, { useState, useRef, useEffect } from "react";
 import InfiniteScroll from "react-infinite-scroller";
 import { Disclosure } from "@/components/ui/Disclosure";
-import { Icons, iconVariants } from "@/components/ui/Icons";
+import { iconVariants } from "@/components/ui/Icons";
 import Image from "@/components/ui/Image";
 import { InputWithIcon } from "@/components/ui/Input";
 import { Skeleton } from "@/components/ui/Skeletons";
@@ -105,11 +106,11 @@ export default function Logs({ initialItems, server }: { initialItems: LogItem[]
  return (
   <div className="block">
    <div className="mb-4 flex items-center justify-center gap-2">
-    <InputWithIcon placeholder="Search..." value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} icon={<Icons.refresh className={iconVariants({ variant: "normal", className: "text-white/50" })} />} />
+    <InputWithIcon placeholder="Search..." value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} icon={<SearchIcon className={iconVariants({ variant: "normal", className: "text-white/50" })} />} />
     <Tooltip content={sortDescending ? "Sort ascending" : "Sort descending"}>
      <span onClick={() => setSortDescending(!sortDescending)} className="flex h-[41.6px] cursor-pointer items-center justify-center rounded-lg border border-neutral-800 px-3 py-2 text-white duration-200 hover:border-button-primary">
       <div className="relative size-5">
-       <Icons.sortDescending
+       <ArrowDownNarrowWideIcon
         className={iconVariants({
          variant: "normal",
          className: cn(
@@ -119,7 +120,7 @@ export default function Logs({ initialItems, server }: { initialItems: LogItem[]
          ),
         })}
        />
-       <Icons.sortAscending
+       <ArrowUpNarrowWideIcon
         className={iconVariants({
          variant: "normal",
          className: cn(

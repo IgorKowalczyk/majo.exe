@@ -2,14 +2,14 @@ import { botConfig } from "@majoexe/config";
 import prismaClient from "@majoexe/database";
 import { getGuildFromMemberGuilds, getGuild } from "@majoexe/util/functions/guild";
 import { getSession } from "lib/session";
-import { BlocksIcon, InfoIcon, PackagePlusIcon } from "lucide-react";
+import { BlocksIcon, InfoIcon, PackagePlusIcon, SquareSlashIcon } from "lucide-react";
 import { redirect } from "next/navigation";
 import { notFound } from "next/navigation";
 import { UpdateCategories } from "@/components/client/commandModules/UpdateCategories";
 import { UpdateCommands } from "@/components/client/commandModules/UpdateCommands";
 import { Block } from "@/components/ui/Block";
 import Header, { headerVariants } from "@/components/ui/Headers";
-import { Icons, iconVariants } from "@/components/ui/Icons";
+import { iconVariants } from "@/components/ui/Icons";
 import { Tooltip } from "@/components/ui/Tooltip";
 import { Command } from "@/lib/types";
 import { cn } from "@/lib/utils";
@@ -96,7 +96,7 @@ export default async function Page(props: { params: Promise<{ server: string }> 
 
    <Block className="mt-4">
     <Header className={cn(headerVariants({ variant: "h2" }))}>
-     <Icons.slash className={iconVariants({ variant: "large", className: "stroke-2!" })} />
+     <SquareSlashIcon className={iconVariants({ variant: "large", className: "stroke-2!" })} />
      Commands
     </Header>
     <p className="mb-4 mt-2 text-left">Enable or disable commands.</p>

@@ -3,7 +3,7 @@
 import { botConfig } from "@majoexe/config";
 import type { GuildLogType, GuildLogsSettings } from "@majoexe/database/types";
 import { Snowflake } from "discord-api-types/globals";
-import { CheckIcon, HashIcon, InfoIcon, TrashIcon, TriangleAlertIcon } from "lucide-react";
+import { CheckIcon, HashIcon, InfoIcon, LoaderCircleIcon, TrashIcon, TriangleAlertIcon } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useNavigationGuard } from "next-navigation-guard";
 import React, { useState, useEffect } from "react";
@@ -13,7 +13,7 @@ import { Block } from "@/components/ui/Block";
 import { Button } from "@/components/ui/Buttons";
 import { ChannelsSelect } from "@/components/ui/ChannelsSelect";
 import Header, { headerVariants } from "@/components/ui/Headers";
-import { Icons, iconVariants } from "@/components/ui/Icons";
+import { iconVariants } from "@/components/ui/Icons";
 import { Switch } from "@/components/ui/Switch";
 import { Tooltip } from "@/components/ui/Tooltip";
 import { cn } from "@/lib/utils";
@@ -125,7 +125,7 @@ export const UpdateLogs = ({ serverId, allChannels, logs, allowedLogs }: UpdateL
       <Button variant="primary" onClick={handleSaveAll} className="gap-2" disabled={loading}>
        {loading ? (
         <>
-         <Icons.refresh className={iconVariants({ variant: "normal", className: "animate-spin" })} /> Saving changes...
+         <LoaderCircleIcon className={iconVariants({ variant: "normal", className: "animate-spin" })} /> Saving changes...
         </>
        ) : (
         <>

@@ -1,44 +1,28 @@
 import { cva } from "class-variance-authority";
-import { AlertTriangle, ChevronDown, ChevronRight, ChevronUp, Eye, GalleryVerticalEnd, HelpCircle, Link2, Link2Off, LogOut, MessageSquare, MessageSquareCode, MessageSquarePlus, ScrollText, SquareSlash, X, UserPlus, UserMinus, CornerDownRight, ChevronLeft, EyeOff, RotateCw, UserX, MessageSquareWarning, AtSign, MessageSquareOff, Paintbrush2, FileJson, FileSpreadsheet, ThumbsUp, MessageSquareDot, ArrowDownNarrowWide, ArrowUpNarrowWide } from "lucide-react";
+import { AlertTriangle, Eye, GalleryVerticalEnd, HelpCircle, MessageSquare, MessageSquareCode, MessageSquarePlus, UserPlus, UserMinus, EyeOff, UserX, MessageSquareWarning, MessageSquareOff, Paintbrush2, FileJson, FileSpreadsheet, MessageSquareDot } from "lucide-react";
 import * as LucideIcons from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 
 export type Icon = LucideIcon;
 
 export const Icons = {
- arrowDown: ChevronDown,
- arrowUp: ChevronUp,
- arrowLeft: ChevronLeft,
- arrowRight: ChevronRight,
- close: X,
  help: HelpCircle,
  warning: AlertTriangle,
  dashboard: GalleryVerticalEnd,
- slash: SquareSlash,
  comment: MessageSquare,
  commentAdd: MessageSquarePlus,
- link: Link2,
- unlink: Link2Off,
- cornerRight: CornerDownRight,
- refresh: RotateCw,
- mention: AtSign,
  viewing: Eye,
  hide: EyeOff,
  userAdd: UserPlus,
  userMinus: UserMinus,
  userBlock: UserX,
- list: ScrollText,
  messageCode: MessageSquareCode,
  messageWarning: MessageSquareWarning,
  messageOff: MessageSquareOff,
  messageDot: MessageSquareDot,
- sortAscending: ArrowUpNarrowWide,
- sortDescending: ArrowDownNarrowWide,
- logout: LogOut,
  paintBrush: Paintbrush2,
  fileJSON: FileJson,
  fileCSV: FileSpreadsheet,
- like: ThumbsUp,
  twitter: ({ ...props }: LucideIcons.LucideProps) => (
   <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" {...props} stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
    <path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z" />

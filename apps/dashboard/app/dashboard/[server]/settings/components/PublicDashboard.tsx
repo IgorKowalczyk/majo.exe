@@ -1,6 +1,6 @@
 "use client";
 
-import { CheckIcon, CopyIcon, Link2Icon, PowerIcon, SparklesIcon } from "lucide-react";
+import { CheckIcon, CopyIcon, Link2Icon, LoaderCircleIcon, PowerIcon, SparklesIcon } from "lucide-react";
 import Link from "next/link";
 import React, { useState } from "react";
 import { toast } from "sonner";
@@ -182,7 +182,7 @@ export const PublicDashboard = ({ enabled, serverId, vanityURL, className, ...pr
       </div>
      </div>
      <Button variant="primary" onClick={(e) => updateVanity(e)} disabled={disabled || !!vanityError || vanity.length === 0 || buttonText === "Saving..."} className="mx-auto font-normal md:mx-0">
-      {buttonText === "Saving..." ? <Icons.refresh className={iconVariants({ variant: "button", className: "animate-spin" })} /> : <CheckIcon className={iconVariants({ variant: "button" })} />} {buttonText}
+      {buttonText === "Saving..." ? <LoaderCircleIcon className={iconVariants({ variant: "button", className: "animate-spin" })} /> : <CheckIcon className={iconVariants({ variant: "button" })} />} {buttonText}
      </Button>
     </div>
    </div>

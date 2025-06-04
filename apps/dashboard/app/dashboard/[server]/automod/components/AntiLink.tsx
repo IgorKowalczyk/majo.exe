@@ -1,7 +1,7 @@
 "use client";
 
 import { APIAutoModerationRule, APIGuildChannel, GuildChannelType } from "discord-api-types/v10";
-import { CheckIcon, HashIcon, InfoIcon, MoveVerticalIcon, ShieldMinusIcon, UsersIcon } from "lucide-react";
+import { CheckIcon, HashIcon, InfoIcon, Link2OffIcon, LoaderCircleIcon, MoveVerticalIcon, ShieldMinusIcon, UsersIcon } from "lucide-react";
 import React, { useState } from "react";
 import { toast } from "sonner";
 import DeleteMessage from "./DeleteMessage";
@@ -91,7 +91,7 @@ export const AntiLink = ({ serverId, enabled, existingActions, existingExemptRol
  return (
   <div>
    <Header className={cn(headerVariants({ variant: "h2", margin: "normal" }))}>
-    <Icons.unlink className={iconVariants({ variant: "large", className: "stroke-2!" })} />
+    <Link2OffIcon className={iconVariants({ variant: "large", className: "stroke-2!" })} />
     Anti-Link <Switch checked={isEnabled} onCheckedChange={save} disabled={loading} />
    </Header>
    <p className="mb-4 text-left">
@@ -179,7 +179,7 @@ export const AntiLink = ({ serverId, enabled, existingActions, existingExemptRol
     <Button variant="primary" className="mt-4" onClick={() => save(false)} disabled={!isEnabled || loading || !actions || actions.length === 0}>
      {loading ? (
       <>
-       <Icons.refresh className={iconVariants({ variant: "button", className: "animate-spin" })} />
+       <LoaderCircleIcon className={iconVariants({ variant: "button", className: "animate-spin" })} />
        Saving...
       </>
      ) : (

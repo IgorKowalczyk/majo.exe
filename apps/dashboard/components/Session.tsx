@@ -5,10 +5,10 @@ import { SessionProvider } from "next-auth/react";
 
 export function Session({ children }: { children: React.ReactElement }) {
  return (
-  <SessionProvider refetchInterval={5 * 60} refetchOnWindowFocus={false}>
-   <ProgressProvider color="#5865f2" height="2px" options={{ showSpinner: false }} shallowRouting>
+  <ProgressProvider color="#5865f2" height="2px" options={{ showSpinner: false }} shallowRouting>
+   <SessionProvider refetchInterval={5 * 60} refetchOnWindowFocus={false}>
     {children}
-   </ProgressProvider>
-  </SessionProvider>
+   </SessionProvider>{" "}
+  </ProgressProvider>
  );
 }

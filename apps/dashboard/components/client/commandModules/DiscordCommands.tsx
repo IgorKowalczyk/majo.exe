@@ -1,9 +1,9 @@
 "use client";
 import type { CommandCategories } from "@majoexe/database/types";
-import { CheckIcon, SearchIcon, XIcon } from "lucide-react";
+import { CheckIcon, LoaderCircleIcon, SearchIcon, XIcon } from "lucide-react";
 import React, { useEffect, useState, useMemo } from "react";
 import Header, { headerVariants } from "@/components/ui/Headers";
-import { Icons, iconVariants } from "@/components/ui/Icons";
+import { iconVariants } from "@/components/ui/Icons";
 import { InputWithIcon } from "@/components/ui/Input";
 import { Skeleton } from "@/components/ui/Skeletons";
 import { Tooltip } from "@/components/ui/Tooltip";
@@ -55,7 +55,7 @@ export const DiscordCommands = ({ commands, categories, className, ...props }: D
 
     <div className="mt-8 flex flex-col items-center justify-center gap-2">
      <Header className={cn(headerVariants({ variant: "h3", alignment: "center" }))}>
-      <Icons.refresh className={iconVariants({ variant: "large", className: "animate-spin" })} />
+      <LoaderCircleIcon className={iconVariants({ variant: "large", className: "animate-spin" })} />
       Loading commands...
      </Header>
      <p className="text-center text-white/50">This may take a few seconds.</p>

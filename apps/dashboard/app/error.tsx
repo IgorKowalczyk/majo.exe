@@ -1,5 +1,6 @@
 "use client";
 
+import { RotateCwIcon } from "lucide-react";
 import Link from "next/link";
 import { buttonVariants } from "@/components/ui/Buttons";
 import Particles from "@/components/ui/effects/Particles";
@@ -19,7 +20,7 @@ export default function Error({ reset }: { error: Error & { digest?: string }; r
      <span className="flex max-w-md gap-2 text-center text-xl opacity-50">Sorry, we're having trouble loading this page. Please try again later or contact support.</span>
      <div className="mt-6 flex flex-wrap justify-center gap-3">
       <Link href="/" className={buttonVariants({ variant: "primary" })}>
-       <Icons.refresh className={iconVariants({ variant: "button" })} onClick={reset} />
+       <RotateCwIcon className={iconVariants({ variant: "button" })} onClick={reset} />
        Try again
       </Link>
       <Link href="/discord" className={buttonVariants({ variant: "secondary" })}>

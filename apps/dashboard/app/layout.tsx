@@ -2,6 +2,7 @@ import { dashboardConfig } from "@majoexe/config";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { GeistSans } from "geist/font/sans";
+import { LoaderCircleIcon } from "lucide-react";
 import type { Metadata } from "next";
 import { AxiomWebVitals } from "next-axiom";
 import { Toaster } from "sonner";
@@ -11,7 +12,7 @@ import { TopNavigation } from "@/components/nav/TopNavigation";
 import { VisibilityProvider } from "@/components/nav/VisibilityContext";
 import { Session } from "@/components/Session";
 import { TailwindIndicator } from "@/components/TailwindIndicator";
-import { Icons, iconVariants } from "@/components/ui/Icons";
+import { iconVariants } from "@/components/ui/Icons";
 import "styles/globals.css";
 import { env } from "@/env";
 import { cn } from "@/lib/utils";
@@ -75,7 +76,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
        closeButton={false}
        theme="dark"
        icons={{
-        loading: <Icons.refresh className={iconVariants({ variant: "normal", className: "animate-spin" })} />,
+        loading: <LoaderCircleIcon className={iconVariants({ variant: "normal", className: "animate-spin" })} />,
        }}
        toastOptions={{
         classNames: {

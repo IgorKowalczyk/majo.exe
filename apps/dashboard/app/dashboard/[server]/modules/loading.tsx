@@ -1,7 +1,7 @@
-import { BlocksIcon, PackagePlusIcon } from "lucide-react";
+import { BlocksIcon, PackagePlusIcon, SquareSlashIcon } from "lucide-react";
 import { Block } from "@/components/ui/Block";
 import Header, { headerVariants } from "@/components/ui/Headers";
-import { Icons, iconVariants } from "@/components/ui/Icons";
+import { iconVariants } from "@/components/ui/Icons";
 import { Skeleton } from "@/components/ui/Skeletons";
 import { cn } from "@/lib/utils";
 
@@ -35,7 +35,7 @@ export default function Loading() {
    </Block>
    <Block className="mt-4">
     <Header className={cn(headerVariants({ variant: "h2" }))}>
-     <Icons.slash className={iconVariants({ variant: "large", className: "stroke-2!" })} />
+     <SquareSlashIcon className={iconVariants({ variant: "large", className: "stroke-2!" })} />
      Commands
     </Header>
     <p className="mb-4 mt-2 text-left">Enable or disable commands.</p>

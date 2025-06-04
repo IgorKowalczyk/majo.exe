@@ -1,13 +1,13 @@
 "use client";
 
-import { BotIcon, GiftIcon, HandIcon, HomeIcon, LogsIcon, MessageSquareWarningIcon, PackagePlusIcon, SettingsIcon, SparklesIcon, TrendingUpIcon } from "lucide-react";
+import { BotIcon, ChevronLeftIcon, GiftIcon, HandIcon, HomeIcon, LogsIcon, MessageSquareWarningIcon, PackagePlusIcon, ScrollTextIcon, SettingsIcon, SparklesIcon, TrendingUpIcon } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React, { use } from "react";
 import { VisibilityContext } from "@/components/nav/VisibilityContext";
 import { Badge } from "@/components/ui/Badge";
 import { buttonVariants } from "@/components/ui/Buttons";
-import { Icons, iconVariants } from "@/components/ui/Icons";
+import { iconVariants } from "@/components/ui/Icons";
 import { cn } from "@/lib/utils";
 
 export const SideNavLink = ({ href, children, ...props }: React.ComponentProps<typeof Link>) => {
@@ -44,7 +44,7 @@ export const SideNavigation = ({ className, server, ...props }: SideNavigationPr
    >
     <div className="px-4">
      <Link href="/dashboard" className={cn(buttonVariants({ variant: "primary" }), "mb-4 w-full")}>
-      <Icons.arrowLeft className={iconVariants({ variant: "button" })} /> Server list
+      <ChevronLeftIcon className={iconVariants({ variant: "button" })} /> Server list
      </Link>
     </div>
 
@@ -74,7 +74,7 @@ export const SideNavigation = ({ className, server, ...props }: SideNavigationPr
       User warns
      </SideNavLink>
      <SideNavLink href={`/dashboard/${server}/logs`}>
-      <Icons.list className={iconVariants({ variant: "large" })} />
+      <ScrollTextIcon className={iconVariants({ variant: "large" })} />
       Logs <Badge className="-mt-3">new</Badge>
      </SideNavLink>
      <SideNavLink href={`/dashboard/${server}/automod`}>

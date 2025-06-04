@@ -3,7 +3,7 @@
 import { globalConfig } from "@majoexe/config";
 import { toHTML } from "@odiffey/discord-markdown";
 import { Snowflake } from "discord-api-types/globals";
-import { CheckIcon, HashIcon, InfoIcon, TextIcon, TypeIcon } from "lucide-react";
+import { CheckIcon, HashIcon, InfoIcon, LoaderCircleIcon, TextIcon, TypeIcon } from "lucide-react";
 import React, { useState } from "react";
 import { toast } from "sonner";
 import { Block } from "@/components/ui/Block";
@@ -234,7 +234,7 @@ export const ChangeCustomMessages = ({ ref, serverId, enabled, title, descriptio
     <Button variant="primary" className="mt-4" onClick={() => save(false)} disabled={!messageChannel || loading}>
      {loading ? (
       <>
-       <Icons.refresh className={iconVariants({ variant: "button", className: "animate-spin" })} />
+       <LoaderCircleIcon className={iconVariants({ variant: "button", className: "animate-spin" })} />
        Saving...
       </>
      ) : (

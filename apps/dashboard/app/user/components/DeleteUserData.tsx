@@ -1,6 +1,6 @@
 "use client";
 
-import { TrashIcon, XIcon } from "lucide-react";
+import { LoaderCircleIcon, TrashIcon, XIcon } from "lucide-react";
 import { signOut } from "next-auth/react";
 import React, { useState } from "react";
 import { toast } from "sonner";
@@ -73,7 +73,7 @@ export const DeleteUserData = ({ className, ...props }: React.ComponentProps<"di
       <Button variant="red" onClick={handleDelete} disabled={loading}>
        {loading ? (
         <>
-         <Icons.refresh className={iconVariants({ variant: "button", className: "animate-spin" })} />
+         <LoaderCircleIcon className={iconVariants({ variant: "button", className: "animate-spin" })} />
          Deleting your account...
         </>
        ) : (
