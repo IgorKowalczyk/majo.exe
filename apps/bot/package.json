@@ -23,7 +23,7 @@
     "@observablehq/plot": "0.6.17",
     "@top-gg/sdk": "3.1.6",
     "chalk": "5.4.1",
-    "cheerio": "1.0.0",
+    "cheerio": "1.1.0",
     "coloras": "2.0.2",
     "d3": "7.9.0",
     "decode-gif": "1.0.1",
