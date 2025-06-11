@@ -351,11 +351,11 @@ importers:
         specifier: workspace:*
         version: link:../typescript-config
       '@neondatabase/serverless':
-        specifier: 1.0.0
-        version: 1.0.0
+        specifier: 1.0.1
+        version: 1.0.1
       '@prisma/adapter-neon':
         specifier: 6.9.0
-        version: 6.9.0(@neondatabase/serverless@1.0.0)
+        version: 6.9.0(@neondatabase/serverless@1.0.1)
       '@prisma/adapter-pg':
         specifier: 6.9.0
         version: 6.9.0(pg@8.16.0)
@@ -1262,8 +1262,8 @@ packages:
   '@napi-rs/wasm-runtime@0.2.11':
     resolution: {integrity: sha512-9DPkXtvHydrcOsopiYpUgPHpmj0HWZKMUnL2dZqpvC42lsratuBG06V5ipyno0fUek5VlFsNQ+AcFATSrJXgMA==}
 
-  '@neondatabase/serverless@1.0.0':
-    resolution: {integrity: sha512-XWmEeWpBXIoksZSDN74kftfTnXFEGZ3iX8jbANWBc+ag6dsiQuvuR4LgB0WdCOKMb5AQgjqgufc0TgAsZubUYw==}
+  '@neondatabase/serverless@1.0.1':
+    resolution: {integrity: sha512-O6yC5TT0jbw86VZVkmnzCZJB0hfxBl0JJz6f+3KHoZabjb/X08r9eFA+vuY06z1/qaovykvdkrXYq3SPUuvogA==}
     engines: {node: '>=19.0.0'}
 
   '@next-auth/prisma-adapter@1.0.7':
@@ -5042,9 +5042,6 @@ packages:
   pg-protocol@1.10.0:
     resolution: {integrity: sha512-IpdytjudNuLv8nhlHs/UrVBhU0e78J0oIS/0AVdTbWxSOkFUVdsHC/NrorO6nXsQNDTT1kzDSOMJubBQviX18Q==}
 
-  pg-protocol@1.9.5:
-    resolution: {integrity: sha512-DYTWtWpfd5FOro3UnAfwvhD8jh59r2ig8bPtc9H8Ds7MscE/9NYruUQWFAOuraRl29jwcT2kyMFQ3MxeaVjUhg==}
-
   pg-types@2.2.0:
     resolution: {integrity: sha512-qTAAlrEsl8s4OiEQY69wDvcMIdQN6wdz5ojQiOy6YRMuynxenON0O5oCpJI6lshc6scgAY8qvJ2On/p+CXY0GA==}
     engines: {node: '>=4'}
@@ -7200,7 +7197,7 @@ snapshots:
       '@tybys/wasm-util': 0.9.0
     optional: true
 
-  '@neondatabase/serverless@1.0.0':
+  '@neondatabase/serverless@1.0.1':
     dependencies:
       '@types/node': 22.15.31
       '@types/pg': 8.11.14
@@ -7311,9 +7308,9 @@ snapshots:
 
   '@polka/url@1.0.0-next.29': {}
 
-  '@prisma/adapter-neon@6.9.0(@neondatabase/serverless@1.0.0)':
+  '@prisma/adapter-neon@6.9.0(@neondatabase/serverless@1.0.1)':
     dependencies:
-      '@neondatabase/serverless': 1.0.0
+      '@neondatabase/serverless': 1.0.1
       '@prisma/driver-adapter-utils': 6.9.0
       postgres-array: 3.0.4
 
@@ -8172,8 +8169,8 @@ snapshots:
 
   '@types/pg@8.11.14':
     dependencies:
-      '@types/node': 22.15.31
-      pg-protocol: 1.9.5
+      '@types/node': 24.0.0
+      pg-protocol: 1.10.0
       pg-types: 4.0.2
 
   '@types/qrcode@1.5.5':
@@ -11657,8 +11654,6 @@ snapshots:
       pg: 8.16.0
 
   pg-protocol@1.10.0: {}
-
-  pg-protocol@1.9.5: {}
 
   pg-types@2.2.0:
     dependencies:
