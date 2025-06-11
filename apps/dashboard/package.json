@@ -29,7 +29,7 @@
     "@radix-ui/react-select": "^2.2.2",
     "@radix-ui/react-switch": "1.2.5",
     "@radix-ui/react-tooltip": "1.2.7",
-    "@t3-oss/env-core": "0.13.6",
+    "@t3-oss/env-core": "0.13.8",
     "@t3-oss/env-nextjs": "0.13.6",
     "@tanstack/react-table": "8.21.3",
     "@vercel/analytics": "1.5.0",
