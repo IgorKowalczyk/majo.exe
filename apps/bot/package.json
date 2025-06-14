@@ -45,7 +45,7 @@
     "@types/ms": "2.1.0",
     "@types/qrcode": "1.5.5",
     "@types/validator": "13.15.1",
-    "node-addon-api": "8.3.1",
+    "node-addon-api": "8.4.0",
     "node-gyp": "11.2.0"
   },
   "engines": {
