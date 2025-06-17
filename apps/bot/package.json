@@ -13,7 +13,7 @@
     "lint:fix": "eslint . --fix"
   },
   "dependencies": {
-    "@discordjs/rest": "2.5.0",
+    "@discordjs/rest": "2.5.1",
     "@iamtraction/google-translate": "2.0.1",
     "@majoexe/config": "workspace:*",
     "@majoexe/database": "workspace:*",
