@@ -176,7 +176,7 @@ export const StatsChart = ({ title, data, CSVData, fileName, categories, chartCo
      />
 
      {categories.map((category) => (
-      <Area key={category} dataKey={category} type="monotoneX" fill={`url(#fill-${category.toLowerCase().replace(/ /g, "")})`} stroke={chartConfig?.[category as keyof typeof chartConfig]?.color || "hsl(var(--chart-5))"} stackId={`stack-${category}`} />
+      <Area key={category} dataKey={category} type="monotoneX" fill={`url(#fill-${category.toLowerCase().replace(/ /g, "")})`} stroke={chartConfig?.[category as keyof typeof chartConfig]?.color || "hsl(var(--chart-5))"} stackId={`stack-${category}`} strokeWidth={2} />
      ))}
      <ChartLegend content={<ChartLegendContent />} />
     </AreaChart>
