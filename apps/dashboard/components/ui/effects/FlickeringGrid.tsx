@@ -14,7 +14,16 @@ interface FlickeringGridProps {
  maxOpacity?: number;
 }
 
-const FlickeringGrid: React.FC<FlickeringGridProps> = ({ squareSize = 4, gridGap = 6, flickerChance = 0.3, color = "rgb(0, 0, 0)", width, height, className, maxOpacity = 0.3 }) => {
+const FlickeringGrid: React.FC<FlickeringGridProps> = ({
+ squareSize = 4,
+ gridGap = 6,
+ flickerChance = 0.3,
+ color = "rgb(0, 0, 0)",
+ width,
+ height,
+ className,
+ maxOpacity = 0.3,
+}) => {
  const canvasRef = useRef<HTMLCanvasElement>(null);
  const containerRef = useRef<HTMLDivElement>(null);
  const [isInView, setIsInView] = useState(false);

@@ -131,7 +131,18 @@ export default async function Page(props: { params: Promise<{ server: string }> 
  return (
   <>
    <div className="mb-4 flex flex-col items-center justify-normal gap-2 sm:flex-row">
-    {guildPreview.icon ? <Image src={`https://cdn.discordapp.com/icons/${guildPreview.id}/${guildPreview.icon}.${guildPreview.icon.startsWith("a_") ? "gif" : "png"}`} alt={guildPreview.name} quality={95} width={64} height={64} className="size-16 shrink-0 rounded-full" /> : <div className="size-16 shrink-0 rounded-full bg-button-secondary" />}
+    {guildPreview.icon ? (
+     <Image
+      src={`https://cdn.discordapp.com/icons/${guildPreview.id}/${guildPreview.icon}.${guildPreview.icon.startsWith("a_") ? "gif" : "png"}`}
+      alt={guildPreview.name}
+      quality={95}
+      width={64}
+      height={64}
+      className="size-16 shrink-0 rounded-full"
+     />
+    ) : (
+     <div className="size-16 shrink-0 rounded-full bg-button-secondary" />
+    )}
     <div className="flex flex-col justify-center text-center sm:ml-4 sm:justify-start sm:text-left">
      <Header className={cn(headerVariants({ variant: "h1" }))}>{guildPreview.name || "Unnamed server"}</Header>
      <p className="text-center text-base opacity-60 sm:text-left md:text-xl">{guildPreview.description || "This server has no description, maybe you should add one?"}</p>
@@ -209,12 +220,28 @@ export default async function Page(props: { params: Promise<{ server: string }> 
           "text-emerald-500": guildScore > 60,
          })}
         >
-         {guildScore}% ({guildScore <= 10 ? "Bad" : guildScore > 10 && guildScore <= 30 ? "Okay" : guildScore > 30 && guildScore <= 60 ? "Good" : guildScore > 60 && guildScore <= 90 ? "Great" : guildScore > 90 ? "Perfect!" : "Unknown"})
+         {guildScore}% (
+         {guildScore <= 10
+          ? "Bad"
+          : guildScore > 10 && guildScore <= 30
+            ? "Okay"
+            : guildScore > 30 && guildScore <= 60
+              ? "Good"
+              : guildScore > 60 && guildScore <= 90
+                ? "Great"
+                : guildScore > 90
+                  ? "Perfect!"
+                  : "Unknown"}
+         )
         </span>
        </span>
       </Header>
 
-      {guildScore !== 100 ? <p className="text-left text-base opacity-60">Your server score is not 100%, this means that you are missing some features that could be useful for your server.</p> : <p className="text-left text-base opacity-60">Your server score is 100%, this means that you have all the features that could be useful to your server! Good job!</p>}
+      {guildScore !== 100 ? (
+       <p className="text-left text-base opacity-60">Your server score is not 100%, this means that you are missing some features that could be useful for your server.</p>
+      ) : (
+       <p className="text-left text-base opacity-60">Your server score is 100%, this means that you have all the features that could be useful to your server! Good job!</p>
+      )}
 
       <CategoryBar percent={guildScore} className="my-4" />
 
@@ -288,7 +315,11 @@ export default async function Page(props: { params: Promise<{ server: string }> 
 
      <Block className="scrollbar-show">
       <Header className={cn(headerVariants({ variant: "h4", margin: "wide" }), "items-start justify-normal opacity-80")}>Leaderboard</Header>
-      {data.length > 0 ? <Leaderboard data={data} showSearch={false} showControls={false} /> : <span className="opacity-50">No users found. Maybe you should try talking in chat?</span>}
+      {data.length > 0 ? (
+       <Leaderboard data={data} showSearch={false} showControls={false} />
+      ) : (
+       <span className="opacity-50">No users found. Maybe you should try talking in chat?</span>
+      )}
      </Block>
     </div>
     <div className="mt-6 flex flex-col justify-start gap-6 [flex:2_1_0%] lg:mt-0">
@@ -296,7 +327,12 @@ export default async function Page(props: { params: Promise<{ server: string }> 
       <Header className={cn(headerVariants({ variant: "h4", margin: "wide" }), "items-start justify-normal opacity-80")}>
        Quick Stats
        {guild.publicPage ? (
-        <Link href={`/server/${guild.vanity || serverDownload.id}`} target="_blank" rel="noreferrer noopener" className={cn(buttonVariants({ variant: "primary" }), "mx-auto flex! w-fit flex-row whitespace-nowrap text-base font-normal sm:ml-auto sm:mr-0")}>
+        <Link
+         href={`/server/${guild.vanity || serverDownload.id}`}
+         target="_blank"
+         rel="noreferrer noopener"
+         className={cn(buttonVariants({ variant: "primary" }), "mx-auto flex! w-fit flex-row whitespace-nowrap text-base font-normal sm:ml-auto sm:mr-0")}
+        >
          <ExternalLinkIcon className={iconVariants({ variant: "button" })} aria-hidden="true" role="img" />
          Server page
         </Link>
@@ -323,8 +359,20 @@ export default async function Page(props: { params: Promise<{ server: string }> 
         {guildPreview.emojis.map((emoji) => (
          <Tooltip key={emoji.id || "" + emoji.name} content={emoji.name || "Unnamed emoji"}>
           <>
-           <Link className="flex flex-col items-center justify-center gap-2" href={`https://cdn.discordapp.com/emojis/${emoji.id}.${emoji.animated ? "gif" : "png"}`} target="_blank" rel="noreferrer noopener">
-            <Image src={`https://cdn.discordapp.com/emojis/${emoji.id}.${emoji.animated ? "gif" : "png"}`} alt={emoji.name || ""} quality={95} width={32} height={32} className="size-8 shrink-0" />
+           <Link
+            className="flex flex-col items-center justify-center gap-2"
+            href={`https://cdn.discordapp.com/emojis/${emoji.id}.${emoji.animated ? "gif" : "png"}`}
+            target="_blank"
+            rel="noreferrer noopener"
+           >
+            <Image
+             src={`https://cdn.discordapp.com/emojis/${emoji.id}.${emoji.animated ? "gif" : "png"}`}
+             alt={emoji.name || ""}
+             quality={95}
+             width={32}
+             height={32}
+             className="size-8 shrink-0"
+            />
            </Link>
           </>
          </Tooltip>
@@ -345,8 +393,21 @@ export default async function Page(props: { params: Promise<{ server: string }> 
         {guildPreview.stickers.map((sticker) => (
          <Tooltip key={sticker.id + sticker.name} content={sticker.name || "Unnamed sticker"}>
           <>
-           <Link className="flex flex-col items-center justify-center gap-2" href={`https://cdn.discordapp.com/stickers/${sticker.id}.${sticker.format_type === 1 ? "png" : sticker.format_type === 2 ? "apng" : sticker.format_type === 3 ? "lottie" : "gif"}`} target="_blank" rel="noreferrer noopener">
-            <Image unoptimized src={`https://cdn.discordapp.com/stickers/${sticker.id}.${sticker.format_type === 1 ? "png" : sticker.format_type === 2 ? "apng" : sticker.format_type === 3 ? "lottie" : "gif"}`} alt={sticker.name} quality={95} width={95} height={95} className="size-24" />
+           <Link
+            className="flex flex-col items-center justify-center gap-2"
+            href={`https://cdn.discordapp.com/stickers/${sticker.id}.${sticker.format_type === 1 ? "png" : sticker.format_type === 2 ? "apng" : sticker.format_type === 3 ? "lottie" : "gif"}`}
+            target="_blank"
+            rel="noreferrer noopener"
+           >
+            <Image
+             unoptimized
+             src={`https://cdn.discordapp.com/stickers/${sticker.id}.${sticker.format_type === 1 ? "png" : sticker.format_type === 2 ? "apng" : sticker.format_type === 3 ? "lottie" : "gif"}`}
+             alt={sticker.name}
+             quality={95}
+             width={95}
+             height={95}
+             className="size-24"
+            />
            </Link>
           </>
          </Tooltip>

@@ -13,7 +13,9 @@ export async function StartGiveaway(client: Majobot, interaction: ChatInputComma
 
   const userPermissions = interaction.memberPermissions || new PermissionsBitField();
 
-  if (!userPermissions.has(PermissionsBitField.Flags.ManageGuild)) return client.errorMessages.createSlashError(interaction, "❌ You do not have permission to create giveaways! You need `MANAGE_GUILD` permission.");
+  if (!userPermissions.has(PermissionsBitField.Flags.ManageGuild)) {
+   return client.errorMessages.createSlashError(interaction, "❌ You do not have permission to create giveaways! You need `MANAGE_GUILD` permission.");
+  }
 
   const channel = interaction.options.getChannel("channel", true, [ChannelType.GuildText]);
   if (!channel) return client.errorMessages.createSlashError(interaction, "❌ You need to provide a channel!");
@@ -90,7 +92,9 @@ export async function StartDropGiveaway(client: Majobot, interaction: ChatInputC
 
   const userPermissions = interaction.memberPermissions || new PermissionsBitField();
 
-  if (!userPermissions.has(PermissionsBitField.Flags.ManageGuild)) return client.errorMessages.createSlashError(interaction, "❌ You do not have permission to create giveaways! You need `MANAGE_GUILD` permission.");
+  if (!userPermissions.has(PermissionsBitField.Flags.ManageGuild)) {
+   return client.errorMessages.createSlashError(interaction, "❌ You do not have permission to create giveaways! You need `MANAGE_GUILD` permission.");
+  }
 
   const channel = interaction.options.getChannel("channel", true, [ChannelType.GuildText]);
   if (!channel) return client.errorMessages.createSlashError(interaction, "❌ You need to provide a channel!");

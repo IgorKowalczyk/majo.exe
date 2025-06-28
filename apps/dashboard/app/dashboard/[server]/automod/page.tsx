@@ -83,30 +83,94 @@ export default async function AutomodPage(props: { params: Promise<{ server: str
    <p className="mb-4 text-left text-base md:text-lg">Automatically moderate your server, block bad words, links and other things.</p>
    <Block className="mb-6">
     {enabledAntiInvite ? ( // prettier
-     <AntiInvite serverId={serverDownload.id} existingExemptChannels={enabledAntiInvite.exempt_channels} existingExemptRoles={enabledAntiInvite.exempt_roles} enabled={enabledAntiInvite.enabled} existingActions={enabledAntiInvite.actions} allRoles={allRoles} allChannels={allChannels} />
+     <AntiInvite
+      serverId={serverDownload.id}
+      existingExemptChannels={enabledAntiInvite.exempt_channels}
+      existingExemptRoles={enabledAntiInvite.exempt_roles}
+      enabled={enabledAntiInvite.enabled}
+      existingActions={enabledAntiInvite.actions}
+      allRoles={allRoles}
+      allChannels={allChannels}
+     />
     ) : (
-     <AntiInvite serverId={serverDownload.id} existingExemptChannels={[]} existingExemptRoles={[]} enabled={false} existingActions={[]} allRoles={allRoles} allChannels={allChannels} />
+     <AntiInvite
+      serverId={serverDownload.id}
+      existingExemptChannels={[]}
+      existingExemptRoles={[]}
+      enabled={false}
+      existingActions={[]}
+      allRoles={allRoles}
+      allChannels={allChannels}
+     />
     )}
    </Block>
    <Block className="mb-6">
     {enabledAntiLink ? ( // prettier
-     <AntiLink serverId={serverDownload.id} existingExemptChannels={enabledAntiLink.exempt_channels} existingExemptRoles={enabledAntiLink.exempt_roles} enabled={enabledAntiLink.enabled} existingActions={enabledAntiLink.actions} allRoles={allRoles} allChannels={allChannels} />
+     <AntiLink
+      serverId={serverDownload.id}
+      existingExemptChannels={enabledAntiLink.exempt_channels}
+      existingExemptRoles={enabledAntiLink.exempt_roles}
+      enabled={enabledAntiLink.enabled}
+      existingActions={enabledAntiLink.actions}
+      allRoles={allRoles}
+      allChannels={allChannels}
+     />
     ) : (
-     <AntiLink serverId={serverDownload.id} existingExemptChannels={[]} existingExemptRoles={[]} enabled={false} existingActions={[]} allRoles={allRoles} allChannels={allChannels} />
+     <AntiLink
+      serverId={serverDownload.id}
+      existingExemptChannels={[]}
+      existingExemptRoles={[]}
+      enabled={false}
+      existingActions={[]}
+      allRoles={allRoles}
+      allChannels={allChannels}
+     />
     )}
    </Block>
    <Block className="mb-6">
     {enabledAntiMention ? ( // prettier
-     <AntiMention serverId={serverDownload.id} existingExemptChannels={enabledAntiMention.exempt_channels} existingExemptRoles={enabledAntiMention.exempt_roles} enabled={enabledAntiMention.enabled} existingActions={enabledAntiMention.actions} allRoles={allRoles} allChannels={allChannels} />
+     <AntiMention
+      serverId={serverDownload.id}
+      existingExemptChannels={enabledAntiMention.exempt_channels}
+      existingExemptRoles={enabledAntiMention.exempt_roles}
+      enabled={enabledAntiMention.enabled}
+      existingActions={enabledAntiMention.actions}
+      allRoles={allRoles}
+      allChannels={allChannels}
+     />
     ) : (
-     <AntiMention serverId={serverDownload.id} existingExemptChannels={[]} existingExemptRoles={[]} enabled={false} existingActions={[]} allRoles={allRoles} allChannels={allChannels} />
+     <AntiMention
+      serverId={serverDownload.id}
+      existingExemptChannels={[]}
+      existingExemptRoles={[]}
+      enabled={false}
+      existingActions={[]}
+      allRoles={allRoles}
+      allChannels={allChannels}
+     />
     )}
    </Block>
    <Block className="mb-6">
     {enabledAntiSpam ? ( // prettier
-     <AntiSpam serverId={serverDownload.id} existingExemptChannels={enabledAntiSpam.exempt_channels} existingExemptRoles={enabledAntiSpam.exempt_roles} enabled={enabledAntiSpam.enabled} existingActions={enabledAntiSpam.actions} allRoles={allRoles} allChannels={allChannels} />
+     <AntiSpam
+      serverId={serverDownload.id}
+      existingExemptChannels={enabledAntiSpam.exempt_channels}
+      existingExemptRoles={enabledAntiSpam.exempt_roles}
+      enabled={enabledAntiSpam.enabled}
+      existingActions={enabledAntiSpam.actions}
+      allRoles={allRoles}
+      allChannels={allChannels}
+     />
     ) : (
-     <AntiSpam serverId={serverDownload.id} existingExemptChannels={[]} existingExemptRoles={[]} enabled={false} existingActions={[]} allRoles={allRoles} allChannels={allChannels} />
+     <AntiSpam
+      serverId={serverDownload.id}
+      existingExemptChannels={[]}
+      existingExemptRoles={[]}
+      enabled={false}
+      existingActions={[]}
+      allRoles={allRoles}
+      allChannels={allChannels}
+     />
     )}
    </Block>
    <Block className="mb-6">

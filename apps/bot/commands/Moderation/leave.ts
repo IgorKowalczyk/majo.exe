@@ -1,6 +1,17 @@
 import prismaClient from "@majoexe/database";
 import { shortenText } from "@majoexe/util/functions/util";
-import { ApplicationCommandType, ApplicationCommandOptionType, ChannelType, PermissionsBitField, EmbedBuilder, PermissionFlagsBits, codeBlock, TextChannel, InteractionContextType, ApplicationIntegrationType } from "discord.js";
+import {
+ ApplicationCommandType,
+ ApplicationCommandOptionType,
+ ChannelType,
+ PermissionsBitField,
+ EmbedBuilder,
+ PermissionFlagsBits,
+ codeBlock,
+ TextChannel,
+ InteractionContextType,
+ ApplicationIntegrationType,
+} from "discord.js";
 import type { SlashCommand } from "@/util/types/Command";
 
 export default {
@@ -61,8 +72,10 @@ export default {
 
    const memberPermissions = interaction.memberPermissions || new PermissionsBitField();
 
-   if (!memberPermissions.has(PermissionsBitField.Flags.ManageGuild)) return client.errorMessages.createSlashError(interaction, "❌ You don't have permission to use this command. You need `Manage Server` permission");
-   if (!interaction.guild.members.me.permissions.has(PermissionsBitField.Flags.ManageGuild)) return client.errorMessages.createSlashError(interaction, "❌ I don't have permission to change settings. Please give me `Manage Server` permission");
+   if (!memberPermissions.has(PermissionsBitField.Flags.ManageGuild))
+    return client.errorMessages.createSlashError(interaction, "❌ You don't have permission to use this command. You need `Manage Server` permission");
+   if (!interaction.guild.members.me.permissions.has(PermissionsBitField.Flags.ManageGuild))
+    return client.errorMessages.createSlashError(interaction, "❌ I don't have permission to change settings. Please give me `Manage Server` permission");
 
    const command = interaction.options.getSubcommand();
 
@@ -71,10 +84,14 @@ export default {
 
     if (!channel) return client.errorMessages.createSlashError(interaction, "❌ You need to provide a channel to set as the leave channel!");
     if (!channel.isTextBased()) return client.errorMessages.createSlashError(interaction, "❌ You need to provide a text channel to set as the leave channel!");
-    if (!channel.permissionsFor(interaction.guild.members.me).has(PermissionsBitField.Flags.SendMessages)) return client.errorMessages.createSlashError(interaction, "❌ I don't have permission to send messages in that channel!");
-    if (!channel.permissionsFor(interaction.guild.members.me).has(PermissionsBitField.Flags.EmbedLinks)) return client.errorMessages.createSlashError(interaction, "❌ I don't have permission to embed links in that channel!");
-    if (!channel.permissionsFor(interaction.guild.members.me).has(PermissionsBitField.Flags.AttachFiles)) return client.errorMessages.createSlashError(interaction, "❌ I don't have permission to attach files in that channel!");
-    if (!channel.permissionsFor(interaction.guild.members.me).has(PermissionsBitField.Flags.ViewChannel)) return client.errorMessages.createSlashError(interaction, "❌ I don't have permission to view that channel!");
+    if (!channel.permissionsFor(interaction.guild.members.me).has(PermissionsBitField.Flags.SendMessages))
+     return client.errorMessages.createSlashError(interaction, "❌ I don't have permission to send messages in that channel!");
+    if (!channel.permissionsFor(interaction.guild.members.me).has(PermissionsBitField.Flags.EmbedLinks))
+     return client.errorMessages.createSlashError(interaction, "❌ I don't have permission to embed links in that channel!");
+    if (!channel.permissionsFor(interaction.guild.members.me).has(PermissionsBitField.Flags.AttachFiles))
+     return client.errorMessages.createSlashError(interaction, "❌ I don't have permission to attach files in that channel!");
+    if (!channel.permissionsFor(interaction.guild.members.me).has(PermissionsBitField.Flags.ViewChannel))
+     return client.errorMessages.createSlashError(interaction, "❌ I don't have permission to view that channel!");
 
     const title = interaction.options.getString("title") || "👋 Goodbye {user}!";
     const description = interaction.options.getString("description") || "> We're sorry to see you go!";
@@ -185,7 +202,9 @@ export default {
 
       const embed = new EmbedBuilder() // prettier
        .setTitle("👋 Leave messages are disabled")
-       .setDescription("> **Leave messages have been disabled automatically** because the channel was deleted or I don't have permission to view it!\n> You can enable them again by using `/leave enable`")
+       .setDescription(
+        "> **Leave messages have been disabled automatically** because the channel was deleted or I don't have permission to view it!\n> You can enable them again by using `/leave enable`"
+       )
        .setColor(guildSettings?.embedColor || client.config.defaultColor)
        .setTimestamp()
        .setThumbnail(interaction.guild.iconURL({ size: 256 }))

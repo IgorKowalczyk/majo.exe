@@ -1,6 +1,19 @@
 "use client";
 
-import { BotIcon, ChevronLeftIcon, GiftIcon, HandIcon, HomeIcon, LogsIcon, MessageSquareWarningIcon, PackagePlusIcon, ScrollTextIcon, SettingsIcon, SparklesIcon, TrendingUpIcon } from "lucide-react";
+import {
+ BotIcon,
+ ChevronLeftIcon,
+ GiftIcon,
+ HandIcon,
+ HomeIcon,
+ LogsIcon,
+ MessageSquareWarningIcon,
+ PackagePlusIcon,
+ ScrollTextIcon,
+ SettingsIcon,
+ SparklesIcon,
+ TrendingUpIcon,
+} from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React, { use } from "react";
@@ -15,7 +28,11 @@ export const SideNavLink = ({ href, children, ...props }: React.ComponentProps<t
  const isSelected = (path: string) => router === path;
 
  return (
-  <Link href={href} className={`${isSelected(href.toString()) ? "bg-button-primary/20 before:h-[29px]" : "hover:bg-button-primary/20"} flex h-[45px] w-full items-center gap-2 rounded-lg py-2 pr-4 duration-200 before:h-0 before:rounded-r-md before:border-l-4 before:border-button-primary before:duration-200 hover:bg-button-primary/20 hover:before:h-[29px]`} {...props}>
+  <Link
+   href={href}
+   className={`${isSelected(href.toString()) ? "bg-button-primary/20 before:h-[29px]" : "hover:bg-button-primary/20"} flex h-[45px] w-full items-center gap-2 rounded-lg py-2 pr-4 duration-200 before:h-0 before:rounded-r-md before:border-l-4 before:border-button-primary before:duration-200 hover:bg-button-primary/20 hover:before:h-[29px]`}
+   {...props}
+  >
    {children}
   </Link>
  );

@@ -1,5 +1,14 @@
 import { clearWarns, listWarns, warnUser, removeWarn } from "@majoexe/util/database";
-import { ApplicationCommandType, ApplicationCommandOptionType, PermissionsBitField, EmbedBuilder, codeBlock, PermissionFlagsBits, InteractionContextType, ApplicationIntegrationType } from "discord.js";
+import {
+ ApplicationCommandType,
+ ApplicationCommandOptionType,
+ PermissionsBitField,
+ EmbedBuilder,
+ codeBlock,
+ PermissionFlagsBits,
+ InteractionContextType,
+ ApplicationIntegrationType,
+} from "discord.js";
 import type { SlashCommand } from "@/util/types/Command";
 
 export default {
@@ -169,7 +178,9 @@ export default {
 
     const embed = new EmbedBuilder()
      .setTitle(`🤖 Warnings for ${user.globalName || user.username} (${warnings.length})`)
-     .setDescription(warnings.map((warning) => `- \`#${warning.warnId}\` - ${warning.message} (by <@${warning.createdById}> / <t:${Math.floor(warning.createdAt.getTime() / 1000)}:R>)`).join("\n"))
+     .setDescription(
+      warnings.map((warning) => `- \`#${warning.warnId}\` - ${warning.message} (by <@${warning.createdById}> / <t:${Math.floor(warning.createdAt.getTime() / 1000)}:R>)`).join("\n")
+     )
      .setColor(guildSettings?.embedColor || client.config.defaultColor)
      .setTimestamp()
      .setFooter({

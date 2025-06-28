@@ -1,4 +1,3 @@
-// @ts-expect-error
 import config from "@igorkowalczyk/prettier-config";
 
 /**
@@ -6,4 +5,5 @@ import config from "@igorkowalczyk/prettier-config";
  */
 export default {
  ...config,
+ printWidth: 180,
 };

@@ -27,7 +27,18 @@ export const GuildMenuDropdown = ({ guilds, ...props }: React.ComponentProps<typ
   <DropdownMenu {...props}>
    <DropdownMenuTrigger asChild className="bg-transparent! w-64 py-0 border-none">
     <Button variant="select">
-     {selectedGuild.icon ? <Image src={`https://cdn.discordapp.com/icons/${selectedGuild.id}/${selectedGuild.icon}.${selectedGuild.icon.startsWith("a_") ? "gif" : "png"}`} alt={selectedGuild.name} quality={95} width={24} height={24} className="size-9 shrink-0 rounded-full" /> : <div className="size-9  shrink-0 rounded-full bg-button-secondary" />}
+     {selectedGuild.icon ? (
+      <Image
+       src={`https://cdn.discordapp.com/icons/${selectedGuild.id}/${selectedGuild.icon}.${selectedGuild.icon.startsWith("a_") ? "gif" : "png"}`}
+       alt={selectedGuild.name}
+       quality={95}
+       width={24}
+       height={24}
+       className="size-9 shrink-0 rounded-full"
+      />
+     ) : (
+      <div className="size-9  shrink-0 rounded-full bg-button-secondary" />
+     )}
      <span className="text-lg font-bold truncate">{selectedGuild?.name || "Select a server"}</span>
      <ChevronsUpDownIcon
       className={iconVariants({
@@ -43,7 +54,18 @@ export const GuildMenuDropdown = ({ guilds, ...props }: React.ComponentProps<typ
      {guilds.map((guild) => (
       <DropdownMenuItem key={guild.id} asChild>
        <Link href={`/dashboard/${guild.id}${url}`} className="flex items-center gap-2">
-        {guild.icon ? <Image src={`https://cdn.discordapp.com/icons/${guild.id}/${guild.icon}.${guild.icon.startsWith("a_") ? "gif" : "png"}`} alt={guild.name} quality={95} width={24} height={24} className="size-6 shrink-0 rounded-full" /> : <div className="size-6 shrink-0 rounded-full bg-button-secondary" />}
+        {guild.icon ? (
+         <Image
+          src={`https://cdn.discordapp.com/icons/${guild.id}/${guild.icon}.${guild.icon.startsWith("a_") ? "gif" : "png"}`}
+          alt={guild.name}
+          quality={95}
+          width={24}
+          height={24}
+          className="size-6 shrink-0 rounded-full"
+         />
+        ) : (
+         <div className="size-6 shrink-0 rounded-full bg-button-secondary" />
+        )}
         <span>{guild.name}</span>
        </Link>
       </DropdownMenuItem>

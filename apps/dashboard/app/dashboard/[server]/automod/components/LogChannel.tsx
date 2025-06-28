@@ -15,7 +15,9 @@ const LogChannel = ({ actions, setActions, allChannels }: LogChannelProps) => {
  const setChannels = (value: string) => {
   const alertActionType = AutoModerationActionType.SendAlertMessage;
 
-  const updatedActions = actions.some((action) => action.type === alertActionType) ? actions.map((action) => (action.type === alertActionType ? { ...action, metadata: { channel_id: value } } : action)) : [...actions, { type: alertActionType, metadata: { channel_id: value } }];
+  const updatedActions = actions.some((action) => action.type === alertActionType)
+   ? actions.map((action) => (action.type === alertActionType ? { ...action, metadata: { channel_id: value } } : action))
+   : [...actions, { type: alertActionType, metadata: { channel_id: value } }];
 
   setActions(updatedActions);
  };
@@ -28,7 +30,12 @@ const LogChannel = ({ actions, setActions, allChannels }: LogChannelProps) => {
      Log to channel:
     </span>
    </Tooltip>
-   <ChannelsSelect allChannels={[{ id: "1", name: "Disabled" }, ...allChannels.filter((channel) => channel !== null)]} selectedChannels={[actions.find((action) => action.type === AutoModerationActionType.SendAlertMessage)?.metadata?.channel_id || "1"]} setChannels={(channels) => setChannels(channels[0] || "")} multiple={false} />
+   <ChannelsSelect
+    allChannels={[{ id: "1", name: "Disabled" }, ...allChannels.filter((channel) => channel !== null)]}
+    selectedChannels={[actions.find((action) => action.type === AutoModerationActionType.SendAlertMessage)?.metadata?.channel_id || "1"]}
+    setChannels={(channels) => setChannels(channels[0] || "")}
+    multiple={false}
+   />
   </div>
  );
 };

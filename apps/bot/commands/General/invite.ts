@@ -21,7 +21,9 @@ export default {
     .setColor(guildSettings?.embedColor || client.config.defaultColor)
     .setTimestamp()
     .setTitle(`🎉 Invite ${client.user.username} to your server!`)
-    .setDescription(`> **[Click this link to invite me!](${inviteLink})** **__[Recomended!]__**\n\n *Or [click this link to invite me as administrator](${inviteLinkRoot}) [Not recomended!]*`)
+    .setDescription(
+     `> **[Click this link to invite me!](${inviteLink})** **__[Recomended!]__**\n\n *Or [click this link to invite me as administrator](${inviteLinkRoot}) [Not recomended!]*`
+    )
     .setTimestamp()
     .setFooter({
      text: `Requested by ${interaction.user.globalName || interaction.user.username}`,

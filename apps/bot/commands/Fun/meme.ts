@@ -36,7 +36,16 @@ export default {
 
    const json = (await meme.json()) as RedditResponse[];
 
-   if (!json || !json[0] || !json[0].data || !json[0].data.children || !json[0].data.children[0] || !json[0].data.children[0].data || !json[0].data.children[0].data.title || !json[0].data.children[0].data.url) {
+   if (
+    !json ||
+    !json[0] ||
+    !json[0].data ||
+    !json[0].data.children ||
+    !json[0].data.children[0] ||
+    !json[0].data.children[0].data ||
+    !json[0].data.children[0].data.title ||
+    !json[0].data.children[0].data.url
+   ) {
     return client.errorMessages.createSlashError(interaction, "❌ No results found.");
    }
 

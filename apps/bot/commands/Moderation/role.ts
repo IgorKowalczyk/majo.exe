@@ -1,4 +1,13 @@
-import { ApplicationCommandType, ApplicationCommandOptionType, PermissionsBitField, EmbedBuilder, Role, GuildMember, InteractionContextType, ApplicationIntegrationType } from "discord.js";
+import {
+ ApplicationCommandType,
+ ApplicationCommandOptionType,
+ PermissionsBitField,
+ EmbedBuilder,
+ Role,
+ GuildMember,
+ InteractionContextType,
+ ApplicationIntegrationType,
+} from "discord.js";
 import type { SlashCommand } from "@/util/types/Command";
 
 export default {
@@ -105,11 +114,14 @@ export default {
     if (!user) return client.errorMessages.createSlashError(interaction, "❌ You need to provide a user to add the role to!");
 
     if (!userPermissions.has(PermissionsBitField.Flags.ManageRoles)) return client.errorMessages.createSlashError(interaction, "❌ You don't have permission to manage roles");
-    if (!interaction.guild.members.me.permissions.has(PermissionsBitField.Flags.ManageRoles)) return client.errorMessages.createSlashError(interaction, "❌ I don't have permission to manage roles");
+    if (!interaction.guild.members.me.permissions.has(PermissionsBitField.Flags.ManageRoles))
+     return client.errorMessages.createSlashError(interaction, "❌ I don't have permission to manage roles");
 
-    if (interactionMember.roles.highest.comparePositionTo(role) <= 0) return client.errorMessages.createSlashError(interaction, "❌ You can't add a role which is higher than your highest role!");
+    if (interactionMember.roles.highest.comparePositionTo(role) <= 0)
+     return client.errorMessages.createSlashError(interaction, "❌ You can't add a role which is higher than your highest role!");
 
-    if (interaction.guild.members.me.roles.highest.comparePositionTo(role) <= 0) return client.errorMessages.createSlashError(interaction, "❌ I can't add a role which is higher than my highest role!");
+    if (interaction.guild.members.me.roles.highest.comparePositionTo(role) <= 0)
+     return client.errorMessages.createSlashError(interaction, "❌ I can't add a role which is higher than my highest role!");
 
     await user.roles.add(role, reason);
 

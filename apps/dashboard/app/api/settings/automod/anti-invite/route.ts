@@ -73,7 +73,9 @@ export async function POST(request: NextRequest) {
    !Array.isArray(data.exemptChannels) ||
    !data.exemptRoles.every((r) => typeof r === "string") ||
    !data.exemptChannels.every((c) => typeof c === "string") ||
-   !data.actions.every((a) => a.type === AutoModerationActionType.BlockMessage || a.type === AutoModerationActionType.SendAlertMessage || a.type === AutoModerationActionType.Timeout)
+   !data.actions.every(
+    (a) => a.type === AutoModerationActionType.BlockMessage || a.type === AutoModerationActionType.SendAlertMessage || a.type === AutoModerationActionType.Timeout
+   )
   ) {
    return NextResponse.json(
     {

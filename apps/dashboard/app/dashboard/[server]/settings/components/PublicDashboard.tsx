@@ -181,8 +181,18 @@ export const PublicDashboard = ({ enabled, serverId, vanityURL, className, ...pr
        {env.NEXT_PUBLIC_URL}/server/
       </div>
      </div>
-     <Button variant="primary" onClick={(e) => updateVanity(e)} disabled={disabled || !!vanityError || vanity.length === 0 || buttonText === "Saving..."} className="mx-auto font-normal md:mx-0">
-      {buttonText === "Saving..." ? <LoaderCircleIcon className={iconVariants({ variant: "button", className: "animate-spin" })} /> : <CheckIcon className={iconVariants({ variant: "button" })} />} {buttonText}
+     <Button
+      variant="primary"
+      onClick={(e) => updateVanity(e)}
+      disabled={disabled || !!vanityError || vanity.length === 0 || buttonText === "Saving..."}
+      className="mx-auto font-normal md:mx-0"
+     >
+      {buttonText === "Saving..." ? (
+       <LoaderCircleIcon className={iconVariants({ variant: "button", className: "animate-spin" })} />
+      ) : (
+       <CheckIcon className={iconVariants({ variant: "button" })} />
+      )}{" "}
+      {buttonText}
      </Button>
     </div>
    </div>

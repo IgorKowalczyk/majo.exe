@@ -13,7 +13,13 @@ export default {
  type: ApplicationCommandType.ChatInput,
  cooldown: 5000,
  contexts: [InteractionContextType.Guild],
- defaultMemberPermissions: [PermissionFlagsBits.ManageGuild, PermissionFlagsBits.ManageRoles, PermissionFlagsBits.ManageNicknames, PermissionFlagsBits.KickMembers, PermissionFlagsBits.BanMembers],
+ defaultMemberPermissions: [
+  PermissionFlagsBits.ManageGuild,
+  PermissionFlagsBits.ManageRoles,
+  PermissionFlagsBits.ManageNicknames,
+  PermissionFlagsBits.KickMembers,
+  PermissionFlagsBits.BanMembers,
+ ],
  integrationTypes: [ApplicationIntegrationType.GuildInstall],
  usage: "/member <subcommand>",
  options: [
@@ -197,7 +203,7 @@ export default {
   } else if (subcommand === "banner") {
    await getUserBanner(client, interaction, guildSettings?.embedColor || client.config.defaultColor);
   } else if (command === "nickname") {
-   const subcommand = interaction.options.getSubcommand();
+   const subcommand = interaction.options.getSubcommand() as "set" | "remove";
    await changememberNickname(client, interaction, guildSettings?.embedColor || client.config.defaultColor, subcommand);
   }
  },

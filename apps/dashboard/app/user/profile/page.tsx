@@ -94,8 +94,24 @@ export default async function Page() {
        <div className="ml-[-16px] mt-[-20px] box-content flex items-center rounded-full">
         <Tooltip content="Click to see full size">
          <Link href={`${user.avatar}?size=2048`} target="_blank" className="relative size-24 shrink-0">
-          <Image quality={100} src={`/api/user/avatar/${user.id}`} alt={`${user.global_name || user.username} Avatar`} width={96} height={96} className="rounded-full border-4 border-solid border-background-navbar backdrop-blur-xs duration-200 hover:opacity-75" />
-          {user.avatar_decoration_data ? <Image quality={100} src={`/api/user/avatar-decoration/${user.id}`} alt={`${user.global_name || user.username} Avatar decoration`} width={96} height={96} className="absolute left-0 top-0 rounded-full" /> : null}
+          <Image
+           quality={100}
+           src={`/api/user/avatar/${user.id}`}
+           alt={`${user.global_name || user.username} Avatar`}
+           width={96}
+           height={96}
+           className="rounded-full border-4 border-solid border-background-navbar backdrop-blur-xs duration-200 hover:opacity-75"
+          />
+          {user.avatar_decoration_data ? (
+           <Image
+            quality={100}
+            src={`/api/user/avatar-decoration/${user.id}`}
+            alt={`${user.global_name || user.username} Avatar decoration`}
+            width={96}
+            height={96}
+            className="absolute left-0 top-0 rounded-full"
+           />
+          ) : null}
          </Link>
         </Tooltip>
         <div className="ml-2 flex items-center text-lg font-bold">
@@ -155,7 +171,18 @@ export default async function Page() {
         return (
          <div key={guild.guild.id} className="relative flex justify-between overflow-hidden rounded-lg border border-neutral-800 bg-background-navbar p-4">
           <div className="flex flex-row items-center gap-3">
-           {guild.guild.icon ? <Image src={`https://cdn.discordapp.com/icons/${guild.guild.id}/${guild.guild.icon}.${guild.guild.icon.startsWith("a_") ? "gif" : "png"}`} alt={guild.guild.name} quality={95} width={64} height={64} className="size-14 shrink-0 rounded-full" /> : <div className="size-14 shrink-0 rounded-full bg-button-secondary" />}
+           {guild.guild.icon ? (
+            <Image
+             src={`https://cdn.discordapp.com/icons/${guild.guild.id}/${guild.guild.icon}.${guild.guild.icon.startsWith("a_") ? "gif" : "png"}`}
+             alt={guild.guild.name}
+             quality={95}
+             width={64}
+             height={64}
+             className="size-14 shrink-0 rounded-full"
+            />
+           ) : (
+            <div className="size-14 shrink-0 rounded-full bg-button-secondary" />
+           )}
            <div className="flex flex-col">
             <Header className={cn(headerVariants({ variant: "h4" }))}>{guild.guild.name}</Header>
             <p className="text-sm text-white/70">Server ID: {guild.guild.id}</p>

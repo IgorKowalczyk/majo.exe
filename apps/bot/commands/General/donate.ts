@@ -33,7 +33,10 @@ export default {
    }
 
    const embed = new EmbedBuilder()
-    .setDescription("> **You can donate to Majo.exe by using the following methods:**\n" + client.config.donate.links.map((link: DonateLink) => `- [${link.icon} ${link.name}](${link.url})`).join("\n"))
+    .setDescription(
+     "> **You can donate to Majo.exe by using the following methods:**\n" +
+      client.config.donate.links.map((link: DonateLink) => `- [${link.icon} ${link.name}](${link.url})`).join("\n")
+    )
     .setFooter({
      text: `Requested by ${interaction.user.globalName || interaction.user.username}`,
      iconURL: interaction.user.displayAvatarURL({

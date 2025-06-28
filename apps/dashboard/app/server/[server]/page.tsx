@@ -113,7 +113,18 @@ export default async function Page(props: { params: Promise<{ server: string }> 
  return (
   <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
    <Header className={cn(headerVariants({ variant: "h1" }), "mb-6 flex-col justify-normal")}>
-    {guildPreview.icon ? <Image src={`https://cdn.discordapp.com/icons/${guildPreview.id}/${guildPreview.icon}.${guildPreview.icon.startsWith("a_") ? "gif" : "png"}`} alt={guildPreview.name} quality={95} width={96} height={96} className="size-24 rounded-full" /> : <div className="size-24 rounded-full bg-button-secondary" />}
+    {guildPreview.icon ? (
+     <Image
+      src={`https://cdn.discordapp.com/icons/${guildPreview.id}/${guildPreview.icon}.${guildPreview.icon.startsWith("a_") ? "gif" : "png"}`}
+      alt={guildPreview.name}
+      quality={95}
+      width={96}
+      height={96}
+      className="size-24 rounded-full"
+     />
+    ) : (
+     <div className="size-24 rounded-full bg-button-secondary" />
+    )}
     <div className="flex flex-col text-center sm:ml-4">
      {guildPreview.name || "Unnamed server"}
      <Header className={cn(headerVariants({ variant: "h5", alignment: "center" }), "mt-2 opacity-60")}>
@@ -139,7 +150,11 @@ export default async function Page(props: { params: Promise<{ server: string }> 
    <div className="mt-6 block gap-6 lg:flex lg:items-start">
     <Block className="scrollbar-show flex flex-col justify-start overflow-x-scroll [flex:3_1_0]">
      <Header className={cn(headerVariants({ variant: "h4", margin: "wide" }), "items-start justify-normal opacity-80")}>Leaderboard</Header>
-     {data.length > 0 ? <Leaderboard data={data} showSearch={false} showControls={false} /> : <span className="opacity-50">No users found. Maybe you should try talking in chat?</span>}
+     {data.length > 0 ? (
+      <Leaderboard data={data} showSearch={false} showControls={false} />
+     ) : (
+      <span className="opacity-50">No users found. Maybe you should try talking in chat?</span>
+     )}
     </Block>
     <div className="mt-6 flex flex-col justify-start gap-6 [flex:2_1_0%] lg:mt-0">
      <Block>
@@ -150,10 +165,23 @@ export default async function Page(props: { params: Promise<{ server: string }> 
       {guildPreview.emojis && guildPreview.emojis.length > 0 ? (
        <div className="flex flex-row flex-wrap gap-3">
         {guildPreview.emojis.map((emoji) => (
-         <Link key={emoji.id || "" + emoji.name} className="flex flex-col items-center justify-center gap-2" href={`https://cdn.discordapp.com/emojis/${emoji?.id}.${emoji?.animated ? "gif" : "png"}`} target="_blank" rel="noreferrer noopener">
+         <Link
+          key={emoji.id || "" + emoji.name}
+          className="flex flex-col items-center justify-center gap-2"
+          href={`https://cdn.discordapp.com/emojis/${emoji?.id}.${emoji?.animated ? "gif" : "png"}`}
+          target="_blank"
+          rel="noreferrer noopener"
+         >
           <Tooltip content={emoji.name || "Unnamed emoji"}>
            <>
-            <Image src={`https://cdn.discordapp.com/emojis/${emoji.id}.${emoji.animated ? "gif" : "png"}`} alt={emoji.name || ""} quality={95} width={32} height={32} className="size-8 shrink-0" />
+            <Image
+             src={`https://cdn.discordapp.com/emojis/${emoji.id}.${emoji.animated ? "gif" : "png"}`}
+             alt={emoji.name || ""}
+             quality={95}
+             width={32}
+             height={32}
+             className="size-8 shrink-0"
+            />
            </>
           </Tooltip>
          </Link>
@@ -172,10 +200,24 @@ export default async function Page(props: { params: Promise<{ server: string }> 
       {guildPreview.stickers && guildPreview.stickers.length > 0 ? (
        <div className="flex flex-row flex-wrap gap-3">
         {guildPreview.stickers.map((sticker) => (
-         <Link key={sticker.id + sticker.name} className="flex flex-col items-center justify-center gap-2" href={`https://cdn.discordapp.com/stickers/${sticker.id}.${sticker.format_type === 1 ? "png" : sticker.format_type === 2 ? "apng" : sticker.format_type === 3 ? "lottie" : "gif"}`} target="_blank" rel="noreferrer noopener">
+         <Link
+          key={sticker.id + sticker.name}
+          className="flex flex-col items-center justify-center gap-2"
+          href={`https://cdn.discordapp.com/stickers/${sticker.id}.${sticker.format_type === 1 ? "png" : sticker.format_type === 2 ? "apng" : sticker.format_type === 3 ? "lottie" : "gif"}`}
+          target="_blank"
+          rel="noreferrer noopener"
+         >
           <Tooltip content={sticker.name || "Unnamed sticker"}>
            <>
-            <Image unoptimized src={`https://cdn.discordapp.com/stickers/${sticker.id}.${sticker.format_type === 1 ? "png" : sticker.format_type === 2 ? "apng" : sticker.format_type === 3 ? "lottie" : "gif"}`} alt={sticker.name} quality={95} width={96} height={96} className="size-24 shrink-0" />
+            <Image
+             unoptimized
+             src={`https://cdn.discordapp.com/stickers/${sticker.id}.${sticker.format_type === 1 ? "png" : sticker.format_type === 2 ? "apng" : sticker.format_type === 3 ? "lottie" : "gif"}`}
+             alt={sticker.name}
+             quality={95}
+             width={96}
+             height={96}
+             className="size-24 shrink-0"
+            />
            </>
           </Tooltip>
          </Link>

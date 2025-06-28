@@ -168,8 +168,24 @@ export default async function User(props: { params: Promise<{ server: string; id
       <div className="ml-[-16px] mt-[-20px] box-content flex w-full items-center rounded-full">
        <Tooltip content="Click to see full size">
         <Link href={`/api/user/avatar/${discordUser.id}`} target="_blank" className="relative size-24 shrink-0">
-         <Image quality={100} src={`/api/user/avatar/${discordUser.id}`} alt={`${discordUser.global_name || discordUser.username} Avatar`} width={96} height={96} className="rounded-full border-4! border-solid! border-background-navbar! duration-200 hover:opacity-75" />
-         {discordUser.avatar_decoration_data ? <Image quality={100} src={`/api/user/avatar-decoration/${discordUser.id}`} alt={`${discordUser.global_name || discordUser.username} Avatar decoration`} width={96} height={96} className="absolute left-0 top-0 rounded-full" /> : null}
+         <Image
+          quality={100}
+          src={`/api/user/avatar/${discordUser.id}`}
+          alt={`${discordUser.global_name || discordUser.username} Avatar`}
+          width={96}
+          height={96}
+          className="rounded-full border-4! border-solid! border-background-navbar! duration-200 hover:opacity-75"
+         />
+         {discordUser.avatar_decoration_data ? (
+          <Image
+           quality={100}
+           src={`/api/user/avatar-decoration/${discordUser.id}`}
+           alt={`${discordUser.global_name || discordUser.username} Avatar decoration`}
+           width={96}
+           height={96}
+           className="absolute left-0 top-0 rounded-full"
+          />
+         ) : null}
         </Link>
        </Tooltip>
 

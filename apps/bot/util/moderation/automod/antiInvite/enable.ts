@@ -1,5 +1,17 @@
 import { createDatabaseAutoModRule, syncDatabaseAutoModRule } from "@majoexe/util/database";
-import { ChannelType, AutoModerationRuleEventType, AutoModerationActionType, AutoModerationRuleTriggerType, EmbedBuilder, PermissionsBitField, codeBlock, ChatInputCommandInteraction, type AutoModerationRuleCreateOptions, TextChannel, GuildMember } from "discord.js";
+import {
+ ChannelType,
+ AutoModerationRuleEventType,
+ AutoModerationActionType,
+ AutoModerationRuleTriggerType,
+ EmbedBuilder,
+ PermissionsBitField,
+ codeBlock,
+ ChatInputCommandInteraction,
+ type AutoModerationRuleCreateOptions,
+ TextChannel,
+ GuildMember,
+} from "discord.js";
 import type { Majobot } from "@/index";
 import type { GuildSettings } from "@/util/types/Command";
 
@@ -16,7 +28,12 @@ export async function enableAntiInvite(client: Majobot, interaction: ChatInputCo
 
  const existingRules = await interaction.guild.autoModerationRules.fetch({ cache: false });
  const conflictingRules = existingRules.filter((rule) => rule.triggerType === AutoModerationRuleTriggerType.Keyword);
- if (conflictingRules.size === 6) return client.errorMessages.createSlashError(interaction, "❌ You can only have 6 keyword rules enabled at once. Please disable one of the existing keyword rules before enabling this one.");
+ if (conflictingRules.size === 6) {
+  return client.errorMessages.createSlashError(
+   interaction,
+   "❌ You can only have 6 keyword rules enabled at once. Please disable one of the existing keyword rules before enabling this one."
+  );
+ }
 
  if (createdRule) {
   if (createdRule.enabled) return client.errorMessages.createSlashError(interaction, "❌ The anti-invite system is already `enabled`");

@@ -1,4 +1,14 @@
-import { ApplicationCommandType, ApplicationCommandOptionType, PermissionsBitField, EmbedBuilder, PermissionFlagsBits, ChannelType, GuildMember, InteractionContextType, ApplicationIntegrationType } from "discord.js";
+import {
+ ApplicationCommandType,
+ ApplicationCommandOptionType,
+ PermissionsBitField,
+ EmbedBuilder,
+ PermissionFlagsBits,
+ ChannelType,
+ GuildMember,
+ InteractionContextType,
+ ApplicationIntegrationType,
+} from "discord.js";
 import ms from "ms";
 import type { SlashCommand } from "@/util/types/Command";
 
@@ -27,8 +37,12 @@ export default {
    if (!interaction.channel) return client.errorMessages.createSlashError(interaction, "❌ Unable to get channel data. Please try again.");
    if (interaction.channel.type !== ChannelType.GuildText) return client.errorMessages.createSlashError(interaction, "❌ This command can only be used in a text channel");
 
-   if (!interaction.channel.permissionsFor(interaction.guild.members.me).has(PermissionsBitField.Flags.ManageChannels)) return client.errorMessages.createSlashError(interaction, "❌ I don't have permission to manage channels");
-   if (!interaction.channel.permissionsFor(interaction.member as GuildMember).has(PermissionsBitField.Flags.ManageChannels)) return client.errorMessages.createSlashError(interaction, "❌ You don't have permission to manage channels");
+   if (!interaction.channel.permissionsFor(interaction.guild.members.me).has(PermissionsBitField.Flags.ManageChannels)) {
+    return client.errorMessages.createSlashError(interaction, "❌ I don't have permission to manage channels");
+   }
+   if (!interaction.channel.permissionsFor(interaction.member as GuildMember).has(PermissionsBitField.Flags.ManageChannels)) {
+    return client.errorMessages.createSlashError(interaction, "❌ You don't have permission to manage channels");
+   }
 
    const time = interaction.options.getString("time");
    if (!time) return client.errorMessages.createSlashError(interaction, "❌ Invalid time provided");

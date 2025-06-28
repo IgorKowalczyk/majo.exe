@@ -1,6 +1,17 @@
 import prismaClient from "@majoexe/database";
 import { shortenText } from "@majoexe/util/functions/util";
-import { ApplicationCommandType, ApplicationCommandOptionType, ChannelType, PermissionsBitField, EmbedBuilder, PermissionFlagsBits, codeBlock, TextChannel, InteractionContextType, ApplicationIntegrationType } from "discord.js";
+import {
+ ApplicationCommandType,
+ ApplicationCommandOptionType,
+ ChannelType,
+ PermissionsBitField,
+ EmbedBuilder,
+ PermissionFlagsBits,
+ codeBlock,
+ TextChannel,
+ InteractionContextType,
+ ApplicationIntegrationType,
+} from "discord.js";
 import type { SlashCommand } from "@/util/types/Command";
 
 export default {
@@ -60,8 +71,12 @@ export default {
 
    const memberPermissions = interaction.memberPermissions || new PermissionsBitField();
 
-   if (!memberPermissions.has(PermissionsBitField.Flags.ManageGuild)) return client.errorMessages.createSlashError(interaction, "❌ You don't have permission to use this command. You need `Manage Server` permission");
-   if (!interaction.guild.members.me.permissions.has(PermissionsBitField.Flags.ManageGuild)) return client.errorMessages.createSlashError(interaction, "❌ I don't have permission to change Automoderation settings. Please give me `Manage Server` permission");
+   if (!memberPermissions.has(PermissionsBitField.Flags.ManageGuild)) {
+    return client.errorMessages.createSlashError(interaction, "❌ You don't have permission to use this command. You need `Manage Server` permission");
+   }
+   if (!interaction.guild.members.me.permissions.has(PermissionsBitField.Flags.ManageGuild)) {
+    return client.errorMessages.createSlashError(interaction, "❌ I don't have permission to change Automoderation settings. Please give me `Manage Server` permission");
+   }
 
    const command = interaction.options.getSubcommand();
 
@@ -71,10 +86,14 @@ export default {
     if (!channel) return client.errorMessages.createSlashError(interaction, "❌ You need to provide a channel to set as the welcome channel!");
     if (channel.type !== ChannelType.GuildText) return client.errorMessages.createSlashError(interaction, "❌ This command can only be used in a text channel");
     if (!channel.isTextBased()) return client.errorMessages.createSlashError(interaction, "❌ You need to provide a text channel to set as the welcome channel!");
-    if (!channel.permissionsFor(interaction.guild.members.me).has(PermissionsBitField.Flags.SendMessages)) return client.errorMessages.createSlashError(interaction, "❌ I don't have permission to send messages in that channel!");
-    if (!channel.permissionsFor(interaction.guild.members.me).has(PermissionsBitField.Flags.EmbedLinks)) return client.errorMessages.createSlashError(interaction, "❌ I don't have permission to embed links in that channel!");
-    if (!channel.permissionsFor(interaction.guild.members.me).has(PermissionsBitField.Flags.AttachFiles)) return client.errorMessages.createSlashError(interaction, "❌ I don't have permission to attach files in that channel!");
-    if (!channel.permissionsFor(interaction.guild.members.me).has(PermissionsBitField.Flags.ViewChannel)) return client.errorMessages.createSlashError(interaction, "❌ I don't have permission to view that channel!");
+    if (!channel.permissionsFor(interaction.guild.members.me).has(PermissionsBitField.Flags.SendMessages))
+     return client.errorMessages.createSlashError(interaction, "❌ I don't have permission to send messages in that channel!");
+    if (!channel.permissionsFor(interaction.guild.members.me).has(PermissionsBitField.Flags.EmbedLinks))
+     return client.errorMessages.createSlashError(interaction, "❌ I don't have permission to embed links in that channel!");
+    if (!channel.permissionsFor(interaction.guild.members.me).has(PermissionsBitField.Flags.AttachFiles))
+     return client.errorMessages.createSlashError(interaction, "❌ I don't have permission to attach files in that channel!");
+    if (!channel.permissionsFor(interaction.guild.members.me).has(PermissionsBitField.Flags.ViewChannel))
+     return client.errorMessages.createSlashError(interaction, "❌ I don't have permission to view that channel!");
 
     const title = interaction.options.getString("title") || "🎉 Welcome to the server {user}!";
     const description = interaction.options.getString("description") || "> Welcome to **{guild}** We hope you enjoy your stay here!";
@@ -185,7 +204,9 @@ export default {
 
       const embed = new EmbedBuilder() // prettier
        .setTitle("👋 Welcome messages are disabled")
-       .setDescription(">>> **Welcome messages have been disabled automatically** because the channel was deleted or I don't have permission to view it!\nYou can enable them again by using `/welcome enable`")
+       .setDescription(
+        ">>> **Welcome messages have been disabled automatically** because the channel was deleted or I don't have permission to view it!\nYou can enable them again by using `/welcome enable`"
+       )
        .setColor(guildSettings?.embedColor || client.config.defaultColor)
        .setTimestamp()
        .setThumbnail(interaction.guild.iconURL({ size: 256 }))

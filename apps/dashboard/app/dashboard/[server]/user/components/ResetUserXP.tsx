@@ -76,7 +76,10 @@ export const ResetUserXP = ({ userId, guildId, className, ...props }: ResetUserX
        <Icons.warning className={iconVariants({ variant: "large", className: "mr-2 stroke-2!" })} />
        Reset XP
       </DialogTitle>
-      <DialogDescription>Resetting XP will reset the XP of this user in this server. This action is irreversible and will reset the XP of this user to 0. Are you sure you want to reset the XP of this user?</DialogDescription>
+      <DialogDescription>
+       Resetting XP will reset the XP of this user in this server. This action is irreversible and will reset the XP of this user to 0. Are you sure you want to reset the XP of
+       this user?
+      </DialogDescription>
      </DialogHeader>
 
      <div className="mt-4 flex justify-between gap-2">

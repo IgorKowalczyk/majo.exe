@@ -69,7 +69,9 @@ export default async function GiveawaysPage(props: { params: Promise<{ server: s
     },
    });
 
-   if (startedBy && startedBy.avatar) startedBy.avatar = `https://cdn.discordapp.com/avatars/${hostedBy}/${startedBy.avatar}.${startedBy.avatar.startsWith("a_") ? "gif" : "png"}` || "https://cdn.discordapp.com/embed/avatars/0.png";
+   if (startedBy && startedBy.avatar)
+    startedBy.avatar =
+     `https://cdn.discordapp.com/avatars/${hostedBy}/${startedBy.avatar}.${startedBy.avatar.startsWith("a_") ? "gif" : "png"}` || "https://cdn.discordapp.com/embed/avatars/0.png";
 
    let channel;
    if (data.channelId) {

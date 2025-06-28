@@ -79,7 +79,11 @@ export default async function Page(props: { params: Promise<{ server: string }> 
        <p className="mb-4 flex items-center gap-3 text-center text-xl font-bold">
         {botConfig.emojis.categories.find((cat) => cat.name === category.name.toLowerCase())?.emoji || "❔"} {category.name}
         <span className="ml-auto mr-0">
-         <UpdateCategories serverId={serverDownload.id} categoryName={category.name} categoryEnabled={!guild.guildDisabledCategories.some((cat) => cat.categoryName === category.name)} />
+         <UpdateCategories
+          serverId={serverDownload.id}
+          categoryName={category.name}
+          categoryEnabled={!guild.guildDisabledCategories.some((cat) => cat.categoryName === category.name)}
+         />
         </span>
        </p>
        {category.commands.slice(0, 6).map((command) => (
@@ -159,7 +163,11 @@ export default async function Page(props: { params: Promise<{ server: string }> 
            </div>
            <p className="opacity-70">{command.description}</p>
           </div>
-          <UpdateCommands serverId={serverDownload.id} commandName={command.name} commandEnabled={!guild.guildDisabledCommands.some((com) => com.commandName.toLowerCase() === command.name.toLowerCase())} />
+          <UpdateCommands
+           serverId={serverDownload.id}
+           commandName={command.name}
+           commandEnabled={!guild.guildDisabledCommands.some((com) => com.commandName.toLowerCase() === command.name.toLowerCase())}
+          />
          </div>
         </div>
        ))}

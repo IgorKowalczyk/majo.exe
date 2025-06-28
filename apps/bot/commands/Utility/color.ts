@@ -1,7 +1,15 @@
 import { invertColor } from "@majoexe/util/images";
 import { createCanvas } from "@napi-rs/canvas";
 import { Color, isColor } from "coloras";
-import { ApplicationCommandType, ApplicationCommandOptionType, AttachmentBuilder, EmbedBuilder, type ColorResolvable, InteractionContextType, ApplicationIntegrationType } from "discord.js";
+import {
+ ApplicationCommandType,
+ ApplicationCommandOptionType,
+ AttachmentBuilder,
+ EmbedBuilder,
+ type ColorResolvable,
+ InteractionContextType,
+ ApplicationIntegrationType,
+} from "discord.js";
 import type { SlashCommand } from "@/util/types/Command";
 
 export default {
@@ -30,7 +38,9 @@ export default {
 
    if (!random && color && !color.startsWith("#")) color = `#${color}`;
 
-   if (!random && !isColor(color).color) return client.errorMessages.createSlashError(interaction, "❌ The color you provided is invalid. The color must be in hex format. Example: `#FF0000`");
+   if (!random && !isColor(color).color) {
+    return client.errorMessages.createSlashError(interaction, "❌ The color you provided is invalid. The color must be in hex format. Example: `#FF0000`");
+   }
 
    const value = random ? "" : color;
    const colorInfo = new Color(value);

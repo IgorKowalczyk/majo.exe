@@ -1,5 +1,15 @@
 import { setXPLevelUpMessageSettings, setXPSettings, fetchXPSettings } from "@majoexe/util/database";
-import { ApplicationCommandType, ApplicationCommandOptionType, PermissionsBitField, PermissionFlagsBits, EmbedBuilder, time, InteractionContextType, ApplicationIntegrationType, MessageFlags } from "discord.js";
+import {
+ ApplicationCommandType,
+ ApplicationCommandOptionType,
+ PermissionsBitField,
+ PermissionFlagsBits,
+ EmbedBuilder,
+ time,
+ InteractionContextType,
+ ApplicationIntegrationType,
+ MessageFlags,
+} from "discord.js";
 import type { SlashCommand } from "@/util/types/Command";
 
 export default {
@@ -163,7 +173,9 @@ export default {
      .setColor(guildSettings.embedColor || client.config.defaultColor)
      .setTimestamp()
      .setTitle("📈 XP Settings")
-     .setDescription(`> ${settings.enableXPLevelUpMessage ? client.config.emojis.success : client.config.emojis.error} **Leveling messages:** \`${settings.enableXPLevelUpMessage ? "Enabled" : "Disabled"}\` (Last updated: ${settings.enableXPLevelUpMessageLastChanged ? time(settings.enableXPLevelUpMessageLastChanged, "R") : "Never"})\n> ${settings.enableXP ? client.config.emojis.success : client.config.emojis.error} **Gaining XP:** \`${settings.enableXP ? "Enabled" : "Disabled"}\` (Last updated: ${settings.enableXPLastChanged ? time(settings.enableXPLastChanged, "R") : "Never"})`)
+     .setDescription(
+      `> ${settings.enableXPLevelUpMessage ? client.config.emojis.success : client.config.emojis.error} **Leveling messages:** \`${settings.enableXPLevelUpMessage ? "Enabled" : "Disabled"}\` (Last updated: ${settings.enableXPLevelUpMessageLastChanged ? time(settings.enableXPLevelUpMessageLastChanged, "R") : "Never"})\n> ${settings.enableXP ? client.config.emojis.success : client.config.emojis.error} **Gaining XP:** \`${settings.enableXP ? "Enabled" : "Disabled"}\` (Last updated: ${settings.enableXPLastChanged ? time(settings.enableXPLastChanged, "R") : "Never"})`
+     )
      .setFooter({
       text: `Requested by ${interaction.user.globalName || interaction.user.username}`,
       iconURL: interaction.user.displayAvatarURL({

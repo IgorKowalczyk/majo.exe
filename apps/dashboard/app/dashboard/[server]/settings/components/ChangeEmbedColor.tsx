@@ -154,11 +154,19 @@ export const ChangeEmbedColor = ({ serverId, serverColor, className, ...props }:
      buttons={
       <>
        <Button variant="primary" onClick={handleSubmit} disabled={buttonText === "Saving..."}>
-        {buttonText === "Saving..." ? <LoaderCircleIcon className={iconVariants({ variant: "button", className: "animate-spin" })} /> : <CheckIcon className={iconVariants({ variant: "button" })} />}
+        {buttonText === "Saving..." ? (
+         <LoaderCircleIcon className={iconVariants({ variant: "button", className: "animate-spin" })} />
+        ) : (
+         <CheckIcon className={iconVariants({ variant: "button" })} />
+        )}
         {buttonText}
        </Button>
        <Button variant="secondary" onClick={handleReset} disabled={resetButtonText === "Resetting..."}>
-        {resetButtonText === "Resetting..." ? <LoaderCircleIcon className={iconVariants({ variant: "button", className: "animate-spin" })} /> : <TrashIcon className={iconVariants({ variant: "button" })} />}
+        {resetButtonText === "Resetting..." ? (
+         <LoaderCircleIcon className={iconVariants({ variant: "button", className: "animate-spin" })} />
+        ) : (
+         <TrashIcon className={iconVariants({ variant: "button" })} />
+        )}
         {resetButtonText}
        </Button>
       </>

@@ -11,7 +11,17 @@ interface BorderBeamProps extends React.ComponentProps<"div"> {
  delay?: number;
 }
 
-export const BorderBeam = ({ className, size = 200, duration = 15, anchor = 90, borderWidth = 1.5, colorFrom = "#ffaa40", colorTo = "#9c40ff", delay = 0, ...props }: BorderBeamProps) => {
+export const BorderBeam = ({
+ className,
+ size = 200,
+ duration = 15,
+ anchor = 90,
+ borderWidth = 1.5,
+ colorFrom = "#ffaa40",
+ colorTo = "#9c40ff",
+ delay = 0,
+ ...props
+}: BorderBeamProps) => {
  return (
   <div
    style={

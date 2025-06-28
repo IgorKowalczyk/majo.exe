@@ -1,5 +1,14 @@
 import { load } from "cheerio";
-import { ApplicationCommandType, EmbedBuilder, ActionRowBuilder, ButtonBuilder, ApplicationCommandOptionType, ButtonStyle, ApplicationIntegrationType, InteractionContextType } from "discord.js";
+import {
+ ApplicationCommandType,
+ EmbedBuilder,
+ ActionRowBuilder,
+ ButtonBuilder,
+ ApplicationCommandOptionType,
+ ButtonStyle,
+ ApplicationIntegrationType,
+ InteractionContextType,
+} from "discord.js";
 import type { SlashCommand } from "@/util/types/Command";
 
 export default {

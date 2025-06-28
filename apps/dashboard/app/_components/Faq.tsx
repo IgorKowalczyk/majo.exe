@@ -8,7 +8,8 @@ export const Faq = ({ className, ...props }: React.ComponentProps<"div">) => {
  const items = [
   {
    question: "What is Majo.exe",
-   answer: "Majo.exe is a multi-purpose Discord bot that offers a wide range of features such as moderation, image manipulation, leveling, auto-moderation, and much more. It's designed to be easy to use and highly customizable - perfect for any server.",
+   answer:
+    "Majo.exe is a multi-purpose Discord bot that offers a wide range of features such as moderation, image manipulation, leveling, auto-moderation, and much more. It's designed to be easy to use and highly customizable - perfect for any server.",
   },
   {
    question: "Do you offer technical support?",
@@ -20,7 +21,8 @@ export const Faq = ({ className, ...props }: React.ComponentProps<"div">) => {
   },
   {
    question: "How do I invite Majo.exe to my server?",
-   answer: "You can invite Majo.exe to your server by clicking the 'Add to server' button on our website. You'll need to have the 'Manage Server' permission to add the bot to your server.",
+   answer:
+    "You can invite Majo.exe to your server by clicking the 'Add to server' button on our website. You'll need to have the 'Manage Server' permission to add the bot to your server.",
   },
   {
    question: "How do I report a bug?",

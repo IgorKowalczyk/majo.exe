@@ -1,6 +1,16 @@
 /* eslint-disable complexity */
 
-import { ApplicationCommandType, ApplicationCommandOptionType, EmbedBuilder, PermissionsBitField, codeBlock, PermissionFlagsBits, type GuildEmoji, InteractionContextType, ApplicationIntegrationType } from "discord.js";
+import {
+ ApplicationCommandType,
+ ApplicationCommandOptionType,
+ EmbedBuilder,
+ PermissionsBitField,
+ codeBlock,
+ PermissionFlagsBits,
+ type GuildEmoji,
+ InteractionContextType,
+ ApplicationIntegrationType,
+} from "discord.js";
 import isURL from "validator/lib/isURL";
 import type { SlashCommand } from "@/util/types/Command";
 
@@ -83,15 +93,18 @@ export default {
   // #region Create
   if (subcommand === "create") {
    try {
-    if (!memberPermissions.has(PermissionsBitField.Flags.ManageGuildExpressions)) return client.errorMessages.createSlashError(interaction, "❌ You need the `MANAGE_EMOJIS_AND_STICKERS` permission to create emojis!");
-    if (!interaction.guild.members.me.permissions.has(PermissionsBitField.Flags.ManageGuildExpressions)) return client.errorMessages.createSlashError(interaction, "❌ I need `MANAGE_EMOJIS_AND_STICKERS` permission to manage emojis!");
+    if (!memberPermissions.has(PermissionsBitField.Flags.ManageGuildExpressions))
+     return client.errorMessages.createSlashError(interaction, "❌ You need the `MANAGE_EMOJIS_AND_STICKERS` permission to create emojis!");
+    if (!interaction.guild.members.me.permissions.has(PermissionsBitField.Flags.ManageGuildExpressions))
+     return client.errorMessages.createSlashError(interaction, "❌ I need `MANAGE_EMOJIS_AND_STICKERS` permission to manage emojis!");
 
     const emojiName = interaction.options.getString("emoji_name");
     const emojiURL = interaction.options.getString("emoji");
 
     if (!emojiName || !emojiURL) return client.errorMessages.createSlashError(interaction, "❌ Please provide an emoji name and an emoji URL!");
 
-    if (interaction.guild.emojis.cache.find((semoji) => semoji && semoji.name && semoji.name.toLowerCase() === emojiName.toLowerCase() && semoji.name !== null)) return client.errorMessages.createSlashError(interaction, "❌ An emoji with that name already exists!");
+    if (interaction.guild.emojis.cache.find((semoji) => semoji && semoji.name && semoji.name.toLowerCase() === emojiName.toLowerCase() && semoji.name !== null))
+     return client.errorMessages.createSlashError(interaction, "❌ An emoji with that name already exists!");
 
     if (emojiName.length > 32) return client.errorMessages.createSlashError(interaction, "❌ Emoji name must be less than 32 characters!");
 
@@ -147,7 +160,10 @@ export default {
 
      return interaction.followUp({ embeds: [embed] });
     } catch (_err) {
-     return client.errorMessages.createSlashError(interaction, "❌ Cannot create emoji! It may be because of the following reasons:\n\n>>> - You have reached the maximum number of emojis on this server\n- The emoji URL is invalid\n- The emoji name is invalid\n- The emoji is too large");
+     return client.errorMessages.createSlashError(
+      interaction,
+      "❌ Cannot create emoji! It may be because of the following reasons:\n\n>>> - You have reached the maximum number of emojis on this server\n- The emoji URL is invalid\n- The emoji name is invalid\n- The emoji is too large"
+     );
     }
    } catch (err) {
     client.errorMessages.internalError(interaction, err);
@@ -156,8 +172,10 @@ export default {
    // #region Delete
   } else if (subcommand === "delete") {
    try {
-    if (!memberPermissions.has(PermissionsBitField.Flags.ManageGuildExpressions)) return client.errorMessages.createSlashError(interaction, "❌ You need the `MANAGE_EMOJIS_AND_STICKERS` permission to create emojis!");
-    if (!interaction.guild.members.me.permissions.has(PermissionsBitField.Flags.ManageGuildExpressions)) return client.errorMessages.createSlashError(interaction, "❌ I need `MANAGE_EMOJIS_AND_STICKERS` permission to manage emojis!");
+    if (!memberPermissions.has(PermissionsBitField.Flags.ManageGuildExpressions))
+     return client.errorMessages.createSlashError(interaction, "❌ You need the `MANAGE_EMOJIS_AND_STICKERS` permission to create emojis!");
+    if (!interaction.guild.members.me.permissions.has(PermissionsBitField.Flags.ManageGuildExpressions))
+     return client.errorMessages.createSlashError(interaction, "❌ I need `MANAGE_EMOJIS_AND_STICKERS` permission to manage emojis!");
 
     const emoji = interaction.options.getString("emoji");
 
@@ -168,7 +186,12 @@ export default {
     if (!isNaN(Number(emoji))) {
      emojiToDelete = await interaction.guild.emojis.fetch(emoji);
     } else {
-     emojiToDelete = interaction.guild.emojis.cache.find((semoji) => semoji && semoji.name && (semoji.name === emoji || semoji.name.toLowerCase() === emoji.toLowerCase() || semoji.name.split(":")[0] === emoji || semoji.name.split(":")[1] === emoji));
+     emojiToDelete = interaction.guild.emojis.cache.find(
+      (semoji) =>
+       semoji &&
+       semoji.name &&
+       (semoji.name === emoji || semoji.name.toLowerCase() === emoji.toLowerCase() || semoji.name.split(":")[0] === emoji || semoji.name.split(":")[1] === emoji)
+     );
     }
 
     if (!emojiToDelete) return client.errorMessages.createSlashError(interaction, "❌ It seems like that emoji doesn't exist!");
@@ -178,7 +201,10 @@ export default {
     try {
      await emojiToDelete.delete();
     } catch (_err) {
-     return client.errorMessages.createSlashError(interaction, "❌ Cannot delete emoji! It may be because of the following reasons:\n\n>>> - The emoji is not from this server\n- The emoji is not found\n - This is just a bug");
+     return client.errorMessages.createSlashError(
+      interaction,
+      "❌ Cannot delete emoji! It may be because of the following reasons:\n\n>>> - The emoji is not from this server\n- The emoji is not found\n - This is just a bug"
+     );
     }
 
     const embed = new EmbedBuilder()
@@ -224,7 +250,12 @@ export default {
     if (!isNaN(Number(emoji))) {
      emojiToGet = await interaction.guild.emojis.fetch(emoji);
     } else {
-     emojiToGet = interaction.guild.emojis.cache.find((semoji) => semoji && semoji.name && (semoji.name === emoji || semoji.name.toLowerCase() === emoji.toLowerCase() || semoji.name.split(":")[0] === emoji || semoji.name.split(":")[1] === emoji));
+     emojiToGet = interaction.guild.emojis.cache.find(
+      (semoji) =>
+       semoji &&
+       semoji.name &&
+       (semoji.name === emoji || semoji.name.toLowerCase() === emoji.toLowerCase() || semoji.name.split(":")[0] === emoji || semoji.name.split(":")[1] === emoji)
+     );
     }
 
     if (!emojiToGet) return client.errorMessages.createSlashError(interaction, "❌ It seems like that emoji doesn't exist!");

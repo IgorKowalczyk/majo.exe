@@ -1,4 +1,13 @@
-import { ApplicationCommandType, ApplicationCommandOptionType, EmbedBuilder, ButtonBuilder, ButtonStyle, ActionRowBuilder, ApplicationIntegrationType, InteractionContextType } from "discord.js";
+import {
+ ApplicationCommandType,
+ ApplicationCommandOptionType,
+ EmbedBuilder,
+ ButtonBuilder,
+ ButtonStyle,
+ ActionRowBuilder,
+ ApplicationIntegrationType,
+ InteractionContextType,
+} from "discord.js";
 import type { SlashCommand } from "@/util/types/Command";
 
 export default {

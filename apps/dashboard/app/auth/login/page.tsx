@@ -32,7 +32,9 @@ export default async function LoginPage(props: { searchParams: Promise<{ error: 
     ) : (
      <Dots />
     )}
-    <div className="flex size-20 min-h-20 min-w-20 items-center justify-center rounded-full border border-white/20 bg-white/5 text-5xl text-[#939DB8] backdrop-blur-xs sm:size-28 sm:min-h-28 sm:min-w-28">?</div>
+    <div className="flex size-20 min-h-20 min-w-20 items-center justify-center rounded-full border border-white/20 bg-white/5 text-5xl text-[#939DB8] backdrop-blur-xs sm:size-28 sm:min-h-28 sm:min-w-28">
+     ?
+    </div>
    </div>
 
    <div className="z-30">

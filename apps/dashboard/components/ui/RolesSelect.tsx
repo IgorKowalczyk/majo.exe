@@ -33,7 +33,11 @@ export const RolesSelect = ({ allRoles, selectedRoles = [], setRoles, multiple =
   <Popover open={open} onOpenChange={setOpen}>
    <PopoverTrigger asChild>
     <Button variant="select" role="combobox" aria-expanded={open} className="max-w-sm justify-between">
-     {selectedRoles.length > 0 ? (multiple ? `${allRoles.find((role) => role.id === selectedRoles[0])?.name ?? "Unknown role"}${selectedRoles.length > 1 ? ` + ${selectedRoles.length - 1} more` : ""}` : (allRoles.find((role) => role.id === selectedRoles[0])?.name ?? "No role selected")) : "Select roles..."}
+     {selectedRoles.length > 0
+      ? multiple
+        ? `${allRoles.find((role) => role.id === selectedRoles[0])?.name ?? "Unknown role"}${selectedRoles.length > 1 ? ` + ${selectedRoles.length - 1} more` : ""}`
+        : (allRoles.find((role) => role.id === selectedRoles[0])?.name ?? "No role selected")
+      : "Select roles..."}
      <ChevronsUpDownIcon
       className={iconVariants({
        variant: "small",

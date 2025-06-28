@@ -66,7 +66,9 @@ export const DeleteUserData = ({ className, ...props }: React.ComponentProps<"di
        <Icons.warning className={iconVariants({ variant: "large", className: "stroke-2!" })} />
        Delete account
       </DialogTitle>
-      <DialogDescription>Deleting your account will delete all your data from our servers. This action is irreversible. Are you sure you want to delete your account?</DialogDescription>
+      <DialogDescription>
+       Deleting your account will delete all your data from our servers. This action is irreversible. Are you sure you want to delete your account?
+      </DialogDescription>
      </DialogHeader>
 
      <div className="mt-4 flex justify-between gap-2">

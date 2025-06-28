@@ -1,5 +1,25 @@
-import { ApplicationCommandType, ChannelType, ApplicationCommandOptionType, PermissionsBitField, PermissionFlagsBits, InteractionContextType, ApplicationIntegrationType } from "discord.js";
-import { autoModSettings, disableAntiBadWords, enableAntiBadWords, disableAntiInvite, enableAntiInvite, disableAntiLink, enableAntiLink, disableAntiMention, enableAntiMention, disableAntiSpam, enableAntiSpam } from "@/util/moderation/automod/index";
+import {
+ ApplicationCommandType,
+ ChannelType,
+ ApplicationCommandOptionType,
+ PermissionsBitField,
+ PermissionFlagsBits,
+ InteractionContextType,
+ ApplicationIntegrationType,
+} from "discord.js";
+import {
+ autoModSettings,
+ disableAntiBadWords,
+ enableAntiBadWords,
+ disableAntiInvite,
+ enableAntiInvite,
+ disableAntiLink,
+ enableAntiLink,
+ disableAntiMention,
+ enableAntiMention,
+ disableAntiSpam,
+ enableAntiSpam,
+} from "@/util/moderation/automod/index";
 import type { SlashCommand } from "@/util/types/Command";
 
 export default {

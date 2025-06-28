@@ -1,5 +1,13 @@
 import { fetchLogs, countLogs } from "@majoexe/util/database";
-import { ApplicationCommandType, ApplicationCommandOptionType, PermissionFlagsBits, EmbedBuilder, PermissionsBitField, InteractionContextType, ApplicationIntegrationType } from "discord.js";
+import {
+ ApplicationCommandType,
+ ApplicationCommandOptionType,
+ PermissionFlagsBits,
+ EmbedBuilder,
+ PermissionsBitField,
+ InteractionContextType,
+ ApplicationIntegrationType,
+} from "discord.js";
 import type { SlashCommand } from "@/util/types/Command";
 
 export default {
@@ -30,8 +38,10 @@ export default {
 
    const memberPermissions = interaction.memberPermissions || new PermissionsBitField();
 
-   if (!memberPermissions.has(PermissionsBitField.Flags.ManageGuild)) return client.errorMessages.createSlashError(interaction, "❌ You don't have permission to use this command. You need `Manage Server` permission");
-   if (!interaction.guild.members.me.permissions.has(PermissionsBitField.Flags.ManageGuild)) return client.errorMessages.createSlashError(interaction, "❌ I don't have permission to change settings. Please give me `Manage Server` permission");
+   if (!memberPermissions.has(PermissionsBitField.Flags.ManageGuild))
+    return client.errorMessages.createSlashError(interaction, "❌ You don't have permission to use this command. You need `Manage Server` permission");
+   if (!interaction.guild.members.me.permissions.has(PermissionsBitField.Flags.ManageGuild))
+    return client.errorMessages.createSlashError(interaction, "❌ I don't have permission to change settings. Please give me `Manage Server` permission");
 
    const count = interaction.options.getInteger("page") || 1;
    const logs = await fetchLogs(interaction.guildId, count);

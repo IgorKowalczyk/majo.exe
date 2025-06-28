@@ -1,5 +1,13 @@
 import { globalConfig } from "@majoexe/config";
-import { type APIAutoModerationAction, AutoModerationActionType, ChannelType, type APIGuildChannel, type GuildChannelType, RESTError, RESTGetAPIChannelResult } from "discord-api-types/v10";
+import {
+ type APIAutoModerationAction,
+ AutoModerationActionType,
+ ChannelType,
+ type APIGuildChannel,
+ type GuildChannelType,
+ RESTError,
+ RESTGetAPIChannelResult,
+} from "discord-api-types/v10";
 import { getPermissionNames } from "../user/getPermissionNames";
 
 interface ValidationResult {
@@ -7,7 +15,11 @@ interface ValidationResult {
  code: number;
 }
 
-export async function validateAutoModRuleActions(data: APIAutoModerationAction[], allChannels: APIGuildChannel<GuildChannelType>[], dueToMessage: string): Promise<ValidationResult | APIAutoModerationAction[]> {
+export async function validateAutoModRuleActions(
+ data: APIAutoModerationAction[],
+ allChannels: APIGuildChannel<GuildChannelType>[],
+ dueToMessage: string
+): Promise<ValidationResult | APIAutoModerationAction[]> {
  // #region Block Message
  let blockAction = data.find((a) => a.type === AutoModerationActionType.BlockMessage);
 
@@ -78,7 +90,11 @@ export async function validateAutoModRuleActions(data: APIAutoModerationAction[]
     };
    }
 
-   if (!alertAction.metadata.channel_id || !allChannels.find((c) => c.id === alertAction?.metadata?.channel_id) || allChannels.find((c) => c.id === alertAction?.metadata?.channel_id)?.type !== ChannelType.GuildText) {
+   if (
+    !alertAction.metadata.channel_id ||
+    !allChannels.find((c) => c.id === alertAction?.metadata?.channel_id) ||
+    allChannels.find((c) => c.id === alertAction?.metadata?.channel_id)?.type !== ChannelType.GuildText
+   ) {
     return {
      error: "Cannot find the alert channel",
      code: 404,

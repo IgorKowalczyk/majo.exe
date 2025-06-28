@@ -1,7 +1,12 @@
 import { APIGuildChannel, GuildChannelType, APIRole, ChannelType } from "discord-api-types/v10";
 import { AutoModerationRuleCreationData } from "./types";
 
-export async function validateAutoModIgnores(allChannels: APIGuildChannel<GuildChannelType>[], allRoles: APIRole[], exemptRoles: AutoModerationRuleCreationData["exemptRoles"], exemptChannels: AutoModerationRuleCreationData["exemptChannels"]) {
+export async function validateAutoModIgnores(
+ allChannels: APIGuildChannel<GuildChannelType>[],
+ allRoles: APIRole[],
+ exemptRoles: AutoModerationRuleCreationData["exemptRoles"],
+ exemptChannels: AutoModerationRuleCreationData["exemptChannels"]
+) {
  if (exemptChannels.length > 50) {
   return {
    error: "You can only have 50 ignored channels at once. Please remove some of the existing ignored channels before adding this one.",

@@ -15,7 +15,9 @@ const DeleteMessage = ({ actions, setActions }: DeleteMessageProps) => {
  const setDelete = () => {
   const deleteActionType = AutoModerationActionType.BlockMessage;
 
-  const updatedActions = actions.some((action) => action.type === deleteActionType) ? actions.filter((action) => action.type !== deleteActionType) : [...actions, { type: deleteActionType, metadata: { custom_message: "Message blocked due to containing an invite link. Rule added by Majo.exe" } }];
+  const updatedActions = actions.some((action) => action.type === deleteActionType)
+   ? actions.filter((action) => action.type !== deleteActionType)
+   : [...actions, { type: deleteActionType, metadata: { custom_message: "Message blocked due to containing an invite link. Rule added by Majo.exe" } }];
 
   setActions(updatedActions);
  };

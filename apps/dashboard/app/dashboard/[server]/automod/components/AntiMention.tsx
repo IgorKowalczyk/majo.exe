@@ -1,7 +1,19 @@
 "use client";
 
 import { APIAutoModerationRule, APIGuildChannel, GuildChannelType } from "discord-api-types/v10";
-import { ArrowDownIcon, AtSignIcon, CheckIcon, HashIcon, InfoIcon, LoaderCircleIcon, MoveVerticalIcon, ShieldMinusIcon, ShieldPlusIcon, ShieldXIcon, UsersIcon } from "lucide-react";
+import {
+ ArrowDownIcon,
+ AtSignIcon,
+ CheckIcon,
+ HashIcon,
+ InfoIcon,
+ LoaderCircleIcon,
+ MoveVerticalIcon,
+ ShieldMinusIcon,
+ ShieldPlusIcon,
+ ShieldXIcon,
+ UsersIcon,
+} from "lucide-react";
 import React, { useState } from "react";
 import { toast } from "sonner";
 import DeleteMessage from "./DeleteMessage";
@@ -193,7 +205,12 @@ export const AntiMention = ({ serverId, enabled, existingActions, existingExempt
        </span>
       </Tooltip>
 
-      <MentionLimitSelect selectedChoice={limit} setSelectedChoice={setLimit} triggerMetadata={{ mentionTotalLimit: limit, mentionRaidProtectionEnabled: true }} setTriggerMetadata={() => {}} />
+      <MentionLimitSelect
+       selectedChoice={limit}
+       setSelectedChoice={setLimit}
+       triggerMetadata={{ mentionTotalLimit: limit, mentionRaidProtectionEnabled: true }}
+       setTriggerMetadata={() => {}}
+      />
      </div>
 
      <div className="my-2 flex flex-row flex-wrap gap-2">

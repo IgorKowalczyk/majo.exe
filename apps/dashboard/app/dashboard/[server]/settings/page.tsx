@@ -92,7 +92,8 @@ export default async function Page(props: { params: Promise<{ server: string }> 
      Public Dashboard
     </Header>
     <p className="mb-4 text-left">
-     Everyone with the link can view public dashboard overview. This is useful for communities that want to show off their server. <span className="font-bold">The dashboard overview do not include any sensitive information.</span>
+     Everyone with the link can view public dashboard overview. This is useful for communities that want to show off their server.{" "}
+     <span className="font-bold">The dashboard overview do not include any sensitive information.</span>
     </p>
 
     <div className="mb-4 grid grid-cols-1 gap-3 lg:grid-cols-2">

@@ -13,7 +13,12 @@ export const SideMenuControl = ({ className, ...props }: React.ComponentProps<"b
  return (
   <>
    {params.server && (
-    <button className={cn("bg-elements text-text ml-4 flex flex-row items-center gap-2 rounded-lg p-2 md:hidden cursor-pointer", className)} onClick={toggleSideNav} type="button" {...props}>
+    <button
+     className={cn("bg-elements text-text ml-4 flex flex-row items-center gap-2 rounded-lg p-2 md:hidden cursor-pointer", className)}
+     onClick={toggleSideNav}
+     type="button"
+     {...props}
+    >
      <div className="relative size-6">
       <XIcon
        className={cn(

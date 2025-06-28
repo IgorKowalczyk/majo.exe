@@ -12,7 +12,9 @@ export async function ResumeGiveaway(client: Majobot, interaction: ChatInputComm
 
   const userPermissions = interaction.memberPermissions || new PermissionsBitField();
 
-  if (!userPermissions.has(PermissionsBitField.Flags.ManageGuild)) return client.errorMessages.createSlashError(interaction, "❌ You do not have permission to resume giveaways! You need `MANAGE_GUILD` permission.");
+  if (!userPermissions.has(PermissionsBitField.Flags.ManageGuild)) {
+   return client.errorMessages.createSlashError(interaction, "❌ You do not have permission to resume giveaways! You need `MANAGE_GUILD` permission.");
+  }
 
   const query = interaction.options.getString("query");
   if (!query) return client.errorMessages.createSlashError(interaction, "❌ You need to provide a giveaway message ID!");

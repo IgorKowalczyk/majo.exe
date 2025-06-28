@@ -1,5 +1,17 @@
 import { createDatabaseAutoModRule, syncDatabaseAutoModRule } from "@majoexe/util/database";
-import { ChannelType, AutoModerationRuleEventType, AutoModerationActionType, AutoModerationRuleTriggerType, EmbedBuilder, PermissionsBitField, codeBlock, ChatInputCommandInteraction, type AutoModerationRuleCreateOptions, TextChannel, GuildMember } from "discord.js";
+import {
+ ChannelType,
+ AutoModerationRuleEventType,
+ AutoModerationActionType,
+ AutoModerationRuleTriggerType,
+ EmbedBuilder,
+ PermissionsBitField,
+ codeBlock,
+ ChatInputCommandInteraction,
+ type AutoModerationRuleCreateOptions,
+ TextChannel,
+ GuildMember,
+} from "discord.js";
 import type { Majobot } from "@/index";
 import type { GuildSettings } from "@/util/types/Command";
 

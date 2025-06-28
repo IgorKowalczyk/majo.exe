@@ -29,7 +29,9 @@ const slashCommandsDirectories = readdirSync("../../apps/bot/commands", { withFi
 const slashCommands: string[] = [];
 
 for (const dir of slashCommandsDirectories) {
- const commands = readdirSync("../../apps/bot/commands/" + dir.name, { withFileTypes: true }).filter((file) => file.isFile() && (file.name.endsWith(".js") || file.name.endsWith(".ts")));
+ const commands = readdirSync("../../apps/bot/commands/" + dir.name, { withFileTypes: true }).filter(
+  (file) => file.isFile() && (file.name.endsWith(".js") || file.name.endsWith(".ts"))
+ );
  for (const command of commands) {
   slashCommands.push("../../apps/bot/commands/" + dir.name + "/" + command.name);
  }

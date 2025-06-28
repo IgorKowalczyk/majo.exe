@@ -11,7 +11,9 @@ export async function FindGiveaways(client: Majobot, interaction: ChatInputComma
 
   const userPermissions = interaction.memberPermissions || new PermissionsBitField();
 
-  if (!userPermissions.has(PermissionsBitField.Flags.ManageGuild)) return client.errorMessages.createSlashError(interaction, "❌ You do not have permission to find giveaways! You need `MANAGE_GUILD` permission.");
+  if (!userPermissions.has(PermissionsBitField.Flags.ManageGuild)) {
+   return client.errorMessages.createSlashError(interaction, "❌ You do not have permission to find giveaways! You need `MANAGE_GUILD` permission.");
+  }
 
   const giveaways = await prismaClient.giveaways.findMany({
    where: {
@@ -35,7 +37,9 @@ export async function FindGiveaways(client: Majobot, interaction: ChatInputComma
    .map((g) => {
     const giveawayData = g.data as unknown as GiveawayData;
 
-    const prize = giveawayData.prize ? giveawayData.prize.replace(`${client.config.emojis.giveaway} Giveaway: `, "").replace(`${client.config.emojis.giveaway} Drop: `, "") : "No prize";
+    const prize = giveawayData.prize
+     ? giveawayData.prize.replace(`${client.config.emojis.giveaway} Giveaway: `, "").replace(`${client.config.emojis.giveaway} Drop: `, "")
+     : "No prize";
     const winnerCount = giveawayData.winnerCount || 1;
     const endDate = giveawayData.ended ? "" : `, Ends <t:${Math.floor(giveawayData.endAt / 1000)}:R>` || "No end date";
     const url = `https://discord.com/channels/${g.guildId}/${giveawayData.channelId}/${g.messageId}`;

@@ -18,7 +18,10 @@ export async function ready(client: Majobot) {
   .then((commands) => {
    if (commands) {
     const percentage = Math.round((commands.size / client.slashCommands.size) * 100);
-    client.debugger("ready", `Successfully registered ${commands.size + client.additionalSlashCommands} (${percentage}%) slash commands (with ${client.additionalSlashCommands} subcommands) in ${client.performance(registerTime)}`);
+    client.debugger(
+     "ready",
+     `Successfully registered ${commands.size + client.additionalSlashCommands} (${percentage}%) slash commands (with ${client.additionalSlashCommands} subcommands) in ${client.performance(registerTime)}`
+    );
    } else {
     client.debugger("error", "Failed to register commands.");
    }
@@ -47,7 +50,7 @@ export async function ready(client: Majobot) {
     users: client.users.cache.size,
    });
 
-   await postBotCommands(process.env.DISCORD_BOT_LIST_API_KEY, client.user.id, client.slashCommands.map((command) => command) as RESTPutAPIApplicationCommandsJSONBody);
+   await postBotCommands(process.env.DISCORD_BOT_LIST_API_KEY, client.user.id, client.slashCommands.map((command) => command) as unknown as RESTPutAPIApplicationCommandsJSONBody);
   }
  }, 300000); // 5 minutes
 

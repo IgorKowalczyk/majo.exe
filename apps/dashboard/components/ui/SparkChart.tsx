@@ -26,7 +26,23 @@ export function SparkLineChart({ data, categories, index }: SparkLineChartProps)
        </defs>
       ))}
       {categories.map((category) => (
-       <Area className="fill-accent-primary stroke-accent-primary" strokeOpacity={1} dot={false} key={category} name={category} type="monotone" dataKey={category} stroke="" strokeWidth={2} fill={`url(#${category.replace(/ /g, "-")})`} strokeLinejoin="round" strokeLinecap="round" isAnimationActive={true} animationDuration={900} connectNulls={false} />
+       <Area
+        className="fill-accent-primary stroke-accent-primary"
+        strokeOpacity={1}
+        dot={false}
+        key={category}
+        name={category}
+        type="monotone"
+        dataKey={category}
+        stroke=""
+        strokeWidth={2}
+        fill={`url(#${category.replace(/ /g, "-")})`}
+        strokeLinejoin="round"
+        strokeLinecap="round"
+        isAnimationActive={true}
+        animationDuration={900}
+        connectNulls={false}
+       />
       ))}
      </ReChartsAreaChart>
     ) : (

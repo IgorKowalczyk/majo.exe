@@ -77,7 +77,9 @@ export async function interactionCreate(client: Majobot, interaction: Interactio
     if (commandDisabled) {
      const embed = new EmbedBuilder()
       .setTitle("‼️ Command disabled")
-      .setDescription(`The command \`${interaction.commandName}\` is disabled in this server!${canManageGuild || canManageCategories ? "\n\n**Note:** You can enable it again in the dashboard!" : ""}`)
+      .setDescription(
+       `The command \`${interaction.commandName}\` is disabled in this server!${canManageGuild || canManageCategories ? "\n\n**Note:** You can enable it again in the dashboard!" : ""}`
+      )
       .setColor("#EF4444")
       .setTimestamp()
       .setFooter({
@@ -91,7 +93,9 @@ export async function interactionCreate(client: Majobot, interaction: Interactio
     if (categoryDisabled) {
      const embed = new EmbedBuilder()
       .setTitle("‼️ Command category disabled")
-      .setDescription(`The category \`${command.category}\` is disabled in this server!${canManageGuild || canManageCategories ? "\n\n**Note:** You can enable it again in the dashboard!" : ""}`)
+      .setDescription(
+       `The category \`${command.category}\` is disabled in this server!${canManageGuild || canManageCategories ? "\n\n**Note:** You can enable it again in the dashboard!" : ""}`
+      )
       .setColor("#EF4444")
       .setTimestamp()
       .setFooter({

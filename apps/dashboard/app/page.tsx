@@ -143,20 +143,29 @@ export default async function Page() {
        show: { opacity: 1, transition: { type: "spring", delay: 0.85, duration: 0.5 } },
       }}
      >
-      <Link href="/api/invite" className={cn("group rounded-full border flex transition-all ease-in hover:cursor-pointer  border-neutral-800 bg-neutral-900 hover:border-neutral-700 hover:bg-neutral-800")}>
+      <Link
+       href="/api/invite"
+       className={cn("group rounded-full border flex transition-all ease-in hover:cursor-pointer  border-neutral-800 bg-neutral-900 hover:border-neutral-700 hover:bg-neutral-800")}
+      >
        <AnimatedShinyText className="inline-flex items-center justify-center px-4 py-1 transition ease-out hover:text-neutral-400 hover:duration-300">
         <span>✨ Introducing Majo.exe</span>
         <ChevronRightIcon className={iconVariants({ variant: "normal", className: "-mr-1 ml-1 transition-transform ease-in-out group-hover:translate-x-0.5" })} />
        </AnimatedShinyText>
       </Link>
      </Fade>
-     <WordPullUp wordsClassName={cn(headerVariants({ variant: "big", alignment: "center", effects: "gradient" }), "font-black! leading-snug!")} words="The only one Discord Bot" className="text-center" />
+     <WordPullUp
+      wordsClassName={cn(headerVariants({ variant: "big", alignment: "center", effects: "gradient" }), "font-black! leading-snug!")}
+      words="The only one Discord Bot"
+      className="text-center"
+     />
      <Fade
       framerProps={{
        show: { opacity: 1, transition: { type: "spring", delay: 0.9, duration: 0.5 } },
       }}
      >
-      <Header className={cn(headerVariants({ variant: "h2", alignment: "center" }), "max-w-[680px] font-normal text-white/70")}>Majo.exe will not only keep your server entertained but also assist you with moderation and many other things!</Header>
+      <Header className={cn(headerVariants({ variant: "h2", alignment: "center" }), "max-w-[680px] font-normal text-white/70")}>
+       Majo.exe will not only keep your server entertained but also assist you with moderation and many other things!
+      </Header>
      </Fade>
      <Fade
       framerProps={{
@@ -174,7 +183,14 @@ export default async function Page() {
     </div>
     <Particles className="absolute inset-0" quantity={200} ease={80} color={"#fff"} refresh />
 
-    <Image alt="Background" width={1000} height={1000} className="pointer-events-none absolute inset-x-0 -top-20 z-0 mx-auto hidden size-full select-none lg:block" src={ray.src} loading="eager" />
+    <Image
+     alt="Background"
+     width={1000}
+     height={1000}
+     className="pointer-events-none absolute inset-x-0 -top-20 z-0 mx-auto hidden size-full select-none lg:block"
+     src={ray.src}
+     loading="eager"
+    />
 
     <div className="absolute bottom-0 z-10 hidden min-h-[500px] w-full translate-y-1/2 flex-col items-center justify-center md:flex">
      <Fade
@@ -265,7 +281,14 @@ export default async function Page() {
        <LevelUp avatar={dashboardConfig.logo} username="Majonez.exe" />
       </div>
       <div className="relative col-span-2 row-span-2 overflow-hidden rounded-xl border border-neutral-800 bg-background-secondary px-8 py-6 duration-200 hover:bg-neutral-800/50 lg:col-span-1">
-       <Header className={cn(headerVariants({ variant: "h2", margin: "normal" }), "text-fill-transparent bg-linear-to-b from-white to-neutral-400 box-decoration-clone bg-clip-text font-black")}>Moderation? We have it!</Header>
+       <Header
+        className={cn(
+         headerVariants({ variant: "h2", margin: "normal" }),
+         "text-fill-transparent bg-linear-to-b from-white to-neutral-400 box-decoration-clone bg-clip-text font-black"
+        )}
+       >
+        Moderation? We have it!
+       </Header>
        <div className="absolute inset-0 z-0 m-auto mt-[100px] size-[580px] rounded-full bg-[#ddd] opacity-5 blur-3xl" />
        <div className="relative z-10">
         <p className="mt-2 max-w-[680px] text-white/70">
@@ -279,9 +302,18 @@ export default async function Page() {
       <div className="relative col-span-2 row-span-2 overflow-hidden rounded-xl border border-neutral-800 bg-background-secondary duration-200 hover:bg-neutral-800/50">
        <div className="relative z-50 h-full">
         <div className="px-8 py-6">
-         <Header className={cn(headerVariants({ variant: "h1", margin: "normal" }), "text-fill-transparent bg-linear-to-b from-white to-neutral-400 box-decoration-clone bg-clip-text font-black")}>Know more about your server</Header>
+         <Header
+          className={cn(
+           headerVariants({ variant: "h1", margin: "normal" }),
+           "text-fill-transparent bg-linear-to-b from-white to-neutral-400 box-decoration-clone bg-clip-text font-black"
+          )}
+         >
+          Know more about your server
+         </Header>
          <p className="max-w-[680px] text-white/70">
-          <Balancer>With Majo.exe you can get to know your server better with the help of the dashboard. You can see the most active members, the most used channels and activity graphs!</Balancer>
+          <Balancer>
+           With Majo.exe you can get to know your server better with the help of the dashboard. You can see the most active members, the most used channels and activity graphs!
+          </Balancer>
          </p>
         </div>
         <div className="z-50 flex flex-col items-center justify-center gap-3 px-8 py-6 md:flex-row">
@@ -306,7 +338,9 @@ export default async function Page() {
       </div>
       <div className="relative col-span-2 row-span-1 overflow-hidden rounded-xl border border-neutral-800 bg-background-secondary px-8 py-6 pb-2 duration-200 hover:bg-neutral-800/50 lg:col-span-1">
        <Header className={headerVariants({ variant: "h2", margin: "normal", effects: "gradient" })}>Giveaways? Why not?</Header>
-       <p className="mt-2 max-w-[680px] text-white/70">Want to host a giveaway or a drop? Majo.exe can help you with that! You can easily create and moderate giveaways with few simple commands!</p>
+       <p className="mt-2 max-w-[680px] text-white/70">
+        Want to host a giveaway or a drop? Majo.exe can help you with that! You can easily create and moderate giveaways with few simple commands!
+       </p>
        <div className="my-6 flex items-center gap-1">
         <Image src={dashboardConfig.logo} alt={`${dashboardConfig.title} avatar`} quality={95} width={40} height={40} className="size-10 shrink-0 self-baseline rounded-full" />
         <div className="flex flex-col">
@@ -370,14 +404,18 @@ export default async function Page() {
       </div>
       <div className="flex w-full flex-col justify-center gap-2 lg:w-2/5">
        <Header className={headerVariants({ variant: "h1", margin: "normal", effects: "gradient" })}>Keep track of everything</Header>
-       <p className="text-white/70">Majo.exe has a powerful logging system that will keep track of everything that happens in your server. You can easily see who did what and when!</p>
+       <p className="text-white/70">
+        Majo.exe has a powerful logging system that will keep track of everything that happens in your server. You can easily see who did what and when!
+       </p>
       </div>
      </div>
 
      <div className="mx-auto my-16 flex flex-col gap-8 px-4 lg:flex-row lg:gap-16 lg:px-0">
       <div className="flex w-full flex-col justify-center gap-2 lg:w-2/5">
        <Header className={headerVariants({ variant: "h1", margin: "normal", effects: "gradient" })}>Why so many unnecessary bots?</Header>
-       <p className="text-white/70">Majo.exe with its many features can replace many bots on your server. You can have moderation, leveling, image manipulation and much more in one bot!</p>
+       <p className="text-white/70">
+        Majo.exe with its many features can replace many bots on your server. You can have moderation, leveling, image manipulation and much more in one bot!
+       </p>
       </div>
       <div className="relative w-full overflow-hidden rounded-xl border border-neutral-800 bg-background-secondary px-8 py-6 duration-200 lg:w-3/5">
        <Ripple className="opacity-30" />
@@ -408,10 +446,23 @@ export default async function Page() {
      </div>
 
      <div className="relative mt-16 flex w-full justify-center overflow-hidden lg:px-16">
-      <Image src="/assets/images/dash.png" alt="Dashboard" width={1844} height={962} className="size-full rounded-md border border-neutral-800 object-cover object-top shadow-lg" loading="lazy" />
+      <Image
+       src="/assets/images/dash.png"
+       alt="Dashboard"
+       width={1844}
+       height={962}
+       className="size-full rounded-md border border-neutral-800 object-cover object-top shadow-lg"
+       loading="lazy"
+      />
      </div>
      <BorderBeam colorFrom={globalConfig.defaultColor} colorTo={globalConfig.defaultColor} size={450} borderWidth={1.7} />
-     <FlickeringGrid width={1400} height={800} squareSize={3} color={"#737373"} className="pointer-events-none absolute inset-0 -z-10 size-full bg-background-secondary opacity-70" />
+     <FlickeringGrid
+      width={1400}
+      height={800}
+      squareSize={3}
+      color={"#737373"}
+      className="pointer-events-none absolute inset-0 -z-10 size-full bg-background-secondary opacity-70"
+     />
      <div className="to-[hsla(202, 36%, 96%, 1)] absolute inset-0 -z-10 size-full bg-linear-to-b from-accent-primary/15" />
     </div>
    </div>

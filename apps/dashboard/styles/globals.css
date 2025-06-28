@@ -157,7 +157,7 @@
 }
 
 @utility text-fill-* {
- -webkit-text-fill-color: --value(--color- *);
+ -webkit-text-fill-color: --value(--color-*);
 }
 
 * {

@@ -24,7 +24,8 @@ export default {
    const prompt = interaction.options.getString("prompt");
    if (!prompt) return client.errorMessages.createSlashError(interaction, "❌ Please provide a valid prompt to generate image.");
 
-   if (!process.env.AI_DOMAIN || process.env.AI_DOMAIN === "" || !process.env.AI_TOKEN) return client.errorMessages.createSlashError(interaction, "❌ This feature is disabled right now, please try again later!");
+   if (!process.env.AI_DOMAIN || process.env.AI_DOMAIN === "" || !process.env.AI_TOKEN)
+    return client.errorMessages.createSlashError(interaction, "❌ This feature is disabled right now, please try again later!");
 
    const loading = new EmbedBuilder() //
     .setColor(guildSettings?.embedColor || client.config.defaultColor)

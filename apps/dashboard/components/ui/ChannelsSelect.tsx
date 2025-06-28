@@ -35,7 +35,11 @@ export const ChannelsSelect = ({ allChannels, selectedChannels = [], setChannels
   <Popover open={open} onOpenChange={setOpen}>
    <PopoverTrigger asChild>
     <Button variant="select" role="combobox" aria-expanded={open} className="max-w-sm justify-between">
-     {selectedChannels.length > 0 ? (multiple ? `${allChannels.find((channel) => channel.id === selectedChannels[0])?.name ?? "Unknown channel"}${selectedChannels.length > 1 ? ` + ${selectedChannels.length - 1} more` : ""}` : (allChannels.find((channel) => channel.id === selectedChannels[0])?.name ?? "No channel selected")) : "Select channels..."}
+     {selectedChannels.length > 0
+      ? multiple
+        ? `${allChannels.find((channel) => channel.id === selectedChannels[0])?.name ?? "Unknown channel"}${selectedChannels.length > 1 ? ` + ${selectedChannels.length - 1} more` : ""}`
+        : (allChannels.find((channel) => channel.id === selectedChannels[0])?.name ?? "No channel selected")
+      : "Select channels..."}
      <ChevronsUpDownIcon
       className={iconVariants({
        variant: "small",

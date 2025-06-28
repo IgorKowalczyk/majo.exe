@@ -90,7 +90,14 @@ const ChartContainer = ({
 
  return (
   <ChartContext value={{ config }}>
-   <div data-chart={chartId} className={clsx("[&_.recharts-cartesian-axis-tick_text]:fill-text flex aspect-video justify-center [&_.recharts-cartesian-grid_line[stroke='#ccc']]:stroke-neutral-800 [&_.recharts-curve.recharts-tooltip-cursor]:stroke-neutral-800 [&_.recharts-dot[stroke='#fff']]:stroke-transparent [&_.recharts-layer]:outline-hidden [&_.recharts-polar-grid_[stroke='#ccc']]:stroke-neutral-800 [&_.recharts-radial-bar-background-sector]:fill-background-secondary [&_.recharts-rectangle.recharts-tooltip-cursor]:fill-background-secondary [&_.recharts-reference-line_[stroke='#ccc']]:stroke-neutral-800 [&_.recharts-sector[stroke='#fff']]:stroke-transparent [&_.recharts-sector]:outline-hidden [&_.recharts-surface]:outline-hidden", className)} {...props}>
+   <div
+    data-chart={chartId}
+    className={clsx(
+     "[&_.recharts-cartesian-axis-tick_text]:fill-text flex aspect-video justify-center [&_.recharts-cartesian-grid_line[stroke='#ccc']]:stroke-neutral-800 [&_.recharts-curve.recharts-tooltip-cursor]:stroke-neutral-800 [&_.recharts-dot[stroke='#fff']]:stroke-transparent [&_.recharts-layer]:outline-hidden [&_.recharts-polar-grid_[stroke='#ccc']]:stroke-neutral-800 [&_.recharts-radial-bar-background-sector]:fill-background-secondary [&_.recharts-rectangle.recharts-tooltip-cursor]:fill-background-secondary [&_.recharts-reference-line_[stroke='#ccc']]:stroke-neutral-800 [&_.recharts-sector[stroke='#fff']]:stroke-transparent [&_.recharts-sector]:outline-hidden [&_.recharts-surface]:outline-hidden",
+     className
+    )}
+    {...props}
+   >
     <ChartStyle id={chartId} config={config} />
     <RechartsPrimitive.ResponsiveContainer>{children}</RechartsPrimitive.ResponsiveContainer>
    </div>

@@ -31,7 +31,16 @@ export function TableColumnHeader<TData, TValue>({ column, title, className }: D
  return (
   <div className={cn("flex items-center space-x-2", className)}>
    <DropdownMenu>
-    <DropdownMenuTrigger aria-label={column.getIsSorted() === "desc" ? "Sorted descending. Click to sort ascending." : column.getIsSorted() === "asc" ? "Sorted ascending. Click to sort descending." : "Not sorted. Click to sort ascending."} className="cursor-pointer h-10 items-center font-medium text-xs -ml-3 gap-2 flex border-transparent px-3 text-neutral-500">
+    <DropdownMenuTrigger
+     aria-label={
+      column.getIsSorted() === "desc"
+       ? "Sorted descending. Click to sort ascending."
+       : column.getIsSorted() === "asc"
+         ? "Sorted ascending. Click to sort descending."
+         : "Not sorted. Click to sort ascending."
+     }
+     className="cursor-pointer h-10 items-center font-medium text-xs -ml-3 gap-2 flex border-transparent px-3 text-neutral-500"
+    >
      <span>{title}</span>
      {column.getCanSort() && (
       <div className="relative flex items-center">
@@ -119,7 +128,14 @@ export const Table = <TData, TValue>({ columns, data, sortBy = [{ id: "id", desc
       hidden: !showSearch && !showControls,
      })}
     >
-     {showSearch && <InputWithIcon icon={<SearchIcon className={iconVariants({ variant: "normal" })} />} placeholder="Search" value={globalFilter || ""} onChange={(e) => setGlobalFilter(e.target.value)} />}
+     {showSearch && (
+      <InputWithIcon
+       icon={<SearchIcon className={iconVariants({ variant: "normal" })} />}
+       placeholder="Search"
+       value={globalFilter || ""}
+       onChange={(e) => setGlobalFilter(e.target.value)}
+      />
+     )}
      {showControls && <ViewSelect selectedValue={table.getState().pagination.pageSize} setSelectedValue={table.setPageSize} />}
     </div>
     <div className="overflow-hidden rounded-lg border">

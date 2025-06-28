@@ -76,7 +76,9 @@ export default async function LeaderboardPage(props: { params: Promise<{ server:
     Leaderboard
    </Header>
    <p className="mb-4 text-left text-base md:text-lg">View the leaderboard for your server, see who's the most active</p>
-   <Block className="mt-4 flex w-full overflow-auto">{data.length > 0 ? <Leaderboard data={data} /> : <span className="opacity-50">No users found. Maybe you should try talking in chat?</span>}</Block>
+   <Block className="mt-4 flex w-full overflow-auto">
+    {data.length > 0 ? <Leaderboard data={data} /> : <span className="opacity-50">No users found. Maybe you should try talking in chat?</span>}
+   </Block>
   </>
  );
 }

@@ -15,7 +15,9 @@ const TimeoutMember: React.FC<TimeoutMemberProps> = ({ actions, setActions }) =>
  const setTime = (value: number) => {
   const timeoutActionType = AutoModerationActionType.Timeout;
 
-  const updatedActions = actions.some((action) => action.type === timeoutActionType) ? actions.map((action) => (action.type === timeoutActionType ? { ...action, metadata: { duration_seconds: value } } : action)) : [...actions, { type: timeoutActionType, metadata: { duration_seconds: value } }];
+  const updatedActions = actions.some((action) => action.type === timeoutActionType)
+   ? actions.map((action) => (action.type === timeoutActionType ? { ...action, metadata: { duration_seconds: value } } : action))
+   : [...actions, { type: timeoutActionType, metadata: { duration_seconds: value } }];
 
   setActions(updatedActions);
  };

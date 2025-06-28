@@ -203,7 +203,10 @@ export const UpdateLog = ({ allChannels, exisingChannel, logType, logEnabled, on
      {botConfig.emojis.logs.flatMap((category) => category.types).find((log) => log.type === logType)?.emoji || "❔"} {handleLogText(logType)}
     </Header>
    </div>
-   <p className="mb-2">{botConfig.emojis.logs.flatMap((category) => category.types).find((log) => log.type === logType)?.description || `Enable or disable the ${handleLogText(logType).toLowerCase()} event logging.`}</p>
+   <p className="mb-2">
+    {botConfig.emojis.logs.flatMap((category) => category.types).find((log) => log.type === logType)?.description ||
+     `Enable or disable the ${handleLogText(logType).toLowerCase()} event logging.`}
+   </p>
    <hr className="my-4 border-neutral-800" />
    <div className="my-4 flex flex-row flex-wrap gap-2">
     <Tooltip content={`${enabled ? "Disable" : "Enable"} ${handleLogText(logType).toLowerCase()} event logging.`}>
@@ -221,7 +224,12 @@ export const UpdateLog = ({ allChannels, exisingChannel, logType, logEnabled, on
       Channel:
      </span>
      <p className="mb-2 text-sm text-neutral-500">Select the channel where the logs will be sent.</p>
-     <ChannelsSelect allChannels={allChannels} selectedChannels={messageChannel ? [messageChannel] : []} setChannels={(channels) => setMessageChannel(channels[0] || null)} multiple={false} />
+     <ChannelsSelect
+      allChannels={allChannels}
+      selectedChannels={messageChannel ? [messageChannel] : []}
+      setChannels={(channels) => setMessageChannel(channels[0] || null)}
+      multiple={false}
+     />
     </div>
    </div>
 

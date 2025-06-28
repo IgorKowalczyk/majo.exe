@@ -21,7 +21,9 @@ export const DiscordCommands = ({ commands, categories, className, ...props }: D
  const [mounted, setMounted] = useState(false);
 
  const filteredCommands = useMemo(() => {
-  return commands.filter((command) => command.name.toLowerCase().includes(search.toLowerCase() || "") && filteredCategories.some((category) => category.name === command.categoryName));
+  return commands.filter(
+   (command) => command.name.toLowerCase().includes(search.toLowerCase() || "") && filteredCategories.some((category) => category.name === command.categoryName)
+  );
  }, [search, commands, filteredCategories]);
 
  useEffect(() => {
@@ -66,7 +68,13 @@ export const DiscordCommands = ({ commands, categories, className, ...props }: D
 
  return (
   <div className={cn(className)} {...props}>
-   <InputWithIcon placeholder="Search commands..." value={search} onChange={(e) => setSearch(e.target.value)} icon={<SearchIcon className={iconVariants({ variant: "normal", className: "text-white/50" })} />} className="w-full max-w-none!" />
+   <InputWithIcon
+    placeholder="Search commands..."
+    value={search}
+    onChange={(e) => setSearch(e.target.value)}
+    icon={<SearchIcon className={iconVariants({ variant: "normal", className: "text-white/50" })} />}
+    className="w-full max-w-none!"
+   />
    <div className="mt-4 flex flex-wrap gap-2">
     {categories.map((category) => (
      <div

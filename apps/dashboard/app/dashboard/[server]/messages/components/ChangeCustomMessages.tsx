@@ -29,7 +29,20 @@ export interface ChangeCustomMessagesProps extends React.ComponentPropsWithRef<"
  replacedData: { user: string; guild: string };
 }
 
-export const ChangeCustomMessages = ({ ref, serverId, enabled, title, description, existingChannel, allChannels, type, defaultMessages, replacedData, className, ...props }: ChangeCustomMessagesProps) => {
+export const ChangeCustomMessages = ({
+ ref,
+ serverId,
+ enabled,
+ title,
+ description,
+ existingChannel,
+ allChannels,
+ type,
+ defaultMessages,
+ replacedData,
+ className,
+ ...props
+}: ChangeCustomMessagesProps) => {
  const [isEnabled, setIsEnabled] = useState(enabled ?? false);
  const [loading, setLoading] = useState(false);
  const [newTitle, setNewTitle] = useState(title);
@@ -192,7 +205,14 @@ export const ChangeCustomMessages = ({ ref, serverId, enabled, title, descriptio
           Title:
          </span>
         </Tooltip>
-        <Input type="text" value={newTitle} onChange={(e) => setNewTitle(e.target.value)} disabled={!isEnabled || loading || !messageChannel} placeholder={defaultMessages.title} className="max-w-96! font-normal" />
+        <Input
+         type="text"
+         value={newTitle}
+         onChange={(e) => setNewTitle(e.target.value)}
+         disabled={!isEnabled || loading || !messageChannel}
+         placeholder={defaultMessages.title}
+         className="max-w-96! font-normal"
+        />
        </div>
 
        <div className="my-2 flex flex-col flex-wrap gap-2">
@@ -202,7 +222,13 @@ export const ChangeCustomMessages = ({ ref, serverId, enabled, title, descriptio
           Description:
          </span>
         </Tooltip>
-        <Textarea value={newDescription} onChange={(e) => setNewDescription(e.target.value)} disabled={!isEnabled || loading || !messageChannel} placeholder={defaultMessages.description} className="max-w-96! font-normal" />
+        <Textarea
+         value={newDescription}
+         onChange={(e) => setNewDescription(e.target.value)}
+         disabled={!isEnabled || loading || !messageChannel}
+         placeholder={defaultMessages.description}
+         className="max-w-96! font-normal"
+        />
        </div>
 
        <div className="my-4 w-fit whitespace-nowrap rounded-lg border border-accent-primary bg-accent-primary/10 p-4">
@@ -225,7 +251,11 @@ export const ChangeCustomMessages = ({ ref, serverId, enabled, title, descriptio
        </span> */}
        <Embed color={globalConfig.defaultColor}>
         <EmbedTitle>{(newTitle || defaultMessages.title).replaceAll(/{user}/g, replacedData.user).replaceAll(/{guild}/g, replacedData.guild)}</EmbedTitle>
-        <EmbedDescription dangerouslySetInnerHTML={{ __html: toHTML((newDescription?.trim() || defaultMessages.description).replaceAll(/{user}/g, replacedData.user).replaceAll(/{guild}/g, replacedData.guild || "")) }} />
+        <EmbedDescription
+         dangerouslySetInnerHTML={{
+          __html: toHTML((newDescription?.trim() || defaultMessages.description).replaceAll(/{user}/g, replacedData.user).replaceAll(/{guild}/g, replacedData.guild || "")),
+         }}
+        />
         <EmbedImage alt="Majo.exe logo" />
        </Embed>
       </div>

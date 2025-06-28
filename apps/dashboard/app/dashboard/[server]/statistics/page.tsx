@@ -80,11 +80,61 @@ export default async function Page(props: { params: Promise<{ server: string }> 
     Statistics
    </Header>
    <div className="mb-6 mt-4 grid grid-cols-1 gap-0 md:grid-cols-1 md:gap-6 lg:grid-cols-2 xl:grid-cols-3">
-    <GraphCard className="mt-0" icon={<Icons.userAdd className={iconVariants({ variant: "extraLarge" })} />} title="New Members" description="Amount of new members that joined your server in the last 7 days." value={newMembers.toString()} graph={newMembers === 0 ? <MinusIcon className={iconVariants({ variant: "normal" })} /> : newMembers < 0 ? <TrendingDownIcon className={iconVariants({ variant: "normal" })} /> : <TrendingUpIcon className={iconVariants({ variant: "normal" })} />} />
-    <GraphCard className="mt-0" icon={<Icons.userMinus className={iconVariants({ variant: "extraLarge" })} />} title="Members Left" description="Amount of members that left your server in the last 7 days." value={membersLeft.toString()} graph={membersLeft === 0 ? <MinusIcon className={iconVariants({ variant: "normal" })} /> : membersLeft < 0 ? <TrendingDownIcon className={iconVariants({ variant: "normal" })} /> : <TrendingUpIcon className={iconVariants({ variant: "normal" })} />} />
-    <GraphCard className="mt-0" icon={<Icons.commentAdd className={iconVariants({ variant: "extraLarge" })} />} title="New Messages" description="The amount of messages that were sent in your server in the last 7 days." value={newMessages.toString()} graph={newMessages === 0 ? <MinusIcon className={iconVariants({ variant: "normal" })} /> : newMessages < 0 ? <TrendingDownIcon className={iconVariants({ variant: "normal" })} /> : <TrendingUpIcon className={iconVariants({ variant: "normal" })} />} />
+    <GraphCard
+     className="mt-0"
+     icon={<Icons.userAdd className={iconVariants({ variant: "extraLarge" })} />}
+     title="New Members"
+     description="Amount of new members that joined your server in the last 7 days."
+     value={newMembers.toString()}
+     graph={
+      newMembers === 0 ? (
+       <MinusIcon className={iconVariants({ variant: "normal" })} />
+      ) : newMembers < 0 ? (
+       <TrendingDownIcon className={iconVariants({ variant: "normal" })} />
+      ) : (
+       <TrendingUpIcon className={iconVariants({ variant: "normal" })} />
+      )
+     }
+    />
+    <GraphCard
+     className="mt-0"
+     icon={<Icons.userMinus className={iconVariants({ variant: "extraLarge" })} />}
+     title="Members Left"
+     description="Amount of members that left your server in the last 7 days."
+     value={membersLeft.toString()}
+     graph={
+      membersLeft === 0 ? (
+       <MinusIcon className={iconVariants({ variant: "normal" })} />
+      ) : membersLeft < 0 ? (
+       <TrendingDownIcon className={iconVariants({ variant: "normal" })} />
+      ) : (
+       <TrendingUpIcon className={iconVariants({ variant: "normal" })} />
+      )
+     }
+    />
+    <GraphCard
+     className="mt-0"
+     icon={<Icons.commentAdd className={iconVariants({ variant: "extraLarge" })} />}
+     title="New Messages"
+     description="The amount of messages that were sent in your server in the last 7 days."
+     value={newMessages.toString()}
+     graph={
+      newMessages === 0 ? (
+       <MinusIcon className={iconVariants({ variant: "normal" })} />
+      ) : newMessages < 0 ? (
+       <TrendingDownIcon className={iconVariants({ variant: "normal" })} />
+      ) : (
+       <TrendingUpIcon className={iconVariants({ variant: "normal" })} />
+      )
+     }
+    />
    </div>
-   <StatisticCharts guildJoin={fillMissingDates(guildJoin, "Joins")} guildLeave={fillMissingDates(guildLeave, "Leaves")} guildMessage={fillMissingDates(guildMessage, "Messages")} chartConfig={statisticsChartConfig} />
+   <StatisticCharts
+    guildJoin={fillMissingDates(guildJoin, "Joins")}
+    guildLeave={fillMissingDates(guildLeave, "Leaves")}
+    guildMessage={fillMissingDates(guildMessage, "Messages")}
+    chartConfig={statisticsChartConfig}
+   />
   </>
  );
 }

@@ -28,23 +28,35 @@ const SelectTrigger = ({ className, ref, children, ...props }: React.ComponentPr
 
 const SelectContent = ({ className, position = "popper", sideOffset = 4, ...props }: React.ComponentPropsWithRef<typeof SelectPrimitive.Content>) => (
  <SelectPrimitive.Portal>
-  <SelectPrimitive.Content position={position} sideOffset={sideOffset} className={cn("bg-background-secondary absolute z-10 mt-1 max-h-60 min-w-[--radix-select-trigger-width] overflow-auto origin-top-left rounded-2xl border border-neutral-800 py-1 text-base shadow-lg sm:text-sm", "data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95", className)} {...props}>
+  <SelectPrimitive.Content
+   position={position}
+   sideOffset={sideOffset}
+   className={cn(
+    "bg-background-secondary absolute z-10 mt-1 max-h-60 min-w-[--radix-select-trigger-width] overflow-auto origin-top-left rounded-2xl border border-neutral-800 py-1 text-base shadow-lg sm:text-sm",
+    "data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95",
+    className
+   )}
+   {...props}
+  >
    <SelectPrimitive.Viewport>{props.children}</SelectPrimitive.Viewport>
   </SelectPrimitive.Content>
  </SelectPrimitive.Portal>
 );
 
-const SelectItemVariants = cva("relative mx-2 my-1 cursor-pointer select-none rounded-lg py-2 pl-4 pr-10 font-normal text-white/70 duration-200 data-[highlighted]:bg-accent-primary data-[highlighted]:text-white", {
- variants: {
-  variant: {
-   default: "data-[highlighted]:bg-button-primary",
-   action: "data-[highlighted]:bg-button-action-primary",
+const SelectItemVariants = cva(
+ "relative mx-2 my-1 cursor-pointer select-none rounded-lg py-2 pl-4 pr-10 font-normal text-white/70 duration-200 data-[highlighted]:bg-accent-primary data-[highlighted]:text-white",
+ {
+  variants: {
+   variant: {
+    default: "data-[highlighted]:bg-button-primary",
+    action: "data-[highlighted]:bg-button-action-primary",
+   },
   },
- },
- defaultVariants: {
-  variant: "default",
- },
-});
+  defaultVariants: {
+   variant: "default",
+  },
+ }
+);
 
 export interface CustomSelectItemProps extends React.ComponentPropsWithRef<typeof SelectPrimitive.Item> {
  variant?: VariantProps<typeof SelectItemVariants>;

@@ -160,7 +160,9 @@ export async function messageCreate(client: Majobot, message: Message): Promise<
   if (!member) return;
 
   const permissions = message.channel.permissionsFor(member);
-  if (!permissions.has(PermissionsBitField.Flags.SendMessages) || !permissions.has(PermissionsBitField.Flags.EmbedLinks) || !permissions.has(PermissionsBitField.Flags.AttachFiles)) return;
+  if (!permissions.has(PermissionsBitField.Flags.SendMessages) || !permissions.has(PermissionsBitField.Flags.EmbedLinks) || !permissions.has(PermissionsBitField.Flags.AttachFiles)) {
+   return;
+  }
 
   message.author.avatar = message.author.displayAvatarURL({ size: 128 });
   const rank = await createXPCard(message.author, { xp: xpAfter, level: nextLevel, xpNeeded: Math.ceil(Math.pow((nextLevel + 1) / 0.1, 2)) }, "#10B981");

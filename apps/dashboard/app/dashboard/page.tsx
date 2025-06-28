@@ -42,7 +42,18 @@ export default async function Page() {
        {servers.map((server) => (
         <div key={server.id}>
          <div className="hidden flex-row items-center justify-start gap-3 sm:flex">
-          {server.icon ? <Image src={`https://cdn.discordapp.com/icons/${server.id}/${server.icon}.${server.icon.startsWith("a_") ? "gif" : "png"}`} alt={server.name} quality={95} width={64} height={64} className="size-16 shrink-0 rounded-full" /> : <div className="size-16 shrink-0 rounded-full bg-button-secondary" />}
+          {server.icon ? (
+           <Image
+            src={`https://cdn.discordapp.com/icons/${server.id}/${server.icon}.${server.icon.startsWith("a_") ? "gif" : "png"}`}
+            alt={server.name}
+            quality={95}
+            width={64}
+            height={64}
+            className="size-16 shrink-0 rounded-full"
+           />
+          ) : (
+           <div className="size-16 shrink-0 rounded-full bg-button-secondary" />
+          )}
           <Header className={cn(headerVariants({ variant: "h3" }))}>{server.name}</Header>
           <>
            {server.bot ? (

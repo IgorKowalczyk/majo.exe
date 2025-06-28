@@ -1,7 +1,15 @@
 import { cacheGet, cacheSet, cacheTTL } from "@majoexe/database/redis";
 import { checkReputation, giveReputation, takeReputation, setReputation } from "@majoexe/util/database";
 import { formatDuration } from "@majoexe/util/functions/util";
-import { ApplicationCommandType, ApplicationCommandOptionType, EmbedBuilder, PermissionFlagsBits, PermissionsBitField, InteractionContextType, ApplicationIntegrationType } from "discord.js";
+import {
+ ApplicationCommandType,
+ ApplicationCommandOptionType,
+ EmbedBuilder,
+ PermissionFlagsBits,
+ PermissionsBitField,
+ InteractionContextType,
+ ApplicationIntegrationType,
+} from "discord.js";
 import type { SlashCommand } from "@/util/types/Command";
 
 export default {
@@ -172,7 +180,9 @@ export default {
 
     const userPermissions = interaction.memberPermissions || new PermissionsBitField();
 
-    if (!userPermissions.has(PermissionFlagsBits.Administrator)) return client.errorMessages.createSlashError(interaction, "❌ You don't have `Administrator` permissions to use this command");
+    if (!userPermissions.has(PermissionFlagsBits.Administrator)) {
+     return client.errorMessages.createSlashError(interaction, "❌ You don't have `Administrator` permissions to use this command");
+    }
 
     if (amount < 0) return client.errorMessages.createSlashError(interaction, "❌ You can't set a user's reputation to a negative number");
 

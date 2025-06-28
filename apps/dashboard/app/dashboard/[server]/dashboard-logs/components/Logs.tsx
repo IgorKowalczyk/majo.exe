@@ -25,7 +25,17 @@ export function LogDisclosure({ item, guildId, preview = false }: { item: LogIte
   <Disclosure
    button={
     <div className="flex flex-row items-center gap-3">
-     <div className="flex flex-row items-center gap-3">{item.user.fullAvatar ? <Image src={item.user.fullAvatar} alt={`${item.user.name} avatar`} quality={95} width={36} height={36} className="size-9 shrink-0 rounded-full" /> : <>{item.user.avatar && <Image src={`/api/user/avatar/${item.user.discordId}`} alt={`${item.user.name} avatar`} quality={95} width={36} height={36} className="size-9 shrink-0 rounded-full" />}</>}</div>
+     <div className="flex flex-row items-center gap-3">
+      {item.user.fullAvatar ? (
+       <Image src={item.user.fullAvatar} alt={`${item.user.name} avatar`} quality={95} width={36} height={36} className="size-9 shrink-0 rounded-full" />
+      ) : (
+       <>
+        {item.user.avatar && (
+         <Image src={`/api/user/avatar/${item.user.discordId}`} alt={`${item.user.name} avatar`} quality={95} width={36} height={36} className="size-9 shrink-0 rounded-full" />
+        )}
+       </>
+      )}
+     </div>
      <div className="flex flex-col">
       <p className="text-left font-bold">
        {item.user.global_name}
@@ -106,9 +116,17 @@ export default function Logs({ initialItems, server }: { initialItems: LogItem[]
  return (
   <div className="block">
    <div className="mb-4 flex items-center justify-center gap-2">
-    <InputWithIcon placeholder="Search..." value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} icon={<SearchIcon className={iconVariants({ variant: "normal", className: "text-white/50" })} />} />
+    <InputWithIcon
+     placeholder="Search..."
+     value={searchQuery}
+     onChange={(e) => setSearchQuery(e.target.value)}
+     icon={<SearchIcon className={iconVariants({ variant: "normal", className: "text-white/50" })} />}
+    />
     <Tooltip content={sortDescending ? "Sort ascending" : "Sort descending"}>
-     <span onClick={() => setSortDescending(!sortDescending)} className="flex h-[41.6px] cursor-pointer items-center justify-center rounded-lg border border-neutral-800 px-3 py-2 text-white duration-200 hover:border-button-primary">
+     <span
+      onClick={() => setSortDescending(!sortDescending)}
+      className="flex h-[41.6px] cursor-pointer items-center justify-center rounded-lg border border-neutral-800 px-3 py-2 text-white duration-200 hover:border-button-primary"
+     >
       <div className="relative size-5">
        <ArrowDownNarrowWideIcon
         className={iconVariants({
