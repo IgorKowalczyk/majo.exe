@@ -39,8 +39,15 @@ export const StatsChart = ({ title, data, CSVData, fileName, categories, chartCo
 
  if (dateRange && dateRange.days !== Infinity) {
   const cutoffDate = new Date();
+  cutoffDate.setHours(0, 0, 0, 0);
   cutoffDate.setDate(cutoffDate.getDate() - dateRange.days);
-  filteredData = data.filter((item) => item.date && new Date(item.date) >= cutoffDate) as typeof filteredData;
+
+  filteredData = data.filter((item) => {
+   if (!item.date) return false;
+   const itemDate = new Date(item.date);
+   itemDate.setHours(0, 0, 0, 0);
+   return itemDate >= cutoffDate;
+  }) as typeof filteredData;
  }
 
  const start = filteredData[0]?.date;
@@ -183,13 +190,24 @@ export const StatsChart = ({ title, data, CSVData, fileName, categories, chartCo
        key={category}
        dataKey={category}
        type="monotoneX"
+       connectNulls={true}
        fill={`url(#fill-${category.toLowerCase().replace(/ /g, "")})`}
        stroke={chartConfig?.[category as keyof typeof chartConfig]?.color || "hsl(var(--chart-5))"}
        stackId={`stack-${category}`}
        strokeWidth={2}
       />
      ))}
-     <ChartLegend content={<ChartLegendContent />} />
+     <ChartLegend
+      content={
+       <ChartLegendContent
+        payload={categories.map((category) => ({
+         value: category,
+         type: "line",
+         color: chartConfig?.[category as keyof typeof chartConfig]?.color || "hsl(var(--chart-5))",
+        }))}
+       />
+      }
+     />
     </AreaChart>
    </ChartContainer>
   </>
