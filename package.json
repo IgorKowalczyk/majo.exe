@@ -28,10 +28,10 @@
     "turbo": "2.5.4"
   },
   "devDependencies": {
-    "@igorkowalczyk/eslint-config": "3.0.8",
-    "@igorkowalczyk/prettier-config": "3.0.8",
-    "@types/node": "24.0.4",
-    "eslint": "9.29.0",
+    "@igorkowalczyk/eslint-config": "3.1.0",
+    "@igorkowalczyk/prettier-config": "3.1.0",
+    "@types/node": "24.0.7",
+    "eslint": "9.30.0",
     "eslint-plugin-turbo": "2.5.4",
     "prettier": "3.6.2",
     "typescript": "5.8.3"

@@ -30,10 +30,10 @@
     "@prisma/client": "6.10.1",
     "chalk": "5.4.1",
     "ioredis": "5.6.1",
-    "pg": "8.16.2",
+    "pg": "8.16.3",
     "prisma": "6.10.1",
     "prisma-redis-middleware": "4.8.0",
-    "ws": "8.18.2"
+    "ws": "8.18.3"
   },
   "devDependencies": {
     "@types/ws": "8.18.1",
