@@ -160,7 +160,11 @@ export async function messageCreate(client: Majobot, message: Message): Promise<
   if (!member) return;
 
   const permissions = message.channel.permissionsFor(member);
-  if (!permissions.has(PermissionsBitField.Flags.SendMessages) || !permissions.has(PermissionsBitField.Flags.EmbedLinks) || !permissions.has(PermissionsBitField.Flags.AttachFiles)) {
+  if (
+   !permissions.has(PermissionsBitField.Flags.SendMessages) ||
+   !permissions.has(PermissionsBitField.Flags.EmbedLinks) ||
+   !permissions.has(PermissionsBitField.Flags.AttachFiles)
+  ) {
    return;
   }
 
