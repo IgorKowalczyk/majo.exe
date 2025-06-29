@@ -5,7 +5,7 @@ import { CalendarRangeIcon, ChevronsUpDownIcon, DownloadIcon } from "lucide-reac
 import React, { useState } from "react";
 import { Area, AreaChart, CartesianGrid, XAxis } from "recharts";
 import { Button } from "@/components/ui/Buttons";
-import { ChartContainer, ChartConfig, ChartTooltip, ChartTooltipContent, ChartLegend, ChartLegendContent } from "@/components/ui/Chart";
+import { ChartContainer, ChartConfig, ChartTooltip, ChartTooltipContent, ChartLegend, ChartLegendContent, type CustomTooltipProps } from "@/components/ui/Chart";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/DropdownMenu";
 import Header, { headerVariants } from "@/components/ui/Headers";
 import { Icons, iconVariants } from "@/components/ui/Icons";
@@ -172,8 +172,9 @@ export const StatsChart = ({ title, data, CSVData, fileName, categories, chartCo
      />
      <ChartTooltip
       cursor={true}
-      content={
+      content={(props: CustomTooltipProps) => (
        <ChartTooltipContent
+        {...props}
         labelFormatter={(value) => {
          return new Date(value).toLocaleDateString("en-US", {
           month: "short",
@@ -182,18 +183,16 @@ export const StatsChart = ({ title, data, CSVData, fileName, categories, chartCo
         }}
         indicator="line"
        />
-      }
+      )}
      />
 
      {categories.map((category) => (
       <Area
        key={category}
        dataKey={category}
-       type="monotoneX"
        connectNulls={true}
        fill={`url(#fill-${category.toLowerCase().replace(/ /g, "")})`}
        stroke={chartConfig?.[category as keyof typeof chartConfig]?.color || "hsl(var(--chart-5))"}
-       stackId={`stack-${category}`}
        strokeWidth={2}
       />
      ))}
