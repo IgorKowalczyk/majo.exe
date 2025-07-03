@@ -224,8 +224,8 @@ importers:
         specifier: 6.0.1
         version: 6.0.1(discord.js@14.21.0)
       framer-motion:
-        specifier: 12.20.1
-        version: 12.20.1(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
+        specifier: 12.23.0
+        version: 12.23.0(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
       geist:
         specifier: 1.4.2
         version: 1.4.2(next@15.3.4(@babel/core@7.27.7)(react-dom@19.1.0(react@19.1.0))(react@19.1.0))
@@ -3714,8 +3714,8 @@ packages:
     resolution: {integrity: sha512-buRG0fpBtRHSTCOASe6hD258tEubFoRLb4ZNA6NxMVHNw2gOcwHo9wyablzMzOA5z9xA9L1KNjk/Nt6MT9aYow==}
     engines: {node: '>= 0.6'}
 
-  framer-motion@12.20.1:
-    resolution: {integrity: sha512-NW2t2GHQcNvLHq18JyNVY15VKrwru+nkNyhLdqf4MbxbGhxZcSDi68iNcAy6O1nG0yYAQJbLioBIH1Kmg8Xr1g==}
+  framer-motion@12.23.0:
+    resolution: {integrity: sha512-xf6NxTGAyf7zR4r2KlnhFmsRfKIbjqeBupEDBAaEtVIBJX96sAon00kMlsKButSIRwPSHjbRrAPnYdJJ9kyhbA==}
     peerDependencies:
       '@emotion/is-prop-valid': '*'
       react: ^18.0.0 || ^19.0.0
@@ -4722,8 +4722,8 @@ packages:
   mnemonist@0.39.8:
     resolution: {integrity: sha512-vyWo2K3fjrUw8YeeZ1zF0fy6Mu59RHokURlld8ymdUPjMlD9EC9ov1/YPqTgqRvUN9nTr3Gqfz29LYAmu0PHPQ==}
 
-  motion-dom@12.20.1:
-    resolution: {integrity: sha512-XyveLJ9dmQTmaEsP9RlcuoNFxWlRIGdasdPJBB4aOwPr8bRcJdhltudAbiEjRQBmsGD30sjJdaEjhkHsAHapLQ==}
+  motion-dom@12.22.0:
+    resolution: {integrity: sha512-ooH7+/BPw9gOsL9VtPhEJHE2m4ltnhMlcGMhEqA0YGNhKof7jdaszvsyThXI6LVIKshJUZ9/CP6HNqQhJfV7kw==}
 
   motion-utils@12.19.0:
     resolution: {integrity: sha512-BuFTHINYmV07pdWs6lj6aI63vr2N4dg0vR+td0rtrdpWOhBzIkEklZyLcvKBoEtwSqx8Jg06vUB5RS0xDiUybw==}
@@ -9928,9 +9928,9 @@ snapshots:
 
   forwarded@0.2.0: {}
 
-  framer-motion@12.20.1(react-dom@19.1.0(react@19.1.0))(react@19.1.0):
+  framer-motion@12.23.0(react-dom@19.1.0(react@19.1.0))(react@19.1.0):
     dependencies:
-      motion-dom: 12.20.1
+      motion-dom: 12.22.0
       motion-utils: 12.19.0
       tslib: 2.8.1
     optionalDependencies:
@@ -11296,7 +11296,7 @@ snapshots:
     dependencies:
       obliterator: 2.0.5
 
-  motion-dom@12.20.1:
+  motion-dom@12.22.0:
     dependencies:
       motion-utils: 12.19.0
 
