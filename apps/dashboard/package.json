@@ -59,7 +59,7 @@
     "sonner": "2.0.5",
     "tw-animate-css": "1.3.4",
     "validator": "13.15.15",
-    "zod": "3.25.71"
+    "zod": "3.25.73"
   },
   "devDependencies": {
     "@majoexe/typescript-config": "workspace:*",
