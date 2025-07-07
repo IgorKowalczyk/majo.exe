@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       '@dotenvx/dotenvx':
-        specifier: 1.45.2
-        version: 1.45.2
+        specifier: 1.46.0
+        version: 1.46.0
       tsx:
         specifier: 4.20.3
         version: 4.20.3
@@ -669,8 +669,8 @@ packages:
     resolution: {integrity: sha512-dBVuXR082gk3jsFp7Rd/JI4kytwGHecnCoTtXFb7DB6CNHp4rg5k1bhg0nWdLGLnOV71lmDzGQaLMy8iPLY0pw==}
     engines: {node: '>=10.0.0'}
 
-  '@dotenvx/dotenvx@1.45.2':
-    resolution: {integrity: sha512-dljVOZTZhwF3G6E1ifDviOOF/vdHqf37xHVWYzNWW+Zk8Mm8KSJiKvWnFze1KknuWUPNb1jDL53I1f8XXKHEYg==}
+  '@dotenvx/dotenvx@1.46.0':
+    resolution: {integrity: sha512-f4GZ0bVqYpFJ298mtCAydPqOOd22uvF7/TUq7EfTFvNCyyEI8d9BuRenq/EEfBVU/fUpGr7+5T+jdUZvkJNfZg==}
     hasBin: true
 
   '@ecies/ciphers@0.2.3':
@@ -6538,7 +6538,7 @@ snapshots:
 
   '@discoveryjs/json-ext@0.5.7': {}
 
-  '@dotenvx/dotenvx@1.45.2':
+  '@dotenvx/dotenvx@1.46.0':
     dependencies:
       commander: 11.1.0
       dotenv: 16.6.1
