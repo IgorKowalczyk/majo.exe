@@ -5,8 +5,8 @@
   "exports": null,
   "type": "module",
   "scripts": {
-    "dev": "dotenvx run -- tsx watch index.ts",
-    "deploy": "dotenvx run -- tsx index.ts",
+    "dev": "dotenvx run -f .env -f ../../packages/database/.env --overload -- tsx watch index.ts",
+    "deploy": "dotenvx run -f .env -f ../../packages/database/.env --overload -- tsx index.ts",
     "format": "prettier . --write --cache --ignore-unknown",
     "format:check": "prettier . --check --cache",
     "lint": "eslint .",

@@ -7,6 +7,7 @@ import ws from "ws";
 import { PrismaClient } from "../prisma/client";
 import { Logger } from "./logger";
 import redisClient from "./redis/client";
+import "@dotenvx/dotenvx/config";
 
 neonConfig.webSocketConstructor = ws;
 
