@@ -27,7 +27,7 @@
 ### 🐘 Neon.tech
 
 1. Create new [Neon](https://neon.tech/) account and create new PostgreSQL database.
-2. Rename the `.env.example` file to `.env`
+2. Create new file or edit existing `.env` file in `/packages/database/` directory.
 3. In the `.env` file set these values:
    - `DATABASE_URL` - pooling database connection string
    - `DATABASE_URL_UNPOOLED` - non-pooling database connection string
@@ -40,7 +40,7 @@
 1. Install Docker by following the instructions at https://docs.docker.com/get-docker/.
 2. Pull the PostgreSQL Docker image for version 15 (`docker pull postgres:15`) or use existing one.
 3. Create a new container using the PostgreSQL image (`docker run --name majoexe -e POSTGRES_PASSWORD=postgres -p 5432:5432 -d postgres:15`)
-4. Rename the `.env.example` file to `.env`
+4. Create new file or edit existing `.env` file in `/packages/database/` directory.
 5. In the `.env` file set this values:
    - `DATABASE_URL=postgresql://postgres:postgres@localhost:5432/majoexe`
    - `DATABASE_URL_UNPOOLED=postgresql://postgres:postgres@localhost:5432/majoexe`
@@ -58,7 +58,7 @@
 ### ☁ Redis Cloud
 
 1. Create new [Redis Cloud](https://app.redislabs.com/) account and create new Redis database.
-2. Rename the `.env.example` file to `.env`
+2. Create new file or edit existing `.env` file in `/packages/database/` directory.
 3. In the `.env` file set this values:
    - `REDIS_URL`- `ioredis` connection string (`redis://[...]`) from Redis Cloud
 4. That's it! Majo.exe will automatically cache data in Redis Cloud.
@@ -68,7 +68,7 @@
 1. Install Docker by following the instructions at https://docs.docker.com/get-docker/.
 2. Pull the Redis Docker image (`docker pull redis`) or use existing one.
 3. Create a new container using the Redis image (`docker run --name redis -p 6379:6379 -d redis`)
-4. Rename the `.env.example` file to `.env`
+4. Create new file or edit existing `.env` file in `/packages/database/` directory.
 5. In `.env` file set these values:
    - `REDIS_URL`- `ioredis` connection string (`redis://localhost:6379`)
 6. That's it! Majo.exe will automatically cache data in Redis.
@@ -85,7 +85,7 @@ REDIS_URL=REDIS_URL
 ```
 
 > [!WARNING]
-> This file should be in **root directory** of the project. This file is **super secret**, better to not share it!
+> Make sure that the `.env` file is placed in `/packages/database/` directory and not in the root directory of the project. It will be used by Prisma and Majo.exe to connect to the database and Redis.
 
 ---
 
@@ -102,13 +102,13 @@ REDIS_URL=REDIS_URL
 - [**@Wafelowski**](https://github.com/HeavyWolfPL) - Translation improvements
 - [**@Sakshyam6966**](https://github.com/Sakshyam6966) - New Features, Bug fixes, Testing
 
-## 💝 Sponsors
+<!-- ## 💝 Sponsors
 
 **These wonderful people and services have helped develop Majo.exe, without them this project would not exist. Thanks goes to these wonderful people!**
 
 |                                                                      | Sponsor                                                             | Description                                                                                                             |
 | -------------------------------------------------------------------- | ------------------------------------------------------------------- | :---------------------------------------------------------------------------------------------------------------------- |
-| ![TrestHost Logo](https://majoexe.com/assets/sponsors/tresthost.png) | [**TrestHost**](https://dash.tresthost.me/register?ref=majonez.exe) | **TrestHost is a good and powerful hosting provider** providing servers from the **USA and Germany**. Try us out today! |
+| ![TrestHost Logo](https://majoexe.com/assets/sponsors/tresthost.png) | [**TrestHost**](https://dash.tresthost.me/register?ref=majonez.exe) | **TrestHost is a good and powerful hosting provider** providing servers from the **USA and Germany**. Try us out today! | -->
 
 ## ⁉️ Issues
 
