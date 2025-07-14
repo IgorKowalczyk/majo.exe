@@ -5,7 +5,6 @@ import { pseudoRandom } from "@majoexe/util/functions/util";
 import { ApplicationCommandOptionType } from "discord-api-types/v10";
 import { CheckIcon, ChevronRightIcon, TrendingUpIcon } from "lucide-react";
 import type { Metadata } from "next";
-import Link from "next/link";
 import avatar01 from "public/assets/avatars/01.webp";
 import avatar03 from "public/assets/avatars/03.webp";
 import avatar05 from "public/assets/avatars/05.webp";
@@ -18,7 +17,6 @@ import { BotReplacement } from "./_components/BotReplacement";
 import { ExampleChart } from "./_components/ExampleChart";
 import { statisticsChartConfig } from "./dashboard/[server]/statistics/page";
 import { AddReaction } from "@/app/_components/AddReaction";
-import { Faq } from "@/app/_components/Faq";
 import { LevelUp } from "@/app/_components/LevelUp";
 import { Notifications } from "@/app/_components/Notifications";
 import { LogDisclosure } from "@/app/dashboard/[server]/dashboard-logs/components/Logs";
@@ -40,6 +38,8 @@ import { Typing } from "@/components/ui/Loaders";
 import { env } from "@/env";
 import { Command } from "@/lib/types";
 import { cn } from "@/lib/utils";
+import Link from "next/link";
+import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "@/components/ui/Accordion";
 
 export const metadata: Metadata = {
  title: "Majo.exe - The only one Discord Bot",
@@ -101,6 +101,31 @@ export default async function Page() {
     avatar: "",
     discriminator: "0",
    },
+  },
+ ];
+
+ const faqItems = [
+  {
+   question: "What is Majo.exe",
+   answer:
+    "Majo.exe is a multi-purpose Discord bot that offers a wide range of features such as moderation, image manipulation, leveling, auto-moderation, and much more. It's designed to be easy to use and highly customizable - perfect for any server.",
+  },
+  {
+   question: "Do you offer technical support?",
+   answer: "Yes! If you have any issues, we're here to help you. Just join our Discord server and ask for help.",
+  },
+  {
+   question: "Is Majo.exe free?",
+   answer: "Yes! Majo.exe is free to use and always will be. We are planning to offer premium features in the future, but the core bot will always be free.",
+  },
+  {
+   question: "How do I invite Majo.exe to my server?",
+   answer:
+    "You can invite Majo.exe to your server by clicking the 'Add to server' button on our website. You'll need to have the 'Manage Server' permission to add the bot to your server.",
+  },
+  {
+   question: "How do I report a bug?",
+   answer: "If you find a bug, please report it on our GitHub repository. We'll do our best to fix it as soon as possible.",
   },
  ];
 
@@ -429,7 +454,23 @@ export default async function Page() {
     <div>
      <Header className={headerVariants({ variant: "medium", margin: "normal", alignment: "center", effects: "gradient" })}>Frequently asked questions</Header>
 
-     <Faq />
+     <div className="mx-auto mt-9 w-full max-w-3xl rounded-xl">
+      {faqItems.map((item, index) => (
+       <Accordion type="single" collapsible key={`faq-${item.question}`}>
+        <AccordionItem value={`item-${index + 1}`}>
+         <AccordionTrigger>{item.question}</AccordionTrigger>
+         <AccordionContent>{item.answer}</AccordionContent>
+        </AccordionItem>
+       </Accordion>
+      ))}
+
+      <div className="mt-6 text-center text-sm text-neutral-400">
+       Have more questions?{" "}
+       <Link href="/contact" className="underline">
+        Contact us.
+       </Link>
+      </div>
+     </div>
     </div>
 
     <div className="relative mx-auto mt-32 h-[600px] max-w-6xl overflow-hidden rounded-3xl border border-neutral-800 bg-transparent pb-10 shadow-2xl md:px-8 lg:px-16">
