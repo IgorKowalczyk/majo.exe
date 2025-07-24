@@ -25,14 +25,14 @@
   "dependencies": {
     "@dotenvx/dotenvx": "1.48.2",
     "tsx": "4.20.3",
-    "turbo": "2.5.4"
+    "turbo": "2.5.5"
   },
   "devDependencies": {
     "@igorkowalczyk/eslint-config": "3.1.0",
     "@igorkowalczyk/prettier-config": "3.1.0",
     "@types/node": "24.1.0",
     "eslint": "9.31.0",
-    "eslint-plugin-turbo": "2.5.4",
+    "eslint-plugin-turbo": "2.5.5",
     "prettier": "3.6.2",
     "typescript": "5.8.3"
   },
