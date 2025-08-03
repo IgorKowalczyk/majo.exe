@@ -51,6 +51,11 @@
   "engines": {
     "node": ">=20"
   },
+  "config": {
+    "libvips": {
+      "version": "8.17.1"
+    }
+  },
   "repository": {
     "type": "git",
     "url": "https://gihub.com/igorkowalczyk/majo.exe",

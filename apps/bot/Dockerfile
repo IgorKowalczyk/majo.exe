@@ -1,40 +1,108 @@
-FROM node:22-bullseye
+ARG APP_PKG_NAME=@majoexe/bot
 
-WORKDIR /app
+FROM node:22-alpine
 
-ENV DEBIAN_FRONTEND=noninteractive
-ENV LD_LIBRARY_PATH=/usr/local/lib
-ENV NODE_ENV=production
-ENV TURBO_TELEMETRY_DISABLED=1
+RUN apk add --no-cache \
+    build-base \
+    autoconf \
+    automake \
+    libtool \
+    pkgconfig \
+    git \
+    wget \
+    nasm \
+    bash \
+    libjpeg-turbo-dev \
+    libpng-dev \
+    libwebp-dev \
+    libimagequant-dev \
+    tiff-dev \
+    zlib-dev \
+    cairo-dev \
+    glib-dev \
+    gobject-introspection-dev \
+    libxml2-dev \
+    libexif-dev \
+    ffmpeg-dev \
+    libde265-dev \
+    x265-dev \
+    libde265 \
+    x265-libs \
+    aom-dev \
+    aom-libs \
+    cmake \
+    ninja \
+    g++ \
+    make \
+    meson \
+    fftw-dev \
+    orc-dev \
+    lcms2-dev \
+    pango-dev \
+    fontconfig-dev \
+    openjpeg-dev \
+    poppler-dev \
+    librsvg-dev \
+    openexr-dev \
+    cfitsio-dev \
+    giflib-dev \
+    imagemagick-dev \
+    libarchive-dev
 
-# Install system dependencies for libvips and build tools
-RUN apt-get update && apt-get install -y \
-  python3-pip meson ninja-build build-essential nasm cmake unzip wget git pkg-config \
-  libglib2.0-dev libexpat-dev libpng-dev libexif-dev liblcms2-dev liborc-dev \
-  automake libgirepository1.0-dev gtk-doc-tools libfftw3-dev libgif-dev libgsf-1-dev \
-  libmagickwand-dev libmatio-dev libopenexr-dev libopenslide-dev liborc-0.4-dev swig \
-  libexif-dev libtiff5-dev libcfitsio-dev libpoppler-glib-dev libpango1.0-dev \
-  libffi-dev libopenjp2-7-dev libimagequant-dev libarchive-dev \
-  libnifti-dev librsvg2-2 librsvg2-dev librsvg2-common liblqr-1-0 liblqr-1-0-dev \
-  libltdl-dev libltdl7 libjpeg-dev libjpeg62-turbo-dev libpng16-16 libtiff-dev \
-  libfontconfig1-dev libfreetype6-dev libxml2-dev libde265-0 libde265-dev x265 \
-  libx265-dev libtool libsdl1.2-dev libgif-dev bc curl
+# Build latest libheif from source
+ENV LIBHEIF_VERSION=1.20.1
+ENV VIPS_VERSION=8.17.1
 
-# Build and install libvips
-ARG LIB_VIPS_VERSION=8.17.0
-RUN curl -fsL https://github.com/libvips/libvips/releases/download/v${LIB_VIPS_VERSION}/vips-${LIB_VIPS_VERSION}.tar.xz -o libvips.tar.xz && \
-  tar -xvf libvips.tar.xz && cd vips-${LIB_VIPS_VERSION} && \
-  meson setup build --libdir=lib -Dintrospection=disabled && \
-  cd build && \
-  meson compile && \
-  meson test && \
-  meson install && \
-  cd ../.. && \
-  rm -rf vips-${LIB_VIPS_VERSION} libvips.tar.xz
+RUN wget https://github.com/strukturag/libheif/releases/download/v${LIBHEIF_VERSION}/libheif-${LIBHEIF_VERSION}.tar.gz && \
+    tar xf libheif-${LIBHEIF_VERSION}.tar.gz && \
+    cd libheif-${LIBHEIF_VERSION} && \
+    mkdir build && \
+    cd build && \
+    cmake -DENABLE_PLUGIN_LOADING=NO --preset=release .. && \
+    make && \
+    make install && \
+    cd ../.. && \
+    rm -rf libheif-${LIBHEIF_VERSION}
+
+# Build latest libvips from source with all format support
+RUN wget https://github.com/libvips/libvips/releases/download/v${VIPS_VERSION}/vips-${VIPS_VERSION}.tar.xz && \
+    tar xf vips-${VIPS_VERSION}.tar.xz && \
+    cd vips-${VIPS_VERSION} && \
+    meson setup build \
+      --buildtype=release \
+      -Dintrospection=disabled \
+      -Dheif=enabled \
+      -Dfftw=enabled \
+      -Dorc=enabled \
+      -Dlcms=enabled \
+      -Dfontconfig=enabled \
+      -Dopenjpeg=enabled \
+      -Dpoppler=enabled \
+      -Drsvg=enabled \
+      -Dopenexr=enabled \
+      -Dcfitsio=enabled \
+      -Dmagick=enabled \
+      -Dexamples=false && \
+    meson compile -C build && \
+    meson install -C build && \
+    cd .. && \
+    rm -rf vips-${VIPS_VERSION}*
+
+# Link libraries (Alpine uses /etc/ld-musl-*.path files instead of ld.so.conf)
+RUN mkdir -p /etc/ld-musl-$(uname -m).path.d && \
+    echo "/usr/lib" > /etc/ld-musl-$(uname -m).path.d/libvips.conf && \
+    echo "/usr/lib" >> /etc/ld-musl-$(uname -m).path.d/libheif.conf && \
+    echo "/usr/local/lib" >> /etc/ld-musl-$(uname -m).path.d/libvips.conf && \
+    echo "/usr/local/lib" >> /etc/ld-musl-$(uname -m).path.d/libheif.conf
 
 RUN vips --version
 
-# Enable corepack and install dotenvx
+WORKDIR /app
+
+ENV NODE_ENV=production
+ENV TURBO_TELEMETRY_DISABLED=1
+ENV npm_config_sharp_libvips=system
+
 RUN corepack enable \
   && corepack prepare pnpm@latest --activate \
   && curl -sfS https://dotenvx.sh/install.sh | sh

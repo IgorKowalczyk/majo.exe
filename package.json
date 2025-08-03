@@ -48,6 +48,11 @@
   "bugs": {
     "url": "https://github.com/IgorKowalczyk/majo.exe/issues"
   },
+  "config": {
+    "libvips": {
+      "version": "8.17.1"
+    }
+  },
   "homepage": "https://majoexe.com",
   "keywords": [
     "node",
