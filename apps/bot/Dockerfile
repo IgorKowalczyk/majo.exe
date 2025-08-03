@@ -10,6 +10,7 @@ RUN apk add --no-cache \
     pkgconfig \
     git \
     wget \
+    curl \
     nasm \
     bash \
     libjpeg-turbo-dev \
