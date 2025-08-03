@@ -1,5 +1,4 @@
 services:
- # Database
  db:
   image: postgres:latest
   container_name: majoexe-db
@@ -20,7 +19,6 @@ services:
    timeout: 5s
    retries: 5
 
- # Database cache
  redis:
   image: redis:latest
   container_name: majoexe-cache
@@ -42,29 +40,15 @@ services:
    timeout: 5s
    retries: 5
 
- # Discord Bot
  bot:
   build:
    context: .
    dockerfile: ./apps/bot/Dockerfile
+  env_file:
+   - ./apps/bot/.env
+   - ./packages/database/.env
   container_name: majoexe-bot
   restart: unless-stopped
-  environment:
-   - TOKEN=${TOKEN}
-   - CLIENT_ID=${CLIENT_ID}
-
-   - DATABASE_URL=postgres://postgres:${DATABASE_PASSWORD}@db:5432/majoexe
-   - DATABASE_URL_UNPOOLED=postgres://postgres:${DATABASE_PASSWORD}@db:5432/majoexe
-
-   - REDIS_URL=redis://default:${REDIS_PASSWORD}@redis:6379
-
-   #- DATABASE_URL=${DATABASE_URL}
-   #- DATABASE_URL_UNPOOLED=${DATABASE_URL_UNPOOLED}
-
-   #- REDIS_URL=${REDIS_URL}
-
-   - TOPGG_API_KEY=${TOPGG_API_KEY}
-   - DISCORD_BOT_LIST_API_KEY=${DISCORD_BOT_LIST_API_KEY}
   depends_on:
    db:
     condition: service_healthy
