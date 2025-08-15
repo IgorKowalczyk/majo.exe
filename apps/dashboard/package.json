@@ -65,7 +65,7 @@
     "@majoexe/typescript-config": "workspace:*",
     "@next/bundle-analyzer": "15.4.6",
     "@prisma/nextjs-monorepo-workaround-plugin": "6.13.0",
-    "@tailwindcss/postcss": "4.1.11",
+    "@tailwindcss/postcss": "4.1.12",
     "@tailwindcss/typography": "0.5.16",
     "@types/mdx": "2.0.13",
     "@types/ms": "2.1.0",
@@ -76,7 +76,7 @@
     "pg": "8.16.3",
     "postcss": "8.5.6",
     "tailwind-merge": "3.3.1",
-    "tailwindcss": "4.1.11"
+    "tailwindcss": "4.1.12"
   },
   "engines": {
     "node": ">=20"
