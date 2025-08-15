@@ -24,7 +24,7 @@
   },
   "dependencies": {
     "@dotenvx/dotenvx": "1.48.4",
-    "tsx": "4.20.3",
+    "tsx": "4.20.4",
     "turbo": "2.5.6"
   },
   "devDependencies": {
