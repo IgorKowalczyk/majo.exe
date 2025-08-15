@@ -33,7 +33,7 @@
     "@majoexe/config": "workspace:*",
     "@majoexe/database": "workspace:*",
     "@majoexe/typescript-config": "workspace:*",
-    "@napi-rs/canvas": "0.1.76",
+    "@napi-rs/canvas": "0.1.77",
     "@types/ms": "2.1.0",
     "chalk": "5.5.0",
     "discord-api-types": "0.38.20",
