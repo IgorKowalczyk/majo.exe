@@ -2,53 +2,14 @@ import { debuggerConfig } from "@majoexe/config";
 import { neonConfig } from "@neondatabase/serverless";
 import { PrismaNeon } from "@prisma/adapter-neon";
 import { PrismaPg } from "@prisma/adapter-pg";
-import { createPrismaRedisCache } from "prisma-redis-middleware";
 import ws from "ws";
 import { PrismaClient } from "../prisma/client";
 import { Logger } from "./logger";
-import redisClient from "./redis/client";
 import "@dotenvx/dotenvx/config";
 
 neonConfig.webSocketConstructor = ws;
 
 const prismaClientWrapper = (prisma: PrismaClient) => {
- const cache = createPrismaRedisCache({
-  models: [
-   { model: "User", excludeMethods: ["findMany"] },
-   { model: "Guild", excludeMethods: ["findMany"], invalidateRelated: ["GuildDisabledCommands", "GuildDisabledCategories"] },
-   { model: "GuildDisabledCommands", excludeMethods: ["findMany"], invalidateRelated: ["Guild"] },
-   { model: "GuildDisabledCategories", excludeMethods: ["findMany"], invalidateRelated: ["Guild"] },
-   { model: "GuildLogs", cacheTime: 15 },
-   { model: "GuildXp", cacheTime: 15 },
-  ],
-  storage: {
-   type: "redis",
-   options: {
-    /* @ts-expect-error Invalid types in cacheOptions */
-    client: redisClient,
-   },
-  },
-  cacheTime: 30,
-  excludeModels: ["Session", "Account"],
-  onHit: (key) => {
-   if (debuggerConfig.displayCacheMessages) {
-    Logger("info", `Cache hit for key ${key}`);
-   }
-  },
-  onMiss: (key) => {
-   if (debuggerConfig.displayCacheMessages) {
-    Logger("info", `Cache miss for key ${key}`);
-   }
-  },
-  onError: (key) => {
-   if (debuggerConfig.displayCacheMessages) {
-    Logger("info", `Cache error for key ${key}`);
-   }
-  },
- });
-
- prisma.$use(cache);
-
  if (debuggerConfig.displayDatabaseLogs)
   prisma.$extends({
    query: {

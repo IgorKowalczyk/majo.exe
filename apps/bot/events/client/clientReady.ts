@@ -3,7 +3,7 @@ import { PresenceUpdateStatus, ActivityType, RESTPutAPIApplicationCommandsJSONBo
 import { postBotCommands, postBotStats } from "discordbotlist";
 import type { Majobot } from "@/index";
 
-export async function ready(client: Majobot) {
+export async function clientReady(client: Majobot) {
  if (!client.user) return client.debugger("error", "Client user is not available!");
  if (!client.application) return client.debugger("error", "Client application is not available!");
 
