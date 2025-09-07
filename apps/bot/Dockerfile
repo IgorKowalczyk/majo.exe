@@ -2,6 +2,8 @@ ARG APP_PKG_NAME=@majoexe/bot
 
 FROM node:22-alpine
 
+RUN apk add curl
+
 WORKDIR /app
 
 ENV NODE_ENV=production
