@@ -1,6 +1,7 @@
 import prismaClient from "@majoexe/database";
 import type { GuildJoin, GuildLeave, GuildMessage } from "@majoexe/database/types";
 import { fillMissingDates } from "@majoexe/util/functions/util";
+import { createCanvas, loadImage } from "@napi-rs/canvas";
 import * as Plot from "@observablehq/plot";
 import {
  ApplicationCommandType,
@@ -12,25 +13,24 @@ import {
  ApplicationIntegrationType,
 } from "discord.js";
 import jsdom from "jsdom";
-import sharp from "sharp";
 import type { SlashCommand } from "@/util/types/Command";
 const { JSDOM } = jsdom;
 
 async function generateChart(data: GuildJoin[] | GuildLeave[] | GuildMessage[], name: string, color: string) {
  const chartData = fillMissingDates(data, name);
  const { document } = new JSDOM("").window;
+ const width = 934;
+ const height = 500;
 
  const chart = Plot.plot({
   document,
   marginBottom: 60,
-  marginTop: 40,
-  width: 934,
-
+  marginTop: 120,
+  width,
   marks: [
-   // prettier
    Plot.gridY({
     stroke: "white",
-    strokeOpacity: 0.2, // opaque
+    strokeOpacity: 0.2,
    }),
    Plot.axisY({
     color,
@@ -52,15 +52,20 @@ async function generateChart(data: GuildJoin[] | GuildLeave[] | GuildMessage[], 
     strokeWidth: 2,
     curve: "monotone-x",
     stroke: color,
-    //color,
    }),
   ],
  });
 
  document.body.appendChild(chart);
 
- const buffer = await sharp(Buffer.from(document.body.innerHTML)).png().toBuffer();
- const attachment = new AttachmentBuilder(buffer, {
+ const canvas = createCanvas(width, height);
+ const context = canvas.getContext("2d");
+ const buffer = Buffer.from(document.body.innerHTML);
+ const image = await loadImage(buffer);
+ context.drawImage(image, 0, 0, width, height);
+ const buffer2 = canvas.toBuffer("image/png");
+
+ const attachment = new AttachmentBuilder(buffer2, {
   name: "chart.png",
  });
 

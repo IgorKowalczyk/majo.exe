@@ -5,6 +5,7 @@ import { pseudoRandom } from "@majoexe/util/functions/util";
 import { ApplicationCommandOptionType } from "discord-api-types/v10";
 import { CheckIcon, ChevronRightIcon, TrendingUpIcon } from "lucide-react";
 import type { Metadata } from "next";
+import Link from "next/link";
 import avatar01 from "public/assets/avatars/01.webp";
 import avatar03 from "public/assets/avatars/03.webp";
 import avatar05 from "public/assets/avatars/05.webp";
@@ -22,6 +23,7 @@ import { Notifications } from "@/app/_components/Notifications";
 import { LogDisclosure } from "@/app/dashboard/[server]/dashboard-logs/components/Logs";
 import { StatsChart } from "@/components/client/charts/ServerStatsChart";
 import { LoginButton } from "@/components/LoginButton";
+import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "@/components/ui/Accordion";
 import { buttonVariants } from "@/components/ui/Buttons";
 import { AnimatedShinyText } from "@/components/ui/effects/AnimatedShinyText";
 import { BorderBeam } from "@/components/ui/effects/BorderBeam";
@@ -38,8 +40,6 @@ import { Typing } from "@/components/ui/Loaders";
 import { env } from "@/env";
 import { Command } from "@/lib/types";
 import { cn } from "@/lib/utils";
-import Link from "next/link";
-import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "@/components/ui/Accordion";
 
 export const metadata: Metadata = {
  title: "Majo.exe - The only one Discord Bot",
