@@ -46,7 +46,7 @@
     "@types/qrcode": "1.5.5",
     "@types/validator": "13.15.3",
     "node-addon-api": "8.5.0",
-    "node-gyp": "11.3.0"
+    "node-gyp": "11.4.2"
   },
   "engines": {
     "node": ">=20"
