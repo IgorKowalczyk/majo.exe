@@ -24,7 +24,7 @@ export const LevelUp = ({ avatar, username, className, ...props }: LevelUpProps)
 
  return (
   <div className={cn("mt-6 flex flex-row items-center gap-1", className)} {...props}>
-   <Image src={avatar} alt="User avatar" quality={40} width={40} height={64} className="size-10 shrink-0 self-baseline rounded-full" />
+   <Image src={avatar} alt="User avatar" quality={50} width={40} height={64} className="size-10 shrink-0 self-baseline rounded-full" />
    <span className="ml-2">
     <span className="font-bold">{username}</span> leveled up to <span className="font-bold text-accent-primary [font-feature-settings:'tnum']">level {level}</span>{" "}
     <span onClick={setIt} className="cursor-pointer select-none">

@@ -45,7 +45,7 @@ export function BotReplacement({ className }: { className?: string }) {
     </div>
     <div className="flex flex-col justify-center">
      <Circle ref={div6Ref} className="size-18">
-      <Image src={avatar.src} alt="Majo.exe avatar" quality={40} width={64} height={64} className="size-18 shrink-0 rounded-full" />
+      <Image src={avatar.src} alt="Majo.exe avatar" quality={50} width={64} height={64} className="size-18 shrink-0 rounded-full" />
      </Circle>
     </div>
     <div className="flex flex-col justify-center">
