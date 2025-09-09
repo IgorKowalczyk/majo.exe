@@ -94,8 +94,8 @@ importers:
         specifier: 1.1.1
         version: 1.1.1
       figlet:
-        specifier: 1.9.0
-        version: 1.9.0
+        specifier: 1.9.1
+        version: 1.9.1
       gif-encoder-2:
         specifier: 1.0.5
         version: 1.0.5
@@ -4061,8 +4061,8 @@ packages:
     resolution: {integrity: sha512-7yAQpD2UMJzLi1Dqv7qFYnPbaPx7ZfFK6PiIxQ4PfkGPyNyl2Ugx+a/umUonmKqjhM4DnfbMvdX6otXq83soQQ==}
     engines: {node: ^12.20 || >= 14.13}
 
-  figlet@1.9.0:
-    resolution: {integrity: sha512-S+WN3ZIGYgiZUlQD0s3qlAPSOdCdYth0G7PK6DbubfixgorA7jzNl4eae2Hc/rEjQ5UYnf0YkcpCFc/IMklZhg==}
+  figlet@1.9.1:
+    resolution: {integrity: sha512-DpKC89iXFjq6NCaIQ1O91R+ofpfyvkwuBfoVd8LpP/JZGZQpelMXgiTStGOfksuMYaDoBAwFlvx7mk+wX+3rrA==}
     engines: {node: '>= 17.0.0'}
     hasBin: true
 
@@ -10889,7 +10889,7 @@ snapshots:
       node-domexception: 1.0.0
       web-streams-polyfill: 3.3.3
 
-  figlet@1.9.0:
+  figlet@1.9.1:
     dependencies:
       commander: 14.0.0
 
