@@ -218,8 +218,8 @@ importers:
         specifier: 6.0.1
         version: 6.0.1(discord.js@14.22.1)
       framer-motion:
-        specifier: 12.23.12
-        version: 12.23.12(react-dom@19.1.1(react@19.1.1))(react@19.1.1)
+        specifier: 12.23.16
+        version: 12.23.16(react-dom@19.1.1(react@19.1.1))(react@19.1.1)
       geist:
         specifier: 1.5.1
         version: 1.5.1(next@15.5.2(@babel/core@7.28.3)(react-dom@19.1.1(react@19.1.1))(react@19.1.1))
@@ -4135,8 +4135,8 @@ packages:
     resolution: {integrity: sha512-buRG0fpBtRHSTCOASe6hD258tEubFoRLb4ZNA6NxMVHNw2gOcwHo9wyablzMzOA5z9xA9L1KNjk/Nt6MT9aYow==}
     engines: {node: '>= 0.6'}
 
-  framer-motion@12.23.12:
-    resolution: {integrity: sha512-6e78rdVtnBvlEVgu6eFEAgG9v3wLnYEboM8I5O5EXvfKC8gxGQB8wXJdhkMy10iVcn05jl6CNw7/HTsTCfwcWg==}
+  framer-motion@12.23.16:
+    resolution: {integrity: sha512-N81A8hiHqVsexOzI3wzkibyLURW1nEJsZaRuctPhG4AdbbciYu+bKJq9I2lQFzAO4Bx3h4swI6pBbF/Hu7f7BA==}
     peerDependencies:
       '@emotion/is-prop-valid': '*'
       react: ^18.0.0 || ^19.0.0
@@ -11011,7 +11011,7 @@ snapshots:
 
   forwarded@0.2.0: {}
 
-  framer-motion@12.23.12(react-dom@19.1.1(react@19.1.1))(react@19.1.1):
+  framer-motion@12.23.16(react-dom@19.1.1(react@19.1.1))(react@19.1.1):
     dependencies:
       motion-dom: 12.23.12
       motion-utils: 12.23.6
