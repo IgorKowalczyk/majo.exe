@@ -189,10 +189,10 @@ importers:
         version: 1.2.8(@types/react-dom@19.1.9(@types/react@19.1.12))(@types/react@19.1.12)(react-dom@19.1.1(react@19.1.1))(react@19.1.1)
       '@t3-oss/env-core':
         specifier: 0.13.8
-        version: 0.13.8(typescript@5.9.2)(zod@4.1.7)
+        version: 0.13.8(typescript@5.9.2)(zod@4.1.12)
       '@t3-oss/env-nextjs':
         specifier: 0.13.8
-        version: 0.13.8(typescript@5.9.2)(zod@4.1.7)
+        version: 0.13.8(typescript@5.9.2)(zod@4.1.12)
       '@tanstack/react-table':
         specifier: 8.21.3
         version: 8.21.3(react-dom@19.1.1(react@19.1.1))(react@19.1.1)
@@ -278,8 +278,8 @@ importers:
         specifier: 13.15.15
         version: 13.15.15
       zod:
-        specifier: 4.1.7
-        version: 4.1.7
+        specifier: 4.1.12
+        version: 4.1.12
     devDependencies:
       '@majoexe/typescript-config':
         specifier: workspace:*
@@ -6740,8 +6740,8 @@ packages:
   zod@3.25.76:
     resolution: {integrity: sha512-gzUt/qt81nXsFGKIFcC3YnfEAx5NkunCfnDlvuBSSFS02bcXu4Lmea0AFIUwbLWxWPx3d9p8S5QoaujKcNQxcQ==}
 
-  zod@4.1.7:
-    resolution: {integrity: sha512-6qi6UYyzAl7W9uV29KvcSFXqK4QCYNYUz2YASPNBWpJE1RY6R1nArmmFPgGY/CBYWzpeMw3EOER+DR9a05O4IA==}
+  zod@4.1.12:
+    resolution: {integrity: sha512-JInaHOamG8pt5+Ey8kGmdcAcg3OL9reK8ltczgHTAwNhMys/6ThXHityHxVV2p3fkw/c+MAvBHFVYHFZDmjMCQ==}
 
   zustand@5.0.7:
     resolution: {integrity: sha512-Ot6uqHDW/O2VdYsKLLU8GQu8sCOM1LcoE8RwvLv9uuRT9s6SOHCKs0ZEOhxg+I1Ld+A1Q5lwx+UlKXXUoCZITg==}
@@ -8887,17 +8887,17 @@ snapshots:
     dependencies:
       tslib: 2.8.1
 
-  '@t3-oss/env-core@0.13.8(typescript@5.9.2)(zod@4.1.7)':
+  '@t3-oss/env-core@0.13.8(typescript@5.9.2)(zod@4.1.12)':
     optionalDependencies:
       typescript: 5.9.2
-      zod: 4.1.7
+      zod: 4.1.12
 
-  '@t3-oss/env-nextjs@0.13.8(typescript@5.9.2)(zod@4.1.7)':
+  '@t3-oss/env-nextjs@0.13.8(typescript@5.9.2)(zod@4.1.12)':
     dependencies:
-      '@t3-oss/env-core': 0.13.8(typescript@5.9.2)(zod@4.1.7)
+      '@t3-oss/env-core': 0.13.8(typescript@5.9.2)(zod@4.1.12)
     optionalDependencies:
       typescript: 5.9.2
-      zod: 4.1.7
+      zod: 4.1.12
 
   '@tailwindcss/node@4.1.13':
     dependencies:
@@ -14105,7 +14105,7 @@ snapshots:
 
   zod@3.25.76: {}
 
-  zod@4.1.7: {}
+  zod@4.1.12: {}
 
   zustand@5.0.7(@types/react@19.1.12)(immer@10.1.1)(react@19.1.1)(use-sync-external-store@1.5.0(react@19.1.1)):
     optionalDependencies:
