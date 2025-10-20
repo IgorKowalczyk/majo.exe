@@ -1,42 +1,42 @@
 {
- "name": "@majoexe/config",
- "version": "6.0.0",
- "description": "Majo.exe shared config for all packages and projects",
- "type": "module",
- "exports": {
-  ".": "./index.ts",
-  "./bot": "./configs/bot.ts",
-  "./dashboard": "./configs/dashboard.ts",
-  "./debugger": "./configs/debugger.ts",
-  "./global": "./configs/global.ts",
-  "./permissions": "./configs/permissions.ts"
- },
- "scripts": {
-  "format": "prettier . --write --cache --ignore-unknown",
-  "format:check": "prettier . --check --cache",
-  "lint": "eslint .",
-  "lint:fix": "eslint . --fix"
- },
- "dependencies": {
-  "@majoexe/typescript-config": "workspace:*",
-  "discord-api-types": "0.38.23"
- },
- "engines": {
-  "node": ">=20"
- },
- "repository": {
-  "type": "git",
-  "url": "git+https://github.com/igorkowalczyk/majo.exe.git",
-  "directory": "packages/config"
- },
- "keywords": [
-  "config"
- ],
- "author": "Igor Kowalczyk",
- "license": "MIT",
- "bugs": {
-  "url": "https://github.com/igorkowalczyk/majo.exe/issues"
- },
- "homepage": "https://github.com/igorkowalczyk/majo.exe#readme",
- "packageManager": "pnpm@10.18.0"
+  "name": "@majoexe/config",
+  "version": "6.0.0",
+  "description": "Majo.exe shared config for all packages and projects",
+  "type": "module",
+  "exports": {
+    ".": "./index.ts",
+    "./bot": "./configs/bot.ts",
+    "./dashboard": "./configs/dashboard.ts",
+    "./debugger": "./configs/debugger.ts",
+    "./global": "./configs/global.ts",
+    "./permissions": "./configs/permissions.ts"
+  },
+  "scripts": {
+    "format": "prettier . --write --cache --ignore-unknown",
+    "format:check": "prettier . --check --cache",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix"
+  },
+  "dependencies": {
+    "@majoexe/typescript-config": "workspace:*",
+    "discord-api-types": "0.38.30"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/igorkowalczyk/majo.exe.git",
+    "directory": "packages/config"
+  },
+  "keywords": [
+    "config"
+  ],
+  "author": "Igor Kowalczyk",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/igorkowalczyk/majo.exe/issues"
+  },
+  "homepage": "https://github.com/igorkowalczyk/majo.exe#readme",
+  "packageManager": "pnpm@10.18.0"
 }

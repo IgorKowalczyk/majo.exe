@@ -23,19 +23,19 @@
     "seed": "node packages/database/src/seed.ts"
   },
   "dependencies": {
-    "@dotenvx/dotenvx": "1.49.0",
-    "tsx": "4.20.5",
-    "turbo": "2.5.6"
+    "@dotenvx/dotenvx": "1.51.0",
+    "tsx": "4.20.6",
+    "turbo": "2.5.8"
   },
   "devDependencies": {
     "@igorkowalczyk/eslint-config": "3.1.0",
     "@igorkowalczyk/prettier-config": "3.1.0",
-    "@types/node": "24.3.1",
+    "@types/node": "24.9.0",
+    "eslint": "9.38.0",
+    "eslint-plugin-turbo": "2.5.8",
     "node-addon-api": "8.5.0",
-    "eslint": "9.35.0",
-    "eslint-plugin-turbo": "2.5.6",
     "prettier": "3.6.2",
-    "typescript": "5.9.2"
+    "typescript": "5.9.3"
   },
   "engines": {
     "node": ">=20"

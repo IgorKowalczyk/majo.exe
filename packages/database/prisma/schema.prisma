@@ -4,10 +4,9 @@ datasource db {
 }
 
 generator client {
- provider        = "prisma-client-js"
- previewFeatures = ["driverAdapters"]
- output          = "./client"
- binaryTargets   = ["native", "rhel-openssl-3.0.x"]
+ provider      = "prisma-client-js"
+ output        = "./client"
+ binaryTargets = ["native", "rhel-openssl-3.0.x"]
 }
 
 // User model
