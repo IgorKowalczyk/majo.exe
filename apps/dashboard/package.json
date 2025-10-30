@@ -44,7 +44,7 @@
     "json-2-csv": "5.5.9",
     "lucide-react": "0.546.0",
     "next": "15.5.6",
-    "next-auth": "4.24.11",
+    "next-auth": "4.24.13",
     "next-axiom": "1.9.3",
     "next-navigation-guard": "0.2.0",
     "react": "19.2.0",
