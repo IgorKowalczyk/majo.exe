@@ -1,14 +1,14 @@
 {
- "extends": "@majoexe/typescript-config/base",
- "compilerOptions": {
-  "lib": ["ES2022", "dom", "dom.iterable"],
-  "jsx": "preserve",
-  "baseUrl": ".",
-  "paths": {
-   "@/*": ["./*"]
+  "extends": "@majoexe/typescript-config/base",
+  "compilerOptions": {
+    "lib": ["ES2022", "dom", "dom.iterable"],
+    "jsx": "preserve",
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./*"]
+    },
+    "plugins": [{ "name": "next" }],
+    "module": "esnext"
   },
-  "plugins": [{ "name": "next" }],
-  "module": "esnext"
- },
- "include": [".", ".next/types/**/*.ts"]
+  "include": [".", ".next/types/**/*.ts"]
 }

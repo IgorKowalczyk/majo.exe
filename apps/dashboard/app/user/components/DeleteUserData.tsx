@@ -9,91 +9,91 @@ import { Dialog, DialogClose, DialogContent, DialogDescription, DialogHeader, Di
 import { Icons, iconVariants } from "@/components/ui/Icons";
 
 export const DeleteUserData = ({ className, ...props }: React.ComponentProps<"div">) => {
- const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(false);
 
- const handleDelete = async () => {
-  setLoading(true);
-  const loadingToast = toast.loading("We're deleting your account... We're sad to see you go.");
+  const handleDelete = async () => {
+    setLoading(true);
+    const loadingToast = toast.loading("We're deleting your account... We're sad to see you go.");
 
-  const res = await fetch("/api/user/delete", {
-   method: "POST",
-   headers: {
-    "Content-Type": "application/json",
-   },
-  });
+    const res = await fetch("/api/user/delete", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
 
-  setLoading(false);
+    setLoading(false);
 
-  if (!res.ok) {
-   try {
+    if (!res.ok) {
+      try {
+        const json = await res.json();
+        return toast.error(json.message ?? "Something went wrong", {
+          id: loadingToast,
+        });
+      } catch (e) {
+        console.log(e);
+        return toast.error("Something went wrong", {
+          id: loadingToast,
+        });
+      }
+    }
+
     const json = await res.json();
-    return toast.error(json.message ?? "Something went wrong", {
-     id: loadingToast,
-    });
-   } catch (e) {
-    console.log(e);
-    return toast.error("Something went wrong", {
-     id: loadingToast,
-    });
-   }
-  }
 
-  const json = await res.json();
+    if (json.code === 200) {
+      toast.success(json.message ?? "Your account has been deleted! We're sad to see you go.", {
+        id: loadingToast,
+      });
+      return signOut({ redirect: true, callbackUrl: "/" });
+    } else {
+      return toast.error(json.error ?? "Something went wrong", {
+        id: loadingToast,
+      });
+    }
+  };
 
-  if (json.code === 200) {
-   toast.success(json.message ?? "Your account has been deleted! We're sad to see you go.", {
-    id: loadingToast,
-   });
-   return signOut({ redirect: true, callbackUrl: "/" });
-  } else {
-   return toast.error(json.error ?? "Something went wrong", {
-    id: loadingToast,
-   });
-  }
- };
+  return (
+    <div className={className} {...props}>
+      <Dialog>
+        <DialogTrigger asChild>
+          <Button variant="red" className="mt-4">
+            <TrashIcon className={iconVariants({ variant: "button" })} /> Delete account
+          </Button>
+        </DialogTrigger>
+        <DialogContent className="max-w-lg">
+          <DialogHeader>
+            <DialogTitle>
+              <Icons.warning className={iconVariants({ variant: "large", className: "stroke-2!" })} />
+              Delete account
+            </DialogTitle>
+            <DialogDescription>
+              Deleting your account will delete all your data from our servers. This action is irreversible. Are you sure you want to delete your account?
+            </DialogDescription>
+          </DialogHeader>
 
- return (
-  <div className={className} {...props}>
-   <Dialog>
-    <DialogTrigger asChild>
-     <Button variant="red" className="mt-4">
-      <TrashIcon className={iconVariants({ variant: "button" })} /> Delete account
-     </Button>
-    </DialogTrigger>
-    <DialogContent className="max-w-lg">
-     <DialogHeader>
-      <DialogTitle>
-       <Icons.warning className={iconVariants({ variant: "large", className: "stroke-2!" })} />
-       Delete account
-      </DialogTitle>
-      <DialogDescription>
-       Deleting your account will delete all your data from our servers. This action is irreversible. Are you sure you want to delete your account?
-      </DialogDescription>
-     </DialogHeader>
-
-     <div className="mt-4 flex justify-between gap-2">
-      <Button variant="red" onClick={handleDelete} disabled={loading}>
-       {loading ? (
-        <>
-         <LoaderCircleIcon className={iconVariants({ variant: "button", className: "animate-spin" })} />
-         Deleting your account...
-        </>
-       ) : (
-        <>
-         <TrashIcon className={iconVariants({ variant: "button" })} />
-         Yes, delete my account
-        </>
-       )}
-      </Button>
-      <DialogClose asChild>
-       <Button variant="secondary">
-        <XIcon className={iconVariants({ variant: "button" })} />
-        Cancel
-       </Button>
-      </DialogClose>
-     </div>
-    </DialogContent>
-   </Dialog>
-  </div>
- );
+          <div className="mt-4 flex justify-between gap-2">
+            <Button variant="red" onClick={handleDelete} disabled={loading}>
+              {loading ? (
+                <>
+                  <LoaderCircleIcon className={iconVariants({ variant: "button", className: "animate-spin" })} />
+                  Deleting your account...
+                </>
+              ) : (
+                <>
+                  <TrashIcon className={iconVariants({ variant: "button" })} />
+                  Yes, delete my account
+                </>
+              )}
+            </Button>
+            <DialogClose asChild>
+              <Button variant="secondary">
+                <XIcon className={iconVariants({ variant: "button" })} />
+                Cancel
+              </Button>
+            </DialogClose>
+          </div>
+        </DialogContent>
+      </Dialog>
+    </div>
+  );
 };

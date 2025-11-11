@@ -3,19 +3,19 @@ import { type ChatInputApplicationCommandData, ChatInputCommandInteraction, Auto
 import type { Majobot } from "@/index";
 
 export interface GuildSettings extends Pick<Guild, "embedColor" | "publicPage" | "vanity"> {
- guildDisabledCommands: GuildDisabledCommands[];
- guildDisabledCategories: GuildDisabledCategories[];
+  guildDisabledCommands: GuildDisabledCommands[];
+  guildDisabledCategories: GuildDisabledCategories[];
 }
 
 // Create a new type that includes the usage property
 type ExtendedApplicationCommandOptionData = ApplicationCommandOptionData & { usage?: string };
 
 export interface SlashCommand extends ChatInputApplicationCommandData {
- category?: string;
- cooldown?: number;
- defer?: boolean;
- usage: string;
- options?: readonly ExtendedApplicationCommandOptionData[];
- run: (client: Majobot, interaction: ChatInputCommandInteraction, guildSettings?: GuildSettings) => Promise<Message | void>;
- autocomplete?: (client: Majobot, interaction: AutocompleteInteraction) => Promise<void>;
+  category?: string;
+  cooldown?: number;
+  defer?: boolean;
+  usage: string;
+  options?: readonly ExtendedApplicationCommandOptionData[];
+  run: (client: Majobot, interaction: ChatInputCommandInteraction, guildSettings?: GuildSettings) => Promise<Message | void>;
+  autocomplete?: (client: Majobot, interaction: AutocompleteInteraction) => Promise<void>;
 }

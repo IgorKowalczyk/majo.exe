@@ -1,6 +1,6 @@
 {
- "framework": "nextjs",
- "github": {
-  "silent": true
- }
+  "framework": "nextjs",
+  "github": {
+    "silent": true
+  }
 }

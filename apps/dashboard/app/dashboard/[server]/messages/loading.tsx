@@ -7,59 +7,59 @@ import { Skeleton } from "@/components/ui/Skeletons";
 import { cn } from "@/lib/utils";
 
 export default function Loading() {
- return (
-  <>
-   <Header className={cn(headerVariants({ variant: "h1", margin: "normal" }))}>
-    <HandIcon className={iconVariants({ variant: "extraLarge" })} />
-    Welcome & Leave
-   </Header>
-   <p className="mb-4 text-left text-base md:text-lg">Customize the messages that are sent to your server members.</p>
+  return (
+    <>
+      <Header className={cn(headerVariants({ variant: "h1", margin: "normal" }))}>
+        <HandIcon className={iconVariants({ variant: "extraLarge" })} />
+        Welcome & Leave
+      </Header>
+      <p className="mb-4 text-left text-base md:text-lg">Customize the messages that are sent to your server members.</p>
 
-   <Block className="mt-4 overflow-x-visible!">
-    <Header className={cn(headerVariants({ variant: "h2" }))}>
-     <Icons.userAdd className={iconVariants({ variant: "large", className: "stroke-2!" })} />
-     Welcome messages
-    </Header>
-    <p className="mb-4 text-left">
-     <span>Send a welcome message to new members when they join your server.</span>
-    </p>
+      <Block className="mt-4 overflow-x-visible!">
+        <Header className={cn(headerVariants({ variant: "h2" }))}>
+          <Icons.userAdd className={iconVariants({ variant: "large", className: "stroke-2!" })} />
+          Welcome messages
+        </Header>
+        <p className="mb-4 text-left">
+          <span>Send a welcome message to new members when they join your server.</span>
+        </p>
 
-    <div className="my-2 flex flex-row flex-wrap gap-2">
-     <span className="flex w-fit cursor-help items-center gap-2 font-bold">
-      <CheckIcon className={iconVariants({ variant: "normal" })} />
-      Enabled:
-     </span>
-     <Skeleton className="h-[30px] w-12" />
-    </div>
-    <Skeleton className="h-96 w-full" />
-    <Button variant="primary" className="mt-4" disabled>
-     <CheckIcon className={iconVariants({ variant: "button" })} />
-     Save
-    </Button>
-   </Block>
+        <div className="my-2 flex flex-row flex-wrap gap-2">
+          <span className="flex w-fit cursor-help items-center gap-2 font-bold">
+            <CheckIcon className={iconVariants({ variant: "normal" })} />
+            Enabled:
+          </span>
+          <Skeleton className="h-[30px] w-12" />
+        </div>
+        <Skeleton className="h-96 w-full" />
+        <Button variant="primary" className="mt-4" disabled>
+          <CheckIcon className={iconVariants({ variant: "button" })} />
+          Save
+        </Button>
+      </Block>
 
-   <Block className="mt-6 overflow-x-visible!">
-    <Header className={cn(headerVariants({ variant: "h2" }))}>
-     <Icons.userMinus className={iconVariants({ variant: "large", className: "stroke-2!" })} />
-     Leave messages
-    </Header>
-    <p className="mb-4 text-left">
-     <span>Send a leave message to a channel when a user leaves the server.</span>
-    </p>
+      <Block className="mt-6 overflow-x-visible!">
+        <Header className={cn(headerVariants({ variant: "h2" }))}>
+          <Icons.userMinus className={iconVariants({ variant: "large", className: "stroke-2!" })} />
+          Leave messages
+        </Header>
+        <p className="mb-4 text-left">
+          <span>Send a leave message to a channel when a user leaves the server.</span>
+        </p>
 
-    <div className="my-2 flex flex-row flex-wrap gap-2">
-     <span className="flex w-fit cursor-help items-center gap-2 font-bold">
-      <CheckIcon className={iconVariants({ variant: "normal" })} />
-      Enabled:
-     </span>
-     <Skeleton className="h-[30px] w-12" />
-    </div>
-    <Skeleton className="h-96 w-full" />
-    <Button variant="primary" className="mt-4" disabled>
-     <CheckIcon className={iconVariants({ variant: "button" })} />
-     Save
-    </Button>
-   </Block>
-  </>
- );
+        <div className="my-2 flex flex-row flex-wrap gap-2">
+          <span className="flex w-fit cursor-help items-center gap-2 font-bold">
+            <CheckIcon className={iconVariants({ variant: "normal" })} />
+            Enabled:
+          </span>
+          <Skeleton className="h-[30px] w-12" />
+        </div>
+        <Skeleton className="h-96 w-full" />
+        <Button variant="primary" className="mt-4" disabled>
+          <CheckIcon className={iconVariants({ variant: "button" })} />
+          Save
+        </Button>
+      </Block>
+    </>
+  );
 }

@@ -10,11 +10,11 @@ import redisClient from "./client";
  * @returns void
  */
 export async function cacheSet(key: string, value: object | string, ttl: number = 60): Promise<void> {
- if (debuggerConfig.displayCacheMessages) Logger("info", `Setting key ${key} to ${JSON.stringify(value)} with a TTL of ${ttl}`);
+  if (debuggerConfig.displayCacheMessages) Logger("info", `Setting key ${key} to ${JSON.stringify(value)} with a TTL of ${ttl}`);
 
- await redisClient.set(key, JSON.stringify(value));
- await redisClient.expire(key, ttl);
- return;
+  await redisClient.set(key, JSON.stringify(value));
+  await redisClient.expire(key, ttl);
+  return;
 }
 
 /**
@@ -23,9 +23,9 @@ export async function cacheSet(key: string, value: object | string, ttl: number 
  * @returns The value of the key
  */
 export async function cacheGet(key: string): Promise<string | null> {
- if (debuggerConfig.displayCacheMessages) Logger("info", `Getting key ${key}`);
- const get = await redisClient.get(key);
- return get ? JSON.parse(JSON.stringify(get)) : null;
+  if (debuggerConfig.displayCacheMessages) Logger("info", `Getting key ${key}`);
+  const get = await redisClient.get(key);
+  return get ? JSON.parse(JSON.stringify(get)) : null;
 }
 
 /**
@@ -34,8 +34,8 @@ export async function cacheGet(key: string): Promise<string | null> {
  * @returns The time to live of the key in seconds
  */
 export async function cacheTTL(key: string): Promise<number> {
- if (debuggerConfig.displayCacheMessages) Logger("info", `Getting TTL of key ${key}`);
- return await redisClient.ttl(key);
+  if (debuggerConfig.displayCacheMessages) Logger("info", `Getting TTL of key ${key}`);
+  return await redisClient.ttl(key);
 }
 
 /**
@@ -44,7 +44,7 @@ export async function cacheTTL(key: string): Promise<number> {
  * @returns void
  */
 export async function cacheDel(key: string): Promise<void> {
- if (debuggerConfig.displayCacheMessages) Logger("info", `Deleting key ${key}`);
- await redisClient.del(key);
- return;
+  if (debuggerConfig.displayCacheMessages) Logger("info", `Deleting key ${key}`);
+  await redisClient.del(key);
+  return;
 }

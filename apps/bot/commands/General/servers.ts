@@ -3,66 +3,66 @@ import { ApplicationCommandType, EmbedBuilder, ButtonBuilder, ActionRowBuilder, 
 import type { SlashCommand } from "@/util/types/Command";
 
 export default {
- name: "servers",
- description: "🧭 Display the number of servers the Majo.exe is in",
- type: ApplicationCommandType.ChatInput,
- cooldown: 3000,
- contexts: [InteractionContextType.Guild, InteractionContextType.BotDM, InteractionContextType.PrivateChannel],
- integrationTypes: [ApplicationIntegrationType.GuildInstall, ApplicationIntegrationType.UserInstall],
- usage: "/servers",
- run: async (client, interaction, guildSettings) => {
-  try {
-   if (!client.user) return client.errorMessages.createSlashError(interaction, "❌ Bot is not ready yet. Please try again later.");
+  name: "servers",
+  description: "🧭 Display the number of servers the Majo.exe is in",
+  type: ApplicationCommandType.ChatInput,
+  cooldown: 3000,
+  contexts: [InteractionContextType.Guild, InteractionContextType.BotDM, InteractionContextType.PrivateChannel],
+  integrationTypes: [ApplicationIntegrationType.GuildInstall, ApplicationIntegrationType.UserInstall],
+  usage: "/servers",
+  run: async (client, interaction, guildSettings) => {
+    try {
+      if (!client.user) return client.errorMessages.createSlashError(interaction, "❌ Bot is not ready yet. Please try again later.");
 
-   const allGuilds = client.guilds.cache;
-   const allChannels = client.channels.cache;
-   const allUsers = client.guilds.cache.reduce((acc, guild) => acc + guild.memberCount, 0);
+      const allGuilds = client.guilds.cache;
+      const allChannels = client.channels.cache;
+      const allUsers = client.guilds.cache.reduce((acc, guild) => acc + guild.memberCount, 0);
 
-   const inviteLink = `https://discord.com/oauth2/authorize/?permissions=${client.config.permissions}&scope=${client.config.scopes}&client_id=${client.user.id}`;
-   const embed = new EmbedBuilder() // Prettier
-    .setTitle(`🧭 ${client.user.username} is in ${allGuilds.size} servers!`)
-    .setDescription(
-     `**...thats a lot of servers!** To be exact, <@${client.user.id}> is serving commands to \`${formatNumber(allUsers) || "0"}\` users in \`${formatNumber(allChannels.size)}\` channels across \`${formatNumber(allGuilds.size)}\` servers!\n\n**If you want to invite Majo.exe to your server, you can do so by clicking [here](${inviteLink}).**`
-    )
-    .setFooter({
-     text: `Requested by ${interaction.user.globalName || interaction.user.username}`,
-     iconURL: interaction.user.displayAvatarURL({
-      size: 256,
-     }),
-    })
-    .setColor(guildSettings?.embedColor || client.config.defaultColor)
-    .setTimestamp()
-    .setThumbnail(client.user.displayAvatarURL({ size: 256 }));
+      const inviteLink = `https://discord.com/oauth2/authorize/?permissions=${client.config.permissions}&scope=${client.config.scopes}&client_id=${client.user.id}`;
+      const embed = new EmbedBuilder() // Prettier
+        .setTitle(`🧭 ${client.user.username} is in ${allGuilds.size} servers!`)
+        .setDescription(
+          `**...thats a lot of servers!** To be exact, <@${client.user.id}> is serving commands to \`${formatNumber(allUsers) || "0"}\` users in \`${formatNumber(allChannels.size)}\` channels across \`${formatNumber(allGuilds.size)}\` servers!\n\n**If you want to invite Majo.exe to your server, you can do so by clicking [here](${inviteLink}).**`
+        )
+        .setFooter({
+          text: `Requested by ${interaction.user.globalName || interaction.user.username}`,
+          iconURL: interaction.user.displayAvatarURL({
+            size: 256,
+          }),
+        })
+        .setColor(guildSettings?.embedColor || client.config.defaultColor)
+        .setTimestamp()
+        .setThumbnail(client.user.displayAvatarURL({ size: 256 }));
 
-   const inviteButton = new ButtonBuilder() // prettier
-    .setLabel("Invite")
-    .setStyle(ButtonStyle.Link)
-    .setURL(inviteLink);
+      const inviteButton = new ButtonBuilder() // prettier
+        .setLabel("Invite")
+        .setStyle(ButtonStyle.Link)
+        .setURL(inviteLink);
 
-   if (client.config.url) {
-    const contactButton = new ButtonBuilder() // prettier
-     .setLabel("Dashboard")
-     .setStyle(ButtonStyle.Link)
-     .setURL(client.config.url);
+      if (client.config.url) {
+        const contactButton = new ButtonBuilder() // prettier
+          .setLabel("Dashboard")
+          .setStyle(ButtonStyle.Link)
+          .setURL(client.config.url);
 
-    const action = new ActionRowBuilder<ButtonBuilder>() // prettier
-     .addComponents(
-      // prettier
-      inviteButton,
-      contactButton
-     );
-    return interaction.followUp({ embeds: [embed], components: [action] });
-   }
+        const action = new ActionRowBuilder<ButtonBuilder>() // prettier
+          .addComponents(
+            // prettier
+            inviteButton,
+            contactButton
+          );
+        return interaction.followUp({ embeds: [embed], components: [action] });
+      }
 
-   const action = new ActionRowBuilder<ButtonBuilder>() // prettier
-    .addComponents(
-     // prettier
-     inviteButton
-    );
+      const action = new ActionRowBuilder<ButtonBuilder>() // prettier
+        .addComponents(
+          // prettier
+          inviteButton
+        );
 
-   return interaction.followUp({ embeds: [embed], components: [action] });
-  } catch (err) {
-   client.errorMessages.internalError(interaction, err);
-  }
- },
+      return interaction.followUp({ embeds: [embed], components: [action] });
+    } catch (err) {
+      client.errorMessages.internalError(interaction, err);
+    }
+  },
 } satisfies SlashCommand;

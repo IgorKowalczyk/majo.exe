@@ -3,22 +3,22 @@
 import React, { createContext, useState, ReactNode } from "react";
 
 interface VisibilityContextProps {
- sideNavVisible: boolean;
- toggleSideNav: () => void;
+  sideNavVisible: boolean;
+  toggleSideNav: () => void;
 }
 
 export const VisibilityContext = createContext<VisibilityContextProps>({
- sideNavVisible: false,
- toggleSideNav: () => {},
+  sideNavVisible: false,
+  toggleSideNav: () => {},
 });
 
 interface VisibilityProviderProps {
- children: ReactNode;
+  children: ReactNode;
 }
 
 export const VisibilityProvider = ({ children }: VisibilityProviderProps) => {
- const [sideNavVisible, setSideNavVisible] = useState(false);
- const toggleSideNav = () => setSideNavVisible(!sideNavVisible);
+  const [sideNavVisible, setSideNavVisible] = useState(false);
+  const toggleSideNav = () => setSideNavVisible(!sideNavVisible);
 
- return <VisibilityContext value={{ sideNavVisible, toggleSideNav }}>{children}</VisibilityContext>;
+  return <VisibilityContext value={{ sideNavVisible, toggleSideNav }}>{children}</VisibilityContext>;
 };

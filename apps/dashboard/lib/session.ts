@@ -4,11 +4,11 @@ import { getServerSession } from "next-auth/next";
 import { DiscordProfile } from "next-auth/providers/discord";
 
 export async function getSession() {
- return (await getServerSession(authOptions)) as DefaultSession & Account & DiscordProfile;
+  return (await getServerSession(authOptions)) as DefaultSession & Account & DiscordProfile;
 }
 
 export async function getCurrentUser() {
- const session = await getSession();
+  const session = await getSession();
 
- return session?.user;
+  return session?.user;
 }

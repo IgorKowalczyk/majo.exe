@@ -14,71 +14,71 @@ import { iconVariants } from "@/components/ui/Icons";
 import { cn } from "@/lib/utils";
 
 export const metadata = {
- title: "Logs",
- description: "All the logs of the different actions that have been happening on your dashboard.",
+  title: "Logs",
+  description: "All the logs of the different actions that have been happening on your dashboard.",
 };
 
 export const dynamic = "force-dynamic";
 
 export default async function LogsPage(props: { params: Promise<{ server: string }> }) {
- const params = await props.params;
- const session = await getSession();
- if (!session || !session.access_token) redirect("/auth/login");
- const { server } = params;
- const serverDownload = await getGuild(server);
- if (!serverDownload || !serverDownload.bot) return notFound();
- const serverMember = await getGuildFromMemberGuilds(serverDownload.id, session.access_token);
+  const params = await props.params;
+  const session = await getSession();
+  if (!session || !session.access_token) redirect("/auth/login");
+  const { server } = params;
+  const serverDownload = await getGuild(server);
+  if (!serverDownload || !serverDownload.bot) return notFound();
+  const serverMember = await getGuildFromMemberGuilds(serverDownload.id, session.access_token);
 
- if (
-  // prettier
-  !serverMember ||
-  !serverMember.permissions_names ||
-  !serverMember.permissions_names.includes("ManageGuild") ||
-  !serverMember.permissions_names.includes("Administrator")
- )
-  return notFound();
+  if (
+    // prettier
+    !serverMember ||
+    !serverMember.permissions_names ||
+    !serverMember.permissions_names.includes("ManageGuild") ||
+    !serverMember.permissions_names.includes("Administrator")
+  )
+    return notFound();
 
- const guild = await prismaClient.guild.upsert({
-  where: {
-   guildId: serverDownload.id,
-  },
-  update: {},
-  create: {
-   guildId: serverDownload.id,
-  },
-  include: {
-   guildLogsSettings: {
-    select: {
-     type: true,
-     enabled: true,
-     channelId: true,
+  const guild = await prismaClient.guild.upsert({
+    where: {
+      guildId: serverDownload.id,
     },
-   },
-  },
- });
+    update: {},
+    create: {
+      guildId: serverDownload.id,
+    },
+    include: {
+      guildLogsSettings: {
+        select: {
+          type: true,
+          enabled: true,
+          channelId: true,
+        },
+      },
+    },
+  });
 
- const channels = await getGuildChannels(serverDownload.id, [ChannelType.GuildText]);
- if (!channels) return <ErrorBlock title="Could not fetch channels" description="Please try again later or contact support if the issue persists." />;
+  const channels = await getGuildChannels(serverDownload.id, [ChannelType.GuildText]);
+  if (!channels) return <ErrorBlock title="Could not fetch channels" description="Please try again later or contact support if the issue persists." />;
 
- const allChannels = channels
-  .map((channel) => {
-   return {
-    id: channel.id,
-    name: channel.name,
-   };
-  })
-  .filter(Boolean);
+  const allChannels = channels
+    .map((channel) => {
+      return {
+        id: channel.id,
+        name: channel.name,
+      };
+    })
+    .filter(Boolean);
 
- const allowedEvents = Object.keys(GuildLogType).filter((x) => !ExcludedEvents.includes(x as GuildLogType)) as GuildLogType[];
+  const allowedEvents = Object.keys(GuildLogType).filter((x) => !ExcludedEvents.includes(x as GuildLogType)) as GuildLogType[];
 
- return (
-  <>
-   <Header className={cn(headerVariants({ variant: "h1", margin: "normal" }))}>
-    <ScrollTextIcon className={iconVariants({ variant: "extraLarge" })} />
-    Logs
-   </Header>
-   <p className="mb-4 text-left text-base md:text-lg">Manage the actions that Majo.exe can watch and log in selected channels.</p>
-   <UpdateLogs allowedLogs={allowedEvents} allChannels={allChannels} serverId={serverDownload.id} logs={guild.guildLogsSettings} />
-  </>
- );
+  return (
+    <>
+      <Header className={cn(headerVariants({ variant: "h1", margin: "normal" }))}>
+        <ScrollTextIcon className={iconVariants({ variant: "extraLarge" })} />
+        Logs
+      </Header>
+      <p className="mb-4 text-left text-base md:text-lg">Manage the actions that Majo.exe can watch and log in selected channels.</p>
+      <UpdateLogs allowedLogs={allowedEvents} allChannels={allChannels} serverId={serverDownload.id} logs={guild.guildLogsSettings} />
+    </>
+  );
 }
