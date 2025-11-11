@@ -1,6 +1,7 @@
 import { dashboardHeaders, dashboardRedirects } from "@majoexe/config";
 import withBundleAnalyzer from "@next/bundle-analyzer";
 import createMdx from "@next/mdx";
+import { PrismaPlugin } from "@prisma/nextjs-monorepo-workaround-plugin";
 import type { NextConfig } from "next";
 import "@/env";
 import { withAxiom } from "next-axiom";
@@ -38,6 +39,16 @@ const nextConfig = {
         pathname: "**",
       },
     ],
+  },
+  webpack: (config, { isServer }) => {
+    config.externals.push({
+      "utf-8-validate": "commonjs utf-8-validate",
+      bufferutil: "commonjs bufferutil",
+    });
+    if (isServer) {
+      config.plugins = [...config.plugins, new PrismaPlugin()];
+    }
+    return config;
   },
   /* eslint-disable-next-line require-await */
   async redirects() {
