@@ -1,7 +1,7 @@
-import { defineConfig } from "prisma/config";
+import path from "path";
 import { PrismaNeon } from "@prisma/adapter-neon";
 import { PrismaPg } from "@prisma/adapter-pg";
-import path from "path";
+import { defineConfig } from "prisma/config";
 import "@dotenvx/dotenvx/config";
 
 export default defineConfig({
