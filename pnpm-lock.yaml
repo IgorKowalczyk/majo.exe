@@ -287,9 +287,6 @@ importers:
       '@next/bundle-analyzer':
         specifier: 16.0.1
         version: 16.0.1
-      '@prisma/nextjs-monorepo-workaround-plugin':
-        specifier: 6.19.0
-        version: 6.19.0
       '@tailwindcss/postcss':
         specifier: 4.1.17
         version: 4.1.17
@@ -1735,9 +1732,6 @@ packages:
 
   '@prisma/get-platform@6.19.0':
     resolution: {integrity: sha512-ym85WDO2yDhC3fIXHWYpG3kVMBA49cL1XD2GCsCF8xbwoy2OkDQY44gEbAt2X46IQ4Apq9H6g0Ex1iFfPqEkHA==}
-
-  '@prisma/nextjs-monorepo-workaround-plugin@6.19.0':
-    resolution: {integrity: sha512-gI80bqfPf8bmW2y2jISsIFrAYZlDcrPC+CBUS5Lehq5umsY0LD1O+qWd4T59OUdHKDb475vbAOiG6K8iQbZsfw==}
 
   '@prisma/prisma-schema-wasm@4.17.0-26.6b0aef69b7cdfc787f822ecd7cdc76d5f1991584':
     resolution: {integrity: sha512-JFdsnSgBPN8reDTLOI9Vh/6ccCb2aD1LbY/LWQnkcIgNo6IdpzvuM+qRVbBuA6IZP2SdqQI8Lu6RL2P8EFBQUA==}
@@ -8240,8 +8234,6 @@ snapshots:
   '@prisma/get-platform@6.19.0':
     dependencies:
       '@prisma/debug': 6.19.0
-
-  '@prisma/nextjs-monorepo-workaround-plugin@6.19.0': {}
 
   '@prisma/prisma-schema-wasm@4.17.0-26.6b0aef69b7cdfc787f822ecd7cdc76d5f1991584': {}
 

@@ -18,8 +18,7 @@
     "format": "prettier . --write --cache --ignore-unknown --plugin=prettier-plugin-prisma",
     "format:check": "prettier . --check --cache",
     "lint": "eslint .",
-    "lint:fix": "eslint . --fix",
-    "postinstall": "pnpm run prisma:generate"
+    "lint:fix": "eslint . --fix"
   },
   "dependencies": {
     "@majoexe/config": "workspace:*",

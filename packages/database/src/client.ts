@@ -1,7 +1,7 @@
 import { debuggerConfig } from "@majoexe/config";
 import { neonConfig } from "@neondatabase/serverless";
-// import { PrismaNeon } from "@prisma/adapter-neon";
-// import { PrismaPg } from "@prisma/adapter-pg";
+import { PrismaNeon } from "@prisma/adapter-neon";
+import { PrismaPg } from "@prisma/adapter-pg";
 import ws from "ws";
 import { PrismaClient } from "../prisma/client/client";
 import { Logger } from "./logger";
@@ -26,19 +26,18 @@ const prismaClientWrapper = (prisma: PrismaClient) => {
   return prisma;
 };
 
-// const connectionString = process.env.DATABASE_URL;
+const connectionString = process.env.DATABASE_URL;
 
 const prismaClientSingleton = () => {
-  // if (process.env.DATABASE_URL?.includes("neon.tech")) {
-  //   Logger("info", "Neon Database URL found, setting up Neon Database...");
-  //   const adapter = new PrismaNeon({ connectionString });
-  //   return prismaClientWrapper(new PrismaClient({ adapter }));
-  // } else {
-  //   Logger("info", "No Neon Database URL found, setting up Prisma...");
-  //   const adapter = new PrismaPg({ connectionString });
-  //   return prismaClientWrapper(new PrismaClient({ adapter }));
-  // }
-  return prismaClientWrapper(new PrismaClient());
+  if (process.env.DATABASE_URL?.includes("neon.tech")) {
+    Logger("info", "Neon Database URL found, setting up Neon Database...");
+    const adapter = new PrismaNeon({ connectionString });
+    return prismaClientWrapper(new PrismaClient({ adapter }));
+  } else {
+    Logger("info", "No Neon Database URL found, setting up Prisma...");
+    const adapter = new PrismaPg({ connectionString });
+    return prismaClientWrapper(new PrismaClient({ adapter }));
+  }
 };
 
 declare const globalThis: {
