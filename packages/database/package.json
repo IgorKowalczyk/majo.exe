@@ -13,13 +13,13 @@
     "prisma:generate": "dotenvx run -- prisma generate --no-hints",
     "prisma:migrate": "dotenvx run -- prisma migrate dev",
     "prisma:format": "prisma format",
-    "prisma:seed": "tsx ./src/seed.ts",
+    "prisma:seed": "dotenvx run -- prisma db seed",
+    "prisma:studio": "dotenvx run -- prisma studio",
     "format": "prettier . --write --cache --ignore-unknown --plugin=prettier-plugin-prisma",
     "format:check": "prettier . --check --cache",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
-    "postinstall": "pnpm run prisma:generate",
-    "studio": "prisma studio"
+    "postinstall": "pnpm run prisma:generate"
   },
   "dependencies": {
     "@majoexe/config": "workspace:*",
