@@ -86,10 +86,10 @@ importers:
         version: 1.0.1
       discord-giveaways:
         specifier: 6.0.1
-        version: 6.0.1(discord.js@14.24.2)
+        version: 6.0.1(discord.js@14.25.1)
       discord.js:
-        specifier: 14.24.2
-        version: 14.24.2
+        specifier: 14.25.1
+        version: 14.25.1
       discordbotlist:
         specifier: 1.1.1
         version: 1.1.1
@@ -219,7 +219,7 @@ importers:
         version: 0.38.33
       discord-giveaways:
         specifier: 6.0.1
-        version: 6.0.1(discord.js@14.24.2)
+        version: 6.0.1(discord.js@14.25.1)
       framer-motion:
         specifier: 12.23.24
         version: 12.23.24(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
@@ -415,8 +415,8 @@ importers:
         specifier: 0.38.33
         version: 0.38.33
       discord.js:
-        specifier: 14.24.2
-        version: 14.24.2
+        specifier: 14.25.1
+        version: 14.25.1
       ms:
         specifier: 2.1.3
         version: 2.1.3
@@ -944,8 +944,8 @@ packages:
     resolution: {integrity: sha512-LiSusze9Tc7qF03sLCujF5iZp7K+vRNEDBZ86FT9aQAv3vxMLihUvKvpsCWiQ2DJq1tVckopKm1rxomgNUc9hg==}
     engines: {node: '>=18'}
 
-  '@discordjs/formatters@0.6.1':
-    resolution: {integrity: sha512-5cnX+tASiPCqCWtFcFslxBVUaCetB0thvM/JyavhbXInP1HJIEU+Qv/zMrnuwSsX3yWH2lVXNJZeDK3EiP4HHg==}
+  '@discordjs/formatters@0.6.2':
+    resolution: {integrity: sha512-y4UPwWhH6vChKRkGdMB4odasUbHOUwy7KL+OVwF86PvT6QVOwElx+TiI1/6kcmcEe+g5YRXJFiXSXUdabqZOvQ==}
     engines: {node: '>=16.11.0'}
 
   '@discordjs/rest@2.6.0':
@@ -954,6 +954,10 @@ packages:
 
   '@discordjs/util@1.1.1':
     resolution: {integrity: sha512-eddz6UnOBEB1oITPinyrB2Pttej49M9FZQY8NxgEvc3tq6ZICZ19m70RsmzRdDHk80O9NoYN/25AqJl8vPVf/g==}
+    engines: {node: '>=18'}
+
+  '@discordjs/util@1.2.0':
+    resolution: {integrity: sha512-3LKP7F2+atl9vJFhaBjn4nOaSWahZ/yWjOvA4e5pnXkt2qyXRCHLxoBQy81GFtLGCq7K9lPm9R517M1U+/90Qg==}
     engines: {node: '>=18'}
 
   '@discordjs/ws@1.2.3':
@@ -3591,8 +3595,8 @@ packages:
     peerDependencies:
       discord.js: '>=14.0.0'
 
-  discord.js@14.24.2:
-    resolution: {integrity: sha512-VMEDbmguRdX/EeMaTsf9Mb0IQA90WdYF2cn4QDfslQFXgQ6LFtmlPn0FSotnS0kcFbFp+JBSIxtnF+bnAHG/hQ==}
+  discord.js@14.25.1:
+    resolution: {integrity: sha512-2l0gsPOLPs5t6GFZfQZKnL1OJNYFcuC/ETWsW4VtKVD/tg4ICa9x+jb9bkPffkMdRpRpuUaO/fKkHCBeiCKh8g==}
     engines: {node: '>=18'}
 
   discordbotlist@1.1.1:
@@ -7422,8 +7426,8 @@ snapshots:
 
   '@discordjs/builders@1.13.0':
     dependencies:
-      '@discordjs/formatters': 0.6.1
-      '@discordjs/util': 1.1.1
+      '@discordjs/formatters': 0.6.2
+      '@discordjs/util': 1.2.0
       '@sapphire/shapeshift': 4.0.0
       discord-api-types: 0.38.33
       fast-deep-equal: 3.1.3
@@ -7434,7 +7438,7 @@ snapshots:
 
   '@discordjs/collection@2.1.1': {}
 
-  '@discordjs/formatters@0.6.1':
+  '@discordjs/formatters@0.6.2':
     dependencies:
       discord-api-types: 0.38.33
 
@@ -7452,11 +7456,15 @@ snapshots:
 
   '@discordjs/util@1.1.1': {}
 
+  '@discordjs/util@1.2.0':
+    dependencies:
+      discord-api-types: 0.38.33
+
   '@discordjs/ws@1.2.3':
     dependencies:
       '@discordjs/collection': 2.1.1
       '@discordjs/rest': 2.6.0
-      '@discordjs/util': 1.1.1
+      '@discordjs/util': 1.2.0
       '@sapphire/async-queue': 1.5.5
       '@types/ws': 8.18.1
       '@vladfrangu/async_event_emitter': 2.4.7
@@ -10219,19 +10227,19 @@ snapshots:
 
   discord-api-types@0.38.33: {}
 
-  discord-giveaways@6.0.1(discord.js@14.24.2):
+  discord-giveaways@6.0.1(discord.js@14.25.1):
     dependencies:
       deepmerge-ts: 4.3.0
-      discord.js: 14.24.2
+      discord.js: 14.25.1
       serialize-javascript: 6.0.2
 
-  discord.js@14.24.2:
+  discord.js@14.25.1:
     dependencies:
       '@discordjs/builders': 1.13.0
       '@discordjs/collection': 1.5.3
-      '@discordjs/formatters': 0.6.1
+      '@discordjs/formatters': 0.6.2
       '@discordjs/rest': 2.6.0
-      '@discordjs/util': 1.1.1
+      '@discordjs/util': 1.2.0
       '@discordjs/ws': 1.2.3
       '@sapphire/snowflake': 3.5.3
       discord-api-types: 0.38.33
