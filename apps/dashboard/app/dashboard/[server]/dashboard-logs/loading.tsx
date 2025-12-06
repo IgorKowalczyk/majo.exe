@@ -1,9 +1,9 @@
 import { LogsIcon } from "lucide-react";
+import { Block } from "@/components/ui/Block";
 import Header, { headerVariants } from "@/components/ui/Headers";
 import { iconVariants } from "@/components/ui/Icons";
 import { Skeleton } from "@/components/ui/Skeletons";
 import { cn } from "@/lib/utils";
-import { Block } from "@/components/ui/Block";
 
 export default function Loading() {
   return (

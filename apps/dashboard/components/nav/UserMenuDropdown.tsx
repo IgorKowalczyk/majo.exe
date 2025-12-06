@@ -2,6 +2,7 @@
 
 import { ChevronsUpDownIcon, HomeIcon, LogOutIcon, UserIcon } from "lucide-react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { signOut } from "next-auth/react";
 import React from "react";
 import { Button } from "@/components/ui/Buttons";
@@ -9,7 +10,6 @@ import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuSepara
 import { Icons, iconVariants } from "@/components/ui/Icons";
 import Image from "@/components/ui/Image";
 import { getSession } from "@/lib/session";
-import { usePathname } from "next/navigation";
 
 export type UserSession = Awaited<ReturnType<typeof getSession>>;
 
