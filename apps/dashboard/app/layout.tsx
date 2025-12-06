@@ -9,6 +9,7 @@ import { Footer } from "@/components/Footer";
 import { Hotjar } from "@/components/Hotjar";
 import { TopNavigation } from "@/components/nav/TopNavigation";
 import { VisibilityProvider } from "@/components/nav/VisibilityContext";
+import { ProgressBar } from "@/components/nav/ProgressBar";
 import { Session } from "@/components/Session";
 import { TailwindIndicator } from "@/components/TailwindIndicator";
 import { iconVariants } from "@/components/ui/Icons";
@@ -64,32 +65,34 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <html lang="en">
         <head>{env.HOTJAR_ID && <Hotjar id={env.HOTJAR_ID} />}</head>
         <body className={cn("bg-background-primary selection:bg-accent-primary/30 text-white antialiased", GeistSans.className)}>
-          <VisibilityProvider>
-            <TopNavigation theme="full" />
-            <main className="flex min-h-screen flex-row flex-wrap">
-              <div className="mt-8">{children}</div>
-            </main>
-            <Footer />
-            <Toaster // prettier
-              className="toaster group"
-              closeButton={false}
-              theme="dark"
-              icons={{
-                loading: <LoaderCircleIcon className={iconVariants({ variant: "normal", className: "animate-spin" })} />,
-              }}
-              toastOptions={{
-                classNames: {
-                  toast: "group toast group-[.toaster]:bg-background-secondary! group-[.toaster]:text-white group-[.toaster]:border-neutral-800 group-[.toaster]:shadow-lg",
-                  description: "group-[.toast]:text-neutral-300",
-                  actionButton: "group-[.toast]:bg-button-primary group-[.toast]:text-white",
-                  cancelButton: "group-[.toast]:bg-button-secondary group-[.toast]:text-white",
-                },
-              }}
-            />
-            <SpeedInsights />
-            <AxiomWebVitals />
-            <TailwindIndicator />
-          </VisibilityProvider>
+          <ProgressBar>
+            <VisibilityProvider>
+              <TopNavigation theme="full" />
+              <main className="flex min-h-screen flex-row flex-wrap">
+                <div className="mt-8">{children}</div>
+              </main>
+              <Footer />
+              <Toaster // prettier
+                className="toaster group"
+                closeButton={false}
+                theme="dark"
+                icons={{
+                  loading: <LoaderCircleIcon className={iconVariants({ variant: "normal", className: "animate-spin" })} />,
+                }}
+                toastOptions={{
+                  classNames: {
+                    toast: "group toast group-[.toaster]:bg-background-secondary! group-[.toaster]:text-white group-[.toaster]:border-neutral-800 group-[.toaster]:shadow-lg",
+                    description: "group-[.toast]:text-neutral-300",
+                    actionButton: "group-[.toast]:bg-button-primary group-[.toast]:text-white",
+                    cancelButton: "group-[.toast]:bg-button-secondary group-[.toast]:text-white",
+                  },
+                }}
+              />
+              <SpeedInsights />
+              <AxiomWebVitals />
+              <TailwindIndicator />
+            </VisibilityProvider>
+          </ProgressBar>
         </body>
       </html>
     </Session>

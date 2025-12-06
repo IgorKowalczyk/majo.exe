@@ -20,17 +20,17 @@
   },
   "dependencies": {
     "@dotenvx/dotenvx": "1.51.1",
-    "tsx": "4.20.6",
-    "turbo": "2.6.1"
+    "tsx": "4.21.0",
+    "turbo": "2.6.3"
   },
   "devDependencies": {
     "@igorkowalczyk/eslint-config": "3.2.1",
     "@igorkowalczyk/prettier-config": "3.2.1",
-    "@types/node": "24.10.0",
+    "@types/node": "24.10.1",
     "eslint": "9.39.1",
-    "eslint-plugin-turbo": "2.6.1",
+    "eslint-plugin-turbo": "2.6.3",
     "node-addon-api": "8.5.0",
-    "prettier": "3.6.2",
+    "prettier": "3.7.4",
     "typescript": "5.9.3"
   },
   "engines": {
