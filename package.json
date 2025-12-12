@@ -19,7 +19,7 @@
     "prisma:studio": "turbo run prisma:studio"
   },
   "dependencies": {
-    "@dotenvx/dotenvx": "1.51.1",
+    "@dotenvx/dotenvx": "1.51.2",
     "tsx": "4.21.0",
     "turbo": "2.6.3"
   },
