@@ -1,6 +1,6 @@
 ARG APP_PKG_NAME=@majoexe/bot
 
-FROM node:22-alpine
+FROM node:24-alpine
 
 RUN apk add curl
 
