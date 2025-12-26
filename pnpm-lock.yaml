@@ -9,47 +9,47 @@ importers:
   .:
     dependencies:
       '@dotenvx/dotenvx':
-        specifier: 1.51.2
+        specifier: ^1.51.2
         version: 1.51.2
       tsx:
-        specifier: 4.21.0
+        specifier: ^4.21.0
         version: 4.21.0
       turbo:
-        specifier: 2.7.2
+        specifier: ^2.7.2
         version: 2.7.2
     devDependencies:
       '@igorkowalczyk/eslint-config':
-        specifier: 3.2.1
+        specifier: ^3.2.1
         version: 3.2.1(@typescript-eslint/utils@8.50.1(eslint@9.39.2(jiti@2.6.1))(typescript@5.9.3))(eslint-import-resolver-node@0.3.9)(eslint@9.39.2(jiti@2.6.1))(prettier@3.7.4)(typescript@5.9.3)
       '@igorkowalczyk/prettier-config':
-        specifier: 3.2.1
+        specifier: ^3.2.1
         version: 3.2.1(prettier@3.7.4)
       '@types/node':
-        specifier: 25.0.3
+        specifier: ^25.0.3
         version: 25.0.3
       eslint:
-        specifier: 9.39.2
+        specifier: ^9.39.2
         version: 9.39.2(jiti@2.6.1)
       eslint-plugin-turbo:
         specifier: 2.7.2
         version: 2.7.2(eslint@9.39.2(jiti@2.6.1))(turbo@2.7.2)
       node-addon-api:
-        specifier: 8.5.0
+        specifier: ^8.5.0
         version: 8.5.0
       prettier:
-        specifier: 3.7.4
+        specifier: ^3.7.4
         version: 3.7.4
       typescript:
-        specifier: 5.9.3
+        specifier: ^5.9.3
         version: 5.9.3
 
   apps/bot:
     dependencies:
       '@discordjs/rest':
-        specifier: 2.6.0
+        specifier: ^2.6.0
         version: 2.6.0
       '@iamtraction/google-translate':
-        specifier: 2.0.1
+        specifier: ^2.0.1
         version: 2.0.1
       '@majoexe/config':
         specifier: workspace:*
@@ -64,83 +64,83 @@ importers:
         specifier: workspace:*
         version: link:../../packages/utils
       '@napi-rs/canvas':
-        specifier: 0.1.86
+        specifier: ^0.1.86
         version: 0.1.86
       '@observablehq/plot':
-        specifier: 0.6.17
+        specifier: ^0.6.17
         version: 0.6.17
       '@top-gg/sdk':
-        specifier: 3.1.6
+        specifier: ^3.1.6
         version: 3.1.6
       chalk:
-        specifier: 5.6.2
+        specifier: ^5.6.2
         version: 5.6.2
       cheerio:
-        specifier: 1.1.2
+        specifier: ^1.1.2
         version: 1.1.2
       coloras:
-        specifier: 2.0.2
+        specifier: ^2.0.2
         version: 2.0.2
       decode-gif:
-        specifier: 1.0.1
+        specifier: ^1.0.1
         version: 1.0.1
       discord-giveaways:
-        specifier: 6.0.1
+        specifier: ^6.0.1
         version: 6.0.1(discord.js@14.25.1)
       discord.js:
-        specifier: 14.25.1
+        specifier: ^14.25.1
         version: 14.25.1
       discordbotlist:
-        specifier: 1.1.1
+        specifier: ^1.1.1
         version: 1.1.1
       figlet:
-        specifier: 1.9.4
+        specifier: ^1.9.4
         version: 1.9.4
       gif-encoder-2:
-        specifier: 1.0.5
+        specifier: ^1.0.5
         version: 1.0.5
       jsdom:
-        specifier: 27.4.0
+        specifier: ^27.4.0
         version: 27.4.0
       ms:
-        specifier: 2.1.3
+        specifier: ^2.1.3
         version: 2.1.3
       node-fetch:
-        specifier: 3.3.2
+        specifier: ^3.3.2
         version: 3.3.2
       qrcode:
-        specifier: 1.5.4
+        specifier: ^1.5.4
         version: 1.5.4
       validator:
-        specifier: 13.15.26
+        specifier: ^13.15.26
         version: 13.15.26
     devDependencies:
       '@types/figlet':
-        specifier: 1.7.0
+        specifier: ^1.7.0
         version: 1.7.0
       '@types/jsdom':
-        specifier: 27.0.0
+        specifier: ^27.0.0
         version: 27.0.0
       '@types/ms':
-        specifier: 2.1.0
+        specifier: ^2.1.0
         version: 2.1.0
       '@types/qrcode':
-        specifier: 1.5.6
+        specifier: ^1.5.6
         version: 1.5.6
       '@types/validator':
-        specifier: 13.15.10
+        specifier: ^13.15.10
         version: 13.15.10
       node-addon-api:
-        specifier: 8.5.0
+        specifier: ^8.5.0
         version: 8.5.0
       node-gyp:
-        specifier: 12.1.0
+        specifier: ^12.1.0
         version: 12.1.0
 
   apps/dashboard:
     dependencies:
       '@bprogress/next':
-        specifier: 3.2.12
+        specifier: ^3.2.12
         version: 3.2.12(next@16.1.1(@babel/core@7.28.5)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       '@majoexe/config':
         specifier: workspace:*
@@ -152,179 +152,179 @@ importers:
         specifier: workspace:*
         version: link:../../packages/utils
       '@mdx-js/loader':
-        specifier: 3.1.1
+        specifier: ^3.1.1
         version: 3.1.1
       '@mdx-js/react':
-        specifier: 3.1.1
+        specifier: ^3.1.1
         version: 3.1.1(@types/react@19.2.7)(react@19.2.3)
       '@next-auth/prisma-adapter':
-        specifier: 1.0.7
+        specifier: ^1.0.7
         version: 1.0.7(@prisma/client@7.2.0(prisma@7.2.0(@types/react@19.2.7)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(typescript@5.9.3))(typescript@5.9.3))(next-auth@4.24.13(next@16.1.1(@babel/core@7.28.5)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3))
       '@next/mdx':
-        specifier: 16.1.1
+        specifier: ^16.1.1
         version: 16.1.1(@mdx-js/loader@3.1.1)(@mdx-js/react@3.1.1(@types/react@19.2.7)(react@19.2.3))
       '@odiffey/discord-markdown':
-        specifier: 3.3.0
+        specifier: ^3.3.0
         version: 3.3.0(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       '@prisma/nextjs-monorepo-workaround-plugin':
-        specifier: 7.2.0
+        specifier: ^7.2.0
         version: 7.2.0
       '@radix-ui/react-accordion':
-        specifier: 1.2.12
+        specifier: ^1.2.12
         version: 1.2.12(@types/react-dom@19.2.3(@types/react@19.2.7))(@types/react@19.2.7)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       '@radix-ui/react-dialog':
-        specifier: 1.1.15
+        specifier: ^1.1.15
         version: 1.1.15(@types/react-dom@19.2.3(@types/react@19.2.7))(@types/react@19.2.7)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       '@radix-ui/react-dropdown-menu':
-        specifier: 2.1.16
+        specifier: ^2.1.16
         version: 2.1.16(@types/react-dom@19.2.3(@types/react@19.2.7))(@types/react@19.2.7)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       '@radix-ui/react-popover':
-        specifier: 1.1.15
+        specifier: ^1.1.15
         version: 1.1.15(@types/react-dom@19.2.3(@types/react@19.2.7))(@types/react@19.2.7)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       '@radix-ui/react-select':
         specifier: ^2.2.6
         version: 2.2.6(@types/react-dom@19.2.3(@types/react@19.2.7))(@types/react@19.2.7)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       '@radix-ui/react-switch':
-        specifier: 1.2.6
+        specifier: ^1.2.6
         version: 1.2.6(@types/react-dom@19.2.3(@types/react@19.2.7))(@types/react@19.2.7)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       '@radix-ui/react-tooltip':
-        specifier: 1.2.8
+        specifier: ^1.2.8
         version: 1.2.8(@types/react-dom@19.2.3(@types/react@19.2.7))(@types/react@19.2.7)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       '@t3-oss/env-core':
-        specifier: 0.13.10
+        specifier: ^0.13.10
         version: 0.13.10(typescript@5.9.3)(valibot@1.2.0(typescript@5.9.3))(zod@4.2.1)
       '@t3-oss/env-nextjs':
-        specifier: 0.13.10
+        specifier: ^0.13.10
         version: 0.13.10(typescript@5.9.3)(valibot@1.2.0(typescript@5.9.3))(zod@4.2.1)
       '@tanstack/react-table':
-        specifier: 8.21.3
+        specifier: ^8.21.3
         version: 8.21.3(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       '@vercel/speed-insights':
-        specifier: 1.3.1
+        specifier: ^1.3.1
         version: 1.3.1(next@16.1.1(@babel/core@7.28.5)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react@19.2.3)
       class-variance-authority:
-        specifier: 0.7.1
+        specifier: ^0.7.1
         version: 0.7.1
       clsx:
-        specifier: 2.1.1
+        specifier: ^2.1.1
         version: 2.1.1
       cmdk:
-        specifier: 1.1.1
+        specifier: ^1.1.1
         version: 1.1.1(@types/react-dom@19.2.3(@types/react@19.2.7))(@types/react@19.2.7)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       cobe:
-        specifier: 0.6.5
+        specifier: ^0.6.5
         version: 0.6.5
       discord-api-types:
-        specifier: 0.38.37
+        specifier: ^0.38.37
         version: 0.38.37
       discord-giveaways:
-        specifier: 6.0.1
+        specifier: ^6.0.1
         version: 6.0.1(discord.js@14.25.1)
       framer-motion:
-        specifier: 12.23.26
+        specifier: ^12.23.26
         version: 12.23.26(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       geist:
-        specifier: 1.5.1
+        specifier: ^1.5.1
         version: 1.5.1(next@16.1.1(@babel/core@7.28.5)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))
       json-2-csv:
-        specifier: 5.5.10
+        specifier: ^5.5.10
         version: 5.5.10
       lucide-react:
-        specifier: 0.562.0
+        specifier: ^0.562.0
         version: 0.562.0(react@19.2.3)
       next:
-        specifier: 16.1.1
+        specifier: ^16.1.1
         version: 16.1.1(@babel/core@7.28.5)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       next-auth:
-        specifier: 4.24.13
+        specifier: ^4.24.13
         version: 4.24.13(next@16.1.1(@babel/core@7.28.5)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       next-axiom:
-        specifier: 1.10.0
+        specifier: ^1.10.0
         version: 1.10.0(next@16.1.1(@babel/core@7.28.5)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react@19.2.3)
       next-navigation-guard:
-        specifier: 0.2.0
+        specifier: ^0.2.0
         version: 0.2.0(next@16.1.1(@babel/core@7.28.5)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react@19.2.3)
       react:
-        specifier: 19.2.3
+        specifier: ^19.2.3
         version: 19.2.3
       react-colorful:
-        specifier: 5.6.1
+        specifier: ^5.6.1
         version: 5.6.1(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       react-dom:
-        specifier: 19.2.3
+        specifier: ^19.2.3
         version: 19.2.3(react@19.2.3)
       react-infinite-scroller:
-        specifier: 1.2.6
+        specifier: ^1.2.6
         version: 1.2.6(react@19.2.3)
       react-spring:
-        specifier: 10.0.3
+        specifier: ^10.0.3
         version: 10.0.3(@react-three/fiber@9.3.0(@types/react@19.2.7)(immer@11.1.0)(react-dom@19.2.3(react@19.2.3))(react-native@0.81.0(@babel/core@7.28.5)(@react-native/metro-config@0.81.0(@babel/core@7.28.5))(@types/react@19.2.7)(react@19.2.3))(react@19.2.3)(three@0.179.1))(konva@9.3.22)(react-dom@19.2.3(react@19.2.3))(react-konva@19.0.7(@types/react@19.2.7)(konva@9.3.22)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react-native@0.81.0(@babel/core@7.28.5)(@react-native/metro-config@0.81.0(@babel/core@7.28.5))(@types/react@19.2.7)(react@19.2.3))(react-zdog@1.2.2)(react@19.2.3)(three@0.179.1)(zdog@1.1.3)
       react-wrap-balancer:
-        specifier: 1.1.1
+        specifier: ^1.1.1
         version: 1.1.1(react@19.2.3)
       recharts:
-        specifier: 3.6.0
+        specifier: ^3.6.0
         version: 3.6.0(@types/react@19.2.7)(react-dom@19.2.3(react@19.2.3))(react-is@18.3.1)(react@19.2.3)(redux@5.0.1)
       server-only:
-        specifier: 0.0.1
+        specifier: ^0.0.1
         version: 0.0.1
       sharp:
-        specifier: 0.34.5
+        specifier: ^0.34.5
         version: 0.34.5
       sonner:
-        specifier: 2.0.7
+        specifier: ^2.0.7
         version: 2.0.7(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       tw-animate-css:
-        specifier: 1.4.0
+        specifier: ^1.4.0
         version: 1.4.0
       validator:
-        specifier: 13.15.26
+        specifier: ^13.15.26
         version: 13.15.26
       zod:
-        specifier: 4.2.1
+        specifier: ^4.2.1
         version: 4.2.1
     devDependencies:
       '@majoexe/typescript-config':
         specifier: workspace:*
         version: link:../../packages/typescript-config
       '@next/bundle-analyzer':
-        specifier: 16.1.1
+        specifier: ^16.1.1
         version: 16.1.1
       '@tailwindcss/postcss':
-        specifier: 4.1.18
+        specifier: ^4.1.18
         version: 4.1.18
       '@tailwindcss/typography':
-        specifier: 0.5.19
+        specifier: ^0.5.19
         version: 0.5.19(tailwindcss@4.1.18)
       '@types/mdx':
-        specifier: 2.0.13
+        specifier: ^2.0.13
         version: 2.0.13
       '@types/ms':
-        specifier: 2.1.0
+        specifier: ^2.1.0
         version: 2.1.0
       '@types/react':
-        specifier: 19.2.7
+        specifier: ^19.2.7
         version: 19.2.7
       '@types/react-dom':
-        specifier: 19.2.3
+        specifier: ^19.2.3
         version: 19.2.3(@types/react@19.2.7)
       '@types/react-infinite-scroller':
-        specifier: 1.2.5
+        specifier: ^1.2.5
         version: 1.2.5
       jiti:
-        specifier: 2.6.1
+        specifier: ^2.6.1
         version: 2.6.1
       pg:
-        specifier: 8.16.3
+        specifier: ^8.16.3
         version: 8.16.3
       postcss:
-        specifier: 8.5.6
+        specifier: ^8.5.6
         version: 8.5.6
       tailwind-merge:
-        specifier: 3.4.0
+        specifier: ^3.4.0
         version: 3.4.0
       tailwindcss:
-        specifier: 4.1.18
+        specifier: ^4.1.18
         version: 4.1.18
 
   packages/config:
@@ -333,7 +333,7 @@ importers:
         specifier: workspace:*
         version: link:../typescript-config
       discord-api-types:
-        specifier: 0.38.37
+        specifier: ^0.38.37
         version: 0.38.37
 
   packages/database:
@@ -345,38 +345,38 @@ importers:
         specifier: workspace:*
         version: link:../typescript-config
       '@neondatabase/serverless':
-        specifier: 1.0.2
+        specifier: ^1.0.2
         version: 1.0.2
       '@prisma/adapter-neon':
-        specifier: 7.2.0
+        specifier: ^7.2.0
         version: 7.2.0
       '@prisma/adapter-pg':
-        specifier: 7.2.0
+        specifier: ^7.2.0
         version: 7.2.0
       '@prisma/client':
-        specifier: 7.2.0
+        specifier: ^7.2.0
         version: 7.2.0(prisma@7.2.0(@types/react@19.2.7)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(typescript@5.9.3))(typescript@5.9.3)
       chalk:
-        specifier: 5.6.2
+        specifier: ^5.6.2
         version: 5.6.2
       ioredis:
-        specifier: 5.8.2
+        specifier: ^5.8.2
         version: 5.8.2
       pg:
-        specifier: 8.16.3
+        specifier: ^8.16.3
         version: 8.16.3
       prisma:
-        specifier: 7.2.0
+        specifier: ^7.2.0
         version: 7.2.0(@types/react@19.2.7)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(typescript@5.9.3)
       ws:
-        specifier: 8.18.3
+        specifier: ^8.18.3
         version: 8.18.3
     devDependencies:
       '@types/ws':
-        specifier: 8.18.1
+        specifier: ^8.18.1
         version: 8.18.1
       prettier-plugin-prisma:
-        specifier: 5.0.0
+        specifier: ^5.0.0
         version: 5.0.0(prettier@3.7.4)
 
   packages/typescript-config:
@@ -9672,7 +9672,7 @@ snapshots:
 
   '@types/pg@8.16.0':
     dependencies:
-      '@types/node': 22.19.3
+      '@types/node': 25.0.3
       pg-protocol: 1.10.3
       pg-types: 2.2.0
 
@@ -9755,8 +9755,8 @@ snapshots:
 
   '@typescript-eslint/project-service@8.46.4(typescript@5.9.3)':
     dependencies:
-      '@typescript-eslint/tsconfig-utils': 8.46.4(typescript@5.9.3)
-      '@typescript-eslint/types': 8.46.4
+      '@typescript-eslint/tsconfig-utils': 8.50.1(typescript@5.9.3)
+      '@typescript-eslint/types': 8.50.1
       debug: 4.4.3
       typescript: 5.9.3
     transitivePeerDependencies:
@@ -11134,7 +11134,7 @@ snapshots:
       '@next/eslint-plugin-next': 16.0.1
       eslint: 9.39.2(jiti@2.6.1)
       eslint-import-resolver-node: 0.3.9
-      eslint-import-resolver-typescript: 3.10.1(eslint-plugin-import-x@4.16.1(@typescript-eslint/utils@8.50.1(eslint@9.39.2(jiti@2.6.1))(typescript@5.9.3))(eslint-import-resolver-node@0.3.9)(eslint@9.39.2(jiti@2.6.1)))(eslint-plugin-import@2.32.0)(eslint@9.39.2(jiti@2.6.1))
+      eslint-import-resolver-typescript: 3.10.1(eslint-plugin-import-x@4.16.1(@typescript-eslint/utils@8.50.1(eslint@9.39.2(jiti@2.6.1))(typescript@5.9.3))(eslint-import-resolver-node@0.3.9)(eslint@9.39.2(jiti@2.6.1)))(eslint-plugin-import@2.32.0(@typescript-eslint/parser@8.46.4(eslint@9.39.2(jiti@2.6.1))(typescript@5.9.3))(eslint@9.39.2(jiti@2.6.1)))(eslint@9.39.2(jiti@2.6.1))
       eslint-plugin-import: 2.32.0(@typescript-eslint/parser@8.46.4(eslint@9.39.2(jiti@2.6.1))(typescript@5.9.3))(eslint-import-resolver-typescript@3.10.1)(eslint@9.39.2(jiti@2.6.1))
       eslint-plugin-jsx-a11y: 6.10.2(eslint@9.39.2(jiti@2.6.1))
       eslint-plugin-react: 7.37.5(eslint@9.39.2(jiti@2.6.1))
@@ -11172,7 +11172,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  eslint-import-resolver-typescript@3.10.1(eslint-plugin-import-x@4.16.1(@typescript-eslint/utils@8.50.1(eslint@9.39.2(jiti@2.6.1))(typescript@5.9.3))(eslint-import-resolver-node@0.3.9)(eslint@9.39.2(jiti@2.6.1)))(eslint-plugin-import@2.32.0)(eslint@9.39.2(jiti@2.6.1)):
+  eslint-import-resolver-typescript@3.10.1(eslint-plugin-import-x@4.16.1(@typescript-eslint/utils@8.50.1(eslint@9.39.2(jiti@2.6.1))(typescript@5.9.3))(eslint-import-resolver-node@0.3.9)(eslint@9.39.2(jiti@2.6.1)))(eslint-plugin-import@2.32.0(@typescript-eslint/parser@8.46.4(eslint@9.39.2(jiti@2.6.1))(typescript@5.9.3))(eslint@9.39.2(jiti@2.6.1)))(eslint@9.39.2(jiti@2.6.1)):
     dependencies:
       '@nolyfill/is-core-module': 1.0.39
       debug: 4.4.3
@@ -11195,7 +11195,7 @@ snapshots:
       '@typescript-eslint/parser': 8.46.4(eslint@9.39.2(jiti@2.6.1))(typescript@5.9.3)
       eslint: 9.39.2(jiti@2.6.1)
       eslint-import-resolver-node: 0.3.9
-      eslint-import-resolver-typescript: 3.10.1(eslint-plugin-import-x@4.16.1(@typescript-eslint/utils@8.50.1(eslint@9.39.2(jiti@2.6.1))(typescript@5.9.3))(eslint-import-resolver-node@0.3.9)(eslint@9.39.2(jiti@2.6.1)))(eslint-plugin-import@2.32.0)(eslint@9.39.2(jiti@2.6.1))
+      eslint-import-resolver-typescript: 3.10.1(eslint-plugin-import-x@4.16.1(@typescript-eslint/utils@8.50.1(eslint@9.39.2(jiti@2.6.1))(typescript@5.9.3))(eslint-import-resolver-node@0.3.9)(eslint@9.39.2(jiti@2.6.1)))(eslint-plugin-import@2.32.0(@typescript-eslint/parser@8.46.4(eslint@9.39.2(jiti@2.6.1))(typescript@5.9.3))(eslint@9.39.2(jiti@2.6.1)))(eslint@9.39.2(jiti@2.6.1))
     transitivePeerDependencies:
       - supports-color
 
