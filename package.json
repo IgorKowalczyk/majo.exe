@@ -19,16 +19,16 @@
     "prisma:studio": "turbo run prisma:studio"
   },
   "dependencies": {
-    "@dotenvx/dotenvx": "1.51.1",
+    "@dotenvx/dotenvx": "1.51.2",
     "tsx": "4.21.0",
-    "turbo": "2.6.3"
+    "turbo": "2.7.2"
   },
   "devDependencies": {
     "@igorkowalczyk/eslint-config": "3.2.1",
     "@igorkowalczyk/prettier-config": "3.2.1",
-    "@types/node": "24.10.1",
-    "eslint": "9.39.1",
-    "eslint-plugin-turbo": "2.6.3",
+    "@types/node": "25.0.3",
+    "eslint": "9.39.2",
+    "eslint-plugin-turbo": "2.7.2",
     "node-addon-api": "8.5.0",
     "prettier": "3.7.4",
     "typescript": "5.9.3"
