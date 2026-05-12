@@ -100,32 +100,6 @@ Ensure your setup meets these prerequisites before setting up Majo.exe:
 | -------------------------------------------------------------------- | ------------------------------------------------------------------- | :---------------------------------------------------------------------------------------------------------------------- |
 | ![TrestHost Logo](https://majoexe.com/assets/sponsors/tresthost.png) | [**TrestHost**](https://dash.tresthost.me/register?ref=majonez.exe) | **TrestHost is a good and powerful hosting provider** providing servers from the **USA and Germany**. Try us out today! | -->
 
-## ⛔ Hosting Agreement
-
-**By hosting the project, you agree to the following terms:**
-
-1. 📜 **Attribution:**
-   - **You are not allowed to claim authorship** or affiliation with the Majo.exe team.
-   - **Proper credit must be given** to the original author when hosting the project.
-   - **You are not allowed to use the Majo.exe name or logo** in any way that implies affiliation with the Majo.exe team.
-
-2. 💻 **Hosting Rights:**
-   - The bot can be hosted on your server, **provided the terms outlined here are respected**.
-
-3. 🚧 **Modifications:**
-   - The footer in the Dashboard, such as "Powered by Majo.exe," **must not be modified or removed**.
-   - The `/about` command **must not be modified or removed**. This command contains information about the project and its authors.
-   - The project's source code **must not be modified in any way that would remove or alter the original attribution**.
-   - **The license must be included with any public distribution** of the project or its modified source code.
-
-4. 📦 **Distribution:**
-   - **You may not distribute the bot or its modified versions without adhering to the terms** mentioned in this agreement.
-   - **Any public release or distribution must include clear attribution** to the original author and a link to the original repository or source.
-
-5. ⚖️ **Compliance:**
-   - Failure to comply with these terms may result in a violation of the agreement.
-   - **Legal action may be taken** if these terms are not respected.
-
 ## ⁉️ Issues
 
 If you have any issues with the page please create [new issue here](https://github.com/igorkowalczyk/majo.exe/issues). When creating new issue please provide as much information as possible. If you can, please provide logs from console.
