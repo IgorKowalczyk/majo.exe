@@ -28,7 +28,7 @@
     "@igorkowalczyk/prettier-config": "^3.2.1",
     "@types/node": "^25.0.3",
     "eslint": "^9.39.2",
-    "eslint-plugin-turbo": "2.7.2",
+    "eslint-plugin-turbo": "2.10.5",
     "node-addon-api": "^8.5.0",
     "prettier": "^3.7.4",
     "typescript": "^5.9.3"
