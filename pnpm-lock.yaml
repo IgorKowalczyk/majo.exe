@@ -49,8 +49,8 @@ importers:
         specifier: ^2.6.0
         version: 2.6.0
       '@iamtraction/google-translate':
-        specifier: ^2.0.1
-        version: 2.0.1
+        specifier: ^3.0.0
+        version: 3.0.0
       '@majoexe/config':
         specifier: workspace:*
         version: link:../../packages/config
@@ -1297,9 +1297,9 @@ packages:
     resolution: {integrity: sha512-bV0Tgo9K4hfPCek+aMAn81RppFKv2ySDQeMoSZuvTASywNTnVJCArCZE2FWqpvIatKu7VMRLWlR1EazvVhDyhQ==}
     engines: {node: '>=18.18'}
 
-  '@iamtraction/google-translate@2.0.1':
-    resolution: {integrity: sha512-kOTkt23zflxpgxLIe9tLvDU8IvNscXYbgMSXydNkZGWDtJ75YJiU3v7EBz+t7h/gSiY7sT5r4dlFkMrHCl+N6A==}
-    engines: {node: '>=16.0.0'}
+  '@iamtraction/google-translate@3.0.0':
+    resolution: {integrity: sha512-j2b3ZU/c/qHsHPP2PPQt3vAEsfscSbpvpiI4t4l4ps+KrUEwqNBy5T2optNxn6tcV1mAY6t9J7RJzbILQUeq2Q==}
+    engines: {node: '>=22.19.0'}
 
   '@igorkowalczyk/eslint-config@3.2.1':
     resolution: {integrity: sha512-whSaq2Tt1Cg0fUnqFVNJiG7dkMz2F2TrjkmOp1HFj8pkTOewXCOC7eV8iORIlxrDYPXvDyAMSZ6Phtp9UfN4dQ==}
@@ -4091,6 +4091,7 @@ packages:
   eslint@9.39.2:
     resolution: {integrity: sha512-LEyamqS7W5HB3ujJyvi0HQK/dtVINZvd5mAAp9eT5S/ujByGjiZLCzPcHVzuXbpJDJF/cxwHlfceVUDZ2lnSTw==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
+    deprecated: This version is no longer supported. Please see https://eslint.org/version-support for other options.
     hasBin: true
     peerDependencies:
       jiti: '*'
@@ -6667,6 +6668,10 @@ packages:
     resolution: {integrity: sha512-QEg3HPMll0o3t2ourKwOeUAZ159Kn9mx5pnzHRQO8+Wixmh88YdZRiIwat0iNzNNXn0yoEtXJqFpyW7eM8BV7g==}
     engines: {node: '>=20.18.1'}
 
+  undici@8.10.1:
+    resolution: {integrity: sha512-YQ3WlbqjYMmNpdvDH64jAgLjxuAR9+649calDWhbshYaeQGO2bR4nI94ORJmwI3J9YhoKQnpyGOK+0zlWS5N5Q==}
+    engines: {node: '>=22.19.0'}
+
   unicode-canonical-property-names-ecmascript@2.0.1:
     resolution: {integrity: sha512-dA8WbNeb2a6oQzAQ55YlT5vQAWGV9WXOsi3SskE3bcCdM0P4SDd+24zS/OCacdRq5BkdsRj9q3Pg6YyQoxIGqg==}
     engines: {node: '>=4'}
@@ -7969,9 +7974,9 @@ snapshots:
 
   '@humanwhocodes/retry@0.4.3': {}
 
-  '@iamtraction/google-translate@2.0.1':
+  '@iamtraction/google-translate@3.0.0':
     dependencies:
-      undici: 5.29.0
+      undici: 8.10.1
 
   '@igorkowalczyk/eslint-config@3.2.1(@typescript-eslint/utils@8.50.1(eslint@9.39.2(jiti@2.6.1))(typescript@5.9.3))(eslint-import-resolver-node@0.3.9)(eslint@9.39.2(jiti@2.6.1))(prettier@3.7.4)(typescript@5.9.3)':
     dependencies:
@@ -14324,6 +14329,8 @@ snapshots:
   undici@6.21.3: {}
 
   undici@7.16.0: {}
+
+  undici@8.10.1: {}
 
   unicode-canonical-property-names-ecmascript@2.0.1: {}
 
