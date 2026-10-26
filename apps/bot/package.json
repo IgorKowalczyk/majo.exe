@@ -14,7 +14,7 @@
   },
   "dependencies": {
     "@discordjs/rest": "^2.6.0",
-    "@iamtraction/google-translate": "^2.0.1",
+    "@iamtraction/google-translate": "^3.0.0",
     "@majoexe/config": "workspace:*",
     "@majoexe/database": "workspace:*",
     "@majoexe/typescript-config": "workspace:*",
